@@ -416,6 +416,12 @@ input:focus-visible {
   align-items: center;
 }
 
+@media screen and (max-width: 39rem) {
+  .header-right-items {
+    margin-left: 15px;
+  }
+}
+
 .header-right-items > .header-link-items > a {
   margin-right: 18px;
 }
@@ -606,6 +612,13 @@ input:focus-visible {
   padding: 20px 50px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+}
+
+@media screen and (max-width: 39rem) {
+  #product-nav > .container {
+    padding-right: 10px;
+  }
 }
 
 #product-nav .sub-nav {
@@ -647,6 +660,13 @@ input:focus-visible {
 
 #product-nav .sub-nav ul li a:hover {
   color: #183B56;
+}
+
+#product-nav .gdoc-nav__control {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .switcher-header svg.gdoc-icon {
