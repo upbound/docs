@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Capture screenshots related to cloud.upbound.io account creation.
+Documentation     Capture screenshots related to accounts.upbound.io account creation.
 Resource    ../resources/register.robot
 Resource    ../resources/common.robot
 

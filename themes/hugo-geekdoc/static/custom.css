@@ -69,6 +69,14 @@ input:focus-visible {
   outline: none;
 }
 
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
 /* Landing page global styling */ 
 .upbound-docs {
   background-color: #0B1C28;
