@@ -51,7 +51,7 @@ You need your:
 ### Bash script
 Download the script with `wget`.
 ```shell
-wget {{< url "quickstart/aws-quickstart-script.sh" >}}
+wget {{< url "quickstart/scripts/aws-quickstart-script.sh" >}}
 ```
 {{< expand "Click to view the complete Bash script" >}}
 
