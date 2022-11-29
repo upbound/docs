@@ -51,7 +51,7 @@ You need your:
 ### Bash script
 Download the script with `wget`.
 ```shell
-wget {{< url "quickstart/aws-quickstart-script.sh" >}}
+wget {{< url "quickstart/scripts/aws-quickstart-script.sh" >}}
 ```
 {{< expand "Click to view the complete Bash script" >}}
 
@@ -92,7 +92,7 @@ Install the official provider into the Kubernetes cluster with the `up` command-
 ```shell {copy-lines="all"}
 up controlplane \
 provider install \
-xpkg.upbound.io/upbound/provider-aws:v0.17.0
+xpkg.upbound.io/upbound/provider-aws:v0.21.0
 ```
 {{< /tab >}}
 
@@ -104,7 +104,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws:v0.17.0
+  package: xpkg.upbound.io/upbound/provider-aws:v0.21.0
 EOF
 ```
 
@@ -123,7 +123,7 @@ It may take up to five minutes for the provider to list `HEALTHY` as `True`.
 ```shell 
 kubectl get providers
 NAME                   INSTALLED   HEALTHY   PACKAGE                                        AGE
-upbound-provider-aws   True        True      xpkg.upbound.io/upbound/provider-aws:v0.17.0   73s
+upbound-provider-aws   True        True      xpkg.upbound.io/upbound/provider-aws:v0.21.0   73s
 ```
 
 A provider installs their own Kubernetes _Custom Resource Definitions_ (CRDs). These CRDs allow you to create AWS resources directly inside Kubernetes.

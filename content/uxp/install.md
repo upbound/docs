@@ -91,9 +91,9 @@ upbound-bootstrapper-5dd76c4fb-g2fv5         1/1     Running   0               4
 xgql-7c4b74c458-rdsfb                        1/1     Running   2 (4m21s ago)   4m23s
 ```
 
-### Configure Upbound Universal Crossplane installed as an EKS Addon
+### Configure Upbound Universal Crossplane installed from the Amazon EKS management console
 
-If you have installed `uxp` as an EKS Addon, you need to grant `crossplane` and any `provider` additional cluster level roles.
+If you have installed `uxp` directly from the Amazon EKS management console, you need to grant `crossplane` and any `provider` additional cluster level roles.
 
 Why are those actions needed? The `uxp` installation has been tailored to fit AWS requirements and the `crossplane-rbac-manager` has been disabled for the installation.
 
