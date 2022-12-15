@@ -1131,10 +1131,75 @@ input#chkToggle:checked + label.navbar-toggle > span.bars:after {
 }
 
 /* Error pages */
+.gdoc-error {
+  max-width: 880px;
+}
+
+.gdoc-error-page .wrapper {
+  background-color: #0B1C28;
+}
+
 @media screen and (max-width: 45rem) {
   .gdoc-error {
     padding: 11.438rem 1rem 6rem 1rem;
   }
+}
+
+.gdoc-error__message {
+  padding-left: 0;
+}
+
+.gdoc-error__title,
+.gdoc-error__code,
+.gdoc-error__help {
+  color: #fff;
+}
+
+.gdoc-error__title,
+.gdoc-error__code {
+  font-family: 'Avenir','Arial Black',sans-serif;
+  font-weight: 900;
+  text-align: center;
+}
+
+.gdoc-error__title {
+  font-size: 50px;
+}
+
+@media screen and (min-width: 992px) {
+  .gdoc-error__title {
+      font-size: 90px;
+  }
+}
+
+.gdoc-error__code {
+  font-size: 32px;
+  line-height: 37px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .gdoc-error__code {
+      font-size: 60px;
+      line-height: 64px;
+  }
+}
+
+.gdoc-error__help {
+  font-family: 'Avenir-Roman','Arial',sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+}
+
+.gdoc-error__help a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.gdoc-error__help a:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 /* :root */
