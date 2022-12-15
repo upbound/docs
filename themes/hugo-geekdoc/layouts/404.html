@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
-  <head>
-    {{ partial "head/meta" . }}
-    <title>{{ i18n "error_page_title" }}</title>
 
-    {{ partial "head/favicons" . }}
-    {{ partial "head/styles" . }}
-  </head>
+<head>
+  {{ partial "head/meta" . }}
+  <title>{{ i18n "error_page_title" }}</title>
 
-  <body>
+  {{ partial "head/favicons" . }}
+  {{ partial "head/styles" . }}
+</head>
 
-
-
-    <div class="wrapper">
-      <input type="checkbox" class="hidden" id="menu-header-control" />
-
-      {{ partial "site-header" (dict "Root" . "MenuEnabled" false) }}
+<body class="gdoc-error-page">
 
 
-      <main class="gdoc-error flex-even">
-        <div class="flex align-center justify-center">
-          <div class="gdoc-error__icon">
-            <svg class="gdoc-icon gdoc_cloud_off"><use xlink:href="#gdoc_cloud_off"></use></svg>
-          </div>
-          <div class="gdoc-error__message">
-            <div class="gdoc-error__line gdoc-error__title">{{ i18n "error_message_title" }}</div>
-            <div class="gdoc-error__line gdoc-error__code">{{ i18n "error_message_code" }}</div>
-            <div class="gdoc-error__line gdoc-error__help">
-              {{ i18n "error_message_text" .Site.BaseURL | safeHTML }}
-            </div>
+
+  <div class="wrapper">
+    <input type="checkbox" class="hidden" id="menu-header-control" />
+
+    {{ partial "site-header" (dict "Root" . "MenuEnabled" false) }}
+
+
+    <main class="gdoc-error flex-even">
+      <div class="justify-center">
+        <div class="gdoc-error__message">
+          <div class="gdoc-error__line gdoc-error__title">404</div>
+          <div class="gdoc-error__line gdoc-error__code">Sorry, we can’t find the page you’re looking for…</div>
+          <div class="gdoc-error__line gdoc-error__help">
+            Feel free to go <a href="{{ .Site.BaseURL }}">back to the homepage</a>.
           </div>
         </div>
-      </main>
+      </div>
+    </main>
 
-      {{ partial "site-footer" . }}
-      {{ partial "svg-icon-symbols" . }}
-    </div>
-  </body>
+    {{ partial "site-footer" . }}
+    {{ partial "svg-icon-symbols" . }}
+  </div>
+</body>
+
 </html>
