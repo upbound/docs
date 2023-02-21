@@ -28,13 +28,7 @@ kubectl get pods -n upbound-system
 NAME                                        READY   STATUS    RESTARTS      AGE
 crossplane-7fdfbd897c-pmrml                 1/1     Running   0             68m
 crossplane-rbac-manager-7d6867bc4d-v7wpb    1/1     Running   0             68m
-upbound-bootstrapper-5f47977d54-t8kvk       1/1     Running   0             68m
-xgql-7c4b74c458-5bf2q                       1/1     Running   3 (67m ago)   68m
 ```
-
-{{< hint type="note" >}}
-`RESTARTS` for the `xgql` pod are normal during initial installation. 
-{{< /hint >}}
 
 For more details about UXP pods, read the [UXP]({{<ref "uxp#universal-crossplane-pods" >}}) section.
 
