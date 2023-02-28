@@ -47,16 +47,24 @@ For example, to create a repository called `my-repo`
 up repository create my-repo
 upbound-docs/my-repo created
 ```
+Repositories have either `public` or `private` visibility:
+* `public` visibility means that any published versions of your package will have a public listing page in the Marketplace.
+* `private` visibility means that any published versions of your package will have a listing page that only you and other collaborators in your organization can see.
+
 {{< hint type="tip" >}}
-All repositories are private by default.
+All newly created repositories are public by default.
 {{< /hint >}}
 
 View any existing repositories with `up repository list`.
 ```shell
 up repo list
 NAME         TYPE            PUBLIC   UPDATED
-my-repo      configuration   false    23h
+my-repo      configuration   true     23h
 ```
+### Add annotations to your package
+The Upbound Marketplace automatically renders specific metadata annotations into listing pages, and it is recommended that all package maintainers add these annotations into their `crossplane.yaml` to ensure their listing has all of the key information required such as licenses, links to source code, and contact information for maintainers.
+
+All annotations specified in the <a href="https://docs.crossplane.io/v1.10/reference/xpkg/#object-annotations">xpkg specification</a> are supported.
 
 ### Push a package to the repository
 Push a package to the Upbound Marketplace using the `up xpkg push` command.
@@ -89,9 +97,9 @@ The package is now available from the Upbound Marketplace. View the Marketplace 
 
 For example, the Upbound AWS Official Provider is a `provider` package in the `upbound` organization's `provider-aws` repository. The package address is <a href="https://marketplace.upbound.io/providers/upbound/provider-aws/">`https://marketplace.upbound.io/providers/upbound/provider-aws/`</a>
 
-### Making packages public
+### Publishing public packages
 
-Upbound reviews all public packages. To request Upbound to make a package public email support@upbound.io or message the #Upbound channel in the [Crossplane Slack](https://slack.crossplane.io/).
+Upbound reviews all public packages, and new repositories have a default publishing policy of requiring a one-time manual approval. To request Upbound to review your package contents before publishing it and all future versions to a public listing page, please email support@upbound.io or message the `#upbound` channel in the [Crossplane Slack](https://slack.crossplane.io/).
 
 Upbound needs the following information before considering a package:
 * Public public Git repository of the package.
