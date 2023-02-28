@@ -87,8 +87,6 @@ crossplane-75556d97b6-gpzq7                  1/1     Running   0               4
 crossplane-75556d97b6-xm8bj                  1/1     Running   0               4m23s
 crossplane-rbac-manager-8f5c76d46-kvmpm      1/1     Running   0               4m23s
 provider-aws-a1113cd136a1-59b8587f6f-q8bpt   1/1     Running   0               4h55m
-upbound-bootstrapper-5dd76c4fb-g2fv5         1/1     Running   0               4m23s
-xgql-7c4b74c458-rdsfb                        1/1     Running   2 (4m21s ago)   4m23s
 ```
 
 ### Configure Upbound Universal Crossplane installed from the Amazon EKS management console

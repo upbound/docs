@@ -65,6 +65,4 @@ kubectl get pods -n crossplane-system
 NAME                                       READY   STATUS    RESTARTS     AGE
 crossplane-797c7cd8b6-csp8h                1/1     Running   0            2m7s
 crossplane-rbac-manager-744b86cbcd-c45tk   1/1     Running   0            2m7s
-upbound-bootstrapper-5bbdbf758b-s4zrl      1/1     Running   0            2m7s
-xgql-666f97f4cf-x2lpv                      1/1     Running   1 (2m ago)   2m7s
 ```
