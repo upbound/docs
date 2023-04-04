@@ -5,7 +5,7 @@ _Alias_: `up org`
 
 Commands under `up organization` create and manage Upbound organizations.
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 Only organizations can create [repositories]({{<ref "cli/command-reference/repository">}}), [robots]({{<ref "robot">}}) or [push packages]({{<ref "upbound-marketplace/packages" >}}) to the Upbound Marketplace. 
 {{< /hint >}}
 
@@ -48,8 +48,12 @@ my-other-org   owner
 
 Deletes the given organization.
 
-{{<hint type="warning" >}}
-Deleting an organization removes all users from the organization, deletes all robots and robot tokens. 
+<!-- omit in toc -->
+#### Flags
+* `--force` - Force deletion of the organization.
+
+{{<hint "warning" >}}
+Deleting an organization removes all users from the organization, deletes all robots, robot tokens, teams, and repositories.
 
 This can not be undone.
 {{< /hint >}}
@@ -59,6 +63,6 @@ This can not be undone.
 ```shell
 up org delete my-org
 Are you sure you want to delete this organization? [y/n]: y
-Deleting orgainzation my-org. This cannot be undone.
+Deleting organization my-org. This cannot be undone.
 my-org deleted
 ```

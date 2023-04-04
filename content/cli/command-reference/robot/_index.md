@@ -7,7 +7,7 @@ Upbound `robots` are identities used for authentication that are independent fro
 
 Robots have their own authentication credentials and configurable permissions.
 
-{{<hint type="important" >}}
+{{<hint "important" >}}
 Robot accounts are only supported for [organizations]({{<ref "../organization" >}}).  
 User accounts can't create robots.
 {{< /hint >}}

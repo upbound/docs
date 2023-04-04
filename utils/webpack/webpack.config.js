@@ -1,18 +1,27 @@
 const path = require("path")
-const { WebpackManifestPlugin } = require("webpack-manifest-plugin")
 
-const config = {
+// Plugins
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
+
+module.exports = {
+  cache: true,
+
   devtool: "source-map",
+
   entry:{
-    main: [path.resolve("src", "js", "app.js"),
-    path.resolve("src", "js", "search.js")],
-    lightbox: [path.resolve("src", "js", "lightbox.js")]
+    main: [path.resolve("src", "js", "globalScripts.js")]
   },
+
   output: {
     filename: "[name]-[contenthash:8].bundle.min.js",
     chunkFilename: "[name]-[contenthash:8].chunk.min.js",
-    path: path.join(__dirname, "../../themes/hugo-geekdoc/assets/js"),
+    path: path.join(__dirname, "../../themes/upbound/assets/js"),
     clean: true
+  },
+
+  optimization: {
+    moduleIds: 'deterministic',
+    splitChunks: {},
   },
 
   plugins: [
@@ -36,8 +45,5 @@ const config = {
 
         return manifest
       }
-    }),
-  ]
+    })]
 }
-
-module.exports = config

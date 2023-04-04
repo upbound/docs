@@ -4,7 +4,7 @@ title: "up xpkg push"
 
 Publishes images created by `up xpkg build` to the Upbound Marketplace. 
 
-{{<hint type="important" >}}
+{{<hint "important" >}}
 Users must [authenticate to the Upbound Marketplace]({{<ref "upbound-marketplace/authentication" >}}) to push packages.  
 For more information on the requirements to push an image read the [Creating and Pushing Packages]({{<ref "upbound-marketplace/packages" >}}) section. 
 {{< /hint >}}
