@@ -4,7 +4,7 @@ title: "up robot create"
 
 Create new robot accounts with `up robot create`.
 
-{{<hint type="important" >}}
+{{<hint "important" >}}
 Robot accounts are only supported for [organizations]({{<ref "../organization" >}}).  
 User accounts can't create robots.
 {{< /hint >}}

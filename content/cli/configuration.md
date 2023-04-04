@@ -67,11 +67,10 @@ specified as `default`, which in this case is actually named `default`.
 ### Specifying Upbound Instance
 
 Because Upbound offers both a hosted and self-hosted product, users may be
-logging in and interacting with [Upbound Cloud] or their own [Upbound
-Enterprise] installation. `up` assumes by default that a user is interacting
-with Upbound Cloud and will use `https://api.upbound.io` as the endpoint.
-However, all commands that interact with Upbound also accept an `--endpoint` /
-`UP_ENDPOINT`, which overrides the API endpoint.
+logging in and interacting with Upbound or their own installation. `up` assumes 
+by default that a user is interacting with hosted Upbound and will use `https://api.upbound.io` 
+as the domain. However, all commands that interact with Upbound also accept an `--domain` /
+`UP_DOMAIN`, which overrides the API endpoint.
 
 ### Adding or Updating Profile
 
@@ -110,12 +109,10 @@ if a token is exposed, assuming it is still present for the given profile in the
 configuration file, it can be revoked by running `up logout --profile
 <profile-name>`. If a token is exposed and it is no longer present in the
 profile and cannot be retrieved for any reason, the user account should reset
-its password on [Upbound Cloud] immediately. This can be accomplished today by
-clicking "Forgot Password?" on the [Upbound Cloud login page], following the
+its password on Upbound immediately. This can be accomplished today by
+clicking "Forgot Password?" on the [Upbound login page], following the
 link in the email you receive, and making sure to check "Delete all active
 sessions".
 
 <!-- Named Links -->
-[Upbound Cloud]: ../../upbound-cloud
-[Upbound Enterprise]: ../../upbound-enterprise
-[Upbound Cloud login page]: https://accounts.upbound.io/login
+[Upbound login page]: https://accounts.upbound.io/login

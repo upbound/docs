@@ -1,12 +1,11 @@
 ---
-title: "Up Command-Line"
-icon: "Settings"
-metaTitle: "Upbound CLI"
-metaDescription: "Up - The Official Upbound CLI"
+title: "Up CLI"
+icon: "terminal"
 weight: 200
+description: "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI."
 ---
 
-The Upbound `up` command-line simplifies configuration and management of Upbound Universal Crossplane (UXP) and interacts with the Upbound Marketplace to manage users and accounts.
+The Upbound `up` command-line enables interaction with Upbound managed control planes. It also simplifies common workflows with Upbound Universal Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.
 
 ## Install the Up command-line
 
@@ -16,7 +15,7 @@ Install the `up` command-line via shell, Homebrew or Linux package.
 {{<tab "Shell" >}}
 Install the latest version of the `up` command-line via shell script by downloading the install script from [Upbound](https://cli.upbound.io).  
 
-{{< hint type="tip" >}}
+{{< hint "tip" >}}
 Shell install is the preferred method for installing the `up` command-line.
 {{< /hint >}}
 
@@ -26,7 +25,7 @@ The shell install script automatically determines the operating system and platf
 curl -sL "https://cli.upbound.io" | sh
 ```
 
-{{< hint type="info" >}}
+{{< hint "note" >}}
 Install a specific version of `up` by providing the version. 
 
 For example, to install version `v0.12.1` use the following command:

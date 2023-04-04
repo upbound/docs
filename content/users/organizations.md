@@ -12,7 +12,7 @@ User accounts can [push packages]({{< ref "/upbound-marketplace/packages" >}}), 
 
 User accounts can create **organizations**. 
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 Only paid Upbound subscribers can create more than one organization.
 {{< /hint >}}
 
@@ -50,7 +50,7 @@ Admins can change a user's role in the _Users_ settings. Select the user, _Edit_
 ## Robot accounts
 Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user. 
 
-{{< hint type="warning" >}}
+{{< hint "warning" >}}
 Upbound strongly recommends using robot accounts for any Kubernetes related authentication. For example, providing secrets required to install Kubernetes manifests. 
 
 Only use user accounts with the Up command-line or [Upbound Cloud](https://cloud.upbound.io/).
@@ -60,7 +60,7 @@ Create robot accounts with the [`up robot create`]({{<ref "cli/command-reference
 
 Robot accounts use a _robot token_ to authenticate. Create a _robot token_ with [`up robot token create`]({{<ref "/cli/command-reference/robot/token#up-robot-token-create" >}}).
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 Only robot accounts can download and install [Upbound Official Providers]({{<ref "upbound-marketplace/providers" >}}).
 {{< /hint >}}
 

@@ -5,7 +5,7 @@ weight: 230
 
 Uninstall UXP with `up uxp uninstall`.
 
-{{< hint type="warning" >}}
+{{< hint "warning" >}}
 A UXP install upgraded from Crossplane doesn't support `up uxp uninstall`.
 *<!-- TOTO: Tracked by issue https://github.com/upbound/up/issues/187 -->* 
 {{< /hint >}}
@@ -14,7 +14,7 @@ A UXP install upgraded from Crossplane doesn't support `up uxp uninstall`.
 up uxp uninstall
 ```
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 The `uninstall` command assumes UXP is in the `upbound-system` namespace. 
 {{< /hint >}}
 

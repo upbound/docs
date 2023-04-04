@@ -1,3 +1,0 @@
-[submodule "utils/vale"]
-	path = utils/vale
-	url = git@github.com:upbound/vale.git

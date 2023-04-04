@@ -7,14 +7,14 @@ Pulling private packages or pushing packages to an Upbound Marketplace private r
 
 Installing private Kubernetes resources requires an [image pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials). 
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 Authenticating to the Upbound Marketplace for private packages requires an [Upbound account]({{<ref "users/register" >}}).
 {{< /hint >}}
 
 ## Prerequisites
 Install the [Up command-line]({{<ref "cli">}}) to generate Kubernetes secrets and to use Upbound Marketplace private resources. 
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 Upbound Marketplace requires Up command-line version `v0.13.0` or later.
 {{< /hint >}}
 
@@ -36,7 +36,7 @@ The image pull secret authenticates Kubernetes to the Upbound Marketplace, allow
 
 Generating an image pull secret requires either a user account _token_. 
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 A user account token uses your current `up login` profile.  
 Logging out with `up logout` deactivates the token.
 {{< /hint >}}

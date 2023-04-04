@@ -12,7 +12,5 @@ Upbound uses `up alpha` to try out new features or test new platform behaviors.
 ### `up alpha` commands
 |   |   |
 | --- | --- | 
-| [`up alpha controlplane`]({{<ref "controlplane"  >}}) | Interact with Upbound managed control planes. | 
-| [`up alpha upbound`]({{<ref "upbound" >}}) | Manage and configure Upbound Enterprise. | 
 | [`up alpha xpkg`]({{<ref "xpkg" >}}) | Extract Crossplane packages. |
 <!-- vale Upbound.Spelling = YES -->

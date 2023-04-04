@@ -4,7 +4,7 @@ title: "up xpkg dep"
 
 Downloads the dependencies of a package for the Crossplane Language Server.
 
-{{<hint type="note" >}}
+{{<hint "note" >}}
 This cache is only for the Crossplane Language Server. This doesn't cache files for Crossplane images.
 {{< /hint >}}
 

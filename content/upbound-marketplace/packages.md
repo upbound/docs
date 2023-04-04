@@ -3,8 +3,8 @@ title: "Creating and Pushing Packages"
 weight: 30
 ---
 
-{{< hint type="caution" >}}
-This section covers creating and pushing packages to the Upbound Marketplace. For information about installing packages read the <a href="{{<ref "uxp/crossplane-concepts/packages">}}">Crossplane Packages</a> section.
+{{< hint "warning" >}}
+This section covers creating and pushing packages to the Upbound Marketplace. For information about installing packages read the <a href="{{<ref "uxp/packages">}}">Crossplane Packages</a> section.
 {{< /hint >}}
 
 ## Package types
@@ -48,11 +48,11 @@ up repository create my-repo
 upbound-docs/my-repo created
 ```
 Repositories have either `public` or `private` visibility:
-* `public` visibility means that any published versions of your package will have a public listing page in the Marketplace.
-* `private` visibility means that any published versions of your package will have a listing page that only you and other collaborators in your organization can see.
+* `public` visibility means that any published versions of your package will have a public listing page in the Marketplace and can be pulled without credentials.
+* `private` visibility means that any published versions of your package will have a listing page that only you and other collaborators in your organization can see. Packages will require authorized credentials to be pulled.
 
-{{< hint type="tip" >}}
-All newly created repositories are public by default.
+{{< hint "tip" >}}
+All newly created repositories are public by default, and only public repositories can be created for free at this time.
 {{< /hint >}}
 
 View any existing repositories with `up repository list`.
@@ -74,7 +74,7 @@ The `up xpkg push` command requires:
 * A package version tag. The package version tag is a <a href="https://semver.org/">semantic versioning</a> number determining package upgrades and dependency requirements.
 
 The push command syntax is  
-`up xpkg push <repoository>:<version tag> -f <xpkg file>`.
+`up xpkg push <repository>:<version tag> -f <xpkg file>`.
 
 For example, to push a package with the following parameters:
 * Repository `upbound-docs/my-repo`
@@ -88,7 +88,7 @@ up xpkg push upbound-docs/my-repo:v0.2 -f my-package.xpkg
 xpkg pushed to upbound-docs/my-repo:v0.2
 ```
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 You need to <a href="https://accounts.upbound.io/login">login to the Marketplace</a> to see packages in private repositories.
 {{< /hint >}}
 
@@ -102,6 +102,33 @@ For example, the Upbound AWS Official Provider is a `provider` package in the `u
 Upbound reviews all public packages, and new repositories have a default publishing policy of requiring a one-time manual approval. To request Upbound to review your package contents before publishing it and all future versions to a public listing page, please email support@upbound.io or message the `#upbound` channel in the [Crossplane Slack](https://slack.crossplane.io/).
 
 Upbound needs the following information before considering a package:
-* Public public Git repository of the package.
+* Public Git repository of the package.
 * The Upbound account to list as an owner and point of contact.
 * The Upbound repository name.
+
+Whether a package version is published is independent from whether it is public or private. Publish status indicates whether a package version can be viewed in the Marketplace, while privacy indicates who can access it.
+
+{{< table >}}
+| | Published | Not Published |
+| ---- | ---- | ---- | 
+| <b>Public</b> | **Pull:** Anyone<br>**View:** Anyone | **Pull:** Anonymous<br>**View:** No one | 
+| <b>Private</b> | **Pull:** Authorized<br>**View:** Authorized | **Pull:** Authorized<br>**View:** No one | 
+{{< /table >}}
+
+### FAQ
+
+{{< expand "I pushed a package to my repository, but I don't see it in the Marketplace. Does this mean I can't use it?" >}}
+A package can be pushed and pulled regardless of whether they are _published_ (i.e. visible) in the Marketplace. You can verify that you can still pull your packages with any OCI client like [docker](https://docs.docker.com/get-docker/) or [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md).
+{{</expand >}}
+
+{{< expand "My package shows as ACCEPTED in the Marketplace. Is something wrong?" >}}
+A status of __ACCEPTED__ means that the package is available to be published to the Marketplace, but not yet visible to others. The package can still be pulled.
+{{</expand >}}
+
+{{< expand "My package shows as REJECTED in the Marketplace. Is something wrong?" >}}
+A status of __REJECTED__ means that the package is not available to be published to the Marketplace. You can click on the status badge to get more information as to why it was rejected, for example the image being too large to index. The package can still be pulled.
+{{</expand >}}
+
+{{< expand "Why are some of my package versions published, but others are not?" >}}
+The Marketplace only publishes release versions with valid [semver](https://semver.org/) tags. Release candidates and dirty builds that are pushed can still be pulled, but will remain in __ACCEPTED__ status.
+{{</expand >}}

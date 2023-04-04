@@ -7,14 +7,14 @@ Manage robot authentication tokens for existing robot accounts with `up robot to
 - [`up robot token delete`](#up-robot-token-delete)
 - [`up robot token list`](#up-robot-token-list)
 
-{{<hint type="important" >}}
+{{<hint "important" >}}
 Robot accounts are only supported for [organizations]({{<ref "../organization" >}}).  
 User accounts can't create robots.
 {{< /hint >}}
 
 <!-- vale gitlab.SubstitutionWarning = NO-->
 <!-- don't flag an error on shortcode information argument -->
-{{< hint type="info" >}}
+{{< hint "note" >}}
 <!-- vale gitlab.SubstitutionWarning = YES-->
 The Upbound Cloud Platform requires authentication to an organization with [`up login -a`]({{<ref "login" >}}) before using `up robot token create`.
 {{< /hint >}}
@@ -32,7 +32,7 @@ Find more information on creating Kubernetes secrets with robot tokens in the [M
 
 Creates a new robot token and generates a JSON file containing the robot's credentials.
 
-{{< hint type="caution" >}}
+{{< hint "warning" >}}
 The JSON file contains the robot username called `accessId` and password called `token`.
 
 There's no way to recover the `token` value if it's lost. 

@@ -1,0 +1,12 @@
+.grid {
+
+    @include media-breakpoint-up(xl) {
+    display: grid;
+    grid-template-columns: 300px minmax(0,.98fr) 300px;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    "left-sidebar-nav content-body right-sidebar-toc"
+    "footer-container footer-container footer-container";
+    }
+
+}
