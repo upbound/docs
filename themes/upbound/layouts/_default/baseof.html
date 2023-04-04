@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" class="color-toggle-hidden" color-theme="light">
+  <head>
+    {{ partial "head/base" . }}
+  </head>
+
+  <body>
+  <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
+    {{ partial "icons/sprites" . }}
+
+    {{ partial "body/left-sidebar-nav" .}}
+
+    {{ partial "body/offcanvas-nav" .}}
+
+    {{ block "main" . }}
+    {{ end }}
+
+    {{ partial "footer/base" . }}
+  </div>
+</body>
+
+
+</html>

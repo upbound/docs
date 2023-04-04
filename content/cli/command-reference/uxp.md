@@ -24,7 +24,7 @@ UXP installs the latest stable release by default.
 
 The list of available UXP versions is in the [charts.upbound.io/stable](https://charts.upbound.io/stable/) listing.
 
-The [UXP]({{<ref "/uxp/_index.md#customize-install-options" >}}) guide lists all install-time settings. 
+The [UXP install guide]({{<ref "/uxp/install" >}}) lists all install-time settings. 
 
 <!-- omit in toc -->
 #### Examples
@@ -71,7 +71,7 @@ up uxp uninstall
   
 
 <!-- vale gitlab.SentenceLength = NO -->
-UXP upgrades can be from one UXP version to another or from open source Crossplane to a [compatible UXP version]({{<ref "/uxp/_index.md##upgrade-from-upbound-universal-crossplane" >}}).
+UXP upgrades can be from one UXP version to another or from open source Crossplane to a [compatible UXP version]({{<ref "/uxp/upgrade#upgrade-from-open-source-crossplane" >}}).
 <!-- vale gitlab.SentenceLength = YES -->
 
 <!-- omit in toc -->

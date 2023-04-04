@@ -1,9 +1,8 @@
 ---
-title: "Upbound Knowledge Base"
-rank: 0
-cascade:
-    product: "Knowledge Base"
-    type: kb
+title: "Knowledge Base"
+weight: 899
+icon: "star"
+description: "A collection of best practices, troubleshooting and technical reference guides."
 ---
 
-The root of the KB.
+This houses all the tutorials and reference materials.

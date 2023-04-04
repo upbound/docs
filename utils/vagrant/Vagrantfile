@@ -61,6 +61,10 @@ Vagrant.configure("2") do |config|
       end
       node.vm.provision :shell, privileged: true, inline: $install_cri
       node.vm.provision :shell, privileged: true, inline: <<-SCRIPT
+      until [ -f /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ]
+      do
+            sleep 5
+      done
       cat << 'EOF' > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
@@ -98,6 +102,10 @@ EOF
       node.vm.provision :shell, privileged: true, inline: $configure_linux
       node.vm.provision :shell, privileged: true, inline: $install_cri
       node.vm.provision :shell, privileged: true, inline: <<-SCRIPT
+      until [ -f /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ]
+      do
+            sleep 5
+      done
       cat << 'EOF' > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
@@ -153,6 +161,7 @@ SCRIPT
 
 $install_tools = <<-SCRIPT
 echo "Installing additional software packages"
+DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-get install -y git htop chrony tree jq bat > /dev/null 2>&1
 SCRIPT
 
@@ -170,7 +179,7 @@ echo "deb https://baltocdn.com/helm/stable/debian/ all main" > /etc/apt/sources.
 #kube_ver=1.23.6-00
 kube_ver=1.24.0-00
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get install -y kubeadm=$kube_ver kubelet=$kube_ver kubectl=$kube_ver containerd.io helm > /dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get install -y kubeadm=1.24.0-00 kubelet=1.24.0-00 kubectl=1.24.0-00 containerd.io helm > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-mark hold kubelet kubeadm kubectl > /dev/null 2>&1
 
 # Remove the stock containerd config file and let it auto generate

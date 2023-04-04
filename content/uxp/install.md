@@ -25,7 +25,7 @@ Install a specific version of UXP with `up uxp install <version>`.
 
 The list of available versions is in the [charts.upbound.io/stable](https://charts.upbound.io/stable/) listing.
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 Don't include the `universal-crossplane-` name when using `up uxp install <version>`. 
 For example, `up uxp install 1.8.1-up.1`
 {{< /hint >}}
@@ -33,7 +33,7 @@ For example, `up uxp install 1.8.1-up.1`
 ### Install Upbound Universal Crossplane in a custom namespace
 Install UXP into a specific namespace using the `-n <NAMESPACE>` option.
 
-For example, to install UXP into the upbound-test namespace use the command
+For example, to install UXP into the `upbound-test` namespace use the command
 
 ```shell
 up uxp install -n upbound-test
@@ -51,7 +51,7 @@ Install the latest unreleased version with the `--unstable` flag.
 
 Install a specific release with `up uxp install --unstable <version>`
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 Don't include the `universal-crossplane-` name when using `up uxp install --unstable <version>`. 
 For example, `up uxp install --unstable 1.9.0-up.1.rc.1.6.g3b4985a`
 {{< /hint >}}
@@ -59,7 +59,7 @@ For example, `up uxp install --unstable 1.9.0-up.1.rc.1.6.g3b4985a`
 ### Customize install options 
 Change default install settings via the command-line with `--set <key>=<value>` or a settings file with `-f <file>`.
 
-{{< hint type="tip" >}}
+{{< hint "tip" >}}
 A configuration file is the recommended method to customize the UXP install.
 {{< /hint >}}
 

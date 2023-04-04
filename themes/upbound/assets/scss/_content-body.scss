@@ -1,0 +1,125 @@
+// Styles related to the main article content body.
+.content-body {
+  grid-area: content-body;
+  line-height: 26px;
+  font-size: $body-font-size;
+
+  @include media-breakpoint-up(xl) {
+    padding: 50px;
+  }
+
+  @include media-breakpoint-down(xl) {
+    padding: 50px;
+    overflow-wrap: break-word;
+
+  }
+
+  // Override Bootstrap accordion colors in the body
+  .accordion {
+    --bs-accordion-active-bg: #{$up-purple-200};
+    --bs-accordion-btn-focus-border-color: #{$up-purple-300};
+    --bs-accordion-border-color: #{$up-purple-300};
+    --bs-accordion-button-focus-border-color: #{$up-purple-300};
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem $up-purple-400;
+  }
+
+  .content-title {
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 2.8rem;
+  }
+
+  // Don't add extra padding to the page heading
+  h2, h3, h4, h5, h6 {
+    padding-top: 12px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+
+    padding-bottom: 12px;
+
+    a {
+      text-decoration: none !important;
+      color: inherit !important;
+
+      &:hover{
+        text-decoration: none !important;
+      }
+    }
+  }
+  // Individual inline code snippets
+  code {
+    background-color: var(--code-background);
+    color: var(--code-color);
+    padding: 0.2em 0.4em;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--content-link-color);
+
+    &:hover,
+    code {
+      text-decoration: underline !important;
+      color: var(--content-link-color);
+    }
+
+    &:visited {
+      color: var(--content-link-color);
+    }
+  }
+
+  // Offset content from fixed navbar when jumping to headings
+  .heading:target {
+    padding-top: 1rem;
+  }
+
+  // Override Bootstrap Tab styles
+  .nav-tabs{
+
+    border-bottom: none;
+    font-weight: bold;
+
+    @include media-breakpoint-down(xl) {
+      li {
+        display: block !important;
+        width: 100%;
+        margin: 0px;
+      }
+
+
+
+    }
+    // Create a border for the non-tabbed space.
+    // Prevents a double border for tabs/hover
+    &:not(.nav-link){
+      border-bottom: 2px solid #{$gray-300};
+      margin-bottom: 12px !important;
+    }
+
+    // Active tab style overrides normal nav-link styles
+    .active, .active:hover {
+      color: #{$purple-400} !important;
+      border-bottom: 2px solid #{$purple-400} !important;
+    }
+
+    // Remove tab outline and dim the text
+    .nav-link {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      color: #{$gray-500};
+
+      @include media-breakpoint-down(xl) {
+        padding-left: 12px !important;
+      }
+
+      // Make the text dark and override bootstrap hover behaviors.
+      &:hover{
+        color: var(--body-font-color);
+        border-color: #{$gray-300};
+        border-bottom-width: 0;
+      }
+    }
+  }
+}

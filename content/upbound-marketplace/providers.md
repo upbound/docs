@@ -7,11 +7,11 @@ Upbound creates, maintains and supports a set of Crossplane providers called *of
 ## Find official providers
 Identify official providers in the marketplace with the `by Upbound` gold seal.
 
-{{<img src="images/provider-by-upbound.png" alt="example official provider with a by Upbound seal" size="xtiny">}}
+{{<img src="upbound-marketplace/images/provider-by-upbound.png" alt="example official provider with a by Upbound seal" size="xtiny">}}
 
 Also find official providers by filtering a [search in the marketplace](https://marketplace.upbound.io/providers?tier=official) to just `Official`.
 
-{{<img src="images/official-provider-search-filter.png" alt="a marketplace search filter with Providers and Official filters set" size="xtiny" >}}
+{{<img src="upbound-marketplace/images/official-provider-search-filter.png" alt="a marketplace search filter with Providers and Official filters set" size="xtiny" >}}
 
 ## Install an official provider
 The [Upbound Marketplace](https://marketplace.upbound.io/) hosts official providers. 

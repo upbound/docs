@@ -1,0 +1,48 @@
+// Global Upbound styling variables
+
+$bd-callout-variants: info, warning, danger !default;
+
+$font-family-sans-serif:      "Avenir-Roman", "Avenir" !default;
+$font-family-monospace:       "Consolas" !default;
+$line-height-base:            1.8 !default;
+$font-size-root:              18px !default;
+$font-size-base:              1.125rem !default;
+
+$body-font-size:              16px !default;
+$body-line-height:            26px !default;
+
+$up-code-font-size:           16px !default;
+$up-code-line-height:         26px !default;
+
+
+$up-purple-100:         #E9E7F2 !default;
+$up-purple-200:         #D8D4EF !default;
+$up-purple-300:         #9B8FD6 !default;
+$up-purple-400:         #6553C0 !default;
+$up-purple-500:         #353874 !default;
+$up-purple-600:         #26305E !default;
+
+$up-grey-100:           #F8F8F8 !default;
+$up-grey-200:           #F1F2F4 !default;
+$up-grey-300:           #DCE0E6 !default;
+$up-grey-400:           #EAECEF !default;
+$up-grey-500:           #8E949B !default;
+
+$borderDark:            #283C42 !default;
+
+$font-color-dark:       #323C47 !default;
+$font-color-light:      #505A72 !default;
+
+$body-font-weight:        normal !default;
+$body-min-width:          20rem !default;
+$body-font-size:          18px !default;
+
+$color-admonition-background: transparent;
+
+
+:root {
+  font-size: $font-size-root;
+  --bs-body-color: #{$font-color-dark};
+  letter-spacing: 0.33px;
+  scroll-behavior: smooth;
+}

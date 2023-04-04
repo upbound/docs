@@ -6,7 +6,7 @@ Delete a robot account with `up robot delete`.
 
 <!-- vale gitlab.SubstitutionWarning = NO-->
 <!-- don't flag an error on shortcode information argument -->
-{{< hint type="info" >}}
+{{< hint "note" >}}
 <!-- vale gitlab.SubstitutionWarning = YES-->
 The Upbound Cloud Platform requires authentication to an organization with [`up login -a`]({{<ref "login" >}}) before using `up robot delete`.
 {{< /hint >}}

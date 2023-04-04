@@ -43,8 +43,15 @@ my-repo   unknown   false    n/a
 
 Deletes the given repository.
 
-{{<hint type="warning" >}}
-Deleting a repository removes all packages from the repository and impacts all users in an organization.
+<!-- omit in toc -->
+#### Flags
+* `--force` - Force deletion of the repository.
+
+{{<hint "warning" >}}
+Deleting a repository removes all packages from the repository and impacts all users in an organization. 
+
+Deleting a public repository will also impact any users that attempt to pull any packages in
+that repository or have it declared as a dependency in their cluster.
 
 This can not be undone.
 {{< /hint >}}

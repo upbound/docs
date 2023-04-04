@@ -1,0 +1,76 @@
+<div class="left-sidebar-nav offcanvas-xl offcanvas-start" data-bs-backdrop="false" tabindex="-1" id="left-nav-offcanvas" aria-labelledby="left-nav-offcanvas">
+    <nav aria-label="Documentation section navigation" class="sticky-top container px-0">
+
+        <div class="logo nav-logo-search d-flex flex-row">
+            <div class="flex-grow-1">
+                <a href="//www.upbound.io">
+                    <img loading="eager"
+                    src="/img/logos/upbound-purple.svg"
+                    height="21"
+                    width="85"
+                    alt="Upbound Homepage">
+                </a>
+            </div>
+
+            <div class="search-icon d-none">
+                {{ partial "icons/magnifying-glass.svg" (dict "width" "22px" "height" "18px" "class" "grey-icon") }}
+            </div>
+
+            <div class="align-self-center d-none">
+                {{ partial "icons/moon.svg" (dict "width" "22px" "height" "18px" "class" "grey-icon") }}
+            </div>
+        </div>
+
+        <div class="list-group d-flex">
+            {{/*  First entry for the "Docs" section representing home.html  */}}
+            <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if .IsHome }}active{{end}}">
+                <a href="{{.Site.BaseURL}}" class="d-flex flex-grow-1 stretched-link">
+                    <div class="align-self-center icon-container">
+                        <svg class="nav-parent-icon" width="16px" height="16px"><use xlink:href="#house"/></svg>
+                    </div>
+                    <div class="">Docs</div>
+                </a>
+            </div>
+
+            {{ $currentPage:= . }}
+            {{ range .Site.Sections.ByWeight }}
+
+                {{ $expand := (or (eq $currentPage .) (eq $currentPage.FirstSection .)) }}
+
+                {{/*  Generate a random ID for each parent to use as the collapse target ID  */}}
+                {{ $id := substr (sha1 .Permalink) 0 8 }}
+
+                <!-- Parent Menu Button -->
+                    <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}">
+                            <a href="{{.Permalink}}" class="d-flex flex-grow-1 stretched-link">
+                                <div class="align-self-center icon-container">
+                                    <svg class="nav-parent-icon" width="16px" height="16px"><use xlink:href="#{{.Params.icon | default ""}}"/></svg>
+                                </div>
+                                <div class="">{{.Title }}</div>
+                            </a>
+                        {{ if .Pages }}
+                        <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
+                            <div class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
+                        </div>
+                        {{ end }}
+                    </div>
+
+                {{ if .Pages }}
+                <!-- Child Pages -->
+                    <div class="nav-child-container px-0 mx-0">
+                            <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
+                                {{ range .Pages }}
+                                    {{ if not .Page.Params.tocHidden }}
+                                    <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}}">
+                                        {{ .Title }}
+                                    </a>
+                                    {{ end }}
+                                {{ end }}
+                            </div>
+                    </div>
+                {{ end }}
+            {{ end }}
+        </div>
+
+    </nav>
+</div>

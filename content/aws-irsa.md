@@ -8,11 +8,11 @@ Universal Crossplane clusters running inside Amazon Elastic Kubernetes Service
 (_IRSA_)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
 to authenticate the AWS provider.
 
-{{< hint type="important" >}}
+{{< hint "important" >}}
 This guide provides a minimal IAM policy with `eksctl` for demonstration purposes. It isn't intended to be a reference for IAM policy recommended practices. 
 {{< /hint >}}
 
-{{< hint type="tip" >}}
+{{< hint "tip" >}}
 The [`eksctl` documentation](https://eksctl.io/usage/iamserviceaccounts/) has more information about configuring IRSA for EKS.
 {{< /hint >}}
 
@@ -62,7 +62,7 @@ Skip this section if you have existing policy or plan to use an AWS Managed Poli
 
 {{< expand "Create an IAM Policy" >}}
 
-{{< hint type="tip" >}}
+{{< hint "tip" >}}
 This section is only required if you don't already have an existing IAM policy.
 {{< /hint >}}
 
@@ -70,7 +70,7 @@ This section is only required if you don't already have an existing IAM policy.
 
 The IAM Policy defines the level of access the _ServiceAccount_ has. 
 
-{{< hint type="caution" >}}
+{{< hint "warning" >}}
 This policy is an example policy granting _AdministorAccess_ permissions and may not be appropriate for production. 
 {{< /hint >}}
 
@@ -113,7 +113,7 @@ helm install crossplane crossplane-stable/crossplane --namespace crossplane-syst
 ## Create a ServiceAccount and attach the IAM policy
 Use `eksctl create iamserviceaccount` to create a new Kubernetes _ServiceAccount_ inside the EKS cluster. 
 
-{{< hint type="tip" >}}
+{{< hint "tip" >}}
 The `eksctl` documentation contains more information on [creating the _ServiceAccount_](https://eksctl.io/usage/iamserviceaccounts/). 
 {{< /hint >}}
 
@@ -184,7 +184,7 @@ aws iam get-role --role-name eks-role
 The IAM policy attaches to the IAM role.
 View the policy and role with the `aws` CLI.
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 For AWS Managed policies use `aws iam list-attached-role-policies`.  
 For AWS Inline policies use `aws iam list-role-policies`.
 {{< /hint >}}
@@ -219,7 +219,7 @@ Events:              <none>
 
 You must change the trust relationship in the IAM role created by `eksctl` to support the AWS Provider. 
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 The [AWS documentation](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/edit_trust.html) has instructions on modifying trust relationships in the AWS web console.
 {{< /hint >}}
 
@@ -318,7 +318,7 @@ aws iam get-role --role-name eks-role --query Role.AssumeRolePolicyDocument
 }
 ```
 
-{{< hint type="tip" >}}
+{{< hint "tip" >}}
 The value `provider-aws-*` defines the AWS provider and version that needs to
 authenticate. Using `*` allows any AWS provider version to authenticate.
 {{< /hint >}}
@@ -370,7 +370,7 @@ The {{< hover label="provider" line="9" >}}Provider.spec.controllerConfigRef.nam
 
 Verify the provider installed with `kubectl get providers`. 
 
-{{< hint type="note" >}}
+{{< hint "note" >}}
 It may take up to five minutes for the provider to list `HEALTHY` as `True`. 
 {{< /hint >}}
 

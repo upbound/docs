@@ -1,6 +1,8 @@
 ---
-title: "Upbound Accounts and Organizations"
+title: "Accounts & Orgs"
 weight: 400
+icon: "user"
+description: "Create and manage users and organizations in the Upbound Console."
 ---
 Some features of Upbound, like [publishing packages]({{<ref "upbound-marketplace/packages" >}}), are only available to registered Upbound users.
 
