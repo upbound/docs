@@ -11,7 +11,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
       ...(els.ids || []),
     ];
   },
-  safelist: []
+  safelist: ['offcanvas-backdrop']
 });
 
 const mediasort = require('postcss-sort-media-queries')({
