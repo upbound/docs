@@ -33,15 +33,17 @@ function buildEventListeners(){
         iconDefault(rightToggle)
     })
 
-    rightOffcanvas.addEventListener('show.bs.offcanvas', event => {
-        iconSwitch(rightToggle)
-        iconHide(leftToggle)
-    })
+    if(rightOffcanvas){
+        rightOffcanvas.addEventListener('show.bs.offcanvas', event => {
+            iconSwitch(rightToggle)
+            iconHide(leftToggle)
+        })
 
-    rightOffcanvas.addEventListener('hide.bs.offcanvas', event => {
-        iconSwitch(rightToggle)
-        iconDefault(leftToggle)
-    })
+        rightOffcanvas.addEventListener('hide.bs.offcanvas', event => {
+            iconSwitch(rightToggle)
+            iconDefault(leftToggle)
+        })
+    }
 
 
 }
