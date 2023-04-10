@@ -43,3 +43,13 @@ Creating a new git-synced configuration from a gallery of starter configurations
 Clicking the gear icon (Organization Settings) in the top navigation bar takes you to the org management pane, where you can create new team members, assign roles, and more.
 
 {{<img src="concepts/images/org-mgmt.png" alt="org management" quality="100" lightbox="true">}}
+
+## Account Management
+
+Clicking on your account profile and selecting `My Account` will take you to your personal account settings.
+
+### Create a personal access token (PAT)
+
+You can create a personal access token from the Account Settings view. Click `API Tokens` in the sidenav and then click `Create New Token`. These personal access tokens can be provided to `up cli` commands to facilitate authentication with Upbound.
+
+{{<img src="concepts/images/settings-api-token.png" alt="Create a personal access token" quality="100" lightbox="true">}}
