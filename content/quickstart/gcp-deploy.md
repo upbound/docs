@@ -41,7 +41,7 @@ After you've selected the Configuration, you need to connect Upbound to your Git
 {{<img src="quickstart/images/gcp-connect-to-gh.png" alt="Upbound connect to GitHub" size="medium" quality="100" lightbox="true">}}
 
 {{< hint "tip" >}}
-Git connectivity is at the core of Upbound's workflows. To learn more about git integration, go to [Git integration](/concepts/git-integration/) in the `Concepts` docs.
+Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/control-plane-connector" >}}) section.
 {{< /hint >}}
 
 After you've connected to Github, select an account owner and give your repo a name. Upbound will create a new repo under your account and clone the contents of the Configuration you selected in the previous step into your repo. Because this repo will contain the API definitions that will be installed on your control plane, name your repo `my-control-plane-apis`.

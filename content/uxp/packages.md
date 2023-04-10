@@ -100,10 +100,12 @@ The recommended authentication method depends on the specific package and its de
 
 Use the following table to determine which authentication method to use.
 
+{{< table >}}
 | | Public Dependencies | Private Dependencies |
 | ---- | ---- | ---- | 
-| **Public Package Repository** | No authentication required. | [Update the `crossplane` service account.](#update-the-crossplane-service-account) | 
-| **Private Package Repository** | [Use a `packagePullSecret`.](#use-a-packagepullsecret) | [Update the `crossplane` service account.](#update-the-crossplane-service-account) | 
+| **Public Package Repository** | No authentication required. | Update the `crossplane` service account. | 
+| **Private Package Repository** | Use a `packagePullSecret`. | Update the `crossplane` service account. | 
+{{< /table >}}
 
 {{< tabs "pps-secret" >}}
 
@@ -156,7 +158,7 @@ Events:              <none>
 
 {{< tab "Use a packagePullSecret" >}}
 {{< hint "tip" >}}
-Read the <a href="/upbound-marketplace/authentication">Authentication</a> section for more information on using secrets with the Marketplace.
+Read the [Authentication]({{< ref "/upbound-marketplace/authentication" >}}) section for more information on using secrets with the Marketplace.
 {{< /hint >}}
 
 To provide authentication information add a `spec.packagePullSecret` to the package install manifest. For example, to add a `packagePullSecret` to the AWS reference platform manifest:
