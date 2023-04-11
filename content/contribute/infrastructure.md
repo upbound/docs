@@ -59,7 +59,7 @@ For local development (when using `hugo server`) Hugo compiles SCSS without
 any optimizations.
 
 Production deployments use the command `hugo --environment production` to
-trigger SCSS optimiation.   
+trigger SCSS optimization.   
 
 Hugo compiles SCSS and optimizes the CSS with
 [PostCSS](https://postcss.org/). The PostCSS configuration is in

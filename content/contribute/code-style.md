@@ -20,7 +20,7 @@ this is a code block
 ```
 ````
 
-Only use a single backtick (`` ` ``) for commands used in a sentence. 
+Use a single backtick (`` ` ``) for commands used in a sentence. 
 
 For example, the command `kubectl apply` is inside a sentence. 
 
@@ -154,7 +154,7 @@ metadata:
 ```
 ````
 
-Copying a single line is also supported without using the ending line number. For example to copy only line 3 use `{copy-lines="3"}`.
+Copying a single line is also supported without using the ending line number. For example to copy line 3 use `{copy-lines="3"}`.
 
 {{<hint "important" >}}
 The line number range must be in quotations.
