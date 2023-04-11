@@ -6,9 +6,9 @@ description: "Install Crossplane, interact with the Upbound Marketplace and Mana
 ---
 
 The Upbound `up` command-line enables interaction with Upbound managed control planes. It also simplifies common workflows with Upbound Universal Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.
-
+<!-- vale Google.Headings = NO -->
 ## Install the Up command-line
-
+<!-- vale Google.Headings = YES -->
 Install the `up` command-line via shell, Homebrew or Linux package.
 
 {{< tabs "up-install" >}}
@@ -60,8 +60,9 @@ curl -sLo up.deb "https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/up.
 ```
 <br />
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### RPM package install
-
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 ```shell
 curl -sLo up.rpm "https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/up.rpm"
 ```

@@ -7,8 +7,18 @@ Install and manage Upbound Universal Crossplane (UXP) with `up uxp` commands.
 Read the [Upbound Universal Crossplane]({{<ref "/uxp" >}}) section more information about UXP.
 
 - [`up uxp install`](#up-uxp-install)
+  - [Arguments](#arguments)
+  - [Examples](#examples)
+    - [Install the latest version of `UXP`](#install-the-latest-version-of-uxp)
+    - [Install the latest version of `UXP` and set the image pull policy](#install-the-latest-version-of-uxp-and-set-the-image-pull-policy)
 - [`up uxp uninstall`](#up-uxp-uninstall)
+  - [Arguments](#arguments-1)
+  - [Examples](#examples-1)
 - [`up uxp upgrade`](#up-uxp-upgrade)
+  - [Arguments](#arguments-2)
+  - [Examples](#examples-2)
+    - [Upgrade to `UXP` version v1.7.0-up.1](#upgrade-to-uxp-version-v170-up1)
+    - [Upgrade Crossplane to `UXP`](#upgrade-crossplane-to-uxp)
 ### `up uxp install`
 
 
@@ -82,8 +92,9 @@ UXP upgrades can be from one UXP version to another or from open source Crosspla
 up uxp upgrade v1.7.0-up.1
 ```
 
-
+<!-- vale Google.Headings = NO -->
 ##### Upgrade Crossplane to `UXP`
+<!-- vale Google.Headings = YES -->
 ```shell
 up uxp upgrade v1.7.0-up.1 -n crossplane-system
 ```
