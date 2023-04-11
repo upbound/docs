@@ -6,7 +6,7 @@ Extract package contents into a Crossplane cache compatible format. Fetches from
 
 ### `up alpha xpkg xp-extract`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<package>` - name of the package to extract. Must be a valid OCI image tag or a path if using `--from-xpkg`.
 

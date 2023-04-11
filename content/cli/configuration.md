@@ -23,7 +23,7 @@ credentials for interacting with Upbound. This enables easily executing commands
 as different users, or in different accounts. In the example below, five
 profiles are defined: `default`, `dev`, `staging`, `prod`, and `ci`. Commands
 will use the specified profile when set via the `--profile` flag or `UP_PROFILE`
-environment variable. If a profile is not set, `up` will use the profile
+environment variable. If a profile isn't set, `up` will use the profile
 specified as `default`, which in this case is actually named `default`.
 
 ```json
@@ -84,17 +84,17 @@ up login --profile test -u hasheddan -p cool-password
 
 If no `--profile` is specified, the profile named `default` will be added or
 updated with the relevant credentials. If `-a` (`--account`) is specified it
-will be set as the default account for the profile, and if it is not specified
+will be set as the default account for the profile, and if it isn't specified
 and the credential type is `user`, the username will be used as the account as
 well as the ID.
 
 ### Setting the Default Profile
 
 The profile specified as the value to the `default:` key will be used for
-commands when `--profile` / `UP_PROFILE` is not set. Any profile can be used as
+commands when `--profile` / `UP_PROFILE` isn't set. Any profile can be used as
 the default, but the time a user logs in with the CLI, or if the config file is
 empty when a user logs in, the name of the profile used for the login operation
-will be set as the `default:`. Note that the profile named `default` is not
+will be set as the `default:`. Note that the profile named `default` isn't
 necessarily the one that will be specified as `default:`.
 
 In the future, dedicated commands will be introduced to manage profiles and

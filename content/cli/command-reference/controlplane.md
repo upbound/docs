@@ -12,13 +12,13 @@ For compatibility with CI and other automated systems, the `alpha` variant is su
 
 ### `up controlplane create`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<control plane name>` - name of the control plane to create.
 
 Creates a managed control plane in Upbound.  
 
-<!-- omit in toc -->
+
 #### Flags
 * `--configuration-name = STRING` _(required)_ - name of the configuration to use to bootstrap the control plane with.
 * `--description = STRING` - Description for the control plane.
@@ -31,7 +31,7 @@ Upbound requires authentication with [`up login`]({{<ref "login" >}}) before usi
 {{< /hint >}}
 
 
-<!-- omit in toc -->
+
 #### Example 
 ```shell
 up controlplane create my-control-plane --configuration-name=my-api
@@ -39,13 +39,13 @@ up controlplane create my-control-plane --configuration-name=my-api
 
 ### `up controlplane delete`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<control plane name>` - name of the control plane to delete.
 
 Deletes a managed control plane from Upbound.
 
-<!-- omit in toc -->
+
 #### Example
 ```shell
 up controlplane delete my-control-plane
@@ -53,13 +53,13 @@ up controlplane delete my-control-plane
 
 
 ### `up controlplane list`
-<!-- omit in toc -->
+
 #### Arguments
 - _none_
 
 Lists all managed control planes in the current organization.
 
-<!-- omit in toc -->
+
 #### Example
 ```shell
 up controlplane list
@@ -70,34 +70,33 @@ another-control-plane        31be0bb9-4e35-47f7-b799-d8ace055b254   ready    con
 
 
 ### `up controlplane connect`
-<!-- omit in toc -->
+
 #### Arguments
 * `<control plane name>` - name of the control plane to connect to.
 * `<namespace in the control plane>` - the Kubernetes namespace in the control plane to create resources in.
 
-Connects the current cluster to the specified control plane's namespace. This means that all claim APIs in your control plane will be available in your application cluster for consumption.
+Connects the current cluster to the specified control plane's namespace. All claim APIs in your control plane are available in your application cluster for consumption.
 
-<!-- omit in toc -->
+
 #### Flags
-* `--token = STRING`: Optional token for the connector to use. If not provided, a new user token will be created.
-* `--cluster-name = STRING`: Optional name for the cluster that will be connected to the control plane. If not provided, namespace argument will be used.
-* `--kubeconfig = STRING`: sets `kubeconfig` path. Same defaults as `kubectl` are used if not provided.
+* `--token = STRING`: Optional token for the connector to use. Creates a new token if a token isn't provided.
+* `--cluster-name = STRING`: Optional name for the cluster that connects to the control plane. Uses the namespace by default.
+* `--kubeconfig = STRING`: sets the kubeconfig path. Uses the `kubectl` configuration by default.
 
 
 ### `up controlplane kubeconfig get`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<control plane name>` - name of the control plane to connect to.
 
 #### Flags
-* `--token = STRING`: Required token to be used in the generated kubeconfig to access the specified control plane. This token is managed in Upbound.
-* `-f, --file = STRING`: Optional file path to write the kubeconfig to. If not provided, the default kubeconfig file will be used.
+* `--token = STRING`: Required token used in the generated kubeconfig to access the specified control plane. Upbound manages this token.
+* `-f, --file = STRING`: Optional path to write the kubeconfig to. Uses the default kubeconfig by default.
 
-The `up controlplane kubeconfig get` command uses an access token to create an entry in the default kubeconfig file for the specified control plane
-and sets it as the current Kubernetes context.
+The `up controlplane kubeconfig get` command uses an access token to create an entry in the default kubeconfig file for the specified control plane.
+The command sets the control plane as the current Kubernetes context.
 
-<!-- omit in toc -->
 #### Example
 ```shell
 up controlplane kubeconfig get --token <my-token> --account my-org my-mcp
@@ -120,7 +119,7 @@ storeconfigs                                             secrets.crossplane.io/v
 
 ### `up controlplane pull-secret create`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<secret name>`  - name of the Kubernetes secret object to create. Default is `package-pull-secret`.
 
@@ -156,7 +155,7 @@ If you use `-f <file>` the `accessId` and `token` values from a token JSON file 
 For more information on creating robot account tokens to install Official providers reference the [Authentication]({{<ref "upbound-marketplace/authentication#kubernetes-image-pull-secrets" >}}) section.
 <!-- vale gitlab.Substitutions = YES -->
 
-<!-- omit in toc -->
+
 #### Examples
 
 ##### Create a pull-secret and automatically generate a user token

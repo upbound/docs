@@ -7,7 +7,7 @@ Provides a wizard to generate a `crossplane.yaml` file for `Configuration` or `P
 ### `up xpkg init`
 
 #### Arguments
-* `-p, --package-root` - The location where the new `crossplane.yaml` file will be written. Must be a location without an existing `crossplane.yaml` file. Default is the current directory.
+* `-p, --package-root` - Where to write a new `crossplane.yaml` file. Must be a location without an existing `crossplane.yaml` file. Default is the current directory.
 * `-t, --type [configuration | provider]` - Runs a `configuration` wizard or `provider` wizard to generate the specific `crossplane.yaml` file.
   
 
