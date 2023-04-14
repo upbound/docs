@@ -1,11 +1,8 @@
 ---
 title: Manage Internal Resources with Managed Control Planes
-weight: 5
-description: Manage internal resources with managed control planes
-even if their APIs are not exposed to the internet.
+weight: 6
+description: Manage internal resources with managed control planes even if their APIs are not exposed to the internet.
 ---
-
-# Manage Internal Resources with Managed Control Planes
 
 Many enterprises have internal systems that they would like to manage from their
 managed control planes just like their public cloud resources. However, they

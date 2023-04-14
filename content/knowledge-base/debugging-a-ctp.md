@@ -1,6 +1,6 @@
 ---
 title: Debugging issues on a managed control plane
-weight: 3
+weight: 5
 description: A guide for how to debug resources on a managed control plane running in Upbound.
 ---
 
