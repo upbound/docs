@@ -1,5 +1,5 @@
 ---
-title: Manage Internal Resources with Managed Control Planes
+title: Orchestrate Internal Resources with Managed Control Planes
 weight: 6
 description: Manage internal resources with managed control planes even if their APIs are not exposed to the internet.
 ---
@@ -19,7 +19,7 @@ other way around.
 
 This guide will show you how it all works with a simple example step by step.
 
-{{<hint "warning" >}} Installing custom providers is not part of the Free Tier. 
+{{<hint "warning" >}} Installing custom providers is not part of the free trial. 
 [Contact Upbound](https://www.upbound.io/support/contact) to upgrade to a
 higher tier to enable this feature.{{< /hint >}}
 
@@ -46,7 +46,6 @@ kind: Configuration
 ...
 spec:
   dependsOn:
-    ...
     - provider: xpkg.upbound.io/upbound/provider-dummy
       version: "v0.1.0-4.gc52e44d"
 ```
@@ -100,7 +99,7 @@ kubectl create secret generic mcp-kubeconfig --from-file=kubeconfig=/tmp/kube.ya
 
 Let's deploy our controller that mounts this `Secret`.
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/dc0f51d/cluster/server-deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/d8941da/cluster/controller-deployment.yaml
 ```
 
 That's it! We are now ready to create our first resources!
