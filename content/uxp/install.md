@@ -91,11 +91,11 @@ provider-aws-a1113cd136a1-59b8587f6f-q8bpt   1/1     Running   0               4
 
 ### Configure Upbound Universal Crossplane installed from the Amazon EKS management console
 
-If you have installed `uxp` directly from the Amazon EKS management console, you need to grant `crossplane` and any `provider` additional cluster level roles.
+If you have installed `uxp` directly from the Amazon EKS management console, you need to grant `crossplane` and any `provider` cluster level roles.
 
-Why are those actions needed? The `uxp` installation has been tailored to fit AWS requirements and the `crossplane-rbac-manager` has been disabled for the installation.
+Upbound tailored the `uxp` installation to fit AWS requirements and Upbound removes the `crossplane-rbac-manager` from the installation.
 
-This means that in order to install and use any provider, you will need to configure `uxp` by granting additional cluster scope permissions to the `crossplane` pod and `provider` pods.
+To install and use any provider, you must to configure `uxp` by granting cluster scope permissions to the `crossplane` pod and `provider` pods.
 
 > These steps are necessary only for the installations without `crossplane-rbac-manager.`
 
@@ -107,7 +107,10 @@ kubectl create clusterrolebinding cluster-crossplane-admin \
         --serviceaccount upbound-system:crossplane
 ```
 
+<!-- vale Google.WordList = NO -->
+<!-- allow cluster-admin -->
 Next, for each installed provider, add _cluster-admin_ role binding. Here is an example for provider `AWS`.
+<!-- vale Google.WordList = YES -->
 
 ```bash {copy-lines="all"} 
 # Retrieve provider sa name

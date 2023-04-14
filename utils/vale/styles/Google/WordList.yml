@@ -12,7 +12,6 @@ swap:
   '(?:e-mail|Email|E-mail)': email
   '(?:file ?path|path ?name)': path
   '(?:kill|terminate|abort)': stop|exit|cancel|end
-  '(?:OAuth ?2|Oauth)': OAuth 2.0
   '(?:ok|Okay)': OK|okay
   '(?:WiFi|wifi)': Wi-Fi
   '[\.]+apk': APK
@@ -50,8 +49,7 @@ swap:
   file name: filename
   firewalls: firewall rules
   functionality: capability|feature
-  Google account: Google Account
-  Google accounts: Google Accounts
+  git: Git
   Googling: search with Google
   grayed-out: unavailable
   HTTPs: HTTPS

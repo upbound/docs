@@ -112,6 +112,7 @@ exceptions:
   - LRU
   - LTM
   - LTS
+  - MCP
   - MIME
   - MIT
   - MVC
@@ -217,6 +218,7 @@ exceptions:
   - WSL
   - XML
   - XPKG
+  - XRC
   - XRD
   - XSS
   - YAML

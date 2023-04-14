@@ -4,39 +4,46 @@ weight: 1
 description: A guide for deploying a cloud platform on Upbound for Amazon EKS
 ---
 
-This quickstart guides you through how to create your first managed control plane in Upbound, connect it to AWS, and use your control plane to create & manage EKS clusters.
+This quickstart guides you through how to create your first managed control plane in Upbound. Connect Upbound to AWS, and use your control plane to create and manage EKS clusters.
 
 ## Prerequisites
 
-This quickstart requires:
-
-* An Upbound account. If you don't have one yet, you can create an account by going to [accounts.upbound.io](https://accounts.upbound.io) and signing up for a free trial
+* An Upbound account.
 * An AWS account with permissions to manage IAM policies.
-* A Github account with permission to authorize GitHub Apps to be installed.
+* A GitHub account with permission to install GitHub Apps.
 
-## Get Started in Upbound
+{{< hint "tip" >}}
+If you don't have an Upbound account, [sign up for a free trial](https://accounts.upbound.io/register).
+{{< /hint >}}
+## Get started
 
-The very first time you sign into Upbound, you will be taken through a `Get Started` experience designed to bootstrap your environment in the matter of minutes. Go to [Upbound](https://console.upbound.io) to start the experience.
+The first time you sign in to Upbound, you are through a `Get Started` experience designed to bootstrap your environment in the matter of minutes. Go to [Upbound](https://console.upbound.io) to start the experience.
 
-### Create an organization and start a free trial
+### Create an organization
 
-If this is your first time in Upbound (and you are not joining somebody else's invite), Upbound will prompt you to first create an organization. Give your organization an ID and a friendly name. Click `Create Organization`.
+Your first time in Upbound you must create an organization. Give your organization an ID and a friendly name. 
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="medium" quality="100" lightbox="true">}}
+Select **Create Organization**.
 
-On the next screen, start your free trial. This trial will allow you to create up to 3 managed control planes, 3 configurations, and have a total of 10 team members trying out the trial together in this organization.
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="medium" quality="100" align="center">}}
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="medium" quality="100" lightbox="true">}}
+On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-### Choose a Crossplane configuration to start from
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="medium" quality="100" align="center" >}}
 
-Upbound offers a curated gallery of Crossplane configurations for you to choose from. These configurations provide ready-built APIs that will be installed on your control plane. You can click the `source` link to view the configuration files that define this API in Github. Select the Configuration called `EKS as a service`. 
+### Choose a configuration
 
-{{<img src="quickstart/images/get-started-select-eks.png" alt="Upbound Connect to Github screen" quality="100">}}
+Upbound offers a curated gallery of Crossplane configurations for you to choose from. These configurations provide ready-built APIs that Upbound installs in your control plane. You can select the _source_ link to view the configuration files that define this API in GitHub. 
 
-### Connect to Github
+Select the Configuration called **EKS as a service**. 
 
-After you've selected the Configuration, you need to connect Upbound to your Github account. Upbound will initiate Github's authorization flow and, once granted, will install a Github app into your account. Select `Connect to Github`.
+{{<img src="quickstart/images/get-started-select-eks.png" alt="Choose an Upbound configuration" quality="100">}}
+
+### Connect to GitHub
+
+After you've selected a Configuration, you need to connect Upbound to your GitHub account. Upbound uses GitHub's authorization flow and installs a GitHub app into your account. 
+
+Select **Connect to GitHub**.
 
 {{<img src="quickstart/images/get-started-select-gh.png" alt="a marketplace search filter with Providers and Official filters set" quality="100" lightbox="true">}}
 
@@ -44,110 +51,157 @@ After you've selected the Configuration, you need to connect Upbound to your Git
 Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/control-plane-connector" >}}) section.
 {{< /hint >}}
 
-After you've connected to Github, select an account owner and give your repo a name. Upbound will create a new repo under your account and clone the contents of the Configuration you selected in the previous step into your repo. Because this repo will contain the API definitions that will be installed on your control plane, name your repo `my-control-plane-api`.
+After you've connected to GitHub, select an account owner and repository name. Upbound creates a new repository under your account and clones the contents of the Configuration into that repository. 
 
-{{<img src="quickstart/images/get-started-gh-repo.png" alt="Upbound Create Repo screen" quality="100" lightbox="true">}}
+<!-- vale Google.FirstPerson = NO -->
+<!-- allow "my" -->
+Give your repository a name, like **my-control-plane-api**. 
+<!-- vale Google.FirstPerson = YES -->
 
-Click `Clone configuration to Github`.
+Select **Clone configuration to GitHub**.
+
+{{<img src="quickstart/images/get-started-gh-repo.png" alt="Upbound Create Repository screen" quality="100" lightbox="true">}}
+
 
 ### Create a managed control plane
 
-After you have your APIs selected and cloned into your own repo, it's time to create a managed control plane. All that Upbound needs is a name. Name your control plane `my-control-plane`.
+After Upbound clones the Configuration into your own repository, create a managed control plane. 
+
+<!-- vale Google.FirstPerson = NO -->
+<!-- allow "my" -->
+Give your control plane a name, like **my-control-plane**.
+<!-- vale Google.FirstPerson = YES -->
+
+Select **Create Control Plane**.
 
 {{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" lightbox="true">}}
 
-Click `Create Control Plane`.
+
 
 ### Connect to AWS with OIDC
 
-Your managed control plane will be created shortly. While you wait for it to create, you can follow the instructions to connect Upbound to AWS. Upbound supports using OpenID Connect (OIDC) to authenticate with AWS. OIDC allows your control plane to access resources in AWS without needing to store the AWS credentials as long-lived secrets in Upbound. Upbound provides full instructions for doing this.
+While Upbound creates your control plane, connect Upbound to AWS. 
 
-{{<img src="quickstart/images/get-started-aws-oidc.png" alt="Upbound Get Started Configure OIDC screen" quality="100" lightbox="true">}}
+Upbound recommends using OpenID Connect (OIDC) to authenticate to AWS without exchanging any private information. 
 
-#### Add Upbound as an Identity Provider
+#### Add Upbound as an OpenID Connect provider
+1. Open the **[AWS IAM console](https://console.aws.amazon.com/iam)**.
+2. Under the AWS IAM services, select **[Identity Providers > Add Provider](https://console.aws.amazon.com/iamv2/home#/identity_providers/create)**.  
+3. Select **OpenID Connect** and use  
+ **https://proidc.upbound.io** as the Provider URL and   
+ **sts.amazonaws.com** as the Audience.  
+  Select **Get thumbprint**.  
+  Select **Add provider**.  
+{{<img src="quickstart/images/get-started-aws-add-idp-confirm.png" alt="Configure an Identity Provider in AWS" quality="100" align="center" >}}
 
-The first step is to open the [AWS IAM console]. In the sidenavigation bar, select `Identity providers`.
+#### Create an AWS IAM Role for Upbound
+1. Create an [AWS IAM Role](https://console.aws.amazon.com/iamv2/home#/roles) with a **Custom trust policy** for the OIDC connector.
+{{<img src="quickstart/images/aws-custom-trust-policy.png" alt="IAM Role with a custom trust policy" quality="100" align="center">}}
+{{<hint "important" >}}
+Provide your [AWS account ID](https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html), Upbound organization and control plane names in the JSON Policy below.
 
-{{<img src="quickstart/images/get-started-idp.png" alt="AWS IAM main screen" quality="100" lightbox="true">}}
-
-Click `Add Provider`.
-
-{{<img src="quickstart/images/get-started-add-idp.png" alt="AWS IAM IDP screen" quality="100" lightbox="true">}}
-
-Next, you will see `Add an identity provider` flow. Choose the provider type `OpenID Connect` and fill out the fields as instructed in the `Get Started` experience:
-
-1. The **Provider URL** should be `https://proidc.upbound.io`.
-2. The **Audience** should be `sts.amazonaws.com`.
-3. Click `Get thumbprint`.
-4. Finally, click `Add provider` at the bottom of the screen.
-
-{{<img src="quickstart/images/get-started-aws-add-idp-confirm.png" alt="AWS IAM IDP screen" quality="100" lightbox="true" >}}
-
-#### Create a Trust Relationship
-
-In order for your control plane to be able to perform the actions required by this configuration, you will need to create a role with permissions and a trust policy. To do this, go back to the IAM dashboard and select `Roles` from the sidenavigation.
-
-{{<img src="quickstart/images/get-started-idp-add-role.png" alt="AWS IAM IDP dashboard screen" quality="100" lightbox="true" >}}
-
-Click `Create role`.
-
-{{<img src="quickstart/images/get-started-create-role.png" alt="AWS IAM role screen" quality="100" lightbox="true">}}
-
-Select a trusted entity type of `Custom trust policy`. Copy the trust policy provided by Upbound and paste it in the policy authoring window in the AWS IAM console. Make sure to replace `YOUR_AWS_ACCOUNT_ID` with your AWS account ID.
-
-{{< hint "tip" >}}
 You can find your AWS account ID by selecting the account dropdown in the upper right corner of the AWS console.
 {{< /hint >}}
-
-{{<img src="quickstart/images/get-started-aws-trust-policy.png" alt="AWS IAM role screen" quality="100" lightbox="true">}}
-
-This trust policy configures this role to only grant access to the managed control plane running in your account for the Crossplane provider-aws. Click `Next`. Next, you must select the permissions to grant to this role. In production scenarios, you will want to create a custom permission policy that scopes your control plane to _only_ the APIs it needs to do its job. For this tutorial, you can the `AmazonEC2FullAccess` managed policy provided by AWS, since this covers the permissions required to allow your managed control plane to provision the resources it needs for EKS. After you've selected this policy, click `Next`.
-
-{{<img src="quickstart/images/get-started-aws-permissions.png" alt="AWS IAM permissions screen" quality="100" lightbox="true">}}
-
-Finally, give this role a name. Call it `my-upbound-control-plane-role` and click `Create role`. Once the role has been created, click `view role` and copy the Amazon Resource Name (ARN), as below.
-
-{{<img src="quickstart/images/get-started-aws-copy-arn.png" alt="AWS IAM permissions screen" quality="100" lightbox="true">}}
+{{< editCode >}}
+```json
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Principal": {
+				"Federated": "arn:aws:iam::$@YOUR_AWS_ACCOUNT_ID$@:oidc-provider/proidc.upbound.io"
+			},
+			"Action": "sts:AssumeRoleWithWebIdentity",
+			"Condition": {
+				"StringEquals": {
+					"proidc.upbound.io:sub": "mcp:$@ORG_NAME/CONTROL_PLANE_NAME$@:provider:provider-aws",
+					"proidc.upbound.io:aud": "sts.amazonaws.com"
+				}
+			}
+		}
+	]
+}
+```
+{{< /editCode >}}
+1. Attach the **AmazonEC2FullAccess** permission policy.
+{{<img src="quickstart/images/aws-ec2fullaccess-policy.png" alt="Applying the AmazonEC2FullAccess policy to the role" quality="100" align="center">}}
+1. Name the role **upbound-eks-role** and select **Create role**.
+{{<img src="quickstart/images/aws-eks-role-name.png" alt="Naming the role upbound-eks-role" quality="100" align="center">}}
+1. View the new role and copy the role ARN.
+{{<img src="quickstart/images/aws-upbound-eks-role-arn.png" alt="Viewing the role ARN" quality="100" align="center">}}
 
 #### Provide the ARN to Upbound
 
-Return to Upbound and paste the ARN you copied in the previous step into the input at the bottom of the form. Click `Authenticate`. Finally, click `Confirm and Launch Control Plane`.
+Return to Upbound and paste the ARN you copied in the previous step into the input at the bottom of the form.  
+Select **Authenticate**.  
+Select **Confirm and Launch Control Plane**.
 
 {{<img src="quickstart/images/get-started-confirm-launch.png" alt="Upbound Get Started Confirm and Launch screen" quality="100" lightbox="true">}}
 
 ## Welcome to the Upbound Console
 
-After completing the `Get Started` experience, you will be launched into the Upbound Console and greeted by the Control Planes screen.
+After completing the _Get Started_ experience, you are in the Upbound Console and greeted by the Control Planes screen.
 
-Click into your managed control plane to see a details view of your control plane. The control plane details view is designed to give users a window into what is happening on their control planes. Read the [Upbound Console concept page]({{<ref "concepts/console">}}) for a full tour of what the Console has to offer.
+{{<img src="quickstart/images/control-plane-console.png" alt="Upbound control plane console" quality="100" align="center">}}
+
+The control plane details view gives users a view into what's happening on their control planes. 
+
+{{< hint "tip" >}}
+Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour of what the Console has to offer.
+{{< /hint >}}
 
 ### Create your first resource
 
-From the control plane instance view, click the `Portal` tab, and click `Open Control Plane Portal`.
+From the control planes view, select the **Portal** tab, and select **Open Control Plane Portal**.
 
 {{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
 
-Click the `KubernetesCluster` resource type in the side bar and then click the `Create New` button. This will bring you to a form experience for you to fill out and create a new instance. Input the following into the fields:
+The Control Plane Portal lists the available resources that users can claim in the left-side menu.  
+These resources are your abstracted APIs presented to users. 
 
-- **name**: my-app-cluster
-- **namespace**: select `default`
-- **id**: my-app-cluster
-- **count**: 1
-- **size**: small
+{{<img src="quickstart/images/cp-create-kubernetescluster.png" alt="Control plane portal with a Kubernetes Cluster resource" quality="100" align="center">}}
+
+Select the **KubernetesCluster** resource and then select the **Create New** button at the top of the page. 
+
+The form are the parameters defined in your custom API. Fill-in the form with the following:
+
+<!-- vale Google.FirstPerson = NO -->
+<!-- allow "my" -->
+- _name_: **my-app-cluster**
+- _namespace_: **default**
+- _id_: **my-app-cluster**
+- _count_: **1**
+- _size_: **small**
+<!-- vale Google.FirstPerson = YES -->
 
 {{<img src="quickstart/images/get-started-k8s-cluster-create.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
 
-After filling out the form, the portal generates a Crossplane claim that will be submitted once you click `Create Instance`. Go ahead and click the `Create Instance` button.
+When you **Create Instance** the portal generates a Crossplane claim.
 
-### Observe your resource being created
+{{<hint "note" >}}
+After creating an instance, the _Events_ section are logs directly from Kubernetes.  
 
-Navigate back to Upbound Console and to your control plane. If you refresh the page, you will notice there is now a claim card next to the `KubernetesCluster` type card. Click the claim card and Upbound will render the full resource tree that is getting created--and now managed--by your managed control plane. 
+Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
+
+{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center">}}
+
+You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
+{{< /hint >}}
+
+### Observe your resources
+
+Navigate back to [Upbound Console](https://console.upbound.io) window and to your control plane in the **Overview** tab. 
+
+There's now a claim card next to the `KubernetesCluster` type card. 
+
+Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane. 
 
 {{<img src="quickstart/images/get-started-k8s-created.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
 
-Congratulations! You created your first resources with your MCP.
+Congratulations, you created your first resources with your MCP.
 
-## Next Steps
+## Next steps
 
 To learn more about the core concepts of Upbound, read the [concepts]({{<ref "concepts">}}) documentation. To learn how to begin building your own platform on Upbound, read the [reference architecture]({{<ref "knowledge-base/reference-architecture">}}) knowledge base article.
 

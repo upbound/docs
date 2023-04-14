@@ -10,23 +10,29 @@ Managed control planes (MCPs) are Crossplane control plane environments that are
 - scaling of the infrastructure
 - the maintenance of the core Crossplane components that make up a managed control plane. 
 
-This lets users focus on building their APIs and operating their control planes, while Upbound handles the rest. Each managed control plane has its own dedicated API server that customers can connect to directly and use typical Kubernetes tooling — like kubectl — to interact with their MCP.
+This lets users focus on building their APIs and operating their control planes, while Upbound handles the rest. Each managed control plane has its own dedicated API server connecting users to their MCP.
 
 ## Architecture
 
-Open source Crossplane is usually installed into a manage Kubernetes service like Azure's AKS, AWS EKS, or GCP GKE. Due to how those public cloud providers offer their managed services, users running OSS Crossplane face scalability limitations when attempting to create control planes that can manage across many resources.
+Users running open source Crossplane may face scalability limitations when attempting to create control planes that can manage lots of resources. Kubernetes clusters running Crossplane install hundreds or thousands of Kubernetes Custom Resource Definitions (`CRD`s) increasing the CPU and memory requirements of the Kubernetes API server. 
+
+{{<hint "tip" >}}
+The [Upbound blog](https://blog.upbound.io/scaling-kubernetes-to-thousands-of-crds/) describes the technical details of these limitations and some of the work Upbound has contributed to the Kubernetes project to improve performance. 
+{{< /hint >}}
+
+With Upbound managed control planes, these limitations don't apply. MCPs scale to >1000 CRDs without a performance degradation. Upbound has complete control over the lifecycle management of a control plane. Upbound ensures that the control plane is right-sized and given the appropriate memory and CPU for the required CRDs. 
 
 {{<img src="concepts/images/mcp-arch.png" alt="an architecture of XP with Upbound" size="large" quality="100" lightbox="true">}}
 
-With Upbound managed control planes, these limitations do not apply. MCPs can easily scale to >1000 CRDs without a performance degradation. Upbound has complete control over the lifecycle management of a control plane, including ensuring that the control plane is right-sized and fed the appropriate memory and CPU to manage across all the cloud services you want it to manage.
-
 ## Versioning
 
-MCPs are powered by Upbound [Universal Crossplane (UXP)]({{<ref "uxp" >}}), Upbound's enterprise-grade open source distribution of Crossplane. All of the machinery of UXP is fully managed by Upbound. Whenever Upbound releases a new version of UXP, Upbound will automatically upgrade your MCP to the latest version.
+MCPs use Upbound [Universal Crossplane (UXP)]({{<ref "uxp" >}}), Upbound's enterprise-grade open source distribution of Crossplane. Upbound fully manages the UXP installation. Whenever Upbound releases a new version of UXP, Upbound automatically upgrade your MCP to the latest version.
 
-Alpha features of Crossplane are not enabled by default in Upbound.
+{{< hint "important">}}
+Alpha features of Crossplane aren't enabled by default in Upbound.
+{{< /hint >}}
 
-## Interacting with MCPs
+## MCP management
 
 ### Create an MCP
 
@@ -47,8 +53,7 @@ in the following form:
 https://proxy.upbound.io/v1/controlPlanes/<account>/<control-plane-name>/k8s
 ```
 
-Credentials for this control plane are supplied in the form of a personal access
-token (PAT). A `kubeconfig` file can be generated for any managed control plane
+Generate a `kubeconfig` file for a managed control plane
 with the following [up CLI command]({{<ref "cli/command-reference#controlplane-kubeconfig-get" >}}).
 
 ```shell
@@ -56,20 +61,19 @@ up ctp kubeconfig get -a <account> <control-plane-name> -f <kubeconfig-file> --t
 ```
 
 {{< hint "tip" >}}
-You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token-pat" >}}) from the Upbound Console.
+The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token-pat" >}}) from the Upbound Console.
 {{< /hint >}}
 
-### Configure Crossplane Providers on your MCP
+### Configure Crossplane providers on your MCP
 
-#### ProviderConfigs with OIDC
+#### ProviderConfigs with OpenID Connect
 
-Upbound's managed control planes can be configured to support credential-less authentication in the form of OpenID Connect. This lets your managed control plane exchange short-lived tokens directly from your cloud provider. To learn how to configure a Crossplane Provider on managed control plane to use Upbound's OIDC, read the [Knowledge Base]({{<ref "knowledge-base/oidc.md" >}}) documentation.
+Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. To learn how to configure a Crossplane Provider on managed control plane to use Upbound's OIDC, read the [Knowledge Base]({{<ref "knowledge-base/oidc.md" >}}) documentation.
 
 #### Generic ProviderConfigs
 
-Upbound does not currently expose flows to directly modify ProviderConfigs from the Upbound Console. If you need to configure ProviderConfigs on your managed control plane, we recommend you connect directly by following the instructions [above]({{<ref "concepts/managed-control-planes#connect-directly-to-your-mcp" >}}). 
+The Upbound Console can't edit ProviderConfigs. To edit ProviderConfigs on your managed control plane, connect to the MCP directly by following the previous instructions on [connecting directly to an MCP]({{<ref "concepts/managed-control-planes#connect-directly-to-your-mcp" >}}). 
 
 ## Control plane backups
 
-Upbound automatically captures snapshots of an MCP state every ~24 hours. These backups are not yet available for users to use directly. Once available, customers will be able to rely on these backups to mitigate disasters and enable recovery scenarios of their control plane state.
-
+Upbound automatically captures snapshots of an MCP state every 24 hours. These backups aren't directly available to users. Contact [Upbound Support](mailto:support@upbound.io) to restore a backup.

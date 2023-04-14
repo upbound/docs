@@ -4,48 +4,54 @@ weight: 3
 description: Authenticating providers to external services using OpenID Connect.
 ---
 
-Crossplane providers implement a `ProviderConfig` type, which can be used to
-supply credentials for authenticating with the external service they target. For
-example, [Upbound's AWS
-provider](https://marketplace.upbound.io/providers/upbound/provider-aws/latest)
+Crossplane providers use a `ProviderConfig` Kubernetes object to
+supply credentials to authenticate with external services. For
+example, 
+[Upbound's AWS provider](https://marketplace.upbound.io/providers/upbound/provider-aws/latest)
 offers a
-[`ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-aws/v0.31.0/resources/aws.upbound.io/ProviderConfig/v1beta1)
-that supports [supplying
-credentials](https://marketplace.upbound.io/providers/upbound/provider-aws/v0.31.0/resources/aws.upbound.io/ProviderConfig/v1beta1#doc:spec-credentials-source)
+[`ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1)
+that supports 
+[supplying credentials](https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1#doc:spec-credentials-source)
 via a Kubernetes `Secret`, environment variable, file, and more. Users can
 create multiple `ProviderConfig` instances and reference them from the
 `spec.providerConfigRef` field of any managed resource.
 
-Providers that run in managed control planes have the option to also support an
-`Upbound` credential source, which alleviates the need for users to store
-credentials on Upbound. This is similar to "workload identity" features offered
-by some managed Kubernetes offerings. In Upbound managed control planes the
-feature is referred to as **Provider Identity**.
+Providers in Upbound managed control planes can also use an `Upbound` credential 
+source called **Provider Identity**.  
+
+The `Upbound` credential source uses OpenID Connect (`OIDC`) to 
+authenticate to providers without requiring users to store credentials on Upbound. 
+
+This authentication method is comparable to
+["workload identity"](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) 
+offered by some managed Kubernetes providers.
 
 ## OpenID Connect
 
-[OpenID Connect (OIDC)](https://openid.net/connect/) is a protocol that is built
-on top of [OAuth 2.0](https://oauth.net/2/) and serves to establish the identity
-of entity in one environment that is attempting to access resources in another.
-The roles played on each side of the interaction are referred to as **OpenID
-Providers (OPs)** and **Relying Parties (RPs)**. In the context of managed
-control planes, these roles are defined as follows.
+[OpenID Connect (OIDC)](https://openid.net/connect/) is a protocol that's built
+on top of [OAuth 2.0](https://oauth.net/2/). It serves to establish the identity
+of an entity in one environment that's attempting to access resources in another.
+
+OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties (RPs)**. 
+Managed control planes define these roles as follows:
 
 - **OpenID Provider**: Upbound
-- **Relying Party**: an external service that supports OIDC
+- **Relying Party**: an external service that supports OIDC, for example, AWS, Azure or GCP
+ 
+Users set up a _trust relationship_ between Upbound and the external
+service. Upbound uses the trust relationship instead of storing credentials for an 
+external service in the managed control plane. 
 
-Instead of storing credentials for an external service in their managed control
-plane, users set up a _trust relationship_ between Upbound and the external
-service. Upbound then injects an _identity token_ into the filesystem of every
-provider `Pod`, which can be sent to the external service and exchanged for a
-short-lived credential if it meets the parameters and policies that govern the
-relationship. If the exchange is successful, the short-lived credential can then
-be used to perform subsequent operations against the external service.
 
-## Creating Trust Relationships
+Upbound injects an _identity token_ into the file system of every
+provider `Pod`. Upbound sends the token to the external service and exchanges it for a
+short-lived credential. Upbound uses the short-lived credential to perform 
+operations against the external service.
 
-Every relying party implements its own mechanism for establishing a trust
-relationship and associating permissions. Typically, the process will involve
+## Creating trust relationships
+
+Every OIDC relying party implements its own mechanism for establishing a trust
+relationship and associating permissions. Typically, the process involves
 the following broad steps:
 
 1. Specifying the _issuer_. For Upbound, this is `https://proidc.upbound.io`.
@@ -54,19 +60,20 @@ the following broad steps:
    token can assume.
 4. Associating permissions with the role or service account.
 
-The way validity of a token is defined may also vary from one relying party to
-another, but it typically involves writing some policy that restricts what
-_subject_ can assume the role or service account.
+Different OIDC relaying parties may define valid tokens differently. Typically 
+it involves writing a policy that restricts what _subject_ can assume 
+the role or service account.
 
-{{<hint "warning" >}} Authoring a policy with appropriate access controls
+{{<hint "warning" >}} 
+Authoring a policy with appropriate access controls
 is critical to ensure that only your provider in your managed control plane is
-able to assume the role or service account. {{< /hint >}}
+able to assume the role or service account. 
+{{< /hint >}}
 
-Identity tokens are formatted as [JSON Web Tokens
-(JWTs)](https://www.rfc-editor.org/rfc/rfc7519). The OIDC specification requires
-the presence of some claims, but the supported claims for any OpenID provider
-can be discovered on the corresponding OIDC metadata endpoint. For Upbound, that
-endpoint is `https://proidc.upbound.io/.well-known/openid-configuration`.
+Identity tokens are
+[JSON Web Tokens (`JWTs`)](https://www.rfc-editor.org/rfc/rfc7519). 
+The OIDC _claims_ supported by Upbound are available in the OIDC metadata
+endpoint at `https://proidc.upbound.io/.well-known/openid-configuration`.
 
 ```json
 {
@@ -93,12 +100,15 @@ endpoint is `https://proidc.upbound.io/.well-known/openid-configuration`.
 }
 ```
 
-Relying parties use this information to validate identity tokens. The `jwks_uri`
-is used to ensure that the identity token is signed with a private keys that
-matches one of the public keys serve from
-`https://proidc.upbound.io/.well-known/jwks`. The `iss` and `aud` claims of an
+OIDC relying parties use this information to validate identity tokens. 
+Relying parties use the `jwks_uri` to ensure that the OIDC provider signed the 
+identity token with their private key. The private key must
+correspond to one of the public keys from
+`https://proidc.upbound.io/.well-known/jwks`. 
+
+The `iss` and `aud` claims of an
 identity token should match the _issuer_ and _audience_ configured for the
-relying party. The `sub` should evaluate to a valid _subject_ based on the
+relying party. The `sub` should be a valid _subject_ based on the
 authored policy. For providers running in Upbound managed control planes, the
 _subject_ adheres to the following format.
 
@@ -113,8 +123,8 @@ managed control plane named `prod-1` in the `my-org` account.
 mcp:my-org/prod-1:provider:provider-aws
 ```
 
-In total, the claims for an identity token injected into the filesystem of a
-provider in a managed control plane will look similar to the following.
+The claims for an identity token injected into the file system of a
+provider in a managed control plane looks like the following.
 
 ```json
 {
@@ -130,23 +140,29 @@ provider in a managed control plane will look similar to the following.
 }
 ```
 
-{{< hint "tip" >}} Identity tokens injected into a provider `Pod` are valid
+{{< hint "tip" >}} 
+Identity tokens injected into a provider `Pod` are valid
 for 1 hour. They are automatically refreshed before expiration to ensure there
-is no interruption in service. {{< /hint >}}
+is no interruption in service. 
+{{< /hint >}}
 
 
-## Using Upbound OIDC as a Credential Source
+## Using Upbound OIDC as a credential source
 
 The Upbound console allows for creating instances of a `ProviderConfig` via the
-UI, which alleviates the need to manually author a YAML manifest. However, users
+console, instead of manually authoring a YAML manifest. Users
 may also connect to their managed control planes directly and apply a
-`ProviderConfig` manifest. When doing so, users may look in the [Upbound
-Marketplace](https://marketplace.upbound.io/) to see what credential sources are
-offered by the providers they are utilizing, and what additional information
-must be supplied. Most providers will also supply a set of examples
-demonstrating how to use the various credential sources. For example, [Upbound's
-GCP
-provider](https://marketplace.upbound.io/providers/upbound/provider-gcp/latest)
+`ProviderConfig` YAML manifest. 
+
+Each `Provider` defines their own `ProviderConfig` schema and values.
+
+{{<hint "tip" >}}
+Proividers in the [Upbound Marketplace](https://marketplace.upbound.io/) 
+contain examples of how to use `source: Upbound` to enable OIDC authentication.
+{{< /hint >}}
+
+For example, 
+[Upbound's GCP provider](https://marketplace.upbound.io/providers/upbound/provider-gcp/latest)
 includes the following manifest for using the `Upbound` OIDC identity source.
 
 ```yaml
@@ -164,16 +180,15 @@ spec:
   projectID: my-org-gcp-project
 ```
 
-Populating this manifest with the appropriate values and applying it in a
-managed control plane will cause `provider-gcp` to fetch its identity token from
-the filesystem and use it to authenticate to GCP.
+Applying this manifest in a
+managed control plane causes `provider-gcp` to fetch its identity token from
+the file system and use it to authenticate to GCP.
 
 ## Adding Upbound OIDC to a Provider
 
 Any provider that can run in a managed control plane can support the `Upbound`
-credential source. Identity tokens are injected into the filesystem of every
-provider `Pod` whether they support OIDC or not. A provider wishing to implement
-the functionality can access its identity token in the
-`/var/run/secrets/upbound.io/provider/token` file. A reference implementation
-can be found in [this Pull
-Request](https://github.com/upbound/provider-aws/pull/278).
+credential source. Upbound injects identity tokens into the file system of every
+provider `Pod` whether they support OIDC or not. A provider wishing to support OIDC
+can access its identity token in the
+`/var/run/secrets/upbound.io/provider/token` file. [This Pull
+Request](https://github.com/upbound/provider-aws/pull/278) provides a reference implementation.

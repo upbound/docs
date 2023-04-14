@@ -20,7 +20,7 @@ The following flags are available for all commands.
 
 ## configuration
 
-The `up configuration` command provides management operations for git-synced configurations on Upbound. 
+The `up configuration` command provides management operations for Git-synced configurations on Upbound. 
 
 {{<hint "tip" >}}
 `up cfg` is an alias for `up configuration`.
@@ -56,7 +56,7 @@ my-platform-api               upbound/configuration-eks        github     my-pla
 
 ### configuration create
 
-Create a git-synced configuration in Upbound  
+Create a Git-synced configuration in Upbound  
 `up configuration create --context=STRING --template-id=STRING <name>`.
 
 You can find a list of available templates by `up configuration template list`.
@@ -91,14 +91,14 @@ Replace `context` with the name of your org/account in GitHub.
 
 ### configuration get
 
-Get a git-synced configuration in Upbound  
+Get a Git-synced configuration in Upbound  
 `up configuration get <name>`.
 
 You can find a list of available configurations by `up configuration list`.
 
 **Examples**
 
-* Get a reference to a git-synced configuration in Upbound called `my-platform-apis`
+* Get a reference to a Git-synced configuration in Upbound called `my-platform-apis`
 
 ```shell {copy-lines="1"}
 up cfg get my-platform-apis
@@ -108,7 +108,7 @@ my-platform-apis   upbound/configuration-scratch   github     my-platform-apis  
 
 ### configuration delete
 
-Delete a git-synced configuration in Upbound. This command requires confirmation unless using the `--force` option.
+Delete a Git-synced configuration in Upbound. This command requires confirmation unless using the `--force` option.
 `up configuration create --context=STRING --template-id=STRING <name>`.
 
 You can find a list of available configurations by `up configuration list`.
@@ -139,12 +139,12 @@ my-platform-apis-2 deleted
 
 ### configuration template list
 
-List the available Crossplane configurations that are available to create a new git-synced configuration from  
+List the available Crossplane configurations that are available to create a new Git-synced configuration from  
 `up configuration template list`.
 
 **Examples**
 
-* List the configuration templates available to create a new git-synced configuration from
+* List the configuration templates available to create a new Git-synced configuration from
 
 ```shell {copy-lines="1"}
 up cfg template list
@@ -324,7 +324,7 @@ Your kubeconfig should be pointing at your **Kubernetes app cluster** in order f
 
 
 {{< hint "warning" >}}
-Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
+Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
 {{< /hint >}}
 
 Install a Crossplane configuration packages into a Kubernetes cluster with  
@@ -367,7 +367,7 @@ my-package installed
 
 
 {{< hint "warning" >}}
-Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
+Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
 {{< /hint >}}
 
 Install a Crossplane provider packages into a Kubernetes cluster with  
