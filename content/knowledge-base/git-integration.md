@@ -98,5 +98,5 @@ up ctp kubeconfig get -a <account> <control-plane-name> -f <kubeconfig-file> --t
 ```
 
 {{< hint "tip" >}}
-The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console##create-a-personal-access-token" >}}) from the Upbound Console.
+The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from the Upbound Console.
 {{< /hint >}}
