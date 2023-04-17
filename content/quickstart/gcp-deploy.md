@@ -17,7 +17,9 @@ If you don't have an Upbound account, [sign up for a free trial](https://account
 
 ## Get started
 
-The first time you sign in to Upbound, you are through a `Get Started` experience designed to bootstrap your environment in the matter of minutes. Go to [Upbound](https://console.upbound.io) to start the experience.
+The first time you sign in to Upbound, you walk through a Getting Started experience designed to bootstrap your environment in the matter of minutes. 
+
+Go to [Upbound](https://console.upbound.io) to get started.
 
 ### Create an organization
 
@@ -78,6 +80,12 @@ While Upbound creates your control plane, connect Upbound to GCP.
 
 Upbound recommends using OpenID Connect (OIDC) to authenticate to GCP without exchanging any private information. 
 
+{{< hint "warning" >}}
+GCP doesn't authenticate a second OIDC pool in the same projected connecting to Upbound.
+
+Add a new [Service Account]({{<ref "#create-a-gcp-service-account" >}}) to the existing pool instead.
+{{< /hint >}}
+
 #### Create an identity pool
 1. Open the **[GCP IAM Admin console](https://console.cloud.google.com/iam-admin/iam)**.
 2. Select **[Workload Identity Federation](https://console.cloud.google.com/iam-admin/workload-identity-pools)**.
@@ -105,6 +113,10 @@ Select **Continue**.
 {{<img src="quickstart/images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" quality="100" align="center" >}}
 
 #### Configure provider attributes
+The provider attributes restrict which remote entities you allow access to your resources. 
+When Upbound authenticates to GCP it provides an OIDC subject (`sub`) in the form:
+
+`mcp:<account>/<mcp-name>:provider:<provider-name>`
 
 Configure the _google.subject_ attribute as **assertion.sub**
 
@@ -112,14 +124,18 @@ Under _Attribute Conditions_ select **Add Condition**.
 
 <!-- vale gitlab.Uppercase = NO -->
 <!-- ignore CEL -->
-In the _Conditional CEL_ input box put
+To authenticate any managed control plane in your organization, in the _Conditional CEL_ input box put
 <!-- vale gitlab.Uppercase = YES -->
 
 {{<editCode >}}
 ```console
-google.subject == "mcp:$@UPBOUND_ORG_NAME/CONTROL_PLANE_NAME$@:provider:provider-gcp"
+google.subject.contains("mcp:$@ORGANIZATION_NAME$@")
 ```
 {{< /editCode >}}
+
+{{< hint "warning" >}}
+Not providing a CEL condition allows any Upbound managed control plane to access your GCP account if they know the project ID and service account name.
+{{< /hint >}}
 
 Select **Save**.
 
@@ -156,12 +172,13 @@ For the _CloudSQL as a service_ configuration the service account requires the r
 Select **Done**.
 
 {{<img src="quickstart/images/gcp-role-add.png" alt="GCP service project access screen" quality="100" align="center">}}
-<!-- 
-#### Record the service account email address
 
-At the list of service accounts copy the service account **email**. Upbound requires this to authenticate your managed control plane.
+##### Record the service account email address
 
-{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" size="medium" quality="100" >}} -->
+At the list of service accounts copy the service account **email**.  
+Upbound requires this to authenticate your managed control plane.
+
+{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" size="medium" quality="100" >}} 
 
 ### Add the service account to the identity pool
 
@@ -173,6 +190,25 @@ Add the service account to the Workload Identity Federation pool to authenticate
 {{<img src="quickstart/images/gcp-add-to-pool.png" alt="Pool select service account screen" quality="100" align="center">}}
 Select **Save**.  
 In the _Configure your application_ window, select **Dismiss**.
+
+<!-- vale Microsoft.Terms = NO -->
+<!-- vale Google.Headings = NO -->
+<!-- allow "Cloud". It matches the label on the page --> 
+
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- allow "SQL" -->
+### Enable the Cloud SQL Admin GCP API
+GCP requires explicitly enabling the Cloud SQL Admin API. 
+
+
+Go to the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com) page in the GCP console.
+
+
+Select **Enable**.
+
+{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" size="medium" quality="100" >}}
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.Terms = YES -->
 
 ### Finish configuring the Upbound identity provider
 
@@ -187,9 +223,11 @@ projects/$@<GCP Project ID>$@/locations/global/workloadIdentityPools/upbound-oid
 ```
 {{< /editCode >}}
 
+<br />
 
-{{<hint "tip" >}}
-In the _Federated identity provider_ the value `proidc` is the pool and provider configured earlier.
+{{<hint "note" >}}
+The identity provider format is:
+`projects/<GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<OIDC_POOL_NAME>/providers/<OIDC_POOL_PROVIDER_NAME>`
 {{< /hint >}}
 
 <br />
