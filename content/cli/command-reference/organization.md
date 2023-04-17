@@ -11,13 +11,13 @@ Only organizations can create [repositories]({{<ref "cli/command-reference/repos
 
 ### `up organization create`
 
-<!-- omit in toc -->
+
 #### Arguments
 _None_
 
 Create an organization with the given name.  
 
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up org create my-org
@@ -25,13 +25,13 @@ up org create my-org
 
 ### `up organization list`
 
-<!-- omit in toc -->
+
 #### Arguments
 _None_
 
 List all organizations associated to the current user.
 
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up org list
@@ -42,13 +42,13 @@ my-other-org   owner
 
 ### `up organization delete`
 
-<!-- omit in toc -->
+
 #### Arguments
 * <organization name> _(required)_ - the name of the organization to delete
 
 Deletes the given organization.
 
-<!-- omit in toc -->
+
 #### Flags
 * `--force` - Force deletion of the organization.
 
@@ -58,7 +58,7 @@ Deleting an organization removes all users from the organization, deletes all ro
 This can not be undone.
 {{< /hint >}}
 
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up org delete my-org

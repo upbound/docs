@@ -6,25 +6,22 @@ weight: 105
 ---
 
 `up` interacts with a variety of systems, each of which may have information
-that should be persisted between commands. `up` stores this information in a
+that persists between commands. `up` stores this information in a
 configuration file in `~/.up/config.json`.
 
-## Upbound Configuration
+## Upbound configuration
 
-Currently, only configuration information for interacting with Upbound is
-stored. The sections below detail the format and how to interact with it. In the
-future, additional configuration may be supported for managing UXP and package
-installations.
+The `up` CLI stores configuration information in `~/.up/config.json`.
 
 ### Format
 
 `up` allows users to define profiles that contain sets of preferences and
-credentials for interacting with Upbound. This enables easily executing commands
-as different users, or in different accounts. In the example below, five
-profiles are defined: `default`, `dev`, `staging`, `prod`, and `ci`. Commands
-will use the specified profile when set via the `--profile` flag or `UP_PROFILE`
-environment variable. If a profile is not set, `up` will use the profile
-specified as `default`, which in this case is actually named `default`.
+credentials for interacting with Upbound. This enables executing commands
+as different users, or in different accounts. The following example defines five
+profiles: `default`, `dev`, `staging`, `prod`, and `ci`. Commands
+use the specified profile when set via the `--profile` flag or `UP_PROFILE`
+environment variable. If a profile isn't set, `up` uses the profile
+specified as `default`, named `default` in this example.
 
 ```json
 {
@@ -64,17 +61,17 @@ specified as `default`, which in this case is actually named `default`.
 }
 ```
 
-### Specifying Upbound Instance
+### Specifying Upbound instance
 
 Because Upbound offers both a hosted and self-hosted product, users may be
 logging in and interacting with Upbound or their own installation. `up` assumes 
-by default that a user is interacting with hosted Upbound and will use `https://api.upbound.io` 
-as the domain. However, all commands that interact with Upbound also accept an `--domain` /
+by default that a user is interacting with hosted Upbound and uses `https://api.upbound.io` 
+as the domain. All commands that interact with Upbound also accept an `--domain` /
 `UP_DOMAIN`, which overrides the API endpoint.
 
-### Adding or Updating Profile
+### Adding or updating a profile
 
-To add or update a profile, users can execute `up login` with the appropriate
+To add or update a profile, users can use `up login` with the appropriate
 credentials and a profile name specified. For instance, the following command
 would add a new profile named `test`:
 
@@ -82,37 +79,23 @@ would add a new profile named `test`:
 up login --profile test -u hasheddan -p cool-password
 ```
 
-If no `--profile` is specified, the profile named `default` will be added or
-updated with the relevant credentials. If `-a` (`--account`) is specified it
-will be set as the default account for the profile, and if it is not specified
-and the credential type is `user`, the username will be used as the account as
-well as the ID.
+By default the command updates the profile named `default`. Update a specific profile with `--profile`.
+Set an account as the default account with `-a` (`--account`).
 
-### Setting the Default Profile
+### Setting the default profile
 
-The profile specified as the value to the `default:` key will be used for
-commands when `--profile` / `UP_PROFILE` is not set. Any profile can be used as
-the default, but the time a user logs in with the CLI, or if the config file is
-empty when a user logs in, the name of the profile used for the login operation
-will be set as the `default:`. Note that the profile named `default` is not
-necessarily the one that will be specified as `default:`.
+Running commands without `--profile` or `UP_PROFILE` variable set uses the profile specified as the value to the `default:`.
+If the configuration file is empty when a user logs in, that `user` becomes the default.
 
-In the future, dedicated commands will be introduced to manage profiles and
-other configuration data.
-
-### Invalidating Session Tokens
+### Invalidate session tokens
 
 `up` uses session tokens for authentication after login. Tokens are valid for 30
-days by default, meaning that a user must login at least once in any 30 day
-period. Tokens are sensitive and should not be exposed in any setting. However,
-if a token is exposed, assuming it is still present for the given profile in the
-configuration file, it can be revoked by running `up logout --profile
-<profile-name>`. If a token is exposed and it is no longer present in the
-profile and cannot be retrieved for any reason, the user account should reset
-its password on Upbound immediately. This can be accomplished today by
-clicking "Forgot Password?" on the [Upbound login page], following the
-link in the email you receive, and making sure to check "Delete all active
-sessions".
+days from login. 
 
-<!-- Named Links -->
-[Upbound login page]: https://accounts.upbound.io/login
+{{<hint "important" >}}
+Tokens are private authentication data. Don't share your token.
+{{< /hint >}}
+
+For currently active tokens, revoke the token with `up logout --profile <profile-name>`. 
+
+For inactive tokens, use the [Upbound Password Reset](https://accounts.upbound.io/resetPassword) and select "Delete all active sessions" to revoke all tokens.

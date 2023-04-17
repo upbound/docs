@@ -26,6 +26,9 @@ crossplane-rbac-manager-59f79b9cd-fh4qx   1/1     Running   0             16h
 * {{< hover label="uxp-pods" line="4" >}}crossplane-rbac-manager{{< /hover >}} - The {{< hover label="uxp-pods" line="4" >}}crossplane-rbac-manager{{< /hover >}} pod allows Crossplane to create and dynamically adjust [Kubernetes Role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) for Crossplane resources in the Kubernetes cluster. 
 * {{< hover label="uxp-pods" line="5" >}}upbound-bootstrapper{{< /hover >}} - Only deployed if explicitly enabled, adds the AWS Marketplace controller that registers this instance with AWS Marketplace.
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- allow "ref" in the link inside a shortcode -->
 {{<hint "note" >}}
 The [Up command-line]({{<ref "cli" >}}) installs Universal Crossplane using a Helm chart. Download the chart from [charts.upbound.io](https://charts.upbound.io/main/) to see the full details of the Universal Crossplane install.
 {{< /hint >}}
+<!-- vale Upbound.Spelling = YES -->

@@ -20,7 +20,7 @@ The following flags are available for all commands.
 
 ## configuration
 
-The `up configuration` command provides management operations for git-synced configurations on Upbound. 
+The `up configuration` command provides management operations for Git-synced configurations on Upbound. 
 
 {{<hint "tip" >}}
 `up cfg` is an alias for `up configuration`.
@@ -56,7 +56,7 @@ my-platform-api               upbound/configuration-eks        github     my-pla
 
 ### configuration create
 
-Create a git-synced configuration in Upbound  
+Create a Git-synced configuration in Upbound  
 `up configuration create --context=STRING --template-id=STRING <name>`.
 
 You can find a list of available templates by `up configuration template list`.
@@ -66,19 +66,19 @@ You can find a list of available templates by `up configuration template list`.
 |------------|-------------|------------------------------|
 |    | `--context=STRING`        | Name of the GitHub account/org |
 |    | `--template-id=STRING`        |  Name of the configuration template |
-|    | `--private`        | Whether the Github repo should be created as private. (Default: false) |
+|    | `--private`        | Create the GitHub repository as private. (Default: false) |
 {{< /table >}}
 
 **Examples**
 
-* Create a configuration in Upbound synced from a public repo from scratch
+* Create a configuration in Upbound synced from a public repository from scratch
 
 ```shell {copy-lines="1"}
 up cfg create --context=upbound --template-id=upbound/configuration-scratch my-platform-apis
 No need to authorize Upbound Github App: already authorized
 ```
 
-* Create a configuration in Upbound synced from a private repo from [configuration-eks](https://marketplace.upbound.io/configurations/upbound/configuration-eks)
+* Create a configuration in Upbound synced from a private repository from [configuration-eks](https://marketplace.upbound.io/configurations/upbound/configuration-eks)
 
 ```shell {copy-lines="1"}
 up cfg create --context=upbound --template-id=upbound/configuration-eks my-platform-apis-2 --private
@@ -91,14 +91,14 @@ Replace `context` with the name of your org/account in GitHub.
 
 ### configuration get
 
-Get a git-synced configuration in Upbound  
+Get a Git-synced configuration in Upbound  
 `up configuration get <name>`.
 
 You can find a list of available configurations by `up configuration list`.
 
 **Examples**
 
-* Get a reference to a git-synced configuration in Upbound called `my-platform-apis`
+* Get a reference to a Git-synced configuration in Upbound called `my-platform-apis`
 
 ```shell {copy-lines="1"}
 up cfg get my-platform-apis
@@ -108,7 +108,7 @@ my-platform-apis   upbound/configuration-scratch   github     my-platform-apis  
 
 ### configuration delete
 
-Delete a git-synced configuration in Upbound. This command requires confirmation unless the `--force` option is passed  
+Delete a Git-synced configuration in Upbound. This command requires confirmation unless using the `--force` option.
 `up configuration create --context=STRING --template-id=STRING <name>`.
 
 You can find a list of available configurations by `up configuration list`.
@@ -139,12 +139,12 @@ my-platform-apis-2 deleted
 
 ### configuration template list
 
-List the available Crossplane configurations that are available to create a new git-synced configuration from  
+List the available Crossplane configurations that are available to create a new Git-synced configuration from  
 `up configuration template list`.
 
 **Examples**
 
-* List the configuration templates available to create a new git-synced configuration from
+* List the configuration templates available to create a new Git-synced configuration from
 
 ```shell {copy-lines="1"}
 up cfg template list
@@ -156,7 +156,12 @@ upbound/configuration-cloudsql   CloudSQL as a Service         github.com/upboun
 upbound/configuration-scratch    Scratch                       github.com/upbound/configuration-scratch
 ```
 
+<!-- vale Upbound.Spelling = NO -->
+
+<!-- ignore "controlplane" -->
 ## controlplane
+<!-- vale Upbound.Spelling = YES -->
+
 
 The `up controlplane` command provides management operations for managed control planes on Upbound. It also has commands for installing providers or configurations on Crossplane control planes generically.
 
@@ -178,7 +183,14 @@ All `up controlplane` commands support the following options:
 |      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
 {{< /table >}}
 
+<!-- vale Upbound.Spelling = NO -->
+
+<!-- ignore "controlplane" -->
 ### controlplane list
+
+<!-- vale Upbound.Spelling = YES -->
+
+<!-- ignore "controlplane" -->
 
 List the managed control planes in your Upbound account  
 `up controlplane list`.
@@ -194,13 +206,18 @@ first-control-plane            b93baazd-a426-4a9b-8c85-c402bb67ba05   ready    f
 second-control-plane           cb1sb6aa-3b22-4c69-a5a8-ae3dd5b5eb80   ready    first-configuration           ready
 third-control-plane            f2h88eb1-59e0-4211-96af-f92428a4561f   ready    second-configuration          ready
 ```
+<!-- vale Upbound.Spelling = NO -->
 
+<!-- ignore "controlplane" -->
 ### controlplane create
+<!-- vale Upbound.Spelling = YES -->
+
+<!-- ignore "controlplane" -->
 
 Create a managed control plane in Upbound and install referenced configuration on it  
 `up controlplane create --configuration-name=STRING <name>`.
 
-View available configurations to be installed on the managed control plane by `up configuration list`.
+View available configurations to install on the managed control plane with `up configuration list`.
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -221,12 +238,17 @@ my-control-plane created
 The configuration `my-control-plane-api` must first exist and have already been created in your account for this command to succeed.
 {{< /hint >}}
 
+<!-- vale Upbound.Spelling = NO -->
+
+<!-- ignore "controlplane" -->
 ### controlplane delete
+<!-- vale Upbound.Spelling = YES -->
+
 
 Delete a managed control plane in Upbound  
 `up controlplane delete --configuration-name=STRING <name>`.
 
-View available managed control planes to be deleted by `up controlplane list`.
+View available managed control planes to delete with `up controlplane list`.
 
 **Examples**
 
@@ -237,12 +259,17 @@ up ctp delete my-control-plane
 my-control-plane deleted
 ```
 
+<!-- vale Upbound.Spelling = NO -->
+
+<!-- ignore "controlplane" -->
 ### controlplane get
+<!-- vale Upbound.Spelling = YES -->
+
 
 Get a managed control plane in Upbound  
 `up controlplane get <name>`.
 
-View available managed control planes to be gotten by `up controlplane list`.
+View available managed control planes with `up controlplane list`.
 
 **Examples**
 
@@ -254,18 +281,23 @@ NAME                ID                                     STATUS   DEPLOYED CON
 my-control-plane    2012c379-5743-4f65-a473-30037861ef6e   ready    my-configuration              ready
 ```
 
-### controlplane connect
+<!-- vale Upbound.Spelling = NO -->
 
-Connect a Kubernetes app cluster outside of Upbound to a managed control plane in Upbound. This command creates an APIService resource in the Kubernetes app cluster cluster for every claim API in the managed control plane. As a result, the claim APIs are available in the Kubernetes app cluster just like all native Kubernetes API.
+<!-- ignore "controlplane" -->
+### controlplane connect
+<!-- vale Upbound.Spelling = YES -->
+
+
+Connect a Kubernetes app cluster outside of Upbound to a managed control plane in Upbound. This command creates an `APIService` resource in the Kubernetes app cluster for every claim API in the managed control plane. As a result, the claim APIs are available in the Kubernetes app cluster just like all native Kubernetes API.
 `up controlplane connect <name> <namespace>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
-|    | `--token=STRING`        |  API token used to authenticate. If not provided, a new robot and a token will be created. |
-|    | `--cluster-name=STRING`        |  Name of the cluster connecting to the control plane. If not provided, the namespace argument value will be used. |
+|    | `--token=STRING`        |  API token used to authenticate. Creates a new robot and a token if a token isn't provided. |
+|    | `--cluster-name=STRING`        |  Name of the cluster connecting to the control plane. Uses the namespace argument if a cluster-name isn't provided. |
 |    | `--kubeconfig=STRING`        |   Override the default kubeconfig path. |
-| `-n`  | `--installation-namespace="kube-system"`        |   Kubernetes namespace for MCP Connector. Default is kube-system ($MCP_CONNECTOR_NAMESPACE). |
+| `-n`  | `--installation-namespace="kube-system"`        |   Kubernetes namespace for the Managed Control Plane Connector. Default is kube-system ($MCP_CONNECTOR_NAMESPACE). |
 |    | `--set=KEY=VALUE;...`        |   Set parameters. |
 | `-f`  | `--file=FILE`        |   Parameters file. |
 |    | `--bundle=BUNDLE`        |   Local bundle path. |
@@ -284,10 +316,15 @@ up ctp connect my-control-plane my-app-ns-1
 Your kubeconfig should be pointing at your **Kubernetes app cluster** in order for this command to succeed.
 {{< /hint >}}
 
+<!-- vale Upbound.Spelling = NO -->
+
+<!-- ignore "controlplane" -->
 ### controlplane configuration install
+<!-- vale Upbound.Spelling = YES -->
+
 
 {{< hint "warning" >}}
-Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
+Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
 {{< /hint >}}
 
 Install a Crossplane configuration packages into a Kubernetes cluster with  
@@ -322,11 +359,15 @@ up ctp configuration install xpkg.upbound.io/upbound/platform-ref-aws --name my-
 my-package installed
 ```
 
+<!-- vale Upbound.Spelling = NO -->
 
+<!-- ignore "controlplane" -->
 ### controlplane provider install
+<!-- vale Upbound.Spelling = YES -->
+
 
 {{< hint "warning" >}}
-Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
+Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
 {{< /hint >}}
 
 Install a Crossplane provider packages into a Kubernetes cluster with  
@@ -360,8 +401,12 @@ upbound-provider-aws installed
 up ctp configuration install xpkg.upbound.io/upbound/provider-aws --name my-provider
 my-provider installed
 ```
+<!-- vale Upbound.Spelling = NO -->
 
+<!-- ignore "controlplane" -->
 ### controlplane pull-secret create
+<!-- vale Upbound.Spelling = YES -->
+
 
 Create a new Kubernetes secret object with
 `up controlplane pull-secret create`
@@ -375,25 +420,30 @@ View secrets created by `up controlplane pull-secret create` with `kubectl get s
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
-| `-f` | `--file=<path>`                   | Path to credentials file. Credentials from profile are used if not specified. |
+| `-f` | `--file=<path>`                   | Path to credentials file. Uses the profile credentials if not specified. |
 | `-n` | `--namespace=<namespace>`         | Kubernetes namespace for pull secret ($UPBOUND_NAMESPACE). |
 {{< /table >}}
 
-### controlplane kubeconfig get
+<!-- vale Upbound.Spelling = NO -->
 
-Uses an access token to create an entry in the default kubeconfig file for the specified managed control plane and sets it as the current Kubernetes context  
+<!-- ignore "controlplane" -->
+### controlplane kubeconfig get
+<!-- vale Upbound.Spelling = YES -->
+
+
+Uses an access token to create an entry in the default kubeconfig file for the specified managed control plane. Sets the access token as the current Kubernetes context  
 `up controlplane kubeconfig get --token=STRING`
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
 | `-f` | `--file=STRING`                   | File to merge kubeconfig. |
-|  | `--token=STRING`         | Required token to be used in the generated kubeconfig to access the specified managed control plane. This token is managed in Upbound. |
+|  | `--token=STRING`         | Required token to use in the generated kubeconfig to access the specified managed control plane. Upbound manages this token. |
 {{< /table >}}
 
 **Examples**
 
-* Configure yor kubeconfig to connect to `my-control-plane` and grep APIs for Crossplane installed on it
+* Configure your kubeconfig to connect to `my-control-plane` and grep APIs for Crossplane installed on it
 
 ```shell {copy-lines="1"}
 up ctp kubeconfig get --token <my-token> my-control-plane
@@ -428,7 +478,7 @@ By using Up, you are accepting to comply with terms and conditions in https://li
 
 ## login    
 
-The `up login` command authenticates to Upbound, generates and stores a JSON credentials file locally in ~/.up/config.json. Commands requiring authentication to Upbound services use the JSON file to authenticate (such as interacting with Upbound or the Marketplace)  
+The `up login` command authenticates to Upbound, generates and stores a JSON credentials file locally in `~/.up/config.json`. Commands requiring authentication to Upbound services use the JSON file to authenticate (such as interacting with Upbound or the Marketplace)  
 `up login`.
 
 If run without arguments, `up login` asks for the username and password from the terminal. View the current authentication status with `up organization list`.
@@ -748,7 +798,7 @@ CURRENT   NAME      TYPE   ACCOUNT
 
 ### profile use
 
-Select a profile to be used for all commands in `up`  
+Select a profile to use for all commands in `up`  
 `up profile use`.
 
 **Examples**
@@ -782,8 +832,14 @@ up profile view
     }
 }
 ```
+<!-- vale Upbound.Spelling = NO -->
 
+<!-- vale gitlab.SubstitutionWarning = NO -->
+<!-- ignore "config" -->
 ### profile config
+<!-- vale Upbound.Spelling = YES -->
+
+<!-- vale gitlab.SubstitutionWarning = YES -->
 
 Settings apply to the current profile in use. Supply a JSON file of settings for bulk changes.  
 `up profile config`.
@@ -820,7 +876,7 @@ All `up repository` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
-|------------|-------------|--------------------------  ----|
+|------------|-------------|------------------------------|
 | `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
 |      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
 |      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
@@ -901,7 +957,7 @@ my-repo   unknown   true     n/a
 
 ## robot   
 
-The `up robot` command provides management operations for robots in Upbound, which are identities used for authentication that are independent from a single user and aren’t tied to specific usernames or passwords. Robots have their own authentication credentials and configurable permissions.
+The `up robot` command provides management operations for robots in Upbound. Robots are identities used for authentication that are independent from a single user and aren't tied to specific usernames or passwords. Robots have their own authentication credentials and configurable permissions.
 
 All `up robot` commands support the following options: 
 
@@ -1131,7 +1187,7 @@ UXP upgrades can be from one UXP version to another or from open source Crosspla
 |------------|-------------|------------------------------|
 |  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
 |  `-n`    | `--namespace="upbound-system"`  |   Kubernetes namespace for UXP ($UXP_NAMESPACE).  |
-|       | `--rollback`  |   Rollback to previously installed version on failed upgrade. |
+|       | `--rollback`  |   Rollback to the last installed version on a failed upgrade. |
 |       | `--force`  |   Force upgrade even if versions are incompatible.  |
 |       | `--set=KEY=VALUE;...`  |   Set parameters. |
 |  `-f`    | `--file=FILE`  |   Parameters file.  |
@@ -1180,7 +1236,7 @@ The up xpkg build command supports two different image types:
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
-|  | `--name=STRING`             |   [DEPRECATED: use --output] Name of the package to be built. Uses name in crossplane.yaml if not specified. Does not correspond to package tag. |
+|  | `--name=STRING`             |   [DEPRECATED: use --output] Name of the package to build. Uses name in `crossplane.yaml` if not specified. Doesn't correspond to package tag. |
 | `-o`     | `--output=STRING`  |   Path for package output.  |
 |      | `--controller=STRING`   |   Controller image used as base for package. |
 |  `-f`    | `--package-root="."`             |   Path to package directory.  |
@@ -1218,7 +1274,7 @@ Use a wizard to generate a `crossplane.yaml` file for a configuration or provide
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
 | `-p`  | `--package-root="."`             |   Path to directory to write new package. |
-| `-t`     | `--type="configuration"`  |   Type of package to be initialized.  |
+| `-t`     | `--type="configuration"`  |   Package type to initialize.  |
 {{< /table >}}
 
 **Examples**
@@ -1277,7 +1333,7 @@ Download the dependencies of a package for the Crossplane Language Server with
 `up xpkg dep [<package>]`.
 
 {{<hint "tip" >}}
-This cache is only for the Crossplane Language Server. This doesn’t cache files for Crossplane images.
+This cache is only for the Crossplane Language Server. This doesn't cache files for Crossplane images.
 {{< /hint >}}
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1305,8 +1361,8 @@ Publish images created by up xpkg build to the Upbound Marketplace with
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
-|  `-f`    | `--package=PACKAGE,...`             |    Path to packages. If not specified and only one package exists in current directory it will be used.  |
-|      | `--create`             |    Create repository on push if it does not exist. |
+|  `-f`    | `--package=PACKAGE,...`             |    Path to packages. Uses the current directory if not specified.  |
+|      | `--create`             |    Create repository on push if it doesn't exist. |
 {{< /table >}}
 
 **Examples**
@@ -1318,11 +1374,17 @@ up xpkg push upbound-docs/test:v0.2 -f getting-started.xpkg
 xpkg pushed to upbound-docs/test:v0.2
 ```
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore xpls -->
 ## xpls
+
 
 The `up xpls` starts the xpls language server. 
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore xpls -->
 ### xpls serve
+<!-- vale Upbound.Spelling = YES -->
 
 run a server for Crossplane definitions using the Language Server Protocol with  
 `up xpls serve`.
@@ -1335,7 +1397,10 @@ run a server for Crossplane definitions using the Language Server Protocol with
 
 **Examples**
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore xpls -->
 * Start xpls
+<!-- vale Upbound.Spelling = YES -->
 
 ```shell {copy-lines="1"}
 up xpls serve
@@ -1358,9 +1423,9 @@ Extract package contents into a Crossplane cache compatible format. Fetches from
 {{< table "table table-sm table-striped">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
-|        | `--from-daemon`    | Indicates that the image should be fetched from the Docker daemon. |
-|            | `--from-xpkg`  | Indicates that the image should be fetched from a local xpkg. If package is not specified and only one exists in current directory it will be used.         |
-| `-o`       | `--output="out.gz"`   | Package output file path. Extension must be .gz or will be replaced.         |
+|        | `--from-daemon`    | Fetch the image from the Docker daemon. |
+|            | `--from-xpkg`  | Fetch the image from a local xpkg. If package isn't specified the command uses the current directory. |
+| `-o`       | `--output="out.gz"`   | Package output path. Extension must be `.gz`.         |
 {{< /table >}}
 
 <!-- vale Google.Headings = YES -->

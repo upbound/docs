@@ -6,7 +6,7 @@ Authenticates to the Upbound Marketplace.
 
 ### `up login`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `-u,--username = <username>` - the username to authenticate. Defaults to the value of the environmental variable `UP_USER`
 * `-p, --password = <password>` - the password to authenticate. Defaults to the value of the environmental variable `UP_PASS`

@@ -12,7 +12,7 @@ View and manage `up` command-line profiles with `up profile` commands.
 - [`up profile view`](#up-profile-view)
 ### `up profile config`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `set <key> <value>` - set a given key-value pair
 * `unset <key> <value>` - unset a given key-value pair
@@ -21,7 +21,7 @@ View and manage `up` command-line profiles with `up profile` commands.
 Settings apply to the current profile in use.  
 Supply a JSON file of settings for bulk changes.
 
-<!-- omit in toc -->
+
 #### Examples
 ##### Set a key-value pair
 ```shell
@@ -36,13 +36,13 @@ up profile config unset color
 
 ### `up profile current`
 
-<!-- omit in toc -->
+
 #### Arguments
 _None_
 
 View the current profile settings.
 
-<!-- omit in toc -->
+
 #### Examples
 ```json
 $ up profile current
@@ -60,12 +60,12 @@ $ up profile current
 ```
 ### `up profile list`
 
-<!-- omit in toc -->
+
 #### Arguments
 _None_
 
 List all configured profiles.
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up profile list
@@ -74,10 +74,10 @@ CURRENT   NAME      TYPE   ACCOUNT
 ```
 ### `up profile use`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<profile name>` _(required)_ - name of the profile to use
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up profile use test
@@ -85,13 +85,13 @@ up profile use test
 
 ### `up profile view`
 
-<!-- omit in toc -->
+
 #### Arguments
 _None_
 
 Prints all configured profiles.
 
-<!-- omit in toc -->
+
 #### Examples
 ```json
 $ up profile view

@@ -1,0 +1,50 @@
+extends: capitalization
+message: "'%s' should use sentence-style capitalization."
+link: 'https://developers.google.com/style/capitalization#capitalization-in-titles-and-headings'
+level: warning
+scope: heading
+match: $sentence
+indicators:
+  - ':'
+exceptions:
+  - "Composite Resource"
+  - "Managed Control Planes?"
+  - "Managed Resources"
+  - "OpenID Connect"
+  - "Service Account"
+  - "Universal Crossplane"
+  - "Upbound Console"
+  - "Upbound Universal Crossplane"
+  - APIs?
+  - Azure
+  - CLI
+  - Code
+  - Cosmos
+  - Crossplane
+  - Docker
+  - Emmet
+  - GCP
+  - GitHub
+  - GitOps
+  - gRPC
+  - Hugo
+  - I
+  - JavaScript
+  - Kubeconfig
+  - Kubernetes
+  - Linux
+  - macOS
+  - Marketplace
+  - MongoDB
+  - ProviderConfigs
+  - REPL
+  - Studio
+  - TypeScript
+  - Upbound
+  - URLs
+  - UXP
+  - Vale
+  - Vault
+  - Visual
+  - VS
+  - Windows

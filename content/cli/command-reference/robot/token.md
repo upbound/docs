@@ -24,7 +24,7 @@ Find more information on creating Kubernetes secrets with robot tokens in the [M
 
 ### `up robot token create`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<robot name>` _(required)_ - name of the robot account
 * `<token name>` _(required)_ - name of the robot token
@@ -38,7 +38,7 @@ The JSON file contains the robot username called `accessId` and password called 
 There's no way to recover the `token` value if it's lost. 
 {{< /hint >}}
 
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up robot token create my-robot my-token ~/my-robot-token.json
@@ -53,7 +53,7 @@ vagrant@kubecontroller-01:~$ cat token.json
 
 ### `up robot token delete`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<robot name>` _(required)_ - name of the robot account
 * `<token name>` _(required)_ - name of the robot token
@@ -64,7 +64,7 @@ Deleting a robot token is permanent. There isn't a way to retrieve a delete robo
 
 The command asks to confirm deleting the token.
 
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up robot token delete my-robot my-token
@@ -75,13 +75,13 @@ my-org/my-robot/my-token deleted
 
 ### `up robot token list`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<robot name>` _(required)_ - name of the robot
 
 Lists all robot tokens associated with the given robot account.
   
-<!-- omit in toc -->
+
 #### Examples
 ```shell
 up robot token list my-robot

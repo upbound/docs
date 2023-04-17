@@ -124,7 +124,7 @@ Hugo to fail.
 
 Save images in the `/images` directory of the section using the image. 
 
-For example, images related to contributing to the docs are saved in `/content/contribute/images`.
+For example, save images related to contributing to the docs in `/content/contribute/images`.
 
 The docs support standard 
 [Markdown image syntax](https://www.markdownguide.org/basic-syntax/#images-1) 
@@ -182,7 +182,7 @@ Generates this image
 
 ### Image pop-outs
 
-Use the `lightbox=true` option to create a pop-out of an image that is full
+Use the `lightbox=true` option to create a pop-out of an image that's full
 sized.
 
 <!-- vale gitlab.SubstitutionWarning = NO -->

@@ -3,24 +3,23 @@ title: "up configuration"
 ---
 _Alias_: `up cfg`
 
-Commands in the Configuration group are used to manage and interact with control plane configurations. A control plane configuration is a Crossplane Configuration that satisfies the [xpkg specification] and stores its package contents in a GitHub repository that the control plane is aware of.
+Commands in the Configuration group manage and interact with control plane configurations. A control plane configuration follows the [xpkg specification] and stores its package contents in a GitHub repository that the control plane is aware of.
 
 ### `up configuration create`
 
-<!-- omit in toc -->
 #### Arguments
 * `<configuration name>` - name of the control plane configuration.
 
-Creates a new configuration. If you have not previously authorized or installed the Upbound GitHub app, your web browser will be opened to do so.
+Creates a new configuration. Opens a web browser if you haven't authorized or installed the Upbound GitHub app.
 
 #### Flags
 * `--template-id = STRING` - (Required) Name of the configuration template to use.
-* `--context = STRING` - (Required) Name of the GitHub account or org to use. The configuration template will be cloned into this Github org.
-* `--private` - Whether or not the GitHub repository created for the configuration will be private.
+* `--context = STRING` - (Required) Name of the GitHub account or org to use. Clones the configuration template into this GitHub org.
+* `--private` - Create a private GitHub repository.
 
 ### `up configuration list`
 
-<!-- omit in toc -->
+
 #### Arguments
 - _none_
 
@@ -35,7 +34,7 @@ config-rds               upbound/configuration-rds   github     config-rds      
 
 ### `up configuration get`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<configuration name>` - name of the control plane configuration.
 
@@ -44,13 +43,13 @@ Gets a single control plane configuration in the current organization.
 
 ### `up configuration delete`
 
-<!-- omit in toc -->
+
 #### Arguments
 * `<configuration name>` - name of the control plane configuration.
 
 Deletes a single control plane configuration in the current organization.
 
-An error will be returned if the configuration is still in use by at least one control plane.
+Returns an error if the configuration is still in use by at least one control plane.
 
 #### Flags
 * `--force` - Force deletion of the configuration.
@@ -58,7 +57,7 @@ An error will be returned if the configuration is still in use by at least one c
 
 ### `up configuration template list`
 
-<!-- omit in toc -->
+
 #### Arguments
 - _none_
 
