@@ -47,7 +47,7 @@ kind: Configuration
 spec:
   dependsOn:
     - provider: xpkg.upbound.io/upbound/provider-dummy
-      version: "v0.1.0-4.gc52e44d"
+      version: "v0.2.0-noop"
 ```
 
 Once you commit your change, go to the console and update your control plane
@@ -64,11 +64,11 @@ will not be exposed to the internet to mimic the company internal network.
 You can use a `kind` or any other cluster that has access to internet.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/dc0f51d/cluster/server-deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/v0.2.0-noop/cluster/server-deployment.yaml
 ```
 
 You can see
-[here](https://github.com/upbound/provider-dummy/blob/dc0f51d/cmd/server/main.go)
+[here](https://github.com/upbound/provider-dummy/blob/v0.2.0-noop/cmd/server/main.go)
 that it's a very simple server with in-memory bookkeeping.
 
 ### Deploy Internal Controller
@@ -99,7 +99,7 @@ kubectl create secret generic mcp-kubeconfig --from-file=kubeconfig=/tmp/kube.ya
 
 Let's deploy our controller that mounts this `Secret`.
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/d8941da/cluster/controller-deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/v0.2.0-noop/cluster/controller-deployment.yaml
 ```
 
 That's it! We are now ready to create our first resources!
@@ -120,12 +120,12 @@ export KUBECONFIG=/tmp/kube.yaml
 
 Create a default `ProviderConfig`.
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/dc0f51d/examples/providerconfig/incluster.yaml
+kubectl apply -f https://raw.githubusercontent.com/upbound/provider-dummy/v0.2.0-noop/examples/providerconfig/incluster.yaml
 ```
 
 Let's create our first resource!
 ```yaml
-apiVersion: iam.dummy.crossplane.io/v1alpha1
+apiVersion: iam.dummy.upbound.io/v1alpha1
 kind: Robot
 metadata:
   name: example
@@ -137,7 +137,7 @@ spec:
 Run the following to create the YAML above.
 ```bash
 cat <<EOF | kubectl apply -f -
-apiVersion: iam.dummy.crossplane.io/v1alpha1
+apiVersion: iam.dummy.upbound.io/v1alpha1
 kind: Robot
 metadata:
   name: example
@@ -149,10 +149,10 @@ EOF
 
 Check its progress.
 ```bash
-kubectl describe robot.iam.dummy.crossplane.io/example
+kubectl describe robot.iam.dummy.upbound.io/example
 ```
 ```bash
-kubectl get robot.iam.dummy.crossplane.io/example -o yaml
+kubectl get robot.iam.dummy.upbound.io/example -o yaml
 ```
 
 And this is how you can manage resources in your internal network from your
