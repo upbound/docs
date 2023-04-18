@@ -1,4 +1,18 @@
 <div class="">
     <div class="content-title pb-4">{{.Title}}</div>
-    {{ .Content }}
+    {{ if eq .Page.Params.kind "changelog" }}
+        {{ range .Pages }}
+        <div class="pb-2">
+            <h3 id="{{anchorize .Title}}"><a href="#{{anchorize .Title}}">{{.Title}}</a></h3>
+            {{ .Summary }}
+            {{ if .Truncated }}
+            <div class="mt-3">
+                <a href="{{ .RelPermalink }}">Read More…</a>
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    {{ else }}
+        {{ .Content }}
+    {{ end }}
 </div>

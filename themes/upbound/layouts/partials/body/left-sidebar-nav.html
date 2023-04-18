@@ -40,6 +40,19 @@
 
                 {{/*  Generate a random ID for each parent to use as the collapse target ID  */}}
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
+                {{ $hasChildren := false }}
+                {{ range .Pages }}
+                    {{ if not .Page.Params.tocHidden }}
+                        {{ $hasChildren = true }}
+                        {{ break }}
+                    {{ end }}
+                {{ end }}
+
+                {{ if $currentPage.Parent }}
+                    {{ if eq $currentPage.Parent.Title "Changelog"}}
+                        {{ $currentPage = (.Site.GetPage "/changelog") }}
+                    {{ end }}
+                {{ end }}
 
                 <!-- Parent Menu Button -->
                     <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
@@ -49,14 +62,14 @@
                                 </div>
                                 <div class="">{{.Title }}</div>
                             </a>
-                        {{ if .Pages }}
+                        {{ if $hasChildren }}
                         <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
                             <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
                         </div>
                         {{ end }}
                     </div>
 
-                {{ if .Pages }}
+                {{ if $hasChildren }}
                 <!-- Child Pages -->
                     <div class="nav-child-container px-0 mx-0" id="{{.Title}}-children">
                             <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
