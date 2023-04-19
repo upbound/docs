@@ -6,8 +6,8 @@
     {{/*  {{- if .IsHome -}}{{- .Site.Title | markdownify }} · {{.Site.Params.subtitle | markdownify }} {{- else }}{{- .Title | markdownify}} · {{ .Site.Title | markdownify }} {{ if and (ne .Page.Params.version "0") (ne .Page.Params.version "master")}}v{{.Page.Params.version }}{{end}}{{if eq .Page.Params.version "master"}}{{.Page.Params.version }}{{end}}{{ end }}</title>  */}}
 <link rel="canonical" href="https://docs.upbound.io{{ .Permalink }}">
 
-{{ partial "head/js/color-mode-js" . }}
-{{ partial "head/stylesheets/stylesheet" . }}
+{{ partialCached "head/js/color-mode-js" . }}
+{{ partialCached "head/stylesheets/stylesheet" . }}
 {{ partialCached "head/favicons" . }}
 
 {{/*  {{ partial "social" . }}  */}}
