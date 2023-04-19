@@ -2,6 +2,8 @@
 title: Orchestrate Internal Resources with Managed Control Planes
 weight: 6
 description: Manage internal resources with managed control planes even if their APIs are not exposed to the internet.
+aliases:
+  - byoc
 ---
 
 Many enterprises have internal systems that they would like to manage from their
