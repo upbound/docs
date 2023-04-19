@@ -1,6 +1,7 @@
 <div class="left-sidebar-nav offcanvas-xl offcanvas-start" tabindex="-1" id="left-nav-offcanvas" aria-labelledby="left-nav-offcanvas">
-    <nav aria-label="Documentation section navigation" class="sticky-top container px-0">
+    {{ partialCached "body/search-panel" . }}
 
+    <nav aria-label="Documentation section navigation" class="sticky-top container px-0" id="left-nav-menu">
         <div class="logo nav-logo-search d-flex flex-row">
             <div class="flex-grow-1">
                 <a href="//www.upbound.io">
@@ -12,7 +13,7 @@
                 </a>
             </div>
 
-            <div class="search-icon d-none">
+            <div class="search-icon" id="search-icon">
                 {{ partial "icons/magnifying-glass.svg" (dict "width" "22px" "height" "18px" "class" "grey-icon") }}
             </div>
 
@@ -23,7 +24,7 @@
 
         <div class="list-group d-flex">
             {{/*  First entry for the "Docs" section representing home.html  */}}
-            <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if .IsHome }}active{{end}}">
+            <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative {{if .IsHome }}active{{end}}" id="{{.Title}}">
                 <a href="{{.Site.BaseURL}}" class="d-flex flex-grow-1 stretched-link">
                     <div class="align-self-center icon-container">
                         <svg class="nav-parent-icon" width="16px" height="16px"><use xlink:href="#house"/></svg>
@@ -41,7 +42,7 @@
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
 
                 <!-- Parent Menu Button -->
-                    <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}">
+                    <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
                             <a href="{{.Permalink}}" class="d-flex flex-grow-1 stretched-link">
                                 <div class="align-self-center icon-container">
                                     <svg class="nav-parent-icon" width="16px" height="16px"><use xlink:href="#{{.Params.icon | default ""}}"/></svg>
@@ -50,21 +51,19 @@
                             </a>
                         {{ if .Pages }}
                         <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
-                            <div class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
+                            <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
                         </div>
                         {{ end }}
                     </div>
 
                 {{ if .Pages }}
                 <!-- Child Pages -->
-                    <div class="nav-child-container px-0 mx-0">
+                    <div class="nav-child-container px-0 mx-0" id="{{.Title}}-children">
                             <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
                                 {{ range .Pages }}
-                                    {{ if not .Page.Params.tocHidden }}
-                                    <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}}">
+                                    <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
                                         {{ .Title }}
                                     </a>
-                                    {{ end }}
                                 {{ end }}
                             </div>
                     </div>

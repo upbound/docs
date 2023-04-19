@@ -5,6 +5,7 @@ title: "Upbound Docs"
 theme: "upbound"
 enableGitInfo: true
 uglyurls: false
+timeout: 180000
 disableKinds:
   - taxonomy
   - term

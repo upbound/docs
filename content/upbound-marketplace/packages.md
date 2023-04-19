@@ -34,13 +34,13 @@ Provide a specific package name with `up xpkg build --name <package name>`.
 
 By default `up xpkg build` saves the package to the current directory. Specify a specific location with `up xpkg build -o <path>`.
 
-The [`up xpkg build` command reference]({{<ref "cli/command-reference/xpkg/build" >}}) contains all available options.
+The [`up xpkg build` command reference]({{<ref "cli/command-reference#xpkg-build" >}}) contains all available options.
 
 ## Push a package
 Before pushing a package you must [login]({{<ref "/upbound-marketplace/authentication">}}) to the Upbound Marketplace using `up login`.
 
 ### Create a repository
-Upbound hosts packages in an Upbound _repository_. Create a repository with the [`up repository create`]({{<ref "cli/command-reference/repository#up-repository-create" >}}) command.
+Upbound hosts packages in an Upbound _repository_. Create a repository with the [`up repository create`]({{<ref "cli/command-reference#repository-create" >}}) command.
 
 For example, to create a repository called `my-repo`
 ```shell
