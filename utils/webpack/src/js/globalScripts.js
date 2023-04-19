@@ -16,6 +16,7 @@ import './tabDeepAnchor.js';
 import './customClipboard.js';
 import './hoverHighlight.js';
 import './navIconSwitcher.js';
+import './search.js';
 
 // https://lokeshdhakar.com/projects/lightbox2/
 import * as lightbox from 'lightbox2/src/js/lightbox';
