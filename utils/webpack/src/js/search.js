@@ -273,8 +273,8 @@ function buildTransition() {
       }
       targetElement = targetElement.parentNode
     } while (targetElement)
-      navMenu.classList.toggle("d-none");
-      searchPanel.classList.toggle("d-none");
+        navMenu.classList.remove("d-none");
+        searchPanel.classList.add("d-none");
   });
 }
 
