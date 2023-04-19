@@ -1,0 +1,22 @@
+name: Manually build Hugo and report template metrics
+
+on:
+  # Allows manual workflow run (must in default branch to work)
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the docs repo
+        uses: actions/checkout@v3
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.111.3'
+          extended: true
+
+      - name: Build
+        # Set to env=dev so SCSS isn't required.
+        run: hugo --environment development --templateMetrics --templateMetricsHints
