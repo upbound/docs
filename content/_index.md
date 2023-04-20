@@ -1,6 +1,7 @@
 ---
 title: "Upbound Documentation"
 weight: 0
+SearchHidden: true
 cascade:
     product: "Upbound"
     type: user-docs
