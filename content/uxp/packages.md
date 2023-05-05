@@ -1,6 +1,6 @@
 ---
 title: "Crossplane Packages"
-weight: 250
+weight: 500
 ---
 
 Crossplane _Packages_ are a portable and reusable method to distribute Crossplane settings. Packages are Open Container Initiative (`OCI`) compatible containers. Packages support versioning and dependency mapping.
