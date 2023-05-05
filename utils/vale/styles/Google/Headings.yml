@@ -8,8 +8,11 @@ indicators:
   - ':'
 exceptions:
   - "Composite Resource"
+  - "Elastic Kubernetes Service"
+  - "Google Kubernetes Engine"
   - "Managed Control Planes?"
   - "Managed Resources"
+  - "Microsoft Azure Kubernetes Service"
   - "OpenID Connect"
   - "Service Account"
   - "Universal Crossplane"
@@ -19,6 +22,7 @@ exceptions:
   - Azure
   - CLI
   - Code
+  - ControllerConfig
   - Cosmos
   - Crossplane
   - Docker
