@@ -13,7 +13,7 @@ Definitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources
 Some providers install hundreds or thousands of CRDs. This creates significant
 CPU and memory pressure on the Kubernetes API Server. Failure to size
 the Kubernetes control plane node can lead to API timeouts or control plane
-pods, including UXP, to restart or fail.
+pods, including UXP, to restart or fail. 
 
 The following guide provides guidance on sizing your Kubernetes control plane
 nodes when deploying UXP and Upbound providers.
@@ -48,8 +48,8 @@ Upbound recommends at least four to eight CPU cores, depending on the provider.
 Reference the provider's documentation for specific recommendations. 
 {{< /hint >}}
 
-The CPU impact of UXP depends on the number of Crossplane resources and how
-fast they're updated on changes. 
+The CPU impact of UXP depends on the number of Crossplane resources, the number
+of resources changing and how fast Crossplane updates resources on changes. 
 
 Crossplane resources include claims, composite resources and managed resources.
 UXP consumes CPU cycles when periodically checking the status of each resource.
