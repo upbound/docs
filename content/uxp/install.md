@@ -71,7 +71,7 @@ For example to configure two Crossplane pod replicas with `--set`:
 
 or with a file:  
 
-```shell
+```shell {copy-lines="2"}
 cat settings.yaml
 replicas: 2
 ```
