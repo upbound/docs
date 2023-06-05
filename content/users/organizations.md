@@ -34,9 +34,9 @@ To view and manage an organization's settings, click Settings gear icon in the t
 
 Organization owners and users with Admin permissions can invite Upbound users into the organization, cancel invitations, and remove existing members.
 
-The user list combines both active and invited users. Users who have been invited but have not accepted the inivitation will show a "Pending" status in their row. Each active user can be edited to change the user's granted role or remove them from the organization. In the case of invited users, you can click to resend the invite or remove them from the organization.
+The user list combines both active and invited users. Users who have been invited but haven't accepted the inivitation will show a "Pending" status in their row. Each active user can be edited to change the user's granted role or remove them from the organization. In the case of invited users, you can click to resend the invite or remove them from the organization.
 
-User invitations are always sent by email; you cannot invite someone using their Upbound username To invite a user to an organization:
+User invitations are always sent by email; you can't invite someone using their Upbound username To invite a user to an organization:
 
 1. Click `Invite New User`. 
 2. Enter the user's email address and specify which role they will be granted upon joining the organization.

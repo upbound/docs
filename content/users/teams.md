@@ -7,7 +7,7 @@ Teams are groups of Upbound [users]({{<ref "users" >}}) within an [organization]
 
 ## Manage Teams
 
-Only organization admins can create teams, assign teams permissions, or view the full list of teams. Other users can view any teams marked as visible within the organization, plus any secret teams they are members of.
+Only organization admins can create teams, assign teams permissions, or view the full list of teams. Other users can view any teams marked as visible within the organization, plus any secret teams they're members of.
 
 To manage teams:
 
@@ -46,12 +46,12 @@ Lando is only a member of _Team-Y_ inside _Organization-2_.
 
 ### Add users
 
-If the user is not yet in the organization, invite them to join the organization. Once the user has accepted their invite you can add them to team(s). To do this:
+If the user isn't yet in the organization, invite them to join the organization. Once the user has accepted their invite you can add them to team. To do this:
 
 1. select the team from the `Teams` tab in the org settings pane. 
 2. Click the team's `Members` tab.
 3. Click `Add Team Member`.
-4. You can select from the list of available members in the organization who do not already belong to this team. You can select multiple users at a time.
+4. You can select from the list of available members in the organization who don't already belong to this team. You can select multiple users at a time.
 
 {{< hint "tip" >}}
 The default role that will be assigned to a team member is `owner`. Select the role to open a menu and change it to `member` if you wish.

@@ -62,4 +62,4 @@ To make changes to your account login to [accounts.upbound.io](https://accounts.
 
 ## Delete an account
 
-Selecting [Delete Account](https://accounts.upbound.io/settings/delete) in the My Account pane will send a request to Upbound support to have your account deleted. Any organizations assocaited with this account will _not_ be deleted. If you are the primary account holder for any of your organizations, you will need to deactivate or transfer ownership of them before you delete your user account.
+Selecting [Delete Account](https://accounts.upbound.io/settings/delete) in the My Account pane will send a request to Upbound support to have your account deleted. Any organizations associatted with this account _won't_ be deleted. If you are the primary account holder for any of your organizations, you will need to deactivate or transfer ownership of them before you delete your user account.
