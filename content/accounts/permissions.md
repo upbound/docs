@@ -1,16 +1,15 @@
 ---
 title: Permissions
-weight: 5
 ---
 
-Upbound's access model is organization-based. In order to perform an action within Upbound, users must belong to an organization that has been granted the appropriate permissions.
+Upbound's access model is organization-based. To perform an action within Upbound, users must belong to an organization that has the appropriate permissions.
 
-The permissions model is split into organization-level and team-level permissions. Organizations allow users to possess one of two roles: users are either **Admins** or **Members**.
+Upbound splits the permissions model into organization-level and team-level permissions. Organizations allow users to have one of two roles: users are either **Admins** or **Members**.
 
 - **Admins** can view and change all repositories, teams, members and robots.  
 - **Members** can only view resources admins grant access to.  
 
-## Org Admins
+## Admins
 
 Organization admins have every available permission within the organization. Permissions include:
 
@@ -22,6 +21,6 @@ Organization admins have every available permission within the organization. Per
 - Delete organizations
 - View and interact with the Upbound console
 
-## Org Members
+## Members
 
 Members can only view resources that admins have granted access to. They can't create robot accounts or teams. They also don't have permission to view the Upbound console.

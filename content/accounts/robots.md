@@ -1,6 +1,5 @@
 ---
 title: Robots
-weight: 4
 ---
 
 Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user. 
@@ -17,7 +16,7 @@ You can create robot account from the `Robots` tab in the org settings pane. You
 
 Make sure you've created the desired robot before assigning it to a team. To assign a robot to a team, do the following:
 
-1. go to the `Teams` tab in the org settings pane
-2. Click the team you want to assign the robot to
-3. Click the `Robot accounts` tab
-4. Click the `Add Robot Account` button and select the robot you want.
+1. Go to the **Teams** tab in the org settings pane.
+2. Select the team you want to assign a robot account.
+3. Select the **Robot accounts** tab
+4. Select the **Add Robot Account** button and select the robot you want.
