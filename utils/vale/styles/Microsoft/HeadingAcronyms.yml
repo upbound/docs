@@ -10,6 +10,7 @@ exceptions:
   - ARN
   - AWS
   - CLI
+  - CPU
   - CSS
   - EKS
   - GCP
@@ -17,3 +18,4 @@ exceptions:
   - MCP
   - OIDC
   - SCSS
+  - UXP
