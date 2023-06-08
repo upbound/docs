@@ -125,7 +125,9 @@ Upbound attempts to ensure a stable CRD API but may require breaking changes in 
 -->
 
 ## Support
-Official providers are available to all paid Upbound customers. Support for official providers follows the same support model for other Upbound components. 
+Official providers are open source and available to all Crossplane users. 
+
+Support for official providers follows the same support model for other Upbound components. 
 
 More information is available on the [support page]({{<ref "../support.md" >}}).
 
