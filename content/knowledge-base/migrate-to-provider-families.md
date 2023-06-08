@@ -121,7 +121,7 @@ upbound-platform-ref-aws   True        True      xpkg.upbound.io/upbound/platfor
 ```
 
 {{<hint "important" >}}
-If you don't have an installed Configuration skip to [delete the monolothic provider](#delete-the-original-monolith-provider).
+If you don't have an installed Configuration skip to [delete the monolothic provider](#delete-the-original-monolithic-provider).
 {{< /hint >}}
 
 Remove any Configuration dependencies on the original Provider to prevent it from being automatically reinstalled.
