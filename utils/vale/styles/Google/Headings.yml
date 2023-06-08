@@ -19,6 +19,7 @@ exceptions:
   - Azure
   - CLI
   - Code
+  - Configuration
   - Cosmos
   - Crossplane
   - Docker
@@ -36,6 +37,7 @@ exceptions:
   - macOS
   - Marketplace
   - MongoDB
+  - Provider
   - ProviderConfigs
   - REPL
   - Studio
