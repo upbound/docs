@@ -128,7 +128,7 @@ for all service providers in the same family.
 ### Using ControllerConfigs
 
 The [ControllerConfig](https://docs.crossplane.io/latest/concepts/packages/#speccontrollerconfigref) applies settings to a Provider Pod. With family providers
-each service is an unique Pod running in the cluster. 
+each provider is a unique Pod running in the cluster. 
 
 When using ControllerConfigs with family providers, each provider needs
 a ControllerConfig applied.
