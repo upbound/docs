@@ -52,8 +52,7 @@ wget https://raw.githubusercontent.com/upbound/upjet/main/docs/sp-migration/gene
 chmod +x generate-manifests.sh
 ```
 
-2. Run the script to generate a list of provider family services. The script produces two files, `sp-family-manual.yaml` for the new provider families provider 
-and `sp-manual.yaml` for individual services. 
+2. Run the script to generate a list of provider family packages. The script produces two files, `sp-family-manual.yaml` for the new provider families and `sp-manual.yaml` for individual services. 
 
 {{<hint "note" >}}
 The script relies on `kubectl` to connect to your Kubernetes cluster.
