@@ -124,7 +124,7 @@ upbound-provider-family-aws   True        True      xpkg.upbound.io/upbound/prov
 The first provider installed of a family also installs an extra
 {{<hover label="getproviders" line="5">}}provider-family{{</hover>}} Provider.
 The `provider-family` provider manages the ProviderConfig
-for all service providers in the same family. 
+for all other providers in the same family. 
 
 ### Using ControllerConfigs
 
