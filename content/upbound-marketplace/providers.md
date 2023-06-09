@@ -133,7 +133,7 @@ each service is an unique Pod running in the cluster.
 When using ControllerConfigs with family providers, each provider needs
 a ControllerConfig applied.
 
-For example, both service providers reference the same 
+For example, both providers reference the same 
 {{<hover label="cc" line="8">}}controllerConfigRef.name{{</hover >}}.
 
 ```yaml
