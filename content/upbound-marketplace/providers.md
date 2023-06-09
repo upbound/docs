@@ -16,7 +16,8 @@ Upbound packages each of the official providers for Amazon AWS, Google GCP and M
 
 A provider family organizes the provider's resources into unique packages, organized by a common set of services.
 
-Provider families reduce the resources required to install and run providers and improve performance.
+Provider families reduce the resources required to install and run providers and
+improve performance over a single monolithic provider.
 
 ### Provider family requirements
 
@@ -166,7 +167,7 @@ metadata:
 Upbound delivered the AWS, GCP and Azure official providers as a single 
 monolithic provider beginning in October, 2022. Starting June 13, 2023 
 Upbound split these official providers into provider families consisting 
-out of many smaller providers. 
+of multiple smaller providers. 
 
 This split enables customers to only install the providers specifically 
 needed for their deployment, reducing the requirements for running a control 
