@@ -177,7 +177,7 @@ providers.
 
 Customers running on the original monolithic providers are strongly encouraged 
 to migrate as soon as possible to the new family providers. 
-For Upbound customers, support for monolithic providers is available through September 13, 2022.
+For Upbound customers, support for monolithic providers is available through December 13, 2023.
 
 ## Versions and releases
 Official providers have two relevant release numbers:
