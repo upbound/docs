@@ -21,7 +21,7 @@ Provider families reduce the resources required to install and run providers and
 ### Provider family requirements
 
 Provider families have the following requirements and restrictions:
-* Crossplane version 1.12.1 or [UXP]({{<ref "/uxp">}}) version 1.12.1-up or later
+* Crossplane version 1.12.1 or [UXP]({{<ref "/uxp">}}) version 1.12.1-up.1 or later
 * Remove existing [monolithic providers](#monolithic-official-providers) matching the new provider family. 
 
 {{<hint "warning" >}}
