@@ -12,7 +12,7 @@ All official providers have an `Official` tag to identify them.
 {{<img src="/upbound-marketplace/images/provider-by-upbound.png" alt="Official provider tag" >}}
 
 ## Provider families
-Upbound packages the official providers for Amazon AWS, Google GCP and Microsoft Azure as a "family." 
+Upbound packages each of the official providers for Amazon AWS, Google GCP and Microsoft Azure as a "family." 
 
 A provider family organizes the provider's resources into unique packages, organized by a common set of services.
 
