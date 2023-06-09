@@ -163,9 +163,10 @@ metadata:
 
 ## Monolithic official providers
 
-Upbound delivered the official providers as a single monolithic provider
-beginning in October, 2022. Starting June 13, 2023 Upbound split the official 
-providers into smaller family providers. 
+Upbound delivered the AWS, GCP and Azure official providers as a single 
+monolithic provider beginning in October, 2022. Starting June 13, 2023 
+Upbound split these official providers into provider families consisting 
+out of many smaller providers. 
 
 This split enables customers to only install the providers specifically 
 needed for their deployment, reducing the requirements for running a control 
