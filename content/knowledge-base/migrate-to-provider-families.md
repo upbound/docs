@@ -43,7 +43,7 @@ kubectl patch $(kubectl get managed -o name) -p '{"spec":{"deletionPolicy":"Orph
 
 ## Create a list of family provider services
 
-Upbound maintains a migration script that maps all existing managed resources to their family provider service.
+Upbound maintains a migration script that maps all existing managed resources to their family provider packages.
 This script generates a list of new family providers to install. 
 
 1. Download the script
