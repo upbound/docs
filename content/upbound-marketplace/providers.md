@@ -71,9 +71,48 @@ spec:
 Browse the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official) to find the provider services to install. 
 {{</ hint >}}
 
+{{< expand "Install Providers in an offline environment" >}}
+
+To install Providers in an offline environment set 
+{{<hover label="air" line="7">}}skipDependencyResolution: true{{</hover>}} in
+the Provider.
+
+```yaml {label="air"}
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-aws-s3
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  skipDependencyResolution: true
+```
+
+When installing multiple providers, apply `skipDependencyResolution` to every
+Provider.
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-aws-s3
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  skipDependencyResolution: true
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-aws-ec2
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0
+  skipDependencyResolution: true
+```
+
+{{< /expand >}}
+
 View the installed providers with `kubectl get providers`
 
-```shell {copy-lines="1"}
+```shell {copy-lines="1",label="getproviders"}
 kubectl get providers
 NAME                          INSTALLED   HEALTHY   PACKAGE                                               AGE
 upbound-provider-aws-ec2      True        True      xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0      25m
@@ -81,20 +120,63 @@ upbound-provider-aws-s3       True        True      xpkg.upbound.io/upbound/prov
 upbound-provider-family-aws   True        True      xpkg.upbound.io/upbound/provider-family-aws:v0.37.0   24m
 ```
 
-{{<hint "note" >}}
-All provider families include their service providers as well as an additional `provider-family` service provider.  
-The `provider-family` manages ProviderConfig objects across all service providers in the same family. 
+The first provider installed of a family also installs an extra
+{{<hover label="getproviders" line="5">}}provider-family{{</hover>}} Provider.
+The `provider-family` provider manages the ProviderConfig
+for all service providers in the same family. 
 
-There is no configuration required for the `provider-family` provider. 
-{{< /hint >}}
+### Using ControllerConfigs
 
+The ControllerConfig applies settings to a Provider Pod. With family providers
+each service is an unique Pod running in the cluster. 
+
+When using ControllerConfigs with family providers, each service provider needs
+a ControllerConfig applied.
+
+For example, both service providers reference the same 
+{{<hover label="cc" line="8">}}controllerConfigRef.name{{</hover >}}.
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-aws-s3
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  controllerConfigRef:
+    name: my-controllerconfig
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-aws-ec2
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0
+  controllerConfigRef:
+    name: my-controllerconfig
+---
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: my-controllerconfig
+```
 
 ## Monolithic official providers
-The original Upbound official AWS, GCP and Azure providers combined all service resources into a single monolithic provider package.
 
-Upbound continues to support and provide monolithic providers until September 13, 2023. 
+Upbound delivered the official providers as a single monolithic provider
+beginning in October, 2022. Starting June 13, 2023 Upbound split the official 
+providers into smaller family providers. 
 
-Upbound recommends all users [migrate to the new provider families]({{<ref "/knowledge-base/migrate-to-provider-families">}}).
+This split enables customers to only install the providers specifically 
+needed for their deployment, reducing the requirements for running a control 
+plane. 
+
+This change is only a packaging change, and doesn't change the capabilities of the
+providers.
+
+Customers running on the original monolithic providers are strongly encouraged 
+to migrate as soon as possible to the new family providers. 
+For Upbound customers, support for monolithic providers is available through September 13, 2022.
 
 ## Versions and releases
 Official providers have two relevant release numbers:
