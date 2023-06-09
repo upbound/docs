@@ -130,7 +130,7 @@ for all service providers in the same family.
 The ControllerConfig applies settings to a Provider Pod. With family providers
 each service is an unique Pod running in the cluster. 
 
-When using ControllerConfigs with family providers, each service provider needs
+When using ControllerConfigs with family providers, each provider needs
 a ControllerConfig applied.
 
 For example, both service providers reference the same 
