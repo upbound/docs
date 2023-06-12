@@ -59,7 +59,7 @@ This script generates a list of new family providers to install.
 
 1. Download the script
 ```bash
-wget https://raw.githubusercontent.com/upbound/upjet/main/docs/sp-migration/generate-manifests.sh
+wget https://raw.githubusercontent.com/upbound/extensions-migration/main/docs/generate-manifests.sh
 chmod +x generate-manifests.sh
 ```
 
