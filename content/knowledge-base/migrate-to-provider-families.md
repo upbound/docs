@@ -8,9 +8,9 @@ Provider families replace the original monolithic providers, which combined all 
 Migrating from a monolithic provider to a family provider allows the family provider to take ownership of existing managed resources. 
 
 {{<hint "important" >}}
-Upbound only supports migration from Upbound's official monolithic providers. 
+Upbound only supports migration from Upbound's official monolithic providers at present.
 
-Migration from Crossplane community providers to Upbound provider families isn't supported.
+Support for migration from Crossplane community providers to Upbound provider families will be available for Upbound customers in the near future.
 {{< /hint >}}
 
 ## Backup existing Crossplane resources
@@ -92,7 +92,7 @@ Verify the `upbound-provider-family-<name>` provider is `INSTALLED: False` and `
 kubectl get providers
 NAME                          INSTALLED   HEALTHY   PACKAGE                                               AGE
 upbound-provider-aws          True        True      xpkg.upbound.io/upbound/provider-aws:v0.27.0          26m
-upbound-provider-family-aws   False       True      xpkg.upbound.io/upbound/provider-family-aws:v0.37.0   6m56s
+upbound-provider-family-aws   False       True      xpkg.upbound.io/upbound/provider-family-aws:v0.36.0   6m56s
 ```
 
 {{<hint "note" >}}
@@ -118,8 +118,8 @@ This example only uses a single resource, {{<hover label="s3" line="4">}}s3{{</h
 kubectl get providers
 NAME                          INSTALLED   HEALTHY   PACKAGE                                                AGE
 upbound-provider-aws          True        True      xpkg.upbound.io/upbound/provider-aws:v0.27.0           30m
-upbound-provider-aws-s3       False       True      xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0       5s
-upbound-provider-family-aws   False       True      xpkg.upbound.io/upbound/provider-family-aws:v0.37.0   10m
+upbound-provider-aws-s3       False       True      xpkg.upbound.io/upbound/provider-aws-s3:v0.36.0       5s
+upbound-provider-family-aws   False       True      xpkg.upbound.io/upbound/provider-family-aws:v0.36.0   10m
 ```
 
 ## Remove original Providers as a Configuration dependency
@@ -241,8 +241,8 @@ bucket.s3.aws.upbound.io/crossplane-bucket-7000278b2   True    True     crosspla
 ```bash {copy-lines="1"}
 kubectl get provider.pkg
 NAME                          INSTALLED   HEALTHY   PACKAGE                                               AGE
-upbound-provider-aws          True        True      xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0       4m59s
-upbound-provider-family-aws   True        True      xpkg.upbound.io/upbound/provider-family-aws:v0.37.0   3m44s
+upbound-provider-aws          True        True      xpkg.upbound.io/upbound/provider-aws-s3:v0.36.0       4m59s
+upbound-provider-family-aws   True        True      xpkg.upbound.io/upbound/provider-family-aws:v0.36.0   3m44s
 ```
 
 ## Restore the resource deletion policy
