@@ -94,8 +94,10 @@ Generate a `kubeconfig` file for a managed control plane
 with the following [up CLI command]({{<ref "cli/command-reference#controlplane-kubeconfig-get" >}}).
 
 ```shell
-up ctp kubeconfig get -a <account> <control-plane-name> -f <kubeconfig-file> --token <token>
+up ctp kubeconfig get -a <org-account> <control-plane-name> -f <kubeconfig-file> --token <token>
 ```
+
+Here the account is the name of the organization account that owns the managed control plane.
 
 {{< hint "tip" >}}
 The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from the Upbound Console.
