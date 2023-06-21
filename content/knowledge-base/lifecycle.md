@@ -9,7 +9,7 @@ Upbound provides support and sofwtare maintenance to paid customers. Our support
 * [UXP](https://www.upbound.io/product/universal-crossplane)
 * [Official Providers](https://marketplace.upbound.io/providers?tier=official)
 
-## Maintenance & Updates
+## Maintenance and Updates
 
 Upbound will support Generally Available releases for up to 12 months. Eligible code-fixes will be provided via a new minor release on top of the latest major release branch for up to 3 releases from the most current major release. A major release is identified by a change in the first or second digit in our versioning of X.Y.Z.
 
