@@ -18,6 +18,9 @@ All software follows semantic versioning of `X.Y.Z`.
 * A minor release is a change in the second digit and indicates new features were added. It could also include new bug fixes that were not included in a previous patch release.
 * A patch release is a change in the third digit and only contains bug fixes, no new features.
 
+Upbound fixes bugs in supported major releases and the latest minor release
+Upbound backports only critical bugs (both functional and security) to older minor releases.
+
 ### UXP Schedule
 
 UXP follows the [Crossplane Release Cycle](https://docs.crossplane.io/knowledge-base/guides/release-cycle/). UXP has a major release every 3 months. Minor patch releases are available as needed. Upbound provides support for the current + 2 previous minor releases.
