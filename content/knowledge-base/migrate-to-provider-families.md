@@ -215,7 +215,7 @@ kubectl delete provider.pkg $@<PROVIDER_NAME>$@
 ```
 {{< /editCode >}}
 
-## Edit the family provider revision activation policy
+## Edit the family configuration provider revision activation policy
 
 Change the family configuration provider's `revisionActivationPolicy` from `Manual` to `Automatic`.
 
@@ -227,6 +227,20 @@ Apply the updated family configuration provider manifest.
 
 ```shell
 kubectl apply -f sp-family-automatic.yaml
+```
+
+## Edit the family resource providers revision activation policies
+
+Change the family resource providers' `revisionActivationPolicy` from `Manual` to `Automatic`.
+
+```shell
+sed 's/revisionActivationPolicy: Manual/revisionActivationPolicy: Automatic/' sp-manual.yaml > sp-automatic.yaml
+```
+
+Apply the updated family resource provider manifests.
+
+```shell
+kubectl apply -f sp-automatic.yaml
 ```
 
 ## Verify the provider and resources
