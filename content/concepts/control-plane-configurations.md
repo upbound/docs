@@ -45,4 +45,34 @@ All Configurations in Upbound sync from Git. To learn more about how Upbound int
 
 ## Building an API
 
+Upbound attempts to build a new version of your configuration for every commit to the main `branch` of the repo that backs your configuration. It is your responsibility to push content to the repo which builds into a valid Crossplane configuration package. 
+
+{{< hint "important" >}}
+If you push a new commit to your repo but Upbound does not show a new configuration is available to update to, that is usually an indication the configuration failed to build. Check the build status in GitHub to confirm this (see below).
+{{< /hint >}}
+
+### Build status
+
+Upbound uses a GitHub app to facilitate reading your configuration repo contents, building a package, and pushing it to Upbound for you to deploy to your control planes. For each commit, the app reports a build status. While the configuration is building, you will see a status like below:
+
+{{<img src="concepts/images/git-building.png" alt="example of an in-progress configuration build on GitHub" quality="100" lightbox="true">}}
+
+When the repo contents successfully builds, you will see a green checkmark and status like below:
+
+{{<img src="concepts/images/git-success.png" alt="example of a successful configuration build on GitHub" quality="100" lightbox="true">}}
+
+When the repo contents fail to build a configuration, you will see a failure and brief message explaining why. Hover over the status text on GitHub to see the full message:
+
+{{<img src="concepts/images/git-fail.png" alt="example of a failed configuration build on GitHub" quality="100" lightbox="true">}}
+
+### Apply an update in Upbound
+
+When a repo successfully builds into a configuration, Upbound will show the image as available for each control plane that has installed that configuration. You can find the `update available` prompt in the control plane explorer view. 
+
+{{<img src="concepts/images/git-update-available.png" alt="showing a new configuration is available for a control plane" quality="100" lightbox="true">}}
+
+Click the text to initiate an update on the control plane. Confirm the update operation to kickoff the install. Notice the version string of the configuration image is a SemVer-formatted string appended with the ID of the commit it was built from.
+
+{{<img src="concepts/images/git-build-version.png" alt="showing a new configuration is available for a control plane" quality="100" lightbox="true">}}
+
 To see a guide for how to build an API with Upbound and publish it to a control plane, read the [Knowledge Base]({{<ref "knowledge-base/reference-architecture.md">}}) documentation.
