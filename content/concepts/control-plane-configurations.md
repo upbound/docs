@@ -45,7 +45,7 @@ All Configurations in Upbound sync from Git. To learn more about how Upbound int
 
 ## Building an API
 
-Upbound attempts to build a new version of your configuration for every commit to the main `branch` of the repo that backs your configuration. It is your responsibility to push content to the repo which builds into a valid Crossplane configuration package. 
+Upbound attempts to build a new version of your configuration for every commit to the main `branch` of the repo that backs your configuration. It's your responsibility to push content to the repo which builds into a valid Crossplane configuration package. 
 
 {{< hint "important" >}}
 If you push a new commit to your repo but Upbound does not show a new configuration is available to update to, that is usually an indication the configuration failed to build. Check the build status in GitHub to confirm this (see below).
