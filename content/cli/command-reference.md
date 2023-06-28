@@ -431,7 +431,13 @@ View secrets created by `up controlplane pull-secret create` with `kubectl get s
 <!-- vale Upbound.Spelling = YES -->
 
 
-Uses an access token to create an entry in the default kubeconfig file for the specified managed control plane. Sets the access token as the current Kubernetes context  
+Uses a personal access token to create an entry in the default kubeconfig file for the specified managed control plane. 
+
+The `--file` flag uses the supplied configuration instead.
+
+An incorrect token or control plane name produces an error and doesn't change the
+current context. 
+
 `up controlplane kubeconfig get --token=STRING`
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -441,12 +447,16 @@ Uses an access token to create an entry in the default kubeconfig file for the s
 |  | `--token=STRING`         | Required token to use in the generated kubeconfig to access the specified managed control plane. Upbound manages this token. |
 {{< /table >}}
 
+{{< hint "warning" >}}
+Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console.md#create-a-personal-access-token" >}}) must be used.
+{{< /hint >}}
+
 **Examples**
 
 * Configure your kubeconfig to connect to `my-control-plane` and grep APIs for Crossplane installed on it
 
 ```shell {copy-lines="1"}
-up ctp kubeconfig get --token <my-token> my-control-plane
+up ctp kubeconfig get --token <my-token> -a my-org my-control-plane
 Current context set to upbound-my-org-my-mcp
 
 kubectl api-resources | grep "crossplane.io"
