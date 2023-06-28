@@ -435,7 +435,8 @@ Uses a personal access token to create an entry in the default kubeconfig file f
 
 Alternatively, if using the `--file` flag, it will merge and use the supplied configuration.
 
-If successful, the current context will be set to the specified control plane. An invalid token or control plane name will error and not set the current context.
+An incorrect token or control plane name produces an error and doesn't change the
+current context. 
 
 `up controlplane kubeconfig get --token=STRING`
 
