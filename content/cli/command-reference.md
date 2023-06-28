@@ -433,7 +433,7 @@ View secrets created by `up controlplane pull-secret create` with `kubectl get s
 
 Uses a personal access token to create an entry in the default kubeconfig file for the specified managed control plane. 
 
-Alternatively, if using the `--file` flag, it will merge and use the supplied configuration.
+The `--file` flag uses the supplied configuration instead.
 
 An incorrect token or control plane name produces an error and doesn't change the
 current context. 
