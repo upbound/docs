@@ -24,7 +24,7 @@ markup:
   highlight:
     codeFences: true
     noClasses: false
-    linenos: true
+    linenos: false
     anchorLineNos: true
     lineNumbersInTable: false
 
