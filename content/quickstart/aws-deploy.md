@@ -8,6 +8,8 @@ This quickstart guides you through how to create your first managed control plan
 
 ## Prerequisites
 
+You need the following:
+
 * An Upbound account.
 * An AWS account with permissions to manage IAM policies.
 * A GitHub account with permission to install GitHub Apps.
