@@ -91,7 +91,7 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to Azure without 
 5. Name the pool, like **upbound-oidc-provider**.
 6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
 7. In the _Redirect URI_ section select **Web** and leave the URL field blank.
-8. Click **Register**.
+8. Select **Register**.
 {{<img src="quickstart/images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure" quality="100" align="center" >}}
 
 #### Create a federated credential 
@@ -100,7 +100,7 @@ To allow the `upbound-oidc-provider` registration created in the previous step t
 
 1. Select **Certificates and secrets** in the left navigation.
 2. Select **Federated credentials** tab.
-3. Click **Add credential**.
+3. Select **Add credential**.
 4. In _Federated credential scenario_ select **Other Issuer**.
 5. In _Issuer_ enter **https://proidc.upbound.io**.
 6. In _Subject identifier_ enter:
@@ -128,7 +128,7 @@ upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
 {{< /editCode >}}
 
 9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.
-10. Click **Add**.
+10. Select **Add**.
 
 {{<img src="quickstart/images/azure-registration-config.png" alt="Azure configure app registration" quality="100" align="center" >}}
 
@@ -140,14 +140,14 @@ In order for your control plane to be able to perform the actions required by th
 2. Select **[Subscriptions](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade)**.
 3. Select your subscription.
 4. Select **Access control (IAM)** in the left navigation.
-5. Click **Add** and select **Add role assignment**.
+5. Select **Add** and select **Add role assignment**.
 6. Find and select the **Contributor** role on the **Privileged administrator roles** tab.
-7. Click **Next**.
+7. Select **Next**.
 8. In _Assign access to_ select **User, group, or service principal**.
-9. Click **Select members**.
+9. Select **Select members**.
 10. Find your application by entering **upbound-oidc-provider** in the search field.
-11. Click **Select**.
-12. Click **Review + assign**.
+11. Select **Select**.
+12. Select **Review + assign**.
 13. Make sure everything is correct and press **Review + assign** again.
 
 {{<img src="quickstart/images/azure-identity-setup.png" alt="Azure grant permissions to service principal" quality="100" align="center" >}}
