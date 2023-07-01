@@ -86,7 +86,7 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to Azure without 
 #### Create an identity pool
 1. Open the **[Azure portal](https://portal.azure.com/)**.
 2. Select **[Azure Active Directory](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview)**.
-3. If this is your first time registering Upbound as an identity provider in AAD, select **App registrations**
+3. If this is your first time registering Upbound as an identity provider in Azure Active Directory, select **App registrations**
 4. At the top of the page, select **New registration**.
 5. Name the pool, like **upbound-oidc-provider**.
 6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
@@ -134,7 +134,7 @@ upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
 
 #### Grant permissions to the service principal
 
-For your control plane to be able to perform actions required by this configuration, you  need to grant permissions to the Application Service Principal. Assign a role to the Application Service Principal by following instructions at Assign a role to the application.
+For your control plane to be able to perform actions required by this configuration, you need to grant permissions to the Application Service Principal. Assign a role to the Application Service Principal by following instructions at Assign a role to the application.
 
 1. Open the **[Azure portal](https://portal.azure.com/)**
 2. Select **[Subscriptions](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade)**.
