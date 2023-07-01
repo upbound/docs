@@ -7,6 +7,8 @@ description: A guide for deploying a cloud platform on Upbound for Google GCP
 This quickstart guides you through how to create your first managed control plane in Upbound. Connect Upbound to GCP, and use your control plane to create and manage PostgreSQL databases.
 ## Prerequisites
 
+You need the following:
+
 * An Upbound account.
 * A GCP account with permissions to manage IAM policies.
 * A GitHub account with permission to install GitHub Apps.
@@ -81,7 +83,7 @@ While Upbound creates your control plane, connect Upbound to GCP.
 Upbound recommends using OpenID Connect (OIDC) to authenticate to GCP without exchanging any private information. 
 
 {{< hint "warning" >}}
-GCP doesn't authenticate a second OIDC pool in the same projected connecting to Upbound.
+GCP doesn't authenticate a second OIDC pool in the same project connecting to Upbound.
 
 Add a new [Service Account]({{<ref "#create-a-gcp-service-account" >}}) to the existing pool instead.
 {{< /hint >}}
