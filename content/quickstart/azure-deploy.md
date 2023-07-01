@@ -134,7 +134,7 @@ upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
 
 #### Grant permissions to the service principal
 
-In order for your control plane to be able to perform the actions required by this configuration, you will need to grant the necessary permissions to the Application Service Principal. Assign a role to the Application Service Principal by following instructions at Assign a role to the application.
+For your control plane to be able to perform actions required by this configuration, you  need to grant permissions to the Application Service Principal. Assign a role to the Application Service Principal by following instructions at Assign a role to the application.
 
 1. Open the **[Azure portal](https://portal.azure.com/)**
 2. Select **[Subscriptions](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade)**.
