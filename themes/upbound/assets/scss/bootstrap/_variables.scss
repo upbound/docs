@@ -630,12 +630,26 @@ $line-height-base:            1.5 !default;
 $line-height-sm:              1.25 !default;
 $line-height-lg:              2 !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
-$h6-font-size:                $font-size-base !default;
+$h1-font-size:                $font-size-base * 2 !default;
+$h2-font-size:                $font-size-base * 1.5 !default;
+$h3-font-size:                $font-size-base * 1.25 !default;
+$h4-font-size:                $font-size-base * 1 !default;
+$h5-font-size:                $font-size-base * 0.9 !default;
+$h6-font-size:                $font-size-base * 0.8 !default;
+
+$h1-margin-top:                0 !default;
+$h2-margin-top:                $font-size-base * 3 !default;
+$h3-margin-top:                $font-size-base * 2 !default;
+$h4-margin-top:                $font-size-base * 1 !default;
+$h5-margin-top:                0 !default;
+$h6-margin-top:                0 !default;
+
+$h1-margin-bottom:                $font-size-base * 1.5 !default;
+$h2-margin-bottom:                $font-size-base * 1.25 !default;
+$h3-margin-bottom:                $font-size-base * 1 !default;
+$h4-margin-bottom:                $font-size-base !default;
+$h5-margin-bottom:                $font-size-base !default;
+$h6-margin-bottom:                $font-size-base !default;
 // scss-docs-end font-variables
 
 // scss-docs-start font-sizes
@@ -650,10 +664,11 @@ $font-sizes: (
 // scss-docs-end font-sizes
 
 // scss-docs-start headings-variables
-$headings-margin-bottom:      $spacer * .5 !default;
+$headings-margin-top:         2rem !default;
+$headings-margin-bottom:      0.75rem !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
-$headings-font-weight:        500 !default;
+$headings-font-weight:        900 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
 // scss-docs-end headings-variables

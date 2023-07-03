@@ -24,19 +24,12 @@
   }
 
   .content-title {
-    font-size: 2.25rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 900;
     line-height: 2.8rem;
   }
 
-  // Don't add extra padding to the page heading
-  h2, h3, h4, h5, h6 {
-    padding-top: 12px;
-  }
-
   h1, h2, h3, h4, h5, h6 {
-
-    padding-bottom: 12px;
 
     a {
       text-decoration: none !important;
