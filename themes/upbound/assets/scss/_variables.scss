@@ -5,8 +5,8 @@ $bd-callout-variants: info, warning, danger !default;
 $font-family-sans-serif:      "Avenir-Roman", "Avenir" !default;
 $font-family-monospace:       "Consolas" !default;
 $line-height-base:            1.8 !default;
-$font-size-root:              18px !default;
-$font-size-base:              1.125rem !default;
+$font-size-root:              16px !default;
+$font-size-base:              1rem !default;
 
 $body-font-size:              16px !default;
 $body-line-height:            26px !default;
@@ -35,7 +35,6 @@ $font-color-light:      #505A72 !default;
 
 $body-font-weight:        normal !default;
 $body-min-width:          20rem !default;
-$body-font-size:          18px !default;
 
 $color-admonition-background: transparent;
 
