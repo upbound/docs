@@ -351,4 +351,9 @@
   /* TextWhitespace */
   .chroma .w {
   }
+
+  // Add custom border radius
+  .highlight {
+    border-radius: 0.375rem;
+  }
 }
