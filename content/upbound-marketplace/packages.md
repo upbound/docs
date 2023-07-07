@@ -64,7 +64,7 @@ my-repo      configuration   true     23h
 ### Add annotations to your package
 The Upbound Marketplace automatically renders specific metadata annotations into listing pages. Upbound recommends that all package maintainers add these annotations into their `crossplane.yaml`. Adding annotations ensures listing have all the required information like licenses, links to source code, and contact information for maintainers.
 
-Upbound supports all annotations specified in the <a href="https://docs.crossplane.io/latest/reference/xpkg/#object-annotations">xpkg specification</a>.
+Upbound supports all annotations specified in the <a href="https://docs.crossplane.io/v1.10/reference/xpkg/#object-annotations">xpkg specification</a>.
 
 ### Push a package to the repository
 Push a package to the Upbound Marketplace using the `up xpkg push` command.
