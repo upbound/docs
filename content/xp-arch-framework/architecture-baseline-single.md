@@ -1,16 +1,10 @@
 ---
-title: "Architecting with Control Planes"
-weight: 3
+title: "Architecture | Baseline Control Plane"
+weight: 11
 description: "A guide for how to build with control planes"
 ---
 
-Crossplane is a framework that gives users the ability to create their own Kubernetes-style APIs without needing to write code. When a user creates an instance of Crossplane and installs their custom APIs on it, we call this a `control plane` because the user now has an entity by which they can perform controlling actions--creating, reading, updating, or deleting resources exposed by their APIs.
-
-How you choose to architect a solution on Crossplane varies wildly depending on your business goals, platform requirements, where you want to offer services powered by Crossplane, and more. The architectures described in this guide provide a minimum recommended baseline for how to build a solution on Crossplane and integrate it with a set of common 3rd-party integrations. 
-
-## Baseline Control Plane Architecture
-
-This reference architecture provides a recommended baseline to deploy a single Crossplane control plane. This architecture isn't focused on a workload or role to be served by the control plane, rather it concentrates on the control plane itself. The information here is the minimum recommended baseline for most Crossplane control planes.
+This reference architecture provides a recommended baseline scoped to deploying a single Crossplane control plane. This architecture isn't focused on a workload or role to be served by the control plane, rather it concentrates on the control plane itself. The information here is the minimum recommended baseline for most Crossplane control planes.
 
 {{< hint "note" >}}
 💡 An implementation of this architecture is available on GitHub: <link to a configuration on Marketplace>. You can use it as a starting point and are encouraged to tweak it according to your needs.
@@ -82,55 +76,6 @@ To maintain business continuity, define the Service Level Agreement for your con
 
 To learn more about using Velero to achieve disaster recovery, read [backup and restore control planes with Velero].
 
-## Control Planes at Scale Architecture
+## Next Steps
 
-This reference architecture provides a recommended baseline to deploy many Crossplane control planes. This architecture isn't focused on a workload or role to be served by the control plane, rather it concentrates on the control plane itself. The information here is the minimum recommended baseline for most Crossplane control planes.
-
-This reference architecture provides a recommended baseline to deploy many Crossplane control planes.  When users choose to adopt a control plane architecture that involves multiple control planes, those control planes usually have specialized roles. There are two things that need to be considered when running many control planes:
-
-1. What are the boundaries that cause you to specialize a control plane's purpose?
-2. How do you bootstrap and manage the infrastructure that supports each control plane? 
-
-If your requirements lead you to needing more than a few control planes to power your platform, we recommend a hub-and-spoke architecture: use a central (hub) control plane whose job is to create specialized control planes (spokes). This pattern is also sometimes called “control plane of control planes”.
-
-Just like the baseline single control plane architecture, your solution must be influenced by your business requirements, and as a result it can vary depending on what you are trying to achieve. It should be considered as your starting point for pre-production and production stages.
-
-{{< hint "note" >}}
-💡 An implementation of this architecture is available on GitHub: <link to a configuration on Marketplace>. You can use it as a starting point and are encouraged to tweak it according to your needs.
-{{< /hint >}}
-
-### Diagram 
-
-{{<img src="xp-arch-framework/images/cp-of-cp-arch.png" alt="Control Plane of Control Planes Architecture" size="medium" quality="100" align="center">}}
-
-### Specialized control planes
-
-When we say “specialized control plane”, we mean your platform is composed of several control planes, each having a specialized role to serve (as opposed to having a single control plane that manages everything). How you choose to specialize control planes will vary depending on your business requirements. Here are some common ones:
-
-- [Cross-cloud requirements](#specialize-control-planes-by-cloud)
-- [Isolation requirements](#specialize-control-planes-by-tenant)
-- [Cross-environment requirements](#specialize-control-planes-by-environment)
-- [Cloud account segmentation](#specialize-control-planes-by-cloud-account)
-
-#### Configuration
-
-For each individual control plane, this architecture applies the same recommendations as what you can find in the [baseline single control plane architecture](#baseline-control-plane-architecture). The difference is that once you have your hub control plane created, you can use it to declaratively create all ensuing specialized control planes.
-
-#### Specialize control planes by environment
-
-This approach means you create a control plane on a per software environment basis. For users who follow software development best practices and deploy their software across non-prod and prod environments, we recommend deploying an instance of Crossplane for each of your environments (dev, staging, prod, etc). Each control plane has a specialized responsibility to only manage resources in its designated environment.
-
-#### Specialize control planes by Cloud
-
-This approach means you create a control plane on a per hyperscale cloud provider basis. For example, if you needed your platform to operate in both AWS and Azure, you would create two control planes:
-
-- a control plane whose responsibility is for handling AWS-related resources
-- a control plane whose responsibility is for handling Azure-related resources
-
-#### Specialize control planes by Cloud Account
-
-This approach means you create a control plane on per cloud account basis. Crossplane is able to communicate with external APIs only after a Crossplane provider has been installed in the control plane. Crossplane providers themselves rely on `ProviderConfig` objects to configure & provide authentication details for how to interact with the external service. It is possible for a single control plane to have multiple ProviderConfigs--each configured to point to a single cloud account--and use that to provision resources across multiple accounts.
-
-However, it is possible to specialize control planes and configure them so they can only talk to resources associated with a single cloud account.
-
-#### Specialize control planes by Tenant
+Read [Architecture | Multi-Control Planes](../architecture-baseline-multi).
