@@ -1,5 +1,5 @@
 ---
-title: "Building APIs | Patterns"
+title: "API Patterns"
 weight: 7
 description: "how to build APIs"
 ---

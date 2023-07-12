@@ -1,18 +1,22 @@
 ---
-title: "Building APIs | Configurations"
+title: "Authoring Configurations"
 weight: 6
 description: "how to build APIs"
 ---
 
 A Control plane configuration is a package that bundles one or more APIs--their definitions (XRDs) and their implementations (compositions). Whereas Crossplane composite resources allow you to define a single API, configurations allow you to bundle a set of related APIs together, version them, and declare their dependencies. Because configurations are packages, they are the output of a build process. Today, that output is an OCI image.
 
+{{< hint "important" >}}
+If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
+{{< /hint >}}
+
 ## When to create a control plane configuration
 
-As a best practice, **always!** Configurations are the packaging format of choice to use for delivering **all APIs** to a control plane–even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
+As a best practice, **always!** Configurations are the packaging format of choice for delivering **all APIs** to a control plane–even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
 
-## Configuration layout
+## Configuration layout in git
 
-At the root of every Crossplane configuration is a `crossplane.yaml` metadata file. We recommend creating an `apis` folder next to it and placing all your APIs in that folder. Each API (XRD and its compositions) should go in its own folder. The folder structure we recommend looks like this:
+We recommend the definition of your Crossplane configurations to be stored in a git-based version control service. At the root of every Crossplane configuration is a `crossplane.yaml` metadata file. We recommend creating an `apis` folder next and placing all your API definitions in that folder. Each API (XRD and its compositions) should go in its own folder. The folder structure we recommend looks like this:
 
 ```bash
 .
@@ -27,7 +31,9 @@ At the root of every Crossplane configuration is a `crossplane.yaml` metadata fi
     └── ...
 ```
 
-This structure works well for simple APIs that have a single definition (XRD) and single implementation (1 composition) that are all defined locally and will be bundled in this configuration. This folder structure is recommended to improve human readability. The folder structure does not affect Crossplane’s ability to build a package, since all .yaml files are flattened during the build process. 
+This structure works well for simple APIs that have a definition (XRD) and single implementation (1 composition) that are all defined locally in the folder structure and will be bundled in this configuration. 
+
+We recommend this folder structure because it improves human readability, not because Crossplane depends on a certain folder structure. The folder structure does not affect Crossplane’s ability to build a package since all .yaml files are flattened during the build process. 
 
 {{< hint "important" >}}
 👉 Be careful to avoid placing .yaml files in your configuration's directory tree that you **don't** want Crossplane to parse. This can cause builds to unintendly break because Crossplane will attempt to ingest **all** .yaml files.
@@ -80,7 +86,7 @@ spec:
 
 ### Chain configurations together
 
-Because configurations enable you to declare dependencies on other configurations, you are enabled to use a building blocks pattern. Rather than put every API that you want to create into a single configuration OR duplicate definitions of APIs across multiple configurations, you can improve reusability by logically structuring your configurations and composing them into larger or smaller packages, depending on your need.
+Because configurations enable you to declare dependencies on other configurations, you can use a building blocks pattern: rather than put every API that you want to create into a single configuration OR duplicate definitions of APIs across multiple configurations, you can improve reusability by logically structuring your configurations and composing them into larger or smaller packages, depending on your need.
 
 For example, you could define configurations based on the scope of the APIs:
 
@@ -94,6 +100,8 @@ This would allow you to create configurations that selectively bundle some–but
 
 - **Myorg-config-team1** that has a dependency on _myorg-configuration-networking_ and _myorg-configuration-compute_.
 - **Myorg-config-team2** that has a dependency on _myorg-configuration-serverless_ and _myorg-configuration-storage_.
+
+Another pattern that you can apply to configuration packages & dependency chaining is to have one platform team own the baseline set of APIs that exists on all control planes for your organization, then you can have service or pattern teams build APIs for specific services that sit above the baseline set of APIs.
 
 ## Build configurations
 
@@ -186,8 +194,8 @@ spec:
     - name: registry-key
 ```
 
-Because Configurations are just another Kubernetes object, you can apply GitOps patterns and tooling to continuously monitor and deploy your desired configuration to your control plane. We recommend establishing an GitOps-based automated process to apply configurations to your control planes, which is described and implemented in the [baseline control plane architecture](../architecting-with-control-planes#baseline-control-plane-architecture) 
+Because Configurations are just another Kubernetes object, you can apply GitOps patterns and tooling to continuously monitor a repo source and deploy your desired configuration to your control plane. We recommend establishing an GitOps-based automated process to apply configurations to your control planes, which is described and implemented in the [baseline control plane architecture](../architecting-with-control-planes#baseline-control-plane-architecture) 
 
 ## Next Steps
 
-Read [building APIs | Patterns](../building-apis-patterns).
+Read [API Patterns](../building-apis-patterns).

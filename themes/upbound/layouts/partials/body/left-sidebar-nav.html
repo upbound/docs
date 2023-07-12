@@ -41,7 +41,7 @@
                 {{/*  Generate a random ID for each parent to use as the collapse target ID  */}}
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
 
-                <!-- Parent Menu Button -->
+                    <!-- Parent Menu Button -->
                     <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
                             <a href="{{.Permalink}}" class="d-flex flex-grow-1 stretched-link">
                                 <div class="align-self-center icon-container">
@@ -57,17 +57,47 @@
                     </div>
 
                 {{ if .Pages }}
-                <!-- Child Pages -->
+                    <!-- Child Pages -->
                     <div class="nav-child-container px-0 mx-0" id="{{.Title}}-children">
-                            <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
-                                {{ range .Pages }}
+                        <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
+                            {{ range .Pages }}
+
+                                {{ if .Pages }}
+                                <!-- Subpages -->
+                                    {{/*  Generate a random subpage ID to use as the collapse target ID  */}}
+                                    {{ $subid := substr (sha1 .Permalink) 0 8 }}
+
+                                    <!-- Parent Menu Button -->
+                                    <div class="list-group-item d-flex flex-row nav-child py-2 my-0 position-relative {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
+                                        <a href="{{.Permalink}}" class="d-flex flex-grow-1 stretched-link">
+                                            <div class="">{{.Title }}</div>
+                                        </a>
+                                        {{ if .Pages }}
+                                            <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
+                                                <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$subid}}" aria-expanded="true" aria-controls="collapse-{{$subid}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
+                                            </div>
+                                        {{ end }}
+                                    </div>
+
+                                    <div class="collapse list-group show" id="collapse-{{$subid}}">
+                                        {{ range .Pages }}
+                                            <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                                <span class="ps-4">{{ .Title }}</span>
+                                            </a>
+                                        {{ end }}
+                                    </div>
+
+                                {{ else }}
                                     <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
                                         {{ .Title }}
                                     </a>
                                 {{ end }}
-                            </div>
+                                
+                            {{ end }}
+                        </div>
                     </div>
                 {{ end }}
+
             {{ end }}
         </div>
 

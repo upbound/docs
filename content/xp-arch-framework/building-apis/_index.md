@@ -1,6 +1,6 @@
 ---
 title: "Building APIs"
-weight: 2
+weight: 20
 description: "how to build APIs"
 ---
 
@@ -86,4 +86,4 @@ A new instance of Crossplane is like a blank slate: there are no custom APIs ins
 
 ## Next Steps
 
-Read [building APIs | XRDs](../building-apis-xrds) to learn about how to approach defining your own XRDs and incorporate best practices.
+Read [Authoring XRDs](../building-apis-xrds) to learn about how to approach defining your own XRDs and incorporate best practices.

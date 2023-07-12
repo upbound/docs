@@ -1,5 +1,5 @@
 ---
-title: "Architecture | Multi-Control Planes"
+title: "Multi-Control Planes"
 weight: 12
 description: "A guide for how to build with control planes"
 ---

@@ -1,34 +1,8 @@
 ---
-title: "Interface Integrations"
-weight: 20
+title: "Git and GitOps"
+weight: 2
 description: "A guide for how to integrate control planes with a variety of interfaces"
 ---
-
-Crossplane sits at the core of your platform. As a result, there are about ten areas you need to think about integrating with. We've categorized them into the following:
-
-- [Platform frontends](#platform-frontends)
-- [Git and GitOps](#git-and-gitops)
-- [CI/CD]()
-- [Secret Management](#secrets-management)
-- [Policy Engines](#policy-engines)
-- [Platform Continuity](#platform-continuity)
-- [Monitoring & Observability](#monitoring--observability)
-- [Authentication & Authorization](#authentication--authorization)
-- [Security](#security)
-
-Crossplane has built-in capabilities for some of these areas. For other areas, it is up to users to bring 3rd party toolchains to integrate with Crossplane and address the particular use case. Because Crossplane exists in the Kubernetes ecosystem, users oftentimes find value in being able to reuse familiar Kubernetes tooling with Crossplane. In this framework, we will provide guidance for how to leverage built-in functionality where present, and integrate Crossplane with popular 3rd party tools when necessary.
-
-## Platform Frontends
-
-Just like Kubernetes, the default interface to a new Crossplane instance is the [Kubernetes-based API](https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/), typically accessed via a tool like [kubectl](https://kubernetes.io/docs/reference/kubectl/). Alternatively, users can use any http client such as `curl` to directly access the REST API of their Crossplane.
-
-Most users don't want to directly expose their Crossplane's API server to users. Commandline terminals can be an unfriendly user interface for some, so users may have an interest in connecting their own frontend to their control plane. You are welcome to use any frontend that you like with Crossplane (such as if you have built a home-grown web app), but a very popular platform designed for building developer portals is [Backstage](https://backstage.io/). In this framework, we will provide a set of best practices for integrating Backstage with Crossplane.
-
-### Backstage
-
-todo
-
-## Git and GitOps
 
 GitOps is a pattern for declaratively describing a desired resource's configuration in git. Crossplane is completely compatible with this pattern and we strongly recommend customers implement GitOps in their platforms built on Crossplane. There are three ways you should plan for integrating with git and setting up GitOps flows with Crossplane:
 
@@ -38,7 +12,7 @@ GitOps is a pattern for declaratively describing a desired resource's configurat
 
 In any case, [Flux](https://fluxcd.io/) and [Argo](https://argo-cd.readthedocs.io/en/stable/) are two examples of projects in the Kubernetes ecosystem that you can use in tandem with Crossplane to achieve GitOps flows. 
 
-### Integrate Crossplane with Flux
+## Integrate Crossplane with Flux
 
 Flux is a set of controller that keeps Kubernetes clusters in sync with a configuration source (i.e. git).
 
@@ -105,7 +79,7 @@ For every new instance of Crossplane that you want to register and set up GitOps
 💡 An implementation of this integration is available on GitHub: <link to a configuration on Marketplace>. You can use it as a starting point and are encouraged to tweak it according to your needs.
 {{< /hint >}}
 
-### Integrate Crossplane with Argo
+## Integrate Crossplane with Argo
 
 Argo CD is a projects that enables GitOps by implementing an `Application` resource, which provides a declarative approach to managing config management tooling for Kubernetes resources (e.g., Helm, Kustomize) and a controller for handling the reconciliation loop for syncing the resources into the cluster (i.e., updating the live state to match the desired state).
 
@@ -144,31 +118,3 @@ You will need to configure the `spec.destination.server` to point to the endpoin
 {{< hint "tip" >}}
 💡 An implementation of this integration is available on GitHub: <link to a configuration on Marketplace>. You can use it as a starting point and are encouraged to tweak it according to your needs.
 {{< /hint >}}
-
-## CI/CD
-
-asd
-
-## Secrets Management
-
-asd
-
-## Policy Engines
-
-asd
-
-## Platform Continuity
-
-asd
-
-## Monitoring & Observability
-
-asd
-
-## Authentication & Authorization
-
-asd
-
-## Security
-
-asd

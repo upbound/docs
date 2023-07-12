@@ -1,5 +1,5 @@
 ---
-title: "Building APIs | XRDs"
+title: "Authoring XRDs"
 weight: 4
 description: "how to build APIs"
 ---
@@ -12,7 +12,7 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## Purpose
 
-If you have not read and gone through the framework's [self-evaluation](../self-eval) exercise, we recommend you do that now. It is difficult to build a custom API without knowing who you are building it for and why you're building it. Before writing a single line of .yaml, you need to think about answers for the following questions:
+If you have not read and gone through the framework's [self-evaluation](../../self-eval) exercise, we recommend you do that now. It is difficult to build a custom API without knowing who you are building it for and why you're building it. Before writing a single line of .yaml, you need to think about answers for the following questions:
 
 - Who is going to consume this API?
 - What inputs do they need to provide this API?
@@ -216,4 +216,4 @@ spec:
 
 ## Next Steps
 
-Defining an XRD is half the equation for building a custom API. The other important steps is to define a composition which implements the definition contained in your XRD. Read [Building APIs | Compositions](../building-apis-compositions) to learn how to do that.
+Defining an XRD is half the equation for building a custom API. The other important steps is to define a composition which implements the definition contained in your XRD. Read [Authoring Compositions](../building-apis-compositions) to learn how to do that.
