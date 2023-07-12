@@ -32,4 +32,4 @@ In any of the above cases, you are "specializing" the responsibilities of a cont
 
 ## Next Steps
 
-Read [Architecture | Baseline Control Plane](../architecture-baseline-single).
+Read the [Baseline Control Plane](../architecture-baseline-single) architecture for our recommendations for how to set up a single instance of Crossplane.

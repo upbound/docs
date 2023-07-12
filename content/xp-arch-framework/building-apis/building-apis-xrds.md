@@ -12,10 +12,8 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## Purpose
 
-If you have not read and gone through the framework's [self-evaluation](../../self-eval) exercise, we recommend you do that now. It is difficult to build a custom API without knowing who you are building it for and why you're building it. Before writing a single line of .yaml, you need to think about answers for the following questions:
+If you have not read and gone through the framework's [self-evaluation](../../self-eval) exercise, we recommend you do that now. It is difficult to build a custom API without knowing who you are building it for and why you're building it. If you have an understanding of how you're building the custom API for and what inputs (if any) you want your consumers t ohave, the next questions you need to figure out are:
 
-- Who is going to consume this API?
-- What inputs do they need to provide this API?
 - What managed resources do you want to compose together as part of this API?
 - For each managed resource you want to compose, which fields are required?
 
@@ -113,9 +111,8 @@ The following are some other best practices to abide by as you author new XRDs:
 
 #### Inputs belong in spec.properties.parameters
 
-All of the inputs you want to provide as part of your API belong in your XRD's `spec.properties.parameters` stanza.
+All of the inputs you want to provide as part of your API belong in your XRD's `spec.properties.parameters` stanza, as seen in the example below.
 
-{{< expand "An example XRD with a 'storageGB' input defined" >}}
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
@@ -142,7 +139,6 @@ spec:
             required:
             - parameters
 ```
-{{< /expand >}}
 
 #### Rely on the OpenAPI v3 data models
 

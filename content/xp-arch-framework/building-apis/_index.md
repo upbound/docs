@@ -57,7 +57,19 @@ Crossplane managed resources attempt to be a 1:1 representation of an external r
 📢 Just like any Kubernetes object, you can create new Crossplane managed resources directly. We advise **against** doing this in favor of always using Crossplane composite resources, explained below.
 {{< /hint >}}
 
-## What is a composite resource (XR)?
+## What constitutes a custom API with Crossplane?
+
+As the [upstream Crossplane](https://docs.crossplane.io/v1.12/concepts/) documentation calls out, when it comes to building custom APIs with Crossplane, there are a few components involved:
+
+1. A **Composite Resource Definition (XRD)**
+2. A **Composition(s)**
+3. A **Configuration** Package
+
+{{<img src="xp-arch-framework/images/xp-building-blocks.png" alt="Depiction of Crossplane building blocks" size="small" quality="100">}}
+
+A Composite Resource Definition and composition together give Crossplane enough information to be able to form Composite Resources (XRs).
+
+### What is a composite resource (XR)?
 
 Composite resources are Kubernetes objects that you can create without needing to write any code and which define a new API abstraction above Crossplane managed resources. Composite resources are user-defined. While managed resources are powerful, there are some limitations:
 
@@ -76,7 +88,7 @@ For example, you could define a custom API called `StorageBucket` and you could 
 
 {{<img src="xp-arch-framework/images/xr.png" alt="Depiction of an XR" size="small" quality="100">}}
 
-## What does it mean to compose something?
+### What does it mean to compose something?
 
 Managed resources should never be created directly. Instead, you create them indirectly as part of composing them with Composite Resources. Not only does this allow you to craft a custom API above the managed resource, it also lets you create a relationship between multiple related managed resources, stitch values between them if needed, adds additional RBAC capabilities and lifecycle management controls.
 

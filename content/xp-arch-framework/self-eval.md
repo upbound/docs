@@ -50,12 +50,18 @@ Example: An Architecture for an organization with a Network, Database, Security,
 
 ### What constitutes an MVP Milestone?
 
+Todo
+
+## The arc of going into production with Crossplane
+
+Upon concluding this exercise, you should now have a stronger sense for the platform you want to build and are starting to form an opinion around what type of APIs you need to provide as part of this platform. We believe the arc of going into production with Crossplane can be broken out into three major areas:
+
+1. First, you will need to transition from the abstract idea of what APIs you need to build to concrete implementations; you need APIs built with Crossplane that _actually_ do something. In [Building APIs](../building-apis), the framework will lay out best practices for using Crossplane's  building blocks to make real custom APIs for Crossplane.
+2. As you finalize the shape of your custom Crossplane APIs, you need to determine how to architect with Crossplane: how many control planes do you need, how do you configure resources that back your control planes, how do you deploy resources to your control planes, and more. In [Control Plane Architecture](../architecture), we have defined a baseline architecture that you can adapt for deploying Crossplane with all the important integrations.
+3. As you go to deploy Crossplane, there are likely other parts of your platform that you will need to integrate with. In [Interface Integrations](../interface-integrations), we explain the most common integrations we see with Crossplane and provide best practices where appropriate around each of them.
+
+{{<img src="xp-arch-framework/images/framework-parts.png" alt="Key parts of the Crossplane Architecture Framework" size="small" quality="100">}}
+
 ## Next Steps
 
-This self-eval should give you some answers to help inform how you need to build on Crossplane. This framework is divided into three major sections:
-
-- Building APIs
-- Control Plane architectures
-- Interface integrations
-
-We recommend reading [Building APIs](../building-apis) as the next step.
+Are you ready to get started? We recommend reading [Building APIs](../building-apis) as the next step.
