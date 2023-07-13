@@ -9,8 +9,7 @@
     --bs-list-group-border-width: 0;
 
     // Default nav item state
-    --bs-list-group-bg: #{$up-grey-100};
-    --bs-list-group-action-hover-bg: #{$up-grey-200};
+    --bs-list-group-action-hover-bg: #{$up-neutral-50};
 
     // Clicked on nav menu item
     --bs-list-group-action-active-color: #{$up-purple-400};
@@ -25,10 +24,11 @@
 
     // The expand/collapse nav button uses the bootstrap accordion components
     .accordion {
-        --bs-accordion-bg: #{$up-grey-400};
-        --bs-accordion-active-bg: #{$up-purple-100};
+        --bs-accordion-bg: transparent;
+        --bs-accordion-active-bg: transparent;
         --bs-accordion-btn-padding-y: 10px;
         --bs-accordion-btn-padding-x: 2px;
+        --bs-accordion-border-color: transparent;
     }
 
     .accordion-button{
@@ -42,11 +42,14 @@
         }
     }
 
+    &.top-level {
+        padding: 32px 28px;
+    }
 }
 
 .left-sidebar-nav{
     grid-area: left-sidebar-nav;
-    border-right: 1px solid #{$up-grey-300};
+    width: 336px;
 
     flex-grow: 1 !important;
 
@@ -55,7 +58,7 @@
     }
 
     &.offcanvas-xl {
-        background: #{$up-grey-100} !important;
+        background: #{$up-neutral-0} !important;
     }
 
     .list-group {
@@ -136,12 +139,15 @@
         font-weight: 800;
         font-size: .9rem;
 
-        &:hover{
-            background-color: #{$up-grey-200};
-        }
+        border-radius: 8px;
+        padding: 12px 8px;
+
         &.active {
-            color:  #{$up-purple-400};
-            background-color: #{$up-purple-100};
+            color:  #{$up-purple-500};
+            background-color: #{$up-purple-50};
+        }
+        &:hover{
+            background-color: #{$up-neutral-50};
         }
     }
 
@@ -150,11 +156,12 @@
     }
 
     .button-container{
-        padding-right: 12px;
+        padding-left: 12px;
     }
 
     .nav-child{
-        padding-left: 44px;
+        padding-left: 24px;
+        border-radius: 8px;
     }
 
     .menu-expand{

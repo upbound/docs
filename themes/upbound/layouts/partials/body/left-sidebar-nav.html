@@ -22,10 +22,10 @@
             </div>
         </div>
 
-        <div class="list-group d-flex">
+        <div class="list-group top-level d-flex">
             {{/*  First entry for the "Docs" section representing home.html  */}}
-            <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative {{if .IsHome }}active{{end}}" id="{{.Title}}">
-                <a href="{{.Site.BaseURL}}" class="d-flex flex-grow-1 stretched-link">Docs</a>
+            <div class="d-flex flex-row my-0 nav-parent-container position-relative {{if .IsHome }}active{{end}}" id="{{.Title}}">
+                <a href="{{.Site.BaseURL}}" class="stretched-link">Docs</a>
             </div>
 
             {{ $currentPage:= . }}
@@ -37,8 +37,8 @@
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
 
                 <!-- Parent Menu Button -->
-                    <div class="d-flex flex-row px-0 py-2 my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
-                        <a href="{{.Permalink}}" class="d-flex flex-grow-1 stretched-link">{{.Title }}</a>
+                    <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
+                        <a href="{{.Permalink}}" class="stretched-link">{{.Title }}</a>
                         {{ if .Pages }}
                         <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
                             <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
