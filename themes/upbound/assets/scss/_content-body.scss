@@ -5,11 +5,11 @@
   font-size: $body-font-size;
 
   @include media-breakpoint-up(xl) {
-    padding: 50px;
+    padding: 40px;
   }
 
   @include media-breakpoint-down(xl) {
-    padding: 50px;
+    padding: 40px;
     overflow-wrap: break-word;
 
   }
