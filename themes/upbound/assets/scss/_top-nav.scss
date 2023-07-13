@@ -1,5 +1,10 @@
 // Styling related to the top navigation
 
 #top-nav {
-    background-color: red;
+    height: 60px;
+    border: 1px solid #{$up-neutral-100};
+
+    .logo-container {
+        padding: 16px 40px;
+    }
 }
