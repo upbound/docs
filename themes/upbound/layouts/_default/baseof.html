@@ -5,19 +5,21 @@
   </head>
 
   <body>
-  <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
-    {{ partialCached "icons/sprites" . }}
+    {{ partial "body/top-nav" .}}
 
-    {{ partial "body/left-sidebar-nav" .}}
+    <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
+      {{ partialCached "icons/sprites" . }}
 
-    {{ partial "body/offcanvas-nav" .}}
+      {{ partial "body/left-sidebar-nav" .}}
 
-    {{ block "main" . }}
-    {{ end }}
+      {{ partial "body/offcanvas-nav" .}}
 
-    {{ partialCached "footer/base" . }}
-  </div>
-</body>
+      {{ block "main" . }}
+      {{ end }}
+
+      {{ partialCached "footer/base" . }}
+    </div>
+  </body>
 
 
 </html>

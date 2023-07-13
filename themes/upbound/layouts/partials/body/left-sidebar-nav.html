@@ -2,26 +2,6 @@
     {{ partialCached "body/search-panel" . }}
 
     <nav aria-label="Documentation section navigation" class="sticky-top container px-0" id="left-nav-menu">
-        <div class="logo nav-logo-search d-flex flex-row">
-            <div class="flex-grow-1">
-                <a href="//www.upbound.io">
-                    <img loading="eager"
-                    src="/img/logos/upbound-purple.svg"
-                    height="21"
-                    width="85"
-                    alt="Upbound Homepage">
-                </a>
-            </div>
-
-            <div class="search-icon" id="search-icon">
-                {{ partial "icons/magnifying-glass.svg" (dict "width" "22px" "height" "18px" "class" "grey-icon") }}
-            </div>
-
-            <div class="align-self-center d-none">
-                {{ partial "icons/moon.svg" (dict "width" "22px" "height" "18px" "class" "grey-icon") }}
-            </div>
-        </div>
-
         <div class="list-group top-level d-flex">
             {{/*  First entry for the "Docs" section representing home.html  */}}
             <div class="d-flex flex-row my-0 nav-parent-container position-relative {{if .IsHome }}active{{end}}" id="{{.Title}}">
