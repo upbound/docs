@@ -17,27 +17,29 @@
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
 
                 <!-- Parent Menu Button -->
-                    <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
-                        <a href="{{.Permalink}}" class="stretched-link">{{.Title }}</a>
-                        {{ if .Pages }}
-                        <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
-                            <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
+                    <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed')">
+                        <span>{{.Title }}</span>
+                        <div class="button-container">
+                            <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand"></div>
                         </div>
-                        {{ end }}
                     </div>
 
-                {{ if .Pages }}
+                
                 <!-- Child Pages -->
                     <div class="nav-child-container px-0 mx-0" id="{{.Title}}-children">
                             <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
-                                {{ range .Pages }}
-                                    <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
-                                        {{ .Title }}
-                                    </a>
+                                <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                    Overview
+                                </a>
+                                {{ if .Pages }}
+                                    {{ range .Pages }}
+                                        <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                            {{ .Title }}
+                                        </a>
+                                    {{ end }}
                                 {{ end }}
                             </div>
                     </div>
-                {{ end }}
             {{ end }}
         </div>
 
