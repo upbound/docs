@@ -18,7 +18,7 @@
 
                 <!-- Parent Menu Button -->
                     <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed')">
-                        <span>{{.Title }}</span>
+                        <span class="nav-parent-title">{{.Title }}</span>
                         <div class="button-container">
                             <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand"></div>
                         </div>

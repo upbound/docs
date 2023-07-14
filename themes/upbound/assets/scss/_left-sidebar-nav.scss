@@ -141,8 +141,17 @@
         border-radius: 8px;
         padding: 12px 8px;
 
+        &:first-of-type.active {
+            color:  #{$up-purple-500};
+            background-color: #{$up-purple-50};
+        }
+
         &:hover{
             background-color: #{$up-neutral-50};
+        }
+        
+        .nav-parent-title {
+            font-size: 16px;
         }
     }
 
