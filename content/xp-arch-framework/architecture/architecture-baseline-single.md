@@ -90,7 +90,7 @@ The first thing you should configure on your control plane is its API. You do th
 Read the [building APIs](../../building-apis) portion of the framework for guidance on building custom APIs with Crossplane.
 {{< /hint >}}
 
-By using a git repo as the single source of truth for a control plane, it gives you a single point of control. Then, you can use a GitOps tool such as Flux or ArgoCD to continuously apply the latest definition of your control plane configuration. Furthermore, we recommend using a Crossplane configuration to serve
+By using a git repo as the single source of truth for a control plane, it gives you a single point of control. Then, you can use a GitOps tool such as Flux or ArgoCD to continuously apply the latest definition of your control plane configuration. Furthermore, we recommend using a "root" Crossplane configuration to encapsulate your APIs, depndencies on other Crossplane configurations, and dependencies on Crossplane providers.
 
 ### Add secrets management
 
@@ -103,17 +103,6 @@ For a complete guide to integrating secrets management in your control plane, se
 {{< hint "note" >}}
 💡 External secret store feature support was introduced as an alpha feature in XP v1.17 and later. Our archicture's recommendation assumes you are running this version of Crossplane or later.
 {{< /hint >}}
-
-### Identity in control planes
-
-Identity in your control plane and Crossplane generally can be thought about in two ways: 
-
-1. cloud identity assumed by providers installed on your control plane
-2. identity assumed by users operating on your control plane
-
-#### Identity for providers
-
-Most enterprise users have a central Identity Provider they use to federate their org’s access to cloud resources. Most cloud providers’ Kubernetes identity integrations allow them to integrate their roles with Kubernetes-native RBAC.
 
 ### Add policy engines
 
