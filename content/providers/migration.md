@@ -13,7 +13,9 @@ Coming soon.
 
 ## Migrating from monolithic to family Official Providers
 
-Sergen TODO
+Coming soon.
+
+For manual migration to the family Official Providers refer to the [migration guide]({{<ref "/knowledge-base/migrate-to-provider-families">}}).
 
 ## Upgrading to a Official Provider version with breaking API changes
 
