@@ -6,7 +6,7 @@ weight: 205
 Upbound Universal Crossplane (UXP) is the Upbound official enterprise-grade
 distribution of Crossplane for self-hosted control planes. 
 
-Install UXP into an existing Kubernetes cluster to access Upbound features like [official providers]({{<ref "../upbound-marketplace/providers.md" >}}) or community Crossplane features.
+Install UXP into an existing Kubernetes cluster to access Upbound features like [official providers]({{<ref "providers" >}}) or community Crossplane features.
 
 ## Install Upbound Universal Crossplane
 
