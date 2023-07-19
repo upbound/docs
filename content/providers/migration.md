@@ -19,7 +19,165 @@ Documentation coming soon.
 For manual migration to the family Official Providers refer to the
 [migration guide]({{<ref "/knowledge-base/migrate-to-provider-families">}}).
 
-Documentation for the automated tooling coming soon.
+`family-migrator` is a tooling for the automated migration process. The tool
+supports interactive and non-interactive migration to the family Official
+Providers. The instructions on how to use tooling are below.
+
+The `family-migrator` tool has two sub-commands, `generate` and `execute`.
+
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "executed" -->
+- `generate`: For generating the migration plan. After the tool creates the
+migration plan, asks if the user wants to continue to perform the created plan.
+
+- `execute`: For only performing the generated plan. To run this command,
+you must have a generated plan. Users can use this option for a generated but
+un-executed plan.
+<!-- vale alex.ProfanityUnlikely = YES -->
+
+The `family-migrator` tool needs several inputs for generating and executing the
+plan. It prompts all required options to the user after it runs.
+
+### Collecting inputs
+
+After running the `family-migrator generate`, tool asks a series of questions
+to user:
+
+1. `? Please specify the path for the migration plan`: The answer represents the
+output path of migration plan. Users need to provide a path for generating the
+plan and patch files.
+2. `? Please provide the registry and organization for the provider family
+packages`: The user specifies the family provider registry and organization to
+migrate. The format must be `<registry host>/<organization>`,
+like: _xpkg.upbound.io/upbound_.
+3. `? Please select the providers that will be migrated`:
+The tool needs the versions of the providers that it wants to migrate. For this
+reason, the user must first select the monolithic providers she wishes to
+migrate. The tool supports multiple selections.
+4. `? Please specify the version of the provider-xxx family`: The user must
+provide the family versions for every selected provider.
+If you want to migrate to the newest version, please see the [Upbound
+Marketplace](https://marketplace.upbound.io/) for the latest version.
+5. `? Please enter the URL of the migration source Configuration package`: The
+user must provide the URL of the currently installed Configuration Package. The
+user can take the value from the `spec.package` path of
+`Configuration.pkg.crossplane.io/v1` resource.
+6. `? Please enter the URL of the migration target Configuration package`: The
+tool builds a new configuration package during migration. Specify the URL to
+which the user pushes the built package.
+7. `? Please specify the source directory for the Crossplane Configuration
+package`: The user must specify the source directory where the configuration
+package located. This directory contains the Configuration metadata,
+compositions, and similar configuration package contents. Example:
+_/Users/user/workspace/platform-ref-gcp/package_
+8. `? Please specify the path to the directory containing the Crossplane package
+examples`: The user must specify the directory where the configuration package
+examples located. Example: _/Users/user/workspace/platform-ref-gcp/examples_
+9. `? Please specify the path to store the updated configuration package`: It's
+the path where the newly built configuration package saved.
+
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "execution" -->
+After the tool collects all the inputs it needs, it generates and exports the
+migration plan to the specified path. Then, it asks if the user wants to
+continue to perform the created plan.
+<!-- vale alex.ProfanityUnlikely = YES -->
+
+{{<hint "note" >}}
+Generating the plan may take some time, depending on the number of providers and
+CRDs in your cluster. Please do not stop the process until it completes. After
+generation, the tool shows a message to the user that the plan has been
+generated.
+{{< /hint >}}
+
+### Review generated plan, manifests, and patch files
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "execution" -->
+After the user chooses to move on to the execution phase, they're first
+asked to review the generated plan and manifests. After a validation question
+that the user has reviewed the plan and files, the tool asks whether to list the
+instructions perform.
+
+The primary purpose of the review is to make sure there are no setbacks
+in the plan. In the following step, execution starts. The tool performs the
+instructions generated in the plan (and displayed on the screen if the user
+chooses yes) step by step.
+
+{{<hint "note" >}}
+The review process is optional and does not directly affect the transition to
+the execution process. However, it is strongly recommended to complete the
+review process.
+{{< /hint >}}
+
+### Execution
+
+After collecting the inputs and reviewing the generated plan, there is no
+obstacle to proceed to the execution phase. The tool has two mods for execution:
+<!-- vale alex.ProfanityUnlikely = YES -->
+
+`? Do you want to execute the migration plan with step-by-step confirmation or
+no interaction`
+
+- **Step-by-Step (Interactive):** In this option, the tool runs each step with
+the consent of the user, and the user decides how to perform the step.
+- **No Interaction:** In this option, the tool runs all steps end-to-end without
+any interaction.
+
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "execution" -->
+#### Step-by-Step (interactive) execution
+
+If the user chooses the Step-by-Step execution, then for every step, the tool
+wants consent and execution option. Three execution options:
+
+`? Step (with name "backup-managed-resources" at index 0) to execute:
+sh -c "kubectl get managed -o yaml > backup/managed-resources.yaml"
+What is your execution preference?`
+<!-- vale alex.ProfanityUnlikely = YES -->
+
+- **Automatically**: The tool performs the step automatically and shows
+  the output.
+- **Manually**: The tool doesn't perform the command and prompts the user for
+confirmation whether run the command.
+- **Skip**: The tool skips this step. Please be careful while choosing the Skip
+option because you can't return to the skipped step.
+
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "execution" -->
+{{<hint "important" >}}
+The Automatically option is recommended. The kubectl tool is used in the
+commands to be run, and it is assumed that this tool is installed on the device
+during Automatically run. Before starting the execution phase, please ensure
+kubectl is installed on your device.
+{{< /hint >}}
+<!-- vale alex.ProfanityUnlikely = YES -->
+
+{{<hint "note" >}}
+Steps of backup the resources may take time, depending on the number of
+resources, installed providers, and CRDs in the cluster.
+{{< /hint >}}
+
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "execution" -->
+#### Non-Interactive execution
+<!-- vale alex.ProfanityUnlikely = YES -->
+
+The user makes no selections or actions while running the steps in this option.
+The tool runs each step, informs the user with information-level
+messages.
+
+<!-- vale alex.ProfanityUnlikely = NO -->
+<!-- ignore "execution" -->
+{{<hint "important" >}}
+The kubectl tool is used in the commands to be run, and it is assumed that this
+tool is installed on the device during non-interactive run. Before starting the
+execution phase, please ensure kubectl is installed on your device.
+{{< /hint >}}
+
+If the tool doesn't report any error during the execution phase, it means that
+the migration tool has worked well. The user can verify the correct
+completion of the migration by checking the status of the cluster.
+<!-- vale alex.ProfanityUnlikely = YES -->
 
 ## Upgrading to a Official Provider version with breaking API changes
 
