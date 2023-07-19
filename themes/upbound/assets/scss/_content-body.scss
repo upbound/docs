@@ -16,11 +16,28 @@
 
   // Override Bootstrap accordion colors in the body
   .accordion {
-    --bs-accordion-active-bg: #{$up-purple-200};
-    --bs-accordion-btn-focus-border-color: #{$up-purple-300};
-    --bs-accordion-border-color: #{$up-purple-300};
-    --bs-accordion-button-focus-border-color: #{$up-purple-300};
+    --bs-accordion-border-color: #{$up-grey-300};
+    --bs-accordion-active-bg: #{$up-purple-100};
     --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem $up-purple-400;
+  }
+
+  // Improve spacing and color on open Bootstrap accordions
+  .accordion-body {
+    background-color: #{$up-purple-100};
+    padding-top: 0px;
+    .highlight {
+      margin:0px;
+    }
+  }
+  // Override Bootstrap accordion general properties
+  .accordion-header {
+    margin-top: 0px;
+  }
+  .accordion-button {
+    font-weight: 900;
+  }
+  .accordion-item {
+    border-width: 2px;
   }
 
   .content-title {
