@@ -78,8 +78,7 @@ Marketplace]
 5. `? Please enter the URL of the migration source Configuration package`: The
 user must provide the URL of the currently installed Configuration Package. The
 user can take the value from the `spec.package` path of
-`Configuration.pkg.crossplane.io/v1` resource. If there is no configuration
-package in cluster, the user can skip this option.
+`Configuration.pkg.crossplane.io/v1` resource.
 6. `? Please enter the URL of the migration target Configuration package`: The
 tool builds a new configuration package during migration. Specify the URL to
 which the user pushes the built package.
