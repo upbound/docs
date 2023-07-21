@@ -83,7 +83,7 @@
                                     <div class="collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
                                         {{ range .Pages }}
                                             <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
-                                                <span class="ps-4">{{ .Title }}</span>
+                                                <span class="ps-4 d-inline-block">{{ .Title }}</span>
                                             </a>
                                         {{ end }}
                                     </div>
