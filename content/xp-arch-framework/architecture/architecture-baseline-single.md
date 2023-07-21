@@ -206,6 +206,10 @@ While you could directly create claims on your control plane via it's API server
 
 For a complete guide to integrating frontend interfaces with your control plane see the [Interface Integrations > Platform Frontends](../../interface-integrations/platform-frontends) topic in this framework.
 
+## Control plane causality dilemma
+
+Common referred to as the "chicken or the egg", if a user wants to use Crossplane to drive their entire platform, that means you need _some_ control plane by which to drive your platform. But who makes the first control plane?
+
 ## Control Plane performance characteristics
 
 We've extensively tested control planes and have observed the following performance characteristics. Use these as a benchmark to inform what you can realistically achieve on a single control plane.

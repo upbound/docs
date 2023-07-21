@@ -149,7 +149,7 @@ We think this is a good baseline, but you can customize the frequency of the bac
 
 ### Restore Control Plane from state
 
-When restoring backup state into a new cluster:
+To restore backup state into a new cluster:
 
 1. Install Velero and configure it to use the backup data source.
 2. Restore the backed up resources to the new cluster.

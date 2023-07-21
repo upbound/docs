@@ -198,4 +198,4 @@ Because Configurations are just another Kubernetes object, you can apply GitOps 
 
 ## Next Steps
 
-Read [API Patterns](../building-apis-patterns).
+After you've learned how to package and deploy your APIs, you should think about how to architect a production-ready solution on Crossplane. Read [Architecture](../../architecture) to learn about best practices for how to do this.

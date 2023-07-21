@@ -12,8 +12,6 @@ Crossplane sits at the core of your platform. As a result, there are about ten a
 - [Policy Engines](policy-engines)
 - [Platform Continuity](platform-continuity)
 - [Monitoring & Observability](monitoring-and-observability)
-- [Authentication & Authorization](authentication-and-authorization)
-- [Security](security)
 
 ## Use the power of the Kubernetes ecosystem
 
