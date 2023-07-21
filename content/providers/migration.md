@@ -97,25 +97,22 @@ asked to review the generated plan and manifests. After a validation question
 that the user has reviewed the plan and files, the tool asks whether to list the
 instructions to execute.
 
-The review's primary purpose is to ensure no unexpected steps are
-in the plan. In the following step, execution starts. The tool performs the
-instructions generated in the plan (and displayed on the screen if the user
-chooses yes) step by step.
-
 {{<hint "note" >}}
-The review process is optional and does not directly affect the transition to
-the execution process. However, it is strongly recommended to complete the
-review process.
+The purpose of this intermediary step is to allow for manual verification to ensure
+no unexpected steps are introduced in the plan. While the review process is optional
+and does not directly affect the transition to the execution phase, it is strongly
+recommended to complete the review process.
 {{< /hint >}}
 
 #### Execution
 
-After collecting the inputs and reviewing the generated plan, there is no
-obstacle to proceed to the execution phase. The tool has two modes for
-execution:
+Having collected the required inputs, generated the migration plan, and reviewed the plan,
+the execution phase can now proceed.
+
+The tool has two modes for execution:
 <!-- vale alex.ProfanityUnlikely = YES -->
 
-`? Do you want to execute the migration plan with step-by-step confirmation or
+`Do you want to execute the migration plan with step-by-step confirmation or
 no interaction`
 
 - **Step-by-Step (Interactive):** In this option, the tool runs each step with
@@ -137,8 +134,8 @@ What is your execution preference?`
 
 - **Automatically**: The tool performs the step automatically and shows
   the output.
-- **Manually**: The tool doesn't perform the command and prompts the user for
-confirmation whether run the command.
+- **Manually**: The tool doesn't perform the command and prompts the user to
+confirm once the command has been executed.
 - **Skip**: The tool skips this step. Please be careful while choosing the Skip
 option because you can't return to the skipped step.
 
