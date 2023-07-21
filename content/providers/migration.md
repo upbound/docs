@@ -24,35 +24,28 @@ monolithic to provider family architecture. The tool supports an interactive and
 non-interactive migration path.
 
 ### Pre-requisites
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- vale write-good.Passive = NO -->
-<!-- ignore "execution" -->
+
 - `kubectl`: `family-migrator` uses the `kubectl` tool in the execution phase,
 and it assumes that this tool is installed locally during the
 non-interactive run. Before starting the execution phase, please ensure
 you have the `kubectl` tool installed.
-<!-- vale alex.ProfanityUnlikely = YES -->
-<!-- vale write-good.Passive = YES -->
 
 ### Installation
 
 Please use the [Releases] page to download the `family-migrator` tool. Download
-the appropriate binary for your operating system (i.e., `Linux` or `Darwin`) and
-architecture (i.e., `amd64` or `arm64`). The download is an executable file
+the appropriate binary for your operating system (`Linux` or `Darwin`) and
+architecture (`amd64` or `arm64`). The download is an executable file
 which might require the necessary file permissions to allow it to be executed.
 
 ### Usage
 
 The `family-migrator` tool has two sub-commands, `generate` and `execute`.
 
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- ignore "executed" -->
 - `generate`: This command generates the migration plan. After the tool creates
 the migration plan, it asks the user if they want to execute the created plan.
 
 - `execute`: Used for executing a generated migration plan. You must generate a
 migration plan first before running this command.
-<!-- vale alex.ProfanityUnlikely = YES -->
 
 The `family-migrator` tool needs several inputs for generating and executing the
 plan. It prompts all required options to the user when executing the command.
@@ -75,12 +68,9 @@ user with a series of questions to gather the required inputs:
 | `Please specify the path to the directory containing the Crossplane package examples` | The user must specify the directory where the location of the configuration package examples. Example: `/Users/user/workspace/platform-ref-gcp/examples` |
 | `Please specify the path to store the updated configuration package` | This is where the location of the newly built configuration package. |
 
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- ignore "execute" -->
 After the tool collects all the inputs it needs, it generates and exports the
 migration plan to the specified path. Then, it asks if the user wants to
 continue to execute the created plan.
-<!-- vale alex.ProfanityUnlikely = YES -->
 
 {{<hint "note" >}}
 Generating the plan may take some time, depending on the number of providers and
@@ -90,8 +80,7 @@ generated.
 {{< /hint >}}
 
 #### Review generated plan, manifests, and patch files
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- ignore "execution" -->
+
 After the user chooses to move on to the execution phase, they're first
 asked to review the generated plan and manifests. After a validation question
 that the user has reviewed the plan and files, the tool asks whether to list the
@@ -110,7 +99,6 @@ Having collected the required inputs, generated the migration plan, and reviewed
 the execution phase can now proceed.
 
 The tool has two modes for execution:
-<!-- vale alex.ProfanityUnlikely = YES -->
 
 `Do you want to execute the migration plan with step-by-step confirmation or
 no interaction`
@@ -120,8 +108,6 @@ the consent of the user, and the user decides how to perform the step.
 - **No Interaction:** In this option, the tool runs all steps end-to-end without
 any interaction.
 
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- ignore "execution" -->
 ##### Step-by-Step (interactive) execution
 
 If the user chooses the Step-by-Step execution, then for every step, the tool
@@ -130,7 +116,6 @@ asks for confirmation of the execution option. Three execution options:
 `? Step (with name "backup-managed-resources" at index 0) to execute:
 sh -c "kubectl get managed -o yaml > backup/managed-resources.yaml"
 What is your execution preference?`
-<!-- vale alex.ProfanityUnlikely = YES -->
 
 - **Automatically**: The tool performs the step automatically and shows
   the output.
@@ -144,16 +129,11 @@ Steps to backup the resources may take a long time, depending on the number of
 resources, installed providers, and CRDs in the cluster.
 {{< /hint >}}
 
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- ignore "execution" -->
 ##### Non-Interactive execution
-<!-- vale alex.ProfanityUnlikely = YES -->
 
 In this mode, the user takes no action, and the tool executes each step, and
 informs the user of the progress.
 
-<!-- vale alex.ProfanityUnlikely = NO -->
-<!-- ignore "execution" -->
 If no errors are reported during execution, the migration was successful.
 The user can verify the correct completion of the migration by checking
 the status of the cluster. The following commands can be used to check
@@ -168,7 +148,6 @@ newly built configuration package reference in the `spec.package` path.
 - The user must observe the family provider references in the `spec.dependsOn`
 path of Configuration.meta.pkg.crossplane.io (by default `crossplane.yaml`)
 manifest. This manifest is in the source package directory (in file system).
-<!-- vale alex.ProfanityUnlikely = YES -->
 
 ## Upgrading to a Official Provider version with breaking API changes
 
