@@ -25,17 +25,18 @@ non-interactive migration path.
 
 ### Pre-requisites
 
-- `kubectl`: `family-migrator` uses the `kubectl` tool in the execution phase,
-and it assumes that this tool is installed locally during the
-non-interactive run. Before starting the execution phase, please ensure
-you have the `kubectl` tool installed.
+- `kubectl`: Before starting the execution phase, please ensure you have the
+`kubectl` tool installed. `family-migrator` uses the `kubectl` tool in the
+execution phase, and it assumes availability of this tool locally during the
+non-interactive run.
+
 
 ### Installation
 
 Please use the [Releases] page to download the `family-migrator` tool. Download
 the appropriate binary for your operating system (`Linux` or `Darwin`) and
 architecture (`amd64` or `arm64`). The download is an executable file
-which might require the necessary file permissions to allow it to be executed.
+which might require the necessary file permissions to allow execution.
 
 ### Usage
 
@@ -66,7 +67,7 @@ user with a series of questions to gather the required inputs:
 | `Please enter the URL of the migration target Configuration package` | The tool builds a new configuration package during migration. Specify the URL to which the user pushes the built package. |
 | `Please specify the source directory for the Crossplane Configuration package` | The user must specify the source directory where the location of the configuration package. This directory contains the Configuration metadata, compositions, and similar configuration package contents. Example: `/Users/user/workspace/platform-ref-gcp/package` |
 | `Please specify the path to the directory containing the Crossplane package examples` | The user must specify the directory where the location of the configuration package examples. Example: `/Users/user/workspace/platform-ref-gcp/examples` |
-| `Please specify the path to store the updated configuration package` | This is where the location of the newly built configuration package. |
+| `Please specify the path to store the updated configuration package` | The location to store the newly built configuration package. |
 
 After the tool collects all the inputs it needs, it generates and exports the
 migration plan to the specified path. Then, it asks if the user wants to
@@ -120,7 +121,7 @@ What is your execution preference?`
 - **Automatically**: The tool performs the step automatically and shows
   the output.
 - **Manually**: The tool doesn't perform the command and prompts the user to
-confirm once the command has been executed.
+confirm after manually executing the command.
 - **Skip**: The tool skips this step. Please be careful while choosing the Skip
 option because you can't return to the skipped step.
 
@@ -134,10 +135,9 @@ resources, installed providers, and CRDs in the cluster.
 In this mode, the user takes no action, and the tool executes each step, and
 informs the user of the progress.
 
-If no errors are reported during execution, the migration was successful.
 The user can verify the correct completion of the migration by checking
-the status of the cluster. The following commands can be used to check
-the cluster status:
+the status of the cluster. Use the following commands to confirm the cluster
+status:
 
 - `kubectl get providers.pkg.crossplane.io`: The user must observe the family
 providers instead of monolithic.
