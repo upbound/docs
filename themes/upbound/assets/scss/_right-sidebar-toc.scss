@@ -11,8 +11,6 @@
     }
 
     .border-container{
-        //border-left: 2px solid #{$up-purple-300} !important;
-
         @include media-breakpoint-down(xl) {
             margin-left: 20px;
         }
