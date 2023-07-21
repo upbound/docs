@@ -70,7 +70,7 @@ spec:
 
 ## Layering Composite Resources
 
-Composite resources are user-defined. You can layer composite resources on one another by crafting your composition implementations to compose both managed resources _and_ composite resources. Notice in the example below, this defines a composition that composes four _other_ composite resources (_XCompositeAmplify_, _XCompositeCognito_, _XCompositeGateway_, and _XCompositeFunction_)
+Composite resources are user-defined. You can layer composite resources on one another by crafting your composition implementations to compose both managed resources _and_ composite resources. Notice in the example below, it defines a composition that composes four _other_ composite resources (_XCompositeAmplify_, _XCompositeCognito_, _XCompositeGateway_, and _XCompositeFunction_)
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
