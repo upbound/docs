@@ -28,20 +28,21 @@ non-interactive migration path.
 <!-- vale write-good.Passive = NO -->
 <!-- ignore "execution" -->
 - `kubectl`: `family-migrator` uses the `kubectl` tool in the execution phase,
-and it assumes that this tool is installed on the device during the
+and it assumes that this tool is installed locally during the
 non-interactive run. Before starting the execution phase, please ensure
-you have the `kubectl` tool installed on your device.
+you have the `kubectl` tool installed.
 <!-- vale alex.ProfanityUnlikely = YES -->
 <!-- vale write-good.Passive = YES -->
 
 ### Installation
 
-Please use the [Releases] page to install the `family-migrator` tool. The user
-can download the appropriate binaries running on `amd64` and `arm64`
-architectures for the tool's `Linux` and `Darwin` operating systems. The
-downloaded file isn't an archive; it's directly executable.
+Please use the [Releases] page to download the `family-migrator` tool. Download
+the appropriate binary for your operating system (i.e., `Linux` or `Darwin`) and
+architecture (i.e., `amd64` or `arm64`). The download is an executable file
+which might require the necessary file permissions to allow it to be executed.
 
 ### Usage
+
 The `family-migrator` tool has two sub-commands, `generate` and `execute`.
 
 <!-- vale alex.ProfanityUnlikely = NO -->
@@ -61,38 +62,18 @@ plan. It prompts all required options to the user when executing the command.
 When running the `family-migrator generate` command, the tool prompts the
 user with a series of questions to gather the required inputs:
 
-1. `? Please specify the path for the migration plan`: The answer represents the
-output path of migration plan. Users need to provide a path for generating the
-plan and patch files. For example, `/tmp/generated/migration-plan.yaml`
-2. `? Please provide the registry and organization for the provider family
-packages`: The user specifies the family provider registry and organization to
-migrate to. The format must be `<registry host>/<organization>`, for example,
-`xpkg.upbound.io/upbound`.
-3. `? Please select the providers that will be migrated`:
-The tool presents user with a list of the monolithic providers they can select
-to migrate from. The tool supports multiple selections.
-4. `? Please specify the version of the provider-xxx family`: The user must
-provide the versions of the family provider to migrate to for each selected
-provider. If you want to migrate to the latest version, refer to the [Upbound
-Marketplace]
-5. `? Please enter the URL of the migration source Configuration package`: The
-user must provide the URL of the currently installed Configuration Package. The
-user can take the value from the `spec.package` path of
-`Configuration.pkg.crossplane.io/v1` resource.
-6. `? Please enter the URL of the migration target Configuration package`: The
-tool builds a new configuration package during migration. Specify the URL to
-which the user pushes the built package.
-7. `? Please specify the source directory for the Crossplane Configuration
-package`: The user must specify the source directory where the location of the
-configuration package. This directory contains the Configuration metadata,
-compositions, and similar configuration package contents. Example:
-`/Users/user/workspace/platform-ref-gcp/package`
-8. `? Please specify the path to the directory containing the Crossplane package
-examples`: The user must specify the directory where the location of the
-configuration package examples. Example:
-`/Users/user/workspace/platform-ref-gcp/examples`
-9. `? Please specify the path to store the updated configuration package`: This
-is where the location of the newly built configuration package.
+| Input | Description |
+| ----- | ----------- |
+| `Please specify the path for the migration plan` | The answer represents the output path of the migration plan. Users need to provide a path for generating the plan and patch files. For example, `/tmp/generated/migration-plan.yaml` |
+| `Please provide the registry and organization for the provider family packages` | The format must be `<registry host>/<organization>`, for example, `xpkg.upbound.io/upbound`. |
+| `Please select the providers that will be migrated` | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
+| `Please select the providers that will be migrated` | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
+| `Please specify the version of the provider-xxx family` | The user must provide the versions of the family provider to migrate to for each selected provider. If you want to migrate to the latest version, refer to the [Upbound Marketplace] |
+| `Please enter the URL of the migration source Configuration package` | The user must provide the URL of the currently installed Configuration Package. The user can take the value from the `spec.package` path of `Configuration.pkg.crossplane.io/v1` resource. |
+| `Please enter the URL of the migration target Configuration package` | The tool builds a new configuration package during migration. Specify the URL to which the user pushes the built package. |
+| `Please specify the source directory for the Crossplane Configuration package` | The user must specify the source directory where the location of the configuration package. This directory contains the Configuration metadata, compositions, and similar configuration package contents. Example: `/Users/user/workspace/platform-ref-gcp/package` |
+| `Please specify the path to the directory containing the Crossplane package examples` | The user must specify the directory where the location of the configuration package examples. Example: `/Users/user/workspace/platform-ref-gcp/examples` |
+| `Please specify the path to store the updated configuration package` | This is where the location of the newly built configuration package. |
 
 <!-- vale alex.ProfanityUnlikely = NO -->
 <!-- ignore "execute" -->
@@ -162,10 +143,6 @@ confirmation whether run the command.
 option because you can't return to the skipped step.
 
 {{<hint "note" >}}
-The Automatically option is recommended.
-{{< /hint >}}
-
-{{<hint "note" >}}
 Steps to backup the resources may take a long time, depending on the number of
 resources, installed providers, and CRDs in the cluster.
 {{< /hint >}}
@@ -175,15 +152,15 @@ resources, installed providers, and CRDs in the cluster.
 ##### Non-Interactive execution
 <!-- vale alex.ProfanityUnlikely = YES -->
 
-In this mode, the user takes no action and the tool runs each step, and
+In this mode, the user takes no action, and the tool executes each step, and
 informs the user of the progress.
 
 <!-- vale alex.ProfanityUnlikely = NO -->
 <!-- ignore "execution" -->
-If the tool doesn't report any errors during execution the migration was
-successful. The user can verify the correct completion of the migration by
-checking the status of the cluster. The user can use some commands that can be
-for validation
+If no errors are reported during execution, the migration was successful.
+The user can verify the correct completion of the migration by checking
+the status of the cluster. The following commands can be used to check
+the cluster status:
 
 - `kubectl get providers.pkg.crossplane.io`: The user must observe the family
 providers instead of monolithic.
