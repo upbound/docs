@@ -66,6 +66,7 @@
                                 <!-- Subpages -->
                                     {{/*  Generate a random subpage ID to use as the collapse target ID  */}}
                                     {{ $subid := substr (sha1 .Permalink) 0 8 }}
+                                    {{ $subexpand := (or (eq $currentPage .) (eq $currentPage.Parent .)) }}
 
                                     <!-- Parent Menu Button -->
                                     <div class="list-group-item d-flex flex-row nav-child py-2 my-0 position-relative {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
@@ -74,12 +75,12 @@
                                         </a>
                                         {{ if .Pages }}
                                             <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
-                                                <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$subid}}" aria-expanded="true" aria-controls="collapse-{{$subid}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
+                                                <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $subexpand}} collapsed {{end}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{$subid}}" aria-expanded="false" aria-controls="collapse-{{$subid}}" title="Close/Expand" onclick="this.classList.toggle('down');"></div>
                                             </div>
                                         {{ end }}
                                     </div>
 
-                                    <div class="collapse list-group show" id="collapse-{{$subid}}">
+                                    <div class="collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
                                         {{ range .Pages }}
                                             <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
                                                 <span class="ps-4">{{ .Title }}</span>
