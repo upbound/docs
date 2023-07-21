@@ -56,18 +56,20 @@ plan. It prompts all required options to the user when executing the command.
 When running the `family-migrator generate` command, the tool prompts the
 user with a series of questions to gather the required inputs:
 
-| Input | Description |
+{{< table "table table-sm table-striped">}}
+| Required input | Description |
 | ----- | ----------- |
-| `Please specify the path for the migration plan` | The answer represents the output path of the migration plan. Users need to provide a path for generating the plan and patch files. For example, `/tmp/generated/migration-plan.yaml` |
-| `Please provide the registry and organization for the provider family packages` | The format must be `<registry host>/<organization>`, for example, `xpkg.upbound.io/upbound`. |
-| `Please select the providers that will be migrated` | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
-| `Please select the providers that will be migrated` | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
-| `Please specify the version of the provider-xxx family` | The user must provide the versions of the family provider to migrate to for each selected provider. If you want to migrate to the latest version, refer to the [Upbound Marketplace] |
-| `Please enter the URL of the migration source Configuration package` | The user must provide the URL of the currently installed Configuration Package. The user can take the value from the `spec.package` path of `Configuration.pkg.crossplane.io/v1` resource. |
-| `Please enter the URL of the migration target Configuration package` | The tool builds a new configuration package during migration. Specify the URL to which the user pushes the built package. |
-| `Please specify the source directory for the Crossplane Configuration package` | The user must specify the source directory where the location of the configuration package. This directory contains the Configuration metadata, compositions, and similar configuration package contents. Example: `/Users/user/workspace/platform-ref-gcp/package` |
-| `Please specify the path to the directory containing the Crossplane package examples` | The user must specify the directory where the location of the configuration package examples. Example: `/Users/user/workspace/platform-ref-gcp/examples` |
-| `Please specify the path to store the updated configuration package` | The location to store the newly built configuration package. |
+| **Please specify the path for the migration plan** | The answer represents the output path of the migration plan. Users need to provide a path for generating the plan and patch files. For example, `/tmp/generated/migration-plan.yaml` |
+| **Please provide the registry and organization for the provider family packages** | The format must be `<registry host>/<organization>`, for example, `xpkg.upbound.io/upbound`. |
+| **Please select the providers that will be migrated** | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
+| **Please select the providers that will be migrated** | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
+| **Please specify the version of the provider-xxx family** | The user must provide the versions of the family provider to migrate to for each selected provider. If you want to migrate to the latest version, refer to the [Upbound Marketplace] |
+| **Please enter the URL of the migration source Configuration package** | The user must provide the URL of the currently installed Configuration Package. The user can take the value from the `spec.package` path of `Configuration.pkg.crossplane.io/v1` resource. |
+| **Please enter the URL of the migration target Configuration package** | The tool builds a new configuration package during migration. Specify the URL to which the user pushes the built package. |
+| **Please specify the source directory for the Crossplane Configuration package** | The user must specify the source directory where the location of the configuration package. This directory contains the Configuration metadata, compositions, and similar configuration package contents. Example: `/Users/user/workspace/platform-ref-gcp/package` |
+| **Please specify the path to the directory containing the Crossplane package examples** | The user must specify the directory where the location of the configuration package examples. Example: `/Users/user/workspace/platform-ref-gcp/examples` |
+| **Please specify the path to store the updated configuration package** | The location to store the newly built configuration package. |
+{{< /table >}}
 
 After the tool collects all the inputs it needs, it generates and exports the
 migration plan to the specified path. Then, it asks if the user wants to
