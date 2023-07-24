@@ -32,4 +32,4 @@ In any of the above cases, you are "specializing" the responsibilities of a cont
 
 ## Next Steps
 
-Read the [Baseline Control Plane](../architecture-baseline-single) architecture for our recommendations for how to set up a single instance of Crossplane.
+Read the [Baseline Control Plane]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md" >}}) architecture for our recommendations for how to set up a single instance of Crossplane.

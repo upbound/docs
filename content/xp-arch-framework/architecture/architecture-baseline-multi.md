@@ -51,7 +51,7 @@ When you create multiple control planes, each control plane's role is usually sp
 It's important to note you may combine approaches from this list. For example, you may have cross-environment _and_ tenant isolation requirements. 
 
 {{< hint "tip" >}}
-If after reading this page, you are unsure of whether you need to create multiple control planes, our recommendation is to start simple and try to operate with just a [single control plane]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md#configuration" >}}). You should only begin to look at a multi-control plane architecture when you have strong business requirements to do so or your usage exceeds the capacity of a single control plane.
+If after reading this page, you are unsure of whether you need to create multiple control planes, our recommendation is to start simple and try to operate with just a [single control plane]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md#configure-your-control-plane" >}}). You should only begin to look at a multi-control plane architecture when you have strong business requirements to do so or your usage exceeds the capacity of a single control plane.
 {{< /hint >}}
 
 ### Specialize control planes by environment

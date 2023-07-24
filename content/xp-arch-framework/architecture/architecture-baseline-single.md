@@ -186,7 +186,7 @@ A Crossplane provider's `ProviderConfig` is a cluster-scoped resource. That mean
 
 ## Consume control plane APIs
 
-Your control plane’s API can be consumed in a variety of ways. For users who are building an Internal Developer Platform (IDP), this typically involves having a UI-based form experiences to collect information to send along to a control plane to action upon. If you read and follow the instructions for [building APIs with compositions](/xp-arch-framework/building-apis/building-apis-compositions). this means you need to create Crossplane claims on the control plane.
+Your control plane’s API can be consumed in a variety of ways. For users who are building an Internal Developer Platform (IDP), this typically involves having a UI-based form experiences to collect information to send along to a control plane to action upon. If you read and follow the instructions for [building APIs with compositions](/xp-arch-framework/building-apis/building-apis-compositions.md). this means you need to create Crossplane claims on the control plane.
 
 While you could directly create claims on your control plane via it's API server, this baseline architecture recommends designating a git repo to be the source for all Crossplane claims that should exist on a control plane. Similar to configuring the definition for your control plane’s configuration, this pattern allows you to use GitOps tools like ArgoCD or Flux to continuously sync the resources that are desired from your control plane. For this architecture to function properly, the interfaces to your control plane need to be able to create Crossplane claim .yamls and submit it to the repos being monitored by your GitOps tooling.
 

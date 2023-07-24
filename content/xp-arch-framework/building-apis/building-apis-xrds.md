@@ -194,7 +194,7 @@ spec:
       ...
 ```
 
-Note this is just the definition portion of your new API version; you also need to create new compositions that implement the new version. Learn how to do this in the [compositions]() page.
+Note this is just the definition portion of your new API version; you also need to create new compositions that implement the new version. Learn how to do this in the [compositions]({{< ref "xp-arch-framework/building-apis/building-apis-compositions.md" >}}) page.
 
 ### Converting resources between XRD versions
 
