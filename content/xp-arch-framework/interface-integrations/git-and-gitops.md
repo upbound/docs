@@ -30,7 +30,63 @@ Your control plane itself is infrastructure, and as such should ideally be defin
 
 ## GitOps and Crossplane 
 
-[Flux](https://fluxcd.io/) and [Argo](https://argo-cd.readthedocs.io/en/stable/) are two examples of projects in the Kubernetes ecosystem that you can use in tandem with Crossplane to achieve GitOps flows. They're also the most commonly chosen tools to accomplish this job, so we'll provide specific recommendations for integrating these with Crossplane below. 
+[Argo](https://argo-cd.readthedocs.io/en/stable/) and [Flux](https://fluxcd.io/) are two examples of projects in the Kubernetes ecosystem that you can use in tandem with Crossplane to achieve GitOps flows. They're also the most commonly chosen tools to accomplish this job, so we'll provide specific recommendations for integrating these with Crossplane below. 
+
+### Integrate Crossplane with Argo
+
+Argo CD is a project that enables GitOps by implementing an `Application` resource, which provides a declarative approach to managing config management tooling for Kubernetes resources (for example, Helm and Kustomize) and a controller for handling the reconciliation loop for syncing the resources into the cluster (updating the live state to match the desired state).
+
+{{<img src="xp-arch-framework/images/argo.png" alt="An illustration of Argo" size="small" quality="100">}}
+
+#### Argo and single control plane
+
+In the case where you're running only a single control plane, it's easiest to colocate Argo inside the cluster where Crossplane is running. Once Argo is installed, you need to configure it by defining a new `Application` that represents your control plane and a source to pull from.
+
+```yaml
+#controlplane-1.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-controlplane
+spec:
+  destination:
+    name: in-cluster
+    namespace: <namespace-in-controlplane-to-sync-to>
+  project: default
+  source:
+    path: infrastructure/claims
+    repoURL: <your-controlplane-repo-source>
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+```
+
+#### Argo and multi-control plane
+
+Following the same advice as for Flux, in a multi-control plane architecture we recommend deploying Argo as a centralized instance in its own cluster, then register your control planes as external targets. To do this, you will create new `Application` resources in Argo that establish a relationship between a git source and your control planes.
+
+To configure Argo for deploying to multiple clusters, you need to define a new `Application` for each control plane which represents your control plane and a source to pull from.
+```yaml
+#controlplane-1.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-controlplane
+spec:
+  destination:
+    server: <cluster-api-url>
+    namespace: <namespace-in-controlplane-to-sync-to>
+  project: default
+  source:
+    path: infrastructure/claims
+    repoURL: <your-controlplane-repo-source>
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+```
+
+You will need to configure the `spec.destination.server` to point to the endpoint for your control plane's cluster API server. For every control plane that you want to register with your central instance of Argo, you will create a new `Application` object as above.
+
 
 ### Integrate Crossplane with Flux
 
@@ -139,58 +195,3 @@ resources:
 ```
 
 For every new instance of Crossplane that you want to register and set up GitOps flows for with Flux, you will create pairs of files as we demonstrated with `xp-repo.yaml` and `xp-kustomization.yaml` above.
-
-### Integrate Crossplane with Argo
-
-Argo CD is a project that enables GitOps by implementing an `Application` resource, which provides a declarative approach to managing config management tooling for Kubernetes resources (for example, Helm and Kustomize) and a controller for handling the reconciliation loop for syncing the resources into the cluster (updating the live state to match the desired state).
-
-{{<img src="xp-arch-framework/images/argo.png" alt="An illustration of Argo" size="small" quality="100">}}
-
-#### Argo and single control plane
-
-In the case where you're running only a single control plane, it's easiest to colocate Argo inside the cluster where Crossplane is running. Once Argo is installed, you need to configure it by defining a new `Application` that represents your control plane and a source to pull from.
-
-```yaml
-#controlplane-1.yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: local-controlplane
-spec:
-  destination:
-    name: in-cluster
-    namespace: <namespace-in-controlplane-to-sync-to>
-  project: default
-  source:
-    path: infrastructure/claims
-    repoURL: <your-controlplane-repo-source>
-    targetRevision: main
-  syncPolicy:
-    automated: {}
-```
-
-#### Argo and multi-control plane
-
-Following the same advice as for Flux, in a multi-control plane architecture we recommend deploying Argo as a centralized instance in its own cluster, then register your control planes as external targets. To do this, you will create new `Application` resources in Argo that establish a relationship between a git source and your control planes.
-
-To configure Argo for deploying to multiple clusters, you need to define a new `Application` for each control plane which represents your control plane and a source to pull from.
-```yaml
-#controlplane-1.yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: local-controlplane
-spec:
-  destination:
-    server: <cluster-api-url>
-    namespace: <namespace-in-controlplane-to-sync-to>
-  project: default
-  source:
-    path: infrastructure/claims
-    repoURL: <your-controlplane-repo-source>
-    targetRevision: main
-  syncPolicy:
-    automated: {}
-```
-
-You will need to configure the `spec.destination.server` to point to the endpoint for your control plane's cluster API server. For every control plane that you want to register with your central instance of Argo, you will create a new `Application` object as above.

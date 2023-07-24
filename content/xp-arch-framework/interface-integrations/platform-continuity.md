@@ -98,7 +98,7 @@ We recommend establishing a Velero schedule to periodically take snapshots for e
 apiVersion: velero.io/v1
 kind: Schedule
 metadata:
-  name: daily-11111111-aaaa-2222-bbbb-333333333333
+  name: daily-backup
   namespace: velero
 spec:
   schedule: '@every 24h'
@@ -148,7 +148,8 @@ We think this is a good baseline, but you can customize the frequency of the bac
 
 To restore backup state into a new cluster:
 
-1. Install Velero and configure it to use the backup data source.
-2. Restore the backed up resources to the new cluster.
-3. Scale up the provider deployments to one in the new cluster.
-4. During the backup and restoration process Velero preserves owner references, resource states, and external names of managed resources. Therefore from here on, the reconciliation process should kick in and proceed as if there were no changes.
+1. Ensure that Crossplane and providers are not running in a new cluster. Otherwise, the ordering between managed resources, composites, and claims becomes critical. Failure to do so may result in race conditions and, for example, duplication of managed resources.
+2. Install Velero and configure it to use the backup data source.
+3. Restore the backed up resources to the new cluster.
+4. Scale up the provider deployments to one in the new cluster.
+5. During the backup and restoration process Velero preserves owner references, resource states, and external names of managed resources. Therefore from here on, the reconciliation process should kick in and proceed as if there were no changes.

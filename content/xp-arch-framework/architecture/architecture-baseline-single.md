@@ -20,6 +20,10 @@ Because Crossplane is built on the foundation of Kubernetes, you need a Kubernet
 
 Crossplane providers create new Kubernetes APIs to represent external cloud APIs. These APIs are Kubernetes Custom Resource Definitions (CRDs). Crossplane providers are the implementation and delivery vehicle for these CRDs. Crossplane providers vary in terms of the number of CRDs they define; some only define a few, while others may define hundreds. With consideration to large Crossplane providers, installing many CRDs creates significant CPU and memory pressure on the API Server of your control plane. Therefore, failure to size the Kubernetes control plane nodes can lead to API timeouts or control plane pods, including UXP, to restart or fail.
 
+{{< hint "tip" >}}
+With [provider families](https://blog.crossplane.io/crd-scaling-provider-families/) now supported in Crossplane and [Upbound Official Provider Families](https://blog.upbound.io/new-provider-families) released, we strongly recommend users adopt these providers. They help you avoid installing CRDs that you don't need on your control plane.
+{{< /hint >}}
+
 ### Managed Kubernetes clusters
 
 In managed Kubernetes environments such as AWS EKS or GCP GKE, you don’t control the Kubernetes control plane nodes. As a result, each managed Kubernetes provider handles the resource needs of Upbound providers differently. 
@@ -84,7 +88,7 @@ We will first cover what it means to configure each of these, what "integrations
 
 ### Configure API definition 
 
-The first thing you should configure on your control plane is its API. You do this by installing Crossplane [providers](https://docs.crossplane.io/v1.12/concepts/providers/), [configurations](https://docs.crossplane.io/v1.12/concepts/packages/#configuration-packages), and your own user-defined [compositions](https://docs.crossplane.io/v1.12/concepts/composition/). 
+The first thing you should configure on your control plane is its API. You do this by installing Crossplane [providers](https://docs.crossplane.io/master/concepts/providers/), [configurations](https://docs.crossplane.io/master/concepts/packages/#configuration-packages), and your own user-defined [compositions](https://docs.crossplane.io/master/concepts/composition/). 
 
 {{< hint "note" >}}
 Read the [building APIs]({{< ref "xp-arch-framework/building-apis" >}})  portion of the framework for guidance on building custom APIs with Crossplane.
@@ -112,7 +116,7 @@ If you are unsure whether you need to integrate a policy engine with your contro
 
 ### Monitor and collect metrics
 
-Crossplane can be configured to emit Prometheus metrics at install-time, so users can install Prometheus to sit alongside Crossplane and configure it to scrape metrics for the core Crossplane component and provider pods. Users can integrate these metrics with Grafana or other dashboarding solutions to visualize metrics, logs, and alerts. 
+Crossplane can be configured to emit Prometheus metrics at install-time, so users can install Prometheus to sit alongside Crossplane and configure it to scrape metrics for the core Crossplane component and provider pods. Users can integrate these metrics with dashboarding solutions such as Datadog, Grafana or New Relic to visualize metrics, logs, and alerts. 
 
 For a complete guide to monitoring and observability in your control plane see the [Interface Integrations > Monitoring and Observability]({{< ref "xp-arch-framework/interface-integrations/monitoring-and-observability.md" >}}) topic in this framework.
 
@@ -194,11 +198,12 @@ For a complete guide to integrating frontend interfaces with your control plane 
 
 ## Control plane causality dilemma
 
-Commonly referred to as the "chicken or the egg," if a user wants to use Crossplane to drive their entire platform, that means you need _some_ control plane by which to drive your platform. But who makes the first control plane? You can create your first control plane (from which you can then provision everything else) in three ways:
+Commonly referred to as the "chicken or the egg," if a user wants to use Crossplane to drive their entire platform, that means you need _some_ control plane by which to drive your platform. But who makes the first control plane? You can create your first control plane (from which you can then provision everything else) in four ways:
 
 1. Use a solution such as [Upbound](https://upbound.io/product/upbound), which provides a service (an API) by which you can request your first control plane.
 2. Bootstrap a local Crossplane environment, such as Crossplane installed on [KinD](https://github.com/kubernetes-sigs/kind), configured so you can create your first cloud control plane in your desired hyperscale cloud provider. Once the cloud control plane has been provisioned, you can spin down your local Crossplane environment.
 3. Use an IaC tool like Terraform to do the initial bootstrap of your first cloud control plane.
+4. Use any other tool to do the initial bootstrap of your first cloud control plane.
 
 ## Next Steps
 

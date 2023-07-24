@@ -4,10 +4,10 @@ weight: 4
 description: "how to build APIs"
 ---
 
-[Composite resource definitions (XRDs)](https://docs.crossplane.io/v1.12/concepts/composition/#compositeresourcedefinitions) define the type and schema of your composite resource (XR). Think of the XRD as the object that defines the **shape** of your API. While the fields you choose to define in the `spec` of your XRD are highly dependent on the use case you’re trying to accomplish, there are a general set of best practices you can apply to help you approach how to define an XRD.
+[Composite resource definitions (XRDs)](https://docs.crossplane.io/master/concepts/composition/#compositeresourcedefinitions) define the type and schema of your composite resource (XR). Think of the XRD as the object that defines the **shape** of your API. While the fields you choose to define in the `spec` of your XRD are highly dependent on the use case you’re trying to accomplish, there are a general set of best practices you can apply to help you approach how to define an XRD.
 
 {{< hint "important" >}}
-If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
+If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/master/concepts/) documentation.
 {{< /hint >}}
 
 ## Purpose
@@ -24,8 +24,8 @@ Most Crossplane providers have a number of different managed resources that map 
 {{< table "table table-sm" >}}
 | Generic | Crossplane provider-aws | AWS infrastructure |
 | ---- | ---- | ---- | 
-| resource-1 | [`Instance`](https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v0.37.0/resources/ec2.aws.upbound.io/Instance/v1beta1) | An EC2 Instance | 
-| resource-2 | [`SecurityGroup`](https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/v0.37.0/resources/ec2.aws.upbound.io/SecurityGroup/v1beta1) | A Security Group | 
+| resource-1 | [`Instance`](https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/Instance/v1beta1) | An EC2 Instance | 
+| resource-2 | [`SecurityGroup`](https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/latest/resources/ec2.aws.upbound.io/SecurityGroup/v1beta1) | A Security Group | 
 {{< /table >}}
 
 When you create some infrastructure in a cloud service, sometimes that infrastructure maps to a single API (such as an S3 bucket) and other times it actually maps to multiple APIs. For example, if you create an EKS cluster in AWS, there is an AWS cluster object, some IAM rules, a NodeGroup, network settings, and more; this is multiple APIs and multiple objects that get created. 
@@ -47,11 +47,11 @@ Two reasons it's important to know which fields are required in the MRs you want
 1. There's a high likelihood you want to either expose or let your consumers influence indirectly these fields in your API
 2. Composite Resources ultimately instantiate MRs, so you need to create valid MRs in order for your Composite Resource to create successfully.
 
-Use the [Upbound Marketplace’s](https://marketplace.upbound.io/) API documentation feature to see which fields are required or optional under the `spec.forProvider`. For example, notice in the [AWS EKS Cluster](https://marketplace.upbound.io/providers/upbound/provider-aws-eks/v0.37.0/resources/eks.aws.upbound.io/Cluster/v1beta1) resource API documentation how `region` is required whereas `version` isn't.
+Use the [Upbound Marketplace’s](https://marketplace.upbound.io/) API documentation feature to see which fields are required or optional under the `spec.forProvider`. For example, notice in the [AWS EKS Cluster](https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/Cluster/v1beta1) resource API documentation how `region` is required whereas `version` isn't.
 
 {{<img src="xp-arch-framework/images/eks-required-fields.png" alt="Which fields are required for EKS cluster" size="small" quality="100">}}
 
-Sometimes a managed resource will have fields that need to have a value but it's not explicitly marked as `required`. For example, the [AWS Lambda Function](https://marketplace.upbound.io/providers/upbound/provider-aws-lambda/v0.37.0/resources/lambda.aws.upbound.io/Function/v1beta1) resource API documentation stipulates that “filename, image_uri, or s3_bucket must be specified”, yet none of those fields individually are marked required. It's helpful to look at resources `Examples` in the Upbound Marketplace, because these examples demonstrate configs for MRs that have been verified to successfully create.
+Sometimes a managed resource will have fields that need to have a value but it's not explicitly marked as `required`. For example, the [AWS Lambda Function](https://marketplace.upbound.io/providers/upbound/provider-aws-lambda/latest/resources/lambda.aws.upbound.io/Function/v1beta1) resource API documentation stipulates that “filename, image_uri, or s3_bucket must be specified”, yet none of those fields individually are marked required. It's helpful to look at resources `Examples` in the Upbound Marketplace, because these examples demonstrate configs for MRs that have been verified to successfully create.
 
 {{< hint "tip" >}}
 Fields that are required in order for an MR to successfully create usually indicate important details that dramatically impact what gets created. Consider whether these fields should be inputs directly supplied by your API’s consumers, whether it should be influenced by inputs provided by your API’s consumers, or whether they have no business influencing its value at all.
@@ -102,7 +102,7 @@ spec:
 In your XRD, you will want to give your Composite Resource a name and update the API group it should be served from. The scaffold above also assumes you want this Composite Resource to be claimable. If you don’t want to allow users to create claims against this Composite Resource, omit the `claimNames` field.
 
 {{< hint "important" >}}
-**Should your composite resource be claimable?** In most circumstances, the answer is "yes". Crossplane composite resources are cluster-scoped objects, which means they're not associated with any given namespace in your control plane. By making a composite resource claimable, this enables you to restrict users to different namespaces in your control plane and thereby improve isolation between them. To learn more, read the [architecture]() guide.
+**Should your composite resource be claimable?** In most circumstances, the answer is "yes". Crossplane composite resources are cluster-scoped objects, which means they're not associated with any given namespace in your control plane. By making a composite resource claimable, this enables you to restrict users to different namespaces in your control plane and thereby improve isolation between them. To learn more, read the [architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md#tenancy-on-your-control-plane" >}}) guide.
 {{< /hint >}}
 
 ### Authoring Best Practices

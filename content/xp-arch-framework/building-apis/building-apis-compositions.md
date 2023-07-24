@@ -7,7 +7,7 @@ description: "how to build APIs"
 Compositions are the implementations of the schema you define in your [XRD]({{< ref "xp-arch-framework/building-apis/building-apis-xrds.md" >}}). The relationship between XRDs and compositions is one-to-many. You can have multiple compositions that implement the spec of an XRD and you can tell Crossplane which one to select. We always recommend to start by first authoring your XRD before authoring compositions to implement it.
 
 {{< hint "important" >}}
-If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
+If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/master/concepts/) documentation.
 {{< /hint >}}
 
 ## A Composition's Purpose
@@ -182,13 +182,13 @@ This is able to be done because, just like in Kubernetes, every Crossplane objec
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: xeks.aws.platformref.upbound.io
+  name: xeks.aws.k8s.starter.org
   labels:
     provider: aws
 spec:
   writeConnectionSecretsToNamespace: upbound-system
   compositeTypeRef:
-    apiVersion: aws.platformref.upbound.io/v1alpha1
+    apiVersion: aws.k8s.starter.org/v1alpha1
     kind: XEKS
   resources:
     - name: kubernetesCluster
@@ -242,6 +242,20 @@ spec:
 
 A `Required` field will prevent a composition from rendering until it's available. 
 
+```yaml
+- name: oidcProvider
+      base:
+        apiVersion: iam.aws.upbound.io/v1beta1
+        kind: OpenIDConnectProvider
+        spec:
+          ...
+      patches:
+        - fromFieldPath: status.eks.oidc
+          toFieldPath: spec.forProvider.url
+          policy:
+            fromFieldPath: Required
+```
+
 {{< hint "note" >}}
 You configure whether a field is required in an XRD, not the composition
 {{< /hint >}}
@@ -249,6 +263,16 @@ You configure whether a field is required in an XRD, not the composition
 #### 5. Label Selector matching
 
 Label Selectors will match at the cluster-level on CRDs, so ensure labels on any managed resources are unique.
+
+```yaml
+policyArnSelector:
+  # Match only managed resources that are part of the same composite, i.e.
+  # managed resources that have the same controller reference as the
+  # selecting resource.
+  matchControllerRef: true
+  matchLabels:
+    role: core-ecr
+```
 
 #### 6. Use patchsets
 
@@ -258,7 +282,7 @@ Use patchSets for repetitive patching and keep Compositions from becoming bloate
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: xnetworks.aws.platformref.upbound.io
+  name: xnetworks.aws.k8s.starter.org
   labels:
     provider: aws
 spec:
@@ -269,9 +293,9 @@ spec:
     patches:
     - type: FromCompositeFieldPath
       fromFieldPath: spec.id
-      toFieldPath: metadata.labels[networks.aws.platformref.upbound.io/network-id]
+      toFieldPath: metadata.labels[networks.aws.k8s.starter.org/network-id]
   resources:
-    - name: platformref-vcp
+    - name: vpc
       base:
         ...
       patches:
@@ -343,7 +367,7 @@ spec:
 
 #### 3. Composing resources from multiple Crossplane providers
 
-Be conscious about composing resources from multiple different providers. It's a supported scenario but it brings additional complexity.
+Be conscious about composing resources from multiple different providers. It's a supported scenario but it brings additional complexity. For example, `Selector` and `References` only work with a single provider today, not with multiple providers.
 
 ## Next Steps
 

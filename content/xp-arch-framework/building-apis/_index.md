@@ -7,7 +7,7 @@ description: "how to build APIs"
 Creating your own, customized API is a core differentiating feature of Crossplane and is a critical step in your Crossplane journey. This guide defines the best practices to follow when developing custom APIs using Crossplane's core building blocks. 
 
 {{< hint "important" >}}
-If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
+If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/master/concepts/) documentation.
 {{< /hint >}}
 
 ## Overview
@@ -59,7 +59,7 @@ Crossplane managed resources attempt to be a 1:1 representation of an external r
 
 ## What constitutes a custom API with Crossplane?
 
-As the [upstream Crossplane](https://docs.crossplane.io/v1.12/concepts/) documentation calls out, when it comes to building custom APIs with Crossplane, there are a few components involved:
+As the [upstream Crossplane](https://docs.crossplane.io/master/concepts/) documentation calls out, when it comes to building custom APIs with Crossplane, there are a few components involved:
 
 1. A **Composite Resource Definition (XRD)**
 2. A **Composition** or **Compositions**
