@@ -144,9 +144,6 @@ function search(input, results, searchConfig) {
         try {
           // prevent highlighting of section title in search results
           resultParent.classList.add('disabled');
-
-          // hide accordion
-          resultParent.querySelector(".button-container").classList.add('d-none');
         } catch(e) {
           console.error(e);
         }

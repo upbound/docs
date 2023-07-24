@@ -18,6 +18,10 @@
     height: 60px;
     border-bottom: 1px solid #{$up-neutral-100};
 
+    .accordion-button {
+        display: none;
+    }
+
     .logo-container {
         padding: 16px 40px;
 

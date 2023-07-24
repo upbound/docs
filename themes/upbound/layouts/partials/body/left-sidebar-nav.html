@@ -40,7 +40,7 @@
 
                                     <!-- Parent Menu Button -->
                                     <div class="list-group-item d-flex flex-row nav-child py-2 my-0 position-relative {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
-                                        <a href="{{.Permalink}}" class="d-flex flex-grow-1 stretched-link">
+                                        <a href="{{.Permalink}}" class="d-flex stretched-link">
                                             <div class="">{{.Title }}</div>
                                         </a>
                                         {{ if .Pages }}
@@ -50,7 +50,7 @@
                                         {{ end }}
                                     </div>
 
-                                    <div class="collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
+                                    <div class="subpages collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
                                         {{ range .Pages }}
                                             <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
                                                 {{ .Title }}
