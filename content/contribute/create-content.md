@@ -82,25 +82,23 @@ search and external search engines.
 
 ### Adding icons to sections
 
-New sections require an icon for the navigation menu. Upbound docs use 
-[Font Awesome icons](https://fontawesome.com/icons). 
+New sections require an icon for the navigation menu. Upbound docs use
+[Font Awesome icons](https://fontawesome.com/icons).
 
-Add the new `.svg` icon to `themes/upbound/layouts/partials/icons`
+Copy the `viewBox` and `path` data from the new icon and add it to a symbol
+entry in the `themes/upbound/layouts/partials/icons/sprites.html` file.
+The `id` for the symbol is the name used to reference the icon.
 
-To allow dynamic icon resizing edit the .svg file and add  
-`width="{{ .width | default "16px" }}"`  
-and  
-`height="{{ .width | default "16px" }}"`  
-value inside the `<svg>` tag.
-
-For example, 
+For example,
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg" width="{{ .width | default "16px" }}" height="{{ .height | default "16px" }}" class="{{ .class | default "" }}" viewBox="0 0 576 512">
+<symbol id="icon-name-here" viewBox="0 0 20 20">
+    <path d="..."/>
+</symbol>
 ```
 
 {{<hint "note" >}}
-Don't change the default `viewBox` values in the SVG file. 
+Don't change the `viewBox` values from the SVG file.
 {{< /hint >}}
 
 ## Headings

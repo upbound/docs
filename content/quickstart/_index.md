@@ -1,7 +1,7 @@
 ---
 title: "Quickstart"
 weight: -1
-icon: "star"
+icon: "person-running-regular"
 description: "Create your first Upbound Managed Control Plane and connect it to your cloud provider."
 ---
 
