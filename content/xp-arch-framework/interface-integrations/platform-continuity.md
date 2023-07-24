@@ -15,14 +15,14 @@ Platform continuity is a topic that encompasses everything you need to do to kee
 It's important to remember:
 
 1. Crossplane is concerned with ensuring the configuration of your resource. 
-2. Crossplane is **not concerned** with the _internal_ state of your resources. 
+2. Crossplane **isn't concerned** with the _internal_ state of your resources. 
 
 Crossplane is concerned with enforcing two things:
 
 1. the resources you declared exist.
 2. the configuration of those resources matches what you declared. If it doesn't, it will attempt to reconcile to the desired state.
 
-Crossplane is **not** concerned with the state of what's happening _within_ the resource. For example, consider a CloudSQL instance created with Crossplane using the following manifest:
+Crossplane **isn't** concerned with the state of what's happening _within_ the resource. For example, consider a CloudSQL instance created with Crossplane using the following manifest:
 
 ```yaml
 apiVersion: sql.gcp.upbound.io/v1beta1
@@ -38,11 +38,11 @@ spec:
 
 Crossplane will ensure whatever instance gets created in GCP has a disk size of 20 GB and that it uses MySQL version 5.7; it will continuously ensure the configuration of the instance matches these parameters. However, Crossplane has no involvement with what goes on _inside_ the CloudSQL instance. If someone was using this database to store records of users for a line-of-business app, Crossplane is oblivious.
 
-Likewise, if your control plane fails and goes offline, that does not necessarily mean the resources under management by that control plane will be affected--it means the configuration of those resources won't be reconciled while the control plane is offline, so configuration drift could occur. Using the database example above, if the control plane managing the CloudSQL instance fails, that does not necessarily mean your database is now offline. 
+Likewise, if your control plane fails and goes offline, that doesn't necessarily mean the resources under management by that control plane will be affected--it means the configuration of those resources won't be reconciled while the control plane is offline, so configuration drift could occur. Using the database example above, if the control plane managing the CloudSQL instance fails, that doesn't necessarily mean your database is now offline. 
 
 ### What State to Capture vs Exclude
 
-You should configure Velero to capture state that is only relevant for Crossplane. THe following is a sample Velero backup object that illustrates which Kubernetes resources are applicable to be backed up and which ones can be safely excluded:
+You should configure Velero to capture state that's only relevant for Crossplane. THe following is a sample Velero backup object that illustrates which Kubernetes resources are applicable to be backed up and which ones can be safely excluded:
 
 ```yaml
 apiVersion: velero.io/v1
@@ -87,7 +87,7 @@ spec:
  We recommend configuring Velero to store the captured backup state for all your control planes in a single, global bucket or blob.
 
 {{< hint "tip" >}}
-Instead of excluding all other resources, you could include only the resources that you want to backup. However, this would require you to list _all_ resources types--including the CRDs introduced by providers--which is not possible/feasible. Hence, we recommend doing it the way we show above.
+Instead of excluding all other resources, you could include only the resources that you want to backup. However, this would require you to list _all_ resources types--including the CRDs introduced by providers--which isn't possible/feasible. Hence, we recommend doing it the way we show above.
 {{< /hint >}}
 
 ### Backup Schedules

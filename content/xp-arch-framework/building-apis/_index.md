@@ -22,7 +22,7 @@ Customers use Crossplane because they want to declaratively create and manage re
 - a git repo on GitHub
 - a database in a SQL server instance
 
-To put this into context, Kubernetes has a a component called the `API Server`. This is the front door you must go through to interact with various objects in Kubernetes. The API Server needs to know how to interact with resources--which exist outside of a Kubernetes cluster!
+To put this into context, Kubernetes has a component called the `API Server`. This is the front door you must go through to interact with various objects in Kubernetes. The API Server needs to know how to interact with resources which exist outside of a Kubernetes cluster.
 
 {{<img src="xp-arch-framework/images/kubernetes-custom-resources.png" alt="Depiction of how Kubernetes cant talk to custom resources by default" size="small" quality="100">}}
 
@@ -51,7 +51,7 @@ spec:
     name: azure-postgresql-conn
 ```
 
-Crossplane managed resources attempt to be a 1:1 representation of an external resource in Kubernetes. Installing managed resources into a Crossplane via a Crossplane provider does not constitute a custom API; you create a custom API in Crossplane by defining `composite resource (XRs)`, a unique concept to Crossplane.
+Crossplane managed resources attempt to be a 1:1 representation of an external resource in Kubernetes. Installing managed resources into a Crossplane via a Crossplane provider doesn't constitute a custom API; you create a custom API in Crossplane by defining `composite resource (XRs)`, a unique concept to Crossplane.
 
 {{< hint "important" >}}
 📢 Just like any Kubernetes object, you can create new Crossplane managed resources directly. We advise **against** doing this in favor of always using Crossplane composite resources, explained below.
@@ -69,7 +69,7 @@ As the [upstream Crossplane](https://docs.crossplane.io/v1.12/concepts/) documen
 
 A Composite Resource Definition and composition together give Crossplane enough information to be able to form Composite Resources (XRs).
 
-### What is a composite resource (XR)?
+### What's a composite resource (XR)?
 
 Composite resources are Kubernetes objects that you can create without needing to write any code and which define a new API abstraction above Crossplane managed resources. Composite resources are user-defined. While managed resources are powerful, there are some limitations:
 
@@ -94,7 +94,7 @@ Managed resources should never be created directly. Instead, you create them ind
 
 ## Configure APIs on a control plane
 
-A new instance of Crossplane is like a blank slate: there are no custom APIs installed. You need to install packages that provide custom APIs designed to do whatever it is that you want to accomplish. This could be a package someone else authored or it could be a package that you have authored yourself. `Control plane configurations` are one of the core building blocks defined by Crossplane and are the recommended package format for distributing APIs onto a control plane. To learn about using configuration packages, read [creating control plane configurations](building-apis-configurations).
+A new instance of Crossplane is like a blank slate: there are no custom APIs installed. You need to install packages that deliver custom APIs which implenent the functionality you desire. This could be a package someone else authored or it could be a package that you have authored yourself. `Control plane configurations` are one of the core building blocks defined by Crossplane and are the recommended package format for distributing APIs onto a control plane. To learn about using configuration packages, read [creating control plane configurations](building-apis-configurations).
 
 ## Next Steps
 

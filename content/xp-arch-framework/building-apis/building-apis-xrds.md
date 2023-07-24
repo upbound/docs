@@ -12,7 +12,7 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## Purpose
 
-If you have not read and gone through the framework's [self-evaluation](../../self-eval) exercise, we recommend you do that now. It is difficult to build a custom API without knowing who you are building it for and why you're building it. If you have an understanding of how you're building the custom API for and what inputs (if any) you want your consumers t ohave, the next questions you need to figure out are:
+If you haven't read and gone through the framework's [self-evaluation](../../self-eval) exercise, we recommend you do that now. It's difficult to build a custom API without knowing who you are building it for and why you're building it. If you have an understanding of how you're building the custom API for and what inputs (if any) you want your consumers t ohave, the next questions you need to figure out are:
 
 - What managed resources do you want to compose together as part of this API?
 - For each managed resource you want to compose, which fields are required?
@@ -34,7 +34,7 @@ When you create some infrastructure in a cloud service, sometimes that infrastru
 If you are coming from traditional Infrastructure as Code (IaC) tooling such as Terraform or AWS CloudFormation, these tools also have resource representation that maps to underlying APIs in a provider. These IaC tool resources usually map one-to-one to equivalent Crossplane provider managed resources. You can use this to inform which Crossplane managed resources you need to compose. 
 {{< /hint >}}
 
-If you don't have existing IaC tooling definitions to inform which resources you need to compose, you can use the [Upbound Marketplace’s](https://marketplace.upbound.io/) API documentation feature. In the Marketplace, search for a resource you want to create. Within that resource's API documentation, under the `spec.forProvider` struct, look for properties that have a naming pattern like `<resource>Ref` or `<resource>IdSelector`. These are properties which may indicate that, in order for your desired resource to be created, you may need to provide references to _other_ resources. NOTE: This tip is a heuristic, not a firm requirement.
+If you don't have existing IaC tooling definitions to inform which resources you need to compose, you can use the [Upbound Marketplace’s](https://marketplace.upbound.io/) API documentation feature. In the Marketplace, search for a resource you want to create. Within that resource's API documentation, under the `spec.forProvider` struct, look for properties that have a naming pattern like `<resource>Ref` or `<resource>IdSelector`. These are properties which may indicate that, in order for your desired resource to be created, you may need to provide references to _other_ resources. Be advised, this tip is a heuristic, not a firm requirement.
 
 As an example, consider the provider-aws `Instance` resource for an EC2 Instance. You can see below there is a reference to a networkInterface, indicating this is another resource you may choose to create in Crossplane and then reference in your Instance resource.
 
@@ -42,16 +42,16 @@ As an example, consider the provider-aws `Instance` resource for an EC2 Instance
 
 ### Required fields for composed resources
 
-There are two reasons it's important to know which fields are required in the MRs you want to compose:
+Two reasons it's important to know which fields are required in the MRs you want to compose are:
 
 1. There's a high likelihood you want to either expose or let your consumers influence indirectly these fields in your API
 2. Composite Resources ultimately instantiate MRs, so you need to create valid MRs in order for your Composite Resource to create successfully.
 
-Use the [Upbound Marketplace’s](https://marketplace.upbound.io/) API documentation feature to see which fields are required or optional under the `spec.forProvider`. For example, notice in the [AWS EKS Cluster](https://marketplace.upbound.io/providers/upbound/provider-aws-eks/v0.37.0/resources/eks.aws.upbound.io/Cluster/v1beta1) resource API documentation how `region` is required whereas `version` is not.
+Use the [Upbound Marketplace’s](https://marketplace.upbound.io/) API documentation feature to see which fields are required or optional under the `spec.forProvider`. For example, notice in the [AWS EKS Cluster](https://marketplace.upbound.io/providers/upbound/provider-aws-eks/v0.37.0/resources/eks.aws.upbound.io/Cluster/v1beta1) resource API documentation how `region` is required whereas `version` isn't.
 
 {{<img src="xp-arch-framework/images/eks-required-fields.png" alt="Which fields are required for EKS cluster" size="small" quality="100">}}
 
-Sometimes a managed resource will have fields that need to have a value but it is not explicitly marked as `required`. For example, the [AWS Lambda Function](https://marketplace.upbound.io/providers/upbound/provider-aws-lambda/v0.37.0/resources/lambda.aws.upbound.io/Function/v1beta1) resource API documentation stipulates that “filename, image_uri, or s3_bucket must be specified”, yet none of those fields individually are marked required. It is helpful to look at resources `Examples` in the Upbound Marketplace, because these examples demonstrate configs for MRs that have been verified to successfully create.
+Sometimes a managed resource will have fields that need to have a value but it's not explicitly marked as `required`. For example, the [AWS Lambda Function](https://marketplace.upbound.io/providers/upbound/provider-aws-lambda/v0.37.0/resources/lambda.aws.upbound.io/Function/v1beta1) resource API documentation stipulates that “filename, image_uri, or s3_bucket must be specified”, yet none of those fields individually are marked required. It's helpful to look at resources `Examples` in the Upbound Marketplace, because these examples demonstrate configs for MRs that have been verified to successfully create.
 
 {{< hint "tip" >}}
 Fields that are required in order for an MR to successfully create usually indicate important details that dramatically impact what gets created. Consider whether these fields should be inputs directly supplied by your API’s consumers, whether it should be influenced by inputs provided by your API’s consumers, or whether they have no business influencing its value at all.
@@ -61,7 +61,7 @@ Fields that are required in order for an MR to successfully create usually indic
 
 ### Scaffolding an XRD
 
-XRDs follow the [OpenAPI](https://swagger.io/specification/) “structural schema”. Below is boilerplate .yaml that you can use to scaffold the start of an XRD.
+XRDs follow the [OpenAPI](https://swagger.io/specification/) “structural schema”. Below is boilerplate .YAML that you can use to scaffold the start of an XRD.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1

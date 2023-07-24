@@ -8,7 +8,7 @@ description: "A guide for how to integrate control planes with a variety of inte
 This section is under construction - stay tuned for additional guidance and best practices for integrating policy engines with Crossplane.
 {{< /hint >}}
 
-An effective way to manage Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine–-such as [Open Policy Agent Gatekeeper](https://open-policy-agent.github.io/gatekeeper/website/docs/) or [Kyverno](https://github.com/kyverno/kyverno)–-can be installed alongside Crossplane. This allows users to write custom policies to enforce against Crossplane resources.
+An effective way to manage Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine--such as [Open Policy Agent Gatekeeper](https://open-policy-agent.github.io/gatekeeper/website/docs/) or [Kyverno](https://github.com/kyverno/kyverno)--can be installed alongside Crossplane. This allows users to write custom policies to enforce against Crossplane resources.
 
 ## Kyverno
 

@@ -15,11 +15,11 @@ One of the most common use cases we see users building with Crossplane is an int
 The job of integrating a platform frontend with your control plane is therefore usually about translating a set of inputs collected from a form and sending that to a control plane. As mentioned above, you could configure your platform frontend to communicate directly with the API server of your control plane. However, we believe the better practice is to instead use your platform frontend to:
 
 1. Collect the inputs you need to build a claim against your API
-2. Create the claim .yaml and submit that to the git repo syncing to your control plane
+2. Create the claim .YAML and submit that to the git repo syncing to your control plane
 3. A CD engine will apply the claim to your control plane and your control plane will react to the claim.
 
 ## Diagram
 
 {{<img src="xp-arch-framework/images/platform-frontend-flow.png" alt="A diagram demonstrating how a platform frontend generically integrates with Crossplane" size="medium" quality="100" align="center">}}
 
-In this flow, your platform does not communicate directly with your control plane; instead, it all operates via git, aligned to the recommendations we suggested in the [consuming your control plane API](../../architecture/architecture-baseline-single#consume-control-plane-apis) section of the architectural guidance.
+In this flow, your platform doesn't communicate directly with your control plane; instead, it all operates via git, aligned to the recommendations we suggested in the [consuming your control plane API](../../architecture/architecture-baseline-single#consume-control-plane-apis) section of the architectural guidance.

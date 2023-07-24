@@ -4,7 +4,7 @@ weight: 12
 description: "A guide for how to build with control planes"
 ---
 
-This reference architecture provides a recommended baseline architecture for deploying and operating many Crossplane control planes.  When users choose to adopt a control plane architecture that involves multiple control planes, those control planes usually have specialized roles. There are two things that need to be considered when running many control planes:
+This reference architecture provides a recommended baseline architecture for deploying and operating many Crossplane control planes. When users choose to adopt a control plane architecture that involves multiple control planes, those control planes usually have specialized roles. There is two things that need to be considered when running many control planes:
 
 1. What are the boundaries that cause you to specialize a control plane's role?
 2. How do you bootstrap and manage the infrastructure that supports each control plane? 
@@ -39,7 +39,7 @@ The hub control plane otherwise follows the standard architecture we encourage f
 
 ## Specialized (spoke) control planes
 
-When you create multiple control planes, each control plane's role is usually specialized based on some business requirements. We have documented below the main reasons you may want to consider using multiple control planes and associated tradeoffs:
+When you create multiple control planes, each control plane's role is usually specialized based on some business requirements. We've documented below the main reasons you may want to consider using multiple control planes and associated tradeoffs:
 
 - [Cross-environment requirements](#specialize-control-planes-by-environment)
 - [Cross-cloud requirements](#specialize-control-planes-by-cloud)
@@ -86,7 +86,7 @@ This approach means you create control planes on a per hyperscale cloud provider
 
 ### Specialize control planes by Organizational Unit
 
-This approach means you designate a control plane to an organizational unit boundary. Many organizations have their own approach to defining their org structure; when we say "organizational unit", we mean some grouping of individual application teams. For example:
+This approach means you designate a control plane to an organizational unit boundary. Many organizations have their own approach to defining their org structure; when we say "organizational unit," we mean some grouping of individual application teams. For example:
 
 - Teams Alpha, Bravo, Charlie use _control-plane-x_
 - Teams Delta, Echo, Foxtrot use _control-plane-y_
@@ -101,9 +101,9 @@ This approach means you designate a control plane to an organizational unit boun
 
 ### Specialize control planes by Cloud Account
 
-This approach means you create a control plane on per cloud account basis. By cloud account, we mean a specific billing account (i.e. AWS Account, GCP Project, Azure Tenant, etc). Crossplane is able to communicate with external APIs only after a Crossplane provider has been installed in the control plane. 
+This approach means you create a control plane on per cloud account basis. By cloud account, we mean a specific billing account (that is, AWS Account, GCP Project, Azure Tenant, etc). Crossplane is able to communicate with external APIs only after a Crossplane provider has been installed in the control plane. 
 
-Crossplane providers themselves rely on `ProviderConfig` objects to configure & provide authentication details for how to interact with the external service. We explain in [tenancy requirements](#tenancy-requirements) below the ways you can set up ProviderConfigs on a control plane to control and give tenants access to provision resources in single or multiple cloud accounts.
+Crossplane providers themselves rely on `ProviderConfig` objects to configure and provide authentication details for how to interact with the external service. We explain in [tenancy requirements](#tenancy-requirements) below the ways you can set up ProviderConfigs on a control plane to control and give tenants access to provision resources in single or multiple cloud accounts.
 
 **Reasons to apply this approach:**
 
@@ -112,7 +112,7 @@ Crossplane providers themselves rely on `ProviderConfig` objects to configure & 
 
 **Tradeoffs:**
 
-- It is hard to estimate how this impacts your control plane footprint, since that's heavily dependent on how strongly your organization has adopted cloud accounts to group/segment your cloud resource usage.
+- It's hard to estimate how this impacts your control plane footprint, since that's heavily dependent on how strongly your organization has adopted cloud accounts to group/segment your cloud resource usage.
 
 ### Performance Requirements
 

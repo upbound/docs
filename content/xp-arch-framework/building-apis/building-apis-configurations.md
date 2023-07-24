@@ -4,7 +4,7 @@ weight: 6
 description: "how to build APIs"
 ---
 
-A Control plane configuration is a package that bundles one or more APIs--their definitions (XRDs) and their implementations (compositions). Whereas Crossplane composite resources allow you to define a single API, configurations allow you to bundle a set of related APIs together, version them, and declare their dependencies. Because configurations are packages, they are the output of a build process. Today, that output is an OCI image.
+A Control plane configuration is a package that bundles one or more APIs--their definitions (XRDs) and their implementations (compositions). Whereas Crossplane composite resources allow you to define a single API, configurations allow you to bundle a set of related APIs together, version them, and declare their dependencies. Because configurations are packages, they're the output of a build process. Today, that output is an OCI image.
 
 {{< hint "important" >}}
 If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
@@ -12,7 +12,7 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## When to create a control plane configuration
 
-As a best practice, **always!** Configurations are the packaging format of choice for delivering **all APIs** to a control plane–even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
+As a best practice, **always!** Configurations are the packaging format of choice for delivering **all APIs** to a control plane--even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
 
 ## Configuration layout in git
 
@@ -31,15 +31,15 @@ We recommend the definition of your Crossplane configurations to be stored in a 
     └── ...
 ```
 
-This structure works well for simple APIs that have a definition (XRD) and single implementation (1 composition) that are all defined locally in the folder structure and will be bundled in this configuration. 
+This structure works well for basic APIs that have a definition (XRD) and single implementation (1 composition) that are all defined locally in the folder structure and will be bundled in this configuration. 
 
-We recommend this folder structure because it improves human readability, not because Crossplane depends on a certain folder structure. The folder structure does not affect Crossplane’s ability to build a package since all .yaml files are flattened during the build process. 
+We recommend this folder structure because it improves human readability, not because Crossplane depends on a certain folder structure. The folder structure doesn't affect Crossplane’s ability to build a package since all .YAML files are flattened during the build process. 
 
 {{< hint "important" >}}
 👉 Be careful to avoid placing .yaml files in your configuration's directory tree that you **don't** want Crossplane to parse. This can cause builds to unintendly break because Crossplane will attempt to ingest **all** .yaml files.
 {{< /hint >}}
 
-### Advanced layout: nested compositions
+### Advanced layout: Nested compositions
 
 As we discuss in docs for building compositions, compositions can be nested and/or they can have multiple implementations. The same folder structure still applies and would look like the following:
 
@@ -66,7 +66,7 @@ As we discuss in docs for building compositions, compositions can be nested and/
 
 A configuration can declare dependencies as part of its definition. This is done in the `spec.dependsOn` field in the `crossplane.yaml`. This is handy for two reasons:
 
-1. **Provider resolution**: you can declare which Crossplane provider versions your configuration depends on (say, if it uses an API version of a managed resource that changed from provider-aws v0.33.0 to provider-aws v0.34.0). This ensures your configuration will have the provider & version it needs in order to operate.
+1. **Provider resolution**: you can declare which Crossplane provider versions your configuration depends on (say, if it uses an API version of a managed resource that changed from provider-aws v0.33.0 to provider-aws v0.34.0). This ensures your configuration will have the provider and version it needs in order to operate.
 2. **use other configurations**: you can declare dependencies on other configurations. This enables you to chain dependencies together (discussed more below). 
 
 Declaring dependencies for a configuration looks like this:
@@ -96,12 +96,12 @@ For example, you could define configurations based on the scope of the APIs:
 - **myorg-configuration-iam** defines a set of APIs that your organization will use for provisioning identity-related resources (roles, policies, etc).
 - **myorg-configuration-serverless** defines a set of APIs that your organization will use for provisioning serverless-related resources (functions, etc). 
 
-This would allow you to create configurations that selectively bundle some–but not all–of these APIs into higher-level configurations.
+This would allow you to create configurations that selectively bundle some--but not all--of these APIs into higher-level configurations.
 
 - **Myorg-config-team1** that has a dependency on _myorg-configuration-networking_ and _myorg-configuration-compute_.
 - **Myorg-config-team2** that has a dependency on _myorg-configuration-serverless_ and _myorg-configuration-storage_.
 
-Another pattern that you can apply to configuration packages & dependency chaining is to have one platform team own the baseline set of APIs that exists on all control planes for your organization, then you can have service or pattern teams build APIs for specific services that sit above the baseline set of APIs.
+Another pattern that you can apply to configuration packages and dependency chaining is to have one platform team own the baseline set of APIs that exists on all control planes for your organization, then you can have service or pattern teams build APIs for specific services that sit above the baseline set of APIs.
 
 ## Build configurations
 

@@ -13,7 +13,7 @@ How you choose to architect and implement a solution on Crossplane varies wildly
 1. A baseline architecture for a single control plane
 2. A baseline architecture for running control planes at scale (`N > 1`)
 
-The single control plane baseline architecture provides a minimum recommended baseline for how to build a solution on Crossplane--scoped to a single control plane--and integrate it with a set of common 3rd-party integrations. 
+The single control plane baseline architecture provides a minimum recommended baseline for how to build a solution on Crossplane--scoped to a single control plane--and integrate it with a set of common third-party integrations. 
 
 Your business requirements may lead you to wanting to deploy multiple control planes for various reasons. We usually see these reasons as needing to "specialize" control planes for certain purposes. If you intend to deploy multiple control planes, we believe the single control plane baseline is still an applicable--the difference is you will end up deploying it `N` times and you will also need to consider how to manage your multi-control plane architecture. This framework outlines an architecture that can be applied for control planes at scale and builds on the foundations of the single control plane baseline architecture.
 

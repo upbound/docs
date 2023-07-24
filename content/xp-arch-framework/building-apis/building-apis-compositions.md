@@ -20,7 +20,7 @@ Compositions exist in Crossplane to allow you to create resource abstractions th
 
 ## Prototype with Managed Resources First
 
-Before you begin authoring a composition, we recommend first prototyping the resources you want to compose by creating managed resources directly. At the end of the day, the output of a composite resource is always a set of rendered managed resource manifests. We have found it can be difficult to nail the set of values you need to pass to a managed resource in order for it to create successfully, and starting off by working via your abstraction layer (i.e. your composition) can further complicate things. Therefore, we recommend:
+Before you begin authoring a composition, we recommend first prototyping the resources you want to compose by creating managed resources directly. The ultimate output of a composite resource is always a set of rendered managed resource manifests. We've found it can be difficult to nail the set of values you need to pass to a managed resource in order for it to create successfully, and starting off by working via your abstraction layer (that is, your composition) can further complicate things. Therefore, we recommend:
 
 1. Prototype and directly create the set of managed resources you intend to compose _first_.
 2. Once you've proven to yourself that you can create this set of resources, _then_ author your composition to do this automatically (patching and transforming values, etc).
@@ -29,7 +29,7 @@ If you author your composition correctly, the rendered managed resources manifes
 
 ## Scaffolding a composition
 
-Compositions follow the [OpenAPI](https://swagger.io/specification/) “structural schema”. Below is boilerplate .yaml that you can use to scaffold the beginning of a composition.
+Compositions follow the [OpenAPI](https://swagger.io/specification/) “structural schema”. Below is boilerplate .YAML that you can use to scaffold the beginning of a composition.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -129,7 +129,7 @@ Be careful not to misinterpret nesting composite resources as nesting **claims**
 
 #### 1. Formatting and alignment
 
-Always ensure that `patches` are aligned with `-base` in your manifests. If you are debugging a composition because its not behaving as expected, just like an "off by one" coding error, it's very easy to miss an indentation--and then your patches aren't even defined and applied correctly.
+Always ensure that `patches` are aligned with `-base` in your manifests. If you are debugging a composition because its not behaving as expected, just like an "off by one" coding error, forgetting proper indention is a common error--and then your patches aren't even defined and applied correctly.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -149,7 +149,7 @@ spec:
 
 #### 2. Patch policy
 
-Policy can be used to make the patch Required (`fromFieldPath: Required`) and set mergeOptions (`keepMapValues: true`) when patching arrays or maps. In the example below, we are patching an array to a property on a bucket.
+Policy can be used to make the patch Required (`fromFieldPath: Required`) and set mergeOptions (`keepMapValues: true`) when patching arrays or maps. In the example below, we're patching an array to a property on a bucket.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -214,7 +214,7 @@ spec:
           toFieldPath: spec.forProvider.url
 ```
 
-In order for this example to work, we have to first define this status property (status.eks.oidc) for this composite resource, which must be done in the XRD.
+In order for this example to work, the status property (status.eks.oidc) must be defined for this composite resource, which must be done in the XRD.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -240,7 +240,7 @@ spec:
 
 #### 4. Block composition rendering
 
-A `Required` field will prevent a composition from rendering until it is available. 
+A `Required` field will prevent a composition from rendering until it's available. 
 
 {{< hint "note" >}}
 You configure whether a field is required in an XRD, not the composition
@@ -343,7 +343,7 @@ spec:
 
 #### 3. Composing resources from multiple Crossplane providers
 
-Be conscious about composing resources from multiple different providers. It is a supported scenario but it brings additional complexity.
+Be conscious about composing resources from multiple different providers. It's a supported scenario but it brings additional complexity.
 
 ## Next Steps
 
