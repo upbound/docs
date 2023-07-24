@@ -125,6 +125,8 @@ Be careful not to misinterpret nesting composite resources as nesting **claims**
 
 ## Composition Best Practices
 
+We have a significant improvement in upstream XP found at [crossplane/crossplane#3756](https://github.com/crossplane/crossplane/pull/3756) that will be included in a future release of Crossplane. This enhancement introduces the `--enable-composition-webhook-schema-validation` flag, which can be enabled to greatly enhance developer experience. By enabling this flag, you gain a fast feedback loop during the composition crafting process, leading to more efficient and productive development.
+
 ### Patching Tips
 
 #### 1. Formatting and alignment

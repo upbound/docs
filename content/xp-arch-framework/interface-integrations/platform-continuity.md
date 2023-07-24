@@ -148,7 +148,7 @@ We think this is a good baseline, but you can customize the frequency of the bac
 
 To restore backup state into a new cluster:
 
-1. Ensure that Crossplane and providers are not running in a new cluster. Otherwise, the ordering between managed resources, composites, and claims becomes critical. Failure to do so may result in race conditions and, for example, duplication of managed resources.
+1. Ensure that Crossplane and providers aren't running in a new cluster. Otherwise, the ordering between managed resources, composites, and claims becomes critical. Failure to do so may result in race conditions and, for example, duplication of managed resources.
 2. Install Velero and configure it to use the backup data source.
 3. Restore the backed up resources to the new cluster.
 4. Scale up the provider deployments to one in the new cluster.

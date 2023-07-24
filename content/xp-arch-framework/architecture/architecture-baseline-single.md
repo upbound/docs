@@ -21,7 +21,7 @@ Because Crossplane is built on the foundation of Kubernetes, you need a Kubernet
 Crossplane providers create new Kubernetes APIs to represent external cloud APIs. These APIs are Kubernetes Custom Resource Definitions (CRDs). Crossplane providers are the implementation and delivery vehicle for these CRDs. Crossplane providers vary in terms of the number of CRDs they define; some only define a few, while others may define hundreds. With consideration to large Crossplane providers, installing many CRDs creates significant CPU and memory pressure on the API Server of your control plane. Therefore, failure to size the Kubernetes control plane nodes can lead to API timeouts or control plane pods, including UXP, to restart or fail.
 
 {{< hint "tip" >}}
-With [provider families](https://blog.crossplane.io/crd-scaling-provider-families/) now supported in Crossplane and [Upbound Official Provider Families](https://blog.upbound.io/new-provider-families) released, we strongly recommend users adopt these providers. They help you avoid installing CRDs that you don't need on your control plane.
+With [provider families](https://blog.crossplane.io/crd-scaling-provider-families/) supported starting in Crossplane v1.12 and [Upbound Official Provider Families](https://blog.upbound.io/new-provider-families) released, we strongly recommend users adopt these providers. They help you avoid installing CRDs that you don't need on your control plane and mitigates concerns about Crossplane being CRD-hungry.
 {{< /hint >}}
 
 ### Managed Kubernetes clusters
@@ -190,7 +190,7 @@ A Crossplane provider's `ProviderConfig` is a cluster-scoped resource. That mean
 
 ## Consume control plane APIs
 
-Your control plane’s API can be consumed in a variety of ways. For users who are building an Internal Developer Platform (IDP), this typically involves having a UI-based form experiences to collect information to send along to a control plane to action upon. If you read and follow the instructions for [building APIs with compositions](/xp-arch-framework/building-apis/building-apis-compositions.md). this means you need to create Crossplane claims on the control plane.
+Your control plane’s API can be consumed in a variety of ways. For users who are building an Internal Developer Platform (IDP), this typically involves having a UI-based form experiences to collect information to send along to a control plane to action upon. If you read and follow the instructions for [building APIs with compositions]({{< ref "xp-arch-framework/building-apis/building-apis-compositions.md" >}}). this means you need to create Crossplane claims on the control plane.
 
 While you could directly create claims on your control plane via it's API server, this baseline architecture recommends designating a git repo to be the source for all Crossplane claims that should exist on a control plane. Similar to configuring the definition for your control plane’s configuration, this pattern allows you to use GitOps tools like ArgoCD or Flux to continuously sync the resources that are desired from your control plane. For this architecture to function properly, the interfaces to your control plane need to be able to create Crossplane claim .yamls and submit it to the repos being monitored by your GitOps tooling.
 
