@@ -212,4 +212,4 @@ spec:
 
 ## Next Steps
 
-Defining an XRD is half the equation for building a custom API. The other important steps is to define a composition which implements the definition contained in your XRD. Read [Authoring Compositions]({{< ref "xp-arch-framework/building-apis/building-apis/compositions.md" >}}) to learn how to do that.
+Defining an XRD is half the equation for building a custom API. The other important steps is to define a composition which implements the definition contained in your XRD. Read [Authoring Compositions]({{< ref "xp-arch-framework/building-apis/building-apis-compositions.md" >}}) to learn how to do that.

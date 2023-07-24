@@ -55,7 +55,7 @@ spec:
 
 ## Composition versioning
 
-As described in [versioning an XRD]({{< ref "xp-arch-framework/building-apis/building-apis-xrds.md#versioning-your-xrd" >}}), when you change the shape of an API and define a new version (such as going from v1alpha1 -> v1alpha2) in your XRD, you must create a new composition that implements the new version. To do this, define a new composition object, and point the `compositionTypeRef` to the new API version.
+As described in [versioning an XRD]({{< ref "xp-arch-framework/building-apis/building-apis-xrds.md#versioning" >}}), when you change the shape of an API and define a new version (such as going from v1alpha1 -> v1alpha2) in your XRD, you must create a new composition that implements the new version. To do this, define a new composition object, and point the `compositionTypeRef` to the new API version.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1

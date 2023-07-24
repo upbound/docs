@@ -98,13 +98,13 @@ Secrets in Kubernetes are objects that hold sensitive data like passwords, token
 
 If you don't configure Crossplane to use an external secrets store, when you configure a managed resource to write a secret (such as when you configure the object to use `writeConnectionSecretToRef: ...`), that secret gets written in the control plane. Most organizations have security requirements that recommend storing all secrets in a centrally managed key-value store (such as Vault, AWS Secrets Manager, etc); reliance on in-cluster secrets aren't considered a best practice. Therefore, our architecture baseline recommends configuring your control plane to use an external secrets store.
 
-For a complete guide to integrating secrets management in your control plane, see the [Interface Integrations > Secrets Management]({{< ref "xp-arch-framework/interface-integrations/secrets-management.md" >}})  topic in this framework.
+For a complete guide to integrating secrets management in your control plane, see the [Interface Integrations > Secrets Management]({{< ref "xp-arch-framework/interface-integrations/secrets-management.md" >}}) topic in this framework.
 
 ### Add policy engines
 
 An effective way to supplement Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine—such as [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or [Kyverno](https://github.com/kyverno/kyverno)—can be used with Crossplane. This allows users to write custom policies to enforce against Crossplane resources. 
 
-Policy engines have some overlap in terms of what you can implement relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}})  topic in this framework.
+Policy engines have some overlap in terms of what you can implement relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}}) topic in this framework.
 
 {{< hint "note" >}}
 If you are unsure whether you need to integrate a policy engine with your control plan, you can always start out by _not_ having a policy engine and add one later once it makes sense. We do explain in the guide on interface integrations how you can use policies to supplement what you can do out-of-the-box with Crossplane compositions (since there is some overlap).
@@ -120,7 +120,7 @@ For a complete guide to monitoring and observability in your control plane see t
 
 To maintain platform continuity, define the Service Level Agreement for your control plane. An effective tool to help you achieve your control plane's SLA commitment is with [Velero](https://velero.io/). Velero allows users to capture and backup the state of their infrastructure’s configuration on their control plane. In a disaster scenario—such as if the control plane were to go offline—users can provision a new instance of Crossplane and restore the last known state up to the time of the most recent backup. 
 
-For a complete guide to disaster recovery for your control plane see the [Platform Continuity]({{< ref "xp-arch-framework/interface-integrations/platform-continuity.md" >}})  topic in this framework.
+For a complete guide to disaster recovery for your control plane see the [Platform Continuity]({{< ref "xp-arch-framework/interface-integrations/platform-continuity.md" >}}) topic in this framework.
 
 ### Repository Structure
 
@@ -202,4 +202,4 @@ Commonly referred to as the "chicken or the egg," if a user wants to use Crosspl
 
 ## Next Steps
 
-Now that we've explained the baseline architecture recommendation for a single control plane, you may want to understand when its appropriate to consider running more than one control plane. Read [Architecture > Multi-Control Planes]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}})  to learn about what [circumstances]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md#specialized-spoke-control-planes" >}}) we recommend using a multi-control plane architecture.
+Now that we've explained the baseline architecture recommendation for a single control plane, you may want to understand when its appropriate to consider running more than one control plane. Read [Architecture > Multi-Control Planes]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}}) to learn about what [circumstances]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md#specialized-spoke-control-planes" >}}) we recommend using a multi-control plane architecture.
