@@ -109,14 +109,14 @@ Because configurations are a package, they need to be built before they can be i
 
 ### The build process
 
-Configurations can be built using the up CLI's [xpkg build](/cli/command-reference#xpkg-build) command. You should execute this command in the root folder of your configuration--wherever your `crossplane.yaml` is located:
+Configurations can be built using the up CLI's [xpkg build]({{< ref "cli/command-reference.md#xpkg-build" >}}) command. You should execute this command in the root folder of your configuration--wherever your `crossplane.yaml` is located:
 
 ```bash
 $ up xpkg build -o my-configuration-package.xpkg
 xpkg saved to my-configuration-package.xpkg
 ```
 
-Once you've built a configuration package, you can push it to any OCI-compliant registry, such as the [Upbound Marketplace](https://marketplace.upbound.io) or your own container registry. You can use up CLI's [xpkg push](/cli/command-reference#xpkg-push) command to do this:
+Once you've built a configuration package, you can push it to any OCI-compliant registry, such as the [Upbound Marketplace](https://marketplace.upbound.io) or your own container registry. You can use up CLI's [xpkg push]({{< ref "cli/command-reference.md#xpkg-push" >}}) command to do this:
 
 ```bash
 $ up xpkg push my-org/my-configuration-packagev0.0.1 -f my-configuration-package.xpkg
@@ -190,8 +190,8 @@ spec:
     - name: registry-key
 ```
 
-Because Configurations are just another Kubernetes object, you can apply GitOps patterns and tooling to continuously monitor a repo source and deploy your desired configuration to your control plane. We recommend establishing an GitOps-based automated process to apply configurations to your control planes, which is described and implemented in the [baseline control plane architecture](/xp-arch-framework/architecture/architecture-baseline-single) 
+Because Configurations are just another Kubernetes object, you can apply GitOps patterns and tooling to continuously monitor a repo source and deploy your desired configuration to your control plane. We recommend establishing an GitOps-based automated process to apply configurations to your control planes, which is described and implemented in the [baseline control plane architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single" >}})
 
 ## Next Steps
 
-After you've learned how to package and deploy your APIs, you should think about how to architect a production-ready solution on Crossplane. Read [Architecture](/xp-arch-framework/architecture) to learn about best practices for how to do this.
+After you've learned how to package and deploy your APIs, you should think about how to architect a production-ready solution on Crossplane. Read [Architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single" >}}) to learn about best practices for how to do this.

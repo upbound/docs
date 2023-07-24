@@ -22,4 +22,4 @@ The job of integrating a platform frontend with your control plane is therefore 
 
 {{<img src="xp-arch-framework/images/platform-frontend-flow.png" alt="A diagram demonstrating how a platform frontend generically integrates with Crossplane" size="medium" quality="100" align="center">}}
 
-In this flow, your platform doesn't communicate directly with your control plane; instead, it all operates via git, aligned to the recommendations we suggested in the [consuming your control plane API]({{< ref "xp-arch-framework/architecture/architecture-baseline-single#consume-control-plane-apis.md" >}}) section of the architectural guidance.
+In this flow, your platform doesn't communicate directly with your control plane; instead, it all operates via git, aligned to the recommendations we suggested in the [consuming your control plane API]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md#consume-control-plane-apis" >}}) section of the architectural guidance.

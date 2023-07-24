@@ -94,8 +94,8 @@ Managed resources should never be created directly. Instead, you create them ind
 
 ## Configure APIs on a control plane
 
-A new instance of Crossplane is like a blank slate: there are no custom APIs installed. You need to install packages that deliver custom APIs which implenent the functionality you desire. This could be a package someone else authored or it could be a package that you have authored yourself. `Control plane configurations` are one of the core building blocks defined by Crossplane and are the recommended package format for distributing APIs onto a control plane. To learn about using configuration packages, read [creating control plane configurations](building-apis-configurations).
+A new instance of Crossplane is like a blank slate: there are no custom APIs installed. You need to install packages that deliver custom APIs which implenent the functionality you desire. This could be a package someone else authored or it could be a package that you have authored yourself. `Control plane configurations` are one of the core building blocks defined by Crossplane and are the recommended package format for distributing APIs onto a control plane. To learn about using configuration packages, read [creating control plane configurations]({{< ref "xp-arch-framework/building-apis/building-apis-configurations.md" >}}).
 
 ## Next Steps
 
-Read [Authoring XRDs](building-apis-xrds) to learn about how to approach defining your own XRDs and incorporate best practices.
+Read [Authoring XRDs]({{< ref "xp-arch-framework/building-apis/building-apis-xrds.md" >}}) to learn about how to approach defining your own XRDs and incorporate best practices.

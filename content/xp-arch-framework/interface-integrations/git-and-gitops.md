@@ -26,7 +26,7 @@ Claims themselves are resources with a configuration (a `spec`), and as such can
 
 ### 3. Use git to store the infrastructure definition that backs your control plane
 
-Your control plane itself is infrastructure, and as such should ideally be defined in git. A [chicken or the egg](https://en.wikipedia.org/wiki/Chicken_or_the_egg) problem is commonly brought up by platform teams who want to use Crossplane to drive their entire platform. We address this in the [single control plane baseline architecture](../../architecture/architecture-baseline-single#control-plane-causality-dilemma) portion of this framework.
+Your control plane itself is infrastructure, and as such should ideally be defined in git. A [chicken or the egg](https://en.wikipedia.org/wiki/Chicken_or_the_egg) problem is commonly brought up by platform teams who want to use Crossplane to drive their entire platform. We address this in the [single control plane baseline architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md#control-plane-causality-dilemma" >}}) portion of this framework.
 
 ## GitOps and Crossplane 
 

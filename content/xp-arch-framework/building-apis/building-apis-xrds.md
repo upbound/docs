@@ -12,7 +12,7 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## Purpose
 
-If you haven't read and gone through the framework's [self-evaluation](../../self-eval) exercise, we recommend you do that now. It's difficult to build a custom API without knowing who you are building it for and why you're building it. If you have an understanding of how you're building the custom API for and what inputs (if any) you want your consumers t ohave, the next questions you need to figure out are:
+If you haven't read and gone through the framework's [self-evaluation]({{< ref "xp-arch-framework/self-eval.md" >}}) exercise, we recommend you do that now. It's difficult to build a custom API without knowing who you are building it for and why you're building it. If you have an understanding of how you're building the custom API for and what inputs (if any) you want your consumers to have, the next questions you need to figure out are:
 
 - What managed resources do you want to compose together as part of this API?
 - For each managed resource you want to compose, which fields are required?
@@ -212,4 +212,4 @@ spec:
 
 ## Next Steps
 
-Defining an XRD is half the equation for building a custom API. The other important steps is to define a composition which implements the definition contained in your XRD. Read [Authoring Compositions](../building-apis-compositions) to learn how to do that.
+Defining an XRD is half the equation for building a custom API. The other important steps is to define a composition which implements the definition contained in your XRD. Read [Authoring Compositions]({{< ref "xp-arch-framework/building-apis/building-apis/compositions.md" >}}) to learn how to do that.

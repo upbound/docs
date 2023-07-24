@@ -4,7 +4,7 @@ weight: 5
 description: "how to build APIs"
 ---
 
-Compositions are the implementations of the schema you define in your [XRD](../building-apis-xrds). The relationship between XRDs and compositions is one-to-many. You can have multiple compositions that implement the spec of an XRD and you can tell Crossplane which one to select. We always recommend to start by first authoring your XRD before authoring compositions to implement it.
+Compositions are the implementations of the schema you define in your [XRD]({{< ref "xp-arch-framework/building-apis/building-apis-xrds.md" >}}). The relationship between XRDs and compositions is one-to-many. You can have multiple compositions that implement the spec of an XRD and you can tell Crossplane which one to select. We always recommend to start by first authoring your XRD before authoring compositions to implement it.
 
 {{< hint "important" >}}
 If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
@@ -55,7 +55,7 @@ spec:
 
 ## Composition versioning
 
-As described in [versioning an XRD](../#build-apis-xrds#versioning), when you change the shape of an API and define a new version (such as going from v1alpha1 -> v1alpha2) in your XRD, you must create a new composition that implements the new version. To do this, define a new composition object, and point the `compositionTypeRef` to the new API version.
+As described in [versioning an XRD]({{< ref "xp-arch-framework/building-apis/building-apis-xrds.md#versioning-your-xrd" >}}), when you change the shape of an API and define a new version (such as going from v1alpha1 -> v1alpha2) in your XRD, you must create a new composition that implements the new version. To do this, define a new composition object, and point the `compositionTypeRef` to the new API version.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -347,4 +347,4 @@ Be conscious about composing resources from multiple different providers. It's a
 
 ## Next Steps
 
-After you've authored your composition, the third step you must take is to package up your API as a configuration. Read [Authoring Configurations](../building-apis-configurations) to learn about best practices for how to do this.
+After you've authored your composition, the third step you must take is to package up your API as a configuration. Read [Authoring Configurations]({{< ref "xp-arch-framework/building-apis/building-apis-configurations.md" >}}) to learn about best practices for how to do this.
