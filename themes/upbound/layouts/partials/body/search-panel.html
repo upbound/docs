@@ -1,26 +1,27 @@
-<div id="search-panel" class="search-panel sticky-top container px-0 d-none" >
-    <div class="logo nav-logo-search d-flex flex-row">
-        <div class="search-icon-active align-self-center" id="search-icon-active">
-                {{ partial "icons/magnifying-glass.svg" (dict "width" "22px" "height" "18px" "class" "grey-icon") }}
+<div id="search-panel" class="search-panel sticky-top container px-0" >
+    <div class="search-container">
+        <div class="search-group d-flex flex-row">
+            <div class="search-icon-active" id="search-icon-active">
+                    {{ partial "icons/magnifying-glass.svg" (dict "width" "18px" "height" "16px" "class" "grey-icon") }}
+            </div>
+            <div class="search-box flex-grow-1" id="search-box">
+                <label for="search-input" class="form-label visually-hidden">Input search terms</label>
+                <input
+                    type="text"
+                    class="form-control form-control-sm search-input"
+                    id="search-input"
+                    placeholder="Search the docs"
+                    maxlength="64"
+                    data-site-base-url="{{ .Site.BaseURL }}"
+                    data-site-lang="en"
+                    >
+            </div>
+            <div class="close-search align-self-center" id="close-search">
+                {{partial "icons/x.svg" (dict "width" "12px" "height" "12px" "class" "grey-icon")}}
+            </div>
         </div>
-        <div class="search-box d-flex flex-grow-1" id="search-box">
-            <label for="search-input" class="form-label visually-hidden">Input search terms</label>
-            <input
-                type="text"
-                class="form-control form-control-sm search-input"
-                id="search-input"
-                placeholder="Search the docs"
-                maxlength="64"
-                data-site-base-url="{{ .Site.BaseURL }}"
-                data-site-lang="en"
-                >
-        </div>
-        <div class="close-search align-self-center position-relative" id="close-search">
-            {{partial "icons/x.svg" (dict "width" "10px" "height" "10px" "class" "grey-icon position-absolute top-50 start-50 translate-middle")}}
-        </div>
-
     </div>
-    <div class="search-results d-flex list-group" id="search-results">
+    <div class="search-results d-flex list-group d-none" id="search-results"> 
     </div>
     <div class="d-flex flex-row no-results-container d-none align-items-center" id="no-results-container">
         <div class="iconDiv">
@@ -29,7 +30,7 @@
             </svg>
         </div>
         <div class="no-results-text">
-            No results
+            <span>No results</span>
         </div>
     </div>
 </div>

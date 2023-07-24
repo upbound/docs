@@ -106,12 +106,14 @@ function search(input, results, searchConfig) {
     window.geekdocSearchIndex.search(input.value, searchCfg)
   );
 
-  if (searchHits.length < 1) {
+  if (searchHits.length < 1 || searchHits.length === 1 && searchHits[0].parent === "Upbound Documentation") {
+    results.classList.add("d-none")
+
     var noResults = document.getElementById("no-results-container")
     return noResults.classList.remove("d-none")
+  } else {
+    results.classList.remove("d-none")
   }
-
-  results.classList.remove("d-none")
 
   if (searchConfig.showParent === true) {
     searchHits = groupBy(searchHits, (hit) => hit.parent);
@@ -139,9 +141,15 @@ function search(input, results, searchConfig) {
         // hide "No results" if it isn't already hidden
         noResults.classList.add("d-none")
 
-        // rotate the expand chevron if it's not already
-        resultParent.querySelector("[data-bs-toggle]").classList.add("down")
-        resultParent.querySelector("[data-bs-toggle]").classList.remove("collapsed")
+        try {
+          // prevent highlighting of section title in search results
+          resultParent.classList.add('disabled');
+
+          // hide accordion
+          resultParent.querySelector(".button-container").classList.add('d-none');
+        } catch(e) {
+          console.error(e);
+        }
 
         // deep copy the children of the nav section. This will be modified
         var resultChildrenContainer = document.getElementById(section + "-children").cloneNode(true)
@@ -238,44 +246,24 @@ function combineURLs(baseURL, relativeURL) {
 
 // Create a search box and results when the search icon is selected
 function buildTransition() {
-  var searchIcon = document.getElementById("search-icon");
+  // var searchIcon = document.getElementById("search-icon");
   var closeSearch = document.getElementById("close-search");
-  var navMenu = document.getElementById("left-nav-menu");
-  var searchPanel = document.getElementById("search-panel");
-  var searchInput = document.getElementById("search-input");
-  var leftNav = document.getElementById("left-nav-offcanvas");
+  // var navMenu = document.getElementById("left-nav-menu");
+  // var searchPanel = document.getElementById("search-panel");
+  const searchInput = document.getElementById("search-input");
+  // var leftNav = document.getElementById("left-nav-offcanvas");
+  const results = document.getElementById("search-results");
+  const noResults = document.getElementById("no-results-container")
+
 
   const headerHeight = "100%"
 
-  // When the user clicks on the search icon:
-  // - hide the nav menu
-  // - show the search panel
-  // - put the cursor in the input box
-  searchIcon.addEventListener(`click`, (event) => {
-    navMenu.classList.add("d-none")
-    searchPanel.classList.remove("d-none")
-    searchInput.focus()
-    searchInput.select()
-  })
-
   // Note: navIconSwitcher also resets these menus on mobile menu close
   closeSearch.addEventListener(`click`, (event) => {
-    navMenu.classList.remove("d-none")
-    searchPanel.classList.add("d-none")
+    results.classList.add("d-none")
+    noResults.classList.add("d-none")
+    searchInput.value = '';
   })
-
-  // Close the search panel if they click off the left nav
-  document.addEventListener("click", function(event) {
-    targetElement = event.target
-    do {
-      if (leftNav == targetElement){
-        return
-      }
-      targetElement = targetElement.parentNode
-    } while (targetElement)
-        navMenu.classList.remove("d-none");
-        searchPanel.classList.add("d-none");
-  });
 }
 
 window.onload = buildTransition();

@@ -1,10 +1,11 @@
 <div id="top-nav" class="logo nav-logo-search d-flex flex-row">
-    <div class="logo-container flex-grow-1">
+
+    <div class="logo-container">
         <a href="//www.upbound.io">
-            <img loading="eager"
-            src="/img/logos/upbound-docs.svg"
-            height="21"
-            alt="Upbound Homepage">
+            <img loading="eager" src="/img/logos/upbound-docs.svg" height="21" alt="Upbound Homepage">
         </a>
     </div>
+
+    {{ partialCached "body/search-panel" . }}
+    
 </div>

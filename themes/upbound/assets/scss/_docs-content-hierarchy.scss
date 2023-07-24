@@ -1,0 +1,71 @@
+// search results display clones of the left side-nav content
+// the styles below will apply to both the side-nav and the search results
+
+#search-results, #left-nav-menu {
+    .list-group {
+
+        // Remove unwanted default list-group stylings
+        --bs-list-group-border-radius: 0;
+        --bs-list-group-item-padding-x: 0;
+        --bs-list-group-border-width: 0;
+    
+        // Default nav item state
+        --bs-list-group-action-hover-bg: #{$up-neutral-50};
+    
+        // Clicked on nav menu item
+        --bs-list-group-action-active-color: #{$up-purple-400};
+        --bs-list-group-action-active-bg: #{$up-purple-100};
+    
+        // Active nav menu item
+        --bs-list-group-active-color: #{$up-purple-400};
+        --bs-list-group-active-bg: #{$up-purple-100};
+        --bs-accordion-border-radius: 4;
+    
+        --bs-list-group-item-padding-y: 10px;
+    
+        // The expand/collapse nav button uses the bootstrap accordion components
+        .accordion {
+            --bs-accordion-bg: transparent;
+            --bs-accordion-active-bg: transparent;
+            --bs-accordion-btn-padding-y: 10px;
+            --bs-accordion-btn-padding-x: 2px;
+            --bs-accordion-border-color: transparent;
+        }
+    
+        .accordion-button{
+            --bs-accordion-btn-icon-width: 14px;
+            // size of the grey box containing the chevron
+            width: 22px;
+            height: 22px;
+    
+            &:after{
+                margin-left: 1px;
+            }
+        }
+    
+        &.top-level {
+            padding: 32px 28px;
+        }
+    }
+
+    .nav-parent-container{
+        font-weight: 800;
+        font-size: .9rem;
+
+        border-radius: 8px;
+        padding: 12px 8px;
+
+        &:not(.disabled):hover{
+            background-color: #{$up-neutral-50};
+        }
+        
+        .nav-parent-title {
+            font-size: 16px;
+        }
+    }
+
+    .nav-child{
+        padding-left: 24px;
+        border-radius: 8px;
+    }
+}
