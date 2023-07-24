@@ -48,6 +48,44 @@
     line-height: 2.8rem;
   }
 
+  .table {
+    border: 1px solid #{$up-grey-600};
+    border-radius: 6px;
+    border-collapse: separate;
+    border-spacing: 0px;
+  }
+  // Hide bottom borders and wider padding for header items
+  .table th {
+    border-bottom: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  // Add only top borders and wider padding for content items
+  .table td {
+    border-top: 1px solid #{$up-grey-600};
+    border-bottom: none;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  // Decrease padding for small tables
+  .table.table-sm th {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;   
+  }
+  .table.table-sm td {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;  
+  }
+
+
   h1, h2, h3, h4, h5, h6 {
 
     a {
