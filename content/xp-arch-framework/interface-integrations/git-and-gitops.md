@@ -15,14 +15,14 @@ Here are three ways you should plan for integrating with git with Crossplane:
 Building custom APIs with Crossplane doesn't require users to write code, but you still need to write configurations and definitions as .YAML. As with traditional software development, you should store your custom API definitions in git. You should have an automated build pipeline set up with your git repo to package your APIs in a configuration package, then install the package on your control plane.
 
 {{< hint "note" >}}
-Learn more about how to sturcture your repo and define your APIs in the [Building APIs](../../building-apis) section of this framework.
+Learn more about how to sturcture your repo and define your APIs in the [Building APIs]({{< ref "xp-arch-framework/building-apis/" >}}) section of this framework.
 {{< /hint >}}
 
 ### 2. Use git as an interface to invoking your control plane's APIs 
 
-When users think of `GitOps` with Crossplane, its usually in this regard: whenever a user needs a resource from your control plane, a claim should be created. Whether the claim is created directly by the requesting user or there is a [platform frontend](../platform-frontends) that collects information from a user and creates a claim in the background, claims are the Kubernetes-native way to interact with your API.
+When users think of `GitOps` with Crossplane, its usually in this regard: whenever a user needs a resource from your control plane, a claim should be created. Whether the claim is created directly by the requesting user or there is a [platform frontend]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}}) that collects information from a user and creates a claim in the background, claims are the Kubernetes-native way to interact with your API.
 
-Claims themselves are resources with a configuration (that is, a `spec`), and as such can and should be declaratively stored in git. We recommend storing claims in a git repo and then using a GitOps engine such as Argo or Flux--described later on below--to deliver the claims to your control plane.
+Claims themselves are resources with a configuration (a `spec`), and as such can and should be declaratively stored in git. We recommend storing claims in a git repo and then using a GitOps engine such as Argo or Flux--described later on below--to deliver the claims to your control plane.
 
 ### 3. Use git to store the infrastructure definition that backs your control plane
 
@@ -34,7 +34,7 @@ Your control plane itself is infrastructure, and as such should ideally be defin
 
 ### Integrate Crossplane with Flux
 
-Flux is a set of controllers that keeps Kubernetes clusters in sync with a configuration source (that is, git).
+Flux is a set of controllers that keeps Kubernetes clusters in sync with a configuration source.
 
 {{<img src="xp-arch-framework/images/flux.png" alt="An illustration of Flux" size="small" quality="100">}}
 
@@ -142,7 +142,7 @@ For every new instance of Crossplane that you want to register and set up GitOps
 
 ### Integrate Crossplane with Argo
 
-Argo CD is a project that enables GitOps by implementing an `Application` resource, which provides a declarative approach to managing config management tooling for Kubernetes resources (for example, Helm and Kustomize) and a controller for handling the reconciliation loop for syncing the resources into the cluster (that is, updating the live state to match the desired state).
+Argo CD is a project that enables GitOps by implementing an `Application` resource, which provides a declarative approach to managing config management tooling for Kubernetes resources (for example, Helm and Kustomize) and a controller for handling the reconciliation loop for syncing the resources into the cluster (updating the live state to match the desired state).
 
 {{<img src="xp-arch-framework/images/argo.png" alt="An illustration of Argo" size="small" quality="100">}}
 

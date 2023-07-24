@@ -62,7 +62,7 @@ Crossplane managed resources attempt to be a 1:1 representation of an external r
 As the [upstream Crossplane](https://docs.crossplane.io/v1.12/concepts/) documentation calls out, when it comes to building custom APIs with Crossplane, there are a few components involved:
 
 1. A **Composite Resource Definition (XRD)**
-2. A **Composition(s)**
+2. A **Composition** or **Compositions**
 3. A **Configuration** Package
 
 {{<img src="xp-arch-framework/images/xp-building-blocks.png" alt="Depiction of Crossplane building blocks" size="small" quality="100">}}

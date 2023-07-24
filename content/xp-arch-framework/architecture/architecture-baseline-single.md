@@ -87,7 +87,7 @@ We will first cover what it means to configure each of these, what "integrations
 The first thing you should configure on your control plane is its API. You do this by installing Crossplane [providers](https://docs.crossplane.io/v1.12/concepts/providers/), [configurations](https://docs.crossplane.io/v1.12/concepts/packages/#configuration-packages), and your own user-defined [compositions](https://docs.crossplane.io/v1.12/concepts/composition/). 
 
 {{< hint "note" >}}
-Read the [building APIs](../../building-apis) portion of the framework for guidance on building custom APIs with Crossplane.
+Read the [building APIs]({{< ref "xp-arch-framework/building-apis" >}})  portion of the framework for guidance on building custom APIs with Crossplane.
 {{< /hint >}}
 
 By using a git repo as the single source of truth for a control plane, it gives you a single point of control. Then, you can use a GitOps tool such as Flux or ArgoCD to continuously apply the latest definition of your control plane configuration. Furthermore, we recommend using a "root" Crossplane configuration to encapsulate your APIs, depndencies on other Crossplane configurations, and dependencies on Crossplane providers.
@@ -98,13 +98,13 @@ Secrets in Kubernetes are objects that hold sensitive data like passwords, token
 
 If you don't configure Crossplane to use an external secrets store, when you configure a managed resource to write a secret (such as when you configure the object to use `writeConnectionSecretToRef: ...`), that secret gets written in the control plane. Most organizations have security requirements that recommend storing all secrets in a centrally managed key-value store (such as Vault, AWS Secrets Manager, etc); reliance on in-cluster secrets aren't considered a best practice. Therefore, our architecture baseline recommends configuring your control plane to use an external secrets store.
 
-For a complete guide to integrating secrets management in your control plane, see the [Interface Integrations > Secrets Management](/xp-arch-framework/interface-integrations/secrets-management) topic in this framework.
+For a complete guide to integrating secrets management in your control plane, see the [Interface Integrations > Secrets Management]({{< ref "xp-arch-framework/interface-integrations/secrets-management.md" >}})  topic in this framework.
 
 ### Add policy engines
 
 An effective way to supplement Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine—such as [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or [Kyverno](https://github.com/kyverno/kyverno)—can be used with Crossplane. This allows users to write custom policies to enforce against Crossplane resources. 
 
-Policy engines have some overlap in terms of what you can implement relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines](/xp-arch-framework/interface-integrations/policy-engines) topic in this framework.
+Policy engines have some overlap in terms of what you can implement relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}})  topic in this framework.
 
 {{< hint "note" >}}
 If you are unsure whether you need to integrate a policy engine with your control plan, you can always start out by _not_ having a policy engine and add one later once it makes sense. We do explain in the guide on interface integrations how you can use policies to supplement what you can do out-of-the-box with Crossplane compositions (since there is some overlap).
@@ -114,13 +114,13 @@ If you are unsure whether you need to integrate a policy engine with your contro
 
 Crossplane can be configured to emit Prometheus metrics at install-time, so users can install Prometheus to sit alongside Crossplane and configure it to scrape metrics for the core Crossplane component and provider pods. Users can integrate these metrics with Grafana or other dashboarding solutions to visualize metrics, logs, and alerts. 
 
-For a complete guide to monitoring and observability in your control plane see the [Interface Integrations > Monitoring and Observability](/xp-arch-framework/interface-integrations/monitoring-and-observability) topic in this framework.
+For a complete guide to monitoring and observability in your control plane see the [Interface Integrations > Monitoring and Observability]({{< ref "xp-arch-framework/interface-integrations/monitoring-and-observability.md" >}})  topic in this framework.
 
 ### Platform continuity
 
 To maintain platform continuity, define the Service Level Agreement for your control plane. An effective tool to help you achieve your control plane's SLA commitment is with [Velero](https://velero.io/). Velero allows users to capture and backup the state of their infrastructure’s configuration on their control plane. In a disaster scenario—such as if the control plane were to go offline—users can provision a new instance of Crossplane and restore the last known state up to the time of the most recent backup. 
 
-For a complete guide to disaster recovery for your control plane see the [Platform Continuity](/xp-arch-framework/interface-integrations/platform-continuity) topic in this framework.
+For a complete guide to disaster recovery for your control plane see the [Platform Continuity]({{< ref "xp-arch-framework/interface-integrations/platform-continuity.md" >}})  topic in this framework.
 
 ### Repository Structure
 
@@ -157,7 +157,7 @@ Many users create control planes that have multiple consumers. Suppose you are b
 Sharing control planes can save cost and simplify administrative overhead. However, much like a shared Kubernetes cluster, shared control planes introduce security and performance considerations that need to be carefully evaluated.
 
 {{< hint "tip" >}}
-Best Practice: If you have security requirements to ensure certain teams are only able to create resources in certain cloud accounts, we strongly recommend adopting a [multi-control plane architecture](../architecture-baseline-multi) that segments teams to their own control planes. Discrete control planes will always be a stronger isolation boundary than namespaces.
+Best Practice: If you have security requirements to ensure certain teams are only able to create resources in certain cloud accounts, we strongly recommend adopting a [multi-control plane architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}})  that segments teams to their own control planes. Discrete control planes will always be a stronger isolation boundary than namespaces.
 {{< /hint >}}
 
 If you are comfortable with tenants on a control plane being able to have read-only visibility of other tenants' resources, you should feel confident using Kubernetes' and Crossplane's built-in tenancy capabilities.
@@ -190,7 +190,7 @@ Your control plane’s API can be consumed in a variety of ways. For users who a
 
 While you could directly create claims on your control plane via it's API server, this baseline architecture recommends designating a git repo to be the source for all Crossplane claims that should exist on a control plane. Similar to configuring the definition for your control plane’s configuration, this pattern allows you to use GitOps tools like ArgoCD or Flux to continuously sync the resources that are desired from your control plane. For this architecture to function properly, the interfaces to your control plane need to be able to create Crossplane claim .yamls and submit it to the repos being monitored by your GitOps tooling.
 
-For a complete guide to integrating frontend interfaces with your control plane see the [Interface Integrations > Platform Frontends](/xp-arch-framework/interface-integrations/platform-frontends) topic in this framework.
+For a complete guide to integrating frontend interfaces with your control plane see the [Interface Integrations > Platform Frontends]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}})  topic in this framework.
 
 ## Control plane causality dilemma
 
@@ -202,4 +202,4 @@ Commonly referred to as the "chicken or the egg," if a user wants to use Crosspl
 
 ## Next Steps
 
-Now that we've explained the baseline architecture recommendation for a single control plane, you may want to understand when its appropriate to consider running more than one control plane. Read [Architecture > Multi-Control Planes](../architecture-baseline-multi) to learn about what [circumstances](../architecture-baseline-multi#specialized-spoke-control-planes) we recommend using a multi-control plane architecture.
+Now that we've explained the baseline architecture recommendation for a single control plane, you may want to understand when its appropriate to consider running more than one control plane. Read [Architecture > Multi-Control Planes]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}})  to learn about what [circumstances]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md#specialized-spoke-control-planes" >}}) we recommend using a multi-control plane architecture.

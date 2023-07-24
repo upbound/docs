@@ -4,7 +4,7 @@ weight: 5
 description: "how to build APIs"
 ---
 
-Compositions are the implementations of the schema you define in your [XRD](../building-apis-xrds). The relationship between XRDs and compositions is one-to-many. That is, you can have multiple compositions that implement the spec of an XRD and you can tell Crossplane which one to select. We always recommend to start by first authoring your XRD before authoring compositions to implement it.
+Compositions are the implementations of the schema you define in your [XRD](../building-apis-xrds). The relationship between XRDs and compositions is one-to-many. You can have multiple compositions that implement the spec of an XRD and you can tell Crossplane which one to select. We always recommend to start by first authoring your XRD before authoring compositions to implement it.
 
 {{< hint "important" >}}
 If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/v1.12/concepts/) documentation.
@@ -20,7 +20,7 @@ Compositions exist in Crossplane to allow you to create resource abstractions th
 
 ## Prototype with Managed Resources First
 
-Before you begin authoring a composition, we recommend first prototyping the resources you want to compose by creating managed resources directly. The ultimate output of a composite resource is always a set of rendered managed resource manifests. We've found it can be difficult to nail the set of values you need to pass to a managed resource in order for it to create successfully, and starting off by working via your abstraction layer (that is, your composition) can further complicate things. Therefore, we recommend:
+Before you begin authoring a composition, we recommend first prototyping the resources you want to compose by creating managed resources directly. The ultimate output of a composite resource is always a set of rendered managed resource manifests. We've found it can be difficult to nail the set of values you need to pass to a managed resource in order for it to create successfully, and starting off by working via your abstraction layer (your composition) can further complicate things. Therefore, we recommend:
 
 1. Prototype and directly create the set of managed resources you intend to compose _first_.
 2. Once you've proven to yourself that you can create this set of resources, _then_ author your composition to do this automatically (patching and transforming values, etc).

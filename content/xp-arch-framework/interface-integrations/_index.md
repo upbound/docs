@@ -6,12 +6,12 @@ description: "A guide for how to integrate control planes with a variety of inte
 
 Crossplane sits at the core of your platform. As a result, there are about six areas you may need to think about integrating with. We've broken integrations into the following:
 
-- [Platform frontends](platform-frontends)
-- [Git and GitOps](git-and-gitops)
-- [Secret Management](secrets-management)
-- [Policy Engines](policy-engines)
-- [Platform Continuity](platform-continuity)
-- [Monitoring and Observability](monitoring-and-observability)
+- [Platform frontends]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}})
+- [Git and GitOps]({{< ref "xp-arch-framework/interface-integrations/git-and-gitops.md" >}})
+- [Secret Management]({{< ref "xp-arch-framework/interface-integrations/secrets-management.md" >}})
+- [Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}})
+- [Platform Continuity]({{< ref "xp-arch-framework/interface-integrations/platform-continuity.md" >}})
+- [Monitoring and Observability]({{< ref "xp-arch-framework/interface-integrations/monitoring-and-observability.md" >}})
 
 ## Use the power of the Kubernetes ecosystem
 
