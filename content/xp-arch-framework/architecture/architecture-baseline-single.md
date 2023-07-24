@@ -102,7 +102,7 @@ For a complete guide to integrating secrets management in your control plane, se
 
 ### Add policy engines
 
-An effective way to supplement Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine—such as [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or [Kyverno](https://github.com/kyverno/kyverno)—can be used with Crossplane. This allows users to write custom policies to enforce against Crossplane resources. 
+An effective way to supplement Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine, such as [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or [Kyverno](https://github.com/kyverno/kyverno), can be used with Crossplane. This allows users to write custom policies to enforce against Crossplane resources. 
 
 Policy engines have some overlap in terms of what you can implement relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}}) topic in this framework.
 
@@ -114,7 +114,7 @@ If you are unsure whether you need to integrate a policy engine with your contro
 
 Crossplane can be configured to emit Prometheus metrics at install-time, so users can install Prometheus to sit alongside Crossplane and configure it to scrape metrics for the core Crossplane component and provider pods. Users can integrate these metrics with Grafana or other dashboarding solutions to visualize metrics, logs, and alerts. 
 
-For a complete guide to monitoring and observability in your control plane see the [Interface Integrations > Monitoring and Observability]({{< ref "xp-arch-framework/interface-integrations/monitoring-and-observability.md" >}})  topic in this framework.
+For a complete guide to monitoring and observability in your control plane see the [Interface Integrations > Monitoring and Observability]({{< ref "xp-arch-framework/interface-integrations/monitoring-and-observability.md" >}}) topic in this framework.
 
 ### Platform continuity
 
@@ -190,7 +190,7 @@ Your control plane’s API can be consumed in a variety of ways. For users who a
 
 While you could directly create claims on your control plane via it's API server, this baseline architecture recommends designating a git repo to be the source for all Crossplane claims that should exist on a control plane. Similar to configuring the definition for your control plane’s configuration, this pattern allows you to use GitOps tools like ArgoCD or Flux to continuously sync the resources that are desired from your control plane. For this architecture to function properly, the interfaces to your control plane need to be able to create Crossplane claim .yamls and submit it to the repos being monitored by your GitOps tooling.
 
-For a complete guide to integrating frontend interfaces with your control plane see the [Interface Integrations > Platform Frontends]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}})  topic in this framework.
+For a complete guide to integrating frontend interfaces with your control plane see the [Interface Integrations > Platform Frontends]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}}) topic in this framework.
 
 ## Control plane causality dilemma
 
