@@ -246,15 +246,11 @@ function combineURLs(baseURL, relativeURL) {
 
 // Create a search box and results when the search icon is selected
 function buildTransition() {
-  // var searchIcon = document.getElementById("search-icon");
   var closeSearch = document.getElementById("close-search");
-  // var navMenu = document.getElementById("left-nav-menu");
-  // var searchPanel = document.getElementById("search-panel");
+  var searchPanel = document.getElementById("search-panel");
   const searchInput = document.getElementById("search-input");
-  // var leftNav = document.getElementById("left-nav-offcanvas");
   const results = document.getElementById("search-results");
   const noResults = document.getElementById("no-results-container")
-
 
   const headerHeight = "100%"
 
@@ -264,6 +260,19 @@ function buildTransition() {
     noResults.classList.add("d-none")
     searchInput.value = '';
   })
+
+  // Close the search panel if they click outside of it
+  document.addEventListener("click", function(event) {
+    targetElement = event.target
+    do {
+      if (searchPanel == targetElement){
+        return
+      }
+      targetElement = targetElement.parentNode
+    } while (targetElement)
+      results.classList.add("d-none")
+      noResults.classList.add("d-none")
+  });
 }
 
 window.onload = buildTransition();
