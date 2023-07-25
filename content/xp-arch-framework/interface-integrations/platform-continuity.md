@@ -12,7 +12,7 @@ Platform continuity is a topic that encompasses everything you need to do to kee
 
 ### In the context of Crossplane
 
-Disaster recovery for Crossplane does not equal disaster recovery for your business critical state, like database or cloud storage data. It's important to remember:
+Disaster recovery for Crossplane doesn't equal disaster recovery for your business critical state, like database or cloud storage data. It's important to remember:
 
 1. Crossplane is concerned with ensuring the configuration of your resource. 
 2. Crossplane **isn't concerned** with the _internal_ state of your resources. 
