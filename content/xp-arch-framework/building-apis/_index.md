@@ -28,7 +28,7 @@ To put this into context, Kubernetes has a component called the `API Server`. Th
 
 ## How Crossplane enables managing resources in an external service
 
-In the examples above, each resource has API that can be used to interact with them. You can teach Crossplane how to interact with their APIs. **Crossplane providers** are the building blocks that you can install into Crossplane to teach it how to talk to these resources' APIs. Crossplane providers are packages which bundle and define new Kubernetes custom resources and their associated controllers (that contain the logic for interacting with the external resource's APIs). We call these `managed resources (MRs)` in Crossplane.
+In the examples above, each resource has an API that can be used to interact with it. You can teach Crossplane how to interact with those APIs. **Crossplane providers** are the building blocks that you can install into Crossplane to teach it how to talk to these resources' APIs. Crossplane providers are packages which bundle and define new Kubernetes custom resources and their associated controllers (that contain the logic for interacting with the external resource's APIs). We call these `managed resources (MRs)` in Crossplane.
 
 {{<img src="xp-arch-framework/images/kubernetes-crossplane-mrs.png" alt="Depiction of how Crossplane facilitates talking to external resources" size="small" quality="100">}}
 

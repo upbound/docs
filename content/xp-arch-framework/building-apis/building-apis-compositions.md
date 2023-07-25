@@ -23,7 +23,8 @@ Compositions exist in Crossplane to allow you to create resource abstractions th
 Before you begin authoring a composition, we recommend first prototyping the resources you want to compose by creating managed resources directly. The ultimate output of a composite resource is always a set of rendered managed resource manifests. We've found it can be difficult to nail the set of values you need to pass to a managed resource in order for it to create successfully, and starting off by working via your abstraction layer (your composition) can further complicate things. Therefore, we recommend:
 
 1. Prototype and directly create the set of managed resources you intend to compose _first_.
-2. Once you've proven to yourself that you can create this set of resources, _then_ author your composition to do this automatically (patching and transforming values, etc).
+2. Once you've proven to yourself that you can create this set of resources, identify the fields which should be controlled by the consumer of the API.
+3. _Then_ author your composition to map those inputs in their proper format (patching and transforming values, etc).
 
 If you author your composition correctly, the rendered managed resources manifests will be nearly identical to the set of manifests you manually put together during your prototyping phase.
 
@@ -176,7 +177,7 @@ spec:
 
 #### 3. Propogating data between managed resources
 
-One of the common jobs of composition authors is to exchange data between managed resources in a composition. Whereas the convential use case for patches is to patch from a `spec` supplied by a resource claim to a composed managed resource in a composition, this method of patching is for passing data between two sibling managed resources. TO do this, you must publish your desired field from a source managed resource to a custom composite resource `status` field. You can then consume data from this `status` field by a target managed resource.
+One of the common jobs of composition authors is to exchange data between managed resources in a composition. Whereas the convential use case for patches is to patch from a `spec` supplied by a resource claim to a composed managed resource in a composition, this method of patching is for passing data between two sibling managed resources. To do this, you must publish your desired field from a source managed resource to a custom composite resource `status` field. You can then consume data from this `status` field by a target managed resource.
 
 This is able to be done because, just like in Kubernetes, every Crossplane object has a nested object field called `status`. In this example below, you can see how we propogate data emitted from one managed resouce (a cluster resource) to another managed resource in the composition (an OIDC Provider). 
 

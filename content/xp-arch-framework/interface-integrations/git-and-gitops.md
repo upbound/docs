@@ -8,11 +8,11 @@ GitOps is an approach for managing a system by declaratively describing desired 
 
 ## Git and Crossplane
 
-Here are three ways you should plan for integrating with git with Crossplane:
+Here are three ways you should plan for integrating git with Crossplane:
 
 ### 1. Use git for storing your custom APIs
 
-Building custom APIs with Crossplane doesn't require users to write code, but you still need to write configurations and definitions as .YAML. As with traditional software development, you should store your custom API definitions in git. You should have an automated build pipeline set up with your git repo to package your APIs in a configuration package, then install the package on your control plane.
+Building custom APIs with Crossplane doesn't require users to write code, but you still need to write configurations and definitions as YAML. As with traditional software development, you should store your custom API definitions in a version control system, such as git. You should have an automated build pipeline set up with your git repo to package your APIs in a configuration package, then install the package on your control plane.
 
 {{< hint "note" >}}
 Learn more about how to sturcture your repo and define your APIs in the [Building APIs]({{< ref "xp-arch-framework/building-apis/" >}}) section of this framework.

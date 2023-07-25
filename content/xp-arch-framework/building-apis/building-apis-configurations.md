@@ -36,7 +36,7 @@ This structure works well for basic APIs that have a definition (XRD) and single
 We recommend this folder structure because it improves human readability, not because Crossplane depends on a certain folder structure. The folder structure doesn't affect Crossplane’s ability to build a package since all .YAML files are flattened during the build process. 
 
 {{< hint "important" >}}
-👉 Be careful to avoid placing .YAML files in your configuration's directory tree that you **don't** want Crossplane to parse. This can cause builds to unintendly break because Crossplane will attempt to ingest **all** .YAML files.
+👉 Be careful to avoid placing .YAML files in your configuration's directory tree that you **don't** want Crossplane to parse. This can cause builds to unintentionally break because Crossplane will attempt to ingest **all** .YAML files.
 {{< /hint >}}
 
 If you want to ignore a set of .YAML files during the build process, run the following

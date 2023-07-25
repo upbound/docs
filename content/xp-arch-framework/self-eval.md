@@ -4,7 +4,7 @@ weight: 1
 description: "A self-evaluation to steer you in the direction for build with Crossplane"
 ---
 
-This self-evaluation outlines the process for how to go about architecting a custom cloud platform with Crossplane. The goal is to help you think about you create your cloud platforms in a pragmatic, fun and high velocity way while checking the relevant boxes to meet your organizational, governance and technical requirements. For this exercise, grab a pencil and paper so you can record your answers to these questions.
+This self-evaluation outlines the process for how to go about architecting a custom cloud platform with Crossplane. The goal is to help you think about creating your cloud platforms in a pragmatic, fun and high velocity way while checking the relevant boxes to meet your organizational, governance and technical requirements. For this exercise, grab a pencil and paper so you can record your answers to these questions.
 
 ## Architecture Questions
 
@@ -26,7 +26,7 @@ These teams likely have current ways to satisfy their infrastructure resource li
 
 ### 3. What will your interface look like?
 
-Your custom cloud platform has an API. This application programming interface will define how your users are interact with the platform. It allows you to innovate behind the API. This is a great way for cloud platform teams to provide behind the scenes governance and security. One such security feature can be to always encrypt all data at rest and perhaps in transit without any additional work on behalf of your users. Another example may be to create and persist secrets in a corporate secrets store of choice for your custom platform.
+Your custom cloud platform has an API. This application programming interface will define how your users are interacting with the platform. It allows you to innovate behind the API. This is a great way for cloud platform teams to provide behind the scenes governance and security. One such security feature can be to always encrypt all data at rest and perhaps in transit without any additional work on behalf of your users. Another example may be to create and persist secrets in a corporate secrets store of choice for your custom platform.
 
 The innovation behind the API approach also allows us to apply corporate standards. You might offer your application teams your own platform regions, for example US, EMEA, APAC. You may choose to map those to specific cloud provider regions for latency, cost or other optimizations. Perhaps also to straddle multiple specific provider regions into your defined cloud regions.
 

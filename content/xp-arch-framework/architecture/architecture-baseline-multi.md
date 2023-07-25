@@ -23,7 +23,7 @@ Just like the baseline single control plane architecture, the solution you ultim
 
 ## Central (hub) control plane
 
-The multi-control plane architecture involves creating a control plane to serve as a hub whose exclusive job is to manage the specialized control planes (spokes). This architecture is a hub-and-spoke pattern and you will somestimes hear it called “control plane of control planes”. The hub control plane follows the [single control plane]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md" >}}) baseline architecture.
+The multi-control plane architecture involves creating a control plane to serve as a hub whose exclusive job is to manage the specialized control planes (spokes). This architecture is a hub-and-spoke pattern and you will sometimes hear it called “control plane of control planes”. The hub control plane follows the [single control plane]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md" >}}) baseline architecture.
 
 ### Configure the hub control plane
 
@@ -34,7 +34,7 @@ The hub control plane should be configured in the following ways:
 
 The hub control plane otherwise follows the standard architecture we encourage for [baseline control planes]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md" >}}):
 
-- the control plane configuration definition should be sourced from git, built as a package and deployed via GitOps engine.
+- the control plane configuration definition should be stored in git, built as a package and deployed via GitOps engine.
 - claims, which should be created for each specialized (spoke) control plane, should be sourced from git and deployed to the hub control plane via a GitOps engine. 
 
 ## Specialized (spoke) control planes

@@ -8,7 +8,7 @@ Platform continuity is a topic that encompasses everything you need to do to kee
 
 ## Disaster Recovery
 
-[Velero](https://velero.io/) is a popular open source solution in the Kubernetes ecosystem to safel perform backup and restore operations against Kubernetes cluster resources. We recommend using Velero as the key ingredient for how to do disaster recovery with your Crossplane control planes. We will cover best practices for using Velero in the context of Crossplane.
+[Velero](https://velero.io/) is a popular open source solution in the Kubernetes ecosystem to safely perform backup and restore operations against Kubernetes cluster resources. We recommend using Velero in any disaster recovery plan for your Crossplane control planes. We will cover best practices for using Velero in the context of Crossplane.
 
 ### In the context of Crossplane
 
@@ -42,7 +42,7 @@ Likewise, if your control plane fails and goes offline, that doesn't necessarily
 
 ### What State to Capture vs Exclude
 
-You should configure Velero to capture state that's only relevant for Crossplane. THe following is a sample Velero backup object that illustrates which Kubernetes resources are applicable to be backed up and which ones can be safely excluded:
+You should configure Velero to capture state that's only relevant for Crossplane. The following is a sample Velero backup object that illustrates which Kubernetes resources are applicable to be backed up and which ones can be safely excluded:
 
 ```yaml
 apiVersion: velero.io/v1
@@ -142,7 +142,7 @@ For each control plane that you create, create three Velero `Schedule` objects i
 - Daily
 - Weekly
 
-We think this is a good baseline, but you can customize the frequency of the backups according to the Recovery Point Objective (RPO) for your platform. If you need to be able to restore state more frequently, you will want to make the snapshots more frequent than hourly.
+We think this is a good baseline, but you can customize the frequency of the backups according to the Recovery Point Objective (RPO) for your platform. If you need to be able to restore state more frequently, you will want to snapshot more frequently.
 
 ### Restore Control Plane from state
 
