@@ -8,7 +8,7 @@ This self-evaluation outlines the process for how to go about architecting a cus
 
 ## Architecture Questions
 
-### 1. Who will use your platform?
+### 1. Who will use your platform? {#_1-who-will-use-your-platform}
 
 As an architect of a custom cloud platform, it helps us to remind ourselves that we're building this platform for end users and in most cases multiple personas.
 
@@ -16,7 +16,7 @@ As an architect of a custom cloud platform, it helps us to remind ourselves that
 **Action**: Write down all the teams that you anticipate using your platform.
 {{< /hint >}}
 
-### 2. What causes toil for your users?
+### 2. What causes toil for your users? {#_2-what-causes-toil-for-your-users}
 
 These teams likely have current ways to satisfy their infrastructure resource lifecycle management needs. Which tools do they use? Which things hold them back? How much energy do they spend?
 
@@ -24,7 +24,7 @@ These teams likely have current ways to satisfy their infrastructure resource li
 **Action**: Find out how your users are currently satisfying their needs and which problems they want to solve along with their expected outcomes.
 {{< /hint >}}
 
-### 3. What will your interface look like?
+### 3. What will your interface look like? {#_3-what-will-your-interface-look-like}
 
 Your custom cloud platform has an API. This application programming interface will define how your users are interacting with the platform. It allows you to innovate behind the API. This is a great way for cloud platform teams to provide behind the scenes governance and security. One such security feature can be to always encrypt all data at rest and perhaps in transit without any additional work on behalf of your users. Another example may be to create and persist secrets in a corporate secrets store of choice for your custom platform.
 
@@ -34,7 +34,7 @@ The innovation behind the API approach also allows us to apply corporate standar
 **Action**: Determine what the application programming interface for your platform should look like.
 {{< /hint >}}
 
-### 4. What inputs does your interface need to provide?
+### 4. What inputs does your interface need to provide? {#_4-what-inputs-does-your-interface-need-to-provide}
 
 Think about the simplest API that will provide real benefit to at least one major user of your platform when you start out. Use short feedback loops to find out if you are going down a path of energy well spent for your organization.
 
