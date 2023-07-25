@@ -4,7 +4,7 @@ weight: 1
 description: "A self-evaluation to steer you in the direction for build with Crossplane"
 ---
 
-This self-evaluation outlines the process for how to go about architecting a custom cloud platform with Crossplane. The goal is to make it easy for you to create your cloud platforms in a simple, fun and high velocity way while checking the relevant boxes to meet your organizational, governance and technical requirements. For this exercise, grab a pencil and paper so you can record your answers to these questions.
+This self-evaluation outlines the process for how to go about architecting a custom cloud platform with Crossplane. The goal is to make it easy for you to create your cloud platforms in a simple, fun and high velocity way while checking the relevant boxes to meet your organizational, governance and technical requirements. For this exercise, grab a (virtual) pencil and paper so you can record your answers to these questions.
 
 ## Architecture Questions
 
@@ -48,9 +48,188 @@ Next would be the minimum set of parameters that a user of the API needs to prov
 
 Example: An Architecture for an organization with a Network, Database, Security, Governance, IT, Finance, Cloud Platform, SRE, and 3 Application Teams with a Service Owner Responsibility Model.
 
+### With which organizations does your team collaborate?
+
+Platform teams co-exist with other verticals. Depending on
+the organic growth of your organization, there may be
+departments with shared, overlapping, and mutually exclusive
+responsibilities. Before you dive into the next couple of
+self evaluation areas, be clear about who to consult and
+inform, and who is responsible and accountable for the various
+aspects of the requirements that flow into creating your
+platform.
+
+{{< hint "important" >}}
+**Action**: Write down which departments are responsible,
+accountable, consultable and who needs to be informed for
+which aspect of your platform features.
+{{< /hint >}}
+
+Do not be surprised if you find that almost every department
+in your company influences aspects of your platform. Platform
+teams often are front and center players. The more successful
+ones closely interact with their partners, customers,
+and their vendors frequently, asking questions, building
+agreed and aligned roadmaps, orchestrating, iterating,
+developing, testing, securing, fixing, and celebrating together.
+
+The more common partners include the following:
+- Communications
+- Finance
+- Governance
+- IT
+- Legal
+- Procurement
+- Security
+- Training
+
+### Which compliance requirements need to be met?
+
+Your business may be compliant with certain
+standards and regulations or
+strive to be compliant in the future.
+Write down which governance and compliance requiremennts to apply
+when building your platform. The landscape is wide and deep. For
+the purposes of this self evaluation, we will focus
+on one specific example.
+
+A SOC 2 Type II compliance report assures your customers that your
+security program is properly designed and operates effectively to
+safeguard data against threat actors. It shows that you are 
+responsible with the following aspects.
+
+- Process Monitoring
+- Encryption Control
+- Intrusion Detection
+- User Access Authentication
+- Disaster Recovery
+
+Let us focus on encryption. You may offer a persistent storage claim
+to your users. Perhaps the implementation is based on an Amazon AWS S3
+bucket. In that case, you would want to write a composition that maps
+your persistent storage platform API to not only a Bucket,
+but also a BucketServerSideEncryptionConfiguration,
+a BucketPublicAccessBlock to assign fine grained access
+and the proper encryption on behalf of your users without
+them needing to think and worry about it and with your
+platform to maintain the desired level of compliance.
+
+{{< hint "important" >}}
+**Action**: Learn and document which compliance requirements need to be met.
+{{< /hint >}}
+
+### What corporate standards apply?
+
+Similar to the compliance aspects of your platform,
+your company likely has corporate standards. This
+is similar to a travel policy. Pick options for flights,
+hotels, cars, meals that follow the guidelines. Except
+here these are guidelines related to claiming and running
+cloud resources.
+
+You may want to assess typical use cases for your user teams
+and map them to the corporate guidelines. For instance,
+your application teams typically need 1 of 3 flavors of
+database setups. At your platform API you offer them
+flavor A, B and C. When you map your API to the cloud
+provider resources, you map those flavors to specific
+initial number of database instance types, geographical spread,
+and a variety of other implied resources and attributes all
+the way to backups, monitoring and alerting, and any other
+require configurations. By doing so, your users will By
+default adhere to the corporate standards.
+
+In addition to those API options, there may be a role
+based access control (RBAC) protected break glass option,
+that passes through a variety of fine grained parameters
+from your API to the cloud provider and data center backends
+in case a criticial ad-hoc business need requires it.
+
+{{< hint "important" >}}
+**Action**: Learn and document which corporate standards need to be met.
+{{< /hint >}}
+
+### Which governance controls to implement?
+
+Similar to compliance and corporate standards,
+governance refers to overseeing the control and
+direction of your cloud platform with all of its
+resources and processes. Access and cost control are
+to popular aspects that fall under cloud governance.
+
+Crossplane offers multiple layers of segregation and
+access control. Identify which resource claims
+should be offered to who, which resources are dedicated,
+which are mutually exclusive, which API to offer to
+your users and how to map it in a composition to
+cloud, data center, and service providers.
+
+Governance most often includes controls to achieve
+a healthy ratio of cloud resource cost to their value
+for your business. With Crossplane, you can design and
+map infrastructure patterns that will scale your cloud
+resources accordingly when configuring the right
+provider options. One such option may be the use
+of an autoscaling group and horizontal Kubernetes
+pod autoscalers.
+
+Write down the governance controls that are
+important to your organization and learn how
+your providers can help you implement them. Then
+create your compositions with that in mind.
+
+{{< hint "important" >}}
+**Action**: Learn and document which governance controls need to be in place.
+{{< /hint >}}
+
 ### What constitutes an MVP Milestone?
 
-Todo
+Building cloud platforms is
+a multi year journey for most companies and teams.
+There will always be a new
+requirement or a way to create higher efficiencies,
+greater security, reduce cognitive load, improve
+the status quo, and be humbled by the fact that
+yesterday's most loved improvement pales compared to
+today's needs.
+
+Do not overthink it and do not overengineer it.
+Most importantly define achievable roof shots that
+will reduce your risk to get closer to your north star.
+Somewhere between many roof shots and the north star
+are a couple of moon shots. Those are your major milestones.
+The first of them is a minimum viable product or MVP that
+your users will benefit from and your team can be proud of.
+
+Throw everything out that is nice to have. Limit
+yourself to critical path items. What exactly is in and
+what is out depends on your business. However, a good
+approach is to pick a specific use case that can coexist
+with your current technology stacks and processes. Something
+that enables your platform team and its users to get familiar,
+and to benefit from quick wins but without taking short cuts.
+For every decision you make, the number of options should grow
+after you made that decision, not shrink.
+
+Practically, that means that an MVP to offer persistent
+storage to a couple of teams, and to meet governance, compliance
+and corporate standards is a better MVP and a more sound
+first approach than to provide Kubernetes compute clusters
+in 3 clouds with run away cost, a big attack surface due to
+poor unintentional security lock down and variying degrees
+of application team and developer satisfaction
+because of too many bugs.
+
+Even better, when the persistent storage API can be
+extended to fast block storage that can then be
+a future building block of higher value layers on top
+of this solid foundation.
+
+{{< hint "important" >}}
+**Action**: Identify and write down a satisfying narrow use case that can be a building block for future expansion. Ensure that what you will offer is needed and will be used.
+{{< /hint >}}
+
+Frequently talk to your application teams before, during and after building the MVP.
 
 ## The arc of going into production with Crossplane
 
