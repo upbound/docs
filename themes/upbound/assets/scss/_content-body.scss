@@ -23,10 +23,9 @@
     --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem $up-purple-400;
   }
 
-  // Improve spacing and color on open Bootstrap accordions
+  // Improve spacing on open Bootstrap accordions
   .accordion-body {
-    background-color: #{$up-purple-100};
-    padding-top: 0px;
+    border-top: 2px solid #{$up-grey-300};
     .highlight {
       margin:0px;
     }
