@@ -57,9 +57,13 @@ spec:
     path: infrastructure/claims
     repoURL: <your-controlplane-repo-source>
     targetRevision: main
+    directory:
+      recurse: true
   syncPolicy:
     automated: {}
 ```
+
+Based on the recommendations we make for how to [structure your APIs]({{< ref "xp-arch-framework/building-apis/building-apis-configurations.md#configuration-layout-in-git" >}}) in git, be sure to enable [recursive resource detection](https://argo-cd.readthedocs.io/en/stable/user-guide/directory/#enabling-recursive-resource-detection) (as we've demonstrated in the example above).
 
 #### Argo and multi-control plane
 
@@ -81,12 +85,13 @@ spec:
     path: infrastructure/claims
     repoURL: <your-controlplane-repo-source>
     targetRevision: main
+    directory:
+      recurse: true
   syncPolicy:
     automated: {}
 ```
 
-You will need to configure the `spec.destination.server` to point to the endpoint for your control plane's cluster API server. For every control plane that you want to register with your central instance of Argo, you will create a new `Application` object as above.
-
+You will need to configure the `spec.destination.server` to point to the endpoint for your control plane's cluster API server. You will need to [configure credentials](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories) to your repository. For every control plane that you want to register with your central instance of Argo, you will create a new `Application` object as above. 
 
 ### Integrate Crossplane with Flux
 

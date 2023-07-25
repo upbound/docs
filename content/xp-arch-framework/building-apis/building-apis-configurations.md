@@ -12,7 +12,7 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## When to create a control plane configuration
 
-As a best practice, **always!** Configurations are the packaging format of choice for delivering **all APIs** to a control plane--even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
+**Always!** As a best practice, configurations are the packaging format of choice for delivering **all APIs** to a control plane--even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
 
 ## Configuration layout in git
 
@@ -39,7 +39,7 @@ We recommend this folder structure because it improves human readability, not be
 👉 Be careful to avoid placing .YAML files in your configuration's directory tree that you **don't** want Crossplane to parse. This can cause builds to unintentionally break because Crossplane will attempt to ingest **all** .YAML files.
 {{< /hint >}}
 
-If you want to ignore a set of .YAML files during the build process, run the following
+If you want to ignore a set of .YAML files during the build process, run the following:
 
 ```bash
 XPKG_IGNORE='*/generate.yaml'
@@ -49,6 +49,18 @@ $(UP) xpkg build \
 		--package-root $(XPKG_DIR) \
 		--ignore $(XPKG_IGNORE) \
 ```
+
+You can also specify multiple patterns to ignore as comma-delimited list:
+
+```bash
+XPKG_IGNORE='*/pattern.yaml,*/other_pattern.yaml'
+XPKG_DIR='./'
+
+$(UP) xpkg build \
+		--package-root $(XPKG_DIR) \
+		--ignore $(XPKG_IGNORE) \
+```
+
 
 ### Advanced layout: Nested compositions
 
@@ -94,6 +106,10 @@ spec:
     - configuration: xpkg.upbound.io/upbound/configuration-eks
       version: ">=v0.0.2"
 ```
+
+{{< hint "important" >}}
+Removing a dependency from your configuration's `dependsOn` list does not automatically uninstall it when reapplied to your Crossplane cluster.
+{{< /hint >}}
 
 ### Chain configurations together
 

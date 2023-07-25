@@ -174,7 +174,7 @@ The `spec.status` field of your XRD is a useful way to exchange data between var
 
 ## Versioning
 
-Over the lifetime of your custom API, there is a chance the shape of the API could change and you could introduce breaking changes. Crossplane has a built-in capability to help with this. The scaffolding above recommends a boilerplate version named `v1alpha1`. Notice the `versions` field is an array, so you can declare multiple versions of your API definition in the XRD:
+Over the lifetime of your custom API, there is a chance the shape of the API could change and you could introduce breaking changes. Crossplane has a built-in capability to help with this. The scaffolding above recommends a boilerplate version named `v1alpha1`. Notice the `versions` field is an array, so you can declare multiple versions of your API definition in the XRD. Crossplane does not allow _serving_ multiple versions. Meaning, once v1alpha2 goes live, all of the composites will be force-migrated to that version:
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -183,7 +183,7 @@ spec:
 ...
   versions:
   - name: v1alpha1
-    served: true
+    served: false
     referenceable: true
     schema:
       ...

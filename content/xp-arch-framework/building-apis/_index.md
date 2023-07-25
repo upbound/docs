@@ -19,7 +19,7 @@ Crossplane gives you the tools to extend the Kubernetes API without needing to w
 Customers use Crossplane because they want to declaratively create and manage resources in an external service. "Resources in an external service" can be many things:
 
 - a traditional cloud resource like an IAM role or a VM instance
-- a git repo on GitHub
+- a Kafka topic or ACL
 - a database in a SQL server instance
 
 To put this into context, Kubernetes has a component called the `API Server`. This is the front door you must go through to interact with various objects in Kubernetes. The API Server needs to know how to interact with resources which exist outside of a Kubernetes cluster.
