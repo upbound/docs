@@ -10,7 +10,7 @@ GitOps is an approach for managing a system by declaratively describing desired 
 
 Here are three ways you should plan for integrating git with Crossplane:
 
-### 1. Use git for storing your custom APIs
+### 1. Use git for storing your custom APIs {#_1-use-git-for-storing-your-custom-apis}
 
 Building custom APIs with Crossplane doesn't require users to write code, but you still need to write configurations and definitions as YAML. As with traditional software development, you should store your custom API definitions in a version control system, such as git. You should have an automated build pipeline set up with your git repo to package your APIs in a configuration package, then install the package on your control plane.
 
@@ -18,13 +18,13 @@ Building custom APIs with Crossplane doesn't require users to write code, but yo
 Learn more about how to sturcture your repo and define your APIs in the [Building APIs]({{< ref "xp-arch-framework/building-apis/" >}}) section of this framework.
 {{< /hint >}}
 
-### 2. Use git as an interface to invoking your control plane's APIs 
+### 2. Use git as an interface to invoking your control plane's APIs {#_2-use-git-as-an-interface-to-invoking-your-control-planes-apis}
 
 When users think of `GitOps` with Crossplane, its usually in this regard: whenever a user needs a resource from your control plane, a claim should be created. Whether the claim is created directly by the requesting user or there is a [platform frontend]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}}) that collects information from a user and creates a claim in the background, claims are the Kubernetes-native way to interact with your API.
 
 Claims themselves are resources with a configuration (a `spec`), and as such can and should be declaratively stored in git. We recommend storing claims in a git repo and then using a GitOps engine such as Argo or Flux--described later on below--to deliver the claims to your control plane.
 
-### 3. Use git to store the infrastructure definition that backs your control plane
+### 3. Use git to store the infrastructure definition that backs your control plane {#_3-use-git-to-store-the-infrastructure-definition-that-backs-your-control-plane}
 
 Your control plane itself is infrastructure, and as such should ideally be defined in git. A [chicken or the egg](https://en.wikipedia.org/wiki/Chicken_or_the_egg) problem is commonly brought up by platform teams who want to use Crossplane to drive their entire platform. We address this in the [single control plane baseline architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single.md#control-plane-causality-dilemma" >}}) portion of this framework.
 

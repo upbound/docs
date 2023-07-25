@@ -138,7 +138,7 @@ There's a significant improvement in upstream XP found at [crossplane/crossplane
 
 ### Patching Tips
 
-#### 1. Formatting and alignment
+#### 1. Formatting and alignment {#_1-formatting-and-alignment}
 
 Always ensure that `patches` are aligned with `-base` in your manifests. If you are debugging a composition because its not behaving as expected, just like an "off by one" coding error, forgetting proper indention is a common error--and then your patches aren't even defined and applied correctly.
 
@@ -158,7 +158,7 @@ spec:
         ...
 ```
 
-#### 2. Patch policy
+#### 2. Patch policy {#_2-patch-policy}
 
 Policy can be used to make the patch Required (`fromFieldPath: Required`) and set mergeOptions (`keepMapValues: true`) when patching arrays or maps. In the example below, we're patching an array to a property on a bucket.
 
@@ -183,7 +183,7 @@ spec:
               keepMapValues: true
 ```
 
-#### 3. Propogating data between managed resources
+#### 3. Propogating data between managed resources {#_3-propogating-data-between-managed-resources}
 
 One of the common jobs of composition authors is to exchange data between managed resources in a composition. Whereas the convential use case for patches is to patch from a `spec` supplied by a resource claim to a composed managed resource in a composition, this method of patching is for passing data between two sibling managed resources. To do this, you must publish your desired field from a source managed resource to a custom composite resource `status` field. You can then consume data from this `status` field by a target managed resource.
 
@@ -249,7 +249,7 @@ spec:
           toFieldPath: spec.forProvider.url
 ```
 
-#### 4. Block composition rendering
+#### 4. Block composition rendering {#_4-block-composition-rendering}
 
 A `Required` field will prevent a composition from rendering until it's available. 
 
@@ -273,7 +273,7 @@ In the example above, making this a required patch means the `oidcProvider` reso
 You configure whether a field is required in an XRD, not the composition
 {{< /hint >}}
 
-#### 5. Label Selector matching
+#### 5. Label Selector matching {#_1-label-selector-matching}
 
 Label Selectors will match at the cluster-level on CRDs, so ensure labels on any managed resources are unique.
 
@@ -287,7 +287,7 @@ policyArnSelector:
     role: core-ecr
 ```
 
-#### 6. Use patchsets
+#### 6. Use patchsets {#_6-use-patchsets}
 
 Use patchSets for repetitive patching and keep Compositions from becoming bloated. In the example below, you can see a `patchSet` declaration in the spec of the composition, and then that patch is reused across multiple composed resources.
 
@@ -326,7 +326,7 @@ spec:
 
 ### Other Best Practices
 
-#### 1. Label your compositions
+#### 1. Label your compositions {#_1-label-your-compositions}
 
 Always label the composition in `metadata` for future selection. Composition names must match the DNS spec. Always including the full group name (as below) is a convention, not a requirement. The name has a limit on the length (63-character). The group can be omitted if the name gets too long, but each composition must have a unique name on the cluster.
 
@@ -342,7 +342,7 @@ spec:
   ...
 ```
 
-#### 2. Name composed resources
+#### 2. Name composed resources {#_2-name-composed-resources}
 
 Always name Composed Resources in the resources array of a composition. This makes it easier to debug compositions when they're running because events will print out their name, as oppsoed to an index in an array. In the example below, you can see how we've named three composed resources as part of an XEKS composition.
 
@@ -382,7 +382,7 @@ spec:
 If you use Kuttl to validate composites, managed resources _must_ be named uniquely. It's sometimes helpful to have a nestable composite which sets this unique name.
 {{< /hint >}}
 
-#### 3. Composing resources from multiple Crossplane providers
+#### 3. Composing resources from multiple Crossplane providers {#_3-composing-resources-from-multiple-crossplane-providers}
 
 Be conscious about composing resources from multiple different providers. It's a supported scenario but it brings additional complexity. For example, `Selector` and `References` only work with a single provider today, not with multiple providers.
 
