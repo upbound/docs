@@ -1,4 +1,7 @@
 {{ partialCached "head/meta-common" . }}
+{{ if eq hugo.Environment "production" -}}
+    {{ partialCached "head/js/gtag-header" . }}
+{{ end }}
 <meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | markdownify }}">
 <meta property="og:url"  content="{{ .Permalink }}" />
 
