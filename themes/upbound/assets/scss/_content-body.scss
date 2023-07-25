@@ -17,16 +17,15 @@
   // Override Bootstrap accordion colors in the body
   .accordion {
     --bs-accordion-border-color: #{$up-grey-300};
-    --bs-accordion-active-bg: #{$up-purple-100};
+    --bs-accordion-active-bg: #{$up-grey-000};
     --bs-accordion-btn-focus-border-color: #{$up-purple-400};
     --bs-accordion-button-focus-border-color: #{$up-purple-400};
     --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem $up-purple-400;
   }
 
-  // Improve spacing and color on open Bootstrap accordions
+  // Improve spacing and top-border on open Bootstrap accordions
   .accordion-body {
-    background-color: #{$up-purple-100};
-    padding-top: 0px;
+    border-top: 2px solid #{$up-grey-300};
     .highlight {
       margin:0px;
     }
@@ -35,11 +34,19 @@
   .accordion-header {
     margin-top: 0px;
   }
+
+  // Accordion styling
   .accordion-button {
     font-weight: 900;
   }
   .accordion-item {
     border-width: 2px;
+  }
+  .accordion-button:hover {
+    outline: 2px solid #{$up-grey-600};
+  }
+  .accordion-button:not(.collapsed) {
+    color: #{$font-color-dark};
   }
 
   .content-title {
@@ -133,7 +140,6 @@
     @include media-breakpoint-down(xl) {
       li {
         display: block !important;
-        width: 100%;
         margin: 0px;
       }
 
@@ -158,7 +164,7 @@
       border-top: none;
       border-left: none;
       border-right: none;
-      color: #{$gray-500};
+      color: #{$font-color-light};
 
       @include media-breakpoint-down(xl) {
         padding-left: 12px !important;
