@@ -4,7 +4,7 @@
 
 // Style for highlighted lines when hovering over copy button
 .copyHover {
-  background-color: var(--code-highlight-background);
+  background-color: #{$up-grey-700n} !important;
 }
 
 // Code box div
@@ -26,7 +26,7 @@
   }
 
   .edit-code-icon{
-    fill: var(--edit-code-pencil);
+    fill: #{$up-grey-300n};
   }
 
   :target{
@@ -97,7 +97,7 @@
           scroll-margin-top: 90px;
           &:hover{
             // text-decoration: none !important;
-            color: #fff;
+            color: #{$up-grey-000};
             font-weight: 800;
             text-decoration: none !important;
           }
