@@ -4,7 +4,7 @@ weight: 6
 description: "how to build APIs"
 ---
 
-A Control plane configuration is a package that bundles one or more APIs--their definitions (XRDs) and their implementations (compositions). Whereas Crossplane composite resources allow you to define a single API, configurations allow you to bundle a set of related APIs together, version them, and declare their dependencies. Because configurations are packages, they're the output of a build process. Today, that output is an OCI image.
+A Control plane configuration is a package that bundles one or more APIs--their definitions (XRDs) and their implementations (compositions). Whereas Crossplane composite resources allow you to define a single API, configurations allow you to bundle a set of related APIs together. They also allow you to version them and declare their dependencies. Because configurations are packages, they're the output of a build process. Today, that output is an OCI image.
 
 {{< hint "important" >}}
 If you are not already familiar with core Crossplane concepts, we recommend first reading the upstream [Crossplane concepts](https://docs.crossplane.io/master/concepts/) documentation.
@@ -12,11 +12,11 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 ## When to create a control plane configuration
 
-**Always!** As a best practice, configurations are the packaging format of choice for delivering **all APIs** to a control plane--even if that's only a single API. You should always use configurations to distribute and install new APIs on a Crossplane instance. 
+**Always!** As a best practice, configurations are the packaging format of choice for delivering **all APIs** to a control plane. Even if that's only a single API, you should always use configurations to distribute and install new APIs on a Crossplane instance. 
 
-## Configuration layout in git
+## Configuration layout in Git
 
-We recommend the definition of your Crossplane configurations to be stored in a git-based version control service. At the root of every Crossplane configuration is a `crossplane.yaml` metadata file. We recommend creating an `apis` folder next and placing all your API definitions in that folder. Each API (XRD and its compositions) should go in its own folder. The folder structure we recommend looks like this:
+It's recommended you keep the definitions of your Crossplane configurations in a Git-based version control service. At the root of every Crossplane configuration is a `crossplane.yaml` metadata file. It's recommended you create an `apis` folder next and place all your API definitions in that folder. Each API (XRD and its compositions) should go in its own folder. The folder structure should look like this:
 
 ```bash
 .
@@ -31,9 +31,9 @@ We recommend the definition of your Crossplane configurations to be stored in a 
     └── ...
 ```
 
-This structure works well for basic APIs that have a definition (XRD) and single implementation (1 composition) that are all defined locally in the folder structure and will be bundled in this configuration. 
+This structure works well for basic APIs that have a definition (XRD) and single implementation (1 composition). They're all defined locally in the directory structure and bundled in a single configuration. 
 
-We recommend this folder structure because it improves human readability, not because Crossplane depends on a certain folder structure. The folder structure doesn't affect Crossplane’s ability to build a package since all .YAML files are flattened during the build process. 
+It's a best practice it improves human readability, not because Crossplane depends on a certain folder structure. The folder structure doesn't affect Crossplane's ability to build a package since all .YAML files get flattened during the build process. 
 
 {{< hint "important" >}}
 👉 Be careful to avoid placing .YAML files in your configuration's directory tree that you **don't** want Crossplane to parse. This can cause builds to unintentionally break because Crossplane will attempt to ingest **all** .YAML files.
@@ -64,7 +64,7 @@ $(UP) xpkg build \
 
 ### Advanced layout: Nested compositions
 
-As we discuss in docs for building compositions, compositions can be nested and/or they can have multiple implementations. The same folder structure still applies and would look like the following:
+As discussed in docs for building compositions, compositions are nestable and/or they can have multiple implementations. The same folder structure still applies and would look like the following:
 
 ```bash
 .
@@ -87,9 +87,9 @@ As we discuss in docs for building compositions, compositions can be nested and/
 
 ## Configuration dependencies
 
-A configuration can declare dependencies as part of its definition. This is done in the `spec.dependsOn` field in the `crossplane.yaml`. This is handy for two reasons:
+A configuration can declare dependencies as part of its definition. Declare them in the `spec.dependsOn` field in the `crossplane.yaml`. It's handy for two reasons:
 
-1. **Provider resolution**: you can declare which Crossplane provider versions your configuration depends on (say, if it uses an API version of a managed resource that changed from provider-aws v0.33.0 to provider-aws v0.34.0). This ensures your configuration will have the provider and version it needs in order to operate.
+1. **Provider resolution**: you can declare which Crossplane provider versions your configuration depends on (say, if it uses an API version of a managed resource that changed from provider-aws v0.33.0 to provider-aws v0.34.0). This ensures your configuration have the provider and version it needs to operate.
 2. **use other configurations**: you can declare dependencies on other configurations. This enables you to chain dependencies together (discussed more below). 
 
 Declaring dependencies for a configuration looks like this:
@@ -113,37 +113,37 @@ Removing a dependency from your configuration's `dependsOn` list does not automa
 
 ### Chain configurations together
 
-Because configurations enable you to declare dependencies on other configurations, you can use a building blocks pattern: rather than put every API that you want to create into a single configuration OR duplicate definitions of APIs across multiple configurations, you can improve reusability by logically structuring your configurations and composing them into larger or smaller packages, depending on your need.
+Because configurations enable you to declare dependencies on other configurations, you can use a building blocks pattern. Rather than put every API into a single configuration OR duplicate definitions of APIs across multiple configurations, you can improve reuse. Logically structure your configurations and compose them into larger or smaller packages, depending on your need.
 
 For example, you could define configurations based on the scope of the APIs:
 
-- **myorg-configuration-networking** defines a set of APIs that your organization will use for provisioning networking resources
-- **myorg-configuration-compute** defines a set of APIs that your organization will use for provisioning compute resources (VMs, clusters, etc).
-- **myorg-configuration-storage** defines a set of APIs that your organization will use for provisioning storage resources (buckets, databases, etc).
-- **myorg-configuration-iam** defines a set of APIs that your organization will use for provisioning identity-related resources (roles, policies, etc).
-- **myorg-configuration-serverless** defines a set of APIs that your organization will use for provisioning serverless-related resources (functions, etc). 
+- **myorg-configuration-networking** defines a set of APIs that your organization uses for provisioning networking resources
+- **myorg-configuration-compute** defines a set of APIs that your organization uses for provisioning compute resources (virtual machines, clusters, etc).
+- **myorg-configuration-storage** defines a set of APIs that your organization uses for provisioning storage resources (buckets, databases, etc).
+- **myorg-configuration-iam** defines a set of APIs that your organization uses for provisioning identity-related resources (roles, policies, etc).
+- **myorg-configuration-serverless** defines a set of APIs that your organization uses for provisioning serverless-related resources (functions, etc). 
 
 This would allow you to create configurations that selectively bundle some--but not all--of these APIs into higher-level configurations.
 
-- **Myorg-config-team1** that has a dependency on _myorg-configuration-networking_ and _myorg-configuration-compute_.
-- **Myorg-config-team2** that has a dependency on _myorg-configuration-serverless_ and _myorg-configuration-storage_.
+- **myorg-configuration-team1** that has a dependency on _myorg-configuration-networking_ and _myorg-configuration-compute_.
+- **myorg-configuration-team2** that has a dependency on _myorg-configuration-serverless_ and _myorg-configuration-storage_.
 
-Another pattern that you can apply to configuration packages and dependency chaining is to have one platform team own the baseline set of APIs that exists on all control planes for your organization, then you can have service or pattern teams build APIs for specific services that sit above the baseline set of APIs.
+Another pattern that you can apply to configuration packages and dependency chaining is to have a bootstrap plus pattern approach. One platform team own the baseline set of APIs that exists on all control planes for your organization. Another service or pattern team builds APIs for specific services that sit on top of the baseline set of APIs.
 
 ## Build configurations
 
-Because configurations are a package, they need to be built before they can be installed into a Crossplane. 
+Because configurations are a package, you must build them before you install into your Crossplane. 
 
 ### The build process
 
-Configurations can be built using the up CLI's [xpkg build]({{< ref "cli/command-reference.md#xpkg-build" >}}) command. You should execute this command in the root folder of your configuration--wherever your `crossplane.yaml` is located:
+Build configurations using the _up_ CLI's [xpkg build]({{< ref "cli/command-reference.md#xpkg-build" >}}) command. You should run this command in the root folder of your configuration--wherever your `crossplane.yaml` is:
 
 ```bash
 $ up xpkg build -o my-configuration-package.xpkg
 xpkg saved to my-configuration-package.xpkg
 ```
 
-Once you've built a configuration package, you can push it to any OCI-compliant registry, such as the [Upbound Marketplace](https://marketplace.upbound.io) or your own container registry. You can use up CLI's [xpkg push]({{< ref "cli/command-reference.md#xpkg-push" >}}) command to do this:
+Once you've built a configuration package, push it to any OCI-compliant registry, such as the [Upbound Marketplace](https://marketplace.upbound.io) or your own container registry. You can use up CLI's [xpkg push]({{< ref "cli/command-reference.md#xpkg-push" >}}) command to do this:
 
 ```bash
 $ up xpkg push my-org/my-configuration-packagev0.0.1 -f my-configuration-package.xpkg
@@ -152,9 +152,9 @@ xpkg pushed to my-org/my-configuration-packagev0.0.1
 
 ### Set up a build pipeline with GitHub
 
-We recommend storing your configuration definition in a version controlled environment and to set up a build pipeline that will automatically create a new version of your configuration when a new commit is pushed. If you are using a version control service such as GitHub, you can configure a [GitHub Action](https://docs.github.com/en/actions) on the git repo which hosts your configuration definition. 
+It's recommended you store your configuration definition in a version controlled environment and set up a build pipeline. The pipeline should automatically create a new version of your configuration when a new commit merges. If you are using a version control service such as GitHub, you can configure a [GitHub Action](https://docs.github.com/en/actions) on the Git repository.
 
-Below is a sample workflow file that uses a GitHub Action, [crossplane-contrib/xpkg-action](https://github.com/crossplane-contrib/xpkg-action), which you can use as the basis for your own GitHub Action and can be tweaked according to your needs:
+Below is a sample workflow file that uses a GitHub Action, [crossplane-contrib/xpkg-action](https://github.com/crossplane-contrib/xpkg-action). You can use it as the basis for your own GitHub Action, tweaked according to your needs:
 
 ```yaml
 name: CI
@@ -219,10 +219,10 @@ spec:
     - name: registry-key
 ```
 
-Because Configurations are just another Kubernetes object, you can apply GitOps patterns and tooling to continuously monitor a repo source and deploy your desired configuration to your control plane. We recommend establishing an GitOps-based automated process to apply configurations to your control planes, which is described and implemented in the [baseline control plane architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single" >}}).
+Because Configurations are just another Kubernetes object, you can apply GitOps patterns and tooling to it. Use GitOps tools to continuously watch a repository source and deploy your desired configuration to your control plane. It's recommended you establish an GitOps-based automated process to apply configurations to your control planes. Read the [baseline control plane architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single" >}}) to learn how.
 
-In the example above, we recommend adding `commonLabels` to your package because it makes it easier to introduce `compositionRevisions` with autogenerated labels from this field.
+In the preceding example, it's recommended you add `commonLabels` to your package. It makes it easier to introduce `compositionRevisions` with auto generated labels from this field.
 
-## Next Steps
+## Next steps
 
 After you've learned how to package and deploy your APIs, you should think about how to architect a production-ready solution on Crossplane. Read [Architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-single" >}}) to learn about best practices for how to do this.

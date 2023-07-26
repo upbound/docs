@@ -38,7 +38,7 @@ Argo CD is a project that enables GitOps by implementing an `Application` resour
 
 #### Argo and single control plane
 
-In the case where you're running only a single control plane, it's easiest to co-locate Argo inside the cluster where Crossplane is running. After installing Argo, you need to configure it by defining a new `Application` that represents your control plane and a source to pull from.
+If you're running only a single control plane, it's easiest to co-locate Argo inside the cluster where Crossplane is running. After installing Argo, you need to configure it by defining a new `Application` that represents your control plane and a source to pull from.
 
 ```yaml
 #controlplane-1.yaml

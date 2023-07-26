@@ -3,6 +3,7 @@ Argo
 Autoscaling
 backports
 Bootstrap
+CLI's
 Commonmark
 conformant
 CRDs
@@ -12,12 +13,14 @@ Datadog
 declaratively
 downscaling
 editCode
+enums
 Env
 GCP's
 Geekdocs
 Goldmark
 Grammarly
 Grafana
+image_uri
 kubeconfig
 kubectl
 Kustomize

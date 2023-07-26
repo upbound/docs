@@ -7,9 +7,12 @@ match: $sentence
 indicators:
   - ':'
 exceptions:
+  - "Amazon Elastic Kubernetes Service"
   - "Composite Resource"
+  - "Google Kubernetes Engine"
   - "Managed Control Planes?"
   - "Managed Resources"
+  - "Microsoft Azure Kubernetes Service"
   - "OpenID Connect"
   - "Service Account"
   - "Universal Crossplane"
@@ -20,6 +23,7 @@ exceptions:
   - CLI
   - Code
   - Configuration
+  - Configuration layout in Git
   - ControllerConfigs
   - Cosmos
   - Crossplane
