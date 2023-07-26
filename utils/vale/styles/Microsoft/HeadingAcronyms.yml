@@ -11,10 +11,13 @@ exceptions:
   - AWS
   - CLI
   - CSS
+  - CPU
   - EKS
   - GCP
   - IAM
   - MCP
+  - MVP
   - OIDC
   - SCSS
   - UXP
+  - XRD

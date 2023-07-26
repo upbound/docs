@@ -2,13 +2,6 @@
 // https://gist.github.com/AbeEstrada/e16e4d22d9adec4e720fd62a16a0113d
 
 @mixin code-theme {
-
-
-  body{
-    background: var(--body-background);
-    color: var(--body-font-color);
-  }
-
   --code-block-background-color: #19212C;
   --code-line-numbers-background-color: #{lighten(#19212C, 3)};
   --edit-code-pencil: #fafafa;
