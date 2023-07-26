@@ -9,11 +9,14 @@ Support for official providers follows the [product lifecycle]({{<ref "knowledge
 More information is available on the [support page]({{<ref "../../support.md" >}}).
 
 ## Versions
+
 Official providers have two relevant release numbers:
+
 * Provider release, for example, `provider-aws:v0.17.0`
 * Custom Resource Definition (*CRD*) API version, for example `v1beta1`
 
 ## Provider releases
+
 Upbound releases new providers to provide bug fixes and enhancements. Provider versions follow standard semantic versioning (*semver*) standards of `<major>`.`<minor>`.`<patch>` numbering.
 
 **Major version** changes have significant changes to provider behavior or breaking changes to general availability CRD APIs.  
@@ -38,4 +41,8 @@ Upbound attempts to ensure a stable CRD API but may require breaking changes in 
 
 ## Release cadence
 
-Upbound releases new versions of the Official Providers on the last Thursday of every month, except for critical bug or security fixes.
+Upbound releases new versions of the Official Providers on the last Thursday of
+every month, except for critical bug or security fixes.
+
+You can find an overview of the provider releases on the
+[releases page]({{<ref "releases.md" >}}).

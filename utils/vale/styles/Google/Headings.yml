@@ -7,12 +7,16 @@ match: $sentence
 indicators:
   - ':'
 exceptions:
+  - "Amazon Elastic Kubernetes Service"
   - "Composite Resource"
+  - "Google Kubernetes Engine"
   - "Managed Control Planes?"
   - "Managed Resources"
+  - "Microsoft Azure Kubernetes Service"
   - "OpenID Connect"
   - "Service Account"
   - "Universal Crossplane"
+  - "Use OpenAPI v3 data types"
   - "Upbound Console"
   - "Upbound Universal Crossplane"
   - APIs?
@@ -20,6 +24,7 @@ exceptions:
   - CLI
   - Code
   - Configuration
+  - Configuration layout in Git
   - ControllerConfigs
   - Cosmos
   - Crossplane
@@ -31,6 +36,8 @@ exceptions:
   - gRPC
   - Hugo
   - I
+  - Integrate Crossplane with Argo
+  - Integrate Crossplane with Flux
   - JavaScript
   - Kubeconfig
   - Kubernetes
@@ -38,6 +45,7 @@ exceptions:
   - macOS
   - Marketplace
   - MongoDB
+  - Open Policy Agent Gatekeeper
   - Provider
   - ProviderConfig
   - ProviderConfigs
@@ -47,6 +55,7 @@ exceptions:
   - TypeScript
   - Upbound
   - URLs
+  - Use patchSets
   - UXP
   - Vale
   - Vault

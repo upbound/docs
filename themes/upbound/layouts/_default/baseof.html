@@ -5,6 +5,9 @@
   </head>
 
   <body>
+    {{ if eq hugo.Environment "production" -}}
+      {{ partialCached "body/gtag-body" . }}
+    {{ end }}
   <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
     {{ partialCached "icons/sprites" . }}
 
