@@ -14,6 +14,7 @@ $body-line-height:            24px !default;
 $up-code-font-size:           14px !default;
 $up-code-line-height:         21px !default;
 
+// Variables ending with an "n" have accurate numbers that match their relative location on that color's light-dark spectrum.
 
 $up-purple-100:         #F5EEFE !default;
 $up-purple-200:         #E1CEFE !default;
@@ -22,13 +23,29 @@ $up-purple-400:         #7D4CD1 !default;
 $up-purple-500:         #402A7B !default;
 $up-purple-600:         #21194F !default;
 
-$up-grey-000:           #FFFFFF !default;
+$up-purple-300n:        #C39EFD !default;
+
+$up-grey-000:           #FFFFFF !default; // This color is properly placed but does not have an "n" yet to not disassociate links
 $up-grey-100:           #F8F9F9 !default;
 $up-grey-200:           #F2F2F4 !default;
 $up-grey-300:           #E5E6E9 !default;
 $up-grey-400:           #ECEDEF !default;
 $up-grey-500:           #9A9CA7 !default;
 $up-grey-600:           #CDCDD3 !default;
+
+$up-grey-300n:          #B3B4BD !default;
+$up-grey-700n:          #4E5165 !default;
+$up-grey-850n:          #292C45 !default;
+
+$up-blue-300n:          #7AC0F8 !default;
+
+$up-green-300n:         #94CF96 !default;
+
+$up-yellow-300n:        #F2DE86 !default;
+
+$up-orange-300n:        #F5B686 !default;
+
+$up-red-300n:           #F88E86 !default;
 
 $borderDark:            #353950 !default;
 
