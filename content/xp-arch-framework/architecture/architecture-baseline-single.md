@@ -4,7 +4,7 @@ weight: 11
 description: "A guide for how to build with control planes"
 ---
 
-This reference architecture provides a recommended baseline scoped to deploying a single Crossplane control plane. This architecture isn't focused on a workload or role to be served by the control plane, rather it concentrates on the control plane itself. The information here is the minimum recommended baseline for most Crossplane control planes.
+This reference architecture provides a recommended baseline scoped to deploying a single Crossplane control plane. This architecture isn't focused on a workload or specific role for the control plane, rather it concentrates on the control plane itself. The information below is the recommended baseline for most Crossplane control planes.
 
 {{< hint "note" >}}
 💡 An implementation of this architecture is coming soon! You will be able to use it as a starting point and will be encouraged to tweak it according to your needs.
@@ -16,9 +16,9 @@ This reference architecture provides a recommended baseline scoped to deploying 
 
 ## Configure compute for hosting Crossplane
 
-Because Crossplane is built on the foundation of Kubernetes, you need a Kubernetes cluster to install Crossplane into. 
+Because Crossplane builds on the foundation of Kubernetes, you need a Kubernetes cluster to install Crossplane into. 
 
-Crossplane providers create new Kubernetes APIs to represent external cloud APIs. These APIs are Kubernetes Custom Resource Definitions (CRDs). Crossplane providers are the implementation and delivery vehicle for these CRDs. Crossplane providers vary in terms of the number of CRDs they define; some only define a few, while others may define hundreds. With consideration to large Crossplane providers, installing many CRDs creates significant CPU and memory pressure on the API Server of your control plane. Therefore, failure to size the Kubernetes control plane nodes can lead to API timeouts or control plane pods, including UXP, to restart or fail.
+Crossplane providers create new Kubernetes APIs to represent external cloud APIs. These APIs are Kubernetes Custom Resource Definitions (CRDs). Crossplane providers are the implementation and delivery vehicle for these CRDs. Crossplane providers vary in the number of CRDs they define; some only define a ten, while others may define hundreds. With consideration to large Crossplane providers, installing a lot of CRDs creates significant CPU and memory pressure on the API Server of your control plane. Failure to size the Kubernetes control plane nodes can lead to API timeouts or control plane pods, including UXP, to restart or fail.
 
 {{< hint "tip" >}}
 With [provider families](https://blog.crossplane.io/crd-scaling-provider-families/) supported starting in Crossplane v1.12 and [Upbound Official Provider Families](https://blog.upbound.io/new-provider-families) released, we strongly recommend users adopt these providers. They help you avoid installing CRDs that you don't need on your control plane and mitigates concerns about Crossplane being CRD-hungry.
@@ -26,7 +26,7 @@ With [provider families](https://blog.crossplane.io/crd-scaling-provider-familie
 
 ### Managed Kubernetes clusters
 
-In managed Kubernetes environments such as AWS EKS or GCP GKE, you don’t control the Kubernetes control plane nodes. As a result, each managed Kubernetes provider handles the resource needs of Upbound providers differently. 
+In managed Kubernetes environments such as AWS EKS or GCP GKE, you don't control the Kubernetes control plane nodes. As a result, each managed Kubernetes provider handles the resource needs of Upbound providers differently. 
 
 #### Amazon Elastic Kubernetes Service
 
@@ -44,7 +44,7 @@ Microsoft Azure Kubernetes Service (AKS) doesn't require any configuration when 
 
 ### Self-hosted Kubernetes clusters
 
-When deploying UXP on a self-hosted Kubernetes cluster, you have control over the resource allocations to the nodes where your Kubernetes cluster control plane runs.
+If you deploy Crossplane on a self-hosted Kubernetes cluster, you have control over the resource allocations. You can right-size the nodes where your Kubernetes cluster control plane runs.
 
 #### Memory usage considerations
 
@@ -57,7 +57,7 @@ num_of_managed_resources x 4MB = Crossplane memory requirements
 98 x 4MB = 392 MB
 ```
 
-This is the amount of memory you should allocate to the node _in addition to_ the normal amount of memory you plan to allocate to your node.
+The preceding calculation is the amount of memory you should give to the node _on top of_ the normal amount you plan to give.
 
 {{< hint "tip" >}} Use the same calculations when installing multiple providers. {{< /hint >}}
 
@@ -77,14 +77,14 @@ The UXP pod and individual providers offer configuration options to reduce CPU l
 
 ## Configure your control plane
 
-Upbound recommends using a git repo hosted on a version control service as the single source of truth containing the definition for your control plane's configuration. In this repo, you will place all configurations applicable to your control plane. At a high level, you can think about the configuration of your control plane as boiling down to:
+Upbound recommends using a Git repository hosted on a version control service as the single source of truth. The Git repository should contain the definition for your control plane's configuration. In this repository, you should put all configurations applicable to your control plane. At a high level, you can think about the configuration of your control plane as boiling down to:
 
 - your platform API
 - resource claims against those APIs
 - integrations, and the configuration of those integrations
 - runtime configuration, such as ProviderConfigs or EnvironmentConfigs
 
-We will first cover what it means to configure each of these, what "integrations" mean in the context of your control plane, and finally we'll suggest how to structure your repo source of truth.
+The section below covers what it means to configure each of these. It also covers what "integrations" mean in the context of your control plane. It provides suggestions for structuring your repository source of truth.
 
 ### Configure API definition 
 
@@ -94,34 +94,38 @@ The first thing you should configure on your control plane is its API. You do th
 Read the [building APIs]({{< ref "xp-arch-framework/building-apis" >}})  portion of the framework for guidance on building custom APIs with Crossplane.
 {{< /hint >}}
 
-By using a git repo as the single source of truth for a control plane, it gives you a single point of control. Then, you can use a GitOps tool such as Flux or ArgoCD to continuously apply the latest definition of your control plane configuration. Furthermore, we recommend using a "root" Crossplane configuration to encapsulate your APIs, depndencies on other Crossplane configurations, and dependencies on Crossplane providers.
+By using a Git repository as the single source of truth for a control plane, it gives you a single point of control. Then, you can use a GitOps tool such as Flux or ArgoCD to continuously apply the latest definition of your control plane configuration. Furthermore, it's recommended you use a "root" Crossplane configuration to encapsulate:
+
+- your APIs.
+- dependencies on other Crossplane configurations.
+- dependencies on Crossplane providers.
 
 ### Add secrets management
 
 Secrets in Kubernetes are objects that hold sensitive data like passwords, tokens and keys. Crossplane uses Secrets to store sensitive information, such as credentials for Crossplane providers, inputs to managed resources, or connection details. 
 
-If you don't configure Crossplane to use an external secrets store, when you configure a managed resource to write a secret (such as when you configure the object to use `writeConnectionSecretToRef: ...`), that secret gets written in the control plane. Most organizations have security requirements that recommend storing all secrets in a centrally managed key-value store (such as Vault, AWS Secrets Manager, etc); reliance on in-cluster secrets aren't considered a best practice. Therefore, our architecture baseline recommends configuring your control plane to use an external secrets store.
+By default, Crossplane writes managed resource-generated secrets (such as when you configure the object to use `writeConnectionSecretToRef: ...`), in the cluster. Most organizations have security requirements that recommend storing all secrets in a centrally managed secret management service. Reliance on in-cluster secrets aren't considered a best practice. The architecture baseline recommends configuring your control plane to use an external secrets store.
 
 For a complete guide to integrating secrets management in your control plane, see the [Interface Integrations > Secrets Management]({{< ref "xp-arch-framework/interface-integrations/secrets-management.md" >}}) topic in this framework.
 
 ### Add policy engines
 
-An effective way to supplement Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine, such as [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or [Kyverno](https://github.com/kyverno/kyverno), can be used with Crossplane. This allows users to write custom policies to enforce against Crossplane resources. 
-Policy engines have some overlap in terms of what you can implement relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}}) topic in this framework.
+An effective way to supplement Crossplane is to enforce governance through policies. Any Kubernetes-compatible policy engine, such as [Open Policy Agent Gatekeeper](https://github.com/open-policy-agent/gatekeeper) or [Kyverno](https://github.com/kyverno/kyverno), is compatible with Crossplane. This allows users to write custom policies to enforce against Crossplane resources. 
+Policy engines have some overlap of its capabilities relative to what you define with Crossplane's compositions capability. For a complete guide to integrating policies in your control plane, see the [Interface Integrations > Policy Engines]({{< ref "xp-arch-framework/interface-integrations/policy-engines.md" >}}) topic in this framework.
 
 {{< hint "note" >}}
 Crossplane supports integration with policy engines, but policy engines are not required to use Crossplane. If you are unsure whether you need to integrate a policy engine with your control plan, you can always start out by _not_ having a policy engine and add one later once it makes sense. Read the interface integration guide above to see how a policy engine can add value.
 {{< /hint >}}
 
-### Monitor and collect metrics
+### Watch and collect metrics
 
-Crossplane can be configured to emit Prometheus metrics at install-time, so users can install Prometheus to sit alongside Crossplane and configure it to scrape metrics for the core Crossplane component and provider pods. Users can integrate these metrics with dashboarding solutions such as Datadog, Grafana or New Relic to visualize metrics, logs, and alerts. 
+Crossplane is configurable to emit Prometheus metrics at install-time. Users can install Prometheus to sit alongside Crossplane and configure it to scrape metrics for the core Crossplane component and provider pods. Users can integrate these metrics with a dashboard solution such as Datadog, Grafana or New Relic to visualize metrics, logs, and alerts. 
 
 For a complete guide to monitoring and observability in your control plane see the [Interface Integrations > Monitoring and Observability]({{< ref "xp-arch-framework/interface-integrations/monitoring-and-observability.md" >}}) topic in this framework.
 
 ### Platform continuity
 
-To maintain platform continuity, define the Service Level Agreement for your control plane. An effective tool to help you achieve your control plane's SLA commitment is with [Velero](https://velero.io/). Velero allows users to capture and backup the state of their infrastructure’s configuration on their control plane. In a disaster scenario—such as if the control plane were to go offline—users can provision a new instance of Crossplane and restore the last known state up to the time of the most recent backup. 
+To maintain platform continuity, define the Service Level Agreement for your control plane. An effective tool to help you achieve your control plane's SLA commitment is with [Velero](https://velero.io/). Velero allows users to capture and backup the state of their infrastructure's configuration on their control plane. In a disaster scenario—such as if the control plane were to go offline—users can provision a new instance of Crossplane. Then, restore the last known state up to the time of the most recent backup. 
 
 For a complete guide to disaster recovery for your control plane see the [Platform Continuity]({{< ref "xp-arch-framework/interface-integrations/platform-continuity.md" >}}) topic in this framework.
 
@@ -129,29 +133,29 @@ For a complete guide to disaster recovery for your control plane see the [Platfo
 A loss of the control plane does not take infrastructure offline, but it will block infrastructure management operations. In the event of a controlplane outage, the cloud provider continues to operate infra while control plane DR is carried out.
 {{< /hint >}}
 
-### Repository Structure
+### Repository structure
 
-Given the above explanation of which integrations you should consider using with your control plane, we recommend you structure the repo defining your control plane's configuration as follows:
+The preceding section explains which integrations you may want to consider with Crossplane. Given those, the recommended structure for your repository containing your control plane's configuration is:
 
 ```bash
 .
-├── platform-api/ # Your root configuration is defined here
+├── platform-api/ # Your root configuration is defined.
 │   └── configuration.yaml
-├── claims/ # All claims against your APIs go here
+├── claims/ # All claims against your APIs.
 │   ├── claim-team1-db.yaml
 │   └── claim-team2-bucket.yaml
-├── integrations/ # Each integration's configuration is defined in its own folder
-│   ├── secretstore/ # Declare external secret stores here
+├── integrations/ # Each integration's configuration is defined in its own folder.
+│   ├── secretstore/ # Declare external secret stores.
 │   │   ├── vault-keystore.yaml
 │   │   └── azure-keyvault.yaml
-│   ├── policies/ # Whatever policies you define go here
+│   ├── policies/ # Whatever policies you define.
 │   │   ├── no-public-bucket-access.yaml
 │   │   └── prod-compute-size.yaml
-│   └── velero/ # Configure your control plane's backup schedule
+│   └── velero/ # Configure your control plane's backup schedule.
 │       ├── hourly-schedule.yaml
 │       ├── daily-schedule.yaml
 │       └── weekly-schedule.yaml
-└── runtime/ # ProviderConfigs, EnvironmentConfigs, etc go here
+└── runtime/ # ProviderConfigs, EnvironmentConfigs, etc.
     ├── providerconf-aws-account1.yaml
     ├── providerconf-aws-account2.yaml
     └── providerconf-azure-sub1.yaml
@@ -159,15 +163,15 @@ Given the above explanation of which integrations you should consider using with
 
 ## Tenancy on your control plane
 
-Many users create control planes that have multiple consumers. Suppose you are building a platform that has 10 teams who will use your control plane to create resources. In this example, each consuming team is a "tenant." The Kubernetes documentation on [multi-tenancy](https://kubernetes.io/docs/concepts/security/multi-tenancy/) does a thorough job covering this topic for Kubernetes generally. We will cover how it maps to Crossplane specifically.
+Most users want to create control planes that have multiple consumers. Suppose you are building a platform that has 10 teams using your control plane to create resources. In this example, each consuming team is a "tenant." The Kubernetes documentation on [multi-tenancy](https://kubernetes.io/docs/concepts/security/multi-tenancy/) does a thorough job covering this topic for Kubernetes. The section below explains how it maps to Crossplane specifically.
 
-Sharing control planes can save cost and simplify administrative overhead. However, much like a shared Kubernetes cluster, shared control planes introduce security and performance considerations that need to be carefully evaluated.
+Sharing control planes can save cost and simplify administrative overhead. But, much like a shared Kubernetes cluster, shared control planes introduce security and performance considerations that need evaluation.
 
 {{< hint "tip" >}}
 Best Practice: If you have security requirements to ensure certain teams are only able to create resources in certain cloud accounts, we strongly recommend adopting a [multi-control plane architecture]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}})  that segments teams to their own control planes. Discrete control planes will always be a stronger isolation boundary than namespaces.
 {{< /hint >}}
 
-If you are comfortable with tenants on a control plane being able to have read-only visibility of other tenants' resources, you should feel confident using Kubernetes' and Crossplane's built-in tenancy capabilities.
+Are you comfortable with tenants on a control plane being able to have read-only visibility of other tenants' resources? If so, you should feel confident using Kubernetes' and Crossplane's built-in tenancy capabilities.
 
 {{< table "table table-sm" >}}
 | Crossplane concept | Scope |
@@ -179,35 +183,35 @@ If you are comfortable with tenants on a control plane being able to have read-o
 | ProviderConfig | cluster |
 {{< /table >}}
 
-### Control Plane APIs
+### Control plane APIs
 
-In Crossplane, Composite Resources are always cluster-scoped. While you _can_ limit whether a Composite Resource is claimable, this only limits the ability for tenants in a namespace to create a resource. If a composite resource is claimable, then _all_ tenants across all namespaces can create resource claims against that composite resource. It's not possible in Crossplane to install APIs for only some teams using your control plane. You can, however, use Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) to restrict access to a specific API for target groups, users, or serviceaccounts within a given namespace.
+In Crossplane, Composite Resources are always cluster-scoped. While you _can_ limit whether a Composite Resource is claimable, this only limits the ability for tenants in a namespace to create a resource. If a composite resource is claimable, then _all_ tenants across all namespaces can create resource claims against that composite resource. It's impossible in Crossplane to install APIs for only some teams using your control plane. But you can use Kubernetes [RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) to restrict access to a specific API for target groups, users, or service accounts within a given namespace.
 
 ### Managed Resources are cluster-scoped
 
-In Crossplane, Managed Resources are also cluster-scoped. While we recommend against exposing managed resources to your consumer teams (instead, you should always use claimable composite resources), if you give users RBAC to manage the managed resource objects directly, you are giving them the ability to use any credentials to do so (since managed resources tell your Crossplane provider which `ProviderConfig` to use to resolve requests).
+In Crossplane, Managed Resources are also cluster-scoped. It's recommended you don't expose managed resources to your consumer teams. Instead, you should always use claimable composite resources. Managed resources tell your Crossplane provider which `ProviderConfig` to use to resolve requests. If you give users RBAC to manage the managed resource objects directly, you are giving them the ability to use any credentials to do so. 
 
 ### ProviderConfigs are cluster-scoped
 
-A Crossplane provider's `ProviderConfig` is a cluster-scoped resource. That means if you have `ProviderConfig-team-A` and `ProviderConfig-team-B` on a control plane--each associated with different cloud accounts--, it's conceivable that teams in different namespaces could inadvertantly create resource requests using ProviderConfigs they're not supposed to (whether if you gave them RBAC over managed resources directly or you create a field in your XRD that allows users to request a certain ProviderConfig directly).
+A Crossplane provider's `ProviderConfig` is a cluster-scoped resource. Suppose you have `ProviderConfig-team-A` and `ProviderConfig-team-B` on a control plane, each associated with different cloud accounts. It's conceivable that teams in different namespaces could create resource requests using ProviderConfigs they're not supposed to by accident. This can happen if you gave them RBAC over managed resources directly. It could happen if you create a field in your XRD that allows users to request a certain ProviderConfig directly.
 
 ## Consume control plane APIs
 
-Your control plane’s API can be consumed in a variety of ways. For users who are building an Internal Developer Platform (IDP), this typically involves having a UI-based form experience to collect information to send along to a control plane to act upon. The information collected by the form needs to be translated to Crossplane claims on your control plane.
+You can consume your control plane's API in a variety of ways. For users who are building an Internal Developer Platform (IDP), this typically involves having a UI-based form experience. The form collects information to send along to a control plane to act upon. The information collected by the form needs to translate to Crossplane claims on your control plane.
 
-While you could directly create claims on your control plane via it's API server, this baseline architecture recommends designating a git repo to be the source for all Crossplane claims that should exist on a control plane. Similar to configuring the definition for your control plane’s configuration, this pattern allows you to use GitOps tools like ArgoCD or Flux to continuously sync the resources that are desired from your control plane. For this architecture to function properly, the interfaces to your control plane need to be able to create Crossplane claim files and submit it to the repos being monitored by your GitOps tooling.
+The baseline architecture recommends designating a Git repository to be the source for all Crossplane claims that should exist on a control plane. This pattern allows you to use GitOps tools like ArgoCD or Flux to continuously sync the desired resources from your control plane. It's the same approach to configuring the definition for your control plane's configuration. To achieve this, the interfaces to your control plane need to be able to create Crossplane claim files. Then, it must submit the files to the repositories watched by your GitOps tooling.
 
 For a complete guide to integrating frontend interfaces with your control plane see the [Interface Integrations > Platform Frontends]({{< ref "xp-arch-framework/interface-integrations/platform-frontends.md" >}}) topic in this framework.
 
 ## Control plane causality dilemma
 
-Commonly referred to as the "chicken or the egg," if a user wants to use Crossplane to drive their entire platform, that means you need _some_ control plane by which to drive your platform. But who makes the first control plane? You can create your first control plane (from which you can then provision everything else) in four ways:
+If a user wants to use Crossplane to drive their entire platform, that means you need _some_ control plane by which to drive your platform. It's commonly referred to as the "chicken or the egg." Who makes the first control plane? You can create your first control plane (from which you can then provision everything else) in four ways:
 
 1. Use a solution such as [Upbound](https://upbound.io/product/upbound), which provides a service (an API) by which you can request your first control plane.
-2. Bootstrap a local Crossplane environment, such as Crossplane installed on [KinD](https://github.com/kubernetes-sigs/kind), configured so you can create your first cloud control plane in your desired hyperscale cloud provider. Once the cloud control plane has been provisioned, you can spin down your local Crossplane environment.
+2. Bootstrap a local Crossplane environment, such as Crossplane installed on [KinD](https://github.com/kubernetes-sigs/kind), configured so you can create your first cloud control plane in your desired hyper scale cloud provider. Once the control plane provisions, you can spin down your local Crossplane environment.
 3. Use an IaC tool like Terraform to do the initial bootstrap of your first cloud control plane.
 4. Use any other tool to do the initial bootstrap of your first cloud control plane.
 
-## Next Steps
+## Next steps
 
-Now that we've explained the baseline architecture recommendation for a single control plane, you may want to understand when its appropriate to consider running more than one control plane. Read [Architecture > Multi-Control Planes]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}}) to learn about what [circumstances]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md#specialized-spoke-control-planes" >}}) we recommend using a multi-control plane architecture.
+You may want to understand when its appropriate to consider running more than one control plane. Read [Architecture > Multi-Control Planes]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md" >}}) to learn about what [circumstances]({{< ref "xp-arch-framework/architecture/architecture-baseline-multi.md#specialized-spoke-control-planes" >}}) it's recommended you use a multi-control plane architecture.
