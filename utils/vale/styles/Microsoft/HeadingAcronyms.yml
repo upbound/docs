@@ -16,6 +16,7 @@ exceptions:
   - GCP
   - IAM
   - MCP
+  - MVP
   - OIDC
   - SCSS
   - UXP
