@@ -78,6 +78,9 @@
             a {
                 color: #{$up-purple-400} !important;
             }
+            a:hover {
+                text-decoration: underline;
+            }
         }
 
         .about-image {

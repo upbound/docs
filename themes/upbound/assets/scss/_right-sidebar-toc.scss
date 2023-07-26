@@ -68,5 +68,9 @@
                 color: #{$font-color-dark} !important;
             }
         }
+
+        .nav-link:hover {
+            color: #{$font-color-dark} !important;   
+        }
     }
 }
