@@ -10,11 +10,11 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
-## 2023—06—27
+## 2023-06-27
 
 ### `upbound/provider-aws` v0.37.0
 
-* ⚠️ The family providers now declare a dependency on version v1.12.1 of
+* ⚠️ The family providers now declare a \dependency on version v1.12.1 of
 Crossplane.
 * Support for new resources: `datasync`, `route53_zone_association`
 * Various bug fixes and enhancements.
@@ -43,7 +43,7 @@ _Refer to the [v0.34.0 release notes](https://github.com/upbound/provider-gcp/re
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.34.0)
 
-## 2023—06—16
+## 2023-06-16
 
 ### `upbound/provider-azuread` v0.9.0
 
@@ -54,7 +54,7 @@ _Refer to the [v0.9.0 release notes](https://github.com/upbound/provider-azure/r
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.9.0)
 
-## 2023—06—13
+## 2023-06-13
 
 ### `upbound/provider-aws` v0.36.0
 
@@ -86,7 +86,7 @@ _Refer to the [v0.33.0 release notes](https://github.com/upbound/provider-gcp/re
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.33.0)
 
-## 2023—05—15
+## 2023-05-15
 
 ### `upbound/provider-aws` v0.35.0
 
