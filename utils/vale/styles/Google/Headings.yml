@@ -31,6 +31,8 @@ exceptions:
   - gRPC
   - Hugo
   - I
+  - Integrate Crossplane with Argo
+  - Integrate Crossplane with Flux
   - JavaScript
   - Kubeconfig
   - Kubernetes
@@ -38,6 +40,7 @@ exceptions:
   - macOS
   - Marketplace
   - MongoDB
+  - Open Policy Agent Gatekeeper
   - Provider
   - ProviderConfig
   - ProviderConfigs
@@ -47,6 +50,7 @@ exceptions:
   - TypeScript
   - Upbound
   - URLs
+  - Use patchSets
   - UXP
   - Vale
   - Vault

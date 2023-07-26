@@ -1,4 +1,5 @@
 APIs
+Argo
 Autoscaling
 backports
 Bootstrap
@@ -7,6 +8,8 @@ conformant
 CRDs
 Crossplane
 Crossplane's
+Datadog
+declaratively
 downscaling
 editCode
 Env
@@ -14,8 +17,12 @@ GCP's
 Geekdocs
 Goldmark
 Grammarly
+Grafana
 kubeconfig
 kubectl
+Kustomize
+Kyverno
+Kyverno's
 MCP
 MCPs
 minikube
@@ -23,8 +30,10 @@ namespace
 namespaces
 Netlify
 OAuth
+patchSets
 proidc
 proselint
+Rego
 semver
 Serverless
 shortcode
@@ -37,6 +46,7 @@ Upbound
 Upbound's
 UXP
 uxp
+Velero
 VSCode
 Webpack
 xpkg

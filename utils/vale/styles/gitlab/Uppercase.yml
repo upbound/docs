@@ -126,6 +126,7 @@ exceptions:
   - OCI
   - OIDC
   - ONLY
+  - OPA
   - OSS
   - OTP
   - OWASP
@@ -224,3 +225,4 @@ exceptions:
   - YAML
   - ZAP
   - ZIP
+  - IDP
