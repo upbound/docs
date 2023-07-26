@@ -1,5 +1,6 @@
 APIs
 Argo
+autoscalers
 Autoscaling
 backports
 Bootstrap
@@ -33,6 +34,7 @@ namespace
 namespaces
 Netlify
 OAuth
+overengineer
 patchSets
 proidc
 proselint
