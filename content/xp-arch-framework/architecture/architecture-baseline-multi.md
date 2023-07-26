@@ -67,7 +67,7 @@ This approach means you create a control plane on a per software environment bas
 
 - Your control plane footprint increases linearly for each environment you want to support.
 
-### Specialize control planes by Cloud
+### Specialize control planes by cloud
 
 This approach means you create control planes on a per hyper scale cloud provider basis. For example, if you needed your platform to operate in both AWS and Azure, you would create at least two control planes:
 

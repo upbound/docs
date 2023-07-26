@@ -16,6 +16,7 @@ exceptions:
   - "OpenID Connect"
   - "Service Account"
   - "Universal Crossplane"
+  - "Use OpenAPI v3 data types"
   - "Upbound Console"
   - "Upbound Universal Crossplane"
   - APIs?
