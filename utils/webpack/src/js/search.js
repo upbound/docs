@@ -1,5 +1,6 @@
 // This is from Geekdocs (https://github.com/thegeeklab/hugo-geekdoc)
 const groupBy = require("lodash/groupBy");
+const filter = require("lodash/filter");
 const truncate = require("lodash/truncate");
 const { FlexSearch } = require("flexsearch/dist/flexsearch.compact");
 const { Validator } = require("@cfworker/json-schema");
@@ -116,62 +117,74 @@ function search(input, results, searchConfig) {
   }
 
   if (searchConfig.showParent === true) {
-    searchHits = groupBy(searchHits, (hit) => hit.parent);
+    // Group by href to account for nested sections
+    searchHits = groupBy(searchHits, (hit) => hit.href.split('/')[1]);
   }
 
   const items = [];
 
   if (searchConfig.showParent === true) {
     for (const section in searchHits) {
-        if(section === "Upbound Documentation"){
-            continue
+
+      try{
+        // Deep copy the section of the nav
+        // We modify this and put it inside the results
+        // This way the CSS in the nav always matches the results
+          var resultParent = document.getElementById(section).cloneNode(true)
+      } catch {
+          console.log("section: " + section)
+          console.log(document)
+      }
+
+      // hide "No results" if it isn't already hidden
+      noResults.classList.add("d-none")
+
+      try {
+        // prevent hover highlighting of section title in search results
+        resultParent.classList.add('disabled');
+      } catch(e) {
+        console.error(e);
+      }
+
+      // deep copy the children of the nav section. This will be modified
+      var resultChildrenContainer = document.getElementById(section + "-children").cloneNode(true)
+
+      // ensure the accordian is expanded -- by this point, all children are shown (even non-matches to search hit, which we will hide later)
+      resultChildrenContainer.firstElementChild.classList.add("show")
+
+      // expand accordian for nested sections
+      var subpages = resultChildrenContainer.getElementsByClassName("subpages")
+      for(var i = 0 ; i < subpages.length - 1 ; i++){
+        subpages[i].classList.add("show")
+      }
+
+      // get links to all children, to compare with expected links from search hits
+      var childLinks = resultChildrenContainer.getElementsByClassName("nav-child")
+      var resultPaths = []
+
+      for (var i = 0 ; i < searchHits[section].length; i++) {
+        resultPaths.push(searchHits[section][i]["href"])
+      }
+
+      // Hide children that do not match search hit
+      for (let j = 0 ; j < childLinks.length; j++) {
+        // Nested sections get treated differently due to unique hierarchy and naming convention
+        if (childLinks[j].classList.contains('subheader')) {
+          const pathName = childLinks[j].getElementsByClassName('subheader-link')[0].pathname;
+          if (!resultPaths.some((resultPath) => resultPath.includes(pathName))) {
+            childLinks[j].classList.add("d-none")
+          }
+        } else {
+          if (!resultPaths.includes(childLinks[j].pathname)) {
+            childLinks[j].classList.add("d-none")
+          }
         }
+      }
 
-        try{
-          // Deep copy the section of the nav
-          // We modify this and put it inside the results
-          // This way the CSS in the nav always matches the results
-            var resultParent = document.getElementById(section).cloneNode(true)
-        }
-        catch {
-            console.log("section: " + section)
-            console.log(document)
-        }
-
-        // hide "No results" if it isn't already hidden
-        noResults.classList.add("d-none")
-
-        try {
-          // prevent highlighting of section title in search results
-          resultParent.classList.add('disabled');
-        } catch(e) {
-          console.error(e);
-        }
-
-        // deep copy the children of the nav section. This will be modified
-        var resultChildrenContainer = document.getElementById(section + "-children").cloneNode(true)
-
-        // ensure the accordian is expanded
-        resultChildrenContainer.firstElementChild.classList.add("show")
-
-
-        var childLinks = resultChildrenContainer.getElementsByClassName(".nav-child")
-        var resultPaths = []
-
-        for(var i = 0 ; i < searchHits[section].length - 1; i++){
-            resultPaths.push(searchHits[section][i]["href"])
-        }
-
-        for(var i = 0 ; i < childLinks.length - 1 ; i++){
-            if(!resultPaths.includes(childLinks[i].pathname)){
-                childLinks[i].classList.add("d-none")
-            }
-        }
-        items.push(resultParent)
-        items.push(resultChildrenContainer)
+      items.push(resultParent)
+      items.push(resultChildrenContainer)
+    }
   }
-
-}
 
   items.forEach((item) => {
     results.appendChild(item);

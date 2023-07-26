@@ -16,15 +16,15 @@
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
 
                     <!-- Parent Menu Button -->
-                    <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Title}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed')">
+                    <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Section}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed')">
                         <span class="nav-parent-title">{{.Title }}</span>
                         <div class="button-container">
-                            <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand"></div>
+                            <div id="{{.Section}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand"></div>
                         </div>
                     </div>
 
                     <!-- Child Pages -->
-                    <div class="nav-child-container px-0 mx-0" id="{{.Title}}-children">
+                    <div class="nav-child-container px-0 mx-0" id="{{.Section}}-children">
                         <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
                             <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
                                 Overview
@@ -39,9 +39,9 @@
                                     {{ $subexpand := (or (eq $currentPage .) (eq $currentPage.Parent .)) }}
 
                                     <!-- Parent Menu Button -->
-                                    <div class="list-group-item d-flex flex-row nav-child py-2 my-0 position-relative {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
-                                        <a href="{{.Permalink}}" class="d-flex stretched-link">
-                                            <div class="">{{.Title }}</div>
+                                    <div class="list-group-item list-group-item-action nav-child subheader d-flex flex-rowpy-2 my-0 position-relative {{if eq $currentPage .}}active{{end}}" id="{{.Title}}">
+                                        <a href="{{.Permalink}}" class="d-flex stretched-link subheader-link">
+                                            {{.Title }}
                                         </a>
                                         {{ if .Pages }}
                                             <div class="button-container z-3"> <!-- Increase z-index to put the button over the stretched-link -->
@@ -50,12 +50,14 @@
                                         {{ end }}
                                     </div>
 
-                                    <div class="subpages collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
-                                        {{ range .Pages }}
-                                            <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
-                                                {{ .Title }}
-                                            </a>
-                                        {{ end }}
+                                    <div id="{{.Title}}-children">
+                                        <div class="subpages collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
+                                            {{ range .Pages }}
+                                                <a href="{{.Permalink}}" class="list-group-item list-group-item-action nav-child mb-0 stretched-link {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                                    {{ .Title }}
+                                                </a>
+                                            {{ end }}
+                                        </div>
                                     </div>
 
                                 {{ else }}
