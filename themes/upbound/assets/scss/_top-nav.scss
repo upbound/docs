@@ -5,7 +5,7 @@
     background-color: white;
     margin: -65px auto 0;
     padding: 75px 10px 10px;
-    width: 424px;
+    max-width: 424px;
     position: relative;
     z-index: 1;
     max-height: 500px;
@@ -17,6 +17,32 @@
 #top-nav {
     height: 60px;
     border-bottom: 1px solid #{$up-neutral-100};
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    @include media-breakpoint-down(xl) {
+        position: absolute;
+        z-index: 1021;
+        border-bottom: 0;
+        height: 74px;
+        max-width: 430px;
+        width: 60%;
+
+        .logo-container {
+            display: none;
+        }
+
+        .search-container {
+            width: 91%;
+        }
+
+        .search-results,
+        .no-results-container {
+            width: 98%;
+        }
+    }
 
     .accordion-button {
         display: none;
@@ -35,7 +61,7 @@
     .search-panel {
         .search-container {
             height: 59px;
-            width: 404px;
+            max-width: 404px;
             margin: auto;
             background-color: white;
             padding: 10px 4px 0 4px;
