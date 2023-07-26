@@ -93,14 +93,18 @@ function search(input, results, searchConfig) {
   };
 
   var noResults = document.getElementById("no-results-container")
+  var closeSearchButton = document.getElementById("close-search");
 
   while (results.firstChild) {
     results.removeChild(results.firstChild);
   }
 
   if (!input.value) {
+    closeSearchButton.classList.add("d-none");
     noResults.classList.add("d-none")
     return results.classList.add("d-none");
+  } else {
+    closeSearchButton.classList.remove("d-none");
   }
 
   let searchHits = flattenHits(
@@ -118,7 +122,7 @@ function search(input, results, searchConfig) {
 
   if (searchConfig.showParent === true) {
     // Group by href to account for nested sections
-    searchHits = groupBy(searchHits, (hit) => hit.href.split('/')[1]);
+    searchHits = groupBy(searchHits, (hit) => hit.href.split("/")[1]);
   }
 
   const items = [];
@@ -141,7 +145,7 @@ function search(input, results, searchConfig) {
 
       try {
         // prevent hover highlighting of section title in search results
-        resultParent.classList.add('disabled');
+        resultParent.classList.add("disabled");
       } catch(e) {
         console.error(e);
       }
@@ -169,8 +173,8 @@ function search(input, results, searchConfig) {
       // Hide children that do not match search hit
       for (let j = 0 ; j < childLinks.length; j++) {
         // Nested sections get treated differently due to unique hierarchy and naming convention
-        if (childLinks[j].classList.contains('subheader')) {
-          const pathName = childLinks[j].getElementsByClassName('subheader-link')[0].pathname;
+        if (childLinks[j].classList.contains("subheader")) {
+          const pathName = childLinks[j].getElementsByClassName("subheader-link")[0].pathname;
           if (!resultPaths.some((resultPath) => resultPath.includes(pathName))) {
             childLinks[j].classList.add("d-none")
           }
@@ -256,7 +260,7 @@ function combineURLs(baseURL, relativeURL) {
 
 // Create a search box and results when the search icon is selected
 function buildTransition() {
-  var closeSearch = document.getElementById("close-search");
+  var closeSearchButton = document.getElementById("close-search");
   var searchPanel = document.getElementById("search-panel");
   const searchInput = document.getElementById("search-input");
   const results = document.getElementById("search-results");
@@ -265,10 +269,11 @@ function buildTransition() {
   const headerHeight = "100%"
 
   // Note: navIconSwitcher also resets these menus on mobile menu close
-  closeSearch.addEventListener(`click`, (event) => {
+  closeSearchButton.addEventListener(`click`, (event) => {
+    closeSearchButton.classList.add("d-none")
     results.classList.add("d-none")
     noResults.classList.add("d-none")
-    searchInput.value = '';
+    searchInput.value = "";
   })
 
   // Close the search panel if they click outside of it

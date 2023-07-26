@@ -23,6 +23,8 @@
     }
 
     .logo-container {
+        position: absolute;
+        left: 0;
         padding: 16px 40px;
 
         a {
@@ -89,6 +91,11 @@
             .iconDiv {
                 margin-right: 8px;
                 
+                svg {
+                    vertical-align: top;
+                    margin-top: 3px;
+                }
+
                 .grey-icon {
                     fill: #{$up-neutral-400};
                 }
