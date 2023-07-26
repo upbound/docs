@@ -5,6 +5,7 @@ Autoscaling
 backports
 Bootstrap
 CLI's
+Certwatcher
 Commonmark
 conformant
 CRDs
@@ -35,6 +36,7 @@ namespaces
 Netlify
 OAuth
 overengineer
+observability
 patchSets
 proidc
 proselint
