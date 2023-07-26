@@ -5,6 +5,10 @@
   </head>
 
   <body>
+    {{ if eq hugo.Environment "production" -}}
+      {{ partialCached "body/gtag-body" . }}
+    {{ end }}
+
     {{ partial "body/top-nav" .}}
 
     <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">

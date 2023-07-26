@@ -4,19 +4,19 @@ weight: 3
 description: "A guide for how to integrate control planes with a variety of interfaces"
 ---
 
-Kubernetes [secrets](https://kubernetes.io/docs/concepts/configuration/secret/) are objects that contain some sensitive data. In the case of Crossplane, that could be:
+Kubernetes [secrets](https://kubernetes.io/docs/concepts/configuration/secret/) are objects that contain some sensitive data. For Crossplane, that could be:
 
 * credentials for a provider
 * connection details to a resource
-* inputs that need to be passed to managed resources at creation time
+* inputs to managed resources at creation time
 
-Our baseline recommendation is to just use Kubernetes secrets. If you have business requirements that preclude this because you need to integrate Crossplane with a centralized secret management solution, we will document below how to do that.
+The baseline recommendation is to just use Kubernetes secrets. If you have business requirements to integrate Crossplane with a centralized secret management solution, the framework also documents below how to do that.
 
 ### Reading secrets
 
-To read secrets from an external source into your Crossplane cluster, we recommend installing the [External Secrets Operator](https://external-secrets.io) into your cluster. The External Secrets Operator is an open-source tool that implements a custom resource called `ExternalSecret` that defines where secrets live. 
+To read secrets from an external source into your Crossplane cluster, it's recommended to install the [External Secrets Operator](https://external-secrets.io) into your cluster. The External Secrets Operator is an open source tool that implements a custom resource called `ExternalSecret` that defines where secrets live. 
 
-To use the external secrets operator, you need to register a SecretStore. This could Vault, AWS Key Secrets Manager, or other central keystore services.
+To use the external secrets operator, you need to register a SecretStore. This could be AWS Key Secrets Manager, Vault, or other central secret management services.
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -39,7 +39,7 @@ spec:
           key: vault-token
 ```
 
-Once you have a secret store configured, you can pull external secrets into your control plane by creating new `ExternalSecrets`. As an example, this allows you to store ProviderConfig credentials in a central keystore and pull them into different control planes.
+Once you have a secret store configured, you can pull external secrets into your control plane by creating new `ExternalSecrets`. As an example, this allows you to store ProviderConfig credentials in a central secret management service and pull them into different control planes.
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -63,11 +63,11 @@ spec:
 
 ### Writing secrets
 
-When Crossplane creates a secret, the default mode is to write that the secret as a Kubernetes secret in its cluster. One common example of this is when you create a resource that generates connection details, this will get written to a local Kubernetes secret in the cluster. 
+When Crossplane creates a secret, the default mode is to write the secret as a Kubernetes secret in its cluster. One common example of this is when you create a resource that generates connection details. The connection details get written to a local Kubernetes secret in the cluster.
 
-If you need to write secrets to a centralized secret management solution outside of the cluster, you can rely on the fact that a secret is "just another Crossplane resource" in this case. You should create secrets in your desired secret store by composing the set of managed resources which represent the secret, and pull data from the Kubernetes secret that Crossplane creates.
+If you need to write secrets to a centralized secret management solution outside of the cluster, remember that a secret is "just another Crossplane resource." Create secrets in the desired secret store by composing the set of managed resources which generate the secret. Then, pull data from the Kubernetes secret that Crossplane creates.
 
-In the example below, we demonstrate a sample composition that stores the connection details for a GCP CloudSQL database into a secret in GCP Secret Manager.
+The example below demonstrates a composition that stores the connection details for a GCP CloudSQL database into a secret in GCP Secret Manager.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -140,6 +140,6 @@ spec:
               matchControllerRef: true
 ```
 
-When a new composite resource gets created which uses this composition, a `kind: DatabaseInstance` managed resource gets created. it stores its connection details in a local secret in the cluster. A `kind: Secret` resource will get created, respresenting a new secret in GCP Secret Manager. Then a `kind: SecretVersion` resource gets created, which will transpose the data from a local Kubernetes secret to the secret contained in GCP.
+When a new composite resource gets created which uses this composition, a `kind: DatabaseInstance` managed resource gets created. it stores its connection details in a local secret in the cluster. A `kind: Secret` resource gets created, representing a new secret in GCP Secret Manager. Then a `kind: SecretVersion` resource gets created, which transposes the data from a local Kubernetes secret to the secret contained in GCP.
 
 This example is for GCP, but you would follow a similar pattern for other popular secret stores (AWS, Azure, Vault, etc), too.
