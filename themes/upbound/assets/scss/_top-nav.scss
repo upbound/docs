@@ -4,7 +4,6 @@
     border: 1px solid #CDCDD3;
     background-color: white;
     margin: -65px auto 0;
-    padding: 75px 10px 10px;
     max-width: 424px;
     position: relative;
     z-index: 1;
@@ -21,6 +20,7 @@
     left: 0;
     right: 0;
     margin: auto;
+    background-color: white;
 
     @include media-breakpoint-down(xl) {
         position: absolute;
@@ -101,6 +101,7 @@
                 }
 
                 .close-search {
+                    margin-top: 4px;
                     cursor: pointer;
                 }
             }
@@ -108,10 +109,12 @@
 
         .search-results {
             @include content-hierarchy;
+            padding: 70px 10px 10px;
         }
 
         .no-results-container {
             @include content-hierarchy;
+            padding: 70px 16px 16px;
             color: #{$up-neutral-400};
 
             .iconDiv {

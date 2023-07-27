@@ -1,8 +1,9 @@
 // search results display clones of the left side-nav content
 // the styles below will apply to both the side-nav and the search results
 
-$nav-section-lr-padding: 8px;
+$nav-section-lr-padding: 12px;
 $nested-offset: 12px;
+$font-size: 14px;
 
 #search-results, #left-nav-menu {
     .list-group {
@@ -36,7 +37,7 @@ $nested-offset: 12px;
         }
     
         .accordion-button{
-            --bs-accordion-btn-icon-width: 17px;
+            --bs-accordion-btn-icon-width: 16px;
             // size of the grey box containing the chevron
             width: 22px;
             height: 22px;
@@ -54,9 +55,9 @@ $nested-offset: 12px;
     .nav-parent-container{
         font-weight: 800;
         font-size: .9rem;
-
+        align-items: center;
         border-radius: 8px;
-        padding: 12px $nav-section-lr-padding;
+        padding: 8px $nav-section-lr-padding;
 
         &:not(.disabled):hover{
             background-color: #{$up-neutral-50};
@@ -64,12 +65,13 @@ $nested-offset: 12px;
         }
         
         .nav-parent-title {
-            font-size: 16px;
+            font-size: $font-size;
         }
     }
 
     .nav-child-container {
         .nav-child{
+            align-items: center;
             border-radius: 8px;
             padding-left: calc(#{$nav-section-lr-padding} + #{$nested-offset});
             padding-right: $nav-section-lr-padding;
@@ -84,7 +86,7 @@ $nested-offset: 12px;
     a {
         text-decoration: none;
         color: inherit;
-        font-size: 16px;
+        font-size: $font-size;
     }
 
     .button-container{

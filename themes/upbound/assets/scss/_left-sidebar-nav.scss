@@ -1,6 +1,13 @@
 // Styling related to the left-side global navigation
 
-// Custom modifications to built-in bootstrap tooling for the left-hand-nav
+// Custom modifications to built-in bootstrap tooling for the left-hand-nav/a
+#left-nav-menu {
+    overflow: scroll;
+    height: 100vh;
+    position: sticky;
+    top: 40px;
+}
+
 .left-sidebar-nav{
     grid-area: left-sidebar-nav;
 
