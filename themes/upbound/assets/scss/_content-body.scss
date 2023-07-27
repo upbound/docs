@@ -78,18 +78,20 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  // Decrease padding for small tables
+  // Decrease padding and font size for small tables
   .table.table-sm th {
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 8px;
-    padding-bottom: 8px;   
+    padding-bottom: 8px;
+    font-size: 14px;
   }
   .table.table-sm td {
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 8px;
     padding-bottom: 8px;  
+    font-size: 14px;
   }
 
 
