@@ -30,16 +30,58 @@ non-interactive migration path.
 execution phase, and it assumes availability of this tool locally during the
 non-interactive run.
 
+- The user needs to be on the device that has access to the Kubernetes cluster.
+If the default config file `(~/.kube/config)` doesn't refer to the cluster to
+migrate, the user must configure the `--kubeconfig` flag of the tool. The value
+of the `--kubeconfig` flag must refer to the cluster to migrate.
+
+- The `family-migrator` tool currently supports a limited scenario. The relevant
+scenario has some prerequisites:
+  - The user must have an installed configuration package in cluster. In other
+  words, the cluster must has a `Configuration.pkg.crossplane.io/v1` resource
+  and the monolithic providers.
+  - The user must have a configuration package and examples in local file
+  system.
+    - Content of Package: This directory contains the
+    Configuration.meta.pkg.crossplane.io manifest that contains the provider
+    dependencies, Compositions, and CompositeResourceDefinitions. Example
+    configuration package:
+    https://github.com/upbound/platform-ref-gcp/tree/main/package.
+    - Content of Examples: This directory may contain Claims, and
+    Configuration.pkg.crossplane.io resource. Example configuration examples:
+    https://github.com/upbound/platform-ref-gcp/tree/main/package.
+  - The user must have push authorization to the registry where the new
+  configuration package image built during migration will be pushed.
+
 ### Installation
 
-Please use the [Releases] page to download the `family-migrator` tool. Download
-the appropriate binary for your operating system (`Linux` or `Darwin`) and
+1. Please use the [Releases] page to download the `family-migrator` tool. Download
+the appropriate binary for your operating system (`Linux` or `Darwin/macOS`) and
 architecture (`amd64` or `arm64`). The download is an executable file
 which might require the necessary file permissions to allow execution.
+2. Move the downloaded binary to `/usr/local/bin`
+3. Give permission to execute the binary
+```shell
+chmod +x family-migrator_darwin-arm64
+```
+
+
+{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="medium" lightbox="true">}}
+{{<hint "note" >}}
+In Darwin/macOS, this error can be shown while trying to run the executable.
+Please allow this application in the Security Settings by using the
+`Allow Anyway`.
+{{< /hint >}}
+{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="medium" lightbox="true">}}
+
 
 ### Usage
 
 The `family-migrator` tool has two sub-commands, `generate` and `execute`.
+
+The help output of the `family-migrator`:
+
+{{<img src="providers/images/family-migrator-help.jpeg" alt="family-migrator help output" size="small" lightbox="true">}}
 
 - `generate`: This command generates the migration plan. After the tool creates
 the migration plan, it confirms if execution of the created plan should proceed.
@@ -61,12 +103,11 @@ user with a series of questions to gather the required inputs:
 | **Please specify the path for the migration plan** | The answer represents the output path of the migration plan. Users need to provide a path for generating the plan and patch files. For example, `/tmp/generated/migration-plan.yaml` |
 | **Please provide the registry and organization for the provider family packages** | The format must be `<registry host>/<organization>`, for example, `xpkg.upbound.io/upbound`. |
 | **Please select the providers that will be migrated** | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
-| **Please select the providers that will be migrated** | The tool presents user with a list of the monolithic providers they can select to migrate from. The tool supports multiple selections. |
-| **Please specify the version of the provider-xxx family** | Provide the versions of the family provider to migrate to for each selected provider. If you want to migrate to the latest version, refer to the [Upbound Marketplace] |
-| **Please enter the URL of the migration source Configuration package** | Provide the URL of the currently installed Configuration Package. The value appears in the `spec.package` path of `Configuration.pkg.crossplane.io/v1` resource. |
-| **Please enter the URL of the migration target Configuration package** | The tool builds a new configuration package during migration. Specify the URL where to update the built package. |
-| **Please specify the source directory for the Crossplane Configuration package** | Specify the source directory to the location of the configuration package. This directory contains the Configuration metadata, compositions, and similar configuration package contents. For example: `/Users/user/workspace/platform-ref-gcp/package` |
-| **Please specify the path to the directory containing the Crossplane package examples** | Specify the directory to the location of the configuration package examples. For example: `/Users/user/workspace/platform-ref-gcp/examples` |
+| **Please specify the version of the provider-abc family** | Provide the versions of the family provider to migrate to for each selected provider. If you want to migrate to the latest version, refer to the [Upbound Marketplace](https://marketplace.upbound.io). The version format must be `v0.y.y` |
+| **Please enter the URL of the migration source Configuration package** | Provide the registry URL of the currently installed Configuration Package. The value appears in the `spec.package` path of `Configuration.pkg.crossplane.io/v1` resource. For example, `xpkg.upbound.io/upbound/platform-ref-gcp:v0.3.0` |
+| **Please enter the URL of the migration target Configuration package** | The tool builds a new configuration package during migration. Specify the registry URL where to update the built package. For example, `<registry-host>/<organization>/platform-ref-gcp:v0.3.0-migrated` |
+| **Please specify the source directory for the Crossplane Configuration package** | Specify the source directory to the location of the configuration package. This directory contains the Configuration.meta.pkg.crossplane.io manifest that contains the provider dependencies, Compositions, and CompositeResourceDefinitions. For example: `/Users/user/workspace/platform-ref-gcp/package` Example configuration package: https://github.com/upbound/platform-ref-gcp/tree/main/package. |
+| **Please specify the path to the directory containing the Crossplane package examples** | Specify the directory to the location of the configuration package examples. This directory may contain Claims, and Configuration.pkg.crossplane.io resource. For example: `/Users/user/workspace/platform-ref-gcp/examples` Example configuration examples: https://github.com/upbound/platform-ref-gcp/tree/main/examples. |
 | **Please specify the path to store the updated configuration package** | The location to store the newly built configuration package. |
 {{< /table >}}
 
@@ -151,4 +192,3 @@ directory on the file system.
 Documentation coming soon.
 
 [Releases]: https://github.com/upbound/extensions-migration/releases
-[Upbound Marketplace]: https://marketplace.upbound.io/
