@@ -24,12 +24,13 @@
   {{ $align = "d-flex" }}
 {{ end }}
 
-{{ $lightbox := false }}
-{{ if .Get "lightbox" }}
-  {{ if ne (.Get "lightbox") false }}
-    {{ $lightbox = true }}
+{{ $lightbox := true }}
+{{ with .Get "lightbox" }}
+  {{ if eq . "false" }}
+    {{ $lightbox = false }}
   {{ end }}
 {{ end }}
+
 
 {{ $quality := "q75" }}
 {{ if .Get "quality" }}
@@ -45,43 +46,27 @@
 {{ with $source }}
 
   {{/*  Render the images used by srcset  */}}
-  {{ $tiny := (.Resize (printf "320x webp  %s" $quality)) }}
+  {{ $xtiny := (.Resize (printf "150x webp  %s" $quality)) }}
+  {{ $tiny := (.Resize (printf "300x webp  %s" $quality)) }}
   {{ $small := (.Resize (printf "600x webp %s" $quality)) }}
-  {{ $medium := (.Resize (printf "1200x webp %s" $quality)) }}
+  {{ $medium := (.Resize (printf "800x webp %s" $quality)) }}
+  {{ $large := (.Resize (printf "1200x webp %s" $quality)) }}
   {{ $original := (.Resize (printf "%dx%d webp %s" .Width .Height $quality)) }}
-  {{ $xtiny := . }}
-  {{ $large := . }}
 
-  {{/*  Only resize these images if required  */}}
-  {{ if or $lightbox (eq $customSize "original") }}
-    {{ $original = (.Resize (printf "%dx%d webp %s" .Width .Height $quality)) }}
-  {{ end }}
-  {{ if eq $customSize "xtiny" }}
-    {{ $xtiny = (.Resize (printf "150x webp %s" $quality)) }}
-  {{ end }}
-  {{ if eq $customSize "large" }}
-    {{ $large = (.Resize (printf "1800x webp  %s" $quality)) }}
-  {{ end }}
 
   {{ $size := dict "xtiny" $xtiny "tiny" $tiny "small" $small "medium" $medium "large" $large "original" $original }}
   {{ $resizedImage := (index $size $customSize) }}
 
-<div class="{{ $align }}">
+  <div class="{{ $align }}">
 
-  {{ if $lightbox }}
-    <a href="{{$source.Permalink}}" data-lightbox="{{.}}" data-alt="{{$customAlt}}">
-  {{ end }}
-
+{{/* Spacing here is important. If there is space between the <a href>/</a> and <img> tags then it won't render properly in {{hint}} blocks */}}
+  {{ if $lightbox }}<a href="{{$source.Permalink}}" data-lightbox="{{.}}" data-alt="{{$customAlt}}">{{ end }}
   <img loading="{{$loading}}"
-  src="{{ $original.RelPermalink }}"
-  height="{{ $original.Height }}"
-  width="{{ $original.Width }}"
+  src="{{ $resizedImage.RelPermalink }}"
+  height="{{ $resizedImage.Height }}"
+  width="{{ $resizedImage.Width }}"
   class="rounded img-fluid mb-4"
   alt="{{ $customAlt }}"
-  decoding="async">
-
-  {{ if $lightbox }}
-    </a>
-  {{ end }}
+  decoding="async">{{ if $lightbox }}</a>{{ end }}
 </div>
 {{ end }}

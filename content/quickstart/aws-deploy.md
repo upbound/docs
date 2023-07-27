@@ -27,11 +27,11 @@ Your first time in Upbound you must create an organization. Give your organizati
 
 Select **Create Organization**.
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="medium" quality="100" align="center">}}
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="original" quality="100" align="center" >}}
 
 On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="medium" quality="100" align="center" >}}
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="original" quality="100" align="center" >}}
 
 ### Choose a configuration
 
@@ -39,7 +39,7 @@ Upbound offers a curated gallery of Crossplane configurations for you to choose 
 
 Select the Configuration called **EKS as a service**. 
 
-{{<img src="quickstart/images/get-started-select-eks.png" alt="Choose an Upbound configuration" quality="100">}}
+{{<img src="quickstart/images/get-started-select-eks.png" alt="Choose an Upbound configuration" quality="100" size="medium" lightbox="true" >}}
 
 ### Connect to GitHub
 
@@ -47,7 +47,7 @@ After you've selected a Configuration, you need to connect Upbound to your GitHu
 
 Select **Connect to GitHub**.
 
-{{<img src="quickstart/images/get-started-select-gh.png" alt="a marketplace search filter with Providers and Official filters set" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-select-gh.png" alt="a marketplace search filter with Providers and Official filters set" quality="100" size="medium" lightbox="true">}}
 
 {{< hint "tip" >}}
 Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/control-plane-connector" >}}) section.
@@ -76,8 +76,7 @@ Give your control plane a name, like **my-control-plane**.
 
 Select **Create Control Plane**.
 
-{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" lightbox="true">}}
-
+{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" lightbox="true" size="medium" >}}
 
 
 ### Connect to AWS with OIDC
@@ -139,7 +138,7 @@ Return to Upbound and paste the ARN you copied in the previous step into the inp
 Select **Authenticate**.  
 Select **Confirm and Launch Control Plane**.
 
-{{<img src="quickstart/images/get-started-confirm-launch.png" alt="Upbound Get Started Confirm and Launch screen" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-confirm-launch.png" alt="Upbound Get Started Confirm and Launch screen" quality="100" lightbox="true" size="medium">}}
 
 ## Welcome to the Upbound Console
 
@@ -186,7 +185,7 @@ After creating an instance, the _Events_ section are logs directly from Kubernet
 
 Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
 
-{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center">}}
+{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" size="small" align="center">}}
 
 You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
 {{< /hint >}}

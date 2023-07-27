@@ -144,18 +144,17 @@ The shortcode supports the following options:
 * `size` - Optional. Resizes the image. Useful for large images that need downscaling.
 * `quality` - Optional. A value between 1 and 100. Change the image quality to
   increase image quality or decrease image file size. The default is `quality=75`.
-* `lightbox` - Optional. Set to `true` to enable an image pop-out at full image
-  size. Useful for high fidelity screenshots.
+* `lightbox` - Optional. Set to `false` to turn off the full-sized image pop.
 
 
 ### Resize images
 
 The `size` can be one of:
 * `xtiny` - Resizes the image to 150px.
-* `tiny` - Resizes the image to 320px.
+* `tiny` - Resizes the image to 300px.
 * `small` - Resizes the image to 600px.
-* `medium` - Resizes the image to 1200px.
-* `large` - Resizes the image to 1800px.
+* `medium` - Resizes the image to 800px.
+* `large` - Resizes the image to 1200px.
 
 By default the image isn't resized.
 
@@ -179,21 +178,6 @@ For example,
 
 Generates this image
 {{< img src="/concepts/images/WithUpbound.png" alt="Control planes with Upbound" size="xtiny" >}}
-
-### Image pop-outs
-
-Use the `lightbox=true` option to create a pop-out of an image that's full
-sized.
-
-<!-- vale gitlab.SubstitutionWarning = NO -->
-<!-- it's not a selection, they are clicking on image -->
-For example, render an `xtiny` image and click to see the full size.
-```html
-{{</* img src="/concepts/images/WithUpbound.png" size="xtiny" lightbox="true" alt="Control planes with Upbound"  */>}}
-```
-<!-- vale gitlab.SubstitutionWarning = YES -->
-
-{{< img src="/concepts/images/WithUpbound.png" size="xtiny" lightbox="true" alt="Control planes with Upbound"  >}}
 
 ## Tables
 The docs support 
