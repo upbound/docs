@@ -120,6 +120,8 @@ function search(input, results, searchConfig) {
     results.classList.remove("d-none")
   }
 
+  console.log('!!! - og searchHits', searchHits);
+
   if (searchConfig.showParent === true) {
     // Group by href to account for nested sections
     searchHits = groupBy(searchHits, (hit) => hit.href.split("/")[1]);
@@ -129,6 +131,7 @@ function search(input, results, searchConfig) {
 
   if (searchConfig.showParent === true) {
     for (const section in searchHits) {
+      console.log('=============== section: ' + section + '==============');
 
       try{
         // Deep copy the section of the nav
@@ -172,14 +175,16 @@ function search(input, results, searchConfig) {
 
       // Hide children that do not match search hit
       for (let j = 0 ; j < childLinks.length; j++) {
+        console.log('!!! - resultPaths', resultPaths);
         // Nested sections get treated differently due to unique hierarchy and naming convention
+        const pathName = childLinks[j].getElementsByClassName("child-link")[0].pathname;;
+        console.log('!!! - pathname', pathName);
         if (childLinks[j].classList.contains("subheader")) {
-          const pathName = childLinks[j].getElementsByClassName("subheader-link")[0].pathname;
           if (!resultPaths.some((resultPath) => resultPath.includes(pathName))) {
             childLinks[j].classList.add("d-none")
           }
         } else {
-          if (!resultPaths.includes(childLinks[j].pathname)) {
+          if (!resultPaths.includes(pathName)) {
             childLinks[j].classList.add("d-none")
           }
         }
@@ -269,7 +274,7 @@ function buildTransition() {
   const headerHeight = "100%"
 
   // Note: navIconSwitcher also resets these menus on mobile menu close
-  closeSearchButton.addEventListener(`click`, (event) => {
+  closeSearchButton.addEventListener("click", (event) => {
     closeSearchButton.classList.add("d-none")
     results.classList.add("d-none")
     noResults.classList.add("d-none")

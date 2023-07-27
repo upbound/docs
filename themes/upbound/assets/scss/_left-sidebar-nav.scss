@@ -13,5 +13,9 @@
     &.offcanvas-xl {
         background: #{$up-neutral-0} !important;
     }
+
+    .left-offset {
+        min-width: 28px;
+    }
 }
 
