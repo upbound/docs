@@ -56,6 +56,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   );
+
+  document.addEventListener("keyup", (event) => {
+    if (event.key === '/') {
+      input.focus();
+    }
+  });
+
 });
 
 
@@ -120,8 +127,6 @@ function search(input, results, searchConfig) {
     results.classList.remove("d-none")
   }
 
-  console.log('!!! - og searchHits', searchHits);
-
   if (searchConfig.showParent === true) {
     // Group by href to account for nested sections
     searchHits = groupBy(searchHits, (hit) => hit.href.split("/")[1]);
@@ -131,8 +136,6 @@ function search(input, results, searchConfig) {
 
   if (searchConfig.showParent === true) {
     for (const section in searchHits) {
-      console.log('=============== section: ' + section + '==============');
-
       try{
         // Deep copy the section of the nav
         // We modify this and put it inside the results
@@ -175,10 +178,8 @@ function search(input, results, searchConfig) {
 
       // Hide children that do not match search hit
       for (let j = 0 ; j < childLinks.length; j++) {
-        console.log('!!! - resultPaths', resultPaths);
         // Nested sections get treated differently due to unique hierarchy and naming convention
         const pathName = childLinks[j].getElementsByClassName("child-link")[0].pathname;;
-        console.log('!!! - pathname', pathName);
         if (childLinks[j].classList.contains("subheader")) {
           if (!resultPaths.some((resultPath) => resultPath.includes(pathName))) {
             childLinks[j].classList.add("d-none")
