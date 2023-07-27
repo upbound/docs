@@ -4,14 +4,14 @@
 
 // Style for highlighted lines when hovering over copy button
 .copyHover {
-  background-color: var(--code-highlight-background);
+  background-color: #{$up-grey-700n} !important;
 }
 
 // Code box div
 .highlight {
   overflow-x: auto;
   width: 100% !important;
-  background-color: var(--code-block-background-color);
+  background-color: #{$up-grey-850n};
   display: flex !important;
   margin-top: 1rem; // prevent boxes from running together
   margin-bottom: 1rem;
@@ -26,7 +26,7 @@
   }
 
   .edit-code-icon{
-    fill: var(--edit-code-pencil);
+    fill: #{$up-grey-300n};
   }
 
   :target{
@@ -36,13 +36,13 @@
 
   // Clipboard div
   .code-clipboard{
-    background-color: var(--code-block-background-color);
+    background-color: #{$up-grey-850n};
     display: flex !important;
     padding-right: 10px;
 
     .clipboard-button{
       border: 0;
-      color: $gray-500;
+      color: #{$up-grey-300n};
       background-color: inherit;
 
       .bi {
@@ -52,7 +52,7 @@
       }
 
       &:hover {
-        color: #fff;
+        color: #{$up-grey-000};
       }
     }
   }
@@ -69,8 +69,8 @@
     padding-top: .5rem;
 
     code {
-      color: #f8f9fa;   // Code color if there is no defined highlighter style
-      background-color: var(--code-block-background-color);
+      color: #{$up-grey-000};   // Code color if there is no defined highlighter style
+      background-color: #{$up-grey-850n};
       padding: 0.2em 0.4em;
       font-size: $up-code-font-size !important; //.95rem !important;
       line-height: $up-code-line-height; //1.45em;
@@ -97,7 +97,7 @@
           scroll-margin-top: 90px;
           &:hover{
             // text-decoration: none !important;
-            color: #fff;
+            color: #{$up-grey-000};
             font-weight: 800;
             text-decoration: none !important;
           }
