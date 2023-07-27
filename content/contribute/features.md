@@ -144,7 +144,7 @@ The shortcode supports the following options:
 * `size` - Optional. Resizes the image. Useful for large images that need downscaling.
 * `quality` - Optional. A value between 1 and 100. Change the image quality to
   increase image quality or decrease image file size. The default is `quality=75`.
-* `lightbox` - Optional. Set to `false` to disable the full-sized image pop.
+* `lightbox` - Optional. Set to `false` to turn off the full-sized image pop.
 
 
 ### Resize images
