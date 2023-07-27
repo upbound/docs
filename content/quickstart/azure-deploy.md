@@ -30,11 +30,11 @@ Your first time in Upbound you must create an organization. Give your organizati
 
 Select **Create Organization**.
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="medium" quality="100" align="center">}}
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="medium" quality="100" align="center" size="original" >}}
 
 On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="medium" quality="100" align="center" >}}
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="original" quality="100" align="center" >}}
 
 ### Choose a configuration
 
@@ -42,7 +42,7 @@ Upbound offers a curated gallery of Crossplane configurations for you to choose 
 
 Select the Configuration called **AKS as a service**. 
 
-{{<img src="quickstart/images/azure-config.png" alt="Upbound Azure configuration" quality="100">}}
+{{<img src="quickstart/images/azure-config.png" alt="Upbound Azure configuration" size="medium" quality="100">}}
 ### Connect to GitHub
 
 After you've selected a Configuration, you need to connect Upbound to your GitHub account. Upbound uses GitHub's authorization flow and installs a GitHub app into your account. 
@@ -75,7 +75,7 @@ Give your control plane a name, like **my-control-plane**.
 
 Select **Create Control Plane**.
 
-{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" align="center">}}
+{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" align="center" size="medium">}}
 
 ### Connect to Azure with OIDC
 
@@ -92,7 +92,7 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to Azure without 
 6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
 7. In the _Redirect URI_ section select **Web** and leave the URL field blank.
 8. Select **Register**.
-{{<img src="quickstart/images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure" quality="100" align="center" >}}
+{{<img src="quickstart/images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure" quality="100" align="center" size="medium" >}}
 
 #### Create a federated credential 
 
@@ -130,7 +130,7 @@ upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
 9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.
 10. Select **Add**.
 
-{{<img src="quickstart/images/azure-registration-config.png" alt="Azure configure app registration" quality="100" align="center" >}}
+{{<img src="quickstart/images/azure-registration-config.png" alt="Azure configure app registration" quality="100" align="center" size="medium">}}
 
 #### Grant permissions to the service principal
 
@@ -150,7 +150,7 @@ For your control plane to be able to perform actions required by this configurat
 12. Select **Review + assign**.
 13. Make sure everything is correct and press **Review + assign** again.
 
-{{<img src="quickstart/images/azure-identity-setup.png" alt="Azure grant permissions to service principal" quality="100" align="center" >}}
+{{<img src="quickstart/images/azure-identity-setup.png" alt="Azure grant permissions to service principal" quality="100" align="center" size="medium" >}}
 
 ### Finish configuring the Upbound identity provider
 
@@ -171,7 +171,7 @@ Select **Launch Control Plane**.
 
 After completing the _Get Started_ experience, you are in the Upbound Console and greeted by the Control Planes screen.
 
-{{<img src="quickstart/images/control-plane-console.png" alt="Upbound Azure control plane instance screen" quality="100" align="center">}}
+{{<img src="quickstart/images/control-plane-console.png" alt="Upbound Azure control plane instance screen" quality="100" align="center" size="medium">}}
 
 The control plane details view gives users a view into what's happening on their control planes. 
 
@@ -183,12 +183,12 @@ Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour o
 
 From the control planes view, select the **Portal** tab, and select **Open Control Plane Portal**.
 
-{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true" size="medium">}}
 
 The Control Plane Portal lists the available resources that users can claim in the left-side menu.  
 These resources are your abstracted APIs presented to users. 
 
-{{<img src="quickstart/images/cp-create-kubernetescluster.png" alt="Control plane portal with a Kubernetes Cluster resource" quality="100" align="center">}}
+{{<img src="quickstart/images/cp-create-kubernetescluster.png" alt="Control plane portal with a Kubernetes Cluster resource" quality="100" align="center" size="medium">}}
 
 Select the **KubernetesCluster** resource and then select the **Create New** button at the top of the page. 
 
@@ -203,7 +203,7 @@ The form are the parameters defined in your custom API. Fill-in the form with th
 - _size_: **small**
 <!-- vale Google.FirstPerson = YES -->
 
-{{<img src="quickstart/images/get-started-k8s-cluster-create.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-k8s-cluster-create.png" alt="Navigate to control plane portal" quality="100" lightbox="true" size="medium">}}
 
 When you **Create Instance** the portal generates a Crossplane claim.
 
@@ -212,7 +212,7 @@ After creating an instance, the _Events_ section are logs directly from Kubernet
 
 Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
 
-{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center">}}
+{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center" size="medium">}}
 
 You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
 {{< /hint >}}
@@ -225,7 +225,7 @@ There's now a claim card next to the `KubernetesCluster` type card.
 
 Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane. 
 
-{{<img src="quickstart/images/get-started-k8s-created.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-k8s-created.png" alt="Navigate to control plane portal" quality="100" lightbox="true" size="medium">}}
 
 Congratulations, you created your first resources with your control plane.
 

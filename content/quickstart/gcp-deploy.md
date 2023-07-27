@@ -29,11 +29,11 @@ Your first time in Upbound you must create an organization. Give your organizati
 
 Select **Create Organization**.
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="medium" quality="100" align="center">}}
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="original" quality="100" align="center">}}
 
 On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="medium" quality="100" align="center" >}}
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="original" quality="100" align="center" >}}
 
 ### Choose a configuration
 
@@ -41,7 +41,7 @@ Upbound offers a curated gallery of Crossplane configurations for you to choose 
 
 Select the Configuration called **CloudSQL as a service**. 
 
-{{<img src="quickstart/images/cloudsql-config.png" alt="Upbound connect to GitHub screen" quality="100">}}
+{{<img src="quickstart/images/cloudsql-config.png" alt="Upbound connect to GitHub screen" size="medium" quality="100">}}
 ### Connect to GitHub
 
 After you've selected a Configuration, you need to connect Upbound to your GitHub account. Upbound uses GitHub's authorization flow and installs a GitHub app into your account. 
@@ -74,7 +74,7 @@ Give your control plane a name, like **my-control-plane**.
 
 Select **Create Control Plane**.
 
-{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" align="center">}}
+{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" align="center" size="medium" >}}
 
 ### Connect to GCP with OIDC
 
@@ -208,7 +208,7 @@ Go to the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sq
 
 Select **Enable**.
 
-{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" size="medium" quality="100" >}}
+{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" size="original" quality="100" >}}
 <!-- vale Google.Headings = YES -->
 <!-- vale Microsoft.Terms = YES -->
 
@@ -247,7 +247,7 @@ Select **Launch Control Plane**.
 
 After completing the _Get Started_ experience, you are in the Upbound Console and greeted by the Control Planes screen.
 
-{{<img src="quickstart/images/gcp-ctp.png" alt="Upbound GCP instance screen" quality="100" align="center">}}
+{{<img src="quickstart/images/gcp-ctp.png" alt="Upbound GCP instance screen" quality="100" size="medium" align="center">}}
 
 The control plane details view gives users a view into what's happening on their control planes. 
 
@@ -259,7 +259,7 @@ Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour o
 
 From the control planes view, select the **Portal** tab, and select **Open Control Plane Portal**.
 
-{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true" size="medium" >}}
 
 Select the **PostgreSQLInstance** resource.  
 Select the **Create New** button at the top-right of the page. 
@@ -276,7 +276,7 @@ The form are the parameters defined in your custom API. Fill-in the form with th
 <!-- vale Google.FirstPerson = YES -->
 
 
-{{<img src="quickstart/images/gcp-db-create.png" alt="Create database form" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/gcp-db-create.png" alt="Create database form" quality="100" lightbox="true" size="medium">}}
 
 
 When you **Create Instance** the portal generates a Crossplane claim.
@@ -286,7 +286,7 @@ After creating an instance, the _Events_ section are logs directly from Kubernet
 
 Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
 
-{{<img src="quickstart/images/gcp-event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center">}}
+{{<img src="quickstart/images/gcp-event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center" size="medium">}}
 
 You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
 {{< /hint >}}
@@ -300,7 +300,7 @@ There's now a claim card next to the `PostgreSQLInstance` type card.
 
 Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane. 
 
-{{<img src="quickstart/images/gcp-observe-db.png" alt="Observe created resource" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/gcp-observe-db.png" alt="Observe created resource" quality="100" lightbox="true" size="medium">}}
 
 Congratulations, you created your first resources with your MCP.
 
