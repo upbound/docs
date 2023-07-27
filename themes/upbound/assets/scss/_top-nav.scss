@@ -23,12 +23,13 @@
     background-color: white;
 
     @include media-breakpoint-down(xl) {
-        position: absolute;
+        position: fixed;
         z-index: 1021;
         border-bottom: 0;
         height: 74px;
         max-width: 430px;
         width: 60%;
+        background-color: transparent;
 
         .logo-container {
             display: none;
