@@ -2,7 +2,7 @@
 
 .right-sidebar-toc{
     padding-bottom: 3rem;
-    margin-top: 20px;
+    margin-top: 40px;
 
     @include media-breakpoint-down(xl) {
         margin: 0px !important;
@@ -19,7 +19,7 @@
     .toc {
         font-size: 14px;
         position: sticky;
-        top: 40px;
+        top: 80px;
         grid-area: right-sidebar-toc;
         overflow-y: auto;
         height: 1fr;

@@ -1,179 +1,28 @@
 // Styling related to the left-side global navigation
 
-// Custom modifications to built-in bootstrap tooling for the left-hand-nav
-.left-sidebar-nav .list-group {
-
-    // Remove unwanted default list-group stylings
-    --bs-list-group-border-radius: 0;
-    --bs-list-group-item-padding-x: 0;
-    --bs-list-group-border-width: 0;
-
-    // Default nav item state
-    --bs-list-group-bg: #{$up-grey-100};
-    --bs-list-group-action-hover-bg: #{$up-grey-200};
-
-    // Clicked on nav menu item
-    --bs-list-group-action-active-color: #{$up-purple-400};
-    --bs-list-group-action-active-bg: #{$up-purple-100};
-
-    // Active nav menu item
-    --bs-list-group-active-color: #{$up-purple-400};
-    --bs-list-group-active-bg: #{$up-purple-100};
-    --bs-accordion-border-radius: 4;
-
-    --bs-list-group-item-padding-y: 10px;
-
-    // The expand/collapse nav button uses the bootstrap accordion components
-    .accordion {
-        --bs-accordion-bg: #{$up-grey-400};
-        --bs-accordion-active-bg: #{$up-purple-100};
-        --bs-accordion-btn-padding-y: 10px;
-        --bs-accordion-btn-padding-x: 2px;
-    }
-
-    .accordion-button{
-        --bs-accordion-btn-icon-width: 14px;
-        // size of the grey box containing the chevron
-        width: 22px;
-        height: 22px;
-
-        &:after{
-            margin-left: 1px;
-        }
-    }
-
+// Custom modifications to built-in bootstrap tooling for the left-hand-nav/a
+#left-nav-menu {
+    overflow: scroll;
+    height: 100vh;
+    position: sticky;
+    top: 40px;
 }
 
 .left-sidebar-nav{
     grid-area: left-sidebar-nav;
-    border-right: 1px solid #{$up-grey-300};
 
     flex-grow: 1 !important;
 
     @include media-breakpoint-down(xl) {
-        margin-top: 78px;
+        margin-top: 65px;
     }
 
     &.offcanvas-xl {
-        background: #{$up-grey-100} !important;
+        background: #{$up-neutral-0} !important;
     }
 
-    .list-group {
-        cursor: pointer;
+    .left-offset {
+        min-width: 28px;
     }
-
-    .search-icon-active{
-        padding-right: 10px;
-    }
-
-    .close-search {
-        background-color: #{$up-grey-300};
-        width: 20px;
-        height: 20px;
-        border-radius: 5px;
-    }
-
-    .no-results-container{
-        padding-left: 14px;
-    }
-
-    .no-results-text{
-        padding-left: 14px;
-        font-size: 16px;
-        color: #{$up-grey-500};
-    }
-
-    .search-results{
-        padding-top: 20px;
-    }
-
-    .search-input {
-        border: none;
-        background-color: inherit;
-        font-size: 16px;
-
-        &::placeholder{
-            color: #{$up-grey-500};
-        }
-
-        &:focus{
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-        }
-    }
-
-    .grey-icon{
-        fill: #{$up-grey-500};
-    }
-
-    .nav-logo-search{
-        // max-width: 300px;
-        border-bottom: 1px solid #{$up-grey-300} !important;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-
-        .search-icon{
-            padding-right: 16px;
-        }
-
-        .close-nav{
-            padding-left: 16px;
-            padding-right: 16px;
-        }
-
-    }
-
-    a{
-        text-decoration: none;
-        color: inherit;
-        font-size: 16px;
-    }
-
-    .nav-parent-container{
-        font-weight: 800;
-        font-size: .9rem;
-
-        &:hover{
-            background-color: #{$up-grey-200};
-        }
-        &.active {
-            color:  #{$up-purple-400};
-            background-color: #{$up-purple-100};
-        }
-    }
-
-    .icon-container{
-        padding-left: 12px;
-    }
-
-    .button-container{
-        padding-right: 12px;
-    }
-
-    .nav-child{
-        padding-left: 44px;
-    }
-
-    .menu-expand{
-        background-color: #{$up-grey-300};
-        width: 25px;
-        height: 20px;
-        border-radius: 5px;
-        z-index: 999 !important;
-    }
-
-    .icon-container {
-        padding-right: 12px;
-    }
-
-    .nav-parent-icon {
-        fill: #{$up-purple-400};
-        height: 20px;
-        width: 20px;
-    }
-
 }
 

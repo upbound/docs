@@ -8,19 +8,22 @@
     {{ if eq hugo.Environment "production" -}}
       {{ partialCached "body/gtag-body" . }}
     {{ end }}
-  <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
-    {{ partialCached "icons/sprites" . }}
 
-    {{ partial "body/left-sidebar-nav" .}}
+    {{ partial "body/top-nav" .}}
 
-    {{ partial "body/offcanvas-nav" .}}
+    <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
+      {{ partialCached "icons/sprites" . }}
 
-    {{ block "main" . }}
-    {{ end }}
+      {{ partial "body/left-sidebar-nav" .}}
 
-    {{ partialCached "footer/base" . }}
-  </div>
-</body>
+      {{ partial "body/offcanvas-nav" .}}
+
+      {{ block "main" . }}
+      {{ end }}
+
+      {{ partialCached "footer/base" . }}
+    </div>
+  </body>
 
 
 </html>

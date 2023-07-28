@@ -32,9 +32,7 @@ function buildEventListeners(){
         iconSwitch(leftToggle)
         iconDefault(rightToggle)
 
-        // reset the search box if the menu is closed
         document.getElementById("left-nav-menu").classList.remove("d-none")
-        document.getElementById("search-panel").classList.add("d-none")
     })
 
     if(rightOffcanvas){

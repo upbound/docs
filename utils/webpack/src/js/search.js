@@ -1,5 +1,6 @@
 // This is from Geekdocs (https://github.com/thegeeklab/hugo-geekdoc)
 const groupBy = require("lodash/groupBy");
+const filter = require("lodash/filter");
 const truncate = require("lodash/truncate");
 const { FlexSearch } = require("flexsearch/dist/flexsearch.compact");
 const { Validator } = require("@cfworker/json-schema");
@@ -55,6 +56,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   );
+
+  document.addEventListener("keyup", (event) => {
+    if (event.key === '/') {
+      input.focus();
+    }
+  });
+
 });
 
 
@@ -92,81 +100,101 @@ function search(input, results, searchConfig) {
   };
 
   var noResults = document.getElementById("no-results-container")
+  var closeSearchButton = document.getElementById("close-search");
 
   while (results.firstChild) {
     results.removeChild(results.firstChild);
   }
 
   if (!input.value) {
+    closeSearchButton.classList.add("d-none");
     noResults.classList.add("d-none")
     return results.classList.add("d-none");
+  } else {
+    closeSearchButton.classList.remove("d-none");
   }
 
   let searchHits = flattenHits(
     window.geekdocSearchIndex.search(input.value, searchCfg)
   );
 
-  if (searchHits.length < 1) {
+  if (searchHits.length < 1 || searchHits.length === 1 && searchHits[0].parent === "Upbound Documentation") {
+    results.classList.add("d-none")
+
     var noResults = document.getElementById("no-results-container")
     return noResults.classList.remove("d-none")
+  } else {
+    results.classList.remove("d-none")
   }
 
-  results.classList.remove("d-none")
-
   if (searchConfig.showParent === true) {
-    searchHits = groupBy(searchHits, (hit) => hit.parent);
+    // Group by href to account for nested sections
+    searchHits = groupBy(searchHits, (hit) => hit.href.split("/")[1]);
   }
 
   const items = [];
 
   if (searchConfig.showParent === true) {
     for (const section in searchHits) {
-        if(section === "Upbound Documentation"){
-            continue
+      try{
+        // Deep copy the section of the nav
+        // We modify this and put it inside the results
+        // This way the CSS in the nav always matches the results
+          var resultParent = document.getElementById(section).cloneNode(true)
+      } catch {
+          console.log("section: " + section)
+          console.log(document)
+      }
+
+      // hide "No results" if it isn't already hidden
+      noResults.classList.add("d-none")
+
+      try {
+        // prevent hover highlighting of section title in search results
+        resultParent.classList.add("disabled");
+      } catch(e) {
+        console.error(e);
+      }
+
+      // deep copy the children of the nav section. This will be modified
+      var resultChildrenContainer = document.getElementById(section + "-children").cloneNode(true)
+
+      // ensure the accordian is expanded -- by this point, all children are shown (even non-matches to search hit, which we will hide later)
+      resultChildrenContainer.firstElementChild.classList.add("show")
+
+      // expand accordian for nested sections
+      var subpages = resultChildrenContainer.getElementsByClassName("subpages")
+      for(var i = 0 ; i < subpages.length - 1 ; i++){
+        subpages[i].classList.add("show")
+      }
+
+      // get links to all children, to compare with expected links from search hits
+      var childLinks = resultChildrenContainer.getElementsByClassName("nav-child")
+      var resultPaths = []
+
+      for (var i = 0 ; i < searchHits[section].length; i++) {
+        resultPaths.push(searchHits[section][i]["href"])
+      }
+
+      // Hide children that do not match search hit
+      for (let j = 0 ; j < childLinks.length; j++) {
+        // Nested sections get treated differently due to unique hierarchy and naming convention
+        const pathName = childLinks[j].getElementsByClassName("child-link")[0].pathname;;
+        if (childLinks[j].classList.contains("subheader")) {
+          if (!resultPaths.some((resultPath) => resultPath.includes(pathName))) {
+            childLinks[j].classList.add("d-none")
+          }
+        } else {
+          if (!resultPaths.includes(pathName)) {
+            childLinks[j].classList.add("d-none")
+          }
         }
+      }
 
-        try{
-          // Deep copy the section of the nav
-          // We modify this and put it inside the results
-          // This way the CSS in the nav always matches the results
-            var resultParent = document.getElementById(section).cloneNode(true)
-        }
-        catch {
-            console.log("section: " + section)
-            console.log(document)
-        }
-
-        // hide "No results" if it isn't already hidden
-        noResults.classList.add("d-none")
-
-        // rotate the expand chevron if it's not already
-        resultParent.querySelector("[data-bs-toggle]").classList.add("down")
-        resultParent.querySelector("[data-bs-toggle]").classList.remove("collapsed")
-
-        // deep copy the children of the nav section. This will be modified
-        var resultChildrenContainer = document.getElementById(section + "-children").cloneNode(true)
-
-        // ensure the accordian is expanded
-        resultChildrenContainer.firstElementChild.classList.add("show")
-
-
-        var childLinks = resultChildrenContainer.getElementsByClassName(".nav-child")
-        var resultPaths = []
-
-        for(var i = 0 ; i < searchHits[section].length - 1; i++){
-            resultPaths.push(searchHits[section][i]["href"])
-        }
-
-        for(var i = 0 ; i < childLinks.length - 1 ; i++){
-            if(!resultPaths.includes(childLinks[i].pathname)){
-                childLinks[i].classList.add("d-none")
-            }
-        }
-        items.push(resultParent)
-        items.push(resultChildrenContainer)
+      items.push(resultParent)
+      items.push(resultChildrenContainer)
+    }
   }
-
-}
 
   items.forEach((item) => {
     results.appendChild(item);
@@ -238,43 +266,33 @@ function combineURLs(baseURL, relativeURL) {
 
 // Create a search box and results when the search icon is selected
 function buildTransition() {
-  var searchIcon = document.getElementById("search-icon");
-  var closeSearch = document.getElementById("close-search");
-  var navMenu = document.getElementById("left-nav-menu");
+  var closeSearchButton = document.getElementById("close-search");
   var searchPanel = document.getElementById("search-panel");
-  var searchInput = document.getElementById("search-input");
-  var leftNav = document.getElementById("left-nav-offcanvas");
+  const searchInput = document.getElementById("search-input");
+  const results = document.getElementById("search-results");
+  const noResults = document.getElementById("no-results-container")
 
   const headerHeight = "100%"
 
-  // When the user clicks on the search icon:
-  // - hide the nav menu
-  // - show the search panel
-  // - put the cursor in the input box
-  searchIcon.addEventListener(`click`, (event) => {
-    navMenu.classList.add("d-none")
-    searchPanel.classList.remove("d-none")
-    searchInput.focus()
-    searchInput.select()
-  })
-
   // Note: navIconSwitcher also resets these menus on mobile menu close
-  closeSearch.addEventListener(`click`, (event) => {
-    navMenu.classList.remove("d-none")
-    searchPanel.classList.add("d-none")
+  closeSearchButton.addEventListener("click", (event) => {
+    closeSearchButton.classList.add("d-none")
+    results.classList.add("d-none")
+    noResults.classList.add("d-none")
+    searchInput.value = "";
   })
 
-  // Close the search panel if they click off the left nav
+  // Close the search panel if they click outside of it
   document.addEventListener("click", function(event) {
     targetElement = event.target
     do {
-      if (leftNav == targetElement){
+      if (searchPanel == targetElement){
         return
       }
       targetElement = targetElement.parentNode
     } while (targetElement)
-        navMenu.classList.remove("d-none");
-        searchPanel.classList.add("d-none");
+      results.classList.add("d-none")
+      noResults.classList.add("d-none")
   });
 }
 
