@@ -29,12 +29,15 @@ non-interactive migration path.
 `kubectl` tool installed. `family-migrator` uses the `kubectl` tool in the
 execution phase, and it assumes availability of this tool locally during the
 non-interactive run.
-
+<!-- vale Upbound.Spelling = NO -->
+<!-- vale gitlab.SubstitutionWarning = NO -->
+<!-- ignore "kubeconfig" -->
 - The user needs to be on the device that has access to the Kubernetes cluster.
 If the default config file `(~/.kube/config)` doesn't refer to the cluster to
 migrate, the user must configure the `--kubeconfig` flag of the tool. The value
 of the `--kubeconfig` flag must refer to the cluster to migrate.
-
+<!-- vale Upbound.Spelling = YES -->
+<!-- vale gitlab.SubstitutionWarning = YES -->
 - The `family-migrator` tool currently supports a limited scenario. The relevant
 scenario has some prerequisites:
   - The user must have an installed configuration package in cluster. In other
@@ -50,8 +53,8 @@ scenario has some prerequisites:
     - Content of Examples: This directory may contain Claims, and
     Configuration.pkg.crossplane.io resource. Example configuration examples:
     https://github.com/upbound/platform-ref-gcp/tree/main/package.
-  - The user must have push authorization to the registry where the new
-  configuration package image built during migration will be pushed.
+  - To push the new configuration package image during migration, the user
+  requires push authorization to the registry.
 
 ### Installation
 
@@ -66,13 +69,13 @@ chmod +x family-migrator_darwin-arm64
 ```
 
 
-{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="medium" lightbox="true">}}
+{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="small" lightbox="true">}}
 {{<hint "note" >}}
 In Darwin/macOS, this error can be shown while trying to run the executable.
 Please allow this application in the Security Settings by using the
 `Allow Anyway`.
 {{< /hint >}}
-{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="medium" lightbox="true">}}
+{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="small" lightbox="true">}}
 
 
 ### Usage
@@ -97,6 +100,9 @@ plan. It prompts for all required options when executing the command.
 When running the `family-migrator generate` command, the tool prompts the
 user with a series of questions to gather the required inputs:
 
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale write-good.Passive = NO -->
 {{< table "table table-sm table-striped">}}
 | Required input | Description |
 | ----- | ----------- |
@@ -110,6 +116,9 @@ user with a series of questions to gather the required inputs:
 | **Please specify the path to the directory containing the Crossplane package examples** | Specify the directory to the location of the configuration package examples. This directory may contain Claims, and Configuration.pkg.crossplane.io resource. For example: `/Users/user/workspace/platform-ref-gcp/examples` Example configuration examples: https://github.com/upbound/platform-ref-gcp/tree/main/examples. |
 | **Please specify the path to store the updated configuration package** | The location to store the newly built configuration package. |
 {{< /table >}}
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale write-good.Passive = YES -->
 
 After the tool collects all the inputs it needs, it generates and exports the
 migration plan to the specified path. It then asks whether to continue to
