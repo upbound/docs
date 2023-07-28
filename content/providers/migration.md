@@ -43,11 +43,11 @@ scenario has some prerequisites:
   - The user must have an installed configuration package in cluster. In other
   words, the cluster must has a `Configuration.pkg.crossplane.io/v1` resource
   and the monolithic providers.
-  - The user must have a configuration package and examples in local file
-  system.
+  - The user's local file system must have a configuration package and
+  examples.
     - Content of Package: This directory contains the
-    Configuration.meta.pkg.crossplane.io manifest that contains the provider
-    dependencies, Compositions, and CompositeResourceDefinitions. Example
+    Configuration.meta.pkg.crossplane.io manifest (that contains the provider
+    dependencies), Compositions, and CompositeResourceDefinitions. Example
     configuration package:
     https://github.com/upbound/platform-ref-gcp/tree/main/package.
     - Content of Examples: This directory may contain Claims, and
@@ -68,14 +68,13 @@ which might require the necessary file permissions to allow execution.
 chmod +x family-migrator_darwin-arm64
 ```
 
-
-{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="small" lightbox="true">}}
 {{<hint "note" >}}
-In Darwin/macOS, this error can be shown while trying to run the executable.
-Please allow this application in the Security Settings by using the
+In Darwin/macOS, the following error can be shown while trying to run the
+executable. Please allow this application in the Security Settings by using the
 `Allow Anyway`.
 {{< /hint >}}
-{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="small" lightbox="true">}}
+{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="tiny">}}
+{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="small">}}
 
 
 ### Usage
@@ -84,7 +83,7 @@ The `family-migrator` tool has two sub-commands, `generate` and `execute`.
 
 The help output of the `family-migrator`:
 
-{{<img src="providers/images/family-migrator-help.jpeg" alt="family-migrator help output" size="small" lightbox="true">}}
+{{<img src="providers/images/family-migrator-help.jpeg" alt="family-migrator help output" size="medium">}}
 
 - `generate`: This command generates the migration plan. After the tool creates
 the migration plan, it confirms if execution of the created plan should proceed.
