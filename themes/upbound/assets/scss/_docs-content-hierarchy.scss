@@ -68,6 +68,10 @@ $font-size: 14px;
             background-color: #{$up-neutral-50};
             cursor: pointer;
         }
+
+        &.disabled {
+            pointer-events: none;
+        }
         
         .nav-parent-title {
             font-size: $font-size;
@@ -96,6 +100,15 @@ $font-size: 14px;
         text-decoration: none;
         color: inherit;
         font-size: $font-size;
+    }
+
+    .subheader {
+        cursor: pointer;
+
+        .subheader-title {
+            font-size: $font-size;
+            color: $font-color-dark;
+        }
     }
 
     .button-container{
