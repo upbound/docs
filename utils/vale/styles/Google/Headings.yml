@@ -10,6 +10,7 @@ exceptions:
   - "Amazon Elastic Kubernetes Service"
   - "Composite Resource"
   - "Google Kubernetes Engine"
+  - "Integrate with Argo CD and Flux"
   - "Managed Control Planes?"
   - "Managed Resources"
   - "Microsoft Azure Kubernetes Service"

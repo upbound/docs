@@ -9,6 +9,7 @@ exceptions:
   - API
   - ARN
   - AWS
+  - CD
   - CLI
   - CSS
   - CPU
