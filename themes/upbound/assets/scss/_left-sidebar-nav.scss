@@ -2,10 +2,17 @@
 
 // Custom modifications to built-in bootstrap tooling for the left-hand-nav/a
 #left-nav-menu {
-    // overflow: scroll;
-    // height: 100vh;
+    overflow-y: scroll;
+    height: 100vh;
     position: sticky;
     top: 40px;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    
+    &::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
 }
 
 .left-sidebar-nav{
