@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
           init(input, searchConfig);
         });
         input.addEventListener("keyup", () => {
-          console.log('!!! results', input);
           search(input, results, searchConfig);
         });
       }
@@ -128,14 +127,10 @@ function search(input, results, searchConfig) {
     results.classList.remove("d-none")
   }
 
-  console.log('!!! - OG Search Results:', searchHits);
-
   if (searchConfig.showParent === true) {
     // Group by href to account for nested sections
     searchHits = groupBy(searchHits, (hit) => hit.href.split("/")[1]);
   }
-
-  console.log('!!! - Grouped Search Results:', searchHits);
 
   const items = [];
 
