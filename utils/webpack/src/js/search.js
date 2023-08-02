@@ -136,6 +136,11 @@ function search(input, results, searchConfig) {
 
   if (searchConfig.showParent === true) {
     for (const section in searchHits) {
+      var sectionChildren = document.getElementById(section + "-children");
+      if (!sectionChildren) {
+        continue;
+      }
+
       try{
         // Deep copy the section of the nav
         // We modify this and put it inside the results
@@ -164,30 +169,35 @@ function search(input, results, searchConfig) {
 
       // expand accordian for nested sections
       var subpages = resultChildrenContainer.getElementsByClassName("subpages")
-      for(var i = 0 ; i < subpages.length - 1 ; i++){
-        subpages[i].classList.add("show")
+      for(let h = 0; h < subpages.length; h++){
+        subpages[h].classList.add("show")
       }
 
       // get links to all children, to compare with expected links from search hits
-      var childLinks = resultChildrenContainer.getElementsByClassName("nav-child")
+      var childLinks = resultChildrenContainer.getElementsByClassName("child-link-container")
       var resultPaths = []
 
-      for (var i = 0 ; i < searchHits[section].length; i++) {
+      for (let i = 0; i < searchHits[section].length; i++) {
         resultPaths.push(searchHits[section][i]["href"])
       }
 
       // Hide children that do not match search hit
-      for (let j = 0 ; j < childLinks.length; j++) {
-        // Nested sections get treated differently due to unique hierarchy and naming convention
-        const pathName = childLinks[j].getElementsByClassName("child-link")[0].pathname;;
-        if (childLinks[j].classList.contains("subheader")) {
-          if (!resultPaths.some((resultPath) => resultPath.includes(pathName))) {
-            childLinks[j].classList.add("d-none")
-          }
-        } else {
-          if (!resultPaths.includes(pathName)) {
-            childLinks[j].classList.add("d-none")
-          }
+      for (let j = 0; j < childLinks.length; j++) {
+        const pathName = childLinks[j].getElementsByClassName("child-link")[0].pathname;
+        if (!resultPaths.includes(pathName)) {
+          childLinks[j].classList.add("d-none")
+        }
+      }
+
+      let subheaders = resultChildrenContainer.getElementsByClassName("subheader");
+      for (let k = 0; k < subheaders.length; k++) {
+        // prevent hover highlighting of subsection title
+        subheaders[k].classList.add("disabled");
+
+        // Hide subheaders if all of their children are hidden
+        let subpageContainer = subheaders[k].nextElementSibling;
+        if (subpageContainer.getElementsByClassName("child-link-container").length === subpageContainer.getElementsByClassName("child-link-container d-none").length) {
+          subheaders[k].classList.add("d-none")
         }
       }
 

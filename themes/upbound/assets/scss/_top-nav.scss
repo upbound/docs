@@ -60,6 +60,12 @@
     }
 
     .search-panel {
+        pointer-events: none; 
+
+        & > * {
+            pointer-events: auto; 
+        }
+
         .search-container {
             height: 59px;
             max-width: 404px;
