@@ -35,7 +35,9 @@ Deleting a team permanently removes any permissions its members and robot accoun
 Users can be members of more than one team inside an organization.
 
 The following illustrates a user that's a member of two different organizations and multiple teams. 
-![A user in multiple groups and multiple organizations.](/concepts/images/accounts/user-org-team.png "A user can be in multiple orgs and multiple groups")
+
+{{<img src="concepts/images/accounts/user-org-team.png" alt="A user can be in multiple organizations and multiple groups" quality="100" size="medium" lightbox="true">}}
+
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "Lando" -->
 The user _Lando_ has a unique _user account_.  
