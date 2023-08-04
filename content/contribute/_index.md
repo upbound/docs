@@ -3,6 +3,7 @@ title: "Contribute to the docs"
 weight: 900
 icon: "pen-to-square"
 description: "An overview on contributing to Upbound documentation"
+tocHidden: true
 ---
 
 The Upbound documentation welcomes contributions from the anyone in the Upbound community. 
