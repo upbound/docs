@@ -109,7 +109,7 @@ kubectl create clusterrolebinding cluster-crossplane-admin \
 
 <!-- vale Google.WordList = NO -->
 <!-- allow cluster-admin -->
-Next, for each installed provider, add _cluster-admin_ role binding. Here is an example for provider `AWS`.
+Next, for each installed provider, add _cluster-admin_ role binding. Below is an example for provider `AWS`.
 <!-- vale Google.WordList = YES -->
 
 ```bash {copy-lines="all"} 
