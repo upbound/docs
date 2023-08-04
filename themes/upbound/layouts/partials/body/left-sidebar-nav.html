@@ -17,17 +17,19 @@
                 {{ $id := substr (sha1 .Permalink) 0 8 }}
 
                     <!-- Parent Menu Button -->
+                    {{ if or (not .Page.Params.tocHidden) (eq $.Section "contribute") }}
                     <div class="d-flex flex-row my-0 nav-parent-container position-relative  {{if eq $currentPage .}}active{{end}}" id="{{.Section}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$id}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed')">
                         <div class="button-container left-offset">
                             <div id="{{.Section}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $expand}} collapsed {{end}}" type="button" aria-expanded="false" aria-controls="collapse-{{$id}}" title="Close/Expand"></div>
                         </div>
                         <span class="nav-parent-title">{{.Title }}</span>
                     </div>
+                    {{ end }}
 
                     <!-- Child Pages -->
                     <div class="nav-child-container" id="{{.Section}}-children">
                         <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
-                            <div class="list-group-item list-group-item-action nav-child d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                            <div class="list-group-item list-group-item-action nav-child d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if or (not .Page.Params.tocHidden) (eq .CurrentSection "contribute") }}d-none{{end}}">
                                 <div class="left-offset hide"></div>
                                 <a href="{{.Permalink}}" class="stretched-link child-link">
                                     Overview
@@ -74,7 +76,7 @@
                                         </a>
                                     </div>
                                 {{ end }}
-                                
+
                             {{ end }}
                         </div>
                     </div>
