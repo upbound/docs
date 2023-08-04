@@ -7,7 +7,7 @@ title: Product Lifecycle
 Upbound provides support and software maintenance to paid customers. Supported software products include:
 
 * [UXP]({{< ref "uxp/_index.md" >}})
-* [Official Providers]({{< ref "providers/_index.md" >}})
+* [Official Providers]({{< ref "upbound-marketplace/providers/_index.md" >}})
 
 ## Maintenance and updates
 

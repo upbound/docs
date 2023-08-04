@@ -13,7 +13,7 @@ Every managed control plane in Upbound can be directly interacted with via its p
 The left pane of the portal shows all the available resource types installed on your MCP. Selecting a type shows a list of all running instances. View instances or edit them. You can also select the `Create New` button to create a new instance of the selected resource.
 
 {{< hint "tip" >}}
-To use "GitOps" with your MCP, you can use the [MCP Connector]({{<ref "concepts/control-plane-connector">}}).
+To use "GitOps" with your MCP, you can use the [MCP Connector]({{<ref "concepts/mcp/control-plane-connector">}}).
 {{< /hint >}}
 
 ### Create new resource instances

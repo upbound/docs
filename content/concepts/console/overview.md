@@ -1,5 +1,5 @@
 ---
-title: Upbound Console
+title: Overview
 weight: 5
 description: An introduction to the Console feature of Upbound
 ---

@@ -50,7 +50,7 @@ Select **Connect to GitHub**.
 {{<img src="quickstart/images/get-started-select-gh.png" alt="a marketplace search filter with Providers and Official filters set" quality="100" size="medium" lightbox="true">}}
 
 {{< hint "tip" >}}
-Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/control-plane-connector" >}}) section.
+Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/mcp/control-plane-connector" >}}) section.
 {{< /hint >}}
 
 After you've connected to GitHub, select an account owner and repository name. Upbound creates a new repository under your account and clones the contents of the Configuration into that repository. 
@@ -149,7 +149,7 @@ After completing the _Get Started_ experience, you are in the Upbound Console an
 The control plane details view gives users a view into what's happening on their control planes. 
 
 {{< hint "tip" >}}
-Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour of what the Console has to offer.
+Read about the [Upbound Console]({{<ref "concepts/console/overview">}}) for a full tour of what the Console has to offer.
 {{< /hint >}}
 
 ### Create your first resource

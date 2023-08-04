@@ -57,7 +57,7 @@ Upbound can manage multiple resources across clouds, for example, EKS clusters i
 
 ## Structuring APIs
 
-It's important to think about the structure of the APIs you want to create and install on them. Upbound installs all APIs on your managed control planes with [Configurations]({{<ref "concepts/control-plane-configurations.md">}}) that sync from Git.
+It's important to think about the structure of the APIs you want to create and install on them. Upbound installs all APIs on your managed control planes with [Configurations]({{<ref "concepts/mcp/control-plane-configurations.md">}}) that sync from Git.
 
 <!-- vale write-good.Weasel = NO -->
 <!-- allow "one-to-many" -->

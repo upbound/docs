@@ -175,4 +175,4 @@ control plane!
   * They are created in the control plane just like a normal provider. If you'd
     like to mount them to an application running in a cluster in your internal
     network, take a look at [MCP
-    Connector](https://docs.upbound.io/concepts/control-plane-connector/).
+    Connector](https://docs.upbound.io/concepts/mcp/control-plane-connector/).

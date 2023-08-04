@@ -1,6 +1,6 @@
 ---
 title: "Creating and Pushing Packages"
-weight: 30
+weight: 300
 ---
 
 {{< hint "warning" >}}
@@ -16,7 +16,7 @@ Crossplane supports two package types, `Configurations` and `Providers`.
 ## Prerequisites
 
 * Building and pushing packages require the [`up` command-line]({{<ref "/cli" >}}).
-* Pushing packages requires an [Upbound account]({{<ref "/accounts/users#create-an-account">}}).
+* Pushing packages requires an [Upbound account]({{<ref "/concepts/accounts/users#create-an-account">}}).
 
 ## Build a package
 Build a package using `up xpkg build`. 

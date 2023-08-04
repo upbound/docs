@@ -1,6 +1,6 @@
 ---
 title: Control Plane Configurations
-weight: 4
+weight: 10
 description: An introduction to how Configurations work in Upbound
 ---
 

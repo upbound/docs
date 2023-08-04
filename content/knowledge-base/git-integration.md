@@ -100,5 +100,5 @@ up ctp kubeconfig get -a <org-account> <control-plane-name> -f <kubeconfig-file>
 Here the account is the name of the organization account that owns the managed control plane.
 
 {{< hint "tip" >}}
-The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from the Upbound Console.
+The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console/overview#create-a-personal-access-token" >}}) from the Upbound Console.
 {{< /hint >}}

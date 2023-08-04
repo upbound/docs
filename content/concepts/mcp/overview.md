@@ -1,6 +1,6 @@
 ---
-title: Managed Control Planes
-weight: 3
+title: Overview
+weight: 1
 description: An introduction to the Managed Control Planes feature of Upbound
 ---
 
@@ -61,7 +61,7 @@ up ctp kubeconfig get -a <account> <control-plane-name> -f <kubeconfig-file> --t
 ```
 
 {{< hint "tip" >}}
-The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from the Upbound Console.
+The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console/overview#create-a-personal-access-token" >}}) from the Upbound Console.
 {{< /hint >}}
 
 ### Configure Crossplane providers on your MCP
@@ -72,7 +72,7 @@ Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes wi
 
 #### Generic ProviderConfigs
 
-The Upbound Console can't edit ProviderConfigs. To edit ProviderConfigs on your managed control plane, connect to the MCP directly by following the previous instructions on [connecting directly to an MCP]({{<ref "concepts/managed-control-planes#connect-directly-to-your-mcp" >}}). 
+The Upbound Console can't edit ProviderConfigs. To edit ProviderConfigs on your managed control plane, connect to the MCP directly by following the previous instructions on [connecting directly to an MCP]({{<ref "concepts/mcp/overview#connect-directly-to-your-mcp" >}}). 
 
 ## Control plane backups
 

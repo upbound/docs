@@ -1,6 +1,6 @@
 ---
 title: "Official Providers"
-weight: 350
+weight: 100
 icon: "upbound-official"
 description: Upbound creates, maintains and supports a set of Crossplane providers called official providers.
 ---

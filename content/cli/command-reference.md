@@ -324,7 +324,7 @@ Your kubeconfig should be pointing at your **Kubernetes app cluster** in order f
 
 
 {{< hint "warning" >}}
-Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
+Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/mcp/control-plane-configurations" >}}).
 {{< /hint >}}
 
 Install a Crossplane configuration packages into a Kubernetes cluster with  
@@ -367,7 +367,7 @@ my-package installed
 
 
 {{< hint "warning" >}}
-Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
+Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/mcp/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
 {{< /hint >}}
 
 Install a Crossplane provider packages into a Kubernetes cluster with  
@@ -448,7 +448,7 @@ current context.
 {{< /table >}}
 
 {{< hint "warning" >}}
-Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console.md#create-a-personal-access-token" >}}) must be used.
+Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console/overview.md#create-a-personal-access-token" >}}) must be used.
 {{< /hint >}}
 
 **Examples**
