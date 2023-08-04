@@ -45,7 +45,7 @@ Register with Upbound with your GitHub account, Google account or email.
 {{<tab "2. Complete the registration form" >}}
 Complete the form and agree to the Terms and Conditions.
 
-{{<img src="concepts/images/accounts/register/completed_form.png" alt="Fill out the info form" quality="100" size="tiny" lightbox="true">}}
+{{<img src="concepts/images/accounts/register/completed_form.png" alt="Fill out the form" quality="100" size="tiny" lightbox="true">}}
 {{< /tab >}}
 
 {{<tab "3. Choose a username" >}}
@@ -60,9 +60,9 @@ Upbound sends you an email containing a 6-digit PIN. Provide this PIN to confirm
 {{<img src="concepts/images/accounts/register/confirm_pin.png" alt="Confirm your account PIN" quality="100" size="tiny" lightbox="true">}}
 After submitting your pin your account is now ready. 
 
-{{<figure src="concepts/images/accounts/register/account_ready.png" alt="A screen showing that an Upbound account has been created" height="500px" >}}
+{{<img src="concepts/images/accounts/register/account_ready.png" alt="Confirm your account PIN" quality="100" size="tiny" lightbox="true">}}
 
-Clicking `Finish` will send you to the [Upbound Marketplace](http://marketplace.upbound.io). 
+Clicking `Finish` sends you to the [Upbound Marketplace](http://marketplace.upbound.io). 
 
 To make changes to your account login to [accounts.upbound.io](https://accounts.upbound.io)
 {{< /tab >}}
