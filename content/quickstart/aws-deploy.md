@@ -204,7 +204,7 @@ Congratulations, you created your first resources with your MCP.
 
 ## Next steps
 
-To learn more about the core concepts of Upbound, read the [concepts]({{<ref "concepts">}}) documentation. To learn how to begin building your own platform on Upbound, read the [reference architecture]({{<ref "knowledge-base/reference-architecture">}}) knowledge base article.
+To learn more about the core concepts of Upbound, read the [concepts]({{<ref "concepts">}}) documentation. To learn how to begin building your own platform on Upbound, read the [Crossplane Architecture Framework]({{<ref "xp-arch-framework">}}).
 
 <!-- Named Links -->
 

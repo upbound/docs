@@ -1,6 +1,6 @@
 ---
 title: 'Marketplace'
-weight: 1
+weight: 100
 icon: "marketplace"
 description: "How to use the Upbound Marketplace to discover Crossplane providers and packages."
 ---

@@ -1,6 +1,6 @@
 ---
 title: "UXP"
-weight: 300
+weight: 200
 icon: "popsicle"
 description: "The Upbound official Crossplane distribution."
 ---

@@ -41,7 +41,7 @@ Configurations can declare dependencies on other Configurations. This lets you s
 
 ## Version control service integration
 
-All Configurations in Upbound sync from Git. To learn more about how Upbound integrates with Version Control Services, read [Git integration]({{<ref "git-integration.md">}}).
+<!--All Configurations in Upbound sync from Git. To learn more about how Upbound integrates with Version Control Services.-->
 
 ## Building an API
 
@@ -75,4 +75,4 @@ Select the text to begin an update on the control plane. Confirm the update oper
 
 {{<img src="concepts/images/git-build-version.png" alt="showing a new configuration is available for a control plane" quality="100" lightbox="true">}}
 
-To see a guide for how to build an API with Upbound and publish it to a control plane, read the [Knowledge Base]({{<ref "knowledge-base/reference-architecture.md">}}) documentation.
+To see a guide for how to build an API with Upbound and publish it to a control plane, read the [Crossplane Architecture Framework]({{<ref "xp-arch-framework">}}).

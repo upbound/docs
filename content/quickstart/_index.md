@@ -39,7 +39,7 @@ Each of these organizations are building these platforms on control planes. Upbo
 
 ## Next steps
 
-Get started with Upbound in one of two ways:
+Get started with Upbound in one of three ways:
 
 * [Deploy your first managed control plane with AWS services]({{<ref "aws-deploy" >}}) - Using the Amazon AWS Official Provider family from Upbound.
 * [Deploy your first managed control plane with GCP services]({{<ref "gcp-deploy" >}}) - Using the Google GCP Official Provider family from Upbound.

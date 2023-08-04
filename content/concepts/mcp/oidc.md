@@ -1,6 +1,6 @@
 ---
 title: Provider Identity with OIDC
-weight: 3
+weight: 100
 description: Authenticating providers to external services using OpenID Connect.
 ---
 

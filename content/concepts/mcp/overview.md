@@ -68,7 +68,7 @@ The `up` CLI uses personal access tokens to authenticate to Upbound. You can [ge
 
 #### ProviderConfigs with OpenID Connect
 
-Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. To learn how to configure a Crossplane Provider on managed control plane to use Upbound's OIDC, read the [Knowledge Base]({{<ref "knowledge-base/oidc.md" >}}) documentation.
+Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. To learn how to configure a Crossplane Provider on managed control plane to use Upbound's OIDC, read the [Knowledge Base]({{<ref "concepts/mcp/oidc.md" >}}) documentation.
 
 #### Generic ProviderConfigs
 
