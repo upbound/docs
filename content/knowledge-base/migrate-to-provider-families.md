@@ -2,7 +2,7 @@
 title: Migrate to Provider Families
 ---
 
-The Upbound official [provider families]({{<ref "upbound-marketplace/providers/provider-families">}}) organize provider resources into common, logical, groupings. 
+The Upbound official [provider families]({{<ref "upbound-marketplace/providers/provider-families.md">}}) organize provider resources into common, logical, groupings. 
 Provider families replace the original monolithic providers, which combined all provider resources into a single Provider package.
 
 Migrating from a monolithic provider to a family provider allows the family provider to take ownership of existing managed resources. 
