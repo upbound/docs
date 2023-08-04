@@ -252,7 +252,7 @@ After completing the _Get Started_ experience, you are in the Upbound Console an
 The control plane details view gives users a view into what's happening on their control planes. 
 
 {{< hint "tip" >}}
-Read about the [Upbound Console]({{<ref "concepts/console/overview">}}) for a full tour of what the Console has to offer.
+Read about the [Upbound Console]({{<ref "concepts/console/">}}) for a full tour of what the Console has to offer.
 {{< /hint >}}
 
 ### Create your first resource

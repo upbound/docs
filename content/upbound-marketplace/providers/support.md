@@ -4,7 +4,7 @@ weight: 30
 ---
 Official providers are open source and available to all Crossplane users.
 
-Support for official providers follows the [product lifecycle]({{<ref "knowledge-base/lifecycle">}}) and support policy of other Upbound components.
+Support for official providers follows the [product lifecycle]({{<ref "reference/lifecycle">}}) and support policy of other Upbound components.
 
 More information is available on the [support page]({{<ref "../../support.md" >}}).
 

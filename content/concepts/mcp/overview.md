@@ -42,7 +42,7 @@ You can create a new managed control plane from the Upbound Console or the `up` 
 up ctp create --configuration-name=<configuration> <name-of-control-plane>
 ```
 
-To learn more about control plane-related commands in `up`, go to the [CLI reference]({{<ref "cli/command-reference#controlplane-create" >}}) documentation.
+To learn more about control plane-related commands in `up`, go to the [CLI reference]({{<ref "reference/cli/command-reference#controlplane-create" >}}) documentation.
 
 ### Connect directly to your MCP
 
@@ -54,14 +54,14 @@ https://proxy.upbound.io/v1/controlPlanes/<account>/<control-plane-name>/k8s
 ```
 
 Generate a `kubeconfig` file for a managed control plane
-with the following [up CLI command]({{<ref "cli/command-reference#controlplane-kubeconfig-get" >}}).
+with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}).
 
 ```shell
 up ctp kubeconfig get -a <account> <control-plane-name> -f <kubeconfig-file> --token <token>
 ```
 
 {{< hint "tip" >}}
-The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console/overview#create-a-personal-access-token" >}}) from the Upbound Console.
+The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console/#create-a-personal-access-token" >}}) from the Upbound Console.
 {{< /hint >}}
 
 ### Configure Crossplane providers on your MCP

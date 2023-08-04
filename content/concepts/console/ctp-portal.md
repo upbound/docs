@@ -1,6 +1,6 @@
 ---
 title: Control Plane Portal
-weight: 7
+weight: 10
 description: An introduction to the Developer Portal feature of a Managed Control Plane
 ---
 

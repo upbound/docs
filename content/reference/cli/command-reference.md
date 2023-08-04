@@ -448,7 +448,7 @@ current context.
 {{< /table >}}
 
 {{< hint "warning" >}}
-Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console/overview.md#create-a-personal-access-token" >}}) must be used.
+Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console#create-a-personal-access-token" >}}) must be used.
 {{< /hint >}}
 
 **Examples**
@@ -1140,7 +1140,7 @@ Install UXP into a target Kubernetes app cluster
 
 UXP installs the latest stable release by default. The list of available UXP versions is in the [charts.upbound.io/stable](https://charts.upbound.io/stable/) listing.
 
-The UXP [install guide]({{<ref "uxp/install" >}}) lists all install-time settings.
+The UXP [install guide]({{<ref "concepts/uxp/install" >}}) lists all install-time settings.
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -1220,7 +1220,7 @@ up uxp upgrade v1.7.0-up.1 -n crossplane-system
 
 ## xpkg
 
-The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Crossplane Packages]({{<ref "uxp/packages" >}}) section for background on packages. Read the [Creating and Pushing Packages]({{<ref "upbound-marketplace/packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
+The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Crossplane Packages]({{<ref "concepts/uxp/packages" >}}) section for background on packages. Read the [Creating and Pushing Packages]({{<ref "upbound-marketplace/packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
 
 All `up xpkg` commands support the following options: 
 

@@ -15,7 +15,7 @@ directory.
 ## Install Vale
 
 Follow the directions on the Vale website to 
-[install the Vale binary](https://vale.sh/docs/vale-cli/installation/).
+[install the Vale binary](https://vale.sh/docs/vale-reference/cli/installation/).
 
 Upbound docs CI uses [Vale v2.22.0](https://github.com/errata-ai/vale/releases/tag/v2.22.0) or later.
 

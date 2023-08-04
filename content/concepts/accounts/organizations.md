@@ -29,7 +29,7 @@ There's no limit to the number of organizations a user can belong to.
 Users are only allowed to create one organization.
 {{< /hint >}}
 
-You can also create an organization using the [up CLI]({{<ref "cli/command-reference#organization-create" >}}).
+You can also create an organization using the [up CLI]({{<ref "reference/cli/command-reference#organization-create" >}}).
 
 ## Organization settings
 

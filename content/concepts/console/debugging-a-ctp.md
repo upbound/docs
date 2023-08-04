@@ -1,6 +1,6 @@
 ---
 title: Debugging issues on a managed control plane
-weight: 5
+weight: 100
 description: A guide for how to debug resources on a managed control plane running in Upbound.
 ---
 
@@ -9,7 +9,7 @@ What do you do if you need to debug a resource running on an MCP in Upbound? Thi
 ## Start from Upbound Console
 <!-- vale write-good.Weasel = NO -->
 <!-- ignore "only" -->
-The Upbound [Console]({{<ref "concepts/console/overview" >}}) has a built-in control plane explorer experience that surfaces status and events for the resources on your MCP. The explorer is claim-based. Resources in this view exist only if they exist in the reference chain originating from a claim. This view is a helpful starting point if you are attempting to debug an issue originating from a claim. 
+The Upbound [Console]({{<ref "concepts/console/" >}}) has a built-in control plane explorer experience that surfaces status and events for the resources on your MCP. The explorer is claim-based. Resources in this view exist only if they exist in the reference chain originating from a claim. This view is a helpful starting point if you are attempting to debug an issue originating from a claim. 
 <!-- vale write-good.Weasel = YES -->
 
 {{< hint "tip" >}}
@@ -111,4 +111,4 @@ Some examples of Crossplane resources that require the `up` CLI
 
 ## Use direct CLI access
 
-If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctp kubeconfig get`]({{<ref "cli/command-reference#controlplane" >}}) to create a `kubeconfig` for your managed control plane.
+If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctp kubeconfig get`]({{<ref "reference/cli/command-reference#controlplane" >}}) to create a `kubeconfig` for your managed control plane.
