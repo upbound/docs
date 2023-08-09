@@ -30,6 +30,7 @@ Kyverno
 Kyverno's
 MCP
 MCPs
+MRs
 minikube
 namespace
 namespaces
