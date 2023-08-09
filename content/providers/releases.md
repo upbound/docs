@@ -12,16 +12,6 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 ## 2023-08-01
 
-### `upbound/provider-aws` v0.38.0
-
-* This release adds support for the `spec.initProvider` API and for the granular management
-policies alpha feature.
-* Various bug fixes and enhancements.
-
-_Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.38.0)
-
 ### `upbound/provider-azure` v0.35.0
 
 * This release adds support for the `spec.initProvider` API and for the granular management
@@ -66,17 +56,6 @@ Install the provider from the [Upbound Marketplace](https://marketplace.upbound.
 
 ## 2023-06-27
 
-### `upbound/provider-aws` v0.37.0
-
-* ⚠️ The family providers now declare a \dependency on version v1.12.1 of
-Crossplane.
-* Support for new resources: `datasync`, `route53_zone_association`
-* Various bug fixes and enhancements.
-
-_Refer to the [v0.37.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.37.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.37.0)
-
 ### `upbound/provider-azure` v0.34.0
 
 * ⚠️ The family providers now declare a dependency on version v1.12.1 of
@@ -110,16 +89,6 @@ Install the provider from the [Upbound Marketplace](https://marketplace.upbound.
 
 ## 2023-06-13
 
-### `upbound/provider-aws` v0.36.0
-
-* This release introduces the new [provider families architecture]({{<ref "provider-families">}}) for
-the Upbound Official AWS provider.
-* Various bug fixes and enhancements.
-
-_Refer to the [v0.36.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.36.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.36.0)
-
 ### `upbound/provider-azure` v0.33.0
 
 * This release introduces the new [provider families architecture]({{<ref "provider-families">}}) for
@@ -141,16 +110,6 @@ _Refer to the [v0.33.0 release notes](https://github.com/upbound/provider-gcp/re
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.33.0)
 
 ## 2023-05-15
-
-### `upbound/provider-aws` v0.35.0
-
-* Update the AWS Terraform provider version to v4.66.0
-* Adds [LocalStack](https://localstack.cloud/) support for testing.
-* Various bug fixes and enhancements.
-
-_Refer to the [v0.35.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.35.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.35.0)
 
 ### `upbound/provider-azure` v0.32.0
 
