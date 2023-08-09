@@ -23,10 +23,6 @@
   /* Other */
   .chroma .x {
   }
-  /* Error */
-  .chroma .err {
-    color: #{$up-red-300n};
-  }
   /* CodeLine */
   .chroma .cl {
   }
@@ -68,19 +64,23 @@
   .chroma .line {
     display: flex;
   }
+  /* Error and GenericDeleted */
+  .chroma .err, .chroma .gd {
+    color: #{$up-red-300n};
+  }
   /* Keyword, KeywordDeclaration, KeywordCosntant, KeywordPseudo, KeywordReserved, KeywordType, NameConstant, GenericOutput */
   .chroma .k, .chroma .kd, .chroma .kc, .chroma .kp, .chroma .kr, .chroma .kt, .chroma .no, .chroma .go {
     color: #{$up-orange-300n};
   }
-  /* KeywordNamespace, NameTag, Operator, OperatorWord, GenericDeleted */
-  .chroma .kn, .chroma .nt, .chroma .o, .chroma .ow, .chroma .gd {
+  /* KeywordNamespace, NameTag, Operator, OperatorWord */
+  .chroma .kn, .chroma .nt, .chroma .o, .chroma .ow {
     color: #{$up-purple-300n};
   }
   /* Name, NameBuiltin, NameBuiltinPseudo, NameEntity, NameFunctionMagic, NameLabel, NameNamespace, NameProperty, NameVariable, NameVariableClass, NameVariableGlobal, NameVariableInstance, NameVariableMagic, Punctuation, Generic, GenericHeading, GenericError, GenericPrompt, GenericTraceback, GenericUnderline, TextWhitespace */
   .chroma .n, .chroma .nb, .chroma .bp, .chroma .ni, .chroma .fm, .chroma .nl, .chroma .nn, .chroma .py, .chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi, .chroma .vm, .chroma .p, .chroma .g, .chroma .gh, .chroma .gr, .chroma .gp, .chroma .gt, .chroma .gl, .chroma .w {
   }
-  /* NameAttribute, NameClass, NameDecorator, NameException, NameFunction, NameOther, GenericInserted */
-  .chroma .na, .chroma .nc, .chroma .nd, .chroma .ne, .chroma .nf, .chroma .nx, .chroma .gh {
+  /* NameAttribute, NameClass, NameDecorator, NameException, NameFunction, NameOther, GenericInserted, Don't know what GH is */
+  .chroma .na, .chroma .nc, .chroma .nd, .chroma .ne, .chroma .nf, .chroma .nx, .chroma .gi, .chroma .gh {
     color: #{$up-green-300n};
   }
   /* Literal, LiteralStringEscape, LiteralNumber, LiteralNumberBin, LiteralNumberFloat, LiteralNumberHex, LiteralNumberInteger, LiteralNumberIntegerLong, LiteralNumberOct */
