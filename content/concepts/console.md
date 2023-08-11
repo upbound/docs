@@ -4,41 +4,44 @@ weight: 5
 description: An introduction to the Console feature of Upbound
 ---
 
-Upbound's Console is the command and control for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes. 
+Upbound's Console is the command and control center for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes. 
 
 ## Dashboard
 
-The default landing page for the Console is the dashboard view. On the dashboard, is a grid view of your managed control planes, along with a horizontally scrolling list of your Git-synced configurations. 
+The default landing page for the Console is the control plane dashboard. On the dashboard is a table view of your managed control planes showing key details such as name, status, configuration version, and creation date. You can search the table by control plane name to filter down the table.
 
-Above the dashboard, is Upbound's top navigation bar. The Navigation bar can:
+Above the dashboard is Upbound's top navigation bar. Wherever you are in the product, the navigation bar allows you to access:
 
-- Return to the control planes dashboard
+- Control plane dashboard
+- Configurations list
 - Organization settings and management
 - Help and documentation
 - the Upbound Marketplace
 - Account management and an org picker (if you belong to several organizations)
 
-{{<img src="concepts/images/dashboard.png" alt="Upbound Console" quality="100" lightbox="true">}}
+{{<img src="concepts/images/ctp-dashboard.png" alt="Upbound Console" quality="100" lightbox="true">}}
 
 <!-- vale Google.Headings = NO -->
 ## Control Plane Explorer
 <!-- vale Google.Headings = YES -->
 
-Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can navigate to its [portal]({{<ref "ctp-portal">}}), learn how to integrate the control plane [with GitOps]({{<ref "control-plane-connector">}}) flows, and the control plane settings.
+Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can navigate to its [portal]({{<ref "ctp-portal">}}), learn how to integrate the control plane [with GitOps]({{<ref "control-plane-connector">}}) flows, view events, and access the control plane settings.
 
-{{<img src="concepts/images/ctp-explorer.png" alt="control plane explorer" quality="100" lightbox="true">}}
+{{<img src="concepts/images/ctp-explorer2.png" alt="control plane explorer" quality="100" lightbox="true">}}
 
 ## MCP and configuration creation
 
-You can create new managed control planes and Git-synced configurations from the dashboard. 
+You can create new managed control planes from the dashboard. 
 
 Creating a new managed control plane from the Console:
 
-{{<img src="concepts/images/mcp-create-flow.png" alt="Create an MCP" quality="100" lightbox="true">}}
+{{<img src="concepts/images/create-ctp.png" alt="Create an MCP" quality="100" lightbox="true">}}
+
+You can create new configurations from the configurations list.
 
 Creating a new Git-synced configuration from a gallery of starter configurations:
 
-{{<img src="concepts/images/config-create-flow.png" alt="Create a configuration" quality="100" lightbox="true">}}
+{{<img src="concepts/images/create-config.png" alt="Create a configuration" quality="100" lightbox="true">}}
 
 ## Organization and team management
 
