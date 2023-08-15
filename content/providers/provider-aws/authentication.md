@@ -202,24 +202,25 @@ Read the [AWS trust policies blog](https://aws.amazon.com/blogs/security/how-to-
 for more information on trust policies.
 {{< /hint >}}
 
-The trust policy references the OIDC provider ARN and the provider AWS pod name.
+The trust policy references the OIDC provider ARN and the provider AWS service
+account.
 
 In the policy {{<hover label="trust" line="6">}}Principal{{</hover>}} enter
 {{<hover label="trust" line="7">}}"Federated": "&lt;OIDC_PROVIDER_ARN&gt;"{{</hover>}}.
 
 Add a {{<hover label="trust" line="10">}}Condition{{</hover>}} to restrict
-access to the role to only the Provider pod.  
+access to the role to only the Provider's service account.  
 
 The {{<hover label="trust" line="10">}}Condition{{</hover>}} uses 
 {{<hover label="trust" line="11">}}StringLike{{</hover>}} to generically match
-the Provider pod name.
+the Provider service account.
 
 {{<expand "Why use a generic match?">}}
 The token used for authentication includes the full name of the AWS Provider
 pod.  
 
 Crossplane uses a Deployment for the Provider pod.  
-As a result the pod name
+As a result the service account
 ends in a hash. If the Provider pod restarts the hash changes and the
 {{<hover label="trust" line="10">}}Condition{{</hover>}} doesn't match.
 {{< /expand >}}
@@ -377,7 +378,8 @@ Read the [AWS trust policies blog](https://aws.amazon.com/blogs/security/how-to-
 for more information on trust policies.
 {{< /hint >}}
 
-The trust policy references the OIDC provider ARN and the provider AWS pod name.
+The trust policy references the OIDC provider ARN and the provider AWS service
+account.
 
 In the policy {{<hover label="trust" line="6">}}Principal{{</hover>}} enter
 {{<hover label="trust" line="7">}}"Federated": "&lt;OIDC_PROVIDER_ARN&gt;"{{</hover>}}.
@@ -387,14 +389,14 @@ access to the role to only the Provider pod.
 
 The {{<hover label="trust" line="10">}}Condition{{</hover>}} uses 
 {{<hover label="trust" line="11">}}StringLike{{</hover>}} to generically match
-the Provider pod name.
+the Provider's service account.
 
 {{<expand "Why use a generic match?">}}
 The token used for authentication includes the full name of the AWS Provider
 pod.  
 
 Crossplane uses a Deployment for the Provider pod.  
-As a result the pod name
+As a result the service account
 ends in a hash. If the Provider pod restarts the hash changes and the
 {{<hover label="trust" line="10">}}Condition{{</hover>}} doesn't match.
 {{< /expand >}}
