@@ -213,15 +213,13 @@ access to the role to only the Provider's service account.
 
 The {{<hover label="trust" line="10">}}Condition{{</hover>}} uses 
 {{<hover label="trust" line="11">}}StringLike{{</hover>}} to generically match
-the Provider service account.
+the Provider's service account.
 
 {{<expand "Why use a generic match?">}}
-The token used for authentication includes the full name of the AWS Provider
-pod.  
+The token used for authentication includes the full name of the AWS Provider's
+Kubernetes service account.  
 
-Crossplane uses a Deployment for the Provider pod.  
-As a result the service account
-ends in a hash. If the Provider pod restarts the hash changes and the
+The Provider's service account name ends in a hash. If the hash changes the
 {{<hover label="trust" line="10">}}Condition{{</hover>}} doesn't match.
 {{< /expand >}}
 
@@ -385,19 +383,17 @@ In the policy {{<hover label="trust" line="6">}}Principal{{</hover>}} enter
 {{<hover label="trust" line="7">}}"Federated": "&lt;OIDC_PROVIDER_ARN&gt;"{{</hover>}}.
 
 Add a {{<hover label="trust" line="10">}}Condition{{</hover>}} to restrict
-access to the role to only the Provider pod.  
+access to the role to only the Provider's servicer account.  
 
 The {{<hover label="trust" line="10">}}Condition{{</hover>}} uses 
 {{<hover label="trust" line="11">}}StringLike{{</hover>}} to generically match
 the Provider's service account.
 
 {{<expand "Why use a generic match?">}}
-The token used for authentication includes the full name of the AWS Provider
-pod.  
+The token used for authentication includes the full name of the AWS Provider's
+Kubernetes service acccount.  
 
-Crossplane uses a Deployment for the Provider pod.  
-As a result the service account
-ends in a hash. If the Provider pod restarts the hash changes and the
+The Provider's service account name ends in a hash. If the hash changes the
 {{<hover label="trust" line="10">}}Condition{{</hover>}} doesn't match.
 {{< /expand >}}
 
