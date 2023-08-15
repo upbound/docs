@@ -36,13 +36,56 @@ Alpha features of Crossplane aren't enabled by default in Upbound.
 
 ### Create an MCP
 
-You can create a new managed control plane from the Upbound Console or the `up` CLI. To use the CLI, run the following, specifying which configuration to install on the control plane and what the name should be.
+You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest). 
+
+{{< tabs >}}
+
+{{< tab "up CLI" >}}
+To use the CLI, run the following, specifying which configuration to install on the control plane and what the name should be.
 
 ```shell 
 up ctp create --configuration-name=<configuration> <name-of-control-plane>
 ```
 
 To learn more about control plane-related commands in `up`, go to the [CLI reference]({{<ref "cli/command-reference#controlplane-create" >}}) documentation.
+{{< /tab >}}
+
+{{< tab "provider-upbound" >}}
+You can declaratively create managed control planes in Upbound with provider-upbound. Provider-upbound is a Crossplane provider for interacting with the Upbound SaaS APIs. As with any Crossplane provider, you need to have:
+
+- installed the provider on a control plane. This can be a managed control plane or a control plane running outside of Upbound. 
+- created a valid ProviderConfig
+
+Create a managed control plane by creating the following resource:
+
+```yaml
+#controlplane-a.yaml
+apiVersion: mcp.upbound.io/v1alpha1
+kind: ControlPlane
+metadata:
+  name: controlplane-a
+spec:
+  forProvider:
+    configuration: your-config
+    description: controlplane-a
+    organizationName: your-organization
+```
+
+You need to specify your organization name and a valid configuration that you created prior in Upbound. Apply it to the management control plane where you installed provider-upbound:
+
+```bash
+kubectl apply -f controlplane-a.yaml
+```
+
+{{< hint "tip" >}}
+For more details on how to use provider-upbound, read the [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest) page on the Marketplace.
+{{< /hint >}}
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+
 
 ### Connect directly to your MCP
 
