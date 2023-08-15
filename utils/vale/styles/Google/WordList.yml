@@ -20,7 +20,6 @@ swap:
   'tap (?:&|and) hold': touch & hold
   'un(?:check|select)': clear
   above: preceding
-  account name: username
   action bar: app bar
   admin: administrator
   Ajax: AJAX
