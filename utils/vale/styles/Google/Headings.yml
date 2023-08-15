@@ -17,9 +17,9 @@ exceptions:
   - "OpenID Connect"
   - "Service Account"
   - "Universal Crossplane"
-  - "Use OpenAPI v3 data types"
   - "Upbound Console"
   - "Upbound Universal Crossplane"
+  - "Use OpenAPI v3 data types"
   - APIs?
   - Azure
   - CLI
@@ -47,6 +47,7 @@ exceptions:
   - macOS
   - Marketplace
   - MongoDB
+  - OAuth
   - Open Policy Agent Gatekeeper
   - Provider
   - ProviderConfig
