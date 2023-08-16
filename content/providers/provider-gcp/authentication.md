@@ -9,9 +9,8 @@ The Upbound Official GCP Provider supports multiple authentication methods.
 * [Service account keys](https://cloud.google.com/iam/docs/keys-create-delete)
 * [OAuth 2.0 access token](https://developers.google.com/identity/protocols/oauth2) 
 * [Workload identity](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity_) 
-  for Google managed Kubernetes clusters (`GKE`). 
-
-ImpersonateServiceAccount;;Environment;Filesystem
+  for Google managed Kubernetes clusters (`GKE`)
+* [Service account impersonation](https://cloud.google.com/iam/docs/service-account-overview#impersonation)
 
 ## Service account keys
 
@@ -263,8 +262,6 @@ spec:
     name: token-based-providerconfig
 ```
 
-InjectedIdentity
-
 ## Workload identity
 
 When running the GCP Provider in an Google managed Kubernetes cluster (`GKE`)
@@ -302,15 +299,18 @@ The {{<hover label="saBinding" line="4">}}--member{{</hover>}} in the policy
 includes the Crossplane namespace and the name of the Provider's Kubernetes 
 service account. 
 
-{{< editCode >}}
+{{<hint "tip" >}}
+Upbound UXP uses the `upbound-system` namespace.  
+Crossplane uses the `crossplane-system` namespace. 
+{{< /hint >}}
+
 ```yaml {label="saBinding"}
 gcloud iam service-accounts add-iam-policy-binding \
-$@<Service_Account_Email_Address>$@ \
+  <Service_Account_Email_Address> \
 --role  roles/iam.workloadIdentityUser    \
---member "serviceAccount:$@<Project_Name>.svc.id.goog[crossplane-system/<Kubernetes_Service_Account>$@]" \
---project $@<GCP_Project>$@
+--member "serviceAccount:<Project_Name>.svc.id.goog[crossplane-system/<Kubernetes_Service_Account>]" \
+--project <Project_Name>
 ```
-{{< /editCode >}}
 
 For example with the following settings:
 * service account email `docs@upbound.iam.gserviceaccount.com`
@@ -329,8 +329,8 @@ gcloud iam service-accounts add-iam-policy-binding \
 
 ### Create a ControllerConfig
 
-The ControllerConfig creates a custom Provider service account and applies an
-EKS annotation to the Provider's pod. 
+The ControllerConfig creates a custom Provider service account and applies an 
+annotation to the Provider's pod. 
 
 Create a {{<hover label="workloadCC" line="2">}}ControllerConfig{{</hover>}}
 object. Add an {{<hover label="workloadCC" line="5">}}annotation{{</hover>}}
@@ -340,7 +340,7 @@ to the email address of the GCP IAM service account.
 
 Add a
 {{<hover label="workloadCC" line="8">}}serviceAccountName{{</hover>}} to the 
-{{<hover label="workloadCC" line="7">}}spec{{</hover>}} to create the Provider's
+{{<hover label="workloadCC" line="7">}}spec{{</hover>}} to name the Provider's
 service account. This must match the name used in the GCP IAM binding. 
 
 {{< editCode >}}
@@ -356,10 +356,16 @@ spec:
 ```
 {{< /editCode >}}
 
-For example, to use the settings applied in the IAM binding example the
-ControllerConfig would be:
+<!-- vale Google.FirstPerson = NO -->
+For example, to create a 
+{{<hover label="wi-cc" line="2">}}ControllerConfig{{</hover>}} with the 
+service account 
+{{<hover label="wi-cc" line="6">}}docs@upbound.iam.gserviceaccount.com{{</hover>}}
+and create a Provider service account named 
+{{<hover label="wi-cc" line="8">}}my-gcp-sa{{</hover>}}.
+<!-- vale Google.FirstPerson = YES  -->
 
-```yaml
+```yaml {label="wi-cc"}
 apiVersion: pkg.crossplane.io/v1alpha1
 kind: ControllerConfig
 metadata:
@@ -368,6 +374,36 @@ metadata:
     iam.gke.io/gcp-service-account: docs@upbound.iam.gserviceaccount.com
 spec:
   serviceAccountName: my-gcp-sa
+```
+
+### Apply the ControllerConfig
+
+Apply the ControllerConfig to the GCP Provider with a 
+{{<hover label="wi-pc" line="7">}}controllerConfigRef{{</hover>}} referencing
+the {{<hover label="wi-pc" line="8">}}name{{</hover>}} of the ControllerConfig. 
+
+<!-- vale Google.FirstPerson = NO -->
+<!-- vale gitlab.SubstitutionWarning = NO -->
+For example, to apply a ControllerConfig named 
+{{<hover label="wi-pc" line="8">}}my-controller-config{{</hover>}}, reference
+the ControllerConfig name in the 
+{{<hover label="wi-pc" line="7">}}controllerConfigRef{{</hover>}}.
+<!-- vale Google.FirstPerson = YES  -->
+<!-- vale gitlab.SubstitutionWarning = YES -->
+
+{{<hint "tip" >}}
+Apply the ControllerConfig to each family provider using workload identity.
+{{< /hint >}}
+
+```yaml {label="wi-pc"}
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-storage
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v0.35.0
+  controllerConfigRef:
+    name: my-controller-config
 ```
 
 ### Create a ProviderConfig
@@ -392,9 +428,218 @@ metadata:
 spec:
   credentials:
     source: InjectedIdentity
-  projectID: $@upbound$@
+  projectID: $@<Project_Name>$@
 ```
 {{< /editCode >}}
+
+To selectively apply key based authentication name the ProviderConfig and apply 
+it when creating managed resources.
+
+For example, creating an ProviderConfig named 
+{{<hover label="workloadPC2" line="4">}}workload-id-providerconfig{{</hover>}}.
+
+```yaml {label="workloadPC2"}
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: workload-id-providerconfig
+spec:
+  credentials:
+    source: InjectedIdentity
+  projectID: upbound
+```
+
+Apply the ProviderConfig to a 
+managed resource with a 
+{{<hover label="mr-keys2" line="8">}}providerConfigRef{{</hover>}}.
+
+```yaml {label="mr-keys2"}
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-gcp-bucket
+spec:
+  forProvider:
+    location: US
+  providerConfigRef:
+    name: workload-id-providerconfig
+```
+
+## Service account impersonation
+
+When running the GCP Provider in an Google managed Kubernetes cluster (`GKE`)
+the Provider may use 
+[service account impersonation](https://cloud.google.com/iam/docs/service-account-overview#impersonation)
+for authentication. 
+
+Account impersonation allows the Provider to authenticate to GCP APIs with
+using one service account and request escalated privileges through a second
+account. 
+
+{{<hint "important">}}
+Service account impersonation is only supported with Crossplane running in
+Google managed Kubernetes clusters (`GKE`).
+{{< /hint >}}
+
+Configuring workload identity with the GCP Provider requires:
+* a lower privileged [GCP service account](https://cloud.google.com/iam/docs/service-account-overview). 
+* an elevated privileged [GCP service account](https://cloud.google.com/iam/docs/service-account-overview)
+* a Crossplane ControllerConfig to reference the lower-privileged GCP service account.
+* a Crossplane ProviderConfig to reference the elevated privileged GCP service account.
+
+### Configure the GCP service accounts
+
+You may use an existing service accounts or follow the [GCP documentation to
+create a new service accounts](https://cloud.google.com/iam/docs/service-accounts-create).
+
+The lower privilege role requires a 
+[GCP IAM policy binding](https://cloud.google.com/sdk/gcloud/reference/projects/add-iam-policy-binding) 
+role for the project which includes
+{{<hover label="ai-iam" line="3">}}iam.serviceAccountTokenCreator{{</hover>}}.
+
+```shell {label="ai-iam"}
+gcloud projects add-iam-policy-binding <Project_Name> \
+    --member "serviceAccount:<Lower_Privilege_Service_Account>@<Project_Name>.iam.gserviceaccount.com" \
+    --role  roles/iam.serviceAccountTokenCreator \
+    --project <Project_Name>
+```
+
+For example, to create a role-binding for:
+ * project `upbound`
+ * account `docs-unprivileged`
+
+```shell {label="ai-iam"}
+gcloud projects add-iam-policy-binding upbound \
+    --member "serviceAccount:docs-unprivileged@upbound.iam.gserviceaccount.com" \
+    --role  roles/iam.serviceAccountTokenCreator \
+    --project upbound
+```
+
+The lower privileged service account requires a 
+[GCP IAM service account policy binding](https://cloud.google.com/sdk/gcloud/reference/iam/service-accounts/add-iam-policy-binding) 
+between the unprivileged account and the Kubernetes provider service account. 
+
+```shell {label="ai-sa"}
+gcloud iam service-accounts add-iam-policy-binding <Lower_Privilege_Service_Account>@<Project_Name>.iam.gserviceaccount.com \
+    --role roles/iam.workloadIdentityUser \
+    --member "serviceAccount:<Project_Name>.svc.id.goog[<Crossplane_Namespace>/<Kubernetes_Service_Account_Name>]"
+```
+
+For example, to create a policy binding for:
+  * project `upbound`
+  * account `docs-unprivileged`
+  * namespace `crossplane-system`
+  * Provider service account name `gcp-provider-sa`
+
+```shell {label="ai-sa"}
+gcloud iam service-accounts add-iam-policy-binding docs-unprivileged@upbound.iam.gserviceaccount.com \
+    --role roles/iam.workloadIdentityUser \
+    --member "serviceAccount:upbound.svc.id.goog[crossplane-system/gcp-provider-sa]"
+```
+
+{{<hint "tip" >}}
+For more information on the account requirements for for account impersonation
+read the [GCP service account impersonation
+documentation](https://cloud.google.com/iam/docs/service-account-overview#impersonation) 
+{{< /hint >}}
+
+### Create a ControllerConfig
+
+The ControllerConfig creates a custom Provider service account and applies an
+annotation to the Provider's pod. 
+
+Create a {{<hover label="ai-cc" line="2">}}ControllerConfig{{</hover>}}
+object. Add an {{<hover label="ai-cc" line="5">}}annotation{{</hover>}}
+mapping the key 
+{{<hover label="ai-cc" line="6">}}iam.gke.io/gcp-service-account{{</hover>}} 
+to the email address of the GCP IAM service account. 
+
+Add a
+{{<hover label="ai-cc" line="8">}}serviceAccountName{{</hover>}} to the 
+{{<hover label="ai-cc" line="7">}}spec{{</hover>}} to create the Provider's
+service account. This must match the name used in the GCP IAM binding. 
+
+```yaml {label="ai-cc"}
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: my-controller-config
+  annotations:    
+    iam.gke.io/gcp-service-account: <Lower_Privilege_Service_Account>@<Project_Name>.iam.gserviceaccount.com
+spec:
+  serviceAccountName: <Kubernetes_service_account_name>
+```
+
+For example, to use a GCP service account named 
+{{<hover label="ai-cc2" line="6">}}docs-unprivileged{{</hover>}} and a
+service account name 
+{{<hover label="ai-cc2" line="8">}}gcp-provider-sa{{</hover>}}:
+
+{{<hint "important">}}
+The `{{<hover label="ai-cc2" line="8">}}serviceAccountName{{</hover>}} must match the
+service account referenced in the GCP IAM policy binding.
+{{< /hint >}}
+
+```yaml {label="ai-cc2"}
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: my-controller-config
+  annotations:    
+    iam.gke.io/gcp-service-account: docs@upbound.iam.gserviceaccount.com
+spec:
+  serviceAccountName: my-gcp-sa
+```
+
+### Create a ProviderConfig
+
+Create a 
+{{<hover label="ai-pc" line="2">}}ProviderConfig{{</hover>}} to set the
+provider authentication method to 
+{{<hover label="ai-pc" line="7">}}ImpersonateServiceAccount{{</hover>}}. Add the 
+{{<hover label="ai-pc" line="8">}}impersonateServiceAccount{{</hover>}} object
+and provide the 
+{{<hover label="ai-pc" line="9">}}name{{</hover>}} of the _privileged_ account
+to impersonate. 
+Include the 
+{{<hover label="ai-pc" line="10">}}projectID{{</hover>}} to use.
+
+{{<hint "tip" >}}
+To apply key based authentication by default name the ProviderConfig 
+{{<hover label="ai-pc" line="4">}}default{{</hover>}}.
+{{< /hint >}}
+
+```yaml {label="ai-pc"}
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: ImpersonateServiceAccount
+    impersonateServiceAccount:
+      name: <Privileged_Service_Account>}@<Project_Name>.iam.gserviceaccount.com
+  projectID: <Project_Name>
+```
+
+For example to create a 
+{{<hover label="ai-pc2" line="2">}}ProviderConfig{{</hover>}} with:
+ * service account named {{<hover label="ai-pc" line="9">}}docs-privileged{{</hover>}}
+ * project named {{<hover label="ai-pc" line="10">}}upbound{{</hover>}}
+
+
+```yaml {label="ai-pc2"}
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: ImpersonateServiceAccount
+    impersonateServiceAccount:
+      name: docs-privileged@upbound.iam.gserviceaccount.com
+  projectID: upbound
+```
 
 To selectively apply key based authentication name the ProviderConfig and apply 
 it when creating managed resources.
@@ -407,11 +652,13 @@ For example, creating an ProviderConfig named
 apiVersion: gcp.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: workload-id-providerconfig
+  name: impersonation-providerconfig
 spec:
   credentials:
-    source: InjectedIdentity
-  projectID: $@upbound$@
+    source: ImpersonateServiceAccount
+    impersonateServiceAccount:
+      name: <Privileged_Service_Account>}@<Project_Name>.iam.gserviceaccount.com
+  projectID: <Project_Name>
 ```
 {{< /editCode >}}
 
@@ -428,5 +675,5 @@ spec:
   forProvider:
     location: US
   providerConfigRef:
-    name: workload-id-providerconfig
+    name: impersonation-providerconfig
 ```
