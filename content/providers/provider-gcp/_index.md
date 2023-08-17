@@ -4,7 +4,7 @@ weight: 1
 description: Release notes for the GCP official provider
 ---
 <!-- vale Google.Headings = NO -->
-The below release notes are for the Upbound AWS official provider. These notes 
+The below release notes are for the Upbound GCP official provider. These notes 
 only contain noteworthy changes and you should refer to each release's GitHub
 release notes for full details.
 
