@@ -10,6 +10,17 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## 2023-08-17
+
+### `upbound/provider-terraform` v0.10.0
+
+* This release adds support for nested objects in output.
+* Upgrade alpine Docker tag to v3.18.3
+
+_Refer to the [v0.10.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.10.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.10.0)
+
 ## 2023-08-01
 
 ### `upbound/provider-azure` v0.35.0
