@@ -1,7 +1,7 @@
 ---
 title: Authentication 
 weight: 10
-description: Authentication options with the Upbound AWS official provider
+description: Authentication options with the Upbound GCP official provider
 ---
 
 The Upbound Official GCP Provider supports multiple authentication methods.
