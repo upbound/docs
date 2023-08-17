@@ -3,10 +3,6 @@ title: "Creating and Pushing Packages"
 weight: 30
 ---
 
-{{< hint "warning" >}}
-This section covers creating and pushing packages to the Upbound Marketplace. For information about installing packages read the <a href="{{<ref "uxp/packages">}}">Crossplane Packages</a> section.
-{{< /hint >}}
-
 ## Package types
 Crossplane supports two package types, `Configurations` and `Providers`.
 

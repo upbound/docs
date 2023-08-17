@@ -16,7 +16,7 @@ You can change your account settings by clicking the profile photo in the top
 right and selecting **My Account** in the Upbound Console. 
 <!-- vale Google.FirstPerson = YES -->
 
-{{<img src="/accounts/images/edit-account.png" alt="Options available in the Account menu" quality="100" >}}
+{{<img src="concepts/accounts/images/edit-account.png" alt="Options available in the Account menu" quality="100" >}}
 
 ## Change account information
 
