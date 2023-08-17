@@ -18,7 +18,7 @@ Argo CD is currently unable to target a managed control plane as an external clu
 
 <!-- You can use Argo to sync claims to your managed control planes. To do this, you need to have an instance of Argo running externally to Upbound, since you can't install Argo locally in Upbound. Assuming you are running Argo _elsewhere_ outside of Upbound, the steps to use Argo to sync claims are the following:
 
-1. Fetch your managed control plane's API server endpoint so you can provide it to Argo. In the step below, use the [up CLI]({{<ref "concepts/managed-control-planes.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
+1. Fetch your managed control plane's API server endpoint so you can provide it to Argo. In the step below, use the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
 
 ```bash
 up ctp kubeconfig get -a <account> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml
@@ -53,7 +53,7 @@ spec:
 
 You can use Flux to sync claims to your managed control planes. To do this, you need to have an instance of Flux running externally to Upbound, since you can't install Flux locally in Upbound. Assuming you are running Flux _elsewhere_ outside of Upbound, the steps to use Flux to sync claims are the following:
 
-1. Fetch your managed control plane's API server endpoint so you can provide it to Flux. In the step below, use the [up CLI]({{<ref "concepts/managed-control-planes.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
+1. Fetch your managed control plane's API server endpoint so you can provide it to Flux. In the step below, use the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
 
 ```bash
 up ctp kubeconfig get -a <account> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml

@@ -448,7 +448,7 @@ current context.
 {{< /table >}}
 
 {{< hint "warning" >}}
-Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console.md#create-a-personal-access-token" >}}) must be used.
+Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "concepts/console/_index.md#create-a-personal-access-token" >}}) must be used.
 {{< /hint >}}
 
 **Examples**

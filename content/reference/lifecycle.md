@@ -33,7 +33,7 @@ UXP follows the [Crossplane Release Cycle](https://docs.crossplane.io/knowledge-
 
 Upbound releases Official providers monthly. 
 
-Upbound provides support and patch maintenance for the last 12 months of Official Provider releases. The list of Official Providers is here: [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official).
+Upbound provides support and patch maintenance for the last 12 months of Official Provider releases. You can find the list of Official Providers in the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official).
 
 ## Pre-Releases
 
