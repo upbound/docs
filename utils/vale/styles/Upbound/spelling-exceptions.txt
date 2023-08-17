@@ -17,6 +17,7 @@ downscaling
 editCode
 enums
 Env
+Fargate
 GCP's
 Geekdocs
 Goldmark

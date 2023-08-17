@@ -1,6 +1,6 @@
 ---
 title: Control Plane Configurations
-weight: 4
+weight: 1
 description: An introduction to how Configurations work in Upbound
 ---
 
@@ -41,7 +41,7 @@ Configurations can declare dependencies on other Configurations. This lets you s
 
 ## Version control service integration
 
-All Configurations in Upbound sync from Git. To learn more about how Upbound integrates with Version Control Services, read [Git integration]({{<ref "git-integration.md">}}).
+All Configurations in Upbound sync from Git. 
 
 ## Building an API
 
@@ -74,5 +74,3 @@ When a repository builds into a configuration, Upbound shows the image as availa
 Select the text to begin an update on the control plane. Confirm the update operation to kickoff the install. Notice the version string of the configuration image is a SemVer-formatted string appended with the ID of the associated commit.
 
 {{<img src="concepts/images/git-build-version.png" alt="showing a new configuration is available for a control plane" quality="100" lightbox="true">}}
-
-To see a guide for how to build an API with Upbound and publish it to a control plane, read the [Knowledge Base]({{<ref "knowledge-base/reference-architecture.md">}}) documentation.

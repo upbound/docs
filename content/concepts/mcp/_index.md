@@ -36,7 +36,7 @@ Alpha features of Crossplane aren't enabled by default in Upbound.
 
 ### Create an MCP
 
-You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest). 
+You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "reference/cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest). 
 
 {{< tabs >}}
 
@@ -47,7 +47,7 @@ To use the CLI, run the following, specifying which configuration to install on 
 up ctp create --configuration-name=<configuration> <name-of-control-plane>
 ```
 
-To learn more about control plane-related commands in `up`, go to the [CLI reference]({{<ref "cli/command-reference#controlplane-create" >}}) documentation.
+To learn more about control plane-related commands in `up`, go to the [CLI reference]({{<ref "reference/cli/command-reference#controlplane-create" >}}) documentation.
 {{< /tab >}}
 
 {{< tab "provider-upbound" >}}
@@ -97,7 +97,7 @@ https://proxy.upbound.io/v1/controlPlanes/<account>/<control-plane-name>/k8s
 ```
 
 Generate a `kubeconfig` file for a managed control plane
-with the following [up CLI command]({{<ref "cli/command-reference#controlplane-kubeconfig-get" >}}).
+with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}).
 
 ```shell
 up ctp kubeconfig get -a <account> <control-plane-name> -f <kubeconfig-file> --token <token>
@@ -111,11 +111,11 @@ The `up` CLI uses personal access tokens to authenticate to Upbound. You can [ge
 
 #### ProviderConfigs with OpenID Connect
 
-Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. To learn how to configure a Crossplane Provider on managed control plane to use Upbound's OIDC, read the [Knowledge Base]({{<ref "knowledge-base/oidc.md" >}}) documentation.
+Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. To learn how to configure a Crossplane Provider on managed control plane to use Upbound's OIDC, read the [Knowledge Base]({{<ref "concepts/mcp/oidc.md" >}}) documentation.
 
 #### Generic ProviderConfigs
 
-The Upbound Console can't edit ProviderConfigs. To edit ProviderConfigs on your managed control plane, connect to the MCP directly by following the previous instructions on [connecting directly to an MCP]({{<ref "concepts/managed-control-planes#connect-directly-to-your-mcp" >}}). 
+The Upbound Console can't edit ProviderConfigs. To edit ProviderConfigs on your managed control plane, connect to the MCP directly by following the previous instructions on [connecting directly to an MCP]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). 
 
 ## Control plane backups
 

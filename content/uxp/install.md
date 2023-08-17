@@ -10,7 +10,7 @@ Install UXP into an existing Kubernetes cluster to access Upbound features like 
 
 ## Install Upbound Universal Crossplane
 
-Installing UXP requires the [Up command-line]({{<ref "cli/" >}}). 
+Installing UXP requires the [Up command-line]({{<ref "reference/cli/" >}}). 
 
 Use the `up uxp install` command to install UXP into the current Kubernetes cluster based on `~/.kube/config`.
 
@@ -109,7 +109,7 @@ kubectl create clusterrolebinding cluster-crossplane-admin \
 
 <!-- vale Google.WordList = NO -->
 <!-- allow cluster-admin -->
-Next, for each installed provider, add _cluster-admin_ role binding. Here is an example for provider `AWS`.
+Next, for each installed provider, add _cluster-admin_ role binding. An example for provider `AWS`:
 <!-- vale Google.WordList = YES -->
 
 ```bash {copy-lines="all"} 

@@ -1,7 +1,7 @@
 ---
 title: "Up CLI"
 icon: "terminal"
-weight: 200
+weight: 1
 description: "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI."
 ---
 

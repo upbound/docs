@@ -10,7 +10,7 @@ Upbound strongly recommends using robot accounts for any Kubernetes related auth
 
 ## Create a robot
 
-You can create robot account from the `Robots` tab in the org settings pane. You can also create robots using the [up CLI]({{<ref "/cli/command-reference#robot-token-create" >}}).
+You can create robot account from the `Robots` tab in the org settings pane. You can also create robots using the [up CLI]({{<ref "/reference/cli/command-reference#robot-token-create" >}}).
 
 ## Assign a robot to a team
 

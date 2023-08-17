@@ -136,14 +136,14 @@ Because configurations are a package, you must build them before you install int
 
 ### The build process
 
-Build configurations using the _up_ CLI's [xpkg build]({{< ref "cli/command-reference.md#xpkg-build" >}}) command. You should run this command in the root folder of your configuration--wherever your `crossplane.yaml` is:
+Build configurations using the _up_ CLI's [xpkg build]({{< ref "reference/cli/command-reference.md#xpkg-build" >}}) command. You should run this command in the root folder of your configuration--wherever your `crossplane.yaml` is:
 
 ```bash
 $ up xpkg build -o my-configuration-package.xpkg
 xpkg saved to my-configuration-package.xpkg
 ```
 
-Once you've built a configuration package, push it to any OCI-compliant registry, such as the [Upbound Marketplace](https://marketplace.upbound.io) or your own container registry. You can use up CLI's [xpkg push]({{< ref "cli/command-reference.md#xpkg-push" >}}) command to do this:
+Once you've built a configuration package, push it to any OCI-compliant registry, such as the [Upbound Marketplace](https://marketplace.upbound.io) or your own container registry. You can use up CLI's [xpkg push]({{< ref "reference/cli/command-reference.md#xpkg-push" >}}) command to do this:
 
 ```bash
 $ up xpkg push my-org/my-configuration-packagev0.0.1 -f my-configuration-package.xpkg
