@@ -1,6 +1,6 @@
 ---
 title: "Crossplane Architecture Framework"
-weight: 300
+weight: 500
 icon: "popsicle"
 description: "The Upbound Crossplane Architecture Framework"
 ---
