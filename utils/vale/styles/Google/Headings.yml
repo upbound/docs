@@ -10,19 +10,27 @@ exceptions:
   - "Amazon Elastic Kubernetes Service"
   - "Composite Resource"
   - "Google Kubernetes Engine"
+  - "Example Prometheus installation"
   - "Integrate with Argo CD and Flux"
+  - "Install an Upbound Space"
+  - "Install a Space"
+  - "Install Upbound Spaces"
+  - "Install ALB Load Balancer"
   - "Managed Control Planes?"
   - "Managed Resources"
   - "Microsoft Azure Kubernetes Service"
   - "OpenID Connect"
+  - "Per Space metrics"
   - "Service Account"
   - "Universal Crossplane"
   - "Upbound Console"
   - "Upbound Universal Crossplane"
   - "Use OpenAPI v3 data types"
+  - "With Helm"
   - APIs?
   - Azure
   - CLI
+  - CRDs
   - Code
   - Configuration
   - Configuration layout in Git
