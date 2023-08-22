@@ -12,10 +12,10 @@ This quickstart requires:
 
 - You have installed [kind](https://kind.sigs.k8s.io/).
 - An Upbound Account string, provided by your Upbound account representative
-- A license key in the form of a `key.json`, provided by your Upbound account representative
+- A license token in the form of a `token.json`, provided by your Upbound account representative
 
 {{< hint "important" >}}
-Upbound Spaces is a paid feature of Upbound and requires a license key to successfully complete the installation. Contact Upbound if you want to try out Spaces. 
+Upbound Spaces is a paid feature of Upbound and requires a license token to successfully complete the installation. Contact Upbound if you want to try out Spaces. 
 {{< /hint >}}
 
 ## Provision the hosting environment
