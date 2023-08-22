@@ -25,8 +25,8 @@ Upbound Spaces is a paid feature of Upbound and requires a license key to succes
 Configure the name and target region you want the EKS cluster deployed to.
 
 ```bash
-export CLUSTER_NAME=upbound-space-quickstart
-export REGION=us-east-1
+export SPACES_CLUSTER_NAME=upbound-space-quickstart
+export SPACES_REGION=us-east-1
 ```
 
 Provision a 3-node cluster using eksctl.
@@ -36,8 +36,8 @@ cat <<EOF | eksctl create cluster -f -
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: ${CLUSTER_NAME}
-  region: ${REGION}
+  name: ${SPACES_CLUSTER_NAME}
+  region: ${SPACES_REGION}
   version: "1.26"
 managedNodeGroups:
   - name: ng-1
@@ -82,34 +82,30 @@ export UPBOUND_ACCOUNT=<your upbound account>
 
 ### Set up pre-install configurations
 
-First, you need to create image pull secrets with the Google Service Account tokens you have received. Export the path of the service account token JSON file.
+Export the path of the license token JSON file provided by your Upbound account representative.
 
 ```bash
 # Change the path to where you saved the token.
-export GCP_TOKEN_PATH="THE PATH TO YOUR GCRTOKEN FILE"
+export SPACES_TOKEN_PATH="THE PATH TO YOUR SPACES JSON TOKEN"
 ```
 
 Set the version of Spaces software you want to install.
 
 ```bash
-export VERSION_NUM=1.0.0-rc.1
+export SPACES_VERSION=1.0.0-rc.1
 ```
 
-Set the router host and cluster type. The `ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests. 
+Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests. 
 
 ```bash
 # TODO: Replace this with a domain that you own!
-export ROUTER_HOST=<proxy.example.com>
+export SPACES_ROUTER_HOST=<proxy.example.com>
 ```
 
-{{< hint "important" >}}
-You need to add DNS entries for this domain to point to the load balancer deployed by the ingress controller, so make sure you use a domain that you own.
-{{< /hint >}}
-
-The `CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `kind`.
+The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `eks`.
 
 ```bash
-export CLUSTER_TYPE=kind
+export SPACES_CLUSTER_TYPE=eks
 ```
 
 ## Install a Space
@@ -122,27 +118,12 @@ The up CLI today gives you a "batteries included" experience. It automatically d
 Make sure your kubectl context is set to the cluster you want to install Spaces into.
 {{< /hint >}}
 
-Create an image pull secret so that the cluster can pull Upbound Spaces images.
-
-```bash
-kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
-  --docker-server=https://us-west1-docker.pkg.dev \
-  --docker-username=_json_key \
-  --docker-password="$(cat $GCP_TOKEN_PATH)"
-```
-
-Log in with Helm to be able to pull chart images for the installation commands.
-
-```bash
-cat $GCP_TOKEN_PATH | helm registry login us-west1-docker.pkg.dev -u _json_key --password-stdin
-```
-
 Install Spaces.
 
 ```bash
-up space init --token-file=key.json "v${VERSION_NUM}" \
-  --set "ingress.host=${ROUTER_HOST}" \
-  --set "clusterType=${CLUSTER_TYPE}" \
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}"
 ```
 
@@ -168,7 +149,7 @@ Install ALB Load Balancer.
 ```bash
 helm install aws-load-balancer-controller aws-load-balancer-controller --namespace kube-system \
   --repo https://aws.github.io/eks-charts \
-  --set clusterName=${CLUSTER_NAME} \
+  --set clusterName=${SPACES_CLUSTER_NAME} \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller \
   --wait
@@ -308,13 +289,13 @@ Create an image pull secret so that the cluster can pull Upbound Spaces images.
 kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
   --docker-server=https://us-west1-docker.pkg.dev \
   --docker-username=_json_key \
-  --docker-password="$(cat $GCP_TOKEN_PATH)"
+  --docker-password="$(cat $SPACES_TOKEN_PATH)"
 ```
 
 Log in with Helm to be able to pull chart images for the installation commands.
 
 ```bash
-cat $GCP_TOKEN_PATH | helm registry login us-west1-docker.pkg.dev -u _json_key --password-stdin
+cat $SPACES_TOKEN_PATH | helm registry login us-west1-docker.pkg.dev -u _json_key --password-stdin
 ```
 
 Install Spaces.
@@ -322,9 +303,9 @@ Install Spaces.
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "${VERSION_NUM}" \
-  --set "ingress.host=${ROUTER_HOST}" \
-  --set "clusterType=${CLUSTER_TYPE}" \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --wait
 ```
@@ -361,7 +342,7 @@ spec:
 EOF
 ```
 
-Wait until it's ready.
+The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. Wait until it's ready using the following command:
 
 ```bash
 kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
