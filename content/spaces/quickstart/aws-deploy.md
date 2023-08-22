@@ -12,7 +12,7 @@ This quickstart requires:
 
 - You have an account on AWS and have installed both the [AWS](https://aws.amazon.com/cli/) CLI and [eksctl](https://eksctl.io/).
 - An Upbound Account string, provided by your Upbound account representative
-- A license key in the form of a `key.json`, provided by your Upbound account representative
+- A license token in the form of a `token.json`, provided by your Upbound account representative
 
 {{< hint "important" >}}
 Upbound Spaces is a paid feature of Upbound and requires a license key to successfully complete the installation. Contact Upbound if you want to try out Spaces. 
