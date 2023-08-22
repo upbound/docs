@@ -25,30 +25,32 @@ Upbound Spaces is a paid feature of Upbound and requires a license key to succes
 Configure the name and target region you want the GKE cluster deployed to.
 
 ```bash
-export CLUSTER_NAME=upbound-spaces-quickstart
-export LOCATION=us-west1-a
+export SPACES_PROJECT_NAME=upbound-spaces-project
+export SPACES_CLUSTER_NAME=upbound-spaces-quickstart
+export SPACES_LOCATION=us-west1-a
 ```
 
-Provision a new Azure resource group.
+Create a new project and set it as the current project.
 
 ```bash
-az group create --name ${RESOURCE_GROUP_NAME} --location ${LOCATION}
+gcloud projects create ${SPACES_PROJECT_NAME}
+gcloud config set project ${SPACES_PROJECT_NAME}
 ```
 
 Provision a 3-node cluster.
 
 ```bash
-gcloud container clusters create ${CLUSTER_NAME} \
+gcloud container clusters create ${SPACES_CLUSTER_NAME} \
   --enable-network-policy \
   --num-nodes=3 \
-  --zone=${LOCATION} \
+  --zone=${SPACES_LOCATION} \
   --machine-type=e2-standard-4
 ```
 
 Get the kubeconfig of your GKE cluster.
 
 ```bash
-gcloud container clusters get-credentials ${CLUSTER_NAME} --zone=${LOCATION}
+gcloud container clusters get-credentials ${SPACES_CLUSTER_NAME} --zone=${SPACES_LOCATION}
 ```
 
 ## Configure the pre-install
@@ -82,6 +84,10 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 # TODO: Replace this with a domain that you own!
 export SPACES_ROUTER_HOST=<proxy.example.com>
 ```
+
+{{< hint "important" >}}
+Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own
+{{< /hint >}}
 
 The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `gke`.
 
@@ -138,7 +144,7 @@ helm upgrade --install ingress-nginx ingress-nginx \
 
 #### Install UXP
 
-Install Upbound Universal Crossplane (UXP)
+Install Upbound Universal Crossplane (UXP).
 
 ```bash
 helm upgrade --install crossplane universal-crossplane \
