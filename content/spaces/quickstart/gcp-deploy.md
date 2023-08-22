@@ -114,6 +114,16 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "account=${UPBOUND_ACCOUNT}"
 ```
 
+Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
+
+```bash
+kubectl get ingress \
+  -n upbound-system mxe-router-ingress \
+  -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
+
+If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+
 You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
 
 ### With Helm
