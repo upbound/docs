@@ -102,6 +102,10 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 export SPACES_ROUTER_HOST=<proxy.example.com>
 ```
 
+{{< hint "important" >}}
+Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own
+{{< /hint >}}
+
 The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `eks`.
 
 ```bash

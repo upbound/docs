@@ -25,21 +25,21 @@ Upbound Spaces is a paid feature of Upbound and requires a license key to succes
 Configure the name and target region you want the AKS cluster deployed to.
 
 ```bash
-export RESOURCE_GROUP_NAME=upbound-space-quickstart
-export CLUSTER_NAME=upbound-space-quickstart
-export LOCATION=westus
+export SPACES_RESOURCE_GROUP_NAME=upbound-space-quickstart
+export SPACES_CLUSTER_NAME=upbound-space-quickstart
+export SPACES_LOCATION=westus
 ```
 
 Provision a new Azure resource group.
 
 ```bash
-az group create --name ${RESOURCE_GROUP_NAME} --location ${LOCATION}
+az group create --name ${SPACES_RESOURCE_GROUP_NAME} --location ${SPACES_LOCATION}
 ```
 
 Provision a 3-node cluster.
 
 ```bash
-az aks create -g ${RESOURCE_GROUP_NAME} -n ${CLUSTER_NAME} \
+az aks create -g ${SPACES_RESOURCE_GROUP_NAME} -n ${SPACES_CLUSTER_NAME} \
   --enable-managed-identity \
   --node-count 3 \
   --node-vm-size Standard_D4s_v4 \
@@ -53,7 +53,7 @@ az aks create -g ${RESOURCE_GROUP_NAME} -n ${CLUSTER_NAME} \
 Get the kubeconfig of your AKS cluster.
 
 ```bash
-az aks get-credentials --resource-group ${RESOURCE_GROUP_NAME} --name ${CLUSTER_NAME}
+az aks get-credentials --resource-group ${SPACES_RESOURCE_GROUP_NAME} --name ${SPACES_CLUSTER_NAME}
 ```
 
 ## Configure the pre-install
@@ -87,6 +87,10 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 # TODO: Replace this with a domain that you own!
 export SPACES_ROUTER_HOST=<proxy.example.com>
 ```
+
+{{< hint "important" >}}
+Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own
+{{< /hint >}}
 
 The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `aks`.
 
