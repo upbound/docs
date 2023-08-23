@@ -1118,6 +1118,175 @@ up robot token get my-robot my-token
 NAME       ID                                     CREATED
 my-token   1987b8c2-b364-4787-9ce2-39493f3db6ad   5m20s
 ```
+
+## space
+
+The `up space` commands allow you to install and manage an [Upbound Space]({{<ref "/spaces/overview.md">}}) on a Kubernetes cluster.
+
+All `up space` commands support the following options: 
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
+|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
+|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+{{< /table >}}
+
+### space init
+
+Initialize an Upbound Spaces deployment  
+`up space init [<version>] --token-file=TOKEN-FILE`.
+
+You must provide the desired version of Spaces to install. You can find a list of available versions in [Product Lifecycle]({{<ref "reference/lifecycle.md" >}}). You must provide a token (given to you by Upbound) for the install to proceed.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|      | `--token-file=TOKEN-FILE`             |   File containing authentication token.  |
+|  | `--yes`             |    Answer yes to all questions during the install process. |
+|  | `--public-ingress`             |    For AKS, EKS, and GKE, expose ingress publicly |
+|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
+|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
+|   `-f`   | `--file=FILE`             |   Parameters file.  |
+|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+{{< /table >}}
+
+**Examples**
+
+* Install v1.0.0 of Spaces
+
+```shell {copy-lines="1"}
+up space init "v1.0.0"
+```
+
+* Install v1.0.0 of Spaces and expose public ingress
+
+```shell {copy-lines="1"}
+up space init "v1.0.0" --public-ingress=true
+```
+
+### space destroy
+
+Remove the Upbound Spaces deployment  
+`up space destroy`.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
+|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
+|   `-f`   | `--file=FILE`             |   Parameters file.  |
+|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+{{< /table >}}
+
+**Examples**
+
+* Remove an installation of an Upbound Space in a Kubernetes cluster
+
+```shell {copy-lines="1"}
+up space destroy
+```
+
+{{< hint "tip" >}}
+This command operates based on the current context in your kubeconfig. Make sure your kubeconfig is pointed at the desired Kubernetes cluster.
+{{< /hint >}}
+
+### space upgrade
+
+Upgrade an Upbound Spaces deployment  
+`up space upgrade [<version>] --token-file=TOKEN-FILE`.
+
+You must provide the desired version of Spaces to upgrade to. You can find a list of available versions in [Product Lifecycle]({{<ref "reference/lifecycle.md" >}}). You must provide a token (given to you by Upbound) for the install to proceed.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|      | `--token-file=TOKEN-FILE`             |   File containing authentication token.  |
+|      | `--rollback`             |   Rollback to the previous installed version on failed upgrade.  |
+|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
+|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
+|   `-f`   | `--file=FILE`             |   Parameters file.  |
+|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+{{< /table >}}
+
+**Examples**
+
+* Upgrade from a release candidate to v1.0.0
+
+```shell {copy-lines="1"}
+up space upgrade v1.0.0 --token-file=./token.json
+```
+
+### space billing
+
+The `up space billing` commands manages configuration and fetching of billing data in an Upbound Space.
+
+All `up space billing` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
+|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
+|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+{{< /table >}}
+
+#### space billing get
+
+Get a billing report for submission to Upbound  
+`up space billing get --provider=PROVIDER --bucket=STRING --account=STRING --billing-month=TIME`.
+
+Supply the storage location for the billing data used to create the report using the optional `--provider`, `--bucket`, and `--endpoint` flags. If these flags are missing, it retrieves values from the Spaces cluster from your kubeconfig. Set `--endpoint=""` to use the storage provider's default endpoint without checking your Spaces cluster for a custom
+endpoint.
+
+Supply the credentials other storage provider configuration according to the instructions for each provider below.
+
+##### AWS S3
+
+Supply configuration by setting these environment variables: `AWS_REGION`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`. For more options, see the documentation at
+https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html.
+
+##### GCP Cloud Storage
+
+Supply credentials by setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS` with the location of a credential JSON file. For more options, see the documentation at
+https://cloud.google.com/docs/authentication/application-default-credentials.
+
+##### Azure Blob Storage
+
+Supply configuration by setting these environment variables: `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and `AZURE_CLIENT_SECRET`. For more options, see the documentation at
+https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|      | `--provider=PROVIDER`             |   Storage provider. Must be one of: aws, gcp, azure ($UP_BILLING_PROVIDER).  |
+|      | `--bucket=STRING`             |    Storage bucket ($UP_BILLING_BUCKET).  |
+|      | `--endpoint=STRING`             |    Custom storage endpoint ($UP_BILLING_ENDPOINT).  |
+|      | `--account=STRING`             |    Name of the Upbound account whose billing report is being collected ($UP_BILLING_ACCOUNT).  |
+|      | `--azure-storage-account=STRING`             |    Name of the Azure storage account. Required for --provider=azure ($UP_AZURE_STORAGE_ACCOUNT).  |
+|      | `--billing-month=TIME`             |    Get a report for a billing period of one calendar month. Format: 2006-01 ($UP_BILLING_MONTH).  |
+|      | `--billing-custom=BILLING-CUSTOM`             |    Get a report for a custom billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02 ($UP_BILLING_CUSTOM).  |
+|      | `--force-incomplete`             |    Get a report for an incomplete billing period ($UP_BILLING_FORCE_INCOMPLETE).  |
+|  `-o`   | `--out="upbound_billing_report.tgz"`             |   Name of the output file ($UP_BILLING_OUT).  |
+|      | `--token-file=TOKEN-FILE`             |   File containing authentication token.  |
+|      | `--rollback`             |   Rollback to the previous installed version on failed upgrade.  |
+|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
+|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
+|   `-f`   | `--file=FILE`             |   Parameters file.  |
+|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+{{< /table >}}
+
+**Examples**
+
+* Get the billing data from an AWS bucket for 09/2023.
+
+```shell {copy-lines="1"}
+up space billing get --provider=aws --bucket=my-bucket --account=acmeco --billing-month=2023-09
+```
+
 ## uxp
 
 The `up uxp` commands allow you to install and manage Upbound Universal Crossplane (UXP) on a Kubernetes cluster.
