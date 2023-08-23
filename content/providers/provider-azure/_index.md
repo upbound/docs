@@ -12,6 +12,18 @@ For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
+## v0.36.0
+
+_Released 2023-08-23_
+
+* The release contains some important bug fixes regarding the granular
+management policies and a fix in the reconciliation logic of the Upjet runtime.
+* Updated Terraform CLI to 1.5.5 to address CVEs in previous Terraform versions.
+
+_Refer to the [v0.36.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.36.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.36.0)
+
 ## v0.35.0
 
 _Released 2023-08-01_

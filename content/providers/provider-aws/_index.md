@@ -4,7 +4,7 @@ weight: 1
 description: Release notes for the AWS official provider
 ---
 
-The below release notes are for the Upbound AWS official provider. These notes 
+The below release notes are for the Upbound AWS official provider. These notes
 only contain noteworthy changes and you should refer to each release's GitHub
 release notes for full details.
 
@@ -12,6 +12,19 @@ For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
+## v0.39.0
+
+_Released 2023-08-23_
+
+* Support for new resources: `PrincipalAssociation.ram` and `ResourceShareAccepter.ram`
+* The release contains some important bug fixes regarding the granular
+management policies and a fix in the reconciliation logic of the Upjet runtime.
+* Updated Terraform CLI to 1.5.5 to address CVEs in previous Terraform versions.
+
+_Refer to the [v0.39.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.39.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.39.0)
+
 ## v0.38.0
 
 _Released 2023-08-01_
@@ -23,7 +36,6 @@ policies alpha feature.
 _Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.38.0)
-
 
 ## v0.37.0
 
@@ -37,7 +49,6 @@ _Refer to the [v0.37.0 release notes](https://github.com/upbound/provider-aws/re
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.37.0)
 
-
 ## v0.36.0
 
 _Released 2023-06-13_
@@ -49,7 +60,6 @@ the Upbound official AWS provider.
 _Refer to the [v0.36.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.36.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.36.0)
-
 
 ## v0.35.0
 
