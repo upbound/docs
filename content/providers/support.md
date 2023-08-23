@@ -23,7 +23,7 @@ Upbound releases new providers to provide bug fixes and enhancements. Provider v
 
 **Minor version** changes expand provider capabilities or create breaking changes to `alpha` or `beta` CRD APIs. Minor versions never change general availability CRD APIs.
 
-**Patch version** changes are bug fixes. Provider capabilities and CRD APIs aren't changed between patch versions. 
+**Patch version** changes are bug fixes. Provider capabilities and CRD APIs aren't changed between patch versions.
 
 <!--
 ### Custom resource definition API versions
@@ -44,5 +44,10 @@ Upbound attempts to ensure a stable CRD API but may require breaking changes in 
 Upbound releases new versions of the Official Providers on the last Thursday of
 every month, except for critical bug or security fixes.
 
-You can find an overview of the provider releases on the
-[releases page]({{<ref "releases.md" >}}).
+You can find an overview of the provider releases for each of the Official
+Providers:
+
+* [upbound/provider-aws]({{<ref "provider-aws/_index.md" >}})
+* [upbound/provider-azure]({{<ref "provider-azure/_index.md" >}})
+* [upbound/provider-gcp]({{<ref "provider-gcp/_index.md" >}})
+* [upbound/provider-terraform]({{<ref "provider-terraform/_index.md" >}})

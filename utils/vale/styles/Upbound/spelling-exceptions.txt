@@ -5,6 +5,7 @@ Autoscaling
 backports
 Bootstrap
 CLI's
+CVEs
 Certwatcher
 Commonmark
 conformant
@@ -53,6 +54,7 @@ stdout
 tolerations
 Upbound
 Upbound's
+Upjet
 UXP
 uxp
 Velero
