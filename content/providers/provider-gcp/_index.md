@@ -15,7 +15,7 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 _Released 2023-08-23_
 
-* The release contains some important bug fixes regarding the granular
+* The release contains some important bug fixes to the granular
 management policies and a fix in the reconciliation logic of the Upjet runtime.
 * Updated Terraform CLI to 1.5.5 to address CVEs in previous Terraform versions.
 
