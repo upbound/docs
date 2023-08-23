@@ -1259,13 +1259,14 @@ https://cloud.google.com/docs/authentication/application-default-credentials.
 Supply configuration by setting these environment variables: `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and `AZURE_CLIENT_SECRET`. For more options, see the documentation at
 https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication.
 
+<!-- vale off -->
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
 |      | `--provider=PROVIDER`             |   Storage provider. Must be one of: aws, gcp, azure ($UP_BILLING_PROVIDER).  |
 |      | `--bucket=STRING`             |    Storage bucket ($UP_BILLING_BUCKET).  |
 |      | `--endpoint=STRING`             |    Custom storage endpoint ($UP_BILLING_ENDPOINT).  |
-|      | `--account=STRING`             |    Name of the Upbound account whose billing report is being collected ($UP_BILLING_ACCOUNT).  |
+|      | `--account=STRING`             |    Name of the Upbound account whose billing report is collected ($UP_BILLING_ACCOUNT).  |
 |      | `--azure-storage-account=STRING`             |    Name of the Azure storage account. Required for --provider=azure ($UP_AZURE_STORAGE_ACCOUNT).  |
 |      | `--billing-month=TIME`             |    Get a report for a billing period of one calendar month. Format: 2006-01 ($UP_BILLING_MONTH).  |
 |      | `--billing-custom=BILLING-CUSTOM`             |    Get a report for a custom billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02 ($UP_BILLING_CUSTOM).  |
@@ -1278,6 +1279,7 @@ https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication.
 |   `-f`   | `--file=FILE`             |   Parameters file.  |
 |      | `--bundle=BUNDLE`             |   Local bundle path.  |
 {{< /table >}}
+<!-- vale on -->
 
 **Examples**
 
