@@ -92,7 +92,7 @@ export SPACES_TOKEN_PATH="THE PATH TO YOUR SPACES JSON TOKEN"
 Set the version of Spaces software you want to install.
 
 ```bash
-export SPACES_VERSION=1.0.0-rc.3
+export SPACES_VERSION=1.0.0-rc.4
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests. 
