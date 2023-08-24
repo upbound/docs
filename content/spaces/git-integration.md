@@ -8,7 +8,7 @@ description: A guide to how managed control planes in a space connect to git
 This feature is in alpha and currently only available when a managed control plane is running in an Upbound Space.
 {{< /hint >}}
 
-Managed Control Planes in a Space are configurable to automatically sync their source configuration directly from a Git repository. It allows you to declaratively describe your control plane's total configuration. Define Providers, Configurations, and runtime configurations such as ProviderConfigs or EnvironmentConfigs in Git and sync them automatically to your managed control plane.
+Managed Control Planes that run in a Space are configurable to automatically sync their source configuration directly from a Git repository. It allows you to declaratively describe your control plane's total configuration. Define Providers, Configurations, and runtime configurations such as ProviderConfigs or EnvironmentConfigs in Git and sync them automatically to your managed control plane.
 
 ## Example
 
@@ -22,11 +22,11 @@ metadata:
 spec:
   source:
     git:
+      url: https://github.com/upbound/source-example
       auth:
         type:  None
       path: /
       pullInterval: 15s
-      url: https://github.com/upbound/source-example
       ref:
         branch: main
 ```
@@ -35,14 +35,26 @@ In the preceding example:
 
 - This manifest creates a control plane in a Space named `example-ctp`, indicated by `metadata.name`
 - The Space checks a Git repository found at `https://github.com/upbound/source-example`, indicated by the `spec.source.git.url` field.
+- The repository is a public repository which doesn't require auth, indicated by `spec.source.git.auth`.
+- The root path of the repository is the base folder of the repository, indicated by `spec.source.git.path`.
 - The Space uses the specified branch `main`, indicated by `spec.source.git.ref.branch`.
-- Since the manifest doesn't declare a root explicitly, it's assumed to be the root folder of the Git repository.
 
 Once your control plane is in a `Ready` state, it pulls manifests from the repository configured in `spec.source`. The control plane object contains emitted sync events, which you can find by describing the control plane:
 
 ```bash
 kubectl describe ctp example-ctp
 ```
+
+## How to use control plane source
+
+The purpose of a control plane source is to contain Crossplane-related configuration and manifests. It syncs Crossplane objects, including:
+
+- Providers
+- Configuration packages
+- ProviderConfigs
+- EnvironmentConfigs
+- ControllerConfigs
+- Common observed resources (such as a VPC)
 
 ## Authentication with Version Control Services
 
