@@ -80,6 +80,18 @@ kubectl get pods -A
 kubectl describe pod -n <namespace> <pod-name>
 ```
 
+Next, inspect the status of objects and releases:
+
+1. Make sure the current context of your kubeconfig points at the Kubernetes cluster hosting your Space
+2. Inspect the objects in your Space. If any are unhealthy, describe those objects to get the events:
+```bash
+kubectl get objects
+```
+3. Inspect the releases in your Space. If any are unhealthy, describe those releases to get the events:
+```bash
+kubectl get releases
+```
+
 ### Troubleshooting tips for managed control planes in a Space
 
 General troubleshooting in a managed control plane starts by fetching the events of the control plane:
@@ -105,6 +117,6 @@ This error is emitted by a Helm release named `control-plane-host-policies` atte
 
 _CannotCreateExternalResource failed to install release: unable to build kubernetes objects from release manifest: error validating "": error validating data: ValidationError(NetworkPolicy.spec): unknown field "ports" in io.k8s.api.networking.v1.NetworkPolicySpec_
 
-This error may be caused by running a Space on an earlier version of Kubernetes than is supported (`v1.26 or later`). To resolve this issue, upgrade the host Kubernetes cluster version to 1.26.
+This error may be caused by running a Space on an earlier version of Kubernetes than is supported (`v1.26 or later`). To resolve this issue, upgrade the host Kubernetes cluster version to 1.25 or later.
 
 <!-- vale on -->

@@ -55,6 +55,7 @@ exceptions:
   - I
   - Integrate Crossplane with Argo
   - Integrate Crossplane with Flux
+  - GitOps tools (Argo / Flux)
   - JavaScript
   - Kubeconfig
   - Kubernetes
