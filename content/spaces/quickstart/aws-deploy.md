@@ -122,7 +122,13 @@ The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experi
 Make sure your kubectl context is set to the cluster you want to install Spaces into.
 {{< /hint >}}
 
-Install Spaces.
+By default, Spaces install skips setting up a public ingress. The Spaces install can setup public ingress as a convenience if you append the `--public-ingress=true` option in the command below. 
+
+{{< hint "warning" >}}
+If you elect to configure a public ingress, be careful since it exposes your Spaces API server to the external network.
+{{< /hint >}}
+
+Install the Space.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -131,15 +137,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "account=${UPBOUND_ACCOUNT}"
 ```
 
-Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
-
-```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
-  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
-```
-
-If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+If you chose to create a public ingress, you also need to [create a DNS record](#create-a-dns-record) for the load balancer of the public facing ingress. Do this before you create your first control plane.
 
 You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
 
