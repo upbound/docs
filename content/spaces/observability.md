@@ -1,6 +1,6 @@
 ---
 title: Observability
-weight: 100
+weight: 200
 description: A guide to Observability in an Upbound Space
 ---
 

@@ -2,6 +2,8 @@
 title: Overview
 weight: 1
 description: A guide to Upbound Spaces
+aliases: 
+  - /concepts/upbound-spaces
 ---
 
 Upbound Spaces are hosting environments for Upbound’s managed Crossplane control planes. It enables users to transform a Kubernetes cluster into an Upbound-enabled hosting environment. You can run control plane spaces in your own environment--whether that's a hyper scale cloud provider or an on-prem data center. As long as there's a Kubernetes cluster, you can run a control plane space in the cluster.
