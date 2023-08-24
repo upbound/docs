@@ -22,7 +22,11 @@ Upbound's recommendation is to use the [built-in Git integration]({{<ref "spaces
 
 ### Argo
 
-Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install-time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD. Run the following to enable the plugin:
+Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install-time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD.
+
+#### On cluster Argo CD
+
+If you are running Argo CD on the same cluster as the Space, run the following to enable the plugin:
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
@@ -36,7 +40,14 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
-The important flags are `features.alpha.argocdPlugin.enabled=true` and `features.alpha.argocdPlugin.target.namespace=argocd`. The first flag enables the feature and the second indicates the namespace on the cluster where you installed Argo CD.
+The important flags are:
+
+- `features.alpha.argocdPlugin.enabled=true`
+- `features.alpha.argocdPlugin.target.namespace=argocd`
+
+The first flag enables the feature and the second indicates the namespace on the cluster where you installed Argo CD.
+
+#### External cluster Argo CD
 
 If you are running Argo CD on an external cluster from where you installed your Space, you need to provide some extra flags:
 
@@ -54,6 +65,12 @@ helm -n upbound-system upgrade --install spaces \
   --set "features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig" \
   --wait
 ```
+
+The additional flags are:
+
+- `features.alpha.argocdPlugin.target.externalCluster.enabled=true`
+- `features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster`
+- `features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig`
 
 These flags tells the plugin--running in Spaces--where your Argo CD instance is. After you've done this at install-time, you also need to create a `Secret` on the Spaces cluster. This secret must contain a kubeconfig pointing to your Argo CD instance. The secret needs to be in the same namespace as the `spaces-controller`, which is `upbound-system`.
 
