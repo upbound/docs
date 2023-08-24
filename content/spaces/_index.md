@@ -1,5 +1,6 @@
 ---
 title: Spaces
-weight: 1
+weight: 50
 description: All the content for Upbound Spaces
 ---
+
