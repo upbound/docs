@@ -6,28 +6,25 @@ aliases:
   - /concepts/upbound-spaces
 ---
 
-Upbound Spaces are hosting environments for Upbound’s managed Crossplane control planes. It enables users to transform a Kubernetes cluster into an Upbound-enabled hosting environment. You can run control plane spaces in your own environment--whether that's a hyper scale cloud provider or an on-prem data center. As long as there's a Kubernetes cluster, you can run a control plane space in the cluster.
+Upbound Spaces are self-hosted environments for Upbound's managed Crossplane control planes. All that's required to bootstrap a Space is a Kubernetes cluster. Popular managed Kubernetes services including Amazon EKS, Google GKE, and Microsoft AKS are fully supported. 
 
 ## Spaces and Upbound
 
-Think of Upbound's SaaS environment as one giant control plane space, operated and managed by Upbound. With control plane spaces exposed as a feature, users of Upbound can now create their own self-hosted space. With spaces, users offload the management burden of operating Crossplane to Upbound while still enabling them to:
+Think of an Upbound Space as a self-managed slice of the Upbound platform in your own environment. Whether that's a hyper scale cloud provider or on-prem, Spaces supplements Upbound's SaaS service by enabling a new deployment option. Now you can have control planes that run in your preferred hosting environment and Upbound's own SaaS. 
 
-- scale their own control planes independently
-- have more than one instance of Crossplane running in a Kubernetes cluster
-- specialize and scope control planes to different use cases
-- manage their lifecycle
-- backup and restore
-- and more--all from your own environment.
+{{<img src="spaces/images/mcps-everywhere.png" alt="Managed control planes can run anywhere, thanks to Spaces" quality="100" lightbox="true">}}
 
-## Key benefits
+Spaces lets you:
 
-Control plane spaces give you:
+- Increase scale and cost efficiency by running 50 or more control planes per Kubernetes Cluster instead of just 1.
+- Each control plane configuration is fully managed from Git.
+- Integrate with Kubernetes ecosystem tooling to manage the full lifecycle of the control planes.
 
-- XP Control Plane are first class citizen process with full scaling, observability, management
-- Seamless Git integration. Store the definition of your API in a Version Control Service of your choice, allowing teams to integrate with Git pull request and review flows which engineers know and love to build their platform APIs.
-- Enterprise ready and highly scalable
-- Creating a control plane space from an existing Kubernetes cluster is a seamless operation. All you need is a Kubernetes cluster.
+## Next steps
 
-## Space management
+Get started with Spaces in your own environment by visiting the quickstart:
 
-Get started with control plane spaces in your own environment by visiting the quickstart.
+- [Deploy on AWS]({{<ref "spaces/quickstart/aws-deploy.md">}})
+- [Deploy on Azure]({{<ref "spaces/quickstart/azure-deploy.md">}})
+- [Deploy on GCP]({{<ref "spaces/quickstart/gcp-deploy.md">}})
+- [Deploy on a local kind cluster]({{<ref "spaces/quickstart/kind-deploy.md">}})
