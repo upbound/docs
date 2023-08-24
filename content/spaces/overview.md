@@ -24,7 +24,7 @@ The boundary of a single Upbound Space is within the confines of a single Kubern
 
 ## System requirements
 
-Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. You can install Spaces into Kubernetes clusters v1.24 or later.
+Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. You can install Spaces into Kubernetes clusters v1.26 or later.
 
 <!-- vale write-good.TooWordy = NO -->
 ### Minimum requirements
