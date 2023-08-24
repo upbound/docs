@@ -56,6 +56,8 @@ The purpose of a control plane source is to contain Crossplane-related configura
 - ControllerConfigs
 - Common observed resources (such as a VPC)
 
+Git syncing doesn't currently support pruning resources. For example, suppose at one point you push a manifest to your repository and it syncs across, then later delete it from the repository. It doesn't automatically get deleted from your control plane -- you must do that manually.
+
 ## Authentication with Version Control Services
 
 The built-in Git sync feature uses standard Git-based auth. You can authenticate towards a Git repository using:
