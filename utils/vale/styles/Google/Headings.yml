@@ -7,9 +7,12 @@ match: $sentence
 indicators:
   - ':'
 exceptions:
+  - "Authentication with Version Control Services"
   - "Amazon Elastic Kubernetes Service"
   - "Composite Resource"
+  - "Control Plane Source"
   - "Google Kubernetes Engine"
+  - "Configure Git reference"
   - "Example Prometheus installation"
   - "Integrate with Argo CD and Flux"
   - "Install an Upbound Space"
