@@ -20,13 +20,48 @@ Spaces lets you:
 - Each control plane configuration is fully managed from Git.
 - Integrate with Kubernetes ecosystem tooling to manage the full lifecycle of the control planes.
 
-The boundary of a single Upbound Space is within the confines of a single Kubernetes cluster. Spaces are regional hosting environments within a single cloud provider. You are allowed to deploy multiple Spaces (as long as each Space deploys in its own cluster). Upbound recommends deploying a Space for each region and cloud provider you want to operate managed control planes in.
+The boundary of a single Upbound Space is within the confines of a single Kubernetes cluster. Spaces are regional hosting environments within a single cloud provider. You can deploy multiple Spaces (as long as each Space deploys in its own cluster). Upbound recommends deploying a Space for each region and cloud provider you want to operate managed control planes in.
+
+## System requirements
+
+Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. You can install Spaces into Kubernetes clusters v1.24 or later.
+
+<!-- vale write-good.TooWordy = NO -->
+### Minimum requirements
+
+The minimum host Kubernetes cluster configuration Upbound recommends is a 2 worker node setup. By default, Upbound recommends one node for operating the Spaces management pods, leaving the remaining worker nodes to host your control planes. 
+
+The minimum recommended node pool VM configuration for each cloud provider is:
+
+{{< table >}}
+| Cloud Provider | VM configuration | Cores | Memory |
+| ---- | ---- | ---- |  ---- | 
+| AWS | m5.large | 2 | 8 |
+| Azure | Standard_D2_v3 | 2 | 8 |
+| GCP | e2-standard-2 | 2 | 8 |
+{{< /table >}}
+
+<!-- vale write-good.TooWordy = YES -->
+
+### Recommended requirements
+
+As mentioned in the preceding section, Upbound recommends designating a node to run the Spaces management pods. How large you size your node pool depends on these factors:
+
+- The number of control planes you plan to run in the Space.
+- The number of managed resources you plan each control plane to reconcile.
+- The Crossplane providers you plan to install in each control plane.
+
+Most customers use Upbound [Official Providers]({{<ref "providers/provider-families.md">}}); the guidance presented below assumes you are doing the same. As a rule of thumb, a control plane responsible for continuously reconciling 1000 managed resources requires ~4 GB memory and ~8 CPU cores.
+
+## Upbound requirements
+
+You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is a feature only available for paying customers in the **Business Critical** tier of Upbound.
 
 ## Spaces management
 
 ### Create a Space
 
-To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. Use [up space init]({{<ref "reference/cli/command-reference.md#space-init">}}) to install an Upbound Space. This command attempts an install into the current cluster context of your kubeconfig.
+To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "reference/cli/command-reference.md#space-init">}}) to install an Upbound Space. This command attempts an install into the current cluster context of your kubeconfig.
 
 ```bash
 up space init "v1.0.0"
