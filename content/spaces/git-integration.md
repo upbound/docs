@@ -24,7 +24,7 @@ spec:
     git:
       url: https://github.com/upbound/source-example
       auth:
-        type:  None
+        type: None
       path: /
       pullInterval: 15s
       ref:
@@ -89,6 +89,23 @@ data:
   password: <pass>
 ```
 
+Configure your control plane with these fields:
+
+```yaml
+...
+spec:
+  source:
+    git:
+      url: https://github.com/upbound/source-example
+      auth:
+        type: Basic
+        basic:
+          secretRef:
+            name: git-basic-auth
+            namespace: default
+...
+```
+
 ### Bearer token authentication
 
 To authenticate with a Git repository using bearer token authentication, create and reference a secret that contains a key called `bearerToken`.
@@ -104,6 +121,27 @@ data:
   bearerToken: <bearerToken>
 ```
 
+Configure your control plane with these fields:
+
+```yaml
+...
+spec:
+  source:
+    git:
+      url: https://github.com/upbound/source-example
+      auth:
+        type: BearerToken
+        bearerToken:
+          secretRef:
+            name: git-bearer-token-auth
+            namespace: default
+...
+```
+
+{{< hint "important" >}}
+Note: Are you planning to use OAuth tokens with popular Version Control Services such as Bitbucket, GitHub, or GitLab? If so, you should use basic access authentication instead. These services use basic HTTP authentication, with the OAuth token as the password. Check your Version Control Service provider documentation for more details.
+{{< /hint >}}
+
 ### SSH authentication
 
 To authenticate with a Git repository using SSH auth, create and reference a secret that contains a key called `identity`. The secret must contain the SSH key and known hosts list. The `identity` key's content is a private SSH key. Optionally, the secret can contain the key `knownHosts` where the content is a known hosts file.
@@ -117,6 +155,23 @@ metadata:
 type: Opaque
 data:
   identity: <sshKey>
+```
+
+Configure your control plane with these fields:
+
+```yaml
+...
+spec:
+  source:
+    git:
+      url: https://github.com/upbound/source-example
+      auth:
+        type: SSH
+        ssh:
+          secretRef:
+            name: git-ssh-auth
+            namespace: default
+...
 ```
 
 ## Configure pull interval

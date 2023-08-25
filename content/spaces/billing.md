@@ -24,4 +24,4 @@ up space billing get
 3. The command creates a billing report that's zipped up in your current working directory.
 4. Send the output to your Upbound sales representative.
 
-You can find full instructions and command options in the up [CLI reference]({{<ref "reference/cli/command-reference.md#space-billing">}})  docs.
+You can find full instructions and command options in the up [CLI reference]({{<ref "reference/cli/command-reference.md#space-billing">}}) docs.
