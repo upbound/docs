@@ -119,4 +119,8 @@ _CannotCreateExternalResource failed to install release: unable to build kuberne
 
 This error may be caused by running a Space on an earlier version of Kubernetes than is supported (`v1.26 or later`). To resolve this issue, upgrade the host Kubernetes cluster version to 1.25 or later.
 
+### Your Spaces install fails
+
+#### Error: 
+
 <!-- vale on -->

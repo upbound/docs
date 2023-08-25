@@ -29,6 +29,9 @@ spec:
       pullInterval: 15s
       ref:
         branch: main
+  writeConnectionSecretToRef:
+    name: kubeconfig-example-ctp
+    namespace: default
 ```
 
 In the preceding example:
@@ -38,6 +41,7 @@ In the preceding example:
 - The repository is a public repository which doesn't require auth, indicated by `spec.source.git.auth`.
 - The root path of the repository is the base folder of the repository, indicated by `spec.source.git.path`.
 - The Space uses the specified branch `main`, indicated by `spec.source.git.ref.branch`.
+- It writes the connection details (kubeconfig) for the control plane to a secret in the `default` namespace of the Spaces cluster.
 
 Once your control plane is in a `Ready` state, it pulls manifests from the repository configured in `spec.source`. The control plane object contains emitted sync events, which you can find by describing the control plane:
 
