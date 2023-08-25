@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-weight: 500
+weight: 1000
 description: A guide for troubleshooting an issue that occurs in a Space
 ---
 
