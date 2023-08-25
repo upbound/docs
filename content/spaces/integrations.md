@@ -31,9 +31,9 @@ If you are running Argo CD on the same cluster as the Space, run the following t
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "${VERSION_NUM}" \
-  --set "ingress.host=${ROUTER_HOST}" \
-  --set "clusterType=${CLUSTER_TYPE}" \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
   --set "features.alpha.argocdPlugin.target.namespace=argocd" \
@@ -54,9 +54,9 @@ If you are running Argo CD on an external cluster from where you installed your 
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "${VERSION_NUM}" \
-  --set "ingress.host=${ROUTER_HOST}" \
-  --set "clusterType=${CLUSTER_TYPE}" \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
   --set "features.alpha.argocdPlugin.target.namespace=argocd" \
@@ -66,7 +66,7 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
-The additional flags are:
+The extra flags are:
 
 - `features.alpha.argocdPlugin.target.externalCluster.enabled=true`
 - `features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster`
