@@ -121,6 +121,30 @@ This error may be caused by running a Space on an earlier version of Kubernetes 
 
 ### Your Spaces install fails
 
-#### Error: 
+#### Error: You tried to install a Space on a previous Crossplane installation
+
+If you try to install a Space on an existing cluster that previously had Crossplane or UXP on it, you may encounter errors. Due to how the Spaces installer tests for the presence of UXP, it may detect orphaned CRDs that weren't cleaned up by the previous uninstall of Crossplane. You may need to manually [remove old Crossplane CRDs](https://docs.crossplane.io/latest/software/uninstall/) for the installer to properly detect the UXP prerequisite.
+
+### Your managed control plane is not syncing from git
+
+#### Error: You configured a spec.source but nothing is installing on your control plane
+
+IF you are using the native [git integration]({{<ref "spaces/git-integration.md">}}) but do not see any evidence of the definition syncing, do the following:
+
+1. Describe the git-synced control plane
+```bash
+kubectl describe ctp <your-ctp-name>
+```
+2. In the control plane's manifest, look under `status.source`. If git syncing is working, it shows a status like:
+```yaml
+Status:
+  Source:
+    Reference:  ref: refs/heads/main HEAD
+    Revision:   f0b36607a3a5d836063ca42be8b229d3c0bdc1dc
+```
+3. In the events for your control plane, look for events emitted from `controlplane/source`.
+4. Confirm the `PullInterval` is set within a valid range (at least 15 seconds or more).
+5. Confirm the URL of the git Repository is correct.
+6. Confirm the auth method in use is referencing a secret on the cluster that's configured correctly. You can find more details for configuring secrets for the git integration in the [documentation]({{<ref "spaces/git-integration.md#authentication-with-version-control-services">}}).
 
 <!-- vale on -->
