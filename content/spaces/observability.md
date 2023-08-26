@@ -49,17 +49,24 @@ Prometheus may not meet an Operators business or technology requirements.
 Upbound advises operators to consider what metrics and observability stack meet
 meet their needs before running in production.
 
-The recommended way to install Prometheus is through [the official helm charts](https://github.com/prometheus-community/helm-charts)
+The recommended way to install Prometheus is through
+[the official helm charts](https://github.com/prometheus-community/helm-charts).
 
+Add the Prometheus chart repository:
 ```shell
-# Add the prometheus helm char
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-# Install prometheus, kube-state-metrics and prometheus. See
-# the official docs the "offical helm charts" link above.
+```
+
+Install Prometheus, Alertmanager, Prometheus node exporter, kube-state-metrics,
+and Grafana:
+```shell
 helm install \
     -n monitoring --create-namespace \
     prometheus prometheus-community/kube-prometheus-stack
 ```
+
+See the [official
+docs](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#kube-prometheus-stack).
 
 ### Add monitors
 
@@ -75,63 +82,7 @@ For those wanting to just scrape OpenTelemetry metrics:
 Assuming your Prometheus helm release name is `prometheus`,
 the following configures monitoring:
 ```shell
-kubectl apply -f -<<EOM
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    # this is the default label used by the prometheus operator to determine which services
-    # to scrape. You may need to adjust labels depending on your installation.
-    release: prometheus
-  name: kube-state-metrics
-  namespace: monitoring
-spec:
-  endpoints:
-  - honorLabels: true
-    path: /metrics
-    port: http
-    scheme: http
-    scrapeTimeout: 10s
-  namespaceSelector:
-    any: true
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: kube-state-metrics
-      app.kubernetes.io/component: metrics
-      app.kubernetes.io/instance: kube-state-metrics
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    # this is the default label used by the prometheus operator to determine which services
-    # to scrape. You may need to adjust labels depending on your installation.
-    release: prometheus
-  name: mxp-gateway-metrics
-  namespace: monitoring
-spec:
-  endpoints:
-  - honorLabels: true
-    path: /metrics
-    port: metrics
-    scheme: http
-    scrapeTimeout: 10s
-  - relabelings:
-    - action: labeldrop
-      regex: pod
-    - action: labeldrop
-      regex: service
-    - action: labeldrop
-      regex: instance
-  namespaceSelector:
-    any: true
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: mxp-gateway
-      vcluster.loft.sh/managed-by: vcluster
-      vcluster.loft.sh/namespace: upbound-system
----
+kubectl apply -f - <<EOM
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
