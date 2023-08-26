@@ -52,7 +52,7 @@ meet their needs before running in production.
 The recommended way to install Prometheus is through
 [the official helm charts](https://github.com/prometheus-community/helm-charts).
 
-Add the Prometheus chart repo:
+Add the Prometheus chart repository:
 ```shell
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 ```
