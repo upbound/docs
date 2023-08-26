@@ -83,62 +83,6 @@ Assuming your Prometheus helm release name is `prometheus`,
 the following configures monitoring:
 ```shell
 kubectl apply -f - <<EOM
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    # this is the default label used by the prometheus operator to determine which services
-    # to scrape. You may need to adjust labels depending on your installation.
-    release: prometheus
-  name: kube-state-metrics
-  namespace: monitoring
-spec:
-  endpoints:
-  - honorLabels: true
-    path: /metrics
-    port: http
-    scheme: http
-    scrapeTimeout: 10s
-  namespaceSelector:
-    any: true
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: kube-state-metrics
-      app.kubernetes.io/component: metrics
-      app.kubernetes.io/instance: kube-state-metrics
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
-    # this is the default label used by the prometheus operator to determine which services
-    # to scrape. You may need to adjust labels depending on your installation.
-    release: prometheus
-  name: mxp-gateway-metrics
-  namespace: monitoring
-spec:
-  endpoints:
-  - honorLabels: true
-    path: /metrics
-    port: metrics
-    scheme: http
-    scrapeTimeout: 10s
-  - relabelings:
-    - action: labeldrop
-      regex: pod
-    - action: labeldrop
-      regex: service
-    - action: labeldrop
-      regex: instance
-  namespaceSelector:
-    any: true
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: mxp-gateway
-      vcluster.loft.sh/managed-by: vcluster
-      vcluster.loft.sh/namespace: upbound-system
----
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
