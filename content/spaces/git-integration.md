@@ -85,8 +85,8 @@ metadata:
   name: git-basic-auth
 type: Opaque
 data:
-  username: <user>
-  password: <pass>
+  username: <base64-encoded-user>
+  password: <base64-encoded-pass>
 ```
 
 Configure your control plane with these fields:
@@ -118,7 +118,7 @@ metadata:
   name: git-bearer-token-auth
 type: Opaque
 data:
-  bearerToken: <bearerToken>
+  bearerToken: <base64-encoded-bearerToken>
 ```
 
 Configure your control plane with these fields:
@@ -154,8 +154,8 @@ metadata:
   name: git-ssh-auth
 type: Opaque
 data:
-  identity: <sshKey>
-  knownHosts: <known_hosts>
+  identity: <base64-encoded-sshKey>
+  knownHosts: <base64-encoded-known_hosts>
 ```
 
 Configure your control plane with these fields:
