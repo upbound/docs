@@ -155,6 +155,7 @@ metadata:
 type: Opaque
 data:
   identity: <sshKey>
+  knownHosts: <known_hosts>
 ```
 
 Configure your control plane with these fields:
