@@ -99,7 +99,7 @@ spec:
     port: metrics
     scheme: http
     scrapeTimeout: 10s
-  - relabelings:
+    relabelings:
     - action: labeldrop
       regex: pod
     - action: labeldrop
