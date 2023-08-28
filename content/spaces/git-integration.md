@@ -165,7 +165,7 @@ Configure your control plane with these fields:
 spec:
   source:
     git:
-      url: https://github.com/upbound/source-example
+      url: ssh://github.com/upbound/source-example
       auth:
         type: SSH
         ssh:
