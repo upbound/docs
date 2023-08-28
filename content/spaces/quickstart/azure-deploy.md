@@ -24,7 +24,7 @@ Upbound Spaces is a paid feature of Upbound and requires a license token to succ
 
 Configure the name and target region you want the AKS cluster deployed to.
 
-```bash
+```ini
 export SPACES_RESOURCE_GROUP_NAME=upbound-space-quickstart
 export SPACES_CLUSTER_NAME=upbound-space-quickstart
 export SPACES_LOCATION=westus
@@ -62,31 +62,37 @@ az aks get-credentials --resource-group ${SPACES_RESOURCE_GROUP_NAME} --name ${S
 
 Set your Upbound Account string as an environment variable for use in future steps
 
-```bash
-export UPBOUND_ACCOUNT=<your upbound account>
+{{< editCode >}}
+```ini
+export UPBOUND_ACCOUNT=$@<your upbound account>$@
 ```
+{{< /editCode >}}
 
 ### Set up pre-install configurations
 
 Export the path of the license token JSON file provided by your Upbound account representative.
 
-```bash
+{{< editCode >}}
+```ini
 # Change the path to where you saved the token.
-export SPACES_TOKEN_PATH="THE PATH TO YOUR SPACES JSON TOKEN"
+export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 ```
+{{< /editCode >}}
 
 Set the version of Spaces software you want to install.
 
-```bash
-export SPACES_VERSION=1.0.0-rc.5
+```ini
+export SPACES_VERSION=1.0.0-rc.6
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests. 
 
-```bash
+{{< editCode >}}
+```ini
 # TODO: Replace this with a domain that you own!
-export SPACES_ROUTER_HOST=<proxy.example.com>
+export SPACES_ROUTER_HOST=$@<proxy.example.com>$@
 ```
+{{< /editCode >}}
 
 {{< hint "important" >}}
 Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own
@@ -94,7 +100,7 @@ Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a 
 
 The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `aks`.
 
-```bash
+```ini
 export SPACES_CLUSTER_TYPE=aks
 ```
 

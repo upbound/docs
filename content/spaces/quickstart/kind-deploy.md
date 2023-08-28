@@ -49,34 +49,38 @@ EOF
 
 Set your Upbound Account string as an environment variable for use in future steps
 
-```bash
-export UPBOUND_ACCOUNT=<your upbound account>
+{{< editCode >}}
+```ini
+export UPBOUND_ACCOUNT=$@<your upbound account>$@
 ```
+{{< /editCode >}}
 
 ### Set up pre-install configurations
 
 Export the path of the license token JSON file provided by your Upbound account representative.
 
-```bash
+{{< editCode >}}
+```ini
 # Change the path to where you saved the token.
-export SPACES_TOKEN_PATH="THE PATH TO YOUR SPACES JSON TOKEN"
+export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 ```
+{{< /editCode >}}
 
 Set the version of Spaces software you want to install.
 
-```bash
-export SPACES_VERSION=1.0.0-rc.5
+```ini
+export SPACES_VERSION=1.0.0-rc.6
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
 
-```bash
+```ini
 export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
 ```
 
 The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you're deploying Spaces into. This quickstart targets `kind`.
 
-```bash
+```ini
 export SPACES_CLUSTER_TYPE=kind
 ```
 
