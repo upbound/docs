@@ -113,7 +113,7 @@ up space destroy
 
 ## Control plane management
 
-Managing control planes in a Space works differently than it does when interacting with Upbound's SaaS service (explained in the [concepts]({{<ref "concepts/mcp/_index.md">}}) docs). The [up CLI ctp]({{<ref "reference/cli/command-reference.md#ctp">}}) commands don't work in a Spaces context. All control plane management must happen through a Spaces-local API. When you install a Space, it defines new a API type, `kind: Controlplane`, that you can use to create and manage control planes in the Space.
+Managing control planes in a Space works differently than it does when interacting with Upbound's SaaS service (explained in the [concepts]({{<ref "concepts/mcp/_index.md">}}) docs). The [up CLI ctp]({{<ref "reference/cli/command-reference.md#controlplane">}}) commands don't work in a Spaces context. All control plane management must happen through a Spaces-local API. When you install a Space, it defines new a API type, `kind: Controlplane`, that you can use to create and manage control planes in the Space.
 
 ### Create a control plane
 
@@ -151,9 +151,9 @@ kubectl get providers --kubeconfig=/tmp/ctp1.yaml
 
 ### Configure a control plane
 
-Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in git integration to drive configuration of your control planes in a Space. 
+Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space. 
 
-Learn more in the [Spaces git integration]({{<ref "spaces/git-integration.md">}}) documentation.
+Learn more in the [Spaces Git integration]({{<ref "spaces/git-integration.md">}}) documentation.
 
 ### Delete a managed control plane
 
