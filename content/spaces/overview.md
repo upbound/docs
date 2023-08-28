@@ -111,6 +111,58 @@ To uninstall a Space from a Kubernetes cluster, use [up space destory]({{<ref "r
 up space destroy
 ```
 
+## Control plane management
+
+Managing control planes in a Space works differently than it does when interacting with Upbound's SaaS service (explained in the [concepts]({{<ref "concepts/mcp/_index.md">}}) docs). The [up CLI ctp]({{<ref "reference/cli/command-reference.md#ctp">}}) commands don't work in a Spaces context. All control plane management must happen through a Spaces-local API. When you install a Space, it defines new a API type, `kind: Controlplane`, that you can use to create and manage control planes in the Space.
+
+### Create a control plane
+
+To create a control plane, declare a new managed control plane like the example below:
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: ControlPlane
+metadata:
+  name: ctp1
+spec:
+  writeConnectionSecretToRef:
+    name: kubeconfig-ctp1
+    namespace: default
+```
+
+This manifest:
+
+- Creates a new managed control plane in the space called `ctp1`.
+- Publishes the kubeconfig to connect to the control plane to a secret in the Spaces cluster, called `kubeconfig-ctp1`
+
+### Connect to a managed control plane
+
+You need to tell the Space to publish the connection details for the control plane as indicated in the preceding section. Once the control plane is ready, you can use the contents of the secret to connect to it.
+
+```bash
+kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp1.yaml
+```
+
+Reference the kubeconfig whenever you want to interact directly with the API server of the control plane (vs the Space's API server):
+
+```bash
+kubectl get providers --kubeconfig=/tmp/ctp1.yaml
+```
+
+### Configure a control plane
+
+Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in git integration to drive configuration of your control planes in a Space. 
+
+Learn more in the [Spaces git integration]({{<ref "spaces/git-integration.md">}}) documentation.
+
+### Delete a managed control plane
+
+To delete a managed control plane in the Space, delete the manifest in your Spaces cluster that represents the control plane. Remember, you can get a list of control planes in your Space by issuing the following command:
+
+```bash
+kubectl get ctp
+```
+
 ## Next steps
 
 Get started with Spaces in your own environment by visiting the quickstart:
