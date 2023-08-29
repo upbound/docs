@@ -28,6 +28,7 @@ exceptions:
   - "OpenID Connect"
   - "Per Space metrics"
   - "Service Account"
+  - "Sizing a Space"
   - "External cluster Argo CD"
   - "Universal Crossplane"
   - "Uninstall a Space"

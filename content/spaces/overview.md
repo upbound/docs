@@ -51,7 +51,7 @@ As mentioned in the preceding section, Upbound recommends designating a node to 
 - The number of managed resources you plan each control plane to reconcile.
 - The Crossplane providers you plan to install in each control plane.
 
-Most customers use Upbound [Official Providers]({{<ref "providers/provider-families.md">}}); the guidance presented below assumes you are doing the same. As a rule of thumb, a control plane responsible for continuously reconciling 1000 managed resources requires ~4 GB memory and ~8 CPU cores.
+Read the [deployment guide]({{<ref "spaces/deployment.md">}}) for comprehensive guidance for rightsizing your Space clusters.
 
 ## Upbound requirements
 
