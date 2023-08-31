@@ -12,6 +12,18 @@ For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
+## v0.40.0
+
+_Released 2023-08-31_
+
+* Support for new resource: `RolePolicy.iam`
+* The release contains the ability to define roles with `inline policy` 
+and `managed policy arn` in the Role.iam resource and some bug fixes.
+
+_Refer to the [v0.40.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.40.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.40.0)
+
 ## v0.39.0
 
 _Released 2023-08-23_
