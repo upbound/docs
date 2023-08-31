@@ -45,13 +45,13 @@ EOF
 
 ## Configure the pre-install
 
-### Set your Upbound account details
+### Set your Upbound organization account details
 
-Set your Upbound Account string as an environment variable for use in future steps
+Set your Upbound organization account string as an environment variable for use in future steps
 
 {{< editCode >}}
 ```ini
-export UPBOUND_ACCOUNT=$@<your upbound account>$@
+export UPBOUND_ACCOUNT=$@<your-upbound-org>$@
 ```
 {{< /editCode >}}
 
