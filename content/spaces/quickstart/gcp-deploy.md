@@ -340,5 +340,5 @@ kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' |
 You can use the kubeconfig to interact with your managed control plane directly:
 
 ```bash
-kubectl get xrd --kubeconfig=/tmp/ctp1.yaml
+kubectl get crds --kubeconfig=/tmp/ctp1.yaml
 ```
