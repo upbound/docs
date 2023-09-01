@@ -59,7 +59,7 @@ upbound-system                                    spaces-router-bc78c96d7-kzts2 
 What you are seeing is:
 
 - Pods in the `upbound-system` namespace are components required to run the management plane of the Space. This includes the `spaces-controller`, `spaces-router`, and install of UXP.
-- Pods in the `mxp-{GUID}-system` namespace are components that collectively power a managed control plane. Notable callouts include pod names that look like `vcluster-api-{GUID}` and `vcluster-controller-{GUID}`, which are integral components of a managed control plane.
+- Pods in the `mxp-{GUID}-system` namespace are components that collectively power a managed control plane. Notable call outs include pod names that look like `vcluster-api-{GUID}` and `vcluster-controller-{GUID}`, which are integral components of a managed control plane.
 - Pods in other notable namespaces, including `cert-manager` and `ingress-nginx`, are prerequisite components that support a Space's successful operation.
 
 
