@@ -12,6 +12,7 @@ exceptions:
   - "Composite Resource"
   - "Control Plane Source"
   - "Create a Space"
+  - "Deploying more than one Space"
   - "Downgrade a Space"
   - "Google Kubernetes Engine"
   - "Configure Git reference"
