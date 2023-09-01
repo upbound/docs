@@ -23,7 +23,7 @@ If a provider family installs into a cluster with an existing monolithic provide
 The monolithic provider continues to own all provider resource endpoints until it's removed.
 
 For information on migrating from monolithic providers to provider families read the 
-[family providers migration guide]({{<ref "/knowledge-base/migrate-to-provider-families">}})
+[family providers migration guide]({{<ref "/providers/migration">}})
 {{< /hint >}}
 
 ### Installing a provider family

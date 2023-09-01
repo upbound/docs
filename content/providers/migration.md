@@ -1,6 +1,8 @@
 ---
 title: "Migration tooling"
 weight: 40
+aliases:
+  - /knowledge-base/migrate-to-provider-families
 ---
 
 Upbound maintains migration tooling to support customers migrating from either
