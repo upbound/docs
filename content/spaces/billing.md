@@ -8,7 +8,7 @@ Spaces are a self-hosting feature of Upbound's [flagship product](https://www.up
 
 ## Billing details
 
-Spaces aren't **connected** to Upbound's global service. To enable proper billing, the Spaces software ships a controller whose responsibility is to collect billing data from your Spaces deployment. The collection and storage of your billing data happens expressly locally within your environment; no data is automatically emitted back to Upbound's global service. Spaces periodically exports the billing data out of the Spaces controller to a secure file in your environment.
+Spaces **aren't connected** to Upbound's global service. To enable proper billing, the Spaces software ships a controller whose responsibility is to collect billing data from your Spaces deployment. The collection and storage of your billing data happens expressly locally within your environment; no data is automatically emitted back to Upbound's global service. Spaces periodically exports the billing data out of the Spaces controller to a secure file in your environment.
 
 Spaces customers must periodically provide the billing data to Upbound. Contact your Upbound sales representative to learn more.
 
