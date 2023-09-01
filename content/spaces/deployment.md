@@ -112,7 +112,7 @@ The guidance in the preceding sections explains how to calculate CPU and memory 
 - tuned to the number of providers you plan to use
 - according to the number of managed resource instances you plan to have managed by your control planes
 
-Upbound recommends budgeting an extra buffer of 20% to your resource capacity calculations. The numbers shared in the preceding sections are based off average measurements and doesn't account for peaks or surges. Upbound recommends budgeting this buffer to account for these things.
+Upbound recommends budgeting an extra buffer of 20% to your resource capacity calculations. The numbers shared in the preceding sections don't account for peaks or surges since they're based off average measurements. Upbound recommends budgeting this buffer to account for these things.
 
 ## Deploying more than one Space
 

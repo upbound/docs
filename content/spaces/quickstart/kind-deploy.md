@@ -144,9 +144,9 @@ helm upgrade --install crossplane universal-crossplane \
 
 <!-- vale gitlab.Substitutions = NO -->
 #### Install provider-helm and provider-kubernetes
-<!-- vale gitlab.Substitutions = YES -->
+<!-- vale gitlab.Substitutions = YES -->s
 
-Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. We need to install these providers and grant necessary permissions to create resources.
+Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. You need to install these providers and grant necessary permissions to create resources.
 
 ```yaml
 cat <<EOF | kubectl apply -f -

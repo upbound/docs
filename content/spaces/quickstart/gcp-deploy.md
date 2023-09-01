@@ -111,16 +111,17 @@ The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experi
 Make sure your kubectl context is set to the cluster you want to install Spaces into.
 {{< /hint >}}
 
-By default, Spaces install skips setting up a public ingress. The Spaces install can setup public ingress as a convenience if you append the `--public-ingress=true` option in the command below. 
+By default, Spaces install sets up a public ingress as a convenience by appending the `--public-ingress=true` option in the command below. To defer setting up a public ingress, don't pass this flag.
 
 {{< hint "warning" >}}
-If you elect to configure a public ingress, be careful since it exposes your Spaces API server to the external network.
+The public ingress setup below is meant to demonstrate a fastpath to a working solution. Be careful for production scenarios, since it exposes your Spaces API server to the external network.
 {{< /hint >}}
 
 Install the Space.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --public-ingress=true \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}"
@@ -172,7 +173,7 @@ helm upgrade --install crossplane universal-crossplane \
 #### Install provider-helm and provider-kubernetes
 <!-- vale gitlab.Substitutions = YES -->
 
-Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. We need to install these providers and grant necessary permissions to create resources.
+Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. You need to install these providers and grant necessary permissions to create resources.
 
 ```yaml
 cat <<EOF | kubectl apply -f -
