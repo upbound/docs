@@ -177,7 +177,7 @@ the Group/Version/Kind API calls to Crossplane components.
 
 Get the duration of successful queries to the MXP Gateway.
 
-`sum without(pod, service, instance)(http_request_duration_ms_sum{http_status_code="200",namespace="$namespace"})`
+`sum without(pod, service, instance)(http_request_duration_milliseconds_sum{kubernetes_pod_name=~"mxp-gateway-.*", http_status_code="200", namespace="$namespace"})`
 
 The label `http_method` of `GET`, `PUT`, `DELETE` are useful for filtering by type. In general, `GET` or `PUT` are the most useful.
 
@@ -186,7 +186,7 @@ The label `http_method` of `GET`, `PUT`, `DELETE` are useful for filtering by ty
 The duration of failed requests (non-200). High durations could be
 indicative of problems with the vCluster API.
 
-`sum without(instance, job, pod, kubernetes_pod_name)(http_request_duration_ms_sum{http_method="GET", http_status_code!="200", namespace="$namespace"})`
+`sum without(instance, job, pod, kubernetes_pod_name)(http_request_duration_milliseconds_sum{kubernetes_pod_name=~"mxp-gateway-.*", http_method="GET", http_status_code!="200", namespace="$namespace"})`
 
 The label `http_method` of `GET`, `PUT`, `DELETE` can are useful for filtering by type. In general, `GET` or `PUT` are the most useful.
 
