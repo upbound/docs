@@ -1155,16 +1155,16 @@ You must provide the desired version of Spaces to install. You can find a list o
 
 **Examples**
 
-* Install v1.0.0 of Spaces
+* Install v1.0.1 of Spaces
 
 ```shell {copy-lines="1"}
-up space init "v1.0.0"
+up space init "v1.0.1"
 ```
 
-* Install v1.0.0 of Spaces and expose public ingress
+* Install v1.0.1 of Spaces and expose public ingress
 
 ```shell {copy-lines="1"}
-up space init "v1.0.0" --public-ingress=true
+up space init "v1.0.1" --public-ingress=true
 ```
 
 ### space destroy
@@ -1213,10 +1213,10 @@ You must provide the desired version of Spaces to upgrade to. You can find a lis
 
 **Examples**
 
-* Upgrade from a release candidate to v1.0.0
+* Upgrade from a release candidate to v1.0.1
 
 ```shell {copy-lines="1"}
-up space upgrade v1.0.0 --token-file=./token.json
+up space upgrade v1.0.1 --token-file=./token.json
 ```
 
 ### space billing
