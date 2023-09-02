@@ -6,6 +6,10 @@ weight: 150
 Find below the release notes for all released versions of [Upbound Spaces]({{< ref "spaces/overview.md" >}}).
 
 <!-- vale off -->
+## Spaces v1.0.1 release notes
+
+- [Backport release-1.0] Export mxp-gateway metrics via otlp-collector by @github-actions in #332
+
 ## Spaces v1.0.0 release notes
 
 - controllers: patch against original object by @sttts in #249
