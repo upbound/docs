@@ -1384,14 +1384,12 @@ up xpkg push upbound-docs/test:v0.2 -f getting-started.xpkg
 xpkg pushed to upbound-docs/test:v0.2
 ```
 
-It's also possible to push to other repositories, such as docker hub.
-**Example**
-* Push a package called `getting-started.xpkg` to the test repository inside hub.docker.com. Mark it as version `v0.2`.
+To push to other repositories, besides the Upbound marketplace, like Docker Hub, provide the full URL of the image registry. 
 
+For example, to push a package to `index.docker.io`:
 ```shell {copy-lines="1"}
 up xpkg push index.docker.io/dockeruser/test:v0.2 -f getting-started.xpkg
 xpkg pushed to index.docker.io/dockeruser/test:v0.2
-```
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore xpls -->
 ## xpls
