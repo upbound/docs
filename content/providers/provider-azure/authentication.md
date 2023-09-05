@@ -6,17 +6,17 @@ description: Authentication options with the Upbound Azure official provider
 
 The Upbound Official Azure Provider supports multiple authentication methods.
 
-* [Service Principal with Kubernetes Secret]()
-* [System-Assigned Managed Identity]()
-* [User-Assigned Managed Identity]()
+* [Service principal with Kubernetes secret]()
+* [System-assigned managed identity]()
+* [User-assigned managed identity]()
 
-## Service Principal with Kubernetes Secret
+## Service principal with Kubernetes secret
 
-A Service Principal is an appliction within the Azure Active Directory that
+A service principal is an application within the Azure Active Directory that
 passes `client_id`, `client_secret`, and `tenant_id` authentication
 tokens to create and manage Azure resources. 
 
-### Create a Service Principal using the Azure CLI tool.
+### Create a service principal using the Azure CLI tool
 
 First, find the Subscription ID for your Azure account.
 
@@ -34,11 +34,11 @@ az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<subscr
   > azure.json
 ```
 
-The `azure.json` file in the command above contains the client ID, secret, and
+The `azure.json` file in the preceding command contains the client ID, secret, and
 tenant ID of your subscription.
 
 
-Finally, use `kubectl` to associate your Azure credentials file with a generic
+Next, use `kubectl` to associate your Azure credentials file with a generic
 Kubernetes secret.
 
 ```shell
@@ -64,8 +64,7 @@ spec:
 ```
 
 Your credential `source` must be `Secret` and you must specify the namespace,
-name, and key if you created a different secret name (`azure-secret`) or
-created within a different namespace.
+name, and key if you used different values.
 
 Apply your configuration.
 
@@ -76,19 +75,18 @@ kubectl apply -f
 Now, your Kubernetes cluster can communicate with Azure securely with the
 generic secret.
 
-## System-Assigned Managed Identity
+## System-assigned managed identity
 
-Another method for authentication is using a System-Assigned Managed Identity.
-The System-Assigned Managed Identity allows you to associate the provider with
+Another method for authentication is using a system-assigned managed identity.
+The system-assigned managed identity allows you to associate the provider with
 your
 AKS cluster automatically without manually
 managing credentials.
 
-### Create a System-Assigned Managed Identity
+### Create a system-assigned managed identity
 
-A System-Assigned Managed Identity is automatically created when you create
-an AKS cluster. This section will detail creating a new
-cluster.
+A system-assigned managed identity is automatically created when you create
+an AKS cluster. This section covers creating a new identity in a new cluster.
 
 Create a resource group.
 
@@ -110,7 +108,7 @@ information for your cluster.
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-To switch from a service principal to a System-Assigned Managed Identity,
+To switch from a service principal to a system-assigned managed identity,
 use the `aks update` command.
 
 ```shell
@@ -133,14 +131,11 @@ spec:
   tenantID: <tenant_ID>
 ```
 
-## User-Assigned Managed Identity
+## User-assigned managed identity
 
-Another method for authentication is a User-Assigned Managed Identity. The
-User-Assigned Managed Identities exist indenpendant of any other Azure
-resource, unlike System-Assigned Managed Identities. If your organization
-needs to use a single identity across multiple resources, the User-Assigned
-Managed Identity allows you to create one authentication identity with
-fixed permissions.
+Another method for authentication is a user-assigned managed identity. User-assigned managed identities exist independent of any other Azure
+resource, unlike system-assigned managed identities. If your organization
+needs to use a single identity across multiple resources, this option allows you to create one authentication identity with fixed permissions.
 
 First, create a new managed identity with the Azure CLI. Update
 `<identity_name>` with a name for your new managed identity.
