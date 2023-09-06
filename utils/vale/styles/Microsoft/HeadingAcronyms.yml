@@ -6,6 +6,7 @@ scope: heading
 tokens:
   - '[A-Z]{2,4}'
 exceptions:
+  - AKS
   - API
   - ARN
   - AWS
@@ -13,13 +14,18 @@ exceptions:
   - CLI
   - CSS
   - CPU
+  - DNS
   - EKS
   - GCP
+  - GKE
   - IAM
   - MCP
+  - MXP
   - MVP
   - OIDC
   - SCSS
   - UXP
   - VPC
   - XRD
+  - ALB
+  - SSH

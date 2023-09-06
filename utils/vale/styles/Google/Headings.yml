@@ -7,22 +7,41 @@ match: $sentence
 indicators:
   - ':'
 exceptions:
+  - "Authentication with Version Control Services"
   - "Amazon Elastic Kubernetes Service"
   - "Composite Resource"
+  - "Control Plane Source"
+  - "Create a Space"
+  - "Deploying more than one Space"
+  - "Downgrade a Space"
   - "Google Kubernetes Engine"
+  - "Configure Git reference"
+  - "Example Prometheus installation"
   - "Integrate with Argo CD and Flux"
+  - "Install an Upbound Space"
+  - "Install a Space"
+  - "Install Upbound Spaces"
+  - "Install ALB Load Balancer"
   - "Managed Control Planes?"
   - "Managed Resources"
   - "Microsoft Azure Kubernetes Service"
+  - "On cluster Argo CD"
   - "OpenID Connect"
+  - "Per Space metrics"
   - "Service Account"
+  - "Sizing a Space"
+  - "External cluster Argo CD"
   - "Universal Crossplane"
+  - "Uninstall a Space"
   - "Upbound Console"
   - "Upbound Universal Crossplane"
+  - "Upgrade a Space"
   - "Use OpenAPI v3 data types"
+  - "With Helm"
   - APIs?
   - Azure
   - CLI
+  - CRDs
   - Code
   - Configuration
   - Configuration layout in Git
@@ -40,6 +59,7 @@ exceptions:
   - I
   - Integrate Crossplane with Argo
   - Integrate Crossplane with Flux
+  - GitOps tools (Argo / Flux)
   - JavaScript
   - Kubeconfig
   - Kubernetes

@@ -1,5 +1,6 @@
 APIs
 Argo
+Alertmanager
 autoscalers
 Autoscaling
 backports
@@ -17,8 +18,10 @@ declaratively
 downscaling
 editCode
 enums
+eksctl
 Env
 Fargate
+gcloud
 GCP's
 Geekdocs
 Goldmark
@@ -28,6 +31,8 @@ image_uri
 kubeconfig
 kubectl
 Kustomize
+Kube
+Kubelet
 Kyverno
 Kyverno's
 MCP
@@ -57,6 +62,7 @@ Upbound's
 Upjet
 UXP
 uxp
+vCluster
 Velero
 VSCode
 Webpack
@@ -66,3 +72,4 @@ XRD's
 XRDs
 XRs
 Zendesk
+Upjet

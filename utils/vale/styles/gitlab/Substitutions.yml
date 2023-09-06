@@ -36,7 +36,6 @@ swap:
   guest permission: the Guest role
   guest permissions: the Guest role
   json: JSON
-  kubernetes: Kubernetes
   k8s: Kubernetes
   maintainer access: the Maintainer role
   maintainer permission: the Maintainer role
