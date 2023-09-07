@@ -1546,7 +1546,7 @@ Publish images created by up xpkg build to the Upbound Marketplace with
 |      | `--create`             |    Create repository on push if it doesn't exist. |
 {{< /table >}}
 
-**Examples**
+**Example**
 
 * Push a package called `getting-started.xpkg` to the test repository inside the `upbound-docs organization`. Mark it as version `v0.2`.
 
@@ -1555,6 +1555,12 @@ up xpkg push upbound-docs/test:v0.2 -f getting-started.xpkg
 xpkg pushed to upbound-docs/test:v0.2
 ```
 
+To push to other repositories, besides the Upbound marketplace, like Docker Hub, provide the full URL of the image registry. 
+
+For example, to push a package to `index.docker.io`:
+```shell {copy-lines="1"}
+up xpkg push index.docker.io/dockeruser/test:v0.2 -f getting-started.xpkg
+xpkg pushed to index.docker.io/dockeruser/test:v0.2
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore xpls -->
 ## xpls
