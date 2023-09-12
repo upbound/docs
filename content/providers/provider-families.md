@@ -118,6 +118,18 @@ The first provider installed of a family also installs an extra
 The `provider-family` provider manages the ProviderConfig
 for all other providers in the same family. 
 
+{{<hint "note" >}}
+Each family provider defines a dependency on the *latest available version* of the corresponding `provider-family`,
+which is automatically resolved and installed by the Crossplane package manager.
+
+Hence, when you install an older version of a family provider, you can expect to receive newer versions of the
+`provider-family` provider, and it is safe to ignore this version mismatch.
+
+If you still want to control the version of the `provider-family`, consider using the
+{{<hover label="air" line="7">}}skipDependencyResolution: true{{</hover>}} option as described in the
+**Install Providers in an offline environment** section above.
+{{< /hint >}}
+
 ### Using ControllerConfigs
 
 The [ControllerConfig](https://docs.crossplane.io/latest/concepts/packages/#speccontrollerconfigref) applies settings to a Provider Pod. With family providers
