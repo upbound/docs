@@ -6,9 +6,9 @@ description: Authentication options with the Upbound Azure official provider
 
 The Upbound Official Azure Provider supports multiple authentication methods.
 
-* [Service principal with Kubernetes secret]()
-* [System-assigned managed identity]()
-* [User-assigned managed identity]()
+* [Service principal with Kubernetes secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals?tabs=browser#service-principal-object)
+* [System-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#enable-managed-identities-on-an-existing-aks-cluster)
+* [User-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#bring-your-own-managed-identity)
 
 ## Service principal with Kubernetes secret
 
@@ -49,7 +49,7 @@ kubectl create secret generic azure-secret -n upbound-system --from-file=creds=.
 
 Apply these changes to your `ProviderConfig` file. 
 
-```yml
+```yaml {copy-lines="5-11"}
 apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
@@ -68,16 +68,8 @@ name, and key if you used different values.
 
 Apply your configuration.
 
-```shell
-kubectl apply -f
-```
-
-Now, your Kubernetes cluster can communicate with Azure securely with the
-generic secret.
-
 ## System-assigned managed identity
 
-Another method for authentication is using a system-assigned managed identity.
 The system-assigned managed identity allows you to associate the provider with
 your
 AKS cluster automatically without manually
@@ -117,9 +109,10 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-managed-identity
 
 ### Configure your provider
 
-In your provider configuration, update the credentials `source` field.
+In your provider configuration, update the `source`, `subscriptionID`, and
+`tenantID` in the `credentials` field. 
 
-```yml
+```yaml {copy-lines="7-9"}
 apiVersion: azure.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
@@ -133,7 +126,7 @@ spec:
 
 ## User-assigned managed identity
 
-Another method for authentication is a user-assigned managed identity. User-assigned managed identities exist independent of any other Azure
+User-assigned managed identities exist independent of any other Azure
 resource, unlike system-assigned managed identities. If your organization
 needs to use a single identity across multiple resources, this option allows you to create one authentication identity with fixed permissions.
 
