@@ -49,7 +49,7 @@ kubectl create secret generic azure-secret -n upbound-system --from-file=creds=.
 
 Apply these changes to your `ProviderConfig` file. 
 
-```yaml {copy-lines="5-11"}
+```yaml {label="secretPC", copy-lines="5-11"}
 apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
@@ -112,7 +112,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-managed-identity
 In your provider configuration, update the `source`, `subscriptionID`, and
 `tenantID` in the `credentials` field. 
 
-```yaml {copy-lines="7-9"}
+```yaml {label="sysPC", copy-lines="7-9"}
 apiVersion: azure.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
