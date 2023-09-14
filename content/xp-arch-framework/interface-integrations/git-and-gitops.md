@@ -2,6 +2,8 @@
 title: "Git and GitOps"
 weight: 2
 description: "A guide for how to integrate control planes with a variety of interfaces"
+aliases:
+  - /knowledge-base/git-integration
 ---
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Crossplane is compatible with this pattern and it's strongly recommended you integrate GitOps in your platforms built on Crossplane. 
