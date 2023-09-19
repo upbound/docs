@@ -14,16 +14,35 @@ aliases:
 
 ### Argo CD
 
-{{< hint "important" >}}
-Argo CD is currently unable to target a managed control plane as an external cluster.  Argo CD must be able to create a service account on the target cluster, and this is a permission Upbound disallows on managed control planes. Upbound is working to fix this gap; the documentation in this article will be updated once it has been fixed.
-{{< /hint >}}
+<!-- vale Google.Headings = NO -->
+#### Configure Argo CD
+<!-- vale Google.Headings = YES -->
 
-<!-- You can use Argo to sync claims to your managed control planes. To do this, you need to have an instance of Argo running externally to Upbound, since you can't install Argo locally in Upbound. Assuming you are running Argo _elsewhere_ outside of Upbound, the steps to use Argo to sync claims are the following:
+To configure Argo CD for Annotation resource tracking, edit the Argo CD
+ConfigMap in the Argo CD namespace. Add {{<hover label="argoCM" line="3">}}application.resourceTrackingMethod: annotation{{</hover>}}
+to the data section as below:
 
-1. Fetch your managed control plane's API server endpoint so you can provide it to Argo. In the step below, use the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
+```bash {label="argoCM"}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  application.resourceTrackingMethod: annotation
+```
+
+This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
+
+<!-- vale Google.Headings = NO -->
+#### Connect an MCP to Argo CD
+<!-- vale Google.Headings = YES -->
+
+You can connect an external Argo CD instance to your managed control plane to sync Crossplane claims. 
+
+1. Create a kubeconfig file for your MCP with the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). Use the `up ctp kubeconfig get` command and define the filename to save the kubeconfig to. This example saves the kubeconfig to a file named `mcp-kubeconfig.yaml`. 
 
 ```bash
-up ctp kubeconfig get -a <account> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml
+up ctp kubeconfig get -a <organization> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml
 ```
 
 2. Save the kubeconfig as a secret on the external Kubernetes cluster where you installed Argo.
@@ -49,7 +68,7 @@ spec:
     automated: {}
 ```
 
-4. Create claims in the Git repository that Argo is monitoring and observe how they're transmitted to your managed control plane in Upbound.-->
+4. Create claims in the Git repository that Argo is monitoring and observe how they're transmitted to your managed control plane in Upbound.
 
 ### Flux
 
