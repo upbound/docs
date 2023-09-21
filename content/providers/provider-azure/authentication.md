@@ -18,6 +18,10 @@ tokens to create and manage Azure resources.
 
 ### Create a service principal using the Azure CLI tool
 
+{{< hint "tip" >}}
+If you don't have the Azure CLI, use the [install guide](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+{{< /hint >}}
+
 First, find the Subscription ID for your Azure account.
 
 ```shell
@@ -72,7 +76,7 @@ Apply your configuration.
 
 The system-assigned managed identity allows you to associate the provider with
 your
-AKS cluster automatically without manually
+Azure Kubernetes Service (`AKS`) cluster automatically without manually
 managing credentials.
 
 ### Create a system-assigned managed identity
@@ -130,25 +134,77 @@ User-assigned managed identities exist independent of any other Azure
 resource, unlike system-assigned managed identities. If your organization
 needs to use a single identity across multiple resources, this option allows you to create one authentication identity with fixed permissions.
 
-First, create a new managed identity with the Azure CLI. Update
-`<identity_name>` with a name for your new managed identity.
+{{< hint "note" >}}
+
+You must use the user-assigned managed identity as the kubelet identity of your
+AKS cluster.
+{{< /hint >}}
+
+First, create a new control plane identity with the Azure CLI. Update
+`<controlplane_identity_name>` with a name for your new managed identity.
 
 ```shell
-az identity create -g <resource_group> --name <identity_name> --resource-group myResourceGroup
+az identity create --name <controlplane_identity_name> --resource-group <resource_group>
 ```
 
-Next, assign the identity to your AKS cluster.
+Your output should return the following fields:
 
-```shell
-az webapp identity assign --resource-group <group-name> --name <app-name> --identities <identity-id>
+```
+{
+  "clientId": "<client_id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/<resource_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<controlplane_identity_name>", 
+  "location": "<location>",
+  "name": "<identity_name>",
+  "principalId": "<principal_id>",
+  "resourceGroup": "<resource_group>",                       
+  "tags": {},
+  "tenantId": "<tenant_id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
 ```
 
-```shell
-az aks update -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
---assign-identity <user_assigned_identity_resource_id>/user
-```
+Capture the `id` field output as your control plane identity.
+
+Next, create a `kubelet` managed identity.
 
 ```shell
-az role assignment create --assignee <control-plane-identity-principal-id>
---role "Contributor" --scope "<custom-resource-group-resource-id>"
+az identity create --name <kubelet_identity_name> --resource-group <resource_group>
+```
+
+Capture the `id` field output as your kubelet identity.
+
+Next, create an AKS cluster with the identities you created above.
+
+```shell
+az aks create \
+    --resource-group <resource_group> \
+    --name <cluster_name> \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet_id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 \
+    --enable-managed-identity \
+    --assign-identity <controlplane_identity_resource_id> \ 
+    --assign-kubelet-identity <kubelet_identity_resource_id>
+```
+
+### Configure your provider
+
+In your provider configuration, update the `source`, `subscriptionID`, and
+`tenantID` in the `credentials` field. Update the `clientID` field with the
+user-assigned managed identity you used as the kubelet identity.
+
+```yaml {label="sysPC", copy-lines="7-9"}
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: UserAssignedManagedIdentity
+  clientID: <kubelet_identity_id>
+  subscriptionID: <subscription_ID>
+  tenantID: <tenant_ID>
 ```
