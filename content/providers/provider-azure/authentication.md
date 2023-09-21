@@ -136,7 +136,7 @@ needs to use a single identity across multiple resources, this option allows you
 
 {{< hint "note" >}}
 
-You must use the user-assigned managed identity as the kubelet identity of your
+You must use the user-assigned managed identity as the `kubelet` identity of your
 AKS cluster.
 {{< /hint >}}
 
@@ -172,9 +172,10 @@ Next, create a `kubelet` managed identity.
 az identity create --name <kubelet_identity_name> --resource-group <resource_group>
 ```
 
-Capture the `id` field output as your kubelet identity.
+Capture the `id` field output as your `kubelet` identity.
 
-Next, create an AKS cluster with the identities you created above.
+Next, create an AKS cluster with the identities you created in the preceding
+command.
 
 ```shell
 az aks create \
@@ -194,7 +195,7 @@ az aks create \
 
 In your provider configuration, update the `source`, `subscriptionID`, and
 `tenantID` in the `credentials` field. Update the `clientID` field with the
-user-assigned managed identity you used as the kubelet identity.
+user-assigned managed identity you used as the `kubelet` identity.
 
 ```yaml {label="sysPC", copy-lines="7-9"}
 apiVersion: azure.upbound.io/v1beta1
