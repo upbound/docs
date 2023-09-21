@@ -125,7 +125,7 @@ The secret defined in the `.spec.kubeConfig.secretRef.Name` kubeConfig.SecretRef
 
 ## Control plane connector
 
-Upbound's Managed Control Plane Connector (MCP Connector) is another way you can set up GitOps flows with Upbound managed control planes. MCP Connector is for users coming from open source Crossplane and who treat Crossplane as an add-on to an existing Kubernetes application cluster. In that world, users could interact with Crossplane APIs from the same cluster they deploy their applications to. This model breaks when users move their Crossplane instances into a managed solution in Upbound.
+Upbound's Managed Control Plane Connector (MCP Connector) is another way you can set up GitOps flows with Upbound managed control planes. MCP Connector is for users coming from open source Crossplane and who treated Crossplane as an add-on to an existing Kubernetes application cluster. In that world, users could interact with Crossplane APIs from the same cluster they deploy their applications to. This model breaks when users move their Crossplane instances into a managed solution in Upbound.
 
 MCP Connector connects Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinition`s are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
 
@@ -141,36 +141,69 @@ makes the request to the Upbound control plane it's connected to.
 The claim APIs are available in your Kubernetes cluster just like
 all native Kubernetes API.
 
-#### Connecting to managed control planes
+### Installation
 
-Log in with the `up` CLI
+#### With the up CLI
+
+Log in with the up CLI:
+
 ```bash
 up login
 ```
 
-Connect your cluster to a namespace in an Upbound Control Plane with `up controlplane connect <control plane name> <namespace>`. This command
-creates a user token and installs the MCP Connector to your cluster.
+Connect your app cluster to a namespace in an Upbound managed control plane with `up controlplane connect <control plane name> <namespace>`. This command creates a user token and installs the MCP Connector to your cluster.
 
 {{<hint "note" >}}
-Note that you need to supply your organization name with `--account` if it wasn't specified during login.
+You need to provide your Upbound organization account name with `--account` option if it wasn't specified during login.
 {{< /hint >}}
 
 ```bash {copy-lines="3"}
 up controlplane connect my-control-plane my-app-ns-1 --account my-org-name
 ```
 
-The Claim APIs are now visible in the cluster with `kubectl api-resources`.
+The Claim APIs from your managed control plane are now visible in the cluster. You can verify this with `kubectl api-resources`.
+
 ```bash
 kubectl api-resources
 ```
 
-#### Example usage
+#### With Helm
 
-This example creates a control plane using [Configuration
-EKS](https://github.com/upbound/configuration-eks). `KubernetesCluster` is
-available as a claim API in your control plane. The following is [an
-example](https://github.com/upbound/configuration-eks/blob/9f86b6d/.up/examples/cluster.yaml)
-object you can create in your control plane.
+The MCP Connector is also available as a Helm chart. First add the Upbound beta repository with the `helm repo add` command.
+
+```bash
+helm repo add upbound-beta https://charts.upbound.io/beta
+```
+
+Update the local Helm chart cache with `helm repo update`.
+
+```bash
+helm repo update
+```
+
+Install the MCP Connector Helm chart with `helm install`. Make sure to update the chart values with your own. You must provide:
+
+- `mcp.account`, provide an Upbound org account name
+- `mcp.name`, provide the name of the managed control plane you want to connect to
+- `mcp.namespace`, provide the namespace in your managed control plane to sync to
+- `mcp.token`, an [API token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from Upbound used by the MCP Connector to allow for interaction with your managed control plane
+
+```bash
+helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system /
+  --set mcp.account=your-upbound-org-account 
+  --set mcp.name=your-control-plane-name   
+  --set mcp.namespace=your-app-ns-1   
+  --set mcp.token='replace-with-an-API-token-from-Upbound'   
+```
+
+{{<hint "tip" >}}
+Create an API token from the Upbound user account settings page in the console by following [these instructions]({{<ref "concepts/console#create-a-personal-access-token" >}}).
+{{< /hint >}}
+
+### Example usage
+
+This example creates a control plane using [Configuration EKS](https://github.com/upbound/configuration-eks). `KubernetesCluster` is available as a claim API in your control plane. The following is [an example](https://github.com/upbound/configuration-eks/blob/9f86b6d/.up/examples/cluster.yaml) object you can create in your control plane.
+
 ```yaml
 apiVersion: k8s.starter.org/v1alpha1
 kind: KubernetesCluster
@@ -191,8 +224,8 @@ spec:
     name: my-cluster-kubeconfig
 ```
 
-After connecting your Kubernetes cluster to the MCP, you can create the `KubernetesCluster` object in your
-Kubernetes cluster. Although your local cluster has an Object, the actual resources is in your control plane inside Upbound.
+After connecting your Kubernetes app cluster to the managed control plane, you can create the `KubernetesCluster` object in your
+app cluster. Although your local cluster has an Object, the actual resources is in your managed control plane inside Upbound.
 
 ```bash {copy-lines="3"}
 # Applying the claim YAML above.
@@ -213,18 +246,13 @@ lives in your cluster.
 Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to allow tools to interact with the remote object as if it was local.
 {{< /hint >}}
 
-### Interface with multiple app clusters
+### Connect multiple app clusters to a managed control plane
 
-Claims are store in a unique namespace in the Upbound managed control plane. 
-Every cluster creates a new MCP namespace.
+Claims are store in a unique namespace in the Upbound managed control plane. Every cluster creates a new MCP namespace.
 
 {{<img src="concepts/images/ConnectorMulticlusterArch.png" alt="Multi-cluster architecture with managed control plane connector" size="medium" lightbox="true">}}
 
-There's no limit on the number of clusters connected to a single control plane. 
-Control plane operators can see all their infrastructure in a central control plane.
+There's no limit on the number of clusters connected to a single control plane. Control plane operators can see all their infrastructure in a central control plane.
 
-Without using managed control planes and MCP Connector, users have to install
-Crossplane and providers for cluster. Each cluster requires configuration for 
-providers with necessary credentials. With a single control plane where multiple clusters connected through
-Upbound tokens, you don't need to give out any cloud credentials to the
-clusters.
+Without using managed control planes and MCP Connector, users have to install Crossplane and providers for cluster. Each cluster requires configuration for providers with necessary credentials. With a single control plane where multiple clusters connected through
+Upbound tokens, you don't need to give out any cloud credentials to the clusters.
