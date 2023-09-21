@@ -197,7 +197,7 @@ In your provider configuration, update the `source`, `subscriptionID`, and
 `tenantID` in the `credentials` field. Update the `clientID` field with the
 user-assigned managed identity you used as the `kubelet` identity.
 
-```yaml {label="sysPC", copy-lines="7-9"}
+```yaml {label="userPC", copy-lines="7-10"}
 apiVersion: azure.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
