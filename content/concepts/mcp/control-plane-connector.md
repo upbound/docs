@@ -141,7 +141,7 @@ makes the request to the Upbound control plane it's connected to.
 The claim APIs are available in your Kubernetes cluster just like
 all native Kubernetes API.
 
-### Install MCP Connector on an app cluster
+### Installation
 
 #### With the up CLI
 
@@ -172,7 +172,7 @@ kubectl api-resources
 The MCP Connector is also available as a Helm chart. First add the Upbound beta repository with the `helm repo add` command.
 
 ```bash
-helm repo add crossplane-stable https://charts.crossplane.io/stable
+helm repo add upbound-beta https://charts.upbound.io/beta
 ```
 
 Update the local Helm chart cache with `helm repo update`.
