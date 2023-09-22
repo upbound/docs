@@ -1,5 +1,5 @@
 ---
-title: Orchestrate Internal Resources 
+title: Orchestrate internal resources 
 weight: 500
 description: Manage internal resources with managed control planes even if their APIs are not exposed to the internet.
 aliases:
