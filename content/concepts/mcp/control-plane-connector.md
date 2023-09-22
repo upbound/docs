@@ -1,5 +1,5 @@
 ---
-title: GitOps with Control Planes
+title: GitOps with control planes
 weight: 6
 description: An introduction to doing GitOps with control planes on Upbound
 aliases: 

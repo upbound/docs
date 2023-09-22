@@ -1,14 +1,14 @@
 ---
 title: Deploy your first multicloud control plane
-weight: 1
+weight: 4
 description: A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound
 ---
 
-This quickstart guides you through how to create your first managed control plane in Upbound with configuration-caas. Connect Upbound to AWS, GCP, and Azure to provision and manage fully configured Kubernetes Service clusters, composed using cloud service primitives from the Upbound Official Providers.
+This quickstart guides you through how to create your first managed control plane in Upbound with configuration-caas. Connect Upbound to AWS, GCP, and Azure to provision and manage fully configured Kubernetes Service clusters. They're composed using cloud service primitives from the Upbound Official Providers.
 
 ## Prerequisites
 
-To deploy Upbound's configuration-caas, you will need:
+To deploy Upbound's configuration-caas, you need:
 
 * An Upbound account.
 * A GitHub account with permission to install GitHub Apps.
@@ -78,18 +78,18 @@ Select **Create Control Plane**.
 
 {{<img src="quickstart/images/caas-fre-step3.png" alt="Upbound Create Control Plane screen" quality="100" lightbox="true" size="medium" >}}
 
-### Finalize
+### Complete the flow
 
-On the final screen of the _Get Started_ experience, you can review your work so far to see the configuration you've cloned and the control plane you've created. This screen shows information about the providers that you will need to authenticate with after launching your new control plane.
-{{<img src="quickstart/images/caas-fre-step4.png" alt="Upbound Get Started Experience finalize step" quality="100" lightbox="true" size="medium" >}}
+On the final screen of the _Get Started_ experience, review your work. Observe the configuration you've cloned and the control plane you've created. This screen shows information about the providers that you need to authenticate with after launching your new control plane.
+{{<img src="quickstart/images/caas-fre-step4.png" alt="Upbound Get Started Experience final step" quality="100" lightbox="true" size="medium" >}}
 
 ## Welcome to the Upbound Console
 
-After completing the _Get Started_ experience, you are in the Upbound control plane explorer and will be greeted by a message with pointers for what to do next. 
+After completing the _Get Started_ experience, you are in the Upbound control plane explorer. The console shows a message with pointers for what to do next. 
 
 {{<img src="quickstart/images/caas-getting-started-guide.png" alt="Getting Started Guide" quality="100" align="center">}}
 
-You can retrigger this guide at any time by selecing the Getting Started Guide button in the upper right corner of the control plane explorer.
+You can reopen this guide at any time by selecting the Getting Started Guide button in the upper right corner of the control plane explorer.
 
 {{<img src="quickstart/images/caas-ctp-explorer.png" alt="Upbound control plane explorer" quality="100" align="center">}}
 
@@ -100,16 +100,17 @@ Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour o
 {{< /hint >}}
 
 ## Authenticate with Providers
-Your next step is to configure provider-upbound and connect your managed control plane to each of the cloud service providers you wish to use in your CaaS offering. You will need to head to the command line to configure provider-upbound, but you can authenticate with cloud service providers from within the Upbound Console UI.
+Next, configure provider-upbound and connect your managed control plane to each cloud service provider you wish to use in your CaaS offering. You must configure provider-upbound via the CLI, but you can authenticate with cloud service providers from within the Upbound Console UI.
 
 {{< hint "tip" >}}
 You should wait until your Configuration has finished installing into your control plane before creating any ProviderConfigs.
 {{< /hint >}}
 
 ### Configure provider-upbound
-Provider Upbound needs a valid Upbound token to authenticate. There are multiple ways to acquire one but the simplest option is to log in with [Up CLI]({{<ref "reference/cli">}}) to get a session token. 
 
-Log in with the `up login` command to save a token to ~/.up/config.json
+Provider Upbound needs a valid Upbound token to authenticate. You can fetch one in multiple ways, but the simplest option is to log in with [Up CLI]({{<ref "reference/cli">}}) to get a session token. 
+
+Log in with the `up login` command to save a token to `~/.up/config.json`
 
 Then, create a Secret object that contains the token.
 
@@ -117,7 +118,7 @@ Then, create a Secret object that contains the token.
 kubectl -n crossplane-system create secret generic up-creds --from-file=creds=$HOME/.up/config.json
 ```
 
-Next, create a ProviderConfig object that references the Secret object you just created. The following command creates a ProviderConfig object that references the Secret object we just created.
+Next, create a ProviderConfig object that references the Secret object you just created. The following command creates a ProviderConfig object that references the Secret object you just created.
 
 ```shell
 cat <<EOF | kubectl apply -f -
@@ -186,11 +187,11 @@ You can find your AWS account ID by selecting the account dropdown in the upper 
 
 #### Provide the ARN to Upbound
 
-Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-aws and click into the ProviderConfigs tab. Then, select **Create ProviderConfig**
+Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-aws and select the ProviderConfigs tab. Then, select **Create ProviderConfig**
 
 {{<img src="quickstart/images/providers-tab.png" alt="Providers tab" quality="100" lightbox="true" size="medium">}}
 
-On the screen that displays, give the ProviderConfig a name. Entering the name `default` will set this as the default ProviderConfig for this provider in this control plane.
+On the screen that displays, give the ProviderConfig a name. Entering the name `default` sets this as the default ProviderConfig for this provider in this control plane.
 
 Next, paste the roleARN you copied from AWS into the input at the bottom of the form.  
 
@@ -271,11 +272,11 @@ For your control plane to be able to perform actions required by this configurat
 
 #### Finish configuring the Upbound identity provider
 
-Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-azure and click into the ProviderConfigs tab. Then, select **Create ProviderConfig**
+Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-azure and select the ProviderConfigs tab. Then, select **Create ProviderConfig**
 
 {{<img src="quickstart/images/providers-tab-aks.png" alt="Providers tab" quality="100" lightbox="true" size="medium">}}
 
-On the screen that displays, give the ProviderConfig a name. Entering the name `default` will set this as the default ProviderConfig for this provider in this control plane.
+On the screen that displays, give the ProviderConfig a name. Entering the name `default` sets this as the default ProviderConfig for this provider in this control plane.
 
 Next, scroll to the bottom of the form.  
 
@@ -425,9 +426,9 @@ Select **Enable**.
 
 #### Finish configuring the Upbound identity provider
 
-Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-gcp and click into the ProviderConfigs tab. Then, select **Create ProviderConfig**
+Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-gcp and select the ProviderConfigs tab. Then, select **Create ProviderConfig**
 
-On the screen that displays, give the ProviderConfig a name. Entering the name `default` will set this as the default ProviderConfig for this provider in this control plane.
+On the screen that displays, give the ProviderConfig a name. Entering the name `default` sets this as the default ProviderConfig for this provider in this control plane.
 
 Next, scroll past the instructions to the bottom of the form.  
 
@@ -449,7 +450,7 @@ The identity provider format is:
 
 <br />
 
-In the _serviceAccount_ field enter the **service account email**.
+In the _service Account_ field enter the **service account email**.
 
 In the _projectID_ field enter your **[GCP project ID](https://support.google.com/googleapi/answer/7014113)**.  
 

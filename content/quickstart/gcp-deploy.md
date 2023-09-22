@@ -1,6 +1,6 @@
 ---
 title: Deploy your first control plane with GCP
-weight: 1
+weight: 3
 description: A guide for deploying a cloud platform on Upbound for Google GCP
 ---
 
