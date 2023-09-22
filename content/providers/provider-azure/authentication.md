@@ -149,7 +149,7 @@ az identity create --name <controlplane_identity_name> --resource-group <resourc
 
 Your output should return the following fields:
 
-```
+```json
 {
   "clientId": "<client_id>",
   "clientSecretUrl": "<clientSecretUrl>",
@@ -183,9 +183,9 @@ az aks create \
     --name <cluster_name> \
     --network-plugin azure \
     --vnet-subnet-id <subnet_id> \
-    --docker-bridge-address 172.17.0.1/16 \
-    --dns-service-ip 10.2.0.10 \
-    --service-cidr 10.2.0.0/24 \
+    --docker-bridge-address <docker_bridge_address> \
+    --dns-service-ip <dns_ip> \
+    --service-cidr <service_cidr> \
     --enable-managed-identity \
     --assign-identity <controlplane_identity_resource_id> \ 
     --assign-kubelet-identity <kubelet_identity_resource_id>
