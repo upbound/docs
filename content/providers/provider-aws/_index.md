@@ -12,6 +12,21 @@ For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
+
+## v0.41.0
+
+_Released 2023-09-29_
+
+* Support for new family provider: `provider-aws-redshiftserverless`
+* Support for new resources: `ScramSecretAssociation.kafka`, `JobDefinition.batch`, `EndpointAccess.redshiftserverless`
+`RedshiftServerlessNamespace.redshiftserverless`, `ResourcePolicy.redshiftserverless`,
+`Snapshot.redshiftserverless`, `UsageLimit.redshiftserverless` and `Workgroup.redshiftserverless`
+* The release contains some bug fixes and configuring the default poll jitter for the controllers.
+
+_Refer to the [v0.41.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.41.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.41.0)
+
 ## v0.40.0
 
 _Released 2023-08-31_

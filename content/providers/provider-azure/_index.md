@@ -12,6 +12,28 @@ For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
+
+## v0.37.1
+
+_Released 2023-10-02_
+
+* The release contains fixing import of `ManagementGroupSubscriptionAssociation.management` resource.
+
+_Refer to the [v0.37.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.37.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.37.1)
+
+## v0.37.0
+
+_Released 2023-09-29_
+
+* Support for new resources: `FlexibleServerActiveDirectoryAdministrator.dbforpostgresql`and `VirtualMachineExtension.compute`
+* The release contains some bug fixes and configuring the default poll jitter for the controllers.
+
+_Refer to the [v0.37.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.37.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.37.0)
+
 ## v0.36.0
 
 _Released 2023-08-23_
