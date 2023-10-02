@@ -11,6 +11,20 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v0.37.0
+
+_Released 2023-09-29_
+
+* Update the GCP Terraform provider to v4.77.0
+* Support for new family providers: `provider-gcp-alloydb` and `provider-gcp-vpcaccess`
+* Support for new resources: `Backup.alloydb`, `Cluster.alloydb`, `Instance.alloydb`
+and `Connector.vpcaccess`
+* The release contains some bug fixes and configuring the default poll jitter for the controllers.
+
+_Refer to the [v0.37.0 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.37.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.37.0)
+
 ## v0.36.0
 
 _Released 2023-08-23_
