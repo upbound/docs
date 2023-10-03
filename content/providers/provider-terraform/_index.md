@@ -1,7 +1,7 @@
 ---
 title: "Provider Terraform"
 weight: 1
-description: Release notes for the AWS official provider
+description: Release notes for the Terraform official provider
 ---
 
 The below release notes are for the Upbound Terraform official provider. These
