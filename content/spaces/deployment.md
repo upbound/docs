@@ -182,8 +182,133 @@ your `ClusterIssuer` name during install using:
 --set ".Values.certificates.space.clusterIssuer=<your ClusterIssuer name>"
 ```
 
+## Ingress
+
+To route requests from an external client (kubectl, ArgoCD, etc) to a
+control plane, a Spaces deployment includes a default [Ingress] manifest. In 
+order to ease getting started scenarios, the current `Ingress` includes 
+configurations (properties and annotations) that assume that you installed the 
+commonly used [ingress-nginx ingress controller] in the cluster. This section 
+walks you through using a different `Ingress`, if that's something that your 
+organization needs.
+
+### Default manifest
+
+An example of what the current `Ingress` manifest included in a Spaces install
+is below:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mxe-router-ingress
+  namespace: upbound-system
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/proxy-ssl-verify: "on"
+    nginx.ingress.kubernetes.io/proxy-ssl-secret: "upbound-system/mxp-hostcluster-certs"
+    nginx.ingress.kubernetes.io/proxy-ssl-name: spaces-router
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "X-Request-Id: $req_id";
+      more_set_headers "Request-Id: $req_id";
+      more_set_headers "Audit-Id: $req_id";
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: mxe-router-tls
+  rules:
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: "/v1/controlPlanes"
+            pathType: Prefix
+            backend:
+              service:
+                name: spaces-router
+                port:
+                  name: http
+```
+
+The notable pieces are:
+1. Namespace
+
+<!-- vale write-good.Passive = NO -->
+<!-- vale Microsoft.Wordiness = NO -->
+This property represents the namespace that the spaces-router is deployed to. 
+In most cases this is `upbound-system`.
+<!-- vale write-good.Passive = YES -->
+<!-- vale Microsoft.Wordiness = YES -->
+
+2. proxy-ssl-* annotations
+
+The spaces-router pod terminates TLS using certificates located in the 
+mxp-hostcluster-certs `Secret` located in the `upbound-system` `Namespace`.
+
+3. proxy-* annotations
+<!-- vale write-good.Passive = NO -->
+Requests coming into the ingress-controller can be variable depending on what
+the client is requesting. For example, `kubectl get crds` has different 
+requirements for the connection compared to a 'watch', for example 
+`kubectl get pods -w`. The ingress-controller is configured to be able to 
+account for either scenario.
+<!-- vale write-good.Passive = YES -->
+
+4. configuration-snippets
+
+These commands add headers to the incoming requests that help with telemetry 
+and diagnosing problems within the system.
+
+5. Rules
+<!-- vale write-good.Passive = NO -->
+Requests coming into the control planes use a `/v1/controlPlanes` prefix and
+need to be routed to the spaces-router.
+<!-- vale write-good.Passive = YES -->
+
+### Using a different ingress manifest
+
+Operators can choose to use an `Ingress` manifest and ingress controller that
+makes the most sense for their organization. If they want to turn off deploying
+the default `Ingress` manifest, they can do so during installation by providing
+the following parameter during installation:
+```shell
+--set ".Values.ingress.provision=false"
+```
+
+<b>Considerations</b>:</br>
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale Microsoft.Avoid = NO -->
+<!-- vale Microsoft.Wordiness = NO -->
+<!-- vale write-good.Passive = NO -->
+Operators will need to take into account the following considerations when 
+disabling the default `Ingress` deployment.
+
+1. Ensure the custom `Ingress` manifest is placed in the same namespace as the
+`spaces-router` pod.
+2. Ensure that the ingress is configured to use a `spaces-router` as a secure
+backend and that the secret used is the mxp-hostcluster-certs secret.
+3. Ensure that the ingress is configured to handle long-lived connections.
+4. Ensure that the routing rule sends requests prefixed with 
+`/v1/controlPlanes` to the `spaces-router` using the `http` port.
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Microsoft.Avoid = YES -->
+<!-- vale Microsoft.Wordiness = YES -->
+<!-- vale write-good.Passive = YES -->
+
 [cert-manager]: https://cert-manager.io/
 [Certificate Custom Resource]: https://cert-manager.io/docs/usage/certificate/
 [ClusterIssuer]: https://cert-manager.io/docs/concepts/issuer/
+[ingress-nginx ingress controller]: https://kubernetes.github.io/ingress-nginx/deploy/
 [installation ideas]: https://cert-manager.io/docs/installation/
+[Ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [Issuer Configuration]: https://cert-manager.io/docs/configuration/
