@@ -24,13 +24,13 @@ Upbound docs CI uses [Vale v2.22.0](https://github.com/errata-ai/vale/releases/t
 Run Vale on all documentation from the command-line with
 
 ```shell
-vale --config="utils/vale/.vale.ini"` content/
+vale --config="utils/vale/.vale.ini" content/
 ```
 
 To run Vale on a single file use
 
 ```shell
-vale --config="utils/vale/.vale.ini"` content/contribute/writing-style-guide.md
+vale --config="utils/vale/.vale.ini" content/contribute/writing-style-guide.md
 ```
 
 {{<hint "tip" >}}
