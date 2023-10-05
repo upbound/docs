@@ -125,8 +125,8 @@ You can find your AWS account ID by selecting the account dropdown in the upper 
 }
 ```
 {{< /editCode >}}
-1. Attach the **AmazonEC2FullAccess** permission policy.
-{{<img src="quickstart/images/aws-ec2fullaccess-policy.png" alt="Applying the AmazonEC2FullAccess policy to the role" quality="100" align="center">}}
+1. Attach the **AdministratorAccess** permission policy.
+{{<img src="quickstart/images/aws-adminaccess-policy.png" alt="Applying the AdministratorAccess policy to the role" quality="100" align="center">}}
 1. Name the role **upbound-eks-role** and select **Create role**.
 {{<img src="quickstart/images/aws-eks-role-name.png" alt="Naming the role upbound-eks-role" quality="100" align="center">}}
 1. View the new role and copy the role ARN.
