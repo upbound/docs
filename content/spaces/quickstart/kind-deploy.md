@@ -60,7 +60,7 @@ export UPBOUND_ACCOUNT=$@<your-upbound-org>$@
 Export the path of the license token JSON file provided by your Upbound account representative.
 
 {{< editCode >}}
-```ini
+```ini {copy-lines="2"}
 # Change the path to where you saved the token.
 export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 ```

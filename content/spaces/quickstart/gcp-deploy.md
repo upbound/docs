@@ -70,7 +70,7 @@ export UPBOUND_ACCOUNT=$@<your-upbound-org>$@
 Export the path of the license token JSON file provided by your Upbound account representative.
 
 {{< editCode >}}
-```ini
+```ini {copy-lines="2"}
 # Change the path to where you saved the token.
 export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 ```
@@ -85,7 +85,7 @@ export SPACES_VERSION=1.1.0
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests. 
 
 {{< editCode >}}
-```ini
+```ini {copy-lines="2"}
 # TODO: Replace this with a domain that you own!
 export SPACES_ROUTER_HOST=$@<proxy.example.com>$@
 ```
