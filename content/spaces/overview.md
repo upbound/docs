@@ -147,7 +147,7 @@ This manifest:
 
 ### Connect to a managed control plane
 
-To connect to a managed control plane in a Space using `up`, run the following:
+<!-- To connect to a managed control plane in a Space using `up`, run the following:
 
 ```bash
 up ctp connect new-control-plane
@@ -158,6 +158,7 @@ The command changes your kubeconfig's current context to the managed control pla
 ```bash
 up ctp disconnect
 ```
+--> 
 
 If you defined your managed control plane via the Kubernetes-style API, you need to tell the Space to publish the connection details for it. Once the control plane is ready, you can use the contents of the secret to connect to it.
 

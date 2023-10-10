@@ -282,9 +282,9 @@ my-control-plane    2012c379-5743-4f65-a473-30037861ef6e   ready    my-configura
 
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "controlplane" -->
-### controlplane connect
+<!-- ### controlplane connect -->
 <!-- vale Upbound.Spelling = YES -->
-
+<!--
 Set the current context of your kubeconfig to a managed control plane 
 `up controlplane connect <name>`.
 
@@ -295,6 +295,7 @@ Set the current context of your kubeconfig to a managed control plane
 ```shell {copy-lines="1"}
 up ctp connect my-control-plane
 ```
+-->
 
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "controlplane" -->
@@ -349,9 +350,9 @@ up ctp connect my-control-plane my-app-ns-1
 
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "controlplane" -->
-#### controlplane connector uninstall
+<!--  #### controlplane connector uninstall -->
 <!-- vale Upbound.Spelling = YES -->
-
+<!-- 
 Disconnect an Kubernetes app cluster from a managed control plane in Upbound. 
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -371,7 +372,7 @@ Disconnect an Kubernetes app cluster from a managed control plane in Upbound.
 up ctp connector uninstall
 <uninstall MCP Connector>
 ```
-
+-->
 <!-- vale Upbound.Spelling = NO -->
 
 <!-- ignore "controlplane" -->
@@ -417,9 +418,10 @@ my-package installed
 
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "controlplane" -->
-### controlplane disconnect
+<!--
+### controlplane disconnect -->
 <!-- vale Upbound.Spelling = YES -->
-
+<!--
 Reset the current context of your kubeconfig to the previous value before connecting to a managed control plane 
 `up controlplane disconnect`.
 
@@ -430,7 +432,7 @@ Reset the current context of your kubeconfig to the previous value before connec
 ```shell {copy-lines="1"}
 up ctp disconnect
 ```
-
+-->
 
 
 <!-- vale Upbound.Spelling = NO -->
