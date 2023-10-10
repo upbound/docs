@@ -33,6 +33,7 @@ kubectl
 Kustomize
 Kube
 Kubelet
+kubeconfig's
 Kyverno
 Kyverno's
 MCP

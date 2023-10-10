@@ -151,14 +151,14 @@ Log in with the up CLI:
 up login
 ```
 
-Connect your app cluster to a namespace in an Upbound managed control plane with `up controlplane connect <control plane name> <namespace>`. This command creates a user token and installs the MCP Connector to your cluster.
+Connect your app cluster to a namespace in an Upbound managed control plane with `up controlplane connector install <control-plane-name> <namespace-to-sync-to>`. This command creates a user token and installs the MCP Connector to your cluster.
 
 {{<hint "note" >}}
 You need to provide your Upbound organization account name with `--account` option if it wasn't specified during login.
 {{< /hint >}}
 
 ```bash {copy-lines="3"}
-up controlplane connect my-control-plane my-app-ns-1 --account my-org-name
+up controlplane connector install my-control-plane my-app-ns-1 --account my-org-name
 ```
 
 The Claim APIs from your managed control plane are now visible in the cluster. You can verify this with `kubectl api-resources`.

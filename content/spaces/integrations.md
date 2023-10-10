@@ -80,3 +80,136 @@ Once you enable the plugin and configure it, the plugin automatically propagates
 
 You can also integrate Flux to target a managed control plane in a Space. Upbound doesn't offer a special plugin; you should follow the same instructions as outlined in the Flux section in [GitOps with Control Planes]({{<ref "concepts/mcp/control-plane-connector.md#flux">}}).
 
+## Secrets management
+
+[Secrets management]({{<ref "xp-arch-framework/interface-integrations/secrets-management.md" >}}) covers integrations that extend a managed control plane's ability to interact with external services for managing Secrets. The default capability of a Crossplane instance is to read and write Kubernetes secrets locally in their cluster. You can configure managed control planes which run in an Upbound Space to read from external secret stores.
+
+### External Secrets Operator
+
+{{< hint "important" >}}
+This feature is supported in Spaces `v1.1.0` and later.
+{{< /hint >}}
+
+Upbound supports installing the [External Secrets Operator (ESO)](https://external-secrets.io/latest/) into a Space-managed control plane. ESO allows your managed control plane to synchronize secrets from external APIs.  
+
+#### Enable the feature
+
+ESO support is an alpha-level feature. You must first enable the capability in your Space before you can install the operator in a managed control plane.
+
+```bash
+helm -n upbound-system upgrade --install spaces \
+  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.eso.enabled=true" \
+  --set "features.alpha.eso.namespace=external-secrets"  \
+  --wait
+```
+
+Once enabled, your Space creates a namespace automatically for each managed control plane. The namespace matches the value you provide in `features.alpha.eso.namespace`. If you have running managed control planes _before_ enabling this feature, you must redeploy them.
+
+#### Install the operator in a managed control plane
+
+Once you've enabled the feature in your Space, use Helm to install the External Secrets Operator into a managed control plane. Add the repository source in Helm.
+
+```bash
+helm repo add external-secrets https://charts.external-secrets.io
+```
+
+Then--with your kubeconfig pointed at a managed control plane--install the operator.
+
+```bash
+helm install external-secrets \
+  external-secrets/external-secrets \
+  -n external-secrets 
+```
+
+{{< hint "tip" >}}
+During install, you may see a warning message like, "WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /tmp/ctp1.yaml". You can ignore the warning. {{< /hint >}}
+
+Once the installation succeeds, you can confirm access to new CRDs such as `SecretStore`, `ExternalSecret`, and more.
+
+```bash {copy-lines="1"}
+kubectl get crds --kubeconfig=/tmp/ctp1.yaml | grep external-secrets
+
+acraccesstokens.generators.external-secrets.io             2023-10-09T13:39:13Z
+clusterexternalsecrets.external-secrets.io                 2023-10-09T13:39:13Z
+clustersecretstores.external-secrets.io                    2023-10-09T13:39:13Z
+ecrauthorizationtokens.generators.external-secrets.io      2023-10-09T13:39:13Z
+externalsecrets.external-secrets.io                        2023-10-09T13:39:13Z
+fakes.generators.external-secrets.io                       2023-10-09T13:39:13Z
+gcraccesstokens.generators.external-secrets.io             2023-10-09T13:39:13Z
+passwords.generators.external-secrets.io                   2023-10-09T13:39:13Z
+pushsecrets.external-secrets.io                            2023-10-09T13:39:13Z
+secretstores.external-secrets.io                           2023-10-09T13:39:13Z
+vaultdynamicsecrets.generators.external-secrets.io         2023-10-09T13:39:13Z
+```
+
+#### Usage
+
+Using ESO in a managed control plane is identical to when it into a Kubernetes cluster or standalone Crossplane instance. Below is an example using AWS Secrets Manager.
+
+First, create a secret in the managed control plane which contains the auth credentials to access the external secret store.
+
+```bash
+kubectl create secret generic awssm-secret \
+  --from-file=./access-key \
+  --from-file=./secret-access-key
+```
+
+Create a SecretStore resource in your managed control plane, referencing the auth secret created in the previous step.
+
+```yaml
+cat <<EOF | kubectl apply -f -
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: aws-secretsmanager
+  namespace: default
+spec:
+  provider:
+    aws:
+      service: SecretsManager
+      region: us-east-1
+      auth:
+        secretRef:
+          accessKeyIDSecretRef:
+            name: awssm-secret
+            key: access-key
+          secretAccessKeySecretRef:
+            name: awssm-secret
+            key: secret-access-key
+EOF
+```
+
+Once you have a secret store configured, you can pull external secrets into your control plane by creating new `ExternalSecrets`. As an example, you can store ProviderConfig credentials in a central secret management service and pull them into your managed control plane.
+
+```yaml
+cat <<EOF | kubectl apply -f -
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: providerconfig-aws-secret
+  namespace: default
+spec:
+  refreshInterval: 15s
+  secretStoreRef:
+    name: aws-secretsmanager
+    kind: SecretStore
+  target:
+    creationPolicy: Owner
+  data:
+  - secretKey: aws_access_key_id
+    remoteRef:
+      key: providerconfigs
+      property: aws_access_key_id
+  - secretKey: aws_secret_access_key
+    remoteRef:
+      key: providerconfigs
+      property: aws_secret_access_key
+EOF
+```
+
+For a full guide on using ESO and how to connect it to various external secret stores, read the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/)

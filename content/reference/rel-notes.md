@@ -6,6 +6,13 @@ weight: 150
 Find below the release notes for all released versions of [Upbound Spaces]({{< ref "spaces/overview.md" >}}).
 
 <!-- vale off -->
+## Spaces v1.1.0 release notes
+
+- Alpha support for enabling External Secrets Operator in a control plane.
+- Control plane api-server autoscaling based on CRD count.
+- Universal Crossplane was bumped from `v1.13.2-up.1` to `v.1.13.2-up.2` for all control planes.
+- new `up` CLI commands to interact with managed control planes in a Space.
+
 ## Spaces v1.0.1 release notes
 
 - Export mxp-gateway metrics via otlp-collector
