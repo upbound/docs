@@ -9,67 +9,44 @@ weight: 105
 that persists between commands. `up` stores this information in a
 configuration file in `~/.up/config.json`.
 
-## Upbound configuration
+## Configuration
 
-The `up` CLI stores configuration information in `~/.up/config.json`.
+The `up` CLI stores configuration information in `~/.up/config.json`. Commands use the specified profile when set via the `--profile` flag or `UP_PROFILE` environment variable. If a profile isn't set, `up` uses the profile specified as `default`.
 
 ### Format
 
-`up` allows users to define profiles that contain sets of preferences and
-credentials for interacting with Upbound. This enables executing commands
-as different users, or in different accounts. The following example defines five
-profiles: `default`, `dev`, `staging`, `prod`, and `ci`. Commands
-use the specified profile when set via the `--profile` flag or `UP_PROFILE`
-environment variable. If a profile isn't set, `up` uses the profile
-specified as `default`, named `default` in this example.
+`up` allows users to define profiles that contain sets of preferences and credentials for interacting with Upbound. This enables executing commands as different users, in different accounts, or different Upbound deployment contexts. 
 
+An `up` profile uses the following format:
+
+{{< editCode >}}
 ```json
 {
   "upbound": {
-    "default": "default",
+    "default": "$@<profile-name>$@",
     "profiles": {
-      "default": {
-        "id": "hasheddan",
-        "type": "user",
-        "session": "abcdefg123456789",
-        "account": "hasheddan"
+      "$@<profile-name>$@": {
+        "id": "$@<individual-username>$@",
+        "type": "$@<profile-type>$@",
+        "session": "$@<session-token>$@",
+        "account": "$@<organization-account>$@"
       },
-      "dev": {
-        "id": "hasheddan",
-        "type": "user",
-        "session": "abcdefg123456789",
-        "account": "dev"
-      },
-      "staging": {
-        "id": "hasheddan",
-        "type": "user",
-        "session": "abcdefg123456789",
-        "account": "staging"
-      },
-      "prod": {
-        "id": "hasheddan",
-        "type": "user",
-        "session": "abcdefg123456789",
-        "account": "prod"
-      },
-      "ci": {
-        "id": "faa2d557-9d10-4986-8379-4ad618360e57",
-        "type": "token",
-        "session": "abcdefg123456789",
-        "account": "my-org"
-      },
+      // other profiles
 }
 ```
+{{< /editCode >}}
 
-### Specifying Upbound instance
+### Profile types
 
-Because Upbound offers both a hosted and self-hosted product, users may be
-logging in and interacting with Upbound or their own installation. `up` assumes 
-by default that a user is interacting with hosted Upbound and uses `https://api.upbound.io` 
-as the domain. All commands that interact with Upbound also accept an `--domain` /
-`UP_DOMAIN`, which overrides the API endpoint.
+You can configure an `up` profile as one of three types:
 
-### Adding or updating a profile
+- **user:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment.
+- **space:** This profile type configures `up` to communicate with an [Upbound Space]({{<ref "/spaces/overview.md" >}}), which requires a `kubecontext`.
+- **token:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment using an API token as the auth method.
+
+## Profile management
+
+### Add or update a profile
 
 To add or update a profile, users can use `up login` with the appropriate
 credentials and a profile name specified. For instance, the following command
@@ -80,12 +57,25 @@ up login --profile test -u hasheddan -p cool-password
 ```
 
 By default the command updates the profile named `default`. Update a specific profile with `--profile`.
-Set an account as the default account with `-a` (`--account`).
+Set an account as the default account with `-a` (`--account`). 
 
-### Setting the default profile
+If users use `up` to create a new Space, `up` automatically adds a new profile configured to communicate with that Space.
+
+### Set the default profile
 
 Running commands without `--profile` or `UP_PROFILE` variable set uses the profile specified as the value to the `default:`.
-If the configuration file is empty when a user logs in, that `user` becomes the default.
+
+If the configuration file is empty when a user logs in, that `user` becomes the default. Or, if the configuration file is empty when a user creates a Space, that `Space` becomes the default.
+
+### Set the current profile
+
+`up` executes commands against the `current` profile. If you have multiple profiles and you want to toggle between contexts, run the following:
+
+{{< editCode >}}
+```ini
+up profile use $@<profile-name>$@
+```
+{{< /editCode >}}
 
 ### Invalidate session tokens
 
