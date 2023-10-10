@@ -67,6 +67,10 @@ To install an Upbound Space into a cluster, it's recommended you dedicate an ent
 up space init "v1.0.1"
 ```
 
+{{< hint "tip" >}}
+For a full guide to getting started with Spaces, read one of the quickstart guides:
+{{< /hint >}}
+
 You can also install the helm chart for Spaces directly. In order for a Spaces install to succeed, you must install some prerequisites first and configure them. This includes:
 
 - UXP
@@ -117,7 +121,13 @@ Managing control planes in a Space works differently than it does when interacti
 
 ### Create a control plane
 
-To create a control plane, declare a new managed control plane like the example below:
+To create a managed control plane in a Space using `up`, run the following:
+
+```bash
+up ctp create ctp1
+```
+
+You can also declare a new managed control plane like the example below and apply it to your Spaces cluster:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -137,13 +147,25 @@ This manifest:
 
 ### Connect to a managed control plane
 
-You need to tell the Space to publish the connection details for the control plane as indicated in the preceding section. Once the control plane is ready, you can use the contents of the secret to connect to it.
+To connect to a managed control plane in a Space using `up`, run the following:
+
+```bash
+up ctp connect ctp1
+```
+
+The command changes your kubeconfig's current context to the managed control plane you specify. If you want to change your kubeconfig back to a previous context, run:
+
+```bash
+up ctp disconnect
+```
+
+You can configure a managed control plane to write its connection details to a secret. Once the control plane is ready, you can use the contents of the secret to connect to it.
 
 ```bash
 kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp1.yaml
 ```
 
-Reference the kubeconfig whenever you want to interact directly with the API server of the control plane (vs the Space's API server):
+When you want to interact directly with a managed control plane, you can reference these connection details (vs the Space's API server):
 
 ```bash
 kubectl get providers --kubeconfig=/tmp/ctp1.yaml
@@ -157,10 +179,16 @@ Learn more in the [Spaces Git integration]({{<ref "spaces/git-integration.md">}}
 
 ### Delete a managed control plane
 
-To delete a managed control plane in the Space, delete the manifest in your Spaces cluster that represents the control plane. Remember, you can get a list of control planes in your Space by issuing the following command:
+To delete a managed control plane in a Space using `up`, run the following:
 
 ```bash
-kubectl get ctp
+up ctp delete ctp1
+```
+
+Or you can use Kubernetes-style semantics to delete the control plane:
+
+```bash
+kubectl delete controlplane ctp1
 ```
 
 ## Next steps

@@ -61,11 +61,15 @@ You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is
 
 ### Create a Space
 
-To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "reference/cli/command-reference.md#space-init">}}) to install an Upbound Space. This command attempts an install into the current cluster context of your kubeconfig.
+To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "reference/cli/command-reference.md#space-init">}}) to install an Upbound Space. Below is an example:
 
 ```bash
-up space init "v1.0.1"
+up space init "v1.1.0"
 ```
+
+{{< hint "tip" >}}
+For a full guide to get started with Spaces, read one of the [quickstart]({{<ref "spaces/quickstart/kind-deploy.md">}}) guides:
+{{< /hint >}}
 
 You can also install the helm chart for Spaces directly. In order for a Spaces install to succeed, you must install some prerequisites first and configure them. This includes:
 
@@ -92,7 +96,7 @@ For a complete tutorial of the helm install, read one of the [quickstarts]({{<re
 To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "reference/cli/command-reference.md#space-upgrade">}}). Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
 ```bash
-up space upgrade "v1.0.1"
+up space upgrade "v1.1.0"
 ```
 
 ### Downgrade a Space
@@ -113,11 +117,17 @@ up space destroy
 
 ## Control plane management
 
-Managing control planes in a Space works differently than it does when interacting with Upbound's SaaS service (explained in the [concepts]({{<ref "concepts/mcp/_index.md">}}) docs). The [up CLI ctp]({{<ref "reference/cli/command-reference.md#controlplane">}}) commands don't work in a Spaces context. All control plane management must happen through a Spaces-local API. When you install a Space, it defines new a API type, `kind: Controlplane`, that you can use to create and manage control planes in the Space.
+You can manage control planes in a Space via the [up CLI]({{<ref "reference/cli/command-reference.md#controlplane">}}) or the Spaces-local Kubernetes API. When you install a Space, it defines new a API type, `kind: Controlplane`, that you can use to create and manage control planes in the Space.
 
-### Create a control plane
+### Create a managed control plane
 
-To create a control plane, declare a new managed control plane like the example below:
+To create a managed control plane in a Space using `up`, run the following:
+
+```bash
+up ctp create ctp1
+```
+
+You can also declare a new managed control plane like the example below and apply it to your Spaces cluster:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -137,7 +147,19 @@ This manifest:
 
 ### Connect to a managed control plane
 
-You need to tell the Space to publish the connection details for the control plane as indicated in the preceding section. Once the control plane is ready, you can use the contents of the secret to connect to it.
+To connect to a managed control plane in a Space using `up`, run the following:
+
+```bash
+up ctp connect new-control-plane
+```
+
+The command changes your kubeconfig's current context to the managed control plane you specify. If you want to change your kubeconfig back to a previous context, run:
+
+```bash
+up ctp disconnect
+```
+
+If you defined your managed control plane via the Kubernetes-style API, you need to tell the Space to publish the connection details for it. Once the control plane is ready, you can use the contents of the secret to connect to it.
 
 ```bash
 kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp1.yaml
@@ -149,18 +171,39 @@ Reference the kubeconfig whenever you want to interact directly with the API ser
 kubectl get providers --kubeconfig=/tmp/ctp1.yaml
 ```
 
-### Configure a control plane
+### Configure a managed control plane
 
 Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space. 
 
 Learn more in the [Spaces Git integration]({{<ref "spaces/git-integration.md">}}) documentation.
 
-### Delete a managed control plane
+### List managed control planes
 
-To delete a managed control plane in the Space, delete the manifest in your Spaces cluster that represents the control plane. Remember, you can get a list of control planes in your Space by issuing the following command:
+To list all managed control planes in a Space using `up`, run the following:
 
 ```bash
-kubectl get ctp
+up ctp list
+```
+
+Or you can use Kubernetes-style semantics to list the control plane:
+
+```bash
+kubectl get controlplanes
+```
+
+
+### Delete a managed control plane
+
+To delete a managed control plane in a Space using `up`, run the following:
+
+```bash
+up ctp delete ctp1
+```
+
+Or you can use Kubernetes-style semantics to delete the control plane:
+
+```bash
+kubectl delete controlplane ctp1
 ```
 
 ## Next steps

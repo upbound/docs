@@ -265,7 +265,6 @@ my-control-plane deleted
 ### controlplane get
 <!-- vale Upbound.Spelling = YES -->
 
-
 Get a managed control plane in Upbound  
 `up controlplane get <name>`.
 
@@ -282,14 +281,50 @@ my-control-plane    2012c379-5743-4f65-a473-30037861ef6e   ready    my-configura
 ```
 
 <!-- vale Upbound.Spelling = NO -->
-
 <!-- ignore "controlplane" -->
 ### controlplane connect
 <!-- vale Upbound.Spelling = YES -->
 
+Set the current context of your kubeconfig to a managed control plane 
+`up controlplane connect <name>`.
+
+**Examples**
+
+* Connect to a managed control plane called `my-control-plane`.
+
+```shell {copy-lines="1"}
+up ctp connect my-control-plane
+```
+
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore "controlplane" -->
+### controlplane connector
+<!-- vale Upbound.Spelling = YES -->
+
+The `up controlplane connector` commands connect or disconnect a Kubernetes app cluster from a managed control plane in Upbound.
+
+All `up controlplane connector` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
+|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
+|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+{{< /table >}}
+
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore "controlplane" -->
+#### controlplane connector install
+<!-- vale Upbound.Spelling = YES -->
 
 Connect a Kubernetes app cluster outside of Upbound to a managed control plane in Upbound. This command creates an `APIService` resource in the Kubernetes app cluster for every claim API in the managed control plane. As a result, the claim APIs are available in the Kubernetes app cluster just like all native Kubernetes API.
-`up controlplane connect <name> <namespace>`.
+`up controlplane connector install <control-plane-name> <namespace-to-sync-to>`.
+
+{{<hint "tip" >}}
+Your kubeconfig should be pointing at your **Kubernetes app cluster** in order for this command to succeed.
+{{< /hint >}}
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -305,16 +340,37 @@ Connect a Kubernetes app cluster outside of Upbound to a managed control plane i
 
 **Examples**
 
-* Connect an app cluster to a managed control plane called `my-control-plane` and connected to a namespace `my-app-ns-1`.
+* Connect an app cluster to a managed control plane called `my-control-plane` and connected to a namespace `my-app-ns-1` in the control plane.
 
 ```shell {copy-lines="1"}
 up ctp connect my-control-plane my-app-ns-1
 <install MCP Connector>
 ```
 
-{{<hint "tip" >}}
-Your kubeconfig should be pointing at your **Kubernetes app cluster** in order for this command to succeed.
-{{< /hint >}}
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore "controlplane" -->
+#### controlplane connector uninstall
+<!-- vale Upbound.Spelling = YES -->
+
+Disconnect an Kubernetes app cluster from a managed control plane in Upbound. 
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|    | `--kubeconfig=STRING`        |   Override the default kubeconfig path. |
+|    | `--set=KEY=VALUE;...`        |   Set parameters. |
+| `-f`  | `--file=FILE`        |   Parameters file. |
+|    | `--bundle=BUNDLE`        |   Local bundle path. |
+{{< /table >}}
+
+**Examples**
+
+* Disconnect an app cluster from a managed control plane called `my-control-plane`.
+
+```shell {copy-lines="1"}
+up ctp connector uninstall
+<uninstall MCP Connector>
+```
 
 <!-- vale Upbound.Spelling = NO -->
 
@@ -360,7 +416,24 @@ my-package installed
 ```
 
 <!-- vale Upbound.Spelling = NO -->
+<!-- ignore "controlplane" -->
+### controlplane disconnect
+<!-- vale Upbound.Spelling = YES -->
 
+Reset the current context of your kubeconfig to the previous value before connecting to a managed control plane 
+`up controlplane disconnect`.
+
+**Examples**
+
+* Connect to a managed control plane called `my-control-plane`.
+
+```shell {copy-lines="1"}
+up ctp disconnect
+```
+
+
+
+<!-- vale Upbound.Spelling = NO -->
 <!-- ignore "controlplane" -->
 ### controlplane provider install
 <!-- vale Upbound.Spelling = YES -->
