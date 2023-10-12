@@ -13,6 +13,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.42.0
+
+_Released 2023-10-12_
+
+* Support for new resources: `SecurityGroupEgressRule.ec2`, `SecurityGroupIngressRule.ec2`
+* The release contains some bug fixes, updates of dependencies, and promoting granular management policies to Beta.
+
+_Refer to the [v0.42.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.42.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.42.0)
+
 ## v0.41.0
 
 _Released 2023-09-29_
