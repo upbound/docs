@@ -45,8 +45,30 @@ You can connect an external Argo CD instance to your managed control plane to sy
 up ctp kubeconfig get -a <organization> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml
 ```
 
-2. Save the kubeconfig as a secret on the external Kubernetes cluster where you installed Argo.
-3. Define a new Argo `Application` resource representing your managed control plane.
+2. Save the kubeconfig of the managed control plane as a secret on the external Kubernetes cluster where you installed Argo. The kubeconfig you get from Upbound has all the values required to translate into the format Argo expects like the below example. The secret should match the following configuration:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mcp-kubeconfig-secret
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: <cluster-name-in-argo>
+  server: https://proxy.upbound.io/v1/controlPlanes/<upbound-org-account-name>/<control-plane-name>/k8s
+  config: |
+    {
+      "bearerToken": "<authentication token>",
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "<base64 encoded certificate>"
+      }
+    }
+```
+
+3. Define a new Argo `Application` resource representing your managed control plane. In `spec.destination.name`, provide the same name as what you set in the preceding secret's `stringData.name`.
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -55,8 +77,7 @@ metadata:
   name: managed-control-plane
 spec:
   destination:
-    server: <cluster-api-url>
-    namespace: <namespace-in-controlplane-to-sync-to>
+    name: <cluster-name-in-argo>
   project: default
   source:
     path: claims
@@ -190,15 +211,39 @@ Install the MCP Connector Helm chart with `helm install`. Make sure to update th
 
 ```bash
 helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system /
-  --set mcp.account=your-upbound-org-account 
-  --set mcp.name=your-control-plane-name   
-  --set mcp.namespace=your-app-ns-1   
+  --set mcp.account='your-upbound-org-account' 
+  --set mcp.name='your-control-plane-name'   
+  --set mcp.namespace='your-app-ns-1'   
   --set mcp.token='replace-with-an-API-token-from-Upbound'   
 ```
 
 {{<hint "tip" >}}
 Create an API token from the Upbound user account settings page in the console by following [these instructions]({{<ref "concepts/console#create-a-personal-access-token" >}}).
 {{< /hint >}}
+
+### Uninstall
+
+#### With the up CLI
+
+Disconnect an app cluster that you prior installed the MCP connector on by running the following:
+
+```bash
+up ctp connector uninstall <namespace>
+```
+
+This command uninstalls the helm chart for the MCP connector from an app cluster. It moves any claims in the app cluster into the managed control plane at the specified namespace.
+
+{{<hint "tip" >}}
+Make sure your kubeconfig's current context is pointed at the app cluster where you want to uninstall MCP connector from.
+{{< /hint >}}
+
+#### With Helm
+
+You can uninstall MCP connector with Helm by running the following:
+
+```bash
+helm uninstall mcp-connector
+```
 
 ### Example usage
 
