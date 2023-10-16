@@ -18,6 +18,10 @@ scope:
 - mxp-gateway: metrics about the ingress into a control plane
 - otel-collector: single endpoint for observing inside the Space
 
+This guide explains how you can use a reference Grafana dashboard built by Upbound to aid in monitoring a Spaces installation.
+
+{{<img src="spaces/images/spaces-dashboard.png" alt="The reference Grafana dashboard built by Upbound for Spaces" quality="100" lightbox="true">}}
+
 ## Per Space metrics
 
 The `otel-collector` exposes metrics from within a specific vCluster, 
