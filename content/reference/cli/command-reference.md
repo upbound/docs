@@ -1204,7 +1204,7 @@ my-token   1987b8c2-b364-4787-9ce2-39493f3db6ad   5m20s
 
 ## space
 
-The `up space` commands allow you to install and manage an [Upbound Space]({{<ref "/spaces/overview.md">}}) on a Kubernetes cluster.
+The `up space` commands allow you to install and manage an [Upbound Space]({{<ref "/spaces">}}) on a Kubernetes cluster.
 
 All `up space` commands support the following options: 
 

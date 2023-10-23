@@ -7,7 +7,7 @@ weight: 100
 
 Upbound provides support and software maintenance to paid customers. Supported software products include:
 
-* [Spaces]({{< ref "spaces/overview.md" >}})
+* [Spaces]({{< ref "spaces" >}})
 * [UXP]({{< ref "uxp/_index.md" >}})
 * [Official Providers]({{< ref "providers/_index.md" >}})
 

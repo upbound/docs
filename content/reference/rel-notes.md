@@ -3,7 +3,7 @@ title: Release Notes
 weight: 150
 ---
 
-Find below the release notes for all released versions of [Upbound Spaces]({{< ref "spaces/overview.md" >}}).
+Find below the release notes for all released versions of [Upbound Spaces]({{< ref "spaces" >}}).
 
 <!-- vale off -->
 ## Spaces v1.1.0 release notes
