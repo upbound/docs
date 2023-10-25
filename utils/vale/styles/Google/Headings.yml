@@ -19,6 +19,7 @@ exceptions:
   - "Configure Git reference"
   - "Example Prometheus installation"
   - "External Secrets Operator"
+  - "Generally Available"
   - "Integrate with Argo CD and Flux"
   - "Install an Upbound Space"
   - "Install a Space"
