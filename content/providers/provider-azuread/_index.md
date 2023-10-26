@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.13.0
+
+_Released 2023-10-26_
+
+* The release contains updates of dependencies and promoting granular management policies to Beta.
+
+_Refer to the [v0.13.0 release notes](https://github.com/upbound/provider-azuread/releases/tag/v0.13.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.13.0)
+
 ## v0.12.0
 
 _Released 2023-09-29_
