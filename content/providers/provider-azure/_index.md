@@ -13,6 +13,18 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.38.0
+
+_Released 2023-10-26_
+
+* Support for new family providers: `provider-azure-containerapp` and `provider-azure-loadtestservice`
+* Support for new resources: `ContainerApp.containerapp`, `Environment.containerapp` and `LoadTest.loadtestservice`
+* The release contains some bug fixes, updates of dependencies, and promoting granular management policies to Beta.
+
+_Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.0)
+
 ## v0.37.1
 
 _Released 2023-10-02_

@@ -13,6 +13,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.43.0
+
+_Released 2023-10-26_
+
+* Support for new resource: `ServerlessCluster.kafka`
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.43.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.43.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.43.0)
+
 ## v0.42.0
 
 _Released 2023-10-12_

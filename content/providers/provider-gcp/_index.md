@@ -11,6 +11,16 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v0.38.0
+
+_Released 2023-10-26_
+
+* The release contains some bug fixes, updates of dependencies, and promoting granular management policies to Beta.
+
+_Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.38.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.38.0)
+
 ## v0.37.0
 
 _Released 2023-09-29_
