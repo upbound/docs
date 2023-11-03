@@ -3,8 +3,6 @@ title: IP Addresses
 weight: 199
 ---
 
-<!-- vale off -->
-## IP Addresses
 
 Upbound Infrastructure uses the following egress addresses for hosted control
 planes:
