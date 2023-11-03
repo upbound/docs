@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.13.1
+
+_Released 2023-11-02_
+
+* This release updates Crossplane Runtime to v1.14.1 which includes a fix in the retry mechanism while persisting the critical annotations.
+
+_Refer to the [v0.13.1 release notes](https://github.com/upbound/provider-azuread/releases/tag/v0.13.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.13.1)
+
 ## v0.13.0
 
 _Released 2023-10-26_

@@ -11,6 +11,16 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v0.38.1
+
+_Released 2023-11-02_
+
+* This release updates Crossplane Runtime to v1.14.1 which includes a fix in the retry mechanism while persisting the critical annotations.
+
+_Refer to the [v0.38.1 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.38.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.38.1)
+
 ## v0.38.0
 
 _Released 2023-10-26_
