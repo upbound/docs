@@ -13,8 +13,10 @@ planes:
 - 34.72.41.44 
 - 35.238.114.228 
 
-This list of IP Addresses is stable, however, Upbound reserves the right to change this
-list as infrastructure needs change. 
+{{< hint "note" >}}
+Upbound reserves the right to change this
+list of IP addresses.
+{{< /hint >}}
 
 ## Allow List
 
