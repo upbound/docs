@@ -221,7 +221,7 @@ In the _Identifier of GCP project_ field enter your **[GCP project ID](https://s
 For the _Name of federated identity provider_, edit your _GCP Project ID_ and enter:
 {{< editCode >}}
 ```yaml
-projects/$@<GCP Project ID>$@/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider
+projects/$@<GCP Project Number>$@/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider
 ```
 {{< /editCode >}}
 
@@ -229,10 +229,14 @@ projects/$@<GCP Project ID>$@/locations/global/workloadIdentityPools/upbound-oid
 
 {{<hint "note" >}}
 The identity provider format is:
-`projects/<GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<OIDC_POOL_NAME>/providers/<OIDC_POOL_PROVIDER_NAME>`
+```
+projects/<GCP_PROJECT_NUMBER>/locations/global/workloadIdentityPools/<OIDC_POOL_NAME>/providers/<OIDC_POOL_PROVIDER_NAME>
+```
 {{< /hint >}}
 
 <br />
+
+In the _Identifier of GCP Project_ enter the Project ID.
 
 In the _Name of federated identity provider_ field.  
 
@@ -240,8 +244,7 @@ In the _Attached service account email address_ field enter the **service accoun
 
 {{<img src="quickstart/images/gcp-oidc-finalize.png" alt="Upbound configuration to connect to GCP with OIDC" size="medium" quality="100" lightbox="true">}}
 
-Select **Authenticate**.  
-Select **Launch Control Plane**.
+Select **Finalize & Launch Control Plane**.
 
 ## Welcome to the Upbound Console
 
