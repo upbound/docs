@@ -218,7 +218,7 @@ Back in Upbound, finish configuring the identity provider.
 
 In the _Identifier of GCP project_ field enter your **[GCP project ID](https://support.google.com/googleapi/answer/7014113)**.  
 
-For the _Name of federated identity provider_, edit your _GCP Project ID_ and enter:
+For the _Name of federated identity provider_, edit your _GCP Project Number_ and enter:
 {{< editCode >}}
 ```yaml
 projects/$@<GCP Project Number>$@/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider

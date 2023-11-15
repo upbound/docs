@@ -434,10 +434,10 @@ Next, scroll past the instructions to the bottom of the form.
 
 
 
-For the _providerID_ field, enter the following after editing your _GCP Project ID_:
+For the _providerID_ field, enter the following after editing your _GCP Project Number_:
 {{< editCode >}}
 ```yaml
-projects/$@<GCP Project ID>$@/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider
+projects/$@<GCP Project Number>$@/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider
 ```
 {{< /editCode >}}
 
@@ -445,7 +445,7 @@ projects/$@<GCP Project ID>$@/locations/global/workloadIdentityPools/upbound-oid
 
 {{<hint "note" >}}
 The identity provider format is:
-`projects/<GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<OIDC_POOL_NAME>/providers/<OIDC_POOL_PROVIDER_NAME>`
+`projects/<GCP_PROJECT_Number>/locations/global/workloadIdentityPools/<OIDC_POOL_NAME>/providers/<OIDC_POOL_PROVIDER_NAME>`
 {{< /hint >}}
 
 <br />
