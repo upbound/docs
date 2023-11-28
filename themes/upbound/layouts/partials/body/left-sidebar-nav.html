@@ -42,25 +42,22 @@
                         {{ $hasContent := not $noContent }}
 
                         <!-- Parent Menu Button -->
-                        <div class="list-group-item list-group-item-action nav-child d-flex flex-row subheader position-relative {{ if .Page.Params.tocHidden }}d-none{{end}}" id="{{.Title}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$subid}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed');">
-                            <div class="button-container left-offset z-3 {{if not .Pages}}hide{{end}}"> <!-- Increase z-index to put the button over the stretched-link -->
-                                <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $subexpand}} collapsed {{end}}" type="button" aria-expanded="false" aria-controls="collapse-{{$subid}}" title="Close/Expand" ></div>
+                        <div class="list-group-item list-group-item-action nav-child d-flex flex-row subheader position-relative {{ if .Page.Params.tocHidden }}d-none{{end}}" id="{{.Title}}" data-bs-toggle="collapse" data-bs-target="#collapse-{{$subid}}" onclick="this.querySelector('.accordion-button').classList.toggle('collapsed'); window.location.href='{{.Permalink}}';">
+                            <div class="button-container left-offset z-3 {{if not .Pages}}hide{{end}}">
+                                <!-- Increase z-index to put the button over the stretched-link -->
+                                <div id="{{.Title}}-button" class="mx-0 accordion-button accordion accordion-item {{if not $subexpand}}collapsed{{end}}" type="button" aria-expanded="{{if $subexpand}}true{{else}}false{{end}}" aria-controls="collapse-{{$subid}}" title="Close/Expand"></div>
                             </div>
                             <span class="subheader-title">{{.Title }}</span>
-                            <!-- <a href="{{.Permalink}}" class="d-flex stretched-link subheader-link child-link">
-                                {{.Title }} - hasContent: {{$hasContent}}
-                            </a> -->
                         </div>
+
 
                         <div id="{{.Title}}-children" class="{{ if .Page.Params.tocHidden }}d-none{{end}}">
                             <div class="subpages collapse list-group {{if $subexpand}} show {{end}}" id="collapse-{{$subid}}">
                                 {{if .Content}}
-                                    <div class="list-group-item list-group-item-action nav-child child-link-container subheader-overview d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
-                                        <div class="left-offset hide"></div>
-                                        <a href="{{.Permalink}}" class="stretched-link child-link">
-                                            Overview
-                                        </a>
-                                    </div>
+                                <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if or (not .Page.Params.tocHidden) (eq .CurrentSection "contribute") }}d-none{{end}}">
+                                    <div class="left-offset hide"></div>
+                                <a href="{{.Permalink}}" class="stretched-link child-link">{{ .Title }}</a>
+                            </div>
                                 {{end}}
                                 {{ range .Pages }}
                                     <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
