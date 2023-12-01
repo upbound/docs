@@ -13,6 +13,18 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.14.0
+
+_Released 2023-11-30_
+
+* This release brings a change with how interact with the underlying Terraform AzureAD provider. Instead of interfacing with
+Terraform via the TF CLI, the new implementation consumes the Terraform provider's Go provider schema and invokes the CRUD
+functions registered in that schema, and no longer fork the underlying Terraform provider process.
+
+_Refer to the [v0.14.0 release notes](https://github.com/upbound/provider-azuread/releases/tag/v0.14.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.14.0)
+
 ## v0.13.1
 
 _Released 2023-11-02_

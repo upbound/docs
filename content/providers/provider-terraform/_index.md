@@ -13,6 +13,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.12.0
+
+_Released 2023-11-30_
+
+* Adds example for `provider config` terraform for Azure.
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.12.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.12.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.12.0)
+
 ## v0.11.0
 
 _Released 2023-10-26_
