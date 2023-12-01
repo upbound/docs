@@ -13,6 +13,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.39.0
+
+_Released 2023-11-30_
+
+* Support for new resource: `VirtualMachineDataDiskAttachment.compute`
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.39.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.39.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.39.0)
+
 ## v0.38.2
 
 _Released 2023-11-02_
