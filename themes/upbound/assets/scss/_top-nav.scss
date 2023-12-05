@@ -138,4 +138,27 @@
             }
         }
     }
+
+    .nav-item {
+        margin: 0; // Adjust as needed
+        position: absolute;
+        right: 0;
+        top: 0; // Adjust as needed
+
+        // Align with search panel padding and margins
+        margin-top: 10px; // Adjust as needed
+        margin-right: 16px; // Adjust as needed
+    }
+
+    .form-check.form-switch.color-switcher {
+        // Add styles for the form-check container here
+    }
+
+    .form-check-input {
+        // Add styles for the checkbox input here
+    }
+
+    .form-check-label {
+        // Add styles for the label here
+    }
 }
