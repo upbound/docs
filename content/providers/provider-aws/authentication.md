@@ -429,7 +429,7 @@ The following is a full example trust policy.
 }
 ```
 
-### Create a RuntConfig
+### Create a RuntimeConfig
 
 IRSA relies on an annotation on the service account attached to a pod to
 identify the IAM role to use. 
