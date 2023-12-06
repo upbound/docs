@@ -356,7 +356,7 @@ Configuring IRSA with the AWS Provider requires:
 * an AWS 
 [IAM OIDC Provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
 * an AWS IAM Role with an editable [trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#term_trust-policy)
-* a ControllerConfig to add an annotation on the AWS Provider service account
+* a RuntimeConfig to add an annotation on the AWS Provider service account
 * a ProviderConfig to enable IRSA authentication
 
 ### Create an IAM OIDC provider
@@ -429,15 +429,15 @@ The following is a full example trust policy.
 }
 ```
 
-### Create a ControllerConfig
+### Create a RuntConfig
 
 IRSA relies on an annotation on the service account attached to a pod to
 identify the IAM role to use. 
 
-Crossplane uses a ControllerConfig to apply settings to the provider, including 
+Crossplane uses a RuntimeConfig to apply settings to the provider, including 
 the provider service account.
 
-Create a {{<hover label="cc" line="2">}}ControllerConfig{{</hover>}} object to
+Create a {{<hover label="cc" line="2">}}RuntimeConfig{{</hover>}} object to
 apply a custom annotation to the provider service account. 
 
 In the {{<hover label="cc" line="3">}}metadata{{</hover>}} create an 
@@ -449,20 +449,20 @@ The {{<hover label="cc" line="7">}}spec{{</hover>}} is empty.
 
 ```yaml {label="cc"}
 apiVersion: pkg.crossplane.io/v1alpha1
-kind: ControllerConfig
+kind: RuntimeConfig
 metadata:
-  name: irsa-controllerconfig
+  name: irsa-runtimeconfig
   annotations:    
     eks.amazonaws.com/role-arn: arn:aws:iam::622346257358:role/my-custom-role
 spec: {}    
 ```
 
-### Apply the ControllerConfig
+### Apply the RuntimeConfig
 
 Install or update the provider with a 
-{{<hover label="provider" line="7">}}controllerConfigRef{{</hover>}} with the
+{{<hover label="provider" line="7">}}runtimeConfigRef{{</hover>}} with the
 {{<hover label="provider" line="8">}}name{{</hover>}} of the 
-{{<hover label="cc" line="4">}}ControllerConfig{{</hover>}}.
+{{<hover label="cc" line="4">}}RuntimeConfig{{</hover>}}.
 
 ```yaml {label="provider"}
 apiVersion: pkg.crossplane.io/v1
@@ -471,13 +471,13 @@ metadata:
   name: provider-aws-s3
 spec:
   package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
-  controllerConfigRef:
-    name: irsa-controllerconfig
+  runtimeConfigRef:
+    name: irsa-runtimeconfig
 ```
 
 After the provider finishes installing verify Crossplane applied the 
 {{<hover label="sa" line="5">}}annotation{{</hover>}}
-on the service account from the ControllerConfig. 
+on the service account from the RuntimeConfig. 
 
 {{<hint "note" >}}
 <!-- vale Google.WordList = NO -->
@@ -497,7 +497,7 @@ Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/
 # Removed for brevity
 ```
 
-Apply the `controllerConfig` to each family provider using the same IAM role.
+Apply the `runtimeConfig` to each family provider using the same IAM role.
 
 ### Create a ProviderConfig
 
