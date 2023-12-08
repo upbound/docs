@@ -1,5 +1,6 @@
 ---
 title: "Users"
+description: "Creating and managing Upbound users"
 aliases:
     - "/users"
     - "/users/register"

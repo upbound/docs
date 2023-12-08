@@ -1,6 +1,7 @@
 ---
 title: "Upgrade UXP"
 weight: 210
+description: "How to uninstall Upbound UXP"
 ---
 
 Use the `up` command-line Upbound Universal Crossplane (UXP) to upgrade an existing install to a newer version or to upgrade from open source Crossplane.

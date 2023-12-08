@@ -1,6 +1,7 @@
 ---
 title: "DMCA Policy"
 weight: 10000
+description: "Upbound Marketplace DMCA Policy"
 ---
 
 <!-- vale off -->
