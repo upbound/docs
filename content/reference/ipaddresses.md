@@ -1,6 +1,7 @@
 ---
 title: IP Addresses
 weight: 199
+description: "List of IP addresses used in the Upbound infrastructure"
 ---
 
 
