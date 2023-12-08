@@ -1,6 +1,7 @@
 ---
 title: "Monolithic providers"
 weight: 20
+description: "Support information for legacy monolithic Crossplane Providers"
 ---
 
 Upbound delivered the AWS, GCP and Azure official providers as a single 

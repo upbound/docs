@@ -1,6 +1,7 @@
 ---
 title: Product Lifecycle
 weight: 100
+description: "Information on Upbound software versions and release policies" 
 ---
 
 ## Software list
