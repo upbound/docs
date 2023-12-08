@@ -13,6 +13,19 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.46.0
+
+_Released 2023-12-08_
+
+* Support for new family provider: `provider-aws-identitystore`
+* Support for new resource: `Group.identitystore`, `GroupMembership.identitystore`, `User.identitystore`,
+`CustomerManagedPolicyAttachment.ssoadmin`, `InstanceAccessControlAttributes.ssoadmin` and `PermissionsBoundaryAttachment.ssoadmin`
+* The release contains some bug fixes adding a new family provider, adding new resources, and updates of dependencies.
+
+_Refer to the [v0.46.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.46.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.46.0)
+
 ## v0.45.0
 
 _Released 2023-11-30_
