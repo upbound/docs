@@ -1,5 +1,5 @@
 // The collection of things to load on all pages
-import ColorMode from './colorMode';
+import ColorMode from './colorMode.js';
 import 'instant.page';
 
 

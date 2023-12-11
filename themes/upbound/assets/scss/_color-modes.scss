@@ -1,22 +1,19 @@
 :root {
   color-scheme: light dark;
-
   body{
     background: var(--body-background);
     color: var(--body-font-color);
-  }
 
-  ::selection {
-    background: var(--body-selection);
   }
 }
 
 :root[color-theme="light"] {
+  @import "code-theme-base";
   @import "color-mode-light";
   @include light-mode;
 
-  @import "code-theme";
-  @include code-theme;
+  @import "code-theme-light";
+  @include code-theme-light;
 
 
   // Don't dim images in light mode
@@ -29,25 +26,29 @@
 }
 
 :root[color-theme="dark"] {
+  @import "code-theme-base";
   @import "color-mode-dark";
   @include dark-mode;
 
-  @import "code-theme";
-  @include code-theme;
+  @import "code-theme-dark";
+  @include code-theme-dark;
 
-  // Dim all images in dark mode
-  img {
-        filter: brightness(.8) contrast(1.2);
-  }
+    // Dim all images in dark mode
+    img {
+      filter: brightness(.8) contrast(1.2);
+    }
 
-  // Set the default image background to white
-  // Without this transparent images are hard to see
-  .bd-content img {
-    background-color: #fff;
-  }
+    // Set the default image background to white
+    // Without this transparent images are hard to see
+    .bd-content img {
+      background-color: #fff;
+    }
 
-  // But don't set the background to white on the home page tiles
-  .home-card img {
-    background: none;
-  }
+    // But don't set the background to white on the home page tiles
+    .home-card img {
+      background: none;
+    }
 }
+
+
+

@@ -14,15 +14,18 @@ $font-size: 14px;
         --bs-list-group-border-width: 0;
     
         // Default nav item state
-        --bs-list-group-action-hover-bg: #{$up-neutral-50};
+        --bs-list-group-action-hover-bg: var(--bs-nav);
     
         // Clicked on nav menu item
-        --bs-list-group-action-active-color: #{$up-purple-400};
-        --bs-list-group-action-active-bg: #{$up-purple-100};
+        --bs-list-group-action-active-color: var(--nav-item-click);
+        --bs-list-group-active-bg: var(--nav-item-click-bg);
+
     
         // Active nav menu item
-        --bs-list-group-active-color: #{$up-purple-400};
-        --bs-list-group-active-bg: #{$up-purple-100};
+
+        --bs-list-group-active-color: var(--nav-item-active);
+        --bs-list-group-active-bg: var(--latest-pill-background);
+
         --bs-accordion-border-radius: 4;
     
         --bs-list-group-item-padding-y: 10px;
@@ -67,7 +70,7 @@ $font-size: 14px;
         padding: 8px $nav-section-lr-padding;
 
         &:not(.disabled):hover{
-            background-color: #{$up-neutral-50};
+            background-color: var(--latest-pill-background);
             cursor: pointer;
         }
 
@@ -100,7 +103,7 @@ $font-size: 14px;
     
     a {
         text-decoration: none;
-        color: inherit;
+        color: var(--font-color);
         font-size: $font-size;
     }
 
@@ -109,7 +112,7 @@ $font-size: 14px;
 
         .subheader-title {
             font-size: $font-size;
-            color: $font-color-dark;
+            color: var(--font-color);
         }
     }
 

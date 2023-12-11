@@ -70,7 +70,7 @@
 
     code {
       color: #{$up-grey-000};   // Code color if there is no defined highlighter style
-      background-color: #{$up-grey-850n};
+      background-color: var(--code-block-background-color);
       padding: 0.2em 0.4em;
       font-size: $up-code-font-size !important; //.95rem !important;
       line-height: $up-code-line-height; //1.45em;
