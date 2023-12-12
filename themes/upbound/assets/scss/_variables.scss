@@ -18,6 +18,7 @@ $list-group-active-color:           $component-active-color !default;
 $list-group-active-bg:              $component-active-bg !default;
 $list-group-active-border-color:    $list-group-active-bg !default;
 
+
 // Variables ending with an "n" have accurate numbers that match their relative location on that color's light-dark spectrum.
 
 $up-purple-50:          #F5EEFE !default;
@@ -106,4 +107,5 @@ $color-admonition-background: transparent;
   --bs-body-color: #{$font-color-dark};
   letter-spacing: 0.33px;
   scroll-behavior: smooth;
+
 }

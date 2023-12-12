@@ -5,6 +5,7 @@
     color: var(--body-font-color);
 
   }
+
 }
 
 :root[color-theme="light"] {
@@ -14,6 +15,11 @@
 
   @import "code-theme-light";
   @include code-theme-light;
+  .logo-container img {
+    content: var(--logo-container);
+  }
+  --logo-container: url('/img/logos/upbound-docs.svg');
+
 
 
   // Don't dim images in light mode
@@ -26,6 +32,13 @@
 }
 
 :root[color-theme="dark"] {
+
+    --logo-container: url('/img/logos/up-docs-white.svg');
+
+
+
+
+
   @import "code-theme-base";
   @import "color-mode-dark";
   @include dark-mode;
@@ -38,6 +51,10 @@
       filter: brightness(.8) contrast(1.2);
     }
 
+    .logo-container img {
+      content: var(--logo-container);
+    }
+  
     // Set the default image background to white
     // Without this transparent images are hard to see
     .bd-content img {
