@@ -5,10 +5,10 @@
     background-color: var(--background-color);
     margin: -65px auto 0;
     max-width: 424px;
-    position:absolute;
+    position:relative;
     z-index: 1;
     max-height: 500px;
-    overflow: scroll;
+    overflow:scroll;
     border-radius: 8px;
     box-shadow: 0 4px 4px 0 rgba(3, 7, 36, .12);
 }
@@ -37,12 +37,12 @@
         }
 
         .search-container {
-            width: 90%;
+            width: 91%;
         }
 
         .search-results,
         .no-results-container {
-            width: 90%;
+            width: 98%;
         }
 
         .nav-item {           
@@ -121,14 +121,15 @@
                     box-shadow: none;
                     height: 100%;
                     background-color: var(--background-color);
+                    color: var(--body-font-color);
         
                     &::placeholder {
-                        color: #{$up-neutral-400};
+                        color: var(--body-font-color);
                     }
                 }
         
                 svg {
-                    fill: #{$up-neutral-600};
+                    fill: var(--body-font-color);
                 }
 
                 .close-search {
@@ -141,12 +142,19 @@
         .search-results {
             @include content-hierarchy;
             padding: 70px 10px 10px;
+            
+            
+        }
+
+        .search-results::-webkit-scrollbar {
+            background-color: transparent;
+
         }
 
         .no-results-container {
             @include content-hierarchy;
             padding: 70px 16px 16px;
-            color: #{$up-neutral-400};
+            color: var(--body-font-color);
 
             .iconDiv {
                 margin-right: 8px;
@@ -157,7 +165,7 @@
                 }
 
                 .grey-icon {
-                    fill: #{$up-neutral-400};
+                    fill: var(--body-font-color);
                 }
             }
         }

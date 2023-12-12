@@ -8,6 +8,12 @@
 
 }
 
+img {
+  filter: none;
+}
+
+
+
 :root[color-theme="light"] {
   @import "code-theme-base";
   @import "color-mode-light";
@@ -19,7 +25,7 @@
     content: var(--logo-container);
   }
   --logo-container: url('/img/logos/upbound-docs.svg');
-
+  --fill-color: #black;
 
 
   // Don't dim images in light mode
@@ -60,7 +66,6 @@
     .bd-content img {
       background-color: #fff;
     }
-
     // But don't set the background to white on the home page tiles
     .home-card img {
       background: none;

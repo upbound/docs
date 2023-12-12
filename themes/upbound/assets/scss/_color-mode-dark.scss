@@ -2,7 +2,7 @@
     // body and content
     --body-background: #{$up-neutral-900};
     --body-font-color: #{$up-grey-000};
-    --content-link-color: #{$up-purple-400};
+    --content-link-color: #{$up-purple-300};
     --anchor-link-color: #{$up-neutral-200};
     --rss-icon-fill: #{$persian-indigo};
     --font-color: white;
@@ -17,6 +17,7 @@
     --bs-list-group-active-bg: #{$up-grey-700n};
     --bs-list-group-active-color: white;
     --bs-nav: #222828;
+    --brightness: #{brightness(100000%)};
 
 
 
@@ -50,13 +51,14 @@
 
     //hint boxes
     --hint-important-background:                #623A2B; 
-    --hint-important:                           #090501; 
-    --hint-warning-background:                  #4B1929; 
-    --hint-warning:                             #090101; 
-    --hint-tip-background:                      #184557;
-    --hint-tip:                                 #010609;
+    --hint-important:                           #90532E; 
+    --hint-warning-background:                  #641F2C; 
+    --hint-warning:                             #932B2E; 
+    --hint-tip-background:                      #13364A;
+    --hint-tip:                                 #184557;
     --hint-note-background:                     #2b2b31;
     --hint-note:                                #070808;
+    --fill-color:                               white;
 
     //Search Related
     --search-box-background: var(--body-background);
@@ -78,7 +80,7 @@
     }
     // Add hover border over clickable area
     .accordion-button:hover, .accordion-button:not(.collapsed):hover {
-        outline: 2px solid #{$russian-violet};
+        outline: 2px solid #9B5EFC;
     }
     // Color text and background
     .accordion-button {
@@ -86,7 +88,7 @@
         color: #{$up-grey-000} !important;
     }
     .accordion-item {
-        background-color: #{$russian-violet};
+        background-color: #9B5EFC;
         color: #{$up-grey-000};
     }
     // Load chevron svg as manually-inputed $up-grey-000 hex code

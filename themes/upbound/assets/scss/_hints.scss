@@ -15,6 +15,7 @@ $hint-tip-background:           var(--hint-tip-background);
 
 $hint-note:                     var(--hint-note);
 $hint-note-background:          var(--hint-note-background);
+$fill-color:                    var(--fill-color);
 
 // Style based on Furo https://github.com/pradyunsg/furo
 .admonition {
@@ -63,6 +64,7 @@ $hint-note-background:          var(--hint-note-background);
     img, svg {
         margin-bottom: 3px;
         margin-right: 3px;
+        fill: $fill-color;
     }
 
 }
