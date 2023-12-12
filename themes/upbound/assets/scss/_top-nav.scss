@@ -79,7 +79,9 @@
             text-decoration: none;
         }
 
-        
+        svg {
+            fill: var(--body-font-color);
+        }
     }
 
 
