@@ -28,6 +28,11 @@ img {
   // Don't dim images in light mode
   // Safety catch to reset dark mode setting
 
+  img {
+    filter: none;
+  }
+
+    
 
   .logo-container img {
     /* Use the CSS variable as the background image */
@@ -49,6 +54,10 @@ img {
 
 
     // Dim all images in dark mode
+
+    img {
+      filter: brightness(.8) contrast(1.2);
+    }
 
 
   
