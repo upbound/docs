@@ -23,11 +23,7 @@ orchestration.
 
 The Accounts section explains user management, permissions, and team and organization administration.
 
-## Console
-
-- [CTP Portal](console/ctp-portal/)
-
-In the Console section, you'll find details about our web console, including how to navigate and use the CTP portal.
+- [`CTP` Portal](console/ctp-portal/)
 
 ## Control plane configurations
 

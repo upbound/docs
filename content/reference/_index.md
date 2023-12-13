@@ -5,24 +5,23 @@ icon: "lightbulb"
 description: "Reference material for Upbound"
 ---
 
-## Command-Line Interface (CLI)
+For more information on how Upbound builds on Crossplane, check out [Crossplane vs. Upbound](crossplane-vs-upbound/).
+
+## Command line interface
 
 - [Command Reference](cli/command-reference/)
 - [Configuration](cli/configuration/)
 - [Release Notes](cli/rel-notes/)
 
-## Comparison: Crossplane vs. Upbound
-
-- [Crossplane vs. Upbound](crossplane-vs-upbound/)
 
 ## Licensing
 
 - [Licenses](licenses/)
 
-## Project Lifecycle
+## Project lifecycle
 
 - [Lifecycle](lifecycle/)
 
-## Release Notes
+## Release notes
 
 - [Release Notes](rel-notes/)
