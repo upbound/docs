@@ -13,6 +13,49 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.39.0
+
+_Released 2023-11-30_
+
+* Support for new resource: `VirtualMachineDataDiskAttachment.compute`
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.39.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.39.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.39.0)
+
+## v0.38.2
+
+_Released 2023-11-02_
+
+* This release updates Crossplane Runtime to v1.14.1 which includes a fix in the retry mechanism while persisting the critical annotations.
+
+_Refer to the [v0.38.2 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.2) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.2)
+
+## v0.38.1
+
+_Released 2023-10-30_
+
+* This release sets `async` mode true for `ResourceGroup` resource.
+
+_Refer to the [v0.38.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.1)
+
+## v0.38.0
+
+_Released 2023-10-26_
+
+* Support for new family providers: `provider-azure-containerapp` and `provider-azure-loadtestservice`
+* Support for new resources: `ContainerApp.containerapp`, `Environment.containerapp` and `LoadTest.loadtestservice`
+* The release contains some bug fixes, updates of dependencies, and promoting granular management policies to Beta.
+
+_Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.0)
+
 ## v0.37.1
 
 _Released 2023-10-02_

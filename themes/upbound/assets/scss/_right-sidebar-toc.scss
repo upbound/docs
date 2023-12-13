@@ -62,11 +62,11 @@
         }
 
         .nav-link {
-            color: #{$font-color-light} !important;
+            color: var(--toc-font-color) !important;
 
             &.active {
                 font-weight: 900;
-                color: #{$font-color-dark} !important;
+                color: var(--content-link-color) !important;
             }
         }
 

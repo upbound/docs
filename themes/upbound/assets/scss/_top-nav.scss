@@ -2,25 +2,26 @@
 
 @mixin content-hierarchy {
     border: 1px solid #CDCDD3;
-    background-color: white;
+    background-color: var(--background-color);
     margin: -65px auto 0;
-    max-width: 424px;
-    position: relative;
+    max-width: 430px;
+    position:relative;
     z-index: 1;
     max-height: 500px;
-    overflow: scroll;
+    overflow:scroll;
     border-radius: 8px;
     box-shadow: 0 4px 4px 0 rgba(3, 7, 36, .12);
 }
 
 #top-nav {
     height: 60px;
-    border-bottom: 1px solid #{$up-neutral-100};
+    border-bottom: 1px solid var(--border-bottom);
     width: 100%;
     left: 0;
     right: 0;
     margin: auto;
-    background-color: white;
+    position: relative;
+    background-color: var(--background-color);
 
     @include media-breakpoint-down(xl) {
         position: fixed;
@@ -43,6 +44,23 @@
         .no-results-container {
             width: 98%;
         }
+
+        .nav-item {           
+            width: 20%;
+            margin-top: 10px;
+        }
+
+        .form-check-input{
+            padding: 10px 4px 0 4px;
+            vertical-align: top;
+            margin-top: 10px;
+            position: fixed;
+            right: 0;
+        }
+
+        .form-check-label{
+            display: none !important;
+        }
     }
 
     .accordion-button {
@@ -54,10 +72,16 @@
         left: 0;
         padding: 16px 40px;
 
+        
+        
+
         a {
             text-decoration: none;
         }
+
+        
     }
+
 
     .search-panel {
         pointer-events: none; 
@@ -68,9 +92,9 @@
 
         .search-container {
             height: 59px;
-            max-width: 404px;
+            max-width: 400px;
             margin: auto;
-            background-color: white;
+            background-color: var(--background-color);
             padding: 10px 4px 0 4px;
             z-index: 2;
             position: relative;
@@ -81,7 +105,7 @@
                 position: relative;
                 border: 1px solid #CDCDD3;
                 border-radius: 8px;
-                background-color: white;
+                background-color: var(--background-color);
 
                 &:focus-within {
                     border-color: #{$up-purple-400};
@@ -96,15 +120,16 @@
                     font-size: 14px;
                     box-shadow: none;
                     height: 100%;
-                    background-color: white;
+                    background-color: var(--background-color);
+                    color: var(--body-font-color);
         
                     &::placeholder {
-                        color: #{$up-neutral-400};
+                        color: var(--body-font-color);
                     }
                 }
         
                 svg {
-                    fill: #{$up-neutral-600};
+                    fill: var(--body-font-color);
                 }
 
                 .close-search {
@@ -117,12 +142,15 @@
         .search-results {
             @include content-hierarchy;
             padding: 70px 10px 10px;
+            
         }
+
+
 
         .no-results-container {
             @include content-hierarchy;
             padding: 70px 16px 16px;
-            color: #{$up-neutral-400};
+            color: var(--body-font-color);
 
             .iconDiv {
                 margin-right: 8px;
@@ -133,9 +161,52 @@
                 }
 
                 .grey-icon {
-                    fill: #{$up-neutral-400};
+                    fill: var(--body-font-color);
                 }
             }
         }
     }
+
+    .nav-item {
+        margin: 0;
+        position:absolute;
+        right: 0;
+        top: 0;
+        margin-top: 10px;
+        margin-right: 16px;
+        list-style-type: none;
+
+
+        @include media-breakpoint-down(lg) {
+            margin-top: 0;
+            margin-right: 0;
+            
+        }
+
+    }
+
+    .form-check.form-switch.colormode {
+        display: flex; 
+        align-items: center;
+        
+
+        @include media-breakpoint-down(xl) {
+            margin-top: 0;
+            margin-right: 0;
+            
+        }
+    }
+
+    .form-check-input {
+        margin-right: 8px;
+        align-items: center;
+    }
+    
+    .form-check-input:checked {
+        background-color: var(--background-color);
+        border-color: #{$up-purple-300};
+        margin-right: 8px;
+
+    }
+
 }

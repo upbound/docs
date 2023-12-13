@@ -1,7 +1,7 @@
 ---
 title: "Configuration"
 metaTitle: "Upbound CLI - Configuration"
-metaDescription: "Configuration for the Upbound CLI"
+description: "Configuration for the Upbound CLI"
 weight: 105
 ---
 

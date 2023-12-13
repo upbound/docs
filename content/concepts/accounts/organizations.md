@@ -1,5 +1,6 @@
 ---
 title: Organizations
+description: "Configuring Organizations for Upbound"
 ---
 
 Organizations allow multiple [user accounts]({{<ref "users" >}}) to share Upbound resources and collaborate.  

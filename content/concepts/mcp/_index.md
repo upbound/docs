@@ -106,13 +106,15 @@ The token required for this command is an API token. The `up` CLI uses personal 
 up ctp disconnect
 ```
 
-You can also generate a `kubeconfig` file for a managed control plane with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}).
+You can also generate a `kubeconfig` file for a managed control plane with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}). Make sure to login to the `up` CLI before you execute the command.
 
 ```shell
 up ctp kubeconfig get -a <upbound-org-account-name> <control-plane-name> -f <kubeconfig-file> --token=<api-token>
 ```
 
 Like `up ctp connect`, this command also requires an API token, which you can [generate from the Upbound console]({{<ref "concepts/console#create-a-personal-access-token" >}}).
+
+{{< hint "warning" >}} The token you provide _must_ be an API token, not a robot token. If you receive an error like `up: error: kubeconfig.getCmd.Run(): the server could not find the requested resource`, this indicates you provided an incorrect token. {{< /hint >}}
 
 ### Configure Crossplane providers on your MCP
 

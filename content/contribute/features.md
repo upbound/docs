@@ -166,7 +166,7 @@ An example of using the `img` shortcode:
 
 Which generates this responsive image (change your browser size to see it change):
 
-{{<img src="/concepts/images/WithUpbound.png" alt="Control planes with Upbound" >}}
+{{<img src="/concepts/images/WithUpbound.png" alt="Control planes with Upbound" background-color="white" >}}
 
 
 Generate a smaller image with a `size` smaller than the original. 

@@ -1,6 +1,7 @@
 ---
 title: "Migration tooling"
 weight: 40
+description: "How to automatically upgrade from legacy monolithic Providers to Upbound Provider families"
 aliases:
   - /knowledge-base/migrate-to-provider-families
 ---

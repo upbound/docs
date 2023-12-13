@@ -1,6 +1,7 @@
 ---
 title: "Creating and Pushing Packages"
 weight: 30
+description: "How to create, configure and push packages to the Upbound Marketplace" 
 ---
 
 ## Package types
@@ -95,7 +96,7 @@ For example, the Upbound AWS Official Provider is a `provider` package in the `u
 
 ### Publishing public packages
 
-Upbound reviews all public packages, and new repositories have a default publishing policy of requiring a one-time manual approval. Contact Upbound by emailing support@upbound.io or message the `#upbound` channel in the [Crossplane Slack](https://slack.crossplane.io/) to request Upbound to review your package.
+Upbound reviews all public packages, and new repositories have a default publishing policy of requiring a one-time manual approval. Contact the Upbound team via the `#upbound` channel in the [Crossplane Slack](https://slack.crossplane.io/) to request Upbound to review your package.
 
 Upbound needs the following information before considering a package:
 * Public Git repository of the package.
