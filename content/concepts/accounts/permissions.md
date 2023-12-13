@@ -1,5 +1,6 @@
 ---
 title: Permissions
+description: "Permission levels for Upbound organizations"
 ---
 
 Upbound's access model is organization-based. To perform an action within Upbound, users must belong to an organization that has the appropriate permissions.

@@ -1,7 +1,7 @@
 ---
 title: "Release Notes"
 metaTitle: "Upbound CLI - Release Notes"
-metaDescription: "Release Notes for the up CLI"
+description: "Release Notes for the up CLI"
 weight: 200
 ---
 

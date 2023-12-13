@@ -7,7 +7,7 @@
   // Do we have a dark mode cookie saved?
   var darkThemeSelected =
     localStorage.getItem("darkSwitch") !== null &&
-    localStorage.getItem("darkSwitch") === "light";
+    localStorage.getItem("darkSwitch") === "dark";
 
   // Do we have a light mode cookie saved?
   var lightThemeSelected =
@@ -21,7 +21,7 @@
 
   // Set the document color theme based on the user's system or cookie  preference
   if (darkThemeSelected || darkPrefered) {
-    document.documentElement.setAttribute("color-theme", "light")
+    document.documentElement.setAttribute("color-theme", "dark")
   }
   else {
     document.documentElement.setAttribute("color-theme", "light")

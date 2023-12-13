@@ -1,6 +1,7 @@
 ---
 title: "Install UXP"
 weight: 205
+description: "How to install Upbound UXP"
 ---
 
 Upbound Universal Crossplane (UXP) is the Upbound official enterprise-grade

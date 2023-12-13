@@ -1,6 +1,7 @@
 ---
 title: Uninstall UXP
 weight: 230
+description: "How to uninstall Upbound UXP"
 ---
 
 Uninstall UXP with `up uxp uninstall`.

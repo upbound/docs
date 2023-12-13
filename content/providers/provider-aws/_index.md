@@ -13,6 +13,97 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.46.0
+
+_Released 2023-12-08_
+
+* Support for new family provider: `provider-aws-identitystore`
+* Support for new resource: `Group.identitystore`, `GroupMembership.identitystore`, `User.identitystore`,
+`CustomerManagedPolicyAttachment.ssoadmin`, `InstanceAccessControlAttributes.ssoadmin` and `PermissionsBoundaryAttachment.ssoadmin`
+* The release contains some bug fixes adding a new family provider, adding new resources, and updates of dependencies.
+
+_Refer to the [v0.46.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.46.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.46.0)
+
+## v0.45.0
+
+_Released 2023-11-30_
+
+* Support for new resource: `LBListenerCertificate.elbv2`
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.45.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.45.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.45.0)
+
+## v0.42.1
+
+_Released 2023-12-30_
+
+* This release backports the [PR](https://github.com/upbound/provider-aws/pull/933) addressing the [regression](https://github.com/upbound/provider-aws/issues/929)
+related to IAM roles and role policy attachments introduced in version `0.40.0`
+
+_Refer to the [v0.42.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.42.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.42.1)
+
+## v0.41.1
+
+_Released 2023-12-30_
+
+* This release backports the [PR](https://github.com/upbound/provider-aws/pull/933) addressing the [regression](https://github.com/upbound/provider-aws/issues/929)
+related to IAM roles and role policy attachments introduced in version `0.40.0`
+
+_Refer to the [v0.41.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.41.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.41.1)
+
+## v0.40.1
+
+_Released 2023-12-30_
+
+* This release backports the [PR](https://github.com/upbound/provider-aws/pull/933) addressing the [regression](https://github.com/upbound/provider-aws/issues/929)
+related to IAM roles and role policy attachments introduced in version `0.40.0`
+
+_Refer to the [v0.40.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.40.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.40.1)
+
+## v0.44.0
+
+_Released 2023-11-16_
+
+* In v0.44.0, the Upjet version upgraded to v1.0.0. This upgrade, brings a change with how interact with the underlying Terraform AWS provider.
+Instead of interfacing with TF CLI, the new implementation consumes the Terraform provider's Go provider schema and invokes the CRUD functions registered
+in that schema.
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.44.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.44.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.44.0)
+
+## v0.43.1
+
+_Released 2023-11-02_
+
+* This release updates Crossplane Runtime to v1.14.1 which includes a fix in the retry mechanism while persisting the critical annotations.
+
+_Refer to the [v0.43.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.43.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.43.1)
+
+## v0.43.0
+
+_Released 2023-10-26_
+
+* Support for new resource: `ServerlessCluster.kafka`
+* The release contains some bug fixes and updates of dependencies.
+
+_Refer to the [v0.43.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.43.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.43.0)
+
 ## v0.42.0
 
 _Released 2023-10-12_

@@ -1,7 +1,9 @@
 ---
 title: "Support and maintenance"
 weight: 30
+description: "The Upbound support policy for Official Providers"
 ---
+
 Official providers are open source and available to all Crossplane users.
 
 Support for official providers follows the [product lifecycle]({{<ref "reference/lifecycle">}}) and support policy of other Upbound components.

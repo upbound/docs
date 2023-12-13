@@ -24,7 +24,10 @@
 
 
     .footer-brand{
-        color: #{$font-color-light};
+        color: var(--body-font-color);
+        fill: var(--body-font-color);
+        filter: var(--brightness);
+
 
         // Move the brand to the bottom and update padding
         @include media-breakpoint-down(md) {

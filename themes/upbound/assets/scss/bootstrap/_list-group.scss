@@ -4,23 +4,24 @@
 
 .list-group {
   // scss-docs-start list-group-css-vars
-  --#{$prefix}list-group-color: #{$list-group-color};
-  --#{$prefix}list-group-bg: #{$list-group-bg};
-  --#{$prefix}list-group-border-color: #{$list-group-border-color};
-  --#{$prefix}list-group-border-width: #{$list-group-border-width};
-  --#{$prefix}list-group-border-radius: #{$list-group-border-radius};
-  --#{$prefix}list-group-item-padding-x: #{$list-group-item-padding-x};
-  --#{$prefix}list-group-item-padding-y: #{$list-group-item-padding-y};
-  --#{$prefix}list-group-action-color: #{$list-group-action-color};
-  --#{$prefix}list-group-action-hover-color: #{$list-group-action-hover-color};
-  --#{$prefix}list-group-action-hover-bg: #{$list-group-hover-bg};
-  --#{$prefix}list-group-action-active-color: #{$list-group-action-active-color};
-  --#{$prefix}list-group-action-active-bg: #{$list-group-action-active-bg};
+
+  --list-group-color: var(--bs-list-group-color);
+  --list-group-bg: #{$list-group-bg};
+  --list-group-border-color: #{$list-group-border-color};
+  --list-group-border-width: #{$list-group-border-width};
+  --list-group-border-radius: #{$list-group-border-radius};
+  --list-group-item-padding-x: #{$list-group-item-padding-x};
+  --list-group-item-padding-y: #{$list-group-item-padding-y};
+  --list-group-action-color: #{$list-group-action-color};
+  --list-group-action-hover-color: #{$list-group-action-hover-color};
+  --list-group-action-hover-bg: #{$list-group-hover-bg};
+  --list-group-action-active-color: #{$list-group-action-active-color};
+  --list-group-action-active-bg: #{$list-group-action-active-bg};
   --#{$prefix}list-group-disabled-color: #{$list-group-disabled-color};
-  --#{$prefix}list-group-disabled-bg: #{$list-group-disabled-bg};
+  --list-group-disabled-bg: #{$list-group-disabled-bg};
   --#{$prefix}list-group-active-color: #{$list-group-active-color};
   --#{$prefix}list-group-active-bg: #{$list-group-active-bg};
-  --#{$prefix}list-group-active-border-color: #{$list-group-active-border-color};
+  --list-group-active-border-color: #{$list-group-active-border-color};
   // scss-docs-end list-group-css-vars
 
   display: flex;
@@ -57,9 +58,9 @@
   &:hover,
   &:focus {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
-    color: var(--#{$prefix}list-group-action-hover-color);
+    color: var(--list-group-action-hover-color);
     text-decoration: none;
-    background-color: var(--#{$prefix}list-group-action-hover-bg);
+    background-color: var(--list-group-action-hover-bg);
   }
 }
 
@@ -180,8 +181,8 @@
     --#{$prefix}list-group-color: var(--#{$prefix}#{$state}-text-emphasis);
     --#{$prefix}list-group-bg: var(--#{$prefix}#{$state}-bg-subtle);
     --#{$prefix}list-group-border-color: var(--#{$prefix}#{$state}-border-subtle);
-    --#{$prefix}list-group-action-hover-color: var(--#{$prefix}emphasis-color);
-    --#{$prefix}list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
+    --list-group-action-hover-color: var(--#{$prefix}emphasis-color);
+    --list-group-action-hover-bg: var(--#{$prefix}#{$state}-border-subtle);
     --#{$prefix}list-group-action-active-color: var(--#{$prefix}emphasis-color);
     --#{$prefix}list-group-action-active-bg: var(--#{$prefix}#{$state}-border-subtle);
     --#{$prefix}list-group-active-color: var(--#{$prefix}#{$state}-bg-subtle);
