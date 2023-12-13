@@ -5,6 +5,7 @@
             <svg class="offcanvas-bars-x offcanvas-icon  nav-close-icon invisible" aria-hidden="true"><use xlink:href="#x"></use></svg>
         </button>
     </div>
+    
 
     <div class="right-navbar-toggler-container col-auto {{ if (or (eq .Page.Params.toc false) (lt (len .TableOfContents) 40)) }} d-none {{ end }} ">
         <button class="navbar-toggler" id="right-nav-toggle" type="button" data-bs-toggle="offcanvas" data-bs-toggle="button" data-bs-target="#right-nav-offcanvas" aria-controls="left-nav-offcanvas" aria-label="Toggle page table of contents">
