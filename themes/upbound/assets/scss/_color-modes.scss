@@ -15,6 +15,8 @@ img {
 
 
 :root[color-theme="light"] {
+  --logo-color: url('/img/logos/upbound-docs.svg');
+
   @import "code-theme-base";
   @import "color-mode-light";
   @include light-mode;
@@ -22,12 +24,6 @@ img {
   @import "code-theme-light";
   @include code-theme-light;
   
-  .logo-container img {
-    content: var(--logo-container);
-  }
-  --logo-container: url('/img/logos/upbound-docs.svg');
-  --fill-color: #black;
-
 
   // Don't dim images in light mode
   // Safety catch to reset dark mode setting
@@ -35,15 +31,13 @@ img {
     filter: none;
   }
 
-  // Background colors don't need resets since light mode uses white.
+  .logo-container img {
+    /* Use the CSS variable as the background image */
+    content: var(--logo-color);
+}
 }
 
 :root[color-theme="dark"] {
-
-    --logo-container: url('/img/logos/up-docs-white.svg');
-
-
-
 
 
   @import "code-theme-base";
@@ -53,14 +47,14 @@ img {
   @import "code-theme-dark";
   @include code-theme-dark;
 
+  --logo-color: url('/img/logos/up-docs-white.svg');
+
+
     // Dim all images in dark mode
     img {
       filter: brightness(.8) contrast(1.2);
     }
 
-    .logo-container img {
-      content: var(--logo-container);
-    }
   
     // Set the default image background to white
     // Without this transparent images are hard to see
@@ -71,6 +65,11 @@ img {
     .home-card img {
       background: none;
     }
+
+    .logo-container img {
+      /* Use the CSS variable as the background image */
+      content: var(--logo-color);
+  }
 }
 
 

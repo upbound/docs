@@ -2,10 +2,17 @@
 
     <div class="logo-container">
         <a href="//www.upbound.io">
-            <img id="dynamic-image" loading="eager" src="x" height="21" alt="Upbound Homepage">
+            <img loading="eager" src="" height="21" alt="Upbound Homepage" id="logoImage">
         </a>
-        
     </div>
+    
+    <script>
+        var logoColor = getComputedStyle(document.documentElement).getPropertyValue('--logo-color');
+                
+        // Set the image source dynamically
+        document.getElementById("logoImage").src = logoColor;
+    </script>
+    
 
     {{ partialCached "body/search-panel" . }}
 
