@@ -5,7 +5,7 @@ icon: "lightbulb"
 description: "Reference material for Upbound"
 ---
 
-For more information on how Upbound builds on Crossplane, check out [Crossplane vs. Upbound](crossplane-vs-upbound/).
+For more information on how Upbound builds on Crossplane, review [Crossplane vs. Upbound](crossplane-vs-upbound/).
 
 ## Command line interface
 
