@@ -7,22 +7,22 @@ description: "Reference material for Upbound"
 
 ## Command-Line Interface (CLI)
 
-- [Command Reference](cli/command-reference.md)
-- [Configuration](cli/configuration.md)
-- [Release Notes](cli/rel-notes.md)
+- [Command Reference](cli/command-reference)
+- [Configuration](cli/configuration)
+- [Release Notes](cli/rel-notes)
 
 ## Comparison: Crossplane vs. Upbound
 
-- [Crossplane vs. Upbound](crossplane-vs-upbound.md)
+- [Crossplane vs. Upbound](crossplane-vs-upbound)
 
 ## Licensing
 
-- [Licenses](licenses.md)
+- [Licenses](licenses)
 
 ## Project Lifecycle
 
-- [Lifecycle](lifecycle.md)
+- [Lifecycle](lifecycle)
 
 ## Release Notes
 
-- [Release Notes](rel-notes.md)
+- [Release Notes](rel-notes)
