@@ -4,7 +4,7 @@
     border: 1px solid #CDCDD3;
     background-color: var(--background-color);
     margin: -65px auto 0;
-    max-width: 424px;
+    max-width: 430px;
     position:relative;
     z-index: 1;
     max-height: 500px;
@@ -92,7 +92,7 @@
 
         .search-container {
             height: 59px;
-            max-width: 404px;
+            max-width: 400px;
             margin: auto;
             background-color: var(--background-color);
             padding: 10px 4px 0 4px;
@@ -143,13 +143,9 @@
             @include content-hierarchy;
             padding: 70px 10px 10px;
             
-            
         }
 
-        .search-results::-webkit-scrollbar {
-            background-color: transparent;
 
-        }
 
         .no-results-container {
             @include content-hierarchy;
