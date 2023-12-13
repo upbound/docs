@@ -1,3 +1,5 @@
+{{ $isDarkMode := true }} {{/* Set this to true or false based on your dark mode condition */}}
+
 {{- if not (.Get "src") -}}
 {{ errorf "\n\nNo src for {{< img >}} tag on %s \n\n\n" .Position }}
 {{ end }}
@@ -57,7 +59,7 @@
   {{ $size := dict "xtiny" $xtiny "tiny" $tiny "small" $small "medium" $medium "large" $large "original" $original }}
   {{ $resizedImage := (index $size $customSize) }}
 
-  <div class="{{ $align }}">
+  <div class="{{ $align }} {{ if $isDarkMode }}dark-mode{{ end }}">
 
 {{/* Spacing here is important. If there is space between the <a href>/</a> and <img> tags then it won't render properly in {{hint}} blocks */}}
   {{ if $lightbox }}<a href="{{$source.Permalink}}" data-lightbox="{{.}}" data-alt="{{$customAlt}}">{{ end }}
@@ -67,6 +69,8 @@
   width="{{ $resizedImage.Width }}"
   class="rounded img-fluid mb-4"
   alt="{{ $customAlt }}"
-  decoding="async">{{ if $lightbox }}</a>{{ end }}
+  decoding="async"
+  style="{{ if $isDarkMode }} background-color: var(--background-color-img);{{ end }}">
+  {{ if $lightbox }}</a>{{ end }}
 </div>
 {{ end }}
