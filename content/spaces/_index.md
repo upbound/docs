@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Spaces
 weight: 1
 description: A guide to Upbound Spaces
 aliases: 
