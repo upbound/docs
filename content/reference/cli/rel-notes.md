@@ -92,7 +92,7 @@ Released August 28th, 2023.
 - Allow operators to override the registry and registry-endpoint for a spaces install
 - Spaces: add support for public load balancer
 - Add Azure support to `up space billing get` + provider-generic refactor
-- cmd/space: fix missing install.Context
+- cmd space: fix missing install.Context
 - Space: improve destroy command
 - space: unify and deduplicate registry flag logic
 - Use concrete types with destroyCmd.Run()

@@ -8,7 +8,7 @@ description: "Information on Upbound software versions and release policies"
 
 Upbound provides support and software maintenance to paid customers. Supported software products include:
 
-* [Spaces]({{< ref "spaces/overview.md" >}})
+* [Spaces]({{< ref "spaces" >}})
 * [UXP]({{< ref "uxp/_index.md" >}})
 * [Official Providers]({{< ref "providers/_index.md" >}})
 

@@ -4,7 +4,7 @@ weight: 150
 description: "Release notes for Upbound Spaces" 
 ---
 
-Find below the changelog for Upbound the product and release notes for self-hosted feature of Upbound, [Spaces]({{< ref "spaces/overview.md" >}}).
+Find below the changelog for Upbound the product and release notes for self-hosted feature of Upbound, [Spaces]({{< ref "spaces" >}}).
 
 <!-- vale off -->
 
