@@ -27,11 +27,11 @@ Your first time in Upbound you must create an organization. Give your organizati
 
 Select **Create Organization**.
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="original" quality="100" align="center" >}}
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="small" unBlur="true" align="center" >}}
 
 On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="original" quality="100" align="center" >}}
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" unBlur="true" size="small" align="center" >}}
 
 ### Choose a configuration
 
@@ -39,7 +39,7 @@ Upbound offers a curated gallery of Crossplane configurations for you to choose 
 
 Select the Configuration called **EKS as a service**. 
 
-{{<img src="quickstart/images/get-started-select-eks.png" alt="Choose an Upbound configuration" quality="100" size="medium" lightbox="true" >}}
+{{<img src="quickstart/images/get-started-select-eks.png" alt="Choose an Upbound configuration"  lightbox="true" >}}
 
 ### Connect to GitHub
 
@@ -47,7 +47,7 @@ After you've selected a Configuration, you need to connect Upbound to your GitHu
 
 Select **Connect to GitHub**.
 
-{{<img src="quickstart/images/get-started-select-gh.png" alt="a marketplace search filter with Providers and Official filters set" quality="100" size="medium" lightbox="true">}}
+{{<img src="quickstart/images/get-started-select-gh.png" alt="a marketplace search filter with Providers and Official filters set" size="medium" lightbox="true">}}
 
 {{< hint "tip" >}}
 Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/mcp/control-plane-connector.md" >}}) section.
@@ -62,7 +62,7 @@ Give your repository a name, like **my-control-plane-api**.
 
 Select **Clone configuration to GitHub**.
 
-{{<img src="quickstart/images/get-started-gh-repo.png" alt="Upbound Create Repository screen" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-gh-repo.png" alt="Upbound Create Repository screen" lightbox="true">}}
 
 
 ### Create a managed control plane
@@ -76,7 +76,7 @@ Give your control plane a name, like **my-control-plane**.
 
 Select **Create Control Plane**.
 
-{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" lightbox="true" size="medium" >}}
+{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" lightbox="true" unBlur="true" >}}
 
 
 ### Connect to AWS with OIDC
@@ -93,11 +93,11 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to AWS without ex
  **sts.amazonaws.com** as the Audience.  
   Select **Get thumbprint**.  
   Select **Add provider**.  
-{{<img src="quickstart/images/get-started-aws-add-idp-confirm.png" alt="Configure an Identity Provider in AWS" quality="100" align="center" >}}
+{{<img src="quickstart/images/get-started-aws-add-idp-confirm.png" alt="Configure an Identity Provider in AWS" size="small" unBlur="true" align="center" >}}
 
 #### Create an AWS IAM Role for Upbound
 1. Create an [AWS IAM Role](https://console.aws.amazon.com/iamv2/home#/roles) with a **Custom trust policy** for the OIDC connector.
-{{<img src="quickstart/images/aws-custom-trust-policy.png" alt="IAM Role with a custom trust policy" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-custom-trust-policy.png" alt="IAM Role with a custom trust policy" align="center" size="small" unBlur="true" >}}
 {{<hint "important" >}}
 Provide your [AWS account ID](https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html), Upbound organization and control plane names in the JSON Policy below.
 
@@ -126,11 +126,11 @@ You can find your AWS account ID by selecting the account dropdown in the upper 
 ```
 {{< /editCode >}}
 1. Attach the **AdministratorAccess** permission policy.
-{{<img src="quickstart/images/aws-adminaccess-policy.png" alt="Applying the AdministratorAccess policy to the role" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-adminaccess-policy.png" alt="Applying the AdministratorAccess policy to the role" unBlur="true" align="center">}}
 1. Name the role **upbound-eks-role** and select **Create role**.
-{{<img src="quickstart/images/aws-eks-role-name.png" alt="Naming the role upbound-eks-role" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-eks-role-name.png" alt="Naming the role upbound-eks-role" size="small" unBlur="true" align="center">}}
 1. View the new role and copy the role ARN.
-{{<img src="quickstart/images/aws-upbound-eks-role-arn.png" alt="Viewing the role ARN" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-upbound-eks-role-arn.png" alt="Viewing the role ARN" size="small" unBlur="true" align="center">}}
 
 #### Provide the ARN to Upbound
 
@@ -138,13 +138,13 @@ Return to Upbound and paste the ARN you copied in the previous step into the inp
 Select **Authenticate**.  
 Select **Confirm and Launch Control Plane**.
 
-{{<img src="quickstart/images/get-started-confirm-launch.png" alt="Upbound Get Started Confirm and Launch screen" quality="100" lightbox="true" size="medium">}}
+{{<img src="quickstart/images/get-started-confirm-launch.png" alt="Upbound Get Started Confirm and Launch screen" lightbox="true" size="medium">}}
 
 ## Welcome to the Upbound Console
 
 After completing the _Get Started_ experience, you are in the Upbound Console and greeted by the Control Planes screen.
 
-{{<img src="quickstart/images/control-plane-console.png" alt="Upbound control plane console" quality="100" align="center">}}
+{{<img src="quickstart/images/control-plane-console.png" alt="Upbound control plane console" size="small" align="center">}}
 
 The control plane details view gives users a view into what's happening on their control planes. 
 
@@ -156,12 +156,12 @@ Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour o
 
 From the control planes view, select the **Portal** tab, and select **Open Control Plane Portal**.
 
-{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" size="small" unBlur="true" lightbox="true">}}
 
 The Control Plane Portal lists the available resources that users can claim in the left-side menu.  
 These resources are your abstracted APIs presented to users. 
 
-{{<img src="quickstart/images/cp-create-kubernetescluster.png" alt="Control plane portal with a Kubernetes Cluster resource" quality="100" align="center">}}
+{{<img src="quickstart/images/cp-create-kubernetescluster.png" alt="Control plane portal with a Kubernetes Cluster resource" size="small" align="center">}}
 
 Select the **KubernetesCluster** resource and then select the **Create New** button at the top of the page. 
 
@@ -176,7 +176,7 @@ The form are the parameters defined in your custom API. Fill-in the form with th
 - _size_: **small**
 <!-- vale Google.FirstPerson = YES -->
 
-{{<img src="quickstart/images/get-started-k8s-cluster-create.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-k8s-cluster-create.png" alt="Navigate to control plane portal"  lightbox="true">}}
 
 When you **Create Instance** the portal generates a Crossplane claim.
 
@@ -185,7 +185,7 @@ After creating an instance, the _Events_ section are logs directly from Kubernet
 
 Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
 
-{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" size="small" align="center">}}
+{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" size="small" unBlur="true" align="center">}}
 
 You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
 {{< /hint >}}
@@ -198,7 +198,7 @@ There's now a claim card next to the `KubernetesCluster` type card.
 
 Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane. 
 
-{{<img src="quickstart/images/get-started-k8s-created.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/get-started-k8s-created.png" alt="Navigate to control plane portal" lightbox="true">}}
 
 Congratulations, you created your first resources with your MCP.
 

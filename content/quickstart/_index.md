@@ -7,7 +7,7 @@ description: "Create your first Upbound Managed Control Plane and connect it to 
 
 Upbound is a global platform for building, deploying, and operating cloud platforms using managed control planes.
 
-{{<img src="quickstart/images/Product_Marketecture_Dark_1440w.png" alt="an architecture of XP with Upbound" quality="100">}}
+{{<img src="quickstart/images/Product_Marketecture_Dark_1440w.png" alt="an architecture of XP with Upbound" size="large" unBlur="true" >}}
 
 ## The value of Upbound
 

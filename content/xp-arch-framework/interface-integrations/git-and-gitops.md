@@ -36,7 +36,7 @@ Your control plane itself is infrastructure, so its definition should live in Gi
 
 Argo CD is a project that enables GitOps by implementing an `Application` resource. This provides a declarative approach to managing configuration management tooling for Kubernetes resources (such as Helm or Kustomize).
 
-{{<img src="xp-arch-framework/images/argo.png" alt="An illustration of Argo" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/argo.png" alt="An illustration of Argo" size="medium" unBlur="true">}}
 
 #### Argo and single control plane
 
@@ -98,7 +98,7 @@ You need to configure the `spec.destination.server` to point to the endpoint for
 
 Flux is a set of controllers that keeps Kubernetes clusters in sync with a configuration source.
 
-{{<img src="xp-arch-framework/images/flux.png" alt="An illustration of Flux" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/flux.png" alt="An illustration of Flux" size="medium" unBlur="true">}}
 
 If you are using self-hosted Flux, you need to deploy it into a Kubernetes cluster. Once you have installed Flux into a cluster, you should configure it in two ways:
 

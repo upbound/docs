@@ -631,8 +631,8 @@ which might require the necessary file permissions to allow execution.
 In Darwin/macOS, the following error can be shown while trying to run the
 executable. Please allow this application in the Security Settings by using the
 `Allow Anyway`.
-{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="tiny">}}
-{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="small">}}
+{{<img src="providers/images/malicious-software.jpeg" alt="Malicious Software Error" size="tiny" unBlur="true">}}
+{{<img src="providers/images/allow-anyway.jpeg" alt="Allow Anyway" size="small" unBlur="true">}}
 {{< /hint >}}
 
 #### Usage
@@ -641,7 +641,7 @@ The `family-migrator` tool has two sub-commands, `generate` and `execute`.
 
 The help output of the `family-migrator`:
 
-{{<img src="providers/images/family-migrator-help.jpeg" alt="family-migrator help output" size="medium">}}
+{{<img src="providers/images/family-migrator-help.jpeg" alt="family-migrator help output" size="small" unBlur="true" >}}
 
 - `generate`: This command generates the migration plan. After the tool creates
 the migration plan, it confirms if execution of the created plan should proceed.

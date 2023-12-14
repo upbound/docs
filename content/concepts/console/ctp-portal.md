@@ -6,7 +6,7 @@ description: An introduction to the Developer Portal feature of a Managed Contro
 
 Every managed control plane in Upbound can be directly interacted with via its portal. The control plane portal is a create, read, update, delete (`CRUD`) interface for the resources on your control plane.
 
-{{<img src="concepts/images/ctp-portal.png" alt="Navigation to control plane portal" quality="100" size="medium" lightbox="true">}}
+{{<img src="concepts/images/ctp-portal.png" alt="Navigation to control plane portal" lightbox="true">}}
 
 ## Capabilities
 
@@ -24,7 +24,7 @@ Selecting the `Create New` button takes you to a form creation experience that's
 Example: If your resource has multiple compositions available and you want to select one, the `compositionSelector` field is available in the `advanced` dropdown.
 {{< /hint >}}
 
-{{<img src="concepts/images/portal-create.png" alt="Create new resources from the control plane portal" quality="100" size="large" lightbox="true">}}
+{{<img src="concepts/images/portal-create.png" alt="Create new resources from the control plane portal"  lightbox="true">}}
 
 This form generates a claim (a Crossplane `XRC`) for the resource type. Selecting `Create Instance` submits your claim to your managed control plane. Select the `Show YAML` button to View the claim. 
 
@@ -42,10 +42,10 @@ You can edit the claim for this resource by selecting the `Edit` button.
 This view shows events that from the claim. This view doesn't show Composite Resource or Managed Resource events.
 {{< /hint >}}
 
-{{<img src="concepts/images/portal-events.png" alt="See resource events from the control plane portal" quality="100" size="large" lightbox="true">}}
+{{<img src="concepts/images/portal-events.png" alt="See resource events from the control plane portal" size="large" lightbox="true">}}
 
 ## How to reach your control plane portal
 
 To navigate to a control plane's portal, go to the `portal` tab in the control plane instance view and select `Open Control Plane Portal`.
 
-{{<img src="concepts/images/ctp-portal-link.png" alt="Navigation to control plane portal" quality="100" size="large" lightbox="true">}}
+{{<img src="concepts/images/ctp-portal-link.png" alt="Navigation to control plane portal" lightbox="true">}}

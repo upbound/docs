@@ -20,7 +20,7 @@ scope:
 
 This guide explains how you can use a reference Grafana dashboard built by Upbound to aid in monitoring a Spaces installation.
 
-{{<img src="spaces/images/spaces-dashboard.png" alt="The reference Grafana dashboard built by Upbound for Spaces" quality="100" lightbox="true">}}
+{{<img src="spaces/images/spaces-dashboard.png" alt="The reference Grafana dashboard built by Upbound for Spaces" >}}
 
 ## Per Space metrics
 
