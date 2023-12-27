@@ -28,11 +28,13 @@
 
                 </div>
                 
+                
+                
                 <div class="nav-child-container" id="{{.Section}}-children">
                     <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
                         {{if .Content}}
                             <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if or (not .Page.Params.tocHidden) (eq .CurrentSection "contribute") }}d-none{{end}}">
-                            <div class="left-offset hide"></div>
+                                <div class="left-offset hide"></div>
                             <a href="{{.Permalink}}" class="stretched-link child-link">{{ .Title }}</a>
                         </div>
                     {{ end }}
@@ -72,7 +74,7 @@
                                 {{ range .Pages }}
                                     <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
                                         <div class="left-offset hide"></div>
-                                        <a href="{{.Permalink}}" class="stretched-link child-link">
+                                        <a href="{{.Permalink}}" class="stretched-link">
                                             {{ .Title }}
                                         </a>
                                     </div>
@@ -82,21 +84,21 @@
 
                         
 
-                        {{ else }}
-                            <!-- Show Section Title only -->
-                            <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
-                                <div class="left-offset hide active"></div>
-                                <a href="{{.Permalink}}" class="stretched-link child-link">
-                                    {{ .Title }}
-                                </a>
-                            </div>
-                        {{ end }}
-                    
+                    {{ else }}
+                        <!-- Show Section Title only -->
+                        <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row {{if eq $currentPage .}}active{{end}} {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                            <div class="left-offset hide active"></div>
+                            <a href="{{.Permalink}}" class="stretched-link child-link">
+                                {{ .Title }}
+                            </a>
+                        </div>
                     {{ end }}
-                </div>
+                    
+                {{ end }}
             </div>
-            {{ end }}
         </div>
+        {{ end }}
+    </div>
 
         
     </nav>
