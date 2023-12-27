@@ -22,8 +22,9 @@
         top: 80px;
         grid-area: right-sidebar-toc;
         overflow-y: auto;
-        height: 1fr;
+        height: calc(100vh - 80px);
         width: 100%;
+        @include scrollbar-hidden;
     }
 
     .on-this-page {
