@@ -118,7 +118,7 @@ provider version and the target Official provider version.
 
 ```diff
 -   apiVersion: ec2.aws.crossplane.io/v1beta1
-+   apiVersion: ec2.aws.upbound.io/v1beta1  
++   apiVersion: ec2.aws.upbound.io/v1beta1
     kind: VPC
     metadata:
       annotations:
@@ -256,7 +256,7 @@ files
 ##### Migrating VPC in a composition
 
 In the below, there is a small code snippet from platform-ref-aws to update VPC
-resource.  
+resource.
 
 ```diff
    resources:
@@ -322,7 +322,7 @@ In case of problems, Crossplane can restore the resources from the YAML files.
 This may take over 10 minutes depending on the number of managed resources in the cluster.
 {{< /hint >}}
 
-```bash 
+```bash
 kubectl get managed -o yaml > backup-mrs.yaml
 kubectl get composite -o yaml > backup-composites.yaml
 kubectl get claim --all-namespaces -o yaml > backup-claims.yaml
@@ -349,6 +349,13 @@ kubectl patch $(kubectl get managed -o name) -p '{"spec":{"deletionPolicy":"Orph
 
 {{<hint "note" >}}
 These commands may take over 10 minutes depending on the number of managed resources in the cluster.
+{{< /hint >}}
+
+{{<hint "important" >}}
+If you are using the Management Policies beta feature, they may take precedence over the
+`deletionPolicy` field. See
+[the Crossplane documentation](https://docs.crossplane.io/latest/concepts/managed-resources/#interaction-with-management-policies)
+for details.
 {{< /hint >}}
 
 #### Create a list of family provider services
