@@ -11,6 +11,29 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v0.41.0
+
+_Released 2023-12-28_
+
+* Support for new resource: `RegionTargetTCPProxy.compute`
+* The release contains some important bug fixes, adding a new resource, and updates of dependencies.
+
+_Refer to the [v0.41.0 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.41.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.41.0)
+
+## v0.40.0
+
+_Released 2023-12-13_
+
+* This release brings a change with how interact with the underlying Terraform GCP provider. Instead of interfacing with
+Terraform via the TF CLI, the new implementation consumes the Terraform provider's Go provider schema and invokes the CRUD
+functions registered in that schema, and no longer fork the underlying Terraform provider process.
+
+_Refer to the [v0.40.0 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.40.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.40.0)
+
 ## v0.39.0
 
 _Released 2023-11-30_

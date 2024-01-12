@@ -41,7 +41,7 @@ An `up` profile uses the following format:
 You can configure an `up` profile as one of three types:
 
 - **user:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment.
-- **space:** This profile type configures `up` to communicate with an [Upbound Space]({{<ref "/spaces/overview.md" >}}), which requires a `kubecontext`.
+- **space:** This profile type configures `up` to communicate with an [Upbound Space]({{<ref "/spaces" >}}), which requires a `kubecontext`.
 - **token:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment using an API token as the auth method.
 
 ## Profile management

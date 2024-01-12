@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.15.0
+
+_Released 2023-12-28_
+
+* This release generates reference fields for the `spec.initProvider` of all resources.
+
+_Refer to the [v0.15.0 release notes](https://github.com/upbound/provider-azuread/releases/tag/v0.15.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.15.0)
+
 ## v0.14.0
 
 _Released 2023-11-30_

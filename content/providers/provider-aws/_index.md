@@ -13,6 +13,49 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.47.1
+
+_Released 2024-01-03_
+
+* This release changes `assume_role_with_web_identity` provider configuration value from a map to a list as expected by the
+corresponding Terraform provider schema and fixes some issues related to the `UserPoolClient.cognitoidp` resource.
+
+_Refer to the [v0.47.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.47.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.1)
+
+## v0.46.2
+
+_Released 2024-01-03_
+
+* This release changes `assume_role_with_web_identity` provider configuration value from a map to a list as expected by the
+corresponding Terraform provider schema and fixes some issues related to the `UserPoolClient.cognitoidp` resource.
+
+_Refer to the [v0.46.2 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.46.2) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.46.2)
+
+## v0.47.0
+
+_Released 2023-12-28_
+
+* Support for new resource: `TopicRuleDestination.iot` and `Endpoint.sagemaker`
+* The release contains some important bug fixes, adding new resources, and updates of dependencies.
+
+_Refer to the [v0.47.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.47.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.0)
+
+## v0.46.1
+
+_Released 2023-12-18_
+
+* The release contains two important bug fixes, for more details please select the release notes.
+
+_Refer to the [v0.46.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.46.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.46.1)
+
 ## v0.46.0
 
 _Released 2023-12-08_
