@@ -29,11 +29,11 @@ Your first time in Upbound you must create an organization. Give your organizati
 
 Select **Create Organization**.
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="original" quality="100" align="center">}}
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="small" align="center">}}
 
 On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="original" quality="100" align="center" >}}
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="small" unBlur="true" align="center" >}}
 
 ### Choose a configuration
 
@@ -41,14 +41,14 @@ Upbound offers a curated gallery of Crossplane configurations for you to choose 
 
 Select the Configuration called **CloudSQL as a service**. 
 
-{{<img src="quickstart/images/cloudsql-config.png" alt="Upbound connect to GitHub screen" size="medium" quality="100">}}
+{{<img src="quickstart/images/cloudsql-config.png" alt="Upbound connect to GitHub screen" >}}
 ### Connect to GitHub
 
 After you've selected a Configuration, you need to connect Upbound to your GitHub account. Upbound uses GitHub's authorization flow and installs a GitHub app into your account. 
 
 Select **Connect to GitHub**.
 
-{{<img src="quickstart/images/gcp-connect-to-gh.png" alt="Upbound connect to GitHub" size="medium" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/gcp-connect-to-gh.png" alt="Upbound connect to GitHub" >}}
 
 {{< hint "tip" >}}
 Git connectivity is at the core of Upbound's workflows. To learn more about git integration, read the [GitOps with MCP]({{<ref "/concepts/mcp/control-plane-connector.md" >}}) section.
@@ -62,7 +62,7 @@ Give your repository a name, like **my-control-plane-apis**.
 
 Select **Clone configuration to GitHub**.
 
-{{<img src="quickstart/images/gcp-gh-connect.png" alt="Upbound Create Repository screen" size="medium" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/gcp-gh-connect.png" alt="Upbound Create Repository screen" >}}
 
 ### Create a managed control plane
 
@@ -74,7 +74,7 @@ Give your control plane a name, like **my-control-plane**.
 
 Select **Create Control Plane**.
 
-{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" quality="100" align="center" size="medium" >}}
+{{<img src="quickstart/images/get-started-name-ctp.png" alt="Upbound Create Control Plane screen" align="center" unBlur="true" >}}
 
 ### Connect to GCP with OIDC
 
@@ -97,7 +97,7 @@ Add a new [Service Account]({{<ref "#create-a-gcp-service-account" >}}) to the e
 6. Enter a description like **An identity provider for Upbound**.
 7. **Enable** the pool.
 8. Select **Continue**
-{{<img src="quickstart/images/gcp-identity-start.png" alt="Upbound Get Started Configure OIDC screen for GCP" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-identity-start.png" alt="Upbound Get Started Configure OIDC screen for GCP" align="center" unBlur="true" size="small" >}}
 
 #### Add Upbound to the pool
 
@@ -112,7 +112,7 @@ For _Audience 1_ enter **sts.googleapis.com**
 
 Select **Continue**.
 
-{{<img src="quickstart/images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" align="center" size="small" unBlur="true" >}}
 
 #### Configure provider attributes
 The provider attributes restrict which remote entities you allow access to your resources. 
@@ -141,7 +141,7 @@ Not providing a CEL condition allows any Upbound managed control plane to access
 
 Select **Save**.
 
-{{<img src="quickstart/images/gcp-idp-attributes.png" alt="GCP configure provider attributes configuration" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-idp-attributes.png" alt="GCP configure provider attributes configuration" align="center" unBlur="true" size="small" >}}
 
 ### Create a GCP Service Account
 
@@ -164,7 +164,7 @@ _Description_: **Upbound managed control planes service account**
 
 Select **Create and Continue**.
 
-{{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" align="center" size="small" unBlur="true" >}}
 
 ##### Grant this service account access to project
 For the _CloudSQL as a service_ configuration the service account requires the roles:  
@@ -173,14 +173,14 @@ For the _CloudSQL as a service_ configuration the service account requires the r
 
 Select **Done**.
 
-{{<img src="quickstart/images/gcp-role-add.png" alt="GCP service project access screen" quality="100" align="center">}}
+{{<img src="quickstart/images/gcp-role-add.png" alt="GCP service project access screen" unBlur="true" size="small" align="center">}}
 
 ##### Record the service account email address
 
 At the list of service accounts copy the service account **email**.  
 Upbound requires this to authenticate your managed control plane.
 
-{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" size="medium" quality="100" >}} 
+{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" unBlur="true" >}} 
 
 ### Add the service account to the identity pool
 
@@ -189,7 +189,7 @@ Add the service account to the Workload Identity Federation pool to authenticate
 2. Near the top of the page select **Grant Access**.
 3. Select the new service account, **upbound-service-account**.
 4. Under _Select principals_ use **All identities in the pool**.
-{{<img src="quickstart/images/gcp-add-to-pool.png" alt="Pool select service account screen" quality="100" align="center">}}
+{{<img src="quickstart/images/gcp-add-to-pool.png" alt="Pool select service account screen" align="center" size="small" unBlur="true">}}
 Select **Save**.  
 In the _Configure your application_ window, select **Dismiss**.
 
@@ -208,7 +208,7 @@ Go to the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sq
 
 Select **Enable**.
 
-{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" size="original" quality="100" >}}
+{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" unBlur="true" size="small" >}}
 <!-- vale Google.Headings = YES -->
 <!-- vale Microsoft.Terms = YES -->
 
@@ -242,7 +242,7 @@ In the _Name of federated identity provider_ field.
 
 In the _Attached service account email address_ field enter the **service account email**.
 
-{{<img src="quickstart/images/gcp-oidc-finalize.png" alt="Upbound configuration to connect to GCP with OIDC" size="medium" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/gcp-oidc-finalize.png" alt="Upbound configuration to connect to GCP with OIDC" size="small" >}}
 
 Select **Finalize & Launch Control Plane**.
 
@@ -250,7 +250,7 @@ Select **Finalize & Launch Control Plane**.
 
 After completing the _Get Started_ experience, you are in the Upbound Console and greeted by the Control Planes screen.
 
-{{<img src="quickstart/images/gcp-ctp.png" alt="Upbound GCP instance screen" quality="100" size="medium" align="center">}}
+{{<img src="quickstart/images/gcp-ctp.png" alt="Upbound GCP instance screen" align="center" size="small" unBlur="true">}}
 
 The control plane details view gives users a view into what's happening on their control planes. 
 
@@ -262,7 +262,7 @@ Read about the [Upbound Console]({{<ref "concepts/console">}}) for a full tour o
 
 From the control planes view, select the **Portal** tab, and select **Open Control Plane Portal**.
 
-{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" quality="100" lightbox="true" size="medium" >}}
+{{<img src="quickstart/images/get-started-portal-link.png" alt="Navigate to control plane portal" unBlur="true" >}}
 
 Select the **PostgreSQLInstance** resource.  
 Select the **Create New** button at the top-right of the page. 
@@ -279,7 +279,7 @@ The form are the parameters defined in your custom API. Fill-in the form with th
 <!-- vale Google.FirstPerson = YES -->
 
 
-{{<img src="quickstart/images/gcp-db-create.png" alt="Create database form" quality="100" lightbox="true" size="medium">}}
+{{<img src="quickstart/images/gcp-db-create.png" alt="Create database form" >}}
 
 
 When you **Create Instance** the portal generates a Crossplane claim.
@@ -289,7 +289,7 @@ After creating an instance, the _Events_ section are logs directly from Kubernet
 
 Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
 
-{{<img src="quickstart/images/gcp-event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" align="center" size="medium">}}
+{{<img src="quickstart/images/gcp-event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" align="center" unBlur="true">}}
 
 You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
 {{< /hint >}}
@@ -303,7 +303,7 @@ There's now a claim card next to the `PostgreSQLInstance` type card.
 
 Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane. 
 
-{{<img src="quickstart/images/gcp-observe-db.png" alt="Observe created resource" quality="100" lightbox="true" size="medium">}}
+{{<img src="quickstart/images/gcp-observe-db.png" alt="Observe created resource" >}}
 
 Congratulations, you created your first resources with your MCP.
 

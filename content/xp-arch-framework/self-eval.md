@@ -257,7 +257,7 @@ Upon concluding this exercise, you should now have a stronger sense for the plat
 2. As you define the shape of your custom Crossplane APIs, you need to determine how to architect with Crossplane. What number of control planes do you need? How do you configure resources that back your control planes? How do you deploy resources to your control planes? In [Control Plane Architecture]({{< ref "xp-arch-framework/architecture/" >}}), it defines a baseline architecture that you can adapt for deploying Crossplane with all the important integrations.
 3. As you go to deploy Crossplane, there are probably other parts of your platform that you need to integrate with. In [Interface Integrations]({{< ref "xp-arch-framework/interface-integrations/" >}}), it explains the most common integrations seen with Crossplane and provide best practices where appropriate around each of them.
 
-{{<img src="xp-arch-framework/images/framework-parts.png" alt="Key parts of the Crossplane Architecture Framework" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/framework-parts.png" alt="Key parts of the Crossplane Architecture Framework" size="large" unBlur="true">}}
 
 ## Next steps
 

@@ -12,7 +12,7 @@ This reference architecture provides a recommended baseline scoped to deploying 
 
 ## Diagram 
 
-{{<img src="xp-arch-framework/images/baseline-arch.png" alt="Baseline architecture for a single Crossplane control plane" size="medium" quality="100" align="center">}}
+{{<img src="xp-arch-framework/images/baseline-arch.png" alt="Baseline architecture for a single Crossplane control plane" size="large" unBlur="true" align="center">}}
 
 ## Configure compute for hosting Crossplane
 

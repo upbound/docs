@@ -2,17 +2,18 @@
 title: Spaces
 weight: 1
 description: A guide to Upbound Spaces
-aliases: 
+icon: "popsicle"
+aliases:
   - /concepts/upbound-spaces
 ---
 
-Upbound Spaces are self-hosted environments for Upbound's managed Crossplane control planes. All that's required to bootstrap a Space is a Kubernetes cluster. Popular managed Kubernetes services including Amazon EKS, Google GKE, and Microsoft AKS are fully supported. 
+Upbound Spaces are self-hosted environments for Upbound's managed Crossplane control planes. All that's required to bootstrap a Space is a Kubernetes cluster. Popular managed Kubernetes services including Amazon EKS, Google GKE, and Microsoft AKS are fully supported.
 
 ## Spaces and Upbound
 
-Think of an Upbound Space as a self-managed slice of the Upbound platform in your own environment. Whether that's a hyper scale cloud provider or on-prem, Spaces supplements Upbound's SaaS service by enabling a new deployment option. Now you can have control planes that run in your preferred hosting environment and Upbound's own SaaS. 
+Think of an Upbound Space as a self-managed slice of the Upbound platform in your own environment. Whether that's a hyper scale cloud provider or on-prem, Spaces supplements Upbound's SaaS service by enabling a new deployment option. Now you can have control planes that run in your preferred hosting environment and Upbound's own SaaS.
 
-{{<img src="spaces/images/mcps-everywhere.png" alt="Managed control planes can run anywhere, thanks to Spaces" quality="100" lightbox="true">}}
+{{<img src="spaces/images/mcps-everywhere.png" alt="Managed control planes can run anywhere, thanks to Spaces">}}
 
 Spaces lets you:
 
@@ -29,13 +30,13 @@ Spaces require a Kubernetes cluster as a hosting environment. Upbound validates 
 <!-- vale write-good.TooWordy = NO -->
 ### Minimum requirements
 
-The minimum host Kubernetes cluster configuration Upbound recommends is a 2 worker node setup. By default, Upbound recommends one node for operating the Spaces management pods, leaving the remaining worker nodes to host your control planes. 
+The minimum host Kubernetes cluster configuration Upbound recommends is a 2 worker node setup. By default, Upbound recommends one node for operating the Spaces management pods, leaving the remaining worker nodes to host your control planes.
 
 The minimum recommended node pool VM configuration for each cloud provider is:
 
 {{< table >}}
 | Cloud Provider | VM configuration | Cores | Memory |
-| ---- | ---- | ---- |  ---- | 
+| ---- | ---- | ---- |  ---- |
 | AWS | m5.large | 2 | 8 |
 | Azure | Standard_D2_v3 | 2 | 8 |
 | GCP | e2-standard-2 | 2 | 8 |
@@ -173,7 +174,7 @@ kubectl get providers --kubeconfig=/tmp/<ctp-name>.yaml
 
 ### Configure a managed control plane
 
-Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space. 
+Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
 
 Learn more in the [Spaces Git integration]({{<ref "spaces/git-integration.md">}}) documentation.
 

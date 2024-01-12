@@ -46,7 +46,7 @@ Use the [Upbound Marketplace's](https://marketplace.upbound.io/) API documentati
 
 As an example, consider the provider-aws `Instance` resource for an EC2 Instance. You can see below there is a reference to a `networkInterface`. This points to another resource you may choose to create in Crossplane and then reference in your Instance resource.
 
-{{<img src="xp-arch-framework/images/instance-nw-interface.png" alt="Parameters on an AWS EC2 instance" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/instance-nw-interface.png" alt="Parameters on an AWS EC2 instance" size="small" >}}
 
 ### Required fields for composed resources
 
@@ -57,7 +57,7 @@ Two reasons it's important to know the required fields in the managed resources 
 
 Use the [Upbound Marketplace's](https://marketplace.upbound.io/) API documentation feature to see the required fields under the `spec.forProvider`. For example, notice in the [AWS EKS Cluster](https://marketplace.upbound.io/providers/upbound/provider-aws-eks/latest/resources/eks.aws.upbound.io/Cluster/v1beta1) resource API documentation how `region` has a "required" label whereas `version` isn't.
 
-{{<img src="xp-arch-framework/images/eks-required-fields.png" alt="The required fields for EKS cluster" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/eks-required-fields.png" alt="The required fields for EKS cluster" size="small">}}
 
 Sometimes a managed resource has fields that need to have a value but it's not explicitly marked as `required`. For example, consider the [AWS Lambda Function](https://marketplace.upbound.io/providers/upbound/provider-aws-lambda/latest/resources/lambda.aws.upbound.io/Function/v1beta1) resource API documentation. It stipulates that `filename, image_uri, or s3_bucket must be specified`, yet none of those fields have a "required" label. It's helpful to look at a resource's "Examples" tab in the Upbound Marketplace. Examples show verified configurations for managed resources.
 

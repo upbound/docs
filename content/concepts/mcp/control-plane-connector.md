@@ -150,7 +150,8 @@ Upbound's Managed Control Plane Connector (MCP Connector) is another way you can
 
 MCP Connector connects Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinition`s are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
 
-{{<img src="concepts/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" quality="100" lightbox="true">}}
+
+{{<img src="concepts/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
 
 ### Managed control plane connector operations
 
@@ -278,11 +279,11 @@ app cluster. Although your local cluster has an Object, the actual resources is 
 kubectl apply -f claim.yaml
 ```
 
-{{<img src="concepts/images/ClaimInCluster.png" alt="Claim in cluster" size="medium" lightbox="true">}}
+{{<img src="concepts/images/ClaimInCluster.png" alt="Claim in cluster" size="small" lightbox="true">}}
 
 Once Kubernetes creates the object, view the console to see your object.
 
-{{<img src="concepts/images/ClaimInConsole.png" alt="Claim by connector in console" size="large" lightbox="true">}}
+{{<img src="concepts/images/ClaimInConsole.png" alt="Claim by connector in console" lightbox="true">}}
 
 You can interact with the object through your cluster just as if it
 lives in your cluster. 
@@ -295,7 +296,7 @@ Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/c
 
 Claims are store in a unique namespace in the Upbound managed control plane. Every cluster creates a new MCP namespace.
 
-{{<img src="concepts/images/ConnectorMulticlusterArch.png" alt="Multi-cluster architecture with managed control plane connector" size="medium" lightbox="true">}}
+{{<img src="concepts/images/ConnectorMulticlusterArch.png" alt="Multi-cluster architecture with managed control plane connector" unBlur="true" lightbox="true">}}
 
 There's no limit on the number of clusters connected to a single control plane. Control plane operators can see all their infrastructure in a central control plane.
 

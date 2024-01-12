@@ -30,11 +30,11 @@ Your first time in Upbound you must create an organization. Give your organizati
 
 Select **Create Organization**.
 
-{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="original" quality="100" align="center" >}}
+{{<img src="quickstart/images/my-org.png" alt="Upbound Create organization screen" size="small" unBlur="true" align="center" >}}
 
 On the next screen, start your free trial. This trial allows you to create up to three managed control planes, three configurations, and invite a total of 10 team members in an organization.
 
-{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="original" quality="100" align="center" >}}
+{{<img src="quickstart/images/free-trial.png" alt="Upbound Free trial entry" size="small" unBlur="true" align="center" >}}
 
 ### Choose a configuration
 
@@ -42,7 +42,7 @@ Upbound offers a curated gallery of Crossplane configurations for you to choose 
 
 Select the Configuration called **Cluster as a Service**. 
 
-{{<img src="quickstart/images/caas-fre-step1.png" alt="Choose an Upbound configuration" quality="100" size="medium" lightbox="true" >}}
+{{<img src="quickstart/images/caas-fre-step1.png" alt="Choose an Upbound configuration"  >}}
 
 ### Connect to GitHub
 
@@ -63,7 +63,7 @@ Give your repository a name, like **my-control-plane-api**.
 
 Select **Clone configuration to GitHub**.
 
-{{<img src="quickstart/images/caas-fre-step2.png" alt="Upbound Create Repository screen" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/caas-fre-step2.png" alt="Upbound Create Repository screen" unBlur="true">}}
 
 ### Create a managed control plane
 
@@ -76,22 +76,22 @@ Give your control plane a name, like **my-control-plane**.
 
 Select **Create Control Plane**.
 
-{{<img src="quickstart/images/caas-fre-step3.png" alt="Upbound Create Control Plane screen" quality="100" lightbox="true" size="medium" >}}
+{{<img src="quickstart/images/caas-fre-step3.png" alt="Upbound Create Control Plane screen" size="small"  >}}
 
 ### Complete the flow
 
 On the final screen of the _Get Started_ experience, review your work. Observe the configuration you've cloned and the control plane you've created. This screen shows information about the providers that you need to authenticate with after launching your new control plane.
-{{<img src="quickstart/images/caas-fre-step4.png" alt="Upbound Get Started Experience final step" quality="100" lightbox="true" size="medium" >}}
+{{<img src="quickstart/images/caas-fre-step4.png" alt="Upbound Get Started Experience final step" >}}
 
 ## Welcome to the Upbound Console
 
 After completing the _Get Started_ experience, you are in the Upbound control plane explorer. The console shows a message with pointers for what to do next. 
 
-{{<img src="quickstart/images/caas-getting-started-guide.png" alt="Getting Started Guide" quality="100" align="center">}}
+{{<img src="quickstart/images/caas-getting-started-guide.png" alt="Getting Started Guide" unBlur="true" align="center">}}
 
 You can reopen this guide at any time by selecting the Getting Started Guide button in the upper right corner of the control plane explorer.
 
-{{<img src="quickstart/images/caas-ctp-explorer.png" alt="Upbound control plane explorer" quality="100" align="center">}}
+{{<img src="quickstart/images/caas-ctp-explorer.png" alt="Upbound control plane explorer"  align="center">}}
 
 The control plane details view gives you a view into what's happening on your control plane. 
 
@@ -146,11 +146,11 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to AWS without ex
  **sts.amazonaws.com** as the Audience.  
   Select **Get thumbprint**.  
   Select **Add provider**.  
-{{<img src="quickstart/images/get-started-aws-add-idp-confirm.png" alt="Configure an Identity Provider in AWS" quality="100" align="center" >}}
+{{<img src="quickstart/images/get-started-aws-add-idp-confirm.png" alt="Configure an Identity Provider in AWS" size="small" unBlur="true" align="center" >}}
 
 #### Create an AWS IAM Role for Upbound
 1. Create an [AWS IAM Role](https://console.aws.amazon.com/iamv2/home#/roles) with a **Custom trust policy** for the OIDC connector.
-{{<img src="quickstart/images/aws-custom-trust-policy.png" alt="IAM Role with a custom trust policy" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-custom-trust-policy.png" alt="IAM Role with a custom trust policy" size="small" unBlur="true" align="center">}}
 {{<hint "important" >}}
 Provide your [AWS account ID](https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html), Upbound organization and control plane names in the JSON Policy below.
 
@@ -179,17 +179,17 @@ You can find your AWS account ID by selecting the account dropdown in the upper 
 ```
 {{< /editCode >}}
 1. Attach the **AmazonEC2FullAccess** permission policy.
-{{<img src="quickstart/images/aws-ec2fullaccess-policy.png" alt="Applying the AmazonEC2FullAccess policy to the role" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-ec2fullaccess-policy.png" alt="Applying the AmazonEC2FullAccess policy to the role" size="small" unBlur="true" align="center">}}
 1. Name the role **upbound-eks-role** and select **Create role**.
-{{<img src="quickstart/images/aws-eks-role-name.png" alt="Naming the role upbound-eks-role" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-eks-role-name.png" alt="Naming the role upbound-eks-role" size="small" unBlur="true" align="center">}}
 1. View the new role and copy the role ARN.
-{{<img src="quickstart/images/aws-upbound-eks-role-arn.png" alt="Viewing the role ARN" quality="100" align="center">}}
+{{<img src="quickstart/images/aws-upbound-eks-role-arn.png" alt="Viewing the role ARN" size="small" unBlur="true" align="center">}}
 
 #### Provide the ARN to Upbound
 
 Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-aws and select the ProviderConfigs tab. Then, select **Create ProviderConfig**
 
-{{<img src="quickstart/images/providers-tab.png" alt="Providers tab" quality="100" lightbox="true" size="medium">}}
+{{<img src="quickstart/images/providers-tab.png" alt="Providers tab" >}}
 
 On the screen that displays, give the ProviderConfig a name. Entering the name `default` sets this as the default ProviderConfig for this provider in this control plane.
 
@@ -210,7 +210,7 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to Azure without 
 6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
 7. In the _Redirect URI_ section select **Web** and leave the URL field blank.
 8. Select **Register**.
-{{<img src="quickstart/images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure" quality="100" align="center" size="medium" >}}
+{{<img src="quickstart/images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure"  align="center" size="small" unBlur="true" >}}
 
 #### Create a federated credential 
 
@@ -248,7 +248,7 @@ upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
 9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.
 10. Select **Add**.
 
-{{<img src="quickstart/images/azure-registration-config.png" alt="Azure configure app registration" quality="100" align="center" size="medium">}}
+{{<img src="quickstart/images/azure-registration-config.png" alt="Azure configure app registration" align="center" size="small" unBlur="true">}}
 
 #### Grant permissions to the service principal
 
@@ -268,13 +268,13 @@ For your control plane to be able to perform actions required by this configurat
 12. Select **Review + assign**.
 13. Make sure everything is correct and press **Review + assign** again.
 
-{{<img src="quickstart/images/azure-identity-setup.png" alt="Azure grant permissions to service principal" quality="100" align="center" size="medium" >}}
+{{<img src="quickstart/images/azure-identity-setup.png" alt="Azure grant permissions to service principal" align="center" unBlur="true">}}
 
 #### Finish configuring the Upbound identity provider
 
 Return to Upbound and head to the Providers tab within the control plane explorer. Find provider-family-azure and select the ProviderConfigs tab. Then, select **Create ProviderConfig**
 
-{{<img src="quickstart/images/providers-tab-aks.png" alt="Providers tab" quality="100" lightbox="true" size="medium">}}
+{{<img src="quickstart/images/providers-tab-aks.png" alt="Providers tab" unBlur="true">}}
 
 On the screen that displays, give the ProviderConfig a name. Entering the name `default` sets this as the default ProviderConfig for this provider in this control plane.
 
@@ -309,7 +309,7 @@ Add a new [Service Account]({{<ref "#create-a-gcp-service-account" >}}) to the e
 6. Enter a description like **An identity provider for Upbound**.
 7. **Enable** the pool.
 8. Select **Continue**
-{{<img src="quickstart/images/gcp-identity-start.png" alt="Upbound Get Started Configure OIDC screen for GCP" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-identity-start.png" alt="Upbound Get Started Configure OIDC screen for GCP" size="small" unBlur="true" align="center" >}}
 
 #### Add Upbound to the pool
 
@@ -324,7 +324,7 @@ For _Audience 1_ enter **sts.googleapis.com**
 
 Select **Continue**.
 
-{{<img src="quickstart/images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" size="small" unBlur="true" align="center" >}}
 
 #### Configure provider attributes
 The provider attributes restrict which remote entities you allow access to your resources. 
@@ -353,7 +353,7 @@ Not providing a CEL condition allows any Upbound managed control plane to access
 
 Select **Save**.
 
-{{<img src="quickstart/images/gcp-idp-attributes.png" alt="GCP configure provider attributes configuration" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-idp-attributes.png" alt="GCP configure provider attributes configuration" size="small" unBlur="true" align="center" >}}
 
 #### Create a GCP Service Account
 
@@ -376,7 +376,7 @@ _Description_: **Upbound managed control planes service account**
 
 Select **Create and Continue**.
 
-{{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" quality="100" align="center" >}}
+{{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" unBlur="true" size="small" align="center" >}}
 
 #### Grant this service account access to project
 For the _CloudSQL as a service_ configuration the service account requires the roles:  
@@ -385,14 +385,14 @@ For the _CloudSQL as a service_ configuration the service account requires the r
 
 Select **Done**.
 
-{{<img src="quickstart/images/gcp-role-add.png" alt="GCP service project access screen" quality="100" align="center">}}
+{{<img src="quickstart/images/gcp-role-add.png" alt="GCP service project access screen" size="small" unBlur="true" align="center">}}
 
 #### Record the service account email address
 
 At the list of service accounts copy the service account **email**.  
 Upbound requires this to authenticate your managed control plane.
 
-{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" size="medium" quality="100" >}} 
+{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" unBlur="true" size="small" >}} 
 
 #### Add the service account to the identity pool
 
@@ -401,7 +401,7 @@ Add the service account to the Workload Identity Federation pool to authenticate
 2. Near the top of the page select **Grant Access**.
 3. Select the new service account, **upbound-service-account**.
 4. Under _Select principals_ use **All identities in the pool**.
-{{<img src="quickstart/images/gcp-add-to-pool.png" alt="Pool select service account screen" quality="100" align="center">}}
+{{<img src="quickstart/images/gcp-add-to-pool.png" alt="Pool select service account screen" size="small" unBlur="true" align="center">}}
 Select **Save**.  
 In the _Configure your application_ window, select **Dismiss**.
 
@@ -420,7 +420,7 @@ Go to the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sq
 
 Select **Enable**.
 
-{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" size="original" quality="100" >}}
+{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" size="small" unBlur="true">}}
 <!-- vale Google.Headings = YES -->
 <!-- vale Microsoft.Terms = YES -->
 
@@ -461,7 +461,7 @@ Select **Create** to finish authenticating with GCP.
 
 From the control planes view, select the **Self Service** tab, and select **Open Control Plane Portal**.
 
-{{<img src="quickstart/images/self-service-portal.png" alt="Navigate to control plane portal" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/self-service-portal.png" alt="Navigate to control plane portal" >}}
 
 The Control Plane Portal lists the available resources that users can claim in the left-side menu. These resources are your abstracted APIs presented to users. 
 
@@ -469,7 +469,7 @@ Select a **Cluster** resource and then select the **Create New** button at the t
 
 The form dynamically generates from the parameters defined in your custom API. Fill in the required fields.
 
-{{<img src="quickstart/images/caas-portal-form.png" alt="Create a cluster with the Portal form" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/caas-portal-form.png" alt="Create a cluster with the Portal form" >}}
 
 When you **Create Instance** the portal generates a Crossplane claim.
 
@@ -478,7 +478,7 @@ After creating an instance, the _Events_ section displays logs directly from Kub
 
 Crossplane commonly generates a Kubernetes error `cannot apply composite resource: cannot patch object: Operation cannot be fulfilled` that may appear as an _Event_.
 
-{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" quality="100" size="small" align="center">}}
+{{<img src="quickstart/images/event-error-cannot-patch.png" alt="Events showing the error cannot apply composite resource: cannot patch object" unBlur="true" align="center">}}
 
 You can ignore this error. For more information about what causes this, read [Crossplane issue #2114](https://github.com/crossplane/crossplane/issues/2114).
 {{< /hint >}}
@@ -491,7 +491,7 @@ There's now a claim card next to the `Cluster` type card.
 
 Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane. 
 
-{{<img src="quickstart/images/caas-ctp-graph.png" alt="Viewing a claim in the graph" quality="100" lightbox="true">}}
+{{<img src="quickstart/images/caas-ctp-graph.png" alt="Viewing a claim in the graph" >}}
 
 Congratulations, you created your first resources with your MCP.
 

@@ -54,8 +54,7 @@ spec:
 Once you commit your change, go to the console and update your control plane
 with the latest build of your repository.
 
-{{<img src="knowledge-base/images/update-cp.png" alt="Update configuration"
-size="small" lightbox="true">}}
+{{<img src="knowledge-base/images/update-cp.png" alt="Update configuration" size="small" unBlur="true" lightbox="true">}}
 
 ### Deploy internal API
 

@@ -14,7 +14,7 @@ If you are not already familiar with core Crossplane concepts, we recommend firs
 
 Crossplane gives you the tools to extend the Kubernetes API without needing to write code. According to the [Kubernetes docs](https://kubernetes.io/docs/concepts/overview/kubernetes-api/), "The Kubernetes API lets you query and manipulate the state of API objects in Kubernetes. For example: Pods, Namespaces, ConfigMaps, and Events." 
 
-{{<img src="xp-arch-framework/images/kubernetes-resources.png" alt="Depiction of default Kubernetes resources" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/kubernetes-resources.png" alt="Depiction of default Kubernetes resources" size="small" unBlur="true">}}
 
 Customers use Crossplane because they want to declaratively create and manage resources in an external service. "Resources in an external service" can vary:
 
@@ -24,13 +24,13 @@ Customers use Crossplane because they want to declaratively create and manage re
 
 To put this into context, Kubernetes has a component called the `API Server`. It's the front door you must go through to interact with various objects in Kubernetes. The API Server needs to know how to interact with resources which exist outside of a Kubernetes cluster.
 
-{{<img src="xp-arch-framework/images/kubernetes-custom-resources.png" alt="Depiction of how Kubernetes cant talk to custom resources by default" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/kubernetes-custom-resources.png" alt="Depiction of how Kubernetes cant talk to custom resources by default" size="medium" unBlur="true">}}
 
 ## How Crossplane enables managing resources in an external service
 
 In the preceding example, each resource has an API to interact with it. You can teach Crossplane how to interact with those APIs. **Crossplane providers** are the building blocks that you can install into Crossplane to teach it how to talk to these resources' APIs. Crossplane providers are packages which bundle and define new Kubernetes custom resources and their associated controllers. Controllers contain the logic for interacting with the external resource's APIs. Collectively, Crossplane calls these `managed resources (MRs)`.
 
-{{<img src="xp-arch-framework/images/kubernetes-crossplane-mrs.png" alt="Depiction of how Crossplane facilitates talking to external resources" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/kubernetes-crossplane-mrs.png" alt="Depiction of how Crossplane facilitates talking to external resources" size="medium" unBlur="true">}}
 
 Managed resources are Kubernetes objects, complete with manifests that are like any other Kubernetes object--They support versions, labels, metadata, etc. An example manifest of the `Server` resource courtesy of the Crossplane provider-azure. 
 
@@ -65,7 +65,7 @@ As the [upstream Crossplane](https://docs.crossplane.io/master/concepts/) docume
 2. A **Composition** or **Compositions**
 3. A **Configuration** Package
 
-{{<img src="xp-arch-framework/images/xp-building-blocks.png" alt="Depiction of Crossplane building blocks" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/xp-building-blocks.png" alt="Depiction of Crossplane building blocks" size="medium" unBlur="true">}}
 
 A Composite Resource Definition and composition together give Crossplane enough information to be able to form Composite Resources (XRs).
 
@@ -82,11 +82,11 @@ Composite Resources solve these problems. A composite resource requires:
 - Someone authors a  **Composite Resource Definition (XRD)**.
 - Someone authors a **composition**, which is the implementation component of your composite resource against the XRD (which is the definition). You can have multiple compositions for an XRD, but 1 implementation is always selected when creating a new instance of the composite resource.
 
-{{<img src="xp-arch-framework/images/xrd.png" alt="Depiction of an XRD" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/xrd.png" alt="Depiction of an XRD" size="medium" unBlur="true">}}
 
 For example, you could define a custom API called `StorageBucket` and you could have three different implementations of this resource, one for each public cloud provider.
 
-{{<img src="xp-arch-framework/images/xr.png" alt="Depiction of an XR" size="small" quality="100">}}
+{{<img src="xp-arch-framework/images/xr.png" alt="Depiction of an XR" size="medium" unBlur="true">}}
 
 ### Composing resources
 

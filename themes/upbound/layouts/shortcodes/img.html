@@ -15,7 +15,7 @@
 {{ end }}
 
 {{ $customAlt := .Get "alt" }}
-{{ $customSize := .Get "size" | default "original" }}
+{{ $customSize := .Get "size" | default "medium" }}
 {{ $align := .Get "align" | default "" }}
 
 {{ if eq $align "center" }}
@@ -39,6 +39,12 @@
   {{ $quality = (printf "q%s" (.Get "quality")) }}
 {{ end }}
 
+{{/*  unBlur is an undocumented option. */}}
+{{/*  unBlur uses a different compression algo that is much better with text at the cost of build times. */}}
+{{ $resampleFilter := "Box" }}
+{{ if .Get "unBlur" }}
+  {{ $resampleFilter = "CatmullRom" }}
+{{ end }}
 
 {{ $source := resources.Get (printf "content%s" (.Get "src")) }}
 {{ if not $source }}
@@ -48,12 +54,12 @@
 {{ with $source }}
 
   {{/*  Render the images used by srcset  */}}
-  {{ $xtiny := (.Resize (printf "150x webp  %s" $quality)) }}
-  {{ $tiny := (.Resize (printf "300x webp  %s" $quality)) }}
-  {{ $small := (.Resize (printf "600x webp %s" $quality)) }}
-  {{ $medium := (.Resize (printf "800x webp %s" $quality)) }}
-  {{ $large := (.Resize (printf "1200x webp %s" $quality)) }}
-  {{ $original := (.Resize (printf "%dx%d webp %s" .Width .Height $quality)) }}
+  {{ $xtiny := (.Resize (printf "150x webp  %s %s" $quality $resampleFilter)) }}
+  {{ $tiny := (.Resize (printf "300x webp  %s %s" $quality $resampleFilter)) }}
+  {{ $small := (.Resize (printf "600x webp %s %s" $quality $resampleFilter)) }}
+  {{ $medium := (.Resize (printf "800x webp %s %s" $quality $resampleFilter)) }}
+  {{ $large := (.Resize (printf "1200x webp %s %s" $quality $resampleFilter)) }}
+  {{ $original := (.Resize (printf "%dx%d webp %s %s" .Width .Height $quality $resampleFilter)) }}
 
 
   {{ $size := dict "xtiny" $xtiny "tiny" $tiny "small" $small "medium" $medium "large" $large "original" $original }}

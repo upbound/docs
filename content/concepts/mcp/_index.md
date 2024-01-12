@@ -22,7 +22,7 @@ The [Upbound blog](https://blog.upbound.io/scaling-kubernetes-to-thousands-of-cr
 
 With Upbound managed control planes, these limitations don't apply. Managed control planes scale to >1000 CRDs without any performance degradation. Upbound has complete control over the lifecycle management of a control plane. Upbound ensures that the control plane is right-sized and given the appropriate memory and CPU for the required CRDs. 
 
-{{<img src="concepts/images/mcp-arch.png" alt="an architecture of XP with Upbound" size="large" quality="100" lightbox="true">}}
+{{<img src="concepts/images/mcp-arch.png" alt="an architecture of XP with Upbound" size="large" unBlur="true" >}}
 
 ## Crossplane versioning
 

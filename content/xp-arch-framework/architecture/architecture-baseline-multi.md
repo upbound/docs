@@ -19,7 +19,7 @@ Like the baseline single control plane architecture, the solution you arrive upo
 
 ## Diagram 
 
-{{<img src="xp-arch-framework/images/cp-of-cp-arch.png" alt="Control Plane of Control Planes Architecture" size="medium" quality="100" align="center">}}
+{{<img src="xp-arch-framework/images/cp-of-cp-arch.png" alt="Control Plane of Control Planes Architecture" size="large" unBlur="true" align="center">}}
 
 ## Central (hub) control plane
 
