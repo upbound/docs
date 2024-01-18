@@ -4,18 +4,25 @@ weight: 2
 description:
 ---
 
-In the previous guide, you used `provider-terraform` to "lift and shift" your Terraform code into a basic Crossplane configuration. Using the provider is a great way to get started in your Crossplane journey; however, you can go even
+In the previous guide, you used `provider-terraform` to "lift and shift" your
+Terraform code into a basic Crossplane configuration. The provider is a great
+way to get started in your Crossplane journey. With Crossplane, you can go even
 further by converting your Terraform HCL into Kubernetes-like manifests for more
 Crossplane benefits.
 
+<!-- vale Microsoft.HeadingPunctuation = NO -->
+
 ## Why go all in on Crossplane?
 
-Moving away from HCL to fully utilize Crossplane configurations can significantly simplify your deployment workflow. You can manage your applications and infrastructure in the same control plane and leverage the continuous reconciliation processes of Crossplane in Kubernetes to make sure your infrastructure and configurations are always in sync.
+<!-- vale Microsoft.HeadingPunctuation = YES -->
+
+Moving away from HCL to Crossplane configurations can simplify your deployment
+workflow. You can manage your applications and infrastructure with the same workflow and leverage the continuous reconciliation processes of Crossplane in Kubernetes to make sure your infrastructure and configurations are always in sync.
 
 ## Prerequisites
 
 For this guide, you will convert the HCL configuration from the previous guide
-to use Crossplane native resources. You will need:
+to use Crossplane native resources. Make sure you have:
 
 - Crossplane installed
 - A Kubernetes cluster
@@ -72,7 +79,7 @@ spec:
 This CRD example uses the same fields as the Terraform configuration, with a few
 key differences.
 First, the `apiVersion` field references the API group for the AWS Crossplane
-provider. The provider here focuses explicitly on the EC2 service of AWS.
+provider. This provider focuses explicitly on the EC2 service of AWS.
 
 The `kind` field identifies the schema type for the configuration. In this case,
 you'll use the Instance kind.
@@ -90,7 +97,7 @@ configuration language.
 ## Create a resource definition
 
 You'll rarely work with individual resources in your configurations so add a new
-resource here. In this example, you will create a complete deployment with an
+resource. In this step, create a complete deployment with an
 EC2 instance, supporting, network resources, and SSH key pair for your
 instance as a new resource in your Crossplane configuration.
 
@@ -142,7 +149,7 @@ spec:
 A `definition` is a Crossplane spec that defines the allowed and required
 resources you want to deploy.
 
-## Create a Composition
+## Create a composition
 
 Compositions are templates to create and manage multiple resources. This
 composition is similar to the Terraform "module" concept.
@@ -152,6 +159,7 @@ Create a new file called `complete-instance-composition.yaml`.
 Expand the Composition below and copy and paste it into your file.
 
 {{< expand >}}
+
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
@@ -163,226 +171,226 @@ spec:
     apiVersion: aws.example.corp/v1alpha1
     kind: XInstance
   resources:
-  - name: test-env
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: VPC
-      spec:
-        forProvider:
-          cidrBlock: 10.0.0.0/16
-          enableDnsHostnames: true
-          enableDnsSupport: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: test-env
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: VPC
+        spec:
+          forProvider:
+            cidrBlock: 10.0.0.0/16
+            enableDnsHostnames: true
+            enableDnsSupport: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: subnet
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: Subnet
-      spec:
-        forProvider:
-          cidrBlock: 10.0.0.0/24
-          vpcIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.availabilityZone
-      transforms:
-      - type: string
-        string:
-          fmt: '%sa'
-          type: Format
+    - name: subnet
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: Subnet
+        spec:
+          forProvider:
+            cidrBlock: 10.0.0.0/24
+            vpcIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.availabilityZone
+          transforms:
+            - type: string
+              string:
+                fmt: "%sa"
+                type: Format
 
-  - name: ingress-all-test
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: SecurityGroup
-      spec:
-        forProvider:
-          name: allow-all-sg
-          vpcIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: ingress-all-test
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: SecurityGroup
+        spec:
+          forProvider:
+            name: allow-all-sg
+            vpcIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: ingress-all-test-ingress
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: SecurityGroupIngressRule
-      spec:
-        forProvider:
-          cidrIpv4: 0.0.0.0/0
-          fromPort: 22
-          toPort: 22
-          ipProtocol: tcp
-          securityGroupIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: ingress-all-test-ingress
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: SecurityGroupIngressRule
+        spec:
+          forProvider:
+            cidrIpv4: 0.0.0.0/0
+            fromPort: 22
+            toPort: 22
+            ipProtocol: tcp
+            securityGroupIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: ingress-all-test-egress
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: SecurityGroupEgressRule
-      spec:
-        forProvider:
-          cidrIpv4: 0.0.0.0/0
-          fromPort: 0
-          toPort: 0
-          ipProtocol: '-1'
-          securityGroupIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: ingress-all-test-egress
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: SecurityGroupEgressRule
+        spec:
+          forProvider:
+            cidrIpv4: 0.0.0.0/0
+            fromPort: 0
+            toPort: 0
+            ipProtocol: "-1"
+            securityGroupIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: test-env-gw
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: InternetGateway
-      spec:
-        forProvider:
-          vpcIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: test-env-gw
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: InternetGateway
+        spec:
+          forProvider:
+            vpcIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: route-table-test-env
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: RouteTable
-      spec:
-        forProvider:
-          vpcIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: route-table-test-env
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: RouteTable
+        spec:
+          forProvider:
+            vpcIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: route-table-test-env-route
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: Route
-      spec:
-        forProvider:
-          destinationCidrBlock: 0.0.0.0/0
-          gatewayIdSelector:
-            matchControllerRef: true
-          routeTableIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: route-table-test-env-route
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: Route
+        spec:
+          forProvider:
+            destinationCidrBlock: 0.0.0.0/0
+            gatewayIdSelector:
+              matchControllerRef: true
+            routeTableIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: subnet-association
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: RouteTableAssociation
-      spec:
-        forProvider:
-          routeTableIdSelector:
-            matchControllerRef: true
-          subnetIdSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: subnet-association
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: RouteTableAssociation
+        spec:
+          forProvider:
+            routeTableIdSelector:
+              matchControllerRef: true
+            subnetIdSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 
-  - name: keypair
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: KeyPair
-      metadata:
-        labels:
-          testing.upbound.io/example-name: keypair
-        name: keypair
-      spec:
-        forProvider:
-          publicKey:
-            matchControllerRef: true
-          region:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.publicKey
-      toFieldPath: spec.forProvider.publicKey
+    - name: keypair
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: KeyPair
+        metadata:
+          labels:
+            testing.upbound.io/example-name: keypair
+          name: keypair
+        spec:
+          forProvider:
+            publicKey:
+              matchControllerRef: true
+            region:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.publicKey
+          toFieldPath: spec.forProvider.publicKey
 
-  - name: ec2-instance
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: Instance
-      metadata:
-        labels:
-          testing.upbound.io/example-name: test
-        name: test
-      spec:
-        forProvider:
-          instanceType: t3.micro
-          vpcSecurityGroupIdSelector:
-            matchControllerRef: true
-          subnetIdSelector:
-            matchControllerRef: true
-          keyPairName:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.amiId
-      toFieldPath: spec.forProvider.ami
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.keyPairName
-      toFieldPath: spec.forProvider.keyName
+    - name: ec2-instance
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: Instance
+        metadata:
+          labels:
+            testing.upbound.io/example-name: test
+          name: test
+        spec:
+          forProvider:
+            instanceType: t3.micro
+            vpcSecurityGroupIdSelector:
+              matchControllerRef: true
+            subnetIdSelector:
+              matchControllerRef: true
+            keyPairName:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.amiId
+          toFieldPath: spec.forProvider.ami
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.keyPairName
+          toFieldPath: spec.forProvider.keyName
 
-  - name: ip-test-env
-    base:
-      apiVersion: ec2.aws.upbound.io/v1beta1
-      kind: EIP
-      metadata:
-        labels:
-          testing.upbound.io/example-name: lb
-        name: lb
-      spec:
-        forProvider:
-          instanceSelector:
-            matchControllerRef: true
-    patches:
-    - type: FromCompositeFieldPath
-      fromFieldPath: spec.parameters.region
-      toFieldPath: spec.forProvider.region
+    - name: ip-test-env
+      base:
+        apiVersion: ec2.aws.upbound.io/v1beta1
+        kind: EIP
+        metadata:
+          labels:
+            testing.upbound.io/example-name: lb
+          name: lb
+        spec:
+          forProvider:
+            instanceSelector:
+              matchControllerRef: true
+      patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: spec.parameters.region
+          toFieldPath: spec.forProvider.region
 ```
+
 {{< /expand >}}
 
 Your Composition sets the explicit values you want to deploy based on the
-definition file you created above.
+definition file you created in the preceding step.
 
 ## Create a claim
 
-Now that you have a definition and a composition, you can create a claim to
-determine the variable parameters of the infrastructure you want to deploy. The
+Now that you have a definition and a composition, you can create a claim to. The
 claim is a set of resources to deploy within a single namespace. Creating claims
 is comparable to different Terraform workspaces in that resources within one
-namespace do not impact resources within another.
+namespace don't impact resources within another.
 
 ```yaml
 apiVersion: aws.example.corp/v1alpha1
@@ -400,9 +408,9 @@ spec:
 ```
 
 Copy and paste the contents of your public key (typically `~/.ssh/id_rsa.pub`)
-into the publicKey field.
+into the `publicKey` field.
 
-## Authenticate with AWS
+## Authenticate with your cloud provider
 
 The Crossplane AWS provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
@@ -455,9 +463,8 @@ ssh <>@<> -i key
 
 ## Recommended practices
 
-When you move from Terraform to Crossplane, the `provider-terraform`` approach will
-help ease the transition. When you get more comfortable with Crossplane, the
-native Kubernetes spec configuration enables you to eliminate your original HCL
+When you move from Terraform to Crossplane, the `provider-terraform` approach eases the transition. When you get more comfortable with Crossplane, the
+native Kubernetes spec configuration enables you to remove your original HCL
 resource definitions.
 
 Upbound's Marketplace can help you recreate your Terraform configurations with
@@ -465,15 +472,15 @@ Crossplane providers. In the EC2 example, the Marketplace has a dedicated
 section for all the managed resources of the EC2 API group. The original
 Terraform resource requires two attributes to be valid, `ami` and `instance_type`.
 
-In the Upbound Marketplace, these resources are represented by an API schema.
-The `ami` and `instance_type` keys are set in the `forProvider` object. The attributes
+The Upbound Marketplace represents these attributes in the API schema.
+The `ami` and `instance_type` keys are properties within the `forProvider` object. The attributes
 required by Terraform are the same values required by Crossplane.
 
 ## Next steps
 
-You just created an EC2 instance with an SSH key with Crossplane! You created a
+You just created an EC2 instance with an SSH key with Crossplane. You created a
 Composite Resource Definition and a Composition from your original Terraform
 configuration.
 
-For more information on Upbound, Crossplane, and control planes, check out the
+For more information on Upbound, Crossplane, and control planes, review the
 Crossplane Architecture Framework for best practices when building your infrastructure.

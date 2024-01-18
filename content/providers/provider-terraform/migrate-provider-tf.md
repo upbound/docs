@@ -63,7 +63,7 @@ The Terraform configuration you'll work with creates a new virtual machine:
 
 `provider-terraform` is a Crossplane provider that parses and executes your
 Terraform configurations as a Crossplane Managed Resource(MR). You don't have to
-rewrite all of your Terraform configurations to begin working with Crossplane.
+rewrite all your Terraform configurations to begin working with Crossplane.
 
 ## Create a managed resource
 
@@ -181,7 +181,7 @@ upbound-provider-family-aws-fec919bd2218-5f85944578-rdxjm         1/1     Runnin
 ```
 
 
-## Authenticate with AWS
+## Authenticate with your cloud provider
 
 The Crossplane AWS provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
