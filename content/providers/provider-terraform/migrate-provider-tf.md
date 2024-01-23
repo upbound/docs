@@ -38,8 +38,23 @@ you have the following prerequisites:
 
 - A Kubernetes cluster
 - Crossplane installed
-
 - A cloud provider account
+
+## Configure your `kind` cluster
+
+To follow this guide with a `kind` cluster, create a new cluster with a new
+namespace.
+
+```shell
+kind create cluster
+
+kind create namespace upbound-system
+```
+
+Remember to [install
+Crossplane](https://docs.crossplane.io/latest/software/install/) into your new cluster.
+
+## Review the Terraform configuration
 
 This guide reviews a small Terraform configuration using AWS and use
 Crossplane's `provider-terraform` to migrate the resources to a new control
@@ -142,6 +157,45 @@ spec:
         value: crossplanevm
 ```
 
+## Authenticate with your cloud provider
+
+The provider configuration handles authentication. You must
+create a Kubernetes secret file to authenticate with your AWS account.
+
+The provider supports AWS authentication with:
+Authentication Keys
+Web Identity
+Service Accounts
+
+For more information on cloud provider authentication, checkout the Provider
+Azure and Provider GCP authentication documentation.
+
+This guide uses the authentication key method. Download your AWS credentials and
+save them to a new file called `aws-credentials`.
+
+Create a new Kubernetes secret.
+
+```shell
+kubectl -n upbound-system create secret generic aws-creds --from-file=credentials=aws-credentials
+```
+
+Verify your secret with `kubectl describe secret`.
+
+```shell
+kubectl describe secret aws-creds -n upbound-system
+
+Name:         aws-creds
+Namespace:    upbound-system
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+creds:  114 bytes
+```
+
 ## Install the provider
 
 You wrote a managed resource in the previous step. Next, install the
@@ -159,6 +213,12 @@ metadata:
   name: provider-terraform
 spec:
   package: xpkg.upbound.io/upbound/provider-terraform:v0.13.0
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: upbound-system
+      name: aws-credentials
+      key: credentials
 ```
 
 Crossplane uses this Kubernetes manifest file to download and install the
@@ -190,22 +250,6 @@ $ kubectl get providers
 NAME                 READY   	 STATUS    PACKAGE   											AGE
 provider-terraform   True        True      xpkg.upbound.io/upbound/provider-terraform:v0.13.0   15s
 ```
-
-## Authenticate with your cloud provider
-
-The `provider-terraform` configuration handles authentication. You must
-create a Kubernetes secret file to authenticate with your AWS account.
-
-Crossplane supports AWS authentication with:
-Authentication Keys
-Web Identity
-Service Accounts
-
-For more information on cloud provider authentication, checkout the Provider
-Azure and Provider GCP authentication documentation.
-
-In this example, the `credentials.source` attribute references the authentication
-key method as a secret.
 
 ## Deploy your configuration
 
