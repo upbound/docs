@@ -160,7 +160,7 @@ kind: Provider
 metadata:
   name: provider-terraform
 spec:
-  package: xpkg.upbound.io/upbound/provider-terraform
+  package: xpkg.upbound.io/upbound/provider-terraform:v0.13.0
 ```
 
 Crossplane uses this Kubernetes manifest file to download and install the
@@ -201,7 +201,7 @@ key method as a secret.
 
 Next, apply the manifest.
 
-`$ kubectl apply -f terraform-config.yaml`
+`$ kubectl apply -f terraform-configuration.yaml`
 
 ## State management
 
