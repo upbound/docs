@@ -7,7 +7,7 @@ description:
 In the previous guide, you used `provider-terraform` to "lift and shift" your
 Terraform code into a basic Crossplane configuration. The provider is a great
 way to get started in your Crossplane journey. With Crossplane, you can go even
-further by converting your Terraform HCL into Kubernetes-like manifests for more
+further by converting your Terraform HashiCorp Configuration Language (HCL) into Kubernetes-like manifests for more
 Crossplane benefits.
 
 <!-- vale Microsoft.HeadingPunctuation = NO -->
@@ -39,24 +39,24 @@ metadata:
   name: tf-vm
 spec:
   forProvider:
-	source: Inline
-	module: |
+    source: Inline
+    module: |
+      resource "aws_instance" "my_vm" {
+        ami           = "ami-065deacbcaac64cf2"
+        instance_type = "t2.micro"
+        tags = {
+          Name = var.vmName
+        }
+      }
 
-	resource "aws_instance" "my_vm" {
-    	ami                   	= "ami-065deacbcaac64cf2"
-    	instance_type         	= "t2.micro"
-    	tags = {
-        	Name = var.vmName,
-    	}
-  	}
-	variable "vmName" {
-    	description = "VM name"
-    	type    	= string
-  	}
+      variable "vmName" {
+        description = "VM name"
+        type        = string
+      }
 
-	vars:
-  	- key: vmName
-    	value: crossplanevm
+    vars:
+      - key: vmName
+        value: crossplanevm
 ```
 
 An equivalent Crossplane native managed resource relies on the provider-aws
@@ -458,8 +458,11 @@ kubectl apply -f claim.yaml
 ## Verify your deployment
 
 ```shell
-ssh <>@<> -i key
+ssh ubuntu@<> -i <path_to_key>
 ```
+
+Update the IP address and keypath with your instance public IP and the path to
+your local private key file (typically `~/.ssh/id_rsa`).
 
 ## Recommended practices
 

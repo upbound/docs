@@ -48,21 +48,22 @@ plane.
 The Terraform configuration you'll work with creates a new virtual machine:
 
 ```hcl
-	resource "aws_instance" "my_vm" {
-    	ami                   	= "ami-065deacbcaac64cf2"
-    	instance_type         	= "t2.micro"
-    	tags = {
-        	Name = var.vmName,
-    	}
-  	}
-	variable "vmName" {
-    	description = "VM name"
-    	type    	= string
-  	}
+resource "aws_instance" "my_vm" {
+  ami           = "ami-065deacbcaac64cf2"
+  instance_type = "t2.micro"
+  tags = {
+    Name = var.vmName
+  }
+}
+
+variable "vmName" {
+  description = "VM name"
+  type        = string
+}
 ```
 
 `provider-terraform` is a Crossplane provider that parses and executes your
-Terraform configurations as a Crossplane Managed Resource(MR). You don't have to
+Terraform configurations as a Crossplane Managed Resource (MR). You don't have to
 rewrite all your Terraform configurations to begin working with Crossplane.
 
 ## Create a managed resource
@@ -79,14 +80,11 @@ metadata:
   name: tf-vm
 spec:
   forProvider:
-	source: Inline
-	module: |
-
-	###
-
-	vars:
-  	- key:
-    	value:
+    source: Inline
+    module: |
+      vars:
+        - key:
+            value:
 ```
 
 The `apiVersion` field is a standard field in Kubernetes manifests and
@@ -105,7 +103,7 @@ provider defines the fields inside the `spec`.
 
 The `forProvider` sub-field lets you define the `source` of the Terraform
 configuration you want to deploy with Crossplane. In this example, the `source`
-is `Inline` meaning you define the HCL in this file with the `module` field.
+is `Inline` meaning you define the HashiCorp Configuration Language (HCL) in this file with the`module` field.
 
 The `module` field refers to the root module of your Terraform configuration.
 For an `Inline` source, you can write the contents of the main module directly
@@ -124,24 +122,24 @@ metadata:
   name: tf-vm
 spec:
   forProvider:
-	source: Inline
-	module: |
+    source: Inline
+    module: |
+      resource "aws_instance" "my_vm" {
+        ami           = "ami-065deacbcaac64cf2"
+        instance_type = "t2.micro"
+        tags = {
+          Name = var.vmName
+        }
+      }
 
-	resource "aws_instance" "my_vm" {
-    	ami                   	= "ami-065deacbcaac64cf2"
-    	instance_type         	= "t2.micro"
-    	tags = {
-        	Name = var.vmName,
-    	}
-  	}
-	variable "vmName" {
-    	description = "VM name"
-    	type    	= string
-  	}
+      variable "vmName" {
+        description = "VM name"
+        type        = string
+      }
 
-	vars:
-  	- key: vmName
-    	value: crossplanevm
+    vars:
+      - key: vmName
+        value: crossplanevm
 ```
 
 ## Install the provider
@@ -175,15 +173,27 @@ Verify the provider with `kubectl get pods`.
 ```yaml
 $ kubectl get pods -n upbound-system
 NAME                                                              READY   STATUS    RESTARTS   AGE
-crossplane-6979f579f9-x7nkr                                       2/2     Running   0          31m
-upbound-provider-aws-ec2-64262f355830-7b6b976c66-4b5wt            1/1     Running   0          29m
-upbound-provider-family-aws-fec919bd2218-5f85944578-rdxjm         1/1     Running   0          29m
+crossplane-6979f579f9-x7nkr                                       2/2     Running   0
 ```
 
+Crossplane uses this Kubernetes manifest file to download and install the
+provider package into your cluster.
+
+Deploy the configuration file with `kubectl apply -f`
+
+`$ kubectl apply -f provider-terraform-install.yaml`
+
+Verify the provider with `kubectl get providers`.
+
+```yaml
+$ kubectl get providers
+NAME                 READY   	 STATUS    PACKAGE   											AGE
+provider-terraform   True        True      xpkg.upbound.io/upbound/provider-terraform:v0.13.0   15s
+```
 
 ## Authenticate with your cloud provider
 
-The Crossplane AWS provider configuration handles authentication. You must
+The `provider-terraform` configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
 
 Crossplane supports AWS authentication with:
@@ -194,20 +204,21 @@ Service Accounts
 For more information on cloud provider authentication, checkout the Provider
 Azure and Provider GCP authentication documentation.
 
-In this example, the credentials.source attribute references the authentication
+In this example, the `credentials.source` attribute references the authentication
 key method as a secret.
 
 ## Deploy your configuration
 
 Next, apply the manifest.
 
-`$ kubectl apply -f terraform-configuration.yaml`
+```shell
+kubectl apply -f terraform-configuration.yaml
+```
 
 ## State management
 
 For greenfield deployments, this approach works well for users who are already
-familiar with Terraform. If your organization wants to maintain state parity
-with a remote Terraform state file, you can use a `ProviderConfig` to point your
+familiar with Terraform. If your organization wants to maintain state with a remote Terraform state file, you can use a `ProviderConfig` to point your
 Crossplane-controlled Terraform provider to the correct backend.
 
 The example below uses the `kubernetes` backend:
@@ -219,31 +230,31 @@ metadata:
   name: aws-tf-config
 spec:
   credentials:
-  - filename: aws-creds.ini
-	source: Secret
-	secretRef:
-  	namespace: upbound-system
-  	name: aws-creds
-  	key: credentials
+    - filename: aws-creds.ini
+      source: Secret
+      secretRef:
+        namespace: upbound-system
+        name: aws-creds
+        key: credentials
   configuration: |
-  	terraform {
-    	required_providers {
-      	aws = {
-        	source = "hashicorp/aws"
-        	version = "5.6.1"
-      	}
-    	}
-    	backend "kubernetes" {
-      	secret_suffix 	= "providerconfig"
-      	namespace     	= "upbound-system"
-      	in_cluster_config = true
-    	}
-  	}
-  	provider "aws" {
-    	shared_credentials_files = ["${path.module}/aws-creds.ini"]
-    	region = "us-east-1"
-  	}
-```
+    terraform {
+      required_providers {
+        aws = {
+          source  = "hashicorp/aws"
+          version = "5.6.1"
+        }
+      }
+      backend "kubernetes" {
+        secret_suffix    = "providerconfig"
+        namespace        = "upbound-system"
+        in_cluster_config = true
+      }
+    }
+    provider "aws" {
+      shared_credentials_files = ["${path.module}/aws-creds.ini"]
+      region = "us-east-1"
+    }
+``
 
 You can apply this `ProviderConfig` and let Crossplane continuously reconcile
 the resources in the cloud and update the state file.
@@ -253,4 +264,7 @@ the resources in the cloud and update the state file.
 You created a resource with the Crossplane `provider-terraform`! For more
 information on advanced migration tactics, check out this Upbound [sponsored
 webinar](https://www.youtube.com/watch?v=crM-zng8LfI) with the team behind the
-Crossplane `provider-terraform`
+Crossplane `provider-terraform`.
+
+In the next guide, you'll create a functional Crossplane configuration with a
+definition, composition, and claim.
