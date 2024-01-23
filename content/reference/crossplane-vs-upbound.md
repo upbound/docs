@@ -41,3 +41,4 @@ Upbound provides a cloud-native experience for Crossplane. Upbound supplements t
 ## Constraints
 
 Because Upbound fully manages control planes, Upbound locks down the hosted control plane environment to prevent malicious actors. You may not install arbitrary workloads (Pods, Deployments, etc) on your managed control plane.
+
