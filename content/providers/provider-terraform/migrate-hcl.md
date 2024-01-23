@@ -423,8 +423,28 @@ Service Accounts
 For more information on cloud provider authentication, checkout the Provider
 Azure and Provider GCP authentication documentation.
 
-In this example, the credentials.source attribute references the authentication
-key method as a secret.
+Create a new Kubernetes secret.
+
+```shell
+kubectl -n upbound-system create secret generic aws-creds --from-file=credentials=aws-credentials
+```
+
+Verify your secret with `kubectl describe secret`.
+
+```shell
+kubectl describe secret aws-creds -n upbound-system
+
+Name:         aws-creds
+Namespace:    upbound-system
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+creds:  114 bytes
+```
 
 ## Install the provider
 
@@ -432,15 +452,14 @@ key method as a secret.
 apiVersion: aws.crossplane.io/v1beta1
 kind: ProviderConfig
 metadata:
-name: aws-provider-ec2
+  name: aws-provider-ec2
 spec:
-credentials:
-source: Secret
-secretRef:
-namespace: crossplane-system
-name: aws-creds
-key: creds
- defaultRegion: us-west-2
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: upbound-system
+      name: aws-creds
+      key: credentials
 ```
 
 ```shell
