@@ -88,8 +88,12 @@ This CRD example uses the same fields as the Terraform configuration, with key d
 First, the `apiVersion` field references the API group for the AWS Crossplane
 provider. This provider focuses explicitly on the EC2 service of AWS.
 
+<!-- vale gitlab.FutureTense = NO -->
+
 The `kind` field identifies the schema type for the configuration. In this case,
 you'll use the Instance kind.
+
+<!-- vale gitlab.FutureTense = YES -->
 
 The `metadata` is a required field that contains information about the resource,
 like the name or other identifying values.
