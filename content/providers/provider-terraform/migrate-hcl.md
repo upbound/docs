@@ -17,12 +17,20 @@ Crossplane benefits.
 <!-- vale Microsoft.HeadingPunctuation = YES -->
 
 Moving away from HCL to Crossplane configurations can simplify your deployment
-workflow. You can manage your applications and infrastructure with the same workflow and leverage the continuous reconciliation processes of Crossplane in Kubernetes to make sure your infrastructure and configurations are always in sync.
+workflow. You can manage your applications and infrastructure with the same workflow and leverage the continuous reconciliation processes of Crossplane in Kubernetes.
 
 ## Prerequisites
 
+<!-- vale Google.Will = NO -->
+
+<!-- vale gitlab.FutureTense = NO -->
+
 For this guide, you will convert the HCL configuration from the previous guide
 to use Crossplane native resources. Make sure you have:
+
+<!-- vale Google.Will = YES -->
+
+<!-- vale gitlab.FutureTense = YES -->
 
 - Crossplane installed
 - A Kubernetes cluster
@@ -30,7 +38,7 @@ to use Crossplane native resources. Make sure you have:
 
 ## Create a Crossplane managed resource
 
-The managed resource configuration in the previous step created a virtual machine with the `provider-terraform`:
+The managed resource configuration in the previous guide created a virtual machine with the `provider-terraform`:
 
 ```yaml
 apiVersion: tf.upbound.io/v1beta1
@@ -59,7 +67,7 @@ spec:
         value: crossplanevm
 ```
 
-An equivalent Crossplane native managed resource relies on the provider-aws
+A Crossplane native managed resource relies on the provider-aws
 instead:
 
 ```yaml
@@ -76,8 +84,7 @@ spec:
     name: awsconfig
 ```
 
-This CRD example uses the same fields as the Terraform configuration, with a few
-key differences.
+This CRD example uses the same fields as the Terraform configuration, with key differences.
 First, the `apiVersion` field references the API group for the AWS Crossplane
 provider. This provider focuses explicitly on the EC2 service of AWS.
 
@@ -89,6 +96,10 @@ like the name or other identifying values.
 
 The `spec` field defines the parameters of the instance.
 
+<!-- vale Google.Will = NO -->
+
+<!-- vale gitlab.FutureTense = NO -->
+
 The `forProvider` sub-field defines the information you need for the instance
 configuration. Instead of relying on the Terraform configuration to define how
 you want to configure the instance, you'll use the Kubernetes manifest
@@ -96,10 +107,13 @@ configuration language.
 
 ## Create a resource definition
 
-You'll rarely work with individual resources in your configurations so add a new
-resource. In this step, create a complete deployment with an
-EC2 instance, supporting, network resources, and SSH key pair for your
+In this step, create a complete deployment. You'll create an
+EC2 instance with supporting resources and SSH key pair for your
 instance as a new resource in your Crossplane configuration.
+
+<!-- vale Google.Will = YES -->
+
+<!-- vale gitlab.FutureTense = YES -->
 
 Create a new file called `complete-instance-definition.yaml`.
 
@@ -151,8 +165,7 @@ resources you want to deploy.
 
 ## Create a composition
 
-Compositions are templates to create and manage multiple resources. This
-composition is similar to the Terraform "module" concept.
+Compositions are templates to create and manage multiple resources.
 
 Create a new file called `complete-instance-composition.yaml`.
 
@@ -476,13 +489,13 @@ kubectl apply -f claim.yaml
 
 ## Verify your deployment
 
-You can verify your deployment by connecting to your instance with the keypair you created.
+You can verify your deployment by connecting to your instance with the key pair you created.
 
 ```shell
 ssh ubuntu@<> -i <path_to_key>
 ```
 
-Update the IP address and keypath with your instance public IP and the path to
+Update the IP address and key path with your instance public IP and the path to
 your local private key file (typically `~/.ssh/id_rsa`).
 
 ## Recommended practices

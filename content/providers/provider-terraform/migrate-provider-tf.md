@@ -54,13 +54,21 @@ kind create namespace upbound-system
 Remember to [install
 Crossplane](https://docs.crossplane.io/latest/software/install/) into your new cluster.
 
+<!-- vale Google.Headings = NO -->
+
 ## Review the Terraform configuration
+
+<!-- vale Google.Headings = YES -->
 
 This guide reviews a small Terraform configuration using AWS and use
 Crossplane's `provider-terraform` to migrate the resources to a new control
 plane.
 
+<!-- vale gitlab.FutureTense = NO -->
+
 The Terraform configuration you'll work with creates a new virtual machine:
+
+<!-- vale gitlab.FutureTense = YES -->
 
 ```hcl
 resource "aws_instance" "my_vm" {
@@ -262,7 +270,7 @@ kubectl apply -f terraform-configuration.yaml
 ## State management
 
 For greenfield deployments, this approach works well for users who are already
-familiar with Terraform. If your organization wants to maintain state with a remote Terraform state file, you can use a `ProviderConfig` to point your
+familiar with Terraform. To maintain state with a remote Terraform state file, you can use a `ProviderConfig` to point your
 Crossplane-controlled Terraform provider to the correct backend.
 
 The example below uses the `kubernetes` backend:
@@ -301,14 +309,18 @@ spec:
 ```
 
 You can apply this `ProviderConfig` and let Crossplane continuously reconcile
-the resources in the cloud and update the state file.
+the resources in your cloud provider and update the state file.
 
 ## Next steps
 
 You created a resource with the Crossplane `provider-terraform`! For more
-information on advanced migration tactics, check out this Upbound [sponsored
+information on advanced migration tactics, review this Upbound [sponsored
 webinar](https://www.youtube.com/watch?v=crM-zng8LfI) with the team behind the
 Crossplane `provider-terraform`.
 
+<!-- vale gitlab.FutureTense = NO -->
+
 In the next guide, you'll create a functional Crossplane configuration with a
 definition, composition, and claim.
+
+<!-- vale gitlab.FutureTense = YES -->
