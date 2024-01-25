@@ -109,67 +109,21 @@ configuration. Instead of relying on the Terraform configuration to define how
 you want to configure the instance, you'll use the Kubernetes manifest
 configuration language.
 
-## Create a Crossplane custom resource definition
-
-In this step, create a complete deployment. You'll create an
-EC2 instance with supporting resources and SSH key pair for your
-instance as a new resource in your Crossplane configuration.
-
 <!-- vale Google.Will = YES -->
 
 <!-- vale gitlab.FutureTense = YES -->
 
-Create a new file called `complete-instance-definition.yaml`.
-
-Copy and paste the definition below:
-
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
-metadata:
-  name: xinstances.aws.example.corp
-spec:
-  group: aws.example.corp
-  names:
-    kind: XInstance
-    plural: xinstances
-  claimNames:
-    kind: Instance
-    plural: instances
-  versions:
-    - name: v1alpha1
-      served: true
-      referenceable: true
-      schema:
-        openAPIV3Schema:
-          type: object
-          properties:
-            spec:
-              type: object
-              properties:
-                parameters:
-                  type: object
-                  description: Instance configuration parameters.
-                  properties:
-                    amiId:
-                      type: string
-                    publicKey:
-                      type: string
-                    region:
-                      type: string
-                  required:
-                    - region
-                    - publicKey
-              required:
-                - parameters
-```
-
-A `definition` is a Crossplane spec that defines the allowed and required
-resources you want to deploy.
-
 ## Create a composition
 
-Compositions are templates to create and manage multiple resources.
+Your infrastructure needs supporting resources. Crossplane uses compositions to create and manage multiple resources.
+
+Compositions let you compose all necessary resources into a file with every attribute your organization needs. These compositions are the explicit resources your teams need and the infrastructure consumers (developers and applications teams) aren't exposed to these files. In the next steps, you'll create a `definition` and a `claim`. The definition file defines what inputs you need to create the resources in the composition. The claim is the file you can expose to infrastructure consumers and lets them define the variables required from the definition.
+
+<!-- vale gitlab.FutureTense = NO -->
+
+In this section, you'll create a composition with an instance and all the supporting resources for it to be useful.
+
+<!-- vale gitlab.FutureTense = YES -->
 
 Create a new file called `complete-instance-composition.yaml`.
 
@@ -362,6 +316,7 @@ spec:
         spec:
           forProvider:
             instanceType: t3.micro
+            amiId: ami-0005e0cfe09cc9050
             vpcSecurityGroupIdSelector:
               matchControllerRef: true
             subnetIdSelector:
@@ -372,10 +327,7 @@ spec:
         - type: FromCompositeFieldPath
           fromFieldPath: spec.parameters.region
           toFieldPath: spec.forProvider.region
-        - type: FromCompositeFieldPath
-          fromFieldPath: spec.parameters.amiId
-          toFieldPath: spec.forProvider.ami
-        - type: FromCompositeFieldPath
+       - type: FromCompositeFieldPath
           fromFieldPath: spec.parameters.keyPairName
           toFieldPath: spec.forProvider.keyName
 
@@ -399,12 +351,66 @@ spec:
 
 {{< /expand >}}
 
-Your Composition sets the explicit values you want to deploy based on the
-definition file you created in the preceding step.
+Your Composition sets the explicit values you want to deploy.
+
+## Create a Crossplane custom resource definition
+
+A `definition` is a Crossplane spec that defines the allowed and required
+resources you want to deploy.
+
+In this step, create a definition for the composition you created above. Think of this as a custom API endpoint. You created the composition with all the necessary supporting resources and now your definition highlights all the parameters you need to pass when you deploy. Notice the only properties required in this definition are the `region` and the `publicKey` string. That's because you explicitly set the other attributes like the `amiId` in the composition. Your applications teams and developers don't need to know what AMI to use because you set one that meets your organizations needs.
+
+<!-- vale Google.Will = YES -->
+
+<!-- vale gitlab.FutureTense = YES -->
+
+Create a new file called `complete-instance-definition.yaml`.
+
+Copy and paste the definition below:
+
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xinstances.aws.example.corp
+spec:
+  group: aws.example.corp
+  names:
+    kind: XInstance
+    plural: xinstances
+  claimNames:
+    kind: Instance
+    plural: instances
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                parameters:
+                  type: object
+                  description: Instance configuration parameters.
+                  properties:
+                    publicKey:
+                      type: string
+                    region:
+                      type: string
+                  required:
+                    - region
+                    - publicKey
+              required:
+                - parameters
+```
 
 ## Create a claim
 
 Now that you have a custom resource definition and a composition, you can create a claim and provision the resources.
+
 A claim deploys a set of resources within a namespace. Creating claims
 is comparable to different Terraform workspaces. Resources in one
 namespace don't impact resources in another namespace.
@@ -418,7 +424,6 @@ metadata:
 spec:
   parameters:
     region: us-east-1
-    amiId: ami-0005e0cfe09cc9050
     keyPairName: test-keypair
     publicKey: |
       ssh-rsa AAAAB3NzaC1...
@@ -429,15 +434,18 @@ Copy and paste the contents of your public key (typically `~/.ssh/id_rsa.pub`)
 into the `publicKey` field.
 {{< /hint >}}
 
+Claims are the highly opinionated entry points your infrastructure consumers to use. Your claim eliminates the need for them to think about underlying resources and attributes.
+
 ## Authenticate with your cloud provider
 
 The Crossplane AWS provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
 
 The provider supports AWS authentication with:
-* [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keys">}})
-* [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
-* [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
+
+- [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keys">}})
+- [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
+- [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
 
 {{< hint "note" >}}
 For more information on cloud provider authentication, read the
