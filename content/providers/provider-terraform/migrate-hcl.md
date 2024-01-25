@@ -30,7 +30,7 @@ to use Crossplane native resources. Make sure you have:
 
 ## Create a Crossplane managed resource
 
-The managed resource configuration in the previous step created a virtual machine with the provider-terraform:
+The managed resource configuration in the previous step created a virtual machine with the `provider-terraform`:
 
 ```yaml
 apiVersion: tf.upbound.io/v1beta1
@@ -475,6 +475,8 @@ kubectl apply -f claim.yaml
 ```
 
 ## Verify your deployment
+
+You can verify your deployment by connecting to your instance with the keypair you created.
 
 ```shell
 ssh ubuntu@<> -i <path_to_key>

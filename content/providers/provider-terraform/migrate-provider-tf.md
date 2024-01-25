@@ -298,7 +298,7 @@ spec:
       shared_credentials_files = ["${path.module}/aws-creds.ini"]
       region = "us-east-1"
     }
-``
+```
 
 You can apply this `ProviderConfig` and let Crossplane continuously reconcile
 the resources in the cloud and update the state file.
