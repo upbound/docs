@@ -165,6 +165,10 @@ spec:
         value: crossplanevm
 ```
 
+{{< hint "warning" >}}
+This configuration will not work if applied now.
+{{< /hint >}}
+
 ## Authenticate with your cloud provider
 
 The provider configuration handles authentication. You must
@@ -172,12 +176,13 @@ create a Kubernetes secret file to authenticate with your AWS account.
 
 The provider supports AWS authentication with:
 The provider supports AWS authentication with:
-* [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keysAuthentication">}})
-* [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
-* [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
+
+- [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keysAuthentication">}})
+- [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
+- [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
 
 {{< hint "note" >}}
-For more information on cloud provider authentication, read the 
+For more information on cloud provider authentication, read the
 [Provider Azure]({{<ref "providers/provider-azure/authentication">}}) or [Provider GCP]({{<ref "providers/provider-gcp/authentication">}}) authentication documentation.
 {{< /hint >}}
 
@@ -310,6 +315,10 @@ spec:
       region = "us-east-1"
     }
 ```
+
+{{< hint "warning" >}}
+This configuration won't work as is. Review the [example backend configuration](https://github.com/upbound/provider-terraform/blob/8ea3c889fdc0828390c65edf9707828ea3775f54/examples/providerconfig-backend-file.yaml) and the [Terraform File documentation](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#file)
+{{< /hint >}}
 
 You can apply this `ProviderConfig` and let Crossplane continuously reconcile
 the resources in your cloud provider and update the state file.

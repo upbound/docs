@@ -404,7 +404,7 @@ definition file you created in the preceding step.
 
 ## Create a claim
 
-Now that you have a custom resource definition and a composition, you can create a claim and provision the resources. 
+Now that you have a custom resource definition and a composition, you can create a claim and provision the resources.
 A claim deploys a set of resources within a namespace. Creating claims
 is comparable to different Terraform workspaces. Resources in one
 namespace don't impact resources in another namespace.
@@ -440,7 +440,7 @@ The provider supports AWS authentication with:
 * [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
 
 {{< hint "note" >}}
-For more information on cloud provider authentication, read the 
+For more information on cloud provider authentication, read the
 [Provider Azure]({{<ref "providers/provider-azure/authentication">}}) or [Provider GCP]({{<ref "providers/provider-gcp/authentication">}}) authentication documentation.
 {{< /hint >}}
 
@@ -497,14 +497,11 @@ kubectl apply -f claim.yaml
 
 ## Verify your deployment
 
-You can verify your deployment by connecting to your instance with the key pair you created.
+You can verify your deployment with `kubectl get claim`.
 
 ```shell
-ssh ubuntu@<> -i <path_to_key>
+kubectl get claim
 ```
-
-Update the IP address and key path with your instance public IP and the path to
-your local private key file (typically `~/.ssh/id_rsa`).
 
 ## Recommended practices
 
