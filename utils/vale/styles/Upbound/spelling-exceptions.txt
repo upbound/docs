@@ -10,6 +10,9 @@ CVEs
 Certwatcher
 Commonmark
 conformant
+ConfigMap
+ConfigMaps
+configmaps
 CRDs
 Crossplane
 Crossplane's

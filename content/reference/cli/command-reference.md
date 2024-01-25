@@ -1698,4 +1698,76 @@ Extract package contents into a Crossplane cache compatible format. Fetches from
 | `-o`       | `--output="out.gz"`   | Package output path. Extension must be `.gz`.         |
 {{< /table >}}
 
+<!-- vale Google.Headings = NO -->
+### alpha xpkg migration
+<!-- vale Google.Headings = YES -->
+
+Migrate a control plane to an Upbound Managed Control Plane.
+
+Use the 'migration' command to migrate control planes seamlessly from Crossplane or Universal Crossplane
+(XP/UXP) environments to Upbound's Managed Control Planes.
+
+<!-- vale Google.Headings = NO -->
+#### alpha xpkg migration export
+<!-- vale Google.Headings = YES -->
+
+Export the current state of a Crossplane or Universal Crossplane control plane into an archive, preparing it for
+migration to Upbound Managed Control Planes with `up alpha migration export`.
+
+The 'export' command exports the current state of a Crossplane or Universal Crossplane (xp/uxp) control plane
+into an archive file. You can then use this file for migration to Upbound Managed Control Planes.
+
+{{< table "table table-sm table-striped">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|            | `--kubeconfig=<path>`   | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.         |
+|            | `--yes`     | When set to true, automatically accepts any confirmation prompts that may appear during the export process.         |
+| `-o`       | `--output`   | Specify the path for the exported archive. The default is 'xp-state.tar.gz'. |
+|            | `--include-extra-resources`   | A list of extra resource types to include in the export in "resource.group" format, along with all Crossplane resources. By default, it includes namespaces, configmaps, secrets.  |
+|            | `--exclude-resources`   | A list of resource types to exclude from the export in 'resource.group' format. No resources excluded by default. |
+|            | `--include-namespaces`   | A list of specific namespaces to include in the export. If not specified, all namespaces included by default. |
+|            | `--exclude-namespaces`   | A list of specific namespaces to exclude from the export. Defaults to 'kube-system', 'kube-public', 'kube-node-lease', and 'local-path-storage'. |
+|            | `--pause-before-export`   | When set to true, pauses all managed resources before starting the export process. This can help ensure a consistent state for the export. Defaults to 'false'. |
+{{< /table >}}
+
+**Examples**
+
+* Export the control plane state to a specified file 'xp-export.tar.gz'.
+
+  ```shell
+  up alpha migration export --output="xp-export.tar.gz"
+  ```
+* Pause all managed resources first and export the control plane state.
+
+  ```shell
+  up migration export --pause-before-export
+  ```
+
+* Export the control plane state with the extra resource specified and only using provided namespaces.
+
+  ```shell
+  up migration export --include-extra-resources="customresource.group" --include-namespaces="crossplane-system,team-a,team-b"
+  ```
+
+<!-- vale Google.Headings = NO -->
+#### alpha xpkg migration import
+<!-- vale Google.Headings = YES -->
+
+Import an exported control plane state into an Upbound managed control plane, completing the migration process.
+
+The 'import' command imports a control plane state from an archive file into an Upbound managed control plane.
+
+By default, the command pauses all managed resources during the import process for possible manual inspection/validation.
+You can use the `--unpause-after-import` flag to configure resuming all managed resources automatically after the
+import process completes.
+
+{{< table "table table-sm table-striped">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|            | `--kubeconfig=<path>`   | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.         |
+|            | `--yes`     | When set to true, automatically accepts any confirmation prompts that may appear during the import process. |
+| `-i`       | `--input`   | Specifies the path of the archive to import. The default path is 'xp-state.tar.gz'.  |
+|            | `--unpause-after-import`   | When set to true, automatically resumes all managed resources paused during the import process. This helps in resuming normal operations post-import. Defaults to false, requiring manually resuming of resources if needed. |
+{{< /table >}}
+
 <!-- vale Google.Headings = YES -->
