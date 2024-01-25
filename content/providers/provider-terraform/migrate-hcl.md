@@ -435,7 +435,7 @@ The Crossplane AWS provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
 
 The provider supports AWS authentication with:
-* [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keysAuthentication">}})
+* [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keys">}})
 * [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
 * [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
 
