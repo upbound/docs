@@ -109,17 +109,12 @@ configuration. Instead of relying on the Terraform configuration to define how
 you want to configure the instance, you'll use the Kubernetes manifest
 configuration language.
 
-<!-- vale Google.Will = YES -->
-
-<!-- vale gitlab.FutureTense = YES -->
 
 ## Create a composition
 
 Your infrastructure needs supporting resources. Crossplane uses compositions to create and manage multiple resources.
 
 Compositions let you compose all necessary resources into a file with every attribute your organization needs. These compositions are the explicit resources your teams need and the infrastructure consumers (developers and applications teams) aren't exposed to these files. In the next steps, you'll create a `definition` and a `claim`. The definition file defines what inputs you need to create the resources in the composition. The claim is the file you can expose to infrastructure consumers and lets them define the variables required from the definition.
-
-<!-- vale gitlab.FutureTense = NO -->
 
 In this section, you'll create a composition with an instance and all the supporting resources for it to be useful.
 
@@ -351,14 +346,12 @@ spec:
 
 {{< /expand >}}
 
-Your Composition sets the explicit values you want to deploy.
-
 ## Create a Crossplane custom resource definition
 
 A `definition` is a Crossplane spec that defines the allowed and required
 resources you want to deploy.
 
-In this step, create a definition for the composition you created above. Think of this as a custom API endpoint. You created the composition with all the necessary supporting resources and now your definition highlights all the parameters you need to pass when you deploy. Notice the only properties required in this definition are the `region` and the `publicKey` string. That's because you explicitly set the other attributes like the `amiId` in the composition. Your applications teams and developers don't need to know what AMI to use because you set one that meets your organizations needs.
+In this step, create a definition for the composition in the preceding step. Think of this as a custom API endpoint. You created the composition with all the necessary supporting resources and now your definition highlights all the parameters you need to pass when you deploy. Notice the only properties required in this definition are the `region` and the `publicKey` string. That's because you explicitly set the other attributes like the `amiId` in the composition. Your applications teams and developers don't need to know what `AMI` to use because you set one that meets your organizations needs.
 
 <!-- vale Google.Will = YES -->
 
