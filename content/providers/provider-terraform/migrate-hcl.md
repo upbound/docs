@@ -4,9 +4,9 @@ weight: 2
 description:
 ---
 
-In the previous guide, you used `provider-terraform` to "lift and shift" your
+The [Migrating from Terraform to Crossplane Guide]({{<ref "providers/provider-terraform/migrate-provider-tf">}}) used `provider-terraform` to "lift and shift" your
 Terraform code into a basic Crossplane configuration. The provider is a great
-way to get started in your Crossplane journey. With Crossplane, you can go even
+way to get started on your Crossplane journey. With Crossplane, you can go even
 further by converting your Terraform HashiCorp Configuration Language (HCL) into Kubernetes-like manifests for more
 Crossplane benefits.
 
@@ -84,7 +84,7 @@ spec:
     name: awsconfig
 ```
 
-This CRD example uses the same fields as the Terraform configuration, with key differences.
+This example uses the same fields as the Terraform configuration, with key differences.
 First, the `apiVersion` field references the API group for the AWS Crossplane
 provider. This provider focuses explicitly on the EC2 service of AWS.
 
@@ -109,7 +109,7 @@ configuration. Instead of relying on the Terraform configuration to define how
 you want to configure the instance, you'll use the Kubernetes manifest
 configuration language.
 
-## Create a resource definition
+## Create a Crossplane custom resource definition
 
 In this step, create a complete deployment. You'll create an
 EC2 instance with supporting resources and SSH key pair for your
@@ -404,10 +404,10 @@ definition file you created in the preceding step.
 
 ## Create a claim
 
-Now that you have a definition and a composition, you can create a claim to. The
-claim is a set of resources to deploy within a single namespace. Creating claims
-is comparable to different Terraform workspaces in that resources within one
-namespace don't impact resources within another.
+Now that you have a custom resource definition and a composition, you can create a claim and provision the resources. 
+A claim deploys a set of resources within a namespace. Creating claims
+is comparable to different Terraform workspaces. Resources in one
+namespace don't impact resources in another namespace.
 
 ```yaml
 apiVersion: aws.example.corp/v1alpha1
@@ -424,21 +424,25 @@ spec:
       ssh-rsa AAAAB3NzaC1...
 ```
 
+{{< hint "note" >}}
 Copy and paste the contents of your public key (typically `~/.ssh/id_rsa.pub`)
 into the `publicKey` field.
+{{< /hint >}}
 
 ## Authenticate with your cloud provider
 
 The Crossplane AWS provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
 
-Crossplane supports AWS authentication with:
-Authentication Keys
-Web Identity
-Service Accounts
+The provider supports AWS authentication with:
+* [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keysAuthentication">}})
+* [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
+* [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
 
-For more information on cloud provider authentication, checkout the Provider
-Azure and Provider GCP authentication documentation.
+{{< hint "note" >}}
+For more information on cloud provider authentication, read the 
+[Provider Azure]({{<ref "providers/provider-azure/authentication">}}) or [Provider GCP]({{<ref "providers/provider-gcp/authentication">}}) authentication documentation.
+{{< /hint >}}
 
 Create a new Kubernetes secret.
 
@@ -448,7 +452,7 @@ kubectl -n upbound-system create secret generic aws-creds --from-file=credential
 
 Verify your secret with `kubectl describe secret`.
 
-```shell
+```shell {copy-lines="1"}
 kubectl describe secret aws-creds -n upbound-system
 
 Name:         aws-creds
@@ -505,12 +509,12 @@ your local private key file (typically `~/.ssh/id_rsa`).
 ## Recommended practices
 
 When you move from Terraform to Crossplane, the `provider-terraform` approach eases the transition. When you get more comfortable with Crossplane, the
-native Kubernetes spec configuration enables you to remove your original HCL
+native cloud provider configuration enables you to remove your original HCL
 resource definitions.
 
-Upbound's Marketplace can help you recreate your Terraform configurations with
+The [Upbound Marketplace](https://marketplace.upbound.io) can help you recreate your Terraform configurations with
 Crossplane providers. In the EC2 example, the Marketplace has a dedicated
-section for all the managed resources of the EC2 API group. The original
+section for all the managed resources of the [EC2 API group](https://marketplace.upbound.io/providers/upbound/provider-aws-ec2/. The original
 Terraform resource requires two attributes to be valid, `ami` and `instance_type`.
 
 The Upbound Marketplace represents these attributes in the API schema.
@@ -524,4 +528,4 @@ Composite Resource Definition and a Composition from your original Terraform
 configuration.
 
 For more information on Upbound, Crossplane, and control planes, review the
-Crossplane Architecture Framework for best practices when building your infrastructure.
+[Crossplane Architecture Framework]({{<ref "/xp-arch-framework">}}) for best practices when building your infrastructure.

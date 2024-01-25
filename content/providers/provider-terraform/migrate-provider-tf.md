@@ -171,12 +171,15 @@ The provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
 
 The provider supports AWS authentication with:
-Authentication Keys
-Web Identity
-Service Accounts
+The provider supports AWS authentication with:
+* [Authentication Keys]({{<ref "providers/provider-aws/authentication#aws-authentication-keysAuthentication">}})
+* [Web Identity]({{<ref "providers/provider-aws/authentication#webidentity">}})
+* [Service Accounts]({{<ref "providers/provider-aws/authentication#iam-roles-for-service-accounts">}})
 
-For more information on cloud provider authentication, checkout the Provider
-Azure and Provider GCP authentication documentation.
+{{< hint "note" >}}
+For more information on cloud provider authentication, read the 
+[Provider Azure]({{<ref "providers/provider-azure/authentication">}}) or [Provider GCP]({{<ref "providers/provider-gcp/authentication">}}) authentication documentation.
+{{< /hint >}}
 
 This guide uses the authentication key method. Download your AWS credentials and
 save them to a new file called `aws-credentials`.
@@ -189,7 +192,7 @@ kubectl -n upbound-system create secret generic aws-creds --from-file=credential
 
 Verify your secret with `kubectl describe secret`.
 
-```shell
+```shell {copy-lines="1"}
 kubectl describe secret aws-creds -n upbound-system
 
 Name:         aws-creds
@@ -238,7 +241,7 @@ Deploy the configuration file with `kubectl apply -f`
 
 Verify the provider with `kubectl get pods`.
 
-```yaml
+```yaml {copy-lines="1"}
 $ kubectl get pods -n upbound-system
 NAME                                                              READY   STATUS    RESTARTS   AGE
 crossplane-6979f579f9-x7nkr                                       2/2     Running   0
@@ -253,9 +256,9 @@ Deploy the configuration file with `kubectl apply -f`
 
 Verify the provider with `kubectl get providers`.
 
-```yaml
+```yaml {copy-lines="1"}
 $ kubectl get providers
-NAME                 READY   	 STATUS    PACKAGE   											AGE
+NAME                 READY       STATUS    PACKAGE                                              AGE
 provider-terraform   True        True      xpkg.upbound.io/upbound/provider-terraform:v0.13.0   15s
 ```
 
@@ -314,7 +317,7 @@ the resources in your cloud provider and update the state file.
 ## Next steps
 
 You created a resource with the Crossplane `provider-terraform`! For more
-information on advanced migration tactics, review this Upbound [sponsored
+information on advanced migration tactics, watch this Upbound [sponsored
 webinar](https://www.youtube.com/watch?v=crM-zng8LfI) with the team behind the
 Crossplane `provider-terraform`.
 
