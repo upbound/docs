@@ -417,7 +417,6 @@ metadata:
 spec:
   parameters:
     region: us-east-1
-    keyPairName: test-keypair
     publicKey: |
       ssh-rsa AAAAB3NzaC1...
 ```
