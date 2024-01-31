@@ -13,17 +13,6 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
-## v0.42.0
-
-_Released 2024-01-25_
-
-* Support for new resource: `CustomDomain.apimanagement.azure.upbound.io/v1beta1`
-* The release contains adding a new resource, and updates of dependencies.
-
-_Refer to the [v0.42.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.42.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.42.0)
-
 ## v0.41.0
 
 _Released 2024-01-03_
