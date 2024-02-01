@@ -13,16 +13,6 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
-## v0.14.0
-
-_Released 2024-01-25_
-
-* The release contains adding support for defining the `backend` file content, and updates of dependencies.
-
-_Refer to the [v0.14.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.14.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.14.0)
-
 ## v0.13.0
 
 _Released 2023-12-28_

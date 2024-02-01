@@ -12,7 +12,7 @@ Crossplane exists in the Kubernetes ecosystem. Users oftentimes find value in be
 
 ## GitOps tools
 
-[GitOps]({{<ref "xp-arch-framework/interface-integrations/git-and-gitops.md" >}}) is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space. 
+[GitOps]({{<ref "xp-arch-framework/interface-integrations/git-and-gitops.md" >}}) is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.
 
 {{< hint "tip" >}}
 For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "concepts/mcp/control-plane-connector.md">}}).
@@ -99,62 +99,42 @@ Or if you want to install with Helm, you must provide:
 
 ```bash
 helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system /
-  --set mcp.account='your-upbound-org-account' 
-  --set mcp.name='your-control-plane-name'   
-  --set mcp.namespace='your-app-ns-1'   
+  --set mcp.account='your-upbound-org-account'
+  --set mcp.name='your-control-plane-name'
+  --set mcp.namespace='your-app-ns-1'
   --set mcp.secret.name='name-of-secret-with-kubeconfig'
 ```
 
 ## Secrets management
 
-[Secrets management]({{<ref "xp-arch-framework/interface-integrations/secrets-management.md" >}}) covers integrations that extend a managed control plane's ability to interact with external services for managing Secrets. The default capability of a Crossplane instance is to read and write Kubernetes secrets locally in their cluster. You can configure managed control planes which run in an Upbound Space to read from external secret stores. 
+[Secrets management]({{<ref "xp-arch-framework/interface-integrations/secrets-management.md" >}}) covers integrations that extend a managed control plane's ability to interact with external services for managing Secrets. The default capability of a Crossplane instance is to read and write Kubernetes secrets locally in their cluster. You can configure managed control planes which run in an Upbound Space to read from external secret stores.
 
-### External Secrets Operator
+### External secrets
 
 {{< hint "important" >}}
-This feature is supported in Spaces `v1.1.0` and later.
+This feature is alpha and supported in Spaces `v1.2.0` and later.
 {{< /hint >}}
 
-Upbound supports installing the [External Secrets Operator (ESO)](https://external-secrets.io/latest/) into a Space-managed control plane. ESO allows your managed control plane to synchronize secrets from external APIs.  
+Managed control planes in Spaces support [External Secrets Operator (ESO)](https://external-secrets.io) APIs. The ESO allows you to synchronize secrets from external APIs to your managed control planes.
 
 #### Enable the feature
 
-ESO support is an alpha-level feature. You must first enable the capability in your Space before you can install the operator in a managed control plane.
+ESO support is an alpha-level feature. In your Space installation command, add the `--set "eso.enabled=true"` flag to enable ESO.
 
-```bash
+```bash {copy-lines="7-8", hl_lines="7-8"}
 helm -n upbound-system upgrade --install spaces \
   oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
   --version "${SPACES_VERSION}" \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
-  --set "features.alpha.eso.enabled=true" \
-  --set "features.alpha.eso.namespace=external-secrets"  \
+  --set "eso.enabled=true" \
   --wait
 ```
 
 Once enabled, your Space creates a namespace automatically for each managed control plane. The namespace matches the value you provide in `features.alpha.eso.namespace`. If you have running managed control planes _before_ enabling this feature, you must redeploy them.
 
-#### Install the operator in a managed control plane
-
-Once you've enabled the feature in your Space, use Helm to install the External Secrets Operator into a managed control plane. Add the repository source in Helm.
-
-```bash
-helm repo add external-secrets https://charts.external-secrets.io
-```
-
-Then--with your kubeconfig pointed at a managed control plane--install the operator.
-
-```bash
-helm install external-secrets \
-  external-secrets/external-secrets \
-  -n external-secrets 
-```
-
-{{< hint "tip" >}}
-During install, you may see a warning message like, "WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /tmp/ctp1.yaml". You can ignore the warning. {{< /hint >}}
-
-Once the installation succeeds, you can confirm access to new CRDs such as `SecretStore`, `ExternalSecret`, and more.
+Once the control plane status is `AVAILABLE`, you can confirm access to new secret-related CRDs. For example, you can configure `SecretStore` and `ExternalSecret` CRDs with the ESO APIs.
 
 ```bash {copy-lines="1"}
 kubectl get crds --kubeconfig=/tmp/ctp1.yaml | grep external-secrets
@@ -174,8 +154,7 @@ vaultdynamicsecrets.generators.external-secrets.io         2023-10-09T13:39:13Z
 
 #### Usage
 
-Using ESO in a managed control plane is identical to when it into a Kubernetes cluster or standalone Crossplane instance. Below is an example using AWS Secrets Manager.
-
+You can use ESO API types in a Spaces managed control plane as you would in a standalone Crossplane instance or Kubernetes cluster. Below is an example of the AWS Secrets Manager configuration.
 First, create a secret in the managed control plane which contains the auth credentials to access the external secret store.
 
 ```bash
@@ -237,4 +216,270 @@ spec:
 EOF
 ```
 
-For a full guide on using ESO and how to connect it to various external secret stores, read the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/)
+For a full guide on using ESO API types and how to connect it to various external secret stores, read the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/)
+
+### Space-level APIs
+
+Spaces administrators can manage external secrets for multiple control planes with two new API types. `SharedSecretStore` and `SharedExternalSecret` allow admins to provision namespace-scoped secret stores and external secrets into their control planes.
+
+<!-- vale Google.Headings = NO -->
+#### SharedSecretStore
+<!-- vale Google.Headings = YES -->
+
+SharedSecretStore is namespace-scoped and created in the namespace of a Space containing one or more ControlPlane instances.
+It enables provisioning of ClusterSecretStore into control planes within the namespace boundary:
+
+* If the provided selector matches, all matching control planes in the namespace receive the corresponding ClusterSecretStore.
+* If the provided selector doesn't match, the non-matched control planes in the namespace remove the corresponding `ClusterSecretStore`
+* You can use the `ClusterSecretStore` within a control plane context: `ExternalSecret` and `ClusterExternalSecret` can access the store as documented in the [ESO documentation](https://external-secrets.io/latest/api/externalsecret/).
+
+SharedSecretStore API type is an extension of [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/):
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedSecretStore
+metadata:
+  name: my-shared-store
+  namespace: example
+spec:
+  # Optional metadata of the secret store to be created.
+  secretStoreMetadata:
+    # Annotations that are set on projected resource.
+    annotations: {}
+    # Labels that are set on projected resource.
+    labels: {}
+
+  # SecretStoreName is the name to use when creating secret stores within a control plane.
+  # Optional, if not set, SharedSecretStore name will be used.
+  # secretStoreName: ""
+
+  # The store is projected only to control planes matching the provided selector.
+  controlPlaneSelector:
+    # A resource is matched if any of the label selector matches.
+    # In case when the list is empty, resource is matched too.
+    labelSelectors:
+    # standard k8s label selector
+    - matchExpressions:
+      matchLabels: {}
+    # A resource is selected if its metadata.name matches any of the provided names.
+    # In case when the list is empty, resource is matched too.
+    names:
+      - ctp1
+      - ctp2
+  # The projected secret store can be consumed only within namespaces matching the provided selector.
+  namespaceSelector:
+    # A resource is matched if any of the label selector matches.
+    # In case when the list is empty, resource is matched too.
+    labelSelectors:
+      # standard k8s label selector
+    - matchExpressions:
+      matchLabels: {}
+    # A resource is selected if its metadata.name matches any of the provided names.
+    # In case when the list is empty, resource is matched too.
+    names:
+      - ns1
+      - ns2
+
+  # The remaining fields is identical to .spec of ESO SecretStore
+  # https://external-secrets.io/latest/api/secretstore/
+
+  # Used to configure the provider. Only one provider may be set.
+  provider:
+  # Used to configure store refresh interval in seconds.
+  # refreshInterval: 100
+  # Used to configure http retries if failed.
+  # retrySettings:
+```
+<!-- vale Google.Headings = NO -->
+#### SharedExternalSecret
+<!-- vale Google.Headings = YES -->
+
+SharedExternal is namespace-scoped and created in the namespace of a Space containing one or more ControlPlane instances.
+It enables provisioning of ClusterExternalSecret into control planes within the namespace boundary:
+* If the provided selector matches, all matching control planes in the namespace receive the corresponding ClusterExternalSecret.
+* If the provided selector doesn't match, the non-matched control planes in the namespace remove the corresponding `ClusterExternalSecret`
+* You can use the `ClusterExternalSecret` within a control plane context: `ClusterSecretStore` can access the secret as documented in the [ESO documentation](https://external-secrets.io/latest/api/clusterexternalsecret/).
+
+SharedExternalSecret API type is an extension of [ClusterExternalSecret](https://external-secrets.io/latest/api/clusterexternalsecret/):
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedExternalSecret
+metadata:
+  name: my-shared-secret
+  namespace: example
+spec:
+  # The secret is projected only to control planes matching the provided selector.
+  controlPlaneSelector:
+    # A resource is matched if any of the label selector matches.
+    # In case when the list is empty, resource is matched too.
+    labelSelectors:
+    # standard k8s label selector
+    - matchExpressions:
+      matchLabels: {}
+    # A resource is selected if its metadata.name matches any of the provided names.
+    # In case when the list is empty, resource is matched too.
+    names:
+      - ctp1
+      - ctp2
+  # The projected secret can be consumed only within namespaces matching the provided selector.
+  namespaceSelector:
+    # A resource is matched if any of the label selector matches.
+    # In case when the list is empty, resource is matched too.
+    labelSelectors:
+      # standard k8s label selector
+      - matchExpressions:
+        matchLabels: {}
+    # A resource is selected if its metadata.name matches any of the provided names.
+    # In case when the list is empty, resource is matched too.
+    names:
+      - ns1
+      - ns2
+
+  # Optional metadata of the secret store to be created.
+  #externalSecretMetadata:
+    # Annotations that are set on projected resource.
+    # annotations: {}
+    # Labels that are set on projected resource.
+    # labels: {}
+  # ExternalSecretName is the name to use when creating external secret within a control plane.
+  # Optional, if not set, SharedExternalSecret name will be used.
+  # externalSecretName: ""
+
+  # The remaining fields is identical to .spec of ESO SecretStore
+  # https://external-secrets.io/latest/api/clusterexternalsecret/
+
+  # The spec for the ExternalSecrets to be created.
+  externalSecretSpec:
+  # Used to configure secret refresh interval in seconds.
+  refreshTime: string
+```
+
+#### Usage
+
+Create two managed control planes in `acmeorg` namespace.
+
+```yaml
+cat <<EOF | kubectl apply -n acmeorg -f -
+apiVersion: spaces.upbound.io/v1beta1
+kind: ControlPlane
+metadata:
+  labels:
+    # example label, to be matched in SharedSecretStore/SharedExternalSecret examples
+    org: foo
+  name: ctp
+spec:
+  writeConnectionSecretToRef:
+    name: kubeconfig-ctp2
+```
+
+```yaml
+cat <<EOF | kubectl apply -n acmeorg -f -
+apiVersion: spaces.upbound.io/v1beta1
+kind: ControlPlane
+metadata:
+  labels:
+    # example label, to be matched in SharedSecretStore/SharedExternalSecret examples
+    org: foo
+  name: ctp2
+spec:
+  writeConnectionSecretToRef:
+    name: kubeconfig-ctp
+```
+
+Deploy SharedSecretStore in the same namespace. This example uses [fake provider](https://external-secrets.io/latest/provider/fake/).
+
+```yaml
+cat <<EOF | kubectl apply -n acmeorg -f -
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedSecretStore
+metadata:
+  name: fake
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  namespaceSelector:
+    names:
+      - default
+  provider:
+    fake:
+      data:
+        - key: "/foo/bar"
+          value: "HELLO1"
+          version: "v1"
+        - key: "/foo/bar"
+          value: "HELLO2"
+          version: "v2"
+        - key: "/foo/baz"
+          value: '{"john": "doe"}'
+          version: "v1"
+```
+
+Deploy SharedExternalSecret in the same namespace.
+
+```yaml
+cat <<EOF | kubectl apply -n acmeorg -f -
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedExternalSecret
+metadata:
+  name: fake-secret
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  namespaceSelector:
+    names:
+      - default
+  externalSecretSpec:
+    refreshInterval: 1h
+    secretStoreRef:
+      # refer the projected store
+      name: fake
+      kind: ClusterSecretStore
+    data:
+      - secretKey: "foo"
+        remoteRef:
+          key: "/foo/bar"
+          version: "v1"
+```
+
+Check if control planes are available:
+
+```bash
+$ kubectl get controlplanes
+NAME   CROSSPLANE VERSION   SUPPORTED   READY   MESSAGE   AGE
+ctp    1.13.2-up.3          True        True              21m
+ctp2   1.13.2-up.3          True        True              22m
+```
+
+Connect to control plane `ctp`:
+
+```bash
+up ctp connect ctp
+```
+
+Check if Kubernetes secret `fake-secret` is available in default namespace:
+
+```bash
+$ kubectl get secret fake-secret
+NAME          TYPE     DATA   AGE
+fake-secret   Opaque   1      20s
+```
+<!-- vale Google.WordList = NO -->
+Perform the same check on control plane `ctp2`.
+<!-- vale Google.WordList = YES -->
+
+Verify the projected ClusterSecretStore and ClusterExternalSecret.
+
+```bash
+$ kubectl get clustersecretstore
+NAME   AGE     STATUS   CAPABILITIES   READY
+fake   5m18s   Valid    ReadOnly       True
+
+$ kubectl get clusterexternalsecret
+NAME          STORE   REFRESH INTERVAL   READY
+fake-secret   fake                       True
+```

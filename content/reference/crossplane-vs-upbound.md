@@ -1,6 +1,6 @@
 ---
 title: Upbound vs Crossplane
-weight: 1
+weight: 10
 description: A technical comparison of Upbound vs Crossplane
 ---
 
