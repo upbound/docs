@@ -38,7 +38,7 @@ current context set to <context-1>
 
 ## Next steps
 
-For more information on the fast, aggregate queries available in the `up` CLI, review the [`up` CLI reference documentation](../reference/cli/command-reference.md).
+For more information on the fast, aggregate queries available in the `up` CLI, review the [`up` CLI reference documentation]({{<ref "reference/cli/command-reference.md" >}}).
 
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
