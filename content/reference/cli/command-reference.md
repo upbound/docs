@@ -20,13 +20,13 @@ The following flags are available for all commands.
 
 ## configuration
 
-The `up configuration` command provides management operations for Git-synced configurations on Upbound. 
+The `up configuration` command provides management operations for Git-synced configurations on Upbound.
 
 {{<hint "tip" >}}
 `up cfg` is an alias for `up configuration`.
 {{< /hint >}}
 
-All `up configuration` commands support the following options: 
+All `up configuration` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -39,7 +39,7 @@ All `up configuration` commands support the following options:
 
 ### configuration list
 
-List the configurations in your Upbound account  
+List the configurations in your Upbound account
 `up configuration list --configuration-name=STRING <name>`.
 
 **Examples**
@@ -56,7 +56,7 @@ my-platform-api               upbound/configuration-eks        github     my-pla
 
 ### configuration create
 
-Create a Git-synced configuration in Upbound  
+Create a Git-synced configuration in Upbound
 `up configuration create --context=STRING --template-id=STRING <name>`.
 
 You can find a list of available templates by `up configuration template list`.
@@ -91,7 +91,7 @@ Replace `context` with the name of your org/account in GitHub.
 
 ### configuration get
 
-Get a Git-synced configuration in Upbound  
+Get a Git-synced configuration in Upbound
 `up configuration get <name>`.
 
 You can find a list of available configurations by `up configuration list`.
@@ -139,7 +139,7 @@ my-platform-apis-2 deleted
 
 ### configuration template list
 
-List the available Crossplane configurations that are available to create a new Git-synced configuration from  
+List the available Crossplane configurations that are available to create a new Git-synced configuration from
 `up configuration template list`.
 
 **Examples**
@@ -171,7 +171,7 @@ The `up` CLI relies on a `kubeconfig` file to connect to the target Kubernetes c
 `up ctp` is an alias for `up controlplane`.
 {{< /hint >}}
 
-All `up controlplane` commands support the following options: 
+All `up controlplane` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -192,7 +192,7 @@ All `up controlplane` commands support the following options:
 
 <!-- ignore "controlplane" -->
 
-List the managed control planes in your Upbound account  
+List the managed control planes in your Upbound account
 `up controlplane list`.
 
 **Examples**
@@ -214,7 +214,7 @@ third-control-plane            f2h88eb1-59e0-4211-96af-f92428a4561f   ready    s
 
 <!-- ignore "controlplane" -->
 
-Create a managed control plane in Upbound and install referenced configuration on it  
+Create a managed control plane in Upbound and install referenced configuration on it
 `up controlplane create --configuration-name=STRING <name>`.
 
 View available configurations to install on the managed control plane with `up configuration list`.
@@ -245,7 +245,7 @@ The configuration `my-control-plane-api` must first exist and have already been 
 <!-- vale Upbound.Spelling = YES -->
 
 
-Delete a managed control plane in Upbound  
+Delete a managed control plane in Upbound
 `up controlplane delete --configuration-name=STRING <name>`.
 
 View available managed control planes to delete with `up controlplane list`.
@@ -265,7 +265,7 @@ my-control-plane deleted
 ### controlplane get
 <!-- vale Upbound.Spelling = YES -->
 
-Get a managed control plane in Upbound  
+Get a managed control plane in Upbound
 `up controlplane get <name>`.
 
 View available managed control planes with `up controlplane list`.
@@ -285,7 +285,7 @@ my-control-plane    2012c379-5743-4f65-a473-30037861ef6e   ready    my-configura
  ### controlplane connect
 <!-- vale Upbound.Spelling = YES -->
 
-Set the current context of your kubeconfig to a managed control plane  
+Set the current context of your kubeconfig to a managed control plane
 `up controlplane connect <name> --token=STRING`.
 
 Providing a token is only required when connecting to a control plane in Upbound's SaaS environment. The token is an API token. This flag gets ignored when used in the context of an Upbound Space.
@@ -361,7 +361,7 @@ up ctp connect my-control-plane my-app-ns-1
 #### controlplane connector uninstall
 <!-- vale Upbound.Spelling = YES -->
 
-Disconnect an Kubernetes app cluster from a managed control plane in Upbound  
+Disconnect an Kubernetes app cluster from a managed control plane in Upbound
 `up controlplane connector uninstall <namespace`.
 
 The command uninstalls the MCP connector helm chart and moves any claims in the app cluster into the managed control plane at the specified namespace.
@@ -394,7 +394,7 @@ up ctp connector uninstall default
 Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
 {{< /hint >}}
 
-Install a Crossplane configuration packages into a Kubernetes cluster with  
+Install a Crossplane configuration packages into a Kubernetes cluster with
 `up controlplane configuration install <package>`.
 
 View packages installed by `up controlplane configuration install` with `kubectl get configuration`.
@@ -428,11 +428,10 @@ my-package installed
 
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "controlplane" -->
-
-### controlplane disconnect 
+### controlplane disconnect
 <!-- vale Upbound.Spelling = YES -->
 
-Reset the current context of your kubeconfig to the previous value before connecting to a managed control plane 
+Reset the current context of your kubeconfig to the previous value before connecting to a managed control plane
 `up controlplane disconnect`.
 
 **Examples**
@@ -453,7 +452,7 @@ up ctp disconnect
 Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
 {{< /hint >}}
 
-Install a Crossplane provider packages into a Kubernetes cluster with  
+Install a Crossplane provider packages into a Kubernetes cluster with
 `up controlplane provider install <package>`.
 
 View packages installed by `up controlplane provider install` with `kubectl get configurations` and `kubectl get providers`.
@@ -494,8 +493,8 @@ my-provider installed
 Create a new Kubernetes secret object with
 `up controlplane pull-secret create`
 
-This command creates secrets the same as described in the Kubernetes documentation 
-on [pulling images from private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry) 
+This command creates secrets the same as described in the Kubernetes documentation
+on [pulling images from private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry)
 using `kubectl create secret`.
 
 View secrets created by `up controlplane pull-secret create` with `kubectl get secrets`
@@ -514,12 +513,12 @@ View secrets created by `up controlplane pull-secret create` with `kubectl get s
 <!-- vale Upbound.Spelling = YES -->
 
 
-Uses a personal access token to create an entry in the default kubeconfig file for the specified managed control plane. 
+Uses a personal access token to create an entry in the default kubeconfig file for the specified managed control plane.
 
 The `--file` flag uses the supplied configuration instead.
 
 An incorrect token or control plane name produces an error and doesn't change the
-current context. 
+current context.
 
 `up controlplane kubeconfig get --token=STRING`
 
@@ -556,9 +555,29 @@ providers                                                pkg.crossplane.io/v1   
 storeconfigs                                             secrets.crossplane.io/v1alpha1                        false        StoreConfig
 ```
 
-## license    
+## get
 
-The `up license` command prints the license of the `up` command-line software. 
+The `up get` command prints information about a given object within the current kubeconfig
+context.
+
+### get managed
+
+Get all managed resources within this control plane.
+`up get managed`
+
+### get claim
+
+Get all claims managed by this control plane.
+`up get claim`
+
+### get composite
+
+Get all composite resources managed by this control plane.
+`up get composite`
+
+## license
+
+The `up license` command prints the license of the `up` command-line software.
 
 **Examples**
 
@@ -569,9 +588,9 @@ up license
 By using Up, you are accepting to comply with terms and conditions in https://licenses.upbound.io/upbound-software-license.html
 ```
 
-## login    
+## login
 
-The `up login` command authenticates to Upbound, generates and stores a JSON credentials file locally in `~/.up/config.json`. Commands requiring authentication to Upbound services use the JSON file to authenticate (such as interacting with Upbound or the Marketplace)  
+The `up login` command authenticates to Upbound, generates and stores a JSON credentials file locally in `~/.up/config.json`. Commands requiring authentication to Upbound services use the JSON file to authenticate (such as interacting with Upbound or the Marketplace)
 `up login`.
 
 If run without arguments, `up login` asks for the username and password from the terminal. View the current authentication status with `up organization list`.
@@ -618,7 +637,7 @@ up org list
 up: error: permission denied: {"message":"Unauthorized"}
 ```
 
-## logout   
+## logout
 
 Log out of Upbound services by invalidating the current login token.
 
@@ -631,7 +650,7 @@ up logout
 my-name logged out
 ```
 
-## organization  
+## organization
 
 The `up organization` commands create and manage organizations on Upbound.
 
@@ -639,7 +658,7 @@ The `up organization` commands create and manage organizations on Upbound.
 `up org` is an alias for `up organization`.
 {{< /hint >}}
 
-All `up configuration` commands support the following options: 
+All `up configuration` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -652,7 +671,7 @@ All `up configuration` commands support the following options:
 
 ### organization create
 
-Create an organization in Upbound  
+Create an organization in Upbound
 `up organization create <name>`.
 
 **Examples**
@@ -670,7 +689,7 @@ Individuals are allowed to belong to as many organizations as they wish, but the
 
 ### organization delete
 
-Delete an organization in Upbound  
+Delete an organization in Upbound
 `up organization delete <name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -696,7 +715,7 @@ my-org deleted
 
 ### organization list
 
-List the organizations belonged to by the account currently logged in  
+List the organizations belonged to by the account currently logged in
 `up organization list`.
 
 **Examples**
@@ -711,7 +730,7 @@ ID    NAME      ROLE
 
 ### organization get
 
-Get an organization in Upbound  
+Get an organization in Upbound
 `up organization get <name>`.
 
 **Examples**
@@ -724,11 +743,11 @@ ID    NAME      ROLE
 433   my-org    owner
 ```
 
-### organization user  
+### organization user
 
 The `up organization user` commands create and manage users in an organization on Upbound.
 
-All `up organization user` commands support the following options: 
+All `up organization user` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -741,7 +760,7 @@ All `up organization user` commands support the following options:
 
 #### organization user invite
 
-Invite a user to an organization on Upbound  
+Invite a user to an organization on Upbound
 `up organization user invite <org-name> <email>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -761,7 +780,7 @@ idontexist@acmeco.org invited
 
 #### organization user delete-invite
 
-Delete an invite for a user to an organization on Upbound  
+Delete an invite for a user to an organization on Upbound
 `up organization user delete-invite <org-name> <email>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -783,7 +802,7 @@ Invitation 517 deleted
 
 #### organization user list-invite
 
-List the pending invites for an organization on Upbound  
+List the pending invites for an organization on Upbound
 `up organization user list-invites <org-name>`.
 
 **Examples**
@@ -798,7 +817,7 @@ ID    EMAIL                   PERMISSION
 
 #### organization user list-members
 
-List the members of an organization on Upbound  
+List the members of an organization on Upbound
 `up organization user list-members <org-name>`.
 
 **Examples**
@@ -814,7 +833,7 @@ ID     NAME              PERMISSION
 
 #### organization user remove-members
 
-Remove a members from an organization on Upbound  
+Remove a members from an organization on Upbound
 `up organization user remove-member <org-name> <user-id>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -838,7 +857,7 @@ User 517 removed from acmeco
 
 The `up profile` command lets you view and manage `up` command-line profiles with up profile commands.
 
-All `up profile` commands support the following options: 
+All `up profile` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -852,7 +871,7 @@ All `up profile` commands support the following options:
 
 ### profile current
 
-Get the current Upbound profile  
+Get the current Upbound profile
 `up profile current`.
 
 **Examples**
@@ -876,7 +895,7 @@ up profile current
 
 ### profile list
 
-List all configured profiles.    
+List all configured profiles.
 `up profile list`.
 
 **Examples**
@@ -891,7 +910,7 @@ CURRENT   NAME      TYPE   ACCOUNT
 
 ### profile use
 
-Select a profile to use for all commands in `up`  
+Select a profile to use for all commands in `up`
 `up profile use`.
 
 **Examples**
@@ -904,7 +923,7 @@ up profile use test
 
 ### profile view
 
-Prints all configured profiles for `up`.  
+Prints all configured profiles for `up`.
 `up profile view`.
 
 **Examples**
@@ -934,7 +953,7 @@ up profile view
 
 <!-- vale gitlab.SubstitutionWarning = YES -->
 
-Settings apply to the current profile in use. Supply a JSON file of settings for bulk changes.  
+Settings apply to the current profile in use. Supply a JSON file of settings for bulk changes.
 `up profile config`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -957,7 +976,30 @@ up profile config set color blue
 up profile config unset color
 ```
 
-## repository   
+## query
+
+The `up query` command lets you view list of objects of any kind within all the control planes in your space. Supports filtering.
+
+To query across all control plane groups within a space.
+
+`up query -A`
+
+### query managed
+
+Get the managed resources within all control plane groups.
+`up query managed -A`
+
+### query claim
+
+Get the claims within all control plane groups.
+`up query claim -A`
+
+### query composite
+
+Get the composite resources within all control plane groups.
+`up query managed -A`
+
+## repository
 
 The `up repository` command provides management operations for Upbound repository accounts.
 
@@ -965,7 +1007,7 @@ The `up repository` command provides management operations for Upbound repositor
 `up repo` is an alias for `up repository`.
 {{< /hint >}}
 
-All `up repository` commands support the following options: 
+All `up repository` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -978,7 +1020,7 @@ All `up repository` commands support the following options:
 
 ### repository create
 
-Create a repository with the given name  
+Create a repository with the given name
 `up repository create <name>`.
 
 **Examples**
@@ -992,7 +1034,7 @@ acmeco/my-repo created
 
 ### repository delete
 
-Delete a repository with the given name  
+Delete a repository with the given name
 `up repository delete <name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1018,7 +1060,7 @@ acmeco/my-repo deleted
 
 ### repository list
 
-List the repositories belonging to this account  
+List the repositories belonging to this account
 `up repository list`.
 
 **Examples**
@@ -1035,7 +1077,7 @@ c7fcd651-d370-4773-b688-da128338b599   configuration   false    4d21h
 
 ### repository get
 
-Get a repository in this account  
+Get a repository in this account
 `up repository get`.
 
 **Examples**
@@ -1048,11 +1090,11 @@ NAME      TYPE      PUBLIC   UPDATED
 my-repo   unknown   true     n/a
 ```
 
-## robot   
+## robot
 
 The `up robot` command provides management operations for robots in Upbound. Robots are identities used for authentication that are independent from a single user and aren't tied to specific usernames or passwords. Robots have their own authentication credentials and configurable permissions.
 
-All `up robot` commands support the following options: 
+All `up robot` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -1065,7 +1107,7 @@ All `up robot` commands support the following options:
 
 ### robot create
 
-Create a robot in your account's organization  
+Create a robot in your account's organization
 `up robot create <name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1085,7 +1127,7 @@ my-org/my-robot created
 
 ### robot delete
 
-Delete a robot from your account's organization  
+Delete a robot from your account's organization
 `up robot delete <name>`.
 
 **Examples**
@@ -1101,7 +1143,7 @@ my-org/my-robot deleted
 
 ### robot list
 
-List the robots in your account's organization  
+List the robots in your account's organization
 `up robot delete <name>`.
 
 **Examples**
@@ -1116,7 +1158,7 @@ my-robot          3f76eec5-b7e0-4f6e-aeec-8adbec2c44a6                 28m
 
 ### robot get
 
-Get a robot from your account's organization  
+Get a robot from your account's organization
 `up robot get <name>`.
 
 **Examples**
@@ -1131,17 +1173,17 @@ my-robot          3f76eec5-b7e0-4f6e-aeec-8adbec2c44a6                 28m
 
 ### robot token
 
-Manage robot authentication tokens for existing robot accounts with  
+Manage robot authentication tokens for existing robot accounts with
 `up robot token`.
 
 #### robot token create
 
-Create a robot authentication tokens for an robot accounts with  
+Create a robot authentication tokens for an robot accounts with
 `up robot token create --output=STRING <robot-name> <token-name>`.
 
 **Examples**
 
-* Create a robot token 
+* Create a robot token
 
 ```shell {copy-lines="1"}
 up robot token create my-robot my-token --output=~/my-robot-token.json
@@ -1152,7 +1194,7 @@ cat ~/my-robot-token.json
 
 #### robot token delete
 
-Delete a robot authentication tokens from a robot account with  
+Delete a robot authentication tokens from a robot account with
 `up robot token delete <robot-name> <token-name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1174,7 +1216,7 @@ my-org/my-robot/my-token deleted
 
 #### robot token list
 
-List the authentication tokens of a robot account with  
+List the authentication tokens of a robot account with
 `up robot token list <robot-name>`.
 
 **Examples**
@@ -1189,7 +1231,7 @@ my-token   1987b8c2-b364-4787-9ce2-39493f3db6ad   3m40s
 
 #### robot token get
 
-Get an authentication tokens of a robot account with  
+Get an authentication tokens of a robot account with
 `up robot token get <robot-name> <token-name>`.
 
 **Examples**
@@ -1206,7 +1248,7 @@ my-token   1987b8c2-b364-4787-9ce2-39493f3db6ad   5m20s
 
 The `up space` commands allow you to install and manage an [Upbound Space]({{<ref "/spaces">}}) on a Kubernetes cluster.
 
-All `up space` commands support the following options: 
+All `up space` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -1219,7 +1261,7 @@ All `up space` commands support the following options:
 
 ### space init
 
-Initialize an Upbound Spaces deployment  
+Initialize an Upbound Spaces deployment
 `up space init [<version>] --token-file=TOKEN-FILE`.
 
 You must provide the desired version of Spaces to install. You can find a list of available versions in [Product Lifecycle]({{<ref "reference/lifecycle.md" >}}). You must provide a token (given to you by Upbound) for the install to proceed.
@@ -1252,7 +1294,7 @@ up space init "v1.0.1" --public-ingress=true
 
 ### space destroy
 
-Remove the Upbound Spaces deployment  
+Remove the Upbound Spaces deployment
 `up space destroy`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1278,7 +1320,7 @@ This command operates based on the current context in your kubeconfig. Make sure
 
 ### space upgrade
 
-Upgrade an Upbound Spaces deployment  
+Upgrade an Upbound Spaces deployment
 `up space upgrade [<version>] --token-file=TOKEN-FILE`.
 
 You must provide the desired version of Spaces to upgrade to. You can find a list of available versions in [Product Lifecycle]({{<ref "reference/lifecycle.md" >}}). You must provide a token (given to you by Upbound) for the install to proceed.
@@ -1319,7 +1361,7 @@ All `up space billing` commands support the following options:
 
 #### space billing get
 
-Get a billing report for submission to Upbound  
+Get a billing report for submission to Upbound
 `up space billing get --provider=PROVIDER --bucket=STRING --account=STRING --billing-month=TIME`.
 
 Supply the storage location for the billing data used to create the report using the optional `--provider`, `--bucket`, and `--endpoint` flags. If these flags are missing, it retrieves values from the Spaces cluster from your kubeconfig. Set `--endpoint=""` to use the storage provider's default endpoint without checking your Spaces cluster for a custom
@@ -1376,7 +1418,7 @@ up space billing get --provider=aws --bucket=my-bucket --account=acmeco --billin
 
 The `up uxp` commands allow you to install and manage Upbound Universal Crossplane (UXP) on a Kubernetes cluster.
 
-All `up uxp` commands support the following options: 
+All `up uxp` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -1389,7 +1431,7 @@ All `up uxp` commands support the following options:
 
 ### uxp install
 
-Install UXP into a target Kubernetes app cluster  
+Install UXP into a target Kubernetes app cluster
 `up uxp install`.
 
 UXP installs the latest stable release by default. The list of available UXP versions is in the [charts.upbound.io/stable](https://charts.upbound.io/stable/) listing.
@@ -1423,7 +1465,7 @@ up uxp install --set image.pullPolicy=IfNotPresent
 
 ### uxp uninstall
 
-Uninstall UXP from a Kubernetes app cluster  
+Uninstall UXP from a Kubernetes app cluster
 `up uxp uninstall`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1443,7 +1485,7 @@ up uxp uninstall
 
 ### uxp upgrade
 
-UXP upgrades can be from one UXP version to another or from open source Crossplane to a compatible UXP version  
+UXP upgrades can be from one UXP version to another or from open source Crossplane to a compatible UXP version
 `up uxp upgrade [<version>]`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1476,7 +1518,7 @@ up uxp upgrade v1.7.0-up.1 -n crossplane-system
 
 The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Creating and Pushing Packages]({{<ref "upbound-marketplace/packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
 
-All `up xpkg` commands support the following options: 
+All `up xpkg` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag   | Description                  |
@@ -1531,7 +1573,7 @@ xpkg saved to my_provider.xpkg
 
 ### xpkg init
 
-Use a wizard to generate a `crossplane.yaml` file for a configuration or provider with  
+Use a wizard to generate a `crossplane.yaml` file for a configuration or provider with
 `up xpkg init`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1593,7 +1635,7 @@ spec:
 
 ### xpkg dep
 
-Download the dependencies of a package for the Crossplane Language Server with  
+Download the dependencies of a package for the Crossplane Language Server with
 `up xpkg dep [<package>]`.
 
 {{<hint "tip" >}}
@@ -1619,7 +1661,7 @@ Dependencies added to xpkg cache:
 
 ### xpkg push
 
-Publish images created by up xpkg build to the Upbound Marketplace with  
+Publish images created by up xpkg build to the Upbound Marketplace with
 `up xpkg push <tag>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1638,7 +1680,7 @@ up xpkg push upbound-docs/test:v0.2 -f getting-started.xpkg
 xpkg pushed to upbound-docs/test:v0.2
 ```
 
-To push to other repositories, besides the Upbound marketplace, like Docker Hub, provide the full URL of the image registry. 
+To push to other repositories, besides the Upbound marketplace, like Docker Hub, provide the full URL of the image registry.
 
 For example, to push a package to `index.docker.io`:
 ```shell {copy-lines="1"}
@@ -1649,14 +1691,14 @@ xpkg pushed to index.docker.io/dockeruser/test:v0.2
 ## xpls
 
 
-The `up xpls` starts the xpls language server. 
+The `up xpls` starts the xpls language server.
 
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore xpls -->
 ### xpls serve
 <!-- vale Upbound.Spelling = YES -->
 
-run a server for Crossplane definitions using the Language Server Protocol with  
+run a server for Crossplane definitions using the Language Server Protocol with
 `up xpls serve`.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1687,7 +1729,7 @@ Upbound uses `up alpha` to try out new features or test new platform behaviors.
 
 ### alpha xpkg xp-extract
 
-Extract package contents into a Crossplane cache compatible format. Fetches from a remote registry by default  
+Extract package contents into a Crossplane cache compatible format. Fetches from a remote registry by default
 `up alpha xpkg xp-extract`
 
 {{< table "table table-sm table-striped">}}
@@ -1696,6 +1738,76 @@ Extract package contents into a Crossplane cache compatible format. Fetches from
 |        | `--from-daemon`    | Fetch the image from the Docker daemon. |
 |            | `--from-xpkg`  | Fetch the image from a local xpkg. If package isn't specified the command uses the current directory. |
 | `-o`       | `--output="out.gz"`   | Package output path. Extension must be `.gz`.         |
+{{< /table >}}
+
+<!-- vale Google.Headings = NO -->
+### alpha xpkg migration
+<!-- vale Google.Headings = YES -->
+Migrate a control plane to an Upbound Managed Control Plane.
+Use the 'migration' command to migrate control planes seamlessly from Crossplane or Universal Crossplane
+(XP/UXP) environments to Upbound's Managed Control Planes.
+
+<!-- vale Google.Headings = NO -->
+#### alpha xpkg migration export
+<!-- vale Google.Headings = YES -->
+
+Export the current state of a Crossplane or Universal Crossplane control plane into an archive, preparing it for
+migration to Upbound Managed Control Planes with `up alpha migration export`.
+
+The 'export' command exports the current state of a Crossplane or Universal Crossplane (xp/uxp) control plane
+into an archive file. You can then use this file for migration to Upbound Managed Control Planes.
+
+{{< table "table table-sm table-striped">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|            | `--kubeconfig=<path>`   | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.         |
+|            | `--yes`     | When set to true, automatically accepts any confirmation prompts that may appear during the export process.         |
+| `-o`       | `--output`   | Specify the path for the exported archive. The default is 'xp-state.tar.gz'. |
+|            | `--include-extra-resources`   | A list of extra resource types to include in the export in "resource.group" format, along with all Crossplane resources. By default, it includes namespaces, configmaps, secrets.  |
+|            | `--exclude-resources`   | A list of resource types to exclude from the export in 'resource.group' format. No resources excluded by default. |
+|            | `--include-namespaces`   | A list of specific namespaces to include in the export. If not specified, all namespaces included by default. |
+|            | `--exclude-namespaces`   | A list of specific namespaces to exclude from the export. Defaults to 'kube-system', 'kube-public', 'kube-node-lease', and 'local-path-storage'. |
+|            | `--pause-before-export`   | When set to true, pauses all managed resources before starting the export process. This can help ensure a consistent state for the export. Defaults to 'false'. |
+{{< /table >}}
+
+**Examples**
+
+* Export the control plane state to a specified file 'xp-export.tar.gz'.
+
+  ```shell
+  up alpha migration export --output="xp-export.tar.gz"
+  ```
+* Pause all managed resources first and export the control plane state.
+
+  ```shell
+  up migration export --pause-before-export
+  ```
+
+* Export the control plane state with the extra resource specified and only using provided namespaces.
+
+  ```shell
+  up migration export --include-extra-resources="customresource.group" --include-namespaces="crossplane-system,team-a,team-b"
+  ```
+
+<!-- vale Google.Headings = NO -->
+#### alpha xpkg migration import
+<!-- vale Google.Headings = YES -->
+
+Import an exported control plane state into an Upbound managed control plane, completing the migration process.
+
+The 'import' command imports a control plane state from an archive file into an Upbound managed control plane.
+
+By default, the command pauses all managed resources during the import process for possible manual inspection/validation.
+You can use the `--unpause-after-import` flag to configure resuming all managed resources automatically after the
+import process completes.
+
+{{< table "table table-sm table-striped">}}
+| Short flag | Long flag   | Description                  |
+|------------|-------------|------------------------------|
+|            | `--kubeconfig=<path>`   | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.         |
+|            | `--yes`     | When set to true, automatically accepts any confirmation prompts that may appear during the import process. |
+| `-i`       | `--input`   | Specifies the path of the archive to import. The default path is 'xp-state.tar.gz'.  |
+|            | `--unpause-after-import`   | When set to true, automatically resumes all managed resources paused during the import process. This helps in resuming normal operations post-import. Defaults to false, requiring manually resuming of resources if needed. |
 {{< /table >}}
 
 <!-- vale Google.Headings = YES -->
