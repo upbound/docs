@@ -7,7 +7,7 @@ For more information on how Upbound builds on Crossplane, review [Crossplane vs.
 
 ## Command line interface
 
-- [Command Reference](../cli/command-reference)
+- [Command Reference](../cli/command-reference.md)
 - [Configuration](../cli/configuration)
 - [Release Notes](../cli/rel-notes)
 

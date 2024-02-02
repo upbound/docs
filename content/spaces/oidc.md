@@ -17,10 +17,10 @@ You can configure a Space to use OIDC auth by providing the **OIDC issuer URL** 
 - Other Identity Providers, as long as they support OIDC
 
 {{< hint "tip" >}}
-Consult your preferred Identity Provider's documentation for setting up OIDC. 
+Consult your preferred Identity Provider's documentation for setting up OIDC.
 {{< /hint >}}
 
-You must set the issuer URL (`oidc-issuer-url`) and client ID (`oidc-client-id`) values from the corresponding OIDC Identity Provider in the Space. 
+You must set the issuer URL (`oidc-issuer-url`) and client ID (`oidc-client-id`) values from the corresponding OIDC Identity Provider in the Space.
 
 ```bash
 # Replace these with the values from your IdP.
@@ -31,19 +31,19 @@ export SPACES_OIDC_CLIENT_ID=client-id
 During a Space install:
 
 ```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v1.2.0" \ 
-  --set "router.oidc[0]='--oidc-issuer-url=${SPACES_OIDC_ISSUER_URL}'" \ 
-  --set "router.oidc[1]='--oidc-client-id=${SPACES_OIDC_CLIENT_ID}'" 
+up space init --token-file="${SPACES_TOKEN_PATH}" "v1.2.0" \
+  --set "router.oidc[0]='--oidc-issuer-url=${SPACES_OIDC_ISSUER_URL}'" \
+  --set "router.oidc[1]='--oidc-client-id=${SPACES_OIDC_CLIENT_ID}'"
 ```
 
 Or via Helm:
 
 ```bash
-helm -n upbound-system upgrade --install spaces \ 
-  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \ 
-  --version "v1.2.0" \ 
-  --set "router.oidc[0]='--oidc-issuer-url=${SPACES_OIDC_ISSUER_URL}'" \ 
-  --set "router.oidc[1]='--oidc-client-id=${SPACES_OIDC_CLIENT_ID}'" 
+helm -n upbound-system upgrade --install spaces \
+  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  --version "v1.2.0" \
+  --set "router.oidc[0]='--oidc-issuer-url=${SPACES_OIDC_ISSUER_URL}'" \
+  --set "router.oidc[1]='--oidc-client-id=${SPACES_OIDC_CLIENT_ID}'"
 ```
 
 ## Authenticate with a control plane
@@ -54,7 +54,7 @@ After you've installed a Space that's configured to use OIDC auth, you need to f
 kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp1.yaml
 ```
 
-Update the user details of the kubeconfig to use `oidc-login`. For example, below is a snippet of a kubeconfig whch uses [kubelogin](https://github.com/int128/kubelogin).
+Update the user details of the kubeconfig to use `oidc-login`. For example, below is a snippet of a kubeconfig which uses [kubelogin](https://github.com/int128/kubelogin).
 
 ```yaml
 users:
@@ -71,4 +71,4 @@ users:
       - --oidc-client-secret=${SPACES_OIDC_CLIENT_SECRET}
 ```
 
- Now whenever a user attempts to interact directly with the control plane, they must have first authenticated with your Identity Provider. 
+ Now whenever a user attempts to interact directly with the control plane, they must have first authenticated with your Identity Provider.
