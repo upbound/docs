@@ -13,6 +13,19 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.0.0
+
+_Released 2024-02-01_
+
+* Update the AWS Terraform provider version to v5.31.0
+* Support for new resource: `PodIdentityAssociation.eks.aws.upbound.io/v1beta1`
+* This release brings support for generating multi-version Custom Resource Definitions (CRDs) and CRD conversion webhooks.
+* The release contains some important bug fixes, support `v1beta2` for some resources, adding a new resource, and updates of dependencies.
+
+_Refer to the [v0.47.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.47.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.1)
+
 ## v0.47.1
 
 _Released 2024-01-03_
@@ -61,7 +74,7 @@ Install the provider from the [Upbound Marketplace](https://marketplace.upbound.
 _Released 2023-12-08_
 
 * Support for new family provider: `provider-aws-identitystore`
-* Support for new resource: `Group.identitystore`, `GroupMembership.identitystore`, `User.identitystore`,
+* Support for new resources: `Group.identitystore`, `GroupMembership.identitystore`, `User.identitystore`,
 `CustomerManagedPolicyAttachment.ssoadmin`, `InstanceAccessControlAttributes.ssoadmin` and `PermissionsBoundaryAttachment.ssoadmin`
 * The release contains some bug fixes adding a new family provider, adding new resources, and updates of dependencies.
 
