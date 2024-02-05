@@ -22,9 +22,9 @@ _Released 2024-02-01_
 * This release brings support for generating multi-version Custom Resource Definitions (CRDs) and CRD conversion webhooks.
 * The release contains some important bug fixes, support `v1beta2` for some resources, adding a new resource, and updates of dependencies.
 
-_Refer to the [v0.47.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.47.1) for full details._
+_Refer to the [v1.0.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v1.0.0) for full details._
 
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.1)
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.0.0)
 
 ## v0.47.1
 
