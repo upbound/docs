@@ -64,7 +64,7 @@ The extra flags are:
 - `features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster`
 - `features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig`
 
-These flags tells the plugin--running in Spaces--where your Argo CD instance is. After you've done this at install-time, you also need to create a `Secret` on the Spaces cluster. This secret must contain a kubeconfig pointing to your Argo CD instance. The secret needs to be in the same namespace as the `spaces-controller`, which is `upbound-system`.
+These flags tell the plugin (running in Spaces) where your Argo CD instance is. After you've done this at install-time, you also need to create a `Secret` on the Spaces cluster. This secret must contain a kubeconfig pointing to your Argo CD instance. The secret needs to be in the same namespace as the `spaces-controller`, which is `upbound-system`.
 
 Once you enable the plugin and configure it, the plugin automatically propagates connection details for your managed control planes to your Argo CD instance. You can then target the managed control plane and use Argo to sync Crossplane-related objects to it.
 
