@@ -1,5 +1,5 @@
 ---
-title: "SharedSecret"
+title: "SharedExternalSecret"
 weight: 20
 ---
 
@@ -9,12 +9,12 @@ An example of a `sharedsecret.yaml` file:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
-kind: SharedSecret
+kind: SharedExternalSecret
 metadata:
   name: shared-vault-secret
   namespace: default
 spec:
-  
+
   # The name to used on external-secrets.io/v1beta1 ExternalSecret created in ControlPlane.
   # optional, if not set, ControlPlaneExternalSecret name will be used
   externalSecretName: "my-secret"
@@ -34,7 +34,7 @@ spec:
       - ctp1
       - ctp2
 
-  # Project secrets into namespaces matching the declared criteria. f omitted, the secret is 
+  # Project secrets into namespaces matching the declared criteria. f omitted, the secret is
   # projected to all namespaces within a control plane
   namespaceSelector:
 
