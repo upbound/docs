@@ -1,17 +1,19 @@
 ---
-title: Auto Upgrade Crossplane
+title: Automatically upgrade control planes
 weight: 100
 description: How to configure automatic upgrades of Crossplane in a managed control plane
 ---
 
 Upbound Spaces can automatically upgrade the version of Crossplane in your Managed Control Planes. You can edit the `spec.crossplane.autoUpgrade` field in your `ControlPlane` specification with the available release channels below.
 
+{{< table >}}
 | Channel  | Description                                                                                                                                                                              | Example |
 |------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | **None**    | Disables auto upgrades.  | _Uses version specified in `spec.crossplane.version`._ |
 | **Patch**   | Upgrades to the latest supported patch release. | _Control plane version 1.12.2-up.2 auto upgrades to 1.12.3-up.1 upon release._    |
 | **Stable**  | Default setting. Upgrades to the latest supported patch release on minor version _N-1_ where N is the latest supported minor version. | _If latest supported minor version is 1.14, auto upgrades to latest patch - 1.13.2-up.3_ |
 | **Rapid**   | Upgrades to the latest supported patch release on the latest supported minor version.  | _If the latest supported minor version is 1.14, auto upgrades to the latest patch of minor version. 1.14 upgrades to 1.14.5-up.1_ |
+{{< /table >}}
 
 {{< hint "warning" >}}
 
