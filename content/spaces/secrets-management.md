@@ -9,7 +9,9 @@ Upbound has built-in features to help you manage secrets for control planes runn
 1. New `SharedSecretStore` and `SharedExternalSecret` resources to manage syncing external secrets into groups of control planes.
 2. Built-in support for [External Secrets Operator (ESO)](https://external-secrets.io) APIs. This allows you to synchronize secrets from external secret stores into a managed control plane.
 
+<!-- vale Google.Headings = NO -->
 ## Shared secrets in a Space
+<!-- vale Google.Headings = YES -->
 
 Spaces administrators can manage external secrets for multiple control planes with two new API types. `SharedSecretStore` and `SharedExternalSecret` allow admins to provision group-scoped secret stores and external secrets into their control planes.
 
