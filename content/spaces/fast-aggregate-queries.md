@@ -2,6 +2,7 @@
 title: Fast aggregate queries
 weight: 400
 description: Use the `up` CLI to query objects and resources
+draft: true
 ---
 <!-- vale write-good.TooWordy = NO -->
 <!-- ignore "aggregate" -->
