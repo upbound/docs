@@ -76,7 +76,7 @@ export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 Set the version of Spaces software you want to install.
 
 ```ini
-export SPACES_VERSION=1.2.0
+export SPACES_VERSION=1.2.1
 ```
 
 ## Install a Space
