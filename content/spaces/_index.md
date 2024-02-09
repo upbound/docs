@@ -65,7 +65,7 @@ You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is
 To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "reference/cli/command-reference.md#space-init">}}) to install an Upbound Space. Below is an example:
 
 ```bash
-up space init "v1.2.0"
+up space init "v1.2.1"
 ```
 
 {{< hint "tip" >}}
@@ -97,7 +97,7 @@ For a complete tutorial of the helm install, read one of the [quickstarts]({{<re
 To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "reference/cli/command-reference.md#space-upgrade">}}). Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
 ```bash
-up space upgrade "v1.2.0"
+up space upgrade "v1.2.1"
 ```
 
 ### Downgrade a Space

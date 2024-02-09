@@ -22,9 +22,19 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.2.1
+
+Released February 8st, 2024.
+
+#### What's Changed
+
+- Fixed an issue causing the `controlplane` resources having a benign `crossplane.io/external-create-failed` annotation.
+- Fixed an issue causing hotlooping version controller when a `controlplane` is deleted.
+- Other stability and performance improvements.
+
 ### Spaces v1.2.0
 
-Released February 1st, 2024.  
+Released February 1st, 2024.
 
 #### What's Changed
 
