@@ -24,7 +24,7 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ### Spaces v1.2.1
 
-Released February 8st, 2024.
+Released February 8th, 2024.
 
 #### What's Changed
 
