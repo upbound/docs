@@ -110,7 +110,7 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to Azure without 
 6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
 7. In the _Redirect URI_ section select **Web** and leave the URL field blank.
 8. Select **Register**.
-{{<img src="quickstart/images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure"  align="center" unBlur="true" size="small" >}}
+{{<img src="images/azure-identity-start.png" alt="Upbound Get Started Configure OIDC screen for Azure"  align="center" unBlur="true" size="small" >}}
 
 #### Create a federated credential
 
@@ -148,7 +148,7 @@ upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
 9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.
 10. Select **Add**.
 
-{{<img src="quickstart/images/azure-registration-config.png" alt="Azure configure app registration" align="center" size="small" unBlur="true">}}
+{{<img src="images/azure-registration-config.png" alt="Azure configure app registration" align="center" size="small" unBlur="true">}}
 
 #### Grant permissions to the service principal
 
@@ -168,7 +168,7 @@ For your control plane to be able to perform actions required by this configurat
 12. Select **Review + assign**.
 13. Make sure everything is correct and press **Review + assign** again.
 
-{{<img src="quickstart/images/azure-identity-setup.png" alt="Azure grant permissions to service principal" align="center" size="small" unBlur="true" >}}
+{{<img src="images/azure-identity-setup.png" alt="Azure grant permissions to service principal" align="center" size="small" unBlur="true" >}}
 
 ### Finish configuring the Upbound identity provider
 
@@ -180,7 +180,7 @@ For the _Directory (tenant) ID_ field, enter your **Directory (tenant) ID**. You
 
 In the _Azure Subscription ID_ field, enter your **Subscription ID**. You can find this by selecting your Subscription in the Azure portal.
 
-{{<img src="quickstart/images/azure-oidc-finalize.png" alt="Upbound configuration to connect to Azure with OIDC" size="small" align="center" unBlur="true">}}
+{{<img src="images/azure-oidc-finalize.png" alt="Upbound configuration to connect to Azure with OIDC" size="small" align="center" unBlur="true">}}
 
 Select **Authenticate**.
 Select **Launch Control Plane**.
@@ -207,7 +207,7 @@ Add a new [Service Account]({{<ref "#create-a-gcp-service-account" >}}) to the e
 6. Enter a description like **An identity provider for Upbound**.
 7. **Enable** the pool.
 8. Select **Continue**
-{{<img src="quickstart/images/gcp-identity-start.png" alt="Upbound Get Started Configure OIDC screen for GCP" align="center" unBlur="true" size="small" >}}
+{{<img src="images/gcp-identity-start.png" alt="Upbound Get Started Configure OIDC screen for GCP" align="center" unBlur="true" size="small" >}}
 
 #### Add Upbound to the pool
 
@@ -222,7 +222,7 @@ For _Audience 1_ enter **sts.googleapis.com**
 
 Select **Continue**.
 
-{{<img src="quickstart/images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" align="center" size="small" unBlur="true" >}}
+{{<img src="images/gcp-provider-to-pool.png" alt="GCP add a provider to pool configuration" align="center" size="small" unBlur="true" >}}
 
 #### Configure provider attributes
 The provider attributes restrict which remote entities you allow access to your resources.
@@ -251,7 +251,7 @@ Not providing a CEL condition allows any Upbound managed control plane to access
 
 Select **Save**.
 
-{{<img src="quickstart/images/gcp-idp-attributes.png" alt="GCP configure provider attributes configuration" align="center" unBlur="true" size="small" >}}
+{{<img src="images/gcp-idp-attributes.png" alt="GCP configure provider attributes configuration" align="center" unBlur="true" size="small" >}}
 
 ### Create a GCP Service Account
 
@@ -274,7 +274,7 @@ _Description_: **Upbound managed control planes service account**
 
 Select **Create and Continue**.
 
-{{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" align="center" size="small" unBlur="true" >}}
+{{<img src="images/gcp-sa.png" alt="GCP service account creation screen" align="center" size="small" unBlur="true" >}}
 
 ##### Grant this service account access to project
 For the _CloudSQL as a service_ configuration the service account requires the roles:
@@ -283,14 +283,14 @@ For the _CloudSQL as a service_ configuration the service account requires the r
 
 Select **Done**.
 
-{{<img src="quickstart/images/gcp-role-add.png" alt="GCP service project access screen" unBlur="true" size="small" align="center">}}
+{{<img src="images/gcp-role-add.png" alt="GCP service project access screen" unBlur="true" size="small" align="center">}}
 
 ##### Record the service account email address
 
 At the list of service accounts copy the service account **email**.
 Upbound requires this to authenticate your managed control plane.
 
-{{<img src="quickstart/images/gcp-sa-email.png" alt="list of GCP service accounts" unBlur="true" >}}
+{{<img src="images/gcp-sa-email.png" alt="list of GCP service accounts" unBlur="true" >}}
 
 ### Add the service account to the identity pool
 
@@ -299,7 +299,7 @@ Add the service account to the Workload Identity Federation pool to authenticate
 2. Near the top of the page select **Grant Access**.
 3. Select the new service account, **upbound-service-account**.
 4. Under _Select principals_ use **All identities in the pool**.
-{{<img src="quickstart/images/gcp-add-to-pool.png" alt="Pool select service account screen" align="center" size="small" unBlur="true">}}
+{{<img src="images/gcp-add-to-pool.png" alt="Pool select service account screen" align="center" size="small" unBlur="true">}}
 Select **Save**.
 In the _Configure your application_ window, select **Dismiss**.
 
@@ -318,7 +318,7 @@ Go to the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sq
 
 Select **Enable**.
 
-{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" unBlur="true" size="small" >}}
+{{<img src="images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" unBlur="true" size="small" >}}
 <!-- vale Google.Headings = YES -->
 <!-- vale Microsoft.Terms = YES -->
 
@@ -352,7 +352,7 @@ In the _Name of federated identity provider_ field.
 
 In the _Attached service account email address_ field enter the **service account email**.
 
-{{<img src="quickstart/images/gcp-oidc-finalize.png" alt="Upbound configuration to connect to GCP with OIDC" size="small" >}}
+{{<img src="images/gcp-oidc-finalize.png" alt="Upbound configuration to connect to GCP with OIDC" size="small" >}}
 
 Select **Finalize & Launch Control Plane**.
 {{< /tab >}}
