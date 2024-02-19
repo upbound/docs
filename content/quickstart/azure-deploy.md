@@ -85,8 +85,8 @@ Upbound recommends using OpenID Connect (OIDC) to authenticate to Azure without 
 
 #### Create an identity pool
 1. Open the **[Azure portal](https://portal.azure.com/)**.
-2. Select **[Azure Active Directory](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview)**.
-3. If this is your first time registering Upbound as an identity provider in Azure Active Directory, select **App registrations**
+2. Select **[Microsoft Entra ID](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview)**.
+3. If this is your first time registering Upbound as an identity provider in Microsoft Entra ID, select **App registrations**
 4. At the top of the page, select **New registration**.
 5. Name the pool, like **upbound-oidc-provider**.
 6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
@@ -107,7 +107,7 @@ To allow the `upbound-oidc-provider` registration created in the previous step t
 
 {{< editCode >}}
 ```yaml
-mcp:$@<your-org>/<your-control-plane-name>$@:provider-provider-azure
+mcp:$@<your-org>/<your-control-plane-name>$@:provider:provider-azure
 ```
 {{< /editCode >}}
 
@@ -158,7 +158,7 @@ Back in Upbound, finish configuring the identity provider.
 
 In the _Application (client) ID_ field enter your **Application (client) ID**.  
 
-For the _Directory (tenant) ID_ field, enter your **Directory (tenant) ID**. You can find this by selecting your Application under Azure Active Directory -> Application Registrations.
+For the _Directory (tenant) ID_ field, enter your **Directory (tenant) ID**. You can find this by selecting your Application under Microsoft Entra ID -> Application Registrations.
 
 In the _Azure Subscription ID_ field, enter your **Subscription ID**. You can find this by selecting your Subscription in the Azure portal.
 
