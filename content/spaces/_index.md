@@ -7,25 +7,23 @@ aliases:
   - /concepts/upbound-spaces
 ---
 
-Upbound Spaces are self-hosted environments for Upbound's managed Crossplane control planes. All that's required to bootstrap a Space is a Kubernetes cluster. Popular managed Kubernetes services including Amazon EKS, Google GKE, and Microsoft AKS are fully supported.
+Upbound Spaces are hosting environments for Upbound's managed Crossplane control planes. A single Upbound Space is capable of hosting more than 50 fully isolated instances of Crossplane. 
+
+Upbound Spaces can be self-hosted and self-managed entirely in your own environment or Upbound-managed in Upbound's SaaS environment. To self-host a Space, users install the Space software in a Kubernetes cluster. Popular managed Kubernetes services including Amazon EKS, Google GKE, and Microsoft AKS are fully supported.
 
 ## Spaces and Upbound
 
-Think of an Upbound Space as a self-managed slice of the Upbound platform in your own environment. Whether that's a hyper scale cloud provider or on-prem, Spaces supplements Upbound's SaaS service by enabling a new deployment option. Now you can have control planes that run in your preferred hosting environment and Upbound's own SaaS.
+When self-hosted, an Upbound Space is a fully operational slice of the Upbound platform in your own environment. Whether that's a hyper scale cloud provider or on-prem, self-hosted Spaces supplements Upbound's SaaS service by enabling a new deployment option. Now you can have control planes that run in your preferred hosting environment and Upbound's own SaaS.
 
 {{<img src="spaces/images/mcps-everywhere.png" alt="Managed control planes can run anywhere, thanks to Spaces">}}
 
-Spaces lets you:
+## Spaces use cases
 
-- Increase scale and cost efficiency by running 50 or more control planes per Kubernetes Cluster instead of just 1.
-- Each control plane configuration is fully managed from Git.
-- Integrate with Kubernetes ecosystem tooling to manage the full lifecycle of the control planes.
-
-The boundary of a single Upbound Space is within the confines of a single Kubernetes cluster. Spaces are regional hosting environments within a single cloud provider. You can deploy multiple Spaces (as long as each Space deploys in its own cluster). Upbound recommends deploying a Space for each region and cloud provider you want to operate managed control planes in.
+Spaces lets you focus on building resource abstractions with Crossplane rather than worrying about the underlying machinery which power them. Spaces simplifies creating, monitoring, and managing your Crossplane infrastructure. Today, users deploy Spaces for a wide array of use cases across several industries, such as financial services, automotive, or healthcare.
 
 ## System requirements
 
-Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. You can install Spaces into Kubernetes clusters v1.25 or later.
+To self-host a Space, you must deploy the software into a Kubernetes cluster. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a local Kubernetes cluster such as [kind](https://kind.sigs.k8s.io/). 
 
 <!-- vale write-good.TooWordy = NO -->
 ### Minimum requirements
