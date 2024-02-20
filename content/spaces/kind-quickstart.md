@@ -4,7 +4,7 @@ weight: 1
 description: A  quickstart guide for Upbound Spaces
 ---
 
-Get started with Upbound Spaces. This guide will get you up and running with a self-hosted Upbound cluster in AWS, GCP, Azure, or with a local kind cluster.
+Get started with Upbound Spaces. This guide will get you up and running with a self-hosted Upbound cluster with a local `kind` cluster.
 
 Upbound Spaces allows you to host managed control planes in your preferred environment.
 

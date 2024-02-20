@@ -255,7 +255,7 @@ You are ready to [create your first managed control plane](#create-your-first-ma
 
 Whereas the up CLI handles installation of the pre-requisites, with Helm you need to install them on your own. This gives you more control over the installation process.
 
-#### Install cert-manager
+### Install cert-manager
 
 Install cert-manager.
 
@@ -264,7 +264,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Available=True --timeout=360s
 ```
 
-#### Install ingress-nginx
+### Install ingress-nginx
 
 Install ingress-nginx.
 
@@ -276,7 +276,7 @@ kubectl wait --namespace ingress-nginx \
   --timeout=90s
 ```
 
-#### Install UXP
+### Install UXP
 
 Install Upbound Universal Crossplane (UXP)
 
@@ -289,7 +289,7 @@ helm upgrade --install crossplane universal-crossplane \
 ```
 
 <!-- vale gitlab.Substitutions = NO -->
-#### Install provider-helm and provider-kubernetes
+### Install provider-helm and provider-kubernetes
 <!-- vale gitlab.Substitutions = YES -->s
 
 Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. You need to install these providers and grant necessary permissions to create resources.
@@ -359,7 +359,7 @@ kubectl wait provider.pkg.crossplane.io/provider-kubernetes \
   --timeout=360s
 ```
 
-#### Configure the providers
+### Configure the providers
 
 Create `ProviderConfigs` that configure the providers to use the cluster they're deployed into.
 
@@ -383,7 +383,7 @@ spec:
 EOF
 ```
 
-#### Install Upbound Spaces
+### Install Upbound Spaces
 
 Create an image pull secret so that the cluster can pull Upbound Spaces images.
 
@@ -414,6 +414,25 @@ helm -n upbound-system upgrade --install spaces \
 
 You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
 
+### Create a DNS record
+
+Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
+
+```bash
+kubectl get ingress \
+  -n upbound-system mxe-router-ingress \
+  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+```
+
+If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+
+You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
 ## Create your first managed control plane
 
 With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space, create a managed control plane:
@@ -437,9 +456,6 @@ The first managed control plane you create in a Space takes around 5 minutes to 
 kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 ```
 
-{{< /tab >}}
-
-{{< /tabs >}}
 
 ## Connect to your managed control plane
 
