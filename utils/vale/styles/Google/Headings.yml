@@ -7,25 +7,29 @@ match: $sentence
 indicators:
   - ':'
 exceptions:
-  - "Amazon Elastic Kubernetes Service"
+  - "Add the Space cluster as a context to Argo"
   - "Authentication with Version Control Services"
+  - "Amazon Elastic Kubernetes Service"
+  - "Connect your Space to Argo CD"
+  - "Create an Argo Application"
   - "Composite Resource"
-  - "Configure Git reference"
   - "Configure with Spaces"
   - "Control Plane Source"
   - "Create a Space"
+  - "Create an Argo Application"
   - "Deploying more than one Space"
   - "Downgrade a Space"
+  - "Google Kubernetes Engine"
+  - "Configure Git reference"
   - "Example Prometheus installation"
-  - "External cluster Argo CD"
   - "External Secrets Operator"
   - "Generally Available"
-  - "Google Kubernetes Engine"
-  - "Install a Space"
-  - "Install ALB Load Balancer"
-  - "Install an Upbound Space"
-  - "Install Upbound Spaces"
   - "Integrate with Argo CD and Flux"
+  - "Install an Upbound Space"
+  - "Install a Space"
+  - "Install Upbound Spaces"
+  - "Inspect the Space"
+  - "Install ALB Load Balancer"
   - "Managed Control Planes?"
   - "Managed Resources"
   - "Microsoft Azure Kubernetes Service"
@@ -34,37 +38,36 @@ exceptions:
   - "Per Space metrics"
   - "Service Account"
   - "Sizing a Space"
-  - "Uninstall a Space"
+  - "External cluster Argo CD"
   - "Universal Crossplane"
+  - "Uninstall a Space"
   - "Upbound Console"
   - "Upbound Universal Crossplane"
   - "Upgrade a Space"
   - "Use OpenAPI v3 data types"
   - "With Helm"
   - APIs?
-  - AWS
   - Azure
   - CLI
+  - CRDs
   - Code
   - Configuration
   - Configuration layout in Git
   - ControllerConfig
   - ControllerConfigs
   - Cosmos
-  - CRDs
   - Crossplane
   - Docker
   - Emmet
   - GCP
   - GitHub
   - GitOps
-  - GitOps tools (Argo / Flux)
   - gRPC
   - Hugo
   - I
-  - IAM
   - Integrate Crossplane with Argo
   - Integrate Crossplane with Flux
+  - GitOps tools (Argo / Flux)
   - JavaScript
   - Kubeconfig
   - Kubernetes
@@ -73,7 +76,6 @@ exceptions:
   - Marketplace
   - MongoDB
   - OAuth
-  - OIDC
   - Open Policy Agent Gatekeeper
   - Provider
   - ProviderConfig
