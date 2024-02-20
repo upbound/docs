@@ -26,35 +26,6 @@ aws_access_key_id = AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
-{{< expand "Authentication keys with SSO" >}}
-
-To generate authentication keys for SSO login, access your 
-organization's AWS SSO portal.
-
-Select "Command line or programmatic access"
-
-{{<img src="providers/images/aws-sso-screen.png" size="small" alt="AWS SSO screen highlighting the option command line or programmatic access">}}
-
-Expand "Option 2" and copy the provided AWS credentials.
-
-{{<img src="providers/images/aws-auth-option2.png" size="small" alt="AWS screen showing Option 2 credentials">}}
-
-Use this as the contents of the `aws-credentials.txt` file. 
-
-Below is an example `aws-credentials.txt` file with SSO authentication. 
-```ini
-[622346257358_AdministratorAccess]
-aws_access_key_id=ASIAZBZV2IPHFUYQ2TFX
-aws_secret_access_key=PPF/Wu9vTja98L5t/YNycbzEMw++aMt+jUZOpvtJ
-aws_session_token=ArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab///3jMmrV9zX
-```
-
-{{<hint "important" >}}
-These credentials are only valid as long as your SSO session. When the 
-credentials expire Crossplane can't monitor or change AWS resources.
-{{< /hint >}} 
-
-{{< /expand >}}
 ### Create a Kubernetes secret
 Create the Kubernetes secret with 
 {{<hover label="kubesecret" line="1">}}kubectl create secret generic{{</hover>}}. 
