@@ -13,6 +13,33 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.47.2
+
+_Released 2024-02-16_
+
+* This release includes some important bug fixes and dependency bumps, please select the release notes for more details.
+
+_Refer to the [v0.47.2 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.47.2) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.2)
+
+## v1.1.0
+
+_Released 2024-02-15_
+
+* Support for new family provider: `provider-aws-opensearchserverless`
+* Support for new resources: `StackSetInstance.cloudformation.aws.upbound.io/v1beta1`, `AccessPolicy.opensearchserverless.aws.upbound.io/v1beta1`,
+`Collection.opensearchserverless.aws.upbound.io/v1beta1`, `LifecyclePolicy.opensearchserverless.aws.upbound.io/v1beta1`,
+`SecurityConfig.opensearchserverless.aws.upbound.io/v1beta1`, `SecurityPolicy.opensearchserverless.aws.upbound.io/v1beta1`,
+`VPCEndpoint.opensearchserverless.aws.upbound.io/v1beta1`
+* The release introduces a new family provider, new resources, important bug fixes, dependency updates, and a new ProviderConfig API
+for WebIdentity authentication.
+
+_Refer to the [v1.1.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v1.1.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.1.0)
+
+
 ## v1.0.0
 
 _Released 2024-02-01_
