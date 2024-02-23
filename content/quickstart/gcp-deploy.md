@@ -167,8 +167,8 @@ Select **Create and Continue**.
 {{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" align="center" size="small" unBlur="true" >}}
 
 ##### Grant this service account access to project
-For the _CloudSQL as a service_ configuration the service account requires the roles:  
-**Cloud SQL Admin**  
+For the _CloudSQL as a service_ configuration the service account requires the role:  
+
 **Workload Identity User**
 
 Select **Done**.
@@ -199,18 +199,6 @@ In the _Configure your application_ window, select **Dismiss**.
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- allow "SQL" -->
-### Enable the Cloud SQL Admin GCP API
-GCP requires explicitly enabling the Cloud SQL Admin API. 
-
-
-Go to the [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com) page in the GCP console.
-
-
-Select **Enable**.
-
-{{<img src="quickstart/images/enable-cloud-sql-api.png" alt="Enable the Cloud SQL Admin API in the GCP console" unBlur="true" size="small" >}}
-<!-- vale Google.Headings = YES -->
-<!-- vale Microsoft.Terms = YES -->
 
 ### Finish configuring the Upbound identity provider
 
