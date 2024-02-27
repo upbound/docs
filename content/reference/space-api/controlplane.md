@@ -8,7 +8,7 @@ weight: 1
 An example of a `controlplane.yaml` file:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: example-controlplane

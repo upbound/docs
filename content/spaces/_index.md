@@ -129,7 +129,7 @@ up ctp create ctp1
 You can also declare a new managed control plane like the example below and apply it to your Spaces cluster:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: ctp1
