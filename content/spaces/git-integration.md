@@ -15,7 +15,7 @@ Managed Control Planes that run in a Space are configurable to automatically syn
 Configure a control plane with the `spec.source` property to have Upbound automatically track and sync the state defined in Git. Below is an example manifest with the `spec.source` configured:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1beta
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: example-ctp
