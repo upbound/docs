@@ -15,7 +15,7 @@ Managed Control Planes that run in a Space are configurable to automatically syn
 Configure a control plane with the `spec.source` property to have Upbound automatically track and sync the state defined in Git. Below is an example manifest with the `spec.source` configured:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta
 kind: ControlPlane
 metadata:
   name: example-ctp
@@ -188,7 +188,7 @@ You can configure the Git sync's target reference to checkout. You can configure
 The following example checks out the `main` branch of the Git repository:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: example-ctp
@@ -205,7 +205,7 @@ spec:
 The following example checks out the Git commit SHA from the Git repository:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: example-ctp
@@ -222,7 +222,7 @@ spec:
 The following example checks out the Git tag from the Git repository:
 
 ```yaml
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: example-ctp

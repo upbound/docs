@@ -317,7 +317,7 @@ With your kubeconfig pointed at the Kubernetes cluster where you installed the U
 
 ```yaml
 cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: ctp1
