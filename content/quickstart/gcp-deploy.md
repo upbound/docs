@@ -167,7 +167,7 @@ Select **Create and Continue**.
 {{<img src="quickstart/images/gcp-sa.png" alt="GCP service account creation screen" align="center" size="small" unBlur="true" >}}
 
 ##### Grant this service account access to project
-For the _CloudSQL as a service_ configuration the service account requires the role:  
+Enable the **Workload Identity User** role and select **Done**.
 
 **Workload Identity User**
 
