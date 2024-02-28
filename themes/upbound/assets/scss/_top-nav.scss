@@ -45,7 +45,7 @@
             width: 98%;
         }
 
-        .nav-item {           
+        .nav-item {
             width: 20%;
             margin-top: 10px;
         }
@@ -72,22 +72,22 @@
         left: 0;
         padding: 16px 40px;
 
-        
-        
+
+
 
         a {
             text-decoration: none;
         }
 
-        
+
     }
 
 
     .search-panel {
-        pointer-events: none; 
+        pointer-events: none;
 
         & > * {
-            pointer-events: auto; 
+            pointer-events: auto;
         }
 
         .search-container {
@@ -110,11 +110,11 @@
                 &:focus-within {
                     border-color: #{$up-purple-400};
                 }
-    
+
                 .search-icon-active {
                     padding-top: 4px;
                 }
-        
+
                 input {
                     border: none;
                     font-size: 14px;
@@ -122,12 +122,12 @@
                     height: 100%;
                     background-color: var(--background-color);
                     color: var(--body-font-color);
-        
+
                     &::placeholder {
                         color: var(--body-font-color);
                     }
                 }
-        
+
                 svg {
                     fill: var(--body-font-color);
                 }
@@ -142,7 +142,7 @@
         .search-results {
             @include content-hierarchy;
             padding: 70px 10px 10px;
-            
+
         }
 
 
@@ -154,7 +154,7 @@
 
             .iconDiv {
                 margin-right: 8px;
-                
+
                 svg {
                     vertical-align: top;
                     margin-top: 3px;
@@ -180,20 +180,20 @@
         @include media-breakpoint-down(lg) {
             margin-top: 0;
             margin-right: 0;
-            
+
         }
 
     }
 
     .form-check.form-switch.colormode {
-        display: flex; 
+        display: flex;
         align-items: center;
-        
+
 
         @include media-breakpoint-down(xl) {
             margin-top: 0;
             margin-right: 0;
-            
+
         }
     }
 
@@ -201,7 +201,7 @@
         margin-right: 8px;
         align-items: center;
     }
-    
+
     .form-check-input:checked {
         background-color: var(--background-color);
         border-color: #{$up-purple-300};
