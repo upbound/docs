@@ -165,7 +165,10 @@ Install Upbound Universal Crossplane (UXP).
 helm upgrade --install crossplane universal-crossplane \
   --repo https://charts.upbound.io/stable \
   --namespace upbound-system --create-namespace \
-  --version v1.13.2-up.1 \
+  --version v1.14.6-up.1 \
+  --set "args={--enable-usages,--max-reconcile-rate=1000}" \
+  --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
+  --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
   --wait
 ```
 
@@ -175,58 +178,76 @@ helm upgrade --install crossplane universal-crossplane \
 
 Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. You need to install these providers and grant necessary permissions to create resources.
 
-```yaml
+```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
   name: provider-kubernetes
 spec:
-  package: "xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.9.0"
+  package: "xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.12.1"
+  runtimeConfigRef:
+    name: provider-kubernetes
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: provider-kubernetes
+spec:
+  serviceAccountTemplate:
+    metadata:
+      name: provider-kubernetes
 ---
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
   name: provider-helm
 spec:
-  package: "xpkg.upbound.io/crossplane-contrib/provider-helm:v0.15.0"
+  package: "xpkg.upbound.io/crossplane-contrib/provider-helm:v0.17.0"
+  runtimeConfigRef:
+    name: provider-helm
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: provider-helm
+spec:
+  serviceAccountTemplate:
+    metadata:
+      name: provider-helm
 EOF
 ```
 
 Grant the provider pods permissions to create resources in the cluster.
 
 ```bash
-PROVIDERS=(provider-kubernetes provider-helm)
-for PROVIDER in ${PROVIDERS[@]}; do
-  cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: $PROVIDER
-  namespace: upbound-system
----
+cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: $PROVIDER
+  name: provider-kubernetes-cluster-admin
 subjects:
   - kind: ServiceAccount
-    name: $PROVIDER
+    name: provider-kubernetes
     namespace: upbound-system
 roleRef:
   kind: ClusterRole
   name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
 ---
-apiVersion: pkg.crossplane.io/v1alpha1
-kind: ControllerConfig
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
-  name: $PROVIDER-hub
-spec:
-  serviceAccountName: $PROVIDER
+  name: provider-helm-cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: provider-helm
+    namespace: upbound-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
 EOF
-  kubectl patch provider.pkg.crossplane.io "${PROVIDER}" --type merge -p "{\"spec\": {\"controllerConfigRef\": {\"name\": \"$PROVIDER-hub\"}}}"
-done
 ```
 
 Wait until the providers are ready.
