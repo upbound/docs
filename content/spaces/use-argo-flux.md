@@ -28,14 +28,14 @@ helm -n upbound-system upgrade --install spaces \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
-  --set "features.alpha.argocdPlugin.target.namespace=argocd" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --wait
 ```
 
 The important flags are:
 
 - `features.alpha.argocdPlugin.enabled=true`
-- `features.alpha.argocdPlugin.target.namespace=argocd`
+- `features.alpha.argocdPlugin.target.secretNamespace=argocd`
 
 The first flag enables the feature and the second indicates the namespace on the cluster where you installed Argo CD.
 
@@ -51,7 +51,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
-  --set "features.alpha.argocdPlugin.target.namespace=argocd" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --set "features.alpha.argocdPlugin.target.externalCluster.enabled=true" \
   --set "features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster" \
   --set "features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig" \
