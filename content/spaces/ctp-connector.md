@@ -20,9 +20,9 @@ Or if you want to install with Helm, you must provide:
 - `mcp.secret.name`, provide the name of a secret in your app cluster containing the kubeconfig of the Space-managed control plane you want to connect to.
 
 ```bash
-helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system /
-  --set mcp.account='your-upbound-org-account'
-  --set mcp.name='your-control-plane-name'
-  --set mcp.namespace='your-app-ns-1'
+helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system \
+  --set mcp.account='your-upbound-org-account' \
+  --set mcp.name='your-control-plane-name' \
+  --set mcp.namespace='your-app-ns-1' \
   --set mcp.secret.name='name-of-secret-with-kubeconfig'
 ```
