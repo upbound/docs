@@ -14,6 +14,7 @@ exceptions:
   - "Create an Argo Application"
   - "Composite Resource"
   - "Configure with Spaces"
+  - "Configure Argo"
   - "Control Plane Source"
   - "Create a Space"
   - "Create an Argo Application"

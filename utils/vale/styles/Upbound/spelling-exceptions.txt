@@ -8,6 +8,7 @@ Bootstrap
 CLI's
 CVEs
 Certwatcher
+configmap
 Cognito
 Commonmark
 conformant
