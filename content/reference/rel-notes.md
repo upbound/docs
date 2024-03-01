@@ -22,6 +22,14 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.2.3
+
+Released March 1st, 2024.
+
+#### What's Changed
+
+- This release fixes an issue that affected control planes' ability to provision in non-kind cluster environments.
+
 ### Spaces v1.2.2
 
 Released March 1st, 2024.
