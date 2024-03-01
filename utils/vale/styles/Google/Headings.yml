@@ -7,12 +7,17 @@ match: $sentence
 indicators:
   - ':'
 exceptions:
+  - "Add the Space cluster as a context to Argo"
   - "Authentication with Version Control Services"
   - "Amazon Elastic Kubernetes Service"
+  - "Connect your Space to Argo CD"
+  - "Create an Argo Application"
   - "Composite Resource"
   - "Configure with Spaces"
+  - "Configure Argo"
   - "Control Plane Source"
   - "Create a Space"
+  - "Create an Argo Application"
   - "Deploying more than one Space"
   - "Downgrade a Space"
   - "Google Kubernetes Engine"
@@ -24,6 +29,7 @@ exceptions:
   - "Install an Upbound Space"
   - "Install a Space"
   - "Install Upbound Spaces"
+  - "Inspect the Space"
   - "Install ALB Load Balancer"
   - "Managed Control Planes?"
   - "Managed Resources"

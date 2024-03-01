@@ -8,8 +8,13 @@ Bootstrap
 CLI's
 CVEs
 Certwatcher
+configmap
+Cognito
 Commonmark
 conformant
+ConfigMap
+ConfigMaps
+configmaps
 CRDs
 Crossplane
 Crossplane's
@@ -20,6 +25,7 @@ editCode
 enums
 eksctl
 Env
+Entra
 Fargate
 gcloud
 GCP's
@@ -33,6 +39,7 @@ kubectl
 Kustomize
 Kube
 Kubelet
+kubelogin
 kubeconfig's
 Kyverno
 Kyverno's
@@ -44,6 +51,7 @@ namespace
 namespaces
 Netlify
 OAuth
+Okta
 overengineer
 observability
 patchSets
@@ -54,6 +62,8 @@ semver
 Serverless
 shortcode
 shortcodes
+SharedSecretStore
+SharedExternalSecret
 SLAs
 stdin
 stdout

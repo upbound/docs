@@ -23,7 +23,7 @@ img {
 
   @import "code-theme-light";
   @include code-theme-light;
-  
+
 
   // Don't dim images in light mode
   // Safety catch to reset dark mode setting
@@ -32,7 +32,7 @@ img {
     filter: none;
   }
 
-    
+
 
   .logo-container img {
     /* Use the CSS variable as the background image */
@@ -61,8 +61,12 @@ img {
       filter: brightness(.8) contrast(1.2);
     }
 
+    #logoImage {
+      filter: none;
+  }
 
-  
+
+
     // Set the default image background to white
     // Without this transparent images are hard to see
 
@@ -79,6 +83,3 @@ img {
       content: var(--logo-color);
   }
 }
-
-
-

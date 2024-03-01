@@ -22,6 +22,46 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.2.3
+
+Released March 1st, 2024.
+
+#### What's Changed
+
+- This release fixes an issue that affected control planes' ability to provision in non-kind cluster environments.
+
+### Spaces v1.2.2
+
+Released March 1st, 2024.
+
+#### What's Changed
+
+- This release contains several improvements to improve control plane orchestration performance. It addresses an issue where control plane provisioning time degraded when multiple control planes were provisioned in parallel.
+- The latest supported minor Crossplane version is now `v1.15`.
+
+### Spaces v1.2.1
+
+Released February 8th, 2024.
+
+#### What's Changed
+
+- Fixed an issue causing the `controlplane` resources having a benign `crossplane.io/external-create-failed` annotation.
+- Fixed an issue causing hotlooping version controller when a `controlplane` is deleted.
+- Other stability and performance improvements.
+
+### Spaces v1.2.0
+
+Released February 1st, 2024.
+
+#### What's Changed
+
+- We introduced a new concept called `control plane groups` within a Space. Technically, all `kind: controlplane` resources are now namespace-scoped objects (as opposed to previously being cluster-scoped).
+- Control planes now offer auto-upgrade channels (`rapid`, `stable`, `patch`, and `none`), giving users control over what pace their control plane's Crossplane version automatically upgrades to. `None` gives users total control over when to upgrade the Crossplane version in a managed control plane.
+- Alpha suppport for a new aggregate query API that can be used to query state across one or more control planes in a group.
+- Alpha support for built-in multi-control plane secrets management. Define new `SharedSecrets` and `SharedSecretStores` within a control plane group to selectively provision secrets from an external store--such as Vault--into the control planes in the group.
+- Support for OIDC auhentication flows when interacting directly with a managed control plane in a Space.
+- new `up` CLI commands to migrate open soure Crossplane or UXP instances into a managed control plane in a Space.
+
 ### Spaces v1.1.0
 
 Released October 10th, 2023.  

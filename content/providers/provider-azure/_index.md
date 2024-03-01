@@ -13,6 +13,27 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.42.1
+
+_Released 2024-02-22_
+
+* This release includes some important bug fixes and dependency bumps, please select the release notes for more details.
+
+_Refer to the [v0.42.1 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.42.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.42.1)
+
+## v0.42.0
+
+_Released 2024-01-25_
+
+* Support for new resource: `CustomDomain.apimanagement.azure.upbound.io/v1beta1`
+* The release contains adding a new resource, and updates of dependencies.
+
+_Refer to the [v0.42.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.42.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.42.0)
+
 ## v0.41.0
 
 _Released 2024-01-03_
@@ -21,7 +42,7 @@ _Released 2024-01-03_
 Terraform via the TF CLI, the new implementation consumes the Terraform provider's Go provider schema and invokes the CRUD
 functions registered in that schema, and no longer fork the underlying Terraform provider process.
 
-_Refer to the [v0.41.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.41.0) for full details._
+_Refer to the [v0.41.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.41.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.41.0)
 
@@ -33,7 +54,7 @@ _Released 2023-12-28_
 * Adds client certificate support for Azure service principal credentials.
 * The release contains some important bug fixes, adding new resources, and updates of dependencies.
 
-_Refer to the [v0.40.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.40.0) for full details._
+_Refer to the [v0.40.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.40.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.40.0)
 
@@ -44,7 +65,7 @@ _Released 2023-11-30_
 * Support for new resource: `VirtualMachineDataDiskAttachment.compute`
 * The release contains some bug fixes and updates of dependencies.
 
-_Refer to the [v0.39.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.39.0) for full details._
+_Refer to the [v0.39.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.39.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.39.0)
 
@@ -54,7 +75,7 @@ _Released 2023-11-02_
 
 * This release updates Crossplane Runtime to v1.14.1 which includes a fix in the retry mechanism while persisting the critical annotations.
 
-_Refer to the [v0.38.2 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.2) for full details._
+_Refer to the [v0.38.2 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.38.2) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.2)
 
@@ -64,7 +85,7 @@ _Released 2023-10-30_
 
 * This release sets `async` mode true for `ResourceGroup` resource.
 
-_Refer to the [v0.38.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.1) for full details._
+_Refer to the [v0.38.1 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.38.1) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.1)
 
@@ -76,7 +97,7 @@ _Released 2023-10-26_
 * Support for new resources: `ContainerApp.containerapp`, `Environment.containerapp` and `LoadTest.loadtestservice`
 * The release contains some bug fixes, updates of dependencies, and promoting granular management policies to Beta.
 
-_Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.38.0) for full details._
+_Refer to the [v0.38.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.38.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.38.0)
 
@@ -86,7 +107,7 @@ _Released 2023-10-02_
 
 * The release contains fixing import of `ManagementGroupSubscriptionAssociation.management` resource.
 
-_Refer to the [v0.37.1 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.37.1) for full details._
+_Refer to the [v0.37.1 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.37.1) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.37.1)
 
@@ -97,7 +118,7 @@ _Released 2023-09-29_
 * Support for new resources: `FlexibleServerActiveDirectoryAdministrator.dbforpostgresql`and `VirtualMachineExtension.compute`
 * The release contains some bug fixes and configuring the default poll jitter for the controllers.
 
-_Refer to the [v0.37.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.37.0) for full details._
+_Refer to the [v0.37.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.37.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.37.0)
 
@@ -109,7 +130,7 @@ _Released 2023-08-23_
 management policies and a fix in the reconciliation logic of the Upjet runtime.
 * Updated Terraform CLI to 1.5.5 to address CVEs in previous Terraform versions.
 
-_Refer to the [v0.36.0 release notes](https://github.com/upbound/provider-aws/releases/tag/v0.36.0) for full details._
+_Refer to the [v0.36.0 release notes](https://github.com/upbound/provider-azure/releases/tag/v0.36.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v0.36.0)
 
