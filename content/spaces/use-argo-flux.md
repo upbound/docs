@@ -39,6 +39,8 @@ The important flags are:
 
 The first flag enables the feature and the second indicates the namespace on the cluster where you installed Argo CD.
 
+Be sure to [configure Argo](#configure-argo) after it's been installed.
+
 ### External cluster Argo CD
 
 If you are running Argo CD on an external cluster from where you installed your Space, you need to provide some extra flags:
@@ -67,6 +69,46 @@ The extra flags are:
 These flags tell the plugin (running in Spaces) where your Argo CD instance is. After you've done this at install-time, you also need to create a `Secret` on the Spaces cluster. This secret must contain a kubeconfig pointing to your Argo CD instance. The secret needs to be in the same namespace as the `spaces-controller`, which is `upbound-system`.
 
 Once you enable the plugin and configure it, the plugin automatically propagates connection details for your managed control planes to your Argo CD instance. You can then target the managed control plane and use Argo to sync Crossplane-related objects to it.
+
+Be sure to [configure Argo](#configure-argo) after it's been installed.
+
+### Configure Argo
+
+Argo's default configuration causes it to try to query for resource kinds that don't exist in managed control planes. You should configure Argo's [general configmap](https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/) to correctly include the resource group/kinds which make sense in the context of managed control planes. For example, the concept of `nodes` isn't exposed in managed control planes.
+
+To configure Argo CD, connect to the cluster where you've installed it and edit the configmap:
+
+```bash
+kubectl edit configmap argocd-cm -n argocd
+```
+
+Modify the resource inclusions and exclusions under the `data` field of the configmap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  resource.exclusions: |
+    - apiGroups:
+      - "*"
+      kinds:
+      - "*"
+      clusters:
+      - "*"
+  resource.inclusions: |
+    - apiGroups:
+      - "*"
+      kinds:
+      - Provider
+      - Configuration
+      clusters:
+      - "*"
+```
+
+The above configuration causes Argo to exclude syncing **all** resource group/kinds--except Crossplane `providers` and `configurations`--for **all** control planes. You're encouraged to modify the the `resource.inclusions` to include the types that make sense for your control plane, such as an `XRD` you've built with Crossplane. You're also encouraged to customize the `clusters` pattern to selectively apply these exclusions/inclusions control planes (e.g. `control-plane-prod-*`).
 
 ## Flux
 
