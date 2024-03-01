@@ -43,7 +43,7 @@ and manage infrastructure.
 After you register your Upbound account, walk through the interactive "Get
 Started" demo below.
 
-<div style="position: relative; padding-bottom: calc(102.09375% + 42px); height: 0;"><iframe src="https://app.supademo.com/embed/Y37rXfAYSeIPX0mmpsaS6" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: calc(75.92682926829268% + 42px); height: 0;"><iframe src="https://app.supademo.com/embed/clt694nsi0bz4pez12bste3s2" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Connect to your cloud provider with OpenID Connect
 
@@ -361,7 +361,7 @@ Select **Finalize & Launch Control Plane**.
 
 ## Create your first resource
 
-<div style="position: relative; padding-bottom: calc(102.15321252059309% + 42px); height: 0;"><iframe src="https://app.supademo.com/embed/NhJGmqVp3tCfgE_58_NNH" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: calc(75.92682926829268% + 42px); height: 0;"><iframe src="https://app.supademo.com/embed/VD6GeoOLStYRevpYlb28z" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 <!-- vale Google.FirstPerson = NO -->
 <!-- allow "my" -->
