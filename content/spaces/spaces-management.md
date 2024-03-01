@@ -4,7 +4,7 @@ weight: 2
 description: Common operations in Spaces
 ---
 
-## Spaces Management
+## Spaces management
 
 ### Create a Space
 
