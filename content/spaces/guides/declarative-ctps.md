@@ -10,7 +10,7 @@ In this tutorial, you learn how to configure [Argo CD](https://argoproj.github.i
 
 To complete this tutorial, you need the following:
 
-- Have already deployed an [Upbound Space]({{<ref "spaces/quickstart/kind-deploy.md" >}}).
+- Have already deployed an [Upbound Space]({{<ref "spaces/kind-deploy.md" >}}).
 - Have already deployed an instance of Argo CD on a Kubernetes cluster.
 - The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) installed on your local machine.
 
@@ -50,7 +50,7 @@ stringData:
   config: |
     {
       # configure this section!
-    }    
+    }
 EOF
 ```
 {{< /editCode >}}

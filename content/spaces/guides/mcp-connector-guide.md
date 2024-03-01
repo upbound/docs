@@ -4,7 +4,7 @@ weight: 10
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
 ---
 
-In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a managed control plane in an Upbound self-hosted Space. 
+In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a managed control plane in an Upbound self-hosted Space.
 
 The [MCP connector]({{<ref "spaces/ctp-connector.md" >}}) bridges your Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinitions` are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
 
@@ -12,7 +12,7 @@ The [MCP connector]({{<ref "spaces/ctp-connector.md" >}}) bridges your Kubernete
 
 To complete this tutorial, you need the following:
 
-- Have already deployed an [Upbound Space]({{<ref "spaces/quickstart/kind-deploy.md" >}}).
+- Have already deployed an [Upbound Space]({{<ref "spaces/kind-deploy.md" >}}).
 - Have already deployed an Kubernetes cluster (referred to as `app cluster`).
 - The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) installed on your local machine.
 
@@ -161,4 +161,3 @@ In this tutorial, you:
 - connected an app cluster to a managed control plane using the MCP connector.
 - You experienced how make resource requests from your app cluster to your control plane.
 - You saw how resource requests are actually fulfilled by the control plane.
-
