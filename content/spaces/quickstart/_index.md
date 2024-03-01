@@ -4,7 +4,7 @@ weight: 2
 description: A  quickstart guide for Upbound Spaces in AWS, Azure, or GCP
 ---
 
-Get started with Upbound Spaces. This guide will get you up and running with a self-hosted Upbound cluster in AWS, GCP, Azure, or with a local kind cluster.
+Get started with Upbound Spaces. In this guide, you will deploy a self-hosted Upbound cluster in AWS, GCP, Azure, or with a local kind cluster.
 
 Upbound Spaces allows you to host managed control planes in your preferred environment.
 
@@ -13,7 +13,7 @@ Upbound Spaces allows you to host managed control planes in your preferred envir
 To get started with Upbound Spaces, you need:
 
 - An Upbound Account string, provided by your Upbound account representative
-- A license token in the form of a token.json, provided by your Upbound account representative
+- A `token.json` license, provided by your Upbound account representative
 - An AWS, Azure, or GCP account with corresponding CLI tools
 
 {{< hint "important" >}}
@@ -193,7 +193,7 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
 ```
 
-The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured previously.
+The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previoius step.
 
 {{< tabs >}}
 

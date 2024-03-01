@@ -13,7 +13,7 @@ Upbound Spaces allows you to host managed control planes in your preferred envir
 To get started with Upbound Spaces, you need:
 
 - An Upbound Account string, provided by your Upbound account representative
-- A license token in the form of a token.json, provided by your Upbound account representative
+- A `token.json` license, provided by your Upbound account representative
 - `kind` installed locally
 
 {{< hint "important" >}}
@@ -85,7 +85,7 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
 ```
 
-The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured previously.
+The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previous step.
 
 ```ini
 export SPACES_CLUSTER_TYPE=kind
