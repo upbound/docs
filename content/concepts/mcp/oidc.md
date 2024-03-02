@@ -87,7 +87,7 @@ spec:
 
 #### Upbound identity for Azure example
 
-First, [register Upbound]({{<ref "quickstart/_index.md#oidc" >}}) with Azure Active Directory in your Azure account. Then, create a ProviderConfig on your control plane with the following configuration:
+First, [register Upbound]({{<ref "quickstart.md#connect-to-your-cloud-provider-with-openid-connect" >}}) with Azure Active Directory in your Azure account. Then, create a ProviderConfig on your control plane with the following configuration:
 
 {{< editCode >}}
 ```yaml
