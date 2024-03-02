@@ -12,7 +12,7 @@ The [MCP connector]({{<ref "spaces/ctp-connector.md" >}}) bridges your Kubernete
 
 To complete this tutorial, you need the following:
 
-- Have already deployed an [Upbound Space]({{<ref "spaces/kind-deploy.md" >}}).
+- Have already deployed an [Upbound Space]({{<ref "spaces/kind-quickstart.md" >}}).
 - Have already deployed an Kubernetes cluster (referred to as `app cluster`).
 - The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) installed on your local machine.
 

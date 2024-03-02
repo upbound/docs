@@ -353,7 +353,14 @@ In the _Attached service account email address_ field enter the **service accoun
 
 {{<img src="images/gcp-oidc-finalize.png" alt="Upbound configuration to connect to GCP with OIDC" size="small" >}}
 
+<!-- vale Upbound.Ampersand = NO -->
+<!-- vale write-good.TooWordy = NO -->
+
 Select **Finalize & Launch Control Plane**.
+
+<!-- vale Upbound.Ampersand = YES -->
+<!-- vale write-good.TooWordy = YES -->
+
 {{< /tab >}}
 
 {{< /tabs >}}
