@@ -68,7 +68,7 @@ To configure a provider on a managed control plane to use Upbound Identity, use 
 
 #### Upbound identity for AWS example
 
-First, [add Upbound]({{<ref "quickstart/_index.md#oidc" >}}) as an OpenID Connect provider in your AWS account. Then, create a ProviderConfig on your control plane with the following configuration:
+First, [add Upbound]({{<ref "quickstart.md#connect-to-your-cloud-provider-with-openid-connect" >}}) as an OpenID Connect provider in your AWS account. Then, create a ProviderConfig on your control plane with the following configuration:
 
 {{< editCode >}}
 ```yaml
@@ -106,7 +106,7 @@ spec:
 
 #### Upbound identity for GCP example
 
-First, [configure Upbound]({{<ref "quickstart/_index.md#oidc" >}}) for workload identity federation in your GCP account. Then, create a ProviderConfig on your control plane with the following configuration:
+First, [configure Upbound]({{<ref "quickstart.md#connect-to-your-cloud-provider-with-openid-connect" >}}) for workload identity federation in your GCP account. Then, create a ProviderConfig on your control plane with the following configuration:
 
 {{< editCode >}}
 ```yaml
