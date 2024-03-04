@@ -193,7 +193,7 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
 ```
 
-The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previoius step.
+The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previous step.
 
 {{< tabs >}}
 
