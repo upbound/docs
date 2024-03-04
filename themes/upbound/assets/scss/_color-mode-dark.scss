@@ -11,7 +11,7 @@
 
     --nav-item-click: #{$up-neutral-0};
     --nav-item-click-bg: #{$up-grey-700n};
-  
+
     --nav-item-active: #{$up-grey-300n};
     --nav-item-active-bg: #{$up-grey-700n};
     --bs-list-group-active-bg: #{$up-grey-700n};
@@ -41,7 +41,7 @@
     --dropdown-background: var(--body-background);
     --latest-pill-background: #{$up-grey-800n};
     --latest-pill-color: #{$up-grey-600};
-    --dropdown-color: var(--body-font-color);   
+    --dropdown-color: var(--body-font-color);
     --dropdown-border-color: #{$up-neutral-900};
 
     //Right-side table of contents
@@ -50,10 +50,10 @@
     --toc-mobile-menu-background: #{$russian-violet};
 
     //hint boxes
-    --hint-important-background:                #623A2B; 
-    --hint-important:                           #90532E; 
-    --hint-warning-background:                  #641F2C; 
-    --hint-warning:                             #932B2E; 
+    --hint-important-background:                #623A2B;
+    --hint-important:                           #90532E;
+    --hint-warning-background:                  #641F2C;
+    --hint-warning:                             #932B2E;
     --hint-tip-background:                      #13364A;
     --hint-tip:                                 #184557;
     --hint-note-background:                     #2b2b31;
@@ -63,6 +63,32 @@
     //Search Related
     --search-box-background: var(--body-background);
     --result-path: var(--body-background);
+
+    // API Page
+    --sort-up: url("/img/sort-up-light.svg");
+    --sort-down: url("/img/sort-down-light.svg");
+    --expand-box-background: #{$up-grey-800n};
+    --minus-svg: url("/img/minus-white.svg");
+    --plus-svg: url("/img/plus-150.svg");
+    --crd-header-color: #{$up-grey-400};
+    --crd-row-border: #{$up-grey-800n};
+    --crd-description-color: #{$up-grey-400};
+    --link-icon-fill: #{$up-grey-600};
+
+    --required-color: #{$up-grey-100};
+    --required-background: #{$up-grey-200};
+
+    --string-color: #{$up-green-300n};
+    --string-border: #{$up-green-300n};
+
+    --object-color: #{$up-red-300n};
+    --object-border-color: #{$up-red-300n};
+
+    --boolean-color: #{$up-yellow-300n};
+    --boolean-border-color: #{$up-yellow-300n};
+
+    --integer-color: #{$up-orange-300n};
+    --integer-border-color: #{$up-orange-300n};
 
 
     // Override Bootstrap accordion colors in the body
@@ -148,4 +174,3 @@
         color: inherit !important;
     }
 }
-

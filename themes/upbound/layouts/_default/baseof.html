@@ -13,7 +13,6 @@
 
     <div class="grid" data-bs-spy="scroll" data-bs-target="#TableOfContents">
       {{ partialCached "icons/sprites" . }}
-
       {{ partial "body/left-sidebar-nav" .}}
 
       {{ partial "body/offcanvas-nav" .}}
@@ -21,7 +20,11 @@
       {{ block "main" . }}
       {{ end }}
 
+
+
       {{ partialCached "footer/base" . }}
+
+
     </div>
   </body>
 
