@@ -1,25 +1,10 @@
 ---
-title: "Space API"
+title: Space API
 weight: 2
+description: "API details for Spaces"
+cascade:
+    product: crds
 ---
 
-For more information on how Upbound builds on Crossplane, review [Crossplane vs. Upbound](../crossplane-vs-upbound/).
-
-## Command line interface
-
-- [Command Reference](../cli/command-reference/)
-- [Configuration](../cli/configuration/)
-- [Release Notes](../cli/rel-notes/)
-
-
-## Licensing
-
-- [Licenses](../licenses/)
-
-## Project lifecycle
-
-- [Lifecycle](../lifecycle/)
-
-## Release notes
-
-- [Release Notes](../rel-notes/)
+The Space API describes the types and parameters for the core Space
+components.

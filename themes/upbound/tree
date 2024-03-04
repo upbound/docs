@@ -1,0 +1,268 @@
+.
+├── assets
+│   ├── js
+│   │   ├── main-ab5dc83c.bundle.min.js
+│   │   ├── main-ab5dc83c.bundle.min.js.LICENSE.txt
+│   │   └── main-ab5dc83c.bundle.min.js.map
+│   ├── scss
+│   │   ├── _code-theme-base.scss
+│   │   ├── _code-theme-dark.scss
+│   │   ├── _code-theme-light.scss
+│   │   ├── _color-mode-dark.scss
+│   │   ├── _color-mode-light.scss
+│   │   ├── _color-modes.scss
+│   │   ├── _content-body.scss
+│   │   ├── _crds.scss
+│   │   ├── _docs-content-hierarchy.scss
+│   │   ├── _fonts.scss
+│   │   ├── _footer.scss
+│   │   ├── _grid.scss
+│   │   ├── _hints.scss
+│   │   ├── _home.scss
+│   │   ├── _left-sidebar-nav.scss
+│   │   ├── _offcanvas.scss
+│   │   ├── _right-sidebar-toc.scss
+│   │   ├── _top-nav.scss
+│   │   ├── _variables.scss
+│   │   ├── bootstrap
+│   │   │   ├── _accordion.scss
+│   │   │   ├── _alert.scss
+│   │   │   ├── _badge.scss
+│   │   │   ├── _breadcrumb.scss
+│   │   │   ├── _button-group.scss
+│   │   │   ├── _buttons.scss
+│   │   │   ├── _card.scss
+│   │   │   ├── _carousel.scss
+│   │   │   ├── _close.scss
+│   │   │   ├── _containers.scss
+│   │   │   ├── _dropdown.scss
+│   │   │   ├── _forms.scss
+│   │   │   ├── _functions.scss
+│   │   │   ├── _grid.scss
+│   │   │   ├── _helpers.scss
+│   │   │   ├── _images.scss
+│   │   │   ├── _list-group.scss
+│   │   │   ├── _maps.scss
+│   │   │   ├── _mixins.scss
+│   │   │   ├── _modal.scss
+│   │   │   ├── _nav.scss
+│   │   │   ├── _navbar.scss
+│   │   │   ├── _offcanvas.scss
+│   │   │   ├── _pagination.scss
+│   │   │   ├── _placeholders.scss
+│   │   │   ├── _popover.scss
+│   │   │   ├── _progress.scss
+│   │   │   ├── _reboot.scss
+│   │   │   ├── _root.scss
+│   │   │   ├── _spinners.scss
+│   │   │   ├── _tables.scss
+│   │   │   ├── _toasts.scss
+│   │   │   ├── _tooltip.scss
+│   │   │   ├── _transitions.scss
+│   │   │   ├── _type.scss
+│   │   │   ├── _utilities.scss
+│   │   │   ├── _variables-dark.scss
+│   │   │   ├── _variables.scss
+│   │   │   ├── bootstrap-grid.scss
+│   │   │   ├── bootstrap-reboot.scss
+│   │   │   ├── bootstrap-utilities.scss
+│   │   │   ├── bootstrap.scss
+│   │   │   ├── forms
+│   │   │   │   ├── _floating-labels.scss
+│   │   │   │   ├── _form-check.scss
+│   │   │   │   ├── _form-control.scss
+│   │   │   │   ├── _form-range.scss
+│   │   │   │   ├── _form-select.scss
+│   │   │   │   ├── _form-text.scss
+│   │   │   │   ├── _input-group.scss
+│   │   │   │   ├── _labels.scss
+│   │   │   │   └── _validation.scss
+│   │   │   ├── helpers
+│   │   │   │   ├── _clearfix.scss
+│   │   │   │   ├── _color-bg.scss
+│   │   │   │   ├── _colored-links.scss
+│   │   │   │   ├── _focus-ring.scss
+│   │   │   │   ├── _icon-link.scss
+│   │   │   │   ├── _position.scss
+│   │   │   │   ├── _ratio.scss
+│   │   │   │   ├── _stacks.scss
+│   │   │   │   ├── _stretched-link.scss
+│   │   │   │   ├── _text-truncation.scss
+│   │   │   │   ├── _visually-hidden.scss
+│   │   │   │   └── _vr.scss
+│   │   │   ├── mixins
+│   │   │   │   ├── _alert.scss
+│   │   │   │   ├── _backdrop.scss
+│   │   │   │   ├── _banner.scss
+│   │   │   │   ├── _border-radius.scss
+│   │   │   │   ├── _box-shadow.scss
+│   │   │   │   ├── _breakpoints.scss
+│   │   │   │   ├── _buttons.scss
+│   │   │   │   ├── _caret.scss
+│   │   │   │   ├── _clearfix.scss
+│   │   │   │   ├── _color-mode.scss
+│   │   │   │   ├── _color-scheme.scss
+│   │   │   │   ├── _container.scss
+│   │   │   │   ├── _deprecate.scss
+│   │   │   │   ├── _forms.scss
+│   │   │   │   ├── _gradients.scss
+│   │   │   │   ├── _grid.scss
+│   │   │   │   ├── _image.scss
+│   │   │   │   ├── _list-group.scss
+│   │   │   │   ├── _lists.scss
+│   │   │   │   ├── _pagination.scss
+│   │   │   │   ├── _reset-text.scss
+│   │   │   │   ├── _resize.scss
+│   │   │   │   ├── _scrollbar.scss
+│   │   │   │   ├── _table-variants.scss
+│   │   │   │   ├── _text-truncate.scss
+│   │   │   │   ├── _transition.scss
+│   │   │   │   ├── _utilities.scss
+│   │   │   │   └── _visually-hidden.scss
+│   │   │   ├── tests
+│   │   │   │   ├── jasmine.js
+│   │   │   │   ├── mixins
+│   │   │   │   │   ├── _color-modes.test.scss
+│   │   │   │   │   └── _utilities.test.scss
+│   │   │   │   ├── sass-true
+│   │   │   │   │   ├── register.js
+│   │   │   │   │   └── runner.js
+│   │   │   │   └── utilities
+│   │   │   │       └── _api.test.scss
+│   │   │   ├── utilities
+│   │   │   │   └── _api.scss
+│   │   │   └── vendor
+│   │   │       └── _rfs.scss
+│   │   ├── lightbox.scss
+│   │   └── main.scss
+│   └── search
+│       ├── config.json
+│       └── data.json
+├── data
+│   └── assets.json
+├── layouts
+│   ├── _default
+│   │   ├── _markup
+│   │   │   └── render-heading.html
+│   │   ├── baseof.html
+│   │   ├── crds.html
+│   │   ├── home.html
+│   │   ├── list.html
+│   │   ├── redirect.html
+│   │   └── single.html
+│   ├── partials
+│   │   ├── body
+│   │   │   ├── base.html
+│   │   │   ├── content-body.html
+│   │   │   ├── darkmode.html
+│   │   │   ├── gtag-body.html
+│   │   │   ├── left-sidebar-nav.html
+│   │   │   ├── offcanvas-nav.html
+│   │   │   ├── right-sidebar-toc.html
+│   │   │   ├── search-panel.html
+│   │   │   └── top-nav.html
+│   │   ├── footer
+│   │   │   ├── base.html
+│   │   │   ├── content.html
+│   │   │   └── scripts.html
+│   │   ├── head
+│   │   │   ├── base.html
+│   │   │   ├── favicons.html
+│   │   │   ├── js
+│   │   │   │   ├── color-mode-js.html
+│   │   │   │   ├── gtag-header.html
+│   │   │   │   └── ms-clarity.html
+│   │   │   ├── meta-common.html
+│   │   │   └── stylesheets
+│   │   │       └── stylesheet.html
+│   │   └── icons
+│   │       ├── bars.svg
+│   │       ├── box-open-solid.svg
+│   │       ├── chevron-down.svg
+│   │       ├── chevron-up.svg
+│   │       ├── chevrons-left.svg
+│   │       ├── circle-check.svg
+│   │       ├── circle-exclamation.svg
+│   │       ├── circle-info.svg
+│   │       ├── fire.svg
+│   │       ├── github.svg
+│   │       ├── house.svg
+│   │       ├── link.svg
+│   │       ├── linkedin.svg
+│   │       ├── magnifying-glass.svg
+│   │       ├── moon.svg
+│   │       ├── sprites.html
+│   │       ├── twitter.svg
+│   │       ├── x.svg
+│   │       └── youtube.svg
+│   └── shortcodes
+│       ├── editCode.html
+│       ├── expand.html
+│       ├── getCRDs.html
+│       ├── hint.html
+│       ├── hover.html
+│       ├── img.html
+│       ├── include.html
+│       ├── markdown.html
+│       ├── param.html
+│       ├── partial.html
+│       ├── placeholder.html
+│       ├── propertylist.html
+│       ├── tab.html
+│       ├── table.html
+│       ├── tabs.html
+│       ├── url.html
+│       └── year.html
+├── static
+│   ├── favicon
+│   │   ├── android-chrome-144x144.png
+│   │   ├── android-chrome-192x192.png
+│   │   ├── android-chrome-512x512.png
+│   │   ├── apple-touch-icon.png
+│   │   ├── browserconfig.xml
+│   │   ├── favicon-16x16.png
+│   │   ├── favicon-32x32.png
+│   │   ├── favicon.ico
+│   │   ├── mstile-144x144.png
+│   │   ├── mstile-150x150.png
+│   │   ├── mstile-310x150.png
+│   │   ├── mstile-310x310.png
+│   │   ├── mstile-70x70.png
+│   │   ├── safari-pinned-tab.svg
+│   │   ├── site.webmanifest
+│   │   └── up-logo-512.png
+│   ├── fonts
+│   │   ├── Avenir-Black.eot
+│   │   ├── Avenir-Black.ttf
+│   │   ├── Avenir-Black.woff
+│   │   ├── Avenir-Black.woff2
+│   │   ├── Avenir-Roman.eot
+│   │   ├── Avenir-Roman.ttf
+│   │   ├── Avenir-Roman.woff
+│   │   ├── Avenir-Roman.woff2
+│   │   ├── Consolas.eot
+│   │   ├── Consolas.ttf
+│   │   ├── Consolas.woff
+│   │   └── Consolas.woff2
+│   └── img
+│       ├── home
+│       │   ├── k8s-crossplane-providers.svg
+│       │   ├── popsicle-icon.svg
+│       │   ├── slack-mark.svg
+│       │   └── upbound-crossplane-loop.svg
+│       ├── lightbox
+│       │   ├── chevron-left.svg
+│       │   ├── chevron-right.svg
+│       │   ├── loading.gif
+│       │   └── x.svg
+│       └── logos
+│           ├── up-docs-white.svg
+│           ├── up-purple.webp
+│           ├── up-white.svg
+│           ├── upbound-docs.svg
+│           ├── upbound-grey.svg
+│           ├── upbound-purple.svg
+│           └── upbound-white.svg
+└── tree
+
+34 directories, 232 files
