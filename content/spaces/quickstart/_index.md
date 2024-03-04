@@ -4,7 +4,7 @@ weight: 2
 description: A  quickstart guide for Upbound Spaces in AWS, Azure, or GCP
 ---
 
-Get started with Upbound Spaces. In this guide, you will deploy a self-hosted Upbound cluster in AWS, GCP, Azure, or with a local kind cluster.
+Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in AWS, GCP, Azure, or with a local kind cluster.
 
 Upbound Spaces allows you to host managed control planes in your preferred environment.
 
