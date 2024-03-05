@@ -1,6 +1,25 @@
-{{ range .Resources.Match "**/**.yaml" }}
-{{ . }}
+{{ $crdsData := index $.Site.Data.crds.reference }}
+
+{{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
+    {{ $version := $content.apiVersion }}
+    {{ $kind := $content.kind }}
+    {{ $spec := $content.spec }}
+
+    {{ printf "File Name: %s" $fileName }}
+    </br>
+    {{ printf "Version: %s" $version }}
+    </br>
+    {{ printf "Kind: %s" $kind }}
+    </br>
+    {{ printf "Spec: %s" $spec }}
+    </br>
+    {{ range $key, $value := $spec }}
+        {{ printf "%s: %s" $key $value }}
+        </br>
+    {{ end }}
 {{ end }}
+
+
 
 <div class="crds">
     <!-- Kind | Group | Version | Expand | Collapse header -->
@@ -12,18 +31,17 @@
     </div>
 
     <div id="crd-rows-container">
-    {{/* Each level is a map with the key being the directory name */}}
-    {{/* $Site.Data.crds /$version/crds/yaml */}}
-    {{ range $filename,$content := index $.Site.Data.crds .Section "reference" "space-api" "yaml" }}
-        {{ with $content }}
-            {{ $url := .ResourceType }}
-            {{ $kind := .spec.names.kind }}
-            {{ $group := .spec.group }}
-            {{ $version := "" }}
-            {{ $description := "" }}
-            {{ $schemaScratch := newScratch }}     {{/* Temporary variable used to prune fields from the larger spec */}}
-            {{ $schemaWithStatus := dict }}        {{/* The pruned schema to work with */}}
+        {{/* Iterate over each file name and its content */}}
+        {{ $crdsData := index $.Site.Data.crds.reference }}
+        {{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
+            {{ $version := $content.apiVersion }}
+            {{ $kind := $content.kind }}
+            {{ $spec := $content.spec }}
+            {{ $group := "group"}}
 
+                {{ $description := "" }}
+                {{ $schemaScratch := newScratch }}
+                {{ $schemaWithStatus := dict }}
             {{ $bigName := gt (len $kind) 32 }}    {{/* Long names overrun the display and cause problems. This allows for applying custom styles */}}
 
             {{/* Iterate over each version and find the "storage: true" version */}}
@@ -66,13 +84,13 @@
                     <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
                         {{ if $bigName }}
                             <div class="row">
-                                <div class="col col-4 bigName-row-padding mobile-hidden"><a class="icon-link" href="yaml/{{$filename}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
+                                <div class="col col-4 bigName-row-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
                                 <div class="mobile-hidden col col-4">{{$group}}/{{$version}}</div>
                                 <div class="col col-2 align-middle expand-link text-truncate mobile-hidden" onclick="showAll('.{{ $kind }}')">Expand All</div>
                                 <div class="col col-2 align-middle collapse-link text-truncate mobile-hidden" onclick="hideAll('.{{ $kind }}')">Collapse All</div>
                             </div>
                         {{ else }}
-                            <div class="yaml-link-padding mobile-hidden"><a class="icon-link" href="yaml/{{$filename}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
+                            <div class="yaml-link-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
                         {{ end }}
 
                             <div class="mobile-show ">{{$group}}/{{$version}}</div>
@@ -96,7 +114,6 @@
                     </div>
                 </div>
             {{ end }}
-    {{ end }}
     </div>
 </div>
 
@@ -154,62 +171,57 @@
     {{ else }}
 
         {{/* Iterate over all child CRD elements */}}
-        {{ range $key,$contents := .schema }}
+        {{/* Iterate over all child CRD elements */}}
+{{ range $key, $contents := .schema }}
 
-            {{ $bigName := gt (len $key) 24 }}
+    {{ $bigName := gt (len $key) 24 }}
 
-            {{ $dataType := $contents.type }}
-            {{ $dataTypeStyle := $dataType }}
-            {{ $elemID := (printf "%s-%s" $.kind $key) }}
+    {{ $dataType := $contents.type }}
+    {{ $elemID := printf "%s-%s" $.kind $key }}
+    {{ $description := $contents.description }}
+    {{ $properties := $contents.properties }}
+    {{ $required := $.requiredFields }}
 
-            {{ $dataTypeStyle := $contents.type }}
-            {{ $dataType := $contents.type }}
-            {{ $description := $contents.description }}
-            {{ $properties := $contents.properties }}
-            {{ $required := $.requiredFields }}
+    {{/* Handling enum fields for oneOf, anyOf, and allOf types */}}
+    {{ $enum := false }}
+    {{ $enumOf := "" }}
+    {{ $enumTypes := dict }}
 
-            {{/* enum fields handle "oneOf" type data lists */}}
-            {{ $enum := false }}
-            {{ $enumOf := "" }}
-            {{ $enumTypes := dict }}
+    {{ if $contents.oneOf }}
+        {{ $enum = true }}
+        {{ $enumOf = "One of" }}
+        {{ $enumTypes = $contents.oneOf }}
+    {{ else if $contents.anyOf }}
+        {{ $enum = true }}
+        {{ $enumOf = "Any of" }}
+        {{ $enumTypes = $contents.anyOf }}
+    {{ else if $contents.allOf }}
+        {{ $enum = true }}
+        {{ $enumOf = "All of" }}
+        {{ $enumTypes = $contents.allOf }}
+    {{ end }}
 
-            {{ if $contents.oneOf }}
-                {{ $enum = true }}
-                {{ $enumOf = "One of" }}
-                {{ $enumTypes := $contents.oneOf }}
-            {{ else if $contents.anyOf }}
-                {{ $enum = true }}
-                {{ $enumOf = "Any of" }}
-                {{ $enumTypes := $contents }}
-            {{ else if $contents.allOf }}
-                {{ $enum = true }}
-                {{ $enumOf = "All of" }}
-                {{ $enumTypes := $contents.allOf }}
+    {{/* Special handling for array types */}}
+    {{ if eq $dataType "array" }}
+        {{ if $contents.items }}
+            {{ $dataType = printf "[ ]%s" $contents.items.type }}
+            {{/* Update for nested items handling */}}
+            {{ if $contents.items.description }}
+                {{ $description = $contents.items.description }}
             {{ end }}
-
-            {{ if eq $contents.type "array" }}
-                {{ if $contents.items }}
-                    {{ $dataType = (printf "[ ]%s" $contents.items.type) }}
-                    {{ $dataTypeStyle = $contents.items.type }}
-
-                    {{/* Some "items" don't have nested elements. */}}
-                    {{/* For example CompositeResourceDefinitions.Spec.ClaimNames.categories */}}
-                    {{ if $contents.items.description }}
-                        {{ $description = $contents.items.description }}
-                    {{ end }}
-
-                    {{ if $contents.items.properties }}
-                        {{ $properties = $contents.items.properties }}
-                    {{ end }}
-
-                    {{ if $contents.items.required}}
-                        {{ $required = $contents.items.required }}
-                    {{ end }}
-
-                {{ else }}
-                    {{ $dataType = (printf "[ ]%s" $contents.type) }}
-                {{ end }}
+            {{ if $contents.items.properties }}
+                {{ $properties = $contents.items.properties }}
             {{ end }}
+            {{ if $contents.items.required }}
+                {{ $required = $contents.items.required }}
+            {{ end }}
+        {{ else }}
+            {{ $dataType = printf "[ ]%s" $dataType }}
+        {{ end }}
+    {{ end }}
+
+
+
 
             <div class="crd-child-container crd-container align-middle expand-buttons expand-buttons bigName-row">
                 {{/* Plus/Minus Button */}}

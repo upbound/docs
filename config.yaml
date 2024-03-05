@@ -42,7 +42,7 @@ module:
       - "**/**.jpeg"
       - "**/**.gif"
   - source: content
-    target: assets/crds
+    target: data/crds
     includeFiles:
       - "**/**.yaml"
 

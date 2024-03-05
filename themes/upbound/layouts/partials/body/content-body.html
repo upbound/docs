@@ -2,13 +2,13 @@
 	<div class="content-title pb-4">{{.Title}}</div>
     {{ .Content }}
 
+
 	{{ if eq .Page.Params.product "crds" }}
 	<ul>
-		{{ partial "body/crds" .}}
+	{{ partial "body/crds" .}}
 	</ul>
 
-
-    {{ else if .Page.IsSection }}
+	{{ else if .Page.IsSection }}
 
 	<ul>
         {{ range .Pages }}
