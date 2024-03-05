@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
       node.vm.network "public_network", bridge: HOST_INTERFACE , dev: HOST_INTERFACE, ip: "172.16.1.80"
 
       node.vm.provider :libvirt do |v|
-        v.memory = 8192
+        v.memory = 4096
         v.cpus = 4
       end
 
@@ -97,7 +97,7 @@ EOF
       node.vm.network "public_network", bridge: HOST_INTERFACE , dev: HOST_INTERFACE, ip: "172.16.1.8#{i}"
 
       node.vm.provider :libvirt do |v|
-        v.memory = 8192
+        v.memory = 4096
         v.cpus = 4
       end
 
