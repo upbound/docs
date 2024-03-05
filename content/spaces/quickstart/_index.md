@@ -22,7 +22,7 @@ Upbound Spaces is a paid feature of Upbound and requires a license token to succ
 
 ## Provision the hosting environment
 
-Upbound Spaces requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster](../kind-quickstart).
+Upbound Spaces requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster](../kind-quickstart/).
 
 ### Create a cluster
 
