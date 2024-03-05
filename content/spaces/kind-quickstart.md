@@ -26,8 +26,6 @@ Upbound Spaces requires a cloud Kubernetes or `kind` cluster as a hosting enviro
 
 ### Create a cluster
 
-
-
 Provision a new kind cluster.
 
 ```yaml
@@ -76,7 +74,7 @@ export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 Set the version of Spaces software you want to install.
 
 ```ini
-export SPACES_VERSION=1.1.0
+export SPACES_VERSION=1.2.3
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
@@ -103,8 +101,6 @@ Install Spaces.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}"
 ```
 
@@ -114,35 +110,26 @@ You are ready to [create your first managed control plane](#create-your-first-ma
 
 With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space, create a managed control plane:
 
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1alpha1
-kind: ControlPlane
-metadata:
-  name: ctp1
-spec:
-  writeConnectionSecretToRef:
-    name: kubeconfig-ctp1
-    namespace: default
-EOF
+```shell
+up ctp create controlplane1
 ```
 
 The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. Wait until it's ready using the following command:
 
-```bash
-kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
+```shell
+up ctp create controlplane1
 ```
 
 ## Connect to your managed control plane
 
 The connection details for your managed control plane should now exist in a secret. You can fetch the connection details with the following command:
 
-```bash
-kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp1.yaml
+```shell
+up ctp connect controlplane1
 ```
 
 You can use the kubeconfig to interact with your managed control plane directly:
 
-```bash
-kubectl get crds --kubeconfig=/tmp/ctp1.yaml
+```shell
+kubectl get crds
 ```
