@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
       node.vm.network "public_network", bridge: HOST_INTERFACE , dev: HOST_INTERFACE, ip: "172.16.1.80"
 
       node.vm.provider :libvirt do |v|
-        v.memory = 4096
+        v.memory = 8192
         v.cpus = 4
       end
 
@@ -61,11 +61,11 @@ Vagrant.configure("2") do |config|
       end
       node.vm.provision :shell, privileged: true, inline: $install_cri
       node.vm.provision :shell, privileged: true, inline: <<-SCRIPT
-      until [ -f /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ]
+      until [ -f /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf ]
       do
             sleep 5
       done
-      cat << 'EOF' > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+      cat << 'EOF' > /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
 Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
@@ -84,6 +84,7 @@ EOF
       node.vm.provision :shell, privileged: true, inline: $configure_kube_controller
       node.vm.provision :shell, privileged: true, inline: $install_up_cli
       node.vm.provision :shell, privileged: true, inline: $add_crossplane_script
+      node.vm.provision :shell, privileged: true, inline: $glcoud_cli_script
 
     end
   end
@@ -96,18 +97,18 @@ EOF
       node.vm.network "public_network", bridge: HOST_INTERFACE , dev: HOST_INTERFACE, ip: "172.16.1.8#{i}"
 
       node.vm.provider :libvirt do |v|
-        v.memory = 4096
+        v.memory = 8192
         v.cpus = 4
       end
 
       node.vm.provision :shell, privileged: true, inline: $configure_linux
       node.vm.provision :shell, privileged: true, inline: $install_cri
       node.vm.provision :shell, privileged: true, inline: <<-SCRIPT
-      until [ -f /etc/systemd/system/kubelet.service.d/10-kubeadm.conf ]
+      until [ -f /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf  ]
       do
             sleep 5
       done
-      cat << 'EOF' > /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+      cat << 'EOF' > /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
 Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
@@ -163,22 +164,36 @@ SCRIPT
 $install_tools = <<-SCRIPT
 echo "Installing additional software packages"
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get install -y git htop chrony tree jq bat > /dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get install -y git htop chrony tree jq bat apt-transport-https ca-certificates curl gpg > /dev/null 2>&1
 SCRIPT
 
 $install_cri = <<-SCRIPT
 echo "Installing containerd and Kubeadm"
 
+
+# Docker Key
 curl --retry 30  -fsSL https://download.docker.com/linux/ubuntu/gpg | DEBIAN_FRONTEND=noninteractive apt-key add - > /dev/null 2>&1
+
+# Docker Repo
 echo deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable > /etc/apt/sources.list.d/docker.list
+
+# Helm Key
 curl --retry 30  -fsSL https://baltocdn.com/helm/signing.asc | DEBIAN_FRONTEND=noninteractive sudo apt-key add - > /dev/null 2>&1
 
-curl --retry 30 -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | DEBIAN_FRONTEND=noninteractive apt-key add - > /dev/null 2>&1
-echo "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+# Helm Repo
 echo "deb https://baltocdn.com/helm/stable/debian/ all main" > /etc/apt/sources.list.d/helm.list
 
+# Kubernetes key directory
+sudo mkdir -p -m 755 /etc/apt/keyrings
+
+# Kubernetes keys
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | DEBIAN_FRONTEND=noninteractive sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+# Kubernetes repo
+echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null 2>&1
+
 DEBIAN_FRONTEND=noninteractive apt-get update > /dev/null 2>&1
-DEBIAN_FRONTEND=noninteractive apt-get install -y kubeadm=1.27.0-00 kubelet=1.27.0-00 kubectl=1.27.0-00 containerd.io helm > /dev/null 2>&1
+DEBIAN_FRONTEND=noninteractive apt-get install -y kubeadm=1.29.2-1.1 kubelet=1.29.2-1.1 kubectl=1.29.2-1.1 containerd.io helm > /dev/null 2>&1
 DEBIAN_FRONTEND=noninteractive apt-mark hold kubelet kubeadm kubectl > /dev/null 2>&1
 
 # Remove the stock containerd config file and let it auto generate
@@ -440,7 +455,6 @@ EOF
 SCRIPT
 
 $add_crossplane_script = <<-SCRIPT
-echo "Adding Crossplane helm chart script"
 cat << 'EOF' > /home/vagrant/xp.sh
 helm repo add \
 crossplane-stable https://charts.crossplane.io/stable
@@ -452,4 +466,16 @@ crossplane-stable/crossplane \
 EOF
 chown vagrant:vagrant /home/vagrant/xp.sh
 chmod +x /home/vagrant/xp.sh
+SCRIPT
+
+$glcoud_cli_script = <<-SCRIPT
+cat << 'EOF' > /home/vagrant/gcp.sh
+sudo apt-get install curl sudo
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+sudo apt-get update && sudo apt-get install google-cloud-cli google-cloud-sdk-gke-gcloud-auth-plugin
+gcloud init
+EOF
+chown vagrant:vagrant /home/vagrant/gcp.sh
+chmod +x /home/vagrant/gcp.sh
 SCRIPT
