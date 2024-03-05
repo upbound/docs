@@ -103,7 +103,7 @@ With your kubeconfig pointed at the Kubernetes cluster where you installed the U
 up ctp create controlplane1
 ```
 
-The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. To report control plane status, use the following command:
+The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. To report the control plane status, use the following command:
 
 ```shell
 up ctp list
