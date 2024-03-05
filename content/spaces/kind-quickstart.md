@@ -77,17 +77,6 @@ Set the version of Spaces software you want to install.
 export SPACES_VERSION=1.2.3
 ```
 
-Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
-
-```ini
-export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
-```
-
-The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previous step.
-
-```ini
-export SPACES_CLUSTER_TYPE=kind
-```
 
 ## Install a Space
 
@@ -114,10 +103,10 @@ With your kubeconfig pointed at the Kubernetes cluster where you installed the U
 up ctp create controlplane1
 ```
 
-The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. Wait until it's ready using the following command:
+The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. To report control plane status, use the following command:
 
 ```shell
-up ctp create controlplane1
+up ctp list
 ```
 
 ## Connect to your managed control plane

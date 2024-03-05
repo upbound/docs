@@ -492,6 +492,7 @@ apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: ctp1
+  namespace: default
 spec:
   writeConnectionSecretToRef:
     name: kubeconfig-ctp1
