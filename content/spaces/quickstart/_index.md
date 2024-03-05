@@ -4,7 +4,7 @@ weight: 2
 description: A  quickstart guide for Upbound Spaces in AWS, Azure, or GCP
 ---
 
-Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in AWS, GCP, Azure, or with a local kind cluster.
+Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in AWS, GCP, or Azure.
 
 Upbound Spaces allows you to host managed control planes in your preferred environment.
 
@@ -22,7 +22,7 @@ Upbound Spaces is a paid feature of Upbound and requires a license token to succ
 
 ## Provision the hosting environment
 
-Upbound Spaces requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a `kind` cluster.
+Upbound Spaces requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster](../kind-quickstart/).
 
 ### Create a cluster
 
@@ -184,14 +184,20 @@ export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 Set the version of Spaces software you want to install.
 
 ```ini
-export SPACES_VERSION=1.1.0
+export SPACES_VERSION=1.2.3
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
 
+{{< editCode >}}
 ```ini
 export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
 ```
+{{< /editCode >}}
+
+{{< hint "important" >}}
+Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own.
+{{< /hint >}}
 
 The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previous step.
 
@@ -264,16 +270,36 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Available=True --timeout=360s
 ```
 
+### Install ALB Load Balancer
+
+{{< hint "important" >}} AWS Only {{< /hint >}}
+
+```yaml
+helm install aws-load-balancer-controller aws-load-balancer-controller --namespace kube-system \
+  --repo https://aws.github.io/eks-charts \
+  --set clusterName=${SPACES_CLUSTER_NAME} \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller \
+  --wait
+```
+
 ### Install ingress-nginx
 
 Install ingress-nginx.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/kind/deploy.yaml
-kubectl wait --namespace ingress-nginx \
-  --for=condition=ready pod \
-  --selector=app.kubernetes.io/component=controller \
-  --timeout=90s
+helm upgrade --install ingress-nginx ingress-nginx \
+  --create-namespace --namespace ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --version 4.7.1 \
+  --set 'controller.service.type=LoadBalancer' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-type=external' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-scheme=internet-facing' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-nlb-target-type=ip' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-protocol=http' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-path=/healthz' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-port=10254' \
+  --wait
 ```
 
 ### Install UXP
@@ -284,13 +310,16 @@ Install Upbound Universal Crossplane (UXP)
 helm upgrade --install crossplane universal-crossplane \
   --repo https://charts.upbound.io/stable \
   --namespace upbound-system --create-namespace \
-  --version v1.13.2-up.1 \
+  --version v1.14.6-up.1 \
+  --set "args={--enable-usages,--max-reconcile-rate=1000}" \
+  --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
+  --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
   --wait
 ```
 
 <!-- vale gitlab.Substitutions = NO -->
 ### Install provider-helm and provider-kubernetes
-<!-- vale gitlab.Substitutions = YES -->s
+<!-- vale gitlab.Substitutions = YES -->
 
 Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. You need to install these providers and grant necessary permissions to create resources.
 
@@ -301,51 +330,69 @@ kind: Provider
 metadata:
   name: provider-kubernetes
 spec:
-  package: "xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.9.0"
+  package: "xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.12.1"
+  runtimeConfigRef:
+    name: provider-kubernetes
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: provider-kubernetes
+spec:
+  serviceAccountTemplate:
+    metadata:
+      name: provider-kubernetes
 ---
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
   name: provider-helm
 spec:
-  package: "xpkg.upbound.io/crossplane-contrib/provider-helm:v0.15.0"
+  package: "xpkg.upbound.io/crossplane-contrib/provider-helm:v0.17.0"
+  runtimeConfigRef:
+    name: provider-helm
+---
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: provider-helm
+spec:
+  serviceAccountTemplate:
+    metadata:
+      name: provider-helm
 EOF
 ```
 
 Grant the provider pods permissions to create resources in the cluster.
 
 ```bash
-PROVIDERS=(provider-kubernetes provider-helm)
-for PROVIDER in ${PROVIDERS[@]}; do
-  cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: $PROVIDER
-  namespace: upbound-system
----
+cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: $PROVIDER
+  name: provider-kubernetes-cluster-admin
 subjects:
   - kind: ServiceAccount
-    name: $PROVIDER
+    name: provider-kubernetes
     namespace: upbound-system
 roleRef:
   kind: ClusterRole
   name: cluster-admin
   apiGroup: rbac.authorization.k8s.io
 ---
-apiVersion: pkg.crossplane.io/v1alpha1
-kind: ControllerConfig
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
 metadata:
-  name: $PROVIDER-hub
-spec:
-  serviceAccountName: $PROVIDER
+  name: provider-helm-cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: provider-helm
+    namespace: upbound-system
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
 EOF
-  kubectl patch provider.pkg.crossplane.io "${PROVIDER}" --type merge -p "{\"spec\": {\"controllerConfigRef\": {\"name\": \"$PROVIDER-hub\"}}}"
-done
 ```
 
 Wait until the providers are ready.
@@ -416,6 +463,8 @@ You are ready to [create your first managed control plane](#create-your-first-ma
 
 ### Create a DNS record
 
+{{< hint "important" >}}If you chose to create a public ingress, you also need to create a DNS record for the load balancer of the public facing ingress. Do this before you create your first control plane.{{< /hint >}}
+
 Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
 
 ```bash
@@ -439,10 +488,11 @@ With your kubeconfig pointed at the Kubernetes cluster where you installed the U
 
 ```yaml
 cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: ctp1
+  namespace: default
 spec:
   writeConnectionSecretToRef:
     name: kubeconfig-ctp1
