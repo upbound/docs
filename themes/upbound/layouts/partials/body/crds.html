@@ -1,26 +1,3 @@
-{{ $crdsData := index $.Site.Data.crds.reference }}
-
-{{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
-    {{ $version := $content.apiVersion }}
-    {{ $kind := $content.kind }}
-    {{ $spec := $content.spec }}
-
-    {{ printf "File Name: %s" $fileName }}
-    </br>
-    {{ printf "Version: %s" $version }}
-    </br>
-    {{ printf "Kind: %s" $kind }}
-    </br>
-    {{ printf "Spec: %s" $spec }}
-    </br>
-    {{ range $key, $value := $spec }}
-        {{ printf "%s: %s" $key $value }}
-        </br>
-    {{ end }}
-{{ end }}
-
-
-
 <div class="crds">
     <!-- Kind | Group | Version | Expand | Collapse header -->
     <div class="row crd-header-row bigName-row" id="crd-header-row">
@@ -243,6 +220,7 @@
                             </span>
 
                         {{ else }}
+                        {{ $dataTypeStyle := "" }}
                             <span class="dataType {{ $dataTypeStyle }} align-middle">{{ $dataType }}</span>
                         {{ end }}
                         {{if in $.requiredFields $key}}<span class="dataType required align-middle">required</span>{{ end }}
