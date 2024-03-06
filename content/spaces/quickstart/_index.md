@@ -191,7 +191,7 @@ Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain nam
 
 {{< editCode >}}
 ```ini
-export SPACES_ROUTER_HOST=proxy.upbound-127.0.0.1.nip.io
+export SPACES_ROUTER_HOST="$@proxy.upbound-127.0.0.1.nip.io$@"
 ```
 {{< /editCode >}}
 
@@ -247,10 +247,13 @@ Install Spaces.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --public-ingress=true \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}"
 ```
+
+If you chose to create a public ingress, you also need to [create a DNS record](#create-a-dns-record) for the load balancer of the public facing ingress. Do this before you create your first control plane.
 
 You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
 
@@ -274,7 +277,7 @@ kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Ava
 
 {{< hint "important" >}} AWS Only {{< /hint >}}
 
-```yaml
+```bash
 helm install aws-load-balancer-controller aws-load-balancer-controller --namespace kube-system \
   --repo https://aws.github.io/eks-charts \
   --set clusterName=${SPACES_CLUSTER_NAME} \
@@ -286,6 +289,10 @@ helm install aws-load-balancer-controller aws-load-balancer-controller --namespa
 ### Install ingress-nginx
 
 Install ingress-nginx.
+
+{{< tabs >}}
+
+{{< tab "AWS EKS" >}}
 
 ```bash
 helm upgrade --install ingress-nginx ingress-nginx \
@@ -301,6 +308,39 @@ helm upgrade --install ingress-nginx ingress-nginx \
   --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-port=10254' \
   --wait
 ```
+
+{{< /tab >}}
+
+{{< tab "Azure AKS" >}}
+
+
+```bash
+helm upgrade --install ingress-nginx ingress-nginx \
+  --create-namespace --namespace ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --version 4.7.1 \
+  --set 'controller.service.type=LoadBalancer' \
+  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path=/healthz' \
+  --wait
+```
+
+{{< /tab >}}
+
+{{< tab "GCP GKE" >}}
+
+
+```bash
+helm upgrade --install ingress-nginx ingress-nginx \
+  --create-namespace --namespace ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --version 4.7.1 \
+  --set 'controller.service.type=LoadBalancer' \
+  --wait
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
 
 ### Install UXP
 
@@ -459,7 +499,10 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
-You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+{{< /tab >}}
+
+{{< /tabs >}}
+
 
 ### Create a DNS record
 
@@ -467,20 +510,45 @@ You are ready to [create your first managed control plane](#create-your-first-ma
 
 Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
 
+{{< tabs >}}
+
+{{< tab "AWS EKS" >}}
+
 ```bash
 kubectl get ingress \
   -n upbound-system mxe-router-ingress \
   -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
 
-If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+{{< /tab >}}
 
-You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+{{< tab "Azure AKS" >}}
 
+
+```bash
+kubectl get ingress \
+  -n upbound-system mxe-router-ingress \
+  -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
+
+{{< /tab >}}
+
+{{< tab "GCP GKE" >}}
+
+
+```bash
+kubectl get ingress \
+  -n upbound-system mxe-router-ingress \
+  -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
 
 {{< /tab >}}
 
 {{< /tabs >}}
+
+If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+
+You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
 
 ## Create your first managed control plane
 
