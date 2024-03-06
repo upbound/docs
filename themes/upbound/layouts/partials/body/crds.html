@@ -12,8 +12,8 @@
 {{ $crdsData := index $.Site.Data.crds.reference }}
 {{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
         {{ $version := $content.apiVersion }}
-        {{ $kind := $content.kind }}
         {{ $spec := $content.spec }}
+        {{ $kind := $content.spec.names.kind }}
         {{ $group := "group"}}
 
             {{ $description := "" }}
