@@ -1,73 +1,73 @@
 <div class="crds">
-    <!-- Kind | Group | Version | Expand | Collapse header -->
-    <div class="row crd-header-row bigName-row" id="crd-header-row">
-        <div class="col col-xl-4 col-8 sortable" onclick="sortIt('kind')"><span data-sort="kind">Kind</span><span class="kind-sort sort-icon sort-icon-down d-none"></span><span class="kind-sort sort-icon sort-icon-up d-none"></span></div>
-        <div class="col col-lg-4 mobile-hidden sortable" onclick="sortIt('group')"><span data-sort="group">Group/Version</span><span class="group-sort sort-icon sort-icon-down d-none"></span><span class="group-sort sort-icon sort-icon-up d-none"></span></div>
-        <div class="col col-2 expand-link mobile-hidden text-truncate" onclick="showAll('all')"><a href="#">Expand All</a></div>
-        <div class="col col-2 collapse-link mobile-hidden text-truncate" onclick="hideAll('all')"><a href="#">Collapse All</a></div>
-    </div>
+<!-- Kind | Group | Version | Expand | Collapse header -->
+<div class="row crd-header-row bigName-row" id="crd-header-row">
+<div class="col col-xl-4 col-8 sortable" onclick="sortIt('kind')"><span data-sort="kind">Kind</span><span class="kind-sort sort-icon sort-icon-down d-none"></span><span class="kind-sort sort-icon sort-icon-up d-none"></span></div>
+<div class="col col-lg-4 mobile-hidden sortable" onclick="sortIt('group')"><span data-sort="group">Group/Version</span><span class="group-sort sort-icon sort-icon-down d-none"></span><span class="group-sort sort-icon sort-icon-up d-none"></span></div>
+<div class="col col-2 expand-link mobile-hidden text-truncate" onclick="showAll('all')"><a href="#">Expand All</a></div>
+<div class="col col-2 collapse-link mobile-hidden text-truncate" onclick="hideAll('all')"><a href="#">Collapse All</a></div>
+</div>
 
-    <div id="crd-rows-container">
-        {{/* Iterate over each file name and its content */}}
-        {{ $crdsData := index $.Site.Data.crds.reference }}
-        {{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
-            {{ $version := $content.apiVersion }}
-            {{ $kind := $content.kind }}
-            {{ $spec := $content.spec }}
-            {{ $group := "group"}}
+<div id="crd-rows-container">
+{{/* Iterate over each file name and its content */}}
+{{ $crdsData := index $.Site.Data.crds.reference }}
+{{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
+        {{ $version := $content.apiVersion }}
+        {{ $kind := $content.kind }}
+        {{ $spec := $content.spec }}
+        {{ $group := "group"}}
 
-                {{ $description := "" }}
-                {{ $schemaScratch := newScratch }}
-                {{ $schemaWithStatus := dict }}
-            {{ $bigName := gt (len $kind) 32 }}    {{/* Long names overrun the display and cause problems. This allows for applying custom styles */}}
+            {{ $description := "" }}
+            {{ $schemaScratch := newScratch }}
+            {{ $schemaWithStatus := dict }}
+        {{ $bigName := gt (len $kind) 32 }}    {{/* Long names overrun the display and cause problems. This allows for applying custom styles */}}
 
-            {{/* Iterate over each version and find the "storage: true" version */}}
-            {{ range  .spec.versions }}
-                {{ if index . "storage" }}
-                    {{ $version = .name }}
+        {{/* Iterate over each version and find the "storage: true" version */}}
+        {{ range  .spec.versions }}
+            {{ if index . "storage" }}
+                {{ $version = .name }}
 
-                    {{ $schemaScratch.Set "oAPI" (index . "schema" "openAPIV3Schema" "properties") }}
+                {{ $schemaScratch.Set "oAPI" (index . "schema" "openAPIV3Schema" "properties") }}
 
-                    {{/* Pull out the top-level Kind description and delete unnecessary fields */}}
-                    {{ $description = (index . "schema" "openAPIV3Schema" "description") }}
-                    {{ $schemaScratch.DeleteInMap "oAPI" "apiVersion" }}
-                    {{ $schemaScratch.DeleteInMap "oAPI" "kind" }}
-                    {{ $schemaScratch.DeleteInMap "oAPI" "metadata" }}
-                    {{ $schemaScratch.DeleteInMap "oAPI" "description" }}
-                    {{ $schemaWithStatus = $schemaScratch.Get "oAPI" }}
-                {{ end }}
+                {{/* Pull out the top-level Kind description and delete unnecessary fields */}}
+                {{ $description = (index . "schema" "openAPIV3Schema" "description") }}
+                {{ $schemaScratch.DeleteInMap "oAPI" "apiVersion" }}
+                {{ $schemaScratch.DeleteInMap "oAPI" "kind" }}
+                {{ $schemaScratch.DeleteInMap "oAPI" "metadata" }}
+                {{ $schemaScratch.DeleteInMap "oAPI" "description" }}
+                {{ $schemaWithStatus = $schemaScratch.Get "oAPI" }}
             {{ end }}
+        {{ end }}
 
-                {{/* the crd-root-row is a top level CRD row */}}
-                <div class="crd-root-row crd-container row align-middle bigName-row" data-kind="{{ $kind }}" data-group="{{ $group }}-{{ $kind}}" data-version="{{ $version }}-{{ $kind }}">
+            {{/* the crd-root-row is a top level CRD row */}}
+            <div class="crd-root-row crd-container row align-middle bigName-row" data-kind="{{ $kind }}" data-group="{{ $group }}-{{ $kind}}" data-version="{{ $version }}-{{ $kind }}">
 
-                    {{/* Collapse/Expand Button and Kind name */}}
-                    <div class="col col-xl-4 col-10 align-middle expand-buttons bigName-col">
-                        {{/* Plus/Minus Button */}}
-                        <button class="expand-button collapsed align-middle" data-bs-toggle="collapse" data-bs-target="#{{$kind}}" type="button" aria-expanded="false" aria-controls="{{$kind}}"></button>
+                {{/* Collapse/Expand Button and Kind name */}}
+                <div class="col col-xl-4 col-10 align-middle expand-buttons bigName-col">
+                    {{/* Plus/Minus Button */}}
+                    <button class="expand-button collapsed align-middle" data-bs-toggle="collapse" data-bs-target="#{{$kind}}" type="button" aria-expanded="false" aria-controls="{{$kind}}"></button>
 
-                        {{/* CRD name text */}}
-                        <button class="crd-root collapsed align-middle" data-bs-toggle="collapse" data-bs-target="#{{$kind}}" type="button" aria-expanded="false" aria-controls="{{$kind}}">
-                            <span class="align-middle {{ $kind }}"><a class="expansion-link" name="{{ $kind }}">{{ $kind }}</a></span>
-                        </button>
-                    </div>
+                    {{/* CRD name text */}}
+                    <button class="crd-root collapsed align-middle" data-bs-toggle="collapse" data-bs-target="#{{$kind}}" type="button" aria-expanded="false" aria-controls="{{$kind}}">
+                        <span class="align-middle {{ $kind }}"><a class="expansion-link" name="{{ $kind }}">{{ $kind }}</a></span>
+                    </button>
+                </div>
 
-                    {{/* If the CRD name is longer than 24 characters hide the other fields, regardless of viewport size */}}
-                    <div class="{{ if $bigName }}d-none{{end}} col col-lg-4 col-2 mobile-hidden group-name text-truncate">{{ $group }}/{{ $version }} </div>
-                    <div class="{{ if $bigName }}d-none{{end}} col col-2 align-middle expand-link mobile-hidden text-truncate" onclick="showAll('.{{ $kind }}')">Expand All</div>
-                    <div class="{{ if $bigName }}d-none{{end}} col col-2 align-middle collapse-link mobile-hidden text-truncate" onclick="hideAll('.{{ $kind }}')">Collapse All</div>
+                {{/* If the CRD name is longer than 24 characters hide the other fields, regardless of viewport size */}}
+                <div class="{{ if $bigName }}d-none{{end}} col col-lg-4 col-2 mobile-hidden group-name text-truncate">{{ $group }}/{{ $version }} </div>
+                <div class="{{ if $bigName }}d-none{{end}} col col-2 align-middle expand-link mobile-hidden text-truncate" onclick="showAll('.{{ $kind }}')">Expand All</div>
+                <div class="{{ if $bigName }}d-none{{end}} col col-2 align-middle collapse-link mobile-hidden text-truncate" onclick="hideAll('.{{ $kind }}')">Collapse All</div>
 
-                    {{/* The container to show/hide with information related to the CRD */}}
-                    <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
-                        {{ if $bigName }}
-                            <div class="row">
-                                <div class="col col-4 bigName-row-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
-                                <div class="mobile-hidden col col-4">{{$group}}/{{$version}}</div>
-                                <div class="col col-2 align-middle expand-link text-truncate mobile-hidden" onclick="showAll('.{{ $kind }}')">Expand All</div>
-                                <div class="col col-2 align-middle collapse-link text-truncate mobile-hidden" onclick="hideAll('.{{ $kind }}')">Collapse All</div>
-                            </div>
-                        {{ else }}
-                            <div class="yaml-link-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
+                {{/* The container to show/hide with information related to the CRD */}}
+                <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
+                    {{ if $bigName }}
+                        <div class="row">
+                            <div class="col col-4 bigName-row-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
+                            <div class="mobile-hidden col col-4">{{$group}}/{{$version}}</div>
+                            <div class="col col-2 align-middle expand-link text-truncate mobile-hidden" onclick="showAll('.{{ $kind }}')">Expand All</div>
+                            <div class="col col-2 align-middle collapse-link text-truncate mobile-hidden" onclick="hideAll('.{{ $kind }}')">Collapse All</div>
+                        </div>
+                    {{ else }}
+                        <div class="yaml-link-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
                         {{ end }}
 
                             <div class="mobile-show ">{{$group}}/{{$version}}</div>
