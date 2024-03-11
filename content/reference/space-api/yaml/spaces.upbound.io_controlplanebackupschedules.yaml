@@ -1,0 +1,183 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.1-0.20231211085026-8e85f220b3ca
+  name: controlplanebackupschedules.spaces.upbound.io
+spec:
+  group: spaces.upbound.io
+  names:
+    categories:
+    - mxe
+    kind: ControlPlaneBackupSchedule
+    listKind: ControlPlaneBackupScheduleList
+    plural: controlplanebackupschedules
+    shortNames:
+    - ctpbackupschedule
+    - ctpbackupschedules
+    singular: controlplanebackupschedule
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - description: Cron expression defining when to run a backup
+      jsonPath: .spec.schedule
+      name: schedule
+      type: string
+    - description: How long a backup will be retained
+      jsonPath: .spec.ttl
+      name: ttl
+      type: string
+    - description: Whether the resource has been synced
+      jsonPath: .status.conditions[?(@.type=='Synced')].status
+      name: synced
+      type: string
+    - description: Whether the resource is ready
+      jsonPath: .status.conditions[?(@.type=='Ready')].status
+      name: ready
+      type: string
+    - description: Status of the backup schedule
+      jsonPath: .status.phase
+      name: status
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: age
+      type: date
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: "ControlPlaneBackupSchedule represents a Velero Schedule on a
+          ControlPlane. Creating a ControlPlaneBackupSchedule creates a Velero Schedule
+          on the ControlPlane referenced at Spec.FromControlPlane. The referenced
+          ControlPlane must be in the same namespace as the ControlPlaneBackupSchedule.
+          The Velero Schedule backs up user-accessible control plane API resources,
+          and is configured with the ControlPlaneBackupSchedule's schedule, TTL, and
+          storage location. Deleting the ControlPlaneBackupSchedule deletes the Velero
+          Schedule. Deleting a ControlPlaneBackupSchedule does not delete backups
+          created from the Velero Schedule, which will continue to persist until they
+          reach their TTL. A ControlPlane may have multiple ControlPlaneBackupSchedules
+          writing to the same storage location. \n If the control plane backup feature
+          gate is enabled, a ControlPlane will receive a corresponding managed ControlPlaneBackupSchedule
+          named \"<controlplane-name>-default\". The schedule will save daily backups
+          of the control plane's API resources to the control plane's default backup
+          storage location. Backups will be garbage collected after 7 days. Any edits
+          to the schedule will be reverted when the ControlPlane is reconciled."
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              fromControlPlane:
+                description: FromControlPlane is the name of the ControlPlane from
+                  which to collect backups. The referenced ControlPlane must be in
+                  the same namespace as the ControlPlaneBackupSchedule.
+                minLength: 1
+                type: string
+              schedule:
+                description: Schedule is a Cron expression defining when to run a
+                  backup.
+                minLength: 1
+                type: string
+              storageLocation:
+                description: StorageLocation is a string containing the name of a
+                  BackupStorageLocation where the backup should be stored. If unset,
+                  the control plane's default BackupStorageLocation is used. The default
+                  BackupStorageLocation may be referenced explicitly by the name "default".
+                type: string
+              ttl:
+                description: TTL is a time.Duration-parseable string describing how
+                  long a backup will be retained.
+                type: string
+            required:
+            - fromControlPlane
+            - schedule
+            - ttl
+            type: object
+          status:
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                    type:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - type
+                x-kubernetes-list-type: map
+              phase:
+                description: SchedulePhase is a string representation of the lifecycle
+                  phase of a Velero schedule
+                enum:
+                - New
+                - Enabled
+                - FailedValidation
+                type: string
+              veleroStatus:
+                description: ScheduleStatus captures the current state of a Velero
+                  schedule
+                properties:
+                  lastBackup:
+                    description: LastBackup is the last time a Backup was run for
+                      this Schedule schedule
+                    format: date-time
+                    nullable: true
+                    type: string
+                  phase:
+                    description: Phase is the current phase of the Schedule
+                    enum:
+                    - New
+                    - Enabled
+                    - FailedValidation
+                    type: string
+                  validationErrors:
+                    description: ValidationErrors is a slice of all validation errors
+                      (if applicable)
+                    items:
+                      type: string
+                    type: array
+                type: object
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
