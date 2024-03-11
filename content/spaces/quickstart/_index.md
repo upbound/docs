@@ -47,7 +47,7 @@ kind: ClusterConfig
 metadata:
   name: ${SPACES_CLUSTER_NAME}
   region: ${SPACES_REGION}
-  version: "1.26"
+  version: "1.29"
 managedNodeGroups:
   - name: ng-1
     instanceType: m5.xlarge
