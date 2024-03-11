@@ -41,7 +41,7 @@ Released March 1st, 2024.
 
 ### Spaces v1.2.1
 
-Released February 8th, 2024.
+Released February 8st, 2024.
 
 #### What's Changed
 
