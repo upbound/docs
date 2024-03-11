@@ -10,7 +10,7 @@
 <div id="crd-rows-container">
 {{/* Iterate over each file name and its content */}}
 {{ $crdsData := index $.Site.Data.crds.reference }}
-{{ range $fileName, $content := index $crdsData "spaceapi" "yaml"}}
+{{ range $fileName, $content := index $crdsData "space-api" "yaml"}}
         {{ $version := $content.apiVersion }}
         {{ $spec := $content.spec }}
         {{ $kind := $content.spec.names.kind }}
