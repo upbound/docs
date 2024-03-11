@@ -1,0 +1,485 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.13.1-0.20231211085026-8e85f220b3ca
+  name: controlplanes.spaces.upbound.io
+spec:
+  group: spaces.upbound.io
+  names:
+    categories:
+    - mxe
+    kind: ControlPlane
+    listKind: ControlPlaneList
+    plural: controlplanes
+    shortNames:
+    - ctp
+    - ctps
+    singular: controlplane
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .spec.crossplane.version
+      name: crossplane
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Synced')].status
+      name: synced
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='Ready')].status
+      name: ready
+      type: string
+    - jsonPath: .metadata.annotations['internal\.spaces\.upbound\.io/message']
+      name: message
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: age
+      type: date
+    name: v1beta1
+    schema:
+      openAPIV3Schema:
+        description: ControlPlane defines a managed Crossplane instance.
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: A ControlPlaneSpec represents the desired state of the ControlPlane.
+            properties:
+              backup:
+                description: '[[GATE:EnableControlPlaneBackup]] THIS IS AN ALPHA FIELD.
+                  Do not use it in production. Backup specifies details about the
+                  control planes backup configuration.'
+                properties:
+                  storageLocation:
+                    description: StorageLocation specifies details about the control
+                      planes underlying storage location where backups are stored
+                      or retrieved.
+                    properties:
+                      accessMode:
+                        default: ReadWrite
+                        description: AccessMode specifies the access mode of the control
+                          plane's backup storage location. Set to ReadOnly when using
+                          restoring an existing control plane to another, so that
+                          two control planes aren't backing up to the same location.
+                        enum:
+                        - ReadOnly
+                        - ReadWrite
+                        type: string
+                      prefix:
+                        description: Prefix defines the directory within the control
+                          plane's storage location where backups are stored or retrieved.
+                        minLength: 1
+                        type: string
+                    type: object
+                type: object
+              crossplane:
+                description: Crossplane defines the configuration for Crossplane.
+                properties:
+                  autoUpgrade:
+                    default:
+                      channel: Stable
+                    description: AutoUpgrades defines the auto upgrade configuration
+                      for Crossplane.
+                    properties:
+                      channel:
+                        default: Stable
+                        description: 'Channel defines the upgrade channels for Crossplane.
+                          We support the following channels where ''Stable'' is the
+                          default: - None: disables auto-upgrades and keeps the control
+                          plane at its current version of Crossplane. - Patch: automatically
+                          upgrades the control plane to the latest supported patch
+                          version when it becomes available while keeping the minor
+                          version the same. - Stable: automatically upgrades the control
+                          plane to the latest supported patch release on minor version
+                          N-1, where N is the latest supported minor version. - Rapid:
+                          automatically upgrades the cluster to the latest supported
+                          patch release on the latest supported minor version.'
+                        enum:
+                        - None
+                        - Patch
+                        - Stable
+                        - Rapid
+                        type: string
+                    type: object
+                  version:
+                    description: Version is the version of Universal Crossplane to
+                      install.
+                    type: string
+                type: object
+              deletionPolicy:
+                default: Delete
+                description: 'DeletionPolicy specifies what will happen to the underlying
+                  external resource when this managed resource is deleted - either
+                  "Delete" or "Orphan" the external resource. This field is planned
+                  to be deprecated in favor of the ManagementPolicy field in a future
+                  release. Currently, both could be set independently and non-default
+                  values would be honored if the feature flag is enabled. See the
+                  design doc for more information: https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223'
+                enum:
+                - Orphan
+                - Delete
+                type: string
+              managementPolicies:
+                default:
+                - '*'
+                description: 'THIS IS AN ALPHA FIELD. Do not use it in production.
+                  It is not honored unless the relevant Crossplane feature flag is
+                  enabled, and may be changed or removed without notice. ManagementPolicies
+                  specify the array of actions Crossplane is allowed to take on the
+                  managed and external resources. This field is planned to replace
+                  the DeletionPolicy field in a future release. Currently, both could
+                  be set independently and non-default values would be honored if
+                  the feature flag is enabled. If both are custom, the DeletionPolicy
+                  field will be ignored. See the design doc for more information:
+                  https://github.com/crossplane/crossplane/blob/499895a25d1a1a0ba1604944ef98ac7a1a71f197/design/design-doc-observe-only-resources.md?plain=1#L223
+                  and this one: https://github.com/crossplane/crossplane/blob/444267e84783136daa93568b364a5f01228cacbe/design/one-pager-ignore-changes.md'
+                items:
+                  description: A ManagementAction represents an action that the Crossplane
+                    controllers can take on an external resource.
+                  enum:
+                  - Observe
+                  - Create
+                  - Update
+                  - Delete
+                  - LateInitialize
+                  - '*'
+                  type: string
+                type: array
+              publishConnectionDetailsTo:
+                description: PublishConnectionDetailsTo specifies the connection secret
+                  config which contains a name, metadata and a reference to secret
+                  store config to which any connection details for this managed resource
+                  should be written. Connection details frequently include the endpoint,
+                  username, and password required to connect to the managed resource.
+                properties:
+                  configRef:
+                    default:
+                      name: default
+                    description: SecretStoreConfigRef specifies which secret store
+                      config should be used for this ConnectionSecret.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                      policy:
+                        description: Policies for referencing.
+                        properties:
+                          resolution:
+                            default: Required
+                            description: Resolution specifies whether resolution of
+                              this reference is required. The default is 'Required',
+                              which means the reconcile will fail if the reference
+                              cannot be resolved. 'Optional' means this reference
+                              will be a no-op if it cannot be resolved.
+                            enum:
+                            - Required
+                            - Optional
+                            type: string
+                          resolve:
+                            description: Resolve specifies when this reference should
+                              be resolved. The default is 'IfNotPresent', which will
+                              attempt to resolve the reference only when the corresponding
+                              field is not present. Use 'Always' to resolve the reference
+                              on every reconcile.
+                            enum:
+                            - Always
+                            - IfNotPresent
+                            type: string
+                        type: object
+                    required:
+                    - name
+                    type: object
+                  metadata:
+                    description: Metadata is the metadata for connection secret.
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: Annotations are the annotations to be added to
+                          connection secret. - For Kubernetes secrets, this will be
+                          used as "metadata.annotations". - It is up to Secret Store
+                          implementation for others store types.
+                        type: object
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: Labels are the labels/tags to be added to connection
+                          secret. - For Kubernetes secrets, this will be used as "metadata.labels".
+                          - It is up to Secret Store implementation for others store
+                          types.
+                        type: object
+                      type:
+                        description: Type is the SecretType for the connection secret.
+                          - Only valid for Kubernetes Secret Stores.
+                        type: string
+                    type: object
+                  name:
+                    description: Name is the name of the connection secret.
+                    type: string
+                required:
+                - name
+                type: object
+              source:
+                description: '[[GATE:EnableGitSource]] THIS IS AN ALPHA FIELD. Do
+                  not use it in production. Source points to a Git repository containing
+                  a ControlPlaneSource manifest with the desired state of the ControlPlane''s
+                  configuration.'
+                properties:
+                  git:
+                    description: Git is the configuration for a Git repository to
+                      pull the Control Plane Source from.
+                    properties:
+                      auth:
+                        default:
+                          type: None
+                        description: Auth is the authentication configuration to access
+                          the Git repository. Default is no authentication.
+                        properties:
+                          basic:
+                            description: Basic is the configuration for basic authentication,
+                              i.e. username and password.
+                            properties:
+                              secretRef:
+                                description: SecretRef is a reference to a Secret
+                                  containing the username and password. The secret
+                                  must contain the keys "username" and "password".
+                                properties:
+                                  name:
+                                    description: Name of the secret.
+                                    type: string
+                                  namespace:
+                                    description: Namespace of the secret.
+                                    type: string
+                                required:
+                                - name
+                                - namespace
+                                type: object
+                            required:
+                            - secretRef
+                            type: object
+                          bearerToken:
+                            description: BearerToken is the configuration for bearer
+                              token authentication.
+                            properties:
+                              secretRef:
+                                description: SecretRef is a reference to a Secret
+                                  containing the bearer token. The secret must contain
+                                  the key "bearerToken".
+                                properties:
+                                  name:
+                                    description: Name of the secret.
+                                    type: string
+                                  namespace:
+                                    description: Namespace of the secret.
+                                    type: string
+                                required:
+                                - name
+                                - namespace
+                                type: object
+                            required:
+                            - secretRef
+                            type: object
+                          caSecretRef:
+                            description: CASecretRef is a reference to a Secret containing
+                              CA certificates to use to verify the Git server's certificate.
+                              The secret must contain the key "ca.crt" where the content
+                              is a CA certificate. The type of the secret can be "Opaque"
+                              or "kubernetes.io/tls".
+                            properties:
+                              name:
+                                description: Name of the secret.
+                                type: string
+                              namespace:
+                                description: Namespace of the secret.
+                                type: string
+                            required:
+                            - name
+                            - namespace
+                            type: object
+                          ssh:
+                            description: SSH is the configuration for SSH authentication.
+                              Note that the URL must use the SSH protocol (e.g. ssh://github.com/org/repo.git).
+                            properties:
+                              secretRef:
+                                description: SecretRef is a reference to a Secret
+                                  containing the SSH key and known hosts list. The
+                                  secret must contain the key "identity" where the
+                                  content is a private SSH key. Optionally, it can
+                                  contain the key "knownHosts" where the content is
+                                  a known hosts file.
+                                properties:
+                                  name:
+                                    description: Name of the secret.
+                                    type: string
+                                  namespace:
+                                    description: Namespace of the secret.
+                                    type: string
+                                required:
+                                - name
+                                - namespace
+                                type: object
+                            required:
+                            - secretRef
+                            type: object
+                          type:
+                            default: None
+                            description: "Type of the authentication to use. Options
+                              are: None, Basic (username/password), BearerToken, SSH.
+                              Default is None. The corresponding fields must be set
+                              for the chosen authentication type. \n If you are looking
+                              to use OAuth tokens with popular servers (e.g. GitHub,
+                              Bitbucket, GitLab) you should use BasicAuth instead
+                              of BearerToken. These servers use basic HTTP authentication,
+                              with the OAuth token as user or password. Check the
+                              documentation of your git server for details."
+                            enum:
+                            - None
+                            - Basic
+                            - BearerToken
+                            - SSH
+                            type: string
+                        required:
+                        - type
+                        type: object
+                      path:
+                        default: /
+                        description: Path is the path within the Git repository to
+                          pull the Control Plane Source from. The folder it points
+                          to must contain a valid ControlPlaneSource manifest. Default
+                          is the root of the repository.
+                        minLength: 1
+                        type: string
+                      pullInterval:
+                        default: 90s
+                        description: PullInterval is the interval at which the Git
+                          repository should be polled for changes. The format is 1h2m3s.
+                          Default is 90s. Minimum is 15s.
+                        type: string
+                      ref:
+                        default:
+                          branch: main
+                        description: Ref is the git reference to checkout, which can
+                          be a branch, tag, or commit SHA. Default is the main branch.
+                        properties:
+                          branch:
+                            description: Branch is the git branch to check out.
+                            type: string
+                          commit:
+                            description: Commit is the git commit SHA to check out.
+                            type: string
+                          tag:
+                            description: Tag is the git tag to check out.
+                            type: string
+                        type: object
+                      url:
+                        description: URL is the URL of the Git repository to pull
+                          the Control Plane Source.
+                        minLength: 1
+                        type: string
+                    required:
+                    - auth
+                    - path
+                    - pullInterval
+                    - url
+                    type: object
+                required:
+                - git
+                type: object
+              writeConnectionSecretToRef:
+                description: "WriteConnectionSecretToReference specifies the namespace
+                  and name of a Secret to which any connection details for this managed
+                  resource should be written. Connection details frequently include
+                  the endpoint, username, and password required to connect to the
+                  managed resource. This field is planned to be replaced in a future
+                  release in favor of PublishConnectionDetailsTo. Currently, both
+                  could be set independently and connection details would be published
+                  to both without affecting each other. \n If omitted, it is defaulted
+                  to the namespace of the ControlPlane."
+                properties:
+                  name:
+                    description: Name of the secret.
+                    type: string
+                  namespace:
+                    description: Namespace of the secret. If omitted, it is equal
+                      to the namespace of the resource containing this reference as
+                      a field.
+                    type: string
+                required:
+                - name
+                type: object
+            type: object
+          status:
+            description: A ControlPlaneStatus represents the observed state of a ControlPlane.
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: LastTransitionTime is the last time this condition
+                        transitioned from one status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: A Message containing details about this condition's
+                        last transition from one status to another, if any.
+                      type: string
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                    type:
+                      description: Type of this condition. At most one of each condition
+                        type may apply to a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - type
+                x-kubernetes-list-type: map
+              controlPlaneID:
+                type: string
+              hostClusterID:
+                type: string
+              source:
+                description: '[[GATE:EnableGitSource]] SourceStatus is the status
+                  of the pull and apply operations of resources from the Source.'
+                properties:
+                  reference:
+                    description: Reference is the git reference that the Control Plane
+                      Source is currently checked out to. This could be a branch,
+                      tag or commit SHA.
+                    type: string
+                  revision:
+                    description: Revision is always the commit SHA that the Control
+                      Plane Source is currently checked out to.
+                    type: string
+                type: object
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

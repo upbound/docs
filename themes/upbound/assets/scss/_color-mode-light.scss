@@ -14,14 +14,38 @@
 
     --nav-item-click: #{$up-grey-850n};
     --nav-item-click-bg: #{$up-grey-300};
-  
+
     --nav-item-active: #{$up-purple-400};
     --nav-item-active-bg: #{$up-purple-100};
     --bs-list-group-active-bg: white;
 
+   // API Page
+   --sort-up: url("/img/lightbox/sort-up-light.svg");
+   --sort-down: url("/img/lightbox/sort-down-light.svg");
+   --expand-box-background: #{$up-purple-300};
+   --minus-svg: url("/img/lightbox/minus-white.svg");
+   --plus-svg: url("/img/lightbox/plus-white.svg");
+   --yaml-svg: url("/img/lightbox/download.svg");
 
+   --crd-header-color: #{up-grey-800n};
+   --crd-row-border: #{$up-grey-800n};
+   --crd-description-color: black;
+   --link-icon-fill: white;
 
+   --required-color: #{$up-grey-000};
+   --required-background: #{$up-red-300n};
 
+   --string-color: #{$up-green-300n};
+   --string-border: #{$up-green-300n};
+
+   --object-color: #{$up-purple-500};
+   --object-border-color: #{$up-purple-500};
+
+   --boolean-color: #{$up-neutral-900};
+   --boolean-border-color: #{$up-neutral-900};
+
+   --integer-color: #{$up-neutral-400};
+   --integer-border-color: #{$up-orange-300n};
 
     // Single code lines inside text. Code blocks are in _code_theme_light.scss
     --code-background: #03072415;
@@ -29,7 +53,7 @@
     --code-line-number-color: #8bcbe6;
 
     //hint boxes
-    --hint-important:                rgba(249, 207, 174, 1); 
+    --hint-important:                rgba(249, 207, 174, 1);
     --hint-important-background:     rgba(254, 249, 245, 1);
     --hint-warning:                  rgba(251, 180, 175, 1);
     --hint-warning-background:       rgba(254, 245, 245, 1);
@@ -38,7 +62,7 @@
     --hint-tip-background:           #f4fafe;
 
 
-    --hint-note:                     rgba(205,205,211,1); 
+    --hint-note:                     rgba(205,205,211,1);
     --hint-note-background:          rgba(248,249,249,1);
 
     // Code theme customizations

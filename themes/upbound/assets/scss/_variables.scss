@@ -73,7 +73,7 @@ $dark-spring-green: #2f6a31ff;
 $field-drab: #78640dff;
 $chocolate: #7b3b0aff;
 $barn-red: #780f07ff;
-$french-gray: #afb3caff; 
+$french-gray: #afb3caff;
 $lavender-web: #d9ddfcff;
 $cool-gray: #828497ff;
 $french-gray-2: #b9bcd5ff;
@@ -100,6 +100,16 @@ $body-font-weight:        normal !default;
 $body-min-width:          20rem !default;
 
 $color-admonition-background: transparent;
+
+$minus-svg-dark: url("/img/lightbox/minus-black.svg");
+$plus-svg-dark: url("/img/lightbox/plus-black.svg");
+$sort-down-dark: url("/img/lightbox/sort-down-dark.svg");
+$sort-up-dark: url("/img/lightbox/sort-up-dark.svg");
+$minus-svg-light: url("/img/lightbox/minus-white.svg");
+$plus-svg-light: url("/img/lightbox/plus-white.svg");
+$sort-down-light: url("/img/lightbox/sort-down-light.svg");
+$sort-up-light: url("/img/lightbox/sort-up-light.svg");
+$yaml-svg: url("/img/lightbox/download.svg")
 
 
 :root {

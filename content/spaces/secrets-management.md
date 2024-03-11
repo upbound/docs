@@ -26,8 +26,6 @@ It provisions `ClusterSecretStore` resources into control planes with a group:
 * If the provided selector doesn't match, the non-matched control planes in the namespace remove the corresponding `ClusterSecretStore`
 * You can use the `ClusterSecretStore` within a control plane context: `ExternalSecret` and `ClusterExternalSecret` can access the store as documented in the [ESO documentation](https://external-secrets.io/latest/api/externalsecret/).
 
-`SharedSecretStore` API type is an extension of [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/). Read the [API reference docs]({{<ref "reference/space-api/sharedsecretstore.md">}}) for more information.
-
 <!-- vale Google.Headings = NO -->
 ### Shared External Secrets
 <!-- vale Google.Headings = YES -->
@@ -39,7 +37,6 @@ It enables provisioning of `ClusterExternalSecret` resources into control planes
 * If the provided selector doesn't match, the non-matched control planes in the namespace remove the corresponding `ClusterExternalSecret`
 * You can use the `ClusterExternalSecret` within a control plane context: `ClusterSecretStore` can access the secret as documented in the [ESO documentation](https://external-secrets.io/latest/api/clusterexternalsecret/).
 
-`SharedExternalSecret` API type is an extension of [ClusterExternalSecret](https://external-secrets.io/latest/api/clusterexternalsecret/). Read the [API reference docs]({{<ref "reference/space-api/sharedsecret.md">}}) for more information.
 
 ### Usage
 
