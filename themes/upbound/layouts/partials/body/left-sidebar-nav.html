@@ -9,11 +9,18 @@
             {{ with .Site.GetPage "section" "Docs" }}
 
             {{ end }}
-            
+
+            {{ with .Site.GetPage "/quickstart" }} <!-- Adjust the path as necessary -->
+            <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{ if eq $currentPage . }}active{{ end }}" id="quickstart">
+                <div class="left-offset hide"></div>
+                <a href="{{ .Permalink }}" class="stretched-link">{{ .Title }}</a>
+            </div>
+            {{ end }}
+
             {{ range .Site.Sections.ByWeight }}
                 {{ $expand := or (eq $currentPage .) (eq $currentPage.FirstSection .) }}
                 {{ $id := printf "section-%s" .Section | urlize }}
-                
+
                 <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{if eq $currentPage .}}active{{end}}" id="{{.Section}}" >
 
                     <div class="button-container left-offset z-3">
@@ -27,7 +34,7 @@
                     </a>
 
                 </div>
-                
+
                 <div class="nav-child-container" id="{{.Section}}-children">
                     <div class="collapse list-group {{if $expand}} show {{end}}" id="collapse-{{$id}}">
                         {{if .Content}}
@@ -80,7 +87,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         {{ else }}
                             <!-- Show Section Title only -->
@@ -91,13 +98,13 @@
                                 </a>
                             </div>
                         {{ end }}
-                    
+
                     {{ end }}
                 </div>
             </div>
             {{ end }}
         </div>
 
-        
+
     </nav>
 </div>

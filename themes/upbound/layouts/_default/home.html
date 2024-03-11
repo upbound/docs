@@ -44,7 +44,23 @@
         <h2>Resources</h2>
     </div>
 
+
     <div class="three-wide-grid">
+        {{/*  Quickstart Box  */}}
+        <div class="element-container">
+            <div class="element-icon">
+                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default "person-running-regular"}}"/></svg>
+            </div>
+            <div class="element-content">
+                <div class="element-page-title">
+                    <h3><a href="/quickstart/" target="_blank" class="stretched-link">Quickstart</a></h3>
+                 </div>
+                <div class="element-description">
+                    Create your first Upbound Managed Control Plane and connect it to your cloud provider.
+                </div>
+            </div>
+        </div>
+
         {{ range .Site.Sections.ByWeight }}
         <div class="element-container">
             <div class="element-icon">
