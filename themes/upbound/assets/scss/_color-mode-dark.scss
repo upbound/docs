@@ -65,27 +65,29 @@
     --result-path: var(--body-background);
 
     // API Page
-    --sort-up: url("/img/sort-up-light.svg");
-    --sort-down: url("/img/sort-down-light.svg");
-    --expand-box-background: #{$up-grey-800n};
-    --minus-svg: url("/img/minus-white.svg");
-    --plus-svg: url("/img/plus-150.svg");
-    --crd-header-color: #{$up-grey-400};
-    --crd-row-border: #{$up-grey-800n};
-    --crd-description-color: #{$up-grey-400};
-    --link-icon-fill: #{$up-grey-600};
+    --sort-up: url("/img/lightbox/sort-up-dark.svg");
+    --sort-down: url("/img/lightbox/sort-down-dark.svg");
+    --expand-box-background: #{$up-purple-300};
+    --minus-svg: url("/img/lightbox/minus-black.svg");
+    --plus-svg: url("/img/lightbox/plus-black.svg");
+    --yaml-svg: url("/img/lightbox/download.svg");
 
-    --required-color: #{$up-grey-100};
-    --required-background: #{$up-grey-200};
+    --crd-header-color: #{up-grey-800n};
+    --crd-row-border: #{$up-grey-800n};
+    --crd-description-color: white;
+    --link-icon-fill: white;
+
+    --required-color: #{$up-red-300n};
+    --required-background: var(--body-background);
 
     --string-color: #{$up-green-300n};
     --string-border: #{$up-green-300n};
 
-    --object-color: #{$up-red-300n};
-    --object-border-color: #{$up-red-300n};
+    --object-color: #{$up-yellow-300n};
+    --object-border-color: #{$up-yellow-300n};
 
-    --boolean-color: #{$up-yellow-300n};
-    --boolean-border-color: #{$up-yellow-300n};
+    --boolean-color: #{$up-orange-300n};
+    --boolean-border-color: #{$up-orange-300n};
 
     --integer-color: #{$up-orange-300n};
     --integer-border-color: #{$up-orange-300n};

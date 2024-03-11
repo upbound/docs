@@ -101,27 +101,16 @@ $body-min-width:          20rem !default;
 
 $color-admonition-background: transparent;
 
-$crd-description-color: $up-grey-500;
-$body-font-color: $font-color-dark;
-$content-link-color: $up-blue-300n;
-$crd-header-color: $up-purple-500;
-$crd-row-border: $up-grey-300;
-$expand-box-background: $up-grey-000;
-$minus-svg: url("/img/lightbox/minus-black.svg");
-$plus-svg: url("/img/lightbox/plus-black.svg");
-$sort-down: url("/img/lightbox/sort-down-dark.svg");
-$sort-up: url("/img/lightbox/sort-up-dark.svg");
-$link-icon-fill: $up-blue-300n;
-$required-color: $up-red-300n;
-$required-background: $up-grey-100;
-$string-color: $up-green-300n;
-$string-border-color: $up-green-300n;
-$object-color: $up-orange-300n;
-$object-border-color: $up-orange-300n;
-$boolean-color: $up-blue-300n;
-$boolean-border-color: $up-blue-300n;
-$integer-color: $up-yellow-300n;
-$integer-border-color: $up-yellow-300n;
+$minus-svg-dark: url("/img/lightbox/minus-black.svg");
+$plus-svg-dark: url("/img/lightbox/plus-black.svg");
+$sort-down-dark: url("/img/lightbox/sort-down-dark.svg");
+$sort-up-dark: url("/img/lightbox/sort-up-dark.svg");
+$minus-svg-light: url("/img/lightbox/minus-white.svg");
+$plus-svg-light: url("/img/lightbox/plus-white.svg");
+$sort-down-light: url("/img/lightbox/sort-down-light.svg");
+$sort-up-light: url("/img/lightbox/sort-up-light.svg");
+$yaml-svg: url("/img/lightbox/download.svg")
+
 
 :root {
   font-size: $font-size-root;

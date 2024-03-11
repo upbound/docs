@@ -14,7 +14,7 @@
         {{ $version := $content.apiVersion }}
         {{ $spec := $content.spec }}
         {{ $kind := $content.spec.names.kind }}
-        {{ $group := "group"}}
+        {{ $group := $content.spec.group}}
 
             {{ $description := "" }}
             {{ $schemaScratch := newScratch }}
@@ -61,13 +61,13 @@
                 <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
                     {{ if $bigName }}
                         <div class="row">
-                            <div class="col col-4 bigName-row-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
+                            <div class="col col-4 bigName-row-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg" style="background-image: var(--yaml-svg);"></span>YAML</a></div>
                             <div class="mobile-hidden col col-4">{{$group}}/{{$version}}</div>
                             <div class="col col-2 align-middle expand-link text-truncate mobile-hidden" onclick="showAll('.{{ $kind }}')">Expand All</div>
                             <div class="col col-2 align-middle collapse-link text-truncate mobile-hidden" onclick="hideAll('.{{ $kind }}')">Collapse All</div>
                         </div>
                     {{ else }}
-                        <div class="yaml-link-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg"></span>YAML</a></div>
+                        <div class="yaml-link-padding mobile-hidden"><a class="icon-link" href="yaml/{{$fileName}}.yaml"><span class="yaml-svg" style="background-image: var(--yaml-svg);"></span>YAML</a></div>
                         {{ end }}
 
                             <div class="mobile-show ">{{$group}}/{{$version}}</div>
@@ -208,22 +208,39 @@
                 <button class="crd-root collapsed align-middle" data-bs-toggle="collapse" data-bs-target="#{{$elemID}}" type="button" aria-expanded="false" aria-controls="{{$elemID}}">
                     <div>
                         <span class="kind align-middle">{{ $key }}</span>
-
                         {{/* An enum puts the data types inside the "One of" border box. */}}
-                        {{ if $enum }}
-                            <span class="enum">{{$enumOf}}
-                                {{ range $contents.anyOf }}
-                                {{ range . }}
-                                    <span class="dataType {{ . }}  align-middle">{{ . }}</span>
-                                {{ end }}
-                                {{ end }}
-                            </span>
+{{ if $enum }}
+<span class="enum">{{$enumOf}}
+    {{ range $contents.anyOf }}
+    {{ range . }}
+    <span class="dataType {{ . }} align-middle">{{ . }}</span>
+    {{ end }}
+    {{ end }}
+</span>
+{{ else }}
+{{ $dataTypeStyle := "" }}
+{{/* Check for specific array types like [ ]string and [ ]object */}}
+{{ if eq $dataType "[ ]string" }}
+<span class="dataType array string align-middle">[ ]string</span>
+{{ else if eq $dataType "[ ]object" }}
+<span class="dataType array object align-middle">[ ]object</span>
+{{/* Assuming $dataType contains the type like 'string', 'object', etc. */}}
+{{ else if eq $dataType "string" }}
+<span class="dataType string align-middle">string</span>
+{{ else if eq $dataType "object" }}
+<span class="dataType object align-middle">object</span>
+{{ else if eq $dataType "boolean" }}
+<span class="dataType boolean align-middle">boolean</span>
+{{ else if eq $dataType "integer" }}
+<span class="dataType integer align-middle">integer</span>
+{{ else }}
+<span class="dataType {{ $dataTypeStyle }} align-middle">{{ $dataType }}</span>
+{{ end }}
+{{ end }}
+{{ if in $.requiredFields $key }}
+<span class="dataType required align-middle">required</span>
+{{ end }}
 
-                        {{ else }}
-                        {{ $dataTypeStyle := "" }}
-                            <span class="dataType {{ $dataTypeStyle }} align-middle">{{ $dataType }}</span>
-                        {{ end }}
-                        {{if in $.requiredFields $key}}<span class="dataType required align-middle">required</span>{{ end }}
                     </div>
                 </button>
 

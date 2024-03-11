@@ -13,7 +13,7 @@
 @mixin vertical-bar {
     content: "";
     position: absolute;
-    background-color: white;
+    background-color: var(--nav-item-active-bg);
     width: 3px;
   }
 
@@ -144,7 +144,7 @@
 
       &:not(.collapsed) {
         background-image: var(--minus-svg);
-        background-color: white !important;
+        background-color:var(--nav-item-active-bg);
 
         &::after {
           @include vertical-bar;
@@ -231,7 +231,8 @@
       border-width: 1px;
       font-size: 14px;
       margin-right: 5px;
-    }
+  }
+
 
     .enum {
       padding-top: 7px !important;
@@ -277,4 +278,48 @@
       white-space: initial;
     }
 
-  }
+    .bigName-row-padding {
+      padding-left: 39px; // description padding (27) + bs-margin (12)
+    }
+
+    .yaml-link-padding {
+      padding-left: 27px; //description padding
+    }
+
+    .yaml-svg{
+      background-image: url("/img/download.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 4px;
+      opacity: 1;
+      background-size: 16px;
+      height: 24px;
+      width: 24px;
+
+    }
+
+    .up-button-container {
+      cursor: pointer;
+      margin-left: 12px;
+
+      >a span {
+        text-decoration: none !important;
+
+      }
+
+      .up-button {
+        color: var(--body-font-color);
+        background-color: var(--background-color) !important;
+        background-image: url("/img/lightbox/arrow-up-white.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 4px;
+        opacity: 1;
+        background-size: 12px;
+        height: 16px;
+        width: 16px;
+        margin-left: 8px;
+      }
+
+      }
+     }
