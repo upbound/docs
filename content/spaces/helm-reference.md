@@ -6,111 +6,22 @@ description: Spaces Helm chart configuration values
 
 This reference provides detailed documentation on the Upbound Space Helm chart. This page details the Helm chart configuration values for installation, configuration, and management of an Upbound Space deployment.
 
-## Top-level keys
+## account
 
-[account](#account)
+{{< table "table table-striped" >}}
 
-[clusterType](#clustertype)
-
-[version](#version)
-
-[ingress](#ingress)
-
-[deletion policy](#deletion-policy)
-
-[space](#space)
-
-[certificates](#certificates)
-
-[router](#router)
-
-[billing](#billing)
-
-[features](#features)
-
-
-### account
-
-{{< table >}}
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | account | string | `"notdemo"` | The Upbound organization this installation is associated with. |
-{{</ table >}}
-
-### clusterType
-
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into. <br> Valid options are: `aks`, `eks`, `gke`, `kind`. |
-{{</ table >}}
-
-### version
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| version | string | `"0.1.0"` | Overall artifact version that affects xpkgs and related components. |
-{{</ table >}}
-
-### ingress
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| ingress | object | | Configurations for external requests coming into the space. |
-| ingress.annotations | object | `{}` |   Allows setting ingress annotations for the external facing Ingress that terminates at the mxe-router deployment. |
-| ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
-| ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
-{{</ table >}}
-
-### deletion policy
-
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| deletionPolicy | string | `"Delete"` | Specifies if the supporting APIs for the Spaces deployment should be handled on a deletion request. Possible options are "Delete" or "Orphan". If "Delete" is specified, on performing a 'helm uninstall', the Crossplane configurations that support the installation will also be deleted along with the resources that make the spaces installation. |
-{{</ table >}}
-
-### space
-
-Configuration values applied consistently across the space.
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| space.labels | object | `{}` |  Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
 
 {{</ table >}}
 
-### certificates
-
-Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function.
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected:<br>* Shared Certificate Authority<br>* Algorithm. (ECDSA)  |
-| certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
-{{</ table >}}
-
-### router
-
-Configuration values for the Space router deployment.
-
-{{< table >}}
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| router.oidc | list | `[]` | Configures [OpenID Connect Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens). <br> Current supported arguments for this array are a subset of the arguments defined in the above document. Those arguments include:<br>`--oidc-issuer-url` <br> `--oidc-client-id` <br> `--oidc-username-claim` |
-{{</ table >}}
-
-### billing
+## billing
 
 Configuration values for Spaces billing settings.
 
-{{< table >}}
+{{< table "table table-striped" >}}
+
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | billing.enabled | bool | `false` |  |
@@ -136,11 +47,46 @@ Configuration values for Spaces billing settings.
 | billing.storage.gcp.tls.verifyHostname | bool | `true` |  |
 | billing.storage.provider | string | `""` | Required if `billing.enabled`=`true`. Valid values: `aws`, `gcp`, `azure` |
 | billing.storage.secretRef.name | string | `"billing-storage"` |  |
+
 {{</ table >}}
 
-### features
+## certificates
 
-{{< table >}}
+Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function.
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected:<br>* Shared Certificate Authority<br>* Algorithm. (ECDSA)  |
+| certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
+
+{{</ table >}}
+
+## clusterType
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into. <br> Valid options are: `aks`, `eks`, `gke`, `kind`. |
+
+{{</ table >}}
+
+## deletion policy
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| deletionPolicy | string | `"Delete"` | Specifies if the supporting APIs for the Spaces deployment should be handled on a deletion request. Possible options are "Delete" or "Orphan". If "Delete" is specified, on performing a 'helm uninstall', the Crossplane configurations that support the installation will also be deleted along with the resources that make the spaces installation. |
+
+{{</ table >}}
+
+## features
+
+{{< table "table table-striped" >}}
+
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | features.alpha.argocdPlugin.enabled | bool | `false` |  |
@@ -155,4 +101,51 @@ Configuration values for Spaces billing settings.
 | features.alpha.sharedSecrets.enabled | bool | `false` |  |
 | features.alpha.sharedSecrets.namespace | string | `"external-secrets"` |  |
 | features.beta | object | `{}` |  |
+
+{{</ table >}}
+
+## ingress
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| ingress.annotations | object | `{}` |   Allows setting ingress annotations for the external facing Ingress that terminates at the mxe-router deployment. |
+| ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
+| ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
+
+{{</ table >}}
+
+## router
+
+Configuration values for the Space router deployment.
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| router.oidc | list | `[]` | Configures [OpenID Connect Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens). <br> Current supported arguments for this array are a subset of the arguments defined in the above document. Those arguments include:<br>`--oidc-issuer-url` <br> `--oidc-client-id` <br> `--oidc-username-claim` |
+
+{{</ table >}}
+
+## space
+
+Configuration values applied consistently across the space.
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| space.labels | object | `{}` |  Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
+
+{{</ table >}}
+
+## version
+
+{{< table "table table-striped" >}}
+
+| Key | Type | Default | Description |
+|-----|------|---------|-------------|
+| version | string | `"0.1.0"` | Overall artifact version that affects xpkgs and related components. |
+
 {{</ table >}}
