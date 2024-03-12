@@ -10,7 +10,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 [account](#account)
 
-[clusterType](#clusterType)
+[clusterType](#clustertype)
 
 [version](#version)
 
