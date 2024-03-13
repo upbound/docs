@@ -22,6 +22,17 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.2.4
+
+Released March 13rd, 2024.
+
+#### What's Changed
+
+- Tweaked the control plane API autoscaler configuration per recent performance testing.
+- Fixed an issue causing the kube-state-metrics pods being restarted per CRD deployed in the control plane.
+- Optimized the control plane deletion process to reduce the time it takes to delete a control plane.
+- Fixed an issue breaking `kubectl logs` command against the control plane API.
+
 ### Spaces v1.2.3
 
 Released March 1st, 2024.
