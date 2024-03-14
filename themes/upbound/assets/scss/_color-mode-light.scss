@@ -30,7 +30,7 @@
    --crd-header-color: #{up-grey-800n};
    --crd-row-border: #{$up-grey-800n};
    --crd-description-color: black;
-   --link-icon-fill: white;
+   --link-icon-fill: #{$up-grey-800n};
 
    --required-color: #{$up-grey-000};
    --required-background: #{$up-red-300n};
