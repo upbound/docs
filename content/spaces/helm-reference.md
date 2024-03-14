@@ -3,7 +3,7 @@ title: Helm Chart Reference
 weight: 200
 description: Spaces Helm chart configuration values
 ---
-
+<!-- vale off -->
 This reference provides detailed documentation on the Upbound Space Helm chart. This page details the Helm chart configuration values for installation, configuration, and management of an Upbound Space deployment.
 
 ## account
@@ -149,3 +149,5 @@ Configuration values applied consistently across the space.
 | version | string | `"0.1.0"` | Overall artifact version that affects xpkgs and related components. |
 
 {{</ table >}}
+
+<!-- vale on -->
