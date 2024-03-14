@@ -4,7 +4,8 @@ weight: 200
 description: Spaces Helm chart configuration values
 ---
 <!-- vale off -->
-This reference provides detailed documentation on the Upbound Space Helm chart. This page details the Helm chart configuration values for installation, configuration, and management of an Upbound Space deployment.
+
+This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
 
 ## account
 
