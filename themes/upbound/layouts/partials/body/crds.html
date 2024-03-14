@@ -211,7 +211,17 @@
                     <div>
                         <span class="kind align-middle">{{ $key }}</span>
                         {{ if isset $contents "default" }}
-                        <span class="default-value align-middle">Default: <span class="default" >{{ $contents.default }}</span></span>
+                        <span class="default-value align-middle">Default:
+                            {{ if reflect.IsMap $contents.default }}
+                            <span class="default">
+                            {{ range $key, $value := $contents.default }}
+                                { {{ $key }}: "{{ $value }}" }
+                            {{ end }}
+                            </span>
+                        {{ else }}
+                            <span class="default"> "{{ $contents.default }}"</span>
+                        {{ end }}
+                    </span>
                     {{ end }}
 {{ if $enum }}
 <span class="enum">{{$enumOf}}
