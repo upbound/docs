@@ -216,6 +216,29 @@
         left: 7px;
       }
 
+    .default-value {
+      font-weight: 800;
+      border-radius: 4px;
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 14px;
+      margin-right: 5px;
+      color: var(--nav-item-click);
+      border-color: var(--nav-item-click);
+
+    }
+
+    .default {
+      padding-top: 7px !important;
+      padding-bottom: 7px !important;
+      padding-right: 5px;
+      color: var(--code-color);
+      font-style: italic;    }
+
       // transition: margin 0ms;
     }
 

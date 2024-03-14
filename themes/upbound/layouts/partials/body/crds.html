@@ -104,6 +104,7 @@
         {{ $description := .schema.description }}
         {{ $properties := .schema.properties }}
         {{ $required := .schema.required }}
+        {{ $default := .schema.default }}
 
         {{/* Special handling for arrays to check if it's a list of 'items' */}}
         {{ if eq .schema.type "array" }}
@@ -127,7 +128,7 @@
                 <div>
                     <span class="kind align-middle">{{ .key }}</span>
                     <span class="dataType {{ $dataTypeStyle }} align-middle">{{ $dataType }}</span>
-                </div>
+                 </div>
             </button>
 
             {{/* Anchor link icon */}}
@@ -158,6 +159,7 @@
     {{ $description := $contents.description }}
     {{ $properties := $contents.properties }}
     {{ $required := $.requiredFields }}
+    {{ $defaultChild := $contents.default }}
 
     {{/* Handling enum fields for oneOf, anyOf, and allOf types */}}
     {{ $enum := false }}
@@ -208,7 +210,9 @@
                 <button class="crd-root collapsed align-middle" data-bs-toggle="collapse" data-bs-target="#{{$elemID}}" type="button" aria-expanded="false" aria-controls="{{$elemID}}">
                     <div>
                         <span class="kind align-middle">{{ $key }}</span>
-                        {{/* An enum puts the data types inside the "One of" border box. */}}
+                        {{ if isset $contents "default" }}
+                        <span class="default-value align-middle">Default: <span class="default" >{{ $contents.default }}</span></span>
+                    {{ end }}
 {{ if $enum }}
 <span class="enum">{{$enumOf}}
     {{ range $contents.anyOf }}
