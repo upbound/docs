@@ -101,7 +101,6 @@ Given cert-manager is a requirement for installation, certificates specifies the
 | features.alpha.kine.enabled | bool | `false` |  |
 | features.alpha.sharedSecrets.enabled | bool | `false` |  |
 | features.alpha.sharedSecrets.namespace | string | `"external-secrets"` |  |
-| features.beta | object | `{}` |  |
 
 {{</ table >}}
 
@@ -138,16 +137,6 @@ Configuration values applied consistently across the space.
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | space.labels | object | `{}` |  Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
-
-{{</ table >}}
-
-## version
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| version | string | `"0.1.0"` | Overall artifact version that affects xpkgs and related components. |
 
 {{</ table >}}
 
