@@ -169,12 +169,18 @@
         font-size: 15px !important;
         margin-top: inherit !important;
     }
+    .uf-tile-content-label-text::before{
+        content: "\F08E" !important;
+        display: block; /* or 'block', depending on your layout */
+        background-image: none !important;
+        font-family: "Font Awesome 6 Free"
 
-
-    .title{
-        font-size: 20px !important;
-        margin-bottom: 20px !important;
     }
+    .uf-tile-content-label-text:not(:has(::before[content='"\\F08E"'])) {
+        display: none; /* Or another action as required */
+    }
+
+
 
     .three-wide-grid{
         @include media-breakpoint-up(xl) {
