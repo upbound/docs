@@ -40,47 +40,6 @@
             Upbound provides fully managed control planes to scale-up Crossplane to 10,000s of cloud resources without overloading your existing Kubernetes deployments.
         </div>
     </div>
-
-
-
-    <div class="title">
-        <h2>Resources</h2>
-    </div>
-
-
-    <div class="three-wide-grid">
-        {{/*  Quickstart Box  */}}
-        <div class="element-container">
-            <div class="element-icon">
-                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default "person-running-regular"}}"/></svg>
-            </div>
-            <div class="element-content">
-                <div class="element-page-title">
-                    <h3><a href="/quickstart/" target="_blank" class="stretched-link">Quickstart</a></h3>
-                 </div>
-                <div class="element-description">
-                    Create your first Upbound Managed Control Plane and connect it to your cloud provider.
-                </div>
-            </div>
-        </div>
-
-        {{ range .Site.Sections.ByWeight }}
-        <div class="element-container">
-            <div class="element-icon">
-                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default ""}}"/></svg>
-            </div>
-            <div class="element-content">
-                <div class="element-page-title">
-                    <h3><a href="{{.Permalink}}" class="stretched-link">{{.Title}}</a></h3>
-                </div>
-                <div class="element-description">
-                    {{ .Params.description }}
-                </div>
-            </div>
-        </div>
-        {{ end }}
-    </div>
-
     <div class="title">
         <h2>Recent Articles</h2>
     </div>
@@ -124,6 +83,47 @@
                 }
             }(document,'script','https://resources.upbound.io/hubsFront/embed_collection'));
             </script>
+
+
+
+
+    <div class="title">
+        <h2>Resources</h2>
+    </div>
+
+
+    <div class="three-wide-grid">
+        {{/*  Quickstart Box  */}}
+        <div class="element-container">
+            <div class="element-icon">
+                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default "person-running-regular"}}"/></svg>
+            </div>
+            <div class="element-content">
+                <div class="element-page-title">
+                    <h3><a href="/quickstart/" target="_blank" class="stretched-link">Quickstart</a></h3>
+                 </div>
+                <div class="element-description">
+                    Create your first Upbound Managed Control Plane and connect it to your cloud provider.
+                </div>
+            </div>
+        </div>
+
+        {{ range .Site.Sections.ByWeight }}
+        <div class="element-container">
+            <div class="element-icon">
+                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default ""}}"/></svg>
+            </div>
+            <div class="element-content">
+                <div class="element-page-title">
+                    <h3><a href="{{.Permalink}}" class="stretched-link">{{.Title}}</a></h3>
+                </div>
+                <div class="element-description">
+                    {{ .Params.description }}
+                </div>
+            </div>
+        </div>
+        {{ end }}
+    </div>
 
 
          </div>

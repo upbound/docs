@@ -204,7 +204,7 @@
         display: none !important;
     }
     .uf-tile-wrapper:hover article {
-        background: linear-gradient(90deg, #6d64f5 0, #c9c3ff) !important;
+        background-color: var(--latest-pill-background);
     }
     .uf-tile-wrapper:not(.uf-highlight-item) .uf-tile .title {
         font-weight: 500 !important;
