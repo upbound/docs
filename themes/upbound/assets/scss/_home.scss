@@ -103,11 +103,121 @@
             padding: 30px;
         }
     }
+    .recent-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        border: 1px solid $up-grey-300;
+        border-radius: 8px;
+        padding: 8px;
+        align-items: center;
+        justify-content: space-around;
 
-    .title{
-        font-size: 20px !important;
-        margin-bottom: 20px !important;
+
+        @include media-breakpoint-up(xl) {
+            gap: 20px 30px;
+        }
     }
+    /* Uberflip GWL OB-9786 start here */
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+    #UfEmbeddedHub1701679520152 {
+        max-width: 100%;
+    }
+    #uf-lazy-loader-11433137 {
+        width: 100% !important;
+    }
+    .uf-tile-wrapper *:not(i) {
+        font-family: "Open Sans", sans-serif;
+    }
+    .uf-tile-wrapper {
+        width: 244px !important;
+        height: 324px !important;
+        border-radius: 5px !important;
+        box-shadow: unset !important;
+        overflow: initial !important;
+    }
+    .uf-tile-wrapper .uf-tile {
+        width: 244px !important;
+        height: 324px !important;
+        border-color: rgba(30, 32, 59, 1) !important;
+        border-radius: 5px !important;
+        transform: scale(0.98);
+        background: var(--home-resource-bg) !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) time.uf-tile-friendly-timestamp {
+        display: none !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile):not(.uf-highlight-item) .uf-tile-copy {
+        width: 100%;
+        max-height: 100% !important;
+        overflow: hidden;
+        padding: 10px 20px !important;
+        background: var(--home-resource-bg) !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile):not(.uf-highlight-item) .uf-tile .title {
+        font-size: 16px !important;
+    }
+    .uf-tile-wrapper:not(.uf-highlight-item) .uf-tile .title {
+        font-weight: 500 !important;
+        line-height: 1.3 !important;
+        text-transform: unset !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 5 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) .uf-tile .title {
+        font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
+        color: var(--body-font-color);
+    }
+    .uf-tile-wrapper:not(.quote-tile):not(.uf-highlight-item) .uf-tile .subtitle {
+        font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
+        color: rgba(211, 231, 247, 1) !important;
+        display: none !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) .uf-tile:after {
+        background-image: none !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) .uf-tile .uf-tile-content-label {
+        border-top: none !important;
+        background: transparent !important;
+        height: fit-content !important;
+        min-height: 40px !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) .uf-tile .uf-tile-content-label-text span {
+        margin: 0px !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) .uf-tile .uf-tile-content-label-text span {
+        font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        line-height: 1 !important;
+        color: rgba(109, 100, 245, 1) !important;
+        border-color: rgba(30, 32, 59, 1) !important;
+        background: var(--home-resource-bg) !important;
+    }
+    .uf-tile-wrapper:not(.quote-tile) .uf-tile .uf-tile-content-label-arrow {
+        display: none !important;
+    }
+    .uf-tile .uf-tile-content-label-text:before {
+
+        display: none !important;
+    }
+    .uf-tile-wrapper:hover article {
+        background-color: var(--latest-pill-background);
+    }
+    .uf-tile-wrapper:not(.uf-highlight-item) .uf-tile .title {
+        font-weight: 500 !important;
+        line-height: 1.3 !important;
+        text-transform: unset !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 5 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+    /* Uberflip GWL OB-9786 end here */
+
+
 
     .three-wide-grid{
         @include media-breakpoint-up(xl) {
@@ -174,4 +284,3 @@
         width: 11px;
     }
 }
-
