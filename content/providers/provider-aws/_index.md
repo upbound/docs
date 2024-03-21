@@ -13,6 +13,58 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.2.1
+
+_Released 2024-03-18_
+
+* This release includes an important bug fix, please select the release notes for more details.
+
+_Refer to the [v1.2.1 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.2.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.2.1)
+
+## v1.2.0
+
+_Released 2024-03-14_
+
+* Sets a default `io.Discard` logger for the controller-runtime if debug logging isn't enabled.
+* Refactors AWS client configuration logic with a single path.
+* This release includes some important bug fixes, and updates of dependencies, please select the release notes for more details.
+
+_Refer to the [v1.2.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.2.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.2.0)
+
+## v0.47.4
+
+_Released 2024-03-14_
+
+* This release sets a default `io.Discard` logger for the controller-runtime if debug logging isn't enabled.
+
+_Refer to the [v0.47.4 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v0.47.4) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.4)
+
+## v1.1.1
+
+_Released 2024-03-07_
+
+* This release includes two important bug fixes, please select the release notes for more details.
+
+_Refer to the [v1.1.1 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.1.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.1.1)
+
+## v0.47.3
+
+_Released 2024-03-07_
+
+* This release includes two important bug fixes, please select the release notes for more details.
+
+_Refer to the [v0.47.3 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v0.47.3) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v0.47.3)
+
 ## v0.47.2
 
 _Released 2024-02-16_
