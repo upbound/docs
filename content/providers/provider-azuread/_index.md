@@ -13,6 +13,37 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.0.0
+
+_Released 2024-03-21_
+
+* Update the Azure Terraform provider version to v2.47.0
+* The release contains some important bug fixes, and updates of dependencies.
+
+_Refer to the [v1.0.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.0.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.0.0)
+
+## v0.15.3
+
+_Released 2024-03-21_
+
+* This release sets a default `io.Discard` logger for the controller-runtime if debug logging isn't enabled.
+
+_Refer to the [v0.15.3 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v0.15.3) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.15.3)
+
+## v0.15.2
+
+_Released 2024-02-29_
+
+* This release includes updates to the dependencies, please select the release notes for more details.
+
+_Refer to the [v0.15.2 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v0.15.2) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v0.15.2)
+
 ## v0.15.1
 
 _Released 2024-02-22_

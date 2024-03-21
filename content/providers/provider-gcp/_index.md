@@ -11,6 +11,62 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v1.0.2
+
+_Released 2024-03-21_
+
+* Switches to the new API for marking as required the fields. The new API marks the fields as required during
+the generation without any native resource schema change.
+* Adds information logs in the monolithic provider's output that communicate the deprecation and the next steps.
+* Adds `SSA` merge strategy to container Cluster's `nodeConfig` to avoid fights over ownership.
+
+_Refer to the [v1.0.2 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.0.2) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.0.2)
+
+## v0.41.4
+
+_Released 2024-03-21_
+
+* Adds information logs in the monolithic provider's output that communicate the deprecation and the next steps.
+* Adds `SSA` merge strategy to container Cluster's `nodeConfig` to avoid fights over ownership.
+
+_Refer to the [v0.41.4 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v0.41.4) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.41.4)
+
+## v1.0.1
+
+_Released 2024-03-14_
+
+* This release sets a default `io.Discard` logger for the controller-runtime if debug logging isn't enabled.
+
+_Refer to the [v1.0.1 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.0.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.0.1)
+
+## v0.41.3
+
+_Released 2024-03-14_
+
+* This release sets a default `io.Discard` logger for the controller-runtime if debug logging isn't enabled.
+
+_Refer to the [v0.41.3 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v0.41.3) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.41.3)
+
+## v1.0.0
+
+_Released 2024-03-07_
+
+* Update the Google Terraform provider version to v5.19.0
+* This release brings support for the conversion functions to be able to handle any future breaking API changes.
+* The release contains some important bug fixes, and updates of dependencies.
+
+_Refer to the [v1.0.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.0.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.0.0)
+
 ## v0.41.2
 
 _Released 2024-02-22_
