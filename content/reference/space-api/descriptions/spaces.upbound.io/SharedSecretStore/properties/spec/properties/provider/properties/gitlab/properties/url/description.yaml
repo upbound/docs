@@ -1,2 +1,2 @@
-description:
-    "URL configures the GitLab instance URL. Defaults to https://gitlab.com/."
+description: |-
+    URL configures the GitLab instance URL. Defaults to https://gitlab.com/.

@@ -1,2 +1,2 @@
-description:
-    "ControlPlane name where the secret store got projected"
+description: |-
+    ControlPlane name where the secret store got projected

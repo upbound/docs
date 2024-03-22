@@ -1,2 +1,2 @@
-description:
-    "SharedExternalSecret specifies a shared ExternalSecret projected into the specified ControlPlanes of the same namespace as ClusterExternalSecret and with that propagated into the specified namespaces."
+description: |-
+    SharedExternalSecret specifies a shared ExternalSecret projected into the specified ControlPlanes of the same namespace as ClusterExternalSecret and with that propagated into the specified namespaces.

@@ -1,2 +1,2 @@
-description:
-    "IgnoreSslCertificate defines if SSL certificate must be ignored"
+description: |-
+    IgnoreSslCertificate defines if SSL certificate must be ignored

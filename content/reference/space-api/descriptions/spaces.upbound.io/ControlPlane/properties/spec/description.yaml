@@ -1,2 +1,2 @@
-description:
-    "A ControlPlaneSpec represents the desired state of the ControlPlane."
+description: |-
+    A ControlPlaneSpec represents the desired state of the ControlPlane.

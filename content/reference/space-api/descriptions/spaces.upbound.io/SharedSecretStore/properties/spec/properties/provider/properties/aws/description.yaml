@@ -1,2 +1,2 @@
-description:
-    "AWS configures this store to sync secrets using AWS Secret Manager provider"
+description: |-
+    AWS configures this store to sync secrets using AWS Secret Manager provider

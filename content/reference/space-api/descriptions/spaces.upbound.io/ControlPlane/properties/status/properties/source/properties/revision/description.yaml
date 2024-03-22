@@ -1,2 +1,2 @@
-description:
-    "Revision is always the commit SHA that the Control Plane Source is currently checked out to."
+description: |-
+    Revision is always the commit SHA that the Control Plane Source is currently checked out to.

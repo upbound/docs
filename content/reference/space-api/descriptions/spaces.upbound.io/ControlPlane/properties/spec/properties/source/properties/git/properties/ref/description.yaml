@@ -1,2 +1,2 @@
-description:
-    "Ref is the git reference to checkout, which can be a branch, tag, or commit SHA. Default is the main branch."
+description: |-
+    Ref is the git reference to checkout, which can be a branch, tag, or commit SHA. Default is the main branch.

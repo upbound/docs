@@ -1,2 +1,2 @@
-description:
-    "The secret is projected only to control planes matching the provided selector. Either names or a labelSelector must be specified."
+description: |-
+    The secret is projected only to control planes matching the provided selector. Either names or a labelSelector must be specified.

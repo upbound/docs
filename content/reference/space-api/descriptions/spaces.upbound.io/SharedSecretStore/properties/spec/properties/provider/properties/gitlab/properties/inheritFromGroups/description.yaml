@@ -1,2 +1,2 @@
-description:
-    "InheritFromGroups specifies whether parent groups should be discovered and checked for secrets."
+description: |-
+    InheritFromGroups specifies whether parent groups should be discovered and checked for secrets.

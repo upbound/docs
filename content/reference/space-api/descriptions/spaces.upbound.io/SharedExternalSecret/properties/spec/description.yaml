@@ -1,2 +1,2 @@
-description:
-    "SharedExternalSecretSpec defines the desired state of SharedExternalSecret."
+description: |-
+    SharedExternalSecretSpec defines the desired state of SharedExternalSecret.

@@ -1,2 +1,2 @@
-description:
-    "YandexCertificateManager configures this store to sync secrets using Yandex Certificate Manager provider"
+description: |-
+    YandexCertificateManager configures this store to sync secrets using Yandex Certificate Manager provider

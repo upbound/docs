@@ -1,2 +1,2 @@
-description:
-    "Vault Url from which the secrets to be fetched from."
+description: |-
+    Vault Url from which the secrets to be fetched from.

@@ -1,2 +1,2 @@
-description:
-    "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data."
+description: |-
+    ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.

@@ -1,2 +1,2 @@
-description:
-    "Auth configures how the Operator authenticates with the Doppler API"
+description: |-
+    Auth configures how the Operator authenticates with the Doppler API

@@ -1,2 +1,2 @@
-description:
-    "SecretsManager defines how the provider behaves when interacting with AWS SecretsManager"
+description: |-
+    SecretsManager defines how the provider behaves when interacting with AWS SecretsManager

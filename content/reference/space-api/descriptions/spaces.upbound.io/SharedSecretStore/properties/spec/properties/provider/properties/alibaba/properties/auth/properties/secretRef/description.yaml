@@ -1,2 +1,2 @@
-description:
-    "AlibabaAuthSecretRef holds secret references for Alibaba credentials."
+description: |-
+    AlibabaAuthSecretRef holds secret references for Alibaba credentials.

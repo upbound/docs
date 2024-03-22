@@ -1,2 +1,2 @@
-description:
-    "Data defines the connection between the Kubernetes Secret keys and the Provider data"
+description: |-
+    Data defines the connection between the Kubernetes Secret keys and the Provider data

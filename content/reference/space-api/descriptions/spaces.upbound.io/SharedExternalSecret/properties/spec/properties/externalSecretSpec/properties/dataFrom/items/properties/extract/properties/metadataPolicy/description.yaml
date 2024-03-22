@@ -1,2 +1,2 @@
-description:
-    "Policy for fetching tags/labels from provider secrets, possible options are Fetch, None. Defaults to None"
+description: |-
+    Policy for fetching tags/labels from provider secrets, possible options are Fetch, None. Defaults to None

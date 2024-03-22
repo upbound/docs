@@ -1,2 +1,2 @@
-description:
-    "Auth configures how secret-manager authenticates with a GitLab instance."
+description: |-
+    Auth configures how secret-manager authenticates with a GitLab instance.

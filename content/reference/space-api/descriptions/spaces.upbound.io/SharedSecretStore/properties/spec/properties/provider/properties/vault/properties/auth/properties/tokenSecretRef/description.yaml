@@ -1,2 +1,2 @@
-description:
-    "TokenSecretRef authenticates with Vault by presenting a token."
+description: |-
+    TokenSecretRef authenticates with Vault by presenting a token.

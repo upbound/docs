@@ -1,2 +1,2 @@
-description:
-    "Compartment is the vault compartment OCID. Required for PushSecret"
+description: |-
+    Compartment is the vault compartment OCID. Required for PushSecret

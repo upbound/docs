@@ -1,2 +1,2 @@
-description:
-    "Deprecated: ValueMap is deprecated and is intended to be removed in the future, use the `value` field instead."
+description: |-
+    Deprecated: ValueMap is deprecated and is intended to be removed in the future, use the `value` field instead.

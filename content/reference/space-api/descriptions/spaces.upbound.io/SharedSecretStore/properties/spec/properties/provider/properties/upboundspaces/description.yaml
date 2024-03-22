@@ -1,2 +1,2 @@
-description:
-    "UpboundProvider configures a store to sync secrets with Upbound Spaces."
+description: |-
+    UpboundProvider configures a store to sync secrets with Upbound Spaces.

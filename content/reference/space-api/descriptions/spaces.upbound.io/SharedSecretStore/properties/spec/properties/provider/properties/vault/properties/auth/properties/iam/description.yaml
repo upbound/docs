@@ -1,2 +1,2 @@
-description:
-    "Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials AWS IAM authentication method"
+description: |-
+    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials AWS IAM authentication method

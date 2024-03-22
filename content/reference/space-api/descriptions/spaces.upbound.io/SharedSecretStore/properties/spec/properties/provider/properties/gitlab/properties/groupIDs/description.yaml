@@ -1,2 +1,2 @@
-description:
-    "GroupIDs specify, which gitlab groups to pull secrets from. Group secrets are read from left to right followed by the project variables."
+description: |-
+    GroupIDs specify, which gitlab groups to pull secrets from. Group secrets are read from left to right followed by the project variables.

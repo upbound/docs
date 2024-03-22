@@ -1,2 +1,2 @@
-description:
-    "SharedSecretStoreStatus defines the observed state of the SecretStore."
+description: |-
+    SharedSecretStoreStatus defines the observed state of the SecretStore.

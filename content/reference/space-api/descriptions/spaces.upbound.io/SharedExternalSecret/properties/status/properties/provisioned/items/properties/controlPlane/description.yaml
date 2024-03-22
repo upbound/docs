@@ -1,2 +1,2 @@
-description:
-    "ControlPlane name where the external secret got successfully projected."
+description: |-
+    ControlPlane name where the external secret got successfully projected.

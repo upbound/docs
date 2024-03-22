@@ -1,2 +1,2 @@
-description:
-    "Auth configures how the operator authenticates with Azure. Required for ServicePrincipal auth type."
+description: |-
+    Auth configures how the operator authenticates with Azure. Required for ServicePrincipal auth type.
