@@ -1,0 +1,2 @@
+description:
+    "This is the AWS role to be assumed before talking to vault"

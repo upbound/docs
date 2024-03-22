@@ -1,0 +1,2 @@
+description:
+    "PullInterval is the interval at which the Git repository should be polled for changes. The format is 1h2m3s. Default is 90s. Minimum is 15s."

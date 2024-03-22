@@ -1,0 +1,2 @@
+description:
+    "The key the value inside of the provider type to use, only used with 'Secret' type"

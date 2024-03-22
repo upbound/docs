@@ -1,0 +1,2 @@
+description:
+    "AccessMode specifies the access mode of the control plane's backup storage location. Set to ReadOnly when using restoring an existing control plane to another, so that two control planes aren't backing up to the same location."

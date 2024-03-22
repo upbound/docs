@@ -1,0 +1,2 @@
+description:
+    "SecretStoreName is the name to use when creating secret stores within a control plane. optional, if not set, SharedSecretStore name will be used. When set, it is immutable."

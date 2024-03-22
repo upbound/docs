@@ -1,0 +1,2 @@
+description:
+    "The DopplerToken is used for authentication. See https://docs.doppler.com/reference/api#authentication for auth token types. The Key attribute defaults to dopplerToken if not specified."

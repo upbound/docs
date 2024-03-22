@@ -1,0 +1,2 @@
+description:
+    "UserPass authenticates with Vault by passing username/password pair"

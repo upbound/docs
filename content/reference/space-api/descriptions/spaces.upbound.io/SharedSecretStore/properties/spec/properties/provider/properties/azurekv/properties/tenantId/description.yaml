@@ -1,0 +1,2 @@
+description:
+    "TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type."

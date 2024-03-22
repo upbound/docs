@@ -1,0 +1,2 @@
+description:
+    "Auth configures how secret-manager authenticates with the IBM secrets manager."

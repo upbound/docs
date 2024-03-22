@@ -1,0 +1,2 @@
+description:
+    "Reference is the git reference that the Control Plane Source is currently checked out to. This could be a branch, tag or commit SHA."

@@ -1,0 +1,2 @@
+description:
+    "The key where the CA certificate can be found in the Secret or ConfigMap."

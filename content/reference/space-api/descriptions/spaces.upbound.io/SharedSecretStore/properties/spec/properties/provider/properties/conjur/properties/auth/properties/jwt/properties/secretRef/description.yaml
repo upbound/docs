@@ -1,0 +1,2 @@
+description:
+    "Optional SecretRef that refers to a key in a Secret resource containing JWT token to authenticate with Conjur using the JWT authentication method."

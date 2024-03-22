@@ -1,0 +1,2 @@
+description:
+    "Used to provide custom certificate authority (CA) certificates for a secret store. The CAProvider points to a Secret or ConfigMap resource that contains a PEM-encoded certificate."

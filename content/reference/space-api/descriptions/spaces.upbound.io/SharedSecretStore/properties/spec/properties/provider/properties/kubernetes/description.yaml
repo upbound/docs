@@ -1,0 +1,2 @@
+description:
+    "Kubernetes configures this store to sync secrets using a Kubernetes cluster provider"

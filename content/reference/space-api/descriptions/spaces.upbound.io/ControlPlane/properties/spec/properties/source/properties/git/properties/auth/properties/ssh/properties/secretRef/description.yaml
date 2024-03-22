@@ -1,0 +1,2 @@
+description:
+    "SecretRef is a reference to a Secret containing the SSH key and known hosts list. The secret must contain the key 'identity' where the content is a private SSH key. Optionally, it can contain the key 'knownHosts' where the content is a known hosts file."
