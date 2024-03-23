@@ -123,4 +123,31 @@ Released August 28th, 2023.
 - git: fix commit ref bugs
 - git: run through cleanup even if controlplane is not ready
 - Fix otlp-collector networkpolicy ports
+
+## Control plane connector release notes
+
+### MCP connector v0.3.8
+
+Released March 21st, 2024.
+
+#### What's Changed
+
+- Configured burst and QPS for kube clients to prevent excessive rate limiting.
+
+### MCP connector v0.3.7
+
+Released March 21st, 2024.
+
+#### What's Changed
+
+- Fixed regular expression for managed control plane check for older versions of the Spaces API.
+
+### MCP connector v0.3.6
+
+Released March 15th, 2024.
+
+#### What's Changed
+
+- Updated managed control plane check to support the recent changes in the Spaces API.
+
 <!-- vale on -->
