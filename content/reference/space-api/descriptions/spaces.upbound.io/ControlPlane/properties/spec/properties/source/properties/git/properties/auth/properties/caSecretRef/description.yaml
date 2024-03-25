@@ -1,0 +1,2 @@
+description: |-
+    CASecretRef is a reference to a Secret containing CA certificates to use to verify the Git server's certificate. The secret must contain the key 'ca.crt' where the content is a CA certificate. The type of the secret can be 'Opaque' or 'kubernetes.io/tls'.

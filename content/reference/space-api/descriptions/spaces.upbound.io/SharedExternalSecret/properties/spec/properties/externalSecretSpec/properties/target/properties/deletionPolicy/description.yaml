@@ -1,0 +1,2 @@
+description: |-
+    DeletionPolicy defines rules on how to delete the resulting Secret Defaults to 'Retain'

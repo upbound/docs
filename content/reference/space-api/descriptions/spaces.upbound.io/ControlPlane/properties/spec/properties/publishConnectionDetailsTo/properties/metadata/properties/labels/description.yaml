@@ -1,0 +1,2 @@
+description: |-
+    Labels are the labels/tags to be added to connection secret. - For Kubernetes secrets, this will be used as 'metadata.labels'. - It is up to Secret Store implementation for others store types.

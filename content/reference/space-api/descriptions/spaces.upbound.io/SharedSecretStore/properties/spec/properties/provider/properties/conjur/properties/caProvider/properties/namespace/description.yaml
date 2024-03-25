@@ -1,0 +1,2 @@
+description: |-
+    The namespace the Provider type is in. Can only be defined when used in a ClusterSecretStore.

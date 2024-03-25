@@ -1,0 +1,2 @@
+description: |-
+    Role is a JWT role to authenticate using the JWT/OIDC Vault authentication method

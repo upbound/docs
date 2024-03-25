@@ -1,0 +1,2 @@
+description: |-
+    Optional ServiceAccountToken specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.
