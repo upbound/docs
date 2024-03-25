@@ -356,7 +356,7 @@ Configuring IRSA with the AWS Provider requires:
 * an AWS
 [IAM OIDC Provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
 * an AWS IAM Role with an editable [trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#term_trust-policy)
-* a RuntimeConfig to add an annotation on the AWS Provider service account
+* a DeploymentRuntimeConfig to add an annotation on the AWS Provider service account
 * a ProviderConfig to enable IRSA authentication
 
 ### Create an IAM OIDC provider
@@ -429,15 +429,15 @@ The following is a full example trust policy.
 }
 ```
 
-### Create a RuntimeConfig
+### Create a DeploymentRuntimeConfig
 
 IRSA relies on an annotation on the service account attached to a pod to
 identify the IAM role to use.
 
-Crossplane uses a RuntimeConfig to apply settings to the provider, including
+Crossplane uses a DeploymentRuntimeConfig to apply settings to the provider, including
 the provider service account.
 
-Create a {{<hover label="cc" line="2">}}RuntimeConfig{{</hover>}} object to
+Create a {{<hover label="cc" line="2">}}DeploymentRuntimeConfig{{</hover>}} object to
 apply a custom annotation to the provider service account.
 
 In the {{<hover label="cc" line="3">}}metadata{{</hover>}} create an
@@ -459,12 +459,12 @@ spec:
         eks.amazonaws.com/role-arn: arn:aws:iam::622346257358:role/my-custom-role
 ```
 
-### Apply the RuntimeConfig
+### Apply the DeploymentRuntimeConfig
 
 Install or update the provider with a
 {{<hover label="provider" line="7">}}runtimeConfigRef{{</hover>}} with the
 {{<hover label="provider" line="8">}}name{{</hover>}} of the
-{{<hover label="cc" line="4">}}RuntimeConfig{{</hover>}}.
+{{<hover label="cc" line="4">}}DeploymentRuntimeConfig{{</hover>}}.
 
 ```yaml {label="provider"}
 apiVersion: pkg.crossplane.io/v1
@@ -479,7 +479,7 @@ spec:
 
 After the provider finishes installing verify Crossplane applied the
 {{<hover label="sa" line="5">}}annotation{{</hover>}}
-on the service account from the RuntimeConfig.
+on the service account from the DeploymentRuntimeConfig.
 
 {{<hint "note" >}}
 <!-- vale Google.WordList = NO -->
