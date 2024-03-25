@@ -77,8 +77,8 @@ exceptions:
   - ProviderConfigs
   - Providers
   - REPL
-  - RuntimeConfig
-  - RuntimeConfigs
+  - DeploymentRuntimeConfig
+  - DeploymentRuntimeConfigs
   - Studio
   - TypeScript
   - Upbound
