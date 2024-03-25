@@ -16,7 +16,7 @@ Upbound provides support and software maintenance to paid customers. Supported s
 
 <!-- vale Microsoft.Adverbs = NO --> 
 <!-- allow "Generally" -->
-Upbound supports Generally Available releases for up to 12 months. 
+Upbound supports Generally Available releases for a defined time span, depending on the release cycle of the respective component. See below for details.
 All software follows semantic versioning of `X.Y.Z`.
 <!-- vale Microsoft.Adverbs = NO --> 
 
