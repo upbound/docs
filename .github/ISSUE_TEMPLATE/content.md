@@ -1,7 +1,7 @@
 ---
 name: Docs request
 about: Request new or additional content on a subject.
-labels: "content-request"
+projects: ["upbound/120"]
 ---
 
 ### What's Missing?
