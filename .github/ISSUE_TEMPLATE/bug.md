@@ -1,7 +1,7 @@
 ---
 name: Report a bug in the docs
 about: Report a typo or bad code examples in the docs.
-labels: bug
+projects: ["upbound/120"]
 ---
 
 ### URL

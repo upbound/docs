@@ -1,7 +1,7 @@
 ---
 name: Website Issue
 about: Report broken links, bad javascript or request a new site feature.
-labels: infrastructure
+projects: ["upbound/120"]
 ---
 
 
