@@ -499,6 +499,12 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
+Create an up CLI profile for the Space
+
+```bash
+up profile set space --profile new-profile-name --account "${UPBOUND_ACCOUNT}"
+```
+
 {{< /tab >}}
 
 {{< /tabs >}}
