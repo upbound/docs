@@ -13,7 +13,19 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
-## v0.14.0
+## v0.15.0
+
+_Released 2024-03-28_
+
+* Swaps the `SYNCED` and `READY` columns in the kubectl get workspace output so that they
+read left-to-right in the order that you would expect them to occur.
+* The release contains bug fixes and updates of dependencies.
+
+_Refer to the [v0.15.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.15.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.15.0)
+
+## v0.14.1
 
 _Released 2024-02-07_
 

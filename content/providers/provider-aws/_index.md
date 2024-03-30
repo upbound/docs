@@ -13,6 +13,20 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.3.0
+
+_Released 2024-03-28_
+
+* The release introduces a new family provider `provider-aws-kafkaconnect`, new resources, bug fixes, and dependency updates.
+* This release also introduces a credential cache for IRSA authentication, which reduces the number of AWS `STS` calls
+the provider makes.
+* Support for New Resources: `User.memorydb.aws.upbound.io/v1beta1`, `Connector.kafkaconnect.aws.upbound.io/v1beta1`,
+`CustomPlugin.kafkaconnect.aws.upbound.io/v1beta1` and `WorkerConfiguration.kafkaconnect.aws.upbound.io/v1beta1`
+
+_Refer to the [v1.3.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.3.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.3.0)
+
 ## v1.2.1
 
 _Released 2024-03-18_
