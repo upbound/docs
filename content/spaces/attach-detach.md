@@ -77,7 +77,7 @@ Upbound uses a Pub/Sub model over TLS to communicate between Upbound's global co
 
 ### Data transmitted
 
-When users interact with the Upbound Console to explore, manage, or debug a self-hosted Space, their actions create request queries to the Upbound Connect Service. These requests send data back to the user's browser session in the Console, including:
+Users interact with the Upbound Console to generate request queries to the Upbound Connect Service while exploring, managing, or debugging a self-hosted Space. These requests send data back to the user's browser session in the Console, including:
 
 * Metadata for the Space
 * Metadata for managed control planes in the state
