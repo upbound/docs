@@ -52,7 +52,7 @@ To detach a self-hosted Space or a deleted self-hosted Space, run the following 
 up space detach "${UPBOUND_SPACE_NAME}"
 ```
 
-If the Space still exists, this command uninstalls the Connect agent and deletes the service account and permissions created previously.
+If the Space still exists, this command uninstalls the Connect agent and deletes the associated service account and permissions.
 
 ## Security model
 
