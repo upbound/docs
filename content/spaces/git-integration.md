@@ -1,6 +1,6 @@
 ---
 title: Git integration (alpha)
-weight: 100
+weight: 120
 description: A guide to how managed control planes in a space connect to git
 ---
 
