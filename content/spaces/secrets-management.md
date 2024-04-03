@@ -188,7 +188,9 @@ fake-secret   fake                       True
 
 ## External secrets in a control plane
 
+<!-- vale off -->
 You can use ESO API types in a Spaces-managed control plane as you would in a standalone Crossplane instance or Kubernetes cluster. Below is an example of the AWS Secrets Manager configuration.
+<!-- vale on -->
 
 ### Usage
 
@@ -253,4 +255,6 @@ spec:
 EOF
 ```
 
+<!-- vale off -->
 For a full guide on using ESO API types and how to connect it to various external secret stores, read the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/).
+<!-- vale on -->
