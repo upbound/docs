@@ -1,0 +1,4 @@
+description: |-
+    AnyAllConditions are used to determine if a policy rule should be applied by evaluating a
+    set of conditions. The declaration can contain nested `any` or `all` statements.
+    See: https://kyverno.io/docs/writing-policies/preconditions/
