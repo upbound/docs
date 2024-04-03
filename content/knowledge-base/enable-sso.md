@@ -20,7 +20,9 @@ Upbound offers SSO and Directory Sync in a customized wizard setup. You can conf
 
 SSO increases security and decreases common password or authentication problems. When a user attempts to log in to an application, the SSO workflow transparently redirects the authentication request to an already trusted identity provider. The Upbound implementation of SSO supports Security Assertion Markup Language (SAML) and OpenID Connect (OIDC) protocols to communicate between your IdP and Upbound.
 
+<!-- vale off -->
 If your organization requires SSO due to compliance or security restrictions, each time you integrate a new third party application, you must configure SSO in the new application.
+<!-- vale on -->
 
 ### Directory sync
 
