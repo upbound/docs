@@ -1,22 +1,26 @@
 ---
 title: Attach or detach from the Upbound Console
 weight: 120
-description: How to configure automatic upgrades of Crossplane in a managed control plane
+description: Enable and attach self-hosted Spaces in the Upbound console
 ---
 
 {{< hint "important" >}}
 This functionality is in preview and requires Spaces `v1.3.0`.
 {{< /hint >}}
 
-You can attach self-hosted Spaces to the [Upbound Console]({{<ref "concepts/console">}}) to use the rich ops and debugging experiences available only in the Console. 
+[Upbound]({{<ref "concepts/console">}}) allows you to attach self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
 
 ## Usage
 
 ### Attach
 
-To attach a self-hosted Space to the global Upbound Console, you need a preexisting [organization]({{<ref "concepts/accounts/organizations.md">}}) in Upbound's cloud. Make sure you're logged into that organization in the `up` CLI. Make sure your current kubecontext points to the Kubernetes cluster where you've installed the self-hosted Space software. 
+Before you begin, make sure you have:
+	
+- an existing Upbound [organization]({{<ref "concepts/accounts/organizations.md">}}) in Upbound's cloud. 
+- the `up` CLI installed and logged into your organization
+- `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 
-Give your Space a friendly name to show up in the Console. If you don't provide this, `up` automatically generates one for you:
+Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
 {{< editCode >}}
 ```ini
@@ -30,23 +34,25 @@ Attach the Space to the Console:
 up space attach "${UPBOUND_SPACE_NAME}"
 ```
 
-This command installs a Connect agent into the `upbound-system` namespace of your Space. It also creates and configures the necessary service account (robot) and permissions in your Upbound cloud organization necessary for communication.
+This command installs a Connect agent, creates a service account, and configures permissions in your Upbound cloud organization in the `upbound-system` namespace of your Space.
 
 Go to the [Upbound Console](https://console.upbound.io), log in, and choose the newly attached Space from the Space selector dropdown.
 
 {{<img src="spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
 
+{{< hint "note" >}}
 You can only attach a self-hosted Space to a single organization at a time.
+{{< /hint >}}
 
 ### Detach
 
-To detach a self-hosted Space which you attached prior (or it longer exists), run the following command:
+To detach a self-hosted Space or a deleted self-hosted Space, run the following command:
 
 ```bash
 up space detach "${UPBOUND_SPACE_NAME}"
 ```
 
-If the Space still exists, this command uninstalls the Connect agent installed prior. It also cleans up the service account (robot) and permissions created prior.
+If the Space still exists, this command uninstalls the Connect agent and deletes the service account and permissions created previously.
 
 ## Security model
 
@@ -60,29 +66,29 @@ This diagram illustrates a self-hosted Space running in AWS connected to the glo
 
 ### Data path
 
-Upbound uses a Pub/Sub model exposed over TLS to communicate between Upbound's global console and a user's self-hosted Space. Users' self-hosted Spaces establish a secure connection with `connect.upbound.io` and subscribe to an endpoint. The Upbound Console in turn communicates to the Space through that endpoint. The data flow appears like the following:
+Upbound uses a Pub/Sub model over TLS to communicate between Upbound's global console and your self-hosted Space. Self-hosted Spaces establish a secure connection with `connect.upbound.io` and subscribe to an endpoint. The Upbound Console communicates to the Space through that endpoint. The data flow is:
 
 1. Users sign in to the Upbound Console, redirecting to authenticate with an organization's configured Identity Provider via SSO.
-2. Once the users have authenticated, users can trigger requests from the Console, such as fetching a list of control planes or fetching the resources of a certain type from a specific control plane. These requests post as messages to the Upbound Connect service.
+2. Once authenticated, actions in the Console, like listing control planes or specific resource types from a control plane. These requests post as messages to the Upbound Connect service.
 3. A user's self-hosted Space polls the Upbound Connect service periodically for new messages, verifies the authenticity of the message, and fulfills the request contained.
-4. A user's self-hosted Space returns the results of the request to the Upbound Connect service, whereby the Console renders the results in the user's browser session.
+4. A user's self-hosted Space returns the results of the request to the Upbound Connect service and the Console renders the results in the user's browser session.
 
-**No data originating from your self-hosted Space is ever stored in Upbound's cloud.** The data is transient and contained only within the user's browser session. The Console needs it render things, like to present a tree of resources on a managed control plane.
+**Upbound never stores data originated from a self-hosted Space.** The data is transient and only exposed in the user's browser session. The Console needs this data to render your resources and control planes in the UI.
 
 ### Data transmitted
 
-Normal actions taken in the Console generate a variety of requests that go to your self-hosted Space. When users use the Upbound Console to explore, manage, and debug a self-hosted Space, their actions generate queries as described in the previous section. Data returns from the self-hosted Space, existing only in the user's browser session. The data which gets sent back and renders in the user's Console browser session could be any of the following:
+When users interact with the Upbound Console to explore, manage, or debug a self-hosted Space, their actions create request queries to the Upbound Connect Service. These requests send data back to the user's browser session in the Console, including:
 
 * Metadata for the Space
 * Metadata for managed control planes in the state
 * Configuration manifests for various resource types within your Space: Crossplane managed resources, composite resources, composite resource claims, Upbound shared secrets, Upbound shared backups, Crossplane providers, ProviderConfigs, Configurations, and Crossplane Composite Functions.
 
-It's important to note this kind of data only concerns resource configuration. There's no ability to gain visibility into any data _inside_ the resource managed by control planes running on your Space.
+{{< hint "important" >}}
+This data only concerns resource configuration. The data _inside_ the managed resource in your Space is not visible at any point.
+{{< /hint >}}
 
-**Upbound can't see your data.** Upbound doesn't have access to any of the session-based data rendered for your users in the Upbound Console. Likewise Upbound has no information about your self-hosted Space, other than the fact that you've attached a self-hosted Space, somewhere.
+**Upbound can't see your data.** Upbound doesn't have access to session-based data rendered for your users in the Upbound Console. Upbound has no information about your self-hosted Space, other than that you've attached a self-hosted Space.
 
 ### Threat vectors
 
-Only users with high enough access granted within your Upbound organization can use the console to perform write operations. These write operations could be like to create or delete a control plane, or to create or delete a control plane group. For a malicious actor to pose a threat to your self-hosted Space, they must first pass authentication via SSO to your Identity Provider. They must then gain the required level of access (editor or administrator access) within Upbound to perform any action beyond read-level ability.
-
-Employees of Upbound aren't members of your Identity Provider. A malicious Upbound employee doesn't have an ability to bypass the safeguard in place by using SSO to the Upbound Console.
+Only users with editor or administrative permissions can make changes using the Console like creating or deleting control planes or groups.
