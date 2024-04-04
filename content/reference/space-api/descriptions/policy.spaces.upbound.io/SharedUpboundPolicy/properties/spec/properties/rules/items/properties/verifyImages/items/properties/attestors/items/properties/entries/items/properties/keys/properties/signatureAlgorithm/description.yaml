@@ -1,0 +1,2 @@
+description: |-
+    Specify signature algorithm for public keys. Supported values are sha224, sha256, sha384 and sha512.

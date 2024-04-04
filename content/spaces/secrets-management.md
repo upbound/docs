@@ -1,8 +1,26 @@
 ---
-title: Secrets Management
+title: Secrets Management (alpha)
 weight: 150
 description: A guide for how to configure synchronizing external secrets into maanged control planes in a Space.
 ---
+
+{{< hint "important" >}}
+This feature is in alpha and off by default. To enable, set `features.alpha.sharedSecrets.enabled=true` when installing Spaces:
+
+```bash
+helm -n upbound-system upgrade --install spaces \
+  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.sharedSecrets.enabled=true" \
+  --wait
+```
+
+{{< /hint >}}
+
+
 
 Upbound has built-in features to help you manage secrets for control planes running in a Space. Upbound offers:
 
@@ -170,7 +188,9 @@ fake-secret   fake                       True
 
 ## External secrets in a control plane
 
+<!-- vale off -->
 You can use ESO API types in a Spaces-managed control plane as you would in a standalone Crossplane instance or Kubernetes cluster. Below is an example of the AWS Secrets Manager configuration.
+<!-- vale on -->
 
 ### Usage
 
@@ -235,4 +255,6 @@ spec:
 EOF
 ```
 
+<!-- vale off -->
 For a full guide on using ESO API types and how to connect it to various external secret stores, read the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/).
+<!-- vale on -->

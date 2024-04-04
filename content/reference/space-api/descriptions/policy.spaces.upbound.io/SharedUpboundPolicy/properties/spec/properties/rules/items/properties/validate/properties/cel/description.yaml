@@ -1,0 +1,2 @@
+description: |-
+    CEL allows validation checks using the Common Expression Language (https://kubernetes.io/docs/reference/using-api/cel/).
