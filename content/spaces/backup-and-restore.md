@@ -185,3 +185,5 @@ spec:
 
 - Deleting the `SharedBackup` and `SharedBackupSchedule` configurations does not automatically delete the created backups, unless `useOwnerReferencesInBackup` is set to true.
 - The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket.
+
+For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
