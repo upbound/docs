@@ -1,0 +1,2 @@
+description: |-
+    AWSAuthSecretRef holds secret references for AWS credentials both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.

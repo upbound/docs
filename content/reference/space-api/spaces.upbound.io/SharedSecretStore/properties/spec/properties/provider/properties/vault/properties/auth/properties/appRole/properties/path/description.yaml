@@ -1,0 +1,2 @@
+description: |-
+    Path where the App Role authentication backend is mounted in Vault, e.g: 'approle'

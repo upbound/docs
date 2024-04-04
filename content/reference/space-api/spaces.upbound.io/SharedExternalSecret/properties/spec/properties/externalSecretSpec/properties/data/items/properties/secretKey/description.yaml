@@ -1,0 +1,2 @@
+description: |-
+    SecretKey defines the key in which the controller stores the value. This is the key in the Kind=Secret

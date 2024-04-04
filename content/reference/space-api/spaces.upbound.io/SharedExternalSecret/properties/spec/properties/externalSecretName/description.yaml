@@ -1,0 +1,2 @@
+description: |-
+    ExternalSecretName is the name to use when creating external secret within a control plane. optional, if not set, SharedExternalSecret name will be used. When set, it is immutable.
