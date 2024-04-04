@@ -14,29 +14,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
 
-
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| "keys for configuring authentication".aws.bucket | string | `""` | See billing.storage.secretRef for authentication. Required if billing.storage.provider=aws. |
-| "keys for configuring authentication".aws.endpoint | string | `""` | None |
-| "keys for configuring authentication".aws.region | string | `""` | Required if billing.storage.provider=aws. |
-| "keys for configuring authentication".aws.tls | object | `{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}` | None |
-| "keys for configuring authentication".aws.tls."ca.crt" | bool | `false` | See billing.storage.secretRef. Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
-| "keys for configuring authentication".aws.tls.alpnProtocols | list | `[]` | None |
-| "keys for configuring authentication".aws.tls.verifyCertificate | bool | `true` | None |
-| "keys for configuring authentication".aws.tls.verifyHostname | bool | `true` | None |
-| "keys for configuring authentication".azure | object | `{"connectionString":"","container":"","endpoint":"","storageAccount":""}` | None |
-| "keys for configuring authentication".azure.connectionString | string | `""` | None |
-| "keys for configuring authentication".azure.container | string | `""` | Required if billing.storage.provider=azure. |
-| "keys for configuring authentication".azure.endpoint | string | `""` | None |
-| "keys for configuring authentication".azure.storageAccount | string | `""` | None |
-| "keys for configuring authentication".gcp.bucket | string | `""` | Required if billing.storage.provider=gcp. |
-| "keys for configuring authentication".gcp.tls | object | `{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}` | See billing.storage.secretRef for authentication. |
-| "keys for configuring authentication".gcp.tls."ca.crt" | bool | `false` | See billing.storage.secretRef. Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
-| "keys for configuring authentication".gcp.tls.alpnProtocols | list | `[]` | None |
-| "keys for configuring authentication".gcp.tls.verifyCertificate | bool | `true` | None |
-| "keys for configuring authentication".gcp.tls.verifyHostname | bool | `true` | None |
-| "keys for configuring authentication".name | string | `"billing-storage"` | AWS_ACCESS_KEY_ID: AWS access key ID. Used when provider is aws. \n AWS_SECRET_ACCESS_KEY: AWS secret access key. Used when provider is aws. \n AZURE_TENANT_ID: Azure tenant ID. Used when provider is azure. \n AZURE_CLIENT_ID: Azure client ID. Used when provider is azure. \n AZURE_CLIENT_SECRET: Azure client secret. Used when provider is azure. \n AZURE_USERNAME: Azure username. Used when provider is azure. \n AZURE_PASSWORD: Azure username. Used when provider is azure. \n google_application_credentials: GCP service account key JSON. Used when provider is gcp.\n The secret may also contain any of the following keys for configuring TLS. The corresponding value at billing.storage.<provider>.tls.<key> must also be set to true. \n "ca.crt": Custom CA certificate. Used when provider is aws or gcp. \n "tls.crt": Custom TLS certificate. Used when provider is aws or gcp. \n "tls.key": Custom TLS key. Used when provider is aws or gcp. |
 | account | string | `"notdemo"` |  |
 | api | object | `{"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-api","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085}}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-api"}}` | Configurations for the space api deployment. |
 | api.prometheus | object | `{"podMonitor":{"enabled":false,"interval":"30s"}}` | None |
@@ -102,15 +81,35 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.serviceAccount.annotations | object | `{}` | None |
 | apollo.serviceAccount.create | bool | `true` | None |
 | apollo.serviceAccount.name | string | `"mxe-apollo"` | None |
-| billing | object | `{"enabled":false,"storage":{"provider":"","secretRef":null}}` | Configurations for space billing. |
+| billing | object | `{"enabled":false,"storage":{"aws":{"bucket":"","endpoint":"","region":"","tls":{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}},"azure":{"connectionString":"","container":"","endpoint":"","storageAccount":""},"gcp":{"bucket":"","tls":{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}},"name":"billing-storage","provider":"","secretRef":null}}` | Configurations for space billing. |
 | billing.enabled | bool | `false` | None |
-| billing.storage | object | `{"provider":"","secretRef":null}` | None |
+| billing.storage | object | `{"aws":{"bucket":"","endpoint":"","region":"","tls":{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}},"azure":{"connectionString":"","container":"","endpoint":"","storageAccount":""},"gcp":{"bucket":"","tls":{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}},"name":"billing-storage","provider":"","secretRef":null}` | None |
+| billing.storage.aws.bucket | string | `""` | See billing.storage.secretRef for authentication. Required if billing.storage.provider=aws. |
+| billing.storage.aws.endpoint | string | `""` | None |
+| billing.storage.aws.region | string | `""` | Required if billing.storage.provider=aws. |
+| billing.storage.aws.tls | object | `{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}` | None |
+| billing.storage.aws.tls."ca.crt" | bool | `false` | See billing.storage.secretRef. Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.aws.tls.alpnProtocols | list | `[]` | None |
+| billing.storage.aws.tls.verifyCertificate | bool | `true` | None |
+| billing.storage.aws.tls.verifyHostname | bool | `true` | None |
+| billing.storage.azure | object | `{"connectionString":"","container":"","endpoint":"","storageAccount":""}` | None |
+| billing.storage.azure.connectionString | string | `""` | None |
+| billing.storage.azure.container | string | `""` | Required if billing.storage.provider=azure. |
+| billing.storage.azure.endpoint | string | `""` | None |
+| billing.storage.azure.storageAccount | string | `""` | None |
+| billing.storage.gcp.bucket | string | `""` | Required if billing.storage.provider=gcp. |
+| billing.storage.gcp.tls | object | `{"alpnProtocols":[],"ca.crt":false,"tls.crt":false,"tls.key":false,"verifyCertificate":true,"verifyHostname":true}` | See billing.storage.secretRef for authentication. |
+| billing.storage.gcp.tls."ca.crt" | bool | `false` | See billing.storage.secretRef. Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.gcp.tls.alpnProtocols | list | `[]` | None |
+| billing.storage.gcp.tls.verifyCertificate | bool | `true` | None |
+| billing.storage.gcp.tls.verifyHostname | bool | `true` | None |
+| billing.storage.name | string | `"billing-storage"` | Required if billing.enabled=true. The secret may contain any of these keys for configuring authentication: <br> AWS_ACCESS_KEY_ID: AWS access key ID. Used when provider is aws. <br> AWS_SECRET_ACCESS_KEY: AWS secret access key. Used when provider is aws. <br> AZURE_TENANT_ID: Azure tenant ID. Used when provider is azure. <br> AZURE_CLIENT_ID: Azure client ID. Used when provider is azure. <br> AZURE_CLIENT_SECRET: Azure client secret. Used when provider is azure. <br> AZURE_USERNAME: Azure username. Used when provider is azure. <br> AZURE_PASSWORD: Azure username. Used when provider is azure. <br> google_application_credentials: GCP service account key JSON. Used when provider is gcp.<br> The secret may also contain any of the following keys for configuring TLS. The corresponding value at billing.storage.<provider>.tls.<key> must also be set to true. <br> "ca.crt": Custom CA certificate. Used when provider is aws or gcp. <br> "tls.crt": Custom TLS certificate. Used when provider is aws or gcp. <br> "tls.key": Custom TLS key. Used when provider is aws or gcp. |
 | billing.storage.provider | string | `""` | Required if billing.enabled=true. Must be one of aws, gcp, azure |
 | billing.storage.secretRef | string | `nil` | None |
 | certificates | object | `{"clusterResourceNamespace":"cert-manager","provision":true,"space":{"clusterIssuer":"spaces-selfsigned"}}` | Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function. |
-| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources inclused in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected: \n * Shared Certificate Authority \n * Algorithm. (ECDSA) |
+| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources inclused in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected: <br> * Shared Certificate Authority <br> * Algorithm. (ECDSA) |
 | certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
-| clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into.\n Valid options are: aks, eks, gke, kind. |
+| clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into.<br> Valid options are: aks, eks, gke, kind. |
 | controlPlanes | object | `{"container":{"mxpAccountGate":{"tag":"1.0.0"},"mxpAccountGateInit":{"repository":"mxp-account-gate/initialize","tag":"1.0.0"},"mxpAuthzWebhook":{"tag":"1.0.0"},"mxpCharts":{"tag":"1.0.0"},"mxpGateway":{"repository":"mxp-gateway","tag":"1.0.0"},"mxpHealthCheck":{"repository":"mxp-healthcheck","tag":"1.0.0"},"mxpKsmConfig":{"tag":"1.0.0"}},"etcd":{"persistence":null},"ingress":{"annotations":{}},"otelcollector":{"enabled":true},"policies":{"limitRange":{"enabled":true}},"uxp":{"enableCompositionFunctions":true,"enableEnvironmentConfigs":true,"enableProviderIdentity":false,"metrics":{"enabled":true},"repository":"https://charts.upbound.io/stable","resourcesCrossplane":{"limits":{"cpu":"400m","memory":"500Mi"},"requests":{"cpu":"370m","memory":"400Mi"}},"resourcesRBACManager":{"limits":{"cpu":"50m","memory":"300Mi"},"requests":{"cpu":"25m","memory":"256Mi"}},"version":"1.14.5-up.1","xfn":{"resources":{"limits":{"cpu":"400m","memory":"500Mi"},"requests":{"cpu":"370m","memory":"400Mi"}}},"xgql":{"enabled":"true","replicas":1,"resources":{"limits":{"cpu":"500m","memory":"1Gi"},"requests":{"cpu":"50m","memory":"50Mi"}},"version":"v0.2.0-rc.0.153.g0a1d4ae"}},"vector":{"debug":false,"enabled":true,"otelcollector":{"enabled":true},"persistence":{"enabled":false,"size":"1Gi"},"replicas":1,"resources":{"limits":{},"requests":{"cpu":"200m","memory":"256Mi"}},"sinks":{"usage":{"buffer":{"maxEvents":"500","maxSize":"268435488"}}},"version":"0.22.1"},"velero":{"chartVersion":"5.2.0","prometheus":{"serviceMonitor":{"enabled":false}},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"75Mi"}}}}` | Configurations applied consistently across all ControlPlanes. |
 | controlPlanes.container | object | `{"mxpAccountGate":{"tag":"1.0.0"},"mxpAccountGateInit":{"repository":"mxp-account-gate/initialize","tag":"1.0.0"},"mxpAuthzWebhook":{"tag":"1.0.0"},"mxpCharts":{"tag":"1.0.0"},"mxpGateway":{"repository":"mxp-gateway","tag":"1.0.0"},"mxpHealthCheck":{"repository":"mxp-healthcheck","tag":"1.0.0"},"mxpKsmConfig":{"tag":"1.0.0"}}` | None |
 | controlPlanes.container.mxpAccountGate | object | `{"tag":"1.0.0"}` | None |
@@ -196,8 +195,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.vector.resources.requests.memory | string | `"256Mi"` | None |
 | controlPlanes.vector.sinks.usage | object | `{"buffer":{"maxEvents":"500","maxSize":"268435488"}}` | None |
 | controlPlanes.vector.sinks.usage.buffer | object | `{"maxEvents":"500","maxSize":"268435488"}` | None |
-| controlPlanes.vector.sinks.usage.buffer.maxEvents | string | `"500"` | String containing max number of events to buffer in memory. \n Relevant when mxp.vector.persistence.enabled=false. |
-| controlPlanes.vector.sinks.usage.buffer.maxSize | string | `"268435488"` | String containing max size of disk buffer in bytes. Must fit with other buffer.maxSize values in mxp.vector.persistence.size. \n Relevant when mxp.vector.persistence.enabled=true. |
+| controlPlanes.vector.sinks.usage.buffer.maxEvents | string | `"500"` | String containing max number of events to buffer in memory. <br> Relevant when mxp.vector.persistence.enabled=false. |
+| controlPlanes.vector.sinks.usage.buffer.maxSize | string | `"268435488"` | String containing max size of disk buffer in bytes. Must fit with other buffer.maxSize values in mxp.vector.persistence.size. <br> Relevant when mxp.vector.persistence.enabled=true. |
 | controlPlanes.vector.version | string | `"0.22.1"` | None |
 | controlPlanes.velero | object | `{"chartVersion":"5.2.0","prometheus":{"serviceMonitor":{"enabled":false}},"resources":{"limits":{},"requests":{"cpu":"100m","memory":"75Mi"}}}` | None |
 | controlPlanes.velero.chartVersion | string | `"5.2.0"` | None |
@@ -282,7 +281,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.sharedSecrets | object | `{"enabled":false}` | SharedSecrets enables the ability to use the SharedSecrets feature within this space. |
 | features.alpha.sharedSecrets.enabled | bool | `false` | None |
 | features.alpha.upboundPolicy.enabled | bool | `false` | This enables the SharedUpboundPolicy API within this space. |
-| features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
+| features.beta | object | `{}` | Beta features are on by default, but may be disabled. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
 | hostCluster | object | `{"provider":{"helm":{"version":"v0.17.0"},"kubernetes":{"version":"v0.12.1"}},"uxp":{"metrics":{"enabled":true},"version":"1.14.6-up.1"}}` | Configurations applied consistently across all XHostClusters. |
 | hostCluster.provider | object | `{"helm":{"version":"v0.17.0"},"kubernetes":{"version":"v0.12.1"}}` | None |
 | hostCluster.provider.helm | object | `{"version":"v0.17.0"}` | None |
@@ -298,7 +297,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the mxe-router deployment. |
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
-| registry | string | `"us-west1-docker.pkg.dev/orchestration-build/upbound-environments"` | Specifies the registry where the containers used in the spaces deployment are served from. |
+| registry | string | `"us-west1-docker.pkg.dev/orchestration-build/upbound-environments"` | Specifies the registry the containers used in the spaces deployment are served from. |
 | router | object | `{"controlPlane":{"extraArgs":["--service-node","mxe-router","--debug"],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-router","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80},"oidc":[],"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"extraArgs":["--service-node","mxe-router","--service-cluster","mxe-router"],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"admin":{"port":9091},"annotations":{},"http":{"port":8443},"type":"ClusterIP"}},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"mxp-hostcluster-certs"},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Configurations for the space router deployment. |
 | router.controlPlane | object | `{"extraArgs":["--service-node","mxe-router","--debug"],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-router","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}}` | None |
 | router.controlPlane.extraArgs | list | `["--service-node","mxe-router","--debug"]` | None |
@@ -383,7 +382,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | xpkg.providerHostCluster.repository | string | `"provider-host-cluster"` | None |
 | xpkg.providerHostCluster.tag | string | `"1.0.0"` | None |
 | xpkg.pullPolicy | string | `"IfNotPresent"` | None |
-
 
 
 {{< /table >}}
