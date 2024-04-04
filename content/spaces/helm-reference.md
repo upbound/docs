@@ -7,136 +7,60 @@ description: Spaces Helm chart configuration values
 
 This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
 
-## account
 
 {{< table "table table-striped" >}}
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| account | string | `"notdemo"` | The Upbound organization this installation is associated with. |
 
-{{</ table >}}
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
-## billing
 
-Configuration values for Spaces billing settings.
+# spaces
 
-{{< table "table table-striped" >}}
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| billing.enabled | bool | `false` |  |
-| billing.storage.aws.bucket | string | `""` |  |
-| billing.storage.aws.endpoint | string | `""` |  |
-| billing.storage.aws.region | string | `""` |  |
-| billing.storage.aws.tls."ca.crt" | bool | `false` |  |
-| billing.storage.aws.tls."tls.crt" | bool | `false` |  |
-| billing.storage.aws.tls."tls.key" | bool | `false` |  |
-| billing.storage.aws.tls.alpnProtocols | list | `[]` |  |
-| billing.storage.aws.tls.verifyCertificate | bool | `true` |  |
-| billing.storage.aws.tls.verifyHostname | bool | `true` |  |
-| billing.storage.azure.connectionString | string | `""` |  |
-| billing.storage.azure.container | string | `""` |  |
-| billing.storage.azure.endpoint | string | `""` |  |
-| billing.storage.azure.storageAccount | string | `""` |  |
-| billing.storage.gcp.bucket | string | `""` |  |
-| billing.storage.gcp.tls."ca.crt" | bool | `false` |  |
-| billing.storage.gcp.tls."tls.crt" | bool | `false` |  |
-| billing.storage.gcp.tls."tls.key" | bool | `false` |  |
-| billing.storage.gcp.tls.alpnProtocols | list | `[]` |  |
-| billing.storage.gcp.tls.verifyCertificate | bool | `true` |  |
-| billing.storage.gcp.tls.verifyHostname | bool | `true` |  |
-| billing.storage.provider | string | `""` | Required if `billing.enabled`=`true`. Valid values: `aws`, `gcp`, `azure` |
-| billing.storage.secretRef.name | string | `"billing-storage"` |  |
+A Helm chart for Upbound Spaces
 
-{{</ table >}}
-
-## certificates
-
-Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function.
-
-{{< table "table table-striped" >}}
+## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected:<br>* Shared Certificate Authority<br>* Algorithm. (ECDSA)  |
+| certificates | object | `{"clusterResourceNamespace":"cert-manager","provision":true,"space":{"clusterIssuer":"spaces-selfsigned"}}` | Certificates configuration |
+| certificates.clusterResourceNamespace | string | `"cert-manager"` | Specifies the cluster resource namespace for the cert-manager installation. |
+| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. |
 | certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
-
-{{</ table >}}
-
-## clusterType
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into. <br> Valid options are: `aks`, `eks`, `gke`, `kind`. |
-
-{{</ table >}}
-
-## deletion policy
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| deletionPolicy | string | `"Delete"` | Specifies if the supporting APIs for the Spaces deployment should be handled on a deletion request. Possible options are "Delete" or "Orphan". If "Delete" is specified, on performing a 'helm uninstall', the Crossplane configurations that support the installation will also be deleted along with the resources that make the spaces installation. |
-
-{{</ table >}}
-
-## features
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| features.alpha.argocdPlugin.enabled | bool | `false` |  |
-| features.alpha.argocdPlugin.target.externalCluster.enabled | bool | `false` |  |
-| features.alpha.argocdPlugin.target.externalCluster.secret.key | string | `"kubeconfig"` |  |
-| features.alpha.argocdPlugin.target.externalCluster.secret.name | string | `"kubeconfig"` |  |
-| features.alpha.argocdPlugin.target.secretNamespace | string | `"argocd"` |  |
-| features.alpha.controlPlaneBackup.enabled | bool | `false` |  |
-| features.alpha.featuresAnnotation.enabled | bool | `false` |  |
-| features.alpha.gitSource.enabled | bool | `true` |  |
-| features.alpha.kine.enabled | bool | `false` |  |
-| features.alpha.sharedSecrets.enabled | bool | `false` |  |
-| features.alpha.sharedSecrets.namespace | string | `"external-secrets"` |  |
-
-{{</ table >}}
-
-## ingress
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| ingress.annotations | object | `{}` |   Allows setting ingress annotations for the external facing Ingress that terminates at the mxe-router deployment. |
+| controller | object | `{"controller":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-controller","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"metrics":{"port":8085},"webhook":{"port":9443}}},"gc":{"extraArgs":[],"failedJobsHistoryLimit":1,"image":{"repository":"mxe-hostcluster-gc","tag":"1.0.0"},"schedule":"*/15 * * * *","successfulJobsHistoryLimit":0},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"serviceAccount":{"annotations":{},"create":true,"name":""},"webhookInit":{"image":{"pullPolicy":"IfNotPresent","repository":"mxe-controller/initialize","tag":"1.0.0"}}}` | Controller configuration |
+| controller.controller | object | `{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-controller","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"metrics":{"port":8085},"webhook":{"port":9443}}}` | Controller specific configuration |
+| controller.gc | object | `{"extraArgs":[],"failedJobsHistoryLimit":1,"image":{"repository":"mxe-hostcluster-gc","tag":"1.0.0"},"schedule":"*/15 * * * *","successfulJobsHistoryLimit":0}` | Garbage collector configuration for the controller |
+| controller.prometheus | object | `{"podMonitor":{"enabled":false,"interval":"30s"}}` | Prometheus monitoring configuration for the controller |
+| controller.serviceAccount | object | `{"annotations":{},"create":true,"name":""}` | Service account configuration for the controller |
+| controller.webhookInit | object | `{"image":{"pullPolicy":"IfNotPresent","repository":"mxe-controller/initialize","tag":"1.0.0"}}` | Webhook initialization configuration for the controller |
+| deletionPolicy | object | `{"action":"Delete"}` | Deletion policy configuration |
+| deletionPolicy.action | string | `"Delete"` | that make the spaces installation. |
+| general | object | `{"account":"notdemo","clusterType":"kind","version":"1.0.0"}` | General configuration for the installation |
+| general.account | string | `"notdemo"` | The Upbound organization this installation is associated with. |
+| general.clusterType | string | `"kind"` | Valid options are: aks, eks, gke, kind. |
+| general.version | string | `"1.0.0"` | Overall artifact version that affects xpkgs and related components. |
+| imagePullSecrets | list | `[{"name":"upbound-pull-secret"}]` | Image pull secrets configuration |
+| imagePullSecrets[0] | object | `{"name":"upbound-pull-secret"}` | NOTE: only an imagePullSecret of "upbound-pull-secret" is currently supported. |
+| ingress | object | `{"annotations":{},"host":"proxy.upbound-127.0.0.1.nip.io","provision":true}` | Ingress configuration |
+| ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the mxe-router deployment. |
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
+| registry | object | `{"url":"us-west1-docker.pkg.dev/orchestration-build/upbound-environments"}` | Container registry configuration |
+| registry.url | string | `"us-west1-docker.pkg.dev/orchestration-build/upbound-environments"` | Specifies the registry where the containers used in the spaces deployment are served from. |
+| router | object | `{"controlPlane":{"extraArgs":["--service-node","mxe-router","--debug"],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-router","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80},"oidc":[],"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"extraArgs":["--service-node","mxe-router","--service-cluster","mxe-router"],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"admin":{"port":9091},"annotations":{},"http":{"port":8443},"type":"ClusterIP"}},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"mxp-hostcluster-certs"},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Router configuration |
+| router.controlPlane | object | `{"extraArgs":["--service-node","mxe-router","--debug"],"image":{"pullPolicy":"IfNotPresent","repository":"mxe-router","tag":"1.0.0"},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}}` | Control plane specific configuration for the router |
+| router.hpa | object | `{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80}` | Horizontal Pod Autoscaler configuration for the router |
+| router.oidc | list | `[]` | OIDC configuration for the router |
+| router.prometheus | object | `{"podMonitor":{"enabled":false,"interval":"30s"}}` | Prometheus monitoring configuration for the router |
+| router.proxy | object | `{"extraArgs":["--service-node","mxe-router","--service-cluster","mxe-router"],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"admin":{"port":9091},"annotations":{},"http":{"port":8443},"type":"ClusterIP"}}` | Proxy specific configuration for the router |
+| router.secretRefs | object | `{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"mxp-hostcluster-certs"}` | Secret references for the router |
+| router.serviceAccount | object | `{"annotations":{},"create":true,"name":""}` | Service account configuration for the router |
+| space | object | `{"labels":{}}` | Space configuration |
+| space.labels | object | `{}` | Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
 
-{{</ table >}}
 
-## router
 
-Configuration values for the Space router deployment.
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| router.oidc | list | `[]` | Configures [OpenID Connect Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens). <br> Current supported arguments for this array are a subset of the arguments defined in the above document. Those arguments include:<br>`--oidc-issuer-url` <br> `--oidc-client-id` <br> `--oidc-username-claim` |
-
-{{</ table >}}
-
-## space
-
-Configuration values applied consistently across the space.
-
-{{< table "table table-striped" >}}
-
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| space.labels | object | `{}` |  Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
 
 {{</ table >}}
 
