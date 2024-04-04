@@ -13,6 +13,18 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.0.1
+
+_Released 2024-04-04_
+
+* Sets the Azure partner tracking `GUID` to `a9cee75d-8f11-42e4-bc19-953757f4ea3c` in the requests that the provider makes.
+* Adds two words to the `UserAgent` header: the provider name/version such as `crossplane-provider-upjet-azure/v1.0.1` and the
+`CPU` architecture and operating system name the provider is running on, such as `(arm64-darwin)`
+
+_Refer to the [v1.0.1 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.0.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.0.1)
+
 ## v1.0.0
 
 _Released 2024-03-21_

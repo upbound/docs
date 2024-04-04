@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.3.1
+
+_Released 2024-04-04_
+
+* This release includes an important bug fix, please select the release notes for more details.
+
+_Refer to the [v1.3.1 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.3.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.3.1)
+
 ## v1.3.0
 
 _Released 2024-03-28_
