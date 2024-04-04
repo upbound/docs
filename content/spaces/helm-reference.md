@@ -28,7 +28,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | api.proxy.image | object |  | None |
 | api.proxy.image.pullPolicy | string | `"IfNotPresent"` | None |
 | api.proxy.image.repository | string | `"mxe-api"` | None |
-| api.proxy.image.tag | string | `"1.0.0"` | None |
+| api.proxy.image.tag | string | `"0.1.0"` | None |
 | api.proxy.resources | object | | None |
 | api.proxy.resources.limits | object |  | None |
 | api.proxy.resources.limits.cpu | string | `"1000m"` | None |
@@ -55,7 +55,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.apiserver.image | object |  | None |
 | apollo.apiserver.image.pullPolicy | string | `"IfNotPresent"` | None |
 | apollo.apiserver.image.repository | string | `"mxe-apollo"` | None |
-| apollo.apiserver.image.tag | string | `"1.0.0"` | None |
+| apollo.apiserver.image.tag | string | `"0.1.0"` | None |
 | apollo.apiserver.resources | object | | None |
 | apollo.apiserver.resources.limits | object | | None |
 | apollo.apiserver.resources.limits.cpu | string | `"1000m"` | None |
@@ -113,22 +113,22 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes | object |  | Configurations applied consistently across all ControlPlanes. |
 | controlPlanes.container | object |  | None |
 | controlPlanes.container.mxpAccountGate | object |  | None |
-| controlPlanes.container.mxpAccountGate.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpAccountGate.tag | string | `"0.1.0"` | None |
 | controlPlanes.container.mxpAccountGateInit | object | | None |
 | controlPlanes.container.mxpAccountGateInit.repository | string | `"mxp-account-gate/initialize"` | None |
-| controlPlanes.container.mxpAccountGateInit.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpAccountGateInit.tag | string | `"0.1.0"` | None |
 | controlPlanes.container.mxpAuthzWebhook | object |  | None |
-| controlPlanes.container.mxpAuthzWebhook.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpAuthzWebhook.tag | string | `"0.1.0"` | None |
 | controlPlanes.container.mxpCharts | object |  | None |
-| controlPlanes.container.mxpCharts.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpCharts.tag | string | `"0.1.0"` | None |
 | controlPlanes.container.mxpGateway | object |  | None |
 | controlPlanes.container.mxpGateway.repository | string | `"mxp-gateway"` | None |
-| controlPlanes.container.mxpGateway.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpGateway.tag | string | `"0.1.0"` | None |
 | controlPlanes.container.mxpHealthCheck | object | | None |
 | controlPlanes.container.mxpHealthCheck.repository | string | `"mxp-healthcheck"` | None |
-| controlPlanes.container.mxpHealthCheck.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpHealthCheck.tag | string | `"0.1.0"` | None |
 | controlPlanes.container.mxpKsmConfig | object | | None |
-| controlPlanes.container.mxpKsmConfig.tag | string | `"1.0.0"` | None |
+| controlPlanes.container.mxpKsmConfig.tag | string | `"0.1.0"` | None |
 | controlPlanes.etcd | object |  | None |
 | controlPlanes.etcd.persistence | string | `nil` | None |
 | controlPlanes.ingress | object | | None |
@@ -214,7 +214,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.controller.image | object |  | None |
 | controller.controller.image.pullPolicy | string | `"IfNotPresent"` | None |
 | controller.controller.image.repository | string | `"mxe-controller"` | None |
-| controller.controller.image.tag | string | `"1.0.0"` | None |
+| controller.controller.image.tag | string | `"0.1.0"` | None |
 | controller.controller.resources | object |  | None |
 | controller.controller.resources.limits | object |  | None |
 | controller.controller.resources.limits.cpu | string | `"1000m"` | None |
@@ -232,14 +232,14 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.gc.failedJobsHistoryLimit | int | `1` | None |
 | controller.gc.image | object |  | None |
 | controller.gc.image.repository | string | `"mxe-hostcluster-gc"` | None |
-| controller.gc.image.tag | string | `"1.0.0"` | None |
+| controller.gc.image.tag | string | `"0.1.0"` | None |
 | controller.gc.schedule | string | `"*/15 * * * *"` | None |
 | controller.gc.successfulJobsHistoryLimit | int | `0` | None |
 | controller.mxeInit | object |  | None |
 | controller.mxeInit.image | object | | None |
 | controller.mxeInit.image.pullPolicy | string | `"IfNotPresent"` | None |
 | controller.mxeInit.image.repository | string | `"mxe-apis"` | None |
-| controller.mxeInit.image.tag | string | `"1.0.0"` | None |
+| controller.mxeInit.image.tag | string | `"0.1.0"` | None |
 | controller.prometheus | object | | None |
 | controller.prometheus.podMonitor | object | | None |
 | controller.prometheus.podMonitor.enabled | bool | `false` | None |
@@ -255,7 +255,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.webhookInit.image | object |  | None |
 | controller.webhookInit.image.pullPolicy | string | `"IfNotPresent"` | None |
 | controller.webhookInit.image.repository | string | `"mxe-controller/initialize"` | None |
-| controller.webhookInit.image.tag | string | `"1.0.0"` | None |
+| controller.webhookInit.image.tag | string | `"0.1.0"` | None |
 | deletionPolicy | string | `"Delete"` | Specifies if the supporting APIs for the Spaces deployment should be handled on a deletion request. Possible options are "Delete" or "Orphan". If "Delete" is specified, on performing a 'helm uninstall', the Crossplane configurations that support the installation will also be deleted along with the resources that make the spaces installation. |
 | features.alpha | object | | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
 | features.alpha.argocdPlugin | object | | None |
@@ -303,7 +303,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.controlPlane.image | object | | None |
 | router.controlPlane.image.pullPolicy | string | `"IfNotPresent"` | None |
 | router.controlPlane.image.repository | string | `"mxe-router"` | None |
-| router.controlPlane.image.tag | string | `"1.0.0"` | None |
+| router.controlPlane.image.tag | string | `"0.1.0"` | None |
 | router.controlPlane.resources | object | | None |
 | router.controlPlane.resources.limits | object | | None |
 | router.controlPlane.resources.limits.cpu | string | `"1000m"` | None |
@@ -363,23 +363,23 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.serviceAccount.name | string | `""` | None |
 | space | object | `{"labels":{}}` | Configurations that are applied consistently across the space. |
 | space.labels | object | `{}` | Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
-| version | string | `"1.0.0"` | Overall artifact version that affects xpkgs and related components. |
+| version | string | `"0.1.0"` | Overall artifact version that affects xpkgs and related components. |
 | xpkg | object | | xpkg repository and tag references. |
 | xpkg.mxeCompositionTemplates | object | | None |
 | xpkg.mxeCompositionTemplates.repository | string | `"mxe-composition-templates"` | None |
-| xpkg.mxeCompositionTemplates.tag | string | `"1.0.0"` | None |
+| xpkg.mxeCompositionTemplates.tag | string | `"0.1.0"` | None |
 | xpkg.mxeIngress | object | | None |
 | xpkg.mxeIngress.repository | string | `"mxe-ingress"` | None |
-| xpkg.mxeIngress.tag | string | `"1.0.0"` | None |
+| xpkg.mxeIngress.tag | string | `"0.1.0"` | None |
 | xpkg.mxpControlPlane | object | | None |
 | xpkg.mxpControlPlane.repository | string | `"mxp-control-plane"` | None |
-| xpkg.mxpControlPlane.tag | string | `"1.0.0"` | None |
+| xpkg.mxpControlPlane.tag | string | `"0.1.0"` | None |
 | xpkg.mxpHostCluster | object | | None |
 | xpkg.mxpHostCluster.repository | string | `"mxp-host-cluster"` | None |
-| xpkg.mxpHostCluster.tag | string | `"1.0.0"` | None |
+| xpkg.mxpHostCluster.tag | string | `"0.1.0"` | None |
 | xpkg.providerHostCluster | object | | None |
 | xpkg.providerHostCluster.repository | string | `"provider-host-cluster"` | None |
-| xpkg.providerHostCluster.tag | string | `"1.0.0"` | None |
+| xpkg.providerHostCluster.tag | string | `"0.1.0"` | None |
 | xpkg.pullPolicy | string | `"IfNotPresent"` | None |
 
 
