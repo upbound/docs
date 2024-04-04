@@ -41,6 +41,7 @@ Kube
 Kubelet
 kubelogin
 kubeconfig's
+kubecontext
 Kyverno
 Kyverno's
 MCP

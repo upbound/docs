@@ -1,6 +1,6 @@
 ---
 title: Migrating to Spaces (alpha)
-weight: 100
+weight: 300
 description: A guide to how to migrate to a managed control plane in a Space
 ---
 
