@@ -15,13 +15,13 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 {{< /hint >}}
 
-Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Space. Upbound's feature an integrated observability pipeline built on the [OpenTelemetry](https://opentelemetry.io/) project. 
+Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Space. Upbound provides an integrated observability pipeline built on the [OpenTelemetry](https://opentelemetry.io/) project.
 
-[OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) are deployed to collect, process, and expose telemetry data in Spaces. Upbound deploys a central collector at the Space-level along with collectors per control plane. By default, all collectors belonging to control planes pass their telemetry data to the Spaces collector.
+The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a central collector at the Space-level and collectors per control plane. Control plane collectors pass their telemetry data to the Spaces collector by default.
 
 ## Usage
 
-Configuration of the pipeline is done at installation time. In addition to enabling the feature, you have the ability to configure:
+When you install a Space, you can configure the pipeline and related options. You can configure:
 
 * which exporter is used
 * an `API Key` to enable a Space to write to the designated exporter.
@@ -29,7 +29,7 @@ Configuration of the pipeline is done at installation time. In addition to enabl
 
 For information about which exporters are available, consult the OpenTelemetry Collector [exporter docs](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
-Below is an example for how to configure it:
+The examples below document how to configure observability with the `up` CLI or Helm installations.
 
 {{< tabs >}}
 
@@ -74,5 +74,5 @@ helm -n upbound-system upgrade --install spaces \
 {{< /tabs >}}
 
 {{<hint "important" >}}
-In Spaces v1.3, we're only exposing a space-level installation time configuration. In the next iteration, we plan to enable the ability to configure export backends per control plane group or for individual control planes.
+In Spaces v1.3, you must configure Space-level observability when you first install a Space. In future releases, Upbound will allow backend exports per control plane group or per individual control planes.
 {{< /hint >}}
