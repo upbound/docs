@@ -480,7 +480,7 @@ The {{<hover label="cc" line="7">}}spec{{</hover>}} is empty.
 apiVersion: pkg.crossplane.io/v1beta1
 kind: DeploymentRuntimeConfig
 metadata:
-  name: irsa-controllerconfig
+  name: irsa-runtimeconfig
 spec:
   serviceAccountTemplate:
     metadata:
