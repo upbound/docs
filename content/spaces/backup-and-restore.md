@@ -25,8 +25,16 @@ Upbound allows you to configure backup and restore for control planes in the Spa
 
 Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target, such as AWS S3.
 
-```bash
-KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bucket-creds
+stringData:
+  creds: |
+    [default]
+    aws_access_key_id=***
+    aws_secret_access_key=***
 ```
 
 #### Shared backup
@@ -126,6 +134,12 @@ This schedule backs up control planes with matching labels every hour.
 
 You can create a manual backup of a managed control plane from the Space cluster.
 
+First, create a generic secret for the backup:
+
+```bash
+KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
+```
+
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: Backup
@@ -146,17 +160,10 @@ kubectl delete controlplane my-awesome-ctp
 
 ### Restore
 
+
 <!-- vale off -->
-To restore from a backup, check the `ControlPlane` to make sure it's ready.
+To restore from a backup, create a new control plane with the `sharedBackupConfigRef` or `BackupConfigRef` you created.
 <!-- vale on -->
-
-```bash
-kubectl wait controlplane my-awesome-ctp --for condition=Ready=True --timeout=3600s && \
-kubectl get secret kubeconfig-my-awesome-ctp -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp.yaml
-```
-
-
-Next, start the restore process from the backup you created.
 
 ```yaml
 ---
@@ -176,6 +183,17 @@ spec:
       name: default
   writeConnectionSecretToRef:
     name: kubeconfig-my-awesome-restored-ctp
+```
+
+
+<!-- vale off -->
+Next, check the `ControlPlane` to make sure it's ready.
+<!-- vale on -->
+
+```bash
+kubectl wait controlplane my-awesome-restored-ctp --for condition=Ready=True --timeout=3600s && \
+kubectl get secret kubeconfig-my-awesome-restored-ctp -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp.yaml && \
+KUBECONFIG=/tmp/ctp.yaml kubectl get secret super-secret-secret -n default
 ```
 
 ## Considerations
