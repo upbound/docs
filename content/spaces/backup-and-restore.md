@@ -160,7 +160,7 @@ You can restore a control plane's state from a backup in a few steps.
 <!-- vale on -->
 
 
-First, create a Secret in the source control plane:
+For this example, create a Secret in the source control plane. This secret is generic control plane data to show how the restore process works.
 
 ```bash
 kubectl wait controlplane my-awesome-ctp --for condition=Ready=True --timeout=3600s && \
