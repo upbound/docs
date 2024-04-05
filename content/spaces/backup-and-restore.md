@@ -38,7 +38,7 @@ stringData:
 ```
 
 <!-- vale off -->
-For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md).
+For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md). The [Thanos storage project](https://thanos.io/) is how Upbound implements object storage and handles control plane backups.
 <!-- vale on -->
 
 #### Shared backup
