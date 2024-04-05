@@ -65,7 +65,7 @@ spec:
         key: creds
 ```
 
-Then create two managed control planes with references to the `SharedBackupConfig`.
+Then create two managed control planes.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -163,7 +163,7 @@ kubectl delete controlplane my-awesome-ctp
 
 
 <!-- vale off -->
-To restore from a backup, create a new control plane with the `sharedBackupConfigRef` or `BackupConfigRef` you created.
+You can restore a control plane's state from a backup in a few steps.
 <!-- vale on -->
 
 
