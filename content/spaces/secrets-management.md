@@ -1,25 +1,19 @@
 ---
-title: Secrets Management (alpha)
+title: Secrets Management
 weight: 150
 description: A guide for how to configure synchronizing external secrets into maanged control planes in a Space.
 ---
 
 {{< hint "important" >}}
-This feature is in alpha and off by default. To enable, set `features.alpha.sharedSecrets.enabled=true` when installing Spaces:
+This feature is in preview and is off by default. To enable, set `features.alpha.sharedSecrets.enabled=true` when installing Spaces:
 
 ```bash
-helm -n upbound-system upgrade --install spaces \
-  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
-  --set "account=${UPBOUND_ACCOUNT}" \
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  ...
   --set "features.alpha.sharedSecrets.enabled=true" \
-  --wait
 ```
 
 {{< /hint >}}
-
 
 
 Upbound has built-in features to help you manage secrets for control planes running in a Space. Upbound offers:

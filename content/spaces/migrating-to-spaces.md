@@ -1,11 +1,11 @@
 ---
-title: Migrating to Spaces (alpha)
+title: Migrating to Spaces
 weight: 300
 description: A guide to how to migrate to a managed control plane in a Space
 ---
 
 {{< hint "important" >}}
-This functionality is in alpha maturity.
+This feature is in preview.
 {{< /hint >}}
 
 The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a managed control plane in a Space.

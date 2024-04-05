@@ -49,7 +49,6 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "observability.config.exporters.otlphttp.headers.api-key=${NEWRELIC_API_KEY}" \
   --set "observability.config.exportPipeline.metrics={debug,otlphttp}" \
   --set "observability.config.exportPipeline.traces={debug,otlphttp}"
-  --wait
 ```
 
 {{< /tab >}}
@@ -67,7 +66,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "observability.config.exporters.otlphttp.endpoint=${NEWRELIC_ENDPOINT}" \
   --set "observability.config.exporters.otlphttp.headers.api-key=${NEWRELIC_API_KEY}" \
   --set "observability.config.exportPipeline.metrics={debug,otlphttp}" \
-  --set "observability.config.exportPipeline.traces={debug,otlphttp}"
+  --set "observability.config.exportPipeline.traces={debug,otlphttp}" \
   --wait
 ```
 
