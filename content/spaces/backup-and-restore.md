@@ -38,7 +38,7 @@ stringData:
 ```
 
 <!-- vale off -->
-For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md).
+For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md). The [Thanos storage project](https://thanos.io/) is how Upbound implements object storage and handles control plane backups.
 <!-- vale on -->
 
 #### Shared backup
@@ -160,7 +160,7 @@ You can restore a control plane's state from a backup in a few steps.
 <!-- vale on -->
 
 
-First, create a Secret in the source control plane:
+For this example, create a Secret in the source control plane. This secret is generic control plane data to show how the restore process works.
 
 ```bash
 kubectl wait controlplane my-awesome-ctp --for condition=Ready=True --timeout=3600s && \
