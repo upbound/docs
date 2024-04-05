@@ -23,7 +23,7 @@ Upbound allows you to configure backup and restore for control planes in the Spa
 
 #### Create a backup secret
 
-Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target, such as AWS S3.
+Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target. The example below contains the configuration for an AWS S3 store:
 
 ```yaml
 apiVersion: v1
@@ -36,6 +36,8 @@ stringData:
     aws_access_key_id=***
     aws_secret_access_key=***
 ```
+
+For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md).
 
 #### Shared backup
 
@@ -93,7 +95,7 @@ spec:
     name: kubeconfig-my-second-awesome-ctp
 ```
 
-Then a `SharedBackup`:
+Then a `SharedBackup` with a label selector:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -132,13 +134,7 @@ This schedule backs up control planes with matching labels every hour.
 
 #### Single backup
 
-You can create a manual backup of a managed control plane from the Space cluster.
-
-First, create a generic secret for the backup:
-
-```bash
-KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
-```
+You can create a manual backup of a managed control plane from the Space cluster:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -165,6 +161,45 @@ kubectl delete controlplane my-awesome-ctp
 To restore from a backup, create a new control plane with the `sharedBackupConfigRef` or `BackupConfigRef` you created.
 <!-- vale on -->
 
+
+First, create a Secret in the source control plane:
+
+```bash
+kubectl wait controlplane my-awesome-ctp --for condition=Ready=True --timeout=3600s && \
+kubectl get secret kubeconfig-my-awesome-ctp -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp.yaml && \
+KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
+```
+
+Next, run a new backup:
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Backup
+metadata:
+  name: restore-me
+  namespace: default
+spec:
+  configRef:
+    kind: SharedBackupConfig
+    name: default
+  controlPlane: my-awesome-ctp
+  deletionPolicy: Delete
+```
+
+Wait until the backup completes:
+
+```bash
+kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s
+```
+
+You can delete the control plane after the backup completes:
+
+```
+kubectl delete controlplane my-awesome-ctp
+```
+
+Next, start the restore process from the backup you created:
+
 ```yaml
 ---
 apiVersion: spaces.upbound.io/v1beta1
@@ -187,7 +222,7 @@ spec:
 
 
 <!-- vale off -->
-Next, check the `ControlPlane` to make sure it's ready.
+Finally, check that the restored control plane is ready. Once the control plane is ready, verify that the secret you created is present:
 <!-- vale on -->
 
 ```bash
