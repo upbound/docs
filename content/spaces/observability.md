@@ -27,7 +27,13 @@ When you install a Space, you can configure the pipeline and related options. Yo
 * an `API Key` to enable a Space to write to the designated exporter.
 * whether metrics and/or traces route to the desired exporter.
 
-For information about which exporters are available, consult the OpenTelemetry Collector [exporter docs](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
+For information about which exporters are available, consult the OpenTelemetry Collector [exporter docs](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md). 
+
+This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) to be installed on the Space cluster. Install this now if you haven't already:
+
+```bash
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.96.0/opentelemetry-operator.yaml
+```
 
 The examples below document how to configure observability with the `up` CLI or Helm installations.
 
@@ -35,12 +41,8 @@ The examples below document how to configure observability with the `up` CLI or 
 
 {{< tab "Up CLI" >}}
 
-```bash {hl_lines="7-11"}
-helm -n upbound-system upgrade --install spaces \
-  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+```bash {hl_lines="3-7"}
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.observability.enabled=true" \
   --set "observability.config.exporters.otlphttp.endpoint=${NEWRELIC_ENDPOINT}" \
