@@ -65,7 +65,7 @@ spec:
         key: creds
 ```
 
-Then create a managed control plane with reference to the `SharedBackupConfig`.
+Then create two managed control planes with references to the `SharedBackupConfig`.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -76,9 +76,6 @@ metadata:
   name: my-awesome-ctp
   namespace: default
 spec:
-  backup:
-    sharedBackupConfigRef:
-      name: default
   writeConnectionSecretToRef:
     name: kubeconfig-my-awesome-ctp
 ---
@@ -90,9 +87,6 @@ metadata:
   name: my-second-awesome-ctp
   namespace: default
 spec:
-  backup:
-    sharedBackupConfigRef:
-      name: default
   writeConnectionSecretToRef:
     name: kubeconfig-my-second-awesome-ctp
 ```
@@ -106,6 +100,9 @@ metadata:
   name: custom-shared-backup
   namespace: default
 spec:
+  configRef:
+    kind: SharedBackupConfig
+    name: default
   controlPlaneSelector:
     labelSelectors:
     - matchLabels:
@@ -124,8 +121,11 @@ kind: SharedBackupSchedule
 metadata:
   name: custom-schedule
   namespace: default
-spec: "@every 1h"
-  schedule:
+spec:
+  schedule: "@every 1h"
+  configRef:
+    kind: SharedBackupConfig
+    name: default
   controlPlaneSelector:
     labelSelectors:
     - matchLabels:
@@ -145,6 +145,9 @@ metadata:
   name: my-awesome-ctp-backup
   namespace: default
 spec:
+  configRef:
+    kind: SharedBackupConfig
+    name: default
   controlPlane: my-awesome-ctp
   deletionPolicy: Delete
 ```
@@ -214,10 +217,7 @@ spec:
     source:
       apiGroup: spaces.upbound.io
       kind: Backup
-      name: my-awesome-ctp-backup
-  backup:
-    sharedBackupConfigRef:
-      name: default
+      name: restore-me
   writeConnectionSecretToRef:
     name: kubeconfig-my-awesome-restored-ctp
 ```
@@ -237,7 +237,6 @@ KUBECONFIG=/tmp/ctp.yaml kubectl get secret super-secret-secret -n default
 
 - Deleting the `SharedBackup` and `SharedBackupSchedule` resources don't automatically delete the created backups, unless `useOwnerReferencesInBackup` is `true`.
 <!-- vale off -->
-- The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket.
-
+- The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket, by default it's set to `Orphan`. Set it to `Delete` to cleanup uploaded files in the bucket.
 For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
 <!-- vale on -->
