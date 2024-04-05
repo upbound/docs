@@ -146,7 +146,9 @@ kubectl delete controlplane my-awesome-ctp
 
 ### Restore
 
+<!-- vale off -->
 To restore from a backup, check the `ControlPlane` to make sure it's ready.
+<!-- vale on -->
 
 ```bash
 kubectl wait controlplane my-awesome-ctp --for condition=Ready=True --timeout=3600s && \
@@ -181,6 +183,6 @@ spec:
 - Deleting the `SharedBackup` and `SharedBackupSchedule` resources don't automatically delete the created backups, unless `useOwnerReferencesInBackup` is `true`.
 <!-- vale off -->
 - The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket.
-<!-- vale on -->
 
 For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
+<!-- vale on -->
