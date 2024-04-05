@@ -23,11 +23,23 @@ Upbound allows you to configure backup and restore for control planes in the Spa
 
 #### Create a backup secret
 
-Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target, such as AWS S3.
+Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target. The example below contains the configuration for an AWS S3 store:
 
-```bash
-KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bucket-creds
+stringData:
+  creds: |
+    [default]
+    aws_access_key_id=***
+    aws_secret_access_key=***
 ```
+
+<!-- vale off -->
+For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md).
+<!-- vale on -->
 
 #### Shared backup
 
@@ -53,7 +65,7 @@ spec:
         key: creds
 ```
 
-Then create a managed control plane with reference to the `SharedBackupConfig`.
+Then create two managed control planes.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -64,9 +76,6 @@ metadata:
   name: my-awesome-ctp
   namespace: default
 spec:
-  backup:
-    sharedBackupConfigRef:
-      name: default
   writeConnectionSecretToRef:
     name: kubeconfig-my-awesome-ctp
 ---
@@ -78,14 +87,11 @@ metadata:
   name: my-second-awesome-ctp
   namespace: default
 spec:
-  backup:
-    sharedBackupConfigRef:
-      name: default
   writeConnectionSecretToRef:
     name: kubeconfig-my-second-awesome-ctp
 ```
 
-Then a `SharedBackup`:
+Then a `SharedBackup` with a label selector:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -94,6 +100,9 @@ metadata:
   name: custom-shared-backup
   namespace: default
 spec:
+  configRef:
+    kind: SharedBackupConfig
+    name: default
   controlPlaneSelector:
     labelSelectors:
     - matchLabels:
@@ -112,8 +121,11 @@ kind: SharedBackupSchedule
 metadata:
   name: custom-schedule
   namespace: default
-spec: "@every 1h"
-  schedule:
+spec:
+  schedule: "@every 1h"
+  configRef:
+    kind: SharedBackupConfig
+    name: default
   controlPlaneSelector:
     labelSelectors:
     - matchLabels:
@@ -124,7 +136,7 @@ This schedule backs up control planes with matching labels every hour.
 
 #### Single backup
 
-You can create a manual backup of a managed control plane from the Space cluster.
+You can create a manual backup of a managed control plane from the Space cluster:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -133,30 +145,58 @@ metadata:
   name: my-awesome-ctp-backup
   namespace: default
 spec:
+  configRef:
+    kind: SharedBackupConfig
+    name: default
   controlPlane: my-awesome-ctp
   deletionPolicy: Delete
 ```
 
-Once your Space indicates the backup is complete, you can delete the managed control plane:
-
-```bash
-kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s && \
-kubectl delete controlplane my-awesome-ctp
-```
-
 ### Restore
 
+
 <!-- vale off -->
-To restore from a backup, check the `ControlPlane` to make sure it's ready.
+You can restore a control plane's state from a backup in a few steps.
 <!-- vale on -->
+
+
+First, create a Secret in the source control plane:
 
 ```bash
 kubectl wait controlplane my-awesome-ctp --for condition=Ready=True --timeout=3600s && \
-kubectl get secret kubeconfig-my-awesome-ctp -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp.yaml
+kubectl get secret kubeconfig-my-awesome-ctp -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp.yaml && \
+KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
 ```
 
+Next, run a new backup:
 
-Next, start the restore process from the backup you created.
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Backup
+metadata:
+  name: restore-me
+  namespace: default
+spec:
+  configRef:
+    kind: SharedBackupConfig
+    name: default
+  controlPlane: my-awesome-ctp
+  deletionPolicy: Delete
+```
+
+Wait until the backup completes:
+
+```bash
+kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s
+```
+
+You can delete the control plane after the backup completes:
+
+```
+kubectl delete controlplane my-awesome-ctp
+```
+
+Next, start the restore process from the backup you created:
 
 ```yaml
 ---
@@ -170,19 +210,26 @@ spec:
     source:
       apiGroup: spaces.upbound.io
       kind: Backup
-      name: my-awesome-ctp-backup
-  backup:
-    sharedBackupConfigRef:
-      name: default
+      name: restore-me
   writeConnectionSecretToRef:
     name: kubeconfig-my-awesome-restored-ctp
+```
+
+
+<!-- vale off -->
+Finally, check that the restored control plane is ready. Once the control plane is ready, verify that the secret you created is present:
+<!-- vale on -->
+
+```bash
+kubectl wait controlplane my-awesome-restored-ctp --for condition=Ready=True --timeout=3600s && \
+kubectl get secret kubeconfig-my-awesome-restored-ctp -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp.yaml && \
+KUBECONFIG=/tmp/ctp.yaml kubectl get secret super-secret-secret -n default
 ```
 
 ## Considerations
 
 - Deleting the `SharedBackup` and `SharedBackupSchedule` resources don't automatically delete the created backups, unless `useOwnerReferencesInBackup` is `true`.
 <!-- vale off -->
-- The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket.
-
+- The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket, by default it's set to `Orphan`. Set it to `Delete` to cleanup uploaded files in the bucket.
 For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
 <!-- vale on -->
