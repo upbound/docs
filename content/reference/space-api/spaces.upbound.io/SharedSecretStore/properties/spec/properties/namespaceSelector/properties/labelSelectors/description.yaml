@@ -1,0 +1,2 @@
+description: |-
+    A resource is matched if any of the label selector matches. In case when the list is empty, resource is matched too.

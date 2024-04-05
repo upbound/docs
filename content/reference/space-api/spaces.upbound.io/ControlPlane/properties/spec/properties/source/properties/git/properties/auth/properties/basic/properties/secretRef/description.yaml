@@ -1,0 +1,2 @@
+description: |-
+    SecretRef is a reference to a Secret containing the username and password. The secret must contain the keys 'username' and 'password'.

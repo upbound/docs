@@ -1,0 +1,2 @@
+description: |-
+    StorageLocation specifies details about the control planes underlying storage location where backups are stored or retrieved.

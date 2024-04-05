@@ -1,0 +1,2 @@
+description: |-
+    EncryptionKey is the OCID of the encryption key within the vault. Required for PushSecret

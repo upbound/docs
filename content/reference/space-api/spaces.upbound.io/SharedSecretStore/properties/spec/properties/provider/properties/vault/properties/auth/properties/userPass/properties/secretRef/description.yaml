@@ -1,0 +1,2 @@
+description: |-
+    SecretRef to a key in a Secret resource containing password for the user used to authenticate with Vault using the UserPass authentication method
