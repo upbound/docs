@@ -1,15 +1,20 @@
 ---
-title: Backup and restore Upbound Spaces
+title: Backup and restore
 weight: 120
 description: Enable and manage backups in your Upbound Space.
 ---
 
 {{< hint "important" >}}
-This functionality is in preview and requires Spaces `v1.3.0`.
+This feature is in preview, requires Spaces `v1.3.0`, and is off by default. To enable, set `features.alpha.sharedBackup.enabled=true` when installing Spaces:
+
+```bash
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  ...
+  --set "features.alpha.sharedBackup.enabled=true" 
 {{< /hint >}}
 
 
-Upbound allows you to configure a backup and restore process. This feature helps manage your important control plane data and ensures security and availability best practices.
+Upbound allows you to configure backup and restore for control planes in the Space. This feature helps manage your important control plane data and ensures security and availability best practices.
 
 ## Usage
 
@@ -17,15 +22,15 @@ Upbound allows you to configure a backup and restore process. This feature helps
 
 #### Create a backup secret
 
-Before you begin the backup process, you need to create a secret for your Kubernetes configuration to allow for communication between your backup and your restored configuration.
+Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target, such as AWS S3.
 
 ```bash
-KUBECONFIG=/tmp/ctp.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
+KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
 ```
 
 #### Single backup
 
-You can create a backup of your current ControlPlane.
+You can initiate a manual backup of a managed control plane from the Space cluster.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -38,7 +43,7 @@ spec:
   deletionPolicy: Delete
 ```
 
-Once your ControlPlane indicates the backup is complete, you can delete the ControlPlane:
+Once your Space indicates the backup is complete, you can delete the managed control plane:
 
 ```bash
 kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s && \
@@ -47,7 +52,7 @@ kubectl delete controlplane my-awesome-ctp
 
 #### Shared backup
 
-You can define the `SharedBackupConfig` for multiple control planes in a configuration file like the example below:
+You can define a `SharedBackupConfig` for multiple control planes. The control planes will share a common storage source for the backups that get created. This is demonstrated in the example below:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -58,7 +63,7 @@ metadata:
 spec:
   objectStorage:
     provider: AWS
-    bucket: philippe-scorsolini-spaces-backup-restore-test
+    bucket: spaces-backup-bucket
     config:
       endpoint: s3.eu-west-2.amazonaws.com
       region: eu-west-2
@@ -80,7 +85,7 @@ stringData:
     aws_secret_access_key=*************************
 ```
 
-Then create a `ControlPlane` configuration with that secret reference:
+Then create a managed control plane with reference to the `BackupConfig` above.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -127,7 +132,7 @@ spec:
         org: foo
 ```
 
-This example configuration results in both control planes backed up and uploaded to the S3 endpoint.
+This example results in both control planes backed up and uploaded to the S3 endpoint.
 
 ### Create a scheduled backup
 
@@ -139,7 +144,7 @@ kind: SharedBackupSchedule
 metadata:
   name: custom-schedule
   namespace: default
-spec: "@every 1m"
+spec: "@every 1h"
   schedule:
   controlPlaneSelector:
     labelSelectors:
@@ -147,7 +152,7 @@ spec: "@every 1m"
         org: foo
 ```
 
-Both control planes with the matching labels will be backed up every minute.
+Both control planes with the matching labels will be backed up every hour.
 
 ### Restore
 
@@ -183,7 +188,7 @@ spec:
 
 ## Considerations
 
-- Deleting the `SharedBackup` and `SharedBackupSchedule` configurations does not automatically delete the created backups, unless `useOwnerReferencesInBackup` is set to true.
+- Deleting the `SharedBackup` and `SharedBackupSchedule` resources don't automatically delete the created backups, unless `useOwnerReferencesInBackup` is set to true.
 - The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket.
 
 For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
