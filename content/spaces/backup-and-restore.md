@@ -37,7 +37,9 @@ stringData:
     aws_secret_access_key=***
 ```
 
+<!-- vale off -->
 For more information about other cloud provider credentials and formats, review [the Thanos storage project documentation](https://github.com/thanos-io/thanos/blob/main/docs/storage.md).
+<!-- vale on -->
 
 #### Shared backup
 
