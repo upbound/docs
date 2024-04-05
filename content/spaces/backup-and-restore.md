@@ -1,6 +1,6 @@
 ---
 title: Backup and restore
-weight: 120
+weight: 130
 description: Enable and manage backups in your Upbound Space.
 ---
 
@@ -11,8 +11,8 @@ This feature is in preview, requires Spaces `v1.3.0`, and is off by default. To 
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   ...
   --set "features.alpha.sharedBackup.enabled=true"
-{{< /hint >}}
 ```
+{{< /hint >}}
 
 
 Upbound allows you to configure backup and restore for control planes in the Space. This feature helps manage your important control plane data and ensures security and availability best practices.
