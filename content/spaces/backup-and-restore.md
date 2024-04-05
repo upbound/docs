@@ -26,6 +26,7 @@ Upbound allows you to configure backup and restore for control planes in the Spa
 Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target. The example below contains the configuration for an AWS S3 store:
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -35,6 +36,7 @@ stringData:
     [default]
     aws_access_key_id=***
     aws_secret_access_key=***
+EOF
 ```
 
 <!-- vale off -->
@@ -46,6 +48,7 @@ For more information about other cloud provider credentials and formats, review 
 You can define a `SharedBackupConfig` for multiple control planes. With shared backups, control planes share a common storage source for the backups that get created. The example below demonstrates how to create a shared backup:
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedBackupConfig
 metadata:
@@ -63,11 +66,13 @@ spec:
       secretRef:
         name: bucket-creds
         key: creds
+EOF
 ```
 
 Then create two managed control planes.
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
@@ -89,11 +94,13 @@ metadata:
 spec:
   writeConnectionSecretToRef:
     name: kubeconfig-my-second-awesome-ctp
+EOF
 ```
 
 Then a `SharedBackup` with a label selector:
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedBackup
 metadata:
@@ -107,6 +114,7 @@ spec:
     labelSelectors:
     - matchLabels:
         org: foo
+EOF
 ```
 
 This example results in both control planes backed up and uploaded to the S3 endpoint.
@@ -116,6 +124,7 @@ This example results in both control planes backed up and uploaded to the S3 end
 Instead of a one-time backup with the `SharedBackup` kind, you can create a `SharedBackupSchedule`:
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedBackupSchedule
 metadata:
@@ -130,6 +139,7 @@ spec:
     labelSelectors:
     - matchLabels:
         org: foo
+EOF
 ```
 
 This schedule backs up control planes with matching labels every hour.
@@ -139,6 +149,7 @@ This schedule backs up control planes with matching labels every hour.
 You can create a manual backup of a managed control plane from the Space cluster:
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1alpha1
 kind: Backup
 metadata:
@@ -150,6 +161,7 @@ spec:
     name: default
   controlPlane: my-awesome-ctp
   deletionPolicy: Delete
+EOF
 ```
 
 ### Restore
@@ -171,6 +183,7 @@ KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-se
 Next, run a new backup:
 
 ```yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1alpha1
 kind: Backup
 metadata:
@@ -182,6 +195,7 @@ spec:
     name: default
   controlPlane: my-awesome-ctp
   deletionPolicy: Delete
+EOF
 ```
 
 Wait until the backup completes:
@@ -199,7 +213,7 @@ kubectl delete controlplane my-awesome-ctp
 Next, start the restore process from the backup you created:
 
 ```yaml
----
+cat <<EOF | kubectl apply -f -
 apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
@@ -213,6 +227,7 @@ spec:
       name: restore-me
   writeConnectionSecretToRef:
     name: kubeconfig-my-awesome-restored-ctp
+EOF
 ```
 
 
