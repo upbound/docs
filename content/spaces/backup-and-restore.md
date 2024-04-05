@@ -152,13 +152,6 @@ spec:
   deletionPolicy: Delete
 ```
 
-Once your Space indicates the backup is complete, you can delete the managed control plane:
-
-```bash
-kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s && \
-kubectl delete controlplane my-awesome-ctp
-```
-
 ### Restore
 
 
