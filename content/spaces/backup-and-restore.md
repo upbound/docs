@@ -29,28 +29,6 @@ Before you can configure backup schedules and initiate manual backups, you need 
 KUBECONFIG=/tmp/space-cluster.yaml kubectl create secret generic super-secret-secret -n default --from-literal=password=supersecret
 ```
 
-#### Single backup
-
-You can initiate a manual backup of a managed control plane from the Space cluster.
-
-```yaml
-apiVersion: spaces.upbound.io/v1alpha1
-kind: Backup
-metadata:
-  name: my-awesome-ctp-backup
-  namespace: default
-spec:
-  controlPlane: my-awesome-ctp
-  deletionPolicy: Delete
-```
-
-Once your Space indicates the backup is complete, you can delete the managed control plane:
-
-```bash
-kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s && \
-kubectl delete controlplane my-awesome-ctp
-```
-
 #### Shared backup
 
 You can define a `SharedBackupConfig` for multiple control planes. The control planes will share a common storage source for the backups that get created. This is demonstrated in the example below:
@@ -118,7 +96,7 @@ spec:
     name: kubeconfig-my-second-awesome-ctp
 ```
 
-Then a `SharedBackup` configuration:
+Then a `SharedBackup`:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -137,7 +115,7 @@ This example results in both control planes backed up and uploaded to the S3 end
 
 ### Create a scheduled backup
 
-Instead of a one-time backup with the `SharedBackup` kind, you can create a `SharedBackupSchedule` configuration:
+Instead of a one-time backup with the `SharedBackup` kind, you can create a `SharedBackupSchedule`:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -154,6 +132,28 @@ spec: "@every 1h"
 ```
 
 Both control planes with the matching labels will be backed up every hour.
+
+#### Single backup
+
+You can initiate a manual backup of a managed control plane from the Space cluster.
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Backup
+metadata:
+  name: my-awesome-ctp-backup
+  namespace: default
+spec:
+  controlPlane: my-awesome-ctp
+  deletionPolicy: Delete
+```
+
+Once your Space indicates the backup is complete, you can delete the managed control plane:
+
+```bash
+kubectl wait backup my-awesome-ctp-backup --for condition=Completed=True --timeout=3600s && \
+kubectl delete controlplane my-awesome-ctp
+```
 
 ### Restore
 
