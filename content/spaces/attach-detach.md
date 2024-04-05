@@ -5,7 +5,7 @@ description: Enable and attach self-hosted Spaces in the Upbound console
 ---
 
 {{< hint "important" >}}
-This functionality is in preview and requires Spaces `v1.3.0`.
+This feature is in preview and requires Spaces `v1.3.0`.
 {{< /hint >}}
 
 [Upbound]({{<ref "concepts/console">}}) allows you to attach self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -16,7 +16,7 @@ This functionality is in preview and requires Spaces `v1.3.0`.
 
 Before you begin, make sure you have:
 	
-- an existing Upbound [organization]({{<ref "concepts/accounts/organizations.md">}}) in Upbound's cloud. 
+- an existing Upbound [organization]({{<ref "concepts/accounts/organizations.md">}}) in Upbound SaaS. 
 - the `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 
@@ -27,6 +27,10 @@ Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automaticall
 export UPBOUND_SPACE_NAME=$@your-self-hosted-space$@
 ```
 {{< /editCode >}}
+
+{{< hint "tip" >}}
+The command tries to attach the Space to the org account context pointed at by your `up` CLI profile. Make sure you've logged into Upbound SaaS with `up login -a <org-account>` before trying to attach the Space.
+{{< /hint >}}
 
 Attach the Space to the Console:
 

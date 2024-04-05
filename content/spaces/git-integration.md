@@ -1,11 +1,11 @@
 ---
-title: Git integration (alpha)
-weight: 120
+title: Git integration
+weight: 100
 description: A guide to how managed control planes in a space connect to git
 ---
 
 {{< hint "important" >}}
-This feature is in alpha and currently only available when a managed control plane is running in an Upbound Space.
+This feature is in preview.
 {{< /hint >}}
 
 Managed Control Planes that run in a Space are configurable to automatically sync their source configuration directly from a Git repository. It allows you to declaratively describe your control plane's total configuration. Define Providers, Configurations, and runtime configurations such as ProviderConfigs or EnvironmentConfigs in Git and sync them automatically to your managed control plane.

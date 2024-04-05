@@ -14,13 +14,38 @@ Upbound's recommendation is to use the [built-in Git integration]({{<ref "spaces
 
 ## Argo
 
+{{< hint "important" >}}
+This feature is in preview and is off by default. To enable, set `features.alpha.argocdPlugin.enabled=true` when installing Spaces:
+
+```bash
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  ...
+  --set "features.alpha.argocdPlugin.enabled=true"
+```
+{{< /hint >}}
+
 Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install-time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD.
 
 ### On cluster Argo CD
 
 If you are running Argo CD on the same cluster as the Space, run the following to enable the plugin:
 
-```bash
+{{< tabs >}}
+
+{{< tab "Up CLI" >}}
+
+```bash {hl_lines="3-4"}
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" 
+```
+
+{{< /tab >}}
+
+{{< tab "Helm" >}}
+
+```bash {hl_lines="7-8"}
 helm -n upbound-system upgrade --install spaces \
   oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
   --version "${SPACES_VERSION}" \
@@ -31,6 +56,11 @@ helm -n upbound-system upgrade --install spaces \
   --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --wait
 ```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
 
 The important flags are:
 
@@ -44,6 +74,43 @@ Be sure to [configure Argo](#configure-argo) after it's installed.
 ### External cluster Argo CD
 
 If you are running Argo CD on an external cluster from where you installed your Space, you need to provide some extra flags:
+
+{{< tabs >}}
+
+{{< tab "Up CLI" >}}
+
+```bash {hl_lines="3-7"}
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
+  --set "features.alpha.argocdPlugin.target.externalCluster.enabled=true" \
+  --set "features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster" \
+  --set "features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig"
+```
+
+{{< /tab >}}
+
+{{< tab "Helm" >}}
+
+```bash {hl_lines="7-11"}
+helm -n upbound-system upgrade --install spaces \
+  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
+  --set "features.alpha.argocdPlugin.target.externalCluster.enabled=true" \
+  --set "features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster" \
+  --set "features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig" \
+  --wait
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
