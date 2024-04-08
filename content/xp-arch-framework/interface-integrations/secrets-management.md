@@ -14,7 +14,7 @@ The baseline recommendation is to just use Kubernetes secrets. If you have busin
 
 ### Reading secrets
 
-To read secrets from an external source into your Crossplane cluster, it's recommended to install the [External Secrets Operator](https://external-secrets.io) into your cluster. The External Secrets Operator is an open source tool that implements a custom resource called `ExternalSecret` that defines where secrets live. 
+To read secrets from an external source into your Crossplane cluster, it's recommended to install the [External Secrets Operator](https://external-secrets.io) into your cluster. The External Secrets Operator is an open source tool that implements a custom resource called `ExternalSecret` that defines where secrets live.
 
 To use the external secrets operator, you need to register a SecretStore. This could be AWS Key Secrets Manager, Vault, or other central secret management services.
 
@@ -32,8 +32,8 @@ spec:
       namespace: admin
       version: v2
       auth:
-        # points to a secret that contains a vault token
-        # https://www.vaultproject.io/docs/auth/token
+      # points to a secret that contains a vault token
+      # https://www.vaultproject.io/docs/auth/token
         tokenSecretRef:
           name: vault-secret
           key: vault-token
@@ -55,10 +55,10 @@ spec:
   target:
     creationPolicy: Owner
   data:
-  - secretKey: creds
-    remoteRef:
-      key: providerconfigs
-      property: providerconf-gcp
+    - secretKey: creds
+      remoteRef:
+        key: providerconfigs
+        property: providerconf-gcp
 ```
 
 ### Writing secrets
@@ -117,7 +117,7 @@ spec:
           - type: CombineFromComposite
             combine:
               variables:
-              - fromFieldPath: spec.parameters.name
+                - fromFieldPath: spec.parameters.name
               strategy: string
               string:
                 fmt: "%s-secret"
