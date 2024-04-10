@@ -1,3 +1,0 @@
-description: |-
-    Repository is an optional alternate OCI repository to use for resource bundle reference.
-    The repository can be overridden per Attestor or Attestation.

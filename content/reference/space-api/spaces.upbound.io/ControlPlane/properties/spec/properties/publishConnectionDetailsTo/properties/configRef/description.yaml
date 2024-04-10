@@ -1,2 +1,0 @@
-description: |-
-    SecretStoreConfigRef specifies which secret store config should be used for this ConnectionSecret.

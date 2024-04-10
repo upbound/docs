@@ -1,3 +1,0 @@
-description: |-
-    CABundle is a PEM encoded CA bundle which will be used to validate
-    the server certificate.
