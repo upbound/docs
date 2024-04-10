@@ -1,2 +1,0 @@
-description: |-
-    [[GATE:EnableGitSource]] THIS IS AN ALPHA FIELD. Do not use it in production. Source points to a Git repository containing a ControlPlaneSource manifest with the desired state of the ControlPlane's configuration.

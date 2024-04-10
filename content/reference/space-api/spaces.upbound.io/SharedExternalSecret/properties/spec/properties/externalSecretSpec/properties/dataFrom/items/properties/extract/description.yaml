@@ -1,2 +1,0 @@
-description: |-
-    Used to extract multiple key/value pairs from one secret Note: Extract does not support sourceRef.Generator or sourceRef.GeneratorRef.

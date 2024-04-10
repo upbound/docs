@@ -1,2 +1,0 @@
-description: |-
-    Path where the JWT authentication backend is mounted in Vault, e.g: 'jwt'

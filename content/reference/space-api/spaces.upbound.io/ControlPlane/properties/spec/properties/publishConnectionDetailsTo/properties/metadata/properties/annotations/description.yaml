@@ -1,2 +1,0 @@
-description: |-
-    Annotations are the annotations to be added to connection secret. - For Kubernetes secrets, this will be used as 'metadata.annotations'. - It is up to Secret Store implementation for others store types.

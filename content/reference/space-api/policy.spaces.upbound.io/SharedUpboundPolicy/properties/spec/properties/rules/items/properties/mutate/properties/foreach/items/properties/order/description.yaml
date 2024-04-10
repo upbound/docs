@@ -1,3 +1,0 @@
-description: |-
-    Order defines the iteration order on the list.
-    Can be Ascending to iterate from first to last element or Descending to iterate in from last to first element.
