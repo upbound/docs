@@ -364,7 +364,7 @@ helm upgrade --install crossplane universal-crossplane \
   --repo https://charts.upbound.io/stable \
   --namespace upbound-system --create-namespace \
   --version v1.15.2-up.1 \
-  --set "args={--enable-usages,--max-reconcile-rate=1000,--registry=registry.company.corp}" \
+  --set "args={--enable-usages,--max-reconcile-rate=1000,--registry=registry.company.corp/xpkg.upbound.io}" \
   --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
   --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
   --wait
@@ -521,7 +521,9 @@ helm -n upbound-system upgrade --install spaces \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
-  --set "controlPlanes.uxp.registryOverride=registry.company.corp" \
+  --set "registry=registry.company.corp/us-west1-docker.pkg.dev/orchestration-build/upbound-environments" \
+  --set "controlPlanes.uxp.registryOverride=registry.company.corp/xpkg.upbound.io" \
+  --set "controlPlanes.uxp.repository=registry.company.corp/charts.upbound.io/stable" \
   --wait
 ```
 
