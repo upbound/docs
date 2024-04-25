@@ -350,8 +350,21 @@ Install Upbound Universal Crossplane (UXP)
 helm upgrade --install crossplane universal-crossplane \
   --repo https://charts.upbound.io/stable \
   --namespace upbound-system --create-namespace \
-  --version v1.14.6-up.1 \
+  --version v1.15.2-up.1 \
   --set "args={--enable-usages,--max-reconcile-rate=1000}" \
+  --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
+  --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
+  --wait
+```
+
+If your company uses a proxied environment with mirrored registries, please update the specified registry to your internal registry.
+
+```bash
+helm upgrade --install crossplane universal-crossplane \
+  --repo https://charts.upbound.io/stable \
+  --namespace upbound-system --create-namespace \
+  --version v1.15.2-up.1 \
+  --set "args={--enable-usages,--max-reconcile-rate=1000,--registry=registry.company.corp}" \
   --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
   --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
   --wait
@@ -370,7 +383,7 @@ kind: Provider
 metadata:
   name: provider-kubernetes
 spec:
-  package: "xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.12.1"
+  package: "crossplane-contrib/provider-kubernetes:v0.12.1"
   runtimeConfigRef:
     name: provider-kubernetes
 ---
@@ -388,7 +401,7 @@ kind: Provider
 metadata:
   name: provider-helm
 spec:
-  package: "xpkg.upbound.io/crossplane-contrib/provider-helm:v0.17.0"
+  package: "crossplane-contrib/provider-helm:v0.17.0"
   runtimeConfigRef:
     name: provider-helm
 ---
