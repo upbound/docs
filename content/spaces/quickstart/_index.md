@@ -512,6 +512,20 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
+If your company uses a proxied environment with mirrored registries, please update the specified registry to your internal registry.
+
+```bash
+helm -n upbound-system upgrade --install spaces \
+  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "controlPlanes.uxp.registryOverride=registry.company.corp" \
+  --wait
+```
+
+
 Create an up CLI profile for the Space
 
 ```bash
