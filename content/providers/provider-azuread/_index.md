@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.1.0
+
+_Released 2024-04-25_
+
+* This release includes a new set of managed resource (MR) metrics, bug fixes, and dependency updates.
+
+_Refer to the [v1.1.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.1.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.1.0)
+
 ## v1.0.0
 
 _Released 2024-03-21_

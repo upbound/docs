@@ -13,6 +13,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.1.0
+
+_Released 2024-04-25_
+
+* Support for new resource: `Deployment.cognitiveservices.azure.upbound.io/v1beta1`
+* This release includes a new set of managed resource (MR) metrics, a new resource, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.1.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.1.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.1.0)
+
 ## v1.0.1
 
 _Released 2024-04-04_
