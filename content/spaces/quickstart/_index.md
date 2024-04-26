@@ -514,7 +514,10 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
+<!-- vale Upbound.Spelling  = NO -->
 If your company uses a proxied environment with mirrored registries, please update the specified registry to your internal registry.
+<!-- vale Upbound.Spelling  = YES -->
+
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
