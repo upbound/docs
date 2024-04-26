@@ -357,9 +357,9 @@ helm upgrade --install crossplane universal-crossplane \
   --wait
 ```
 
-<!-- vale Upbound.Spelling  = NO -->
+<!-- vale upbound.Spelling  = NO -->
 If your company uses a proxied environment with mirrored registries, please update the specified registry to your internal registry.
-<!-- vale Upbound.Spelling  = YES -->
+<!-- vale upbound.Spelling  = YES -->
 
 ```bash
 helm upgrade --install crossplane universal-crossplane \
@@ -514,9 +514,9 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
-<!-- vale Upbound.Spelling  = NO -->
+<!-- vale upbound.Spelling  = NO -->
 If your company uses a proxied environment with mirrored registries, please update the specified registry to your internal registry.
-<!-- vale Upbound.Spelling  = YES -->
+<!-- vale upbound.Spelling  = YES -->
 
 
 ```bash
