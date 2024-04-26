@@ -11,6 +11,18 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v1.1.0
+
+_Released 2024-04-25_
+
+* Support for new resources: `RegionNetworkEndpoint.compute.gcp.upbound.io/v1beta1` and `Cluster.containerattached.gcp.upbound.io/v1beta1`
+* This release includes a new set of managed resource (MR) metrics, a new family provider `provider-gcp-containerattached`,
+new resources, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.1.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.1.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.1.0)
+
 ## v1.0.2
 
 _Released 2024-03-21_

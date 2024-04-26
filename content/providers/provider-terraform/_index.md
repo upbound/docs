@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.16.0
+
+_Released 2024-04-25_
+
+* This release includes adding support for setting environment variables in a workspace and dependency updates.
+
+_Refer to the [v0.16.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.16.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.16.0)
+
 ## v0.15.0
 
 _Released 2024-03-28_
