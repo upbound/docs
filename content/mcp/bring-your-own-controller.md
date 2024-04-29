@@ -1,5 +1,5 @@
 ---
-title: Orchestrate internal resources 
+title: Orchestrate internal resources
 weight: 500
 description: Manage internal resources with managed control planes even if their APIs are not exposed to the internet.
 aliases:
@@ -20,7 +20,7 @@ other way around.
 
 This guide shows you how it all works with a step-by-step reference example.
 
-{{<hint "warning" >}} Installing custom providers not allowed in a free trial session of Upbound. 
+{{<hint "warning" >}} Installing custom providers not allowed in a free trial session of Upbound.
 [Contact Upbound](https://www.upbound.io/support/contact) to upgrade to a
 higher tier to enable this feature.{{< /hint >}}
 
@@ -54,7 +54,7 @@ spec:
 Once you commit your change, go to the console and update your control plane
 with the latest build of your repository.
 
-{{<img src="knowledge-base/images/update-cp.png" alt="Update configuration" size="small" unBlur="true" lightbox="true">}}
+{{<img src="guides/images/update-cp.png" alt="Update configuration" size="small" unBlur="true" lightbox="true">}}
 
 ### Deploy internal API
 

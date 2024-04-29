@@ -4,7 +4,7 @@ weight: 5
 description: An introduction to the Console feature of Upbound
 ---
 
-Upbound's Console is the command and control center for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes. 
+Upbound's Console is the command and control center for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes.
 
 ## Dashboard
 
@@ -25,13 +25,13 @@ Above the dashboard is Upbound's top navigation bar. Wherever you are in the pro
 ## Control Plane Explorer
 <!-- vale Google.Headings = YES -->
 
-Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can navigate to its [portal]({{<ref "ctp-portal">}}), learn how to integrate the control plane [with GitOps]({{<ref "control-plane-connector">}}) flows, view events, and access the control plane settings.
+Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can navigate to its [portal]({{<ref "ctp-portal">}}), learn how to integrate the control plane [with GitOps]({{<ref "mcp/control-plane-connector">}}) flows, view events, and access the control plane settings.
 
 {{<img src="concepts/images/ctp-explorer2.png" alt="control plane explorer" lightbox="true">}}
 
 ## MCP and configuration creation
 
-You can create new managed control planes from the dashboard. 
+You can create new managed control planes from the dashboard.
 
 Creating a new managed control plane from the Console:
 

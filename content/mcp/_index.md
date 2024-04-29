@@ -8,19 +8,19 @@ Managed control planes (MCPs) are Crossplane control plane environments that are
 
 - the underlying lifecycle of infrastructure hosting the managed control plane
 - scaling of the infrastructure
-- the maintenance of the core Crossplane components that make up a managed control plane. 
+- the maintenance of the core Crossplane components that make up a managed control plane.
 
 This lets users focus on building their APIs and operating their control planes, while Upbound handles the rest. Each managed control plane has its own dedicated API server connecting users to their control plane.
 
 ## Architecture
 
-Users running open source Crossplane may face scalability limitations when attempting to create control planes that can manage lots of resources. Kubernetes clusters running Crossplane install hundreds or thousands of Kubernetes Custom Resource Definitions (`CRD`s) increasing the CPU and memory requirements of the Kubernetes API server. 
+Users running open source Crossplane may face scalability limitations when attempting to create control planes that can manage lots of resources. Kubernetes clusters running Crossplane install hundreds or thousands of Kubernetes Custom Resource Definitions (`CRD`s) increasing the CPU and memory requirements of the Kubernetes API server.
 
 {{<hint "tip" >}}
-The [Upbound blog](https://blog.upbound.io/scaling-kubernetes-to-thousands-of-crds/) describes the technical details of these limitations and some of the work Upbound has contributed to the Kubernetes project to improve performance. 
+The [Upbound blog](https://blog.upbound.io/scaling-kubernetes-to-thousands-of-crds/) describes the technical details of these limitations and some of the work Upbound has contributed to the Kubernetes project to improve performance.
 {{< /hint >}}
 
-With Upbound managed control planes, these limitations don't apply. Managed control planes scale to >1000 CRDs without any performance degradation. Upbound has complete control over the lifecycle management of a control plane. Upbound ensures that the control plane is right-sized and given the appropriate memory and CPU for the required CRDs. 
+With Upbound managed control planes, these limitations don't apply. Managed control planes scale to >1000 CRDs without any performance degradation. Upbound has complete control over the lifecycle management of a control plane. Upbound ensures that the control plane is right-sized and given the appropriate memory and CPU for the required CRDs.
 
 {{<img src="concepts/images/mcp-arch.png" alt="an architecture of XP with Upbound" size="large" unBlur="true" >}}
 
@@ -36,14 +36,14 @@ Alpha features of Crossplane aren't enabled by default in Upbound.
 
 ### Create an MCP
 
-You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "reference/cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest). 
+You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "reference/cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest).
 
 {{< tabs >}}
 
 {{< tab "up CLI" >}}
 To use the CLI, run the following, specifying which configuration to install on the control plane and what the name should be.
 
-```shell 
+```shell
 up ctp create --configuration-name=<configuration> <name-of-control-plane>
 ```
 
@@ -53,7 +53,7 @@ To learn more about control plane-related commands in `up`, go to the [CLI refer
 {{< tab "provider-upbound" >}}
 You can declaratively create managed control planes in Upbound with provider-upbound. Provider-upbound is a Crossplane provider for interacting with the Upbound SaaS APIs. As with any Crossplane provider, you need to have:
 
-- installed the provider on a control plane. This can be a managed control plane or a control plane running outside of Upbound. 
+- installed the provider on a control plane. This can be a managed control plane or a control plane running outside of Upbound.
 - created a valid ProviderConfig
 
 Create a managed control plane by creating the following resource:
@@ -120,11 +120,11 @@ Like `up ctp connect`, this command also requires an API token, which you can [g
 
 #### ProviderConfigs with OpenID Connect
 
-Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. Read how to [connect managed control planes to external services]({{<ref "concepts/mcp/oidc.md" >}}) to learn more.
+Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. Read how to [connect managed control planes to external services]({{<ref "/mcp/oidc.md" >}}) to learn more.
 
 #### Generic ProviderConfigs
 
-The Upbound Console doesn't allow direct editing of ProviderConfigs that don't offer `Upbound` authentication. To edit these ProviderConfigs on your managed control plane, connect to the MCP directly by following the instructions in the [previous section]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). 
+The Upbound Console doesn't allow direct editing of ProviderConfigs that don't offer `Upbound` authentication. To edit these ProviderConfigs on your managed control plane, connect to the MCP directly by following the instructions in the [previous section]({{<ref "_index.md#connect-directly-to-your-mcp" >}}).
 
 ## Control plane backups
 

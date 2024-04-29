@@ -4,7 +4,7 @@ weight: 1000
 description: A guide for troubleshooting an issue that occurs in a Space
 ---
 
-Find guidance below on how to find solutions for issues you encounter when deploying and using an Upbound Space. Use the tips below as a supplement to the observability metrics discussed in the [Observability]({{<ref "spaces/observability.md">}}) page.
+Find guidance below on how to find solutions for issues you encounter when deploying and using an Upbound Space. Use the tips below as a supplement to the observability metrics discussed in the [Observability]({{<ref "./observability.md">}}) page.
 
 ## General tips
 
@@ -75,7 +75,7 @@ kubectl get pods -A
 ```
 3. Scan the `Status` column to see if any of the pods report a status besides `Running`.
 4. Scan the `Restarts` column to see if any of the pods have restarted.
-5. If you notice a Status other than `Running` or see pods that restarted, you should investigate their events by running 
+5. If you notice a Status other than `Running` or see pods that restarted, you should investigate their events by running
 ```bash
 kubectl describe pod -n <namespace> <pod-name>
 ```
@@ -129,7 +129,7 @@ If you try to install a Space on an existing cluster that previously had Crosspl
 
 #### Error: You configured a spec.source but nothing is installing on your control plane
 
-IF you are using the native [git integration]({{<ref "spaces/git-integration.md">}}) but do not see any evidence of the definition syncing, do the following:
+IF you are using the native [git integration]({{<ref "./git-integration.md">}}) but do not see any evidence of the definition syncing, do the following:
 
 1. Describe the git-synced control plane
 ```bash
@@ -145,6 +145,6 @@ Status:
 3. In the events for your control plane, look for events emitted from `controlplane/source`.
 4. Confirm the `PullInterval` is set within a valid range (at least 15 seconds or more).
 5. Confirm the URL of the git Repository is correct.
-6. Confirm the auth method in use is referencing a secret on the cluster that's configured correctly. You can find more details for configuring secrets for the git integration in the [documentation]({{<ref "spaces/git-integration.md#authentication-with-version-control-services">}}).
+6. Confirm the auth method in use is referencing a secret on the cluster that's configured correctly. You can find more details for configuring secrets for the git integration in the [documentation]({{<ref "./git-integration.md#authentication-with-version-control-services">}}).
 
 <!-- vale on -->

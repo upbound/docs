@@ -1,16 +1,16 @@
 ---
-title: "Accounts & Orgs"
+title: Upbound IAM
 weight: 400
 icon: "user"
 description: "Create and manage users and organizations in the Upbound Console."
 ---
 
-Upbound uses four different categories to manage identities: 
+Upbound uses four different categories to manage identities:
 
 - [Users]({{<ref "./users" >}}) - Accounts representing a single user.
 - [Organizations]({{<ref "./organizations" >}}) - A top-level collection of
-  users and teams. 
-- [Teams]({{<ref "./teams" >}}) - A sub-group within an organization. 
+  users and teams.
+- [Teams]({{<ref "./teams" >}}) - A sub-group within an organization.
 - [Robots]({{<ref "./robots" >}}) - Non-user accounts designed for
   automation.
 

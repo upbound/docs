@@ -1,5 +1,5 @@
 ---
-title: Management
+title: Interacting with Spaces
 weight: 2
 description: Common operations in Spaces
 ---
@@ -8,14 +8,14 @@ description: Common operations in Spaces
 
 ### Create a Space
 
-To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "reference/cli/command-reference.md#space-init">}}) to install an Upbound Space. Below is an example:
+To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "/reference/cli/command-reference.md">}}) to install an Upbound Space. Below is an example:
 
 ```bash
 up space init "v1.3.0"
 ```
 
 {{< hint "tip" >}}
-For a full guide to get started with Spaces, read one of the [quickstart]({{<ref "spaces/quickstart">}}) guides:
+For a full guide to get started with Spaces, read one of the [quickstart]({{<ref "./quickstart">}}) guides:
 {{< /hint >}}
 
 You can also install the helm chart for Spaces directly. In order for a Spaces install to succeed, you must install some prerequisites first and configure them. This includes:
@@ -36,11 +36,11 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
-For a complete tutorial of the helm install, read one of the [quickstarts]({{<ref "spaces/quickstart/#install-cert-manager">}}) which covers the step-by-step process.
+For a complete tutorial of the helm install, read one of the [quickstarts]({{<ref "quickstart/#install-cert-manager">}}) which covers the step-by-step process.
 
 ### Upgrade a Space
 
-To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "reference/cli/command-reference.md#space-upgrade">}}). Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
+To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "/reference/cli/command-reference.md#space-upgrade">}}). Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
 ```bash
 up space upgrade "v1.2.4"
@@ -123,7 +123,7 @@ kubectl get providers --kubeconfig=/tmp/<ctp-name>.yaml
 
 Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "concepts/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
 
-Learn more in the [Spaces Git integration]({{<ref "spaces/git-integration.md">}}) documentation.
+Learn more in the [Spaces Git integration]({{<ref "git-integration.md">}}) documentation.
 
 ### List managed control planes
 

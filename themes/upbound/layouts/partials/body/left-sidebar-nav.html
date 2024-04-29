@@ -10,12 +10,21 @@
 
             {{ end }}
 
+
+            {{ with .Site.GetPage "/what-is-upbound" }} <!-- Adjust the path as necessary -->
+            <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{ if eq $currentPage . }}active{{ end }}" id="what-is-upbound">
+                <div class="left-offset hide"></div>
+                <a href="{{ .Permalink }}" class="stretched-link">{{ .Title }}</a>
+            </div>
+            {{ end }}
+
             {{ with .Site.GetPage "/quickstart" }} <!-- Adjust the path as necessary -->
             <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{ if eq $currentPage . }}active{{ end }}" id="quickstart">
                 <div class="left-offset hide"></div>
                 <a href="{{ .Permalink }}" class="stretched-link">{{ .Title }}</a>
             </div>
             {{ end }}
+
 
             {{ range .Site.Sections.ByWeight }}
                 {{ $expand := or (eq $currentPage .) (eq $currentPage.FirstSection .) }}
