@@ -1,6 +1,6 @@
 ---
 title: Deploy your first multicloud control plane
-weight: 4
+weight: 1
 description: A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound
 ---
 

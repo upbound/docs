@@ -13,7 +13,7 @@ Upbound Spaces are self-hosted environments for Upbound's managed Crossplane con
 
 Think of an Upbound Space as a self-managed slice of the Upbound platform in your own environment. Whether that's a hyper scale cloud provider or on-prem, Spaces supplements Upbound's SaaS service by enabling a new deployment option. Now you can have control planes that run in your preferred hosting environment and Upbound's own SaaS.
 
-{{<img src="spaces/images/mcps-everywhere.png" alt="Managed control planes can run anywhere, thanks to Spaces">}}
+{{<img src="/spaces/images/mcps-everywhere.png" alt="Managed control planes can run anywhere, thanks to Spaces">}}
 
 Spaces lets you:
 
@@ -52,7 +52,7 @@ As mentioned in the preceding section, Upbound recommends designating a node to 
 - The number of managed resources you plan each control plane to reconcile.
 - The Crossplane providers you plan to install in each control plane.
 
-Read the [deployment guide]({{<ref "spaces/deployment.md">}}) for comprehensive guidance for rightsizing your Space clusters.
+Read the [deployment guide]({{<ref "deployment.md">}}) for comprehensive guidance for rightsizing your Space clusters.
 
 ## Upbound requirements
 

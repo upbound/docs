@@ -1,12 +1,17 @@
 ---
-title: Control Plane Configurations
-weight: 1
+title: Control Plane Configurations (Legacy)
+weight: 4
 description: An introduction to how Configurations work in Upbound
 ---
 
+{{< hint "important" >}}
+This feature is depricated as of `v1.3.0`.
+{{< /hint >}}
+
+
 Managed control planes expose a set of APIs for users to interact with their control planes. Configurations define these APIs.
 
-Configurations are a [Crossplane package](https://docs.crossplane.io/latest/concepts/packages/#configuration-packages) that bundles a set of API definitions. Every Crossplane Configuration in the Upbound environment has its source synced directly from a Git repository. Users choose from this selection of Configurations in their Upbound environment when they want to install a set of APIs on a managed control plane. 
+Configurations are a [Crossplane package](https://docs.crossplane.io/latest/concepts/packages/#configuration-packages) that bundles a set of API definitions. Every Crossplane Configuration in the Upbound environment has its source synced directly from a Git repository. Users choose from this selection of Configurations in their Upbound environment when they want to install a set of APIs on a managed control plane.
 
 ## How configurations work on Upbound
 
@@ -41,11 +46,11 @@ Configurations can declare dependencies on other Configurations. This lets you s
 
 ## Version control service integration
 
-All Configurations in Upbound sync from Git. 
+All Configurations in Upbound sync from Git.
 
 ## Building an API
 
-Upbound attempts to build a new version of your configuration for every commit to the main `branch` of the repository that backs your configuration. It's your responsibility to push content to the repository which builds into a valid Crossplane configuration package. 
+Upbound attempts to build a new version of your configuration for every commit to the main `branch` of the repository that backs your configuration. It's your responsibility to push content to the repository which builds into a valid Crossplane configuration package.
 
 {{< hint "important" >}}
 If you push a new commit to your repo but Upbound does not show a new configuration is available to update to, that is usually an indication the configuration failed to build. Check the build status in GitHub to confirm this (see below).
@@ -67,7 +72,7 @@ When the repository contents fail to build a configuration, the Upbound GitHub a
 
 ### Apply an update in Upbound
 
-When a repository builds into a configuration, Upbound shows the image as available for each control plane that has installed that configuration. You can find the `update available` prompt in the control plane explorer view. 
+When a repository builds into a configuration, Upbound shows the image as available for each control plane that has installed that configuration. You can find the `update available` prompt in the control plane explorer view.
 
 {{<img src="concepts/images/git-update-available.png" alt="showing a new configuration is available for a control plane" size="small" lightbox="true">}}
 

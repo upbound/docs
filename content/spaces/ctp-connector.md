@@ -4,7 +4,7 @@ weight: 150
 description: A guide for how to connect a Kubernetes app cluster to a managed control plane in Upbound using the Control Plane connector feature
 ---
 
-Upbound's managed control plane connector integration is also available for managed control planes in a Space. Read the [MCP Connector documentation]({{<ref "concepts/mcp/control-plane-connector.md#control-plane-connector">}}) to learn more about the feature.
+Upbound's managed control plane connector integration is also available for managed control planes in a Space. Read the [MCP Connector documentation]({{<ref "/mcp/control-plane-connector.md#control-plane-connector">}}) to learn more about the feature.
 
 MCP Connector functions similarly when running in Space-managed control plane versus a SaaS-managed control plane. The one difference is you must provide a secret containing the Space-managed control plane kubeconfig at install-time. The install command becomes the following:
 

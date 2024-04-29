@@ -15,8 +15,8 @@ This feature is in preview and requires Spaces `v1.3.0`.
 ### Attach
 
 Before you begin, make sure you have:
-	
-- an existing Upbound [organization]({{<ref "concepts/accounts/organizations.md">}}) in Upbound SaaS. 
+
+- an existing Upbound [organization]({{<ref "concepts/accounts/organizations.md">}}) in Upbound SaaS.
 - the `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 

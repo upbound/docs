@@ -33,7 +33,7 @@ up ctp create my-control-plane
 {{< tab "Upbound Console" >}}
 In the Upbound Console, select the `Create Control Plane` button. Give the control plane a name and select the `Create Control Plane` button at the bottom of the form.
 
-{{<img src="knowledge-base/images/console-ctp-create.jpeg" alt="Create control plane in Console">}}
+{{<img src="guides/images/console-ctp-create.jpeg" alt="Create control plane in Console">}}
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -92,7 +92,7 @@ stringData:
       "tlsClientConfig": {
         "insecure": true
       }
-    }    
+    }
 EOF
 ```
 {{< /editCode >}}
@@ -121,7 +121,7 @@ spec:
 EOF
 ```
 
-This application points at a sample repository that contains a reference Crossplane configuration. 
+This application points at a sample repository that contains a reference Crossplane configuration.
 
 ## Inspect the configuration of your control plane
 
