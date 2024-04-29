@@ -15,19 +15,133 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 {{< /hint >}}
 
-Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Space. Upbound provides an integrated observability pipeline built on the [OpenTelemetry](https://opentelemetry.io/) project.
+Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Control Plane. Upbound provides an integrated observability pipeline built on the [OpenTelemetry](https://opentelemetry.io/) project.
 
-The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a central collector at the Space-level and collectors per control plane. Control plane collectors pass their telemetry data to the Spaces collector by default.
+The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a collector per control plane, defined by a SharedTelemetryConfig set up at the group level. Control plane collectors pass their data to external observability backends defined in the SharedTelemetryConfig.
+
+## SharedTelemetryConfig
+
+SharedTelemetryConfig is a custom resource that defines the telemetry configuration for a group of control planes. It specifies the exporters and pipelines that the control planes in the group use to send telemetry data to external observability backends.
+
+ The following is an example of a SharedTelemetryConfig resource that sends metrics and traces to New Relic:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: newrelic
+  namespace: default
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    otlphttp:
+      endpoint: https://otlp.nr-data.net
+      headers:
+        api-key: YOUR_API_KEY
+  exportPipeline:
+    metrics: [otlphttp]
+    traces: [otlphttp]
+```
+
+The `controlPlaneSelector` field specifies the control planes that use this configuration.
+The `exporters` field specifies the configuration for the exporters. The configuration for each exporter is specific to the exporter and corresponds to its [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/#exporters).
+The `exportPipeline` field specifies the pipelines that the control planes use to send telemetry data to the exporters. The `metrics` and `traces` fields specify the names of the pipelines that the control planes use to send metrics and traces, respectively. The names of the pipelines correspond to the `exporters` in the OpenTelemetry Collector [service pipeline configuration](https://opentelemetry.io/docs/collector/configuration/#pipelines).
 
 ## Usage
 
-When you install a Space, you can configure the pipeline and related options. You can configure:
+In a Space, you can configure per control plane group telemetry settings by creating one or more SharedTelemetryConfig resources.
 
-* which exporter is used
-* an `API Key` to enable a Space to write to the designated exporter.
-* whether metrics and/or traces route to the desired exporter.
+{{< hint "important" >}}
+Only one SharedTelemetryConfig can be applied to a control plane. If multiple SharedTelemetryConfig resources are applied to the same control plane, the one applied first takes precedence. The other SharedTelemetryConfig will consider the control plane telemetry provisioning as failed due to conflict.
+{{< /hint >}}
 
-For information about which exporters are available, consult the OpenTelemetry Collector [exporter docs](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md). 
+Currently supported exporters are:
+- `datadog` (check [docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md) for configuration details)
+- `otelhttp` (used by New Relic among others, check [docs](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
+
+The example below shows how to configure a SharedTelemetryConfig resource to send metrics and traces to Datadog:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: datadog
+  namespace: default
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    datadog:
+      api:
+        site: ${DATADOG_SITE}
+        key: ${DATADOG_API_KEY}
+  exportPipeline:
+    metrics: [datadog]
+    traces: [datadog]
+```
+
+### Status
+
+If all goes good, the SharedTelemetryConfig will be created and the OpenTelemetry Collector will be provisioned for the selected controlplane. To see the status:
+
+```bash
+ kubectl get stc
+NAME       SELECTED   FAILED   PROVISIONED   AGE
+datadog    1          0        1             63s
+```
+
+- `SELECTED` shows the number of control planes selected by the SharedTelemetryConfig.
+- `FAILED` shows the number of control planes that failed to provision the OpenTelemetry Collector.
+- `PROVISIONED` shows the number of control planes that successfully provisioned the OpenTelemetry Collector, and the OpenTelemetry Collector is running.
+
+To get more data, we can check the resource status, in which we can see the names of the control planes that were selected and provisioned:
+
+```yaml
+...
+status:
+  selected:
+    - ctp
+  provisioned:
+    - ctp
+```
+
+If a conflict or another issue occurs, the failed control planes status will show the failure conditions:
+
+```bash
+k get stc
+NAME       SELECTED   FAILED   PROVISIONED   AGE
+datadog    1          1        0             63s
+```
+
+```yaml
+...
+status:
+  failed:
+  - conditions:
+    - lastTransitionTime: "2024-04-26T09:32:28Z"
+      message: 'control plane dev is already managed by another SharedTelemetryConfig:
+        newrelic'
+      reason: SelectorConflict
+      status: "True"
+      type: Failed
+    controlPlane: ctp
+  selectedControlPlanes:
+  - ctp
+```
+
+Upbound marks the control plane as provisioned only if the OpenTelemetry Collector is successfully deployed and running. There could be a delay in the status update if the OpenTelemetry Collector is still being deployed, such as:
+```bash
+ k get stc
+NAME       SELECTED   FAILED   PROVISIONED   AGE
+datadog    1          0        0             63s
+```
+
+## Prerequisites
 
 This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) to be installed on the Space cluster. Install this now if you haven't already:
 
@@ -45,10 +159,6 @@ The examples below document how to configure observability with the `up` CLI or 
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.observability.enabled=true" \
-  --set "observability.config.exporters.otlphttp.endpoint=${NEWRELIC_ENDPOINT}" \
-  --set "observability.config.exporters.otlphttp.headers.api-key=${NEWRELIC_API_KEY}" \
-  --set "observability.config.exportPipeline.metrics={debug,otlphttp}" \
-  --set "observability.config.exportPipeline.traces={debug,otlphttp}"
 ```
 
 {{< /tab >}}
@@ -63,17 +173,9 @@ helm -n upbound-system upgrade --install spaces \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.observability.enabled=true" \
-  --set "observability.config.exporters.otlphttp.endpoint=${NEWRELIC_ENDPOINT}" \
-  --set "observability.config.exporters.otlphttp.headers.api-key=${NEWRELIC_API_KEY}" \
-  --set "observability.config.exportPipeline.metrics={debug,otlphttp}" \
-  --set "observability.config.exportPipeline.traces={debug,otlphttp}" \
   --wait
 ```
 
 {{< /tab >}}
 
 {{< /tabs >}}
-
-{{<hint "important" >}}
-In Spaces v1.3, you must configure Space-level observability when you first install a Space. In future releases, Upbound will allow backend exports per control plane group or per individual control planes.
-{{< /hint >}}
