@@ -5,7 +5,7 @@ description: A tutorial for creating Role-based Access Control in Upbound
 ---
 
 {{< hint "important" >}}
-This feature is new and requires Spaces `v1.3.0`.
+This feature is in alpha and requires Spaces `v1.3.0`.
 {{< /hint >}}
 
 This guide introduces role-based access control (RBAC) in Upbound. RBAC allows you to apply privileges to your Upbound objects and control planes. Organizations using RBAC can manage user roles and privileges to determine the level of access a user can have within their role.
@@ -84,8 +84,9 @@ rules:
   - upbound_controlplane_view
 
 ```
-
-## Manage permissions with Upbound Identity Management (SSO)
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+## Manage permissions with Upbound identity management (SSO)
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 
 Another method of managing permissions is with Upbound Identity from SSO. This approach allows you to apply roles from within your own organization. This works for users who don't want to manage permissions through the Upbound console.

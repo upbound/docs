@@ -23,9 +23,9 @@ The following table describes some benefits of using Upbound as your managed Cro
 | Platform management          | Fully-managed infrastructure. Managed upgrade experience with release channels to improve security, reliability, and compliance. Automatic scaling of Crossplane based on the number of CRDs in the control plane. Single-tenant and multi-tenant deployment modes. |   |   |   |
 | Improved security posture    | Built-in security measures. Automatic upgrades to new Crossplane versions. Built-in logging and monitoring.                                                                                                                                                         |   |   |   |
 | Cost optimization            | Pay only for loop usage, not hosting infrastructure costs. Minimized operational overhead because Upbound manages the core aspects of Crossplane.                                                                                                                   |   |   |   |
-| Reliability and availability | >99% monthly uptime SLO. Highly-available control planes                                                                                                                                                                                                            |   |   |   |
+| Reliability and availability | >99% monthly uptime `SLO`. Highly available control planes                                                                                                                                                                                                            |   |   |   |
 
-### Use cases for Upbound
+### When to use Upbound
 
 Organizations in finance, automotive, retail, healthcare, and more trust Upbound to manage their platforms. Some examples of these workflows are:
 
@@ -35,7 +35,10 @@ Organizations in finance, automotive, retail, healthcare, and more trust Upbound
 
 ## How Upbound works
 
+<!-- vale Upbound.Spelling = NO -->
 An Upbound organization contains groups of control planes called managed control planes (MCPs). These MCPs are fully isolated virtual Crossplane instances treated as an entity within the organization. You configure MCPs with the Crossplane API to deploy your Crossplane Configurations with Crossplane Providers(AWS, Splunk, etc.). Crossplane lets you create infrastructure abstractions called Composite Resource Definitions (XRDs) and compositions and deploy them to your MCPs. The Crossplane API with the MCP communicates with your infrastructure abstractions to administer, operate, and monitor your infrastructure.
+<!-- vale Upbound.Spelling = YES -->
+
 
 Crossplane control planes run a set of pods for the Crossplane system components as well as each provider and composition function you deploy. Upbound manages the system components for you with automatic component upgrades, high availability, and data integrity in the control plane's persistent storage volume.
 
@@ -47,9 +50,9 @@ For more information, refer to [Upbound Architecture](https://docs.google.com/do
 
 ### Crossplane versions and features
 
-Upbound automatically upgrades Crossplane system components on MCPs to new Crossplane versions for updated features and improvements in the open source project. Auto-upgrades choose the stable version in your chosen UXP release channel when you create the MCP. You can also choose to manually upgrade your control plane to a different Crossplane version. For detailed information on versions and upgrades, refer to the release notes and Upbound's versioning and upgrades documentation. If you don't enroll in an MCP release channel, Upbound doesn't apply automatic upgrades.
+Upbound automatically upgrades Crossplane system components on MCPs to new Crossplane versions for updated features and improvements in the open source project. Auto upgrades choose the stable version in your chosen UXP release channel when you create the MCP. You can also choose to manually upgrade your control plane to a different Crossplane version. For detailed information on versions and upgrades, refer to the release notes and Upbound's versioning and upgrades documentation. If you don't enroll in an MCP release channel, Upbound doesn't apply automatic upgrades.
 
-## Managed Control Plane Architecture
+## Managed control plane architecture
 
 ![Managed control plane architecture](/content/images/mcp.png)
 
@@ -66,23 +69,25 @@ Like in Kubernetes, the API server is the hub for all communication for the MCP.
 
 Your API requests tell Crossplane your desired state for the resources your MCP manages. Crossplane attempts to constantly maintain that state. Crossplane lets you configure objects in the API either imperatively or declaratively.
 
-## Upbound Architecture
+## Upbound architecture
 
 ![Upbound architecture](/content/images/up.png)
 
 Upbound includes a Global Console, with complementary API and CLI, that operates over two types of Spaces: Cloud Spaces and Connected Spaces.
 
-### Cloud Spaces
+### Cloud spaces
 
 Cloud Spaces are multi-tenant deployments of Upbound, operated inside the Upbound cloud environments. With Cloud Spaces, Upbound fully manages your MCPs as well as the hosting infrastructure, persistent storage, and backup and restore operations.
 
 Upbound's Cloud Spaces give you a ready-to-go managed Crossplane experience. Upbound hosts Cloud Spaces in multiple cloud service providers which gives you a flexible, fully managed SaaS experience wherever you need to run Crossplane.
 
-### Connected Spaces
+### Connected spaces
 
-A Connected Space is a single-tenant deployment of Upbound within your infrastructure, such as your Amazon Web Services (AWS) cloud account or Microsoft Azure subscription. With Connected Spaces, you can use the same Console, CLI, and API that Upbound offers, with the benefit of running entirely on your own infrastructure.
+A Connected Space is a single-tenant deployment of Upbound within your infrastructure, like AWS or Azure. With Connected Spaces, you can use the same Console, CLI, and API that Upbound offers, with the benefit of running entirely on your own infrastructure.
 
+<!-- vale write-good.TooWordy = no -->
 The Upbound Helm chart packages the settings you need to deploy and operate MCPs in your own infrastructure. You can control the aspects of your deployment with enhanced support and additional security guarantees.
+<!-- vale write-good.TooWordy = YES -->
 
 Connected Spaces goes beyond an on-prem control plane deployment. With Connected Spaces, you get access to the experts on the Upbound team as you build a fully managed and custom Crossplane solution. The Upbound team is on-call for your control plane needs.
 
