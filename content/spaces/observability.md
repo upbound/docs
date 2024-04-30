@@ -133,8 +133,10 @@ status:
   selectedControlPlanes:
   - ctp
 ```
-
+<!-- vale write-good.Passive = NO -->
 Upbound marks the control plane as provisioned only if the OpenTelemetry Collector is deployed and running. There could be a delay in the status update if the OpenTelemetry Collector is currently deploying:
+<!-- vale write-good.Passive = YES -->
+
 ```bash
  k get stc
 NAME       SELECTED   FAILED   PROVISIONED   AGE
