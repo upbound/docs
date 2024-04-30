@@ -85,7 +85,7 @@ Upbound's Cloud Spaces give you a ready-to-go managed Crossplane experience. Upb
 
 A Connected Space is a single-tenant deployment of Upbound within your infrastructure, like AWS or Azure. With Connected Spaces, you can use the same Console, CLI, and API that Upbound offers, with the benefit of running entirely on your own infrastructure.
 
-<!-- vale write-good.TooWordy = no -->
+<!-- vale write-good.TooWordy = NO -->
 The Upbound Helm chart packages the settings you need to deploy and operate MCPs in your own infrastructure. You can control the aspects of your deployment with enhanced support and additional security guarantees.
 <!-- vale write-good.TooWordy = YES -->
 
