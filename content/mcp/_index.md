@@ -120,7 +120,7 @@ Like `up ctp connect`, this command also requires an API token, which you can [g
 
 #### ProviderConfigs with OpenID Connect
 
-Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. Read how to [connect managed control planes to external services]({{<ref "/mcp/oidc.md" >}}) to learn more.
+Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes without credentials. OIDC lets your managed control plane exchange short-lived tokens directly with your cloud provider. Read how to [connect managed control planes to external services]({{<ref "oidc.md" >}}) to learn more.
 
 #### Generic ProviderConfigs
 
