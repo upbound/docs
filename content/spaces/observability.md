@@ -17,13 +17,13 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Control Plane. Upbound provides an integrated observability pipeline built on the [OpenTelemetry](https://opentelemetry.io/) project.
 
-The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a collector per control plane, defined by a SharedTelemetryConfig set up at the group level. Control plane collectors pass their data to external observability backends defined in the SharedTelemetryConfig.
+The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a collector per control plane, defined by a `SharedTelemetryConfig` set up at the group level. Control plane collectors pass their data to external observability backends defined in the `SharedTelemetryConfig`.
 
 ## SharedTelemetryConfig
 
-SharedTelemetryConfig is a custom resource that defines the telemetry configuration for a group of control planes. It specifies the exporters and pipelines that the control planes in the group use to send telemetry data to external observability backends.
+`SharedTelemetryConfig` is a custom resource that defines the telemetry configuration for a group of control planes. This resources allows you to specify the exporters and pipelines your control planes use to send telemetry data to your external observability backends.
 
- The following is an example of a SharedTelemetryConfig resource that sends metrics and traces to New Relic:
+ The following is an example of a `SharedTelemetryConfig` resource that sends metrics and traces to New Relic:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -47,22 +47,22 @@ spec:
 ```
 
 The `controlPlaneSelector` field specifies the control planes that use this configuration.
-The `exporters` field specifies the configuration for the exporters. The configuration for each exporter is specific to the exporter and corresponds to its [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/#exporters).
-The `exportPipeline` field specifies the pipelines that the control planes use to send telemetry data to the exporters. The `metrics` and `traces` fields specify the names of the pipelines that the control planes use to send metrics and traces, respectively. The names of the pipelines correspond to the `exporters` in the OpenTelemetry Collector [service pipeline configuration](https://opentelemetry.io/docs/collector/configuration/#pipelines).
+The `exporters` field specifies the configuration for the exporters. Each exporter configuration is unique and corresponds to its [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/#exporters).
+The `exportPipeline` field specifies the control plane pipelines that send telemetry data to the exporters. The `metrics` and `traces` fields specify the names of the pipelines the control planes use to send metrics and traces, respectively. The names of the pipelines correspond to the `exporters` in the OpenTelemetry Collector [service pipeline configuration](https://opentelemetry.io/docs/collector/configuration/#pipelines).
 
 ## Usage
 
-In a Space, you can configure per control plane group telemetry settings by creating one or more SharedTelemetryConfig resources.
+In a Space, you can configure per control plane group telemetry settings by creating one or more `SharedTelemetryConfig` resources.
 
 {{< hint "important" >}}
-Only one SharedTelemetryConfig can be applied to a control plane. If multiple SharedTelemetryConfig resources are applied to the same control plane, the one applied first takes precedence. The other SharedTelemetryConfig will consider the control plane telemetry provisioning as failed due to conflict.
+Your control plane can only use a single `SharedTelemetryConfig`. If you multiple `SharedTelemetryConfig` select the same control plane, the one applied first takes precedence. The other `SharedTelemetryConfig` fails the control plane provisioning due to conflict.
 {{< /hint >}}
 
 Currently supported exporters are:
-- `datadog` (check [docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md) for configuration details)
-- `otelhttp` (used by New Relic among others, check [docs](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
+- `datadog` (review the OpenTelemetry [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md) for configuration details)
+- `otelhttp` (used by New Relic among others, review the New Relic [documentation](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
 
-The example below shows how to configure a SharedTelemetryConfig resource to send metrics and traces to Datadog:
+The example below shows how to configure a `SharedTelemetryConfig` resource to send metrics and traces to Datadog:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -87,7 +87,7 @@ spec:
 
 ### Status
 
-If all goes good, the SharedTelemetryConfig will be created and the OpenTelemetry Collector will be provisioned for the selected controlplane. To see the status:
+If successful, Upbound creates the `SharedTelemetryConfig` resource and provisions the OpenTelemetry Collector for the selected control plane. To see the status, run `kubectl get stc`:
 
 ```bash
  kubectl get stc
@@ -95,11 +95,11 @@ NAME       SELECTED   FAILED   PROVISIONED   AGE
 datadog    1          0        1             63s
 ```
 
-- `SELECTED` shows the number of control planes selected by the SharedTelemetryConfig.
+- `SELECTED` shows the number of control planes selected by the `SharedTelemetryConfig`.
 - `FAILED` shows the number of control planes that failed to provision the OpenTelemetry Collector.
-- `PROVISIONED` shows the number of control planes that successfully provisioned the OpenTelemetry Collector, and the OpenTelemetry Collector is running.
+- `PROVISIONED` shows the provisioned and running OpenTelemetry Collectors on each control plane.
 
-To get more data, we can check the resource status, in which we can see the names of the control planes that were selected and provisioned:
+To return the names of control planes selected and provisioned, review the resource status:
 
 ```yaml
 ...
@@ -110,7 +110,7 @@ status:
     - ctp
 ```
 
-If a conflict or another issue occurs, the failed control planes status will show the failure conditions:
+If a conflict or another issue occurs, the failed control planes status returns the failure conditions:
 
 ```bash
 k get stc
@@ -134,7 +134,7 @@ status:
   - ctp
 ```
 
-Upbound marks the control plane as provisioned only if the OpenTelemetry Collector is successfully deployed and running. There could be a delay in the status update if the OpenTelemetry Collector is still being deployed, such as:
+Upbound marks the control plane as provisioned only if the OpenTelemetry Collector is deployed and running. There could be a delay in the status update if the OpenTelemetry Collector is currently deploying:
 ```bash
  k get stc
 NAME       SELECTED   FAILED   PROVISIONED   AGE
@@ -143,10 +143,10 @@ datadog    1          0        0             63s
 
 ## Prerequisites
 
-This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) to be installed on the Space cluster. Install this now if you haven't already:
+This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) on the Space cluster. Install this now if you haven't already:
 
 ```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.96.0/opentelemetry-operator.yaml
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.98.0/opentelemetry-operator.yaml
 ```
 
 The examples below document how to configure observability with the `up` CLI or Helm installations.
