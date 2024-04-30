@@ -106,7 +106,7 @@ The token required for this command is an API token. The `up` CLI uses personal 
 up ctp disconnect
 ```
 
-You can also generate a `kubeconfig` file for a managed control plane with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}). Make sure to login to the `up` CLI before you execute the command.
+You can also generate a `kubeconfig` file for a managed control plane with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}). Make sure to log in to the `up` CLI before you execute the command.
 
 ```shell
 up ctp kubeconfig get -a <upbound-org-account-name> <control-plane-name> -f <kubeconfig-file> --token=<api-token>
