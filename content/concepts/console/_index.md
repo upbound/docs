@@ -25,7 +25,7 @@ Above the dashboard is Upbound's top navigation bar. Wherever you are in the pro
 ## Control Plane Explorer
 <!-- vale Google.Headings = YES -->
 
-Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can navigate to its [portal]({{<ref "ctp-portal">}}), learn how to integrate the control plane [with GitOps]({{<ref "mcp/control-plane-connector">}}) flows, view events, and access the control plane settings.
+Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can navigate to its [portal]({{<ref "ctp-portal">}}), learn how to integrate the control plane [with GitOps]({{<ref "control-plane-connector">}}) flows, view events, and access the control plane settings.
 
 {{<img src="concepts/images/ctp-explorer2.png" alt="control plane explorer" lightbox="true">}}
 
