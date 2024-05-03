@@ -55,7 +55,8 @@ Run the following command in a terminal:
 export UPBOUND_ORG_ACCOUNT="$@acmeco$@"
 export UPBOUND_API_TOKEN="$@token$@"
 export UPBOUND_CTP_KUBECONFIG="$@my-control-plane.conf$@"
-up ctp kubeconfig get --account="${UPBOUND_ORG_ACCOUNT}" --token="${UPBOUND_API_TOKEN}" --file="${UPBOUND_CTP_KUBECONFIG}" my-control-plane
+export UPBOUND_MCP_PATH="$@org/space-name/group/mcp-name$@"
+up ctp ctx "${UPBOUND_MCP_PATH}" --file="${UPBOUND_CTP_KUBECONFIG}"
 ```
 {{< /editCode >}}
 

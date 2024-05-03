@@ -39,10 +39,12 @@ This configuration turns off Argo CD auto pruning, preventing the deletion of Cr
 
 You can connect an external Argo CD instance to your managed control plane to sync Crossplane claims. 
 
-1. Create a kubeconfig file for your MCP with the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). Use the `up ctp kubeconfig get` command and define the filename to save the kubeconfig to. This example saves the kubeconfig to a file named `mcp-kubeconfig.yaml`. 
+1. Create a kubeconfig file for your MCP with the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). Use the `up ctx` command and define the filename to save the kubeconfig to. This example saves the kubeconfig to a file named `mcp-kubeconfig.yaml`. 
 
 ```bash
-up ctp kubeconfig get -a <organization> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml
+export UPBOUND_MCP_PATH="$@org/space-name/group/mcp-name$@"
+export UPBOUND_CTP_KUBECONFIG="$@mcp-kubeconfig.yaml$@"
+up ctp ctx "${UPBOUND_MCP_PATH}" --file="${UPBOUND_CTP_KUBECONFIG}"
 ```
 
 2. Save the kubeconfig of the managed control plane as a secret on the external Kubernetes cluster where you installed Argo. The kubeconfig you get from Upbound has all the values required to translate into the format Argo expects like the below example. The secret should match the following configuration:
@@ -98,7 +100,9 @@ You can use Flux to sync claims to your managed control planes. To do this, you 
 1. Fetch your managed control plane's API server endpoint so you can provide it to Flux. In the step below, use the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
 
 ```bash
-up ctp kubeconfig get -a <account> <control-plane-name> --token <token> -f mcp-kubeconfig.yaml
+export UPBOUND_MCP_PATH="$@org/space-name/group/mcp-name$@"
+export UPBOUND_CTP_KUBECONFIG="$@mcp-kubeconfig.yaml$@"
+up ctp ctx "${UPBOUND_MCP_PATH}" --file="${UPBOUND_CTP_KUBECONFIG}"
 ```
 
 2. Create a secret on the external Kubernetes cluster where you installed Flux. This secret should contain the kubeconfig from the previous step.

@@ -94,16 +94,16 @@ in the following form:
 https://proxy.upbound.io/v1/controlPlanes/<upbound-org-account-name>/<control-plane-name>/k8s
 ```
 
-You can connect to a managed control plane directly in a couple ways. Use the [up CLI command]({{<ref "reference/cli/command-reference#controlplane-connect" >}}) to set your kubeconfig's current context to a managed control plane:
+You can connect to a managed control plane directly in a couple ways. Use the [up CLI command]({{<ref "reference/cli/command-reference#alpha-ctx" >}}) to set your kubeconfig's current context to a managed control plane:
 
 ```shell
-up ctp connect <control-plane-name> --token=<api-token>
+up ctx
 ```
 
-The token required for this command is an API token. The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from the Upbound Console. To disconnect from your control plane and revert your kubeconfig's current context to the previous entry, run the following:
+To reset your kubecontext to what it was previously, run the following:
 
 ```shell
-up ctp disconnect
+up ctx -
 ```
 
 You can also generate a `kubeconfig` file for a managed control plane with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}). Make sure to login to the `up` CLI before you execute the command.
