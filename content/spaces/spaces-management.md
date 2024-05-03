@@ -29,7 +29,7 @@ Furthermore, the Spaces chart requires a pull secret, which Upbound must provide
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "v1.2.4" \
+  --version "v1.3.0" \
   --set "ingress.host=your-host.com" \
   --set "clusterType=eks" \
   --set "account=your-upbound-account" \
@@ -43,7 +43,7 @@ For a complete tutorial of the helm install, read one of the [quickstarts]({{<re
 To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "reference/cli/command-reference.md#space-upgrade">}}). Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
 ```bash
-up space upgrade "v1.2.4"
+up space upgrade "v1.3.0"
 ```
 
 ### Downgrade a Space
