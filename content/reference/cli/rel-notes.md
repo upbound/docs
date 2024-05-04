@@ -9,6 +9,146 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.29.0
+
+Released May 3rd, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.29.0)
+
+{{< hint "important" >}}
+This release contains an important breaking change that affects how users gain access to the API server of their managed control planes.
+
+For users who've deployed MCPs to Upbound prior to April 30th, 2024 (on our 'legacy GCP Space'), to connect to those MCPs you **must** use `up` ver <= `v0.28.0`.
+
+To connect to an MCP in a Cloud Space or Connected/Disconnected Space, please use `up` ver >= `v0.29.0`.
+{{< /hint >}}
+
+### Notable Changes
+
+- We replaced `up ctp connect/disconnect` and `up ctp kubeconfig get` with a new `up ctx` command.
+- We've overhauled how profiles work in `up`. Learn more about it by reading the [up CLI]({{<ref "reference/cli">}}) reference.
+
+### What's Changed
+
+- We introduced `up space list` to list all Cloud and Connected Spaces that exist in an organization's account.
+- We added CRUD support for control plane groups with `up group` subcommand.
+- We bumped the prerequisite version of UXP to `v1.15` when using `up space init` to create a single-tenant Space.
+- We fixed some bugs that caused `up space detach` to fail.
+- `up ctp list` now derives its context according to what's been set with `up ctx`.
+- `up space init` now installs opentelemetry-operator as a prerequisite.
+- All commands in `up` now use the new `up` profiles and kubecontexts.
+
+## v0.28.0
+
+Released April 2nd, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.28.0)
+
+### What's Changed
+
+- We added `up alpha space attach` and `detach` commands to facilitate connecting a single-tenant Space to Upbound's global console.
+
+## v0.27.0
+
+Released March 27th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.27.0)
+
+### What's Changed
+
+- We fixed a bug that caused `up ctp connect` to fail to connect to a managed control plane running in a single-tenant Space.
+- We fixed a bug impacting `up xpkg build` against Docker 1.25
+
+## v0.26.0
+
+Released March 16th, 2023.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.26.0)
+
+### What's Changed
+
+- We added`up alpha query` and `up alpha get` commands.
+- We changed `up trace`'s arguments to align with `up query` and `up get` and fixed up/down navigation.
+
+## v0.25.0
+
+Released March 12th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.25.0)
+
+### Notable Changes
+
+- We updated `up version` to print client and server side versions.
+- We improved the UX of `up ctp connect/disconnect`. Connect now gracefully handles different context names and allows repeated connect attempts.
+
+### What's Changed
+
+- We fixed an issue in `up migration` that restored package statuses.
+- `up migration` now uses the same confirmation dialog as `up space init`
+- We improved the UX of `up ctp connect/disconnect`. Connect now gracefully handles different context names and allows repeated connect attempts.
+- We unified the experience between `up ctp connect` and `up ctp kubeconfig get`.
+- We added `alpha trace` and `alpha tview` template commands.
+- We updated `up version` to print client and server side versions.
+
+## v0.24.2
+
+Released February 29th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.2)
+
+### What's Changed
+
+- This version includes some configuration tweaks for Crossplane and providers that is installed as prerequisites with the up space init command.
+
+## v0.24.1
+
+Released February 7th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.1)
+
+### What's Changed
+
+- We fixed an issue in `up migration` that restored package statuses.
+- `up migration` now uses the same confirmation dialog as `up space init`
+
+## v0.24.0
+
+Released February 1st, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.0)
+
+### What's Changed
+
+- We introduced `up alpha web-login`, a preview feature to allow web-based authentication to Upbound from `up`.
+
+## v0.23.0
+
+Released February 1st, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.23.0)
+
+### What's Changed
+
+- Updated component prerequisite versions for an Upbound Space.
+- We fixed an issue where `up migration` didn't wait for PackageRevisions to be healthy in order to complete a successful migration.
+- Space subcommands now respect control plane groups.
+
+## v0.22.1
+
+Released January 30th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.22.1)
+
+### What's Changed
+
+- Updated component prerequisite versions for an Upbound Space.
+
+## v0.22.0
+
+Released January 30th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.22.0)
+
+### Notable Changes
+
+- New `up alpha migration` commands to export state from a control plane and import it into an Upbound managed control plane.
+- Allow creation of managed control planes without being configured to use Upbound's deployment service.
+
+### What's Changed
+
+- Improved the help text to make `up profile set space` more discoverable.
+- Allow creating new Upbound profiles with `type: space` by name.
+- Fixed an issue where `up space init` ignored SIGINT. 
+
 ## v0.21.0
 
 Released October 12th, 2023.  
