@@ -108,7 +108,6 @@ Some examples of Crossplane resources that require the `up` CLI
 - ProviderConfigs
 - Provider events
 
-
 ## Use direct CLI access
 
-If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctp kubeconfig get`]({{<ref "reference/cli/command-reference#controlplane" >}}) to create a `kubeconfig` for your managed control plane.
+If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctx`]({{<ref "reference/cli/command-reference#alpha-ctx" >}}) to connect directly to your managed control plane.

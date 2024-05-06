@@ -87,34 +87,23 @@ For more details on how to use provider-upbound, read the [provider-upbound](htt
 
 ### Connect directly to your MCP
 
-All managed control planes have a deterministic Kubernetes API server endpoint
-in the following form:
-
-```
-https://proxy.upbound.io/v1/controlPlanes/<upbound-org-account-name>/<control-plane-name>/k8s
-```
-
-You can connect to a managed control plane directly in a couple ways. Use the [up CLI command]({{<ref "reference/cli/command-reference#controlplane-connect" >}}) to set your kubeconfig's current context to a managed control plane:
+You can connect to a managed control plane directly in a couple ways. Use the [up CLI command]({{<ref "reference/cli/command-reference#alpha-ctx" >}}) to set your kubeconfig's current context to a managed control plane:
 
 ```shell
-up ctp connect <control-plane-name> --token=<api-token>
+up ctx
 ```
 
-The token required for this command is an API token. The `up` CLI uses personal access tokens to authenticate to Upbound. You can [generate a personal access token]({{<ref "concepts/console#create-a-personal-access-token" >}}) from the Upbound Console. To disconnect from your control plane and revert your kubeconfig's current context to the previous entry, run the following:
+To reset your kubecontext to the previous context, run the following:
 
 ```shell
-up ctp disconnect
+up ctx -
 ```
 
-You can also generate a `kubeconfig` file for a managed control plane with the following [up CLI command]({{<ref "reference/cli/command-reference#controlplane-kubeconfig-get" >}}). Make sure to login to the `up` CLI before you execute the command.
+You can also generate a `kubeconfig` file for a managed control plane:
 
 ```shell
-up ctp kubeconfig get -a <upbound-org-account-name> <control-plane-name> -f <kubeconfig-file> --token=<api-token>
+up ctx '<org-name/space-name/group-name/control-plane-name>' -f <kubeconfig-file>
 ```
-
-Like `up ctp connect`, this command also requires an API token, which you can [generate from the Upbound console]({{<ref "concepts/console#create-a-personal-access-token" >}}).
-
-{{< hint "warning" >}} The token you provide _must_ be an API token, not a robot token. If you receive an error like `up: error: kubeconfig.getCmd.Run(): the server could not find the requested resource`, this indicates you provided an incorrect token. {{< /hint >}}
 
 ### Configure Crossplane providers on your MCP
 

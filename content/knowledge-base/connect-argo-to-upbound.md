@@ -11,7 +11,9 @@ In this tutorial, you learn how to create a managed control plane in Upbound and
 To complete this tutorial, you need the following:
 
 - An [account in Upbound](https://accounts.upbound.io/register).
+<!-- vale Upbound.Spelling = NO -->
 - Have already deployed an instance of Argo CD on a Kubernetes cluster (or using a hosted service such as [Akuity](https://akuity.io/)).
+<!-- vale Upbound.Spelling = YES -->
 - The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) on your local machine.
 
 ## Create a managed control plane
@@ -52,10 +54,9 @@ Run the following command in a terminal:
 
 {{< editCode >}}
 ```ini
-export UPBOUND_ORG_ACCOUNT="$@acmeco$@"
-export UPBOUND_API_TOKEN="$@token$@"
-export UPBOUND_CTP_KUBECONFIG="$@my-control-plane.conf$@"
-up ctp kubeconfig get --account="${UPBOUND_ORG_ACCOUNT}" --token="${UPBOUND_API_TOKEN}" --file="${UPBOUND_CTP_KUBECONFIG}" my-control-plane
+export UPBOUND_MCP_PATH="$@org-name/space-name/group-name/mcp-name$@"
+export UPBOUND_CTP_KUBECONFIG="$@mcp-kubeconfig.yaml$@"
+up ctx "${UPBOUND_MCP_PATH}" -f "${UPBOUND_CTP_KUBECONFIG}"
 ```
 {{< /editCode >}}
 
@@ -84,7 +85,7 @@ metadata:
 type: Opaque
 stringData:
   name: my-control-plane-context
-  server: https://proxy.upbound.io/v1/controlPlanes/$UPBOUND_ORG_ACCOUNT/my-control-plane/k8s
+  server: https://<space-name>.space.mxe.upbound.io/apis/spaces.upbound.io/v1beta1/namespaces/<group>/controlplanes/clusters/k8s
   config: |
     {
       "bearerToken": "${UPBOUND_API_TOKEN}",

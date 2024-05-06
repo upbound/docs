@@ -110,14 +110,24 @@ up ctp list
 
 ## Connect to your managed control plane
 
-The connection details for your managed control plane should now exist in a secret. You can fetch the connection details with the following command:
+Connect to your managed control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
 
-```shell
-up ctp connect controlplane1
+```bash
+up ctx default/ctp1
 ```
 
-You can use the kubeconfig to interact with your managed control plane directly:
+This command updates your current kubecontext. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
 
-```shell
+```bash
 kubectl get crds
 ```
+
+To disconnect from your managed control plane and switch back to your previous context:
+
+```bash
+up ctx -
+```
+
+{{< hint "tip" >}}
+Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/command-reference#alpha-ctx">}}).
+{{< /hint >}}

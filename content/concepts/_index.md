@@ -27,7 +27,6 @@ The Accounts section explains user management, permissions, and team and organiz
 
 ## Control plane configurations
 
-- [Bring Your Own Controller](mcp/bring-your-own-controller/)
 - [Control Plane Connector](mcp/control-plane-connector/)
 - [OIDC Integration](mcp/oidc/)
 

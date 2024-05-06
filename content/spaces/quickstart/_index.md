@@ -614,17 +614,26 @@ The first managed control plane you create in a Space takes around 5 minutes to 
 kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 ```
 
-
 ## Connect to your managed control plane
 
-The connection details for your managed control plane should now exist in a secret. You can fetch the connection details with the following command:
+Connect to your managed control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
 
 ```bash
-kubectl get secret kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/ctp1.yaml
+up ctx default/ctp1
 ```
 
-You can use the kubeconfig to interact with your managed control plane directly:
+This command updates your current kubecontext. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
 
 ```bash
-kubectl get crds --kubeconfig=/tmp/ctp1.yaml
+kubectl get crds
 ```
+
+To disconnect from your managed control plane and switch back to your previous context:
+
+```bash
+up ctx -
+```
+
+{{< hint "tip" >}}
+Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/command-reference#alpha-ctx">}}).
+{{< /hint >}}
