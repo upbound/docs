@@ -1819,8 +1819,6 @@ Select an Upbound kubeconfig context.
 {{< table "table table-sm table-striped">}}
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
-|            | `--kubeconfig=<path>`   | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.         |
-|            | `--yes`     | When set to true, automatically accepts any confirmation prompts that may appear during the import process. |
-| `-i`       | `--input`   | Specifies the path of the archive to import. The default path is 'xp-state.tar.gz'.  |
-|            | `--unpause-after-import`   | When set to true, automatically resumes all managed resources paused during the import process. This helps in resuming normal operations post-import. Defaults to false, requiring manually resuming of resources if needed. |
+|            | `--context="upbound"`   | Kubernetes context to operate on ($UP_CONTEXT).         |
+| `-f`       | `--kubeconfig=<path>`   | Kubeconfig to modify when saving a new context.         |
 {{< /table >}}

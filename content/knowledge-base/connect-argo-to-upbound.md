@@ -52,11 +52,9 @@ Run the following command in a terminal:
 
 {{< editCode >}}
 ```ini
-export UPBOUND_ORG_ACCOUNT="$@acmeco$@"
-export UPBOUND_API_TOKEN="$@token$@"
-export UPBOUND_CTP_KUBECONFIG="$@my-control-plane.conf$@"
-export UPBOUND_MCP_PATH="$@org/space-name/group/mcp-name$@"
-up ctp ctx "${UPBOUND_MCP_PATH}" --file="${UPBOUND_CTP_KUBECONFIG}"
+export UPBOUND_MCP_PATH="$@org-name/space-name/group-name/mcp-name$@"
+export UPBOUND_CTP_KUBECONFIG="$@mcp-kubeconfig.yaml$@"
+up ctx "${UPBOUND_MCP_PATH}" -f "${UPBOUND_CTP_KUBECONFIG}"
 ```
 {{< /editCode >}}
 
@@ -85,7 +83,7 @@ metadata:
 type: Opaque
 stringData:
   name: my-control-plane-context
-  server: https://proxy.upbound.io/v1/controlPlanes/$UPBOUND_ORG_ACCOUNT/my-control-plane/k8s
+  server: https://<space-name>.space.mxe.upbound.io/apis/spaces.upbound.io/v1beta1/namespaces/<group>/controlplanes/clusters/k8s
   config: |
     {
       "bearerToken": "${UPBOUND_API_TOKEN}",

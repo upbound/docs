@@ -42,9 +42,9 @@ You can connect an external Argo CD instance to your managed control plane to sy
 1. Create a kubeconfig file for your MCP with the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). Use the `up ctx` command and define the filename to save the kubeconfig to. This example saves the kubeconfig to a file named `mcp-kubeconfig.yaml`. 
 
 ```bash
-export UPBOUND_MCP_PATH="$@org/space-name/group/mcp-name$@"
+export UPBOUND_MCP_PATH="$@org-name/space-name/group-name/mcp-name$@"
 export UPBOUND_CTP_KUBECONFIG="$@mcp-kubeconfig.yaml$@"
-up ctp ctx "${UPBOUND_MCP_PATH}" --file="${UPBOUND_CTP_KUBECONFIG}"
+up ctx "${UPBOUND_MCP_PATH}" -f "${UPBOUND_CTP_KUBECONFIG}"
 ```
 
 2. Save the kubeconfig of the managed control plane as a secret on the external Kubernetes cluster where you installed Argo. The kubeconfig you get from Upbound has all the values required to translate into the format Argo expects like the below example. The secret should match the following configuration:
