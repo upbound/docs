@@ -1812,7 +1812,11 @@ import process completes.
 
 <!-- vale Google.Headings = YES -->
 
+<!-- vale Google.Headings = NO -->
+<!-- vale Upbound.Spelling = NO -->
 #### alpha ctx
+<!-- vale Google.Headings = YES -->
+<!-- vale Upbound.Spelling = YES -->
 
 Select an Upbound kubeconfig context.
 
@@ -1820,5 +1824,5 @@ Select an Upbound kubeconfig context.
 | Short flag | Long flag   | Description                  |
 |------------|-------------|------------------------------|
 |            | `--context="upbound"`   | Kubernetes context to operate on ($UP_CONTEXT).         |
-| `-f`       | `--kubeconfig=<path>`   | Kubeconfig to modify when saving a new context.         |
+| `-f`       | `--kubeconfig=<path>`   | Kubeconfig to change when saving a new context.         |
 {{< /table >}}

@@ -622,7 +622,7 @@ Connect to your managed control plane with the `up ctx` command. With your kubec
 up ctx default/ctp1
 ```
 
-This command updates your current kubecontext. You should now be connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
+This command updates your current kubecontext. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
 
 ```bash
 kubectl get crds

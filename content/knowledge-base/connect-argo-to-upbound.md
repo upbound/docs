@@ -11,7 +11,9 @@ In this tutorial, you learn how to create a managed control plane in Upbound and
 To complete this tutorial, you need the following:
 
 - An [account in Upbound](https://accounts.upbound.io/register).
+<!-- vale Upbound.Spelling = NO -->
 - Have already deployed an instance of Argo CD on a Kubernetes cluster (or using a hosted service such as [Akuity](https://akuity.io/)).
+<!-- vale Upbound.Spelling = YES -->
 - The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) on your local machine.
 
 ## Create a managed control plane
