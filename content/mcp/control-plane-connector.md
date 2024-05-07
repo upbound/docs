@@ -2,7 +2,7 @@
 title: GitOps with control planes
 weight: 6
 description: An introduction to doing GitOps with control planes on Upbound
-aliases: 
+aliases:
   - /concepts/control-plane-connector
 ---
 
@@ -37,9 +37,9 @@ This configuration turns off Argo CD auto pruning, preventing the deletion of Cr
 #### Connect an MCP to Argo CD
 <!-- vale Google.Headings = YES -->
 
-You can connect an external Argo CD instance to your managed control plane to sync Crossplane claims. 
+You can connect an external Argo CD instance to your managed control plane to sync Crossplane claims.
 
-1. Create a kubeconfig file for your MCP with the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}). Use the `up ctx` command and define the filename to save the kubeconfig to. This example saves the kubeconfig to a file named `mcp-kubeconfig.yaml`. 
+1. Create a kubeconfig file for your MCP with the up CLI. Use the `up ctx` command and define the filename to save the kubeconfig to. This example saves the kubeconfig to a file named `mcp-kubeconfig.yaml`.
 
 ```bash
 export UPBOUND_MCP_PATH="$@org-name/space-name/group-name/mcp-name$@"
@@ -97,7 +97,7 @@ spec:
 
 You can use Flux to sync claims to your managed control planes. To do this, you need to have an instance of Flux running externally to Upbound, since you can't install Flux locally in Upbound. Assuming you are running Flux _elsewhere_ outside of Upbound, the steps to use Flux to sync claims are the following:
 
-1. Fetch your managed control plane's API server endpoint so you can provide it to Flux. In the step below, use the [up CLI]({{<ref "concepts/mcp/_index.md#connect-directly-to-your-mcp" >}}) to fetch the kubeconfig of your MCP and write it to a file.
+1. Fetch your managed control plane's API server endpoint so you can provide it to Flux. In the step below, use the up CLI to fetch the kubeconfig of your MCP and write it to a file.
 
 ```bash
 export UPBOUND_MCP_PATH="$@org/space-name/group/mcp-name$@"
@@ -216,10 +216,10 @@ Install the MCP Connector Helm chart with `helm install`. Make sure to update th
 
 ```bash
 helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system /
-  --set mcp.account='your-upbound-org-account' 
-  --set mcp.name='your-control-plane-name'   
-  --set mcp.namespace='your-app-ns-1'   
-  --set mcp.token='replace-with-an-API-token-from-Upbound'   
+  --set mcp.account='your-upbound-org-account'
+  --set mcp.name='your-control-plane-name'
+  --set mcp.namespace='your-app-ns-1'
+  --set mcp.token='replace-with-an-API-token-from-Upbound'
 ```
 
 {{<hint "tip" >}}
@@ -290,7 +290,7 @@ Once Kubernetes creates the object, view the console to see your object.
 {{<img src="concepts/images/ClaimInConsole.png" alt="Claim by connector in console" lightbox="true">}}
 
 You can interact with the object through your cluster just as if it
-lives in your cluster. 
+lives in your cluster.
 
 {{<hint "note" >}}
 Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to allow tools to interact with the remote object as if it was local.
