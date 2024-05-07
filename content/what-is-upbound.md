@@ -54,7 +54,7 @@ Upbound automatically upgrades Crossplane system components on MCPs to new Cross
 
 ## Managed control plane architecture
 
-![Managed control plane architecture](content/images/mcp.png)
+![Managed control plane architecture](images/mcp.png)
 
 Along with underlying infrastructure, Upbound manages the Crossplane system components. You don't need to manage the Crossplane API server or core resource controllers because Upbound manages your MCP lifecycle from creation to deletion.
 
@@ -71,7 +71,7 @@ Your API requests tell Crossplane your desired state for the resources your MCP 
 
 ## Upbound architecture
 
-![Upbound architecture](content/images/up.png)
+![Upbound architecture](images/up.png)
 
 Upbound includes a Global Console, with complementary API and CLI, that operates over two types of Spaces: Cloud Spaces and Connected Spaces.
 
