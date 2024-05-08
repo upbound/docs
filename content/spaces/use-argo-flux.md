@@ -7,7 +7,7 @@ description: A guide for integrating Argo or Flux with managed control planes in
 [GitOps]({{<ref "xp-arch-framework/interface-integrations/git-and-gitops.md" >}}) is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.
 
 {{< hint "tip" >}}
-For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "../mcp/control-plane-connector.md">}}).
+For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "../concepts/control-plane-connector.md">}}).
 {{< /hint >}}
 
 Upbound's recommendation is to use the [built-in Git integration]({{<ref "./git-integration.md">}}), but if you'd prefer to bring existing GitOps flows to your managed control planes in a Space, you can.
@@ -179,4 +179,4 @@ The preceding configuration causes Argo to exclude syncing **all** resource grou
 
 ## Flux
 
-You can also integrate Flux to target a managed control plane in a Space. Upbound doesn't offer a special plugin; you should follow the same instructions as outlined in the Flux section in [GitOps with Control Planes]({{<ref "/mcp/control-plane-connector.md#flux">}}).
+You can also integrate Flux to target a managed control plane in a Space. Upbound doesn't offer a special plugin; you should follow the same instructions as outlined in the Flux section in [GitOps with Control Planes]({{<ref "/concepts/control-plane-connector.md#flux">}}).

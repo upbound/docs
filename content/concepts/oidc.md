@@ -18,7 +18,7 @@ Crossplane providers use a [`ProviderConfig`](https://docs.crossplane.io/latest/
 
 ### Connect to multiple accounts within a service
 
-You can create multiple `ProviderConfig` objects for a single provider in a managed control plane. You can create new ProviderConfigs on your control plane via the Upbound Console or by [connecting directly]({{<ref "/mcp/#connect-directly-to-your-mcp">}}) to your control plane and creating new ProviderConfigs on it.
+You can create multiple `ProviderConfig` objects for a single provider in a managed control plane. You can create new ProviderConfigs on your control plane via the Upbound Console or by connecting directly to your control plane and creating new ProviderConfigs on it.
 
 For example, imagine you have `team-a` and `team-b` sharing a single managed control plane. Suppose each team should only be able to create resources in their respective cloud account in AWS. You would create two ProviderConfigs as demonstrated below:
 
