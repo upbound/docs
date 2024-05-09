@@ -18,7 +18,7 @@ Crossplane providers use a [`ProviderConfig`](https://docs.crossplane.io/latest/
 
 ### Connect to multiple accounts within a service
 
-You can create multiple `ProviderConfig` objects for a single provider in a managed control plane. You can create new ProviderConfigs on your control plane via the Upbound Console or by connecting directly to your control plane and creating new ProviderConfigs on it.
+You can create multiple `ProviderConfig` objects for a single provider in a managed control plane with the Upbound Console or by connecting directly.
 
 For example, imagine you have `team-a` and `team-b` sharing a single managed control plane. Suppose each team should only be able to create resources in their respective cloud account in AWS. You would create two ProviderConfigs as demonstrated below:
 
@@ -68,7 +68,7 @@ To configure a provider on a managed control plane to use Upbound Identity, use 
 
 #### Upbound identity for AWS example
 
-First, [add Upbound]({{<ref "quickstart.md#connect-to-your-cloud-provider-with-openid-connect" >}}) as an OpenID Connect provider in your AWS account. Then, create a ProviderConfig on your control plane with the following configuration:
+First, add Upbound as an OpenID Connect provider in your AWS account. Then, create a ProviderConfig on your control plane with the following configuration:
 
 {{< editCode >}}
 ```yaml
@@ -87,7 +87,7 @@ spec:
 
 #### Upbound identity for Azure example
 
-First, [register Upbound]({{<ref "quickstart.md#connect-to-your-cloud-provider-with-openid-connect" >}}) with Azure Active Directory in your Azure account. Then, create a ProviderConfig on your control plane with the following configuration:
+First register Upbound with Azure Active Directory in your Azure account. Then, create a ProviderConfig on your control plane with the following configuration:
 
 {{< editCode >}}
 ```yaml
@@ -106,7 +106,7 @@ spec:
 
 #### Upbound identity for GCP example
 
-First, [configure Upbound]({{<ref "quickstart.md#connect-to-your-cloud-provider-with-openid-connect" >}}) for workload identity federation in your GCP account. Then, create a ProviderConfig on your control plane with the following configuration:
+First, configure Upbound for workload identity federation in your GCP account. Then, create a ProviderConfig on your control plane with the following configuration:
 
 {{< editCode >}}
 ```yaml
