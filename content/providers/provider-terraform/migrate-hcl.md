@@ -523,6 +523,3 @@ required by Terraform are the same values required by Crossplane.
 You just created an EC2 instance with an SSH key with Crossplane. You created a
 Composite Resource Definition and a Composition from your original Terraform
 configuration.
-
-For more information on Upbound, Crossplane, and control planes, review the
-[Crossplane Architecture Framework]({{<ref "/xp-arch-framework">}}) for best practices when building your infrastructure.

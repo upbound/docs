@@ -37,7 +37,7 @@ up ctp create my-control-plane
 {{< tab "Upbound Console" >}}
 In the Upbound Console, select the `Create Control Plane` button. Give the control plane a name and select the `Create Control Plane` button at the bottom of the form.
 
-{{<img src="guides/images/console-ctp-create.jpeg" alt="Create control plane in Console">}}
+{{<img src="/concepts/images/console-ctp-create.jpeg" alt="Create control plane in Console">}}
 {{< /tab >}}
 
 {{< /tabs >}}
