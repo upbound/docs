@@ -43,7 +43,7 @@ and manage infrastructure.
 After you register your Upbound account, walk through the interactive "Get
 Started" demo below.
 
-<div style="position: relative; padding-bottom: calc(75.92682926829268% + 42px); height: 0;"><iframe src="https://app.supademo.com/demo/clvydptrx0ty8phe2252uwuzz" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: calc(76.04621072088725% + 42px); height: 0;"><iframe src="https://app.supademo.com/embed/clvydptrx0ty8phe2252uwuzz" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ### Your connection string
 
