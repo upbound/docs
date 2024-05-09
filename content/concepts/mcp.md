@@ -124,7 +124,7 @@ Use OpenID Connect (`OIDC`) to authenticate to Upbound managed control planes wi
 
 #### Generic ProviderConfigs
 
-The Upbound Console doesn't allow direct editing of ProviderConfigs that don't offer `Upbound` authentication. To edit these ProviderConfigs on your managed control plane, connect to the MCP directly by following the instructions in the [previous section]({{<ref "_index.md#connect-directly-to-your-mcp" >}}).
+The Upbound Console doesn't allow direct editing of ProviderConfigs that don't offer `Upbound` authentication. To edit these ProviderConfigs on your managed control plane, connect to the MCP directly by following the instructions in the previous section.
 
 ## Control plane backups
 
