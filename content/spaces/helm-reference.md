@@ -1,5 +1,5 @@
 ---
-title: Helm Chart Reference
+title: Connected Space Helm Chart Reference
 weight: 200
 description: Spaces Helm chart configuration values
 ---

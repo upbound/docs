@@ -1,6 +1,6 @@
 ---
 title: Deploy your first multicloud control plane
-weight: 4
+weight: 1
 description: A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound
 ---
 
@@ -464,7 +464,7 @@ Congratulations, you created your first resources with your MCP.
 
 ## Next steps
 
-To learn more about the core concepts of Upbound, read the [concepts]({{<ref "concepts">}}) documentation. To learn how to begin building your own platform on Upbound, read the [Crossplane Architecture Framework]({{<ref "xp-arch-framework/_index.md">}}).
+To learn more about the core concepts of Upbound, read the [concepts]({{<ref "concepts">}}) documentation.
 
 <!-- Named Links -->
 

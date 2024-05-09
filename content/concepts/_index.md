@@ -10,7 +10,7 @@ Upbound builds on the foundations of Crossplane to allow you to provision,
 compose, and consume infrastructure with the Kubernetes API. Upbound also
 integrates a UI console to simplify organization management. With the addition
 of managed control planes, Upbound allows you to centralize your resource
-orchestration. 
+orchestration.
 
 ## Organization and account management
 
@@ -24,11 +24,4 @@ orchestration.
 The Accounts section explains user management, permissions, and team and organization administration.
 
 - [`CTP` Portal](console/ctp-portal/)
-
-## Control plane configurations
-
-- [Control Plane Connector](mcp/control-plane-connector/)
-- [OIDC Integration](mcp/oidc/)
-
-Explore Control Plane Configurations to understand how to set up and manage your control plane components.
 

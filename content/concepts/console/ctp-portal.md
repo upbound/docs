@@ -13,7 +13,7 @@ Every managed control plane in Upbound can be directly interacted with via its p
 The left pane of the portal shows all the available resource types installed on your MCP. Selecting a type shows a list of all running instances. View instances or edit them. You can also select the `Create New` button to create a new instance of the selected resource.
 
 {{< hint "tip" >}}
-To use "GitOps" with your MCP, you can use the [MCP Connector]({{<ref "concepts/mcp/control-plane-connector.md">}}).
+To use "GitOps" with your MCP, you can use the [MCP Connector]({{<ref "concepts/control-plane-connector.md">}}).
 {{< /hint >}}
 
 ### Create new resource instances
@@ -26,16 +26,16 @@ Example: If your resource has multiple compositions available and you want to se
 
 {{<img src="concepts/images/portal-create.png" alt="Create new resources from the control plane portal"  lightbox="true">}}
 
-This form generates a claim (a Crossplane `XRC`) for the resource type. Selecting `Create Instance` submits your claim to your managed control plane. Select the `Show YAML` button to View the claim. 
+This form generates a claim (a Crossplane `XRC`) for the resource type. Selecting `Create Instance` submits your claim to your managed control plane. Select the `Show YAML` button to View the claim.
 
 ### View resource events
 
 Selecting an instance of a resource shows the following information about the resource:
- - creation time 
- - if the MCP has synced it 
+ - creation time
+ - if the MCP has synced it
  - if resource is reporting `ready`
- - events emitted by its claim 
- 
+ - events emitted by its claim
+
 You can edit the claim for this resource by selecting the `Edit` button.
 
 {{<hint "important" >}}

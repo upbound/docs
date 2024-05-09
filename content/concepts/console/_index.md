@@ -4,7 +4,7 @@ weight: 5
 description: An introduction to the Console feature of Upbound
 ---
 
-Upbound's Console is the command and control center for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes. 
+Upbound's Console is the command and control center for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes.
 
 ## Dashboard
 
@@ -31,7 +31,7 @@ Clicking into a control plane brings you to the control plane explorer. From the
 
 ## MCP and configuration creation
 
-You can create new managed control planes from the dashboard. 
+You can create new managed control planes from the dashboard.
 
 Creating a new managed control plane from the Console:
 
