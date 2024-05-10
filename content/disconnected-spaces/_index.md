@@ -15,7 +15,7 @@ Think of an Upbound Space as a self-managed slice of the Upbound platform in you
 Spaces lets you:
 
 - Increase scale and cost efficiency by running 50 or more control planes per Kubernetes Cluster instead of just 1.
-- Each control plane configuration is fully managed from Git.
+- Manage each control plane configuration in source control.
 - Integrate with Kubernetes ecosystem tooling to manage the full lifecycle of the control planes.
 
 The boundary of a single Upbound Space is within the confines of a single Kubernetes cluster. Spaces are regional hosting environments within a single cloud provider. You can deploy multiple Spaces (as long as each Space deploys in its own cluster). Upbound recommends deploying a Space for each region and cloud provider you want to operate managed control planes in.
