@@ -2,6 +2,7 @@
 title: Use Argo or Flux with Spaces
 weight: 150
 description: A guide for integrating Argo or Flux with managed control planes in a Space.
+draft: true
 ---
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.
@@ -10,7 +11,7 @@ GitOps is an approach for managing a system by declaratively describing desired 
 For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "../concepts/control-plane-connector.md">}}).
 {{< /hint >}}
 
-Upbound's recommendation is to use the [built-in Git integration]({{<ref "./git-integration.md">}}), but if you'd prefer to bring existing GitOps flows to your managed control planes in a Space, you can.
+Upbound's recommendation is to use the [built-in Git integration]({{<ref "concepts/git-integration.md">}}), but if you'd prefer to bring existing GitOps flows to your managed control planes in a Space, you can.
 
 ## Argo
 

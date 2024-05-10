@@ -1,11 +1,11 @@
 ---
-title: Control Plane Configurations (Legacy)
+title: (deprecated) Control Plane Configurations
 weight: 4
 description: An introduction to how Configurations work in Upbound
 ---
 
 {{< hint "important" >}}
-This feature is depricated as of `v1.3.0`.
+This feature is deprecated, no longer available in Cloud or Connected Spaces, and only available in Upbound Legacy Spaces.
 {{< /hint >}}
 
 

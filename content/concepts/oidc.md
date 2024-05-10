@@ -10,7 +10,7 @@ Managed control planes use [Crossplane providers](https://docs.crossplane.io/lat
 
 ### Install a provider on your control plane
 
-Install a Crossplane provider on your managed control plane by declaring a dependency on the desired provider package in your control plane's [configuration]({{<ref "concepts/control-plane-configurations.md" >}}) source.
+Install a Crossplane provider on your managed control plane by declaring a dependency on the desired provider package in your control plane's [configuration]({{<ref "legacy-spaces/control-plane-configurations.md" >}}) source.
 
 ### Configure the provider
 

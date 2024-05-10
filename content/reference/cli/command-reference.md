@@ -391,7 +391,7 @@ up ctp connector uninstall default
 
 
 {{< hint "warning" >}}
-Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}).
+Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "legacy-spaces/control-plane-configurations" >}}).
 {{< /hint >}}
 
 Install a Crossplane configuration packages into a Kubernetes cluster with
@@ -449,7 +449,7 @@ up ctp disconnect
 
 
 {{< hint "warning" >}}
-Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "concepts/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
+Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "legacy-spaces/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
 {{< /hint >}}
 
 Install a Crossplane provider packages into a Kubernetes cluster with

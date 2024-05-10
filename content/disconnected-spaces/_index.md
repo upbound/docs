@@ -1,10 +1,7 @@
 ---
-title: Cloud & Connected Spaces
-weight: 1
+title: Disconnected Spaces
+weight: 2
 description: A guide to Upbound Spaces
-icon: "popsicle"
-aliases:
-  - /concepts/upbound-spaces
 ---
 
 Upbound Spaces are self-hosted environments for Upbound's managed Crossplane control planes. All that's required to bootstrap a Space is a Kubernetes cluster. Popular managed Kubernetes services including Amazon EKS, Google GKE, and Microsoft AKS are fully supported.

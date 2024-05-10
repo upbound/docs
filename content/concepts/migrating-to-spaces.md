@@ -1,19 +1,19 @@
 ---
-title: Migrating to Spaces
+title: Migrating to Upbound
 weight: 300
-description: A guide to how to migrate to a managed control plane in a Space
+description: A guide to how to migrate to a managed control plane in Upbound
 ---
 
 {{< hint "important" >}}
 This feature is in preview.
 {{< /hint >}}
 
-The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a managed control plane in a Space.
+The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a managed control plane in Upbound.
 
-To migrate from Crossplane to an Upbound Space, you must:
+To migrate from Crossplane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
-2. Import the archive file into a managed control plane in a Space.
+2. Import the archive file into a managed control plane running in Upbound.
 
 The migration tool is available in the [up CLI]({{<ref "reference/cli/command-reference.md#alpha-xpkg-migration">}}) as
 `up alpha migration export` and `up alpha migration import` commands.
@@ -21,12 +21,11 @@ The migration tool is available in the [up CLI]({{<ref "reference/cli/command-re
 ## Prerequisites
 
 Before you begin, you must have the following:
-- A Spaces installation with version 1.2.0 or later.
 - The [up CLI]({{<ref "reference/cli/_index.md">}}) version 0.23.0 or later.
 
 ### Migration process
 
-To migrate an existing Crossplane control plane to a managed control plane in a Space, do the following:
+To migrate an existing Crossplane control plane to a managed control plane in Upbound, do the following:
 
 1. Run the `up alpha migration export` command to export your existing Crossplane control plane configuration/state into an archive file:
 
@@ -45,7 +44,7 @@ To migrate an existing Crossplane control plane to a managed control plane in a 
     {{< /hint >}}
 
 2. Use the control plane [create command]({{<ref "reference/cli/command-reference.md#controlplane-create">}}) to create a managed
-control plane in a Space:
+control plane in Upbound:
 
     ```bash
     up controlplane create my-controlplane
@@ -55,7 +54,7 @@ control plane in a Space:
 managed control plane created in the previous step:
 
     ```bash
-    up controlplane connect my-controlplane
+    up ctx "<your-org>/<your-space>/default/my-controlplane"
     ```
 
     The command configures your local `kubeconfig` to connect to the managed control plane.

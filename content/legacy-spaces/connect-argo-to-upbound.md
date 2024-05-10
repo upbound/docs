@@ -1,8 +1,12 @@
 ---
-title: Connect Argo to Upbound
-weight: 1
+title: (deprecated) Connect Argo to Upbound
+weight: 10
 description: A tutorial for connecting Argo to a managed control plane.
 ---
+
+{{< hint "important" >}}
+This tutorial is deprecated and only applicable to users running in Upbound's Legacy Space. Follow the link to the [new quickstart]({{<ref "quickstart.md" >}}).
+{{< /hint >}}
 
 In this tutorial, you learn how to create a managed control plane in Upbound and connect it to [Argo CD](https://argoproj.github.io/cd/). Argo CD is a continuous delivery tool for Kubernetes that you can use to deliver configurations to managed control planes in Upbound.
 
