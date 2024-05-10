@@ -2,6 +2,8 @@
 title: Spaces
 weight: 1
 description: An introduction to Spaces hosting feature in Upbound
+aliases:
+    - "/spaces"
 ---
 
 Upbound Spaces are hosting environments for Upbound's managed Crossplane control planes. 
@@ -10,7 +12,7 @@ Upbound is made up of a Global Console, with complementary API and CLI, that use
 
 ## Cloud Spaces
 
-Cloud Spaces are multi-tenant deployments of Upbound, operated by Upbound inside our cloud environments. Wth Cloud Spaces, you get a fully managed SaaS experience that includes MCPs as well as management of the hosting infrastructure, management of the backing MCP persistent storage layer, and management of the infrastructure for backup and restore.
+Cloud Spaces are multi-tenant deployments of Upbound, operated by Upbound inside our cloud environments. With Cloud Spaces, you get a fully managed SaaS experience that includes MCPs as well as management of the hosting infrastructure, management of the backing MCP persistent storage layer, and management of the infrastructure for backup and restore.
 
 Choosing to run in Upbound’s multi-tenant Cloud Spaces offers the most turnkey managed Crossplane experience. Upbound hosts Cloud Spaces in multiple Cloud Service Providers and regions, giving you the flexibility to have a fully managed SaaS experience wherever you need to run Crossplane. 
 
