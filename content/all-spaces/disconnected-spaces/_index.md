@@ -4,9 +4,9 @@ weight: 2
 description: A guide to Upbound Spaces
 ---
 
-A Disconnected Space is a single-tenant deployment of Upbound within your infrastructure, such as your Amazon Web Services (AWS) cloud account or Microsoft Azure subscription. However, there's no connectivity to the rest of the Upbound product and you're limited to a command-line interface to interact within a single Space context.
+A Disconnected Space is a single-tenant deployment of Upbound within your infrastructure, such as your Amazon Web Services (AWS) cloud account or Microsoft Azure subscription. However, there's no connectivity to the rest of the Upbound product. You're limited to a command-line interface to interact within a single Space context.
 
-We have packaged the best parts of Upbound into a Helm chart and can deploy and operate them on your own infrastructure, bringing you the best of SaaS with the added benefit of additional security guarantees and a deployment free of noisy neighbors.
+We've packaged the best parts of Upbound into a Helm chart and can deploy and operate them on your own infrastructure, bringing you the best of SaaS with the added benefit of additional security guarantees and a deployment free of noisy neighbors.
 
 ## System requirements
 

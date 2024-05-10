@@ -5,30 +5,12 @@ icon: "person-running-regular"
 description: "Create your first Upbound Managed Control Plane and connect it to your cloud provider."
 ---
 
-Upbound is a global platform for building, deploying, and operating cloud
-platforms using managed control planes.
-
-## The value of Upbound
-
-As your infrastructure scales, it can be difficult to deal with tech sprawl in a
-cloud native world. By offering abstract APIs, Upbound simplifies complex
-infrastructure management, making it more accessible for development teams.
-
-Upbound is useful for companies that need a unified control and management
-system for their diverse cloud infrastructures. Upbound stands out by providing
-fully managed control planes, a unified operating model for extensive management
-across various cloud services, and GitOps-driven workflows. This combination of
-features allows organizations to efficiently manage their cloud footprint,
-streamline developer operations, and maintain consistency across different cloud
-environments.
-
 ## Prerequisites
 
 You need the following:
 
 - An Upbound account.
 - An AWS, Azure, or GCP account with permissions to manage IAM policies.
-- A GitHub account with permission to install GitHub Apps.
 
 {{< hint "tip" >}}
 If you don't have an Upbound account, [sign up for a free trial](https://accounts.upbound.io/register).
