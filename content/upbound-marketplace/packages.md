@@ -8,12 +8,12 @@ description: "How to create, configure and push packages to the Upbound Marketpl
 Crossplane supports two package types, `Configurations` and `Providers`.
 
 * **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata. 
-* **`Provider`** packages combine a [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package](https://github.com/crossplane-contrib/provider-aws/tree/master/package) is an example a provider's metadata and `CRDs`.
+* **`Provider`** packages combine a [Kubernetes controller](https://kubernetes.io/docs/spaces/architecture/controller/) container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package](https://github.com/crossplane-contrib/provider-aws/tree/master/package) is an example a provider's metadata and `CRDs`.
 
 ## Prerequisites
 
 * Building and pushing packages require the [`up` command-line]({{<ref "/cli" >}}).
-* Pushing packages requires an [Upbound account]({{<ref "/concepts/accounts/users#create-an-account">}}).
+* Pushing packages requires an [Upbound account]({{<ref "accounts/users#create-an-account">}}).
 
 ## Build a package
 Build a package using `up xpkg build`. 

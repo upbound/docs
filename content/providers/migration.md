@@ -354,7 +354,7 @@ These commands may take over 10 minutes depending on the number of managed resou
 {{<hint "important" >}}
 If you are using the Management Policies beta feature, they may take precedence over the
 `deletionPolicy` field. See
-[the Crossplane documentation](https://docs.crossplane.io/latest/concepts/managed-resources/#interaction-with-management-policies)
+[the Crossplane documentation](https://docs.crossplane.io/latest/spaces/managed-resources/#interaction-with-management-policies)
 for details.
 {{< /hint >}}
 
