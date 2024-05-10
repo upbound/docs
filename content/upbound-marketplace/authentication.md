@@ -9,7 +9,7 @@ Pulling private packages or pushing packages to an Upbound Marketplace private r
 Installing private Kubernetes resources requires an [image pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials). 
 
 {{< hint "important" >}}
-Authenticating to the Upbound Marketplace for private packages requires an [Upbound account]({{<ref "/concepts/accounts/users#create-an-account" >}}).
+Authenticating to the Upbound Marketplace for private packages requires an [Upbound account]({{<ref "/accounts/users#create-an-account" >}}).
 {{< /hint >}}
 
 ## Prerequisites

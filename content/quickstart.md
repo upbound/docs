@@ -61,4 +61,5 @@ up ctx ${yourOrganization}/${yourCloudRegion}/default/${yourControlPlane}
 
 ## Next steps
 
-To learn more about the core concepts of Upbound, read the [concepts]({{<ref "concepts">}}) documentation.
+To learn more about the core concepts of Upbound, read the [Spaces]({{<ref "spaces">}}) documentation.
+x`

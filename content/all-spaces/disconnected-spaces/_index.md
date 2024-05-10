@@ -1,0 +1,48 @@
+---
+title: Disconnected Spaces
+weight: 2
+description: A guide to Upbound Spaces
+---
+
+A Disconnected Space is a single-tenant deployment of Upbound within your infrastructure, such as your Amazon Web Services (AWS) cloud account or Microsoft Azure subscription. However, there's no connectivity to the rest of the Upbound product and you're limited to a command-line interface to interact within a single Space context.
+
+We have packaged the best parts of Upbound into a Helm chart and can deploy and operate them on your own infrastructure, bringing you the best of SaaS with the added benefit of additional security guarantees and a deployment free of noisy neighbors.
+
+## System requirements
+
+Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. You can install Spaces into Kubernetes clusters v1.25 or later.
+
+<!-- vale write-good.TooWordy = NO -->
+### Minimum requirements
+
+The minimum host Kubernetes cluster configuration Upbound recommends is a 2 worker node setup. By default, Upbound recommends one node for operating the Spaces management pods, leaving the remaining worker nodes to host your control planes.
+
+The minimum recommended node pool VM configuration for each cloud provider is:
+
+{{< table >}}
+| Cloud Provider | VM configuration | Cores | Memory |
+| ---- | ---- | ---- |  ---- |
+| AWS | m5.large | 2 | 8 |
+| Azure | Standard_D2_v3 | 2 | 8 |
+| GCP | e2-standard-2 | 2 | 8 |
+{{< /table >}}
+
+<!-- vale write-good.TooWordy = YES -->
+
+### Recommended requirements
+
+As mentioned in the preceding section, Upbound recommends designating a node to run the Spaces management pods. How large you size your node pool depends on these factors:
+
+- The number of control planes you plan to run in the Space.
+- The number of managed resources you plan each control plane to reconcile.
+- The Crossplane providers you plan to install in each control plane.
+
+Read the [deployment guide]({{<ref "deployment.md">}}) for comprehensive guidance for rightsizing your Space clusters.
+
+## Upbound requirements
+
+You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is a feature only available for paying customers in the **Business Critical** tier of Upbound.
+
+## Next steps
+
+Get started with Spaces in your own environment by visiting the quickstart guide.

@@ -160,24 +160,24 @@ By default the image isn't resized.
 
 An example of using the `img` shortcode:
 ```html
-{{</* img src="/concepts/images/WithUpbound.png" alt="Control planes with Upbound"  */>}}
+{{</* img src="/all-spaces/spaces/images/WithUpbound.png" alt="Control planes with Upbound"  */>}}
 ```
 
 
 Which generates this responsive image (change your browser size to see it change):
 
-{{<img src="/concepts/images/WithUpbound.png" alt="Control planes with Upbound" background-color="white" >}}
+{{<img src="/all-spaces/spaces/images/WithUpbound.png" alt="Control planes with Upbound" background-color="white" >}}
 
 
 Generate a smaller image with a `size` smaller than the original. 
 
 For example,
 ```html
-{{</* img src="/concepts/images/WithUpbound.png" size="xtiny" alt="Control planes with Upbound"  */>}}
+{{</* img src="/all-spaces/spaces/images/WithUpbound.png" size="xtiny" alt="Control planes with Upbound"  */>}}
 ```
 
 Generates this image
-{{< img src="/concepts/images/WithUpbound.png" alt="Control planes with Upbound" size="xtiny" >}}
+{{< img src="/all-spaces/spaces/images/WithUpbound.png" alt="Control planes with Upbound" size="xtiny" >}}
 
 ## Tables
 The docs support 

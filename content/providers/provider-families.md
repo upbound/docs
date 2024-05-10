@@ -133,7 +133,7 @@ If you still want to control the version of the `provider-family`, consider usin
 
 ### Using ControllerConfigs
 
-The [ControllerConfig](https://docs.crossplane.io/latest/concepts/packages/#speccontrollerconfigref) applies settings to a Provider Pod. With family providers
+The [ControllerConfig](https://docs.crossplane.io/latest/spaces/packages/#speccontrollerconfigref) applies settings to a Provider Pod. With family providers
 each provider is a unique Pod running in the cluster. 
 
 When using ControllerConfigs with family providers, each provider needs
