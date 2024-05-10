@@ -18,7 +18,7 @@ Spaces lets you:
 - Manage each control plane configuration in source control.
 - Integrate with Kubernetes ecosystem tooling to manage the full lifecycle of the control planes.
 
-The boundary of a single Upbound Space is within the confines of a single Kubernetes cluster. Spaces are regional hosting environments within a single cloud provider. You can deploy multiple Spaces (as long as each Space deploys in its own cluster). Upbound recommends deploying a Space for each region and cloud provider you want to operate managed control planes in.
+Each Upbound Space is confined within a single Kubernetes cluster. Spaces are regional hosting environments within a single cloud provider. You can deploy multiple Spaces (as long as each Space deploys in its own cluster). Upbound recommends deploying seperate Spaces for each region and cloud provider you want to use managed control planes.
 
 ## System requirements
 
