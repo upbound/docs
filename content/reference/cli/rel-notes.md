@@ -9,6 +9,18 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.30.0
+
+Released May 10th, 2024.  
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.30.0)
+
+### What's Changed
+
+- We promoted `up web-login` to stable.
+- We fixed several bugs related to `up ctx` failing to connect to a Space, group, or managed control plane.
+- `up version` now prints information seperated into client (your up CLI version) and server (version information for the managed control plane and Space you're connected to) 
+- `up space init` enables hub authz and authn by default.
+
 ## v0.29.0
 
 Released May 3rd, 2024.  
