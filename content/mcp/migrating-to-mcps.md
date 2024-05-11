@@ -23,7 +23,7 @@ The migration tool is available in the [up CLI]({{<ref "reference/cli/command-re
 Before you begin, you must have the following:
 - The [up CLI]({{<ref "reference/cli/_index.md">}}) version 0.23.0 or later.
 
-### Migration process
+## Migration process
 
 To migrate an existing Crossplane control plane to a managed control plane in Upbound, do the following:
 
@@ -50,11 +50,11 @@ control plane in Upbound:
     up controlplane create my-controlplane
     ```
 
-3. Use the control plane [connect command]({{<ref "reference/cli/command-reference.md#controlplane-connect">}}) to connect to the
+3. Use [`up ctx`]({{<ref "reference/cli/command-reference.md#alpha-ctx">}}) to connect to the
 managed control plane created in the previous step:
 
     ```bash
-    up ctx "<your-org>/<your-space>/default/my-controlplane"
+    up ctx "<your-org>/<your-space>/<your-group>/my-controlplane"
     ```
 
     The command configures your local `kubeconfig` to connect to the managed control plane.

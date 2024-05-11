@@ -1,6 +1,6 @@
 ---
 title: Automatically upgrade control planes
-weight: 1
+weight: 10
 description: How to configure automatic upgrades of Crossplane in a managed control plane
 ---
 

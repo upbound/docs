@@ -1,26 +1,26 @@
 ---
 title: Connect managed control planes to external services
-weight: 3
+weight: 20
 description: A guide for authenticating managed control plane with external services, including using OIDC
 aliases:
     - "/concepts/mcp/oidc"
 ---
 
-Managed control planes use [Crossplane providers](https://docs.crossplane.io/latest/spaces/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. Control planes can connect to an unlimited number of external services--just as long as there's an associated Crossplane provider in the [Upbound Marketplace](https://marketplace.upbound.io/providers).
+Managed control planes use [Crossplane providers](https://docs.crossplane.io/latest/spaces/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. MCPs can connect to an unlimited number of external services--provided there's a Crossplane provider in the [Marketplace](https://marketplace.upbound.io/providers).
 
 ## How to connect to an external service
 
 ### Install a provider on your control plane
 
-Install a Crossplane provider on your managed control plane by declaring a dependency on the desired provider package in your control plane's [configuration]({{<ref "all-spaces/legacy-spaces/control-plane-configurations.md" >}}) source.
+Install a Crossplane provider or Configuration on your managed control plane as explained in the [MCP management]({{<ref "_index.md#install-packages" >}}) documentation.
 
 ### Configure the provider
 
-Crossplane providers use a [`ProviderConfig`](https://docs.crossplane.io/latest/spaces/providers/#provider-configuration) Kubernetes object to supply credentials to authenticate with external services. For example, [Upbound's AWS provider](https://marketplace.upbound.io/providers/upbound/provider-aws/latest) offers a [`ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1) that supports [supplying credentials](https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1#doc:spec-credentials-source) via a Kubernetes `Secret`, environment variable, file, and more.
+Crossplane providers use a [`ProviderConfig`](https://docs.crossplane.io/latest/concepts/providers/#provider-configuration) Kubernetes object to supply credentials to authenticate with external services. For example, [Upbound's AWS provider](https://marketplace.upbound.io/providers/upbound/provider-family-aws/latest) offers a [`ProviderConfig`](https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1) that supports [supplying credentials](https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1#doc:spec-credentials-source) via a Kubernetes `Secret`, environment variable, file, and more.
 
 ### Connect to multiple accounts within a service
 
-You can create multiple `ProviderConfig` objects for a single provider in a managed control plane with the Upbound Console or by connecting directly.
+You can create multiple `ProviderConfigs` for a single provider in a managed control plane via the Upbound Console or by a direct connection through the CLI.
 
 For example, imagine you have `team-a` and `team-b` sharing a single managed control plane. Suppose each team should only be able to create resources in their respective cloud account in AWS. You would create two ProviderConfigs as demonstrated below:
 

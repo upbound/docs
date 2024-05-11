@@ -1,6 +1,6 @@
 ---
 title: Git integration
-weight: 100
+weight: 90
 description: A guide to how managed control planes in a space connect to git
 tocHidden: true
 searchExclude: true

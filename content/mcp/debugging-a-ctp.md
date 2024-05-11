@@ -1,10 +1,10 @@
 ---
 title: Debugging issues on a managed control plane
-weight: 5
+weight: 100
 description: A guide for how to debug resources on a managed control plane running in Upbound.
 ---
 
-What do you do if you need to debug a resource running on an MCP in Upbound? This guide recommends steps for how you can use Upbound's features to identify the root cause for an issue.
+This guide provides troubleshooting guidance for how to identify and fix issues on a managed control plane.
 
 ## Start from Upbound Console
 <!-- vale write-good.Weasel = NO -->
