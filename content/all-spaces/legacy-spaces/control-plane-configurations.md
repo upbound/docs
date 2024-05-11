@@ -11,7 +11,7 @@ This feature is deprecated, no longer available in Cloud or Connected Spaces, an
 
 Managed control planes expose a set of APIs for users to interact with their control planes. Configurations define these APIs.
 
-Configurations are a [Crossplane package](https://docs.crossplane.io/latest/spaces/packages/#configuration-packages) that bundles a set of API definitions. Every Crossplane Configuration in the Upbound environment has its source synced directly from a Git repository. Users choose from this selection of Configurations in their Upbound environment when they want to install a set of APIs on a managed control plane.
+Configurations are a [Crossplane package](https://docs.crossplane.io/latest/concepts/packages/#configuration-packages) that bundles a set of API definitions. Every Crossplane Configuration in the Upbound environment has its source synced directly from a Git repository. Users choose from this selection of Configurations in their Upbound environment when they want to install a set of APIs on a managed control plane.
 
 ## How configurations work on Upbound
 
