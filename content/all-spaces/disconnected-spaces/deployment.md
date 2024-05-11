@@ -102,7 +102,7 @@ Using these calculations and extrapolating values, given a 16 core machine, it's
 
 Oftentimes, you are using Crossplane providers to talk to external cloud APIs. Those external cloud APIs often have global API rate limits (examples: [Azure limits](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/request-limits-and-throttling), [AWS EC2 limits](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/throttling.html#throttling-limits-rate-based)).
 
-For Crossplane providers built on [Upjet](https://github.com/upbound/upjet) (such as Upbound Official Provider families), these providers use Terraform under the covers. They expose some knobs (such as `--max-reconcile-rate`) you can use to tweak reconciliation rates, described in more detail in the [Upjet sizing guide](https://github.com/upbound/upjet/blob/main/docs/sizing-guide.md)
+For Crossplane providers built on [Upjet](https://github.com/upbound/upjet) (such as Upbound Official Provider families), these providers use Terraform under the covers. They expose some knobs (such as `--max-reconcile-rate`) you can use to tweak reconciliation rates.
 
 ### Resource buffers
 
@@ -307,8 +307,8 @@ backend and that the secret used is the mxp-hostcluster-certs secret.
 
 [cert-manager]: https://cert-manager.io/
 [Certificate Custom Resource]: https://cert-manager.io/docs/usage/certificate/
-[ClusterIssuer]: https://cert-manager.io/docs/spaces/issuer/
+[ClusterIssuer]: https://cert-manager.io/docs/concepts/issuer/
 [ingress-nginx ingress controller]: https://kubernetes.github.io/ingress-nginx/deploy/
 [installation ideas]: https://cert-manager.io/docs/installation/
-[Ingress]: https://kubernetes.io/docs/spaces/services-networking/ingress/
+[Ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [Issuer Configuration]: https://cert-manager.io/docs/configuration/

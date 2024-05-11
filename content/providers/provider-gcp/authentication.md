@@ -8,7 +8,7 @@ The Upbound Official GCP Provider supports multiple authentication methods.
 
 * [Service account keys](https://cloud.google.com/iam/docs/keys-create-delete)
 * [OAuth 2.0 access token](https://developers.google.com/identity/protocols/oauth2) 
-* [Workload identity](https://cloud.google.com/kubernetes-engine/docs/spaces/workload-identity_) 
+* [Workload identity](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity_) 
   for Google managed Kubernetes clusters (`GKE`)
 * [Service account impersonation](https://cloud.google.com/iam/docs/service-account-overview#impersonation)
 
@@ -266,7 +266,7 @@ spec:
 
 When running the GCP Provider in an Google managed Kubernetes cluster (`GKE`)
 the Provider may use 
-[workload identity](https://cloud.google.com/kubernetes-engine/docs/spaces/workload-identity)
+[workload identity](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity)
 for authentication. 
 
 Workload identity allows the Provider to authenticate to GCP APIs with

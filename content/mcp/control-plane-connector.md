@@ -293,7 +293,7 @@ You can interact with the object through your cluster just as if it
 lives in your cluster.
 
 {{<hint "note" >}}
-Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/spaces/extend-kubernetes/api-extension/apiserver-aggregation/) to allow tools to interact with the remote object as if it was local.
+Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to allow tools to interact with the remote object as if it was local.
 {{< /hint >}}
 
 ### Connect multiple app clusters to a managed control plane

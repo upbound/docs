@@ -39,8 +39,7 @@ providers and apply those manifests to import existing cloud resources.
 
 To prevent a conflict between two provider controllers reconciling for the same
 external resource, the old provider gets scaled down. The
-[pause annotation feature]( https://github.com/upbound/product/issues/227)
-achieves the same goal by pausing the reconciliation of the old provider.
+pause annotation feature achieves the same goal by pausing the reconciliation of the old provider.
 
 1. Backup managed resource manifests
 
@@ -354,7 +353,7 @@ These commands may take over 10 minutes depending on the number of managed resou
 {{<hint "important" >}}
 If you are using the Management Policies beta feature, they may take precedence over the
 `deletionPolicy` field. See
-[the Crossplane documentation](https://docs.crossplane.io/latest/spaces/managed-resources/#interaction-with-management-policies)
+[the Crossplane documentation](https://docs.crossplane.io/latest/concepts/managed-resources/#interaction-with-management-policies)
 for details.
 {{< /hint >}}
 
