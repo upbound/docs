@@ -2,6 +2,8 @@
 title: Connect managed control planes to external services
 weight: 3
 description: A guide for authenticating managed control plane with external services, including using OIDC
+aliases:
+    - "/concepts/mcp/oidc"
 ---
 
 Managed control planes use [Crossplane providers](https://docs.crossplane.io/latest/spaces/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. Control planes can connect to an unlimited number of external services--just as long as there's an associated Crossplane provider in the [Upbound Marketplace](https://marketplace.upbound.io/providers).
