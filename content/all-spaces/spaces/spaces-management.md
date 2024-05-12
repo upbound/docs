@@ -14,14 +14,14 @@ You don't have to make Cloud Spaces, Upbound already has them available for you 
 
 ### Upgrade a Space
 
-Version management of the Space isn't something you must be concerned about with Cloud Spaces--Upbound handles that for you. If you want to upgrade a Connected Space, the Space admin must follow the same instructions as upgrading a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#upgrade-a-space">}}).
+Version management of the Space isn't something you need to worry about in Cloud Spaces--Upbound handles that for you. If you want to upgrade a Connected Space, the Space administrator must follow the same instructions as upgrading a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#upgrade-a-space">}}).
 
 ### Downgrade a Space
 
-Version management of the Space isn't something you must be concerned about with Cloud Spaces--Upbound handles that for you. If you want to rollback a Connected Space, the Space admin must follow the same instructions as downgrading a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#downgrade-a-space">}}).
+Version management of the Space isn't something you need to worry about in Cloud Spaces--Upbound handles that for you. If you want to rollback a Connected Space, the Space administrator must follow the same instructions as downgrading a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#downgrade-a-space">}}).
 
 ### Uninstall a Space
 
-You can't uninstall a Cloud Space from your org account. If you want to uninstall a Connected Space, the Space admin should first [disconnect the Space]({{<ref "attach-detach">}}). Then, follow the same instructions as uninstalling a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#uninstall-a-space">}}).
+You can't uninstall a Cloud Space from your org account. If you want to uninstall a Connected Space, the Space administrator should first [disconnect the Space]({{<ref "attach-detach">}}). Then, follow the same instructions as uninstalling a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#uninstall-a-space">}}).
 
 ## Spaces APIs

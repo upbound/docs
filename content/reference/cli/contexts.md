@@ -10,23 +10,29 @@ Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's com
 
 Upbound's information architecture is a hierarchy consisting of:
 
+<!-- vale off -->
 * a set of managed control planes
 * logically grouped into control planes groups
 * which are hosted in an environment called a [Space]({{<ref "/all-spaces" >}}).
 
 These contexts nest within each other. An MCP must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
+<!--vale on -->
 
 Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
 
 In `up`, the commands you can execute are context-sensitive. 
 
+<!-- vale off -->
 ## The 'up ctx' command
+<!--vale on -->
 
 In `up`, the `up ctx` sub-command is a single command that can used across all deployments of Upbound to set a kubecontext. You can use this kubecontext to drive interactions via `kubectl` or it's used during the execution of other `up` CLI commands.
 
-### Interactive terminal UI (TUI)
+<!-- vale off -->
+### Interactive terminal UI
 
-The default experience for `up ctx` is a terminal UI like [kubectx]().
+The default experience for `up ctx` is a terminal UI like [kubectx](https://github.com/ahmetb/kubectx/).
+<!--vale on -->
 
 {{< hint "important" >}}
 When interacting with managed control planes that are hosted in:
@@ -35,7 +41,7 @@ When interacting with managed control planes that are hosted in:
 * **a Connected or Disconnected Space:** always make sure your current kubecontext is pointed at the cluster which hosts your Space.
 {{< /hint >}}
 
-The following are some tips for using the TUI:
+The following are some tips for using the terminal UI:
 
 * Use the arrow keys or hotkeys to navigate around the hierarchy within Upbound. Pressing the right arrow button attempts to navigate you **into** a context. Pressing the left arrow button attempts to navigate you **out** of the current context into the parent context.
 * Use the `Q` key to quit and set the context you're in as the current kubecontext.
