@@ -10,19 +10,19 @@ Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's com
 
 Upbound's information architecture is a hierarchy consisting of:
 
-* some set of control plane hosting environments (called Spaces)
-* with some set of control plane groups
-* which logically group a set of managed control planes
+* a set of managed control planes
+* logically grouped into control planes groups
+* which are hosted in an environment called a [Space]({{<ref "/all-spaces" >}}).
 
 These contexts nest within each other. An MCP must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
 
-Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api" >}}). This means there's two relevant contexts: a **Spaces context** and a **control plane context**.
+Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
 
-In `up` the commands you can execute are context-sensitive. 
+In `up`, the commands you can execute are context-sensitive. 
 
 ## The 'up ctx' command
 
-In `up`, the `up ctx` sub-command is a single command that can used across all permutations of Upbound to set a kubecontext. You can use this kubecontext to drive interactions via `kubectl` or it's used during the execution of other `up` CLI commands.
+In `up`, the `up ctx` sub-command is a single command that can used across all deployments of Upbound to set a kubecontext. You can use this kubecontext to drive interactions via `kubectl` or it's used during the execution of other `up` CLI commands.
 
 ### Interactive terminal UI (TUI)
 

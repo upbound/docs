@@ -42,14 +42,25 @@ up ctx ${yourOrganization}/${yourSpace}/default/${yourControlPlane}
 
 This command sets an `upbound` kubecontext in your kubeconfig. You're ready to use `up` or `kubectl` to interact with your managed control plane.
 
+{{< hint "tip" >}}
+Want to learn more about what it means to change your context in Upbound? Read the [up CLI contexts]({{<ref "reference/cli/contexts" >}}) documentation.
+{{< /hint >}}
+
 ## Install the getting started configuration
 
-When you create a new managed control plane, Upbound provides you with a fully isolated instance of Crossplane. Configure your control plane by installing packages that extend its capabilities, like to create and manage the lifecycle of new types of infrastructure resources. 
+When you create a new managed control plane, Upbound provides you with a fully isolated instance of Crossplane. Configure your control plane by installing packages to extend its capabilities, like to create and manage the lifecycle of new types of infrastructure resources. 
 
-Upbound recommends installing [Crossplane Configurations](https://docs.crossplane.io/concepts/configurations), a package type that extends the capabilities of your control plane. For this quickstart, install [`configuration-getting-started](https://marketplace.upbound.io/configurations/configuration-getting-started) using the `up` CLI:
+Upbound recommends installing [Crossplane Configurations](https://docs.crossplane.io/concepts/configurations), a package type that extends the capabilities of your control plane. For this quickstart, install [configuration-getting-started](https://marketplace.upbound.io/configurations/upbound/configuration-getting-started/latest) using the `up` CLI:
 
-```shell
-up ctp configuration install upbound/configuration-getting-started
+```yaml
+cat <<EOF | kubectl apply -f -
+apiVersion: pkg.crossplane.io/v1
+kind: Configuration
+metadata:
+  name: configuration-getting-started
+spec:
+  package: xpkg.upbound.io/upbound/configuration-getting-started:v0.1.0
+EOF
 ```
 
 ## Create and manage resources with your control plane
@@ -58,25 +69,45 @@ When you install a configuration, the new API types it defines become available 
 
 ```yaml
 cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1beta1
-kind: ControlPlane
+apiVersion: platform.acme.co/v1alpha1
+kind: Network
 metadata:
-  labels:
-    org: foo
-  name: my-awesome-ctp
+  name: my-network-resource
   namespace: default
 spec:
-  writeConnectionSecretToRef:
-    name: kubeconfig-my-awesome-ctp
+  parameters:
+    autoCreateSubnetworks: true
+EOF
 ```
 
-In the Console, select the corresponding resource type on your control plane and observe the claim you created now shows up. Select the claim resource and observe how you can use the control plane explorer to inspect the resources your control plane is now managing. After the resource creates and your control plane actively manages it, it's health status turns green.
+In the Console, select the corresponding `Network` resource type on your control plane and observe the claim you created now shows up. Select the claim resource and observe how you can use the control plane explorer to inspect the resources your control plane is now managing. After the resource creates and your control plane actively manages it, it's health status turns green.
 
 ## Explaining what just happened
 
 As a control plane, Crossplane can manage anything. To manage something, Crossplane depends [providers](https://docs.crossplane.io/concepts/providers), another core package type in Crossplane. They contain the basic building blocks that contain representations for things to Crossplane. You didn't need to install a provider directly because Crossplane contains a package manager. When given a Configuration, Crossplane's package manager resolve its dependencies automatically for you.
 
 The configuration you installed, `configuration-getting-started`, depends on a provider called `provider-nop`, a stub provider that defines a fake resource. When you created your first resource in the previous section, provider-nop created a fake resource inside your control plane. But the process is almost identical if you want to use Crossplane to manage real cloud resources in AWS, Azure, GCP, and more.
+
+## Create multiple resources at once via an abstraction
+
+One of Crossplane's superpowers is its ability to define a resource abstraction that composes multiple resources at once. Apply a new claim to your control plane, this time for a `CompositeCluster` resource. This resource is an abstraction that composes a cluster, node pool, network, sub-network, and service account all at once.
+
+```yaml
+cat <<EOF | kubectl apply -f -
+apiVersion: platform.acme.co/v1alpha1
+kind: CompositeCluster
+metadata:
+  name: my-cluster
+  namespace: default
+spec:
+  parameters:
+    location: us-east-1
+    nodeCount: 3
+    size: small
+EOF
+```
+
+In the Console, select the corresponding `CompositeCluster` resource type on your control plane and observe the claim you created now shows up. Select the claim and use the `Graph` button to view and inspect the relationship between the resources.
 
 ## Next steps
 
