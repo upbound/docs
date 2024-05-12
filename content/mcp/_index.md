@@ -197,6 +197,6 @@ Upbound gives users the ability to configure backup schedules, take impromptu ba
 
 ### Configure telemetry
 
+<!-- vale off -->
 Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/disconnected-spaces/observability" >}}).
-
-## Next steps
+<!-- vale on -->
