@@ -6,18 +6,18 @@ description: A  quickstart guide for Upbound Spaces
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.
 
-Upbound Spaces allows you to host managed control planes in your preferred environment.
+Disconnected Spaces allows you to host managed control planes in your preferred environment.
 
 ## Prerequisites
 
-To get started with Upbound Spaces, you need:
+To get started deploying your own Disconnected Space, you need:
 
 - An Upbound Account string, provided by your Upbound account representative
 - A `token.json` license, provided by your Upbound account representative
 - `kind` installed locally
 
 {{< hint "important" >}}
-Upbound Spaces is a paid feature of Upbound and requires a license token to successfully complete the installation. [Contact Upbound](https://www.upbound.io/contact) if you want to try out Spaces.
+Disconnected Spaces are a business critical feature of Upbound and requires a license token to successfully complete the installation. [Contact Upbound](https://www.upbound.io/contact) if you want to try out Upbound with Disconnected Spaces.
 {{< /hint >}}
 
 ## Provision the hosting environment
@@ -70,22 +70,22 @@ export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 ```
 {{< /editCode >}}
 
-Set the version of Spaces software you want to install.
+Set the version of the Spaces software you want to install.
 
 ```ini
 export SPACES_VERSION=1.3.1
 ```
-
-
-## Install a Space
+<!-- vale off -->
+## Install the Spaces software
+<!-- vale on -->
 
 The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. The up CLI introduced Spaces-related commands in `v0.19.0`. Make sure you use this version or newer.
 
 {{< hint "tip" >}}
-Make sure your kubectl context is set to the cluster you want to install Spaces into.
+Make sure your kubectl context is set to the cluster you want to install the Spaces software into.
 {{< /hint >}}
 
-Install Spaces.
+Install the Spaces software.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \

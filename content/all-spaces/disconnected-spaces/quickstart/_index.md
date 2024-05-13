@@ -6,23 +6,23 @@ description: A  quickstart guide for Upbound Spaces in AWS, Azure, or GCP
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in AWS, GCP, or Azure.
 
-Upbound Spaces allows you to host managed control planes in your preferred environment.
+Disconnected Spaces allows you to host managed control planes in your preferred environment.
 
 ## Prerequisites
 
-To get started with Upbound Spaces, you need:
+To get started deploying your own Disconnected Space, you need:
 
-- An Upbound Account string, provided by your Upbound account representative
+- An Upbound organization account string, provided by your Upbound account representative
 - A `token.json` license, provided by your Upbound account representative
 - An AWS, Azure, or GCP account with corresponding CLI tools
 
 {{< hint "important" >}}
-Upbound Spaces is a paid feature of Upbound and requires a license token to successfully complete the installation. [Contact Upbound](https://www.upbound.io/contact) if you want to try out Spaces.
+Disconnected Spaces are a business critical feature of Upbound and requires a license token to successfully complete the installation. [Contact Upbound](https://www.upbound.io/contact) if you want to try out Upbound with Disconnected Spaces.
 {{< /hint >}}
 
 ## Provision the hosting environment
 
-Upbound Spaces requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster](../kind-quickstart/).
+A Disconnected Space requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster](../kind-quickstart/).
 
 ### Create a cluster
 
@@ -231,19 +231,21 @@ export SPACES_CLUSTER_TYPE=gke
 
 {{< /tabs >}}
 
-## Install a Space
+<!-- vale off -->
+## Install the Spaces software
+<!-- vale on -->
 
 {{< tabs >}}
 
 {{< tab "Up CLI" >}}
 
-The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. The up CLI introduced Spaces-related commands in `v0.19.0`. Make sure you use this version or newer.
+The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward.
 
 {{< hint "tip" >}}
 Make sure your kubectl context is set to the cluster you want to install Spaces into.
 {{< /hint >}}
 
-Install Spaces.
+Install the Spaces software.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -255,7 +257,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 If you chose to create a public ingress, you also need to [create a DNS record](#create-a-dns-record) for the load balancer of the public facing ingress. Do this before you create your first control plane.
 
-You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Disconnected Space.
 
 {{< /tab >}}
 
@@ -485,7 +487,7 @@ spec:
 EOF
 ```
 
-### Install Upbound Spaces
+### Install Upbound Spaces software
 
 Create an image pull secret so that the cluster can pull Upbound Spaces images.
 
@@ -502,7 +504,7 @@ Log in with Helm to be able to pull chart images for the installation commands.
 cat $SPACES_TOKEN_PATH | helm registry login us-west1-docker.pkg.dev -u _json_key --password-stdin
 ```
 
-Install Spaces.
+Install the Spaces software.
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
@@ -511,6 +513,8 @@ helm -n upbound-system upgrade --install spaces \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
+  --set "authentication.hubIdentities=true" \
+  --set "authorization.hubRBAC=true" \
   --wait
 ```
 
@@ -526,17 +530,12 @@ helm -n upbound-system upgrade --install spaces \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
+  --set "authentication.hubIdentities=true" \
+  --set "authorization.hubRBAC=true" \
   --set "registry=registry.company.corp/us-west1-docker.pkg.dev/orchestration-build/upbound-environments" \
   --set "controlPlanes.uxp.registryOverride=registry.company.corp/xpkg.upbound.io" \
   --set "controlPlanes.uxp.repository=registry.company.corp/charts.upbound.io/stable" \
   --wait
-```
-
-
-Create an up CLI profile for the Space
-
-```bash
-up profile set space --profile new-profile-name --account "${UPBOUND_ACCOUNT}"
 ```
 
 {{< /tab >}}
@@ -592,7 +591,7 @@ You are ready to [create your first managed control plane](#create-your-first-ma
 
 ## Create your first managed control plane
 
-With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space, create a managed control plane:
+With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space software, create a managed control plane:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
