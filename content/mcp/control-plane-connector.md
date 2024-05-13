@@ -1,6 +1,6 @@
 ---
 title: GitOps with control planes
-weight: 6
+weight: 90
 description: An introduction to doing GitOps with control planes on Upbound
 aliases:
   - /spaces/control-plane-connector

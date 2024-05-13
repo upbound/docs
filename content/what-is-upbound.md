@@ -4,7 +4,7 @@ weight: -1
 description: "Create your first Upbound Managed Control Plane and connect it to your cloud provider."
 ---
 
-Upbound is the a scalable and fully automated Crossplane service. Organizations can use Upbound's control plane to build consistent and dependable cloud infrastructure abstractions.
+Upbound is the most scalable and fully automated Crossplane service. Organizations can use Upbound's control plane to build consistent and dependable cloud infrastructure abstractions.
 
 Upbound leverages a managed implementation of Crossplane's open source control plane framework.
 

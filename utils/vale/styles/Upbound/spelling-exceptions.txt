@@ -53,6 +53,7 @@ namespaces
 Netlify
 OAuth
 Okta
+OTEL
 overengineer
 observability
 patchSets

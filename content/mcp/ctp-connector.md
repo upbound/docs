@@ -1,6 +1,6 @@
 ---
 title: Control Plane Connector
-weight: 150
+weight: 80
 description: A guide for how to connect a Kubernetes app cluster to a managed control plane in Upbound using the Control Plane connector feature
 aliases:
   - /concepts/control-plane-connector
