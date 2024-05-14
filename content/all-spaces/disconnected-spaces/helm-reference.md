@@ -85,7 +85,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.serviceAccount.name | string | `"mxe-apollo"` | None |
 | authentication | object | | Authentication options |
 | authentication.hubIdentites | bool | `false`  | This enables respecting built in Kubernetes identities (client certificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified  within the Connected Space's hub. |
-| authentication. structuredConfig | bool | `false` | None |
+| authentication.structuredConfig | bool | `false` | None |
 | authorization | object | | Authorization options |
 | authorization.hubRBAC | bool | `false` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
 | billing | object |  | Configurations for space billing. |
@@ -374,7 +374,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.secretRefs | object | | None |
 | router.secretRefs.adminValidating | string | `"cert-admin-signing"` | None |
 | router.secretRefs.gatewaySigning | string | `"cert-token-signing-gateway"` | None |
-| router.secretRefs.oidcCABundle | string | `""` | The ca.crt key of this Secret will be mounted into the spaces-router |
+| router.secretRefs.oidcCABundle | string | `""` | The ca.crt key of this Secret will be mounted into the spaces-router **(deprecated)** |
 | router.secretRefs.tlsSecretName | string | `"mxp-hostcluster-certs"` | None |
 | router.serviceAccount | object | | None |
 | router.serviceAccount.annotations | object | `{}` | None |
