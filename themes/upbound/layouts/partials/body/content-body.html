@@ -2,22 +2,20 @@
 	<div class="content-title pb-4" id="content">{{.Title}}</div>
     {{ .Content }}
 
-
 	{{ if eq .Page.Params.product "crds" }}
 	<ul>
 	{{ partial "body/crds" .}}
 	</ul>
 
 	{{ else if .Page.IsSection }}
-
 	<ul>
         {{ range .Pages }}
-
-		<li>
-			<a href="{{.Permalink}}">{{.Title}}</a>
-		</li>
+            {{ if not .Draft }}
+		    <li>
+			    <a href="{{.Permalink}}">{{.Title}}</a>
+		    </li>
+            {{ end }}
         {{ end }}
-
 	</ul>
     {{ end }}
 
