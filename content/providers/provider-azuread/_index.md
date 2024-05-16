@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.2.0
+
+_Released 2024-05-16_
+
+* This release includes converting singleton lists in the MR APIs to embedded objects, and dependency updates.
+
+_Refer to the [v1.2.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.2.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.2.0)
+
 ## v1.1.0
 
 _Released 2024-04-25_

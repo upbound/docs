@@ -11,6 +11,16 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v1.2.0
+
+_Released 2024-05-16_
+
+* This release includes converting singleton lists in the MR APIs to embedded objects, and dependency updates.
+
+_Refer to the [v1.2.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.2.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.2.0)
+
 ## v1.1.0
 
 _Released 2024-04-25_
