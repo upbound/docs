@@ -2,6 +2,8 @@
 title: OIDC authentication
 weight: 300
 description: Use kubelogin to authenticate users in a Space
+aliases:
+    - /spaces/oidc
 ---
 
 You can configure a Space to integrate with an external Identity Provider, provided it implements the [Open ID Connect (OIDC) protocol](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens). This allows you to use an auth plugin, such as [kubelogin](https://github.com/int128/kubelogin).
