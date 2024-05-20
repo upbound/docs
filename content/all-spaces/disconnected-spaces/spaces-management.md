@@ -2,6 +2,8 @@
 title: Interacting with Disconnected Spaces
 weight: 2
 description: Common operations in Spaces
+aliases:
+    - /spaces/spaces-management
 ---
 
 ## Spaces management
