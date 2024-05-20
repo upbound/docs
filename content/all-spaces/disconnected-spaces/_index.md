@@ -2,6 +2,8 @@
 title: Disconnected Spaces
 weight: 2
 description: A guide to Upbound Spaces
+aliases:
+    - spaces/
 ---
 
 
