@@ -20,6 +20,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 |-----|------|---------|-------------|
 | account | string | `"notdemo"` |  |
 | api | object |  | Configurations for the space api deployment. |
+| api.extraVolumes | list | `[]` | None |
 | api.prometheus | object |  | None |
 | api.prometheus.podMonitor | object |  | None |
 | api.prometheus.podMonitor.enabled | bool | `false` | None |
@@ -27,6 +28,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | api.proxy | object |  | None |
 | api.proxy.extraArgs | list | `[]` | None |
 | api.proxy.extraEnv | list | `[]` | None |
+| api.proxy.extraVolumeMounts | list | `[]` | None |
 | api.proxy.image | object |  | None |
 | api.proxy.image.pullPolicy | string | `"IfNotPresent"` | None |
 | api.proxy.image.repository | string | `"mxe-api"` | None |
@@ -83,6 +85,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.serviceAccount.annotations | object | `{}` | None |
 | apollo.serviceAccount.create | bool | `true` | None |
 | apollo.serviceAccount.name | string | `"mxe-apollo"` | None |
+| authentication | object | | Authentication options |
+| authentication.hubIdentites | bool | `false`  | This enables respecting built in Kubernetes identities (client certificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified  within the Connected Space's hub. |
+| authentication.structuredConfig | bool | `false` | None |
+| authorization | object | | Authorization options |
+| authorization.hubRBAC | bool | `false` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
 | billing | object |  | Configurations for space billing. |
 | billing.enabled | bool | `false` | None |
 | billing.storage | object |  | None |
@@ -142,9 +149,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp | object | | None |
 | controlPlanes.uxp.enableCompositionFunctions | bool | `true` | None |
 | controlPlanes.uxp.enableEnvironmentConfigs | bool | `true` | None |
-| controlPlanes.uxp.enableProviderIdentity | bool | `false` | None |
+| controlPlanes.uxp.enableProviderIdentity | bool | `false` | None|
+| controlPlanes.uxp.enableUsages | bool | `true` | None |
 | controlPlanes.uxp.metrics | object |  | None |
 | controlPlanes.uxp.metrics.enabled | bool | `true` | None |
+| controlPlanes.uxp.registryOverride | string | `""` | None |
 | controlPlanes.uxp.repository | string | `"https://charts.upbound.io/stable"` | None |
 | controlPlanes.uxp.resourcesCrossplane | object | | UXP explicitly sets a few limits. We adjust down to what we've observed that we need. |
 | controlPlanes.uxp.resourcesCrossplane.limits | object |  | None |
@@ -160,15 +169,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.resourcesRBACManager.requests | object |  | None |
 | controlPlanes.uxp.resourcesRBACManager.requests.cpu | string | `"25m"` | None |
 | controlPlanes.uxp.resourcesRBACManager.requests.memory | string | `"256Mi"` | None |
+| controlPlanes.uxp.serviceAccount.customAnnotations | object | `{}` | None |
 | controlPlanes.uxp.version | string | `"1.14.5-up.1"` | None |
-| controlPlanes.uxp.xfn | object |  | None |
-| controlPlanes.uxp.xfn.resources | object |  | None |
-| controlPlanes.uxp.xfn.resources.limits | object |  | None |
-| controlPlanes.uxp.xfn.resources.limits.cpu | string | `"400m"` | None |
-| controlPlanes.uxp.xfn.resources.limits.memory | string | `"500Mi"` | None |
-| controlPlanes.uxp.xfn.resources.requests | object |  | None |
-| controlPlanes.uxp.xfn.resources.requests.cpu | string | `"370m"` | None |
-| controlPlanes.uxp.xfn.resources.requests.memory | string | `"400Mi"` | None |
 | controlPlanes.uxp.xgql | object |  | None |
 | controlPlanes.uxp.xgql.enabled | string | `"true"` | None |
 | controlPlanes.uxp.xgql.replicas | int | `1` | None |
@@ -229,6 +231,10 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.controller.service.metrics.port | int | `8085` | None |
 | controller.controller.service.webhook | object |  | None |
 | controller.controller.service.webhook.port | int | `9443` | None |
+| controller.extraVolumes | list | `[]` | None |
+| controller.kcp | object | | None |
+| controller.kcp.enabled | bool | `false` | None |
+| controller.kcp.storageClass | class | standard | None |
 | controller.gc | object | | None |
 | controller.gc.extraArgs | list | `[]` | None |
 | controller.gc.failedJobsHistoryLimit | int | `1` | None |
@@ -238,6 +244,9 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.gc.schedule | string | `"*/15 * * * *"` | None |
 | controller.gc.successfulJobsHistoryLimit | int | `0` | None |
 | controller.mxeInit | object |  | None |
+| controller.mxeInit.extraArgs | list | `[]` | None |
+| controller.mxeInit.extraEnv | list | `[]` | None |
+| controller.mxeInit.extraVolumeMounts | list | `[]` | None |
 | controller.mxeInit.image | object | | None |
 | controller.mxeInit.image.pullPolicy | string | `"IfNotPresent"` | None |
 | controller.mxeInit.image.repository | string | `"mxe-apis"` | None |
@@ -253,7 +262,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.serviceAccount.annotations | object | `{}` | None |
 | controller.serviceAccount.create | bool | `true` | None |
 | controller.serviceAccount.name | string | `""` | None |
+| controller.syncer | object |  | None |
 | controller.webhookInit | object |  | None |
+| controller.webhookInit.extraArgs | list | `[]` | None |
+| controller.webhookInit.extraEnv | list | `[]` | None |
+| controller.webhookInit.extraVolumeMounts | list | `[]` | None |
 | controller.webhookInit.image | object |  | None |
 | controller.webhookInit.image.pullPolicy | string | `"IfNotPresent"` | None |
 | controller.webhookInit.image.repository | string | `"mxe-controller/initialize"` | None |
@@ -276,7 +289,10 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.gitSource | object | | None |
 | features.alpha.gitSource.enabled | bool | `true` | None |
 | features.alpha.kine | object | | None |
-| features.alpha.kine.enabled | bool | `false` | None |
+| features.alpha.kine.accountSchema.enabled | bool | `false` | None |
+| features.alpha.kine.enabled | bool | `false` | This configures kine to store its data in a separate schema for each account, and configures apollo to query it. If disabled, kine will store all data in the public schema. |
+| features.alpha.kine.upboundRBAC | bool | `false` | None |
+| features.alpha.kine.observability | bool | `false` | None |
 | features.alpha.sharedBackup | object | | None |
 | features.alpha.sharedBackup.enabled | bool | `false` | This enables backup and restore of control planes using Shared resources. |
 | features.alpha.sharedSecrets | object | | SharedSecrets enables the ability to use the SharedSecrets feature within this space. |
@@ -299,9 +315,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
 | registry | string | `"us-west1-docker.pkg.dev/orchestration-build/upbound-environments"` | Specifies the registry the containers used in the spaces deployment are served from. |
+| observability | object | | Observability configuration to collect metrics and traces ( and logs in the future) from the Space and send them to the specified exporters. Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. Telemetry collection is disabled by default and gated by the `features.alpha.observability.enabled` parameter. |
 | router | object | | Configurations for the space router deployment. |
 | router.controlPlane | object | | None |
-| router.controlPlane.extraArgs | list | `["--service-node","mxe-router","--debug"]` | None |
+| router.controlPlane.extraEnv | list | | None |
+| router.controlPlane.extraVolumeMounts | list |  | None |
 | router.controlPlane.image | object | | None |
 | router.controlPlane.image.pullPolicy | string | `"IfNotPresent"` | None |
 | router.controlPlane.image.repository | string | `"mxe-router"` | None |
@@ -324,6 +342,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.controlPlane.service.metrics.port | int | `8085` | None |
 | router.controlPlane.service.privateHttp | object | | None |
 | router.controlPlane.service.privateHttp.port | int | `9092` | None |
+| router.extraVolumes | list | | None |
 | router.hpa | object | | None |
 | router.hpa.enabled | bool | `false` | None |
 | router.hpa.maxReplicas | int | `5` | None |
@@ -334,7 +353,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.prometheus.podMonitor.enabled | bool | `false` | None |
 | router.prometheus.podMonitor.interval | string | `"30s"` | None |
 | router.proxy | object | | None |
-| router.proxy.extraArgs | list | `["--service-node","mxe-router","--service-cluster","mxe-router"]` | None |
 | router.proxy.extraEnv | list | `[]` | None |
 | router.proxy.image | object | | None |
 | router.proxy.image.pullPolicy | string | `"IfNotPresent"` | None |
@@ -358,6 +376,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.secretRefs | object | | None |
 | router.secretRefs.adminValidating | string | `"cert-admin-signing"` | None |
 | router.secretRefs.gatewaySigning | string | `"cert-token-signing-gateway"` | None |
+| router.secretRefs.oidcCABundle | string | `""` | The ca.crt key of this Secret will be mounted into the spaces-router **(deprecated)** |
 | router.secretRefs.tlsSecretName | string | `"mxp-hostcluster-certs"` | None |
 | router.serviceAccount | object | | None |
 | router.serviceAccount.annotations | object | `{}` | None |
@@ -370,9 +389,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | xpkg.mxeCompositionTemplates | object | | None |
 | xpkg.mxeCompositionTemplates.repository | string | `"mxe-composition-templates"` | None |
 | xpkg.mxeCompositionTemplates.tag | string | `"0.1.0"` | None |
-| xpkg.mxeIngress | object | | None |
-| xpkg.mxeIngress.repository | string | `"mxe-ingress"` | None |
-| xpkg.mxeIngress.tag | string | `"0.1.0"` | None |
 | xpkg.mxpControlPlane | object | | None |
 | xpkg.mxpControlPlane.repository | string | `"mxp-control-plane"` | None |
 | xpkg.mxpControlPlane.tag | string | `"0.1.0"` | None |
