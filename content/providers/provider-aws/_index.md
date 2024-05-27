@@ -13,6 +13,18 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.5.0
+
+_Released 2024-05-24_
+
+* Update the AWS Terraform provider version to `v5.50.0`
+* Support for new resource: `User.v1alpha1.mq.aws.upbound.io`
+* This release includes a new resource, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.5.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.5.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.5.0)
+
 ## v1.4.0
 
 _Released 2024-04-25_
