@@ -226,17 +226,4 @@ the Upbound official GCP provider.
 _Refer to the [v0.33.0 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.33.0) for full details._
 
 Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.33.0)
-
-### `upbound/provider-gcp` v0.32.0
-
-_Released 2023-05-15_
-
-* Update the GCP Terraform provider to v4.64.0
-* Add support for External Secret Stores.
-* Support for new resources: `sharedVPCHostProject` and `sharedVPCServiceProject`
-* Bug fixes and enhancements.
-
-_Refer to the [v0.32.0 release notes](https://github.com/upbound/provider-gcp/releases/tag/v0.32.0) for full details._
-
-Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v0.32.0)
 <!-- vale Google.Headings = YES -->

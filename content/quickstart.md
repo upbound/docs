@@ -50,7 +50,7 @@ Want to learn more about what it means to change your context in Upbound? Read t
 
 When you create a new managed control plane, Upbound provides you with a fully isolated instance of Crossplane. Configure your control plane by installing packages to extend its capabilities, like to create and manage the lifecycle of new types of infrastructure resources. 
 
-Upbound recommends installing [Crossplane Configurations](https://docs.crossplane.io/concepts/configurations), a package type that extends the capabilities of your control plane. For this quickstart, install [configuration-getting-started](https://marketplace.upbound.io/configurations/upbound/configuration-getting-started/latest) using the `up` CLI:
+Upbound recommends installing [Crossplane Configurations](https://docs.crossplane.io/latest/concepts/packages/), a package type that extends the capabilities of your control plane. For this quickstart, install [configuration-getting-started](https://marketplace.upbound.io/configurations/upbound/configuration-getting-started/latest) using the `up` CLI:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -84,7 +84,7 @@ In the Console, select the corresponding `Network` resource type on your control
 
 ## Explaining what just happened
 
-As a control plane, Crossplane can manage anything. To manage something, Crossplane depends [providers](https://docs.crossplane.io/concepts/providers), another core package type in Crossplane. They contain the basic building blocks that contain representations for things to Crossplane. You didn't need to install a provider directly because Crossplane contains a package manager. When given a Configuration, Crossplane's package manager resolve its dependencies automatically for you.
+As a control plane, Crossplane can manage anything. To manage something, Crossplane depends on [providers](https://docs.crossplane.io/latest/concepts/providers/), another core package type in Crossplane. They contain the basic building blocks that contain representations for things to Crossplane. You didn't need to install a provider directly because Crossplane contains a package manager. When given a Configuration, Crossplane's package manager resolve its dependencies automatically for you.
 
 The configuration you installed, `configuration-getting-started`, depends on a provider called `provider-nop`, a stub provider that defines a fake resource. When you created your first resource in the previous section, provider-nop created a fake resource inside your control plane. But the process is almost identical if you want to use Crossplane to manage real cloud resources in AWS, Azure, GCP, and more.
 

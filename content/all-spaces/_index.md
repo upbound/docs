@@ -4,6 +4,7 @@ weight: 1
 description: An introduction to Spaces hosting feature in Upbound
 aliases:
     - "/spaces"
+    - "/concepts/upbound-spaces"
 ---
 
 Upbound Spaces are hosting environments for Upbound's managed Crossplane control planes. 

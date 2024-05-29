@@ -22,7 +22,7 @@ To deploy Upbound's configuration-caas, you need:
  	* A GCP account with permissions to manage IAM policies.
 
 {{< hint "tip" >}}
-If you don't have an Upbound account, [sign up for a free trial](https://accounts.upbound.io/register/a).
+If you don't have an Upbound account, [sign up for a free trial](https://accounts.upbound.io/register).
 {{< /hint >}}
 ## Get started
 
