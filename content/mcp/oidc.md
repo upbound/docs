@@ -6,7 +6,7 @@ aliases:
     - "/concepts/mcp/oidc"
 ---
 
-Managed control planes use [Crossplane providers](https://docs.crossplane.io/latest/spaces/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. MCPs can connect to an unlimited number of external services--provided there's a Crossplane provider in the [Marketplace](https://marketplace.upbound.io/providers).
+Managed control planes use [Crossplane providers](https://docs.crossplane.io/latest/concepts/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. MCPs can connect to an unlimited number of external services--provided there's a Crossplane provider in the [Marketplace](https://marketplace.upbound.io/providers).
 
 ## How to connect to an external service
 

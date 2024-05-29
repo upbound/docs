@@ -613,7 +613,7 @@ assumes the following:
     Configuration.meta.pkg.crossplane.io manifest (that contains the provider
     dependencies), Compositions, and CompositeResourceDefinitions. An example,
     configuration package:
-    <https://github.com/upbound/platform-ref-gcp/tree/main/package>.
+    <https://github.com/upbound/platform-ref-gcp/tree/main/apis>.
     - Examples: This directory may contain Claims, and
     Configuration.pkg.crossplane.io resource. An example of configuration
     examples: <https://github.com/upbound/platform-ref-gcp/tree/main/examples>.
@@ -675,7 +675,7 @@ user with a series of questions to gather the required inputs:
 | **Please specify the version of the provider-abc family** | Provide the versions of the family provider to migrate to for each selected provider. If you want to migrate to the latest version, refer to the [Upbound Marketplace]. The version format must be `v0.y.y` |
 | **Please enter the URL of the migration source Configuration package** | Provide the registry URL of the currently installed Configuration Package. The value appears in the `spec.package` path of `Configuration.pkg.crossplane.io/v1` resource. For example, `xpkg.upbound.io/upbound/platform-ref-gcp:v0.3.0` |
 | **Please enter the URL of the migration target Configuration package** | The tool builds a new configuration package during migration. Specify the registry URL where the migrated built package is uploaded. For example, `<registry-host>/<organization>/platform-ref-gcp:v0.3.0-migrated` |
-| **Please specify the source directory for the Crossplane Configuration package** | Specify the source directory to the location of the configuration package. This directory contains the Configuration.meta.pkg.crossplane.io manifest that contains the provider dependencies, Compositions, and CompositeResourceDefinitions. For example: `/Users/user/workspace/platform-ref-gcp/package` Example configuration package: <https://github.com/upbound/platform-ref-gcp/tree/main/package>. |
+| **Please specify the source directory for the Crossplane Configuration package** | Specify the source directory to the location of the configuration package. This directory contains the Configuration.meta.pkg.crossplane.io manifest that contains the provider dependencies, Compositions, and CompositeResourceDefinitions. For example: `/Users/user/workspace/platform-ref-gcp/package` Example configuration package: <https://github.com/upbound/platform-ref-gcp/tree/main/apis>. |
 | **Please specify the path to the directory containing the Crossplane package examples** | Specify the directory to the location of the configuration package examples. This directory may contain Claims, and Configuration.pkg.crossplane.io resource. For example: `/Users/user/workspace/platform-ref-gcp/examples` Example configuration examples: <https://github.com/upbound/platform-ref-gcp/tree/main/examples>. |
 {{< /table >}}
 <!-- vale Google.Will = YES -->

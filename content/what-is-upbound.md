@@ -39,14 +39,13 @@ Organizations in finance, automotive, retail, healthcare, and more trust Upbound
 An Upbound organization contains groups of control planes called managed control planes (MCPs). These MCPs are fully isolated virtual Crossplane instances treated as an entity within the organization. You configure MCPs with the Crossplane API to deploy your Crossplane Configurations with Crossplane Providers(AWS, Splunk, etc.). Crossplane lets you create infrastructure abstractions called Composite Resource Definitions (XRDs) and compositions and deploy them to your MCPs. The Crossplane API with the MCP communicates with your infrastructure abstractions to administer, operate, and monitor your infrastructure.
 <!-- vale Upbound.Spelling = YES -->
 
-
 Crossplane control planes run a set of pods for the Crossplane system components as well as each provider and composition function you deploy. Upbound manages the system components for you with automatic component upgrades, high availability, and data integrity in the control plane's persistent storage volume.
 
-For more information, refer to [Managed Control Plane Architecture](https://docs.google.com/document/d/1ls7oILQvh4JWOXyLYZL52CsCcl5VgneG83I4byJkWiM/edit#heading=h.2fgx68fu1z4b).
+For more information, refer to [Managed Control Plane Architecture](#managed-control-plane-architecture).
 
 Control plane groups run in a Space, which are hosting environments in Upbound. Upbound offers both Upbound-managed multi-tenant Cloud Spaces or self-deployed Connected Spaces in your own infrastructure.
 
-For more information, refer to [Upbound Architecture](https://docs.google.com/document/d/1ls7oILQvh4JWOXyLYZL52CsCcl5VgneG83I4byJkWiM/edit#heading=h.b3whfjack6gs).
+For more information, refer to [Upbound Architecture](#upbound-architecture).
 
 ### Crossplane versions and features
 
