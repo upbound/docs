@@ -8,7 +8,7 @@ draft: true
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.
 
 {{< hint "tip" >}}
-For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "../mcp/control-plane-connector.md">}}).
+For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "/mcp/control-plane-connector.md">}}).
 {{< /hint >}}
 
 ## Argo
