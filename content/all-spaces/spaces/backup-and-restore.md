@@ -20,7 +20,7 @@ The Shared Backups feature is enabled by default in all Upbound Cloud Spaces. If
 
 #### Create a backup secret
 
-Before you can configure backup schedules and initiate manual backups, you need to create a secret containing auth credentials to allow for communication between the Space and a storage target. The example below contains the configuration for an AWS S3 store:
+Before you can configure backup schedules and create manual backups, you need to provide auth credentials to communicate between the Space and a storage target. You should create a secret containing those credentials. The example below contains the configuration for an AWS S3 store:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
