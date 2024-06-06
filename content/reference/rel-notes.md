@@ -154,6 +154,23 @@ Released August 28th, 2023.
 
 ## Control plane connector release notes
 
+### MCP connector v0.5.0
+
+Released June 6th, 2024.
+
+#### What's Changed
+
+- Support for auth with Upbound Identity.
+- Upgraded Kubernetes library dependencies from 1.26 to 1.29.
+
+### MCP connector v0.4.0
+
+Released April 29th, 2024.
+
+#### What's Changed
+
+- Add ability to set memory and cpu limits.
+
 ### MCP connector v0.3.8
 
 Released March 21st, 2024.
