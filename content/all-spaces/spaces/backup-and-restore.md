@@ -2,9 +2,6 @@
 title: Backup and restore
 weight: 130
 description: Enable and manage backups in your Upbound Space.
-tocHidden: true
-searchExclude: true
-draft: true
 ---
 
 {{< hint "important" >}}
@@ -46,6 +43,7 @@ For more information about other cloud provider credentials and formats, review 
 #### Shared backup
 
 You can define a `SharedBackupConfig` for multiple control planes. With shared backups, control planes share a common storage source for the backups that get created. The example below demonstrates how to create a shared backup:
+
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -146,7 +144,7 @@ This schedule backs up control planes with matching labels every hour.
 
 #### Single backup
 
-You can create a manual backup of a managed control plane from the Space cluster:
+You can also create a manual backup of a managed control plane:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -166,11 +164,9 @@ EOF
 
 ### Restore
 
-
 <!-- vale off -->
 You can restore a control plane's state from a backup in a few steps.
 <!-- vale on -->
-
 
 For this example, create a Secret in the source control plane. This secret is generic control plane data to show how the restore process works.
 
