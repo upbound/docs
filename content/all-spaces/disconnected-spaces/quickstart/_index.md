@@ -389,7 +389,7 @@ kind: Provider
 metadata:
   name: provider-kubernetes
 spec:
-  package: "crossplane-contrib/provider-kubernetes:v0.12.1"
+  package: "crossplane-contrib/provider-kubernetes:v0.14.0"
   runtimeConfigRef:
     name: provider-kubernetes
 ---
@@ -407,7 +407,7 @@ kind: Provider
 metadata:
   name: provider-helm
 spec:
-  package: "crossplane-contrib/provider-helm:v0.17.0"
+  package: "crossplane-contrib/provider-helm:v0.19.0"
   runtimeConfigRef:
     name: provider-helm
 ---
