@@ -17,7 +17,7 @@ Every Cloud Space in Upbound has a group named _default_ available. Think of a g
 To create a group, login to Upbound and set your context to your desired Space:
 
 ```shell
-up web-login
+up login
 up ctx '<your-org>/<your-space>'
 # Example: up ctx acmeco/upbound-gcp-us-west-1
 ```
@@ -33,7 +33,7 @@ up group create my-new-group
 To delete a group, login to Upbound and set your context to your desired Space:
 
 ```shell
-up web-login
+up login
 up ctx '<your-org>/<your-space>'
 # Example: up ctx acmeco/upbound-gcp-us-west-1
 ```

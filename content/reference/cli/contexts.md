@@ -37,7 +37,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx](https://gith
 {{< hint "important" >}}
 When interacting with managed control planes that are hosted in:
 
-* **a Cloud Space:** always make sure you're logged into Upbound with `up web-login` before trying to use `up ctx`.
+* **a Cloud Space:** always make sure you're logged into Upbound with `up login` before trying to use `up ctx`.
 * **a Connected or Disconnected Space:** always make sure your current kubecontext is pointed at the cluster which hosts your Space.
 {{< /hint >}}
 
