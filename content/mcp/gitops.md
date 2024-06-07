@@ -116,7 +116,7 @@ controller:
       image: alpine:3.8
       env:
         - name: ARCH
-          value: arm64 # TODO: fix this upstream https://github.com/upbound/up/issues/530
+          value: arm64 
         - name: OS
           value: linux
       volumeMounts:
