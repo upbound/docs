@@ -25,7 +25,8 @@ Upbound manages access to resouces with role permissions. Each
 organizations administrator can assign membership to a user to have access to
 the following resources:
 
-{{</ table "table table-striped" />}}
+{{< table "table table-striped" >}}
+
 |              | Create | List    | Read    | Update | Delete |
 |--------------|--------|---------|---------|--------|--------|
 | Organization | Anyone | Member+ | Member+ | Admin  | Admin  |
@@ -37,4 +38,5 @@ the following resources:
 | Spaces       |        |         |         |        |        |
 | Configs      | Admin  | Admin   | Admin   | Admin  | Admin  |
 | Repos        | Admin  | Member+ | Member+ | Admin  | Admin  |
-{{</ table "table table-striped" />}}
+
+{{</ table >}}
