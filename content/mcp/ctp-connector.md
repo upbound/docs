@@ -7,32 +7,11 @@ aliases:
   - /mcp/control-plane-connector/
 ---
 
-Upbound's Managed Control Plane Connector (MCP Connector) is another way you can set up GitOps flows with Upbound managed control planes. MCP Connector is for users coming from open source Crossplane and who treated Crossplane as an add-on to an existing Kubernetes application cluster. In that world, users could interact with Crossplane APIs from the same cluster they deploy their applications to. This model breaks when users move their Crossplane instances into a managed solution in Upbound.
+Upbound's Managed Control Plane Connector (MCP Connector) allows you to make a control plane's APIs available on an app cluster. MCP Connector is for users coming from open source Crossplane and who treated Crossplane as an add-on to an existing Kubernetes application cluster. In that world, users could interact with Crossplane APIs from the same cluster they deploy their applications to. This model breaks when users move their Crossplane instances into a managed solution in Upbound.
 
 MCP Connector connects Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinition`s are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
 
 {{<img src="all-spaces/spaces/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
-
-MCP Connector functions similarly when running in Space-managed control plane versus a SaaS-managed control plane. The one difference is you must provide a secret containing the Space-managed control plane kubeconfig at install-time. The install command becomes the following:
-
-```bash
-up ctp connector install <ctp-name> <namespace-in-ctp> --control-plane-secret=<secret-ctp-kubeconfig>
-```
-
-Or if you want to install with Helm, you must provide:
-
-- `mcp.account`, provide an Upbound org account name.
-- `mcp.name`, provide the name of the managed control plane you want to connect to.
-- `mcp.namespace`, provide the namespace in your managed control plane to sync to.
-- `mcp.secret.name`, provide the name of a secret in your app cluster containing the kubeconfig of the Space-managed control plane you want to connect to.
-
-```bash
-helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system \
-  --set mcp.account='your-upbound-org-account' \
-  --set mcp.name='your-control-plane-name' \
-  --set mcp.namespace='your-app-ns-1' \
-  --set mcp.secret.name='name-of-secret-with-kubeconfig'
-```
 
 ### Managed control plane connector operations
 
