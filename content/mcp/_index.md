@@ -172,7 +172,7 @@ spec:
 
 {{< tab "Continuous Delivery Engine" >}}
 
-For production-grade scenarios, it's recommended you configure your control plane declaratively via Git plus a Continuous Delivery (CD) Engine such as Argo. For guidance on this topic, read [GitOps with control planes]({{<ref "control-plane-connector" >}}).
+For production-grade scenarios, it's recommended you configure your control plane declaratively via Git plus a Continuous Delivery (CD) Engine such as Argo. For guidance on this topic, read [GitOps with control planes]({{<ref "gitops" >}}).
 
 {{< /tab >}}
 
