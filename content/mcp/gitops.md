@@ -24,7 +24,9 @@ up ctx <org-name>/<space-name>/<group-name>/<control plane> -f context.yaml
 
 ### Create an API token
 
+<!-- vale Google.FirstPerson = NO -->
 You need a personal access token (PAT). You create PATs on a per-user basis in the Upbound Console. Go to [My Account - API tokens](https://accounts.upbound.io/settings/tokens) and select Create New Token. Give the token a name and save the secret value to somewhere safe.
+<!-- vale Google.FirstPerson = YES -->
 
 <!-- vale Google.Headings = NO -->
 ### Configure Argo CD
