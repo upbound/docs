@@ -16,6 +16,39 @@ You can use Upbound RBAC or Kubernetes Hub Authorization to manage your users
 access within Upbound or the underlying resources, depending on which approach
 your organization needs.
 
+## Identity Types
+
+Upbound supports the following identity types:
+
+- Users
+- Robots
+- Teams
+
+Upbound constructs unique identities with `upbound:(user|robot|team):<name>`.
+
+## Authentication
+
+Upbound issues JSON Web Tokens (JWT) with identity information to
+authenticate to your platform APIs.
+
+The token includes:
+
+- a subject (`sub`)
+- the users team memberships(`upbound:team:<team-name>`)
+- the organization context
+
+## Authorization
+
+Upbound uses identities to check for authentication across the platform. In
+the Cloud environment, Upbound grants identities organization roles to
+control access to features and resources with IAM policies.
+
+In Connected Spaces, you can bind identities to Kubernetes RBAC roles or
+Upbound IAM roles to control access to resources.
+
+The subject and group claims in the JWT token determine the user's effective permissions for an API request.
+
+
 ## Enable Kubernetes Hub Authentication
 
 To enable Kuberentes Hub Authentication in your Space, you need:
@@ -67,3 +100,5 @@ roleRef:
 
 This example creates an `upbound-user` with read permissions on
 `controlplanes` and binds the users to the `upbound:users` group.
+
+## Enable Upbound Unified Authentication
