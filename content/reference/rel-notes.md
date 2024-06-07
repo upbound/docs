@@ -28,7 +28,7 @@ Released June 7th, 2024.
 
 #### Highlights
 
-- We've introduced a new feature of Upbound IAM: Upbound RBAC. Upbound RBAC is a new alpha feature that allows for a unified authentication and authorization model across the various deployment modes supported by Upbound. Users who operate single-tenant deployments of Upbound with Connected or Disconnected Spaces can continue to use Kubernetes-native RBAC. Users can now use Upbound's own RBAC to control access in the Upbound Console , with access control synchronized down to the local Space, too. A new API type, `ObjectRoleBinding` represents these Upbound RBAC role bindings in the Space locally.
+- We've introduced a new alpha feature of Upbound IAM: Upbound RBAC. Upbound RBAC allows for a unified authentication and authorization model across Upbound. Users who operate single-tenant Cloud or Disconnected Spaces can continue to use the Kubernetes-native RBAC. Upbound RBAC allows users to control access in the Upbound Console down to the local Space. The new `ObjectRoleBinding` API type represents these Upbound RBAC role bindings in the Space locally.
 - We've extended the alpha observability feature which shipped in Spaces `v1.3.0`. Observability is now also available at the Space level, which lets users observe Spaces machinery. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
 
 #### What's Changed
