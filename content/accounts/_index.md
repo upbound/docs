@@ -15,8 +15,7 @@ Some benefits of implementing IAM in Upbound are:
 
 - Centralized access control
 - Consistency
-- Granular permissions
-- Auditing & compliance
+- Permission management
 - Scalability
 
 ## Core concepts
@@ -34,7 +33,6 @@ the following resources:
 | Membership   | Admin  | Member+ | Member+ | Admin  | Admin  |
 | Robots       | Admin  | Member+ | Member+ | Admin  | Admin  |
 | Teams        | Admin  | Member+ |         |        |        |
-| RoleBindings |        |         |         |        |        |
 | Spaces       |        |         |         |        |        |
 | Configs      | Admin  | Admin   | Admin   | Admin  | Admin  |
 | Repos        | Admin  | Member+ | Member+ | Admin  | Admin  |
