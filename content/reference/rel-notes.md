@@ -22,6 +22,25 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.4.0
+
+Released June 7th, 2024.
+
+#### Highlights
+
+- We've introduced a new feature of Upbound IAM: Upbound RBAC. Upbound RBAC is a new alpha feature that allows for a unified authentication and authorization model across the various deployment modes supported by Upbound. Users who operate single-tenant deployments of Upbound with Connected or Disconnected Spaces can continue to use Kubernetes-native RBAC. Users can now use Upbound's own RBAC to control access in the Upbound Console , with access control synchronized down to the local Space, too. A new API type, `ObjectRoleBinding` represents these Upbound RBAC role bindings in the Space locally.
+- We've extended the alpha observability feature which shipped in Spaces `v1.3.0`. Observability is now also available at the Space level, which lets users observe Spaces machinery. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
+
+#### What's Changed
+
+- We enabled the Crossplane [Usages](https://docs.crossplane.io/latest/concepts/usages/) alpha feature in managed control planes.
+- Space admins can now pass custom service account annotations to Crossplane service account.
+- We fixed some bugs related to authentication and single-tenant Spaces when in Disconnected mode.
+- We now allow scaling up core control plane components via helm values.
+- The latest supported Crossplane minor version in Spaces was bumped to 1.16.
+- Spaces prereq providers have had version bumps to allow for incorporating new metrics emissions from these providers. Provider-kubernetes is bumped to `v0.14.0` and provider-helm to `v0.19.0`.
+- Kube-native Hub authentication and authorization has been enabled by default.
+
 ### Spaces v1.3.1
 
 Released May 7th, 2024.
