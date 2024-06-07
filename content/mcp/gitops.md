@@ -8,7 +8,9 @@ aliases:
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's managed control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
 
+<!-- vale Google.Headings = NO -->
 ## Integrate with Argo CD 
+<!-- vale Google.Headings = YES -->
 
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound managed control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
 
@@ -35,9 +37,9 @@ This configuration turns off Argo CD auto pruning, preventing the deletion of Cr
 
 Replace the variables and run the following script to configure the Argo cluster definition.
 
-The `tlsClientConfig.caData` should come from the cluster definition in the Kubeconfig. If the CA data field is not defined in the cluster definition (only `up` in `main` supports this for now), then set `insecure` to `true` and delete the `caData` field.
+The `tlsClientConfig.caData` should come from the cluster definition in the Kubeconfig. If the CA data field isn't defined in the cluster definition (only `up` in `main` supports this for now), then set `insecure` to `true` and delete the `caData` field.
 
-If you want Argo to talk to an MCP running in a single-tenant Upbound Space (Connected or Disconnected), replace `<space-name>` with the Space ingress URL previously configured for the Space.
+To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `<space-name>` with the Space ingress URL configured for the Space.
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -73,7 +75,7 @@ EOF
 
 ### Add the up CLI init container to Argo
 
-Create a new file called `up-plugin-values.yaml` and paste the following yaml:
+Create a new file called `up-plugin-values.yaml` and paste the following YAML:
 
 ```yaml
 controller:
