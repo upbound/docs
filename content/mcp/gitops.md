@@ -14,6 +14,18 @@ GitOps is an approach for managing a system by declaratively describing desired 
 
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound managed control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
 
+### Generate a kubeconfig for your MCP
+
+Use the up CLI to [generate a kubeconfig]({{<ref "reference/cli/contexts.md#storing-a-context-to-a-file" >}}) for your managed control plane.
+
+```bash
+up ctx <org-name>/<space-name>/<group-name>/<control plane> -f context.yaml
+```
+
+### Create an API token
+
+You need a personal access token (PAT). You create PATs on a per-user basis in the Upbound Console. Go to [My Account - API tokens](https://accounts.upbound.io/settings/tokens) and select Create New Token. Give the token a name and save the secret value to somewhere safe.
+
 <!-- vale Google.Headings = NO -->
 ### Configure Argo CD
 <!-- vale Google.Headings = YES -->
