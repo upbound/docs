@@ -51,9 +51,7 @@ This configuration turns off Argo CD auto pruning, preventing the deletion of Cr
 
 Replace the variables and run the following script to configure the Argo cluster definition.
 
-The `tlsClientConfig.caData` should come from the cluster definition in the Kubeconfig. If the CA data field isn't defined in the cluster definition (only `up` in `main` supports this for now), then set `insecure` to `true` and delete the `caData` field.
-
-To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `<space-name>` with the Space ingress URL configured for the Space.
+To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `stringData.server` with the ingress URL for the control plane. This URL is what's previously outputted when using `up ctx`. 
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -112,11 +110,12 @@ controller:
         - sh
         - -c
       args:
-        - wget -qO /plugin/up https://cli.upbound.io/build/main/v0.31.0-rc.0.22.gcd944f6/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
+        - wget -qO /plugin/up https://cli.upbound.io/stable/v0.31.0/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
+
       image: alpine:3.8
       env:
         - name: ARCH
-          value: arm64 
+          value: arm64
         - name: OS
           value: linux
       volumeMounts:
@@ -143,11 +142,11 @@ server:
         - sh
         - -c
       args:
-        - wget -qO /plugin/up https://cli.upbound.io/build/main/v0.31.0-rc.0.22.gcd944f6/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
+        - wget -qO /plugin/up https://cli.upbound.io/stable/v0.31.0/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
       image: alpine:3.8
       env:
         - name: ARCH
-          value: arm64 # TODO: fix this upstream https://github.com/upbound/up/issues/530
+          value: arm64
         - name: OS
           value: linux
       volumeMounts:
@@ -160,5 +159,5 @@ server:
 Install Argo via Helm, including the values from the `up-plugin-values.yaml` file:
 
 ```bash
-helm upgrade --install -n argocd -f up-plugin-values.yaml argocd argo/argo-cd
+helm upgrade --install -n argocd -f up-plugin-values.yaml --reuse-values argocd argo/argo-cd
 ```
