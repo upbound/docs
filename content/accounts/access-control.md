@@ -20,9 +20,12 @@ your organization needs.
 
 Upbound supports the following identity types:
 
-- Users
-- Robots
-- Teams
+- [Users]({{<ref "./users" >}}) - Accounts representing a single user.
+- [Organizations]({{<ref "./organizations" >}}) - A top-level collection of
+  users and teams.
+- [Teams]({{<ref "./teams" >}}) - A sub-group within an organization.
+- [Robots]({{<ref "./robots" >}}) - Non-user accounts designed for
+  automation.
 
 Upbound constructs unique identities with `upbound:(user|robot|team):<name>`.
 
@@ -80,9 +83,6 @@ Next, create `ClusterRoleBindings` and `RoleBindings` to assign
 roles to subjects like users, groups, or service accounts.
 
 ```yaml
-
----
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -102,4 +102,95 @@ The `subject` in this example can contain teams (`upbound:team:<uuid>`) or org r
 This example creates an `controlplane-getter` with read permissions on
 `controlplanes` and binds the users to the `upbound:users` group.
 
-## Enable Upbound Unified Authentication
+## Enable Upbound RBAC
+
+You can enable Upbound RBAC at install or upgrade time:
+
+```yaml
+--set "features.alpha.upboundRBAC.enabled=true"
+```
+
+### Roles
+
+Upbound RBAC roles define sets of permissins with three built-in roles:
+
+- Admin
+- Editor
+- Viewer
+
+Upbound tiers these roles at three levels:
+
+- Organization
+- Control Plane Groups
+- Control Planes
+
+### Configure roles
+
+```yaml
+apiVersion: authorization.spaces.upbound.io/v1
+kind: ObjectRoleBinding
+metadata:
+  name: my-binding
+spec:
+  object:
+    resource: controlplanes
+    name: my-controlplane
+  subjects:
+  - kind: UpboundUser
+    name: alice
+    role: admin
+  - kind: UpboundTeam
+    name: eng-team
+    role: editor
+```
+
+In this example, the `ObjectRoleBinding` grants the `admin` role to `alice` and the `editor` role to the `eng-team` on the specified control plane.
+
+ObjectRoleBindings function as CRDs parallel to the target resource so you can manage them using the same workflows.
+
+### Roles matrix
+
+Spaces API Resources:
+
+{{< table "table table-striped" >}}
+
+| Resource | Get | List | Create | Update | Patch | Delete |
+|---|---|---|---|---|---|---|
+| namespaces/groups | grp-viewer | filtered | org-admin | org-admin | org-admin | org-admin |
+| objectrolebindings | grp-viewer | grp-viewer | grp-admin | grp-admin | grp-admin | grp-admin |
+| secrets* | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| controlplanes | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedsecretstores | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedexternalsecrets | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedupboundpolicies | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedtelemetryconfigs | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| queries | N/A | N/A | grp-viewer | N/A | N/A | N/A |
+| groupqueries | N/A | N/A | grp-viewer | N/A | N/A | N/A |
+
+{{< /table >}}
+
+Control Plane Resources:
+{{< table "table table-striped" >}}
+
+| Resource | Get | List | Create | Update | Patch | Delete |
+|---|---|---|---|---|---|---|
+| backups | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedbackups | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedbackupconfigs | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| backupschedules | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| sharedbackupschedules | grp-viewer | grp-viewer | grp-editor | grp-editor | grp-editor | grp-editor |
+| controlplanes |  |  | grp-editor | grp-editor |  |
+| controlplanes/k8s | |  | grp-admin | grp-editor | grp-viewer |
+{{< /table >}}
+
+The hierarchy of roles is:
+
+`org-admin` > `grp-admin` > `grp-editor` > `grp-viewer` > `anyone`
+
+### Kubernetes RBAC integration
+
+Upbound RBAC integrates with Kubernetes RBAC to map to admin, edit, and view access.
+
+- `controlplanes/k8s, [create, delete]` => Admin
+- `controlplanes/k8s, update` => Editor
+- `controlplanes/k8s, get` => Viewer

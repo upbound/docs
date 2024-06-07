@@ -20,6 +20,17 @@ Some benefits of implementing IAM in Upbound are:
 
 ## Core concepts
 
+### Identity Types
+
+Upbound supports the following identity types:
+
+- [Users]({{<ref "./users" >}}) - Accounts representing a single user.
+- [Organizations]({{<ref "./organizations" >}}) - A top-level collection of
+  users and teams.
+- [Teams]({{<ref "./teams" >}}) - A sub-group within an organization.
+- [Robots]({{<ref "./robots" >}}) - Non-user accounts designed for
+  automation.
+
 Upbound manages access to resouces with role permissions. Each
 organizations administrator can assign membership to a user to have access to
 the following resources:
