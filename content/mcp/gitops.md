@@ -71,7 +71,7 @@ stringData:
   config: |
     {
       "execProviderConfig": {
-	      "apiVersion": "client.authentication.k8s.io/v1",
+        "apiVersion": "client.authentication.k8s.io/v1",
         "command": "up",
         "args": [ "org", "token" ],
         "env": {
