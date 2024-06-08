@@ -28,63 +28,6 @@ up ctx <org-name>/<space-name>/<group-name>/<control plane> -f - > context.yaml
 You need a personal access token (PAT). You create PATs on a per-user basis in the Upbound Console. Go to [My Account - API tokens](https://accounts.upbound.io/settings/tokens) and select Create New Token. Give the token a name and save the secret value to somewhere safe.
 <!-- vale Google.FirstPerson = YES -->
 
-<!-- vale Google.Headings = NO -->
-### Configure Argo CD
-<!-- vale Google.Headings = YES -->
-
-To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace. Add {{<hover label="argoCM" line="3">}}application.resourceTrackingMethod: annotation{{</hover>}} to the data section as below:
-
-```bash {label="argoCM"}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-data:
-  application.resourceTrackingMethod: annotation
-```
-
-This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
-
-<!-- vale Google.Headings = NO -->
-### Create the cluster definition
-<!-- vale Google.Headings = YES -->
-
-Replace the variables and run the following script to configure the Argo cluster definition.
-
-To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`. 
-
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Secret
-metadata:
-  name: my-control-plane
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: cluster
-type: Opaque
-stringData:
-  name: my-control-plane-context
-  server: https://<space-name>.space.mxe.upbound.io/apis/spaces.upbound.io/v1beta1/namespaces/<group>/controlplanes/<control plane>/k8s
-  config: |
-    {
-      "execProviderConfig": {
-        "apiVersion": "client.authentication.k8s.io/v1",
-        "command": "up",
-        "args": [ "org", "token" ],
-        "env": {
-          "ORGANIZATION": "<org>",
-          "UP_TOKEN": "<api token>"
-        }
-      },
-      "tlsClientConfig": {
-        "insecure": false,
-        "caData": "<base64 encoded certificate>"
-      }
-    }    
-EOF
-```
-
 ### Add the up CLI init container to Argo
 
 Create a new file called `up-plugin-values.yaml` and paste the following YAML:
@@ -154,10 +97,93 @@ server:
           mountPath: /plugin
 ```
 
-### Install Argo using the values file
+### Install or upgrade Argo using the values file
 
-Install Argo via Helm, including the values from the `up-plugin-values.yaml` file:
+Install or upgrade Argo via Helm, including the values from the `up-plugin-values.yaml` file:
 
 ```bash
 helm upgrade --install -n argocd -f up-plugin-values.yaml --reuse-values argocd argo/argo-cd
 ```
+
+<!-- vale Google.Headings = NO -->
+### Configure Argo CD
+<!-- vale Google.Headings = YES -->
+
+To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace. Add {{<hover label="argoCM" line="3">}}application.resourceTrackingMethod: annotation{{</hover>}} to the data section as below:
+
+```bash {label="argoCM"}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  application.resourceTrackingMethod: annotation
+```
+
+This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
+
+Next, configure the resource inclusions and exclusions. By default, Argo CD attempts to enumerate some Kubernetes resource types that don't exist in a managed control plane. You must update these rules so Argo CD can sync correctly. Add a {{<hover label="node-exclusion" line="7">}}resource exclusion for `nodes`{{</hover>}} to the data section as below:
+
+```bash {label="argoCM"}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  ...
+  resource.exclusions: |
+    - apiGroups:
+      - ""
+      kinds:
+      - "Node"
+      clusters:
+      - "*"
+```
+
+{{< hint "tip" >}}
+The resource exclusion example above configures Argo to not discover the Kubernetes core `Node` API for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the exclusion to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+{{< /hint >}}
+
+<!-- vale Google.Headings = NO -->
+### Create a cluster context definition
+<!-- vale Google.Headings = YES -->
+
+Replace the variables and run the following script to configure a new Argo cluster context definition.
+
+To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`. 
+
+```yaml
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-control-plane
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+type: Opaque
+stringData:
+  name: my-control-plane-context
+  server: https://<space-name>.space.mxe.upbound.io/apis/spaces.upbound.io/v1beta1/namespaces/<group>/controlplanes/<control plane>/k8s
+  config: |
+    {
+      "execProviderConfig": {
+        "apiVersion": "client.authentication.k8s.io/v1",
+        "command": "up",
+        "args": [ "org", "token" ],
+        "env": {
+          "ORGANIZATION": "<org>",
+          "UP_TOKEN": "<api token>"
+        }
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "<base64 encoded certificate>"
+      }
+    }    
+EOF
+```
+
+### Add the cluster context definition
+
+Apply the
