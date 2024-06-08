@@ -19,7 +19,7 @@ GitOps is an approach for managing a system by declaratively describing desired 
 Use the up CLI to [generate a kubeconfig]({{<ref "reference/cli/contexts.md#storing-a-context-to-a-file" >}}) for your managed control plane.
 
 ```bash
-up ctx <org-name>/<space-name>/<group-name>/<control plane> -f context.yaml
+up ctx <org-name>/<space-name>/<group-name>/<control plane> -f - > context.yaml
 ```
 
 ### Create an API token

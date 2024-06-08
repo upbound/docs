@@ -94,13 +94,13 @@ Instead of selecting a context and making it your current kubecontext, you can a
 
 ```shell
 # This saves an MCP's connection details to a kubeconfig
-up ctx <your-org>/<your-space>/<your-group>/<your-ctp> -f context.yaml
+up ctx <your-org>/<your-space>/<your-group>/<your-ctp> -f - > context.yaml
 
 # This saves a Space's connection details to a kubeconfig
-up ctx <your-org>/<your-space> -f context.yaml
+up ctx <your-org>/<your-space> -f - > context.yaml
 
 # This saves whatever the current context is to a kubeconfig
-up ctx . -f context.yaml
+up ctx . -f - > context.yaml
 ```
 
 ### Print the current context
