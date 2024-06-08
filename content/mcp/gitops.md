@@ -51,7 +51,7 @@ This configuration turns off Argo CD auto pruning, preventing the deletion of Cr
 
 Replace the variables and run the following script to configure the Argo cluster definition.
 
-To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `stringData.server` with the ingress URL for the control plane. This URL is what's previously outputted when using `up ctx`. 
+To configure Argo for an MCP in a single-tenant Upbound Space (Connected or Disconnected), replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`. 
 
 ```yaml
 cat <<EOF | kubectl apply -f -
