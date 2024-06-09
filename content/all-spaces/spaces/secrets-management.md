@@ -8,9 +8,9 @@ description: A guide for how to configure synchronizing external secrets into ma
 This feature is in preview.
 {{< /hint >}}
 
-Upbound's _Shared Secrets_ is a built-in secrets management feature. Shared Secrets lets you store sensitive data such as passwords and certificates used by managed control planes as secrets in an external secret store. This page explains how you can use Shared Secrets to access the secrets stored in your external secret store and synchronize them into managed control planes.
+Upbound's _Shared Secrets_ is a built-in secrets management feature. Shared Secrets lets you store sensitive data such as passwords and certificates used by managed control planes as secrets in an external secret store. This guide explains how you can use Shared Secrets to access secrets stored in your external store and project them into managed control planes.
 
-The Shared Secrets feature is derived from the open source [External Secrets Operator (ESO)](https://external-secrets.io). Upbound offers:
+The Shared Secrets feature derives from the open source [External Secrets Operator (ESO)](https://external-secrets.io). Upbound offers:
 
 1. `SharedSecretStore` and `SharedExternalSecret` APIs to manage syncing external secrets into groups of managed control planes.
 2. Each managed control planes has built-in support for External Secrets Operator (ESO) APIs.
@@ -22,23 +22,25 @@ The Shared Secrets feature provides the following benefits:
 * You can access secrets from a variety of external secret stores from within Upbound without any operational overhead.
 * You can configure synchronization for multiple managed control planes in a group.
 * You can store and manage all your secrets centrally.
-* Shared secrets are supported across all hosting environments of Upbound (Disconnected, Connected or Cloud Spaces).
+* You can use Shared Secrets across all hosting environments of Upbound (Disconnected, Connected or Cloud Spaces).
 
 ## Prerequisites
 
-Make sure the Shared Secrets feature is enabled in whichever Space you plan to run your managed control plane in. The feature is enabled by default in all Upbound-managed Cloud Spaces. If you want to use these APIs in your Connected Space, your admin must [enable them]({{<ref "../disconnected-spaces/secrets-management" >}}) in the Connected Space.
+Make sure you've enabled the Shared Secrets feature in whichever Space you plan to run your managed control plane in. All Upbound-managed Cloud Spaces have this feature enabled by default. If you want to use these APIs in your own Connected Space, your Space administrator must [enable them]({{<ref "../disconnected-spaces/secrets-management" >}}) in the Connected Space.
 
 <!-- vale Google.Headings = NO -->
 ## Configure a Shared Secret Store
 <!-- vale Google.Headings = YES -->
 
-[SharedSecretStore]({{<ref "reference/space-api/#SharedSecretStore-spec" >}}) is a group-scoped resource and is created in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its corresponding group.
+[SharedSecretStore]({{<ref "reference/space-api/#SharedSecretStore-spec" >}}) is a group-scoped resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its corresponding group.
 
 ### Secret store provider
 
-The `spec.provider` field configures the provider of the corresponding external Secret Store you want to sync external secrets from. Only one provider may be set. For a full list of supported providers, read the [Space API reference]({{<ref "reference/space-api/#SharedSecretStore-spec-provider" >}}).
+The `spec.provider` field configures the provider of the corresponding external Secret Store you want to sync external secrets from. Only one provider is settable. For a full list of supported providers, read the [Space API reference]({{<ref "reference/space-api/#SharedSecretStore-spec-provider" >}}).
 
+<!-- vale Google.Headings = NO -->
 #### AWS Secrets Manager
+<!-- vale Google.Headings = YES -->
 
 {{< hint "important" >}}
 While the underlying ESO API for this provider may support more auth methods, static credentials are currently the only supported auth method in Cloud Spaces. 
@@ -69,7 +71,9 @@ spec:
 
 Check out the [ESO provider API](https://external-secrets.io/latest/provider/aws-secrets-manager/) for more information.
 
+<!-- vale Google.Headings = NO -->
 #### Azure Key Vault
+<!-- vale Google.Headings = YES -->
 
 {{< hint "important" >}}
 While the underlying ESO API for this provider may support more auth methods, static credentials are currently the only supported auth method in Cloud Spaces. 
@@ -98,7 +102,9 @@ spec:
 
 Check out the [ESO provider API](https://external-secrets.io/latest/provider/azure-key-vault/) for more information.
 
+<!-- vale Google.Headings = NO -->
 #### Google Cloud Secret Manager
+<!-- vale Google.Headings = YES -->
 
 {{< hint "important" >}}
 While the underlying ESO API for this provider may support more auth methods, static credentials are currently the only supported auth method in Cloud Spaces. 
@@ -126,7 +132,7 @@ Check out the [ESO provider API](https://external-secrets.io/latest/provider/goo
 
 ### Control plane selection
 
-To configure which managed control planes in a group you want to project a SecretStore into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane is matched if any of the label selectors match. 
+To configure which managed control planes in a group you want to project a SecretStore into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match. 
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -173,7 +179,7 @@ spec:
 
 ### Namespace selection
 
-To configure which namespaces **within each matched managed control plane** to project the secret store into, use `spec.namespaceSelector` field. The projected secret store can be consumed only within the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane is matched if any of the label selectors match. 
+To configure which namespaces **within each matched managed control plane** to project the secret store into, use `spec.namespaceSelector` field. The projected secret store only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match. 
 
 **For all control planes matched by** `spec.controlPlaneSelector`, This example matches all namespaces in each selected control plane that have `team: team1` as a label:
 
@@ -221,7 +227,7 @@ spec:
 ## Configure a Shared External Secret
 <!-- vale Google.Headings = YES -->
 
-[SharedExternalSecret]({{<ref "reference/space-api/#SharedExternalSecret-spec" >}}) is a group-scoped resource and is created in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its corresponding group.
+[SharedExternalSecret]({{<ref "reference/space-api/#SharedExternalSecret-spec" >}}) is a group-scoped resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its corresponding group.
 
 <!-- vale Google.Headings = NO -->
 ### External secret spec
@@ -257,7 +263,7 @@ spec:
 
 ### Control plane selection
 
-To configure which managed control planes in a group you want to project a ClusterExternalSecret into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane is matched if any of the label selectors match. 
+To configure which managed control planes in a group you want to project a ClusterExternalSecret into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match. 
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -304,7 +310,7 @@ spec:
 
 ### Namespace selection
 
-To configure which namespaces **within each matched managed control plane** to project the Cluster External Secret into, use `spec.namespaceSelector` field. The projected secret can be consumed only within the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane is matched if any of the label selectors match. 
+To configure which namespaces **within each matched managed control plane** to project the Cluster External Secret into, use `spec.namespaceSelector` field. The projected secret only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match. 
 
 **For all control planes matched by** `spec.controlPlaneSelector`, This example matches all namespaces in each selected control plane that have `team: team1` as a label:
 
@@ -350,7 +356,7 @@ spec:
 
 ## Usage
 
-This section demonstrates how to put into practice what's described above. It uses a fake Secret Store provider and fake secret to illustrate secret projection. 
+This section demonstrates how to put into practice what's described in the previous sections. It uses a fake Secret Store provider and fake secret to illustrate secret projection. 
 
 Connect to a Cloud Space in your organization:
 
@@ -474,7 +480,7 @@ NAME          STORE   REFRESH INTERVAL   READY
 fake-secret   fake                       True
 ```
 
-Perform the same check on managed control plane `ctp2`.
+Perform the same verification on managed control plane `ctp2`.
 
 ```bash
 up ctx ../ctp2
