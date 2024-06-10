@@ -1,7 +1,7 @@
 ---
 title: Secrets Management
 weight: 150
-description: A guide for how to configure synchronizing external secrets into maanged control planes in a Space.
+description: A guide for how to configure synchronizing external secrets into managed control planes in a Space.
 aliases:
     - /spaces/secrets-management
 ---
