@@ -147,11 +147,11 @@ datadog    1          0        0             63s
 
 ## Space-level Observability
 
-Observability is also available at the Space level as a preview feature which allows to observe Spaces machinery. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
+Observability is available in preview at the Space level. This feature allows you to observe your Space infrastructure. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
 
-It deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/)  in the Space to collect and export metrics to the configured observability backends.
+When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics to your configured observability backends.
 
-The export configuration is similar to the `SharedTelemetryConfig` resource, but is defined as a part of the Helm values when installing Spaces.
+To configure how Upbound exports your metrics, review the `spacesCollector` value in your Space installation Helm chart.
 
 ```yaml
 observability:
@@ -184,12 +184,12 @@ observability:
         memory: 1Gi
 ```
 
-The Spaces machinery from which the metrics are collected includes the Crossplane installation, Spaces pods(controller, api, router...), and `provider-helm` and `provider-kubernters`
+You can export metrics from your Crossplane installation, Spaces infrastructure (controller, API, router, etc.), `provider-helm`, and `provider-kubernetes`.
 
 ## OpenTelemetryCollector image
 
-Both the control plane (SharedTelemetry) and Space level observability features use the same custom OpenTelemetry Collector image, which allows only
-`otelhttp`, `datadog` and `debug` exporters. The image repository and tag are defined in the helm values.
+Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otelhttp`, `datadog`, and `debug` exporters.
+For more information on observability configuration, review the Helm chart reference.
 
 ## Prerequisites
 
