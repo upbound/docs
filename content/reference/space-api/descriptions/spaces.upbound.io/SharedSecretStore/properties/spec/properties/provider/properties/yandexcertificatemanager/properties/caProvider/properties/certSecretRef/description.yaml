@@ -1,2 +1,3 @@
 description: |-
-    A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.
+    A reference to a specific 'key' within a Secret resource,
+    In some instances, `key` is a required field.

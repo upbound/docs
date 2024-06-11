@@ -1,0 +1,4 @@
+description: |-
+    Resource defines the resource type (often kind in plural, e.g.
+    controlplanes) being pointed to.
+    With some minor differences, this is essentially matched as a DNS label, like how Kubernetes validates it.

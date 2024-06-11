@@ -1,2 +1,3 @@
 description: |-
-    Version is the Vault KV secret engine version. This can be either 'v1' or 'v2'. Version defaults to 'v2'.
+    Version is the Vault KV secret engine version. This can be either 'v1' or
+    'v2'. Version defaults to 'v2'.
