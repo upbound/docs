@@ -1,2 +1,5 @@
 description: |-
-    Path is the mount path of the Vault KV backend endpoint, e.g: 'secret'. The v2 KV secret engine version specific '/data' path suffix for fetching secrets from Vault is optional and will be appended if not present in specified path.
+    Path is the mount path of the Vault KV backend endpoint, e.g:
+    'secret'. The v2 KV secret engine version specific '/data' path suffix
+    for fetching secrets from Vault is optional and will be appended
+    if not present in specified path.

@@ -58,7 +58,7 @@ spec:
           spec:
             description: |-
               A SharedBackupConfigSpec represents the configuration to backup or restore
-              ControlPlanes using Velero.
+              ControlPlanes.
             properties:
               objectStorage:
                 description: ObjectStorage specifies the object storage configuration
@@ -108,6 +108,13 @@ spec:
                     required:
                     - source
                     type: object
+                  prefix:
+                    description: |-
+                      Prefix is the prefix to use for all backups using this
+                      SharedBackupConfig, e.g. "prod/cluster1", resulting in backups for
+                      controlplane "ctp1" in namespace "ns1" being stored in
+                      "prod/cluster1/ns1/ctp1".
+                    type: string
                   provider:
                     description: Provider is the name of the object storage provider.
                     enum:

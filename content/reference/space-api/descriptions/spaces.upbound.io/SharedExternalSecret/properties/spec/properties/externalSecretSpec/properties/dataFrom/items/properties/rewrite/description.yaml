@@ -1,2 +1,3 @@
 description: |-
-    Used to rewrite secret Keys after getting them from the secret Provider Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)
+    Used to rewrite secret Keys after getting them from the secret Provider
+    Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)

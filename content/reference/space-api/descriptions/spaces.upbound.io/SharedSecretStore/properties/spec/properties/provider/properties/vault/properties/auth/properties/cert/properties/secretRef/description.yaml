@@ -1,2 +1,3 @@
 description: |-
-    SecretRef to a key in a Secret resource containing client private key to authenticate with Vault using the Cert authentication method
+    SecretRef to a key in a Secret resource containing client private key to
+    authenticate with Vault using the Cert authentication method

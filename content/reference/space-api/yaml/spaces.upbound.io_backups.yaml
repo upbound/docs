@@ -52,20 +52,22 @@ spec:
             description: BackupSpec defines a backup over a set of ControlPlanes.
             properties:
               configRef:
-                description: ConfigRef is a reference to the backup configuration.
+                description: |-
+                  ConfigRef is a reference to the backup configuration.
+                  ApiGroup is optional and defaults to "spaces.upbound.io".
+                  Kind is required, and the only supported value is "SharedBackupConfig" at
+                  the moment.
+                  Name is required.
                 properties:
                   apiGroup:
-                    description: |-
-                      APIGroup is the group for the resource being referenced.
-                      If APIGroup is not specified, the specified Kind must be in the core API group.
-                      For any other third-party types, APIGroup is required.
+                    description: APIGroup is the group for the resource being referenced.
                     type: string
                   kind:
-                    description: Kind is the type of resource being referenced
+                    description: Kind is the type of resource being referenced.
                     minLength: 1
                     type: string
                   name:
-                    description: Name is the name of resource being referenced
+                    description: Name is the name of resource being referenced.
                     minLength: 1
                     type: string
                 type: object

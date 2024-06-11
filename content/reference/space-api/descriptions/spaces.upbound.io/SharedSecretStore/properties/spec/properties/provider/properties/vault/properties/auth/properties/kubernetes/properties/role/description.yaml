@@ -1,2 +1,3 @@
 description: |-
-    A required field containing the Vault Role to assume. A Role binds a Kubernetes ServiceAccount with a set of Vault policies.
+    A required field containing the Vault Role to assume. A Role binds a
+    Kubernetes ServiceAccount with a set of Vault policies.

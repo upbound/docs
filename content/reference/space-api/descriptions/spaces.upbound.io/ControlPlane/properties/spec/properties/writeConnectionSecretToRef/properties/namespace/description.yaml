@@ -1,2 +1,3 @@
 description: |-
-    Namespace of the secret. If omitted, it is equal to the namespace of the resource containing this reference as a field.
+    Namespace of the secret. If omitted, it is equal to
+    the namespace of the resource containing this reference as a field.
