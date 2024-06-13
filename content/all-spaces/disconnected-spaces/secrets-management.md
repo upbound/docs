@@ -41,11 +41,11 @@ Make sure you've enabled the Shared Secrets feature in whichever Space you plan 
 ## Configure a Shared Secret Store
 <!-- vale Google.Headings = YES -->
 
-[SharedSecretStore]({{<ref "reference/space-api#SharedSecretStore-spec" >}}) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its corresponding group.
+[SharedSecretStore](https://docs.upbound.io/reference/space-api/#SharedSecretStore-spec) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its corresponding group.
 
 ### Secret store provider
 
-The `spec.provider` field configures the provider of the corresponding external Secret Store you want to sync external secrets from. Only one provider is settable. For a full list of supported providers, read the [Space API reference]({{<ref "reference/space-api#SharedSecretStore-spec-provider" >}}).
+The `spec.provider` field configures the provider of the corresponding external Secret Store you want to sync external secrets from. Only one provider is settable. For a full list of supported providers, read the [Space API reference](https://docs.upbound.io/reference/space-api/#SharedSecretStore-spec-provider).
 
 <!-- vale Google.Headings = NO -->
 #### AWS Secrets Manager

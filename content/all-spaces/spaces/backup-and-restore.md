@@ -25,7 +25,7 @@ Make sure you've enabled the Shared Backups feature in whichever Space you plan 
 ## Configure a Shared Backup Config
 <!-- vale on -->
 
-[SharedBackupConfig]({{<ref "reference/space-api#SharedBackupConfig-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SharedBackupConfig to tell it where store the snapshot.
+[SharedBackupConfig](https://docs.upbound.io/reference/space-api/#SharedBackupConfig-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SharedBackupConfig to tell it where store the snapshot.
 
 <!-- vale off -->
 ### Backup config provider
@@ -141,7 +141,7 @@ This example assumes you've already created a Cloud bucket called "spaces-backup
 ## Configure a Shared Backup Schedule
 <!-- vale on -->
 
-[SharedBackupSchedule]({{<ref "reference/space-api#SharedBackupSchedule-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource defines a backup schedule for control planes within its corresponding group.
+[SharedBackupSchedule](https://docs.upbound.io/reference/space-api/#SharedBackupSchedule-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource defines a backup schedule for control planes within its corresponding group.
 
 Below is an example of a Shared Backup Schedule that takes backups every day of all control planes having `environment: production` labels:
 
@@ -273,7 +273,7 @@ spec:
 ## Configure a Shared Backup
 <!-- vale on -->
 
-[SharedBackup]({{<ref "reference/space-api#SharedBackup-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource causes a backups to occur for control planes within its corresponding group.
+[SharedBackup](https://docs.upbound.io/reference/space-api/#SharedBackup-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource causes a backups to occur for control planes within its corresponding group.
 
 Below is an example of a Shared Backup that takes a backup of all control planes having `environment: production` labels:
 
