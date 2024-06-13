@@ -41,11 +41,11 @@ Make sure you've enabled the Shared Secrets feature in whichever Space you plan 
 ## Configure a Shared Secret Store
 <!-- vale Google.Headings = YES -->
 
-[SharedSecretStore]({{<ref "reference/space-api/#SharedSecretStore-spec" >}}) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its corresponding group.
+[SharedSecretStore]({{<ref "reference/space-api#SharedSecretStore-spec" >}}) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its corresponding group.
 
 ### Secret store provider
 
-The `spec.provider` field configures the provider of the corresponding external Secret Store you want to sync external secrets from. Only one provider is settable. For a full list of supported providers, read the [Space API reference]({{<ref "reference/space-api/#SharedSecretStore-spec-provider" >}}).
+The `spec.provider` field configures the provider of the corresponding external Secret Store you want to sync external secrets from. Only one provider is settable. For a full list of supported providers, read the [Space API reference]({{<ref "reference/space-api#SharedSecretStore-spec-provider" >}}).
 
 <!-- vale Google.Headings = NO -->
 #### AWS Secrets Manager
@@ -120,16 +120,16 @@ spec:
       auth:
         secretRef:
           secretAccessKeySecretRef:
-            name: gcpsm-secret             
-            key: secret-access-credentials  
-      projectID: <your-gcp-project>             
+            name: gcpsm-secret
+            key: secret-access-credentials
+      projectID: <your-gcp-project>
 ```
 
 Check out the [ESO provider API](https://external-secrets.io/latest/provider/google-secrets-manager/) for more information.
 
 ### Control plane selection
 
-To configure which managed control planes in a group you want to project a SecretStore into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match. 
+To configure which managed control planes in a group you want to project a SecretStore into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -176,7 +176,7 @@ spec:
 
 ### Namespace selection
 
-To configure which namespaces **within each matched managed control plane** to project the secret store into, use `spec.namespaceSelector` field. The projected secret store only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match. 
+To configure which namespaces **within each matched managed control plane** to project the secret store into, use `spec.namespaceSelector` field. The projected secret store only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match.
 
 **For all control planes matched by** `spec.controlPlaneSelector`, This example matches all namespaces in each selected control plane that have `team: team1` as a label:
 
@@ -224,7 +224,7 @@ spec:
 ## Configure a Shared External Secret
 <!-- vale Google.Headings = YES -->
 
-[SharedExternalSecret]({{<ref "reference/space-api/#SharedExternalSecret-spec" >}}) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its corresponding group.
+[SharedExternalSecret]({{<ref "reference/space-api#SharedExternalSecret-spec" >}}) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its corresponding group.
 
 <!-- vale Google.Headings = NO -->
 ### External secret spec
@@ -260,7 +260,7 @@ spec:
 
 ### Control plane selection
 
-To configure which managed control planes in a group you want to project a ClusterExternalSecret into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match. 
+To configure which managed control planes in a group you want to project a ClusterExternalSecret into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -307,7 +307,7 @@ spec:
 
 ### Namespace selection
 
-To configure which namespaces **within each matched managed control plane** to project the Cluster External Secret into, use `spec.namespaceSelector` field. The projected secret only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match. 
+To configure which namespaces **within each matched managed control plane** to project the Cluster External Secret into, use `spec.namespaceSelector` field. The projected secret only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match.
 
 **For all control planes matched by** `spec.controlPlaneSelector`, This example matches all namespaces in each selected control plane that have `team: team1` as a label:
 
@@ -353,7 +353,7 @@ spec:
 
 ## Usage
 
-This section demonstrates how to put into practice what's described in the previous sections. It uses a fake Secret Store provider and fake secret to illustrate secret projection. 
+This section demonstrates how to put into practice what's described in the previous sections. It uses a fake Secret Store provider and fake secret to illustrate secret projection.
 
 Connect to a Cloud Space in your organization:
 
@@ -486,7 +486,7 @@ up ctx ../ctp2
 ## Configure external secrets in a managed control plane
 
 <!-- vale off -->
-The sections above explain how to use the group-scoped `kind: SharedSecretStore` and `kind: SharedExternalSecret` resources to project secrets into multiple control planes in a group. You can also use ESO API types in a managed control plane as you would in a standalone Crossplane instance or Kubernetes cluster. 
+The sections above explain how to use the group-scoped `kind: SharedSecretStore` and `kind: SharedExternalSecret` resources to project secrets into multiple control planes in a group. You can also use ESO API types in a managed control plane as you would in a standalone Crossplane instance or Kubernetes cluster.
 
 For a full guide on using ESO API types and how to connect it to various external secret stores, read the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/).
 <!-- vale on -->
