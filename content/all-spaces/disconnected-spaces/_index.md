@@ -48,4 +48,4 @@ You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is
 
 ## Next steps
 
-Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "kind-quickstart.md">}}).
+Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "/quickstart.md">}}).
