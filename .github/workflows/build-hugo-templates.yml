@@ -17,10 +17,6 @@ jobs:
           hugo-version: '0.111.3'
           extended: true
 
-      - name: Clean
-        # Rebuild from scratch
-        run: hugo --cleanDestinationDir
-
-      - name: Build
-        # Set to env=dev so SCSS isn't required.
-        run: hugo --environment development --templateMetrics --templateMetricsHints
+      - name: Clean and Build
+        # Rebuild from scratch using development environment
+        run: hugo --cleanDestinationDir --environment development
