@@ -224,7 +224,7 @@ spec:
 ## Configure a Shared External Secret
 <!-- vale Google.Headings = YES -->
 
-[SharedExternalSecret]({{<ref "reference/space-api#SharedExternalSecret-spec" >}}) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its corresponding group.
+[SharedExternalSecret](https://docs.upbound.io/reference/space-api/#SharedExternalSecret-spec) is a [group-scoped]({{<ref "mcp/groups" >}}) resource. You should create them in a group containing one or more managed control planes. This resource provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its corresponding group.
 
 <!-- vale Google.Headings = NO -->
 ### External secret spec

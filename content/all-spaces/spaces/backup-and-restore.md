@@ -377,7 +377,7 @@ spec:
 
 ## Create a manual backup
 
-[Backup]({{<ref "reference/space-api#Backup-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource that causes a single backup to occur for a control planes in its corresponding group.
+[Backup](https://docs.upbound.io/reference/space-api/#Backup-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource that causes a single backup to occur for a control planes in its corresponding group.
 
 Below is an example of a manual Backup of a managed control plane:
 
