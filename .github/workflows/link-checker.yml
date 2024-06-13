@@ -21,6 +21,10 @@ jobs:
         with:
           hugo-version: '0.111.3'
           extended: true
+           
+      - name: Clean
+        # Rebuild from scratch
+        run: hugo --cleanDestinationDir
 
       - name: Build
         # Set to env=dev so SCSS isn't required.
