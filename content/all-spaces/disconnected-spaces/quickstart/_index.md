@@ -3,7 +3,8 @@ title: Local Quickstart
 weight: 1
 description: A  quickstart guide for Upbound Spaces
 aliases:
-    - /spaces/quickstart
+    - /spaces/kind-quickstart
+    - /kind-quickstart
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.

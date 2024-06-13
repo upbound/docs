@@ -2,7 +2,6 @@
 title: GCP Deployment Guide
 weight: 4
 description: A  quickstart guide for Upbound Spaces in GCP
-
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in GCP.

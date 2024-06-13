@@ -2,7 +2,8 @@
 title: AWS Deployment Guide
 weight: 2
 description: A  quickstart guide for Upbound Spaces in AWS
-
+aliases:
+    - /spaces/quickstart
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in AWS.
