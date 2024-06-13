@@ -19,4 +19,4 @@ jobs:
 
       - name: Build
         # Set to env=dev so SCSS isn't required.
-        run: hugo --environment development --templateMetrics --templateMetricsHints
+        run: hugo --cleanDestinationDir --environment development --templateMetrics --templateMetricsHints
