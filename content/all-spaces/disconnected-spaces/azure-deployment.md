@@ -69,38 +69,6 @@ Export the path of the license token JSON file provided by your Upbound account 
 ## Install the Spaces software
 <!-- vale on -->
 
-{{< tabs >}}
-
-{{< tab "Up CLI" >}}
-
-The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward.
-
-{{< hint "tip" >}}
-Make sure your kubectl context is set to the cluster you want to install Spaces into.
-{{< /hint >}}
-
-Install the Spaces software.
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  --public-ingress=true \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
-  --set "account=${UPBOUND_ACCOUNT}"
-```
-
-If you chose to create a public ingress, you also need to [create a DNS record](#create-a-dns-record) for the load balancer of the public facing ingress. Do this before you create your first control plane.
-
-You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Disconnected Space.
-
-{{< /tab >}}
-
-
-{{< tab "Helm" >}}
-
-
-Whereas the up CLI handles installation of the pre-requisites, with Helm you need to install them on your own. This gives you more control over the installation process.
-
 ### Install cert-manager
 
 Install cert-manager.
@@ -360,10 +328,6 @@ The first managed control plane you create in a Space takes around 5 minutes to 
 ```bash
 kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 ```
-
-{{< /tab >}}
-
-{{< /tabs >}}
 
 ## Connect to your managed control plane
 
