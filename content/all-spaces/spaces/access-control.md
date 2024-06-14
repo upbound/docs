@@ -29,7 +29,7 @@ You can enable Upbound RBAC at install or upgrade time:
 
 ### Roles
 
-Upbound RBAC roles define sets of permissions with three built-in roles:
+Upbound RBAC roles define sets of permissions with three built-in roles at the group level:
 
 <!-- vale off -->
 - Admin
@@ -110,9 +110,9 @@ The hierarchy of roles is:
 `org-admin` > `grp-admin` > `grp-editor` > `grp-viewer` > `anyone`
 
 <!-- vale off -->
-### Kubernetes RBAC integration
+### Kubernetes hub RBAC integration
 
-Upbound RBAC integrates with Kubernetes RBAC to map to admin, edit, and view access.
+Upbound RBAC integrates with Kubernetes hub RBAC to map to admin, edit, and view access.
 
 - `controlplanes/k8s, [create, delete]` => Admin
 - `controlplanes/k8s, update` => Editor

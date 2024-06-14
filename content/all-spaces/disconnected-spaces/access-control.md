@@ -64,7 +64,7 @@ To enable Kubernetes Hub Authentication in your Space, you need:
 - a Kubernetes cluster with RBAC enabled
 - to attach your cluster to Upbound
 
-Users can authenticate to the Connected Space with their Kubernetes
+Users can authenticate to the single-tenant Connected Space with their Kubernetes
 credentials with this method.
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
@@ -72,7 +72,7 @@ credentials with this method.
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
 
-To configure Kubernetes RBAC in your Connected Space, you need to create
+To configure Kubernetes RBAC in your Disconnected Space, you need to create
 `ClusterRoles` and `Roles` for defining access to your resources.
 
 ```yaml
