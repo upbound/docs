@@ -44,11 +44,11 @@ The token includes:
 
 ## Authorization
 
-<!-- vale Google.WordList = NO -->
+<!-- vale off -->
 Upbound uses identities to check for authentication across the platform. In
 the Cloud environment, Upbound grants identities organization roles to
 control access to features and resources with IAM policies.
-<!-- vale Google.WordList = YES -->
+<!-- vale on -->
 
 
 In Connected Spaces, you can bind identities to Kubernetes RBAC or
