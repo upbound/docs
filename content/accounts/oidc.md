@@ -4,11 +4,16 @@ weight: 300
 description: Use kubelogin to authenticate users in a Space
 ---
 
+{{< hint "important" >}}
+This feature is in alpha and requires `v1.4.0` on single-tenant Spaces. For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
+{{< /hint >}}
+
+
 You can configure a Space to integrate with an external Identity Provider, provided it implements the [Open ID Connect (OIDC) protocol](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#openid-connect-tokens). This allows you to use an auth plugin, such as [kubelogin](https://github.com/int128/kubelogin).
 
 ## Configure a Space for OIDC authentication
 
-You can configure a Space to use OIDC auth by providing the **OIDC issuer URL** and **OIDC client ID** at Space install-time. As a prerequisite, you must have already created an OIDC Identity Provider. This could be:
+You can configure a Space to use OIDC auth with the [structured authentication configuration](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) at runtime.
 
 - [AWS Cognito user pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html)
 - [GCP Identity Platform](https://cloud.google.com/identity-platform/docs/web/oidc)
@@ -28,22 +33,39 @@ export SPACES_OIDC_ISSUER_URL=issuer-url
 export SPACES_OIDC_CLIENT_ID=client-id
 ```
 
-During a Space install:
+During a Space install, you must create a `ConfigMap` with your certificate authority information. An example using Keycloak:
 
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v1.2.0" \
-  --set "router.oidc[0]='--oidc-issuer-url=${SPACES_OIDC_ISSUER_URL}'" \
-  --set "router.oidc[1]='--oidc-client-id=${SPACES_OIDC_CLIENT_ID}'"
-```
-
-Or via Helm:
-
-```bash
-helm -n upbound-system upgrade --install spaces \
-  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
-  --version "v1.2.0" \
-  --set "router.oidc[0]='--oidc-issuer-url=${SPACES_OIDC_ISSUER_URL}'" \
-  --set "router.oidc[1]='--oidc-client-id=${SPACES_OIDC_CLIENT_ID}'"
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: structured-auth-config
+  namespace: upbound-system
+data:
+  config.yaml: |-
+    apiVersion: apiserver.config.k8s.io/v1alpha1
+    kind: AuthenticationConfiguration
+    jwt:
+      - issuer:
+          url: https://keycloak:8443/realms/master
+          certificateAuthority: |-
+            -----BEGIN CERTIFICATE-----
+            MIIC6DCCAdCgAwIBAgIJAP2LaUhNPPgzMA0GCSqGSIb3DQEBCwUAMBMxETAPBgNV
+            ...
+            -----END CERTIFICATE-----
+          audiences:
+            - master-realm
+          audienceMatchPolicy: MatchAny
+        claimMappings:
+          username:
+            claim: "preferred_username"
+            prefix: "keycloak:"
+          groups:
+            claim: "groups"
+            prefix: ""
+          extra:
+            - key: 'upbound.io/aud'
+              valueExpression: 'claims.aud'
 ```
 
 ## Authenticate with a control plane

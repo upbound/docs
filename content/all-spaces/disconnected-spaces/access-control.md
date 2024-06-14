@@ -5,16 +5,19 @@ description: A tutorial for creating role-based access control in Upbound
 ---
 
 {{< hint "important" >}}
-This feature is in alpha and requires Spaces `v1.4.0`
+This feature is in alpha and requires `v1.4.0` on single-tenant Spaces. For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
 {{< /hint >}}
 
 This guide introduces role-based access control (RBAC) in Upbound. RBAC allows
 you to control access to your Upbound resources and control planes based on the
 roles of individual users within your organization.
 
-You can use Upbound RBAC or Kubernetes Hub Authorization to manage your users
-access within Upbound or the underlying resources, depending on which approach
-your organization needs.
+Depending on your operational model, you can use Upbound RBAC (with Connected or Cloud Spaces) or Kubernetes Hub Authorization (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
+
+{{< hint "important" >}}
+For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
+{{< /hint >}}
+
 
 ## Identity Types
 
