@@ -4,7 +4,7 @@ weight: 2
 description: An introduction to the Control Plane Groups in Upbound
 ---
 
-In Upbound, Control Plane Groups (or just, 'groups') are a logical grouping of one or more control planes with shared resources like [secrets]({{<ref "all-spaces/spaces/secrets-management" >}}) or [backups]({{<ref "all-spaces/spaces/backup-and-restore" >}}). It's a mechanism for isolating these groups of resources within a single [Space]({{<ref "all-spaces" >}}). All role-based access control in Upbound happens at the control plane group-level.
+In Upbound, Control Plane Groups (or just, 'groups') are a logical grouping of one or more control planes with shared resources like [secrets]({{<ref "all-spaces/secrets-management" >}}) or [backups]({{<ref "all-spaces/spaces/backup-and-restore" >}}). It's a mechanism for isolating these groups of resources within a single [Space]({{<ref "all-spaces" >}}). All role-based access control in Upbound happens at the control plane group-level.
 
 ## When to use multiple groups
 
@@ -14,7 +14,7 @@ Groups are a way to divide access in Upbound between multiple teams. Think of a 
 
 ## The 'default' group
 
-Every Cloud Space in Upbound has a group named _default_ available. 
+Every Cloud Space in Upbound has a group named _default_ available.
 
 ## Working with groups
 
