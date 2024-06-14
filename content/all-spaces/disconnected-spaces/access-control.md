@@ -13,9 +13,12 @@ This guide introduces role-based access control (RBAC) in Upbound. RBAC allows
 you to control access to your Upbound resources and control planes based on the
 roles of individual users within your organization.
 
-Depending on your operational model, you can use Upbound RBAC (with Connected or Cloud Spaces) or [Kubernetes Hub Authorization]({{<ref "all-spaces/disconnected-spaces/access-control.md" >}}) (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
+<!-- vale gitlab.SentenceLength = NO -->
+Depending on your operational model, you can use [Upbound RBAC]({{<ref "all-spaces/spaces/access-control.md" >}}) (with Connected or Cloud Spaces) or [Kubernetes Hub Authorization] (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
+<!-- vale gitlab.SentenceLength = YES -->
 
-## Identity Types
+
+## Identity types
 
 Upbound supports the following identity types:
 
@@ -41,9 +44,12 @@ The token includes:
 
 ## Authorization
 
+<!-- vale Google.WordList = NO -->
 Upbound uses identities to check for authentication across the platform. In
 the Cloud environment, Upbound grants identities organization roles to
 control access to features and resources with IAM policies.
+<!-- vale Google.WordList = YES -->
+
 
 In Connected Spaces, you can bind identities to Kubernetes RBAC or
 Upbound RBAC to control access to resources.
@@ -51,9 +57,9 @@ Upbound RBAC to control access to resources.
 The subject and group claims in the JWT token determine the user's effective permissions for an API request.
 
 
-## Enable Kubernetes Hub Authorization
+## Enable Kubernetes hub authorization
 
-To enable Kuberentes Hub Authentication in your Space, you need:
+To enable Kubernetes Hub Authentication in your Space, you need:
 
 - a Kubernetes cluster with RBAC enabled
 - to attach your cluster to Upbound
@@ -61,7 +67,10 @@ To enable Kuberentes Hub Authentication in your Space, you need:
 Users can authenticate to the Connected Space with their Kubernetes
 credentials with this method.
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### Configure Kubernetes RBAC
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+
 
 To configure Kubernetes RBAC in your Connected Space, you need to create
 `ClusterRoles` and `Roles` for defining access to your resources.

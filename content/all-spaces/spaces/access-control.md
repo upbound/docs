@@ -12,10 +12,14 @@ This guide introduces role-based access control (RBAC) in Upbound. RBAC allows
 you to control access to your Upbound resources and control planes based on the
 roles of individual users within your organization.
 
-Depending on your operational model, you can use Upbound RBAC (with Connected or Cloud Spaces) or Kubernetes Hub Authorization (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
+<!-- vale gitlab.SentenceLength = NO -->
+Depending on your operational model, you can use Upbound RBAC (with Connected or Cloud Spaces) or [Kubernetes Hub Authorization]({{<ref "all-spaces/disconnected-spaces/access-control.md" >}}) (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
+<!-- vale gitlab.SentenceLength = YES -->
 
-
+<!-- vale off -->
 ## Enable Upbound RBAC
+<!-- vale on -->
+
 
 You can enable Upbound RBAC at install or upgrade time:
 
@@ -25,11 +29,13 @@ You can enable Upbound RBAC at install or upgrade time:
 
 ### Roles
 
-Upbound RBAC roles define sets of permissins with three built-in roles:
+Upbound RBAC roles define sets of permissions with three built-in roles:
 
+<!-- vale off -->
 - Admin
 - Editor
 - Viewer
+<!-- vale on -->
 
 Upbound tiers these roles at three levels:
 
@@ -65,6 +71,7 @@ ObjectRoleBindings function as CRDs parallel to the target resource so you can m
 
 Spaces API Resources:
 
+<!-- vale off -->
 {{< table "table table-striped" >}}
 
 | Resource | Get | List | Create | Update | Patch | Delete |
@@ -95,6 +102,8 @@ Control Plane Resources:
 | controlplanes |  |  | grp-editor | grp-editor |  |
 | controlplanes/k8s | |  | grp-admin | grp-editor | grp-viewer |
 {{< /table >}}
+<!-- vale on -->
+
 
 The hierarchy of roles is:
 

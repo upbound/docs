@@ -32,8 +32,10 @@ You must set the issuer URL (`oidc-issuer-url`) and client ID (`oidc-client-id`)
 export SPACES_OIDC_ISSUER_URL=issuer-url
 export SPACES_OIDC_CLIENT_ID=client-id
 ```
-
+<!-- vale off -->
 During a Space install, you must create a `ConfigMap` with your certificate authority information. An example using Keycloak:
+<!-- vale on -->
+
 
 ```yaml
 apiVersion: v1
