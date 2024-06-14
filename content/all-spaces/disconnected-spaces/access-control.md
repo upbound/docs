@@ -23,11 +23,11 @@ For more information about Upbound's Space offerings, review [What is Upbound](.
 
 Upbound supports the following identity types:
 
-- [Users]({{<ref "./users" >}}) - Accounts representing a single user.
-- [Organizations]({{<ref "./organizations" >}}) - A top-level collection of
+- [Users](/content/accounts/users.md) - Accounts representing a single user.
+- [Organizations](/content/accounts/organizations.md) - A top-level collection of
   users and teams.
-- [Teams]({{<ref "./teams" >}}) - A sub-group within an organization.
-- [Robots]({{<ref "./robots" >}}) - Non-user accounts designed for
+- [Teams](/content/accounts/users.teams) - A sub-group within an organization.
+- [Robots](/content/accounts/robots.md) - Non-user accounts designed for
   automation.
 
 Upbound constructs unique identities with `upbound:(user|robot|team):<name>`.
