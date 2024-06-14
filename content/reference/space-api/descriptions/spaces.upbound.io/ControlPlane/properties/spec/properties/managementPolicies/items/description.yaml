@@ -1,2 +1,3 @@
 description: |-
-    A ManagementAction represents an action that the Crossplane controllers can take on an external resource.
+    A ManagementAction represents an action that the Crossplane controllers
+    can take on an external resource.

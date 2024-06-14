@@ -1,2 +1,3 @@
 description: |-
-    Optional ServiceAccountRef specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.
+    Optional ServiceAccountRef specifies the Kubernetes service account for which to request
+    a token for with the `TokenRequest` API.

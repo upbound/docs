@@ -1,2 +1,3 @@
 description: |-
-    Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.
+    Kubernetes authenticates with Vault by passing the ServiceAccount
+    token stored in the named Secret resource to the Vault server.

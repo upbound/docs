@@ -1,2 +1,3 @@
 description: |-
-    AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.
+    AppRole authenticates with Vault using the App Role auth mechanism,
+    with the role and secret stored in a Kubernetes Secret resource.

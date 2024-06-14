@@ -1,2 +1,3 @@
 description: |-
-    CreationPolicy defines rules on how to create the resulting Secret Defaults to 'Owner'
+    CreationPolicy defines rules on how to create the resulting Secret
+    Defaults to 'Owner'

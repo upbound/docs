@@ -1,2 +1,3 @@
 description: |-
-    RemoteRef points to the remote secret and defines which secret (version/property/..) to fetch.
+    RemoteRef points to the remote secret and defines
+    which secret (version/property/..) to fetch.

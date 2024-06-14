@@ -31,7 +31,7 @@ Started" demo below.
 Use the `up` CLI to grab the connection details for your managed control plane. First, login to Upbound:
 
 ```shell
-up web-login --account=${yourOrganization}
+up login --account=${yourOrganization}
 ```
 
 After you login, connect directly to your control plane with the `up ctx` command:

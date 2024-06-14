@@ -1,2 +1,3 @@
 description: |-
-    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials AWS IAM authentication method
+    Iam authenticates with vault by passing a special AWS request signed with AWS IAM credentials
+    AWS IAM authentication method

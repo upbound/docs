@@ -8,7 +8,7 @@ draft: true
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.
 
 {{< hint "tip" >}}
-For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "/mcp/control-plane-connector.md">}}).
+For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "mcp/gitops.md">}}).
 {{< /hint >}}
 
 ## Argo
@@ -178,4 +178,4 @@ The preceding configuration causes Argo to exclude syncing **all** resource grou
 
 ## Flux
 
-You can also integrate Flux to target a managed control plane in a Space. Upbound doesn't offer a special plugin; you should follow the same instructions as outlined in the Flux section in [GitOps with Control Planes]({{<ref "/mcp/control-plane-connector.md#flux">}}).
+You can also integrate Flux to target a managed control plane in a Space. Upbound doesn't offer a special plugin; you should follow the same instructions as outlined in the Flux section in [GitOps with Control Planes]({{<ref "/mcp/gitops.md#flux">}}).

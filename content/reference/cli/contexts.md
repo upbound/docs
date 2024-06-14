@@ -37,7 +37,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx](https://gith
 {{< hint "important" >}}
 When interacting with managed control planes that are hosted in:
 
-* **a Cloud Space:** always make sure you're logged into Upbound with `up web-login` before trying to use `up ctx`.
+* **a Cloud Space:** always make sure you're logged into Upbound with `up login` before trying to use `up ctx`.
 * **a Connected or Disconnected Space:** always make sure your current kubecontext is pointed at the cluster which hosts your Space.
 {{< /hint >}}
 
@@ -94,13 +94,13 @@ Instead of selecting a context and making it your current kubecontext, you can a
 
 ```shell
 # This saves an MCP's connection details to a kubeconfig
-up ctx <your-org>/<your-space>/<your-group>/<your-ctp> -f context.yaml
+up ctx <your-org>/<your-space>/<your-group>/<your-ctp> -f - > context.yaml
 
 # This saves a Space's connection details to a kubeconfig
-up ctx <your-org>/<your-space> -f context.yaml
+up ctx <your-org>/<your-space> -f - > context.yaml
 
 # This saves whatever the current context is to a kubeconfig
-up ctx . -f context.yaml
+up ctx . -f - > context.yaml
 ```
 
 ### Print the current context

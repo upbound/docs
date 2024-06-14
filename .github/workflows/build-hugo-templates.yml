@@ -14,9 +14,9 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.111.3'
+          hugo-version: '0.123.3'
           extended: true
 
       - name: Build
         # Set to env=dev so SCSS isn't required.
-        run: hugo --environment development --templateMetrics --templateMetricsHints
+        run: hugo --cleanDestinationDir --environment development --templateMetrics --templateMetricsHints

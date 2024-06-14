@@ -1,2 +1,3 @@
 description: |-
-    SecretRef is a reference to a Secret containing the bearer token. The secret must contain the key 'bearerToken'.
+    SecretRef is a reference to a Secret containing the bearer token.
+    The secret must contain the key 'bearerToken'.
