@@ -5,9 +5,8 @@ description: A tutorial for creating role-based access control in Upbound
 ---
 
 {{< hint "important" >}}
-This feature is in alpha and requires `v1.4.0` in Connected or Cloud Spaces. For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
+For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "../../content/what-is-upbound.md" >}}).
 {{< /hint >}}
-
 
 This guide introduces role-based access control (RBAC) in Upbound. RBAC allows
 you to control access to your Upbound resources and control planes based on the

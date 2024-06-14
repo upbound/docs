@@ -5,7 +5,7 @@ description: Use kubelogin to authenticate users in a Space
 ---
 
 {{< hint "important" >}}
-This feature is in alpha and requires `v1.4.0` on single-tenant Spaces. For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
+For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "../../content/what-is-upbound.md" >}}).
 {{< /hint >}}
 
 

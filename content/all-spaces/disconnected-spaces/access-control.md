@@ -5,29 +5,25 @@ description: A tutorial for creating role-based access control in Upbound
 ---
 
 {{< hint "important" >}}
-This feature is in alpha and requires `v1.4.0` on single-tenant Spaces. For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
+For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "../../content/what-is-upbound.md" >}}).
 {{< /hint >}}
+
 
 This guide introduces role-based access control (RBAC) in Upbound. RBAC allows
 you to control access to your Upbound resources and control planes based on the
 roles of individual users within your organization.
 
-Depending on your operational model, you can use Upbound RBAC (with Connected or Cloud Spaces) or Kubernetes Hub Authorization (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
-
-{{< hint "important" >}}
-For more information about Upbound's Space offerings, review [What is Upbound](../what-is-upbound.md).
-{{< /hint >}}
-
+Depending on your operational model, you can use Upbound RBAC (with Connected or Cloud Spaces) or [Kubernetes Hub Authorization]({{<ref "../spaces/access-control.md" >}}) (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
 
 ## Identity Types
 
 Upbound supports the following identity types:
 
-- [Users](/content/accounts/users.md) - Accounts representing a single user.
-- [Organizations](/content/accounts/organizations.md) - A top-level collection of
+- [Users]({{<ref "../../content/accounts/users.md" >}}) - Accounts representing a single user.
+- [Organizations]({{<ref "../../content/accounts/organizations.md" >}}) - A top-level collection of
   users and teams.
-- [Teams](/content/accounts/users.teams) - A sub-group within an organization.
-- [Robots](/content/accounts/robots.md) - Non-user accounts designed for
+- [Teams]({{<ref "../../content/accounts/teams.md" >}}) - A sub-group within an organization.
+- [Robots]({{<ref "../../content/accounts/robots.md" >}}) - Non-user accounts designed for
   automation.
 
 Upbound constructs unique identities with `upbound:(user|robot|team):<name>`.
