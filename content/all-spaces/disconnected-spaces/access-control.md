@@ -14,7 +14,7 @@ you to control access to your Upbound resources and control planes based on the
 roles of individual users within your organization.
 
 <!-- vale gitlab.SentenceLength = NO -->
-Depending on your operational model, you can use [Upbound RBAC]({{<ref "all-spaces/spaces/access-control.md" >}}) (with Connected or Cloud Spaces) or [Kubernetes Hub Authorization] (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
+Depending on your operational model, you can use [Upbound RBAC]({{<ref "all-spaces/spaces/access-control.md" >}}) (with Connected or Cloud Spaces) or Kubernetes Hub Authorization (Single-Tenant Connected or Disconnected Spaces) to manage your users access within Upbound or the underlying resources.
 <!-- vale gitlab.SentenceLength = YES -->
 
 
