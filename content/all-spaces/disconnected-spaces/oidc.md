@@ -5,7 +5,7 @@ description: Use kubelogin to authenticate users in a Space
 ---
 
 {{< hint "important" >}}
-For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "../../content/what-is-upbound.md" >}}).
+For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "/content/what-is-upbound.md" >}}).
 {{< /hint >}}
 
 

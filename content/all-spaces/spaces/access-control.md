@@ -5,7 +5,7 @@ description: A tutorial for creating role-based access control in Upbound
 ---
 
 {{< hint "important" >}}
-For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "../../content/what-is-upbound.md" >}}).
+For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "/content/what-is-upbound.md" >}}).
 {{< /hint >}}
 
 This guide introduces role-based access control (RBAC) in Upbound. RBAC allows
