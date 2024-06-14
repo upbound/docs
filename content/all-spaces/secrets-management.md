@@ -79,7 +79,9 @@ spec:
 
 See the [ESO provider API](https://external-secrets.io/latest/provider/aws-secrets-manager/) for more information.
 
+<!-- vale off -->
 #### Azure Key Vault
+<!-- vale on -->
 
 {{< hint "important" >}}
 While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
@@ -108,7 +110,9 @@ spec:
 
 See the [ESO provider API](https://external-secrets.io/latest/provider/azure-key-vault/) for more information.
 
+<!-- vale off -->
 #### Google Cloud Secret Manager
+<!-- vale on -->
 
 {{< hint "important" >}}
 While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
@@ -228,7 +232,7 @@ spec:
     - team2-namespace
 ```
 
-## Configure a Shared External Secret
+## Configure a shared external secret
 
 [SharedExternalSecret](https://docs.upbound.io/reference/space-api/#SharedExternalSecret-spec) is a [group-scoped]({{<ref "mcp/groups" >}}) resource that you create in a group containing one or more managed control planes. It provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its group.
 
@@ -264,7 +268,7 @@ Use `spec.controlPlaneSelector` and `spec.namespaceSelector` to configure which 
 
 ## Usage example
 
-This demonstrates putting the above concepts into practice using a fake secret store provider.
+This example uses a fake secret store provider to walk you through enabling secrets management.
 
 1. Create two managed control planes in the default group and label them:
 
@@ -337,7 +341,9 @@ spec:
           version: "v1"
 ```
 
+<!-- vale off -->
 4. Verify the secret is projected in both control planes:
+<!-- vale on -->
 
 ```bash
 up ctx ./ctp1
@@ -353,6 +359,8 @@ kubectl get clusterexternalsecret
 
 ## Configure secrets directly in a control plane
 
+<!-- vale off -->
 The above explains using group-scoped resources to project secrets into multiple control planes. You can also use ESO API types directly in a control plane as you would in standalone Crossplane or Kubernetes.
+<!-- vale on -->
 
 See the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/) for a full guide on using the API types.
