@@ -52,7 +52,7 @@ The `controlPlaneSelector` field specifies the control planes that use this conf
 The `exporters` field specifies the configuration for the exporters. Each exporter configuration is unique and corresponds to its [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/#exporters).
 The `exportPipeline` field specifies the control plane pipelines that send telemetry data to the exporters. The `metrics` and `traces` fields specify the names of the pipelines the control planes use to send metrics and traces, respectively. The names of the pipelines correspond to the `exporters` in the OpenTelemetry Collector [service pipeline configuration](https://opentelemetry.io/docs/collector/configuration/#pipelines).
 
-## Usage
+### Usage
 
 In a Space, you can configure per control plane group telemetry settings by creating one or more `SharedTelemetryConfig` resources.
 
@@ -144,6 +144,52 @@ Upbound marks the control plane as provisioned only if the OpenTelemetry Collect
 NAME       SELECTED   FAILED   PROVISIONED   AGE
 datadog    1          0        0             63s
 ```
+
+## Space-level Observability
+
+Observability is available in preview at the Space level. This feature allows you to observe your Space infrastructure. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
+
+When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics to your configured observability backends.
+
+To configure how Upbound exports your metrics, review the `spacesCollector` value in your Space installation Helm chart.
+
+```yaml
+observability:
+  # Observability configuration to collect metrics (traces and logs in the future) from the Spaces machinery
+  # and send them to the specified exporters.
+  spacesCollector:
+    tag: %%VERSION%%
+    repository: opentelemetry-collector-spaces
+    config:
+      # To export observability data, configure the exporters here and update the
+      # exportPipeline to include the exporters you want to use per telemetry type.
+      exporters:
+        debug:
+
+        # The OpenTelemetry Collector exporter configuration.
+        # otlphttp:
+        #   endpoint: https://otlp.eu01.nr-data.net
+        #   headers:
+        #     api-key: <your-key>
+
+      exportPipeline:
+        metrics: [debug]
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        cpu: 100m
+        memory: 1Gi
+```
+
+You can export metrics from your Crossplane installation, Spaces infrastructure (controller, API, router, etc.), `provider-helm`, and `provider-kubernetes`.
+
+## OpenTelemetryCollector image
+
+Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otelhttp`, `datadog`, and `debug` exporters.
+For more information on observability configuration, review the Helm chart reference.
 
 ## Prerequisites
 
