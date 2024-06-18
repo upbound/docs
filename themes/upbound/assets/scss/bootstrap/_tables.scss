@@ -41,6 +41,10 @@
   }
 }
 
+.table-responsive.custom-table-wrapper {
+  overflow-x: visible !important;
+}
+
 .table-group-divider {
   border-top: calc($table-border-width * 2) solid $table-group-separator-color; // stylelint-disable-line function-disallowed-list
 }
