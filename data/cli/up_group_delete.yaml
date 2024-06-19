@@ -1,0 +1,6 @@
+description: Delete a group.
+name: up group delete
+options:
+- default_value: "false"
+  description: Force the deletion of the group.
+  name: force

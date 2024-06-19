@@ -1,0 +1,5 @@
+description: Migrate control planes to Upbound Managed Control Planes.
+name: up alpha migration
+options:
+- description: Override default kubeconfig path.
+  name: kubeconfig

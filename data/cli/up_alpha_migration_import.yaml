@@ -1,0 +1,18 @@
+description: Import a previously exported control plane state into an Upbound managed
+  control plane, completing the migration process.
+name: up alpha migration import
+options:
+- default_value: "false"
+  description: When set to true, automatically accepts any confirmation prompts that
+    may appear during the import process.
+  name: "yes"
+- default_value: xp-state.tar.gz
+  description: Specifies the file path of the archive to be imported. The default
+    path is 'xp-state.tar.gz'.
+  name: input
+  shorthand: i
+- default_value: "false"
+  description: When set to true, automatically unpauses all managed resources that
+    were paused during the import process. This helps in resuming normal operations
+    post-import. Defaults to false, requiring manual unpausing of resources if needed.
+  name: unpause-after-import

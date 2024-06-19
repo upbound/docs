@@ -1,0 +1,9 @@
+description: Interact with Upbound.
+name: up alpha upbound
+options:
+- description: Override default kubeconfig path.
+  name: kubeconfig
+- default_value: upbound-system
+  description: Kubernetes namespace for Upbound.
+  name: namespace
+  shorthand: "n"

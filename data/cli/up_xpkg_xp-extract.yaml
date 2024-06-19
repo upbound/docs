@@ -1,0 +1,35 @@
+description: Extract package contents into a Crossplane cache compatible format. Fetches
+  from a remote registry by default.
+name: up xpkg xp-extract
+options:
+- description: Indicates that the image should be fetched from the Docker daemon.
+  name: from-daemon
+- description: Indicates that the image should be fetched from a local xpkg. If package
+    is not specified and only one exists in current directory it will be used.
+  name: from-xpkg
+- default_value: out.gz
+  description: Package output file path. Extension must be .gz or will be replaced.
+  name: output
+  shorthand: o
+- default_value: https://upbound.io
+  description: Root Upbound domain.
+  name: domain
+- description: Profile used to execute command.
+  name: profile
+- description: Account used to execute command.
+  name: account
+  shorthand: a
+- description: '[INSECURE] Skip verifying TLS certificates.'
+  name: insecure-skip-tls-verify
+- description: '[INSECURE] Run with debug logging. Repeat to increase verbosity. Output
+    might contain confidential data like tokens.'
+  name: debug
+  shorthand: d
+- description: Overrides the default API endpoint.
+  name: override-api-endpoint
+- description: Overrides the default auth endpoint.
+  name: override-auth-endpoint
+- description: Overrides the default proxy endpoint.
+  name: override-proxy-endpoint
+- description: Overrides the default registry endpoint.
+  name: override-registry-endpoint

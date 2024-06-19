@@ -1,0 +1,11 @@
+description: Initialize a package, by default in the current directory.
+name: up alpha xpkg init
+options:
+- default_value: .
+  description: Path to directory to write new package.
+  name: package-root
+  shorthand: p
+- default_value: configuration
+  description: Type of package to be initialized.
+  name: type
+  shorthand: t

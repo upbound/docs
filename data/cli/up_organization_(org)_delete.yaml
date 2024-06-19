@@ -1,0 +1,6 @@
+description: Delete an organization.
+name: up organization (org) delete
+options:
+- default_value: "false"
+  description: Force deletion of the organization.
+  name: force

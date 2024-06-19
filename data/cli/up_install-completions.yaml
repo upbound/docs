@@ -1,0 +1,5 @@
+description: Install shell completions
+name: up install-completions
+options:
+- description: ""
+  name: uninstall

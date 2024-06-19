@@ -1,0 +1,12 @@
+description: Install a Provider.
+name: up controlplane (ctp) provider install
+options:
+- description: 'Deprecated: Override default kubeconfig path.'
+  name: kubeconfig
+- description: Name of Provider.
+  name: name
+- description: List of secrets used to pull Provider.
+  name: package-pull-secrets
+- description: Wait duration for successful Provider installation.
+  name: wait
+  shorthand: w

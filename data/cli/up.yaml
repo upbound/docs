@@ -1,0 +1,14 @@
+description: The Upbound CLI
+name: up
+options:
+- description: Show context-sensitive help.
+  name: help
+  shorthand: h
+- default_value: default
+  description: 'Format for get/list commands. Can be: json, yaml, default'
+  name: format
+- description: Suppress all output.
+  name: quiet
+  shorthand: q
+- description: Pretty print output.
+  name: pretty

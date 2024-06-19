@@ -1,0 +1,11 @@
+description: Manage package dependencies in the filesystem and populate the cache,
+  e.g. used by the Crossplane Language Server.
+name: up xpkg dep
+options:
+- default_value: ~/.up/cache/
+  description: Directory used for caching package images.
+  name: cache-dir
+  shorthand: d
+- description: Clean dep cache.
+  name: clean-cache
+  shorthand: c

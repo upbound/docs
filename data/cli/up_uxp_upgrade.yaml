@@ -1,0 +1,16 @@
+description: Upgrade UXP.
+name: up uxp upgrade
+options:
+- description: Rollback to previously installed version on failed upgrade.
+  name: rollback
+- description: Force upgrade even if versions are incompatible.
+  name: force
+- description: Allow installing unstable versions.
+  name: unstable
+- description: Set parameters.
+  name: set
+- description: Parameters file.
+  name: file
+  shorthand: f
+- description: Local bundle path.
+  name: bundle

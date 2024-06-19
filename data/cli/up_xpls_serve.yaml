@@ -1,0 +1,8 @@
+description: run a server for Crossplane definitions using the Language Server Protocol.
+name: up xpls serve
+options:
+- default_value: ~/.up/cache
+  description: Directory path for dependency schema cache.
+  name: cache
+- description: Run server with verbose logging.
+  name: verbose

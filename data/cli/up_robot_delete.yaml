@@ -1,0 +1,6 @@
+description: Delete a robot.
+name: up robot delete
+options:
+- default_value: "false"
+  description: Force delete robot even if conflicts exist.
+  name: force

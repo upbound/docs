@@ -1,0 +1,7 @@
+description: Get a single control plane.
+name: up controlplane (ctp) get
+options:
+- description: The control plane group that the control plane is contained in. This
+    defaults to the group specified in the current context
+  name: group
+  shorthand: g

@@ -1,0 +1,12 @@
+description: Install a Configuration.
+name: up controlplane (ctp) configuration install
+options:
+- description: 'Deprecated: Override default kubeconfig path.'
+  name: kubeconfig
+- description: Name of Configuration.
+  name: name
+- description: List of secrets used to pull Configuration.
+  name: package-pull-secrets
+- description: Wait duration for successful Configuration installation.
+  name: wait
+  shorthand: w

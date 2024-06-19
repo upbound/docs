@@ -1,0 +1,25 @@
+description: Export a billing report for submission to Upbound.
+name: up alpha space billing export
+options:
+- default_value: upbound_billing_report.tgz
+  description: Name of the output file.
+  name: out
+  shorthand: o
+- description: 'Storage provider. Must be one of: aws, gcp, azure.'
+  name: provider
+- description: Storage bucket.
+  name: bucket
+- description: Custom storage endpoint.
+  name: endpoint
+- description: Name of the Upbound account whose billing report is being collected.
+  name: account
+- description: Name of the Azure storage account. Required for --provider=azure.
+  name: azure-storage-account
+- description: 'Export a report for a billing period of one calendar month. Format:
+    2006-01.'
+  name: billing-month
+- description: 'Export a report for a custom billing period. Date range is inclusive.
+    Format: 2006-01-02/2006-01-02.'
+  name: billing-custom
+- description: Export a report for an incomplete billing period.
+  name: force-incomplete

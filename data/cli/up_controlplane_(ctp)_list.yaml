@@ -1,0 +1,11 @@
+description: List control planes for the account.
+name: up controlplane (ctp) list
+options:
+- default_value: "false"
+  description: List control planes across all groups.
+  name: all-groups
+  shorthand: A
+- description: The control plane group that the control plane is contained in. This
+    defaults to the group specified in the current context
+  name: group
+  shorthand: g

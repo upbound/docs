@@ -7,6 +7,11 @@
 	{{ partial "body/crds" .}}
 	</ul>
 
+	{{ else if eq .Page.Params.product "cli" }}
+	<ul>
+	{{ partial "body/cli" .}}
+	</ul>
+
 	{{ else if .Page.IsSection }}
 	<ul>
         {{ range .Pages }}

@@ -1,0 +1,6 @@
+description: Remove a member from the organization.
+name: up organization (org) user remove
+options:
+- default_value: "false"
+  description: Force removal of the member.
+  name: force

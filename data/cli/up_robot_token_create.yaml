@@ -1,0 +1,6 @@
+description: Create a token for the robot.
+name: up robot token create
+options:
+- description: Path to write JSON file containing access ID and token.
+  name: output
+  shorthand: o

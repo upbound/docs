@@ -1,0 +1,25 @@
+description: Build a package, by default from the current directory.
+name: up xpkg build
+options:
+- description: '[DEPRECATED: use --output] Name of the package to be built. Uses name
+    in crossplane.yaml if not specified. Does not correspond to package tag.'
+  name: name
+- description: Path for package output.
+  name: output
+  shorthand: o
+- description: Controller image used as base for package.
+  name: controller
+- default_value: .
+  description: Path to package directory.
+  name: package-root
+  shorthand: f
+- default_value: ./examples
+  description: Path to package examples directory.
+  name: examples-root
+  shorthand: e
+- default_value: auth.yaml
+  description: Path to an authentication extension file.
+  name: auth-ext
+  shorthand: a
+- description: Paths, specified relative to --package-root, to exclude from the package.
+  name: ignore

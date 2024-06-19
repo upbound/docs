@@ -1,0 +1,33 @@
+{{/* Responsible for building the CLI command reference page */}}
+
+<div class="commands">
+  {{ range $fileName, $cmd := .Site.Data.cli }}
+  <div>
+    <h2>{{ $cmd.name }}</h2>
+    <p>{{ $cmd.description }}</p>
+    <div class="table-responsive">
+    <table class="table table-sm table-striped cli-ref">
+      <thead>
+        <tr>
+        <td>Short Flag</td>
+        <td>Long Flag</td>
+        <td>Description</td>
+        <td>Default Value</td>
+        </tr>
+      </thead>
+      <tbody>
+      {{ range $opt := $cmd.options }}
+      <tr>
+        <td><code>{{ $opt.shorthand }}</code></td>
+        <td><code>{{ $opt.name }}</code></td>
+        <td>{{ $opt.description }}</td>
+        <td><code>{{ $opt.default_value }}</code></td>
+      </tr>
+      {{ end }}
+      </tbody>
+    </table>
+    </div>
+  </div>
+  {{ end }}
+
+</div>

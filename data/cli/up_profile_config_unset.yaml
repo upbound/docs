@@ -1,0 +1,6 @@
+description: Unset base configuration key, value pair in the Upbound Profile.
+name: up profile config unset
+options:
+- description: Configuration File. Must be in JSON format.
+  name: file
+  shorthand: f

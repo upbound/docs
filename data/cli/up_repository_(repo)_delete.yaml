@@ -1,0 +1,6 @@
+description: Delete a repository.
+name: up repository (repo) delete
+options:
+- default_value: "false"
+  description: Force deletion of repository.
+  name: force

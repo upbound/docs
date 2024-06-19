@@ -1,0 +1,7 @@
+description: 'Deprecated: Set an Upbound Profile for use with a Space.'
+name: up profile set space
+options:
+- description: Override default kubeconfig path.
+  name: kubeconfig
+- description: Override default kubeconfig context.
+  name: kubecontext

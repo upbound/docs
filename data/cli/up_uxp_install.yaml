@@ -1,0 +1,12 @@
+description: Install UXP.
+name: up uxp install
+options:
+- description: Allow installing unstable versions.
+  name: unstable
+- description: Set parameters.
+  name: set
+- description: Parameters file.
+  name: file
+  shorthand: f
+- description: Local bundle path.
+  name: bundle

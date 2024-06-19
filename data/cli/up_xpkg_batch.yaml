@@ -1,0 +1,95 @@
+description: Batch build and push a family of service-scoped provider packages.
+name: up xpkg batch
+options:
+- description: Family image used as the base for the smaller provider packages.
+  name: family-base-image
+- description: Provider name, such as provider-aws to be used while formatting smaller
+    provider package repositories.
+  name: provider-name
+- description: Family package URL format to be used for the smaller provider packages.
+    Must be a valid OCI image URL with the format specifier "%s", which will be substituted
+    with <provider name>-<service name>.
+  name: family-package-url-format
+- default_value: monolith
+  description: Smaller provider names to build and push, such as ec2, eks or config.
+  name: smaller-providers
+- default_value: "0"
+  description: Maximum number of packages to process concurrently. Setting it to 0
+    puts no limit on the concurrency, i.e., all packages are processed in parallel.
+  name: concurrency
+- default_value: "3"
+  description: Number of retries when pushing a provider package fails.
+  name: push-retry
+- default_value: linux_amd64,linux_arm64
+  description: 'Platforms to build the packages for. Each platform should use the
+    <OS>_<arch> syntax. An example is: linux_arm64.'
+  name: platform
+- description: Provider binary paths root. Smaller provider binaries should reside
+    under the platform directories in this folder.
+  name: provider-bin-root
+  shorthand: p
+- description: Path of the package output directory.
+  name: output-dir
+  shorthand: o
+- description: Smaller provider names whose provider package should be stored under
+    the package output directory specified with the --output-dir option.
+  name: store-packages
+- default_value: ./package/crossplane.yaml.tmpl
+  description: Smaller provider metadata template. The template variables {{ .Service
+    }} and {{ .Name }} will be substituted when the template is executed among with
+    the supplied template variable substitutions.
+  name: package-metadata-template
+- description: Smaller provider metadata template variables to be used for the specified
+    template.
+  name: template-var
+- description: Overrides for the location of the example manifests folder of a smaller
+    provider.
+  name: examples-group-override
+- description: Overrides for the locations of the CRD folders of the smaller providers.
+  name: crd-group-override
+- description: Overrides for the package repository names of the smaller providers.
+  name: package-repo-override
+- default_value: monolith,config
+  description: Smaller provider names for which we need to configure the authentication
+    extension.
+  name: providers-with-auth-ext
+- default_value: ./examples
+  description: Path to package examples directory.
+  name: examples-root
+  shorthand: e
+- default_value: ./package/crds
+  description: Path to package CRDs directory.
+  name: crd-root
+- default_value: ./package/auth.yaml
+  description: Path to an authentication extension file.
+  name: auth-ext
+- description: Paths to exclude from the smaller provider packages.
+  name: ignore
+- description: Create repository on push if it does not exist.
+  name: create
+- default_value: "false"
+  description: Only build the smaller provider packages and do not attempt to push
+    them to a package repository.
+  name: build-only
+- default_value: https://upbound.io
+  description: Root Upbound domain.
+  name: domain
+- description: Profile used to execute command.
+  name: profile
+- description: Account used to execute command.
+  name: account
+  shorthand: a
+- description: '[INSECURE] Skip verifying TLS certificates.'
+  name: insecure-skip-tls-verify
+- description: '[INSECURE] Run with debug logging. Repeat to increase verbosity. Output
+    might contain confidential data like tokens.'
+  name: debug
+  shorthand: d
+- description: Overrides the default API endpoint.
+  name: override-api-endpoint
+- description: Overrides the default auth endpoint.
+  name: override-auth-endpoint
+- description: Overrides the default proxy endpoint.
+  name: override-proxy-endpoint
+- description: Overrides the default registry endpoint.
+  name: override-registry-endpoint

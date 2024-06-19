@@ -1,0 +1,24 @@
+description: Install mcp-connector into an App Cluster.
+name: up controlplane (ctp) connector install
+options:
+- description: API token used to authenticate. If not provided, a new robot and a
+    token will be created.
+  name: token
+- description: Name of the cluster connecting to the control plane. If not provided,
+    the namespace argument value will be used.
+  name: cluster-name
+- description: Override the default kubeconfig path.
+  name: kubeconfig
+- default_value: kube-system
+  description: Kubernetes namespace for MCP Connector. Default is kube-system.
+  name: installation-namespace
+  shorthand: "n"
+- description: Name of the secret that contains the kubeconfig for a control plane.
+  name: control-plane-secret
+- description: Set parameters.
+  name: set
+- description: Parameters file.
+  name: file
+  shorthand: f
+- description: Local bundle path.
+  name: bundle

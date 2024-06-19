@@ -1,0 +1,40 @@
+description: Remove the Upbound Spaces deployment.
+name: up alpha space destroy
+options:
+- default_value: https://upbound.io
+  description: Root Upbound domain.
+  name: domain
+- description: Profile used to execute command.
+  name: profile
+- description: Account used to execute command.
+  name: account
+  shorthand: a
+- description: '[INSECURE] Skip verifying TLS certificates.'
+  name: insecure-skip-tls-verify
+- description: '[INSECURE] Run with debug logging. Repeat to increase verbosity. Output
+    might contain confidential data like tokens.'
+  name: debug
+  shorthand: d
+- description: Overrides the default API endpoint.
+  name: override-api-endpoint
+- description: Overrides the default auth endpoint.
+  name: override-auth-endpoint
+- description: Overrides the default proxy endpoint.
+  name: override-proxy-endpoint
+- description: Overrides the default registry endpoint.
+  name: override-registry-endpoint
+- default_value: us-west1-docker.pkg.dev/orchestration-build/upbound-environments
+  description: Set registry for where to pull OCI artifacts from. This is an OCI registry
+    reference, i.e. a URL without the scheme or protocol prefix.
+  name: registry-repository
+- default_value: https://us-west1-docker.pkg.dev
+  description: Set registry endpoint, including scheme, for authentication.
+  name: registry-endpoint
+- description: Override default kubeconfig path.
+  name: kubeconfig
+- description: Override default kubeconfig context.
+  name: kubecontext
+- description: Bypass safety checks and destroy Spaces
+  name: yes-really-delete-space-and-all-data
+- description: Remove Space components but retain Control Planes and data
+  name: orphan

@@ -1,0 +1,7 @@
+description: Invite a user to the organization.
+name: up organization (org) user invite
+options:
+- default_value: member
+  description: Role of the user to invite (owner or member).
+  name: permission
+  shorthand: p

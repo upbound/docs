@@ -1,0 +1,12 @@
+description: Uninstall mcp-connector from an App Cluster.
+name: up controlplane (ctp) connector uninstall
+options:
+- description: Name of the cluster connecting to the control plane. If not provided,
+    the namespace argument value will be used.
+  name: cluster-name
+- description: Override the default kubeconfig path.
+  name: kubeconfig
+- default_value: kube-system
+  description: Kubernetes namespace for MCP Connector. Default is kube-system.
+  name: installation-namespace
+  shorthand: "n"

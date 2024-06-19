@@ -1,0 +1,10 @@
+description: 'Deprecated: Connect kubectl to control plane.'
+name: up controlplane (ctp) connect
+options:
+- description: API token used to authenticate. Required for Upbound Cloud; ignored
+    otherwise.
+  name: token
+- description: The control plane group that the control plane is contained in. By
+    default, this is the group specified in the current profile.
+  name: group
+  shorthand: g

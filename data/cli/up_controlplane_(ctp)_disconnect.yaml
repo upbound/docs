@@ -1,0 +1,2 @@
+description: 'Deprecated: Disconnect kubectl from control plane.'
+name: up controlplane (ctp) disconnect
