@@ -1727,15 +1727,15 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 **Description:** Alpha features. Commands may be removed in future releases.
 
----
-
-## up alpha ctx
+#### up alpha ctx
 
 **Description:** Select an Upbound kubeconfig context.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                   |           | Profile used to execute command.                                    |                       |
@@ -1750,27 +1750,32 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | context                   |           | Kubernetes context to operate on.                                   | upbound               |
 | kubeconfig                | f         | Kubeconfig to modify when saving a new context                      |                       |
 
+{{< /table >}}
+
 ---
 
-## up alpha migration
+#### up alpha migration
 
 **Description:** Migrate control planes to Upbound Managed Control Planes.
 
 **Options:**
 
-| Name       | Shorthand | Description                              | Default Value |
+{{< table "table table-sm table-striped">}}
+| Long flag       | Short flag | Description                              | Default Value |
 |------------|-----------|------------------------------------------|---------------|
 | kubeconfig |           | Override default kubeconfig path.        |               |
+{{< /table >}}
 
 ---
 
-## up alpha migration export
+#### up alpha migration export
 
 **Description:** Export the current state of a Crossplane or Universal Crossplane control plane into an archive, preparing it for migration to Upbound Managed Control Planes.
 
 **Options:**
 
-| Name                    | Shorthand | Description                                                                                  | Default Value           |
+{{< table "table table-sm table-striped">}}
+| Long flag                    | Short flag | Description                                                                                  | Default Value           |
 |-------------------------|-----------|----------------------------------------------------------------------------------------------|-------------------------|
 | yes                     |           | When set to true, automatically accepts any confirmation prompts that may appear during the export process. | false                   |
 | output                  | o         | Specifies the file path where the exported archive will be saved. Defaults to 'xp-state.tar.gz'. | xp-state.tar.gz         |
@@ -1779,36 +1784,40 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | include-namespaces      |           | A list of specific namespaces to include in the export. If not specified, all namespaces are included by default. |                         |
 | exclude-namespaces      |           | A list of specific namespaces to exclude from the export. Defaults to 'kube-system', 'kube-public', 'kube-node-lease', and 'local-path-storage'. | kube-system,kube-public,kube-node-lease,local-path-storage |
 | pause-before-export     |           | When set to true, pauses all managed resources before starting the export process. This can help ensure a consistent state for the export. Defaults to false. | false                   |
+{{< /table >}}
 
 ---
 
-## up alpha migration import
+#### up alpha migration import
 
 **Description:** Import a previously exported control plane state into an Upbound managed control plane, completing the migration process.
 
 **Options:**
 
-| Name               | Shorthand | Description                                                                                  | Default Value |
+{{< table "table table-sm table-striped">}}
+| Long flag               | Short flag | Description                                                                                  | Default Value |
 |--------------------|-----------|----------------------------------------------------------------------------------------------|---------------|
 | yes                |           | When set to true, automatically accepts any confirmation prompts that may appear during the import process. | false         |
 | input              | i         | Specifies the file path of the archive to be imported. The default path is 'xp-state.tar.gz'. | xp-state.tar.gz |
 | unpause-after-import |           | When set to true, automatically unpauses all managed resources that were paused during the import process. This helps in resuming normal operations post-import. Defaults to false, requiring manual unpausing of resources if needed. | false         |
+{{< /table >}}
 
 ---
 
-## up alpha space
+#### up alpha space
 
 **Description:** Interact with Spaces.
 
 ---
 
-## up alpha space attach
+#### up alpha space attach
 
 **Description:** Connect an Upbound Space to the Upbound web console.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                   |           | Profile used to execute command.                                    |                       |
@@ -1823,22 +1832,24 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | kubecontext               |           | Override default kubeconfig context.                                |                       |
 | robot-token               |           | The Upbound robot token contents used to authenticate the connection. |                       |
 | up-environment            |           | Override the default Upbound Environment.                           | prod                  |
+{{< /table >}}
 
 ---
 
-## up alpha space billing
+#### up alpha space billing
 
 **Description:** ""
 
 ---
 
-## up alpha space billing export
+#### up alpha space billing export
 
 **Description:** Export a billing report for submission to Upbound.
 
 **Options:**
 
-| Name                 | Shorthand | Description                                            | Default Value            |
+{{< table "table table-sm table-striped">}}
+| Long flag                 | Short flag | Description                                            | Default Value            |
 |----------------------|-----------|--------------------------------------------------------|--------------------------|
 | out                  | o         | Name of the output file.                               | upbound_billing_report.tgz |
 | provider             |           | Storage provider. Must be one of: aws, gcp, azure.     |                          |
@@ -1849,16 +1860,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | billing-month        |           | Export a report for a billing period of one calendar month. Format: 2006-01. |                          |
 | billing-custom       |           | Export a report for a custom billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02. |                          |
 | force-incomplete     |           | Export a report for an incomplete billing period.      |                          |
+{{< /table >}}
 
 ---
 
-## up alpha space destroy
+#### up alpha space destroy
 
 **Description:** Remove the Upbound Spaces deployment.
 
 **Options:**
 
-| Name                        | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                        | Short flag | Description                                                         | Default Value         |
 |-----------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                      |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                     |           | Profile used to execute command.                                    |                       |
@@ -1874,19 +1887,19 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | kubeconfig                  |           | Override default kubeconfig path.                                   |                       |
 | kubecontext                 |           | Override default kubeconfig context.                                |                       |
 | yes-really-delete-space-and-all-data |           | Bypass safety checks and destroy Spaces                              |                       |
-| orphan                      |           | Remove Space components but retain Control Planes and data
-
- |                       |
+| orphan                      |           | Remove Space components but retain Control Planes and data |
+{{< /table >}}
 
 ---
 
-## up alpha space detach
+#### up alpha space detach
 
 **Description:** Detach an Upbound Space from the Upbound web console.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                   |           | Profile used to execute command.                                    |                       |
@@ -1899,16 +1912,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
 | kubeconfig                |           | Override default kubeconfig path.                                   |                       |
 | kubecontext               |           | Override default kubeconfig context.                                |                       |
+{{< /table >}}
 
 ---
 
-## up alpha space init
+#### up alpha space init
 
 **Description:** Initialize an Upbound Spaces deployment.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | kubeconfig                |           | Override default kubeconfig path.                                   |                       |
 | kubecontext               |           | Override default kubeconfig context.                                |                       |
@@ -1931,16 +1946,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
 | yes                       |           | Answer yes to all questions                                         |                       |
 | public-ingress            |           | For AKS,EKS,GKE expose ingress publically                           |                       |
+{{< /table >}}
 
 ---
 
-## up alpha space list
+#### up alpha space list
 
 **Description:** List all accessible spaces in Upbound.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                   |           | Profile used to execute command.                                    |                       |
@@ -1951,16 +1968,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
 | override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
 | override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
+{{< /table >}}
 
 ---
 
-## up alpha space upgrade
+#### up alpha space upgrade
 
 **Description:** Upgrade the Upbound Spaces deployment.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                   |           | Profile used to execute command.                                    |                       |
@@ -1982,16 +2001,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | file                      | f         | Parameters file.                                                    |                       |
 | bundle                    |           | Local bundle path.                                                  |                       |
 | rollback                  |           | Rollback to previously installed version on failed upgrade.         |                       |
+{{< /table >}}
 
 ---
 
-## up alpha upbound
+#### up alpha upbound
 
 **Description:** Interact with Upbound.
 
 **Options:**
 
-| Name        | Shorthand | Description                              | Default Value |
+{{< table "table table-sm table-striped">}}
+| Long flag        | Short flag | Description                              | Default Value |
 |-------------|-----------|------------------------------------------|---------------|
 | kubeconfig  |           | Override default kubeconfig path.        |               |
 | namespace   | n         | Kubernetes namespace for Upbound.        | upbound-system |
@@ -2004,22 +2025,24 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-auth-endpoint |           | Overrides the default auth endpoint. |               |
 | override-proxy-endpoint |           | Overrides the default proxy endpoint. |               |
 | override-registry-endpoint |           | Overrides the default registry endpoint. |               |
+{{< /table >}}
 
 ---
 
-## up alpha xpkg
+#### up alpha xpkg
 
 **Description:** Interact with UXP packages.
 
 ---
 
-## up alpha xpkg batch
+#### up alpha xpkg batch
 
 **Description:** Batch build and push a family of service-scoped provider packages.
 
 **Options:**
 
-| Name                     | Shorthand | Description                                                        | Default Value            |
+{{< table "table table-sm table-striped">}}
+| Long flag                     | Short flag | Description                                                        | Default Value            |
 |--------------------------|-----------|--------------------------------------------------------------------|--------------------------|
 | family-base-image        |           | Family image used as the base for the smaller provider packages.   |                          |
 | provider-name            |           | Provider name, such as provider-aws to be used while formatting smaller provider package repositories. |                          |
@@ -2028,9 +2051,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | concurrency              |           | Maximum number of packages to process concurrently. Setting it to 0 puts no limit on the concurrency, i.e., all packages are processed in parallel. | 0                        |
 | push-retry               |           | Number of retries when pushing a provider package fails.           | 3                        |
 | platform                 |           | Platforms to build the packages for. Each platform should use the <OS>_<arch> syntax. An example is: linux_arm64. | linux_amd64,linux_arm64  |
-| provider-bin-root        | p         | Provider binary paths root
-
-. Smaller provider binaries should reside under the platform directories in this folder. |                          |
+| provider-bin-root    | p            | Provider binary paths root. Smaller provider binaries should reside under the platform directories in this folder.                                                  |                                                |
 | output-dir               | o         | Path of the package output directory.                              |                          |
 | store-packages           |           | Smaller provider names whose provider package should be stored under the package output directory specified with the --output-dir option. |                          |
 | package-metadata-template|           | Smaller provider metadata template. The template variables {{ .Service }} and {{ .Name }} will be substituted when the template is executed among with the supplied template variable substitutions. | ./package/crossplane.yaml.tmpl |
@@ -2054,16 +2075,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-auth-endpoint   |           | Overrides the default auth endpoint.                               |                          |
 | override-proxy-endpoint  |           | Overrides the default proxy endpoint.                              |                          |
 | override-registry-endpoint |           | Overrides the default registry endpoint.                         |                          |
+{{< /table >}}
 
 ---
 
-## up alpha xpkg build
+#### up alpha xpkg build
 
 **Description:** Build a package, by default from the current directory.
 
 **Options:**
 
-| Name            | Shorthand | Description                                                        | Default Value |
+{{< table "table table-sm table-striped">}}
+| Long flag            | Short flag | Description                                                        | Default Value |
 |-----------------|-----------|--------------------------------------------------------------------|---------------|
 | name            |           | [DEPRECATED: use --output] Name of the package to be built. Uses name in crossplane.yaml if not specified. Does not correspond to package tag. |               |
 | output          | o         | Path for package output.                                           |               |
@@ -2072,42 +2095,48 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | examples-root   | e         | Path to package examples directory.                                | ./examples    |
 | auth-ext        | a         | Path to an authentication extension file.                          | auth.yaml     |
 | ignore          |           | Paths, specified relative to --package-root, to exclude from the package. |               |
+{{< /table >}}
 
 ---
 
-## up alpha xpkg dep
+#### up alpha xpkg dep
 
 **Description:** Manage package dependencies in the filesystem and populate the cache, e.g. used by the Crossplane Language Server.
 
 **Options:**
 
-| Name         | Shorthand | Description                               | Default Value  |
+{{< table "table table-sm table-striped">}}
+| Long flag         | Short flag | Description                               | Default Value  |
 |--------------|-----------|-------------------------------------------|----------------|
 | cache-dir    | d         | Directory used for caching package images.| ~/.up/cache/   |
 | clean-cache  | c         | Clean dep cache.                          |                |
+{{< /table >}}
 
 ---
 
-## up alpha xpkg init
+#### up alpha xpkg init
 
 **Description:** Initialize a package, by default in the current directory.
 
 **Options:**
 
-| Name         | Shorthand | Description                         | Default Value   |
+{{< table "table table-sm table-striped">}}
+| Long flag         | Short flag | Description                         | Default Value   |
 |--------------|-----------|-------------------------------------|-----------------|
 | package-root | p         | Path to directory to write new package. | .               |
 | type         | t         | Type of package to be initialized.  | configuration   |
+{{< /table >}}
 
 ---
 
-## up alpha xpkg push
+#### up alpha xpkg push
 
 **Description:** Push a package.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | package                   | f         | Path to packages. If not specified and only one package exists in current directory it will be used. |                       |
 | create                    |           | Create repository on push if it does not exist.                     |                       |
@@ -2120,16 +2149,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
 | override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
 | override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
+{{< /table >}}
 
 ---
 
-## up alpha xpkg xp-extract
+#### up alpha xpkg xp-extract
 
 **Description:** Extract package contents into a Crossplane cache compatible format. Fetches from a remote registry by default.
 
 **Options:**
 
-| Name                      | Shorthand | Description                                                         | Default Value         |
+{{< table "table table-sm table-striped">}}
+| Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | from-daemon               |           | Indicates that the image should be fetched from the Docker daemon.  |                       |
 | from-xpkg                 |           | Indicates that the image should be fetched from a local xpkg. If package is not specified and only one exists in current directory it will be used. |                       |
@@ -2143,25 +2174,27 @@ Install shell completions with `up install-completions`. You can uninstall shell
 | override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
 | override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
 | override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
+{{< /table >}}
 
 ---
 
-## up alpha xpls
+#### up alpha xpls
 
 **Description:** Start xpls language server.
 
 ---
 
-## up alpha xpls serve
+#### up alpha xpls serve
 
 **Description:** run a server for Crossplane definitions using the Language Server Protocol.
 
 **Options:**
 
-| Name    | Shorthand | Description                                  | Default Value  |
+{{< table "table table-sm table-striped">}}
+| Long flag    | Short flag | Description                                  | Default Value  |
 |---------|-----------|----------------------------------------------|----------------|
 | cache   |           | Directory path for dependency schema cache.  | ~/.up/cache    |
 | verbose |           | Run server with verbose logging.             |                |
+{{< /table >}}
 
 ---
-```
