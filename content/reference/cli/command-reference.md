@@ -1735,7 +1735,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 {{< table "table table-sm table-striped">}}
 
-| Long flag                      | Short flag | Description                                                         | Default Value         |
+| Long flag                 | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
 | domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
 | profile                   |           | Profile used to execute command.                                    |                       |
@@ -2162,18 +2162,18 @@ Install shell completions with `up install-completions`. You can uninstall shell
 {{< table "table table-sm table-striped">}}
 | Long flag                      | Short flag | Description                                                         | Default Value         |
 |---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| from-daemon               |           | Indicates that the image should be fetched from the Docker daemon.  |                       |
-| from-xpkg                 |           | Indicates that the image should be fetched from a local xpkg. If package is not specified and only one exists in current directory it will be used. |                       |
-| output                    | o         | Package output file path. Extension must be .gz or will be replaced.| out.gz                |
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
+| `--from-daemon`               |           | Indicates that the image should be fetched from the Docker daemon.  |                       |
+| `--from-xpkg`                 |           | Indicates that the image should be fetched from a local xpkg. If package is not specified and only one exists in current directory it will be used. |                       |
+| `--output`                    | `-o`         | Package output file path. Extension must be .gz or will be replaced.| out.gz                |
+| `--domain`                   |           | Root Upbound domain.                                                | https://upbound.io    |
+| `--profile`                   |           | Profile used to execute command.                                    |                       |
+| `--account`                   | `-a`         | Account used to execute command.                                    |                       |
+| `--insecure-skip-tls-verify`  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
+| `--debug`                     | `-d`         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
+| `--override-api-endpoint`     |           | Overrides the default API endpoint.                                 |                       |
+| `--override-auth-endpoint`    |           | Overrides the default auth endpoint.                                |                       |
+| `--override-proxy-endpoint`   |           | Overrides the default proxy endpoint.                               |                       |
+| `--override-registry-endpoint`|           | Overrides the default registry endpoint.                            |                       |
 {{< /table >}}
 
 ---
@@ -2193,8 +2193,8 @@ Install shell completions with `up install-completions`. You can uninstall shell
 {{< table "table table-sm table-striped">}}
 | Long flag    | Short flag | Description                                  | Default Value  |
 |---------|-----------|----------------------------------------------|----------------|
-| cache   |           | Directory path for dependency schema cache.  | ~/.up/cache    |
-| verbose |           | Run server with verbose logging.             |                |
+| `--cache`   |           | Directory path for dependency schema cache.  | ~/.up/cache    |
+| `--verbose` |           | Run server with verbose logging.             |                |
 {{< /table >}}
 
 ---
