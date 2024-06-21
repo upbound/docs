@@ -1727,7 +1727,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 **Description:** Alpha features. Commands may be removed in future releases.
 
-#### up alpha ctx
+### up alpha ctx
 
 **Description:** Select an Upbound kubeconfig context.
 
@@ -1754,7 +1754,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 ---
 
-#### up alpha migration
+### up alpha migration
 
 **Description:** Migrate control planes to Upbound Managed Control Planes.
 
@@ -1804,7 +1804,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 ---
 
-#### up alpha space
+### up alpha space
 
 **Description:** Interact with Spaces.
 
@@ -1842,7 +1842,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 ---
 
-#### up alpha space billing export
+##### up alpha space billing export
 
 **Description:** Export a billing report for submission to Upbound.
 
@@ -2005,7 +2005,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 ---
 
-#### up alpha upbound
+### up alpha upbound
 
 **Description:** Interact with Upbound.
 
@@ -2029,7 +2029,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 ---
 
-#### up alpha xpkg
+### up alpha xpkg
 
 **Description:** Interact with UXP packages.
 
@@ -2178,7 +2178,7 @@ Install shell completions with `up install-completions`. You can uninstall shell
 
 ---
 
-#### up alpha xpls
+### up alpha xpls
 
 **Description:** Start xpls language server.
 
