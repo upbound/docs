@@ -15,7 +15,7 @@ To migrate from Crossplane to Upbound, you must:
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a managed control plane running in Upbound.
 
-The migration tool is available in the [up CLI]({{<ref "reference/cli/command-reference.md#alpha-xpkg-migration">}}) as
+The migration tool is available in the [up CLI]({{<ref "reference/cli/command-reference.md#up-alpha-xpkg-xp-extract">}}) as
 `up alpha migration export` and `up alpha migration import` commands.
 
 ## Prerequisites
