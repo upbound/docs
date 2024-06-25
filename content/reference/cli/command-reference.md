@@ -555,6 +555,24 @@ providers                                                pkg.crossplane.io/v1   
 storeconfigs                                             secrets.crossplane.io/v1alpha1                        false        StoreConfig
 ```
 
+## ctx
+
+**Description:** Select an Upbound kubeconfig context.
+
+**Options:**
+
+{{< table "table table-sm table-striped">}}
+
+| Long flag                 | Short flag | Description                                                         | Default Value         |
+|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
+
+| short                     | s         | Short output.                                                       |                       |
+| context                   |           | Kubernetes context to operate on.                                   | upbound               |
+| kubeconfig                | f         | Kubeconfig to modify when saving a new context. `-f -` prints to stout.                      |                       |
+
+{{< /table >}}
+
+
 ## get
 
 The `up get` command prints information about a given object within the current kubeconfig
@@ -1726,31 +1744,6 @@ Install shell completions with `up install-completions`. You can uninstall shell
 ## alpha
 
 **Description:** Alpha features. Commands may be removed in future releases.
-
-### up alpha ctx
-
-**Description:** Select an Upbound kubeconfig context.
-
-**Options:**
-
-{{< table "table table-sm table-striped">}}
-
-| Long flag                 | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
-| short                     | s         | Short output.                                                       |                       |
-| context                   |           | Kubernetes context to operate on.                                   | upbound               |
-| kubeconfig                | f         | Kubeconfig to modify when saving a new context                      |                       |
-
-{{< /table >}}
 
 ---
 
