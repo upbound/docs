@@ -60,9 +60,53 @@ Get the kubeconfig of your AKS cluster.
 az aks get-credentials --resource-group ${SPACES_RESOURCE_GROUP_NAME} --name ${SPACES_CLUSTER_NAME}
 ```
 
+## Configure the pre-install
+
+### Set your Upbound organization account details
+
+Set your Upbound organization account string as an environment variable for use in future steps
+
+{{< editCode >}}
+```ini
+export UPBOUND_ACCOUNT=$@<your-upbound-org>$@
+```
+{{< /editCode >}}
+
 ### Set up pre-install configurations
 
 Export the path of the license token JSON file provided by your Upbound account representative.
+
+{{< editCode >}}
+```ini {copy-lines="2"}
+# Change the path to where you saved the token.
+export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
+```
+{{< /editCode >}}
+
+Set the version of Spaces software you want to install.
+
+```ini
+export SPACES_VERSION=1.4.2
+```
+
+Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
+
+{{< editCode >}}
+```ini
+export SPACES_ROUTER_HOST="$@proxy.upbound-127.0.0.1.nip.io$@"
+```
+{{< /editCode >}}
+
+{{< hint "important" >}}
+Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own.
+{{< /hint >}}
+
+The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previous step.
+
+
+```ini
+export SPACES_CLUSTER_TYPE=aks
+```
 
 <!-- vale off -->
 ## Install the Spaces software
@@ -351,7 +395,3 @@ up ctx -
 {{< hint "tip" >}}
 Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/command-reference#alpha-ctx">}}).
 {{< /hint >}}
-
-```ini
-export SPACES_CLUSTER_TYPE=aks
-```
