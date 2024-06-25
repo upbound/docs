@@ -102,7 +102,7 @@ For more details on how to use provider-upbound, read the [provider-upbound](htt
 
 Each MCP offers a unified endpoint. You interact with your MCP through Kubernetes and Crossplane API calls. Each MCP runs a Kubernetes API server to handle API requests.
 
-You can connect to a managed control plane's API server directly via the up CLI. Use the [`up ctx`]({{<ref "reference/cli/command-reference#alpha-ctx" >}}) command to set your kubeconfig's current context to a managed control plane:
+You can connect to a managed control plane's API server directly via the up CLI. Use the [`up ctx`]({{<ref "reference/cli/command-reference#ctx" >}}) command to set your kubeconfig's current context to a managed control plane:
 
 ```shell
 # Example: acmeco/upbound-gcp-us-west-1/default/ctp1
@@ -115,7 +115,7 @@ To disconnect from your control plane and revert your kubeconfig's current conte
 up ctx ..
 ```
 
-You can also generate a `kubeconfig` file for a managed control plane with [`up ctx -f`]({{<ref "reference/cli/command-reference#alpha-ctx" >}}).
+You can also generate a `kubeconfig` file for a managed control plane with [`up ctx -f`]({{<ref "reference/cli/command-reference#ctx" >}}).
 
 ```shell
 up ctx ${yourOrganization}/${yourSpace}/${yourGroup}/${yourControlPlane} -f ctp-kubeconfig.yaml

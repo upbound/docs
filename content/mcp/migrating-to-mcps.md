@@ -38,7 +38,7 @@ To migrate an existing Crossplane control plane to a managed control plane in Up
     {{< hint "note" >}}
   By default, the export command doesn't make any changes to your existing Crossplane control plane state, leaving it intact. Use the `--pause-before-export` flag to pause the
      reconciliation on managed resources before exporting the archive file.
-    
+
   This is a safety mechanism to help ensure the control plane you migrate state to doesn't assume ownership of resources before
     you're ready.
     {{< /hint >}}
@@ -50,7 +50,7 @@ control plane in Upbound:
     up controlplane create my-controlplane
     ```
 
-3. Use [`up ctx`]({{<ref "reference/cli/command-reference.md#alpha-ctx">}}) to connect to the
+3. Use [`up ctx`]({{<ref "reference/cli/command-reference.md#ctx">}}) to connect to the
 managed control plane created in the previous step:
 
     ```bash
@@ -80,4 +80,3 @@ managed control plane created in the previous step:
     ```
 
    At this point, you can delete the source Crossplane control plane.
- 

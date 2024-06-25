@@ -349,7 +349,7 @@ up ctx -
 ```
 
 {{< hint "tip" >}}
-Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/command-reference#alpha-ctx">}}).
+Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/command-reference#ctx">}}).
 {{< /hint >}}
 
 ```ini
