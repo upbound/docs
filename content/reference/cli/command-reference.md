@@ -554,7 +554,7 @@ providerrevisions                                        pkg.crossplane.io/v1   
 providers                                                pkg.crossplane.io/v1                                  false        Provider
 storeconfigs                                             secrets.crossplane.io/v1alpha1                        false        StoreConfig
 ```
-
+<!-- vale off -->
 ## ctx
 
 **Description:** Select an Upbound kubeconfig context.
@@ -571,7 +571,7 @@ storeconfigs                                             secrets.crossplane.io/v
 | kubeconfig                | f         | Kubeconfig to modify when saving a new context. `-f -` prints to stout.                      |                       |
 
 {{< /table >}}
-
+<!-- vale on -->
 
 ## get
 
@@ -1740,7 +1740,7 @@ up xpls serve
 
 Install shell completions with `up install-completions`. You can uninstall shell completions via `up install-completions --uninstall`.
 
-
+<!-- vale off -->
 ## alpha
 
 **Description:** Alpha features. Commands may be removed in future releases.
@@ -2191,3 +2191,4 @@ Install shell completions with `up install-completions`. You can uninstall shell
 {{< /table >}}
 
 ---
+<!-- vale on -->
