@@ -5,7 +5,7 @@ description: "How to create, configure and push packages to the Upbound Marketpl
 ---
 
 ## Package types
-Crossplane supports two package types, `Configurations`, `Functions` and `Providers`.
+Crossplane supports these package types: `Configurations`, `Functions` and `Providers`.
 
 * **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata. 
 * **`Function`** packages include the compiled function code for single or
