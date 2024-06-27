@@ -6,6 +6,10 @@ aliases:
   - /knowledge-base/migrate-to-provider-families
 ---
 
+{{<hint "warning">}}
+You need to use Crossplane v1.14.6 or newer to successfully execute the instructions in this guide.
+{{< /hint >}}
+
 Upbound maintains migration tooling to support customers migrating from either
 community providers or the monolithic Official Providers to the new family
 provider architecture.
@@ -757,10 +761,6 @@ package appears in the `spec.package` path. The family provider references
 appear in the `spec.dependsOn` path of Configuration.meta.pkg.crossplane.io
 (by default `crossplane.yaml`) manifest. This manifest is in the source package
 directory on the file system.
-
-## Upgrading to a Official Provider version with breaking API changes
-
-Documentation coming soon.
 
 [Releases]: https://github.com/upbound/extensions-migration/releases
 [Upbound Marketplace]: https://marketplace.upbound.io
