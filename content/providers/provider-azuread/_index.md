@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.3.0
+
+_Released 2024-06-13_
+
+* This release generates the secret references under `spec.initProvider` API trees and updates dependencies.
+
+_Refer to the [v1.3.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.3.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.3.0)
+
 ## v1.2.0
 
 _Released 2024-05-16_
