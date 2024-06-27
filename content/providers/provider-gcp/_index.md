@@ -11,6 +11,27 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v1.4.0
+
+_Released 2024-06-27_
+
+* Support for a new resources: `HMACKey.storage.gcp.upbound.io/v1beta1`
+* This release includes a new resource, enhancements, and dependency updates.
+
+_Refer to the [v1.4.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.4.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.4.0)
+
+## v1.3.0
+
+_Released 2024-06-13_
+
+* This release includes bug fixes, documentation updates, and dependency updates.
+
+_Refer to the [v1.3.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.3.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.3.0)
+
 ## v1.2.0
 
 _Released 2024-05-16_
