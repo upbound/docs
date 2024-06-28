@@ -153,7 +153,7 @@ When you enable observability in a Space, Upbound deploys a single [OpenTelemetr
 
 To configure how Upbound exports your metrics, review the `spacesCollector` value in your Space installation Helm chart.
 
-<!-- vale off -->
+<!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
 observability:
   # Observability configuration to collect metrics (traces and logs in the future) from the Spaces machinery
@@ -184,7 +184,7 @@ observability:
         cpu: 100m
         memory: 1Gi
 ```
-<!-- vale on -->
+<!-- vale gitlab.MeaningfulLinkWords = YES -->
 
 You can export metrics from your Crossplane installation, Spaces infrastructure (controller, API, router, etc.), `provider-helm`, and `provider-kubernetes`.
 
