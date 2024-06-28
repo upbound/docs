@@ -195,10 +195,10 @@ Upbound gives users the ability to configure the synchronization of secrets from
 
 ### Configure backups
 
-Upbound gives users the ability to configure backup schedules, take impromptu backups, and conduct self-service restore operations. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/disconnected-spaces/backup-and-restore" >}}).
+Upbound gives users the ability to configure backup schedules, take impromptu backups, and conduct self-service restore operations. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/backup-and-restore" >}}).
 
 ### Configure telemetry
 
 <!-- vale off -->
-Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/disconnected-spaces/observability" >}}).
+Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/observability" >}}).
 <!-- vale on -->
