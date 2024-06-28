@@ -162,7 +162,7 @@ observability:
     tag: %%VERSION%%
     repository: opentelemetry-collector-spaces
     config:
-      # To export observability data, configure the exporters here and update the
+      # To export observability data, configure the exporters in this field and update the
       # exportPipeline to include the exporters you want to use per telemetry type.
       exporters:
         debug:
