@@ -4,10 +4,15 @@ weight: 130
 description: Enable and manage backups in your Upbound Space.
 aliases:
     - /spaces/backup-and-restore
+    - /disconnected-spaces/backup-and-restore
 ---
 
 {{< hint "important" >}}
-This feature is in preview, requires Spaces `v1.3.0`, and is off by default. To enable, set `features.alpha.sharedBackup.enabled=true` when installing Spaces:
+This feature is in preview.
+
+This feature is enabled by default in Cloud Spaces.
+
+For Connected and Disconnected Spaces, this feature requires Spaces `v1.3.0` and is off by default. To enable, set `features.alpha.sharedBackup.enabled=true` when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -16,24 +21,28 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ```
 {{< /hint >}}
 
-Upbound's _Shared Backups_ is a built-in backup and restore feature. Shared Backups lets you configure automatic schedules for taking snapshots of your managed control planes. You can restore data from these backups by making new control planes. This guide explains how you can use Shared Backups for disaster recovery or upgrade scenarios.
+Upbound's _Shared Backups_ is a built-in backup and restore feature. Shared Backups lets you configure automatic schedules for taking snapshots of your managed control planes. You can restore data from these backups by making new control planes. This guide explains how to use Shared Backups for disaster recovery or upgrade scenarios.
 
 ## Benefits
 The Shared Backups feature provides the following benefits:
 
-* You can configure automatic backups for control planes without any operational overhead.
-* You can configure backup schedules for multiple managed control planes in a group.
-* You can use Shared Backups across all hosting environments of Upbound (Disconnected, Connected or Cloud Spaces).
+* Automatic backups for control planes without any operational overhead
+* Backup schedules for multiple managed control planes in a group
+* Shared Backups are available across all hosting environments of Upbound (Disconnected, Connected or Cloud Spaces)
 
 ## Prerequisites
 
-Make sure you've enabled the Shared Backups feature in whichever Space you plan to run your managed control plane in. If you want to use these APIs in your own Disconnected Space, your Space administrator must enable them in the Disconnected Space.
+Enabled the Shared Backups feature in the Space you plan to run your managed control plane in:
+
+- Cloud Spaces: Enabled by default
+- Connected Spaces: Space administrator must enable this feature
+- Disconnected Spaces: Space administrator must enable this feature
 
 <!-- vale off -->
 ## Configure a Shared Backup Config
 <!-- vale on -->
 
-[SharedBackupConfig]({{<ref "reference/space-api/#SharedBackupConfig-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SharedBackupConfig to tell it where store the snapshot. 
+[SharedBackupConfig](https://docs.upbound.io/reference/space-api/#SharedBackupConfig-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SharedBackupConfig to tell it where store the snapshot.
 
 <!-- vale off -->
 ### Backup config provider
@@ -41,9 +50,9 @@ Make sure you've enabled the Shared Backups feature in whichever Space you plan 
 
 The `spec.objectStorage.provider` and `spec.objectStorage.config` fields configures:
 
-* which object storage provider to use
-* where it can find that provider 
-* the credentials needed to communicate with the provider. 
+* The object storage provider
+* The path to the provider
+* The credentials needed to communicate with the provider
 
 You can only set one provider. Upbound currently supports AWS, Azure, and GCP as providers.
 
@@ -52,6 +61,10 @@ You can only set one provider. Upbound currently supports AWS, Azure, and GCP as
 <!-- vale on -->
 
 #### AWS as a storage provider
+
+{{< hint "important" >}}
+For Cloud Spaces, static credentials are currently the only supported auth method.
+{{< /hint >}}
 
 This example demonstrates how to use AWS as a storage provider for your backups:
 
@@ -76,10 +89,14 @@ spec:
 ```
 
 <!-- vale off -->
-This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS eu-west-2 region. The account credentials to access the bucket should exist in a secret of the same namespace as the shared backup config.
+This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS `eu-west-2` region. The account credentials to access the bucket should exist in a secret of the same namespace as the shared backup config.
 <!-- vale on -->
 
 #### Azure as a storage provider
+
+{{< hint "important" >}}
+For Cloud Spaces, static credentials are currently the only supported auth method.
+{{< /hint >}}
 
 This example demonstrates how to use Azure as a storage provider for your backups:
 
@@ -110,6 +127,10 @@ This example assumes you've already created an Azure storage account called "upb
 
 #### GCP as a storage provider
 
+{{< hint "important" >}}
+For Cloud Spaces, static credentials are currently the only supported auth method.
+{{< /hint >}}
+
 This example demonstrates how to use Google Cloud Storage as a storage provider for your backups:
 
 ```yaml
@@ -130,14 +151,14 @@ spec:
 ```
 
 <!-- vale off -->
-This example assumes you've already created a Cloud bucket called "spaces-backup-bucket." You should've also created a service account with enough permission to access this bucket. It's key file should exist in a secret of the same namespace as the Shared Backup Config.
+This example assumes you've already created a Cloud bucket called "spaces-backup-bucket" and a service account with access to this bucket. The key file should exist in a secret of the same namespace as the Shared Backup Config.
 <!-- vale on -->
 
 <!-- vale off -->
 ## Configure a Shared Backup Schedule
 <!-- vale on -->
 
-[SharedBackupSchedule]({{<ref "reference/space-api/#SharedBackupSchedule-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource defines a backup schedule for control planes within its corresponding group. 
+[SharedBackupSchedule](https://docs.upbound.io/reference/space-api/#SharedBackupSchedule-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource defines a backup schedule for control planes within its corresponding group.
 
 Below is an example of a Shared Backup Schedule that takes backups every day of all control planes having `environment: production` labels:
 
@@ -220,7 +241,7 @@ Set the `spec.useOwnerReferencesInBackup` to garbage collect associated backups 
 
 ### Control plane selection
 
-To configure which managed control planes in a group you want to create a backup schedule for, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match. 
+To configure which managed control planes in a group you want to create a backup schedule for, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -269,7 +290,7 @@ spec:
 ## Configure a Shared Backup
 <!-- vale on -->
 
-[SharedBackup]({{<ref "reference/space-api/#SharedBackup-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource causes a backups to occur for control planes within its corresponding group. 
+[SharedBackup](https://docs.upbound.io/reference/space-api/#SharedBackup-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource causes a backups to occur for control planes within its corresponding group.
 
 Below is an example of a Shared Backup that takes a backup of all control planes having `environment: production` labels:
 
@@ -326,7 +347,7 @@ Set the `spec.useOwnerReferencesInBackup` to define whether to garbage collect a
 
 ### Control plane selection
 
-To configure which managed control planes in a group you want to create a backup for, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match. 
+To configure which managed control planes in a group you want to create a backup for, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -373,7 +394,7 @@ spec:
 
 ## Create a manual backup
 
-[Backup]({{<ref "reference/space-api/#Backup-spec">}}) is a [group-scoped]({{<ref "mcp/groups">}}) resource that causes a single backup to occur for a control planes in its corresponding group. 
+[Backup](https://docs.upbound.io/reference/space-api/#Backup-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource that causes a single backup to occur for a control planes in its corresponding group.
 
 Below is an example of a manual Backup of a managed control plane:
 
@@ -451,11 +472,3 @@ kind: ControlPlane
 metadata:
   name: my-awesome-restored-ctp
   namespace: default
-spec:
-  restore:
-    source:
-      apiGroup: spaces.upbound.io
-      kind: Backup
-      name: restore-me
-
-```
