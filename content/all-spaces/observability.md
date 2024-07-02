@@ -149,9 +149,9 @@ datadog    1          0        0             63s
 
 Observability is available in preview at the Space level. This feature allows you to observe your Space infrastructure. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
 
-When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics to your configured observability backends.
+When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics and logs to your configured observability backends.
 
-To configure how Upbound exports your metrics, review the `spacesCollector` value in your Space installation Helm chart.
+To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart.
 
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
@@ -175,6 +175,7 @@ observability:
 
       exportPipeline:
         metrics: [debug]
+        logs: [debug]
 
     resources:
       requests:
@@ -186,7 +187,7 @@ observability:
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
 
-You can export metrics from your Crossplane installation, Spaces infrastructure (controller, API, router, etc.), `provider-helm`, and `provider-kubernetes`.
+You can export metrics and logs from your Crossplane installation, Spaces infrastructure (controller, API, router, etc.), `provider-helm`, and `provider-kubernetes`.
 
 <!-- vale off -->
 ## OpenTelemetryCollector image
