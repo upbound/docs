@@ -59,7 +59,7 @@ kind: Configuration
 metadata:
   name: configuration-getting-started
 spec:
-  package: xpkg.upbound.io/upbound/configuration-getting-started:v0.1.0
+  package: xpkg.upbound.io/upbound/configuration-getting-started:v0.3.0
 EOF
 ```
 
