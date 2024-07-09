@@ -1,0 +1,5 @@
+description: |-
+    Config is a free-form map of configuration options for the object storage provider.
+    See https://github.com/thanos-io/objstore?tab=readme-ov-file for more
+    information on the formats for each supported cloud provider. Bucket and
+    Provider will override the required values in the config.

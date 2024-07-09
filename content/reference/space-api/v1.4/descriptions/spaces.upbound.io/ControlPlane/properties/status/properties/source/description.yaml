@@ -1,0 +1,3 @@
+description: |-
+    [[GATE:EnableGitSource]] SourceStatus is the status of the pull and apply operations of resources
+    from the Source.

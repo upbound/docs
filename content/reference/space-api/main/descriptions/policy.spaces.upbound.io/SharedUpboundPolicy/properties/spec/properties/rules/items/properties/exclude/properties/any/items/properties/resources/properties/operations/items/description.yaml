@@ -1,0 +1,2 @@
+description: |-
+    AdmissionOperation can have one of the values CREATE, UPDATE, CONNECT, DELETE, which are used to match a specific action.

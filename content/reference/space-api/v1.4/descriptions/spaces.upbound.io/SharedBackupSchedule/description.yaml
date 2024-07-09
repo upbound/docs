@@ -1,0 +1,3 @@
+description: |-
+    SharedBackupSchedule defines a schedule for SharedBackup on a set of
+    ControlPlanes.
