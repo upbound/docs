@@ -1,5 +1,4 @@
 ---
-title: "Space API"
 weight: 0
 description: "API details for Spaces"
 tocHidden: true

@@ -1,3 +1,0 @@
-description: |-
-    ControlPlane is the name of the ControlPlane to backup.
-    Requires 'backup' permission on the referenced ControlPlane.

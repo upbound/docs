@@ -1,3 +1,0 @@
-description: |-
-    Kind of object being referenced. Values defined by this API group are 'User', 'Group', and 'ServiceAccount'.
-    If the Authorizer does not recognized the kind value, the Authorizer should report an error.

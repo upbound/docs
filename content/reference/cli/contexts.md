@@ -18,7 +18,7 @@ Upbound's information architecture is a hierarchy consisting of:
 These contexts nest within each other. An MCP must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
 <!--vale on -->
 
-Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api/main" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
+Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api/" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
 
 In `up`, the commands you can execute are context-sensitive.
 

@@ -1,0 +1,42 @@
+.latest {
+    background-color:  var(--latest-pill-background);
+    letter-spacing: .7px;
+    font-weight: 500;
+    color: var(--latest-pill-color);
+    margin-left: 5px;
+    color: var(--body-font-color);
+    background-color: var(--dropdown-background);
+    position: relative !important;
+    left: 10000000px !important; /* Adjust this value to move the badge further right */
+    top: -5px !important; /* Adjust this value to align vertically if needed */
+    margin-left: auto !important; /* This will push it to the far right within the button */
+}
+
+
+.bd-dropdown {
+    color: var(--body-font-color);
+    background-color: var(--dropdown-background);
+    position: relative !important;
+    left: 10000000px !important; /* Adjust this value to move the badge further right */
+    top: -5px !important; /* Adjust this value to align vertically if needed */
+    margin-left: auto !important; /* This will push it to the far right within the button */
+}
+
+.bd-dropdown-item{
+    background-color: var(--dropdown-background);
+    color: var(--dropdown-color);
+
+    &.active, &:hover {
+        background-color: var(--dropdown-highlight);
+        color: var(--body-font-color);
+    }
+}
+
+.bd-border-color{
+    border-color: var(--dropdown-border-color);
+}
+
+.version-dropdown-menu {
+    overflow-x: auto;
+    white-space: nowrap;
+  }

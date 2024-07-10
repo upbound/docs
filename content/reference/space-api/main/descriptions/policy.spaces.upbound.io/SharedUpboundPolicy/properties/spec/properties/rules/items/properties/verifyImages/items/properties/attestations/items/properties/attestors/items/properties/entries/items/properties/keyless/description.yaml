@@ -1,3 +1,0 @@
-description: |-
-    Keyless is a set of attribute used to verify a Sigstore keyless attestor.
-    See https://github.com/sigstore/cosign/blob/main/KEYLESS.md.

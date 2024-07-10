@@ -1,2 +1,0 @@
-description: |-
-    AnnotationDomain is custom domain of annotation for message and signature. Default is 'cosign.sigstore.dev'.

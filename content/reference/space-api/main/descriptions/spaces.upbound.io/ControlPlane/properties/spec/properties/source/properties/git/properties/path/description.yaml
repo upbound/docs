@@ -1,4 +1,0 @@
-description: |-
-    Path is the path within the Git repository to pull the Control Plane
-    Source from. The folder it points to must contain a valid ControlPlaneSource
-    manifest. Default is the root of the repository.

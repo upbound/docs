@@ -1,5 +1,0 @@
-description: |-
-    Optional service account field containing the name of a kubernetes ServiceAccount.
-    If the service account is specified, the service account secret token JWT will be used
-    for authenticating with Vault. If the service account selector is not supplied,
-    the secretRef will be used instead.

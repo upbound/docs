@@ -1,3 +1,0 @@
-description: |-
-    Admission controls if rules are applied during admission.
-    Optional. Default value is 'true'.
