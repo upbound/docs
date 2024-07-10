@@ -40,7 +40,8 @@
         {{/* Iterate over each CRD file */}}
         {{ range $fileName, $crdContent := $crdsData }}
             {{/* The path to download the CRD files. Relative to the _index.md file using "product: crds" */}}
-            {{ $downloadPath := (printf "./yaml/%s.yaml" $fileName) }}
+            {{ $version := page.Params.version }}
+            {{ $downloadPath := (printf "%s/yaml/%s.yaml" $version $fileName) }}
 
             {{ $group   := $crdContent.spec.group }}
             {{ $kind    := $crdContent.spec.names.kind }}
