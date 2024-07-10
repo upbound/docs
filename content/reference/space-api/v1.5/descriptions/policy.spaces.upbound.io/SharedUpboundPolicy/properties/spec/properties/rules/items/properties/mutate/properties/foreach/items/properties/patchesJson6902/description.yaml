@@ -1,0 +1,3 @@
+description: |-
+    PatchesJSON6902 is a list of RFC 6902 JSON Patch declarations used to modify resources.
+    See https://tools.ietf.org/html/rfc6902 and https://kubectl.docs.kubernetes.io/references/kustomize/patchesjson6902/.

@@ -71,4 +71,56 @@
     .chroma {
         background-color: inherit;
     }
+
+    .dropdown.float-end.bd-dropdown {
+        /* Dropdown button styles */
+        --dropdown-background: var(--body-background);
+        --dropdown-color: var(--body-font-color);
+        --dropdown-border-color: var(--crd-row-border);
+        --dropdown-highlight: var(--home-resource-bg);
+
+        /* Latest pill styles */
+        --latest-pill-background: var(--latest-pill-background);
+        --latest-pill-color: var(--nav-item-active);
+    }
+
+    /* Dropdown toggle button */
+    .dropdown.float-end.bd-dropdown .btn-outline-secondary {
+        color: var(--dropdown-color);
+        border-color: var(--dropdown-border-color);
+        background-color: var(--dropdown-background);
+    }
+
+    .dropdown.float-end.bd-dropdown .btn-outline-secondary:hover,
+    .dropdown.float-end.bd-dropdown .btn-outline-secondary:focus {
+        background-color: var(--dropdown-highlight);
+    }
+
+    /* Latest badge */
+    .dropdown.float-end.bd-dropdown .badge.latest {
+        background-color: var(--latest-pill-background);
+        color: var(--latest-pill-color);
+    }
+
+    /* Dropdown menu */
+    .dropdown.float-end.bd-dropdown .dropdown-menu {
+        background-color: var(--dropdown-background);
+        border-color: var(--dropdown-border-color);
+    }
+
+    /* Dropdown items */
+    .dropdown.float-end.bd-dropdown .dropdown-item {
+        color: var(--dropdown-color);
+    }
+
+    .dropdown.float-end.bd-dropdown .dropdown-item:hover,
+    .dropdown.float-end.bd-dropdown .dropdown-item:focus {
+        background-color: var(--dropdown-highlight);
+    }
+
+    /* Active dropdown item */
+    .dropdown.float-end.bd-dropdown .dropdown-item.active {
+        background-color: var(--nav-item-active-bg);
+        color: var(--nav-item-active);
+    }
 }

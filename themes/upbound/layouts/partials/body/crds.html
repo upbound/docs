@@ -4,17 +4,44 @@
 
     {{ partialCached "body/apiBuilder/GKVHeader" . }}
 
+    {{/* Version detection logic */}}
+    {{ $versionList := slice }}
+    {{ $majordict := dict }}
+    {{ $majorlist := slice }}
+    {{ $sorted_list := slice }}
+    {{ $cur_ver := .Page.Params.version | default .Site.Params.latest }}
+
+    {{ range .Site.Sections }}
+        {{ if eq .Page.Params.version "main" }}
+            {{$sorted_list = $sorted_list | append "main" }}
+        {{ else if ne .Page.Params.version nil }}
+            {{ $splitver := split .Page.Params.version "." }}
+            {{ if eq (len $splitver) 2 }}
+                {{ $verlist := (index $majordict (index $splitver 0)) }}
+                {{ $verlist = $verlist | append (index $splitver 1) }}
+                {{ $majordict = merge $majordict (dict (index $splitver 0) $verlist) }}
+                {{ $majorlist = $majorlist | append (index $splitver 0) }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ range sort ($majorlist | uniq) "value" "desc" }}
+        {{ $majorver := . }}
+        {{ range sort (index $majordict .) "value" "desc" }}
+            {{$sorted_list = $sorted_list | append (printf "%s.%s" $majorver .) }}
+        {{ end }}
+    {{ end }}
+
     <div id="crd-rows-container">
-        {{/* $.Site.Data is from the hugo config file module.mounts.target. */}}
-        {{/* Hugo requires YAML to be in the 'data' location for processing */}}
-        {{/* https://gohugo.io/methods/site/data/ */}}
-        {{ $crdsData := index $.Site.Data.crds.reference  "space-api" "yaml" }}
-        {{ $descFiles := index $.Site.Data.crds.reference  "space-api" "descriptions" }}
+        {{/* Use the detected version */}}
+        {{ $crdsData := index $.Site.Data.crds.reference "space-api" $cur_ver "yaml" }}
+        {{ $descFiles := index $.Site.Data.crds.reference "space-api" $cur_ver "descriptions" }}
 
         {{/* Iterate over each CRD file */}}
         {{ range $fileName, $crdContent := $crdsData }}
             {{/* The path to download the CRD files. Relative to the _index.md file using "product: crds" */}}
-            {{ $downloadPath := (printf "yaml/%s.yaml" $fileName) }}
+            {{ $version := page.Params.version }}
+            {{ $downloadPath := (printf "%s/yaml/%s.yaml" $version $fileName) }}
 
             {{ $group   := $crdContent.spec.group }}
             {{ $kind    := $crdContent.spec.names.kind }}
@@ -36,7 +63,6 @@
 
                 {{/* generate the GKV line to expand/collapse the CRD data */}}
                 {{ partial "body/apiBuilder/printGKVExpander" (dict  "group" $group "version" $version "kind" $kind) }}
-
 
                 {{/* The container to show/hide with information related to the CRD */}}
                 <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
@@ -64,7 +90,9 @@
 
                 </div>
             </div>
-        {{ end}}
+        {{ else }}
+            <p>Debug: No CRD files found in the data for version {{ $cur_ver }}</p>
+        {{ end }}
     </div>
 
 <script>
