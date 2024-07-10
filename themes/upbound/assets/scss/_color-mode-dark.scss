@@ -21,6 +21,7 @@
 
 
 
+
     // Single code lines inside text. Code blocks are in _code_theme_dark.scss
     --code-background: #{$up-grey-800n}30;
     --code-color: #{$up-grey-000};
@@ -174,5 +175,57 @@
     //Striped table font color
     .table-striped-columns > :not(caption) > tr > :nth-child(even){
         color: inherit !important;
+    }
+
+    .dropdown.float-end.bd-dropdown {
+        /* Dropdown button styles */
+        --dropdown-background: var(--body-background);
+        --dropdown-color: var(--body-font-color);
+        --dropdown-border-color: var(--up-neutral-900);
+        --dropdown-highlight: var(--up-neutral-900);
+
+        /* Latest pill styles */
+        --latest-pill-background: var(--up-grey-800n);
+        --latest-pill-color: var(--up-grey-600);
+    }
+
+    /* Dropdown toggle button */
+    .dropdown.float-end.bd-dropdown .btn-outline-secondary {
+        color: var(--dropdown-color);
+        border-color: var(--dropdown-border-color);
+        background-color: var(--dropdown-background);
+    }
+
+    .dropdown.float-end.bd-dropdown .btn-outline-secondary:hover,
+    .dropdown.float-end.bd-dropdown .btn-outline-secondary:focus {
+        background-color: var(--dropdown-highlight);
+    }
+
+    /* Latest badge */
+    .dropdown.float-end.bd-dropdown .badge.latest {
+        background-color: var(--latest-pill-background);
+        color: var(--latest-pill-color);
+    }
+
+    /* Dropdown menu */
+    .dropdown.float-end.bd-dropdown .dropdown-menu {
+        background-color: var(--dropdown-background);
+        border-color: var(--dropdown-border-color);
+    }
+
+    /* Dropdown items */
+    .dropdown.float-end.bd-dropdown .dropdown-item {
+        color: var(--dropdown-color);
+    }
+
+    .dropdown.float-end.bd-dropdown .dropdown-item:hover,
+    .dropdown.float-end.bd-dropdown .dropdown-item:focus {
+        background-color: var(--dropdown-highlight);
+    }
+
+    /* Active dropdown item */
+    .dropdown.float-end.bd-dropdown .dropdown-item.active {
+        background-color: var(--active-tab-color);
+        color: var(--body-font-color);
     }
 }

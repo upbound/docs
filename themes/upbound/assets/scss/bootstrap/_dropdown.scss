@@ -212,6 +212,7 @@
 
 .dropdown-menu.show {
   display: block;
+  background-color: var(background-color) !important;
 }
 
 // Dropdown section headers
@@ -247,4 +248,9 @@
   --#{$prefix}dropdown-link-disabled-color: #{$dropdown-dark-link-disabled-color};
   --#{$prefix}dropdown-header-color: #{$dropdown-dark-header-color};
   // scss-docs-end dropdown-dark-css-vars
+}
+
+.dropdown-menu {
+  margin-top: calc(-1 * var(--#{$prefix}nav-tabs-border-width)); //
+  @include border-top-radius(0);
 }
