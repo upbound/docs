@@ -116,7 +116,7 @@ up ctp list
 Connect to your managed control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
 
 ```bash
-up ctx default/ctp1
+up ctx ./default/ctp1
 ```
 
 This command updates your current kubecontext. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
