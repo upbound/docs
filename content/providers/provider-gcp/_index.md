@@ -11,6 +11,16 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v1.5.0
+
+_Released 2024-07-04_
+
+* Update the GCP Terraform provider from `5.19.0` to `5.28.0`
+
+_Refer to the [v1.5.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.5.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.5.0)
+
 ## v1.4.0
 
 _Released 2024-06-27_
