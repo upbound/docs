@@ -35,5 +35,5 @@ A [personal access token]({{<ref "/console#create-a-personal-access-token" >}}) 
 {{< expand "When should you use a robot token for interacting with Upbound?" >}}
 In Upbound, robot tokens are currently scoped to inheriting Upbound Marketplace repository permissions from a [team]({{<ref "teams/#manage-repository-permissions" >}}) they're assigned to. 
 
-You should use a robot token for your Upbound Marketplace CI to push new tags,or as a package pull secret for private repositories.
+You should use a robot token for your Upbound Marketplace CI to push new tags or as a package pull secret for private repositories.
 {{</expand >}}
