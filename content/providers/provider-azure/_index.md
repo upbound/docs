@@ -13,13 +13,24 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.4.0
+
+_Released 2024-07-04_
+
+* Support for a new resource: `BastionHost.network.azure.upbound.io/v1beta1`
+* This release includes a new resource, bug fixes, and dependency updates.
+
+_Refer to the [v1.4.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.4.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.4.0)
+
 ## v1.3.0
 
 _Released 2024-06-13_
 
 * Support for new resources: `PimActiveRoleAssignment.authorization.azure.upbound.io/v1beta1`
 and `PimEligibleRoleAssignment.authorization.azure.upbound.io/v1beta1`
-* This release includes introduces new resources, bug fixes, enhancements,
+* This release includes new resources, bug fixes, enhancements,
 and dependency updates.
 
 _Refer to the [v1.3.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.3.0) for full details._

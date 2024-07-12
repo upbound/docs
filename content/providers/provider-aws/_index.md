@@ -13,6 +13,20 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.9.0
+
+_Released 2024-07-11_
+
+* Support for new resources: `Environment.mwaa.aws.upbound.io/v1beta1` and
+`ResourcePolicy.dynamodb.aws.upbound.io/v1beta1`
+* This release includes a new family provider `provider-aws-mwaa`, new resources,
+enhancements, and dependency updates.
+
+
+_Refer to the [v1.9.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.9.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.9.0)
+
 ## v1.8.0
 
 _Released 2024-06-27_
