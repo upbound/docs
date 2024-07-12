@@ -21,3 +21,19 @@ Make sure you've created the desired robot before assigning it to a team. To ass
 2. Select the team you want to assign a robot account.
 3. Select the **Robot accounts** tab
 4. Select the **Add Robot Account** button and select the robot you want.
+
+## Frequently asked questions
+
+{{< expand "What's the difference between a robot token and a personal access token?" >}}
+A robot token is like a service account. They have their own identity like service principals in a cloud provider.
+
+A [personal access token]({{<ref "/console#create-a-personal-access-token" >}}) or "PAT" is a long-lived serialization of a specific Upbound user's identity. Your personal access token can do everything your user can do in Upbound. Only use PATs when necessary and never share them with others.
+
+
+{{</expand >}}
+
+{{< expand "When should you use a robot token for interacting with Upbound?" >}}
+In Upbound, robot tokens are currently scoped to inheriting Upbound Marketplace repository permissions from a [team]({{<ref "teams/#manage-repository-permissions" >}}) they're assigned to. 
+
+You should use a robot token for your Upbound Marketplace CI to push new tags or as a package pull secret for private repositories.
+{{</expand >}}
