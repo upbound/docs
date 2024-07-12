@@ -25,7 +25,7 @@ Make sure you've created the desired robot before assigning it to a team. To ass
 ## Frequently asked questions
 
 {{< expand "What's the difference between a robot token and a personal access token?" >}}
-A robot token is analogous to a service account - they're akin to service principals in a cloud provider that have their own identity.
+A robot token is similar to a service account. They have their own identity like service principals in a cloud provider 
 
 A [personal access token]({{<ref "/console#create-a-personal-access-token" >}}) or "PAT" is a long-lived serialization of a specific Upbound user's identity. In other words, anyone who has your personal access token can do everything your user can do on Upbound. It's recommended to use PATs sparingly and with care.
 {{</expand >}}
