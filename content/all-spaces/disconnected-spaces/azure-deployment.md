@@ -117,7 +117,7 @@ export SPACES_CLUSTER_TYPE=aks
 Install cert-manager.
 
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.12.3/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
 kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Available=True --timeout=360s
 ```
 
