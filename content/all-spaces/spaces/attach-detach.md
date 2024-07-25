@@ -17,8 +17,12 @@ This feature is in preview and requires Spaces `v1.3.0`.
 Before you begin, make sure you have:
 
 - an existing Upbound [organization]({{<ref "accounts/organizations.md">}}) in Upbound SaaS.
-- the `up` CLI installed and logged into your organization
+- the [`up` CLI]({{<ref "reference/cli">}}) installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
+
+{{< hint "important" >}}
+Spaces `v1.6` requires `up` CLI `v0.32.0` and up.
+{{< /hint >}}
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
