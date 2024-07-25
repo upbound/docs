@@ -53,7 +53,7 @@ Organization admins have every available permission within the organization. Per
 
 ### Members
 
-Members can only view resources that admins have granted access to. They can't create robot accounts or teams. They also don't have permission to view the Upbound console.
+Members can only view resources that admins have granted access to. They can't create robot accounts or teams. By default, members don't have permission to view the console, but admins can grant them access to specific areas.
 
 Upbound manages access to resources with role permissions. Each
 organizations administrator can assign membership to a user to have access to
