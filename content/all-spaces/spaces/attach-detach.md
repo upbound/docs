@@ -21,7 +21,7 @@ Before you begin, make sure you have:
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 
 {{< hint "important" >}}
-Spaces `v1.6` requires `up` CLI `v0.32.0` and up.
+Spaces `v1.6` requires `up` CLI `v0.32.0` or newer.
 {{< /hint >}}
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
