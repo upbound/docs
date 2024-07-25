@@ -64,10 +64,9 @@ These roles apply at three levels:
 
 ### Configure roles
 
-<!-- vale gitlab.MeaningfulLinkWords  = NO -->
-
+<!-- vale gitlab.MeaningfulLinkWords = NO -->
 Here's an example of configuring roles using an `ObjectRoleBinding`:
-<!-- vale gitlab.MeaningfulLinkWords  = YES -->
+<!-- vale gitlab.MeaningfulLinkWords = YES -->
 
 
 ```yaml
