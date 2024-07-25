@@ -1,6 +1,5 @@
 ---
 title: "Single Sign On in Upbound"
-weight: 2
 description: "Configure single sign-on in your Upbound organization to manage user access"
 ---
 

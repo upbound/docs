@@ -1,9 +1,10 @@
 ---
 title: Organizations
+weight: 2
 description: "Configuring Organizations for Upbound"
 ---
 
-Organizations allow multiple [user accounts]({{<ref "users" >}}) to share Upbound resources and collaborate.  
+Organizations allow multiple [user accounts]({{<ref "users" >}}) to share Upbound resources and collaborate.
 
 ## Selecting an organization
 
@@ -25,7 +26,7 @@ an organization from your user account settings.
 To create an organization, login to Upbound and go the [Organization selection screen](https://console.upbound.io/selectOrg).
 
 {{< hint "tip" >}}
-There's no limit to the number of organizations a user can belong to. 
+There's no limit to the number of organizations a user can belong to.
 
 Users are only allowed to create one organization.
 {{< /hint >}}
@@ -40,18 +41,18 @@ To view and manage an organization's settings, select Settings gear icon in the 
 
 Organization owners and users with Admin permissions can invite Upbound users into the organization, cancel invitations, and remove existing members.
 
-The user list combines both active and invited users. 
+The user list combines both active and invited users.
 
 Edit active users to change the user's granted role or remove them from the
-organization. 
+organization.
 
-Invited users who haven't accepted the invitation show a "Pending" status. 
+Invited users who haven't accepted the invitation show a "Pending" status.
 Select the user to resend the invite or remove them from the organization.
 
 Upbound only supports inviting users by email address, not by Upbound username.
 
 To invite a user to an organization:
 
-1. Select **Invite New User**. 
+1. Select **Invite New User**.
 2. Enter the user's email address and select their role.
-3. Select the **Invite** button to send the invite. 
+3. Select the **Invite** button to send the invite.

@@ -1,5 +1,6 @@
 ---
 title: "Teams"
+weight: 3
 description: "Creating and managing Upbound teams"
 ---
 
@@ -35,13 +36,13 @@ Deleting a team permanently removes any permissions its members and robot accoun
 
 Users can be members of more than one team inside an organization.
 
-The following illustrates a user that's a member of two different organizations and multiple teams. 
+The following illustrates a user that's a member of two different organizations and multiple teams.
 ![A user in multiple groups and multiple organizations.](/accounts/images/user-org-team.png "A user can be in multiple orgs and multiple groups")
 <!-- vale Upbound.Spelling = NO -->
 <!-- ignore "Lando" -->
-The user _Lando_ has a unique _user account_.  
-Lando is a member of both _Organization-1_ and _Organization-2_.  
-Inside _Organization-1_, Lando belongs to _Team-A_ and _Team-B_.  
+The user _Lando_ has a unique _user account_.
+Lando is a member of both _Organization-1_ and _Organization-2_.
+Inside _Organization-1_, Lando belongs to _Team-A_ and _Team-B_.
 Lando is only a member of _Team-Y_ inside _Organization-2_.
 <!-- vale Upbound.Spelling = YES -->
 
@@ -75,7 +76,7 @@ You can manage adding and removing robots from teams. To assign a robot to a tea
 
 ## Manage repository permissions
 
-Manage repository permissions for the Upbound Marketplace at the team level. 
+Manage repository permissions for the Upbound Marketplace at the team level.
 
 To create a new permission:
 
@@ -83,5 +84,3 @@ To create a new permission:
 2. Select the team from the **Teams** tab.
 2. Select the team's **Permissions** tab.
 3. Select **Create Repository Permission**.
-
-

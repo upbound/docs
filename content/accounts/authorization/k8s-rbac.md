@@ -1,0 +1,61 @@
+---
+title: "Kubernetes Hub Authorization"
+weight: 9
+description: "A comprehensive guide to implementing and configuring access control in Upbound"
+---
+
+{{< hint "important" >}}
+For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "what-is-upbound.md" >}}).
+{{< /hint >}}
+
+This guide provides a comprehensive overview of Kubernetes Hub Authorization in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
+
+### Enabling Kubernetes Hub Authorization
+
+To enable Kubernetes Hub Authentication in your Space, you need:
+- A Kubernetes cluster with RBAC enabled
+- To attach your cluster to Upbound
+
+Users can authenticate to the single-tenant Connected Space with their Kubernetes credentials using this method.
+
+### Configuring Kubernetes RBAC
+
+To configure Kubernetes RBAC in your Disconnected Space, you need to create `ClusterRoles` and `Roles` for defining access to your resources. For example:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: upbound-user
+rules:
+- apiGroups: ["spaces.upbound.io"]
+  resources: ["controlplanes"]
+  verbs: ["get", "list", "watch"]
+```
+
+Next, create `ClusterRoleBindings` and `RoleBindings` to assign roles to subjects like users, groups, or service accounts:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: controlplane-getters
+subjects:
+- kind: Group
+  name: upbound:(user|robot):<username>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: controlplane-getter
+  apiGroup: rbac.authorization.k8s.io
+```
+
+The `subject` in this example can contain teams (`upbound:team:<uuid>`) or org roles (`upbound:org-role:admin|member`) depending on your role needs.
+
+## Kubernetes Hub RBAC Integration
+
+Upbound RBAC integrates with Kubernetes hub RBAC to map to admin, edit, and view access:
+
+- `controlplanes/k8s, [create, delete]` => Admin
+- `controlplanes/k8s, update` => Editor
+- `controlplanes/k8s, get` => Viewer
