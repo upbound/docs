@@ -33,7 +33,7 @@ Upbound supports the following identity types:
 
 ### Permissions Model
 
-Upbound uses an organization-based access model with two primary roles:
+Upbound uses an organization-based access model with two primary organization-scoped roles:
 
 - Admins: Have full permissions to view and change all resources within the organization.
 - Members: Can only view and interact with resources that admins have explicitly granted access to.
@@ -41,7 +41,7 @@ Upbound uses an organization-based access model with two primary roles:
 
 #### Admins
 
-Organization admins have every available permission within the organization. Permissions include:
+Organization admins have every available permission within the organization. Permissions include, but are not limited to:
 
 - Repository management (create repositories; push packages; download private packages)
 - Manage membership (invite or remove users from the org; manage assigned roles)
@@ -81,7 +81,7 @@ the following resources:
 
 Upbound issues JSON Web Tokens (JWT) with identity information to authenticate to your platform APIs. The token includes:
 
-- A subject (`upbound:user/team:<name>`)
+- A subject (`upbound:user:<name>` or `upbound:robot:<name>`)
 - The user's team memberships (`upbound:team:<UUID>`)
 - The organization context (upbound:org-role:(admin|member))
 
