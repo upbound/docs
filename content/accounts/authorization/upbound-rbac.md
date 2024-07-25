@@ -10,7 +10,7 @@ For more information about Upbound's Space offerings, review [What is Upbound]({
 
 This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
 
-## Identity Types
+## Identity types
 
 Upbound supports the following identity types:
 
@@ -30,13 +30,18 @@ Upbound issues JSON Web Tokens (JWT) with identity information to authenticate t
 
 ## Authorization
 
+<!-- vale Google.WordList = NO -->
+<!-- vale Microsoft.Terms = NO -->
 Upbound uses identities to check for authentication across the platform. In the Cloud environment, Upbound grants identities organization roles to control access to features and resources with IAM policies.
+<!-- vale Google.WordList = YES -->
+<!-- vale Microsoft.Terms = NO -->
 
 In Connected Spaces, you can bind identities to Kubernetes RBAC or Upbound RBAC to control access to resources. The subject and group claims in the JWT token determine the user's effective permissions for an API request.
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Upbound RBAC
 
-### Enabling Upbound RBAC
+### Enable Upbound RBAC
 
 You can enable Upbound RBAC at install or upgrade time:
 
@@ -52,14 +57,16 @@ Upbound RBAC roles define sets of permissions with three built-in roles at the g
 - Editor
 - Viewer
 
-These roles are tiered at three levels:
+These roles apply at three levels:
 - Organization
 - Control Plane Groups
 - Control Planes
 
-### Configuring Roles
+### Configure roles
 
+<!-- vale gitlab.MeaningfulLinkWords  = NO -->
 Here's an example of configuring roles using an `ObjectRoleBinding`:
+<!-- vale gitlab.MeaningfulLinkWords  = YES -->
 
 ```yaml
 apiVersion: authorization.spaces.upbound.io/v1
@@ -78,3 +85,4 @@ spec:
     name: eng-team
     role: editor
 ```
+<!-- vale Microsoft.HeadingAcronyms = YES -->

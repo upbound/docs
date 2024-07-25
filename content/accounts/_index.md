@@ -31,7 +31,7 @@ Upbound supports the following identity types:
   automation.
 
 
-### Permissions Model
+### Permissions model
 
 Upbound uses an organization-based access model with two primary organization-scoped roles:
 
@@ -39,9 +39,9 @@ Upbound uses an organization-based access model with two primary organization-sc
 - Members: Can only view and interact with resources that admins have explicitly granted access to.
 
 
-#### Admins
+#### Administrators
 
-Organization admins have every available permission within the organization. Permissions include, but are not limited to:
+Organization administrators have every available permission within the organization. Permissions include, but aren't limited to:
 
 - Repository management (create repositories; push packages; download private packages)
 - Manage membership (invite or remove users from the org; manage assigned roles)
@@ -53,7 +53,7 @@ Organization admins have every available permission within the organization. Per
 
 ### Members
 
-Members can only view resources that admins have granted access to. They can't create robot accounts or teams. By default, members don't have permission to view the console, but admins can grant them access to specific areas.
+Members can only view resources that administrators have granted access to. They can't create robot accounts or teams. By default, members don't have permission to view the console, but admins can grant them access to specific areas.
 
 Upbound manages access to resources with role permissions. Each
 organizations administrator can assign membership to a user to have access to
@@ -87,7 +87,11 @@ Upbound issues JSON Web Tokens (JWT) with identity information to authenticate t
 
 ## Authorization
 
+<!-- vale Google.WordList = NO -->
+<!-- vale Microsoft.Terms = NO -->
 Upbound uses identities to check for authentication across the platform. In the Cloud environment, Upbound grants identities organization roles to control access to features and resources with IAM policies.
+<!-- vale Google.WordList = YES -->
+<!-- vale Microsoft.Terms = YES -->
 
 You can bind identities to Kubernetes RBAC or Upbound RBAC to control access to resources depending on your operational model. The subject and group claims in the JWT token determine the user's effective permissions for an API request.
 
@@ -96,23 +100,25 @@ Depending on your operational model, you can use either:
 - Upbound RBAC (with Connected or Cloud Spaces)
 - Kubernetes Hub Authorization (Single-Tenant Connected or Disconnected Spaces)
 
-## RBAC Models Overview
+## Role-based access control
 
 Upbound offers two primary models for implementing RBAC: the Kubernetes Hub model and the Upbound model. Understanding the differences and use cases for each is crucial for effective access management.
 
-### Kubernetes Hub Model
+<!-- vale Google.Headings = NO -->
+### Kubernetes Hub model
+<!-- vale Google.Headings = YES -->
 
 The Kubernetes Hub model leverages native Kubernetes RBAC mechanisms and is ideal for:
 - Single-Tenant Connected Spaces
 - Disconnected Spaces
-- Environments where tight integration with existing Kubernetes infrastructure is required
+- Environments with existing Kubernetes infrastructure
 
 Key features:
 - Uses standard Kubernetes `ClusterRoles`, `Roles`, `ClusterRoleBindings`, and `RoleBindings`
 - Allows fine-grained control over Kubernetes resources
 - Integrates seamlessly with existing Kubernetes RBAC configurations
 
-### Upbound Model
+### Upbound model
 
 The Upbound model is a proprietary RBAC system designed specifically for Upbound's platform and is suitable for:
 - Connected Spaces
