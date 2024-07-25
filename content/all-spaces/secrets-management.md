@@ -93,7 +93,7 @@ Example configuration:
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
 metadata:
-  name: aws-sm
+  name: azure-sm
 spec:
   provider:
     azurekv:
@@ -339,6 +339,7 @@ spec:
         remoteRef:
           key: "/foo/bar"
           version: "v1"
+EOF
 ```
 
 <!-- vale off -->
