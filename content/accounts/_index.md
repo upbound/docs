@@ -81,13 +81,13 @@ the following resources:
 
 Upbound issues JSON Web Tokens (JWT) with identity information to authenticate to your platform APIs. The token includes:
 
+<!-- vale Google.WordList = NO -->
 - A subject (`upbound:user:<name>` or `upbound:robot:<name>`)
 - The user's team memberships (`upbound:team:<UUID>`)
 - The organization context (upbound:org-role:(admin|member))
 
 ## Authorization
 
-<!-- vale Google.WordList = NO -->
 <!-- vale Microsoft.Terms = NO -->
 Upbound uses identities to check for authentication across the platform. In the Cloud environment, Upbound grants identities organization roles to control access to features and resources with IAM policies.
 <!-- vale Google.WordList = YES -->
