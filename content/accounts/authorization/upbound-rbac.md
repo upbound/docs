@@ -42,6 +42,7 @@ In Connected Spaces, you can bind identities to Kubernetes RBAC or Upbound RBAC 
 ## Upbound RBAC
 
 ### Enable Upbound RBAC
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 You can enable Upbound RBAC at install or upgrade time:
 
@@ -85,4 +86,3 @@ spec:
     name: eng-team
     role: editor
 ```
-<!-- vale Microsoft.HeadingAcronyms = YES -->
