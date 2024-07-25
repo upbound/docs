@@ -64,10 +64,9 @@ These roles apply at three levels:
 
 ### Configure roles
 
-<!-- vale gitlab.MeaningfulLinkWords = NO -->
+<!-- vale off -->
 Here's an example of configuring roles using an `ObjectRoleBinding`:
-<!-- vale gitlab.MeaningfulLinkWords = YES -->
-
+<!-- vale on -->
 
 ```yaml
 apiVersion: authorization.spaces.upbound.io/v1
