@@ -1,14 +1,14 @@
 ---
-title: "Kubernetes Hub Authorization"
+title: "Kubernetes RBAC"
 weight: 9
-description: "A comprehensive guide to implementing and configuring access control in Upbound"
+description: "A guide to implementing and configuring Kuberentes RBAC in Upbound"
 ---
 
 {{< hint "important" >}}
 For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "what-is-upbound.md" >}}).
 {{< /hint >}}
 
-This guide provides a comprehensive overview of Kubernetes Hub Authorization in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
+This guide provides an overview of Kubernetes role-based access control (RBAC) in Upbound. RBAC allows you to regulate access to your Upbound resources and control planes based on the roles of individual users within your organization.
 
 ### Enabling Kubernetes Hub Authorization
 
@@ -16,7 +16,7 @@ To enable Kubernetes Hub Authentication in your Space, you need:
 - A Kubernetes cluster with RBAC enabled
 - To attach your cluster to Upbound
 
-Users can authenticate to the single-tenant Connected Space with their Kubernetes credentials using this method.
+Users can authenticate to the single-tenant Space with their Kubernetes credentials using this method.
 
 ### Configuring Kubernetes RBAC
 
@@ -52,7 +52,7 @@ roleRef:
 
 The `subject` in this example can contain teams (`upbound:team:<uuid>`) or org roles (`upbound:org-role:admin|member`) depending on your role needs.
 
-## Kubernetes Hub RBAC Integration
+## Upbound RBAC Integration
 
 Upbound RBAC integrates with Kubernetes hub RBAC to map to admin, edit, and view access:
 

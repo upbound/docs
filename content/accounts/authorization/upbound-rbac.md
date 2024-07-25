@@ -1,14 +1,14 @@
 ---
 title: "Upbound RBAC"
 weight: 6
-description: "A comprehensive guide to implementing and configuring access control in Upbound"
+description: "A guide to implementing and configuring access control in Upbound"
 ---
 
 {{< hint "important" >}}
 For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "what-is-upbound.md" >}}).
 {{< /hint >}}
 
-This guide provides a comprehensive overview of role-based access control (RBAC) in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
+This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
 
 ## Identity Types
 
@@ -78,11 +78,3 @@ spec:
     name: eng-team
     role: editor
 ```
-
-### Roles Matrix
-
-The document provides detailed matrices for Spaces API Resources and Control Plane Resources, showing which roles have permissions for various actions (Get, List, Create, Update, Patch, Delete) on different resources.
-
-The hierarchy of roles is:
-
-`org-admin` > `grp-admin` > `grp-editor` > `grp-viewer` > `anyone`

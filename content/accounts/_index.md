@@ -1,7 +1,6 @@
 ---
 title: "User Management"
-weight: 0
-
+weight: 3
 ---
 
 Upbound allows administrators to deploy Role-based Access Control (RBAC)
