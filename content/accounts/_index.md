@@ -51,7 +51,7 @@ Organization administrators have every available permission within the organizat
 - Delete organizations
 - View and interact with the Upbound console
 
-### Members
+#### Members
 
 Members can only view resources that administrators have granted access to. They can't create robot accounts or teams. By default, members don't have permission to view the console, but admins can grant them access to specific areas.
 
