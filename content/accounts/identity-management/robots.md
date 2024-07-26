@@ -1,9 +1,10 @@
 ---
 title: Robots
+weight: 4
 description: "Creating and assigning Upbound robot tokens"
 ---
 
-Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user. 
+Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user.
 
 {{< hint "warning" >}}
 Upbound strongly recommends using robot accounts for any Kubernetes related authentication. For example, providing secrets required to install Kubernetes manifests. Use Upbound user accounts only with the _up_ command-line or [Upbound console](https://console.upbound.io/).
@@ -33,7 +34,7 @@ A [personal access token]({{<ref "/console#create-a-personal-access-token" >}}) 
 {{</expand >}}
 
 {{< expand "When should you use a robot token for interacting with Upbound?" >}}
-In Upbound, robot tokens are currently scoped to inheriting Upbound Marketplace repository permissions from a [team]({{<ref "teams/#manage-repository-permissions" >}}) they're assigned to. 
+In Upbound, robot tokens are currently scoped to inheriting Upbound Marketplace repository permissions from a [team]({{<ref "teams/#manage-repository-permissions" >}}) they're assigned to.
 
 You should use a robot token for your Upbound Marketplace CI to push new tags or as a package pull secret for private repositories.
 {{</expand >}}

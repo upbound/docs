@@ -1,5 +1,6 @@
 ---
 title: "Users"
+weight: 4
 description: "Creating and managing Upbound users"
 aliases:
     - "/users"
@@ -15,7 +16,7 @@ User accounts in Upbound belong to individuals. Each user can be a member of one
 <!-- vale Google.FirstPerson = NO -->
 <!-- Allow `My Account` -->
 You can change your account settings by clicking the profile photo in the top
-right and selecting **My Account** in the Upbound Console. 
+right and selecting **My Account** in the Upbound Console.
 <!-- vale Google.FirstPerson = YES -->
 
 {{<img src="/accounts/images/edit-account.png" alt="Options available in the Account menu" size="tiny" unBlur="true">}}
@@ -60,11 +61,11 @@ Choose a username for your Upbound account. Usernames must be globally unique.
 Upbound sends you an email containing a 6-digit PIN. Provide this PIN to confirm your email address.
 
 {{<figure src="/accounts/images/register/confirm_pin.png" alt="Example form to insert email confirmation PIN" height="500px" >}}
-After submitting your pin your account is now ready. 
+After submitting your pin your account is now ready.
 
 {{<figure src="/accounts/images/register/account_ready.png" alt="A screen showing that an Upbound account has been created" height="500px" >}}
 
-Clicking `Finish` will send you to the [Upbound Marketplace](http://marketplace.upbound.io). 
+Clicking `Finish` will send you to the [Upbound Marketplace](http://marketplace.upbound.io).
 
 To make changes to your account login to [accounts.upbound.io](https://accounts.upbound.io)
 {{< /tab >}}
@@ -74,10 +75,10 @@ To make changes to your account login to [accounts.upbound.io](https://accounts.
 
 <!-- vale Google.FirstPerson = NO -->
 Selecting [Delete Account](https://accounts.upbound.io/settings/delete) in the
-**My Account** pane sends a deletion request to Upbound support. 
+**My Account** pane sends a deletion request to Upbound support.
 <!-- vale Google.FirstPerson = YES -->
 
-Organizations associated with this account aren't deleted. 
+Organizations associated with this account aren't deleted.
 
 If the user is the primary account for an organization, contact [Upbound
 support]({{<ref "/support">}}) to transfer organization ownership.
