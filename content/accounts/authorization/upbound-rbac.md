@@ -68,19 +68,18 @@ These roles apply at three levels:
 Below is an example of configuring roles using an `ObjectRoleBinding`:
 
 ```yaml
-apiVersion: authorization.spaces.upbound.io/v1
+apiVersion: authorization.spaces.upbound.io/v1alpha1
 kind: ObjectRoleBinding
 metadata:
-  name: my-binding
+  name: my-binding # gives control plane group editor access to Upbound team with UUID 918a6338-abbe-420d-81cf-9e87642a87c6
+  namespace: ctp-group-1
 spec:
   object:
-    resource: controlplanes
-    name: my-controlplane
+    apiGroup: core
+    resource: namespaces
+    name: ctp-group-1
   subjects:
-  - kind: UpboundUser
-    name: alice
-    role: admin
   - kind: UpboundTeam
-    name: eng-team
+    name: 918a6338-abbe-420d-81cf-9e87642a87c6
     role: editor
 ```
