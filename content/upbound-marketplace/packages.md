@@ -1,13 +1,13 @@
 ---
 title: "Creating and Pushing Packages"
 weight: 30
-description: "How to create, configure and push packages to the Upbound Marketplace" 
+description: "How to create, configure and push packages to the Upbound Marketplace"
 ---
 
 ## Package types
 Crossplane supports these package types: `Configurations`, `Functions` and `Providers`.
 
-* **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata. 
+* **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata.
 * **`Function`** packages include the compiled function code for single or
   multiple processor architectures.
 * **`Provider`** packages combine a [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package](https://github.com/crossplane-contrib/provider-aws/tree/master/package) is an example a provider's metadata and `CRDs`.
@@ -15,14 +15,14 @@ Crossplane supports these package types: `Configurations`, `Functions` and `Prov
 ## Prerequisites
 
 * Building and pushing packages require the [`up` command-line]({{<ref "/reference/cli" >}}).
-* Pushing packages requires an [Upbound account]({{<ref "accounts/users#create-an-account">}}).
+* Pushing packages requires an [Upbound account]({{<ref "/accounts/identity-management/users#create-an-account">}}).
 
 ## Build a package
-Build a package using `up xpkg build`. 
+Build a package using `up xpkg build`.
 
-The `up xpkg build` command expects a `crossplane.yaml` file to provide the metadata for the package file. 
+The `up xpkg build` command expects a `crossplane.yaml` file to provide the metadata for the package file.
 
-The default name is the `metadata.name` value in the `crossplane.yaml` file. 
+The default name is the `metadata.name` value in the `crossplane.yaml` file.
 
 ```shell
 up xpkg build
@@ -72,7 +72,7 @@ The `up xpkg push` command requires:
 * The repository to push a package to.
 * A package version tag. The package version tag is a <a href="https://semver.org/">semantic versioning</a> number determining package upgrades and dependency requirements.
 
-The push command syntax is  
+The push command syntax is
 `up xpkg push <repository>:<version tag> -f <xpkg file>`.
 
 For example, to push a package with the following parameters:
@@ -109,9 +109,9 @@ Publish status indicates whether a package version appears in the Marketplace, w
 
 {{< table >}}
 | | Published | Not Published |
-| ---- | ---- | ---- | 
-| <b>Public</b> | **Pull:** Anyone<br>**View:** Anyone | **Pull:** Anonymous<br>**View:** No one | 
-| <b>Private</b> | **Pull:** Authorized<br>**View:** Authorized | **Pull:** Authorized<br>**View:** No one | 
+| ---- | ---- | ---- |
+| <b>Public</b> | **Pull:** Anyone<br>**View:** Anyone | **Pull:** Anonymous<br>**View:** No one |
+| <b>Private</b> | **Pull:** Authorized<br>**View:** Authorized | **Pull:** Authorized<br>**View:** No one |
 {{< /table >}}
 
 ### Troubleshooting

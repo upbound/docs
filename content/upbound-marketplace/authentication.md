@@ -6,14 +6,14 @@ description: "How to authenticate to the Upbound Marketplace to access private p
 
 Pulling private packages or pushing packages to an Upbound Marketplace private repository requires authentication to Upbound.
 
-Installing private Kubernetes resources requires an [image pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials). 
+Installing private Kubernetes resources requires an [image pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials).
 
 {{< hint "important" >}}
-Authenticating to the Upbound Marketplace for private packages requires an [Upbound account]({{<ref "/accounts/users#create-an-account" >}}).
+Authenticating to the Upbound Marketplace for private packages requires an [Upbound account]({{<ref "/accounts/identity-management/users#create-an-account" >}}).
 {{< /hint >}}
 
 ## Prerequisites
-Install the [Up command-line]({{<ref "cli">}}) to generate Kubernetes secrets and to use Upbound Marketplace private resources. 
+Install the [Up command-line]({{<ref "cli">}}) to generate Kubernetes secrets and to use Upbound Marketplace private resources.
 
 {{< hint "note" >}}
 Upbound Marketplace requires Up command-line version `v0.13.0` or later.
@@ -26,19 +26,19 @@ Use `up login` to authenticate a user to the Upbound Marketplace.
 ```shell
 up login
 username: my-user
-password: 
+password:
 my-user logged in
 ```
 
 ## Kubernetes image pull secrets
 
-Packages in private repositories require a Kubernetes image pull secret.  
+Packages in private repositories require a Kubernetes image pull secret.
 The image pull secret authenticates Kubernetes to the Upbound Marketplace, allowing Kubernetes to download and install packages.
 
-Generating an image pull secret requires either a user account _token_. 
+Generating an image pull secret requires either a user account _token_.
 
 {{< hint "important" >}}
-A user account token uses your current `up login` profile.  
+A user account token uses your current `up login` profile.
 Logging out with `up logout` deactivates the token.
 {{< /hint >}}
 
@@ -67,7 +67,7 @@ Data
 
 ## Use an image pull secret
 
-Use an image pull secret by providing a {{< hover label="pps" line="8" >}}spec.packagePullSecrets{{< /hover >}} in a {{< hover label="pps" line="2" >}}Configuration{{</hover>}} or `Provider` manifest.  
+Use an image pull secret by providing a {{< hover label="pps" line="8" >}}spec.packagePullSecrets{{< /hover >}} in a {{< hover label="pps" line="2" >}}Configuration{{</hover>}} or `Provider` manifest.
 
 This example installs a private {{< hover label="pps" line="2" >}}Configuration{{< /hover >}} named {{< hover label="pps" line="6" >}}secret-configuration{{< /hover >}} from the Upbound image repository using image pull secret named {{< hover label="pps" line="8" >}}package-pull-secret{{< /hover >}}.
 ```yaml {label="pps",copy-line="all"}
@@ -80,6 +80,3 @@ spec:
   packagePullSecrets:
     - name: package-pull-secret
 ```
-
-
-
