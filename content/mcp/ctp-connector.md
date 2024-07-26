@@ -63,19 +63,57 @@ Update the local Helm chart cache with `helm repo update`.
 helm repo update
 ```
 
-Install the MCP Connector Helm chart with `helm install`. Make sure to update the chart values with your own. You must provide:
+Install the MCP Connector Helm chart with `helm install`. Make sure to update the chart values with your own. It's recommended you create a values file called `connector-values.yaml` and provide the following below. Select the tab according to which environment your managed control plane is running in.
 
-- `mcp.account`, provide an Upbound org account name
-- `mcp.name`, provide the name of the managed control plane you want to connect to
-- `mcp.namespace`, provide the namespace in your managed control plane to sync to
-- `mcp.token`, an [API token]({{<ref "console#create-a-personal-access-token" >}}) from Upbound used by the MCP Connector to allow for interaction with your managed control plane
+{{< tabs >}}
+
+{{< tab "Cloud and Connected Spaces" >}}
+
+```yaml
+upbound:
+  # This is your org account in Upbound e.g. the name displayed after executing `up org list`
+  account: <ORG_ACCOUNT> 
+  # This is a personal access token generated in the Upbound Console
+  token: <PERSONAL_ACCESS_TOKEN>
+
+spaces:
+  # If your MCP is running in Upbound's GCP Cloud Space, else use upbound-aws-us-east-1.space.mxe.upbound.io
+  host: "upbound-gcp-us-west-1.space.mxe.upbound.io"
+  insecureSkipTLSVerify: true
+  controlPlane:
+    # The name of the MCP you want the Connector to attach to
+    name: <CONTROL_PLANE_NAME> 
+    # The control plane group the MCP resides in
+    group: <CONTROL_PLANE_GROUP> 
+    # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
+    claimNamespace: <NAMESPACE_TO_SYNC_TO> 
+```
+
+{{< /tab >}}
+
+{{< tab "Disconnected Spaces" >}}
+
+Create a [kubeconfig]({{<ref "mcp/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+
+```yaml
+spaces:
+  controlPlane:
+    # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
+    claimNamespace: <NAMESPACE_TO_SYNC_TO> 
+    kubeconfigSecret:
+      name: my-controlplane-kubeconfig
+      key: kubeconfig
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+
+Provide the values file above when you `helm install` the MCP Connector:
 
 ```bash
-helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system /
-  --set mcp.account='your-upbound-org-account'
-  --set mcp.name='your-control-plane-name'
-  --set mcp.namespace='your-app-ns-1'
-  --set mcp.token='replace-with-an-API-token-from-Upbound'
+helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system -f connector-values.yaml
 ```
 
 {{<hint "tip" >}}
