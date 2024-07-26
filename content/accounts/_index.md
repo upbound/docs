@@ -118,8 +118,8 @@ To enable or disable this feature, set `authentication.hubIdentities=true|false`
 To grant principals in an OIDC-compliant directory (like Keycloak, Entra, Okta, etc.) access, there are two options:
 <!-- vale Upbound.Spelling = YES -->
 
-* If you're using Connected and Cloud Spaces, consider [enabling Directory Sync](authentication/enable-sso.md), which syncs your users from your directory into the Upbound Identity model and allows your entire organization to use the Upbound console.
-* If you're using Disconnected Spaces, you can configure the space to [authenticate JWT tokens from your OIDC provider](authentication/oidc.md).
+* If you're using Connected and Cloud Spaces, consider [enabling Directory Sync]({{<ref "authentication/enable-sso" >}}), which syncs your users from your directory into the Upbound Identity model and allows your entire organization to use the Upbound console.
+* If you're using Disconnected Spaces, you can configure the space to [authenticate JWT tokens from your OIDC provider]({{<ref "authentication/oidc" >}}).
 
 ## Authorization
 
