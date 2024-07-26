@@ -105,7 +105,7 @@ Depending on your operational model, you can use either:
 Upbound offers two primary models for implementing RBAC: the Kubernetes Hub model and the Upbound model. Understanding the differences and use cases for each is crucial for effective access management.
 
 <!-- vale Google.Headings = NO -->
-### Kubernetes Hub model
+### Kubernetes RBAC model
 <!-- vale Google.Headings = YES -->
 
 The Kubernetes Hub model leverages native Kubernetes RBAC mechanisms and is ideal for:

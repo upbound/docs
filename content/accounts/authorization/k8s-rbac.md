@@ -28,7 +28,7 @@ To configure Kubernetes RBAC in your Disconnected Space, you need to create `Clu
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: upbound-user
+  name: controlplane-getter
 rules:
 - apiGroups: ["spaces.upbound.io"]
   resources: ["controlplanes"]
@@ -43,7 +43,7 @@ kind: ClusterRoleBinding
 metadata:
   name: controlplane-getters
 subjects:
-- kind: Group
+- kind: User
   name: upbound:(user|robot):<username>
   apiGroup: rbac.authorization.k8s.io
 roleRef:
