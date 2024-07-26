@@ -16,7 +16,7 @@ This guide provides an overview of Kubernetes role-based access control (RBAC) i
 
 To enable Kubernetes Hub Authentication in your Space, you need:
 - A Kubernetes cluster with RBAC enabled
-- To attach your cluster to Upbound
+- `authorization.hubRBAC` set to `true` (enabled by default)
 
 Users can authenticate to the single-tenant Space with their Kubernetes credentials using this method.
 
@@ -59,9 +59,15 @@ The `subject` in this example can contain teams (`upbound:team:<uuid>`) or org r
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
 <!-- vale Google.WordList = NO -->
-Upbound RBAC integrates with Kubernetes hub RBAC to map to admin, edit, and view access:
-
-- `controlplanes/k8s, [create, delete]` => Admin
-- `controlplanes/k8s, update` => Editor
-- `controlplanes/k8s, get` => Viewer
+You can use the special verbs `admin`, `edit` and `view` for giving a subject access to a control plane:
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: controlplane-editor
+rules:
+- apiGroups: ["spaces.upbound.io"]
+  resources: ["controlplanes/k8s"]
+  verbs: ["edit"] # or "admin" or "view", depending on access level
+```
 <!-- vale Google.WordList = NO -->

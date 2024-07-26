@@ -77,14 +77,48 @@ the following resources:
 <!-- vale Upbound.Spelling = YES -->
 
 
-## Authentication
 
-Upbound issues JSON Web Tokens (JWT) with identity information to authenticate to your platform APIs. The token includes:
+## Authentication
+Upbound offers three authentication methods for accessing the system.
+
+Depending your operational model, you can choose:
+
+* Upbound Identity (with Connected or Cloud Spaces)
+* Kuberentes Authentication (with Connected or Disconnected Spaces)
+* Custom OIDC (with Connected or Disconnected Spaces)
+
+//TODO: Add links to above
+
+Each authentication method results in a simple string username and a set of groups, each represented as a string, similar to [Kubernetes authentication strategies](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies).
 
 <!-- vale Google.WordList = NO -->
-- A subject (`upbound:user:<name>` or `upbound:robot:<name>`)
-- The user's team memberships (`upbound:team:<UUID>`)
-- The organization context (upbound:org-role:(admin|member))
+
+
+* **Subject**: The username, represented by the `sub` claim, can be either `upbound:user:<name>` or `upbound:robot:<name>`.
+* **Team Memberships**: User groups, represented by the `groups` claim, include `upbound:team:<UUID>` for each team the user belongs to.
+* **Organization Role**: The user's role within the organization, also represented by the `groups` claim, can be `upbound:org-role:admin` or `upbound:org-role:member`.
+
+### Kubernetes authentication
+
+The Kubernetes authentication mode allows your users to use the `up` CLI to authenticate directly to the hub Kubernetes cluster.
+
+Kubernetes supports many [authentication strategies](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies), including:
+
+* **Client certificates**: For long-lived credentials.
+* **Cloud provider OIDC tokens**: Tokens that have an identity in both the cloud provider and Kubernetes
+* **Kubernetes ServiceAccounts**
+
+You can use all of these methods with `up` when accessing the Spaces API and control planes, as long as hub authentication is enabled (enabled by default).
+
+To enable or disable this feature, set `authentication.hubIdentities=true|false` as necessary. This feature uses the [TokenReview API](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication).
+
+
+### OIDC
+
+To grant principals in an OIDC-compliant directory (like Keycloak, Entra, Okta, etc.) access, there are two options:
+
+- If you're using Connected and Cloud Spaces, consider [enabling Directory Sync](authentication/enable-sso.md), which syncs your users from your directory into the Upbound Identity model and allows your entire organization to use the Upbound console.
+- If you're using Disconnected Spaces, you can configure the space to [authenticate JWT tokens from your OIDC provider](authentication/oidc.md).
 
 ## Authorization
 
@@ -93,16 +127,18 @@ Upbound uses identities to check for authentication across the platform. In the 
 <!-- vale Google.WordList = YES -->
 <!-- vale Microsoft.Terms = YES -->
 
-You can bind identities to Kubernetes RBAC or Upbound RBAC to control access to resources depending on your operational model. The subject and group claims in the JWT token determine the user's effective permissions for an API request.
+You can bind identities to Kubernetes RBAC and/or Upbound RBAC to control access to resources depending on your operational model. The authentication process produses a username and group list, which, combined with RBAC rules, determine the user's effective permissions for an API request.
 
 
 Depending on your operational model, you can use either:
-- Upbound RBAC (with Connected or Cloud Spaces)
-- Kubernetes Hub Authorization (Single-Tenant Connected or Disconnected Spaces)
+* Upbound RBAC (with Connected or Cloud Spaces)
+* Kubernetes Hub Authorization (with Connected or Disconnected Spaces)
 
 ## Role-based access control
 
 Upbound offers two primary models for implementing RBAC: the Kubernetes Hub model and the Upbound model. Understanding the differences and use cases for each is crucial for effective access management.
+
+The Kubernetes RBAC model is enabled by default. Upbound RBAC can be enabled with `features.alpha.upboundRBAC.enabled=true`.
 
 <!-- vale Google.Headings = NO -->
 ### Kubernetes RBAC model
@@ -126,6 +162,6 @@ The Upbound model is a proprietary RBAC system designed specifically for Upbound
 - Scenarios requiring Upbound-specific resource management
 
 Key features:
-- Introduces Upbound-specific roles (Admin, Editor, Viewer)
-- Provides a simplified, hierarchical approach to access management
+- Introduces Upbound-specific roles: controlplane group admin, controlplane group editor, and controlplane group viewer
+- Provides a simplified, hierarchical approach to access management within the Upbound console UI
 - Offers built-in integration with Upbound's unique resources and control planes
