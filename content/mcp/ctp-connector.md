@@ -95,17 +95,7 @@ kubectl api-resources
 
 #### With Helm
 
-The MCP Connector is also available as a Helm chart. First add the Upbound beta repository with the `helm repo add` command.
-
-```bash
-helm repo add upbound-beta https://charts.upbound.io/beta
-```
-
-Update the local Helm chart cache with `helm repo update`.
-
-```bash
-helm repo update
-```
+The MCP Connector is also available as a Helm chart, available at `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
 
 Install the MCP Connector Helm chart with `helm install`. Make sure to update the chart values with your own. It's recommended you create a values file called `connector-values.yaml` and provide the following below. Select the tab according to which environment your managed control plane is running in.
 
@@ -157,7 +147,7 @@ spaces:
 Provide the values file above when you `helm install` the MCP Connector:
 
 ```bash
-helm install --wait mcp-connector upbound-beta/mcp-connector -n kube-system -f connector-values.yaml
+helm install --wait mcp-connector oci://xpkg.upbound.io/spaces-artifacts/mcp-connector -n kube-system -f connector-values.yaml
 ```
 
 {{<hint "tip" >}}

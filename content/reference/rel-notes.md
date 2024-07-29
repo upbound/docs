@@ -195,6 +195,23 @@ Released August 28th, 2023.
 
 ## Control plane connector release notes
 
+### MCP connector v0.6.1
+
+Released June 29th, 2024.
+
+#### What's Changed
+
+- Fixed a regression where connector makes only a single kind for a given group/version available to the application cluster.
+
+### MCP connector v0.6.0
+
+Released June 15th, 2024.
+
+#### What's Changed
+
+- We started shipping the helm chart as an OCI artifact in the Upbound registry, available at `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
+- This the latest release where we will publish the helm chart to the Upbound helm repository, please migrate to the OCI artifact.
+
 ### MCP connector v0.5.0
 
 Released June 6th, 2024.
