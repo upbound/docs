@@ -472,3 +472,8 @@ kind: ControlPlane
 metadata:
   name: my-awesome-restored-ctp
   namespace: default
+spec:
+  restore:
+    source:
+      kind: Backup
+      name: restore-me
