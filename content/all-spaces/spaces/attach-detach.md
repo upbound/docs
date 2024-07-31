@@ -35,7 +35,7 @@ The command tries to attach the Space to the org account context pointed at by y
 Attach the Space to the Console:
 
 ```bash
-up space attach "${UPBOUND_SPACE_NAME}"
+up space connect "${UPBOUND_SPACE_NAME}"
 ```
 
 This command installs a Connect agent, creates a service account, and configures permissions in your Upbound cloud organization in the `upbound-system` namespace of your Space.
