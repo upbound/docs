@@ -46,11 +46,12 @@ spec:
   exportPipeline:
     metrics: [otlphttp]
     traces: [otlphttp]
+    logs: [otlphttp]
 ```
 
 The `controlPlaneSelector` field specifies the control planes that use this configuration.
 The `exporters` field specifies the configuration for the exporters. Each exporter configuration is unique and corresponds to its [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/#exporters).
-The `exportPipeline` field specifies the control plane pipelines that send telemetry data to the exporters. The `metrics` and `traces` fields specify the names of the pipelines the control planes use to send metrics and traces, respectively. The names of the pipelines correspond to the `exporters` in the OpenTelemetry Collector [service pipeline configuration](https://opentelemetry.io/docs/collector/configuration/#pipelines).
+The `exportPipeline` field specifies the control plane pipelines that send telemetry data to the exporters. The `metrics`, `traces` and `logs` fields specify the names of the pipelines the control planes use to send metrics, traces, and logs respectively. The names of the pipelines correspond to the `exporters` in the OpenTelemetry Collector [service pipeline configuration](https://opentelemetry.io/docs/collector/configuration/#pipelines).
 
 ### Usage
 
@@ -64,7 +65,7 @@ Currently supported exporters are:
 - `datadog` (review the OpenTelemetry [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md) for configuration details)
 - `otelhttp` (used by New Relic among others, review the New Relic [documentation](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
 
-The example below shows how to configure a `SharedTelemetryConfig` resource to send metrics and traces to Datadog:
+The example below shows how to configure a `SharedTelemetryConfig` resource to send metrics, traces and logs to Datadog:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -85,6 +86,7 @@ spec:
   exportPipeline:
     metrics: [datadog]
     traces: [datadog]
+    logs: [datadog]
 ```
 
 ### Status
@@ -156,7 +158,7 @@ To configure how Upbound exports, review the `spacesCollector` value in your Spa
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
 observability:
-  # Observability configuration to collect metrics (traces and logs in the future) from the Spaces machinery
+  # Observability configuration to collect metrics, logs (traces in the future) from the Spaces machinery
   # and send them to the specified exporters.
   spacesCollector:
     tag: %%VERSION%%
