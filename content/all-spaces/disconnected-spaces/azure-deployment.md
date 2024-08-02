@@ -22,8 +22,6 @@ Disconnected Spaces are a business critical feature of Upbound and requires a li
 
 ## Provision the hosting environment
 
-A Disconnected Space requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster]({{<ref "./quickstart/" >}}).
-
 ### Create a cluster
 
 Configure the name and target region you want the AKS cluster deployed to.
@@ -395,7 +393,3 @@ up ctx -
 {{< hint "tip" >}}
 Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/command-reference#ctx">}}).
 {{< /hint >}}
-
-```ini
-export SPACES_CLUSTER_TYPE=aks
-```

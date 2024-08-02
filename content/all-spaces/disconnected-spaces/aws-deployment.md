@@ -24,8 +24,6 @@ Disconnected Spaces are a business critical feature of Upbound and requires a li
 
 ## Provision the hosting environment
 
-A Disconnected Space requires a cloud Kubernetes or `kind` cluster as a hosting environment. For your first time set up or a development environment, Upbound recommends starting with a [`kind` cluster]({{<ref "./quickstart/" >}}).
-
 ### Create a cluster
 
 
