@@ -1,5 +1,5 @@
 ---
-title: Fast aggregate queries
+title: Postgres Query API
 weight: 400
 description: Use the `up` CLI to query objects and resources
 draft: true
@@ -7,13 +7,15 @@ draft: true
 <!-- vale write-good.TooWordy = NO -->
 <!-- ignore "aggregate" -->
 
-Fast aggregate queries in Upbound allow users to inspect objects and resources within Spaces control planes. The read-only `up query` and `up get` CLI commands allow users to gather information to help improve performance in their control planes.
+Upbound offers a Postgres Query API to allow users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow users to gather information to help improve performance in their control planes.
 
 {{< hint "important" >}}
 
-This feature is in alpha.
+This feature is in tech preview. The query API is only available in the Cloud Space offering.
 
 {{< /hint >}}
+
+## Enable the Query API
 
 ## Query within a space
 
