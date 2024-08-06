@@ -9,21 +9,52 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.32.0
+
+Released August 2nd, 2024.
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.32.0)
+
+### What's Changed
+
+- New `up team` command for managing teams.
+- New `up robot team` command for managing robot team membership.
+- New `up repository permission` command for managing team access to repositories.
+- `up space attach` and `up space detach` have been renamed to `up space connect` and `up space disconnect`, respectively.
+- Improved `up alpha get` and `up alpha query` commands for querying resources in and across control planes.
+
+
+## v0.31.0
+
+Released June 7th, 2024.
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.31.0)
+
+{{< hint "important" >}}
+- Web-based login (previously `up alpha web-login`) is now the default for `up login`. Use `up login --username=<user>` to invoke interactive terminal login.
+- `up configuration` is now stubbed out, since Configurations are not currently supported in Upbound.
+{{< /hint >}}
+
+### What's Changed
+
+- Web login is now the default for `up login`.
+- `up ctx` now works with connected Spaces.
+- `up ctx` now supports navigating between cloud, connected, and disconnected Spaces regardless of the current kubeconfig context.
+- `up space attach` now works with Upbound IAM.
+
 ## v0.30.0
 
-Released May 10th, 2024.  
+Released May 10th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.30.0)
 
 ### What's Changed
 
 - We promoted `up web-login` to stable.
 - We fixed several bugs related to `up ctx` failing to connect to a Space, group, or managed control plane.
-- `up version` now prints information seperated into client (your up CLI version) and server (version information for the managed control plane and Space you're connected to) 
+- `up version` now prints information seperated into client (your up CLI version) and server (version information for the managed control plane and Space you're connected to)
 - `up space init` enables hub authz and authn by default.
 
 ## v0.29.0
 
-Released May 3rd, 2024.  
+Released May 3rd, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.29.0)
 
 {{< hint "important" >}}
@@ -51,7 +82,7 @@ To connect to an MCP in a Cloud Space or Connected/Disconnected Space, please us
 
 ## v0.28.0
 
-Released April 2nd, 2024.  
+Released April 2nd, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.28.0)
 
 ### What's Changed
@@ -60,7 +91,7 @@ Released April 2nd, 2024.
 
 ## v0.27.0
 
-Released March 27th, 2024.  
+Released March 27th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.27.0)
 
 ### What's Changed
@@ -70,7 +101,7 @@ Released March 27th, 2024.
 
 ## v0.26.0
 
-Released March 16th, 2023.  
+Released March 16th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.26.0)
 
 ### What's Changed
@@ -80,7 +111,7 @@ Released March 16th, 2023.
 
 ## v0.25.0
 
-Released March 12th, 2024.  
+Released March 12th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.25.0)
 
 ### Notable Changes
@@ -99,7 +130,7 @@ Released March 12th, 2024.
 
 ## v0.24.2
 
-Released February 29th, 2024.  
+Released February 29th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.2)
 
 ### What's Changed
@@ -108,7 +139,7 @@ Released February 29th, 2024.
 
 ## v0.24.1
 
-Released February 7th, 2024.  
+Released February 7th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.1)
 
 ### What's Changed
@@ -118,7 +149,7 @@ Released February 7th, 2024.
 
 ## v0.24.0
 
-Released February 1st, 2024.  
+Released February 1st, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.0)
 
 ### What's Changed
@@ -127,7 +158,7 @@ Released February 1st, 2024.
 
 ## v0.23.0
 
-Released February 1st, 2024.  
+Released February 1st, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.23.0)
 
 ### What's Changed
@@ -138,7 +169,7 @@ Released February 1st, 2024.
 
 ## v0.22.1
 
-Released January 30th, 2024.  
+Released January 30th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.22.1)
 
 ### What's Changed
@@ -147,7 +178,7 @@ Released January 30th, 2024.
 
 ## v0.22.0
 
-Released January 30th, 2024.  
+Released January 30th, 2024.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.22.0)
 
 ### Notable Changes
@@ -159,11 +190,11 @@ Released January 30th, 2024.
 
 - Improved the help text to make `up profile set space` more discoverable.
 - Allow creating new Upbound profiles with `type: space` by name.
-- Fixed an issue where `up space init` ignored SIGINT. 
+- Fixed an issue where `up space init` ignored SIGINT.
 
 ## v0.21.0
 
-Released October 12th, 2023.  
+Released October 12th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.21.0)
 
 ### Notable Changes
@@ -182,7 +213,7 @@ Released October 12th, 2023.
 
 ## v0.20.0
 
-Released October 10th, 2023.  
+Released October 10th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.20.0)
 
 ### Notable Changes
@@ -203,7 +234,7 @@ Released October 10th, 2023.
 
 ## v0.19.2
 
-Released October 5th, 2023.  
+Released October 5th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.19.2)
 
 ### What's Changed
@@ -212,7 +243,7 @@ Released October 5th, 2023.
 
 ## v0.19.1
 
-Released August 29th, 2023.  
+Released August 29th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.19.1)
 
 ### What's Changed
@@ -221,7 +252,7 @@ Released August 29th, 2023.
 
 ## v0.19.0
 
-Released August 28th, 2023.  
+Released August 28th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.19.0)
 
 ### Notable Changes
@@ -251,9 +282,9 @@ Released August 28th, 2023.
 - Fix typo in up space destroy output
 - Rename `up space billing get` to export and fix event tags
 
-## v0.18.0 
+## v0.18.0
 
-Released June 27th, 2023.  
+Released June 27th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.18.0)
 
 ### What's Changed
@@ -261,9 +292,9 @@ Released June 27th, 2023.
 - Make `help` more accessible
 - Updates dependencies to get up close to current
 
-## v0.17.0 
+## v0.17.0
 
-Released May 12th, 2023.  
+Released May 12th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.17.0)
 
 ### What's Changed
@@ -274,7 +305,7 @@ Released May 12th, 2023.
 
 ## v0.16.1
 
-Released April 17th, 2023.  
+Released April 17th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.16.1)
 
 ### Notable Changes
@@ -288,7 +319,7 @@ Released April 17th, 2023.
 
 ## v0.16.1
 
-Released April 17th, 2023.  
+Released April 17th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.16.1)
 
 ### Notable Changes
@@ -303,12 +334,12 @@ Released April 17th, 2023.
 
 ## v0.16.0
 
-Released March 28th, 2023.  
+Released March 28th, 2023.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.16.0)
 
 ### Notable Changes
 
-- Introduction of many new commands to coincide with the relaunch of [Upbound](https://console.upbound.io), including many commands in `ctp` and `cfg`. 
+- Introduction of many new commands to coincide with the relaunch of [Upbound](https://console.upbound.io), including many commands in `ctp` and `cfg`.
 - ⚠️ Breaking change ⚠️ Starting in v0.16.0, `up controlplane create` must supply a required flag `--configuration-name` and no longer supports creating "empty canvas" control planes. Prior versions of up that do not have this flag will now get an error response from the Upbound API:`{"message":"configurationId is required"}`
 
 ### What's Changed
@@ -318,7 +349,7 @@ Released March 28th, 2023.
 - Implement JSON and YAML output formatting
 - Add formatted ouput for more get & list commands
 - Add alpha commands for MCP connector
-- update up-sdk-go to use new error descriptions 
+- update up-sdk-go to use new error descriptions
 - Initial suport for tab completions
 - Introduce `configuration` commands
 - Add completion predictors for control planes, profiles, repos, and robots
@@ -333,7 +364,7 @@ Released March 28th, 2023.
 - Disable the `upbound` subcommand.
 - Revised the new "org user" comands to take an org name instead of an org ID
 - Move `controlplane` commands to stable maturity level
-- Create a token as part of connect command 
+- Create a token as part of connect command
 - docs: add controlplane commands
 - connect: fix the robot creation call
 - Querying control planes with no associated configurations
@@ -346,7 +377,7 @@ Released March 28th, 2023.
 
 ## v0.15.0
 
-Released November 6th, 2022.  
+Released November 6th, 2022.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.15.0)
 
 ### What's Changed
@@ -355,7 +386,7 @@ Released November 6th, 2022.
 
 ## v0.14.0
 
-Released October 5th, 2022.  
+Released October 5th, 2022.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.14.0)
 
 ### Notable Changes
@@ -374,7 +405,7 @@ Released October 5th, 2022.
 
 ## v0.13.0
 
-Released August 26th, 2022.  
+Released August 26th, 2022.
 [Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.13.0)
 
 ### Notable Changes
@@ -393,7 +424,7 @@ Released August 26th, 2022.
 - Move to pterm, emit success message for all operations, and support `--quiet` and `--pretty` global output config
 - Add support for repository management and create on push
 - Add Nix installation instructions
-- Simplify `up upbound install` and add config command group 
+- Simplify `up upbound install` and add config command group
 - Add support for organization management commands
 - Support robot management commands
 - Add `--force` option to destructive commands
