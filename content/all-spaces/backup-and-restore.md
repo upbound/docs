@@ -169,7 +169,7 @@ metadata:
   name: daily-schedule
   namespace: default
 spec:
-  schedule: "@every 1d"
+  schedule: "@daily"
   configRef:
     kind: SharedBackupConfig
     name: default
@@ -186,11 +186,12 @@ The `spec.schedule` field is a [Cron-formatted](https://en.wikipedia.org/wiki/Cr
 {{< table >}}
 | Entry | Description |
 | --- | --- |
-| `@every 1h` | Run once an hour. |
-| `@every 1d` | Run once a day. |
-| `@every 1w` | Run once a week. |
+| `@hourly` | Run once an hour. |
+| `@daily` | Run once a day. |
+| `@weekly` | Run once a week. |
 | `0 0/4 * * *` | Run every 4 hours. |
 | `0/15 * * * 1-5` | Run every fifteenth minute on Monday through Friday. |
+| `@every 1h30m10s` | Run every 1 hour, 30 minutes, and 10 seconds. Hour is the largest measurement of time for @every. |
 {{< /table >}}
 
 ### Exclude resources from the backup
