@@ -107,7 +107,33 @@ The `up alpha query` command is useful for discovering roadblocks or issues in y
 up query managed --controlplanes=type=prod --filter '.status.conditions[*].type=="Ready" && .status.conditions[*].status=="False"'
 ```
 
-## Query API Reference
+## Query API request format
+
+The CLI can also return a composite version of your query request.
+
+```shell
+up alpha query composite -A -d
+# to see the Query API request
+apiVersion: query.spaces.upbound.io/v1alpha1
+kind: SpaceQuery
+metadata:
+  creationTimestamp: null
+spec:
+  cursor: true
+  filter:
+    categories:
+    - composite
+    controlPlane: {}
+  limit: 500
+  objects:
+    controlPlane: true
+    table: {}
+  page: {}
+```
+
+## Query API Explorer
+
+
 
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
