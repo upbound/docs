@@ -4,6 +4,7 @@
     {{ partial "head/base" . }}
   </head>
 
+
   <body>
     {{ if eq hugo.Environment "production" -}}
       {{ partialCached "body/gtag-body" . }}
@@ -11,22 +12,25 @@
 
     {{ partial "body/top-nav" .}}
 
-    <div class="{{ if eq $.Params.Product "crds" }}crd-grid{{else}} grid {{ end }} " data-bs-spy="scroll" data-bs-target="#TableOfContents">
-      {{ partialCached "icons/sprites" . }}
-      {{ partial "body/left-sidebar-nav" .}}
+<!-- Debugging output to verify front matter value -->
+{{ printf "Product: %s" $.Params.product | safeHTML }}
 
-      {{ partial "body/offcanvas-nav" .}}
+<!-- Define a variable for the condition -->
+{{ $isCrdOrApi := or (eq $.Params.product "crds") (eq $.Params.product "api") }}
 
-      {{ block "main" . }}
-      {{ end }}
-
-
-
-      {{ partialCached "footer/base" . }}
-
-
-    </div>
-  </body>
+<!-- Use the variable in the class attribute -->
+<div
+    class="{{ if $isCrdOrApi }}crd-grid{{ else }}grid{{ end }}"
+    data-bs-spy="scroll"
+    data-bs-target="#TableOfContents"
+>
+  {{ partialCached "icons/sprites" . }}
+  {{ partial "body/left-sidebar-nav" . }}
+  {{ partial "body/offcanvas-nav" . }}
+  {{ block "main" . }}{{ end }}
+  {{ partialCached "footer/base" . }}
+</div>
+</body>
 
 
 </html>

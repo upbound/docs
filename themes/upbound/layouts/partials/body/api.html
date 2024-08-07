@@ -1,0 +1,225 @@
+{{/* Responsible for building the API page */}}
+
+<div class="api">
+
+    {{ partialCached "body/apiBuilder/GKVHeader" . }}
+
+    {{/* Version detection logic */}}
+    {{ $versionList := slice }}
+    {{ $majordict := dict }}
+    {{ $majorlist := slice }}
+    {{ $sorted_list := slice }}
+    {{ $cur_ver := .Page.Params.version | default .Site.Params.latest }}
+
+    {{ range .Site.Sections }}
+        {{ if eq .Page.Params.version "main" }}
+            {{$sorted_list = $sorted_list | append "main" }}
+        {{ else if ne .Page.Params.version nil }}
+            {{ $splitver := split .Page.Params.version "." }}
+            {{ if eq (len $splitver) 2 }}
+                {{ $verlist := (index $majordict (index $splitver 0)) }}
+                {{ $verlist = $verlist | append (index $splitver 1) }}
+                {{ $majordict = merge $majordict (dict (index $splitver 0) $verlist) }}
+                {{ $majorlist = $majorlist | append (index $splitver 0) }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ range sort ($majorlist | uniq) "value" "desc" }}
+        {{ $majorver := . }}
+        {{ range sort (index $majordict .) "value" "desc" }}
+            {{$sorted_list = $sorted_list | append (printf "%s.%s" $majorver .) }}
+        {{ end }}
+    {{ end }}
+
+    <div id="crd-rows-container">
+        {{/* Use the detected version */}}
+        {{ $apiFiles := readDir (printf "content/all-spaces/spaces/query-api/%s/yaml" $cur_ver) }}
+        {{ $descDir := index $.Site.Data "all-spaces" "spaces" "query-api" $cur_ver "descriptions" }}
+
+        {{/* Iterate over each API file */}}
+        {{ range $index, $file := $apiFiles }}
+            {{ $filePath := printf "content/all-spaces/spaces/query-api/%s/yaml/%s" $cur_ver $file.Name }}
+            {{ $fileContent := readFile $filePath }}
+            {{ $parsedContent := transform.Unmarshal $fileContent }}
+
+            {{ $group := $parsedContent.spec.group }}
+            {{ $kind := $parsedContent.spec.names.kind }}
+            {{ $version := index $parsedContent.spec.versions 0 }}
+
+            {{/* Read the description file */}}
+            {{ $descFilePath := printf "%s/%s_%s" $descDir $group (lower $kind) }}
+            {{ $description := "" }}
+            {{ $parsedDesc := dict }}
+            {{ if fileExists $descFilePath }}
+                {{ $descContent := readFile $descFilePath }}
+                {{ if ne $descContent "" }}
+                    {{ $parsedDesc = transform.Unmarshal $descContent }}
+                    {{ $description = $parsedDesc.description.description }}
+                {{ end }}
+            {{ end }}
+
+            {{/* bigName is the kind length limit to change CSS styles when it needs to be truncated */}}
+            {{ $bigName := partial "body/apiBuilder/checkBigName" $kind }}
+
+            {{/* The div containing the entire API information including the Expand All/Collapse All row */}}
+            <div class="crd-root-row crd-container row align-middle bigName-row" data-kind="{{ $kind }}" data-group="{{ $group }}-{{ $kind}}" data-version="{{ $version.name }}-{{ $kind }}">
+
+                {{/* generate the GKV line to expand/collapse the API data */}}
+                {{ partial "body/apiBuilder/printGKVExpander" (dict "group" $group "version" $version.name "kind" $kind) }}
+
+                {{/* The container to show/hide with information related to the API */}}
+                <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
+
+
+                    {{/* bigName-reset prevents the description from expanding into the x-scroll */}}
+                    <div class="description bigName-reset">
+                        {{ if ne $description "" }}
+                            {{ $description | markdownify }}
+                        {{ else }}
+                            No description available.
+                        {{ end }}
+                        <br />
+                    </div>
+
+                    {{/* Loop over each key inside the schema */}}
+                    {{ range $key, $contents := $version.schema.openAPIV3Schema.properties }}
+
+                        {{/* Skip irrelevant keys at the top level */}}
+                        {{ if not (in (slice "apiVersion" "description" "kind" "metadata") $key) }}
+                            {{ partial "body/apiBuilder/processSpec" (dict "key" $key "contents" $contents "page" . "kind" $kind "descDir" $parsedDesc) }}
+                        {{ end }}
+
+                    {{ end }}
+
+                    {{/* Generate the "Return to top" link */}}
+                    {{ partialCached "body/apiBuilder/backToTopButton" . }}
+
+                </div>
+            </div>
+        {{ else }}
+            <p>Debug: No API files found in the directory for version {{ $cur_ver }}</p>
+        {{ end }}
+    </div>
+
+<script>
+    function getCRDElements(type){
+        if(type === "all"){
+            var root = document;
+        }
+        else{
+            var typeElem = document.querySelector(type);
+            var root = typeElem.closest(".crd-container")
+        }
+        var buttons = root.querySelectorAll(".expand-buttons > button");
+        var hiddenElems = root.querySelectorAll(".crd-expand");
+
+        return {
+            "buttons": buttons,
+            "hiddenElems": hiddenElems
+        }
+    }
+
+    function showAll(type){
+        var crdElements = getCRDElements(type);
+        var buttons = crdElements["buttons"];
+        var hiddenElems = crdElements["hiddenElems"];
+
+        for(var i = 0; i < buttons.length; i++){
+            buttons[i].classList.remove("collapsed");
+        }
+
+        for(var i = 0; i < hiddenElems.length; i++){
+            hiddenElems[i].classList.remove("collapse");
+            hiddenElems[i].classList.add("show");
+        }
+    }
+
+    function hideAll(type){
+        var crdElements = getCRDElements(type);
+        var buttons = crdElements["buttons"];
+        var hiddenElems = crdElements["hiddenElems"];
+
+        for(var i = 0; i < buttons.length; i++){
+            buttons[i].classList.add("collapsed");
+        }
+
+        for(var i = 0; i < hiddenElems.length; i++){
+            hiddenElems[i].classList.add("collapse");
+            hiddenElems[i].classList.remove("show");
+        }
+    }
+
+    function sortIt(sortOn="kind"){
+        var titleElements = document.getElementsByClassName("sortable");
+        var reverseSort = false;
+
+        for(var i = 0; i < titleElements.length; i++){
+            if(titleElements[i].children[0].dataset.sort === sortOn){
+                titleElements[i].classList.add("sorted");
+
+                if(titleElements[i].children[1].classList.contains("d-none")){
+                    titleElements[i].children[1].classList.remove("d-none");
+                    titleElements[i].children[2].classList.add("d-none");
+                }
+                else if(titleElements[i].children[2].classList.contains("d-none")){
+                    titleElements[i].children[2].classList.remove("d-none");
+                    titleElements[i].children[1].classList.add("d-none");
+                    reverseSort = true;
+                }
+            }
+            else {
+                titleElements[i].classList.remove("sorted");
+                titleElements[i].children[1].classList.add("d-none");
+                titleElements[i].children[2].classList.add("d-none");
+            }
+        }
+
+        var toSort = document.getElementById('crd-rows-container').children;
+        toSort = Array.prototype.slice.call(toSort, 0);
+
+        toSort.sort(function(a, b) {
+            var aord = a.dataset[sortOn];
+            var bord = b.dataset[sortOn];
+
+            if(reverseSort){
+                return (bord.localeCompare(aord));
+            }
+            else {
+                return (aord.localeCompare(bord));
+            }
+        });
+
+        var parent = document.getElementById('crd-rows-container');
+        parent.innerHTML = "";
+
+        for(var i = 0, l = toSort.length; i < l; i++) {
+            parent.appendChild(toSort[i]);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event){
+        sortIt();
+        scrollToAnchor();
+    })
+
+    function scrollToAnchor(){
+        var hash = window.location.hash.replace("#","");
+        if(hash === "content"){
+            return;
+        }
+
+        if(hash.length > 0){
+            var hashes = hash.split("-");
+            var lastElement = document.getElementById(hash);
+            lastElement.closest(".crd-child-container").classList.add("anchor-target");
+
+            var workingHash = [];
+            for(var index = 0; index < hashes.length; index++){
+                workingHash.push(hashes[index]);
+                document.querySelector("#" + workingHash.join("-")).classList.add("show");
+            }
+        }
+    }
+</script>
+</div>

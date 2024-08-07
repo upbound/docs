@@ -45,6 +45,10 @@ module:
     target: data/crds
     includeFiles:
       - "**/**.yaml"
+  - source: content
+    target: data/api
+    includeFiles:
+      - "**/**.yaml"
 
 # Enable Hugo access to environmental variables to apply deploy preview banner
 security:

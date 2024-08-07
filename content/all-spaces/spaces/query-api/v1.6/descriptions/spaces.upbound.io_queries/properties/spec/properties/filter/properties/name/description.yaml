@@ -1,0 +1,3 @@
+description: |-
+    name is the name of the object to query. If empty, all objects are queried
+    in the given scope.

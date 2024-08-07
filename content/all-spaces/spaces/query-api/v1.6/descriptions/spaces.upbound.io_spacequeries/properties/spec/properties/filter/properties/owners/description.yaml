@@ -1,0 +1,3 @@
+description: |-
+    owners is a list of owners to query. An object matches if it has at least
+    one owner in the list.

@@ -1,0 +1,8 @@
+description: |-
+    relations specifies which relations to query and what to return.
+    Relation names are predefined strings relative to the release of
+    Spaces.
+    
+    
+    Examples: owners, descendants, resources, events, or their transitive
+    equivalents owners+, descendants+, resources+.

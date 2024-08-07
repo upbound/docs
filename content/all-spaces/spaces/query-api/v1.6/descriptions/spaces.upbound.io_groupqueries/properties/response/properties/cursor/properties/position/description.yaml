@@ -1,0 +1,4 @@
+description: |-
+    position is the position of the first object in the list of matching objects
+    at the time the first cursor was created. Due to creation and deletion of
+    objects before the cursor this value might be outdated.

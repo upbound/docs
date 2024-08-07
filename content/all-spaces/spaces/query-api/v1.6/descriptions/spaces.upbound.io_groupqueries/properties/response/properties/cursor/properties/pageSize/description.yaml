@@ -1,0 +1,2 @@
+description: |-
+    pageSize is the number of objects per page, i.e. the limit of the query.
