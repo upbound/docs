@@ -1,18 +1,18 @@
 ---
-title: Attach or detach from the Upbound Console
+title: Connect or disconnect from the Upbound Console
 weight: 120
-description: Enable and attach self-hosted Spaces in the Upbound console
+description: Enable and connect self-hosted Spaces to the Upbound console
 ---
 
 {{< hint "important" >}}
 This feature is in preview and requires Spaces `v1.3.0`.
 {{< /hint >}}
 
-[Upbound]({{<ref "console">}}) allows you to attach self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
+[Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
 
 ## Usage
 
-### Attach
+### Connect
 
 Before you begin, make sure you have:
 
@@ -28,11 +28,13 @@ export UPBOUND_SPACE_NAME=$@your-self-hosted-space$@
 ```
 {{< /editCode >}}
 
+#### With up CLI
+
 {{< hint "tip" >}}
-The command tries to attach the Space to the org account context pointed at by your `up` CLI profile. Make sure you've logged into Upbound SaaS with `up login -a <org-account>` before trying to attach the Space.
+The command tries to connect the Space to the org account context pointed at by your `up` CLI profile. Make sure you've logged into Upbound SaaS with `up login -a <org-account>` before trying to connect the Space.
 {{< /hint >}}
 
-Attach the Space to the Console:
+Connect the Space to the Console:
 
 ```bash
 up space connect "${UPBOUND_SPACE_NAME}"
@@ -40,23 +42,79 @@ up space connect "${UPBOUND_SPACE_NAME}"
 
 This command installs a Connect agent, creates a service account, and configures permissions in your Upbound cloud organization in the `upbound-system` namespace of your Space.
 
-Go to the [Upbound Console](https://console.upbound.io), log in, and choose the newly attached Space from the Space selector dropdown.
+#### With Helm
+
+Export your Upbound org account name to an environment variable called `UPBOUND_ORG_NAME`. You can see this value by running `up org list` after logging on to Upbound.
+
+{{< editCode >}}
+```ini
+export UPBOUND_ORG_NAME=$@your-org-name$@
+```
+{{< /editCode >}}
+
+Create a new robot token and export it to an environment variable called `UPBOUND_TOKEN`:
+
+```bash
+up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect" 
+export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-)
+```
+
+Create a secret containing the robot token:
+
+```bash
+kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
+```
+
+In the same cluster where you installed the Spaces software, install the Upbound connect agent.
+
+```bash
+helm -n upbound-system upgrade --install agent \
+  oci://us-west1-docker.pkg.dev/orchestration-build/connect/agent \
+  --version "0.0.0-423.gdaa19ca" \
+  --set "registration.enabled=true" \
+  --set "space=${UPBOUND_SPACE_NAME}" \
+  --set "organization=${UPBOUND_ORG_NAME}" \
+  --set "tokenSecret=connect-token" \
+  --wait
+```
+
+<!-- vale Google.Headings = NO -->
+#### View your Space in the Console
+<!-- vale Google.Headings = YES -->
+
+Go to the [Upbound Console](https://console.upbound.io), log in, and choose the newly connected Space from the Space selector dropdown.
 
 {{<img src="all-spaces/spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
 
 {{< hint "note" >}}
-You can only attach a self-hosted Space to a single organization at a time.
+You can only connect a self-hosted Space to a single organization at a time.
 {{< /hint >}}
 
-### Detach
+### Disconnect
 
-To detach a self-hosted Space or a deleted self-hosted Space, run the following command:
+#### With up CLI
+
+To disconnect a self-hosted Space or a deleted self-hosted Space, run the following command:
 
 ```bash
-up space detach "${UPBOUND_SPACE_NAME}"
+up space disconnect "${UPBOUND_SPACE_NAME}"
 ```
 
 If the Space still exists, this command uninstalls the Connect agent and deletes the associated service account and permissions.
+
+#### With Helm
+
+To disconnect a self-hosted Space or a deleted self-hosted Space, run the following command:
+
+```bash
+helm delete -n upbound-system agent
+```
+
+Clean up the robot token you created for this self-hosted Space:
+
+```bash
+up robot delete "${UPBOUND_SPACE_NAME}" --force
+```
 
 ## Security model
 
@@ -91,7 +149,7 @@ Users interact with the Upbound Console to generate request queries to the Upbou
 This data only concerns resource configuration. The data _inside_ the managed resource in your Space is not visible at any point.
 {{< /hint >}}
 
-**Upbound can't see your data.** Upbound doesn't have access to session-based data rendered for your users in the Upbound Console. Upbound has no information about your self-hosted Space, other than that you've attached a self-hosted Space.
+**Upbound can't see your data.** Upbound doesn't have access to session-based data rendered for your users in the Upbound Console. Upbound has no information about your self-hosted Space, other than that you've connected a self-hosted Space.
 
 ### Threat vectors
 
