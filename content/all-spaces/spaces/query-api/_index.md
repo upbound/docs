@@ -12,9 +12,6 @@ cascade:
 
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package.
 
-## Overview
-
-The Query API allows you to retrieve control plane information faster than traditional `kubectl` commands. This feature lets you debug your Crossplane resources with the CLI or within the Upbound Console's enhanced management views.
 
 {{< hint "important" >}}
 
@@ -26,7 +23,11 @@ This feature is in preview. The query API is available in the Cloud Space offeri
 
 Before you begin, make sure you have the most recent version of the `up` CLI installed.
 
-## Query within a single control plane
+## Query API CLI
+
+The Query API allows you to retrieve control plane information faster than traditional `kubectl` commands. This feature lets you debug your Crossplane resources with the CLI or within the Upbound Console's enhanced management views.
+
+### Query within a single control plane
 
 Use the `up alpha get` command to retreive information about objects within the current kubeconfig context. This command uses the **Query** endpoint and targets the current control plane.
 
@@ -57,7 +58,7 @@ up alpha get providers,providerrevisions
 #TODO output
 ```
 
-## Query multiple control planes
+### Query multiple control planes
 
 The `up alpha query` command returns a list of objects of any kind within all the control planes in your space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. `up alpha query` has three sub-commands for managed resources, compoite resources, and claims. You can also query all control plane group objects with the `-A` flag.
 
@@ -107,7 +108,7 @@ The `up alpha query` command is useful for discovering roadblocks or issues in y
 up query managed --controlplanes=type=prod --filter '.status.conditions[*].type=="Ready" && .status.conditions[*].status=="False"'
 ```
 
-## Query API request format
+### Query API request format
 
 The CLI can also return a composite version of your query request.
 
