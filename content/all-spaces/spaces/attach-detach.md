@@ -16,7 +16,7 @@ This feature is in preview and requires Spaces `v1.3.0`.
 
 Before you begin, make sure you have:
 
-- an existing Upbound [organization]({{<ref "accounts/organizations.md">}}) in Upbound SaaS.
+- an existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
 - the `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 
@@ -35,7 +35,7 @@ The command tries to attach the Space to the org account context pointed at by y
 Attach the Space to the Console:
 
 ```bash
-up space attach "${UPBOUND_SPACE_NAME}"
+up space connect "${UPBOUND_SPACE_NAME}"
 ```
 
 This command installs a Connect agent, creates a service account, and configures permissions in your Upbound cloud organization in the `upbound-system` namespace of your Space.

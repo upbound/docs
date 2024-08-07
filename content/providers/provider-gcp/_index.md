@@ -11,6 +11,54 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+## v1.6.0
+
+_Released 2024-07-26_
+
+* Support for new family providers: `provider-gcp-orgpolicy` and `provider-gcp-tags`
+* Support for new resources: `EnvgroupAttachment.apigee.gcp.upbound.io/v1beta1`, `EnvgroupAttachment.apigee.gcp.upbound.io/v1beta1`,
+`EndpointAttachment.apigee.gcp.upbound.io/v1beta1`, `InstanceAttachment.apigee.gcp.upbound.io/v1beta1`,
+`AddonsConfig.apigee.gcp.upbound.io/v1beta1`, `SyncAuthorization.apigee.gcp.upbound.io/v1beta1`,
+`Policy.orgpolicy.gcp.upbound.io/v1beta1`, `TagBinding.tags.gcp.upbound.io/v1beta1`,
+`TagKey.tags.gcp.upbound.io/v1beta1` and `TagValue.tags.gcp.upbound.io/v1beta1`
+* The release contains new family providers, new resources, an important bug fix,
+enhancements, and dependency updates.
+
+_Refer to the [v1.6.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.6.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.6.0)
+
+## v1.5.0
+
+_Released 2024-07-04_
+
+* Update the GCP Terraform provider from `5.19.0` to `5.28.0`
+
+_Refer to the [v1.5.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.5.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.5.0)
+
+## v1.4.0
+
+_Released 2024-06-27_
+
+* Support for a new resources: `HMACKey.storage.gcp.upbound.io/v1beta1`
+* This release includes a new resource, enhancements, and dependency updates.
+
+_Refer to the [v1.4.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.4.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.4.0)
+
+## v1.3.0
+
+_Released 2024-06-13_
+
+* This release includes bug fixes, documentation updates, and dependency updates.
+
+_Refer to the [v1.3.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.3.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.3.0)
+
 ## v1.2.0
 
 _Released 2024-05-16_

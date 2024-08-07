@@ -110,4 +110,4 @@ Some examples of Crossplane resources that require the `up` CLI
 
 ## Use direct CLI access
 
-If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctx`]({{<ref "reference/cli/command-reference#alpha-ctx" >}}) to connect directly to your managed control plane.
+If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctx`]({{<ref "reference/cli/command-reference#ctx" >}}) to connect directly to your managed control plane.

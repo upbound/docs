@@ -159,7 +159,6 @@ Replace the variables and run the following script to configure a new Argo clust
 To configure Argo for an MCP in a Connected Space, replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`. 
 
 ```yaml
-cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Secret
 metadata:
@@ -187,7 +186,6 @@ stringData:
         "caData": "<base64 encoded certificate>"
       }
     }    
-EOF
 ```
 
 <!-- vale Google.Headings = NO -->

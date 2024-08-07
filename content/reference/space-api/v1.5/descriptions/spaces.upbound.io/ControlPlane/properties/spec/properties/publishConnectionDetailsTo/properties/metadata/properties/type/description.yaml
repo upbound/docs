@@ -1,0 +1,3 @@
+description: |-
+    Type is the SecretType for the connection secret.
+    - Only valid for Kubernetes Secret Stores.

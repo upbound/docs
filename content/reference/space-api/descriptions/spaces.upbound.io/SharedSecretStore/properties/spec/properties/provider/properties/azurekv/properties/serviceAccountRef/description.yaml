@@ -1,2 +1,0 @@
-description: |-
-    ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.

@@ -13,7 +13,10 @@ Upbound has packaged the core parts of the Upbound product into a Helm chart. Yo
 
 ## System requirements
 
-Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. You can install Spaces into Kubernetes clusters v1.25 or later.
+Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). For dev/test scenarios, you can run a Space on a [kind](https://kind.sigs.k8s.io/) cluster. 
+
+{{<hint "note">}} We support installing Spaces into Kubernetes clusters running one of the 3 most recent [minor release versions](https://kubernetes.io/releases/). {{< /hint >}}
+
 
 <!-- vale write-good.TooWordy = NO -->
 ### Minimum requirements
@@ -48,4 +51,4 @@ You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is
 
 ## Next steps
 
-Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "kind-quickstart.md">}}).
+Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "/quickstart.md">}}).

@@ -1,2 +1,0 @@
-description: |-
-    Jwt authenticates with Vault by passing role and JWT token using the JWT/OIDC authentication method

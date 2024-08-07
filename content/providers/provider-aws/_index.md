@@ -13,6 +13,79 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.9.1
+
+_Released 2024-07-26_
+
+* This release includes a bug fix.
+
+_Refer to the [v1.9.1 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.9.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.9.1)
+
+
+## v1.9.0
+
+_Released 2024-07-11_
+
+* Support for new resources: `Environment.mwaa.aws.upbound.io/v1beta1` and
+`ResourcePolicy.dynamodb.aws.upbound.io/v1beta1`
+* This release includes a new family provider `provider-aws-mwaa`, new resources,
+enhancements, and dependency updates.
+
+
+_Refer to the [v1.9.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.9.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.9.0)
+
+## v1.8.0
+
+_Released 2024-06-27_
+
+* Support for new resources: `Domain.codeartifact.aws.upbound.io/v1beta1`,
+`DomainPermissionsPolicy.codeartifact.aws.upbound.io/v1beta1`, `Repository.codeartifact.aws.upbound.io/v1beta1`
+and `RepositoryPermissionsPolicy.codeartifact.aws.upbound.io/v1beta1`
+* This release includes a new family provider `provider-aws-codeartifact`, new
+resources, bug fixes, and dependency updates.
+
+_Refer to the [v1.8.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.8.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.8.0)
+
+## v1.7.0
+
+_Released 2024-06-13_
+
+* This release includes converting singleton lists in the MR APIs to embedded objects, bug fixes, and dependency updates.
+
+_Refer to the [v1.7.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.7.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.7.0)
+
+## v1.6.1
+
+_Released 2024-06-13_
+
+* This release includes an important bug fix, please select the release notes for more details.
+
+_Refer to the [v1.6.1 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.6.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.6.1)
+
+
+## v1.6.0
+
+_Released 2024-06-07_
+
+* Support for new resources: `Connector.v1beta1.transfer.aws.upbound.io`,
+`ProfilingGroup.v1beta1.codeguruprofiler.aws.upbound.io` and `EndpointAccess.v1beta1.redshift.aws.upbound.io`
+* This release includes a new family provider `provider-aws-codeguruprofiler`, new
+resources, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.6.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.6.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.6.0)
+
 ## v1.5.0
 
 _Released 2024-05-24_

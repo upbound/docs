@@ -1,3 +1,0 @@
-description: |-
-    A SharedBackupConfigSpec represents the configuration to backup or restore
-    ControlPlanes using Velero.

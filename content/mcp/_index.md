@@ -33,7 +33,7 @@ Your API requests tell Crossplane your desired state for the resources your MCP 
 
 ### Crossplane versions and features
 
-Upbound automatically upgrades Crossplane system components on MCPs to new Crossplane versions for updated features and improvements in the open source project. With [automatic upgrades]({{<ref "auto-upgrade" >}}), you choose the cadence that Upbound automatically upgrades the system components in your control plane. You can also choose to manually upgrade your control plane to a different Crossplane version. 
+Upbound automatically upgrades Crossplane system components on MCPs to new Crossplane versions for updated features and improvements in the open source project. With [automatic upgrades]({{<ref "auto-upgrade" >}}), you choose the cadence that Upbound automatically upgrades the system components in your control plane. You can also choose to manually upgrade your control plane to a different Crossplane version.
 
 For detailed information on versions and upgrades, refer to the [release notes](https://github.com/upbound/universal-crossplane/releases) and the automatic upgrade documentation. If you don't enroll an MCP in a release channel, Upbound doesn't apply automatic upgrades.
 
@@ -100,9 +100,9 @@ For more details on how to use provider-upbound, read the [provider-upbound](htt
 
 ### Connect directly to your MCP
 
-Each MCP offers a unified endpoint. You interact with your MCP through Kubernetes and Crossplane API calls. Each MCP runs a Kubernetes API server to handle API requests. 
+Each MCP offers a unified endpoint. You interact with your MCP through Kubernetes and Crossplane API calls. Each MCP runs a Kubernetes API server to handle API requests.
 
-You can connect to a managed control plane's API server directly via the up CLI. Use the [`up ctx`]({{<ref "reference/cli/command-reference#alpha-ctx" >}}) command to set your kubeconfig's current context to a managed control plane:
+You can connect to a managed control plane's API server directly via the up CLI. Use the [`up ctx`]({{<ref "reference/cli/command-reference#ctx" >}}) command to set your kubeconfig's current context to a managed control plane:
 
 ```shell
 # Example: acmeco/upbound-gcp-us-west-1/default/ctp1
@@ -115,7 +115,7 @@ To disconnect from your control plane and revert your kubeconfig's current conte
 up ctx ..
 ```
 
-You can also generate a `kubeconfig` file for a managed control plane with [`up ctx -f`]({{<ref "reference/cli/command-reference#alpha-ctx" >}}).
+You can also generate a `kubeconfig` file for a managed control plane with [`up ctx -f`]({{<ref "reference/cli/command-reference#ctx" >}}).
 
 ```shell
 up ctx ${yourOrganization}/${yourSpace}/${yourGroup}/${yourControlPlane} -f ctp-kubeconfig.yaml
@@ -127,7 +127,7 @@ To learn more about how to use `up ctx` to navigate different contexts in Upboun
 
 ## Configuration
 
-When you create a new managed control plane, Upbound provides you with a fully isolated instance of Crossplane. Configure your control plane by installing packages that extend its capabilities, like to create and manage the lifecycle of new types of infrastructure resources. 
+When you create a new managed control plane, Upbound provides you with a fully isolated instance of Crossplane. Configure your control plane by installing packages that extend its capabilities, like to create and manage the lifecycle of new types of infrastructure resources.
 
 You're encourage to install any available Crossplane package type (Providers, Configurations, Functions) available in the [Upbound Marketplace](https://marketplace.upbound.io) on your managed control planes.
 
@@ -191,14 +191,14 @@ The Upbound Console doesn't allow direct editing of ProviderConfigs that don't s
 
 ### Configure secrets
 
-Upbound gives users the ability to configure the synchronization of secrets from external stores into control planes. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/disconnected-spaces/secrets-management" >}}).
+Upbound gives users the ability to configure the synchronization of secrets from external stores into control planes. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/secrets-management" >}}).
 
 ### Configure backups
 
-Upbound gives users the ability to configure backup schedules, take impromptu backups, and conduct self-service restore operations. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/disconnected-spaces/backup-and-restore" >}}).
+Upbound gives users the ability to configure backup schedules, take impromptu backups, and conduct self-service restore operations. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/backup-and-restore" >}}).
 
 ### Configure telemetry
 
 <!-- vale off -->
-Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/disconnected-spaces/observability" >}}).
+Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/observability" >}}).
 <!-- vale on -->

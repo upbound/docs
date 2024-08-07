@@ -1,2 +1,0 @@
-description: |-
-    Path where the UserPassword authentication backend is mounted in Vault, e.g: 'user'

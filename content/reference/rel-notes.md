@@ -8,19 +8,41 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 <!-- vale off -->
 
-## Upbound product changelog
+## Spaces release notes
 
-### Product update 2023-10-24
+### Spaces v1.5.0
+
+Released July 1st, 2024.
+
+#### Highlights
+
+- We've expanded the observability feature by adding Spaces-level logs collection configurable through helm values. We also added the healthcheck extension and liveness probe to the OpenTelemetry Collector.
+- We have a new feature enabled by default that updates the ConfigMap `crossplane-versions-public` in the `upbound-system` namespace. Whenever a new security or fix release is published, the ConfigMap will be updated. You can disable this feature with `controller.crossplane.versionsController.enabled.false` when running in disconnected self-hosted Spaces.
 
 #### What's Changed
 
-- Improved the control plane dashboard and configuration list by making the table headers sticky, allowing users to scroll through longer lists without losing context.
-- Resolved an issue affecting Configurations with dependencies on the latest releases of family providers that prevented users from creating new ProviderConfigs via the UI.
-- The console now shows UI create hints on the control plane and configuration list screens for organizations with no control planes or configurations created.
-- We fixed the background color of the main navigation tabs to match the page.
-- The UI tabs in a managed control plane dashboard now link via url hash. For example, the settings tab renders as `console.upbound.io/org/controlPlanes/org:ctp-name#resources`
+- We now expose a metrics port on vcluster-etcd containers.
+- We removed network policies that block egress from a control plane's functions.
+- We removed the legacy OIDC flags authenticator deprecated in Spaces v1.3.0.
 
-## Spaces release notes
+### Spaces v1.4.2
+
+Released June 26th, 2024.
+
+#### What's Changed
+
+- We updated the configuration of memory limits on a Space core component to avoid OOMs.
+- We updated Kubernetes API, Controller and Manager to `v1.28.6`.
+
+### Spaces v1.4.1
+
+Released June 20th, 2024.
+
+#### What's Changed
+
+- We added missing RBAC permissions for `up migration import` to work against a Spaces MCP.
+- We improved the reliability of group creation in a connected self-hosted space.
+- We fixed a bug impacting hub authorization when a Space is deployed on a Google Kubernetes Engine (GKE) cluster.
 
 ### Spaces v1.4.0
 
@@ -172,6 +194,23 @@ Released August 28th, 2023.
 - Fix otlp-collector networkpolicy ports
 
 ## Control plane connector release notes
+
+### MCP connector v0.6.1
+
+Released June 29th, 2024.
+
+#### What's Changed
+
+- Fixed a regression where connector makes only a single kind for a given group/version available to the application cluster.
+
+### MCP connector v0.6.0
+
+Released June 15th, 2024.
+
+#### What's Changed
+
+- We started shipping the helm chart as an OCI artifact in the Upbound registry, available at `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
+- This the latest release where we will publish the helm chart to the Upbound helm repository, please migrate to the OCI artifact.
 
 ### MCP connector v0.5.0
 

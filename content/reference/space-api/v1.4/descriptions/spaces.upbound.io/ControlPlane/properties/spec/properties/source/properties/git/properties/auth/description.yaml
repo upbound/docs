@@ -1,0 +1,3 @@
+description: |-
+    Auth is the authentication configuration to access the Git repository.
+    Default is no authentication.

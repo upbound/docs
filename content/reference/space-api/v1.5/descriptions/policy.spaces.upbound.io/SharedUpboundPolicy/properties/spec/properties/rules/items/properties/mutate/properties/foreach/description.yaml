@@ -1,0 +1,2 @@
+description: |-
+    ForEach applies mutation rules to a list of sub-elements by creating a context for each entry in the list and looping over it to apply the specified logic.
