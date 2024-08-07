@@ -13,7 +13,6 @@
     {{ partial "body/top-nav" .}}
 
 <!-- Debugging output to verify front matter value -->
-{{ printf "Product: %s" $.Params.product | safeHTML }}
 
 <!-- Define a variable for the condition -->
 {{ $isCrdOrApi := or (eq $.Params.product "crds") (eq $.Params.product "api") }}

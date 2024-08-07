@@ -1,6 +1,6 @@
 {{/* Responsible for building the API page */}}
 
-<div class="api">
+<div class="crds">
 
     {{ partialCached "body/apiBuilder/GKVHeader" . }}
 
@@ -34,60 +34,59 @@
 
     <div id="crd-rows-container">
         {{/* Use the detected version */}}
-        {{ $apiFiles := readDir (printf "content/all-spaces/spaces/query-api/%s/yaml" $cur_ver) }}
-        {{ $descDir := index $.Site.Data "all-spaces" "spaces" "query-api" $cur_ver "descriptions" }}
+        {{ $crdsData := index $.Site.Data.api "all-spaces" "spaces" "query-api" "yaml" }}
 
-        {{/* Iterate over each API file */}}
-        {{ range $index, $file := $apiFiles }}
-            {{ $filePath := printf "content/all-spaces/spaces/query-api/%s/yaml/%s" $cur_ver $file.Name }}
-            {{ $fileContent := readFile $filePath }}
-            {{ $parsedContent := transform.Unmarshal $fileContent }}
+        {{ $descFiles := index $.Site.Data.api "all-spaces" "spaces" "query-api" }}
 
-            {{ $group := $parsedContent.spec.group }}
-            {{ $kind := $parsedContent.spec.names.kind }}
-            {{ $version := index $parsedContent.spec.versions 0 }}
+        {{/* Iterate over each CRD file */}}
+        {{ range $fileName, $crdContent := $crdsData }}
+            {{/* The path to download the CRD files. Relative to the _index.md file using "product: crds" */}}
+            {{ $version := .Page.Params.version }}
 
-            {{/* Read the description file */}}
-            {{ $descFilePath := printf "%s/%s_%s" $descDir $group (lower $kind) }}
-            {{ $description := "" }}
-            {{ $parsedDesc := dict }}
-            {{ if fileExists $descFilePath }}
-                {{ $descContent := readFile $descFilePath }}
-                {{ if ne $descContent "" }}
-                    {{ $parsedDesc = transform.Unmarshal $descContent }}
-                    {{ $description = $parsedDesc.description.description }}
-                {{ end }}
-            {{ end }}
+            {{ $group   := $crdContent.spec.group }}
+            {{ $kind    := $crdContent.spec.names.kind }}
 
             {{/* bigName is the kind length limit to change CSS styles when it needs to be truncated */}}
             {{ $bigName := partial "body/apiBuilder/checkBigName" $kind }}
 
-            {{/* The div containing the entire API information including the Expand All/Collapse All row */}}
-            <div class="crd-root-row crd-container row align-middle bigName-row" data-kind="{{ $kind }}" data-group="{{ $group }}-{{ $kind}}" data-version="{{ $version.name }}-{{ $kind }}">
+            {{/* Where the description files are. Relative to the calling page in "./descriptions/<group>/<kind>" */}}
+            {{ $descDir := index $descFiles $group $kind }}
 
-                {{/* generate the GKV line to expand/collapse the API data */}}
-                {{ partial "body/apiBuilder/printGKVExpander" (dict "group" $group "version" $version.name "kind" $kind) }}
+            {{/* Debugging output to ensure we have the correct description data */}}
+            {{ printf "descDir: %s" ($descDir | jsonify) | safeHTML }}
 
-                {{/* The container to show/hide with information related to the API */}}
+            {{ $description := $descDir.description.description }}
+
+            {{/* Find the active version. We prefer the "storage: true" value but use "served: true" as a backup */}}
+            {{ $versionAndSchema := partial "body/apiBuilder/getVersionAndSchema" $crdContent.spec }}
+            {{ $schema := $versionAndSchema.schema.openAPIV3Schema }}
+            {{ $version := $versionAndSchema.version }}
+
+            {{/* The div containing the entire CRD information including the Expand All/Collapse All row */}}
+            <div class="crd-root-row crd-container row align-middle bigName-row" data-kind="{{ $kind }}" data-group="{{ $group }}-{{ $kind}}" data-version="{{ $version }}-{{ $kind }}">
+
+                {{/* generate the GKV line to expand/collapse the CRD data */}}
+                {{ partial "body/apiBuilder/printGKVExpander" (dict  "group" $group "version" $version "kind" $kind) }}
+
+                {{/* The container to show/hide with information related to the CRD */}}
                 <div class="collapse crd-expand {{$kind}}" id="{{$kind}}">
-
+                    {{/* Generate the "Download YAML" link */}}
 
                     {{/* bigName-reset prevents the description from expanding into the x-scroll */}}
                     <div class="description bigName-reset">
-                        {{ if ne $description "" }}
-                            {{ $description | markdownify }}
+                        {{ with $description }}
+                            {{ . | markdownify }}
                         {{ else }}
-                            No description available.
+                            <p>No description available</p>
                         {{ end }}
-                        <br />
                     </div>
 
                     {{/* Loop over each key inside the schema */}}
-                    {{ range $key, $contents := $version.schema.openAPIV3Schema.properties }}
+                    {{ range $key, $contents := $schema.properties }}
 
                         {{/* Skip irrelevant keys at the top level */}}
                         {{ if not (in (slice "apiVersion" "description" "kind" "metadata") $key) }}
-                            {{ partial "body/apiBuilder/processSpec" (dict "key" $key "contents" $contents "page" . "kind" $kind "descDir" $parsedDesc) }}
+                            {{ partial "body/apiBuilder/processSpec" (dict "key" $key "contents" $contents "page" . "kind" $kind "descDir" (index $descDir "properties")) }}
                         {{ end }}
 
                     {{ end }}
@@ -98,12 +97,15 @@
                 </div>
             </div>
         {{ else }}
-            <p>Debug: No API files found in the directory for version {{ $cur_ver }}</p>
+            <p>Debug: No CRD files found in the data for version {{ $cur_ver }}</p>
         {{ end }}
     </div>
+</div>
 
 <script>
+
     function getCRDElements(type){
+
         if(type === "all"){
             var root = document;
         }
@@ -120,11 +122,22 @@
         }
     }
 
+    /**
+     * Add the "show" class and remove the "collapse" class from all elements
+     * matching the 'type' queryselector.
+     *
+     * Alternatively the type `all` will apply to all elements.
+     * @param {string} type - a CSS query selector or "all"
+     */
     function showAll(type){
+
         var crdElements = getCRDElements(type);
         var buttons = crdElements["buttons"];
         var hiddenElems = crdElements["hiddenElems"];
 
+        // This works by changing the classes bootstrap uses.
+        // It would be more accurate to click() or invoke the bootstrap JS API.
+        // This has major performance problems for large APIs and isn't used.
         for(var i = 0; i < buttons.length; i++){
             buttons[i].classList.remove("collapsed");
         }
@@ -133,13 +146,25 @@
             hiddenElems[i].classList.remove("collapse");
             hiddenElems[i].classList.add("show");
         }
+
     }
 
+    /**
+     * Add the "collapse" class and remove the "show" class from all elements
+     * matching the 'type' queryselector.
+     *
+     * Alternatively the type `all` will apply to all elements.
+     * @param {string} type - a CSS query selector or "all"
+     */
     function hideAll(type){
+
         var crdElements = getCRDElements(type);
         var buttons = crdElements["buttons"];
         var hiddenElems = crdElements["hiddenElems"];
 
+        // This works by changing the classes bootstrap uses.
+        // It would be more accurate to click() or invoke the bootstrap JS API.
+        // This has major performance problems for large APIs and isn't used.
         for(var i = 0; i < buttons.length; i++){
             buttons[i].classList.add("collapsed");
         }
@@ -148,24 +173,39 @@
             hiddenElems[i].classList.add("collapse");
             hiddenElems[i].classList.remove("show");
         }
+
     }
 
+    /**
+     * Sorts the API by 'kind', 'group' or 'version'.
+     *
+     * @param {string} sortOn - One of "kind", "group" or "version"
+     */
     function sortIt(sortOn="kind"){
+
+        // only look at elements labeled as "stortable"
         var titleElements = document.getElementsByClassName("sortable");
+
+        // natural or reverse sort?
         var reverseSort = false;
 
+        // iterate over the sortable items and set the proper sort icon
         for(var i = 0; i < titleElements.length; i++){
             if(titleElements[i].children[0].dataset.sort === sortOn){
+
                 titleElements[i].classList.add("sorted");
 
+                // If we can't see the first element then sort natural
                 if(titleElements[i].children[1].classList.contains("d-none")){
                     titleElements[i].children[1].classList.remove("d-none");
                     titleElements[i].children[2].classList.add("d-none");
                 }
+                // Otherwise, the first element is visible and the second isn't.
+                // Make it visible and reverse sort
                 else if(titleElements[i].children[2].classList.contains("d-none")){
                     titleElements[i].children[2].classList.remove("d-none");
                     titleElements[i].children[1].classList.add("d-none");
-                    reverseSort = true;
+                    reverseSort = true
                 }
             }
             else {
@@ -175,6 +215,7 @@
             }
         }
 
+        // element sorting from https://jsfiddle.net/fkling/nXkDp/
         var toSort = document.getElementById('crd-rows-container').children;
         toSort = Array.prototype.slice.call(toSort, 0);
 
@@ -198,6 +239,7 @@
         }
     }
 
+    // on page load sort the fields and expand and scroll to the anchor if it's set.
     document.addEventListener("DOMContentLoaded", function(event){
         sortIt();
         scrollToAnchor();
@@ -205,15 +247,21 @@
 
     function scrollToAnchor(){
         var hash = window.location.hash.replace("#","");
+
         if(hash === "content"){
-            return;
+            return
         }
 
+         // hash on this page means they linked directly to an API object
         if(hash.length > 0){
+
             var hashes = hash.split("-");
+
+            // set an event listener on the last element to scroll it into view when expanded.
             var lastElement = document.getElementById(hash);
             lastElement.closest(".crd-child-container").classList.add("anchor-target");
 
+            // loop through the parent elements and click them to expand
             var workingHash = [];
             for(var index = 0; index < hashes.length; index++){
                 workingHash.push(hashes[index]);
@@ -222,4 +270,3 @@
         }
     }
 </script>
-</div>
