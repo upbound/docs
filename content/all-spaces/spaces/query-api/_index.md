@@ -20,7 +20,7 @@ This feature is in preview. The query API is available in the Cloud Space offeri
 
 ## Requirements
 
-Before you begin, make sure you have the most recent version of the `up` CLI installed.
+Before you begin, make sure you have the most recent version of the [`up` CLI installed]({{<ref "reference/cli#install-the-up-command-line">}}).
 
 ## Query API CLI
 
@@ -30,7 +30,7 @@ The Query API allows you to retrieve control plane information faster than tradi
 
 Use the `up alpha get` command to retreive information about objects within the current control plane context. This command uses the **Query** endpoint and targets the current control plane.
 
-To switch between control plane groups, use the `up ctp connect` command and change to your desired context:
+To switch between control plane groups, use the [`up ctx` ]({{<ref "reference/cli/command-reference/#ctx" >}}) and change to your desired context:
 
 ```shell
 up ctx <space>/<group>/<ctp-name>
@@ -38,7 +38,7 @@ up ctx <space>/<group>/<ctp-name>
 current context set to <context-1>
 ```
 
-You can query within a single control plane with the `up alpha get` command to return more information about a given object within the current kubeconfig context.
+You can query within a single control plane with the [`up alpha get` command]({{<ref "reference/cli/command-reference/#get" >}}) to return more information about a given object within the current kubeconfig context.
 
 The `up alpha get` command can query resource types and aliases to return objects in your control plane.
 
@@ -55,7 +55,7 @@ custom-cluster1-bq6dk-subnet     True    True     15m
 custom-cluster1-bq6dk-sa         True    True     15m
 ```
 
-The `-A` flag queries for objects across all namespaces.
+The [`-A` flag]({{<ref "##TODO-link" >}}) queries for objects across all namespaces.
 
 ```shell
 up alpha get configmaps -A
@@ -73,7 +73,7 @@ kube-system         kube-apiserver-legacy-service-account-token-tracking   18m
 kube-system         extension-apiserver-authentication                     18m
 ```
 
-To query for multiple resource types, you can add the name or alias for the resource as a comma separated string.
+To query for [multiple resource types]({{<ref "##TODO-link" >}}), you can add the name or alias for the resource as a comma separated string.
 
 ```shell
 up alpha get providers,providerrevisions
@@ -86,7 +86,7 @@ providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop              
 
 ### Query multiple control planes
 
-The `up alpha query` command returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. The `-A` flag switches the query context from the group level to the entire Space
+The [`up alpha query` command]({{<ref "reference/cli/command-reference/#query" >}}) returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. The `-A` flag({{<ref "##TODO-link" >}}) switches the query context from the group level to the entire Space
 
 The `up alpha query` command accepts resources and aliases to return objects across your group or Space.
 
@@ -115,7 +115,7 @@ nopresource.nop.crossplane.io/custom-account1-5bv5j-net        True    True     
 
 ```
 
-The `--sort-by` flag allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
+The [`--sort-by` flag]({{<ref "##TODO-link" >}}) allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
 
 ```shell
 up alpha query crossplane -A --sort-by="{.metadata.name}"
@@ -127,8 +127,7 @@ CONTROLPLANE    NAME                                                    AGE     
 default/test    storeconfig.secrets.crossplane.io/default               10m         Kubernetes      crossplane-system
 ```
 
-
-To query for multiple resource types, you can add the name or alias for the resource as a comma separated string.
+To query for multiple resource types, you can add the name or alias for the resource as a [comma separated string]({{<ref "##TODO-link" >}}).
 
 ```shell
 up alpha query namespaces,configmaps -A
@@ -154,7 +153,7 @@ default/test    kube-node-lease     namespace/kube-root-ca.crt                  
 default/test    kube-system         namespace/extension-apiserver-authentication    16m
 ```
 
-The Query API also allows you to return resource types with specific label columns.
+The Query API also allows you to return resource types with specific [label columns]({{<ref "##TODO-link" >}}).
 
 ```shell
 up alpha query composite -A --label-columns=crossplane.io/claim-namespace
@@ -169,7 +168,7 @@ default/query-api-test                                          xexternaldns.ext
 
 ### Query API request format
 
-The CLI can also return a version of your query request with the `--debug` flag. This flag returns the API spec request for your query.
+The CLI can also return a version of your query request with the [`--debug` flag]({{<ref "##TODO-link" >}}). This flag returns the API spec request for your query.
 
 ```shell
 up alpha query composite -A -d
