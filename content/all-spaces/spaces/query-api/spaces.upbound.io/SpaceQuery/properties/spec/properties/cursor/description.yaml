@@ -1,0 +1,4 @@
+description: |-
+    Cursor specifies the cursor of the first object to return. This value is
+    opaque and is only valid when passed into spec.page.cursor in a subsequent
+    query. The format of the cursor might change between releases.

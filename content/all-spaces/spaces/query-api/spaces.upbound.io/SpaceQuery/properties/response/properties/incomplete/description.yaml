@@ -1,0 +1,5 @@
+description: |-
+    incomplete is true if the query was (potentially) limited before all
+    matching objects. If a non-empty spec.page.cursor has been used, or
+    objects have been skipped through non-zero spec.page.first, this value
+    is always true.

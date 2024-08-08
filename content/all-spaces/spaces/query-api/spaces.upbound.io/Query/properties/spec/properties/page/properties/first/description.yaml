@@ -1,0 +1,4 @@
+description: |-
+    first is the number of the first object to return relative to the cursor.
+    If neither first nor cursor is specified, objects are returned from the
+    beginning.

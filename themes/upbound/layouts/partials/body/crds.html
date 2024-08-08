@@ -35,6 +35,7 @@
     <div id="crd-rows-container">
         {{/* Use the detected version */}}
         {{ $crdsData := index $.Site.Data.crds.reference "space-api" $cur_ver "yaml" }}
+
         {{ $descFiles := index $.Site.Data.crds.reference "space-api" $cur_ver "descriptions" }}
 
         {{/* Iterate over each CRD file */}}
