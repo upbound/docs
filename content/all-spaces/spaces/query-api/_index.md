@@ -23,101 +23,171 @@ This feature is in preview. The query API is available in the Cloud Space offeri
 
 Before you begin, make sure you have the most recent version of the `up` CLI installed.
 
+## Upbound console query views
+
 ## Query API CLI
 
 The Query API allows you to retrieve control plane information faster than traditional `kubectl` commands. This feature lets you debug your Crossplane resources with the CLI or within the Upbound Console's enhanced management views.
 
 ### Query within a single control plane
 
-Use the `up alpha get` command to retreive information about objects within the current kubeconfig context. This command uses the **Query** endpoint and targets the current control plane.
+Use the `up alpha get` command to retreive information about objects within the current control plane context. This command uses the **Query** endpoint and targets the current control plane.
 
 To switch between control plane groups, use the `up ctp connect` command and change to your desired context:
 
 ```shell
-up ctp connect <context-1>
+up ctx <space>/<group>/<ctp-name>
 
 current context set to <context-1>
 ```
 
 You can query within a single control plane with the `up alpha get` command to return more information about a given object within the current kubeconfig context.
 
-The `up alpha get` command has three sub-commands for managed resources, claims, and composite resources.
+The `up alpha get` command has
 
 ```shell
 up alpha get managed
-#TODO output
+NAME                             READY   SYNCED   AGE
+custom-account1-5bv5j-sa         True    True     15m
+custom-cluster1-bq6dk-net        True    True     15m
+custom-account1-5bv5j-subnet     True    True     15m
+custom-cluster1-bq6dk-nodepool   True    True     15m
+custom-cluster1-bq6dk-cluster    True    True     15m
+custom-account1-5bv5j-net        True    True     15m
+custom-cluster1-bq6dk-subnet     True    True     15m
+custom-cluster1-bq6dk-sa         True    True     15m
 ```
 
 ```shell
 up alpha get configmaps -A  # -A shows all namespaces
-#TODO output
+NAMESPACE           NAME                                                   AGE
+crossplane-system   uxp-versions-config                                    18m
+crossplane-system   universal-crossplane-config                            18m
+crossplane-system   kube-root-ca.crt                                       18m
+upbound-system      kube-root-ca.crt                                       18m
+kube-system         kube-root-ca.crt                                       18m
+kube-system         coredns                                                18m
+default             kube-root-ca.crt                                       18m
+kube-node-lease     kube-root-ca.crt                                       18m
+kube-public         kube-root-ca.crt                                       18m
+kube-system         kube-apiserver-legacy-service-account-token-tracking   18m
+kube-system         extension-apiserver-authentication                     18m
 ```
 
 ```shell
 up alpha get providers,providerrevisions
-#TODO output
+
+NAME                                                                              HEALTHY     REVISION   IMAGE                                                    STATE    DEP-FOUND   DEP-INSTALLED   AGE
+providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop-ecc25c121431   True        1          xpkg.upbound.io/crossplane-contrib/provider-nop:v0.2.1   Active                               18m
+NAME                                                                              INSTALLED   HEALTHY    PACKAGE                                                  AGE
+providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop                True        True       xpkg.upbound.io/crossplane-contrib/provider-nop:v0.2.1   18m
 ```
 
 ### Query multiple control planes
 
-The `up alpha query` command returns a list of objects of any kind within all the control planes in your space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. `up alpha query` has three sub-commands for managed resources, compoite resources, and claims. You can also query all control plane group objects with the `-A` flag.
+The `up alpha query` command returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. You can query specific objects or query all control plane group objects with the `-A` flag.
+
+#### Query for specific resources in all control planes
+
+The `up alpha query` command accepts resources and aliases to return objects across your control planes.
 
 ```shell
-# Query all Crossplane resources across the space (SpaceQuery)
-up alpha query crossplane -A
+up alpha query crossplane
+
+NAME                                                                                          ESTABLISHED   OFFERED   AGE
+compositeresourcedefinition.apiextensions.crossplane.io/xnetworks.platform.acme.co            True          True      20m
+compositeresourcedefinition.apiextensions.crossplane.io/xaccountscaffolds.platform.acme.co    True          True      20m
+
+
+NAME                                                                          XR-KIND             XR-APIVERSION               AGE
+composition.apiextensions.crossplane.io/xaccountscaffolds.platform.acme.co    XAccountScaffold    platform.acme.co/v1alpha1   20m
+composition.apiextensions.crossplane.io/xnetworks.platform.acme.co            XNetwork            platform.acme.co/v1alpha1   20m
+
+
+NAME                                                                                          REVISION   XR-KIND             XR-APIVERSION               AGE
+compositionrevision.apiextensions.crossplane.io/xaccountscaffolds.platform.acme.co-5ae9da5    1          XAccountScaffold    platform.acme.co/v1alpha1   20m
+compositionrevision.apiextensions.crossplane.io/xnetworks.platform.acme.co-414ce80            1          XNetwork            platform.acme.co/v1alpha1   20m
+
+NAME                                                           READY   SYNCED   AGE
+nopresource.nop.crossplane.io/custom-cluster1-bq6dk-subnet     True    True     19m
+nopresource.nop.crossplane.io/custom-account1-5bv5j-net        True    True     19m
+...
+
 ```
 
 ```shell
 # Query namespaces in a specific group (GroupQuery)
-up alpha query namespaces -g group
+up alpha query namespaces
+
+CONTROLPLANE    NAME                       AGE
+default/test    crossplane-system          1m1s
+default/test    upbound-system             1m1s
+default/test    default                    1m1s
+default/test    kube-node-lease            1m1s
+default/test    kube-public                1m1s
 ```
 
-```shell
-# Query namespaces in a specific control plane (Query)
-up alpha query namespaces -g group -c controlplane
-```
 
 ```shell
 # Sort results by name
 up alpha query crossplane -A --sort-by="{.metadata.name}"
-```
 
-```shell
-# Output in YAML format
-up alpha query namespace -g group -c controlplane -o yaml
+CONTROLPLANE    NAME                                                    AGE
+default/test    deploymentruntimeconfig.pkg.crossplane.io/default       10m
+
+CONTROLPLANE    NAME                                                    AGE         TYPE            DEFAULT-SCOPE
+default/test    storeconfig.secrets.crossplane.io/default               10m         Kubernetes      crossplane-system
 ```
 
 ```shell
 # Query multiple resource types
 up alpha query namespaces,configmaps -A
+
+CONTROLPLANE    NAME                            AGE
+default/test    namespace/upbound-system        15m
+default/test    namespace/crossplane-system     15m
+default/test    namespace/kube-node-lease       16m
+default/test    namespace/kube-public           16m
+default/test    namespace/kube-system           16m
+default/test    namespace/default               16m
+
+CONTROLPLANE    NAMESPACE           NAME                                            AGE
+default/test    crossplane-system   namespace/uxp-versions-config                   15m
+default/test    crossplane-system   namespace/universal-crossplane-config           15m
+default/test    crossplane-system   namespace/kube-root-ca.crt                      15m
+default/test    upbound-system      namespace/kube-root-ca.crt                      15m
+default/test    kube-system         namespace/coredns                               16m
+default/test    default             namespace/kube-root-ca.crt                      16m
+default/test    kube-public         namespace/kube-root-ca.crt                      16m
+default/test    kube-system         namespace/kube-root-ca.crt                      16m
+default/test    kube-node-lease     namespace/kube-root-ca.crt                      16m
+default/test    kube-system         namespace/extension-apiserver-authentication    16m
 ```
 
-```shell
-# Show labels without headers
-up alpha query namespaces --no-headers --show-labels
-```
 
 ```shell
 # Query composite resources with specific label columns
 up alpha query composite -A --label-columns=crossplane.io/claim-namespace
+
+CONTROLPLANE                  NAME                                                 SYNCED   READY   COMPOSITION                     AGE   CLAIM-NAMESPACE
+query-api-test/test   xeks.argo.discover.upbound.io/test-k7xbk   False            xeks.argo.discover.upbound.io   51d   default
+
+CONTROLPLANE                                                        NAME                                                                        EXTERNALDNS   SYNCED   READY   COMPOSITION                                    AGE   CLAIM-NAMESPACE
+spaces-clusters/controlplane-query-api-test-spaces-playground   xexternaldns.externaldns.platform.upbound.io/spaces-cluster-0-xd8v2-lhnl7   6.34.2        True     True    xexternaldns.externaldns.platform.upbound.io   19d   default
+default/query-api-test                                          xexternaldns.externaldns.platform.upbound.io/space-awg-kine-f7dxq-nkk2q     6.34.2        True     True    xexternaldns.externaldns.platform.upbound.io   55d   default
 ```
 
-The `up alpha query` command is useful for discovering roadblocks or issues in your deployment. For example, to return all managed resources with a `READY` status of `FALSE`, use the following command:
-
-```shell
-up query managed --controlplanes=type=prod --filter '.status.conditions[*].type=="Ready" && .status.conditions[*].status=="False"'
-```
 
 ### Query API request format
 
-The CLI can also return a composite version of your query request.
+The CLI can also return a version of your query request with the `--debug` flag. This flag returns the API spec request for your query.
 
 ```shell
 up alpha query composite -A -d
-# to see the Query API request
+
 apiVersion: query.spaces.upbound.io/v1alpha1
 kind: SpaceQuery
-metadata:
+metadata:u
   creationTimestamp: null
 spec:
   cursor: true
@@ -130,6 +200,92 @@ spec:
     controlPlane: true
     table: {}
   page: {}
+```
+
+For more complex queries, you can interact with the Query API like a Kubernetes-style API by creating a YAML file for your query and applying it with `kubectl`.
+
+The example below is a query for `claim` resources in every control plane from oldest to newest and returns specific information about those claims.
+
+
+```yaml
+apiVersion: query.spaces.upbound.io/v1alpha1
+kind: SpaceQuery
+spec:
+  filter:
+    categories:
+    - claim
+  order:
+  - creationTimestamp: Asc
+  cursor: true
+  count: true
+  objects:
+    id: true
+    controlPlane: true
+    object:
+      kind: true
+      apiVersion: true
+      metadata:
+        name: true
+        uid: true
+      spec:
+        containers:
+          image: true
+```
+
+You can use `kubectl create` and receive the `response` for your query parameters.
+
+```shell
+$ kubectl create -f spaces-query.yaml --validate=false -o yaml
+
+apiVersion: query.spaces.upbound.io/v1alpha1
+kind: SpaceQuery
+metadata:
+  creationTimestamp: "2024-08-08T14:41:46Z"
+  name: default
+response:
+  count: 3
+  cursor:
+    next: ""
+    page: 0
+    pageSize: 100
+    position: 0
+  objects:
+  - controlPlane:
+      name: query-api-test
+      namespace: default
+    id: default/query-api-test/823b2781-7e70-4d91-a6f0-ee8f455d67dc
+    object:
+      apiVersion: spaces.platform.upbound.io/v1alpha1
+      kind: Space
+      metadata:
+        name: space-awg-kine
+        resourceVersion: "803868"
+        uid: 823b2781-7e70-4d91-a6f0-ee8f455d67dc
+      spec: {}
+  - controlPlane:
+      name: test-1
+      namespace: test
+    id: test/test-1/08a573dd-851a-42cc-a600-b6f6ed37ee8d
+    object:
+      apiVersion: argo.discover.upbound.io/v1alpha1
+      kind: EKS
+      metadata:
+        name: test-1
+        resourceVersion: "4270320"
+        uid: 08a573dd-851a-42cc-a600-b6f6ed37ee8d
+      spec: {}
+  - controlPlane:
+      name: controlplane-query-api-test-spaces-playground
+      namespace: spaces-clusters
+    id: spaces-clusters/controlplane-query-api-test-spaces-playground/b5a6770f-1f85-4d09-8990-997c84bd4159
+    object:
+      apiVersion: spaces.platform.upbound.io/v1alpha1
+      kind: Space
+      metadata:
+        name: spaces-cluster-0
+        resourceVersion: "1408337"
+        uid: b5a6770f-1f85-4d09-8990-997c84bd4159
+      spec: {}
 ```
 
 ## Query API Explorer
