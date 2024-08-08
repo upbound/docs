@@ -115,7 +115,9 @@ nopresource.nop.crossplane.io/custom-account1-5bv5j-net        True    True     
 
 ```
 
+<!-- vale Upbound.Spelling = NO -->
 The [`--sort-by` flag]({{<ref "reference/cli/command-reference#query" >}}) allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
+<!-- vale Upbound.Spelling = YES -->
 
 ```shell
 up alpha query crossplane -A --sort-by="{.metadata.name}"
