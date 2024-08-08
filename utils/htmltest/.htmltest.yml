@@ -3,3 +3,4 @@ CheckExternal: false
 IgnoreInternalEmptyHash: true
 IgnoreURLs:
   - "github.com/upbound/docs/tree/main/content/(.*).md" # Ignore the links to "view this source"
+  - "v(.*)/(.*).yaml" # Ignore generated links in API template
