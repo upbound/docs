@@ -1,0 +1,2 @@
+description: |-
+    A QueryOrder specifies how to order. Exactly one of the fields must be set.
