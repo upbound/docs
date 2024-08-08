@@ -578,6 +578,7 @@ storeconfigs                                             secrets.crossplane.io/v
 The `up get` command prints information about a given object within the current kubeconfig
 context.
 
+{{< table "table table-sm table-striped">}}
 | Short Flag | Long Flag                         | Description                                                                                                                     |
 |------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
 | `-h`       | `--help`                          | Show context-sensitive help.                                                                                                    |
@@ -600,6 +601,8 @@ context.
 | `-d`       | `--debug=INT`                     | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).|
 | `-n`       | `--namespace=STRING`              | If present, the namespace scope for this CLI request.                                                                           |
 | `-A`       | `--all-namespaces`                | If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace. |
+{{< /table >}}
+
 
 **Examples**
 
