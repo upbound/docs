@@ -34,9 +34,9 @@
 
     <div id="crd-rows-container">
         {{/* Use the detected version */}}
-        {{ $crdsData := index $.Site.Data.api "all-spaces" "spaces" "query-api" "yaml" }}
+        {{ $crdsData := index $.Site.Data.crds "all-spaces" "spaces" "query-api" "yaml" }}
 
-        {{ $descFiles := index $.Site.Data.api "all-spaces" "spaces" "query-api" }}
+        {{ $descFiles := index $.Site.Data.crds "all-spaces" "spaces" "query-api" }}
 
         {{/* Iterate over each CRD file */}}
         {{ range $fileName, $crdContent := $crdsData }}
