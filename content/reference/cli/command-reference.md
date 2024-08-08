@@ -590,7 +590,7 @@ context.
 |            | `--show-labels`                   | When printing, show all labels as the last column (default hide labels column).                                                 |
 |            | `--sort-by=STRING`                | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
 |            | `--label-columns=LABEL-COLUMNS,...`| Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2... |
-|            | `--show-kind`                     | If present, list the resource type for the requested object(s).                                                                 |
+|            | `--show-kind`                     | If present, list the resource type for the requested object or objects.                                                                 |
 | `-t`       | `--template=STRING`               | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview]. |
 |            | `--allow-missing-template-keys`   | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. |
 |            | `--show-managed-fields`           | If true, keep the managedFields when printing objects in JSON or YAML format.                                                   |
@@ -599,9 +599,8 @@ context.
 |            | `--insecure-skip-tls-verify`      | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                      |
 | `-d`       | `--debug=INT`                     | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).|
 | `-n`       | `--namespace=STRING`              | If present, the namespace scope for this CLI request.                                                                           |
-| `-A`       | `--all-namespaces`                | If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace. |
+| `-A`       | `--all-namespaces`                | If present, list the requested object or objects across all namespaces. Namespace in current context is ignored even if specified with --namespace. |
 {{< /table >}}
-<!-- vale on -->
 
 **Examples**
 
@@ -623,6 +622,8 @@ Get all claims managed by this control plane.
 
 Get all composite resources managed by this control plane.
 `up get composite`
+<!-- vale on -->
+
 
 ## license
 
@@ -1024,10 +1025,9 @@ up profile config set color blue
 ```shell {copy-lines="1"}
 up profile config unset color
 ```
-<!-- vale off -->
-
 ## query
 
+<!-- vale off -->
 The `up query` command lets you view list of objects of any kind within all the control planes in your space. Supports filtering.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1043,7 +1043,7 @@ The `up query` command lets you view list of objects of any kind within all the 
 |            | `--show-labels`                   | When printing, show all labels as the last column (default hide labels column).                                                 |
 |            | `--sort-by=STRING`                | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
 |            | `--label-columns=LABEL-COLUMNS,...`| Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2... |
-|            | `--show-kind`                     | If present, list the resource type for the requested object(s).                                                                 |
+|            | `--show-kind`                     | If present, list the resource type for the requested object or objects.                                                                 |
 | `-t`       | `--template=STRING`               | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview]. |
 |            | `--allow-missing-template-keys`   | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. |
 |            | `--show-managed-fields`           | If true, keep the managedFields when printing objects in JSON or YAML format.                                                   |
@@ -1056,7 +1056,6 @@ The `up query` command lets you view list of objects of any kind within all the 
 | `-c`       | `--controlplane=STRING`           | Control plane name. Defaults to the current kubeconfig context if it points to a control plane ($UPBOUND_CONTROLPLANE).          |
 | `-A`       | `--all-groups`                    | Query in all groups.                                                                                                             |
 {{< /table >}}
-
 
 **Examples**
 
@@ -1082,6 +1081,7 @@ Get the composite resources within all control plane groups.
 `up query managed -A`
 
 <!-- vale on -->
+
 
 ## repository
 
