@@ -571,7 +571,6 @@ storeconfigs                                             secrets.crossplane.io/v
 | kubeconfig                | f         | Kubeconfig to modify when saving a new context. `-f -` prints to stout.                      |                       |
 
 {{< /table >}}
-<!-- vale on -->
 
 ## get
 
@@ -602,7 +601,7 @@ context.
 | `-n`       | `--namespace=STRING`              | If present, the namespace scope for this CLI request.                                                                           |
 | `-A`       | `--all-namespaces`                | If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace. |
 {{< /table >}}
-
+<!-- vale on -->
 
 **Examples**
 
@@ -1025,6 +1024,7 @@ up profile config set color blue
 ```shell {copy-lines="1"}
 up profile config unset color
 ```
+<!-- vale off -->
 
 ## query
 
@@ -1080,6 +1080,8 @@ Get the claims within all control plane groups.
 
 Get the composite resources within all control plane groups.
 `up query managed -A`
+
+<!-- vale on -->
 
 ## repository
 
