@@ -220,7 +220,7 @@ spec:
 
                               'object' - The object from the incoming request. The value is null for DELETE requests.
                               'oldObject' - The existing object. The value is null for CREATE requests.
-                              'request' - Attributes of the admission request(/pkg/apis/admission/types.go#AdmissionRequest).
+                              'request' - Attributes of the admission request(https://pkg.go.dev/k8s.io/kubernetes/pkg/apis/admission#AdmissionRequest).
                               'authorizer' - A CEL Authorizer. May be used to perform authorization checks for the principal (user or service account) of the request.
                                 See https://pkg.go.dev/k8s.io/apiserver/pkg/cel/library#Authz
                               'authorizer.requestResource' - A CEL ResourceCheck constructed from the 'authorizer' and configured with the
@@ -2409,7 +2409,7 @@ spec:
                                       The value is null for DELETE requests.\n- 'oldObject'
                                       - The existing object. The value is null for
                                       CREATE requests.\n- 'request' - Attributes of
-                                      the API request([ref](/pkg/apis/admission/types.go#AdmissionRequest)).\n-
+                                      the API request([ref](https://pkg.go.dev/k8s.io/kubernetes/pkg/apis/admission#AdmissionRequest)).\n-
                                       'params' - Parameter resource referred to by
                                       the policy binding being evaluated. Only populated
                                       if the policy has a ParamKind.\n- 'namespaceObject'
