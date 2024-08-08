@@ -233,7 +233,7 @@ kind: SharedBackupSchedule
 metadata:
   name: daily-schedule
 spec:
-  ttl: 604800 # Backup is garbage collected after 7 days
+  ttl: 168h # Backup is garbage collected after 7 days
 ```
 
 ### Garbage collect backups when the schedule gets deleted
@@ -337,7 +337,7 @@ kind: SharedBackup
 metadata:
   name: my-backup
 spec:
-  ttl: 604800 # Backup is garbage collected after 7 days
+  ttl: 168h # Backup is garbage collected after 7 days
 ```
 
 <!-- vale off -->
@@ -458,7 +458,7 @@ kind: Backup
 metadata:
   name: my-backup
 spec:
-  ttl: 604800 # Backup is garbage collected after 7 days
+  ttl: 168h # Backup is garbage collected after 7 days
 ```
 
 ## Restore a control plane from a backup
