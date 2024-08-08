@@ -10,7 +10,7 @@ cascade:
 <!-- ignore "aggregate" -->
 
 
-Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retreiving information from your Space.
+Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retrieving information from your Space.
 
 {{< hint "important" >}}
 
@@ -28,7 +28,7 @@ The Query API allows you to retrieve control plane information faster than tradi
 
 ### Query within a single control plane
 
-Use the `up alpha get` command to retreive information about objects within the current control plane context. This command uses the **Query** endpoint and targets the current control plane.
+Use the `up alpha get` command to retrieve information about objects within the current control plane context. This command uses the **Query** endpoint and targets the current control plane.
 
 To switch between control plane groups, use the [`up ctx` ]({{<ref "reference/cli/command-reference#ctx" >}}) and change to your desired context:
 
@@ -190,7 +190,7 @@ spec:
   page: {}
 ```
 
-For more complex queries, you can interact with the Query API like a Kubernetes-style API by creating a YAML file for your query and applying it with `kubectl`.
+For more complex queries, you can interact with the Query API like a Kubernetes-style API by creating a query and applying it with `kubectl`.
 
 The example below is a query for `claim` resources in every control plane from oldest to newest and returns specific information about those claims.
 
