@@ -275,8 +275,11 @@ response:
         uid: b5a6770f-1f85-4d09-8990-997c84bd4159
       spec: {}
 ```
+<!-- vale off -->
 
 ## Query API Explorer
+
+<!-- vale on -->
 
 
 
