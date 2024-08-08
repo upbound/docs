@@ -578,6 +578,35 @@ storeconfigs                                             secrets.crossplane.io/v
 The `up get` command prints information about a given object within the current kubeconfig
 context.
 
+| Short Flag | Long Flag                         | Description                                                                                                                     |
+|------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `-h`       | `--help`                          | Show context-sensitive help.                                                                                                    |
+|            | `--format="default"`              | Format for get/list commands. Can be: json, yaml, default.                                                                      |
+| `-q`       | `--quiet`                         | Suppress all output.                                                                                                            |
+|            | `--pretty`                        | Pretty print output.                                                                                                            |
+|            | `--dry-run`                       | Dry-run output.                                                                                                                 |
+| `-o`       | `--output=STRING`                 | Output format. One of: json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file, custom-columns, custom-columns-file, wide. |
+|            | `--no-headers`                    | When using the default or custom-column output format, don't print headers.                                                     |
+|            | `--show-labels`                   | When printing, show all labels as the last column (default hide labels column).                                                 |
+|            | `--sort-by=STRING`                | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
+|            | `--label-columns=LABEL-COLUMNS,...`| Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2... |
+|            | `--show-kind`                     | If present, list the resource type for the requested object(s).                                                                 |
+| `-t`       | `--template=STRING`               | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview]. |
+|            | `--allow-missing-template-keys`   | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. |
+|            | `--show-managed-fields`           | If true, keep the managedFields when printing objects in JSON or YAML format.                                                   |
+|            | `--domain=https://upbound.io`     | Root Upbound domain ($UP_DOMAIN).                                                                                               |
+| `-a`       | `--account=STRING`                | Account used to execute command ($UP_ACCOUNT).                                                                                  |
+|            | `--insecure-skip-tls-verify`      | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                      |
+| `-d`       | `--debug=INT`                     | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).|
+| `-n`       | `--namespace=STRING`              | If present, the namespace scope for this CLI request.                                                                           |
+| `-A`       | `--all-namespaces`                | If present, list the requested object(s) across all namespaces. Namespace in current context is ignored even if specified with --namespace. |
+
+**Examples**
+
+### get resources across all namespaces
+
+`up alpha get configmaps -A`
+
 ### get managed
 
 Get all managed resources within this control plane.
@@ -998,7 +1027,39 @@ up profile config unset color
 
 The `up query` command lets you view list of objects of any kind within all the control planes in your space. Supports filtering.
 
-To query across all control plane groups within a space.
+{{< table "table table-sm table-striped cli-ref">}}
+| Short Flag | Long Flag                         | Description                                                                                                                     |
+|------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `-h`       | `--help`                          | Show context-sensitive help.                                                                                                    |
+|            | `--format="default"`              | Format for get/list commands. Can be: json, yaml, default.                                                                      |
+| `-q`       | `--quiet`                         | Suppress all output.                                                                                                            |
+|            | `--pretty`                        | Pretty print output.                                                                                                            |
+|            | `--dry-run`                       | Dry-run output.                                                                                                                 |
+| `-o`       | `--output=STRING`                 | Output format. One of: json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file, custom-columns, custom-columns-file, wide. |
+|            | `--no-headers`                    | When using the default or custom-column output format, don't print headers.                                                     |
+|            | `--show-labels`                   | When printing, show all labels as the last column (default hide labels column).                                                 |
+|            | `--sort-by=STRING`                | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
+|            | `--label-columns=LABEL-COLUMNS,...`| Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2... |
+|            | `--show-kind`                     | If present, list the resource type for the requested object(s).                                                                 |
+| `-t`       | `--template=STRING`               | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview]. |
+|            | `--allow-missing-template-keys`   | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. |
+|            | `--show-managed-fields`           | If true, keep the managedFields when printing objects in JSON or YAML format.                                                   |
+|            | `--domain=https://upbound.io`     | Root Upbound domain ($UP_DOMAIN).                                                                                               |
+| `-a`       | `--account=STRING`                | Account used to execute command ($UP_ACCOUNT).                                                                                  |
+|            | `--insecure-skip-tls-verify`      | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                      |
+| `-d`       | `--debug=INT`                     | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).|
+| `-n`       | `--namespace=STRING`              | Namespace name for resources to query. By default, it's all namespaces if not on a control plane profile, the profile's current namespace or "default" ($UPBOUND_NAMESPACE). |
+| `-g`       | `--group=STRING`                  | Control plane group. By default, it's the kubeconfig's current namespace or "default" ($UPBOUND_GROUP).                          |
+| `-c`       | `--controlplane=STRING`           | Control plane name. Defaults to the current kubeconfig context if it points to a control plane ($UPBOUND_CONTROLPLANE).          |
+| `-A`       | `--all-groups`                    | Query in all groups.                                                                                                             |
+{{< /table >}}
+
+
+**Examples**
+
+### query across a Space
+
+To query across all control plane groups within a Space.
 
 `up query -A`
 
