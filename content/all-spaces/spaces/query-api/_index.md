@@ -10,7 +10,7 @@ cascade:
 <!-- ignore "aggregate" -->
 
 
-Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package.
+Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retreiving information from your Space.
 
 {{< hint "important" >}}
 
@@ -55,7 +55,7 @@ custom-cluster1-bq6dk-subnet     True    True     15m
 custom-cluster1-bq6dk-sa         True    True     15m
 ```
 
-The [`-A` flag]({{<ref "##TODO-link" >}}) queries for objects across all namespaces.
+The [`-A` flag]({{<ref "reference/cli/command-reference/#get/#get-resources-across-all-namespaces" >}}) queries for objects across all namespaces.
 
 ```shell
 up alpha get configmaps -A
@@ -73,7 +73,7 @@ kube-system         kube-apiserver-legacy-service-account-token-tracking   18m
 kube-system         extension-apiserver-authentication                     18m
 ```
 
-To query for [multiple resource types]({{<ref "##TODO-link" >}}), you can add the name or alias for the resource as a comma separated string.
+To query for [multiple resource types]({{<ref "reference/cli/command-reference/#get" >}}), you can add the name or alias for the resource as a comma separated string.
 
 ```shell
 up alpha get providers,providerrevisions
@@ -86,7 +86,7 @@ providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop              
 
 ### Query multiple control planes
 
-The [`up alpha query` command]({{<ref "reference/cli/command-reference/#query" >}}) returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. The `-A` flag({{<ref "##TODO-link" >}}) switches the query context from the group level to the entire Space
+The [`up alpha query` command]({{<ref "reference/cli/command-reference/#query" >}}) returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. The `-A` flag({{<ref "reference/cli/command-reference/#query/#query-across-a-space" >}}) switches the query context from the group level to the entire Space
 
 The `up alpha query` command accepts resources and aliases to return objects across your group or Space.
 
@@ -115,7 +115,7 @@ nopresource.nop.crossplane.io/custom-account1-5bv5j-net        True    True     
 
 ```
 
-The [`--sort-by` flag]({{<ref "##TODO-link" >}}) allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
+The [`--sort-by` flag]({{<ref "reference/cli/command-reference/#query" >}}) allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
 
 ```shell
 up alpha query crossplane -A --sort-by="{.metadata.name}"
@@ -153,7 +153,7 @@ default/test    kube-node-lease     namespace/kube-root-ca.crt                  
 default/test    kube-system         namespace/extension-apiserver-authentication    16m
 ```
 
-The Query API also allows you to return resource types with specific [label columns]({{<ref "##TODO-link" >}}).
+The Query API also allows you to return resource types with specific [label columns]({{<ref "reference/cli/command-reference/#query" >}}).
 
 ```shell
 up alpha query composite -A --label-columns=crossplane.io/claim-namespace
@@ -168,7 +168,7 @@ default/query-api-test                                          xexternaldns.ext
 
 ### Query API request format
 
-The CLI can also return a version of your query request with the [`--debug` flag]({{<ref "##TODO-link" >}}). This flag returns the API spec request for your query.
+The CLI can also return a version of your query request with the [`--debug` flag]({{<ref "reference/cli/command-reference/#query" >}}). This flag returns the API spec request for your query.
 
 ```shell
 up alpha query composite -A -d
