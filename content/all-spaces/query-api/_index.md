@@ -79,7 +79,7 @@ up alpha get providers,providerrevisions
 NAME                                                                              HEALTHY     REVISION   IMAGE                                                    STATE    DEP-FOUND   DEP-INSTALLED   AGE
 providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop-ecc25c121431   True        1          xpkg.upbound.io/crossplane-contrib/provider-nop:v0.2.1   Active                               18m
 NAME                                                                              INSTALLED   HEALTHY    PACKAGE                                                  AGE
-providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop                True        True       xpkg.upbound.io/crossplane-contrib/provider-nop:v0.2.1   18m
+provider.pkg.crossplane.io/crossplane-contrib-provider-nop                True        True       xpkg.upbound.io/crossplane-contrib/provider-nop:v0.2.1   18m
 ```
 
 ### Query multiple control planes
@@ -135,22 +135,19 @@ up alpha query namespaces,configmaps -A
 CONTROLPLANE    NAME                            AGE
 default/test    namespace/upbound-system        15m
 default/test    namespace/crossplane-system     15m
-default/test    namespace/kube-node-lease       16m
-default/test    namespace/kube-public           16m
 default/test    namespace/kube-system           16m
 default/test    namespace/default               16m
 
 CONTROLPLANE    NAMESPACE           NAME                                            AGE
-default/test    crossplane-system   namespace/uxp-versions-config                   15m
-default/test    crossplane-system   namespace/universal-crossplane-config           15m
-default/test    crossplane-system   namespace/kube-root-ca.crt                      15m
-default/test    upbound-system      namespace/kube-root-ca.crt                      15m
-default/test    kube-system         namespace/coredns                               16m
-default/test    default             namespace/kube-root-ca.crt                      16m
-default/test    kube-public         namespace/kube-root-ca.crt                      16m
-default/test    kube-system         namespace/kube-root-ca.crt                      16m
-default/test    kube-node-lease     namespace/kube-root-ca.crt                      16m
-default/test    kube-system         namespace/extension-apiserver-authentication    16m
+default/test    crossplane-system   configmap/uxp-versions-config                   15m
+default/test    crossplane-system   configmap/universal-crossplane-config           15m
+default/test    crossplane-system   configmap/kube-root-ca.crt                      15m
+default/test    upbound-system      configmap/kube-root-ca.crt                      15m
+default/test    kube-system         configmap/coredns                               16m
+default/test    default             configmap/kube-root-ca.crt                      16m
+
+## Output truncated...
+
 ```
 
 The Query API also allows you to return resource types with specific [label columns]({{<ref "reference/cli/command-reference#up-alpha-query" >}}).
@@ -164,6 +161,9 @@ query-api-test/test   xeks.argo.discover.upbound.io/test-k7xbk   False          
 CONTROLPLANE                                                        NAME                                                                        EXTERNALDNS   SYNCED   READY   COMPOSITION                                    AGE   CLAIM-NAMESPACE
 spaces-clusters/controlplane-query-api-test-spaces-playground   xexternaldns.externaldns.platform.upbound.io/spaces-cluster-0-xd8v2-lhnl7   6.34.2        True     True    xexternaldns.externaldns.platform.upbound.io   19d   default
 default/query-api-test                                          xexternaldns.externaldns.platform.upbound.io/space-awg-kine-f7dxq-nkk2q     6.34.2        True     True    xexternaldns.externaldns.platform.upbound.io   55d   default
+
+## Output truncated...
+
 ```
 
 ### Query API request format
