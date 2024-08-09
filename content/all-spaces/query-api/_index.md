@@ -30,12 +30,10 @@ The Query API allows you to retrieve control plane information faster than tradi
 
 Use the `up alpha get` command to retrieve information about objects within the current control plane context. This command uses the **Query** endpoint and targets the current control plane.
 
-To switch between control plane groups, use the [`up ctx` ]({{<ref "reference/cli/command-reference#ctx" >}}) and change to your desired context:
+To switch between control plane groups, use the [`up ctx` ]({{<ref "reference/cli/command-reference#ctx" >}}) and change to your desired context with an interactive prompt or specify with your control plane path:
 
 ```shell
-up ctx <space>/<group>/<ctp-name>
-
-current context set to <context-1>
+up ctx <org>/<space>/<group>/<ctp-name>
 ```
 
 You can query within a single control plane with the [`up alpha get` command]({{<ref "reference/cli/command-reference#get" >}}) to return more information about a given object within the current kubeconfig context.
