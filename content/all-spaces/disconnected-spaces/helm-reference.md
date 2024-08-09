@@ -5,6 +5,7 @@ description: Spaces Helm chart configuration values
 aliases:
     - /spaces/helm-reference
 ---
+
 <!-- vale off -->
 
 This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
@@ -302,7 +303,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.upboundPolicy.enabled | bool | `false` | This enables the SharedUpboundPolicy API within this space. |
 | features.alpha.upboundRBAC | object | `{"enabled":false}` | None |
 | features.alpha.upboundRBAC.enabled | bool | `false` | This enables respecting Upbound Authorization management within the space. This will include new APIs for binding Objects to identities supplied by Upbound. |
-| features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
+| features.beta | object | `{}` | Beta features are on by default, but may be disabled. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
 | hostCluster.provider.helm.version | string | `"v0.19.0"` | None |
 | hostCluster.provider.kubernetes.version | string | `"v0.14.0"` | None |
 | hostCluster.uxp.metrics | object | `{"enabled":true}` | None |
@@ -328,7 +329,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.spacesCollector.config | object | `{"exportPipeline":{"logs":["debug"],"metrics":["debug"]},"exporters":{"debug":null}}` | None |
 | observability.spacesCollector.config.exportPipeline.logs | list | `["debug"]` | None |
 | observability.spacesCollector.config.exportPipeline.metrics | list | `["debug"]` | None |
-| observability.spacesCollector.config.exporters | object | `{"debug":null}` | To export observability data, configure the exporters here and update the exportPipeline to include the exporters you want to use per telemetry type. |
+| observability.spacesCollector.config.exporters | object | `{"debug":null}` | To export observability data, configure the exporters and update the exportPipeline to include the exporters you want to use per telemetry type. |
 | observability.spacesCollector.config.exporters.debug | string | `nil` | None |
 | observability.spacesCollector.repository | string | `"opentelemetry-collector-spaces"` | None |
 | observability.spacesCollector.resources | object | `{"limits":{"cpu":100,"memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}}` | None |
@@ -420,6 +421,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | xpkg.providerHostCluster.tag | string | `""` | None |
 | xpkg.pullPolicy | string | `"IfNotPresent"` | None |
 
-{{< /table-no >}}
 
 <!-- vale on -->
+
+{{< /table-no >}}
