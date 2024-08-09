@@ -153,7 +153,7 @@ default/test    kube-node-lease     namespace/kube-root-ca.crt                  
 default/test    kube-system         namespace/extension-apiserver-authentication    16m
 ```
 
-The Query API also allows you to return resource types with specific [label columns]({{<ref "reference/cli/command-reference#query" >}}).
+The Query API also allows you to return resource types with specific [label columns]({{<ref "reference/cli/command-reference#up-alpha-query" >}}).
 
 ```shell
 up alpha query composite -A --label-columns=crossplane.io/claim-namespace
