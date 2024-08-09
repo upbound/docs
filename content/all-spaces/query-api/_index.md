@@ -36,7 +36,7 @@ To switch between control plane groups, use the [`up ctx` ]({{<ref "reference/cl
 up ctx <org>/<space>/<group>/<ctp-name>
 ```
 
-You can query within a single control plane with the [`up alpha get` command]({{<ref "reference/cli/command-reference#get" >}}) to return more information about a given object within the current kubeconfig context.
+You can query within a single control plane with the [`up alpha get` command]({{<ref "reference/cli/command-reference#up-alpha-get" >}}) to return more information about a given object within the current kubeconfig context.
 
 The `up alpha get` command can query resource types and aliases to return objects in your control plane.
 
@@ -53,7 +53,7 @@ custom-cluster1-bq6dk-subnet     True    True     15m
 custom-cluster1-bq6dk-sa         True    True     15m
 ```
 
-The [`-A` flag]({{<ref "reference/cli/command-reference#get#get-resources-across-all-namespaces" >}}) queries for objects across all namespaces.
+The [`-A` flag]({{<ref "reference/cli/command-reference#get-resources-across-all-namespaces" >}}) queries for objects across all namespaces.
 
 ```shell
 up alpha get configmaps -A
@@ -71,7 +71,7 @@ kube-system         kube-apiserver-legacy-service-account-token-tracking   18m
 kube-system         extension-apiserver-authentication                     18m
 ```
 
-To query for [multiple resource types]({{<ref "reference/cli/command-reference#get" >}}), you can add the name or alias for the resource as a comma separated string.
+To query for [multiple resource types]({{<ref "reference/cli/command-reference#up-alpha-get" >}}), you can add the name or alias for the resource as a comma separated string.
 
 ```shell
 up alpha get providers,providerrevisions
@@ -84,7 +84,7 @@ providerrevision.pkg.crossplane.io/crossplane-contrib-provider-nop              
 
 ### Query multiple control planes
 
-The [`up alpha query` command]({{<ref "reference/cli/command-reference#query" >}}) returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. The `-A` flag({{<ref "reference/cli/command-reference#query/#query-across-a-space" >}}) switches the query context from the group level to the entire Space
+The [`up alpha query` command]({{<ref "reference/cli/command-reference#up-alpha-query" >}}) returns a list of objects of any kind within all the control planes in your Space. This command uses either the **SpaceQuery** or **GroupQuery** endpoints depending on your query scope. The `-A` flag({{<ref "reference/cli/command-reference#query-across-a-space" >}}) switches the query context from the group level to the entire Space
 
 The `up alpha query` command accepts resources and aliases to return objects across your group or Space.
 
@@ -114,7 +114,7 @@ nopresource.nop.crossplane.io/custom-account1-5bv5j-net        True    True     
 ```
 
 <!-- vale Upbound.Spelling = NO -->
-The [`--sort-by` flag]({{<ref "reference/cli/command-reference#query" >}}) allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
+The [`--sort-by` flag]({{<ref "reference/cli/command-reference#up-alpha-query" >}}) allows you to return information to your specifications. You can construct your sort order in a JSONPath expression string or integer.
 <!-- vale Upbound.Spelling = YES -->
 
 ```shell
@@ -127,7 +127,7 @@ CONTROLPLANE    NAME                                                    AGE     
 default/test    storeconfig.secrets.crossplane.io/default               10m         Kubernetes      crossplane-system
 ```
 
-To query for multiple resource types, you can add the name or alias for the resource as a [comma separated string]({{<ref "##TODO-link" >}}).
+To query for multiple resource types, you can add the name or alias for the resource as a comma separated string.
 
 ```shell
 up alpha query namespaces,configmaps -A
@@ -168,7 +168,7 @@ default/query-api-test                                          xexternaldns.ext
 
 ### Query API request format
 
-The CLI can also return a version of your query request with the [`--debug` flag]({{<ref "reference/cli/command-reference#query" >}}). This flag returns the API spec request for your query.
+The CLI can also return a version of your query request with the [`--debug` flag]({{<ref "reference/cli/command-reference#up-alpha-query" >}}). This flag returns the API spec request for your query.
 
 ```shell
 up alpha query composite -A -d

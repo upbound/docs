@@ -1775,6 +1775,9 @@ Get all composite resources managed by this control plane.
 
 **Description:** Export the current state of a Crossplane or Universal Crossplane control plane into an archive, preparing it for migration to Upbound Managed Control Planes.
 
+<!-- vale off -->
+
+
 **Options:**
 
 {{< table "table table-sm table-striped">}}
@@ -1809,7 +1812,6 @@ Get all composite resources managed by this control plane.
 
 ### up alpha query
 
-<!-- vale off -->
 The `up alpha query` command lets you view list of objects of any kind within all the control planes in your space. Supports filtering.
 
 {{< table "table table-sm table-striped cli-ref">}}
@@ -1861,8 +1863,6 @@ Get the claims within all control plane groups.
 
 Get the composite resources within all control plane groups.
 `up alpha query managed -A`
-
-<!-- vale on -->
 
 ---
 
