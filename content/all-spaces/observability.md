@@ -7,7 +7,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview, requires Spaces `v1.3.0`, and is off by default. To enable, set `features.alpha.observability.enabled=true` when installing Spaces:
+This feature is in preview, requires Spaces `v1.6.0`, and is off by default. To enable, set `features.alpha.observability.enabled=true` when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
