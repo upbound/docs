@@ -1,0 +1,3 @@
+description: |-
+    ControlName specifies the name of the Pod Security Standard control.
+    See: https://kubernetes.io/docs/concepts/security/pod-security-standards/

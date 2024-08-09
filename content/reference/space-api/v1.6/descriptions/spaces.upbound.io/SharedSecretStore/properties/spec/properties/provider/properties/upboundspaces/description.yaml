@@ -1,0 +1,2 @@
+description: |-
+    UpboundProvider configures a store to sync secrets with Upbound Spaces.

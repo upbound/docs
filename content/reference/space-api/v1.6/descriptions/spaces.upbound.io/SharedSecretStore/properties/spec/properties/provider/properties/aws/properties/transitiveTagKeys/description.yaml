@@ -1,0 +1,2 @@
+description: |-
+    AWS STS assume role transitive session tags. Required when multiple rules are used with the provider
