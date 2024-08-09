@@ -57,7 +57,7 @@ issuer:
   audienceMatchPolicy: MatchAny
 ```
 
-By default, the authenticator assumes the OIDC Discovery URL is `{issuer.url}/.well-known/openid-configuration`. Most providers follow this structure, but you can override this URL with <!-- ##TODO-How to? -->
+By default, the authenticator assumes the OIDC Discovery URL is `{issuer.url}/.well-known/openid-configuration`. Most identity providers follow this structure, and the `discoveryUrl` field may be omitted. However, if using a separate discovery service, specify the full path to the discovery endpoint in this field.
 
 If the CA for the Issuer isn't public, provide the PEM encoded CA for the Discovery URL.
 
@@ -67,6 +67,7 @@ If you specify multiple `audiences` , `audienceMatchPolicy` must equal `MatchAny
 
 ### Configure `claimMappings`
 
+#### Username Claim Mapping
 
 By default, the authenticator uses the `sub` claim as the user name. To override this, either:
 
@@ -80,11 +81,11 @@ claimMappings:
     claim: "sub"
     prefix: ""
     # <or>
-	expression: 'claims.username + ":external-user'
+    expression: 'claims.username + ":external-user"'
 ```
 
 
-### Groups Claim Mapping
+#### Groups Claim Mapping
 
 By default, this configuration doesn't map groups, unless you either:
 
@@ -99,7 +100,7 @@ claimMappings:
     claim: "groups"
     prefix: ""
     # <or>
-	expression: 'claims.roles.split(",")'
+    expression: 'claims.roles.split(",")'
 ```
 
 
@@ -115,15 +116,15 @@ Review the [documentation][Structured Auth Config] for Validation rules, as that
 
 To interact with Space and ControlPlane APIs, users must have the `upbound.io/aud` claim set to one of the following:
 
-| Upbound.io Audience                                     | Notes                                                                |
-| ------------------------------------------------------- | -------------------------------------------------------------------- |
-| `[]`                                                    | No Access to Space-level or ControlPlane APIs                        |
-| `['upbound:spaces:api']`                                | This Identity is only for Space-level APIs                  |
-| `['upbound:spaces:controlplanes']`                      | This Identity is only for ControlPlane APIs                |
-| `[upbound:spaces:api', 'upbound:spaces:controlplanes']` | This Identity is for both Space-level and ControlPlane APIs |
+| Upbound.io Audience                                      | Notes                                                                |
+| -------------------------------------------------------- | -------------------------------------------------------------------- |
+| `[]`                                                     | No Access to Space-level or ControlPlane APIs                        |
+| `['upbound:spaces:api']`                                 | This Identity is only for Space-level APIs                  |
+| `['upbound:spaces:controlplanes']`                       | This Identity is only for ControlPlane APIs                 |
+| `['upbound:spaces:api', 'upbound:spaces:controlplanes']` | This Identity is for both Space-level and ControlPlane APIs |
 
 
-You can set this claim at the identity provider and map it in the ID token, you can add it with the `jwt.claimMappings.extra` array. For example:
+You can set this claim at the identity provider and map it in the ID token, or you can inject it in the authenticator with the `jwt.claimMappings.extra` array.
 
 For example:
 
@@ -155,10 +156,11 @@ jwt:
 Once you create an `AuthenticationConfiguration` file, specify this file as a `ConfigMap` in the host cluster for the Upbound Space.
 
 ```sh
-kubectl create secret generic <name> -n upbound-system --from-file=config.yaml=./path/to/config.yaml
+kubectl create configmap <configmap name> -n upbound-system --from-file=config.yaml=./path/to/config.yaml
 ```
 
-To enable OIDC authentication when installing the Space, reference the configuration and pass an empty value to the Upbound IAM parameter:
+To enable OIDC authentication and disable Upbound IAM when installing the Space, reference the configuration and pass an empty value to the Upbound IAM issuer 
+parameter:
 
 ```sh
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
