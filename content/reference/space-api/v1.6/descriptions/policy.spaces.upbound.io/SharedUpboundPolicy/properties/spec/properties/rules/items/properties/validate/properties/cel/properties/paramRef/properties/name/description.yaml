@@ -1,0 +1,6 @@
+description: |-
+    `name` is the name of the resource being referenced.
+    
+    
+    `name` and `selector` are mutually exclusive properties. If one is set,
+    the other must be unset.

@@ -1,0 +1,3 @@
+description: |-
+    Kind is the API kind the resources belong to.
+    Required.

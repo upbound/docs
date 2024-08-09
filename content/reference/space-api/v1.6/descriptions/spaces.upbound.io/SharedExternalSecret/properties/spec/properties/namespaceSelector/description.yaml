@@ -1,0 +1,4 @@
+description: |-
+    The projected secret can be consumed
+    only within namespaces matching the provided selector.
+    Either names or a labelSelector must be specified.
