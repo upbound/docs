@@ -1,0 +1,3 @@
+description: |-
+    namespace is the namespace of the controlplane to query. If empty, all
+    namespaces are queried in the given scope.

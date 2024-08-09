@@ -1,0 +1,3 @@
+description: |-
+    group is the API group to query. If empty, all groups are queried in the
+    given scope.

@@ -1,0 +1,10 @@
+description: |-
+    sql is a SQL query to query. If empty, all objects are queried in the
+    given scope.
+    
+    
+    The current object can be referenced by the alias 'o'.
+    
+    
+    WARNING: The where clause is highly dependent on the database
+    schema and might change at any time. The schema is not documented.

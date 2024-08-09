@@ -1,0 +1,3 @@
+description: |-
+    basePath is the base URL of the controlplane, i.e. the Kubernetes API
+    endpoint.

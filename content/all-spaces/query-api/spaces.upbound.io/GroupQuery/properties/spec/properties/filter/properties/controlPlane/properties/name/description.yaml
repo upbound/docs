@@ -1,0 +1,3 @@
+description: |-
+    name is the name of the controlplane to query. If empty, all controlplanes
+    are queried in the given scope.
