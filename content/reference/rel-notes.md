@@ -10,6 +10,17 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.6.1
+
+Released August 14th, 2024.
+
+#### What's Changed
+
+- We fixed a bug with SharedTelemetryConfig that caused panics in the Spaces controller.
+- We fixed Backup's expired TTL resulting in deadlock.
+- We fixed a bug preventing scraping of metrics from the control plane etcd pods.
+- We've added a configuration option to enable Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/latest/concepts/server-side-apply/) in managed control planes.
+
 ### Spaces v1.6.0
 
 Released August 6th, 2024.
