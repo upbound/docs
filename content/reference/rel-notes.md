@@ -227,6 +227,16 @@ Released August 28th, 2023.
 
 ## Control plane connector release notes
 
+### MCP connector v0.7.0
+
+Released August 16th, 2024.
+
+#### What's Changed
+
+- Support for server-side apply
+- This release ships the helm chart as an OCI artifact in the Upbound registry only, available at `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
+- The helm chart will not be available at the Upbound helm repository anymore, please migrate to the OCI artifact.
+
 ### MCP connector v0.6.1
 
 Released June 29th, 2024.
