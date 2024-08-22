@@ -92,11 +92,11 @@ For inactive tokens, use the [Upbound Password Reset](https://accounts.upbound.i
 
 ### Configuring a Docker credential helper
 
-`up` can be used to build and push Crossplane packages. If pushing to the Upbound Marketplace, the same credentials acquired via `up login` can be used.
+`up` can build and push Crossplane packages. If pushing to the Upbound Marketplace, you can use the credentials acquired via `up login`.
 
-If you prefer to user Docker, or any other OCI client, you can add the following to your Docker config file after downloading `docker-credential-up` to use your Upbound credentials when pushing.
+If you prefer to user Docker, or any other OCI client, you can add the following to your Docker `config.json` file after downloading `docker-credential-up`. This allows your client to use Upbound credentials to interact with the Marketplace.
 
-Instructions for installing `docker-credential-up` can be found [here]({{<ref "reference/cli/_index.md#install-docker-credential-up" >}}).
+Instructions for installing `docker-credential-up` are available in the [CLI installation documentation]({{<ref "reference/cli/_index.md#install-docker-credential-up" >}}).
 
 {{< editCode >}}
 ```json

@@ -79,7 +79,7 @@ Install the `docker-credential-up` credential helper with the same methods suppo
 {{<tab "Shell" >}}
 
 ```shell
-curl -sL https://cli.upbound.io | BIN=docker-credential-up sh
+curl -sL "https://cli.upbound.io" | BIN=docker-credential-up sh
 ```
 
 {{< /tab >}}
@@ -93,7 +93,7 @@ brew install upbound/tap/docker-credential-up
 
 ### Debian package install
 ```shell
-curl -sLo up.deb https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/docker-credential-up.deb
+curl -sLo up.deb "https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/docker-credential-up.deb"
 ```
 <br />
 
@@ -101,7 +101,7 @@ curl -sLo up.deb https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/dock
 ### RPM package install
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 ```shell
-curl -sLo up.rpm https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/docker-credential-up.rpm
+curl -sLo up.rpm "https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/docker-credential-up.rpm"
 ```
 {{< /tab >}}
 {{< /tabs >}}
