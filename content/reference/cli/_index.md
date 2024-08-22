@@ -70,3 +70,38 @@ curl -sLo up.rpm "https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/up.
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+## Install docker-credential-up
+
+Install the `docker-credential-up` credential helper with the same methods supported for `up`.
+
+{{< tabs "up-install" >}}
+{{<tab "Shell" >}}
+
+```shell
+curl -sL https://cli.upbound.io | BIN=docker-credential-up sh
+```
+
+{{< /tab >}}
+
+{{< tab "Homebrew" >}}
+```shell
+brew install upbound/tap/docker-credential-up
+```
+{{< /tab >}}
+{{< tab "LinuxPackages" >}}
+
+### Debian package install
+```shell
+curl -sLo up.deb https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/docker-credential-up.deb
+```
+<br />
+
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+### RPM package install
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+```shell
+curl -sLo up.rpm https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/docker-credential-up.rpm
+```
+{{< /tab >}}
+{{< /tabs >}}

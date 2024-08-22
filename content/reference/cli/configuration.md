@@ -89,3 +89,21 @@ Tokens are private authentication data. Don't share your token.
 For currently active tokens, revoke the token with `up logout --profile <profile-name>`. 
 
 For inactive tokens, use the [Upbound Password Reset](https://accounts.upbound.io/resetPassword) and select "Delete all active sessions" to revoke all tokens.
+
+### Configuring a Docker credential helper
+
+`up` can be used to build and push Crossplane packages. If pushing to the Upbound Marketplace, the same credentials acquired via `up login` can be used.
+
+If you prefer to user Docker, or any other OCI client, you can add the following to your Docker config file after downloading `docker-credential-up` to use your Upbound credentials when pushing.
+
+Instructions for installing `docker-credential-up` can be found [here]({{<ref "reference/cli/_index.md#install-docker-credential-up" >}}).
+
+{{< editCode >}}
+```json
+{
+	"credHelpers": {
+		"xpkg.upbound.io": "up"
+	}
+}
+```
+{{< /editCode >}}
