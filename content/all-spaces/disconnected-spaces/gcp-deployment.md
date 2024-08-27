@@ -82,7 +82,7 @@ export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 Set the version of Spaces software you want to install.
 
 ```ini
-export SPACES_VERSION=1.6.1
+export SPACES_VERSION=1.7.0
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
@@ -131,171 +131,29 @@ helm upgrade --install ingress-nginx ingress-nginx \
   --wait
 ```
 
-### Install UXP
-
-Install Upbound Universal Crossplane (UXP)
-
-```bash
-helm upgrade --install crossplane universal-crossplane \
-  --repo https://charts.upbound.io/stable \
-  --namespace upbound-system --create-namespace \
-  --version v1.15.2-up.1 \
-  --set "args={--enable-usages,--max-reconcile-rate=1000}" \
-  --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
-  --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
-  --wait
-```
-
-<!-- vale off -->
-If your company uses a proxied environment with mirrored registries, please update the specified registry to your internal registry.
-<!-- vale on -->
-
-```bash
-helm upgrade --install crossplane universal-crossplane \
-  --repo https://charts.upbound.io/stable \
-  --namespace upbound-system --create-namespace \
-  --version v1.15.2-up.1 \
-  --set "args={--enable-usages,--max-reconcile-rate=1000,--registry=registry.company.corp/xpkg.upbound.io}" \
-  --set resourcesCrossplane.requests.cpu="500m" --set resourcesCrossplane.requests.memory="1Gi" \
-  --set resourcesCrossplane.limits.cpu="1000m" --set resourcesCrossplane.limits.memory="2Gi" \
-  --wait
-```
-
-<!-- vale gitlab.Substitutions = NO -->
-### Install provider-helm and provider-kubernetes
-<!-- vale gitlab.Substitutions = YES -->
-
-Install Provider Helm and Provider Kubernetes. Spaces uses these providers internally to manage resources in the cluster. You need to install these providers and grant necessary permissions to create resources.
-
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-kubernetes
-spec:
-  package: "crossplane-contrib/provider-kubernetes:v0.14.0"
-  runtimeConfigRef:
-    name: provider-kubernetes
----
-apiVersion: pkg.crossplane.io/v1beta1
-kind: DeploymentRuntimeConfig
-metadata:
-  name: provider-kubernetes
-spec:
-  serviceAccountTemplate:
-    metadata:
-      name: provider-kubernetes
----
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-helm
-spec:
-  package: "crossplane-contrib/provider-helm:v0.19.0"
-  runtimeConfigRef:
-    name: provider-helm
----
-apiVersion: pkg.crossplane.io/v1beta1
-kind: DeploymentRuntimeConfig
-metadata:
-  name: provider-helm
-spec:
-  serviceAccountTemplate:
-    metadata:
-      name: provider-helm
-EOF
-```
-
-Grant the provider pods permissions to create resources in the cluster.
-
-```bash
-cat <<EOF | kubectl apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: provider-kubernetes-cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: provider-kubernetes
-    namespace: upbound-system
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: provider-helm-cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: provider-helm
-    namespace: upbound-system
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
-EOF
-```
-
-Wait until the providers are ready.
-
-```bash
-kubectl wait provider.pkg.crossplane.io/provider-helm \
-  --for=condition=Healthy \
-  --timeout=360s
-kubectl wait provider.pkg.crossplane.io/provider-kubernetes \
-  --for=condition=Healthy \
-  --timeout=360s
-```
-
-### Configure the providers
-
-Create `ProviderConfigs` that configure the providers to use the cluster they're deployed into.
-
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: helm.crossplane.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: upbound-cluster
-spec:
- credentials:
-    source: InjectedIdentity
----
-apiVersion: kubernetes.crossplane.io/v1alpha1
-kind: ProviderConfig
-metadata:
-  name: upbound-cluster
-spec:
-  credentials:
-    source: InjectedIdentity
-EOF
-```
-
 ### Install Upbound Spaces software
 
 Create an image pull secret so that the cluster can pull Upbound Spaces images.
 
 ```bash
+kubectl create ns upbound-system
 kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
-  --docker-server=https://us-west1-docker.pkg.dev \
-  --docker-username=_json_key \
-  --docker-password="$(cat $SPACES_TOKEN_PATH)"
+  --docker-server=https://xpkg.upbound.io \
+  --docker-username="$(jq -r .accessId $SPACES_TOKEN_PATH)" \
+  --docker-password="$(jq -r .token $SPACES_TOKEN_PATH)"
 ```
 
 Log in with Helm to be able to pull chart images for the installation commands.
 
 ```bash
-cat $SPACES_TOKEN_PATH | helm registry login us-west1-docker.pkg.dev -u _json_key --password-stdin
+jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 ```
 
 Install the Spaces software.
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
-  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
