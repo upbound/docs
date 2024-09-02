@@ -13,6 +13,16 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v0.18.0
+
+_Released 2024-08-29_
+
+* This release introduces JSON format for inline module, bug fixes, and dependency updates.
+
+_Refer to the [v0.18.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.18.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.18.0)
+
 ## v0.17.0
 
 _Released 2024-07-11_

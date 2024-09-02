@@ -13,6 +13,55 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+
+## v1.13.0
+
+_Released 2024-08-29_
+
+* Support for new resources: `DirectoryBucket.s3.aws.upbound.io/v1beta1`
+and `LBTrustStore.elbv2.aws.upbound.io/v1beta1`
+* This release includes new resources and a bug fix.
+
+_Refer to the [v1.13.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.13.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.13.0)
+
+## v1.12.0
+
+_Released 2024-08-23_
+
+* This release includes support for pod-identity, fixing pod crashes caused
+by panic, some other bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.12.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.12.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.12.0)
+
+## v1.11.0
+
+_Released 2024-08-08_
+
+* Support for new resources: `AccessEntry.eks.aws.upbound.io/v1beta1`,
+`AccessPolicyAssociation.eks.aws.upbound.io/v1beta1`, `ServerlessCache.elasticache.aws.upbound.io/v1beta1`
+and `Fleet.ec2.aws.upbound.io/v1beta1` 
+* This release includes new resources, enhancements, and dependency updates.
+
+_Refer to the [v1.11.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.11.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.11.0)
+
+## v1.10.0
+
+_Released 2024-07-29_
+
+* Update the AWS Terraform provider version to `v5.58.0`
+* Support for a new resource: `Pipe.pipes.aws.upbound.io/v1beta1`
+* This release includes a new resource, enhancements, and dependency updates.
+
+_Refer to the [v1.10.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.10.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.10.0)
+
 ## v1.9.1
 
 _Released 2024-07-26_

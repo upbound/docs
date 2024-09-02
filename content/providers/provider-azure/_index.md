@@ -13,6 +13,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+## v1.5.0
+
+_Released 2024-08-23_
+
+* Support for a new resource: `StorageDefender.security.azure.upbound.io/v1beta1`
+* This release includes a new resource, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.5.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.5.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.5.0)
+
 ## v1.4.0
 
 _Released 2024-07-04_
