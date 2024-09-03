@@ -76,13 +76,13 @@ export SPACES_TOKEN_PATH="$@/path/to/token.json$@"
 Set the version of the Spaces software you want to install.
 
 ```ini
-export SPACES_VERSION=1.6.1
+export SPACES_VERSION=1.7.0
 ```
 <!-- vale off -->
 ## Install the Spaces software
 <!-- vale on -->
 
-The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. The up CLI introduced Spaces-related commands in `v0.19.0`. Make sure you use this version or newer.
+The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. This guide requires CLI version `v0.33.0` or newer.
 
 {{< hint "tip" >}}
 Make sure your kubectl context is set to the cluster you want to install the Spaces software into.

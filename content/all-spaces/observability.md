@@ -224,7 +224,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 ```bash {hl_lines="7-11"}
 helm -n upbound-system upgrade --install spaces \
-  oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \

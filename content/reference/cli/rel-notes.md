@@ -9,6 +9,20 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.33.0
+Released September 3rd, 2024.
+[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.33.0)
+
+### What's Changed
+- Update `up space init` update for 1.7.0 release OCI Registry change to `xpkg.upbound.io/spaces-artifacts`
+- Update `up alpha space mirror` update for 1.7.0 release
+- Update `up ctp connector` install using now OCI Registry `xpkg.upbound.io/spaces-artifacts`
+- Improve `up ctp list/get` show healthy column and read message from status for CTP
+- Improve `up alpha query` print right kind with multiple resources
+- Improve `up xpkg dep` works now with functions
+- Improve `up ctx` writing kubeconfig to stdout with current path
+- Delete `up cofiguration`
+
 ## v0.32.0
 
 Released August 2nd, 2024.
