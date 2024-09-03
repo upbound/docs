@@ -1,0 +1,3 @@
+description: |-
+    Namespaces is a list of namespaces names. Each name supports wildcard characters
+    '*' (matches zero or many characters) and '?' (at least one character).

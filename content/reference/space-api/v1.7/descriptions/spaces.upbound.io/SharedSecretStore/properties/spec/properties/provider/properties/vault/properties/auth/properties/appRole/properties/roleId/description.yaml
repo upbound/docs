@@ -1,0 +1,3 @@
+description: |-
+    RoleID configured in the App Role authentication backend when setting
+    up the authentication backend in Vault.

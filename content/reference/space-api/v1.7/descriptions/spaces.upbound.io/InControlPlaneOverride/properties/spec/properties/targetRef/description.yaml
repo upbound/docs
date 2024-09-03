@@ -1,0 +1,5 @@
+description: |-
+    TargetRef is the object reference to a Kubernetes API object where the
+    configuration override will start. The controller will traverse the
+    target object's hierarchy depending on the PropagationPolicy. If
+    PropagationPolicy is None, then only the target object will be updated.

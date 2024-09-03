@@ -1,0 +1,4 @@
+description: |-
+    Repository is an optional alternate OCI repository to use for image signatures and attestations that match this rule.
+    If specified Repository will override the default OCI image repository configured for the installation.
+    The repository can also be overridden per Attestor or Attestation.
