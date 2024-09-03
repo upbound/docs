@@ -128,7 +128,7 @@ data:
 
 This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
-Next, configure the resource inclusions and exclusions. By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane. You must update these rules so Argo CD can sync. Add a {{<hover label="node-exclusion" line="7">}}resource exclusion for `nodes`{{</hover>}} to the data section as below:
+Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller). By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane. You must configure Argo CD to respect cluster's RBAC rules so that Argo CD can sync. Add a {{<hover label="respect-rbac" line="7">}}`resource.respectRBAC`{{</hover>}} to the data section as below:
 
 ```bash {label="argoCM"}
 apiVersion: v1
@@ -137,17 +137,11 @@ metadata:
   name: argocd-cm
 data:
   ...
-  resource.exclusions: |
-    - apiGroups:
-      - ""
-      kinds:
-      - "Node"
-      clusters:
-      - "*"
+  resource.respectRBAC: normal
 ```
 
 {{< hint "tip" >}}
-The resource exclusion example above configures Argo to not discover the Kubernetes core `Node` API for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the exclusion to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the configuration to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
 {{< /hint >}}
 
 <!-- vale Google.Headings = NO -->
@@ -225,7 +219,7 @@ data:
 
 This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
-Next, configure the resource inclusions and exclusions. By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane. You must update these rules so Argo CD can sync. Add a {{<hover label="node-exclusion" line="7">}}resource exclusion for `nodes`{{</hover>}} to the data section as below:
+Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller). By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane. You must configure Argo CD to respect cluster's RBAC rules so that Argo CD can sync. Add a {{<hover label="respect-rbac" line="7">}}`resource.respectRBAC`{{</hover>}} to the data section as below:
 
 ```bash {label="argoCM"}
 apiVersion: v1
@@ -234,17 +228,11 @@ metadata:
   name: argocd-cm
 data:
   ...
-  resource.exclusions: |
-    - apiGroups:
-      - ""
-      kinds:
-      - "Node"
-      clusters:
-      - "*"
+  resource.respectRBAC: normal
 ```
 
 {{< hint "tip" >}}
-The resource exclusion example above configures Argo to not discover the Kubernetes core `Node` API for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the exclusion to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the configuration to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
 {{< /hint >}}
 
 <!-- vale Google.Headings = NO -->
