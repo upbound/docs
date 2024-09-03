@@ -82,7 +82,7 @@ export SPACES_VERSION=1.7.0
 ## Install the Spaces software
 <!-- vale on -->
 
-The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward.. Make sure you use `v0.33.0 version or newer.
+The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. This guide requires CLI version `v0.33.0` or newer.
 
 {{< hint "tip" >}}
 Make sure your kubectl context is set to the cluster you want to install the Spaces software into.
