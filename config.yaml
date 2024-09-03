@@ -54,7 +54,7 @@ security:
       - ^REVIEW_ID
 
 params:
-  latest: v1.6
+  latest: v1.7
   repoLink: "https://github.com/upbound/"
   anchors:
     min: 2

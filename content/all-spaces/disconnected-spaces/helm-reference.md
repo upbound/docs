@@ -77,7 +77,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | certificates.space | object | `{"clusterIssuer":"spaces-selfsigned"}` | None |
 | certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
 | clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into. Valid options are: aks, eks, gke, kind. |
-| controlPlanes.container.mxpAuthzWebhook.tag | string | `""` | None |
 | controlPlanes.container.mxpCharts.tag | string | `""` | None |
 | controlPlanes.container.mxpGateway.repository | string | `"hyperspace"` | None |
 | controlPlanes.container.mxpGateway.tag | string | `""` | None |
@@ -318,7 +317,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the mxe-router deployment. |
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
-| observability | object | `{"collectors":{"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""},"spacesCollector":{"config":{"exportPipeline":{"logs":["debug"],"metrics":["debug"]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":100,"memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}}` | None |
+| observability | object | `{"collectors":{"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""},"spacesCollector":{"config":{"exportPipeline":{"logs":[],"metrics":[]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":100,"memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}}` | None |
 | observability.collectors | object | `{"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
 | observability.collectors.repository | string | `"opentelemetry-collector-spaces"` | None |
 | observability.collectors.resources | object | `{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}}` | None |
@@ -329,10 +328,10 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.collectors.resources.requests.cpu | string | `"10m"` | None |
 | observability.collectors.resources.requests.memory | string | `"100Mi"` | None |
 | observability.collectors.tag | string | `""` | None |
-| observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":["debug"],"metrics":["debug"]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":100,"memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metrics (traces and logs in the future) from the Spaces machinery and send them to the specified exporters. |
-| observability.spacesCollector.config | object | `{"exportPipeline":{"logs":["debug"],"metrics":["debug"]},"exporters":{"debug":null}}` | None |
-| observability.spacesCollector.config.exportPipeline.logs | list | `["debug"]` | None |
-| observability.spacesCollector.config.exportPipeline.metrics | list | `["debug"]` | None |
+| observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":100,"memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. |
+| observability.spacesCollector.config | object | `{"exportPipeline":{"logs":[],"metrics":[]},"exporters":{"debug":null}}` | None |
+| observability.spacesCollector.config.exportPipeline.logs | list | `[]` | None |
+| observability.spacesCollector.config.exportPipeline.metrics | list | `[]` | None |
 | observability.spacesCollector.config.exporters | object | `{"debug":null}` | To export observability data, configure the exporters here and update the exportPipeline to include the exporters you want to use per telemetry type. |
 | observability.spacesCollector.config.exporters.debug | string | `nil` | None |
 | observability.spacesCollector.repository | string | `"opentelemetry-collector-spaces"` | None |
