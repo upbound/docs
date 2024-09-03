@@ -1,0 +1,5 @@
+description: |-
+    CompletionCriteria specify how Spaces should determine when the
+    simulation is complete. If any of the criteria are met, Spaces will set
+    the Simulation's desired state to complete. Omit the criteria if you want
+    to manually mark the Simulation complete.

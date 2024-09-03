@@ -1,0 +1,3 @@
+description: |-
+    Name points to the .metadata.name of the object targeted.
+    Kubernetes validates this as a DNS 1123 subdomain.
