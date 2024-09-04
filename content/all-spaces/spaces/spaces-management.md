@@ -10,7 +10,7 @@ The end-user experience between Cloud Spaces and Connected Spaces is the same. T
 
 ### Create a Space
 
-You don't have to make Cloud Spaces, Upbound already has them available for you to use. If you want to make a Connected Space, first deploy a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces">}}), then [Connect to the Global Console]({{<ref "attach-detach">}}).
+You don't have to make Cloud Spaces, Upbound already has them available for you to use. If you want to make a Connected Space, first deploy a [Disconnected Space]({{<ref "all-spaces/disconnected-spaces">}}), then [Connect to the Global Console]({{<ref "all-spaces/disconnected-spaces/attach-detach">}}).
 
 ### Upgrade a Space
 
@@ -22,6 +22,6 @@ Version management of the Space isn't something you need to worry about in Cloud
 
 ### Uninstall a Space
 
-You can't uninstall a Cloud Space from your org account. If you want to uninstall a Connected Space, the Space administrator should first [disconnect the Space]({{<ref "attach-detach">}}). Then, follow the same instructions as uninstalling a [Disconnected Space]({{<ref "/all-spaces/disconnected-spaces/spaces-management#uninstall-a-space">}}).
+You can't uninstall a Cloud Space from your org account. If you want to uninstall a Connected Space, the Space administrator should first [disconnect the Space]({{<ref "all-spaces/disconnected-spaces/attach-detach">}}). Then, follow the same instructions as uninstalling a [Disconnected Space]({{<ref "all-spaces/disconnected-spaces/spaces-management#uninstall-a-space">}}).
 
 ## Spaces APIs

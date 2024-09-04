@@ -1,7 +1,7 @@
 ---
-title: Cloud & Connected Spaces
+title: Cloud Spaces
 weight: 2
-description: A guide to Upbound Spaces
+description: A guide to Upbound Cloud Spaces
 icon: "popsicle"
 aliases:
   - /spaces/upbound-spaces

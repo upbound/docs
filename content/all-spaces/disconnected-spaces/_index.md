@@ -1,11 +1,18 @@
 ---
-title: Disconnected Spaces
+title: Self-Hosted Spaces
 weight: 2
-description: A guide to Upbound Spaces
+description: A guide to Upbound Self-Hosted Spaces
 aliases:
     - /spaces
 ---
 
+# Connected Spaces
+
+[Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
+
+To get a Connected Space create a Disconnected Space first as described below, then [attach]({{<ref "all-spaces/disconnected-spaces/attach-detach">}}) it.
+
+# Disconnected Spaces
 
 A Disconnected Space is a single-tenant deployment of Upbound within your infrastructure. This could be your Amazon Web Services (AWS) cloud account, Microsoft Azure subscription, or other hosting environment. Disconnected Spaces don't have connectivity to the rest of the Upbound product. You're limited to a command-line interface to interact within a single Space context.
 
