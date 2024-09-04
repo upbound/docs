@@ -5,6 +5,7 @@ description: A guide for how to configure synchronizing external secrets into ma
 aliases:
     - /spaces/secrets-management
     - /disconnected-spaces/secrets-management
+    - /self-hosted-spaces/secrets-management
 ---
 
 {{< hint "important" >}}

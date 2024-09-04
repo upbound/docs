@@ -5,6 +5,7 @@ description: Enable and manage backups in your Upbound Space.
 aliases:
     - /spaces/backup-and-restore
     - /disconnected-spaces/backup-and-restore
+    - /self-hosted-spaces/backup-and-restore
 ---
 
 {{< hint "important" >}}
