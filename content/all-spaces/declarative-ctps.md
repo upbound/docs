@@ -1,6 +1,6 @@
 ---
 title: Declaratively create control planes
-weight: 1
+weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
 ---
 

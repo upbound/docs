@@ -1,6 +1,6 @@
 ---
 title: Consume control plane APIs in an app cluster with MCP connector
-weight: 10
+weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
 ---
 
