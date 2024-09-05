@@ -10,7 +10,7 @@ aliases:
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
 
-To get a Connected Space create a Disconnected Space first as described below, then [attach]({{<ref "all-spaces/attach-detach">}}) it.
+To get a Connected Space create a Disconnected Space first as described below, then [attach]({{<ref "attach-detach">}}) it.
 
 # Disconnected Spaces
 
