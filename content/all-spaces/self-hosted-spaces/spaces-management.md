@@ -123,7 +123,7 @@ kubectl get providers --kubeconfig=/tmp/<ctp-name>.yaml
 
 ### Configure a managed control plane
 
-Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "all-spaces/legacy-spaces/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
+Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "reference/legacy-spaces/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
 
 Learn more in the [Spaces Git integration]({{<ref "git-integration.md">}}) documentation.
 

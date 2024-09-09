@@ -17,9 +17,15 @@ Cloud Spaces are multi-tenant deployments of Upbound, operated by Upbound inside
 
 Choosing to run in Upbound’s multi-tenant Cloud Spaces offers the most turnkey managed Crossplane experience. Upbound hosts Cloud Spaces in multiple Cloud Service Providers and regions, giving you the flexibility to have a fully managed SaaS experience wherever you need to run Crossplane. 
 
-## Connected Spaces
+## Self-hosted Spaces
 
-A Connected Space is a single-tenant deployment of Upbound within your infrastructure, such as your Amazon Web Services (AWS) cloud account or Microsoft Azure subscription. With Connected Spaces, you can use the same Console, CLI, and API that Upbound offers, with the benefit of running entirely on your own infrastructure.
+A self-hosted Space is a single-tenant deployment of Upbound within your
+infrastructure. Upbound offers self-hosted Spaces as a Disconnected Space or
+Connected Space.
+
+### Connected Spaces
+
+Connected Spaces allows you to use Upbound's Console, CLI, and API to manage your control planes. 
 
 We've packaged the best parts of Upbound into a Helm chart and can deploy and operate them on your own infrastructure, bringing you the best of SaaS with the added benefit of additional security guarantees and a deployment free of noisy neighbors.
 

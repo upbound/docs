@@ -1,5 +1,5 @@
 ---
-title: Connect or disconnect from the Upbound Console
+title: Connect or disconnect a Space
 weight: 120
 description: Enable and connect self-hosted Spaces to the Upbound console
 ---
