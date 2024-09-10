@@ -4,6 +4,7 @@ weight: 2
 description: A guide to Upbound Self-Hosted Spaces
 aliases:
     - /spaces
+    - /all-spaces/disconnected-spaces
 ---
 
 # Connected Spaces

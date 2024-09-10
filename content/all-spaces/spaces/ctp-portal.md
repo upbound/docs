@@ -2,6 +2,8 @@
 title: Control Plane Portal
 weight: 7
 description: An introduction to the Developer Portal feature of a Managed Control Plane
+aliases:
+    - console/ctp-portal
 ---
 
 Every managed control plane in Upbound can be directly interacted with via its portal. The control plane portal is a create, read, update, delete (`CRUD`) interface for the resources on your control plane.
