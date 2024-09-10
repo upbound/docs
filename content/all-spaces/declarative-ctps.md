@@ -2,6 +2,8 @@
 title: Declaratively create control planes
 weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
+aliases:
+    - /all-spaces/spaces/guides/declarative-ctps
 ---
 
 In this tutorial, you learn how to configure [Argo CD](https://argoproj.github.io/cd/) to communicate with a self-hosted Space. This flow allows you to declaratively create and manage control planes from Git. Argo CD is a continuous delivery tool for Kubernetes that you can use to drive GitOps flows for your control plane infrastructure.

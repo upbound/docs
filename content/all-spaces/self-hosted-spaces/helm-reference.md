@@ -4,6 +4,7 @@ weight: 200
 description: Spaces Helm chart configuration values
 aliases:
     - /spaces/helm-reference
+    - /all-spaces/disconnected-spaces/helm-reference
 ---
 
 <!-- vale off -->

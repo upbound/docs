@@ -4,6 +4,7 @@ weight: 4
 description: Common operations in Spaces
 aliases:
     - /spaces/spaces-management
+    - /all-spaces/disconnected-spaces/spaces-management
 ---
 
 ## Spaces management

@@ -3,6 +3,8 @@ title: Use Argo or Flux with Spaces
 weight: 150
 description: A guide for integrating Argo or Flux with managed control planes in a Space.
 draft: true
+aliases:
+    - /all-spaces/disconnected-spaces/use-argo-flux
 ---
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.

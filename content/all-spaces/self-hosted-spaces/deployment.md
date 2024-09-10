@@ -4,6 +4,7 @@ weight: 900
 description: A guide for deploying an Upbound Space in production
 aliases:
     - /spaces/deployment
+    - /all-spaces/disconnected-spaces/deployment
 ---
 
 You need a Kubernetes cluster as the hosting environment to run Spaces. You can install Spaces into any Kubernetes cluster, version v1.25 or later. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). Upbound recommends dedicating the Kubernetes cluster for the express purpose of running Spaces as its sole workload.

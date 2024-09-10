@@ -2,6 +2,8 @@
 title: (deprecated) Control Plane Configurations
 weight: 4
 description: An introduction to how Configurations work in Upbound
+aliases:
+    - /all-spaces/legacy-spaces/control-plane-configurations
 ---
 
 {{< hint "important" >}}
