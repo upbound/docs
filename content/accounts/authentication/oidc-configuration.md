@@ -29,7 +29,9 @@ jwt:
       prefix: oidc-groups-prefix
 ```
 
+<!-- vale gitlab.Uppercase = NO -->
 For detailed configuration options, including the CEL-based token validation, review the feature [documentation][Structured Auth Config].
+<!-- vale gitlab.Uppercase = YES -->
 
 The `AuthenticationConfiguration` allows you to configure multiple JWT authenticators as separate issuers.
 
@@ -57,7 +59,7 @@ issuer:
   audienceMatchPolicy: MatchAny
 ```
 
-By default, the authenticator assumes the OIDC Discovery URL is `{issuer.url}/.well-known/openid-configuration`. Most identity providers follow this structure, and the `discoveryUrl` field may be omitted. However, if using a separate discovery service, specify the full path to the discovery endpoint in this field.
+By default, the authenticator assumes the OIDC Discovery URL is `{issuer.url}/.well-known/openid-configuration`. Most identity providers follow this structure, and you can omit the `discoveryUrl` field. To use a separate discovery service, specify the full path to the discovery endpoint in this field.
 
 If the CA for the Issuer isn't public, provide the PEM encoded CA for the Discovery URL.
 
@@ -67,14 +69,15 @@ If you specify multiple `audiences` , `audienceMatchPolicy` must equal `MatchAny
 
 ### Configure `claimMappings`
 
-#### Username Claim Mapping
+#### Username claim mapping
 
 By default, the authenticator uses the `sub` claim as the user name. To override this, either:
 
 - specify *both* `claim` and `prefix`. `prefix` may be explicitly set to the empty string.
 or
+<!-- vale gitlab.Uppercase = NO -->
 - specify a CEL `expression` to calculate the user name.
-
+<!-- vale gitlab.Uppercase = YES -->
 ```yaml
 claimMappings:
   username:
@@ -85,14 +88,15 @@ claimMappings:
 ```
 
 
-#### Groups Claim Mapping
+#### Groups claim mapping
 
 By default, this configuration doesn't map groups, unless you either:
 
 - specify both `claim` and `prefix`. `prefix` may be explicitly set to the empty string.
 or
+<!-- vale gitlab.Uppercase = NO -->
 - specify a CEL `expression` that returns a string or list of strings.
-
+<!-- vale gitlab.Uppercase = YES -->
 
 ```yaml
 claimMappings:
@@ -106,7 +110,9 @@ claimMappings:
 
 ### Validation rules
 
-Review the [documentation][Structured Auth Config] for Validation rules, as that is outside the scope of this document. Examples include using CEL expressions to validate authentication such as:
+<!-- vale gitlab.Uppercase = NO -->
+Validation rules are outside the scope of this document. Review the [documentation][Structured Auth Config] for more information. Examples include using CEL expressions to validate authentication such as:
+<!-- vale gitlab.Uppercase = YES -->
 
 - Validating that a token claim has a specific value
 - Validating that a token has a limited lifetime
@@ -124,10 +130,12 @@ To interact with Space and ControlPlane APIs, users must have the `upbound.io/au
 | `['upbound:spaces:api', 'upbound:spaces:controlplanes']` | This Identity is for both Space-level and ControlPlane APIs |
 
 
-You can set this claim at the identity provider and map it in the ID token, or you can inject it in the authenticator with the `jwt.claimMappings.extra` array.
+You can set this claim in two ways:
+
+- In the identity provider mapped in the ID token.
+- Inject in the authenticator with the `jwt.claimMappings.extra` array.
 
 For example:
-
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1beta1
 kind: AuthenticationConfiguration
@@ -158,18 +166,21 @@ Once you create an `AuthenticationConfiguration` file, specify this file as a `C
 ```sh
 kubectl create configmap <configmap name> -n upbound-system --from-file=config.yaml=./path/to/config.yaml
 ```
-
+<!-- vale gitlab.SentenceLength = NO -->
+<!-- vale Google.WordList = NO -->
 To enable OIDC authentication and disable Upbound IAM when installing the Space, reference the configuration and pass an empty value to the Upbound IAM issuer 
 parameter:
-
+<!-- vale Google.WordList = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
 ```sh
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   ...
   --set "authentication.structuredConfig=<configmap name>" \
   --set "router.controlPlane.extraArgs[0]=--upbound-iam-issuer-url="
 ```
-
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Configure RBAC
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 In this scenario, the external identity provider handles authentication, but permissions for Spaces and ControlPlane APIs use standard RBAC objects.
 
@@ -193,12 +204,15 @@ The Spaces APIs include:
   resources:
   - sharedtelemetryconfigs
 ```
-
+<!-- vale Google.Headings = NO -->
 ### ControlPlane APIs
+<!-- vale Google.Headings = YES -->
 
+<!-- vale Google.WordList = NO -->
 Crossplane specifies three [roles][Crossplane Managed ClusterRoles] for a ControlPlane: admin, editor, and viewer. These map to the verbs `admin`, `edit`, and `view` on the `controlplanes/k8s` resource in the `spaces.upbound.io` API group.
+<!-- vale Google.WordList = YES -->
 
-### Control Access
+### Control access
 
 The `groups` claim in the `AuthenticationConfiguration` allows you to control resource access when you create a `ClusterRoleBinding`. A `ClusterRole` defines the role parameters and a `ClusterRoleBinding` subject.
 
