@@ -200,7 +200,7 @@ Crossplane specifies three [roles][Crossplane Managed ClusterRoles] for a Contro
 
 ### Control Access
 
-The `groups` claim in the `AuthenticationConfiguration` allows you to control resource access when you create a `ClusterRoleBinding`. A `ClusterRole` defines the role parameters and a `ClusterRoleBinding` XXX.
+The `groups` claim in the `AuthenticationConfiguration` allows you to control resource access when you create a `ClusterRoleBinding`. A `ClusterRole` defines the role parameters and a `ClusterRoleBinding` subject.
 
 The example below allows `admin` permissions for all ControlPlanes to members of the `ctp-admins` group:
 
