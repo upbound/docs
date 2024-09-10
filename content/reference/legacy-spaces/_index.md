@@ -2,6 +2,8 @@
 title: Legacy Spaces
 weight: 3
 description: A guide to Upbound Spaces
+aliases:
+    - /all-spaces/legacy-spaces
 ---
 
 {{< hint "important" >}}

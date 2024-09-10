@@ -2,6 +2,8 @@
 title: Azure Deployment Guide
 weight: 3
 description: A  quickstart guide for Upbound Spaces in Azure
+aliases:
+    - /all-spaces/disconnected-spaces/azure-deployment
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in Azure.

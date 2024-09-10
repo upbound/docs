@@ -5,6 +5,7 @@ description: A  quickstart guide for Upbound Spaces
 aliases:
     - /spaces/kind-quickstart
     - /kind-quickstart
+    - /all-spaces/disconnected-spaces/quickstart
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.

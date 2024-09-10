@@ -2,6 +2,8 @@
 title: (deprecated) Quickstart
 weight: 1
 description: A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound in a legacy Space.
+aliases:
+    - /all-spaces/legacy-spaces/multicloud-deploy
 ---
 
 {{< hint "important" >}}
