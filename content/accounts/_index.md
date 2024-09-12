@@ -1,5 +1,5 @@
 ---
-title: "User Management"
+title: "Upbound IAM"
 weight: 3
 ---
 
