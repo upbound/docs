@@ -1,5 +1,5 @@
 ---
-title: "User Management"
+title: "Upbound IAM"
 weight: 3
 ---
 
@@ -119,7 +119,7 @@ To grant principals in an OIDC-compliant directory (like Keycloak, Entra, Okta, 
 <!-- vale Upbound.Spelling = YES -->
 
 * If you're using Connected and Cloud Spaces, consider [enabling Directory Sync]({{<ref "authentication/enable-sso" >}}), which syncs your users from your directory into the Upbound Identity model and allows your entire organization to use the Upbound console.
-* If you're using Disconnected Spaces, you can configure the space to [authenticate JWT tokens from your OIDC provider]({{<ref "authentication/oidc" >}}).
+* If you're using Disconnected Spaces, you can configure the space to [authenticate JWT tokens from your OIDC provider]({{<ref "authentication/oidc-configuration" >}}).
 
 ## Authorization
 
