@@ -10,6 +10,26 @@ Find below the changelog for Upbound the product and release notes for self-host
 
 ## Spaces release notes
 
+### Spaces v1.7.2
+
+Released September 13th, 2024.
+
+#### What's Changed
+
+- Fixed a bug in Spaces Chart's pre-upgrade hook where the backOffLimit was incorrectly declared.
+
+### Spaces v1.7.1
+
+Released September 12th, 2024.
+
+#### What's Changed
+
+- Fixed a bug in Apollo where the right column for owners query was not displayed correctly.
+- Fixed a bug in Apollo to ensure that requests do not fail when debug output encounters an issue.
+- Fixed a bug in MXP-Gateway to prevent logging of PII, and granted admins & editors the privilege to view logs for controlplane pods.
+- Fixed a bug in Spaces Chart related to the pre-upgrade hook.
+- Fixed a bug in Crossplane-Versions-Public configmap to allow public querying.
+
 ### Spaces v1.7.0
 
 Released September 2nd, 2024.
