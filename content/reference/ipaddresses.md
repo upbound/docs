@@ -1,23 +1,19 @@
 ---
 title: IP Addresses
 weight: 199
-description: "List of IP addresses used in the Upbound infrastructure"
+description: "List of IP addresses used by Upbound managed control planes"
 ---
 
+Managed control planes can use any of the following IP addresses:
 
-Upbound Infrastructure uses the following egress addresses for hosted control
-planes:
-
-General Egress:
 - 35.238.181.48
-
-Egress for Providers:
-- 35.185.250.95
-- 34.72.41.44 
-- 35.238.114.228 
+- 34.72.41.44
+- 35.238.114.228
+- 34.83.78.17
+- 54.226.251.135
+- 100.28.56.85
 
 {{< hint "note" >}}
 Upbound reserves the right to change this
 list of IP addresses.
 {{< /hint >}}
-
