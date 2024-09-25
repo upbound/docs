@@ -25,7 +25,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "features.alpha.apollo.storage.postgres.create=true"
 ```
 
-This will directly create a PostgreSQL cluster handled by [CloudNativePG](https://cloudnative-pg.io).
+These flags create a PostgreSQL cluster handled by [CloudNativePG](https://cloudnative-pg.io).
 
 Users can also provide their own instance if needed, by setting `features.alpha.apollo.storage.postgres.create=false` and providing all the required information at `features.alpha.apollo.storage.postgres.connection`.
 
