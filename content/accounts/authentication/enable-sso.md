@@ -48,7 +48,6 @@ After contacting the support team for SSO access, Upbound sends link to configur
 ### Enable single sign-on
 <!-- vale on -->
 
-
 Walk through the workflow in your provided link to enable SSO. The requirements differ for each IdP, but you may need:
 
 - An IdP metadata XML file
@@ -67,7 +66,6 @@ After you enable SSO, walk through the workflow in your provided link to enable 
 After you enable SSO to your IdP and test the connection, contact Upbound support or your account representative to finalize the configuration. SSO will not be enabled until you contact Upbound to confirm the change.
 <!-- vale on -->
 
-
 ## Considerations
 
 When you enable SSO with Upbound, remember these important considerations:
@@ -77,10 +75,6 @@ When you enable SSO with Upbound, remember these important considerations:
 - Users in an SSO enabled organization must use SSO to log in
 <- When you enable SSO, all outstanding invites will be destroyed
 - When you enable SSO, all currently logged in users will be logged out to reauthenticate
+- When setting up SSO in your IdP, any IdP user assigned to the Upbound SSO app will be created in the Upbound product and added as a member of the Organization with at least Member permissions on organization resources.  This includes at a minimum, read access to things like Control Planes, Repositories, etc.
 <!-- vale on -->
 
-## Next steps
-
-SSO and Directory Sync in Upbound are effective ways to manage your user access.
-
-For more information, contact the Upbound support team.
