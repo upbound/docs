@@ -78,8 +78,3 @@ When you enable SSO with Upbound, remember these important considerations:
 - When setting up SSO in your IdP, any IdP user assigned to the Upbound SSO app will be created in the Upbound product and added as a member of the Organization with at least Member permissions on organization resources.  This includes at a minimum, read access to things like Control Planes, Repositories, etc.
 <!-- vale on -->
 
-## Next steps
-
-SSO and Directory Sync in Upbound are effective ways to manage your user access.
-
-For more information, contact the Upbound support team.
