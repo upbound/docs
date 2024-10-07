@@ -24,7 +24,7 @@ If you don't have an Upbound account, [sign up for a free trial](https://account
 After you register your Upbound account and create an organization, walk through the interactive "Get
 Started" demo below.
 
-<div style="position: relative; padding-bottom: calc(76.04621072088725% + 42px); height: 0;"><iframe src="https://app.supademo.com/embed/clvydptrx0ty8phe2252uwuzz" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.4760147601476015; padding: 40px 0 40px 0;"><iframe src="https://app.supademo.com/embed/cm1qpx54k05i3spgck5b02gf3?embed_v=2" loading="lazy" title="Upbound Demo" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Connect to your managed control plane
 
