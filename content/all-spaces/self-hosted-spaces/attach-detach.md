@@ -58,7 +58,7 @@ Create a new robot token and export it to an environment variable called `UPBOUN
 
 ```bash
 up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect" 
-export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-)
+export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-| awk -F': ' '/Token:/ {print $2}')
 ```
 
 Create a secret containing the robot token:
