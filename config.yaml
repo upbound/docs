@@ -1,5 +1,5 @@
 baseURL: "/"
-enableRobotsTXT: True
+8nableRobotsTXT: True
 languageCode: "en-us"
 title: "Upbound Docs"
 theme: "upbound"
@@ -54,7 +54,7 @@ security:
       - ^REVIEW_ID
 
 params:
-  latest: v1.7
+  latest: v1.8
   repoLink: "https://github.com/upbound/"
   anchors:
     min: 2

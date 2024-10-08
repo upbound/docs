@@ -1,0 +1,2 @@
+description: |-
+    AdditionalRoles is a chained list of Role ARNs which the provider will sequentially assume before assuming the Role

@@ -1,0 +1,4 @@
+description: |-
+    AnyAllConditions consists of conditions wrapped denoting a logical criteria to be fulfilled.
+    AnyConditions get fulfilled when at least one of its sub-conditions passes.
+    AllConditions get fulfilled only when all of its sub-conditions pass.
