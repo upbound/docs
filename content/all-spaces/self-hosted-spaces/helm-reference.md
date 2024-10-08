@@ -441,7 +441,3 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 <!-- vale on -->
 
 {{< /table-no >}}
-
-<!-- vale on -->
-
-{{< /table-no >}}
