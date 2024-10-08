@@ -11,11 +11,7 @@ aliases:
 
 This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
 
-
 {{< table-no "table table-responsive table-striped table-sm" >}}
-
-
-## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
