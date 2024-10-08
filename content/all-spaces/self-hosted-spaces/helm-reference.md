@@ -11,7 +11,6 @@ aliases:
 
 This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
 
-
 {{< table-no "table table-responsive table-striped table-sm" >}}
 
 | Key | Type | Default | Description |
@@ -78,18 +77,36 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | certificates.space | object | `{"clusterIssuer":"spaces-selfsigned"}` | None |
 | certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
 | clusterType | string | `"kind"` | Specifies the cluster type that this installation is being installed into. Valid options are: aks, eks, gke, kind. |
+| controlPlanes.api.resources.limits.cpu | string | `"2000m"` |  |
+| controlPlanes.api.resources.requests.cpu | string | `"100m"` |  |
+| controlPlanes.api.resources.requests.memory | string | `"1000Mi"` |  |
 | controlPlanes.container.mxpCharts.tag | string | `""` | None |
 | controlPlanes.container.mxpGateway.repository | string | `"hyperspace"` | None |
 | controlPlanes.container.mxpGateway.tag | string | `""` | None |
 | controlPlanes.container.mxpKsmConfig.repository | string | `"hyperspace"` | None |
 | controlPlanes.container.mxpKsmConfig.tag | string | `""` | None |
+| controlPlanes.controller.resources.requests.cpu | string | `"50m"` |  |
+| controlPlanes.controller.resources.requests.memory | string | `"170Mi"` |  |
+| controlPlanes.coredns.resources.limits.cpu | string | `"50m"` |  |
+| controlPlanes.coredns.resources.limits.memory | string | `"50Mi"` |  |
+| controlPlanes.coredns.resources.requests.cpu | string | `"10m"` |  |
+| controlPlanes.coredns.resources.requests.memory | string | `"25Mi"` |  |
 | controlPlanes.etcd.persistence.size | string | `"5Gi"` | Set storage class backing the vcluster etcd PVCs <br> storageClassName: '' |
 | controlPlanes.etcd.resources.requests.cpu | string | `"170m"` |  |
 | controlPlanes.etcd.resources.requests.memory | string | `"350Mi"` |  |
+| controlPlanes.gateway.resources.requests.cpu | string | `"10m"` |  |
+| controlPlanes.gateway.resources.requests.memory | string | `"25Mi"` |  |
 | controlPlanes.ingress.annotations | object | `{}` | None |
-| controlPlanes.k8sVersion | string | `"v1.30.4"` |  |
+| controlPlanes.k8sVersion | string | `"v1.31.0"` |  |
+| controlPlanes.kubeStateMetrics.resources.requests.cpu | string | `"100m"` |  |
+| controlPlanes.kubeStateMetrics.resources.requests.memory | string | `"50Mi"` |  |
+| controlPlanes.mxpController.pod.customLabels | object | `{}` |  |
 | controlPlanes.mxpController.serviceAccount.annotations | object | `{}` |  |
+| controlPlanes.mxpKSMConfig.resources.requests.cpu | string | `"100m"` |  |
+| controlPlanes.mxpKSMConfig.resources.requests.memory | string | `"50Mi"` |  |
 | controlPlanes.policies.limitRange.enabled | bool | `true` | None |
+| controlPlanes.sharedSecrets.pod.customLabels | object | `{}` | None |
+| controlPlanes.sharedSecrets.serviceAccount.customAnnotations | object | `{}` | None |
 | controlPlanes.syncer.resources.limits.cpu | string | `"1000m"` | None |
 | controlPlanes.syncer.resources.limits.memory | string | `"1024Mi"` | None |
 | controlPlanes.syncer.resources.requests.cpu | string | `"20m"` | None |
@@ -101,7 +118,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.enableUsages | bool | `true` | None |
 | controlPlanes.uxp.metrics.enabled | bool | `true` | None |
 | controlPlanes.uxp.registryOverride | string | `""` | override the default package registry for Crossplane |
-| controlPlanes.uxp.repository | string | `"https://charts.upbound.io/stable"` | None |
+| controlPlanes.uxp.repository | string | `"oci://xpkg.upbound.io/spaces-artifacts"` | None |
 | controlPlanes.uxp.resourcesCrossplane.limits.cpu | string | `"400m"` | None |
 | controlPlanes.uxp.resourcesCrossplane.limits.memory | string | `"500Mi"` | None |
 | controlPlanes.uxp.resourcesCrossplane.requests.cpu | string | `"370m"` | None |
@@ -111,32 +128,33 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.resourcesRBACManager.requests.cpu | string | `"25m"` | None |
 | controlPlanes.uxp.resourcesRBACManager.requests.memory | string | `"256Mi"` | None |
 | controlPlanes.uxp.serviceAccount.customAnnotations | object | `{}` | None |
-| controlPlanes.uxp.version | string | `"1.15.3-up.1"` | None |
 | controlPlanes.uxp.xgql.enabled | bool | `true` | None |
 | controlPlanes.uxp.xgql.replicas | int | `1` | None |
 | controlPlanes.uxp.xgql.resources | object | `{"limits":{"cpu":"500m","memory":"1Gi"},"requests":{"cpu":"50m","memory":"50Mi"}}` | None |
 | controlPlanes.uxp.xgql.resources.limits.memory | string | `"1Gi"` | None |
 | controlPlanes.uxp.xgql.resources.requests.cpu | string | `"50m"` | None |
 | controlPlanes.uxp.xgql.resources.requests.memory | string | `"50Mi"` | None |
-| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.153.g0a1d4ae"` | None |
+| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.167.gb4b3e68"` | None |
 | controlPlanes.vector.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for Vector Pods. |
 | controlPlanes.vector.debug | bool | `false` | None |
 | controlPlanes.vector.enabled | bool | `true` | None |
 | controlPlanes.vector.nodeSelector | object | `{}` | Configure a [nodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for Vector Pods. |
 | controlPlanes.vector.persistence.enabled | bool | `false` | Set enabled to true to run Vector as a statefulset with each replica backed by a persistent volume and enable disk buffers for selected sinks. When set to false, Vector is run as a deployment with memory buffers. |
 | controlPlanes.vector.persistence.size | string | `"1Gi"` | size must be at least the sum of all buffer.maxSize values with overhead for other Vector data. If you define this you should also define all sink buffer.maxSize values. |
+| controlPlanes.vector.pod.customLabels | object | `{}` | None |
 | controlPlanes.vector.replicas | int | `1` | None |
 | controlPlanes.vector.resources.limits | object | `{}` | None |
 | controlPlanes.vector.resources.requests | object | `{"cpu":"200m","memory":"256Mi"}` | None |
 | controlPlanes.vector.resources.requests.cpu | string | `"200m"` | None |
 | controlPlanes.vector.resources.requests.memory | string | `"256Mi"` | None |
 | controlPlanes.vector.service.enabled | bool | `false` | None |
+| controlPlanes.vector.serviceAccount.customAnnotations | object | `{}` | None |
 | controlPlanes.vector.sinks.usage.buffer.maxEvents | int | `500` | String containing max number of events to buffer in memory. <br> Relevant when mxp.vector.persistence.enabled=false. |
 | controlPlanes.vector.sinks.usage.buffer.maxSize | int | `268435488` | String containing max size of disk buffer in bytes. Must fit with other buffer.maxSize values in mxp.vector.persistence.size. <br> Relevant when mxp.vector.persistence.enabled=true. <br> ~256 MiB, minimum allowed |
 | controlPlanes.vector.tolerations | list | `[]` | Configure Vector Pods to be scheduled on [tainted](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) nodes. |
 | controlPlanes.vector.topologySpreadConstraints | list | `[]` | Configure [topology spread constraints](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/) for Vector Pods. Valid for the "Aggregator" and "Stateless-Aggregator" roles. |
-| controlPlanes.vector.version | string | `"0.22.1"` | None |
-| controller | object | `{"controller":{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"2000Mi"},"requests":{"cpu":"100m","memory":"500Mi"}},"service":{"metrics":{"port":8085},"webhook":{"port":9443}}},"crossplane":{"supportedVersions":["1.14.1-up.1","1.14.2-up.1","1.14.3-up.1","1.14.4-up.1","1.14.5-up.1","1.14.6-up.1","1.14.7-up.1","1.14.8-up.1","1.14.9-up.1","1.15.0-up.1","1.15.1-up.1","1.15.2-up.1","1.15.3-up.1","1.16.0-up.1"],"versionsController":{"enabled":true}},"extraVolumes":[],"kcp":{"enabled":false},"mxeInit":{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""}},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"adminSigning":"cert-admin-signing","ingressCA":"mxe-router-tls"},"serviceAccount":{"annotations":{},"create":true,"name":""},"webhookInit":{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""}}}` | Configurations for the space controller deployment. |
+| controlPlanes.vector.version | string | `"0.36.1"` | None |
+| controller | object | `{"controller":{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"2000Mi"},"requests":{"cpu":"100m","memory":"500Mi"}},"service":{"metrics":{"port":8085},"webhook":{"port":9443}}},"crossplane":{"supportedVersions":["1.15.0-up.1","1.15.1-up.1","1.15.2-up.1","1.15.3-up.1","1.15.5-up.2","1.16.0-up.1","1.16.2-up.2","1.17.1-up.1"],"versionsController":{"enabled":true}},"extraVolumes":[],"kcp":{"enabled":false},"mxeInit":{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""}},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"adminSigning":"cert-admin-signing","ingressCA":"mxe-router-tls"},"serviceAccount":{"annotations":{},"create":true,"name":""},"webhookInit":{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""}}}` | Configurations for the space controller deployment. |
 | controller.controller | object | `{"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"2000Mi"},"requests":{"cpu":"100m","memory":"500Mi"}},"service":{"metrics":{"port":8085},"webhook":{"port":9443}}}` | None |
 | controller.controller.extraArgs | list | `[]` | None |
 | controller.controller.extraEnv | list | `[]` | None |
@@ -157,22 +175,16 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.controller.service.metrics.port | int | `8085` | None |
 | controller.controller.service.webhook | object | `{"port":9443}` | None |
 | controller.controller.service.webhook.port | int | `9443` | None |
-| controller.crossplane | object | `{"supportedVersions":["1.14.1-up.1","1.14.2-up.1","1.14.3-up.1","1.14.4-up.1","1.14.5-up.1","1.14.6-up.1","1.14.7-up.1","1.14.8-up.1","1.14.9-up.1","1.15.0-up.1","1.15.1-up.1","1.15.2-up.1","1.15.3-up.1","1.16.0-up.1"],"versionsController":{"enabled":true}}` | None |
-| controller.crossplane.supportedVersions | list | `["1.14.1-up.1","1.14.2-up.1","1.14.3-up.1","1.14.4-up.1","1.14.5-up.1","1.14.6-up.1","1.14.7-up.1","1.14.8-up.1","1.14.9-up.1","1.15.0-up.1","1.15.1-up.1","1.15.2-up.1","1.15.3-up.1","1.16.0-up.1"]` | None |
-| controller.crossplane.supportedVersions[0] | string | `"1.14.1-up.1"` | None |
-| controller.crossplane.supportedVersions[10] | string | `"1.15.1-up.1"` | None |
-| controller.crossplane.supportedVersions[11] | string | `"1.15.2-up.1"` | None |
-| controller.crossplane.supportedVersions[12] | string | `"1.15.3-up.1"` | None |
-| controller.crossplane.supportedVersions[13] | string | `"1.16.0-up.1"` | None |
-| controller.crossplane.supportedVersions[1] | string | `"1.14.2-up.1"` | None |
-| controller.crossplane.supportedVersions[2] | string | `"1.14.3-up.1"` | None |
-| controller.crossplane.supportedVersions[3] | string | `"1.14.4-up.1"` | None |
-| controller.crossplane.supportedVersions[4] | string | `"1.14.5-up.1"` | None |
-| controller.crossplane.supportedVersions[5] | string | `"1.14.6-up.1"` | None |
-| controller.crossplane.supportedVersions[6] | string | `"1.14.7-up.1"` | None |
-| controller.crossplane.supportedVersions[7] | string | `"1.14.8-up.1"` | None |
-| controller.crossplane.supportedVersions[8] | string | `"1.14.9-up.1"` | None |
-| controller.crossplane.supportedVersions[9] | string | `"1.15.0-up.1"` | None |
+| controller.crossplane | object | `{"supportedVersions":["1.15.0-up.1","1.15.1-up.1","1.15.2-up.1","1.15.3-up.1","1.15.5-up.2","1.16.0-up.1","1.16.2-up.2","1.17.1-up.1"],"versionsController":{"enabled":true}}` | None |
+| controller.crossplane.supportedVersions | list | `["1.15.0-up.1","1.15.1-up.1","1.15.2-up.1","1.15.3-up.1","1.15.5-up.2","1.16.0-up.1","1.16.2-up.2","1.17.1-up.1"]` | None |
+| controller.crossplane.supportedVersions[0] | string | `"1.15.0-up.1"` | None |
+| controller.crossplane.supportedVersions[1] | string | `"1.15.1-up.1"` | None |
+| controller.crossplane.supportedVersions[2] | string | `"1.15.2-up.1"` | None |
+| controller.crossplane.supportedVersions[3] | string | `"1.15.3-up.1"` | None |
+| controller.crossplane.supportedVersions[4] | string | `"1.15.5-up.2"` | None |
+| controller.crossplane.supportedVersions[5] | string | `"1.16.0-up.1"` | None |
+| controller.crossplane.supportedVersions[6] | string | `"1.16.2-up.2"` | None |
+| controller.crossplane.supportedVersions[7] | string | `"1.17.1-up.1"` | None |
 | controller.crossplane.versionsController | object | `{"enabled":true}` | None |
 | controller.crossplane.versionsController.enabled | bool | `true` | This flag enables the versionsController. When set to true, the controller will manage Crossplane versions configmap. If disabled, default behavior will be supportedVersions will applied without automatic updates. |
 | controller.extraVolumes | list | `[]` | None |
@@ -206,9 +218,10 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.webhookInit.image.repository | string | `"hyperspace"` | None |
 | controller.webhookInit.image.tag | string | `""` | None |
 | deletionPolicy | string | `"Delete"` | Specifies if the supporting APIs for the Spaces deployment should be handled on a deletion request. Possible options are "Delete" or "Orphan". If "Delete" is specified, on performing a 'helm uninstall', the Crossplane configurations that support the installation will also be deleted along with the resources that make the spaces installation. |
-| features | object | `{"alpha":{"apollo":{"apiserver":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}},"enabled":false,"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-apollo"},"storage":{"postgres":{"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}}},"syncer":{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}},"argocdPlugin":{"enabled":false,"target":{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"}},"featuresAnnotation":{"enabled":false},"inControlPlaneOverride":{"enabled":false},"observability":{"enabled":false},"sharedBackup":{"enabled":false},"sharedSecrets":{"enabled":false},"simulations":{"enabled":false},"upboundPolicy":{"enabled":false},"upboundRBAC":{"enabled":false}},"beta":{}}` | None |
-| features.alpha | object | `{"apollo":{"apiserver":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}},"enabled":false,"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-apollo"},"storage":{"postgres":{"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}}},"syncer":{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}},"argocdPlugin":{"enabled":false,"target":{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"}},"featuresAnnotation":{"enabled":false},"inControlPlaneOverride":{"enabled":false},"observability":{"enabled":false},"sharedBackup":{"enabled":false},"sharedSecrets":{"enabled":false},"simulations":{"enabled":false},"upboundPolicy":{"enabled":false},"upboundRBAC":{"enabled":false}}` | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
-| features.alpha.apollo | object | `{"apiserver":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}},"enabled":false,"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-apollo"},"storage":{"postgres":{"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}}},"syncer":{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}}` | Configurations for the apollo deployment. |
+| development | object | `{}` | Development only configurations, not for production use. |
+| features | object | `{"alpha":{"apollo":{"apiserver":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}},"enabled":false,"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-apollo"},"storage":{"postgres":{"cnpg":{"cluster":{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}},"pooler":{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}},"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""},"create":true}},"syncer":{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}},"argocdPlugin":{"enabled":false,"target":{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"},"useUIDFormatForCTPSecrets":false},"featuresAnnotation":{"enabled":false},"inControlPlaneOverride":{"enabled":false},"observability":{"enabled":false},"sharedBackup":{"enabled":false},"sharedSecrets":{"enabled":false},"simulations":{"enabled":false},"upboundPolicy":{"enabled":false},"upboundRBAC":{"enabled":false}},"beta":{}}` | None |
+| features.alpha | object | `{"apollo":{"apiserver":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}},"enabled":false,"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-apollo"},"storage":{"postgres":{"cnpg":{"cluster":{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}},"pooler":{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}},"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""},"create":true}},"syncer":{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}},"argocdPlugin":{"enabled":false,"target":{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"},"useUIDFormatForCTPSecrets":false},"featuresAnnotation":{"enabled":false},"inControlPlaneOverride":{"enabled":false},"observability":{"enabled":false},"sharedBackup":{"enabled":false},"sharedSecrets":{"enabled":false},"simulations":{"enabled":false},"upboundPolicy":{"enabled":false},"upboundRBAC":{"enabled":false}}` | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
+| features.alpha.apollo | object | `{"apiserver":{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}},"enabled":false,"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"secretRefs":{"tlsSecretName":"mxp-hostcluster-certs","tokenSigning":"cert-token-signing-gateway"},"serviceAccount":{"annotations":{},"create":true,"name":"mxe-apollo"},"storage":{"postgres":{"cnpg":{"cluster":{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}},"pooler":{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}},"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""},"create":true}},"syncer":{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}}` | Configurations for the apollo deployment. |
 | features.alpha.apollo.apiserver | object | `{"extraArgs":[],"extraEnv":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"service":{"api":{"port":8443},"metrics":{"port":8085},"type":"ClusterIP"}}` | None |
 | features.alpha.apollo.apiserver.extraArgs | list | `[]` | None |
 | features.alpha.apollo.apiserver.extraEnv | list | `[]` | None |
@@ -241,8 +254,19 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.serviceAccount.annotations | object | `{}` | None |
 | features.alpha.apollo.serviceAccount.create | bool | `true` | None |
 | features.alpha.apollo.serviceAccount.name | string | `"mxe-apollo"` | None |
-| features.alpha.apollo.storage | object | `{"postgres":{"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}}}` | None |
-| features.alpha.apollo.storage.postgres | object | `{"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}}` | None |
+| features.alpha.apollo.storage | object | `{"postgres":{"cnpg":{"cluster":{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}},"pooler":{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}},"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""},"create":true}}` | None |
+| features.alpha.apollo.storage.postgres | object | `{"cnpg":{"cluster":{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}},"pooler":{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}},"connection":{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""},"create":true}` | None |
+| features.alpha.apollo.storage.postgres.cnpg | object | `{"cluster":{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}},"pooler":{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}}` | Configuration for the PostgreSQL cluster and PGBouncer pooler managed by CloudNativePG, only respected if create is set to true. |
+| features.alpha.apollo.storage.postgres.cnpg.cluster | object | `{"debug":false,"imageName":"","instances":2,"storage":{"pvcTemplate":{},"size":"5Gi","storageClass":""}}` | None |
+| features.alpha.apollo.storage.postgres.cnpg.cluster.debug | bool | `false` | Setting the cluster to log at debug level, sets up PgAudit and other useful extensions for debugging. |
+| features.alpha.apollo.storage.postgres.cnpg.cluster.imageName | string | `""` | Image to be used for the cluster, if not specified the default image according to the CloudNativePG operator installed version will be used. |
+| features.alpha.apollo.storage.postgres.cnpg.cluster.instances | int | `2` | Number of instances in the cluster |
+| features.alpha.apollo.storage.postgres.cnpg.cluster.storage | object | `{"pvcTemplate":{},"size":"5Gi","storageClass":""}` | The cluster's PVC configuration. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler | object | `{"debug":false,"instances":2,"parameters":{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"},"podTemplate":{}}` | The pooler configuration for the cluster. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler.debug | bool | `false` | Whether the pooler should log at debug level. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler.instances | int | `2` | The number of replicas of the pooler to run. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler.parameters | object | `{"default_pool_size":"10","max_client_conn":"1000","max_prepared_statements":"1000"}` | The pooler configuration, see PGbouncer documentation for all available options. Tune the suggested parameters as needed. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler.podTemplate | object | `{}` | The pod template for the pooler, allows configuring almost all aspects of the pooler pods. |
 | features.alpha.apollo.storage.postgres.connection | object | `{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}` | None |
 | features.alpha.apollo.storage.postgres.connection.apollo | object | `{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""}` | None |
 | features.alpha.apollo.storage.postgres.connection.apollo.credentials | object | `{"format":"","secret":{"name":""},"user":""}` | None |
@@ -255,6 +279,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.storage.postgres.connection.ca | object | `{"name":""}` | None |
 | features.alpha.apollo.storage.postgres.connection.ca.name | string | `""` | None |
 | features.alpha.apollo.storage.postgres.connection.credentials | object | `{"format":"pgpass","secret":{"name":""},"user":""}` | None |
+| features.alpha.apollo.storage.postgres.connection.credentials.format | string | `"pgpass"` | None |
 | features.alpha.apollo.storage.postgres.connection.credentials.secret | object | `{"name":""}` | None |
 | features.alpha.apollo.storage.postgres.connection.credentials.secret.name | string | `""` | None |
 | features.alpha.apollo.storage.postgres.connection.credentials.user | string | `""` | None |
@@ -269,6 +294,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.storage.postgres.connection.syncer.sslmode | string | `""` | None |
 | features.alpha.apollo.storage.postgres.connection.syncer.url | string | `""` | None |
 | features.alpha.apollo.storage.postgres.connection.url | string | `""` | None |
+| features.alpha.apollo.storage.postgres.create | bool | `true` | Whether the chart should install and handle the PostgreSQL database for Apollo using CloudNativePG, if set to true all connection configuration will be ignored. |
 | features.alpha.apollo.syncer | object | `{"debug":false,"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"metrics":{"enabled":true},"resources":{"limits":{"cpu":"1000m","memory":"1024Mi"},"requests":{"cpu":"100m","memory":"150Mi"}}}` | None |
 | features.alpha.apollo.syncer.debug | bool | `false` | None |
 | features.alpha.apollo.syncer.image | object | `{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""}` | None |
@@ -284,7 +310,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.syncer.resources.requests | object | `{"cpu":"100m","memory":"150Mi"}` | None |
 | features.alpha.apollo.syncer.resources.requests.cpu | string | `"100m"` | None |
 | features.alpha.apollo.syncer.resources.requests.memory | string | `"150Mi"` | None |
-| features.alpha.argocdPlugin | object | `{"enabled":false,"target":{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"}}` | None |
+| features.alpha.argocdPlugin | object | `{"enabled":false,"target":{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"},"useUIDFormatForCTPSecrets":false}` | None |
 | features.alpha.argocdPlugin.enabled | bool | `false` | None |
 | features.alpha.argocdPlugin.target | object | `{"externalCluster":{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}},"secretNamespace":"argocd"}` | None |
 | features.alpha.argocdPlugin.target.externalCluster | object | `{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}}` | The secret name and key for the kubeconfig of the external cluster. This is used by the argocd plugin to connect to the external cluster in case ArgoCD does not run in the same cluster as Spaces. If not specified, defaults to in-cluster credentials. |
@@ -293,6 +319,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.argocdPlugin.target.externalCluster.secret.key | string | `"kubeconfig"` | None |
 | features.alpha.argocdPlugin.target.externalCluster.secret.name | string | `"kubeconfig"` | None |
 | features.alpha.argocdPlugin.target.secretNamespace | string | `"argocd"` | None |
+| features.alpha.argocdPlugin.useUIDFormatForCTPSecrets | bool | `false` | If enabled, old secrets with <ctp-name> will be deleted and recreated with the <ctp-uid>. |
 | features.alpha.featuresAnnotation | object | `{"enabled":false}` | None |
 | features.alpha.featuresAnnotation.enabled | bool | `false` | None |
 | features.alpha.inControlPlaneOverride.enabled | bool | `false` | This enables the InControlPlaneOverride API to allow hierarchical configuration overrides in the control planes. |
@@ -308,10 +335,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.upboundRBAC | object | `{"enabled":false}` | None |
 | features.alpha.upboundRBAC.enabled | bool | `false` | This enables respecting Upbound Authorization management within the space. This will include new APIs for binding Objects to identities supplied by Upbound. |
 | features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
-| hostCluster.provider.helm.version | string | `"v0.19.0"` | None |
-| hostCluster.provider.kubernetes.version | string | `"v0.14.0"` | None |
-| hostCluster.uxp.metrics | object | `{"enabled":true}` | None |
-| hostCluster.uxp.version | string | `"1.15.3-up.1"` | None |
 | imagePullSecrets | list | `[{"name":"upbound-pull-secret"}]` | NOTE: only an imagePullSecret of "upbound-pull-secret" is currently supported. |
 | imagePullSecrets[0] | object | `{"name":"upbound-pull-secret"}` | None |
 | ingress | object | `{"annotations":{},"host":"proxy.upbound-127.0.0.1.nip.io","provision":true}` | Configurations for external requests coming into the space. |
@@ -414,15 +437,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | space | object | `{"labels":{}}` | Configurations that are applied consistently across the space. |
 | space.labels | object | `{}` | Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
 | version | string | `""` | Overall artifact version that affects xpkgs and related components. |
-| xpkg.mxeCompositionTemplates.repository | string | `"mxe-composition-templates"` | None |
-| xpkg.mxeCompositionTemplates.tag | string | `""` | None |
-| xpkg.mxpControlPlane.repository | string | `"mxp-control-plane"` | None |
-| xpkg.mxpControlPlane.tag | string | `""` | None |
-| xpkg.mxpHostCluster.repository | string | `"mxp-host-cluster"` | None |
-| xpkg.mxpHostCluster.tag | string | `""` | None |
-| xpkg.providerHostCluster.repository | string | `"provider-host-cluster"` | None |
-| xpkg.providerHostCluster.tag | string | `""` | None |
-| xpkg.pullPolicy | string | `"IfNotPresent"` | None |
 
 <!-- vale on -->
 
