@@ -4,7 +4,7 @@ description: |-
     
     'object' - The object from the incoming request. The value is null for DELETE requests.
     'oldObject' - The existing object. The value is null for CREATE requests.
-    'request' - Attributes of the admission request(/pkg/apis/admission/types.go#AdmissionRequest).
+    'request' - Attributes of the admission request(https://pkg.go.dev/k8s.io/kubernetes/pkg/apis/admission#AdmissionRequest).
     'authorizer' - A CEL Authorizer. May be used to perform authorization checks for the principal (user or service account) of the request.
       See https://pkg.go.dev/k8s.io/apiserver/pkg/cel/library#Authz
     'authorizer.requestResource' - A CEL ResourceCheck constructed from the 'authorizer' and configured with the
