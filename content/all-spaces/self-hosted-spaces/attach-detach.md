@@ -67,7 +67,7 @@ Create a secret containing the robot token:
 kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
 ```
 
-In the same cluster where you installed the Spaces software, install the Upbound connect agent.
+In the same cluster where you installed the Spaces software, install the Upbound connect agent with your token secret.
 
 ```bash
 helm -n upbound-system upgrade --install agent \
