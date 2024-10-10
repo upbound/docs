@@ -4,6 +4,7 @@ weight: 4
 description: An introduction to how Configurations work in Upbound
 aliases:
     - /all-spaces/legacy-spaces/control-plane-configurations
+    - /concepts/control-plane-configurations
 ---
 
 {{< hint "important" >}}
