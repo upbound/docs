@@ -8,10 +8,14 @@ description: "Learn how Upbound works and how it can work for you."
 
 <!-- yaml -->
 {{< editCode >}}
+
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xpostgresqlinstances.database.example.org
 ```
-console.log("TypeScript code here");
-```
-{{< editCode >}}
+{{</ editCode >}}
 <!-- /yaml -->
 
 
@@ -31,7 +35,8 @@ stuff
 {{</hint>}}
 <!-- /go -->
 ```
-{{</ content-selector >}}
+
+{{</content-selector >}}
 
 Upbound is a scalable infrastructure service built on Crossplane that helps you
 effectively manage your organization's platform needs. What
