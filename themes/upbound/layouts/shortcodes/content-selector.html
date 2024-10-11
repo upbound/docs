@@ -1,0 +1,89 @@
+{{ $rawOptions := .Get "options" }}
+{{ $options := split ($rawOptions) "," }}
+{{ $default := .Get "default" | default (index $options 0) }}
+
+<div class="content-selector" data-options="{{ $rawOptions }}" data-default="{{ $default }}">
+  <div class="content-select-buttons">
+    {{ range $options }}
+      {{ $option := trim . " " }}
+      <button class="content-select-button{{ if eq $option $default }} active{{ end }}" data-option="{{ $option }}">
+        {{ $option | title }}
+      </button>
+    {{ end }}
+  </div>
+
+  <div class="content-blocks">
+    {{ $content := .Inner }}
+    {{ range $options }}
+      {{ $option := trim . " " }}
+      {{ $optionContent := findRE (printf "(?s)<!-- %s -->.*?<!-- /%s -->" $option $option) $content }}
+      <div class="content-block" data-option="{{ $option }}" {{ if ne $option $default }}style="display: none;"{{ end }}>
+        {{ if $optionContent }}
+          {{ range $optionContent }}
+            {{ $cleaned := replaceRE (printf "<!-- %s -->|<!-- /%s -->" $option $option) "" . }}
+            {{ $cleaned | safeHTML }}
+          {{ end }}
+        {{ else }}
+          <p>No content found for {{ $option }}</p>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initializeContentSelectors() {
+      const selectors = document.querySelectorAll('.content-selector');
+      
+      function updateVisibility(selector, value) {
+        const buttons = selector.querySelectorAll('.content-select-button');
+        const blocks = selector.querySelectorAll('.content-block');
+        
+        buttons.forEach(button => {
+          button.classList.toggle('active', button.dataset.option === value);
+        });
+        
+        blocks.forEach(block => {
+          block.style.display = block.dataset.option === value ? 'block' : 'none';
+        });
+      }
+
+      function syncSelectors(value) {
+        selectors.forEach(selector => {
+          const options = selector.dataset.options.split(',');
+          if (options.includes(value)) {
+            updateVisibility(selector, value);
+          }
+        });
+      }
+
+      selectors.forEach(selector => {
+        const buttons = selector.querySelectorAll('.content-select-button');
+        const options = selector.dataset.options.split(',');
+        const defaultOption = selector.dataset.default;
+
+        buttons.forEach(button => {
+          button.addEventListener('click', (event) => {
+            const value = event.target.dataset.option;
+            window.globalOption = value;
+            syncSelectors(value);
+          });
+        });
+
+        if (window.globalOption && options.includes(window.globalOption)) {
+          updateVisibility(selector, window.globalOption);
+        } else if (!window.globalOption) {
+          window.globalOption = defaultOption;
+          updateVisibility(selector, defaultOption);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeContentSelectors);
+    } else {
+      initializeContentSelectors();
+    }
+  })();
+</script>
