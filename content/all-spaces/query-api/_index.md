@@ -233,7 +233,8 @@ spec:
           image: true
 ```
 
-You can use `kubectl create` and receive the `response` for your query parameters.
+After switching your context to a Space, you can use `kubectl create` and
+receive the `response` for your query parameters.
 
 ```shell
 $ kubectl create -f spaces-query.yaml --validate=false -o yaml
