@@ -233,8 +233,11 @@ spec:
           image: true
 ```
 
-After switching your context to a Space, you can use `kubectl create` and
-receive the `response` for your query parameters.
+<!-- vale write-good.Passive = NO -->
+The Query API is served by the Spaces API endpoint. You can use `up ctx` to
+switch the kubectl context to the Spaces API ingress. After that, you can use
+`kubectl create` and receive the `response` for your query parameters.
+<!-- vale write-good.Passive = YES -->
 
 ```shell
 $ kubectl create -f spaces-query.yaml -o yaml
