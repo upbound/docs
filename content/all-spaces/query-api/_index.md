@@ -240,7 +240,7 @@ switch the kubectl context to the Spaces API ingress. After that, you can use
 <!-- vale write-good.Passive = YES -->
 
 ```shell
-$ kubectl create -f spaces-query.yaml -o yaml
+kubectl create -f spaces-query.yaml -o yaml
 ```
 
 Your `response` should look similar to this example:
