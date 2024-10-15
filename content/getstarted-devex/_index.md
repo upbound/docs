@@ -5,37 +5,33 @@ description: "Learn how Upbound works and how it can work for you."
 ---
 
 {{< content-selector options="yaml,python,go" default="yaml" >}}
-
 <!-- yaml -->
 {{< editCode >}}
-
 ```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
-metadata:
-  name: xpostgresqlinstances.database.example.org
+greet: "hello world"
 ```
 {{</ editCode >}}
 <!-- /yaml -->
 
-
 <!-- python -->
-
+{{< editCode >}}
 ```python
-stuff
+print("Hello, World!")
 ```
-
+{{</ editCode >}}
 <!-- /python -->
 
 <!-- go -->
-{{<hint>}}
+{{< editCode >}}
 ```go
-stuff
+package main
+import "fmt"
+func main() {
+	fmt.Println("hello world")
+}
 ```
-{{</hint>}}
+{{</ editCode >}}
 <!-- /go -->
-```
-
 {{</content-selector >}}
 
 Upbound is a scalable infrastructure service built on Crossplane that helps you
@@ -45,26 +41,30 @@ distinguishes Crossplane and Upbound from other infrastructure tools is the
 continuously reconcile your requested state with your actual resources. 
 
 {{< content-selector options="yaml,python,go" default="yaml" >}}
-
 <!-- yaml -->
-
-Content
-
+{{< editCode >}}
+```yaml
+lang: "yaml"
+```
+{{</ editCode >}}
 <!-- /yaml -->
 
 
 <!-- python -->
+{{< editCode >}}
 ```python
-stuff
+lang = "python"
 ```
+{{</ editCode >}}
 <!-- /python -->
 
 <!-- go -->
+{{< editCode >}}
 ```go
-stuff
+lang := "go"
 ```
+{{</ editCode >}}
 <!-- /go -->
-```
 {{</ content-selector >}}
 
 

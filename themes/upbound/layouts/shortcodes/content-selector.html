@@ -1,16 +1,21 @@
 {{ $rawOptions := .Get "options" }}
 {{ $options := split ($rawOptions) "," }}
 {{ $default := .Get "default" | default (index $options 0) }}
+{{ $randomId := index (seq 2000 | shuffle) 0 }}
 
-<div class="content-selector" data-options="{{ $rawOptions }}" data-default="{{ $default }}">
-  <div class="content-select-buttons">
+<div id="content-selector-{{ $randomId }}" class="content-selector" data-options="{{ $rawOptions }}" data-default="{{ $default }}">
+  <ul class="nav nav-tabs content-select-buttons" id="{{$randomId}}" role="tablist">
     {{ range $options }}
       {{ $option := trim . " " }}
-      <button class="content-select-button{{ if eq $option $default }} active{{ end }}" data-option="{{ $option }}">
-        {{ $option | title }}
-      </button>
+      <li class="nav-item">
+        <button class="nav-link content-select-button {{if eq $option $default }} active {{ end }} me-3"
+                type="button"
+                role="tab"
+                data-option="{{ $option }}"
+                >{{ $option | title }}</button>
+      </li>
     {{ end }}
-  </div>
+  </ul>
 
   <div class="content-blocks">
     {{ $content := .Inner }}
@@ -33,12 +38,12 @@
 
 <script>
   (function() {
-    function initializeContentSelectors() {
-      const selectors = document.querySelectorAll('.content-selector');
+    function initializeContentSelector(contentSelectorId) {
+      const selector = document.getElementById(contentSelectorId);
       
-      function updateVisibility(selector, value) {
-        const buttons = selector.querySelectorAll('.content-select-button');
-        const blocks = selector.querySelectorAll('.content-block');
+      function updateVisibility(value) {
+        const buttons = document.querySelectorAll('.content-select-button');
+        const blocks = document.querySelectorAll('.content-block');
         
         buttons.forEach(button => {
           button.classList.toggle('active', button.dataset.option === value);
@@ -50,40 +55,36 @@
       }
 
       function syncSelectors(value) {
-        selectors.forEach(selector => {
-          const options = selector.dataset.options.split(',');
-          if (options.includes(value)) {
-            updateVisibility(selector, value);
-          }
-        });
+        const options = selector.dataset.options.split(',');
+        if (options.includes(value)) {
+          updateVisibility(value);
+        }
       }
 
-      selectors.forEach(selector => {
-        const buttons = selector.querySelectorAll('.content-select-button');
-        const options = selector.dataset.options.split(',');
-        const defaultOption = selector.dataset.default;
+      const buttons = selector.querySelectorAll('.content-select-button');
+      const options = selector.dataset.options.split(',');
+      const defaultOption = selector.dataset.default;
 
-        buttons.forEach(button => {
-          button.addEventListener('click', (event) => {
-            const value = event.target.dataset.option;
-            window.globalOption = value;
-            syncSelectors(value);
-          });
+      buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+          const value = event.target.dataset.option;
+          window.globalOption = value;
+          syncSelectors(value);
         });
-
-        if (window.globalOption && options.includes(window.globalOption)) {
-          updateVisibility(selector, window.globalOption);
-        } else if (!window.globalOption) {
-          window.globalOption = defaultOption;
-          updateVisibility(selector, defaultOption);
-        }
       });
+
+      if (window.globalOption && options.includes(window.globalOption)) {
+        updateVisibility(window.globalOption);
+      } else if (!window.globalOption) {
+        window.globalOption = defaultOption;
+        updateVisibility(defaultOption);
+      }
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeContentSelectors);
+      document.addEventListener('DOMContentLoaded', initializeContentSelector.bind(this, "content-selector-{{$randomId}}"));
     } else {
-      initializeContentSelectors();
+      initializeContentSelector("content-selector-{{ $randomId }}");
     }
   })();
 </script>
