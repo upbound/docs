@@ -71,8 +71,8 @@ In the same cluster where you installed the Spaces software, install the Upbound
 
 ```bash
 helm -n upbound-system upgrade --install agent \
-  oci://us-west1-docker.pkg.dev/orchestration-build/connect/agent \
-  --version "0.0.0-423.gdaa19ca" \
+  oci://xpkg.upbound.io/spaces-artifacts/agent \
+  --version "0.0.0-441.g68777b9" \
   --set "registration.enabled=true" \
   --set "space=${UPBOUND_SPACE_NAME}" \
   --set "organization=${UPBOUND_ORG_NAME}" \
