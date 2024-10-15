@@ -68,7 +68,7 @@ Create a secret containing the robot token:
 kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
 ```
 
-Specify your username and password for the helm oci registry:
+Specify your username and password for the helm OCI registry:
 
 {{< editCode >}}
 ```bash
