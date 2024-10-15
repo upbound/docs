@@ -21,6 +21,7 @@ Before you begin, make sure you have:
 - an existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
 - the `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
+- A `token.json` license, provided by your Upbound account representative
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
@@ -67,12 +68,23 @@ Create a secret containing the robot token:
 kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
 ```
 
+Specify your username and password for the helm OCI registry:
+
+{{< editCode >}}
+```bash
+jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
+```
+{{< /editCode >}}
+
 In the same cluster where you installed the Spaces software, install the Upbound connect agent with your token secret.
 
 ```bash
 helm -n upbound-system upgrade --install agent \
-  oci://us-west1-docker.pkg.dev/orchestration-build/connect/agent \
-  --version "0.0.0-423.gdaa19ca" \
+  oci://xpkg.upbound.io/spaces-artifacts/agent \
+  --version "0.0.0-441.g68777b9" \
+  --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
+  --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
+  --set "imagePullSecrets[0].name=upbound-pull-secret" \
   --set "registration.enabled=true" \
   --set "space=${UPBOUND_SPACE_NAME}" \
   --set "organization=${UPBOUND_ORG_NAME}" \
