@@ -245,7 +245,7 @@ $ kubectl create -f spaces-query.yaml -o yaml
 
 Your `response` should look similar to this example:
 
-``````yaml {copy-lines="none"}
+```yaml {copy-lines="none"}
 apiVersion: query.spaces.upbound.io/v1alpha1
 kind: SpaceQuery
 metadata:
