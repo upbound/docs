@@ -75,6 +75,7 @@ helm -n upbound-system upgrade --install agent \
   --version "0.0.0-441.g68777b9" \
   --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
   --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
+  --set "imagePullSecrets[0].name=upbound-pull-secret" \
   --set "registration.enabled=true" \
   --set "space=${UPBOUND_SPACE_NAME}" \
   --set "organization=${UPBOUND_ORG_NAME}" \
