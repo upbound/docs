@@ -74,6 +74,7 @@ helm -n upbound-system upgrade --install agent \
   oci://xpkg.upbound.io/spaces-artifacts/agent \
   --version "0.0.0-441.g68777b9" \
   --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
+  --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
   --set "registration.enabled=true" \
   --set "space=${UPBOUND_SPACE_NAME}" \
   --set "organization=${UPBOUND_ORG_NAME}" \
