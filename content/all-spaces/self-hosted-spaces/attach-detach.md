@@ -68,12 +68,11 @@ Create a secret containing the robot token:
 kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
 ```
 
-Extract your `accessId` and `token` from `token.json` as helm username and password:
+Specify your username and password for the image registry:
 
 {{< editCode >}}
-```ini
-export HELM_USERNAME=$@token.json "accessId"$@
-export HELM_PASSWORD=$@token.json "token"$@
+```bash
+jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 ```
 {{< /editCode >}}
 
@@ -82,8 +81,6 @@ In the same cluster where you installed the Spaces software, install the Upbound
 ```bash
 helm -n upbound-system upgrade --install agent \
   oci://xpkg.upbound.io/spaces-artifacts/agent \
-  --username="${HELM_USERNAME}" \
-  --password="${HELM_PASSWORD}" \
   --version "0.0.0-441.g68777b9" \
   --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
   --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
