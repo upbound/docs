@@ -1,5 +1,5 @@
 ---
-title: "VSCode Extension" 
+title: "VSCode Extension"
 description: "Use popular VSCode extentions to author your Upbound
 configurations"
 ---
@@ -19,7 +19,7 @@ Upbound supports Python and KCL schemas.
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
-in VSCode or visit the <a>https://marketplace.visualstudio.com/items?itemName=ms-python.python</a>.
+in VSCode.
 <!-- /Python -->
 <!-- KCL -->
 
@@ -33,7 +33,7 @@ in VSCode or go to the [Marketplace](https://marketplace.visualstudio.com/items?
 ## Usage
 
 Once you have the extensions installed, you need to use an [official Upbound
-provider](https://marketplace.upbound.io/providers?tier=official) that includes bundled schemas. 
+provider](https://marketplace.upbound.io/providers?tier=official) that includes bundled schemas.
 
 In your project `upbound.yaml` file, specify the provider and the latest version:
 
@@ -55,8 +55,11 @@ Once you have installed the appropriate extension and are working with an Upboun
 1. Inline Schema Information
 
 View descriptions, property types, and other schema details directly in your code editor window as you work with composed Managed Resources (MRs).
+
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
+{{< editCode >}}
+```python
 vpc = {
     "apiVersion": "ec2.aws.upbound.io/v1beta1",
     "kind": "VPC",
@@ -67,8 +70,12 @@ vpc = {
         }
     }
 }
+```
+{{< /editCode >}}
 <!-- /Python -->
 <!-- KCL -->
+{{< editCode >}}
+```yaml
 vpc = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
     kind: "VPC"
@@ -77,14 +84,21 @@ vpc = {
         enableDnsHostnames: True  # Hover to see description and type
     }
 }
+```
+{{</ editCode >}}
 <!-- /KCL -->
 {{</ content-selector >}}
 
 2. Linting
+
 The extension provides real-time linting for:
-Mismatched property types
-Missing required fields in a Managed Resource
-Python Example
+- Mismatched property types
+- Missing required fields in a Managed Resource
+
+{{< content-selector options="Python,KCL" default="Python" >}}
+<!-- Python -->
+{{< editCode >}}
+```python
 vpc = {
     "apiVersion": "ec2.aws.upbound.io/v1beta1",
     "kind": "VPC",
@@ -95,8 +109,12 @@ vpc = {
         }
     }
 }
-
-KCL Example
+```
+{{</ editCode>}}
+<!-- /Python -->
+<!-- KCL -->
+{{< editCode >}}
+```yaml
 vpc = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
     kind: "VPC"
@@ -105,9 +123,18 @@ vpc = {
         # Error: Missing required field 'region'
     }
 }
+```
+{{</ editCode >}}
+<!-- /KCL -->
+{{</ content-selector >}}
+
 3. Auto-completion
 As you type, the extension suggests valid properties and values for Managed Resources.
-Python Example
+
+{{< content-selector options="Python,KCL" default="Python" >}}
+<!-- Python -->
+{{< editCode >}}
+```python
 vpc = {
     "apiVersion": "ec2.aws.upbound.io/v1beta1",
     "kind": "VPC",
@@ -117,8 +144,12 @@ vpc = {
         }
     }
 }
-
-KCL Example
+```
+{{< /editCode >}}
+<!-- /Python -->
+<!-- KCL -->
+{{< editCode >}}
+```yaml
 vpc = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
     kind: "VPC"
@@ -126,9 +157,20 @@ vpc = {
         ci  # Auto-complete suggests: cidrBlock, cidrBlockAssociations, etc.
     }
 }
+```
+{{< /editCode >}}
+<!-- /KCL -->
+
+{{</ content-selector >}}
+
 4. Auto-generate Composed Resources
 Quickly scaffold a new Managed Resource by using the auto-generate feature.
-Python Example:
+
+
+{{< content-selector options="Python,KCL" default="Python" >}}
+<!-- Python -->
+{{< editCode >}}
+```python
 Start typing: vpc = {"kind": "V"}
 Select "VPC" from the autocomplete suggestions
 The extension generates:
@@ -142,7 +184,11 @@ vpc = {
         }
     }
 }
-KCL Example:
+{{< /editCode >}}
+<!-- /Python -->
+<!-- KCL -->
+{{< editCode >}}
+```yaml
 Start typing: vpc = {kind: "V"}
 Select "VPC" from the autocomplete suggestions
 The extension generates:
@@ -154,10 +200,19 @@ vpc = {
         region: ""
     }
 }
+```
+{{< /editCode >}}
+<!-- /KCL -->
+
+{{</ content-selector >}}
 
 5. Resource References
 Easily navigate between related resources in your composition.
-Python Example:
+
+{{< content-selector options="Python,KCL" default="Python" >}}
+<!-- Python -->
+{{< editCode >}}
+```python
 subnet = {
     "apiVersion": "ec2.aws.upbound.io/v1beta1",
     "kind": "Subnet",
@@ -169,7 +224,11 @@ subnet = {
         }
     }
 }
-KCL Example:
+{{< /editCode >}}
+<!-- /Python -->
+<!-- KCL -->
+{{< editCode >}}
+```yaml
 subnet = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
     kind: "Subnet"
@@ -179,6 +238,11 @@ subnet = {
         }
     }
 }
+```
+{{< /editCode >}}
+<!-- /KCL -->
+
+{{</ content-selector >}}
 
 ## Troubleshooting
 
@@ -187,4 +251,3 @@ If you're not seeing the enhanced features:
 - Ensure you're using an official Upbound provider with bundled schemas.
 - Check that the provider version in your upbound.yaml file matches the installed provider version.
 - Reload your VSCode window or restart VSCode.
-

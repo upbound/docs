@@ -23,7 +23,7 @@ By the end of this guide, you'll have:
 2. Define the schema for an API to provision database instances (AWS RDS, Azure SQL Database, or Google Cloud SQL)
 3. Define parameters to make the API reusable across multiple services
 4. Implement a controller using an Upbound composition
-5. Set up outputs to provide necessary data to teams 
+5. Set up outputs to provide necessary data to teams
 
 This approach allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
 
@@ -110,17 +110,16 @@ The spec section contains the specifications for whatever kind of resource you c
 
 ## Generate a Composite Resource Definition
 
-Your project now contains the base-level information required to go forward. Now, let's create some infrastructure packages. 
+Your project now contains the base-level information required to go forward. Now, let's create some infrastructure packages.
 
-Crossplane and Upbound use Composite Resource Definitions (XRDs) to define the parameters of your desired infrastructure. These yaml files look similar to Kubernetes manifests like our project definition with 
+Crossplane and Upbound use Composite Resource Definitions (XRDs) to define the parameters of your desired infrastructure. These yaml files look similar to Kubernetes manifests like our project definition with
 
-[Tabs]
-[Tab] [YAML]
-
+```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
   name: xrds.devex.com
+```
 
 The apiVersion field defines the API group and version of the resource you're creating. For example, in this scenario, add dbaas.upbound.io/v1alpha1 . This is the group and version of the API you are currently creating and how your other composition components will be referenced.
 
@@ -145,10 +144,7 @@ This XRD creates a controller on your cluster. A controller is a set of services
 In order to create actual resources with Upbound, we'll need to tell Upbound what to do based on the definitions above.
 Composition
 
-[Tabs]
-[Tab] [YAML]
-
-
+```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -197,9 +193,9 @@ spec:
             - cidrIp: '0.0.0.0/0'
           vpcIdRef:
             name: my-vpc
+```
 
-[/Tab]
-[Tab] [KCL]
+```kcl
 apiVersion = "apiextensions.crossplane.io/v1"
 kind = "Composition"
 
@@ -276,10 +272,7 @@ spec = {
     	}
 	]
 }
-
-
-[/Tab]
-[/Tabs]
+```
 
 Provider Configuration
 
@@ -288,5 +281,3 @@ Provider Configuration
 Build your configuration
 
 Deploy to Upbound
-
-
