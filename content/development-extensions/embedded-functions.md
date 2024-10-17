@@ -3,3 +3,97 @@ title: Embedded Functions
 description: Deep Dive on Embedded functions
 weight: 3
 ---
+
+Embedded functions are a powerful feature in Upbound that allow you to write composition functions as part of the same logical project as your compositions (a configuration). This feature significantly enhances the developer experience when building platforms on top of Crossplane.
+
+What are Embedded Functions?
+
+Embedded functions are composition functions that are built, packaged, and managed as part of a configuration. They allow you to write composition logic in familiar programming languages (such as Go or Python) or configuration languages (like KCL or Go templating), rather than using the YAML-based patch-and-transform system built into Crossplane. Embedded functions can also be used to implement shared logic across multiple compositions within a configuration.
+
+Benefits of Embedded Functions
+
+Improved Developer Experience: Write composition logic in languages you're familiar with.
+Integrated Development: Build functions as part of your configuration project, simplifying management.
+Full Language Feature Support: Take advantage of IDE features like auto-completion and syntax highlighting.
+Simplified Packaging: Build and push your configuration and its functions as a single unit.
+Flexibility: Simplified support for common languages (KCL and Python) and support for building fully custom functions (e.g., using the Go or Python SDKs).
+
+## Creating Embedded Functions
+
+To create an embedded function for your project, follow these steps:
+Initialize your project using the up project init command.
+Create your functions with one of the following methods. By default, functions live in the functions/ directory in your project; this can be customized in upbound.yaml if desired.
+Simplified KCL or Python Functions:
+Run up function generate with the appropriate --language flag to generate scaffolding for your function.
+Fill in your function logic in main.k or main.py.
+Go or Python SDKs:
+Clone the Go or Python function template into a new directory under functions/.
+Implement your function logic in fn.go or function/fn.py.
+Custom Implementation:
+Create a directory under functions/.
+Implement your function however you like, with a Dockerfile to build it. See the Crossplane documentation for details on how functions work.
+Example Project Structure
+
+
+
+```bash
+my-config/
+├── upbound.yaml
+├── apis/
+│   └── XExample/
+│       ├── definition.yaml
+│       └── composition.yaml
+├── examples/
+│   └── XExample/
+│       ├── xr.yaml
+│       └── claim.yaml
+└── functions/
+    ├── compose-xexample/
+    │   ├── main.k
+    │   └── helpers.k
+    └── propagate-status/
+        ├── Dockerfile
+        └── function/
+            ├── fn.py
+            ├── main.py
+            └── __version__.py
+```
+
+## Using Embedded Functions in Compositions
+
+If you use up function generate to create your functions, a reference to them will be automatically added to the specified composition. For functions created any other way, or to share functions between compositions,  refer to it by name in the functionRef. The name is constructed by concatenating the organization name and project name with hyphens, then the function name without a hyphen. For example, if your organization is my-org and your project is called my-conf, the functions in the example layout above would be referred to as follows:
+```
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: xexample.myorg.com
+spec:
+  mode: Pipeline
+  pipeline:
+    - step: compose
+      functionRef:
+        name: my-org-my-confcompose-xexample
+    - step: propagate-status
+      functionRef:
+        name: my-org-my-confpropagate-status
+```
+### Build and Package Process
+
+The up project build command handles the building and packaging of your configuration and its embedded functions. Here's how it works:
+Build Embedded Function Packages:
+For each function in the functions/ directory, if a Dockerfile exists, it is used to build the function. For supported languages without a Dockerfile, use a base image and add the user's code. A Crossplane package metadata file for each function when it is built.
+Produce Configuration Package Metadata:
+After each function is built, Crossplane package metadata for the configuration is created. Each dependency on the embedded functions and external dependencies are included.
+Build the Configuration Package:
+All relevant YAML files (XRDs and compositions) in the project are built into a Crossplane configuration package using the metadata generated in the previous step.
+Write the Packages to Disk:
+The embedded function packages and the configuration package are written to a single .uppkg file, which up project push can use to push the packages to the Upbound Marketplace. 
+
+### Push Process
+
+The up project push command handles pushing your configuration and its embedded functions to the Upbound Marketplace:
+Read packages from the .uppkg file generated by up project  build.
+Push embedded function packages to sub-repositories of your configuration repository. Subrepositories are named by appending the function name to the configuration name with an underscore (e.g., my-org/my-conf_my-function).
+Push the configuration package, which includes dependencies on the embedded functions.
+After pushing, your configuration can be deployed to control planes like any other configuration.
+
