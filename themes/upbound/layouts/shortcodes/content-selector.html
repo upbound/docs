@@ -26,7 +26,7 @@
         {{ if $optionContent }}
           {{ range $optionContent }}
             {{ $cleaned := replaceRE (printf "<!-- %s -->|<!-- /%s -->" $option $option) "" . }}
-            {{ $cleaned | safeHTML }}
+            {{ $cleaned | markdownify }}
           {{ end }}
         {{ else }}
           <p>No content found for {{ $option }}</p>
@@ -40,15 +40,15 @@
   (function() {
     function initializeContentSelector(contentSelectorId) {
       const selector = document.getElementById(contentSelectorId);
-      
+
       function updateVisibility(value) {
         const buttons = document.querySelectorAll('.content-select-button');
         const blocks = document.querySelectorAll('.content-block');
-        
+
         buttons.forEach(button => {
           button.classList.toggle('active', button.dataset.option === value);
         });
-        
+
         blocks.forEach(block => {
           block.style.display = block.dataset.option === value ? 'block' : 'none';
         });
