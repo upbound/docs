@@ -8,7 +8,7 @@ This reference architecture provides a recommended baseline to power a single pl
 
 ## Diagram 
 
-{{<img src="/reference-architecture/images/upbound-baseline-arch-no-argo.png" alt="Baseline Upbound architecture" size="medium" unBlur="true" >}}
+{{<img src="/reference-architectures/images/upbound-baseline-arch-no-argo.png" alt="Baseline Upbound architecture" size="medium" unBlur="true" >}}
 
 {{< hint "tip" >}}
 Click the diagram to make it larger.
