@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-weight: 150
+weight: 1
 description: "Release notes for Upbound Spaces"
 ---
 
