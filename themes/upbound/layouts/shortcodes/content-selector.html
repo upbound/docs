@@ -1,7 +1,7 @@
 {{ $rawOptions := .Get "options" }}
 {{ $options := split ($rawOptions) "," }}
 {{ $default := .Get "default" | default (index $options 0) }}
-{{ $randomId := index (seq 2000 | shuffle) 0 }} <!-- Explicitly define $randomId at the start -->
+{{ $randomId := index (seq 2000 | shuffle) 0 }} 
 
 <div id="content-selector-{{ $randomId }}" class="content-selector" data-options="{{ $rawOptions }}" data-default="{{ $default }}">
   <ul class="nav nav-tabs content-select-buttons" id="{{$randomId}}" role="tablist">
