@@ -112,7 +112,7 @@ The spec section contains the specifications for whatever kind of resource you c
 
 Your project now contains the base-level information required to go forward. Now, let's create some infrastructure packages.
 
-Crossplane and Upbound use Composite Resource Definitions (XRDs) to define the parameters of your desired infrastructure. These yaml files look similar to Kubernetes manifests like our project definition with
+Crossplane and Upbound use Composite Resource Definitions (XRDs) to define the parameters of your desired infrastructure. XRDs follow the same format as your project file with specific additional fields.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1

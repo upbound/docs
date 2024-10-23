@@ -226,7 +226,6 @@ The XRD defines the shape of a new composite resource. In the next section, you'
 
 ## Generate an XRD from a composite resource (XR)
 
-
 Copy the content below into a new yaml file, and save it as xr.yaml inside the /examples folder. It defines a test instance.
 
 apiVersion: tutorial.upbound.io/v1
@@ -354,7 +353,7 @@ test-5r995   False                          42s
 
 Let’s write some compositions & functions
 
-TODO: Will fill out once composition scaffolding withCLI is completed
+#TODO: Will fill out once composition scaffolding withCLI is completed
 Build your project and upload it to the Upbound Marketplace
 Once you are done with local development, you can build your project, and upload it to the Upbound Marketplace.
 
