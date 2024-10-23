@@ -7,7 +7,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview and requires Spaces `v1.3.0`.
+This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API]({{<ref "all-spaces/query-api/_index.md">}}) in order to connect a Space to Upbound.
 {{< /hint >}}
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -18,10 +18,11 @@ This feature is in preview and requires Spaces `v1.3.0`.
 
 Before you begin, make sure you have:
 
-- an existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
-- the `up` CLI installed and logged into your organization
+- An existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
+- The `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
-- A `token.json` license, provided by your Upbound account representative
+- A `token.json` license, provided by your Upbound account representative.
+- You enabled the [Query API]({{<ref "all-spaces/query-api/_index.md">}}) in the self-hosted Space.
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
