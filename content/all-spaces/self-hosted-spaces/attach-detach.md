@@ -7,7 +7,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API]({{<ref "all-spaces/query-api/_index.md">}}) and [enable Upbound RBAC]({{<ref <accounts/authorization/upbound-rbac.md>>}}) in order to connect a Space to Upbound.
+This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API]({{<ref "all-spaces/query-api/_index.md">}}) and [enable Upbound RBAC]({{<ref <accounts/authorization/upbound-rbac.md>}}) in order to connect a Space to Upbound.
 {{< /hint >}}
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
