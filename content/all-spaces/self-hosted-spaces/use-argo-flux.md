@@ -25,7 +25,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ```
 {{< /hint >}}
 
-Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install-time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD.
+Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install or upgrade time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD. By default, these connection details are stored in a Kubernetes secret named same as the control plane. If you're running Argo CD with different namespaces, we suggest you to pass the `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets` flag to use the UID format for the secret name to avoid conflicts.
 
 ### On cluster Argo CD
 
@@ -39,6 +39,7 @@ If you are running Argo CD on the same cluster as the Space, run the following t
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
   --set "features.alpha.argocdPlugin.target.secretNamespace=argocd"
 ```
 
@@ -54,6 +55,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
   --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --wait
 ```
@@ -66,6 +68,7 @@ helm -n upbound-system upgrade --install spaces \
 The important flags are:
 
 - `features.alpha.argocdPlugin.enabled=true`
+- `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true`
 - `features.alpha.argocdPlugin.target.secretNamespace=argocd`
 
 The first flag enables the feature and the second indicates the namespace on the cluster where you installed Argo CD.
@@ -84,6 +87,7 @@ If you are running Argo CD on an external cluster from where you installed your 
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
   --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --set "features.alpha.argocdPlugin.target.externalCluster.enabled=true" \
   --set "features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster" \
@@ -102,6 +106,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
   --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --set "features.alpha.argocdPlugin.target.externalCluster.enabled=true" \
   --set "features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster" \
@@ -121,6 +126,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
   --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
   --set "features.alpha.argocdPlugin.target.externalCluster.enabled=true" \
   --set "features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster" \
@@ -131,6 +137,7 @@ helm -n upbound-system upgrade --install spaces \
 The extra flags are:
 
 - `features.alpha.argocdPlugin.target.externalCluster.enabled=true`
+- `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true`
 - `features.alpha.argocdPlugin.target.externalCluster.secret.name=my-argo-cluster`
 - `features.alpha.argocdPlugin.target.externalCluster.secret.key=kubeconfig`
 
