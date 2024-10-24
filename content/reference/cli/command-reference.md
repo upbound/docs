@@ -561,12 +561,11 @@ storeconfigs                                             secrets.crossplane.io/v
 **Options:**
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Long flag                 | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-
-| short                     | s         | Short output.                                                       |                       |
-| context                   |           | Kubernetes context to operate on.                                   | upbound               |
-| kubeconfig                | f         | Kubeconfig to modify when saving a new context. `-f -` prints to stout.                      |         
+| Long flag  | Short flag | Description                                                             | Default Value |
+| ---------- | ---------- | ----------------------------------------------------------------------- | ------------- |
+| short      | `-s`       | Short output.                                                           |               |
+| context    |            | Kubernetes context to operate on.                                       | upbound       |
+| kubeconfig | `-f`       | Kubeconfig to modify when saving a new context. `-f -` prints to stout. |               |
 {{< /table >}}
 
 ## license
