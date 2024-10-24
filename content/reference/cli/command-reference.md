@@ -15,7 +15,6 @@ The following flags are available for all commands.
 | `-h`       | `--help`    | Show context-sensitive help. |
 |            | `--pretty`  | Pretty print output.         |
 | `-q`       | `--quiet`   | Suppress all output.         |
-| `-v`       | `--version` | Print version and exit.      |
 {{< /table >}}
 
 ## configuration
@@ -561,15 +560,12 @@ storeconfigs                                             secrets.crossplane.io/v
 
 **Options:**
 
-{{< table "table table-sm table-striped">}}
-
-| Long flag                 | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-
-| short                     | s         | Short output.                                                       |                       |
-| context                   |           | Kubernetes context to operate on.                                   | upbound               |
-| kubeconfig                | f         | Kubeconfig to modify when saving a new context. `-f -` prints to stout.                      |                       |
-
+{{< table "table table-sm table-striped cli-ref">}}
+| Long flag  | Short flag | Description                                                             | Default Value |
+| ---------- | ---------- | ----------------------------------------------------------------------- | ------------- |
+| short      | `-s`       | Short output.                                                           |               |
+| context    |            | Kubernetes context to operate on.                                       | upbound       |
+| kubeconfig | `-f`       | Kubeconfig to modify when saving a new context. `-f -` prints to stout. |               |
 {{< /table >}}
 
 ## license
@@ -1487,6 +1483,10 @@ up uxp upgrade v1.7.0-up.1
 ```shell {copy-lines="1"}
 up uxp upgrade v1.7.0-up.1 -n crossplane-system
 ```
+
+## version
+
+The `up version` command prints the client and server version information for the current context.
 
 ## xpkg
 
