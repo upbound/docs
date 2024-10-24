@@ -15,7 +15,6 @@ The following flags are available for all commands.
 | `-h`       | `--help`    | Show context-sensitive help. |
 |            | `--pretty`  | Pretty print output.         |
 | `-q`       | `--quiet`   | Suppress all output.         |
-| `-v`       | `--version` | Print version and exit.      |
 {{< /table >}}
 
 ## configuration
