@@ -1487,6 +1487,10 @@ up uxp upgrade v1.7.0-up.1
 up uxp upgrade v1.7.0-up.1 -n crossplane-system
 ```
 
+## version
+
+The `up version` command prints the client and server version information for the current context.
+
 ## xpkg
 
 The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Creating and Pushing Packages]({{<ref "upbound-marketplace/packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
