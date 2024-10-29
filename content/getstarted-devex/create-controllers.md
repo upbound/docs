@@ -1,14 +1,10 @@
 ---
 title: "Create cloud resources with Upbound"
-description: "Define a control plane for resource abstractions in a real cloud
-provider environment"
+description: "Define a control plane for resource abstractions in a real cloud provider environment"
 ---
 
-After deploying in a development environment, let's explore creating real cloud resources.
-
-## Overview
-
-This guide will help you create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
+In the previous guide, you deployed to a local environment using simulated
+resources. In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
 
 By the end of this guide, you'll have:
 
@@ -16,14 +12,6 @@ By the end of this guide, you'll have:
 2. Composite Resources defining your cloud resources
 3. APIs for self-service infrastructure provisioning
 4. A streamlined infrastructure workflow
-
-## Key Steps
-
-1. Create a control plane object
-2. Define the schema for an API to provision database instances (AWS RDS, Azure SQL Database, or Google Cloud SQL)
-3. Define parameters to make the API reusable across multiple services
-4. Implement a controller using an Upbound composition
-5. Set up outputs to provide necessary data to teams
 
 This approach allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
 
@@ -33,46 +21,70 @@ This guide assumes you are already familiar with AWS, Azure, or GCP.
 
 Before you begin, make sure you have:
 
-
 - The up CLI installed
 - A cloud provider account with administrative access
 - Visual Studio Code
 
-For an introduction to the Upbound workflow, review the [Upbound CLI](link to 101) guide.
+For an introduction to the Upbound workflow, review the [Upbound CLI] <!--- TODO(tr0njavolta): link --->
 
 ## Create a new project
 
-First, create and initialize a new project directory with up project init. The `up project` command pulls down the necessary scaffolding files for your project.
+First, create and initialize a new project directory with `up project init`. The `up project` command pulls down the necessary scaffolding files for your project.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
+
 <!-- AWS -->
+### AWS project initialization
+
 {{< editCode >}}
 ```shell
 up project init up-aws-rds
 ```
 {{</ editCode >}}
+
+Change into your project directory:
+```shell
+cd up-aws-rds
+```
+
 <!-- /AWS -->
 
 <!-- Azure -->
+### Azure project initialization
+
 {{< editCode >}}
 ```shell
 up project init up-azure-db
 ```
 {{</ editCode >}}
+
+Change into your project directory:
+```shell
+cd up-azure-db
+```
+
 <!-- /Azure -->
 
 <!-- GCP -->
+### GCP project initialization
+
 {{< editCode >}}
 ```shell
 up project init up-gcp-db
 ```
 {{</ editCode >}}
+
+Change into your project directory:
+```shell
+cd up-gcp-db
+```
+
 <!-- /GCP -->
 {{< /content-selector >}}
-Change into your project directory. You'll notice that you have new files and subdirectories.
 
-First, review the `upbound.yaml` file in your editor. This is the entry point
-for your project.
+## Review the project configuration
+
+The `upbound.yaml` file in each project directory is the entry point for your project configuration. This file contains metadata and specifications necessary to build your APIs and configurations. Open it in your editor and explore fields like `apiVersion`, `kind`, `metadata`, and `spec`.
 
 ```yaml
 apiVersion: meta.dev.upbound.io/v1alpha1
@@ -90,29 +102,128 @@ spec:
   source: github.com/upbound/project-template
 ```
 
-Upbound uses the YAML markup language to build your APIs and configurations.
-Let's analyze this file and define each section.
-
-The first three fields apiVersion, kind, and metadata contain specific values to help Upbound deploy your desired infrastructure.
-
 {{< table >}}
-| Field | Description |
-| :---- | :---- |
+| Field        | Description                                              |
+| ------------ | -------------------------------------------------------- |
 | `apiVersion` | Specifies the API version for the Upbound package format |
-| `kind` | Defines the type of Upbound package |
-| `metadata` | Contains metadata like name or additional annotations |
+| `kind`       | Defines the type of Upbound package                      |
+| `metadata`   | Contains metadata like name or additional annotations    |
 {{</ table >}}
-
-The spec section contains the specifications for whatever kind of resource you create. In this case, it contains the necessary information for your project. We'll see more about specs in the next section and how they change based on the kind of object you are creating.
 
 ## Add project dependencies
 
+{{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
-## Generate a Composite Resource Definition
+<!-- AWS -->
+### Add the AWS RDS provider
 
-Your project now contains the base-level information required to go forward. Now, let's create some infrastructure packages.
+```shell
+up dependency add xpkg.upbound.io/upbound/provider-
+```
 
-Crossplane and Upbound use Composite Resource Definitions (XRDs) to define the parameters of your desired infrastructure. XRDs follow the same format as your project file with specific additional fields.
+<!-- /AWS -->
+
+<!-- Azure -->
+### Add the Azure DB provider
+
+```shell
+up dependency add xpkg.upbound.io/upbound/provider-
+```
+
+<!-- /Azure -->
+
+<!-- GCP -->
+### Add the GCP SQL provider
+
+```shell
+up dependency add xpkg.upbound.io/upbound/provider-gcp-sql:v0.10.0
+```
+
+<!-- /GCP -->
+{{< /content-selector >}}
+
+## Create a claim and generate an XRD
+
+{{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
+
+<!-- AWS -->
+### AWS
+
+{{< editCode >}}
+```yaml
+apiVersion: demo.upbound.io/v1alpha1
+kind: RDSInstance
+metadata:
+  name: my-aws-rds-instance
+spec:
+
+```
+{{</ editCode >}}
+
+Use this claim to generate a composite resource definition:
+
+```shell
+up xrd generate examples/aws-rds-instance.yaml
+```
+
+<!-- /AWS -->
+
+<!-- Azure -->
+### Azure
+
+{{< editCode >}}
+```yaml
+apiVersion: demo.upbound.io/v1alpha1
+kind: DBInstance
+metadata:
+  name: my-azure-db-instance
+spec:
+
+```
+{{</ editCode >}}
+
+Use this claim to generate a composite resource definition:
+
+```shell
+up xrd generate examples/azure-db-instance.yaml
+```
+
+<!-- /Azure -->
+
+<!-- GCP -->
+### GCP
+
+{{< editCode >}}
+```yaml
+apiVersion: demo.upbound.io/v1alpha1
+kind: SQLInstance
+metadata:
+  name: my-gcp-sql-instance
+spec:
+  parameters:
+    databaseVersion: "MYSQL_5_7"
+    tier: "db-f1-micro"
+    region: "us-central1"
+    dataDiskSizeGB: 10
+```
+{{</ editCode >}}
+
+Use this claim to generate a composite resource definition:
+
+```shell
+up xrd generate examples/gcp-sql-instance.yaml
+```
+
+<!-- /GCP -->
+{{< /content-selector >}}
+
+## Generate a composite resource definition
+
+Using Crossplane and Upbound, define the infrastructure you want to manage in your cloud environment using a Composite Resource Definition (XRD).
+
+### Example composite resource definition (XRD)
+
+The following YAML file defines an XRD for a database instance.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -121,28 +232,17 @@ metadata:
   name: xrds.devex.com
 ```
 
-The apiVersion field defines the API group and version of the resource you're creating. For example, in this scenario, add dbaas.upbound.io/v1alpha1 . This is the group and version of the API you are currently creating and how your other composition components will be referenced.
+Define the parameters for your control plane and cloud resources. Each XRD
+creates a framework within Upbound to allow infrastructure provisioning.
 
-The kind specifies what you are creating in this file. In this case, it's CompositeResourceDefinition. Defining the kind makes sure your control plane knows how to process the information you give it in this file
+## Define cloud resource composition
 
-The metadata field applies identifying information to the object you are creating. We'll give this XRD the name `rds.devex.com` so we can search for it easily.
+Define the composition for each provider based on the control plane and XRD definitions.
 
+{{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
-The spec section is where you begin to define the schema for the resources you want to create. This creates the general shape of your desired infrastructure and everything required to build those objects in your cloud provider.
-
-
-Let's apply this XRD to your Upbound cluster.
-
-
-$
-
-
-This XRD file is the template of the resources you want to create, but does not create any actual resources in your cloud provider. Instead, when you apply this XRD, you give Upbound the ability to make decisions about resources based on the parameters you define.
-
-This XRD creates a controller on your cluster. A controller is a set of services that reconcile your desired infrastructure state (your composition) with your actual infrastructure state (your cloud provider resources). The controller performs continuous checks against your real-world cloud resources and determines if they meet the specifications you set in your composition. For example, if you want to create an EC2 instance with a dev metadata tag, the controller will constantly check the instance after it's deployed to ensure that no out of sync changes take place, like another user changing the tag to qa. If the infrastructure is out of sync, the controller will use the composition specification as API endpoints and change or recreate your infrastructure.
-
-In order to create actual resources with Upbound, we'll need to tell Upbound what to do based on the definitions above.
-Composition
+<!-- AWS -->
+### AWS composition
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -152,132 +252,38 @@ metadata:
   labels:
     provider: aws
 spec:
-  writeConnectionSecretsToNamespace: crossplane-system
-  compositeTypeRef:
-    apiVersion: devex.com/v1alpha1
-    kind: SQL
-  resources:
-  - name: rdsinstance
-    base:
-      apiVersion: database.aws.crossplane.io/v1beta1
-      kind: RDSInstance
-      spec:
-        forProvider:
-          dbInstanceClass: db.t3.micro
-          engine: mysql
-          engineVersion: '8.0'
-          masterUsername: masteruser
-          allocatedStorage: 20
-          region: us-east-1
-          skipFinalSnapshotBeforeDeletion: true
-          publiclyAccessible: false
-          vpcSecurityGroupIDRefs:
-          - name: my-vpc-sg
-        writeConnectionSecretToRef:
-          namespace: crossplane-system
-          name: rds-conn
-  - name: rdssecuritygroup
-    base:
-      apiVersion: ec2.aws.crossplane.io/v1beta1
-      kind: SecurityGroup
-      spec:
-        forProvider:
-          description: RDS security group
-          groupName: rds-sg
-          region: us-east-1
-          ingress:
-          - fromPort: 3306
-            toPort: 3306
-            protocol: tcp
-            ipRanges:
-            - cidrIp: '0.0.0.0/0'
-          vpcIdRef:
-            name: my-vpc
 ```
 
-```kcl
-apiVersion = "apiextensions.crossplane.io/v1"
-kind = "Composition"
+<!-- /AWS -->
 
-metadata = {
-	name = "aws-rds"
-	labels = {
-    	"provider" = "aws"
-	}
-}
+<!-- Azure -->
+### Azure composition
 
-spec = {
-	writeConnectionSecretsToNamespace = "crossplane-system"
-	compositeTypeRef = {
-    	apiVersion = "devex.com/v1alpha1"
-    	kind = "SQL"
-	}
-	resources = [
-    	{
-        	name = "rdsinstance"
-        	base = {
-            	apiVersion = "database.aws.crossplane.io/v1beta1"
-            	kind = "RDSInstance"
-            	spec = {
-                	forProvider = {
-                    	dbInstanceClass = "db.t3.micro"
-                    	engine = "mysql"
-                    	engineVersion = "8.0"
-                    	masterUsername = "masteruser"
-                    	allocatedStorage = 20
-                    	region = "us-east-1"
-                    	skipFinalSnapshotBeforeDeletion = True
-                    	publiclyAccessible = False
-                    	vpcSecurityGroupIDRefs = [
-                        	{
-                            	name = "my-vpc-sg"
-                        	}
-                    	]
-                	}
-                	writeConnectionSecretToRef = {
-                    	namespace = "crossplane-system"
-                    	name = "rds-conn"
-                	}
-            	}
-        	}
-    	}
-    	{
-        	name = "rdssecuritygroup"
-        	base = {
-            	apiVersion = "ec2.aws.crossplane.io/v1beta1"
-            	kind = "SecurityGroup"
-            	spec = {
-                	forProvider = {
-                    	description = "RDS security group"
-                    	groupName = "rds-sg"
-                    	region = "us-east-1"
-                    	ingress = [
-                        	{
-                            	fromPort = 3306
-                            	toPort = 3306
-                            	protocol = "tcp"
-                            	ipRanges = [
-                                	{
-                                    	cidrIp = "0.0.0.0/0"
-                                	}
-                            	]
-                        	}
-                    	]
-                    	vpcIdRef = {
-                        	name = "my-vpc"
-                    	}
-                	}
-            	}
-        	}
-    	}
-	]
-}
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: azure-sql
+  labels:
+    provider: azure
+spec:
 ```
 
-Provider Configuration
+<!-- /Azure -->
 
+<!-- GCP -->
+### GCP composition
 
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: gcp-sql
+  labels:
+    provider: gcp
+spec:
+```
 
-Build your configuration
+<!-- /GCP -->
+{{< /content-selector >}}
 
-Deploy to Upbound

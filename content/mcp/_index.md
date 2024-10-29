@@ -1,6 +1,6 @@
 ---
 title: Managed Control Planes
-weight: 2
+weight: 4
 description: An introduction to the Managed Control Planes feature of Upbound
 aliases:
     - concepts/mcp

@@ -1,5 +1,5 @@
 ---
-title: "VSCode Extension" 
+title: "VSCode Extension"
 description: "Use popular VSCode extentions to author your Upbound
 configurations"
 ---
@@ -34,7 +34,7 @@ in VSCode or go to the [Marketplace](https://marketplace.visualstudio.com/items?
 ## Usage
 
 After you install the extensions, you must use an official Upbound provider that
-includes bundled [schemas](https://marketplace.upbound.io/providers?tier=official). 
+includes bundled [schemas](https://marketplace.upbound.io/providers?tier=official).
 
 In your project `upbound.yaml` file, specify the provider and the latest version:
 
@@ -55,7 +55,7 @@ compositing your resources.
 With the extensions and compatible Upbound provider, the following features are
 available:
 
-1. Inline Schema Information
+### Inline schema information
 
 View descriptions, property types, and other schema details directly in your code editor window as you work with composed Managed Resources (MRs).
 
@@ -93,7 +93,7 @@ vpc = {
 <!-- /KCL -->
 {{</ content-selector >}}
 
-2. Linting
+### Linting
 
 Real-time linting ensures:
 
@@ -134,7 +134,7 @@ vpc = {
 {{</ content-selector >}}
 
 
-3. Auto-completion
+### Auto-completion
 
 As you type, the extension suggests valid properties and values for Managed Resources.
 
@@ -170,7 +170,7 @@ vpc = {
 {{</ content-selector >}}
 
 
-4. Auto-generate Composed Resources
+### Auto-generate composed resources
 
 Quickly scaffold a new Managed Resource by using the auto-generate feature.
 
@@ -215,7 +215,7 @@ vpc = {
 {{</ content-selector >}}
 
 
-5. Resource References
+### Resource references
 
 Easily navigate between related resources in your composition.
 
