@@ -217,7 +217,7 @@ vpc = {
 
 ### Resource references
 
-Easily navigate between related resources in your composition.
+Navigate between related resources in your composition.
 
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->

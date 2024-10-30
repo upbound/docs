@@ -3,8 +3,7 @@ title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
 ---
 
-In the previous guide, you deployed to a local environment using simulated
-resources. In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
+In the previous guide, you deployed minimal resources to a local control plane. In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
 
 By the end of this guide, you'll have:
 

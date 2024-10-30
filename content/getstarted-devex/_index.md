@@ -118,28 +118,26 @@ spec:
 Add providers and functions to your project with the `up dep add` command:
 
 ```shell
-up dep add xpkg.upbound.io/crossplane-contrib/function-auto-ready
+up dependency add xpkg.upbound.io/upboundcare/provider-aws-ec2:v1.16.0
 ```
 
-The **provider** in your project simulates creating external resources without creating real ones, allowing for local testing and experimentation. Functions add logic to automate complex provisioning processes. In this example:
-
-*   **Auto-ready function** detects when resources are ready, providing updates to keep your resources in sync.
-*   **Configuration language function** lets you define resources in a more flexible format, reducing manual YAML handling.
+The **provider** in your project creates external resources without. Functions
+add logic to automate complex provisioning processes.
 
 After adding these dependencies, your `upbound.yaml` file's `dependsOn` section should reflect the changes:
 
 ```yaml
 spec:
   dependsOn:
-  - function: xpkg.upbound.io/crossplane-contrib/function-kcl
-    version: v0.9.4
-  - provider: xpkg.upbound.io/crossplane-contrib/provider-helm
-    version: v0.19.0
-  - configuration: xpkg.upbound.io/upbound/configuration-aws-network
-    version: v0.17.0
+  - provider: xpkg.upbound.io/upboundcare/provider-aws-ec2
+    version: v1.16.0
+
 ```
 
-Your project configuration now includes your dependencies, setting you up to create a resource claim.
+Your project configuration now includes your provider dependency and requires an
+authentication method.
+
+### Authenticate with AWS
 
 ## Step 2: Generate configurations
 
@@ -148,15 +146,67 @@ Your project configuration now includes your dependencies, setting you up to cre
 Use the `up example generate` command to create an example **Composite Resource Claim** (XRC), a request for an instance of a composite resource. Claims allow users to request infrastructure without handling the complexities of the underlying configurations:
 
 ```shell
-up example generate --kind=Database --api-group=platform.acme.co --api-version=v1alpha1 --type=xrc
+up example generate
+
+What do you want to create?:
+  > Composite Resource Claim (XRC)
+What is your Composite Resource Claim (XRC) named?: Network
+What is the API group named?: xp-layers.crossplane.io
+What is the API Version named?: v1alpha1
+Successfully created resource and saved to examples/network/example-network.yaml
 ```
 
-This command generates a claim and saves it to `examples/database/example-database.yaml`.
+This command generates a claim and saves it to `examples/network/example-network.yaml`.
+
+Open your `example-network.yaml` file and add the contents below:
+
+```yaml
+apiVersion: xp-layers.crossplane.io/v1alpha1
+kind: Network
+metadata:
+ name: network-conditional
+ namespace: default
+spec:
+  id: "conditional"
+  count: 1
+  includeGateway: false
+  providerConfigName: default
+  region: eu-central-1
+```
+
+Next, create a secondary claim.
+
+```bash
+up example generate
+
+What do you want to create?:
+  > Composite Resource Claim (XRC)
+What is your Composite Resource Claim (XRC) named?: Network1
+What is the API group named?: xp-layers.crossplane.io
+What is the API Version named?: v1alpha1
+Successfully created resource and saved to examples/network/example-network1.yaml
+```
+
+Open `example-network1.yaml` in your editor and add the contents below:
+
+```yaml
+apiVersion: xp-layers.crossplane.io/v1alpha1
+kind: Network
+metadata:
+ name: network-iteration
+ namespace: default
+spec:
+  id: "iteration"
+  count: 2
+  includeGateway: true
+  providerConfigName: default
+  region: eu-central-1
+```
 
 Next, create a **Composite Resource Definition** (XRD) from this claim using the `up xrd generate` command:
 
 ```shell
-up xrd generate examples/database/example-database.yaml
+up xrd generate examples/network/example-network.yaml
 ```
 
 This command parses the claim to generate a matching definition for it. Here's a sample XRD file created:
@@ -165,17 +215,17 @@ This command parses the claim to generate a matching definition for it. Here's a
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xdatabases.platform.acme.co
+  name: xnetworkss.platform.acme.co
 spec:
   claimNames:
-    kind: Database
-    plural: databases
+    kind: Network
+    plural: networks
   group: platform.acme.co
   names:
     categories:
     - crossplane
-    kind: XDatabase
-    plural: xdatabases
+    kind: XNetwork
+    plural: xnetworks
   versions:
   - name: v1alpha1
     referenceable: true
@@ -198,39 +248,83 @@ will generate an XRD from a composite resource (XR).
 
 ### Generate an XRD from a composite resource (XR)
 
-In your `/examples` folder, create a new YAML file `xr.yaml` with the following content. This file defines an instance of a composite resource:
-
-```yaml
-apiVersion: tutorial.upbound.io/v1
-kind: XTest
-metadata:
-  name: test
-spec:
-  parameters:
-    version: "v1.0.0"
-    addons:
-      - name: "vpc-cni"
-        version: "0.96"
-status:
-  version: "v1.0.0"
-  addons:
-    - name: "vpc-cni"
-      version: "0.96"
-```
-
-Run the command below to generate an XRD based on this composite resource:
+Use the `up composition generate` command to create a composition based on the
+claim you created.
 
 ```shell
-up xrd generate examples/xr.yaml
+up composition generate apis/xnetworks/definition.yaml
 ```
 
 The corresponding **Composite Resource Definition** (XRD) is saved to `apis/xtests/definition.yaml` and includes details on the structure of `XTest`.
 
 Now you can apply these resources and create the managed resources.
 
-## Step 3: Create your infrastructure
+## Step 3: Create a function
 
-### Start your local control plane
+Functions
+### Generate a function
+
+up function generate apis/xnetworks/composition.yaml
+
+```kcl
+import model.v1beta1 as v1beta1
+
+_metadata = lambda name: str -> any {
+    { annotations = { "krm.kcl.dev/composition-resource-name" = name }}
+}
+
+id = option("params")?.oxr?.spec?.id or ""
+includeGateway = option("params")?.oxr?.spec?.includeGateway or False
+count = option("params")?.oxr?.spec?.count or 1
+providerConfigName = option("params")?.oxr?.spec?.providerConfigName or "default"
+region = option("params")?.oxr?.spec.region or "eu-central-1"
+
+# Create number of VPCs according to spec.count
+vpcs = [v1beta1.VPC{
+    metadata.name = "vpc-{}-{}".format(id, i)
+    metadata.labels = {
+        "networks.meta.fn.crossplane.io/network-id" = id
+        "networks.meta.fn.crossplane.io/vpc-id" = "vpc-{}-{}".format(id, i)
+    }
+
+    spec.forProvider = {
+        region = region
+        cidrBlock = "192.168.0.0/16"
+        enableDnsSupport = True
+        enableDnsHostnames = True
+    }
+
+    spec.providerConfigRef.name = providerConfigName
+
+} for i in range(count)]
+
+# Optionally create number of gateways according to spec.count and spec.includeGateway
+gateways = [v1beta1.InternetGateway{
+    metadata.name = "gateway-{}-{}".format(id, i)
+    metadata.labels = {
+        "networks.meta.fn.crossplane.io/network-id" = id
+    }
+
+    spec.forProvider = {
+        region = region
+        vpcIdSelector = {
+            matchControllerRef = True
+            matchLabels = {
+                "networks.meta.fn.crossplane.io/vpc-id" = "vpc-{}-{}".format(id, i)
+            }
+        }
+    }
+
+    spec.providerConfigRef.name = providerConfigName
+} for i in range(count)] if includeGateway else []
+
+items = vpcs + gateways
+```
+
+## Step 3: Build your project
+
+
+### Start a local control plane
 
 Use the `up local start` command to launch a local control plane with Docker:
 

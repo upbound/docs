@@ -4,54 +4,44 @@ description: Use the Up CLI to create and manage development control planes
 weight: 1
 ---
 
-Development Control Planes are a specialized class of Upbound Control Planes designed to support the inner development loop, testing, and CI pipelines for Crossplane-based platforms. They offer a streamlined, cost-effective solution for developers to quickly iterate on their APIs and compositions without the overhead of production-grade configurations.
+Development control planes are a subset of Upbound's Managed Control Planes.
+Development control planes aim to help you in your Upbound journey and support
+your development loop, testing, and CI pipeline configuration. These
+resource-limited, short TTL control planes are a streamlined and cost effectice
+solution to test and calibrate their APIs and compositions without
+production-level overhead.
+
+{{<hint>}}
 Development Control Planes are available in Cloud Hosted Spaces only.
+{{</hint>}}
 
+## Create a development control plane
 
-Getting Started
+To create a Development Control Plane, use the Upbound CLI's `up project run`
+command in an existing project. Follow the Upbound Quickstart to create a new
+example project.
 
-The recommended method to create and use a Development Control Plane, is to use the Upbound CLI's up project run command.
-
+```shell
 up project run
+```
 
-This command will:
+The `up project run` command creates a development control plane in your Upbound
+Cloud organization. It spins up your project's custom resources, compositions,
+and functions in a limited scope isolated control plane.
 
-Create a Development Control Plane in Upbound Cloud
+## Benefits of a development control plane
 
-Deploy your project's configurations, including custom resources, compositions, and functions to the development control plane
+Development control planes differ from standard control planes in several ways:
 
-Provide you with a connection to interact with the Control Plane
+* Near instantaneous provisioning.
+* Reduced resource allocation for cost-effectiveness.
+* Time-to-Live (TTL) for automatic cleanup. Dev control planes deploy with a
+  24-hour lifespan and get deleted after that timeframe.
+* Hosted in the Upbound Cloud.
 
-The other way is to create a development control plane directly in the Upbound Console.
+## Limitations and considerations
 
-Todo: Add screenshots once Matt’s designs are available
+Development control planes are **not** suitable for production workloads.
 
-Key Features
-
-Development Control Planes differ from standard production grade control planes in the following ways that make it the perfect environment for testing your Crossplane configurations.
-
-Near instantaneous provisioning.
-
-Reduced resource allocation for cost-effectiveness
-
-Time-to-Live (TTL) for automatic cleanup
-
-Hosted in the Upbound Cloud
-
-Time-to-Live (TTL)
-
-Development Control Planes are ephemeral by design, with an automatic cleanup mechanism based on a 24-hour Time-to-Live (TTL) setting.
-
-TTL Behavior
-
-The TTL countdown begins when the Control Plane is created.
-
-An annotation on the Control Plane resource indicates the remaining time.
-
-Once the TTL expires, the Control Plane is automatically deleted.
-
-Limitations and Considerations
-
-There are a few limitations to consider regarding development control planes. First, they are not suitable for production workloads, as these control planes are not highly available (HA).
-
-Second, there are limits to how many concurrent development control planes you can create based on your Upbount account tier. Please check our pricing page for more information.
+Upbound limits the number of concurrent development control planes you can
+create based on your account tier. Review our pricing for more information.
