@@ -30,7 +30,7 @@ To migrate an existing Crossplane control plane to a managed control plane in Up
 1. Run the `up alpha migration export` command to export your existing Crossplane control plane configuration/state into an archive file:
 
     ```bash
-    up alpha migration export --kubeconfig <path-to-source-kubeconfig> --out <path-to-archive-file>
+    up alpha migration export --kubeconfig <path-to-source-kubeconfig> --output <path-to-archive-file>
     ```
 
     The command exports your existing Crossplane control plane configuration/state into an archive file.
@@ -62,7 +62,7 @@ managed control plane created in the previous step:
 4. Run the following command to import the archive file into the managed control plane:
 
     ```bash
-    up alpha migration import --in <path-to-archive-file>
+    up alpha migration import --input <path-to-archive-file>
     ```
 
    {{< hint "note" >}}
