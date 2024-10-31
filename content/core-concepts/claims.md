@@ -1,6 +1,17 @@
 ---
-title: "Building and Pushing Control Plane Projects"
-weight: 6
-description: "The basic concepts to help you on your Upbound journey"
-
+title: "Running and Testing Control Plane Projects"
+weight: 4
+description: "How to run your control plane project on a development control plane"
 ---
+
+To test your control planes projects, run them on development control planes. Run the following command.
+
+```shell
+up project build
+```
+
+This command has will instantaneously create a development control plane in the cloud, and deploy your project's package that you built to it. A development control plane is a lightweight, ephemeral control plane that are perfect for testing your Crossplane configurations.
+
+Now, you can validate your results, and make any changes to test your resources. 
+
+For more information about development control planes, please read our documentation on development control planes.
