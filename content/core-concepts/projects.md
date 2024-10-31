@@ -37,11 +37,11 @@ At a high level, you can think of a project defining your control plane as:
 - the implementation of those schemas, defined as Crossplane `compositions`.
 - any dependencies your control plane has, such as on providers, composition functions, or configuration packages.
 - compositions functions, which are modules referenced by your compositions that define how to compose resources. 
-- example configs for your API, so you can conduct testing as part of your inner-loop development.
+- example manifests for your API, so you can conduct testing as part of your inner-loop development.
 
 ## Project structure
 
-Upbound’s tooling defines a default project structure as:
+Upbound's tooling defines a default project structure as:
 
 ```bash
 .
