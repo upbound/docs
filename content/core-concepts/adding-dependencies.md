@@ -6,7 +6,7 @@ description: "The basic concepts to help you on your Upbound journey"
 
 A dependency can be a provider, function or a configuration that you want to install to your control plane project. Any dependencies you add will be automatically added to the `upbound.yaml` file.
 
-First, let's take a look at our `upbound.yaml` file. It should look something like the following.
+First, open the `upbound.yaml` project file in your editor.
 
 ```yaml
 apiVersion: meta.dev.upbound.io/v1alpha1
