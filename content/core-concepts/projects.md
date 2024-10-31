@@ -4,12 +4,12 @@ weight: 1
 description: "The basic concepts to help you on your Upbound journey"
 ---
 
-Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Projects are created with the [up project init]() command. A control plane project houses the definition of your control plane.
-
+<!-- vale gitlab.Substitutions = NO -->
+Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Create a project with the [up project init]() command. A control plane project houses the definition of your control plane.
 
 ## The project file (upbound.yaml)
 
-Project files are where you define constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainer(s) of the project and which template it was derived from. 
+Project files are where you define constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from. 
 
 A typical `upbound.yaml` file looks like the following:
 
@@ -33,7 +33,7 @@ spec:
 
 At a high level, you can think of a project defining your control plane as:
 
-- your platform API schemas, which are expressed as a collection of `CompositeResourceDefinitions (XRDs)`.
+- your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
 - the implementation of those schemas, defined as Crossplane `compositions`.
 - any dependencies your control plane has, such as on providers, composition functions, or configuration packages.
 - compositions functions, which are modules referenced by your compositions that define how to compose resources. 
@@ -58,17 +58,18 @@ Upbound’s tooling defines a default project structure as:
 │   │   └── main.k 
 │   ├── databaseFunction/
 │   │   └── main.py
-├── examples/ # Define example configs for your API
+├── examples/ # Define example manifests for your API
 │   ├── SuperBucket/ 
 │   │   └── example.yaml
 │   ├── SuperDatabase/ 
 │   │   └── example.yaml
-└── _output/ # 'up project build' places the OCI image output here.
+└── _output/ # "up project build" places the OCI image output here.
 ```
 
+<!-- vale gitlab.Substitutions = YES -->
 ## Build and push a project
 
-Control plane projects are source-level representations of your control plane. Like any other software project, control plane projects require a **build stage** to assemble all parts of your project into a versioned artifact. Projects are built with the [up project build]() command: 
+Control plane projects are source-level representations of your control plane. Like any other software project, control plane projects require a **build stage** to assemble all parts of your project into a versioned artifact. Build a project with the [up project build]() command: 
 
 ```bash
 up project build
@@ -76,7 +77,7 @@ up project build
 
 The output artifact is an OCI image with an `.uppkg` file type and it defaults to outputting at the `_output/` folder at the root of your project. The `.uppkg` file is a special kind of [Crossplane Configuration](https://docs.crossplane.io/v1.17/concepts/packages/).
 
-The project output can be pushed to any OCI-compliant registry. You can push the package to a registry on the Upbound Marketplace with the [up project push]() command:
+You can push the project output to any OCI-compliant registry. You can push the package to a registry on the Upbound Marketplace with the [up project push]() command:
 
 ```bash
 up project push
@@ -84,7 +85,7 @@ up project push
 
 ## Project templates
 
-New projects created with the command `up project init` scaffold a project from a default template source, [github.com/upbound/project-template](https://github.com/upbound/project-template). You can use any Git repository as the template source. You can specify the template by providing either a full Git URL or a well-known template name. The following well-known template names are supported:
+New projects created with the command `up project init` scaffold a project from a default template source, [github.com/upbound/project-template](https://github.com/upbound/project-template). You can use any Git repository as the template source. You can specify the template by providing either a full Git URL or a well-known template name. You can use the following well-known template names:
 
   - project-template `(https://github.com/upbound/project-template)`
   - project-template-ssh `(git@github.com:upbound/project-template.git)`
