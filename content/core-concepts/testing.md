@@ -7,7 +7,7 @@ description: "How to run your control plane project on a development control pla
 To test your control planes projects, run them on development control planes. Run the following command.
 
 ```shell
-up project build
+up project run
 ```
 
 This command has will instantaneously create a development control plane in the cloud, and deploy your project's package that you built to it. A development control plane is a lightweight, ephemeral control plane that are perfect for testing your Crossplane configurations.
