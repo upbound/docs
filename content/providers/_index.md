@@ -6,9 +6,9 @@ description: Upbound creates, maintains and supports a set of Crossplane provide
 aliases:
     - upbound-marketplace/providers
 ---
-Upbound creates, maintains and supports a set of Crossplane providers called **official providers**.  
+Upbound creates, maintains and supports a set of Crossplane providers called **Official Providers**.  
 
-The Upbound official providers are open source under the Apache 2.0 license. Upbound recommends the official providers for all deployments.
+The Upbound official providers are open source under the Apache 2.0 license. Upbound recommends the Official Providers for all deployments.
 
 Find official providers in the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official). 
 All official providers have an `Official` tag.
