@@ -21,6 +21,41 @@ Upbound offers a built-in feature to help you collect and export logs, metrics, 
 
 The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a collector per control plane, defined by a `SharedTelemetryConfig` set up at the group level. Control plane collectors pass their data to external observability backends defined in the `SharedTelemetryConfig`.
 
+## Prerequisites
+
+This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) on the Space cluster. Install this now if you haven't already:
+
+```bash
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.98.0/opentelemetry-operator.yaml
+```
+
+The examples below document how to configure observability with the `up` CLI or Helm installations.
+
+{{< tabs >}}
+
+{{< tab "Up CLI" >}}
+
+```bash {hl_lines="3-7"}
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.observability.enabled=true" \
+```
+
+{{< /tab >}}
+
+{{< tab "Helm" >}}
+
+```bash {hl_lines="7-11"}
+helm -n upbound-system upgrade --install spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.observability.enabled=true" \
+  --wait
+```
+
 ## SharedTelemetryConfig
 
 `SharedTelemetryConfig` is a custom resource that defines the telemetry configuration for a group of control planes. This resources allows you to specify the exporters and pipelines your control planes use to send telemetry data to your external observability backends.
@@ -153,39 +188,23 @@ Observability is available in preview at the Space level. This feature allows yo
 
 When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics and logs to your configured observability backends.
 
-To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart.
+To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart. Below is an example of an otlphttp compatible endpoint.
 
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
 observability:
-  # Observability configuration to collect metrics, logs (traces in the future) from the Spaces machinery
-  # and send them to the specified exporters.
   spacesCollector:
-    tag: %%VERSION%%
-    repository: opentelemetry-collector-spaces
     config:
-      # To export observability data, configure the exporters in this field and update the
-      # exportPipeline to include the exporters you want to use per telemetry type.
       exporters:
-        debug:
-
-        # The OpenTelemetry Collector exporter configuration.
-        # otlphttp:
-        #   endpoint: https://otlp.eu01.nr-data.net
-        #   headers:
-        #     api-key: <your-key>
-
+        otlphttp:
+          endpoint: "<your-endpoint>"
+          headers:
+            api-key: YOUR_API_KEY
       exportPipeline:
-        metrics: [debug]
-        logs: [debug]
-
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        cpu: 100m
-        memory: 1Gi
+        logs: 
+          - otlphttp
+        metrics: 
+          - otlphttp
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
 
@@ -195,43 +214,9 @@ You can export metrics and logs from your Crossplane installation, Spaces infras
 ## OpenTelemetryCollector image
 <!-- vale on -->
 
-Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otelhttp`, `datadog`, and `debug` exporters.
+Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otlhttp`, `datadog`, and `debug` exporters.
 For more information on observability configuration, review the Helm chart reference.
 
-## Prerequisites
-
-This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) on the Space cluster. Install this now if you haven't already:
-
-```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.98.0/opentelemetry-operator.yaml
-```
-
-The examples below document how to configure observability with the `up` CLI or Helm installations.
-
-{{< tabs >}}
-
-{{< tab "Up CLI" >}}
-
-```bash {hl_lines="3-7"}
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  --set "account=${UPBOUND_ACCOUNT}" \
-  --set "features.alpha.observability.enabled=true" \
-```
-
-{{< /tab >}}
-
-{{< tab "Helm" >}}
-
-```bash {hl_lines="7-11"}
-helm -n upbound-system upgrade --install spaces \
-  oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
-  --set "account=${UPBOUND_ACCOUNT}" \
-  --set "features.alpha.observability.enabled=true" \
-  --wait
-```
 
 {{< /tab >}}
 
