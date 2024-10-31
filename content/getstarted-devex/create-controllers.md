@@ -143,6 +143,17 @@ up dependency add xpkg.upbound.io/upbound/provider-gcp-sql:v0.10.0
 
 ## Create a claim and generate an XRD
 
+Claims are the configurations you create for your users. They contain the type
+of resource and the fields that you expose to them. Claims are actually the
+final piece of the configuration process because you should build your
+configurations based on what your organization cares about.
+
+In this instance, the team you're creating the infrastructure for only needs to
+changea parameters to get a database. All other fields and parameters are taken
+care of behind the scenes by compositions you create. Users aren't exposed to
+the configurations, but the `up` CLI can generate those compositions for you
+based on the minimal information you provide in the claim.
+
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
@@ -155,15 +166,55 @@ kind: RDSInstance
 metadata:
   name: my-aws-rds-instance
 spec:
-
+  forProvider:
+    allocatedStorage: 2
+    engine: postgres
+    instanceClass: db.t3.micro
+    passwordSecretRef:
+      key: password
+      name: example-dbinstance
+      namespace: upbound-system
+    region: us-west-1
+    username: adminuser
 ```
 {{</ editCode >}}
+
+This AWS RDS claim is based on the fields AWS requires to create an instance.
+You can discover required fields in the Marketplace for the provider.
+
+In this instance, the claim allows users to select the size, engine, and
+instance class. It also allows them to set a password and determines the region
+the instance is deployed to.
+
+| Field                                            | Type      | Description                                                                                           | Required |
+| ------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------------------- | -------- |
+| **apiVersion**                                   | `string`  | Defines the API version of the custom resource. In this case, it's set to `demo.upbound.io/v1alpha1`. | Yes      |
+| **kind**                                         | `string`  | Specifies the type of resource, here `RDSInstance`.                                                   | Yes      |
+| **metadata.name**                                | `string`  | Unique name for the RDS instance resource.                                                            | Yes      |
+| **spec.forProvider.allocatedStorage**            | `integer` | The amount of storage (in GB) to allocate for the database instance.                                  | Yes      |
+| **spec.forProvider.engine**                      | `string`  | The database engine type (e.g., `postgres`, `mysql`).                                                 | Yes      |
+| **spec.forProvider.instanceClass**               | `string`  | The RDS instance class that determines compute/memory capacity (e.g., `db.t3.micro`).                 | Yes      |
+| **spec.forProvider.passwordSecretRef**           | `object`  | Reference to the Kubernetes secret storing the database admin password.                               | Yes      |
+| **spec.forProvider.passwordSecretRef.key**       | `string`  | Key within the referenced secret for the password value.                                              | Yes      |
+| **spec.forProvider.passwordSecretRef.name**      | `string`  | Name of the Kubernetes secret containing the password.                                                | Yes      |
+| **spec.forProvider.passwordSecretRef.namespace** | `string`  | Namespace where the secret is stored (e.g., `upbound-system`).                                        | Yes      |
+| **spec.forProvider.region**                      | `string`  | The AWS region where the RDS instance is hosted (e.g., `us-west-1`).                                  | Yes      |
+| **spec.forProvider.username**                    | `string`  | The master (or administrative) username for accessing the RDS instance.                               | Yes      |
+
+The values in the `spec.forProvider` section determine how the instance is
+provisioned based on the input the user provides.
+
+You may notice that some required fields are not present in this claim - don't
+worry, they will be represented in a different configuration file.
 
 Use this claim to generate a composite resource definition:
 
 ```shell
 up xrd generate examples/aws-rds-instance.yaml
 ```
+
+The minimal claim you created generated a new file called a Composite Resource
+Definition (XRD) which is quite a bit more involved than the claim itself.
 
 <!-- /AWS -->
 
@@ -177,7 +228,12 @@ kind: DBInstance
 metadata:
   name: my-azure-db-instance
 spec:
-
+  forProvider:
+    collation: SQL_Latin1_General_CP1_CI_AS
+    serverIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: mssqljobagent-srv
+    skuName: S1
 ```
 {{</ editCode >}}
 
@@ -286,3 +342,29 @@ spec:
 <!-- /GCP -->
 {{< /content-selector >}}
 
+## Create a function
+
+Functions are extensions that allow you to template your resources in KCL or
+Python. When you build your infrastructure with Upbound, the function determines
+what resources are created.
+
+{{< content-selector options="KCL,Python" default="KCL" >}}
+
+<!-- KCL -->
+### KCL function
+
+```yaml
+
+```
+
+<!-- /KCL -->
+
+<!-- Python -->
+### Python function
+
+```python
+```
+
+<!-- /Python -->
+
+{{< /content-selector >}}

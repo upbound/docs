@@ -137,7 +137,68 @@ spec:
 Your project configuration now includes your provider dependency and requires an
 authentication method.
 
-### Authenticate with AWS
+### Create provider credentials
+
+`ProviderConfig` is a custom resource that defines how your control plane authenticates and connects with cloud providers like AWS. It acts as a configuration bridge between your control plane's managed resources and the cloud provider's API.
+
+{{<hint>}}
+For more detailed instructions or alternate authentication methods, visit the
+[provider
+documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
+{{</hint>}}
+
+
+Using AWS access keys, or long-term IAM credentials, requires storing the AWS
+keys as a control plane secret.
+
+To create the secret [download your AWS access key](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys)
+ID and secret access key.
+
+Create a new file called `aws-credentials.txt` and paste your AWS access key ID
+and secret access key.
+
+```ini
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY_ID
+aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+```
+
+Next, create a new secret to store your credentials in your control plane. The
+`kubectl create secret` command puts your AWS login details in the control plane
+secure storage:
+
+```shell
+kubectl create secret generic aws-secret \
+  -n crossplane-system \
+  --from-file=my-aws-secret=./aws-credentials.txt
+```
+
+Next, create a new file called `provider-config.yaml` and paste the
+configuration below.
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: my-aws-secret
+```
+
+Apply the provider configuration.
+
+```bash
+kubectl apply -f provider-config.yaml
+```
+
+Later, when you create a configuration and deploy your infrastructure with the
+control plane, Upbound will use the `ProviderConfig` to locate and retrieve the
+credentials in the secret store.
 
 ## Step 2: Generate configurations
 
@@ -261,10 +322,18 @@ Now you can apply these resources and create the managed resources.
 
 ## Step 3: Create a function
 
-Functions
+Functions are files you write to programmatically deploy your configurations.
+You can write functions in KCL or Python.
+
 ### Generate a function
 
+Use `up function generate` to create a function based on your composition.
+
+```shell
 up function generate apis/xnetworks/composition.yaml
+```
+
+The default language is KCL, so this composition generates a `main.k` file.
 
 ```kcl
 import model.v1beta1 as v1beta1
