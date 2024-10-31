@@ -4,7 +4,7 @@ weight: 4
 description: "How to run your control plane project on a development control plane"
 ---
 
-To test your control planes projects, run them on development control planes. Run the following command.
+To test your control planes projects, use the `up project run` command to deploy a development control plane.
 
 ```shell
 up project run
