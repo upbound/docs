@@ -1,11 +1,13 @@
 ---
 title: "Resource schemas"
-rank: 30
+weight: 30
 ---
 
 Some packages, such as Upbound Official Providers, define KCL-compatible resource schemas. These schemas provide a rich code editing experience, such as in-line definitions, linting, autocomplete, and more.
 
 When you add a dependency to your project using [up dep add](), if the dependency contains resource schemas, they'll be unpacked in the `.up/kcl` folder at root directory of your project.
+
+To take full advantage of this, make sure you have the [necessary tools]({{<ref "overview#prerequisites">}}) fully installed on your machine.
 
 ## Import a resource schema to a function
 
@@ -54,7 +56,7 @@ _items = [
 items = _items
 ```
 
-When your cursor is inside the curly braces of the `v1beta1.Instance`, your IDE will provide auto-complete and context hints tailored to that resource type.
+When your cursor is inside the stanza of the `v1beta1.Instance`, your IDE will provide code completion, context hints, and more tailored to that resource type.
 
 ## Supported packages
 

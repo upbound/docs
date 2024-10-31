@@ -1,6 +1,6 @@
 ---
 title: "Read function pipeline state"
-rank: 20
+weight: 120
 ---
 
 Compositions execute in a pipeline of one or more sequential functions. A function's job is to update desired resource state and return it to Crossplane. All functions are provided four pieces of information:

@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-rank: 1
+weight: -1
 ---
 
 Upbound supports defining your control plane APIs in [KCL](https://www.kcl-lang.io/), an open-source constraint-based record & functional language.

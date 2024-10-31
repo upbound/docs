@@ -1,6 +1,6 @@
 ---
 title: "Resource data extraction"
-rank: 30
+weight: 70
 ---
 
 ## Extract Data from the Composite Resource
