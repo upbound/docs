@@ -4,7 +4,7 @@ weight: 1
 description: "The basic concepts to help you on your Upbound journey"
 ---
 
-A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Projects are created with the [up project init]() command. A control plane project houses the definition of your control plane.
+Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Projects are created with the [up project init]() command. A control plane project houses the definition of your control plane.
 
 
 ## The project file (upbound.yaml)
