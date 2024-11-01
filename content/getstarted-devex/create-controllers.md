@@ -526,9 +526,6 @@ yamls-gcp
 {{< /tab >}}
 
 {{< tab "Python" >}}
-```python
-pythons-gcp
-```
 {{< /tab >}}
 
 
