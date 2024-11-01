@@ -56,7 +56,11 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
+<!-- vale Google.Headings = NO -->
+
 ## SharedTelemetryConfig
+
+<!-- vale Google.Headings = YES -->
 
 `SharedTelemetryConfig` is a custom resource that defines the telemetry configuration for a group of control planes. This resources allows you to specify the exporters and pipelines your control planes use to send telemetry data to your external observability backends.
 
@@ -188,7 +192,7 @@ Observability is available in preview at the Space level. This feature allows yo
 
 When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics and logs to your configured observability backends.
 
-To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart. Below is an example of an otlphttp compatible endpoint.
+To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart. Below is an example of an `otlphttp` compatible endpoint.
 
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
