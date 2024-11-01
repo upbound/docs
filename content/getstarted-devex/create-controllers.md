@@ -159,6 +159,25 @@ based on the minimal information you provide in the claim.
 <!-- AWS -->
 ### AWS
 
+Generate a new example claim. Choose `Composite Resource Claim` in your terminal
+and give it a name describing what it creates.
+
+<!--- TODO(tr0njavolta): describe api/version fields --->
+
+```yaml
+up example generate
+
+What do you want to create?:
+  > Composite Resource Claim (XRC)
+What is your Composite Resource Claim (XRC) named?: SQLInstance
+What is the API group named?: demo.upbound.io
+What is the API Version named?: v1alpha1
+Successfully created resource and saved to examples/sqlinstance/example-sqlinstance.yaml
+```
+
+This command creates a minimal claim file. Copy and paste the claim below into
+the `examples/sqlinstance/example-sqlinstance.yaml` claim file.
+
 {{< editCode >}}
 ```yaml
 apiVersion: demo.upbound.io/v1alpha1
@@ -183,9 +202,10 @@ This AWS RDS claim is based on the fields AWS requires to create an instance.
 You can discover required fields in the Marketplace for the provider.
 
 In this instance, the claim allows users to select the size, engine, and
-instance class. It also allows them to set a password and determines the region
-the instance is deployed to.
+instance class. It also allows them to set a password and determines which
+region you deploy to.
 
+{{<table>}}
 | Field                                            | Type      | Description                                                                                           | Required |
 | ------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------------------- | -------- |
 | **apiVersion**                                   | `string`  | Defines the API version of the custom resource. In this case, it's set to `demo.upbound.io/v1alpha1`. | Yes      |
@@ -198,8 +218,11 @@ the instance is deployed to.
 | **spec.forProvider.passwordSecretRef.key**       | `string`  | Key within the referenced secret for the password value.                                              | Yes      |
 | **spec.forProvider.passwordSecretRef.name**      | `string`  | Name of the Kubernetes secret containing the password.                                                | Yes      |
 | **spec.forProvider.passwordSecretRef.namespace** | `string`  | Namespace where the secret is stored (e.g., `upbound-system`).                                        | Yes      |
-| **spec.forProvider.region**                      | `string`  | The AWS region where the RDS instance is hosted (e.g., `us-west-1`).                                  | Yes      |
+| **spec.forProvider.region**                      | `string`  | The AWS region                                                                                        |
+where the RDS instance is hosted (e.g., `us-west-1`).
+| Yes      |
 | **spec.forProvider.username**                    | `string`  | The master (or administrative) username for accessing the RDS instance.                               | Yes      |
+{{</table>}}
 
 The values in the `spec.forProvider` section determine how the instance is
 provisioned based on the input the user provides.
@@ -214,39 +237,107 @@ up xrd generate examples/aws-rds-instance.yaml
 ```
 
 The minimal claim you created generated a new file called a Composite Resource
-Definition (XRD) which is quite a bit more involved than the claim itself.
+Definition (XRD) in `apis/xsqlinstance/definition.yaml`. The `up xrd generate`
+command automatically infers the variable types based on the input parameters in
+your example claim.
+
+<!--- TODO(tr0njavolta): expand box for xrd view --->
+
 
 <!-- /AWS -->
 
 <!-- Azure -->
 ### Azure
 
+Generate a new example claim. Choose `Composite Resource Claim` in your terminal
+and give it a name describing what it creates.
+
+<!--- TODO(tr0njavolta): describe api/version fields the terminal options--->
+
+```yaml
+up example generate
+
+What do you want to create?:
+  > Composite Resource Claim (XRC)
+What is your Composite Resource Claim (XRC) named?: SQLInstance
+What is the API group named?: demo.upbound.io
+What is the API Version named?: v1alpha1
+Successfully created resource and saved to examples/sqlinstance/example-sqlinstance.yaml
+```
+
+This command creates a minimal claim file. Copy and paste the claim below into
+the `examples/sqlinstance/example-sqlinstance.yaml` claim file.
+
 {{< editCode >}}
 ```yaml
 apiVersion: demo.upbound.io/v1alpha1
-kind: DBInstance
+kind: SQLInstance
 metadata:
-  name: my-azure-db-instance
+  name: my-azure-sql-instance
 spec:
-  forProvider:
-    collation: SQL_Latin1_General_CP1_CI_AS
-    serverIdSelector:
-      matchLabels:
-        testing.upbound.io/example-name: mssqljobagent-srv
-    skuName: S1
+  parameters:
+    edition: "GeneralPurpose"
+    computeModel: "Serverless"
+    family: "Gen5"
+    capacity: 2
+    maxSizeGB: 32
 ```
 {{</ editCode >}}
+
+This Azure SQL claim is based on the fields Azure requires to create an instance.
+You can discover required fields in the Marketplace for the provider.
+
+In this instance, the claim allows users to select the size, engine, and
+instance class. It also allows them to set a password and determines which
+region you deploy to.
+
+{{<table>}}
+| Field | Type | Description | Required |
+| ----- | ---- | ----------- | -------- |
+<!--- TODO(tr0njavolta): azure description fields --->
+{{</table>}}
+
+The values in the `spec.forProvider` section determine how the instance is
+provisioned based on the input the user provides.
+
+You may notice that some required fields are not present in this claim - don't
+worry, they will be represented in a different configuration file.
 
 Use this claim to generate a composite resource definition:
 
 ```shell
-up xrd generate examples/azure-db-instance.yaml
+up xrd generate examples/azure-sql-instance.yaml
 ```
+
+The minimal claim you created generated a new file called a Composite Resource
+Definition (XRD) in `apis/xsqlinstance/definition.yaml`. The `up xrd generate`
+command automatically infers the variable types based on the input parameters in
+your example claim.
+
+<!--- TODO(tr0njavolta): expand box for xrd view --->
 
 <!-- /Azure -->
 
 <!-- GCP -->
 ### GCP
+Generate a new example claim. Choose `Composite Resource Claim` in your terminal
+and give it a name describing what it creates.
+
+<!--- TODO(tr0njavolta): describe api/version fields --->
+
+```yaml
+up example generate
+
+What do you want to create?:
+  > Composite Resource Claim (XRC)
+What is your Composite Resource Claim (XRC) named?: SQLInstance
+What is the API group named?: demo.upbound.io
+What is the API Version named?: v1alpha1
+Successfully created resource and saved to examples/sqlinstance/example-sqlinstance.yaml
+```
+
+This command creates a minimal claim file. Copy and paste the claim below into
+the `examples/sqlinstance/example-sqlinstance.yaml` claim file.
 
 {{< editCode >}}
 ```yaml
@@ -263,32 +354,41 @@ spec:
 ```
 {{</ editCode >}}
 
+This GCP SQL claim is based on the fields GCP requires to create an instance.
+You can discover required fields in the Marketplace for the provider.
+
+In this instance, the claim allows users to select the size, engine, and
+instance class. It also allows them to set a password and determines which
+region you deploy to.
+
+{{<table>}}
+| Field | Type | Description | Required |
+| ----- | ---- | ----------- | -------- |
+<!--- TODO(tr0njavolta): gcp description fields --->
+{{</table>}}
+
+The values in the `spec.forProvider` section determine how the instance is
+provisioned based on the input the user provides.
+
+You may notice that some required fields are not present in this claim - don't
+worry, they will be represented in a different configuration file.
+
 Use this claim to generate a composite resource definition:
 
 ```shell
 up xrd generate examples/gcp-sql-instance.yaml
 ```
 
+The minimal claim you created generated a new file called a Composite Resource
+Definition (XRD) in `apis/xsqlinstance/definition.yaml`. The `up xrd generate`
+command automatically infers the variable types based on the input parameters in
+your example claim.
+
+<!--- TODO(tr0njavolta): expand box for xrd view --->
+
 <!-- /GCP -->
 {{< /content-selector >}}
 
-## Generate a composite resource definition
-
-Using Crossplane and Upbound, define the infrastructure you want to manage in your cloud environment using a Composite Resource Definition (XRD).
-
-### Example composite resource definition (XRD)
-
-The following YAML file defines an XRD for a database instance.
-
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
-metadata:
-  name: xrds.devex.com
-```
-
-Define the parameters for your control plane and cloud resources. Each XRD
-creates a framework within Upbound to allow infrastructure provisioning.
 
 ## Define cloud resource composition
 
@@ -299,14 +399,8 @@ Define the composition for each provider based on the control plane and XRD defi
 <!-- AWS -->
 ### AWS composition
 
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  name: aws-rds
-  labels:
-    provider: aws
-spec:
+```bash
+up composition generate apis/xsqlinstances/definition.yaml
 ```
 
 <!-- /AWS -->
@@ -314,35 +408,26 @@ spec:
 <!-- Azure -->
 ### Azure composition
 
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  name: azure-sql
-  labels:
-    provider: azure
-spec:
+```bash
+up composition generate apis/xsqlinstances/definition.yaml
 ```
 
 <!-- /Azure -->
 
 <!-- GCP -->
+
 ### GCP composition
 
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  name: gcp-sql
-  labels:
-    provider: gcp
-spec:
+```bash
+up composition generate apis/xsqlinstances/definition.yaml
 ```
 
 <!-- /GCP -->
 {{< /content-selector >}}
 
 ## Create a function
+
+<!--- TODO(tr0njavolta): verify function creation for cloud providers --->
 
 Functions are extensions that allow you to template your resources in KCL or
 Python. When you build your infrastructure with Upbound, the function determines
