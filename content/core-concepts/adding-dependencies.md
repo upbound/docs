@@ -34,7 +34,7 @@ Now let's add new dependencies.
 Providers can be installed into your Upbound project as a dependency via the [up dependency add]() command.
 
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-gcp-sql:v0.10.0
+up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
 
 In your `upbound.yaml` file, the provider you just installed is automatically captured in the `spec.dependsOn` value:
@@ -46,8 +46,8 @@ metadata:
   name: <projectName>
 spec:
   dependsOn:
-  - provider: xpkg.upbound.io/upbound/provider-gcp-sql
-    version: v0.10.0
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
+    version: v1.16.0
   - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
     version: '>=v0.0.0'
   description: This is where you can describe your project.
@@ -75,8 +75,8 @@ spec:
   dependsOn:
   - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
     version: '>=v0.0.0'
-  - provider: xpkg.upbound.io/upbound/provider-gcp-sql
-    version: v0.10.0
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
+    version: v1.16.0
   - function: xpkg.upbound.io/crossplane-contrib/function-status-transformer
     version: v0.4.0
   description: This is where you can describe your project.
@@ -105,8 +105,8 @@ spec:
   dependsOn:
   - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
     version: '>=v0.0.0'
-  - provider: xpkg.upbound.io/upbound/provider-gcp-sql
-    version: v0.10.0
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
+    version: v1.16.0
   - function: xpkg.upbound.io/crossplane-contrib/function-status-transformer
     version: v0.4.0
   - configuration: xpkg.upbound.io/upbound/platform-ref-aws

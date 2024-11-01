@@ -1,6 +1,6 @@
 ---
 title: "Building and Pushing a Control Plane Project"
-weight: 5
+weight: 6
 description: "How to build and push your control plane project to the Upbound Marketplace"
 ---
 

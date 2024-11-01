@@ -1,16 +1,16 @@
 ---
 title: "Running and Testing Control Plane Projects"
-weight: 4
+weight: 5
 description: "How to run your control plane project on a development control plane"
 ---
 
-To test your control planes projects, run them on development control planes. Run the following command.
+To run and test your control plane projects, run them on development control planes via the following command.
 
 ```shell
 up project run
 ```
 
-This command has will instantaneously create a development control plane in the cloud, and deploy your project's package that you built to it. A development control plane is a lightweight, ephemeral control plane that are perfect for testing your Crossplane configurations.
+This command will instantaneously create a development control plane in the cloud, and deploy your project's package to it. A development control plane is a lightweight, ephemeral control plane that are perfect for testing your Crossplane configurations.
 
 Now, you can validate your results, and make any changes to test your resources. 
 
