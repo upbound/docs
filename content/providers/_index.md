@@ -18,6 +18,8 @@ Find the Official providers in the [Upbound Marketplace](https://marketplace.upb
 Read more information on the Official provider
 [release schedule and support window]({{<ref "../../reference/lifecycle.md" >}}).
 
+For information on access and support view the [Official provider policies]({{<ref "./access-support-policies.md" >}}).
+
 Upbound customers with subscriptions offering Official provider support can find more information available on
 the [support page]({{<ref "../../support.md" >}}).
 

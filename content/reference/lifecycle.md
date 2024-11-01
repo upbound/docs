@@ -57,7 +57,8 @@ The support window for Upbound official providers for AWS, Azure, AzureAD, and G
 31 Jan 2025.
 {{< /hint >}}
 
-Refer to the [publishing and access policies]({{<ref "../../providers/publish-access-policies.md" >}}) of the Official providers for more details.
+Refer to the [access and policies]({{<ref "../../providers/access-support-policies.md" >}}) of the Official providers
+for more details.
 
 ## Feature launch stages
 
