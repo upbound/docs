@@ -1,5 +1,5 @@
 ---
-title: "Authoring your Composition within Control Plane Projects"
+title: "Authoring a Composition in your Control Plane Projects"
 weight: 4
 description: "Define your first composition in your control plane project"
 ---

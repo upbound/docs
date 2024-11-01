@@ -1,5 +1,5 @@
 ---
-title: "Authoring your APIs within Control Plane Projects"
+title: "Authoring an API in your Control Plane Projects"
 weight: 3
 description: "Define your first API in your control plane project"
 ---

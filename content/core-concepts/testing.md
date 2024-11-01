@@ -1,5 +1,5 @@
 ---
-title: "Running and Testing Control Plane Projects"
+title: "Running and testing your Control Plane Projects"
 weight: 5
 description: "How to run your control plane project on a development control plane"
 ---
