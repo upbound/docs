@@ -57,6 +57,7 @@ oxr = option("params").oxr
 
 _items = [
     v1beta1.Instance {
+        metadata: _metadata
         spec.forProvider = {
             associatePublicIpAddress: True
             ipv6Addresses: ["192.168.1.1"]
@@ -69,3 +70,11 @@ _items = [
 # This function composes an EC2 instance.
 items = _items
 ```
+
+The `items` variable should contain only valid composed resource objects, otherwise the function will fail and emit an error like below:
+
+```bash
+cannot compose resources: cannot generate a name for composed resource "": Object 'Kind' is missing in 'unstructured object has no kind'
+```
+
+This can happen when the `items` array is mistakingly populated by the wrong data.

@@ -22,33 +22,29 @@ resource is ready in your infrastructure.
 The function file below describes the behavior of your function. This overview describes the core elements below.
 
 ```yaml
-import models.v1alpha1.nop_crossplane_io_v1alpha1_nop_resource as nopv1alpha1
-import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
+import models.v1beta1 as v1beta1
 
-oxr = option("params").oxr
-_composed = nopv1alpha1.NopResource{
-  apiVersion = "nop.crossplane.io/v1alpha1"
-  kind = "NopResource"
-  metadata = metav1.ObjectMeta{
-    name = oxr.name
-  }
-  spec = nopv1alpha1.NopCrossplaneIoV1alpha1NopResourceSpec{
-    forProvider = nopv1alpha1.NopCrossplaneIoV1alpha1NopResourceSpecForProvider{
-      conditionAfter = [nopv1alpha1.NopCrossplaneIoV1alpha1NopResourceSpecForProviderConditionAfterItems0{
-        conditionType = "Ready"
-        conditionStatus = "True"
-        time = "5s"
-      }]
-      fields: {
-        instanceClass = oxr.spec.parameters.size
-        region = oxr.spec.parameters.region
-        storageGb = oxr.spec.parameters.storage
-      }
-    }
-  }
+_metadata = lambda name: str -> any {
+    { annotations = { "krm.kcl.dev/composition-resource-name" = name }}
 }
 
-items = [_composed]
+# This is the observed composite resource, provided as an input to the function
+oxr = option("params").oxr 
+
+_items = [
+    v1beta1.Instance {
+      metadata: _metadata
+      spec.forProvider = {
+          associatePublicIpAddress: True
+          instanceType: "t3.micro"
+          availabilityZone: oxr.spec.parameters.locaton
+          cpuCoreCount: 10
+      }
+    }
+]
+
+# This function composes an EC2 instance.
+items = _items
 ```
 
 First, review the import statements.

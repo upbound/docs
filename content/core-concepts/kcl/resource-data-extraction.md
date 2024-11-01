@@ -8,12 +8,16 @@ weight: 70
 To extract data from the Composite Resource (XR) associated with the composition function pipeline, you can use the `option("params").oxr` variable. Here's an example that demonstrates extracting data from the `.spec` of an XR to set the value of composed resource:
 
 ```yaml
-apiVersion = "s3.aws.upbound.io/v1beta1"
-kind = "Bucket"
-metadata.annotations: {
-    "krm.kcl.dev/composition-resource-name" = "bucket"
+import models.v1beta1 as v1beta1
+
+_metadata = lambda name: str -> any {
+    { annotations = { "krm.kcl.dev/composition-resource-name" = name }}
 }
-spec.forProvider.region = option("oxr").spec.region
+
+myBucket = v1beta1.Bucket {
+    metadata: _metadata
+    spec.forProvider.region = option("oxr").spec.region
+}
 ```
 
 ## Extract data from a specific composed resource

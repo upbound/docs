@@ -14,6 +14,12 @@ To write status to the Composite Resource associated with the composition functi
 Here's an example:
 
 ```yaml
+import models.v1beta1 as v1beta1
+
+_metadata = lambda name: str -> any {
+    { annotations = { "krm.kcl.dev/composition-resource-name" = name }}
+}
+
 # Read the XR
 oxr = option("params").oxr
 # Patch the XR with the status field
@@ -22,12 +28,8 @@ dxr = {
     status.someInformation = "cool-status"
 }
 # Construct a bucket
-bucket = {
-    apiVersion = "s3.aws.upbound.io/v1beta1"
-    kind = "Bucket"
-    metadata.annotations: {
-        "krm.kcl.dev/composition-resource-name" = "bucket"
-    }
+bucket = v1beta1.Bucket {
+    metadata: _metadata
     spec.forProvider.region = option("oxr").spec.region
 }
 # Return the bucket and patched XR
@@ -37,3 +39,5 @@ items = [bucket, dxr]
 {{< hint "tip" >}}
 The `**` symbol is what KCL calls an unpacking operator, which unpacks the value of a dictionary or list. In the example above, `**oxr` unpacks the value of the composite resource to a variable, which allows us to then add status information.
 {{< /hint >}}
+
+The status fields you write to in your function should be described in the XRD corresponding to the composition.

@@ -15,20 +15,17 @@ false parameter you set. The example below conditionally deploys a VPC. When
 `deployVPC` is true, your control plane continues the function to create the
 VPC. When false, the function skips the VPC creation.
 ```yaml
+import models.v1beta1 as v1beta1
+
 oxr = option("params").oxr
 
 awsVpc = v1beta1.VPC {
     spec.forProvider = {
         cidrBlock: var.cidr if oxr.spec.parameters.useIpamPool else ""
-        ipv6CidrBlock: var.ipv6Cidr
-        ipv6IpamPoolId: var.ipv6IpamPoolId
-        ipv6NetmaskLength: var.ipv6NetmaskLength
-        ipv6CidrBlockNetworkBorderGroup: var.ipv6CidrBlockNetworkBorderGroup
-        assignGeneratedIpv6CidrBlock: True if var.enableIpv6 and not var.useIpamPool else False
-        instanceTenancy: var.instanceTenancy
-        enableDnsHostnames: var.enableDnsHostnames
-        enableDnsSupport: var.enableDnsSupport
-        enableNetworkAddressUsageMetrics: var.enableNetworkAddressUsageMetrics
+        ipv6CidrBlock: "10.1.0.0/16"
+        region: "eu-west-1"
+        enableDnsHostnames: True
+        enableDnsSupport: True
     }
 } if oxr.spec.parameters.deployVPC else {}
 

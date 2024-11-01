@@ -10,10 +10,14 @@ your function.
 
 ## Define variables
 
-To define a variable, use the `=` operator to assign a value.
+To define a variable, use the `=` operator to assign a value. You can define two types of variables: a global, immutable variable or a mutable variable. Learn more at the [KCL docs](https://www.kcl-lang.io/docs/reference/lang/spec/variables)
 
 ```yaml
+# This is an immutable variable
 myvar = "value"
+
+# This is a mutable variable
+_myothervar = "value2"
 ```
 
 Variables are valid within the current scope. Below is an example of
@@ -27,11 +31,8 @@ myresource = v1beta1.Instance {
 }
 ```
 
-
 In KCL, you don't need to specify the variable data type. The type is inferred
 from the value.
-
-You can define two types of variables: a global, immutable variable or a mutable variable. Learn more at the [KCL docs](https://www.kcl-lang.io/docs/reference/lang/spec/variables)
 
 ## Special variables
 

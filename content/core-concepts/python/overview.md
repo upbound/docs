@@ -5,7 +5,7 @@ weight: 1
 
 Upbound supports defining your control plane in the Python language.
 
-Install [Python](https://www.python.org/downloads/). To reduce potential issues with setting up your Python environment on Windows or macOS, you should install Python through the official Python installer.
+Install [Python](https://www.python.org/downloads/).
 
 ## Control Plane Project Model
 
