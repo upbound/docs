@@ -1,5 +1,5 @@
 ---
-title: "Publishing and Access Policies"
+title: "Access and Support Policies"
 weight: 30
 description: "The Upbound publishing and access policy for Official providers."
 aliases:
@@ -51,8 +51,9 @@ example, if the latest version of `provider-aws-s3` is `v1.16.0`, it is accessib
 If your organization has a `Team`, `Enterprise`, or `Business Critical` subscription to Upbound, you can access all
 published versions of Official providers.
 
-To access older Official provider versions, make sure you've [configured pull secrets for Official providers]({{<ref "
-provider-families#configure-pull-secrets-for-official-providers">}})
+To access older Official provider versions, make sure you've
+[configured pull secrets]({{<ref "provider-families#configure-pull-secrets-for-official-providers">}}) for the Official
+providers.
 
 ## Publishing policy
 
@@ -156,15 +157,21 @@ Examples:
 - Invalid combination: `provider-family-aws:v1.1.0`, `provider-aws-s3:v1.0.0`, `provider-aws-ec3:v0.46.0`
 - Invalid combination: `provider-family-aws:v1.0.0`, `provider-aws-s3:v1.0.1`, `provider-aws-ec3:v1.1.0`
 
-## Release cadence
+## CVE resolution policy
 
-Upbound publishes new versions of the Official Providers on the last Thursday of
-every month, except for critical bug or security fixes.
+Upbound will make reasonable commercial effort to ensure its Official providers are free
+from [Common Vulnerabilities and Exposures](https://nvd.nist.gov/general/cve-process) (CVEs) under the following
+conditions:
 
-You can find an overview of the provider releases for each of the Official
-Providers:
+1. Upbound’s vulnerability scanners identifies a CVE affecting a provider package
+1. The CVE is independently fixable of any other bugs. For a CVE to be fixable, either there is
+    1. an upstream release version available which has been verified to fix the CVE, or
+    1. an affected provider package can be rebuilt with updated compilers and/or libraries to remediate that CVE.
 
-* [upbound/provider-aws]({{<ref "provider-aws/_index.md" >}})
-* [upbound/provider-azure]({{<ref "provider-azure/_index.md" >}})
-* [upbound/provider-gcp]({{<ref "provider-gcp/_index.md" >}})
-* [upbound/provider-terraform]({{<ref "provider-terraform/_index.md" >}})
+Upbound will address each CVE meeting the above criteria based on it's severity score, according to the [Common
+Vulnerability Scoring System version 3](https://nvd.nist.gov/vuln-metrics/cvss), as follows:
+
+- Critical Severity: Within 7 calendar days from the date an upstream fix is publicly available.
+- High, Medium, and Low severity: Within 14 calendar days from the date an upstream fix is publicly available.
+
+A CVE will be considered addressed when a new version of the provider with the fix is released to the Marketplace.
