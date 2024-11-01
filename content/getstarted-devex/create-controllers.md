@@ -351,6 +351,8 @@ A new file called a Composite Resource Definition (XRD) was created in `apis/xsq
 
 Define the composition for each provider based on the control plane and XRD definitions.
 
+We'll do so by specifying embedded functions. Functions are extensions that allow you to template your resources in KCL or Python. When you build your infrastructure with Upbound, the function determines what resources are created.
+
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
@@ -360,6 +362,16 @@ Define the composition for each provider based on the control plane and XRD defi
 up composition generate apis/xbucket/definition.yaml
 ```
 
+{{< tabs "Functions" >}}
+  {{< tab "KCL" >}}
+    todo kcl aws
+  {{< /tab >}}
+
+  {{< tab "Python" >}}
+    todo python aws
+  {{< /tab >}}
+{{< /tabs >}}
+
 <!-- /AWS -->
 
 <!-- Azure -->
@@ -368,6 +380,15 @@ up composition generate apis/xbucket/definition.yaml
 ```bash
 up composition generate apis/xbucket/definition.yaml
 ```
+{{< tabs "Functions" >}}
+  {{< tab "KCL" >}}
+    todo kcl azure
+  {{< /tab >}}
+
+  {{< tab "Python" >}}
+    todo python azure
+  {{< /tab >}}
+{{< /tabs >}}
 
 <!-- /Azure -->
 
@@ -379,40 +400,6 @@ up composition generate apis/xbucket/definition.yaml
 up composition generate apis/xbucket/definition.yaml
 ```
 
-<!-- /GCP -->
-{{< /content-selector >}}
-
-### Create a function
-Functions are extensions that allow you to template your resources in KCL or
-Python. When you build your infrastructure with Upbound, the function determines
-what resources are created.
-
-<!-- AWS -->
-
-{{< tabs "Functions" >}}
-  {{< tab "KCL" >}}
-    todo kcl aws
-  {{< /tab >}}
-
-  {{< tab "Python" >}}
-    todo python aws
-  {{< /tab >}}
-{{< /tabs >}}
-<!-- /AWS -->
-
-<!-- Azure -->
-{{< tabs "Functions" >}}
-  {{< tab "KCL" >}}
-    todo kcl azure
-  {{< /tab >}}
-
-  {{< tab "Python" >}}
-    todo python azure
-  {{< /tab >}}
-{{< /tabs >}}
-<!-- /Azure -->
-
-<!-- GCP -->
 {{< tabs "Functions" >}}
   {{< tab "KCL" >}}
     todo kcl gcp
@@ -423,6 +410,7 @@ what resources are created.
   {{< /tab >}}
 {{< /tabs >}}
 <!-- /GCP -->
+{{< /content-selector >}}
 
 ## Step 5: Run and test your project
 Use the `up project run` command to run and test your control plane project on a development control plane that is hosted in the cloud by Upbound.
