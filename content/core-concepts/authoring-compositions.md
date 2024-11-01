@@ -128,4 +128,4 @@ When writing out this part of your function, you'll see the magic at work. Becau
 
 We were able to refer to our composite resources that we defined via our XRD through `oxr`, and wrote custom logic so that the bucket generated will have server side encryption. All that is now left is to run and test our composition.
 
-For more KCL best practices, please refer to our documentation({{<ref "./kcl/overview">}}).
+For more KCL best practices, please refer to our documentation({{<ref "./kcl/overview.md">}}).
