@@ -455,8 +455,7 @@ up composition generate apis/xsqlinstances/definition.yaml
 yamls-aws
 ```
 
-1. second
-2. third
+
 
 {{< /tab >}}
 
@@ -487,8 +486,7 @@ up composition generate apis/xsqlinstances/definition.yaml
 yamls-az
 ```
 
-1. second
-2. third
+
 
 {{< /tab >}}
 
@@ -520,8 +518,6 @@ up composition generate apis/xsqlinstances/definition.yaml
 yamls-gcp
 ```
 
-1. second
-2. third
 
 {{< /tab >}}
 
