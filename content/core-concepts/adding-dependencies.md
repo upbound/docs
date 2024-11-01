@@ -4,7 +4,7 @@ weight: 2
 description: "The basic concepts to help you on your Upbound journey"
 ---
 
-A dependency can be a provider, function or a configuration that you want to install to your control plane project. Any dependencies you add will be automatically added to the `upbound.yaml` file.
+A dependency can be a provider, function or a configuration that you want to install to your control plane project. When you install a dependency, the resource schemas within the dependency will be unpacked and placed in the root of the project, and the dependency will be automatically referenced to your `upbound.yaml` file.
 
 First, open the `upbound.yaml` project file in your editor.
 
@@ -118,3 +118,12 @@ spec:
     This is where you can add a readme for your project.
   repository: xpkg.upbound.io/<userOrg>/<userProject>
 ```
+
+## Managing dependency versions
+There are a few ways to managing dependency versions within your control plane project.
+
+1. In your `upbound.yaml` file, you can update the versions of your dependencies, and then run the [up dependency update-cache]() command
+
+2. You can rerun the [up dependency add]() command with the new version provided for a specific dependency. This will update the dependency cache automatically.
+
+If you wish to wipe the entire dependency cache to a clean state, you can run the [up dependency clean-cache]() command.
