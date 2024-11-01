@@ -391,6 +391,14 @@ Released August 28th, 2023.
 
 ## Control plane connector release notes
 
+### MCP connector v0.8.0
+
+Released November 1st, 2024.
+
+#### What's Changed
+
+- Ability to override app cluster id via `clusterID` helm value for migration scenarios.
+
 ### MCP connector v0.7.0
 
 Released August 16th, 2024.
