@@ -8,6 +8,7 @@ aliases:
 
 The following providers are designated Upbound Official and are subject to Upbound's publishing and access policies.
 
+{{< table >}}
 | Official provider                                                                                        | Upjet-based | Provider family |
 |----------------------------------------------------------------------------------------------------------|-------------|-----------------|
 | [upbound/provider-family-aws](https://marketplace.upbound.io/providers/upbound/provider-family-aws/)     | Yes         | Yes             |
@@ -17,6 +18,7 @@ The following providers are designated Upbound Official and are subject to Upbou
 | [upbound/provider-terraform](https://marketplace.upbound.io/providers/upbound/provider-terraform/)       | No          | No              |
 | [upbound/provider-kubernetes](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/)     | No          | No              |
 | [upbound/provider-helm](https://marketplace.upbound.io/providers/upbound/provider-helm/)                 | No          | No              |
+{{< /table >}}
 
 The source code for the Upbound Official providers are [open source](https://github.com/crossplane-contrib/) and
 available to all Crossplane users. Upbound is the publisher for the Official provider listings in
