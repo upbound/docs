@@ -1,6 +1,6 @@
 ---
 title: "Signature Verification"
-weight: 50
+weight: 9
 description: "Learn how to verify signatures for Official Providers from the Marketplace"
 ---
 

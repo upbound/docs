@@ -10,7 +10,6 @@ Upbound provides support and software maintenance to paid customers. Supported s
 
 * [Spaces]({{< ref "spaces" >}})
 * [UXP]({{< ref "uxp/_index.md" >}})
-* [Official Providers]({{< ref "providers/_index.md" >}})
 
 ## Maintenance and updates
 
@@ -43,22 +42,6 @@ current and 2 previous minor releases.
 
 Upbound fixes bugs in supported major releases and the latest minor release. Upbound backports only critical bugs (both
 functional and security) to older minor releases.
-
-### Official provider schedule
-
-Upbound releases new minor versions of Official providers on a roughly monthly cadence.
-
-For those with a Team tier or higher subscription, Upbound supports its Official providers for 12 months from the
-release date. Once the support window has lapsed, an unsupported provider version is accessible for another 6 months in
-the Upbound Marketplace.
-
-{{< hint "important" >}}
-The support window for Upbound official providers for AWS, Azure, AzureAD, and GCP on versions before v1.0.0 ends after
-31 Jan 2025.
-{{< /hint >}}
-
-Refer to the [access and policies]({{<ref "../../providers/access-support-policies.md" >}}) of the Official providers
-for more details.
 
 ## Feature launch stages
 

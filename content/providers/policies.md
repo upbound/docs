@@ -1,44 +1,32 @@
 ---
-title: "Access and Support Policies"
-weight: 30
-description: "The Upbound publishing and access policy for Official providers."
+title: "Policies"
+weight: 5
+description: "The Upbound Official provider policies."
 aliases:
   - providers/support
 ---
 
-The following providers are designated Upbound Official and are subject to Upbound's publishing and access policies.
+The following policies provide details on the use, access, support and maintenance of the Upbound Official providers.
 
-{{< table >}}
-| Official provider                                                                                        | Upjet-based | Provider family |
-|----------------------------------------------------------------------------------------------------------|-------------|-----------------|
-| [upbound/provider-family-aws](https://marketplace.upbound.io/providers/upbound/provider-family-aws/)     | Yes         | Yes             |
-| [upbound/provider-family-azure](https://marketplace.upbound.io/providers/upbound/provider-family-azure/) | Yes         | Yes             |
-| [upbound/provider-family-gcp](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/)     | Yes         | Yes             |
-| [upbound/provider-azuread](https://marketplace.upbound.io/providers/upbound/provider-azuread/)           | Yes         | No              |
-| [upbound/provider-terraform](https://marketplace.upbound.io/providers/upbound/provider-terraform/)       | No          | No              |
-| [upbound/provider-kubernetes](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/)     | No          | No              |
-| [upbound/provider-helm](https://marketplace.upbound.io/providers/upbound/provider-helm/)                 | No          | No              |
-{{< /table >}}
+{{< tabs >}}
 
-The source code for the Upbound Official providers are [open source](https://github.com/crossplane-contrib/) and
-available to all Crossplane users. Upbound is the publisher for the Official provider listings in
-the [Marketplace](https://marketplace.upbound.io/). Your Upbound subscription level determines the level of access to
-the versions of each Official provider in the Marketplace.
+{{< tab "License" >}}
+The Upbound Official providers are open source, and the source code is available under the Apache 2.0 license.
 
-Read more information on the Official provider
-[release schedule and support window]({{<ref "../../reference/lifecycle.md" >}}).
+Upbound is the publisher for the Official provider listings in
+the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official).
+{{< /tab >}}
 
-Upbound customers with subscriptions offering Official provider support can find more information available on
-the [support page]({{<ref "../../support.md" >}}).
-
-## Access policy
+{{< tab "Access" >}}
+Your Upbound subscription level determines the level of access to the versions of each Official provider in the
+Marketplace.
 
 ### Anonymous and Individual Tier subscribers
 
 Anonymous Crossplane community members who don't have an Upbound account, as well as `Individual` tier subscribers, can
 only access the latest released version of the current `major` version of the Official provider.
 
-When Upbound publishes a new provider version you lose access to the previous provider version and need to upgrade to
+When Upbound publishes a new provider version, you lose access to the previous version and need to upgrade to
 the new version. When Upbound publishes a new provider version that increments the `major` number, we provide a 30-day
 grace period for accessing the last release of the prior `major` version.
 
@@ -54,11 +42,27 @@ If your organization has a `Team`, `Enterprise`, or `Business Critical` subscrip
 published versions of Official providers.
 
 To access older Official provider versions, make sure you've
-[configured pull secrets]({{<ref "provider-families#configure-pull-secrets-for-official-providers">}}) for the Official
+[configured pull secrets]({{<ref "pull-secrets">}}) for the Official
 providers.
+{{< /tab >}}
 
-## Publishing policy
+{{< tab "Support" >}}
+For Upbound customers with a `Team` tier or higher subscription, Upbound supports its Official providers for 12 months
+from the release date.
 
+Once the support window has lapsed, an unsupported provider version is accessible for another 6 months in
+the Upbound Marketplace.
+
+{{< hint "important" >}}
+The support window for Upbound Official providers for AWS, Azure, AzureAD, and GCP on versions before v1.0.0 ends after
+31 Jan 2025.
+{{< /hint >}}
+
+Upbound customers with `Enterprise` tier or higher subscription can [open a ticket]({{<ref "../../support.md" >}}) to
+request support with the Official providers.
+{{< /tab >}}
+
+{{< tab "Publishing" >}}
 Official providers have two relevant version numbers:
 
 * Provider release, for example, `provider-aws:v1.16.0`
@@ -105,8 +109,9 @@ The CRDs contained within an Official provider follow the standard Kubernetes AP
   features or breaking changes from the `v1beta1` API.
 - `v1` - CRDs that reach a `v1` API version have fully defined APIs. Upbound won't make breaking API changes in the
   current `major` version of the provider.
+  {{< /tab >}}
 
-## Compatibility policy
+{{< tab "Compatibility" >}}
 
 ### Upgrading
 
@@ -158,9 +163,9 @@ Examples:
 - Technically valid combination: `provider-family-aws:v1.1.0`, `provider-aws-s3:v1.1.1`, `provider-aws-ec3:v1.0.1`
 - Invalid combination: `provider-family-aws:v1.1.0`, `provider-aws-s3:v1.0.0`, `provider-aws-ec3:v0.46.0`
 - Invalid combination: `provider-family-aws:v1.0.0`, `provider-aws-s3:v1.0.1`, `provider-aws-ec3:v1.1.0`
+  {{< /tab >}}
 
-## CVE resolution policy
-
+{{< tab "CVEs" >}}
 Upbound will make reasonable commercial effort to ensure its Official providers are free
 from [Common Vulnerabilities and Exposures](https://nvd.nist.gov/general/cve-process) (CVEs) under the following
 conditions:
@@ -177,3 +182,6 @@ Vulnerability Scoring System version 3](https://nvd.nist.gov/vuln-metrics/cvss),
 - High, Medium, and Low severity: Within 14 calendar days from the date an upstream fix is publicly available.
 
 A CVE will be considered addressed when a new version of the provider with the fix is released to the Marketplace.
+{{< /tab >}}
+
+{{< /tabs >}}
