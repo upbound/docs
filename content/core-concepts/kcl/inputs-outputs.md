@@ -3,16 +3,23 @@ title: "Pipeline inputs and outputs"
 weight: 25
 ---
 
+
+Functions require inputs and outputs to process requests and return values to
+your control plane.
+
 ## Inputs
 
-Compositions execute in a pipeline of one or more sequential functions. A function's job is to update desired resource state and return it to Crossplane. All functions are provided four pieces of information:
+Compositions execute in a pipeline of one or more sequential functions. A
+function updates desired resource state and returns it to Crossplane. Function
+requests and values rely on four pieces of information:
 
 1. The observed state of the composite resource, and any composed resources.
 2. The desired state of the composite resource, and any composed resources.
 3. The function’s input.
-4. The function pipeline’s context. 
+4. The function pipeline’s context.
 
-Each function in a given composition pipeline is provided this collection of information as inputs.
+Each composition pipeline provides this information as _inputs_ into the function.
+
 
 ```yaml
 import models.v1beta1 as v1beta1
@@ -34,7 +41,9 @@ Check out [read pipeline state](./read-pipeline-state.md) for more details.
 
 ## Outputs
 
-Your function must provide the list of resources to update at the end of its execution. In KCL, you do this by setting a reserved variable called `items`. The resources you set in this variable can be composed resources or modified composite resources.
+Your function must provide the list of resource updates at the end of execution.
+KCL uses a required `items` variable where you list your composed or modified
+composite resources.
 
 ```yaml
 import models.v1beta1 as v1beta1

@@ -3,25 +3,30 @@ title: "Loops (for)"
 weight: 50
 ---
 
-This article shows you how to use the `for` syntax and `lambda` support to iterate over items in a collection. You can use loops to define multiple copies of a resource. Use loops to avoid repeating syntax in your function and to dynamically set the number of copies to create during function execution. 
+This guide shows you how to use the `for` syntax and `lambda` support to iterate
+over items in a collection. Loops can dynamically define multiple copies of a resource and
+avoid repeating syntax in your function.
 
-To use loops to create multiple resources, each instance must have a unique value for the `.metadata.name` property. You can use the index value or unique values in arrays or collections to create the names.
+To create multiple resources with a `for` loop, each resource instance must have
+a unique `.metadata.name` value. You can use the index value or unique values in
+arrays or collections to assign unique names.
 
 ## Loop syntax
 
-KCL supports what it calls [comprehensions](https://www.kcl-lang.io/docs/reference/lang/spec/expressions#list-expressions), which lets users construct a list or dictionary value by looping over one ore more iterables and evaluating an expression.
+KCL supports [comprehensions](https://www.kcl-lang.io/docs/reference/lang/spec/expressions#list-expressions), which lets users construct a list or dictionary value by looping over one or more iterables and evaluating an expression.
 
-The syntax for a simple loop is:
+An example loop follows the syntax below:
 
 ```yaml
 myVar = [x * x for x in range(5)] # returns an array containing [0, 1, 4, 9, 16]
 ```
 
-Learn more about comprehensions at the [KCL docs](https://www.kcl-lang.io/docs/reference/lang/spec/expressions#comprehensions)
+For more information on comprehensions, review the [KCL docs](https://www.kcl-lang.io/docs/reference/lang/spec/expressions#comprehensions).
+
 
 ## Procedural for loop
 
-KCL _doesn't_ support procedural for loops natively, but it's possible to create a procedural loop using a lambda function. The syntax for this looks like:
+KCL _doesn't_ support procedural for loops natively, but it's possible to create a procedural loop using a lambda function:
 
 ```yaml
 result = [(lambda x: int -> int {

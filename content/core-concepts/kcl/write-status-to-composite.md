@@ -3,7 +3,9 @@ title: "Write status to a composite"
 weight: 80
 ---
 
-This article describes how to write status information to the composite resource of a function pipeline. You use the status field of a composite to provide details about the progression of the function pipeline.
+This guide describes how to write status information to the composite resource
+of a function pipeline. The status field of a composite provides details about
+the procession of the function pipeline.
 
 ## Write a status to the Composite Resource
 

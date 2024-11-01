@@ -16,9 +16,12 @@ metadata.annotations: {
 spec.forProvider.region = option("oxr").spec.region
 ```
 
-## Extract Data from a Specific Composed Resource
+## Extract data from a specific composed resource
 
-To extract data from a specific composed resource by using the resource name, you can use the `option("params").ocds` variable. This variable is a mapping that its key is the resource name and its value is the observed composed resource like the example.
+To extract data from a specific composed resource by using the resource name,
+you can use the `option("params").ocds` variable. This variable works like a
+dictionary/map type where you provide the resource name as a key to access the
+corresponding configuration data.
 
 ```yaml
 metadata.name = "ocds"

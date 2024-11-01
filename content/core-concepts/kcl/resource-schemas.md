@@ -3,15 +3,22 @@ title: "Resource schemas"
 weight: 30
 ---
 
-Some packages, such as Upbound Official Providers, define KCL-compatible resource schemas. These schemas provide a rich code editing experience, such as in-line definitions, linting, autocomplete, and more.
+Upbound Official Providers and some other packages define KCL-compatible
+resource schemas. Make sure you have the KCL Language Server and KCL VSCode
+extension on your machine for richer code editing. These schemas and the KCL
+VSCode extension provide in-line definitions, linting, autocomplete, and more.
 
-When you add a dependency to your project using [up dep add](), if the dependency contains resource schemas, they'll be unpacked in the `.up/kcl` folder at root directory of your project.
 
-To take full advantage of this, make sure you have the [necessary tools]({{<ref "overview#prerequisites">}}) fully installed on your machine.
+The `up dep add` command unpacks dependencies that contain resource schemas in
+the `.up/kcl` folder at your project root directory.
+
+Make sure you have the [necessary tools]({{<ref "overview#prerequisites">}}) fully installed on your machine.
 
 ## Import a resource schema to a function
 
-When you generate a function for a composition in your project using [up function generate](), all unpacked schemas provided by your dependencies are automatically imported in the scaffolded KCL function, like below:
+When you generate a function for your project with `up function generate` from a
+composition, the command automatically imports the schemas into your KCL
+function file:
 
 ```yaml
 import models.v1beta1 as v1beta1
@@ -29,11 +36,19 @@ _items = []
 items = _items
 ```
 
-You can manually import schemas using the `import` stanza. The schemas imported in your function are used by the KCL IDE extension to provide a rich experience.
+The `import` stanza in your function allows you to manually import schemas. The
+KCL VSCode extension can also parse the imported schemas for the same benefits.
 
 ## Schema-powered experiences in an IDE
 
-To take full advantage of the KCL IDE experience with resource schemas, you need to declare the resource type. Here's an example:
+To take full advantage of the KCL IDE experience with resource schemas, you need
+to declare the resource type. Here's an example:
+
+To use the KCL VSCode extension with resource schemas, you must declare a
+resource type.
+
+In the example below, adding the `v1beta1.Instance` resource enables code
+completion, context hints, and resource specific information.
 
 ```yaml
 import models.v1beta1 as v1beta1
@@ -60,6 +75,8 @@ When your cursor is inside the stanza of the `v1beta1.Instance`, your IDE will p
 
 ## Supported packages
 
-All Upbound Official Providers are bundled with KCL-compatible resource schemas. 
+All Upbound Official Providers use KCL-compatible resource schemas.
 
-When you build your project using [up project build]() command, the generate artifact likewise contains generated resource schemas for the XRDs you define. This lets you import a built project as a dependency and get a rich experience for the resources you define.
+When you build your project with `up project build`, the generated artifact
+contains the generated resource schemas for your XRDs. You can build a project
+and then import that project as a dependency for the resources you define.

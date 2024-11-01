@@ -3,17 +3,21 @@ title: "Variables"
 weight: 40
 ---
 
-This article describes how to define and use variables in your KCL function. You use variables to simplify your composition function. Rather than repeating complicated expressions throughout your function, you define a variable that contains the complicated expression. Then, you use that variable as needed throughout your function.
+This guide describes how to define and use variables in your KCL function.
+Variables can simplify your composition function and keep your code DRY. You can
+define complex expressions as a variable and reference that variable throughout
+your function.
 
 ## Define variables
 
-The syntax for defining a variable is:
+To define a variable, use the `=` operator to assign a value.
 
 ```yaml
 myvar = "value"
 ```
 
-Once you define a variable, you can use it until the end of the current scope. Below is an example of defining a new managed resource as a variable:
+Variables are valid within the current scope. Below is an example of
+defining a new managed resource as a variable:
 
 ```yaml
 myresource = v1beta1.Instance {
@@ -23,11 +27,19 @@ myresource = v1beta1.Instance {
 }
 ```
 
-In KCL, you don't need to specify a data type for the variable. The type is inferred from the value. KCL also supports defining two types of variables: one that is global and cannot be changed after being set, and one that can. Learn more at the [KCL docs](https://www.kcl-lang.io/docs/reference/lang/spec/variables)
+
+In KCL, you don't need to specify the variable data type. The type is inferred
+from the value.
+
+You can define two types of variables: a global, immutable variable or a mutable variable. Learn more at the [KCL docs](https://www.kcl-lang.io/docs/reference/lang/spec/variables)
 
 ## Special variables
 
-When using KCL as your embedded function language, it's important to remember:
+The `items` and the `options` variables are important required variables in your
+KCL embedded function.
 
-- the special [items]({{<ref "inputs-outputs#outputs">}}) variable used to pass along the desired state of resources to create/modify
-- the special [options]({{<ref "read-pipeline-state">}}) variables, which provide important context information for use in your function.
+The special [items]({{<ref "inputs-outputs#outputs">}}) variable is required to
+capture the desired state of your resources and passing those changes to your
+control plane to create or modify.
+The special [options]({{<ref "read-pipeline-state">}}) variables provides
+context specific information to use in your function.

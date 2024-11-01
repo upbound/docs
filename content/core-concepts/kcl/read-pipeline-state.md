@@ -3,12 +3,18 @@ title: "Read function pipeline state"
 weight: 120
 ---
 
-Compositions execute in a pipeline of one or more sequential functions. A function's job is to update desired resource state and return it to Crossplane. All functions are provided four pieces of information:
+Compositions execute each function sequentially in the pipeline. Each function
+has two main tasks:
 
-1. The observed state of the composite resource, and any composed resources.
-2. The desired state of the composite resource, and any composed resources.
-3. The function’s input.
-4. The function pipeline’s context. 
+1. Update the state of resources as they change
+2. Send the updated state data back to Crossplane.
+
+Each function receives four key data points:
+
+1. Current state: The real-world status of the composite resource and related resources
+2. Target state: The desired status of resources as defined in your configuration
+3. Function input: The specific configuration settings for this function
+4. Pipeline context: Shared information passed through the function pipeline
 
 This information is available to access a KCL embedded function.
 

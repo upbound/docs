@@ -3,12 +3,17 @@ title: "Conditionals (if)"
 weight: 60
 ---
 
-To optionally compose a resource in your function, use the `if` expression. An `if` expression includes a condition that resolves to true or false. When the `if` condition is true, the resource is composed. When the value is false, the resource isn't created.
+The `if` expression allows you to optionally compose resources based on
+conditions you set. An `if` expression includes a condition that resolves to
+`True` or `False`. When the `if` condition resolves to true, the function
+composes the resource. When false, the resource isn't created.
 
 ## Define condition for composing
 
-In your function, you can conditionally compose a resource by passing in a parameter that specifies whether the resource is deployed. You test the condition with an `if` expression in the resource declaration. The following example shows the syntax for an `if` expression in a Bicep file. It conditionally deploys a VPC. When `deployVPC` is true, it composes the VPC. When `deployVPC` is false, it skips composing the VPC.
-
+In your function, you can conditionally compose a resource based on a true or
+false parameter you set. The example below conditionally deploys a VPC. When
+`deployVPC` is true, your control plane continues the function to create the
+VPC. When false, the function skips the VPC creation.
 ```yaml
 oxr = option("params").oxr
 

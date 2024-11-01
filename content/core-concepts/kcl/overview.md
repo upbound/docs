@@ -14,10 +14,12 @@ Install the following:
 - [KCL VSCode Extension](https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-kcl-extensions-for-ide)
 
 ## Example
-
+The example below is a pre-generated function that detects if a composed
+resource is ready in your infrastructure.
 {{< tabs >}}
 
 {{< tab "Embedded Function" >}}
+The function file below describes the behavior of your function. This overview describes the core elements below.
 
 ```yaml
 import models.v1alpha1.nop_crossplane_io_v1alpha1_nop_resource as nopv1alpha1
@@ -49,9 +51,18 @@ _composed = nopv1alpha1.NopResource{
 items = [_composed]
 ```
 
+First, review the import statements.
+
+``` yaml
+import models.v1alpha1.nop_crossplane_io_v1alpha1_nop_resource as nopv1alpha1
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
 {{< /tab >}}
 
 {{< tab "XRD" >}}
+
+The function above can be generated from a corresponding XRD, which maps the resource schema for
+the resource you want to create.
+
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
@@ -116,6 +127,8 @@ spec:
 {{< /tab >}}
 
 {{< tab "Composition" >}}
+Compositions reference your function and automatically follow the function
+logic.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
