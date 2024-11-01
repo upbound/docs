@@ -20,11 +20,55 @@ This guide assumes you are already familiar with AWS, Azure, or GCP.
 
 Before you begin, make sure you have:
 
+- An Upbound Free Tier account  <!--- TODO(tr0njavolta): link --->
 - The up CLI installed
 - A cloud provider account with administrative access
 - Visual Studio Code
 
 For an introduction to the Upbound workflow, review the [Upbound CLI] <!--- TODO(tr0njavolta): link --->
+
+## Setup your Workspace
+
+### Install the `up` CLI
+
+To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
+
+{{< tabs >}}
+
+{{< tab "Binary" >}}
+```shell
+curl -sL "https://cli.upbound.io" | sh
+````
+
+{{< /tab >}}
+
+{{< tab "Homebrew" >}}
+
+```bash
+brew install upbound/tap/up
+```
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+### Verify your installation
+
+To verify your CLI installation and version, use the `up version` command:
+
+```shell
+up version
+```
+
+You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
+
+### Login to Upbound
+
+Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
+
+```shell
+up login
+```
 
 ## Create a new project
 
@@ -403,6 +447,29 @@ Define the composition for each provider based on the control plane and XRD defi
 up composition generate apis/xsqlinstances/definition.yaml
 ```
 
+{{< tabs "Functions" >}}
+
+{{< tab "KCL" >}}
+
+```yaml
+yamls-aws
+```
+
+1. second
+2. third
+
+{{< /tab >}}
+
+{{< tab "Python" >}}
+```python
+pythons-aws
+```
+{{< /tab >}}
+
+
+{{< /tabs >}}
+
+
 <!-- /AWS -->
 
 <!-- Azure -->
@@ -411,6 +478,29 @@ up composition generate apis/xsqlinstances/definition.yaml
 ```bash
 up composition generate apis/xsqlinstances/definition.yaml
 ```
+
+{{< tabs "Functions" >}}
+
+{{< tab "KCL" >}}
+
+```yaml
+yamls-az
+```
+
+1. second
+2. third
+
+{{< /tab >}}
+
+{{< tab "Python" >}}
+```python
+pythons-az
+```
+{{< /tab >}}
+
+
+{{< /tabs >}}
+
 
 <!-- /Azure -->
 
@@ -422,7 +512,31 @@ up composition generate apis/xsqlinstances/definition.yaml
 up composition generate apis/xsqlinstances/definition.yaml
 ```
 
+{{< tabs "Functions" >}}
+
+{{< tab "KCL" >}}
+
+```yaml
+yamls-gcp
+```
+
+1. second
+2. third
+
+{{< /tab >}}
+
+{{< tab "Python" >}}
+```python
+pythons-gcp
+```
+{{< /tab >}}
+
+
+{{< /tabs >}}
+
+
 <!-- /GCP -->
+
 {{< /content-selector >}}
 
 ## Create a function
@@ -433,13 +547,62 @@ Functions are extensions that allow you to template your resources in KCL or
 Python. When you build your infrastructure with Upbound, the function determines
 what resources are created.
 
+This function adds sever side encryption to your database
+
 {{< content-selector options="KCL,Python" default="KCL" >}}
 
 <!-- KCL -->
 ### KCL function
 
 ```yaml
+import models.v1alpha1 as v1alpha1
+import models.v1beta1 as v1beta1
+import models.v1beta2 as v1beta2
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
 
+oxr = option("params").oxr # observed composite resource
+_ocds = option("params").ocds # observed composed resources
+_dxr = option("params").dxr # desired composite resource
+dcds = option("params").dcds # desired composed resources
+
+_metadata = lambda name: str -> any {
+    { annotations = { "krm.kcl.dev/composition-resource-name" = name }}
+}
+
+_items = [
+  v1beta1.Bucket{
+    metadata.name = oxr.metadata.name
+    spec.forProvider: {
+      objectLockEnabled = True
+      forceDestroy = False
+
+    }
+  }
+
+  v1beta1.BucketVersioning {
+    spec.forProvider: {
+        bucketRef.name = oxr.metadata.name
+    }
+   }   if oxr.spec.versioning and oxr.status.conditions == 'True' else {}
+
+   v1beta1.BucketServerSideEncryptionConfiguration {
+    spec.forProvider = {
+        bucketRef.name = oxr.metadata.name
+        # rule.applyServerSideEncryptionByDefault.
+        rule: [
+          {
+            applyServerSideEncryptionByDefault: [
+                {
+                    sseAlgorithm = "AES256"
+                }
+            ]
+            bucketKeyEnabled = True
+          }
+        ]
+    }
+   } if oxr.spec.versioning and oxr.status.conditions == 'True' else {}
+]
+items = _items
 ```
 
 <!-- /KCL -->
@@ -447,9 +610,38 @@ what resources are created.
 <!-- Python -->
 ### Python function
 
+
 ```python
 ```
 
 <!-- /Python -->
 
 {{< /content-selector >}}
+
+## Deploy your configuration
+
+Login to the [Upbound
+Marketplace](https://accounts.upbound.io/login?targetProperty=marketplace&returnTo=https%3A%2F%2Fmarketplace.upbound.io%2F)
+and create a new repository called `up-sql-demo`.
+
+Update the repository settings in your `upbound.yaml` file
+
+<!--- TODO(tr0njavolta): verify line numbers and add highlights --->
+{{<editCode>}}
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  creationTimestamp: null
+  name: ${}
+spec:
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+	This is where you can add a readme for your project.
+  repository: xpkg.upbound.io${reponame}
+  source: github.com/upbound/project-template
+```
+{{</editCode>}}
+
