@@ -7,13 +7,13 @@ description: "How to build and push your control plane project to the Upbound Ma
 Building and deploying a control plane project is easy as running a couple of commands on your CLI. 
 
 ## Building your control plane project
-All dependencies and metadata within your `upbound.yaml` file can be built into a single OCI image via the [up project build]() command. In addition, the [up project build]() command will generate Python and KCL schemas, and bake it into the outputed package for you. A new build updates the dependency cache of the control plane project, as [up dependency update-cache]() command would.
+All dependencies and metadata within your `upbound.yaml` file can be built into a single OCI image in `.uppkg` format, via the [up project build]() command. In addition, the [up project build]() command will generate Python and KCL schemas, and bake it into the outputed package for you. A new build updates the dependency cache of the control plane project, as [up dependency update-cache]() command would.
 
 ```shell
 up project build
 ```
 
-The outputed file should now be available at `_output/<userProject>.uppkg`
+The outputed file should now be available at `_output/<userProject>.uppkg`.
 
 ## Pushing your control plane project to the Upbound Marketplace
 First, login to Upbound.
