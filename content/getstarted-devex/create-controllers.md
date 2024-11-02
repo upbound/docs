@@ -212,205 +212,492 @@ Later, when you create a configuration and deploy your infrastructure with the c
 
 
 ## Step 3: Create a claim and generate your API
-Claims represent the user facing resource and the fields of the API you will define. The `up` CLI can generate those compositions for you based on the minimal information you provide in the claim.
+Claims are the user facing resource of the API you will define. The `up` CLI can generate compositions for you based on the minimal information you provide in the claim.
+
+Run the following command to generate a new example claim. Choose `Composite Resource Claim` in your terminal and give it a name describing what it creates.
+
+```yaml
+up example generate
+
+What do you want to create?:
+  > Composite Resource Claim (XRC)
+What is your Composite Resource Claim (XRC) named?: StorageBucket
+What is the API group named?: devexdemo.upbound.io
+What is the API Version named?: v1alpha1
+What is the metadata name?: example
+What is the metadata namespace?: default
+Successfully created resource and saved to examples/storagebucket/example.yaml
+```
+This command creates a minimal claim file. Copy and paste the claim below into the `examples/storagebucket/example.yaml` claim file.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
 ### AWS
-Generate a new example claim. Choose `Composite Resource Claim` in your terminal and give it a name describing what it creates.
-
-```yaml
-up example generate
-
-What do you want to create?:
-  > Composite Resource Claim (XRC)
-What is your Composite Resource Claim (XRC) named?: Bucket
-What is the API group named?: devexdemo.upbound.io
-What is the API Version named?: v1alpha1
-What is the metadata name?: example
-What is the metadata namespace?: default
-Successfully created resource and saved to examples/bucket/example.yaml
-```
-This command creates a minimal claim file. Copy and paste the claim below into the `examples/bucket/example.yaml` claim file.
-
 {{< editCode >}}
 ```yaml
-apiVersion: devexdemo.upbound.io/v1alpha1
-kind: Bucket
-metadata:
-  name: example
-  namespace: default
-spec:
-  versioning: true
-  encrypted: true
-  visibility: public
+  apiVersion: platform.example.com/v1alpha1
+  kind: StorageBucket
+  metadata:
+    name: example
+    namespace: default
+  spec:
+    region: us-west-1
+    versioning: true
+    acl: public
 ```
 {{</ editCode >}}
 
-This AWS S3 Bucket claim is based on the fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
-
-Use this claim to generate a composite resource definition with the following command:
-
-```shell
-up xrd generate examples/bucket/example.yaml
-```
-
-A new file called a Composite Resource Definition (XRD) was created in `apis/xsqlinstance/definition.yaml`. This represents the custom schema for the bucket API you defined in your claim. The `up xrd generate` command automatically infered the variable types based on the input parameters in your example claim.
+This StorageBucket claim is based on the fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
 <!-- /AWS -->
 
 <!-- Azure -->
 ### Azure
-Generate a new example claim. Choose `Composite Resource Claim` in your terminal and give it a name describing what it creates.
-
-```yaml
-up example generate
-
-What do you want to create?:
-  > Composite Resource Claim (XRC)
-What is your Composite Resource Claim (XRC) named?: Bucket
-What is the API group named?: devexdemo.upbound.io
-What is the API Version named?: v1alpha1
-What is the metadata name?: example
-What is the metadata namespace?: default
-Successfully created resource and saved to examples/bucket/example.yaml
-```
-This command creates a minimal claim file. Copy and paste the claim below into the `examples/bucket/example.yaml` claim file.
-
 {{< editCode >}}
 ```yaml
-apiVersion: devexdemo.upbound.io/v1alpha1
-kind: Bucket
+apiVersion: devexdemo.example.com/v1alpha1
+kind: StorageBucket
 metadata:
   name: example
   namespace: default
 spec:
+  location: eastus
   versioning: true
-  encrypted: true
-  visibility: public
+  acl: public
 ```
 {{</ editCode >}}
 
-This AWS S3 Bucket claim is based on the fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
-
-Use this claim to generate a composite resource definition with the following command:
-
-```shell
-up xrd generate examples/bucket/example.yaml
-```
-
-A new file called a Composite Resource Definition (XRD) was created in `apis/xsqlinstance/definition.yaml`. This represents the custom schema for the bucket API you defined in your claim. The `up xrd generate` command automatically infered the variable types based on the input parameters in your example claim.
+This Azure StorageContainer claim is based on the fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
 <!-- /Azure -->
 
 <!-- GCP -->
 ### GCP
-Generate a new example claim. Choose `Composite Resource Claim` in your terminal and give it a name describing what it creates.
-
-```yaml
-up example generate
-
-What do you want to create?:
-  > Composite Resource Claim (XRC)
-What is your Composite Resource Claim (XRC) named?: Bucket
-What is the API group named?: devexdemo.upbound.io
-What is the API Version named?: v1alpha1
-What is the metadata name?: example
-What is the metadata namespace?: default
-Successfully created resource and saved to examples/bucket/example.yaml
-```
-This command creates a minimal claim file. Copy and paste the claim below into the `examples/bucket/example.yaml` claim file.
-
 {{< editCode >}}
 ```yaml
-apiVersion: devexdemo.upbound.io/v1alpha1
-kind: Bucket
+apiVersion: devexdemo.example.com/v1alpha1
+kind: StorageBucket
 metadata:
   name: example
   namespace: default
 spec:
+  location: US
   versioning: true
-  encrypted: true
-  visibility: public
+  acl: publicRead
 ```
 {{</ editCode >}}
 
-This AWS S3 Bucket claim is based on the fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
+This GCP StorageBucket claim is based on the fields GCP requires to create a Google Cloud Storage instance. You can discover required fields in the Marketplace for the provider.
+<!-- /GCP -->
+{{< /content-selector >}}
 
 Use this claim to generate a composite resource definition with the following command:
 
 ```shell
-up xrd generate examples/bucket/example.yaml
+up xrd generate examples/storagebucket/example.yaml
 ```
 
-A new file called a Composite Resource Definition (XRD) was created in `apis/xsqlinstance/definition.yaml`. This represents the custom schema for the bucket API you defined in your claim. The `up xrd generate` command automatically infered the variable types based on the input parameters in your example claim.
-<!-- /GCP -->
-{{< /content-selector >}}
-
+A new file called a Composite Resource Definition (XRD) was created in `apis/xstoragebuckets/definition.yaml`. This represents the custom schema for the bucket API you defined in your claim. The `up xrd generate` command automatically infered the variable types based on the input parameters in your example claim.
 
 ## Step 4: Define your cloud resource composition
 
-Define the composition for each provider based on the control plane and XRD definitions.
+Now we will write our composition based on our XRD that we generated. In the root folder of your control plane project, run the following command.
 
-We'll do so by specifying embedded functions. Functions are extensions that allow you to template your resources in KCL or Python. When you build your infrastructure with Upbound, the function determines what resources are created.
+```bash
+up composition generate apis/xstoragebuckets/definition.yaml
+```
+
+This will scaffold a composition for you in `apis/xstoragebuckets/composition.yaml`
+
+Now we want to define the logic of our composition. We will do so via embedded functions. Embedded functions are composition functions that are built, packaged, and managed as part of a configuration. You can author your embedded functions in either KCL or Python to avoid having to do manual patch & transforms within your YAML files. 
+
+Run the following command
+```shell
+up function generate --language=<KCL or Python> test-function apis/xstoragebuckets/composition.yaml
+```
+
+This command will generate an embedded function called `test-function` inside `functions/test-function` in the language you specified. Your composition file should also have updated to include the newly generated function in its pipeline.
+
+Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
 ### AWS composition
-
-```bash
-up composition generate apis/xbucket/definition.yaml
-```
-
 {{< tabs "Functions" >}}
   {{< tab "KCL" >}}
-    todo kcl aws
+    ```shell
+      import models.v1beta1 as v1beta1
+      oxr = option("params").oxr # observed composite resource
+
+      bucketName = "{}-bucket".format(oxr.metadata.name)
+      _items: [any] = [
+          # Bucket in the desired region
+          v1beta1.Bucket{
+              metadata.name = bucketName
+              spec = v1beta1.S3AwsUpboundIoV1beta1BucketSpec{
+                  forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketSpecForProvider{
+                      region = oxr.spec.region
+                  }
+              }
+          },
+          # ACL for the bucket
+          v1beta1.BucketACL{
+              metadata.name = "{}-acl".format(oxr.metadata.name)
+              spec = v1beta1.S3AwsUpboundIoV1beta1BucketACLSpec{
+                  forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketACLSpecForProvider{
+                      region = oxr.spec.region
+                      acl = oxr.spec.acl
+                  }
+              }
+          },
+          # Default encryption for the bucket
+          v1beta1.BucketServerSideEncryptionConfiguration{
+              metadata.name = "{}-encryption".format(oxr.metadata.name)
+              spec = v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpec{
+                  forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProvider{
+                      region = oxr.spec.region
+                      bucketRef = v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProviderBucketRef{
+                          name = bucketName
+                      }
+                      rule = [
+                          v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProviderRuleItems0{
+                              applyServerSideEncryptionByDefault = [
+                                  v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProviderRuleItems0ApplyServerSideEncryptionByDefaultItems0{
+                                      sseAlgorithm = "AES256"
+                                  }
+                              ]
+                              bucketKeyEnabled = True
+                          }
+                      ]
+                  }
+              }
+          }
+      ]
+
+      # Set up versioning for the bucket if desired
+      if oxr.spec.versioning:
+          _items += [
+              v1beta1.BucketVersioning{
+                  metadata.name = "{}-versioning".format(oxr.metadata.name)
+                  spec = v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpec{
+                      forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpecForProvider{
+                          region = oxr.spec.region
+                          bucketRef = v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpecForProviderBucketRef{
+                              name = bucketName
+                          }
+                          versioningConfiguration = [
+                              v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpecForProviderVersioningConfigurationItems0{
+                                  status = "Enabled"
+                              }
+                          ]
+                      }
+                  }
+              }
+          ]
+
+      items = _items
+    ```    
   {{< /tab >}}
 
   {{< tab "Python" >}}
-    todo python aws
+    ```shell
+      from crossplane.function import resource
+      from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+      from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+      from .model.com.example.platform.xstoragebucket import v1alpha1
+      from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+      from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
+      from .model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
+      from .model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
+
+      def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+          observedXR = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+          xrName = observedXR.metadata.name
+          bucketName = xrName + "-bucket"
+
+          bucket = bucketv1beta1.Bucket(
+              apiVersion="s3.aws.upbound.io/v1beta1",
+              kind="Bucket",
+              metadata=metav1.ObjectMeta(
+                  name=bucketName,
+              ),
+              spec=bucketv1beta1.Spec(
+                  forProvider=bucketv1beta1.ForProvider(
+                      region=observedXR.spec.region,
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[bucket.metadata.name], bucket)
+
+          acl = aclv1beta1.BucketACL(
+              apiVersion="s3.aws.upbound.io/v1beta1",
+              kind="BucketACL",
+              metadata=metav1.ObjectMeta(
+                  name=xrName + "-acl",
+              ),
+              spec=aclv1beta1.Spec(
+                  forProvider=aclv1beta1.ForProvider(
+                      region=observedXR.spec.region,
+                      bucketRef=aclv1beta1.BucketRef(
+                          name = bucketName,
+                      ),
+                      acl=observedXR.spec.acl,
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[acl.metadata.name], acl)
+
+          sse = ssev1beta1.BucketServerSideEncryptionConfiguration(
+              apiVersion="s3.aws.upbound.io/v1beta1",
+              kind="BucketServerSideEncryptionConfiguration",
+              metadata=metav1.ObjectMeta(
+                  name=xrName + "-encryption",
+              ),
+              spec=ssev1beta1.Spec(
+                  forProvider=ssev1beta1.ForProvider(
+                      region=observedXR.spec.region,
+                      bucketRef=ssev1beta1.BucketRef(
+                          name=bucketName,
+                      ),
+                      rule=[
+                          ssev1beta1.RuleItem(
+                              applyServerSideEncryptionByDefault=[
+                                  ssev1beta1.ApplyServerSideEncryptionByDefaultItem(
+                                      sseAlgorithm="AES256",
+                                  ),
+                              ],
+                              bucketKeyEnabled=True,
+                          ),
+                      ],
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[sse.metadata.name], sse)
+
+          if observedXR.spec.versioning:
+              versioning = verv1beta1.BucketVersioning(
+                  apiVersion="s3.aws.upbound.io/v1beta1",
+                  kind="BucketVersioning",
+                  metadata=metav1.ObjectMeta(
+                      name=xrName + "-versioning",
+                  ),
+                  spec=verv1beta1.Spec(
+                      forProvider=verv1beta1.ForProvider(
+                          region=observedXR.spec.region,
+                          bucketRef=verv1beta1.BucketRef(
+                              name=bucketName,
+                          ),
+                          versioningConfiguration=[
+                              verv1beta1.VersioningConfigurationItem(
+                                  status="Enabled",
+                              ),
+                          ],
+                      ),
+                  )
+              )
+              resource.update(rsp.desired.resources[versioning.metadata.name], versioning)
+    ```
   {{< /tab >}}
 {{< /tabs >}}
-
 <!-- /AWS -->
 
 <!-- Azure -->
 ### Azure composition
-
-```bash
-up composition generate apis/xbucket/definition.yaml
-```
 {{< tabs "Functions" >}}
   {{< tab "KCL" >}}
-    todo kcl azure
+    ``shell
+      import models.v1beta1 as v1beta1
+
+      oxr = option("params").oxr # observed composite resource
+
+      containerAccessType = "blob" if oxr.spec.acl == "public" else "private"
+      accountName = "{}-account".format(oxr.metadata.name)
+      _items = [
+          v1beta1.Account{
+              metadata.name = accountName
+              spec = v1beta1.StorageAzureUpboundIoV1beta1AccountSpec{
+                  forProvider = v1beta1.StorageAzureUpboundIoV1beta1AccountSpecForProvider{
+                      accountTier = "Standard"
+                      accountReplicationType = "LRS"
+                      location = oxr.spec.location
+                      blobProperties = [
+                          v1beta1.StorageAzureUpboundIoV1beta1AccountSpecForProviderBlobPropertiesItems0{
+                              versioningEnabled = oxr.spec.versioning
+                          }
+                      ]
+                      infrastructureEncryptionEnabled = True
+                  }
+              }
+          },
+          v1beta1.Container{
+              metadata.name = "{}-container".format(oxr.metadata.name)
+              spec = v1beta1.StorageAzureUpboundIoV1beta1ContainerSpec{
+                  forProvider = v1beta1.StorageAzureUpboundIoV1beta1ContainerSpecForProvider{
+                      containerAccessType = containerAccessType
+                  }
+              }
+          }
+      ]
+      items = _items
+    ```    
   {{< /tab >}}
 
   {{< tab "Python" >}}
-    todo python azure
+    ``shell
+      from crossplane.function import resource
+      from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+      from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+      from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
+      from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
+      from .model.com.example.platform.xstoragecontainer import v1alpha1
+
+      def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+          observedXR = v1alpha1.XStorageContainer(**req.observed.composite.resource)
+          xrName = observedXR.metadata.name
+          acctName = xrName + "-account"
+
+          acct = acctv1beta1.Account(
+              apiVersion="storage.azure.upbound.io/v1beta1",
+              kind="Account",
+              metadata=metav1.ObjectMeta(
+                  name=acctName,
+              ),
+              spec=acctv1beta1.Spec(
+                  forProvider=acctv1beta1.ForProvider(
+                      accountTier="Standard",
+                      accountReplicationType="LRS",
+                      location=observedXR.spec.location,
+                      infrastructureEncryptionEnabled=True,
+                      blobProperties=[
+                          acctv1beta1.BlobProperty(
+                              versioningEnabled=observedXR.spec.versioning,
+                          ),
+                      ],
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[acct.metadata.name], acct)
+
+          accessType = "blob" if observedXR.spec.acl == "public" else "private"
+          cont = contv1beta1.Container(
+              apiVersion="storage.azure.upbound.io/v1beta1",
+              kind="Container",
+              metadata=metav1.ObjectMeta(
+                  name=xrName + "-container",
+              ),
+              spec=contv1beta1.Spec(
+                  forProvider=contv1beta1.ForProvider(
+                      containerAccessType=accessType,
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[cont.metadata.name], cont)
+    ```    
   {{< /tab >}}
 {{< /tabs >}}
+
 
 <!-- /Azure -->
 
 <!-- GCP -->
 
 ### GCP composition
-
-```bash
-up composition generate apis/xbucket/definition.yaml
-```
-
 {{< tabs "Functions" >}}
   {{< tab "KCL" >}}
-    todo kcl gcp
+    ``shell
+      import models.v1beta1 as v1beta1
+
+      oxr = option("params").oxr # observed composite resource
+
+      bucketName = "{}-bucket".format(oxr.metadata.name)
+      _items: [any] = [
+          v1beta1.Bucket{
+              metadata.name = bucketName
+              spec = v1beta1.StorageGcpUpboundIoV1beta1BucketSpec{
+                  forProvider = v1beta1.StorageGcpUpboundIoV1beta1BucketSpecForProvider{
+                      location = oxr.spec.location
+                      versioning = [
+                          v1beta1.StorageGcpUpboundIoV1beta1BucketSpecForProviderVersioningItems0{
+                              enabled = oxr.spec.versioning
+                          }
+                      ]
+                  }
+              }
+          },
+          v1beta1.BucketACL{
+              metadata.name = "{}-acl".format(oxr.metadata.name)
+              spec = v1beta1.StorageGcpUpboundIoV1beta1BucketACLSpec{
+                  forProvider = v1beta1.StorageGcpUpboundIoV1beta1BucketACLSpecForProvider{
+                      bucketRef = v1beta1.StorageGcpUpboundIoV1beta1BucketACLSpecForProviderBucketRef{
+                          name = bucketName
+                      }
+                      predefinedAcl = oxr.spec.acl
+                  }
+              }
+          }
+      ]
+
+      items = _items
+    ```    
   {{< /tab >}}
 
   {{< tab "Python" >}}
-    todo python gcp
+    ``shell
+      from crossplane.function import resource
+      from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+      from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+      from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
+      from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
+      from .model.com.example.platform.xstoragebucket import v1alpha1
+
+      def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+          observedXR = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+          xrName = observedXR.metadata.name
+          bucketName = xrName + "-bucket"
+
+          bucket = bucketv1beta1.Bucket(
+              apiVersion="storage.gcp.upbound.io/v1beta1",
+              kind="Bucket",
+              metadata=metav1.ObjectMeta(
+                  name=bucketName,
+              ),
+              spec=bucketv1beta1.Spec(
+                  forProvider=bucketv1beta1.ForProvider(
+                      location=observedXR.spec.location,
+                      versioning=[bucketv1beta1.VersioningItem(
+                          enabled=observedXR.spec.versioning,
+                      )],
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[bucket.metadata.name], bucket)
+
+          acl = aclv1beta1.BucketACL(
+              apiVersion="storage.gcp.upbound.io/v1beta1",
+              kind="BucketACL",
+              metadata=metav1.ObjectMeta(
+                  name=xrName + "-acl",
+              ),
+              spec=aclv1beta1.Spec(
+                  forProvider=aclv1beta1.ForProvider(
+                      bucketRef=aclv1beta1.BucketRef(
+                          name=bucketName,
+                      ),
+                      predefinedAcl=observedXR.spec.acl,
+                  ),
+              ),
+          )
+          resource.update(rsp.desired.resources[acl.metadata.name], acl)
+    ```    
   {{< /tab >}}
 {{< /tabs >}}
 <!-- /GCP -->
 {{< /content-selector >}}
+
+When writing out your function, you'll see the magic at work. With the import statements of each function, we import in schemas that were automatically generated when we created the function. The VSCode extensions for KCL and Python were able to pick this up and provide you capabiltiies such as autocompletion, linting for type mismatches, missing variables and more.
+
+In a programmatic fashion, we were able to refer to our composite resources that we defined via our XRD, and wrote custom logic so that the bucket generated will have server side encryption. All that is left is to run and test our composition.
 
 ## Step 5: Run and test your project
 Use the `up project run` command to run and test your control plane project on a development control plane that is hosted in the cloud by Upbound.
