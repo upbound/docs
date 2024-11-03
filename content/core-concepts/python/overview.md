@@ -11,9 +11,9 @@ Upbound supports defining your control plane APIs in the
 Install the following:
 
 - [Python 3](https://www.python.org/downloads/)
-- [Python VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- [Python Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
-The Python VSCode extension includes the
+The Python Visual Studio Code extension includes the
 [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 language server, so you don't need to install a language server.
 

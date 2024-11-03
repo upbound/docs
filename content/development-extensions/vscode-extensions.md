@@ -1,12 +1,12 @@
 ---
-title: "VSCode Extension"
-description: "Use popular VSCode extentions to author your Upbound
+title: "Visual Studio Code Extension"
+description: "Use popular Visual Studio Code extentions to author your Upbound
 configurations"
 ---
 
 Official Upbound providers come with bundled schemas that you can
-leverage with popular VSCode extensions to enhance your Upbound
-development experience when authoring compositions. In VSCode, your Upbound
+leverage with popular Visual Studio Code extensions to enhance your Upbound
+development experience when authoring compositions. In Visual Studio Code, your Upbound
 project gets:
 
 - Inline schema information
@@ -24,7 +24,7 @@ Upbound supports Python and KCL schemas.
 To install the Python extension, search for Python in your extensions search bar
 or go to the
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-in VSCode.
+in Visual Studio Code.
 
 <!-- vale gitlab.FutureTense = NO -->
 You'll also need a Python interpreter v3.12 installed on your machine.
@@ -39,7 +39,7 @@ to make sure the extension uses the correct version.
 <!-- KCL -->
 
 To install the KCL extension, search for KCL in your extensions search bar
-in VSCode or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension).
+in Visual Studio Code or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension).
 
 <!-- /KCL -->
 
@@ -61,7 +61,7 @@ spec:
     version: v0.13.0
 ```
 
-Once configured, you can open Python or KCL files in VSCode and start
+Once configured, you can open Python or KCL files in Visual Studio Code and start
 compositing your resources.
 
 ## Features
@@ -283,4 +283,4 @@ If you're not seeing the enhanced features:
 
 - Ensure you're using an official Upbound provider with bundled schemas.
 - Check that the provider version in your `upbound.yaml` file matches the installed provider version.
-- Reload your VSCode window or restart VSCode.
+- Reload your Visual Studio Code window or restart Visual Studio Code.

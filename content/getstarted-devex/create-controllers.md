@@ -27,7 +27,7 @@ For this guide, you'll need:
 - A cloud provider account with administrative access
 - Docker Desktop
 - Visual Studio Code
-- KCL or Python VSCode Extension
+- KCL or Python Visual Studio Code Extension
 - `kubectl` installed
 
 
