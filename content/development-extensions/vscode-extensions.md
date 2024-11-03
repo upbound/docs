@@ -72,7 +72,7 @@ spec:
 ```
 
 Once configured, you can open Python or KCL files in Visual Studio Code and start
-compositing your resources.
+composing your resources.
 
 ## Features
 
