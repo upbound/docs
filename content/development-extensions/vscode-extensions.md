@@ -1,12 +1,12 @@
 ---
 title: "Visual Studio Code Extension"
-description: "Use popular Visual Studio Code extentions to author your Upbound
+description: "Use popular Visual Studio Code extensions to author your Upbound
 configurations"
 ---
 
-Official Upbound providers come with bundled schemas that you can
-leverage with popular Visual Studio Code extensions to enhance your Upbound
-development experience when authoring compositions. In Visual Studio Code, your Upbound
+Official Upbound providers come with bundled schemas that you can leverage with
+popular Visual Studio Code extensions to enhance your Upbound development
+experience when authoring compositions. In Visual Studio Code, your Upbound
 project gets:
 
 - Inline schema information
@@ -14,6 +14,16 @@ project gets:
 - Autocompletion
 
 Upbound supports Python and KCL schemas.
+
+
+{{<hint "tip">}}
+This documentation focuses on Visual Studio code, but other popular editors also 
+support Python and KCL schemas, linting, and autocompletion.
+
+Refer to the [KCL language server](https://www.kcl-lang.io/docs/user_docs/getting-started/install)
+or [Python language server](https://github.com/microsoft/pyright/blob/main/docs/installation.md)
+documentation to learn how to configure support for your preferred editor.
+{{</hint>}}
 
 ## Installation
 
