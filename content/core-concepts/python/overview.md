@@ -20,8 +20,8 @@ to start.
 
 To define your control plane APIs in Python you need Python and the Python
 Visual Studio Code extension. Refer to the
-[Visual Studio Code Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}}) to learn
-how to install them.
+[Visual Studio Code Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}})
+to learn how to install them.
 
 ## Example
 
@@ -32,6 +32,46 @@ bucket XRD.
 
 <!-- Function -->
 
+The function `main.py` file below takes a composite resource (XR) as input. It
+produces a Bucket managed resource (MR) from the
+[S3 provider](https://marketplace.upbound.io/providers/upbound/provider-aws-s3)
+based on its parameters.
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+from model.com.example.platform.xstoragebucket import v1alpha1
+from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    # Load the observed XR into a Pydantic model.
+    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+
+    # The XR's region isn't a required field - it could be omitted.
+    # Handle this by setting a default value of "us-west-2".
+    region = "us-west-2"
+    if observed_xr.spec.region is not None:
+        region = observed_xr.spec.region
+
+    # Tell Crossplane to compose an S3 bucket.
+    desired_bucket = bucketv1beta1.Bucket(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="Bucket",
+        spec=bucketv1beta1.Spec(
+            forProvider=bucketv1beta1.ForProvider(
+                region=region,
+            ),
+        ),
+    )
+    resource.update(rsp.desired.resources["bucket"], desired_bucket)
+```
+
+Expand the example below to see a more advanced Python function.
+
+{{<expand "A more advanced Python function">}}
+
 The function `main.py` file below takes a composite resource (XR) as input and
 produces managed resources (MRs) from the
 [S3 provider](https://marketplace.upbound.io/providers/upbound/provider-aws-s3)
@@ -41,9 +81,9 @@ The function always composes an S3 bucket. When the S3 bucket exists, it also
 composes a bucket access control list (ACL). The ACL references the bucket by
 name.
 
-If the XR's `spec.versioning` field (a boolean) is `True`, the function enables
-versioning by composing a bucket versioning configuration. Like the ACL, the
-versioning configuration references the bucket by name.
+If the composite resource's `spec.versioning` field is `True`, the function
+enables versioning by composing a bucket versioning configuration. Like the ACL,
+the versioning configuration references the bucket by name.
 
 ```python
 from crossplane.function import resource
@@ -136,6 +176,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     )
     resource.update(rsp.desired.resources["bucket-versioning"], desired_versioning)
 ```
+
+{{</expand>}}
 
 <!-- /Function -->
 
