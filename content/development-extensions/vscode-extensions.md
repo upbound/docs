@@ -32,18 +32,18 @@ documentation to learn how to configure support for your preferred editor.
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
-or go to the
-[Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 in Visual Studio Code.
 
-<!-- vale gitlab.FutureTense = NO -->
-You'll also need a Python interpreter v3.12 installed on your machine.
-https://code.visualstudio.com/docs/python/python-tutorial#_install-a-python-interpreter.
-<!-- vale gitlab.FutureTense = YES -->
+Crossplane functions require Python 3.11 or newer. Follow the
+[Python extension documentation](https://code.visualstudio.com/docs/python/python-tutorial#_install-a-python-interpreter)
+to learn how to install Python.
 
-
-Create a [virtual environment](https://code.visualstudio.com/docs/python/environments#_using-the-create-environment-command)
-to make sure the extension uses the correct version.
+{{<hint "tip">}}
+Use a `venv` virtual environment for each function to isolate its dependencies.
+Follow the [Python extension documentation](https://code.visualstudio.com/docs/python/environments)
+to learn how to create and select a virtual environment.
+{{</hint>}}
 
 <!-- /Python -->
 <!-- KCL -->
@@ -81,23 +81,23 @@ available:
 
 ### Inline schema information
 
-View descriptions, property types, and other schema details directly in your code editor window as you work with composed Managed Resources (MRs).
+View descriptions, property types, and other schema details directly in your
+code editor window as you work with composed managed resources (MRs).
 
 {{< content-selector options="Python,KCL" default="Python" >}}
 
 <!-- Python -->
 {{< editCode >}}
 ```python
-vpc = {
-    "apiVersion": "ec2.aws.upbound.io/v1beta1",
-    "kind": "VPC",
-    "spec": {
-        "forProvider": {
-            "cidrBlock": "10.0.0.0/16",  # Hover to see description and type
-            "enableDnsHostnames": True,  # Hover to see description and type
-        }
-    }
-}
+vpc = v1beta1.VPC(
+    apiVersion="ec2.aws.upbound.io/v1beta1",
+    kind="VPC",
+    spec=v1beta1.Spec(
+        forProvider=v1beta1.ForProvider(
+            region="us-west-2",  # Hover to see description and type.
+        ),
+    ),
+)
 ```
 {{< /editCode >}}
 <!-- /Python -->
@@ -124,23 +124,23 @@ Real-time linting ensures:
 <!-- vale write-good.Passive = NO -->
 
 - Property types are matched
-- Managed Resource required fields are populated
+- Managed resource required fields are populated
 <!-- vale write-good.Passive = YES -->
 
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
 ```python
-vpc = {
-    "apiVersion": "ec2.aws.upbound.io/v1beta1",
-    "kind": "VPC",
-    "spec": {
-        "forProvider": {
-            "cidrBlock": 10,  # Error: Expected string, got integer
-            # Error: Missing required field 'region'
-        }
-    }
-}
+vpc = v1beta1.VPC(
+    apiVersion="ec2.aws.upbound.io/v1beta1",
+    kind="VPC",
+    spec=v1beta1.Spec(
+        forProvider=v1beta1.ForProvider(
+            cidrBlock=10,  # Warning: Argument of type "Literal[10]" cannot be assigned to parameter "cidrBlock" of type "str | None"
+            # Warning: Argument missing for parameter "region"
+        ),
+    ),
+)
 ```
 {{< /editCode >}}
 <!-- /Python -->
@@ -164,21 +164,22 @@ vpc = {
 
 ### Auto-completion
 
-As you type, the extension suggests valid properties and values for Managed Resources.
+As you type, the extension suggests valid properties and values for managed resources.
 
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
 ```python
-vpc = {
-    "apiVersion": "ec2.aws.upbound.io/v1beta1",
-    "kind": "VPC",
-    "spec": {
-        "forProvider": {
-            "ci"  # Auto-complete suggests: cidrBlock, cidrBlockAssociations, etc.
-        }
-    }
-}
+vpc = v1beta1.VPC(
+    apiVersion="ec2.aws.upbound.io/v1beta1",
+    kind="VPC",
+    spec=v1beta1.Spec(
+        forProvider=v1beta1.ForProvider(
+            region="us-west-2",
+            ci  # Auto-complete suggests: cidrBlock, cidrBlockAssociations, etc.
+        ),
+    ),
+)
 ```
 {{< /editCode >}}
 <!-- /Python -->
@@ -200,7 +201,7 @@ vpc = {
 
 ### Auto-generate composed resources
 
-Scaffold a new Managed Resource by using the auto-generate feature.
+Scaffold a new managed resource by using the auto-generate feature.
 
 <!-- vale Microsoft.Auto = YES -->
 
@@ -208,20 +209,7 @@ Scaffold a new Managed Resource by using the auto-generate feature.
 <!-- Python -->
 {{< editCode >}}
 ```python
-Start typing: vpc = {"kind": "V"}
-Select "VPC" from the autocomplete suggestions
-The extension generates:
-
-vpc = {
-    "apiVersion": "ec2.aws.upbound.io/v1beta1",
-    "kind": "VPC",
-    "spec": {
-        "forProvider": {
-            "cidrBlock": "",
-            "region": ""
-        }
-    }
-}
+vpc = v1beta1.V  # Auto-complete suggests VPC
 ```
 {{< /editCode >}}
 <!-- /Python -->
@@ -253,17 +241,18 @@ Navigate between related resources in your composition.
 <!-- Python -->
 {{< editCode >}}
 ```python
-subnet = {
-"apiVersion": "ec2.aws.upbound.io/v1beta1",
-    "kind": "Subnet",
-    "spec": {
-        "forProvider": {
-            "vpcIdRef": {
-                "name": "my-vpc"  # Ctrl+Click (Cmd+Click on Mac) to navigate to the VPC definition
-            }
-        }
-    }
-}
+    vpc = vpcv1beta1.VPC(**req.observed.resources["vpc"].resource)
+
+    subnet = subnetv1beta1.Subnet(
+        apiVersion="ec2.aws.upbound.io/v1beta1",
+        kind="Subnet",
+        spec=subnetv1beta1.Spec(
+            forProvider=subnetv1beta1.ForProvider(
+                region=vpc.spec.forProvider.region,  # Ctrl+Click (Cmd+Click on Mac) to navigate to the VPC definition
+                vpcId=vpc.status.atProvider.arn,
+            ),
+        ),
+    )
 ```
 {{< /editCode >}}
 <!-- /Python -->
