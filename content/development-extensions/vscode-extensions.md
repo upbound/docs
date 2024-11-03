@@ -39,6 +39,10 @@ Crossplane functions require Python 3.11 or newer. Follow the
 [Python extension documentation](https://code.visualstudio.com/docs/python/python-tutorial#_install-a-python-interpreter)
 to learn how to install Python.
 
+Upbound uses [Pydantic](https://docs.pydantic.dev/) Python schemas. Follow the
+[Pydantic Visual Studio Code guide](https://docs.pydantic.dev/latest/integrations/visual_studio_code)
+to enable autocompletion and type checking.
+
 {{<hint "tip">}}
 Use a `venv` virtual environment for each function to isolate its dependencies.
 Follow the [Python extension documentation](https://code.visualstudio.com/docs/python/environments)
