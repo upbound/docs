@@ -45,7 +45,20 @@ functions build, package, and manage deployment logic as part of your
 configuration. You can write functions in familiar programming languages rather
 than using the built-in patch-and-transform YAML workflow.
 
+{{< content-selector options="Python,KCL" default="Python" >}}
+<!-- Python -->
+To generate a function based on your composition, run the following command:
 
+```shell
+up function generate --language=python test-function apis/xbuckets/composition.yaml
+```
+
+This command generates an embedded Python function called `test-function` and
+creates a new file in your project under `functions/test-function/main.py`. The
+`up function generate` command also creates schema models to help with your
+authoring experience.
+<!-- /Python -->
+<!-- KCL -->
 To generate a function based on your composition, run the following command:
 
 ```shell
@@ -56,6 +69,9 @@ This command generates an embedded KCL function called `test-function` and
 creates a new file in your project under `functions/test-function/main.k`. The
 `up function generate` command also creates schema models to help with your
 authoring experience.
+
+<!-- /KCL -->
+{{< /content-selector >}}
 
 The Upbound CLI automatically updates your `apis/xbuckets/composition.yaml` file
 with your new function.
@@ -73,6 +89,72 @@ Your composition now contains new function references in the `pipeline` section.
 ```
 
 ## Authoring the composition function
+
+{{< content-selector options="Python,KCL" default="Python" >}}
+<!-- Python -->
+
+For this example, you'll need Python and the Python VSCode extension. Refer to
+the [VSCode Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}})
+to learn how to install them.
+
+Open the `main.py` function file in VSCode.
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+from model.io.upbound.aws.s3.bucket import v1beta1
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    # Specify an S3 Bucket, using a generated model.
+    bucket = v1beta1.Bucket(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="Bucket",
+        spec=bucketv1beta1.Spec(
+            forProvider=bucketv1beta1.ForProvider(
+                # Derive the bucket's region from the XR's region.
+                region=req.observed.composite.resource["spec"]["region"],
+            ),
+        ),
+    )
+
+    # Update the function's desired composed resources to include the bucket.
+    resource.update(rsp.desired.resources["bucket"], bucket)
+```
+
+
+Use `import` statements to load Crossplane's Python SDK and Upbound's generated
+models into your function.
+
+Define your function's logic in the `compose` function. Crossplane calls this
+function. It passes it a `RunFunctionRequest` and a partially populated
+`RunFunctionResponse`.
+
+Specify your desired composed resources by passing them to `resource.update`.
+You can pass `resource.update` a model object, or a Python dictionary.
+
+You can also use `resource.update` to update the desired XR:
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    # Update the function's desired XR's status using a dictionary.
+    resource.update(rsp.desired.composite, {"status": {"widgets": 42}})
+```
+
+With the VSCode Python extension you get autocompletion, linting, type errors,
+and more.
+
+<!-- vale gitlab.FutureTense = NO -->
+In the next guide, you'll run and test your composition.
+<!-- vale gitlab.FutureTense = YES -->
+
+For more Python best practices, please refer to the [documentation]({{<ref "./python/overview.md">}}).
+
+<!-- /Python -->
+<!-- KCL -->
 
 For this example, make sure you have KCL and the KCL language server installed:
 
@@ -175,3 +257,6 @@ In the next guide, you'll run and test your composition.
 <!-- vale gitlab.FutureTense = YES -->
 
 For more KCL best practices, please refer to the [documentation]({{<ref "./kcl/overview.md">}}).
+
+<!-- /KCL -->
+{{< /content-selector >}}
