@@ -46,6 +46,7 @@ configuration. You can write functions in familiar programming languages rather
 than using the built-in patch-and-transform YAML workflow.
 
 {{< content-selector options="Python,KCL" default="Python" >}}
+
 <!-- Python -->
 To generate a function based on your composition, run the following command:
 
@@ -71,6 +72,7 @@ creates a new file in your project under `functions/test-function/main.k`. The
 authoring experience.
 
 <!-- /KCL -->
+
 {{< /content-selector >}}
 
 The Upbound CLI automatically updates your `apis/xbuckets/composition.yaml` file
@@ -91,9 +93,10 @@ Your composition now contains new function references in the `pipeline` section.
 ## Authoring the composition function
 
 {{< content-selector options="Python,KCL" default="Python" >}}
+
 <!-- Python -->
 
-For this example, you'll need Python and the Python Visual Studio Code extension. Refer to
+For this example, you need Python and the Python Visual Studio Code extension. Refer to
 the [Visual Studio Code Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}})
 to learn how to install them.
 
@@ -127,8 +130,7 @@ Use `import` statements to load Crossplane's Python SDK and Upbound's generated
 models into your function.
 
 Define your function's logic in the `compose` function. Crossplane calls this
-function. It passes it a `RunFunctionRequest` and a partially populated
-`RunFunctionResponse`.
+function. It passes it a `RunFunctionRequest` and a `RunFunctionResponse`.
 
 Specify your desired composed resources by passing them to `resource.update`.
 You can pass `resource.update` a model object, or a Python dictionary.
@@ -259,4 +261,5 @@ In the next guide, you'll run and test your composition.
 For more KCL best practices, please refer to the [documentation]({{<ref "./kcl/overview.md">}}).
 
 <!-- /KCL -->
+
 {{< /content-selector >}}
