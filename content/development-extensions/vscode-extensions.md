@@ -4,10 +4,9 @@ description: "Use popular Visual Studio Code extensions to author your Upbound
 configurations"
 ---
 
-Official Upbound providers come with bundled schemas that you can leverage with
-popular Visual Studio Code extensions to enhance your Upbound development
-experience when authoring compositions. In Visual Studio Code, your Upbound
-project gets:
+Official Upbound providers include schemas that you can leverage to enhance your
+Upbound development experience when authoring compositions. In Visual Studio
+Code, your Upbound project gets:
 
 - Inline schema information
 - Linting
@@ -30,6 +29,7 @@ documentation to learn how to configure support for your preferred editor.
 <!-- vale gitlab.SentenceSpacing = NO -->
 
 {{< content-selector options="Python,KCL" default="Python" >}}
+
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
 or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -114,7 +114,9 @@ vpc = {
 }
 ```
 {{</ editCode >}}
+
 <!-- /KCL -->
+
 {{</ content-selector >}}
 
 ### Linting
@@ -128,6 +130,7 @@ Real-time linting ensures:
 <!-- vale write-good.Passive = YES -->
 
 {{< content-selector options="Python,KCL" default="Python" >}}
+
 <!-- Python -->
 {{< editCode >}}
 ```python
