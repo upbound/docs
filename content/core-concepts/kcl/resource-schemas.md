@@ -4,9 +4,9 @@ weight: 30
 ---
 
 Upbound Official Providers and some other packages define KCL-compatible
-resource schemas. Make sure you have the KCL Language Server and KCL VSCode
+resource schemas. Make sure you have the KCL Language Server and KCL Visual Studio Code
 extension on your machine for richer code editing. These schemas and the KCL
-VSCode extension provide in-line definitions, linting, autocomplete, and more.
+Visual Studio Code extension provide in-line definitions, linting, autocomplete, and more.
 
 
 The `up dep add` command unpacks dependencies that contain resource schemas in
@@ -37,7 +37,7 @@ items = _items
 ```
 
 The `import` stanza in your function allows you to manually import schemas. The
-KCL VSCode extension can also parse the imported schemas for the same benefits.
+KCL Visual Studio Code extension can also parse the imported schemas for the same benefits.
 
 <!-- vale off -->
 ## Schema-powered experiences in an IDE
@@ -46,7 +46,7 @@ KCL VSCode extension can also parse the imported schemas for the same benefits.
 To take full advantage of the KCL IDE experience with resource schemas, you need
 to declare the resource type. Here's an example:
 
-To use the KCL VSCode extension with resource schemas, you must declare a
+To use the KCL Visual Studio Code extension with resource schemas, you must declare a
 resource type.
 
 In the example below, adding the `v1beta1.Instance` resource enables code

@@ -93,11 +93,11 @@ Your composition now contains new function references in the `pipeline` section.
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 
-For this example, you'll need Python and the Python VSCode extension. Refer to
-the [VSCode Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}})
+For this example, you'll need Python and the Python Visual Studio Code extension. Refer to
+the [Visual Studio Code Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}})
 to learn how to install them.
 
-Open the `main.py` function file in VSCode.
+Open the `main.py` function file in Visual Studio Code.
 
 ```python
 from crossplane.function import resource
@@ -144,7 +144,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     resource.update(rsp.desired.composite, {"status": {"widgets": 42}})
 ```
 
-With the VSCode Python extension you get autocompletion, linting, type errors,
+With the Visual Studio Code Python extension you get autocompletion, linting, type errors,
 and more.
 
 <!-- vale gitlab.FutureTense = NO -->
@@ -163,9 +163,9 @@ curl -fsSL "https://kcl-lang.io/script/install-cli.sh" | /bin/bash
 curl -fsSL "https://kcl-lang.io/script/install-kcl-lsp.sh" | /bin/bash
 ```
 
-Next, install and enable the [KCL VSCode Extension]({{<ref "development-extensions/vscode-extensions.md">}}).
+Next, install and enable the [KCL Visual Studio Code Extension]({{<ref "development-extensions/vscode-extensions.md">}}).
 
-Open the `main.k` function file in VSCode. The schema scaffold here builds your
+Open the `main.k` function file in Visual Studio Code. The schema scaffold here builds your
 composition logic and contains placeholders for your desired inputs.
 
 ``` shell
@@ -246,7 +246,7 @@ _items = [
 ```
 
 The statement in the `_items` variable is a fully functional KCL function. With
-the VSCode KCL extension and KCL language server, you get autocompletion,
+the Visual Studio Code KCL extension and KCL language server, you get autocompletion,
 linting, type errors, and more.
 
 In this example, the `oxr` assignment captures the composite resources and the

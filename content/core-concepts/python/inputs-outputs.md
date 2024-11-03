@@ -50,7 +50,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XMyType(**req.observed.composite.resource)
 ```
 
-After this, VSCode adds tab-completion and type checking when working with the XR.
+After this, Visual Studio Code adds tab-completion and type checking when working with the XR.
 
 ## Outputs
 

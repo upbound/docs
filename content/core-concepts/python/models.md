@@ -6,7 +6,7 @@ weight: 30
 Upbound Official Providers and some other packages include [Pydantic
 models](https://docs.pydantic.dev/latest/concepts/models/) for their
 resources. These models enable in-line documentation, linting, autocompletion,
-and other features from the VSCode Python extension when working with
+and other features from the Visual Studio Code Python extension when working with
 Crossplane resources in embedded Python functions.
 
 <!-- vale Microsoft.Auto = NO -->
