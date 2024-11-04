@@ -29,6 +29,8 @@ For this guide, you will need:
 ### Setup Up Project Github Action (Recommended)
 The `Up-Project-Action` Github Action is Upbound's recommended way of integrating your control plane projects to your CI workflow. The `Up-Project-Action` will install the `up` CLI tool, authenticate with Upbound using a personal access token, build the control plane project, and conditionally push to the Upbound Marketplace if you are working on your `main` branch. 
 
+Add the following action to your workflow to automatically build and push your control plane projects.
+
 ```yaml
     name: "up-project-action"
     description: "installs up-cli, logs in, builds, and conditionally pushes the up project on main branch."
