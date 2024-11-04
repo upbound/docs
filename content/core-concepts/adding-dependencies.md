@@ -4,7 +4,9 @@ weight: 2
 description: "The basic concepts to help you on your Upbound journey"
 ---
 
-A dependency can be a provider, function or a configuration that you want to install to your control plane project. When you install a dependency, the resource schemas within the dependency will be unpacked and placed in the root of the project, and the dependency will be automatically referenced to your `upbound.yaml` file.
+A dependency can be a provider, function or a configuration that you want to
+install to your control plane project. When you install a dependency, the Upbound CLI unpacks and references the
+dependency automatically in your `upbound.yaml` project file.
 
 First, open the `upbound.yaml` project file in your editor.
 
@@ -26,14 +28,20 @@ spec:
   source: github.com/upbound/project-template
 ```
 
-The `spec.dependsOn` field is where all the dependencies of the control plane project are listed. Function-auto-ready is added by default for you when your control plane project is initiated.
+<!-- vale Microsoft.Auto = NO -->
+<!-- vale write-good.Passive = NO -->
+The `spec.dependsOn` field lists your control plane project dependencies.
+When you initialize your control plane project, the auto-ready function is
+included by default.
+<!-- vale write-good.Passive = YES -->
+<!-- vale Microsoft.Auto = YES -->
 
-Now let's add new dependencies.
+## Add a provider
 
-## Adding a Provider
-Providers can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
-"reference/cli/command-reference" >}}) command.
+Use the [up dependency add]({{< ref "reference/cli/command-reference" >}}) command to install a provider to your Upbound project.
+
 <!--- TODO(tr0njavolta): update CLI link --->
+
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
@@ -59,9 +67,10 @@ spec:
     This is where you can add a readme for your project.
   repository: xpkg.upbound.io/<userOrg>/<userProject>
 ```
-## Adding a Function
-Functions can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
-"reference/cli/command-reference" >}}) command.
+## Add a function
+
+Use the [up dependency add]({{< ref "reference/cli/command-reference" >}}) to install a function dependency to your project.
+
 <!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
@@ -91,10 +100,10 @@ spec:
   repository: xpkg.upbound.io/<userOrg>/<userProject>
 ```
 
-## Adding a Configuration
-Configurations can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
-"reference/cli/command-reference" >}}) ({{< ref
-"reference/cli/command-reference" >}}) command.
+## Adding a configuration
+
+Use the [up dependency add]({{< ref
+"reference/cli/command-reference" >}}) command to install configurations into your Upbound project.
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0
@@ -125,20 +134,21 @@ spec:
   repository: xpkg.upbound.io/<userOrg>/<userProject>
 ```
 
-## Managing dependency versions
-There are a few ways to managing dependency versions within your control plane project.
+## Manage dependency versions
+
+You can manage dependencies in your control plane projects in two ways:
 
 1. In your `upbound.yaml` file, you can update the versions of your dependencies, and then run the [up dependency update-cache]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI ref link --->
 
-2. You can rerun the [up dependency add]({{< ref
+1. You can rerun the [up dependency add]({{< ref
 "reference/cli/command-reference" >}}) command with the new version
-provided for a specific dependency. This will update the dependency cache
+provided for a specific dependency. This updates the dependency cache
 automatically.
 <!--- TODO(tr0njavolta): update CLI ref link --->
 
-If you wish to wipe the entire dependency cache to a clean state, you can run
+To wipe the dependency cache, run
 the [up dependency clean-cache]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta) update CLI ref link --->

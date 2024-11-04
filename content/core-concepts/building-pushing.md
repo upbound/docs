@@ -6,35 +6,39 @@ description: "How to build and push your control plane project to the Upbound Ma
 
 <!--- TODO(tr0njavolta): update CLI links --->
 
-Building and deploying a control plane project is easy as running a couple of
-commands on your CLI.
+Upbound enables you to build and deploy control plane projects with the Upbound CLI.
 
-## Building your control plane project
-All dependencies and metadata within your `upbound.yaml` file can be built into a single OCI image in `.uppkg` format, via the [up project build]({{< ref
-"reference/cli/command-reference" >}}) command. In addition, the [up project build]({{< ref
-"reference/cli/command-reference" >}})  command will generate Python and KCL schemas, and bake it into the outputed package for you. A new build updates the dependency cache of the control plane project, as [up dependency update-cache]({{< ref
-"reference/cli/command-reference" >}})  command would.
+## Build your control plane project
+
+You can build the dependencies and metadata in your Upbound project as a single
+OCI image with the [up project build]({{< ref "reference/cli/command-reference" >}}) command. This command generates the Python
+and KCL schemas and packages them into a single `.uppkg` file. New builds update
+the control plane project dependency cache in the same way running the [up
+dependency update-cache]({{< ref "reference/cli/command-reference" >}}) command does.
 
 ```shell
 up project build
 ```
 
-The outputed file should now be available at `_output/<userProject>.uppkg`.
+This command builds the image in your control plane project directory in `_output/<userProject>.uppkg`.
 
 ## Pushing your control plane project to the Upbound Marketplace
+
 First, login to Upbound.
 
 ```shell
 up login
 ```
 
-Once you are logged in, run the following command.
+After you log in, run `up project push` to push your package to the Upbound
+Marketplace.
 
 ```shell
 up project push
 ```
 
-Your package is now pushed to the Upbound Marketplace!
-
-If you never created a repository in the marketplace, the [up project push]({{< ref
-"reference/cli/command-reference" >}}) command will create the repository based on the `spec.repository` field in your `upbound.yaml` file automatically for you. In addition, any embedded functions you created will be pushed to its own subrepository automatically as well.
+If you don't have a Marketplace repository, the [up project push]({{< ref
+"reference/cli/command-reference" >}}) command automatically creates the
+repository based on the `spec.repository` field in your `upbound.yaml` file.
+When you push a project with embedded functions, Upbound automatically creates
+sub-repositories for these functions.
