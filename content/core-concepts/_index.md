@@ -8,4 +8,4 @@ Upbound supports multi-language experience for defining and building platforms p
 The following language runtimes are currently supported by Upbound. Select one to learn more:
 
 - [Python]({{<ref "./python/overview> "}})
-- [KCL](({{<ref "./kcl/overview> }})
+- [KCL](({{<ref "./kcl/overview> "}})
