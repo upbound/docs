@@ -9,7 +9,7 @@ Let's author your first API within your control plane project. APIs are defined 
 
 ## Generating an XRD from a XRC
 In the root folder of your control plane project, run the [up example generate]({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell

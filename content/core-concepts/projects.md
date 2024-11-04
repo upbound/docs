@@ -6,7 +6,7 @@ description: "The basic concepts to help you on your Upbound journey"
 
 <!-- vale gitlab.Substitutions = NO -->
 Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Create a project with the [up project init]({{< ref
-"content/reference/cli/command-reference" >}}) command. A control plane project houses the definition of your control plane.
+"reference/cli/command-reference" >}}) command. A control plane project houses the definition of your control plane.
 
 ## The project file (upbound.yaml)
 
@@ -71,7 +71,7 @@ Upbound's tooling defines a default project structure as:
 ## Build and push a project
 
 Control plane projects are source-level representations of your control plane. Like any other software project, control plane projects require a **build stage** to assemble all parts of your project into a versioned artifact. Build a project with the [up project build]({{< ref
-"content/reference/cli/command-reference" >}}) command:
+"reference/cli/command-reference" >}}) command:
 
 ```bash
 up project build
@@ -80,7 +80,7 @@ up project build
 The output artifact is an OCI image with an `.uppkg` file type and it defaults to outputting at the `_output/` folder at the root of your project. The `.uppkg` file is a special kind of [Crossplane Configuration](https://docs.crossplane.io/v1.17/concepts/packages/).
 
 You can push the project output to any OCI-compliant registry. You can push the package to a registry on the Upbound Marketplace with the [up project push]({{< ref
-"content/reference/cli/command-reference" >}}) command:
+"reference/cli/command-reference" >}}) command:
 
 ```bash
 up project push

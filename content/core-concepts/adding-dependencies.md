@@ -32,7 +32,7 @@ Now let's add new dependencies.
 
 ## Adding a Provider
 Providers can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
@@ -61,7 +61,7 @@ spec:
 ```
 ## Adding a Function
 Functions can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
@@ -93,8 +93,8 @@ spec:
 
 ## Adding a Configuration
 Configurations can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
-"content/reference/cli/command-reference" >}}) ({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) ({{< ref
+"reference/cli/command-reference" >}}) command.
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0
@@ -129,16 +129,16 @@ spec:
 There are a few ways to managing dependency versions within your control plane project.
 
 1. In your `upbound.yaml` file, you can update the versions of your dependencies, and then run the [up dependency update-cache]({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI ref link --->
 
 2. You can rerun the [up dependency add]({{< ref
-"content/reference/cli/command-reference" >}}) command with the new version
+"reference/cli/command-reference" >}}) command with the new version
 provided for a specific dependency. This will update the dependency cache
 automatically.
 <!--- TODO(tr0njavolta): update CLI ref link --->
 
 If you wish to wipe the entire dependency cache to a clean state, you can run
 the [up dependency clean-cache]({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta) update CLI ref link --->

@@ -8,7 +8,7 @@ Let's take the XRD we authored in our previous step, and use it to generate a co
 
 ## Scaffold the composition from the XRD
 In the root folder of your control plane project, run the [up composition generate]({{< ref
-"content/reference/cli/command-reference" >}}) command.
+"reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
