@@ -127,3 +127,136 @@ contains the generated models for your XRDs. You can build a project and then
 import that project as a dependency for the resources you define. You can also
 use your own project's models in your functions as described above.
 <!-- vale Google.WordList = YES -->
+
+## Optional and required fields
+
+Upbound's Python models know which resource fields Crossplane requires and which
+are optional.
+
+Required fields have a specific type, like `str` - a string.
+
+Python raises an exception if you create a model without supplying a required
+field. This can be a problem when updating the desired composite resource (XR).
+
+You should only include the fields your function has an opinion about when you
+update the desired XR. This can be a problem if for example Crossplane requires
+an XR spec field, but your function only wants to update a status field.
+
+When updating the desired XR, you can avoid issues due to required fields by
+using the resource's status model directly.
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+from model.com.example.platform.xstoragebucket import v1alpha1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    # Create a model of the XR's status.
+    desired_xr_status = v1alpha1.Status()
+
+    # Include any desired status from previous functions in the pipeline.
+    if "status" in req.desired.composite.resource:
+        desired_xr_status = v1alpha1.Status(**req.desired.composite.resource["status"])
+
+    # Update only the status field your function is concerned with.
+    desired_xr_status.replicas = 3
+
+    # Dump the model as a Python dictionary.
+    resource.update(rsp.desired.composite, {"status": desired_xr_status.model_dump()})
+```
+
+Optional fields have a union type with `None`, like `str | None`. This means the
+field can be a string, or `None` - Python's null value.
+
+Pydantic warns you when you copy a required field to an optional field.
+
+For example, Pydantic warns you if you try to copy an optional `spec.region`
+field from an XR to a required `spec.forProvider.region` field of an MR:
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from model.org.example.xstoragebucket import v1alpha1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+
+    desired_bucket = bucketv1beta1.Bucket(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="Bucket",
+        spec=bucketv1beta1.Spec(
+            forProvider=bucketv1beta1.ForProvider(
+                region=observed_xr.spec.region,  # Warning: Argument of type "str | None" cannot be assigned to parameter "region" of type "str"
+            ),
+        ),
+    )
+    resource.update(rsp.desired.resources["bucket"], desired_bucket)
+```
+
+You can address this warning two ways.
+
+If the optional field could really be `None`, handle that case by specifying a
+default value.
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from model.org.example.xstoragebucket import v1alpha1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+
+    region = "us-west-2"
+    if observed_xr.spec.region is not None:
+        region = observed_xr.spec.
+
+    desired_bucket = bucketv1beta1.Bucket(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="Bucket",
+        spec=bucketv1beta1.Spec(
+            forProvider=bucketv1beta1.ForProvider(
+                region=observed_xr.spec.region or "us-west-2",  # Default to "us-west-2" if region is None.
+            ),
+        ),
+    )
+    resource.update(rsp.desired.resources["bucket"], desired_bucket)
+```
+
+If the optional field won't really be `None` in practice, use a `type: ignore`
+comment to silence the warning.
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from model.org.example.xstoragebucket import v1alpha1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+
+    desired_bucket = bucketv1beta1.Bucket(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="Bucket",
+        from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+        metadata=metav1.ObjectMeta(
+            name=observed_xr.metadata.name + "-bucket", # type: ignore  # The observed XR will always have a name.
+        ),
+        spec=bucketv1beta1.Spec(
+            forProvider=bucketv1beta1.ForProvider(
+                region="us-west-2",
+            ),
+        ),
+    )
+    resource.update(rsp.desired.resources["bucket"], desired_bucket)
+```
