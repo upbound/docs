@@ -26,7 +26,74 @@ For this guide, you will need:
 - Visual Studio Code
 - KCL or Python VSCode Extension
 
+### Setup Up Project Github Action (Recommended)
+The `Up-Project-Action` Github Action is Upbound's recommended way of integrating your control plane projects to your CI workflow. The `Up-Project-Action` will install the `up` CLI tool, authenticate with Upbound using a personal access token, build the control plane project, and conditionally push to the Upbound Marketplace if you are working on your `main` branch. 
+
+```yaml
+    name: "up-project-action"
+    description: "installs up-cli, logs in, builds, and conditionally pushes the up project on main branch."
+    author: "upbound"
+    inputs:
+    channel:
+        description: "Channel for up-cli installation (e.g., main, stable)"
+        required: false
+        default: "stable"
+    version:
+        description: "Version for up-cli installation (e.g., specific version or 'current')"
+        required: false
+        default: "current"
+    up_token:
+        description: "Upbound Personal token for authentication"
+        required: true
+    endpoint:
+        description: ""
+        required: false
+        default: https://cli.upbound.io
+
+    runs:
+    using: "composite"
+    steps:
+        - name: Checkout Repository
+        uses: actions/checkout@v4
+
+        - name: install up cli
+        run: |
+            CHANNEL=${{ inputs.channel }}
+            VERSION=${{ inputs.version }}
+            ENDPOINT=${{ inputs.endpoint }}
+            echo "Installing up-cli from channel '$CHANNEL' with version '$VERSION'"
+            curl -sf $ENDPOINT | CHANNEL=$CHANNEL VERSION=$VERSION sh
+            chmod +x ./up
+            sudo mv ./up /usr/local/bin/up
+            up version
+        shell: bash
+
+        - name: login
+        run: |
+            echo "${{ inputs.up_token }}" | up login -t -
+        shell: bash
+        env:
+            UP_TOKEN: ${{ inputs.up_token }}
+
+        - name: build up project
+        run: |
+            up project build
+        shell: bash
+
+        - name: push up project
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: |
+            up project push
+        shell: bash
+        env:
+            UP_TOKEN: ${{ inputs.up_token }}
+```
+
+Note that for this Github Action to work, you'll need to add a private API token to your git repo. Robot tokens are not supported at this time.
+
 ### Install the `up` CLI
+If you've installed the `Up-Project-Action` Github Action, you may skip this step.
+
 To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
 {{< tabs >}}
   {{< tab "Binary" >}}
@@ -49,6 +116,8 @@ To verify your CLI installation and version, use the `up version` command:
 You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
 
 ### Login to Upbound
+If you've installed the `Up-Project-Action` Github Action, you may skip this step.
+
 Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
 
 ```shell
@@ -803,6 +872,8 @@ up project run
 This command will instantaneously create a development control plane in the cloud, and deploy your project's package to it. Now, you can validate your results through the Upbound Console, and make any changes to test your resources required.
 
 ## Step 6: Build and push your project to the Upbound Marketplace
+If you installed the `Up-Project-Action` Github Action, then you may skip this section as the following steps will be executed within your CI.
+
 When you're ready to share your work, you can build your project and publish it to the Upbound Marketplace with a few CLI commands.
 
 ### Building your control plane project
