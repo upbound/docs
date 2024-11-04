@@ -64,7 +64,7 @@ In this output, verify that the bucket name is listed under `"Buckets"`, along w
 
 ### Check bucket encryption
 
-To ensure that server-side encryption is enabled for your bucket, use the following command, replacing `<your-bucket-name>` with your bucket’s name:
+To make sure your bucket was created with the specified encryption policy, use the following command, replacing `<your-bucket-name>` with your bucket's name:
 
 ```bash
 aws s3api get-bucket-encryption --bucket <your-bucket-name>
