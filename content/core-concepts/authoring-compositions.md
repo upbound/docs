@@ -164,12 +164,14 @@ _items = [
 ```
 
 The statement in the `_items` variable is a fully functional KCL function. With
-the VSCode KCL extension and KCL language server, you'll get autocompletion,
+the VSCode KCL extension and KCL language server, you get autocompletion,
 linting, type errors, and more.
 
-In this function, your composite resources are captured in `oxr` and the
+In this example, the `oxr` assignment captures the composite resources and the
 function adds server side encryption to the buckets your deployment creates.
 
+<!-- vale gitlab.FutureTense = NO -->
 In the next guide, you'll run and test your composition.
+<!-- vale gitlab.FutureTense = YES -->
 
 For more KCL best practices, please refer to the [documentation]({{<ref "./kcl/overview.md">}}).

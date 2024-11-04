@@ -6,10 +6,7 @@ weight: 1
 
 Development control planes are a subset of Upbound's Managed Control Planes.
 Development control planes aim to help you in your Upbound journey and support
-your development loop, testing, and CI pipeline configuration. These
-resource-limited, short TTL control planes are a streamlined and cost effectice
-solution to test and calibrate their APIs and compositions without
-production-level overhead.
+your development loop, testing, and CI pipeline configuration. These resource-limited, short-TTL control planes offer a cost-effective way to test and calibrate APIs and compositions without production-level overhead.
 
 {{<hint>}}
 Development Control Planes are available in Cloud Hosted Spaces only.
@@ -35,13 +32,17 @@ Development control planes differ from standard control planes in several ways:
 
 * Near instantaneous provisioning.
 * Reduced resource allocation for cost-effectiveness.
-* Time-to-Live (TTL) for automatic cleanup. Dev control planes deploy with a
-  24-hour lifespan and get deleted after that timeframe.
+* Time-to-Live (TTL) for automatic cleanup. Development control planes deploy with a
+  24-hour lifespan and get deleted after that.
 * Hosted in the Upbound Cloud.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Limitations and considerations
+<!-- vale gitlab.HeadingContent = YES -->
 
+<!-- vale Microsoft.Contractions = NO -->
 Development control planes are **not** suitable for production workloads.
+<!-- vale Microsoft.Contractions = YES -->
 
 Upbound limits the number of concurrent development control planes you can
 create based on your account tier. Review our pricing for more information.

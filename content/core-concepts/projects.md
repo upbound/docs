@@ -8,9 +8,12 @@ description: "The basic concepts to help you on your Upbound journey"
 Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Create a project with the [up project init]({{< ref
 "reference/cli/command-reference" >}}) command. A control plane project houses the definition of your control plane.
 
-## The project file (upbound.yaml)
+## The project file
 
-Project files are where you define constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
+Projects require an `upbound.yaml` file which the `up project init` command
+creates automatically.
+
+Project files define the constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
 
 A typical `upbound.yaml` file looks like the following:
 
@@ -32,7 +35,7 @@ spec:
   source: github.com/upbound/project-template
 ```
 
-At a high level, you can think of a project defining your control plane as:
+The control plane project file defines:
 
 - your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
 - the implementation of those schemas, defined as Crossplane `compositions`.
@@ -42,7 +45,7 @@ At a high level, you can think of a project defining your control plane as:
 
 ## Project structure
 
-Upbound's tooling defines a default project structure as:
+When you initialize a project, the default project director structure is:
 
 ```bash
 .
@@ -70,16 +73,25 @@ Upbound's tooling defines a default project structure as:
 <!-- vale gitlab.Substitutions = YES -->
 ## Build and push a project
 
-Control plane projects are source-level representations of your control plane. Like any other software project, control plane projects require a **build stage** to assemble all parts of your project into a versioned artifact. Build a project with the [up project build]({{< ref
+Control plane projects are source-level representations of your control plane.
+Like any other software project, control plane projects require a **build
+stage** to assemble all parts of your project into a versioned artifact.
+
+Build a project with the [up project build]({{< ref
 "reference/cli/command-reference" >}}) command:
 
 ```bash
 up project build
 ```
 
-The output artifact is an OCI image with an `.uppkg` file type and it defaults to outputting at the `_output/` folder at the root of your project. The `.uppkg` file is a special kind of [Crossplane Configuration](https://docs.crossplane.io/v1.17/concepts/packages/).
+The output artifact is an OCI image with an `.uppkg` file type. The default
+build output is the `_output/` directory in your project.
+The `.uppkg` file is a special kind of [Crossplane
+Configuration](https://docs.crossplane.io/v1.17/concepts/packages/).
 
-You can push the project output to any OCI-compliant registry. You can push the package to a registry on the Upbound Marketplace with the [up project push]({{< ref
+You can push the project output to any OCI-compliant registry.
+
+To push the package to a registry on the Upbound Marketplace with the [up project push]({{< ref
 "reference/cli/command-reference" >}}) command:
 
 ```bash
@@ -93,4 +105,5 @@ New projects created with the command `up project init` scaffold a project from 
   - project-template `(https://github.com/upbound/project-template)`
   - project-template-ssh `(git@github.com:upbound/project-template.git)`
 
-Read the CLI documentation for examples.
+For more information, review the [CLI reference documentation](({{< ref
+"reference/cli/command-reference" >}})

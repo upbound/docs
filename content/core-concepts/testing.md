@@ -10,8 +10,8 @@ To run and test your control plane projects, run them on development control pla
 up project run
 ```
 
-This command will instantaneously create a development control plane in the cloud, and deploy your project's package to it. A development control plane is a lightweight, ephemeral control plane that are perfect for testing your Crossplane configurations.
+This command creates a development control plane in the Upbound cloud, and deploy your project's package to it. A development control plane is a lightweight, ephemeral control plane that are perfect for testing your Crossplane configurations.
 
-Now, you can validate your results, and make any changes to test your resources. 
+Now, you can validate your results, and make any changes to test your resources.
 
 For more information about development control planes, please read our documentation on development control planes.

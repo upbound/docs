@@ -4,10 +4,26 @@ weight: 3
 description: "Define your first API in your control plane project"
 ---
 
-Let's author your first API within your control plane project. APIs are defined by XRDs (composite resource definitions). The easiest way to generate an XRD is to start with a claim (XRC), then use the Up CLI to generate an XRD from it.
+Your control plane relies on an API to communicate with your external resources.
+You can create an API with a Composite Resource Definition (XRD). XRDs are API
+schemas that define the structure of your desired resources. You provide the
+fields and acceptable values and your control plane can communicate with your
+external systems based on that structure.
 
+<!-- vale Google.Headings = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+## Generate an XRD from a XRC
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
-## Generating an XRD from a XRC
+Instead of creating an XRD from scratch, you can create an XRD that's based on a
+Claim (XRC). Claims serve as the primary interface through which users provision
+resources. They define the minimal input parameters required from users, which
+the `up` CLI then interprets to generate a comprehensive resource
+configuration schema.
+
+### Generate an example claim
+
 In the root folder of your control plane project, run the [up example generate]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta): update CLI link --->
@@ -25,7 +41,7 @@ What is the metadata namespace?: default
 Successfully created resource and saved to examples/bucket/example.yaml
 ```
 
-After following the interactive steps, you should have an empty claim generated under examples/bucket/example.yaml. Next, open the claim file you generated, and paste in the content below.
+After following the interactive steps, you should have an empty claim generated under `examples/bucket/example.yaml`. Next, open the claim file you generated, and paste in the content below.
 
 ```yaml
 apiVersion: devexdemo.upbound.io/v1alpha1
@@ -38,14 +54,18 @@ spec:
   encrypted: true
   visibility: public
 ```
+<!-- vale Google.Headings = NO -->
+### Generate the XRD
+<!-- vale Google.Headings = YES -->
 
-Next, run the following command
+Next, run the `up xrd generate` command with the path to your example claim.
 
 ```shell
 up xrd generate examples/bucket/example.yaml
 ```
 
-Your XRD will be automatically generated for you inside `apis/xbuckets/definition.yaml`. You can check the contents of the XRD below.
+The `up` CLI automatically generates the XRD and places it in
+`apis/xbuckets/definition.yaml` in your directory. Open the XRD to examine the structure.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1

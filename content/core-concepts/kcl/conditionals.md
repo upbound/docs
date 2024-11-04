@@ -14,6 +14,7 @@ In your function, you can conditionally compose a resource based on a true or
 false parameter you set. The example below conditionally deploys a VPC. When
 `deployVPC` is true, your control plane continues the function to create the
 VPC. When false, the function skips the VPC creation.
+
 ```yaml
 import models.v1beta1 as v1beta1
 

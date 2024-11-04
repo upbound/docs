@@ -27,7 +27,7 @@ For this guide, you will need:
 - KCL or Python VSCode Extension
 
 ### Setup Up Project Github Action (Recommended)
-The `Up-Project-Action` Github Action is Upbound's recommended way of integrating your control plane projects to your CI workflow. The `Up-Project-Action` will install the `up` CLI tool, authenticate with Upbound using a personal access token, build the control plane project, and conditionally push to the Upbound Marketplace if you are working on your `main` branch. 
+The `Up-Project-Action` Github Action is Upbound's recommended way of integrating your control plane projects to your CI workflow. The `Up-Project-Action` will install the `up` CLI tool, authenticate with Upbound using a personal access token, build the control plane project, and conditionally push to the Upbound Marketplace if you are working on your `main` branch.
 
 Add the following action to your workflow to automatically build and push your control plane projects.
 
@@ -860,44 +860,64 @@ def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
 
 {{< /content-selector >}}
 
-When writing out your function, you'll see the magic at work. With the import statements of each function, we import in schemas that were automatically generated when we created the function. The VSCode extensions for KCL and Python were able to pick this up and provide you capabiltiies such as autocompletion, linting for type mismatches, missing variables and more.
 
-In a programmatic fashion, we were able to refer to our composite resources that we defined via our XRD, and wrote custom logic so that the bucket generated will have server side encryption. All that is left is to run and test our composition.
+When you create your function, the `up` CLI automatically add the import
+statements to bring the schemas into your function.
+The VSCode extensions for KCL and Python are able to pick this up and provide
+you additional capabilities such as autocompletion, linting for type mismatches, missing
+variables and more.
+
+With KCL or Python, you authored composite resources that you defined in the XRD
+and wrote custom logic to generate server-side encryption on your bucket.
+
+Next, run and test your composition.
 
 ## Step 5: Run and test your project
-Use the `up project run` command to run and test your control plane project on a development control plane that is hosted in the cloud by Upbound.
+
+Use the `up project run` command to run and test your control plane project on a
+development control plane hosted in Upbound's Cloud.
 
 ```shell
 up project run
 ```
 
-This command will instantaneously create a development control plane in the cloud, and deploy your project's package to it. Now, you can validate your results through the Upbound Console, and make any changes to test your resources required.
+This command creates a development control plane in the Upbound Cloud and deploys your project's package to it. Now, you can validate your results through the Upbound Console, and make any changes to test your resources required.
 
 ## Step 6: Build and push your project to the Upbound Marketplace
-If you installed the `Up-Project-Action` Github Action, then you may skip this section as the following steps will be executed within your CI.
 
-When you're ready to share your work, you can build your project and publish it to the Upbound Marketplace with a few CLI commands.
+If you installed the `Up-Project-Action` GitHub Action, skip this section as this is the manual process.
+
+When you're ready to share your work, you can build your project and publish it
+to the Upbound Marketplace with the `up` CLI.
 
 ### Building your control plane project
-Run:
+
+To build your control plane project, use the `up project build` command.
+
 ```shell
 up project build -t 1.0
 ```
-This command takes all of your project's dependencies and metadata, and builts it into a single OCI image at `_output/upbound-qs-1.uppkg`.
+This command takes your project's dependencies and metadata and compiles it into a single OCI image at `_output/upbound-qs-1.uppkg`.
 
 
 ### Pushing your control plane project to the Upbound Marketplace
-First, login to Upbound.
+
+Login to Upbound.
+
 ```shell
 up login
 ```
 
-Once you are logged in, run the following command.
+Next, push the project.
+
 ```shell
 up project push
 ```
 
-Your package is now pushed to the Upbound Marketplace!
+Your package is now pushed to the Upbound Marketplace.
 
 ## Try it out
-Now that our control plane project is set up, let's actually go create the resources in our CSP via Upbound's consumer portal by following the [Deploy with the Consumer portal]({{< ref "./comsumer-portal" >}}) tutorial.
+
+With your control plane project set up, go to Upbound's [Consumer Portal
+guide]({{< ref "./consumer-portal" >}}) to create resources in your cloud
+service provider.

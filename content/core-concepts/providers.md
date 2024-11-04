@@ -13,22 +13,22 @@ resources they can create as an API endpoint and result in managed resources.
 
 ## Upbound Marketplace
 
-The Upbound Marketplace is the central repository for provider information. At
-this point, it's useful to review your provider reference documentation here to
-determine what specific resources you need to create or the provider family
+The Upbound Marketplace is the central repository for provider information.
+Review your provider reference documentation here to determine what specific
+resources you need to create or the provider family
 group to look for.
 
 ### Provider families
 
-The AWS, Azure, and GCP providers are segmented into distinct resource areas
-under provider *families*. For instance, the `provider-family-aws` handles the
-`ProviderConfig` for your deployments, but your individual resources are managed
-by sub-providers like `provider-aws-s3`. When you install a sub-provider, the
+In the Marketplace segments the AWS, Azure, and GCP providers into distinct resource areas
+called **provider families**. For instance, the `provider-family-aws` handles the
+`ProviderConfig` for your deployments, but sub-providers like `provider-aws-s3`
+manages individual S3 resources. When you install a sub-provider, the
 root family provider is also installed automatically.
 
 ## Install a Provider
 
-Providers can be installed into your control plane project as a dependency or you can
+You can install providers into your control plane project as a dependency or you can
 use Helm to deploy directly to an Upbound control plane.
 
 ### `up` CLI
@@ -40,7 +40,7 @@ dependency` command.
 up add dependency xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
 
-In your `upbound.yaml` file, the provider information is captured in the
+In your `upbound.yaml` file, the provider information is in the
 `spec.dependsOn` value:
 
 ```yaml
@@ -84,7 +84,9 @@ GCP, and Azure have several options for authentication.
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
+<!-- vale Google.Headings = NO -->
 ### AWS
+<!-- vale Google.Headings = YES -->
 
 For more detailed instructions or alternate authentication methods, visit the
 [provider documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
