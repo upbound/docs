@@ -9,7 +9,10 @@ for your infrastructure. In this guide, you'll deploy that configuration through
 Upbound's Consumer Portal.
 
 The Consumer Portal is a self-service tool that you and users in your organization can use to
-deploy infrastructure based on claims and configurations you create.
+deploy infrastructure based on claims and configurations you create. This portal
+is what your developers interact with when they want to deploy infrastructure on your control plane
+platform. For more information on adding users to Upbound, review the [Identity
+Management guide]({{<ref "accounts/identity-management/users.md" >}})
 
 Follow the flow below to create a resource based on your claim.
 
