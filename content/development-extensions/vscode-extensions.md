@@ -1,5 +1,5 @@
 ---
-title: "Visual Studio Code Extension"
+title: "Visual Studio Code extensions"
 description: "Use popular Visual Studio Code extensions to author your Upbound
 configurations"
 ---
