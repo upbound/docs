@@ -17,14 +17,15 @@ Login to the [Upbound Console](console.upbound.io) and navigate to the Consumer
 Portal. You'll be redirected to the Consumer Experience portal, which only
 displays information necessary for consumers to deploy infrastructure.
 
-## Fill out a claim
+First, navigate to the Control Plane you created in the previous guides and
+select the claim resource. Add a name and create your resource. Follow the
+interactive guide below:
 
-
-## Create your resource
-
-!(screenshot of resource creation)
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.764294049008168; padding: 40px 0 40px 0;"><iframe src="https://app.supademo.com/embed/cm33dyzpz126i2617f7l062iy?embed_v=2" loading="lazy" title="Upbound Consumer Portal" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Modify a claim
+
+You can modify your resource directly from the Consumer Portal.
 
 ## Verify your resources
 
@@ -89,6 +90,13 @@ Consumer Portal user doesn't have to specify any additional information to get t
 
 ## Destroy your resources
 
+You can delete resources directly from the Consumer Portal. Select the resource
+you want to delete and go to **Settings** then select **Delete Resource**.
+
+Follow the interactive guide below:
+
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.764294049008168; padding: 40px 0 40px 0;"><iframe src="https://app.supademo.com/embed/cm33errz80001ci8b2b2xi0jc?embed_v=2" loading="lazy" title="Upbound Consumer Portal" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 To verify bucket deletion, run the AWS S3 CLI again.
 
 ```bash
@@ -105,3 +113,11 @@ aws s3api get-bucket-encryption --bucket <your-bucket-name>
 }
 ```
 
+
+## Next steps
+
+You just drove an entire deployment lifecycle with an Upbound control plane!
+Now you're ready to dive into more Upbound concepts.
+
+Check out the Core Concepts[/core-concepts/] section for more information about
+authoring compositions or configuration with Python and KCL.
