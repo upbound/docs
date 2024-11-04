@@ -21,4 +21,6 @@ By adopting Upbound, you gain:
 - Consistent deployment using GitOps principles
 
 ## Try it out
-In the next guide, you'll learn how to provision cloud resources in your preferred provider, leveraging the full capabilities of Upbound's cross-cloud infrastructure management.
+In the next guide, you'll learn how to provision cloud resources in your
+preferred provider. Follow [the guide]({{< ref "./create-controllers" >}}) to learn the full capabilities of Upbound's
+cross-cloud infrastructure management.
