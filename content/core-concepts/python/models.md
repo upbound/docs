@@ -119,7 +119,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
         },
     })
 ```
-
 {{</hint>}}
 
 ## Supported packages

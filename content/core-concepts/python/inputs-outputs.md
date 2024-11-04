@@ -3,54 +3,68 @@ title: "Pipeline inputs and outputs"
 weight: 25
 ---
 
-Functions require inputs and outputs to process requests and return values to
-your control plane.
+Crossplane sends requests to your functions to ask them what resources to
+compose for a given composite resource (XR). Your function answers with a
+response.
 
 ## Inputs
 
-Compositions execute in a pipeline of one or more sequential functions. A
+Compositions execute a pipeline of one or more sequential functions. A
 function updates desired resource state and returns it to Crossplane. Function
-requests and values rely on four pieces of information:
+requests contain four pieces of information:
 
 1. The observed state of the composite resource, and any composed resources.
 2. The desired state of the composite resource, and any composed resources.
 3. The function's input.
 4. The function pipeline's context.
 
-Each composition pipeline provides this information as _inputs_ into the function.
+Each composition pipeline provides this information as _inputs_ into the
+function.
 
-<!-- vale write-good.Passive = NO -->
-In Python, these four pieces of information are passed to the function as part
-of the `req: RunFunctionRequest` argument:
-<!-- vale write-good.Passive = YES -->
+Crossplane passes these pieces of information to the function as part of the
+`req: RunFunctionRequest` argument:
 
 ```python
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    observed = req.observed # Observed state
-    desired = req.desired   # Desired state
-    input = req.input       # Function input
-    context = req.context   # Function pipeline context
+    observed = req.observed     # Observed state
+    desired = req.desired       # Desired state
+    input = req.input           # Function input
+    context = req.context       # Function pipeline context
+    extra = req.extra_resources # Any extra resources the function pipeline requested
 ```
 
+{{<hint "tip">}}
+You can select the `RunFunctionRequest` object in Visual Studio Code to see what
+fields it has.
+
+The Python function SDK generates the `RunFunctionRequest` object from a
+protobuf definition. Read the
+[Python Generated Code Guide](https://protobuf.dev/reference/python/python-generated/)
+to learn about protobuf generated code.
+{{</hint>}}
+
 Most functions reference the observed composite resource (XR) to produce
-composed resources, typically managed resources (MRs). In Python, you can find the
-observed XR in `req.observed.composite.resource`.
+composed resources, typically managed resources (MRs). In Python, you can find
+the observed XR in `req.observed.composite.resource`.
 
 When you generate an embedded function with `up function generate`, the command
-creates a Python library that includes type definitions based on your XRDs. You can
-convert the observed XR to its Python type as follows:
+creates a Python library that includes type definitions based on your XRDs. You
+can convert the observed XR to its Python type as follows:
 
 ```python
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
 from .model.com.example.platform.xmytype import v1alpha1
+
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XMyType(**req.observed.composite.resource)
 ```
 
-After this, Visual Studio Code adds tab-completion and type checking when working with the XR.
+After this, Visual Studio Code adds tab-completion and type checking when
+working with the XR.
 
 ## Outputs
 
@@ -67,31 +81,63 @@ of outputs:
 Most functions produce a set of composed resources as part of the desired
 state.
 
-In Python, outputs are part of the `res: RunFunctionResponse` argument, which is
+In Python, outputs are part of the `rsp: RunFunctionResponse` argument, which is
 pre-populated with the request's desired state and context. A Python function
 only needs to update any fields in these objects that it wishes to change.
 
-You can add or update composed resources using the `resource.updater` helper
+{{<hint "tip">}}
+You can select the `RunFunctionResponse` object in Visual Studio Code to see
+what fields it has.
+
+The Python function SDK generates the `RunFunctionResponse` object from a
+protobuf definition. Read the
+[Python Generated Code Guide](https://protobuf.dev/reference/python/python-generated/)
+to learn about protobuf generated code.
+{{</hint>}}
+
+You can add or update composed resources using the `resource.update` helper
 function in the Crossplane Python SDK:
 
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
+
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     composed = ... # Construct a composed resource
-    resource.update(rsp.desired.resources[composed.metadata.name], composed)
+    resource.update(rsp.desired.resources["my-resource"], composed)
 ```
 
 Similarly, you can update the status of the composite resource by updating it in
 the response:
 
 ```python
+from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
 from .model.com.example.platform.xmytype import v1alpha1
+
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XMyType(**req.observed.composite.resource)
     observed_xr.status.someInformation = "cool-status"
     resource.update(rsp.desired.composite.resource, observed_xr)
 ```
+
+{{<hint "tip">}}
+If you don't want to use a model, you can also pass `resource.update` a Python
+dictionary.
+
+```python
+from crossplane.function import resource
+from crossplane.function.proto.v1 import run_function_pb2 as fnv1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+    resource.update(rsp.desired.composite.resource, {
+        "status: {
+            "replicas": 3,
+        },
+    })
+```
+{{</hint>}}
