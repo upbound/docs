@@ -7,7 +7,9 @@ description: "Define your first composition in your control plane project"
 Let's take the XRD we authored in our previous step, and use it to generate a composition.
 
 ## Scaffold the composition from the XRD
-In the root folder of your control plane project, run the [up composition generate]() command.
+In the root folder of your control plane project, run the [up composition generate]({{< ref
+"content/reference/cli/command-reference" >}}) command.
+<!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
 up composition generate apis/xbuckets/definition.yaml
@@ -103,7 +105,7 @@ _items = [
   v1beta1.BucketVersioning {
     spec.forProvider: {
         bucketRef.name = oxr.metadata.name
-    } 
+    }
    }   if oxr.spec.versioning and oxr.status.conditions == 'True' else {}
 
    v1beta1.BucketServerSideEncryptionConfiguration {
@@ -112,7 +114,7 @@ _items = [
         rule: [
           {
             applyServerSideEncryptionByDefault: [
-                { 
+                {
                     sseAlgorithm = "AES256"
                 }
             ]

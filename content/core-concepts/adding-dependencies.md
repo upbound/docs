@@ -31,7 +31,9 @@ The `spec.dependsOn` field is where all the dependencies of the control plane pr
 Now let's add new dependencies.
 
 ## Adding a Provider
-Providers can be installed into your Upbound project as a dependency via the [up dependency add]() command.
+Providers can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
+"content/reference/cli/command-reference" >}}) command.
+<!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
@@ -58,7 +60,9 @@ spec:
   repository: xpkg.upbound.io/<userOrg>/<userProject>
 ```
 ## Adding a Function
-Functions can be installed into your Upbound project as a dependency via the [up dependency add]() command.
+Functions can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
+"content/reference/cli/command-reference" >}}) command.
+<!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
 up dependency add xpkg.upbound.io/crossplane-contrib/function-status-transformer:v0.4.0
@@ -88,7 +92,9 @@ spec:
 ```
 
 ## Adding a Configuration
-Configurations can be installed into your Upbound project as a dependency via the [up dependency add]() command.
+Configurations can be installed into your Upbound project as a dependency via the [up dependency add]({{< ref
+"content/reference/cli/command-reference" >}}) ({{< ref
+"content/reference/cli/command-reference" >}}) command.
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0
@@ -122,8 +128,17 @@ spec:
 ## Managing dependency versions
 There are a few ways to managing dependency versions within your control plane project.
 
-1. In your `upbound.yaml` file, you can update the versions of your dependencies, and then run the [up dependency update-cache]() command
+1. In your `upbound.yaml` file, you can update the versions of your dependencies, and then run the [up dependency update-cache]({{< ref
+"content/reference/cli/command-reference" >}}) command.
+<!--- TODO(tr0njavolta): update CLI ref link --->
 
-2. You can rerun the [up dependency add]() command with the new version provided for a specific dependency. This will update the dependency cache automatically.
+2. You can rerun the [up dependency add]({{< ref
+"content/reference/cli/command-reference" >}}) command with the new version
+provided for a specific dependency. This will update the dependency cache
+automatically.
+<!--- TODO(tr0njavolta): update CLI ref link --->
 
-If you wish to wipe the entire dependency cache to a clean state, you can run the [up dependency clean-cache]() command.
+If you wish to wipe the entire dependency cache to a clean state, you can run
+the [up dependency clean-cache]({{< ref
+"content/reference/cli/command-reference" >}}) command.
+<!--- TODO(tr0njavolta) update CLI ref link --->

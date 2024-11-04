@@ -8,12 +8,14 @@ Let's author your first API within your control plane project. APIs are defined 
 
 
 ## Generating an XRD from a XRC
-In the root folder of your control plane project, run the [up example generate]() command.
+In the root folder of your control plane project, run the [up example generate]({{< ref
+"content/reference/cli/command-reference" >}}) command.
+<!--- TODO(tr0njavolta): update CLI link --->
 
 ```shell
 up example generate
 
-What do you want to create?: 
+What do you want to create?:
   > Composite Resource Claim (XRC)
 What is your Composite Resource Claim (XRC) named?: Bucket
 What is the API group named?: devexdemo.upbound.io

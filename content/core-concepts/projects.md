@@ -5,11 +5,12 @@ description: "The basic concepts to help you on your Upbound journey"
 ---
 
 <!-- vale gitlab.Substitutions = NO -->
-Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Create a project with the [up project init]() command. A control plane project houses the definition of your control plane.
+Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Create a project with the [up project init]({{< ref
+"content/reference/cli/command-reference" >}}) command. A control plane project houses the definition of your control plane.
 
 ## The project file (upbound.yaml)
 
-Project files are where you define constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from. 
+Project files are where you define constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
 
 A typical `upbound.yaml` file looks like the following:
 
@@ -36,7 +37,7 @@ At a high level, you can think of a project defining your control plane as:
 - your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
 - the implementation of those schemas, defined as Crossplane `compositions`.
 - any dependencies your control plane has, such as on providers, composition functions, or configuration packages.
-- compositions functions, which are modules referenced by your compositions that define how to compose resources. 
+- compositions functions, which are modules referenced by your compositions that define how to compose resources.
 - example manifests for your API, so you can conduct testing as part of your inner-loop development.
 
 ## Project structure
@@ -47,21 +48,21 @@ Upbound's tooling defines a default project structure as:
 .
 ├── upbound.yaml # Your control plane project is defined here
 ├── apis/ # Each API (XRD and composition) are defined here
-│   ├── SuperBucket/ 
+│   ├── SuperBucket/
 │   │   ├── definition.yaml
 │   │   └── composition.yaml
-│   ├── SuperDatabase/ 
+│   ├── SuperDatabase/
 │   │   ├── definition.yaml
 │   │   └── composition.yaml
 ├── functions/ # Define reusable function modules used by compositions
 │   ├── bucketFunction/
-│   │   └── main.k 
+│   │   └── main.k
 │   ├── databaseFunction/
 │   │   └── main.py
 ├── examples/ # Define example manifests for your API
-│   ├── SuperBucket/ 
+│   ├── SuperBucket/
 │   │   └── example.yaml
-│   ├── SuperDatabase/ 
+│   ├── SuperDatabase/
 │   │   └── example.yaml
 └── _output/ # "up project build" places the OCI image output here.
 ```
@@ -69,7 +70,8 @@ Upbound's tooling defines a default project structure as:
 <!-- vale gitlab.Substitutions = YES -->
 ## Build and push a project
 
-Control plane projects are source-level representations of your control plane. Like any other software project, control plane projects require a **build stage** to assemble all parts of your project into a versioned artifact. Build a project with the [up project build]() command: 
+Control plane projects are source-level representations of your control plane. Like any other software project, control plane projects require a **build stage** to assemble all parts of your project into a versioned artifact. Build a project with the [up project build]({{< ref
+"content/reference/cli/command-reference" >}}) command:
 
 ```bash
 up project build
@@ -77,7 +79,8 @@ up project build
 
 The output artifact is an OCI image with an `.uppkg` file type and it defaults to outputting at the `_output/` folder at the root of your project. The `.uppkg` file is a special kind of [Crossplane Configuration](https://docs.crossplane.io/v1.17/concepts/packages/).
 
-You can push the project output to any OCI-compliant registry. You can push the package to a registry on the Upbound Marketplace with the [up project push]() command:
+You can push the project output to any OCI-compliant registry. You can push the package to a registry on the Upbound Marketplace with the [up project push]({{< ref
+"content/reference/cli/command-reference" >}}) command:
 
 ```bash
 up project push
