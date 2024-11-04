@@ -28,4 +28,4 @@ When using KCL embedded functions, these pieces of information are accessible us
 - Read the **DesiredComposedResources** from `option("params").dcds`
 - Read the **function pipeline's context** from `option("params").ctx`
 
-You can use these variables to do interesting things, such as to [extract data](./resource-data-extraction.md) from composed resources or [write status](./write-status-to-composite.md) to the composite resource.
+You can use these variables to do interesting things, such as to [extract data]({{<ref "resource-data-extraction">}}) from composed resources or [write status]({{<ref "write-status-to-composite">}}) to the composite resource.

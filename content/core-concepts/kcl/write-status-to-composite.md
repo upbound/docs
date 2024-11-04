@@ -9,7 +9,7 @@ the procession of the function pipeline.
 
 ## Write a status to the Composite Resource
 
-To write status to the Composite Resource associated with the composition function pipeline, capture the value of the composite resource to a local variable. Append information to the status of the XR. Return the patched XR as an item to be composed by the function.
+To write status to the Composite Resource associated with the composition function pipeline, capture the value of the composite resource to a local variable. Append information to the status of the XR. Return the patched XR as an item so it gets composed.
 
 Here's an example:
 
@@ -35,4 +35,4 @@ bucket = v1beta1.Bucket {
 items = [bucket, dxr]
 ```
 
-The status fields you write to in your function should be described in the XRD corresponding to the composition.
+Make sure you've described the status fields you write to in your function in the XRD corresponding to the composition.

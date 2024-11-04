@@ -3,7 +3,6 @@ title: "Pipeline inputs and outputs"
 weight: 25
 ---
 
-
 Functions require inputs and outputs to process requests and return values to
 your control plane.
 
@@ -15,8 +14,8 @@ requests and values rely on four pieces of information:
 
 1. The observed state of the composite resource, and any composed resources.
 2. The desired state of the composite resource, and any composed resources.
-3. The function’s input.
-4. The function pipeline’s context.
+3. The function's input.
+4. The function pipeline's context.
 
 Each composition pipeline provides this information as _inputs_ into the function.
 
@@ -37,7 +36,7 @@ dcds = option("params").dcds
 items = []
 ```
 
-Check out [read pipeline state](./read-pipeline-state.md) for more details.
+Check out [read pipeline state]({{<ref "read-pipeline-state">}}) for more details.
 
 ## Outputs
 
@@ -71,10 +70,10 @@ _items = [
 items = _items
 ```
 
-The `items` variable should contain only valid composed resource objects, otherwise the function will fail and emit an error like below:
+The `items` variable should contain only valid composed resource objects, otherwise the function fails and emits an error like below:
 
 ```bash
 cannot compose resources: cannot generate a name for composed resource "": Object 'Kind' is missing in 'unstructured object has no kind'
 ```
 
-This can happen when the `items` array is mistakingly populated by the wrong data.
+This can happen when the `items` array is mistakenly populated by the wrong data.

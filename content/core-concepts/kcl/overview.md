@@ -3,7 +3,7 @@ title: "Overview"
 weight: -1
 ---
 
-Upbound supports defining your control plane APIs in [KCL](https://www.kcl-lang.io/), an open-source constraint-based record & functional language.
+Upbound supports defining your control plane APIs in [KCL](https://www.kcl-lang.io/), an open source constraint-based record and functional language.
 
 ## Prerequisites
 
@@ -149,8 +149,10 @@ spec:
 
 {{< /tabs >}}
 
-## Control Plane Project Model
+## Control plane project model
 
-The Upbound programming model defines the core concepts you will use when creating your control plane using Upbound. [Concepts](/core-concepts/) describes these concepts with examples available in KCL. The documentation under the [KCL](/core-concepts/kcl) section contains guidance specifically for how to use the KCL language to do Crossplane-specific tasks. Read the [KCL reference docs](https://www.kcl-lang.io/docs/reference/lang/tour) for comprehensive instruction.
+The Upbound programming model defines the core concepts you can use when creating your control plane using Upbound. [Concepts](/core-concepts/) describes these concepts with examples available in KCL. The documentation under the [KCL](/core-concepts/kcl) section contains guidance specifically for how to use the KCL language to do Crossplane-specific tasks. Read the [KCL reference docs](https://www.kcl-lang.io/docs/reference/lang/tour) for comprehensive instruction.
 
+<!-- vale off -->
 The KCL experience is made available thanks to the [function-kcl](https://github.com/crossplane-contrib/function-kcl) function.
+<!-- vale on -->

@@ -3,7 +3,7 @@ title: "Resource data extraction"
 weight: 70
 ---
 
-## Extract Data from the Composite Resource
+## Extract data from the composite resource
 
 To extract data from the Composite Resource (XR) associated with the composition function pipeline, you can use the `option("params").oxr` variable. Here's an example that demonstrates extracting data from the `.spec` of an XR to set the value of composed resource:
 

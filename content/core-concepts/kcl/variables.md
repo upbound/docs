@@ -4,7 +4,7 @@ weight: 40
 ---
 
 This guide describes how to define and use variables in your KCL function.
-Variables can simplify your composition function and keep your code DRY. You can
+Variables can simplify your composition function and reduce repetition in your code. You can
 define complex expressions as a variable and reference that variable throughout
 your function.
 
@@ -31,7 +31,7 @@ myresource = v1beta1.Instance {
 }
 ```
 
-In KCL, you don't need to specify the variable data type. The type is inferred
+In KCL, you don't need to specify the variable data type. KCL infers the type
 from the value.
 
 ## Special variables
@@ -39,8 +39,8 @@ from the value.
 The `items` and the `options` variables are important required variables in your
 KCL embedded function.
 
-The special [items]({{<ref "inputs-outputs#outputs">}}) variable is required to
-capture the desired state of your resources and passing those changes to your
-control plane to create or modify.
+KCL functions requore the special [items]({{<ref "inputs-outputs#outputs">}}) variable to
+capture the desired state of your resources and pass those changes to your
+control plane to create or change.
 The special [options]({{<ref "read-pipeline-state">}}) variables provides
 context specific information to use in your function.

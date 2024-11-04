@@ -7,12 +7,11 @@ Upbound supports defining your control plane in the Python language.
 
 Install [Python](https://www.python.org/downloads/).
 
-## Control Plane Project Model
+## Control plane project model
 
-The Upbound programming model defines the core concepts you will use when creating your control plane using Upbound. [Concepts]() describes these concepts with examples available in Python.
+The Upbound programming model defines the core concepts you can use when creating your control plane using Upbound. [Concepts]() describes these concepts with examples available in Python.
 
+<!-- vale off -->
 The Python experience is made available thanks to the python-interpreter function.
+<!-- vale on -->
 
-## Inputs and Outputs
-
-The Upbound programming model includes a core concept of Input and Output values, which are used to track how outputs of one resource flow in as inputs to another resource. This concept is important to understand when getting started with Python and Upbound, and the Inputs and Outputs documentation is recommended to get a feel for how to work with this core part of Upbound in common cases.

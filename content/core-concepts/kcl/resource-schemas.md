@@ -39,7 +39,9 @@ items = _items
 The `import` stanza in your function allows you to manually import schemas. The
 KCL VSCode extension can also parse the imported schemas for the same benefits.
 
+<!-- vale off -->
 ## Schema-powered experiences in an IDE
+<!-- vale on -->
 
 To take full advantage of the KCL IDE experience with resource schemas, you need
 to declare the resource type. Here's an example:
@@ -71,7 +73,7 @@ _items = [
 items = _items
 ```
 
-When your cursor is inside the stanza of the `v1beta1.Instance`, your IDE will provide code completion, context hints, and more tailored to that resource type.
+When your cursor is inside the stanza of the `v1beta1.Instance`, your IDE provides code completion, context hints, and more tailored to that resource type.
 
 ## Supported packages
 
