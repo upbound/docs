@@ -28,12 +28,12 @@ root family provider is also installed automatically.
 
 ## Install a Provider
 
-Providers can be installed into your Upbound project as a dependency or you can
+Providers can be installed into your control plane project as a dependency or you can
 use Helm to deploy directly to an Upbound control plane.
 
 ### `up` CLI
 
-In your Upbound project file, you can add your providers with the `up add
+In your control plane project file, you can add your providers with the `up add
 dependency` command.
 
 ```shell
