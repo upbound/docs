@@ -33,7 +33,7 @@ oxr = option("params").oxr
 
 _items = [
     v1beta1.Instance {
-      metadata: _metadata
+      metadata: _metadata("vm-instance")
       spec.forProvider = {
           associatePublicIpAddress: True
           instanceType: "t3.micro"
@@ -151,6 +151,6 @@ spec:
 
 ## Control Plane Project Model
 
-The Upbound programming model defines the core concepts you will use when creating your control plane using Upbound. [Concepts](/core-concepts/) describes these concepts with examples available in KCL.
+The Upbound programming model defines the core concepts you will use when creating your control plane using Upbound. [Concepts](/core-concepts/) describes these concepts with examples available in KCL. The documentation under the [KCL](/core-concepts/kcl) section contains guidance specifically for how to use the KCL language to do Crossplane-specific tasks. Read the [KCL reference docs](https://www.kcl-lang.io/docs/reference/lang/tour) for comprehensive instruction.
 
 The KCL experience is made available thanks to the [function-kcl](https://github.com/crossplane-contrib/function-kcl) function.

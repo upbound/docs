@@ -15,7 +15,7 @@ _metadata = lambda name: str -> any {
 }
 
 myBucket = v1beta1.Bucket {
-    metadata: _metadata
+    metadata: _metadata("my-bucket")
     spec.forProvider.region = option("oxr").spec.region
 }
 ```

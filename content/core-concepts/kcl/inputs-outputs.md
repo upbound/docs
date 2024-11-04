@@ -57,7 +57,7 @@ oxr = option("params").oxr
 
 _items = [
     v1beta1.Instance {
-        metadata: _metadata
+        metadata: _metadata("virtual-machine")
         spec.forProvider = {
             associatePublicIpAddress: True
             ipv6Addresses: ["192.168.1.1"]
