@@ -38,8 +38,13 @@ package's resource names. Import models to your `main.py` function file with the
 following syntax:
 
 ```python
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
 ```
+
+{{<hint "tip">}}
+The period prefix on `.model` is important. It tells Python to look for the
+model package in the same directory as `main.py`.
+{{</hint>}}
 
 ## Use model in a function
 
@@ -53,8 +58,8 @@ linting, and autocompletion:
 ```python
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.com.example.platform.xmytype import v1alpha1
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.com.example.platform.xmytype import v1alpha1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -68,7 +73,7 @@ Use `resource.update` to add composed resources to the function's response:
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.io.upbound.aws.s3.bucket import v1beta1
+from .model.io.upbound.aws.s3.bucket import v1beta1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -89,7 +94,7 @@ You can also use `resource.update` to update the desired XR:
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.com.example.platform.xmytype import v1alpha1
+from .model.com.example.platform.xmytype import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -149,7 +154,7 @@ using the resource's status model directly.
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.platform.xstoragebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -179,8 +184,8 @@ field from an XR to a required `spec.forProvider.region` field of an MR:
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
-from model.org.example.xstoragebucket import v1alpha1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.org.example.xstoragebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -200,15 +205,15 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 You can address this warning two ways.
 
-If the optional field could really be `None`, handle that case by specifying a
-default value.
+If the optional field could be `None` in practice, handle that case by
+specifying a default value.
 
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
-from model.org.example.xstoragebucket import v1alpha1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.org.example.xstoragebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -230,16 +235,16 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     resource.update(rsp.desired.resources["bucket"], desired_bucket)
 ```
 
-If the optional field won't really be `None` in practice, use a `type: ignore`
-comment to silence the warning.
+If the optional field can't be `None` in practice, use a `type: ignore` comment
+to silence the warning.
 
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
-from model.org.example.xstoragebucket import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.org.example.xstoragebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -248,7 +253,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     desired_bucket = bucketv1beta1.Bucket(
         apiVersion="s3.aws.upbound.io/v1beta1",
         kind="Bucket",
-        from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+        from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
         metadata=metav1.ObjectMeta(
             name=observed_xr.metadata.name + "-bucket", # type: ignore  # The observed XR will always have a name.
         ),

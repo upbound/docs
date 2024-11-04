@@ -356,12 +356,12 @@ items = _items
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.com.example.platform.xstoragebucket import v1alpha1
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
-from model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
-from model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
-from model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
+from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
+from .model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
+from .model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
@@ -508,10 +508,10 @@ items = _items
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.com.example.platform.xstoragecontainer import v1alpha1
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
-from model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
+from .model.com.example.platform.xstoragecontainer import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
+from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageContainer(**req.observed.composite.resource)
@@ -609,10 +609,10 @@ items = _items
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.com.example.platform.xstoragebucket import v1alpha1
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
-from model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
+from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):

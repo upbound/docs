@@ -106,7 +106,7 @@ Open the `main.py` function file in Visual Studio Code.
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from model.io.upbound.aws.s3.bucket import v1beta1
+from .model.io.upbound.aws.s3.bucket import v1beta1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     # Specify an S3 Bucket, using a generated model.
