@@ -1,6 +1,7 @@
 ---
 title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
+weight: 1
 ---
 
 Now that you have a conceptual understanding of Upbound, let's get hands-on. In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
