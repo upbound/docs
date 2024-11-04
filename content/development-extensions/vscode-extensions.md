@@ -20,7 +20,17 @@ Upbound supports Python and KCL schemas.
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
+or go to the
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 in VSCode.
+
+You'll also need a Python interpreter v3.12 installed on your machine.
+https://code.visualstudio.com/docs/python/python-tutorial#_install-a-python-interpreter.
+
+
+Create a [virtual environment](https://code.visualstudio.com/docs/python/environments#_using-the-create-environment-command)
+to make sure the extension uses the correct version.
+
 <!-- /Python -->
 <!-- KCL -->
 
