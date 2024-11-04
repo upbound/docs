@@ -49,19 +49,13 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     # Load the observed XR into a Pydantic model.
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
 
-    # The XR's region isn't a required field - it could be omitted.
-    # Handle this by setting a default value of "us-west-2".
-    region = "us-west-2"
-    if observed_xr.spec.region is not None:
-        region = observed_xr.spec.region
-
     # Tell Crossplane to compose an S3 bucket.
     desired_bucket = bucketv1beta1.Bucket(
         apiVersion="s3.aws.upbound.io/v1beta1",
         kind="Bucket",
         spec=bucketv1beta1.Spec(
             forProvider=bucketv1beta1.ForProvider(
-                region=region,
+                region=observed_xr.spec.region or "us-west-2",
             ),
         ),
     )
