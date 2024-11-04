@@ -13,7 +13,7 @@ arrays or collections to assign unique names. KCL sets it equal to `.metadata.na
 
 ## Loop syntax
 
-KCL supports [comprehensions](https://www.kcl-lang.io/docs/reference/lang/spec/expressions#list-expressions), which lets users construct a list or dictionary value by looping over one or more iterable items and evaluating an expression.
+KCL supports [comprehensions](https://www.kcl-lang.io/docs/reference/lang/spec/expressions#list-expressions), which lets users construct a list or dictionary value by looping over one or more items and evaluating an expression.
 
 An example loop follows the syntax below:
 

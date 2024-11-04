@@ -39,7 +39,7 @@ from the value.
 The `items` and the `options` variables are important required variables in your
 KCL embedded function.
 
-KCL functions requore the special [items]({{<ref "inputs-outputs#outputs">}}) variable to
+KCL functions require the special [items]({{<ref "inputs-outputs#outputs">}}) variable to
 capture the desired state of your resources and pass those changes to your
 control plane to create or change.
 The special [options]({{<ref "read-pipeline-state">}}) variables provides
