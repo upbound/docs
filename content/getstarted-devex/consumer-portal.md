@@ -25,7 +25,11 @@ interactive guide below:
 
 ## Modify a claim
 
-You can modify your resource directly from the Consumer Portal.
+You can modify your resource directly from the Consumer Portal. Navigate to the
+resource and go to **Details**. From here, you can edit the fields or select
+**Edit YAML** and create additional YAML specifications.
+
+<div style="position: relative; box-sizing: content-box; max-height: 80vh; max-height: 80svh; width: 100%; aspect-ratio: 1.764294049008168; padding: 40px 0 40px 0;"><iframe src="https://app.supademo.com/embed/cm33flbir015fnf6c7d9sgt5k?embed_v=2" loading="lazy" title="New Demo" allow="clipboard-write" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ## Verify your resources
 
@@ -112,7 +116,6 @@ aws s3api get-bucket-encryption --bucket <your-bucket-name>
     }
 }
 ```
-
 
 ## Next steps
 
