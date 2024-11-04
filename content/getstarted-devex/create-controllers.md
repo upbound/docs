@@ -898,3 +898,6 @@ up project push
 ```
 
 Your package is now pushed to the Upbound Marketplace!
+
+## Try it out
+Now that our control plane project is set up, let's actually go create the resources in our CSP via Upbound's consumer portal by following the [Deploy with the Consumer portal]({{< ref "./comsumer-portal" >}}) tutorial.
