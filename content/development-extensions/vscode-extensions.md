@@ -17,6 +17,8 @@ Upbound supports Python and KCL schemas.
 
 ## Installation
 
+<!-- vale gitlab.SentenceSpacing = NO -->
+
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
@@ -24,8 +26,10 @@ or go to the
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 in VSCode.
 
+<!-- vale gitlab.FutureTense = NO -->
 You'll also need a Python interpreter v3.12 installed on your machine.
 https://code.visualstudio.com/docs/python/python-tutorial#_install-a-python-interpreter.
+<!-- vale gitlab.FutureTense = YES -->
 
 
 Create a [virtual environment](https://code.visualstudio.com/docs/python/environments#_using-the-create-environment-command)
@@ -107,8 +111,11 @@ vpc = {
 
 Real-time linting ensures:
 
-- Property types are correctly matched
-- Managed Resource required fields are popluated
+<!-- vale write-good.Passive = NO -->
+
+- Property types are matched
+- Managed Resource required fields are populated
+<!-- vale write-good.Passive = YES -->
 
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
@@ -143,6 +150,7 @@ vpc = {
 <!-- /KCL -->
 {{</ content-selector >}}
 
+<!-- vale Microsoft.Auto = NO -->
 
 ### Auto-completion
 
@@ -182,7 +190,9 @@ vpc = {
 
 ### Auto-generate composed resources
 
-Quickly scaffold a new Managed Resource by using the auto-generate feature.
+Scaffold a new Managed Resource by using the auto-generate feature.
+
+<!-- vale Microsoft.Auto = YES -->
 
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
@@ -264,12 +274,13 @@ subnet = {
 <!-- /KCL -->
 {{</ content-selector >}}
 
+<!-- vale gitlab.SentenceSpacing = YES -->
+
 
 ## Troubleshooting
 
 If you're not seeing the enhanced features:
 
 - Ensure you're using an official Upbound provider with bundled schemas.
-- Check that the provider version in your upbound.yaml file matches the installed provider version.
+- Check that the provider version in your `upbound.yaml` file matches the installed provider version.
 - Reload your VSCode window or restart VSCode.
-

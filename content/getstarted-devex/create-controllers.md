@@ -3,8 +3,11 @@ title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
 weight: 1
 ---
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
 
-Now that you have a conceptual understanding of Upbound, let's get hands-on. In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
+In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
 
 By the end of this guide, you'll have:
 
@@ -18,7 +21,7 @@ This approach allows you to efficiently manage cloud resources across multiple p
 ## Step 0: Prerequisites
 This guide assumes you are already familiar with AWS, Azure, or GCP.
 
-For this guide, you will need:
+For this guide, you'll need:
 - The Up CLI installed
 - An Upbound free-tier account
 - A cloud provider account with administrative access
@@ -26,8 +29,13 @@ For this guide, you will need:
 - Visual Studio Code
 - KCL or Python VSCode Extension
 
-### Setup Up Project Github Action (Recommended)
-The `Up-Project-Action` Github Action is Upbound's recommended way of integrating your control plane projects to your CI workflow. The `Up-Project-Action` will install the `up` CLI tool, authenticate with Upbound using a personal access token, build the control plane project, and conditionally push to the Upbound Marketplace if you are working on your `main` branch.
+### Create a project GitHub action
+
+The `Up-Project-Action` GitHub Action the recommended CI integration workflow
+for your project. The `Up-Project-Action` installs the `up` CLI tool, authenticate with
+Upbound using a personal access token, build the control plane project, and
+conditionally push to the Upbound Marketplace if you are working on your `main`
+branch.
 
 Add the following action to your workflow to automatically build and push your control plane projects.
 
@@ -91,10 +99,12 @@ Add the following action to your workflow to automatically build and push your c
             UP_TOKEN: ${{ inputs.up_token }}
 ```
 
-Note that for this Github Action to work, you'll need to add a private API token to your git repo. Robot tokens are not supported at this time.
+{{< hint "important">}}
+This GitHub Action requires a private API token in your git repo. Robot tokens aren't supported at this time.
+{{</hint>}}
 
 ### Install the `up` CLI
-If you've installed the `Up-Project-Action` Github Action, you may skip this step.
+If you've installed the `Up-Project-Action` GitHub Action, you may skip this step.
 
 To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
 {{< tabs >}}
@@ -118,7 +128,7 @@ To verify your CLI installation and version, use the `up version` command:
 You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
 
 ### Login to Upbound
-If you've installed the `Up-Project-Action` Github Action, you may skip this step.
+If you've installed the `Up-Project-Action` GitHub Action, you may skip this step.
 
 Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
 
@@ -127,7 +137,7 @@ Authenticate your CLI with your Upbound account by using the login command. This
 ```
 
 ## Step 1: Create a new project
-Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding. Previously, this would require manually creating directories, writing configuration files, and manually defining resources.
+Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding.
 
 ### Init the project
 ```shell
@@ -159,7 +169,7 @@ spec:
   repository: xpkg.upbound.io/example/project-template
   dependsOn: []
 ```
-
+<!-- vale write-good.TooWordy = NO -->
 {{< table >}}
 | Field        | Description                                              |
 | ------------ | -------------------------------------------------------- |
@@ -167,12 +177,19 @@ spec:
 | `kind`       | Defines the type of Upbound package                      |
 | `metadata`   | Contains metadata like name or additional annotations    |
 {{</ table >}}
+<!-- vale write-good.TooWordy = YES -->
+
 
 ## Step 2: Add project dependencies
+<!-- vale gitlab.SentenceSpacing = NO -->
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
-<!-- AWS -->
+
+<!-- vale Google.Headings = NO -->
+
 ### Add the AWS RDS provider
+<!-- vale write-good.TooWordy = YES -->
+
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
@@ -191,9 +208,11 @@ up dependency add xpkg.upbound.io/upbound/provider-azure-storage:v1.7.0
 up dependency add xpkg.upbound.io/upbound/provider-gcp-storage:v1.8.3
 ```
 <!-- /GCP -->
+
 {{< /content-selector >}}
 
-The **provider** in your project creates external resources for Upbound to manage. Functions add logic to automate complex provisioning processes. After adding these dependencies, your `upbound.yaml` file's `dependsOn` section should reflect the changes.
+Providers in your project create external resources for Upbound to
+manage. Functions add logic to automate complex provisioning processes. After adding these dependencies, your `upbound.yaml` file's `dependsOn` section should reflect the changes.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 <!-- AWS -->
@@ -227,7 +246,9 @@ spec:
 ### Create provider credentials
 Your project configuration now includes your provider dependency and requires an authentication method.
 
+<!-- vale Microsoft.Terms = NO -->
 A `ProviderConfig` is a custom resource that defines how your control plane authenticates and connects with cloud providers like AWS. It acts as a configuration bridge between your control plane's managed resources and the cloud provider's API.
+<!-- vale Microsoft.Terms = YES -->
 
 {{<hint>}}
   For more detailed instructions or alternate authentication methods, visit the [provider documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
@@ -270,7 +291,10 @@ A `ProviderConfig` is a custom resource that defines how your control plane auth
   ```bash
     kubectl apply -f provider-config.yaml
   ```
-  Later, when you create a composition and deploy your infrastructure with the control plane, Upbound will use the `ProviderConfig` to locate and retrieve the credentials in the secret store.
+
+When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
+in the secret store.
+
 <!-- /AWS -->
 
 <!-- Azure -->
@@ -335,7 +359,7 @@ A `ProviderConfig` is a custom resource that defines how your control plane auth
     --from-file=my-gcp-secret=./gcp-credentials.json
   ```
 
-To create a secret declaratively requires encoding the authentication keys as a base-64 string. Create a Secret object with the data containing the secret key name, my-gcp-secret and the base-64 encoded keys.
+To create a secret declaratively requires encoding the authentication keys as a base-64 string. Create a Secret object with the data containing the secret key name, `my-gcp-secret` and the base-64 encoded keys.
 
 ```yaml
   apiVersion: v1
@@ -372,10 +396,12 @@ Lastly, apply the provider configuration.
   kubectl apply -f provider-config.yaml
 ```
 
-Later, when you create a composition and deploy your infrastructure with the control plane, Upbound will use the `ProviderConfig` to locate and retrieve the credentials in the secret store.
+When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
+in the secret store.
 
 ## Step 3: Create a claim and generate your API
-Claims are the user facing resource of the API you will define. The `up` CLI can generate compositions for you based on the minimal information you provide in the claim.
+
+Claims are the user facing resource of the API you define. The `up` CLI can generate compositions for you based on the minimal information you provide in the claim.
 
 Run the following command to generate a new example claim. Choose `Composite Resource Claim` in your terminal and give it a name describing what it creates.
 
@@ -411,7 +437,7 @@ This command creates a minimal claim file. Copy and paste the claim below into t
 ```
 {{</ editCode >}}
 
-This StorageBucket claim is based on the fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
+This StorageBucket claim uses fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
 <!-- /AWS -->
 
 <!-- Azure -->
@@ -430,7 +456,7 @@ spec:
 ```
 {{</ editCode >}}
 
-This Azure StorageContainer claim is based on the fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
+This Azure StorageContainer claim uses fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
 <!-- /Azure -->
 
 <!-- GCP -->
@@ -449,7 +475,7 @@ spec:
 ```
 {{</ editCode >}}
 
-This GCP StorageBucket claim is based on the fields GCP requires to create a Google Cloud Storage instance. You can discover required fields in the Marketplace for the provider.
+This GCP StorageBucket claim uses fields GCP requires to create a Google Cloud Storage instance. You can discover required fields in the Marketplace for the provider.
 <!-- /GCP -->
 {{< /content-selector >}}
 
@@ -459,29 +485,40 @@ Use this claim to generate a composite resource definition with the following co
 up xrd generate examples/storagebucket/example.yaml
 ```
 
-A new file called a Composite Resource Definition (XRD) was created in `apis/xstoragebuckets/definition.yaml`. This represents the custom schema for the bucket API you defined in your claim. The `up xrd generate` command automatically infered the variable types based on the input parameters in your example claim.
+This command generate a new Composite Resource Definition (XRD) file in
+`apis/xstoragebuckts/definition.yaml`. The XRD is a custom schema representation
+for the bucket API you defined in your claim. The `up xrd generate` command
+automatically infers the variable types for the XRD based on the input
+parameters in your example claim.
 
 ## Step 4: Define your cloud resource composition
 
-Now we will write our composition based on our XRD that we generated. In the root folder of your control plane project, run the following command.
+Next, generate a new composition based on your XRD. In the root of your control
+plane project, run `up composition generate`:
 
 ```bash
 up composition generate apis/xstoragebuckets/definition.yaml
 ```
 
-This will scaffold a composition for you in `apis/xstoragebuckets/composition.yaml`
+This command scaffolds a composition for you in `apis/xstoragebuckets/composition.yaml`
 
-Now we want to define the logic of our composition. We will do so via embedded functions. Embedded functions are composition functions that are built, packaged, and managed as part of a configuration. You can author your embedded functions in either KCL or Python to avoid having to do manual patch & transforms within your YAML files.
+Next, define your composition logic with an embedded function. Embedded
+functions allow you to build, package, and manage reusable logic components to
+help automate and customize resource configurations in your control plane. You
+can author these functions in KCL or Python instead of manual patch and
+transforms in your YAML files.
 
-Run the following command
+Run the `up function generate` command and choose either KCL or Python.
+
 ```shell
 up function generate --language=<KCL or Python> test-function apis/xstoragebuckets/composition.yaml
 ```
 
-This command will generate an embedded function called `test-function` inside `functions/test-function` in the language you specified. Your composition file should also have updated to include the newly generated function in its pipeline.
+This command generates an embedded function called `test-function` in the
+`functions/test-function` directory of your project. This also updates your
+composition file to include the new function in the pipeline.
 
 Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
-
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
@@ -860,11 +897,11 @@ def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
 
 {{< /content-selector >}}
 
+When you create a function, the `up` CLI automatically adds import statements to
+bring the schemas into your functions.
 
-When you create your function, the `up` CLI automatically add the import
-statements to bring the schemas into your function.
-The VSCode extensions for KCL and Python are able to pick this up and provide
-you additional capabilities such as autocompletion, linting for type mismatches, missing
+VSCode extensions for KCL and Python infer the schemas and bring you more
+authoring capabilities like autocompletion, linting for type mismatches, missing
 variables and more.
 
 With KCL or Python, you authored composite resources that you defined in the XRD
@@ -916,8 +953,12 @@ up project push
 
 Your package is now pushed to the Upbound Marketplace.
 
+<!-- vale gitlab.SentenceSpacing = YES -->
 ## Try it out
 
 With your control plane project set up, go to Upbound's [Consumer Portal
 guide]({{< ref "./consumer-portal" >}}) to create resources in your cloud
 service provider.
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
