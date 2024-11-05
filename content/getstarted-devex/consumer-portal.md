@@ -23,7 +23,7 @@ Follow the flow below to create a resource based on your claim.
 <!-- vale write-good.Passive = NO -->
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale Google.Will = NO -->
-Login to the [Upbound Console](console.upbound.io) and navigate to the Consumer
+Login to the [Upbound Console](https://console.upbound.io) and navigate to the Consumer
 Portal. Your browser will redirect you to the Consumer Experience portal, which only
 displays information necessary for consumers to deploy infrastructure.
 <!-- vale write-good.Passive = YES -->

@@ -44,5 +44,7 @@ Development control planes differ from standard control planes in several ways:
 Development control planes are **not** suitable for production workloads.
 <!-- vale Microsoft.Contractions = YES -->
 
+<!-- vale Google.We = NO -->
 Upbound limits the number of concurrent development control planes you can
 create based on your account tier. Review our pricing for more information.
+<!-- vale Google.We = YES -->

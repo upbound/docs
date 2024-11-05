@@ -81,7 +81,7 @@ curl -fsSL "https://kcl-lang.io/script/install-cli.sh" | /bin/bash
 curl -fsSL "https://kcl-lang.io/script/install-kcl-lsp.sh" | /bin/bash
 ```
 
-Next, install and enable the [KCL VSCode Extension]().
+Next, install and enable the [KCL VSCode Extension]({{<ref "development-extensions/vscode-extensions.md">}}).
 
 Open the `main.k` function file in VSCode. The schema scaffold here builds your
 composition logic and contains placeholders for your desired inputs.
