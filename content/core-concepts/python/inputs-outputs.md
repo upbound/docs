@@ -19,8 +19,10 @@ requests and values rely on four pieces of information:
 
 Each composition pipeline provides this information as _inputs_ into the function.
 
+<!-- vale write-good.Passive = NO -->
 In Python, these four pieces of information are passed to the function as part
 of the `req: RunFunctionRequest` argument:
+<!-- vale write-good.Passive = YES -->
 
 ```python
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
@@ -33,11 +35,11 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 ```
 
 Most functions reference the observed composite resource (XR) to produce
-composed resources, most commonly managed resources (MRs). In Python, the
-observed XR can be found in `req.observed.composite.resource`.
+composed resources, typically managed resources (MRs). In Python, you can find the
+observed XR in `req.observed.composite.resource`.
 
-When you generate an embedded function with `up function generate`, a Python
-library is generated that includes type definitions based on your XRDs. You can
+When you generate an embedded function with `up function generate`, the command
+creates a Python library that includes type definitions based on your XRDs. You can
 convert the observed XR to its Python type as follows:
 
 ```python
@@ -48,28 +50,29 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XMyType(**req.observed.composite.resource)
 ```
 
-You will then get tab-completion and type checking in VSCode when working with
-the XR.
+After this, VSCode adds tab-completion and type checking when working with the XR.
 
 ## Outputs
 
 Composition functions influence the state of the control plane via three kinds
 of outputs:
 
+<!-- vale write-good.TooWordy = NO -->
 1. The desired state of the composite resource, and composed resources.
-2. Status conditions to be applied to the composite resource and, optionally,
+2. Status conditions to apply to the composite resource and, optionally,
    its claim.
-3. Context to be passed to subsequent functions in the pipeline.
+3. Context to pass to subsequent functions in the pipeline.
+<!-- vale write-good.TooWordy = YES -->
 
-Most functions will produce a set of composed resources as part of the desired
+Most functions produce a set of composed resources as part of the desired
 state.
 
 In Python, outputs are part of the `res: RunFunctionResponse` argument, which is
 pre-populated with the request's desired state and context. A Python function
 only needs to update any fields in these objects that it wishes to change.
 
-Composed resources can be added or updated using the `resource.update` helper
-function from the Crossplane Python SDK:
+You can add or update composed resources using the `resource.updater` helper
+function in the Crossplane Python SDK:
 
 ```python
 from crossplane.function import resource

@@ -15,7 +15,7 @@ Install the following:
 
 The Python VSCode extension includes the
 [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
-language server, so you do not need to install a language server separately.
+language server, so you don't need to install a language server.
 
 ## Example
 
@@ -105,8 +105,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 {{< tab "XRD" >}}
 
-The following is the composite resource definition (XRD) for this example. This
-definition was used to generate the `v1alpha1.XStorageBucket` type used in the
+The following is the composite resource definition (XRD) for this example, which
+generated the `v1alpha1.XStorageBucket` type used in the
 embedded function.
 
 ```yaml
@@ -154,10 +154,13 @@ spec:
 
 {{< tab "Composition" >}}
 
+<!-- vale gitlab.SentenceLength = NO -->
+
 The composition invokes the function to compose resources for an XR, then
 invokes
 [`function-auto-ready`](https://marketplace.upbound.io/functions/crossplane-contrib/function-auto-ready/v0.3.0)
 to automatically set the XR status based on the status of the generated MRs.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -188,14 +191,15 @@ The Upbound programming model defines the core concepts you can use when
 creating your control plane using Upbound. [Concepts](/core-concepts/) describes
 these concepts with examples available in Python.
 
-Embedded Python functions in Upbound are built on top of Crossplane's [Python
-function SDK](https://github.com/crossplane/function-sdk-python), but offer a
+Upbound builds embedded Python functions on top of Crossplane's [Python
+function SDK](https://github.com/crossplane/function-sdk-python), offering a
 simplified, Upbound-specific development experience.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Limitations
-
 Python is a general purpose programming language with a rich ecosystem of
 libraries and tools. Embedded Python functions support all built-in Python
 features, the Python standard library, and the Crossplane [Python Function
 SDK](https://github.com/crossplane/function-sdk-python). Using external
 libraries is currently not supported.
+<!-- vale gitlab.HeadingContent = YES -->

@@ -59,6 +59,7 @@ observability
 patchSets
 proidc
 proselint
+Pylance
 Rego
 semver
 Serverless
