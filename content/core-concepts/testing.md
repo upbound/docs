@@ -14,4 +14,4 @@ This command creates a development control plane in the Upbound cloud, and deplo
 
 Now, you can validate your results, and make any changes to test your resources.
 
-For more information about development control planes, please read our documentation on development control planes.
+For more information, review the development control plane documentation.

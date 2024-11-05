@@ -4,17 +4,11 @@ description: Deep Dive on Embedded functions
 weight: 3
 ---
 
-Embedded functions are composition functions that you can build, package, and
-manage in your configuration. You can write composition logic in programming
-languages like Go or Python or in configuration languages like KCL or Go templating
-instead of the YAML-based patch-and-transform workflow. You can use embedded
-functions for shared logic across multiple compositions with your
-configuration.
+Embedded functions are composition functions that you can build, package, and manage directly in your configuration. Instead of relying on a YAML-based patch-and-transform workflow, you can write composition logic in Python or configuration languages like KCL. Embedded functions allow for shared logic across multiple compositions within your configuration.
 
 Some benefits of using embedded functions:
 
-* **Write configurations in languages you already know.** Choose from KCL, Python,
-  or Go to control your resources.
+* **Write configurations in familiar languages** Choose from KCL, Python, or Go to control your resources
 * **Integration with your existing workflow.** Write functions in your configuration
   project and avoid tool drift
 * **Full IDE support.** Auto completion, syntax highlighting, and other coding tools
@@ -22,11 +16,9 @@ Some benefits of using embedded functions:
 * **Deploy seamlessly.** Package and push your functions with your configuration in
   a single step.
 
-In this guide, you'll create an embedded function in a new project, observe how
-it runs, and create a deployment of your configuration. This embedded function
-uses `provider-aws` to create an RDS database with dynamic resource allocation
-based on the configuration inputs.
-
+<!-- vale gitlab.FutureTense = NO -->
+Embedded functions are composition functions that you can build, package, and manage directly in your configuration. Instead of relying on a YAML-based patch-and-transform workflow, you can write composition logic in Python or configuration languages like KCL. Embedded functions allow for shared logic across multiple compositions within your configuration.
+<!-- vale gitlab.FutureTense = YES -->
 
 ## Prerequisites
 
@@ -47,25 +39,17 @@ created directory path function-demo
 initialized package "function-demo" in directory "function-demo" from https://github.com/upbound/project-template (main)
 ```
 
-
-
-
 ## Generate a project function
 
 Use `up function generate` and choose between KCL or Python.
 
-KCL - Python
-
 ## Use an embedded function
 
-If you use up function generate to create your functions, a reference to them
-will be automatically added to the specified composition. For functions created
-any other way, or to share functions between compositions, refer to it by name
-in the functionRef. The name is constructed by concatenating the organization
-name and project name with hyphens, then the function name without a hyphen. For
-example, if your organization is my-org and your project is called my-conf, the
-functions in the example layout above would be referred to as follows:
-```
+When you create functions with up function generate, the up CLI automatically adds them to the specified composition. For manually created functions or those shared across multiple compositions, reference them in the `functionRef` parameter.
+
+The `functionRef` name follows this format: `[organization-name]-[project-name][function-name]`. For example, if your organization is `my-org` and your project is `my-conf`, the `functionRef` name would be:
+
+```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -82,28 +66,47 @@ spec:
 ```
 ### Build your configuration deployment
 
-The up project build command handles the building and packaging of your
-configuration and its embedded functions. Here's how it works: Build Embedded
-Function Packages: For each function in the functions/ directory, if a
-Dockerfile exists, it is used to build the function. For supported languages
-without a Dockerfile, use a base image and add the user's code. A Crossplane
-package metadata file for each function when it is built. Produce Configuration
-Package Metadata: After each function is built, Crossplane package metadata for
-the configuration is created. Each dependency on the embedded functions and
-external dependencies are included. Build the Configuration Package: All
-relevant YAML files (XRDs and compositions) in the project are built into a
-Crossplane configuration package using the metadata generated in the previous
-step. Write the Packages to Disk: The embedded function packages and the
-configuration package are written to a single .uppkg file, which up project push
-can use to push the packages to the Upbound Marketplace.
+The `up project build` command builds and packages your
+configuration and embedded functions.
+
+Here's how it works:
+
+**Build embedded function packages**:
+Each function in the `functions/`
+directory of your project can use a `Dockerfile` or supported
+languages to build your function. Supported languages must use a base
+image and add the function code.
+
+**Generate Configuration Package Metadata**:
+The up CLI creates Crossplane package metadata, including dependencies on embedded functions.
+
+<!-- vale write-good.Passive = NO -->
+
+**Build the Configuration Package**:
+All relevant YAML files (XRDs and compositions) are bundled into a Crossplane
+configuration package using the generated metadata.
+
+<!-- vale gitlab.SentenceLength = NO -->
+
+**Write the Packages to Disk**:
+Embedded function and configuration packages are
+saved to a single `.uppkg` file, which `up project push` can use to push
+packages to the Upbound Marketplace.
+<!-- vale gitlab.SentenceLength = YES -->
+<!-- vale write-good.Passive = YES -->
 
 ### Push your configuration
 
-The up project push command handles pushing your configuration and its embedded
-functions to the Upbound Marketplace: Read packages from the .uppkg file
-generated by up project  build. Push embedded function packages to
-sub-repositories of your configuration repository. Subrepositories are named by
-appending the function name to the configuration name with an underscore (e.g.,
-my-org/my-conf_my-function). Push the configuration package, which includes
-dependencies on the embedded functions. After pushing, your configuration can be
-deployed to control planes like any other configuration.
+The `up project push` command uploads your configuration and it's embedded
+functions to the Upbound Marketplace.
+
+<!-- vale write-good.Passive = NO -->
+
+The `.uppkg` file generated by up project build contains the packages that need
+to be pushed. Then the packages are pushed to sub-repositories
+within your configuration repository. Each sub-repository name follows this
+naming convention `[organization-name]-[project-name]_[function-name]`. The configuration package,
+which includes dependencies on embedded functions, is also pushed. Once uploaded, your configuration is ready to be deployed to control planes like any
+other configuration.
+<!-- vale write-good.Passive = YES -->
+
