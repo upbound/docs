@@ -170,6 +170,7 @@ exceptions:
   - SAN
   - SAST
   - SATA
+  - SBOM
   - SCIM
   - SCP
   - SCSS

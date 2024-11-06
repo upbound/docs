@@ -13,11 +13,15 @@ Marketplace.
 The Upbound official providers are open source under the Apache 2.0 license. Upbound recommends using the Official
 providers for all deployments.
 
-The following providers are designated Upbound Official and are subject to Upbound's publishing and access policies.
+<!-- vale write-good.Passive = NO -->
+The following providers are designated Upbound Official and are subject to
+Upbound's publishing and access policies.
+<!-- vale write-good.Passive = YES -->
+
 
 {{< table >}}
 | Official provider                                                                                        | Upjet-based | Provider family |
-|----------------------------------------------------------------------------------------------------------|-------------|-----------------|
+| -------------------------------------------------------------------------------------------------------- | ----------- | --------------- |
 | [upbound/provider-family-aws](https://marketplace.upbound.io/providers/upbound/provider-family-aws/)     | Yes         | Yes             |
 | [upbound/provider-family-azure](https://marketplace.upbound.io/providers/upbound/provider-family-azure/) | Yes         | Yes             |
 | [upbound/provider-family-gcp](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/)     | Yes         | Yes             |

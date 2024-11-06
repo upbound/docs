@@ -1,7 +1,7 @@
 ---
 title: Product Lifecycle
 weight: 100
-description: "Information on Upbound software versions, support windows, and release policies." 
+description: "Information on Upbound software versions, support windows, and release policies."
 ---
 
 ## Software list
@@ -13,11 +13,11 @@ Upbound provides support and software maintenance to paid customers. Supported s
 
 ## Maintenance and updates
 
-<!-- vale Microsoft.Adverbs = NO --> 
+<!-- vale Microsoft.Adverbs = NO -->
 <!-- allow "Generally" -->
 Upbound supports Generally Available releases for a defined time span, depending on the release cycle of the respective
 component. See below for details. All software follows semantic versioning of `X.Y.Z`.
-<!-- vale Microsoft.Adverbs = NO --> 
+<!-- vale Microsoft.Adverbs = NO -->
 
 * A **major release** is a change in the first digit and indicates breaking API changes or for 1.0.0 indicates the first
   release where the API is complete and stable.
@@ -31,24 +31,31 @@ Spaces has a minor release every month. Minor patch releases are available as ne
 mainstream support and 6 months of maintenance support for each minor release. Only critical security issues and
 functional bugs deemed critical qualify under maintenance support.
 
-Upgrades to a newer version must be done sequentially according to the minor release. E.g., Upgrading from `v1.4.x` to
-`v1.6.x`, must be preceded by first upgrading to `v1.5.x`
+<!-- vale write-good.Passive = NO -->
+Upgrades to a newer version must be done sequentially according to the minor
+release.
+<!-- vale write-good.Passive = YES -->
+
+
+For example, if you are on `v1.4.x` you must update to `v1.5.x` before `v1.6.x`.
 
 ### UXP schedule
 
+<!-- vale write-good.Weasel = NO -->
 UXP follows the [Crossplane Release Cycle](https://docs.crossplane.io/knowledge-base/guides/release-cycle/). UXP has a
 major release roughly every 3 months. Minor patch releases are available as needed. Upbound provides support for the
 current and 2 previous minor releases.
+<!-- vale write-good.Weasel = YES -->
 
 Upbound fixes bugs in supported major releases and the latest minor release. Upbound backports only critical bugs (both
 functional and security) to older minor releases.
 
 ## Feature launch stages
 
-<!-- vale Microsoft.Adverbs = NO --> 
+<!-- vale Microsoft.Adverbs = NO -->
 <!-- allow "Generally" -->
 Upbound's features are available in one of three stages: preview, generally available, or deprecated.
-<!-- vale Microsoft.Adverbs = NO --> 
+<!-- vale Microsoft.Adverbs = NO -->
 
 ### Preview
 

@@ -5,6 +5,11 @@ description: "The Upbound Official provider policies."
 aliases:
   - providers/support
 ---
+<!-- vale Google.Headings = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale write-good.Passive = NO -->
 
 The following policies provide details on the use, access, support and maintenance of the Upbound Official providers.
 
@@ -23,17 +28,19 @@ Marketplace.
 
 ### Anonymous and Individual Tier subscribers
 
-Anonymous Crossplane community members who don't have an Upbound account, as well as `Individual` tier subscribers, can
-only access the latest released version of the current `major` version of the Official provider.
+Anonymous Crossplane community members without an Upbound account, along with
+`Individual` tier subscribers, can access only the latest released version of
+the current `major` version of each Official Provider.
 
-When Upbound publishes a new provider version, you lose access to the previous version and need to upgrade to
-the new version. When Upbound publishes a new provider version that increments the `major` number, we provide a 30-day
-grace period for accessing the last release of the prior `major` version.
+When Upbound releases a new provider version, access to the previous version
+ends, and users must upgrade to the latest version. For major version changes, a
+30-day grace period allows access to the last release of the prior `major`
+version.
 
 #### Accessing the latest released version
 
 The latest version of an Official provider is accessible to users via the `v[major]` tag in the Marketplace. For
-example, if the latest version of `provider-aws-s3` is `v1.16.0`, it is accessible via
+example, if the latest version of `provider-aws-s3` is `v1.16.0`, access it with
 `xpkg.upbound.io/upbound/provider-aws-s3:v1`
 
 ### Team, Enterprise, and Business Critical subscribers
@@ -75,26 +82,31 @@ standard [semantic versioning (*semver*)](https://semver.org/) standards of `<ma
 
 #### Major version
 
-The `major` version number is set to one when the provider is considered stable for use in a production environment and
-Upbound is committed to providing long-term support for it. In cases where the provider is generated using Upjet, if the
-`major` version number of the underlying Terraform provider from which it's generated is incremented, the provider’s
-`major` version is incremented. If the `major` version number of the Upjet runtime a provider is generated with is
-incremented, the `major` version number of the provider is also incremented.
 
-Incrementing the `major` version resets the `minor` and `patch` version numbers to zero.
+A `major` version indicates production stability and long-term support. When the
+`major`  version of the underlying Terraform provider (if generated with Upjet)
+or Upjet runtime updates, the provider's `major` version increments. Major
+version updates reset
+the `minor` and `patch` to zero.
+
+<!-- vale Microsoft.Contractions = NO -->
 
 A change in the `major` version number does not come with a backward compatibility guarantee.
 The release notes will indicate all breaking changes introduced and provide instructions on adapting to them.
+<!-- vale Microsoft.Contractions = YES -->
 
 #### Minor version
 
-The `minor` version number is incremented when new features (e.g., new provider functionality, resources or resource
-fields) are released. Incrementing the `minor` version resets the `patch` version number to zero. `Minor` version
-releases may contain bug fixes in addition to new capabilities.
+<!-- vale write-good.Passive = NO -->
+
+The `minor` version number increases when new features, such as new capabilities, resources, or fields, are introduced. This update resets the
+`patch` number to zero and may also include bug fixes.
+<!-- vale write-good.Passive = YES -->
 
 #### Patch version
 
-The `patch` version number is incremented for a release containing **only** bug fixes and **no** new features.
+A `patch` version increases for releases with **only** bug fixes and **no** new features.
+
 
 ### CRD API versions
 
@@ -107,8 +119,12 @@ The CRDs contained within an Official provider follow the standard Kubernetes AP
   to the provider resource.
 - `v1beta2` - Like `v1beta1` CRDs all `v1beta2` providers are fully qualified and tested. `v1beta2` contain more
   features or breaking changes from the `v1beta1` API.
+  <!-- vale gitlab.FutureTense = NO -->
+
 - `v1` - CRDs that reach a `v1` API version have fully defined APIs. Upbound won't make breaking API changes in the
   current `major` version of the provider.
+  <!-- vale gitlab.FutureTense = YES -->
+
   {{< /tab >}}
 
 {{< tab "Compatibility" >}}
@@ -117,27 +133,39 @@ The CRDs contained within an Official provider follow the standard Kubernetes AP
 
 A release that increments the `minor` or `patch` version is backward compatible with the prior release.
 
-Backward compatibility promises that the Crossplane-managed resource APIs, configurations, and infrastructure do not
-need to be changed when upgrading to a new version with a higher `minor` or `patch` version number and the same `major`
-version number. For example, upgrading from `v1.2.3` to `v1.2.4` or `v1.3.0` should work without any needed changes.
+<!-- vale write-good.TooWordy = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
 
-It is supported to skip `minor` or `patch` releases and upgrade to the latest release within the same `major` version,
+Backward compatibility promises that the Crossplane-managed resource APIs,
+configurations, and infrastructure aren't impacted when upgrading to a new version with
+a higher `minor` or `patch` version number and the same `major`
+version number. For example, upgrading from `v1.2.3` to `v1.2.4` or `v1.3.0`
+should work without any needed changes.
+<!-- vale gitlab.SentenceLength = YES -->
+
+<!-- vale write-good.TooWordy = YES -->
+
+You can skip `minor` or `patch` releases and upgrade to the latest release within the same `major` version,
 such as upgrading from `v1.2.3` to `v1.2.7` or `v1.5.0`.
 
-Despite the commitment to backward compatibility, upgrades should **always** be simulated in a non-production
-environment before being applied in production.
+Despite the commitment to backward compatibility, you should **always**
+simulate upgrades in a non-production
+environment before applying to production.
 
 ### Downgrading
 
-Backward compatibility is not guaranteed when downgrading to a prior version.
+<!-- vale Microsoft.Contractions = NO -->
+
+Backward compatibility **is not** guaranteed when downgrading to a prior version.
+<!-- vale Microsoft.Contractions = YES -->
 
 Downgrading to a previous version may require manual intervention to ensure the provider and the resources remain in a
 synced/healthy state. In some scenarios, it might be necessary to uninstall the provider and reinstall the older desired
 version.
 
-Downgrades should **always** be simulated in a non-production environment before being applied to production. Upbound
-customers with subscriptions offering Official provider support are encouraged to speak to their assigned Solutions
-Architect before downgrading a provider version in a production environment.
+You should **always** simulate downgrades in a non-production environment before
+applying to production. Upbound customers with Official Provider support should
+consult their Solutions Architect before a production downgrade.
 
 ### Family provider version compatibility
 
@@ -148,14 +176,15 @@ A family of providers, like [provider-family-aws](https://marketplace.upbound.io
 is published with all the providers in the family using the same version number. Using providers from the same family
 with different version numbers is technically possible, but this could introduce incompatibility in some situations. Due
 to the large number of combinations, testing all compatibility permutations between different family provider versions
-isn't feasible.
+isn't possible.
 
 Upbound **highly recommends** that the family providers are all kept on the same version.
 
 The following constraints apply to allow version compatibility:
 
 - All family providers must be on the **same** `major` version.
-- All family providers must be on the **same or prior** `minor` version as the family’s config provider (e.g., the
+- All family providers must be on the **same or prior** `minor` version as the
+  family's config provider (for example, the
   `provider-aws-family` provider).
 
 Examples:
@@ -170,7 +199,7 @@ Upbound will make reasonable commercial effort to ensure its Official providers 
 from [Common Vulnerabilities and Exposures](https://nvd.nist.gov/general/cve-process) (CVEs) under the following
 conditions:
 
-1. Upbound’s vulnerability scanners identifies a CVE affecting a provider package
+1. Upbound's vulnerability scanners identifies a CVE affecting a provider package
 1. The CVE is independently fixable of any other bugs. For a CVE to be fixable, either there is
     1. an upstream release version available which has been verified to fix the CVE, or
     1. an affected provider package can be rebuilt with updated compilers and/or libraries to remediate that CVE.
@@ -185,3 +214,9 @@ A CVE will be considered addressed when a new version of the provider with the f
 {{< /tab >}}
 
 {{< /tabs >}}
+
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale Google.Headings = YES -->
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale write-good.Passive = YES -->

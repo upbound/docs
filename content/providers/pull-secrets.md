@@ -4,7 +4,7 @@ weight: 8
 description: "Learn how to configure access to older Official providers versions from the Marketplace"
 ---
 
-You must configure a pull secret on your control plane to pull any older version of an Official Provider. If you’re on
+You must configure a pull secret on your control plane to pull any older version of an Official Provider. If you're on
 Crossplane, UXP v1.18 or later, UXP v1.16.4, or UXP v1.17.3, use the ImageConfig API. Otherwise, configure a pull secret for each provider pod.
 
 ### Crossplane and UXP v1.16+
@@ -52,7 +52,9 @@ spec:
         name: up-provider-pull-secret
 ```
 
-This pull secret matches all packages with the `xpkg.upbound.io/upbound` prefix and provides the package pull secret any time your control plane needs to pull the provider image.
+This pull secret matches all packages with the `xpkg.upbound.io/upbound` prefix
+and provides the package pull secret when the control plane needs to pull the
+provider image.
 
 ### Older Crossplane versions
 
@@ -90,7 +92,7 @@ kind: Provider
 metadata:
   name: provider-aws-s3
 spec:
-  packagePullSecrets: 
+  packagePullSecrets:
     - name: package-pull-secret
 # Removed for brevity
 

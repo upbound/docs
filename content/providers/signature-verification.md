@@ -8,7 +8,7 @@ Upbound Official Providers contain verifiable signatures, attestations, and an S
 
 ## Prerequisites
 
-We recommend using [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) to verify the signature and attestations of an Official Provider.
+Upbound recommends using [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) to verify the signature and attestations of an Official Provider.
 
 If you're running UXP, enable these features first:
 
@@ -22,7 +22,11 @@ upbound-stable/universal-crossplane \
 
 ## Attestations
 
-Attestations are provided per version of a given package, so you'll need to specify the correct tag or digest and registry when pulling attestations from an image with cosign. You can use the cosign verify-attestation command to check the SBOM attestation of the image signatures of the package:
+To provide attestations per version of a package, specify the correct tag or
+digest and registry when pulling attestations from an image with cosign. Use the
+`cosign verify-attestation` command to verify the SBOM attestation of the
+image for the package.
+signatures
 
 ```bash
 cosign verify-attestation xpkg.upbound.io/upbound/<provider>@sha256:<digest> \
@@ -31,7 +35,11 @@ cosign verify-attestation xpkg.upbound.io/upbound/<provider>@sha256:<digest> \
 --type spdxjson
 ```
 
-SBOMs for Official Providers are produced in the SPDX format, as indicated by `--type spdxjson`. On successful execution, you will receive output that verifies the SBOM attestation signature in the Rekor transparency log.
+<!-- vale write-good.Passive = NO -->
+
+Official Provider SBOMs are produced in the SPDX format, specified by `--type spdxjson`. Upon successful execution, the output verifies the SBOM attestation signature in the Rekor transparency log.
+<!-- vale write-good.Passive = YES -->
+
 
 ## Verify signatures
 
@@ -47,7 +55,9 @@ cosign verify xpkg.upbound.io/upbound/<provider>@sha256:<digest> \
 
 Starting in Crossplane 1.18, you can enable and configure an `ImageConfig` resource to automatically verify package signatures in your Crossplane cluster.
 
-For example, the following configuration will verify images matching `spec.matchImages.prefix` using GitHub as the certificate issuer for the e-mail identity.
+For example, the following configuration verifies images matching
+`spec.matchImages.prefix` using GitHub as the certificate issuer for the email
+identity.
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1beta1
@@ -70,8 +80,11 @@ spec:
             - name: verify attestations
               predicateType: spdxjson
 ```
-
-If enabled, Crossplane will ensure the status condition `SignatureVerificationComplete` is `true`, which means it was either skipped or succeeded.
+<!-- vale write-good.TooWordy = NO -->
+If enabled, Crossplane ensures the status condition
+`SignatureVerificationComplete` is true, indicating it was either skipped or
+succeeded.
+<!-- vale write-good.TooWordy = YES -->
 
 For example:
 
