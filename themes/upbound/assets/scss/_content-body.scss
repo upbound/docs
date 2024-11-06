@@ -11,7 +11,6 @@
   @include media-breakpoint-down(xl) {
     padding: 50px;
     overflow-wrap: break-word;
-
   }
 
   // Override Bootstrap accordion colors in the body
@@ -27,9 +26,10 @@
   .accordion-body {
     border-top: 2px solid #{$up-grey-300};
     .highlight {
-      margin:0px;
+      margin: 0px;
     }
   }
+
   // Override Bootstrap accordion general properties
   .accordion-header {
     margin-top: 0px;
@@ -92,14 +92,12 @@
     padding-bottom: 8px;
   }
 
-
   h1, h2, h3, h4, h5, h6 {
-
     a {
       text-decoration: none !important;
       color: inherit !important;
 
-      &:hover{
+      &:hover {
         text-decoration: none !important;
       }
     }
@@ -136,8 +134,7 @@
   }
 
   // Override Bootstrap Tab styles
-  .nav-tabs{
-
+  .nav-tabs {
     border-bottom: none;
     font-weight: bold;
 
@@ -146,13 +143,10 @@
         display: block !important;
         margin: 0px;
       }
-
-
-
     }
     // Create a border for the non-tabbed space.
     // Prevents a double border for tabs/hover
-    &:not(.nav-link){
+    &:not(.nav-link) {
       border-bottom: 2px solid #{$gray-300};
       margin-bottom: 12px !important;
     }
@@ -175,7 +169,7 @@
       }
 
       // Make the text dark and override bootstrap hover behaviors.
-      &:hover{
+      &:hover {
         color: var(--body-font-color);
         border-color: #{$gray-300};
         border-bottom-width: 0;
