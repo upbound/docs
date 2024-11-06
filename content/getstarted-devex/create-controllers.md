@@ -114,7 +114,7 @@ manage. Functions add logic to automate complex provisioning processes. After ad
 ```yaml
 spec:
   dependsOn:
-  - provider: xpkg.upbound.io/upboundcare/provider-aws-s3
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
     version: v1.16.0
 ```
 <!-- /AWS -->
@@ -122,7 +122,7 @@ spec:
 ```yaml
 spec:
   dependsOn:
-  - provider: xpkg.upbound.io/upboundcare/provider-azure-storage
+  - provider: xpkg.upbound.io/upbound/provider-azure-storage
     version: v1.7.0
 ```
 <!-- /Azure -->
@@ -130,7 +130,7 @@ spec:
 ```yaml
 spec:
   dependsOn:
-  - provider: xpkg.upbound.io/upboundcare/provider-gcp-storage
+  - provider: xpkg.upbound.io/upbound/provider-gcp-storage
     version: v1.8.3
 ```
 <!-- /GCP -->
