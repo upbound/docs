@@ -35,7 +35,7 @@ spec:
   source: github.com/upbound/project-template
 ```
 
-The control plane project file defines:
+The control plane project defines:
 
 - your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
 - the implementation of those schemas, defined as Crossplane `compositions`.
