@@ -3,7 +3,7 @@ weight: 50
 title: Up Command Reference
 description: "Command reference for the Upbound Up CLI"
 ---
-
+<!-- vale off -->
 <!-- vale Google.Headings = NO -->
 The `up` command-line provides a suite of tools to configure and interact with Upbound technologies.
 
@@ -11,12 +11,40 @@ The following flags are available for all commands.
 
 {{< table "table table-sm table-striped">}}
 | Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
+| ---------- | ----------- | ---------------------------- |
 | `-h`       | `--help`    | Show context-sensitive help. |
 |            | `--pretty`  | Pretty print output.         |
 | `-q`       | `--quiet`   | Suppress all output.         |
 | `-v`       | `--version` | Print version and exit.      |
 {{< /table >}}
+
+## up composition
+
+The `up composition` command manages Compositions.
+
+### composition generate
+
+Generate a Composition.
+
+Arguments:
+  `<xrd>`    File path to the Crossplane Resource Definition (XRD) YAML file.
+
+All `up composition generate` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                                                                                                      |
+| ---------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `-h`       | `--help`                        | Show context-sensitive help.                                                                                                     |
+|            | `--format="default"`            | Format for get/list commands. Can be: `json`, `yaml`, `default`                                                                  |
+| `-q`       | `--quiet`                       | Suppress all output.                                                                                                             |
+|            | `--pretty`                      | Pretty print output.                                                                                                             |
+|            | `--dry-run`                     | Dry-run output.                                                                                                                  |
+|            | `--path=STRING`                 | Optional path to the output file where the generated Composition will be saved.                                                  |
+| `-f`       | `--project-file="upbound.yaml"` | Path to project definition file.                                                                                                 |
+| `-o`       | `--output="file"`               | Output format for the results: `file` to save to a file, `yaml` to print XRD in YAML format, `json` to print XRD in JSON format. |
+| `-d`       | `--cache-dir="~/.up/cache/"`    | Directory used for caching dependency images (`$CACHE_DIR`).                                                                     |
+{{< /table >}}
+
 
 ## configuration
 
@@ -29,12 +57,12 @@ The `up configuration` command provides management operations for Git-synced con
 All `up configuration` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### configuration list
@@ -62,11 +90,11 @@ Create a Git-synced configuration in Upbound
 You can find a list of available templates by `up configuration template list`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|    | `--context=STRING`        | Name of the GitHub account/org |
-|    | `--template-id=STRING`        |  Name of the configuration template |
-|    | `--private`        | Create the GitHub repository as private. (Default: false) |
+| Short flag | Long flag              | Description                                               |
+| ---------- | ---------------------- | --------------------------------------------------------- |
+|            | `--context=STRING`     | Name of the GitHub account/org                            |
+|            | `--template-id=STRING` | Name of the configuration template                        |
+|            | `--private`            | Create the GitHub repository as private. (Default: false) |
 {{< /table >}}
 
 **Examples**
@@ -114,9 +142,9 @@ Delete a Git-synced configuration in Upbound. This command requires confirmation
 You can find a list of available configurations by `up configuration list`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|    | `--force`        | Force deletion of the configuration. |
+| Short flag | Long flag | Description                          |
+| ---------- | --------- | ------------------------------------ |
+|            | `--force` | Force deletion of the configuration. |
 {{< /table >}}
 
 **Examples**
@@ -174,13 +202,13 @@ The `up` CLI relies on a `kubeconfig` file to connect to the target Kubernetes c
 All `up controlplane` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|    | `--kubeconfig=<path>`  | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`. |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--kubeconfig=<path>`        | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 <!-- vale Upbound.Spelling = NO -->
@@ -220,9 +248,9 @@ Create a managed control plane in Upbound and install referenced configuration o
 View available configurations to install on the managed control plane with `up configuration list`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-d`   | `--description=STRING`        | Provide a text description for the managed control plane |
+| Short flag | Long flag              | Description                                              |
+| ---------- | ---------------------- | -------------------------------------------------------- |
+| `-d`       | `--description=STRING` | Provide a text description for the managed control plane |
 {{< /table >}}
 
 **Examples**
@@ -314,12 +342,12 @@ The `up controlplane connector` commands connect or disconnect a Kubernetes app 
 All `up controlplane connector` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 <!-- vale Upbound.Spelling = NO -->
@@ -335,16 +363,16 @@ Your kubeconfig should be pointing at your **Kubernetes app cluster** in order f
 {{< /hint >}}
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|    | `--token=STRING`        |  API token used to authenticate. Creates a new robot and a token if a token isn't provided. |
-|    | `--cluster-name=STRING`        |  Name of the cluster connecting to the control plane. Uses the namespace argument if a cluster-name isn't provided. |
-|    | `--kubeconfig=STRING`        |   Override the default kubeconfig path. |
-| `-n`  | `--installation-namespace="kube-system"`        |   Kubernetes namespace for the Managed Control Plane Connector. Default is kube-system ($MCP_CONNECTOR_NAMESPACE). |
-|    | `--control-plane-secret=STRING`        |   Name of the secret that contains the kubeconfig for a control plane. |
-|    | `--set=KEY=VALUE;...`        |   Set parameters. |
-| `-f`  | `--file=FILE`        |   Parameters file. |
-|    | `--bundle=BUNDLE`        |   Local bundle path. |
+| Short flag | Long flag                                | Description                                                                                                        |
+| ---------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+|            | `--token=STRING`                         | API token used to authenticate. Creates a new robot and a token if a token isn't provided.                         |
+|            | `--cluster-name=STRING`                  | Name of the cluster connecting to the control plane. Uses the namespace argument if a cluster-name isn't provided. |
+|            | `--kubeconfig=STRING`                    | Override the default kubeconfig path.                                                                              |
+| `-n`       | `--installation-namespace="kube-system"` | Kubernetes namespace for the Managed Control Plane Connector. Default is kube-system ($MCP_CONNECTOR_NAMESPACE).   |
+|            | `--control-plane-secret=STRING`          | Name of the secret that contains the kubeconfig for a control plane.                                               |
+|            | `--set=KEY=VALUE;...`                    | Set parameters.                                                                                                    |
+| `-f`       | `--file=FILE`                            | Parameters file.                                                                                                   |
+|            | `--bundle=BUNDLE`                        | Local bundle path.                                                                                                 |
 {{< /table >}}
 
 **Examples**
@@ -367,11 +395,11 @@ Disconnect an Kubernetes app cluster from a managed control plane in Upbound
 The command uninstalls the MCP connector helm chart and moves any claims in the app cluster into the managed control plane at the specified namespace.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|    | `--cluster-name=STRING`        |  Name of the cluster connecting to the control plane. Uses the namespace argument if a cluster-name isn't provided. |
-|    | `--kubeconfig=STRING`        |   Override the default kubeconfig path. |
-| `-n`  | `--installation-namespace="kube-system"`        |   Kubernetes namespace for the Managed Control Plane Connector. Default is kube-system ($MCP_CONNECTOR_NAMESPACE). |
+| Short flag | Long flag                                | Description                                                                                                        |
+| ---------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+|            | `--cluster-name=STRING`                  | Name of the cluster connecting to the control plane. Uses the namespace argument if a cluster-name isn't provided. |
+|            | `--kubeconfig=STRING`                    | Override the default kubeconfig path.                                                                              |
+| `-n`       | `--installation-namespace="kube-system"` | Kubernetes namespace for the Managed Control Plane Connector. Default is kube-system ($MCP_CONNECTOR_NAMESPACE).   |
 {{< /table >}}
 
 **Examples**
@@ -400,11 +428,11 @@ Install a Crossplane configuration packages into a Kubernetes cluster with
 View packages installed by `up controlplane configuration install` with `kubectl get configuration`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|    | `--name=<name>`        | Manually define a name to apply to the configuration. By default Upbound uses the package name. |
-|    | `--package-pull-secrets=<secret>,<secret>...` |  One or more Kubernetes secrets to use to download the configuration package. Comma-seperate more than one secret. |
-| `-w` | `-w --wait=<number><unit>`   | The amount of time to wait for a package to install and report `HEALTHY`. If a package isn't healthy when the wait expires the command returns an error. Go's [`ParseDuration`](https://pkg.go.dev/maze.io/x/duration#ParseDuration) defines valid time units. |
+| Short flag | Long flag                                     | Description                                                                                                                                                                                                                                                    |
+| ---------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|            | `--name=<name>`                               | Manually define a name to apply to the configuration. By default Upbound uses the package name.                                                                                                                                                                |
+|            | `--package-pull-secrets=<secret>,<secret>...` | One or more Kubernetes secrets to use to download the configuration package. Comma-seperate more than one secret.                                                                                                                                              |
+| `-w`       | `-w --wait=<number><unit>`                    | The amount of time to wait for a package to install and report `HEALTHY`. If a package isn't healthy when the wait expires the command returns an error. Go's [`ParseDuration`](https://pkg.go.dev/maze.io/x/duration#ParseDuration) defines valid time units. |
 {{< /table >}}
 
 {{< hint "warning" >}}
@@ -458,11 +486,11 @@ Install a Crossplane provider packages into a Kubernetes cluster with
 View packages installed by `up controlplane provider install` with `kubectl get configurations` and `kubectl get providers`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|    | `--name=<name>`        | Manually define a name to apply to the configuration. By default Upbound uses the package name. |
-|    | `--package-pull-secrets=<secret>,<secret>...` |  One or more Kubernetes secrets to use to download the configuration package. Comma-seperate more than one secret. |
-| `-w` | `-w --wait=<number><unit>`   | The amount of time to wait for a package to install and report `HEALTHY`. If a package isn't healthy when the wait expires the command returns an error. Go's [`ParseDuration`](https://pkg.go.dev/maze.io/x/duration#ParseDuration) defines valid time units. |
+| Short flag | Long flag                                     | Description                                                                                                                                                                                                                                                    |
+| ---------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|            | `--name=<name>`                               | Manually define a name to apply to the configuration. By default Upbound uses the package name.                                                                                                                                                                |
+|            | `--package-pull-secrets=<secret>,<secret>...` | One or more Kubernetes secrets to use to download the configuration package. Comma-seperate more than one secret.                                                                                                                                              |
+| `-w`       | `-w --wait=<number><unit>`                    | The amount of time to wait for a package to install and report `HEALTHY`. If a package isn't healthy when the wait expires the command returns an error. Go's [`ParseDuration`](https://pkg.go.dev/maze.io/x/duration#ParseDuration) defines valid time units. |
 {{< /table >}}
 
 {{< hint "warning" >}}
@@ -500,10 +528,10 @@ using `kubectl create secret`.
 View secrets created by `up controlplane pull-secret create` with `kubectl get secrets`
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-f` | `--file=<path>`                   | Path to credentials file. Uses the profile credentials if not specified. |
-| `-n` | `--namespace=<namespace>`         | Kubernetes namespace for pull secret ($UPBOUND_NAMESPACE). |
+| Short flag | Long flag                 | Description                                                              |
+| ---------- | ------------------------- | ------------------------------------------------------------------------ |
+| `-f`       | `--file=<path>`           | Path to credentials file. Uses the profile credentials if not specified. |
+| `-n`       | `--namespace=<namespace>` | Kubernetes namespace for pull secret ($UPBOUND_NAMESPACE).               |
 {{< /table >}}
 
 <!-- vale Upbound.Spelling = NO -->
@@ -523,10 +551,10 @@ current context.
 `up controlplane kubeconfig get --token=STRING`
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-f` | `--file=STRING`                   | File to merge kubeconfig. |
-|  | `--token=STRING`         | Required token to use in the generated kubeconfig to access the specified managed control plane. Upbound manages this token. |
+| Short flag | Long flag        | Description                                                                                                                  |
+| ---------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `-f`       | `--file=STRING`  | File to merge kubeconfig.                                                                                                    |
+|            | `--token=STRING` | Required token to use in the generated kubeconfig to access the specified managed control plane. Upbound manages this token. |
 {{< /table >}}
 
 {{< hint "warning" >}}
@@ -554,7 +582,7 @@ providerrevisions                                        pkg.crossplane.io/v1   
 providers                                                pkg.crossplane.io/v1                                  false        Provider
 storeconfigs                                             secrets.crossplane.io/v1alpha1                        false        StoreConfig
 ```
-<!-- vale off -->
+
 ## ctx
 
 **Description:** Select an Upbound kubeconfig context.
@@ -563,13 +591,86 @@ storeconfigs                                             secrets.crossplane.io/v
 
 {{< table "table table-sm table-striped">}}
 
-| Long flag                 | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
+| Long flag | Short flag | Description | Default Value |
+| --------- | ---------- | ----------- | ------------- |
 
 | short                     | s         | Short output.                                                       |                       |
 | context                   |           | Kubernetes context to operate on.                                   | upbound               |
 | kubeconfig                | f         | Kubeconfig to modify when saving a new context. `-f -` prints to stout.                      |                       |
 
+{{< /table >}}
+
+## dependency
+
+Manage configuration dependencies.
+The dependency command manages crossplane package dependencies of the project
+in the current directory. It caches package information in a local file system
+cache (by default in `~/.up/cache`), to be used e.g. for the upbound language
+server.
+
+### dependency add
+Add a dependency to the current project using `up dependency add <package>`.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                            |
+| ---------- | ------------------------------- | ------------------------------------------------------ |
+| `-f`       | `--project-file="upbound.yaml"` | Path to project definition file                        |
+| `-d`       | `--cache-dir="~/.up/cache/"`    | Directory used for caching package images ($CACHE_DIR) |
+{{< /table >}}
+
+### dependency update-cache
+Update the dependency cache for the current project.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                            |
+| ---------- | ------------------------------- | ------------------------------------------------------ |
+| `-f`       | `--project-file="upbound.yaml"` | Path to project definition file                        |
+| `-d`       | `--cache-dir="~/.up/cache/"`    | Directory used for caching package images ($CACHE_DIR) |
+{{< /table >}}
+
+### dependency clean-cache
+Clean the dependency cache.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                    | Description                                            |
+| ---------- | ---------------------------- | ------------------------------------------------------ |
+| `-d`       | `--cache-dir="~/.up/cache/"` | Directory used for caching package images ($CACHE_DIR) |
+{{< /table >}}
+
+## example
+
+Manage Claim(XRC) or Composite Resource(XR).
+
+### example generate
+
+Generate an Example Claim(XRC) or Composite Resource(XR) using `up example generate [<xrd-file-path>]`.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag              | Description                                                                                                                                                                                                    |
+| ---------- | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|            | `--path=STRING`        | Specifies the path to the output file where the Composite Resource (XR) or Composite Resource Claim (XRC) will be saved                                                                                        |
+| `-o`       | `--output="file"`      | Specifies the output format for the results. Use 'file' to save to a file, 'yaml' to display the Composite Resource (XR) or Composite Resource Claim (XRC) in YAML format, or 'json' to display in JSON format |
+|            | `--type=""`            | Specifies the type of resource to create: 'xrc' for Composite Resource Claim (XRC), 'xr' for Composite Resource (XR)                                                                                           |
+|            | `--api-group=STRING`   | Specifies the API group for the resource                                                                                                                                                                       |
+|            | `--api-version=STRING` | Specifies the API version for the resource                                                                                                                                                                     |
+|            | `--kind=STRING`        | Specifies the Kind of the resource                                                                                                                                                                             |
+|            | `--name=STRING`        | Specifies the Name of the resource                                                                                                                                                                             |
+|            | `--namespace=STRING`   | Specifies the Namespace of the resource                                                                                                                                                                        |
+{{< /table >}}
+
+## function
+Manage Functions.
+
+### function generate
+Generate a Function for a Composition using `up function generate <composition-path>`.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                                                              |
+| ---------- | ------------------------------- | ---------------------------------------------------------------------------------------- |
+| `-f`       | `--project-file="upbound.yaml"` | Path to project definition file                                                          |
+|            | `--repository=STRING`           | Repository for the built package. Overrides the repository specified in the project file |
+| `-d`       | `--cache-dir="~/.up/cache/"`    | Directory used for caching dependency images ($CACHE_DIR)                                |
+| `-l`       | `--language="kcl"`              | Language for function                                                                    |
 {{< /table >}}
 
 ## license
@@ -593,12 +694,13 @@ The `up login` command authenticates to Upbound, generates and stores a JSON cre
 If run without arguments, `up login` asks for the username and password from the terminal. View the current authentication status with `up organization list`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-u` | `--username=STRING` |   The username to authenticate. Defaults to the value of the environmental variable `UP_USER` |
-| `-p` | `--password=STRING` |   The password to authenticate. Defaults to the value of the environmental variable `UP_PASS`  |
-| `-t` | `--token=STRING`    |   An Upbound user token to use in place of a username and password |
-| `-a` | `--account=STRING`  |   Authenticate as a member of an organization.  |
+| Short flag                                        | Long flag           | Description                                                                                 |
+| ------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------- |
+| `-u`                                              | `--username=STRING` | The username to authenticate. Defaults to the value of the environmental variable `UP_USER` |
+| `-p`                                              | `--password=STRING` | The password to authenticate. Defaults to                                                   |
+| the value of the environmental variable `UP_PASS` |
+| `-t`                                              | `--token=STRING`    | An Upbound user token to use in place of a username and password                            |
+| `-a`                                              | `--account=STRING`  | Authenticate as a member of an organization.                                                |
 {{< /table >}}
 
 **Examples**
@@ -658,12 +760,12 @@ The `up organization` commands create and manage organizations on Upbound.
 All `up configuration` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### organization create
@@ -690,9 +792,9 @@ Delete an organization in Upbound
 `up organization delete <name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--force`             |   Force deletion of the organization. |
+| Short flag | Long flag | Description                         |
+| ---------- | --------- | ----------------------------------- |
+|            | `--force` | Force deletion of the organization. |
 {{< /table >}}
 
 {{<hint "warning" >}}
@@ -747,12 +849,12 @@ The `up organization user` commands create and manage users in an organization o
 All `up organization user` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 #### organization user invite
@@ -761,9 +863,9 @@ Invite a user to an organization on Upbound
 `up organization user invite <org-name> <email>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-p` | `--permission="member"`             |    Role of the user to invite (owner or member). |
+| Short flag | Long flag               | Description                                   |
+| ---------- | ----------------------- | --------------------------------------------- |
+| `-p`       | `--permission="member"` | Role of the user to invite (owner or member). |
 {{< /table >}}
 
 **Examples**
@@ -781,9 +883,9 @@ Delete an invite for a user to an organization on Upbound
 `up organization user delete-invite <org-name> <email>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--force`             |    Force deletion of the invite. |
+| Short flag | Long flag | Description                   |
+| ---------- | --------- | ----------------------------- |
+|            | `--force` | Force deletion of the invite. |
 {{< /table >}}
 
 **Examples**
@@ -834,9 +936,9 @@ Remove a members from an organization on Upbound
 `up organization user remove-member <org-name> <user-id>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--force`             |    Force deletion of the invite. |
+| Short flag | Long flag | Description                   |
+| ---------- | --------- | ----------------------------- |
+|            | `--force` | Force deletion of the invite. |
 {{< /table >}}
 
 **Examples**
@@ -857,13 +959,13 @@ The `up profile` command lets you view and manage `up` command-line profiles wit
 All `up profile` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|    | `--kubeconfig=<path>`  | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`. |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--kubeconfig=<path>`        | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### profile current
@@ -954,9 +1056,9 @@ Settings apply to the current profile in use. Supply a JSON file of settings for
 `up profile config`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  `-f`    | `--file = <profile JSON file>`             |   a JSON file of key-value pairs |
+| Short flag | Long flag                      | Description                    |
+| ---------- | ------------------------------ | ------------------------------ |
+| `-f`       | `--file = <profile JSON file>` | a JSON file of key-value pairs |
 {{< /table >}}
 
 **Examples**
@@ -973,6 +1075,124 @@ up profile config set color blue
 up profile config unset color
 ```
 
+## project
+
+The `up project` command manages Upbound development projects.
+
+All `up project` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag            | Description                                                     |
+| ---------- | -------------------- | --------------------------------------------------------------- |
+| `-h`       | `--help`             | Show context-sensitive help.                                    |
+|            | `--format="default"` | Format for get/list commands. Can be: `json`, `yaml`, `default` |
+| `-q`       | `--quiet`            | Suppress all output.                                            |
+|            | `--pretty`           | Pretty print output.                                            |
+|            | `--dry-run`          | Dry-run output.                                                 |
+{{< /table >}}
+
+### project init
+
+Initialize a new project.
+
+This command initializes a new project using a specified template. You can use any Git repository as the template source.
+
+You can specify the template by providing either a full Git URL or a well-known template name. The following well-known template names are supported:
+
+  - `project-template` (https://github.com/upbound/project-template)
+  - `project-template-ssh` (git@github.com:upbound/project-template.git)
+
+Examples:
+
+    # Initialize a new project using a public template repository:
+    up project init --template="project-template" example-project
+
+    # Initialize a new project from a private template using Git token authentication:
+    up project init --template="https://github.com/example/private-template.git" --method=https --username="<username>" --password="<token>" example-project
+
+    # Initialize a new project from a private template using SSH authentication:
+    up project init --template="git@github.com:upbound/project-template.git" --method=ssh --ssh-key=/Users/username/.ssh/id_rsa example-project
+
+    # Initialize a new project from a private template using SSH authentication with an SSH key password:
+    up project init --template="git@github.com:upbound/project-template.git" --method=ssh --ssh-key=/Users/username/.ssh/id_rsa --password="<ssh-key-password>" example-project
+
+Arguments:
+  <name>    The name of the new project to initialize.
+
+All `up project init` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                                                                   |
+| ---------- | ------------------------------- | --------------------------------------------------------------------------------------------- |
+| `-h`       | `--help`                        | Show context-sensitive help.                                                                  |
+|            | `--format="default"`            | Format for get/list commands. Can be: `json`, `yaml`, `default`                               |
+| `-q`       | `--quiet`                       | Suppress all output.                                                                          |
+|            | `--pretty`                      | Pretty print output.                                                                          |
+|            | `--dry-run`                     | Dry-run output.                                                                               |
+|            | `--template="project-template"` | The template name or URL to use to initialize the new project.                                |
+|            | `--directory=STRING`            | The directory to initialize. It must be empty. It will be created if it doesn't exist.        |
+|            | `--ref-name="main"`             | The branch or tag to clone from the template repository.                                      |
+|            | `--method="https"`              | Specify the method to access the repository: `https` or `ssh`.                                |
+|            | `--ssh-key=STRING`              | Optional. Specify an SSH key for authentication when initializing the new package.            |
+|            | `--username="git"`              | Optional. Specify a username for HTTP(S) authentication.                                      |
+|            | `--password=STRING`             | Optional. Specify a password for authentication.                                              |
+|            | `--domain=https://upbound.io`   | Root Upbound domain (`$UP_DOMAIN`).                                                           |
+|            | `--profile=STRING`              | Profile used to execute command (`$UP_PROFILE`).                                              |
+| `-a`       | `--account=STRING`              | Account used to execute command (`$UP_ACCOUNT`).                                              |
+|            | `--insecure-skip-tls-verify`    | Skip verifying TLS certificates (`$UP_INSECURE_SKIP_TLS_VERIFY`).                             |
+| `-d`       | `--debug`                       | Run with debug logging. Repeat to increase verbosity. Output might contain confidential data. |
+{{< /table >}}
+
+### project build
+
+Build a project into a Crossplane package.
+
+All `up project build` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                               | Description                                                                               |
+| ---------- | --------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `-h`       | `--help`                                | Show context-sensitive help.                                                              |
+|            | `--format="default"`                    | Format for get/list commands. Can be: `json`, `yaml`, `default`                           |
+| `-q`       | `--quiet`                               | Suppress all output.                                                                      |
+|            | `--pretty`                              | Pretty print output.                                                                      |
+|            | `--dry-run`                             | Dry-run output.                                                                           |
+| `-f`       | `--project-file="upbound.yaml"`         | Path to project definition file.                                                          |
+|            | `--repository=STRING`                   | Repository for the built package. Overrides the repository specified in the project file. |
+| `-o`       | `--output-dir="_output"`                | Path to the output directory, where packages will be written.                             |
+|            | `--no-build-cache`                      | Don't cache image layers while building.                                                  |
+|            | `--build-cache-dir="~/.up/build-cache"` | Path to the build cache directory.                                                        |
+|            | `--max-concurrency=8`                   | Maximum number of functions to build at once (`$UP_MAX_CONCURRENCY`).                     |
+| `-d`       | `--cache-dir="~/.up/cache/"`            | Directory used for caching dependencies (`$CACHE_DIR`).                                   |
+{{< /table >}}
+
+### up project push
+
+Push a project's packages to the Upbound Marketplace.
+
+All `up project push` commands support the following options:
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                                                                   |
+| ---------- | ------------------------------- | --------------------------------------------------------------------------------------------- |
+| `-h`       | `--help`                        | Show context-sensitive help.                                                                  |
+|            | `--format="default"`            | Format for get/list commands. Can be: `json`, `yaml`, `default`                               |
+| `-q`       | `--quiet`                       | Suppress all output.                                                                          |
+|            | `--pretty`                      | Pretty print output.                                                                          |
+|            | `--dry-run`                     | Dry-run output.                                                                               |
+| `-f`       | `--project-file="upbound.yaml"` | Path to project definition file.                                                              |
+|            | `--repository=STRING`           | Repository to push to. Overrides the repository specified in the project file.                |
+| `-t`       | `--tag=""`                      | Tag for the built package. If not provided, a semver tag will be generated.                   |
+|            | `--package-file=STRING`         | Package file to push. Discovered by default based on repository and tag.                      |
+|            | `--create`                      | Create the configuration repository before pushing if it does not exist.                      |
+|            | `--max-concurrency=8`           | Maximum number of functions to build at once (`$UP_MAX_CONCURRENCY`).                         |
+|            | `--domain=https://upbound.io`   | Root Upbound domain (`$UP_DOMAIN`).                                                           |
+|            | `--profile=STRING`              | Profile used to execute command (`$UP_PROFILE`).                                              |
+| `-a`       | `--account=STRING`              | Account used to execute command (`$UP_ACCOUNT`).                                              |
+|            | `--insecure-skip-tls-verify`    | Skip verifying TLS certificates (`$UP_INSECURE_SKIP_TLS_VERIFY`).                             |
+| `-d`       | `--debug`                       | Run with debug logging. Repeat to increase verbosity. Output might contain confidential data. |
+{{< /table >}}
+
 ## repository
 
 The `up repository` command provides management operations for Upbound repository accounts.
@@ -984,12 +1204,12 @@ The `up repository` command provides management operations for Upbound repositor
 All `up repository` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### repository create
@@ -1012,9 +1232,9 @@ Delete a repository with the given name
 `up repository delete <name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--force`             |   Force deletion of repository. |
+| Short flag | Long flag | Description                   |
+| ---------- | --------- | ----------------------------- |
+|            | `--force` | Force deletion of repository. |
 {{< /table >}}
 
 {{<hint "warning" >}}
@@ -1071,12 +1291,12 @@ The `up robot` command provides management operations for robots in Upbound. Rob
 All `up robot` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### robot create
@@ -1085,9 +1305,9 @@ Create a robot in your account's organization
 `up robot create <name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--description=STRING`             |   Description of robot. |
+| Short flag | Long flag              | Description           |
+| ---------- | ---------------------- | --------------------- |
+|            | `--description=STRING` | Description of robot. |
 {{< /table >}}
 
 **Examples**
@@ -1172,9 +1392,9 @@ Delete a robot authentication tokens from a robot account with
 `up robot token delete <robot-name> <token-name>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--force`             |   Force deletion of repository. |
+| Short flag | Long flag | Description                   |
+| ---------- | --------- | ----------------------------- |
+|            | `--force` | Force deletion of repository. |
 {{< /table >}}
 
 **Examples**
@@ -1225,12 +1445,12 @@ The `up space` commands allow you to install and manage an [Upbound Space]({{<re
 All `up space` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### space init
@@ -1241,15 +1461,15 @@ Initialize an Upbound Spaces deployment
 You must provide the desired version of Spaces to install. You can find a list of available versions in [Product Lifecycle]({{<ref "reference/lifecycle.md" >}}). You must provide a token (given to you by Upbound) for the install to proceed.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|      | `--token-file=TOKEN-FILE`             |   File containing authentication token.  |
-|  | `--yes`             |    Answer yes to all questions during the install process. |
-|  | `--public-ingress`             |    For AKS, EKS, and GKE, expose ingress publicly |
-|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
-|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
-|   `-f`   | `--file=FILE`             |   Parameters file.  |
-|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+| Short flag | Long flag                 | Description                                             |
+| ---------- | ------------------------- | ------------------------------------------------------- |
+|            | `--token-file=TOKEN-FILE` | File containing authentication token.                   |
+|            | `--yes`                   | Answer yes to all questions during the install process. |
+|            | `--public-ingress`        | For AKS, EKS, and GKE, expose ingress publicly          |
+|            | `--kubeconfig=STRING`     | Override default kubeconfig path.                       |
+|            | `--set=KEY=VALUE;...`     | Set parameters.                                         |
+| `-f`       | `--file=FILE`             | Parameters file.                                        |
+|            | `--bundle=BUNDLE`         | Local bundle path.                                      |
 {{< /table >}}
 
 **Examples**
@@ -1272,12 +1492,12 @@ Remove the Upbound Spaces deployment
 `up space destroy`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
-|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
-|   `-f`   | `--file=FILE`             |   Parameters file.  |
-|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+| Short flag | Long flag             | Description                       |
+| ---------- | --------------------- | --------------------------------- |
+|            | `--kubeconfig=STRING` | Override default kubeconfig path. |
+|            | `--set=KEY=VALUE;...` | Set parameters.                   |
+| `-f`       | `--file=FILE`         | Parameters file.                  |
+|            | `--bundle=BUNDLE`     | Local bundle path.                |
 {{< /table >}}
 
 **Examples**
@@ -1300,14 +1520,15 @@ Upgrade an Upbound Spaces deployment
 You must provide the desired version of Spaces to upgrade to. You can find a list of available versions in [Product Lifecycle]({{<ref "reference/lifecycle.md" >}}). You must provide a token (given to you by Upbound) for the install to proceed.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|      | `--token-file=TOKEN-FILE`             |   File containing authentication token.  |
-|      | `--rollback`             |   Rollback to the previous installed version on failed upgrade.  |
-|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
-|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
-|   `-f`   | `--file=FILE`             |   Parameters file.  |
-|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+| Short flag                 | Long flag                 | Description                           |
+| -------------------------- | ------------------------- | ------------------------------------- |
+|                            | `--token-file=TOKEN-FILE` | File containing authentication token. |
+|                            | `--rollback`              | Rollback to the previous installed    |
+| version on failed upgrade. |
+|                            | `--kubeconfig=STRING`     | Override default kubeconfig path.     |
+|                            | `--set=KEY=VALUE;...`     | Set parameters.                       |
+| `-f`                       | `--file=FILE`             | Parameters file.                      |
+|                            | `--bundle=BUNDLE`         | Local bundle path.                    |
 {{< /table >}}
 
 **Examples**
@@ -1325,12 +1546,12 @@ The `up space billing` commands manages configuration and fetching of billing da
 All `up space billing` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 #### space billing get
@@ -1360,15 +1581,17 @@ https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication.
 
 <!-- vale off -->
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|      | `--provider=PROVIDER`             |   Storage provider. Must be one of: aws, gcp, azure ($UP_BILLING_PROVIDER).  |
-|      | `--bucket=STRING`             |    Storage bucket ($UP_BILLING_BUCKET).  |
-|      | `--endpoint=STRING`             |    Custom storage endpoint ($UP_BILLING_ENDPOINT).  |
-|      | `--account=STRING`             |    Name of the Upbound account whose billing report is collected ($UP_BILLING_ACCOUNT).  |
-|      | `--azure-storage-account=STRING`             |    Name of the Azure storage account. Required for --provider=azure ($UP_AZURE_STORAGE_ACCOUNT).  |
-|      | `--billing-month=TIME`             |    Get a report for a billing period of one calendar month. Format: 2006-01 ($UP_BILLING_MONTH).  |
-|      | `--billing-custom=BILLING-CUSTOM`             |    Get a report for a custom billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02 ($UP_BILLING_CUSTOM).  |
+| Short flag | Long flag                         | Description                                                                                   |
+| ---------- | --------------------------------- | --------------------------------------------------------------------------------------------- |
+|            | `--provider=PROVIDER`             | Storage provider. Must be one of: aws, gcp, azure ($UP_BILLING_PROVIDER).                     |
+|            | `--bucket=STRING`                 | Storage bucket ($UP_BILLING_BUCKET).                                                          |
+|            | `--endpoint=STRING`               | Custom storage endpoint ($UP_BILLING_ENDPOINT).                                               |
+|            | `--account=STRING`                | Name of the Upbound account whose billing report is collected ($UP_BILLING_ACCOUNT).          |
+|            | `--azure-storage-account=STRING`  | Name of the Azure storage account. Required for --provider=azure ($UP_AZURE_STORAGE_ACCOUNT). |
+|            | `--billing-month=TIME`            | Get a report for a billing period of one calendar month. Format: 2006-01 ($UP_BILLING_MONTH). |
+|            | `--billing-custom=BILLING-CUSTOM` | Get a report for a custom                                                                     |
+billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02
+($UP_BILLING_CUSTOM).  |
 |      | `--force-incomplete`             |    Get a report for an incomplete billing period ($UP_BILLING_FORCE_INCOMPLETE).  |
 |  `-o`   | `--out="upbound_billing_report.tgz"`             |   Name of the output file ($UP_BILLING_OUT).  |
 |      | `--token-file=TOKEN-FILE`             |   File containing authentication token.  |
@@ -1395,12 +1618,12 @@ The `up uxp` commands allow you to install and manage Upbound Universal Crosspla
 All `up uxp` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### uxp install
@@ -1413,14 +1636,15 @@ UXP installs the latest stable release by default. The list of available UXP ver
 The UXP [install guide]({{<ref "uxp/install" >}}) lists all install-time settings.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
-|  `-n`    | `--namespace="upbound-system"`  |   Kubernetes namespace for UXP ($UXP_NAMESPACE).  |
-|      | `--unstable`   |   Allow installing unstable versions. |
-|      | `--set=KEY=VALUE;...`             |   Set parameters.  |
-|   `-f`   | `--file=FILE`             |   Parameters file.  |
-|      | `--bundle=BUNDLE`             |   Local bundle path.  |
+| Short flag        | Long flag                      | Description                         |
+| ----------------- | ------------------------------ | ----------------------------------- |
+|                   | `--kubeconfig=STRING`          | Override default kubeconfig path.   |
+| `-n`              | `--namespace="upbound-system"` | Kubernetes namespace for UXP        |
+| ($UXP_NAMESPACE). |
+|                   | `--unstable`                   | Allow installing unstable versions. |
+|                   | `--set=KEY=VALUE;...`          | Set parameters.                     |
+| `-f`              | `--file=FILE`                  | Parameters file.                    |
+|                   | `--bundle=BUNDLE`              | Local bundle path.                  |
 {{< /table >}}
 
 **Examples**
@@ -1443,10 +1667,11 @@ Uninstall UXP from a Kubernetes app cluster
 `up uxp uninstall`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
-|  `-n`    | `--namespace="upbound-system"`  |   Kubernetes namespace for UXP ($UXP_NAMESPACE).  |
+| Short flag        | Long flag                      | Description                       |
+| ----------------- | ------------------------------ | --------------------------------- |
+|                   | `--kubeconfig=STRING`          | Override default kubeconfig path. |
+| `-n`              | `--namespace="upbound-system"` | Kubernetes namespace for UXP      |
+| ($UXP_NAMESPACE). |
 {{< /table >}}
 
 **Examples**
@@ -1463,15 +1688,15 @@ UXP upgrades can be from one UXP version to another or from open source Crosspla
 `up uxp upgrade [<version>]`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--kubeconfig=STRING`             |    Override default kubeconfig path. |
-|  `-n`    | `--namespace="upbound-system"`  |   Kubernetes namespace for UXP ($UXP_NAMESPACE).  |
-|       | `--rollback`  |   Rollback to the last installed version on a failed upgrade. |
-|       | `--force`  |   Force upgrade even if versions are incompatible.  |
-|       | `--set=KEY=VALUE;...`  |   Set parameters. |
-|  `-f`    | `--file=FILE`  |   Parameters file.  |
-|      | `--bundle=BUNDLE`  |   Local bundle path.  |
+| Short flag | Long flag                      | Description                                                 |
+| ---------- | ------------------------------ | ----------------------------------------------------------- |
+|            | `--kubeconfig=STRING`          | Override default kubeconfig path.                           |
+| `-n`       | `--namespace="upbound-system"` | Kubernetes namespace for UXP ($UXP_NAMESPACE).              |
+|            | `--rollback`                   | Rollback to the last installed version on a failed upgrade. |
+|            | `--force`                      | Force upgrade even if versions are incompatible.            |
+|            | `--set=KEY=VALUE;...`          | Set parameters.                                             |
+| `-f`       | `--file=FILE`                  | Parameters file.                                            |
+|            | `--bundle=BUNDLE`              | Local bundle path.                                          |
 {{< /table >}}
 
 **Examples**
@@ -1495,12 +1720,12 @@ The `up xpkg` commands create and interact with Crossplane Packages. Packages ar
 All `up xpkg` commands support the following options:
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-a` | `--account=STRING`             |   The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|      | `--domain=<URL>`  |   The managed control plane domain to connect to. The default is `https://upbound.io`  |
-|      | `--insecure-skip-tls-verify`   |   **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended. |
-|      | `--profile=<path>`             |   Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`  |
+| Short flag | Long flag                    | Description                                                                                                      |
+| ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
+|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
+|            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
 
 ### xpkg build
@@ -1514,15 +1739,15 @@ The up xpkg build command supports two different image types:
 - **Provider** - An image consisting of a provider controller and all related Custom Resource Definitions. The Crossplane crossplane-contrib repository contains the packages used for open source Crossplane Providers. For example, the image contents for [provider-aws](https://github.com/crossplane-contrib/provider-aws/tree/master/package).
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  | `--name=STRING`             |   [DEPRECATED: use --output] Name of the package to build. Uses name in `crossplane.yaml` if not specified. Doesn't correspond to package tag. |
-| `-o`     | `--output=STRING`  |   Path for package output.  |
-|      | `--controller=STRING`   |   Controller image used as base for package. |
-|  `-f`    | `--package-root="."`             |   Path to package directory.  |
-|  `-e`    | `--examples-root="./examples"`             |   Path to package examples directory.  |
-|  `-a`    | `--auth-ext="auth.yaml"`             |    Path to an authentication extension file.  |
-|  `-f`    | `--ignore=IGNORE,...`             |    Paths, specified relative to --package-root, to exclude from the package.  |
+| Short flag | Long flag                      | Description                                                                                                                                  |
+| ---------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+|            | `--name=STRING`                | [DEPRECATED: use --output] Name of the package to build. Uses name in `crossplane.yaml` if not specified. Doesn't correspond to package tag. |
+| `-o`       | `--output=STRING`              | Path for package output.                                                                                                                     |
+|            | `--controller=STRING`          | Controller image used as base for package.                                                                                                   |
+| `-f`       | `--package-root="."`           | Path to package directory.                                                                                                                   |
+| `-e`       | `--examples-root="./examples"` | Path to package examples directory.                                                                                                          |
+| `-a`       | `--auth-ext="auth.yaml"`       | Path to an authentication extension file.                                                                                                    |
+| `-f`       | `--ignore=IGNORE,...`          | Paths, specified relative to --package-root, to exclude from the package.                                                                    |
 {{< /table >}}
 
 **Examples**
@@ -1551,10 +1776,10 @@ Use a wizard to generate a `crossplane.yaml` file for a configuration or provide
 `up xpkg init`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-| `-p`  | `--package-root="."`             |   Path to directory to write new package. |
-| `-t`     | `--type="configuration"`  |   Package type to initialize.  |
+| Short flag | Long flag                | Description                             |
+| ---------- | ------------------------ | --------------------------------------- |
+| `-p`       | `--package-root="."`     | Path to directory to write new package. |
+| `-t`       | `--type="configuration"` | Package type to initialize.             |
 {{< /table >}}
 
 **Examples**
@@ -1617,10 +1842,11 @@ This cache is only for the Crossplane Language Server. This doesn't cache files 
 {{< /hint >}}
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  `-d`    | `--cache-dir`             |    The location of the cache directory. Defaults to `~/.up/cache/`  |
-|  `-c`    | `--clean-cache`             |    Removes all files in the cache directory. |
+| Short flag        | Long flag       | Description                                   |
+| ----------------- | --------------- | --------------------------------------------- |
+| `-d`              | `--cache-dir`   | The location of the cache directory. Defaults |
+| to `~/.up/cache/` |
+| `-c`              | `--clean-cache` | Removes all files in the cache directory.     |
 {{< /table >}}
 
 **Examples**
@@ -1639,10 +1865,11 @@ Publish images created by up xpkg build to the Upbound Marketplace with
 `up xpkg push <tag>`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|  `-f`    | `--package=PACKAGE,...`             |    Path to packages. Uses the current directory if not specified.  |
-|      | `--create`             |    Create repository on push if it doesn't exist. |
+| Short flag                  | Long flag               | Description                                    |
+| --------------------------- | ----------------------- | ---------------------------------------------- |
+| `-f`                        | `--package=PACKAGE,...` | Path to packages. Uses the current             |
+| directory if not specified. |
+|                             | `--create`              | Create repository on push if it doesn't exist. |
 {{< /table >}}
 
 **Example**
@@ -1676,9 +1903,9 @@ run a server for Crossplane definitions using the Language Server Protocol with
 `up xpls serve`.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short flag | Long flag   | Description                  |
-|------------|-------------|------------------------------|
-|      | `--cache="~/.up/cache"`             |    Directory path for dependency schema cache.  |
+| Short flag | Long flag               | Description                                 |
+| ---------- | ----------------------- | ------------------------------------------- |
+|            | `--cache="~/.up/cache"` | Directory path for dependency schema cache. |
 {{< /table >}}
 
 **Examples**
@@ -1692,11 +1919,41 @@ run a server for Crossplane definitions using the Language Server Protocol with
 up xpls serve
 ```
 
+## xpls
+
+Start xpls language server.
+
+### xpls serve
+
+Run a server for Crossplane definitions using the Language Server Protocol.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag               | Description                                |
+| ---------- | ----------------------- | ------------------------------------------ |
+|            | `--cache="~/.up/cache"` | Directory path for dependency schema cache |
+|            | `--verbose`             | Run server with verbose logging            |
+{{< /table >}}
+
+## xrd
+
+Manage XRDs from Composite Resources(XR) or Claims(XRC).
+
+### xrd generate
+Generate an XRD from a Composite Resource (XR) or Claim (XRC) using `up xrd generate <file>`.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag         | Description                                                                                                                     |
+| ---------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+|            | `--path=STRING`   | Path to the output file where the Composite Resource Definition (XRD) will be saved                                             |
+|            | `--plural=STRING` | Optional custom plural form for the Composite Resource Definition (XRD)                                                         |
+| `-o`       | `--output="file"` | Output format for the results: `file` to save to a file, `yaml` to print XRD in YAML format, `json` to print XRD in JSON format |
+{{< /table >}}
+
 ## install-completions
 
 Install shell completions with `up install-completions`. You can uninstall shell completions via `up install-completions --uninstall`.
 
-<!-- vale off -->
+
 ## alpha
 
 **Description:** Alpha features. Commands may be removed in future releases.
@@ -1709,28 +1966,28 @@ The `up alpha get` command prints information about a given object within the cu
 context.
 
 {{< table "table table-sm table-striped">}}
-| Short Flag | Long Flag                         | Description                                                                                                                     |
-|------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `-h`       | `--help`                          | Show context-sensitive help.                                                                                                    |
-|            | `--format="default"`              | Format for get/list commands. Can be: json, yaml, default.                                                                      |
-| `-q`       | `--quiet`                         | Suppress all output.                                                                                                            |
-|            | `--pretty`                        | Pretty print output.                                                                                                            |
-|            | `--dry-run`                       | Dry-run output.                                                                                                                 |
-| `-o`       | `--output=STRING`                 | Output format. One of: json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file, custom-columns, custom-columns-file, wide. |
-|            | `--no-headers`                    | When using the default or custom-column output format, don't print headers.                                                     |
-|            | `--show-labels`                   | When printing, show all labels as the last column (default hide labels column).                                                 |
-|            | `--sort-by=STRING`                | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
-|            | `--label-columns=LABEL-COLUMNS,...`| Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2... |
-|            | `--show-kind`                     | If present, list the resource type for the requested object or objects.                                                                 |
-| `-t`       | `--template=STRING`               | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview]. |
-|            | `--allow-missing-template-keys`   | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. |
-|            | `--show-managed-fields`           | If true, keep the managedFields when printing objects in JSON or YAML format.                                                   |
-|            | `--domain=https://upbound.io`     | Root Upbound domain ($UP_DOMAIN).                                                                                               |
-| `-a`       | `--account=STRING`                | Account used to execute command ($UP_ACCOUNT).                                                                                  |
-|            | `--insecure-skip-tls-verify`      | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                      |
-| `-d`       | `--debug=INT`                     | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).|
-| `-n`       | `--namespace=STRING`              | If present, the namespace scope for this CLI request.                                                                           |
-| `-A`       | `--all-namespaces`                | If present, list the requested object or objects across all namespaces. Namespace in current context is ignored even if specified with --namespace. |
+| Short Flag | Long Flag                           | Description                                                                                                                                                                                                                                                |
+| ---------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-h`       | `--help`                            | Show context-sensitive help.                                                                                                                                                                                                                               |
+|            | `--format="default"`                | Format for get/list commands. Can be: json, yaml, default.                                                                                                                                                                                                 |
+| `-q`       | `--quiet`                           | Suppress all output.                                                                                                                                                                                                                                       |
+|            | `--pretty`                          | Pretty print output.                                                                                                                                                                                                                                       |
+|            | `--dry-run`                         | Dry-run output.                                                                                                                                                                                                                                            |
+| `-o`       | `--output=STRING`                   | Output format. One of: json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file, custom-columns, custom-columns-file, wide.                                                                      |
+|            | `--no-headers`                      | When using the default or custom-column output format, don't print headers.                                                                                                                                                                                |
+|            | `--show-labels`                     | When printing, show all labels as the last column (default hide labels column).                                                                                                                                                                            |
+|            | `--sort-by=STRING`                  | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
+|            | `--label-columns=LABEL-COLUMNS,...` | Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2...                                                                           |
+|            | `--show-kind`                       | If present, list the resource type for the requested object or objects.                                                                                                                                                                                    |
+| `-t`       | `--template=STRING`                 | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].                                                                     |
+|            | `--allow-missing-template-keys`     | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.                                                                                                            |
+|            | `--show-managed-fields`             | If true, keep the managedFields when printing objects in JSON or YAML format.                                                                                                                                                                              |
+|            | `--domain=https://upbound.io`       | Root Upbound domain ($UP_DOMAIN).                                                                                                                                                                                                                          |
+| `-a`       | `--account=STRING`                  | Account used to execute command ($UP_ACCOUNT).                                                                                                                                                                                                             |
+|            | `--insecure-skip-tls-verify`        | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                                                                                                                                                 |
+| `-d`       | `--debug=INT`                       | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).                                                                                                                           |
+| `-n`       | `--namespace=STRING`                | If present, the namespace scope for this CLI request.                                                                                                                                                                                                      |
+| `-A`       | `--all-namespaces`                  | If present, list the requested object or objects across all namespaces. Namespace in current context is ignored even if specified with --namespace.                                                                                                        |
 {{< /table >}}
 
 **Examples**
@@ -1753,8 +2010,7 @@ Get all claims managed by this control plane.
 
 Get all composite resources managed by this control plane.
 `up alpha get composite`
-<!-- vale on -->
-
+<
 ---
 
 ### up alpha migration
@@ -1764,9 +2020,9 @@ Get all composite resources managed by this control plane.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag       | Short flag | Description                              | Default Value |
-|------------|-----------|------------------------------------------|---------------|
-| kubeconfig |           | Override default kubeconfig path.        |               |
+| Long flag  | Short flag | Description                       | Default Value |
+| ---------- | ---------- | --------------------------------- | ------------- |
+| kubeconfig |            | Override default kubeconfig path. |               |
 {{< /table >}}
 
 ---
@@ -1775,21 +2031,21 @@ Get all composite resources managed by this control plane.
 
 **Description:** Export the current state of a Crossplane or Universal Crossplane control plane into an archive, preparing it for migration to Upbound Managed Control Planes.
 
-<!-- vale off -->
+
 
 
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                    | Short flag | Description                                                                                  | Default Value           |
-|-------------------------|-----------|----------------------------------------------------------------------------------------------|-------------------------|
-| yes                     |           | When set to true, automatically accepts any confirmation prompts that may appear during the export process. | false                   |
-| output                  | o         | Specifies the file path where the exported archive will be saved. Defaults to 'xp-state.tar.gz'. | xp-state.tar.gz         |
-| include-extra-resources |           | A list of extra resource types to include in the export in "resource.group" format in addition to all Crossplane resources. By default, it includes namespaces, configmaps, secrets. | namespaces,configmaps,secrets |
-| exclude-resources       |           | A list of resource types to exclude from the export in "resource.group" format. No resources are excluded by default. |                         |
-| include-namespaces      |           | A list of specific namespaces to include in the export. If not specified, all namespaces are included by default. |                         |
-| exclude-namespaces      |           | A list of specific namespaces to exclude from the export. Defaults to 'kube-system', 'kube-public', 'kube-node-lease', and 'local-path-storage'. | kube-system,kube-public,kube-node-lease,local-path-storage |
-| pause-before-export     |           | When set to true, pauses all managed resources before starting the export process. This can help ensure a consistent state for the export. Defaults to false. | false                   |
+| Long flag               | Short flag | Description                                                                                                                                                                          | Default Value                                              |
+| ----------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+| yes                     |            | When set to true, automatically accepts any confirmation prompts that may appear during the export process.                                                                          | false                                                      |
+| output                  | o          | Specifies the file path where the exported archive will be saved. Defaults to 'xp-state.tar.gz'.                                                                                     | xp-state.tar.gz                                            |
+| include-extra-resources |            | A list of extra resource types to include in the export in "resource.group" format in addition to all Crossplane resources. By default, it includes namespaces, configmaps, secrets. | namespaces,configmaps,secrets                              |
+| exclude-resources       |            | A list of resource types to exclude from the export in "resource.group" format. No resources are excluded by default.                                                                |                                                            |
+| include-namespaces      |            | A list of specific namespaces to include in the export. If not specified, all namespaces are included by default.                                                                    |                                                            |
+| exclude-namespaces      |            | A list of specific namespaces to exclude from the export. Defaults to 'kube-system', 'kube-public', 'kube-node-lease', and 'local-path-storage'.                                     | kube-system,kube-public,kube-node-lease,local-path-storage |
+| pause-before-export     |            | When set to true, pauses all managed resources before starting the export process. This can help ensure a consistent state for the export. Defaults to false.                        | false                                                      |
 {{< /table >}}
 
 ---
@@ -1801,11 +2057,11 @@ Get all composite resources managed by this control plane.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag               | Short flag | Description                                                                                  | Default Value |
-|--------------------|-----------|----------------------------------------------------------------------------------------------|---------------|
-| yes                |           | When set to true, automatically accepts any confirmation prompts that may appear during the import process. | false         |
-| input              | i         | Specifies the file path of the archive to be imported. The default path is 'xp-state.tar.gz'. | xp-state.tar.gz |
-| unpause-after-import |           | When set to true, automatically unpauses all managed resources that were paused during the import process. This helps in resuming normal operations post-import. Defaults to false, requiring manual unpausing of resources if needed. | false         |
+| Long flag            | Short flag | Description                                                                                                                                                                                                                            | Default Value   |
+| -------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| yes                  |            | When set to true, automatically accepts any confirmation prompts that may appear during the import process.                                                                                                                            | false           |
+| input                | i          | Specifies the file path of the archive to be imported. The default path is 'xp-state.tar.gz'.                                                                                                                                          | xp-state.tar.gz |
+| unpause-after-import |            | When set to true, automatically unpauses all managed resources that were paused during the import process. This helps in resuming normal operations post-import. Defaults to false, requiring manual unpausing of resources if needed. | false           |
 {{< /table >}}
 
 ---
@@ -1815,30 +2071,30 @@ Get all composite resources managed by this control plane.
 The `up alpha query` command lets you view list of objects of any kind within all the control planes in your space. Supports filtering.
 
 {{< table "table table-sm table-striped cli-ref">}}
-| Short Flag | Long Flag                         | Description                                                                                                                     |
-|------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| `-h`       | `--help`                          | Show context-sensitive help.                                                                                                    |
-|            | `--format="default"`              | Format for get/list commands. Can be: json, yaml, default.                                                                      |
-| `-q`       | `--quiet`                         | Suppress all output.                                                                                                            |
-|            | `--pretty`                        | Pretty print output.                                                                                                            |
-|            | `--dry-run`                       | Dry-run output.                                                                                                                 |
-| `-o`       | `--output=STRING`                 | Output format. One of: json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file, custom-columns, custom-columns-file, wide. |
-|            | `--no-headers`                    | When using the default or custom-column output format, don't print headers.                                                     |
-|            | `--show-labels`                   | When printing, show all labels as the last column (default hide labels column).                                                 |
-|            | `--sort-by=STRING`                | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
-|            | `--label-columns=LABEL-COLUMNS,...`| Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2... |
-|            | `--show-kind`                     | If present, list the resource type for the requested object or objects.                                                                 |
-| `-t`       | `--template=STRING`               | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview]. |
-|            | `--allow-missing-template-keys`   | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats. |
-|            | `--show-managed-fields`           | If true, keep the managedFields when printing objects in JSON or YAML format.                                                   |
-|            | `--domain=https://upbound.io`     | Root Upbound domain ($UP_DOMAIN).                                                                                               |
-| `-a`       | `--account=STRING`                | Account used to execute command ($UP_ACCOUNT).                                                                                  |
-|            | `--insecure-skip-tls-verify`      | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                      |
-| `-d`       | `--debug=INT`                     | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).|
-| `-n`       | `--namespace=STRING`              | Namespace name for resources to query. By default, it's all namespaces if not on a control plane profile, the profile's current namespace or "default" ($UPBOUND_NAMESPACE). |
-| `-g`       | `--group=STRING`                  | Control plane group. By default, it's the kubeconfig's current namespace or "default" ($UPBOUND_GROUP).                          |
-| `-c`       | `--controlplane=STRING`           | Control plane name. Defaults to the current kubeconfig context if it points to a control plane ($UPBOUND_CONTROLPLANE).          |
-| `-A`       | `--all-groups`                    | Query in all groups.                                                                                                             |
+| Short Flag | Long Flag                           | Description                                                                                                                                                                                                                                                |
+| ---------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-h`       | `--help`                            | Show context-sensitive help.                                                                                                                                                                                                                               |
+|            | `--format="default"`                | Format for get/list commands. Can be: json, yaml, default.                                                                                                                                                                                                 |
+| `-q`       | `--quiet`                           | Suppress all output.                                                                                                                                                                                                                                       |
+|            | `--pretty`                          | Pretty print output.                                                                                                                                                                                                                                       |
+|            | `--dry-run`                         | Dry-run output.                                                                                                                                                                                                                                            |
+| `-o`       | `--output=STRING`                   | Output format. One of: json, yaml, name, go-template, go-template-file, template, templatefile, jsonpath, jsonpath-as-json, jsonpath-file, custom-columns, custom-columns-file, wide.                                                                      |
+|            | `--no-headers`                      | When using the default or custom-column output format, don't print headers.                                                                                                                                                                                |
+|            | `--show-labels`                     | When printing, show all labels as the last column (default hide labels column).                                                                                                                                                                            |
+|            | `--sort-by=STRING`                  | If non-empty, sort list types using this field specification. The field specification is expressed as a JSONPath expression (e.g. '{.metadata.name}'). The field in the API resource specified by this JSONPath expression must be an integer or a string. |
+|            | `--label-columns=LABEL-COLUMNS,...` | Accepts a comma-separated list of labels that are going to be presented as columns. Names are case-sensitive. You can also use multiple flag options like -L label1 -L label2...                                                                           |
+|            | `--show-kind`                       | If present, list the resource type for the requested object or objects.                                                                                                                                                                                    |
+| `-t`       | `--template=STRING`                 | Template string or path to template file to use when -o=go-template, -o=go-template-file. The template format is golang templates [http://golang.org/pkg/text/template/#pkg-overview].                                                                     |
+|            | `--allow-missing-template-keys`     | If true, ignore any errors in templates when a field or map key is missing in the template. Only applies to golang and jsonpath output formats.                                                                                                            |
+|            | `--show-managed-fields`             | If true, keep the managedFields when printing objects in JSON or YAML format.                                                                                                                                                                              |
+|            | `--domain=https://upbound.io`       | Root Upbound domain ($UP_DOMAIN).                                                                                                                                                                                                                          |
+| `-a`       | `--account=STRING`                  | Account used to execute command ($UP_ACCOUNT).                                                                                                                                                                                                             |
+|            | `--insecure-skip-tls-verify`        | [INSECURE] Skip verifying TLS certificates ($UP_INSECURE_SKIP_TLS_VERIFY).                                                                                                                                                                                 |
+| `-d`       | `--debug=INT`                       | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens ($UP_DEBUG).                                                                                                                           |
+| `-n`       | `--namespace=STRING`                | Namespace name for resources to query. By default, it's all namespaces if not on a control plane profile, the profile's current namespace or "default" ($UPBOUND_NAMESPACE).                                                                               |
+| `-g`       | `--group=STRING`                    | Control plane group. By default, it's the kubeconfig's current namespace or "default" ($UPBOUND_GROUP).                                                                                                                                                    |
+| `-c`       | `--controlplane=STRING`             | Control plane name. Defaults to the current kubeconfig context if it points to a control plane ($UPBOUND_CONTROLPLANE).                                                                                                                                    |
+| `-A`       | `--all-groups`                      | Query in all groups.                                                                                                                                                                                                                                       |
 {{< /table >}}
 
 **Examples**
@@ -1879,21 +2135,21 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
-| kubeconfig                |           | Override default kubeconfig path.                                   |                       |
-| kubecontext               |           | Override default kubeconfig context.                                |                       |
-| robot-token               |           | The Upbound robot token contents used to authenticate the connection. |                       |
-| up-environment            |           | Override the default Upbound Environment.                           | prod                  |
+| Long flag                  | Short flag | Description                                                                                                          | Default Value      |
+| -------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| domain                     |            | Root Upbound domain.                                                                                                 | https://upbound.io |
+| profile                    |            | Profile used to execute command.                                                                                     |                    |
+| account                    | a          | Account used to execute command.                                                                                     |                    |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                          |                    |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                    |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                  |                    |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                 |                    |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                |                    |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                             |                    |
+| kubeconfig                 |            | Override default kubeconfig path.                                                                                    |                    |
+| kubecontext                |            | Override default kubeconfig context.                                                                                 |                    |
+| robot-token                |            | The Upbound robot token contents used to authenticate the connection.                                                |                    |
+| up-environment             |            | Override the default Upbound Environment.                                                                            | prod               |
 {{< /table >}}
 
 ---
@@ -1911,17 +2167,17 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                 | Short flag | Description                                            | Default Value            |
-|----------------------|-----------|--------------------------------------------------------|--------------------------|
-| out                  | o         | Name of the output file.                               | upbound_billing_report.tgz |
-| provider             |           | Storage provider. Must be one of: aws, gcp, azure.     |                          |
-| bucket               |           | Storage bucket.                                        |                          |
-| endpoint             |           | Custom storage endpoint.                               |                          |
-| account              |           | Name of the Upbound account whose billing report is being collected. |                          |
-| azure-storage-account|           | Name of the Azure storage account. Required for --provider=azure. |                          |
-| billing-month        |           | Export a report for a billing period of one calendar month. Format: 2006-01. |                          |
-| billing-custom       |           | Export a report for a custom billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02. |                          |
-| force-incomplete     |           | Export a report for an incomplete billing period.      |                          |
+| Long flag             | Short flag | Description                                                                                          | Default Value              |
+| --------------------- | ---------- | ---------------------------------------------------------------------------------------------------- | -------------------------- |
+| out                   | o          | Name of the output file.                                                                             | upbound_billing_report.tgz |
+| provider              |            | Storage provider. Must be one of: aws, gcp, azure.                                                   |                            |
+| bucket                |            | Storage bucket.                                                                                      |                            |
+| endpoint              |            | Custom storage endpoint.                                                                             |                            |
+| account               |            | Name of the Upbound account whose billing report is being collected.                                 |                            |
+| azure-storage-account |            | Name of the Azure storage account. Required for --provider=azure.                                    |                            |
+| billing-month         |            | Export a report for a billing period of one calendar month. Format: 2006-01.                         |                            |
+| billing-custom        |            | Export a report for a custom billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02. |                            |
+| force-incomplete      |            | Export a report for an incomplete billing period.                                                    |                            |
 {{< /table >}}
 
 ---
@@ -1933,23 +2189,23 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                        | Short flag | Description                                                         | Default Value         |
-|-----------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| domain                      |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                     |           | Profile used to execute command.                                    |                       |
-| account                     | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify    |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                       | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint       |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint      |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint     |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint  |           | Overrides the default registry endpoint.                            |                       |
-| registry-repository         |           | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. | us-west1-docker.pkg.dev/orchestration-build/upbound-environments |
-| registry-endpoint           |           | Set registry endpoint, including scheme, for authentication.        | https://us-west1-docker.pkg.dev |
-| kubeconfig                  |           | Override default kubeconfig path.                                   |                       |
-| kubecontext                 |           | Override default kubeconfig context.                                |                       |
-| yes-really-delete-space-and-all-data |           | Bypass safety checks and destroy Spaces                              |                       |
-| orphan                      |           | Remove Space components but retain Control Planes and data |
+| Long flag                            | Short flag | Description                                                                                                                             | Default Value                                                    |
+| ------------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| domain                               |            | Root Upbound domain.                                                                                                                    | https://upbound.io                                               |
+| profile                              |            | Profile used to execute command.                                                                                                        |                                                                  |
+| account                              | a          | Account used to execute command.                                                                                                        |                                                                  |
+| insecure-skip-tls-verify             |            | [INSECURE] Skip verifying TLS certificates.                                                                                             |                                                                  |
+| debug                                | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.                    |                                                                  |
+| override-api-endpoint                |            | Overrides the default API endpoint.                                                                                                     |                                                                  |
+| override-auth-endpoint               |            | Overrides the default auth endpoint.                                                                                                    |                                                                  |
+| override-proxy-endpoint              |            | Overrides the default proxy endpoint.                                                                                                   |                                                                  |
+| override-registry-endpoint           |            | Overrides the default registry endpoint.                                                                                                |                                                                  |
+| registry-repository                  |            | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. | us-west1-docker.pkg.dev/orchestration-build/upbound-environments |
+| registry-endpoint                    |            | Set registry endpoint, including scheme, for authentication.                                                                            | https://us-west1-docker.pkg.dev                                  |
+| kubeconfig                           |            | Override default kubeconfig path.                                                                                                       |                                                                  |
+| kubecontext                          |            | Override default kubeconfig context.                                                                                                    |                                                                  |
+| yes-really-delete-space-and-all-data |            | Bypass safety checks and destroy Spaces                                                                                                 |                                                                  |
+| orphan                               |            | Remove Space components but retain Control Planes and data                                                                              |
 {{< /table >}}
 
 ---
@@ -1961,19 +2217,19 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
-| kubeconfig                |           | Override default kubeconfig path.                                   |                       |
-| kubecontext               |           | Override default kubeconfig context.                                |                       |
+| Long flag                  | Short flag | Description                                                                                                          | Default Value      |
+| -------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| domain                     |            | Root Upbound domain.                                                                                                 | https://upbound.io |
+| profile                    |            | Profile used to execute command.                                                                                     |                    |
+| account                    | a          | Account used to execute command.                                                                                     |                    |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                          |                    |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                    |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                  |                    |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                 |                    |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                |                    |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                             |                    |
+| kubeconfig                 |            | Override default kubeconfig path.                                                                                    |                    |
+| kubecontext                |            | Override default kubeconfig context.                                                                                 |                    |
 {{< /table >}}
 
 ---
@@ -1985,29 +2241,29 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| kubeconfig                |           | Override default kubeconfig path.                                   |                       |
-| kubecontext               |           | Override default kubeconfig context.                                |                       |
-| registry-repository       |           | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. | us-west1-docker.pkg.dev/orchestration-build/upbound-environments |
-| registry-endpoint         |           | Set registry endpoint, including scheme, for authentication.        | https://us-west1-docker.pkg.dev |
-| token-file                |           | File containing authentication token.                               |                       |
-| registry-username         |           | Set the registry username.                                          |                       |
-| registry-password         |           | Set the registry password.                                          |                       |
-| set                       |           | Set parameters.                                                     |                       |
-| file                      | f         | Parameters file.                                                    |                       |
-| bundle                    |           | Local bundle path.                                                  |                       |
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
-| yes                       |           | Answer yes to all questions                                         |                       |
-| public-ingress            |           | For AKS,EKS,GKE expose ingress publically                           |                       |
+| Long flag                  | Short flag | Description                                                                                                                             | Default Value                                                    |
+| -------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| kubeconfig                 |            | Override default kubeconfig path.                                                                                                       |                                                                  |
+| kubecontext                |            | Override default kubeconfig context.                                                                                                    |                                                                  |
+| registry-repository        |            | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. | us-west1-docker.pkg.dev/orchestration-build/upbound-environments |
+| registry-endpoint          |            | Set registry endpoint, including scheme, for authentication.                                                                            | https://us-west1-docker.pkg.dev                                  |
+| token-file                 |            | File containing authentication token.                                                                                                   |                                                                  |
+| registry-username          |            | Set the registry username.                                                                                                              |                                                                  |
+| registry-password          |            | Set the registry password.                                                                                                              |                                                                  |
+| set                        |            | Set parameters.                                                                                                                         |                                                                  |
+| file                       | f          | Parameters file.                                                                                                                        |                                                                  |
+| bundle                     |            | Local bundle path.                                                                                                                      |                                                                  |
+| domain                     |            | Root Upbound domain.                                                                                                                    | https://upbound.io                                               |
+| profile                    |            | Profile used to execute command.                                                                                                        |                                                                  |
+| account                    | a          | Account used to execute command.                                                                                                        |                                                                  |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                                             |                                                                  |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.                    |                                                                  |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                                     |                                                                  |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                                    |                                                                  |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                                   |                                                                  |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                                                |                                                                  |
+| yes                        |            | Answer yes to all questions                                                                                                             |                                                                  |
+| public-ingress             |            | For AKS,EKS,GKE expose ingress publically                                                                                               |                                                                  |
 {{< /table >}}
 
 ---
@@ -2019,17 +2275,17 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
+| Long flag                  | Short flag | Description                                                                                                          | Default Value      |
+| -------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| domain                     |            | Root Upbound domain.                                                                                                 | https://upbound.io |
+| profile                    |            | Profile used to execute command.                                                                                     |                    |
+| account                    | a          | Account used to execute command.                                                                                     |                    |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                          |                    |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                    |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                  |                    |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                 |                    |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                |                    |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                             |                    |
 {{< /table >}}
 
 ---
@@ -2041,28 +2297,28 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
-| kubeconfig                |           | Override default kubeconfig path.                                   |                       |
-| kubecontext               |           | Override default kubeconfig context.                                |                       |
-| registry-repository       |           | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. | us-west1-docker.pkg.dev/orchestration-build/upbound-environments |
-| registry-endpoint         |           | Set registry endpoint, including scheme, for authentication.        | https://us-west1-docker.pkg.dev |
-| token-file                |           | File containing authentication token.                               |                       |
-| registry-username         |           | Set the registry username.                                          |                       |
-| registry-password         |           | Set the registry password.                                          |                       |
-| set                       |           | Set parameters.                                                     |                       |
-| file                      | f         | Parameters file.                                                    |                       |
-| bundle                    |           | Local bundle path.                                                  |                       |
-| rollback                  |           | Rollback to previously installed version on failed upgrade.         |                       |
+| Long flag                  | Short flag | Description                                                                                                                             | Default Value                                                    |
+| -------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| domain                     |            | Root Upbound domain.                                                                                                                    | https://upbound.io                                               |
+| profile                    |            | Profile used to execute command.                                                                                                        |                                                                  |
+| account                    | a          | Account used to execute command.                                                                                                        |                                                                  |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                                             |                                                                  |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.                    |                                                                  |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                                     |                                                                  |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                                    |                                                                  |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                                   |                                                                  |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                                                |                                                                  |
+| kubeconfig                 |            | Override default kubeconfig path.                                                                                                       |                                                                  |
+| kubecontext                |            | Override default kubeconfig context.                                                                                                    |                                                                  |
+| registry-repository        |            | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. | us-west1-docker.pkg.dev/orchestration-build/upbound-environments |
+| registry-endpoint          |            | Set registry endpoint, including scheme, for authentication.                                                                            | https://us-west1-docker.pkg.dev                                  |
+| token-file                 |            | File containing authentication token.                                                                                                   |                                                                  |
+| registry-username          |            | Set the registry username.                                                                                                              |                                                                  |
+| registry-password          |            | Set the registry password.                                                                                                              |                                                                  |
+| set                        |            | Set parameters.                                                                                                                         |                                                                  |
+| file                       | f          | Parameters file.                                                                                                                        |                                                                  |
+| bundle                     |            | Local bundle path.                                                                                                                      |                                                                  |
+| rollback                   |            | Rollback to previously installed version on failed upgrade.                                                                             |                                                                  |
 {{< /table >}}
 
 ---
@@ -2074,19 +2330,19 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag        | Short flag | Description                              | Default Value |
-|-------------|-----------|------------------------------------------|---------------|
-| kubeconfig  |           | Override default kubeconfig path.        |               |
-| namespace   | n         | Kubernetes namespace for Upbound.        | upbound-system |
-| domain      |           | Root Upbound domain.                     | https://upbound.io |
-| profile     |           | Profile used to execute command.         |               |
-| account     | a         | Account used to execute command.         |               |
-| insecure-skip-tls-verify |           | [INSECURE] Skip verifying TLS certificates. |               |
-| debug       | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |               |
-| override-api-endpoint |           | Overrides the default API endpoint. |               |
-| override-auth-endpoint |           | Overrides the default auth endpoint. |               |
-| override-proxy-endpoint |           | Overrides the default proxy endpoint. |               |
-| override-registry-endpoint |           | Overrides the default registry endpoint. |               |
+| Long flag                  | Short flag | Description                                                                                                          | Default Value      |
+| -------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| kubeconfig                 |            | Override default kubeconfig path.                                                                                    |                    |
+| namespace                  | n          | Kubernetes namespace for Upbound.                                                                                    | upbound-system     |
+| domain                     |            | Root Upbound domain.                                                                                                 | https://upbound.io |
+| profile                    |            | Profile used to execute command.                                                                                     |                    |
+| account                    | a          | Account used to execute command.                                                                                     |                    |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                          |                    |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                    |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                  |                    |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                 |                    |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                |                    |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                             |                    |
 {{< /table >}}
 
 ---
@@ -2104,39 +2360,39 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                     | Short flag | Description                                                        | Default Value            |
-|--------------------------|-----------|--------------------------------------------------------------------|--------------------------|
-| family-base-image        |           | Family image used as the base for the smaller provider packages.   |                          |
-| provider-name            |           | Provider name, such as provider-aws to be used while formatting smaller provider package repositories. |                          |
-| family-package-url-format|           | Family package URL format to be used for the smaller provider packages. Must be a valid OCI image URL with the format specifier "%s", which will be substituted with <provider name>-<service name>. |                          |
-| smaller-providers        |           | Smaller provider names to build and push, such as ec2, eks or config. | monolith                 |
-| concurrency              |           | Maximum number of packages to process concurrently. Setting it to 0 puts no limit on the concurrency, i.e., all packages are processed in parallel. | 0                        |
-| push-retry               |           | Number of retries when pushing a provider package fails.           | 3                        |
-| platform                 |           | Platforms to build the packages for. Each platform should use the <OS>_<arch> syntax. An example is: linux_arm64. | linux_amd64,linux_arm64  |
-| provider-bin-root    | p            | Provider binary paths root. Smaller provider binaries should reside under the platform directories in this folder.                                                  |                                                |
-| output-dir               | o         | Path of the package output directory.                              |                          |
-| store-packages           |           | Smaller provider names whose provider package should be stored under the package output directory specified with the --output-dir option. |                          |
-| package-metadata-template|           | Smaller provider metadata template. The template variables {{ .Service }} and {{ .Name }} will be substituted when the template is executed among with the supplied template variable substitutions. | ./package/crossplane.yaml.tmpl |
-| template-var             |           | Smaller provider metadata template variables to be used for the specified template. |                          |
-| examples-group-override  |           | Overrides for the location of the example manifests folder of a smaller provider. |                          |
-| crd-group-override       |           | Overrides for the locations of the CRD folders of the smaller providers. |                          |
-| package-repo-override    |           | Overrides for the package repository names of the smaller providers. |                          |
-| providers-with-auth-ext  |           | Smaller provider names for which we need to configure the authentication extension. | monolith,config          |
-| examples-root            | e         | Path to package examples directory.                                | ./examples               |
-| crd-root                 |           | Path to package CRDs directory.                                    | ./package/crds           |
-| auth-ext                 |           | Path to an authentication extension file.                          | ./package/auth.yaml      |
-| ignore                   |           | Paths to exclude from the smaller provider packages.               |                          |
-| create                   |           | Create repository on push if it does not exist.                    |                          |
-| build-only               |           | Only build the smaller provider packages and do not attempt to push them to a package repository. | false                    |
-| domain                   |           | Root Upbound domain.                                               | https://upbound.io       |
-| profile                  |           | Profile used to execute command.                                   |                          |
-| account                  | a         | Account used to execute command.                                   |                          |
-| insecure-skip-tls-verify |           | [INSECURE] Skip verifying TLS certificates.                        |                          |
-| debug                    | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                          |
-| override-api-endpoint    |           | Overrides the default API endpoint.                                |                          |
-| override-auth-endpoint   |           | Overrides the default auth endpoint.                               |                          |
-| override-proxy-endpoint  |           | Overrides the default proxy endpoint.                              |                          |
-| override-registry-endpoint |           | Overrides the default registry endpoint.                         |                          |
+| Long flag                  | Short flag | Description                                                                                                                                                                                          | Default Value                  |
+| -------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| family-base-image          |            | Family image used as the base for the smaller provider packages.                                                                                                                                     |                                |
+| provider-name              |            | Provider name, such as provider-aws to be used while formatting smaller provider package repositories.                                                                                               |                                |
+| family-package-url-format  |            | Family package URL format to be used for the smaller provider packages. Must be a valid OCI image URL with the format specifier "%s", which will be substituted with <provider name>-<service name>. |                                |
+| smaller-providers          |            | Smaller provider names to build and push, such as ec2, eks or config.                                                                                                                                | monolith                       |
+| concurrency                |            | Maximum number of packages to process concurrently. Setting it to 0 puts no limit on the concurrency, i.e., all packages are processed in parallel.                                                  | 0                              |
+| push-retry                 |            | Number of retries when pushing a provider package fails.                                                                                                                                             | 3                              |
+| platform                   |            | Platforms to build the packages for. Each platform should use the <OS>_<arch> syntax. An example is: linux_arm64.                                                                                    | linux_amd64,linux_arm64        |
+| provider-bin-root          | p          | Provider binary paths root. Smaller provider binaries should reside under the platform directories in this folder.                                                                                   |                                |
+| output-dir                 | o          | Path of the package output directory.                                                                                                                                                                |                                |
+| store-packages             |            | Smaller provider names whose provider package should be stored under the package output directory specified with the --output-dir option.                                                            |                                |
+| package-metadata-template  |            | Smaller provider metadata template. The template variables {{ .Service }} and {{ .Name }} will be substituted when the template is executed among with the supplied template variable substitutions. | ./package/crossplane.yaml.tmpl |
+| template-var               |            | Smaller provider metadata template variables to be used for the specified template.                                                                                                                  |                                |
+| examples-group-override    |            | Overrides for the location of the example manifests folder of a smaller provider.                                                                                                                    |                                |
+| crd-group-override         |            | Overrides for the locations of the CRD folders of the smaller providers.                                                                                                                             |                                |
+| package-repo-override      |            | Overrides for the package repository names of the smaller providers.                                                                                                                                 |                                |
+| providers-with-auth-ext    |            | Smaller provider names for which we need to configure the authentication extension.                                                                                                                  | monolith,config                |
+| examples-root              | e          | Path to package examples directory.                                                                                                                                                                  | ./examples                     |
+| crd-root                   |            | Path to package CRDs directory.                                                                                                                                                                      | ./package/crds                 |
+| auth-ext                   |            | Path to an authentication extension file.                                                                                                                                                            | ./package/auth.yaml            |
+| ignore                     |            | Paths to exclude from the smaller provider packages.                                                                                                                                                 |                                |
+| create                     |            | Create repository on push if it does not exist.                                                                                                                                                      |                                |
+| build-only                 |            | Only build the smaller provider packages and do not attempt to push them to a package repository.                                                                                                    | false                          |
+| domain                     |            | Root Upbound domain.                                                                                                                                                                                 | https://upbound.io             |
+| profile                    |            | Profile used to execute command.                                                                                                                                                                     |                                |
+| account                    | a          | Account used to execute command.                                                                                                                                                                     |                                |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                                                                                                          |                                |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.                                                                                 |                                |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                                                                                                  |                                |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                                                                                                 |                                |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                                                                                                |                                |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                                                                                                             |                                |
 {{< /table >}}
 
 ---
@@ -2148,15 +2404,15 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag            | Short flag | Description                                                        | Default Value |
-|-----------------|-----------|--------------------------------------------------------------------|---------------|
-| name            |           | [DEPRECATED: use --output] Name of the package to be built. Uses name in crossplane.yaml if not specified. Does not correspond to package tag. |               |
-| output          | o         | Path for package output.                                           |               |
-| controller      |           | Controller image used as base for package.                         |               |
-| package-root    | f         | Path to package directory.                                         | .             |
-| examples-root   | e         | Path to package examples directory.                                | ./examples    |
-| auth-ext        | a         | Path to an authentication extension file.                          | auth.yaml     |
-| ignore          |           | Paths, specified relative to --package-root, to exclude from the package. |               |
+| Long flag     | Short flag | Description                                                                                                                                    | Default Value |
+| ------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| name          |            | [DEPRECATED: use --output] Name of the package to be built. Uses name in crossplane.yaml if not specified. Does not correspond to package tag. |               |
+| output        | o          | Path for package output.                                                                                                                       |               |
+| controller    |            | Controller image used as base for package.                                                                                                     |               |
+| package-root  | f          | Path to package directory.                                                                                                                     | .             |
+| examples-root | e          | Path to package examples directory.                                                                                                            | ./examples    |
+| auth-ext      | a          | Path to an authentication extension file.                                                                                                      | auth.yaml     |
+| ignore        |            | Paths, specified relative to --package-root, to exclude from the package.                                                                      |               |
 {{< /table >}}
 
 ---
@@ -2168,10 +2424,10 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag         | Short flag | Description                               | Default Value  |
-|--------------|-----------|-------------------------------------------|----------------|
-| cache-dir    | d         | Directory used for caching package images.| ~/.up/cache/   |
-| clean-cache  | c         | Clean dep cache.                          |                |
+| Long flag   | Short flag | Description                                | Default Value |
+| ----------- | ---------- | ------------------------------------------ | ------------- |
+| cache-dir   | d          | Directory used for caching package images. | ~/.up/cache/  |
+| clean-cache | c          | Clean dep cache.                           |               |
 {{< /table >}}
 
 ---
@@ -2183,10 +2439,10 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag         | Short flag | Description                         | Default Value   |
-|--------------|-----------|-------------------------------------|-----------------|
-| package-root | p         | Path to directory to write new package. | .               |
-| type         | t         | Type of package to be initialized.  | configuration   |
+| Long flag    | Short flag | Description                             | Default Value |
+| ------------ | ---------- | --------------------------------------- | ------------- |
+| package-root | p          | Path to directory to write new package. | .             |
+| type         | t          | Type of package to be initialized.      | configuration |
 {{< /table >}}
 
 ---
@@ -2198,19 +2454,19 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| package                   | f         | Path to packages. If not specified and only one package exists in current directory it will be used. |                       |
-| create                    |           | Create repository on push if it does not exist.                     |                       |
-| domain                    |           | Root Upbound domain.                                                | https://upbound.io    |
-| profile                   |           | Profile used to execute command.                                    |                       |
-| account                   | a         | Account used to execute command.                                    |                       |
-| insecure-skip-tls-verify  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| debug                     | d         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| override-api-endpoint     |           | Overrides the default API endpoint.                                 |                       |
-| override-auth-endpoint    |           | Overrides the default auth endpoint.                                |                       |
-| override-proxy-endpoint   |           | Overrides the default proxy endpoint.                               |                       |
-| override-registry-endpoint|           | Overrides the default registry endpoint.                            |                       |
+| Long flag                  | Short flag | Description                                                                                                          | Default Value      |
+| -------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| package                    | f          | Path to packages. If not specified and only one package exists in current directory it will be used.                 |                    |
+| create                     |            | Create repository on push if it does not exist.                                                                      |                    |
+| domain                     |            | Root Upbound domain.                                                                                                 | https://upbound.io |
+| profile                    |            | Profile used to execute command.                                                                                     |                    |
+| account                    | a          | Account used to execute command.                                                                                     |                    |
+| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                          |                    |
+| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                    |
+| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                  |                    |
+| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                 |                    |
+| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                |                    |
+| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                             |                    |
 {{< /table >}}
 
 ---
@@ -2222,20 +2478,20 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag                      | Short flag | Description                                                         | Default Value         |
-|---------------------------|-----------|---------------------------------------------------------------------|-----------------------|
-| `--from-daemon`               |           | Indicates that the image should be fetched from the Docker daemon.  |                       |
-| `--from-xpkg`                 |           | Indicates that the image should be fetched from a local xpkg. If package is not specified and only one exists in current directory it will be used. |                       |
-| `--output`                    | `-o`         | Package output file path. Extension must be .gz or will be replaced.| out.gz                |
-| `--domain`                   |           | Root Upbound domain.                                                | https://upbound.io    |
-| `--profile`                   |           | Profile used to execute command.                                    |                       |
-| `--account`                   | `-a`         | Account used to execute command.                                    |                       |
-| `--insecure-skip-tls-verify`  |           | [INSECURE] Skip verifying TLS certificates.                         |                       |
-| `--debug`                     | `-d`         | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                       |
-| `--override-api-endpoint`     |           | Overrides the default API endpoint.                                 |                       |
-| `--override-auth-endpoint`    |           | Overrides the default auth endpoint.                                |                       |
-| `--override-proxy-endpoint`   |           | Overrides the default proxy endpoint.                               |                       |
-| `--override-registry-endpoint`|           | Overrides the default registry endpoint.                            |                       |
+| Long flag                      | Short flag | Description                                                                                                                                         | Default Value      |
+| ------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `--from-daemon`                |            | Indicates that the image should be fetched from the Docker daemon.                                                                                  |                    |
+| `--from-xpkg`                  |            | Indicates that the image should be fetched from a local xpkg. If package is not specified and only one exists in current directory it will be used. |                    |
+| `--output`                     | `-o`       | Package output file path. Extension must be .gz or will be replaced.                                                                                | out.gz             |
+| `--domain`                     |            | Root Upbound domain.                                                                                                                                | https://upbound.io |
+| `--profile`                    |            | Profile used to execute command.                                                                                                                    |                    |
+| `--account`                    | `-a`       | Account used to execute command.                                                                                                                    |                    |
+| `--insecure-skip-tls-verify`   |            | [INSECURE] Skip verifying TLS certificates.                                                                                                         |                    |
+| `--debug`                      | `-d`       | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.                                |                    |
+| `--override-api-endpoint`      |            | Overrides the default API endpoint.                                                                                                                 |                    |
+| `--override-auth-endpoint`     |            | Overrides the default auth endpoint.                                                                                                                |                    |
+| `--override-proxy-endpoint`    |            | Overrides the default proxy endpoint.                                                                                                               |                    |
+| `--override-registry-endpoint` |            | Overrides the default registry endpoint.                                                                                                            |                    |
 {{< /table >}}
 
 ---
@@ -2253,10 +2509,10 @@ Get the composite resources within all control plane groups.
 **Options:**
 
 {{< table "table table-sm table-striped">}}
-| Long flag    | Short flag | Description                                  | Default Value  |
-|---------|-----------|----------------------------------------------|----------------|
-| `--cache`   |           | Directory path for dependency schema cache.  | ~/.up/cache    |
-| `--verbose` |           | Run server with verbose logging.             |                |
+| Long flag   | Short flag | Description                                 | Default Value |
+| ----------- | ---------- | ------------------------------------------- | ------------- |
+| `--cache`   |            | Directory path for dependency schema cache. | ~/.up/cache   |
+| `--verbose` |            | Run server with verbose logging.            |               |
 {{< /table >}}
 
 ---
