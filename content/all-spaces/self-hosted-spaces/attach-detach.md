@@ -7,7 +7,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview and requires Spaces `v1.3.0`.
+This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API]({{<ref "all-spaces/query-api/_index.md">}}) and [enable Upbound RBAC]({{<ref "accounts/authorization/upbound-rbac.md">}}) in order to connect a Space to Upbound.
 {{< /hint >}}
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -18,9 +18,11 @@ This feature is in preview and requires Spaces `v1.3.0`.
 
 Before you begin, make sure you have:
 
-- an existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
-- the `up` CLI installed and logged into your organization
+- An existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
+- The `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
+- A `token.json` license, provided by your Upbound account representative.
+- You enabled the [Query API]({{<ref "all-spaces/query-api/_index.md">}}) in the self-hosted Space.
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
@@ -58,7 +60,7 @@ Create a new robot token and export it to an environment variable called `UPBOUN
 
 ```bash
 up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect" 
-export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-)
+export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-| awk -F': ' '/Token:/ {print $2}')
 ```
 
 Create a secret containing the robot token:
@@ -67,12 +69,23 @@ Create a secret containing the robot token:
 kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
 ```
 
-In the same cluster where you installed the Spaces software, install the Upbound connect agent.
+Specify your username and password for the helm OCI registry:
+
+{{< editCode >}}
+```bash
+jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
+```
+{{< /editCode >}}
+
+In the same cluster where you installed the Spaces software, install the Upbound connect agent with your token secret.
 
 ```bash
 helm -n upbound-system upgrade --install agent \
-  oci://us-west1-docker.pkg.dev/orchestration-build/connect/agent \
-  --version "0.0.0-423.gdaa19ca" \
+  oci://xpkg.upbound.io/spaces-artifacts/agent \
+  --version "0.0.0-441.g68777b9" \
+  --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
+  --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
+  --set "imagePullSecrets[0].name=upbound-pull-secret" \
   --set "registration.enabled=true" \
   --set "space=${UPBOUND_SPACE_NAME}" \
   --set "organization=${UPBOUND_ORG_NAME}" \

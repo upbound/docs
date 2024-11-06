@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-weight: 150
+weight: 1
 description: "Release notes for Upbound Spaces"
 ---
 
@@ -390,6 +390,14 @@ Released August 28th, 2023.
 - Fix otlp-collector networkpolicy ports
 
 ## Control plane connector release notes
+
+### MCP connector v0.8.0
+
+Released November 1st, 2024.
+
+#### What's Changed
+
+- Ability to override app cluster id via `clusterID` helm value for migration scenarios.
 
 ### MCP connector v0.7.0
 
