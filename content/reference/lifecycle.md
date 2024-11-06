@@ -77,6 +77,6 @@ Deprecated features are features that Upbound plans to remove from the product a
 provides customers 12 months notice before discontinuing the feature, unless Upbound replaces it with a feature having
 materially similar use.
 
-## Pre-Releases
+## Pre-releases
 
 Customers with paid support contracts are eligible for pre-release cuts on an as-needed basis for all covered software.

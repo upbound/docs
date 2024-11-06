@@ -4,7 +4,10 @@ weight: 9
 description: "Learn how to verify signatures for Official Providers from the Marketplace"
 ---
 
-Upbound Official Providers contain verifiable signatures, attestations, and an SBOM (software bill of materials). This lets you confirm the origin of each package version and that its contents haven't changed or been tampered with. This article explains how to verify the signature on these packages.
+Upbound Official Providers contain verifiable signatures, attestations, and an
+SBOM (software bill of materials). This approach lets you confirm the origin of
+each package version and verify that its contents remain unchanged and intact
+from a security standpoint. This article explains how to verify the signature on these packages.
 
 ## Prerequisites
 

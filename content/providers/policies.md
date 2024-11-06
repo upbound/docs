@@ -5,11 +5,14 @@ description: "The Upbound Official provider policies."
 aliases:
   - providers/support
 ---
+
 <!-- vale Google.Headings = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale Google.Will = NO -->
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale write-good.Passive = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
+
 
 The following policies provide details on the use, access, support and maintenance of the Upbound Official providers.
 
@@ -90,18 +93,19 @@ version updates reset
 the `minor` and `patch` to zero.
 
 <!-- vale Microsoft.Contractions = NO -->
+<!-- vale write-good.TooWordy = NO -->
 
 A change in the `major` version number does not come with a backward compatibility guarantee.
-The release notes will indicate all breaking changes introduced and provide instructions on adapting to them.
+The release notes will indicate all breaking changes introduced and provide
+instructions on adapting to them.
+<!-- vale write-good.TooWordy = YES -->
 <!-- vale Microsoft.Contractions = YES -->
 
 #### Minor version
 
-<!-- vale write-good.Passive = NO -->
 
 The `minor` version number increases when new features, such as new capabilities, resources, or fields, are introduced. This update resets the
 `patch` number to zero and may also include bug fixes.
-<!-- vale write-good.Passive = YES -->
 
 #### Patch version
 
@@ -119,11 +123,8 @@ The CRDs contained within an Official provider follow the standard Kubernetes AP
   to the provider resource.
 - `v1beta2` - Like `v1beta1` CRDs all `v1beta2` providers are fully qualified and tested. `v1beta2` contain more
   features or breaking changes from the `v1beta1` API.
-  <!-- vale gitlab.FutureTense = NO -->
-
 - `v1` - CRDs that reach a `v1` API version have fully defined APIs. Upbound won't make breaking API changes in the
   current `major` version of the provider.
-  <!-- vale gitlab.FutureTense = YES -->
 
   {{< /tab >}}
 
@@ -134,14 +135,12 @@ The CRDs contained within an Official provider follow the standard Kubernetes AP
 A release that increments the `minor` or `patch` version is backward compatible with the prior release.
 
 <!-- vale write-good.TooWordy = NO -->
-<!-- vale gitlab.SentenceLength = NO -->
 
 Backward compatibility promises that the Crossplane-managed resource APIs,
 configurations, and infrastructure aren't impacted when upgrading to a new version with
 a higher `minor` or `patch` version number and the same `major`
 version number. For example, upgrading from `v1.2.3` to `v1.2.4` or `v1.3.0`
 should work without any needed changes.
-<!-- vale gitlab.SentenceLength = YES -->
 
 <!-- vale write-good.TooWordy = YES -->
 
@@ -184,14 +183,19 @@ The following constraints apply to allow version compatibility:
 
 - All family providers must be on the **same** `major` version.
 - All family providers must be on the **same or prior** `minor` version as the
-  family's config provider (for example, the
+  family's configuration provider (for example, the
   `provider-aws-family` provider).
 
 Examples:
 
+<!-- vale alex.Ablist = NO -->
+
 - Technically valid combination: `provider-family-aws:v1.1.0`, `provider-aws-s3:v1.1.1`, `provider-aws-ec3:v1.0.1`
 - Invalid combination: `provider-family-aws:v1.1.0`, `provider-aws-s3:v1.0.0`, `provider-aws-ec3:v0.46.0`
-- Invalid combination: `provider-family-aws:v1.0.0`, `provider-aws-s3:v1.0.1`, `provider-aws-ec3:v1.1.0`
+- Invalid combination: `provider-family-aws:v1.0.0`, `provider-aws-s3:v1.0.1`,
+  `provider-aws-ec3:v1.1.0`
+<!-- vale alex.Ablist = YES -->
+
   {{< /tab >}}
 
 {{< tab "CVEs" >}}
@@ -204,7 +208,7 @@ conditions:
     1. an upstream release version available which has been verified to fix the CVE, or
     1. an affected provider package can be rebuilt with updated compilers and/or libraries to remediate that CVE.
 
-Upbound will address each CVE meeting the above criteria based on it's severity score, according to the [Common
+Upbound will address each CVE meeting this criteria based on it's severity score, according to the [Common
 Vulnerability Scoring System version 3](https://nvd.nist.gov/vuln-metrics/cvss), as follows:
 
 - Critical Severity: Within 7 calendar days from the date an upstream fix is publicly available.
@@ -215,8 +219,9 @@ A CVE will be considered addressed when a new version of the provider with the f
 
 {{< /tabs >}}
 
-<!-- vale Microsoft.HeadingAcronyms = YES -->
 <!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 <!-- vale Google.Will = YES -->
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale write-good.Passive = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
