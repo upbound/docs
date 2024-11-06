@@ -40,11 +40,12 @@ To use Upbound, you'll need to install the `up` CLI. You can download it as a bi
     curl -sL "https://cli.upbound.io" | sh
   ````
   {{< /tab >}}
-  {{< tab "Homebrew" >}}
-    ```bash
-      brew install upbound/tap/up
-    ```
-    {{< /tab >}}
+
+{{< tab "Homebrew" >}}
+```bash
+brew install upbound/tap/up
+```
+{{< /tab >}}
 {{< /tabs >}}
 
 ### Verify your installation
