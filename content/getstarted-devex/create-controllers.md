@@ -35,11 +35,11 @@ For this guide, you'll need:
 
 To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
 {{< tabs >}}
-  {{< tab "Binary" >}}
-  ```shell
-    curl -sL "https://cli.upbound.io" | sh
-  ````
-  {{< /tab >}}
+{{< tab "Binary" >}}
+```shell
+curl -sL "https://cli.upbound.io" | sh
+````
+{{< /tab >}}
 
 {{< tab "Homebrew" >}}
 ```bash
@@ -77,7 +77,7 @@ The `up project init` command creates:
 *   `apis/`: Directory for Crossplane composition definitions.
 *   `examples/`: Directory for example claims.
 *   `.github/` and `.vscode/`: Directories for CI/CD and local development.
-*   `Makefile`: A file to execute project commands.
+
 
 ## Step 2: Add project dependencies
 <!-- vale gitlab.SentenceSpacing = NO -->
@@ -86,9 +86,9 @@ The `up project init` command creates:
 
 <!-- vale Google.Headings = NO -->
 
-### Add the AWS RDS provider
 <!-- vale write-good.TooWordy = YES -->
 <!-- AWS -->
+### Add the AWS RDS provider
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
@@ -122,7 +122,6 @@ spec:
     version: v1.16.0
 ```
 <!-- /AWS -->
-
 <!-- Azure-->
 ```yaml
 spec:
@@ -131,7 +130,6 @@ spec:
     version: v1.7.0
 ```
 <!-- /Azure -->
-
 <!-- GCP -->
 ```yaml
 spec:
@@ -168,7 +166,7 @@ This command creates a minimal claim file. Copy and paste the claim below into t
 ### AWS
 {{< editCode >}}
 ```yaml
-  apiVersion: platform.example.com/v1alpha1
+  apiVersion: apiVersion: devexdemo.example.com/v1alpha1
   kind: StorageBucket
   metadata:
     name: example
@@ -254,7 +252,7 @@ transforms in your YAML files.
 Run the `up function generate` command and choose either KCL or Python.
 
 ```shell
-up function generate --language=<KCL or Python> test-function apis/xstoragebuckets/composition.yaml
+up function generate test-function apis/xstoragebuckets/composition.yaml --language=<KCL or Python>
 ```
 
 This command generates an embedded function called `test-function` in the
@@ -273,42 +271,55 @@ Now, open up your function file (either `main.k` or  `main.py`) and paste in the
 {{< tab "KCL" >}}
 
 ```yaml
-import models.v1beta1 as v1beta1
+
+import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
+
 oxr = option("params").oxr # observed composite resource
+
 bucketName = "{}-bucket".format(oxr.metadata.name)
+
+_metadata = lambda name: str -> any {
+  {
+    name = name
+    annotations = {
+      "krm.kcl.dev/composition-resource-name" = name
+    }
+  }
+}
+
 _items: [any] = [
     # Bucket in the desired region
-    v1beta1.Bucket{
-        metadata.name = bucketName
-        spec = v1beta1.S3AwsUpboundIoV1beta1BucketSpec{
-            forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketSpecForProvider{
+    s3v1beta1.Bucket{
+        metadata: _metadata(bucketName)
+        spec = {
+            forProvider = {
                 region = oxr.spec.region
             }
         }
     },
     # ACL for the bucket
-    v1beta1.BucketACL{
-        metadata.name = "{}-acl".format(oxr.metadata.name)
-        spec = v1beta1.S3AwsUpboundIoV1beta1BucketACLSpec{
-            forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketACLSpecForProvider{
+    s3v1beta1.BucketACL{
+        metadata: _metadata("{}-acl".format(oxr.metadata.name))
+        spec = {
+            forProvider = {
                 region = oxr.spec.region
                 acl = oxr.spec.acl
             }
         }
     },
     # Default encryption for the bucket
-    v1beta1.BucketServerSideEncryptionConfiguration{
-        metadata.name = "{}-encryption".format(oxr.metadata.name)
-        spec = v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpec{
-            forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProvider{
+    s3v1beta1.BucketServerSideEncryptionConfiguration{
+        metadata: _metadata("{}-encryption".format(oxr.metadata.name))
+        spec = {
+            forProvider = {
                 region = oxr.spec.region
-                bucketRef = v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProviderBucketRef{
+                bucketRef = {
                     name = bucketName
                 }
                 rule = [
-                    v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProviderRuleItems0{
+                    {
                         applyServerSideEncryptionByDefault = [
-                            v1beta1.S3AwsUpboundIoV1beta1BucketServerSideEncryptionConfigurationSpecForProviderRuleItems0ApplyServerSideEncryptionByDefaultItems0{
+                            {
                                 sseAlgorithm = "AES256"
                             }
                         ]
@@ -319,19 +330,20 @@ _items: [any] = [
         }
     }
 ]
+
 # Set up versioning for the bucket if desired
 if oxr.spec.versioning:
     _items += [
-        v1beta1.BucketVersioning{
-            metadata.name = "{}-versioning".format(oxr.metadata.name)
-            spec = v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpec{
-                forProvider = v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpecForProvider{
+        s3v1beta1.BucketVersioning{
+            metadata: _metadata("{}-versioning".format(oxr.metadata.name))
+            spec = {
+                forProvider = {
                     region = oxr.spec.region
-                    bucketRef = v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpecForProviderBucketRef{
+                    bucketRef = {
                         name = bucketName
                     }
                     versioningConfiguration = [
-                        v1beta1.S3AwsUpboundIoV1beta1BucketVersioningSpecForProviderVersioningConfigurationItems0{
+                        {
                             status = "Enabled"
                         }
                     ]
@@ -339,6 +351,7 @@ if oxr.spec.versioning:
             }
         }
     ]
+
 items = _items
 ```
 
@@ -672,6 +685,164 @@ Update your `up` CLI context to your control plane.
 ```shell
 up ctx ./<your-control-plane>
 ```
+
+### Create provider credentials
+Your project configuration now includes your provider dependency and requires an authentication method.
+
+<!-- vale Microsoft.Terms = NO -->
+A `ProviderConfig` is a custom resource that defines how your control plane authenticates and connects with cloud providers like AWS. It acts as a configuration bridge between your control plane's managed resources and the cloud provider's API.
+<!-- vale Microsoft.Terms = YES -->
+
+{{<hint>}}
+  For more detailed instructions or alternate authentication methods, visit the [provider documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
+{{</hint>}}
+
+{{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
+<!-- AWS -->
+  Using AWS access keys, or long-term IAM credentials, requires storing the AWS keys as a control plane secret. To create the secret [download your AWS access key](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) ID and secret access key. Create a new file called `aws-credentials.txt` and paste your AWS access key ID and secret access key.
+
+  ```ini
+    [default]
+    aws_access_key_id = YOUR_ACCESS_KEY_ID
+    aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+  ```
+
+  Next, create a new secret to store your credentials in your control plane. The `kubectl create secret` command puts your AWS login details in the control plane secure storage:
+
+  ```shell
+    kubectl create secret generic aws-secret \
+      -n crossplane-system \
+      --from-file=my-aws-secret=./aws-credentials.txt
+  ```
+
+  Next, create a new file called `provider-config.yaml` and paste the configuration below.
+  ```yaml
+    apiVersion: aws.upbound.io/v1beta1
+    kind: ProviderConfig
+    metadata:
+      name: default
+    spec:
+      credentials:
+        source: Secret
+        secretRef:
+          namespace: crossplane-system
+          name: aws-secret
+          key: my-aws-secret
+  ```
+  Apply the provider configuration.
+
+  ```bash
+    kubectl apply -f provider-config.yaml
+  ```
+
+When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
+in the secret store.
+
+<!-- /AWS -->
+
+<!-- Azure -->
+  A service principal is an application within the Azure Active Directory that passes `client_id`, `client_secret`, and `tenant_id` authentication tokens to create and manage Azure resources. As an alternative, it can also authenticate with a `client_certificate` instead of a `client_secret`.
+
+  {{< hint "tip" >}}
+  If you don't have the Azure CLI, use the [install guide](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+  {{< /hint >}}
+
+  First, find the Subscription ID for your Azure account.
+
+  ```shell
+    az account list
+  ```
+
+  Note the value of the `id` in the return output.
+
+  Next, create a service principle `Owner` role. Update the `<subscription_id>` with the `id` from the previous command.
+
+  ```shell
+    az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<subscription_id> \
+    > azure.json
+  ```
+
+  The `azure.json` file in the preceding command contains the client ID, secret, and tenant ID of your subscription.
+
+
+  Next, use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret.
+
+  ```shell
+    kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure.json
+  ```
+
+  Next, create a new file called `provider-config.yaml` and paste the configuration below.
+
+  ```yaml
+    apiVersion: azure.upbound.io/v1beta1
+    metadata:
+      name: default
+    kind: ProviderConfig
+    spec:
+      credentials:
+        source: Secret
+        secretRef:
+          namespace: upbound-system
+          name: azure-secret
+          key: creds
+  ```
+<!-- /Azure -->
+
+<!-- GCP -->
+  Using GCP service account keys requires storing the GCP account keys JSON file as a Kubernetes secret.
+
+  To create the Kubernetes secret create or [download your GCP service account key](https://cloud.google.com/iam/docs/keys-create-delete#creating) JSON file.
+
+  First, you'll need a Kubernetes secret. Create the Kubernetes secret with the following command.
+
+  ```shell {label="kubesecret"}
+    kubectl create secret generic \
+    gcp-secret \
+    -n crossplane-system \
+    --from-file=my-gcp-secret=./gcp-credentials.json
+  ```
+
+To create a secret declaratively requires encoding the authentication keys as a base-64 string. Create a Secret object with the data containing the secret key name, `my-gcp-secret` and the base-64 encoded keys.
+
+```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: gcp-secret
+    namespace: crossplane-system
+  type: Opaque
+  data:
+    my-gcp-secret: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiZG9jcyIsCiAgInByaXZhdGVfa2V5X2lkIjogIjEyMzRhYmNkIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJkb2NzQHVwYm91bmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJjbGllbnRfaWQiOiAiMTIzNDUiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2RvY3MuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=
+```
+
+Next, create a new file called `provider-config.yaml` and paste the configuration below.
+
+```yaml
+  apiVersion: gcp.upbound.io/v1beta1
+  kind: ProviderConfig
+  metadata:
+    name: default
+  spec:
+    credentials:
+      source: Secret
+      secretRef:
+        namespace: crossplane-system
+        name: gcp-secret
+        key: my-gcp-secret
+```
+<!-- /GCP -->
+{{< /content-selector >}}
+
+Lastly, apply the provider configuration.
+
+```bash
+  kubectl apply -f provider-config.yaml
+```
+
+When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
+in the secret store.
+
+### Apply your claim
 
 Apply the example claim with `kubectl`.
 
