@@ -5,7 +5,7 @@ description: "Learn how to configure access to older Official providers versions
 ---
 
 You must configure a pull secret on your control plane to pull any older version of an Official Provider. If you’re on
-Crossplane or UXP v1.18 or later, use the ImageConfig API. Otherwise, configure a pull secret for each provider pod.
+Crossplane, UXP v1.18 or later, UXP v1.16.4, or UXP v1.17.3, use the ImageConfig API. Otherwise, configure a pull secret for each provider pod.
 
 ### Crossplane and UXP v1.16+
 
@@ -13,12 +13,30 @@ Crossplane or UXP v1.18 or later, use the ImageConfig API. Otherwise, configure 
 The `ImageConfig` API was introduced starting in Crossplane `v1.18` and backported to `v1.16.4` and `v1.17.3`. Make sure you're running these versions before using this API.
 {{< /hint >}}
 
-1. Create a [pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) on your control plane. You can use the [up ctp pull-secret create]({{<ref "/upbound-marketplace/authentication#kubernetes-image-pull-secrets">}}) command:
+1. Login to your Upbound org account
+
 ```bash
-up ctp pull-secret create
+up login
 ```
 
-2. Create an `ImageConfig` resource and reference the pull secret you created earlier:
+2. Create a [robot and robot token]({{<ref "/accounts/identity-management/robots">}}) using the up CLI:
+
+```bash
+up robot token create provider-pull-bot provider-pull-token --output=-
+```
+
+3. Save the `Access ID` value of the output to a variable named `ID`. Save the `Token` value to a variable named `TOKEN`:
+
+```bash
+ID=<the ID outputted in the previous step>
+TOKEN=<the token outputted in the previous ste>
+```
+4. Create a [pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) on your control plane:
+```bash
+kubectl -n crossplane-system create secret docker-registry up-provider-pull-secret --docker-server=xpkg.upbound.io --docker-username=$ID --docker-password=$TOKEN
+```
+
+5. Create an `ImageConfig` resource and reference the pull secret you created earlier:
 ```yaml
 apiVersion: pkg.crossplane.io/v1beta1
 kind: ImageConfig
@@ -30,22 +48,40 @@ spec:
   registry:
     authentication:
       pullSecretRef:
-        name: package-pull-secret
-        namespace: upbound-system
+        name: up-provider-pull-secret
 ```
 
-This pull secret matches all packages with the `xpkg.upbound.io/upbound` and provides the package pull secret any time your control plane needs to pull the provider image.
+This pull secret matches all packages with the `xpkg.upbound.io/upbound` prefix and provides the package pull secret any time your control plane needs to pull the provider image.
 
 ### Older Crossplane versions
 
 If you're on an older version of Crossplane, you need to create a package pull secret and configure each Provider package to use it:
 
-1. Create a [pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) on your control plane. You can use the [up ctp pull-secret create]({{<ref "/upbound-marketplace/authentication#kubernetes-image-pull-secrets">}}) command:
+
+1. Login to your Upbound org account
+
 ```bash
-up ctp pull-secret create
+up login
 ```
 
-2. **For each provider package installed on your control plane**, update it's `.spec` to reference the pull secret:
+2. Create a [robot and robot token]({{<ref "/accounts/identity-management/robots">}}) using the up CLI:
+
+```bash
+up robot token create provider-pull-bot provider-pull-token --output=-
+```
+
+3. Save the `Access ID` value of the output to a variable named `ID`. Save the `Token` value to a variable named `TOKEN`:
+
+```bash
+ID=<the ID outputted in the previous step>
+TOKEN=<the token outputted in the previous ste>
+```
+4. Create a [pull secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) on your control plane:
+```bash
+kubectl -n crossplane-system create secret docker-registry up-provider-pull-secret --docker-server=xpkg.upbound.io --docker-username=$ID --docker-password=$TOKEN
+```
+
+5. **For each provider package installed on your control plane**, update it's `.spec` to reference the pull secret:
 ```yaml
 apiVersion: pkg.crossplane.io/v1
 kind: Provider

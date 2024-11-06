@@ -10,6 +10,16 @@ Upbound Official Providers contain verifiable signatures, attestations, and an S
 
 We recommend using [cosign](https://docs.sigstore.dev/cosign/system_config/installation/) to verify the signature and attestations of an Official Provider.
 
+If you're running UXP, enable these features first:
+
+```yaml
+helm upgrade crossplane --install \
+upbound-stable/universal-crossplane \
+--debug \
+--namespace crossplane-system \
+--create-namespace --set args='{--enable-signature-verification,--enable-dependency-version-upgrades}'
+```
+
 ## Attestations
 
 Attestations are provided per version of a given package, so you'll need to specify the correct tag or digest and registry when pulling attestations from an image with cosign. You can use the cosign verify-attestation command to check the SBOM attestation of the image signatures of the package:
