@@ -76,7 +76,7 @@ The `up project init` command creates:
 *   `upbound.yaml`: Project configuration file.
 *   `apis/`: Directory for Crossplane composition definitions.
 *   `examples/`: Directory for example claims.
-*   `.github/` and `.vscode/`: Directories for CI/CD and local development.
+*   `.github/`: GitHub Actions to build and push your project.
 
 
 ## Step 2: Add project dependencies
