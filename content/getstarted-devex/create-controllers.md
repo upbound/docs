@@ -81,28 +81,24 @@ The `up project init` command creates:
 
 ## Step 2: Add project dependencies
 <!-- vale gitlab.SentenceSpacing = NO -->
+<!-- vale Google.Headings = NO -->
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
-<!-- vale Google.Headings = NO -->
-
-<!-- vale write-good.TooWordy = YES -->
+### Add your cloud provider resources
 <!-- AWS -->
-### Add the AWS RDS provider
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
 <!-- /AWS -->
 
 <!-- Azure -->
-### Add the Azure DB provider
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-azure-storage:v1.7.0
 ```
 <!-- /Azure -->
 
 <!-- GCP -->
-### Add the GCP SQL provider
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-gcp-storage:v1.8.3
 ```
@@ -118,11 +114,11 @@ manage. Functions add logic to automate complex provisioning processes. After ad
 ```yaml
 spec:
   dependsOn:
-  - provider: xpkg.upbound.io/upboundcare/provider-aws-ec2
+  - provider: xpkg.upbound.io/upboundcare/provider-aws-s3
     version: v1.16.0
 ```
 <!-- /AWS -->
-<!-- Azure-->
+<!-- Azure -->
 ```yaml
 spec:
   dependsOn:
@@ -259,25 +255,22 @@ This command generates an embedded function called `test-function` in the
 `functions/test-function` directory of your project. This also updates your
 composition file to include the new function in the pipeline.
 
-Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
 ### Create an AWS Composition Function
 
+Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+
 {{< tabs "Functions" >}}
 
 {{< tab "KCL" >}}
 
 ```yaml
-
 import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
-
 oxr = option("params").oxr # observed composite resource
-
 bucketName = "{}-bucket".format(oxr.metadata.name)
-
 _metadata = lambda name: str -> any {
   {
     name = name
@@ -460,6 +453,9 @@ def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
 
 <!-- Azure -->
 ### Create an Azure Composition Function
+
+Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+
 {{< tabs "Functions" >}}
 
 {{< tab "KCL" >}}
@@ -558,8 +554,11 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 <!-- /Azure -->
 
 <!-- GCP -->
-
 ### Create a GCP Composition Function
+
+Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+
+
 {{< tabs "Functions" >}}
 {{< tab "KCL" >}}
 
@@ -701,39 +700,39 @@ A `ProviderConfig` is a custom resource that defines how your control plane auth
 <!-- AWS -->
   Using AWS access keys, or long-term IAM credentials, requires storing the AWS keys as a control plane secret. To create the secret [download your AWS access key](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) ID and secret access key. Create a new file called `aws-credentials.txt` and paste your AWS access key ID and secret access key.
 
-  ```ini
-    [default]
-    aws_access_key_id = YOUR_ACCESS_KEY_ID
-    aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
-  ```
+```ini
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY_ID
+aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+```
 
   Next, create a new secret to store your credentials in your control plane. The `kubectl create secret` command puts your AWS login details in the control plane secure storage:
 
-  ```shell
-    kubectl create secret generic aws-secret \
-      -n crossplane-system \
-      --from-file=my-aws-secret=./aws-credentials.txt
-  ```
+```shell
+kubectl create secret generic aws-secret \
+    -n crossplane-system \
+    --from-file=my-aws-secret=./aws-credentials.txt
+```
 
   Next, create a new file called `provider-config.yaml` and paste the configuration below.
-  ```yaml
-    apiVersion: aws.upbound.io/v1beta1
-    kind: ProviderConfig
-    metadata:
-      name: default
-    spec:
-      credentials:
-        source: Secret
-        secretRef:
-          namespace: crossplane-system
-          name: aws-secret
-          key: my-aws-secret
-  ```
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: my-aws-secret
+```
   Apply the provider configuration.
 
-  ```bash
-    kubectl apply -f provider-config.yaml
-  ```
+```bash
+kubectl apply -f provider-config.yaml
+```
 
 When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
 in the secret store.
@@ -741,94 +740,93 @@ in the secret store.
 <!-- /AWS -->
 
 <!-- Azure -->
-  A service principal is an application within the Azure Active Directory that passes `client_id`, `client_secret`, and `tenant_id` authentication tokens to create and manage Azure resources. As an alternative, it can also authenticate with a `client_certificate` instead of a `client_secret`.
+A service principal is an application within the Azure Active Directory that passes `client_id`, `client_secret`, and `tenant_id` authentication tokens to create and manage Azure resources. As an alternative, it can also authenticate with a `client_certificate` instead of a `client_secret`.
 
-  {{< hint "tip" >}}
-  If you don't have the Azure CLI, use the [install guide](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-  {{< /hint >}}
+{{< hint "tip" >}}
+If you don't have the Azure CLI, use the [install guide](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+{{< /hint >}}
 
-  First, find the Subscription ID for your Azure account.
+First, find the Subscription ID for your Azure account.
 
-  ```shell
-    az account list
-  ```
+```shell
+az account list
+```
 
-  Note the value of the `id` in the return output.
+Note the value of the `id` in the return output.
 
-  Next, create a service principle `Owner` role. Update the `<subscription_id>` with the `id` from the previous command.
+Next, create a service principle `Owner` role. Update the `<subscription_id>` with the `id` from the previous command.
 
-  ```shell
-    az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<subscription_id> \
-    > azure.json
-  ```
+```shell
+az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<subscription_id> \ > azure.json
+```
 
-  The `azure.json` file in the preceding command contains the client ID, secret, and tenant ID of your subscription.
+The `azure.json` file in the preceding command contains the client ID, secret, and tenant ID of your subscription.
 
 
-  Next, use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret.
+Next, use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret.
 
-  ```shell
-    kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure.json
-  ```
+```shell
+kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure.json
+```
 
-  Next, create a new file called `provider-config.yaml` and paste the configuration below.
+Next, create a new file called `provider-config.yaml` and paste the configuration below.
 
-  ```yaml
-    apiVersion: azure.upbound.io/v1beta1
-    metadata:
-      name: default
-    kind: ProviderConfig
-    spec:
-      credentials:
-        source: Secret
-        secretRef:
-          namespace: upbound-system
-          name: azure-secret
-          key: creds
-  ```
+```yaml
+apiVersion: azure.upbound.io/v1beta1
+metadata:
+    name: default
+kind: ProviderConfig
+spec:
+    credentials:
+    source: Secret
+    secretRef:
+        namespace: upbound-system
+        name: azure-secret
+        key: creds
+```
 <!-- /Azure -->
 
 <!-- GCP -->
-  Using GCP service account keys requires storing the GCP account keys JSON file as a Kubernetes secret.
+Using GCP service account keys requires storing the GCP account keys JSON file as a Kubernetes secret.
 
-  To create the Kubernetes secret create or [download your GCP service account key](https://cloud.google.com/iam/docs/keys-create-delete#creating) JSON file.
+To create the Kubernetes secret create or [download your GCP service account key](https://cloud.google.com/iam/docs/keys-create-delete#creating) JSON file.
 
-  First, you'll need a Kubernetes secret. Create the Kubernetes secret with the following command.
+First, you'll need a Kubernetes secret. Create the Kubernetes secret with the following command.
 
-  ```shell {label="kubesecret"}
-    kubectl create secret generic \
-    gcp-secret \
-    -n crossplane-system \
-    --from-file=my-gcp-secret=./gcp-credentials.json
-  ```
+```shell {label="kubesecret"}
+kubectl create secret generic \
+gcp-secret \
+-n crossplane-system \
+--from-file=my-gcp-secret=./gcp-credentials.json
+```
 
 To create a secret declaratively requires encoding the authentication keys as a base-64 string. Create a Secret object with the data containing the secret key name, `my-gcp-secret` and the base-64 encoded keys.
 
 ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
+apiVersion: v1
+kind: Secret
+metadata:
     name: gcp-secret
     namespace: crossplane-system
-  type: Opaque
-  data:
+    type: Opaque
+data:
     my-gcp-secret: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiZG9jcyIsCiAgInByaXZhdGVfa2V5X2lkIjogIjEyMzRhYmNkIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJkb2NzQHVwYm91bmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJjbGllbnRfaWQiOiAiMTIzNDUiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2RvY3MuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=
 ```
 
 Next, create a new file called `provider-config.yaml` and paste the configuration below.
 
 ```yaml
-  apiVersion: gcp.upbound.io/v1beta1
-  kind: ProviderConfig
-  metadata:
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
     name: default
-  spec:
+spec:
     credentials:
-      source: Secret
-      secretRef:
-        namespace: crossplane-system
-        name: gcp-secret
-        key: my-gcp-secret
+        source: Secret
+        secretRef:
+            namespace: crossplane-system
+            name: gcp-secret
+            key: my-gcp-secret
 ```
 <!-- /GCP -->
 {{< /content-selector >}}
@@ -836,7 +834,7 @@ Next, create a new file called `provider-config.yaml` and paste the configuratio
 Lastly, apply the provider configuration.
 
 ```bash
-  kubectl apply -f provider-config.yaml
+kubectl apply -f provider-config.yaml
 ```
 
 When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
@@ -868,7 +866,7 @@ to the Upbound Marketplace with the `up` CLI.
 To build your control plane project, use the `up project build` command.
 
 ```shell
-up project build -t 1.0
+up project build
 ```
 This command takes your project's dependencies and metadata and compiles it into a single OCI image at `_output/upbound-qs-1.uppkg`.
 
