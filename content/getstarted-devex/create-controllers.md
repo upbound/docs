@@ -693,12 +693,12 @@ A `ProviderConfig` is a custom resource that defines how your control plane auth
 <!-- vale Microsoft.Terms = YES -->
 
 {{<hint>}}
-  For more detailed instructions or alternate authentication methods, visit the [provider documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
+For more detailed instructions or alternate authentication methods, visit the [provider documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
 {{</hint>}}
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 <!-- AWS -->
-  Using AWS access keys, or long-term IAM credentials, requires storing the AWS keys as a control plane secret. To create the secret [download your AWS access key](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) ID and secret access key. Create a new file called `aws-credentials.txt` and paste your AWS access key ID and secret access key.
+Using AWS access keys, or long-term IAM credentials, requires storing the AWS keys as a control plane secret. To create the secret [download your AWS access key](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) ID and secret access key. Create a new file called `aws-credentials.txt` and paste your AWS access key ID and secret access key.
 
 ```ini
 [default]
@@ -706,7 +706,7 @@ aws_access_key_id = YOUR_ACCESS_KEY_ID
 aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 ```
 
-  Next, create a new secret to store your credentials in your control plane. The `kubectl create secret` command puts your AWS login details in the control plane secure storage:
+Next, create a new secret to store your credentials in your control plane. The `kubectl create secret` command puts your AWS login details in the control plane secure storage:
 
 ```shell
 kubectl create secret generic aws-secret \
@@ -714,7 +714,7 @@ kubectl create secret generic aws-secret \
     --from-file=my-aws-secret=./aws-credentials.txt
 ```
 
-  Next, create a new file called `provider-config.yaml` and paste the configuration below.
+Next, create a new file called `provider-config.yaml` and paste the configuration below.
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
@@ -728,7 +728,8 @@ spec:
       name: aws-secret
       key: my-aws-secret
 ```
-  Apply the provider configuration.
+
+Apply the provider configuration.
 
 ```bash
 kubectl apply -f provider-config.yaml
