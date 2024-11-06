@@ -88,19 +88,19 @@ The `up project init` command creates:
 ### Add your cloud provider resources
 <!-- AWS -->
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
+up dependency add 'xpkg.upbound.io/upbound/provider-aws-s3:>=v1.17.0'
 ```
 <!-- /AWS -->
 
 <!-- Azure -->
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-azure-storage:v1.7.0
+up dependency add 'xpkg.upbound.io/upbound/provider-azure-storage:>=v1.8.0'
 ```
 <!-- /Azure -->
 
 <!-- GCP -->
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-gcp-storage:v1.8.3
+up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v1.9.0'
 ```
 <!-- /GCP -->
 
@@ -115,7 +115,7 @@ manage. Functions add logic to automate complex provisioning processes. After ad
 spec:
   dependsOn:
   - provider: xpkg.upbound.io/upbound/provider-aws-s3
-    version: v1.16.0
+    version: '>=v1.17.0'
 ```
 <!-- /AWS -->
 <!-- Azure -->
@@ -123,7 +123,7 @@ spec:
 spec:
   dependsOn:
   - provider: xpkg.upbound.io/upbound/provider-azure-storage
-    version: v1.7.0
+    version: '>=v1.8.0'
 ```
 <!-- /Azure -->
 <!-- GCP -->
@@ -131,7 +131,7 @@ spec:
 spec:
   dependsOn:
   - provider: xpkg.upbound.io/upbound/provider-gcp-storage
-    version: v1.8.3
+    version: '>=v1.9.0'
 ```
 <!-- /GCP -->
 {{< /content-selector >}}
