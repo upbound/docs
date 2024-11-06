@@ -50,10 +50,17 @@ metadata:
   name: example
   namespace: default
 spec:
-  versioning: true
-  encrypted: true
-  visibility: public
+  parameters:
+    versioning: true
+    encrypted: true
+    visibility: public
 ```
+
+It is a Crossplane best practice to contain the configuration parameters for a
+claim in a `parameters` object rather than at the top level of the
+`spec`. Crossplane will add its own fields to the spec when it processes the XRD
+at installation time.
+
 <!-- vale Google.Headings = NO -->
 ### Generate the XRD
 <!-- vale Google.Headings = YES -->
@@ -92,12 +99,15 @@ spec:
           spec:
             description: BucketSpec defines the desired state of Bucket.
             properties:
-              encrypted:
-                type: boolean
-              versioning:
-                type: boolean
-              visibility:
-                type: string
+              parameters:
+                properties:
+                  encrypted:
+                    type: boolean
+                  versioning:
+                    type: boolean
+                  visibility:
+                    type: string
+                type: object
             type: object
           status:
             description: BucketStatus defines the observed state of Bucket.
@@ -106,4 +116,12 @@ spec:
         - spec
         type: object
     served: true
+status:
+  controllers:
+    compositeResourceClaimType:
+      apiVersion: ""
+      kind: ""
+    compositeResourceType:
+      apiVersion: ""
+      kind: ""
 ```
