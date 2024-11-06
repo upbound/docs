@@ -688,8 +688,6 @@ Now, you can validate your results through the Upbound Console, and make any cha
 
 ## Step 6: Build and push your project to the Upbound Marketplace
 
-If you installed the `Up-Project-Action` GitHub Action, skip this section as this is the manual process.
-
 When you're ready to share your work, you can build your project and publish it
 to the Upbound Marketplace with the `up` CLI.
 
