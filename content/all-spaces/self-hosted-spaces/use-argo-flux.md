@@ -25,7 +25,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ```
 {{< /hint >}}
 
-Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install or upgrade time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD. By default, these connection details are stored in a Kubernetes secret named same as the control plane. If you're running Argo CD with different namespaces, we suggest you to pass the `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets` flag to use the UID format for the secret name to avoid conflicts.
+Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install or upgrade time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD. By default, Upbound stores these connection details in a Kubernetes secret named after the control plane. To run Argo CD across multiple namespaces, Upbound recommends enabling the `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets` flag to use a UID-based format for secret names to avoid conflicts.
 
 ### On cluster Argo CD
 
