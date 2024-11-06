@@ -178,5 +178,6 @@ Add the following action to your workflow to automatically build and push your c
 ```
 
 {{< hint "important">}}
-This GitHub Action requires a private API token in your git repo. Robot tokens aren't supported at this time.
+This GitHub Action requires a private API token in your Git repository. Robot
+tokens aren't currently supported.
 {{</hint>}}
