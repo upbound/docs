@@ -22,6 +22,7 @@ up login
 2. Create a [robot and robot token]({{<ref "/accounts/identity-management/robots">}}) using the up CLI:
 
 ```bash
+up robot create provider-pull-bot
 up robot token create provider-pull-bot provider-pull-token --output=-
 ```
 
@@ -67,6 +68,7 @@ up login
 2. Create a [robot and robot token]({{<ref "/accounts/identity-management/robots">}}) using the up CLI:
 
 ```bash
+up robot create provider-pull-bot
 up robot token create provider-pull-bot provider-pull-token --output=-
 ```
 
