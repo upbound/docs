@@ -168,9 +168,10 @@ This command creates a minimal claim file. Copy and paste the claim below into t
     name: example
     namespace: default
   spec:
-    region: us-west-1
-    versioning: true
-    acl: public
+    parameters:
+      region: us-west-1
+      versioning: true
+      acl: public
 ```
 {{</ editCode >}}
 
@@ -187,13 +188,14 @@ metadata:
   name: example
   namespace: default
 spec:
-  location: eastus
-  versioning: true
-  acl: public
+  parameters:
+    location: eastus
+    versioning: true
+    acl: public
 ```
 {{</ editCode >}}
 
-This Azure StorageContainer claim uses fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
+This Azure StorageBucket claim uses fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
 <!-- /Azure -->
 
 <!-- GCP -->
@@ -206,9 +208,10 @@ metadata:
   name: example
   namespace: default
 spec:
-  location: US
-  versioning: true
-  acl: publicRead
+  parameters:
+    location: US
+    versioning: true
+    acl: publicRead
 ```
 {{</ editCode >}}
 
@@ -223,7 +226,7 @@ up xrd generate examples/storagebucket/example.yaml
 ```
 
 This command generate a new Composite Resource Definition (XRD) file in
-`apis/xstoragebuckts/definition.yaml`. The XRD is a custom schema representation
+`apis/xstoragebuckets/definition.yaml`. The XRD is a custom schema representation
 for the bucket API you defined in your claim. The `up xrd generate` command
 automatically infers the variable types for the XRD based on the input
 parameters in your example claim.
