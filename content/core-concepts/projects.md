@@ -109,11 +109,15 @@ For more information, review the [CLI reference documentation](({{< ref
 "reference/cli/command-reference" >}})
 
 ## Create a project GitHub action
+
+<!-- vale gitlab.SentenceLength = NO -->
+
 The `Up-Project-Action` GitHub Action is the recommended CI integration workflow
 for your project. The `Up-Project-Action` installs the `up` CLI tool, authenticate with
 Upbound using a personal access token, build the control plane project, and
 conditionally push to the Upbound Marketplace if you are working on your `main`
 branch.
+<!-- vale gitlab.SentenceLength = YES -->
 
 Add the following action to your workflow to automatically build and push your control plane projects.
 
