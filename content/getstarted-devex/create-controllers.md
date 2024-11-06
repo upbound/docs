@@ -251,7 +251,7 @@ transforms in your YAML files.
 Run the `up function generate` command and choose either KCL or Python.
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=<KCL or Python>
+up function generate test-function apis/xstoragebuckets/composition.yaml --language=<kcl or python>
 ```
 
 This command generates an embedded function called `test-function` in the
