@@ -107,3 +107,76 @@ New projects created with the command `up project init` scaffold a project from 
 
 For more information, review the [CLI reference documentation](({{< ref
 "reference/cli/command-reference" >}})
+
+## Create a project GitHub action
+The `Up-Project-Action` GitHub Action is the recommended CI integration workflow
+for your project. The `Up-Project-Action` installs the `up` CLI tool, authenticate with
+Upbound using a personal access token, build the control plane project, and
+conditionally push to the Upbound Marketplace if you are working on your `main`
+branch.
+
+Add the following action to your workflow to automatically build and push your control plane projects.
+
+```yaml
+    name: "up-project-action"
+    description: "installs up-cli, logs in, builds, and conditionally pushes the up project on main branch."
+    author: "upbound"
+    inputs:
+    channel:
+        description: "Channel for up-cli installation (e.g., main, stable)"
+        required: false
+        default: "stable"
+    version:
+        description: "Version for up-cli installation (e.g., specific version or 'current')"
+        required: false
+        default: "current"
+    up_token:
+        description: "Upbound Personal token for authentication"
+        required: true
+    endpoint:
+        description: ""
+        required: false
+        default: https://cli.upbound.io
+
+    runs:
+    using: "composite"
+    steps:
+        - name: Checkout Repository
+        uses: actions/checkout@v4
+
+        - name: install up cli
+        run: |
+            CHANNEL=${{ inputs.channel }}
+            VERSION=${{ inputs.version }}
+            ENDPOINT=${{ inputs.endpoint }}
+            echo "Installing up-cli from channel '$CHANNEL' with version '$VERSION'"
+            curl -sf $ENDPOINT | CHANNEL=$CHANNEL VERSION=$VERSION sh
+            chmod +x ./up
+            sudo mv ./up /usr/local/bin/up
+            up version
+        shell: bash
+
+        - name: login
+        run: |
+            echo "${{ inputs.up_token }}" | up login -t -
+        shell: bash
+        env:
+            UP_TOKEN: ${{ inputs.up_token }}
+
+        - name: build up project
+        run: |
+            up project build
+        shell: bash
+
+        - name: push up project
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: |
+            up project push
+        shell: bash
+        env:
+            UP_TOKEN: ${{ inputs.up_token }}
+```
+
+{{< hint "important">}}
+This GitHub Action requires a private API token in your git repo. Robot tokens aren't supported at this time.
+{{</hint>}}

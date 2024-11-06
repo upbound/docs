@@ -29,79 +29,6 @@ For this guide, you'll need:
 - Visual Studio Code
 - KCL or Python VSCode Extension
 
-### Create a project GitHub action
-
-The `Up-Project-Action` GitHub Action the recommended CI integration workflow
-for your project. The `Up-Project-Action` installs the `up` CLI tool, authenticate with
-Upbound using a personal access token, build the control plane project, and
-conditionally push to the Upbound Marketplace if you are working on your `main`
-branch.
-
-Add the following action to your workflow to automatically build and push your control plane projects.
-
-```yaml
-    name: "up-project-action"
-    description: "installs up-cli, logs in, builds, and conditionally pushes the up project on main branch."
-    author: "upbound"
-    inputs:
-    channel:
-        description: "Channel for up-cli installation (e.g., main, stable)"
-        required: false
-        default: "stable"
-    version:
-        description: "Version for up-cli installation (e.g., specific version or 'current')"
-        required: false
-        default: "current"
-    up_token:
-        description: "Upbound Personal token for authentication"
-        required: true
-    endpoint:
-        description: ""
-        required: false
-        default: https://cli.upbound.io
-
-    runs:
-    using: "composite"
-    steps:
-        - name: Checkout Repository
-        uses: actions/checkout@v4
-
-        - name: install up cli
-        run: |
-            CHANNEL=${{ inputs.channel }}
-            VERSION=${{ inputs.version }}
-            ENDPOINT=${{ inputs.endpoint }}
-            echo "Installing up-cli from channel '$CHANNEL' with version '$VERSION'"
-            curl -sf $ENDPOINT | CHANNEL=$CHANNEL VERSION=$VERSION sh
-            chmod +x ./up
-            sudo mv ./up /usr/local/bin/up
-            up version
-        shell: bash
-
-        - name: login
-        run: |
-            echo "${{ inputs.up_token }}" | up login -t -
-        shell: bash
-        env:
-            UP_TOKEN: ${{ inputs.up_token }}
-
-        - name: build up project
-        run: |
-            up project build
-        shell: bash
-
-        - name: push up project
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: |
-            up project push
-        shell: bash
-        env:
-            UP_TOKEN: ${{ inputs.up_token }}
-```
-
-{{< hint "important">}}
-This GitHub Action requires a private API token in your git repo. Robot tokens aren't supported at this time.
-{{</hint>}}
 
 ### Install the `up` CLI
 If you've installed the `Up-Project-Action` GitHub Action, you may skip this step.
@@ -151,35 +78,6 @@ The `up project init` command creates:
 *   `.github/` and `.vscode/`: Directories for CI/CD and local development.
 *   `Makefile`: A file to execute project commands.
 
-### Review the project configuration
-Review the files in your project directory, starting with `upbound.yaml`. The `upbound.yaml` file in each project directory is the entry point for your project configuration. This file contains metadata and specifications necessary to build your APIs and configurations. Open it in your editor and explore fields like `apiVersion`, `kind`, `metadata`, and `spec`.
-
-```yaml
-apiVersion: meta.dev.upbound.io/v1alpha1
-kind: Project
-metadata:
-  name: upbound-qs
-spec:
-  maintainer: Upbound User <user@example.com>
-  source: github.com/upbound/project-template
-  license: Apache-2.0
-  description: "This is where you can describe your project."
-  readme: |
-    This is where you can add a readme for your project.
-  repository: xpkg.upbound.io/example/project-template
-  dependsOn: []
-```
-<!-- vale write-good.TooWordy = NO -->
-{{< table >}}
-| Field        | Description                                              |
-| ------------ | -------------------------------------------------------- |
-| `apiVersion` | Specifies the API version for the Upbound package format |
-| `kind`       | Defines the type of Upbound package                      |
-| `metadata`   | Contains metadata like name or additional annotations    |
-{{</ table >}}
-<!-- vale write-good.TooWordy = YES -->
-
-
 ## Step 2: Add project dependencies
 <!-- vale gitlab.SentenceSpacing = NO -->
 
@@ -189,7 +87,7 @@ spec:
 
 ### Add the AWS RDS provider
 <!-- vale write-good.TooWordy = YES -->
-
+<!-- AWS -->
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
@@ -523,7 +421,7 @@ Now, open up your function file (either `main.k` or  `main.py`) and paste in the
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 <!-- AWS -->
-### AWS composition
+### Create an AWS Composition Function
 
 {{< tabs "Functions" >}}
 
@@ -703,7 +601,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
 <!-- /AWS -->
 
 <!-- Azure -->
-### Azure composition
+### Create an Azure Composition Function
 {{< tabs "Functions" >}}
 
 {{< tab "KCL" >}}
@@ -803,7 +701,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 <!-- GCP -->
 
-### GCP composition
+### Create a GCP Composition Function
 {{< tabs "Functions" >}}
 {{< tab "KCL" >}}
 
