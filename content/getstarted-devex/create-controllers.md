@@ -28,10 +28,10 @@ For this guide, you'll need:
 - Docker Desktop
 - Visual Studio Code
 - KCL or Python VSCode Extension
+- `kubectl` installed
 
 
 ### Install the `up` CLI
-If you've installed the `Up-Project-Action` GitHub Action, you may skip this step.
 
 To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
 {{< tabs >}}
@@ -140,162 +140,6 @@ spec:
 ```
 <!-- /GCP -->
 {{< /content-selector >}}
-
-### Create provider credentials
-Your project configuration now includes your provider dependency and requires an authentication method.
-
-<!-- vale Microsoft.Terms = NO -->
-A `ProviderConfig` is a custom resource that defines how your control plane authenticates and connects with cloud providers like AWS. It acts as a configuration bridge between your control plane's managed resources and the cloud provider's API.
-<!-- vale Microsoft.Terms = YES -->
-
-{{<hint>}}
-  For more detailed instructions or alternate authentication methods, visit the [provider documentation](https://docs.upbound.io/providers/provider-aws/authentication/).
-{{</hint>}}
-
-{{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
-<!-- AWS -->
-  Using AWS access keys, or long-term IAM credentials, requires storing the AWS keys as a control plane secret. To create the secret [download your AWS access key](https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys) ID and secret access key. Create a new file called `aws-credentials.txt` and paste your AWS access key ID and secret access key.
-
-  ```ini
-    [default]
-    aws_access_key_id = YOUR_ACCESS_KEY_ID
-    aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
-  ```
-
-  Next, create a new secret to store your credentials in your control plane. The `kubectl create secret` command puts your AWS login details in the control plane secure storage:
-
-  ```shell
-    kubectl create secret generic aws-secret \
-      -n crossplane-system \
-      --from-file=my-aws-secret=./aws-credentials.txt
-  ```
-
-  Next, create a new file called `provider-config.yaml` and paste the configuration below.
-  ```yaml
-    apiVersion: aws.upbound.io/v1beta1
-    kind: ProviderConfig
-    metadata:
-      name: default
-    spec:
-      credentials:
-        source: Secret
-        secretRef:
-          namespace: crossplane-system
-          name: aws-secret
-          key: my-aws-secret
-  ```
-  Apply the provider configuration.
-
-  ```bash
-    kubectl apply -f provider-config.yaml
-  ```
-
-When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
-in the secret store.
-
-<!-- /AWS -->
-
-<!-- Azure -->
-  A service principal is an application within the Azure Active Directory that passes `client_id`, `client_secret`, and `tenant_id` authentication tokens to create and manage Azure resources. As an alternative, it can also authenticate with a `client_certificate` instead of a `client_secret`.
-
-  {{< hint "tip" >}}
-  If you don't have the Azure CLI, use the [install guide](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-  {{< /hint >}}
-
-  First, find the Subscription ID for your Azure account.
-
-  ```shell
-    az account list
-  ```
-
-  Note the value of the `id` in the return output.
-
-  Next, create a service principle `Owner` role. Update the `<subscription_id>` with the `id` from the previous command.
-
-  ```shell
-    az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<subscription_id> \
-    > azure.json
-  ```
-
-  The `azure.json` file in the preceding command contains the client ID, secret, and tenant ID of your subscription.
-
-
-  Next, use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret.
-
-  ```shell
-    kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure.json
-  ```
-
-  Next, create a new file called `provider-config.yaml` and paste the configuration below.
-
-  ```yaml
-    apiVersion: azure.upbound.io/v1beta1
-    metadata:
-      name: default
-    kind: ProviderConfig
-    spec:
-      credentials:
-        source: Secret
-        secretRef:
-          namespace: upbound-system
-          name: azure-secret
-          key: creds
-  ```
-<!-- /Azure -->
-
-<!-- GCP -->
-  Using GCP service account keys requires storing the GCP account keys JSON file as a Kubernetes secret.
-
-  To create the Kubernetes secret create or [download your GCP service account key](https://cloud.google.com/iam/docs/keys-create-delete#creating) JSON file.
-
-  First, you'll need a Kubernetes secret. Create the Kubernetes secret with the following command.
-
-  ```shell {label="kubesecret"}
-    kubectl create secret generic \
-    gcp-secret \
-    -n crossplane-system \
-    --from-file=my-gcp-secret=./gcp-credentials.json
-  ```
-
-To create a secret declaratively requires encoding the authentication keys as a base-64 string. Create a Secret object with the data containing the secret key name, `my-gcp-secret` and the base-64 encoded keys.
-
-```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: gcp-secret
-    namespace: crossplane-system
-  type: Opaque
-  data:
-    my-gcp-secret: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiZG9jcyIsCiAgInByaXZhdGVfa2V5X2lkIjogIjEyMzRhYmNkIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJkb2NzQHVwYm91bmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJjbGllbnRfaWQiOiAiMTIzNDUiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2RvY3MuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=
-```
-
-Next, create a new file called `provider-config.yaml` and paste the configuration below.
-
-```yaml
-  apiVersion: gcp.upbound.io/v1beta1
-  kind: ProviderConfig
-  metadata:
-    name: default
-  spec:
-    credentials:
-      source: Secret
-      secretRef:
-        namespace: crossplane-system
-        name: gcp-secret
-        key: my-gcp-secret
-```
-<!-- /GCP -->
-{{< /content-selector >}}
-
-Lastly, apply the provider configuration.
-
-```bash
-  kubectl apply -f provider-config.yaml
-```
-
-When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
-in the secret store.
 
 ## Step 3: Create a claim and generate your API
 
@@ -816,7 +660,31 @@ development control plane hosted in Upbound's Cloud.
 up project run
 ```
 
-This command creates a development control plane in the Upbound Cloud and deploys your project's package to it. Now, you can validate your results through the Upbound Console, and make any changes to test your resources required.
+This command creates a development control plane in the Upbound Cloud and
+deploys your project's package to it.
+
+Next validate your control plane project state to verify the resources created
+by locally invoking the API.
+
+Update your `up` CLI context to your control plane.
+
+```shell
+up ctx ./<your-control-plane>
+```
+
+Apply the example claim with `kubectl`.
+
+```shell
+kubectl apply -f examples/storagebucket/example.yaml
+```
+
+Return the resource state with the `up` CLI.
+
+```shell
+up alpha get managed -oyaml
+```
+
+Now, you can validate your results through the Upbound Console, and make any changes to test your resources required.
 
 ## Step 6: Build and push your project to the Upbound Marketplace
 
