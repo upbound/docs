@@ -59,12 +59,13 @@ providers.
 
 Team or higher subscription tiers will allow access to all available provider versions in the access window, while
 Community and Individual tier will only be able to access the latest version of the provider. For convenience this
-version will be tagged as v<major> (e.g. v1) so users don't need to update the package version each time a new release
+version will be tagged as v<major> (`v1`) so users don't need to update the package version each time a new release
 is made.  
 {{<img src="providers/images/tier-access.png" alt="Tier access" size="small" unBlur="true">}}
 
 {{< hint "important">}}
-Community and Individual tier users are unable to pin to a specific provider version, other than the v<major> version.
+Community and Individual tier users can **only** access the v<major> version. Community and Individual tiers don't
+support pinning specific `patch` or `minor` provider versions.
 {{< /hint >}}
 
 When, for example, a new minor version of the provider is released the v1 tag will automatically update to point to this
