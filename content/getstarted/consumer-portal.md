@@ -153,5 +153,5 @@ You just drove an entire deployment lifecycle with an Upbound control plane!
 Now you're ready for more Upbound concepts.
 <!-- vale Google.Exclamation = YES -->
 
-Check out the Core Concepts[/core-concepts/] section for more information about
+Check out the [Core Concepts](https://docs.upbound.io/core-concepts/) section for more information about
 authoring compositions or configuration with Python and KCL.
