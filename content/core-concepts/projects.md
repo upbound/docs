@@ -5,8 +5,11 @@ description: "The basic concepts to help you on your Upbound journey"
 ---
 
 <!-- vale gitlab.Substitutions = NO -->
-Control plane projects are source-level representations of your control plane. A control plane project is any folder that contains an `upbound.yaml` project file. At runtime, the nearest parent folder containing an `upbound.yaml` file determines the current project. Create a project with the [up project init]({{< ref
-"reference/cli/command-reference" >}}) command. A control plane project houses the definition of your control plane.
+Control plane projects are source-level representations of your control plane. A
+control plane project is any folder that contains an `upbound.yaml` project
+file. Create a project with the [up project init]({{< ref
+"reference/cli/command-reference" >}}) command. A control plane project houses
+the definition of your control plane.
 
 ## The project file
 
@@ -35,7 +38,7 @@ spec:
   source: github.com/upbound/project-template
 ```
 
-The control plane project file defines:
+The control plane project defines:
 
 - your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
 - the implementation of those schemas, defined as Crossplane `compositions`.
