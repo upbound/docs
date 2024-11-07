@@ -54,6 +54,23 @@ published versions of Official providers.
 To access older Official provider versions, make sure you've
 [configured pull secrets]({{<ref "pull-secrets">}}) for the Official
 providers.
+
+### Example
+
+Team or higher subscription tiers will allow access to all available provider versions in the access window, while
+Community and Individual tier will only be able to access the latest version of the provider. For convenience this
+version will be tagged as v<major> (e.g. v1) so users don't need to update the package version each time a new release
+is made.  
+{{<img src="providers/images/tier-access.png" alt="Tier access" size="small" unBlur="true">}}
+
+{{< hint "important">}}
+Community and Individual tier users are unable to pin to a specific provider version, other than the v<major> version.
+{{< /hint >}}
+
+When, for example, a new minor version of the provider is released the v1 tag will automatically update to point to this
+latest version.
+{{<img src="providers/images/minor-release.png" alt="Minor release" size="small" unBlur="true">}}
+
 {{< /tab >}}
 
 {{< tab "Support" >}}
@@ -85,7 +102,6 @@ standard [semantic versioning (*semver*)](https://semver.org/) standards of `<ma
 
 #### Major version
 
-
 A `major` version indicates production stability and long-term support. When the
 `major`  version of the underlying Terraform provider (if generated with Upjet)
 or Upjet runtime updates, the provider's `major` version increments. Major
@@ -103,14 +119,13 @@ instructions on adapting to them.
 
 #### Minor version
 
-
-The `minor` version number increases when new features, such as new capabilities, resources, or fields, are introduced. This update resets the
+The `minor` version number increases when new features, such as new capabilities, resources, or fields, are introduced.
+This update resets the
 `patch` number to zero and may also include bug fixes.
 
 #### Patch version
 
 A `patch` version increases for releases with **only** bug fixes and **no** new features.
-
 
 ### CRD API versions
 
@@ -194,9 +209,10 @@ Examples:
 - Invalid combination: `provider-family-aws:v1.1.0`, `provider-aws-s3:v1.0.0`, `provider-aws-ec3:v0.46.0`
 - Invalid combination: `provider-family-aws:v1.0.0`, `provider-aws-s3:v1.0.1`,
   `provider-aws-ec3:v1.1.0`
+
 <!-- vale alex.Ablist = YES -->
 
-  {{< /tab >}}
+{{< /tab >}}
 
 {{< tab "CVEs" >}}
 Upbound will make reasonable commercial effort to ensure its Official providers are free
