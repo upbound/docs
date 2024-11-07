@@ -133,7 +133,7 @@ aws s3api get-bucket-encryption --bucket <your-bucket-name>
 
 This command should return with an error:
 
-```shell
+```yaml {copy-lines="none"}
 {
     "Error": {
         "Code": "NoSuchBucket",
