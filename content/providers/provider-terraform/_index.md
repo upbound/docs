@@ -17,6 +17,16 @@ The ability to install any version of an Official Provider **other than the most
 
 <!-- vale Google.Headings = NO -->
 
+## v0.19.0
+
+_Released 2024-11-05_
+
+* This release introduces dependency updates and workflow updates.
+
+_Refer to the [v0.19.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.19.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.19.0)
+
 ## v0.18.0
 
 _Released 2024-08-29_
