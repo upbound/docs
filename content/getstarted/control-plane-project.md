@@ -56,7 +56,7 @@ brew install upbound/tap/up
 The minimum supported version is `v0.35.0`. To verify your CLI installation and version, use the `up version` command:
 <!-- vale write-good.TooWordy = YES -->
 ```shell
-  up version
+up version
 ```
 You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
 
@@ -362,62 +362,60 @@ items = _items
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.com.example.platform.xstoragebucket import v1alpha1
-from model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
-from model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
-from model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
-from model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
 
-def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
+from .model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
+from .model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
+
+def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
-    xr_name = observed_xr.metadata.name
-    bucket_name = xr_name + "-bucket"
-    params = observed_xr.spec.parameters
 
     bucket = bucketv1beta1.Bucket(
         apiVersion="s3.aws.upbound.io/v1beta1",
         kind="Bucket",
         metadata=metav1.ObjectMeta(
-            name=bucket_name,
+            name=observed_xr.metadata.name + "-bucket",
         ),
         spec=bucketv1beta1.Spec(
             forProvider=bucketv1beta1.ForProvider(
-                region=params.region,
+                region=observed_xr.spec.region or "us-west-2",
             ),
         ),
     )
-    resource.update(rsp.desired.resources[bucket.metadata.name], bucket)
+    resource.update(rsp.desired.resources["bucket"], bucket)
 
     acl = aclv1beta1.BucketACL(
         apiVersion="s3.aws.upbound.io/v1beta1",
         kind="BucketACL",
         metadata=metav1.ObjectMeta(
-            name=xr_name + "-acl",
+            name=observed_xr.metadata.name + "-acl",
         ),
         spec=aclv1beta1.Spec(
             forProvider=aclv1beta1.ForProvider(
-                region=params.region,
+                region=observed_xr.spec.region,
                 bucketRef=aclv1beta1.BucketRef(
-                    name = bucket_name,
+                    name = bucketName,
                 ),
-                acl=params.acl,
+                acl=observed_xr.spec.acl,
             ),
         ),
     )
-    resource.update(rsp.desired.resources[acl.metadata.name], acl)
+    resource.update(rsp.desired.resources["acl"], acl)
 
     sse = ssev1beta1.BucketServerSideEncryptionConfiguration(
         apiVersion="s3.aws.upbound.io/v1beta1",
         kind="BucketServerSideEncryptionConfiguration",
         metadata=metav1.ObjectMeta(
-            name=xr_name + "-encryption",
+            name=observed_xr.metadata.name + "-encryption",
         ),
         spec=ssev1beta1.Spec(
             forProvider=ssev1beta1.ForProvider(
-                region=params.region,
+                region=observed_xr.spec.region,
                 bucketRef=ssev1beta1.BucketRef(
-                    name=bucket_name,
+                    name=bucket.metadata.name,
                 ),
                 rule=[
                     ssev1beta1.RuleItem(
@@ -432,30 +430,32 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
             ),
         ),
     )
-    resource.update(rsp.desired.resources[sse.metadata.name], sse)
+    resource.update(rsp.desired.resources["sse"], sse)
 
-    if params.versioning:
-        versioning = verv1beta1.BucketVersioning(
-            apiVersion="s3.aws.upbound.io/v1beta1",
-            kind="BucketVersioning",
-            metadata=metav1.ObjectMeta(
-                name=xr_name + "-versioning",
-            ),
-            spec=verv1beta1.Spec(
-                forProvider=verv1beta1.ForProvider(
-                    region=params.region,
-                    bucketRef=verv1beta1.BucketRef(
-                        name=bucket_name,
-                    ),
-                    versioningConfiguration=[
-                        verv1beta1.VersioningConfigurationItem(
-                            status="Enabled",
-                        ),
-                    ],
+    if not observed_xr.spec.versioning:
+        return
+
+    versioning = verv1beta1.BucketVersioning(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="BucketVersioning",
+        metadata=metav1.ObjectMeta(
+            name=observed_xr.metadata.name + "-versioning",
+        ),
+        spec=verv1beta1.Spec(
+            forProvider=verv1beta1.ForProvider(
+                region=observed_xr.spec.region,
+                bucketRef=verv1beta1.BucketRef(
+                    name=bucket.metadata.name,
                 ),
-            )
+                versioningConfiguration=[
+                    verv1beta1.VersioningConfigurationItem(
+                        status="Enabled",
+                    ),
+                ],
+            ),
         )
-        resource.update(rsp.desired.resources[versioning.metadata.name], versioning)
+    )
+    resource.update(rsp.desired.resources["versioning"], versioning)
 ```
 
 {{< /tab >}}
@@ -527,32 +527,30 @@ items = _items
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
-from model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
-from model.com.example.platform.xstoragebucket import v1alpha1
+
+from .model.com.example.platform.xstoragecontainer import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
+from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
-    xr_name = observed_xr.metadata.name
-    acct_name = xr_name + "-account"
-    params = observed_xr.spec.parameters
+    observed_xr = v1alpha1.XStorageContainer(**req.observed.composite.resource)
 
     acct = acctv1beta1.Account(
         apiVersion="storage.azure.upbound.io/v1beta1",
         kind="Account",
         metadata=metav1.ObjectMeta(
-            name=acct_name,
+            name=observed_xr.metadata.name + "-acct",
         ),
         spec=acctv1beta1.Spec(
             forProvider=acctv1beta1.ForProvider(
                 accountTier="Standard",
                 accountReplicationType="LRS",
-                location=params.location,
+                location=observed_xr.spec.location,
                 infrastructureEncryptionEnabled=True,
                 blobProperties=[
                     acctv1beta1.BlobProperty(
-                        versioningEnabled=params.versioning,
+                        versioningEnabled=observed_xr.spec.versioning,
                     ),
                 ],
             ),
@@ -560,16 +558,15 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     )
     resource.update(rsp.desired.resources[acct.metadata.name], acct)
 
-    accessType = "blob" if params.acl == "public" else "private"
     cont = contv1beta1.Container(
         apiVersion="storage.azure.upbound.io/v1beta1",
         kind="Container",
         metadata=metav1.ObjectMeta(
-            name=xr_name + "-container",
+            name=observed_xr.metadata.name + "-container",
         ),
         spec=contv1beta1.Spec(
             forProvider=contv1beta1.ForProvider(
-                containerAccessType=accessType,
+                containerAccessType="blob" if observed_xr.spec.acl == "public" else "private",
             ),
         ),
     )
@@ -645,28 +642,27 @@ items = _items
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
-from model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
-from model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
-from model.com.example.platform.xstoragebucket import v1alpha1
 
-def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
+from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
+from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
+
+
+def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
-    xr_name = observed_xr.metadata.name
-    bucket_name = xr_name + "-bucket"
-    params = observed_xr.spec.parameters
 
     bucket = bucketv1beta1.Bucket(
         apiVersion="storage.gcp.upbound.io/v1beta1",
         kind="Bucket",
         metadata=metav1.ObjectMeta(
-            name=bucket_name,
+            name=observed_xr.metadata.name + "-bucket",
         ),
         spec=bucketv1beta1.Spec(
             forProvider=bucketv1beta1.ForProvider(
-                location=params.location,
+                location=observed_xr.spec.location,
                 versioning=[bucketv1beta1.VersioningItem(
-                    enabled=params.versioning,
+                    enabled=observed_xr.spec.versioning,
                 )],
             ),
         ),
@@ -677,14 +673,14 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
         apiVersion="storage.gcp.upbound.io/v1beta1",
         kind="BucketACL",
         metadata=metav1.ObjectMeta(
-            name=xr_name + "-acl",
+            name=observed_xr.metadata.name + "-acl",
         ),
         spec=aclv1beta1.Spec(
             forProvider=aclv1beta1.ForProvider(
                 bucketRef=aclv1beta1.BucketRef(
-                    name=bucket_name,
+                    name=bucket.metadata.name,
                 ),
-                predefinedAcl=params.acl,
+                predefinedAcl=observed_xr.spec.acl,
             ),
         ),
     )
