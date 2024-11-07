@@ -2,6 +2,8 @@
 title: "Deploy with the Consumer Portal"
 weight: 2
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
+aliases:
+    - "/getstarted-devex/consumer-portal"
 ---
 
 <!-- vale gitlab.FutureTense = NO -->
