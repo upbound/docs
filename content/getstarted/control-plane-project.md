@@ -155,7 +155,6 @@ up example generate \
     --kind StorageBucket \
     --name example \
     --namespace default
-Successfully created example and saved to examples/storagebucket/example.yaml
 ```
 This command creates a minimal claim file. Copy and paste the claim below into the `examples/storagebucket/example.yaml` claim file.
 
@@ -165,12 +164,13 @@ This command creates a minimal claim file. Copy and paste the claim below into t
 ### AWS
 {{< editCode >}}
 ```yaml
-  apiVersion: apiVersion: devexdemo.example.com/v1alpha1
-  kind: StorageBucket
-  metadata:
+apiVersion: devexdemo.example.com/v1alpha1
+kind: StorageBucket
+metadata:
     name: example
     namespace: default
-  parameters:
+spec:
+    parameters:
     region: us-west-1
     versioning: true
     acl: public
@@ -189,10 +189,11 @@ kind: StorageBucket
 metadata:
   name: example
   namespace: default
-parameters:
-  location: eastus
-  versioning: true
-  acl: public
+spec:
+    parameters:
+    location: eastus
+    versioning: true
+    acl: public
 ```
 {{</ editCode >}}
 
@@ -208,10 +209,11 @@ kind: StorageBucket
 metadata:
   name: example
   namespace: default
-parameters:
-  location: US
-  versioning: true
-  acl: publicRead
+spec:
+    parameters:
+    location: US
+    versioning: true
+    acl: publicRead
 ```
 {{</ editCode >}}
 
