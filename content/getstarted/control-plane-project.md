@@ -2,6 +2,8 @@
 title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
 weight: 1
+aliases:
+    - "/getstarted-devex/create-controllers"
 ---
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
@@ -49,7 +51,10 @@ brew install upbound/tap/up
 {{< /tabs >}}
 
 ### Verify your installation
-The minimum supported version is `v0.35.0`. To verify your CLI installation and version, use the up version command:
+<!-- vale write-good.TooWordy = NO -->
+
+The minimum supported version is `v0.35.0`. To verify your CLI installation and version, use the `up version` command:
+<!-- vale write-good.TooWordy = YES -->
 ```shell
   up version
 ```
