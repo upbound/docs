@@ -171,9 +171,9 @@ metadata:
     namespace: default
 spec:
     parameters:
-    region: us-west-1
-    versioning: true
-    acl: public
+        region: us-west-1
+        versioning: true
+        acl: public
 ```
 {{</ editCode >}}
 
@@ -187,13 +187,13 @@ This StorageBucket claim uses fields AWS requires to create an S3 bucket instanc
 apiVersion: devexdemo.example.com/v1alpha1
 kind: StorageBucket
 metadata:
-  name: example
-  namespace: default
+    name: example
+    namespace: default
 spec:
     parameters:
-    location: eastus
-    versioning: true
-    acl: public
+        location: eastus
+        versioning: true
+        acl: public
 ```
 {{</ editCode >}}
 
@@ -207,13 +207,13 @@ This Azure StorageBucket claim uses fields Azure requires to create an Azure blo
 apiVersion: devexdemo.example.com/v1alpha1
 kind: StorageBucket
 metadata:
-  name: example
-  namespace: default
+    name: example
+    namespace: default
 spec:
     parameters:
-    location: US
-    versioning: true
-    acl: publicRead
+        location: US
+        versioning: true
+        acl: publicRead
 ```
 {{</ editCode >}}
 
