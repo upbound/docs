@@ -59,6 +59,7 @@ observability
 patchSets
 proidc
 proselint
+protobuf
 Pydantic
 Pylance
 Rego
