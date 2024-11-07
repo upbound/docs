@@ -25,6 +25,7 @@
   // Improve spacing and top-border on open Bootstrap accordions
   .accordion-body {
     border-top: 2px solid #{$up-grey-300};
+
     .highlight {
       margin: 0px;
     }
@@ -39,12 +40,15 @@
   .accordion-button {
     font-weight: 900;
   }
+
   .accordion-item {
     border-width: 2px;
   }
+
   .accordion-button:hover {
     outline: 2px solid #{$up-grey-600};
   }
+
   .accordion-button:not(.collapsed) {
     color: #{$font-color-dark};
   }
@@ -61,6 +65,7 @@
     border-collapse: separate;
     border-spacing: 0px;
   }
+
   // Hide bottom borders and wider padding for header items
   .table th {
     border-bottom: none;
@@ -69,6 +74,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
+
   // Add only top borders and wider padding for content items
   .table td {
     border-top: 1px solid #{$up-grey-600};
@@ -78,6 +84,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
   }
+
   // Decrease padding for small tables
   .table.table-sm th {
     padding-left: 16px;
@@ -85,6 +92,7 @@
     padding-top: 8px;
     padding-bottom: 8px;
   }
+
   .table.table-sm td {
     padding-left: 16px;
     padding-right: 16px;
@@ -102,11 +110,13 @@
       }
     }
   }
+
   // Individual inline code snippets
   code {
     background-color: var(--code-background);
     color: var(--code-color);
     padding: 0.2em 0.4em;
+    border-radius: 4px;
   }
 
   a {
@@ -148,6 +158,7 @@
     // Prevents a double border for tabs/hover
     &:not(.nav-link) {
       border-bottom: 2px solid #{$gray-300};
+      margin-top: 24px !important;
       margin-bottom: 12px !important;
     }
 
@@ -175,5 +186,9 @@
         border-bottom-width: 0;
       }
     }
+  }
+
+  .tab-pane > h3 {
+    margin-top: .5rem;
   }
 }

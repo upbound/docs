@@ -11,7 +11,7 @@ A provider family organizes the provider's resources into unique packages, organ
 Provider families reduce the resources required to install and run providers and
 improve performance over a single monolithic provider.
 
-### Provider family requirements
+## Provider family requirements
 
 Provider families have the following requirements and restrictions:
 
@@ -27,7 +27,11 @@ For information on migrating from monolithic providers to provider families read
 [family providers migration guide]({{<ref "/providers/migration">}})
 {{< /hint >}}
 
-### Installing a provider family
+## Installing a provider family
+
+{{< hint "important" >}}
+The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription to Upbound and a package pull secret to be placed on your control plane. Learn more in the section below. 
+{{< /hint >}}
 
 Installing a provider family is identical to installing other Crossplane providers.
 Create a Provider object with the provider package to install.
@@ -40,7 +44,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ```
 
 Install multiple services with multiple Provider objects. For example to install both AWS S3 and EC2 providers:
@@ -51,14 +55,14 @@ kind: Provider
 metadata:
   name: upbound-provider-aws-s3
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
 ---
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
   name: upbound-provider-aws-ec2
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.16.0
 ```
 
 {{<hint "tip" >}}
@@ -77,7 +81,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws-s3
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
   skipDependencyResolution: true
 ```
 
@@ -90,7 +94,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws-s3
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
   skipDependencyResolution: true
 ---
 apiVersion: pkg.crossplane.io/v1
@@ -98,7 +102,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws-ec2
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.16.0
   skipDependencyResolution: true
 ```
 
@@ -109,9 +113,9 @@ View the installed providers with `kubectl get providers`
 ```shell {copy-lines="1",label="getproviders"}
 kubectl get providers
 NAME                          INSTALLED   HEALTHY   PACKAGE                                               AGE
-upbound-provider-aws-ec2      True        True      xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0      25m
-upbound-provider-aws-s3       True        True      xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0       25m
-upbound-provider-family-aws   True        True      xpkg.upbound.io/upbound/provider-family-aws:v0.37.0   24m
+upbound-provider-aws-ec2      True        True      xpkg.upbound.io/upbound/provider-aws-ec2:v1.16.0      25m
+upbound-provider-aws-s3       True        True      xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0       25m
+upbound-provider-family-aws   True        True      xpkg.upbound.io/upbound/provider-family-aws:v1.16.0   24m
 ```
 
 The first provider installed of a family also installs an extra
@@ -131,7 +135,7 @@ If you still want to control the version of the `provider-family`, consider usin
 **Install Providers in an offline environment** section above.
 {{< /hint >}}
 
-### Using ControllerConfigs
+## Using ControllerConfigs
 
 The [ControllerConfig](https://docs.crossplane.io/latest/concepts/packages/#speccontrollerconfigref) applies settings to a Provider Pod. With family providers
 each provider is a unique Pod running in the cluster. 
@@ -148,7 +152,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws-s3
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
   controllerConfigRef:
     name: my-controllerconfig
 ---
@@ -157,7 +161,7 @@ kind: Provider
 metadata:
   name: upbound-provider-aws-ec2
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-ec2:v0.37.0
+  package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.16.0
   controllerConfigRef:
     name: my-controllerconfig
 ---

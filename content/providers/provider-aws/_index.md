@@ -13,6 +13,9 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 
 <!-- vale Google.Headings = NO -->
 
+{{< hint "important" >}}
+The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
+{{< /hint >}}
 
 ## v1.13.0
 

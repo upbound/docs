@@ -34,6 +34,7 @@ Goldmark
 Grammarly
 Grafana
 image_uri
+keyless
 kubeconfig
 kubectl
 Kustomize
@@ -62,12 +63,17 @@ proselint
 Pydantic
 Pylance
 Rego
+Rekor
+SBOM
+SBOMs
 semver
 Serverless
 shortcode
 shortcodes
 SharedSecretStore
 SharedExternalSecret
+Sigstore
+sigstore
 SLAs
 stdin
 stdout
