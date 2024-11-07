@@ -11,7 +11,7 @@ Install the following:
 
 - [KCL](https://www.kcl-lang.io/docs/user_docs/getting-started/install)
 - [KCL Language Server](https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-language-server)
-- [KCL VSCode Extension](https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-kcl-extensions-for-ide)
+- [KCL Visual Studio Code Extension](https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-kcl-extensions-for-ide)
 
 ## Example
 The example below is a pre-generated function that detects if a composed
