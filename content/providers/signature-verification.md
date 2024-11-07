@@ -35,7 +35,7 @@ signatures
 cosign verify-attestation xpkg.upbound.io/upbound/<provider>@sha256:<digest> \
 --certificate-identity https://github.com/upbound/upbound-official-build/.github/workflows/supplychain.yml@refs/heads/main \
 --certificate-oidc-issuer https://token.actions.githubusercontent.com  \
---type spdxjson
+--type spdxjson > attestation.json
 ```
 
 <!-- vale write-good.Passive = NO -->
@@ -66,35 +66,34 @@ identity.
 apiVersion: pkg.crossplane.io/v1beta1
 kind: ImageConfig
 metadata:
-  name: cosign-verify
+  name: verify-upbound-official
 spec:
   matchImages:
-    - prefix: "xpkg.upbound.io/crossplane/<my-signed-image>:"
+    - prefix: "xpkg.upbound.io/upbound/<the-signed-image>:"
   verification:
     provider: Cosign
     cosign:
       authorities:
-        - name: verify keyless signing
+        - name: verify upbound official build
           keyless:
             identities:
-              - issuer: https://github.com/login/oauth
-                subject: <my-email>@gmail.com
-          attestations:
-            - name: verify attestations
-              predicateType: spdxjson
+              - issuer: https://token.actions.githubusercontent.com
+                subject: https://github.com/upbound/upbound-official-build/.github/workflows/supplychain.yml@refs/heads/main
 ```
 <!-- vale write-good.TooWordy = NO -->
-If enabled, Crossplane ensures the status condition
-`SignatureVerificationComplete` is true, indicating it was either skipped or
-succeeded.
+If the signature verification feature is enabled, Crossplane ensures the status condition
+of type `Verified` is set to true on the `ProviderRevision` resource,
+indicating it was either skipped or succeeded.
 <!-- vale write-good.TooWordy = YES -->
 
 For example:
 
 ```yaml
   - lastTransitionTime: "2024-10-23T16:43:05Z"
-    message: Signature verification succeeded with ImageConfig named "cosign-verify"
+    message: Signature verification succeeded with ImageConfig named "verify-upbound-official"
     reason: VerificationSucceeded
     status: "True"
     type: SignatureVerificationComplete
 ```
+
+For further details on verifying signatures with Crossplane, refer to the [Crossplane documentation](https://docs.crossplane.io/v1.18/concepts/image-configs/#configuring-signature-verification).
