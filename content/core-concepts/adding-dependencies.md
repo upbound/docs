@@ -44,7 +44,7 @@ Use the [up dependency add]({{< ref "reference/cli/command-reference" >}}) comma
 
 
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
+up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.17.0
 ```
 
 In your `upbound.yaml` file, the provider you just installed is automatically captured in the `spec.dependsOn` value:

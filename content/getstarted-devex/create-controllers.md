@@ -76,7 +76,7 @@ The `up project init` command creates:
 *   `upbound.yaml`: Project configuration file.
 *   `apis/`: Directory for Crossplane composition definitions.
 *   `examples/`: Directory for example claims.
-*   `.github/` and `.vscode/`: Directories for CI/CD and local development.
+*   `.github/`: GitHub Actions to build and push your project.
 
 
 ## Step 2: Add project dependencies
@@ -88,19 +88,19 @@ The `up project init` command creates:
 ### Add your cloud provider resources
 <!-- AWS -->
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.16.0
+up dependency add 'xpkg.upbound.io/upbound/provider-aws-s3:>=v1.17.0'
 ```
 <!-- /AWS -->
 
 <!-- Azure -->
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-azure-storage:v1.7.0
+up dependency add 'xpkg.upbound.io/upbound/provider-azure-storage:>=v1.8.0'
 ```
 <!-- /Azure -->
 
 <!-- GCP -->
 ```shell
-up dependency add xpkg.upbound.io/upbound/provider-gcp-storage:v1.8.3
+up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v1.9.0'
 ```
 <!-- /GCP -->
 
@@ -115,7 +115,7 @@ manage. Functions add logic to automate complex provisioning processes. After ad
 spec:
   dependsOn:
   - provider: xpkg.upbound.io/upbound/provider-aws-s3
-    version: v1.16.0
+    version: '>=v1.17.0'
 ```
 <!-- /AWS -->
 <!-- Azure -->
@@ -123,7 +123,7 @@ spec:
 spec:
   dependsOn:
   - provider: xpkg.upbound.io/upbound/provider-azure-storage
-    version: v1.7.0
+    version: '>=v1.8.0'
 ```
 <!-- /Azure -->
 <!-- GCP -->
@@ -131,7 +131,7 @@ spec:
 spec:
   dependsOn:
   - provider: xpkg.upbound.io/upbound/provider-gcp-storage
-    version: v1.8.3
+    version: '>=v1.9.0'
 ```
 <!-- /GCP -->
 {{< /content-selector >}}
@@ -168,9 +168,10 @@ This command creates a minimal claim file. Copy and paste the claim below into t
     name: example
     namespace: default
   spec:
-    region: us-west-1
-    versioning: true
-    acl: public
+    parameters:
+      region: us-west-1
+      versioning: true
+      acl: public
 ```
 {{</ editCode >}}
 
@@ -187,13 +188,14 @@ metadata:
   name: example
   namespace: default
 spec:
-  location: eastus
-  versioning: true
-  acl: public
+  parameters:
+    location: eastus
+    versioning: true
+    acl: public
 ```
 {{</ editCode >}}
 
-This Azure StorageContainer claim uses fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
+This Azure StorageBucket claim uses fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
 <!-- /Azure -->
 
 <!-- GCP -->
@@ -206,9 +208,10 @@ metadata:
   name: example
   namespace: default
 spec:
-  location: US
-  versioning: true
-  acl: publicRead
+  parameters:
+    location: US
+    versioning: true
+    acl: publicRead
 ```
 {{</ editCode >}}
 
@@ -223,7 +226,7 @@ up xrd generate examples/storagebucket/example.yaml
 ```
 
 This command generate a new Composite Resource Definition (XRD) file in
-`apis/xstoragebuckts/definition.yaml`. The XRD is a custom schema representation
+`apis/xstoragebuckets/definition.yaml`. The XRD is a custom schema representation
 for the bucket API you defined in your claim. The `up xrd generate` command
 automatically infers the variable types for the XRD based on the input
 parameters in your example claim.
@@ -248,7 +251,7 @@ transforms in your YAML files.
 Run the `up function generate` command and choose either KCL or Python.
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=<KCL or Python>
+up function generate test-function apis/xstoragebuckets/composition.yaml --language=<kcl or python>
 ```
 
 This command generates an embedded function called `test-function` in the
@@ -688,10 +691,11 @@ deploys your project's package to it.
 Next validate your control plane project state to verify the resources created
 by locally invoking the API.
 
-Update your `up` CLI context to your control plane.
+Update your `up` CLI context to your control plane, which is the name of your
+project (upbound-qs) by default.
 
 ```shell
-up ctx ./<your-control-plane>
+up ctx ./upbound-qs
 ```
 
 ### Create provider credentials
