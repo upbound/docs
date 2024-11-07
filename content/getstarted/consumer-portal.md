@@ -131,7 +131,9 @@ To verify bucket deletion, run the AWS S3 CLI again.
 aws s3api get-bucket-encryption --bucket <your-bucket-name>
 ```
 
-```
+This command should return with an error:
+
+```shell
 {
     "Error": {
         "Code": "NoSuchBucket",
