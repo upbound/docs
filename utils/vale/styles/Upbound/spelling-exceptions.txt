@@ -60,6 +60,8 @@ observability
 patchSets
 proidc
 proselint
+Pydantic
+Pylance
 Rego
 Rekor
 SBOM

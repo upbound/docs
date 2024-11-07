@@ -1,6 +1,6 @@
 ---
 title: "Upbound IAM"
-weight: 3
+weight: 5
 ---
 
 Upbound allows administrators to deploy Role-based Access Control (RBAC)
@@ -63,7 +63,7 @@ the following resources:
 {{< table "table table-striped" >}}
 
 |              | Create | List    | Read    | Update | Delete |
-|--------------|--------|---------|---------|--------|--------|
+| ------------ | ------ | ------- | ------- | ------ | ------ |
 | Organization | Anyone | Member+ | Member+ | Admin  | Admin  |
 | User         | Anyone | Member+ | Self    | Self   | Self   |
 | Membership   | Admin  | Member+ | Member+ | Admin  | Admin  |

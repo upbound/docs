@@ -11,7 +11,6 @@
   @include media-breakpoint-down(xl) {
     padding: 50px;
     overflow-wrap: break-word;
-
   }
 
   // Override Bootstrap accordion colors in the body
@@ -101,9 +100,7 @@
     padding-bottom: 8px;
   }
 
-
   h1, h2, h3, h4, h5, h6 {
-
     a {
       text-decoration: none !important;
       color: inherit !important;
@@ -148,7 +145,6 @@
 
   // Override Bootstrap Tab styles
   .nav-tabs {
-
     border-bottom: none;
     font-weight: bold;
 
@@ -157,8 +153,6 @@
         display: block !important;
         margin: 0px;
       }
-
-
     }
     // Create a border for the non-tabbed space.
     // Prevents a double border for tabs/hover
