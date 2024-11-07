@@ -72,6 +72,9 @@ configuration and embedded functions.
 Here's how it works:
 
 **Build embedded function packages**:
+
+<!-- vale write-good.Passive = NO -->
+
 Each function in the `functions/` directory of your project is built into a
 Crossplane function package by adding your code to a base image and generating
 metadata.
@@ -80,7 +83,6 @@ metadata.
 The up CLI creates Crossplane configuration package metadata based on your
 project, including dependencies on the embedded functions.
 
-<!-- vale write-good.Passive = NO -->
 
 **Build the Configuration Package**:
 All relevant YAML files (XRDs and compositions) are bundled into a Crossplane
@@ -108,7 +110,7 @@ within your configuration repository. Each sub-repository name follows this
 naming convention `[organization-name]/[project-name]_[function-name]`. The configuration package,
 which includes dependencies on embedded functions, is also pushed. Once uploaded, your configuration is ready to be deployed to control planes like any
 other configuration.
-<!-- vale write-good.Passive = YES -->
 
 Note that Crossplane 1.18 or later is required to use configurations with
 embedded functions.
+<!-- vale write-good.Passive = YES -->

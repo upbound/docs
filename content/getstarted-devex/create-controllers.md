@@ -682,8 +682,8 @@ deploys your project's package to it.
 Next validate your control plane project state to verify the resources created
 by locally invoking the API.
 
-Update your `up` CLI context to your control plane, which will be named after
-the project (`upbound-qs`) by default:
+Update your `up` CLI context to your control plane, which is the name of your
+project (upbound-qs) by default.
 
 ```shell
 up ctx ./upbound-qs
