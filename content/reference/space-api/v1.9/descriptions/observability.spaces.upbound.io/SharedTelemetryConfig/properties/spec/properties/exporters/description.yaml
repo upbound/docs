@@ -1,0 +1,6 @@
+description: |-
+    Exporters defines the exporters to configure on the selected ControlPlanes.
+    Untyped as we use the underlying OpenTelemetryOperator to configure the
+    OpenTelemetry collector's exporters. Use the OpenTelemetry Collector
+    documentation to configure the exporters.
+    Currently only supported exporters are push based exporters.
