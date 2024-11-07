@@ -898,7 +898,7 @@ kubectl apply -f examples/storagebucket/example.yaml
 Return the resource state with the `up` CLI.
 
 ```shell
-up alpha get managed -oyaml
+up alpha get managed -o yaml
 ```
 
 Now, you can validate your results through the Upbound Console, and make any changes to test your resources required.
