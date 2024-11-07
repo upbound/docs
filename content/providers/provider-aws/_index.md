@@ -17,6 +17,64 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
 {{< /hint >}}
 
+## v1.17.0
+
+_Released 2024-11-07_
+
+* Support for new resources: `JobQueue.batch.aws.upbound.io/v1beta1`
+and `ComputeEnvironment.batch.aws.upbound.io/v1beta1`
+* Upgraded the underlying Terraform provider version from `v5.68.0` to `5.73.0`
+* This release also introduces new resources, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.17.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.17.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.17.0)
+
+## v1.16.0
+
+_Released 2024-10-23_
+
+* This release introduces important bug fixes and dependency updates.
+
+_Refer to the [v1.16.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.16.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.16.0)
+
+## v1.15.0
+
+_Released 2024-10-11_
+
+* Support for new resources: `Pipeline.osis.aws.upbound.io/v1beta1`
+and `Agent.bedrockagent.aws.upbound.io/v1beta1`
+* Upgraded the underlying Terraform provider version from `v5.58.0` to `v5.68.0`
+* This release also introduces new family providers, new resources, bug fixes, and dependency updates.
+
+_Refer to the [v1.15.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.15.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.15.0)
+
+## v1.14.0
+
+_Released 2024-09-20_
+
+* Support for new resources: `Region.account.aws.upbound.io/v1beta1`
+and `GlobalReplicationGroup.elasticache.aws.upbound.io/v1beta1`
+* This release introduces new resources, enhancements, and dependency updates.
+
+_Refer to the [v1.14.0 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.14.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.14.0)
+
+## v1.13.1
+
+_Released 2024-09-16_
+
+* This release fixes the issue of hiding error messages.
+
+_Refer to the [v1.13.1 release notes](https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.13.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.13.1)
+
 ## v1.13.0
 
 _Released 2024-08-29_
