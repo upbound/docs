@@ -75,9 +75,8 @@ Here's how it works:
 
 <!-- vale write-good.Passive = NO -->
 
-Each function in the `functions/` directory of your project is built into a
-Crossplane function package by adding your code to a base image and generating
-metadata.
+Functions in your projects `functions/` directory are built by adding your code
+to a base image and generating metadata.
 
 **Generate Configuration Package Metadata**:
 The up CLI creates Crossplane configuration package metadata based on your
