@@ -16,7 +16,7 @@ Upbound supports Python and KCL schemas.
 
 
 {{<hint "tip">}}
-This documentation focuses on Visual Studio code, but other popular editors also
+This documentation focuses on Visual Studio code, but other popular editors also 
 support Python and KCL schemas, linting, and autocompletion.
 
 Refer to the [KCL language server](https://www.kcl-lang.io/docs/user_docs/getting-started/install)
