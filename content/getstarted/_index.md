@@ -25,7 +25,7 @@ By adopting Upbound, you gain:
 ## Try it out
 <!-- vale gitlab.FutureTense = NO -->
 In the next guide, you'll learn how to provision cloud resources in your
-preferred provider. Follow [the guide]({{< ref "./create-controllers" >}}) to
+preferred provider. Follow [the guide]({{< ref "./control-plane-project" >}}) to
 learn the full capabilities of Upbound's cross-cloud infrastructure management.
 <!-- vale gitlab.FutureTense = YES -->
 
