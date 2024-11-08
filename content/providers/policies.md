@@ -59,7 +59,7 @@ providers.
 
 Team or higher subscription tiers will allow access to all available provider versions in the access window, while
 Community and Individual tier will only be able to access the latest version of the provider. For convenience this
-version will be tagged as v<major> (`v1`) so users don't need to update the package version each time a new release
+version will be tagged as `v[major]` (`v1`) so users don't need to update the package version each time a new release
 is made.  
 {{<img src="providers/images/tier-access.png" alt="Tier access" size="small" unBlur="true">}}
 
