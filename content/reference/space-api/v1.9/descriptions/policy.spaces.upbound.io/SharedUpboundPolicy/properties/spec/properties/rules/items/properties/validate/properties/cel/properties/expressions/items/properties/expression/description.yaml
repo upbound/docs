@@ -2,7 +2,7 @@ description: |-
     Expression represents the expression which will be evaluated by CEL.
     ref: https://github.com/google/cel-spec
     CEL expressions have access to the contents of the API request/response, organized into CEL variables as well as some other useful variables:
-
+    
     - 'object' - The object from the incoming request. The value is null for DELETE requests.
     - 'oldObject' - The existing object. The value is null for CREATE requests.
     - 'request' - Attributes of the API request([ref](https://pkg.go.dev/k8s.io/kubernetes/pkg/apis/admission#AdmissionRequest)).
@@ -14,10 +14,10 @@ description: |-
       See https://pkg.go.dev/k8s.io/apiserver/pkg/cel/library#Authz
     - 'authorizer.requestResource' - A CEL ResourceCheck constructed from the 'authorizer' and configured with the
       request resource.
-
+    
     The `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the
     object. No other metadata properties are accessible.
-
+    
     Only property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible.
     Accessible property names are escaped according to the following rules when accessed in the expression:
     - '__' escapes to '__underscores__'
@@ -31,7 +31,7 @@ description: |-
       - Expression accessing a property named 'namespace': {'Expression': 'object.__namespace__ > 0'}
       - Expression accessing a property named 'x-prop': {'Expression': 'object.x__dash__prop > 0'}
       - Expression accessing a property named 'redact__d': {'Expression': 'object.redact__underscores__d > 0'}
-
+    
     Equality on arrays with list type of 'set' or 'map' ignores element order, i.e. [1, 2] == [2, 1].
     Concatenation on arrays with x-kubernetes-list-type use the semantics of the list type:
       - 'set': `X + Y` performs a union where the array positions of all elements in `X` are preserved and

@@ -1,0 +1,6 @@
+description: |-
+    Match is the selector for resources that should be included in the backup.
+    By default, we'll back up all Groups and for each Group:
+    - All ControlPlanes.
+    - All Secrets.
+    - All other Space API resources, e.g. SharedBackupConfigs, SharedUpboundPolicies, Backups, etc...
