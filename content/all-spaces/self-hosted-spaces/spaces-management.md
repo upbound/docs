@@ -14,7 +14,7 @@ aliases:
 To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init]({{<ref "/reference/cli/command-reference.md">}}) to install an Upbound Space. Below is an example:
 
 ```bash
-up space init "v1.8.0"
+up space init "v1.9.0"
 ```
 
 {{< hint "tip" >}}
@@ -32,7 +32,7 @@ Furthermore, the Spaces chart requires a pull secret, which Upbound must provide
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "v1.8.0" \
+  --version "v1.9.0" \
   --set "ingress.host=your-host.com" \
   --set "clusterType=eks" \
   --set "account=your-upbound-account" \

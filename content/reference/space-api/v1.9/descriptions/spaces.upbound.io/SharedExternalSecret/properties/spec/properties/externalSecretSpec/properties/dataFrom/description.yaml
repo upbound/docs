@@ -1,0 +1,3 @@
+description: |-
+    DataFrom is used to fetch all properties from a specific Provider data
+    If multiple entries are specified, the Secret keys are merged in the specified order

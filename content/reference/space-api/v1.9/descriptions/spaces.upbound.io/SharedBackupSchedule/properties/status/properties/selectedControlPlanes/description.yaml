@@ -1,0 +1,3 @@
+description: |-
+    SelectedControlPlanes is the list of ControlPlanes that are selected
+    for backup.

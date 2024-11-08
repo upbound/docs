@@ -1,0 +1,2 @@
+description: |-
+    SharedBackupSpec defines a backup over a set of ControlPlanes.
