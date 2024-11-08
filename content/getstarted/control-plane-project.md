@@ -173,7 +173,7 @@ spec:
     parameters:
         region: us-west-1
         versioning: true
-        acl: public
+        acl: public-read
 ```
 {{</ editCode >}}
 
@@ -299,11 +299,43 @@ _items: [any] = [
             }
         }
     },
+    s3v1beta1.BucketOwnershipControls{
+        metadata: _metadata("{}-boc".format(oxr.metadata.name))
+        spec = {
+            forProvider = {
+                bucketRef = {
+                    name = bucketName
+                }
+                region = params.region
+                rule:[{
+                    objectOwnership:"BucketOwnerPreferred"
+                }]
+            }
+        }
+    },
+    s3v1beta1.BucketPublicAccessBlock{
+        metadata: _metadata("{}-pab".format(oxr.metadata.name))
+        spec = {
+            forProvider = {
+                bucketRef = {
+                    name = bucketName
+                }
+                region = params.region
+                blockPublicAcls: False
+                ignorePublicAcls: False
+                restrictPublicBuckets: False
+                blockPublicPolicy: False
+            }
+        }
+    },
     # ACL for the bucket
     s3v1beta1.BucketACL{
         metadata: _metadata("{}-acl".format(oxr.metadata.name))
         spec = {
             forProvider = {
+                bucketRef = {
+                    name = bucketName
+                }
                 region = params.region
                 acl = params.acl
             }
@@ -371,6 +403,8 @@ from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
 from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
 from .model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
 from .model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
+from .model.io.upbound.aws.s3.bucketownershipcontrols import v1beta1 as bocv1beta1
+from .model.io.upbound.aws.s3.bucketpublicaccessblock import v1beta1 as pabv1beta1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
@@ -406,6 +440,50 @@ def compose(req: fnv1.RunFunctionRequest, rsp: nv1.RunFunctionResponse):
         ),
     )
     resource.update(rsp.desired.resources["acl"], acl)
+
+    boc = bocv1beta1.BucketOwnershipControls(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="BucketOwnershipControls",
+        metadata=metav1.ObjectMeta(
+            name=observed_xr.metadata.name + "-boc",
+        ),
+        spec=bocv1beta1.Spec(
+            forProvider=bocv1beta1.ForProvider(
+                region=observed_xr.spec.region,
+                bucketRef=bocv1beta1.BucketRef(
+                    name = bucket.metadata.name,
+                ),
+                rule=[
+                    bocv1beta1.RuleItem(
+                        objectOwnership="BucketOwnerPreferred",
+                    ),
+                ],
+            )
+        )
+    )
+    resource.update(rsp.desired.resources["boc"], boc)
+
+    pab = pabv1beta1.BucketPublicAccessBlock(
+        apiVersion="s3.aws.upbound.io/v1beta1",
+        kind="BucketPublicAccessBlock",
+        metadata=metav1.ObjectMeta(
+            name=observed_xr.metadata.name + "-pab",
+        ),
+        spec=pabv1beta1.Spec(
+            forProvider=pabv1beta1.ForProvider(
+                region=observed_xr.spec.region,
+                bucketRef=pabv1beta1.BucketRef(
+                    name = bucket.metadata.name,
+                ),
+                blockPublicAcls=False,
+                ignorePublicAcls=False,
+                restrictPublicBuckets=False,
+                blockPublicPolicy=False,
+            )
+        )
+    )
+    resource.update(rsp.desired.resources["pab"], pab)
+
 
     sse = ssev1beta1.BucketServerSideEncryptionConfiguration(
         apiVersion="s3.aws.upbound.io/v1beta1",
