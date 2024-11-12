@@ -27,6 +27,11 @@ For this guide you need:
 - The latest version of the `up` CLI
 - An AWS account
 
+{{<hint "important">}}
+To use embedded functions in upstream Crossplane, you must pass the `--enable-dependency-version-upgrades` alpha flag during installation. For more information, review the [Crossplane installation options](https://docs.crossplane.io/latest/software/install/#customize-the-crossplane-helm-chart).
+{{</hint>}}
+
+
 ## Initialize your project
 
 First, scaffold a new project with the `up` CLI.
