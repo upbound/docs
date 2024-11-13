@@ -226,7 +226,7 @@ spec:
 
 ### Set the time to live
 
-Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is in seconds.
+Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is a duration, for example, `168h` for 7 days.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -330,7 +330,7 @@ spec:
 
 ### Set the time to live
 
-Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is in seconds.
+Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is a duration, for example, `168h` for 7 days.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -451,7 +451,7 @@ spec:
 
 ### Set the time to live
 
-Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is in seconds.
+Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is a duration, for example, `168h` for 7 days.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -479,3 +479,4 @@ spec:
     source:
       kind: Backup
       name: restore-me
+```
