@@ -173,7 +173,7 @@ spec:
     parameters:
         region: us-west-1
         versioning: true
-        acl: public
+        acl: public-read
 ```
 {{</ editCode >}}
 
@@ -891,16 +891,6 @@ spec:
       name: aws-secret
       key: my-aws-secret
 ```
-
-Apply the provider configuration.
-
-```bash
-kubectl apply -f provider-config.yaml
-```
-
-When you create a composition and deploy with the control plane, Upbound uses the `ProviderConfig` to locate and retrieve the credentials
-in the secret store.
-
 <!-- /AWS -->
 
 <!-- Azure -->
