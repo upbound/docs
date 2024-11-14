@@ -12,6 +12,7 @@ configmap
 Cognito
 Commonmark
 conformant
+Config
 ConfigMap
 ConfigMaps
 configmaps

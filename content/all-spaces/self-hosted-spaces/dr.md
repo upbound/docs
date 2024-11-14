@@ -39,9 +39,7 @@ Enabled the Space Backups feature in the Space:
 - Connected Spaces: Space administrator must enable this feature.
 - Disconnected Spaces: Space administrator must enable this feature.
 
-
 ## Configure a Space Backup Config
-
 
 [SpaceBackupConfig](https://docs.upbound.io/reference/space-api/#SpaceBackupConfig-spec) is a cluster-scoped resource. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SpaceBackupConfig to tell it where store the snapshot.
 

@@ -15,7 +15,6 @@ swap:
   bullet: list item
   click: select
   code base: codebase
-  config: configuration
   deselect: clear
   deselected: cleared
   distro: distribution
