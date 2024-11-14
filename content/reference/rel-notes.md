@@ -11,6 +11,14 @@ ref "spaces" >}}).
 
 ## Spaces release notes
 
+### Spaces v1.9.4
+
+Released November 14th, 2024
+
+#### What's Changed
+
+* Revert in-cluster host port used from 9091 to 8443. This led Argo to not be able to reach controlplanes.
+
 ### Spaces v1.9.3
 
 Released November 12th, 2024
