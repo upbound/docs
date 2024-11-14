@@ -39,15 +39,15 @@ Enabled the Space Backups feature in the Space:
 - Connected Spaces: Space administrator must enable this feature.
 - Disconnected Spaces: Space administrator must enable this feature.
 
-<!-- vale off -->
+
 ## Configure a Space Backup Config
-<!-- vale on -->
+
 
 [SpaceBackupConfig](https://docs.upbound.io/reference/space-api/#SpaceBackupConfig-spec) is a cluster-scoped resource. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SpaceBackupConfig to tell it where store the snapshot.
 
-<!-- vale off -->
+
 ### Backup config provider
-<!-- vale on -->
+
 
 The `spec.objectStorage.provider` and `spec.objectStorage.config` fields configures:
 
@@ -57,9 +57,9 @@ The `spec.objectStorage.provider` and `spec.objectStorage.config` fields configu
 
 You can only set one provider. Upbound currently supports AWS, Azure, and GCP as providers.
 
-<!-- vale off -->
+
 `spec.objectStorage.config` is a freeform map of configuration options for the object storage provider. See [Thanos object storage](https://thanos.io/tip/thanos/storage.md/) for more information on the formats for each supported cloud provider. `spec.bucket` and `spec.provider` overrides the required values in the config.
-<!-- vale on -->
+
 
 #### AWS as a storage provider
 
@@ -85,9 +85,10 @@ spec:
         key: creds
 ```
 
-<!-- vale off -->
-This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS `eu-west-2` region. The account credentials to access the bucket should be defined through a Secret in the specified Namespace, here `upbound-system`.
-<!-- vale on -->
+This example assumes you've already created an S3 bucket called
+`spaces-backup-bucket` in the `eu-west-2` AWS region. To access the bucket,
+define the account credentials as a Secret in the specified Namespace
+(`upbound-system` in this example).
 
 #### Azure as a storage provider
 
@@ -115,9 +116,12 @@ spec:
         key: creds
 ```
 
-<!-- vale off -->
-This example assumes you've already created an Azure storage account called "upbackupstore" and blob "upbound-backups." The storage account key to access the blob should be defined through a Secret in the specified Namespace, here `upbound-system`.
-<!-- vale on -->
+
+This example assumes you've already created an Azure storage account called
+`upbackupstore` and blob `upbound-backups`. To access the blob,
+define the account credentials as a Secret in the specified Namespace
+(`upbound-system` in this example).
+
 
 #### GCP as a storage provider
 
@@ -141,13 +145,14 @@ spec:
         key: creds
 ```
 
-<!-- vale off -->
-This example assumes you've already created a Cloud bucket called "spaces-backup-bucket" and a service account with access to this bucket. The key file should be defined through a Secret in the specified namespace, here `upbound-system`.
-<!-- vale on -->
 
-<!-- vale off -->
+This example assumes you've already created a Cloud bucket called
+"spaces-backup-bucket" and a service account with access to this bucket. Define the key file as a Secret in the specified Namespace
+(`upbound-system` in this example).
+
+<!-- vale Google.Headings = NO -->
 ## Configure a Space Backup Schedule
-<!-- vale on -->
+<!-- vale Google.Headings = YES -->
 
 [SpaceBackupSchedule](https://docs.upbound.io/reference/space-api/#SpaceBackupSchedule-spec) is a cluster-scoped resource. This resource defines a backup schedule for the whole Space.
 
@@ -179,13 +184,13 @@ spec:
 The pec.schedule` field is a [Cron-formatted](https://en.wikipedia.org/wiki/Cron) string. Some common examples are below:
 
 {{< table >}}
-| Entry | Description |
-| --- | --- |
-| `@hourly` | Run once an hour. |
-| `@daily` | Run once a day. |
-| `@weekly` | Run once a week. |
-| `0 0/4 * * *` | Run every 4 hours. |
-| `0/15 * * * 1-5` | Run every fifteenth minute on Monday through Friday. |
+| Entry             | Description                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| `@hourly`         | Run once an hour.                                                                                 |
+| `@daily`          | Run once a day.                                                                                   |
+| `@weekly`         | Run once a week.                                                                                  |
+| `0 0/4 * * *`     | Run every 4 hours.                                                                                |
+| `0/15 * * * 1-5`  | Run every fifteenth minute on Monday through Friday.                                              |
 | `@every 1h30m10s` | Run every 1 hour, 30 minutes, and 10 seconds. Hour is the largest measurement of time for @every. |
 {{< /table >}}
 
@@ -338,10 +343,12 @@ spec:
   deletionPolicy: Delete
 ```
 
-<!-- vale off -->
-The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket, by default it's set to `Orphan`. Set it to `Delete` to clean up uploaded files in the bucket.
-For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
-<!-- vale on -->
+
+The backup specification `DeletionPolicy` defines backup deletion actions,
+including the deletion of the backup file from the bucket. The `Deletion Policy`
+value defaults to `Orphan`. Set it to `Delete` to remove uploaded files
+in the bucket.
+For more information on the backup and restore process, review the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
 
 ### Set the time to live
 
