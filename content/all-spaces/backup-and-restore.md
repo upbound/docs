@@ -90,7 +90,7 @@ spec:
 ```
 
 
-This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS `eu-west-2` region. The account credentials to access the bucket should exist in a secret of the same namespace as the shared backup config.
+This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS `eu-west-2` region. The account credentials to access the bucket should exist in a secret of the same namespace as the Shared Backup Config.
 
 #### Azure as a storage provider
 
