@@ -99,14 +99,6 @@ export SPACES_ROUTER_HOST="$@proxy.upbound-127.0.0.1.nip.io$@"
 Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a real domain that you own.
 {{< /hint >}}
 
-The `SPACES_CLUSTER_TYPE` is the Kubernetes cluster provider you configured in the previous step.
-
-
-```ini
-export SPACES_CLUSTER_TYPE=gke
-```
-
-
 <!-- vale off -->
 ## Install the Spaces software
 <!-- vale on -->
@@ -158,7 +150,6 @@ helm -n upbound-system upgrade --install spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "authentication.hubIdentities=true" \
   --set "authorization.hubRBAC=true" \

@@ -50,7 +50,6 @@ helm -n upbound-system upgrade --install spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
   --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "clusterType=${SPACES_CLUSTER_TYPE}" \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "features.alpha.observability.enabled=true" \
   --wait
