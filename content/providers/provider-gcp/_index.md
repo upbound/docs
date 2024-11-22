@@ -15,6 +15,17 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
 {{< /hint >}}
 
+## v1.10.0
+
+_Released 2024-11-21_
+
+* This release introduces new resources: `ResponsePolicy.dns.gcp.upbound.io/v1beta1`,
+`ResponsePolicyRule.dns.gcp.upbound.io/v1beta1` and `TrustConfig.certificatemanager.gcp.upbound.io/v1beta1`
+
+_Refer to the [v1.10.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.10.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.10.0)
+
 ## v1.9.0
 
 _Released 2024-11-07_

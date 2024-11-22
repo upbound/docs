@@ -17,6 +17,18 @@ The ability to install any version of an Official Provider **other than the most
 
 <!-- vale Google.Headings = NO -->
 
+## v1.9.0
+
+_Released 2024-11-21_
+
+* Support for new resources: `PrivateDNSResolverOutboundEndpoint.network.azure.upbound.io/v1beta1`
+and `TrustedAccessRoleBinding.authorization.azure.upbound.io/v1beta1`
+* This release introduces new resources, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.9.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.9.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.9.0)
+
 ## v1.8.0
 
 _Released 2024-11-07_
