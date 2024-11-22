@@ -11,7 +11,21 @@ GitHub release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+{{< hint "important" >}}
+The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
+{{< /hint >}}
+
 <!-- vale Google.Headings = NO -->
+
+## v0.19.0
+
+_Released 2024-11-05_
+
+* This release introduces dependency updates and workflow updates.
+
+_Refer to the [v0.19.0 release notes](https://github.com/upbound/provider-terraform/releases/tag/v0.19.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.19.0)
 
 ## v0.18.0
 

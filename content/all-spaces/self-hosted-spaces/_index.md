@@ -7,6 +7,8 @@ aliases:
     - /all-spaces/disconnected-spaces
 ---
 
+<!-- vale Google.Headings = NO -->
+
 ## Connected Spaces
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -35,10 +37,10 @@ The minimum recommended node pool VM configuration for each cloud provider is:
 
 {{< table >}}
 | Cloud Provider | VM configuration | Cores | Memory |
-| ---- | ---- | ---- |  ---- |
-| AWS | m5.large | 2 | 8 |
-| Azure | Standard_D2_v3 | 2 | 8 |
-| GCP | e2-standard-2 | 2 | 8 |
+| -------------- | ---------------- | ----- | ------ |
+| AWS            | m5.large         | 2     | 8      |
+| Azure          | Standard_D2_v3   | 2     | 8      |
+| GCP            | e2-standard-2    | 2     | 8      |
 {{< /table >}}
 
 <!-- vale write-good.TooWordy = YES -->
@@ -59,4 +61,6 @@ You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is
 
 ### Next steps
 
-Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "/quickstart.md">}}).
+Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "../../getstarted/control-plane-project">}}).
+
+<!-- vale Google.Headings = YES -->

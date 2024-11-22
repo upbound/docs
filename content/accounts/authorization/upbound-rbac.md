@@ -4,10 +4,6 @@ weight: 6
 description: "A guide to implementing and configuring access control in Upbound"
 ---
 
-{{< hint "important" >}}
-For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "what-is-upbound.md" >}}).
-{{< /hint >}}
-
 This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
 
 ## Identity types
@@ -71,7 +67,7 @@ The example below gives control plane group editor access to the `UpboundTeam` w
 apiVersion: authorization.spaces.upbound.io/v1alpha1
 kind: ObjectRoleBinding
 metadata:
-  name: my-binding 
+  name: my-binding
   namespace: ctp-group-1
 spec:
   object:

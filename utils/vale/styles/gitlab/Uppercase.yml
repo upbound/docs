@@ -107,6 +107,7 @@ exceptions:
   - JSON
   - JVM
   - JWT
+  - KCL
   - LAN
   - LDAP
   - LDAPS
@@ -170,6 +171,7 @@ exceptions:
   - SAN
   - SAST
   - SATA
+  - SBOM
   - SCIM
   - SCP
   - SCSS

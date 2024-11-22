@@ -12,6 +12,7 @@ configmap
 Cognito
 Commonmark
 conformant
+Config
 ConfigMap
 ConfigMaps
 configmaps
@@ -59,6 +60,9 @@ observability
 patchSets
 proidc
 proselint
+protobuf
+Pydantic
+Pylance
 Rego
 semver
 Serverless

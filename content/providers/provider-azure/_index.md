@@ -11,7 +11,71 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+{{< hint "important" >}}
+The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
+{{< /hint >}}
+
 <!-- vale Google.Headings = NO -->
+
+## v1.8.0
+
+_Released 2024-11-07_
+
+* Support for new resources: `PrivateDNSResolverInboundEndpoint.network.azure.upbound.io/v1beta1`,
+`RedisCacheAccessPolicy.cache.azure.upbound.io/v1beta1` and `RedisCacheAccessPolicyAssignment.cache.azure.upbound.io/v1beta1`
+* Upgraded the underlying Terraform provider version from `v3.110.0` to `v3.116.0`
+* This release also introduces new resources, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.8.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.8.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.8.0)
+
+## v1.7.0
+
+_Released 2024-10-04_
+
+* Support for new resources: `CustomDomain.containerapp.azure.upbound.io/v1beta1`,
+`EnvironmentCertificate.containerapp.azure.upbound.io/v1beta1`, `EnvironmentCustomDomain.containerapp.azure.upbound.io/v1beta1`,
+`EnvironmentDaprComponent.containerapp.azure.upbound.io/v1beta1`, `EnvironmentStorage.containerapp.azure.upbound.io/v1beta1`
+and `BackupInstanceKubernetesCluster.dataprotection.azure.upbound.io/v1beta1`
+* Upgraded the underlying Terraform provider version from `v3.95.0` to `v3.110.0`
+* This release also introduces new resources, enhancements, and dependency updates.
+
+_Refer to the [v1.7.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.7.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.7.0)
+
+## v1.6.1
+
+_Released 2024-09-25_
+
+* This release introduces the fix to the issues of the StorageAccount resource.
+
+_Refer to the [v1.6.1 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.6.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.6.1)
+
+## v1.6.0
+
+_Released 2024-09-20_
+
+* Support for new resources: `KubernetesClusterExtension.containerservice.azure.upbound.io/v1beta1`
+and `BackupPolicyKubernetesCluster.dataprotection.azure.upbound.io/v1beta1`
+* This release introduces new resources enhancements, and dependency updates.
+
+_Refer to the [v1.6.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.6.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.6.0)
+
+## v1.5.1
+
+_Released 2024-09-16_
+
+* This release fixes the issue of hiding error messages.
+
+_Refer to the [v1.5.1 release notes](https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.5.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-azure/v1.5.1)
 
 ## v1.5.0
 

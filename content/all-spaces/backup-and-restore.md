@@ -39,15 +39,15 @@ Enabled the Shared Backups feature in the Space you plan to run your managed con
 - Connected Spaces: Space administrator must enable this feature
 - Disconnected Spaces: Space administrator must enable this feature
 
-<!-- vale off -->
+
 ## Configure a Shared Backup Config
-<!-- vale on -->
+
 
 [SharedBackupConfig](https://docs.upbound.io/reference/space-api/#SharedBackupConfig-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SharedBackupConfig to tell it where store the snapshot.
 
-<!-- vale off -->
+
 ### Backup config provider
-<!-- vale on -->
+
 
 The `spec.objectStorage.provider` and `spec.objectStorage.config` fields configures:
 
@@ -57,9 +57,9 @@ The `spec.objectStorage.provider` and `spec.objectStorage.config` fields configu
 
 You can only set one provider. Upbound currently supports AWS, Azure, and GCP as providers.
 
-<!-- vale off -->
+
 `spec.objectStorage.config` is a freeform map of configuration options for the object storage provider. See [Thanos object storage](https://thanos.io/tip/thanos/storage.md/) for more information on the formats for each supported cloud provider. `spec.bucket` and `spec.provider` overrides the required values in the config.
-<!-- vale on -->
+
 
 #### AWS as a storage provider
 
@@ -89,9 +89,8 @@ spec:
         key: creds
 ```
 
-<!-- vale off -->
-This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS `eu-west-2` region. The account credentials to access the bucket should exist in a secret of the same namespace as the shared backup config.
-<!-- vale on -->
+
+This example assumes you've already created an S3 bucket called "spaces-backup-bucket" in AWS `eu-west-2` region. The account credentials to access the bucket should exist in a secret of the same namespace as the Shared Backup Config.
 
 #### Azure as a storage provider
 
@@ -122,9 +121,9 @@ spec:
         key: creds
 ```
 
-<!-- vale off -->
-This example assumes you've already created an Azure storage account called "upbackupstore" and blob "upbound-backups." The storage account key to access the blob should exist in a secret of the same namespace as the Shared Backup Config.
-<!-- vale on -->
+
+This example assumes you've already created an Azure storage account called `upbackupstore` and blob `upbound-backups`. The storage account key to access the blob should exist in a secret of the same namespace as the Shared Backup Config.
+
 
 #### GCP as a storage provider
 
@@ -151,13 +150,12 @@ spec:
         key: creds
 ```
 
-<!-- vale off -->
-This example assumes you've already created a Cloud bucket called "spaces-backup-bucket" and a service account with access to this bucket. The key file should exist in a secret of the same namespace as the Shared Backup Config.
-<!-- vale on -->
 
-<!-- vale off -->
+This example assumes you've already created a Cloud bucket called "spaces-backup-bucket" and a service account with access to this bucket. The key file should exist in a secret of the same namespace as the Shared Backup Config.
+
+<!-- vale Google.Headings = NO -->
 ## Configure a Shared Backup Schedule
-<!-- vale on -->
+<!-- vale Google.Headings = YES -->
 
 [SharedBackupSchedule](https://docs.upbound.io/reference/space-api/#SharedBackupSchedule-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource defines a backup schedule for control planes within its corresponding group.
 
@@ -185,13 +183,13 @@ spec:
 The `spec.schedule` field is a [Cron-formatted](https://en.wikipedia.org/wiki/Cron) string. Some common examples are below:
 
 {{< table >}}
-| Entry | Description |
-| --- | --- |
-| `@hourly` | Run once an hour. |
-| `@daily` | Run once a day. |
-| `@weekly` | Run once a week. |
-| `0 0/4 * * *` | Run every 4 hours. |
-| `0/15 * * * 1-5` | Run every fifteenth minute on Monday through Friday. |
+| Entry             | Description                                                                                       |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| `@hourly`         | Run once an hour.                                                                                 |
+| `@daily`          | Run once a day.                                                                                   |
+| `@weekly`         | Run once a week.                                                                                  |
+| `0 0/4 * * *`     | Run every 4 hours.                                                                                |
+| `0/15 * * * 1-5`  | Run every fifteenth minute on Monday through Friday.                                              |
 | `@every 1h30m10s` | Run every 1 hour, 30 minutes, and 10 seconds. Hour is the largest measurement of time for @every. |
 {{< /table >}}
 
@@ -226,7 +224,7 @@ spec:
 
 ### Set the time to live
 
-Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is in seconds.
+Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is a duration, for example, `168h` for 7 days.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -288,9 +286,10 @@ spec:
     - controlplane-prod
 ```
 
-<!-- vale off -->
+<!-- vale Google.Headings = NO -->
 ## Configure a Shared Backup
-<!-- vale on -->
+<!-- vale Google.Headings = YES -->
+
 
 [SharedBackup](https://docs.upbound.io/reference/space-api/#SharedBackup-spec) is a [group-scoped]({{<ref "mcp/groups">}}) resource. You should create them in a group containing one or more managed control planes. This resource causes a backups to occur for control planes within its corresponding group.
 
@@ -330,7 +329,7 @@ spec:
 
 ### Set the time to live
 
-Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is in seconds.
+Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is a duration, for example, `168h` for 7 days.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -340,10 +339,11 @@ metadata:
 spec:
   ttl: 168h # Backup is garbage collected after 7 days
 ```
+<!-- vale Google.Headings = NO -->
 
-<!-- vale off -->
-### Garbage collect backups when the Shared Backup is deleted
-<!-- vale on -->
+### Garbage collect backups on Shared Backup deletion
+
+<!-- vale Google.Headings = YES -->
 
 Set the `spec.useOwnerReferencesInBackup` to define whether to garbage collect associated backups when a shared backup gets deleted. If set to true, backups are garbage collected when the shared backup gets deleted.
 
@@ -414,10 +414,12 @@ spec:
   deletionPolicy: Delete
 ```
 
-<!-- vale off -->
-The `DeletionPolicy` in the backup specification dictates the behavior when a backup is deleted, including the deletion of the backup file from the bucket, by default it's set to `Orphan`. Set it to `Delete` to cleanup uploaded files in the bucket.
-For more information on the backup and restore process, check out the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
-<!-- vale on -->
+The backup specification `DeletionPolicy` defines backup deletion actions,
+including the deletion of the backup file from the bucket. The `Deletion Policy`
+value defaults to `Orphan`. Set it to `Delete` to remove uploaded files
+in the bucket.
+For more information on the backup and restore process, review the [Spaces API documentation](https://docs.upbound.io/reference/space-api/).
+
 
 ### Choose a control plane to backup
 
@@ -451,7 +453,7 @@ spec:
 
 ### Set the time to live
 
-Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is in seconds.
+Set the `spec.ttl` field to define the time to live for the backup. After this time, the backup is eligible for garbage collection. If this field isn't set, the backup isn't garbage collected. The time to live is a duration, for example, `168h` for 7 days.
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -464,9 +466,8 @@ spec:
 
 ## Restore a control plane from a backup
 
-<!-- vale off -->
-You can restore a control plane's state from a backup in a few steps. Below is an example of creating a new control plane from a previous backup called "restore-me":
-<!-- vale on -->
+You can restore a control plane's state from a backup. Below is an example of creating a new control plane from a previous backup called `restore-me`:
+
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -479,3 +480,4 @@ spec:
     source:
       kind: Backup
       name: restore-me
+```

@@ -4,10 +4,6 @@ weight: 9
 description: "A guide to implementing and configuring Kuberentes RBAC in Upbound"
 ---
 
-{{< hint "important" >}}
-For more information about Upbound's Space offerings, review [What is Upbound]({{<ref "what-is-upbound.md" >}}).
-{{< /hint >}}
-
 This guide provides an overview of Kubernetes role-based access control (RBAC) in Upbound. RBAC allows you to regulate access to your Upbound resources and control planes based on the roles of individual users within your organization.
 
 <!-- vale Google.Headings = NO -->

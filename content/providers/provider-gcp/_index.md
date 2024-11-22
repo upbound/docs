@@ -11,6 +11,54 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+{{< hint "important" >}}
+The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
+{{< /hint >}}
+
+## v1.9.0
+
+_Released 2024-11-07_
+
+* Support for new resources: `ServiceConnectionPolicy.networkconnectivity.gcp.upbound.io/v1beta1`,
+`Cluster.redis.gcp.upbound.io/v1beta1`, `PolicyTag.datacatalog.gcp.upbound.io/v1beta1`
+and `Taxonomy.datacatalog.gcp.upbound.io/v1beta1`
+* Upgraded the underlying Terraform provider version from `5.39.0` to `5.44.2`
+* This release also introduces new resources, bug fixes, enhancements, and dependency updates.
+
+_Refer to the [v1.9.0 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.9.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.9.0)
+
+## v1.8.3
+
+_Released 2024-09-20_
+
+* The release cleaned `uptest` specific codes/placeholders from the examples in the marketplace.
+
+_Refer to the [v1.8.3 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.8.3) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.8.3)
+
+## v1.8.2
+
+_Released 2024-09-16_
+
+* The release fixes the issue of hiding error messages.
+
+_Refer to the [v1.8.2 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.8.2) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.8.2)
+
+## v1.8.1
+
+_Released 2024-09-09_
+
+* The release is reverting the commit `0927b1f`, which caused a regression.
+
+_Refer to the [v1.8.1 release notes](https://github.com/crossplane-contrib/provider-upjet-gcp/releases/tag/v1.8.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/v1.8.1)
+
 ## v1.8.0
 
 _Released 2024-08-23_

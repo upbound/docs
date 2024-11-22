@@ -11,7 +11,44 @@ release notes for full details.
 For more information on the release cadence and support protocol refer to the
 provider [support and maintenance]({{<ref "support" >}}) page.
 
+{{< hint "important" >}}
+The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
+{{< /hint >}}
+
 <!-- vale Google.Headings = NO -->
+
+## v1.6.0
+
+_Released 2024-10-05_
+
+* This release introduces the Terraform provider upgrade from `2.47.0` to `2.53.1`,
+support for Upbound authentication, bug fixes, enhancements, and dependency
+updates.
+
+_Refer to the [v1.5.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.5.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.5.0)
+
+## v1.5.0
+
+_Released 2024-09-20_
+
+* This release introduces support for `ManagedIdentity` and `OIDC` authentication
+methods, and dependency updates.
+
+_Refer to the [v1.5.0 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.5.0) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.5.0)
+
+## v1.4.1
+
+_Released 2024-09-16_
+
+* This release fixes the issue of hiding error messages.
+
+_Refer to the [v1.4.1 release notes](https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.4.1) for full details._
+
+Install the provider from the [Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.4.1)
 
 ## v1.4.0
 

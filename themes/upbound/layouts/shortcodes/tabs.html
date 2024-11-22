@@ -13,6 +13,7 @@
   <li class="nav-item" role="presentation">
     <button class="nav-link {{if $first_tab }} active {{ end }} me-3"
     id="tab-{{$id}}"
+    data-hash="{{ $name | urlize }}"
     data-bs-toggle="tab"
     data-bs-target="#tab-pane-{{$id}}"
     type="button"

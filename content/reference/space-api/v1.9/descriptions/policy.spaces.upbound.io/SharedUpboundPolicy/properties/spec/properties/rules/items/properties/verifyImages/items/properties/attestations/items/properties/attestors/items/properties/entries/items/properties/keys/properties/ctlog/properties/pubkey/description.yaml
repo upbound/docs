@@ -1,0 +1,2 @@
+description: |-
+    PubKey, if set, is used to validate SCTs against a custom source.
