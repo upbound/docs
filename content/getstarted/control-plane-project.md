@@ -61,7 +61,6 @@ up version
 You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
 
 ### Login to Upbound
-If you've installed the `Up-Project-Action` GitHub Action, you may skip this step.
 
 Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
 
@@ -112,7 +111,7 @@ up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v1.9.0'
 {{< /content-selector >}}
 
 Providers in your project create external resources for Upbound to
-manage. Functions add logic to automate complex provisioning processes. After adding these dependencies, your `upbound.yaml` file's `dependsOn` section should reflect the changes.
+manage. After adding the provider, your `upbound.yaml` file's `dependsOn` section should reflect the changes.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 <!-- AWS -->
@@ -150,7 +149,7 @@ Run the following command to generate a new example claim. Choose `Composite Res
 ```yaml
 up example generate \
     --type claim \
-    --api-group devexdemo.upbound.io \
+    --api-group devexdemo.example.com \
     --api-version v1alpha1 \
     --kind StorageBucket \
     --name example \
@@ -1023,23 +1022,6 @@ To build your control plane project, use the `up project build` command.
 up project build
 ```
 This command takes your project's dependencies and metadata and compiles it into a single OCI image at `_output/upbound-qs-1.uppkg`.
-
-
-### Pushing your control plane project to the Upbound Marketplace
-
-Login to Upbound.
-
-```shell
-up login
-```
-
-Next, push the project.
-
-```shell
-up project push
-```
-
-Your package is now pushed to the Upbound Marketplace.
 
 <!-- vale gitlab.SentenceSpacing = YES -->
 ## Try it out
