@@ -827,6 +827,12 @@ Next, run and test your composition.
 
 ## Step 5: Run and test your project
 
+In your terminal, set your Space context with the `up ctx` command.
+
+```shell
+up ctx
+```
+
 Use the `up project run` command to run and test your control plane project on a
 development control plane hosted in Upbound's Cloud.
 
