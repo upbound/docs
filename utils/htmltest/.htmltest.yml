@@ -4,3 +4,5 @@ IgnoreInternalEmptyHash: true
 IgnoreURLs:
   - "github.com/upbound/docs/tree/main/content/(.*).md" # Ignore the links to "view this source"
   - "v(.*)/(.*).yaml" # Ignore generated links in API template
+  - "/providers/policies/#license" # Ignore the hash for license tab
+  - "/providers/policies/#access"  # Ignore the hash for access tab
