@@ -142,13 +142,19 @@ Below are a couple ways to install Crossplane packages on your managed control p
 Use the `up` CLI to install Crossplane packages from the [Upbound Marketplace](https://marketplace.upbound.io) on your managed control planes. Connect directly to your control plane via `up ctx`. Then, to install a provider:
 
 ```shell
-up ctp provider install xpkg.upbound.io/providers/provider-family-aws
+up ctp provider install xpkg.upbound.io/upbound/provider-family-aws
 ```
 
 To install a Configuration:
 
 ```shell
-up ctp configuration install xpkg.upbound.io/providers/provider-family-aws
+up ctp configuration install xpkg.upbound.io/upbound/platform-ref-aws
+```
+
+To install a Function:
+
+```shell
+up ctp configuration install xpkg.upbound.io/crossplane-contrib/function-kcl
 ```
 {{< /tab >}}
 {{< tab "kubectl" >}}
@@ -156,16 +162,12 @@ You can use kubectl to directly apply any Crossplane manifest. Below is an examp
 
 ```yaml
 cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1beta1
-kind: ControlPlane
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
 metadata:
-  labels:
-    org: foo
-  name: my-awesome-ctp
-  namespace: default
+  name: provider-family-aws
 spec:
-  writeConnectionSecretToRef:
-    name: kubeconfig-my-awesome-ctp
+  package: xpkg.upbound.io/upbound/provider-family-aws:v1.17.0
 ```
 
 {{< /tab >}}
