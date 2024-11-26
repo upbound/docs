@@ -9,7 +9,7 @@ aliases:
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's managed control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
 
 <!-- vale Google.Headings = NO -->
-## Integrate with Argo CD 
+## Integrate with Argo CD
 <!-- vale Google.Headings = YES -->
 
 [Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound managed control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
@@ -59,7 +59,7 @@ controller:
         - sh
         - -c
       args:
-        - wget -qO /plugin/up https://cli.upbound.io/stable/v0.31.0/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
+        - wget -qO /plugin/up https://cli.upbound.io/stable/current/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
 
       image: alpine:3.8
       env:
@@ -91,7 +91,7 @@ server:
         - sh
         - -c
       args:
-        - wget -qO /plugin/up https://cli.upbound.io/stable/v0.31.0/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
+        - wget -qO /plugin/up https://cli.upbound.io/stable/current/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
       image: alpine:3.8
       env:
         - name: ARCH
@@ -150,7 +150,7 @@ The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _a
 
 Replace the variables and run the following script to configure a new Argo cluster context definition.
 
-To configure Argo for an MCP in a Connected Space, replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`. 
+To configure Argo for an MCP in a Connected Space, replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`.
 
 ```yaml
 apiVersion: v1
@@ -179,7 +179,7 @@ stringData:
         "insecure": false,
         "caData": "<base64 encoded certificate>"
       }
-    }    
+    }
 ```
 
 <!-- vale Google.Headings = NO -->
