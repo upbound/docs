@@ -125,63 +125,28 @@ branch.
 Add the following action to your workflow to automatically build and push your control plane projects.
 
 ```yaml
-    name: "up-project-action"
-    description: "installs up-cli, logs in, builds, and conditionally pushes the up project on main branch."
-    author: "upbound"
-    inputs:
-    channel:
-        description: "Channel for up-cli installation (e.g., main, stable)"
-        required: false
-        default: "stable"
-    version:
-        description: "Version for up-cli installation (e.g., specific version or 'current')"
-        required: false
-        default: "current"
-    up_token:
-        description: "Upbound Personal token for authentication"
-        required: true
-    endpoint:
-        description: ""
-        required: false
-        default: https://cli.upbound.io
+name: Build and Deploy
 
-    runs:
-    using: "composite"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  UP_TOKEN: ${{ secrets.UP_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-        - name: Checkout Repository
-        uses: actions/checkout@v4
-
-        - name: install up cli
-        run: |
-            CHANNEL=${{ inputs.channel }}
-            VERSION=${{ inputs.version }}
-            ENDPOINT=${{ inputs.endpoint }}
-            echo "Installing up-cli from channel '$CHANNEL' with version '$VERSION'"
-            curl -sf $ENDPOINT | CHANNEL=$CHANNEL VERSION=$VERSION sh
-            chmod +x ./up
-            sudo mv ./up /usr/local/bin/up
-            up version
-        shell: bash
-
-        - name: login
-        run: |
-            echo "${{ inputs.up_token }}" | up login -t -
-        shell: bash
-        env:
-            UP_TOKEN: ${{ inputs.up_token }}
-
-        - name: build up project
-        run: |
-            up project build
-        shell: bash
-
-        - name: push up project
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        run: |
-            up project push
-        shell: bash
-        env:
-            UP_TOKEN: ${{ inputs.up_token }}
+      - name: Run Up CLI Build and Push
+        if: env.UP_TOKEN != ''
+        uses: upbound/up-project-action@v1
+        with:
+          up_token: ${{ secrets.UP_TOKEN }}
+          endpoint: https://cli.upbound.io
+          channel: main
 ```
 
 {{< hint "important">}}
