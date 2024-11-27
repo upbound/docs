@@ -9,9 +9,81 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.35.3
+Released November 6th, 2024.
+
+### What's Changed
+- improvements for new commands introduced in v0.35.0
+
+## v0.35.2
+Released November 6th, 2024.
+
+### What's Changed
+- improvements for new commands introduced in v0.35.0
+
+## v0.35.1
+Released November 6th, 2024.
+
+### What's Changed
+- Made the ingress cache concurrency safe in `up ctx`.
+- Prevented output of status fields for generated XRDs.
+- Validated the user's organization during login.
+- Configured projects to use the parent Space context when started in managed control plane.
+
+## v0.35.0
+Released November 6th, 2024.
+
+### What's Changed
+#### Project Management Enhancements
+- Introduced new commands:
+  - `up project init`, `build`, `push`, `run`, and `move`
+  - `up example generate`
+  - `up xrd generate`
+  - `up composition generate`
+  - `up function generate`
+
+https://docs.upbound.io/core-concepts/projects/
+
+#### Dependency Management
+- Enhanced the `xpkg dep` command to handle function dependencies and group dependencies effectively
+- Added validation and examples for dependency handling
+
+### Improvements
+- Supported installation of mcp-connectors and cloudnative-pg from `xpkg.upbound.io`
+- Improved error messages for unreachable spaces and unusable contexts in `up ctx`.
+
+### Bug Fixes
+- Fixed function name validation and schema handling errors.
+- Improved dependency checks for projects and configurations.
+
+### Breaking Changes
+- Deprecated `xpkg` in favor of enhanced project workflows.
+
+## v0.34.2
+Released October 17th, 2024.
+
+### What's Changed
+- Use spaces-config configmap to validate spaces in `up space attach`
+
+## v0.34.1
+Released October 10th, 2024.
+
+### What's Changed
+- update `up alpha space mirror` corresponding images
+
+## v0.34.0
+Released October 7th, 2024.
+
+### What's Changed
+- Reduced verbosity of logging
+- Install agent from the `xpkg.upbound.io` registry
+- Require username and password for agent chart installation.
+- Added cloudnative-pg as a dependency and updated query to v1alpha2.
+- Removed the "healthy" column from `up ctp get/list`.
+- Ensured `up ctx` always uses the spaces ingress.
+
 ## v0.33.0
 Released September 3rd, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.33.0)
 
 ### What's Changed
 - Update `up space init` update for 1.7.0 release OCI Registry change to `xpkg.upbound.io/spaces-artifacts`
@@ -26,7 +98,6 @@ Released September 3rd, 2024.
 ## v0.32.0
 
 Released August 2nd, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.32.0)
 
 ### What's Changed
 
@@ -40,7 +111,6 @@ Released August 2nd, 2024.
 ## v0.31.0
 
 Released June 7th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.31.0)
 
 {{< hint "important" >}}
 - Web-based login (previously `up alpha web-login`) is now the default for `up login`. Use `up login --username=<user>` to invoke interactive terminal login.
@@ -57,7 +127,6 @@ Released June 7th, 2024.
 ## v0.30.0
 
 Released May 10th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.30.0)
 
 ### What's Changed
 
@@ -69,7 +138,6 @@ Released May 10th, 2024.
 ## v0.29.0
 
 Released May 3rd, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.29.0)
 
 {{< hint "important" >}}
 This release contains an important breaking change that affects how users gain access to the API server of their managed control planes.
@@ -97,7 +165,6 @@ To connect to an MCP in a Cloud Space or Connected/Disconnected Space, please us
 ## v0.28.0
 
 Released April 2nd, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.28.0)
 
 ### What's Changed
 
@@ -106,7 +173,6 @@ Released April 2nd, 2024.
 ## v0.27.0
 
 Released March 27th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.27.0)
 
 ### What's Changed
 
@@ -116,7 +182,6 @@ Released March 27th, 2024.
 ## v0.26.0
 
 Released March 16th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.26.0)
 
 ### What's Changed
 
@@ -126,7 +191,6 @@ Released March 16th, 2023.
 ## v0.25.0
 
 Released March 12th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.25.0)
 
 ### Notable Changes
 
@@ -145,7 +209,6 @@ Released March 12th, 2024.
 ## v0.24.2
 
 Released February 29th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.2)
 
 ### What's Changed
 
@@ -154,7 +217,6 @@ Released February 29th, 2024.
 ## v0.24.1
 
 Released February 7th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.1)
 
 ### What's Changed
 
@@ -164,7 +226,6 @@ Released February 7th, 2024.
 ## v0.24.0
 
 Released February 1st, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.24.0)
 
 ### What's Changed
 
@@ -173,7 +234,6 @@ Released February 1st, 2024.
 ## v0.23.0
 
 Released February 1st, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.23.0)
 
 ### What's Changed
 
@@ -184,7 +244,6 @@ Released February 1st, 2024.
 ## v0.22.1
 
 Released January 30th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.22.1)
 
 ### What's Changed
 
@@ -193,7 +252,6 @@ Released January 30th, 2024.
 ## v0.22.0
 
 Released January 30th, 2024.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.22.0)
 
 ### Notable Changes
 
@@ -209,7 +267,6 @@ Released January 30th, 2024.
 ## v0.21.0
 
 Released October 12th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.21.0)
 
 ### Notable Changes
 
@@ -228,7 +285,6 @@ Released October 12th, 2023.
 ## v0.20.0
 
 Released October 10th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.20.0)
 
 ### Notable Changes
 
@@ -249,7 +305,6 @@ Released October 10th, 2023.
 ## v0.19.2
 
 Released October 5th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.19.2)
 
 ### What's Changed
 
@@ -258,7 +313,6 @@ Released October 5th, 2023.
 ## v0.19.1
 
 Released August 29th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.19.1)
 
 ### What's Changed
 
@@ -267,7 +321,6 @@ Released August 29th, 2023.
 ## v0.19.0
 
 Released August 28th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.19.0)
 
 ### Notable Changes
 
@@ -299,7 +352,6 @@ Released August 28th, 2023.
 ## v0.18.0
 
 Released June 27th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.18.0)
 
 ### What's Changed
 
@@ -309,7 +361,6 @@ Released June 27th, 2023.
 ## v0.17.0
 
 Released May 12th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.17.0)
 
 ### What's Changed
 
@@ -320,7 +371,6 @@ Released May 12th, 2023.
 ## v0.16.1
 
 Released April 17th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.16.1)
 
 ### Notable Changes
 
@@ -334,7 +384,6 @@ Released April 17th, 2023.
 ## v0.16.1
 
 Released April 17th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.16.1)
 
 ### Notable Changes
 
@@ -349,7 +398,6 @@ Released April 17th, 2023.
 ## v0.16.0
 
 Released March 28th, 2023.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.16.0)
 
 ### Notable Changes
 
@@ -392,7 +440,6 @@ Released March 28th, 2023.
 ## v0.15.0
 
 Released November 6th, 2022.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.15.0)
 
 ### What's Changed
 
@@ -401,7 +448,6 @@ Released November 6th, 2022.
 ## v0.14.0
 
 Released October 5th, 2022.
-[Release reference on GitHub](https://github.com/upbound/up/releases/tag/v0.14.0)
 
 ### Notable Changes
 
@@ -448,7 +494,3 @@ Released August 26th, 2022.
 - Cleanup command structure and allow creating new named profile on login
 - Fix top-level alpha command help output and updates docs for v0.13.0 release
 - Update configuration docs to include base config
-
-## v0.12.2 and earlier
-
-Consult the [GitHub releases page](https://github.com/upbound/up/releases) for earlier version of the up CLI and its changelog.
