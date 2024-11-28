@@ -115,11 +115,9 @@ deleted and will be automatically restored from the ETCD data, so there is no ne
 * **Optional**: A connection pooler, like PGbouncer, to manage connections from the Apollo Syncers. If you didn't provide the optional users above, the pooler will most probably have to be configured to allow users to connect using the same credentials recognized by the PostgreSQL instance.
 * **Optional**: A read replica for the Apollo Syncers to connect to, to reduce load on the primary database, this might cause a slight delay in the data being available in the Query API, that can be mitigated by configuring synchronous replication, but that too has its drawbacks.
 
-### Example setups
-
 Below a few example setups to get you started, you can mix and match the examples to suit your needs.
 
-#### In-cluster setup
+### In-cluster setup
 
 {{< hint "tip" >}}
 
@@ -224,7 +222,17 @@ helm upgrade --install ... \
   --set "features.alpha.apollo.storage.postgres.connection.syncer.url=spaces-apollo-pg-pooler.upbound-system.svc:5432"
 ```
 
-#### External setup with Spaces Controller credentials
+#### Common customisations
+
+Below a few references to how to customize the above setup:
+
+* **Storage**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/storage/#configuration-via-a-pvc-template) for more information on how to configure the storage.
+* **Resources**: See the CloudNativePG documentation for more information on how to configure the resources used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/resource_management/) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
+* **High Availability**: See the CloudNativePG documentation for more information on how to configure high availability for the [PostgreSQL instances]() and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#high-availability-ha).
+* **Images used**: See the CloudNativePG documentation for more information on how to configure the images used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/operator_capability_levels/#override-of-operand-images-through-the-crd) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
+* **PostgreSQL configuration**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/postgresql_conf/) for more information on how to configure the PostgreSQL instances, e.g. `max_connections`, `shared_buffers`, etc.
+
+### External setup with Spaces Controller credentials
 
 {{< hint "tip" >}}
 
@@ -266,7 +274,7 @@ helm upgrade --install ... \
   --set "features.alpha.apollo.storage.postgres.connection.syncer.url=$PG_POOLED_URL"
 ```
 
-#### External setup with all custom credentials
+### External setup with all custom credentials
 
 {{< hint "important" >}}
 
