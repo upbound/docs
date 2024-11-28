@@ -35,7 +35,7 @@ If you don't have strong opinions on your setup, this is the suggested way to pr
 
 To enable this feature, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces.
 
-However, we'll need to install CloudNativePG (CNPG) to provide the PostgreSQL instance. This can be done automatically by the `up` CLI or manually.
+However, you need to install CloudNativePG (CNPG) to provide the PostgreSQL instance. You can let the `up` CLI do this for you, or install it manually.
 
 Additional fields are available to customize the setup, such as the number of PostgreSQL instances, the number of pooler instances, or the storage size; see all available values [here]({{<ref "all-spaces/self-hosted-spaces/helm-reference.md">}}).
 
@@ -54,7 +54,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "features.alpha.apollo.storage.postgres.create=true"
 ```
 
-`up space init` and `up space upgrade` will install CloudNativePG automatically, if needed.
+`up space init` and `up space upgrade` install CloudNativePG automatically, if needed.
 
 Additional fields are available to customize the setup, such as the number of PostgreSQL instances, the number of pooler instances, or the storage size; see all available values [here]({{<ref "all-spaces/self-hosted-spaces/helm-reference.md">}}).
 
@@ -70,7 +70,7 @@ kubectl apply --server-side -f \
 kubectl rollout status -n cnpg-system deployment cnpg-controller-manager -w --timeout 120s
 ```
 
-You can then proceed to install the Spaces Helm chart however you like passing the same values as above, for example:
+You can then proceed to install the Spaces Helm chart however you like passing the necessary values, for example:
 
 ```shell
 helm -n upbound-system upgrade --install spaces \
@@ -90,44 +90,42 @@ This setup requires a better understanding of the overall architecture, so see b
 
 ### Architecture
 
-There are three components in the Query API architecture, other than a PostgreSQL database:
+The Query API architecture is composed of three components, other than a PostgreSQL database:
 * **Apollo Syncers**: Watching ETCD for changes and syncing them to PostgreSQL. One, or more, per control plane.
 * **Apollo Server**: Serving the Query API out of the data in PostgreSQL. One, or more, per Space.
 * **Spaces Controller**: Reconciling the PostgreSQL schema as needed for the other two components. One, or more, per space.
 
-In the default setup also a connection pooler, PGbouncer, is used to manage connections from the syncers.
+The default setup also uses a connection pooler, PgBouncer, to manage connections from the syncers.
 
-{{<img src="all-spaces/self-hosted-spaces/images/query-api-arch.png" alt="Query API arhictecture diagram" lightbox="true">}}
+{{<img src="all-spaces/self-hosted-spaces/images/query-api-arch.png" alt="Query API architecture diagram" lightbox="true">}}
 
-Each of these components need to connect to the PostgreSQL database, and can be configured to do so using dedicated
-credentials in various formats.
+Each of these components need to connect to the PostgreSQL database, and can use dedicated credentials in various formats.
 
-The system is designed to be eventually consistent, therefore even in case of failures the database can be completely
-deleted and will be automatically restored from the ETCD data, so there is no need for backup systems.
+In case of issues with the database, you can just provide a new one and syncers automatically re-populate it, so you can avoid setting up any backup system.
 
 ### Requirements
 
 * A PostgreSQL 16 instance or cluster.
 * A database, for example named `upbound`.
-* A dedicated user for the Spaces Controller, with all privileges on the database above, for example named `spaces-controller`.
-* **Optional**: A dedicated user for the Apollo Syncers, otherwise the Spaces Controller will generate a dedicated set of credentials per syncer with the necessary permissions, for example named `syncer`.
-* **Optional**: A dedicated read-only user for the Apollo Server, otherwise the Spaces Controller will generate a dedicated set of credentials with the necessary permissions, for example named `apollo`.
-* **Optional**: A connection pooler, like PGbouncer, to manage connections from the Apollo Syncers. If you didn't provide the optional users above, the pooler will most probably have to be configured to allow users to connect using the same credentials recognized by the PostgreSQL instance.
-* **Optional**: A read replica for the Apollo Syncers to connect to, to reduce load on the primary database, this might cause a slight delay in the data being available in the Query API, that can be mitigated by configuring synchronous replication, but that too has its drawbacks.
+* A dedicated user for the Spaces Controller, with all privileges on the database, for example named `spaces-controller`.
+* **Optional**: A dedicated user for the Apollo Syncers, otherwise the Spaces Controller generates a dedicated set of credentials per syncer with the necessary permissions, for example named `syncer`.
+* **Optional**: A dedicated read-only user for the Apollo Server, otherwise the Spaces Controller generates a dedicated set of credentials with the necessary permissions, for example named `apollo`.
+* **Optional**: A connection pooler, like PgBouncer, to manage connections from the Apollo Syncers. If you didn't provide the optional users, you might have to configure the pooler to allow users to connect using the same credentials as PostgreSQL.
+* **Optional**: A read replica for the Apollo Syncers to connect to, to reduce load on the primary database, this might cause a slight delay in the data being available through the Query API.
 
-Below a few example setups to get you started, you can mix and match the examples to suit your needs.
+Below you can find examples of setups to get you started, you can mix and match the examples to suit your needs.
 
 ### In-cluster setup
 
 {{< hint "tip" >}}
 
-If you don't have strong opinions on your setup, this is the suggested way to proceed.
+If you don't have strong opinions on your setup, but still want full control on the resources created for some unsupported customizations, this is the suggested way to proceed.
 
 {{< /hint >}}
 
-If the managed setup above is not enough, but you are fine deploying PostgreSQL in the same cluster, you can still use CloudNativePG.
+If the managed setup isn't enough, but you are fine deploying PostgreSQL in the same cluster, you can still use CloudNativePG.
 
-To do so, you'll have to manually deploy the operator in one of the [supported ways](https://cloudnative-pg.io/documentation/current/installation_upgrade/), for example:
+To do so, you have to manually deploy the operator in one of the [supported ways](https://cloudnative-pg.io/documentation/current/installation_upgrade/), for example:
 
 ```shell
 kubectl apply --server-side -f \
@@ -206,7 +204,7 @@ EOF
 
 Adjust the `Cluster` and `Pooler` resources to your needs, for example by changing the `spec.storage.size` or `spec.imageName`.
 
-CloudNativePG takes care of setting up the necessary Secrets, we just need to configure Spaces to use them.
+CloudNativePG takes care of setting up the necessary Secrets, you just need to configure Spaces to use them.
 
 You can now install Spaces however you want making sure to pass the settings below:
 
@@ -224,23 +222,23 @@ helm upgrade --install ... \
 
 #### Common customisations
 
-Below a few references to how to customize the above setup:
+Below you can find references to how to customize this setup:
 
 * **Storage**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/storage/#configuration-via-a-pvc-template) for more information on how to configure the storage.
 * **Resources**: See the CloudNativePG documentation for more information on how to configure the resources used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/resource_management/) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
 * **High Availability**: See the CloudNativePG documentation for more information on how to configure high availability for the [PostgreSQL instances]() and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#high-availability-ha).
 * **Images used**: See the CloudNativePG documentation for more information on how to configure the images used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/operator_capability_levels/#override-of-operand-images-through-the-crd) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
-* **PostgreSQL configuration**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/postgresql_conf/) for more information on how to configure the PostgreSQL instances, e.g. `max_connections`, `shared_buffers`, etc.
+* **PostgreSQL configuration**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/postgresql_conf/) for more information on how to configure the PostgreSQL instances, for example `max_connections`, `shared_buffers`, etc.
 
 ### External setup with Spaces Controller credentials
 
 {{< hint "tip" >}}
 
-If you want to run your PostgreSQL instance outside of the cluster, but are fine with the credentials being managed by the Spaces Controller, this is the suggested way to proceed.
+If you want to run your PostgreSQL instance outside the cluster, but are fine with credentials being managed by the Spaces Controller, this is the suggested way to proceed.
 
 {{< /hint >}}
 
-For this setup, you'll have to manually create the necessary Secrets in the `upbound-system` namespace, for example this would be a minimum setup leaving Apollo Syncers and Apollo Server credentials to be generated by the Spaces Controller:
+For this setup, you must manually create the necessary Secrets in the `upbound-system` namespace. For example, this minimal setup leaves Apollo Syncers and Apollo Server credentials for the Spaces Controller to generate.
 
 ```shell
 export SPACES_CONTROLLER_USER=spaces-controller
@@ -275,12 +273,6 @@ helm upgrade --install ... \
 ```
 
 ### External setup with all custom credentials
-
-{{< hint "important" >}}
-
-This is the most complex setup, we suggest you use one of the above setups if possible.
-
-{{< /hint >}}
 
 If you want to provide the credentials for Apollo Syncers and/or Server, you could do so by creating the necessary Secrets in the `upbound-system` namespace, for example:
 
