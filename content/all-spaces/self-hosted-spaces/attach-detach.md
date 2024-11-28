@@ -14,6 +14,10 @@ This feature is in preview and requires Spaces `v1.3.0`.
 
 ## Usage
 
+### Prerequities
+
+- Open egress ports to connect.upbound.io and auth.upbound.io
+
 ### Connect
 
 Before you begin, make sure you have:
