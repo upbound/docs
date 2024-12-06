@@ -13,7 +13,7 @@ This feature is in preview.
 
 This feature is enabled by default in Cloud Spaces.
 
-For Connected and Disconnected Spaces, this feature requires Spaces `v1.3.0` and is off by default. To enable, set `features.alpha.sharedBackup.enabled=true` when installing Spaces:
+For Connected and Disconnected Spaces, this feature requires at least Spaces `v1.3.0` and is off by default. To enable, set `features.alpha.sharedBackup.enabled=true` when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
