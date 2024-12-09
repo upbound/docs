@@ -46,7 +46,7 @@ For a complete tutorial of the helm install, read one of the deployment guides f
 To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "/reference/cli/command-reference.md#space-upgrade">}}). Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
 ```bash
-up space upgrade "v1.8.0"
+up space upgrade "v1.9.0"
 ```
 
 ### Downgrade a Space
