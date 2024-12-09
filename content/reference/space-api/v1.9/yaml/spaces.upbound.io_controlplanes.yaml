@@ -249,6 +249,11 @@ spec:
                 x-kubernetes-list-type: map
               controlPlaneID:
                 type: string
+              firstAvailableAt:
+                description: FirstAvailableAt is the time at which the control plane
+                  was available for the first time.
+                format: date-time
+                type: string
               message:
                 description: |-
                   Message is a human-readable message indicating details about why the
