@@ -23,7 +23,7 @@ Query API requires a PostgreSQL database to store the data. You can use the defa
 <!-- vale Google.Headings = NO -->
 ## Using the Query API
 <!-- vale Google.Headings = YES -->
-See the [Query API documentation]({{<ref "all-spaces/query-api/_index.md">}}) for more information on how to use the Query API.
+See the [Query API documentation]({{<ref "all-spaces/query-api/_index">}}) for more information on how to use the Query API.
 
 ## Managed setup
 
@@ -39,8 +39,7 @@ For more customization, see the [Helm chart reference]({{<ref
 "all-spaces/self-hosted-spaces/helm-reference.md">}}). You can modify the number
 of PostgreSQL instances, pooling instances, storage size, and more.
 
-If you have specific requirements not addressed in the Helm chart, see below for more information on how to bring your own [PostgreSQL setup](## Self-hosted PostgreSQL configuration
-).
+If you have specific requirements not addressed in the Helm chart, see below for more information on how to bring your own [PostgreSQL setup]({{<ref "#self-hosted-postgresql-configuration">}}).
 
 ### Using the up CLI
 
