@@ -19,8 +19,11 @@ For self-hosted deployments, this is a requirement for connected Spaces, see the
 
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retrieving information from your Space.
 
+<!-- vale Google.Headings = NO -->
+
 ## Using the Query API
 
+<!-- vale Google.Headings = YES -->
 The Query API allows you to retrieve control plane information faster than traditional `kubectl` commands. This feature lets you debug your Crossplane resources with the CLI or within the Upbound Console's enhanced management views.
 
 ### Query within a single control plane

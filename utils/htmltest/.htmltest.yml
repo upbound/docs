@@ -6,3 +6,5 @@ IgnoreURLs:
   - "v(.*)/(.*).yaml" # Ignore generated links in API template
   - "/providers/policies/#license" # Ignore the hash for license tab
   - "/providers/policies/#access"  # Ignore the hash for access tab
+  - "all-spaces/self-hosted-spaces/query-api/index.html" # Ignore query API
+  element links
