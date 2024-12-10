@@ -63,6 +63,10 @@ Released November 7th, 2024
 Due to a technical glitch there was no 1.9.0 release image, and the first one available in the 1.9.x series is 1.9.1.
 {{< /hint >}}
 
+{{< hint "warning" >}}
+Starting with Spaces 1.9.x, Spaces with Gitops integration with Argo CD must update their Argo CD ConfigMap to include `resource.respectRBAC: normal` instead of explicit `resource.exclusions`. Please check [Configure Argo CD]({{<ref "mcp/gitops.md#configure-argo-cd" >}}) section for instructions and details.
+{{< /hint >}}
+
 #### Features and Enhancements
 
 - Added optional insecure mode for all Spaces endpoints to allow finer grain control around mTLS policies.
