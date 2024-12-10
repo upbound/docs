@@ -20,12 +20,12 @@ This is a requirement to be able to connect a Space since `v1.8.0`, and is off b
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retrieving information from your Space.
 
 Query API requires a PostgreSQL database to store the data. You can use the default PostgreSQL instance provided by Upbound or bring your own PostgreSQL instance.
-
+<!-- vale Google.Headings = NO -->
 ## Using the Query API
-
+<!-- vale Google.Headings = YES -->
 See the [Query API documentation]({{<ref "all-spaces/query-api/_index.md">}}) for more information on how to use the Query API.
 
-## Managed Setup
+## Managed setup
 
 {{< hint "tip" >}}
 
@@ -35,9 +35,11 @@ If you don't have strong opinions on your setup, this is the suggested way to pr
 
 To enable this feature, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces.
 
-However, you need to install CloudNativePG (CNPG) to provide the PostgreSQL instance. You can let the `up` CLI do this for you, or install it manually.
+However, you need to install CloudNativePG (`CNPG`) to provide the PostgreSQL instance. You can let the `up` CLI do this for you, or install it manually.
 
-Additional fields are available to customize the setup, such as the number of PostgreSQL instances, the number of pooler instances, or the storage size; see all available values [here]({{<ref "all-spaces/self-hosted-spaces/helm-reference.md">}}).
+For more customization, see the [Helm chart reference]({{<ref
+"all-spaces/self-hosted-spaces/helm-reference.md">}}). You can modify the number
+of PostgreSQL instances, pooling instances, storage size, and more.
 
 If that's not enough, see below for more information on how to bring your own PostgreSQL setup.
 
@@ -55,8 +57,6 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ```
 
 `up space init` and `up space upgrade` install CloudNativePG automatically, if needed.
-
-Additional fields are available to customize the setup, such as the number of PostgreSQL instances, the number of pooler instances, or the storage size; see all available values [here]({{<ref "all-spaces/self-hosted-spaces/helm-reference.md">}}).
 
 If that's not enough, see below for more information on how to bring your own PostgreSQL instance.
 
@@ -81,17 +81,20 @@ helm -n upbound-system upgrade --install spaces \
   --set "features.alpha.apollo.storage.postgres.create=true" \
   --wait
 ```
+<!-- vale Google.Headings = NO -->
+## Self-hosted PostgreSQL configuration
+<!-- vale Google.Headings = YES -->
 
-## Bring your own PostgreSQL Setup
+If your workflow requires more customization, you can provide your own
+PostgreSQL instance and configure credentials manually.
 
-If the default setup doesn't suit your needs, you can provide your own PostgreSQL instance and configure all the necessary credentials manually.
-
-This setup requires a better understanding of the overall architecture, so see below for more information on the overall architecture and requirements.
+Using your own PostgreSQL instance requires careful architecture consideration.
+Review the architecture and requirements guidelines.
 
 ### Architecture
 
-The Query API architecture is composed of three components, other than a PostgreSQL database:
-* **Apollo Syncers**: Watching ETCD for changes and syncing them to PostgreSQL. One, or more, per control plane.
+The Query API architecture uses three components, other than a PostgreSQL database:
+* **Apollo Syncers**: Watching `ETCD` for changes and syncing them to PostgreSQL. One, or more, per control plane.
 * **Apollo Server**: Serving the Query API out of the data in PostgreSQL. One, or more, per Space.
 * **Spaces Controller**: Reconciling the PostgreSQL schema as needed for the other two components. One, or more, per space.
 
@@ -101,7 +104,8 @@ The default setup also uses a connection pooler, PgBouncer, to manage connection
 
 Each of these components need to connect to the PostgreSQL database, and can use dedicated credentials in various formats.
 
-In case of issues with the database, you can just provide a new one and syncers automatically re-populate it, so you can avoid setting up any backup system.
+In the event of database issues, you can provide a new database and the syncers
+automatically repopulate the data.
 
 ### Requirements
 
@@ -229,9 +233,11 @@ Below you can find references to how to customize this setup:
 * **High Availability**: See the CloudNativePG documentation for more information on how to configure high availability for the [PostgreSQL instances]() and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#high-availability-ha).
 * **Images used**: See the CloudNativePG documentation for more information on how to configure the images used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/operator_capability_levels/#override-of-operand-images-through-the-crd) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
 * **PostgreSQL configuration**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/postgresql_conf/) for more information on how to configure the PostgreSQL instances, for example `max_connections`, `shared_buffers`, etc.
+<!-- vale Google.Headings = NO -->
 
 ### External setup with Spaces Controller credentials
 
+<!-- vale Google.Headings = YES -->
 {{< hint "tip" >}}
 
 If you want to run your PostgreSQL instance outside the cluster, but are fine with credentials being managed by the Spaces Controller, this is the suggested way to proceed.
@@ -274,7 +280,8 @@ helm upgrade --install ... \
 
 ### External setup with all custom credentials
 
-If you want to provide the credentials for Apollo Syncers and/or Server, you could do so by creating the necessary Secrets in the `upbound-system` namespace, for example:
+For custom credentials with Apollo Syncers or Server, create a new secret in the
+`upbound-system` namespace:
 
 ```shell
 export SPACES_CONTROLLER_USER=spaces-controller
@@ -331,9 +338,11 @@ helm ... \
   --set "features.alpha.apollo.storage.postgres.connection.apollo.credentials.secret.name=spaces-apollo-pg-apollo" \
   --set "features.alpha.apollo.storage.postgres.connection.apollo.url=$PG_POOLED_URL"
 ```
+<!-- vale Google.Headings = NO -->
 
 ## Using the Query API
 
+<!-- vale Google.Headings = YES -->
 See the [Query API documentation]({{<ref "all-spaces/query-api/_index.md">}}) for more information on how to use the Query API.
 
 <!-- ignore "aggregate" -->
