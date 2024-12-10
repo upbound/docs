@@ -20,10 +20,6 @@ This is a requirement to be able to connect a Space since `v1.8.0`, and is off b
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retrieving information from your Space.
 
 Query API requires a PostgreSQL database to store the data. You can use the default PostgreSQL instance provided by Upbound or bring your own PostgreSQL instance.
-<!-- vale Google.Headings = NO -->
-## Using the Query API
-<!-- vale Google.Headings = YES -->
-See the [Query API documentation]({{<ref "all-spaces/query-api">}}) for more information on how to use the Query API.
 
 ## Managed setup
 
