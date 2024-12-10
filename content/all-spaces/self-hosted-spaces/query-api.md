@@ -11,7 +11,7 @@ aliases:
 
 {{< hint "important" >}}
 
-This feature is in preview. The query API is available in the Cloud Space offering in `v1.6` and enabled by default.
+This feature is in preview. The Query API is available in the Cloud Space offering in `v1.6` and enabled by default.
 
 This is a requirement to be able to connect a Space since `v1.8.0`, and is off by default, see below to enable it.
 
@@ -28,9 +28,7 @@ See the [Query API documentation]({{<ref "all-spaces/query-api/_index.md">}}) fo
 ## Managed setup
 
 {{< hint "tip" >}}
-
-If you don't have strong opinions on your setup, this is the suggested way to proceed.
-
+If you don't have specific requirements for your setup, Upbound recommends following this approach.
 {{< /hint >}}
 
 To enable this feature, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces.
@@ -41,7 +39,8 @@ For more customization, see the [Helm chart reference]({{<ref
 "all-spaces/self-hosted-spaces/helm-reference.md">}}). You can modify the number
 of PostgreSQL instances, pooling instances, storage size, and more.
 
-If that's not enough, see below for more information on how to bring your own PostgreSQL setup.
+If you have specific requirements not addressed in the Helm chart, see below for more information on how to bring your own [PostgreSQL setup](## Self-hosted PostgreSQL configuration
+).
 
 ### Using the up CLI
 
@@ -58,8 +57,6 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 `up space init` and `up space upgrade` install CloudNativePG automatically, if needed.
 
-If that's not enough, see below for more information on how to bring your own PostgreSQL instance.
-
 ### Helm chart
 
 If you are installing the Helm chart in some other way, you can manually install CloudNativePG in one of the [supported ways](https://cloudnative-pg.io/documentation/current/installation_upgrade/), for example:
@@ -70,7 +67,7 @@ kubectl apply --server-side -f \
 kubectl rollout status -n cnpg-system deployment cnpg-controller-manager -w --timeout 120s
 ```
 
-You can then proceed to install the Spaces Helm chart however you like passing the necessary values, for example:
+Next, install the Spaces Helm chart with the necessary values, for example:
 
 ```shell
 helm -n upbound-system upgrade --install spaces \
@@ -96,13 +93,13 @@ Review the architecture and requirements guidelines.
 The Query API architecture uses three components, other than a PostgreSQL database:
 * **Apollo Syncers**: Watching `ETCD` for changes and syncing them to PostgreSQL. One, or more, per control plane.
 * **Apollo Server**: Serving the Query API out of the data in PostgreSQL. One, or more, per Space.
-* **Spaces Controller**: Reconciling the PostgreSQL schema as needed for the other two components. One, or more, per space.
+* **Spaces Controller**: Reconciling the PostgreSQL schema as needed for the other two components. One, or more, per Space.
 
-The default setup also uses a connection pooler, PgBouncer, to manage connections from the syncers.
+The default setup also uses the `PgBouncer` connection pooler to manage connections from the syncers.
 
 {{<img src="all-spaces/self-hosted-spaces/images/query-api-arch.png" alt="Query API architecture diagram" lightbox="true">}}
 
-Each of these components need to connect to the PostgreSQL database, and can use dedicated credentials in various formats.
+Each component needs to connect to the PostgreSQL database.
 
 In the event of database issues, you can provide a new database and the syncers
 automatically repopulate the data.
@@ -123,13 +120,16 @@ Below you can find examples of setups to get you started, you can mix and match 
 
 {{< hint "tip" >}}
 
-If you don't have strong opinions on your setup, but still want full control on the resources created for some unsupported customizations, this is the suggested way to proceed.
+If you don't have strong opinions on your setup, but still want full control on
+the resources created for some unsupported customizations, Upbound recommends
+the in-cluster setup.
 
 {{< /hint >}}
 
-If the managed setup isn't enough, but you are fine deploying PostgreSQL in the same cluster, you can still use CloudNativePG.
+For more customization than the managed setup, you can use CloudNativePG for
+PostgreSQL in the same cluster.
 
-To do so, you have to manually deploy the operator in one of the [supported ways](https://cloudnative-pg.io/documentation/current/installation_upgrade/), for example:
+For in-cluster setup, manually deploy the operator in one of the [supported ways](https://cloudnative-pg.io/documentation/current/installation_upgrade/), for example:
 
 ```shell
 kubectl apply --server-side -f \
@@ -208,9 +208,9 @@ EOF
 
 Adjust the `Cluster` and `Pooler` resources to your needs, for example by changing the `spec.storage.size` or `spec.imageName`.
 
-CloudNativePG takes care of setting up the necessary Secrets, you just need to configure Spaces to use them.
+CloudNativePG takes care of setting up the necessary Secrets.
 
-You can now install Spaces however you want making sure to pass the settings below:
+Next, configure Spaces to use the CloudNativePG secrets:
 
 ```shell
 helm upgrade --install ... \
@@ -244,7 +244,9 @@ If you want to run your PostgreSQL instance outside the cluster, but are fine wi
 
 {{< /hint >}}
 
-For this setup, you must manually create the necessary Secrets in the `upbound-system` namespace. For example, this minimal setup leaves Apollo Syncers and Apollo Server credentials for the Spaces Controller to generate.
+When using this setup, you must manually create the required Secrets in the
+`upbound-system` namespace. The Spaces Controller automatically generates the
+Apollo Syncer and Apollo Server credentials.
 
 ```shell
 export SPACES_CONTROLLER_USER=spaces-controller
@@ -261,7 +263,7 @@ kubectl create secret generic spaces-apollo-pg-ca -n upbound-system \
   --from-file=ca.crt=/path/to/ca.crt
 ```
 
-Then proceed to install Spaces with the necessary settings:
+Next, install Spaces with the necessary settings:
 
 ```shell
 export PG_URL=your-postgres-host:5432
@@ -311,7 +313,7 @@ kubectl create secret generic spaces-apollo-pg-apollo -n upbound-system \
   --from-literal=password=supersecret
 ```
 
-Then proceed to install Spaces with the necessary settings:
+Next, install Spaces with the necessary settings:
 
 ```shell
 export PG_URL=your-postgres-host:5432
@@ -343,7 +345,7 @@ helm ... \
 ## Using the Query API
 
 <!-- vale Google.Headings = YES -->
-See the [Query API documentation]({{<ref "all-spaces/query-api/_index.md">}}) for more information on how to use the Query API.
+See the [Query API documentation]({{<ref "all-spaces/query-api">}}) for more information on how to use the Query API.
 
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->

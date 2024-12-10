@@ -11,9 +11,11 @@ cascade:
 
 {{< hint "important" >}}
 
-This feature is in preview. The query API is available in the Cloud Space offering and enabled by default.
+This feature is in preview. The Query API is available in the Cloud Space offering and enabled by default.
 
-For self-hosted deployments, this is a requirement for connected Spaces, see the related [documentation]({{<ref "all-spaces/self-hosted-spaces/query-api.md">}}) for how to enable this feature.
+Query API is required for self-hosted deployments with connected Spaces. See the
+related [documentation]({{<ref "all-spaces/self-hosted-spaces/query-api">}})
+to enable this feature.
 
 {{< /hint >}}
 
