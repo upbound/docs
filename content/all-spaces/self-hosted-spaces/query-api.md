@@ -23,7 +23,7 @@ Query API requires a PostgreSQL database to store the data. You can use the defa
 <!-- vale Google.Headings = NO -->
 ## Using the Query API
 <!-- vale Google.Headings = YES -->
-See the [Query API documentation]({{<ref "all-spaces/query-api/_index">}}) for more information on how to use the Query API.
+See the [Query API documentation]({{<ref "all-spaces/query-api">}}) for more information on how to use the Query API.
 
 ## Managed setup
 
