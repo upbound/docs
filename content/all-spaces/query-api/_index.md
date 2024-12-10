@@ -9,34 +9,23 @@ cascade:
 <!-- vale write-good.TooWordy = NO -->
 <!-- ignore "aggregate" -->
 
-
-Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retrieving information from your Space.
-
 {{< hint "important" >}}
 
-This feature is in preview. The query API is available in the Cloud Space offering in `v1.6` and enabled by default.
+This feature is in preview. The Query API is available in the Cloud Space offering and enabled by default.
 
-For Connected Spaces, this feature requires Spaces `v1.8.0` and is off by default. To enable, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces:
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  ...
-  --set "features.alpha.apollo.enabled=true" \
-  --set "features.alpha.apollo.storage.postgres.create=true"
-```
-
-These flags create a PostgreSQL cluster handled by [CloudNativePG](https://cloudnative-pg.io).
-
-Users can also provide their own instance if needed, by setting `features.alpha.apollo.storage.postgres.create=false` and providing all the required information at `features.alpha.apollo.storage.postgres.connection`.
+Query API is required for self-hosted deployments with connected Spaces. See the
+related [documentation]({{<ref "all-spaces/self-hosted-spaces/query-api/">}})
+to enable this feature.
 
 {{< /hint >}}
 
-## Requirements
+Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/) for filtering, sorting, and retrieving information from your Space.
 
-Before you begin, make sure you have the most recent version of the [`up` CLI installed]({{<ref "reference/cli#install-the-up-command-line">}}).
+<!-- vale Google.Headings = NO -->
 
-## Query API CLI
+## Using the Query API
 
+<!-- vale Google.Headings = YES -->
 The Query API allows you to retrieve control plane information faster than traditional `kubectl` commands. This feature lets you debug your Crossplane resources with the CLI or within the Upbound Console's enhanced management views.
 
 ### Query within a single control plane

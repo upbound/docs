@@ -58,6 +58,7 @@ OTEL
 overengineer
 observability
 patchSets
+pooler
 proidc
 proselint
 protobuf
@@ -73,6 +74,10 @@ SharedExternalSecret
 SLAs
 stdin
 stdout
+syncer
+Syncer
+Syncers
+syncers
 tolerations
 Upbound
 Upbound's
