@@ -22,7 +22,7 @@ Before you begin, make sure you have:
 - The `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 - A `token.json` license, provided by your Upbound account representative.
-- You enabled the [Query API]({{<ref "all-spaces/self-hosted-spaces/query-api.md">}}) in the self-hosted Space.
+- You enabled the [Query API]({{<ref "all-spaces/self-hosted-spaces/query-api">}}) in the self-hosted Space.
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 

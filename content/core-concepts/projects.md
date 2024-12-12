@@ -13,7 +13,7 @@ the definition of your control plane.
 
 ## The project file
 
-Projects require an `upbound.yaml` file. The command `up project init` by default uses an Upbound-provided template, which defines a scaffolded `upbound.yaml`. If you choose to override the default template with your own, make sure your template contains an `upbound.yaml` in the root directory.
+Projects require an `upbound.yaml` file. The command `up project init` by default uses an Upbound-provided template, which creates a predefined `upbound.yaml`. If you choose to override the default template with your own, make sure your template contains an `upbound.yaml` in the root directory.
 
 Project files define the constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
 
