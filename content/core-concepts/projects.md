@@ -13,7 +13,7 @@ the definition of your control plane.
 
 ## The project file
 
-Projects require an `upbound.yaml` file. The command `up project init` by default uses an Upbound-provided template, which defines a scaffolded `upbound.yaml`. If you choose to override the default template with your own, make sure your template contains an `upbound.yaml` in the root directory.
+Projects require an `upbound.yaml` file. The command `up project init` by default uses an Upbound-provided template, which creates a predefined `upbound.yaml`. If you choose to override the default template with your own, make sure your template contains an `upbound.yaml` in the root directory.
 
 Project files define the constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
 
@@ -47,7 +47,7 @@ The control plane project defines:
 
 ## Project structure
 
-When you initialize a project, the default project director structure is:
+When you initialize a project, the default project directory structure is:
 
 ```bash
 .
@@ -107,7 +107,7 @@ New projects created with the command `up project init` scaffold a project from 
   - project-template `(https://github.com/upbound/project-template)`
   - project-template-ssh `(git@github.com:upbound/project-template.git)`
 
-For more information, review the [CLI reference documentation](({{< ref
+For more information, review the [CLI reference documentation]({{< ref
 "reference/cli/command-reference" >}})
 
 ## Create a project GitHub action
