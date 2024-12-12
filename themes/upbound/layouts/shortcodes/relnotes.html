@@ -1,0 +1,22 @@
+{{ $product := .Get "product" }}
+{{ $relNotes := where .Site.RegularPages "File.Dir" "eq" "reference/rel-notes/"
+}}
+{{ $releases := where $relNotes "Params.product" "eq" $product }}
+
+<div class="release-notes-container">
+    {{ range sort $releases "Date" "desc" }}
+    <article class="release-note">
+        <header>
+            <h3 id="{{ .File.ContentBaseName }}">{{ .Title }}</h3>
+            {{ with .Params.version }}
+            <p class="version"><strong>Version:</strong> {{ . }}</p>
+            {{ end }}
+            <p class="date"><strong>Date:</strong> {{ .Date.Format "2006-01-02"
+                }}</p>
+        </header>
+        <div class="content">
+            {{ .Content | markdownify }}
+        </div>
+    </article>
+    {{ end }}
+</div>
