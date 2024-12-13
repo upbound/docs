@@ -6,11 +6,145 @@ description: Authentication options with the Upbound GCP official provider
 
 The Upbound Official GCP Provider supports multiple authentication methods.
 
+* [Upbound auth (OIDC)]({{<ref "mcp/oidc" >}})
 * [Service account keys](https://cloud.google.com/iam/docs/keys-create-delete)
 * [OAuth 2.0 access token](https://developers.google.com/identity/protocols/oauth2) 
 * [Workload identity](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity) 
   for Google managed Kubernetes clusters (`GKE`)
 * [Service account impersonation](https://cloud.google.com/iam/docs/service-account-overview#impersonation)
+
+## Upbound auth (OIDC)
+
+{{< hint "note" >}}
+This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "all-spaces" >}})
+{{< /hint >}}
+
+When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to GCP without requiring you to store credentials in Upbound.
+
+### Create an identity pool
+
+1. Open the **[GCP IAM Admin console](https://console.cloud.google.com/iam-admin/iam)**.
+2. Select **[Workload Identity Federation](https://console.cloud.google.com/iam-admin/workload-identity-pools)**.
+3. If this is your first Workload Identity Federation configuration select **Get Started**
+4. At the top of the page, select **Create Pool**.
+5. Name the pool, like **upbound-oidc-pool**.
+6. Enter a description like **An identity provider for Upbound**.
+7. **Enable** the pool.
+8. Select **Continue**
+
+#### Add Upbound to the pool
+
+Under the _Add a provider to pool_ configuration under _Select a provider_ use **OpenID Connect (OIDC)**
+
+_Provider Name_: **upbound-oidc-provider**
+_Provider ID_: **upbound-oidc-provider-id**
+_Issuer (URL)_: **https://proidc.upbound.io**
+
+Select **Allowed audiences**
+For _Audience 1_ enter **sts.googleapis.com**
+
+Select **Continue**.
+
+#### Configure provider attributes
+
+The provider attributes restrict which remote entities you allow access to your resources.
+When Upbound authenticates to GCP it provides an OIDC subject (`sub`) in the form:
+
+`mcp:<account>/<mcp-name>:provider:<provider-name>`
+
+Configure the _google.subject_ attribute as **assertion.sub**
+
+Under _Attribute Conditions_ select **Add Condition**.
+
+<!-- vale gitlab.Uppercase = NO -->
+<!-- ignore CEL -->
+To authenticate any control plane in your organization, in the _Conditional CEL_ input box put
+<!-- vale gitlab.Uppercase = YES -->
+
+{{<editCode >}}
+```console
+google.subject.contains("mcp:$@ORGANIZATION_NAME$@")
+```
+{{< /editCode >}}
+
+{{< hint "warning" >}}
+Not providing a CEL condition allows any managed control plane to access your GCP account if they know the project ID and service account name.
+{{< /hint >}}
+
+Select **Save**.
+
+### Create a GCP Service Account
+
+GCP requires Upbound to use a [Service Account](https://cloud.google.com/iam/docs/service-account-overview). The required GCP _roles_ of the service account depend on the services managed by your control plane.
+
+1. Open the **[GCP IAM Admin console](https://console.cloud.google.com/iam-admin/iam)**.
+2. Select **[Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts)**.
+3. From the top of the page, select **Create Service Account**.
+
+### Service account details
+<!-- vale Google.WordList = NO -->
+<!-- ignore account name -->
+<!-- vale Google.FirstPerson = NO -->
+Under _Service account details_ enter
+_Service account name_: **upbound-service-account**
+_Service account ID_: **upbound-service-account-id**
+_Description_: **Upbound control planes service account**
+<!-- vale Google.WordList = YES -->
+<!-- vale Google.FirstPerson = YES -->
+
+Select **Create and Continue**.
+
+### Grant this service account access to project
+
+For the _CloudSQL as a service_ configuration the service account requires the roles:
+**Cloud SQL Admin**
+**Workload Identity User**
+
+Select **Done**.
+
+### Record the service account email address
+
+At the list of service accounts copy the service account **email**.
+Upbound requires this to authenticate your managed control plane.
+
+### Add the service account to the identity pool
+
+Add the service account to the Workload Identity Federation pool to authenticate to Upbound with OIDC.
+1. Return to the **[Workload Identity Federation](https://console.cloud.google.com/iam-admin/workload-identity-pools)** page and select the [**upbound-oidc-pool**](https://console.cloud.google.com/iam-admin/workload-identity-pools/pool/upbound-oidc-pool).
+2. Near the top of the page select **Grant Access**.
+3. Select the new service account, **upbound-service-account**.
+4. Under _Select principals_ use **All identities in the pool**.
+Select **Save**.
+In the _Configure your application_ window, select **Dismiss**.
+
+### Create a ProviderConfig
+
+Create a
+{{<hover label="pc-upbound-auth" line="2">}}ProviderConfig{{</hover>}} to set the
+provider authentication method to
+{{<hover label="pc-upbound-auth" line="8">}}Upbound{{</hover>}}.
+
+Supply the {{<hover label="pc-upbound-auth" line="6">}}projectID{{</hover>}}, {{<hover label="pc-upbound-auth" line="11">}}providerID{{</hover>}}, and {{<hover label="pc-upbound-auth" line="12">}}serviceAccount{{</hover>}} found in the previous section.
+
+{{<hint "tip" >}}
+To apply Upbound based authentication by default name the ProviderConfig
+{{<hover label="pc-upbound-auth" line="4">}}default{{</hover>}}.
+{{< /hint >}}
+
+```yaml {label="pc-upbound-auth"}
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  projectID: crossplane-playground
+  credentials:
+    source: Upbound
+    upbound:
+      federation:
+        providerID: projects/<project-id>/locations/global/workloadIdentityPools/<identity-pool>/providers/<identity-provider>
+        serviceAccount: <service-account-name>@<project-name>.iam.gserviceaccount.com
+```
 
 ## Service account keys
 

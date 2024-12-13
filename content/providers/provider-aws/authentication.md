@@ -6,11 +6,95 @@ description: Authentication options with the Upbound AWS official provider
 
 The Upbound Official AWS Provider supports multiple authentication methods.
 
+* [Upbound auth (OIDC)]({{<ref "mcp/oidc" >}})
 * [AWS Access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 * [Assume role with web identity](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
 * [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) with AWS managed Kubernetes.
 
+## Upbound auth (OIDC)
+
+{{< hint "note" >}}
+This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "all-spaces" >}})
+{{< /hint >}}
+
+When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to AWS without requiring you to store credentials in Upbound.
+
+### Add Upbound as an OpenID Connect provider
+
+1. Open the **[AWS IAM console](https://console.aws.amazon.com/iam)**.
+2. Under the AWS IAM services, select **[Identity Providers > Add Provider](https://console.aws.amazon.com/iamv2/home#/identity_providers/create)**.
+3. Select **OpenID Connect** and use
+ **https://proidc.upbound.io** as the Provider URL and
+ **sts.amazonaws.com** as the Audience.
+  Select **Get thumbprint**.
+  Select **Add provider**.
+
+<!-- vale Google.Headings = NO -->
+### Create an AWS IAM Role for Upbound
+<!-- vale Google.Headings = YES -->
+
+1. Create an [AWS IAM Role](https://console.aws.amazon.com/iamv2/home#/roles) with a **Custom trust policy** for the OIDC connector.
+{{<hint "important" >}}
+Provide your [AWS account ID](https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html), Upbound organization and control plane names in the JSON Policy below.
+
+You can find your AWS account ID by selecting the account dropdown in the upper right corner of the AWS console.
+{{< /hint >}}
+{{< editCode >}}
+```json
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Principal": {
+				"Federated": "arn:aws:iam::$@YOUR_AWS_ACCOUNT_ID$@:oidc-provider/proidc.upbound.io"
+			},
+			"Action": "sts:AssumeRoleWithWebIdentity",
+			"Condition": {
+				"StringEquals": {
+					"proidc.upbound.io:sub": "mcp:$@ORG_NAME/CONTROL_PLANE_NAME$@:provider:provider-aws",
+					"proidc.upbound.io:aud": "sts.amazonaws.com"
+				}
+			}
+		}
+	]
+}
+```
+{{< /editCode >}}
+1. Attach the permission policies you want for the control plane assuming this role.
+2. Name and create the role.
+3. View the new role and copy the role ARN.
+
+### Create a ProviderConfig
+
+Create a
+{{<hover label="pc-upbound-auth" line="2">}}ProviderConfig{{</hover>}} to set the
+provider authentication method to
+{{<hover label="pc-upbound-auth" line="7">}}Upbound{{</hover>}}.
+
+Supply the {{<hover label="pc-upbound-auth" line="10">}}role ARN{{</hover>}} created in the previous section.
+
+{{<hint "tip" >}}
+To apply Upbound based authentication by default name the ProviderConfig
+{{<hover label="pc-upbound-auth" line="4">}}default{{</hover>}}.
+{{< /hint >}}
+
+```yaml {label="pc-upbound-auth"}
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Upbound
+    upbound:
+      webIdentity:
+        roleARN: <roleARN-for-provider-identity>
+```
+
+<!-- vale Google.Headings = NO -->
 ## AWS authentication keys
+<!-- vale Google.Headings = YES -->
 
 Using AWS access keys, or long-term IAM credentials, requires storing the AWS
 keys as a Kubernetes secret.
