@@ -1,5 +1,5 @@
 ---
-title: "MCP connector v0.7.0"
+title: "MCP Connector v0.7.0"
 version: "v0.7.0"
 date: 2024-08-16
 tocHidden: true

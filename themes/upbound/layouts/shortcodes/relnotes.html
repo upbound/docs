@@ -8,10 +8,7 @@
     <article class="release-note">
         <header>
             <h3 id="{{ .File.ContentBaseName }}">{{ .Title }}</h3>
-            {{ with .Params.version }}
-            <p class="version"><strong>Version:</strong> {{ . }}</p>
-            {{ end }}
-            <p class="date"><strong>Date:</strong> {{ .Date.Format "2006-01-02"
+            <p class="date"><strong>Release Date:</strong> {{ .Date.Format "2006-01-02"
                 }}</p>
         </header>
         <div class="content">

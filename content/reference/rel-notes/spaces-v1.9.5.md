@@ -7,8 +7,6 @@ product: "spaces"
 ---
 <!-- vale off -->
 
-#### What's Changed
-
 #### Bugs fixed
 * Fixed a timeout issue in spaces-router while doing authorization checks against the host cluster for `ControlPlane` requests when hub RBAC is enabled via the `authorization.hubRBAC` Helm parameter
 * Fixed an issue causing frequent syncers restarts in `Apollo` due to password resets
