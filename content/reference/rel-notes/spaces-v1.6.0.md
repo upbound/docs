@@ -5,6 +5,7 @@ date: 2024-08-06
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### API Changes
 
@@ -26,3 +27,5 @@ product: "spaces"
 - Starting from Spaces v1.6, users must upgrade sequentially all the minor versions. A pre-upgrade job is added to
   enforce this requirement.
 - Various bug fixes and performance improvements.
+
+<!-- vale on -->

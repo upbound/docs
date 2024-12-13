@@ -5,6 +5,7 @@ date: 2024-07-01
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### Highlights
 
@@ -20,3 +21,5 @@ product: "spaces"
 - We now expose a metrics port on vcluster-etcd containers.
 - We removed network policies that block egress from a control plane's functions.
 - We removed the legacy OIDC flags authenticator deprecated in Spaces v1.3.0.
+
+<!-- vale on -->

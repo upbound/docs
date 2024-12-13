@@ -5,6 +5,7 @@ date: 2024-06-07
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### Highlights
 
@@ -27,3 +28,5 @@ product: "spaces"
 - Spaces prereq providers have had version bumps to allow for incorporating new metrics emissions from these providers.
   Provider-kubernetes is bumped to `v0.14.0` and provider-helm to `v0.19.0`.
 - Kube-native Hub authentication and authorization has been enabled by default.
+
+<!-- vale on -->

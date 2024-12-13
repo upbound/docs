@@ -5,7 +5,10 @@ date: 2023-08-31
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
 - Export mxp-gateway metrics via otlp-collector
+
+<!-- vale on -->

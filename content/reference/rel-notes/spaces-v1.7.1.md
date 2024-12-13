@@ -5,6 +5,7 @@ date: 2024-09-12
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -14,3 +15,5 @@ product: "spaces"
   controlplane pods.
 - Fixed a bug in Spaces Chart related to the pre-upgrade hook.
 - Fixed a bug in Crossplane-Versions-Public configmap to allow public querying.
+
+<!-- vale on -->

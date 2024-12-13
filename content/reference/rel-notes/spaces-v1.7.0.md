@@ -5,6 +5,7 @@ date: 2024-09-02
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### API Changes
 
@@ -111,3 +112,5 @@ further assistance, please reach out to your Upbound account representative.
 - Observability: fixed an issue where network policies didnt allow the OTEL Collector's Prometheus to scrape some pods
   for metrics.
 - We have optimized our controllers and tested hosting up to 500 control planes with a single Spaces installation.
+
+<!-- vale on -->

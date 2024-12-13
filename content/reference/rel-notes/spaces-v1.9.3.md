@@ -5,6 +5,9 @@ date: 2024-11-12
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 - Fixed duplicate probe definitions in spaces controller deployment.
+
+<!-- vale on -->

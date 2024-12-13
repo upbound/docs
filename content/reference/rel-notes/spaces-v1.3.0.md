@@ -5,6 +5,7 @@ date: 2024-04-30
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### Highlights
 
@@ -26,3 +27,5 @@ product: "spaces"
 - Backup and Restore: Implementing SharedBackup and SharedBackupSchedule APIs to provide robust backup and restore
   functionality control planes.
 - Importing/Exporting Control Planes: Enabling migrating in or out from Spaces control planes.
+
+<!-- vale on -->

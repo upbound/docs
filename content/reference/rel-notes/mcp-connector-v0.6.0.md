@@ -5,6 +5,7 @@ date: 2024-06-15
 tocHidden: true
 product: "mcp-connector"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -12,3 +13,5 @@ product: "mcp-connector"
   `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
 - This the latest release where we will publish the helm chart to the Upbound helm repository, please migrate to the OCI
   artifact.
+
+<!-- vale on -->

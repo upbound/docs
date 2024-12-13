@@ -5,6 +5,7 @@ date: 2024-03-15
 tocHidden: true
 product: "mcp-connector"
 ---
+<!-- vale off -->
 
 #### What's Changed
 

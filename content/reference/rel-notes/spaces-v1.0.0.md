@@ -5,6 +5,7 @@ date: 2023-08-28
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -33,3 +34,5 @@ product: "spaces"
 - git: fix commit ref bugs
 - git: run through cleanup even if controlplane is not ready
 - Fix otlp-collector networkpolicy ports
+
+<!-- vale on -->

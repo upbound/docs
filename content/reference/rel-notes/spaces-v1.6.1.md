@@ -5,6 +5,7 @@ date: 2024-08-14
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -14,3 +15,5 @@ product: "spaces"
 - We've added a configuration option to enable
   Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/latest/concepts/server-side-apply/) in managed
   control planes.
+
+<!-- vale on -->

@@ -5,6 +5,7 @@ date: 2024-12-09
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -21,3 +22,5 @@ product: "spaces"
 * `ControlPlane`s now expose the time at which they first became `Available` at `.status.firstAvailableAt`
 * `SpaceBackups` now will only skip just created controlplanes instead of the ones not ready
 * UXP images and associated registry actions are now configured with registry authentication for Spaces deployments using private registries, where the public UXP image is behind auth in the private registry.
+
+<!-- vale on -->

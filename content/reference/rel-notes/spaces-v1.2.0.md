@@ -5,6 +5,7 @@ date: 2024-02-01
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -20,3 +21,5 @@ product: "spaces"
   planes in the group.
 - Support for OIDC auhentication flows when interacting directly with a managed control plane in a Space.
 - new `up` CLI commands to migrate open soure Crossplane or UXP instances into a managed control plane in a Space.
+
+<!-- vale on -->

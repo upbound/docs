@@ -5,7 +5,10 @@ date: 2024-05-07
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### Highlights
 
 - This release fixes some Identity and Access Management related issues.
+
+<!-- vale on -->

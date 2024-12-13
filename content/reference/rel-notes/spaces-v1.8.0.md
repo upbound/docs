@@ -5,6 +5,7 @@ date: 2024-10-08
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -64,3 +65,5 @@ Please be aware of the following changes:
 - Fixed an issue where SharedTelemetryConfig would endlessly reconcile.
 - Fixed an issue with SharedTelemetryConfig Datadog exporter failing with 413. The issue is not fully fixed but has been
   remediated by removing the metrics that were too big for Datadog to handle.
+
+<!-- vale on -->

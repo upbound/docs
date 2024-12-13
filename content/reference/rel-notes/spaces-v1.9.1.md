@@ -5,6 +5,7 @@ date: 2024-11-07
 tocHidden: true
 product: "spaces"
 ---
+<!-- vale off -->
 
 #### What's Changed
 
@@ -42,3 +43,5 @@ Starting with Spaces 1.9.x, Spaces with an  Argo CD Gitops integration must upda
 - Move to domain-qualified finalizer for control plane provisioner reconciler, while dropping old ones allowing
   ControlPlanes deletion after Spaces upgrade.
 - Respect disabled features for discovery, avoiding unnecessary noise when using kubectl.
+
+<!-- vale on -->
