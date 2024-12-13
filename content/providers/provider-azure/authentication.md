@@ -6,9 +6,109 @@ description: Authentication options with the Upbound Azure official provider
 
 The Upbound Official Azure Provider supports multiple authentication methods.
 
+* [Upbound auth (OIDC)]({{<ref "mcp/oidc" >}})
 * [Service principal with Kubernetes secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals?tabs=browser#service-principal-object)
 * [System-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#enable-managed-identities-on-an-existing-aks-cluster)
 * [User-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#bring-your-own-managed-identity)
+
+## Upbound auth (OIDC)
+
+{{< hint "note" >}}
+This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "all-spaces" >}})
+{{< /hint >}}
+
+When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to Azure without requiring you to store credentials in Upbound.
+
+### Create an identity pool
+1. Open the **[Azure portal](https://portal.azure.com/)**.
+2. Select **[Microsoft Entra ID](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview)**.
+3. If this is your first time registering Upbound as an identity provider in Microsoft Entra ID, select **App registrations**
+4. At the top of the page, select **New registration**.
+5. Name the pool, like **upbound-oidc-provider**.
+6. In the _Supported account types_ section select **Accounts in this organizational directory only**.
+7. In the _Redirect URI_ section select **Web** and leave the URL field blank.
+8. Select **Register**.
+
+### Create a federated credential
+
+To allow the `upbound-oidc-provider` registration created in the previous step to trust your control plane in Upbound, do the following in the resource view.
+
+1. Select **Certificates and secrets** in the left navigation.
+2. Select **Federated credentials** tab.
+3. Select **Add credential**.
+4. In _Federated credential scenario_ select **Other Issuer**.
+5. In _Issuer_ enter **https://proidc.upbound.io**.
+6. In _Subject identifier_ enter:
+
+{{< editCode >}}
+```yaml
+mcp:$@<your-org>/<your-control-plane-name>$@:provider:provider-azure
+```
+{{< /editCode >}}
+
+7. In _Credential details name_ enter:
+
+{{< editCode >}}
+```yaml
+upbound-$@<your-org>-<your-control-plane-name>$@-provider-azure
+```
+{{< /editCode >}}
+
+8. In _Credential details description_ enter:
+
+{{< editCode >}}
+```yaml
+upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
+```
+{{< /editCode >}}
+
+9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.
+10. Select **Add**.
+
+### Grant permissions to the service principal
+
+For your control plane to be able to perform actions required by this configuration, you need to grant permissions to the Application Service Principal. Assign a role to the Application Service Principal by following instructions at Assign a role to the application.
+
+1. Open the **[Azure portal](https://portal.azure.com/)**
+2. Select **[Subscriptions](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade)**.
+3. Select your subscription.
+4. Select **Access control (IAM)** in the left navigation.
+5. Select **Add** and select **Add role assignment**.
+6. Find and select the **Contributor** role on the **Privileged administrator roles** tab.
+7. Select **Next**.
+8. In _Assign access to_ select **User, group, or service principal**.
+9. Select **Select members**.
+10. Find your application by entering **upbound-oidc-provider** in the search field.
+11. Select **Select**.
+12. Select **Review + assign**.
+13. Make sure everything is correct and press **Review + assign** again.
+
+### Create a ProviderConfig
+
+Create a
+{{<hover label="pc-upbound-auth" line="2">}}ProviderConfig{{</hover>}} to set the
+provider authentication method to
+{{<hover label="pc-upbound-auth" line="7">}}Upbound{{</hover>}}.
+
+Supply the {{<hover label="pc-upbound-auth" line="8">}}Application (client) ID{{</hover>}}, {{<hover label="pc-upbound-auth" line="9">}}Directory (tenant) ID{{</hover>}}, and {{<hover label="pc-upbound-auth" line="10">}}Subscription ID{{</hover>}} found in the previous section.
+
+{{<hint "tip" >}}
+To apply Upbound based authentication by default name the ProviderConfig
+{{<hover label="pc-upbound-auth" line="4">}}default{{</hover>}}.
+{{< /hint >}}
+
+```yaml {label="pc-upbound-auth"}
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Upbound
+  clientID: <client ID>
+  tenantID: <tenant ID>
+  subscriptionID: <subscription ID>
+```
 
 ## Service principal with Kubernetes secret
 
