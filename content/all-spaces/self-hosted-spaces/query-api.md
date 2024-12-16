@@ -224,9 +224,9 @@ helm upgrade --install ... \
 Below you can find references to how to customize this setup:
 
 * **Storage**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/storage/#configuration-via-a-pvc-template) for more information on how to configure the storage.
-* **Resources**: See the CloudNativePG documentation for more information on how to configure the resources used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/resource_management/) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
-* **High Availability**: See the CloudNativePG documentation for more information on how to configure high availability for the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/faq/#high-availability) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#high-availability-ha).
-* **Images used**: See the CloudNativePG documentation for more information on how to configure the images used by the [PostgreSQL instances](https://cloudnative-pg.io/documentation/1.24/operator_capability_levels/#override-of-operand-images-through-the-crd) and the [pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
+* **Resources**: See the CloudNativePG documentation for more information on how to configure the resources used by the [PostgreSQL Cluster](https://cloudnative-pg.io/documentation/1.24/resource_management/) and the [Pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
+* **High Availability**: See the CloudNativePG documentation for more information on how to configure replication for the [PostgreSQL Cluster](https://cloudnative-pg.io/documentation/1.24/replication/) and the [Pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#high-availability-ha).
+* **Images used**: See the CloudNativePG documentation for more information on how to configure the images used by the [PostgreSQL Cluster](https://cloudnative-pg.io/documentation/1.24/operator_capability_levels/#override-of-operand-images-through-the-crd) and the [Pooler](https://cloudnative-pg.io/documentation/1.24/connection_pooling/#pod-templates).
 * **PostgreSQL configuration**: See the [CloudNativePG documentation](https://cloudnative-pg.io/documentation/1.24/postgresql_conf/) for more information on how to configure the PostgreSQL instances, for example `max_connections`, `shared_buffers`, etc.
 <!-- vale Google.Headings = NO -->
 
