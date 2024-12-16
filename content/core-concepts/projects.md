@@ -89,7 +89,7 @@ up project build
 The output artifact is an OCI image with an `.uppkg` file type. The default
 build output is the `_output/` directory in your project.
 The `.uppkg` file is a special kind of [Crossplane
-Configuration](https://docs.crossplane.io/v1.17/concepts/packages/).
+Configuration](https://docs.crossplane.io/latest/concepts/packages/).
 
 You can push the project output to any OCI-compliant registry.
 
@@ -114,8 +114,8 @@ For more information, review the [CLI reference documentation]({{< ref
 
 <!-- vale gitlab.SentenceLength = NO -->
 
-The `Up-Project-Action` GitHub Action is the recommended CI integration workflow
-for your project. The `Up-Project-Action` installs the `up` CLI tool, authenticate with
+The `action-up-project` GitHub Action is the recommended CI integration workflow
+for your project. The `action-up` installs the `up` CLI tool, authenticate with
 Upbound using a personal access token, build the control plane project, and
 conditionally push to the Upbound Marketplace if you are working on your `main`
 branch.
@@ -124,28 +124,44 @@ branch.
 Add the following action to your workflow to automatically build and push your control plane projects.
 
 ```yaml
-name: Build and Deploy
+name: CI
 
 on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request: {}
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Package version (e.g. v0.1.0)
+        required: false
 
 env:
-  UP_TOKEN: ${{ secrets.UP_TOKEN }}
+  UP_API_TOKEN: ${{ secrets.UP_API_TOKEN }}
+  UP_ORG: ${{ secrets.UP_ORG }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Up CLI Build and Push
-        if: env.UP_TOKEN != ''
-        uses: upbound/up-project-action@v1
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Install and login with up
+        if: env.UP_API_TOKEN != '' && env.UP_ORG != ''
+        uses: upbound/action-up@v1
         with:
-          up_token: ${{ secrets.UP_TOKEN }}
-          endpoint: https://cli.upbound.io
-          channel: main
+          api-token: ${{ secrets.UP_API_TOKEN }}
+          organization: ${{ secrets.UP_ORG }}
+
+      - name: Build and Push Upbound project
+        if: env.UP_API_TOKEN != ''
+        uses: upbound/action-up-project@v1
+        with:
+          push-project: true
+          tag: ${{ inputs.version || '' }}
 ```
 
 {{< hint "important">}}
