@@ -39,30 +39,39 @@ parameters and attempt to change them, Space-wide parameters override the
 change.
 {{</hint>}}
 
-For the `vector.dev` billing feature `billing.storage.secretRef.name` must be
-set to an empty string.
-
 {{< hint "important" >}}
 To use the `vector.dev` billing feature, you **must** set
 `billing.storage.secretRef.name` to an empty string.
 {{</hint>}}
 
+{{< tabs "Workload Identity Configuration" >}}
 
-## AWS workload identity configuration
+{{< tab "AWS" >}}
+<!-- vale Google.Headings = NO -->
 
+## AWS workload-identity configuration
+
+<!-- vale Google.Headings = YES -->
 Upbound supports workload-identity configurations in AWS with IAM Roles for
 Service Accounts and EKS pod identity association.
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+
+{{< tabs "AWS-Workload Identity Configuration" >}}
+
+{{< tab "IRSA" >}}
 ### IRSA
 
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 With IRSA, you can associate a Kubernetes service account in an EKS cluster with
 an AWS IAM role. Upbound authenticates workloads with that service account as
 the IAM role using temporary credentials instead of static role credentials.
-IRSA relies on AWS `AssumeRoleWithWebIdentity` STS to exchange OIDC ID tokens
+IRSA relies on AWS `AssumeRoleWithWebIdentity` `STS` to exchange OIDC ID tokens
 with the IAM role's temporary credentials. IRSA uses the
 `eks.amazon.aws/role-arn` annotation to link the service account and the IAM
 role.
 
+<!-- vale Upbound.Spelling = NO -->
 
 Upbound deploys the `mxp-controller`, `vector.dev`, and
 `external-secrets-contoller` in the ControlPlane's namespace and sets the
@@ -72,6 +81,7 @@ the projected OIDC token. Sub claims identify the namespaced service
 account as `system:serviceaccount:<ControlPlane namespace>:<service account
 name>`.
 
+<!-- vale Upbound.Spelling = YES -->
 You must configure the IAM role trust policy with the exact match for each
 provisioned control plane. For example, for two ControlPlanes, you would
 configure the trust policy as:
@@ -152,9 +162,14 @@ A full example of Helm parameters for workloads using IRSA:
 --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."eks\.amazonaws\.com/role-arn"="${SPACES_ESO_IAM_ROLE_ARN}"
 --set controlPlanes.mxpController.serviceAccount.annotations."eks\.amazonaws\.com/role-arn"="${SPACES_BR_IAM_ROLE_ARN}"
 ```
+{{</tab>}}
+
+{{<tab "EKS pod identities">}}
+<!-- vale Google.Headings = NO -->
 
 ### EKS pod identities
 
+<!-- vale Google.Headings = YES -->
 EKS pod identities don't require service account annotations, unlike IRSA. You only need to set the `billing.storage.secretRef.name` Helm parameter to authenticate using pod identities. Here's an example:
 
 ```
@@ -175,15 +190,16 @@ host namespaces. You must provision a ControlPlane to determine the host namespa
 before defining pod identity associations for the `mxp-controller`,
 `external-secrets-controller`, and `vector` service accounts in the EKS cluster.
 
-EKS pod identities operate like IRSA by injecting credentials into the pod's
+EKS pod identities, like IRSA, inject credentials into the pod's
 environment (including a JWT in a projected volume and environment variables for
 credential exchange). You must restart your workload after associating its
 service account with an IAM role for these changes to take effect.
+{{</tab>}}
 
+{{</tabs>}}
+{{</tab>}}
 
-## Azure
-
-### Azure workload identity federation
+{{< tab "Azure" >}}
 
 To use Microsoft Entra Workload ID with AKS, you must:
 
@@ -207,20 +223,24 @@ these workloads:
 --set controlPlanes.mxpController.pod.customLabels."azure\.workload\.identity/use"="true"
 ```
 
-If you annotate a running workload's service account, you must manually restart the pod for the Azure AD workload identity mutating admission webhook to inject the necessary environment.
+If you annotate a running workload's service account, you must manually restart
+the pod. The Azure AD workload identity mutating admission webhook requires a
+restart to inject the necessary environment.
 
 For workloads labeled with `azure.workload.identity/use: true` and service accounts annotated with the correct `azure.workload.identity/client-id`, you may not need to restart after provisioning federated credentials. The need to restart depends on when your workload requires these credentials. For example:
 
+<!-- vale Google.WordList = NO -->
 - `mxp-controller` and ESO only need credentials when reconciling custom resources
 - `vector.dev` validates credentials during initialization via health-check
+<!-- vale Google.WordList = YES -->
 
-If your workload can handle it, you can provision federated credentials after
-the workload starts running in the ControlPlane's host namespace, when you know
-the workload's namespace. This method still crosses the boundary between ControlPlane
+You can provision federated credentials after the workload starts running in the
+ControlPlane's host namespace, when you know the workload's namespace. This
+method still crosses the boundary between ControlPlane
 management and IAM infrastructure management in a Space.
+{{< /tab >}}
 
-
-## GCP
+{{< tab "GCP" >}}
 
 GCP offers two methods to configure GKE workload identity federation:
 
@@ -228,7 +248,9 @@ GCP offers two methods to configure GKE workload identity federation:
 2. Linking workload service accounts to IAM roles
 
 Upbound recommends using IAM principal identifiers.
+{{< tabs "GCP-Workload Identity Configuration" >}}
 
+{{< tab "IAM principal identifiers" >}}
 ### Using IAM principal identifiers
 
 This method lets you represent workloads, namespaces, or Kubernetes service
@@ -255,7 +277,12 @@ shows how to enable workload identities for the Spaces components:
 
 You may not need to restart workloads after binding IAM policies to their principals if you bind after startup. This depends on when your workload needs credentials. If your workload can handle it, you can bind the IAM policy after it starts running in the ControlPlane's host namespace.
 
-For workloads accessing GCP cloud storage buckets (B/R or billing workloads), you must enable uniform bucket-level access on target buckets to use IAM principal identifiers.
+GCP cloud storage bucket workloads, like backup and restore or billing, require
+uniform bucket-level access on target buckets for IAM principal identifiers.
+
+{{< /tab >}}
+
+{{< tab "Linked Kubernetes service accounts" >}}
 
 ### Linking Kubernetes service accounts to IAM roles
 
@@ -276,8 +303,16 @@ Here's an example of Spaces Helm chart parameters using this configuration:
 --set controlPlanes.mxpController.serviceAccount.annotations."iam\.gke\.io/gcp-service-account"="${SPACES_BR_IAM_SA}"
 ```
 
-When linking a workload's Kubernetes service account to a GCP IAM service
-account, you can add the `iam.gke.io/gcp-service-account` annotation without
-restarting the workload since GKE doesn't use mutating admission controllers.
-Your workload's success depends on when it attempts authentication and whether
-it retries failed attempts.
+
+To link a workload Kubernetes service account to a GCP IAM service account, add
+the `iam.gke.io/gcp-service-account` annotation. This change doesn't require a
+restart. Your workload's success depends on when it attempts authentication and
+retries of failed attempts.
+
+{{</tab>}}
+
+{{</tabs>}}
+
+{{</tabs>}}
+
+{{</tabs>}}
