@@ -88,20 +88,17 @@ controlPlanes:
 {{</tabs>}}
 
 
-
+## Cloud provider configuration
 
 {{< tabs "Workload Identity Configuration" >}}
 
 {{< tab "AWS" >}}
-<!-- vale Google.Headings = NO -->
 
-## AWS workload-identity configuration
-
-<!-- vale Google.Headings = YES -->
 Upbound supports workload-identity configurations in AWS with IAM Roles for
 Service Accounts and EKS pod identity association.
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
+<div style="margin-left: 20px;">
 
 {{< tabs "AWS-Workload Identity Configuration" >}}
 
@@ -243,6 +240,8 @@ service account with an IAM role for these changes to take effect.
 {{</tab>}}
 
 {{</tabs>}}
+</div>
+
 {{</tab>}}
 
 {{< tab "Azure" >}}
@@ -294,6 +293,8 @@ GCP offers two methods to configure GKE workload identity federation:
 2. Linking workload service accounts to IAM roles
 
 Upbound recommends using IAM principal identifiers.
+<div style="margin-left: 20px;">
+
 {{< tabs "GCP-Workload Identity Configuration" >}}
 
 {{< tab "IAM principal identifiers" >}}
@@ -358,6 +359,9 @@ retries of failed attempts.
 {{</tab>}}
 
 {{</tabs>}}
+
+</div>
+
 
 {{</tabs>}}
 
