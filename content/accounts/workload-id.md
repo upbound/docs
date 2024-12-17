@@ -1,5 +1,5 @@
 ---
-title: "Spaces Workload-identitUpbound IAqy Configuration"
+title: "Spaces Workload-identity Configuration"
 weight: 5
 ---
 
@@ -237,7 +237,7 @@ IAM policy bindings due to non-deterministic ControlPlane host namespace names
 discussed for other cloud providers. For example, you can create an IAM
 principal identifier to represent all pods in a specific cluster.
 
-{{<hint "important>}}
+{{<hint "important">}}
 Principal identifiers don't support wildcard namespace specifications.
 {{</hint>}}
 
