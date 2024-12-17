@@ -88,21 +88,13 @@ controlPlanes:
 {{</tabs>}}
 
 
-## Cloud provider configuration
-
-{{< tabs "Workload Identity Configuration" >}}
-
-{{< tab "AWS" >}}
+## AWS provider configuration
 
 Upbound supports workload-identity configurations in AWS with IAM Roles for
 Service Accounts and EKS pod identity association.
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
-<div style="margin-left: 20px;">
 
-{{< tabs "AWS-Workload Identity Configuration" >}}
-
-{{< tab "IRSA" >}}
 ### IRSA
 
 <!-- vale Microsoft.HeadingAcronyms = YES -->
@@ -205,9 +197,7 @@ A full example of Helm parameters for workloads using IRSA:
 --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."eks\.amazonaws\.com/role-arn"="${SPACES_ESO_IAM_ROLE_ARN}"
 --set controlPlanes.mxpController.serviceAccount.annotations."eks\.amazonaws\.com/role-arn"="${SPACES_BR_IAM_ROLE_ARN}"
 ```
-{{</tab>}}
 
-{{<tab "EKS pod identities">}}
 <!-- vale Google.Headings = NO -->
 
 ### EKS pod identities
@@ -237,14 +227,8 @@ EKS pod identities, like IRSA, inject credentials into the pod's
 environment (including a JWT in a projected volume and environment variables for
 credential exchange). You must restart your workload after associating its
 service account with an IAM role for these changes to take effect.
-{{</tab>}}
 
-{{</tabs>}}
-</div>
-
-{{</tab>}}
-
-{{< tab "Azure" >}}
+## Azure provider configuration
 
 To use Microsoft Entra Workload ID with AKS, you must:
 
@@ -283,9 +267,8 @@ You can provision federated credentials after the workload starts running in the
 ControlPlane's host namespace, when you know the workload's namespace. This
 method still crosses the boundary between ControlPlane
 management and IAM infrastructure management in a Space.
-{{< /tab >}}
 
-{{< tab "GCP" >}}
+## GCP provider configuration
 
 GCP offers two methods to configure GKE workload identity federation:
 
@@ -293,11 +276,7 @@ GCP offers two methods to configure GKE workload identity federation:
 2. Linking workload service accounts to IAM roles
 
 Upbound recommends using IAM principal identifiers.
-<div style="margin-left: 20px;">
 
-{{< tabs "GCP-Workload Identity Configuration" >}}
-
-{{< tab "IAM principal identifiers" >}}
 ### Using IAM principal identifiers
 
 This method lets you represent workloads, namespaces, or Kubernetes service
@@ -327,10 +306,6 @@ You may not need to restart workloads after binding IAM policies to their princi
 GCP cloud storage bucket workloads, like backup and restore or billing, require
 uniform bucket-level access on target buckets for IAM principal identifiers.
 
-{{< /tab >}}
-
-{{< tab "Linked Kubernetes service accounts" >}}
-
 ### Linking Kubernetes service accounts to IAM roles
 
 This method requires you to:
@@ -355,14 +330,3 @@ To link a workload Kubernetes service account to a GCP IAM service account, add
 the `iam.gke.io/gcp-service-account` annotation. This change doesn't require a
 restart. Your workload's success depends on when it attempts authentication and
 retries of failed attempts.
-
-{{</tab>}}
-
-{{</tabs>}}
-
-</div>
-
-
-{{</tabs>}}
-
-{{</tabs>}}
