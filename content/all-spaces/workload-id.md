@@ -1,48 +1,94 @@
 ---
-title: "Spaces Workload-identity Configuration"
+title: "Workload-identity Configuration"
 weight: 5
 ---
 
-Upbound allows you to configure Spaces components for authentication with AWS,
-Azure, and GCP.
+Upbound Spaces supports workload identity configuration for authentication with
+major cloud providers (AWS, Azure, and GCP). This document explains how to
+configure workload identity for the following use cases:
 
-Workload identities work with three Spaces components:
+1. Backup and Restore Operations - Handled by the `mxp-controller` component
+2. Billing Management - Managed through the `vector.dev` component
+3. Kubernetes Secrets Synchronization - Implemented via the `external-secrets-controller`
 
-- `mxp-controller` - backup and restore
-- `vector.dev` - billing
-- `external-secrets-controller` - Kubernetes secrets sync
+## Configuration requirements
 
-Most workload identity configurations need:
-- An annotation on the Kubernetes service account to associate it with a principal (IAM
-  role, service account, enterprise application, etc) in your cloud provider
-- A workload label to inject temporary credentials to authenticate the workload
+Each workload identity configuration requires two key elements:
 
-AWS, Azure, and GCP have different requirements for workload identity
-configurations. The Spaces Helm chart exposes these parameters:
+1. **Service Account Annotation**: Associates the Kubernetes service account with a cloud provider principal (such as an IAM role, service account, or enterprise application)
+2. **Workload Label**: Enables injection of temporary authentication credentials into the workload
 
-- `mxp-controller`
-  - `controlPlanes.mxpController.serviceAccount.annotations` configures service account annotations.
-  - `controlPlanes.mxpController.pod.customLabels` configures pod labels
-- `vector.dev`
-  -`controlPlanes.vector.serviceAccount.customAnnotations` configures service
-  account annotations
-  - `controlPlanes.vector.pod.customLabels` configures pod labels
-- `external secrets controller`
-  - `controlPlanes.sharedSecrets.serviceAccount.customAnnotations` configures
-    service account annotations
-  - `controlPlanes.sharedSecrets.pod.customLabels` configures pod labels
+## Component configuration parameters
 
-{{< hint "important">}}
-All control planes in a Space share Helm parameters. Currently, there is no way to override
-Space-wide parameters for individual control planes. When you set these
-parameters and attempt to change them, Space-wide parameters override the
-change.
+{{< hint "warning">}}
+All control planes in a Space share Helm parameters. Space-wide parameters can't be overridden for individual control planes. When you attempt to change these parameters for a specific control plane, the Space-wide parameters take precedence.
 {{</hint>}}
+
+
+The following Spaces components support workload identity configuration:
+
+{{< tabs >}}
+
+{{< tab "Backup and Restore" >}}
+
+The `mxp-controller` handles backup and restore operations:
+
+
+```yaml
+controlPlanes:
+  mxpController:
+    serviceAccount:
+      annotations: {}  # Configure service account annotations
+    pod:
+      customLabels: {} # Configure pod labels
+```
+{{</tab>}}
+
+
+{{< tab "Billing" >}}
 
 {{< hint "important" >}}
 To use the `vector.dev` billing feature, you **must** set
 `billing.storage.secretRef.name` to an empty string.
 {{</hint>}}
+
+The `vector.dev` component manages billing capabilities.
+
+
+```yaml
+controlPlanes:
+  vector:
+    serviceAccount:
+      customAnnotations: {}  # Configure service account annotations
+    pod:
+      customLabels: {}      # Configure pod labels
+    billing:
+      storage:
+        secretRef:
+          name: ""  # Must be set to empty string to enable billing feature
+```
+
+{{</tab>}}
+
+{{< tab "External secrets controller" >}}
+
+The `external-secrets-controller` synchronizes Kubernetes secrets.
+
+```yaml
+controlPlanes:
+  sharedSecrets:
+    serviceAccount:
+      customAnnotations: {}  # Configure service account annotations
+    pod:
+      customLabels: {}      # Configure pod labels
+```
+
+{{</tab>}}
+
+{{</tabs>}}
+
+
+
 
 {{< tabs "Workload Identity Configuration" >}}
 
@@ -86,7 +132,7 @@ You must configure the IAM role trust policy with the exact match for each
 provisioned control plane. For example, for two ControlPlanes, you would
 configure the trust policy as:
 
-```
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -113,7 +159,7 @@ configure the trust policy as:
 You can also share IAM roles between the workloads across all ControlPlanes in a
 Space with wildcard matches for the IAM role trust policy conditions:
 
-```
+```yaml
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -140,7 +186,7 @@ The example uses wildcard matches on the sub claim to match the
 `mxp-controller` service account in all ControlPlanes of a Space. Then, in your
 command line, pass the a `--set` flag with the Spaces Helm chart.
 
-```
+```yaml
 --set controlPlanes.mxpController.serviceAccount.annotations."eks\.amazonaws\.com/role-arn"="<IAM role ARN>"
 ```
 
@@ -152,7 +198,7 @@ You must manually restart a workload's pod when you add the `eks.amazonaws.com/r
 
 A full example of Helm parameters for workloads using IRSA:
 
-```
+```yaml
 --set "billing.enabled=true"
 --set "billing.storage.provider=aws"
 --set "billing.storage.aws.region=${SPACES_REGION}"
@@ -172,7 +218,7 @@ A full example of Helm parameters for workloads using IRSA:
 <!-- vale Google.Headings = YES -->
 EKS pod identities don't require service account annotations, unlike IRSA. You only need to set the `billing.storage.secretRef.name` Helm parameter to authenticate using pod identities. Here's an example:
 
-```
+```yaml
 --set "billing.enabled=true"
 --set "billing.storage.provider=aws"
 --set "billing.storage.aws.region=${SPACES_REGION}"
@@ -209,7 +255,7 @@ To use Microsoft Entra Workload ID with AKS, you must:
 Below is a complete example of the Spaces Helm chart parameters for configuring
 these workloads:
 
-```
+```yaml
 --set "billing.enabled=true"
 --set "billing.storage.provider=azure"
 --set "billing.storage.azure.storageAccount=${SPACES_BILLING_STORAGE_ACCOUNT}"
@@ -268,7 +314,7 @@ IAM principal identifiers don't require service account annotations or workload
 labels (unlike AKS workload identity federation). This Spaces Helm chart example
 shows how to enable workload identities for the Spaces components:
 
-```
+```yaml
 --set "billing.enabled=true"
 --set "billing.storage.provider=gcp"
 --set "billing.storage.gcp.bucket=${SPACES_BILLING_BUCKET}"
@@ -293,7 +339,7 @@ This method requires you to:
 
 Here's an example of Spaces Helm chart parameters using this configuration:
 
-```
+```yaml
 --set "billing.enabled=true"
 --set "billing.storage.provider=gcp"
 --set "billing.storage.gcp.bucket=${SPACES_BILLING_BUCKET}"
