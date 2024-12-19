@@ -9,6 +9,36 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.36.2
+Released December 19th, 2024.
+
+### What's Changed
+- Spaces Mirror: Fixed an issue affecting private registries when using registry flags introduced in v0.36.0.
+- Added a new flag to the `up project run` command, enabling projects to be run in production control planes.
+
+## v0.36.1
+Released December 3rd, 2024.
+
+### What's Changed
+- Resolved the `IsNotFound` error encountered in `up project run` for existing repositories.
+
+## v0.36.0
+Released November 28th, 2024.
+
+### What's Changed
+- Enhanced the ingress cache to ensure concurrency safety for more stable and efficient operations.
+- User organization is now validated during login, offering better security and a smoother user flow.
+- Default values for `apiVersion` and `kind` have been added in Python schemas to streamline development.
+- The `up dep update` command now processes updates in parallel, significantly reducing update times.
+- Projects started in MCP now inherit the parent Space context, ensuring better alignment and continuity.
+- `up space mirror` Added registry flags to provide more control and flexibility when managing mirrors.
+- The embedded function KCL base image has been upgraded to v0.10.8.
+- `up project run` Fixed issues with unsupported duplicate file paths to avoid potential conflicts.
+- `up project run` Projects are now re-homed automatically, and repository visibility is preserved during project pushes.
+- `up project run` Projects now load repositories into memory, improving performance and reducing disk I/O.
+- `up project build` The Docker client environment can now be overridden with custom environment variables, offering more flexibility.
+- `up ctp provider,function,configuration,pull-secret` Added support for installing functions and pull-secrets in CTP, expanding functionality and customization options.
+
 ## v0.35.3
 Released November 6th, 2024.
 
