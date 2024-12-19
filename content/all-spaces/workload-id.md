@@ -13,7 +13,7 @@ configure workload identity for the following use cases:
 
 ## Configuration requirements
 
-Each workload identity configuration requires two key elements:
+Workload identity configurations typically require two elements:
 
 1. **Service Account Annotation**: Associates the Kubernetes service account with a cloud provider principal (such as an AWS IAM role, GCP service account, or Azure AD enterprise application)
 2. **Workload Label**: Enables injection of temporary authentication credentials into the workload
@@ -87,9 +87,11 @@ controlPlanes:
 
 {{</tabs>}}
 
+<!-- vale Google.Headings = NO -->
 
 ## AWS provider configuration
 
+<!-- vale Google.Headings = YES -->
 Upbound supports workload-identity configurations in AWS with IAM Roles for
 Service Accounts and EKS pod identity association.
 
@@ -182,7 +184,10 @@ command line, pass the a `--set` flag with the Spaces Helm chart.
 This command allows the `mxp-controller` workloads with authenticate with a dedicated IAM role in an IRSA enabled EKS cluster
 
 {{<hint "important">}}
-You must manually restart a workload's pod when you add the `eks.amazonaws.com/role-arn` key annotation to its service account after provisioning. This restart enables the EKS pod identity webhook to inject the necessary environment for using IRSA.
+You must manually restart a workload's pod when you add the
+`eks.amazonaws.com/role-arn` key annotation to the running pod's service account. This
+restart enables the EKS pod identity webhook to inject the necessary environment
+for using IRSA.
 {{</hint>}}
 
 A full example of Helm parameters for workloads using IRSA:
@@ -302,6 +307,11 @@ shows how to enable workload identities for the Spaces components:
 ```
 
 You may not need to restart workloads after binding IAM policies to their principals if you bind after startup. This depends on when your workload needs credentials. If your workload can handle it, you can bind the IAM policy after it starts running in the ControlPlane's host namespace.
+
+<!-- vale Google.WordList = NO -->
+- The `mxp-controller` and ESO pods can continue running even if you bind IAM policies after startup, since they only check credentials when reconciling custom resources.
+- `vector.dev` pods require a restart after binding IAM policies because they validate credentials through a health-check during initialization.
+<!-- vale Google.WordList = YES -->
 
 GCP cloud storage bucket workloads, like backup and restore or billing, require
 uniform bucket-level access on target buckets for IAM principal identifiers.
