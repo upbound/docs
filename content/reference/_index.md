@@ -24,4 +24,5 @@ For more information on how Upbound builds on Crossplane, review [Crossplane vs.
 
 ## Release notes
 
-- [Release Notes](rel-notes/)
+- [Spaces Release Notes](rel-notes/spaces-relnotes/)
+- [MCP Connector Release Notes](rel-notes/mcp-connector-relnotes/)
