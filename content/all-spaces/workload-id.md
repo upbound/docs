@@ -15,7 +15,7 @@ configure workload identity for the following use cases:
 
 Each workload identity configuration requires two key elements:
 
-1. **Service Account Annotation**: Associates the Kubernetes service account with a cloud provider principal (such as an IAM role, service account, or enterprise application)
+1. **Service Account Annotation**: Associates the Kubernetes service account with a cloud provider principal (such as an AWS IAM role, GCP service account, or Azure AD enterprise application)
 2. **Workload Label**: Enables injection of temporary authentication credentials into the workload
 
 ## Component configuration parameters
@@ -109,8 +109,8 @@ role.
 <!-- vale Upbound.Spelling = NO -->
 
 Upbound deploys the `mxp-controller`, `vector.dev`, and
-`external-secrets-contoller` in the ControlPlane's namespace and sets the
-related pod names at ControlPlane namespace creation. IAM roles associated with
+`external-secrets-contoller` in the ControlPlane's namespace and the
+service account namespaced names are determined after the ControlPlane namespace creation. IAM roles associated with
 these service accounts must have trust policies conditioned on the sub-claim of
 the projected OIDC token. Sub claims identify the namespaced service
 account as `system:serviceaccount:<ControlPlane namespace>:<service account
@@ -266,7 +266,7 @@ For workloads labeled with `azure.workload.identity/use: true` and service accou
 You can provision federated credentials after the workload starts running in the
 ControlPlane's host namespace, when you know the workload's namespace. This
 method still crosses the boundary between ControlPlane
-management and IAM infrastructure management in a Space.
+management in a Space and IAM infrastructure management for that Space.
 
 ## GCP provider configuration
 
@@ -291,7 +291,7 @@ Principal identifiers don't support wildcard namespace specifications.
 
 
 IAM principal identifiers don't require service account annotations or workload
-labels (unlike AKS workload identity federation). This Spaces Helm chart example
+labels (unlike AKS workload identity federation). This Spaces Helm chart parameters example
 shows how to enable workload identities for the Spaces components:
 
 ```yaml
