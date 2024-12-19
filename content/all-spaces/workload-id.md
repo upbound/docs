@@ -111,8 +111,8 @@ role.
 <!-- vale Upbound.Spelling = NO -->
 
 Upbound deploys the `mxp-controller`, `vector.dev`, and
-`external-secrets-contoller` in the ControlPlane's namespace and the
-service account namespaced names are determined after the ControlPlane namespace creation. IAM roles associated with
+`external-secrets-contoller` in the ControlPlane's namespace and determines the
+service account namespaced names after creating the ControlPlane namespace. IAM roles associated with
 these service accounts must have trust policies conditioned on the sub-claim of
 the projected OIDC token. Sub claims identify the namespaced service
 account as `system:serviceaccount:<ControlPlane namespace>:<service account
