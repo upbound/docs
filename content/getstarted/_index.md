@@ -4,6 +4,7 @@ weight: -1
 description: "Learn how Upbound works and how it can work for you."
 aliases:
     - "/getstarted-devex"
+    - "/quickstart"
 ---
 
 Upbound is a scalable infrastructure management service built on Crossplane. The advantage of Crossplane and Upbound is the universal control plane. Control planes continuously reconcile your desired state with actual resources, allowing teams to self-serve their infrastructure needs.
