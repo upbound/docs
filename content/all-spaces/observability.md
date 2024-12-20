@@ -31,9 +31,7 @@ kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releas
 
 The examples below document how to configure observability with the `up` CLI or Helm installations.
 
-{{< tabs >}}
-
-{{< tab "Up CLI" >}}
+## Up CLI instructions
 
 ```bash {hl_lines="3-7"}
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -41,9 +39,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "features.alpha.observability.enabled=true" \
 ```
 
-{{< /tab >}}
-
-{{< tab "Helm" >}}
+## Helm instructions
 
 ```bash {hl_lines="7-11"}
 helm -n upbound-system upgrade --install spaces \
@@ -204,9 +200,9 @@ observability:
           headers:
             api-key: YOUR_API_KEY
       exportPipeline:
-        logs: 
+        logs:
           - otlphttp
-        metrics: 
+        metrics:
           - otlphttp
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
