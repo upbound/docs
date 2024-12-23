@@ -31,7 +31,9 @@ Clicking into a control plane brings you to the control plane explorer. From the
 
 {{<img src="all-spaces/spaces/images/ctp-explorer2.png" alt="control plane explorer" lightbox="true">}}
 
+<!-- vale Google.Headings = NO -->
 ## MCP and configuration creation
+<!-- vale Google.Headings = YES -->
 
 You can create new managed control planes from the dashboard.
 
