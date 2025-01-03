@@ -143,6 +143,12 @@ helm install aws-load-balancer-controller aws-load-balancer-controller --namespa
 
 ### Install ingress-nginx
 
+_Note_: Starting with Spaces v1.10.0, you need to configure the ingress-nginx
+controller to allow the SSL-passthrough mode. You can do so by passing the
+`--enable-ssl-passthrough=true` command-line option to the controller.
+The following command achieves this via the `controller.extraArgs` Helm
+parameter.
+
 Install ingress-nginx.
 
 ```bash
@@ -151,6 +157,7 @@ helm upgrade --install ingress-nginx ingress-nginx \
   --repo https://kubernetes.github.io/ingress-nginx \
   --version 4.7.1 \
   --set 'controller.service.type=LoadBalancer' \
+  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
   --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-type=external' \
   --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-scheme=internet-facing' \
   --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-nlb-target-type=ip' \
