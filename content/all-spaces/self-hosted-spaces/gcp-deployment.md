@@ -114,13 +114,11 @@ kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Ava
 
 ### Install ingress-nginx
 
-_Note_: Starting with Spaces v1.10.0, you need to configure the ingress-nginx
-controller to allow the SSL-passthrough mode. You can do so by passing the
+Starting with Spaces v1.10.0, you need to configure the ingress-nginx
+controller to allow SSL-passthrough mode. You can do so by passing the
 `--enable-ssl-passthrough=true` command-line option to the controller.
-The following command achieves this via the `controller.extraArgs` Helm
-parameter.
-
-Install ingress-nginx.
+The following Helm install command enables this with the `controller.extraArgs`
+parameter:
 
 ```bash
 helm upgrade --install ingress-nginx ingress-nginx \
