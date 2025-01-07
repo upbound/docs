@@ -10,10 +10,8 @@ disableKinds:
   - taxonomy
   - term
   - RSS
-
 build:
-  # writeStats: true
-
+# writeStats: true
 markup:
   goldmark:
     renderer:
@@ -27,40 +25,36 @@ markup:
     linenos: false
     anchorLineNos: true
     lineNumbersInTable: false
-
 module:
   mounts:
-  - source: content
-    target: content
-  - source: assets
-    target: assets
-  - source: content
-    target: assets/content
-    includeFiles:
-      - "**/**.png"
-      - "**/**.jpg"
-      - "**/**.jpeg"
-      - "**/**.gif"
-  - source: content
-    target: data/crds
-    includeFiles:
-      - "**/**.yaml"
-
+    - source: content
+      target: content
+    - source: assets
+      target: assets
+    - source: content
+      target: assets/content
+      includeFiles:
+        - "**/**.png"
+        - "**/**.jpg"
+        - "**/**.jpeg"
+        - "**/**.gif"
+    - source: content
+      target: data/crds
+      includeFiles:
+        - "**/**.yaml"
 # Enable Hugo access to environmental variables to apply deploy preview banner
 security:
   funcs:
     getenv:
       - ^CONTEXT
       - ^REVIEW_ID
-
 params:
-  latest: v1.10  #we should look to replace this value with the spaces.version values below
+  latest: v1.10 #we should look to replace this value with the spaces.version values below
   repoLink: "https://github.com/upbound/"
   anchors:
     min: 2
     max: 5
   description: "Crossplane lets you build a control plane with Kubernetes-style declarative and API-driven configuration and management for anything."
-
   hideDropdown:
     - "reference/space-api"
   spaces:
@@ -68,4 +62,3 @@ params:
       major: 1
       minor: 10
       patch: 0
-
