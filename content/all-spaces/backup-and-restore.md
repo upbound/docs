@@ -235,6 +235,21 @@ spec:
   ttl: 168h # Backup is garbage collected after 7 days
 ```
 
+### Define the deletion policy
+
+Set the `spec.deletionPolicy` to determine how to handle garbage collected
+backups:
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedBackupSchedule
+metadata:
+  name: daily-schedule
+spec:
+  ttl: 168h # Backup is garbage collected after 7 days
+  deletionPolicy: Delete # Defaults to Orphan
+```
+
 ### Garbage collect backups when the schedule gets deleted
 
 Set the `spec.useOwnerReferencesInBackup` to garbage collect associated backups when a shared schedule gets deleted. If set to true, backups are garbage collected when the schedule gets deleted.
