@@ -2,7 +2,7 @@
 @import "bootstrap/bootstrap";
 @import "variables";
 /* purgecss start ignore */
-@import "color-modes";
+@import "_color-modes"; 
 @import "lightbox";
 @import "crds";
 @import "home";

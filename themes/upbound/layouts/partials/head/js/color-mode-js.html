@@ -28,3 +28,22 @@
   }
 })();
 </script>
+<script>
+    (() => {
+        document.addEventListener("DOMContentLoaded", () => {
+            const darkSwitch = document.getElementById("darkSwitch");
+            if (!darkSwitch) return;
+
+            // Set initial switch state
+            const currentTheme = document.documentElement.getAttribute("color-theme");
+            darkSwitch.checked = currentTheme === "dark";
+
+            // Add change listener
+            darkSwitch.addEventListener("change", () => {
+                const newTheme = darkSwitch.checked ? "dark" : "light";
+                document.documentElement.setAttribute("color-theme", newTheme);
+                localStorage.setItem("darkSwitch", newTheme);
+            });
+        });
+    })();
+</script>
