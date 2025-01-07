@@ -9,6 +9,15 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.36.3
+Released January 7th, 2025.
+
+### What's Changed
+- Starting with Spaces `v1.10.0`, `up space init` now supports ingress SSL
+  passthrough during installation.
+- Removed the unused clusterType field from Helm values in `up space init` for
+  Spaces v1.10.0.
+
 ## v0.36.2
 Released December 19th, 2024.
 
