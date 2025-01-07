@@ -1,0 +1,4 @@
+description: |-
+    PolicyName is the name to use when creating policy within a control plane.
+    optional, if not set, SharedUpboundPolicy name will be used.
+    When set, it is immutable.

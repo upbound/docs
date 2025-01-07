@@ -1,0 +1,5 @@
+description: |-
+    A Simulation creates a simulation of a source ControlPlane. You can apply a
+    change set to the simulated control plane. When the Simulation is complete it
+    will detect the changes and report the difference compared to the source
+    control plane.

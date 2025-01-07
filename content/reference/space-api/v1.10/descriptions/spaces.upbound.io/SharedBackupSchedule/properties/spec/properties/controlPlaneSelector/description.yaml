@@ -1,0 +1,3 @@
+description: |-
+    ControlPlaneSelector defines the selector for ControlPlanes to backup.
+    Requires 'backup' permission on all ControlPlanes in the same namespace.

@@ -1,0 +1,4 @@
+description: |-
+    Override denotes the configuration override to be applied on the target
+    object hierarchy. The fully specified intent is obtained by serializing
+    the Override.

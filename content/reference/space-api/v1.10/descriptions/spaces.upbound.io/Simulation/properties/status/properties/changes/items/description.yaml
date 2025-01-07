@@ -1,0 +1,3 @@
+description: |-
+    A SimulationChange represents an object that changed while the simulation was
+    in the AcceptingChanges state.

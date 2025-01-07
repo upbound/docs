@@ -1,0 +1,3 @@
+description: |-
+    ControlPlaneName is the name of the target ControlPlane where
+    the resource configuration overrides will be applied.
