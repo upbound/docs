@@ -123,6 +123,51 @@ spec:
     logs: [datadog]
 ```
 
+### Sensitive data
+
+To avoid exposing sensitive data in the `SharedTelemetryConfig` resource, use
+Kubernetes secrets to store the sensitive data and reference the secret in the
+`SharedTelemetryConfig` resource.
+
+Create the secret in the same namespace/group as the `SharedTelemetryConfig`
+resource. The example below uses `kubectl create secret` to create a new secret:
+
+```bash
+kubectl create secret generic sensitive -n <STC_NAMESPACE>  \
+    --from-literal=apiKey='YOUR_API_KEY'
+```
+
+Next, reference the secret in the `SharedTelemetryConfig` resource:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: newrelic
+spec:
+  configPatchSecretRefs:
+    - name: sensitive
+      key: apiKey
+      path: exporters.otlphttp.headers.api-key
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    otlphttp:
+      endpoint: https://otlp.nr-data.net
+      headers:
+        api-key: dummy # This value is replaced by the secret value, can be omitted
+  exportPipeline:
+    metrics: [otlphttp]
+    traces: [otlphttp]
+    logs: [otlphttp]
+```
+
+The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
+`key`, and `path` values to inject the secret value in the
+`SharedTelemetryConfig` resource.
+
 ### Status
 
 If successful, Upbound creates the `SharedTelemetryConfig` resource and provisions the OpenTelemetry Collector for the selected control plane. To see the status, run `kubectl get stc`:
