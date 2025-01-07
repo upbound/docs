@@ -1,0 +1,4 @@
+description: |-
+    Name (identifier) of the subject (of the specified kind) being referenced.
+    The identifier must be 2-100 chars, [a-zA-Z0-9-], no repeating dashes, can't start/end with a dash.
+    Notably, a UUID fits that format.

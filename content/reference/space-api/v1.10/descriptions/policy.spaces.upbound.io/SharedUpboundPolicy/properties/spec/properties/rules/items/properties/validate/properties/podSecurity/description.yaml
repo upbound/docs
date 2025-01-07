@@ -1,0 +1,3 @@
+description: |-
+    PodSecurity applies exemptions for Kubernetes Pod Security admission
+    by specifying exclusions for Pod Security Standards controls.

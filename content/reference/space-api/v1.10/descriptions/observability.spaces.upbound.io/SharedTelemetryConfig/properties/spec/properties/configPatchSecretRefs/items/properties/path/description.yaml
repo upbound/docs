@@ -1,0 +1,4 @@
+description: |-
+    Path to the field in the telemetry configuration to patch.
+    Currently, we only support patching exporters, so the path
+    needs to start with 'exporters'.

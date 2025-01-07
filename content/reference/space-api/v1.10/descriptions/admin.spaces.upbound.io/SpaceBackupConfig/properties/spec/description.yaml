@@ -1,0 +1,3 @@
+description: |-
+    A SpaceBackupConfigSpec represents the configuration to backup or restore
+    a Space.

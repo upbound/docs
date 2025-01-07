@@ -1,0 +1,4 @@
+description: |-
+    DeletionPolicy specifies whether when the InControlPlaneOverride object
+    is deleted, the configuration override should be kept (Keep) or
+    rolled back (RollBack).

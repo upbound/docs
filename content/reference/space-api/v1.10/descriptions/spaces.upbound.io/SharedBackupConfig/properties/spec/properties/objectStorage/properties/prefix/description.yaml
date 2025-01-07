@@ -1,0 +1,5 @@
+description: |-
+    Prefix is the prefix to use for all backups using this
+    SharedBackupConfig, e.g. 'prod/cluster1', resulting in backups for
+    controlplane 'ctp1' in namespace 'ns1' being stored in
+    'prod/cluster1/ns1/ctp1'.

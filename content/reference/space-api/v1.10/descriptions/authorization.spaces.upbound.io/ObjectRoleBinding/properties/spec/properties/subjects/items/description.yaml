@@ -1,0 +1,3 @@
+description: |-
+    SubjectBinding contains a reference to the object or user identities a role
+    binding applies to.
