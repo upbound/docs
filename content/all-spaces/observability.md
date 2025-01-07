@@ -129,14 +129,15 @@ To avoid exposing sensitive data in the `SharedTelemetryConfig` resource, use
 Kubernetes secrets to store the sensitive data and reference the secret in the
 `SharedTelemetryConfig` resource.
 
-The secret needs to be created in the same namespace/group as the 
-`SharedTelemetryConfig` resource. The example below shows how to create a secret
-and reference it in the `SharedTelemetryConfig` resource:
+Create the secret in the same namespace/group as the `SharedTelemetryConfig`
+resource. The example below uses `kubectl create secret` to create a new secret:
 
 ```bash
 kubectl create secret generic sensitive -n <STC_NAMESPACE>  \
     --from-literal=apiKey='YOUR_API_KEY'
 ```
+
+Next, reference the secret in the `SharedTelemetryConfig` resource:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -163,10 +164,9 @@ spec:
     logs: [otlphttp]
 ```
 
-The `configPatchSecretRefs` field specifies the secret reference. The `name`
-field specifies the secret name, the `key` field specifies the key in the
-secret, and the `path` field specifies the path in the `SharedTelemetryConfig`
-resource where the secret value is injected.
+The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
+`key`, and `path` values to inject the secret value in the
+`SharedTelemetryConfig` resource.
 
 ### Status
 
