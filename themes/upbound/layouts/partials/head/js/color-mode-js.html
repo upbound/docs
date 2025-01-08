@@ -1,3 +1,7 @@
+<script>
+  // Try and ensure the color theme is applied as early as possible to prevent "flash of inaccurate color"
+(() => {
+  // Is the system set to dark mode?
   var darkPrefered = window.matchMedia('(prefers-color-scheme: dark)').matches
 
   // Do we have a dark mode cookie saved?
