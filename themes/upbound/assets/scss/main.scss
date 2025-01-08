@@ -2,12 +2,12 @@
 @import "bootstrap/bootstrap";
 @import "variables";
 /* purgecss start ignore */
-@import "_color-modes"; 
+@import "color-modes";
 @import "lightbox";
 @import "crds";
 @import "home";
-@import "top-nav";
 /* purgecss end ignore */
+@import "top-nav";
 @import "left-sidebar-nav";
 @import "right-sidebar-toc";
 @import "content-body";
