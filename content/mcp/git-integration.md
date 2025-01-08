@@ -48,7 +48,7 @@ In the preceding example:
 Once your control plane is in a `Ready` state, it pulls manifests from the repository configured in `spec.source`. The control plane object contains emitted sync events, which you can find by describing the control plane:
 
 ```bash
-kubectl describe ctp example-ctp
+kubectl describe controlplanes.spaces.upbound.io example-ctp
 ```
 
 ## How to use control plane source

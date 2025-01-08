@@ -106,7 +106,7 @@ kubectl get ctp
 ```
 3. Describe the control plane by providing its name, found in the preceding instruction.
 ```bash
-kubectl describe ctp <control-plane-name>
+kubectl describe controlplanes.spaces.upbound.io <control-plane-name>
 ```
 
 ## Issues
