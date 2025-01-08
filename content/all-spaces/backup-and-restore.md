@@ -234,10 +234,10 @@ metadata:
 spec:
   ttl: 168h # Backup is garbage collected after 7 days
 ```
-{{<note>}}
+{{<hint>}}
 By default, this setting doesn't delete uploaded files. Review the next section to define
 the deletion policy.
-{{</note>}}
+{{</hint>}}
 
 ### Define the deletion policy
 
