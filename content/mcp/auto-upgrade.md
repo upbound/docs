@@ -89,7 +89,7 @@ example-ctp    1.11.5-up.1          False       True              31m
 For more information, use the `-o yaml` flag to return more information.
 
 ```bash
-kubectl get ctp example-ctp -o yaml
+kubectl get controlplanes.spaces.upbound.io example-ctp -o yaml
 status:
 conditions:
 ...
