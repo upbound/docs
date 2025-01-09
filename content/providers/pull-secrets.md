@@ -93,7 +93,7 @@ metadata:
   name: provider-aws-s3
 spec:
   packagePullSecrets:
-    - name: package-pull-secret
+    - name: up-provider-pull-secret
 # Removed for brevity
 
 ```
