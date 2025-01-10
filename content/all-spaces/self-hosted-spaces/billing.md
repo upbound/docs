@@ -15,13 +15,20 @@ Spaces **aren't connected** to Upbound's global service. To enable proper billin
 
 Spaces customers must periodically provide the billing data to Upbound. Contact your Upbound sales representative to learn more.
 
+<!-- vale Google.Headings = NO -->
+
 ## AWS S3
+
+<!-- vale Google.Headings = YES -->
 
 Configure billing to write to an S3 bucket by providing the following values at install-time. Create an S3 bucket if you don't already have one.
 
-### IAM Policy
+### IAM policy
 
-Whether you use static credentials or an assumed role, you will need to create an IAM-Policy which needs to be attached to the IAM User for static credentials or the IAM Role for short-lived credentials. The policy should look like this:
+You must create an IAM policy and attach it to the IAM user (for static credentials) or IAM role (for assumed
+roles).
+
+The policy example below enables the necessary S3 permissions:
 
 ```json
 {
@@ -48,7 +55,8 @@ Whether you use static credentials or an assumed role, you will need to create a
 
 ### Authentication with static credentials
 
-Then, on the cluster where you installed the Spaces software, create a secret in `upbound-system`. This secret must contain keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`. Make sure to replace the values with a key ID and key generated from your AWS account.
+In your Spaces install cluster, create a secret in the `upbound-system`
+namespace. This secret must contain keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 
 ```bash
 kubectl create secret generic billing-credentials -n upbound-system \
@@ -56,7 +64,7 @@ kubectl create secret generic billing-credentials -n upbound-system \
   --from-literal=AWS_SECRET_ACCESS_KEY=<SECRET_KEY>
 ```
 
-Install the Space software, providing the billing details in addition to the other values you must set.
+Install the Space software, providing the billing details to the other required values.
 
 {{< tabs >}}
 
@@ -92,7 +100,9 @@ up space init ... \
 
 ### Authentication with an IAM Role
 
-In order to use short-lived credentials with an assumed IAM Role, you will need to create an IAM Role with established trust to the `vector`-serviceaccount in all `mxp-*-system` namespaces. The trust policy should look like this:
+To use short-lived credentials with an assumed IAM role, create an IAM role with
+established trust to the `vector`-serviceaccount in all `mxp-*-system`
+namespaces.
 
 ```json
 {
@@ -114,9 +124,7 @@ In order to use short-lived credentials with an assumed IAM Role, you will need 
 }
 ```
 
-*Note*: Please adjust the values for your aws-account, cluster oidc-provider and region in the example above.
-
-For in-depth documentation about workload-identities used in spaces, please refer to https://docs.upbound.io/all-spaces/workload-id/
+For in-depth documentation about workload-identities used in spaces, refer to https://docs.upbound.io/all-spaces/workload-id/.
 
 {{< tabs >}}
 
@@ -152,9 +160,9 @@ up space init ... \
 
 {{< /tabs >}}
 
-*Note*: `billing.storage.secretRef.name` needs to be set to an empty string when using an assumed role.
+*Note*: You must set `billing.storage.secretRef.name` to an empty string when using an assumed role.
 
-## Azure Blob Storage
+## Azure blob storage
 
 Configure billing to write to a blob in Azure by providing the following values at install-time. Create a storage account and container if you don't already have one.
 
@@ -167,7 +175,7 @@ kubectl create secret generic billing-credentials -n upbound-system \
   --from-literal=AZURE_CLIENT_SECRET=<CLIENT_SECRET>
 ```
 
-Install the Space software, providing the billing details in addition to the other values you must set.
+Install the Space software, providing the billing details to the other required values.
 
 {{< tabs >}}
 
@@ -201,8 +209,11 @@ up space init ... \
 
 {{< /tabs >}}
 
+<!-- vale Google.Headings = NO -->
+
 ## GCP Cloud Storage Buckets
 
+<!-- vale Google.Headings = YES -->
 Configure billing to write to a Cloud Storage bucket in GCP by providing the following values at install-time. Create a bucket if you don't already have one.
 
 Then, on the cluster where you installed the Spaces software, create a secret in `upbound-system`. This secret must contain the key `google_application_credentials`. Make sure to replace the value with a GCP service account key JSON generated from your GCP account.
@@ -212,7 +223,7 @@ kubectl create secret generic billing-credentials -n upbound-system \
   --from-literal=google_application_credentials=<SERVICE_ACCOUNT_KEY_JSON>
 ```
 
-Install the Space software, providing the billing details in addition to the other values you must set.
+Install the Space software, providing the billing details to the other required values.
 
 {{< tabs >}}
 
@@ -248,7 +259,7 @@ up space init ... \
 
 To prepare the billing data to send to Upbound, do the following:
 
-Ensure the current context of your kubeconfig points at the Spaces cluster. Then, run the [export]({{<ref "reference/cli/command-reference.md#space-billing-get">}}) command. The example below exports billing data previously stored in AWS:
+Ensure the current context of your kubeconfig points at the Spaces cluster. Then, run the [export]({{<ref "reference/cli/command-reference.md#space-billing-get">}}) command. The example below exports billing data stored in AWS:
 
 ```bash
 up space billing export --provider=aws \
