@@ -234,6 +234,28 @@ metadata:
 spec:
   ttl: 168h # Backup is garbage collected after 7 days
 ```
+{{<hint>}}
+By default, this setting doesn't delete uploaded files. Review the next section to define
+the deletion policy.
+{{</hint>}}
+
+### Define the deletion policy
+
+Set the `spec.deletionPolicy` to define backup deletion actions, including the
+deletion of the backup file from the bucket. The Deletion Policy value defaults
+to `Orphan`. Set it to `Delete` to remove uploaded files in the bucket. For more
+information on the backup and restore process, review the [Spaces API
+documentation](https://docs.upbound.io/reference/space-api/).
+
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedBackupSchedule
+metadata:
+  name: daily-schedule
+spec:
+  ttl: 168h # Backup is garbage collected after 7 days
+  deletionPolicy: Delete # Defaults to Orphan
+```
 
 ### Garbage collect backups when the schedule gets deleted
 
