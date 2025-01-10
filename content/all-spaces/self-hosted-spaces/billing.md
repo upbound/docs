@@ -98,8 +98,11 @@ up space init ... \
 
 {{< /tabs >}}
 
-### Authentication with an IAM Role
+<!-- vale Google.Headings = NO -->
 
+### Authentication with an IAM role
+
+<!-- vale Google.Headings = YES -->
 To use short-lived credentials with an assumed IAM role, create an IAM role with
 established trust to the `vector`-serviceaccount in all `mxp-*-system`
 namespaces.
@@ -124,7 +127,8 @@ namespaces.
 }
 ```
 
-For in-depth documentation about workload-identities used in spaces, refer to https://docs.upbound.io/all-spaces/workload-id/.
+For more information about workload identities, review the [Workload-identity
+Configuration documentation](https://docs.upbound.io/all-spaces/workload-id/)
 
 {{< tabs >}}
 
