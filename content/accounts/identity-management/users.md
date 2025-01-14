@@ -36,8 +36,10 @@ _API Tokens_ are used to log in with the [Up command-line]({{<ref "cli">}}). Thi
 
 Use the [Upbound registration page](http://accounts.upbound.io/register) to
 create a new user account.
+<!-- vale Google.Headings = NO -->
 
 ### 1. Choose a registration method
+
 Register with Upbound with your GitHub account, Google account or email.
 {{<figure src="/accounts/images/register/signup.png" alt="Choose to sign up with GitHub, Google or Email" height="500px" >}}
 
@@ -66,6 +68,7 @@ After submitting your pin your account is now ready.
 Clicking `Finish` will send you to the [Upbound Marketplace](http://marketplace.upbound.io).
 
 To make changes to your account login to [accounts.upbound.io](https://accounts.upbound.io)
+<!-- vale Google.Headings = YES -->
 
 ## Delete an account
 
