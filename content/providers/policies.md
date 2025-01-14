@@ -16,16 +16,16 @@ aliases:
 
 The following policies provide details on the use, access, support and maintenance of the Upbound Official providers.
 
-{{< tabs >}}
 
-{{< tab "License" >}}
+
+## License
 The Upbound Official providers are open source, and the source code is available under the Apache 2.0 license.
 
 Upbound is the publisher for the Official provider listings in
 the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official).
-{{< /tab >}}
 
-{{< tab "Access" >}}
+
+## Access
 Your Upbound subscription level determines the level of access to the versions of each Official provider in the
 Marketplace.
 
@@ -60,21 +60,22 @@ providers.
 Team or higher subscription tiers will allow access to all available provider versions in the access window, while
 Community and Individual tier will only be able to access the latest version of the provider. For convenience this
 version will be tagged as `v[major]` (`v1`) so users don't need to update the package version each time a new release
-is made.  
+is made.
 {{<img src="providers/images/tier-access.png" alt="Tier access" size="small" unBlur="true">}}
 
-{{< hint "important">}}
+{{< hint "important" >}}
 Community and Individual tier users can **only** access the v<major> version. Community and Individual tiers don't
 support pinning specific `patch` or `minor` provider versions.
 {{< /hint >}}
 
 When, for example, a new minor version of the provider is released the v1 tag will automatically update to point to this
 latest version.
-{{<img src="providers/images/minor-release.png" alt="Minor release" size="small" unBlur="true">}}
+{{<img src="providers/images/minor-release.png" alt="Minor release" size="small"
+unBlur="true" >}}
 
-{{< /tab >}}
 
-{{< tab "Support" >}}
+
+## Support
 For Upbound customers with a `Team` tier or higher subscription, Upbound supports its Official providers for 12 months
 from the release date.
 
@@ -88,9 +89,9 @@ The support window for Upbound Official providers for AWS, Azure, AzureAD, and G
 
 Upbound customers with `Enterprise` tier or higher subscription can [open a ticket]({{<ref "../../support.md" >}}) to
 request support with the Official providers.
-{{< /tab >}}
 
-{{< tab "Publishing" >}}
+
+## Publishing
 Official providers have two relevant version numbers:
 
 * Provider release, for example, `provider-aws:v1.16.0`
@@ -142,9 +143,9 @@ The CRDs contained within an Official provider follow the standard Kubernetes AP
 - `v1` - CRDs that reach a `v1` API version have fully defined APIs. Upbound won't make breaking API changes in the
   current `major` version of the provider.
 
-  {{< /tab >}}
 
-{{< tab "Compatibility" >}}
+
+## Compatibility
 
 ### Upgrading
 
@@ -213,9 +214,9 @@ Examples:
 
 <!-- vale alex.Ablist = YES -->
 
-{{< /tab >}}
 
-{{< tab "CVEs" >}}
+
+## CVEs
 Upbound will make reasonable commercial effort to ensure its Official providers are free
 from [Common Vulnerabilities and Exposures](https://nvd.nist.gov/general/cve-process) (CVEs) under the following
 conditions:
@@ -232,9 +233,7 @@ Vulnerability Scoring System version 3](https://nvd.nist.gov/vuln-metrics/cvss),
 - High, Medium, and Low severity: Within 14 calendar days from the date an upstream fix is publicly available.
 
 A CVE will be considered addressed when a new version of the provider with the fix is released to the Marketplace.
-{{< /tab >}}
 
-{{< /tabs >}}
 
 <!-- vale Google.Headings = YES -->
 <!-- vale Microsoft.HeadingAcronyms = YES -->
