@@ -228,13 +228,7 @@ kind: Provider
 metadata:
   name: provider-terraform
 spec:
-  package: xpkg.upbound.io/upbound/provider-terraform:v0.13.0
-  credentials:
-    source: Secret
-    secretRef:
-      namespace: upbound-system
-      name: aws-credentials
-      key: credentials
+  package: xpkg.upbound.io/upbound/provider-terraform:v0
 ```
 
 Crossplane uses this Kubernetes manifest file to download and install the
@@ -264,7 +258,7 @@ Verify the provider with `kubectl get providers`.
 ```yaml {copy-lines="1"}
 $ kubectl get providers
 NAME                 READY       STATUS    PACKAGE                                              AGE
-provider-terraform   True        True      xpkg.upbound.io/upbound/provider-terraform:v0.13.0   15s
+provider-terraform   True        True      xpkg.upbound.io/upbound/provider-terraform:v0.19.2   15s
 ```
 
 ## Deploy your configuration
