@@ -5,6 +5,7 @@ description: An introduction to Spaces hosting feature in Upbound
 aliases:
     - "/spaces"
     - "/concepts/upbound-spaces"
+icon: balloon
 ---
 <!-- vale write-good.TooWordy = NO -->
 <!-- vale gitlab.SentenceLength = NO -->

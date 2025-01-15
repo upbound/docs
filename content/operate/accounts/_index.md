@@ -1,6 +1,7 @@
 ---
 title: "Upbound IAM"
 weight: 5
+icon: key
 ---
 
 Upbound allows administrators to deploy Role-based Access Control (RBAC)

@@ -2,6 +2,7 @@
 title: "Get Started with Upbound"
 weight: -1
 description: "Learn how Upbound works and how it can work for you."
+hideFromHomepage: true
 aliases:
     - "/getstarted-devex"
     - "/quickstart"

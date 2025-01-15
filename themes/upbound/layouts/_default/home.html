@@ -1,151 +1,141 @@
 {{define "main"}}
-
 <div class="home-container">
+   <div class="intro-grid">
+       <div class="intro-content">
+           <h1>Docs</h1>
+           Whether you're an Upbound expert or just getting started with Crossplane, we're here to guide your internal cloud platform journey.
+       </div>
 
-    <div class="intro-grid">
-        <div class="intro-content">
-            <h1>Docs</h1>
-            Whether you're an Upbound expert or just getting started with Crossplane, we're here to guide your internal cloud platform journey.
-        </div>
+       <div class="about-crossplane border border-2 about-box">
+           <div class="d-flex justify-content-between">
+               <div><h3>About Crossplane</h3></div>
+               <div class="about-link"><a href="/reference/crossplane-vs-upbound/">Learn More</a></div>
+           </div>
+           <div class="about-image">
+               <img class="mx-auto d-block img-fluid"
+                    loading="eager"
+                    src="/img/home/k8s-crossplane-providers.svg"
+                    alt="Upbound and Crossplane logos"
+                    width="auto"
+                    height="45px">
+           </div>
+           Crossplane connects your Kubernetes cluster to external, non-Kubernetes resources, and enables platform teams to build custom APIs for their development teams.
+       </div>
 
-        <div class="about-crossplane border border-2 about-box">
-            <div class="d-flex justify-content-between">
-                <div><h3>About Crossplane</h3></div>
-                <div class="about-link"><a href="/reference/crossplane-vs-upbound/">Learn More</a></div>
-            </div>
-            <div class="about-image">
-                <img    class="mx-auto d-block img-fluid"
-                        loading="eager"
-                        src="/img/home/k8s-crossplane-providers.svg"
-                        alt="Upbound and Crossplane logos"
-                        width="auto"
-                        height="45px">
-            </div>
-            Crossplane connects your Kubernetes cluster to external, non-Kubernetes resources, and enables platform teams to build custom APIs for their development teams.
-        </div>
+       <div class="about-upbound border border-2 about-box">
+           <div class="d-flex justify-content-between">
+               <div><h3>About Upbound</h3></div>
+               <div class="about-link"><a href="/getstarted/control-plane-project/">Learn More</a></div>
+           </div>
+           <div class="about-image align-items-center">
+               <img class="mx-auto d-block img-fluid"
+                    loading="eager"
+                    src="/img/home/upbound-crossplane-loop.svg"
+                    alt="Upbound and Crossplane logos"
+                    height="45px"
+                    width="auto">
+           </div>
+           Upbound provides fully managed control planes to scale-up Crossplane to 10,000s of cloud resources without overloading your existing Kubernetes deployments.
+       </div>
+   </div>
 
-        <div class="about-upbound border border-2 about-box">
-            <div class="d-flex justify-content-between">
-                <div><h3>About Upbound</h3></div>
-                <div class="about-link"><a href="/getstarted/control-plane-project/">Learn More</a></div>
-            </div>
-            <div class="about-image align-items-center">
-                <img    class="mx-auto d-block img-fluid"
-                        loading="eager"
-                        src="/img/home/upbound-crossplane-loop.svg"
-                        alt="Upbound and Crossplane logos"
-                        height="45px"
-                        width="auto">
-            </div>
-            Upbound provides fully managed control planes to scale-up Crossplane to 10,000s of cloud resources without overloading your existing Kubernetes deployments.
-        </div>
-    </div>
+   <div class="title">
+       <h2>Resources</h2>
+   </div>
 
+   <div class="three-wide-grid">
+       {{/* Quickstart Box */}}
+       <div class="element-container">
+           <div class="element-icon">
+               <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default "person-running-regular"}}"/></svg>
+           </div>
+           <div class="element-content">
+               <div class="element-page-title">
+                   <h3><a href="/getstarted/control-plane-project/" target="_blank" class="stretched-link">Quickstart</a></h3>
+               </div>
+               <div class="element-description">
+                   Create your first Upbound Managed Control Plane and connect it to your cloud provider.
+               </div>
+           </div>
+       </div>
 
-    <div class="title">
-        <h2>Resources</h2>
-    </div>
+       {{ range where .Site.Sections.ByWeight "Params.hideFromHomepage" "ne" true }}
+       <div class="element-container">
+           <div class="element-icon">
+               <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default ""}}"/></svg>
+           </div>
+           <div class="element-content">
+               <div class="element-page-title">
+                   <h3><a href="{{.Permalink}}" class="stretched-link">{{.Title}}</a></h3>
+               </div>
+               <div class="element-description">
+                   {{ .Params.description }}
+               </div>
+           </div>
+       </div>
+       {{ end }}
+   </div>
 
+   <div class="title">
+       <h2>More</h2>
+   </div>
 
-    <div class="three-wide-grid">
-        {{/*  Quickstart Box  */}}
-        <div class="element-container">
-            <div class="element-icon">
-                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default "person-running-regular"}}"/></svg>
-            </div>
-            <div class="element-content">
-                <div class="element-page-title">
-                    <h3><a href="/getstarted/control-plane-project/" target="_blank" class="stretched-link">Quickstart</a></h3>
-                 </div>
-                <div class="element-description">
-                    Create your first Upbound Managed Control Plane and connect it to your cloud provider.
-                </div>
-            </div>
-        </div>
+   <div class="three-wide-grid">
+       {{/* Crossplane Box */}}
+       <div class="element-container">
+           <div class="element-icon">
+               <img loading="eager"
+                    src="/img/home/popsicle-icon.svg"
+                    alt="Upbound and Crossplane logos"
+                    height="45px"
+                    width="auto">
+           </div>
+           <div class="element-content">
+               <div class="element-page-title">
+                   <h3><a href="https://docs.crossplane.io" target="_blank" class="stretched-link">Crossplane</a></h3>
+                   <svg width="30px" height="30px" class="external-link-arrow"><use xlink:href="#arrow-up-right"/></svg>
+               </div>
+               <div class="element-description">
+                   Learn more about Crossplane in the Crossplane documentation.
+               </div>
+           </div>
+       </div>
 
-        {{ range .Site.Sections.ByWeight }}
-        <div class="element-container">
-            <div class="element-icon">
-                <svg width="30px" height="30px"><use xlink:href="#{{.Params.icon | default ""}}"/></svg>
-            </div>
-            <div class="element-content">
-                <div class="element-page-title">
-                    <h3><a href="{{.Permalink}}" class="stretched-link">{{.Title}}</a></h3>
-                </div>
-                <div class="element-description">
-                    {{ .Params.description }}
-                </div>
-            </div>
-        </div>
-        {{ end }}
-    </div>
+       {{/* Slack Box */}}
+       <div class="element-container">
+           <div class="element-icon">
+               <img loading="eager"
+                    src="/img/home/slack-mark.svg"
+                    alt="Slack brand logo"
+                    width="30px"
+                    height="30px">
+           </div>
+           <div class="element-content">
+               <div class="element-page-title">
+                   <h3><a href="https://slack.crossplane.io" class="stretched-link" target="_blank">Crossplane Slack</a></h3>
+                   <svg width="30px" height="30px" class="external-link-arrow"><use xlink:href="#arrow-up-right"/></svg>
+               </div>
+               <div class="element-description">
+                   Join more than 11,000 platform builders in the Crossplane community slack.
+               </div>
+           </div>
+       </div>
 
-    <div class="title">
-        <h2>More</h2>
-    </div>
-
-    <div class="three-wide-grid">
-        {{/*  Crossplane Box  */}}
-            <div class="element-container">
-                <div class="element-icon">
-                    <img    loading="eager"
-                            src="/img/home/popsicle-icon.svg"
-                            alt="Upbound and Crossplane logos"
-                            height="45px"
-                            width="auto">
-                </div>
-                <div class="element-content">
-                    <div class="element-page-title">
-                        <h3><a href="https://docs.crossplane.io" target="_blank" class="stretched-link">Crossplane</a></h3>
-                        <svg width="30px" height="30px" class="external-link-arrow"><use xlink:href="#arrow-up-right"/></svg>
-                    </div>
-                    <div class="element-description">
-                        Learn more about Crossplane in the Crossplane documentation.
-                    </div>
-                </div>
-            </div>
-
-        {{/*  Slack Box  */}}
-            <div class="element-container">
-                <div class="element-icon">
-                    <img    loading="eager"
-                            src="/img/home/slack-mark.svg"
-                            alt="Slack brand logo"
-                            width="30px"
-                            height="30px">
-                </div>
-                <div class="element-content">
-                    <div class="element-page-title">
-                        <h3><a href="https://slack.crossplane.io"  class="stretched-link" target="_blank">Crossplane Slack</a></h3>
-                        <svg width="30px" height="30px" class="external-link-arrow"><use xlink:href="#arrow-up-right"/></svg>
-                    </div>
-                    <div class="element-description">
-                        Join more than 11,000 platform builders in the Crossplane community slack.
-                    </div>
-                </div>
-            </div>
-
-        {{/*  Upbound Support Box  */}}
-            <div class="element-container">
-                <div class="element-icon">
-                    <svg width="30px" height="30px"><use xlink:href="#lifering"/></svg>
-                </div>
-                <div class="element-content">
-                    <div class="element-page-title">
-                        <h3><a href="https://upbound.zendesk.com/" class="stretched-link" target="_blank">Upbound Support</a></h3>
-                        <svg width="30px" height="30px" class="external-link-arrow"><use xlink:href="#arrow-up-right"/></svg>
-                    </div>
-                    <div class="element-description">
-                        Get the help you need from our support team.
-                    </div>
-                </div>
-            </div>
-
-    </div>
-
-
-
+       {{/* Support Box */}}
+       <div class="element-container">
+           <div class="element-icon">
+               <svg width="30px" height="30px"><use xlink:href="#lifering"/></svg>
+           </div>
+           <div class="element-content">
+               <div class="element-page-title">
+                   <h3><a href="https://upbound.zendesk.com/" class="stretched-link" target="_blank">Upbound Support</a></h3>
+                   <svg width="30px" height="30px" class="external-link-arrow"><use xlink:href="#arrow-up-right"/></svg>
+               </div>
+               <div class="element-description">
+                   Get the help you need from our support team.
+               </div>
+           </div>
+       </div>
+   </div>
 </div>
-
-
 {{ end }}
