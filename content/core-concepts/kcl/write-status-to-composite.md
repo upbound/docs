@@ -21,18 +21,24 @@ _metadata = lambda name: str -> any {
 }
 
 # Read the desired state for the XR from the pipeline
-dxr = option("params").dxr
-
-# Set some new status on the XR
-dxr.status.someInformation = "cool-status"
+_dxr = option("params").dxr
 
 # Construct a bucket
 bucket = v1beta1.Bucket {
     metadata: _metadata("my-bucket")
     spec.forProvider.region = option("oxr").spec.region
 }
-# Return the bucket and new status for the XR
-items = [bucket, dxr]
+
+# Update the dxr status immutably
+_dxr = {
+    **dxr
+    status: {
+        someInformation: "cool-status"
+    }
+}
+
+# Return the bucket and updated status for the XR
+items = [bucket, _dxr]
 ```
 
 Make sure you've described the status fields you write to in your function in the XRD corresponding to the composition.
