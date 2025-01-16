@@ -6,7 +6,7 @@ description: An introduction to the Consumer Portal feature of Upbound
 
 Upbound offers the browser-based Consumer portal tool that lets you manage resources on your control planes through a graphical interface. Use the Consumer Portal to manage your resources if you prefer using a user-interface through the browser.
 
-As an alternative, you can use Kubernetes-compatible [RESTful API]({{<ref "mcp/#connect-directly-to-your-mcp">}}) offered by each control plane.
+As an alternative, you can use Kubernetes-compatible [RESTful API]({{<ref "learn/core-concepts/managed-control-planes#connect-directly-to-your-mcp">}}) offered by each control plane.
 
 ## Consumer portal features
 
@@ -22,18 +22,18 @@ The Consumer Portal provides:
 
 The Consumer portal shows composite resource claim types only. If a composite resource isn't claimable, it isn't selectable in the Consumer portal. When a user selects from available composite resource claim types, the portal shows a list view of all claims associated with that type.
 
-{{<img src="all-spaces/spaces/images/portal-xrc-listview.png" alt="Upbound Consumer portal list view" lightbox="true">}}
+{{<img src="deploy/spaces/images/portal-xrc-listview.png" alt="Upbound Consumer portal list view" lightbox="true">}}
 
 The Consumer portal offers a dynamic create form-based experience for each composite resource claim type. The form experience is dynamically created based on the schema of the composite resource's definition (XRD).
 
-{{<img src="all-spaces/spaces/images/portal-xrc-crud.png" alt="Upbound Consumer portal crud" lightbox="true">}}
+{{<img src="deploy/spaces/images/portal-xrc-crud.png" alt="Upbound Consumer portal crud" lightbox="true">}}
 
 ## Generate Kubernetes object manifests
 
 When you create a resource using the Consumer portal, Upbound shows the Kubernetes object YAML request that's used to create this resource. You can use the portal form as a way to:
 
 - view a sample YAML-based object request
-- build your own YAML object request using a graphical interface 
+- build your own YAML object request using a graphical interface
 - copy the YAML request and use it in GitOps pipelines
 
 <!-- vale Google.Headings = NO -->
@@ -59,7 +59,7 @@ spec:
 
 ### Resource basics
 
-Composite resource claims are namespace-scoped objects. Every composite resource claims requires a name (`.metadata.name`) and namespace (`.metadata.namespace`). The form presents these fields in the first step of the form under a section titled **Resource basics**. 
+Composite resource claims are namespace-scoped objects. Every composite resource claims requires a name (`.metadata.name`) and namespace (`.metadata.namespace`). The form presents these fields in the first step of the form under a section titled **Resource basics**.
 
 ### Dynamic form steps
 
@@ -89,7 +89,7 @@ Crossplane appends a set of built-in fields onto a composite resource claim. The
 - `writeConnectionSecretToRef`
 
 <!-- vale write-good.Passive = NO -->
-These fields are advanced fields that aren't used often by most users. These fields are grouped in the final step of the form under a section titled **Advanced**. 
+These fields are advanced fields that aren't used often by most users. These fields are grouped in the final step of the form under a section titled **Advanced**.
 <!-- vale write-good.Passive = YES -->
 
 {{<hint "tip" >}}

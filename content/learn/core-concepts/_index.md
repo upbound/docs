@@ -1,6 +1,6 @@
 ---
 title: "Core Concepts"
-weight: 1
+weight: 9
 description: The fundamentals of building with Upbound.
 icon: book
 ---
@@ -11,6 +11,6 @@ Upbound supports multi-language experience for defining and building platforms p
 The following language runtimes are currently supported by Upbound. Select one to learn more:
 <!-- vale Upbound.Spelling = YES -->
 
-- [Python]({{< ref "./python/overview" >}})
-- [KCL]({{< ref "./kcl/overview" >}})
+- [Python]({{< ref "build/python" >}})
+- [KCL]({{< ref "build/kcl" >}})
 

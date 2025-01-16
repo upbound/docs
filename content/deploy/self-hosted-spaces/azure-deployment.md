@@ -3,7 +3,7 @@ title: Azure Deployment Guide
 weight: 3
 description: A  quickstart guide for Upbound Spaces in Azure
 aliases:
-    - /all-spaces/disconnected-spaces/azure-deployment
+    - /deploy/disconnected-spaces/azure-deployment
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in Azure.
@@ -117,7 +117,7 @@ kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Ava
 ### Install ingress-nginx
 
 Starting with Spaces v1.10.0, you need to configure the ingress-nginx
-controller to allow SSL-passthrough mode. You can do so by passing the 
+controller to allow SSL-passthrough mode. You can do so by passing the
 `--enable-ssl-passthrough=true` command-line option to the controller.
 The following Helm install command enables this with the `controller.extraArgs`
 parameter:

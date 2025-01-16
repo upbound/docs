@@ -1,5 +1,5 @@
 ---
-title: Spaces
+title: Deploy
 weight: 3
 description: An introduction to Spaces hosting feature in Upbound
 aliases:

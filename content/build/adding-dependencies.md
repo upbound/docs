@@ -102,8 +102,7 @@ spec:
 
 ## Adding a configuration
 
-Use the [up dependency add]({{< ref
-"reference/cli/command-reference" >}}) command to install configurations into your Upbound project.
+Use the [up dependency add]({{< ref "reference/cli/command-reference" >}}) command to install configurations into your Upbound project.
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0

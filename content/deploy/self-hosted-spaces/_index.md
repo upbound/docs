@@ -4,7 +4,7 @@ weight: 2
 description: A guide to Upbound Self-Hosted Spaces
 aliases:
     - /spaces
-    - /all-spaces/disconnected-spaces
+    - /deploy/disconnected-spaces
 ---
 
 <!-- vale Google.Headings = NO -->
@@ -61,6 +61,6 @@ You must have an [Upbound account](https://www.upbound.io/register/a). Spaces is
 
 ### Next steps
 
-Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "../../getstarted/control-plane-project">}}).
+Get started with Spaces in your own environment by visiting the [quickstart guide]({{<ref "self-hosted-qs.md">}}).
 
 <!-- vale Google.Headings = YES -->

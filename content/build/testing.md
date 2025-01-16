@@ -15,4 +15,4 @@ This command creates a development control plane in the Upbound cloud, and deplo
 Now, you can validate your results, and make any changes to test your resources.
 
 For more information, review the [development control plane documentation]({{< ref
-"development-extensions/dev-cps" >}}).
+"dev-cps" >}}).

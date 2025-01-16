@@ -12,7 +12,7 @@ Visual Studio Code extension provide in-line definitions, linting, autocomplete,
 The `up dep add` command unpacks dependencies that contain resource schemas in
 the `.up/kcl` folder at your project root directory.
 
-Make sure you have the [necessary tools]({{<ref "overview#prerequisites">}}) fully installed on your machine.
+Make sure you have the [necessary tools]({{<ref "kcl#prerequisites">}}) fully installed on your machine.
 
 ## Import a resource schema to a function
 

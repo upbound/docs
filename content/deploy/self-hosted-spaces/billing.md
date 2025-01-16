@@ -4,7 +4,7 @@ weight: 500
 description: A guide for how billing works in an Upbound Space
 aliases:
     - /spaces/billing
-    - /all-spaces/disconnected-spaces/billing
+    - /deploy/disconnected-spaces/billing
 ---
 
 Spaces are a self-hosting feature of Upbound's [flagship product](https://www.upbound.io/product/upbound) for platform teams to deploy managed control planes in their self-managed environments. You can install Spaces into any Kubernetes cluster in your own cloud account, on-premises data center, or on the edge. The pricing usage-based and requires an Upbound account and subscription. The billing unit is a `Loop`.
@@ -128,7 +128,7 @@ namespaces.
 ```
 
 For more information about workload identities, review the [Workload-identity
-Configuration documentation](https://docs.upbound.io/all-spaces/workload-id/)
+Configuration documentation](https://docs.upbound.io/deploy/workload-id/)
 
 {{< tabs >}}
 

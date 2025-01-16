@@ -24,11 +24,11 @@ The example below uses the control plane explorer view to inspect why a claim fo
 
 From the API type card, two claims branching from of it: one shows a healthy green icon, while the other shows an unhealthy red icon.
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-overview.png" alt="Use control plane explorer view to see status of claims"  lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-overview.png" alt="Use control plane explorer view to see status of claims"  lightbox="true">}}
 
 Select `More details` on the unhealthy claim card and Upbound shows details for the claim.
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-claim-more-details.png" alt="Use control plane explorer view to see details of claims" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-claim-more-details.png" alt="Use control plane explorer view to see details of claims" unBlur="true" lightbox="true">}}
 
 Looking at the three events for this claim:
 
@@ -40,7 +40,7 @@ Looking at the three events for this claim:
 
 Next, look at the `status` field of the rendered YAML for the resource.
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-claim-status.png" alt="Use control plane explorer view to see status details of claims" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-claim-status.png" alt="Use control plane explorer view to see status details of claims" unBlur="true" lightbox="true">}}
 
 The status reports a similar message as the event stream: this claim is waiting for a Composite Resource to be ready. Based on this, investigate the Composite Resource referenced by this claim next.
 
@@ -52,7 +52,7 @@ The control plane explorer only shows the claim cards by default. Selecting the 
 
 The previous claim expands into this screenshot:
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-claim-expansion.png" alt="Use control plane explorer view to expand tree of claim" lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-claim-expansion.png" alt="Use control plane explorer view to expand tree of claim" lightbox="true">}}
 
 This renders the XR referenced by the claim (along with all its references). You can see the XR is showing the same unhealthy status icon in its card. Notice the XR has itself two nested XRs. One of the nested XRs shows a healthy green icon on its card, while the other shows an unhealthy red icon. Like the claim, a Composite Resource doesn't show healthy until all referenced resources also show healthy.
 
@@ -60,15 +60,15 @@ This renders the XR referenced by the claim (along with all its references). You
 
 Select `more details` to inspect one of the unhealthy Managed Resources shows the following:
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-mr-event.png" alt="Use control plane explorer view to view events for an MR" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-mr-event.png" alt="Use control plane explorer view to view events for an MR" unBlur="true" lightbox="true">}}
 
 This event reveals it's unhealthy because it's waiting on a reference to another Managed Resource. Searching the rendered YAML of the MR for this resource shows the following:
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-mr-status.png" alt="Use control plane explorer view to view status for an MR" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-mr-status.png" alt="Use control plane explorer view to view status for an MR" unBlur="true" lightbox="true">}}
 
 The rendered YAML shows this MR is referencing a sibling MR that shares the same controller. The same parent XR created both of these managed resources. Inspect the sibling MR to see what its status is.
 
-{{<img src="all-spaces/spaces/images/kb-debug/debug-mr-dependency-status.png" alt="Use control plane explorer view to view status for a sibling MR" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/kb-debug/debug-mr-dependency-status.png" alt="Use control plane explorer view to view status for a sibling MR" unBlur="true" lightbox="true">}}
 
 The sibling MR event stream shows the Provider processed the resource create request. Ignore the `CannotInitalizeManagedResrouce` event. EKS clusters can take 15 minutes or more to provision in AWS. The root cause is everything is fine -- all the resources are still provisioning. Waiting longer and then looking at the control plane explorer again, shows all resources are healthy. For reference, below is an example status field for a resource that's healthy and provisioned.
 

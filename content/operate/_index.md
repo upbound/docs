@@ -1,5 +1,5 @@
 ---
-title: Managed Control Planes
+title: "Operate"
 weight: 4
 description: An introduction to the Managed Control Planes feature of Upbound
 aliases:
@@ -42,7 +42,7 @@ Features considered "alpha" in Crossplane are by default not supported in a mana
 
 ### Hosting environments
 
-Every managed control plane in Upbound belongs to a [control plane group]({{<ref "groups" >}}). Control plane groups are a logical grouping of one or more control planes with shared objects (such as secrets or backup configuration). Every group resides in a [Space]({{<ref "all-spaces" >}}) in Upbound, which are hosting environments for managed control planes.
+Every managed control plane in Upbound belongs to a [control plane group]({{<ref "groups" >}}). Control plane groups are a logical grouping of one or more control planes with shared objects (such as secrets or backup configuration). Every group resides in a [Space]({{<ref "../deploy" >}}) in Upbound, which are hosting environments for managed control planes.
 
 Think of a Space as being conceptually the same as an AWS, Azure, or GCP region. Regardless of the Space type you run a managed control plane in, the core experience is identical.
 
@@ -194,14 +194,14 @@ The Upbound Console doesn't allow direct editing of ProviderConfigs that don't s
 
 ### Configure secrets
 
-Upbound gives users the ability to configure the synchronization of secrets from external stores into control planes. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/secrets-management" >}}).
+Upbound gives users the ability to configure the synchronization of secrets from external stores into control planes. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "secrets-management" >}}).
 
 ### Configure backups
 
-Upbound gives users the ability to configure backup schedules, take impromptu backups, and conduct self-service restore operations. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/backup-and-restore" >}}).
+Upbound gives users the ability to configure backup schedules, take impromptu backups, and conduct self-service restore operations. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "../deploy/backup-and-restore" >}}).
 
 ### Configure telemetry
 
 <!-- vale off -->
-Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "/all-spaces/observability" >}}).
+Upbound gives users the ability to configure the collection of telemetry (logs, metrics, and traces) in their managed control planes. Using Upbound's built-in [OTEL](https://otel.com) support, you can stream this data out to your preferred observability solution. Configure this capability at the group-level, explained in the [Spaces documentation]({{<ref "observability" >}}).
 <!-- vale on -->

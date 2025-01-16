@@ -13,7 +13,7 @@ Upbound's information architecture is a hierarchy consisting of:
 <!-- vale off -->
 * a set of managed control planes
 * logically grouped into control planes groups
-* which are hosted in an environment called a [Space]({{<ref "/all-spaces" >}}).
+* which are hosted in an environment called a [Space]({{<ref "/deploy" >}}).
 
 These contexts nest within each other. An MCP must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
 <!--vale on -->

@@ -97,7 +97,7 @@ Your composition now contains new function references in the `pipeline` section.
 <!-- Python -->
 
 For this example, you need Python and the Python Visual Studio Code extension. Refer to
-the [Visual Studio Code Extensions documentation]({{<ref "development-extensions/vscode-extensions.md">}})
+the [Visual Studio Code Extensions documentation]({{<ref "vscode-extensions.md">}})
 to learn how to install them.
 
 Open the `main.py` function file in Visual Studio Code.
@@ -153,7 +153,7 @@ and more.
 In the next guide, you'll run and test your composition.
 <!-- vale gitlab.FutureTense = YES -->
 
-For more Python best practices, please refer to the [documentation]({{<ref "./python/overview.md">}}).
+For more Python best practices, please refer to the [documentation]({{<ref "python/_index.md">}}).
 
 <!-- /Python -->
 <!-- KCL -->
@@ -165,7 +165,7 @@ curl -fsSL "https://kcl-lang.io/script/install-cli.sh" | /bin/bash
 curl -fsSL "https://kcl-lang.io/script/install-kcl-lsp.sh" | /bin/bash
 ```
 
-Next, install and enable the [KCL Visual Studio Code Extension]({{<ref "development-extensions/vscode-extensions.md">}}).
+Next, install and enable the [KCL Visual Studio Code Extension]({{<ref "vscode-extensions.md">}}).
 
 Open the `main.k` function file in Visual Studio Code. The schema scaffold here builds your
 composition logic and contains placeholders for your desired inputs.
@@ -258,7 +258,7 @@ function adds server side encryption to the buckets your deployment creates.
 In the next guide, you'll run and test your composition.
 <!-- vale gitlab.FutureTense = YES -->
 
-For more KCL best practices, please refer to the [documentation]({{<ref "./kcl/overview.md">}}).
+For more KCL best practices, please refer to the [documentation]({{<ref "kcl/_index.md">}}).
 
 <!-- /KCL -->
 

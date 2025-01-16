@@ -43,7 +43,7 @@ Make sure you've enabled the Shared Secrets feature in whichever Space you plan 
 ## Configure a Shared Secret Store
 <!-- vale Google.Headings = YES -->
 
-[SharedSecretStore](https://docs.upbound.io/reference/space-api/#SharedSecretStore-spec) is a [group-scoped]({{<ref "mcp/groups" >}}) resource that you create in a group containing one or more managed control planes. It provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its group.
+[SharedSecretStore](https://docs.upbound.io/reference/space-api/#SharedSecretStore-spec) is a [group-scoped]({{<ref "operate/groups" >}}) resource that you create in a group containing one or more managed control planes. It provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its group.
 
 ### Secret store provider
 
@@ -235,7 +235,7 @@ spec:
 
 ## Configure a shared external secret
 
-[SharedExternalSecret](https://docs.upbound.io/reference/space-api/#SharedExternalSecret-spec) is a [group-scoped]({{<ref "mcp/groups" >}}) resource that you create in a group containing one or more managed control planes. It provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its group.
+[SharedExternalSecret](https://docs.upbound.io/reference/space-api/#SharedExternalSecret-spec) is a [group-scoped]({{<ref "operate/groups" >}}) resource that you create in a group containing one or more managed control planes. It provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clusterexternalsecret/) resources into control planes within its group.
 
 The `spec.externalSecretSpec` field configures the spec of the corresponding External Cluster Secret to project into managed control planes. Its shape depends on the referenced secret store.
 

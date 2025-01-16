@@ -4,7 +4,7 @@ weight: 900
 description: A guide for deploying an Upbound Space in production
 aliases:
     - /spaces/deployment
-    - /all-spaces/disconnected-spaces/deployment
+    - /deploy/disconnected-spaces/deployment
 ---
 
 You need a Kubernetes cluster as the hosting environment to run Spaces. You can install Spaces into any Kubernetes cluster, version v1.25 or later. Upbound validates the Spaces software runs on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine), and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service). Upbound recommends dedicating the Kubernetes cluster for the express purpose of running Spaces as its sole workload.
@@ -33,7 +33,7 @@ Rightsizing a Space for a production deployment depends on several factors:
 
 #### Control plane empty state memory usage
 
-An idle, empty managed control plane consumes about 640 MB of memory. This encompasses the set of pods that constitute a managed control plane and which get deployed for each control plane instance. 
+An idle, empty managed control plane consumes about 640 MB of memory. This encompasses the set of pods that constitute a managed control plane and which get deployed for each control plane instance.
 
 #### Managed resource memory usage
 
@@ -41,7 +41,7 @@ In Upbound's testing, memory usage isn't influenced a lot by the number of manag
 
 #### Provider memory usage
 
-When you install a Crossplane provider on a control plane, memory gets consumed according to the number of custom resources it defines. Upbound [Official Provider families]({{<ref "providers/provider-families.md" >}}) provide higher fidelity control to platform teams to install providers for only the resources they need, reducing the bloat of needlessly installing unused custom resources. Still, you must factor provider memory usage into your calculations to ensure you've rightsized the memory available in your Spaces cluster. 
+When you install a Crossplane provider on a control plane, memory gets consumed according to the number of custom resources it defines. Upbound [Official Provider families]({{<ref "providers/provider-families.md" >}}) provide higher fidelity control to platform teams to install providers for only the resources they need, reducing the bloat of needlessly installing unused custom resources. Still, you must factor provider memory usage into your calculations to ensure you've rightsized the memory available in your Spaces cluster.
 
 {{< hint "important" >}}
 Be careful not to conflate `managed resource` with `custom resource definition`. The former is an "instance" of an external resource in Crossplane, while the latter defines the API schema of that resource.
@@ -86,15 +86,15 @@ The number of managed resources under management by a control plane is the large
 
 {{< table >}}
 | Provider | MR create operation (CPU core seconds) | MR update or reconciliation operation (CPU core seconds) |
-| ---- | ---- | ---- | 
-| provider-family-aws | 10 | 2 to 3 | 
-| provider-family-gcp | 7 | 1.5 | 
-| provider-family-azure | 7 to 10 | 1.5 to 3 | 
+| ---- | ---- | ---- |
+| provider-family-aws | 10 | 2 to 3 |
+| provider-family-gcp | 7 | 1.5 |
+| provider-family-azure | 7 to 10 | 1.5 to 3 |
 {{< /table >}}
 
 When resources are in a non-ready state, Crossplane providers reconcile often (as fast as every 15 seconds). Once a resource reaches `READY`, each Crossplane provider defaults to a 10 minute poll interval. Given this, a 16-core machine has `16x10x60 =  9600` CPU core seconds available. Interpreting this table:
 
-- A single control plane that needs to create 100 AWS MRs concurrently would consume 1000 CPU core seconds, or about 1.5 cores. 
+- A single control plane that needs to create 100 AWS MRs concurrently would consume 1000 CPU core seconds, or about 1.5 cores.
 - A single control plane that continuously reconciles 100 AWS MRs once they've reached a `READY` state would consume 300 CPU core seconds, or a little under half a core.
 
 Since `provider-family-aws` has the highest recorded numbers for CPU time required, you can use that as an upper limit in your calculations.
@@ -124,30 +124,30 @@ You are welcome to deploy more than one Space. You just need to make sure you ha
 ## Cert-manager
 
 A Spaces deployment uses the [Certificate Custom Resource] from cert-manager to
-provision certificates within the Space. This establishes a nice API boundary 
-between what your platform may need and the Certificate requirements of a 
-Space. 
+provision certificates within the Space. This establishes a nice API boundary
+between what your platform may need and the Certificate requirements of a
+Space.
 
 <!-- vale gitlab.SentenceLength = NO -->
-In the event you would like more control over the issuing Certificate Authority 
+In the event you would like more control over the issuing Certificate Authority
 for your deployment or the deployment of cert-manager itself, this guide is for
 you.
 <!-- vale gitlab.SentenceLength = Yes -->
 
 ### Deploying
 An Upbound Space deployment doesn't have any special requirements for the
-cert-manager deployment itself. The only expectation is that cert-manager and 
+cert-manager deployment itself. The only expectation is that cert-manager and
 the corresponding Custom Resources exist in the cluster.
 
 You should be free to install cert-manager in the cluster in any way that makes
-sense for your organization. You can find some [installation ideas] in the 
+sense for your organization. You can find some [installation ideas] in the
 cert-manager docs.
 
 ### Issuers
 <!-- vale write-good.Passive = NO -->
-A default Upbound Space install includes a [ClusterIssuer]. This `ClusterIssuer` 
-is a `selfSigned` issuer that other certificates are minted from. You have a 
-couple of options available to you for changing the default deployment of the 
+A default Upbound Space install includes a [ClusterIssuer]. This `ClusterIssuer`
+is a `selfSigned` issuer that other certificates are minted from. You have a
+couple of options available to you for changing the default deployment of the
 Issuer:
 1. Changing the issuer name.
 2. Providing your own ClusterIssuer.
@@ -166,11 +166,11 @@ following parameter (assuming your new name is 'SpaceClusterIssuer'):
 <!-- vale Google.Headings = NO -->
 #### Providing your own ClusterIsser
 <!-- vale Google.Headings = YES -->
-To provide your own `ClusterIssuer`, you need to first setup your own 
+To provide your own `ClusterIssuer`, you need to first setup your own
 `ClusterIssuer` in the cluster. The cert-manager docs have a variety of options
 for providing your own. See the [Issuer Configuration] docs for more details.
 
-Once you have your own `ClusterIssuer` set up in the cluster, you need to turn 
+Once you have your own `ClusterIssuer` set up in the cluster, you need to turn
 off the deployment of the `ClusterIssuer` included in the Spaces deployment.
 To do that, provide the following parameter during installation:
 ```shell
@@ -179,7 +179,7 @@ To do that, provide the following parameter during installation:
 
 <b>Considerations</b>:</br>
 If your `ClusterIssuer` has a name that's different from the default name that
-the Spaces installation expects ('spaces-selfsigned'), you need to also specify 
+the Spaces installation expects ('spaces-selfsigned'), you need to also specify
 your `ClusterIssuer` name during install using:
 ```shell
 --set ".Values.certificates.space.clusterIssuer=<your ClusterIssuer name>"
@@ -188,11 +188,11 @@ your `ClusterIssuer` name during install using:
 ## Ingress
 
 To route requests from an external client (kubectl, ArgoCD, etc) to a
-control plane, a Spaces deployment includes a default [Ingress] manifest. In 
-order to ease getting started scenarios, the current `Ingress` includes 
-configurations (properties and annotations) that assume that you installed the 
-commonly used [ingress-nginx ingress controller] in the cluster. This section 
-walks you through using a different `Ingress`, if that's something that your 
+control plane, a Spaces deployment includes a default [Ingress] manifest. In
+order to ease getting started scenarios, the current `Ingress` includes
+configurations (properties and annotations) that assume that you installed the
+commonly used [ingress-nginx ingress controller] in the cluster. This section
+walks you through using a different `Ingress`, if that's something that your
 organization needs.
 
 ### Default manifest
@@ -246,28 +246,28 @@ The notable pieces are:
 
 <!-- vale write-good.Passive = NO -->
 <!-- vale Microsoft.Wordiness = NO -->
-This property represents the namespace that the spaces-router is deployed to. 
+This property represents the namespace that the spaces-router is deployed to.
 In most cases this is `upbound-system`.
 <!-- vale write-good.Passive = YES -->
 <!-- vale Microsoft.Wordiness = YES -->
 
 2. proxy-ssl-* annotations
 
-The spaces-router pod terminates TLS using certificates located in the 
+The spaces-router pod terminates TLS using certificates located in the
 mxp-hostcluster-certs `Secret` located in the `upbound-system` `Namespace`.
 
 3. proxy-* annotations
 <!-- vale write-good.Passive = NO -->
 Requests coming into the ingress-controller can be variable depending on what
-the client is requesting. For example, `kubectl get crds` has different 
-requirements for the connection compared to a 'watch', for example 
-`kubectl get pods -w`. The ingress-controller is configured to be able to 
+the client is requesting. For example, `kubectl get crds` has different
+requirements for the connection compared to a 'watch', for example
+`kubectl get pods -w`. The ingress-controller is configured to be able to
 account for either scenario.
 <!-- vale write-good.Passive = YES -->
 
 4. configuration-snippets
 
-These commands add headers to the incoming requests that help with telemetry 
+These commands add headers to the incoming requests that help with telemetry
 and diagnosing problems within the system.
 
 5. Rules
@@ -292,7 +292,7 @@ the following parameter during installation:
 <!-- vale Microsoft.Avoid = NO -->
 <!-- vale Microsoft.Wordiness = NO -->
 <!-- vale write-good.Passive = NO -->
-Operators will need to take into account the following considerations when 
+Operators will need to take into account the following considerations when
 disabling the default `Ingress` deployment.
 
 1. Ensure the custom `Ingress` manifest is placed in the same namespace as the
@@ -300,7 +300,7 @@ disabling the default `Ingress` deployment.
 2. Ensure that the ingress is configured to use a `spaces-router` as a secure
 backend and that the secret used is the mxp-hostcluster-certs secret.
 3. Ensure that the ingress is configured to handle long-lived connections.
-4. Ensure that the routing rule sends requests prefixed with 
+4. Ensure that the routing rule sends requests prefixed with
 `/v1/controlPlanes` to the `spaces-router` using the `http` port.
 <!-- vale Google.Will = YES -->
 <!-- vale gitlab.FutureTense = YES -->

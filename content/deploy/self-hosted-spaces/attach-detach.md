@@ -3,11 +3,11 @@ title: Connect or disconnect a Space
 weight: 120
 description: Enable and connect self-hosted Spaces to the Upbound console
 aliases:
-    - /all-spaces/spaces/attach-detach
+    - /deploy/spaces/attach-detach
 ---
 
 {{< hint "important" >}}
-This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API]({{<ref "all-spaces/query-api/_index.md">}}) and [enable Upbound RBAC]({{<ref "accounts/authorization/upbound-rbac.md">}}) in order to connect a Space to Upbound.
+This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API]({{<ref "deploy/query-api">}}) and [enable Upbound RBAC]({{<ref "operate/accounts/authorization/upbound-rbac">}}) in order to connect a Space to Upbound.
 {{< /hint >}}
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -18,11 +18,11 @@ This feature is in preview. Starting in Spaces `v1.8.0` and later, you must depl
 
 Before you begin, make sure you have:
 
-- An existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
+- An existing Upbound [organization]({{<ref "operate/accounts/identity-management/organizations.md">}}) in Upbound SaaS.
 - The `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 - A `token.json` license, provided by your Upbound account representative.
-- You enabled the [Query API]({{<ref "all-spaces/self-hosted-spaces/query-api">}}) in the self-hosted Space.
+- You enabled the [Query API]({{<ref "deploy/query-api">}}) in the self-hosted Space.
 
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
@@ -59,7 +59,7 @@ export UPBOUND_ORG_NAME=$@your-org-name$@
 Create a new robot token and export it to an environment variable called `UPBOUND_TOKEN`:
 
 ```bash
-up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect" 
+up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect"
 export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-| awk -F': ' '/Token:/ {print $2}')
 ```
 
@@ -99,7 +99,7 @@ helm -n upbound-system upgrade --install agent \
 
 Go to the [Upbound Console](https://console.upbound.io), log in, and choose the newly connected Space from the Space selector dropdown.
 
-{{<img src="all-spaces/spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
+{{<img src="deploy/spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
 
 {{< hint "note" >}}
 You can only connect a self-hosted Space to a single organization at a time.
@@ -135,7 +135,7 @@ up robot delete "${UPBOUND_SPACE_NAME}" --force
 
 ### Architecture
 
-{{<img src="all-spaces/spaces/images/console-attach-architecture.jpg" alt="An architectural diagram of a self-hosted Space attached to Upbound">}}
+{{<img src="deploy/spaces/images/console-attach-architecture.jpg" alt="An architectural diagram of a self-hosted Space attached to Upbound">}}
 
 {{< hint "note" >}}
 This diagram illustrates a self-hosted Space running in AWS connected to the global Upbound Console. The same model applies to a Space running in AKS, GKE, or other Kubernetes environments.

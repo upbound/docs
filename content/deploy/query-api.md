@@ -32,7 +32,7 @@ To enable this feature, set `features.alpha.apollo.enabled=true` and `features.a
 However, you need to install CloudNativePG (`CNPG`) to provide the PostgreSQL instance. You can let the `up` CLI do this for you, or install it manually.
 
 For more customization, see the [Helm chart reference]({{<ref
-"all-spaces/self-hosted-spaces/helm-reference.md">}}). You can modify the number
+"deploy/self-hosted-spaces/helm-reference.md">}}). You can modify the number
 of PostgreSQL instances, pooling instances, storage size, and more.
 
 If you have specific requirements not addressed in the Helm chart, see below for more information on how to bring your own [PostgreSQL setup]({{<ref "#self-hosted-postgresql-configuration">}}).
@@ -92,7 +92,7 @@ The Query API architecture uses three components, other than a PostgreSQL databa
 
 The default setup also uses the `PgBouncer` connection pooler to manage connections from the syncers.
 
-{{<img src="all-spaces/self-hosted-spaces/images/query-api-arch.png" alt="Query API architecture diagram" lightbox="true">}}
+{{<img src="deploy/self-hosted-spaces/images/query-api-arch.png" alt="Query API architecture diagram" lightbox="true">}}
 
 Each component needs to connect to the PostgreSQL database.
 
@@ -340,7 +340,7 @@ helm ... \
 ## Using the Query API
 
 <!-- vale Google.Headings = YES -->
-See the [Query API documentation]({{<ref "all-spaces/query-api">}}) for more information on how to use the Query API.
+See the [Query API documentation]({{<ref "connect/query-api">}}) for more information on how to use the Query API.
 
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->

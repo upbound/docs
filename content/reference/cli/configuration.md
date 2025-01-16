@@ -15,7 +15,7 @@ The `up` CLI stores configuration information in `~/.up/config.json`. Commands u
 
 ### Format
 
-`up` allows users to define profiles that contain sets of preferences and credentials for interacting with Upbound. This enables executing commands as different users, in different accounts, or different Upbound deployment contexts. 
+`up` allows users to define profiles that contain sets of preferences and credentials for interacting with Upbound. This enables executing commands as different users, in different accounts, or different Upbound deployment contexts.
 
 An `up` profile uses the following format:
 
@@ -41,7 +41,7 @@ An `up` profile uses the following format:
 You can configure an `up` profile as one of three types:
 
 - **user:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment.
-- **space:** This profile type configures `up` to communicate with an [Upbound Space]({{<ref "/all-spaces" >}}), which requires a `kubecontext`.
+- **space:** This profile type configures `up` to communicate with an [Upbound Space]({{<ref "/deploy" >}}), which requires a `kubecontext`.
 - **token:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment using an API token as the auth method.
 
 ## Profile management
@@ -57,7 +57,7 @@ up login --profile test -u hasheddan -p cool-password
 ```
 
 By default the command updates the profile named `default`. Update a specific profile with `--profile`.
-Set an account as the default account with `-a` (`--account`). 
+Set an account as the default account with `-a` (`--account`).
 
 If users use `up` to create a new Space, `up` automatically adds a new profile configured to communicate with that Space.
 
@@ -80,13 +80,13 @@ up profile use $@<profile-name>$@
 ### Invalidate session tokens
 
 `up` uses session tokens for authentication after login. Tokens are valid for 30
-days from login. 
+days from login.
 
 {{<hint "important" >}}
 Tokens are private authentication data. Don't share your token.
 {{< /hint >}}
 
-For currently active tokens, revoke the token with `up logout --profile <profile-name>`. 
+For currently active tokens, revoke the token with `up logout --profile <profile-name>`.
 
 For inactive tokens, use the [Upbound Password Reset](https://accounts.upbound.io/resetPassword) and select "Delete all active sessions" to revoke all tokens.
 

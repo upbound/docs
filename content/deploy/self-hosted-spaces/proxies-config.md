@@ -3,7 +3,7 @@ title: Proxied configuration
 weight: 200
 description: Configure Upbound within a proxied environment
 aliases:
-    - /all-spaces/disconnected-spaces/proxies-config
+    - /deploy/disconnected-spaces/proxies-config
 ---
 
 <!-- vale off -->

@@ -5,7 +5,7 @@ description: A  quickstart guide for Upbound Spaces
 aliases:
     - /spaces/kind-quickstart
     - /kind-quickstart
-    - /all-spaces/disconnected-spaces/quickstart
+    - /deploy/disconnected-spaces/quickstart
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.
@@ -143,7 +143,7 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 
 Before you begin, make sure you have:
 
-- An existing Upbound [organization]({{<ref "accounts/identity-management/organizations.md">}}) in Upbound SaaS.
+- An existing Upbound [organization]({{<ref "operate/accounts/identity-management/organizations.md">}}) in Upbound SaaS.
 - The `up` CLI installed and logged into your organization
 - `kubectl` installed with the kubecontext of your self-hosted Space cluster.
 - A `token.json` license, provided by your Upbound account representative.
@@ -258,7 +258,7 @@ helm -n upbound-system upgrade --install agent \
 
 Go to the [Upbound Console](https://console.upbound.io), log in, and choose the newly connected Space from the Space selector dropdown.
 
-{{<img src="all-spaces/spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
+{{<img src="deploy/spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
 
 {{< hint "note" >}}
 You can only connect a self-hosted Space to a single organization at a time.

@@ -11,7 +11,7 @@ Upbound's Managed Control Plane Connector (MCP Connector) allows you to make a c
 
 MCP Connector connects Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinition`s are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
 
-{{<img src="all-spaces/spaces/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
+{{<img src="deploy/spaces/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
 
 ### Managed control plane connector operations
 
@@ -42,7 +42,7 @@ Connect your app cluster to a namespace in an Upbound managed control plane with
 ```yaml
 upbound:
   # This is your org account in Upbound e.g. the name displayed after executing `up org list`
-  account: <ORG_ACCOUNT> 
+  account: <ORG_ACCOUNT>
   # This is a personal access token generated in the Upbound Console
   token: <PERSONAL_ACCESS_TOKEN>
 
@@ -52,24 +52,24 @@ spaces:
   insecureSkipTLSVerify: true
   controlPlane:
     # The name of the MCP you want the Connector to attach to
-    name: <CONTROL_PLANE_NAME> 
+    name: <CONTROL_PLANE_NAME>
     # The control plane group the MCP resides in
-    group: <CONTROL_PLANE_GROUP> 
+    group: <CONTROL_PLANE_GROUP>
     # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
-    claimNamespace: <NAMESPACE_TO_SYNC_TO> 
+    claimNamespace: <NAMESPACE_TO_SYNC_TO>
 ```
 
 {{< /tab >}}
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "mcp/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+Create a [kubeconfig]({{<ref "learn/core-concepts/managed-control-planes/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
 spaces:
   controlPlane:
     # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
-    claimNamespace: <NAMESPACE_TO_SYNC_TO> 
+    claimNamespace: <NAMESPACE_TO_SYNC_TO>
     kubeconfigSecret:
       name: my-controlplane-kubeconfig
       key: kubeconfig
@@ -106,7 +106,7 @@ Install the MCP Connector Helm chart with `helm install`. Make sure to update th
 ```yaml
 upbound:
   # This is your org account in Upbound e.g. the name displayed after executing `up org list`
-  account: <ORG_ACCOUNT> 
+  account: <ORG_ACCOUNT>
   # This is a personal access token generated in the Upbound Console
   token: <PERSONAL_ACCESS_TOKEN>
 
@@ -116,24 +116,24 @@ spaces:
   insecureSkipTLSVerify: true
   controlPlane:
     # The name of the MCP you want the Connector to attach to
-    name: <CONTROL_PLANE_NAME> 
+    name: <CONTROL_PLANE_NAME>
     # The control plane group the MCP resides in
-    group: <CONTROL_PLANE_GROUP> 
+    group: <CONTROL_PLANE_GROUP>
     # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
-    claimNamespace: <NAMESPACE_TO_SYNC_TO> 
+    claimNamespace: <NAMESPACE_TO_SYNC_TO>
 ```
 
 {{< /tab >}}
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "mcp/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+Create a [kubeconfig]({{<ref "learn/core-concepts/managed-control-planes/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
 spaces:
   controlPlane:
     # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
-    claimNamespace: <NAMESPACE_TO_SYNC_TO> 
+    claimNamespace: <NAMESPACE_TO_SYNC_TO>
     kubeconfigSecret:
       name: my-controlplane-kubeconfig
       key: kubeconfig
@@ -211,11 +211,11 @@ app cluster. Although your local cluster has an Object, the actual resources is 
 kubectl apply -f claim.yaml
 ```
 
-{{<img src="all-spaces/spaces/images/ClaimInCluster.png" alt="Claim in cluster" size="small" lightbox="true">}}
+{{<img src="deploy/spaces/images/ClaimInCluster.png" alt="Claim in cluster" size="small" lightbox="true">}}
 
 Once Kubernetes creates the object, view the console to see your object.
 
-{{<img src="all-spaces/spaces/images/ClaimInConsole.png" alt="Claim by connector in console" lightbox="true">}}
+{{<img src="deploy/spaces/images/ClaimInConsole.png" alt="Claim by connector in console" lightbox="true">}}
 
 You can interact with the object through your cluster just as if it
 lives in your cluster.
@@ -228,7 +228,7 @@ Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/c
 
 Claims are store in a unique namespace in the Upbound managed control plane. Every cluster creates a new MCP namespace.
 
-{{<img src="all-spaces/spaces/images/ConnectorMulticlusterArch.png" alt="Multi-cluster architecture with managed control plane connector" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/ConnectorMulticlusterArch.png" alt="Multi-cluster architecture with managed control plane connector" unBlur="true" lightbox="true">}}
 
 There's no limit on the number of clusters connected to a single control plane. Control plane operators can see all their infrastructure in a central control plane.
 

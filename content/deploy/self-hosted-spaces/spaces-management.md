@@ -4,7 +4,7 @@ weight: 4
 description: Common operations in Spaces
 aliases:
     - /spaces/spaces-management
-    - /all-spaces/disconnected-spaces/spaces-management
+    - /deploy/disconnected-spaces/spaces-management
 ---
 
 ## Spaces management
@@ -18,7 +18,7 @@ up space init "v1.9.0"
 ```
 
 {{< hint "tip" >}}
-For a full guide to get started with Spaces, read one of the [quickstart]({{<ref "./quickstart">}}) guides:
+For a full guide to get started with Spaces, read one of the [quickstart]({{<ref "learn/control-plane-project">}}) guides:
 {{< /hint >}}
 
 You can also install the helm chart for Spaces directly. In order for a Spaces install to succeed, you must install some prerequisites first and configure them. This includes:
