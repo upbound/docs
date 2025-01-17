@@ -64,9 +64,12 @@ You should see the installed version of the `up` CLI. Since you aren't logged in
 
 Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
 
-```shell
-  up login
+{{< editCode >}}
+```ini {copy-lines="all"}
+up login --account=$@<yourUpboundAccount>$@
 ```
+{{< /editCode >}}
+
 
 ## Step 1: Create a new project
 Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding.
