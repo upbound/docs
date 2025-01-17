@@ -1,6 +1,6 @@
 ---
-title: "Spaces v1.9.3"
-version: "v1.9.3"
+title: "Spaces v1.10.1"
+version: "v1.10.1"
 date: 2025-01-13
 tocHidden: true
 product: "spaces"
