@@ -5,6 +5,7 @@ description: An introduction to the Managed Control Planes feature of Upbound
 aliases:
     - concepts/mcp
 icon: layer-group
+category: "guides"
 ---
 
 Managed control planes (MCPs) are fully isolated Crossplane control plane instances that Upbound manages for you. This means:

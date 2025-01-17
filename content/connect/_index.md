@@ -5,5 +5,6 @@ description: An introduction to Spaces hosting feature in Upbound
 aliases:
     - "/spaces"
     - "/concepts/upbound-spaces"
-icon: balloon
+icon: puzzle
+category: "guides"
 ---

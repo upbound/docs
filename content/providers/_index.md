@@ -5,6 +5,7 @@ icon: "upbound-official"
 description: Upbound creates, maintains and supports a set of Crossplane providers called official providers.
 aliases:
   - upbound-marketplace/providers
+category: "resources"
 ---
 
 {{<img src="providers/images/official-providers.png" alt="Official providers" size="medium" unBlur="true" >}}

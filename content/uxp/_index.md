@@ -4,6 +4,7 @@ weight: 300
 icon: "popsicle"
 description: "The Upbound official Crossplane distribution."
 hideFromHomepage: true
+category: "resources"
 ---
 
 Upbound Universal Crossplane (`UXP`) is the Upbound commercially supported version of Crossplane. UXP consists of upstream Crossplane and Upbound-specific enhancements and patches.

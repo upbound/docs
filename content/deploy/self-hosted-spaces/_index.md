@@ -5,6 +5,7 @@ description: A guide to Upbound Self-Hosted Spaces
 aliases:
     - /spaces
     - /deploy/disconnected-spaces
+category: "guides"
 ---
 
 <!-- vale Google.Headings = NO -->

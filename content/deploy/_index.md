@@ -6,6 +6,7 @@ aliases:
     - "/spaces"
     - "/concepts/upbound-spaces"
 icon: balloon
+category: "guides"
 ---
 <!-- vale write-good.TooWordy = NO -->
 <!-- vale gitlab.SentenceLength = NO -->
