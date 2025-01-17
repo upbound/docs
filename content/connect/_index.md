@@ -1,7 +1,7 @@
 ---
 title: Connect
 weight: 5
-description: An introduction to Spaces hosting feature in Upbound
+description: Integrate your existing services into the Upbound workflow
 aliases:
     - "/spaces"
     - "/concepts/upbound-spaces"

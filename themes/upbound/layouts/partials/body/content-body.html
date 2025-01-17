@@ -29,15 +29,6 @@
 		  {{ partial "body/api" . }}
 		{{ end }}
 	  </div>
-	{{ else if .Page.IsSection }}
-	  <ul>
-		{{ range .Pages }}
-		  {{ if not .Draft }}
-			<li>
-			  <a href="{{.Permalink}}">{{.Title}}</a>
-			</li>
-		  {{ end }}
-		{{ end }}
-	  </ul>
+
 	{{ end }}
    </div>

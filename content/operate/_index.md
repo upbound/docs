@@ -1,7 +1,7 @@
 ---
 title: "Operate"
 weight: 4
-description: An introduction to the Managed Control Planes feature of Upbound
+description: Manage and configure Upbound services and features
 aliases:
     - concepts/mcp
 icon: layer-group
