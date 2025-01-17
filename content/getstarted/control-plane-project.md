@@ -64,9 +64,12 @@ You should see the installed version of the `up` CLI. Since you aren't logged in
 
 Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
 
-```shell
-  up login
+{{< editCode >}}
+```ini {copy-lines="all"}
+up login --account=$@<yourUpboundAccount>$@
 ```
+{{< /editCode >}}
+
 
 ## Step 1: Create a new project
 Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding.
@@ -397,7 +400,7 @@ from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.devex.xstoragebucket import v1alpha1
 from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
 from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
 from .model.io.upbound.aws.s3.bucketownershipcontrols import v1beta1 as bocv1beta1
@@ -613,7 +616,7 @@ from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
 from .model.io.upbound.azure.resourcegroup import v1beta1 as rgv1beta1
 from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
 from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
-from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.devex.xstoragebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -756,7 +759,7 @@ from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
 from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
-from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.devex.xstoragebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
