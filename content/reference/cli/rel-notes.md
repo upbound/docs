@@ -9,6 +9,32 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.37.0
+
+Released TODO
+
+### What's Changed
+
+- New `up composition render` command introduced to allow for local testing of compositions including those that use embedded functions.
+- Configuration is now profile-centric (see Breaking Changes below).
+- `up profile use` restores the last-used Kubeconfig context for the selected profile.
+- `up profile config` is deprecated and its functionality will be removed in a future release.
+- Kubeconfig flags are handled consistently across commands.
+- "Account" renamed to "Organization" in configuration and flags, since the value must be an Upbound organization name.
+- Bug fixes and UX improvements.
+
+### Breaking Changes
+
+- Creating a configuration profile is now required.
+- Users of disconnected Spaces must now create a disconnected configuration profile for each disconnected Space they interact with.
+- `up ctx` is now profile-specific. Only contexts belonging to a given profile's organization or disconnected Space can be accessed when that profile is active.
+
+## v0.36.4
+Released January 10th, 2025.
+
+### What's Changed
+- Updated base image for Python functions in projects.
+
 ## v0.36.3
 Released January 7th, 2025.
 
