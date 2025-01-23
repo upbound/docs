@@ -1,7 +1,7 @@
 ---
 title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
-weight: 0
+weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
     - "/quickstart"
@@ -20,10 +20,10 @@ By the end of this guide, you'll have:
 3. APIs for self-service infrastructure provisioning
 4. A streamlined infrastructure workflow
 
-This approach allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
+Upbound allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
 
 ## Step 0: Prerequisites
-This guide assumes you are already familiar with AWS, Azure, or GCP.
+This guide assumes you're already familiar with AWS, Azure, or GCP.
 
 For this guide, you'll need:
 - The Up CLI installed
@@ -37,7 +37,7 @@ For this guide, you'll need:
 
 ### Install the `up` CLI
 
-To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
+To use Upbound, install the `up` CLI. You can download it as a binary package or with Homebrew.
 {{< tabs >}}
 {{< tab "Binary" >}}
 ```shell
@@ -60,7 +60,7 @@ The minimum supported version is `v0.35.0`. To verify your CLI installation and 
 ```shell
 up version
 ```
-You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
+Both the `Crossplane Version` and `Spaces Control Version` return `unknown`.
 
 ### Login to Upbound
 
@@ -73,7 +73,7 @@ Authenticate your CLI with your Upbound account by using the login command. This
 ## Step 1: Create a new project
 Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding.
 
-### Init the project
+### Initialize the project
 ```shell
   up project init upbound-qs && cd upbound-qs
 ```
