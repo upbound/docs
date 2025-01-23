@@ -25,8 +25,9 @@ The `up composition` command manages Compositions.
 
 Generate a Composition.
 
-Arguments:
-  `<xrd>`    File path to the Crossplane Resource Definition (XRD) YAML file.
+**Arguments:**
+
+* `<xrd>`    File path to the Crossplane Resource Definition (XRD) YAML file.
 
 All `up composition generate` commands support the following options:
 
@@ -48,9 +49,12 @@ All `up composition generate` commands support the following options:
 
 Run a composition locally to render an XR into composed resources.
 
-Arguments:
-  `<composition>`           A YAML file specifying the Composition to use to render the Composite Resource (XR).
-  `<composite-resource>`    A YAML file specifying the Composite Resource (XR) to render.
+
+**Arguments:**
+
+* `<composition>`           A YAML file specifying the Composition to use to render the Composite Resource (XR).
+
+* `<composite-resource>`    A YAML file specifying the Composite Resource (XR) to render.
 
 The `render` command shows you what composed resources Crossplane would create by printing them to stdout. It also prints any changes that would be made to the status of the XR. It doesn't talk to Crossplane.
 Instead it runs the Composition Function pipeline specified by the Composition locally, and uses that to render the XR.
@@ -1179,8 +1183,9 @@ Examples:
     # Initialize a new project from a private template using SSH authentication with an SSH key password:
     up project init --template="git@github.com:upbound/project-template.git" --method=ssh --ssh-key=/Users/username/.ssh/id_rsa --password="<ssh-key-password>" example-project
 
-Arguments:
-  <name>    The name of the new project to initialize.
+**Arguments:**
+
+* `<name>`    The name of the new project to initialize.
 
 All `up project init` commands support the following options:
 
