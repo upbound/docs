@@ -44,11 +44,15 @@ All `up composition generate` commands support the following options:
 | `-d`       | `--cache-dir="~/.up/cache/"`    | Directory used for caching dependency images (`$CACHE_DIR`).                                                                     |
 {{< /table >}}
 
-### composition generate
+### composition render
 
 Run a composition locally to render an XR into composed resources.
 
-The 'render' command shows you what composed resources Crossplane would create by printing them to stdout. It also prints any changes that would be made to the status of the XR. It doesn't talk to Crossplane.
+Arguments:
+  `<composition>`           A YAML file specifying the Composition to use to render the Composite Resource (XR).
+  `<composite-resource>`    A YAML file specifying the Composite Resource (XR) to render.
+
+The `render` command shows you what composed resources Crossplane would create by printing them to stdout. It also prints any changes that would be made to the status of the XR. It doesn't talk to Crossplane.
 Instead it runs the Composition Function pipeline specified by the Composition locally, and uses that to render the XR.
 
 Use the standard `DOCKER_HOST`, `DOCKER_API_VERSION`, `DOCKER_CERT_PATH`, and `DOCKER_TLS_VERIFY` environment variables to configure how this command connects to the Docker daemon.
@@ -56,7 +60,6 @@ Use the standard `DOCKER_HOST`, `DOCKER_API_VERSION`, `DOCKER_CERT_PATH`, and `D
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag                               | Description                                                                                                                               |
 | ---------- | ----------------------------------------| ----------------------------------------------------------------------------------------------------------------------------------------- |
-|            |
 |            | `--context-files=KEY=VALUE;...`         | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be files containing JSON.                           |
 |            | `--context-values=KEY=VALUE;...`        | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be JSON. Keys take precedence over --context-files. |
 | `-r`       | `--include-function-results`            | Include informational and warning messages from Functions in the rendered output as resources of kind: Result.                            |
@@ -71,7 +74,7 @@ Use the standard `DOCKER_HOST`, `DOCKER_API_VERSION`, `DOCKER_CERT_PATH`, and `D
 | `-d`       | `--cache-dir="~/.up/cache/"`            | Directory used for caching dependency images ($CACHE_DIR).                                                                                |
 |            | `--no-build-cache`                      | Don't cache image layers while building.                                                                                                  |
 |            | `--build-cache-dir="~/.up/build-cache"` | Path to the build cache directory.                                                                                                        |
-{{ < /table >}}
+{{< /table >}}
 
 **Examples**
 
