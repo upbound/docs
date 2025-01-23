@@ -44,6 +44,70 @@ All `up composition generate` commands support the following options:
 | `-d`       | `--cache-dir="~/.up/cache/"`    | Directory used for caching dependency images (`$CACHE_DIR`).                                                                     |
 {{< /table >}}
 
+### composition generate
+
+Run a composition locally to render an XR into composed resources.
+
+The 'render' command shows you what composed resources Crossplane would create by printing them to stdout. It also prints any changes that would be made to the status of the XR. It doesn't talk to Crossplane.
+Instead it runs the Composition Function pipeline specified by the Composition locally, and uses that to render the XR.
+
+Use the standard `DOCKER_HOST`, `DOCKER_API_VERSION`, `DOCKER_CERT_PATH`, and `DOCKER_TLS_VERIFY` environment variables to configure how this command connects to the Docker daemon.
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                               | Description                                                                                                                               |
+| ---------- | ----------------------------------------| ----------------------------------------------------------------------------------------------------------------------------------------- |
+|            |
+|            | `--context-files=KEY=VALUE;...`         | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be files containing JSON.                           |
+|            | `--context-values=KEY=VALUE;...`        | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be JSON. Keys take precedence over --context-files. |
+| `-r`       | `--include-function-results`            | Include informational and warning messages from Functions in the rendered output as resources of kind: Result.                            |
+| `-x`       | `--include-full-xr`                     | Include a direct copy of the input XR's spec and metadata fields in the rendered output.                                                  |
+| `-o`       | `--observed-resources=PATH`             | A YAML file or directory of YAML files specifying the observed state of composed resources.                                               |
+| `-e`       | `--extra-resources=PATH`                | A YAML file or directory of YAML files specifying extra resources to pass to the Function pipeline.                                       |
+| `-c`       | `--include-context`                     | Include the context in the rendered output as a resource of kind: Context.                                                                |
+|            | `--function-credentials=PATH`           | A YAML file or directory of YAML files specifying credentials to use for Functions to render the XR.                                      |
+|            | `--timeout=1m`                          | How long to run before timing out.                                                                                                        |
+|            | `--max-concurrency=8`                   | Maximum number of functions to build  at once ($UP_MAX_CONCURRENCY).                                                                      |
+| `-f`       | `--project-file="upbound.yaml"`         | Path to project definition file.                                                                                                          |
+| `-d`       | `--cache-dir="~/.up/cache/"`            | Directory used for caching dependency images ($CACHE_DIR).                                                                                |
+|            | `--no-build-cache`                      | Don't cache image layers while building.                                                                                                  |
+|            | `--build-cache-dir="~/.up/build-cache"` | Path to the build cache directory.                                                                                                        |
+{{ < /table >}}
+
+**Examples**
+
+* Simulate creating a new XR.
+
+```shell
+composition render composition.yaml xr.yaml
+```
+
+* Simulate updating an XR that already exists.
+```shell
+composition render composition.yaml xr.yaml \
+--observed-resources=existing-observed-resources.yaml
+```
+
+* Pass context values to the Function pipeline.
+
+```shell
+composition render composition.yaml xr.yaml \
+--context-values=apiextensions.crossplane.io/environment='{"key": "value"}'
+```
+
+* Pass extra resources Functions in the pipeline can request.
+
+```shell
+
+composition render composition.yaml xr.yaml \
+--extra-resources=extra-resources.yaml
+```
+
+* Pass credentials to Functions in the pipeline that need them.
+
+```shell
+composition render composition.yaml xr.yaml \
+--function-credentials=credentials.yaml
+```
 
 ## configuration
 
