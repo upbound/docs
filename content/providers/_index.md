@@ -8,7 +8,7 @@ aliases:
 ---
 
 Upbound creates, maintains and supports a set of Crossplane providers published as **Official** providers in the
-Marketplace. Official providers are listings on the Marketplace which are owned and maintained by Upbound. These 
+Marketplace. Official providers are listings on the Marketplace which Upbound owns and maintains. These 
 providers are published under the `upbound` organization and have an [Official](https://marketplace.upbound.io/providers?tier=official) tag.
 
 {{<img src="providers/images/official-providers.png" alt="Official providers" size="medium" unBlur="true" >}}
