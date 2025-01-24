@@ -7,10 +7,11 @@ aliases:
   - upbound-marketplace/providers
 ---
 
-{{<img src="providers/images/official-providers.png" alt="Official providers" size="medium" unBlur="true" >}}
-
 Upbound creates, maintains and supports a set of Crossplane providers published as **Official** providers in the
-Marketplace.
+Marketplace. Official providers are listings on the Marketplace which are owned and maintained by Upbound. These 
+providers are published under the `upbound` organization and have an [Official](https://marketplace.upbound.io/providers?tier=official) tag.
+
+{{<img src="providers/images/official-providers.png" alt="Official providers" size="medium" unBlur="true" >}}
 
 The Upbound official providers are open source under the [Apache 2.0 license]({{<ref "policies#license" >}}).
 
@@ -31,9 +32,6 @@ Upbound's [publishing and access policies]({{<ref "policies#access" >}}).
 | [upbound/provider-kubernetes](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/)     | No          | No              |
 | [upbound/provider-helm](https://marketplace.upbound.io/providers/upbound/provider-helm/)                 | No          | No              |
 {{< /table >}}
-
-Official providers are published in the [Upbound
-Marketplace](https://marketplace.upbound.io/providers?tier=official) with an `Official` tag.
 
 Read more information on the [Official provider policies]({{<ref "policies#access" >}}) governing access, support and
 more.
