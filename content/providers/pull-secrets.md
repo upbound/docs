@@ -46,6 +46,7 @@ metadata:
 spec:
   matchImages:
     - prefix: xpkg.upbound.io/upbound
+      type: Prefix
   registry:
     authentication:
       pullSecretRef:
