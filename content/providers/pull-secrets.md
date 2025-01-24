@@ -96,5 +96,4 @@ spec:
   packagePullSecrets:
     - name: up-provider-pull-secret
 # Removed for brevity
-
 ```
