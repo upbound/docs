@@ -26,7 +26,7 @@ In `up`, the commands you can execute are context-sensitive.
 ## The 'up ctx' command
 <!--vale on -->
 
-In `up`, the `up ctx` sub-command is a single command that can used across all deployments of Upbound to set a kubecontext. You can use this kubecontext to drive interactions via `kubectl` or it's used during the execution of other `up` CLI commands.
+In `up`, the `up ctx` sub-command is a single command that can be used across all deployments of Upbound to set a kubecontext. You can use this kubecontext to drive interactions via `kubectl`. `up` CLI commands that interact with Upbound's Kubernetes compatible APIs also use the current kubeconfig context.
 
 <!-- vale off -->
 ### Interactive terminal UI
@@ -37,8 +37,8 @@ The default experience for `up ctx` is a terminal UI like [kubectx](https://gith
 {{< hint "important" >}}
 When interacting with managed control planes that are hosted in:
 
-* **a Cloud Space:** always make sure you're logged into Upbound with `up login` before trying to use `up ctx`.
-* **a Connected or Disconnected Space:** always make sure your current kubecontext is pointed at the cluster which hosts your Space.
+* **a Cloud or Connected Space:** make sure you're using a cloud profile logged into Upbound with `up login` before trying to use `up ctx`.
+* **a Disconnected Space:** make sure your're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
 {{< /hint >}}
 
 The following are some tips for using the terminal UI:
