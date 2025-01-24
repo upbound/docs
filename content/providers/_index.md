@@ -15,6 +15,12 @@ providers are published under the `upbound` organization and have an [Official](
 
 The Upbound official providers are open source under the [Apache 2.0 license]({{<ref "policies#license" >}}).
 
+{{< hint "tip" >}}
+Official Packages are Marketplace listings published under the `upbound` organization and bear the _Upbound Official_ trust tier label. Some Official Providers are built in part from open source repos under the [crossplane-contrib](https://github.com/crossplane-contrib) GitHub organization. 
+
+That source code is completely OSS; it's the Marketplace listing which Upbound owns that makes it Upbound Official and which has an access and use policy.
+{{< /hint >}}
+
 <!-- vale write-good.Passive = NO -->
 The following providers are designated Upbound Official and are subject to
 Upbound's [publishing and access policies]({{<ref "policies#access" >}}).
