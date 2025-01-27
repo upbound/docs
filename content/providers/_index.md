@@ -7,33 +7,21 @@ aliases:
   - upbound-marketplace/providers
 ---
 
-{{<img src="providers/images/official-providers.png" alt="Official providers" size="medium" unBlur="true" >}}
+Upbound Official Providers are Crossplane providers built as OCI images and published into the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official). Upbound publishes, maintains, and supports these listings. They're denoted with a _Trust Tier_ label of **Official**. They're published under the `upbound` organization.
 
-Upbound creates, maintains and supports a set of Crossplane providers published as **Official** providers in the
-Marketplace.
+{{< hint "tip" >}}
+The **source code** for many of the Upbound official providers are open source under the [Apache 2.0 license]({{<ref "policies#license" >}}). 
 
-The Upbound official providers are open source under the [Apache 2.0 license]({{<ref "policies#license" >}}).
+Upbound uses a special build process that augments upstream source with additional capabilities, including an SBOM and multi-language resource schemas. Official Providers are the **built artifact** as listed in the Marketplace. Official Providers are governed by Upbound's [access and use policy]({{<ref "policies#access" >}}).
+{{< /hint >}}
 
-<!-- vale write-good.Passive = NO -->
-The following providers are designated Upbound Official and are subject to
-Upbound's [publishing and access policies]({{<ref "policies#access" >}}).
-<!-- vale write-good.Passive = YES -->
+## Official Providers list
+
+<!-- vale Microsoft.Adverbs = NO -->
+Upbound is continually adding new providers to the ever growing list of Official Providers. For a complete list of available Official providers, use [this query](https://marketplace.upbound.io/providers?tier=official) in the Marketplace.
+<!-- vale Microsoft.Adverbs = YES -->
 
 
-{{< table >}}
-| Official provider                                                                                        | Upjet-based | Provider family |
-| -------------------------------------------------------------------------------------------------------- | ----------- | --------------- |
-| [upbound/provider-family-aws](https://marketplace.upbound.io/providers/upbound/provider-family-aws/)     | Yes         | Yes             |
-| [upbound/provider-family-azure](https://marketplace.upbound.io/providers/upbound/provider-family-azure/) | Yes         | Yes             |
-| [upbound/provider-family-gcp](https://marketplace.upbound.io/providers/upbound/provider-family-gcp/)     | Yes         | Yes             |
-| [upbound/provider-azuread](https://marketplace.upbound.io/providers/upbound/provider-azuread/)           | Yes         | No              |
-| [upbound/provider-terraform](https://marketplace.upbound.io/providers/upbound/provider-terraform/)       | No          | No              |
-| [upbound/provider-kubernetes](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/)     | No          | No              |
-| [upbound/provider-helm](https://marketplace.upbound.io/providers/upbound/provider-helm/)                 | No          | No              |
-{{< /table >}}
+## Access
 
-Official providers are published in the [Upbound
-Marketplace](https://marketplace.upbound.io/providers?tier=official) with an `Official` tag.
-
-Read more information on the [Official provider policies]({{<ref "policies#access" >}}) governing access, support and
-more.
+The latest versions of the Upbound Official Providers are available for use by anyone in the Crossplane community. For full access and use details, read the [policies page]({{<ref "policies#access" >}}) on access, support and more.
