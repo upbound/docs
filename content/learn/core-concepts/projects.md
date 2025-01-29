@@ -1,7 +1,7 @@
 ---
 title: "Control Plane Projects"
 weight: 3
-description: "The basic concepts to help you on your Upbound journey"
+description: "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project."
 ---
 
 <!-- vale gitlab.Substitutions = NO -->

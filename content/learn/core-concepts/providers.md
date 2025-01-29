@@ -1,7 +1,7 @@
 ---
 title: "Providers"
-weight: 3
-description: "The basic concepts to help you on your Upbound journey"
+weight: 4
+description: "Providers allow Upbound to provision infrastructure on an external service. They handle communication between the control plane and your external resources"
 searchExclude: true
 ---
 

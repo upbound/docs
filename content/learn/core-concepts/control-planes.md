@@ -37,7 +37,7 @@ The API server handles these requests by:
 - Returning a response to your request
 - Notifying controllers that watch for changes to that resource type
 
-This server acts as the single entry point for all control plane interactions -
+The API server acts as the single entry point for all control plane interactions -
 whether you're using kubectl, the Upbound Console, or making direct API calls,
 you're always talking to this same API server. It's the authoritative source of
 truth for what resources should exist and how they should be configured.
@@ -57,6 +57,7 @@ modify it to specifications, or create a new bucket with the specifications from
 the API server. Controllers also handle retries for failed operations, track the
 status of long-running changes, and update the resource status in the API server
 to reflect the current state.
+
 <!--- TODO(tr0njavolta): link --->
 
 ## State management
@@ -80,6 +81,7 @@ reconciliation:
 3. **Act** - Control planes use the controllers to act on the provider and reconcile any differences, ensuring your infrastructure matches your specifications.
 
 {{<img src="images/reconcileloop.jpeg" alt="Upbound Consumer portal list view" lightbox="true">}}
+<!--- TODO(tr0njavolta): this image sucks lol --->
 
 ## The control plane workflow
 
