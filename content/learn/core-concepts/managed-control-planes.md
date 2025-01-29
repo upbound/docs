@@ -1,7 +1,7 @@
 ---
 title: Managed Control Planes
-weight: 4
-description: An introduction to the Managed Control Planes feature of Upbound
+weight: 2
+description: Fully isolated Crossplane control plane instances that Upbound manages for you
 aliases:
     - concepts/mcp
 ---
@@ -46,7 +46,7 @@ Every managed control plane in Upbound belongs to a [control plane group]({{<ref
 Think of a Space as being conceptually the same as an AWS, Azure, or GCP region. Regardless of the Space type you run a managed control plane in, the core experience is identical.
 
 ## Management
-
+<!--- TODO(tr0njavolta): rewrite --->
 ### Create an MCP
 
 You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "reference/cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest).
