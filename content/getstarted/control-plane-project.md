@@ -928,7 +928,7 @@ The `azure.json` file in the preceding command contains the client ID, secret, a
 Next, use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret.
 
 ```shell
-kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure.json
+kubectl create secret generic azure-secret -n crossplane-system --from-file=creds=./azure.json
 ```
 
 Next, create a new file called `provider-config.yaml` and paste the configuration below.
@@ -936,15 +936,15 @@ Next, create a new file called `provider-config.yaml` and paste the configuratio
 ```yaml
 apiVersion: azure.upbound.io/v1beta1
 metadata:
-    name: default
+  name: default
 kind: ProviderConfig
 spec:
-    credentials:
+  credentials:
     source: Secret
     secretRef:
-        namespace: upbound-system
-        name: azure-secret
-        key: creds
+      namespace: crossplane-system
+      name: azure-secret
+      key: creds
 ```
 <!-- /Azure -->
 
@@ -975,20 +975,21 @@ data:
     my-gcp-secret: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiZG9jcyIsCiAgInByaXZhdGVfa2V5X2lkIjogIjEyMzRhYmNkIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJkb2NzQHVwYm91bmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJjbGllbnRfaWQiOiAiMTIzNDUiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2RvY3MuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=
 ```
 
-Next, create a new file called `provider-config.yaml` and paste the configuration below.
+Next, create a new file called `provider-config.yaml` and paste the configuration below. Replace the value in `spec.projectID` with your GCP project ID below:
 
 ```yaml
 apiVersion: gcp.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-    name: default
+  name: default
 spec:
-    credentials:
-        source: Secret
-        secretRef:
-            namespace: crossplane-system
-            name: gcp-secret
-            key: my-gcp-secret
+  projectID: your-gcp-project-id
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-secret
+      key: my-gcp-secret
 ```
 <!-- /GCP -->
 {{< /content-selector >}}
