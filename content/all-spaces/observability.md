@@ -26,8 +26,10 @@ The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/co
 This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) on the Space cluster. Install this now if you haven't already:
 
 ```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.98.0/opentelemetry-operator.yaml
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
 ```
+
+If running Spaces => v1.11, the OpenTelemetry Operator version needs to be => v0.110.0, as there are breaking changes in the OpenTelemetry Operator. 
 
 The examples below document how to configure observability with the `up` CLI or Helm installations.
 
