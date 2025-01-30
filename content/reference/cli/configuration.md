@@ -29,17 +29,19 @@ CURRENT   NAME          TYPE           ORGANIZATION
 
 Profiles have one of two types:
 
-- **Cloud:** Cloud profiles are used to interact with Cloud and Connected Spaces
+- **Cloud:** Cloud profiles interact with Cloud and Connected Spaces
   within a given Upbound organization.
-- **Disconnected:** Disconnected profiles are used to interact with a specific
-  self-hosted Space that is not connected to Upbound.
+- **Disconnected:** Disconnected profiles interact with a specific
+  self-hosted Space not connected to Upbound.
 
-Both types of profiles can be logged in to an Upbound organization and used to
-manage non-Space resources such as Marketplace repositories. Logging in is
-optional for disconnected profiles.
+Both profile types can login to an Upbound organization and manage non-Space resources like Marketplace repositories. Logging in with a disconnected profile is optional.
+
+<!-- vale write-good.Passive = NO -->
 
 Profile types were introduced in `up` v0.37.0. All profiles created in previous
 versions are treated as cloud profiles in newer versions.
+
+<!-- vale write-good.Passive = YES -->
 
 ## Profile management
 
@@ -51,13 +53,13 @@ To create a cloud profile for a given organization, use `up login`:
 up login --profile test --organization $@<your-upbound-org>$@
 ```
 
-By default, `up login` will open a browser window for interactive login. If
-opening a browser window is not possible it will show a link that can be copied
-and pasted into a browser to login and then copy back a one-time authentication
-code. It is also possible to login non-interactively by passing the `--username`
+By default, `up login` opens browser window for interactive login. If
+opening a browser window is not possible, the command returns link to copy
+and paste into a browser to login and then copy back a one-time authentication
+code. You can also login non-interactively by passing the `--username`
 and `--password` flags or the `--token` flag.
 
-Initializing a self-hosted Space with `up space init` will automatically create
+Initializing a self-hosted Space with `up space init` automatically creates
 a disconnected profile associated with the Space. You can also create a new
 disconnected profile manually based on a kubeconfig context pointed at the
 Space:
@@ -66,8 +68,7 @@ Space:
 up profile create --type=disconnected --kubeconfig $@<kubeconfig path>$@ --kubecontext $@<context name>$@
 ```
 
-The `--kubeconfig` and `--kubecontext` flags are optional; if not given, your
-default kubeconfig and its current context will be used.
+The `--kubeconfig` and `--kubecontext` flags are optional; if not given, the `up` CLI uses your default kubeconfig and current context.
 
 ### Set the current profile
 
@@ -80,9 +81,11 @@ up profile use $@<profile-name>$@
 ```
 {{< /editCode >}}
 
+<!-- vale off -->
 If you have selected a kubeconfig context with `up ctx` while using a given
 profile, that kubeconfig context will be restored to your kubeconfig the next
 time you switch to the profile with `up profile use`.
+<!-- vale on -->
 
 ### Update a profile's organization
 
@@ -92,7 +95,7 @@ You can change a profile's associated organization if needed:
 up profile set organization $@<new-organization>$@
 ```
 
-You will then need to run `up login` again to authenticate against the new
+Then, run `up login` again to authenticate against the new
 organization.
 
 ### Invalidate session tokens
