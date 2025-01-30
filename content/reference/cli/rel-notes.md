@@ -11,7 +11,7 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 ## v0.37.0
 
-Released TODO
+Released January 30th, 2025
 
 ### What's Changed
 
