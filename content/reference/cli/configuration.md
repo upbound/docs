@@ -34,7 +34,7 @@ Profiles have one of two types:
 - **Disconnected:** Disconnected profiles interact with a specific
   self-hosted Space not connected to Upbound.
 
-Both profile types can login to an Upbound organization and manage non-Space resources like Marketplace repositories. Logging in with a disconnected profile is optional.
+Both profile types can log in to an Upbound organization and manage non-Space resources like Marketplace repositories. Logging in with a disconnected profile is optional.
 
 <!-- vale write-good.Passive = NO -->
 
@@ -52,12 +52,12 @@ To create a cloud profile for a given organization, use `up login`:
 ```shell
 up login --profile test --organization $@<your-upbound-org>$@
 ```
-
+<!-- vale Microsoft.Wordiness = NO -->
 By default, `up login` opens browser window for interactive login. If
-opening a browser window is not possible, the command returns link to copy
-and paste into a browser to login and then copy back a one-time authentication
-code. You can also login non-interactively by passing the `--username`
-and `--password` flags or the `--token` flag.
+opening a browser window isn't possible, the command returns link to copy
+and paste into a browser to login. Then returns a one-time authentication
+code to paste into your terminal. You can also log in non-interactively by passing the `--username`and `--password` flags or the `--token` flag.
+<!-- vale Microsoft.Wordiness = YES -->
 
 Initializing a self-hosted Space with `up space init` automatically creates
 a disconnected profile associated with the Space. You can also create a new
