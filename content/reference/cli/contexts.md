@@ -26,7 +26,7 @@ In `up`, the commands you can execute are context-sensitive.
 ## The 'up ctx' command
 <!--vale on -->
 
-In `up`, the `up ctx` sub-command is a single command that can be used across all deployments of Upbound to set a kubecontext. You can use this kubecontext to drive interactions via `kubectl`. `up` CLI commands that interact with Upbound's Kubernetes compatible APIs also use the current kubeconfig context.
+In `up`, the `up ctx` sub-command is a single command to set a kubecontext across all deployments of Upbound. You can use this kubecontext to drive interactions via `kubectl`. `up` CLI commands that interact with Upbound's Kubernetes compatible APIs also use the current kubeconfig context.
 
 <!-- vale off -->
 ### Interactive terminal UI
