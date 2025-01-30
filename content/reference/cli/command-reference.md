@@ -10,11 +10,13 @@ The `up` command-line provides a suite of tools to configure and interact with U
 The following flags are available for all commands.
 
 {{< table "table table-sm table-striped">}}
+
 | Short flag | Long flag   | Description                  |
 | ---------- | ----------- | ---------------------------- |
 | `-h`       | `--help`    | Show context-sensitive help. |
 |            | `--pretty`  | Pretty print output.         |
 | `-q`       | `--quiet`   | Suppress all output.         |
+
 {{< /table >}}
 
 ## up composition
