@@ -55,7 +55,7 @@ up login --profile test --organization $@<your-upbound-org>$@
 <!-- vale Microsoft.Wordiness = NO -->
 By default, `up login` opens browser window for interactive login. If
 opening a browser window isn't possible, the command returns link to copy
-and paste into a browser to login. Then returns a one-time authentication
+and paste into a browser to log in. Then returns a one-time authentication
 code to paste into your terminal. You can also log in non-interactively by passing the `--username`and `--password` flags or the `--token` flag.
 <!-- vale Microsoft.Wordiness = YES -->
 
