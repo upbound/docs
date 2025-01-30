@@ -13,7 +13,7 @@ configuration file in `~/.up/config.json`.
 
 The `up` CLI stores configuration information in `~/.up/config.json`. Commands
 use the specified profile when set via the `--profile` flag or `UP_PROFILE`
-environment variable. If a profile isn't set, `up` uses the currently selected
+environment variable. If you don't set a profile, `up` uses the currently selected
 profile in the configuration file.
 
 You can list your `up` profiles and see which one is currently selected as
@@ -29,9 +29,9 @@ CURRENT   NAME          TYPE           ORGANIZATION
 
 Profiles have one of two types:
 
-- **cloud:** Cloud profiles are used to interact with Cloud and Connected Spaces
+- **Cloud:** Cloud profiles are used to interact with Cloud and Connected Spaces
   within a given Upbound organization.
-- **disconnected:** Disconnected profiles are used to interact with a specific
+- **Disconnected:** Disconnected profiles are used to interact with a specific
   self-hosted Space that is not connected to Upbound.
 
 Both types of profiles can be logged in to an Upbound organization and used to
