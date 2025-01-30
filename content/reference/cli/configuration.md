@@ -11,82 +11,102 @@ configuration file in `~/.up/config.json`.
 
 ## Configuration
 
-The `up` CLI stores configuration information in `~/.up/config.json`. Commands use the specified profile when set via the `--profile` flag or `UP_PROFILE` environment variable. If a profile isn't set, `up` uses the profile specified as `default`.
+The `up` CLI stores configuration information in `~/.up/config.json`. Commands
+use the specified profile when set via the `--profile` flag or `UP_PROFILE`
+environment variable. If you don't set a profile, `up` uses the currently selected
+profile in the configuration file.
 
-### Format
+You can list your `up` profiles and see which one is currently selected as
+follows:
 
-`up` allows users to define profiles that contain sets of preferences and credentials for interacting with Upbound. This enables executing commands as different users, in different accounts, or different Upbound deployment contexts. 
-
-An `up` profile uses the following format:
-
-{{< editCode >}}
-```json
-{
-  "upbound": {
-    "default": "$@<profile-name>$@",
-    "profiles": {
-      "$@<profile-name>$@": {
-        "id": "$@<individual-username>$@",
-        "type": "$@<profile-type>$@",
-        "session": "$@<session-token>$@",
-        "account": "$@<organization-account>$@"
-      },
-      // other profiles
-}
+```shell
+$ up profile list
+CURRENT   NAME          TYPE           ORGANIZATION
+*         default       cloud          my-org
 ```
-{{< /editCode >}}
 
 ### Profile types
 
-You can configure an `up` profile as one of three types:
+Profiles have one of two types:
 
-- **user:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment.
-- **space:** This profile type configures `up` to communicate with an [Upbound Space]({{<ref "/all-spaces" >}}), which requires a `kubecontext`.
-- **token:** This profile type configures `up` to communicate with an account in Upbound's SaaS environment using an API token as the auth method.
+- **Cloud:** Cloud profiles interact with Cloud and Connected Spaces
+  within a given Upbound organization.
+- **Disconnected:** Disconnected profiles interact with a specific
+  self-hosted Space not connected to Upbound.
+
+Both profile types can log in to an Upbound organization and manage non-Space resources like Marketplace repositories. Logging in with a disconnected profile is optional.
+
+<!-- vale write-good.Passive = NO -->
+
+Profile types were introduced in `up` v0.37.0. All profiles created in previous
+versions are treated as cloud profiles in newer versions.
+
+<!-- vale write-good.Passive = YES -->
 
 ## Profile management
 
-### Add or update a profile
+### Create a profile
 
-To add or update a profile, users can use `up login` with the appropriate
-credentials and a profile name specified. For instance, the following command
-would add a new profile named `test`:
+To create a cloud profile for a given organization, use `up login`:
 
 ```shell
-up login --profile test -u hasheddan -p cool-password
+up login --profile test --organization $@<your-upbound-org>$@
+```
+<!-- vale Microsoft.Wordiness = NO -->
+By default, `up login` opens browser window for interactive login. If
+opening a browser window isn't possible, the command returns link to copy
+and paste into a browser to log in. Then returns a one-time authentication
+code to paste into your terminal. You can also log in non-interactively by passing the `--username`and `--password` flags or the `--token` flag.
+<!-- vale Microsoft.Wordiness = YES -->
+
+Initializing a self-hosted Space with `up space init` automatically creates
+a disconnected profile associated with the Space. You can also create a new
+disconnected profile manually based on a kubeconfig context pointed at the
+Space:
+
+```shell
+up profile create --type=disconnected --kubeconfig $@<kubeconfig path>$@ --kubecontext $@<context name>$@
 ```
 
-By default the command updates the profile named `default`. Update a specific profile with `--profile`.
-Set an account as the default account with `-a` (`--account`). 
-
-If users use `up` to create a new Space, `up` automatically adds a new profile configured to communicate with that Space.
-
-### Set the default profile
-
-Running commands without `--profile` or `UP_PROFILE` variable set uses the profile specified as the value to the `default:`.
-
-If the configuration file is empty when a user logs in, that `user` becomes the default. Or, if the configuration file is empty when a user creates a Space, that `Space` becomes the default.
+The `--kubeconfig` and `--kubecontext` flags are optional; if not given, the `up` CLI uses your default kubeconfig and current context.
 
 ### Set the current profile
 
-`up` executes commands against the `current` profile. If you have multiple profiles and you want to toggle between contexts, run the following:
+By default, `up` executes commands against the `current` profile. To select the
+current profile, run the following:
 
 {{< editCode >}}
-```ini
+```shell
 up profile use $@<profile-name>$@
 ```
 {{< /editCode >}}
 
+<!-- vale off -->
+If you have selected a kubeconfig context with `up ctx` while using a given
+profile, that kubeconfig context will be restored to your kubeconfig the next
+time you switch to the profile with `up profile use`.
+<!-- vale on -->
+
+### Update a profile's organization
+
+You can change a profile's associated organization if needed:
+
+```shell
+up profile set organization $@<new-organization>$@
+```
+
+Then, run `up login` again to authenticate against the new
+organization.
+
 ### Invalidate session tokens
 
-`up` uses session tokens for authentication after login. Tokens are valid for 30
-days from login. 
+`up` uses session tokens for authentication after login.
 
 {{<hint "important" >}}
 Tokens are private authentication data. Don't share your token.
 {{< /hint >}}
 
-For currently active tokens, revoke the token with `up logout --profile <profile-name>`. 
+For currently active tokens, revoke the token with `up logout --profile <profile-name>`.
 
 For inactive tokens, use the [Upbound Password Reset](https://accounts.upbound.io/resetPassword) and select "Delete all active sessions" to revoke all tokens.
 
