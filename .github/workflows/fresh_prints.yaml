@@ -1,0 +1,21 @@
+name: Documentation Freshness Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every Sunday
+
+jobs:
+  check_freshness:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Run freshness check
+      run: |
+        python3 check_freshness.py
