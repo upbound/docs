@@ -72,11 +72,14 @@ jobs:
         if [ -s stale_docs.txt ]; then
           content_escaped=$(echo "$content" | jq -aRs .)
           echo "SLACK_MESSAGE=$content_escaped" >> $GITHUB_ENV
+          echo "HAS_STALE=true" >> $GITHUB_ENV
         else
-          echo 'SLACK_MESSAGE=":white_check_mark: All documentation is up to date!"' >> $GITHUB_ENV
+          content_escaped=$(echo ":white_check_mark: All documentation is up to date!" | jq -aRs .)
+          echo "SLACK_MESSAGE=$content_escaped" >> $GITHUB_ENV
+          echo "HAS_STALE=false" >> $GITHUB_ENV
         fi
 
-    - name: Post to Slack
+    - name: Post initial message
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       env:
@@ -85,20 +88,18 @@ jobs:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
-            "blocks": [
-              {
-                "type": "header",
-                "text": {
-                  "type": "plain_text",
-                  "text": "Documentation Freshness Check"
-                }
-              },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": ${{ env.SLACK_MESSAGE }}
-                }
-              }
-            ]
+            "text": "${{ env.HAS_STALE == 'true' && ':warning: Documentation Freshness Check - Found stale docs' || ':white_check_mark: Documentation Freshness Check - All up to date' }}"
+          }
+
+    - name: Post thread reply
+      if: env.HAS_STALE == 'true'
+      uses: slackapi/slack-github-action@v1.24.0
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      with:
+        channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+        payload: |
+          {
+            "thread_ts": "${{ fromJSON(steps.slack.outputs.response).ts }}",
+            "text": ${{ env.SLACK_MESSAGE }}
           }
