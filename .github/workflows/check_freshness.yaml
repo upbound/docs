@@ -3,20 +3,18 @@ name: Documentation Freshness Check
 on:
   schedule:
     - cron: '0 0 * * 0'  # Runs every Sunday
-  workflow_dispatch:  # Enables manual trigger
+  workflow_dispatch:
 
 jobs:
   check_freshness:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - uses: actions/setup-python@v4
       with:
         python-version: '3.x'
         
@@ -62,50 +60,19 @@ jobs:
         sorted_stale_docs = sorted(stale_docs, key=lambda x: x[1])
 
         if sorted_stale_docs:
-            print("The following docs have not been modified for at least 6 months:")
+            print(":warning: *Stale Documentation Alert*\n\nThe following files haven't been updated in 6+ months:\n")
             for doc, mod_time in sorted_stale_docs:
-                print(f"{doc}, {mod_time.strftime('%Y-%m-%d')}")
+                print(f"• {doc} (Last updated: {mod_time.strftime('%Y-%m-%d')})")
         else:
-            print("All documents are fresh!")
+            print(":white_check_mark: All documentation is up to date!")
         EOL
     
-    - name: Run freshness check
-      id: check
-      run: |
-        python3 .github/scripts/check_freshness.py > stale_docs.txt
-        
-        echo "STALE_DOCS<<EOF" >> $GITHUB_ENV
-        if [ -s stale_docs.txt ]; then
-          echo ":warning: *Stale Documentation Alert*\n\nThe following docs haven't been updated in 6+ months:\n" >> $GITHUB_ENV
-          cat stale_docs.txt >> $GITHUB_ENV
-        else
-          echo ":white_check_mark: All documentation is up to date!" >> $GITHUB_ENV
-        fi
-        echo "EOF" >> $GITHUB_ENV
-    
-    - name: Format message
-      id: format
-      run: |
-        # Escape the content for JSON
-        ESCAPED_CONTENT=$(cat stale_docs.txt | jq -aRs .)
-        echo "FORMATTED_MSG=$ESCAPED_CONTENT" >> $GITHUB_ENV
-
-    - name: Post to Slack
-      uses: slackapi/slack-github-action@v1.24.0
+    - name: Run freshness check and post to Slack
       env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      with:
-        channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-        payload: |
-          {
-            "text": ":warning: Documentation Freshness Check",
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": ${{ env.FORMATTED_MSG }}
-                }
-              }
-            ]
-          }
+        SLACK_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      run: |
+        OUTPUT=$(python3 .github/scripts/check_freshness.py)
+        curl -X POST -H "Authorization: Bearer $SLACK_TOKEN" \
+          -H 'Content-type: application/json' \
+          --data "{\"channel\":\"${{ secrets.SLACK_CHANNEL_ID }}\",\"text\":\"$OUTPUT\"}" \
+          https://slack.com/api/chat.postMessage
