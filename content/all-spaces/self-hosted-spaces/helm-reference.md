@@ -258,7 +258,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.storage.postgres.cnpg.pooler.debug | bool | `false` | Whether the pooler should log at debug level. |
 | features.alpha.apollo.storage.postgres.cnpg.pooler.enabled | bool | `true` | Whether the pooler should be enabled. |
 | features.alpha.apollo.storage.postgres.cnpg.pooler.instances | int | `2` | The number of replicas of the pooler to run. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.parameters | object | `{"default_pool_size":"1", <br>"max_client_conn":"1000",<br>"max_db_connections":"0",<br>"max_prepared_statements":"1000"}` | The pooler configuration, see PGbouncer documentation for all available options. Tune the suggested parameters as needed. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler.parameters | object | `{"default_pool_size":"1"`, <br>`"max_client_conn":"1000"`,<br>`"max_db_connections":"0"`,<br>`"max_prepared_statements":"1000"}` | The pooler configuration, see PGbouncer documentation for all available options. Tune the suggested parameters as needed. |
 | features.alpha.apollo.storage.postgres.cnpg.pooler.podTemplate | object | `{}` | The pod template for the pooler, allows configuring almost all aspects of the pooler pods. |
 | features.alpha.apollo.storage.postgres.connection | object | `""` | Configuration for the Apollo database connection, only respected if create is set to false. |
 | features.alpha.apollo.storage.postgres.connection.apollo.credentials | object | `{"format":"","secret":{"name":""},"user":""}` | The credentials for the connection from apollo server. Defaults to the one set in connection.credentials, if not set. |
