@@ -95,12 +95,15 @@ jobs:
             "unfurl_links": false,
             "unfurl_media": false
           }
+      continue-on-error: false
 
     - name: Capture Slack Thread Timestamp
       if: env.HAS_STALE == 'true'
       run: |
-        THREAD_TS=$(echo '${{ steps.slack_message.outputs.response }}' | jq -r '.ts')
+        echo "SLACK_RESPONSE=${{ steps.slack_message.outputs.response }}" > slack_response.json
+        THREAD_TS=$(jq -r '.ts' slack_response.json)
         echo "THREAD_TS=${THREAD_TS}" >> $GITHUB_ENV
+        echo "Extracted thread_ts: ${THREAD_TS}"
 
     - name: Post thread reply with formatted list
       if: env.HAS_STALE == 'true'
