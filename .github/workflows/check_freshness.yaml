@@ -70,28 +70,35 @@ jobs:
         python3 .github/scripts/check_freshness.py > stale_docs.txt
         content=$(cat stale_docs.txt)
         if [ -s stale_docs.txt ]; then
-          message=":warning: Found stale documentation:\n$content"
+          content_escaped=$(echo "$content" | jq -aRs .)
+          echo "SLACK_MESSAGE=$content_escaped" >> $GITHUB_ENV
         else
-          message=":white_check_mark: All documentation is up to date!"
+          echo 'SLACK_MESSAGE=":white_check_mark: All documentation is up to date!"' >> $GITHUB_ENV
         fi
-        echo 'SLACK_MESSAGE<<EOF' >> $GITHUB_ENV
-        echo "$message" >> $GITHUB_ENV
-        echo 'EOF' >> $GITHUB_ENV
 
     - name: Post to Slack
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       with:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
-            "text": "Documentation Freshness Check",
-            "attachments": [
+            "blocks": [
               {
-                "text": "${{ env.SLACK_MESSAGE }}",
-                "color": "#f2c744"
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "Documentation Freshness Check"
+                }
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": ${{ env.SLACK_MESSAGE }}
+                }
               }
             ]
           }
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
