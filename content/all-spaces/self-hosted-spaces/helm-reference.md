@@ -13,9 +13,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 {{< table-no "table table-responsive table-striped table-sm" >}}
 
-
-## Values
-
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | account | string | `"notdemo"` | The Upbound organization this installation is associated with. |
