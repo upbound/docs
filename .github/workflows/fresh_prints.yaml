@@ -7,15 +7,57 @@ on:
 jobs:
   check_freshness:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history for git log
+    
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x'
-
+    
     - name: Run freshness check
+      id: check
       run: |
-        python3 check_freshness.py
+        python3 check_freshness.py > stale_docs.txt
+        
+        # Format the content for Slack
+        echo "STALE_DOCS<<EOF" >> $GITHUB_ENV
+        if [ -s stale_docs.txt ]; then
+          echo ":warning: *Stale Documentation Alert*\n\nThe following docs haven't been updated in 6+ months:\n" >> $GITHUB_ENV
+          cat stale_docs.txt >> $GITHUB_ENV
+        else
+          echo ":white_check_mark: All documentation is up to date!" >> $GITHUB_ENV
+        fi
+        echo "EOF" >> $GITHUB_ENV
+    
+    - name: Post to Slack
+      uses: slackapi/slack-github-action@v1.24.0
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      with:
+        channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+        payload: |
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ env.STALE_DOCS }}"
+                }
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
+            ]
+          }
