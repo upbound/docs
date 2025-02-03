@@ -1,21 +1,17 @@
 name: Documentation Freshness Check
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Runs every Sunday
-  workflow_dispatch:  # Enables manual trigger
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
 
 jobs:
   check_freshness:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - uses: actions/setup-python@v4
       with:
         python-version: '3.x'
         
@@ -72,17 +68,9 @@ jobs:
       id: check
       run: |
         python3 .github/scripts/check_freshness.py > stale_docs.txt
-        
-        echo "STALE_DOCS<<EOF" >> $GITHUB_ENV
-        if [ -s stale_docs.txt ]; then
-          echo ":warning: *Stale Documentation Alert*" >> $GITHUB_ENV
-          cat stale_docs.txt >> $GITHUB_ENV
-        else
-          echo ":white_check_mark: All documentation is up to date!" >> $GITHUB_ENV
-        fi
-        echo "EOF" >> $GITHUB_ENV
+        echo "message=$(cat stale_docs.txt | jq -sRr @json)" >> $GITHUB_ENV
 
-    - name: Post initial message to Slack
+    - name: Post initial message
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
@@ -94,14 +82,14 @@ jobs:
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
-    - name: Format and post details in thread
+    - name: Post thread reply
       uses: slackapi/slack-github-action@v1.24.0
       with:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
             "thread_ts": "${{ fromJSON(steps.slack.outputs.response).ts }}",
-            "text": "${{ env.STALE_DOCS }}"
+            "text": ${{ env.message }}
           }
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
