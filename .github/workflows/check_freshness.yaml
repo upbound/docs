@@ -69,15 +69,20 @@ jobs:
       run: |
         python3 .github/scripts/check_freshness.py > stale_docs.txt
         if [ -s stale_docs.txt ]; then
-          thread_message=$(cat stale_docs.txt | sed 's/"/\\"/g' | tr '\n' ' ' | sed 's/\\n/ /g')
-          echo "THREAD_MESSAGE=${thread_message}" >> $GITHUB_ENV
           echo "HAS_STALE=true" >> $GITHUB_ENV
         else
           echo "HAS_STALE=false" >> $GITHUB_ENV
         fi
 
-    - name: Post initial message
-      id: slack
+    - name: Read stale docs output
+      if: env.HAS_STALE == 'true'
+      id: read_stale_docs
+      run: |
+        thread_message=$(cat stale_docs.txt | sed 's/"/\\"/g' | tr '\n' ' ')
+        echo "THREAD_MESSAGE=${thread_message}" >> $GITHUB_ENV
+
+    - name: Post initial Slack message
+      id: slack_message
       uses: slackapi/slack-github-action@v1.24.0
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
@@ -88,6 +93,11 @@ jobs:
             "text": "Documentation Freshness Check Results"
           }
 
+    - name: Capture Slack Thread Timestamp
+      if: env.HAS_STALE == 'true'
+      run: |
+        echo "THREAD_TS=$(echo '${{ steps.slack_message.outputs.response }}' | jq -r '.ts')" >> $GITHUB_ENV
+
     - name: Post thread reply
       if: env.HAS_STALE == 'true'
       uses: slackapi/slack-github-action@v1.24.0
@@ -97,6 +107,6 @@ jobs:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
-            "thread_ts": "${{ fromJSON(steps.slack.outputs.response).ts }}",
+            "thread_ts": "${{ env.THREAD_TS }}",
             "text": ":warning: ${{ env.THREAD_MESSAGE }}"
           }
