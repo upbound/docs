@@ -84,28 +84,34 @@ jobs:
 
     - name: Post initial Slack message
       id: slack_message
-      uses: slackapi/slack-github-action@v1.24.0
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      with:
-        channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
-        payload: |
-          {
-            "text": "📌 *Documentation Freshness Check Results*",
-            "unfurl_links": false,
-            "unfurl_media": false
-          }
-      continue-on-error: false
-
-    - name: Debug Slack API Response
       run: |
-        echo "Slack response: '${{ steps.slack_message.outputs.response }}'"
-      continue-on-error: true
+        RESPONSE=$(curl -X POST -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
+            "text": "📌 *Documentation Freshness Check Results*"
+          }' \
+          https://slack.com/api/chat.postMessage)
+        
+        echo "$RESPONSE" > slack_response.json
+        cat slack_response.json  # Debugging: print the response
 
-    - name: Capture Slack Thread Timestamp
+        THREAD_TS=$(echo "$RESPONSE" | jq -r '.ts')
+        if [ -z "$THREAD_TS" ] || [ "$THREAD_TS" == "null" ]; then
+          echo "Error: Failed to retrieve Slack thread timestamp."
+          exit 1
+        fi
+        echo "THREAD_TS=$THREAD_TS" >> $GITHUB_ENV
+        echo "Extracted thread_ts: $THREAD_TS"
+
+    - name: Post thread reply with formatted list
       if: env.HAS_STALE == 'true'
       run: |
-        SLACK_RESPONSE='${{ steps.slack_message.outputs.response }}'
-        echo "$SLACK_RESPONSE" > slack_response.json
-        cat slack_response.json  # Debugging: print the response
-        THREAD_TS=$(jq -r
+        curl -X POST -H "Authorization: Bearer ${{ secrets.SLACK_BOT_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "channel": "${{ secrets.SLACK_CHANNEL_ID }}",
+            "thread_ts": "'"${{ env.THREAD_TS }}"'",
+            "text": ":warning: *The following docs have not been modified for at least 6 months:*\n\n${{ env.THREAD_MESSAGE }}"
+          }' \
+          https://slack.com/api/chat.postMessage
