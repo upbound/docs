@@ -832,7 +832,7 @@ Next, run and test your composition.
 
 ### Test your composition locally
 
-Use the `up composition render`](https://docs.upbound.io/reference/cli/command-reference/#composition-render) command to test your composition locally. The render command requires a **Composite Resource** (XR) file. XRs use the Composition template to create new managed resources. An XR uses the same parameters as your example claim, but specifies the `XStorageBucket` type and specifies the target cluster.
+Use the [`up composition render`](https://docs.upbound.io/reference/cli/command-reference/#composition-render) command to test your composition locally. The render command requires a **Composite Resource** (XR) file. XRs use the Composition template to create new managed resources. An XR uses the same parameters as your example claim, but specifies the `XStorageBucket` type and specifies the target cluster.
 
 Create a new file called `xr.yaml`:
 
