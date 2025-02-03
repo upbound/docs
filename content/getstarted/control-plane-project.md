@@ -854,7 +854,7 @@ Next, render the composition against your new composite resource file:
 up composition render apis/xstoragebuckets/composition.yaml examples/storagebucket/xr.yaml
 ```
 
-This local test ensures the build, configuration, and orchestration runs correctly before you deploy it to a development control plane.
+This local test ensures the build, configuration, and orchestration runs as expected before you deploy it to a development control plane.
 
 ### Run your project in a development control plane in Upbound Cloud
 
