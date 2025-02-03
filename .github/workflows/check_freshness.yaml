@@ -83,6 +83,13 @@ jobs:
         fi
         echo "EOF" >> $GITHUB_ENV
     
+    - name: Format message
+      id: format
+      run: |
+        # Escape the content for JSON
+        ESCAPED_CONTENT=$(cat stale_docs.txt | jq -aRs .)
+        echo "FORMATTED_MSG=$ESCAPED_CONTENT" >> $GITHUB_ENV
+
     - name: Post to Slack
       uses: slackapi/slack-github-action@v1.24.0
       env:
@@ -91,22 +98,14 @@ jobs:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
+            "text": ":warning: Documentation Freshness Check",
             "blocks": [
               {
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "${{ env.STALE_DOCS }}"
+                  "text": ${{ env.FORMATTED_MSG }}
                 }
-              },
-              {
-                "type": "context",
-                "elements": [
-                  {
-                    "type": "mrkdwn",
-                    "text": "Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-                  }
-                ]
               }
             ]
           }
