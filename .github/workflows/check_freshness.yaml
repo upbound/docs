@@ -3,6 +3,7 @@ name: Documentation Freshness Check
 on:
   schedule:
     - cron: '0 0 * * 0'  # Runs every Sunday
+  workflow_dispatch:  # Enables manual trigger
 
 jobs:
   check_freshness:
