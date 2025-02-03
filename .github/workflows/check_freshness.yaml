@@ -1,5 +1,4 @@
 name: Documentation Freshness Check
-
 on:
   schedule:
     - cron: '0 0 * * 0'  # Runs every Sunday
@@ -76,36 +75,33 @@ jobs:
         
         echo "STALE_DOCS<<EOF" >> $GITHUB_ENV
         if [ -s stale_docs.txt ]; then
-          echo ":warning: *Stale Documentation Alert*\n\nThe following docs haven't been updated in 6+ months:\n" >> $GITHUB_ENV
+          echo ":warning: *Stale Documentation Alert*" >> $GITHUB_ENV
           cat stale_docs.txt >> $GITHUB_ENV
         else
           echo ":white_check_mark: All documentation is up to date!" >> $GITHUB_ENV
         fi
         echo "EOF" >> $GITHUB_ENV
-    
-    - name: Format message
-      id: format
-      run: |
-        # Escape the content for JSON
-        ESCAPED_CONTENT=$(cat stale_docs.txt | jq -aRs .)
-        echo "FORMATTED_MSG=$ESCAPED_CONTENT" >> $GITHUB_ENV
 
-    - name: Post to Slack
+    - name: Post initial message to Slack
+      id: slack
       uses: slackapi/slack-github-action@v1.24.0
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
       with:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
-            "text": ":warning: Documentation Freshness Check",
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": ${{ env.FORMATTED_MSG }}
-                }
-              }
-            ]
+            "text": ":warning: Documentation Freshness Check"
           }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+    - name: Format and post details in thread
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+        payload: |
+          {
+            "thread_ts": "${{ fromJson(steps.slack.outputs.response).ts }}",
+            "text": ${{ env.STALE_DOCS }}
+          }
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
