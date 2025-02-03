@@ -258,7 +258,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.storage.postgres.cnpg.pooler.debug | bool | `false` | Whether the pooler should log at debug level. |
 | features.alpha.apollo.storage.postgres.cnpg.pooler.enabled | bool | `true` | Whether the pooler should be enabled. |
 | features.alpha.apollo.storage.postgres.cnpg.pooler.instances | int | `2` | The number of replicas of the pooler to run. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.parameters | object | `{"default_pool_size":"1","max_client_conn":"1000","max_db_connections":"0","max_prepared_statements":"1000"}` | The pooler configuration, see PGbouncer documentation for all available options. Tune the suggested parameters as needed. |
+| features.alpha.apollo.storage.postgres.cnpg.pooler.parameters | object | `{"default_pool_size":"1", <br>"max_client_conn":"1000",<br>"max_db_connections":"0",<br>"max_prepared_statements":"1000"}` | The pooler configuration, see PGbouncer documentation for all available options. Tune the suggested parameters as needed. |
 | features.alpha.apollo.storage.postgres.cnpg.pooler.podTemplate | object | `{}` | The pod template for the pooler, allows configuring almost all aspects of the pooler pods. |
 | features.alpha.apollo.storage.postgres.connection | object | `""` | Configuration for the Apollo database connection, only respected if create is set to false. |
 | features.alpha.apollo.storage.postgres.connection.apollo.credentials | object | `{"format":"","secret":{"name":""},"user":""}` | The credentials for the connection from apollo server. Defaults to the one set in connection.credentials, if not set. |
@@ -288,8 +288,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.syncer.resources.limits.memory | string | `"1024Mi"` | Memory limit for the apollo syncer deployment. |
 | features.alpha.apollo.syncer.resources.requests.cpu | string | `"100m"` | CPU request for the apollo syncer deployment. |
 | features.alpha.apollo.syncer.resources.requests.memory | string | `"150Mi"` | Memory request for the apollo syncer deployment. |
-| features.alpha.argocdPlugin.enabled | bool | `false` | Wheather to enable the argocd plugin feature. |
-| features.alpha.argocdPlugin.target.externalCluster | object | `{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}}` | The secret name and key for the kubeconfig of the external cluster. This is used by the argocd plugin to connect to the external cluster in case ArgoCD does not run in the same cluster as Spaces. If not specified, defaults to in-cluster credentials. |
+| features.alpha.argocdPlugin.enabled | bool | `false` | Whether to enable the argocd plugin feature. |
+| features.alpha.argocdPlugin.target.externalCluster | object | `""` | The secret name and key for the kubeconfig of the external cluster. This is used by the argocd plugin to connect to the external cluster in case ArgoCD does not run in the same cluster as Spaces. If not specified, defaults to in-cluster credentials. |
 | features.alpha.argocdPlugin.target.externalCluster.enabled | bool | `false` | Whether to use the provided kubeconfig secret for the argocd plugin, otherwise in-cluster credentials will be used. |
 | features.alpha.argocdPlugin.target.externalCluster.secret.key | string | `"kubeconfig"` | The key at which the kubeconfig is stored in the secret. Ignored if externalCluster.enabled is false. |
 | features.alpha.argocdPlugin.target.externalCluster.secret.name | string | `"kubeconfig"` | The name of the secret containing the kubeconfig for the external cluster. Ignored if externalCluster.enabled is false. |
@@ -318,7 +318,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | gatewayAPI.spacesRouterRoute | object | { ... } | Configurations for the TLS or HTTP route that forwards external traffic into spaces-router. |
 | gatewayAPI.spacesRouterRoute.provision | bool | `false` | Specifies whether the Helm chart should provision the TLSRoute or HTTPRoute resource (depending on how spaces-router is configured) for routing traffic to spaces-router. |
 | imagePullSecrets | list | `[{"name":"upbound-pull-secret"}]` | NOTE: only an imagePullSecret of "upbound-pull-secret" is currently supported. |
-| ingress | object | `{"annotations":{},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"provision":true}` | Configurations for external requests coming into the space. |
+| ingress | object | `""` | Configurations for external requests coming into the space. |
 | ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the spaces-router deployment. |
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | ingress.insecure | bool | `false` | Disable TLS at the endpoints |
