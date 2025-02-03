@@ -63,19 +63,16 @@ jobs:
         else:
             print("All documents are fresh!")
         EOL
-    
+
     - name: Run freshness check
       id: check
       run: |
         python3 .github/scripts/check_freshness.py > stale_docs.txt
-        content=$(cat stale_docs.txt)
         if [ -s stale_docs.txt ]; then
-          content_escaped=$(echo "$content" | jq -aRs .)
-          echo "SLACK_MESSAGE=$content_escaped" >> $GITHUB_ENV
+          thread_message=$(cat stale_docs.txt | sed 's/"/\\"/g' | tr '\n' ' ' | sed 's/\\n/ /g')
+          echo "THREAD_MESSAGE=${thread_message}" >> $GITHUB_ENV
           echo "HAS_STALE=true" >> $GITHUB_ENV
         else
-          content_escaped=$(echo ":white_check_mark: All documentation is up to date!" | jq -aRs .)
-          echo "SLACK_MESSAGE=$content_escaped" >> $GITHUB_ENV
           echo "HAS_STALE=false" >> $GITHUB_ENV
         fi
 
@@ -88,7 +85,7 @@ jobs:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
-            "text": "${{ env.HAS_STALE == 'true' && ':warning: Documentation Freshness Check - Found stale docs' || ':white_check_mark: Documentation Freshness Check - All up to date' }}"
+            "text": "Documentation Freshness Check Results"
           }
 
     - name: Post thread reply
@@ -101,5 +98,5 @@ jobs:
         payload: |
           {
             "thread_ts": "${{ fromJSON(steps.slack.outputs.response).ts }}",
-            "text": ${{ env.SLACK_MESSAGE }}
+            "text": ":warning: ${{ env.THREAD_MESSAGE }}"
           }
