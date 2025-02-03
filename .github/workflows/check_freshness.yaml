@@ -100,8 +100,8 @@ jobs:
         channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
         payload: |
           {
-            "thread_ts": "${{ fromJson(steps.slack.outputs.response).ts }}",
-            "text": ${{ env.STALE_DOCS }}
+            "thread_ts": "${{ fromJSON(steps.slack.outputs.response).ts }}",
+            "text": "${{ env.STALE_DOCS }}"
           }
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
