@@ -168,7 +168,11 @@ spec:
   controlPlaneSelector:
     labelSelectors:
       - matchExpressions:
-        - { key: environment, operator: In, values: [production,staging] }
+          - key: environment
+            operator: In
+            values:
+              - production
+              - staging
 ```
 
 You can also specify the names of control planes directly:
@@ -216,7 +220,11 @@ spec:
   namespaceSelector:
     labelSelectors:
       - matchExpressions:
-        - { key: team, operator: In, values: [team1,team2] }
+          - key: team
+            operator: In
+            values:
+              - team1
+              - team2
 ```
 
 You can also specify the names of namespaces directly:
