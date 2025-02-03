@@ -1,0 +1,111 @@
+name: Documentation Freshness Check
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every Sunday
+
+jobs:
+  check_freshness:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+        
+    - name: Create scripts directory
+      run: mkdir -p .github/scripts
+        
+    - name: Copy Python script
+      run: |
+        cat > .github/scripts/check_freshness.py << 'EOL'
+        import os
+        import subprocess
+        from datetime import datetime, timedelta
+
+        FRESHNESS_PERIOD = timedelta(days=180)
+        IGNORED_FILES = ["_index.md", "support.md"]
+        now = datetime.now()
+
+        def get_last_modified_time(file_path):
+            result = subprocess.run(
+                ['git', 'log', '-1', '--format=%ct', file_path],
+                stdout=subprocess.PIPE,
+                text=True
+            )
+            timestamp = int(result.stdout.strip())
+            return datetime.fromtimestamp(timestamp)
+
+        def check_freshness(directory):
+            stale_files = []
+            for root, _, files in os.walk(directory):
+                for file in files:
+                    if file.endswith(".md"):
+                        relative_path = os.path.relpath(os.path.join(root, file), start=directory)
+                        if file in IGNORED_FILES:
+                            continue
+                        last_modified = get_last_modified_time(os.path.join(root, file))
+                        time_diff = now - last_modified
+                        if time_diff > FRESHNESS_PERIOD:
+                            stale_files.append((relative_path, last_modified))
+            return stale_files
+
+        docs_directory = "content"
+        stale_docs = check_freshness(docs_directory)
+        sorted_stale_docs = sorted(stale_docs, key=lambda x: x[1])
+
+        if sorted_stale_docs:
+            print("The following docs have not been modified for at least 6 months:")
+            for doc, mod_time in sorted_stale_docs:
+                print(f"{doc}, {mod_time.strftime('%Y-%m-%d')}")
+        else:
+            print("All documents are fresh!")
+        EOL
+    
+    - name: Run freshness check
+      id: check
+      run: |
+        python3 .github/scripts/check_freshness.py > stale_docs.txt
+        
+        echo "STALE_DOCS<<EOF" >> $GITHUB_ENV
+        if [ -s stale_docs.txt ]; then
+          echo ":warning: *Stale Documentation Alert*\n\nThe following docs haven't been updated in 6+ months:\n" >> $GITHUB_ENV
+          cat stale_docs.txt >> $GITHUB_ENV
+        else
+          echo ":white_check_mark: All documentation is up to date!" >> $GITHUB_ENV
+        fi
+        echo "EOF" >> $GITHUB_ENV
+    
+    - name: Post to Slack
+      uses: slackapi/slack-github-action@v1.24.0
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      with:
+        channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+        payload: |
+          {
+            "blocks": [
+              {
+                "type": "section",
+                "text": {
+                  "type": "mrkdwn",
+                  "text": "${{ env.STALE_DOCS }}"
+                }
+              },
+              {
+                "type": "context",
+                "elements": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
+            ]
+          }
