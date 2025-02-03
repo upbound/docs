@@ -12,8 +12,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0  # Fetch all history for git log
-    
+        fetch-depth: 0
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -22,9 +22,8 @@ jobs:
     - name: Run freshness check
       id: check
       run: |
-        python3 check_freshness.py > stale_docs.txt
+        python3 .github/workflows/check_freshness.py > stale_docs.txt
         
-        # Format the content for Slack
         echo "STALE_DOCS<<EOF" >> $GITHUB_ENV
         if [ -s stale_docs.txt ]; then
           echo ":warning: *Stale Documentation Alert*\n\nThe following docs haven't been updated in 6+ months:\n" >> $GITHUB_ENV
