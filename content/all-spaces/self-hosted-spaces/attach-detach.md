@@ -59,7 +59,7 @@ export UPBOUND_ORG_NAME=$@your-org-name$@
 Create a new robot token and export it to an environment variable called `UPBOUND_TOKEN`:
 
 ```bash
-up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect" 
+up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect"
 export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-| awk -F': ' '/Token:/ {print $2}')
 ```
 
@@ -143,7 +143,19 @@ This diagram illustrates a self-hosted Space running in AWS connected to the glo
 
 ### Data path
 
-Upbound uses a Pub/Sub model over TLS to communicate between Upbound's global console and your self-hosted Space. Self-hosted Spaces establish a secure connection with `connect.upbound.io` and subscribe to an endpoint. The Upbound Console communicates to the Space through that endpoint. The data flow is:
+Upbound uses a Pub/Sub model over TLS to communicate between Upbound's global
+console and your self-hosted Space. Self-hosted Spaces establishes a secure
+connection with `connect.upbound.io` and `api.upbound.io` and subscribes to an
+endpoint.
+
+{{< hint "important" >}}
+Add `connect.upbound.io` and `api.upbound.io` to your organization's list of
+allowed endpoints.
+{{</hint>}}
+
+The
+Upbound Console communicates to the Space through that endpoint. The data flow
+is:
 
 1. Users sign in to the Upbound Console, redirecting to authenticate with an organization's configured Identity Provider via SSO.
 2. Once authenticated, actions in the Console, like listing control planes or specific resource types from a control plane. These requests post as messages to the Upbound Connect service.
