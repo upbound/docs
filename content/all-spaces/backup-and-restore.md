@@ -457,6 +457,8 @@ spec:
   controlPlane: my-awesome-ctp
 ```
 
+If the control plane does not exist, the backup will fail after a few retries.
+
 ### Exclude resources from the backup
 
 The `spec.excludedResources` field is an array of resource names to exclude from the manual backup.
