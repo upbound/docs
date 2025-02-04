@@ -1,0 +1,3 @@
+description: |-
+    Username is a LDAP user name used to authenticate using the LDAP Vault
+    authentication method

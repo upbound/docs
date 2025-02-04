@@ -1,0 +1,4 @@
+description: |-
+    Traces defines the traces exporter pipeline to configure on the
+    selected ControlPlanes. The value has to be present in the
+    spec.exporters field.
