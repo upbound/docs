@@ -457,7 +457,7 @@ spec:
   controlPlane: my-awesome-ctp
 ```
 
-If the control plane does not exist, the backup will fail after a few retries.
+If the control plane doesn't exist, the backup fails after multiple failed retry attempts.
 
 ### Exclude resources from the backup
 

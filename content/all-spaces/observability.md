@@ -182,38 +182,36 @@ This feature is available from Spaces v1.11.
 
 The `SharedTelemetryConfig` resource allows you to configure a processing 
 pipeline for the telemetry data collected by the OpenTelemetry Collector. 
-Similar to `spec.exporters`, the `spec.processors` field allows you to
-configure the processors that transform the telemetry data before it is sent
-to the exporters. It follows the OpenTelmetry Collector [processor configuration](https://opentelemetry.io/docs/collector/configuration/#processors).
+Like `spec.exporters`, the `spec.processors` field allows you to
+configure the processors that transform the telemetry data for the exporters. It follows the OpenTelmetry Collector [processor configuration](https://opentelemetry.io/docs/collector/configuration/#processors).
 
 For now, the only supported processor is the [transform processor]
 (https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md).
 
 #### Telemetry transforms
 
+<!-- vale gitlab.SentenceLength  = NO -->
 The [transform processor](https://github.
 com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor
 /transformprocessor/README.md) allows for the transformation of telemetry data
 using the [OpenTelemetry Transformation Language](https://github.
 com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
+<!-- vale gitlab.SentenceLength  = YES -->
 
-Metrics, logs and traces can be transformed at different scopes with the 
-possibility to use conditionals to select the exact data that needs 
-transformations. Example of useful transformations include:
-- adding attributes(labels)
-- removing attributes(labels)
-- modifying attributes(labels) - e.g. renaming, concatenating multiple, etc.
-- converting metric types (e.g. gauge to sum)
-- and more... for more info check the [transform processor README]
-  (https://github.
-  com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor
-  /transformprocessor/README.md)
 
-Some things to keep in mind:
-- Context is important, it determines the scope of the transformation.
-- The `conditions` field is OR-ed, meaning that if any condition is met, the
-  transformation is applied (plus the individual `where` conditions on 
-  statements).
+
+The transform processor can transform metrics, logs, and traces at different scopes and allows you to use conditionals to select specific data.
+
+Example of useful transformations include:
+
+- adding, removing, and modifying attributes. Renaming, concatenating multiple labels, etc
+- converting metric types (gauge to sum)
+- for more information, review the [transform processor README](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md)
+
+Important considerations:
+
+- Your context determines the transformation scope.
+- `conditions` are "any match condition" field. If your data meets any condition, the transformation applies to that data.
 
 Some useful examples:
 
@@ -250,7 +248,7 @@ spec:
     metrics: [transform]
 ```
 
-Alternatively, add the label only to a specific metric:
+You can also add the label only to a specific metric:
 
 ```yaml
 ...
@@ -303,14 +301,13 @@ From logs:
 
 ##### References
 
-There is a lot of documentation about what can be done with the transform processor.
-For more information, check:
+For more information, review the following transform processor documentation:
 - [OpenTelemetry Transformation Language](https://github.
   com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
 - [OpenTelemetry Transformation Language Functions](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md)
 - [OpenTelemetry Transformation Language Contexts](https://github.
   com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts)
-- An interesting [guide on OTTL](https://betterstack.com/community/guides/observability/ottl/#a-brief-overview-of-the-ottl-grammar)
+- An interesting [guide on `OTTL`](https://betterstack.com/community/guides/observability/ottl/#a-brief-overview-of-the-ottl-grammar)
 
 ### Status
 

@@ -384,9 +384,9 @@ kubectl exec -ti -n upbound-system deployments/spaces-controller -c spaces -- hy
 This feature is available from Spaces v1.11.
 {{< /hint >}}
 
-Instead of restoring the whole Space, specific control planes can be restored
-from a backup using the `--controlplanes` flag. In addition, through 
-the `--skip-space-restore` flag the Space skips restoring Space objects. 
+Instead of restoring the whole Space, you can choose to restore specific control planes
+from a backup using the `--controlplanes` flag. You can also use
+the `--skip-space-restore` flag to skip restoring Space objects. 
 This allows Spaces admins to restore individual control planes without 
 needing to restore the entire Space.
 
