@@ -377,3 +377,23 @@ export SPACE_BACKUP_CONFIG=my-backup-config
 export SPACE_BACKUP=my-backup
 kubectl exec -ti -n upbound-system deployments/spaces-controller -c spaces -- hyperspace restore $SPACE_BACKUP $SPACE_BACKUP_CONFIG
 ```
+
+### Restore specific control planes
+
+{{< hint "important" >}}
+This feature is available from Spaces v1.11.
+{{< /hint >}}
+
+Instead of restoring the whole Space, you can choose to restore specific control planes
+from a backup using the `--controlplanes` flag. You can also use
+the `--skip-space-restore` flag to skip restoring Space objects. 
+This allows Spaces admins to restore individual control planes without 
+needing to restore the entire Space.
+
+```shell
+export SPACE_BACKUP_CONFIG=my-backup-config
+export SPACE_BACKUP=my-backup
+kubectl exec -ti -n upbound-system deployments/spaces-controller -c spaces 
+-- hyperspace restore $SPACE_BACKUP $SPACE_BACKUP_CONFIG --controlplanes default/ctp1,default/ctp2 --skip-space-restore
+
+```

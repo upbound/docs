@@ -127,6 +127,10 @@ spec:
 
 ### Sensitive data
 
+{{< hint "important" >}}
+This feature is available from Spaces v1.10
+{{< /hint >}}
+
 To avoid exposing sensitive data in the `SharedTelemetryConfig` resource, use
 Kubernetes secrets to store the sensitive data and reference the secret in the
 `SharedTelemetryConfig` resource.
@@ -169,6 +173,141 @@ spec:
 The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
 `key`, and `path` values to inject the secret value in the
 `SharedTelemetryConfig` resource.
+
+### Telemetry processing
+
+{{< hint "important" >}}
+This feature is available from Spaces v1.11.
+{{< /hint >}}
+
+The `SharedTelemetryConfig` resource allows you to configure a processing 
+pipeline for the telemetry data collected by the OpenTelemetry Collector. 
+Like `spec.exporters`, the `spec.processors` field allows you to
+configure the processors that transform the telemetry data for the exporters. It follows the OpenTelmetry Collector [processor configuration](https://opentelemetry.io/docs/collector/configuration/#processors).
+
+For now, the only supported processor is the [transform processor]
+(https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md).
+
+#### Telemetry transforms
+
+<!-- vale gitlab.SentenceLength = NO -->
+The [transform processor](https://github.
+com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor
+/transformprocessor/README.md) allows for the transformation of telemetry data
+using the [OpenTelemetry Transformation Language](https://github.
+com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
+<!-- vale gitlab.SentenceLength = YES -->
+
+
+
+The transform processor can transform metrics, logs, and traces at different scopes and allows you to use conditionals to select specific data.
+
+Example of useful transformations include:
+
+- adding, removing, and modifying attributes. Renaming, concatenating multiple labels, etc
+- converting metric types (gauge to sum)
+- for more information, review the [transform processor README](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md)
+
+Important considerations:
+
+- Your context determines the transformation scope.
+- `conditions` are "any match condition" field. If your data meets any condition, the transformation applies to that data.
+
+Some useful examples:
+
+##### Adding an attribute/label to metrics
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: datadog
+  namespace: default
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    datadog:
+      api:
+        site: ${DATADOG_SITE}
+        key: ${DATADOG_API_KEY}
+  exportPipeline:
+    metrics: [datadog]
+    traces: [datadog]
+    logs: [datadog]
+  processors:
+    transform:
+      error_mode: ignore
+      metric_statements:
+        - context: datapoint
+          statements:
+            - set(attributes["newLabel"], "someLabel")
+  processorPipeline:
+    metrics: [transform]
+```
+
+You can also add the label only to a specific metric:
+
+```yaml
+...
+processors:
+  transform:
+    metric_statements:
+      - context: datapoint
+        statements:
+          - set(attributes["newLabel"], "someLabel") where metric.name == "crossplane_managed_resource_ready"
+...
+```
+
+##### Removing labels
+
+From metrics:
+```yaml
+...
+- processors:
+  transform:
+    metric_statements:
+      - context: datapoint
+        statements:
+          - delete_key(attributes, "kubernetes_namespace")
+...
+```
+
+From logs:
+```yaml
+- processors:
+  transform:
+    log_statements:
+      - context: log
+        statements:
+          - delete_key(attributes, "log.file.name")
+```
+
+##### Modifying logs
+
+```yaml
+...
+- processors:
+  transform:
+    log_statements:
+      - context: log
+        statements:
+          - set(attributes["original"], body) # save the original log message
+          - set(body, Concat(["log message:", body], " ")) # add a prefix to the log message
+...
+```
+
+##### References
+
+For more information, review the following transform processor documentation:
+- [OpenTelemetry Transformation Language](https://github.
+  com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
+- [OpenTelemetry Transformation Language Functions](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md)
+- [OpenTelemetry Transformation Language Contexts](https://github.
+  com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts)
+- An interesting [guide on `OTTL`](https://betterstack.com/community/guides/observability/ottl/#a-brief-overview-of-the-ottl-grammar)
 
 ### Status
 
