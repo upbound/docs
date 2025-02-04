@@ -190,13 +190,13 @@ For now, the only supported processor is the [transform processor]
 
 #### Telemetry transforms
 
-<!-- vale gitlab.SentenceLength  = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
 The [transform processor](https://github.
 com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor
 /transformprocessor/README.md) allows for the transformation of telemetry data
 using the [OpenTelemetry Transformation Language](https://github.
 com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
-<!-- vale gitlab.SentenceLength  = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
 
 
 
