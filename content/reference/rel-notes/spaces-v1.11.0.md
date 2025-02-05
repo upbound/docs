@@ -47,6 +47,6 @@ This release enhances backup/restore workflows and telemetry customization, whil
 
 #### Chore
 
-- **[Breaking change]**
+- **Breaking change**
   Upgraded OTEL Collector images to v0.116.0. The opentelemetry-operator on the host cluster needs to run versions =>0.110.0 due to a change in OTEL Collector flags.
 <!-- vale on -->
