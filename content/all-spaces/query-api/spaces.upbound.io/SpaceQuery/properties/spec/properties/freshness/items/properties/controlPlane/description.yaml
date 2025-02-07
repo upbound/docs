@@ -1,0 +1,4 @@
+description: |-
+    controlPlane is the name of the control plane to check for freshness of the data.
+    In case of Query, the name is defaulted and must match the control plane
+    name of the request.

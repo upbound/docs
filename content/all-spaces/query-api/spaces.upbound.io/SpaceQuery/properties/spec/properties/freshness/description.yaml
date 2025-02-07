@@ -1,0 +1,3 @@
+description: |-
+    freshness specifies resource versions per control plane to wait for before
+    returning results. It's helpful to ensure consistency for read-after-write.

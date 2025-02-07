@@ -1,0 +1,7 @@
+description: |-
+    resourceVersion is the resource version of the specified control plane
+    to wait for before executing the query. Normal request timeouts apply.
+    The resourceVersion is a large integer, returned by previous queries or
+    by requests against the control plane Kubernetes API.
+    
+    Note that resource versions between control planes are not correlated.

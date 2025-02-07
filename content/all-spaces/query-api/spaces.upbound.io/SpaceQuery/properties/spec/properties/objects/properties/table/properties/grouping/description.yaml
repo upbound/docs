@@ -1,0 +1,3 @@
+description: |-
+    grouping specifies how to group the returned objects into multiple
+    tables where every table can have different sets of columns.

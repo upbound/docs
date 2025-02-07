@@ -1,0 +1,3 @@
+description: |-
+    QueryFilter specifies what to filter. Objects in the query response will
+    match all criteria specified in the filter.
