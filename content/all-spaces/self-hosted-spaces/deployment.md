@@ -8,7 +8,7 @@ aliases:
 ---
 
 You need a Kubernetes cluster as the hosting environment to run Spaces.
-
+<!-- vale write-good.TooWordy = NO -->
 - You can install Spaces into any Kubernetes cluster, using one of the
   current [supported versions](https://kubernetes.io/releases/).
 - If you have a requirement to install on an unsupported Kubernetes version, please reach out to your Upbound Solution
@@ -17,6 +17,7 @@ You need a Kubernetes cluster as the hosting environment to run Spaces.
   on [AWS EKS](https://aws.amazon.com/eks/), [Google Cloud GKE](https://cloud.google.com/kubernetes-engine),
   and [Microsoft AKS](https://azure.microsoft.com/en-us/products/kubernetes-service).
 - Upbound recommends dedicating the Kubernetes cluster for the express purpose of running Spaces as its sole workload.
+<!-- vale write-good.TooWordy = YES -->
 
 ## Deployment requirements
 
