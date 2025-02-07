@@ -1,2 +1,4 @@
 description: |-
     objects is the list of objects returned by the query.
+    
+    Objects is mutual exclusive with Tables.

@@ -4,5 +4,4 @@ description: |-
     response to a previous query. If neither first nor cursor is specified,
     objects are returned from the beginning.
     
-    
     Note that cursor values are not stable under different orderings.

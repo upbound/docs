@@ -1,0 +1,2 @@
+description: |-
+    apiGroup is the API group to query. If empty all groups will be queried.

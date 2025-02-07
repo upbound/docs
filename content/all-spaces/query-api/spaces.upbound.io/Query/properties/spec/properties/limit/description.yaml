@@ -1,7 +1,6 @@
 description: |-
     limit is the maximal number of objects to return. Defaulted to 100.
     
-    
     Note that a limit in a relation subsumes all the children of all parents,
     i.e. a small limit only makes sense if there is only a single parent,
     e.g. selected via spec.IDs.
