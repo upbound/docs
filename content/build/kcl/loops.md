@@ -1,6 +1,8 @@
 ---
 title: "Loops (for)"
 weight: 50
+aliases:
+    - core-concepts/kcl/loops
 ---
 
 This guide shows you how to use the `for` syntax and `lambda` support to iterate
@@ -47,7 +49,7 @@ nodeGroupRolePolicyAttachments = [{
         }
         }
     }
-    
+
 } for i, p in nodeGroupRolePolicies]
 
 items = [nodeGroupRolePolicyAttachments]
@@ -84,5 +86,3 @@ awsRouteTableAssociationsPublic = [(lambda i: int, -> v1beta1.RouteTableAssociat
 
 items = [awsRouteTableAssociationsPublic]
 ```
-
-

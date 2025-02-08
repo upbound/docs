@@ -1,6 +1,8 @@
 ---
 title: "Pipeline inputs and outputs"
 weight: 25
+aliases:
+    - core-concepts/kcl/inputs-outputs
 ---
 
 Functions require inputs and outputs to process requests and return values to
@@ -52,7 +54,7 @@ _metadata = lambda name: str -> any {
 }
 
 # This is the observed composite resource, provided as an input to the function
-oxr = option("params").oxr 
+oxr = option("params").oxr
 
 _items = [
     v1beta1.Instance {

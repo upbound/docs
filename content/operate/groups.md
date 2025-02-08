@@ -2,6 +2,8 @@
 title: Control Plane Groups
 weight: 2
 description: An introduction to the Control Plane Groups in Upbound
+aliases:
+    - mcp/groups
 ---
 
 In Upbound, Control Plane Groups (or just, 'groups') are a logical grouping of one or more control planes with shared resources like [secrets]({{<ref "secrets-management" >}}) or [backups]({{<ref "deploy/backup-and-restore" >}}). It's a mechanism for isolating these groups of resources within a single [Space]({{<ref "deploy" >}}). All role-based access control in Upbound happens at the control plane group-level.

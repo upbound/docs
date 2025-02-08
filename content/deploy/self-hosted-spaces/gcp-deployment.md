@@ -4,6 +4,7 @@ weight: 4
 description: A  quickstart guide for Upbound Spaces in GCP
 aliases:
     - /deploy/disconnected-spaces/gcp-deployment
+    - all-spaces/self-hosted-spaces/gcp-deployment
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in GCP.

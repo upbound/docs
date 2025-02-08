@@ -4,6 +4,7 @@ weight: 130
 description: Query API setup for self-hosted Spaces
 aliases:
     - /self-hosted-spaces/query-api
+    - all-spaces/self-hosted-spaces/query-api
 ---
 
 <!-- vale write-good.TooWordy = NO -->

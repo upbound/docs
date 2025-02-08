@@ -2,6 +2,8 @@
 title: Debugging issues on a managed control plane
 weight: 100
 description: A guide for how to debug resources on a managed control plane running in Upbound.
+aliases:
+    - mcp/debugging-a-ctp
 ---
 
 This guide provides troubleshooting guidance for how to identify and fix issues on a managed control plane.

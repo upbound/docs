@@ -1,6 +1,8 @@
 ---
 title: "Models"
 weight: 30
+aliases:
+    - core-concepts/python/models
 ---
 
 Upbound Official Providers and some other packages include

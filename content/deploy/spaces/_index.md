@@ -12,4 +12,3 @@ compose, and consume infrastructure with the Kubernetes API. Upbound also
 integrates a UI console to simplify organization management. With the addition
 of managed control planes, Upbound allows you to centralize your resource
 orchestration.
-

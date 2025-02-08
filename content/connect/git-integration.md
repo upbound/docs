@@ -4,6 +4,8 @@ weight: 90
 description: A guide to how managed control planes in a space connect to git
 tocHidden: true
 searchExclude: true
+aliases:
+    - mcp/git-integration
 ---
 
 {{< hint "important" >}}
@@ -179,7 +181,7 @@ spec:
 
 ## Configure pull interval
 
-You can configure the Git sync's regular pull interval of the target Git repository. The min pull interval is 15 seconds. The default pull interval is 90 seconds. To configure this, provide a value in the `spec.source.git.pullInterval` field in the format of `1h2m3s`. 
+You can configure the Git sync's regular pull interval of the target Git repository. The min pull interval is 15 seconds. The default pull interval is 90 seconds. To configure this, provide a value in the `spec.source.git.pullInterval` field in the format of `1h2m3s`.
 
 ## Configure Git reference
 
@@ -235,5 +237,3 @@ spec:
       ref:
         tag: v1.0
 ```
-
-

@@ -4,6 +4,7 @@ weight: 120
 description: Enable and connect self-hosted Spaces to the Upbound console
 aliases:
     - /deploy/spaces/attach-detach
+    - all-spaces/self-hosted-spaces/attach-detach
 ---
 
 {{< hint "important" >}}

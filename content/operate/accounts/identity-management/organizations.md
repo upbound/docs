@@ -2,6 +2,8 @@
 title: Organizations
 weight: 2
 description: "Configuring Organizations for Upbound"
+aliases:
+    - accounts/identity-management/organizations
 ---
 
 Organizations allow multiple [user accounts]({{<ref "users" >}}) to share Upbound resources and collaborate.

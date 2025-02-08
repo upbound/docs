@@ -1,6 +1,8 @@
 ---
 title: "Resource data extraction"
 weight: 70
+aliases:
+    - core-concepts/kcl/resource-data-extraction
 ---
 
 ## Extract data from the composite resource

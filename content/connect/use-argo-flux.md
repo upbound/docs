@@ -5,6 +5,7 @@ description: A guide for integrating Argo or Flux with managed control planes in
 draft: true
 aliases:
     - /deploy/disconnected-spaces/use-argo-flux
+    - all-spaces/self-hosted-spaces/use-argo-flux
 ---
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.

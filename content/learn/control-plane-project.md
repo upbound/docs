@@ -5,8 +5,9 @@ weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
     - "/quickstart"
-
+    - getstarted/control-plane-project
 ---
+
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale gitlab.SentenceLength = NO -->

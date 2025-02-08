@@ -6,6 +6,7 @@ hideFromHomepage: true
 category: "guides"
 aliases:
     - "/getstarted-devex"
+    - getstarted/_index
 ---
 
 Upbound is a scalable infrastructure management service built on Crossplane. The advantage of Crossplane and Upbound is the universal control plane. Control planes continuously reconcile your desired state with actual resources, allowing teams to self-serve their infrastructure needs.
@@ -32,4 +33,3 @@ In the next guide, you'll learn how to provision cloud resources in your
 preferred provider. Follow [the guide]({{< ref "./control-plane-project" >}}) to
 learn the full capabilities of Upbound's cross-cloud infrastructure management.
 <!-- vale gitlab.FutureTense = YES -->
-

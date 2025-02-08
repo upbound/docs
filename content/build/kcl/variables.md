@@ -1,6 +1,8 @@
 ---
 title: "Variables"
 weight: 40
+aliases:
+    - core-concepts/kcl/variables
 ---
 
 This guide describes how to define and use variables in your KCL function.

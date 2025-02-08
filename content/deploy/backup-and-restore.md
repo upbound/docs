@@ -6,6 +6,7 @@ aliases:
     - /spaces/backup-and-restore
     - /disconnected-spaces/backup-and-restore
     - /self-hosted-spaces/backup-and-restore
+    - all-spaces/backup-and-restore
 ---
 
 {{< hint "important" >}}

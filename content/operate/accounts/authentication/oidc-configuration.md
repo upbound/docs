@@ -2,6 +2,8 @@
 title: Configure OIDC
 weight: 200
 description: Configure OIDC in your Space
+aliases:
+    - accounts/authentication/oidc-configuration
 ---
 
 Upbound uses the Kubernetes [Structured Authentication Configuration][Structured Auth Config]  to validate OIDC tokens sent to the API. Upbound stores this configuration as a `ConfigMap` and authenticates with the Upbound router component during installation with Helm.
@@ -168,7 +170,7 @@ kubectl create configmap <configmap name> -n upbound-system --from-file=config.y
 ```
 <!-- vale gitlab.SentenceLength = NO -->
 <!-- vale Google.WordList = NO -->
-To enable OIDC authentication and disable Upbound IAM when installing the Space, reference the configuration and pass an empty value to the Upbound IAM issuer 
+To enable OIDC authentication and disable Upbound IAM when installing the Space, reference the configuration and pass an empty value to the Upbound IAM issuer
 parameter:
 <!-- vale Google.WordList = YES -->
 <!-- vale gitlab.SentenceLength = YES -->

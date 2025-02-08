@@ -1,6 +1,8 @@
 ---
 title: "Build with Python"
 weight: 1
+aliases:
+    - core-concepts/python/overview
 ---
 
 Upbound supports defining your control plane APIs in the

@@ -5,6 +5,7 @@ description: Common operations in Spaces
 aliases:
     - /spaces/spaces-management
     - /deploy/disconnected-spaces/spaces-management
+    - all-spaces/self-hosted-spaces/quickstart
 ---
 
 ## Spaces management

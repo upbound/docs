@@ -4,6 +4,7 @@ weight: 200
 description: A guide for how to use the integrated observability pipeline feature in a Space.
 aliases:
     - /spaces/observability
+    - all-spaces/observability
 ---
 
 {{< hint "important" >}}

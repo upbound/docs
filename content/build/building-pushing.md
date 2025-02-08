@@ -1,7 +1,10 @@
 ---
 title: "Building and pushing your Control Plane Projects"
 weight: 6
-description: "How to build and push your control plane project to the Upbound Marketplace"
+description: "How to build and push your control plane project to the Upbound
+Marketplace"
+aliases:
+    - core-concepts/building-pushing
 ---
 
 <!--- TODO(tr0njavolta): update CLI links --->

@@ -6,6 +6,7 @@ aliases:
     - /spaces/secrets-management
     - /disconnected-spaces/secrets-management
     - /self-hosted-spaces/secrets-management
+    - all-spaces/secrets-management
 ---
 
 {{< hint "important" >}}

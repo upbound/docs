@@ -2,6 +2,8 @@
 title: "Authoring a Composition in your Control Plane Projects"
 weight: 4
 description: "Define your first composition in your control plane project"
+aliases:
+    - core-concepts/authoring-compositions
 ---
 
 After you author an XRD, `up composition generate` allows you to create a

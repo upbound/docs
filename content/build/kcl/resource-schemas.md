@@ -1,6 +1,8 @@
 ---
 title: "Resource schemas"
 weight: 30
+aliases:
+    - core-concepts/kcl/resource-schemas
 ---
 
 Upbound Official Providers and some other packages define KCL-compatible

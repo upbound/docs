@@ -2,6 +2,8 @@
 title: "Creating and Pushing Packages"
 weight: 30
 description: "How to create, configure and push packages to the Upbound Marketplace"
+aliases:
+    - upbound-marketplace/packages
 ---
 
 ## Package types

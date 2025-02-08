@@ -5,6 +5,7 @@ description: A guide for troubleshooting an issue that occurs in a Space
 aliases:
     - /spaces/troubleshooting
     - /deploy/disconnected-spaces/troubleshooting
+    - all-spaces/self-hosted-spaces/troubleshooting
 ---
 
 Find guidance below on how to find solutions for issues you encounter when deploying and using an Upbound Space. Use the tips below as a supplement to the observability metrics discussed in the [Observability]({{<ref "observability">}}) page.

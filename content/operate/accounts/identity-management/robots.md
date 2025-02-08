@@ -2,6 +2,8 @@
 title: Robots
 weight: 4
 description: "Creating and assigning Upbound robot tokens"
+aliases:
+    - accounts/identity-management/robots
 ---
 
 Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user.

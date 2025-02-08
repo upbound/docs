@@ -5,6 +5,7 @@ description: A guide for how to connect a Kubernetes app cluster to a managed co
 aliases:
   - /concepts/control-plane-connector
   - /mcp/control-plane-connector/
+    - mcp/ctp-connector
 ---
 
 Upbound's Managed Control Plane Connector (MCP Connector) allows you to make a control plane's APIs available on an app cluster. MCP Connector is for users coming from open source Crossplane and who treated Crossplane as an add-on to an existing Kubernetes application cluster. In that world, users could interact with Crossplane APIs from the same cluster they deploy their applications to. This model breaks when users move their Crossplane instances into a managed solution in Upbound.

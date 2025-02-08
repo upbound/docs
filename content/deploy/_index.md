@@ -5,6 +5,7 @@ description: An introduction to Spaces hosting feature in Upbound
 aliases:
     - "/spaces"
     - "/concepts/upbound-spaces"
+    - all-spaces/_index.md
 icon: balloon
 category: "guides"
 ---

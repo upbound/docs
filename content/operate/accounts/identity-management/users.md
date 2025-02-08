@@ -1,3 +1,5 @@
+aliases:
+
 ---
 title: "Users"
 weight: 4
@@ -7,6 +9,7 @@ aliases:
     - "/users/register"
     - "/users/change"
     - "/concepts/accounts/users"
+    - accounts/identity-management/users
 ---
 
 User accounts in Upbound belong to individuals. Each user can be a member of one or more [teams]({{<ref "./teams" >}}), which have permissions on control planes within an [organization]({{<ref "./organizations" >}}). A user can be a member of multiple organizations.

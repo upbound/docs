@@ -2,6 +2,8 @@
 title: Embedded Functions
 description: Deep Dive on Embedded functions
 weight: 3
+aliases:
+    - core-concepts/embedded-functions
 ---
 
 Embedded functions are composition functions that you can build, package, and manage directly in your configuration. Instead of relying on a YAML-based patch-and-transform workflow, you can write composition logic in Python or configuration languages like KCL. Embedded functions allow for shared logic across multiple compositions within your configuration.

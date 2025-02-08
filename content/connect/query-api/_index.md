@@ -4,6 +4,8 @@ weight: 400
 description: Use the `up` CLI to query objects and resources
 cascade:
     product: api
+aliases:
+    - all-spaces/query-api
 ---
 
 <!-- vale write-good.TooWordy = NO -->

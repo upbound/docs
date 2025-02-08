@@ -4,6 +4,7 @@ weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
 aliases:
     - /deploy/spaces/guides/mcp-connector-guide
+    - all-spaces/mcp-connector-guide
 ---
 
 In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a managed control plane in an Upbound self-hosted Space.

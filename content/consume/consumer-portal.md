@@ -2,6 +2,8 @@
 title: Consumer portal
 weight: 10
 description: An introduction to the Consumer Portal feature of Upbound
+aliases:
+    - all-spaces/spaces/consumer-portal
 ---
 
 Upbound offers the browser-based Consumer portal tool that lets you manage resources on your control planes through a graphical interface. Use the Consumer Portal to manage your resources if you prefer using a user-interface through the browser.
@@ -95,5 +97,3 @@ These fields are advanced fields that aren't used often by most users. These fie
 {{<hint "tip" >}}
 If your composite resource definition **doesn't** use `.spec.parameters` to group user-facing inputs, the fields are collected and rendered in the Advanced section.
 {{< /hint >}}
-
-

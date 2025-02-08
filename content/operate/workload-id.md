@@ -1,6 +1,8 @@
 ---
 title: "Workload-identity Configuration"
 weight: 5
+aliases:
+    - all-spaces/workload-id
 ---
 
 Upbound Spaces supports workload identity configuration for authentication with

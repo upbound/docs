@@ -6,6 +6,7 @@ aliases:
     - /spaces/dr
     - /disconnected-spaces/dr
     - /self-hosted-spaces/dr
+    - all-spaces/self-hosted-spaces/dr
 ---
 
 {{< hint "important" >}}

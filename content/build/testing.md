@@ -1,7 +1,10 @@
 ---
 title: "Running and testing your Control Plane Projects"
 weight: 5
-description: "How to run your control plane project on a development control plane"
+description: "How to run your control plane project on a development control
+plane"
+aliases:
+    - core-concepts/testing
 ---
 
 To run and test your control plane projects, run them on development control planes via the following command.

@@ -1,3 +1,4 @@
+aliases:
 ---
 title: Local Quickstart
 weight: 1
@@ -6,6 +7,7 @@ aliases:
     - /spaces/kind-quickstart
     - /kind-quickstart
     - /deploy/disconnected-spaces/quickstart
+    - all-spaces/self-hosted-spaces/quickstart
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.

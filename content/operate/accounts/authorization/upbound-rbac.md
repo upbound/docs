@@ -2,6 +2,8 @@
 title: "Upbound RBAC"
 weight: 6
 description: "A guide to implementing and configuring access control in Upbound"
+aliases:
+    - accounts/authorization/upbound-rbac
 ---
 
 This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.

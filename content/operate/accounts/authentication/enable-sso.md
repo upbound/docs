@@ -1,6 +1,8 @@
 ---
 title: "Single Sign On in Upbound"
 description: "Configure single sign-on in your Upbound organization to manage user access"
+aliases:
+    - accounts/authentication/enable-sso
 ---
 
 <!-- vale off -->
@@ -77,4 +79,3 @@ When you enable SSO with Upbound, remember these important considerations:
 - When you enable SSO, all currently logged in users will be logged out to reauthenticate
 - When setting up SSO in your IdP, any IdP user assigned to the Upbound SSO app will be created in the Upbound product and added as a member of the Organization with at least Member permissions on organization resources.  This includes at a minimum, read access to things like Control Planes, Repositories, etc.
 <!-- vale on -->
-

@@ -2,6 +2,8 @@
 title: "Authoring an API in your Control Plane Projects"
 weight: 3
 description: "Define your first API in your control plane project"
+aliases:
+    - core-concepts/authoring-xrds
 ---
 
 Your control plane relies on an API to communicate with your external resources.
