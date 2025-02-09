@@ -3,7 +3,7 @@ title: Legacy Spaces
 weight: 3
 description: A guide to Upbound Spaces
 aliases:
-    - /deploy/legacy-spaces
+    - /all-spaces/legacy-spaces
 ---
 
 {{< hint "important" >}}

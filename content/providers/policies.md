@@ -3,7 +3,7 @@ title: "Policies"
 weight: 5
 description: "The Upbound Official provider policies."
 aliases:
-  - providers
+  - providers/support
 ---
 
 <!-- vale Google.Headings = NO -->

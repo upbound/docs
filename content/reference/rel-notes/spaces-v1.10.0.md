@@ -19,13 +19,13 @@ Please be aware of the following changes:
     - Hub identities are enabled via the `authentication.hubIdentities` Spaces Helm chart parameter (the default) and,
     - You would like to be able to authenticate Spaces clients using the client certificates issued by the host cluster's signer.
 
-  You can enable the SSL-passthrough mode for the ingress-nginx controller by passing the `--enable-ssl-passthrough=true` command-line option to it. Please also see the official [self-hosted Spaces deployment guides](https://docs.upbound.io/deploy/self-hosted-spaces/).
+  You can enable the SSL-passthrough mode for the ingress-nginx controller by passing the `--enable-ssl-passthrough=true` command-line option to it. Please also see the official [self-hosted Spaces deployment guides](https://docs.upbound.io/all-spaces/self-hosted-spaces/).
 - If you are using the Gateway API with Spaces and your chosen Gateway API implementation is [Envoy Gateway](https://gateway.envoyproxy.io), please note that the short name `ctp` now belongs to the `clienttrafficpolicies.gateway.envoyproxy.io` custom resources. If you have any scripts that use this short name for `controlplanes.spaces.upbound.io`, you will need to update them to use the long name `controlplane` if you are using Envoy Gateway.
 
 #### Features and Enhancements
 
 - **Observability**:
-    - Added an option to reference sensitive data in SharedTelemetryConfig
+    - Added an option to reference sensitive data in SharedTelemetryConfig 
       configuration through a secret.
 
 - **Query API**:

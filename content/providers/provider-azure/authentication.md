@@ -1,12 +1,12 @@
 ---
-title: Authentication
+title: Authentication 
 weight: 10
 description: Authentication options with the Upbound Azure official provider
 ---
 
 The Upbound Official Azure Provider supports multiple authentication methods.
 
-* [Upbound auth (OIDC)]({{<ref "operate/oidc" >}})
+* [Upbound auth (OIDC)]({{<ref "mcp/oidc" >}})
 * [Service principal with Kubernetes secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals?tabs=browser#service-principal-object)
 * [System-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#enable-managed-identities-on-an-existing-aks-cluster)
 * [User-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#bring-your-own-managed-identity)
@@ -14,7 +14,7 @@ The Upbound Official Azure Provider supports multiple authentication methods.
 ## Upbound auth (OIDC)
 
 {{< hint "note" >}}
-This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
+This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "all-spaces" >}})
 {{< /hint >}}
 
 When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to Azure without requiring you to store credentials in Upbound.
@@ -129,7 +129,7 @@ First, find the Subscription ID for your Azure account.
 az account list
 ```
 
-Note the value of the `id` in the return output.
+Note the value of the `id` in the return output. 
 
 Next, create a service principle `Owner` role. Update the `<subscription_id>`
 with the `id` from the previous command.
@@ -152,8 +152,8 @@ kubectl create secret generic azure-secret -n upbound-system --from-file=creds=.
 
 ### Create a service principal with client certificate credentials using the Azure CLI tool
 You can create Azure service principals with a client certificate instead of a client secret as credentials.
-When creating the service principal, Azure CLI provides the options to generate client certificate
-automatically or set your own custom certificate.
+When creating the service principal, Azure CLI provides the options to generate client certificate 
+automatically or set your own custom certificate. 
 
 #### Create a service principal with a generated client certificate:
 The following command creates a service principal with your custom certificate
@@ -166,7 +166,7 @@ az ad sp create-for-rbac --sdk-auth \
                          --create-cert > azure_credentials.json
 ```
 The `azure_credentials.json` file in the preceding command contains:
-- the client ID,
+- the client ID, 
 - the path of the generated client certificate file in your local machine
 - tenant ID of your subscription
 
@@ -217,7 +217,7 @@ base64 -i azure_sp_cert.pkcs12 | tr -d '\n' > azure_sp_cert_pkcs12_base64encoded
 jq --rawfile certcontent azure_sp_cert_pkcs12_base64encoded \
     '.clientCertificate=$certcontent' azure_credentials.json > azure_credentials_withcert.json
 ```
-The preceding command snippet should generate the file `azure_credentials_withcert.json` that looks like following:
+The preceding command snippet should generate the file `azure_credentials_withcert.json` that looks like following: 
 ```json
 {
   "clientId": "1111111-2222-3333-4444-555555555555",
@@ -241,7 +241,7 @@ kubectl create secret generic azure-secret -n upbound-system --from-file=creds=.
 
 
 #### Create a service principal with your own client certificate:
-Azure service principals accept custom certificates in an `ASCII` format such as `PEM`, `CER`, or `DER`.
+Azure service principals accept custom certificates in an `ASCII` format such as `PEM`, `CER`, or `DER`. 
 When using a certificate with `PEM` format, the certificate file should include both the certificate and private key appended.
 See [Microsoft Azure Service Principal Documentation](https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-3#create-a-service-principal-using-an-existing-certificate)
 for reference
@@ -250,7 +250,7 @@ The following command creates a service principal with your custom certificate. 
 First option lets you specify cert from a file, the second option lets you directly specify the cert content as a string.
 
 ```shell
-# option 1 - load cert from file
+# option 1 - load cert from file 
 az ad sp create-for-rbac --sdk-auth \
                          --role Owner \
                          --scopes /subscriptions/"${AZ_SUBSCRIPTION_ID}" \
@@ -284,9 +284,9 @@ Upbound Azure Provider accepts certificates in base64-encoded `PKCS12` format.
 Convert your certificate to `PKCS12` format, then encode it with `base64` for provider usage.
 Add the resulting string to the `clientCertificate` field of `azure_credentials.json`
 
-In the snippet below, you can find example commands for `PEM` certificate to `PKCS12` conversion using `openssl`.
-If your certificate is in other formats than `PEM`, you can convert it to PEM, then use
-following commands for `PKCS12` conversion.
+In the snippet below, you can find example commands for `PEM` certificate to `PKCS12` conversion using `openssl`. 
+If your certificate is in other formats than `PEM`, you can convert it to PEM, then use 
+following commands for `PKCS12` conversion. 
 Other alternative conversions are out-of-scope for this document and left to the user.
 If you already have your certificate in `PKCS12` format, you can skip the conversion and move to `base64` encode step.
 ```shell
@@ -297,7 +297,7 @@ openssl pkcs12 -export \
                -inkey "/path/to/your/key.pem" \
                -passout pass:
 
-# encode
+# encode 
 base64 -i azure_sp_cert.pkcs12 | tr -d '\n' >  azure_sp_cert_pkcs12_base64encoded
 
 # replace clientCertificate field in azure_credentials.json with base64-encoded certificate content
@@ -305,10 +305,10 @@ jq --rawfile certcontent azure_sp_cert_pkcs12_base64encoded \
     '.clientCertificate=$certcontent' azure_credentials.json > azure_credentials_withcert.json
 ```
 
-The preceding command snippet should generate the file `azure_credentials_withcert.json`
+The preceding command snippet should generate the file `azure_credentials_withcert.json` 
 that looks like the following:
 
-If you have a password-protected PKCS12 certificate, you should also set `clientCertificatePassword`
+If you have a password-protected PKCS12 certificate, you should also set `clientCertificatePassword` 
 field in the `azure_credentials_withcert.json`, if not you can omit.
 ```json
 {
@@ -335,7 +335,7 @@ kubectl create secret generic azure-secret -n upbound-system --from-file=creds=.
 
 ## Configure your provider
 
-Apply these changes to your `ProviderConfig` file.
+Apply these changes to your `ProviderConfig` file. 
 
 ```yaml {label="secretPC", copy-lines="5-11"}
 apiVersion: azure.upbound.io/v1beta1
@@ -398,7 +398,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ### Configure your provider
 
 In your provider configuration, update the `source`, `subscriptionID`, and
-`tenantID` in the `credentials` field.
+`tenantID` in the `credentials` field. 
 
 ```yaml {label="sysPC", copy-lines="7-9"}
 apiVersion: azure.upbound.io/v1beta1
@@ -437,11 +437,11 @@ Your output should return the following fields:
 {
   "clientId": "<client_id>",
   "clientSecretUrl": "<clientSecretUrl>",
-  "id": "/subscriptions/<subscriptionid>/resourcegroups/<resource_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<controlplane_identity_name>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/<resource_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<controlplane_identity_name>", 
   "location": "<location>",
   "name": "<identity_name>",
   "principalId": "<principal_id>",
-  "resourceGroup": "<resource_group>",
+  "resourceGroup": "<resource_group>",                       
   "tags": {},
   "tenantId": "<tenant_id>",
   "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
@@ -471,7 +471,7 @@ az aks create \
     --dns-service-ip <dns_ip> \
     --service-cidr <service_cidr> \
     --enable-managed-identity \
-    --assign-identity <controlplane_identity_resource_id> \
+    --assign-identity <controlplane_identity_resource_id> \ 
     --assign-kubelet-identity <kubelet_identity_resource_id>
 ```
 

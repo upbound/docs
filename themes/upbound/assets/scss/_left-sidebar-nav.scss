@@ -12,7 +12,7 @@
     @include scrollbar-hidden;
 }
 
-.left-sidebar-nav {
+.left-sidebar-nav{
     grid-area: left-sidebar-nav;
 
     flex-grow: 1 !important;
@@ -28,21 +28,4 @@
     .left-offset {
         min-width: 28px;
     }
-}
-
-.nav-section-header {
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid var(--border-color);
-    font-weight: bold;
-    font-size: 0.9rem;
-    text-decoration: underline;
-    display: flex;
-    align-items: center;
-}
-
-.section-title {
-    color: var(--primary-text-color);
-    text-decoration: underline;
-    margin: 0;
-    flex-grow: 1;
 }

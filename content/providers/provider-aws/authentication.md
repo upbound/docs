@@ -6,7 +6,7 @@ description: Authentication options with the Upbound AWS official provider
 
 The Upbound Official AWS Provider supports multiple authentication methods.
 
-* [Upbound auth (OIDC)]({{<ref "operate/oidc" >}})
+* [Upbound auth (OIDC)]({{<ref "mcp/oidc" >}})
 * [AWS Access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 * [Assume role with web identity](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
 * [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) with AWS managed Kubernetes.
@@ -14,7 +14,7 @@ The Upbound Official AWS Provider supports multiple authentication methods.
 ## Upbound auth (OIDC)
 
 {{< hint "note" >}}
-This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
+This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "all-spaces" >}})
 {{< /hint >}}
 
 When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to AWS without requiring you to store credentials in Upbound.

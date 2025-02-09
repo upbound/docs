@@ -14,7 +14,7 @@ Due to a technical glitch there was no 1.9.0 release image, and the first one av
 {{< /hint >}}
 
 {{< hint "warning" >}}
-Starting with Spaces 1.9.x, Spaces with an  Argo CD Gitops integration must update their Argo CD ConfigMap to include `resource.respectRBAC: normal` instead of explicit `resource.exclusions`. Please check [Configure Argo CD]({{<ref "connect/gitops#configure-argo-cd" >}}) section for instructions and details.
+Starting with Spaces 1.9.x, Spaces with an  Argo CD Gitops integration must update their Argo CD ConfigMap to include `resource.respectRBAC: normal` instead of explicit `resource.exclusions`. Please check [Configure Argo CD]({{<ref "mcp/gitops.md#configure-argo-cd" >}}) section for instructions and details.
 {{< /hint >}}
 
 #### Features and Enhancements

@@ -3,7 +3,6 @@ title: 'Marketplace'
 weight: 300
 icon: "marketplace"
 description: "How to use the Upbound Marketplace to discover Crossplane providers and packages."
-category: "resources"
 ---
 
 [Upbound Marketplace](https://marketplace.upbound.io) simplifies your control plane journey with the largest registry for storing, managing, and sharing control plane extensions. It integrates seamlessly with Upbound's builder tooling. It also provides builders with pre-built Configurations and Functions to speed up control plane development workflows.
@@ -14,7 +13,7 @@ The Upbound Marketplace is the main source for publicly available Crossplane pac
 
 The Marketplace supports the following control plane extensions:
 
-- [Crossplane providers](https://marketplace.upbound.io/providers) are packages that enable Upbound managed control planes to interact with external APIs.
+- [Crossplane providers](https://marketplace.upbound.io/providers) are packages that enable Upbound managed control planes to interact with external APIs. 
 - [Control plane configurations](https://marketplace.upbound.io/configurations) are packages that define one or more resource types, called Composite Resources.
 - [Composition functions](https://marketplace.upbound.io/functions) are packages that define reusable logic for composing Crossplane resources.
 
@@ -39,8 +38,8 @@ Extensions in the Marketplace are published and maintained by a variety of sourc
 <!-- vale Upbound.Spelling = NO -->
 {{< table "table" >}}
 
-| Tier      | Description                                | Organization |
-| --------- | ------------------------------------------ | ------------ |
+| Tier      | Description                                | Organization | 
+| --------- | ------------------------------------------ | ------------ | 
 | Official  | Extensions owned and maintained by Upbound | Upbound      |
 | Partner   | Extensions owned, maintained, validated, and published by third-party companies | Third-party organization      |
 | Community | Extensions owned and maintained by an individual or other members in the community | Third-party organization      |

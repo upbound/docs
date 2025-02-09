@@ -3,13 +3,11 @@ title: (deprecated) Quickstart
 weight: 1
 description: A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound in a legacy Space.
 aliases:
-    - /deploy/legacy-spaces/multicloud-deploy
+    - /all-spaces/legacy-spaces/multicloud-deploy
 ---
 
 {{< hint "important" >}}
-This quickstart is deprecated and only applicable to users running in Upbound's
-Legacy Space. Follow the link to the [new quickstart]({{<ref
-"learn/control-plane-project.md" >}}) to try the new Upbound experience.
+This quickstart is deprecated and only applicable to users running in Upbound's Legacy Space. Follow the link to the [new quickstart]({{<ref "quickstart.md" >}}).
 {{< /hint >}}
 
 This quickstart guides you through how to create your first managed control plane in Upbound with configuration-caas. Connect Upbound to AWS, GCP, and Azure to provision and manage fully configured Kubernetes Service clusters. They're composed using cloud service primitives from the Upbound Official Providers.
@@ -69,6 +67,10 @@ You can reopen this guide at any time by selecting the Getting Started Guide but
 {{<img src="images/caas-ctp-explorer.png" alt="Upbound control plane explorer"  align="center">}}
 
 The control plane details view gives you a view into what's happening on your control plane.
+
+{{< hint "tip" >}}
+Read about the [Upbound Console]({{<ref "console">}}) for a full tour of what the Console has to offer.
+{{< /hint >}}
 
 ## Authenticate with Providers
 Next, configure provider-upbound and connect your managed control plane to each cloud service provider you wish to use in your CaaS offering. You must configure provider-upbound via the CLI, but you can authenticate with cloud service providers from within the Upbound Console UI.

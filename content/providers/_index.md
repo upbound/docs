@@ -5,7 +5,6 @@ icon: "upbound-official"
 description: Upbound creates, maintains and supports a set of Crossplane providers called official providers.
 aliases:
   - upbound-marketplace/providers
-category: "resources"
 ---
 
 Upbound Official Providers are Crossplane providers built as OCI images and published into the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official). Upbound publishes, maintains, and supports these listings. They're denoted with a _Trust Tier_ label of **Official**. They're published under the `upbound` organization.
