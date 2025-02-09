@@ -1,6 +1,6 @@
 ---
-title: "Authoring an API in your Control Plane Projects"
-weight: 3
+title: "Authoring an API in your Control Plane Project"
+weight: 1
 description: "Define your first API in your control plane project"
 aliases:
     - core-concepts/authoring-xrds

@@ -1,6 +1,6 @@
 ---
 title: "Adding dependencies to your Control Plane Projects"
-weight: 2
+weight: 6
 description: "The basic concepts to help you on your Upbound journey"
 aliases:
     - core-concepts/adding-dependencies

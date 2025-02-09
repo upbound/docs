@@ -1,10 +1,9 @@
 ---
-title: "Authoring a Composition in your Control Plane Projects"
-weight: 4
-description: "Define your first composition in your control plane project"
-aliases:
-    - core-concepts/authoring-compositions
+title: Authoring Compositions
+weight: 2
+description: Use KCL or Python to create resources with your control plane.
 ---
+
 
 After you author an XRD, `up composition generate` allows you to create a
 composition based on the parameters of your XRD.
@@ -260,7 +259,7 @@ function adds server side encryption to the buckets your deployment creates.
 In the next guide, you'll run and test your composition.
 <!-- vale gitlab.FutureTense = YES -->
 
-For more KCL best practices, please refer to the [documentation]({{<ref "kcl/_index.md">}}).
+For more KCL best practices, please refer to the [documentation]({{<ref "build/authoring-compositions/kcl">}}).
 
 <!-- /KCL -->
 

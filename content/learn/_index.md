@@ -9,7 +9,8 @@ aliases:
     - getstarted/_index
 ---
 
-Upbound is a scalable infrastructure management service built on Crossplane. The advantage of Crossplane and Upbound is the universal control plane. Control planes continuously reconcile your desired state with actual resources, allowing teams to self-serve their infrastructure needs.
+Upbound is a scalable infrastructure management service built on Crossplane. The
+advantage of Crossplane and Upbound is the universal control plane.
 
 ## Why control planes
 

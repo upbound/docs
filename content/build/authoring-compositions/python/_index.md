@@ -22,7 +22,7 @@ to start.
 
 To define your control plane APIs in Python you need Python and the Python
 Visual Studio Code extension. Refer to the
-[Visual Studio Code Extensions documentation]({{<ref "../vscode-extensions.md">}})
+[Visual Studio Code Extensions documentation]({{<ref "build/vscode-extensions">}})
 to learn how to install them.
 
 ## Example
@@ -318,8 +318,9 @@ spec:
 ## Control plane project model
 
 The Upbound programming model defines the core concepts you can use when
-creating your control plane using Upbound. [Concepts](/core-concepts/) describes
-these concepts with examples available in Python.
+creating your control plane using Upbound.
+
+<!--- TODO(tr0njavolta): add link to control plane projects --->
 
 Upbound builds embedded Python functions on top of Crossplane's [Python
 function SDK](https://github.com/crossplane/function-sdk-python), offering a

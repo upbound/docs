@@ -1,6 +1,6 @@
 ---
 title: "Running and testing your Control Plane Projects"
-weight: 5
+weight: 7
 description: "How to run your control plane project on a development control
 plane"
 aliases:
