@@ -3,15 +3,11 @@ cli:
   - sttts
   - RedbackThomson
   - tnthornton
-  - phisco
-  - turkenh
   - haarchri
 console:
   - thephred
   - adamwg
   - miloszsobczak
-  - jastang Maintainer
-  - nullable-eth
   - julzvilla
   - haarchri
 ctps:
@@ -21,9 +17,7 @@ ctps:
   - ulucinar
   - turkenh
   - ezgidemirel
-  - sergenyalcin
   - lsviben
-  - turkenf
   - erhancagirici
 cloud:
   - branden
@@ -32,9 +26,10 @@ cloud:
   - RedbackThomson
   - tnthornton
   - cbuto
-extensions:
+ecosystem:
   - jeanduplessis
-  - ulucinar
+  - jstang
   - sergenyalcin
   - turkenf
+  - nullable-eth
 
