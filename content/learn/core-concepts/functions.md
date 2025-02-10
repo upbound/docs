@@ -31,32 +31,3 @@ Some benefits of using embedded functions:
 <!-- vale gitlab.FutureTense = NO -->
 Embedded functions are composition functions that you can build, package, and manage directly in your configuration. Instead of relying on a YAML-based patch-and-transform workflow, you can write composition logic in Python or configuration languages like KCL. Embedded functions allow for shared logic across multiple compositions within your configuration.
 <!-- vale gitlab.FutureTense = YES -->
-
-## Prerequisites
-
-For this guide you need:
-
-- The latest version of the `up` CLI
-- An AWS account
-
-{{<hint "important">}}
-To use embedded functions in upstream Crossplane, you must pass the `--enable-dependency-version-upgrades` alpha flag during installation. For more information, review the [Crossplane installation options](https://docs.crossplane.io/latest/software/install/#customize-the-crossplane-helm-chart).
-{{</hint>}}
-
-
-## Initialize your project
-
-First, scaffold a new project with the `up` CLI.
-
-```shell
-up project init function-demo && cd function-demo
-
-created directory path function-demo
-
-initialized package "function-demo" in directory "function-demo" from https://github.com/upbound/project-template (main)
-```
-
-## Generate a project function
-
-Use `up function generate` and choose between KCL or Python.
-
