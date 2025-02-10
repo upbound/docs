@@ -236,7 +236,7 @@ the organization's domain.
 
 `group: devexdemo.upbound.io`
 
-Your `group` name must follow DNS-style subdomain naming and lowercase.
+Your `group` name must be lowercase and follow DNS-style subdomain naming.
 
 You can create your group names by function `data.upbound.io` , owner
 `dba.engineering.upbound.io`, or cloud environment `aws-dbs.upbound.io`.
@@ -259,7 +259,7 @@ allows your resources to be unique across domains.
 The `versions` section of an XRD defines the API version and schema of the set
 of resources.
 
-**`versions.name`**
+##### `versions.name`
 
 The `versions.name` is a required field that defines the API version of the composite resource. You
 can explicitly declare the version of your API schema to capture changes to your
@@ -276,7 +276,7 @@ can update to `v1beta1`, `v1beta2`, and finally `v1` for production-ready APIs.
   - name: v1alpha1
 ```
 
-**`spec.versions.referenceable`**
+##### **`spec.versions.referenceable`**
 
 A `referenceable` schema means Compositions can reference this XRD in
 their `compositeTypeRef`. This field is required.
@@ -296,15 +296,15 @@ can parse.
       openAPIV3Schema:
 ```
 
-**`spec.versions.schema.openAPIV3Schema.description`**
+##### **`spec.versions.schema.openAPIV3Schema.description`**
 
-The `description` field is a string to document what this XRD does.
+The `description` field is a string to document what this schema does.
 
 ```yaml
         description: Bucket is the Schema for the Bucket API.
 ```
 
-**`spec.versions.schema.openAPIV3Schema.properties.spec`**
+##### **`spec.versions.schema.openAPIV3Schema.properties.spec`**
 
 The `properties.spec` fields define the desired state of the resources in your
 Composition. This field includes all the required parameters your Composition needs to provision and
@@ -312,8 +312,8 @@ manage the resource. In the example below, you must include if the bucket will
 be encrypted, if the bucket supports versioning, and what kind of visibility the
 bucket will have.
 
-Notice these fields are not _declaring_ what the value is - the Composition will
-declare what the values are and must include these fields.
+These fields aren't _declaring_ what the value is - the Composition will include
+and declare these values.
 
 The properties of your resources vary based on the resource type.
 
@@ -333,7 +333,7 @@ The properties of your resources vary based on the resource type.
                 type: object
 ```
 
-**`spec.versions.schema.openAPIV3Schema.properties.status`**
+##### **`spec.versions.schema.openAPIV3Schema.properties.status`**
 
 
 The `properties.status` field of the XRD allows you to assign a description for
@@ -345,7 +345,7 @@ the observed state of this resource.
             type: object
 ```
 
-**`spec.versions.required`**
+##### **`spec.versions.required`**
 
 The `required` field captures the requirements for your Composition to declare.
 
@@ -355,7 +355,7 @@ The `required` field captures the requirements for your Composition to declare.
         type: object
 ```
 
-**`spec.versions.served`**
+##### **`spec.versions.served`**
 
 
 `served` indicates that this version of the API is the current one to use.
