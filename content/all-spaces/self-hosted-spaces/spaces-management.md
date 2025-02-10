@@ -64,6 +64,24 @@ To uninstall a Space from a Kubernetes cluster, use [up space destroy]({{<ref "r
 ```bash
 up space destroy
 ```
+<!-- vale off -->
+### Modify a Space's configuration
+<!-- vale on -->
+
+The Spaces [helm chart]({{<ref "helm-reference.md">}}) contains configuration values for installation, configuration, and management of an Upbound Space deployment. You may wish to change a Space deployment to:
+
+* turn on or turn off a feature
+* fine-tune control plane resource limits
+* tune parameters of a feature
+
+Use Helm's `--reuse-values` flag in coordination with setting whichever new fields you want to set. For example:
+
+```bash
+helm -n upbound-system upgrade --install spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --reuse-values \
+  --set "ingress.host=your-host.com"...
+```
 
 ## Control plane management
 
