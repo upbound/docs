@@ -44,7 +44,7 @@ jobs:
           label_names = [label["name"] for label in labels]
 
           # Find the first matching reviewer
-          assigned_reviewer = mapping.get("default", ["engineer4"])[0]  # Default reviewer
+          assigned_reviewer = mapping.get("default", ["tr0njavolta"])[0]  # Docs as default reviewer
           for label in label_names:
               if label in mapping:
                   assigned_reviewer = mapping[label][0]
