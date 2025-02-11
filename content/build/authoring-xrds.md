@@ -232,7 +232,7 @@ are using.
 
 You can set the `group` field in a way that best meets your organization's needs.
 In this example, `devexdemo` describes the project name with `upbound.io` being
-the organization's domain.
+the organization's domain. This field is required.
 
 `group: devexdemo.upbound.io`
 
@@ -246,6 +246,8 @@ allows your resources to be unique across domains.
 
 #### `names`
 
+This field is required.
+<!--- TODO(tr0njavolta): moreinfo --->
 ```yaml
   names:
     categories:
@@ -257,7 +259,7 @@ allows your resources to be unique across domains.
 #### `versions`
 
 The `versions` section of an XRD defines the API version and schema of the set
-of resources.
+of resources. This field is required.
 
 ##### `versions.name`
 
@@ -358,7 +360,7 @@ The `required` field captures the requirements for your Composition to declare.
 ##### **`spec.versions.served`**
 
 
-`served` indicates that this version of the API is the current one to use.
+`served` indicates that this version of the API is the current one to use. This field is required.
 
 ```yaml
     served: true
