@@ -177,11 +177,37 @@ kubectl get ingress \
 
 If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
 
-You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+## Configure the up CLI
+
+With your kubeconfig pointed at the Kubernetes cluster where you installed Upbound Spaces, create a new profile in the `up` CLI. This profile will be used to interact with your Space:
+
+```bash
+up profile create --use ${SPACES_CLUSTER_NAME} --type=disconnected --organization ${UPBOUND_ACCOUNT}
+```
+
+Optionally, log in to your Upbound account using the new profile so you can use the Upbound Marketplace with this profile as well:
+
+```bash
+up login
+```
+
+## Connect to your Space
+
+Use `up ctx` to create a kubeconfig context pointed at your new Space:
+
+```bash
+up ctx disconnected/$(kubectl config current-context)
+```
 
 ## Create your first managed control plane
 
-With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space software, create a managed control plane:
+You can now create a managed control plane with the `up` CLI:
+
+```bash
+up ctp create ctp1
+```
+
+Alternatively, you can create a control plane with kubectl:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
@@ -208,10 +234,10 @@ kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 Connect to your managed control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
 
 ```bash
-up ctx default/ctp1
+up ctx ./default/ctp1
 ```
 
-This command updates your current kubecontext. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
+This command updates your current kubectl context. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
 
 ```bash
 kubectl get crds
