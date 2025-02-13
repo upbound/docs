@@ -90,6 +90,10 @@ The `up project init` command creates:
 <!-- vale gitlab.SentenceSpacing = NO -->
 <!-- vale Google.Headings = NO -->
 
+{{< hint type="Tip" >}}
+Use the [Upbound Marketplace](https://marketplace.upbound.io) to discover dependencies that can be added to your project. You can also add dependencies which are private by configuring a package pull secret with the [ImageConfig API](https://docs.crossplane.io/latest/concepts/image-configs) in Crossplane. 
+{{< /hint >}}
+
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
 ### Add your cloud provider resources
