@@ -14,9 +14,9 @@ This guide shows you how to:
 
 ## Prerequisites
 
-For this guide, you’ll need:
+For this guide, you'll need:
 
-- The [up CLI]({{<ref "reference/cli">}})  installed
+- The [up CLI]({{<ref "reference/cli">}}) installed
 - An account on Upbound
 
 ## Create a repository
@@ -25,12 +25,12 @@ Create a repository to store the Configuration created as part of this guide.
 
 {{< tabs >}}
 {{< tab "up" >}}
-1. Run the following command to create a new repository named quickstart-project-repo:
+1. Run the following command to create a new repository named `quickstart-project-repo`:
 ```ini
-up repository create quickstart-project-repo
+up repository create `quickstart-project-repo`
 ```
 
-2. Run the following command to verify that your repository was created:
+2. Verify your repository exists with the `up repository list` command:
 ```ini
 up repository list
 ```
@@ -38,11 +38,11 @@ up repository list
 
 {{< tab "Console" >}}
 1. Open the Repositories page in the Upbound Console.
-2. Click `Create Repository`.
-3. Name the repository _quickstart-project-repo_.
-4. Click Create.
+2. Select `Create Repository`.
+3. Name the repository _`quickstart-project-repo`_.
+4. Select Create.
 
-The repository is added to the repository list.
+The repository list now shows your new repository.
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -50,20 +50,24 @@ The repository is added to the repository list.
 
 Use the up CLI to scaffold a control plane project and build it to produce a Configuration.
 
-1. Run the following command to create a new control plane project. A new folder is created in your current working directory:
+1. Run the following command to create a new control plane project in your
+   current working directory:
+
 ```ini
 up project init quickstart-project
 ```
 
-2. Change your current directory to `quickstart-project`. Run the following comamnd in your terminal:
+2. Change your current directory to `quickstart-project`. Run the following command in your terminal:
 ```ini
 cd quickstart-project
 ```
 
-3. Run the following command to build the project and produce a Configuration package. A Configuration package is built and stored in `_output` directory:
+3. Run the following command to build the project and produce a Configuration package.
 ```ini
 up project build
 ```
+
+This command builds your configuration and stores it in the `_output` directory.
 
 ## Push the Configuration
 
@@ -76,7 +80,7 @@ up project push --repository=quickstart-project-repo
 Upbound automatically tags your package with a [semver](https://semver.org/) tag. You can override this with the `--tag=""` option of the push command.
 {{< /hint >}}
 
-## Install the Configuration from the repository 
+## Install the Configuration from the repository
 
 To install the Configuration from your repository onto a control plane, apply the following manifest to a control plane:
 

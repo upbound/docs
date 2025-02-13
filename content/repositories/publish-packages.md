@@ -16,9 +16,9 @@ This guide shows you how to:
 
 ## Prerequisites
 
-For this guide, you’ll need:
+For this guide, you'll need:
 
-- The [up CLI]({{<ref "reference/cli">}})  installed
+- The [up CLI]({{<ref "reference/cli">}}) installed
 - An account on Upbound
 
 ## Create a repository
@@ -27,12 +27,12 @@ Create a repository to store the Configuration created as part of this guide.
 
 {{< tabs >}}
 {{< tab "up" >}}
-1. Run the following command to create a new repository named quickstart-project-repo:
+1. Run the following command to create a new repository named `quickstart-project-repo`:
 ```ini
 up repository create quickstart-project-repo
 ```
 
-2. Run the following command to verify that your repository was created:
+2. Verify your repository exists with the `up repository list` command:
 ```ini
 up repository list
 ```
@@ -40,11 +40,12 @@ up repository list
 
 {{< tab "Console" >}}
 1. Open the Repositories page in the Upbound Console.
-2. Click `Create Repository`.
-3. Name the repository _quickstart-project-repo_.
-4. Click Create.
+2. Select `Create Repository`.
+3. Name the repository _`quickstart-project-repo`_.
+4. Select Create.
 
-The repository is added to the repository list.
+
+The repository list now shows your new repository.
 {{< /tab >}}
 {{< /tabs >}}
 

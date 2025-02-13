@@ -13,7 +13,7 @@ Upbound Repositories provides a single location for storing and managing your co
 - Store control plane artifacts generated with [up CLI]({{<ref "core-concepts/projects.md">}}) platform builder tooling.
 - Deploy artifacts to managed control planes.
 - Manage and publish artifacts to the [Upbound Marketplace]({{<ref "upbound-marketplace">}})
-- Upbound RBAC provies consistent access control.
+- Upbound RBAC provides consistent access control.
 - Integrate repositories on Upbound with your existing CI/CD tools.
 
 ## Supported artifact types

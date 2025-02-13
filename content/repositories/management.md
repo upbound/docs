@@ -30,7 +30,7 @@ Repositories have either `public` or `private` visibility:
 * `public` visibility means that any published versions of your package have a public listing page in the Marketplace and authorized credentials aren't required to pull.
 * `private` visibility means that any published versions of your package have a listing page that only you and other collaborators in your organization can see. Packages require authorized credentials to pulled.
 
-These settings can't be altered once a repository's been created.
+Once created, you can't change these repository settings.
 
 To delete a repository, do the following:
 
@@ -45,7 +45,7 @@ up repository list
 {{< editCode >}}
 ```ini
 UPBOUND_REPO_NAME=$@<repo-name>$@
-up repo delete ${UPBOUND_REPO_NAME} --force 
+up repo delete ${UPBOUND_REPO_NAME} --force
 ```
 {{< /editCode >}}
 
