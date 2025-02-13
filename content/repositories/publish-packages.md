@@ -1,23 +1,55 @@
 ---
-title: "Creating and Pushing Packages"
-weight: 30
-description: "How to create, configure and push packages to the Upbound Marketplace"
+title: Publish packages
+weight: 20
+description: Product documentation for using the Repositories feature in Upbound.
+aliases:
+    - "/marketplace/packages"
 ---
 
-## Package types
-Crossplane supports these package types: `Configurations`, `Functions` and `Providers`.
+Upbound repositories lets you centrally store control plane artifacts, extensions, and build dependencies as part of an integrated Upbound experience.
 
-* **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata.
-* **`Function`** packages include the compiled function code for single or
-  multiple processor architectures.
-* **`Provider`** packages combine a [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package](https://github.com/crossplane-contrib/provider-aws/tree/master/package) is an example a provider's metadata and `CRDs`.
+This guide shows you how to:
+
+- Create a repository on Upbound
+- Build and push a Crossplane package to a repository
+- Publish the package in the repository to the Marketplace for public consumption
 
 ## Prerequisites
 
-* Building and pushing packages require the [`up` command-line]({{<ref "/reference/cli" >}}).
-* Pushing packages requires an [Upbound account]({{<ref "/accounts/identity-management/users#create-an-account">}}).
+For this guide, you’ll need:
+
+- The [up CLI]({{<ref "reference/cli">}})  installed
+- An account on Upbound
+
+## Create a repository
+
+Create a repository to store the Configuration created as part of this guide.
+
+{{< tabs >}}
+{{< tab "up" >}}
+1. Run the following command to create a new repository named quickstart-project-repo:
+```ini
+up repository create quickstart-project-repo
+```
+
+2. Run the following command to verify that your repository was created:
+```ini
+up repository list
+```
+{{< /tab >}}
+
+{{< tab "Console" >}}
+1. Open the Repositories page in the Upbound Console.
+2. Click `Create Repository`.
+3. Name the repository _quickstart-project-repo_.
+4. Click Create.
+
+The repository is added to the repository list.
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Build a package
+
 Build a package using `up xpkg build`.
 
 The `up xpkg build` command expects a `crossplane.yaml` file to provide the metadata for the package file.
@@ -35,40 +67,12 @@ By default `up xpkg build` saves the package to the current directory. Specify a
 
 The [`up xpkg build` command reference]({{<ref "reference/cli/command-reference#xpkg-build" >}}) contains all available options.
 
-## Push a package
-Before pushing a package you must [login]({{<ref "/upbound-marketplace/authentication">}}) to the Upbound Marketplace using `up login`.
+## Push a package to the repository
 
-### Create a repository
-Upbound hosts packages in an Upbound _repository_. Create a repository with the [`up repository create`]({{<ref "reference/cli/command-reference#repository-create" >}}) command.
-
-For example, to create a repository called `my-repo`
-```shell
-up repository create my-repo
-upbound-docs/my-repo created
-```
-Repositories have either `public` or `private` visibility:
-* `public` visibility means that any published versions of your package have a public listing page in the Marketplace and authorized credentials aren't required to pull.
-* `private` visibility means that any published versions of your package have a listing page that only you and other collaborators in your organization can see. Packages require authorized credentials to pulled.
-
-{{< hint "tip" >}}
-All newly created repositories are public by default, and only public repositories can be created for free at this time.
-{{< /hint >}}
-
-View any existing repositories with `up repository list`.
-```shell
-up repo list
-NAME         TYPE            PUBLIC   UPDATED
-my-repo      configuration   true     23h
-```
-### Add annotations to your package
-The Upbound Marketplace automatically renders specific metadata annotations into listing pages. Upbound recommends that all package maintainers add these annotations into their `crossplane.yaml`. Adding annotations ensures listing have all the required information like licenses, links to source code, and contact information for maintainers.
-
-Upbound supports all annotations specified in the <a href="https://github.com/crossplane/crossplane/blob/master/contributing/specifications/xpkg.md#object-annotations">xpkg specification</a>.
-
-### Push a package to the repository
 Push a package to the Upbound Marketplace using the `up xpkg push` command.
 
 The `up xpkg push` command requires:
+
 * The repository to push a package to.
 * A package version tag. The package version tag is a <a href="https://semver.org/">semantic versioning</a> number determining package upgrades and dependency requirements.
 
@@ -96,16 +100,17 @@ The package is now available from the Upbound Marketplace. View the Marketplace 
 
 For example, the Upbound AWS Official Provider is a `provider` package in the `upbound` organization's `provider-aws` repository. The package address is <a href="https://marketplace.upbound.io/providers/upbound/provider-aws/">`https://marketplace.upbound.io/providers/upbound/provider-aws/`</a>
 
-### Publishing public packages
+## Publishing public packages
 
 Upbound reviews all public packages, and new repositories have a default publishing policy of requiring a one-time manual approval. Contact the Upbound team via the `#upbound` channel in the [Crossplane Slack](https://slack.crossplane.io/) to request Upbound to review your package.
 
 Upbound needs the following information before considering a package:
+
 * Public Git repository of the package.
 * The Upbound account to list as an owner and point of contact.
 * The Upbound repository name.
 
-Publish status indicates whether a package version appears in the Marketplace, while privacy indicates who can access it.
+Publish status indicates whether a package version appears in the [Marketplace]({{<ref "upbound-marketplace" >}}), while privacy indicates who can access it.
 
 {{< table >}}
 | | Published | Not Published |
@@ -131,3 +136,12 @@ A status of __REJECTED__ means that the package isn't available for publishing t
 {{< expand "Why are only some package versions published?" >}}
 The Marketplace only publishes release versions with valid [semver](https://semver.org/) tags.
 {{</expand >}}
+
+### Add annotations to your package
+
+The Upbound Marketplace automatically renders specific metadata annotations into listing pages. Upbound recommends that all package maintainers add these annotations into their `crossplane.yaml`. Adding annotations ensures listing have all the required information like licenses, links to source code, and contact information for maintainers.
+
+Upbound supports all annotations specified in the <a href="https://github.com/crossplane/crossplane/blob/master/contributing/specifications/xpkg.md#object-annotations">xpkg specification</a>.
+
+
+

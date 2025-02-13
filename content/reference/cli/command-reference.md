@@ -1789,7 +1789,7 @@ The `up version` command prints the client and server version information for th
 
 ## xpkg
 
-The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Creating and Pushing Packages]({{<ref "upbound-marketplace/packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
+The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Creating and Pushing Packages]({{<ref "repositories/publish-packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
 
 All `up xpkg` commands support the following options:
 
