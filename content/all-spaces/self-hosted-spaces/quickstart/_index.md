@@ -83,7 +83,7 @@ export SPACES_VERSION={{< spaces_version >}}
 ## Install the Spaces software
 <!-- vale on -->
 
-The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. This guide requires CLI version `v0.33.0` or newer.
+The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. This guide requires CLI version `v0.37.0` or newer.
 
 {{< hint "tip" >}}
 Make sure your kubectl context is set to the cluster you want to install the Spaces software into.
@@ -92,11 +92,20 @@ Make sure your kubectl context is set to the cluster you want to install the Spa
 Install the Spaces software.
 
 ```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  --set "account=${UPBOUND_ACCOUNT}"
+up space init --organization="${UPBOUND_ACCOUNT}" \
+  --token-file="${SPACES_TOKEN_PATH}" \
+  "v${SPACES_VERSION}"
 ```
 
 You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+
+## Connect to your Space
+
+Use `up ctx` to create a kubeconfig context pointed at your new Space:
+
+```bash
+up ctx disconnected/kind-kind
+```
 
 ## Create your first managed control plane
 
@@ -135,8 +144,11 @@ up ctx -
 {{< hint "tip" >}}
 Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/contexts">}}).
 {{< /hint >}}
+
 <!-- vale Google.Headings = NO -->
+
 ## Connect your Space to Upbound
+
 <!-- vale Google.Headings = YES -->
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -189,11 +201,10 @@ export UPBOUND_SPACE_NAME=$@your-self-hosted-space$@
 
 #### With up CLI
 
-Log into Upbound SaaS with the `up` CLI. Update `<org-account>` with your
-organization account name:
+Log into Upbound SaaS with the `up` CLI:
 
 ```shell
-up login -a <org-account>
+up login
 ```
 
 
