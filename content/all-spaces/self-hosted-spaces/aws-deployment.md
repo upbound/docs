@@ -214,7 +214,9 @@ If the preceding command doesn't return a load balancer address then your provid
 
 ## Configure the up CLI
 
-With your kubeconfig pointed at the Kubernetes cluster where you installed Upbound Spaces, create a new profile in the `up` CLI. This profile will be used to interact with your Space:
+With your kubeconfig pointed at the Kubernetes cluster where you installed
+Upbound Spaces, create a new profile in the `up` CLI. This profile interacts
+with your Space:
 
 ```bash
 up profile create --use ${SPACES_CLUSTER_NAME} --type=disconnected --organization ${UPBOUND_ACCOUNT}
@@ -225,9 +227,11 @@ Optionally, log in to your Upbound account using the new profile so you can use 
 ```bash
 up login
 ```
+<!-- vale Google.Headings = NO -->
 
 ## Connect to your Space
 
+<!-- vale Google.Headings = YES -->
 Use `up ctx` to create a kubeconfig context pointed at your new Space:
 
 ```bash
@@ -242,7 +246,7 @@ You can now create a managed control plane with the `up` CLI:
 up ctp create ctp1
 ```
 
-Alternatively, you can create a control plane with kubectl:
+You can also create a control plane with kubectl:
 
 ```yaml
 cat <<EOF | kubectl apply -f -

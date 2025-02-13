@@ -144,8 +144,11 @@ up ctx -
 {{< hint "tip" >}}
 Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/contexts">}}).
 {{< /hint >}}
+
 <!-- vale Google.Headings = NO -->
+
 ## Connect your Space to Upbound
+
 <!-- vale Google.Headings = YES -->
 
 [Upbound]({{<ref "console">}}) allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
