@@ -40,7 +40,7 @@ helm -n upbound-system upgrade --install spaces \
   --wait
 ```
 
-For a complete tutorial of the helm install, read one of the deployment guides for [AWS]({{<ref "./aws-deployment.md">}}), [Azure] ({{<ref "./azure-deployment.md">}}), or [GCP]({{<ref "./gcp-deployment.md">}}) which cover the step-by-step process.
+For a complete tutorial of the helm install, read one of the deployment guides for [AWS]({{<ref "./aws/aws-deployment.md">}}), [Azure] ({{<ref "./azure/azure-deployment.md">}}), or [GCP]({{<ref "./gcp/gcp-deployment.md">}}) which cover the step-by-step process.
 
 ### Upgrade a Space
 

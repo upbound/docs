@@ -1,4 +1,3 @@
-aliases:
 ---
 title: Local Quickstart
 weight: 1
