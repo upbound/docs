@@ -268,7 +268,7 @@ Ensure the current context of your kubeconfig points at the Spaces cluster. Then
 ```bash
 up space billing export --provider=aws \
   --bucket=spaces-billing-bucket \
-  --account=acmeco \
+  --account=your-upbound-org \
   --billing-month=2024-07 \
   --force-incomplete
 ```
