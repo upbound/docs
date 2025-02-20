@@ -40,6 +40,10 @@ ends, and users must upgrade to the latest version. For major version changes, a
 30-day grace period allows access to the last release of the prior `major`
 version.
 
+{{< hint "important" >}}
+This policy is enforced for Official Providers published after March 25, 2025. All verisons published prior to this date are pullable without a subscription to Upbound.
+{{< /hint >}}
+
 #### Accessing the latest released version
 
 The latest version of an Official provider is accessible to users via the `v[major]` tag in the Marketplace. For

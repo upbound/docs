@@ -9,18 +9,29 @@ aliases:
 
 Upbound Official Providers are Crossplane providers built as OCI images and published into the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official). Upbound publishes, maintains, and supports these listings. They're denoted with a _Trust Tier_ label of **Official**. They're published under the `upbound` organization.
 
-{{< hint "tip" >}}
-The **source code** for many of the Upbound official providers are open source under the [Apache 2.0 license]({{<ref "policies#license" >}}). 
+<!-- vale OFF -->
 
-Upbound uses a special build process that augments upstream source with additional capabilities, including an SBOM and multi-language resource schemas. Official Providers are the **built artifact** as listed in the Marketplace. Official Providers are governed by Upbound's [access and use policy]({{<ref "policies#access" >}}).
-{{< /hint >}}
+## Introduction
+
+Official Providers are commercially licensed builds of Crossplane providers. These providers may be closed source, or they may be downstream from open source (such as the case for [provider-family-aws](https://github.com/crossplane-contrib/provider-upjet-aws)).
+
+Upbound builds and supports our commercial providers. They're published by the Upbound org. Official Providers bundle additional enterprise-grade value:
+
+* Multi-language [resource schemas]({{<ref "core-concepts" >}}) (KCL, Python, and more on the way) that dramatically improve the Crossplane composition authoring experience.
+* Backporting supported for during 12 months of mainstream support + 6 months additional access
+* An SBOM
+* [Signed by Upbound]({{<ref "signature-verification" >}})
+* Commercial support from Upbound
+
+Official Providers are the best Crossplane provider experience imaged, integrated with the rest of the Upbound platform. To [pull an Official Provider]({{<ref "policies#access" >}}), you must have an account on Upbound.
+
+<!-- vale ON -->
 
 ## Official Providers list
 
 <!-- vale Microsoft.Adverbs = NO -->
 Upbound is continually adding new providers to the ever growing list of Official Providers. For a complete list of available Official providers, use [this query](https://marketplace.upbound.io/providers?tier=official) in the Marketplace.
 <!-- vale Microsoft.Adverbs = YES -->
-
 
 ## Access
 
