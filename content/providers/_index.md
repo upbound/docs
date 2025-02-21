@@ -9,8 +9,7 @@ aliases:
 
 Upbound Official Providers are Crossplane providers built as OCI images and published into the [Upbound Marketplace](https://marketplace.upbound.io/providers?tier=official). Upbound publishes, maintains, and supports these listings. They're denoted with a _Trust Tier_ label of **Official**. They're published under the `upbound` organization.
 
-<!-- vale OFF -->
-
+<!-- vale off -->
 ## Introduction
 
 Official Providers are commercially licensed builds of Crossplane providers. These providers may be closed source, or they may be downstream from open source (such as the case for [provider-family-aws](https://github.com/crossplane-contrib/provider-upjet-aws)).
@@ -24,8 +23,7 @@ Upbound builds and supports our commercial providers. They're published by the U
 * Commercial support from Upbound
 
 Official Providers are the best Crossplane provider experience imaged, integrated with the rest of the Upbound platform. To [pull an Official Provider]({{<ref "policies#access" >}}), you must have an account on Upbound.
-
-<!-- vale ON -->
+<!-- vale on -->
 
 ## Official Providers list
 

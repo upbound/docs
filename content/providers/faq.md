@@ -6,8 +6,7 @@ description: Frequently asked questions related to Upbound Official providers
 
 This page provides answers to the most common questions about Upbound Official Providers.
 
-<!-- vale OFF -->
-
+<!-- vale off -->
 ## Questions
 
 {{< expand "I'm using an Official Provider version published before March 25, 2025. Can I still pull it?" >}}
@@ -57,5 +56,4 @@ We don't have plans to roll out policy changes for other package types right now
 
 Any package--whether a function, provider, etc--whose source exists in upstream `crossplane-contrib` must comply with Crossplane governance policies and have public, free builds available for use by the community. That includes repos where Upbound is the maintainer.
 {{</expand >}}
-
-<!-- vale ON -->
+<!-- vale on -->
