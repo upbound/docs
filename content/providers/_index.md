@@ -22,7 +22,7 @@ Upbound builds and supports our commercial providers. They're published by the U
 * [Signed by Upbound]({{<ref "signature-verification" >}})
 * Commercial support from Upbound
 
-Official Providers are the best Crossplane provider experience imaged, integrated with the rest of the Upbound platform. To [pull an Official Provider]({{<ref "policies#access" >}}), you must have an account on Upbound.
+Official Providers are the best Crossplane provider experience imaged, integrated with the rest of the Upbound platform. You need an [account on Upbound](https://accounts.upbound.io/register) to [pull an Official Provider]({{<ref "policies#access" >}}).
 <!-- vale on -->
 
 ## Official Providers list
