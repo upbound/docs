@@ -16,13 +16,13 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ```
 {{< /hint >}}
 
-Upbound's _Control Plane Mesh_ is a feature that lets you build and deploy multiple control planes that work together to provide a unified platform experience. With the _Mesh_ features, you can install composites from Configurations that are reconciled by other control planes and configure how resources are routed to control planes. You can also build compositions that reference other resources running on your control plane or elsewhere in Upbound. 
+Upbound's _Control Plane Meshes_ is a feature that lets you build and deploy multiple control planes that work together to provide a unified platform experience. With _Meshes_, you can install composites from Configurations that are reconciled by other control planes and configure how resources are routed to control planes. You can also build compositions that reference other resources running on your control plane or elsewhere in Upbound. 
 
 This guide explains how to use Control Plane Mesh APIs to install, configure remote APIs, and build powerful compositions that reference other resources.
 
 ## Benefits
 
-The Control Plane Mesh feature provides the following benefits:
+The Control Plane Meshes feature provides the following benefits:
 
 * Decouple your platform architecture into indepedent offerings to improve your platform's software development lifecycle.
 * Install composite APIs from Configurations as CRDs which are fulfilled and reconciled by other control planes.
