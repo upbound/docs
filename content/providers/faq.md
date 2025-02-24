@@ -28,7 +28,7 @@ crossplane xpkg install provider xpkg.upbound.io/upbound/provider-aws-s3:v1.19.0
 
 For customers with a subscription to Upbound, you're encouraged to use a pinning-and-update strategy based on the full tag scheme that makes sense for you.
 
-Upbound advises anonymous and Individual tier users to use the `vMajor` tag scheme. It's durable to the change that occurs ~monthly when a new version of Official Providers gets released.
+Upbound advises anonymous and Individual tier users to use the `vMajor` tag scheme. It's durable to the change that occurs monthly when a new version of Official Providers gets released.
 {{</expand >}}
 
 {{< expand "What's the relationship between an Official Provider and a community provider?" >}}
