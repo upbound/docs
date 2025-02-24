@@ -1,4 +1,5 @@
 APIs
+AWS
 Argo
 Alertmanager
 autoscalers
@@ -35,6 +36,8 @@ Goldmark
 Grammarly
 Grafana
 image_uri
+IDP
+IDPs
 kubeconfig
 kubectl
 Kustomize
