@@ -41,7 +41,7 @@ ends, and users must upgrade to the latest version. For major version changes, a
 version.
 
 {{< hint "important" >}}
-This policy is enforced for Official Providers published after March 25, 2025. All verisons published prior to this date are pullable without a subscription to Upbound.
+This policy applies to Official Providers published after March 25, 2025. All versions published prior to this date are pullable without a subscription to Upbound.
 {{< /hint >}}
 
 #### Accessing the latest released version

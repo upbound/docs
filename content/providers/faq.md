@@ -14,7 +14,7 @@ Yes. The Official Provider [pull policy]({{<ref "policies#access" >}}) only appl
 {{</expand >}}
 
 {{< expand "Can I pull an Official Provider release by full tag?" >}}
-Yes. The guidance shared in the documentation recommends anonymous or Individual tier users to use the convenience tags for Official Providers:
+Yes. The guidance shared in the documentation recommends anonymous or Individual tier users to use the convenience tags for Official Providers. For example:
 
 ```bash
 crossplane xpkg install provider xpkg.upbound.io/upbound/provider-aws-s3:v1 
@@ -46,7 +46,7 @@ Yes, however, it's only the latest release that can be pulled anonymously. When 
 {{</expand >}}
 
 {{< expand "I don't want to use Official Providers; what are my options?" >}}
-Use the community-built, free access releases of providers published to `crossplane-contrib`. If you're not interested in a subscription, you should use the new releases of the same provider source published under the `crossplane-contrib` org, available on both the Marketplace and `xpkg.crossplane.io`.
+Use the community-built, free access releases of providers published to `crossplane-contrib`. If you're not interested in a subscription, you should use the new releases of the same provider source published under the `crossplane-contrib` org, available on both the Upbound Marketplace (`xpkg.upbound.io`) and `xpkg.crossplane.io`.
 {{</expand >}}
 
 {{< expand "Do the policies defined for Official Providers apply to other Upbound-published package types?" >}}
@@ -54,6 +54,6 @@ The policy is currently geared towards Official Providers, but there are other p
 
 We don't have plans to roll out policy changes for other package types right now. We're committed to not breaking users who're taking dependencies on things like `function-patch-and-transform`. Official packages must be published by Upbound under the `upbound` org on the Marketplace.
 
-Any package--whether a function, provider, etc--whose source exists in upstream `crossplane-contrib` must comply with Crossplane governance policies and have public, free builds available for use by the community. That includes repos where Upbound is the maintainer.
+Any package–whether a function, provider, etc.–whose source exists in upstream `crossplane-contrib` must comply with [Crossplane governance policies](https://github.com/crossplane/crossplane/blob/main/GOVERNANCE.md) and have public, free builds available for use by the community. That includes repos where Upbound is the maintainer.
 {{</expand >}}
 <!-- vale on -->

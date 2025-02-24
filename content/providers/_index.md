@@ -17,12 +17,12 @@ Official Providers are commercially licensed builds of Crossplane providers. The
 Upbound builds and supports our commercial providers. They're published by the Upbound org. Official Providers bundle additional enterprise-grade value:
 
 * Multi-language [resource schemas]({{<ref "core-concepts" >}}) (KCL, Python, and more on the way) that dramatically improve the Crossplane composition authoring experience.
-* Backporting supported for during 12 months of mainstream support + 6 months additional access
+* Backporting of fixes supported during 12 months of mainstream support + 6 months additional access
 * An SBOM
 * [Signed by Upbound]({{<ref "signature-verification" >}})
-* Commercial support from Upbound
+* Commercial support available from Upbound
 
-Official Providers are the best Crossplane provider experience imaged, integrated with the rest of the Upbound platform. You need an [account on Upbound](https://accounts.upbound.io/register) to [pull an Official Provider]({{<ref "policies#access" >}}).
+Official Providers are the best Crossplane provider experience imaged, and integrated with the rest of the Upbound platform. You need an [account on Upbound](https://accounts.upbound.io/register) to [pull an Official Provider]({{<ref "policies#access" >}}).
 <!-- vale on -->
 
 ## Official Providers list
