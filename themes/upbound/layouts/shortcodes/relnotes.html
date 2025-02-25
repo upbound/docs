@@ -1,8 +1,7 @@
 {{ $product := .Get "product" }}
 {{ $relNotesSpaces := where .Site.RegularPages "File.Dir" "eq" "all-spaces/release-notes/" }}
-{{ $relNotesReference := where .Site.RegularPages "File.Dir" "eq" "reference/rel-notes/" }}
 {{ $relNotesMCP := where .Site.RegularPages "File.Dir" "eq" "mcp/ctp-connector/release-notes/" }}
-{{ $relNotes := $relNotesSpaces | append $relNotesReference | append $relNotesMCP }}
+{{ $relNotes := $relNotesSpaces | append $relNotesMCP }}
 {{ $releases := where $relNotes "Params.product" "eq" $product }}
 
 <div class="release-notes-container">

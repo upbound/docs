@@ -80,7 +80,7 @@ spaces:
 {{< /tabs >}}
 
 
-Provide the values file above when you run the CLI command:
+Provide the values file preceding when you run the CLI command:
 
 
 ```bash {copy-lines="3"}
@@ -144,7 +144,7 @@ spaces:
 {{< /tabs >}}
 
 
-Provide the values file above when you `helm install` the MCP Connector:
+Provide the values file preceding when you `helm install` the MCP Connector:
 
 ```bash
 helm install --wait mcp-connector oci://xpkg.upbound.io/spaces-artifacts/mcp-connector -n kube-system -f connector-values.yaml
