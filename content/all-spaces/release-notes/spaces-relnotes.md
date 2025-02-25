@@ -1,5 +1,5 @@
 ---
-title: "Spaces Release Notes"
+title: "Release Notes"
 weight: 1.5
 description: "Release notes for Upbound Spaces"
 ---
