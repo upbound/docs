@@ -2,7 +2,6 @@
 title: Use Argo or Flux with Spaces
 weight: 150
 description: A guide for integrating Argo or Flux with managed control planes in a Space.
-draft: true
 aliases:
     - /all-spaces/disconnected-spaces/use-argo-flux
 ---
