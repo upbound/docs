@@ -1,7 +1,8 @@
 ---
 title: "Create cloud resources with Upbound"
-description: "Define a control plane for resource abstractions in a real cloud provider environment"
-weight: 1
+description: "Define a control plane for resource abstractions in a real cloud
+provider 
+environment" weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
 ---
@@ -9,7 +10,9 @@ aliases:
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale gitlab.SentenceLength = NO -->
 
-In this guide, you'll create a control plane for provisioning and managing cloud resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your development teams to deploy and configure infrastructure themselves.
+In this guide, you'll create a control plane for provisioning and managing cloud
+resources across AWS, Azure, or GCP. You'll build reusable APIs that allow your
+development teams to deploy and configure infrastructure themselves.
 
 By the end of this guide, you'll have:
 
@@ -18,7 +21,9 @@ By the end of this guide, you'll have:
 3. APIs for self-service infrastructure provisioning
 4. A streamlined infrastructure workflow
 
-This approach allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
+This approach allows you to efficiently manage cloud resources across multiple
+providers, enabling your organization to scale its online services while
+maintaining control and consistency.
 
 ## Step 0: Prerequisites
 This guide assumes you are already familiar with AWS, Azure, or GCP.
@@ -35,7 +40,8 @@ For this guide, you'll need:
 
 ### Install the `up` CLI
 
-To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
+To use Upbound, you'll need to install the `up` CLI. You can download it as a
+binary package or with Homebrew. 
 {{< tabs >}}
 {{< tab "Binary" >}}
 ```shell
@@ -53,16 +59,20 @@ brew install upbound/tap/up
 ### Verify your installation
 <!-- vale write-good.TooWordy = NO -->
 
-The minimum supported version is `v0.35.0`. To verify your CLI installation and version, use the `up version` command:
+The minimum supported version is `v0.35.0`. To verify your CLI installation and
+version, use the `up version` command:
+
 <!-- vale write-good.TooWordy = YES -->
 ```shell
 up version
 ```
-You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
+You should see the installed version of the `up` CLI. Since you aren't logged in
+yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
 
 ### Login to Upbound
 
-Authenticate your CLI with your Upbound account by using the login command. This opens a browser window for you to log into your Upbound account.
+Authenticate your CLI with your Upbound account by using the login command. This
+opens a browser window for you to log into your Upbound account.
 
 {{< editCode >}}
 ```ini {copy-lines="all"}
@@ -72,7 +82,9 @@ up login --account=$@<yourUpboundAccount>$@
 
 
 ## Step 1: Create a new project
-Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding.
+Upbound uses project directories containing configuration files to deploy
+infrastructure. Use the `up project init` command to create a project directory
+with the necessary scaffolding.
 
 ### Init the project
 ```shell
@@ -91,7 +103,10 @@ The `up project init` command creates:
 <!-- vale Google.Headings = NO -->
 
 {{< hint type="Tip" >}}
-Use the [Upbound Marketplace](https://marketplace.upbound.io) to discover dependencies that can be added to your project. You can also add dependencies which are private by configuring a package pull secret with the [ImageConfig API](https://docs.crossplane.io/latest/concepts/image-configs) in Crossplane. 
+Use the [Upbound Marketplace](https://marketplace.upbound.io) to discover
+dependencies that can be added to your project. You can also add dependencies
+which are private by configuring a package pull secret with the [ImageConfig
+API](https://docs.crossplane.io/latest/concepts/image-configs) in Crossplane.
 {{< /hint >}}
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
@@ -117,8 +132,9 @@ up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v1.9.0'
 
 {{< /content-selector >}}
 
-Providers in your project create external resources for Upbound to
-manage. After adding the provider, your `upbound.yaml` file's `dependsOn` section should reflect the changes.
+Providers in your project create external resources for Upbound to manage. After
+adding the provider, your `upbound.yaml` file's `dependsOn` section should
+reflect the changes.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 <!-- AWS -->
@@ -149,20 +165,24 @@ spec:
 
 ## Step 3: Create a claim and generate your API
 
-Claims are the user facing resource of the API you define. The `up` CLI can generate compositions for you based on the minimal information you provide in the claim.
+Claims are the user facing resource of the API you define. The `up` CLI can
+generate compositions for you based on the minimal information you provide in
+the claim.
 
-Run the following command to generate a new example claim. Choose `Composite Resource Claim` in your terminal and give it a name describing what it creates.
+Run the following command to generate a new example claim. Choose `Composite
+Resource Claim` in your terminal and give it a name describing what it creates.
 
 ```yaml
 up example generate \
     --type claim \
-    --api-group devexdemo.example.com \
+    --api-group platform.example.com \
     --api-version v1alpha1 \
     --kind StorageBucket \
     --name example \
     --namespace default
 ```
-This command creates a minimal claim file. Copy and paste the claim below into the `examples/storagebucket/example.yaml` claim file.
+This command creates a minimal claim file. Copy and paste the claim below into
+the `examples/storagebucket/example.yaml` claim file.
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
@@ -170,7 +190,7 @@ This command creates a minimal claim file. Copy and paste the claim below into t
 ### AWS
 {{< editCode >}}
 ```yaml
-apiVersion: devexdemo.example.com/v1alpha1
+apiVersion: platform.example.com/v1alpha1
 kind: StorageBucket
 metadata:
     name: example
@@ -183,14 +203,15 @@ spec:
 ```
 {{</ editCode >}}
 
-This StorageBucket claim uses fields AWS requires to create an S3 bucket instance. You can discover required fields in the Marketplace for the provider.
+This StorageBucket claim uses fields AWS requires to create an S3 bucket
+instance. You can discover required fields in the Marketplace for the provider.
 <!-- /AWS -->
 
 <!-- Azure -->
 ### Azure
 {{< editCode >}}
 ```yaml
-apiVersion: devexdemo.example.com/v1alpha1
+apiVersion: platform.example.com/v1alpha1
 kind: StorageBucket
 metadata:
     name: example
@@ -203,14 +224,16 @@ spec:
 ```
 {{</ editCode >}}
 
-This Azure StorageBucket claim uses fields Azure requires to create an Azure blob storage instance. You can discover required fields in the Marketplace for the provider.
+This Azure StorageBucket claim uses fields Azure requires to create an Azure
+blob storage instance. You can discover required fields in the Marketplace for
+the provider.
 <!-- /Azure -->
 
 <!-- GCP -->
 ### GCP
 {{< editCode >}}
 ```yaml
-apiVersion: devexdemo.example.com/v1alpha1
+apiVersion: platform.example.com/v1alpha1
 kind: StorageBucket
 metadata:
     name: example
@@ -223,21 +246,25 @@ spec:
 ```
 {{</ editCode >}}
 
-This GCP StorageBucket claim uses fields GCP requires to create a Google Cloud Storage instance. You can discover required fields in the Marketplace for the provider.
+This GCP StorageBucket claim uses fields GCP requires to create a Google Cloud
+Storage instance. You can discover required fields in the Marketplace for the
+provider.
+
 <!-- /GCP -->
 {{< /content-selector >}}
 
-Use this claim to generate a composite resource definition with the following command:
+Use this claim to generate a composite resource definition with the following
+command:
 
 ```shell
 up xrd generate examples/storagebucket/example.yaml
 ```
 
 This command generate a new Composite Resource Definition (XRD) file in
-`apis/xstoragebuckets/definition.yaml`. The XRD is a custom schema representation
-for the bucket API you defined in your claim. The `up xrd generate` command
-automatically infers the variable types for the XRD based on the input
-parameters in your example claim.
+`apis/xstoragebuckets/definition.yaml`. The XRD is a custom schema
+representation for the bucket API you defined in your claim. The `up xrd
+generate` command automatically infers the variable types for the XRD based on
+the input parameters in your example claim.
 
 ## Step 4: Define your cloud resource composition
 
@@ -248,7 +275,8 @@ plane project, run `up composition generate`:
 up composition generate apis/xstoragebuckets/definition.yaml
 ```
 
-This command scaffolds a composition for you in `apis/xstoragebuckets/composition.yaml`
+This command scaffolds a composition for you in
+`apis/xstoragebuckets/composition.yaml`
 
 Next, define your composition logic with an embedded function. Embedded
 functions allow you to build, package, and manage reusable logic components to
@@ -539,7 +567,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 <!-- Azure -->
 ### Create an Azure Composition Function
 
-Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+Now, open up your function file (either `main.k` or  `main.py`) and paste in the
+following to your function.
 
 {{< tabs "Functions" >}}
 
@@ -700,7 +729,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 <!-- GCP -->
 ### Create a GCP Composition Function
 
-Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+Now, open up your function file (either `main.k` or  `main.py`) and paste in the
+following to your function.
 
 
 {{< tabs "Functions" >}}
@@ -834,14 +864,19 @@ Next, run and test your composition.
 
 ## Step 5: Run and test your project
 
-### Test your composition locally
+### Render your composition locally
 
-Use the [`up composition render`](https://docs.upbound.io/reference/cli/command-reference/#composition-render) command to test your composition locally. The render command requires a **Composite Resource** (XR) file. XRs use the Composition template to create new managed resources. An XR uses the same parameters as your example claim, but specifies the `XStorageBucket` type and specifies the target cluster.
+Use the [`up composition
+render`](https://docs.upbound.io/reference/cli/command-reference/#composition-render)
+command to print your desired composed resources for review. The render command
+requires a **Composite Resource** (XR) file. XRs use the Composition template to
+create new managed resources. An XR uses the same parameters as your example
+claim, but specifies the `XStorageBucket` type and specifies the target cluster.
 
 Create a new file called `xr.yaml`:
 
 ```yaml
-apiVersion: devexdemo.example.com/v1alpha1
+apiVersion: platform.example.com/v1alpha1
 kind: XStorageBucket
 metadata:
   name: example
@@ -858,7 +893,8 @@ Next, render the composition against your new composite resource file:
 up composition render apis/xstoragebuckets/composition.yaml examples/storagebucket/xr.yaml
 ```
 
-This local test ensures the build, configuration, and orchestration runs as expected before you deploy it to a development control plane.
+This local test ensures the build, configuration, and orchestration runs as
+expected before you deploy it to a development control plane.
 
 ### Run your project in a development control plane in Upbound Cloud
 
@@ -887,6 +923,141 @@ control plane project (upbound-qs) by default.
 ```shell
 up ctx ./upbound-qs
 ```
+
+### Author a composition test
+
+Composition testing ensures your compositions work as expected, follow best
+practices, and meet your organizations requirements. You can generate tests for
+your compositions with the `up test generate` command.
+
+In the root of your project, generate a new test:
+
+```shell
+up test generate xstoragebucket
+```
+
+{{<note>}}
+The default testing language is KCL. You can specify Python or YAML with the
+`--language` flag when you generate the test.
+{{</note>}}
+
+
+In the new `tests\test-xstoragebucket` directory, open the `main.k` file and
+paste the following content:
+```yaml
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+
+_items = [
+    metav1alpha1.CompositionTest{
+        metadata.name="test-xstoragebucket"
+        spec= {
+            assertResources: [
+                platformv1alpha1.XStorageBucket{
+                    metadata.name: "example"
+                    spec.parameters: {
+                        acl: "public-read"
+                        region: "us-west-1"
+                        versioning: True
+                    }
+                }
+                s3v1beta1.BucketACL{
+                    metadata.name: "example-acl"
+                    spec.forProvider:{
+                        acl: "public-read"
+                        bucketRef: {
+                            name: "example-bucket"
+                        }
+                        region: "us-west-1"
+                    }
+                }
+                s3v1beta1.BucketOwnershipControls{
+                    metadata.name: "example-boc"
+                    spec.forProvider: {
+                        bucketRef: {
+                            name: "example-bucket"
+                        }
+                        region: "us-west-1"
+                        rule: [
+                            {
+                                objectOwnership: "BucketOwnerPreferred"
+                            }
+                        ]
+                    }
+                }
+                s3v1beta1.Bucket{
+                    metadata.name: "example-bucket"
+                    spec.forProvider: {
+                        region: "us-west-1"
+                    }
+                }
+                s3v1beta1.BucketServerSideEncryptionConfiguration{
+                    metadata.name: "example-encryption"
+                    spec.forProvider: {
+                        bucketRef: {
+                            name: "example-bucket"
+                        }
+                        region: "us-west-1"
+                        rule: [
+                            {
+                                applyServerSideEncryptionByDefault: [
+                                    {
+                                        sseAlgorithm: "AES256"
+                                    }
+                                ]
+                                bucketKeyEnabled: True
+                            }
+                        ]
+                    }
+                }
+                s3v1beta1.BucketPublicAccessBlock{
+                    metadata.name: "example-pab"
+                    spec.forProvider: {
+                        blockPublicAcls: False
+                        blockPublicPolicy: False
+                        bucketRef: {
+                            name: "example-bucket"
+                        }
+                        ignorePublicAcls: False
+                        region: "us-west-1"
+                        restrictPublicBuckets: False
+                    }
+                }
+                s3v1beta1.BucketVersioning{
+                    metadata.name: "example-versioning"
+                    spec.forProvider: {
+                        bucketRef: {
+                            name: "example-bucket"
+                        }
+                        region: "us-west-1"
+                        versioningConfiguration: [
+                            {
+                                status: "Enabled"
+                            },
+                        ]
+                    }
+                }
+            ]
+            compositionPath: "apis/xstoragebuckets/composition.yaml"
+            xrPath: "examples/xstoragebuckets/example.yaml"
+            xrdPath: "apis/xstoragebuckets/definition.yaml"
+            timeoutSeconds: 120
+            validate: False
+        }
+    }
+]
+items = _items
+```
+
+Save your changes and run your tests from the root of your project:
+
+```shell
+up test run tests/*
+```
+
+### Author an end-to-end test
+
 
 ### Create provider credentials
 Your project configuration now includes your provider dependency and requires an authentication method.
