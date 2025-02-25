@@ -21,5 +21,3 @@ For more information on how Upbound builds on Crossplane, review [Crossplane vs.
 ## Project lifecycle
 
 - [Lifecycle](lifecycle/)
-
-## Release notes
