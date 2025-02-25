@@ -945,6 +945,7 @@ The default testing language is KCL. You can specify Python or YAML with the
 In the new `tests\test-xstoragebucket` directory, open the `main.k` file and
 paste the following content:
 ```yaml
+
 import models.com.example.platform.v1alpha1 as platformv1alpha1
 import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
@@ -1040,7 +1041,7 @@ _items = [
                 }
             ]
             compositionPath: "apis/xstoragebuckets/composition.yaml"
-            xrPath: "examples/xstoragebuckets/example.yaml"
+            xrPath: "examples/storagebucket/xr.yaml"
             xrdPath: "apis/xstoragebuckets/definition.yaml"
             timeoutSeconds: 120
             validate: False
