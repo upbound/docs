@@ -1,5 +1,5 @@
 {{ $product := .Get "product" }}
-{{ $relNotes := where .Site.RegularPages "File.Dir" "eq" "reference/rel-notes/"
+{{ $relNotes := where .Site.RegularPages "File.Dir" "eq" "all-spaces/release-notes/"
 }}
 {{ $releases := where $relNotes "Params.product" "eq" $product }}
 
