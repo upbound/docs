@@ -14,7 +14,9 @@ provider [support and maintenance]({{<ref "support" >}}) page.
 <!-- vale Google.Headings = NO -->
 
 {{< hint "important" >}}
-The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription. If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull the most recent provider version.
+Beginning with `v1.21.0` and later, you need at least a `Team` subscription to pull a given Official Provider version.  All prior versions are pullable without a subscription. 
+
+If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull **the most recent provider version** using the `v1` tag.
 {{< /hint >}}
 
 ## v1.17.0
