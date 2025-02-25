@@ -298,11 +298,9 @@ From logs:
 ##### References
 
 For more information, review the following transform processor documentation:
-- [OpenTelemetry Transformation Language](https://github.
-  com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
+- [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
 - [OpenTelemetry Transformation Language Functions](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md)
-- [OpenTelemetry Transformation Language Contexts](https://github.
-  com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts)
+- [OpenTelemetry Transformation Language Contexts](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts)
 - An interesting [guide on `OTTL`](https://betterstack.com/community/guides/observability/ottl/#a-brief-overview-of-the-ottl-grammar)
 
 ### Status
@@ -396,4 +394,5 @@ You can export metrics and logs from your Crossplane installation, Spaces infras
 <!-- vale on -->
 
 Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otlhttp`, `datadog`, and `debug` exporters.
-For more information on observability configuration, review the Helm chart reference.
+
+For more information on observability configuration, review the [Helm chart reference]().
