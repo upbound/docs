@@ -185,17 +185,13 @@ pipeline for the telemetry data collected by the OpenTelemetry Collector.
 Like `spec.exporters`, the `spec.processors` field allows you to
 configure the processors that transform the telemetry data for the exporters. It follows the OpenTelmetry Collector [processor configuration](https://opentelemetry.io/docs/collector/configuration/#processors).
 
-For now, the only supported processor is the [transform processor]
-(https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md).
+For now, the only supported processor is the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md).
 
 #### Telemetry transforms
 
 <!-- vale gitlab.SentenceLength = NO -->
-The [transform processor](https://github.
-com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor
-/transformprocessor/README.md) allows for the transformation of telemetry data
-using the [OpenTelemetry Transformation Language](https://github.
-com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
+The [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md) allows for the transformation of telemetry data
+using the [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
 <!-- vale gitlab.SentenceLength = YES -->
 
 
