@@ -395,4 +395,4 @@ You can export metrics and logs from your Crossplane installation, Spaces infras
 
 Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otlhttp`, `datadog`, and `debug` exporters.
 
-For more information on observability configuration, review the [Helm chart reference]().
+For more information on observability configuration, review the [Helm chart reference](https://docs.upbound.io/all-spaces/self-hosted-spaces/helm-reference/).
