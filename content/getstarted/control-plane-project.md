@@ -1,8 +1,7 @@
 ---
 title: "Create cloud resources with Upbound"
-description: "Define a control plane for resource abstractions in a real cloud
-provider 
-environment" weight: 1
+description: "Define a control plane for resource abstractions in a real cloud provider environment" 
+weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
 ---
@@ -936,10 +935,10 @@ In the root of your project, generate a new test:
 up test generate xstoragebucket
 ```
 
-{{<note>}}
+{{< hint "note" >}}
 The default testing language is KCL. You can specify Python or YAML with the
 `--language` flag when you generate the test.
-{{</note>}}
+{{< /hint >}}
 
 
 In the new `tests\test-xstoragebucket` directory, open the `main.k` file and
@@ -1070,9 +1069,9 @@ up test generate xstoragebucket --e2e
 
 ```
 
-{{< note >}}
+{{< hint "note" >}}
 The default testing language is KCL. You can specify Python or YAML with the
-{{< /note >}}
+{{< /hint >}}
 
 In the new `tests\e2e-xstoragebucket` directory, open the `main.k` file and
 paste the following content:
@@ -1127,7 +1126,7 @@ and your role ARN.
 
 Next, run your end-to-end test in the root of your control plane project:
 
-```
+```shell
 up test run tests/* --e2e
 ```
 
