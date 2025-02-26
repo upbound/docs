@@ -4,10 +4,7 @@ description: "Define a control plane for resource abstractions in a real cloud p
 weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
-    - "/quickstart"
-    - getstarted/control-plane-project
 ---
-
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale gitlab.SentenceLength = NO -->
@@ -21,10 +18,10 @@ By the end of this guide, you'll have:
 3. APIs for self-service infrastructure provisioning
 4. A streamlined infrastructure workflow
 
-Upbound allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
+This approach allows you to efficiently manage cloud resources across multiple providers, enabling your organization to scale its online services while maintaining control and consistency.
 
 ## Step 0: Prerequisites
-This guide assumes you're already familiar with AWS, Azure, or GCP.
+This guide assumes you are already familiar with AWS, Azure, or GCP.
 
 For this guide, you'll need:
 - The Up CLI installed
@@ -38,7 +35,7 @@ For this guide, you'll need:
 
 ### Install the `up` CLI
 
-To use Upbound, install the `up` CLI. You can download it as a binary package or with Homebrew.
+To use Upbound, you'll need to install the `up` CLI. You can download it as a binary package or with Homebrew.
 {{< tabs >}}
 {{< tab "Binary" >}}
 ```shell
@@ -61,7 +58,7 @@ The minimum supported version is `v0.35.0`. To verify your CLI installation and 
 ```shell
 up version
 ```
-Both the `Crossplane Version` and `Spaces Control Version` return `unknown`.
+You should see the installed version of the `up` CLI. Since you aren't logged in yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
 
 ### Login to Upbound
 
@@ -77,7 +74,7 @@ up login --account=$@<yourUpboundAccount>$@
 ## Step 1: Create a new project
 Upbound uses project directories containing configuration files to deploy infrastructure. Use the `up project init` command to create a project directory with the necessary scaffolding.
 
-### Initialize the project
+### Init the project
 ```shell
   up project init upbound-qs && cd upbound-qs
 ```
@@ -92,6 +89,10 @@ The `up project init` command creates:
 ## Step 2: Add project dependencies
 <!-- vale gitlab.SentenceSpacing = NO -->
 <!-- vale Google.Headings = NO -->
+
+{{< hint type="Tip" >}}
+Use the [Upbound Marketplace](https://marketplace.upbound.io) to discover dependencies that can be added to your project. You can also add dependencies which are private by configuring a package pull secret with the [ImageConfig API](https://docs.crossplane.io/latest/concepts/image-configs) in Crossplane. 
+{{< /hint >}}
 
 {{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
 
@@ -1082,6 +1083,15 @@ up project push
 Your package is now pushed to the Upbound Marketplace.
 
 <!-- vale gitlab.SentenceSpacing = YES -->
+## Try it out
+
+With your control plane project set up, go to Upbound's [Consumer Portal
+guide]({{< ref "consume/consumer-portal" >}}) to create resources in your cloud
+service provider.
+
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale gitlab.SentenceLength = YES --><!-- vale gitlab.SentenceSpacing = YES -->
 ## Deploy with the consumer portal
 
 With your control plane project set up, you're ready to create resources in your

@@ -36,7 +36,7 @@ up example generate
 What do you want to create?:
   > Composite Resource Claim (XRC)
 What is your Composite Resource Claim (XRC) named?: Bucket
-What is the API group named?: devexdemo.upbound.io
+What is the API group named?: platform.upbound.io
 What is the API Version named?: v1alpha1
 What is the metadata name?: example
 What is the metadata namespace?: default
@@ -48,7 +48,7 @@ under `examples/bucket/example.yaml`. Next, open the claim file you generated,
 and paste in the content below.
 
 ```yaml
-apiVersion: devexdemo.upbound.io/v1alpha1
+apiVersion: platform.upbound.io/v1alpha1
 kind: Bucket
 metadata:
   name: example
@@ -81,12 +81,12 @@ The `up` CLI automatically generates the XRD and places it in
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xbuckets.devexdemo.upbound.io
+  name: xbuckets.platform.upbound.io
 spec:
   claimNames:
     kind: Bucket
     plural: buckets
-  group: devexdemo.upbound.io
+  group: platform.upbound.io
   names:
     categories:
     - crossplane
@@ -142,12 +142,12 @@ For the full example XRD, expand the XRD below.
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xbuckets.devexdemo.upbound.io
+  name: xbuckets.platform.upbound.io
 spec:
   claimNames:
     kind: Bucket
     plural: buckets
-  group: devexdemo.upbound.io
+  group: platform.upbound.io
   names:
     categories:
     - crossplane
@@ -208,7 +208,7 @@ registers this metadata when compositions or composite resources are requested.
 * `name`
     ```yaml
     metadata:
-      name: xbuckets.devexdemo.upbound.io
+      name: xbuckets.platform.upbound.io
     ```
 
 The `x` naming convention isn't a strict requirement, but helps
@@ -218,7 +218,7 @@ Pluralizing the resource type is required because the schema and rules of this
 XRD apply to all buckets created with it and doesn't refer to a specific
 instance of the resource.
 
-The `.devexdemo.upbound.io` is the group this XRD applies to. Group definition
+The `.platform.upbound.io` is the group this XRD applies to. Group definition
 conventions are covered in the `spec` section of this document.
 
 
@@ -232,10 +232,10 @@ are using.
 #### `group`
 
 You can set the `group` field in a way that best meets your organization's needs.
-In this example, `devexdemo` describes the project name with `upbound.io` being
+In this example, `platform` describes the project name with `upbound.io` being
 the organization's domain. This field is required.
 
-`group: devexdemo.upbound.io`
+`group: platform.upbound.io`
 
 Your `group` name must be lowercase and follow DNS-style subdomain naming.
 

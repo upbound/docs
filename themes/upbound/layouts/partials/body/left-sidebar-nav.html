@@ -1,15 +1,10 @@
+
 <div class="left-sidebar-nav offcanvas-xl offcanvas-start" tabindex="-1" id="left-nav-offcanvas" aria-labelledby="left-nav-offcanvas">
     <nav aria-label="Documentation section navigation" class="container px-0" id="left-nav-menu">
         <div class="list-group top-level d-flex">
             <!-- Home link -->
-            <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{if .IsHome }}active{{end}}" id="Docs">
-                <div class="button-container left-offset">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 .5L1 7h2v7h4V9h2v5h4V7h2L8 .5zM2 6.707l6-6 6 6V15a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6.707z"/>
-                        <path fill-rule="evenodd" d="M7 13v-4h2v4H7z"/>
-                    </svg>
-                </div>
-                <a href="{{.Site.BaseURL}}" class="stretched-link">Docs</a>
+            <div class="d-flex flex-row my-0 nav-parent-container position-relative list-group-item list-group-item-action {{if .IsHome }}active{{end}}" id="Home" style="padding-left: 1rem;">
+                <a href="{{.Site.BaseURL}}" class="stretched-link">Home</a>
             </div>
 
             {{ $currentPage := . }}
@@ -25,8 +20,7 @@
                     {{ $isCurrentPage := eq . $currentPage }}
                     <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row
                               {{if $isActive}}active{{end}}
-                              {{if $isCurrentPage}}current-page{{end}}
-                              {{ if .Page.Params.tocHidden }}d-none{{end}}"
+                              {{if $isCurrentPage}}current-page{{end}}"
                          style="padding-left: {{ mul $depth 1.5 }}rem">
                         <div class="button-container left-offset">
                             {{ if $hasPages }}
@@ -41,8 +35,7 @@
                                 </div>
                             {{ end }}
                         </div>
-                        <a href="{{.Permalink}}" class="child-link {{if not $hasPages}}stretched-link{{end}}
-                                                    {{if $isCurrentPage}}current-page-link{{end}}">
+                        <a href="{{.Permalink}}" class="child-link {{if not $hasPages}}stretched-link{{end}}">
                             {{ .Title }}
                         </a>
                     </div>
@@ -56,10 +49,10 @@
 
             <!-- Section Headers and Content -->
             {{ range $category := slice "guides" "resources" }}
-                <div class="d-flex flex-row my-0 nav-section-header">
-                    <span class="section-title">{{ title $category }}</span>
+                <div class="d-flex flex-row my-0 nav-section-header text-gray" style="font-size: 0.875rem; font-weight: bold; padding-left: 1rem;">
+                    <span class="section-title" style="font-weight: bold; text-decoration: none; display: inline-block;">{{ title $category }}</span>
                 </div>
-
+                
                 {{ range $.Site.Sections.ByWeight }}
                     {{ if eq .Params.category $category }}
                         {{ $isActive := or (eq . $currentPage) (.IsAncestor $currentPage) }}
@@ -69,12 +62,11 @@
                              id="{{.Section}}"
                              data-bs-toggle="collapse"
                              data-bs-target="#collapse-{{$id}}"
-                             onclick="this.querySelector('.accordion-button').classList.toggle('collapsed')">
+                             aria-expanded="{{if $isActive}}true{{else}}false{{end}}">
                             <div class="button-container left-offset">
                                 <div id="{{.Section}}-button"
-                                     class="mx-0 accordion-button accordion accordion-item {{if not $isActive}} collapsed {{end}}"
+                                     class="mx-0 accordion-button accordion accordion-item {{if not $isActive}}collapsed{{end}}"
                                      type="button"
-                                     aria-expanded="{{if $isActive}}true{{else}}false{{end}}"
                                      aria-controls="collapse-{{$id}}"
                                      title="Close/Expand">
                                 </div>
@@ -83,12 +75,11 @@
                         </div>
 
                         <div class="nav-child-container" id="{{.Section}}-children">
-                            <div class="collapse list-group {{if $isActive}} show {{end}}" id="collapse-{{$id}}">
+                            <div class="collapse list-group {{if $isActive}}show{{end}}" id="collapse-{{$id}}">
                                 {{ if .Content }}
                                     {{ $isOverviewActive := eq $currentPage.Permalink .Permalink }}
                                     <div class="list-group-item list-group-item-action nav-child child-link-container d-flex flex-row
-                                              {{if $isOverviewActive}}active current-page{{end}}
-                                              {{ if .Page.Params.tocHidden }}d-none{{end}}">
+                                              {{if $isOverviewActive}}active current-page{{end}}">
                                         <div class="button-container left-offset"></div>
                                         <a href="{{.Permalink}}" class="stretched-link child-link {{if $isOverviewActive}}current-page-link{{end}}">
                                             Overview
@@ -104,3 +95,4 @@
         </div>
     </nav>
 </div>
+
