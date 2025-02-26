@@ -60,9 +60,8 @@ spec:
     visibility: public
 ```
 
-Crossplane best practice is to contain the configuration parameters for a
-claim in a `parameters` object rather than at the top level of the
-`spec`. Crossplane adds its own fields to the spec when it processes the XRD
+Claims contain configuration parameters in the `spec` object rather than the top
+level like XRDs. Crossplane adds its own fields to the spec when it processes the XRD
 at installation time.
 
 <!-- vale Google.Headings = NO -->
