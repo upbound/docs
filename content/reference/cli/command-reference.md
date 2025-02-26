@@ -1649,7 +1649,6 @@ https://cloud.google.com/docs/authentication/application-default-credentials.
 Supply configuration by setting these environment variables: `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and `AZURE_CLIENT_SECRET`. For more options, see the documentation at
 https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication.
 
-<!-- vale off -->
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag                         | Description                                                                                   |
 | ---------- | --------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -1671,7 +1670,6 @@ billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02
 |   `-f`   | `--file=FILE`             |   Parameters file.  |
 |      | `--bundle=BUNDLE`             |   Local bundle path.  |
 {{< /table >}}
-<!-- vale on -->
 
 **Examples**
 

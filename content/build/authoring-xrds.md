@@ -1,5 +1,5 @@
 ---
-title: "Authoring an API in your Control Plane Project"
+title: "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project"
 weight: 1
 description: "Define your first API in your control plane project"
 aliases:
