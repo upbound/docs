@@ -1057,8 +1057,83 @@ Save your changes and run your tests from the root of your project:
 up test run tests/*
 ```
 
+
 ### Author an end-to-end test
 
+End-to-end testing allows you to test your entire deployment process from
+spinning up the control plane to resource creation.
+
+In the root of your project directory, generate a new end-to-end test:
+
+```shell
+up test generate xstoragebucket --e2e
+
+```
+
+{{< note >}}
+The default testing language is KCL. You can specify Python or YAML with the
+{{< /note >}}
+
+In the new `tests\e2e-xstoragebucket` directory, open the `main.k` file and
+paste the following content:
+
+{{< editCode >}}
+```ini
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.aws.v1beta1 as awsv1beta1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+
+_items = [
+    metav1alpha1.E2ETest{
+        metadata.name = "xstoragebucket"
+        spec = {
+            crossplane.autoUpgrade.channel = "Rapid"
+            defaultConditions = [
+                "Ready"
+            ]
+            manifests = [
+                platformv1alpha1.XStorageBucket{
+                    metadata.name = "uptest-bucket-xr"
+                    spec.parameters = {
+                        acl = "private"
+                        region = "eu-central-1"
+                        versioning: True
+                    }
+                }
+            ]
+            extraResources = [
+                awsv1beta1.ProviderConfig{
+                    metadata.name = "default"
+                    spec.credentials = {
+                        source = $@YOUR_ORG_ID_HERE$@
+                        upbound.webIdentity = {
+                            roleARN = $@YOUR_ORGS_ROLEARN_FOR_CREDENTIALS_HERE$@
+                        }
+                    }
+                }
+            ]
+            skipDelete = False
+            timeoutSeconds = 4500
+        }
+    }
+]
+items = _items
+```
+
+{{< /editCode >}}
+
+Update the `spec.credentials.source`and `roleARN` values for your organization
+and your role ARN.
+
+Next, run your end-to-end test in the root of your control plane project:
+
+```
+up test run tests/* --e2e
+```
+
+The end-to-end test creates a development control plane and execute your tests.
+After your test completes, the development control plane spins down and removes
+any resources created.
 
 ### Create provider credentials
 Your project configuration now includes your provider dependency and requires an authentication method.
