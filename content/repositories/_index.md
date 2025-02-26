@@ -2,6 +2,7 @@
 title: Repositories
 weight: 10
 description: Product documentation for using the Repositories feature in Upbound.
+category: "resources"
 ---
 
 Upbound repositories lets you centrally store control plane artifacts, extensions, and build dependencies as part of an integrated Upbound experience.
@@ -10,7 +11,7 @@ Upbound repositories lets you centrally store control plane artifacts, extension
 
 Upbound Repositories provides a single location for storing and managing your control plane artifacts and extensions, bundled as OCI images. You can:
 
-- Store control plane artifacts generated with [up CLI]({{<ref "core-concepts/projects.md">}}) platform builder tooling.
+- Store control plane artifacts generated with [up CLI]({{<ref "learn/control-plane-project">}}) platform builder tooling.
 - Deploy artifacts to managed control planes.
 - Manage and publish artifacts to the [Upbound Marketplace]({{<ref "upbound-marketplace">}})
 - Upbound RBAC provides consistent access control.

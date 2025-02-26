@@ -94,4 +94,3 @@ spec:
   package: "xpkg.upbound.io/$@<org-name>$@/quickstart-project"
 ```
 {{< /editCode >}}
-

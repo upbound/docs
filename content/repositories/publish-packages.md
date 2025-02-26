@@ -145,4 +145,3 @@ The Upbound Marketplace automatically renders specific metadata annotations into
 Upbound supports all annotations specified in the <a href="https://github.com/crossplane/crossplane/blob/master/contributing/specifications/xpkg.md#object-annotations">xpkg specification</a>.
 
 
-

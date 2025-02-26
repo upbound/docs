@@ -630,7 +630,7 @@ current context.
 {{< /table >}}
 
 {{< hint "warning" >}}
-Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "all-spaces/spaces/console/_index.md#create-a-personal-access-token" >}}) must be used.
+Upbound does not currently support the use of robot tokens for scoped access to control planes. A personal access token must be used.
 {{< /hint >}}
 
 **Examples**
@@ -1510,7 +1510,7 @@ my-token   1987b8c2-b364-4787-9ce2-39493f3db6ad   5m20s
 
 ## space
 
-The `up space` commands allow you to install and manage an [Upbound Space]({{<ref "/all-spaces">}}) on a Kubernetes cluster.
+The `up space` commands allow you to install and manage an Upbound Space on a Kubernetes cluster.
 
 All `up space` commands support the following options:
 
