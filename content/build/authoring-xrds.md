@@ -43,7 +43,9 @@ What is the metadata namespace?: default
 Successfully created resource and saved to examples/bucket/example.yaml
 ```
 
-After following the interactive steps, you should have an empty claim generated under `examples/bucket/example.yaml`. Next, open the claim file you generated, and paste in the content below.
+After following the interactive steps, you should have an empty claim generated
+under `examples/bucket/example.yaml`. Next, open the claim file you generated,
+and paste in the content below.
 
 ```yaml
 apiVersion: devexdemo.upbound.io/v1alpha1
