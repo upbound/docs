@@ -366,6 +366,7 @@ The `required` field captures the requirements for your Composition to declare.
     served: true
 ```
 
+
 ### `status`
 
 Your control plane uses the `status` field to track the observed state of the
