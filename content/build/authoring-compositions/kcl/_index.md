@@ -153,7 +153,7 @@ spec:
 
 ## Control plane project model
 
-The Upbound programming model defines the core concepts you can use when creating your control plane using Upbound. [Concepts](/core-concepts/) describes these concepts with examples available in KCL. This section contains guidance specifically for how to use the KCL language to do Crossplane-specific tasks. Read the [KCL reference docs](https://www.kcl-lang.io/docs/reference/lang/tour) for comprehensive instruction.
+The Upbound programming model defines the core concepts you can use when creating your control plane using Upbound. [Concepts](/learn/core-concepts/) describes these concepts with examples available in KCL. This section contains guidance specifically for how to use the KCL language to do Crossplane-specific tasks. Read the [KCL reference docs](https://www.kcl-lang.io/docs/reference/lang/tour) for comprehensive instruction.
 
 <!-- vale off -->
 The KCL experience is made available thanks to the [function-kcl](https://github.com/crossplane-contrib/function-kcl) function.

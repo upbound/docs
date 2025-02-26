@@ -8,10 +8,6 @@ Control planes are a conceptual management layer that enables you to create and
 manage cloud resources and other services.
 
 
-<img src="/api/placeholder/800/500" alt="Universal Control Plane diagram showing
-multiple cloud providers and services being managed through a single control
-plane interface">
-
 ## Control plane components
 
 Control planes provide a vector for operations and can manage your
@@ -80,7 +76,6 @@ reconciliation:
 
 3. **Act** - Control planes use the controllers to act on the provider and reconcile any differences, ensuring your infrastructure matches your specifications.
 
-{{<img src="images/reconcileloop.jpeg" alt="Upbound Consumer portal list view" lightbox="true">}}
 <!--- TODO(tr0njavolta): this image sucks lol --->
 
 ## The control plane workflow

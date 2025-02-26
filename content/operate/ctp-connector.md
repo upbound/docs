@@ -64,7 +64,7 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "learn/core-concepts/managed-control-planes/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
 spaces:
@@ -128,7 +128,7 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "learn/core-concepts/managed-control-planes/#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
 spaces:
