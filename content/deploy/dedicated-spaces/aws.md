@@ -88,4 +88,4 @@ Once Upbound has this information, the request gets processed in a business day.
 
 ## Use your Dedicated Space
 
-Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/). Read the [Get Started]({{<ref "getstarted" >}}) guide for next steps.
+Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/). Read the [Get Started]({{<ref "deploy/self-hosted-spaces/aws" >}}) guide for next steps.
