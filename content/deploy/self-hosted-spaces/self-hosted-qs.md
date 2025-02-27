@@ -99,7 +99,9 @@ up space init --organization="${UPBOUND_ACCOUNT}" \
 
 You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
 
+<!-- vale Google.Headings = NO -->
 ## Connect to your Space
+<!-- vale Google.Headings = YES -->
 
 Use `up ctx` to create a kubeconfig context pointed at your new Space:
 

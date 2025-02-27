@@ -6,8 +6,7 @@ weight: 5
 
 Composite resource definitions (XRDs) define the structure and rules for the
 custom API your control plane managed. You write XRDs as declarative files that
-specify the schema, behavior, and constraints for how composite resources
-(XRs) should be structured.
+specify the schema, behavior, and constraints for Composite Resources (XRs).
 
 XRDs define:
 
@@ -27,14 +26,17 @@ provisions actual resources based on that definition.
 For example, if you create a Composition to provision an S3 bucket, the
 corresponding XRD ensures that:
 
+<!-- vale Microsoft.Adverbs = NO -->
+<!-- vale write-good.Passive = NO -->
 * Your required parameters are properly structured
 * Validation rules are enforced
-* The compositon receives necessary inputs from the XRD
+* The composition receives necessary inputs from the XRD
+<!-- vale Microsoft.Adverbs = YES -->
+<!-- vale write-good.Passive = YES -->
 
 Claims are higher-level abstractions that your users can use for self-service
 resource deployment. Claims have a simplified structure with fewer required
-fields and less configuration since many of the default values and rules are
-already defined in the XRD and Composition.
+fields and less configuration.
 
 Claims allow you to:
 

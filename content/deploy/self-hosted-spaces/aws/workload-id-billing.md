@@ -6,6 +6,6 @@ aliases:
     - concepts/path
 ---
 
-The `vector.dev` component manages billing functionality. 
+The `vector.dev` component manages billing. 
 
 

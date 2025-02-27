@@ -9,12 +9,14 @@ aliases:
 Workload-identity authentication lets you use access policies to grant your
 self-hosted Space cluster access to your cloud providers.
 
-This guide walks you through creating an IAM trust role policy asnd applying it to your EKS
+This guide walks you through creating an IAM trust role policy and applying it to your EKS
 cluster for backup and restore storage.
 
 ## Prerequisites
 
+<!-- vale gitlab.FutureTense = NO -->
 To set up a workload-identity, you'll need:
+<!-- vale gitlab.FutureTense = YES -->
 
 - A self-hosted Space cluster
 - Administrator access in your cloud provider
@@ -35,11 +37,13 @@ To enable workload-identity for backup and restore, you must:
 
 * Annotate the Kubernetes service account to associate it with a cloud-side
   principal (such as an IAM role, service account, or enterprise application).
-  This service account must then be used by the workload.
+  The workload must use this service account.
 
 * Label the workload (pod) to allow the injection of a temporary credential set,
   enabling authentication.
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- vale Google.Headings = NO -->
 ## **Azure: Microsoft Entra Workload ID**
 #### **1. Configure Kubernetes Service Account**
 ```yaml
@@ -47,8 +51,10 @@ To enable workload-identity for backup and restore, you must:
 --set controlPlanes.mxpController.pod.customLabels."azure\.workload\.identity/use"="true"
 ```
 
-#### **2. Restart Workload**
+#### **2. Restart workload**
 ```sh
 kubectl rollout restart deployment mxp-controller
 ```
 
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale Google.Headings = YES -->

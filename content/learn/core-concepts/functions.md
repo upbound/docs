@@ -4,19 +4,16 @@ weight: 6
 description: Custom programs that dynamically template resources.
 ---
 
-Embedded functions are composition functions that you can build, package, and manage directly in your configuration. Embedded functions allow for shared logic across multiple compositions within your configuration.
+Embedded functions are composition functions you can build, package, and manage directly in your configuration. These functions enable shared logic across multiple compositions within your configuration.
 
-You can use Python or KCL to create a custom function in your control plane
-project.
-
-Instead of using YAML to write static configuration files, functions allow for advanced logic and programmability when defining how resources should be provisioned.
+Create custom functions in your control plane project using Python or KCL.
+Functions provide advanced logic and programmability when defining resource provisioning, going beyond static YAML configuration files.
 
 When a user creates a composite resource (XR), your control plane calls composition functions to determine:
 
-* What managed resources should be created.
-* How these resources should be configured based on user input.
-* Whether any conditional logic should be applied to customize the deployment.
-
+* What managed resources to create
+* How to configure these resources based on user input
+* What conditional logic to apply for customizing the deployment
 
 Some benefits of using embedded functions:
 

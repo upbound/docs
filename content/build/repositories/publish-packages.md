@@ -16,7 +16,9 @@ This guide shows you how to:
 
 ## Prerequisites
 
+<!-- vale gitlab.FutureTense = NO -->
 For this guide, you'll need:
+<!-- vale gitlab.FutureTense = YES -->
 
 - The [up CLI]({{<ref "reference/cli">}}) installed
 - An account on Upbound

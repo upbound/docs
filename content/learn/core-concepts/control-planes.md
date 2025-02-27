@@ -11,10 +11,8 @@ manage cloud resources and other services.
 ## Control plane components
 
 Control planes provide a vector for operations and can manage your
-infrastructure with a few key components.
-
-
-<!--- TODO(tr0njavolta): API --->
+infrastructure. Control planes use an API server and Controllers to manage your
+resources.
 
 ### API server
 
@@ -33,28 +31,23 @@ The API server handles these requests by:
 - Returning a response to your request
 - Notifying controllers that watch for changes to that resource type
 
-The API server acts as the single entry point for all control plane interactions -
-whether you're using kubectl, the Upbound Console, or making direct API calls,
-you're always talking to this same API server. It's the authoritative source of
-truth for what resources should exist and how they should be configured.
+The API server acts as the single entry point for all control plane
+interactions.
+
+The API server acts as the central entry point for all control plane interactions. You access the same API server whether you use `kubectl`, the Upbound Console, or direct API calls. It authoritatively determines which resources should exist and their configurations.
 
 ### Controllers
 
-A controller is a long-running program that exists as part of a
-provider package. Controllers implement reconciliation loops for a specific
-resource type. For example, the `provider-aws-s3` provider, contains the
-controllers specific to the AWS S3 resource type.
+Controllers are long-running programs within provider packages that manage
+specific resource types through reconciliation loops. For example, the
+`provider-aws-s3` package contains controllers specifically for AWS S3 resources
 
-When controllers detect a change in either the resource it controls, or the API
-server, it begins reconciling the actual state with the desired state.
-
-For example, an S3 controller might check if a bucket exists in AWS and then
-modify it to specifications, or create a new bucket with the specifications from
-the API server. Controllers also handle retries for failed operations, track the
-status of long-running changes, and update the resource status in the API server
-to reflect the current state.
-
-<!--- TODO(tr0njavolta): link --->
+When a controller detects changes in either its managed resources or the API
+server, it reconciles the actual state with the desired state. An S3 controller
+checks if a bucket exists in AWS, then creates or modifies it according the
+API server specifications. Controllers also handle operation retries, track long
+running changes, and update resource status in the API server to reflect the
+current state.
 
 ## State management
 
@@ -72,31 +65,29 @@ reconciliation:
 
 2. **Report** - When the real state doesn't match your configurations, the
    control plane reports the delta of differences.
-<!--- TODO(tr0njavolta): Fix this --->
 
 3. **Act** - Control planes use the controllers to act on the provider and reconcile any differences, ensuring your infrastructure matches your specifications.
 
-<!--- TODO(tr0njavolta): this image sucks lol --->
 
 ## The control plane workflow
-
+<!-- vale alex.Condescending = NO -->
 {{< table "table table-sm table-striped cli-ref">}}
-| Phase | Control Plane | Terraform |
-|-------|--------------|-----------|
-| **Infrastructure Definition** | Define platform APIs (XRDs) and compositions once, users consume via simple claims | Write complete HCL for every resource, including all provider-specific details |
-| **State Storage** | Stored automatically in API server, continuously updated | Maintained in state files that must be manually stored, locked, and shared |
-| **Resource Creation** | User submits claim like:<br>`kind: PostgreSQLInstance`<br>`spec:`<br>&nbsp;&nbsp;`size: large` | Developer writes full configuration:<br>`resource "aws_db_instance"`<br>`resource "aws_security_group"`<br>`resource "aws_db_subnet_group"` |
-| **Abstraction** | Compositions handle provider-specific details automatically | Each provider's resources must be explicitly configured |
-| **Execution** | Continuous reconciliation loop:<br>1. Watches for changes<br>2. Detects drift<br>3. Reconciles automatically | Manual process:<br>1. Run `terraform plan`<br>2. Review changes<br>3. Run `terraform apply`<br>4. Commit state file |
-| **Drift Detection** | Automatic and continuous | Only detected during manual `terraform plan` |
-| **Error Handling** | Automatic retries and status reporting | Manual retry of `terraform apply` |
-| **Multi-Provider** | Managed through single composition | Separate provider blocks and state for each |
-| **Updates** | Submit new claim or update existing one - reconciliation happens automatically | 1. Update HCL<br>2. Run plan<br>3. Run apply<br>4. Update state<br>5. Commit changes |
-| **Team Usage** | Self-service through predefined APIs | Each team member needs:<br>1. Provider credentials<br>2. Terraform knowledge<br>3. State file access<br>4. Lock coordination |
+| Phase | Control Plane |
+|-------|--------------|
+| **Infrastructure Definition** | Define platform APIs (XRDs) and compositions once, users consume via simple claims |
+| **State Storage** | Stored automatically in API server, continuously updated |
+| **Resource Creation** | User submits claim like:<br>`kind: PostgreSQLInstance`<br>`spec:`<br>&nbsp;&nbsp;`size: large` |
+| **Abstraction** | Compositions handle provider-specific details automatically |
+| **Execution** | Continuous reconciliation loop:<br>1. Watches for changes<br>2. Detects drift<br>3. Reconciles automatically |
+| **Drift Detection** | Automatic and continuous |
+| **Error Handling** | Automatic retries and status reporting |
+| **Multi-Provider** | Managed through single composition |
+| **Updates** | Submit new claim or update existing one - reconciliation happens automatically |
+| **Team Usage** | Self-service through predefined APIs |
 {{< /table >}}
 
+<!-- vale alex.Condescending = YES -->
 
 Crossplane runs control planes in a Kubernetes deployment, which requires you to
 build and configure a Kubernetes deployment. Upbound handles this for you with **managed control planes**. For more
-information, review the managed control plane documentation.
-<!--- TODO(tr0njavolta): link --->
+information, review the [managed control plane documentation]({{<ref "operate">}}).

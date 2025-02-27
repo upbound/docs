@@ -7,4 +7,4 @@ layout: glossary
 body_class: glossary
 ---
 
-This glossary page briefly describes the concepts necessary for successfully deploying your resources with Upbound. For more information, follow the links to the dedicated page for the concept.
+This glossary page describes the concepts necessary for deploying your resources with Upbound. For more information, follow the links to the dedicated page for the concept.

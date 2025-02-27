@@ -12,6 +12,7 @@ schemas that define the structure of your desired resources. You provide the
 fields and acceptable values and your control plane can communicate with your
 external systems based on that structure.
 
+<!-- vale write-good.Passive = NO -->
 <!-- vale Google.Headings = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Generate an XRD from a XRC
@@ -129,11 +130,12 @@ status:
 ```
 
 ## XRD construction
-
+<!-- vale gitlab.FutureTense = NO -->
 Generating XRDs from basic claims is the most efficient way to build your
 schemas. In this section, you'll review an XRD to understand the parts of the
 schema and how they relate back to your claims and compositions.
 
+<!-- vale gitlab.FutureTense = YES -->
 For the full example XRD, expand the XRD below.
 
 <!--- TODO(tr0njavolta): collapsable XRD --->
@@ -189,18 +191,16 @@ status:
       kind: ""
 ```
 
-### API versioning & kind
+### API versioning and kind
 
-XRDs use Kubernetes-style API versioning for objects. The XRD object's API
-version and kind are established by Crossplane as the owner and
-maintainer of the object kind, or type.
+XRDs use Kubernetes-style API versioning for objects. Crossplane owns and
+maintains the XRD objects' API version and kind.
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 ```
 ### `metadata`
-
 The `metadata` section contains the identifying information for the XRD. This
 example has a `name` that corresponds with the group. The control plane
 registers this metadata when compositions or composite resources are requested.
@@ -214,9 +214,8 @@ registers this metadata when compositions or composite resources are requested.
 The `x` naming convention isn't a strict requirement, but helps
 distinguish this as an XRD instead of the requested object itself.
 
-Pluralizing the resource type is required because the schema and rules of this
-XRD apply to all buckets created with it and doesn't refer to a specific
-instance of the resource.
+You must pluralize the resource type in this section. The schema and rules of this XRD
+apply to all buckets created with it, not a specific instance of the resource.
 
 The `.platform.upbound.io` is the group this XRD applies to. Group definition
 conventions are covered in the `spec` section of this document.
@@ -225,12 +224,11 @@ conventions are covered in the `spec` section of this document.
 ### `spec`
 
 The `spec` section defines the actual schema and behavior for your composite
-resoures. The `spec` can vary based on the kinds of resources and providers you
+resources. The `spec` can vary based on the kinds of resources and providers you
 are using.
 
 
 #### `group`
-
 You can set the `group` field in a way that best meets your organization's needs.
 In this example, `platform` describes the project name with `upbound.io` being
 the organization's domain. This field is required.
@@ -271,7 +269,7 @@ XRDs. You must manually add a new version when your API changes.
 As your XRD changes you should format your versions as
 `v<major><stability><revision>`. This XRD is the first created for these
 resources and is named `v1alpha1`. As your API schema changes or matures, you
-can update to `v1beta1`, `v1beta2`, and finally `v1` for production-ready APIs.
+can update to `v1beta1`, `v1beta2`, and `v1` for production-ready APIs.
 
 
 ```yaml
@@ -310,13 +308,12 @@ The `description` field is a string to document what this schema does.
 ##### **`spec.versions.schema.openAPIV3Schema.properties.spec`**
 
 The `properties.spec` fields define the desired state of the resources in your
-Composition. This field includes all the required parameters your Composition needs to provision and
-manage the resource. In the example below, you must include if the bucket will
-be encrypted, if the bucket supports versioning, and what kind of visibility the
-bucket will have.
+Composition. This field includes all the required parameters to provision and
+manage the resource. In the example below, you must include if the bucket
+encryption status, if the bucket supports versioning, and public visibility.
 
-These fields aren't _declaring_ what the value is - the Composition will include
-and declare these values.
+These fields aren't _declaring_ the values. The Composition includes
+and declares these values.
 
 The properties of your resources vary based on the resource type.
 
@@ -383,20 +380,19 @@ status:
       apiVersion: ""
       kind: ""
 ```
-
+<!-- vale gitlab.FutureTense = NO -->
 Because this XRD hasn't been referenced and called by a Composition, the status
 fields are empty. Your control plane automatically updates these with values
 when it creates a controller to assign to this resource.
 
 ## XRD design
 
-While generating an XRD from a claim is the most efficient way to create an API
-definition, you might consider designing an XRD to meet your
-organizations needs.
+To create an XRD based on your organization's needs, consider what resources and
+services your users need provisioned.
 
 1. First, identify your goals:
    1. What resources do you need to manage?
-   2. What teams or users will need these resources?
+   2. What teams or users need these resources?
    3. What level of abstraction can you provide in the XRD to help your users
       self-serve these resources?
 2. Plan your API design:
@@ -411,7 +407,7 @@ Marketplace.
 ### Example
 
 You determine a team requires an RDS instance, an S3 instance for backups,
-CloudWatch Alarms for monitoring, an SNS topic for alerts, and a Security Group with
+CloudWatch Alarms for monitoring, an `SNS` topic for alerts, and a Security Group with
 ingress rules, you could create a claim including the resource parameters
 that team needs:
 
@@ -498,6 +494,8 @@ update the `properties.size` field in the `spec`.
                       description: "Size of the database instance"
 ```
 
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale write-good.Passive = YES -->
 ## Next steps
 
 - Move on to authoring compositions

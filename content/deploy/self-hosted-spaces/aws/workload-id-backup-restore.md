@@ -14,7 +14,9 @@ cluster for backup and restore storage.
 
 ## Prerequisites
 
+<!-- vale gitlab.FutureTense = NO -->
 To set up a workload-identity, you'll need:
+<!-- vale gitlab.FutureTense = YES -->
 
 - A self-hosted Space cluster
 - Administrator access in your cloud provider
@@ -34,8 +36,8 @@ chart parameters:
 To enable workload-identity for backup and restore, you must:
 
 * Annotate the Kubernetes service account to associate it with a cloud-side
-  principal (such as an IAM role, service account, or enterprise application).
-  This service account must then be used by the workload.
+  principal (such as an IAM role, service account, or enterprise application). The workload must then
+  use this service account.
 
 * Label the workload (pod) to allow the injection of a temporary credential set,
   enabling authentication.
@@ -84,7 +86,7 @@ plane is below:
 
 Next, in your control plane, pass the `--set` flag with the Spaces Helm chart
 parameters for the Backup and Restore component. Update
-`${SPACES_BR_IAM_ROLE_ARN}` with the IRN of the role you just created.
+`${SPACES_BR_IAM_ROLE_ARN}` with the `IRN` of the role you just created.
 
 ```yaml
 --set controlPlanes.mxpController.serviceAccount.annotations."eks\.amazonaws\.com/role-arn"="${SPACES_BR_IAM_ROLE_ARN}"
@@ -95,8 +97,8 @@ dedicated IAM role in your EKS cluster environment.
 
 ### Restart workload
 
-You must manually restart a workload’s pod when you add the
-`eks.amazonaws.com/role-arn key` annotation to the running pod’s service
+You must manually restart a workload's pod when you add the
+`eks.amazonaws.com/role-arn key` annotation to the running pod's service
 account.
 
 This restart enables the EKS pod identity webhook to inject the necessary

@@ -80,7 +80,7 @@ spaces:
 
 {{< /tabs >}}
 
-
+<!-- vale Google.WordList = NO -->
 Provide the values file above when you run the CLI command:
 
 
@@ -147,6 +147,7 @@ spaces:
 
 Provide the values file above when you `helm install` the MCP Connector:
 
+<!-- vale Google.WordList = YES -->
 ```bash
 helm install --wait mcp-connector oci://xpkg.upbound.io/spaces-artifacts/mcp-connector -n kube-system -f connector-values.yaml
 ```
