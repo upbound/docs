@@ -18,7 +18,7 @@ A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbou
 
 The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
 
-{{<img src="/deploy/dedicated-spaces/images/managed-arch-gcp.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
+{{<img src="deploy/dedicated-spaces/images/managed-arch-gcp.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
 
 The Spaces software gets deployed on a GKE Cluster in the region of your choice. This GKE cluster is where your managed control planes are ultimately run. Upbound also deploys cloud buckets, 1 for the collection of the billing data and 1 for control plane backups.
 
@@ -78,4 +78,4 @@ Once Upbound has this information, the request gets processed in a business day.
 
 ## Use your Dedicated Space
 
-Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/). Read the [Get Started]({{<ref "deploy/self-hosted-spaces/gcp" >}}) guide for next steps.
+Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/).

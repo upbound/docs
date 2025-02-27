@@ -7,6 +7,7 @@ aliases:
     - /all-spaces/disconnected-spaces
 ---
 
+<!-- vale gitlab.SentenceLength = NO -->
 {{< hint "important" >}}
 This feature is only available for select Business Critical customers. You can't set up your own Dedicated Space without the assistance of Upbound. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
 {{< /hint >}}
@@ -15,13 +16,14 @@ A Dedicated Space deployed on AWS is a single-tenant deployment of a control pla
 
 The following guide walks you through setting up a Dedicated Space in your AWS organization. If you have any questions while working through this guide, contact your Upbound Account Representative for help.
 
+<!-- vale Google.Headings = NO -->
 ## Dedicated Space on AWS architecture
 
 A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbound-controlled sub-account in your AWS cloud environment. The Spaces software runs in this sub-account, orchestrated by Kubernetes. Backups and billing data get stored inside bucket or blob storage in the same sub-account. The managed control planes deployed and controlled by the Spaces software runs on the Kubernetes cluster which gets deployed into the sub-account.
 
 The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
 
-{{<img src="/deploy/dedicated-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
+{{<img src="deploy/dedicated-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
 
 The Spaces software gets deployed on an EKS Cluster in the region of your choice. This EKS cluster is where your managed control planes are ultimately run. Upbound also deploys buckets, 1 for the collection of the billing data and 1 for control plane backups.
 
@@ -88,4 +90,6 @@ Once Upbound has this information, the request gets processed in a business day.
 
 ## Use your Dedicated Space
 
-Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/). Read the [Get Started]({{<ref "deploy/self-hosted-spaces/aws" >}}) guide for next steps.
+Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/).
+<!-- vale gitlab.SentenceLength = YES -->
+<!-- vale Google.Headings = YES -->
