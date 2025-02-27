@@ -203,6 +203,260 @@ If you don't see a response in the `.status.resourceGroups`, this indicates a ma
 
 Routing from one control plane to another is currently scoped to control planes in a single Space. You can't route resource requests to control planes that exist in a cross-Space boundary.
 
-## Build compositions with _ReferencedObjects_
+## Compose resources with _ReferencedObjects_
 
-_ReferencedObject_ is a resource type available in an Upbound managed control plane that lets you reference other Kubernetes resources in Upbound. Spaces machinery 
+_ReferencedObject_ is a resource type available in an Upbound managed control plane that lets you reference other Kubernetes resources in Upbound. Imagine the scenario where you want to let a user to reference a subnet when creating a database instance. To your control plane, the `kind: database` and `kind: subnet` are independent resources. To you as the composition author, these resources have an important relationship. It may be that:
+
+- you don't _want_ your user to ever be able to create a database without specifying a subnet.
+- you want to let them create a subnet when they create the database, if it doesn't exist.
+- you want to allow them to reuse a subnet that got created elsewhere or gets shared by another user.
+
+In each of these scenarios, you must resort to writing complex composition logic to handle each case. The problem is compounded when the resource exists in a context separate from the current control plane's context. Imagine a scenario where one control plane manages Database resources and a second control plane manages networking resources. Thanks to _ReferencedObjects_, you can offload these concerns to Upbound machinery.
+
+{{< hint "tip" >}}
+While this feature is especially useful for composing resources that exist in a remote context--such as another control plane--you can also use _ReferencedObjects_ to easily resolve references to any other Kubernetes object in the current control plane context. This could be a secret, another Crossplane resource, or more.
+{{< /hint >}}
+
+### Declare the resource reference in your XRD
+
+To compose a _ReferencedObject_, you should start by adding a resource reference in your Composite Resource Definition (XRD). The convention for the resource reference follows the shape shown below: 
+
+{{< editCode >}}
+```yaml
+$@<resource>Ref$@:
+  type: object
+  properties:
+    apiVersion:
+      type: string
+      default: "$@<apiVersion-of-resource>$@"
+      enum: [ "$@<apiVersion-of-resource>$@" ]
+    kind:
+      type: string
+      default: "$@<resource-ref-kind>$@"
+      enum: [ "$@<resource-ref-kind>$@" ]
+    grants:
+      type: array
+      default: [ $@"Observe"$@ ]
+      items:
+        type: string
+        enum: [ $@"Observe", "Create", "Update", "Delete", "*"$@ ]
+    name:
+      type: string
+    namespace:
+      type: string
+  required:
+  - name
+```
+{{< /editCode >}}
+
+The `<resource>Ref` should be the kind of resource you want to reference. The `apiVersion` and `kind` should be the associated API version and kind of the resource you want to reference.
+
+The `name` and `namespace` strings are inputs that let your users specify the resource instance.
+
+#### Grants
+
+The `grants` field is a special array that lets you give users the power to influence the behavior of the referenced resource. You can configure which of the available grants you let your user select and which it defaults to. Similar in behavior as [Crossplane management policies](https://docs.crossplane.io/latest/concepts/managed-resources/#managementpolicies), each grant value does the following:
+
+- **Observe:** The composite may observe the state of the referenced resource.
+- **Create:** The composite may create the referenced resource if it doesn't exist.
+- **Update:** The composite may update the referenced resource.
+- **Delete:** The composite may delete the referenced resource.
+- **\*:** The composite has full control over the referenced resource.
+
+Here are some examples that show how it looks in practice:
+
+{{< expand "Show example for defining the reference to another composite resource" >}}
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xsqlinstances.database.platform.upbound.io
+spec:
+  type: object
+  properties:
+    parameters:
+      type: object
+      properties:
+          networkRef:
+            type: object
+            properties:
+              apiVersion:
+                type: string
+                default: "networking.platform.upbound.io"
+                enum: [ "networking.platform.upbound.io" ]
+              grants:
+                type: array
+                default: [ "Observe" ]
+                items:
+                  type: string
+                  enum: [ "Observe" ]
+              kind:
+                type: string
+                default: "Network"
+                enum: [ "Network" ]
+              name:
+                type: string
+              namespace:
+                type: string
+            required:
+            - name
+```
+{{</expand >}}
+
+
+{{< expand "Show example for defining the reference to a secret" >}}
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xsqlinstances.database.platform.upbound.io
+spec:
+  type: object
+  properties:
+    parameters:
+      type: object
+      properties:
+          secretRef:
+            type: object
+            properties:
+              apiVersion:
+                type: string
+                default: "v1"
+                enum: [ "v1" ]
+              grants:
+                type: array
+                default: [ "Observe" ]
+                items:
+                  type: string
+                  enum: [ "Observe", "Create", "Update", "Delete", "*" ]
+              kind:
+                type: string
+                default: "Secret"
+                enum: [ "Secret" ]
+              name:
+                type: string
+              namespace:
+                type: string
+            required:
+            - name
+```
+{{</expand >}}
+
+### Manually add the jsonPath
+
+{{< hint "important" >}}
+This step is a known limitation of the preview. We're working on tooling that removes the need for authors to do this step.
+{{< /hint >}}
+
+During the preview timeframe of this feature, you must add an annotation by hand to the XRD. In your XRD's `metadata.annotations`, set the `references.upbound.io/schema` annotation. It should be a JSON string in the following format:
+
+```json
+{
+    "apiVersion": "references.upbound.io/v1alpha1",
+    "kind": "ReferenceSchema",
+    "references": [
+        {
+            "jsonPath": ".spec.parameters.secretRef",
+            "kinds": [
+                {
+                    "apiVersion": "v1",
+                    "kind": "Secret"
+                }
+            ]
+        }
+    ]
+}
+```
+
+Flatten this JSON into a string and set the annotation on your XRD. View the example below for an illustration:
+
+{{< expand "Show example setting the references.upbound.io/schema annotation" >}}
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xthings.networking.acme.com
+  annotations:
+    references.upbound.io/schema: '{"apiVersion":"references.upbound.io/v1alpha1","kind":"ReferenceSchema","references":[{"jsonPath":".spec.secretRef","kinds":[{"apiVersion":"v1","kind":"Secret"}]},{"jsonPath":".spec.configMapRef","kinds":[{"apiVersion":"v1","kind":"ConfigMap"}]}]}'
+```
+{{</expand >}}
+
+{{< expand "Show example for setting multiples references in the references.upbound.io/schema annotation" >}}
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xthings.networking.acme.com
+  annotations:
+    references.upbound.io/schema: '{"apiVersion":"references.upbound.io/v1alpha1","kind":"ReferenceSchema","references":[{"jsonPath":".spec.parameters.secretRef","kinds":[{"apiVersion":"v1","kind":"Secret"}]},{"jsonPath":".spec.parameters.configMapRef","kinds":[{"apiVersion":"v1","kind":"ConfigMap"}]}]}'
+```
+{{</expand >}}
+
+<!-- vale gitlab.Substitutions = NO --> 
+You can use a VSCode extension like [vscode-pretty-json](https://marketplace.visualstudio.com/items?itemName=chrismeyers.vscode-pretty-json) to make this task easier.
+<!-- vale gitlab.Substitutions = YES --> 
+
+### Compose a _ReferencedObject_
+
+To pair with the resource reference declared in your XRD, you must compose the referenced resource. Use the _ReferencedObject_ resource type to bring the resource into your composition. _ReferencedObject_ has the following schema:
+
+{{< editCode >}}
+```yaml
+apiVersion: references.upbound.io/v1alpha1
+kind: ReferencedObject
+spec:
+  managementPolicies:
+  - Observe
+  deletionPolicy: Orphan
+  composite:
+    apiVersion: $@<composite-apiVersion>$@
+    kind: $@<composite-kind>$@
+    name: $@<composite-instance-name>$@
+    jsonPath: .spec.parameters.secretRef
+```
+{{< /editCode >}}
+
+The `spec.composite.apiVersion` and `spec.composite.kind` should match the API version and kind of the `compositeTypeRef` declared in your composition. The `spec.composite.name` should be the name of the composite resource instance. 
+
+The `spec.composite.jsonPath` should be the path to the root of the resource ref you declared in your XRD.
+
+{{< expand "Show example for composing a resource reference to a secret" >}}
+```yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: demo-composition
+spec:
+  compositeTypeRef:
+    apiVersion: networking.acme.com/v1alpha1
+    kind: XThing
+  mode: Pipeline
+  pipeline:
+  - step: patch-and-transform
+    functionRef:
+      name: crossplane-contrib-function-patch-and-transform
+    input:
+      apiVersion: pt.fn.crossplane.io/v1beta1
+      kind: Resources
+      resources:
+      - name: secret-ref-object
+        base:
+          apiVersion: references.upbound.io/v1alpha1
+          kind: ReferencedObject
+          spec:
+            managementPolicies:
+            - Observe
+            deletionPolicy: Orphan
+            composite:
+              apiVersion: networking.acme.com/v1alpha1
+              kind: XThing
+              name: TO_BE_PATCHED
+              jsonPath: .spec.parameters.secretRef
+        patches:
+        - type: FromCompositeFieldPath
+          fromFieldPath: metadata.name
+          toFieldPath: spec.composite.name
+```
+{{</expand >}}
+
+By declaring a resource reference in your XRD, Upbound handles resolution of the desired resource.
