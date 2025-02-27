@@ -277,12 +277,16 @@ can update to `v1beta1`, `v1beta2`, and `v1` for production-ready APIs.
   versions:
   - name: v1alpha1
 ```
-<!-- vale gitlab.SentenceLength = NO -->
+
 ##### **`spec.versions.referenceable`**
+
+<!-- vale gitlab.SentenceLength = NO -->
 
 A `referenceable` schema means Compositions can reference this XRD in
 their `compositeTypeRef`. This field is required.
+
 <!-- vale gitlab.SentenceLength = YES -->
+
 
 ```yaml
     referenceable: true
