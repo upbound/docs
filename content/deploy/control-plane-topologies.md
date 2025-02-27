@@ -331,7 +331,7 @@ spec:
 
 #### Declare as a project dependency
 
-You can declare _RemoteConfigurations_ as dependencies in your control plane's [project file]({{<ref "core-concepts/projects">}}). Use the up CLI to add the dependency, providing the `--remote` flag:
+You can declare _RemoteConfigurations_ as dependencies in your control plane's [project file]({{<ref "learn/core-concepts/projects">}}). Use the up CLI to add the dependency, providing the `--remote` flag:
 
 {{< editCode >}}
 ```ini
