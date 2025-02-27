@@ -210,9 +210,10 @@ registers this metadata when compositions or composite resources are requested.
     metadata:
       name: xbuckets.platform.upbound.io
     ```
-
+<!-- vale write-good.TooWordy = NO -->
 The `x` naming convention isn't a strict requirement, but helps
 distinguish this as an XRD instead of the requested object itself.
+<!-- vale write-good.TooWordy = YES -->
 
 You must pluralize the resource type in this section. The schema and rules of this XRD
 apply to all buckets created with it, not a specific instance of the resource.
@@ -406,8 +407,8 @@ Marketplace.
 
 ### Example
 
-You determine a team requires an RDS instance, an S3 instance for backups,
-CloudWatch Alarms for monitoring, an `SNS` topic for alerts, and a Security Group with
+A team in your organization requires an RDS instance, an S3 instance for backups,
+CloudWatch Alarms for monitoring, an `SNS` alert topic, and a Security Group with
 ingress rules, you could create a claim including the resource parameters
 that team needs:
 

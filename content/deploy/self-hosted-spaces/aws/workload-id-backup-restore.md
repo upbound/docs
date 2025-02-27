@@ -51,7 +51,7 @@ With IRSA, you can associate a Kubernetes service account in an EKS cluster with
 an AWS IAM role. Upbound authenticates workloads with that service account as
 the IAM role using temporary credentials instead of static role credentials.
 IRSA relies on AWS `AssumeRoleWithWebIdentity` `STS` to exchange OIDC ID tokens with
-the IAM role’s temporary credentials. IRSA uses the `eks.amazon.aws/role-arn`
+the IAM role's temporary credentials. IRSA uses the `eks.amazon.aws/role-arn`
 annotation to link the service account and the IAM role.
 
 ### Create an IAM role trust policy
