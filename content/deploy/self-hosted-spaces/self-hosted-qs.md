@@ -271,7 +271,7 @@ helm -n upbound-system upgrade --install agent \
 
 Go to the [Upbound Console](https://console.upbound.io), log in, and choose the newly connected Space from the Space selector dropdown.
 
-{{<img src="deploy/self-hosted-spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
+{{<img src="deploy/spaces/images/attached-space.png" alt="A screenshot of the Upbound Console space selector dropdown">}}
 
 {{< hint "note" >}}
 You can only connect a self-hosted Space to a single organization at a time.
