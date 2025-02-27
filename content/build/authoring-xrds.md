@@ -282,8 +282,8 @@ can update to `v1beta1`, `v1beta2`, and `v1` for production-ready APIs.
 
 <!-- vale gitlab.SentenceLength = NO -->
 
-
-<!-- vale gitlab.SentenceLength = YES -->
+A `referenceable` schema means Compositions can reference this XRD in
+their `compositeTypeRef`. This field is required.
 
 
 ```yaml
@@ -415,6 +415,7 @@ CloudWatch Alarms for monitoring, an `SNS` alert topic, and a Security Group wit
 ingress rules, you could create a claim including the resource parameters
 that team needs:
 
+<!-- vale gitlab.SentenceLength = YES -->
 ```yaml
 apiVersion: db.example.org/v1alpha1
 kind: ProductionDatabase
