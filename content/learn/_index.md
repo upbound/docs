@@ -6,7 +6,6 @@ hideFromHomepage: true
 category: "guides"
 aliases:
     - "/getstarted-devex"
-    - getstarted/_index
 ---
 
 Upbound is a scalable infrastructure management service built on Crossplane. The
