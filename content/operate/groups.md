@@ -3,6 +3,7 @@ title: Control Plane Groups
 weight: 2
 description: An introduction to the Control Plane Groups in Upbound
 aliases:
+    - /mcp/groups
     - mcp/groups
 ---
 

@@ -3,6 +3,7 @@ title: Publish packages
 weight: 20
 description: Product documentation for using the Repositories feature in Upbound.
 aliases:
+    - /repositories/publish-packages
     - "/marketplace/packages"
 ---
 

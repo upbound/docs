@@ -2,6 +2,7 @@
 title: "Conditionals (if)"
 weight: 60
 aliases:
+    - /core-concepts/kcl/conditionals
     - core-concepts/kcl/conditionals
 ---
 

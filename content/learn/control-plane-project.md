@@ -3,6 +3,7 @@ title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment"
 weight: 1
 aliases:
+    - /getstarted/control-plane-project
     - "/getstarted-devex/create-controllers"
 ---
 <!-- vale gitlab.FutureTense = NO -->

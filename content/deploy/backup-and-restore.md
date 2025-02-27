@@ -3,6 +3,7 @@ title: Backup and restore
 weight: 130
 description: Enable and manage backups in your Upbound Space.
 aliases:
+    - /all-spaces/backup-and-restore
     - /spaces/backup-and-restore
     - /disconnected-spaces/backup-and-restore
     - /self-hosted-spaces/backup-and-restore

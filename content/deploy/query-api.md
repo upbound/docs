@@ -3,6 +3,7 @@ title: Query API setup
 weight: 130
 description: Query API setup for self-hosted Spaces
 aliases:
+    - /all-spaces/self-hosted-spaces/query-api
     - /self-hosted-spaces/query-api
     - all-spaces/self-hosted-spaces/query-api
 ---

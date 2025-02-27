@@ -2,6 +2,7 @@
 title: "Build with KCL"
 weight: 1
 aliases:
+    - /core-concepts/kcl/overview
     - core-concepts/kcl/overview
 ---
 

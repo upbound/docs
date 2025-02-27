@@ -4,7 +4,7 @@ weight: 5
 description: "How to build and push your control plane project to the Upbound
 Marketplace"
 aliases:
-    - core-concepts/building-pushing
+    - /core-concepts/building-pushing
 ---
 
 <!--- TODO(tr0njavolta): update CLI links --->

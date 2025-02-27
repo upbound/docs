@@ -2,6 +2,7 @@
 title: "Loops (for)"
 weight: 50
 aliases:
+    - /core-concepts/kcl/loops
     - core-concepts/kcl/loops
 ---
 

@@ -2,6 +2,8 @@
 title: Repositories
 weight: 10
 description: Product documentation for using the Repositories feature in Upbound.
+aliases:
+    - /repositories/_index
 ---
 
 Upbound repositories lets you centrally store control plane artifacts, extensions, and build dependencies as part of an integrated Upbound experience.

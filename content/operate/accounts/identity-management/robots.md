@@ -3,6 +3,7 @@ title: Robots
 weight: 4
 description: "Creating and assigning Upbound robot tokens"
 aliases:
+    - /accounts/identity-management/robots
     - accounts/identity-management/robots
 ---
 

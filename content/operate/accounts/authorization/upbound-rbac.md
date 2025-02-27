@@ -3,6 +3,7 @@ title: "Upbound RBAC"
 weight: 6
 description: "A guide to implementing and configuring access control in Upbound"
 aliases:
+    - /accounts/authorization/upbound-rbac
     - accounts/authorization/upbound-rbac
 ---
 

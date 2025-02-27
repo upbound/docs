@@ -3,6 +3,7 @@ title: Deploy
 weight: 3
 description: An introduction to Spaces hosting feature in Upbound
 aliases:
+    - /all-spaces/_index
     - "/spaces"
     - "/concepts/upbound-spaces"
     - all-spaces/_index.md

@@ -2,6 +2,8 @@
 title: Store configurations
 weight: 10
 description: Product documentation for using the Repositories feature in Upbound.
+aliases:
+    - /repositories/store-configurations
 ---
 
 Upbound repositories lets you centrally store control plane artifacts, extensions, and build dependencies as part of an integrated Upbound experience.

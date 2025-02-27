@@ -3,6 +3,7 @@ title: Troubleshooting
 weight: 1000
 description: A guide for troubleshooting an issue that occurs in a Space
 aliases:
+    - /all-spaces/self-hosted-spaces/troubleshooting
     - /spaces/troubleshooting
     - /deploy/disconnected-spaces/troubleshooting
     - all-spaces/self-hosted-spaces/troubleshooting

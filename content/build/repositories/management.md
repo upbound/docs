@@ -2,6 +2,8 @@
 title: "Repository Management"
 weight: 30
 description: "How to create, list, and delete repositories"
+aliases:
+    - /repositories/management
 ---
 
 This page describes how to view and manage Upbound repositories.

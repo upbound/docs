@@ -3,6 +3,7 @@ title: "Teams"
 weight: 3
 description: "Creating and managing Upbound teams"
 aliases:
+    - /accounts/identity-management/teams
     - accounts/identity-management/teams
 ---
 

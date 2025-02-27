@@ -3,6 +3,7 @@ title: Consume control plane APIs in an app cluster with MCP connector
 weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
 aliases:
+    - /all-spaces/mcp-connector-guide
     - /deploy/spaces/guides/mcp-connector-guide
     - all-spaces/mcp-connector-guide
 ---

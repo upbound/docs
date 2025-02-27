@@ -2,6 +2,6 @@
 title: "Authorization"
 weight: 0
 aliases:
-    - accounts/authorization
+    - /accounts/authorization
 ---
 

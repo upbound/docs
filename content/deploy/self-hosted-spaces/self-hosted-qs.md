@@ -3,6 +3,7 @@ title: Local Quickstart
 weight: 1
 description: A  quickstart guide for Upbound Spaces
 aliases:
+    - /all-spaces/self-hosted-spaces/quickstart
     - /spaces/kind-quickstart
     - /kind-quickstart
     - /all-spaces/disconnected-spaces/quickstart

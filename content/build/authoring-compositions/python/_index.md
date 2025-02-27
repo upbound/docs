@@ -2,6 +2,7 @@
 title: "Build with Python"
 weight: 1
 aliases:
+    - /core-concepts/python/overview
     - core-concepts/python/overview
 ---
 

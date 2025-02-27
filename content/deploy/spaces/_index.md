@@ -4,7 +4,8 @@ weight: 2
 description: A guide to Upbound Cloud Spaces
 icon: "popsicle"
 aliases:
-  - /spaces/upbound-spaces
+    - /all-spaces/spaces/_index
+    - /spaces/upbound-spaces
 ---
 
 Upbound builds on the foundations of Crossplane to allow you to provision,

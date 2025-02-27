@@ -2,8 +2,6 @@
 title: Workload-identity for Backup and Restore
 weight: 1
 description: Description of the document
-aliases:
-    - concepts/path
 ---
 
 Workload-identity authentication lets you use access policies to grant your

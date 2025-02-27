@@ -3,6 +3,7 @@ title: Connect managed control planes to external services
 weight: 20
 description: A guide for authenticating managed control plane with external services, including using OIDC
 aliases:
+    - /mcp/oidc
     - "/concepts/operate/oidc"
     - mcp/oidc
 ---

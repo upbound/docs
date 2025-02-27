@@ -3,6 +3,7 @@ title: AWS Deployment Guide
 weight: 2
 description: A guide to Upbound Dedicated Spaces on AWS
 aliases:
+    - /all-spaces/dedicated-spaces/aws
     - /spaces
     - /all-spaces/disconnected-spaces
 ---

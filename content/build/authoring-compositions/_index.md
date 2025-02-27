@@ -2,6 +2,8 @@
 title: Authoring Compositions
 weight: 2
 description: Use KCL or Python to create resources with your control plane.
+aliases:
+    - /core-concepts/authoring-compositions
 ---
 
 

@@ -3,6 +3,7 @@ title: Organizations
 weight: 2
 description: "Configuring Organizations for Upbound"
 aliases:
+    - /accounts/identity-management/organizations
     - accounts/identity-management/organizations
 ---
 

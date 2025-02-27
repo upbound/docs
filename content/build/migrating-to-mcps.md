@@ -2,6 +2,8 @@
 title: Migrating to managed control planes
 weight: 300
 description: A guide to how to migrate to a managed control plane in Upbound
+aliases:
+    - /mcp/migrating-to-mcps
 ---
 
 {{< hint "important" >}}

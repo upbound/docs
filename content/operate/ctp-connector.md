@@ -3,8 +3,9 @@ title: MCP Connector
 weight: 80
 description: A guide for how to connect a Kubernetes app cluster to a managed control plane in Upbound using the Control Plane connector feature
 aliases:
-  - /concepts/control-plane-connector
-  - /mcp/control-plane-connector/
+    - /mcp/ctp-connector
+    - /concepts/control-plane-connector
+    - /mcp/control-plane-connector/
     - mcp/ctp-connector
 ---
 

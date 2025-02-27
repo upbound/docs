@@ -5,6 +5,7 @@ description: "Learn how Upbound works and how it can work for you."
 hideFromHomepage: true
 category: "guides"
 aliases:
+    - /getstarted/_index
     - "/getstarted-devex"
 ---
 

@@ -2,6 +2,7 @@
 title: "Resource schemas"
 weight: 30
 aliases:
+    - /core-concepts/kcl/resource-schemas
     - core-concepts/kcl/resource-schemas
 ---
 

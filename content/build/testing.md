@@ -4,6 +4,7 @@ weight: 7
 description: "How to run your control plane project on a development control
 plane"
 aliases:
+    - /core-concepts/testing
     - core-concepts/testing
 ---
 

@@ -3,6 +3,7 @@ title: "Users"
 weight: 4
 description: "Creating and managing Upbound users"
 aliases:
+    - /accounts/identity-management/users
     - "/users"
     - "/users/register"
     - "/users/change"

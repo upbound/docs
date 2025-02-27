@@ -2,6 +2,7 @@
 title: "Pipeline inputs and outputs"
 weight: 25
 aliases:
+    - /core-concepts/kcl/inputs-outputs
     - core-concepts/kcl/inputs-outputs
 ---
 

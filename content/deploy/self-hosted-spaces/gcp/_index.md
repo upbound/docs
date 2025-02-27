@@ -3,6 +3,7 @@ title: GCP
 weight: 4
 description: A  quickstart guide for Upbound Spaces in GCP
 aliases:
+    - /all-spaces/self-hosted-spaces/gcp-deployment
     - /all-spaces/disconnected-spaces/gcp-deployment
 ---
 

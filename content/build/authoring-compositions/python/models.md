@@ -2,6 +2,7 @@
 title: "Models"
 weight: 30
 aliases:
+    - /core-concepts/python/models
     - core-concepts/python/models
 ---
 

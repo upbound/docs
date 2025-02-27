@@ -2,6 +2,7 @@
 title: "Workload-identity Configuration"
 weight: 5
 aliases:
+    - /all-spaces/workload-id
     - all-spaces/workload-id
 ---
 

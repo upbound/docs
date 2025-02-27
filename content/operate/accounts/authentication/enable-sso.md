@@ -2,6 +2,7 @@
 title: "Single Sign On in Upbound"
 description: "Configure single sign-on in your Upbound organization to manage user access"
 aliases:
+    - /accounts/authentication/enable-sso
     - accounts/authentication/enable-sso
 ---
 

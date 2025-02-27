@@ -2,6 +2,7 @@
 title: "Resource data extraction"
 weight: 70
 aliases:
+    - /core-concepts/kcl/resource-data-extraction
     - core-concepts/kcl/resource-data-extraction
 ---
 

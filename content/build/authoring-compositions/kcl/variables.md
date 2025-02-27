@@ -2,6 +2,7 @@
 title: "Variables"
 weight: 40
 aliases:
+    - /core-concepts/kcl/variables
     - core-concepts/kcl/variables
 ---
 

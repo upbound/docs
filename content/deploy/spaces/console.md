@@ -3,6 +3,7 @@ title: Upbound Console
 weight: 5
 description: An introduction to the Console feature of Upbound
 aliases:
+    - /all-spaces/spaces/console
     - all-spaces/spaces/console
     - /console
 ---

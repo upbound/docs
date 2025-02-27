@@ -3,6 +3,7 @@ title: "Upbound IAM"
 weight: 5
 icon: key
 aliases:
+    - /accounts
     - accounts
 ---
 

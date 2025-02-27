@@ -5,6 +5,7 @@ description: A guide to how managed control planes in a space connect to git
 tocHidden: true
 searchExclude: true
 aliases:
+    - /mcp/git-integration
     - mcp/git-integration
 ---
 

@@ -2,6 +2,7 @@
 title: "Read function pipeline state"
 weight: 120
 aliases:
+    - /core-concepts/kcl/read-pipeline-state
     - core-concepts/kcl/read-pipeline-state
 ---
 

@@ -3,6 +3,7 @@ title: Self-Hosted Spaces
 weight: 2
 description: A guide to Upbound Self-Hosted Spaces
 aliases:
+    - /all-spaces/self-hosted-spaces
     - /spaces
     - /deploy/disconnected-spaces
     - all-spaces/self-hosted-spaces

@@ -3,6 +3,7 @@ title: Azure
 weight: 3
 description: A  quickstart guide for Upbound Spaces in Azure
 aliases:
+    - /all-spaces/self-hosted-spaces/azure-deployment
     - /all-spaces/disconnected-spaces/azure-deployment
 ---
 

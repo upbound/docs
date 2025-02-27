@@ -3,6 +3,7 @@ title: Deployment
 weight: 900
 description: A guide for deploying an Upbound Space in production
 aliases:
+    - /all-spaces/self-hosted-spaces/deployment
     - /spaces/deployment
     - /all-spaces/disconnected-spaces/deployment
 ---

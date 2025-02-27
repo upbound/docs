@@ -3,6 +3,7 @@ title: "Kubernetes RBAC"
 weight: 9
 description: "A guide to implementing and configuring Kuberentes RBAC in Upbound"
 aliases:
+    - /accounts/authorization/k8s-rbac
     - accounts/authorization/k8s-rbac
 ---
 

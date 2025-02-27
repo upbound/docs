@@ -3,6 +3,7 @@ title: Consumer portal
 weight: 10
 description: An introduction to the Consumer Portal feature of Upbound
 aliases:
+    - /all-spaces/spaces/consumer-portal
     - all-spaces/spaces/consumer-portal
 ---
 

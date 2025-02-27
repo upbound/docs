@@ -3,6 +3,7 @@ title: Configure OIDC
 weight: 200
 description: Configure OIDC in your Space
 aliases:
+    - /accounts/authentication/oidc-configuration
     - accounts/authentication/oidc-configuration
 ---
 
