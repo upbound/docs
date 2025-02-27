@@ -3,7 +3,7 @@ title: (deprecated) Control Plane Configurations
 weight: 4
 description: An introduction to how Configurations work in Upbound
 aliases:
-    - /all-spaces/legacy-spaces/control-plane-configurations
+    - /deploy/legacy-spaces/control-plane-configurations
     - /concepts/control-plane-configurations
 ---
 
@@ -25,7 +25,7 @@ All managed control planes on Upbound install configurations from a definition s
 
 Upbound automatically creates a Git repository in your version control service provider on your behalf. After Upbound creates your repository, it watches for new commits to the `main` branch. For every commit, Upbound automatically attempts to build the Configuration package for you. If it's successful, you can then upgrade the definition on your managed control planes.
 
-{{<img src="all-spaces/spaces/images/Git-Integration_Marketecture_Dark_1440w.png" alt="Illustration of a Configuration stored in Git" lightbox="true">}}
+{{<img src="deploy/spaces/images/Git-Integration_Marketecture_Dark_1440w.png" alt="Illustration of a Configuration stored in Git" lightbox="true">}}
 
 Because Git is the source of truth for a control plane's APIs, users can use typical Git workflows. Upbound deploys API changes out to their control planes once merged without users handling any of the package building processes.
 
@@ -63,22 +63,22 @@ If you push a new commit to your repo but Upbound does not show a new configurat
 
 Upbound uses a GitHub app to read your configuration's repository contents. Upbound builds a configuration package for you and pushes it to Upbound. Then, you can deploy the latest configuration package your control planes. For each commit, the app reports a build status. While the configuration is building, you can see a status like below in GitHub:
 
-{{<img src="all-spaces/spaces/images/git-building.png" alt="example of an in-progress configuration build on GitHub" lightbox="true" >}}
+{{<img src="deploy/spaces/images/git-building.png" alt="example of an in-progress configuration build on GitHub" lightbox="true" >}}
 
 When the repository contents finishes building, the Upbound GitHub app reports a green checkmark and status like below:
 
-{{<img src="all-spaces/spaces/images/git-success.png" alt="example of a successful configuration build on GitHub" lightbox="true">}}
+{{<img src="deploy/spaces/images/git-success.png" alt="example of a successful configuration build on GitHub" lightbox="true">}}
 
 When the repository contents fail to build a configuration, the Upbound GitHub app reports a failure and brief message explaining why. Hover over the status text on GitHub to see the full message:
 
-{{<img src="all-spaces/spaces/images/git-fail.png" alt="example of a failed configuration build on GitHub" lightbox="true">}}
+{{<img src="deploy/spaces/images/git-fail.png" alt="example of a failed configuration build on GitHub" lightbox="true">}}
 
 ### Apply an update in Upbound
 
 When a repository builds into a configuration, Upbound shows the image as available for each control plane that has installed that configuration. You can find the `update available` prompt in the control plane explorer view.
 
-{{<img src="all-spaces/spaces/images/git-update-available.png" alt="showing a new configuration is available for a control plane" size="small" lightbox="true">}}
+{{<img src="deploy/spaces/images/git-update-available.png" alt="showing a new configuration is available for a control plane" size="small" lightbox="true">}}
 
 Select the text to begin an update on the control plane. Confirm the update operation to kickoff the install. Notice the version string of the configuration image is a SemVer-formatted string appended with the ID of the associated commit.
 
-{{<img src="all-spaces/spaces/images/git-build-version.png" alt="showing a new configuration is available for a control plane" lightbox="true">}}
+{{<img src="deploy/spaces/images/git-build-version.png" alt="showing a new configuration is available for a control plane" lightbox="true">}}

@@ -630,7 +630,7 @@ current context.
 {{< /table >}}
 
 {{< hint "warning" >}}
-Upbound does not currently support the use of robot tokens for scoped access to control planes. A [personal access token]({{< relref "all-spaces/spaces/console/_index.md#create-a-personal-access-token" >}}) must be used.
+Upbound does not currently support the use of robot tokens for scoped access to control planes. A personal access token must be used.
 {{< /hint >}}
 
 **Examples**
@@ -1510,7 +1510,7 @@ my-token   1987b8c2-b364-4787-9ce2-39493f3db6ad   5m20s
 
 ## space
 
-The `up space` commands allow you to install and manage an [Upbound Space]({{<ref "/all-spaces">}}) on a Kubernetes cluster.
+The `up space` commands allow you to install and manage an Upbound Space on a Kubernetes cluster.
 
 All `up space` commands support the following options:
 
@@ -1649,7 +1649,6 @@ https://cloud.google.com/docs/authentication/application-default-credentials.
 Supply configuration by setting these environment variables: `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and `AZURE_CLIENT_SECRET`. For more options, see the documentation at
 https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication.
 
-<!-- vale off -->
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag                         | Description                                                                                   |
 | ---------- | --------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -1671,7 +1670,6 @@ billing period. Date range is inclusive. Format: 2006-01-02/2006-01-02
 |   `-f`   | `--file=FILE`             |   Parameters file.  |
 |      | `--bundle=BUNDLE`             |   Local bundle path.  |
 {{< /table >}}
-<!-- vale on -->
 
 **Examples**
 
@@ -1789,7 +1787,7 @@ The `up version` command prints the client and server version information for th
 
 ## xpkg
 
-The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Creating and Pushing Packages]({{<ref "repositories/publish-packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
+The `up xpkg` commands create and interact with Crossplane Packages. Packages are a set of YAML configuration files packaged as a single OCI container image. Read the [Creating and Pushing Packages]({{<ref "build/repositories/publish-packages" >}}) section for information on building and pushing packages to the Upbound Marketplace.
 
 All `up xpkg` commands support the following options:
 

@@ -1,5 +1,0 @@
-description: |-
-    conditions describe additional status of a row that are relevant for a human user. These conditions
-    apply to the row, not to the object, and will be specific to table output. The only defined
-    condition type is 'Completed', for a row that indicates a resource that has run to completion and
-    can be given less visual priority.
