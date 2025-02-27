@@ -24,6 +24,10 @@ jobs:
 
       - name: Clean and Build
         # Rebuild from scratch using development environment
+        run: rm -rf public resources .hugo_build.lock
+        
+      - name: Clean and Build
+        # Rebuild from scratch using development environment
         run: hugo --cleanDestinationDir --environment development
 
       - name: Run htmltest
