@@ -5,15 +5,7 @@ description: Configure scheduling of composites to remote control planes
 ---
 
 {{< hint "important" >}}
-This feature is in preview.
-
-For Connected and Disconnected Spaces, this feature requires at least Spaces `v1.12.0` and is off by default. To enable, set `features.alpha.controlPlaneTopology.enabled=true` when installing Spaces:
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  ...
-  --set "features.alpha.controlPlaneTopology.enabled=true"
-```
+This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
 {{< /hint >}}
 
 Upbound's _Control Plane Topology_ feature lets you build and deploy multiple control planes that work together to provide a unified platform experience. With the _Topology_ feature, you can install composites from Configurations that are reconciled by other control planes and configure how resources are routed to control planes. You can also build compositions that reference other resources running on your control plane or elsewhere in Upbound. 
