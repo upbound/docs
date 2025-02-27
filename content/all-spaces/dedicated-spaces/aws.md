@@ -21,7 +21,7 @@ A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbou
 
 The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
 
-{{<img src="/all-spaces/managed-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
+{{<img src="/all-spaces/dedicated-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
 
 The Spaces software gets deployed on an EKS Cluster in the region of your choice. This EKS cluster is where your managed control planes are ultimately run. Upbound also deploys buckets, 1 for the collection of the billing data and 1 for control plane backups.
 

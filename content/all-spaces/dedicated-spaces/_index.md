@@ -32,7 +32,7 @@ A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbou
 
 The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
 
-{{<img src="/all-spaces/managed-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
+{{<img src="/all-spaces/dedicated-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
 
 Upbound doesn't have access to other sub-accounts nor your organization-level settings in your cloud environment. Outside of your cloud organization, Upbound runs the Upbound Console, which includes the Upbound API and web application, including the dashboard you see at `console.upbound.io`.
 
