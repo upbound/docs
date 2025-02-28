@@ -1092,7 +1092,8 @@ service provider.
 
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale Microsoft.HeadingAcronyms = YES -->
-<!-- vale gitlab.SentenceLength = YES --><!-- vale gitlab.SentenceSpacing = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
+<!-- vale gitlab.SentenceSpacing = YES -->
 ## Deploy with the consumer portal
 
 With your control plane project set up, you're ready to create resources in your

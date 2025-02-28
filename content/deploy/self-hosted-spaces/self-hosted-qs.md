@@ -1,6 +1,6 @@
 ---
 title: Local Quickstart
-weight: 1
+weight: 99
 description: A  quickstart guide for Upbound Spaces
 aliases:
     - /all-spaces/self-hosted-spaces/quickstart
