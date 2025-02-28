@@ -1,4 +1,0 @@
-description: |-
-    group is the group of the control plane to check for freshness of
-    the data. In case of GroupQuery or Query, the group is defaulted and
-    must match the group of the request.

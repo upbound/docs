@@ -1,5 +1,0 @@
-description: |-
-    tables is the list of tables returned by the query. Objects are grouped
-    as specified in the query. Hence, potentially multiple tables are returned.
-    
-    Objects is mutual exclusive with Tables.
