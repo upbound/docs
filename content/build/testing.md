@@ -10,7 +10,7 @@ aliases:
 
 The Upbound testing framework follows a standardized directory structure:
 
-```shell {copy-lines="none"}
+```ini {copy-lines="none"}
     tests/<xrd-plural>/
     │
     ├── <test-suite>/
@@ -90,18 +90,18 @@ Mock states help test scenarios like:
 
 
 Below is a table of available `spec` fields for authoring tests:
-
+<!-- vale write-good.TooWordy= NO -->
 {{< table "table table-sm table-striped">}}
 | **Field**                  | **Description**                                          | **Optional** |
 |----------------------------|----------------------------------------------------------|-------------|
-| `spec.xr`                  | The composite resource (XR) - inline or file path       | No          |
-| `spec.xrd`                 | The XR definition - inline or file path                 | No          |
-| `spec.composition`         | The composition definition - inline or file path        | No          |
-| `spec.timeout`             | Time to wait for test completion (default: 30s)         | Yes         |
+| `spec.xr`                  | The composite resource (XR) - inline or path       | No          |
+| `spec.xrd`                 | The XR definition - inline or path                 | No          |
+| `spec.composition`         | The composition definition - inline or path        | No          |
+| `spec.timeout`             | Time to wait for test completion (default: 30 seconds)         | Yes         |
 | `spec.validate`            | Validate managed resources against schemas              | Yes         |
-| `spec.observedResources`   | Additional observed resources - inline or file path     | Yes         |
-| `spec.extraResources`      | Additional resources - inline or file path              | Yes         |
-| `spec.context`             | Context for the Function Pipeline - inline or file path | Yes         |
+| `spec.observedResources`   | Additional observed resources - inline or path     | Yes         |
+| `spec.extraResources`      | Additional resources - inline or path              | Yes         |
+| `spec.context`             | Context for the Function Pipeline - inline or path | Yes         |
 | `spec.assert`              | Assertions to validate resources after test completion  | Yes         |
 {{< /table >}}
 
@@ -149,7 +149,7 @@ Details:
 ## End-to-end tests
 
 End-to-end tests validate compositions in real environments, ensuring creation,
-deletion, and operations work correctly.
+deletion, and operations work as expected.
 
 ### Generate an end-to-end test
 
@@ -215,12 +215,12 @@ Below is a list of specification fields you can use to author your e2e tests
 | `spec.skipDelete`              | Whether to skip deletion of resources during cleanup    | No          |
 | `spec.defaultConditions`       | Default conditions for the resources                    | No          |
 |{ `spec.manifests`               | List of manifests for resources to be tested           | No          |
-| `spec.extraResources`          | Additional resources - inline or file path             | Yes         |
+| `spec.extraResources`          | Additional resources - inline or path             | Yes         |
 {{< /table >}}
 
 ### Run an end-to-end test
 
-To run all end-to-end tests,  define the path and `*` to include everything in that directory:
+To run all end-to-end tests,define the path and `*` to include everything in that directory:
 
 ```shell
 up test run --e2e tests/**/*.k
@@ -259,3 +259,4 @@ Now, you can validate your results, and make any changes to test your resources.
 
 For more information, review the [development control plane documentation]({{< ref
 "dev-cps" >}}).
+<!-- vale write-good.TooWordy = YES -->
