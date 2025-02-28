@@ -23,7 +23,7 @@ The `ImageConfig` API was introduced starting in Crossplane `v1.18` and backport
 up login
 ```
 
-2. Create a [robot and robot token]({{<ref "/accounts/identity-management/robots">}}) using the up CLI:
+2. Create a [robot and robot token]({{<ref "operate/accounts/identity-management/robots">}}) using the up CLI:
 
 ```bash
 up robot create provider-pull-bot
@@ -72,7 +72,7 @@ If you're on an older version of Crossplane, you need to create a package pull s
 up login
 ```
 
-2. Create a [robot and robot token]({{<ref "/accounts/identity-management/robots">}}) using the up CLI:
+2. Create a [robot and robot token]({{<ref "operate/accounts/identity-management/robots">}}) using the up CLI:
 
 ```bash
 up robot create provider-pull-bot
