@@ -501,7 +501,3 @@ update the `properties.size` field in the `spec`.
 
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale write-good.Passive = YES -->
-## Next steps
-
-- Move on to authoring compositions
-- Visit the Upbound Marketplace

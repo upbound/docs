@@ -13,8 +13,8 @@ in the XRD and Composition.
 <!-- vale write-good.Passive = YES -->
 Claims allow you to:
 
-* give your users a self-service method for resource management while adhering
+* Give your users a self-service method for resource management while adhering
   to your organizational policies
-* automatically provision resources with the control plane workflow
-* maintain governance and consistency across your managed resources
+* Automatically provision resources with the control plane workflow
+* Maintain governance and consistency across your managed resources
 
