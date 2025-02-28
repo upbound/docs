@@ -4,6 +4,7 @@ description: "Define a control plane for resource abstractions in a real cloud p
 weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
+    - "/quickstart"
 ---
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
