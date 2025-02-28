@@ -3,6 +3,7 @@ title: "Reference"
 weight: 10000
 icon: "lightbulb"
 description: "Reference material for Upbound"
+category: "resources"
 ---
 
 For more information on how Upbound builds on Crossplane, review [Crossplane vs. Upbound](crossplane-vs-upbound/).

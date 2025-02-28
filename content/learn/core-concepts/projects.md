@@ -1,0 +1,173 @@
+---
+title: "Control Plane Projects"
+weight: 3
+description: "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project."
+aliases:
+    - /core-concepts/projects
+    - core-concepts/projects
+---
+
+<!-- vale gitlab.Substitutions = NO -->
+Control plane projects are source-level representations of your control plane. A
+control plane project is any folder that contains an `upbound.yaml` project
+file. Create a project with the [up project init]({{< ref
+"reference/cli/command-reference" >}}) command. A control plane project houses
+the definition of your control plane.
+
+## The project file
+
+Projects require an `upbound.yaml` file. The command `up project init` by default uses an Upbound-provided template, which creates a predefined `upbound.yaml`. If you choose to override the default template with your own, make sure your template contains an `upbound.yaml` in the root directory.
+
+Project files define the constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
+
+A typical `upbound.yaml` file looks like the following:
+
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: platform-api
+spec:
+  dependsOn:
+  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+    This is where you can add a readme for your project.
+  repository: xpkg.upbound.io/upbound/platform-api
+  source: github.com/upbound/project-template
+```
+
+The control plane project defines:
+
+- your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
+- the implementation of those schemas, defined as Crossplane `compositions`.
+- any dependencies your control plane has, such as on providers, composition functions, or configuration packages.
+- compositions functions, which are modules referenced by your compositions that define how to compose resources.
+- example manifests for your API, so you can conduct testing as part of your inner-loop development.
+
+## Project structure
+
+When you initialize a project, the default project directory structure is:
+
+```bash
+.
+├── upbound.yaml # Your control plane project is defined here
+├── apis/ # Each API (XRD and composition) are defined here
+│   ├── SuperBucket/
+│   │   ├── definition.yaml
+│   │   └── composition.yaml
+│   ├── SuperDatabase/
+│   │   ├── definition.yaml
+│   │   └── composition.yaml
+├── functions/ # Define reusable function modules used by compositions
+│   ├── bucketFunction/
+│   │   └── main.k
+│   ├── databaseFunction/
+│   │   └── main.py
+├── examples/ # Define example manifests for your API
+│   ├── SuperBucket/
+│   │   └── example.yaml
+│   ├── SuperDatabase/
+│   │   └── example.yaml
+└── _output/ # "up project build" places the OCI image output here.
+```
+
+<!-- vale gitlab.Substitutions = YES -->
+## Build and push a project
+
+Control plane projects are source-level representations of your control plane.
+Like any other software project, control plane projects require a **build
+stage** to assemble all parts of your project into a versioned artifact.
+
+Build a project with the [up project build]({{< ref
+"reference/cli/command-reference" >}}) command:
+
+```bash
+up project build
+```
+
+The output artifact is an OCI image with an `.uppkg` file type. The default
+build output is the `_output/` directory in your project.
+The `.uppkg` file is a special kind of [Crossplane
+Configuration](https://docs.crossplane.io/latest/concepts/packages/).
+
+You can push the project output to any OCI-compliant registry.
+
+To push the package to a registry on the Upbound Marketplace with the [up project push]({{< ref
+"reference/cli/command-reference" >}}) command:
+
+```bash
+up project push
+```
+
+## Project templates
+
+New projects created with the command `up project init` scaffold a project from a default template source, [github.com/upbound/project-template](https://github.com/upbound/project-template). You can use any Git repository as the template source. You can specify the template by providing either a full Git URL or a well-known template name. You can use the following well-known template names:
+
+  - project-template `(https://github.com/upbound/project-template)`
+  - project-template-ssh `(git@github.com:upbound/project-template.git)`
+
+For more information, review the [CLI reference documentation]({{< ref
+"reference/cli/command-reference" >}})
+
+## Create a project GitHub action
+
+<!-- vale gitlab.SentenceLength = NO -->
+
+The `action-up-project` GitHub Action is the recommended CI integration workflow
+for your project. The `action-up` installs the `up` CLI tool, authenticate with
+Upbound using a personal access token, build the control plane project, and
+conditionally push to the Upbound Marketplace if you are working on your `main`
+branch.
+<!-- vale gitlab.SentenceLength = YES -->
+
+Add the following action to your workflow to automatically build and push your control plane projects.
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Package version (e.g. v0.1.0)
+        required: false
+
+env:
+  UP_API_TOKEN: ${{ secrets.UP_API_TOKEN }}
+  UP_ORG: ${{ secrets.UP_ORG }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Install and login with up
+        if: env.UP_API_TOKEN != '' && env.UP_ORG != ''
+        uses: upbound/action-up@v1
+        with:
+          api-token: ${{ secrets.UP_API_TOKEN }}
+          organization: ${{ secrets.UP_ORG }}
+
+      - name: Build and Push Upbound project
+        if: env.UP_API_TOKEN != ''
+        uses: upbound/action-up-project@v1
+        with:
+          push-project: true
+          tag: ${{ inputs.version || '' }}
+```
+
+{{< hint "important">}}
+This GitHub Action requires a private API token in your Git repository. Robot
+tokens aren't currently supported.
+{{</hint>}}

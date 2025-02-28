@@ -3,7 +3,7 @@ title: "Policies"
 weight: 5
 description: "The Upbound Official provider policies."
 aliases:
-  - providers/support
+  - providers
 ---
 
 <!-- vale Google.Headings = NO -->
@@ -39,10 +39,6 @@ When Upbound releases a new provider version, access to the previous version
 ends, and users must upgrade to the latest version. For major version changes, a
 30-day grace period allows access to the last release of the prior `major`
 version.
-
-{{< hint "important" >}}
-This policy applies to Official Providers published after March 25, 2025. All versions published prior to this date are pullable without a subscription to Upbound.
-{{< /hint >}}
 
 #### Accessing the latest released version
 

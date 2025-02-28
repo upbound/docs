@@ -1,7 +1,0 @@
-description: |-
-    This field contains the requested additional information about each object based on the includeObject
-    policy when requesting the Table. If 'None', this field is empty, if 'Object' this will be the
-    default serialization of the object for the current API version, and if 'Metadata' (the default) will
-    contain the object metadata. Check the returned kind and apiVersion of the object before parsing.
-    The media type of the object will always match the enclosing list - if this as a JSON table, these
-    will be JSON encoded objects.

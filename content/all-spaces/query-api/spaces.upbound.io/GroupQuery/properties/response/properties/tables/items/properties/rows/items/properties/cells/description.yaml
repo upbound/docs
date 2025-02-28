@@ -1,4 +1,0 @@
-description: |-
-    cells will be as wide as the column definitions array and may contain strings, numbers (float64 or
-    int64), booleans, simple maps, lists, or null. See the type field of the column definition for a
-    more detailed description.

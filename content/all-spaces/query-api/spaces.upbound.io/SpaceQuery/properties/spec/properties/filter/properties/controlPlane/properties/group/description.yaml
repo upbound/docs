@@ -1,3 +1,0 @@
-description: |-
-    group is the group of the control plane to query. If empty, all groups
-    are queried in the given scope.

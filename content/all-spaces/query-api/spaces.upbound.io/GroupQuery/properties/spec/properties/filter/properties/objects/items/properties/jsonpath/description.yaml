@@ -1,5 +1,0 @@
-description: |-
-    jsonpath is a JSONPath filter expression that will be applied to objects
-    as a filter. It must return a boolean; no objects will be matched if it
-    returns any other type. jsonpath should be used as a last resort; using
-    the other filter fields will generally be more efficient.
