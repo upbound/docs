@@ -1,8 +1,7 @@
 ---
-title: Use Argo or Flux with Spaces
+title: Use Argo
 weight: 150
 description: A guide for integrating Argo or Flux with managed control planes in a Space.
-draft: true
 aliases:
     - /all-spaces/self-hosted-spaces/use-argo
     - /deploy/disconnected-spaces/use-argo-flux
@@ -183,7 +182,3 @@ data:
 ```
 
 The preceding configuration causes Argo to exclude syncing **all** resource group/kinds--except Crossplane `providers` and `configurations`--for **all** control planes. You're encouraged to adjust the `resource.inclusions` to include the types that make sense for your control plane, such as an `XRD` you've built with Crossplane. You're also encouraged to customize the `clusters` pattern to selectively apply these exclusions/inclusions to control planes (for example, `control-plane-prod-*`).
-
-## Flux
-
-You can also integrate Flux to target a managed control plane in a Space. Upbound doesn't offer a special plugin; you should follow the same instructions as outlined in the Flux section in [GitOps with Control Planes]({{<ref "gitops#flux">}}).
