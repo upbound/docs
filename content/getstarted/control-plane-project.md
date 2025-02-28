@@ -929,6 +929,10 @@ Composition testing ensures your compositions work as expected, follow best
 practices, and meet your organizations requirements. You can generate tests for
 your compositions with the `up test generate` command.
 
+{{< hint type="important" >}}
+This feature is in preview. [Contact Upbound](https://www.upbound.io/contact) if you want to try it out.
+{{< /hint >}}
+
 In the root of your project, generate a new test:
 
 ```shell
