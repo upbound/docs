@@ -147,11 +147,11 @@ This diagram illustrates a self-hosted Space running in AWS connected to the glo
 
 Upbound uses a Pub/Sub model over TLS to communicate between Upbound's global
 console and your self-hosted Space. Self-hosted Spaces establishes a secure
-connection with `connect.upbound.io` and `api.upbound.io` and subscribes to an
+connection with `connect.upbound.io`. `api.upbound.io`, and `auth.upbound.io` and subscribes to an
 endpoint.
 
 {{< hint "important" >}}
-Add `connect.upbound.io` and `api.upbound.io` to your organization's list of
+Add `connect.upbound.io`, `api.upbound.io`, and `auth.upbound.io` to your organization's list of
 allowed endpoints.
 {{</hint>}}
 
