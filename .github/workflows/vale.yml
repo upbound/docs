@@ -10,7 +10,8 @@ on:
 
 jobs:
   lint-content:
-    runs-on: ubuntu-latest
+    runs-on:
+      group: large-runners
     steps:
       - name: Checkout the docs repo
         uses: actions/checkout@v3
