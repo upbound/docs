@@ -12,9 +12,9 @@ Testing ensures your compositions and control planes work as expected, follow be
 
 ## Prerequisites
 
-To test your compositions and run end-to-end tests, you'll need:
+To test your compositions and run end-to-end tests, make sure you have:
 
-* Tge `up` CLI `v0.38` or higher [installed](https://docs.upbound.io/reference/cli/)
+* The `up` CLI `v0.38` or higher [installed](https://docs.upbound.io/reference/cli/)
 * An Upbound account
 * The [Kyverno Chainsaw binary installed](https://kyverno.github.io/chainsaw/0.1.1/install/)
 
