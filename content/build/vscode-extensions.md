@@ -15,15 +15,15 @@ Code, your Upbound project gets:
 - Linting
 - Autocompletion
 
-Upbound supports Python and KCL schemas.
-
+Upbound supports Python, KCL, and Go schemas.
 
 {{<hint "tip">}}
 This documentation focuses on Visual Studio code, but other popular editors also
 support Python and KCL schemas, linting, and autocompletion.
 
-Refer to the [KCL language server](https://www.kcl-lang.io/docs/user_docs/getting-started/install)
-or [Python language server](https://github.com/microsoft/pyright/blob/main/docs/installation.md)
+Refer to the [KCL language server](https://www.kcl-lang.io/docs/user_docs/getting-started/install),
+[Python language server](https://github.com/microsoft/pyright/blob/main/docs/installation.md),
+or [Go language server](https://github.com/golang/tools/blob/master/gopls/README.md)
 documentation to learn how to configure support for your preferred editor.
 {{</hint>}}
 
@@ -31,7 +31,7 @@ documentation to learn how to configure support for your preferred editor.
 
 <!-- vale gitlab.SentenceSpacing = NO -->
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
@@ -59,6 +59,12 @@ To install the KCL extension, search for KCL in your extensions search bar
 in Visual Studio Code or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension).
 
 <!-- /KCL -->
+<!-- Go -->
+
+To install the Go extension, search for Go in your extensions search bar
+in Visual Studio Code or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=golang.Go).
+
+<!-- /Go -->
 
 {{< /content-selector >}}
 
@@ -91,7 +97,7 @@ available:
 View descriptions, property types, and other schema details directly in your
 code editor window as you work with composed managed resources (MRs).
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 
 <!-- Python -->
 {{< editCode >}}
@@ -121,8 +127,25 @@ vpc = {
 }
 ```
 {{</ editCode >}}
-
 <!-- /KCL -->
+<!-- Go -->
+{{< editCode >}}
+
+```golang
+vpc := &v1beta1.VPC{
+	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
+	Kind:       ptr.To("VPC"),
+	Spec: &v1beta1.VPCSpec{
+		ForProvider: &v1beta1.VPCSpecForProvider{
+			CidrBlock:          ptr.To("10.0.0.0/16"), // Hover to see description and type
+			EnableDNSHostnames: ptr.To(true),          // Hover to see description and type
+		},
+	},
+}
+```
+
+{{</ editCode >}}
+<!-- /Go -->
 
 {{</ content-selector >}}
 
@@ -136,7 +159,7 @@ Real-time linting ensures:
 - Managed resource required fields are populated
 <!-- vale write-good.Passive = YES -->
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 
 <!-- Python -->
 {{< editCode >}}
@@ -168,6 +191,23 @@ vpc = {
 ```
 {{</ editCode >}}
 <!-- /KCL -->
+<!-- Go -->
+{{< editCode >}}
+
+```golang
+vpc := &v1beta1.VPC{
+	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
+	Kind:       ptr.To("VPC"),
+	Spec: &v1beta1.VPCSpec{
+		ForProvider: &v1beta1.VPCSpecForProvider{
+			CidrBlock: 10, // Error: cannot use 10 (untyped int constant) as *string value in struct literal
+		},
+	},
+}
+```
+
+{{< /editCode >}}
+<!-- /Go -->
 {{</ content-selector >}}
 
 <!-- vale Microsoft.Auto = NO -->
@@ -176,7 +216,7 @@ vpc = {
 
 As you type, the extension suggests valid properties and values for managed resources.
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
 ```python
@@ -206,8 +246,25 @@ vpc = {
 ```
 {{</ editCode >}}
 <!-- /KCL -->
-{{</ content-selector >}}
+<!-- Go -->
+{{< editCode >}}
 
+```golang
+vpc := &v1beta1.VPC{
+	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
+	Kind:       ptr.To("VPC"),
+	Spec: &v1beta1.VPCSpec{
+		ForProvider: &v1beta1.VPCSpecForProvider{
+			Ci // Auto-complete suggests: CidrBlock, AssignGeneratedCidrBlock, Ipv6CidrBlock, etc.
+		},
+	},
+}
+```
+
+{{</ editCode >}}
+<!-- /Go -->
+
+{{</ content-selector >}}
 
 ### Auto-generate composed resources
 
@@ -215,7 +272,7 @@ Scaffold a new managed resource by using the auto-generate feature.
 
 <!-- vale Microsoft.Auto = YES -->
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
 ```python
@@ -240,14 +297,23 @@ vpc = {
 ```
 {{</ editCode >}}
 <!-- /KCL -->
-{{</ content-selector >}}
+<!-- Go -->
+{{< editCode >}}
 
+```golang
+vpc := &v1beta1.V // Auto-complete suggests VPC etc.
+```
+
+{{< /editCode >}}
+<!-- /Go -->
+
+{{</ content-selector >}}
 
 ### Resource references
 
 Navigate between related resources in your composition.
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
 ```python
@@ -281,6 +347,28 @@ subnet = {
 ```
 {{</ editCode >}}
 <!-- /KCL -->
+<!-- Go -->
+{{< editCode >}}
+
+```golang
+observedComposed, _ := request.GetObservedComposedResources(req)
+observedVPC := observedComposed["vpc"]
+observedVPCARN, _ := observedVPC.Resource.GetString("status.atProvider.arn")
+
+subnet := &v1beta1.Subnet{
+	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
+	Kind:       ptr.To("Subnet"),
+	Spec: &v1beta1.SubnetSpec{
+		ForProvider: &v1beta1.SubnetSpecForProvider{
+			VpcID: &observedVPCARN, // Ctrl+Click (Cmd+Click on Mac) to navigate to the observedVPCARN definition
+		},
+	},
+}
+```
+
+{{</ editCode >}}
+<!-- /Go -->
+
 {{</ content-selector >}}
 
 <!-- vale gitlab.SentenceSpacing = YES -->
