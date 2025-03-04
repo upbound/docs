@@ -579,8 +579,8 @@ import (
 	"dev.upbound.io/models/io/upbound/aws/s3/v1beta1"
 	"k8s.io/utils/ptr"
 
-	"github.com/crossplane/crossplane-runtime/pkg/logging"
 	"github.com/crossplane/function-sdk-go/errors"
+	"github.com/crossplane/function-sdk-go/logging"
 	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
 	"github.com/crossplane/function-sdk-go/request"
 	"github.com/crossplane/function-sdk-go/resource"
@@ -619,7 +619,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 
 	params := xr.Spec.Parameters
-	if params.Region == nil || *params.Region == "" {
+	if ptr.Deref(params.Region, "") == "" {
 		response.Fatal(rsp, errors.Wrap(err, "missing region"))
 		return rsp, nil
 	}
@@ -740,7 +740,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 	desiredComposed["sse"] = sse
 
-	if params.Versioning != nil && *params.Versioning {
+	if ptr.Deref(params.Versioning, false) {
 		versioning := &v1beta1.BucketVersioning{
 			APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
 			Kind:       ptr.To("BucketVersioning"),

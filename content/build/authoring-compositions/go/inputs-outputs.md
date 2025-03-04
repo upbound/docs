@@ -163,8 +163,8 @@ import (
 	"dev.upbound.io/models/io/upbound/aws/s3/v1beta1"
 	"k8s.io/utils/ptr"
 
-	"github.com/crossplane/crossplane-runtime/pkg/logging"
 	"github.com/crossplane/function-sdk-go/errors"
+	"github.com/crossplane/function-sdk-go/logging"
 	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
 	"github.com/crossplane/function-sdk-go/request"
 	"github.com/crossplane/function-sdk-go/resource"
@@ -197,7 +197,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 
 	params := xr.Spec.Parameters
-	if params.Region == nil || *params.Region == "" {
+	if ptr.Deref(params.Region, "") == "" {
 		response.Fatal(rsp, errors.Wrap(err, "missing region"))
 		return rsp, nil
 	}
@@ -247,8 +247,8 @@ import (
 	"dev.upbound.io/models/com/example/platform/v1alpha1"
 	"k8s.io/utils/ptr"
 
-	"github.com/crossplane/crossplane-runtime/pkg/logging"
 	"github.com/crossplane/function-sdk-go/errors"
+	"github.com/crossplane/function-sdk-go/logging"
 	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
 	"github.com/crossplane/function-sdk-go/request"
 	"github.com/crossplane/function-sdk-go/resource"
@@ -257,14 +257,14 @@ import (
 )
 
 // Function is your composition function.
-type Function2 struct {
+type Function struct {
 	fnv1.UnimplementedFunctionRunnerServiceServer
 
 	log logging.Logger
 }
 
 // RunFunction runs the Function.
-func (f *Function2) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
+func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
 	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
 	rsp := response.To(req, response.DefaultTTL)
 
