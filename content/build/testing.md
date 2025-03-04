@@ -8,6 +8,21 @@ aliases:
     - core-concepts/testing
 ---
 
+Testing ensures your compositions and control planes work as expected, follow best practices, and meet your organizations requirements. You can generate tests for your compositions with the `up test generate` command.
+
+{{< hint type="important" >}}
+This feature is in preview. [Contact Upbound](https://www.upbound.io/contact) if you want to try it out.
+{{< /hint >}}
+
+
+## Prerequisites
+
+To test your compositions and run end-to-end tests, make sure you have:
+
+* The `up` CLI `v0.38` or higher [installed](https://docs.upbound.io/reference/cli/)
+* An Upbound account
+* The [Kyverno Chainsaw binary installed](https://kyverno.github.io/chainsaw/0.1.1/install/)
+
 The Upbound testing framework follows a standardized directory structure:
 
 ```ini {copy-lines="none"}
