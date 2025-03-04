@@ -15,7 +15,8 @@
 <!-- Debugging output to verify front matter value -->
 
 <!-- Define a variable for the condition -->
-{{ $isCrdOrApi := or (eq $.Params.product "crds") (eq $.Params.product "api") }}
+{{ $isCrdOrApi := or (eq $.Params.product "crds") (eq $.Params.product "api")
+(eq $.Params.product "testing-api") }}
 
 <!-- Use the variable in the class attribute -->
 <div

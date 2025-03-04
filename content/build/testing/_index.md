@@ -2,6 +2,8 @@
 title: "Running and testing your Control Plane Projects"
 weight: 7
 description: "How to run your control plane project on a development controlplane"
+cascade:
+    product: testing-api
 aliases:
     - /core-concepts/testing
     - core-concepts/testing
