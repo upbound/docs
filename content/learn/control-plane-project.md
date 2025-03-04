@@ -34,7 +34,7 @@ For this guide, you'll need:
 - A cloud provider account with administrative access
 - Docker Desktop
 - Visual Studio Code
-- KCL or Python Visual Studio Code Extension
+- KCL, Python, or Go Visual Studio Code Extension
 - `kubectl` installed
 
 
@@ -281,13 +281,13 @@ This command scaffolds a composition for you in
 Next, define your composition logic with an embedded function. Embedded
 functions allow you to build, package, and manage reusable logic components to
 help automate and customize resource configurations in your control plane. You
-can author these functions in KCL or Python instead of manual patch and
+can author these functions in KCL, Python, or Go instead of manual patch and
 transforms in your YAML files.
 
-Run the `up function generate` command and choose either KCL or Python.
+Run the `up function generate` command and choose either KCL, Python, or Go.
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=<kcl or python>
+up function generate test-function apis/xstoragebuckets/composition.yaml --language=<kcl|python|go>
 ```
 
 This command generates an embedded function called `test-function` in the
@@ -300,11 +300,13 @@ composition file to include the new function in the pipeline.
 <!-- AWS -->
 ### Create an AWS Composition Function
 
-Now, open up your function file (either `main.k` or  `main.py`) and paste in the following to your function.
+Now, open up your function file and fill in your function.
 
 {{< tabs "Functions" >}}
 
 {{< tab "KCL" >}}
+
+Paste the following into `main.k`:
 
 ```yaml
 import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
@@ -426,6 +428,8 @@ items = _items
 {{< /tab >}}
 
 {{< tab "Python" >}}
+
+Paste the following into `main.py`:
 
 ```python
 from crossplane.function import resource
@@ -556,6 +560,213 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
         ),
     )
     resource.update(rsp.desired.resources["versioning"], desired_versioning)
+```
+
+{{< /tab >}}
+
+{{< tab "Go" >}}
+
+Paste the following into `fn.go`:
+
+```golang
+package main
+
+import (
+	"context"
+	"encoding/json"
+
+	"dev.upbound.io/models/com/example/platform/v1alpha1"
+	"dev.upbound.io/models/io/upbound/aws/s3/v1beta1"
+	"k8s.io/utils/ptr"
+
+	"github.com/crossplane/crossplane-runtime/pkg/logging"
+	"github.com/crossplane/function-sdk-go/errors"
+	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
+	"github.com/crossplane/function-sdk-go/request"
+	"github.com/crossplane/function-sdk-go/resource"
+	"github.com/crossplane/function-sdk-go/resource/composed"
+	"github.com/crossplane/function-sdk-go/response"
+)
+
+// Function is your composition function.
+type Function struct {
+	fnv1.UnimplementedFunctionRunnerServiceServer
+
+	log logging.Logger
+}
+
+// RunFunction runs the Function.
+func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
+	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
+	rsp := response.To(req, response.DefaultTTL)
+
+	observedComposite, err := request.GetObservedCompositeResource(req)
+	if err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot get xr"))
+		return rsp, nil
+	}
+
+	observedComposed, err := request.GetObservedComposedResources(req)
+	if err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot get observed resources"))
+		return rsp, nil
+	}
+
+	var xr v1alpha1.XStorageBucket
+	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
+		return rsp, nil
+	}
+
+	params := xr.Spec.Parameters
+	if params.Region == nil || *params.Region == "" {
+		response.Fatal(rsp, errors.Wrap(err, "missing region"))
+		return rsp, nil
+	}
+
+	// We'll collect our desired composed resources into this map, then convert
+	// them to the SDK's types and set them in the response when we return.
+	desiredComposed := make(map[resource.Name]any)
+	defer func() {
+		desiredComposedResources, err := request.GetDesiredComposedResources(req)
+		if err != nil {
+			response.Fatal(rsp, errors.Wrap(err, "cannot get desired resources"))
+			return
+		}
+
+		for name, obj := range desiredComposed {
+			c := composed.New()
+			if err := convertViaJSON(c, obj); err != nil {
+				response.Fatal(rsp, errors.Wrapf(err, "cannot convert %s to unstructured", name))
+				return
+			}
+			desiredComposedResources[name] = &resource.DesiredComposed{Resource: c}
+		}
+
+		if err := response.SetDesiredComposedResources(rsp, desiredComposedResources); err != nil {
+			response.Fatal(rsp, errors.Wrap(err, "cannot set desired resources"))
+			return
+		}
+	}()
+
+	bucket := &v1beta1.Bucket{
+		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+		Kind:       ptr.To("Bucket"),
+		Spec: &v1beta1.BucketSpec{
+			ForProvider: &v1beta1.BucketSpecForProvider{
+				Region: params.Region,
+			},
+		},
+	}
+	desiredComposed["bucket"] = bucket
+
+	// Return early if Crossplane hasn't observed the bucket yet. This means it
+	// hasn't been created yet. This function will be called again after it is.
+	observedBucket, ok := observedComposed["bucket"]
+	if !ok {
+		response.Normal(rsp, "waiting for bucket to be created").TargetCompositeAndClaim()
+		return rsp, nil
+	}
+
+	// The desired ACL, encryption, and versioning resources all need to refer
+	// to the bucket by its external name, which is stored in its external name
+	// annotation. Return early if the Bucket's external-name annotation isn't
+	// set yet.
+	bucketExternalName := observedBucket.Resource.GetAnnotations()["crossplane.io/external-name"]
+	if bucketExternalName == "" {
+		response.Normal(rsp, "waiting for bucket to be created").TargetCompositeAndClaim()
+		return rsp, nil
+	}
+
+	acl := &v1beta1.BucketACL{
+		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+		Kind:       ptr.To("BucketACL"),
+		Spec: &v1beta1.BucketACLSpec{
+			ForProvider: &v1beta1.BucketACLSpecForProvider{
+				Bucket: &bucketExternalName,
+				Region: params.Region,
+				ACL:    params.ACL,
+			},
+		},
+	}
+	desiredComposed["acl"] = acl
+
+	boc := &v1beta1.BucketOwnershipControls{
+		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+		Kind:       ptr.To("BucketOwnershipControls"),
+		Spec: &v1beta1.BucketOwnershipControlsSpec{
+			ForProvider: &v1beta1.BucketOwnershipControlsSpecForProvider{
+				Bucket: &bucketExternalName,
+				Region: params.Region,
+				Rule: &[]v1beta1.BucketOwnershipControlsSpecForProviderRule{{
+					ObjectOwnership: ptr.To("BucketOwnerPreferred"),
+				}},
+			},
+		},
+	}
+	desiredComposed["boc"] = boc
+
+	pab := &v1beta1.BucketPublicAccessBlock{
+		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+		Kind:       ptr.To("BucketPublicAccessBlock"),
+		Spec: &v1beta1.BucketPublicAccessBlockSpec{
+			ForProvider: &v1beta1.BucketPublicAccessBlockSpecForProvider{
+				Bucket:                &bucketExternalName,
+				Region:                params.Region,
+				BlockPublicAcls:       ptr.To(false),
+				RestrictPublicBuckets: ptr.To(false),
+				IgnorePublicAcls:      ptr.To(false),
+				BlockPublicPolicy:     ptr.To(false),
+			},
+		},
+	}
+	desiredComposed["pab"] = pab
+
+	sse := &v1beta1.BucketServerSideEncryptionConfiguration{
+		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+		Kind:       ptr.To("BucketServerSideEncryptionConfiguration"),
+		Spec: &v1beta1.BucketServerSideEncryptionConfigurationSpec{
+			ForProvider: &v1beta1.BucketServerSideEncryptionConfigurationSpecForProvider{
+				Bucket: &bucketExternalName,
+				Region: params.Region,
+				Rule: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRule{{
+					ApplyServerSideEncryptionByDefault: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRuleApplyServerSideEncryptionByDefault{{
+						SseAlgorithm: ptr.To("AES256"),
+					}},
+					BucketKeyEnabled: ptr.To(true),
+				}},
+			},
+		},
+	}
+	desiredComposed["sse"] = sse
+
+	if params.Versioning != nil && *params.Versioning {
+		versioning := &v1beta1.BucketVersioning{
+			APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+			Kind:       ptr.To("BucketVersioning"),
+			Spec: &v1beta1.BucketVersioningSpec{
+				ForProvider: &v1beta1.BucketVersioningSpecForProvider{
+					Bucket: &bucketExternalName,
+					Region: params.Region,
+					VersioningConfiguration: &[]v1beta1.BucketVersioningSpecForProviderVersioningConfiguration{{
+						Status: ptr.To("Enabled"),
+					}},
+				},
+			},
+		}
+		desiredComposed["versioning"] = versioning
+	}
+
+	return rsp, nil
+}
+
+func convertViaJSON(to, from any) error {
+	bs, err := json.Marshal(from)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(bs, to)
+}
 ```
 
 {{< /tab >}}
@@ -721,6 +932,13 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 ```
 
 {{< /tab >}}
+
+{{< tab "Go" >}}
+
+Coming soon: a Go example for Azure is not yet available.
+
+{{< /tab >}}
+
 {{< /tabs >}}
 
 
@@ -844,6 +1062,12 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 {{< /tab >}}
 
+{{< tab "Go" >}}
+
+Coming soon: a Go example for GCP is not yet available.
+
+{{< /tab >}}
+
 {{< /tabs >}}
 
 <!-- /GCP -->
@@ -853,12 +1077,13 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 When you create a function, the `up` CLI automatically adds import statements to
 bring the schemas into your functions.
 
-VSCode extensions for KCL and Python infer the schemas and bring you more
+VSCode extensions for KCL, Python, and Go infer the schemas and bring you more
 authoring capabilities like autocompletion, linting for type mismatches, missing
 variables and more.
 
-With KCL or Python, you authored composite resources that you defined in the XRD
-and wrote custom logic to generate server-side encryption on your bucket.
+With KCL, Python, or Go, you authored composite resources that you defined in
+the XRD and wrote custom logic to generate server-side encryption on your
+bucket.
 
 Next, run and test your composition.
 
