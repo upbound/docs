@@ -1,0 +1,5 @@
+description: |-
+    State defines the state for crossplane and provider workloads. We support
+    the following states where 'Running' is the default:
+    - Running: Starts/Scales up all crossplane and provider workloads in the ControlPlane
+    - Paused: Pauses/Scales down all crossplane and provider workloads in the ControlPlane
