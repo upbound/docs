@@ -9,6 +9,37 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.38.0
+
+Released March 4th, 2025
+
+### What's Changed
+
+- Go is now a supported language for embedded functions in projects.
+- New `up test` commands introduced to allow for automated testing of
+  compositions, including those that use embedded functions. Test cases can be
+  written in YAML, Python, or KCL.
+- Embedded KCL functions now use KCL v0.11.2.
+- Commands that interact with private repositories in the Upbound Marketplace no
+  longer require `docker-credential-up` to be configured.
+- Bug fixes and UX improvements.
+
+### Breaking Changes
+
+- The short alias `-d` for the `--cache-dir` flag in various commands has been
+  removed.
+
+## v0.37.1
+
+Released February 13th, 2025
+
+### What's Changed
+
+- Improve performance and silence unnecessary warning messages in `up
+  composition render`.
+- Ensure the `--project-file` flag works consistently across project commands.
+- Minor bug fixes.
+
 ## v0.37.0
 
 Released January 30th, 2025
