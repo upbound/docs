@@ -21,43 +21,198 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 {{< /hint >}}
 
-Upbound's _Shared Secrets_ is a built-in secrets management feature that lets you store sensitive data such as passwords and certificates used by managed control planes as secrets in an external secret store. This guide explains how you can use Shared Secrets to access secrets stored in your external store and project them into managed control planes.
+Upbound's _Shared Secrets_ is a built in secrets management feature that
+provides an integrated way to manage secrets across your platform. It allows you
+to store sensitive data like passwords and certificates for your managed control
+planes as secrets in an external secret store.
 
-The Shared Secrets feature derives from the open source [External Secrets Operator (ESO)](https://external-secrets.io). Upbound offers:
-
-1. `SharedSecretStore` and `SharedExternalSecret` APIs to manage syncing external secrets into groups of managed control planes.
-2. Each managed control plane has built-in support for External Secrets Operator (ESO) APIs.
+This feature is a wrapper around the [External Secrets Operator(ESO)](https://external-secrets.io) that pulls secrets from external vaults and distributes them across your platform.
 
 ## Benefits
 
-The Shared Secrets feature provides the following benefits:
+The Shared Secrets feature allows you to:
 
-* Access secrets from a variety of external secret stores without any operational overhead
+* Access secrets from a variety of external secret stores without operation overhead
 * Configure synchronization for multiple managed control planes in a group
 * Store and manage all your secrets centrally
-* Use Shared Secrets across all Upbound environments (Cloud and Disconnected Spaces)
+* Use Shared Secrets across all Upbound environments(Cloud and Disconnected Spaces)
+* Synchronize secrets across groups of control planes while maintaining clear security boundaries
+* Manage secrets at scale programmatically while ensuring proper isolation and access control
+
+## Understanding the Architecture
+
+The Shared Secrets feature uses a hierarchical approach to centrally manage
+secrets and effectively control their distribution.
+
+1. The flow begins at the group level, where you define your secret sources and distribution rules
+2. These rules automatically create corresponding resources in your control planes
+3. In each control plane, specific namespaces receive the secrets
+4. Changes at the group level automatically propagate through this chain
 
 ## Prerequisites
 
 Make sure you've enabled the Shared Secrets feature in whichever Space you plan to run your managed control plane in. All Upbound-managed Cloud Spaces have this feature enabled by default. If you want to use these APIs in your own Connected Space, your Space administrator must enable them with the `features.alpha.sharedSecrets.enabled=true` setting.
 
+```bash
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+```
+
+## Component Overview
+
+Upbound Shared Secrets consists of two components:
+
+1. **SharedSecretStore**: Defines connections to external secret providers
+2. **SharedExternalSecret**: Specifies which secrets to synchronize and where
+
+
 <!-- vale Google.Headings = NO -->
-## Configure a Shared Secret Store
+### Connect to an External Vault
 <!-- vale Google.Headings = YES -->
 
-[SharedSecretStore](https://docs.upbound.io/reference/space-api/#SharedSecretStore-spec) is a [group-scoped]({{<ref "operate/groups" >}}) resource that you create in a group containing one or more managed control planes. It provisions [ClusterSecretStore](https://external-secrets.io/latest/api/clustersecretstore/) resources into control planes within its group.
+The `SharedSecretStore` component is the connection point to your external
+secret vaults. It provisions ClusterSecretStore resources into control planes
+within the group.
 
-### Secret store provider
+In this example, you'll create a `SharedSecretStore` that will connect to an AWS
+Secrets Manager in `us-west-2`, apply access to all control planes labeled with
+`environment: production`, and make these secrets available in the `default` and
+`crossplane-system` namespaces.
 
-The `spec.provider` field configures the provider of the external secret store to sync secrets from. Only one provider is settable. See the [Space API reference](https://docs.upbound.io/reference/space-api/#SharedSecretStore-spec-provider) for supported providers.
+You can configure access to AWS Secrets Manager using static credentials or
+workload identity.
 
-#### AWS Secrets Manager
+#### Static Credentials
 
-{{< hint "important" >}}
-While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
-{{< /hint >}}
+First, use the AWS CLI to create access credentials:
 
-Example configuration:
+
+1. First, create your access credentials.
+
+<!--- TODO(tr0njavolta): code --->
+
+2. Next,store the access credentials in a secret in the namespace you want to have access to the `SharedSecretStore`.
+
+<!--- TODO(tr0njavolta): code --->
+
+3. Create a `SharedSecretStore` custom resource file called `secretstore.yaml`.
+   Paste the following configuration:
+
+<!--- TODO(tr0njavolta): code --->
+
+#### Workload Identity with IRSA
+
+You can also use AWS IAM Roles for Service Accounts (IRSA) depending on your
+organizations needs:
+
+1. Ensure you have deployed the Spaces softwre into an IRSA-enabled EKS cluster.
+2. Follow the AWS instructions to create an IAM OIDC provider with your EKS OIDC
+   provider URL.
+3. Determine the Spaces-generated `controlPlaneID` of your control plane:
+
+<!--- TODO(tr0njavolta): code --->
+
+4. Create an IAM trust policy in your AWS account to match the control plane.
+<!--- TODO(tr0njavolta): code--->
+
+5. Update your Spaces deployment to annotate the SharedSecrets service account
+   with the role ARN.
+
+6. Create a SharedSecretStore and reference the SharedSecrets service account:
+<!--- TODO(tr0njavolta): code--->
+
+
+
+When you create a `SharedSecretStore` the underlying mechanism:
+
+1. Applies at the group level
+2. Determines which control planes should receive this configuration by the `controlPlaneSelector`
+3. Automatically creates a ClusterSecretStore inside each identified control plane
+4. Maintains a connection in each control plane with the ClusterSecretStore
+   credentials and configuration from the parent SharedSecretStore
+
+Upbound automatically generates a ClusterSecretStore in each matching control
+plane when you create a SharedSecretStore.
+
+<!--- TODO(tr0njavolta): nocopy --->
+```
+# Automatically created in each matching control plane
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: aws-secrets  # Name matches the parent SharedSecretStore
+spec:
+  provider:
+   upboundspaces:
+      storeRef:
+        name: aws-secret
+```
+
+
+
+When you create the SharedSecretStore controller, it replaces the provider with
+a special provider called `upboundspaces`. This provider references the
+SharedSecretStore object in the Spaces API. This avoids copying the actual cloud
+credentials from Spaces to each control plane.
+
+This workflow allows you to configure the store connection only once at the
+group level and automatically progates to each control plane. Individual control
+planes can use the store without exposure to the group-level configuration and
+updates all child ClusterSecretStores when updated.
+
+### Manage your secret distribution
+
+Once you create your SharedSecretStore, you can define which secrets should be
+distributed using SharedExternalSecret:
+
+<!--- TODO(tr0njavolta): code --->
+
+This configuration:
+
+* Pulls database credentials from your external secret provider
+* Creates secrets in all production control planes
+* Refeshes the secrets every hour
+* Creates a secret called `db-credentials` in each control plane
+
+When you create a SharedExternalSecret at the group level, Upbound's system
+creates a template for the corresponding ClusterExternalSecrets in each selected
+control plane. 
+
+The heirarchy in this configuration is:
+
+1. SharedExternalSecret (group leve) defines what secrets to distribute
+2. ClusterExternalSecret (control plane level) manages the distribution within
+   each control plane
+3. Kubernetes Secrets (namespace level) are created in specified namespaces
+
+## Best Practies
+
+When you implement secrets management in your Upbound environment, keep the
+following best practices in mind:
+
+**Use consistent labeling schemes** across your control planes for predictable
+and manageble secret distribution.
+
+**Organize your secrets** in your external provider using a hierarchical
+structure that mirrors your control plane organization.
+
+**Set appropriate refresh intervals** based on your security requries and the
+nature of the secrets.
+
+**Use namespace selection carefully** to limit secret distribution to only the
+namespaces that need them.
+
+**Use separate tokens for different environments** and reference them in
+distinct SharedSecretStores. Since MCPs don't restrict native ESO resource
+creation, users could directly create a ClusterExternalSecret, potentially
+gaining access to all secrets available to that token while bypassing the
+SharedExternalSecret resource and its selectors.
+
+**Document your secret management architecture**, including which control planes
+should receive which secrets.
+
+### AWS Secrets Manager
+
+
 
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
@@ -268,98 +423,6 @@ spec:
 ```
 
 Use `spec.controlPlaneSelector` and `spec.namespaceSelector` to configure which control planes and namespaces to project the external secret into, same as for Shared Secret Stores.
-
-## Usage example
-
-This example uses a fake secret store provider to walk you through enabling secrets management.
-
-1. Create two managed control planes in the default group and label them:
-
-```bash
-up ctp create ctp1
-up ctp create ctp2
-
-kubectl label controlplane ctp1 label=foo
-kubectl label controlplane ctp2 label=bar
-```
-
-2. Create a Shared Secret Store using the [fake provider](https://external-secrets.io/latest/provider/fake/):
-
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1alpha1
-kind: SharedSecretStore
-metadata:
-  name: fake-store
-  namespace: default
-spec:
-  controlPlaneSelector:
-    labelSelectors:
-      - matchLabels:
-          org: foo
-  namespaceSelector:
-    names:
-      - default
-  provider:
-    fake:
-      data:
-        - key: "/foo/bar"
-          value: "HELLO1"
-          version: "v1"
-        - key: "/foo/bar"
-          value: "HELLO2"
-          version: "v2"
-        - key: "/foo/baz"
-          value: '{"john": "doe"}'
-          version: "v1"
-EOF
-```
-
-3. Create a Shared External Secret:
-
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: spaces.upbound.io/v1alpha1
-kind: SharedExternalSecret
-metadata:
-  name: fake-secret
-  namespace: default
-spec:
-  controlPlaneSelector:
-    labelSelectors:
-      - matchLabels:
-          org: foo
-  namespaceSelector:
-    names:
-      - default
-  externalSecretSpec:
-    refreshInterval: 1h
-    secretStoreRef:
-      name: fake-store
-      kind: ClusterSecretStore
-    data:
-      - secretKey: "foo"
-        remoteRef:
-          key: "/foo/bar"
-          version: "v1"
-EOF
-```
-
-<!-- vale off -->
-4. Verify the secret is projected in both control planes:
-<!-- vale on -->
-
-```bash
-up ctx ./ctp1
-kubectl get secret fake-secret
-kubectl get clustersecretstore
-kubectl get clusterexternalsecret
-
-up ctx ../ctp2
-kubectl get secret fake-secret
-kubectl get clustersecretstore
-kubectl get clusterexternalsecret
-```
 
 ## Configure secrets directly in a control plane
 
