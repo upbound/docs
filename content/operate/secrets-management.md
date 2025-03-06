@@ -726,13 +726,13 @@ The above explains using group-scoped resources to project secrets into multiple
 
 See the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/) for a full guide on using the API types.
 
-## Best Practies
+## Best Practices
 
 When you implement secrets management in your Upbound environment, keep the
 following best practices in mind:
 
 **Use consistent labeling schemes** across your control planes for predictable
-and managaeble secret distribution.
+and managable secret distribution.
 
 **Organize your secrets** in your external provider using a hierarchical
 structure that mirrors your control plane organization.
