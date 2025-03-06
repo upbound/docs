@@ -124,7 +124,7 @@ kubectl create secret \
 4. Create a `SharedSecretStore` custom resource file called `secretstore.yaml`.
    Paste the following configuration:
 {{< editCode >}}
-   ```yaml
+```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
 metadata:
