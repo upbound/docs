@@ -96,11 +96,11 @@ While the underlying ESO API supports more auth methods, static credentials are 
 
 ##### Static credentials
 
-1. Use the AWS CLI to create access credentials:
+1. Use the AWS CLI to create access credentials.
 
 
-2.Create your access credentials.
-
+2. Create your access credentials.
+{{< editCode >}}
 ```ini
 # Create a text file with AWS credentials
 cat > aws-credentials.txt << EOF
@@ -109,20 +109,22 @@ aws_access_key_id = <YOUR_ACCESS_KEY_HERE>
 aws_secret_access_key = <YOUR_SECRET_ACCESS_KEY_HERE>
 EOF
 ```
+{{< /editCode >}}
 
 3. Next,store the access credentials in a secret in the namespace you want to have access to the `SharedSecretStore`.
-
+{{< editCode >}}
 ```shell
 kubectl create secret \
   generic aws-credentials \
   -n default \
   --from-file=creds=./aws-credentials.txt
 ```
+{{< /editCode >}}
 
 4. Create a `SharedSecretStore` custom resource file called `secretstore.yaml`.
    Paste the following configuration:
-
-```yaml
+{{< editCode >}}
+   ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
 metadata:
@@ -154,6 +156,7 @@ spec:
             name: aws-credentials
             key: secret-access-key
 ```
+{{</ editCode >}}
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale Google.Headings = NO -->
 ##### Workload Identity with IRSA
@@ -167,13 +170,14 @@ organizations needs:
 2. Follow the AWS instructions to create an IAM OIDC provider with your EKS OIDC
    provider URL.
 3. Determine the Spaces-generated `controlPlaneID` of your control plane:
-
+{{< editCode >}}
 ```shell
 kubectl get controlplane <control-plane-name> -o jsonpath='{.status.controlPlaneID}'
 ```
+{{< /editCode >}}
 
 4. Create an IAM trust policy in your AWS account to match the control plane.
-
+{{< editCode >}}
 ```yaml
 {
   "Version": "2012-10-17",
@@ -195,18 +199,20 @@ kubectl get controlplane <control-plane-name> -o jsonpath='{.status.controlPlane
   ]
 }
 ```
+{{< /editCode >}}
 
 5. Update your Spaces deployment to annotate the SharedSecrets service account
    with the role ARN.
-
+{{< editCode >}}
 ```shell
 up space upgrade ... \
   --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."eks\.amazonaws\.com/role-arn"="$@<SPACES_ESO_IAM_ROLE_ARN>$@"
 ```
+{{< /editCode >}}
 
 6. Create a SharedSecretStore and reference the SharedSecrets service account:
-
-```yaml
+{{< editCode >}}
+```ini {copy-lines="all"}
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
 metadata:
@@ -228,6 +234,7 @@ spec:
     names:
     - default
 ```
+{{< /editCode >}}
 
 When you create a `SharedSecretStore` the underlying mechanism:
 
@@ -240,8 +247,7 @@ When you create a `SharedSecretStore` the underlying mechanism:
 Upbound automatically generates a ClusterSecretStore in each matching control
 plane when you create a SharedSecretStore.
 
-<!--- TODO(tr0njavolta): nocopy --->
-```yaml
+```yaml {copy-lines="none"}
 # Automatically created in each matching control plane
 apiVersion: external-secrets.io/v1beta1
 kind: ClusterSecretStore
@@ -276,7 +282,7 @@ While the underlying ESO API supports more auth methods, static credentials are 
 
 1. Use the Azure CLI to create a service principal and authentication file.
 2. Create a service principal and save credentials in a file:
-
+{{< editCode >}}
 ```json
 {
   "appId": "myAppId",
@@ -285,18 +291,20 @@ While the underlying ESO API supports more auth methods, static credentials are 
   "tenant": "myTentantId"
 }
 ```
+{{< /editCode >}}
 
 3. Store the credentials as a Kubernetes secret:
-
+{{< editCode >}}
 ```shell
 kubectl create secret \
   generic azure-secret-sp \
   -n default \
   --from-file=creds=./azure-credentials.json
 ```
+{{< /editCode >}}
 
 4. Create a SharedSecretStore referencing these credentials:
-
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -321,6 +329,7 @@ spec:
     names:
     - default
 ```
+{{< /editCode >}}
 <!-- vale Google.Headings = NO -->
 ##### Workload Identity
 <!-- vale Google.Headings = YES -->
@@ -409,7 +418,7 @@ You must manually restart a workload's pod when you add the annotation to the ru
 
 8. Create a `SharedSecretStore`. Replace `vaultURL` with the URL of your Azure Key Vault instance. Replace `identityId` with the client ID of the managed identity created earlier:
 {{< editCode >}}
-```yaml
+```yaml {copy-lines="all"}
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
 metadata:
@@ -497,6 +506,7 @@ account.
 kubectl get controlplane $@<control-plane-name>$@ -o jsonpath='{.status.controlPlaneID}'
 ```
 {{< /editCode >}}
+
 3. Create a GCP IAM service account with the [GCP CLI](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity#kubernetes-sa-to-iam):
 {{< editCode >}}
 ```ini
@@ -528,7 +538,7 @@ gcloud projects add-iam-policy-binding projects/${PROJECT_ID} \
 ```
 {{< /editCode >}}
 
-5. Update your Spaces deployment to annotate the SharedSecrets service account with GCP IAM service account's identifier:
+6. Update your Spaces deployment to annotate the SharedSecrets service account with GCP IAM service account's identifier:
 {{< editCode >}}
 ```ini
 up space upgrade ... \
@@ -536,7 +546,7 @@ up space upgrade ... \
 ```
 {{< /editCode >}}
 
-6. Create a `SharedSecretStore`. Replace `projectID` with your GCP Project ID:
+7. Create a `SharedSecretStore`. Replace `projectID` with your GCP Project ID:
 {{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
