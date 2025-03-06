@@ -44,6 +44,8 @@ The Shared Secrets feature allows you to:
 The Shared Secrets feature uses a hierarchical approach to centrally manage
 secrets and effectively control their distribution.
 
+{{<img src="operate/images/shared-secrets-workflow.png" alt="Shared Secrets workflow diagram" align="center" size="medium" unBlur="true" >}}
+
 1. The flow begins at the group level, where you define your secret sources and distribution rules
 2. These rules automatically create corresponding resources in your control planes
 3. In each control plane, specific namespaces receive the secrets
