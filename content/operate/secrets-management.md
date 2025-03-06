@@ -79,10 +79,12 @@ within the group.
 #### AWS Secrets Manager
 <!-- vale Google.Headings = YES -->
 
+<!-- vale gitlabFutureTense = YES -->
 In this example, you'll create a `SharedSecretStore` to connect to AWS
-Secrets Manager in `us-west-2`, apply access to all control planes labeled with
+Secrets Manager in `us-west-2`. Then apply access to all control planes labeled with
 `environment: production`, and make these secrets available in the `default` and
 `crossplane-system` namespaces.
+<!-- vale gitlabFutureTense = NO -->
 
 You can configure access to AWS Secrets Manager using static credentials or
 workload identity.
@@ -152,14 +154,16 @@ spec:
             name: aws-credentials
             key: secret-access-key
 ```
-
-
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- vale Google.Headings = NO -->
 ##### Workload Identity with IRSA
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 You can also use AWS IAM Roles for Service Accounts (IRSA) depending on your
 organizations needs:
 
-1. Ensure you have deployed the Spaces softwre into an IRSA-enabled EKS cluster.
+1. Ensure you have deployed the Spaces software into an IRSA-enabled EKS cluster.
 2. Follow the AWS instructions to create an IAM OIDC provider with your EKS OIDC
    provider URL.
 3. Determine the Spaces-generated `controlPlaneID` of your control plane:
@@ -317,12 +321,14 @@ spec:
     names:
     - default
 ```
+<!-- vale Google.Headings = NO -->
 ##### Workload Identity
+<!-- vale Google.Headings = YES -->
 
 You can also use Entra Workload Identity Federation to access Azure Key Vault
 without needing to manage secrets. 
 
-To use Entra Worklaod ID with AKS:
+To use Entra Workload ID with AKS:
 
 
 1. Deploy the Spaces software into a [workload identity-enabled AKS cluster](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster).
@@ -476,9 +482,13 @@ spec:
 The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection]({{<ref "#control-plane-selection" >}}) amd [namespace selection]({{<ref "#namespace-selection" >}}) to learn how to map into one or more namespaces of one or more control planes.
 {{< /hint >}}
 
+<!-- vale Google.Headings = NO -->
 ##### Workload identity with Service Accounts to IAM Roles
+<!-- vale Google.Headings = YES -->
 
-To configure this method, you must know the control plane namespace so that you can grant the `roles/iam.workloadIdentityUser` role to the Kubernetes service account to impersonate the IAM service account. Follow these instructions:
+To configure, grant the `roles/iam.workloadIdentityUser` role to the Kubernetes
+service account in the control plane namespace to impersonate the IAM service
+account.
 
 1. Ensure you've deployed Spaces on a [Workload Identity Federation-enabled](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity#enable_on_clusters_and_node_pools) GKE cluster.
 2. Determine the Spaces-generated `controlPlaneID` of your control plane. When you deploy a `kind: controlplane` in a Space, the Spaces software deploys a set of pods in a new namespace following the format `mxp-<controlPlaneID>-system`.
@@ -728,13 +738,13 @@ The above explains using group-scoped resources to project secrets into multiple
 
 See the [ESO documentation](https://external-secrets.io/latest/introduction/getting-started/) for a full guide on using the API types.
 
-## Best Practices
+## Best practices
 
-When you implement secrets management in your Upbound environment, keep the
+When you configure secrets management in your Upbound environment, keep the
 following best practices in mind:
 
 **Use consistent labeling schemes** across your control planes for predictable
-and managable secret distribution.
+and manageable secret distribution.
 
 **Organize your secrets** in your external provider using a hierarchical
 structure that mirrors your control plane organization.
@@ -742,14 +752,13 @@ structure that mirrors your control plane organization.
 **Set appropriate refresh intervals** based on your security requires and the
 nature of the secrets.
 
-**Use namespace selection carefully** to limit secret distribution to only the
+**Use namespace selection sparingly** to limit secret distribution to only the
 namespaces that need them.
 
-**Use separate tokens for different environments** and reference them in
-distinct SharedSecretStores. Since MCPs don't restrict native ESO resource
-creation, users could directly create a ClusterExternalSecret, potentially
-gaining access to all secrets available to that token while bypassing the
-SharedExternalSecret resource and its selectors.
+**Use separate tokens for each environment.** Keep them in distinct
+SharedSecretStores. Users could bypass SharedExternalSecret selectors by
+creating ClusterExternalSecrets directly in MCPs. This grants access to all
+secrets available to that token.
 
 **Document your secret management architecture**, including which control planes
 should receive which secrets.
