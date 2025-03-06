@@ -41,6 +41,14 @@ Find the full list of versions in the <a href="https://cli.upbound.io/stable?pre
 
 {{< /tab >}}
 
+{{< tab "Windows" >}}
+Upbound provides a Windows executable. 
+
+```shell
+curl -sLo up.exe "https://cli.upbound.io/stable/${VERSION}/bin/windows_amd64/up.exe"
+```
+{{< /tab >}}
+
 {{< tab "Homebrew" >}}
 [Homebrew](https://brew.sh/) is a package manager for Linux and Mac OS.  
 
