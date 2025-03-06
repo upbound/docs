@@ -16,7 +16,7 @@ Crossplane supports these package types: `Configurations`, `Functions` and `Prov
 
 ## Prerequisites
 
-* Building and pushing packages require the `crossplane` cli.
+* Building and pushing packages require the `crossplane` CLI.
 * Pushing packages requires an [Upbound account]({{<ref "operate/accounts/identity-management/users.md#create-an-account">}}).
 
 ## Build a package
@@ -35,7 +35,7 @@ Provide a specific package name with `crossplane xpkg build --name <package name
 
 By default `crossplane xpkg build` saves the package to the current directory. Specify a specific location with `crossplane xpkg build -o <path>`.
 
-The [`crossplane xpkg build` command reference]({{<ref "reference/cli/command-reference#xpkg-build" >}}) contains all available options.
+The [`crossplane xpkg build` command reference](https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build) contains all available options.
 
 ## Push a package
 Before pushing a package you must [login]({{<ref "/upbound-marketplace/authentication">}}) to the Upbound Marketplace using `docker login`.
