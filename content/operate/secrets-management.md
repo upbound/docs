@@ -79,12 +79,12 @@ within the group.
 #### AWS Secrets Manager
 <!-- vale Google.Headings = YES -->
 
-<!-- vale gitlabFutureTense = YES -->
+<!-- vale gitlab.FutureTense = YES -->
 In this example, you'll create a `SharedSecretStore` to connect to AWS
 Secrets Manager in `us-west-2`. Then apply access to all control planes labeled with
 `environment: production`, and make these secrets available in the `default` and
 `crossplane-system` namespaces.
-<!-- vale gitlabFutureTense = NO -->
+<!-- vale gitlab.FutureTense = NO -->
 
 You can configure access to AWS Secrets Manager using static credentials or
 workload identity.

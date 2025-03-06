@@ -16,7 +16,7 @@ Crossplane supports these package types: `Configurations`, `Functions` and `Prov
 
 ## Prerequisites
 
-* Building and pushing packages require the `crossplane` cli.
+* Building and pushing packages require the `crossplane` CLI.
 * Pushing packages requires an [Upbound account]({{<ref "operate/accounts/identity-management/users.md#create-an-account">}}).
 
 ## Build a package
