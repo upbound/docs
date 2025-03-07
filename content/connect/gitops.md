@@ -57,18 +57,11 @@ controller:
 
   initContainers:
     - name: up-plugin
-      command:
-        - sh
-        - -c
+      image: xpkg.upbound.io/upbound/up-cli:v0.39.0-0.rc.0.102.g3f384b68
+      command: ["cp"]
       args:
-        - wget -qO /plugin/up https://cli.upbound.io/stable/current/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
-
-      image: alpine:3.8
-      env:
-        - name: ARCH
-          value: arm64
-        - name: OS
-          value: linux
+        - /usr/local/bin/up
+        - /plugin/up
       volumeMounts:
         - name: up-plugin
           mountPath: /plugin
@@ -89,17 +82,11 @@ server:
 
   initContainers:
     - name: up-plugin
-      command:
-        - sh
-        - -c
+      image: xpkg.upbound.io/upbound/up-cli:v0.39.0-0.rc.0.102.g3f384b68
+      command: ["cp"]
       args:
-        - wget -qO /plugin/up https://cli.upbound.io/stable/current/bin/${OS}_${ARCH}/up && chmod +x /plugin/up
-      image: alpine:3.8
-      env:
-        - name: ARCH
-          value: arm64
-        - name: OS
-          value: linux
+        - /usr/local/bin/up
+        - /plugin/up
       volumeMounts:
         - name: up-plugin
           mountPath: /plugin
@@ -117,28 +104,23 @@ helm upgrade --install -n argocd -f up-plugin-values.yaml --reuse-values argocd 
 #### Configure Argo CD
 <!-- vale Google.Headings = YES -->
 
-To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace. Add {{<hover label="argocm" line="6">}}application.resourceTrackingMethod: annotation{{</hover>}} to the data section as below:
-
-```bash {label="argocm"}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-data:
-  application.resourceTrackingMethod: annotation
-```
-
+To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace.
+Add `application.resourceTrackingMethod: annotation` to the data section as below.
 This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
-Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller). By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane. You must configure Argo CD to respect cluster's RBAC rules so that Argo CD can sync. Add a {{<hover label="respectrbac" line="7">}}resource.respectRBAC{{</hover>}} to the data section as below.
+Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller).
+By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane.
+You must configure Argo CD to respect the cluster's RBAC rules so that Argo CD can sync.
+Add `resource.respectRBAC: normal` to the data section as below.
 
-```bash {label="respectrbac"}
+```bash
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-cm
 data:
   ...
+  application.resourceTrackingMethod: annotation
   resource.respectRBAC: normal
 ```
 
@@ -208,28 +190,23 @@ spec:
 #### Configure Argo CD
 <!-- vale Google.Headings = YES -->
 
-To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace. Add {{<hover label="argocm" line="6">}}application.resourceTrackingMethod: annotation{{</hover>}} to the data section as below:
-
-```bash {label="argocm"}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-data:
-  application.resourceTrackingMethod: annotation
-```
-
+To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace.
+Add `application.resourceTrackingMethod: annotation` to the data section as below.
 This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
-Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller). By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane. You must configure Argo CD to respect cluster's RBAC rules so that Argo CD can sync. Add a {{<hover label="argocm" line="7">}}resource.respectRBAC{{</hover>}} to the data section as below:
+Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller).
+By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane.
+You must configure Argo CD to respect the cluster's RBAC rules so that Argo CD can sync.
+Add `resource.respectRBAC: normal` to the data section as below.
 
-```bash {label="argocm"}
+```bash
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: argocd-cm
 data:
   ...
+  application.resourceTrackingMethod: annotation
   resource.respectRBAC: normal
 ```
 
