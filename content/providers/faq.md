@@ -58,4 +58,39 @@ We don't have plans to roll out policy changes for other package types right now
 
 Any package–whether a function, provider, etc.–whose source exists in upstream `crossplane-contrib` must comply with [Crossplane governance policies](https://github.com/crossplane/crossplane/blob/main/GOVERNANCE.md) and have public, free builds available for use by the community. That includes repos where Upbound is the maintainer.
 {{</expand >}}
+
+{{< expand "How do I migrate from Upbound Official Providers to the equivalent community provider?" >}}
+You can migrate from Upbound Official Providers to the community provider equivalent by following these instructions:
+
+1. Given a control plane that already has Official Providers installed on it, install the equivalent community family package with a manual revision activation policy. This is demonstrated below for provider-aws:
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: crossplane-contrib-provider-family-aws
+spec:
+  package: ghcr.io/crossplane-contrib/provider-family-aws:v1.20.1
+  revisionActivationPolicy: Manual
+```
+
+Doing the above puts your control plane into the following state:
+```yaml
+NAME                                     INSTALLED   HEALTHY   PACKAGE                                                  AGE
+crossplane-contrib-provider-family-aws   False       True      ghcr.io/crossplane-contrib/provider-family-aws:v1.20.1   3s
+provider-aws-s3                          True        True      xpkg.upbound.io/upbound/provider-aws-s3:v1.20.1          50s
+upbound-provider-family-aws              True        True      xpkg.upbound.io/upbound/provider-family-aws:v1.20.1      46s
+```
+
+2. Edit the `provider-aws-s3` package field to `ghcr.io/crossplane-contrib/provider-aws-s3:v1.20.1`.
+
+3. Delete the `upbound-provider-family-aws` provider.
+
+4. Edit the `crossplane-contrib-provider-family-aws` `revisionActivationPolicy` and set it to `Automatic`. This should then result in a successful migration:
+```yaml
+NAME                                     INSTALLED   HEALTHY   PACKAGE                                                  AGE
+crossplane-contrib-provider-family-aws   True        True      ghcr.io/crossplane-contrib/provider-family-aws:v1.20.1   2m50s
+provider-aws-s3                          True        True      ghcr.io/crossplane-contrib/provider-aws-s3:v1.20.1       3m37s 
+```
+
+{{</expand >}}
 <!-- vale on -->
