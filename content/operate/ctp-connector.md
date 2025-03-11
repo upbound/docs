@@ -40,7 +40,6 @@ Kubernetes API.
 
 {{< tabs >}}
 {{< tab "up CLI" >}}
-#### With the up CLI
 
 Log in with the up CLI:
 
@@ -133,7 +132,6 @@ you want to uninstall MCP connector from.
 
 {{< /tab >}}
 {{< tab "Helm" >}}
-#### With Helm
 
 The MCP Connector is also available as a Helm chart, available at
 `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
@@ -253,7 +251,16 @@ plane inside Upbound.
 kubectl apply -f claim.yaml
 ```
 
-{{<img src="deploy/spaces/images/ClaimInCluster.png" alt="Claim in cluster" size="small" lightbox="true">}}
+```bash {copy-lines="3"}
+# Applying the claim YAML above.
+# kubectl is set up to talk with your Kubernetes cluster.
+kubectl apply -f claim.yaml
+
+
+kubectl get claim -A
+NAME          SYNCED   READY   CONNECTION-SECRET       AGE
+my-cluster    True     True    my-cluster-kubeconfig   2m
+```
 
 Once Kubernetes creates the object, view the console to see your object.
 
