@@ -278,6 +278,194 @@ Once Kubernetes creates the object, view the console to see your object.
 You can interact with the object through your cluster just as if it
 lives in your cluster.
 
+### Migration to managed control planes
+
+This guide details the migration of a Crossplane installation to Upbound-managed
+control planes using the MCP Connector to manage claims on an application
+cluster.
+
+{{<img src="deploy/spaces/images/ConnectorMigration.png" alt="migration flow application cluster to managed control plane" unBlur="true" lightbox="true">}}
+
+#### Export all Resources
+
+Before proceeding, ensure that you have set the correct kubecontext for your application
+cluster.
+
+1. Export
+
+```bash
+up alpha migration export --pause-before-export --output=my-export.tar.gz --yes
+```
+
+This command performs the following:
+- Pauses all claim, composite, and managed resources before export.
+- Scans the control plane for resource types.
+- Exports Crossplane and native resources.
+- Archives the exported state into my-export.tar.gz.
+
+Example output:
+```bash
+Exporting control plane state...
+  ✓   Pausing all claim resources before export... 1 resources paused! ⏸️
+  ✓   Pausing all composite resources before export... 7 resources paused! ⏸️
+  ✓   Pausing all managed resources before export... 34 resources paused! ⏸️
+  ✓   Scanning control plane for types to export... 231 types found! 👀
+  ✓   Exporting 231 Crossplane resources...125 resources exported! 📤
+  ✓   Exporting 3 native resources...19 resources exported! 📤                                                                 ✓   Archiving exported state... archived to "my-export.tar.gz"! 📦
+
+Successfully exported control plane state!
+```
+
+#### Import all Resources
+
+The target managed control plane will be restored with the exported resources
+and will serve as the destination for the MCP Connector.
+
+2. Set Up the Managed Control Plane
+
+Ensure you are logged into Upbound and have the correct context:
+
+```bash
+up login
+up ctx
+up ctp create ctp-a
+```
+
+Output:
+```bash
+ctp-a created
+```
+
+Verify that the Crossplane version on both the application cluster and the new managed
+control plane matches the core Crossplane version.
+
+3. Import Resources
+
+Use the following command to import the resources:
+```bash
+up alpha migration import -i my-export.tar.gz \
+ --unpause-after-import \
+ --mcp-connector-cluster-id=my-appcluster \
+ --mcp-connector-claim-namespace=my-appcluster
+```
+
+This command:
+- Note: `--mcp-connector-cluster-id` needs to be uniq per application cluster
+- Note: `--mcp-connector-claim-namespace` the namespace will be created during the import
+- Restores base resources.
+- Waits for XRDs and packages to establish.
+- Imports Claims, XRs resources.
+- Finalizes the import and unpauses managed resources.
+
+Example output:
+```bash
+Importing control plane state...
+  ✓   Reading state from the archive... Done! 👀
+  ✓   Importing base resources... 56 resources imported!📥
+  ✓   Waiting for XRDs... Established! ⏳
+  ✓   Waiting for Packages... Installed and Healthy! ⏳
+  ✓   Importing remaining resources... 88 resources imported! 📥
+  ✓   Finalizing import... Done! 🎉
+  ✓   Unpausing managed resources ... Done! ▶️
+
+fully imported control plane state!
+```
+
+Verify Imported Claims
+
+All claims will be renamed and have additional labels.
+
+```bash
+kubectl get claim -A
+```
+
+Example output:
+```bash
+NAMESPACE       NAME                                                        SYNCED   READY   CONNECTION-SECRET             AGE
+my-appcluster   cluster.aws.platformref.upbound.io/claim-e708ff592b974f51   True     True    platform-ref-aws-kubeconfig   3m17s
+```
+
+Inspect the labels:
+```bash
+kubectl get -n my-appcluster   cluster.aws.platformref.upbound.io/claim-e708ff592b974f51  -o yaml | yq .metadata.labels
+```
+
+Example output:
+```bash
+mcp-connector.upbound.io/app-cluster: my-appcluster
+mcp-connector.upbound.io/app-namespace: default
+mcp-connector.upbound.io/app-resource-name: example
+```
+
+#### Cleanup App Cluster
+
+4. Remove all Crossplane-related resources from the application cluster, including:
+- Managed Resources
+- Claims
+- Compositions
+- XRDs
+- Packages (Functions, Configurations, Providers)
+- Crossplane and all associated CRDs
+
+#### Install MCP Connector
+
+5. Install MCP Connector
+
+Follow the installation guide in the documentation above, ensuring that
+`connector-values.yaml` is correctly configured:
+
+```yaml
+# NOTE: clusterID needs to match --mcp-connector-cluster-id used in the import on the managed control Plane
+clusterID: my-appcluster
+upbound:
+  account: <ORG_ACCOUNT>
+  token: <PERSONAL_ACCESS_TOKEN>
+
+spaces:
+  host: "<Upbound Space Region>"
+  insecureSkipTLSVerify: true
+  controlPlane:
+    name: <CONTROL_PLANE_NAME>
+    group: <CONTROL_PLANE_GROUP>
+    # NOTE: This is the --mcp-connector-claim-namespace used during the import to the managed control plane
+    claimNamespace: <NAMESPACE_TO_SYNC_TO>
+```
+
+Once the MCP Connector is successfully installed, verify that resources are
+available in the application cluster:
+
+```bash
+kubectl api-resources  | grep platform
+```
+
+Example output:
+```bash
+awslbcontrollers                                 aws.platform.upbound.io/v1alpha1       true         AWSLBController
+podidentities                                    aws.platform.upbound.io/v1alpha1       true         PodIdentity
+sqlinstances                                     aws.platform.upbound.io/v1alpha1       true         SQLInstance
+clusters                                         aws.platformref.upbound.io/v1alpha1    true         Cluster
+osss                                             observe.platform.upbound.io/v1alpha1   true         Oss
+apps                                             platform.upbound.io/v1alpha1           true         App
+```
+
+6. Restore claims in application cluster:
+
+The MCP Connector will restore claims from the managed control plane to the application cluster:
+
+```bash
+kubectl get claim -A
+```
+
+Example output:
+```bash
+NAMESPACE   NAME                                              SYNCED   READY   CONNECTION-SECRET             AGE
+default     cluster.aws.platformref.upbound.io/example        True     True    platform-ref-aws-kubeconfig   127m
+```
+
+By following these steps, you have successfully migrated your Crossplane
+installation to Upbound-managed control planes while ensuring seamless
+integration with your application cluster using the MCP Connector.
+
 ### Connect multiple app clusters to a managed control plane
 
 Claims are store in a unique namespace in the Upbound managed control plane.
