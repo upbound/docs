@@ -16,7 +16,7 @@ you define via CompositeResourceDefinitions (XRDs) in the MCP, are available in
 your app cluster alongside Kubernetes workload APIs like Pod. MCP Connector
 enables the same experience as a locally installed Crossplane.
 
-{{<img src="deploy/spaces/images/ConnectorFlow.png" alt="managed control plane connector operations flow" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/ConnectorFlow.png" alt="managed control plane connector operations flow" unBlur="true" lightbox="true" size="large">}}
 
 ### Managed control plane connector operations
 
@@ -284,7 +284,7 @@ This guide details the migration of a Crossplane installation to Upbound-managed
 control planes using the MCP Connector to manage claims on an application
 cluster.
 
-{{<img src="deploy/spaces/images/ConnectorMigration.png" alt="migration flow application cluster to managed control plane" unBlur="true" lightbox="true">}}
+{{<img src="deploy/spaces/images/ConnectorMigration.png" alt="migration flow application cluster to managed control plane" unBlur="true" lightbox="true" size="large">}}
 
 #### Export all Resources
 
