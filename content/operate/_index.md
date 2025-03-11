@@ -53,7 +53,7 @@ Think of a Space as being conceptually the same as an AWS, Azure, or GCP region.
 
 ### Create an MCP
 
-You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "reference/cli/command-reference#controlplane-create" >}}), or [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest).
+You can create a new managed control plane from the Upbound Console, [up CLI]({{<ref "reference/cli/command-reference#controlplane-create" >}}), or with Kubernetes clients such as `kubectl`.
 
 {{< tabs >}}
 
@@ -67,36 +67,31 @@ up ctp create <name-of-control-plane>
 To learn more about control plane-related commands in `up`, go to the [CLI reference]({{<ref "reference/cli/command-reference#controlplane-create" >}}) documentation.
 {{< /tab >}}
 
-{{< tab "provider-upbound" >}}
-You can declaratively create managed control planes in Upbound with provider-upbound. Provider-upbound is a Crossplane provider for interacting with the Upbound SaaS APIs. As with any Crossplane provider, you need to have:
+{{< tab "kubectl" >}}
+You can create and manage control planes declaratively in Upbound. Before you
+begin, ensure you're logged into Upbound and set the correct context:
 
-- installed the provider on a control plane. This can be a managed control plane or a control plane running outside of Upbound.
-- created a valid ProviderConfig
-
-Create a managed control plane by creating the following resource:
+```bash
+up login
+# Example: acmeco/upbound-gcp-us-west-1/default
+up ctx ${yourOrganization}/${yourSpace}/${yourGroup}
+````
 
 ```yaml
 #controlplane-a.yaml
-apiVersion: mcp.upbound.io/v1alpha1
+apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: controlplane-a
 spec:
-  forProvider:
-    configuration: your-config
-    description: controlplane-a
-    organizationName: your-organization
+  crossplane:
+    autoUpgrade:
+      channel: Rapid
 ```
-
-You need to specify your organization name and a valid configuration that you created prior in Upbound. Apply it to the management control plane where you installed provider-upbound:
 
 ```bash
 kubectl apply -f controlplane-a.yaml
 ```
-
-{{< hint "tip" >}}
-For more details on how to use provider-upbound, read the [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound/latest) page on the Marketplace.
-{{< /hint >}}
 
 {{< /tab >}}
 
@@ -158,7 +153,7 @@ up ctp configuration install xpkg.upbound.io/upbound/platform-ref-aws
 To install a Function:
 
 ```shell
-up ctp configuration install xpkg.upbound.io/crossplane-contrib/function-kcl
+up ctp function install xpkg.upbound.io/crossplane-contrib/function-kcl
 ```
 {{< /tab >}}
 {{< tab "kubectl" >}}
@@ -171,7 +166,7 @@ kind: Provider
 metadata:
   name: provider-family-aws
 spec:
-  package: xpkg.upbound.io/upbound/provider-family-aws:v1.17.0
+  package: xpkg.upbound.io/upbound/provider-family-aws:v1.20.0
 ```
 
 {{< /tab >}}
