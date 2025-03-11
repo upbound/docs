@@ -29,13 +29,13 @@ extension API server of MCP connector.
 The claim APIs are available in your Kubernetes cluster, just like all native
 Kubernetes APIs.
 
-Every request targeting the claim APIs goes through the MCP connector and the
-relevant requests are made to the connected MCP by MCP connector.
+The MCP connector processes every request targeting the claim APIs and makes the
+relevant requests to the connected MCP.
 
-The claims created in the app cluster are stored and processed solely at the
-connected MCP. No storage is used at the application cluster. The MCP connector
-provisions a target namespace at the MCP for the app cluster, and the claims are
-stored in the target namespace.
+Only the connected MCP stores and processes all claims created in the app
+cluster, eliminating any storage use at the application cluster. The MCP
+connector provisions a target namespace at the MCP for the app cluster and stores
+all claims in this target namespace.
 
 For managing the claims, the MCP Connector creates a unique identifier for a
 resource by combining input parameters from claims, including:
@@ -43,15 +43,18 @@ resource by combining input parameters from claims, including:
 - `metadata.namespace`
 - `your cluster name`
 
+<!-- vale alex.ProfanityUnlikely = NO -->
 It employs SHA-256 hashing to generate a hash value and then extracts the first
 16 characters of that hash. This ensures the resulting identifier remains within
 the 64-character limit in Kubernetes.
+<!-- vale alex.ProfanityUnlikely = YES -->
 
-For instance, if we have a claim named my-bucket in the test namespace within
-the cluster-dev cluster, we'll calculate the SHA-256 hash from
-`my-bucket-x-test-x-00000000-0000-0000-0000-000000000000` and take the initial 16
-characters. As a result, the name for the claim on the MCP control plane side
-will be `claim-c603e518969b413e`
+<!-- vale gitlab.SentenceLength = NO -->
+For instance, if a claim named `my-bucket` exists in the test namespace in
+`cluster-dev`, the system calculates the SHA-256 hash from
+`my-bucket-x-test-x-00000000-0000-0000-0000-000000000000` and takes the first 16
+characters. The MCP control plane side then names the claim `claim-c603e518969b413e`.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ### Installation
 
@@ -286,12 +289,10 @@ cluster.
 
 {{<img src="deploy/spaces/images/ConnectorMigration.png" alt="migration flow application cluster to managed control plane" unBlur="true" lightbox="true" size="large">}}
 
-#### Export all Resources
+#### Export all resources
 
 Before proceeding, ensure that you have set the correct kubecontext for your application
 cluster.
-
-1. Export
 
 ```bash
 up alpha migration export --pause-before-export --output=my-export.tar.gz --yes
@@ -301,7 +302,7 @@ This command performs the following:
 - Pauses all claim, composite, and managed resources before export.
 - Scans the control plane for resource types.
 - Exports Crossplane and native resources.
-- Archives the exported state into my-export.tar.gz.
+- Archives the exported state into `my-export.tar.gz`.
 
 Example output:
 ```bash
@@ -316,14 +317,13 @@ Exporting control plane state...
 Successfully exported control plane state!
 ```
 
-#### Import all Resources
+#### Import all resources
 
-The target managed control plane will be restored with the exported resources
-and will serve as the destination for the MCP Connector.
+The system restores the target managed control plane with the exported
+resources, which serves as the destination for the MCP connector.
 
-2. Set Up the Managed Control Plane
 
-Ensure you are logged into Upbound and have the correct context:
+Log into Upbound and select the correct context:
 
 ```bash
 up login
@@ -339,8 +339,6 @@ ctp-a created
 Verify that the Crossplane version on both the application cluster and the new managed
 control plane matches the core Crossplane version.
 
-3. Import Resources
-
 Use the following command to import the resources:
 ```bash
 up alpha migration import -i my-export.tar.gz \
@@ -350,12 +348,13 @@ up alpha migration import -i my-export.tar.gz \
 ```
 
 This command:
-- Note: `--mcp-connector-cluster-id` needs to be uniq per application cluster
-- Note: `--mcp-connector-claim-namespace` the namespace will be created during the import
-- Restores base resources.
-- Waits for XRDs and packages to establish.
-- Imports Claims, XRs resources.
-- Finalizes the import and unpauses managed resources.
+- Note: `--mcp-connector-cluster-id` needs to be unique per application cluster
+- Note: `--mcp-connector-claim-namespace` is the namespace the system creates
+    during the import
+- Restores base resources
+- Waits for XRDs and packages to establish
+- Imports Claims, XRs resources
+- Finalizes the import and resumes managed resources
 
 Example output:
 ```bash
@@ -373,8 +372,9 @@ fully imported control plane state!
 
 Verify Imported Claims
 
-All claims will be renamed and have additional labels.
-
+<!-- vale write-good.TooWordy = NO -->
+The MCP connector renames all claims and adds additional labels to them.
+<!-- vale write-good.TooWordy = YES -->
 ```bash
 kubectl get claim -A
 ```
@@ -397,9 +397,10 @@ mcp-connector.upbound.io/app-namespace: default
 mcp-connector.upbound.io/app-resource-name: example
 ```
 
-#### Cleanup App Cluster
+#### Cleanup the app cluster
 
-4. Remove all Crossplane-related resources from the application cluster, including:
+Remove all Crossplane-related resources from the application cluster, including:
+
 - Managed Resources
 - Claims
 - Compositions
@@ -407,12 +408,11 @@ mcp-connector.upbound.io/app-resource-name: example
 - Packages (Functions, Configurations, Providers)
 - Crossplane and all associated CRDs
 
+<!-- vale Google.Headings = NO -->
 #### Install MCP Connector
+<!-- vale Google.Headings = YES -->
 
-5. Install MCP Connector
-
-Follow the installation guide in the documentation above, ensuring that
-`connector-values.yaml` is correctly configured:
+Follow the preceding installation guide and configure the `connector-values.yaml`:
 
 ```yaml
 # NOTE: clusterID needs to match --mcp-connector-cluster-id used in the import on the managed control Plane
@@ -430,9 +430,8 @@ spaces:
     # NOTE: This is the --mcp-connector-claim-namespace used during the import to the managed control plane
     claimNamespace: <NAMESPACE_TO_SYNC_TO>
 ```
-
-Once the MCP Connector is successfully installed, verify that resources are
-available in the application cluster:
+Once the MCP Connector installs, verify that resources exist in the application
+cluster:
 
 ```bash
 kubectl api-resources  | grep platform
@@ -448,9 +447,7 @@ osss                                             observe.platform.upbound.io/v1a
 apps                                             platform.upbound.io/v1alpha1           true         App
 ```
 
-6. Restore claims in application cluster:
-
-The MCP Connector will restore claims from the managed control plane to the application cluster:
+Restore claims from the managed control plane to the application cluster:
 
 ```bash
 kubectl get claim -A
@@ -462,9 +459,9 @@ NAMESPACE   NAME                                              SYNCED   READY   C
 default     cluster.aws.platformref.upbound.io/example        True     True    platform-ref-aws-kubeconfig   127m
 ```
 
-By following these steps, you have successfully migrated your Crossplane
-installation to Upbound-managed control planes while ensuring seamless
-integration with your application cluster using the MCP Connector.
+With this guide, you migrated your Crossplane installation to
+Upbound-managed control planes. This ensures seamless integration with your
+application cluster using the MCP Connector.
 
 ### Connect multiple app clusters to a managed control plane
 
