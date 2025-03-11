@@ -9,32 +9,49 @@ aliases:
     - mcp/ctp-connector
 ---
 
-Upbound's Managed Control Plane Connector (MCP Connector) allows you to make a
-control plane's APIs available on an app cluster. MCP Connector is for users
-coming from open source Crossplane and who treated Crossplane as an add-on to an
-existing Kubernetes application cluster. In that world, users could interact
-with Crossplane APIs from the same cluster they deploy their applications to.
-This model breaks when users move their Crossplane instances into a managed
-solution in Upbound.
-
-MCP Connector connects Kubernetes application clusters --- running outside of
-Upbound --- to your managed control planes running in Upbound. This allows you
-to interact with your managed control plane's API right from the app cluster.
-The claim APIs you define via `CompositeResourceDefinition`s are available
-alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector
-providers the same experience as a locally installed Crossplane.
+MCP Connector connects arbitrary Kubernetes application clusters outside the
+Upbound Spaces to your managed control planes (MCPs) running in Upbound Spaces.
+This lets you interact with your MCP's API from the app cluster. The claim APIs
+you define via CompositeResourceDefinitions (XRDs) in the MCP, are available in
+your app cluster alongside Kubernetes workload APIs like Pod. MCP Connector
+enables the same experience as a locally installed Crossplane.
 
 {{<img src="deploy/spaces/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
 
 ### Managed control plane connector operations
 
-The MCP Connector creates an `APIService` resource in your Kubernetes cluster
-for every claim API in your control plane. Your Kubernetes cluster sends every
-request for the claim API to the MCP Connector. The MCP Connector makes the
-request to the Upbound control plane it's connected to.
+MCP connector leverages the [Kubernetes API AggregationLayer](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/)
+to create an extension API server and serve the claim APIs in the MCP. It
+discovers the claim APIs available in the MCP and registers corresponding
+APIService resources on the app cluster. Those APIService resources refer to the
+extension API server of MCP connector.
 
-The claim APIs are available in your Kubernetes cluster just like all native
-Kubernetes API.
+The claim APIs are available in your Kubernetes cluster, just like all native
+Kubernetes APIs.
+
+Every request targeting the claim APIs goes through the MCP connector and the
+relevant requests are made to the connected MCP by MCP connector.
+
+The claims created in the app cluster are stored and processed solely at the
+connected MCP. No storage is used at the application cluster. The MCP connector
+provisions a target namespace at the MCP for the app cluster, and the claims are
+stored in the target namespace.
+
+For managing the claims, the MCP Connector creates a unique identifier for a
+resource by combining input parameters from claims, including:
+- `metadata.name`
+- `metadata.namespace`
+- `your cluster name`
+
+It employs SHA-256 hashing to generate a hash value and then extracts the first
+16 characters of that hash. This ensures the resulting identifier remains within
+the 64-character limit in Kubernetes.
+
+For instance, if we have a claim named my-bucket in the test namespace within
+the cluster-dev cluster, we'll calculate the SHA-256 hash from
+`my-bucket-x-test-x-00000000-0000-0000-0000-000000000000` and take the initial 16
+characters. As a result, the name for the claim on the MCP control plane side
+will be `claim-c603e518969b413e`
 
 ### Installation
 
@@ -129,7 +146,6 @@ Make sure your kubeconfig's current context is pointed at the app cluster where
 you want to uninstall MCP connector from.
 {{< /hint >}}
 
-
 {{< /tab >}}
 {{< tab "Helm" >}}
 
@@ -149,9 +165,9 @@ upbound:
   token: <PERSONAL_ACCESS_TOKEN>
 
 spaces:
-  # Upbound GCP US-West-1 upbound-gcp-us-west-1.space.mxe.upbound.io
-  # Upbound AWS US-East-1 upbound-aws-us-east-1.space.mxe.upbound.io
-  # Upbound GCP US-Central-1 upbound-gcp-us-central-1.space.mxe.upbound.io
+  # Upbound GCP US-West-1     upbound-gcp-us-west-1.space.mxe.upbound.io
+  # Upbound AWS US-East-1     upbound-aws-us-east-1.space.mxe.upbound.io
+  # Upbound GCP US-Central-1  upbound-gcp-us-central-1.space.mxe.upbound.io
   host: "<Upbound Space Region>"
   insecureSkipTLSVerify: true
   controlPlane:
@@ -248,12 +264,6 @@ plane inside Upbound.
 # Applying the claim YAML above.
 # kubectl is set up to talk with your Kubernetes cluster.
 kubectl apply -f claim.yaml
-```
-
-```bash {copy-lines="3"}
-# Applying the claim YAML above.
-# kubectl is set up to talk with your Kubernetes cluster.
-kubectl apply -f claim.yaml
 
 
 kubectl get claim -A
@@ -267,10 +277,6 @@ Once Kubernetes creates the object, view the console to see your object.
 
 You can interact with the object through your cluster just as if it
 lives in your cluster.
-
-{{<hint "note" >}}
-Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) to allow tools to interact with the remote object as if it was local.
-{{< /hint >}}
 
 ### Connect multiple app clusters to a managed control plane
 
