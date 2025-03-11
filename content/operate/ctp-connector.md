@@ -133,13 +133,9 @@ you want to uninstall MCP connector from.
 {{< /tab >}}
 {{< tab "Helm" >}}
 
-The MCP Connector is also available as a Helm chart, available at
-`oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
-
-Install the MCP Connector Helm chart with `helm install`. Make sure to update
-the chart values with your own. It's recommended you create a values file called
-`connector-values.yaml` and provide the following below. Select the tab
-according to which environment your managed control plane is running in.
+It's recommended you create a values file called `connector-values.yaml` and
+provide the following below. Select the tab according to which environment your
+managed control plane is running in.
 
 {{< tabs >}}
 
@@ -153,15 +149,18 @@ upbound:
   token: <PERSONAL_ACCESS_TOKEN>
 
 spaces:
-  # If your MCP is running in Upbound's GCP Cloud Space, else use upbound-aws-us-east-1.space.mxe.upbound.io
-  host: "upbound-gcp-us-west-1.space.mxe.upbound.io"
+  # Upbound GCP US-West-1 upbound-gcp-us-west-1.space.mxe.upbound.io
+  # Upbound AWS US-East-1 upbound-aws-us-east-1.space.mxe.upbound.io
+  # Upbound GCP US-Central-1 upbound-gcp-us-central-1.space.mxe.upbound.io
+  host: "<Upbound Space Region>"
   insecureSkipTLSVerify: true
   controlPlane:
     # The name of the MCP you want the Connector to attach to
     name: <CONTROL_PLANE_NAME>
     # The control plane group the MCP resides in
     group: <CONTROL_PLANE_GROUP>
-    # The namespace within the MCP to sync claims from the app cluster to. NOTE: This must be created before you install the connector.
+    # The namespace within the MCP to sync claims from the app cluster to.
+    # NOTE: This must be created before you install the connector.
     claimNamespace: <NAMESPACE_TO_SYNC_TO>
 ```
 
