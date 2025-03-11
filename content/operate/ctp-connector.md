@@ -9,24 +9,37 @@ aliases:
     - mcp/ctp-connector
 ---
 
-Upbound's Managed Control Plane Connector (MCP Connector) allows you to make a control plane's APIs available on an app cluster. MCP Connector is for users coming from open source Crossplane and who treated Crossplane as an add-on to an existing Kubernetes application cluster. In that world, users could interact with Crossplane APIs from the same cluster they deploy their applications to. This model breaks when users move their Crossplane instances into a managed solution in Upbound.
+Upbound's Managed Control Plane Connector (MCP Connector) allows you to make a
+control plane's APIs available on an app cluster. MCP Connector is for users
+coming from open source Crossplane and who treated Crossplane as an add-on to an
+existing Kubernetes application cluster. In that world, users could interact
+with Crossplane APIs from the same cluster they deploy their applications to.
+This model breaks when users move their Crossplane instances into a managed
+solution in Upbound.
 
-MCP Connector connects Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinition`s are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
+MCP Connector connects Kubernetes application clusters --- running outside of
+Upbound --- to your managed control planes running in Upbound. This allows you
+to interact with your managed control plane's API right from the app cluster.
+The claim APIs you define via `CompositeResourceDefinition`s are available
+alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector
+providers the same experience as a locally installed Crossplane.
 
 {{<img src="deploy/spaces/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
 
 ### Managed control plane connector operations
 
-The MCP Connector creates an `APIService` resource in your
-Kubernetes cluster for every claim API in your control plane. Your
-Kubernetes cluster sends every request for the claim API to the MCP Connector. The MCP Connector
-makes the request to the Upbound control plane it's connected to.
+The MCP Connector creates an `APIService` resource in your Kubernetes cluster
+for every claim API in your control plane. Your Kubernetes cluster sends every
+request for the claim API to the MCP Connector. The MCP Connector makes the
+request to the Upbound control plane it's connected to.
 
-The claim APIs are available in your Kubernetes cluster just like
-all native Kubernetes API.
+The claim APIs are available in your Kubernetes cluster just like all native
+Kubernetes API.
 
 ### Installation
 
+{{< tabs >}}
+{{< tab "up CLI" >}}
 #### With the up CLI
 
 Log in with the up CLI:
@@ -65,7 +78,10 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the
+managed control plane. Write it to a secret in the cluster where you plan to
+install the MCP Connector to. Reference this secret in the
+`spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
 spaces:
@@ -89,17 +105,43 @@ Provide the values file above when you run the CLI command:
 up controlplane connector install my-control-plane my-app-ns-1 --file=connector-values.yaml
 ```
 
-The Claim APIs from your managed control plane are now visible in the cluster. You can verify this with `kubectl api-resources`.
+The Claim APIs from your managed control plane are now visible in the cluster.
+You can verify this with `kubectl api-resources`.
 
 ```bash
 kubectl api-resources
 ```
 
+### Uninstall
+
+Disconnect an app cluster that you prior installed the MCP connector on by
+running the following:
+
+```bash
+up ctp connector uninstall <namespace>
+```
+
+This command uninstalls the helm chart for the MCP connector from an app
+cluster. It moves any claims in the app cluster into the managed control plane
+at the specified namespace.
+
+{{<hint "tip" >}}
+Make sure your kubeconfig's current context is pointed at the app cluster where
+you want to uninstall MCP connector from.
+{{< /hint >}}
+
+
+{{< /tab >}}
+{{< tab "Helm" >}}
 #### With Helm
 
-The MCP Connector is also available as a Helm chart, available at `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
+The MCP Connector is also available as a Helm chart, available at
+`oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
 
-Install the MCP Connector Helm chart with `helm install`. Make sure to update the chart values with your own. It's recommended you create a values file called `connector-values.yaml` and provide the following below. Select the tab according to which environment your managed control plane is running in.
+Install the MCP Connector Helm chart with `helm install`. Make sure to update
+the chart values with your own. It's recommended you create a values file called
+`connector-values.yaml` and provide the following below. Select the tab
+according to which environment your managed control plane is running in.
 
 {{< tabs >}}
 
@@ -129,7 +171,10 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the managed control plane. Write it to a secret in the cluster where you plan to install the MCP Connector to. Reference this secret in the `spaces.controlPlane.kubeconfigSecret` field below.
+Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the
+managed control plane. Write it to a secret in the cluster where you plan to
+install the MCP Connector to. Reference this secret in the
+`spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
 spaces:
@@ -159,31 +204,23 @@ Create an API token from the Upbound user account settings page in the console b
 
 ### Uninstall
 
-#### With the up CLI
-
-Disconnect an app cluster that you prior installed the MCP connector on by running the following:
-
-```bash
-up ctp connector uninstall <namespace>
-```
-
-This command uninstalls the helm chart for the MCP connector from an app cluster. It moves any claims in the app cluster into the managed control plane at the specified namespace.
-
-{{<hint "tip" >}}
-Make sure your kubeconfig's current context is pointed at the app cluster where you want to uninstall MCP connector from.
-{{< /hint >}}
-
-#### With Helm
-
 You can uninstall MCP connector with Helm by running the following:
 
 ```bash
 helm uninstall mcp-connector
 ```
 
+{{< /tab >}}
+{{< /tabs >}}
+
+
 ### Example usage
 
-This example creates a control plane using [Configuration EKS](https://github.com/upbound/configuration-eks). `KubernetesCluster` is available as a claim API in your control plane. The following is [an example](https://github.com/upbound/configuration-eks/blob/9f86b6d/.up/examples/cluster.yaml) object you can create in your control plane.
+This example creates a control plane using [Configuration
+EKS](https://github.com/upbound/configuration-eks). `KubernetesCluster` is
+available as a claim API in your control plane. The following is [an
+example](https://github.com/upbound/configuration-eks/blob/9f86b6d/.up/examples/cluster.yaml)
+object you can create in your control plane.
 
 ```yaml
 apiVersion: k8s.starter.org/v1alpha1
@@ -205,8 +242,10 @@ spec:
     name: my-cluster-kubeconfig
 ```
 
-After connecting your Kubernetes app cluster to the managed control plane, you can create the `KubernetesCluster` object in your
-app cluster. Although your local cluster has an Object, the actual resources is in your managed control plane inside Upbound.
+After connecting your Kubernetes app cluster to the managed control plane, you
+can create the `KubernetesCluster` object in your app cluster. Although your
+local cluster has an Object, the actual resources is in your managed control
+plane inside Upbound.
 
 ```bash {copy-lines="3"}
 # Applying the claim YAML above.
@@ -229,11 +268,17 @@ Upbound uses the [Kubernetes API Aggregation Layer](https://kubernetes.io/docs/c
 
 ### Connect multiple app clusters to a managed control plane
 
-Claims are store in a unique namespace in the Upbound managed control plane. Every cluster creates a new MCP namespace.
+Claims are store in a unique namespace in the Upbound managed control plane.
+Every cluster creates a new MCP namespace.
 
 {{<img src="deploy/spaces/images/ConnectorMulticlusterArch.png" alt="Multi-cluster architecture with managed control plane connector" unBlur="true" lightbox="true">}}
 
-There's no limit on the number of clusters connected to a single control plane. Control plane operators can see all their infrastructure in a central control plane.
+There's no limit on the number of clusters connected to a single control plane.
+Control plane operators can see all their infrastructure in a central control
+plane.
 
-Without using managed control planes and MCP Connector, users have to install Crossplane and providers for cluster. Each cluster requires configuration for providers with necessary credentials. With a single control plane where multiple clusters connected through
-Upbound tokens, you don't need to give out any cloud credentials to the clusters.
+Without using managed control planes and MCP Connector, users have to install
+Crossplane and providers for cluster. Each cluster requires configuration for
+providers with necessary credentials. With a single control plane where multiple
+clusters connected through Upbound tokens, you don't need to give out any cloud
+credentials to the clusters.
