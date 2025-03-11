@@ -16,7 +16,7 @@ you define via CompositeResourceDefinitions (XRDs) in the MCP, are available in
 your app cluster alongside Kubernetes workload APIs like Pod. MCP Connector
 enables the same experience as a locally installed Crossplane.
 
-{{<img src="deploy/spaces/images/GitOps-Up-MCP_Marketecture_Dark_1440w.png" alt="Illustration of MCP Connector" deBlur="true" size="large" lightbox="true">}}
+{{<img src="deploy/spaces/images/ConnectorFlow.png" alt="managed control plane connector operations flow" unBlur="true" lightbox="true">}}
 
 ### Managed control plane connector operations
 
