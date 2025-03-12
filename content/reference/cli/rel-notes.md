@@ -9,6 +9,27 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.38.1
+
+Released March 11th, 2025
+
+### What's Changed
+
+- Removed dependency on the `go` binary for generation of Go models.
+- Updated name generation for array field types in Go models to avoid name
+  collisions.
+- Updated KCL function generation to avoid duplicate import names.
+- Updated `go test` to pass through environment variables prefixed with `UP_` to
+  tests written in KCL and Python.
+- Fixed a panic in `up test` when a timeout was not specified.
+- Improvements for `up migration` when mcp-connector is in use.
+
+### Breaking Changes
+
+- Some type names in the Go models have changed to avoid naming conflicts. Go
+  functions using these fields will fail to compile during `up project build`
+  and require an update.
+
 ## v0.38.0
 
 Released March 4th, 2025
