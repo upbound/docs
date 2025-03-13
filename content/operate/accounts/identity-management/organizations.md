@@ -59,3 +59,12 @@ To invite a user to an organization:
 1. Select **Invite New User**.
 2. Enter the user's email address and select their role.
 3. Select the **Invite** button to send the invite.
+
+### Configure org membership
+
+Manage a user's membership level in your organization from the Upbound Console. To change membership for a user in an organization, do the following in the Console:
+
+1. Open the side navigation in the Console and select **All Users**, found under the _Administer_ section of the side navigation.
+2. On the **All Users** page, select the user whose role you wish you change.
+3. Select the **Edit** button, select **Role**, and then toggle the org membership between `Admin` or `Member`.
+
