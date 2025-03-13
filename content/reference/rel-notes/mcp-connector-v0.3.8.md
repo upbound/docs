@@ -4,6 +4,7 @@ version: "v0.3.8"
 date: 2024-03-21
 tocHidden: true
 product: "mcp-connector"
+version_sort_key: "0000.0003.0008"
 ---
 <!-- vale off -->
 

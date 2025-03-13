@@ -54,44 +54,44 @@ The repository list now shows your new repository.
 
 ## Build a package
 
-Build a package using `up xpkg build`.
+Build a package using `crossplane xpkg build`.
 
-The `up xpkg build` command expects a `crossplane.yaml` file to provide the metadata for the package file.
+The `crossplane xpkg build` command expects a `crossplane.yaml` file to provide the metadata for the package file.
 
 The default name is the `metadata.name` value in the `crossplane.yaml` file.
 
 ```shell
-up xpkg build
+crossplane xpkg build
 xpkg saved to /home/vagrant/pkg/test-config-15ab02d92a30.xpkg
 ```
 
-Provide a specific package name with `up xpkg build --name <package name>`.
+Provide a specific package name with `crossplane xpkg build --name <package name>`.
 
-By default `up xpkg build` saves the package to the current directory. Specify a specific location with `up xpkg build -o <path>`.
+By default `crossplane xpkg build` saves the package to the current directory. Specify a specific location with `crossplane xpkg build -o <path>`.
 
-The [`up xpkg build` command reference]({{<ref "reference/cli/command-reference#xpkg-build" >}}) contains all available options.
+The [`crossplane xpkg build` command reference](https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build) contains all available options.
 
 ## Push a package to the repository
 
-Push a package to the Upbound Marketplace using the `up xpkg push` command.
+Push a package to the Upbound Marketplace using the `crossplane xpkg push` command.
 
-The `up xpkg push` command requires:
+The `crossplane xpkg push` command requires:
 
 * The repository to push a package to.
 * A package version tag. The package version tag is a <a href="https://semver.org/">semantic versioning</a> number determining package upgrades and dependency requirements.
 
 The push command syntax is
-`up xpkg push <repository>:<version tag> -f <xpkg file>`.
+`crossplane xpkg push <repository>:<version tag> -f <xpkg file>`.
 
 For example, to push a package with the following parameters:
 * Repository `upbound-docs/my-repo`
 * Version `v0.2`
 * Package file named `my-package.xpkg`
 
-Use the following `up xpkg push` command:
+Use the following `crossplane xpkg push` command:
 
 ```shell
-up xpkg push upbound-docs/my-repo:v0.2 -f my-package.xpkg
+crossplane xpkg push upbound-docs/my-repo:v0.2 -f my-package.xpkg
 xpkg pushed to upbound-docs/my-repo:v0.2
 ```
 

@@ -1,4 +1,5 @@
 APIs
+APIService
 Argo
 Alertmanager
 autoscalers
@@ -47,6 +48,7 @@ Kyverno
 Kyverno's
 MCP
 MCPs
+MCP's
 MRs
 minikube
 namespace
@@ -95,3 +97,4 @@ XRDs
 XRs
 Zendesk
 Upjet
+

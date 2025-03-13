@@ -9,6 +9,58 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.38.1
+
+Released March 11th, 2025
+
+### What's Changed
+
+- Removed dependency on the `go` binary for generation of Go models.
+- Updated name generation for array field types in Go models to avoid name
+  collisions.
+- Updated KCL function generation to avoid duplicate import names.
+- Updated `go test` to pass through environment variables prefixed with `UP_` to
+  tests written in KCL and Python.
+- Fixed a panic in `up test` when a timeout was not specified.
+- Improvements for `up migration` when mcp-connector is in use.
+
+### Breaking Changes
+
+- Some type names in the Go models have changed to avoid naming conflicts. Go
+  functions using these fields will fail to compile during `up project build`
+  and require an update.
+
+## v0.38.0
+
+Released March 4th, 2025
+
+### What's Changed
+
+- Go is now a supported language for embedded functions in projects.
+- New `up test` commands introduced to allow for automated testing of
+  compositions, including those that use embedded functions. Test cases can be
+  written in YAML, Python, or KCL.
+- Embedded KCL functions now use KCL v0.11.2.
+- Commands that interact with private repositories in the Upbound Marketplace no
+  longer require `docker-credential-up` to be configured.
+- Bug fixes and UX improvements.
+
+### Breaking Changes
+
+- The short alias `-d` for the `--cache-dir` flag in various commands has been
+  removed.
+
+## v0.37.1
+
+Released February 13th, 2025
+
+### What's Changed
+
+- Improve performance and silence unnecessary warning messages in `up
+  composition render`.
+- Ensure the `--project-file` flag works consistently across project commands.
+- Minor bug fixes.
+
 ## v0.37.0
 
 Released January 30th, 2025
