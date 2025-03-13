@@ -4,6 +4,7 @@ version: "v1.1.0"
 date: 2023-10-10
 tocHidden: true
 product: "spaces"
+version_sort_key: "0001.0001.0000"
 ---
 <!-- vale off -->
 
