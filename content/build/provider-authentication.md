@@ -338,4 +338,5 @@ spec:
 ```
 
 ## Next steps
-<!--- TODO(tr0njavolta): next steps --->
+
+Now that you have authenticated with your provider, the next step is to [run and test your control plane project]({{<ref "testing/">}}).
