@@ -7,6 +7,10 @@ aliases:
     - accounts/authorization/k8s-rbac
 ---
 
+{{< hint "important" >}}
+This guide is **only applicable** to admins who have deployed [self-hosted Spaces]({{<ref "deploy/self-hosted-spaces/" >}}). For general RBAC in Upbound, read [Upbound RBAC]({{<ref "operate/accounts/authorization/upbound-rbac/" >}}).
+{{< /hint >}}
+
 This guide provides an overview of Kubernetes role-based access control (RBAC) in Upbound. RBAC allows you to regulate access to your Upbound resources and control planes based on the roles of individual users within your organization.
 
 <!-- vale Google.Headings = NO -->
