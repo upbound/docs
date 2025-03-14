@@ -166,9 +166,11 @@ Every OIDC relying party implements its own mechanism for establishing a trust r
 
 Different OIDC relaying parties may define valid tokens differently. Typically it involves writing a policy that restricts what _subject_ can assume the role or service account.
 
+<!-- vale gitlab.SentenceLength = NO -->
 {{<hint "warning" >}}
 Authoring a policy with appropriate access controls is critical to ensure that only your provider in your managed control plane is able to assume the role or service account.
 {{< /hint >}}
+<!-- vale gitlab.SentenceLength = YES -->
 
 Identity tokens are [JSON Web Tokens (`JWTs`)](https://www.rfc-editor.org/rfc/rfc7519). The OIDC _claims_ supported by Upbound are available in the OIDC metadata endpoint at `https://proidc.upbound.io/.well-known/openid-configuration`.
 
