@@ -1,7 +1,7 @@
 ---
 title: Backup and restore
 weight: 130
-description: Enable and manage backups in your Upbound Space.
+description: Configure and manage backups in your Upbound Space.
 aliases:
     - /all-spaces/backup-and-restore
     - /spaces/backup-and-restore
@@ -11,18 +11,15 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview.
+As of Spaces `v`.12.0`, this feature is enabled by default.
 
-This feature is enabled by default in Cloud Spaces.
-
-For Connected and Disconnected Spaces, this feature requires at least Spaces `v1.3.0` and is off by default. To enable, set `features.alpha.sharedBackup.enabled=true` when installing Spaces:
+To disable in a self-hosted Space, pass the `features.alpha.sharedBackup.enabled=false` as a Helm chart value.
 
 ```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  ...
-  --set "features.alpha.sharedBackup.enabled=true"
+  --set "features.alpha.sharedBackup.enabled=false"
 ```
 {{< /hint >}}
+
 
 Upbound's _Shared Backups_ is a built-in backup and restore feature. Shared Backups lets you configure automatic schedules for taking snapshots of your managed control planes. You can restore data from these backups by making new control planes. This guide explains how to use Shared Backups for disaster recovery or upgrade scenarios.
 
@@ -32,14 +29,6 @@ The Shared Backups feature provides the following benefits:
 * Automatic backups for control planes without any operational overhead
 * Backup schedules for multiple managed control planes in a group
 * Shared Backups are available across all hosting environments of Upbound (Disconnected, Connected or Cloud Spaces)
-
-## Prerequisites
-
-Enabled the Shared Backups feature in the Space you plan to run your managed control plane in:
-
-- Cloud Spaces: Enabled by default
-- Connected Spaces: Space administrator must enable this feature
-- Disconnected Spaces: Space administrator must enable this feature
 
 
 ## Configure a Shared Backup Config
