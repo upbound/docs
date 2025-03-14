@@ -9,7 +9,9 @@ aliases:
     - "/connect/oidc"
 ---
 
+<!-- vale gitlab.SentenceLength = NO -->
 Control planes in Upbound use [Crossplane providers](https://docs.crossplane.io/latest/concepts/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. Control planes can connect to an unlimited number of external services--provided there's a Crossplane provider in the [Marketplace](https://marketplace.upbound.io/providers).
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## How to connect to an external service
 
