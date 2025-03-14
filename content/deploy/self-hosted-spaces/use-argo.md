@@ -1,20 +1,13 @@
 ---
-title: Use Argo
+title: Use ArgoCD Plugin
 weight: 150
-description: A guide for integrating Argo or Flux with managed control planes in a Space.
+description: A guide for integrating Argo with control planes in a Space.
 aliases:
     - /all-spaces/self-hosted-spaces/use-argo
     - /deploy/disconnected-spaces/use-argo-flux
     - /all-spaces/self-hosted-spaces/use-argo-flux
+    - /connect/use-argo
 ---
-
-GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. You can use GitOps flows with managed control planes running in a Space.
-
-{{< hint "tip" >}}
-For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "gitops.md">}}).
-{{< /hint >}}
-
-## Argo
 
 {{< hint "important" >}}
 This feature is in preview and is off by default. To enable, set `features.alpha.argocdPlugin.enabled=true` when installing Spaces:
@@ -28,7 +21,11 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install or upgrade time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD. By default, Upbound stores these connection details in a Kubernetes secret named after the control plane. To run Argo CD across multiple namespaces, Upbound recommends enabling the `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets` flag to use a UID-based format for secret names to avoid conflicts.
 
-### On cluster Argo CD
+{{< hint "tip" >}}
+For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "connect/gitops.md">}}).
+{{< /hint >}}
+
+## On cluster Argo CD
 
 If you are running Argo CD on the same cluster as the Space, run the following to enable the plugin:
 
@@ -75,7 +72,7 @@ The first flag enables the feature and the second indicates the namespace on the
 
 Be sure to [configure Argo](#configure-argo) after it's installed.
 
-### External cluster Argo CD
+## External cluster Argo CD
 
 If you are running Argo CD on an external cluster from where you installed your Space, you need to provide some extra flags:
 
@@ -145,7 +142,7 @@ Once you enable the plugin and configure it, the plugin automatically propagates
 
 Be sure to [configure Argo](#configure-argo) after it's installed.
 
-### Configure Argo
+## Configure Argo
 
 Argo's default configuration causes it to try to query for resource kinds that don't exist in managed control planes. You should configure Argo's [general configmap](https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/) to include the resource group/kinds which make sense in the context of managed control planes. For example, the concept of `nodes` isn't exposed in managed control planes.
 
