@@ -15,7 +15,7 @@ Control planes in Upbound use [Crossplane providers](https://docs.crossplane.io/
 
 ### Install a provider on your control plane
 
-Install a Crossplane provider or Configuration on your managed control plane as explained in the [control plane management]({{<ref "_index.md#install-packages" >}}) documentation.
+Install a Crossplane provider or Configuration on your managed control plane as explained in the [control plane management]({{<ref "operate/#install-packages" >}}) documentation.
 
 ### Configure the provider
 
