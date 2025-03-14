@@ -2,6 +2,7 @@
 title: Declaratively create control planes
 weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
+draft: true
 aliases:
     - /deploy/spaces/guides/declarative-ctps
     - /all-spaces/declarative-ctps

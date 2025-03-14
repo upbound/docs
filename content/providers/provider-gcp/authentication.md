@@ -6,7 +6,7 @@ description: Authentication options with the Upbound GCP official provider
 
 The Upbound Official GCP Provider supports multiple authentication methods.
 
-* [Upbound auth (OIDC)]({{<ref "operate/oidc" >}})
+* [Upbound auth (OIDC)]({{<ref "connect/oidc" >}})
 * [Service account keys](https://cloud.google.com/iam/docs/keys-create-delete)
 * [OAuth 2.0 access token](https://developers.google.com/identity/protocols/oauth2)
 * [Workload identity](https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity)

@@ -6,7 +6,7 @@ description: Authentication options with the Upbound Azure official provider
 
 The Upbound Official Azure Provider supports multiple authentication methods.
 
-* [Upbound auth (OIDC)]({{<ref "operate/oidc" >}})
+* [Upbound auth (OIDC)]({{<ref "connect/oidc" >}})
 * [Service principal with Kubernetes secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals?tabs=browser#service-principal-object)
 * [System-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#enable-managed-identities-on-an-existing-aks-cluster)
 * [User-assigned managed identity](https://learn.microsoft.com/en-us/azure/aks/use-managed-identity#bring-your-own-managed-identity)

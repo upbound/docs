@@ -6,7 +6,7 @@ description: Authentication options with the Upbound AWS official provider
 
 The Upbound Official AWS Provider supports multiple authentication methods.
 
-* [Upbound auth (OIDC)]({{<ref "operate/oidc" >}})
+* [Upbound auth (OIDC)]({{<ref "connect/oidc" >}})
 * [AWS Access keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
 * [Assume role with web identity](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)
 * [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) with AWS managed Kubernetes.

@@ -1,20 +1,23 @@
 ---
-title: Connect managed control planes to external services
+title: Connect control planes to external services
 weight: 20
-description: A guide for authenticating managed control plane with external services, including using OIDC
+description: A guide for authenticating control plane with external services, including using OIDC
 aliases:
     - /mcp/oidc
     - "/concepts/operate/oidc"
     - mcp/oidc
+    - "/connect/oidc"
 ---
 
-Managed control planes use [Crossplane providers](https://docs.crossplane.io/latest/concepts/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. MCPs can connect to an unlimited number of external services--provided there's a Crossplane provider in the [Marketplace](https://marketplace.upbound.io/providers).
+<!-- vale gitlab.SentenceLength = NO -->
+Control planes in Upbound use [Crossplane providers](https://docs.crossplane.io/latest/concepts/providers/) to interact with external services. External services could be hyper scale cloud providers, version control services, ticketing platforms, or anything else that has a public API. Control planes can connect to an unlimited number of external services--provided there's a Crossplane provider in the [Marketplace](https://marketplace.upbound.io/providers).
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## How to connect to an external service
 
 ### Install a provider on your control plane
 
-Install a Crossplane provider or Configuration on your managed control plane as explained in the [MCP management]({{<ref "_index.md#install-packages" >}}) documentation.
+Install a Crossplane provider or Configuration on your managed control plane as explained in the [control plane management]({{<ref "operate/#install-packages" >}}) documentation.
 
 ### Configure the provider
 
@@ -88,6 +91,9 @@ spec:
         roleARN: $@<arn:aws:iam::12345969492:role/your-role>$@
 ```
 {{< /editCode >}}
+{{<hint "tip">}}
+Read the [provider-aws authentication]({{<ref "providers/provider-aws/authentication/#upbound-auth-oidc">}}) documentation for full setup instructions.
+{{</hint>}}
 
 #### Upbound identity for Azure example
 
@@ -107,6 +113,10 @@ spec:
     source: Upbound
 ```
 {{< /editCode >}}
+
+{{<hint "tip">}}
+Read the [provider-azure authentication]({{<ref "/providers/provider-azure/authentication/#upbound-auth-oidc" >}}) documentation for full setup instructions.
+{{</hint>}}
 
 #### Upbound identity for GCP example
 
@@ -129,6 +139,10 @@ spec:
 ```
 {{< /editCode >}}
 
+{{<hint "tip">}}
+Read the [provider-gcp authentication]({{<ref "/providers/provider-gcp/authentication/#upbound-auth-oidc" >}}) documentation for full setup instructions.
+{{</hint>}}
+
 ### OIDC explained
 
 OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties (RPs)**. Managed control planes define these roles as follows:
@@ -137,7 +151,6 @@ OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties 
 - **Relying Party**: an external service that supports OIDC, for example, AWS, Azure or GCP
 
 Users set up a _trust relationship_ between Upbound and the external service. Upbound uses the trust relationship instead of storing credentials for an external service in the managed control plane.
-
 
 Upbound injects an _identity token_ into the file system of every provider `Pod`. Upbound sends the token to the external service and exchanges it for a short-lived credential. Upbound uses the short-lived credential to perform operations against the external service.
 
@@ -153,9 +166,11 @@ Every OIDC relying party implements its own mechanism for establishing a trust r
 
 Different OIDC relaying parties may define valid tokens differently. Typically it involves writing a policy that restricts what _subject_ can assume the role or service account.
 
+<!-- vale gitlab.SentenceLength = NO -->
 {{<hint "warning" >}}
 Authoring a policy with appropriate access controls is critical to ensure that only your provider in your managed control plane is able to assume the role or service account.
 {{< /hint >}}
+<!-- vale gitlab.SentenceLength = YES -->
 
 Identity tokens are [JSON Web Tokens (`JWTs`)](https://www.rfc-editor.org/rfc/rfc7519). The OIDC _claims_ supported by Upbound are available in the OIDC metadata endpoint at `https://proidc.upbound.io/.well-known/openid-configuration`.
 
