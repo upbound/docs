@@ -7,18 +7,12 @@ aliases:
     - accounts/authorization/upbound-rbac
 ---
 
-This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC allows you to control access to your Upbound resources and control planes based on the roles of individual users within your organization.
+This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC lets you control access to your Upbound resources and control planes based on the roles of individual users in your organization. 
 
-## Identity types
 
-Upbound supports the following identity types:
-
-- Users - Accounts representing a single user.
-- Organizations - A top-level collection of users and teams.
-- Teams - A sub-group within an organization.
-- Robots - Non-user accounts designed for automation.
-
-Upbound constructs unique identities with `upbound:(user|robot|team):<name>`.
+{{<hint "tip" >}}
+To learn how to manage access to resources in a control plane, read the [documentation]({{<ref "k8s-rbac" >}}) on authorizing actions on resources in control planes
+{{< /hint >}}
 
 ## Authentication
 
@@ -29,27 +23,34 @@ Upbound issues JSON Web Tokens (JWT) with identity information to authenticate t
 
 ## Authorization
 
-<!-- vale Google.WordList = NO -->
-<!-- vale Microsoft.Terms = NO -->
-Upbound uses identities to check for authentication across the platform. In the Cloud environment, Upbound grants identities organization roles to control access to features and resources with IAM policies.
-<!-- vale Google.WordList = YES -->
-<!-- vale Microsoft.Terms = NO -->
+Upbound uses identities to check for authentication across the platform. In the Cloud environment, Upbound grants identities organization roles to control access to features and resources with IAM policies. Upbound supports the following identity types:
+
+- Users - Accounts representing a single user.
+- Organizations - A top-level collection of users and teams.
+- Teams - A subgroup in an organization.
+- Robots - Non-user accounts designed for automation.
+
+Upbound constructs unique identities with `upbound:(user|robot|team):<name>`.
 
 In Connected Spaces, you can bind identities to Kubernetes RBAC or Upbound RBAC to control access to resources. The subject and group claims in the JWT token determine the user's effective permissions for an API request.
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
-## Upbound RBAC
-
-### Enable Upbound RBAC
+## Enable Upbound RBAC
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
-For admins who have deployed [self-hosted Spaces]({{<ref "deploy/self-hosted-spaces/" >}}), you can enable Upbound RBAC at install or upgrade time. Configure the feature in the Spaces helm chart:
+{{<hint "note" >}}
+This section only applies to administrators who've deployed a self-hosted Space.
+{{< /hint >}}
+
+For administrators who have deployed [self-hosted Spaces]({{<ref "deploy/self-hosted-spaces/" >}}), you can enable Upbound RBAC at install or upgrade time. Configure the feature in the Spaces helm chart:
 
 ```yaml
 --set "features.alpha.upboundRBAC.enabled=true"
 ```
 
 Upbound RBAC is enabled by default in Upbound Cloud Spaces.
+
+## Authorize access to control plane group resources
 
 ### Roles
 

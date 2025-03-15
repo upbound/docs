@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes RBAC"
+title: "Authorize actions in control planes with Kubernetes RBAC"
 weight: 9
 description: "A guide to implementing and configuring Kuberentes RBAC in Upbound"
 aliases:
@@ -7,70 +7,66 @@ aliases:
     - accounts/authorization/k8s-rbac
 ---
 
-{{< hint "important" >}}
-This guide is **only applicable** to admins who have deployed [self-hosted Spaces]({{<ref "deploy/self-hosted-spaces/" >}}). For general RBAC in Upbound, read [Upbound RBAC]({{<ref "operate/accounts/authorization/upbound-rbac/" >}}).
+{{< hint "note" >}}
+For general RBAC in Upbound, read [Upbound RBAC]({{<ref "operate/accounts/authorization/upbound-rbac/" >}}).
 {{< /hint >}}
 
-This guide provides an overview of Kubernetes role-based access control (RBAC) in Upbound. RBAC allows you to regulate access to your Upbound resources and control planes based on the roles of individual users within your organization.
+This guide explains how to authorize actions on resources in your control planes on Upbound. It uses the built-in Kubernetes role-based access control (RBAC) mechanism. This gives you fine-grained control over control plane access.
 
-<!-- vale Google.Headings = NO -->
-<!-- vale Microsoft.HeadingAcronyms = NO -->
-### Enable Kubernetes Hub authorization
+In a control plane on Upbound, Upbound RBAC and the cluster's Kubernetes RBAC are integrated to authorize users to perform actions. They must have enough permission according to either system. To authorize users with their Upbound account, you must configure kubectl to authenticate to Upbound before running any commands that require authorization.
 
-To enable Kubernetes Hub Authentication in your Space, you need:
-- A Kubernetes cluster with RBAC enabled
-- `authorization.hubRBAC` set to `true` (enabled by default)
+## Define permissions and assign roles
 
-Users can authenticate to the single-tenant Space with their Kubernetes credentials using this method.
+Because control planes in Upbound are built on Kubernetes, you can use _ClusterRole_ and _Role_ objects to define RBAC rules in your control planes. Assign those rules using _ClusterRoleBinding_ and _RoleBinding_ objects:
 
-### Configure Kubernetes RBAC
+- **Role:** A namespace-scoped group of resources and allowed operations that you can assign to a user or a group of users using a _RoleBinding_.
+- **ClusterRole:** A cluster-scoped group of resources and allowed operations that you can assign to a user or a group of users using a _RoleBinding_ or _ClusterRoleBinding_.
+- **RoleBinding:** A namespace-scoped assignment of a _Role_ or _ClusterRole_ to a user or group. 
+- **ClusterRoleBinding:** A cluster-scoped assignment of a _Role_ or _ClusterRole_ to a user or group. 
 
-To configure Kubernetes RBAC in your Disconnected Space, you need to create `ClusterRoles` and `Roles` for defining access to your resources. For example:
+If you plan to use namespaces in your control plane as an isolation mechanism between tenants, its recommended to use _RoleBinding_ objects. If namespace-scoping is not a priority, use _ClusterRoleBinding_ objects instead.
+
+### Define permissions using _Roles_ and _ClusterRoles_
+
+Define permissions with a _Role_ or _ClusterRole_ object. A _Role_ defines access to resources in a single namespace of your control plane. A _ClusterRole_ defines access to resources in the entire control plane. 
+
+The example below demonstrates creating a `sql-instance-viewer` cluster-scoped role. This role permits viewing `sqlinstance` objects, a composite resource created with Crossplane.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: controlplane-getter
+  name: sqlinstance-viewer
 rules:
-- apiGroups: ["spaces.upbound.io"]
-  resources: ["controlplanes"]
-  verbs: ["get", "list", "watch"]
+- apiGroups: ["aws.platform.upbound.io"] 
+  resources: ["sqlinstances"]
+  verbs: ["get", "watch", "list"]
 ```
 
-Next, create `ClusterRoleBindings` and `RoleBindings` to assign roles to subjects like users, groups, or service accounts:
+### Assign roles
+
+The example below demonstrates how to assign the role in the earlier section to an Upbound user, robot, and control plane group member:
 
 ```yaml
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
 metadata:
-  name: controlplane-getters
+  name: sqlinstance-viewer-binding
+  namespace: tenant1
 subjects:
+# An Upbound account user
 - kind: User
-  name: upbound:(user|robot):<username>
+  name: upbound:user:${username-on-upbound}
+# A robot on Upbound
+- kind: User
+  name: upbound:robot:${robot-name}
   apiGroup: rbac.authorization.k8s.io
+# An Upbound control plane group member
+- kind: Group
+  name: upbound:team:${team-uuid}
 roleRef:
   kind: ClusterRole
-  name: controlplane-getter
+  name: sqlinstance-viewer
   apiGroup: rbac.authorization.k8s.io
 ```
 
-The `subject` in this example can contain teams (`upbound:team:<uuid>`) or org roles (`upbound:org-role:admin|member`) depending on your role needs.
-
-## Upbound RBAC integration
-<!-- vale Google.Headings = YES -->
-<!-- vale Microsoft.HeadingAcronyms = YES -->
-
-<!-- vale Google.WordList = NO -->
-You can use the special verbs `admin`, `edit` and `view` for giving a subject access to a control plane:
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: controlplane-editor
-rules:
-- apiGroups: ["spaces.upbound.io"]
-  resources: ["controlplanes/k8s"]
-  verbs: ["edit"] # or "admin" or "view", depending on access level
-```
-<!-- vale Google.WordList = NO -->
