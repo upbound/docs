@@ -8,13 +8,13 @@ aliases:
     - mcp/gitops
 ---
 
-GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's managed control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
+GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
 
 <!-- vale Google.Headings = NO -->
 ## Integrate with Argo CD
 <!-- vale Google.Headings = YES -->
 
-[Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound managed control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
+[Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
 
 How you integrate Argo with Upbound depends on which Space type you're running your control plane in. Follow the instructions according to your Space type.
 
@@ -22,9 +22,9 @@ How you integrate Argo with Upbound depends on which Space type you're running y
 ### Cloud and Connected Spaces
 <!-- vale Google.Headings = YES -->
 
-#### Generate a kubeconfig for your MCP
+#### Generate a kubeconfig for your control plane
 
-Use the up CLI to [generate a kubeconfig]({{<ref "reference/cli/contexts.md#storing-a-context-to-a-file" >}}) for your managed control plane.
+Use the up CLI to [generate a kubeconfig]({{<ref "reference/cli/contexts.md#storing-a-context-to-a-file" >}}) for your control plane.
 
 ```bash
 up ctx <org-name>/<space-name>/<group-name>/<control plane> -f - > context.yaml
@@ -109,7 +109,7 @@ Add `application.resourceTrackingMethod: annotation` to the data section as belo
 This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
 Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller).
-By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane.
+By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a control plane.
 You must configure Argo CD to respect the cluster's RBAC rules so that Argo CD can sync.
 Add `resource.respectRBAC: normal` to the data section as below.
 
@@ -125,7 +125,7 @@ data:
 ```
 
 {{< hint "tip" >}}
-The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the configuration to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only control planes, you should consider changing the `clusters` string match for the configuration to apply only to control planes. For example, if every control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
 {{< /hint >}}
 
 <!-- vale Google.Headings = NO -->
@@ -134,7 +134,7 @@ The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _a
 
 Replace the variables and run the following script to configure a new Argo cluster context definition.
 
-To configure Argo for an MCP in a Connected Space, replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`.
+To configure Argo for a control plane in a Connected Space, replace `stringData.server` with the ingress URL of the control plane. This URL is what's outputted when using `up ctx`.
 
 ```yaml
 apiVersion: v1
@@ -195,7 +195,7 @@ Add `application.resourceTrackingMethod: annotation` to the data section as belo
 This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
 Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller).
-By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a managed control plane.
+By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a control plane.
 You must configure Argo CD to respect the cluster's RBAC rules so that Argo CD can sync.
 Add `resource.respectRBAC: normal` to the data section as below.
 
@@ -211,7 +211,7 @@ data:
 ```
 
 {{< hint "tip" >}}
-The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only managed control planes, you should consider changing the `clusters` string match for the configuration to apply only to managed control planes. For example, if every managed control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only control planes, you should consider changing the `clusters` string match for the configuration to apply only to control planes. For example, if every control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
 {{< /hint >}}
 
 <!-- vale Google.Headings = NO -->
@@ -260,7 +260,7 @@ EOF
 Like any other cloud service, you can drive the lifecycle of Upbound Cloud resources with Crossplane. This lets you establish GitOps flows to declaratively create and manage:
 
 - [control plane groups]({{<ref "/operate/groups/" >}})
-- [control planes]({{<ref "learn/core-concepts/managed-control-planes/" >}})
+- [control planes]({{<ref "learn/core-concepts/control-planes/" >}})
 - [Upbound IAM resources]({{<ref "operate/accounts/" >}})
 
 Use a control plane installed with [provider-upbound](https://marketplace.upbound.io/providers/upbound/provider-upbound) and [provider-kubernetes](https://marketplace.upbound.io/providers/upbound/provider-kubernetes) to achieve this.

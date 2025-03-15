@@ -9,7 +9,7 @@ aliases:
 
 Upbound offers the browser-based Consumer portal tool that lets you manage resources on your control planes through a graphical interface. Use the Consumer Portal to manage your resources if you prefer using a user-interface through the browser.
 
-As an alternative, you can use Kubernetes-compatible [RESTful API]({{<ref "operate#connect-directly-to-your-mcp">}}) offered by each control plane.
+As an alternative, you can use Kubernetes-compatible [RESTful API]({{<ref "operate#connect-directly-to-your-control-plane">}}) offered by each control plane.
 
 ## Consumer portal features
 

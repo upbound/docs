@@ -19,7 +19,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ```
 {{< /hint >}}
 
-Spaces provides an optional plugin to assist with integrating a managed control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install or upgrade time. The plugin's job is to propagate the connection details of each managed control plane in a Space to Argo CD. By default, Upbound stores these connection details in a Kubernetes secret named after the control plane. To run Argo CD across multiple namespaces, Upbound recommends enabling the `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets` flag to use a UID-based format for secret names to avoid conflicts.
+Spaces provides an optional plugin to assist with integrating a control plane in a Space with Argo CD. You must enable the plugin for the entire Space at Spaces install or upgrade time. The plugin's job is to propagate the connection details of each control plane in a Space to Argo CD. By default, Upbound stores these connection details in a Kubernetes secret named after the control plane. To run Argo CD across multiple namespaces, Upbound recommends enabling the `features.alpha.argocdPlugin.useUIDFormatForCTPSecrets` flag to use a UID-based format for secret names to avoid conflicts.
 
 {{< hint "tip" >}}
 For general guidance on integrating Upbound with GitOps flows, see [GitOps with Control Planes]({{<ref "connect/gitops.md">}}).
@@ -138,13 +138,13 @@ The extra flags are:
 
 These flags tell the plugin (running in Spaces) where your Argo CD instance is. After you've done this at install-time, you also need to create a `Secret` on the Spaces cluster. This secret must contain a kubeconfig pointing to your Argo CD instance. The secret needs to be in the same namespace as the `spaces-controller`, which is `upbound-system`.
 
-Once you enable the plugin and configure it, the plugin automatically propagates connection details for your managed control planes to your Argo CD instance. You can then target the managed control plane and use Argo to sync Crossplane-related objects to it.
+Once you enable the plugin and configure it, the plugin automatically propagates connection details for your control planes to your Argo CD instance. You can then target the control plane and use Argo to sync Crossplane-related objects to it.
 
 Be sure to [configure Argo](#configure-argo) after it's installed.
 
 ## Configure Argo
 
-Argo's default configuration causes it to try to query for resource kinds that don't exist in managed control planes. You should configure Argo's [general configmap](https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/) to include the resource group/kinds which make sense in the context of managed control planes. For example, the concept of `nodes` isn't exposed in managed control planes.
+Argo's default configuration causes it to try to query for resource kinds that don't exist in control planes. You should configure Argo's [general configmap](https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/) to include the resource group/kinds which make sense in the context of control planes. For example, the concept of `nodes` isn't exposed in control planes.
 
 To configure Argo CD, connect to the cluster where you've installed it and edit the configmap:
 

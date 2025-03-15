@@ -11,7 +11,7 @@ aliases:
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.
 
-Self-hosted Spaces allow you to host managed control planes in your preferred environment.
+Self-hosted Spaces allow you to host control planes in your preferred environment.
 
 ## Prerequisites
 
@@ -98,7 +98,7 @@ up space init --organization="${UPBOUND_ACCOUNT}" \
   "v${SPACES_VERSION}"
 ```
 
-You are ready to [create your first managed control plane](#create-your-first-managed-control-plane) in your Space.
+You are ready to [create your first control plane](#create-your-first-managed-control-plane) in your Space.
 
 <!-- vale Google.Headings = NO -->
 ## Connect to your Space
@@ -110,35 +110,35 @@ Use `up ctx` to create a kubeconfig context pointed at your new Space:
 up ctx disconnected/kind-kind
 ```
 
-## Create your first managed control plane
+## Create your first control plane
 
-With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space, create a managed control plane:
+With your kubeconfig pointed at the Kubernetes cluster where you installed the Upbound Space, create a control plane:
 
 ```shell
 up ctp create controlplane1
 ```
 
-The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. To report the control plane status, use the following command:
+The first control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. To report the control plane status, use the following command:
 
 ```shell
 up ctp list
 ```
 
-## Connect to your managed control plane
+## Connect to your control plane
 
-Connect to your managed control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
+Connect to your control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
 
 ```bash
 up ctx ./default/controlplane1
 ```
 
-This command updates your current kubecontext. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
+This command updates your current kubecontext. You're now connected to your control plane directly. Confirm this is the case by trying to list the CRDs in your control plane:
 
 ```bash
 kubectl get crds
 ```
 
-To disconnect from your managed control plane and switch back to your previous context:
+To disconnect from your control plane and switch back to your previous context:
 
 ```bash
 up ctx -

@@ -145,7 +145,7 @@ Released November 6th, 2024.
 - Made the ingress cache concurrency safe in `up ctx`.
 - Prevented output of status fields for generated XRDs.
 - Validated the user's organization during login.
-- Configured projects to use the parent Space context when started in managed control plane.
+- Configured projects to use the parent Space context when started in control plane.
 
 ## v0.35.0
 Released November 6th, 2024.
@@ -248,8 +248,8 @@ Released May 10th, 2024.
 ### What's Changed
 
 - We promoted `up web-login` to stable.
-- We fixed several bugs related to `up ctx` failing to connect to a Space, group, or managed control plane.
-- `up version` now prints information seperated into client (your up CLI version) and server (version information for the managed control plane and Space you're connected to)
+- We fixed several bugs related to `up ctx` failing to connect to a Space, group, or control plane.
+- `up version` now prints information seperated into client (your up CLI version) and server (version information for the control plane and Space you're connected to)
 - `up space init` enables hub authz and authn by default.
 
 ## v0.29.0
@@ -257,7 +257,7 @@ Released May 10th, 2024.
 Released May 3rd, 2024.
 
 {{< hint "important" >}}
-This release contains an important breaking change that affects how users gain access to the API server of their managed control planes.
+This release contains an important breaking change that affects how users gain access to the API server of their control planes.
 
 For users who've deployed MCPs to Upbound prior to April 30th, 2024 (on our 'legacy GCP Space'), to connect to those MCPs you **must** use `up` ver <= `v0.28.0`.
 
@@ -293,7 +293,7 @@ Released March 27th, 2024.
 
 ### What's Changed
 
-- We fixed a bug that caused `up ctp connect` to fail to connect to a managed control plane running in a single-tenant Space.
+- We fixed a bug that caused `up ctp connect` to fail to connect to a control plane running in a single-tenant Space.
 - We fixed a bug impacting `up xpkg build` against Docker 1.25
 
 ## v0.26.0
@@ -372,8 +372,8 @@ Released January 30th, 2024.
 
 ### Notable Changes
 
-- New `up alpha migration` commands to export state from a control plane and import it into an Upbound managed control plane.
-- Allow creation of managed control planes without being configured to use Upbound's deployment service.
+- New `up alpha migration` commands to export state from a control plane and import it into an Upbound control plane.
+- Allow creation of control planes without being configured to use Upbound's deployment service.
 
 ### What's Changed
 
@@ -569,7 +569,7 @@ Released October 5th, 2022.
 ### Notable Changes
 
 - Two new commands, `up ctp provider install` and `up ctp configuration install`, to quickly install Providers and Configurations into any control plane.
-- The promotion of the experimental managed control planes (MCP) API to be the default for all `up alpha ctp` commands.
+- The promotion of the experimental control planes (MCP) API to be the default for all `up alpha ctp` commands.
 - ⚠️ Breaking change ⚠️ The promotion of the experimental MCP API may break some workflows, but all impacted commands fall under the `alpha` maturity group. Guarantees around backwards compatibility are explained in detail in the [API Maturity](https://github.com/upbound/up/blob/main/docs/maturity.md) documentation. While breaking changes will try to be minimized from version to version, `up` is not guaranteed to maintain backwards compatibility for pre-v1.0 versions.
 
 ### What's Changed

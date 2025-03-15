@@ -1,7 +1,7 @@
 ---
 title: Automatically upgrade control planes
 weight: 10
-description: How to configure automatic upgrades of Crossplane in a managed control plane
+description: How to configure automatic upgrades of Crossplane in a control plane
 aliases:
     - /mcp/auto-upgrade
     - mcp/auto-upgrade
@@ -61,7 +61,7 @@ spec:
 
 ## Supported Crossplane versions
 
-Spaces supports the three [preceding minor versions](https://docs.upbound.io/reference/lifecycle/#maintenance-and-updates) from the last supported minor version. For example, if the last supported minor version is `1.14`, minor versions `1.13` and `1.12` are also supported. Versions older than the three most recent minor versions aren't supported. Only supported Crossplane versions are valid specifications for new managed control planes.
+Spaces supports the three [preceding minor versions](https://docs.upbound.io/reference/lifecycle/#maintenance-and-updates) from the last supported minor version. For example, if the last supported minor version is `1.14`, minor versions `1.13` and `1.12` are also supported. Versions older than the three most recent minor versions aren't supported. Only supported Crossplane versions are valid specifications for new control planes.
 
 Upbound offers extended support for all installed Crossplane versions released within a 12 month window since the last Spaces release. Contact your Upbound sales representative for more information on version support.
 

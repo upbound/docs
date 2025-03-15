@@ -5,6 +5,8 @@ configurations"
 aliases:
     - /development-extensions/vscode-extensions
     - development-extensions/vscode-extensions
+    - build/vscode-extensions
+    - /build/vscode-extensions
 ---
 
 Official Upbound providers include schemas that you can leverage to enhance your

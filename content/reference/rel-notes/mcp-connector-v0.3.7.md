@@ -10,6 +10,6 @@ version_sort_key: "0000.0003.0007"
 
 #### What's Changed
 
-- Fixed regular expression for managed control plane check for older versions of the Spaces API.
+- Fixed regular expression for control plane check for older versions of the Spaces API.
 
 <!-- vale on -->

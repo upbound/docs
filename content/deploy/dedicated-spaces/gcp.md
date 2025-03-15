@@ -16,13 +16,13 @@ The following guide walks you through setting up a Dedicated Space in your GCP o
 
 ## Dedicated Space on GCP architecture
 
-A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbound-controlled project in your GCP cloud environment. The Spaces software runs in this project, orchestrated by Kubernetes. Backups and billing data get stored inside bucket or blob storage in the same project. The managed control planes deployed and controlled by the Spaces software runs on the Kubernetes cluster which gets deployed into the project.
+A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbound-controlled project in your GCP cloud environment. The Spaces software runs in this project, orchestrated by Kubernetes. Backups and billing data get stored inside bucket or blob storage in the same project. The control planes deployed and controlled by the Spaces software runs on the Kubernetes cluster which gets deployed into the project.
 
 The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
 
 {{<img src="deploy/dedicated-spaces/images/managed-arch-gcp.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
 
-The Spaces software gets deployed on a GKE Cluster in the region of your choice. This GKE cluster is where your managed control planes are ultimately run. Upbound also deploys cloud buckets, 1 for the collection of the billing data and 1 for control plane backups.
+The Spaces software gets deployed on a GKE Cluster in the region of your choice. This GKE cluster is where your control planes are ultimately run. Upbound also deploys cloud buckets, 1 for the collection of the billing data and 1 for control plane backups.
 
 Upbound doesn't have access to other projects nor your organization-level settings in your cloud environment. Outside of your cloud organization, Upbound runs the Upbound Console, which includes the Upbound API and web application, including the dashboard you see at `console.upbound.io`. By default, all connections are encrypted, but public. Optionally, you also have the option to use private network connectivity through [GCP Private Service Connect](#configure-private-service-connect).
 

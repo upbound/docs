@@ -9,7 +9,7 @@ aliases:
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in GCP.
 
-Disconnected Spaces allows you to host managed control planes in your preferred environment.
+Disconnected Spaces allows you to host control planes in your preferred environment.
 
 ## Prerequisites
 
@@ -204,9 +204,9 @@ Use `up ctx` to create a kubeconfig context pointed at your new Space:
 up ctx disconnected/$(kubectl config current-context)
 ```
 
-## Create your first managed control plane
+## Create your first control plane
 
-You can now create a managed control plane with the `up` CLI:
+You can now create a control plane with the `up` CLI:
 
 ```bash
 up ctp create ctp1
@@ -227,27 +227,27 @@ spec:
 EOF
 ```
 
-The first managed control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. Wait until it's ready using the following command:
+The first control plane you create in a Space takes around 5 minutes to get into a `condition=READY` state. Wait until it's ready using the following command:
 
 ```bash
 kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 ```
 
-## Connect to your managed control plane
+## Connect to your control plane
 
-Connect to your managed control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
+Connect to your control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
 
 ```bash
 up ctx ./default/ctp1
 ```
 
-This command updates your current kubectl context. You're now connected to your managed control plane directly. Confirm this is the case by trying to list the CRDs in your managed control plane:
+This command updates your current kubectl context. You're now connected to your control plane directly. Confirm this is the case by trying to list the CRDs in your control plane:
 
 ```bash
 kubectl get crds
 ```
 
-To disconnect from your managed control plane and switch back to your previous context:
+To disconnect from your control plane and switch back to your previous context:
 
 ```bash
 up ctx -

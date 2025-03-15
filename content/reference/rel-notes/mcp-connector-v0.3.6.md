@@ -10,6 +10,6 @@ version_sort_key: "0000.0003.0006"
 
 #### What's Changed
 
-- Updated managed control plane check to support the recent changes in the Spaces API.
+- Updated control plane check to support the recent changes in the Spaces API.
 
 <!-- vale on -->

@@ -1,7 +1,7 @@
 ---
-title: "MCP Connector Release Notes"
+title: "Control Plane Connector Release Notes"
 weight: 1
-description: "Release notes for MCP Connector"
+description: "Release notes for Control Plane Connector"
 ---
 <!-- vale off -->
 

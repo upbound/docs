@@ -11,14 +11,14 @@ Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's com
 Upbound's information architecture is a hierarchy consisting of:
 
 <!-- vale off -->
-* a set of managed control planes
+* a set of control planes
 * logically grouped into control planes groups
 * which are hosted in an environment called a [Space]({{<ref "/deploy" >}}).
 
-These contexts nest within each other. An MCP must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
+These contexts nest within each other. A control plane must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
 <!--vale on -->
 
-Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api/" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
+Every control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api/" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
 
 In `up`, the commands you can execute are context-sensitive.
 
@@ -35,7 +35,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx](https://gith
 <!--vale on -->
 
 {{< hint "important" >}}
-When interacting with managed control planes that are hosted in:
+When interacting with control planes that are hosted in:
 
 * **a Cloud or Connected Space:** make sure you're using a cloud profile logged into Upbound with `up login` before trying to use `up ctx`.
 * **a Disconnected Space:** make sure your're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
@@ -93,7 +93,7 @@ up ctx -
 Instead of selecting a context and making it your current kubecontext, you can also print the context out to a kubeconfig file. Run the following:
 
 ```shell
-# This saves an MCP's connection details to a kubeconfig
+# This saves a control plane's connection details to a kubeconfig
 up ctx <your-org>/<your-space>/<your-group>/<your-ctp> -f - > context.yaml
 
 # This saves a Space's connection details to a kubeconfig

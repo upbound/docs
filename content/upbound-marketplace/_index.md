@@ -14,7 +14,7 @@ The Upbound Marketplace is the main source for publicly available Crossplane pac
 
 The Marketplace supports the following control plane extensions:
 
-- [Crossplane providers](https://marketplace.upbound.io/providers) are packages that enable Upbound managed control planes to interact with external APIs.
+- [Crossplane providers](https://marketplace.upbound.io/providers) are packages that enable Upbound control planes to interact with external APIs.
 - [Control plane configurations](https://marketplace.upbound.io/configurations) are packages that define one or more resource types, called Composite Resources.
 - [Composition functions](https://marketplace.upbound.io/functions) are packages that define reusable logic for composing Crossplane resources.
 

@@ -14,13 +14,13 @@ version_sort_key: "0001.0002.0000"
   resources are now namespace-scoped objects (as opposed to previously being cluster-scoped).
 - Control planes now offer auto-upgrade channels (`rapid`, `stable`, `patch`, and `none`), giving users control over
   what pace their control plane's Crossplane version automatically upgrades to. `None` gives users total control over
-  when to upgrade the Crossplane version in a managed control plane.
+  when to upgrade the Crossplane version in a control plane.
 - Alpha suppport for a new aggregate query API that can be used to query state across one or more control planes in a
   group.
 - Alpha support for built-in multi-control plane secrets management. Define new `SharedSecrets` and `SharedSecretStores`
   within a control plane group to selectively provision secrets from an external store--such as Vault--into the control
   planes in the group.
-- Support for OIDC auhentication flows when interacting directly with a managed control plane in a Space.
-- new `up` CLI commands to migrate open soure Crossplane or UXP instances into a managed control plane in a Space.
+- Support for OIDC auhentication flows when interacting directly with a control plane in a Space.
+- new `up` CLI commands to migrate open soure Crossplane or UXP instances into a control plane in a Space.
 
 <!-- vale on -->

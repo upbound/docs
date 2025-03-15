@@ -7,7 +7,7 @@ aliases:
     - development-extensions/dev-cps
 ---
 
-Development control planes are a subset of Upbound's Managed Control Planes.
+Development control planes are a type of control plane on Upbound.
 Development control planes aim to help you in your Upbound journey and support
 your development loop, testing, and CI pipeline configuration. These resource-limited, short-TTL control planes offer a cost-effective way to test and calibrate APIs and compositions without production-level overhead.
 

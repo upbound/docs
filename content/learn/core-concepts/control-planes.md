@@ -89,5 +89,5 @@ reconciliation:
 <!-- vale alex.Condescending = YES -->
 
 Crossplane runs control planes in a Kubernetes deployment, which requires you to
-build and configure a Kubernetes deployment. Upbound handles this for you with **managed control planes**. For more
-information, review the [managed control plane documentation]({{<ref "operate">}}).
+build and configure a Kubernetes deployment. Upbound handles this for you with **control planes**. For more
+information, review the [control plane documentation]({{<ref "operate">}}).

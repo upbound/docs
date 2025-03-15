@@ -36,7 +36,7 @@ In each of these scenarios, you must resort to writing complex composition logic
 
 ## Prerequisites
 
-Enable the Control Plane Topology feature in the Space you plan to run your managed control plane in:
+Enable the Control Plane Topology feature in the Space you plan to run your control plane in:
 
 - Cloud Spaces: Not available yet
 - Connected Spaces: Space administrator must enable this feature
@@ -48,7 +48,7 @@ Enable the Control Plane Topology feature in the Space you plan to run your mana
 <!-- vale Google.Headings = YES --> 
 <!-- vale Microsoft.Headings = YES --> 
 
-_ReferencedObject_ is a resource type available in an Upbound managed control plane that lets you reference other Kubernetes resources in Upbound.  
+_ReferencedObject_ is a resource type available in an Upbound control plane that lets you reference other Kubernetes resources in Upbound.  
 
 {{< hint "tip" >}}
 While this feature is especially useful for composing resources that exist in a remote context--such as another control plane--you can also use _ReferencedObjects_ to easily resolve references to any other Kubernetes object in the current control plane context. This could be a secret, another Crossplane resource, or more.
@@ -368,7 +368,7 @@ metadata:
 
 ## Use an _Environment_ to route resources
 
-_Environment_ is a resource type available in Upbound managed control planes that works in tandem with resources installed by _RemoteConfigurations_. _Environment_ is a namespace-scoped resource that lets you configure how to route remote resources to other control planes by a set of user-defined dimensions. 
+_Environment_ is a resource type available in Upbound control planes that works in tandem with resources installed by _RemoteConfigurations_. _Environment_ is a namespace-scoped resource that lets you configure how to route remote resources to other control planes by a set of user-defined dimensions. 
 
 ### Define a routing dimension
 
