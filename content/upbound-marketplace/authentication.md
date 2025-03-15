@@ -13,6 +13,7 @@ Authenticating to the Upbound Marketplace for private packages requires an [Upbo
 {{< /hint >}}
 
 ## Prerequisites
+
 Install the [Up command-line]({{<ref "cli">}}) to generate Kubernetes secrets and to use Upbound Marketplace private resources.
 
 {{< hint "note" >}}
@@ -28,6 +29,30 @@ up login
 username: my-user
 password:
 my-user logged in
+```
+
+## Configure Docker to use the up credential helper
+
+If you use Docker or any other OCI client, you can configure it to use Upbound credentials to interact with the Marketplace. If you plan to push packages to the Upbound Marketplace, you can use the credentials acquired via `up login`. 
+
+Install the docker-credential-up credential helper:
+
+```shell
+curl -sL "https://cli.upbound.io" | BIN=docker-credential-up sh
+```
+
+{{<hint "tip" >}}
+Read the [up CLI configuration]({{<ref "reference/cli/configuration/#configuring-a-docker-credential-helper" >}}) documentation for more installation options.
+{{< /hint >}}
+
+In the case of Docker, add `up` to your Docker `config.json`. This allows your client to use Upbound credentials to interact with the Marketplace:
+
+```json
+{
+	"credHelpers": {
+		"xpkg.upbound.io": "up"
+	}
+}            
 ```
 
 ## Kubernetes image pull secrets
