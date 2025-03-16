@@ -97,9 +97,20 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "operate/control-planes/#connect-directly-to-your-control-plane" >}}) for the
-control plane. Write it to a secret in the cluster where you plan to
-install the Control Plane Connector to. Reference this secret in the
+1. Create a [kubeconfig]({{<ref "reference/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group" >}}) for the control plane. Update your Upbound context to the path for your desired control plane.
+```ini
+up login
+up ctx <your-org>/upbound-gcp-us-central-1/default/your-control-plane
+up ctx . -f - > context.yaml
+```
+
+2. Write it to a secret in the cluster where you plan to
+install the Control Plane Connector to. 
+```ini
+kubectl create secret generic my-controlplane-kubeconfig --from-file=context.yaml
+```
+
+3. Reference this secret in the
 `spaces.controlPlane.kubeconfigSecret` field below.
 
 ```yaml
