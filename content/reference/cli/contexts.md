@@ -110,3 +110,86 @@ If you get lost in the navigation hierarchy, you can print the current context t
 ```shell
 up ctx .
 ```
+
+## Generate a kubeconfig
+
+Because contexts in Upbound are Kubernetes-compatible, there may be cases where you want to generate a [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) from a context:
+
+- Use the kubeconfig with a CLI like kubectl
+- Provide the kubeconfig to tooling such as Argo
+
+### Generate a kubeconfig for a Space
+
+The steps below generate a kubeconfig so you can interact with Space APIs.
+
+1. Log on to Upbound.
+{{< editCode >}}
+```ini
+up login
+```
+{{< /editCode >}}
+
+2. Set your `up` context to the desired Space. For example, this command sets it to an Upbound Cloud Space:
+{{< editCode >}}
+```ini
+up ctx $@<your-org-name>$@/upbound-gcp-us-central-1
+``` 
+{{< /editCode >}}
+
+3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
+{{< editCode >}}
+```ini
+up ctx . -f - > context.yaml
+```
+{{< /editCode >}}
+
+### Generate a kubeconfig for a Space with a group set
+
+The steps below generate a kubeconfig with the namespace set to the group so you can interact with Space APIs.
+
+1. Log on to Upbound.
+{{< editCode >}}
+```ini
+up login
+```
+{{< /editCode >}}
+
+2. Set your `up` context to the desired control plane group in your Upbound resource hierarchy. For example, this command sets it to the default group of an Upbound Cloud Space:
+{{< editCode >}}
+```ini
+up ctx $@<your-org-name>$@/upbound-gcp-us-central-1/default
+``` 
+{{< /editCode >}}
+
+3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
+{{< editCode >}}
+```ini
+up ctx . -f - > context.yaml
+```
+{{< /editCode >}}
+
+
+### Generate a kubeconfig for a control plane in a group
+
+The steps below generate a kubeconfig so you can interact with a control plane's API server.
+
+1. Log on to Upbound.
+{{< editCode >}}
+```ini
+up login
+```
+{{< /editCode >}}
+
+2. Set your `up` context to the desired control plane in your Upbound resource hierarchy. For example, this command sets it to a control plane in the default group of an Upbound Cloud Space:
+{{< editCode >}}
+```ini
+up ctx $@<your-org-name>$@/upbound-gcp-us-central-1/default/my-ctp
+``` 
+{{< /editCode >}}
+
+3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
+{{< editCode >}}
+```ini
+up ctx . -f - > context.yaml
+```
+{{< /editCode >}}
