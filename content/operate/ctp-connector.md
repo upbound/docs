@@ -97,7 +97,7 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the
+Create a [kubeconfig]({{<ref "operate/control-planes/#connect-directly-to-your-control-plane" >}}) for the
 control plane. Write it to a secret in the cluster where you plan to
 install the Control Plane Connector to. Reference this secret in the
 `spaces.controlPlane.kubeconfigSecret` field below.
@@ -187,7 +187,7 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-Create a [kubeconfig]({{<ref "operate#connect-directly-to-your-mcp" >}}) for the
+Create a [kubeconfig]({{<ref "operate/control-planes/#connect-directly-to-your-control-plane" >}}) for the
 control plane. Write it to a secret in the cluster where you plan to
 install the Control Plane Connector to. Reference this secret in the
 `spaces.controlPlane.kubeconfigSecret` field below.
