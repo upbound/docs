@@ -98,7 +98,7 @@ up space init --organization="${UPBOUND_ACCOUNT}" \
   "v${SPACES_VERSION}"
 ```
 
-You are ready to [create your first control plane](#create-your-first-managed-control-plane) in your Space.
+You are ready to [create your first control plane](#create-your-first-control-plane) in your Space.
 
 <!-- vale Google.Headings = NO -->
 ## Connect to your Space
