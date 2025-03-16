@@ -1,7 +1,7 @@
 ---
 title: (deprecated) Connect Argo to Upbound
 weight: 10
-description: A tutorial for connecting Argo to a managed control plane.
+description: A tutorial for connecting Argo to a control plane.
 aliases:
     - /deploy/legacy-spaces/connect-argo-to-upbound
 ---
@@ -10,7 +10,7 @@ aliases:
 This tutorial is deprecated and only applicable to users running in Upbound's Legacy Space.
 {{< /hint >}}
 
-In this tutorial, you learn how to create a managed control plane in Upbound and connect it to [Argo CD](https://argoproj.github.io/cd/). Argo CD is a continuous delivery tool for Kubernetes that you can use to deliver configurations to managed control planes in Upbound.
+In this tutorial, you learn how to create a control plane in Upbound and connect it to [Argo CD](https://argoproj.github.io/cd/). Argo CD is a continuous delivery tool for Kubernetes that you can use to deliver configurations to control planes in Upbound.
 
 ## Prerequisites
 
@@ -26,9 +26,9 @@ To complete this tutorial, you need the following:
 
 
 
-## Create a managed control plane
+## Create a control plane
 
-Create a new managed control plane inside your Upbound account.
+Create a new control plane inside your Upbound account.
 
 {{< tabs >}}
 
@@ -77,7 +77,7 @@ This command saves the kubeconfig for the control plane to a file in your workin
 Switch contexts to the Kubernetes cluster where you've installed Argo. Create a secret on the Argo cluster whose data contains the connection details fetched from the previous step.
 
 {{< hint "important" >}}
-Make sure the following commands are executed against your **Argo** cluster, not your managed control plane.
+Make sure the following commands are executed against your **Argo** cluster, not your control plane.
 {{< /hint >}}
 
 Run the following command in a terminal:
@@ -135,7 +135,7 @@ This application points at a sample repository that contains a reference Crosspl
 
 ## Inspect the configuration of your control plane
 
-Once synced, Argo installs the configuration on your managed control plane in Upbound. You can confirm this by switching your kubeconfig context back to your managed control plane. Then run the following command in a terminal:
+Once synced, Argo installs the configuration on your control plane in Upbound. You can confirm this by switching your kubeconfig context back to your control plane. Then run the following command in a terminal:
 
 ```bash {copy-lines="none"}
 kubectl get configuration

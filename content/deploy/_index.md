@@ -17,9 +17,9 @@ Upbound Spaces are hosting environments for Upbound's managed Crossplane control
 
 <!-- vale write-good.Passive = NO -->
 Upbound offers a Global Console, with complementary API and CLI, that users use
-to manage operations for MCPs. MCPs are deployed in hosting environments called Spaces.
+to manage operations for control planes. control planes are deployed in hosting environments called Spaces.
 Upbound supports two types of Spaces: Cloud Spaces and Connected Spaces. Users
-have the freedom to choose whether to run MCPs in Cloud Spaces, Connected
+have the freedom to choose whether to run control planes in Cloud Spaces, Connected
 Spaces, or both.
 <!-- vale write-good.Passive = YES -->
 
@@ -31,7 +31,7 @@ Spaces, or both.
 
 Cloud Spaces are multi-tenant deployments of Upbound, operated by Upbound inside
 our cloud environments. With Cloud Spaces, you get a fully managed SaaS
-experience, MCPs, hosting infrastructure management, persistent storage
+experience, control planes, hosting infrastructure management, persistent storage
 management, and backup and restore management.
 
 <!-- vale Google.We = YES -->
@@ -62,7 +62,7 @@ operate them on your own infrastructure. You get the best of SaaS with the benef
 neighbors.
 <!-- vale Google.We = YES -->
 
-With Connected Spaces, it's more than just an on-premises deployment of your MCPs; the Crossplane experts at Upbound are operating your control planes alongside your team for a truly fully managed Crossplane solution. The Upbound team is on-call for your control planes.
+With Connected Spaces, it's more than just an on-premises deployment of your control planes; the Crossplane experts at Upbound are operating your control planes alongside your team for a truly fully managed Crossplane solution. The Upbound team is on-call for your control planes.
 
 <!-- vale Google.Headings = NO -->
 ## Disconnected Spaces

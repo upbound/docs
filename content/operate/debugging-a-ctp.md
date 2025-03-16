@@ -1,18 +1,19 @@
 ---
-title: Debugging issues on a managed control plane
+title: Debugging issues on a control plane
 weight: 100
-description: A guide for how to debug resources on a managed control plane running in Upbound.
+description: A guide for how to debug resources on a control plane running in Upbound.
+draft: true
 aliases:
     - /mcp/debugging-a-ctp
     - mcp/debugging-a-ctp
 ---
 
-This guide provides troubleshooting guidance for how to identify and fix issues on a managed control plane.
+This guide provides troubleshooting guidance for how to identify and fix issues on a control plane.
 
 ## Start from Upbound Console
 <!-- vale write-good.Weasel = NO -->
 <!-- ignore "only" -->
-The Upbound [Console]({{<ref "console" >}}) has a built-in control plane explorer experience that surfaces status and events for the resources on your MCP. The explorer is claim-based. Resources in this view exist only if they exist in the reference chain originating from a claim. This view is a helpful starting point if you are attempting to debug an issue originating from a claim.
+The Upbound [Console]({{<ref "console" >}}) has a built-in control plane explorer experience that surfaces status and events for the resources on your control plane. The explorer is claim-based. Resources in this view exist only if they exist in the reference chain originating from a claim. This view is a helpful starting point if you are attempting to debug an issue originating from a claim.
 <!-- vale write-good.Weasel = YES -->
 
 {{< hint "tip" >}}
@@ -113,4 +114,4 @@ Some examples of Crossplane resources that require the `up` CLI
 
 ## Use direct CLI access
 
-If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the managed control plane. Use  [`up ctx`]({{<ref "reference/cli/command-reference#ctx" >}}) to connect directly to your managed control plane.
+If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the control plane. Use  [`up ctx`]({{<ref "reference/cli/command-reference#ctx" >}}) to connect directly to your control plane.

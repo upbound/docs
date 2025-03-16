@@ -12,7 +12,7 @@ Legacy Space. Follow the link to the [new quickstart]({{<ref
 "learn/control-plane-project.md" >}}) to try the new Upbound experience.
 {{< /hint >}}
 
-This quickstart guides you through how to create your first managed control plane in Upbound with configuration-caas. Connect Upbound to AWS, GCP, and Azure to provision and manage fully configured Kubernetes Service clusters. They're composed using cloud service primitives from the Upbound Official Providers.
+This quickstart guides you through how to create your first control plane in Upbound with configuration-caas. Connect Upbound to AWS, GCP, and Azure to provision and manage fully configured Kubernetes Service clusters. They're composed using cloud service primitives from the Upbound Official Providers.
 
 ## Prerequisites
 
@@ -71,7 +71,7 @@ You can reopen this guide at any time by selecting the Getting Started Guide but
 The control plane details view gives you a view into what's happening on your control plane.
 
 ## Authenticate with Providers
-Next, configure provider-upbound and connect your managed control plane to each cloud service provider you wish to use in your CaaS offering. You must configure provider-upbound via the CLI, but you can authenticate with cloud service providers from within the Upbound Console UI.
+Next, configure provider-upbound and connect your control plane to each cloud service provider you wish to use in your CaaS offering. You must configure provider-upbound via the CLI, but you can authenticate with cloud service providers from within the Upbound Console UI.
 
 {{< hint "tip" >}}
 You should wait until your Configuration has finished installing into your control plane before creating any ProviderConfigs.
@@ -309,7 +309,7 @@ Under _Attribute Conditions_ select **Add Condition**.
 
 <!-- vale gitlab.Uppercase = NO -->
 <!-- ignore CEL -->
-To authenticate any managed control plane in your organization, in the _Conditional CEL_ input box put
+To authenticate any control plane in your organization, in the _Conditional CEL_ input box put
 <!-- vale gitlab.Uppercase = YES -->
 
 {{<editCode >}}
@@ -319,7 +319,7 @@ google.subject.contains("mcp:$@ORGANIZATION_NAME$@")
 {{< /editCode >}}
 
 {{< hint "warning" >}}
-Not providing a CEL condition allows any Upbound managed control plane to access your GCP account if they know the project ID and service account name.
+Not providing a CEL condition allows any Upbound control plane to access your GCP account if they know the project ID and service account name.
 {{< /hint >}}
 
 Select **Save**.
@@ -341,7 +341,7 @@ GCP requires Upbound to use a [Service Account](https://cloud.google.com/iam/doc
 Under _Service account details_ enter
 _Service account name_: **upbound-service-account**
 _Service account ID_: **upbound-service-account-id**
-_Description_: **Upbound managed control planes service account**
+_Description_: **Upbound control planes service account**
 <!-- vale Google.WordList = YES -->
 <!-- vale Google.FirstPerson = YES -->
 
@@ -361,7 +361,7 @@ Select **Done**.
 #### Record the service account email address
 
 At the list of service accounts copy the service account **email**.
-Upbound requires this to authenticate your managed control plane.
+Upbound requires this to authenticate your control plane.
 
 {{<img src="images/gcp-sa-email.png" alt="list of GCP service accounts" unBlur="true" size="small" >}}
 
@@ -460,11 +460,11 @@ Navigate back to [Upbound Console](https://console.upbound.io) window and to you
 
 There's now a claim card next to the `Cluster` type card.
 
-Select the claim and Upbound renders the full resource tree that's getting created and managed by your managed control plane.
+Select the claim and Upbound renders the full resource tree that's getting created and managed by your control plane.
 
 {{<img src="images/caas-ctp-graph.png" alt="Viewing a claim in the graph" >}}
 
-Congratulations, you created your first resources with your MCP.
+Congratulations, you created your first resources with your control plane.
 
 <!-- Named Links -->
 

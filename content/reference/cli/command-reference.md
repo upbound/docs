@@ -132,7 +132,7 @@ All `up configuration` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -263,7 +263,7 @@ upbound/configuration-scratch    Scratch                       github.com/upboun
 <!-- vale Upbound.Spelling = YES -->
 
 
-The `up controlplane` command provides management operations for managed control planes on Upbound. It also has commands for installing providers or configurations on Crossplane control planes generically.
+The `up controlplane` command provides management operations for control planes on Upbound. It also has commands for installing providers or configurations on Crossplane control planes generically.
 
 The `up` CLI relies on a `kubeconfig` file to connect to the target Kubernetes cluster.
 
@@ -277,7 +277,7 @@ All `up controlplane` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--kubeconfig=<path>`        | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
@@ -292,12 +292,12 @@ All `up controlplane` commands support the following options:
 
 <!-- ignore "controlplane" -->
 
-List the managed control planes in your Upbound account
+List the control planes in your Upbound account
 `up controlplane list`.
 
 **Examples**
 
-* List the managed control planes associated with an account.
+* List the control planes associated with an account.
 
 ```shell {copy-lines="1"}
 up ctp list
@@ -314,20 +314,20 @@ third-control-plane            f2h88eb1-59e0-4211-96af-f92428a4561f   ready    s
 
 <!-- ignore "controlplane" -->
 
-Create a managed control plane in Upbound and install referenced configuration on it
+Create a control plane in Upbound and install referenced configuration on it
 `up controlplane create --configuration-name=STRING <name>`.
 
-View available configurations to install on the managed control plane with `up configuration list`.
+View available configurations to install on the control plane with `up configuration list`.
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag              | Description                                              |
 | ---------- | ---------------------- | -------------------------------------------------------- |
-| `-d`       | `--description=STRING` | Provide a text description for the managed control plane |
+| `-d`       | `--description=STRING` | Provide a text description for the control plane |
 {{< /table >}}
 
 **Examples**
 
-* Create a managed control plane and install a configuration called `my-control-plane-api` on it.
+* Create a control plane and install a configuration called `my-control-plane-api` on it.
 
 ```shell {copy-lines="1"}
 up ctp create --configuration-name=my-control-plane-api my-control-plane
@@ -345,14 +345,14 @@ The configuration `my-control-plane-api` must first exist and have already been 
 <!-- vale Upbound.Spelling = YES -->
 
 
-Delete a managed control plane in Upbound
+Delete a control plane in Upbound
 `up controlplane delete --configuration-name=STRING <name>`.
 
-View available managed control planes to delete with `up controlplane list`.
+View available control planes to delete with `up controlplane list`.
 
 **Examples**
 
-* Delete a managed control plane.
+* Delete a control plane.
 
 ```shell {copy-lines="1"}
 up ctp delete my-control-plane
@@ -365,14 +365,14 @@ my-control-plane deleted
 ### controlplane get
 <!-- vale Upbound.Spelling = YES -->
 
-Get a managed control plane in Upbound
+Get a control plane in Upbound
 `up controlplane get <name>`.
 
-View available managed control planes with `up controlplane list`.
+View available control planes with `up controlplane list`.
 
 **Examples**
 
-* Get a managed control plane called `my-control-plane`.
+* Get a control plane called `my-control-plane`.
 
 ```shell {copy-lines="1"}
 up ctp get my-control-plane
@@ -385,20 +385,20 @@ my-control-plane    2012c379-5743-4f65-a473-30037861ef6e   ready    my-configura
  ### controlplane connect
 <!-- vale Upbound.Spelling = YES -->
 
-Set the current context of your kubeconfig to a managed control plane
+Set the current context of your kubeconfig to a control plane
 `up controlplane connect <name> --token=STRING`.
 
 Providing a token is only required when connecting to a control plane in Upbound's SaaS environment. The token is an API token. This flag gets ignored when used in the context of an Upbound Space.
 
 **Examples**
 
-* Connect to a managed control plane called `my-control-plane` in an Upbound Space.
+* Connect to a control plane called `my-control-plane` in an Upbound Space.
 
 ```shell {copy-lines="1"}
 up ctp connect my-control-plane
 ```
 
-* Connect to a managed control plane called `second-control-plane` in Upbound's SaaS environment.
+* Connect to a control plane called `second-control-plane` in Upbound's SaaS environment.
 
 ```shell {copy-lines="1"}
 up ctp connect second-control-plane --token=<redacted>
@@ -409,7 +409,7 @@ up ctp connect second-control-plane --token=<redacted>
 ### controlplane connector
 <!-- vale Upbound.Spelling = YES -->
 
-The `up controlplane connector` commands connect or disconnect a Kubernetes app cluster from a managed control plane in Upbound.
+The `up controlplane connector` commands connect or disconnect a Kubernetes app cluster from a control plane in Upbound.
 
 All `up controlplane connector` commands support the following options:
 
@@ -417,7 +417,7 @@ All `up controlplane connector` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -427,7 +427,7 @@ All `up controlplane connector` commands support the following options:
 #### controlplane connector install
 <!-- vale Upbound.Spelling = YES -->
 
-Connect a Kubernetes app cluster outside of Upbound to a managed control plane in Upbound. This command creates an `APIService` resource in the Kubernetes app cluster for every claim API in the managed control plane. As a result, the claim APIs are available in the Kubernetes app cluster just like all native Kubernetes API.
+Connect a Kubernetes app cluster outside of Upbound to a control plane in Upbound. This command creates an `APIService` resource in the Kubernetes app cluster for every claim API in the control plane. As a result, the claim APIs are available in the Kubernetes app cluster just like all native Kubernetes API.
 `up controlplane connector install <control-plane-name> <namespace-to-sync-to>`.
 
 {{<hint "important" >}}
@@ -449,11 +449,11 @@ Your kubeconfig should be pointing at your **Kubernetes app cluster** in order f
 
 **Examples**
 
-* Connect an app cluster to a managed control plane called `my-control-plane` and connected to a namespace `my-app-ns-1` in the control plane.
+* Connect an app cluster to a control plane called `my-control-plane` and connected to a namespace `my-app-ns-1` in the control plane.
 
 ```shell {copy-lines="1"}
 up ctp connect my-control-plane my-app-ns-1
-<install MCP Connector>
+<install Control Plane Connector>
 ```
 
 <!-- vale Upbound.Spelling = NO -->
@@ -461,10 +461,10 @@ up ctp connect my-control-plane my-app-ns-1
 #### controlplane connector uninstall
 <!-- vale Upbound.Spelling = YES -->
 
-Disconnect an Kubernetes app cluster from a managed control plane in Upbound
+Disconnect an Kubernetes app cluster from a control plane in Upbound
 `up controlplane connector uninstall <namespace`.
 
-The command uninstalls the MCP connector helm chart and moves any claims in the app cluster into the managed control plane at the specified namespace.
+The command uninstalls the control plane connector helm chart and moves any claims in the app cluster into the control plane at the specified namespace.
 
 {{< table "table table-sm table-striped cli-ref">}}
 | Short flag | Long flag                                | Description                                                                                                        |
@@ -476,11 +476,11 @@ The command uninstalls the MCP connector helm chart and moves any claims in the 
 
 **Examples**
 
-* Disconnect an app cluster from a managed control plane called `my-control-plane` and move the claims to the `default` namespace in the managed control plane.
+* Disconnect an app cluster from a control plane called `my-control-plane` and move the claims to the `default` namespace in the control plane.
 
 ```shell {copy-lines="1"}
 up ctp connector uninstall default
-<uninstall MCP Connector>
+<uninstall Control Plane Connector>
 ```
 
 <!-- vale Upbound.Spelling = NO -->
@@ -491,7 +491,7 @@ up ctp connector uninstall default
 
 
 {{< hint "warning" >}}
-Do not use this command to install a configuration on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "reference/legacy-spaces/control-plane-configurations" >}}).
+Do not use this command to install a configuration on a control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "reference/legacy-spaces/control-plane-configurations" >}}).
 {{< /hint >}}
 
 Install a Crossplane configuration packages into a Kubernetes cluster with
@@ -531,12 +531,12 @@ my-package installed
 ### controlplane disconnect
 <!-- vale Upbound.Spelling = YES -->
 
-Reset the current context of your kubeconfig to the previous value before connecting to a managed control plane
+Reset the current context of your kubeconfig to the previous value before connecting to a control plane
 `up controlplane disconnect`.
 
 **Examples**
 
-* Disconnect from a managed control plane you connected to prior.
+* Disconnect from a control plane you connected to prior.
 
 ```shell {copy-lines="1"}
 up ctp disconnect
@@ -549,7 +549,7 @@ up ctp disconnect
 
 
 {{< hint "warning" >}}
-Do not use this command to install a provider on a managed control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "reference/legacy-spaces/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired managed control plane.
+Do not use this command to install a provider on a control plane in Upbound. Instead, use the built-in support for [Git-synced configurations]({{<ref "reference/legacy-spaces/control-plane-configurations" >}}) and declare a provider dependency in the git repo for whichever configuration is installed on your desired control plane.
 {{< /hint >}}
 
 Install a Crossplane provider packages into a Kubernetes cluster with
@@ -613,7 +613,7 @@ View secrets created by `up controlplane pull-secret create` with `kubectl get s
 <!-- vale Upbound.Spelling = YES -->
 
 
-Uses a personal access token to create an entry in the default kubeconfig file for the specified managed control plane.
+Uses a personal access token to create an entry in the default kubeconfig file for the specified control plane.
 
 The `--file` flag uses the supplied configuration instead.
 
@@ -626,7 +626,7 @@ current context.
 | Short flag | Long flag        | Description                                                                                                                  |
 | ---------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `-f`       | `--file=STRING`  | File to merge kubeconfig.                                                                                                    |
-|            | `--token=STRING` | Required token to use in the generated kubeconfig to access the specified managed control plane. Upbound manages this token. |
+|            | `--token=STRING` | Required token to use in the generated kubeconfig to access the specified control plane. Upbound manages this token. |
 {{< /table >}}
 
 {{< hint "warning" >}}
@@ -832,7 +832,7 @@ All `up configuration` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -921,7 +921,7 @@ All `up organization user` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -1031,7 +1031,7 @@ All `up profile` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--kubeconfig=<path>`        | Use a custom `kubeconfig` file located at the given path. The default uses the active `kubeconfig`.              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
@@ -1277,7 +1277,7 @@ All `up repository` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -1364,7 +1364,7 @@ All `up robot` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -1518,7 +1518,7 @@ All `up space` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -1619,7 +1619,7 @@ All `up space billing` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -1689,7 +1689,7 @@ All `up uxp` commands support the following options:
 | Short flag | Long flag                    | Description                                                                                                      |
 | ---------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `-a`       | `--account=STRING`           | The username or organization to use for authentication. The default uses the authenticated user from `up login`. |
-|            | `--domain=<URL>`             | The managed control plane domain to connect to. The default is `https://upbound.io`                              |
+|            | `--domain=<URL>`             | The control plane domain to connect to. The default is `https://upbound.io`                              |
 |            | `--insecure-skip-tls-verify` | **Unsafe** - Don't validate the SSL certificate offered by the remote server. This command isn't recommended.    |
 |            | `--profile=<path>`           | Use a custom Up CLI profile at located at the provided path. The default is `~/.up/config.json`                  |
 {{< /table >}}
@@ -1950,7 +1950,7 @@ Get all composite resources managed by this control plane.
 
 #### up alpha migration import
 
-**Description:** Import a previously exported control plane state into an Upbound managed control plane, completing the migration process.
+**Description:** Import a previously exported control plane state into an Upbound control plane, completing the migration process.
 
 **Options:**
 

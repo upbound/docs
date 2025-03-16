@@ -90,7 +90,7 @@ spec:
 EOF
 ```
 
-This application points at a sample repository which contains a configurations for 3 managed control planes destined for deployment to a Space.
+This application points at a sample repository which contains a configurations for 3 control planes destined for deployment to a Space.
 
 ## Inspect the Space
 

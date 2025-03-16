@@ -16,7 +16,7 @@ Find guidance below on how to find solutions for issues you encounter when deplo
 Most issues fall into two general categories:
 
 1. issues with the Spaces management plane
-2. issues on a managed control plane
+2. issues on a control plane
 
 If your control plane doesn't reach a `Ready` state, it's indicative of the former. If your control plane is in a created and running state, but resources aren't reconciling, it's indicative of the latter.
 
@@ -64,7 +64,7 @@ upbound-system                                    spaces-router-bc78c96d7-kzts2 
 What you are seeing is:
 
 - Pods in the `upbound-system` namespace are components required to run the management plane of the Space. This includes the `spaces-controller`, `spaces-router`, and install of UXP.
-- Pods in the `mxp-{GUID}-system` namespace are components that collectively power a managed control plane. Notable call outs include pod names that look like `vcluster-api-{GUID}` and `vcluster-controller-{GUID}`, which are integral components of a managed control plane.
+- Pods in the `mxp-{GUID}-system` namespace are components that collectively power a control plane. Notable call outs include pod names that look like `vcluster-api-{GUID}` and `vcluster-controller-{GUID}`, which are integral components of a control plane.
 - Pods in other notable namespaces, including `cert-manager` and `ingress-nginx`, are prerequisite components that support a Space's successful operation.
 
 
@@ -97,9 +97,9 @@ kubectl get objects
 kubectl get releases
 ```
 
-### Troubleshooting tips for managed control planes in a Space
+### Troubleshooting tips for control planes in a Space
 
-General troubleshooting in a managed control plane starts by fetching the events of the control plane:
+General troubleshooting in a control plane starts by fetching the events of the control plane:
 
 1. Make sure the current context of your kubeconfig points at the Kubernetes cluster hosting your Space
 2. Run the following to fetch your control planes.
@@ -114,7 +114,7 @@ kubectl describe controlplanes.spaces.upbound.io <control-plane-name>
 ## Issues
 
 <!-- vale off -->
-### Your managed control plane is stuck in a 'creating' state
+### Your control plane is stuck in a 'creating' state
 
 #### Error: unknown field "ports" in io.k8s.api.networking.v1.NetworkPolicySpec
 

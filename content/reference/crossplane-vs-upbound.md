@@ -2,6 +2,7 @@
 title: Upbound vs Crossplane
 weight: 10
 description: A technical comparison of Upbound vs Crossplane
+draft: true
 ---
 
 Upbound is so much more than Crossplane. Thousands of organizations around the world use Crossplane. Choosing to run the open source project on your own puts you in the business of managing low-level infrastructure to power your control planes. That's why organizations are choosing Upbound, so they can focus on what matters.
@@ -40,5 +41,5 @@ Upbound provides a cloud-native experience for Crossplane. Upbound supplements t
 
 ## Constraints
 
-Because Upbound fully manages control planes, Upbound locks down the hosted control plane environment to prevent malicious actors. You may not install arbitrary workloads (Pods, Deployments, etc) on your managed control plane.
+Because Upbound fully manages control planes, Upbound locks down the hosted control plane environment to prevent malicious actors. You may not install arbitrary workloads (Pods, Deployments, etc) on your control plane.
 

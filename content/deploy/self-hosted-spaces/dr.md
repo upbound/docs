@@ -29,7 +29,7 @@ This feature is meant for Space administrators. Group or Control Plane users can
 ## Benefits
 The Space Backups feature provides the following benefits:
 
-* Automatic backups for all resources in a Space and all resources in managed control planes, without any operational overhead.
+* Automatic backups for all resources in a Space and all resources in control planes, without any operational overhead.
 * Backup schedules.
 * Selectors to specify resources to backup.
 
@@ -156,7 +156,7 @@ This example assumes you've already created a Cloud bucket called
 
 [SpaceBackupSchedule](https://docs.upbound.io/reference/space-api/#SpaceBackupSchedule-spec) is a cluster-scoped resource. This resource defines a backup schedule for the whole Space.
 
-Below is an example of a Space Backup Schedule running every day. It backs up all groups having `environment: production` labels and all managed control planes in those groups having `backup: please` labels.
+Below is an example of a Space Backup Schedule running every day. It backs up all groups having `environment: production` labels and all control planes in those groups having `backup: please` labels.
 
 ```yaml
 apiVersion: admin.spaces.upbound.io/v1alpha1
@@ -230,7 +230,7 @@ spec:
 
 ## Selecting space resources to backup
 
-By default, a SpaceBackup selects all groups and, for each of them, all managed control planes, secrets, and any other group-scoped resources.
+By default, a SpaceBackup selects all groups and, for each of them, all control planes, secrets, and any other group-scoped resources.
 
 By setting `spec.match`, you can include only specific groups, control planes, secrets, or other Space resources in the backup.
 

@@ -22,7 +22,7 @@ This guide helps you think through all steps needed to deploy Spaces for product
 
 ## Sizing a Space
 
-In a Space, the managed control planes you create get scheduled as pods across the cluster's node pools. The hyper scale cloud providers each offer managed Kubernetes services that can support hundreds of nodes in their node pools. That means the number of control planes you can run in a single Space is on the order hundreds--if not more.
+In a Space, the control planes you create get scheduled as pods across the cluster's node pools. The hyper scale cloud providers each offer managed Kubernetes services that can support hundreds of nodes in their node pools. That means the number of control planes you can run in a single Space is on the order hundreds--if not more.
 
 Rightsizing a Space for a production deployment depends on several factors:
 
@@ -34,7 +34,7 @@ Rightsizing a Space for a production deployment depends on several factors:
 
 #### Control plane empty state memory usage
 
-An idle, empty managed control plane consumes about 640 MB of memory. This encompasses the set of pods that constitute a managed control plane and which get deployed for each control plane instance.
+An idle, empty control plane consumes about 640 MB of memory. This encompasses the set of pods that constitute a control plane and which get deployed for each control plane instance.
 
 #### Managed resource memory usage
 
@@ -120,7 +120,7 @@ Upbound recommends budgeting an extra buffer of 20% to your resource capacity ca
 
 ## Deploying more than one Space
 
-You are welcome to deploy more than one Space. You just need to make sure you have a 1:1 mapping of Space to Kubernetes clusters. Spaces are by their nature constrained to a single Kubernetes Cluster, which are regional entities. If you want to offer managed control planes in multiple cloud environments or multiple public clouds entirely, these are justifications for deploying >1 Spaces.
+You are welcome to deploy more than one Space. You just need to make sure you have a 1:1 mapping of Space to Kubernetes clusters. Spaces are by their nature constrained to a single Kubernetes Cluster, which are regional entities. If you want to offer control planes in multiple cloud environments or multiple public clouds entirely, these are justifications for deploying >1 Spaces.
 
 ## Cert-manager
 

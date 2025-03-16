@@ -14,7 +14,7 @@ The Upbound Official AWS Provider supports multiple authentication methods.
 ## Upbound auth (OIDC)
 
 {{< hint "note" >}}
-This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
+This method of authentication is only supported in control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
 {{< /hint >}}
 
 When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to AWS without requiring you to store credentials in Upbound.

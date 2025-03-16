@@ -19,7 +19,7 @@ tutorials](https://go.dev/learn/) are a good place to start.
 
 To define your control plane APIs in Go you need Go and the Go Visual Studio
 Code extension. Refer to the [Visual Studio Code Extensions
-documentation]({{<ref "build/vscode-extensions">}}) to learn how to install
+documentation]({{<ref "reference/vscode-extensions">}}) to learn how to install
 them.
 
 ## Example

@@ -52,7 +52,7 @@ The _up_ CLI operates upon a single [Upbound context]({{<ref "reference/cli/cont
 
 1. A Space in Upbound
 2. A group within a Space
-3. a managed control plane within a group
+3. a control plane within a group
 
 To set the group preference, use `up ctx` to choose a group as your preferred Upbound context. For example:
 
@@ -96,7 +96,7 @@ up group delete my-new-group
 
 ### Protected groups
 
-Once a managed control plane gets created in a group, Upbound enforces a protection policy on the group. Upbound prevents accidental deletion of the group. To delete a group that has control planes in it, you should first delete all control planes in the group.
+Once a control plane gets created in a group, Upbound enforces a protection policy on the group. Upbound prevents accidental deletion of the group. To delete a group that has control planes in it, you should first delete all control planes in the group.
 
 ## Groups in the context of single-tenant Spaces
 
@@ -105,5 +105,5 @@ Upbound offers a variety of deployment models to use the product. If you deploy 
 Most Kubernetes clusters come with some set of predefined namespaces. Because a group maps to a corresponding Kubernetes namespace, whenever a group gets created, there too must be a Kubernetes namespace accordingly. When the Spaces software is newly installed, no groups exist. You _can_ elevate a Kubernetes namespace to become a group by doing the following:
 
 1. Creating a group with the same name as a preexisting Kubernetes namespace
-2. Creating a managed control plane in a preexisting Kubernetes namespace
+2. Creating a control plane in a preexisting Kubernetes namespace
 3. Labeling a Kubernetes namespace with the label `spaces.upbound.io/group=true`

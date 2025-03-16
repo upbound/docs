@@ -12,7 +12,7 @@ Upbound's Console is the command and control center for users to operate their o
 
 ## Dashboard
 
-The default landing page for the Console is the control plane dashboard. On the dashboard is a table view of your managed control planes showing key details such as name, status, configuration version, and creation date. You can search the table by control plane name to filter down the table.
+The default landing page for the Console is the control plane dashboard. On the dashboard is a table view of your control planes showing key details such as name, status, configuration version, and creation date. You can search the table by control plane name to filter down the table.
 
 Above the dashboard is Upbound's top navigation bar. Wherever you are in the product, the navigation bar allows you to access:
 
@@ -34,14 +34,14 @@ Clicking into a control plane brings you to the control plane explorer. From the
 {{<img src="deploy/spaces/images/ctp-explorer2.png" alt="control plane explorer" lightbox="true">}}
 
 <!-- vale Google.Headings = NO -->
-## MCP and configuration creation
+## control plane and configuration creation
 <!-- vale Google.Headings = YES -->
 
-You can create new managed control planes from the dashboard.
+You can create new control planes from the dashboard.
 
-Creating a new managed control plane from the Console:
+Creating a new control plane from the Console:
 
-{{<img src="deploy/spaces/images/create-ctp.png" alt="Create an MCP" lightbox="true">}}
+{{<img src="deploy/spaces/images/create-ctp.png" alt="Create a control plane" lightbox="true">}}
 
 You can create new configurations from the configurations list.
 

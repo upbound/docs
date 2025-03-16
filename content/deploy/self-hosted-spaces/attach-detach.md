@@ -171,7 +171,7 @@ is:
 Users interact with the Upbound Console to generate request queries to the Upbound Connect Service while exploring, managing, or debugging a self-hosted Space. These requests send data back to the user's browser session in the Console, including:
 
 * Metadata for the Space
-* Metadata for managed control planes in the state
+* Metadata for control planes in the state
 * Configuration manifests for various resource types within your Space: Crossplane managed resources, composite resources, composite resource claims, Upbound shared secrets, Upbound shared backups, Crossplane providers, ProviderConfigs, Configurations, and Crossplane Composite Functions.
 
 {{< hint "important" >}}
