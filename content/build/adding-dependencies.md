@@ -7,6 +7,20 @@ aliases:
     - core-concepts/adding-dependencies
 ---
 
+To get started, use the `up project init` command to create a control plane project directory
+with the necessary scaffolding. Upbound uses project directories containing configuration files to deploy infrastructure. Think of your control plane project as the source code representation of your control plane.
+
+### Init the project
+```shell
+  up project init upbound-qs && cd upbound-qs
+```
+
+The `up project init` command creates:
+*   `upbound.yaml`: Project configuration file.
+*   `apis/`: Directory for Crossplane composition definitions.
+*   `examples/`: Directory for example claims.
+*   `.github/` and `.vscode/`: Directories for CI/CD and local development.
+
 After you initialize your control plane project, you'll find a scaffolded `upbound.yaml` with the placeholder content. The `upbound.yaml` is the central file that keeps track of everything installed in your control plane project.
 
 To enjoy all the functionality that Upbound provides, you can do so by adding dependencies to your project.
