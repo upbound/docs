@@ -17,7 +17,7 @@ Upbound Spaces are hosting environments for Upbound's managed Crossplane control
 
 <!-- vale write-good.Passive = NO -->
 Upbound offers a Global Console, with complementary API and CLI, that users use
-to manage operations for control planes. control planes are deployed in hosting environments called Spaces.
+to manage operations for control planes. Control planes are deployed in hosting environments called Spaces.
 Upbound supports two types of Spaces: Cloud Spaces and Connected Spaces. Users
 have the freedom to choose whether to run control planes in Cloud Spaces, Connected
 Spaces, or both.

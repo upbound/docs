@@ -11,7 +11,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a Disconnected Space, set `features.alpha.sharedSecrets.enabled=true` when installing the Space:
+This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a self-hosted Space, set `features.alpha.sharedSecrets.enabled=true` when installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
