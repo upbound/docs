@@ -8,7 +8,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview, requires Spaces `v1.6.0`, and is off by default. To enable, set `features.alpha.observability.enabled=true` when installing Spaces:
+This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a self-hosted Space, set `features.alpha.observability.enabled=true` when installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -20,39 +20,17 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Control Plane. Upbound provides an integrated observability pipeline built on the [OpenTelemetry](https://opentelemetry.io/) project.
 
-The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data in Spaces. Upbound deploys a collector per control plane, defined by a `SharedTelemetryConfig` set up at the group level. Control plane collectors pass their data to external observability backends defined in the `SharedTelemetryConfig`.
+## Benefits
 
-## Prerequisites
+The observability feature allows you to:
 
-This feature requires the [OpenTelemetry Operator](https://opentelemetry.io/docs/kubernetes/operator/) on the Space cluster. Install this now if you haven't already:
+- collect, process, and expose telemetry data in control planes.
+- deploy a collector per control plane.
+- Pass data to external observability backends, such as Datadog, New Relic, and more.
 
-```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
-```
+## How it works
 
-If running Spaces => v1.11, the OpenTelemetry Operator version needs to be => v0.110.0, as there are breaking changes in the OpenTelemetry Operator. 
-
-The examples below document how to configure observability with the `up` CLI or Helm installations.
-
-## Up CLI instructions
-
-```bash {hl_lines="3-7"}
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  --set "account=${UPBOUND_ACCOUNT}" \
-  --set "features.alpha.observability.enabled=true" \
-```
-
-## Helm instructions
-
-```bash {hl_lines="7-11"}
-helm -n upbound-system upgrade --install spaces \
-  oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
-  --set "account=${UPBOUND_ACCOUNT}" \
-  --set "features.alpha.observability.enabled=true" \
-  --wait
-```
+The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data from control planes. Upbound deploys a collector per control plane, defined by a _SharedTelemetryConfig_ set up at the group level. Control plane collectors pass their data to external observability backends defined in the _SharedTelemetryConfig_.
 
 <!-- vale Google.Headings = NO -->
 
@@ -60,9 +38,9 @@ helm -n upbound-system upgrade --install spaces \
 
 <!-- vale Google.Headings = YES -->
 
-`SharedTelemetryConfig` is a custom resource that defines the telemetry configuration for a group of control planes. This resources allows you to specify the exporters and pipelines your control planes use to send telemetry data to your external observability backends.
+_SharedTelemetryConfig_ is a custom resource that defines the telemetry configuration for a group of control planes. This resources allows you to specify the exporters and pipelines your control planes use to send telemetry data to your external observability backends.
 
- The following is an example of a `SharedTelemetryConfig` resource that sends metrics and traces to New Relic:
+ The following is an example of a _SharedTelemetryConfig_ resource that sends metrics and traces to New Relic:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -92,17 +70,17 @@ The `exportPipeline` field specifies the control plane pipelines that send telem
 
 ### Usage
 
-In a Space, you can configure per control plane group telemetry settings by creating one or more `SharedTelemetryConfig` resources.
+_SharedTelemetryConfigs_ are group-scoped resources. This lets you configure telemetry collection for each group of control planes in a Space.
 
 {{< hint "important" >}}
-Your control plane can only use a single `SharedTelemetryConfig`. If you multiple `SharedTelemetryConfig` select the same control plane, the one applied first takes precedence. The other `SharedTelemetryConfig` fails the control plane provisioning due to conflict.
+Your control plane can only use a single _SharedTelemetryConfig_. If you create multiple _SharedTelemetryConfigs_ that select the same control plane, the one applied first takes precedence. The other _SharedTelemetryConfigs_ fail to provision in the control plane due to conflict.
 {{< /hint >}}
 
 Currently supported exporters are:
 - `datadog` (review the OpenTelemetry [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md) for configuration details)
 - `otelhttp` (used by New Relic among others, review the New Relic [documentation](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
 
-The example below shows how to configure a `SharedTelemetryConfig` resource to send metrics, traces and logs to Datadog:
+The example below shows how to configure a _SharedTelemetryConfig_ resource to send metrics, traces and logs to Datadog:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -126,17 +104,64 @@ spec:
     logs: [datadog]
 ```
 
+### Control plane selection
+
+To configure which control planes in a group you want to provision a telemetry collector into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
+
+This example matches all control planes in the group that have `environment: production` as a label:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: telemetry-collector
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          environment: production
+```
+
+You can use the more complex `matchExpressions` to match labels based on an expression. This example matches control planes that have label `environment: production` or `environment: staging`:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: telemetry-collector
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchExpressions:
+        - { key: environment, operator: In, values: [production,staging] }
+```
+
+You can also specify the names of control planes directly:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: telemetry-collector
+spec:
+  controlPlaneSelector:
+    names:
+    - controlplane-dev
+    - controlplane-staging
+    - controlplane-prod
+```
+
 ### Sensitive data
 
 {{< hint "important" >}}
 This feature is available from Spaces v1.10
 {{< /hint >}}
 
-To avoid exposing sensitive data in the `SharedTelemetryConfig` resource, use
+To avoid exposing sensitive data in the _SharedTelemetryConfig_ resource, use
 Kubernetes secrets to store the sensitive data and reference the secret in the
-`SharedTelemetryConfig` resource.
+_SharedTelemetryConfig_ resource.
 
-Create the secret in the same namespace/group as the `SharedTelemetryConfig`
+Create the secret in the same namespace/group as the _SharedTelemetryConfig_
 resource. The example below uses `kubectl create secret` to create a new secret:
 
 ```bash
@@ -144,7 +169,7 @@ kubectl create secret generic sensitive -n <STC_NAMESPACE>  \
     --from-literal=apiKey='YOUR_API_KEY'
 ```
 
-Next, reference the secret in the `SharedTelemetryConfig` resource:
+Next, reference the secret in the _SharedTelemetryConfig_ resource:
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -173,7 +198,7 @@ spec:
 
 The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
 `key`, and `path` values to inject the secret value in the
-`SharedTelemetryConfig` resource.
+_SharedTelemetryConfig_ resource.
 
 ### Telemetry processing
 
@@ -181,7 +206,7 @@ The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
 This feature is available from Spaces v1.11.
 {{< /hint >}}
 
-The `SharedTelemetryConfig` resource allows you to configure a processing 
+The _SharedTelemetryConfig_ resource allows you to configure a processing 
 pipeline for the telemetry data collected by the OpenTelemetry Collector. 
 Like `spec.exporters`, the `spec.processors` field allows you to
 configure the processors that transform the telemetry data for the exporters. It follows the OpenTelmetry Collector [processor configuration](https://opentelemetry.io/docs/collector/configuration/#processors).
@@ -194,8 +219,6 @@ For now, the only supported processor is the [transform processor](https://githu
 The [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md) allows for the transformation of telemetry data
 using the [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
 <!-- vale gitlab.SentenceLength = YES -->
-
-
 
 The transform processor can transform metrics, logs, and traces at different scopes and allows you to use conditionals to select specific data.
 
@@ -306,7 +329,7 @@ For more information, review the following transform processor documentation:
 
 ### Status
 
-If successful, Upbound creates the `SharedTelemetryConfig` resource and provisions the OpenTelemetry Collector for the selected control plane. To see the status, run `kubectl get stc`:
+If successful, Upbound creates the _SharedTelemetryConfig_ resource and provisions the OpenTelemetry Collector for the selected control plane. To see the status, run `kubectl get stc`:
 
 ```bash
  kubectl get stc
@@ -314,7 +337,7 @@ NAME       SELECTED   FAILED   PROVISIONED   AGE
 datadog    1          0        1             63s
 ```
 
-- `SELECTED` shows the number of control planes selected by the `SharedTelemetryConfig`.
+- `SELECTED` shows the number of control planes selected by the _SharedTelemetryConfig_.
 - `FAILED` shows the number of control planes that failed to provision the OpenTelemetry Collector.
 - `PROVISIONED` shows the provisioned and running OpenTelemetry Collectors on each control plane.
 
@@ -361,39 +384,3 @@ Upbound marks the control plane as provisioned only if the OpenTelemetry Collect
 NAME       SELECTED   FAILED   PROVISIONED   AGE
 datadog    1          0        0             63s
 ```
-
-## Space-level observability
-
-Observability is available in preview at the Space level. This feature allows you to observe your Space infrastructure. To enable this feature, set the `features.alpha.observability.enabled` flag to `true` when installing Spaces.
-
-When you enable observability in a Space, Upbound deploys a single [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to collect and export metrics and logs to your configured observability backends.
-
-To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart. Below is an example of an `otlphttp` compatible endpoint.
-
-<!-- vale gitlab.MeaningfulLinkWords = NO -->
-```yaml
-observability:
-  spacesCollector:
-    config:
-      exporters:
-        otlphttp:
-          endpoint: "<your-endpoint>"
-          headers:
-            api-key: YOUR_API_KEY
-      exportPipeline:
-        logs:
-          - otlphttp
-        metrics:
-          - otlphttp
-```
-<!-- vale gitlab.MeaningfulLinkWords = YES -->
-
-You can export metrics and logs from your Crossplane installation, Spaces infrastructure (controller, API, router, etc.), `provider-helm`, and `provider-kubernetes`.
-
-<!-- vale off -->
-## OpenTelemetryCollector image
-<!-- vale on -->
-
-Control plane (`SharedTelemetry`) and Space observability deploy the same custom OpenTelemetry Collector image. The OpenTelemetry Collector image supports `otlhttp`, `datadog`, and `debug` exporters.
-
-For more information on observability configuration, review the [Helm chart reference](https://docs.upbound.io/all-spaces/self-hosted-spaces/helm-reference/).
