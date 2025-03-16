@@ -1,6 +1,6 @@
 ---
-title: "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project"
-weight: 1
+title: "2. Authoring Composite Resource Definitions (XRDs) in your Control Plane Project"
+weight: 2
 description: "Define your first API in your control plane project"
 aliases:
     - /core-concepts/authoring-xrds
@@ -501,3 +501,6 @@ update the `properties.size` field in the `spec`.
 
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale write-good.Passive = YES -->
+
+## Next steps
+Now that we've authored an XRD, let's author the composition[https://docs.upbound.io/core-concepts/authoring-compositions] that will utilize the XRD we just generated.

@@ -1,6 +1,6 @@
 ---
-title: Provider Authentication
-weight: 7
+title: 5. Provider Authentication
+weight: 5
 description: Description of the document
 aliases:
     - /core-concepts/providers

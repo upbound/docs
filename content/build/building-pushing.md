@@ -1,6 +1,6 @@
 ---
-title: "Building and pushing your Control Plane Projects"
-weight: 5
+title: "4. Building and pushing your Control Plane Projects"
+weight: 4
 description: "How to build and push your control plane project to the Upbound
 Marketplace"
 aliases:
@@ -127,3 +127,5 @@ other configuration.
 
 Note that embedded functions require Crossplane 1.18 or later.
 
+## Next steps
+Now, our control plane project is ready to be run. Let's first make sure that we have our provider authentication[https://docs.upbound.io/core-concepts/providers] properly set up so that Crossplane will actually create and manage real cloud resources.

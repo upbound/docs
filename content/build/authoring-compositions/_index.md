@@ -1,11 +1,10 @@
 ---
-title: Authoring Compositions
-weight: 2
+title: 3. Authoring Compositions
+weight: 3
 description: Use KCL or Python to create resources with your control plane.
 aliases:
     - /core-concepts/authoring-compositions
 ---
-
 
 After you author an XRD, `up composition generate` allows you to create a
 composition based on the parameters of your XRD.
@@ -266,3 +265,6 @@ For more KCL best practices, please refer to the [documentation]({{<ref "build/a
 <!-- /KCL -->
 
 {{< /content-selector >}}
+
+## Next steps
+Now that we've authored our composition and embedded functions, let's now build and push[https://docs.upbound.io/core-concepts/building-pushing] our control plane project to the Upbound marketplace.

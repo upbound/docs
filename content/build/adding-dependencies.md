@@ -1,15 +1,20 @@
 ---
-title: "Adding dependencies to your Control Plane Projects"
-weight: 6
+title: "1. Adding dependencies to your Control Plane Projects"
+weight: 1
 description: "The basic concepts to help you on your Upbound journey"
 aliases:
     - /core-concepts/adding-dependencies
     - core-concepts/adding-dependencies
 ---
 
+After you initialize your control plane project, you'll find a scaffolded `upbound.yaml` with the placeholder content. The `upbound.yaml` is the central file that keeps track of everything installed in your control plane project.
+
+To enjoy all the functionality that Upbound provides, you can do so by adding dependencies to your project.
+
 A dependency can be a provider, function or a configuration that you want to
-install to your control plane project. When you install a dependency, the Upbound CLI unpacks and references the
-dependency automatically in your `upbound.yaml` project file.
+install to your control plane project.
+
+When you install a dependency, the Upbound CLI unpacks and references the dependency automatically in your `upbound.yaml` project file.
 
 First, open the `upbound.yaml` project file in your editor.
 
@@ -154,3 +159,6 @@ To wipe the dependency cache, run
 the [up dependency clean-cache]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta) update CLI ref link --->
+
+## Next steps
+Now that we've covered the basics of dependencies and control plane projects, let's learn how to author an API[https://docs.upbound.io/core-concepts/authoring-xrds] to run on your control plane.

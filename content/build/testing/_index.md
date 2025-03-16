@@ -1,6 +1,6 @@
 ---
-title: "Running and testing your Control Plane Projects"
-weight: 7
+title: "6. Running and testing your Control Plane Projects"
+weight: 6
 description: "How to run your control plane project on a development controlplane"
 cascade:
     product: testing-api
@@ -8,6 +8,52 @@ aliases:
     - /core-concepts/testing
     - core-concepts/testing
 ---
+
+## Run your control plane project on a development control plane
+
+Development control planes are a type of control plane on Upbound that aim to help you in your Upbound journey and support your development loop, testing, and CI pipeline configuration. These resource-limited, short-TTL control planes offer a cost-effective way to test and calibrate APIs and compositions without production-level overhead.
+
+{{<hint>}}
+Development Control Planes are available in Cloud Hosted Spaces only.
+{{</hint>}}
+
+
+To create a Development Control Plane, use the Upbound CLI's `up project run`
+command in an existing project. Follow the Upbound Quickstart to create a new
+example project.
+
+```shell
+up project run
+```
+
+The `up project run` command creates a development control plane in your Upbound
+Cloud organization. It spins up your project's custom resources, compositions,
+and functions in a limited scope isolated control plane.
+
+## Benefits of a development control plane
+
+Development control planes differ from standard control planes in several ways:
+
+* Near instantaneous provisioning.
+* Reduced resource allocation for cost-effectiveness.
+* Time-to-Live (TTL) for automatic cleanup. Development control planes deploy with a
+  24-hour lifespan and get deleted after that.
+* Hosted in the Upbound Cloud.
+
+<!-- vale gitlab.HeadingContent = NO -->
+## Limitations and considerations
+<!-- vale gitlab.HeadingContent = YES -->
+
+<!-- vale Microsoft.Contractions = NO -->
+Development control planes are **not** suitable for production workloads.
+<!-- vale Microsoft.Contractions = YES -->
+
+<!-- vale Google.We = NO -->
+Upbound limits the number of concurrent development control planes you can
+create based on your account tier. Review our pricing for more information.
+<!-- vale Google.We = YES -->
+
+## Testing your Control Plane Projects
 
 Testing ensures your compositions and control planes work as expected, follow best practices, and meet your organizations requirements. You can generate tests for your compositions with the `up test generate` command.
 
@@ -42,6 +88,23 @@ The Upbound testing framework follows a standardized directory structure:
 This structure separates tests from your APIs and ensures they aren't bundled
 into package deployments. Customize the test directory location by updating the
 `ProjectPaths` configuration in your `upbound.yaml` file.
+
+## Reder your composition locally
+Use the [`up composition
+render`](https://docs.upbound.io/reference/cli/command-reference/#composition-render)
+command to print your desired composed resources for review. The render command
+requires a **Composite Resource** (XR) file. XRs use the Composition template to
+create new managed resources. An XR uses the same parameters as your example
+claim, but specifies the API type and specifies the target cluster.
+
+Next, render the composition against your new composite resource file:
+
+```shell
+up composition render <your_composition> <your_composite_resource_file>
+```
+
+This local test ensures the build, configuration, and orchestration runs as expected before you deploy it to a development control plane.
+
 
 ## Composition tests
 
