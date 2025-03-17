@@ -1,7 +1,8 @@
 ---
 title: Development control planes
 description: Use the Up CLI to create and manage development control planes
-weight: 7
+weight: 999
+draft: true
 aliases:
     - /development-extensions/dev-cps
     - development-extensions/dev-cps

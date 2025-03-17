@@ -1,0 +1,23 @@
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: datadog-test
+  namespace: default
+spec:
+  configPatchSecretRefs:
+    - name: datadog-secret
+      key: api-key
+      path: exporters.datadog.api.key
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: rae-sharp-new-cp  # Replace with your actual control plane label
+  exporters:
+    datadog:
+      api:
+        site: "datadoghq.com"  # Use appropriate regional site
+        key: "c3b6975bc0479fde974938fb0e38d2ef" # This will be replaced by the secret value
+  exportPipeline:
+    metrics: [datadog]
+    traces: [datadog]
+    logs: [datadog]
