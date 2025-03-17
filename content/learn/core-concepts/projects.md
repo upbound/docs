@@ -13,5 +13,7 @@ control plane project is any folder that contains an `upbound.yaml` project
 file. Create a project with the [up project init]({{< ref
 "reference/cli/command-reference" >}}) command. A control plane project houses
 the definition of your control plane.
+<!-- vale gitlab.Substitutions = YES-->
 
-
+For more information on control plane projects, review the [Control Plane Project
+guide]({{< ref "build/control-plane-projects" >}}).

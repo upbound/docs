@@ -379,7 +379,7 @@ ephemeral, making them ideal for testing Crossplane configurations.
 Now, you can validate your results, and make any changes to test your resources.
 
 For more information, review the [development control plane documentation]({{< ref
-"dev-cps" >}}).
+"build/dev-cps" >}}).
 <!-- vale write-good.TooWordy = YES -->
 
 <!-- vale off -->
