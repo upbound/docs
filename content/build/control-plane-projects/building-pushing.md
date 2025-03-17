@@ -1,6 +1,6 @@
 ---
 title: "Building and pushing your Control Plane Projects"
-weight: 5
+weight: 6
 description: "How to build and push your control plane project to the Upbound
 Marketplace"
 aliases:
