@@ -108,10 +108,6 @@ For more information, review the [CLI reference documentation]({{< ref
 
 ## Next steps
 
-
-For more information, review the [CLI reference documentation]({{< ref
-"reference/cli/command-reference" >}}).
-
-## Next steps
-
-Next, you need to add the necessary dependencies to enable Upbound communication with your cloud providers and services. Proceed to the [add dependencies to your project]({{<ref "adding-dependencies" >}}) guide.
+Next, you need to add the necessary dependencies to enable Upbound communication
+with your cloud providers and services. Proceed to the [add dependencies to your
+project]({{<ref "adding-dependencies" >}}) guide.

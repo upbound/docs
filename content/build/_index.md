@@ -20,5 +20,5 @@ This section teaches you how to:
 - Build and push your control plane projects
 - Test and run your control plane projects
 
-To get started, create a new [control plane projects]({{< ref
+To get started, create a new [control plane project]({{< ref
 "control-plane-projects/">}}).
