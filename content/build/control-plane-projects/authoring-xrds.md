@@ -504,6 +504,4 @@ update the `properties.size` field in the `spec`.
 
 ## Next steps
 
-Now that you understand how to author and generate an XRD, you need a
-Composition that references this XRD. In the next section, you'll learn how to
-[build compositions in KCL, Python, or Go]({{<ref "authoring-compositions/">}})
+Next, learn how to [build compositions in KCL, Python, or Go]({{<ref "authoring-compositions/">}}) that reference your XRD.

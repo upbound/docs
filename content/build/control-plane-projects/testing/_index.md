@@ -36,8 +36,15 @@ Development Control Planes are available in Cloud Hosted Spaces only.
 
 ### Render your composition
 
-Before you deploy to a development control plane, you can preview how your
-composition will create resources with the `up composition render` command.
+Preview how your composition creates resources with the `up composition render`
+command before you deploy to a development control plane.
+```shell
+up composition render <your_composition> <your_composite_resource_file>
+```
+
+This command requires a **Composite Resource** (XR) file that defines the
+resources you want to create. The XR file contains the same parameters as your
+example claim but explicitly defines the API type and target cluster.
 
 ```shell
 up composition render <your_composition> <your_composite_resource_file>
@@ -45,7 +52,7 @@ up composition render <your_composition> <your_composite_resource_file>
 
 This command requires a **Composite Resource** (XR) file that defines the
 resources you want to create. The XR file contains the same parameters as your
-example claim but explicitely defines the API type and target cluster.
+example claim but explicitly defines the API type and target cluster.
 
 Rendering locally validates your build, configuration and resource orchestration
 render as expected before you deploy to a development control plane.

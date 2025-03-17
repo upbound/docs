@@ -6,8 +6,8 @@ weight: 30
 Upbound Official Providers and some other packages include Go models: packages
 containing struct type definitions for their resources. These models enable
 in-line documentation, linting, autocompletion, and other features when working
-with Crossplane resources in embedded Go functions. It is also possible to use
-the Go types from the upstream provider source code with embedded Go functions.
+with Crossplane resources in embedded Go functions. You can also use the Go
+types from the upstream provider source code with embedded Go functions.
 
 ## Make models available to a function
 
@@ -35,9 +35,9 @@ project. You shouldn't commit the `.up` directory to source control.
 
 Each provider's models are available in their own packages, named after the
 provider's resource group and versions. The model packages are all contained in
-a single Go module with the path `dev.upbound.io/models`. Note that this module
-is always imported via a `replace` directive in the `go.mod` file and cannot
-otherwise be resolved by the Go tooling.
+a single Go module with the path `dev.upbound.io/models`. Note that you always
+import this module through a `replace` directive in the `go.mod` file. Go
+tooling can't resolve it otherwise.
 
 Import models to your `fn.go` function file with the following syntax:
 
@@ -53,10 +53,12 @@ documentation](https://pkg.go.dev/github.com/crossplane/function-sdk-go) for
 full details on the functions described below.
 {{</hint>}}
 
+<!-- vale Upbound.Spelling = NO -->
 Once you import the model, you can convert import resources to model types and
 construct output resources using model types. The easiest way to convert between
 the Crossplane SDK's types and model types is via JSON using a utility function
 like the following:
+<!-- vale Upbound.Spelling = YES -->
 
 ```golang
 func convertViaJSON(to, from any) error {
@@ -192,11 +194,13 @@ use your own project's models in your functions as described above.
 
 ## Field types in models
 
+<!-- vale write-good.Passive = NO -->
 All fields in Upbound's Go models have pointer types so that you can specify
 only the fields your function has an opinion about. This can be awkward in Go,
 since there's no built-in way to construct a pointer to a constant value. The
 `k8s.io/utils/ptr` package contains a function, `ptr.To`, which can be used for
 this purpose:
+<!-- vale write-good.Passive = YES -->
 
 ```golang
 package main

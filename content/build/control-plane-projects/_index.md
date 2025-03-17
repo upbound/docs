@@ -108,8 +108,10 @@ For more information, review the [CLI reference documentation]({{< ref
 
 ## Next steps
 
-Now that you have a new control plane project and understand the project
-structure, you need to add dependencies to your project to allow Upbound to
-communicate with your cloud providers and other services. In the next guide,
-you'll learn how to [add dependencies to your project]({{<ref
-"adding-dependencies" >}}).
+
+For more information, review the [CLI reference documentation]({{< ref
+"reference/cli/command-reference" >}}).
+
+## Next steps
+
+Next, you need to add the necessary dependencies to enable Upbound communication with your cloud providers and services. Proceed to the [add dependencies to your project]({{<ref "adding-dependencies" >}}) guide.

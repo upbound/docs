@@ -74,11 +74,12 @@ Most functions reference the observed composite resource (XR) to produce
 composed resources, typically managed resources (MRs). In Go, you can extract
 the observed XR from the request with `request.GetObservedCompositeResource`.
 
+<!-- vale Upbound.Spelling = NO -->
 When you generate an embedded function with `up function generate`, the command
 creates a Go library that includes type definitions based on your XRDs. You can
 use these generated types by converting the protobuf struct to JSON and then
 unmarshaling it into your XR type as follows:
-
+<!-- vale Upbound.Spelling = YES -->
 ```golang
 package main
 
