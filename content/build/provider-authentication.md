@@ -338,5 +338,4 @@ spec:
 ```
 
 ## Next steps
-
-Now that you have authenticated with your provider, the next step is to [run and test your control plane project]({{<ref "testing/">}}).
+Now that you have authenticated with your provider, the next step is to [run and test your control plane project](/content/build/control-plane-projects/testing/_index.md).

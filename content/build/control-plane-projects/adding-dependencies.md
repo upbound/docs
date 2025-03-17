@@ -160,4 +160,4 @@ the [up dependency clean-cache]({{< ref
 Now that you've learned how to add dependencies to your control plane projects,
 you need to create an API to run on your control plane. In the next guide,
 you'll learn how to [author a Composition Resource Definition (XRD)]({{<ref
-"authoring-xrds"> }})
+"authoring-xrds.md" >}})
