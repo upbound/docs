@@ -1,10 +1,10 @@
 ---
 title: IP Addresses
 weight: 199
-description: "List of IP addresses used by Upbound managed control planes"
+description: "List of IP addresses used by Upbound control planes"
 ---
 
-Managed control planes can use any of the following IP addresses:
+Control planes can use any of the following IP addresses:
 
 - 35.238.181.48
 - 34.72.41.44

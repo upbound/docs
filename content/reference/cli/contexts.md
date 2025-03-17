@@ -11,14 +11,14 @@ Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's com
 Upbound's information architecture is a hierarchy consisting of:
 
 <!-- vale off -->
-* a set of managed control planes
+* a set of control planes
 * logically grouped into control planes groups
 * which are hosted in an environment called a [Space]({{<ref "/deploy" >}}).
 
-These contexts nest within each other. An MCP must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
+These contexts nest within each other. A control plane must **always** belong to a group which **must** be hosted in a Space--whether Cloud, Connected, or Disconnected.
 <!--vale on -->
 
-Every managed control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api/" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
+Every control plane in Upbound has its own API server. Each Space likewise offers a set of APIs that you can manage things through, exposed as a [Kubernetes-compatible API]({{<ref "/reference/space-api/" >}}). This means there's two relevant contextual scopes you interact with often: a **Spaces context** and a **control plane context**.
 
 In `up`, the commands you can execute are context-sensitive.
 
@@ -35,7 +35,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx](https://gith
 <!--vale on -->
 
 {{< hint "important" >}}
-When interacting with managed control planes that are hosted in:
+When interacting with control planes that are hosted in:
 
 * **a Cloud or Connected Space:** make sure you're using a cloud profile logged into Upbound with `up login` before trying to use `up ctx`.
 * **a Disconnected Space:** make sure your're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
@@ -93,7 +93,7 @@ up ctx -
 Instead of selecting a context and making it your current kubecontext, you can also print the context out to a kubeconfig file. Run the following:
 
 ```shell
-# This saves an MCP's connection details to a kubeconfig
+# This saves a control plane's connection details to a kubeconfig
 up ctx <your-org>/<your-space>/<your-group>/<your-ctp> -f - > context.yaml
 
 # This saves a Space's connection details to a kubeconfig
@@ -110,3 +110,86 @@ If you get lost in the navigation hierarchy, you can print the current context t
 ```shell
 up ctx .
 ```
+
+## Generate a kubeconfig
+
+Because contexts in Upbound are Kubernetes-compatible, there may be cases where you want to generate a [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) from a context:
+
+- Use the kubeconfig with a CLI like kubectl
+- Provide the kubeconfig to tooling such as Argo
+
+### Generate a kubeconfig for a Space
+
+The steps below generate a kubeconfig so you can interact with Space APIs.
+
+1. Log on to Upbound.
+{{< editCode >}}
+```ini
+up login
+```
+{{< /editCode >}}
+
+2. Set your `up` context to the desired Space. For example, this command sets it to an Upbound Cloud Space:
+{{< editCode >}}
+```ini
+up ctx $@<your-org-name>$@/upbound-gcp-us-central-1
+``` 
+{{< /editCode >}}
+
+3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
+{{< editCode >}}
+```ini
+up ctx . -f - > context.yaml
+```
+{{< /editCode >}}
+
+### Generate a kubeconfig for a Space with a group set
+
+The steps below generate a kubeconfig with the namespace set to the group so you can interact with Space APIs.
+
+1. Log on to Upbound.
+{{< editCode >}}
+```ini
+up login
+```
+{{< /editCode >}}
+
+2. Set your `up` context to the desired control plane group in your Upbound resource hierarchy. For example, this command sets it to the default group of an Upbound Cloud Space:
+{{< editCode >}}
+```ini
+up ctx $@<your-org-name>$@/upbound-gcp-us-central-1/default
+``` 
+{{< /editCode >}}
+
+3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
+{{< editCode >}}
+```ini
+up ctx . -f - > context.yaml
+```
+{{< /editCode >}}
+
+
+### Generate a kubeconfig for a control plane in a group
+
+The steps below generate a kubeconfig so you can interact with a control plane's API server.
+
+1. Log on to Upbound.
+{{< editCode >}}
+```ini
+up login
+```
+{{< /editCode >}}
+
+2. Set your `up` context to the desired control plane in your Upbound resource hierarchy. For example, this command sets it to a control plane in the default group of an Upbound Cloud Space:
+{{< editCode >}}
+```ini
+up ctx $@<your-org-name>$@/upbound-gcp-us-central-1/default/my-ctp
+``` 
+{{< /editCode >}}
+
+3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
+{{< editCode >}}
+```ini
+up ctx . -f - > context.yaml
+```
+{{< /editCode >}}

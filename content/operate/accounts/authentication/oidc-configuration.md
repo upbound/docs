@@ -7,6 +7,10 @@ aliases:
     - accounts/authentication/oidc-configuration
 ---
 
+{{< hint "important" >}}
+This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC]({{<ref "operate/accounts/authorization/upbound-rbac/" >}}).
+{{< /hint >}}
+
 Upbound uses the Kubernetes [Structured Authentication Configuration][Structured Auth Config]  to validate OIDC tokens sent to the API. Upbound stores this configuration as a `ConfigMap` and authenticates with the Upbound router component during installation with Helm.
 
 This guide walks you through how to create and apply an authentication configuration to validate Upbound with an external identity provider. Each section focuses on a specific part of the configuration file.

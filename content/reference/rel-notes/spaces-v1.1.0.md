@@ -13,6 +13,6 @@ version_sort_key: "0001.0001.0000"
 - Alpha support for enabling External Secrets Operator in a control plane.
 - Control plane api-server autoscaling based on CRD count.
 - Universal Crossplane was bumped from `v1.13.2-up.1` to `v.1.13.2-up.2` for all control planes.
-- new `up` CLI commands to interact with managed control planes in a Space.
+- new `up` CLI commands to interact with control planes in a Space.
 
 <!-- vale on -->

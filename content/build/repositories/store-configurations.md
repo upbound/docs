@@ -12,7 +12,7 @@ This guide shows you how to:
 
 - Create a repository on Upbound
 - Build and push a control plane project's artifact (a Configuration) to the repository
-- Deploy the artifact to a managed control planes
+- Deploy the artifact to a control plane
 
 ## Prerequisites
 <!-- vale gitlab.FutureTense = NO -->

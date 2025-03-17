@@ -1,5 +1,5 @@
 ---
-title: Consume control plane APIs in an app cluster with MCP connector
+title: Consume control plane APIs in an app cluster with control plane connector
 weight: 999
 description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
 draft: true
@@ -9,9 +9,9 @@ aliases:
     - all-spaces/mcp-connector-guide
 ---
 
-In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a managed control plane in an Upbound self-hosted Space.
+In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a control plane in an Upbound self-hosted Space.
 
-The [MCP connector]({{<ref "../operate/ctp-connector" >}}) bridges your Kubernetes application clusters---running outside of Upbound--to your managed control planes running in Upbound. This allows you to interact with your managed control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinitions` are available alongside Kubernetes workload APIs like `Pod`. In effect, MCP Connector providers the same experience as a locally installed Crossplane.
+The [control plane connector]({{<ref "../operate/ctp-connector" >}}) bridges your Kubernetes application clusters---running outside of Upbound--to your control planes running in Upbound. This allows you to interact with your control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinitions` are available alongside Kubernetes workload APIs like `Pod`. In effect, control plane connector provides the same experience as a locally installed Crossplane.
 
 ## Prerequisites
 
@@ -21,9 +21,9 @@ To complete this tutorial, you need the following:
 - Have already deployed an Kubernetes cluster (referred to as `app cluster`).
 - The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) installed on your local machine.
 
-## Create a managed control plane
+## Create a control plane
 
-Create a new managed control plane in your self-hosted Space. Run the following command in a terminal:
+Create a new control plane in your self-hosted Space. Run the following command in a terminal:
 
 ```bash
 up ctp create my-control-plane
@@ -53,9 +53,9 @@ kubectl get secret kubeconfig-my-control-plane -n default -o jsonpath='{.data.ku
 
 This command saves the kubeconfig for the control plane to a file in your working directory.
 
-## Install MCP Connector in your app cluster
+## Install control plane connector in your app cluster
 
-Switch contexts to your Kubernetes app cluster. To install the MCP connector in your app cluster, you must first provide a secret containing your control plane's kubeconfig at install-time. Run the following command in a terminal:
+Switch contexts to your Kubernetes app cluster. To install the control plane connector in your app cluster, you must first provide a secret containing your control plane's kubeconfig at install-time. Run the following command in a terminal:
 
 {{< hint "important" >}}
 Make sure the following commands are executed against your **app cluster**, not your control plane.
@@ -73,7 +73,7 @@ export CONNECTOR_CTP_NAMESPACE=$@app-cluster-1$@
 ```
 {{< /editCode >}}
 
-Install the MCP connector in the app cluster and point it to your control plane.
+Install the Control Plane Connector in the app cluster and point it to your control plane.
 
 ```bash
 up ctp connector install my-control-plane $CONNECTOR_CTP_NAMESPACE --control-plane-secret=kubeconfig-my-control-plane
@@ -81,7 +81,7 @@ up ctp connector install my-control-plane $CONNECTOR_CTP_NAMESPACE --control-pla
 
 ## Inspect your app cluster
 
-After you install MCP Connector in the app cluster, you can now see APIs which live on the control plane. You can confirm this is the case by running the following command on your app cluster:
+After you install Control Plane Connector in the app cluster, you can now see APIs which live on the control plane. You can confirm this is the case by running the following command on your app cluster:
 
 ```bash {copy-lines="1"}
 kubectl api-resources | grep upbound
@@ -130,9 +130,9 @@ type: Opaque
 EOF
 ```
 
-## Inspect your managed control plane
+## Inspect your control plane
 
-Switch contexts, connect to your managed control plane, and look at the managed resources on your control plane. It should look like the following:
+Switch contexts, connect to your control plane, and look at the managed resources on your control plane. It should look like the following:
 
 {{< hint "important" >}}
 Make sure the following commands are executed against your **control plane**, not your app cluster.
@@ -163,6 +163,6 @@ claim-dd1039cdd0366e1a   True     False   claim-5ffa34ecdfd4b372   2m56s
 
 In this tutorial, you:
 
-- connected an app cluster to a managed control plane using the MCP connector.
+- connected an app cluster to a control plane using the Control Plane Connector.
 - You experienced how make resource requests from your app cluster to your control plane.
 - You saw how resource requests are actually fulfilled by the control plane.

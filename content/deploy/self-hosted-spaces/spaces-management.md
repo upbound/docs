@@ -71,15 +71,15 @@ up space destroy
 
 You can manage control planes in a Space via the [up CLI]({{<ref "reference/cli/command-reference.md#controlplane">}}) or the Spaces-local Kubernetes API. When you install a Space, it defines new a API type, `kind: Controlplane`, that you can use to create and manage control planes in the Space.
 
-### Create a managed control plane
+### Create a control plane
 
-To create a managed control plane in a Space using `up`, run the following:
+To create a control plane in a Space using `up`, run the following:
 
 ```bash
 up ctp create ctp1
 ```
 
-You can also declare a new managed control plane like the example below and apply it to your Spaces cluster:
+You can also declare a new control plane like the example below and apply it to your Spaces cluster:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -95,24 +95,24 @@ spec:
 
 This manifest:
 
-- Creates a new managed control plane in the space called `ctp1`.
+- Creates a new control plane in the space called `ctp1`.
 - Publishes the kubeconfig to connect to the control plane to a secret in the Spaces cluster, called `kubeconfig-ctp1`
 
-### Connect to a managed control plane
+### Connect to a control plane
 
-To connect to a managed control plane in a Space using `up`, run the following:
+To connect to a control plane in a Space using `up`, run the following:
 
 ```bash
 up ctp connect new-control-plane
 ```
 
-The command changes your kubeconfig's current context to the managed control plane you specify. If you want to change your kubeconfig back to a previous context, run:
+The command changes your kubeconfig's current context to the control plane you specify. If you want to change your kubeconfig back to a previous context, run:
 
 ```bash
 up ctp disconnect
 ```
 
-If you configured your managed control plane to publish connection details, you can also access it this way. Once the control plane is ready, use the secret (containing connection details) to connect to the API server of your managed control plane.
+If you configured your control plane to publish connection details, you can also access it this way. Once the control plane is ready, use the secret (containing connection details) to connect to the API server of your control plane.
 
 ```bash
 kubectl get secret <control-plane-connection-secret-name> -n default -o jsonpath='{.data.kubeconfig}' | base64 -d > /tmp/<ctp-name>.yaml
@@ -124,15 +124,15 @@ Reference the kubeconfig whenever you want to interact directly with the API ser
 kubectl get providers --kubeconfig=/tmp/<ctp-name>.yaml
 ```
 
-### Configure a managed control plane
+### Configure a control plane
 
-Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a managed control plane runs in [Upbound's SaaS environment]({{<ref "reference/legacy-spaces/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
+Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a control plane runs in [Upbound's SaaS environment]({{<ref "reference/legacy-spaces/control-plane-configurations.md">}}). Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
 
 Learn more in the [Spaces Git integration]({{<ref "git-integration.md">}}) documentation.
 
-### List managed control planes
+### List control planes
 
-To list all managed control planes in a Space using `up`, run the following:
+To list all control planes in a Space using `up`, run the following:
 
 ```bash
 up ctp list
@@ -145,9 +145,9 @@ kubectl get controlplanes
 ```
 
 
-### Delete a managed control plane
+### Delete a control plane
 
-To delete a managed control plane in a Space using `up`, run the following:
+To delete a control plane in a Space using `up`, run the following:
 
 ```bash
 up ctp delete ctp1

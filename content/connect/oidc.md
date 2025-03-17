@@ -17,7 +17,7 @@ Control planes in Upbound use [Crossplane providers](https://docs.crossplane.io/
 
 ### Install a provider on your control plane
 
-Install a Crossplane provider or Configuration on your managed control plane as explained in the [control plane management]({{<ref "operate/#install-packages" >}}) documentation.
+Install a Crossplane provider or Configuration on your control plane as explained in the [control plane management]({{<ref "operate/control-planes#install-packages" >}}) documentation.
 
 ### Configure the provider
 
@@ -25,9 +25,9 @@ Crossplane providers use a [`ProviderConfig`](https://docs.crossplane.io/latest/
 
 ### Connect to multiple accounts within a service
 
-You can create multiple `ProviderConfigs` for a single provider in a managed control plane via the Upbound Console or by a direct connection through the CLI.
+You can create multiple `ProviderConfigs` for a single provider in a control plane via the Upbound Console or by a direct connection through the CLI.
 
-For example, imagine you have `team-a` and `team-b` sharing a single managed control plane. Suppose each team should only be able to create resources in their respective cloud account in AWS. You would create two ProviderConfigs as demonstrated below:
+For example, imagine you have `team-a` and `team-b` sharing a single control plane. Suppose each team should only be able to create resources in their respective cloud account in AWS. You would create two ProviderConfigs as demonstrated below:
 
 ```yaml
 # This is the ProviderConfig that will get used by team-a
@@ -65,13 +65,13 @@ The example above demonstrates ProviderConfigs using simple account credentials.
 
 ## Use OpenID Connect with Upbound
 
-Providers in Upbound managed control planes can also use an `Upbound` credential source called **Provider Identity**. The `Upbound` credential source uses OpenID Connect (`OIDC`) to authenticate to providers without requiring users to store credentials on Upbound. This authentication method is comparable to ["workload identity"](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) offered by some managed Kubernetes services.
+Providers in Upbound control planes can also use an `Upbound` credential source called **Provider Identity**. The `Upbound` credential source uses OpenID Connect (`OIDC`) to authenticate to providers without requiring users to store credentials on Upbound. This authentication method is comparable to ["workload identity"](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) offered by some managed Kubernetes services.
 
 [OpenID Connect (OIDC)](https://openid.net/connect/) is a protocol that's built on top of [OAuth 2.0](https://oauth.net/2/). It serves to establish the identity of an entity in one environment that's attempting to access resources in another.
 
 ### Configure Upbound identity for a provider
 
-To configure a provider on a managed control plane to use Upbound Identity, use the auth method called `Upbound`. Exact configuration varies depending on the provider. Find examples below for AWS, Azure, and GCP:
+To configure a provider on a control plane to use Upbound Identity, use the auth method called `Upbound`. Exact configuration varies depending on the provider. Find examples below for AWS, Azure, and GCP:
 
 #### Upbound identity for AWS example
 
@@ -145,12 +145,12 @@ Read the [provider-gcp authentication]({{<ref "/providers/provider-gcp/authentic
 
 ### OIDC explained
 
-OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties (RPs)**. Managed control planes define these roles as follows:
+OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties (RPs)**. Control planes define these roles as follows:
 
 - **OpenID Provider**: Upbound
 - **Relying Party**: an external service that supports OIDC, for example, AWS, Azure or GCP
 
-Users set up a _trust relationship_ between Upbound and the external service. Upbound uses the trust relationship instead of storing credentials for an external service in the managed control plane.
+Users set up a _trust relationship_ between Upbound and the external service. Upbound uses the trust relationship instead of storing credentials for an external service in the control plane.
 
 Upbound injects an _identity token_ into the file system of every provider `Pod`. Upbound sends the token to the external service and exchanges it for a short-lived credential. Upbound uses the short-lived credential to perform operations against the external service.
 
@@ -168,7 +168,7 @@ Different OIDC relaying parties may define valid tokens differently. Typically i
 
 <!-- vale gitlab.SentenceLength = NO -->
 {{<hint "warning" >}}
-Authoring a policy with appropriate access controls is critical to ensure that only your provider in your managed control plane is able to assume the role or service account.
+Authoring a policy with appropriate access controls is critical to ensure that only your provider in your control plane is able to assume the role or service account.
 {{< /hint >}}
 <!-- vale gitlab.SentenceLength = YES -->
 
@@ -201,19 +201,19 @@ Identity tokens are [JSON Web Tokens (`JWTs`)](https://www.rfc-editor.org/rfc/rf
 
 OIDC relying parties use this information to validate identity tokens. Relying parties use the `jwks_uri` to ensure that the OIDC provider signed the identity token with their private key. The private key must correspond to one of the public keys from `https://proidc.upbound.io/.well-known/jwks`.
 
-The `iss` and `aud` claims of an identity token should match the _issuer_ and _audience_ configured for the relying party. The `sub` should be a valid _subject_ based on the authored policy. For providers running in Upbound managed control planes, the _subject_ adheres to the following format.
+The `iss` and `aud` claims of an identity token should match the _issuer_ and _audience_ configured for the relying party. The `sub` should be a valid _subject_ based on the authored policy. For providers running in Upbound control planes, the _subject_ adheres to the following format.
 
 ```
 mcp:<account>/<mcp-name>:provider:<provider-name>
 ```
 
-For example, the following would be a valid _subject_ for `provider-aws` in a managed control plane named `prod-1` in the `my-org` account.
+For example, the following would be a valid _subject_ for `provider-aws` in a control plane named `prod-1` in the `my-org` account.
 
 ```
 mcp:my-org/prod-1:provider:provider-aws
 ```
 
-The claims for an identity token injected into the file system of a provider in a managed control plane looks like the following.
+The claims for an identity token injected into the file system of a provider in a control plane looks like the following.
 
 ```json
 {
@@ -235,6 +235,6 @@ Identity tokens injected into a provider `Pod` are valid for 1 hour. They are au
 
 ## Add Upbound OIDC to a Crossplane provider
 
-Any provider that can run in a managed control plane can support the `Upbound` credential source. Upbound injects identity tokens into the file system of every provider `Pod` whether they support OIDC or not. A provider wishing to support OIDC can access its identity token in the `/var/run/secrets/upbound.io/provider/token` file.
+Any provider that can run in a control plane can support the `Upbound` credential source. Upbound injects identity tokens into the file system of every provider `Pod` whether they support OIDC or not. A provider wishing to support OIDC can access its identity token in the `/var/run/secrets/upbound.io/provider/token` file.
 
 View [this Pull Request](https://github.com/upbound/provider-aws/pull/278) for a reference implementation.

@@ -16,7 +16,7 @@ The Upbound Official GCP Provider supports multiple authentication methods.
 ## Upbound auth (OIDC)
 
 {{< hint "note" >}}
-This method of authentication is only supported in managed control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
+This method of authentication is only supported in control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
 {{< /hint >}}
 
 When your control plane runs in an Upbound Cloud Space, you can use this authentication method. Upbound authentication uses OpenID Connect (OIDC) to authenticate to GCP without requiring you to store credentials in Upbound.
@@ -68,7 +68,7 @@ google.subject.contains("mcp:$@ORGANIZATION_NAME$@")
 {{< /editCode >}}
 
 {{< hint "warning" >}}
-Not providing a CEL condition allows any managed control plane to access your GCP account if they know the project ID and service account name.
+Not providing a CEL condition allows any control plane to access your GCP account if they know the project ID and service account name.
 {{< /hint >}}
 
 Select **Save**.
@@ -105,7 +105,7 @@ Select **Done**.
 ### Record the service account email address
 
 At the list of service accounts copy the service account **email**.
-Upbound requires this to authenticate your managed control plane.
+Upbound requires this to authenticate your control plane.
 
 ### Add the service account to the identity pool
 

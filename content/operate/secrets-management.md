@@ -1,7 +1,7 @@
 ---
 title: Secrets Management
 weight: 150
-description: A guide for how to configure synchronizing external secrets into managed control planes in a Space.
+description: A guide for how to configure synchronizing external secrets into control planes in a Space.
 aliases:
     - /all-spaces/secrets-management
     - /spaces/secrets-management
@@ -11,7 +11,7 @@ aliases:
 ---
 
 {{< hint "important" >}}
-This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a Disconnected Space, set `features.alpha.sharedSecrets.enabled=true` when installing the Space:
+This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a self-hosted Space, set `features.alpha.sharedSecrets.enabled=true` when installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -33,7 +33,7 @@ This feature is a wrapper around the [External Secrets Operator (ESO)](https://e
 The Shared Secrets feature allows you to:
 
 * Access secrets from a variety of external secret stores without operation overhead
-* Configure synchronization for multiple managed control planes in a group
+* Configure synchronization for multiple control planes in a group
 * Store and manage all your secrets centrally
 * Use Shared Secrets across all Upbound environments(Cloud and Disconnected Spaces)
 * Synchronize secrets across groups of control planes while maintaining clear security boundaries
@@ -53,7 +53,7 @@ secrets and effectively control their distribution.
 
 ## Prerequisites
 
-Make sure you've enabled the Shared Secrets feature in whichever Space you plan to run your managed control plane in. All Upbound-managed Cloud Spaces have this feature enabled by default. If you want to use these APIs in your own Connected Space, your Space administrator must enable them with the `features.alpha.sharedSecrets.enabled=true` setting.
+Make sure you've enabled the Shared Secrets feature in whichever Space you plan to run your control plane in. All Upbound-managed Cloud Spaces have this feature enabled by default. If you want to use these APIs in your own Connected Space, your Space administrator must enable them with the `features.alpha.sharedSecrets.enabled=true` setting.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -648,7 +648,7 @@ The hierarchy in this configuration is:
 
 #### Control plane selection
 
-To configure which managed control planes in a group you want to project a SecretStore into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
+To configure which control planes in a group you want to project a SecretStore into, use the `spec.controlPlaneSelector` field. You can either use `labelSelectors` or the `names` of a control plane directly. A control plane matches if any of the label selectors match.
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
@@ -696,7 +696,7 @@ spec:
 
 #### Namespace selection
 
-To configure which namespaces **within each matched managed control plane** to project the secret store into, use `spec.namespaceSelector` field. The projected secret store only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match.
+To configure which namespaces **within each matched control plane** to project the secret store into, use `spec.namespaceSelector` field. The projected secret store only appears in the namespaces matching the provided selector. You can either use `labelSelectors` or the `names` of namespaces directly. A control plane matches if any of the label selectors match.
 
 **For all control planes matched by** `spec.controlPlaneSelector`, This example matches all namespaces in each selected control plane that have `team: team1` as a label:
 
@@ -767,7 +767,7 @@ namespaces that need them.
 
 **Use separate tokens for each environment.** Keep them in distinct
 SharedSecretStores. Users could bypass SharedExternalSecret selectors by
-creating ClusterExternalSecrets directly in MCPs. This grants access to all
+creating ClusterExternalSecrets directly in control planes. This grants access to all
 secrets available to that token.
 
 **Document your secret management architecture**, including which control planes

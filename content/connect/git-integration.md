@@ -1,7 +1,7 @@
 ---
 title: Git integration
 weight: 90
-description: A guide to how managed control planes in a space connect to git
+description: A guide to how control planes in a space connect to git
 tocHidden: true
 searchExclude: true
 aliases:
@@ -13,7 +13,7 @@ aliases:
 This feature is in preview.
 {{< /hint >}}
 
-Managed Control Planes that run in a Space are configurable to automatically sync their source configuration directly from a Git repository. It allows you to declaratively describe your control plane's total configuration. Define Providers, Configurations, and runtime configurations such as ProviderConfigs or EnvironmentConfigs in Git and sync them automatically to your managed control plane.
+Control Planes that run in a Space are configurable to automatically sync their source configuration directly from a Git repository. It allows you to declaratively describe your control plane's total configuration. Define Providers, Configurations, and runtime configurations such as ProviderConfigs or EnvironmentConfigs in Git and sync them automatically to your control plane.
 
 ## Example
 

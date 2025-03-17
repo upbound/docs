@@ -1,7 +1,7 @@
 ---
-title: Migrating to managed control planes
+title: Migrating to Upbound control planes
 weight: 300
-description: A guide to how to migrate to a managed control plane in Upbound
+description: A guide to how to migrate to a control plane in Upbound
 aliases:
     - /mcp/migrating-to-mcps
 ---
@@ -10,12 +10,12 @@ aliases:
 This feature is in preview.
 {{< /hint >}}
 
-The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a managed control plane in Upbound.
+The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
 
 To migrate from Crossplane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
-2. Import the archive file into a managed control plane running in Upbound.
+2. Import the archive file into a control plane running in Upbound.
 
 The migration tool is available in the [up CLI]({{<ref "reference/cli/command-reference.md#up-alpha-xpkg-xp-extract">}}) as
 `up alpha migration export` and `up alpha migration import` commands.
@@ -27,7 +27,7 @@ Before you begin, you must have the following:
 
 ## Migration process
 
-To migrate an existing Crossplane control plane to a managed control plane in Upbound, do the following:
+To migrate an existing Crossplane control plane to a control plane in Upbound, do the following:
 
 1. Run the `up alpha migration export` command to export your existing Crossplane control plane configuration/state into an archive file:
 
@@ -52,16 +52,15 @@ control plane in Upbound:
     up controlplane create my-controlplane
     ```
 
-3. Use [`up ctx`]({{<ref "reference/cli/command-reference.md#ctx">}}) to connect to the
-managed control plane created in the previous step:
+3. Use [`up ctx`]({{<ref "reference/cli/command-reference.md#ctx">}}) to connect to the control plane created in the previous step:
 
     ```bash
     up ctx "<your-org>/<your-space>/<your-group>/my-controlplane"
     ```
 
-    The command configures your local `kubeconfig` to connect to the managed control plane.
+    The command configures your local `kubeconfig` to connect to the control plane.
 
-4. Run the following command to import the archive file into the managed control plane:
+4. Run the following command to import the archive file into the control plane:
 
     ```bash
     up alpha migration import --input <path-to-archive-file>
@@ -127,7 +126,7 @@ Currently `--context` isn't supported in the migration CLI. You should be able t
 up alpha migration export --kubeconfig
 ```
 
-Use this in tandem with `up ctx` to export a managed control plane's kubeconfig:
+Use this in tandem with `up ctx` to export a control plane's kubeconfig:
 
 ```bash
 up ctx --kubeconfig ~/.kube/config

@@ -23,7 +23,7 @@ to start.
 
 To define your control plane APIs in Python you need Python and the Python
 Visual Studio Code extension. Refer to the
-[Visual Studio Code Extensions documentation]({{<ref "build/vscode-extensions">}})
+[Visual Studio Code Extensions documentation]({{<ref "reference/vscode-extensions">}})
 to learn how to install them.
 
 ## Example

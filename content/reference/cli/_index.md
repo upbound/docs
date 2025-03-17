@@ -7,7 +7,7 @@ aliases:
   - /cli
 ---
 
-The Upbound `up` command-line enables interaction with Upbound managed control planes. It also simplifies common workflows with Upbound Universal Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.
+The Upbound `up` command-line enables interaction with Upbound control planes. It also simplifies common workflows with Upbound Universal Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.
 <!-- vale Google.Headings = NO -->
 ## Install the Up command-line
 <!-- vale Google.Headings = YES -->
