@@ -12,7 +12,7 @@ response.
 The examples on this page convert between generated model types and protobuf
 structs using a helper function called `convertViaJSON`. You can find this
 function's definition and more details about this process on the
-[Models]({{<ref "build/authoring-compositions/go/models" >}}) page.
+[Models]({{<ref "build/control-plane-projects/authoring-compositions/go/models" >}}) page.
 {{</hint>}}
 
 ## Inputs
