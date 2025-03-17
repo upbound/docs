@@ -6,10 +6,10 @@ Marketplace"
 aliases:
     - /core-concepts/building-pushing
 ---
-
-<!--- TODO(tr0njavolta): update CLI links --->
-
-Upbound enables you to build and deploy control plane projects with the Upbound CLI.
+Control plane projects are source-level representations of your control plane.
+Like any other software project, control plane projects require a **build
+stage** to assemble all parts of your project into a versioned artifact. Upbound
+enables you to build and deploy control plane projects with the Upbound CLI.
 
 ## Build your control plane project
 

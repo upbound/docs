@@ -1,6 +1,6 @@
 ---
 title: "Adding dependencies to your Control Plane Projects"
-weight: 6
+weight: 1
 description: "The basic concepts to help you on your Upbound journey"
 aliases:
     - /core-concepts/adding-dependencies
@@ -154,3 +154,10 @@ To wipe the dependency cache, run
 the [up dependency clean-cache]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta) update CLI ref link --->
+
+## Next steps
+
+Now that you've learned how to add dependencies to your control plane projects,
+you need to create an API to run on your control plane. In the next guide,
+you'll learn how to [author a Composition Resource Definition (XRD)]({{<ref
+"authoring-xrds"> }})

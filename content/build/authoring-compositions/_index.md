@@ -266,3 +266,9 @@ For more KCL best practices, please refer to the [documentation]({{<ref "build/a
 <!-- /KCL -->
 
 {{< /content-selector >}}
+
+## Next steps
+
+After you author your compositions and embedded functions, you can build and
+test your control plane projects in Upbound. To learn more about testing, review
+the [testing guide]({{<ref "build/control-plane-projects/testing" >}}).

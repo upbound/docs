@@ -1,6 +1,6 @@
 ---
 title: "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project"
-weight: 1
+weight: 2
 description: "Define your first API in your control plane project"
 aliases:
     - /core-concepts/authoring-xrds
@@ -501,3 +501,9 @@ update the `properties.size` field in the `spec`.
 
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale write-good.Passive = YES -->
+
+## Next steps
+
+Now that you understand how to author and generate an XRD, you need a
+Composition that references this XRD. In the next section, you'll learn how to
+[build compositions in KCL, Python, or Go]({{<ref "authoring-compositions/">}})
