@@ -61,6 +61,7 @@ You can write tests in KCL or Python.
 
 For example, to generate a composition test:
 
+<!-- vale gitlab.SentenceSpacing = NO -->
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 ```ini {copy-lines="all"}
@@ -213,6 +214,8 @@ up test generate <name> --e2e --language=kcl
 End-to-end tests use the `E2ETest` API, written in KCL or Python.
 
 {{< content-selector options="Python,KCL" default="Python" >}}
+<!-- vale gitlab.SentenceSpacing = YES -->
+
 <!-- Python -->
 ```python
 from .model.io.upbound.dev.meta.e2etest import v1alpha1 as e2etest
@@ -378,8 +381,6 @@ ephemeral, making them ideal for testing Crossplane configurations.
 
 Now, you can validate your results, and make any changes to test your resources.
 
-For more information, review the [development control plane documentation]({{< ref
-"build/dev-cps" >}}).
 <!-- vale write-good.TooWordy = YES -->
 
 <!-- vale off -->
