@@ -51,7 +51,7 @@ These roles apply at three levels:
 
 Upbound RBAC roles have either `read-only` or `read/write` access for features. Review the table for permissions for each role:
 
-{{<img src="operate/accounts/images/rbac-access-levels.png" alt="A table with RBAC permissions" size="medium" unBlur="true" align="center">}}
+{{<img src="operate/accounts/images/rbac-access-levels.png" alt="A table with RBAC permissions" size="small" unBlur="true" align="center">}}
 
 ### View group role permissions
 
