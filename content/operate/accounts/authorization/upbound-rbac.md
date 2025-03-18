@@ -8,10 +8,11 @@ aliases:
 ---
 
 This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC lets you control access to your Upbound resources and control planes based on the roles of individual users in your organization. 
-
+<!-- vale off -->
 {{<hint "tip" >}}
 To learn how to manage access to resources in a control plane, read the [documentation]({{<ref "k8s-rbac" >}}) on authorizing actions on resources in control planes
 {{< /hint >}}
+<!-- vale on -->
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Enable Upbound RBAC
@@ -27,9 +28,13 @@ For administrators who have deployed [self-hosted Spaces]({{<ref "deploy/self-ho
 --set "features.alpha.upboundRBAC.enabled=true"
 ```
 
+<!-- vale write-good.Passive = NO -->
 Upbound RBAC is enabled by default in Upbound Cloud Spaces.
+<!-- vale write-good.Passive = YES -->
 
+<!-- vale write-good.TooWordy = NO -->
 ## Authorize access to control plane group resources
+<!-- vale write-good.TooWordy = YES -->
 
 ### Roles
 
@@ -46,7 +51,7 @@ These roles apply at three levels:
 
 Upbound RBAC roles have either `read-only` or `read/write` access for features. Review the table for permissions for each role:
 
-{{<img src="images/rbac-access-levels.png" alt="A table with RBAC permissions" size="medium" unBlur="true" align="center">}}
+{{<img src="operate/accounts/images/rbac-access-levels.png" alt="A table with RBAC permissions" size="medium" unBlur="true" align="center">}}
 
 ### View group role permissions
 
