@@ -1,6 +1,6 @@
 ---
 title: "Running and testing your Control Plane Projects"
-weight: 7
+weight: 5
 description: "How to run your control plane project on a development controlplane"
 cascade:
     product: testing-api
@@ -9,7 +9,10 @@ aliases:
     - core-concepts/testing
 ---
 
-Testing ensures your compositions and control planes work as expected, follow best practices, and meet your organizations requirements. You can generate tests for your compositions with the `up test generate` command.
+Testing ensures your compositions and control planes work as expected, follow
+best practices, and meet your organizations requirements. You can run your
+projects in a development control plane and author tests to verify specific
+capabilities in your project.
 
 ## Prerequisites
 
@@ -19,31 +22,70 @@ To test your compositions and run end-to-end tests, make sure you have:
 * An Upbound account
 * The [Kyverno Chainsaw binary installed](https://kyverno.github.io/chainsaw/0.1.1/install/)
 
-## Testing directory
+## Development control planes
 
-The Upbound testing framework follows a standardized directory structure:
+Development control planes are lightweight, temporary environments in Upbound
+for testing your control plane projects. They provide simplified infrastructure 
+with limited resources and a 24-hour lifespan. Development control planes allow
+you to test APIs and compositions without the cost or complexity of
+production environments.
 
-```ini {copy-lines="none"}
-    tests/
-    │
-    ├── <test-suite>/
-    │   ├── kcl.mod
-    │   └── main.k
-    │
-    ├── <test-suite>/
-    │   ├── requirements.txt
-    │   └── main.py
-    │
-    ├── <e2e-test-name>/
-    │   ├── kcl.mod
-    │   └── main.k
+{{<hint "important">}}
+Development Control Planes are available in Cloud Hosted Spaces only.
+{{</hint>}}
+
+### Render your composition
+
+Preview how your composition creates resources with the `up composition render`
+command before you deploy to a development control plane.
+```shell
+up composition render <your_composition> <your_composite_resource_file>
 ```
 
-This structure separates tests from your APIs and ensures they aren't bundled
-into package deployments. Customize the test directory location by updating the
-`ProjectPaths` configuration in your `upbound.yaml` file.
+This command requires a **Composite Resource** (XR) file that defines the
+resources you want to create. The XR file contains the same parameters as your
+example claim but explicitly defines the API type and target cluster.
 
-## Composition tests
+```shell
+up composition render <your_composition> <your_composite_resource_file>
+```
+
+This command requires a **Composite Resource** (XR) file that defines the
+resources you want to create. The XR file contains the same parameters as your
+example claim but explicitly defines the API type and target cluster.
+
+Rendering locally validates your build, configuration and resource orchestration
+render as expected before you deploy to a development control plane.
+
+### Run your development control plane
+
+To run your control plane projects on a development control plane, use the `up
+project run` command.
+
+```bash
+up project run
+```
+
+The `up project run` command creates a development control plane in your Upbound
+Cloud organization. The development control plane creates your project's custom
+resources, compositions and functions in a limited scope isolated control plane.
+
+{{<hint "warning">}}
+Development control planes are **not** suitable for production workloads
+{{</hint>}}
+
+You can validate your results in the Upbound Console and make changes to ensure
+your project operates as expected before you move to production.
+
+Upbound limits the number of concurrent development control planes you can
+create based on your account tier. Review [Upbound's pricing](https://www.upbound.io/pricing) for more information.
+
+## Test your project locally
+
+You can also generate tests for your compositions locally with the `up test
+generate` command.
+
+### Generate a composition test
 
 Composition tests validate the logic of your compositions without requiring a
 live environment. They simulate the composition controller's behavior, allowing
@@ -54,13 +96,12 @@ Composition tests validate composition logic without required a live
 environment. They simulate the composition controller's behavior, letting you
 test resource creation, dependencies, and state transitions with mock data.
 
-### Generate a composition test
-
 You can generate test with `up test generate` for composition tests.
 You can write tests in KCL or Python.
 
 For example, to generate a composition test:
 
+<!-- vale gitlab.SentenceSpacing = NO -->
 {{< content-selector options="Python,KCL" default="Python" >}}
 <!-- Python -->
 ```ini {copy-lines="all"}
@@ -75,7 +116,7 @@ up test generate <name> --language=kcl
 <!-- /KCL -->
 {{< /content-selector >}}
 
-### Author a composition test
+#### Author a composition test
 
 Composition tests use a declarative API in KCL or Python. Each test
 models a single composition controller loop, making testing more streamlined for
@@ -129,18 +170,7 @@ items = _items
 <!-- /KCL -->
 {{< /content-selector >}}
 
-### Complex testing scenarios
-
-For compositions requiring multiple controller loops (with one resource
-depending on another, for example), create separate tests for each stage.
-
-Mock states help test scenarios like:
-
-1. Resources that already exist.
-2. How your composition handles different resource states.
-3. Conditional dependency chains between resources.
-
-### Run a composition test
+#### Run a composition test
 
 You can run your composition tests using the `up test run` command.
 
@@ -182,12 +212,10 @@ When you run Compositions tests, Upbound:
 3. Sets the context to the new control plane.
 4. Executes tests and validates results.
 
-## End-to-end tests
+### Generate an end-to-end test
 
 End-to-end tests validate compositions in real environments, ensuring creation,
 deletion, and operations work as expected.
-
-### Generate an end-to-end test
 
 You can generate test with `up test generate` for end-to-end tests.
 You can write tests in KCL or Python.
@@ -208,11 +236,13 @@ up test generate <name> --e2e --language=kcl
 <!-- /KCL -->
 {{< /content-selector >}}
 
-### Author an end-to-end test
+#### Author an end-to-end test
 
 End-to-end tests use the `E2ETest` API, written in KCL or Python.
 
 {{< content-selector options="Python,KCL" default="Python" >}}
+<!-- vale gitlab.SentenceSpacing = YES -->
+
 <!-- Python -->
 ```python
 from .model.io.upbound.dev.meta.e2etest import v1alpha1 as e2etest
@@ -315,7 +345,7 @@ items = _items
 <!-- /KCL -->
 {{< /content-selector >}}
 
-### Run an end-to-end test
+#### Run an end-to-end test
 
 You can run your end-to-end tests using the `up test run` command.
 
@@ -361,26 +391,26 @@ When you run E2E tests, Upbound:
 7. Exports resources for debugging on failure.
 8. Cleans up the control plane when tests complete or the TTL expires.
 
-
-### Run your control plane project
-
-To run your control plane projects on a development control plane, use the
-`up project run` command.
-
-This command creates a development control plane in the Upbound, and
-deploy your project's package to it. A development control plane is a
-lightweight, ephemeral control plane that are perfect for testing your
-Crossplane configurations.
-
-This command creates a development control plane in Upbound and deploys
-your project's package. Development control planes are lightweight and
-ephemeral, making them ideal for testing Crossplane configurations.
-
-Now, you can validate your results, and make any changes to test your resources.
-
-For more information, review the [development control plane documentation]({{< ref
-"dev-cps" >}}).
 <!-- vale write-good.TooWordy = YES -->
+
+## Complex testing scenarios
+
+For compositions requiring multiple controller loops (with one resource
+depending on another, for example), create separate tests for each stage.
+
+Mock states help test scenarios like:
+
+1. Resources that already exist.
+2. How your composition handles different resource states.
+3. Conditional dependency chains between resources.
+
+
+## Next steps
+<!-- vale gitlab.SentenceLength = NO -->
+Now that you know how to write tests for your control plane projects, the next
+guide shows you how to [build and push your projects]({{< ref
+"build/control-plane-projects/building-pushing" >}}).
+<!-- vale gitlab.SentenceLength = YES -->
 
 <!-- vale off -->
 
@@ -390,3 +420,4 @@ For more information, review the [development control plane documentation]({{< r
 
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
+

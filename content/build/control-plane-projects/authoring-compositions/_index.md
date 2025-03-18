@@ -156,7 +156,7 @@ and more.
 In the next guide, you'll run and test your composition.
 <!-- vale gitlab.FutureTense = YES -->
 
-For more Python best practices, please refer to the [documentation]({{<ref "python/_index.md">}}).
+For more Python best practices, please refer to the [documentation]({{<ref "python/">}}).
 
 <!-- /Python -->
 <!-- KCL -->
@@ -261,8 +261,14 @@ function adds server side encryption to the buckets your deployment creates.
 In the next guide, you'll run and test your composition.
 <!-- vale gitlab.FutureTense = YES -->
 
-For more KCL best practices, please refer to the [documentation]({{<ref "build/authoring-compositions/kcl">}}).
+For more KCL best practices, please refer to the [documentation]({{<ref "kcl/">}}).
 
 <!-- /KCL -->
 
 {{< /content-selector >}}
+
+## Next steps
+
+After you author your compositions and embedded functions, you can build and
+test your control plane projects in Upbound. To learn more about testing, review
+the [testing guide]({{< ref "testing/" >}}).

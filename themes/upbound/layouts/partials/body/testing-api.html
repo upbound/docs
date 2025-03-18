@@ -34,9 +34,10 @@
 
     <div id="crd-rows-container">
         {{/* Use the detected version */}}
-        {{ $crdsData := index $.Site.Data.crds "build" "testing" "yaml" }}
+        {{ $crdsData := index $.Site.Data.crds "build" "control-plane-projects" "testing" "yaml" }}
 
-        {{ $descFiles := index $.Site.Data.crds "build" "testing" }}
+        {{ $descFiles := index $.Site.Data.crds "build"
+        "control-plane-projects" "testing" }}
 
         {{/* Iterate over each CRD file */}}
         {{ range $fileName, $crdContent := $crdsData }}
