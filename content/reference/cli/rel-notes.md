@@ -9,6 +9,16 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.38.2
+
+Released March 17th, 2025
+
+### What's Changed
+
+- Fixed `up test` and `up project run` compatibility with Crossplane 1.19.
+- Added the ability to login with an Upbound Robot Token.
+- Bug fixes and improvements in `up test` and `up project build`.
+
 ## v0.38.1
 
 Released March 11th, 2025
