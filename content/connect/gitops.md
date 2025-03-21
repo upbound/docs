@@ -192,7 +192,6 @@ spec:
 
 To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace.
 Add `application.resourceTrackingMethod: annotation` to the data section as below.
-This configuration turns off Argo CD auto pruning, preventing the deletion of Crossplane resources.
 
 Next, configure the [auto respect RBAC for the Argo CD controller](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller).
 By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a control plane.
