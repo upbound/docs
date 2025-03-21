@@ -37,16 +37,9 @@ Development Control Planes are available in Cloud Hosted Spaces only.
 
 Preview how your composition creates resources with the `up composition render`
 command before you deploy to a development control plane.
-```shell
-up composition render <your_composition> <your_composite_resource_file>
-```
-
-This command requires a **Composite Resource** (XR) file that defines the
-resources you want to create. The XR file contains the same parameters as your
-example claim but explicitly defines the API type and target cluster.
 
 ```shell
-up composition render <your_composition> <your_composite_resource_file>
+up composition render apis/xbuckets/composition.yaml examples/bucket/example-xr.yaml
 ```
 
 This command requires a **Composite Resource** (XR) file that defines the
