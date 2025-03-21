@@ -10,20 +10,20 @@ aliases:
 This feature is in preview.
 {{< /hint >}}
 
-The Upbound migration tool is a [CLI command]({{<ref "operate/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
+The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
 
 To migrate from Crossplane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a control plane running in Upbound.
 
-The migration tool is available in the [up CLI]({{<ref "reference/cli/command-reference.md#up-alpha-xpkg-xp-extract">}}) as
+The migration tool is available in the [up CLI]({{<ref "operate/cli/command-reference.md#up-alpha-xpkg-xp-extract">}}) as
 `up alpha migration export` and `up alpha migration import` commands.
 
 ## Prerequisites
 
 Before you begin, you must have the following:
-- The [up CLI]({{<ref "reference/cli/_index.md">}}) version 0.23.0 or later.
+- The [up CLI]({{<ref "operate/cli/_index.md">}}) version 0.23.0 or later.
 
 ## Migration process
 
