@@ -17,11 +17,34 @@ The Upbound Official Kubernetes Provider supports many authentication methods.
 This method of authentication is only supported in control planes running on [Upbound Cloud Spaces]({{<ref "deploy" >}})
 {{< /hint >}}
 
-Use this auth mechanism when you want to use a control plane with provider-kubernetes to interact with [Upbound APIs]({{<ref "connect/gitops/#gitops-for-upbound-resources" >}}). Upbound Identity uses a personal access token (PAT) to authenticate with Upbound.
+Use this auth mechanism when you want to use a control plane with provider-kubernetes to interact with [Upbound APIs]({{<ref "connect/gitops/#gitops-for-upbound-resources" >}}). Upbound Identity can be configured to use the following to authenticate with Upbound:
+
+- a user's personal access token (PAT) 
+- a token generated from a robot
 
 <!-- vale Google.Headings = NO -->
-### Create a personal access token
-<!-- vale Google.Headings = YES -->
+### Create an access token
+
+{{< tabs "hints" >}}
+
+{{< tab "Robot Token">}}
+This method creates a Robot, the Upbound-equivalent of a service account, and uses it's identity to authenticate and perform actions.
+1. Login to Upbound
+```ini
+up login
+```
+2. Create a robot
+```ini
+up robot create "provider-kubernetes" --description="Robot used for authenticating to Upbound by provider-kubernetes"
+```
+3. Create and store an access token for this robot as an environment variable:
+```ini
+export UPBOUND_TOKEN=$(up robot token create "provider-kubernetes" "provider-kubernetes-token" --output=-| awk -F': ' '/Token:/ {print $2}')
+```
+4. Assign the robot [to a team]({{<ref "operate/accounts/identity-management/robots/#assign-a-robot-to-a-team" >}}) and use Upbound RBAC to [grant the team a role]({{<ref "operate/accounts/authorization/upbound-rbac/#assign-group-role-permissions" >}}) for permissions.
+{{< /tab >}}
+
+{{< tab "Personal Access Token">}}
 Create a [personal access token](https://accounts.upbound.io/settings/tokens) and store it as an environment variable.
 
 {{< editCode >}}
@@ -29,6 +52,10 @@ Create a [personal access token](https://accounts.upbound.io/settings/tokens) an
 export UPBOUND_TOKEN="$@<YOUR_API_TOKEN>$@"
 ```
 {{< /editCode >}}
+{{< /tab >}}
+
+{{< /tabs >}}
+<!-- vale Google.Headings = YES -->
 
 ### Generate a kubeconfig for Upbound APIs
 
@@ -37,15 +64,35 @@ Upbound APIs are Kubernetes-compatible. Generate a kubeconfig for the context yo
 - [Generate a kubeconfig for a Space]({{<ref "operate/cli/contexts/#generate-a-kubeconfig-for-a-space" >}})
 - [Generate a kubeconfig for a control plane in a Space]({{<ref "operate/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group" >}})
 
-Set the desired context path below depending on your use case:
+Set the desired context path below depending on your use case. Generate a kubeconfig according to the token method you followed in the prior section.
 
-{{< editCode >}}
+{{< tabs "hints" >}}
+
+{{< tab "Robot">}}
+1. Login to Upbound with the robot access token:
 ```ini
-up login
+up login -t $UPBOUND_TOKEN
+```
+2. Set your Upbound context:
+```ini
 up ctx $@<org>/<space>>/<group>/<control-plane>$@
 up ctx . -f - > upbound-context.yaml
 ```
-{{< /editCode >}}
+{{< /tab >}}
+
+{{< tab "User account">}}
+1. Login to Upbound:
+```ini
+up login
+```
+2. Set your Upbound context:
+```ini
+up ctx $@<org>/<space>>/<group>/<control-plane>$@
+up ctx . -f - > upbound-context.yaml
+```
+{{< /tab >}}
+
+{{< /tabs >}}
 
 Store the generated context as an environment variable:
 
