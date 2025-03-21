@@ -24,7 +24,7 @@ How you integrate Argo with Upbound depends on which Space type you're running y
 
 #### Generate a kubeconfig for your control plane
 
-Use the up CLI to [generate a kubeconfig]({{<ref "reference/cli/contexts.md#storing-a-context-to-a-file" >}}) for your control plane.
+Use the up CLI to [generate a kubeconfig]({{<ref "operate/cli/contexts.md#storing-a-context-to-a-file" >}}) for your control plane.
 
 ```bash
 up ctx <org-name>/<space-name>/<group-name>/<control plane> -f - > context.yaml

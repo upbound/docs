@@ -79,7 +79,7 @@ You should wait until your Configuration has finished installing into your contr
 
 ### Configure provider-upbound
 
-Provider Upbound needs a valid Upbound token to authenticate. You can fetch one in multiple ways, but the simplest option is to log in with [Up CLI]({{<ref "reference/cli">}}) to get a session token.
+Provider Upbound needs a valid Upbound token to authenticate. You can fetch one in multiple ways, but the simplest option is to log in with [Up CLI]({{<ref "operate/cli">}}) to get a session token.
 
 Log in with the `up login` command to save a token to `~/.up/config.json`
 

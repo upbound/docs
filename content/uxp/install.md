@@ -11,7 +11,7 @@ Install UXP into an existing Kubernetes cluster to access Upbound features like 
 
 ## Install Upbound Universal Crossplane
 
-Installing UXP requires the [Up command-line]({{<ref "reference/cli/" >}}). 
+Installing UXP requires the [Up command-line]({{<ref "operate/cli/" >}}). 
 
 Use the `up uxp install` command to install UXP into the current Kubernetes cluster based on `~/.kube/config`.
 

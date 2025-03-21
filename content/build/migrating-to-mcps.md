@@ -10,7 +10,7 @@ aliases:
 This feature is in preview.
 {{< /hint >}}
 
-The Upbound migration tool is a [CLI command]({{<ref "reference/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
+The Upbound migration tool is a [CLI command]({{<ref "operate/cli/command-reference.md">}}) that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
 
 To migrate from Crossplane to Upbound, you must:
 

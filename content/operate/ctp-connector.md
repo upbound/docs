@@ -97,7 +97,7 @@ spaces:
 
 {{< tab "Disconnected Spaces" >}}
 
-1. Create a [kubeconfig]({{<ref "reference/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group" >}}) for the control plane. Update your Upbound context to the path for your desired control plane.
+1. Create a [kubeconfig]({{<ref "operate/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group" >}}) for the control plane. Update your Upbound context to the path for your desired control plane.
 ```ini
 up login
 up ctx <your-org>/upbound-gcp-us-central-1/default/your-control-plane

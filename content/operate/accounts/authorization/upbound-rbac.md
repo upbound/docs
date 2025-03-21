@@ -63,7 +63,7 @@ Upbound RBAC roles have either `read-only` or `read/write` access for features. 
 {{< /tab >}}
 
 {{< tab "Space API" >}}
-Use the [up CLI]({{<ref "reference/cli/contexts/" >}}) to set your kubecontext to the desired Space, then run the following:
+Use the [up CLI]({{<ref "operate/cli/contexts/" >}}) to set your kubecontext to the desired Space, then run the following:
 
 ```sh
 kubectl get objectrolebindings    
@@ -87,7 +87,7 @@ Each role permission granted to a team gets represented with an `objectrolebindi
 {{< /tab >}}
 
 {{< tab "Space API" >}}
-Use the [up CLI]({{<ref "reference/cli/contexts/" >}}) to set your kubecontext to the desired Space, then create an `objectrolebinding`. The example below gives control plane group editor access to the `UpboundTeam` with the UUID of `918a6338-abbe-420d-81cf-9e87642a87c6`:
+Use the [up CLI]({{<ref "operate/cli/contexts/" >}}) to set your kubecontext to the desired Space, then create an `objectrolebinding`. The example below gives control plane group editor access to the `UpboundTeam` with the UUID of `918a6338-abbe-420d-81cf-9e87642a87c6`:
 
 ```yaml
 apiVersion: authorization.spaces.upbound.io/v1alpha1
@@ -119,7 +119,7 @@ spec:
 {{< /tab >}}
 
 {{< tab "Space API" >}}
-Use the [up CLI]({{<ref "reference/cli/contexts/" >}}) to set your kubecontext to the desired Space, then delete the desired `objectrolebinding`. The example below deletes the permission created in the previous section:
+Use the [up CLI]({{<ref "operate/cli/contexts/" >}}) to set your kubecontext to the desired Space, then delete the desired `objectrolebinding`. The example below deletes the permission created in the previous section:
 
 ```sh
 kubectl delete objectrolebinding default-zcntk                        

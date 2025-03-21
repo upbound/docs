@@ -21,7 +21,7 @@ To complete this tutorial, you need the following:
 <!-- vale Upbound.Spelling = NO -->
 - Have already deployed an instance of Argo CD on a Kubernetes cluster (or using a hosted service such as [Akuity](https://akuity.io/)).
 <!-- vale Upbound.Spelling = YES -->
-- The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) on your local machine.
+- The [up CLI]({{<ref "operate/cli/#install-the-up-command-line" >}}) on your local machine.
 <!-- vale Upbound.Spelling = YES -->
 
 

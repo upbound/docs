@@ -41,7 +41,7 @@ If you have specific requirements not addressed in the Helm chart, see below for
 
 ### Using the up CLI
 
-Before you begin, make sure you have the most recent version of the [`up` CLI installed]({{<ref "reference/cli#install-the-up-command-line">}}).
+Before you begin, make sure you have the most recent version of the [`up` CLI installed]({{<ref "operate/cli#install-the-up-command-line">}}).
 
 To enable this feature, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces:
 

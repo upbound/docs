@@ -115,7 +115,7 @@ up ctx ${yourOrganization}/${yourSpace}/${yourGroup}/${yourControlPlane} -f ctp-
 ```
 
 {{< hint "tip" >}}
-To learn more about how to use `up ctx` to navigate different contexts in Upbound, read the [CLI documentation]({{<ref "reference/cli/contexts" >}}).
+To learn more about how to use `up ctx` to navigate different contexts in Upbound, read the [CLI documentation]({{<ref "operate/cli/contexts" >}}).
 {{< /hint >}}
 
 ## Configuration

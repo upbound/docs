@@ -34,8 +34,8 @@ export UPBOUND_TOKEN="$@<YOUR_API_TOKEN>$@"
 
 Upbound APIs are Kubernetes-compatible. Generate a kubeconfig for the context you want to interact with:
 
-- [Generate a kubeconfig for a Space]({{<ref "reference/cli/contexts/#generate-a-kubeconfig-for-a-space" >}})
-- [Generate a kubeconfig for a control plane in a Space]({{<ref "reference/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group" >}})
+- [Generate a kubeconfig for a Space]({{<ref "operate/cli/contexts/#generate-a-kubeconfig-for-a-space" >}})
+- [Generate a kubeconfig for a control plane in a Space]({{<ref "operate/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group" >}})
 
 Set the desired context path below depending on your use case:
 
