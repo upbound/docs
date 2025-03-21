@@ -63,7 +63,27 @@ spec:
 
 Spaces supports the three [preceding minor versions](https://docs.upbound.io/reference/lifecycle/#maintenance-and-updates) from the last supported minor version. For example, if the last supported minor version is `1.14`, minor versions `1.13` and `1.12` are also supported. Versions older than the three most recent minor versions aren't supported. Only supported Crossplane versions are valid specifications for new control planes.
 
+Current Crossplane version support by Spaces version:
+
+{{< table >}}
+| Spaces Version | Crossplane Version Min | Crossplane Version Max |
+|:--------------:|:----------------------:|:----------------------:|
+|       1.2      |          1.13          |          1.15          |
+|       1.3      |          1.13          |          1.15          |
+|       1.4      |          1.14          |          1.16          |
+|       1.5      |          1.14          |          1.16          |
+|       1.6      |          1.14          |          1.16          |
+|       1.7      |          1.14          |          1.16          |
+|       1.8      |          1.15          |          1.17          |
+|       1.9      |          1.16          |          1.18          |
+|      1.10      |          1.16          |          1.18          |
+|      1.11      |          1.16          |          1.18          |
+|      1.12      |          1.17          |          1.19          |
+{{</ table >}}
+
+
 Upbound offers extended support for all installed Crossplane versions released within a 12 month window since the last Spaces release. Contact your Upbound sales representative for more information on version support.
+
 
 {{< hint "warning" >}}
 
