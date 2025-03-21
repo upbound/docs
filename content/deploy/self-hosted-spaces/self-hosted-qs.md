@@ -84,7 +84,7 @@ export SPACES_VERSION={{< spaces_version >}}
 ## Install the Spaces software
 <!-- vale on -->
 
-The [up CLI]({{<ref "reference/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. This guide requires CLI version `v0.37.0` or newer.
+The [up CLI]({{<ref "operate/cli/">}}) gives you a "batteries included" experience. It automatically detects which prerequisites aren't met and prompts you to install them to move forward. This guide requires CLI version `v0.37.0` or newer.
 
 {{< hint "tip" >}}
 Make sure your kubectl context is set to the cluster you want to install the Spaces software into.
@@ -145,7 +145,7 @@ up ctx -
 ```
 
 {{< hint "tip" >}}
-Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "reference/cli/contexts">}}).
+Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference]({{<ref "operate/cli/contexts">}}).
 {{< /hint >}}
 
 <!-- vale Google.Headings = NO -->

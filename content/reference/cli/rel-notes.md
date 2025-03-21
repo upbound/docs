@@ -5,7 +5,7 @@ description: "Release Notes for the up CLI"
 weight: 200
 ---
 
-Find below the release notes for all released versions of the [up CLI]({{< ref "reference/cli/_index.md" >}}).
+Find below the release notes for all released versions of the [up CLI]({{< ref "operate/cli/_index.md" >}}).
 
 <!-- vale off -->
 
@@ -277,7 +277,7 @@ To connect to an MCP in a Cloud Space or Connected/Disconnected Space, please us
 ### Notable Changes
 
 - We replaced `up ctp connect/disconnect` and `up ctp kubeconfig get` with a new `up ctx` command.
-- We've overhauled how profiles work in `up`. Learn more about it by reading the [up CLI]({{<ref "reference/cli">}}) reference.
+- We've overhauled how profiles work in `up`. Learn more about it by reading the [up CLI]({{<ref "operate/cli">}}) reference.
 
 ### What's Changed
 

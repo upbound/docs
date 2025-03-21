@@ -3,6 +3,8 @@ title: "Configuration"
 metaTitle: "Upbound CLI - Configuration"
 description: "Configuration for the Upbound CLI"
 weight: 105
+aliases:
+    - /reference/configuration
 ---
 
 `up` interacts with a variety of systems, each of which may have information
@@ -116,7 +118,7 @@ For inactive tokens, use the [Upbound Password Reset](https://accounts.upbound.i
 
 If you prefer to use Docker or any other OCI client, you can add the following to your Docker `config.json` file after downloading `docker-credential-up`. This allows your client to use Upbound credentials to interact with the Marketplace.
 
-Instructions for installing `docker-credential-up` are available in the [CLI installation documentation]({{<ref "reference/cli/_index.md#install-docker-credential-up" >}}).
+Instructions for installing `docker-credential-up` are available in the [CLI installation documentation]({{<ref "operate/cli/_index.md#install-docker-credential-up" >}}).
 
 {{< editCode >}}
 ```json

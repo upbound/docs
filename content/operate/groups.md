@@ -48,7 +48,7 @@ up ctp create new-ctp --group=team2
 
 ### Set the group preference
 
-The _up_ CLI operates upon a single [Upbound context]({{<ref "reference/cli/contexts" >}}). Whatever context gets set is then used as the preference for other commands. An Upbound context is capable of pointing at a variety of altitudes:
+The _up_ CLI operates upon a single [Upbound context]({{<ref "operate/cli/contexts" >}}). Whatever context gets set is then used as the preference for other commands. An Upbound context is capable of pointing at a variety of altitudes:
 
 1. A Space in Upbound
 2. A group within a Space

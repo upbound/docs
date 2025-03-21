@@ -19,7 +19,7 @@ This guide shows you how to:
 For this guide, you'll need:
 <!-- vale gitlab.FutureTense = YES -->
 
-- The [up CLI]({{<ref "reference/cli">}}) installed
+- The [up CLI]({{<ref "operate/cli">}}) installed
 - An account on Upbound
 
 ## Create a repository

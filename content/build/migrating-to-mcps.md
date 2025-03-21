@@ -23,7 +23,7 @@ The migration tool is available in the [up CLI]({{<ref "reference/cli/command-re
 ## Prerequisites
 
 Before you begin, you must have the following:
-- The [up CLI]({{<ref "reference/cli/_index.md">}}) version 0.23.0 or later.
+- The [up CLI]({{<ref "operate/cli/_index.md">}}) version 0.23.0 or later.
 
 ## Migration process
 

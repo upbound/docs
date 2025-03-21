@@ -10,9 +10,10 @@ For more information on how Upbound builds on Crossplane, review the [learning o
 
 ## Command line interface
 
-- [Command Reference](cli/command-reference/)
-- [Configuration](cli/configuration/)
-- [Release Notes](cli/rel-notes/)
+- [Command Reference]({{< ref "command-reference">}})
+- [Configuration]({{< ref "operate/cli/configuration">}})
+- [Release Notes]({{< ref "rel-notes">}})
+
 
 
 ## Licensing
