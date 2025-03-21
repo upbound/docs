@@ -5,6 +5,7 @@ weight: 1
 description: "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI."
 aliases: 
   - /cli
+  - /reference/cli
 ---
 
 The Upbound `up` command-line enables interaction with Upbound control planes. It also simplifies common workflows with Upbound Universal Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.

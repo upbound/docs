@@ -3,6 +3,8 @@ title: "Configuration"
 metaTitle: "Upbound CLI - Configuration"
 description: "Configuration for the Upbound CLI"
 weight: 105
+aliases:
+    - /reference/configuration
 ---
 
 `up` interacts with a variety of systems, each of which may have information
