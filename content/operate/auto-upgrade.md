@@ -65,7 +65,7 @@ Spaces supports the three [preceding minor versions](https://docs.upbound.io/ref
 
 Current Crossplane version support by Spaces version:
 
-{{< table >}}
+{{< table "table table-striped" >}}
 | Spaces Version | Crossplane Version Min | Crossplane Version Max |
 |:--------------:|:----------------------:|:----------------------:|
 |       1.2      |          1.13          |          1.15          |
