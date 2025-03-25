@@ -9,7 +9,7 @@ aliases:
 
 Upbound Spaces can automatically upgrade the version of Crossplane in your Managed Control Planes. You can edit the `spec.crossplane.autoUpgrade` field in your `ControlPlane` specification with the available release channels below.
 
-{{< table >}}
+{{< table "table table-striped" >}}
 | Channel  | Description                                                                                                                                                                              | Example |
 |------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | **None**    | Disables auto upgrades.  | _Uses version specified in `spec.crossplane.version`._ |
