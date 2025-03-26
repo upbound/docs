@@ -182,7 +182,7 @@ The provider or function pod will now contain an Upbound OIDC token with the aud
 Note that the audience gets automatically set on AWS, Azure, and GCP Official providers and can't be customized.
 {{< /hint >}}
 
-### OIDC explained
+## OIDC explained
 
 OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties (RPs)**. Control planes define these roles as follows:
 
@@ -193,7 +193,7 @@ Users set up a _trust relationship_ between Upbound and the external service. Up
 
 Upbound injects an _identity token_ into the file system of every provider `Pod`. Upbound sends the token to the external service and exchanges it for a short-lived credential. Upbound uses the short-lived credential to perform operations against the external service.
 
-#### Creating trust relationships
+### Creating trust relationships
 
 Every OIDC relying party implements its own mechanism for establishing a trust relationship and associating permissions. Typically, the process involves the following broad steps:
 
