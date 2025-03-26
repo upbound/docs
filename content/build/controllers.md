@@ -17,7 +17,7 @@ This guide explains how to bundle and deploy control plane software from the Kub
 The Controllers feature provides the following benefits:
 
 * Deploy control plane software from the Kubernetes ecosystem.
-* Use your control plane's package manager to handle the lifecycle of the control plane software.
+* Use your control plane's package manager to handle the lifecycle of the control plane software and define dependencies between package.
 * Build powerful compositions that combine both Crossplane and Kubernetes _CustomResources_.
 
 ## How it works
@@ -118,7 +118,7 @@ spec:
   helm:
     releaseName: <release-name>
     releaseNamespace: <release-namespace>
-    # Values for the helm chart can be provided below.
+    # Value overrides for the helm release can be provided below.
     # values:
     #   foo: bar
 EOF
@@ -183,7 +183,7 @@ kind: Controller
 metadata:
   name: $CONTROLLER_NAME
 spec:
-  package: xpkg.upbound.io/upbound/$CONTROLLER_NAME:$CONTROLLER_VERSION
+  package: xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION
 EOF
 ```
 {{< /editCode >}}
@@ -311,7 +311,7 @@ kind: Controller
 metadata:
   name: controller-argocd
 spec:
-  package: xpkg.upbound.io/upbound/controller-argocd:v7.8.8
+  package: xpkg.upbound.io/$UPBOUND_ACCOUNT/controller-argocd:v7.8.8
 EOF
 ```
 
