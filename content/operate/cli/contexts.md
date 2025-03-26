@@ -4,6 +4,7 @@ weight: 2
 description: An introduction to the how contexts work in Upbound
 aliases:
     - /reference/contexts
+    - /reference/cli/contexts
 ---
 
 Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's command structure and syntax is strongly inspired by Kubernetes contexts and the conventions of the Kubernetes `kubectl` CLI.
