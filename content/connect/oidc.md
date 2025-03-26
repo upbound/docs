@@ -143,7 +143,46 @@ spec:
 Read the [provider-gcp authentication]({{<ref "/providers/provider-gcp/authentication/#upbound-auth-oidc" >}}) documentation for full setup instructions.
 {{</hint>}}
 
-### OIDC explained
+## Deploy Upbound OIDC tokens to arbitrary provider and function packages
+
+Create a [_DeploymentRuntimeConfig_](https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration) in a control plane on Upbound:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: aws-audience
+spec:
+  deploymentTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            proidc.cloud-spaces.upbound.io/audience: my-audience-name
+      selector:
+        matchLabels: {}
+```
+
+Install your desired provider or function and reference the _DeploymentRuntimeConfig_. The example below demonstrates doing this with [provider-helm](https://marketplace.upbound.io/providers/upbound/provider-helm/):
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-helm
+spec:
+  package: xpkg.upbound.io/crossplane-contrib/provider-helm:v0.19.0
+  runtimeConfigRef:
+    name: aws-audience
+```
+
+The provider or function pod will now contain an Upbound OIDC token with the audience set to `my-audience-name`. The token is located in `/var/run/secrets/upbound.io/provider/token` both for provider and function pods.
+
+{{<hint "warning" >}}
+Note that the audience gets automatically set on AWS, Azure, and GCP Official providers and can't be customized.
+{{< /hint >}}
+
+## OIDC explained
 
 OIDC calls the two parties the **OpenID Providers (OPs)** and **Relying Parties (RPs)**. Control planes define these roles as follows:
 
@@ -154,7 +193,7 @@ Users set up a _trust relationship_ between Upbound and the external service. Up
 
 Upbound injects an _identity token_ into the file system of every provider `Pod`. Upbound sends the token to the external service and exchanges it for a short-lived credential. Upbound uses the short-lived credential to perform operations against the external service.
 
-#### Creating trust relationships
+### Creating trust relationships
 
 Every OIDC relying party implements its own mechanism for establishing a trust relationship and associating permissions. Typically, the process involves the following broad steps:
 
