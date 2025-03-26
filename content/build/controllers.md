@@ -296,7 +296,7 @@ export CONTROLLER_NAME=controller-argocd
 export CONTROLLER_VERSION=v7.8.8
 export XPKG_FILENAME=$@<controller-f7091386b4c0.xpkg>$@
 
-up xpkg push xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
+up xpkg push --create xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
 ```
 {{< /editCode >}}
 
@@ -321,10 +321,10 @@ Wait for the package to become ready:
 watch kubectl get controllers.pkg
 ```
 
-Check the pods in the `argo-cd` namespace:
+Check the pods in the `argo-system` namespace:
 
 ```ini
-kubectl -n argo-cd get pods
+kubectl -n argo-system get pods
 ```
 
 You can now use the _CustomResource_ types defined by Argo CD in your control plane.
