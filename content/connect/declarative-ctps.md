@@ -16,7 +16,6 @@ To complete this tutorial, you need the following:
 
 - Have already deployed an Upbound Space.
 - Have already deployed an instance of Argo CD on a Kubernetes cluster.
-- The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) installed on your local machine.
 
 ## Connect your Space to Argo CD
 

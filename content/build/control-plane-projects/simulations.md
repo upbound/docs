@@ -5,73 +5,113 @@ description: "Simulate your control plane project"
 aliases:
     - /core-concepts/simulations
 ---
-*Simulations is in private preview only*
+
+{{< hint "important" >}}
+The Simulations feature is in private preview. For more information, contant
+your Upbound representative.
+{{</ hint >}}
 
 
-Control Plane Simulations allow you to preview changes before applying them to your live control planes. Similar to Terraform Plan, this feature lets you simulate the impact of configuration changes, package updates, or claim modifications without affecting your production environment.
+Control plane simulations allow you to preview changes to your resources before
+applying them to your control planes. Like a plan or dry-run operation,
+simulations expose the impact of configuration, package, or claim
+updates without changing your actual resources.
 
-Simulations create a temporary copy of your control plane that shows exactly what would happen if your changes were applied, giving you confidence in your infrastructure changes and helping reduce the risk of unexpected behavior.
+A control plane simulation creates a temporary copy of your control plane and
+returns a preview of the desired changes. The simulation change plan helps you
+reduce the risk of unexpected behavior based on your changes.
 
-## Why Use Simulations?
+## Simulation benefits
+
 Control planes are dynamic systems that automatically reconcile resources to match your desired state. Simulations provide visibility into this reconciliation process by showing:
 
-- Which resources will be created
-- Which resources will be modified
-- Which resources will be deleted
-- How configuration changes propagate through the system
 
-This visibility is especially valuable during code reviews, when planning complex changes, or when upgrading Crossplane packages.
+* New resources to create
+* Existing resources to modify
+* Existing resources to delete
+* How configuration changes propagate through the system
+
+These insights are crucial when planning complex changes or upgrading Crossplane
+packages.
 
 ## Requirements
-Simulations are available to select customers on Upbound Cloud, running on Team Tier or higher. To receive access, please reach out to Upbound (we probably need to put in a link for customers to reach out to).
 
-## Simulating Your Control Planes
-Before starting a simulation, first ensure that your project is built and running on a control plane (we'll refer to this as the base control plane).
+Simulations are available to select customers on Upbound Cloud with Team
+Tier or higher. For more information, [reach out to Upbound](https://www.upbound.io/contact).
 
-Kubectl apply any claim or XRs you want to validate changes for, make respectivate changes to your composition functions, and run the following command.
+## How to simulate your control planes
 
-```shell
-# Simulate changes for a project
-up project simulate <my-base-control-plane> --complete-after=60s --terminate-on-finish
+Before you start a simulation, ensure your project builds and use the `up
+project run` command to run your control plane.
+
+Use `kubectl` to apply the claim or XR you want to simulate and update your
+composition functions. 
+
+Use the `up project simulate` command with your control plane name to start the
+simulation:
+
+{{< editCode >}}
+```ini {copy-lines="all"}
+up project simulate $@<your_control_plane_name>$@ --complete-after=60s --terminate-on-finish
 ```
+{{< /editCode >}}
 
-The 'complete-after' flag defines amount of time the simulated control plane should run before ending. It's important to note that if you define a value for this flag, a simulation may not fully complete within the time period you've defined. In that case, any unaffected resources will be marked as unchanged.
+The `complete-after` flag defines the TTL of your simulation. Depending on the
+change, a simulation may not complete within your defined interval leaving
+unaffected resources as `unchanged`. 
 
-The 'terminate-on-finish' terminates the simulation if the completion criteria is met.
+The `terminate-on-finish` flag terminates the simulation after the time period
+you set.
 
-It is also possible to target a singular control plane in isolation if you aren't using a control plane project.
+You can target a single control plane in isolation if you aren't using a control
+plane project:
 
-```shell
-# Simulate changes for a specific control plane
-up ctp simulate <my-base-control-plane> -f <my/directory/changeset> --complete-after=60s --terminate-on-finish
+{{< editCode >}}
+```ini {copy-lines="all"}
+up ctp simulate $@<your_control_plane_name>$@ -f $@<your/changeset/path>$@ --complete-after=60s --terminate-on-finish
 ```
+{{< /editCode >}}
 
-At the end of your simulation, you'll get the following output in your CLI.
-- Summary of changes (resources created/modified/deleted)
-- Detailed diffs for each affected resource
 
-## View Your Simulation in the Console
-In addition to the CLI, you can view the results of your simulation in detail in the Upbound Console.
+At the end of your simulation, your CLI returns:
+* A summary of the resources created, modified, or deleted
+* Diffs for each resource affected
+
+## View your simulation in the Upbound Console
+
+
+You can also view your simulation results in the Upbound Console:
 
 1. Navigate to your base control plane in the Upbound Console
 2. Select the "Simulations" tab in the menu
-3. Click on the simulation object you wish to view and see the changelist of all resources affected.
+3. Select a simulation object for a change list of all
+   resources affected.
 
 The Console provides visual indications of changes:
+
 - Created Resources: Marked with green
 - Modified Resources: Marked with yellow
 - Deleted Resources: Marked with red
-- Unchanged Resources: Displayed in grey
+- Unchanged Resources: Displayed in gray
 
-<SCREENSHOT GOES HERE>
+{{< img src="images/simulations.png" alt="Upbound Console Simulation"
+size="medium" >}}
 
-## Limitations of Simulations
-Simulations is a private preview feature, meaning that some limitations exist today. The most significant are listed below.
+## Considerations 
 
-- Due to the complexity and non-determinism of Crossplane’s reconciliation approach, simulations cannot predict the exact behavior of external systems.
+Simulations is a **private preview** feature. 
 
-- Currently, the only completion criteria for a simulation is time, meaning that there is a risk of not reaching a conclusive result within that interval.
+Be aware of the following limitations:
 
-- Providers do not run in simulations, meaning that simulations cannot compose resources that rely on the status of MRs.
+- Simulations can't predict the exact behavior of external systems due to the
+    complexity and non-deterministic reconciliation pattern in Crossplane.
 
-The Upbound team is working to improve these limitations at this time, so please stay tuned. Your feedback is always appreciated.
+- The only completion criteria for a simulation is time. Your simulation may not
+    receive a conclusive result within that interval.
+
+- Providers don't run in simulations. Simulations can't compose resources that
+    rely on the status of Managed Resources.
+
+
+
+The Upbound team is working to improve these limitations. Your feedback is always appreciated.
