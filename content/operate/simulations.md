@@ -12,7 +12,7 @@ The Simulations feature is in private preview. For more information, contact
 your Upbound representative.
 {{< /hint >}}
 
-This guide provides detailed instructions for using the up ctp simulate command and the Simulation API[https://docs.upbound.io/reference/space-api/] to test changes to your control planes.
+This guide provides detailed instructions for using the `up ctp simulate` command and the (Simulation API)[https://docs.upbound.io/reference/space-api/] to test changes to your control planes.
 
 ## Simulations
 
@@ -32,15 +32,17 @@ This can help you reduce the risk of unexpected behavior based on your changes.
 
 
 ## Running a simulation
+Note - if you are running an Upbound project, please refer to (running simulations in projects)[https://docs.upbound.io/core-concepts/simulations].
+
 The basic syntax for creating a control plane simulation is:
 
 ```shell
-    up ctp simulate <base-control-plane-name> -f ./changes
+up ctp simulate <base-control-plane-name> -f ./changes
 ```
 
 Simulations assumes that you have some workload already running in your base control plane in Upbound. The command above will create a simulation of the base control plane, and applies the changes found in the ./changes directory into a simulation control plane.
 
-Note that when running the command, you must up ctx to the group level above your base control plane.
+Note that when running the command, you must `up ctx` to the group level above your base control plane.
 
 
 # Viewing your Simulation Results
@@ -64,10 +66,10 @@ The Console provides visual indications of changes:
 <IMAGE GOES HERE>
 
 ## Managing your simulations
-To view all simulations for a specific control plane, you can run the following command
+To view all simulations for a specific control plane, navigate to the control plane group using `up ctx` and run the following command
 
 ```shell
-    kubectl get simulations
+kubectl get simulations
 ```
 
 This will output all of your simulations objects
@@ -80,31 +82,39 @@ This will output all of your simulations objects
 ## Interacting with your simulation
 When a simulation is running, you can directly interact with the simulation object to control the behavior of the simulation.
 
-```shell
-    apiVersion: upbound.io/v1alpha1
-    kind: Simulation
-    spec:
-        completionCriteria: 30
-        desiredState: AcceptingChanges
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Simulation
+metadata:
+  name: simulation
+  namespace: default
+  labels:
+    mxe.upbound.io/disposable: "true"
+spec:
+  controlPlaneName: source
+  desiredState: AcceptingChanges
+  completionCriteria:
+  - type: Duration
+    duration: 90s
 ```
 
 In the Simulation object's spec field, the two most important fields are completionCriteria and the desiredState.
 
 ### completionCriteria
-The completionCriteria field specifies how Spaces should determine when the simulation is complete. If any of the criteria are met, Spaces will set the Simulation’s desired state to complete. Currently, the CompletionCriteria is a string that indicates the duration of how long a simulation should run for in seconds. 
+The completionCriteria field specifies how Spaces should determine when the simulation is complete. Once any of the criteria in the list are met, Spaces will update the Simulation’s desired state to complete. Currently, the accepted CompletionCriteria is of `type: Duration` and a respective `duration` field which how long the simulation will run.
 
 When starting a simulation, you can use the `complete-after` flag to define the completionCriteria of your simulation.
 
 ```shell
-    up ctp simulate <base-control-plane-name> -f ./changes --complete-after=60s
+up ctp simulate <base-control-plane-name> -f ./changes --complete-after=60s
 ```
 
-You may also choose to omit the criteria if you want to manually mark the Simulation complete.
+The default completionCriteria is 60s. But if a user wants to disable completion criteria, they can use `--complete-after=""`.
 
 ### desiredState
 The desiredState field specifies the current state of the simulation. By default, the value will be set to acceptingChanges, and simulation will run until the completionCriteria is hit or the simulation is manually terminated.
 
-To manually terminate a completion, you can use kubectl to edit the value of desiredState to complete or terminated (complete will just end the simulation, terminate will delete the control plane that ran the simulation).
+To manually end a simulation, you can use kubectl to edit the value of desiredState to either `complete` or `terminated`. `complete` will end the simulation and populate the status with the results but will leave the simulated control plane running. `terminated` will end the simulation, populate the status with the results and delete the simulated control plane.
 
 ## Considerations 
 
