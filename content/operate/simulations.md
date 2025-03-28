@@ -30,8 +30,6 @@ kind: Simulation
 metadata:
   name: simulation
   namespace: default
-  labels:
-    mxe.upbound.io/disposable: "true"
 spec:
   controlPlaneName: source
   desiredState: AcceptingChanges
@@ -48,7 +46,7 @@ There are 3 key fields in the API model:
 The controlPlaneName field specifies the name of the base control plane to simulate off of.
 
 ### spec.completionCriteria
-The completionCriteria field specifies how Spaces should determine when the simulation is complete. Once any of the criteria in the list are met, Spaces will update the Simulation’s desired state to complete. Currently, the accepted CompletionCriteria is of `type: Duration` and a respective `duration` field which how long the simulation will run.
+The completionCriteria field specifies how Spaces should determine when the simulation is complete. Once any of the criteria in the list are met, Spaces will update the Simulation’s desired state to complete. Currently, the accepted CompletionCriteria is of `type: Duration` and requires a respective `duration` field which how long the simulation will run.
 
 When starting a simulation, you can use the `complete-after` flag to define the completionCriteria of your simulation.
 
@@ -91,8 +89,6 @@ spec:
     duration: 120s
 EOF
 ```
-
-To include changes to simulate, you can use the --patch flag or include the changes in the simulation object definition.
 
 ### Using the CLI
 The `up ctp simulate` command provides a convenient CLI interface to the Simulations API:
