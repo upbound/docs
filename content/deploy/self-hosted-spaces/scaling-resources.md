@@ -7,21 +7,27 @@ aliases:
     - /spaces/scaling-resources
 ---
 
-When operating Upbound Spaces with large workloads or when migrating from existing control planes into Spaces, you may encounter resource constraints that lead to performance issues. This guide shows how to scale vCluster and etcd resources for optimal performance in self-hosted Spaces.
+In large workloads or control plane migration, you may performance impacting
+resource constraints. This guide explains how to scale vCluster and `etcd`
+resources for optimal performance in your self-hosted Space.
 
 ## Signs of resource constraints
 
-You may need to scale your vCluster or etcd resources if you observe:
+You may need to scale your vCluster or `etcd` resources if you observe:
 
 - API server timeout errors such as `http: Handler timeout`
 - Error messages about `too many requests` and requests to `try again later`
 - Operations like provider installation failing with errors like `cannot apply provider package secret`
-- vCluster pods repeatedly restarting
-- Slow API responses or degraded performance when working with many managed resources
+- vCluster pods experiencing continuous restarts
+- API performance degrades with high resource volume
 
+<!-- vale Google.Headings = NO -->
 ## Scaling vCluster API server resources
+<!-- vale Google.Headings = YES -->
 
-The vCluster API server (`vcluster-api`) handles Kubernetes API requests for your control planes. Default resource allocations may be insufficient for environments with many control planes or providers.
+The vCluster API server (`vcluster-api`) handles Kubernetes API requests for
+your control planes. Deployments with multiple control planes or providers may
+exceed default resource allocations.
 
 ```yaml
 # Default settings
@@ -30,7 +36,8 @@ controlPlanes.api.resources.requests.cpu: "100m"
 controlPlanes.api.resources.requests.memory: "1000Mi"
 ```
 
-For larger workloads, especially when migrating from existing control planes with many providers, increase these values in your Spaces values.yaml:
+For larger workloads, like migrating from an existing control plane with several
+providers, increase these resource limits in your Spaces `values.yaml` file.
 
 ```yaml
 controlPlanes:
@@ -44,16 +51,19 @@ controlPlanes:
         memory: "2Gi"     # Increase baseline memory request
 ```
 
-## Scaling etcd storage
+## Scaling `etcd` storage
 
-etcd performance is critical for Kubernetes and can become a bottleneck. In cloud environments, Upbound uses 50Gi volumes for etcd to ensure sufficient IOPS (input/output operations per second) rather than for actual storage capacity.
+Kubernetes relies on `etcd` performance, which can lead to IOPS (input/output
+operations per second) bottlenecks. Upbound allocates `50Gi` volumes for `etcd`
+in cloud environments to ensure adequate IOPS performance.
 
 ```yaml
 # Default setting
 controlPlanes.etcd.persistence.size: "5Gi"
 ```
 
-For production environments or when migrating large control planes, increase etcd volume size and specify an appropriate storage class:
+For production environments or when migrating large control planes, increase
+`etcd` volume size and specify an appropriate storage class:
 
 ```yaml
 controlPlanes:
@@ -68,7 +78,7 @@ controlPlanes:
 For AWS:
 - Use GP3 volumes with adequate IOPS
 - For AWS GP3 volumes, IOPS scale with volume size (3000 IOPS baseline)
-- For maximum performance, provision at least 32Gi to support up to 16,000 IOPS
+- For optimal performance, provision at least 32Gi to support up to 16,000 IOPS
 
 For GCP and Azure:
 - Use SSD-based persistent disk types for optimal performance
@@ -76,7 +86,7 @@ For GCP and Azure:
 
 ## Scaling Crossplane resources
 
-Crossplane manages provider resources in your control planes. Default values may need adjustment for larger deployments:
+Crossplane manages provider resources in your control planes. You may need to increase provider resources for larger deployments:
 
 ```yaml
 # Default settings
@@ -84,7 +94,9 @@ controlPlanes.uxp.resourcesCrossplane.requests.cpu: "370m"
 controlPlanes.uxp.resourcesCrossplane.requests.memory: "400Mi"
 ```
 
+<!-- vale write-good.Weasel = NO -->
 For environments with many providers or managed resources:
+<!-- vale write-good.Weasel = YES -->
 
 ```yaml
 controlPlanes:
@@ -98,7 +110,7 @@ controlPlanes:
         memory: "512Mi"   # Increase memory request
 ```
 
-## High Availability configuration
+## High availability configuration
 
 For production environments, enable High Availability mode to ensure resilience:
 
@@ -115,9 +127,9 @@ When migrating from existing control planes into a self-hosted Space:
 1. **Pre-scale resources**: Scale up resources before performing the migration
 2. **Monitor resource usage**: Watch resource consumption during and after migration with `kubectl top pods`
 3. **Scale incrementally**: If issues persist, increase resources incrementally until performance stabilizes
-4. **Consider storage performance**: etcd is particularly sensitive to storage I/O performance
+4. **Consider storage performance**: `etcd` is sensitive to storage I/O performance
 
-## Configuration through values.yaml
+## Helm values configuration
 
 Apply these settings through your Spaces Helm values file:
 
@@ -155,10 +167,12 @@ helm upgrade --install spaces upbound-stable/spaces \
   -n upbound-system
 ```
 
-## Additional considerations
-
+## Considerations
+<!-- vale Upbound.Spelling = NO -->
 - **Provider count**: Each provider adds resource overhead - consider using provider families to optimize resource usage
 - **Managed resources**: The number of managed resources impacts CPU usage more than memory
-- **Vertical pod autoscaling**: Consider using VPA in Kubernetes to automatically adjust resources based on usage
+- **Vertical pod autoscaling**: Consider using vertical pod autoscaling in Kubernetes to automatically adjust resources based on usage
 - **Storage performance**: Storage performance is as important as capacity for etcd
-- **Network latency**: Low-latency connections between components improve overall performance
+- **Network latency**: Low-latency connections between components improve performance
+<!-- vale Upbound.Spelling = YES -->
+
