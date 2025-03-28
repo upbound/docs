@@ -1,7 +1,8 @@
 ---
-title: "Simulating your Control Plane Projects"
+title: "Simulate changes to your Control Plane Projects"
 weight: 7
-description: "Simulate changes to control plane projects"
+description: "Use the new Up CLI to mock operations before
+deploying to your environments."
 aliases:
     - /core-concepts/simulations
 ---
@@ -11,10 +12,10 @@ The Simulations feature is in private preview. For more information, contact
 your Upbound representative.
 {{</ hint >}}
 
-
 Control plane simulations allow you to preview changes to your resources before
 applying them to your control planes. Like a plan or dry-run operation,
-simulations expose the impact of updates to compositions or claims without changing your actual resources.
+simulations expose the impact of updates to compositions or claims without
+changing your actual resources.
 
 A control plane simulation creates a temporary copy of your control plane and
 returns a preview of the desired changes. The simulation change plan helps you
@@ -22,7 +23,9 @@ reduce the risk of unexpected behavior based on your changes.
 
 ## Simulation benefits
 
-Control planes are dynamic systems that automatically reconcile resources to match your desired state. Simulations provide visibility into this reconciliation process by showing:
+Control planes are dynamic systems that automatically reconcile resources to
+match your desired state. Simulations provide visibility into this
+reconciliation process by showing:
 
 
 * New resources to create
