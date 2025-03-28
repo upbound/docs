@@ -51,6 +51,33 @@ To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "
 up space upgrade "v1.9.0"
 ```
 
+You can also upgrade a Space by manually bumping the helm chart version. Before upgrading, it's important to check the release notes for any breaking changes or special requirements:
+
+1. Review the release notes for the target version in the [Spaces Release Notes]({{<ref "/reference/rel-notes/spaces-relnotes.md">}})
+2. Upgrade the Space by updating the helm chart version:
+
+```bash
+helm -n upbound-system upgrade spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version "v1.9.0" \
+  --reuse-values \
+  --wait
+```
+
+For major version upgrades or when configuration changes are needed, you may want to extract your current values and make adjustments:
+
+```bash
+# Extract current values to a file
+helm -n upbound-system get values spaces > spaces-values.yaml
+
+# Upgrade with modified values
+helm -n upbound-system upgrade spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version "v1.9.0" \
+  -f spaces-values.yaml \
+  --wait
+```
+
 ### Downgrade a Space
 
 To rollback a Space from one version to the previous, use [up space upgrade]({{<ref "reference/cli/command-reference.md#space-upgrade">}}). Spaces supports downgrading from version `ver x.N.*` to version `ver x.N-1.*`.
@@ -58,6 +85,21 @@ To rollback a Space from one version to the previous, use [up space upgrade]({{<
 ```bash
 up space upgrade --rollback
 ```
+
+You can also downgrade a Space manually using Helm by specifying an earlier version:
+
+```bash
+helm -n upbound-system upgrade spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version "v1.8.0" \
+  --reuse-values \
+  --wait
+```
+
+When downgrading, make sure to:
+1. Check the release notes for any specific downgrade instructions
+2. Verify compatibility between the downgraded Space and any control planes
+3. Back up any critical data before proceeding
 
 ### Uninstall a Space
 
