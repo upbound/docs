@@ -24,7 +24,7 @@ Simulations provide visibility for your resource changes, including:
 * Existing resources to delete
 * How configuration changes propagate through the system
 
-This can help you reduce the risk of unexpected behavior based on your changes.
+This feature is especially valuable for organizations transitioning from traditional IaC tools like Terraform, where previewing changes with terraform plan is a standard practice.
 
 This guide provides instructions for using the `up ctp simulate` command and the
 (Simulation API)[] to test changes in your control plane.
@@ -83,30 +83,36 @@ In this example, comment out the first `ultimateQuestion` and uncomment the
 second, longer parameter value.
 
 ```yaml
-apiVersion: customer.upbound.io/v1alpha1
-kind: XNoOp
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Simulation
 metadata:
-  name: example
+  name: simulation
   namespace: default
 spec:
-  compositionRef:
-    name: noops.customer.upbound.io
-  parameters:
-    ultimateAnswer: 42
-    #ultimateQuestion: "What is the meaning of life?"
-    ultimateQuestion: "What is the meaning of life, the universe, and everything?"
+  controlPlaneName: source
+  desiredState: AcceptingChanges
+  completionCriteria:
+  - type: Duration
+    duration: 90s
 ```
+There are 3 key fields in the API model:
+- spec.controlPlaneName
+- spec.completionCriteria
+- spec.desiredState
 
+### spec.controlPlaneName
+The controlPlaneName field specifies the name of the base control plane to simulate off of.
 
-Run your control plane simulation
+### spec.completionCriteria
+The completionCriteria field specifies how Spaces should determine when the simulation is complete. Once any of the criteria in the list are met, Spaces will update the Simulation’s desired state to complete. Currently, the accepted CompletionCriteria is of `type: Duration` and requires a respective `duration` field which how long the simulation will run.
 
+When starting a simulation, you can use the `complete-after` flag to define the completionCriteria of your simulation.
 
 ```shell
- up alpha ctp simulate no-op  --changeset=./examples/noop/example-xr.yaml --complete-after=60s --terminate-on-finish
+up ctp simulate <base-control-plane-name> -f ./changes --complete-after=60s
 ```
 
-Your command line returns a summary of the resources created, modified, or
-deleted Diffs for each resource affected:
+The default completionCriteria is 60s. But if a user wants to disable completion criteria, they can use `--complete-after=""`.
 
 ```shell {copy-lines="none"}
 Simulation "noop-6wqg9" created
@@ -115,24 +121,35 @@ Simulation "noop-6wqg9" created
 ✓  [3/5]: Waiting for simulation to complete
 ▀  [4/5]: Computing simulated differences (0s)
 
-✓  [4/5]: Computing simulated differences
-▀  [5/5]: Terminating simulation (0s)
+To manually end a simulation, you can use kubectl to edit the value of desiredState to either `complete` or `terminated`. `complete` will end the simulation and populate the status with the results but will leave the simulated control plane running. `terminated` will end the simulation, populate the status with the results and delete the simulated control plane.
 
- ✓  [5/5]: Terminating simulation
+### Status of your simulation
+Once a simulation object is created, its status field will be populated with information about the simulation, including:
 
-Simulation: 0 resources added, 3 resources changed, 0 resources deleted
-[~] XNoOp.customer.upbound.io/v1alpha1 example
-└─[~] spec.parameters.ultimateQuestion
-   ├─[-] "What is the meaning of life?"
-   └─[+] "What is the meaning of life, the universe, and everything?"
-[~] Function.pkg.crossplane.io/v1 crossplane-contrib-function-auto-ready
-└─[~] metadata.annotations
-   ├─[-] <nil>
-   └─[+] map[]
-[~] Function.pkg.crossplane.io/v1 upbound-noopnop-function
-└─[~] metadata.annotations
-   ├─[-] <nil>
-   └─[+] map[]
+- List of changes (created, modified, deleted resources)
+- Simulation state (running, completed, terminated)
+- Timing information (start time, completion time)
+
+## Using the Simulations API
+Note - if you are running an Upbound project, please refer to (running simulations in projects)[https://docs.upbound.io/core-concepts/simulations].
+
+### Create a Simulation object
+You can create a simulation directly through the API by submitting a Simulation object:
+
+```yaml
+cat <<EOF | kubectl apply -f -
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Simulation
+metadata:
+  name: my-simulation
+  namespace: default
+spec:
+  controlPlaneName: my-control-plane
+  desiredState: AcceptingChanges
+  completionCriteria:
+  - type: Duration
+    duration: 120s
+EOF
 ```
 
 The `up ctp simulate` command creates a simulation of the base control plane and
@@ -214,7 +231,7 @@ cat <<EOF | kubectl apply -f -
    name: my-simulation
    namespace: default
  spec:
-   controlPlaneName: noop 
+   controlPlaneName: noop
    desiredState: AcceptingChanges
    completionCriteria:
    - type: Duration
@@ -229,7 +246,22 @@ information about the simulation including:
 * The state of the simulation (Running, Completed, Terminated)
 * Start and/or completion time
 
-## View simulation results in the Upbound Console
+```shell
+up ctp simulate <base-control-plane-name> -f ./changes
+```
+
+This command:
+
+* Creates a Simulation object via the API
+* Uploads the changes from ./changes directory
+* Monitors the simulation status
+
+Note that when running the command, you must `up ctx` to the group level above your base control plane.
+
+### Viewing your Simulation Results
+At the end of your simulation, your CLI returns:
+* A summary of the resources created, modified, or deleted
+* Diffs for each resource affected
 
 You can also view your simulation results in the Upbound Console:
 
@@ -262,9 +294,9 @@ noop-6wqg9   noop     noop-sim-1dcf6ed   False               SimulationTerminate
 To destroy your simulated control planes, you can manually delete them with
 `kubectl` or in the **Simulations** section of the Upbound Console.
 
-## Considerations 
+## Considerations
 
-Simulations is a **private preview** feature. 
+Simulations is a **private preview** feature.
 
 Be aware of the following limitations:
 
@@ -276,6 +308,5 @@ Be aware of the following limitations:
 
 - Providers don't run in simulations. Simulations can't compose resources that
     rely on the status of Managed Resources.
-
 
 The Upbound team is working to improve these limitations. Your feedback is always appreciated.
