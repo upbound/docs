@@ -51,7 +51,9 @@ To upgrade a Space from one version to the next, use [up space upgrade]({{<ref "
 up space upgrade "v1.9.0"
 ```
 
-You can also upgrade a Space by manually bumping the helm chart version. Before upgrading, it's important to check the release notes for any breaking changes or special requirements:
+You can also upgrade a Space by manually bumping the Helm chart version. Before
+upgrading, review the release notes for any breaking changes or
+special requirements:
 
 1. Review the release notes for the target version in the [Spaces Release Notes]({{<ref "/reference/rel-notes/spaces-relnotes.md">}})
 2. Upgrade the Space by updating the helm chart version:
@@ -64,7 +66,8 @@ helm -n upbound-system upgrade spaces \
   --wait
 ```
 
-For major version upgrades or when configuration changes are needed, you may want to extract your current values and make adjustments:
+For major version upgrades or configuration changes, extract your current values
+and adjust:
 
 ```bash
 # Extract current values to a file
@@ -97,7 +100,7 @@ helm -n upbound-system upgrade spaces \
 ```
 
 When downgrading, make sure to:
-1. Check the release notes for any specific downgrade instructions
+1. Check the [release notes]({{<ref "/reference/rel-notes/spaces-relnotes.md">}}) for specific downgrade instructions
 2. Verify compatibility between the downgraded Space and any control planes
 3. Back up any critical data before proceeding
 
