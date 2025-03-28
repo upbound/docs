@@ -27,7 +27,7 @@ Simulations provide visibility for your resource changes, including:
 This can help you reduce the risk of unexpected behavior based on your changes.
 
 This guide provides instructions for using the `up ctp simulate` command and the
-(Simulation API)[] to test changes in your control plane.
+[Simulation API](https://docs.upbound.io/reference/space-api/) to test changes in your control plane.
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ project move` command.
 
 Clone your forked repository:
 
-```shel
+```shell
 git clone https://github.com/YOURUSER/no-op-sim.git
 cd no-op-sim
 ```
@@ -64,13 +64,13 @@ up project move YOURREPOSITORY
 
 Add the `provider-nop` dependency:
 
-```
+```shell
 up dep add 'xpkg.upbound.io/upboundcare/provider-nop:v0.2.1-2'
 ```
 
 ## Run a simulation
 
-First, change your control plane context to the group level above a running
+First, change your control plane context to the group level of the running
 control plane. For example, if your context is your running control plane, use
 the `up ctx` command to switch to the group level.
 
@@ -164,17 +164,17 @@ The `completionCriteria` is a string that indicates the duration of how long a
 simulation should run for in seconds.
 
 ```yaml
- apiVersion: spaces.upbound.io/v1alpha1
- kind: Simulation
- metadata:
-   name: simulation
-   namespace: default
- spec:
-   controlPlaneName: source
-   desiredState: AcceptingChanges
-   completionCriteria:
-   - type: Duration
-     duration: 90s
+apiVersion: spaces.upbound.io/v1alpha1
+kind: Simulation
+metadata:
+  name: simulation
+  namespace: default
+spec:
+  controlPlaneName: source
+  desiredState: AcceptingChanges
+  completionCriteria:
+  - type: Duration
+    duration: 90s
 ```
 
 When you start a simulation, you can add the `complete-after` flag to explicitly
@@ -196,7 +196,7 @@ up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complet
 The `desiredState` field specifies the current state of the simulation. The simulation control plane status defaults to `acceptingChanges` until the
 simulation meets the `completionCriteria` or you terminate the simulation.
 
-To manually terminate the simulation, use `kubectl` to set the `desiredState`. A
+To manually end a simulation, use `kubectl` to set the `desiredState`. A
 simulation marked `complete` populates the result status and continues running.
 A `terminated` simulation deletes the simulated control plane.
 
@@ -204,7 +204,6 @@ A `terminated` simulation deletes the simulated control plane.
 
 You can create a simulation using the API:
 
-```shell {copy-lines="none"}
 
 ```yaml {hl_lines="10-12"}
 cat <<EOF | kubectl apply -f -
