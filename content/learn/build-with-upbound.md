@@ -80,12 +80,12 @@ git clone https://$@yourGitHubUser>$@/up-pound-project
 ```
 {{</ editCode >}}
 
-### Init the project
+### Initialize the project
 
 This project contains all the necessary configuration files to deploy your
 application. 
 
-Use the `up project move` command to initialize the project and associate it
+Use the `up project init` command to initialize the project and associate it
 with your Upbound account.
 
 ```shell
@@ -94,35 +94,14 @@ with your Upbound account.
 
 ## Explore the repository
 
-Your project contains:
+Your new project contains:
 
 * `upbound.yaml`: Project configuration file.
 * `apis/`: Directory for Crossplane composition definitions.
 * `examples/`: Directory for example claims.
 * `.github/` and `.vscode/`: Directories for CI/CD and local development.
 
-Open the `upbound.yaml` file in your editor.
-
-```yaml
-apiVersion: meta.dev.upbound.io/v1alpha1
-kind: Project
-metadata:
-  name: new-project
-spec:
-  dependsOn:
-  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
-    version: '>=v0.0.0'
-  description: This is where you can describe your project.
-  license: Apache-2.0
-  maintainer: Upbound User <user@example.com>
-  readme: |
-    This is where you can add a readme for your project.
-  repository: 
-  <!--- TODO(tr0njavolta): project repo update/editCode with user info --->
-  source: github.com/upbound/project-template
-```
-
-This project file is the entrypoint for your new control plane project. It
+The `upbound.yaml` file is the entrypoint for your new control plane project. It
 contains the project metadata and needs the necessary dependencies to deploy
 your project.
 
@@ -131,39 +110,24 @@ your project.
 Your project file requires dependencies to know what providers or configuration
 files to use.
 
-Your infrastructure requires an EKS cluster, a database, an S3 bucket, and
-networking to expose the frontend to the public and allow for communication
-between the components.
+This demo requires:
+* [an EKS cluster](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v0.16.0)
+* [an RDS database](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v1.16.0)
+* [underlying networking](https://marketplace.upbound.io/configurations/upbound/configuration-aws-network/v0.23.0)
+* [an S3 bucket](https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.21.0)
 
 This tutorial uses prebuilt packages called **configurations** to help you get
 started with this project. These configurations bundle the definitions
 and compositions necessary to deploy fully functioning components with minimal
 manual changes.
 
-Start with the [EKS cluster configuration](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v0.16.0):
+Use the `up dep add` command to add these dependencies:
 
 ```shell
 up dep add xpkg.upbound.io/upbound/configuration-aws-eks:v0.16.0
-```
-
-
-Next, add the [RDS database configuration](up dep add xpkg.upbound.io/upbound/configuration-aws-database:v0.15.0):
-
-```shell
 up dep add xpkg.upbound.io/upbound/configuration-aws-database:v0.15.0
-```
-
-Add the [network configuration](https://marketplace.upbound.io/configurations/upbound/configuration-aws-network/v0.23.0):
-
-```shell
 up dep add xpkg.upbound.io/upbound/configuration-aws-network:v0.23.0
-```
-
-Finally, add the [S3 provider](https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.21.0):
-
-```shell
 up dep add xpkg.upbound.io/upbound/provider-aws-s3:v1.21.0
-
 ```
 
 Each of these are **dependencies** in your project, meaning your project
@@ -174,48 +138,17 @@ Most of the dependencies you added are configurations, except the S3
 and the external resource, like the AWS S3 bucket. Unlike configurations,
 providers handle a single cloud endpoint and require direct configuration.
 
-Open your `upbound.yaml` file again and notice the new items added to the
-`dependsOn` section.
-
-```yaml
-apiVersion: meta.dev.upbound.io/v1alpha1
-kind: Project
-metadata:
-  name: new-project
-spec:
-  dependsOn:
-  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
-    version: '>=v0.0.0'
-  - configuration: xpkg.upbound.io/upbound/configuration-aws-eks
-    version: '>=v0.0.0'
-  - configuration: xpkg.upbound.io/upbound/configuration-aws-database
-    version: '>=v0.0.0'
-  - configuration: xpkg.upbound.io/upbound/configuration-aws-network
-    version: '>=v0.0.0'
-  - provider: xpkg.upbound.io/upbound/provider-aws-s3
-    version: '>=v0.0.0'
-  description: This is where you can describe your project.
-  license: Apache-2.0
-  maintainer: Upbound User <user@example.com>
-  readme: |
-    This is where you can add a readme for your project.
-  repository: 
-    <!--- TODO(tr0njavolta): repo update and add pinned versions of dependencies --->
-  source: github.com/upbound/project-template
-```
-
-## Generate your project inputs and definitions
+# Generate your project inputs and definitions
 
 Now that you have your project dependencies, you need to generate the project
 building blocks.
 
-## Generate a claim
+### Generate a claim
 
-Claims are structured yaml files that you use to define the values you care
-about exposing in your project. These files are abstractions of the resources
-you require and you can give these files to teams in your organization to deploy
-the infrastructure they require while maintaining consistency across your
-resources. 
+Claims are structured YAML files that expose your project's essential
+configuration values. You can distribute these claims to teams across your
+organization for self-service deployments while maintaining consistency and
+compliance with your organization's requirements.
 
 Think of claims as the blueprint of your project. It's a high-level plan that
 shows what to build, without structural or implementation details.
@@ -243,17 +176,11 @@ review:
 
 #### Determine your claim inputs
 
-To determine your claim inputs, consider the resources and services you're
-provisioning.
+To determine your claim inputs, consider the resources you want to provision and
+what inputs to expose.
 
-* What resources do you need to manage?
-    * An S3 bucket
-    * An EKS cluster with frontend and backend nodes
-    * An RDS instance
-    * The underlying networking infrastructure: VPC, Subnets, Security Groups,
-        etc.
 * What parameters should your users have control over?
-    * The AWS region to deploy these resrouces
+    * The AWS region to deploy these resources
     * An identifying name
     * Node instance size
     * Database instance size
@@ -285,9 +212,10 @@ spec:
     name: uppound-aws-kubeconfig
 ```
 
-This new claim file contains the parameters you determined were okay for users
-to edit and change when they need to deploy this configuration, but it also
-helps create the next file necessary for your project: the **definition**.
+
+The claim file contains user-customizable parameters that generate
+the required **definition** file for your project. 
+
 
 ### Generate a definition file
 
@@ -304,7 +232,7 @@ up xrd generate example.yaml
 
 If the claim is the blueprint of your project, the definition is the file with
 the rules and regulations. The XRD is a custom schema representation for the
-bucket API you defined in your claim. The up xrd generate command automatically
+bucket API you defined in your claim. The `up xrd generate command` automatically
 infers the variable types for the XRD based on the input parameters in your claim.
 
 With these rules and regulations generated, you need to generate a
