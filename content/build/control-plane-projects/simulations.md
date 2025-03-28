@@ -1,7 +1,7 @@
 ---
 title: "Simulate changes to your Control Plane Projects"
 weight: 7
-description: "Use the new Up CLI to mock operations before
+description: "Use the Up CLI to mock operations before
 deploying to your environments."
 aliases:
     - /core-concepts/simulations
