@@ -154,7 +154,7 @@ parameter:
 helm upgrade --install ingress-nginx ingress-nginx \
   --create-namespace --namespace ingress-nginx \
   --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.7.1 \
+  --version 4.12.1 \
   --set 'controller.service.type=LoadBalancer' \
   --set 'controller.extraArgs.enable-ssl-passthrough=true' \
   --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-type=external' \
