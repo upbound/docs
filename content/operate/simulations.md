@@ -24,15 +24,15 @@ A control plane simulation creates a temporary copy of your control plane and
 returns a preview of the desired changes. Simulations provide visibility into
 this reconciliation process by showing:
 
-* New resources to create 
-* Existing resources to change 
-* Existing resources to delete 
+* New resources to create
+* Existing resources to change
+* Existing resources to delete
 * How configuration changes propagate through the system
 
 This can help you reduce the risk of unexpected behavior based on your changes.
 
 This example uses a control plane that runs a `nop` provider to illustrate how
-the simulations feature works. 
+the simulations feature works.
 
 ## Prerequisites
 * The Upbound CLI installed
@@ -67,7 +67,7 @@ Add the `provider-nop` dependency:
 up dep add 'xpkg.upbound.io/upboundcare/provider-nop:v0.2.1-2'
 ```
 
-## Running a simulation 
+## Running a simulation
 
 First, change your control plane context to the group level above a running
 control plane. For example, if your context is your running control plane, use
@@ -87,7 +87,7 @@ kind: XNoOp
 metadata:
   name: example
   namespace: default
-spec: 
+spec:
   compositionRef:
     name: noops.customer.upbound.io
   parameters:
@@ -100,7 +100,7 @@ spec:
 Run your control plane simulation
 
 
-```shell 
+```shell
  up alpha ctp simulate no-op  --changeset=./examples/noop/example-xr.yaml --complete-after=60s --terminate-on-finish
 ```
 
@@ -110,13 +110,13 @@ deleted Diffs for each resource affected:
 ```
 Simulation "noop-6wqg9" created
 ▄  [1/5]: Waiting for simulated control plane to start (30s)
-▄  [2/5]: Waiting for simulated control plane to start (30s)  
+▄  [2/5]: Waiting for simulated control plane to start (30s)
 ✓  [3/5]: Waiting for simulation to complete
 ▀  [4/5]: Computing simulated differences (0s)
-                                                                               
+
 ✓  [4/5]: Computing simulated differences
 ▀  [5/5]: Terminating simulation (0s)
-                                                                               
+
  ✓  [5/5]: Terminating simulation
 
 Simulation: 0 resources added, 3 resources changed, 0 resources deleted
@@ -153,27 +153,27 @@ The Console provides visual indications of changes:
 
     <IMAGE GOES HERE>
 
-## Managing your simulations 
+## Managing your simulations
 
 To view all simulations for a specific control plane, you can run the following command:
 
 ```shell
-kubectl get simulations 
+kubectl get simulations
 ```
 
 The output returns all simulations associated with your control plane:
 
-```shell 
+```shell
 NAME         SOURCE   SIMULATED          ACCEPTING-CHANGES   STATE                  AGE
 noop-6wqg9   noop     noop-sim-1dcf6ed   False               SimulationTerminated   28m
-``` 
+```
 
 ## Interacting with your simulation
 
 When a simulation is running, you can directly interact with the simulation
 object to control the behavior of the simulation.
 
-```shell 
+```shell
 apiVersion: upbound.io/v1alpha1 kind: Simulation spec:completionCriteria: 30 desiredState: AcceptingChanges
 ```
 
@@ -182,7 +182,7 @@ apiVersion: upbound.io/v1alpha1 kind: Simulation spec:completionCriteria: 30 des
 In the Simulation object's spec field, the two most important fields are
 `completionCriteria` and the `desiredState`.
 
-### `completionCriteria` 
+### `completionCriteria`
 
 The `completionCriteria` field specifies how Spaces should
 determine when the simulation is complete.
@@ -190,12 +190,12 @@ If the simulation meets the critera you set, Spaces set's the simulated control
 plane's desired state to `Complete`.
 
 Currently, the CompletionCriteria is a string that indicates the duration of how long a
-simulation should run for in seconds. 
+simulation should run for in seconds.
 
 When starting a simulation, you can use the `complete-after` flag to define the
 `completionCriteria` of your simulation.
 
-```shell 
+```shell
 up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complete-after=2s --terminate-on-finish
 ```
 
@@ -210,9 +210,9 @@ To manually terminate the simulation, use `kubectl` to set the `desiredState`. A
 simulation marked `complete` populates the result status and continues running.
 A `terminated` simulation deletes the control plane.
 
-## Considerations 
+## Considerations
 
-Simulations is a **private preview** feature. 
+Simulations is a **private preview** feature.
 
 Be aware of the following limitations:
 
