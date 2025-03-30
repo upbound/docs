@@ -162,7 +162,7 @@ controlPlanes:
 Apply the configuration using Helm:
 
 ```bash
-helm upgrade --install spaces upbound-stable/spaces \
+helm upgrade --install spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
   -f values.yaml \
   -n upbound-system
 ```
