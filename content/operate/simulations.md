@@ -171,7 +171,7 @@ criteria you set, Upbound set's the simulated control plane's desired state to
 The `completionCriteria` is a string that indicates the duration of how long a
 simulation should run for in seconds.
 
-```yaml {hl_lines="9-11"}
+```yaml {copy-lines="none", hl_lines="9-11"}
 apiVersion: spaces.upbound.io/v1alpha1
 kind: Simulation
 metadata:
@@ -262,7 +262,7 @@ kubectl get simulations
 
 The output returns all simulations associated with your control plane:
 
-```shell
+```shell {copy-lines="none"}
 NAME         SOURCE   SIMULATED          ACCEPTING-CHANGES   STATE                  AGE
 noop-6wqg9   noop     noop-sim-1dcf6ed   False               SimulationTerminated   28m
 ```
@@ -270,10 +270,11 @@ noop-6wqg9   noop     noop-sim-1dcf6ed   False               SimulationTerminate
 To destroy your simulated control planes, you can manually delete them with
 `kubectl`.
 
-```yaml {copy-lines="none"}
-kubectl delete simulations noop-6wqg9
-simulation.spaces.upbound.io "noop-6wqg9" deleted
+{{< editCode >}}
+```yaml
+kubectl delete simulations $@<your_simulation_control_plane>$@
 ```
+{{< /editCode >}}
 
 ## Considerations 
 
