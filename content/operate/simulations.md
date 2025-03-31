@@ -167,8 +167,7 @@ determine when the simulation is complete. When the simulation meets the
 criteria you set, Upbound sets the simulated control plane's desired state to
 `Complete`.
 
-The `completionCriteria` is a string that indicates the duration of how long a
-simulation should run for in seconds.
+The `completionCriteria` is list of criteria that determines when a simulation should complete. We currently only support `type: Duration`, a string that indicates the duration of how long a simulation should run for in seconds.
 
 ```yaml {copy-lines="none", hl_lines="9-11"}
 apiVersion: spaces.upbound.io/v1alpha1
@@ -191,7 +190,7 @@ define the `completionCriteria` of your simulation:
 up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complete-after=30s --terminate-on-finish
 ```
 
-The recommended `completionCriteria` time is 60 seconds. To remove the completion
+The recommended minimum `completionCriteria` time is 60 seconds. To remove the completion
 criteria, pass an empty string flag and manually mark the simulation complete:
 
 ```shell
