@@ -16,6 +16,10 @@ var codeBlocks = document.querySelectorAll('.highlight')
 
 for (var i = 0; i < codeBlocks.length; i++){
   var copyLines = getLines(codeBlocks[i])
+  // Skip adding button and highlighting if copy-lines="none"
+  if(copyLines[0] === 0 && copyLines[1] === 0){
+    continue
+  }
   setHighlight(codeBlocks[i], copyLines)
   codeBlocks[i].insertAdjacentHTML('beforeend', btnHtml)
 }
@@ -64,9 +68,13 @@ function getText(highlightDiv){
   }
 
   var startEnd = getLines(highlightDiv)
+  
+  // Handle the "none" case
+  if(startEnd[0] === 0 && startEnd[1] === 0) {
+    return '';
+  }
 
   return codeText.slice((startEnd[0] - 1), startEnd[1]).join('')
-
 }
 
 // Parse the highlight div element and look for the "copy-lines" data attribute
@@ -83,6 +91,12 @@ function getLines(highlightDiv){
   }
 
   var copyVal = highlightDiv.attributes["copy-lines"].value
+  
+  // Check for "none" early, before any other processing
+  if(copyVal.toLowerCase() === "none"){
+    return [0, 0];
+  }
+  
   var startLines = 1
   var endLines = codeLinesLength
 
@@ -142,7 +156,6 @@ function build_eventlistener(){
     clipboards[i].addEventListener("mouseover", function(){ copyHoverHighlight(this) }, true)
     clipboards[i].addEventListener("mouseout", function(){ copyHoverHighlight(this) }, true)
   }
-
 }
 
 window.onload = build_eventlistener();
