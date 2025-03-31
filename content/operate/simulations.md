@@ -47,9 +47,11 @@ git clone https://github.com/upbound/no-op-sim.git && cd no-op-sim
 
 Login to your Upbound account in the CLI:
 
-```shell
-up login --account
+{{< editCode >}}
+```ini
+up login --account=$@<your_upbound_account>$@
 ```
+{{< /editCode >}}
 
 Build and run the base control plane:
 
@@ -86,7 +88,7 @@ In this example, comment out the first `ultimateQuestion` and uncomment the
 second, longer parameter value.
 <!-- vale Upbound.Spelling = YES -->
 
-```yaml
+```yaml {hl_lines="11-12"}
 apiVersion: customer.upbound.io/v1alpha1
 kind: XNoOp
 metadata:
@@ -110,7 +112,7 @@ Save this change and run your simulation:
 ```
 
 Your command line returns a summary of the resources created, modified, or
-deleted Diffs for each resource affected:
+deleted for each resource affected:
 
 {{< editCode >}}
 ```shell {copy-lines="none"}
@@ -187,10 +189,10 @@ When you start a simulation, you can add the `complete-after` flag to explicitly
 define the `completionCriteria` of your simulation:
 
 ```shell
-up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complete-after=2s --terminate-on-finish
+up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complete-after=30s --terminate-on-finish
 ```
 
-The default `completelyCriteria` is 60 seconds. To disable the completion
+The default `completelyCriteria` is 60 seconds. To remove the completion
 criteria, pass an empty string flag and manually mark the simulation complete:
 
 ```shell
@@ -269,7 +271,7 @@ To destroy your simulated control planes, you can manually delete them with
 `kubectl`.
 
 ```yaml {copy-lines="none"}
-kubectl delete simulations.spaces.upbound.io noop-6wqg9
+kubectl delete simulations noop-6wqg9
 simulation.spaces.upbound.io "noop-6wqg9" deleted
 ```
 
