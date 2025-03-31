@@ -83,7 +83,7 @@ up ctx ..
 ```
 
 <!-- vale Upbound.Spelling = NO -->
-    Next, make a change in the `examples/noop/example-xr.yaml` file in the project.
+Next, make a change in the `examples/noop/example-xr.yaml` file in the project.
 In this example, comment out the first `ultimateAnswer` and uncomment the
 correct value assignment.
 <!-- vale Upbound.Spelling = YES -->
@@ -105,8 +105,9 @@ spec:
 ```
 
 
-Save this change and run your simulation:
-
+Save this change and run your simulation. The `up ctp simulate` command creates
+a simulation of the base control plane and applies the changes found in your
+changed resource directory into the mock control plane.
 
 ```shell
  up alpha ctp simulate no-op  --changeset=./examples/noop/example-xr.yaml --complete-after=60s --terminate-on-finish
@@ -143,10 +144,6 @@ Simulation: 0 resources added, 3 resources changed, 0 resources deleted
    └─[+] map[]
 ```
 {{< /editCode >}}
-
-The `up ctp simulate` command creates a simulation of the base control plane and
-applies the changes found in your changed resource directory into the mock
-control plane.
 
 ## Simulations API
 
