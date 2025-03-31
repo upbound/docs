@@ -19,7 +19,6 @@ To complete this tutorial, you need the following:
 
 - Have already deployed an Upbound Space.
 - Have already deployed an Kubernetes cluster (referred to as `app cluster`).
-- The [up CLI]({{<ref "reference/cli/#install-the-up-command-line" >}}) installed on your local machine.
 
 ## Create a control plane
 
