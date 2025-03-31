@@ -8,20 +8,18 @@ aliases:
     - "/quickstart"
 ---
 
-In the previous tutorial, you create a control plane and deployed real cloud
-resources in the Upbound Console and Consumer Portal. In this guide, you'll see
-actual Composite Resource Definitions, Configurations, and Claims and interact
-with these components in the Upbound CLI.
+In the previous tutorial, you created a control plane and deployed real cloud
+resources in the Upbound Console and Consumer Portal.
 
 This tutorial deploys an EKS cluster, an RDS database, S3 bucket, and underlying
-networking configuration. This creates a frontend website and backend server on
-the cluster which retrieves information from the database and serves images from
-the S3 bucket.
+networking configuration with the `up` CLI. This example creates a frontend website and
+backend server on the cluster which retrieves information from the database and
+serves images from the S3 bucket.
 
 ## Prerequisites
 
 - An Upbound Account
-- A Cloud Provider Admin account (AWS, Azure, or GCP)
+- An AWS Admin account
 - Docker Desktop
 - `kubectl` installed
 
@@ -29,8 +27,7 @@ the S3 bucket.
 
 ### Install the Upbound CLI
 
-You'll need to install the `up` CLI. You can download it as a
-binary package or with Homebrew. 
+Download the `up` CLI with the binary package or with Homebrew. 
 {{< tabs >}}
 {{< tab "Binary" >}}
 ```shell
@@ -55,13 +52,11 @@ version, use the `up version` command:
 ```shell
 up version
 ```
-You should see the installed version of the `up` CLI. Since you aren't logged in
-yet, `Crossplane Version` and `Spaces Control Version` returns `unknown`.
+You should see the installed version of the `up` CLI.
 
 ### Login to Upbound
 
-Authenticate your CLI with your Upbound account by using the login command. This
-opens a browser window for you to log into your Upbound account.
+Connect your CLI to your Upbound account. This opens a browser window for you to log into your Upbound account.
 
 {{< editCode >}}
 ```ini {copy-lines="all"}
@@ -74,6 +69,8 @@ up login --account=$@<yourUpboundAccount>$@
 Upbound uses project directories containing configuration files to deploy
 infrastructure. 
 
+Clone the demo repository:
+
 ```shell
 git clone https://github.com/upbound/up-pound-project && cd up-pound-project
 ```
@@ -81,8 +78,7 @@ git clone https://github.com/upbound/up-pound-project && cd up-pound-project
 This project contains all the necessary configuration files to deploy your
 application. 
 
-Use the `up project init` command to initialize the project and associate it
-with your Upbound account.
+Initialize the project:
 
 ```shell
 up project init .
@@ -101,8 +97,6 @@ The `build` command packages your project in the hidden `_output` directory.
 The `run` command installs your project functions and dependencies to a
 **control plane**.
 
-
-
 ## Project structure and dependencies
 
 Your new project contains:
@@ -112,33 +106,23 @@ Your new project contains:
 * `examples/`: Directory for example claims.
 * `.github/` and `.vscode/`: Directories for CI/CD and local development.
 
-The `upbound.yaml` file is the entrypoint for your new control plane project. It
-contains the project metadata and needs the necessary dependencies to deploy
-your project.
-
 ### Review your project dependencies
 
-Your project file requires dependencies to know what providers or configuration
-files to use.
+Your project file requires these dependencies:
 
 This demo requires:
+
 * [an EKS cluster](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v0.16.0)
 * [an RDS database](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v1.16.0)
 * [underlying networking](https://marketplace.upbound.io/configurations/upbound/configuration-aws-network/v0.23.0)
 * [an S3 bucket](https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.21.0)
 
-This tutorial uses prebuilt packages called **configurations** to help you get
-started with this project. These configurations bundle the definitions
+This tutorial uses these prebuilt **configurations** that bundle the definitions
 and compositions necessary to deploy fully functioning components with minimal
 manual changes.
 
 Each of these are **dependencies** in your project, meaning your project
 requires them to function and deploy your desired end state.
-
-Most of the dependencies in this project are configurations, except the S3
-**provider**. Providers handle communication between your Upbound control plane
-and the external resource, like the AWS S3 bucket. Unlike configurations,
-providers handle a single cloud endpoint and require direct configuration.
 
 ### Understand project components
 
@@ -162,7 +146,6 @@ create.
     * An identifying name
     * Node instance size
     * Database instance size
-
 
 The example XR file contains several user-exposed parameters:
 
@@ -197,100 +180,52 @@ spec:
 
 This file contains user-customizable parameters that generate
 the required configuration for your project. When you apply this XR, parameters
-like the `region` to deploy to pass to your composition function.
+like the `region` pass to your composition function.
 
 ## Composition function
 
 **Composition functions** allow you to build, package, and manage resources with
-common programming languages. Instead of statically managing the composition
-file itself in YAML, functions let you use advanced logic and reusability.
-You can create composition functions with KCL, Python, or Go. In this guide,
-you'll use KCL.
+common programming languages. This demo uses the KCL configuration language.
 
-Functions take the claim blueprint and
-ensure each piece of the project matches the rules and regulations in the definition.
+Functions have three key parts:
 
-Open the function file in your editor.
+1. **Imports**: references to your resource models
+    ```yaml {copy-lines="none"}
+    import models.com.uppound.app.v1alpha1 as appv1alpha1
+    import models.io.upbound.aws.s3.v1beta2 as s3v1beta2
+    import models.io.crossplane.kubernetes.v1alpha2 as k8sv1alpha2
+    ```
+2. **Inputs**: parameter definitions from your XR
+    ```yaml {copy-lines="none"}
+    oxr = appv1alpha1.XApp {**option("params").oxr}
+    ```
+3. **Resource items**: the actual resources to create
+    ```yaml {copy-lines="none"}
+    _items = [
+        # ... file truncated ...
 
-This function file contains an example of how to structure your resource
-requests.
-
-### Imports
-
-The `import` statements at the beginning of the function are paths to the
-underlying provider and configuration resources. You can import packages like
-providers or other configurations as well as built-in KCL or Kubernetes
-libraries.
-
-```yaml {copy-lines="none"}
-import models.com.uppound.app.v1alpha1 as appv1alpha1
-import models.io.upbound.aws.s3.v1beta2 as s3v1beta2
-import models.io.crossplane.kubernetes.v1alpha2 as k8sv1alpha2
-```
-
-You have several import packages here that help your function create your
-resources with aliases your function can reference them later.
-
-### Inputs
-
-Next, review the `inputs` section:
-
-```yaml {copy-lines="none"}
-oxr = appv1alpha1.XApp {**option("params").oxr}
-_ocds = option("params").ocds
-_dxr = option("params").dxr
-dcds = option("params").dcds
-```
-
-This function uses the `oxr` or observed composite resource input primarily.
-The `oxr` input takes parameters from your XR and interpolates them as
-variables in your function.
-
-For instance, `oxr.region` follows the path of your claim specification to
-find the `region` value in your claim parameters.
-
-```yaml {copy-lines="none"}
-_metadata = lambda name: str -> any {
-    {
-        name: name
-        annotations = {"krm.kcl.dev/composition-resource-name" = name}
-    }
-}
-```
-
-<!--- TODO(tr0njavolta): metadata --->
-
-### Resource items
-
-Next, review the `_items` array with the required resources. This example uses the
-`XEKS` item to highlight how the function works:
-
-```yaml {copy-lines="none"}
-_items = [
-    # ... file truncated ...
-
-    # cluster config
-    {
-        apiVersion: "aws.platform.upbound.io/v1alpha1"
-        kind: "XEKS"
-        metadata: _metadata("{}-xeks".format(oxr.metadata.name))
-        spec: {
-            parameters: {
-                id: oxr.metadata.name
-                region: oxr.spec.parameters.region
-                version: oxr.spec.parameters.version
-                nodes: {
-                    count: oxr.spec.parameters.nodes.count
-                    instanceType: oxr.spec.parameters.nodes.instanceType
+        # cluster config
+        {
+            apiVersion: "aws.platform.upbound.io/v1alpha1"
+            kind: "XEKS"
+            metadata: _metadata("{}-xeks".format(oxr.metadata.name))
+            spec: {
+                parameters: {
+                    id: oxr.metadata.name
+                    region: oxr.spec.parameters.region
+                    version: oxr.spec.parameters.version
+                    nodes: {
+                        count: oxr.spec.parameters.nodes.count
+                        instanceType: oxr.spec.parameters.nodes.instanceType
+                    }
                 }
             }
-        }
-    },
-   # ... file truncated ...   
-]
+        },
+        # ... file truncated ...   
+    ]
 
-items = _items
-```
+    items = _items
+    ```
 
 Each resource follows a pattern and requires:
 
@@ -299,9 +234,9 @@ Each resource follows a pattern and requires:
 3. Object `metadata` for names and labels
 4. The resource `spec` for resource specific configuration parameters
 
-
-The `items` variable contains all the resources you want when you run this
-project, called **outputs**
+The `oxr.spec.parameters.region` value pulls that value from your XR file. This
+function passes `oxr` defined values throughout the file and connects your XR parameters
+to actual infrastructure configuration.
 
 ## Deploy your resources
 
@@ -313,8 +248,42 @@ the management and provisioning.
 
 ### Apply your Composite Resource (XR) 
 
+Update the example XR with your desired AWS region:
+
+```yaml {copy-lines="none", hl_lines=16}
+apiVersion: app.uppound.com/v1alpha1
+kind: XApp
+metadata:
+  name: example
+spec:
+  compositionSelector:
+    matchLabels:
+      language: kcl
+  parameters:
+    id: uppound-aws
+    containers:
+      - name: frontend
+        image: tr0njavolta/uppound-demo-frontend:latest
+      - name: backend
+        image: tr0njavolta/uppound-demo-backend:latest
+    region: us-west-2
+    version: "1.27"
+    nodes:
+      count: 2
+      instanceType: t3.small
+    size: large
+    engine: postgres
+    dbVersion: "13.18"
+  writeConnectionSecretToRef:
+    name: uppound-aws-kubeconfig
+    namespace: default
+```
+
+Save your changes.
+
 Use the `kubectl apply` command to apply your Composite Resource (XR) file to the
 control plane. 
+
 ```shell
 kubectl apply -f examples/xapp/example.yaml
 ```
@@ -337,22 +306,24 @@ kubectl get xeks
 Once your project deploys, find the frontend endpoint and visit the application
 in your browser.
 
-### Make a change in your project
-
-You can also make changes to your deployment while it's running.
-
-Upbound uses continuous reconciliation to determine if your real world resources
-match with your desired resources in the XR.
-
-Update your XR file with a change to the `dbVersion`.
-
-Reapply your XR.
-
-```
-kubectl apply -f examples/xapp/example.yaml
-
-```
-
 ## Clean up
 
+Remember to destroy all your project resources:
+
+```yaml
+kubectl delete -f examples/xapp/example.yaml
+```
+
+Finally, destroy your development control plane:
+
+```shell
+up ctp delete uppound-ctp
+```
+
 ## Next steps
+
+You just created an application and infrastructure deployment with Upbound! You
+built a control plane project and edited an XR to define your desired resources.
+
+For more information on building with Upbound, visit the Upbound documentation
+Build section.
