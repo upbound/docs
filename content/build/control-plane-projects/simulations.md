@@ -26,7 +26,7 @@ reconciliation process by showing:
 
 
 * New resources to create
-* Existing resources to modify
+* Existing resources to change
 * Existing resources to delete
 * How configuration changes propagate through the system
 
@@ -52,9 +52,9 @@ up project simulate $@<your_control_plane_name>$@ --complete-after=60s --termina
 ```
 {{< /editCode >}}
 
-The `complete-after` flag flag determines how long to run the simulation before it completes and calculates the results. Depending on the change, a simulation may not complete within your defined interval leaving unaffected resources as `unchanged`. 
+The `complete-after` flag determines how long to run the simulation before it completes and calculates the results. Depending on the change, a simulation may not complete within your defined interval leaving unaffected resources as `unchanged`. 
 
-The `terminate-on-finish` flag terminates the simulation after the time period
+The `terminate-on-finish` flag terminates the simulation after the time
 you set - deleting the control plane that ran the simulation.
 
 At the end of your simulation, your CLI returns:

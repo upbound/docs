@@ -9,9 +9,8 @@ The Simulations feature is in private preview. For more information, contact
 your Upbound representative.
 {{< /hint >}}
 
-The simulations feature allows you to create a temporary copy of an existing
-control plane to preview the impact of changes before applying them to
-production environments.
+Simulations are temporary copies of an existing control plane that allow you 
+preview the impact of changes before applying these changes to your environment.
 
 This feature is valuable for organizations transitioning from
 traditional IaC tools like Terraform, where previewing changes with `terraform
@@ -81,9 +80,11 @@ the `up ctx` command to switch to the group level.
 up ctx ..
 ```
 
+<!-- vale Upbound.Spelling = NO -->
 Next, make a change in the `examples/noop/example-xr.yaml` file in the project.
 In this example, comment out the first `ultimateQuestion` and uncomment the
 second, longer parameter value.
+<!-- vale Upbound.Spelling = YES -->
 
 ```yaml
 apiVersion: customer.upbound.io/v1alpha1
@@ -198,8 +199,9 @@ up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complet
 
 ### `desiredState`
 
-The `desiredState` field specifies the current state of the simulation. The simulation control plane status defaults to `acceptingChanges` until the
-simulation meets the `completionCriteria` or you terminate the simulation.
+The `desiredState` field specifies the current state of the simulation. The
+simulation control plane status defaults to `acceptingChanges` until the
+simulation meets the `completionCriteria` or you end the simulation.
 
 To manually end a simulation, use `kubectl` to set the `desiredState`. A
 simulation marked `complete` populates the result status and continues running.
