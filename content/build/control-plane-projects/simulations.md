@@ -88,10 +88,15 @@ Be aware of the following limitations:
     complexity and non-deterministic reconciliation pattern in Crossplane.
 
 - The only completion criteria for a simulation is time. Your simulation may not
-    receive a conclusive result within that interval.
+    receive a conclusive result within that interval. Upbound recommends the
+    default `60s` value.
 
 - Providers don't run in simulations. Simulations can't compose resources that
     rely on the status of Managed Resources.
 
 
 The Upbound team is working to improve these limitations. Your feedback is always appreciated.
+
+## Next steps
+
+For more information, follow the [tutorial]({{< ref "/operate/simulations" >}}) on Simulations.

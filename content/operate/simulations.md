@@ -1,5 +1,5 @@
 ---
-title: Simulations
+title: Run a control plane simulation
 weight: 200
 description: A guide for how to use Simulations in a Space.
 ---
@@ -13,7 +13,9 @@ preview the impact of changes before applying these changes to your environment.
 
 This feature is valuable for organizations transitioning from
 traditional IaC tools like Terraform, where previewing changes with `terraform
-plan` is a standard practice.
+plan` is a standard practice. Your control plane simulation allows Crossplane to
+run a composition controller and inspect how the controller behaves with
+proposed changes.
 
 Simulations provide visibility for your resource changes, including:
 
@@ -150,7 +152,7 @@ When you create a simulation in Upbound, you interact with the Spaces API
 `simulations` endpoint. The Simulations endpoint has three key fields:
 
 * `spec.controlPlaneName`
-* `spec.completionCritera`
+* `spec.completionCriteria`
 * `spec.desiredState`
 
 ### `controlPlaneName`
@@ -189,7 +191,7 @@ define the `completionCriteria` of your simulation:
 up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complete-after=30s --terminate-on-finish
 ```
 
-The default `completionCriteria` is 60 seconds. To remove the completion
+The recommended `completionCriteria` time is 60 seconds. To remove the completion
 criteria, pass an empty string flag and manually mark the simulation complete:
 
 ```shell
@@ -283,10 +285,16 @@ Be aware of the following limitations:
     complexity and non-deterministic reconciliation pattern in Crossplane.
 
 - The only completion criteria for a simulation is time. Your simulation may not
-    receive a conclusive result within that interval.
+    receive a conclusive result within that interval. Upbound recommends the
+    default `60s` value.
 
 - Providers don't run in simulations. Simulations can't compose resources that
     rely on the status of Managed Resources.
 
 
 The Upbound team is working to improve this feature. Your feedback is always appreciated.
+
+## Next steps
+
+For general information on this feature as it fits in the Upbound workflow,
+review the [overview documentation]({{< ref "/build/control-plane-projects/simulations" >}}) on Simulations..
