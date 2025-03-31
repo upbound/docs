@@ -264,7 +264,12 @@ noop-6wqg9   noop     noop-sim-1dcf6ed   False               SimulationTerminate
 ```
 
 To destroy your simulated control planes, you can manually delete them with
-`kubectl` or in the **Simulations** section of the Upbound Console.
+`kubectl`.
+
+```yaml {copy-lines="none"}
+kubectl delete simulations.spaces.upbound.io noop-6wqg9
+simulation.spaces.upbound.io "noop-6wqg9" deleted
+```
 
 ## Considerations 
 
@@ -282,4 +287,4 @@ Be aware of the following limitations:
     rely on the status of Managed Resources.
 
 
-The Upbound team is working to improve these limitations. Your feedback is always appreciated.
+The Upbound team is working to improve this feature. Your feedback is always appreciated.
