@@ -83,9 +83,9 @@ up ctx ..
 ```
 
 <!-- vale Upbound.Spelling = NO -->
-Next, make a change in the `examples/noop/example-xr.yaml` file in the project.
-In this example, comment out the first `ultimateQuestion` and uncomment the
-second, longer parameter value.
+    Next, make a change in the `examples/noop/example-xr.yaml` file in the project.
+In this example, comment out the first `ultimateAnswer` and uncomment the
+correct value assignment.
 <!-- vale Upbound.Spelling = YES -->
 
 ```yaml {hl_lines="11-12"}
@@ -98,9 +98,10 @@ spec:
   compositionRef:
     name: noops.customer.upbound.io
   parameters:
-    ultimateAnswer: 42
-    #ultimateQuestion: "What is the meaning of life?"
     ultimateQuestion: "What is the meaning of life, the universe, and everything?"
+    #ultimateAnswer: 41
+    ultimateAnswer: 42
+
 ```
 
 
@@ -129,9 +130,9 @@ Simulation "noop-6wqg9" created
 
 Simulation: 0 resources added, 3 resources changed, 0 resources deleted
 [~] XNoOp.customer.upbound.io/v1alpha1 example
-└─[~] spec.parameters.ultimateQuestion
-   ├─[-] "What is the meaning of life?"
-   └─[+] "What is the meaning of life, the universe, and everything?"
+└─[~] spec.parameters.ultimateAnswer
+   ├─[-] 41
+   └─[+] 42
 [~] Function.pkg.crossplane.io/v1 crossplane-contrib-function-auto-ready
 └─[~] metadata.annotations
    ├─[-] <nil>
