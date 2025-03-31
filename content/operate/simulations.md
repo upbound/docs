@@ -297,4 +297,4 @@ The Upbound team is working to improve this feature. Your feedback is always app
 ## Next steps
 
 For general information on this feature as it fits in the Upbound workflow,
-review the [overview documentation]({{< ref "/build/control-plane-projects/simulations" >}}) on Simulations..
+review the [overview documentation]({{< ref "/build/control-plane-projects/simulations" >}}) on Simulations.
