@@ -164,7 +164,7 @@ the control plane name to create the correct simulation.
 
 The `completionCriteria` field specifies how Spaces should
 determine when the simulation is complete. When the simulation meets the
-criteria you set, Upbound set's the simulated control plane's desired state to
+criteria you set, Upbound sets the simulated control plane's desired state to
 `Complete`.
 
 The `completionCriteria` is a string that indicates the duration of how long a
