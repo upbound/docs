@@ -5,8 +5,7 @@ description: "Use the Up CLI to mock operations before deploying to your environ
 ---
 
 {{< hint "important" >}}
-The Simulations feature is in private preview. For more information, contact
-your Upbound representative.
+The Simulations feature is in private preview. For more information, [reach out to Upbound](https://www.upbound.io/contact).
 {{</ hint >}}
 
 Control plane simulations allow you to preview changes to your resources before

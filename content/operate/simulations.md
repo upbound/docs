@@ -5,8 +5,7 @@ description: A guide for how to use Simulations in a Space.
 ---
 
 {{< hint "important" >}}
-The Simulations feature is in private preview. For more information, contact
-your Upbound representative.
+The Simulations feature is in private preview. For more information, [reach out to Upbound](https://www.upbound.io/contact).
 {{< /hint >}}
 
 Simulations are temporary copies of an existing control plane that allow you 
