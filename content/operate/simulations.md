@@ -118,7 +118,7 @@ Your command line returns a summary of the resources created, modified, or
 deleted for each resource affected:
 
 {{< editCode >}}
-```shell {copy-lines="none"}
+```ini {copy-lines="none"}
 Simulation "noop-6wqg9" created
 ▄  [1/5]: Waiting for simulated control plane to start (30s)
 ▄  [2/5]: Waiting for simulated control plane to start (30s)
