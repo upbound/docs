@@ -190,7 +190,7 @@ define the `completionCriteria` of your simulation:
 up alpha ctp simulate noop --changeset=./examples/noop/example-xr.yaml --complete-after=30s --terminate-on-finish
 ```
 
-The default `completelyCriteria` is 60 seconds. To remove the completion
+The default `completionCriteria` is 60 seconds. To remove the completion
 criteria, pass an empty string flag and manually mark the simulation complete:
 
 ```shell
