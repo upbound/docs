@@ -40,14 +40,10 @@ This guide provides instructions for using the `up ctp simulate` command and the
 This example uses a control plane that runs a `nop` provider to illustrate how
 the simulations feature works.
 
-You can deploy this control plane by forking this repository and using the `up
-project move` command.
-
-Clone your forked repository:
+Clone the example repository:
 
 ```shell
-git clone https://github.com/YOURUSER/no-op-sim.git
-cd no-op-sim
+git clone https://github.com/upbound/no-op-sim.git && cd no-op-sim
 ```
 
 Login to your Upbound account in the CLI:
@@ -56,16 +52,23 @@ Login to your Upbound account in the CLI:
 up login --account
 ```
 
-Move the project to the correct repository:
+Build and run the base control plane:
 
 ```shell
-up project move YOURREPOSITORY
+up project build
+up project run
 ```
 
-Add the `provider-nop` dependency:
+Set your context to the control plane you just created:
 
 ```shell
-up dep add 'xpkg.upbound.io/upboundcare/provider-nop:v0.2.1-2'
+up ctx noop
+```
+
+Deploy the example XR to create your initial resources:
+
+```shell
+kubectl apply -f examples/noop/example-xr.yaml
 ```
 
 ## Run a simulation
@@ -98,7 +101,7 @@ spec:
 ```
 
 
-Run your control plane simulation
+Save this change and run your simulation:
 
 
 ```shell
@@ -108,6 +111,7 @@ Run your control plane simulation
 Your command line returns a summary of the resources created, modified, or
 deleted Diffs for each resource affected:
 
+{{< editCode >}}
 ```shell {copy-lines="none"}
 Simulation "noop-6wqg9" created
 ▄  [1/5]: Waiting for simulated control plane to start (30s)
@@ -134,6 +138,7 @@ Simulation: 0 resources added, 3 resources changed, 0 resources deleted
    ├─[-] <nil>
    └─[+] map[]
 ```
+{{< /editCode >}}
 
 The `up ctp simulate` command creates a simulation of the base control plane and
 applies the changes found in your changed resource directory into the mock
@@ -163,7 +168,7 @@ criteria you set, Upbound set's the simulated control plane's desired state to
 The `completionCriteria` is a string that indicates the duration of how long a
 simulation should run for in seconds.
 
-```yaml
+```yaml {hl_lines="9-11"}
 apiVersion: spaces.upbound.io/v1alpha1
 kind: Simulation
 metadata:
@@ -205,7 +210,7 @@ A `terminated` simulation deletes the simulated control plane.
 You can create a simulation using the API:
 
 
-```yaml {hl_lines="10-12"}
+```yaml 
 cat <<EOF | kubectl apply -f -
  apiVersion: spaces.upbound.io/v1alpha1
  kind: Simulation
