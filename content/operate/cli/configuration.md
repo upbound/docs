@@ -67,7 +67,7 @@ disconnected profile manually based on a kubeconfig context pointed at the
 Space:
 
 ```shell
-up profile create --type=disconnected --kubeconfig $@<kubeconfig path>$@ --kubecontext $@<context name>$@
+up profile create $@<profile name>$@ --type=disconnected --kubeconfig $@<kubeconfig path>$@ --kubecontext $@<context name>$@
 ```
 
 The `--kubeconfig` and `--kubecontext` flags are optional; if not given, the `up` CLI uses your default kubeconfig and current context.
