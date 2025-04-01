@@ -54,17 +54,16 @@ up login --account=$@<your_upbound_account>$@
 ```
 {{< /editCode >}}
 
-Build and run the base control plane:
+Run the project in a control plane:
 
 ```shell
-up project build
 up project run
 ```
 
 Set your context to the control plane you just created:
 
 ```shell
-up ctx noop
+up ctx ./noop
 ```
 
 Deploy the example XR to create your initial resources:
@@ -111,7 +110,7 @@ a simulation of the base control plane and applies the changes found in your
 changed resource directory into the mock control plane.
 
 ```shell
- up alpha ctp simulate no-op  --changeset=./examples/noop/example-xr.yaml --complete-after=60s --terminate-on-finish
+ up alpha ctp simulate noop  --changeset=./examples/noop/example-xr.yaml --complete-after=60s --terminate-on-finish
 ```
 
 Your command line returns a summary of the resources created, modified, or
