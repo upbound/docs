@@ -1098,19 +1098,70 @@ requires a **Composite Resource** (XR) file. XRs use the Composition template to
 create new managed resources. An XR uses the same parameters as your example
 claim, but specifies the `XStorageBucket` type and specifies the target cluster.
 
-Create a new file called `xr.yaml`:
+Create a new file called `examples/storagebucket/xr.yaml`:
+
+{{< content-selector options="AWS,Azure,GCP" default="AWS" >}}
+
+<!-- AWS -->
+### AWS
+
+{{< editCode >}}
 
 ```yaml
 apiVersion: platform.example.com/v1alpha1
 kind: XStorageBucket
 metadata:
-  name: example
+    name: example
 spec:
-  parameters:
-    location: US
-    versioning: true
-    acl: publicRead
+    parameters:
+        region: us-west-1
+        versioning: true
+        acl: public-read
 ```
+
+{{</ editCode >}}
+<!-- /AWS -->
+
+<!-- Azure -->
+### Azure
+
+{{< editCode >}}
+
+```yaml
+apiVersion: platform.example.com/v1alpha1
+kind: XStorageBucket
+metadata:
+    name: example
+spec:
+    parameters:
+        location: eastus
+        versioning: true
+        acl: public
+```
+
+{{</ editCode >}}
+<!-- /Azure -->
+
+<!-- GCP -->
+### GCP
+
+{{< editCode >}}
+
+```yaml
+apiVersion: platform.example.com/v1alpha1
+kind: XStorageBucket
+metadata:
+    name: example
+spec:
+    parameters:
+        location: US
+        versioning: true
+        acl: publicRead
+```
+
+{{</ editCode >}}
+<!-- /GCP -->
+{{< /content-selector >}}
 
 Next, render the composition against your new composite resource file:
 
