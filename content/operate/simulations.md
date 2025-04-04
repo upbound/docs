@@ -32,7 +32,7 @@ This guide provides instructions for using the `up ctp simulate` command and the
 ## Prerequisites
 
 * The Upbound CLI installed
-* An Upbound account wit the Simulations feature enabled
+* An Upbound account with the Simulations feature enabled
 * kubectl installed
 
 ## Deploy a base control plane
