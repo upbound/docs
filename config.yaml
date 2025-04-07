@@ -66,5 +66,5 @@ params:
   spaces:
     version:
       major: 1
-      minor: 11
-      patch: 3
+      minor: 12
+      patch: 0
