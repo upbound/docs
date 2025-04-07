@@ -1,0 +1,2 @@
+description: |-
+    Path where the AWS auth method is enabled in Vault, e.g: 'aws'

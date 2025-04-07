@@ -1,0 +1,3 @@
+description: |-
+    ProposedSchedule indicates where instances of a resource group according
+    to the current dimensions are proposed to be scheduled to.

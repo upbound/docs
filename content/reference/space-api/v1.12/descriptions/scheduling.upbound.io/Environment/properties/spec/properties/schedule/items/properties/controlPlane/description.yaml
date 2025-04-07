@@ -1,0 +1,3 @@
+description: |-
+    ControlPlane is the name of the control plane in which the resource group is scheduled.
+    This is empty if the resource group cannot be scheduled.

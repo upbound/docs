@@ -1,0 +1,4 @@
+description: |-
+    Dimensions are the label keys and values to select control planes
+    implementing the desired API resource group. These are in addition to
+    the dimensions specified at the .spec level and override them.

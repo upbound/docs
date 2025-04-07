@@ -1,0 +1,4 @@
+description: |-
+    ControlPlanes specifies the control planes selected.
+    A control plane is matched if any of the control plane selectors matches, if not specified
+    any control plane in the selected groups is matched.

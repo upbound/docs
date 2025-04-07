@@ -1,0 +1,2 @@
+description: |-
+    SkipDependencyResolution indicates to the package manager whether to skip resolving dependencies for a package. This is always true for RemoteConfiguration.

@@ -1,0 +1,4 @@
+description: |-
+    [[GATE:EnableControlPlaneClasses]]
+    Size holds the status information about the control plane size,
+    including resource usage.

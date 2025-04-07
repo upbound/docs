@@ -1,0 +1,5 @@
+description: |-
+    Groups specifies the groups selected.
+    A group is matched if any of the group selectors matches, if not specified
+    any group is matched. Group selector is ANDed with all other selectors, so no resource in
+    a group not matching the group selector will be included in the backup.

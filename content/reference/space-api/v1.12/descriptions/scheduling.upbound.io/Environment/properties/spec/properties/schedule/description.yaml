@@ -1,0 +1,12 @@
+description: |-
+    Schedule defines the scheduling result of the resource group. It is
+    set by the scheduler and cannot be mutated by the user. But the user
+    can unset it to allow the scheduler to reschedule the resource group.
+    
+    If unset, the resource group will be rescheduled by first setting the
+    proposed schedule in the status and then setting this field here.
+    
+    If no scheduling is possible, the Ready condition will be set to False
+    with the NoControlPlaneAvailable reason.
+    
+    A schedule will never change unless the user unsets it.

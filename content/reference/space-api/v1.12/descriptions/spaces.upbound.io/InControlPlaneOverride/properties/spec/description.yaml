@@ -1,0 +1,4 @@
+description: |-
+    InControlPlaneOverrideSpec defines a configuration override
+    on a target object hierarchy in a target ControlPlane with the
+    given name.
