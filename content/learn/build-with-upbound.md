@@ -149,9 +149,8 @@ Your project file requires these dependencies:
 This demo requires:
 
 * [an EKS cluster](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v0.16.0)
-* [an RDS database](https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v1.16.0)
 * [underlying networking](https://marketplace.upbound.io/configurations/upbound/configuration-aws-network/v0.23.0)
-* [an S3 bucket](https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.21.0)
+* [Kubernetes object management](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.17.2)
 
 This tutorial uses these prebuilt **configurations** that bundle the definitions
 and compositions necessary to deploy fully functioning components with minimal
