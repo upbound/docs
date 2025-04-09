@@ -6,6 +6,7 @@ weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
     - "/quickstart"
+    - "/control-plane-project"
 ---
 
 In the previous tutorial, you created a control plane and deployed real cloud
@@ -41,7 +42,6 @@ brew install upbound/tap/up
 ```
 {{< /tab >}}
 {{< /tabs >}}
-
 
 <!-- vale write-good.TooWordy = NO -->
 
@@ -86,8 +86,7 @@ up project init .
 
 ### Run and build your project
 
-Build and run your project. While Upbound spins up your project, you can read
-this guide to understand what's happening behind the scenes.
+Build and run your project. 
 
 ```shell
 up project build && up project run
@@ -96,6 +95,44 @@ up project build && up project run
 The `build` command packages your project in the hidden `_output` directory.
 The `run` command installs your project functions and dependencies to a
 **control plane**.
+
+### Authenticate with AWS
+
+Your project requires AWS credentials to deploy your resources. In the root of
+your project, run the `setup-aws-credentials.sh` file:
+
+```shell
+./setup-aws-credentials.sh
+```
+
+Enter your AWS Access Key ID, Secret Access Key, Account ID, and an AWS Session
+Token if your organization requires one.
+
+For more information on how to create these credentials, review the [AWS
+documentation](https://docs.aws.amazon.com/keyspaces/latest/devguide/create.keypair.html).
+
+### Deploy your project resources
+
+With your control plane built and your authentication in place, you can now
+deploy your resources.
+
+Use the `kubectl -f apply` command in the root of your project:
+
+```shell
+kubectl -f apply examples/app/kcl/example.yaml
+```
+
+This initiates the deployment process, letting the control plane create the
+resources you defined.
+
+You can monitor the status of your resources with `kubectl`:
+
+```shell
+kubectl get xapp
+```
+
+While Upbound builds your resources, read the rest of this guide to learn how
+Upbound creates and manages your project.
 
 ## Project structure and dependencies
 
@@ -238,70 +275,7 @@ The `oxr.spec.parameters.region` value pulls that value from your XR file. This
 function passes `oxr` defined values throughout the file and connects your XR parameters
 to actual infrastructure configuration.
 
-## Deploy your resources
-
-You installed your project files to the control plane with `up project run`.
-Next, you need to submit your XR request and allow the control plane to handle
-the management and provisioning.
-
-### Authenticate with AWS
-
-### Apply your Composite Resource (XR) 
-
-Update the example XR with your desired AWS region:
-
-```yaml {copy-lines="none", hl_lines=16}
-apiVersion: app.uppound.com/v1alpha1
-kind: XApp
-metadata:
-  name: example
-spec:
-  compositionSelector:
-    matchLabels:
-      language: kcl
-  parameters:
-    id: uppound-aws
-    containers:
-      - name: frontend
-        image: tr0njavolta/uppound-demo-frontend:latest
-      - name: backend
-        image: tr0njavolta/uppound-demo-backend:latest
-    region: us-west-2
-    version: "1.27"
-    nodes:
-      count: 2
-      instanceType: t3.small
-    size: large
-    engine: postgres
-    dbVersion: "13.18"
-  writeConnectionSecretToRef:
-    name: uppound-aws-kubeconfig
-    namespace: default
-```
-
-Save your changes.
-
-Use the `kubectl apply` command to apply your Composite Resource (XR) file to the
-control plane. 
-
-```shell
-kubectl apply -f examples/xapp/example.yaml
-```
-
-This initiates the deployment process, letting the control plane create the
-resources you defined.
-
-You can monitor the status of your resources with `kubectl`:
-
-```shell
-kubectl get xapp
-```
-
-You can also monitor specific resources:
-
-```shell
-kubectl get xeks
-```
+## Observe your resources
 
 Once your project deploys, find the frontend endpoint and visit the application
 in your browser.
