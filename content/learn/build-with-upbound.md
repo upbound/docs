@@ -12,10 +12,9 @@ aliases:
 In the previous tutorial, you created a control plane and deployed real cloud
 resources in the Upbound Console and Consumer Portal.
 
-This tutorial deploys an EKS cluster, an RDS database, S3 bucket, and underlying
-networking configuration with the `up` CLI. This example creates a frontend website and
-backend server on the cluster which retrieves information from the database and
-serves images from the S3 bucket.
+This tutorial deploys an EKS cluster and underlying
+networking configuration with the `up` CLI. This example creates a frontend
+deployment, backend service, database service, and a load balancer ingress.
 
 ## Prerequisites
 
