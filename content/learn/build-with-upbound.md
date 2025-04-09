@@ -277,8 +277,15 @@ to actual infrastructure configuration.
 
 ## Observe your resources
 
-Once your project deploys, find the frontend endpoint and visit the application
-in your browser.
+Once your project deploys, find the frontend endpoint.
+
+In your AWS account, navigate to your EC2 Load Balancers and find the latest
+load balancer.
+
+Your DNS Name is the endpoint of your application. Copy the DNS Name URL and
+navigate to it in your browser.
+
+{{< img src="/images/application.png" alt="UpPound Demo Application" size="medium">}}
 
 ## Clean up
 
