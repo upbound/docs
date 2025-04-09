@@ -10,6 +10,7 @@ Upbound provides support and software maintenance to paid customers. Supported s
 
 * [Spaces]({{< ref "spaces" >}})
 * [UXP]({{< ref "uxp/_index.md" >}})
+* [Official Providers]({{< ref "providers/policies.md#support" >}})
 
 ## Maintenance and updates
 
@@ -27,8 +28,8 @@ component. See below for details. All software follows semantic versioning of `X
 
 ### Spaces schedule
 
-Spaces has a minor release every month. Minor patch releases are available as needed. Upbound provides 6 months of
-mainstream support and 6 months of maintenance support for each minor release. Only critical security issues and
+Spaces has a minor release cadence of every two months. Minor patch releases are made available as needed. Upbound provides 6 months of
+mainstream support and 6 months of maintenance support for each minor release. Only critical security issues (for example, High or Critical CVEs) and
 functional bugs deemed critical qualify under maintenance support.
 
 <!-- vale write-good.Passive = NO -->
@@ -36,35 +37,38 @@ Upgrades to a newer version must be done sequentially according to the minor
 release.
 <!-- vale write-good.Passive = YES -->
 
-
-For example, if you are on `v1.4.x` you must update to `v1.5.x` before `v1.6.x`.
+For example, if you are on `v1.4.x` you must update to `v1.5.x` before `v1.6.x`. 
+We strongly recommend using the latest patch release of a minor version in the upgrade process.
 
 ### UXP schedule
 
 <!-- vale write-good.Weasel = NO -->
 UXP follows the [Crossplane Release Cycle](https://docs.crossplane.io/knowledge-base/guides/release-cycle/). UXP has a
-major release roughly every 3 months. Minor patch releases are available as needed. Upbound provides support for the
-current and 2 previous minor releases.
+minor release roughly every 3 months in accordance with the upstream Crossplane release. 
+
+Upbound releases a new minor version of UXP roughly two weeks after the Crossplane release is made available upstream.
+
+Minor patch releases are made available as needed. Upbound provides support for the current and 2 previous minor releases of UXP.
 <!-- vale write-good.Weasel = YES -->
 
-Upbound fixes bugs in supported major releases and the latest minor release. Upbound backports only critical bugs (both
+Upbound fixes bugs in supported releases. Upbound backports only critical bugs (both
 functional and security) to older minor releases.
 
 ## Feature launch stages
 
 <!-- vale Microsoft.Adverbs = NO -->
 <!-- allow "Generally" -->
-Upbound's features are available in one of three stages: preview, generally available, or deprecated.
+Upbound's features are available in one of three stages: Public preview, Generally Available, or Deprecated.
 <!-- vale Microsoft.Adverbs = NO -->
 
-### Preview
+### Public preview
 
-Preview features are ready for testing by customers. Preview features are often publicly announced, but not necessarily
-feature-complete. Preview features don't have an SLA or technical support commitment. Unless stated otherwise by
+Public preview features are ready for testing by customers. Public preview features are often publicly announced, but not necessarily
+feature-complete. Preview features don't have an SLA and technical support is limited to business hours. Unless stated otherwise by
 Upbound, it's intended that you use preview features in test environments only.
 
 Often times, [alpha features](https://docs.crossplane.io/knowledge-base/guides/feature-lifecycle/#alpha-features) in
-Crossplane manifest as preview features in Upbound. Preview features aren't enabled by default and opt-in, unless stated
+Crossplane manifest as Preview features in Upbound. Preview features aren't enabled by default and are opt-in, unless stated
 otherwise.
 
 ### Generally Available
