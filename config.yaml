@@ -54,11 +54,11 @@ security:
       - ^REVIEW_ID
 
 params:
-  latest: v1.11   #we should look to replace this value with the spaces.version values below
+  latest: v1.12   #we should look to replace this value with the spaces.version values below
   repoLink: "https://github.com/upbound/"
   anchors:
-    min: 2
-    max: 5
+    min: 3
+    max: 6
   description: "Crossplane lets you build a control plane with Kubernetes-style declarative and API-driven configuration and management for anything."
 
   hideDropdown:

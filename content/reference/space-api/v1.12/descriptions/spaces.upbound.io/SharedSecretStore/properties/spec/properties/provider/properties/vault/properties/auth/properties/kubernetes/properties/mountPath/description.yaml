@@ -1,0 +1,3 @@
+description: |-
+    Path where the Kubernetes authentication backend is mounted in Vault, e.g:
+    'kubernetes'
