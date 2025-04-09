@@ -77,10 +77,21 @@ git clone https://github.com/upbound/up-pound-project && cd up-pound-project
 This project contains all the necessary configuration files to deploy your
 application. 
 
-Initialize the project:
+Next, you need to update the project source to deploy to a control plane within
+your organization:
+
+{{< editCode >}}
+```ini
+up project move $@<yourUpboundOrg>$@/up-pound-project
+```
+{{</ editCode >}}
+
+
+Update the project dependency cache:
+
 
 ```shell
-up project init .
+up dependency update-cache
 ```
 
 ### Run and build your project
@@ -180,12 +191,11 @@ create.
     * The AWS region to deploy these resources
     * An identifying name
     * Node instance size
-    * Database instance size
 
 The example XR file contains several user-exposed parameters:
 
 ```yaml {copy-lines="none"}
-apiVersion: app.uppound.com/v1alpha1
+apiVersion: app.uppound.io/v1alpha1
 kind: XApp
 metadata:
   name: example
@@ -203,11 +213,8 @@ spec:
     region: us-west-2
     version: "1.27"
     nodes:
-      count: 2
+      count: 3
       instanceType: t3.small
-    size: large
-    engine: postgres
-    dbVersion: "13.18"
   writeConnectionSecretToRef:
     name: uppound-aws-kubeconfig
     namespace: default
@@ -227,7 +234,6 @@ Functions have three key parts:
 1. **Imports**: references to your resource models
     ```yaml {copy-lines="none"}
     import models.com.uppound.app.v1alpha1 as appv1alpha1
-    import models.io.upbound.aws.s3.v1beta2 as s3v1beta2
     import models.io.crossplane.kubernetes.v1alpha2 as k8sv1alpha2
     ```
 2. **Inputs**: parameter definitions from your XR
@@ -302,7 +308,8 @@ up ctp delete uppound-ctp
 ## Next steps
 
 You just created an application and infrastructure deployment with Upbound! You
-built a control plane project and edited an XR to define your desired resources.
+built a control plane project and deployed a multi-resource application to your
+cloud provider's container service.
 
 For more information on building with Upbound, visit the Upbound documentation
 Build section.
