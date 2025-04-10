@@ -1,7 +1,7 @@
 ---
 title: Authoring Compositions
 weight: 2
-description: Use KCL or Python to create resources with your control plane.
+description: Use various programming languages to create resources with your control plane.
 aliases:
     - /core-concepts/authoring-compositions
 ---
@@ -48,7 +48,7 @@ functions build, package, and manage deployment logic as part of your
 configuration. You can write functions in familiar programming languages rather
 than using the built-in patch-and-transform YAML workflow.
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 
 <!-- Python -->
 To generate a function based on your composition, run the following command:
@@ -73,8 +73,19 @@ This command generates an embedded KCL function called `test-function` and
 creates a new file in your project under `functions/test-function/main.k`. The
 `up function generate` command also creates schema models to help with your
 authoring experience.
-
 <!-- /KCL -->
+<!-- Go -->
+To generate a function based on your composition, run the following command:
+
+```shell
+up function generate --language=go test-function apis/xbuckets/composition.yaml
+```
+
+This command generates an embedded Go function called `test-function` in a new
+directory, `functions/test-function`. The `up function generate` command also
+generates a Go module containing types that will help with your authoring
+experience.
+<!-- /Go -->
 
 {{< /content-selector >}}
 
@@ -95,7 +106,7 @@ Your composition now contains new function references in the `pipeline` section.
 
 ## Authoring the composition function
 
-{{< content-selector options="Python,KCL" default="Python" >}}
+{{< content-selector options="Python,KCL,Go" default="Python" >}}
 
 <!-- Python -->
 
@@ -152,12 +163,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 With the Visual Studio Code Python extension you get autocompletion, linting, type errors,
 and more.
 
-<!-- vale gitlab.FutureTense = NO -->
-In the next guide, you'll run and test your composition.
-<!-- vale gitlab.FutureTense = YES -->
-
 For more Python best practices, please refer to the [documentation]({{<ref "python/">}}).
-
 <!-- /Python -->
 <!-- KCL -->
 
@@ -257,15 +263,129 @@ linting, type errors, and more.
 In this example, the `oxr` assignment captures the composite resources and the
 function adds server side encryption to the buckets your deployment creates.
 
-<!-- vale gitlab.FutureTense = NO -->
-In the next guide, you'll run and test your composition.
-<!-- vale gitlab.FutureTense = YES -->
-
 For more KCL best practices, please refer to the [documentation]({{<ref "kcl/">}}).
 
 <!-- /KCL -->
+<!-- Go -->
 
+For this example, you need Go and the Go Visual Studio Code extension. Refer to
+the [Visual Studio Code Extensions documentation]({{<ref "vscode-extensions.md">}})
+to learn how to install them.
+
+Open the `fn.go` function file in Visual Studio Code.
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+
+	"dev.upbound.io/models/com/example/platform/v1alpha1"
+	"dev.upbound.io/models/io/upbound/aws/s3/v1beta1"
+	"k8s.io/utils/ptr"
+
+	"github.com/crossplane/function-sdk-go/errors"
+	"github.com/crossplane/function-sdk-go/logging"
+	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
+	"github.com/crossplane/function-sdk-go/request"
+	"github.com/crossplane/function-sdk-go/resource"
+	"github.com/crossplane/function-sdk-go/resource/composed"
+	"github.com/crossplane/function-sdk-go/response"
+)
+
+// Function is your composition function.
+type Function struct {
+	fnv1.UnimplementedFunctionRunnerServiceServer
+
+	log logging.Logger
+}
+
+// RunFunction runs the Function.
+func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
+	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
+	rsp := response.To(req, response.DefaultTTL)
+
+	observedComposite, err := request.GetObservedCompositeResource(req)
+	if err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot get xr"))
+		return rsp, nil
+	}
+
+	var xr v1alpha1.XStorageBucket
+	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
+		return rsp, nil
+	}
+
+	params := xr.Spec.Parameters
+	if params.Region == nil || *params.Region == "" {
+		response.Fatal(rsp, errors.Wrap(err, "missing region"))
+		return rsp, nil
+	}
+
+	bucket := &v1beta1.Bucket{
+		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
+		Kind:       ptr.To("Bucket"),
+		Spec: &v1beta1.BucketSpec{
+			ForProvider: &v1beta1.BucketSpecForProvider{
+				Region: params.Region,
+			},
+		},
+	}
+
+	composedBucket := composed.New()
+	if err := convertViaJSON(composedBucket, bucket); err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot convert bucket to unstructured"))
+		return rsp, nil
+	}
+	desiredComposedResources, err := request.GetDesiredComposedResources(req)
+	if err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot get desired resources"))
+		return rsp, nil
+	}
+	desiredComposedResources["bucket"] = &resource.DesiredComposed{Resource: composedBucket}
+	if err := response.SetDesiredComposedResources(rsp, desiredComposedResources); err != nil {
+		response.Fatal(rsp, errors.Wrap(err, "cannot set desired resources"))
+		return rsp, nil
+	}
+
+	return rsp, nil
+}
+
+func convertViaJSON(to, from any) error {
+	bs, err := json.Marshal(from)
+	if err != nil {
+		return err
+	}
+	return json.Unmarshal(bs, to)
+}
+```
+
+Use `import` statements to load Crossplane's Go SDK and Upbound's generated
+models into your function.
+
+Define your function's logic in the `RunFunction` function. Crossplane calls
+this function via gRPC, passing it a `RunFunctionRequest`. It returns a
+`RunFunctionResponse` that includes resources for Crossplane to create and
+update.
+
+Convert your desired composed resources to the necessary SDK types and add them
+to the response with `response.SetDesiredComposedResources`. This will cause
+Crossplane to create the desired resources. You can also use
+`response.SetDesiredCompositeResource` to update the XR's status.
+
+With the Visual Studio Code Go extension you get autocompletion, linting, type
+errors, and more.
+
+For more Go best practices, please refer to the [documentation]({{<ref "go/">}}).
+
+<!-- /Go -->
 {{< /content-selector >}}
+
+<!-- vale gitlab.FutureTense = NO -->
+In the next guide, you'll run and test your composition.
+<!-- vale gitlab.FutureTense = YES -->
 
 ## Next steps
 

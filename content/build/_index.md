@@ -1,7 +1,7 @@
 ---
 title: Build
 weight: 3
-description: Create your configurations and control planes with KCL or Python
+description: Create your configurations and control planes with various programming languages
 aliases:
     - "/spaces"
     - "/concepts/upbound-spaces"
