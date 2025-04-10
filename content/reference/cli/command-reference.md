@@ -1582,6 +1582,45 @@ up space destroy
 This command operates based on the current context in your kubeconfig. Make sure your kubeconfig is pointed at the desired Kubernetes cluster.
 {{< /hint >}}
 
+### space mirror
+
+Managing the mirroring of artifacts to local storage or private container registries.
+
+The 'mirror' command mirrors all required OCI artifacts for a specific Space version.
+
+**Examples:**
+
+This command mirrors all artifacts for Space version 1.9.0 into a local directory as .tar.gz files, using the token file for authentication.
+
+```shell
+space mirror -v 1.9.0 --output-dir=/tmp/output --token-file=upbound-token.json
+```
+
+This command mirrors all artifacts for Space version 1.9.0 to a specified container registry, using the token file for authentication.
+
+```shell        
+space mirror -v 1.9.0 --destination-registry=myregistry.io --token-file=upbound-token.json
+```
+
+Note: Ensure you log in to the registry first using a command like 'docker login myregistry.io'.
+
+This command performs a dry run to verify mirroring of all artifacts for Space version 1.9.0 into a local directory as .tar.gz files, using the token file for authentication. A request is made to the Upbound registry to confirm network access.
+
+```shell
+space mirror -v 1.9.0 --output-dir=/tmp/output --token-file=upbound-token.json --dry-run
+```
+
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag                       | Description                                                                                   |
+|------------|---------------------------------|-----------------------------------------------------------------------------------------------|
+|            | `--token-file=TOKEN-FILE`       | File containing authentication token. Expecting a JSON file with "accessId" and "token" keys. |
+| `-t`       | `--output-dir=STRING`           | The local directory path where exported artifacts will be saved as .tgz files.                |
+| `-d`       | `--destination-registry=STRING` | The target container registry where the artifacts will be mirrored.                           |
+| `-v`       | `--version=STRING`              | The specific Spaces version for which the artifacts will be mirrored.                         |
+
+{{< /table >}}
+
+
 ### space upgrade
 
 Upgrade an Upbound Spaces deployment
