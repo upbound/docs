@@ -83,8 +83,7 @@ up function generate --language=go test-function apis/xbuckets/composition.yaml
 
 This command generates an embedded Go function called `test-function` in a new
 directory, `functions/test-function`. The `up function generate` command also
-generates a Go module containing types that will help with your authoring
-experience.
+generates a Go module containing types you can use when authoring your function.
 <!-- /Go -->
 
 {{< /content-selector >}}
@@ -371,9 +370,9 @@ this function via gRPC, passing it a `RunFunctionRequest`. It returns a
 update.
 
 Convert your desired composed resources to the necessary SDK types and add them
-to the response with `response.SetDesiredComposedResources`. This will cause
-Crossplane to create the desired resources. You can also use
-`response.SetDesiredCompositeResource` to update the XR's status.
+to the response with `response.SetDesiredComposedResources`. Crossplane creates
+or updates the desired composed resources returned in the response. You can also
+use `response.SetDesiredCompositeResource` to update the status of the XR.
 
 With the Visual Studio Code Go extension you get autocompletion, linting, type
 errors, and more.
