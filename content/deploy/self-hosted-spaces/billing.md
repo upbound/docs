@@ -276,4 +276,6 @@ up space billing export --provider=aws \
 
 The command creates a billing report that's zipped up in your current working directory. Send the output to your Upbound sales representative.
 
+Be aware that your current cli needs to have read access to the bucket as well in order to successfully run the command!
+
 You can find full instructions and command options in the up [CLI reference]({{<ref "reference/cli/command-reference.md#space-billing">}}) docs.
