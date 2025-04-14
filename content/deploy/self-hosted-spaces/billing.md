@@ -264,7 +264,15 @@ up space init ... \
 
 To prepare the billing data to send to Upbound, do the following:
 
-Ensure the current context of your kubeconfig points at the Spaces cluster. Then, run the [export]({{<ref "reference/cli/command-reference.md#space-billing-get">}}) command. The example below exports billing data stored in AWS:
+Ensure the current context of your kubeconfig points at the Spaces cluster. Then, run the [export]({{<ref "reference/cli/command-reference.md#space-billing-get">}}) command. 
+
+
+{{<hint "important">}}
+Your current CLI must have read access to the bucket to run this command.
+{{<hint>}}
+
+
+The example below exports billing data stored in AWS:
 
 ```bash
 up space billing export --provider=aws \
@@ -276,6 +284,5 @@ up space billing export --provider=aws \
 
 The command creates a billing report that's zipped up in your current working directory. Send the output to your Upbound sales representative.
 
-Be aware that your current cli needs to have read access to the bucket as well in order to successfully run the command!
 
 You can find full instructions and command options in the up [CLI reference]({{<ref "reference/cli/command-reference.md#space-billing">}}) docs.
