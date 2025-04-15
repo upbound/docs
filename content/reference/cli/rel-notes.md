@@ -13,7 +13,7 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 ## v0.38.4
 
-Released March 21st, 2024
+Released March 21st, 2025
 
 ### What's Changed
 
