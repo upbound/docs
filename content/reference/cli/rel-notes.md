@@ -17,12 +17,8 @@ Released March 21st, 2024
 
 ### What's Changed
 
-- Fixed `up render` searching observed resources
-- Add CI end-to-end tests
-- Fixed keychain handling with robot token
-- Skip registry check when using robot token
-- Add nop logger to `up render`
-
+- Fixed up render searching observed resources
+- Robot tokens now supported for `up project`
 
 ## v0.38.3
 
@@ -30,11 +26,7 @@ Released March 18th, 2025
  
 ### What's Changed
 
-- Use chainsaw as library in `up test`
-- Remove `renderCtx` from function build
-- Add `nil` check by
-- Fix `ptr` handling in older versions of Crossplane or upgraded Crossplane from `v1.18` to `v1.19`
-
+- Stabalize E2E test suite
 
 ## v0.38.2
 
