@@ -32,10 +32,16 @@ To successfully operate our service, Upbound may store the following data for yo
 {{< table >}}
 | Description of data | Examples |
 | ---- | ---- |
-| Information that GitHub needs to administer a subscription | Todo |
+| Information that Upbound needs to administer a subscription | Todo |
 | Support and feedback data | Support requests or case notes<br>phone conversations |
 {{< /table >}}
 
 ## Data transfers
 
 Upbound documents reasons for the transfer of data out of your organization's region, but doesn't notify you when transfers occur.
+
+## Data residency and Upbound Marketplace
+
+The Upbound Marketplace, which includes the web portal at `marketplace.upbound.io` and the underlying OCI registry `xpkg.upbound.io` are served from the United States.
+
+If you wish to pull images hosted in the Marketplace from within an EU data boundary, Upbound recommends mirroring these images to your own OCI registry.
