@@ -1,26 +1,26 @@
 ---
 title: GCP Deployment Guide
 weight: 2
-description: A guide to Upbound Dedicated Spaces on GCP
+description: A guide to Upbound Managed Spaces on GCP
 aliases:
     - /all-spaces/dedicated-spaces/gcp
 ---
 
 {{< hint "important" >}}
-This feature is only available for select Business Critical customers. You can't set up your own Dedicated Space without the assistance of Upbound. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
+This feature is only available for select Business Critical customers. You can't set up your own Managed Space without the assistance of Upbound. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
 {{< /hint >}}
 
-A Dedicated Space deployed on GCP is a single-tenant deployment of a control plane space in your GCP organization in an isolated project. With Dedicated Spaces, you can use the same API, CLI, and Console that Upbound offers, with the benefit of running entirely in a cloud account that you own and Upbound manages for you.
+A Managed Space deployed on GCP is a single-tenant deployment of a control plane space in your GCP organization in an isolated project. With Managed Spaces, you can use the same API, CLI, and Console that Upbound offers, with the benefit of running entirely in a cloud account that you own and Upbound manages for you.
 
-The following guide walks you through setting up a Dedicated Space in your GCP organization. If you have any questions while working through this guide, contact your Upbound Account Representative for help.
+The following guide walks you through setting up a Managed Space in your GCP organization. If you have any questions while working through this guide, contact your Upbound Account Representative for help.
 
-## Dedicated Space on GCP architecture
+## Managed Space on GCP architecture
 
-A Dedicated Space is a deployment of the Upbound Spaces software inside an Upbound-controlled project in your GCP cloud environment. The Spaces software runs in this project, orchestrated by Kubernetes. Backups and billing data get stored inside bucket or blob storage in the same project. The control planes deployed and controlled by the Spaces software runs on the Kubernetes cluster which gets deployed into the project.
+A Managed Space is a deployment of the Upbound Spaces software inside an Upbound-controlled project in your GCP cloud environment. The Spaces software runs in this project, orchestrated by Kubernetes. Backups and billing data get stored inside bucket or blob storage in the same project. The control planes deployed and controlled by the Spaces software runs on the Kubernetes cluster which gets deployed into the project.
 
-The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
+The diagram below illustrates the high-level architecture of Upbound Managed Spaces:
 
-{{<img src="deploy/dedicated-spaces/images/managed-arch-gcp.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
+{{<img src="deploy/managed-spaces/images/managed-arch-gcp.png" alt="Upbound Managed Spaces arch" unBlur="true">}}
 
 The Spaces software gets deployed on a GKE Cluster in the region of your choice. This GKE cluster is where your control planes are ultimately run. Upbound also deploys cloud buckets, 1 for the collection of the billing data and 1 for control plane backups.
 
@@ -32,7 +32,7 @@ Upbound doesn't have access to other projects nor your organization-level settin
 - You should have a preexisting GCP organization with an active Cloud Billing account to complete this guide. 
 - You must create a new GCP project. Read the [GCP documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization) to learn how to create a new project in an existing organization on GCP.
 
-After the project information gets provided to Upbound, **don't change it any further.** Any changes made to the project or the resources created by Upbound for the purposes of the Dedicated Space deployments voids the SLA you have with Upbound. If you want to make configuration changes, contact your Upbound Solutions Architect.
+After the project information gets provided to Upbound, **don't change it any further.** Any changes made to the project or the resources created by Upbound for the purposes of the Managed Space deployments voids the SLA you have with Upbound. If you want to make configuration changes, contact your Upbound Solutions Architect.
 
 ## Enable APIs
 
@@ -78,7 +78,7 @@ Once these policies get attached to the key, tell your Upbound Account Represent
 
 Once Upbound has this information, the request gets processed in a business day. 
 
-## Use your Dedicated Space
+## Use your Managed Space
 
-Once the Dedicated Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/).
+Once the Managed Space gets deployed, you can see it in the Space selector when browsing your environment on [`console.upbound.io`](https://console.upbound.io/).
 <!--- TODO(tr0njavolta): add link --->

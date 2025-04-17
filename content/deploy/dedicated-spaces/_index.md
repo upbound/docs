@@ -8,53 +8,33 @@ description: A guide to Upbound Dedicated Spaces
 <!-- vale Microsoft.Headings = NO -->
 <!-- vale Google.We = NO -->
 <!-- vale gitlab.SentenceLength= NO -->
-**Upbound Dedicated Spaces** is a deployment mode that combines the control and
-security of a self-hosted environment with the operational ease of a managed
-service. With Dedicated Spaces, you deploy Upbound's platform in your own cloud
-account while granting Upbound's operations team the access needed to maintain
-your environment.
+**Upbound Dedicated Spaces** is a single-tenant deployment of a Cloud Space. With Dedicated Spaces, Upbound hosts and manages the Space for you, while providing guarantees 
 
-A Dedicated Space is a single-tenant deployment of Upbound into your own AWS,
-Azure, or GCP account. Dedicated Spaces are for organizations that require
-strict data residency or compliance while still benefiting from professional
-management. In this deployment model, you keep full control of your cloud
-infrastructure. Upbound takes on the responsibility of routine maintenance,
-upgrades, backups, and monitoring—all without compromising your security or
-autonomy. With Dedicated Spaces, you can use the same API, CLI, and Console that
-Upbound offers, with the benefit of running entirely in a cloud account that you
-own and Upbound manages for you.
+A Dedicated Space is a single-tenant deployment of an Upbound Cloud Space. Dedicated Spaces are for organizations that require additional isolation while still benefiting from professional
+management. With Dedicated Spaces, you can use the same API, CLI, and Console that
+Upbound offers.
 
 {{< hint "tip" >}}
-If you would rather Upbound deploy the Dedicated Space in Upbound's own cloud
-account and manage the infrastructure, that is available as a configuration
-option as well. {{< /hint >}}
+If you would rather Upbound deploy the Space in your own cloud
+account and manage the software on your behalf, that is available with [Managed Spaces]({{< ref
+"deploy/managed-spaces" >}}). {{< /hint >}}
 
 ## Benefits
 
 Dedicated Spaces provide the following benefits:
 
-- **Single-tenancy in your own Cloud account.** A control plane space gets deployed into your own cloud account.
-- **Enhanced Security and Compliance.** Keep your data in your own cloud account while meeting regulatory or internal compliance requirements. Upbound's access gets limited to management operations.
-- **Seamless Integration.** Integrate Dedicated Spaces with your existing cloud infrastructure, maintaining your preferred region and networking configurations.
+- **Single-tenancy** A control plane space where Upbound guarantees you're the only tenant operating in the environment.
+- **Connectivity to your private network** Establish secure network connections between your Dedicated Cloud Space running in Upbound and your own resources behind your private network.
 - **Reduced Overhead.** Offload day-to-day operational burdens to Upbound while focusing on your job of building your platform.
 
 ## Architecture
 
 A Dedicated Space is a deployment of the Upbound Spaces software inside an
-Upbound-controlled sub-account in your cloud environment. The Spaces software
-runs in this sub-account, orchestrated by Kubernetes. Backups and billing data
-get stored inside bucket or blob storage in the same sub-account. The managed
-control planes deployed and controlled by the Spaces software runs on the
-Kubernetes cluster which gets deployed into the sub-account.
+Upbound-controlled cloud account and network. The control planes you run.
 
 The diagram below illustrates the high-level architecture of Upbound Dedicated Spaces:
 
 {{<img src="/deploy/dedicated-spaces/images/managed-arch-aws.png" alt="Upbound Dedicated Spaces arch" unBlur="true">}}
-
-Upbound doesn't have access to other sub-accounts nor your organization-level
-settings in your cloud environment. Outside of your cloud organization, Upbound
-runs the Upbound Console, which includes the Upbound API and web application,
-including the dashboard you see at `console.upbound.io`.
 
 ## How to get access to Dedicated Spaces
 
