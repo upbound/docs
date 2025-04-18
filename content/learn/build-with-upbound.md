@@ -254,22 +254,25 @@ Your project file requires these dependencies:
 
 {{< tab "Azure" >}}
 
-```shell
-git clone https://github.com/upbound/uppound-project-aws && cd
+Your project file requires these dependencies:
+
+* [an AKS cluster](https://marketplace.upbound.io/configurations/upbound/configuration-azure-aks/v0.13.0)
+* [underlying networking](https://marketplace.upbound.io/configurations/upbound/configuration-azure-network/v0.16.0)
+* [Kubernetes object management](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.17.2)
 
 {{</ tab >}}
 
 {{< tab "GCP" >}}
 
+Your project file requires these dependencies:
 
-```shell
-git clone https://github.com/upbound/uppound-project-aws && cd
+* [a GKE cluster](https://marketplace.upbound.io/configurations/upbound/configuration-gcp-gke/v0.10.0)
+* [underlying networking](https://marketplace.upbound.io/configurations/upbound/configuration-gcp-network/v0.8.0)
+* [Kubernetes object management](https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.17.2)
 
 {{</ tab >}}
 
 {{< /tabs >}}
-
-
 
 This tutorial uses these prebuilt **configurations** that bundle the definitions
 and compositions necessary to deploy fully functioning components with minimal
@@ -332,7 +335,6 @@ spec:
     name: uppound-aws-kubeconfig
     namespace: default
 ```
-
 
 {{</ tab >}}
 
@@ -398,8 +400,6 @@ spec:
 {{</ tab >}}
 
 {{< /tabs >}}
-
-
 
 This file contains user-customizable parameters that generate
 the required configuration for your project. When you apply this XR, parameters
