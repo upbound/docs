@@ -2,9 +2,7 @@
 title: "Create cloud resources with Upbound"
 description: "Define a control plane for resource abstractions in a real cloud provider environment" 
 weight: 1
-aliases:
-    - "/getstarted-devex/create-controllers"
-    - "/quickstart"
+draft: true
 ---
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale Microsoft.HeadingAcronyms = NO -->
