@@ -1,0 +1,5 @@
+description: |-
+    Role this subject has on the associated Object.
+    The list of valid roles is defined for each target API resource separately.
+    For namespaces, valid values are 'viewer', 'editor', and 'admin'.
+    The format of this is essentially a RFC 1035 label with underscores instead of dashes, minimum three characters long.

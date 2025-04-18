@@ -9,6 +9,25 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+
+
+## v0.38.4
+
+Released March 21st, 2025
+
+### What's Changed
+
+- Fixed up render searching observed resources
+- Robot tokens now supported for `up project`
+
+## v0.38.3
+
+Released March 18th, 2025
+ 
+### What's Changed
+
+- Stabalize E2E test suite
+
 ## v0.38.2
 
 Released March 17th, 2025

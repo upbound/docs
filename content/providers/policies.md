@@ -235,6 +235,7 @@ Vulnerability Scoring System version 3](https://nvd.nist.gov/vuln-metrics/cvss),
 
 - Critical Severity: Within 7 calendar days from the date an upstream fix is publicly available.
 - High, Medium, and Low severity: Within 14 calendar days from the date an upstream fix is publicly available.
+- Unknown severity: Within 30 calendar days from the date an upstream fix is publicly available.
 
 A CVE will be considered addressed when a new version of the provider with the fix is released to the Marketplace.
 

@@ -1,0 +1,35 @@
+description: |-
+    JSONPath is where the reference is stored in the composite.
+    The reference is resolved in the context of the claim.
+    The JSONPath is expected to end with a object field called `*Ref`, or
+    an array field called `*Refs`. In the former case, the object field must
+    have the following schema. In latter case, each item in the array must:
+    
+    apiVersion: string
+    kind: string
+    name: string
+    namespace: string # optional, defaults to be a local reference.
+    UID: string # optional
+    grants: []string # optional, defaults to ['Observe'], but can hold any of
+                       ['Observe', 'Create', 'Update', 'Delete'].
+    claims: []string # optional, additional verbs the user must be authorized to.
+    
+    Grants are a closed-set, corresponding to the management policy of
+    Crossplane. Grants are authorized through RBAC and Upbound ReBAC for the
+    referenced object when creating or updating a reference.
+    
+    Claims are optional verbs the user creating or referencing an object
+    must be authorized to. These can include custom verbs.
+    
+    With grants the user specifies the permissions that the claim gives to the
+    composite: 'Observe' allows the composite to read the object, 'Create' to
+    create it, 'Update' to update it, and 'Delete' to delete it.
+    
+    Claims tell the composition author about additional permissions the user
+    might have.
+    
+    OpenAPI v3 validation and defaulting can be used to restrict and/or
+    auto-populate the fields.
+    
+    A JSONPath must have a counterpart schema in the CompositeResourceDefinition's
+    references.upbound.io/schema annotation.

@@ -37,6 +37,17 @@ myresource = v1beta1.Instance {
 In KCL, you don't need to specify the variable data type. KCL infers the type
 from the value.
 
+Consuming variables from a map:
+```yaml
+instance_type_map = {
+    "tiny": "t2.micro",
+    "jumbo": "t2.small",
+}
+_instance_type = "tiny"
+if oxr.spec?.parameters?.instanceType in instance_type_map:
+    _instance_type = instance_type_map[oxr.spec.parameters.instanceType]
+```
+
 ## Special variables
 
 The `items` and the `options` variables are important required variables in your

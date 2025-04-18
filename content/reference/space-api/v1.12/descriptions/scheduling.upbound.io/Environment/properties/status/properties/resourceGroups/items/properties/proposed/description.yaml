@@ -1,0 +1,6 @@
+description: |-
+    Proposed is the proposed schedule for the resource group. This either
+    matches the schedule in the spec or is a new proposal by the scheduler.
+    
+    In the later case, the user can accept the proposal by removing the
+    existing schedule in the spec for the given resource group.

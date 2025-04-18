@@ -1,0 +1,5 @@
+description: |-
+    Processors defines the processors to configure on the selected ControlPlanes.
+    Untyped as we use the underlying OpenTelemetryOperator to configure the
+    OpenTelemetry collector's processors. Use the OpenTelemetry Collector
+    documentation to configure the processors.

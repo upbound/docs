@@ -14,11 +14,11 @@ enables you to build and deploy control plane projects with the Upbound CLI.
 ## Build your control plane project
 
 You can build the dependencies and metadata in your Upbound project as a single
-OCI image with the [up project build]({{< ref "reference/cli/command-reference"
->}}) command. This command generates the Python
-and KCL schemas and packages them into a single `.uppkg` file. New builds update
-the control plane project dependency cache in the same way running the [up
-dependency update-cache]({{< ref "reference/cli/command-reference" >}}) command does.
+OCI image with the [up project build]({{< ref "reference/cli/command-reference" >}})
+command. This command builds functions, generates language-specific schemas, and
+packages everything into a single `.uppkg` file. New builds update the control
+plane project dependency cache in the same way running the [up dependency
+update-cache]({{< ref "reference/cli/command-reference" >}}) command does.
 
 ```shell
 up project build

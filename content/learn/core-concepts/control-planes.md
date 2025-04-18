@@ -31,9 +31,6 @@ The API server handles these requests by:
 - Returning a response to your request
 - Notifying controllers that watch for changes to that resource type
 
-The API server acts as the single entry point for all control plane
-interactions.
-
 The API server acts as the central entry point for all control plane interactions. You access the same API server whether you use `kubectl`, the Upbound Console, or direct API calls. It authoritatively determines which resources should exist and their configurations.
 
 ### Controllers

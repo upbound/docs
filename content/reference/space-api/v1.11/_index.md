@@ -1,7 +1,8 @@
 ---
-weight: 0
-description: "API details for Spaces"
+title: "Space API"
+weight: -1
 tocHidden: true
+description: "API details for Spaces"
 cascade:
     product: crds
     version: v1.11
