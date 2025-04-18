@@ -464,7 +464,7 @@ function passes `oxr` defined values throughout the file and connects your XR pa
 to actual infrastructure configuration.
 
 ## Observe your resources
-
+<!-- vale Upbound.Spelling = NO -->
 Your function captures the endpoint you need to access the application you
 deployed. Use the `kubectl get` command to return the frontend IP
 address or hostname.
@@ -492,6 +492,7 @@ kubectl get objects.kubernetes.crossplane.io example-frontend-service -o json | 
 Navigate to the IP or hostname in your browser.
 
 {{< img src="/images/application.png" alt="UpPound Demo Application" size="medium">}}
+<!-- vale Upbound.Spelling = YES -->
 
 ## Clean up
 
@@ -501,17 +502,21 @@ Remember to destroy all your project resources:
 kubectl delete --filename examples/xapp/example.yaml
 ```
 
+<!-- vale write-good.Weasel = NO -->
 Finally, destroy your development control plane:
+<!-- vale write-good.Weasel = YES-->
 
 ```shell
 up ctp delete uppound-ctp
 ```
 
 ## Next steps
-
+<!-- vale Google.Exclamation = NO -->
 You just created an application and infrastructure deployment with Upbound! You
 built a control plane project and deployed a multi-resource application to your
 cloud provider's container service.
 
-For more information on building with Upbound, visit the Upbound documentation
-Build section.
+<!-- vale Google.Exclamation = YES -->
+
+Next, learn more about building [Control Plane Projects]({{< ref
+"build/control-plane-projects" >}}).
