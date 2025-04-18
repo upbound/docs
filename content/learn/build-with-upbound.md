@@ -502,9 +502,7 @@ Remember to destroy all your project resources:
 kubectl delete --filename examples/xapp/example.yaml
 ```
 
-<!-- vale write-good.Weasel = NO -->
-Finally, destroy your development control plane:
-<!-- vale write-good.Weasel = YES-->
+Destroy your development control plane:
 
 ```shell
 up ctp delete uppound-ctp
