@@ -9,7 +9,7 @@ aliases:
 {{< hint "important" >}}
 This quickstart is deprecated and only applicable to users running in Upbound's
 Legacy Space. Follow the link to the [new quickstart]({{<ref
-"learn/control-plane-project.md" >}}) to try the new Upbound experience.
+"learn/build-with-upbound.md" >}}) to try the new Upbound experience.
 {{< /hint >}}
 
 This quickstart guides you through how to create your first control plane in Upbound with configuration-caas. Connect Upbound to AWS, GCP, and Azure to provision and manage fully configured Kubernetes Service clusters. They're composed using cloud service primitives from the Upbound Official Providers.

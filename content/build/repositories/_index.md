@@ -12,7 +12,7 @@ Upbound repositories lets you centrally store control plane artifacts, extension
 
 Upbound Repositories provides a single location for storing and managing your control plane artifacts and extensions, bundled as OCI images. You can:
 
-- Store control plane artifacts generated with [up CLI]({{<ref "learn/control-plane-project">}}) platform builder tooling.
+- Store control plane artifacts generated with [up CLI]({{<ref "learn/build-with-upbound">}}) platform builder tooling.
 - Deploy artifacts to control planes.
 - Manage and publish artifacts to the [Upbound Marketplace]({{<ref "upbound-marketplace">}})
 - Upbound RBAC provides consistent access control.
