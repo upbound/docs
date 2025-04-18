@@ -59,7 +59,7 @@ Connect your CLI to your Upbound account. This opens a browser window for you to
 
 {{< editCode >}}
 ```ini {copy-lines="all"}
-up login --account=$@<yourUpboundAccount>$@
+up login --organization=$@<yourUpboundOrg>$@
 ```
 {{< /editCode >}}
 
@@ -128,6 +128,13 @@ The `build` command packages your project in the hidden `_output` directory.
 The `run` command installs your project functions and dependencies to a
 **control plane**.
 
+Make sure you're in your control plane context. Use the `up ctx` command to
+set your kubecontext to your control plane project name:
+
+```shell
+up ctx
+```
+
 ### Authenticate with your cloud provider
 
 Your project requires provider credentials to deploy your resources. In the root of
@@ -186,13 +193,6 @@ documentation](https://cloud.google.com/docs/authentication).
 With your control plane built and your authentication in place, you can now
 deploy your resources.
 
-Make sure you're in your control plane context. Use the `up ctx` command to
-set your kubecontext to your control plane project name:
-
-```shell
-up ctx
-```
-
 Use the `kubectl apply` command in the root of your project:
 
 ```shell
@@ -206,6 +206,24 @@ You can monitor the status of your resources with `kubectl`:
 
 ```shell
 kubectl get xapps.app.uppound.io example --watch
+```
+
+You can use the `up` CLI to return the control plane managed resources:
+
+```shell{copy-lines=1}
+up alpha get xapp
+
+
+NAME                                               SYNCED   READY   EXTERNAL-NAME           AGE
+internetgateway.ec2.aws.upbound.io/example-lc9fn   True     True    igw-095349da3d22cc7ec   43m
+
+NAME                                                         SYNCED   READY   EXTERNAL-NAME                AGE
+mainroutetableassociation.ec2.aws.upbound.io/example-fb2rd   True     True    rtbassoc-02e172be0225fff64   43m
+
+NAME                                     SYNCED   READY   EXTERNAL-NAME                       AGE
+route.ec2.aws.upbound.io/example-4n5ng   True     True    r-rtb-0af1bb018b7c1592e1080289494   43m
+#... output truncated ... #
+
 ```
 
 While Upbound builds your resources, read the rest of this guide to learn how
@@ -302,9 +320,9 @@ spec:
     id: uppound-aws
     containers:
       - name: frontend
-        image: tr0njavolta/uppound-demo-frontend:latest
+        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
       - name: backend
-        image: tr0njavolta/uppound-demo-backend:latest
+        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
     region: us-west-2
     version: "1.27"
     nodes:
