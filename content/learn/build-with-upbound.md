@@ -196,7 +196,7 @@ deploy your resources.
 Use the `kubectl apply` command in the root of your project:
 
 ```shell
-kubectl apply --filename examples/app/kcl/example.yaml
+kubectl apply --filename examples/xapp/example.yaml
 ```
 
 This initiates the deployment process, letting the control plane create the
@@ -310,7 +310,7 @@ The example XR file contains several user-exposed parameters:
 {{< tab "AWS" >}}
 
 ```shell {copy-lines=1}
-cat examples/app/kcl/examples.yaml
+cat examples/xapp/example.yaml
 apiVersion: app.uppound.io/v1alpha1
 kind: XApp
 metadata:
@@ -341,7 +341,7 @@ spec:
 {{< tab "Azure" >}}
 
 ```shell {copy-lines=1}
-cat examples/app/kcl/examples.yaml
+cat examples/xapp/example.yaml
 apiVersion: app.uppound.io/v1alpha1
 kind: XApp
 metadata:
@@ -371,7 +371,7 @@ spec:
 {{< tab "GCP" >}}
 
 ```shell {copy-lines=1}
-cat examples/app/kcl/examples.yaml
+cat examples/xapp/example.yaml
 apiVersion: app.uppound.io/v1alpha1
 kind: XApp
 metadata:
