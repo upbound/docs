@@ -22,7 +22,7 @@ Upbound stores the following data for your organization within your chosen regio
 | ---- | ---- |
 | Customer content, including text, metadata, and other data available on the service | Control planes, including control plane names<br>user-created content such as Crossplane compositions<br>structured or blob storage |
 | Data or logs that identify your organization | Data for business continuity and disaster recovery (BCDR) |
-| Data or logs that identify a person | Email address<br>username<br>First or last name |
+| Data or logs that identify a person | Pseudonymized identifiers in audit logs. |
 {{< /table >}}
 
 ## Data stored outside your region
