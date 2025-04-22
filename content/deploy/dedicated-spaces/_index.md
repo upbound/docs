@@ -8,11 +8,7 @@ description: A guide to Upbound Dedicated Spaces
 <!-- vale Microsoft.Headings = NO -->
 <!-- vale Google.We = NO -->
 <!-- vale gitlab.SentenceLength= NO -->
-**Upbound Dedicated Spaces** is a single-tenant deployment of a Cloud Space. With Dedicated Spaces, Upbound hosts and manages the Space for you, while providing guarantees 
-
-A Dedicated Space is a single-tenant deployment of an Upbound Cloud Space. Dedicated Spaces are for organizations that require additional isolation while still benefiting from professional
-management. With Dedicated Spaces, you can use the same API, CLI, and Console that
-Upbound offers.
+**Upbound Dedicated Spaces** is an isolated deployment of an Upbound Cloud Space. With Dedicated Spaces, Upbound hosts and manages the Space for you in an Upbound cloud account. You get the extra assurance it's isolated from all other organizations on Upbound. Dedicated Spaces are for organizations that require more isolation while still benefiting from a SaaS-centric experience.
 
 {{< hint "tip" >}}
 If you would rather Upbound deploy the Space in your own cloud
@@ -21,7 +17,7 @@ account and manage the software on your behalf, that is available with [Managed 
 
 ## Benefits
 
-Dedicated Spaces provide the following benefits:
+Dedicated Spaces offer the following benefits:
 
 - **Single-tenancy** A control plane space where Upbound guarantees you're the only tenant operating in the environment.
 - **Connectivity to your private network** Establish secure network connections between your Dedicated Cloud Space running in Upbound and your own resources behind your private network.
