@@ -4,7 +4,7 @@ weight: 100
 description: "Information about Upbound's data residency policies."
 ---
 
-By default, Upbound stores data for Upbound Cloud in the USA. When you purchase an enterprise or business critical subscription to Upbound, you can choose where your organization's control planes and data get stored.
+By default, Upbound stores data for Upbound Cloud in the United States. When you purchase an enterprise or business critical subscription to Upbound, you can choose where your organization's control planes and data get stored.
 
 The available regions are:
 
@@ -20,7 +20,7 @@ Upbound stores the following data for your organization within your chosen regio
 {{< table >}}
 | Description of data | Examples |
 | ---- | ---- |
-| Customer content, including text, metadata, and other data available on the service | Control planes, including control plane names<br>user-created content such as Crossplane compositions<br>structured or blob storage |
+| Customer content, including text, metadata, and other data available on the service | Control planes, including control plane names<br>user-created content such as Crossplane compositions<br>resource metadata for resources managed by control planes|
 | Data or logs that identify your organization | Data for business continuity and disaster recovery (BCDR) |
 | Data or logs that identify a person | Pseudonymized identifiers in audit logs. |
 {{< /table >}}
@@ -32,7 +32,7 @@ To successfully operate our service, Upbound may store the following data for yo
 {{< table >}}
 | Description of data | Examples |
 | ---- | ---- |
-| Information that Upbound needs to administer a subscription | Todo |
+| Information that Upbound needs to administer a subscription | Organization name |
 | Support and feedback data | Support requests or case notes<br>phone conversations |
 {{< /table >}}
 
