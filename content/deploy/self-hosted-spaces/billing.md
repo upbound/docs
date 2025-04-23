@@ -10,6 +10,10 @@ aliases:
 
 Spaces are a self-hosting feature of Upbound's [flagship product](https://www.upbound.io/product/upbound) for platform teams to deploy control planes in their self-managed environments. You can install Spaces into any Kubernetes cluster in your own cloud account, on-premises data center, or on the edge. The pricing usage-based and requires an Upbound account and subscription. The billing unit is a `Loop`.
 
+{{< hint "important" >}}
+Installation of [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) is required to enable billing.
+{{</ hint >}}
+
 ## Billing details
 
 Spaces **aren't connected** to Upbound's global service. To enable proper billing, the Spaces software ships a controller whose responsibility is to collect billing data from your Spaces deployment. The collection and storage of your billing data happens expressly locally within your environment; no data is automatically emitted back to Upbound's global service. This data gets written to object storage of your choice. AWS, Azure, and GCP are currently supported. The Spaces software exports billing usage software every ~15 seconds.
