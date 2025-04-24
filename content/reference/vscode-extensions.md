@@ -33,7 +33,7 @@ documentation to learn how to configure support for your preferred editor.
 
 <!-- vale gitlab.SentenceSpacing = NO -->
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 
 <!-- Python -->
 To install the Python extension, search for Python in your extensions search bar
@@ -67,6 +67,19 @@ To install the Go extension, search for Go in your extensions search bar
 in Visual Studio Code or go to the [Marketplace](https://marketplace.visualstudio.com/items?itemName=golang.Go).
 
 <!-- /Go -->
+<!-- Go Templating -->
+
+When editing Go Templating functions, use The YAML extension. To install it,
+search for YAML in your extensions search bar in Visual Studio Code or go to the
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+
+Go Templating functions generated with `up function generate` contain modelines
+that instruct Visual Studio Code to use the YAML extension when editing
+them. This requires the
+[Modelines](https://marketplace.visualstudio.com/items?itemName=chrislajoie.vscode-modelines)
+extension.
+
+<!-- /Go Templating -->
 
 {{< /content-selector >}}
 
@@ -86,8 +99,8 @@ spec:
     version: v0.13.0
 ```
 
-Once configured, you can open Python or KCL files in Visual Studio Code and start
-composing your resources.
+Once configured, you can generate functions, open the code files in Visual
+Studio Code and start composing your resources.
 
 ## Features
 
@@ -99,10 +112,11 @@ available:
 View descriptions, property types, and other schema details directly in your
 code editor window as you work with composed managed resources (MRs).
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 
 <!-- Python -->
 {{< editCode >}}
+
 ```python
 vpc = v1beta1.VPC(
     apiVersion="ec2.aws.upbound.io/v1beta1",
@@ -114,10 +128,12 @@ vpc = v1beta1.VPC(
     ),
 )
 ```
+
 {{< /editCode >}}
 <!-- /Python -->
 <!-- KCL -->
 {{< editCode >}}
+
 ```yaml
 vpc = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
@@ -128,6 +144,7 @@ vpc = {
     }
 }
 ```
+
 {{</ editCode >}}
 <!-- /KCL -->
 <!-- Go -->
@@ -148,6 +165,21 @@ vpc := &v1beta1.VPC{
 
 {{</ editCode >}}
 <!-- /Go -->
+<!-- Go Templating -->
+{{< editCode >}}
+
+```yaml
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: VPC
+spec:
+  forProvider:
+    cidrBlock: "10.0.0.0/16" // Hover to see description and type
+    enableDNSHostnames: true // Hover to see description and type
+```
+
+{{</ editCode >}}
+<!-- /Go Templating -->
 
 {{</ content-selector >}}
 
@@ -161,10 +193,11 @@ Real-time linting ensures:
 - Managed resource required fields are populated
 <!-- vale write-good.Passive = YES -->
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 
 <!-- Python -->
 {{< editCode >}}
+
 ```python
 vpc = v1beta1.VPC(
     apiVersion="ec2.aws.upbound.io/v1beta1",
@@ -177,10 +210,12 @@ vpc = v1beta1.VPC(
     ),
 )
 ```
+
 {{< /editCode >}}
 <!-- /Python -->
 <!-- KCL -->
 {{< editCode >}}
+
 ```yaml
 vpc = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
@@ -191,6 +226,7 @@ vpc = {
     }
 }
 ```
+
 {{</ editCode >}}
 <!-- /KCL -->
 <!-- Go -->
@@ -210,6 +246,20 @@ vpc := &v1beta1.VPC{
 
 {{< /editCode >}}
 <!-- /Go -->
+<!-- Go Templating -->
+{{< editCode >}}
+
+```yaml
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: VPC
+spec:
+  forProvider:    // Missing property "region"
+    cidrBlock: 10 // Incorrect type: Expected "string"
+```
+
+{{< /editCode >}}
+<!-- /Go Templating -->
 {{</ content-selector >}}
 
 <!-- vale Microsoft.Auto = NO -->
@@ -218,9 +268,10 @@ vpc := &v1beta1.VPC{
 
 As you type, the extension suggests valid properties and values for managed resources.
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
+
 ```python
 vpc = v1beta1.VPC(
     apiVersion="ec2.aws.upbound.io/v1beta1",
@@ -233,10 +284,12 @@ vpc = v1beta1.VPC(
     ),
 )
 ```
+
 {{< /editCode >}}
 <!-- /Python -->
 <!-- KCL -->
 {{< editCode >}}
+
 ```yaml
 vpc = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
@@ -246,6 +299,7 @@ vpc = {
     }
 }
 ```
+
 {{</ editCode >}}
 <!-- /KCL -->
 <!-- Go -->
@@ -265,6 +319,20 @@ vpc := &v1beta1.VPC{
 
 {{</ editCode >}}
 <!-- /Go -->
+<!-- Go Templating -->
+{{< editCode >}}
+
+```yaml
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: VPC
+spec:
+  forProvider:
+    ci // Auto-complete suggests: cidr, cidrBlock, etc.
+```
+
+{{< /editCode >}}
+<!-- /Go Templating -->
 
 {{</ content-selector >}}
 
@@ -274,16 +342,19 @@ Scaffold a new managed resource by using the auto-generate feature.
 
 <!-- vale Microsoft.Auto = YES -->
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
+
 ```python
 vpc = v1beta1.V  # Auto-complete suggests VPC
 ```
+
 {{< /editCode >}}
 <!-- /Python -->
 <!-- KCL -->
 {{< editCode >}}
+
 ```yaml
 Start typing: vpc = {kind: "V"}
 Select "VPC" from the autocomplete suggestions
@@ -297,6 +368,7 @@ vpc = {
     }
 }
 ```
+
 {{</ editCode >}}
 <!-- /KCL -->
 <!-- Go -->
@@ -308,6 +380,21 @@ vpc := &v1beta1.V // Auto-complete suggests VPC etc.
 
 {{< /editCode >}}
 <!-- /Go -->
+<!-- Go Templating -->
+{{< editCode >}}
+
+```yaml
+---
+apiVersion: # Auto-complete suggests ec2.aws.upbound.io/v1beta1 etc.
+kind: V     # Auto-complete suggests VPC etc.
+spec:
+  # Auto-complete generates the required fields:
+  forProvider:
+    region: 
+```
+
+{{< /editCode >}}
+<!-- /Go Templating -->
 
 {{</ content-selector >}}
 
@@ -315,9 +402,10 @@ vpc := &v1beta1.V // Auto-complete suggests VPC etc.
 
 Navigate between related resources in your composition.
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 <!-- Python -->
 {{< editCode >}}
+
 ```python
     vpc = vpcv1beta1.VPC(**req.observed.resources["vpc"].resource)
 
@@ -332,10 +420,12 @@ Navigate between related resources in your composition.
         ),
     )
 ```
+
 {{< /editCode >}}
 <!-- /Python -->
 <!-- KCL -->
 {{< editCode >}}
+
 ```yaml
 subnet = {
     apiVersion: "ec2.aws.upbound.io/v1beta1"
@@ -347,6 +437,7 @@ subnet = {
     }
 }
 ```
+
 {{</ editCode >}}
 <!-- /KCL -->
 <!-- Go -->
@@ -370,16 +461,19 @@ subnet := &v1beta1.Subnet{
 
 {{</ editCode >}}
 <!-- /Go -->
+<!-- Go Templating -->
+Navigating to references is not supported in Go Templating files.
+<!-- /Go Templating -->
 
 {{</ content-selector >}}
 
 <!-- vale gitlab.SentenceSpacing = YES -->
-
 
 ## Troubleshooting
 
 If you're not seeing the enhanced features:
 
 - Ensure you're using an official Upbound provider with bundled schemas.
-- Check that the provider version in your `upbound.yaml` file matches the installed provider version.
+- Check that the provider version in your `upbound.yaml` file matches the
+  installed provider version.
 - Reload your Visual Studio Code window or restart Visual Studio Code.

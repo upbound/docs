@@ -504,4 +504,5 @@ update the `properties.size` field in the `spec`.
 
 ## Next steps
 
-Next, learn how to [build compositions in KCL, Python, or Go]({{<ref "authoring-compositions/">}}) that reference your XRD.
+Next, learn how to [build compositions]({{<ref "authoring-compositions/">}})
+that reference your XRD using various programming languages.
