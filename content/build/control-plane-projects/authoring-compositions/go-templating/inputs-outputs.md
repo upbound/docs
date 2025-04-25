@@ -42,7 +42,7 @@ To add resources to the pipeline's desired composed resources, define them in
 the template. Use the `gotemplating.fn.crossplane.io/composition-resource-name`
 annotation to define unique names for each resource. This allows you to update a
 resource rather than create a new one on subsequent functions runs. The
-`setResourceNameAnnotation` helper function will set this annotation:
+`setResourceNameAnnotation` helper function sets this annotation:
 
 ```yaml
 # code: language=yaml

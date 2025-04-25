@@ -4,9 +4,9 @@ weight: 30
 ---
 
 Upbound Official Providers and some other packages include [JSON
-Schemas](https://json-schema.org/) for their resources, plus a generated
-"meta-schema" that references all the individual schemas. The YAML language
-server (via editor extensions) uses these schemas to enable in-line
+Schemas](https://json-schema.org/) for their resources. The `up` tooling
+generates a "meta-schema" that references all the individual schemas. Editors,
+via the YAML language server, consume these schemas and provide in-line
 documentation, linting, autocompletion, and other features when writing embedded
 Go templating functions.
 
