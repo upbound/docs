@@ -10,10 +10,10 @@ Go templating functions can make use of all built-in Go templating features and
 anything supported by Crossplane's
 [function-go-templating](https://github.com/crossplane-contrib/function-go-templating?tab=readme-ov-file#function-go-templating).
 
-Templates can be written in multiple files with an arbitrary directory
-structure, as long as all files have the `.gotmpl` file extension. Templates
-will be read in lexical order and concatenated with YAML separators (`---`)
-between them.
+You can organize templates into multiple files with an arbitrary directory
+structure, as long as all files have the `.gotmpl` file extension. Templates are
+read in lexical order and concatenated with YAML separators (`---`) between
+them.
 
 ## Prerequisites
 
@@ -69,11 +69,14 @@ If the composite resource's `spec.versioning` field is `true`, the function
 enables versioning by composing a bucket versioning configuration. Like the ACL,
 the versioning configuration references the bucket by name.
 
-Note that we place Go templating flow control (`if` statements, loops, variable
-assignments, etc.) in YAML comments. This is not strictly necessary, but makes
-the YAML editor extension work better.
+As a best practice, place any Go templating flow control (`if` statements,
+loops, variable assignments, etc.) in YAML comments, as demonstrated
+below. While not required, this avoids confusing the YAML language server with
+non-YAML syntax, leading to a better editor experience.
 
+<!-- vale gitlab.Substitutions = OFF -->
 ## 00-prelude.yaml.gotmpl
+<!-- vale gitlab.Substitutions = ON -->
 
 This file contains generated boilerplate to place the observed composite
 resource and its parameters in Go templating variables, for use by subsequent
@@ -84,11 +87,12 @@ templates.
 #{{ $params := $xr.spec.parameters }}
 ```
 
+<!-- vale gitlab.Substitutions = OFF -->
 ## 01-bucket.yaml.gotmpl
+<!-- vale gitlab.Substitutions = ON -->
 
-This file creates the `Bucket` MR, then checks whether its external name has
-been set (i.e., it has been processed by Crossplane) and places the external
-name in a Go templating variable if available.
+This file creates the `Bucket` MR. It then checks whether Crossplane has
+assigned an external name for the bucket and places the name in a variable.
 
 <!-- TODO This should be yaml, but markdown barfs on it. -->
 
@@ -118,7 +122,9 @@ spec:
 #{{ end }}
 ```
 
+<!-- vale gitlab.Substitutions = OFF -->
 ## 02-acl.yaml.gotmpl
+<!-- vale gitlab.Substitutions = ON -->
 
 This file creates the `BucketACL` MR. Since this MR requires the bucket's
 external name, the template produces the MR only when the external name is
@@ -144,7 +150,9 @@ spec:
 #{{ end }}
 ```
 
+<!-- vale gitlab.Substitutions = OFF -->
 ## 03-versioning.yaml.gotmpl
+<!-- vale gitlab.Substitutions = ON -->
 
 This file creates the `BucketVersioning` MR when the XR has versioning
 enabled. Like the `BucketACL`, this MR requires the bucket's external name, so

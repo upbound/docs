@@ -27,8 +27,8 @@ requests and values rely on three pieces of information:
 
 Each composition pipeline provides this information as _inputs_ into the function.
 
-These are available to Go templates in the following template inputs, which can
-be accessed directly or with helper functions:
+Function inputs are available to Go templates in the following template inputs,
+which templates can access directly or with helper functions:
 
 * Observed state: `.observed`
   * The `getCompositeResource` helper function fetches the observed composite resource.
@@ -38,11 +38,11 @@ be accessed directly or with helper functions:
 
 ## Outputs
 
-Resources defined in the template will be added to the pipeline's desired
-resources. Use the `gotemplating.fn.crossplane.io/composition-resource-name`
-annotation to define unique names for each resource; this allows you to update a
+To add resources to the pipeline's desired composed resources, define them in
+the template. Use the `gotemplating.fn.crossplane.io/composition-resource-name`
+annotation to define unique names for each resource. This allows you to update a
 resource rather than create a new one on subsequent functions runs. The
-annotation can be set with the `setResourceNameAnnotation` helper function:
+`setResourceNameAnnotation` helper function will set this annotation:
 
 ```yaml
 # code: language=yaml

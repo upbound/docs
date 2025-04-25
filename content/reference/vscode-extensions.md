@@ -462,7 +462,7 @@ subnet := &v1beta1.Subnet{
 {{</ editCode >}}
 <!-- /Go -->
 <!-- Go Templating -->
-Navigating to references is not supported in Go Templating files.
+Navigating to references isn't supported in Go Templating files.
 <!-- /Go Templating -->
 
 {{</ content-selector >}}

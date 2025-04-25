@@ -398,10 +398,10 @@ For this example, you need the YAML Visual Studio Code extension and optionally
 the Modelines extension. Refer to the [Visual Studio Code Extensions
 documentation]({{<ref "vscode-extensions.md">}}) to learn how to install them.
 
-Go templating functions are written as a set of Go templates that produce
-YAML. The resulting YAML may contain desired composed resources that Crossplane
-will create, or updates for Crossplane to apply to the composte resource's
-status. See the documentation for Crossplane's
+A Go templating function is a set of Go templates that produce YAML when
+executed. The resulting YAML may contain desired composed resources for
+Crossplane to create, or updates for Crossplane to apply to the composite
+resource's status. See the documentation for Crossplane's
 [function-go-templating](https://github.com/crossplane-contrib/function-go-templating?tab=readme-ov-file#function-go-templating)
 for full details on the features available.
 
@@ -423,15 +423,16 @@ spec:
 ```
 
 The generated boilerplate code in `00-prelude.yaml.gotmpl` has already loaded
-the observed composite resource into the `$xr` Go templating variable. Template
-files are executed in lexical order, so subseqent templates (including
-`01-compose.yaml.gotmpl`) can use `$xr` to access the observed XR. In this case,
-we copy the region from the XR into the `Bucket` managed resource.
+the observed composite resource into the `$xr` Go templating variable. The
+function runtime executes template files in lexical order, so subsequent
+templates (including `01-compose.yaml.gotmpl`) can use `$xr` to access the
+observed XR. In this case, the template copies the region from the XR into the
+`Bucket` managed resource.
 
 Use the `setResourceNameAnnotation` Go templating function to set a resource
-name on each desired composed resource. This will cause Crossplane to generate
-an appropriate name, and allows you to update the same resource on subsequent
-function invocations.
+name on each desired composed resource. Crossplane will generate an appropriate
+name, allowing you to update the same resource on subsequent function
+invocations.
 
 You can also update the status of the desired XR by including it in your
 template:

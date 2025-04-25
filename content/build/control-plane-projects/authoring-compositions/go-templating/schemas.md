@@ -5,10 +5,10 @@ weight: 30
 
 Upbound Official Providers and some other packages include [JSON
 Schemas](https://json-schema.org/) for their resources, plus a generated
-"meta-schema" that references all the individual schemas. These schemas can be
-used by YAML editor extensions to enable in-line documentation, linting,
-autocompletion, and other features when working with Crossplane resources in
-embedded Go templating functions.
+"meta-schema" that references all the individual schemas. The YAML language
+server (via editor extensions) uses these schemas to enable in-line
+documentation, linting, autocompletion, and other features when writing embedded
+Go templating functions.
 
 ## Make schemas available to a function
 
@@ -29,10 +29,9 @@ up project build
 
 ## Use schemas in a Go templating file
 
-The YAML language server used by Visual Studio Code and other editors can be
-configured to use a particular schema for the resources in the file by including
-a special comment at the top of the file. This comment indicates the location of
-the schema file built by `up` based on all the schemas available in the project:
+The YAML language server reads a special comment at the top of the file to
+determine the file's schema. This comment indicates the location of the schema
+file built by `up` based on all the schemas available in the project:
 
 ```text
 # yaml-language-server: $schema=../../.up/json/models/index.schema.json
