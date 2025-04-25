@@ -74,9 +74,9 @@ loops, variable assignments, etc.) in YAML comments, as demonstrated
 below. While not required, this avoids confusing the YAML language server with
 non-YAML syntax, leading to a better editor experience.
 
-<!-- vale gitlab.Substitutions = OFF -->
+<!-- vale gitlab.Substitutions = NO -->
 ## 00-prelude.yaml.gotmpl
-<!-- vale gitlab.Substitutions = ON -->
+<!-- vale gitlab.Substitutions = YES -->
 
 This file contains generated boilerplate to place the observed composite
 resource and its parameters in Go templating variables, for use by subsequent
@@ -87,9 +87,9 @@ templates.
 #{{ $params := $xr.spec.parameters }}
 ```
 
-<!-- vale gitlab.Substitutions = OFF -->
+<!-- vale gitlab.Substitutions = NO -->
 ## 01-bucket.yaml.gotmpl
-<!-- vale gitlab.Substitutions = ON -->
+<!-- vale gitlab.Substitutions = YES -->
 
 This file creates the `Bucket` MR. It then checks whether Crossplane has
 assigned an external name for the bucket and places the name in a variable.
@@ -122,9 +122,9 @@ spec:
 #{{ end }}
 ```
 
-<!-- vale gitlab.Substitutions = OFF -->
+<!-- vale gitlab.Substitutions = NO -->
 ## 02-acl.yaml.gotmpl
-<!-- vale gitlab.Substitutions = ON -->
+<!-- vale gitlab.Substitutions = YES -->
 
 This file creates the `BucketACL` MR. Since this MR requires the bucket's
 external name, the template produces the MR only when the external name is
@@ -150,9 +150,9 @@ spec:
 #{{ end }}
 ```
 
-<!-- vale gitlab.Substitutions = OFF -->
+<!-- vale gitlab.Substitutions = NO -->
 ## 03-versioning.yaml.gotmpl
-<!-- vale gitlab.Substitutions = ON -->
+<!-- vale gitlab.Substitutions = YES -->
 
 This file creates the `BucketVersioning` MR when the XR has versioning
 enabled. Like the `BucketACL`, this MR requires the bucket's external name, so
