@@ -94,14 +94,14 @@ When you initialize a project, the default project directory structure is:
 │   ├── databaseFunction/
 │   │   └── main.py
 ├── tests/ # Define test suites for your API
-│   ├── bucketFunction/
+│   ├── e2etest-SuperBucket/
 │   │   └── main.k
-│   ├── databaseFunction/
+│   ├── test-SuperBucket/
 │   │   └── main.py
 ├── examples/ # Define example manifests for your API
-│   ├── e2etest-SuperBucket/
+│   ├── SuperBucket/
 │   │   └── example.yaml
-│   ├── test-SuperBucket/
+│   ├── SuperDatabase/
 │   │   └── example.yaml
 └── _output/ # "up project build" places the OCI image output here.
 ```
