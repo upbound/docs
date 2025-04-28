@@ -59,12 +59,11 @@ objects. Convert them to model types to take advantage of type checking,
 linting, and autocompletion:
 
 {{<hint "important">}}
-When a function is the first function in a composition pipeline, there is no
-prior `req.observed.composite.resource`. Please check its existence to avoid a
-panic.
 
-Example
-```
+If a function is positioned first in a composition pipeline, `req.observed.composite.resource` doesn't exist yet. Always verify this property exists before attempting to access it to prevent panic errors.
+
+**Example**:
+```python
     if "composite" in req.desired:
         if "resource" in req.desired.composite:
             if "status" in req.desired.composite.resource:
