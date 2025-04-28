@@ -9,7 +9,22 @@ Find below the release notes for all released versions of the [up CLI]({{< ref "
 
 <!-- vale off -->
 
+## v0.39.0
 
+Released April 25, 2025
+
+### What's Changed
+
+- Added support for building functions using Go templating.
+- Dependencies in private Marketplace repositories can now be fetched without
+  the Upbound Docker credential helper configured.
+- Added support for testing project changes using Control Plane Simulations.
+- `up dep` commands now require fully-qualified package paths. This eliminates
+  ambiguity and avoids using `docker.io` as the default registry.
+- Added support for replacing the container images used as part of project
+  builds, so project tools can be used without access to xpkg.upbound.io and
+  images can be customized.
+- Bug fixes and UX improvements.
 
 ## v0.38.4
 

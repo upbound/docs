@@ -18,7 +18,7 @@ Official Providers are commercially licensed builds of Crossplane providers. The
 
 Upbound publishes and maintains Official Providers. Some enterprise-grade advantages of Official Providers are:
 
-* Multi-language [resource schemas]({{<ref "core-concepts" >}}) (KCL, Python, and more on the way) that improve the Crossplane composition authoring experience.
+* Multi-language [resource schemas]({{<ref "core-concepts" >}}) (KCL, Python, and more) that improve the Crossplane composition authoring experience.
 * Backporting of fixes supported during 12 months of mainstream support + 6 months additional access
 * An SBOM
 * [Signed by Upbound]({{<ref "signature-verification" >}})

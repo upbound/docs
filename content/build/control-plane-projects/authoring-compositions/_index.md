@@ -48,7 +48,7 @@ functions build, package, and manage deployment logic as part of your
 configuration. You can write functions in familiar programming languages rather
 than using the built-in patch-and-transform YAML workflow.
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 
 <!-- Python -->
 To generate a function based on your composition, run the following command:
@@ -85,8 +85,18 @@ This command generates an embedded Go function called `test-function` in a new
 directory, `functions/test-function`. The `up function generate` command also
 generates a Go module containing types you can use when authoring your function.
 <!-- /Go -->
+<!-- Go Templating -->
+To generate a function based on your composition, run the following command:
 
-{{< /content-selector >}}
+```shell
+up function generate --language=go-templating test-function apis/xbuckets/composition.yaml
+```
+
+This command generates an embedded Go Templating function called `test-function`
+and scaffolds it in a new directory in your project,
+`functions/test-function`. The `up function generate` command also creates
+schema models to help with your authoring experience.
+<!-- /Go Templating -->
 
 The Upbound CLI automatically updates your `apis/xbuckets/composition.yaml` file
 with your new function.
@@ -102,10 +112,13 @@ Your composition now contains new function references in the `pipeline` section.
       name: crossplane-contrib-function-auto-ready
     step: crossplane-contrib-function-auto-ready
 ```
+<!-- /Go Templating -->
+
+{{< /content-selector >}}
 
 ## Authoring the composition function
 
-{{< content-selector options="Python,KCL,Go" default="Python" >}}
+{{< content-selector options="Python,KCL,Go,Go Templating" default="Python" >}}
 
 <!-- Python -->
 
@@ -137,7 +150,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     # Update the function's desired composed resources to include the bucket.
     resource.update(rsp.desired.resources["bucket"], bucket)
 ```
-
 
 Use `import` statements to load Crossplane's Python SDK and Upbound's generated
 models into your function.
@@ -380,6 +392,66 @@ errors, and more.
 For more Go best practices, please refer to the [documentation]({{<ref "go/">}}).
 
 <!-- /Go -->
+<!-- Go Templating -->
+
+For this example, you need the YAML Visual Studio Code extension and optionally
+the Modelines extension. Refer to the [Visual Studio Code Extensions
+documentation]({{<ref "vscode-extensions.md">}}) to learn how to install them.
+
+A Go templating function is a set of Go templates that produce YAML when
+executed. The resulting YAML may contain desired composed resources for
+Crossplane to create, or updates for Crossplane to apply to the composite
+resource's status. See the documentation for Crossplane's
+[function-go-templating](https://github.com/crossplane-contrib/function-go-templating?tab=readme-ov-file#function-go-templating)
+for full details on the features available.
+
+Open the `01-compose.yaml.gotmpl` file in Visual Studio Code.
+
+```yaml
+# code: language=yaml
+# yaml-language-server: $schema=../../.up/json/models/index.schema.json
+
+---
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  annotations:
+    {{ setResourceNameAnnotation "bucket" }}
+spec:
+  forProvider:
+    region: "{{ $xr.spec.parameters.region }}"
+```
+
+The generated boilerplate code in `00-prelude.yaml.gotmpl` has already loaded
+the observed composite resource into the `$xr` Go templating variable. The
+function runtime executes template files in lexical order, so subsequent
+templates (including `01-compose.yaml.gotmpl`) can use `$xr` to access the
+observed XR. In this case, the template copies the region from the XR into the
+`Bucket` managed resource.
+
+Use the `setResourceNameAnnotation` Go templating function to set a resource
+name on each desired composed resource. Crossplane will generate an appropriate
+name, allowing you to update the same resource on subsequent function
+invocations.
+
+You can also update the status of the desired XR by including it in your
+template:
+
+```yaml
+---
+apiVersion: devexdemo.upbound.io/v1alpha1
+kind: XBucket
+status:
+  widgets: 42
+```
+
+With the Visual Studio Code YAML extension you get autocompletion, linting, type
+errors, and more.
+
+For more Go templating best practices, please refer to the
+[documentation]({{<ref "go-templating/">}}).
+
+<!-- /Go Templating -->
 {{< /content-selector >}}
 
 <!-- vale gitlab.FutureTense = NO -->
