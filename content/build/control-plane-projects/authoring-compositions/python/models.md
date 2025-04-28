@@ -58,6 +58,20 @@ Crossplane passes resources to your function as generic, Python dictionary-like
 objects. Convert them to model types to take advantage of type checking,
 linting, and autocompletion:
 
+{{<hint "important">}}
+
+If a function is first in a composition pipeline, `req.observed.composite.resource` doesn't exist yet. Always verify this property exists before attempting to access it to prevent panic errors.
+
+**Example**:
+```python
+    if "composite" in req.desired:
+        if "resource" in req.desired.composite:
+            if "status" in req.desired.composite.resource:
+                status_xr|=req.desired.composite.resource["status"]
+    resource.update(rsp.desired.composite, status_xr)
+```
+{{</hint>}}
+
 ```python
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
