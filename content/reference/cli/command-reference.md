@@ -1287,6 +1287,13 @@ All `up repository` commands support the following options:
 Create a repository with the given name
 `up repository create <name>`.
 
+{{< table "table table-sm table-striped cli-ref">}}
+| Short flag | Long flag   | Description                                                    |
+| ---------- | ----------- | -------------------------------------------------------------- |
+|            | `--publish` | Sets the Marketplace publishing policy of the new repository.  |
+|            | `--private` | Sets the visibility of the repository. Set `=false` for public.|
+{{< /table >}}
+
 **Examples**
 
 * Create a repository called `my-repo`
@@ -1294,6 +1301,43 @@ Create a repository with the given name
 ```shell {copy-lines="1"}
 up repo create my-repo
 acmeco/my-repo created
+```
+
+### repository update
+
+Update a repository with the given name, visibility, and publishing setting for the Marketplace.
+`up repository update <name> --private <BOOL> --publish <BOOL>`
+
+{{< table "table table-sm table-striped cli-ref">}}
+
+| Short flag | Long flag   | Description                                                    |
+| ---------- | ----------- | -------------------------------------------------------------- |
+|            | `--force`   | Force the update of repository.                                |
+|            | `--publish` | Creates or deletes the Marketplace listing for the repository. |
+|            | `--private` | Sets the visibility of the repository. Set `=false` for public.|
+
+{{< /table >}}
+
+{{<hint "warning" >}}
+Updating a repository is a full replacement operation requiring the user to specify full intent.
+
+Changing the visibility of the repository will inherently affect authentication. For example, updating a repository
+from public to private will now require clients to provide a package pull secret.
+
+Similarly, removing a published Marketplace listing will delete page documents and potentially break bookmarked web pages.
+
+To bypass the confirmation prompt (e.g. for automation), pass the `--force` flag.
+{{< /hint >}}
+
+**Examples:**
+
+* Update a public repository named `my-repo` and publish it to the Marketplace
+
+```shell {copy-lines="1"}
+up repo update my-repo --private=false --publish
+Updating a repository may delete Marketplace listings
+or force clients to require authentication. Continue? [y/n]: y
+acmeco/my-repo updated
 ```
 
 ### repository delete
@@ -2286,7 +2330,7 @@ Get the composite resources within all control plane groups.
 
 ### up alpha xpkg
 
-**Description:** Interact with UXP packages.
+**Description:** Interact with Crossplane packages.
 
 ---
 
@@ -2334,80 +2378,6 @@ Get the composite resources within all control plane groups.
 
 ---
 
-#### up alpha xpkg build
-
-**Description:** Build a package, by default from the current directory.
-
-**Options:**
-
-{{< table "table table-sm table-striped">}}
-| Long flag     | Short flag | Description                                                                                                                                    | Default Value |
-| ------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| name          |            | [DEPRECATED: use --output] Name of the package to be built. Uses name in crossplane.yaml if not specified. Does not correspond to package tag. |               |
-| output        | o          | Path for package output.                                                                                                                       |               |
-| controller    |            | Controller image used as base for package.                                                                                                     |               |
-| package-root  | f          | Path to package directory.                                                                                                                     | .             |
-| examples-root | e          | Path to package examples directory.                                                                                                            | ./examples    |
-| auth-ext      | a          | Path to an authentication extension file.                                                                                                      | auth.yaml     |
-| ignore        |            | Paths, specified relative to --package-root, to exclude from the package.                                                                      |               |
-{{< /table >}}
-
----
-
-#### up alpha xpkg dep
-
-**Description:** Manage package dependencies in the filesystem and populate the cache, e.g. used by the Crossplane Language Server.
-
-**Options:**
-
-{{< table "table table-sm table-striped">}}
-| Long flag   | Short flag | Description                                | Default Value |
-| ----------- | ---------- | ------------------------------------------ | ------------- |
-| cache-dir   | d          | Directory used for caching package images. | ~/.up/cache/  |
-| clean-cache | c          | Clean dep cache.                           |               |
-{{< /table >}}
-
----
-
-#### up alpha xpkg init
-
-**Description:** Initialize a package, by default in the current directory.
-
-**Options:**
-
-{{< table "table table-sm table-striped">}}
-| Long flag    | Short flag | Description                             | Default Value |
-| ------------ | ---------- | --------------------------------------- | ------------- |
-| package-root | p          | Path to directory to write new package. | .             |
-| type         | t          | Type of package to be initialized.      | configuration |
-{{< /table >}}
-
----
-
-#### up alpha xpkg push
-
-**Description:** Push a package.
-
-**Options:**
-
-{{< table "table table-sm table-striped">}}
-| Long flag                  | Short flag | Description                                                                                                          | Default Value      |
-| -------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| package                    | f          | Path to packages. If not specified and only one package exists in current directory it will be used.                 |                    |
-| create                     |            | Create repository on push if it does not exist.                                                                      |                    |
-| domain                     |            | Root Upbound domain.                                                                                                 | https://upbound.io |
-| profile                    |            | Profile used to execute command.                                                                                     |                    |
-| account                    | a          | Account used to execute command.                                                                                     |                    |
-| insecure-skip-tls-verify   |            | [INSECURE] Skip verifying TLS certificates.                                                                          |                    |
-| debug                      | d          | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |                    |
-| override-api-endpoint      |            | Overrides the default API endpoint.                                                                                  |                    |
-| override-auth-endpoint     |            | Overrides the default auth endpoint.                                                                                 |                    |
-| override-proxy-endpoint    |            | Overrides the default proxy endpoint.                                                                                |                    |
-| override-registry-endpoint |            | Overrides the default registry endpoint.                                                                             |                    |
-{{< /table >}}
-
----
-
 #### up alpha xpkg xp-extract
 
 **Description:** Extract package contents into a Crossplane cache compatible format. Fetches from a remote registry by default.
@@ -2429,6 +2399,43 @@ Get the composite resources within all control plane groups.
 | `--override-auth-endpoint`     |            | Overrides the default auth endpoint.                                                                                                                |                    |
 | `--override-proxy-endpoint`    |            | Overrides the default proxy endpoint.                                                                                                               |                    |
 | `--override-registry-endpoint` |            | Overrides the default registry endpoint.                                                                                                            |                    |
+{{< /table >}}
+
+---
+
+#### up alpha xpkg append
+
+**Description:** Append additional files to an xpkg, such as images, documentation and release notes.
+
+**Usage:** `up alpha xpkg append <ref> [options]`
+
+**Examples:** To add all files from a local directory named "assets" to a specific ref in acmeco/my-repo
+
+`up alpha xpkg-append --extensions-root=./assets xpkg.upbound.io/acmeco/my-repo@sha256:<digest>`
+
+{{<hint "important" >}}
+This command appends the additional package content under a new [index manifest](https://github.com/opencontainers/image-spec/blob/main/image-index.md).
+
+The interpretation of the manifest may vary based on the consumer, but the Marketplace has specific conventions:
+
+1. The `extensions-root` directory must be a directory of directories, each of which represents a separate layer. Top-level files are ignored.
+2. The layers in the manifest are automatically annotated with the name of the subdirectory in `extensions-root`.
+3. The Marketplace will interpret the following annotations:
+    * `"io.crossplane.xpkg": "docs"`
+    * `"io.crossplane.xpkg": "icons"`
+    * `"io.crossplane.xpkg": "release-notes"`
+    * `"io.crossplane.xpkg": "sbom"`
+{{< /hint >}}
+
+**Options:**
+
+{{< table "table table-sm table-striped">}}
+
+| Long flag            | Short flag | Description                                                                           | Default Value      |
+| ---------------------| ---------- | ------------------------------------------------------------------------------------- | ------------------ |
+| `--destination`      |            | Optional remote OCI reference to write to. If not set, the xpkg is modified in-place. |                    |
+| `--extensions-root`  |            | Path to a local directory of additional files to append to the xpkg.                  | ./extensions       |
+
 {{< /table >}}
 
 ---
