@@ -60,7 +60,7 @@ linting, and autocompletion:
 
 {{<hint "important">}}
 
-If a function is positioned first in a composition pipeline, `req.observed.composite.resource` doesn't exist yet. Always verify this property exists before attempting to access it to prevent panic errors.
+If a function is first in a composition pipeline, `req.observed.composite.resource` doesn't exist yet. Always verify this property exists before attempting to access it to prevent panic errors.
 
 **Example**:
 ```python
