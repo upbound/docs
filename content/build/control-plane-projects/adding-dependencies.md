@@ -155,6 +155,83 @@ the [up dependency clean-cache]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta) update CLI ref link --->
 
+## Manage dependency versions in disconnected environments
+
+### Prerequisites
+
+* The `up` CLI `v0.39` or higher [installed](https://docs.upbound.io/reference/cli/)
+
+When using projects in disconnected environments (e.g., air-gapped) or
+with private container registries (e.g., AWS ECR, Azure ACR, Google GCR),
+dependencies often reference packages hosted in upbounds public registries like
+`xpkg.upbound.io`.
+
+Previously, even if you mirrored a dependency (e.g., provider-aws-s3), its
+transitive dependencies (e.g, family-provider-aws) would still point to the
+upbounds public registry. With the imageConfig functionality in your
+`upbound.yaml`, you can now override image prefixes during dependency
+resolution:
+
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: platform-api
+spec:
+  dependsOn:
+  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  imageConfig:
+  - matchImages:
+    - prefix: xpkg.upbound.io
+      type: Prefix
+    rewriteImage:
+      prefix: 123456789101.dkr.ecr.eu-central-1.amazonaws.com
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+    This is where you can add a readme for your project.
+  repository: 123456789101.dkr.ecr.eu-central-1.amazonaws.com/upbound/platform-api
+  source: github.com/upbound/project-template
+```
+
+This configuration tells the Upbound CLI:
+1. Match any dependency image starting with `xpkg.upbound.io`
+1. Rewrite it to your private registry `123456789101.dkr.ecr.eu-central-1.amazonaws.com`
+
+When you run [up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.21.1]({{< ref "reference/cli/command-reference" >}})
+
+And `provider-aws-s3` depends on `xpkg.upbound.io/upbound/family-provider-aws`, both will now be rewritten to your private ECR registry according to your `imageConfig`.
+
+The updated `upbound.yaml` will retain the original registry information under `spec.dependsOn` due to how `spec.pipeline[].functionRef.name` are implemented within crossplane compositions.
+
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: platform-api
+spec:
+  dependsOn:
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
+    version: v1.21.1
+  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  imageConfig:
+  - matchImages:
+    - prefix: xpkg.upbound.io
+      type: Prefix
+    rewriteImage:
+      prefix: 123456789101.dkr.ecr.eu-central-1.amazonaws.com
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+    This is where you can add a readme for your project.
+  repository: 123456789101.dkr.ecr.eu-central-1.amazonaws.com/upbound/platform-api
+  source: github.com/upbound/project-template
+```
+
 ## Next steps
 
 After adding dependencies to your control plane projects, learn how to create an
