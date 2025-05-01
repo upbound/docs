@@ -69,27 +69,27 @@ kind: Provider
 metadata:
   name: crossplane-contrib-provider-family-aws
 spec:
-  package: ghcr.io/crossplane-contrib/provider-family-aws:v1.20.1
+  package: xpkg.crossplane.io/crossplane-contrib/provider-family-aws:v1.21.1
   revisionActivationPolicy: Manual
 ```
 
 Doing the above puts your control plane into the following state:
 ```yaml
-NAME                                     INSTALLED   HEALTHY   PACKAGE                                                  AGE
-crossplane-contrib-provider-family-aws   False       True      ghcr.io/crossplane-contrib/provider-family-aws:v1.20.1   3s
-provider-aws-s3                          True        True      xpkg.upbound.io/upbound/provider-aws-s3:v1.20.1          50s
-upbound-provider-family-aws              True        True      xpkg.upbound.io/upbound/provider-family-aws:v1.20.1      46s
+NAME                                     INSTALLED   HEALTHY   PACKAGE                                                             AGE
+crossplane-contrib-provider-family-aws   False       True      xpkg.crossplane.io/crossplane-contrib/provider-family-aws:v1.21.1   3s
+provider-aws-s3                          True        True      xpkg.upbound.io/upbound/provider-aws-s3:v1.21.1                     50s
+upbound-provider-family-aws              True        True      xpkg.upbound.io/upbound/provider-family-aws:v1.21.1                 46s
 ```
 
-2. Edit the `provider-aws-s3` package field to `ghcr.io/crossplane-contrib/provider-aws-s3:v1.20.1`.
+2. Edit the `provider-aws-s3` package field to `xpkg.crossplane.io/crossplane-contrib/provider-aws-s3:v1.21.1`.
 
 3. Delete the `upbound-provider-family-aws` provider.
 
 4. Edit the `crossplane-contrib-provider-family-aws` `revisionActivationPolicy` and set it to `Automatic`. This should then result in a successful migration:
 ```yaml
-NAME                                     INSTALLED   HEALTHY   PACKAGE                                                  AGE
-crossplane-contrib-provider-family-aws   True        True      ghcr.io/crossplane-contrib/provider-family-aws:v1.20.1   2m50s
-provider-aws-s3                          True        True      ghcr.io/crossplane-contrib/provider-aws-s3:v1.20.1       3m37s 
+NAME                                     INSTALLED   HEALTHY   PACKAGE                                                             AGE
+crossplane-contrib-provider-family-aws   True        True      xpkg.crossplane.io/crossplane-contrib/provider-family-aws:v1.21.1   2m50s
+provider-aws-s3                          True        True      xpkg.crossplane.io/crossplane-contrib/provider-aws-s3:v1.21.1       3m37s 
 ```
 
 {{</expand >}}
