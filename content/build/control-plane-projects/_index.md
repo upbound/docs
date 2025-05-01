@@ -10,7 +10,7 @@ aliases:
 <!-- vale gitlab.Substitutions = NO -->
 Control plane projects are source-level representations of your control plane. A
 control plane project is any folder that contains an `upbound.yaml` project
-file. 
+file.
 
 ## Create a new project
 
@@ -63,11 +63,16 @@ spec:
 
 The control plane project defines:
 
-- your platform API schemas, which you express as a collection of `CompositeResourceDefinitions (XRDs)`.
+- your platform API schemas, which you express as a collection of
+  `CompositeResourceDefinitions (XRDs)`.
 - the implementation of those schemas, defined as Crossplane `compositions`.
-- any dependencies your control plane has, such as on providers, composition functions, or configuration packages.
-- compositions functions, which are modules referenced by your compositions that define how to compose resources.
-- example manifests for your API, so you can conduct testing as part of your inner-loop development.
+- any dependencies your control plane has, such as on providers, functions, or
+  configuration packages.
+- compositions functions, which are modules referenced by your compositions that
+  define how to compose resources.
+- test suites for your API, so you can conduct testing as part of your
+  inner-loop development.
+- example manifests for your API.
 
 ## Project structure
 
@@ -87,6 +92,11 @@ When you initialize a project, the default project directory structure is:
 │   ├── bucketFunction/
 │   │   └── main.k
 │   ├── databaseFunction/
+│   │   └── main.py
+├── tests/ # Define test suites for your API
+│   ├── e2etest-SuperBucket/
+│   │   └── main.k
+│   ├── test-SuperBucket/
 │   │   └── main.py
 ├── examples/ # Define example manifests for your API
 │   ├── SuperBucket/

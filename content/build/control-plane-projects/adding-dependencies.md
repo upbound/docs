@@ -155,6 +155,82 @@ the [up dependency clean-cache]({{< ref
 "reference/cli/command-reference" >}}) command.
 <!--- TODO(tr0njavolta) update CLI ref link --->
 
+## Manage dependency versions in disconnected environments
+
+### Prerequisites
+
+* The `up` CLI `v0.39` or higher [installed](https://docs.upbound.io/reference/cli/)
+
+In disconnected environments or private container registries like AWS `ECR`, Azure
+`ACR`, or Google `GCR` dependencies use packages from Upbound's public registries
+like `xpkg.upbound.io`.
+
+<!-- vale Google.WordList = NO -->
+With the `imageConfig` functionality in your `upbound.yaml` project file you can override image
+prefixes during dependency resolution:
+<!-- vale Google.WordList = YES -->
+
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: platform-api
+spec:
+  dependsOn:
+  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  imageConfig:
+  - matchImages:
+    - prefix: xpkg.upbound.io
+      type: Prefix
+    rewriteImage:
+      prefix: 123456789101.dkr.ecr.eu-central-1.amazonaws.com
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+    This is where you can add a readme for your project.
+  repository: 123456789101.dkr.ecr.eu-central-1.amazonaws.com/upbound/platform-api
+  source: github.com/upbound/project-template
+```
+
+When you run [up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.21.1]({{< ref "reference/cli/command-reference" >}}), this `upbound.yaml` project file:
+1. Matches any dependency image starting with `xpkg.upbound.io`
+1. Rewrites the dependency to your private registry repository
+
+Because `provider-aws-s3` depends on `xpkg.upbound.io/family-provider-aws`,
+Upbound writes these packages to your private `ECR` registry as described in
+your `imageConfig`.
+
+When you run `up dependency add`, the `upbound.yaml` file retains the original
+registry under `spec.dependsOn`:
+
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: platform-api
+spec:
+  dependsOn:
+  - provider: xpkg.upbound.io/upbound/provider-aws-s3
+    version: v1.21.1
+  - function: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  imageConfig:
+  - matchImages:
+    - prefix: xpkg.upbound.io
+      type: Prefix
+    rewriteImage:
+      prefix: 123456789101.dkr.ecr.eu-central-1.amazonaws.com
+  description: This is where you can describe your project.
+  license: Apache-2.0
+  maintainer: Upbound User <user@example.com>
+  readme: |
+    This is where you can add a readme for your project.
+  repository: 123456789101.dkr.ecr.eu-central-1.amazonaws.com/upbound/platform-api
+  source: github.com/upbound/project-template
+```
+
 ## Next steps
 
 After adding dependencies to your control plane projects, learn how to create an
