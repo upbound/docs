@@ -13,7 +13,7 @@ Upbound allows organizations to configure single sign-on (SSO) to manage user ac
 
 ## Introduction
 
-Upbound offers SSO and Directory Sync in a customized wizard setup. You can configure SSO only or add Directory Sync after you enable SSO.
+Upbound offers SSO and Directory Sync in a customized wizard setup. You can configure SSO only or add Directory Sync after you enable SSO. The setup will require interactions with Upbound. The only information that you will need to provide is your Upbound organization name and top level domain.
 
 <!-- vale off -->
 ### Single sign-on
@@ -46,7 +46,7 @@ To enable SSO, you need:
 ## Configure your identity provider for single sign-on
 <!-- vale on -->
 
-After contacting the support team for SSO access, Upbound sends link to configure your IdP with Upbound. You can use the predefined workflows for your specific IdP or create a custom SAML or OIDC connection.
+After contacting the support team for SSO access, Upbound sends a link to configure your IdP with Upbound. You can use the predefined workflows for your specific IdP or create a custom SAML or OIDC connection.
 
 <!-- vale off -->
 ### Enable single sign-on
@@ -68,6 +68,10 @@ After you enable SSO, walk through the workflow in your provided link to enable 
 ### Finalize your changes
 
 After you enable SSO to your IdP and test the connection, contact Upbound support or your account representative to finalize the configuration. SSO will not be enabled until you contact Upbound to confirm the change.
+
+### Configure SCIM
+
+After Upbound enabled SSO, please contact [the Upbound support team](https://www.upbound.io/contact) to obtain a link for your SCIM setup. Then walk through the workflow in your provided link.
 <!-- vale on -->
 
 ## Considerations
