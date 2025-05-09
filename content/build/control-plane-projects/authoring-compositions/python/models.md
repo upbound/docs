@@ -95,8 +95,6 @@ from .model.io.upbound.aws.s3.bucket import v1beta1
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     bucket = v1beta1.Bucket(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="Bucket",
         spec=v1beta1.Spec(
             forProvider=v1beta1.ForProvider(
                 region="us-west-1",
@@ -208,8 +206,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
 
     desired_bucket = bucketv1beta1.Bucket(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="Bucket",
         spec=bucketv1beta1.Spec(
             forProvider=bucketv1beta1.ForProvider(
                 region=observed_xr.spec.region,  # Warning: Argument of type "str | None" cannot be assigned to parameter "region" of type "str"
@@ -240,8 +236,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
         region = observed_xr.spec.
 
     desired_bucket = bucketv1beta1.Bucket(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="Bucket",
         spec=bucketv1beta1.Spec(
             forProvider=bucketv1beta1.ForProvider(
                 region=observed_xr.spec.region or "us-west-2",  # Default to "us-west-2" if region is None.
@@ -267,8 +261,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
 
     desired_bucket = bucketv1beta1.Bucket(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="Bucket",
         from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
         metadata=metav1.ObjectMeta(
             name=observed_xr.metadata.name + "-bucket", # type: ignore  # The observed XR will always have a name.
