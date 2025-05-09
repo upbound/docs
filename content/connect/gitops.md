@@ -57,7 +57,7 @@ controller:
 
   initContainers:
     - name: up-plugin
-      image: xpkg.upbound.io/upbound/up-cli:v0.39.0-0.rc.0.102.g3f384b68
+      image: xpkg.upbound.io/upbound/up-cli:v0.39.0
       command: ["cp"]
       args:
         - /usr/local/bin/up
@@ -82,7 +82,7 @@ server:
 
   initContainers:
     - name: up-plugin
-      image: xpkg.upbound.io/upbound/up-cli:v0.39.0-0.rc.0.102.g3f384b68
+      image: xpkg.upbound.io/upbound/up-cli:v0.39.0
       command: ["cp"]
       args:
         - /usr/local/bin/up
