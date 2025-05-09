@@ -1,7 +1,7 @@
 ---
 title: Workload-identity for Billing
 weight: 1
-description: Configure GCP workload identityt for Spaces Billing
+description: Configure GCP workload identity for Spaces Billing
 ---
 
 Workload-identity authentication lets you use access policies to grant your

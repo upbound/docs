@@ -29,7 +29,7 @@ To set up a workload-identity, you'll need:
 The External Secrets Operator (ESO) component runs in each control plane's host
 namespace as `external-secrets-controller`. It synchronizes secrets from
 external APIs into Kubernetes secrets. Shared secrets allow you to manage
-credentials outside your Kuberentes cluster while making them available to your
+credentials outside your Kubernetes cluster while making them available to your
 application
 
 ## Configuration

@@ -58,7 +58,14 @@ gcloud container clusters update ${YOUR_CLUSTER_NAME} \
     --region=${YOUR_REGION}
 ```
 
-Next, create n IAM binding
+
+Next, create an IAM binding to grant the Kubernetes service account access to the Google service account:
+
+```bash
+gcloud iam service-accounts add-iam-policy-binding \
+    --role roles/iam.workloadIdentityUser \
+    --member "serviceAccount:PROJECT_ID.svc.id.goog[NAMESPACE/KSA_NAME]" \
+    GSA_NAME@PROJECT_ID.iam.gserviceaccount.com
 
 ### Service account impersonation
 

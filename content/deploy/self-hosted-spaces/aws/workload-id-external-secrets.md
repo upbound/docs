@@ -107,7 +107,7 @@ plane is below:
 Next, ensure your EKS cluster has an OIDC identity provider:
 
 ```shell
-eksctl utils associate-iam-oidc-provider --cluster ${YOUR_CLUSTER_NAME}--approve
+eksctl utils associate-iam-oidc-provider --cluster ${YOUR_CLUSTER_NAME} --approve
 ```
 
 #### Apply the IAM role
