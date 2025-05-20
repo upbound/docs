@@ -63,6 +63,17 @@ up login --organization=$@<yourUpboundOrg>$@
 ```
 {{< /editCode >}}
 
+### Connect to Upbound Space
+
+Connect your CLI to the Upbound Space we will be using for this exercise.
+
+{{< editCode >}}
+```ini {copy-lines="all"}
+up ctx $@<yourUpboundOrg>$@/upbound-gcp-us-central-1/default
+```
+{{< /editCode >}}
+
+
 ## Create a new project
 
 Upbound uses project directories containing configuration files to deploy
