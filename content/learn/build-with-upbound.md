@@ -5,7 +5,6 @@ of your configurations"
 weight: 1
 aliases:
     - "/getstarted-devex/create-controllers"
-    - "/quickstart"
     - "/control-plane-project"
 ---
 
