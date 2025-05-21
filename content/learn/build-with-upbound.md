@@ -63,20 +63,30 @@ up login --organization=$@<yourUpboundOrg>$@
 ```
 {{< /editCode >}}
 
+### Connect to Upbound Space
+
+Connect your CLI to the Upbound Space we will be using for this exercise.
+
+{{< editCode >}}
+```ini {copy-lines="all"}
+up ctx $@<yourUpboundOrg>$@/upbound-gcp-us-central-1/default
+```
+{{< /editCode >}}
+
+
 ## Create a new project
 
 Upbound uses project directories containing configuration files to deploy
 infrastructure. 
 
-Clone the demo repository:
+Clone the demo repository and navigate to the project directory:
 
 {{< tabs >}}
 
 {{< tab "AWS" >}}
 
 ```shell
-git clone https://github.com/upbound/uppound-project-aws && cd
-uppound-project-aws
+git clone https://github.com/upbound/uppound-project-aws && cd uppound-project-aws
 ```
 
 {{</ tab >}}
@@ -84,8 +94,7 @@ uppound-project-aws
 {{< tab "Azure" >}}
 
 ```shell
-git clone https://github.com/upbound/uppound-project-azure && cd
-uppound-project-azure
+git clone https://github.com/upbound/uppound-project-az && cd uppound-project-az
 
 {{</ tab >}}
 
@@ -93,8 +102,7 @@ uppound-project-azure
 
 
 ```shell
-git clone https://github.com/upbound/uppound-project-gcp && cd
-uppound-project-gcp
+git clone https://github.com/upbound/uppound-project-gcp && cd uppound-project-gcp
 
 {{</ tab >}}
 
