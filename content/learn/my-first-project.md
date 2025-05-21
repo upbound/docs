@@ -1842,7 +1842,7 @@ Your package is now pushed to the Upbound Marketplace.
 ## Try it out
 
 With your control plane project set up, go to Upbound's [Consumer Portal
-guide]({{< ref "./consumer-portal" >}}) to create resources in your cloud
+guide]({{< ref "consume/consumer-portal" >}}) to create resources in your cloud
 service provider.
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale Microsoft.HeadingAcronyms = YES -->
