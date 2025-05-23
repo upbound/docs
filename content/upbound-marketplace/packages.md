@@ -149,7 +149,7 @@ This is an alpha feature, and requires `up` CLI version `v0.39.0` or later. See 
 
 ### Troubleshooting
 
-{{< expand "A package is in the repository to but not in the Marketplace. Can users pull the package?" >}}
+{{< expand "A package is in the repository but not in the Marketplace. Can users pull the package?" >}}
 Published packages don't need to be visible to pull. Verify pulling a package with any OCI client like [docker](https://docs.docker.com/get-docker/) or [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md).
 {{</expand >}}
 
