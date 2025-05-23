@@ -2409,9 +2409,9 @@ Get the composite resources within all control plane groups.
 
 **Usage:** `up alpha xpkg append <ref> [options]`
 
-**Examples:** To add all files from a local directory named "assets" to a specific ref in acmeco/my-repo
+**Example:** To add custom files from a local directory named "assets" to your Marketplace image in acmeco/my-repo
 
-`up alpha xpkg-append --extensions-root=./assets xpkg.upbound.io/acmeco/my-repo@sha256:<digest>`
+`up alpha xpkg append --extensions-root=./assets xpkg.upbound.io/acmeco/my-repo@sha256:<digest>`
 
 {{<hint "important" >}}
 This command appends the additional package content under a new [index manifest](https://github.com/opencontainers/image-spec/blob/main/image-index.md).
@@ -2420,11 +2420,11 @@ The interpretation of the manifest may vary based on the consumer, but the Marke
 
 1. The `extensions-root` directory must be a directory of directories, each of which represents a separate layer. Top-level files are ignored.
 2. The layers in the manifest are automatically annotated with the name of the subdirectory in `extensions-root`.
-3. The Marketplace will interpret the following annotations:
-    * `"io.crossplane.xpkg": "docs"`
-    * `"io.crossplane.xpkg": "icons"`
-    * `"io.crossplane.xpkg": "release-notes"`
-    * `"io.crossplane.xpkg": "sbom"`
+3. The Marketplace will only interpret the following directory and file names relative to `extensions-root`:
+    * `readme/readme.md`, annotated as `"io.crossplane.xpkg": "readme"`
+    * `icons/icon.svg`, annotated as `"io.crossplane.xpkg": "icons"`
+    * `release-notes/release_notes.md`, annotated as `"io.crossplane.xpkg": "release-notes"`
+    * `sbom/sbom.spdx.json`, annotated as `"io.crossplane.xpkg": "sbom"`
 {{< /hint >}}
 
 **Options:**
