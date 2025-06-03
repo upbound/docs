@@ -36,6 +36,8 @@ If your organization requires SSO due to compliance or security restrictions, ea
 Directory sync adds the benefit of automatically updating users in third-party applications when your internal directory changes. For example, when you add the user to a directory like Microsoft AD, you can user Directory Sync to create a new user in your Upbound account. Another benefit of Directory Sync is offboarding. Directory Sync allows you to mitigate security risks by automatically deleting users from your Upbound account as soon as you deactivate or remove them from your directory. Directory Sync provides increased security and automatic user management from a centralized location.
 
 If your organization wants to manage access through your Microsoft AD, Google Workspace, Okta, or other directory, you can configure Upbound to automatically sync user accounts.
+
+Directory Sync requires the [Business Critical](https://www.upbound.io/pricing) subscription tier.
 <!-- vale on -->
 
 ## Prerequisites
