@@ -128,7 +128,7 @@ helm delete -n upbound-system agent
 ```
 
 {{< hint "note" >}}
-Uninstalling the connect agent does not automatically remove the space from upbound console. The `dicsonnect` command from the previous step with `up`-cli will still need to be run manually.
+Uninstalling the connect agent does not automatically remove the space from upbound console. The `disconnect` command from the previous step with `up`-cli will still need to be run manually.
 {{< /hint >}}
 
 Clean up the robot token you created for this self-hosted Space:
