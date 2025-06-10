@@ -10,17 +10,6 @@ aliases:
     - all-spaces/secrets-management
 ---
 
-{{< hint "important" >}}
-This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a self-hosted Space, set `features.alpha.sharedSecrets.enabled=true` when installing the Space:
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  ...
-  --set "features.alpha.sharedSecrets.enabled=true" \
-```
-
-{{< /hint >}}
-
 Upbound's _Shared Secrets_ is a built in secrets management feature that
 provides an integrated way to manage secrets across your platform. It allows you
 to store sensitive data like passwords and certificates for your managed control
@@ -39,7 +28,7 @@ The Shared Secrets feature allows you to:
 * Synchronize secrets across groups of control planes while maintaining clear security boundaries
 * Manage secrets at scale programmatically while ensuring proper isolation and access control
 
-## Understanding the Architecture
+## Understanding the architecture
 
 The Shared Secrets feature uses a hierarchical approach to centrally manage
 secrets and effectively control their distribution.
@@ -67,20 +56,19 @@ Upbound Shared Secrets consists of two components:
 2. **SharedExternalSecret**: Specifies which secrets to synchronize and where
 
 
-<!-- vale Google.Headings = NO -->
-### Connect to an External Vault
-<!-- vale Google.Headings = YES -->
+{{< tabs >}}
+
+{{< tab "External Vault" >}}
 
 The `SharedSecretStore` component is the connection point to your external
 secret vaults. It provisions ClusterSecretStore resources into control planes
 within the group.
 
-<!-- vale Google.Headings = NO -->
-#### AWS Secrets Manager
-<!-- vale Google.Headings = YES -->
+{{< /tab >}}
 
-<!-- vale gitlab.FutureTense = NO -->
-In this example, you'll create a `SharedSecretStore` to connect to AWS
+{{< tab "AWS Secrets Manager" >}}
+
+In this example, you create a `SharedSecretStore` to connect to AWS
 Secrets Manager in `us-west-2`. Then apply access to all control planes labeled with
 `environment: production`, and make these secrets available in the `default` and
 `crossplane-system` namespaces.
@@ -90,38 +78,25 @@ You can configure access to AWS Secrets Manager using static credentials or
 workload identity.
 
 {{< hint "important" >}}
+
 While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
+
 {{< /hint >}}
 
+{{< tabs >}}
 
-##### Static credentials
+{{< tab "Static credentials" >}}
 
 1. Use the AWS CLI to create access credentials.
 
-
-2. Create your access credentials.
-{{< editCode >}}
-```ini
-# Create a text file with AWS credentials
-cat > aws-credentials.txt << EOF
-[default]
-aws_access_key_id = <YOUR_ACCESS_KEY_HERE>
-aws_secret_access_key = <YOUR_SECRET_ACCESS_KEY_HERE>
-EOF
-```
-{{< /editCode >}}
-
-3. Next,store the access credentials in a secret in the namespace you want to have access to the `SharedSecretStore`.
+2. Store the access credentials in a secret in the namespace you created the managed control planes. 
 {{< editCode >}}
 ```shell
-kubectl create secret \
-  generic aws-credentials \
-  -n default \
-  --from-file=creds=./aws-credentials.txt
+kubectl create secret generic aws-credentials -n default --from-literal=aws_access_key_id=<YOUR_ACCESS_KEY_HERE> --from-literal=aws_secret_access_key=<YOUR_SECRET_ACCESS_KEY_HERE>
 ```
 {{< /editCode >}}
 
-4. Create a `SharedSecretStore` custom resource file called `secretstore.yaml`.
+3. Create a `SharedSecretStore` custom resource file called `secretstore.yaml`.
    Paste the following configuration:
 {{< editCode >}}
 ```yaml
@@ -151,16 +126,18 @@ spec:
         secretRef:
           accessKeyIDSecretRef:
             name: aws-credentials
-            key: access-key-id
+            key: aws_access_key_id
           secretAccessKeySecretRef:
             name: aws-credentials
-            key: secret-access-key
+            key: aws_secret_access_key
 ```
 {{</ editCode >}}
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale Google.Headings = NO -->
-##### Workload Identity with IRSA
-<!-- vale Google.Headings = YES -->
+
+{{< /tab >}}
+
+{{< tab "Workload Identity with IRSA" >}}
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
 You can also use AWS IAM Roles for Service Accounts (IRSA) depending on your
@@ -210,7 +187,7 @@ up space upgrade ... \
 ```
 {{< /editCode >}}
 
-6. Create a SharedSecretStore and reference the SharedSecrets service account:
+6. Create a `SharedSecretStore` and reference the `SharedSecrets` service account:
 {{< editCode >}}
 ```ini {copy-lines="all"}
 apiVersion: spaces.upbound.io/v1alpha1
@@ -236,70 +213,28 @@ spec:
 ```
 {{< /editCode >}}
 
-When you create a `SharedSecretStore` the underlying mechanism:
+{{< /tab >}}
 
-1. Applies at the group level
-2. Determines which control planes should receive this configuration by the `controlPlaneSelector`
-3. Automatically creates a ClusterSecretStore inside each identified control plane
-4. Maintains a connection in each control plane with the ClusterSecretStore
-   credentials and configuration from the parent SharedSecretStore
+{{< /tabs >}}
 
-Upbound automatically generates a ClusterSecretStore in each matching control
-plane when you create a SharedSecretStore.
+{{< /tab >}}
 
-```yaml {copy-lines="none"}
-# Automatically created in each matching control plane
-apiVersion: external-secrets.io/v1beta1
-kind: ClusterSecretStore
-metadata:
-  name: aws-secrets  # Name matches the parent SharedSecretStore
-spec:
-  provider:
-   upboundspaces:
-      storeRef:
-        name: aws-secret
-```
-
-When you create the SharedSecretStore controller, it replaces the provider with
-a special provider called `upboundspaces`. This provider references the
-SharedSecretStore object in the Spaces API. This avoids copying the actual cloud
-credentials from Spaces to each control plane.
-
-This workflow allows you to configure the store connection only once at the
-group level and automatically propagates to each control plane. Individual control
-planes can use the store without exposure to the group-level configuration and
-updates all child ClusterSecretStores when updated.
-
-<!-- vale off -->
-#### Azure Key Vault
-<!-- vale on -->
+{{< tab "Azure Key Vault" >}}
 
 {{< hint "important" >}}
 While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
 {{< /hint >}}
 
-##### Static credentials
+{{< tabs >}}
+
+{{< tab "Static credentials" >}}
 
 1. Use the Azure CLI to create a service principal and authentication file.
-2. Create a service principal and save credentials in a file:
-{{< editCode >}}
-```json
-{
-  "appId": "myAppId",
-  "displayName": "myServicePrincipalName",
-  "password": "myServicePrincipalPassword",
-  "tenant": "myTentantId"
-}
-```
-{{< /editCode >}}
 
-3. Store the credentials as a Kubernetes secret:
+2. Store the credentials as a Kubernetes secret:
 {{< editCode >}}
 ```shell
-kubectl create secret \
-  generic azure-secret-sp \
-  -n default \
-  --from-file=creds=./azure-credentials.json
+kubectl create secret generic azure-secret-sp -n default --from-literal=appId=<YOUR_APP_ID_HERE> --from-literal=password=<YOUR_PASSWORD_HERE>
 ```
 {{< /editCode >}}
 
@@ -318,10 +253,10 @@ spec:
       authSecretRef:
         clientId:
           name: azure-secret-sp
-          key: ClientID
+          key: appId
         clientSecret:
           name: azure-secret-sp
-          key: ClientSecret
+          key: password
   controlPlaneSelector:
     names:
     - <control-plane-name>
@@ -330,15 +265,15 @@ spec:
     - default
 ```
 {{< /editCode >}}
-<!-- vale Google.Headings = NO -->
-##### Workload Identity
-<!-- vale Google.Headings = YES -->
+
+{{< /tab >}}
+
+{{< tab "Workload Identity" >}}
 
 You can also use Entra Workload Identity Federation to access Azure Key Vault
 without needing to manage secrets. 
 
 To use Entra Workload ID with AKS:
-
 
 1. Deploy the Spaces software into a [workload identity-enabled AKS cluster](https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster).
 2. Retrieve the OIDC issuer URL of the AKS cluster:
@@ -437,12 +372,15 @@ spec:
 ```
 {{< /editCode >}}
 
-<!-- vale off -->
+{{< /tab >}}
+
+{{< /tabs >}}
+
+{{< /tab >}}
 
 <!-- vale off -->
-#### Google Cloud Secret Manager
-<!-- vale on -->
 
+{{< tab "Google Cloud Secret Manager" >}}
 
 You can configure access to Google Cloud Secret Manager using static credentials or workload identity. Below are instructions for configuring either. See the [ESO provider API](https://external-secrets.io/latest/provider/google-secrets-manager/) for more information.
 
@@ -450,7 +388,9 @@ You can configure access to Google Cloud Secret Manager using static credentials
 While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
 {{< /hint >}}
 
-##### Static credentials
+{{< tabs >}}
+
+{{< tab "Static credentials" >}}
 
 1. Use the [GCP CLI](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) to create access credentials.
 2. Save the output in a file called `gcp-credentials.json`.
@@ -488,12 +428,12 @@ spec:
 {{< /editCode >}}
 
 {{< hint "tip" >}}
-The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection]({{<ref "#control-plane-selection" >}}) amd [namespace selection]({{<ref "#namespace-selection" >}}) to learn how to map into one or more namespaces of one or more control planes.
+The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection]({{<ref "#control-plane-selection" >}}) and [namespace selection]({{<ref "#namespace-selection" >}}) to learn how to map into one or more namespaces of one or more control planes.
 {{< /hint >}}
 
-<!-- vale Google.Headings = NO -->
-##### Workload identity with Service Accounts to IAM Roles
-<!-- vale Google.Headings = YES -->
+{{< /tab >}}
+
+{{< tab "Workload identity with Service Accounts to IAM Roles" >}}
 
 To configure, grant the `roles/iam.workloadIdentityUser` role to the Kubernetes
 service account in the control plane namespace to impersonate the IAM service
@@ -567,14 +507,162 @@ spec:
 {{< /editCode >}}
 
 {{< hint "tip" >}}
-The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection]({{<ref "#control-plane-selection" >}}) amd [namespace selection]({{<ref "#namespace-selection" >}}) to learn how to map into one or more namespaces of one or more control planes.
+The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection]({{<ref "#control-plane-selection" >}}) and [namespace selection]({{<ref "#namespace-selection" >}}) to learn how to map into one or more namespaces of one or more control planes.
 {{< /hint >}}
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+{{< /tab >}}
+
+{{< tab "Host Kubernetes Cluster" >}}
+
+You can distribute secrets from the host Kubernetes cluster to your control planes.
+
+1. Create a service account and its token from the host cluster in the namespace you have your control planes, in this example `default`:
+{{< editCode >}}
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ctp-secret-reader
+  namespace: default
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ctp-secret-reader-token
+  namespace: default
+  annotations:
+    kubernetes.io/service-account.name: ctp-secret-reader
+type: kubernetes.io/service-account-token
+```
+{{< /editCode >}}
+
+2. Create a `ClusterRole` resource with permissions to read secrets and creating `selfsubjectrulesreviews`:
+{{< editCode >}}
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: eso-store-role
+rules:
+- apiGroups: [""]
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - selfsubjectrulesreviews
+  verbs:
+  - create
+```
+{{< /editCode >}}
+
+3. Create a `RoleBinding` resource to bind the `ClusterRole` to the service account:
+{{< editCode >}}
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+   name: eso-store-role-binding
+   namespace: default
+roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: eso-store-role
+subjects:
+   - kind: ServiceAccount
+     name: ctp-secret-reader
+     namespace: default
+```
+{{< /editCode >}}
+
+4. Create a `SharedSecretStore` resource to reference the service account token and host cluster as server:
+{{< editCode >}}
+```yaml
+apiVersion: spaces.upbound.io/v1alpha1
+kind: SharedSecretStore
+metadata:
+  name: k8s-store
+spec:
+  controlPlaneSelector:
+    names:
+    - $@<control-plane-name>$@
+  namespaceSelector:
+    names:
+    - crossplane-system
+  provider:
+    kubernetes:
+      remoteNamespace: default
+      server:
+        caProvider:
+          type: ConfigMap
+          name: kube-root-ca.crt
+          namespace: default
+          key: ca.crt
+      auth:
+        token:
+          bearerToken:
+            name: ctp-secret-reader-token
+            key: token
+```
+{{< /editCode >}}
+
+{{< /tab >}}
+
+{{< /tabs >}}
+
+When you create a `SharedSecretStore` the underlying mechanism:
+
+1. Applies at the group level
+
+2. Determines which control planes should receive this configuration by the `controlPlaneSelector`
+
+3. Automatically creates a ClusterSecretStore inside each identified control plane
+
+4. Maintains a connection in each control plane with the ClusterSecretStore
+   credentials and configuration from the parent SharedSecretStore
+
+Upbound automatically generates a ClusterSecretStore in each matching control
+plane when you create a SharedSecretStore.
+
+{{< editCode >}}
+```yaml
+# Automatically created in each matching control plane
+apiVersion: external-secrets.io/v1beta1
+kind: ClusterSecretStore
+metadata:
+  name: aws-secrets  # Name matches the parent SharedSecretStore
+spec:
+  provider:
+   upboundspaces:
+      storeRef:
+        name: aws-secret
+```
+{{< /editCode >}}
+
+When you create the `SharedSecretStore` controller, it replaces the provider with
+a special provider called `upboundspaces`. This provider references the
+SharedSecretStore object in the Spaces API. This avoids copying the actual cloud
+credentials from Spaces to each control plane.
+
+This workflow allows you to configure the store connection only once at the
+group level and automatically propagates to each control plane. Individual control
+planes can use the store without exposure to the group-level configuration and
+updates all child ClusterSecretStores when updated.
 
 ### Manage your secret distribution
 
 After you create your SharedSecretStore, you can define which secrets to
 distribute using SharedExternalSecret:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedExternalSecret
@@ -587,7 +675,9 @@ spec:
     labelSelectors:
       - matchLabels:
           environment: production
-  
+  namespaceSelector:
+    names:
+      - crossplane-system
   externalSecretSpec:
     refreshInterval: 1h
     secretStoreRef:
@@ -605,6 +695,7 @@ spec:
         key: prod/database/credentials
         property: password
 ```
+{{< /editCode >}}
 
 This configuration:
 
@@ -619,6 +710,7 @@ control plane.
 
 The example below simulates the ClusterExternalSecret that Upbound creates:
 
+{{< editCode >}}
 ```yaml
 # Inside each matching control plane:
 apiVersion: external-secrets.io/v1beta1
@@ -636,6 +728,7 @@ spec:
       key: prod/database/credentials
       property: username
 ```
+{{< /editCode >}}
 
 The hierarchy in this configuration is:
 
@@ -652,6 +745,7 @@ To configure which control planes in a group you want to project a SecretStore i
 
 This example matches all control planes in the group that have `environment: production` as a label:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -663,9 +757,11 @@ spec:
       - matchLabels:
           environment: production
 ```
+{{< /editCode >}}
 
 You can use the more complex `matchExpressions` to match labels based on an expression. This example matches control planes that have label `environment: production` or `environment: staging`:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -677,9 +773,11 @@ spec:
       - matchExpressions:
         - { key: environment, operator: In, values: [production,staging] }
 ```
+{{< /editCode >}}
 
 You can also specify the names of control planes directly:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -692,7 +790,7 @@ spec:
     - controlplane-staging
     - controlplane-prod
 ```
-
+{{< /editCode >}}
 
 #### Namespace selection
 
@@ -700,6 +798,7 @@ To configure which namespaces **within each matched control plane** to project t
 
 **For all control planes matched by** `spec.controlPlaneSelector`, This example matches all namespaces in each selected control plane that have `team: team1` as a label:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -711,9 +810,11 @@ spec:
       - matchLabels:
           team: team1
 ```
+{{< /editCode >}}
 
 You can use the more complex `matchExpressions` to match labels based on an expression. This example matches namespaces that have label `team: team1` or `team: team2`:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -725,9 +826,11 @@ spec:
       - matchExpressions:
         - { key: team, operator: In, values: [team1,team2] }
 ```
+{{< /editCode >}}
 
 You can also specify the names of namespaces directly:
 
+{{< editCode >}}
 ```yaml
 apiVersion: spaces.upbound.io/v1alpha1
 kind: SharedSecretStore
@@ -739,6 +842,7 @@ spec:
     - team1-namespace
     - team2-namespace
 ```
+{{< /editCode >}}
 
 ## Configure secrets directly in a control plane
 
