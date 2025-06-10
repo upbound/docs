@@ -121,11 +121,15 @@ If the Space still exists, this command uninstalls the Connect agent and deletes
 
 #### With Helm
 
-To disconnect a self-hosted Space or a deleted self-hosted Space, run the following command:
+To uninstall the connect agent run the following command:
 
 ```bash
 helm delete -n upbound-system agent
 ```
+
+{{< hint "note" >}}
+Uninstalling the connect agent does not automatically remove the space from upbound console. The `dicsonnect` command from the previous step with `up`-cli will still need to be run manually.
+{{< /hint >}}
 
 Clean up the robot token you created for this self-hosted Space:
 
@@ -152,7 +156,11 @@ endpoint.
 
 {{< hint "important" >}}
 Add `connect.upbound.io`, `api.upbound.io`, and `auth.upbound.io` to your organization's list of
-allowed endpoints.
+allowed endpoints. If you are filtering outbound traffic from you network, please ensure to whitelist
+following ports as well:
+`connect.upbound.io`: 4222 (TLS over nats protocol)
+`auth.upbound.io`: JWKS for validating the JWTs
+`api.upbound.io`: Registering the space with Upbound
 {{</hint>}}
 
 The
