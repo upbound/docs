@@ -156,7 +156,7 @@ endpoint.
 
 {{< hint "important" >}}
 Add `connect.upbound.io`, `api.upbound.io`, and `auth.upbound.io` to your organization's list of
-allowed endpoints. If you are filtering outbound traffic from you network, please ensure to whitelist
+allowed endpoints. If you are filtering outbound traffic from your network, please ensure to whitelist
 following ports as well:
 `connect.upbound.io`: 4222 (TLS over nats protocol)
 `auth.upbound.io`: JWKS for validating the JWTs
