@@ -15,7 +15,7 @@ version_sort_key: "0001.0013.0001"
 - This release contains breaking changes related to the Universal Crossplane version support. The latest supported Crossplane version is now `1.20`, which means the oldest supported version is `1.18`. If you have control planes pinned to `1.17.x`, please update them before upgrading, otherwise they'll be set as degraded.
 - The ESO version used for SharedSecretStore feature is updated to `v0.16.2` and with this version bumps the `ExternalSecret`, `ClusterSecretStore` and all External Secrets provider versions to `v1`.
 - `controlPlanes.api`, `controlPlanes.controller` and `controlPlanes.syncer` parameter trees have been dropped from the Helm chart interface. The `controlPlanes.vcluster` parameter tree should be used instead to align with the latest vcluster version's combined pod architecture.
-- Control plane vCluster memory limits are now unset. Previously, memory limits were set and managed by the autoscaler, but sudden surges of CRDs could cause the vCluster pod to run out of memory before the autoscaler could react.
+- Control plane vCluster memory limits are now set to a high value for safety rather than being dynamically managed. Previously, memory limits were initially set to a low value and managed by the autoscaler, but sudden surges of CRDs could cause the vCluster pod to run out of memory before the autoscaler could react.
 
 #### Features and Enhancements
 

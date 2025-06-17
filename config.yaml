@@ -54,7 +54,7 @@ security:
       - ^REVIEW_ID
 
 params:
-  latest: v1.12   #we should look to replace this value with the spaces.version values below
+  latest: v1.13   #we should look to replace this value with the spaces.version values below
   repoLink: "https://github.com/upbound/"
   anchors:
     min: 3
@@ -66,5 +66,5 @@ params:
   spaces:
     version:
       major: 1
-      minor: 12
-      patch: 0
+      minor: 13
+      patch: 1
