@@ -32,6 +32,13 @@ The observability feature allows you to:
 
 The pipeline deploys [OpenTelemetry Collectors](https://opentelemetry.io/docs/collector/) to collect, process, and expose telemetry data from control planes. Upbound deploys a collector per control plane, defined by a _SharedTelemetryConfig_ set up at the group level. Control plane collectors pass their data to external observability backends defined in the _SharedTelemetryConfig_.
 
+{{< hint "important" >}}
+From Spaces v1.13 and beyond.
+The data collected by SharedTelemetry contains just telemetry from user-facing control plane workloads, such as Crossplane, providers and functions.
+
+Self-hosted Spaces users can add control plane system workloads such as the `api-server`, `etcd` by setting the `observability.collectors.includeSystemTelemetry` Helm flag to true.
+{{< /hint >}}
+
 <!-- vale Google.Headings = NO -->
 
 ## SharedTelemetryConfig
@@ -78,7 +85,7 @@ Your control plane can only use a single _SharedTelemetryConfig_. If you create 
 
 Currently supported exporters are:
 - `datadog` (review the OpenTelemetry [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md) for configuration details)
-- `otelhttp` (used by New Relic among others, review the New Relic [documentation](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
+- `otelhttp` (general-use exporter, used by New Relic among others, review the New Relic [documentation](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/get-started/opentelemetry-set-up-your-app/) for configuration details)
 
 The example below shows how to configure a _SharedTelemetryConfig_ resource to send metrics, traces and logs to Datadog:
 
