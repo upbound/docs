@@ -87,9 +87,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.container.mxpCharts.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the mxp-charts container image. |
 | controlPlanes.container.mxpCharts.repository | string | `"mxp-charts"` | Repository for the mxp-charts container image. |
 | controlPlanes.container.mxpCharts.tag | string | `""` | Tag for the mxp-charts container image. |
-| controlPlanes.container.mxpGateway.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the mxp-gateway container image. |
-| controlPlanes.container.mxpGateway.repository | string | `"hyperspace"` | Repository for the mxp-gateway container image. |
-| controlPlanes.container.mxpGateway.tag | string | `""` | Tag for the mxp-gateway container image. |
 | controlPlanes.container.mxpKsmConfig.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the mxp controller container image. |
 | controlPlanes.container.mxpKsmConfig.repository | string | `"hyperspace"` | Repository for the mxp controller container image. |
 | controlPlanes.container.mxpKsmConfig.tag | string | `""` | Tag for the mxp controller container image. |
@@ -97,6 +94,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.coredns.resources.limits.memory | string | `"50Mi"` | Memory limit for the spaces control plane CoreDNS pod. |
 | controlPlanes.coredns.resources.requests.cpu | string | `"10m"` | CPU request for the spaces control plane CoreDNS pod. |
 | controlPlanes.coredns.resources.requests.memory | string | `"25Mi"` | Memory request for the spaces control plane CoreDNS pod. |
+| controlPlanes.etcd.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for vcluster etcd Pods. |
 | controlPlanes.etcd.persistence.size | string | `"5Gi"` | Size of the control plane's etcd PVCs. |
 | controlPlanes.etcd.persistence.storageClassName | string | `""` | StorageClass name for control plane's etcd PVCs. |
 | controlPlanes.etcd.resources.limits.cpu | string | `nil` | CPU limit for the spaces control plane etcd pod. |
@@ -154,13 +152,12 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.xgql.resources.limits.memory | string | `"1Gi"` | Memory limit for the spaces control plane xgql pod. |
 | controlPlanes.uxp.xgql.resources.requests.cpu | string | `"50m"` | CPU request for the spaces control plane xgql pod. |
 | controlPlanes.uxp.xgql.resources.requests.memory | string | `"50Mi"` | Memory request for the spaces control plane xgql pod. |
-| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.167.gb4b3e68"` | The tag of the xgql image to deploy. |
+| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.175.g0fa8ed6"` | The tag of the xgql image to deploy. |
 | controlPlanes.vcluster.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for vcluster Pods. |
 | controlPlanes.vcluster.extraSyncLabels | string | `""` | Extra pod labels to be synced by the vcluster. This is a string consisting of a comma-separated list of label keys. |
 | controlPlanes.vcluster.resources.limits.cpu | string | `"3000m"` | CPU limit for the spaces control plane vcluster pod. |
-| controlPlanes.vcluster.resources.limits.memory | string | `"3960Mi"` | Memory limit for the spaces control plane vcluster pod. We recommend configuring this value to 3 times its initial memory request. This is the initial memory request for the control plane vcluster pod. Both the memory request and limit of the vcluster pod may be dynamically adjusted by the autoscaler controller based on the number of CRDs. The memory autoscaler sets the limit as follows:   limitFactor * memory request where `memory request` is the value proposed by the autoscaler based on the number of CRDs deployed in the control plane, and `limitFactor` is a constant defined as 3. If the value is smaller than limitFactor * memory request for a new control plane, then it will be reconciled to that value. |
 | controlPlanes.vcluster.resources.requests.cpu | string | `"170m"` | CPU request for the spaces control plane vcluster pod. |
-| controlPlanes.vcluster.resources.requests.memory | string | `"1320Mi"` | Memory request for the spaces control plane vcluster pod. This is the initial memory request for the control plane pod. Both the memory request and limit of the vcluster pod may be dynamically adjusted by the autoscaler controller based on the number of CRDs. Remember to update the memory limit accordingly; we recommend setting it to 1/3 times the limit value. |
+| controlPlanes.vcluster.resources.requests.memory | string | `"1320Mi"` | Memory request for the spaces control plane vcluster pod. This is the initial memory request for the control plane pod. The memory request of the vcluster pod may be dynamically adjusted by the autoscaler controller based on the number of CRDs. |
 | controlPlanes.vector.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for Vector Pods. |
 | controlPlanes.vector.debug | bool | `false` | This enables debug mode for Vector. |
 | controlPlanes.vector.enabled | bool | `true` | This enables Vector for the control plane. |
@@ -200,7 +197,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.controller.service.webhook.port | int | `9443` | The port for the spaces controller webhook service. |
 | controller.controller.verticalPodAutoscaler.enabled | bool | `false` | This enables the VerticalPodAutoscaler for the spaces controller deployment. |
 | controller.controller.verticalPodAutoscaler.updateMode | string | `"Auto"` | The mode for the VerticalPodAutoscaler. |
-| controller.crossplane.supportedVersions | list | `["1.17.1-up.1","1.17.3-up.1","1.17.5-up.1","1.18.0-up.1","1.18.3-up.1","1.19.0-up.1"]` | List of supported Crossplane versions, will be automatically updated by the versionsController, if enabled. |
+| controller.crossplane.supportedVersions | list | `["1.18.0-up.1","1.18.3-up.1","1.18.5-up.1","1.19.0-up.1","1.19.2-up.1","1.20.0-up.1"]` | List of supported Crossplane versions, will be automatically updated by the versionsController, if enabled. |
 | controller.crossplane.versionsController.enabled | bool | `true` | This flag enables the versionsController. When set to true, the controller will manage Crossplane versions configmap. If disabled, default behavior will be supportedVersions will applied without automatic updates. |
 | controller.extraVolumes | list | `[]` | Extra volumes to be added to the spaces controller pods. |
 | controller.kcp.enabled | bool | `false` | Whether spaces controller should be KCP aware. |
@@ -216,7 +213,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.prometheus.podMonitor.interval | string | `"30s"` | The interval at which the PodMonitor scrapes metrics. |
 | controller.replicaCount | int | `1` | Number of replicas for the spaces controller deployment. |
 | controller.secretRefs.adminSigning | string | `"cert-admin-signing"` | Name of the secret containing the Certificate Authority for the spaces controller, used to sign tokens for control plane kubeconfigs. |
-| controller.secretRefs.ingressCA | string | `"spaces-router-tls"` | Name of the secret containing the Ingress CA. |
+| controller.secretRefs.ingressCA | string | `"spaces-router-tls"` | Name of the secret containing the Ingress CA. Deprecated: Please use externalTLS.caBundleSecret.name instead. |
 | controller.serviceAccount.annotations | object | `{}` | Annotations to be added to the service account used by the spaces controller deployment. |
 | controller.serviceAccount.create | bool | `true` | Whether to create a service account for the spaces controller deployment. |
 | controller.serviceAccount.name | string | `""` | The name of the service account used by the spaces controller deployment. |
@@ -227,6 +224,12 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.webhookInit.image.repository | string | `"hyperspace"` | The repository for the spaces controller webhook init container image. |
 | controller.webhookInit.image.tag | string | `""` | The tag for the spaces controller webhook init container image. |
 | development | object | `{}` | Development only configurations, not for production use. @schema additionalProperties: true @schema |
+| externalTLS | object | `{"caBundleSecret":{"key":"ca.crt","name":""},"tlsSecret":{"name":""}}` | TLS configuration for the external traffic. |
+| externalTLS.caBundleSecret | object | `{"key":"ca.crt","name":""}` | CA secret configuration for external traffic. spaces-router will use this CA (if not in insecure mode) and ingress-public configmap will contain this CA bundle. |
+| externalTLS.caBundleSecret.key | string | `"ca.crt"` | Key of the external CA secret that contains the CA bundle. |
+| externalTLS.caBundleSecret.name | string | `""` | Name of the secret containing the external CA bundle. |
+| externalTLS.tlsSecret | object | `{"name":""}` | TLS secret name that contains the serving certificate and key. |
+| externalTLS.tlsSecret.name | string | `""` | Name of the secret containing the TLS serving certificate and key. |
 | features.alpha | object | { ... } | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
 | features.alpha.apollo | object | { ... } | Configurations for the apollo deployment. |
 | features.alpha.apollo.apiserver.command | list | `[]` | Command for the apollo apiserver deployment. |
@@ -311,7 +314,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.inControlPlaneOverride.enabled | bool | `false` | This enables the InControlPlaneOverride API to allow hierarchical configuration overrides in the control planes. |
 | features.alpha.observability.enabled | bool | `false` | This enables the observability feature within this space.<br> Enabling observability requires OpenTelemetry Operator for Kubernetes to be installed in the cluster. See https://opentelemetry.io/docs/kubernetes/operator/ |
 | features.alpha.sharedBackup.enabled | bool | `true` | This enables the SharedBackup feature. |
-| features.alpha.sharedSecrets.enabled | bool | `false` | This enables the shared secrets feature. |
+| features.alpha.sharedSecrets.enabled | bool | `true` | This enables the shared secrets feature. |
 | features.alpha.simulations.controlPlanes | object | `{"size":""}` | Control plane configuration for the Upbound Simulations feature. |
 | features.alpha.simulations.controlPlanes.size | string | `""` | The control plane size to use when running simulations. |
 | features.alpha.simulations.enabled | bool | `false` | This enables simulating changes to a control plane. |
@@ -319,10 +322,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.spaceBackup.enabled | bool | `false` | This enables the space backup feature. |
 | features.alpha.topologies.enabled | bool | `false` | This enables the topologies feature. |
 | features.alpha.upboundControllers.enabled | bool | `false` | This enables the Upbound Controllers feature. |
-| features.alpha.upboundControllers.storage | object | `{"pvcs":{"enabled":false}}` | Storage configuration for the Upbound Controllers feature. |
-| features.alpha.upboundControllers.storage.pvcs | object | `{"enabled":false}` | Storage PVCs configuration for the Upbound Controllers feature. |
-| features.alpha.upboundControllers.storage.pvcs.enabled | bool | `false` | This enables the Upbound Controllers feature to use PVCs for storage. |
-| features.alpha.upboundPolicy.enabled | bool | `false` | This enables the SharedUpboundPolicy API within this space. |
 | features.alpha.upboundRBAC.enabled | bool | `false` | This enables respecting Upbound Authorization management within the space. This will include new APIs for binding Objects to identities supplied by Upbound. |
 | features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
 | fullnameOverride | string | `""` | The full name of the chart, including the repository name. |
@@ -346,7 +345,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | ingress.podLabels | object | `{}` | Labels that are defined on the ingress-nginx pod. Default value is:<br> app.kubernetes.io/instance: ingress-nginx<br> app.kubernetes.io/component: controller<br> app.kubernetes.io/name: ingress-nginx |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
 | nameOverride | string | `""` | The name of the chart. |
-| observability.collectors | object | `{"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":"","tolerations":[]}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
+| observability.collectors | object | `{"includeSystemTelemetry":false,"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":"","tolerations":[]}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
+| observability.collectors.includeSystemTelemetry | bool | `false` | If true, control plane telemetry will emit telemetry data from control plane system components, such as the api server, etcd. |
 | observability.collectors.repository | string | `"opentelemetry-collector-spaces"` | Repository for the OpenTelemetry collector image. |
 | observability.collectors.resources.limits.cpu | string | `"100m"` | CPU limit for the OpenTelemetry collector pod. |
 | observability.collectors.resources.limits.memory | string | `"1Gi"` | Memory limit for the OpenTelemetry collector pod. |
@@ -416,7 +416,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.replicaCount | int | `1` | The number of replicas for the router deployment. |
 | router.secretRefs.adminValidating | string | `"cert-admin-signing"` | Name of the secret containing the admin signing certificate. |
 | router.secretRefs.gatewaySigning | string | `"cert-token-signing-gateway"` | Name of the secret containing the internal token signing certificat  host: proxy.upbound-127.0.0.1.nip.ioe |
-| router.secretRefs.tlsSecretName | string | `"spaces-router-tls"` | Name of the secret containing the TLS Certificate for the router. |
+| router.secretRefs.tlsSecretName | string | `"spaces-router-tls"` | Name of the secret containing the TLS Certificate for the router. Deprecated: Please use externalTLS.tlsSecret.name instead. |
 | router.secretRefs.upboundIAMCABundle | string | `""` | Name of the secret containing the CA bundle for the configured UpboundIAM Issuer. This is helpful for testing when configuring against an Issuer using self-signed certificates. |
 | router.serviceAccount.annotations | object | `{}` | Annotations to be added to the service account used by the router deployment. |
 | router.serviceAccount.create | bool | `true` | Whether to create a service account for the router deployment. |
