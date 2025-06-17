@@ -213,6 +213,8 @@ configure the processors that transform the telemetry data for the exporters. It
 
 For now, the only supported processor is the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md).
 
+Similarly to how `spec.exportPipeline` defines the pipeline for `spec.exporters`, `spec.processorPipeline` defines the pipeline for `spec.processors`.
+
 #### Telemetry transforms
 
 <!-- vale gitlab.SentenceLength = NO -->
