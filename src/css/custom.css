@@ -810,6 +810,8 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
 }
 
 
+/* Mobile Navigation Fix */
+
 @media (max-width: 996px) {
   /* Adjust sidebar to not cover navbar */
   .theme-doc-sidebar-container {
@@ -832,6 +834,13 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
     transform: translateX(0) !important;
   }
 
+  /* Hide duplicate site title in mobile sidebar */
+  .navbar-sidebar .navbar-sidebar__brand,
+  .navbar-sidebar .navbar__brand,
+  .theme-doc-sidebar-container .navbar__brand {
+    display: none !important;
+  }
+
   .navbar-sidebar__back {
     position: sticky !important;
     top: 0 !important;
@@ -846,13 +855,13 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
     font-size: 1rem !important;
     z-index: 100000 !important;
     cursor: pointer !important;
+    margin: 0 !important;
   }
 
   .navbar-sidebar__back:hover {
     background-color: var(--upbound-light-bg) !important;
   }
 
-  /* Style the menu list */
   .theme-doc-sidebar-menu {
     padding: 1rem !important;
     margin: 0 !important;
@@ -891,12 +900,10 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
     pointer-events: all !important;
   }
 
-  /* Prevent body scroll when sidebar is open */
   body[data-navbar-sidebar-shown="true"] {
     overflow: hidden !important;
   }
 
-  /* Alternative navbar-sidebar positioning */
   .navbar-sidebar {
     position: fixed !important;
     top: var(--ifm-navbar-height) !important;
@@ -914,13 +921,11 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
     transform: translateX(0) !important;
   }
 
-  /* Style the sidebar items - remove extra top padding */
   .navbar-sidebar .theme-doc-sidebar-menu,
   .navbar-sidebar .menu__list {
     padding: 1rem 1rem 2rem 1rem !important;
   }
 
-  /* Menu item styling */
   .navbar-sidebar .menu__link,
   .theme-doc-sidebar-container .menu__link {
     padding: 0.75rem 1rem !important;
@@ -969,3 +974,20 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
     color: var(--up-grey-200) !important;
   }
 }
+
+  .navbar-sidebar .navbar-sidebar__items .navbar__brand,
+  .theme-doc-sidebar-container .navbar__brand,
+  .navbar-sidebar h1,
+  .navbar-sidebar .navbar__title {
+    display: none !important;
+  }
+
+  .navbar-sidebar .navbar-sidebar__items {
+    padding-top: 0 !important;
+  }
+
+  /* Hide any extra title elements in sidebar */
+  .navbar-sidebar [class*="title"],
+  .theme-doc-sidebar-container [class*="title"]:not(.menu__link) {
+    display: none !important;
+  }
