@@ -32,6 +32,13 @@ The observability feature allows you to:
 
 The pipeline deploys [OpenTelemetry Collectors][opentelemetry-collectors] to collect, process, and expose telemetry data from control planes. Upbound deploys a collector per control plane, defined by a _SharedTelemetryConfig_ set up at the group level. Control plane collectors pass their data to external observability backends defined in the _SharedTelemetryConfig_.
 
+:::important
+From Spaces v1.13 and beyond.
+The data collected by SharedTelemetry contains just telemetry from user-facing control plane workloads, such as Crossplane, providers and functions.
+
+Self-hosted Spaces users can add control plane system workloads such as the `api-server`, `etcd` by setting the `observability.collectors.includeSystemTelemetry` Helm flag to true.
+:::
+
 <!-- vale Google.Headings = NO -->
 
 ## SharedTelemetryConfig
@@ -78,7 +85,7 @@ Your control plane can only use a single _SharedTelemetryConfig_. If you create 
 
 Currently supported exporters are:
 - `datadog` (review the OpenTelemetry [documentation][documentation] for configuration details)
-- `otelhttp` (used by New Relic among others, review the New Relic [documentation][documentation-1] for configuration details)
+- `otelhttp` (general-use exporter, used by New Relic among others, review the New Relic [documentation][documentation-1] for configuration details)
 
 The example below shows how to configure a _SharedTelemetryConfig_ resource to send metrics, traces and logs to Datadog:
 
@@ -212,6 +219,8 @@ Like `spec.exporters`, the `spec.processors` field allows you to
 configure the processors that transform the telemetry data for the exporters. It follows the OpenTelmetry Collector [processor configuration][processor-configuration].
 
 For now, the only supported processor is the [transform processor][transform-processor].
+
+Similarly to how `spec.exportPipeline` defines the pipeline for `spec.exporters`, `spec.processorPipeline` defines the pipeline for `spec.processors`.
 
 #### Telemetry transforms
 

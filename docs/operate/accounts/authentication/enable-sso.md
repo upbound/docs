@@ -38,6 +38,8 @@ Directory sync adds the benefit of automatically updating users in third-party a
 If your organization wants to manage access through your Microsoft AD, Google Workspace, Okta, or other directory, you can configure Upbound to automatically sync user accounts.
 <!-- vale on -->
 
+Directory Sync requires the [Business Critical](https://www.upbound.io/pricing) subscription tier.
+
 ## Prerequisites
 
 Before you begin, reach out to [the Upbound support team][the-upbound-support-team] to enable SSO in your organization.
