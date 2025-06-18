@@ -1,7 +1,0 @@
-description: |-
-    cursor is the cursor of the first object to return. This value is opaque,
-    the format cannot be relied on. It is returned by the server in the
-    response to a previous query. If neither first nor cursor is specified,
-    objects are returned from the beginning.
-    
-    Note that cursor values are not stable under different orderings.

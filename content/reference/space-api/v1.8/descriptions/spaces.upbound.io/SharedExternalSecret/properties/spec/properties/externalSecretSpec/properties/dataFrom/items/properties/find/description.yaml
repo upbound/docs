@@ -1,3 +1,0 @@
-description: |-
-    Used to find secrets based on tags or regular expressions
-    Note: Find does not support sourceRef.Generator or sourceRef.GeneratorRef.

@@ -1,3 +1,0 @@
-description: |-
-    APICall is an HTTP request to the Kubernetes API server, or other JSON web service.
-    The data returned is stored in the context with the name for the context entry.

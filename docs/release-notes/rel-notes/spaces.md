@@ -1,0 +1,811 @@
+---
+title: "Spaces Release Notes"
+description: "Release notes for the Spaces"
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+<!-- vale off -->
+
+<!-- Release notes template/Copy&Paste 
+## vX.Y.Z
+
+### Release Date: YYYY-MM-DD
+
+#### Breaking Changes
+
+:::important
+Any important warnings or necessary information
+:::
+
+#### What's Changed
+
+- User-facing changes
+
+-->
+
+
+## v1.12.0
+
+### Release Date: 2025-04-07
+
+#### What's Changed
+
+**Warning - Breaking changes**
+
+- This release contains breaking changes related to the vcluster dependency upgrade from v0.15.7 to v0.22.3.
+  `controlPlanes.syncer` parameter tree has been renamed as `controlPlanes.vcluster`. The `controlPlanes.api` and
+  `controlPlanes.controller` Helm parameter trees have been removed from the `spaces` Helm chart. Customers relying on
+  these parameters can now use the `controlPlanes.vcluster` parameter tree.
+- The control plane memory auto-scaler for the vcluster API server now sets memory limits on the vcluster `syncer` container
+  where `kube-api-server` is now colocated. It sets a limit of 3 times the proposed memory request for the `syncer` container. 
+
+Upgrades to Spaces v1.12.0 should be performed from v1.11.3. Spaces v1.11.2 and prior versions do not include
+a synchronization mechanism for `spaces-controller`, potentially leading to upgrade issues.
+
+#### Features and Enhancements
+Spaces `v1.12.0` contains important bug fixes, security improvements, dependency updates and introduces support
+for Upbound controller packages in private preview. The latest supported Crossplane version is bumped to `1.19.0-up.1`
+and the shared backups feature is now enabled by default. Spaces OpenTelemetry collectors for metrics and logs now use
+TLS server sockets to secure communications. It's now possible to configure the tolerations for the SharedTelemetry
+log collector pods using the `observability.collector.tolerations` Helm parameter.
+
+In order to be able to install Upbound controllers in a control plane, the private preview feature must have been enabled
+with the `features.alpha.upboundControllers.enabled=true` Helm parameter and the control plane's Crossplane version must
+support controller packages. We currently don't support routing requests to the services installed by
+the Upbound controller packages. Support for service routing is planned for future releases.
+
+This release bumps the vcluster dependency to `v0.22.3` which introduces the following breaking changes:
+- vcluster's `kube-apiserver` & `kube-controller-manager` now run inside the `vcluster` pod's `syncer` container.
+  Their deployments (`vcluster-api` and `vcluster-controller`) no longer exist.
+- vcluster `syncer` has behavior changes, notably it now syncs resources from the host cluster back to the virtual cluster.
+- `controlPlanes.api` and `controlPlanes.controller` Helm parameter trees have been removed from the `spaces` Helm chart.
+  `controlPlanes.syncer` has been renamed as `controlPlanes.vcluster`. `controlPlanes.vcluster` parameter tree should be used instead.
+- `vcluster-api` & `vcluster-controller` PDBs are removed (also from existing ControlPlanes).
+
+
+**Upbound Controllers**:
+- Added support for installing Upbound Controller packages as an alpha feature.
+
+**Universal Crossplane**:
+- Bumped the latest supported Universal Crossplane minor version to v1.19.
+
+**Observability**:
+- Spaces OpenTelemetry collectors for metrics and logs now use TLS server sockets.
+- The Helm parameter `observability.collector.tolerations` has been introduced to be able to configure the tolerations
+  for the SharedTelemetry log collector pods.
+
+**Shared Backups**:
+- Shared backups feature is now enabled by default.
+
+**Other**:
+- VCluster Helm chart is now pulled from the OCI registry `xpkg.upbound.io`.
+- Added a validation to ensure the control plane name does not exceed 63 characters.
+
+**Bug Fixes**:
+- Fixed an issue causing x509 certificate validation errors while connecting a control plane using the ArgoCD plugin.
+- Fixed an issue with `up alpha query` working with kinds, properly detecting cycles and setting counts for relationships queries.
+- Fixed an issue in Space level telemetry where the collector pod would restart due to the healthcheck extension not being updated to the v0.116.0 configuration.
+- Fixed an issue with setting annotations on groups via the Spaces API. Previously setting annotations on groups via the Spaces API were not allowed. Now there is a Spaces Helm parameter to allow setting the desired annotation keys.
+- Fixed an issue with control plane restoration where a resource being deleted during backup might cause restoration to fail.
+- Fixed an issue that prevents reconciliation of control planes with more than one deprecated finalizer.
+- Missing HTTP metrics for internal components are restored.
+
+## v1.11.3
+
+### Release Date: 2025-04-02
+
+**Warning - Action Required**
+
+Please upgrade to Spaces `v1.11.3` before upgrading to the upcoming `v1.12.0`.
+
+#### What's Changed
+
+- Unconditionally enable leader election for `spaces-controller` even if the high-availability mode is not configured.
+- Security fixes for Go dependencies.
+
+## v1.11.2
+
+### Release Date: 2025-03-12
+
+#### What's Changed
+
+- fix(apollo): typos and count column handling on relationships.
+- fix(eso): disable conversion webhook as service is unreachable.
+
+## v1.11.1
+
+### Release Date: 2025-02-13
+
+#### What's Changed
+
+- Restored missing http metrics for internal components.
+- Fixed an issue in Space level telemetry where the collector pod would restart due to the healthcheck extension not
+  being updated to the v0.116.0 configuration.
+
+## v1.11.0
+
+### Release Date: 2025-02-04
+
+#### What's Changed
+
+**Warning - Action Required**
+
+If you are running Spaces with observability enabled; ensure the host cluster's `opentelemetry-operator` is updated to
+**v0.110.0 or later** to maintain compatibility with new Collector flags.
+
+#### Overview
+
+This release enhances backup/restore workflows and telemetry customization, while addressing critical stability issues. Key highlights include:  
+- **Backup/Restore Improvements**:  
+  - Selective restoration of control planes using the `--controlplanes` flag via Space Backup API.  
+  - Backup jobs now fail explicitly if target control planes are missing.  
+- **Observability Enhancements**: Added support for OpenTelemetry **transform processors** in SharedTelemetry API, enabling advanced data manipulation (e.g., adding labels) before exporting metrics/logs/traces.  
+  -  Upgraded OTEL Collector images to **v0.116.0**.  
+- **Query API**: Helm chart now supports tuning PostgreSQL instance parameters and connection pooler settings for in-cluster deployments.  
+- **Bug Fixes**:  
+  - Resolved label selector matching issues in Shared Backups, Policies, and Telemetry APIs.  
+  - Fixed certificate renewal parameters causing synchronization issues in ArgoCD.  
+  - Ensured correct image pull secret usage for Crossplane version detection.  
+
+#### Features and Improvements
+
+- Added `--controlplanes` flag to the SpaceBackup restore command that allows specifying the control planes to be restored.
+- Allow customising postgres parameters for the in-chart cluster, and tune connection pooler parameters.
+- Mark Backup as failed if target control plane can't be found after a few retries.
+- SharedTelemetry: adds an option to configure telemetry OTEL processors similarly as the existing exporters. Currently supports the [transform](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README) processor which allows for transforming telemetry data(adding labels, modificatons...) before being sent by the exporters to your defined observability backend.
+
+#### Bug fixes
+
+- Fix matching of multiple label selectors in backups, policies, telemetry and external secrets.
+- Fixed the renewBefore and duration values in the certificates that were causing Argo to go out of sync.
+- Fixes an issue where SharedTelemetryConfig would not get reconciled when a secret from its `spec.configPatchSecretRefs` would be modified.
+- Using right image pull secret for automated crossplane versions detection.
+- Fixed a regression causing x509 certificate validation errors while connecting a control using ArgoCD plugin.
+- Adds missing network policies for space level telemetry.
+- Fixed an issue where groups have not been able to be managed through the Spaces API through means which set an annotation, due to Spaces API disallowing setting any annotation for security reasons. Now there is an Spaces Helm allowlist knob through which select annotation keys can be configured to be allowed.
+
+#### Chore
+
+- **Breaking change**
+  Upgraded OTEL Collector images to v0.116.0. The opentelemetry-operator on the host cluster needs to run versions =>0.110.0 due to a change in OTEL Collector flags.
+
+## v1.10.4
+
+### Release Date: 2025-03-12
+
+#### What's Changed
+
+- fix(apollo): typos and count column handling on relationships.
+- fix(eso): disable conversion webhook as service is unreachable.
+
+## v1.10.3
+
+### Release Date: 2025-02-13
+
+#### What's Changed
+
+- Fixed the renewBefore and duration values in the certificates that were causing Argo to go out of sync.
+
+## v1.10.2
+
+### Release Date: 2025-02-13
+
+#### What's Changed
+
+- Fixed an issue where SharedTelemetryConfig would not get reconciled when a secret from its spec.configPatchSecretRefs
+  would be modified.
+- Added missing network policies for space level telemetry
+- Fixed a regression causing x509 certificate validation errors while connecting a control using ArgoCD plugin.
+
+## v1.10.1
+
+### Release Date: 2025-01-13
+
+#### What's Changed
+
+- Fix label selectors in backups, policies, telemetry, eso
+- fix: missing wiring for controlplanes uxp metrics flag
+- Revert "fix(apollo): specify schema creating indexes to get ready for pg17"
+
+## v1.10.0
+
+### Release Date: 2025-01-07
+
+#### What's Changed
+
+**Warning - Breaking changes**
+
+Please be aware of the following changes:
+
+- `ClientCertFromHeader` authenticator at `spaces-router` has been removed and it can no longer authenticate requests from a client certificate it finds in the `Ssl-Client-Cert` HTTP request header. `spaces-router` now requires SSL-passthrough to be enabled for the ingress-nginx controller if:
+    - The Spaces `v1.10.0` installation is still using the Ingress API (this is still the default although we now support the [Gateway API](https://gateway-api.sigs.k8s.io/)) and,
+    - `spaces-router` is running in secure mode (the default) and,
+    - Hub identities are enabled via the `authentication.hubIdentities` Spaces Helm chart parameter (the default) and,
+    - You would like to be able to authenticate Spaces clients using the client certificates issued by the host cluster's signer.
+
+  You can enable the SSL-passthrough mode for the ingress-nginx controller by passing the `--enable-ssl-passthrough=true` command-line option to it. Please also see the official [self-hosted Spaces deployment guides](https://docs.upbound.io/deploy/self-hosted-spaces/).
+- If you are using the Gateway API with Spaces and your chosen Gateway API implementation is [Envoy Gateway](https://gateway.envoyproxy.io), please note that the short name `ctp` now belongs to the `clienttrafficpolicies.gateway.envoyproxy.io` custom resources. If you have any scripts that use this short name for `controlplanes.spaces.upbound.io`, you will need to update them to use the long name `controlplane` if you are using Envoy Gateway.
+
+#### Features and Enhancements
+
+- **Observability**:
+    - Added an option to reference sensitive data in SharedTelemetryConfig
+      configuration through a secret.
+
+- **Query API**:
+    - Pin in-chart PostgreSQL cluster to 16 and wire down image pull secrets to it too.
+
+- **Security**:
+    - Spaces chart now installs a network policy that allows ingress traffic to the `spaces-router` pod's port 8443 only from the `ingress-nginx` controller pod or the connect agent pod. The namespace and the pod labels of the `ingress-nginx` controller can be specified using the `ingress.namespaceLabels` and the `ingress.podLabels` Helm chart parameters, respectively. The pod labels for the connect agent can be specified using the `connect.agent.podLabels` Helm chart parameter.
+    - Spaces now supports the Kubernetes Gateway API in addition to the Ingress API. The ClientCertFromHeader authenticator has been removed and when using a secured spaces-router with client certificate authentication, TLS traffic needs to be terminated at spaces-router.
+
+- **Other**:
+    - Add schema validation for helm chart values.
+    - ControlPlanes now expose the time at which they first became Available.
+    - Bumped latest supported Crossplane minor version to v1.18.
+    - ClusterType is removed from the Spaces helm chart values
+
+#### Fixed Bugs
+
+- Fixed storage class parameter visibility for control plane etcd and vector in values.yaml
+- Avoid noisy restarts of apollo-syncer by retrying with backoff before erroring out.
+- Avoid resetting apollo syncers' passwords on every reconciliation, preventing frequent syncers restarts.
+-  Drop controlPlanes.uxp.repository from values, always use registry.
+- Fix an issue preventing to pull xpkg.upbound.io/spaces-artifacts/external-secrets-chart when Shared Secrets was enabled.
+- Fixed a security issue with how the internal tokens are validated by mxp-gateway.
+- Fixed a timeout issue in spaces-router while doing authorization checks against the host cluster for ControlPlane requests when hub RBAC is enabled via the `authorization.hubRBAC` Helm parameter.
+- Fixed duplicate probe definitions in spaces controller deployment.
+- Move to domain-qualified finalizer for controlplane provisioner reconciler, while dropping old ones allowing ControlPlanes deletion after Spaces upgrade.
+- Properly handle and validate imagePullSecrets passed to the helm chart.
+- Revert in-cluster host port used from 9091 to 8443. This led Argo to not be able to reach controlplanes.
+- SpaceBackups now will only skip just created controlplanes instead of the ones not ready.
+- Spaces-router can now reload without a restart renewed spaces-ca certificate which it uses to validate the upstream server certificates.
+
+## v1.9.8
+
+### Release Date: 2025-03-12
+
+#### What's Changed
+
+- fix(apollo): typos and count column handling on relationships.
+- fix(eso): disable conversion webhook as service is unreachable.
+
+## v1.9.7
+
+### Release Date: 2025-02-13
+
+#### What's Changed
+
+- Fixed the renewBefore and duration values in the certificates that were causing Argo to go out of sync.
+
+## v1.9.6
+
+### Release Date: 2025-02-13
+
+#### What's Changed
+
+- Fixed matching of multiple label selectors in backups, policies, telemetry and external secrets.
+- Fixed a security issue with how the internal tokens are validated by mxp-gateway.
+
+## v1.9.5
+
+### Release Date: 2024-12-09
+
+#### Bugs fixed
+* Fixed a timeout issue in spaces-router while doing authorization checks against the host cluster for `ControlPlane` requests when hub RBAC is enabled via the `authorization.hubRBAC` Helm parameter
+* Fixed an issue causing frequent syncers restarts in `Apollo` due to password resets
+* Reduced the unnecessary restarts of `Apollo` syncers in case of transient errors
+* Pin in-chart PostgreSQL cluster to version 16 and pass image pull secrets, if specified.
+
+#### Security
+* Spaces chart now installs a network policy that allows ingress traffic to the spaces-router pod's port `8443` only from the ingress-nginx controller pod or the connect agent pod. The namespace and the pod labels of the ingress-nginx controller can be specified using the `ingress.namespaceLabels` and the `ingress.podLabels` Helm chart parameters, respectively. The pod labels for the connect agent can be specified using the connect.agent.podLabels Helm chart parameter
+
+#### Enhancements
+* `ControlPlane`s now expose the time at which they first became `Available` at `.status.firstAvailableAt`
+* `SpaceBackups` now will only skip just created controlplanes instead of the ones not ready
+* UXP images and associated registry actions are now configured with registry authentication for Spaces deployments using private registries, where the public UXP image is behind auth in the private registry.
+
+## v1.9.4
+
+### Release Date: 2024-11-14
+
+#### What's Changed
+
+* Revert in-cluster host port used from 9091 to 8443. This led Argo to not be able to reach controlplanes.
+
+## v1.9.3
+
+### Release Date: 2024-11-12
+
+#### What's Changed
+- Fixed duplicate probe definitions in spaces controller deployment.
+
+## v1.9.2
+
+### Release Date: 2024-11-08
+
+#### What's Changed
+- Fixed an issue preventing to pull xpkg.upbound.io/spaces-artifacts/external-secrets-chart when Shared Secrets was enabled.
+
+## v1.9.1
+
+### Release Date: 2024-11-07
+
+#### What's Changed
+
+:::hint
+Due to a technical glitch there was no 1.9.0 release image, and the first one available in the 1.9.x series is 1.9.1.
+:::
+
+:::warning
+<!-- Starting with Spaces 1.9.x, Spaces with an  Argo CD Gitops integration must update their Argo CD ConfigMap to include `resource.respectRBAC: normal` instead of explicit `resource.exclusions`. Please check [Configure Argo CD]({{<ref "connect/gitops#configure-argo-cd" >}}) section for instructions and details. -->
+:::
+
+#### Features and Enhancements
+
+- Added optional insecure mode for all Spaces endpoints to allow finer grain control around mTLS policies.
+- Added class dimension to all control plane metrics.
+- Added new alpha feature, Space Backup, to allow backing up and restoring a Space in case of DR.
+- Added a configuration option for enabling Control Plane Crossplane dependency version upgrades.
+- Bumped latest supported Crossplane minor version to v1.18.
+- External-secrets operator Helm chart is bumped to version 0.10.4.
+
+#### Fixed Bugs
+
+- Added the `controlPlanes.syncer.extraSyncLabels` spaces Helm chart parameter so that any extra labels that you specify
+  with a `DeploymentRuntimeConfig` for a Crossplane provider/function can be configured to properly sync in the host
+  cluster for the ControlPlane. You may need this for certain workload identity-based authentication schemes for
+  authenticating Crossplane provider/function workloads.
+- Drop `controlPlanes.uxp.repository` from values, always use registry.
+- Fixed Query API failing to define necessary custom functions due to inconsistent ordering.
+- Fixed a race when restarting spaces-controller admission webhooks fail with a certificate error.
+- Fixed control plane and namespace listing on the ingress if additional non-RBAC authorization is configured on the host
+  Kubernetes.
+- Fixed the Spaces API endpoint for namespace to make `kubectl get namespaces` work.
+- Fixed an issue where SharedTelemetryConfig would endlessly reconcile.
+- Fixed an issue with SharedTelemetryConfig datadog exporter failing with 413 error code.
+- Move to domain-qualified finalizer for control plane provisioner reconciler, while dropping old ones allowing
+  ControlPlanes deletion after Spaces upgrade.
+- Respect disabled features for discovery, avoiding unnecessary noise when using kubectl.
+
+## v1.8.0
+
+### Release Date: 2024-10-08
+
+#### What's Changed
+
+**Warning**
+
+Please be aware of the following changes:
+
+- Spaces is no longer published to Google Artefact Registry and can only be accessed via xpkg.upbound.io.
+- We've removed the following unused fields from the ControlPlane CRD:
+    - spec.managementPolicies
+    - spec.deletionPolicy
+    - spec.publishConnectionDetailsTo
+- User name, groups, uid and extra keys of `user.Info` originating from the host cluster (i.e. any host cluster
+  identity) are all now prefixed with `upbound:spaces:host:` when that identity is used within a control plane. In
+  Spaces v1.7 and below, no such prefix was added to groups from host cluster client certificates and tokens, so **any
+  RBAC rules within a control plane that refers to a user group from a host cluster identity need to be updated to add
+  that prefix.**
+
+#### Features and Enhancements
+
+- **MCPs**:
+    - Crossplane v1.17 is added to the list of supported MCP versions.
+    - Dropped the HEALTHY and added more details to MESSAGE column in the control plane get/list output to better
+      communicate the status of the control planes.
+
+- **Query API**:
+    - Added ability to deploy and wire a CloudNativePG-powered Postgres Cluster for Query API directly from the helm
+      chart.
+
+- **IAM**:
+    - The `controlPlanes.mxpController.pod.customLabels` Helm parameter was added to help configure workload identities
+      for shared secrets on EKS, AKS & GKE clusters.
+    - The `controlPlanes.sharedSecrets.serviceAccount.customAnnotations` and
+      `controlPlanes.sharedSecrets.pod.customLabels`  Helm parameters was added to help configure workload identities
+      for shared secrets on EKS, AKS & GKE clusters.
+    - Support was added for workload identity-based authentication schemes for Spaces billing on EKS, AKS & GKE
+      clusters.
+    - Added support for authenticating Host Kubernetes ServiceAccounts in Spaces API and Control Planes
+    - Filter lists of namespaces and controlplanes in Spaces API to those the user has access to.
+    - Mxp-gateway now uses the original user of the request being forwarded to a ControlPlane or xgql.
+    - There is no more any need to populate the `upbound.io/aud` userinfo extra in structured auth config for OIDC.
+
+- **Backup & restore**:
+    - Deletion policy `Delete` for `Backups` using `Secrets` for credentials will now be respected.
+
+- **Shared Secrets**:
+    - External-secrets operator Helm chart is bumped to version 0.9.20.
+
+- **Administration**:
+    - Health checks were added to the spaces-controller pods.
+    - Added control plane state metrics to track the number of all / synced / ready / healthy / deleting / degraded and
+      stuck in provisioning or deleting control planes.
+
+#### Fixed Bugs
+
+- Added missing priorityClass for telemetry-spaces-logs daemonset.
+- Fixed an issue where SharedTelemetryConfig would endlessly reconcile.
+- Fixed an issue with SharedTelemetryConfig Datadog exporter failing with 413. The issue is not fully fixed but has been
+  remediated by removing the metrics that were too big for Datadog to handle.
+
+## v1.7.2
+
+### Release Date: 2024-09-13
+
+#### What's Changed
+
+- Fixed a bug in Spaces Chart's pre-upgrade hook where the backOffLimit was incorrectly declared.
+
+## v1.7.1
+
+### Release Date: 2024-09-12
+
+#### What's Changed
+
+- Fixed a bug in Apollo where the right column for owners query was not displayed correctly.
+- Fixed a bug in Apollo to ensure that requests do not fail when debug output encounters an issue.
+- Fixed a bug in MXP-Gateway to prevent logging of PII, and granted admins & editors the privilege to view logs for
+  controlplane pods.
+- Fixed a bug in Spaces Chart related to the pre-upgrade hook.
+- Fixed a bug in Crossplane-Versions-Public configmap to allow public querying.
+
+## v1.7.0
+
+### Release Date: 2024-09-02
+
+#### API Changes
+
+- Added v1alpha2 of the Query API, which supports a richer set of filters.
+
+#### What's New
+
+- **OCI Artifact Support in Upbound Registry**: We are excited to announce that the Spaces Helm Chart and images are now
+  shipped as OCI artifacts by default, hosted in the Upbound central registry. You can access these at
+  `xpkg.upbound.io/spaces/artifacts`.
+
+  **Important**: To pull the Helm Chart and images from the new OCI location, you will need to obtain a new pull token
+  from your Upbound account representative.
+
+  To update your pull secret, follow these steps:
+
+    1. **Delete the existing pull secret**:
+       ```bash
+       kubectl delete -n upbound-system upbound-pull-secret
+       ```
+    2. **Re-create the upbound-pull-secret**:
+       ```bash
+       kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
+       --docker-server=https://xpkg.upbound.io \
+       --docker-username="$(jq -r .accessId $SPACES_TOKEN_PATH)" \
+       --docker-password="$(jq -r .token $SPACES_TOKEN_PATH)"
+       ```
+
+  **Start the Helm-Chart upgrade**:
+
+    1. **Log in to the OCI Registry**:
+       ```bash
+       jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
+       ```
+    2. **Upgrade Spaces software from the new location**:
+       ```bash
+       helm -n upbound-system upgrade --install spaces \
+         oci://xpkg.upbound.io/spaces-artifacts/spaces \
+         --version "${SPACES_VERSION}" \
+         --set "ingress.host=${SPACES_ROUTER_HOST}" \
+         --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+         --set "account=${UPBOUND_ACCOUNT}" \
+         --set "authentication.hubIdentities=true" \
+         --set "authorization.hubRBAC=true"
+       ```
+
+- **Helm Repository Deprecation**: This release marks the final time the Spaces Helm Chart will be published to the
+  Upbound Helm repository. All users are encouraged to migrate to the new OCI artifact format to ensure uninterrupted
+  access to future updates.
+
+  If you need additional time to prepare for this transition, you can still use the old registry with this release. To
+  do so, you must explicitly set the registry:
+
+  ```bash
+  helm -n upbound-system upgrade --install spaces \
+    oci://us-west1-docker.pkg.dev/orchestration-build/upbound-environments/spaces \
+    --version "${SPACES_VERSION}" \
+    --set "registry=us-west1-docker.pkg.dev/orchestration-build/upbound-environments" \
+    --set "ingress.host=${SPACES_ROUTER_HOST}" \
+    --set "clusterType=${SPACES_CLUSTER_TYPE}" \
+    --set "account=${UPBOUND_ACCOUNT}" \
+    --set "authentication.hubIdentities=true" \
+    --set "authorization.hubRBAC=true"
+  ```
+
+  **Note**: This will be the last version that supports the old registry. We will discontinue publishing updates to it
+  after Spaces 1.8.0.
+
+---
+
+We appreciate your cooperation and understanding during this transition. Should you have any questions or require
+further assistance, please reach out to your Upbound account representative.
+
+- **Simplified Installation Requirements**: This release simplifies the installation process for the Spaces Helm Chart.
+  You no longer need to have Crossplane installed with the provider-helm and provider-kubernetes on your HostCluster. If
+  you were only using this Crossplane setup for Spaces, you can safely remove the remaining artifacts by running the
+  following commands:
+
+  ```bash
+  kubectl delete xhostclusters.internal.spaces.upbound.io space-hub
+  kubectl patch xhostclusters.internal.spaces.upbound.io space-hub --type=json -p='[{"op": "remove", "path": "/metadata/finalizers"}]'
+  ```
+
+  Once these steps are completed, you may proceed to uninstall Crossplane, provider-kubernetes, and provider-helm
+  according to your original installation method.
+
+  **Note**: The `upbound-system` namespace must not be removed, as it is still required for Spaces operations.
+
+#### Other Improvements
+
+- ControlPlane viewers can now list `events.events.k8s.io` resources and can get secrets.
+- ControlPlane editors can no longer write ESO and kyverno resources.
+- ControlPlane admins can now write kyverno `cleanuppolicies`, `clustercleanuppolicies`, `policyexceptions` and
+  `events.events.k8s.io`.
+- ControlPlane Admins can now also update CRDs.
+
+#### Fixed Bugs
+
+- Add priorityClass for telemetry-spaces-logs daemonset
+- Cleanup control plane resources out of the system namespace when a control plane is deleted.
+- Fix Backup's expired TTL resulting in deadlock.
+- Fixed a bug preventing scraping control plane etcd metrics
+- Fixed duplicate port warning printed during installation of the Spaces helm chart.
+- Observability: fixed an issue where network policies didnt allow the OTEL Collector's Prometheus to scrape some pods
+  for metrics.
+- We have optimized our controllers and tested hosting up to 500 control planes with a single Spaces installation.
+
+## v1.6.1
+
+### Release Date: 2024-08-14
+
+#### What's Changed
+
+- We fixed a bug with SharedTelemetryConfig that caused panics in the Spaces controller.
+- We fixed Backup's expired TTL resulting in deadlock.
+- We fixed a bug preventing scraping of metrics from the control plane etcd pods.
+- We've added a configuration option to enable
+  Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/latest/concepts/server-side-apply/) in managed
+  control planes.
+
+## v1.6.0
+
+### Release Date: 2024-08-06
+
+#### API Changes
+
+- The alpha `spec.source` ControlPlane field has been removed. It's no longer supported.
+
+#### Highlights
+
+- It is now possible to pause and resume control planes through the `spec.crossplane.state` field.
+- We optimized control plane provisioning, reducing time to readiness significantly and supporting up to 500 control
+  planes with a single Spaces installation
+- We've added alpha support for Query API, allowing performant querying of resources across multiple control planes.
+- We've added a new feature that allows you to configure the OpenTelemetry Collector to collect logs from control
+  planes.
+
+#### What's Changed
+
+- We upgraded Kubernetes used internally in spaces components to v1.30. v1beta1 of Structured Authentication
+  Configuration can now be used.
+- Starting from Spaces v1.6, users must upgrade sequentially all the minor versions. A pre-upgrade job is added to
+  enforce this requirement.
+- Various bug fixes and performance improvements.
+
+## v1.5.0
+
+### Release Date: 2024-07-01
+
+#### Highlights
+
+- We've expanded the observability feature by adding Spaces-level logs collection configurable through helm values. We
+  also added the healthcheck extension and liveness probe to the OpenTelemetry Collector.
+- We have a new feature enabled by default that updates the ConfigMap `crossplane-versions-public` in the
+  `upbound-system` namespace. Whenever a new security or fix release is published, the ConfigMap will be updated. You
+  can disable this feature with `controller.crossplane.versionsController.enabled.false` when running in disconnected
+  self-hosted Spaces.
+
+#### What's Changed
+
+- We now expose a metrics port on vcluster-etcd containers.
+- We removed network policies that block egress from a control plane's functions.
+- We removed the legacy OIDC flags authenticator deprecated in Spaces v1.3.0.
+
+## v1.4.2
+
+### Release Date: 2024-06-26
+
+#### What's Changed
+
+- We updated the configuration of memory limits on a Space core component to avoid OOMs.
+- We updated Kubernetes API, Controller and Manager to `v1.28.6`.
+
+## v1.4.1
+
+### Release Date: 2024-06-20
+
+#### What's Changed
+
+- We added missing RBAC permissions for `up migration import` to work against a Spaces MCP.
+- We improved the reliability of group creation in a connected self-hosted space.
+- We fixed a bug impacting hub authorization when a Space is deployed on a Google Kubernetes Engine (GKE) cluster.
+
+## v1.4.0
+
+### Release Date: 2024-06-07
+
+#### Highlights
+
+- We've introduced a new alpha feature of Upbound IAM: Upbound RBAC. Upbound RBAC allows for a unified authentication
+  and authorization model across Upbound. Users who operate single-tenant Cloud or Disconnected Spaces can continue to
+  use the Kubernetes-native RBAC. Upbound RBAC allows users to control access in the Upbound Console down to the local
+  Space. The new `ObjectRoleBinding` API type represents these Upbound RBAC role bindings in the Space locally.
+- We've extended the alpha observability feature which shipped in Spaces `v1.3.0`. Observability is now also available
+  at the Space level, which lets users observe Spaces machinery. To enable this feature, set the
+  `features.alpha.observability.enabled` flag to `true` when installing Spaces.
+
+#### What's Changed
+
+- We enabled the Crossplane [Usages](https://docs.crossplane.io/latest/concepts/usages/) alpha feature in managed
+  control planes.
+- Space admins can now pass custom service account annotations to Crossplane service account.
+- We fixed some bugs related to authentication and single-tenant Spaces when in Disconnected mode.
+- We now allow scaling up core control plane components via helm values.
+- The latest supported Crossplane minor version in Spaces was bumped to 1.16.
+- Spaces prereq providers have had version bumps to allow for incorporating new metrics emissions from these providers.
+  Provider-kubernetes is bumped to `v0.14.0` and provider-helm to `v0.19.0`.
+- Kube-native Hub authentication and authorization has been enabled by default.
+
+## v1.3.1
+
+### Release Date: 2024-05-07
+
+#### Highlights
+
+- This release fixes some Identity and Access Management related issues.
+
+## v1.3.0
+
+### Release Date: 2024-04-30
+
+#### Highlights
+
+- Control Plane Groups: Introducing Control Plane groups and Shared APIs for managing multiple control planes and
+  related resource types, streamlining operations across environments.
+- Automated Crossplane Upgrades: Implementing release channels for automated upgrades of Crossplane versions, ensuring
+  Control planes remains up-to-date by getting latest patches automatically.
+- Unified IAM: Unified identity and access management experience to manage access controls to everything within Spaces.
+- Performance and Stability Improvements: Enhancements to system performance and stability to ensure a smoother and more
+  reliable experience.
+
+#### Alpha Features
+
+- Aggregate Query API: Enchanced experience for querying one or more Control Planes with Aggregate Query API.
+- External Secret Stores: Introducing the SharedSecretStore API, supporting external secret management.
+- Upbound Policy: Introducing SharedUpboundPolicy API for centralized policy management across control planes.
+- Observability: ShareTelemetryConfig API enabling exporting one or more telemetry for one or more control planes to the
+  desired observability backends.
+- Backup and Restore: Implementing SharedBackup and SharedBackupSchedule APIs to provide robust backup and restore
+  functionality control planes.
+- Importing/Exporting Control Planes: Enabling migrating in or out from Spaces control planes.
+
+## v1.2.4
+
+### Release Date: 2024-03-13
+
+#### What's Changed
+
+- Tweaked the control plane API autoscaler configuration per recent performance testing.
+- Fixed an issue causing the kube-state-metrics pods being restarted per CRD deployed in the control plane.
+- Optimized the control plane deletion process to reduce the time it takes to delete a control plane.
+- Fixed an issue breaking `kubectl logs` command against the control plane API.
+
+## v1.2.3
+
+### Release Date: 2024-03-01
+
+#### What's Changed
+
+- This release fixes an issue that affected control planes' ability to provision in non-kind cluster environments.
+
+## v1.2.2
+
+### Release Date: 2024-03-01
+
+#### What's Changed
+
+- This release contains several improvements to improve control plane orchestration performance. It addresses an issue
+  where control plane provisioning time degraded when multiple control planes were provisioned in parallel.
+- The latest supported minor Crossplane version is now `v1.15`.
+
+## v1.2.1
+
+### Release Date: 2024-02-08
+
+#### What's Changed
+
+- Fixed an issue causing the `controlplane` resources having a benign `crossplane.io/external-create-failed` annotation.
+- Fixed an issue causing hotlooping version controller when a `controlplane` is deleted.
+- Other stability and performance improvements.
+
+## v1.2.0
+
+### Release Date: 2024-02-01
+
+#### What's Changed
+
+- We introduced a new concept called `control plane groups` within a Space. Technically, all `kind: controlplane`
+  resources are now namespace-scoped objects (as opposed to previously being cluster-scoped).
+- Control planes now offer auto-upgrade channels (`rapid`, `stable`, `patch`, and `none`), giving users control over
+  what pace their control plane's Crossplane version automatically upgrades to. `None` gives users total control over
+  when to upgrade the Crossplane version in a control plane.
+- Alpha suppport for a new aggregate query API that can be used to query state across one or more control planes in a
+  group.
+- Alpha support for built-in multi-control plane secrets management. Define new `SharedSecrets` and `SharedSecretStores`
+  within a control plane group to selectively provision secrets from an external store--such as Vault--into the control
+  planes in the group.
+- Support for OIDC auhentication flows when interacting directly with a control plane in a Space.
+- new `up` CLI commands to migrate open soure Crossplane or UXP instances into a control plane in a Space.
+
+## v1.1.0
+
+### Release Date: 2023-10-10
+
+#### What's Changed
+
+- Alpha support for enabling External Secrets Operator in a control plane.
+- Control plane api-server autoscaling based on CRD count.
+- Universal Crossplane was bumped from `v1.13.2-up.1` to `v.1.13.2-up.2` for all control planes.
+- new `up` CLI commands to interact with control planes in a Space.
+
+## v1.0.1
+
+### Release Date: 2023-08-31
+
+#### What's Changed
+
+- Export mxp-gateway metrics via otlp-collector
+
+## v1.0.0
+
+### Release Date: 2023-08-28
+
+#### What's Changed
+
+- controllers: patch against original object
+- Promote APIs to v1beta1
+- apis: clarify resource descriptions
+- apis/mxp: minimize unused xr fields
+- Stop routing internal traffic in the hub hostcluster through the ingress-controller
+- XManagedControlPlane and hub XHostCluster XRs to v1beta1
+- Introduce CRD lifecycle management through mxe-apis
+- Add external-name to xhostclusterservices composed resource
+- Stop logging bearer token at debug
+- Clean up misc items
+- Update XHostClusterServices resource
+- Minor adjustments to destroy process
+- Enable git source by default and keep it optional
+- kube-control-plane: bump to kube 1.28
+- ArgoCD controller to register ControlPlane as target
+- vcluster: bump memory limit to 400Mi after seeing 270Mi in reality
+- mxp-gateway: use client-go's transport cache
+- Bring vcluster-k8s in tree
+- Return error instead of panic if ctp connection secret ref is unset
+- vcluster: disable its liveness probe pointing to kube-apiserver
+- Observability networkpolicy fixes
+- Fix ssh auth with known_hosts and sub-directory discovery
+- git: fix commit ref bugs
+- git: run through cleanup even if controlplane is not ready
+- Fix otlp-collector networkpolicy ports
+
+<!-- vale on -->
+

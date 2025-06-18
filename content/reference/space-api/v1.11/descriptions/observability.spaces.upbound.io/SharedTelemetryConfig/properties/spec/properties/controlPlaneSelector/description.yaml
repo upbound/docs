@@ -1,3 +1,0 @@
-description: |-
-    ControlPlaneSelector defines the selector for ControlPlanes on which to
-    configure telemetry.

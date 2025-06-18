@@ -1,3 +1,0 @@
-description: |-
-    Used to apply string transformation on the secrets.
-    The resulting key will be the output of the template applied by the operation.

@@ -1,0 +1,28 @@
+{
+  "id": "rel-notes/mcp-connector",
+  "title": "MCP Connector Release Notes",
+  "description": "Release notes for the Mcp Connector",
+  "source": "@site/docs/release-notes/rel-notes/mcp-connector.md",
+  "sourceDirName": "rel-notes",
+  "slug": "/rel-notes/mcp-connector",
+  "permalink": "/release-notes/rel-notes/mcp-connector",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "MCP Connector Release Notes",
+    "description": "Release notes for the Mcp Connector",
+    "toc_min_heading_level": 2,
+    "toc_max_heading_level": 2
+  },
+  "sidebar": "releaseNotesSidebar",
+  "previous": {
+    "title": "Up CLI Release Notes",
+    "permalink": "/release-notes/rel-notes/up-cli"
+  },
+  "next": {
+    "title": "Spaces Release Notes",
+    "permalink": "/release-notes/rel-notes/spaces"
+  }
+}

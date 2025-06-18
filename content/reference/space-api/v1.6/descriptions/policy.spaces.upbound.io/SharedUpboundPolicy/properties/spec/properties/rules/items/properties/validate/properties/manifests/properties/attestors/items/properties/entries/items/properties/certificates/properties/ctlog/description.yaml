@@ -1,3 +1,0 @@
-description: |-
-    CTLog (certificate timestamp log) provides a configuration for validation of Signed Certificate
-    Timestamps (SCTs). If the value is unset, the default behavior by Cosign is used.

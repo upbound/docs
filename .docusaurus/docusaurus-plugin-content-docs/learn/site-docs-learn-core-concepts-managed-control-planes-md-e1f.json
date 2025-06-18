@@ -1,0 +1,31 @@
+{
+  "id": "core-concepts/managed-control-planes",
+  "title": "Managed Control Planes",
+  "description": "Fully isolated Crossplane control plane instances that Upbound manages for you",
+  "source": "@site/docs/learn/core-concepts/managed-control-planes.md",
+  "sourceDirName": "core-concepts",
+  "slug": "/core-concepts/managed-control-planes",
+  "permalink": "/core-concepts/managed-control-planes",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Managed Control Planes",
+    "weight": 2,
+    "description": "Fully isolated Crossplane control plane instances that Upbound manages for you",
+    "draft": true,
+    "aliases": [
+      "concepts/mcp"
+    ]
+  },
+  "sidebar": "learnSidebar",
+  "previous": {
+    "title": "Functions",
+    "permalink": "/core-concepts/functions"
+  },
+  "next": {
+    "title": "Control Plane Projects",
+    "permalink": "/core-concepts/projects"
+  }
+}

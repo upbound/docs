@@ -1,4 +1,0 @@
-description: |-
-    ControlPlane is the name of the ControlPlane to which the schedule
-    applies.
-    Requires 'get' permission on the referenced ControlPlane.

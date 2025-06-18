@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_organization_(org)_token",
+  "title": "up_organization_(org)_token",
+  "description": "Generates an organization-scoped token to authenticate with a Cloud space.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_organization_(org)_token.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_organization_(org)_token",
+  "permalink": "/apis-cli/cli-reference/yaml/up_organization_(org)_token",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

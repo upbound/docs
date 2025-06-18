@@ -1,3 +1,0 @@
-description: |-
-    Default is an optional arbitrary JSON object that the variable may take if the JMESPath
-    expression evaluates to nil

@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-projects/building-pushing",
+  "title": "Building and pushing your Control Plane Projects",
+  "description": "How to build and push your control plane project to the Upbound Marketplace",
+  "source": "@site/docs/build/control-plane-projects/building-pushing.md",
+  "sourceDirName": "control-plane-projects",
+  "slug": "/control-plane-projects/building-pushing",
+  "permalink": "/build/control-plane-projects/building-pushing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Building and pushing your Control Plane Projects",
+    "weight": 6,
+    "description": "How to build and push your control plane project to the Upbound Marketplace",
+    "aliases": [
+      "/core-concepts/building-pushing"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project",
+    "permalink": "/build/control-plane-projects/authoring-xrds"
+  },
+  "next": {
+    "title": "Simulate changes to your Control Plane Projects",
+    "permalink": "/build/control-plane-projects/simulations"
+  }
+}

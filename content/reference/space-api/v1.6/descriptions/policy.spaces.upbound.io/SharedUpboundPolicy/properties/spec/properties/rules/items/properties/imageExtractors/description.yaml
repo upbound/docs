@@ -1,3 +1,0 @@
-description: |-
-    ImageExtractors defines a mapping from kinds to ImageExtractorConfigs.
-    This config is only valid for verifyImages rules.

@@ -1,2 +1,0 @@
-description: |-
-    AuditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request.

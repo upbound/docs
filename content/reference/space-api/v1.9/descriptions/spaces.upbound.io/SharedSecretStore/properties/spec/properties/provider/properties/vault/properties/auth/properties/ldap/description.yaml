@@ -1,3 +1,0 @@
-description: |-
-    Ldap authenticates with Vault by passing username/password pair using
-    the LDAP authentication method

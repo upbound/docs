@@ -1,6 +1,0 @@
-description: |-
-    Specifies whether to delete the secret without any recovery window. You
-    can't use both this parameter and RecoveryWindowInDays in the same call.
-    If you don't use either, then by default Secrets Manager uses a 30 day
-    recovery window.
-    see: https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_DeleteSecret.html#SecretsManager-DeleteSecret-request-ForceDeleteWithoutRecovery

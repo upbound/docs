@@ -1,3 +1,0 @@
-description: |-
-    A ReferencedObject represents a Kubernetes object that is referenced by a
-    claim.

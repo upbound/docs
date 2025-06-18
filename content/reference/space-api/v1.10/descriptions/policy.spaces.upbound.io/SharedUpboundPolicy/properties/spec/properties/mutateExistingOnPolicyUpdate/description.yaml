@@ -1,3 +1,0 @@
-description: |-
-    MutateExistingOnPolicyUpdate controls if a mutateExisting policy is applied on policy events.
-    Default value is 'false'.

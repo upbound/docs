@@ -1,3 +1,0 @@
-description: |-
-    conditions is a list of conditions to query. If empty, all conditions are
-    queried in the given scope.

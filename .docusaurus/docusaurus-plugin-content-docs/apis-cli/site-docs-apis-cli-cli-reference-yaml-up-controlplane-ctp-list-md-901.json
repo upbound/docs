@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_controlplane_(ctp)_list",
+  "title": "up_controlplane_(ctp)_list",
+  "description": "List control planes for the organization.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_controlplane_(ctp)_list",
+  "permalink": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

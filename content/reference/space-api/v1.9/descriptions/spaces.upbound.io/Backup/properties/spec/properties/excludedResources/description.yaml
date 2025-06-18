@@ -1,3 +1,0 @@
-description: |-
-    ExcludedResources is a slice of resource names that are not
-    included in the backup. Used to filter the included extra resources.

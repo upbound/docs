@@ -1,341 +1,491 @@
-# Upbound Docs
-This repository is the home of the [Upbound documentation](http://docs.upbound.io). 
+# Upbound Documentation - Docusaurus
 
-The Upbound Vale repository is at [upbound/vale](http://github.com/upbound/vale).
+This repo contains the Upbound documentation built with Docusaurus. It is a
+migration and work in progress.
 
-## Code of Conduct
-We follow the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md).
+* [Local Development](#local-development)
+* [Style Guide](#style-guide)
+* [Code style guide](#code-style-guide)
+* [Markdown](#markdown)
+* [Admonitions](#admonitions)
 
-Taken directly from the CNCF CoC:
->As contributors and maintainers in the CNCF community, and in the interest of fostering an open and welcoming community, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.
->  
->We are committed to making participation in the CNCF community a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, or nationality.
+## Local development
 
-### Reporting
-To report violations contact docs@upbound.io or use the [Contact Us form](https://upbound.hubspotpagebuilder.com/contact).
-
-## Licensing
-Upbound documentation is under the [Creative Commons Attribution-ShareAlike](https://creativecommons.org/licenses/by-sa/4.0/) license. CC-BY-SA allows reuse, remixing and republishing of Upbound documentation under this same license and with full attribution to Upbound.
-
-## Clone and run the documentation
-Upbound documentation is open source and hosted on [GitHub](https://github.com/upbound/docs/). The documentation uses [Hugo](https://gohugo.io/) to build the site.  
-The documentation site has no other external dependencies.
-
-Clone the docs repository with
+To contribute to this effort, clone and build the project:
 
 ```shell
-git clone https://github.com/upbound/docs.git --recurse-submodules
+git clone https://github.com/upbound/docusaurus.git
+cd docusaurus
+npm install
 ```
 
->The docs repository relies on git submodules for the production build process, but they're not required for local development.
+Start the development server
 
-
-### Directory structure
-The relevant directories of the docs repository are:
-| Directory | Purpose |
-| ----- | ---- |
-| `content` | Markdown files for all individual pages. |
-| `static/images` | Location for all image files.  |
-| `themes` | HTML templates and Hugo tooling. |
-| `utils` | Utility files for the documentation team and build process. |
-
-All markdown content exists within the `/content` directory.   
-All image files exist within `static/images`.
-
-### Run Hugo
-* Follow the [Hugo documentation](https://gohugo.io/getting-started/installing/) to install Hugo.
-* Run `hugo server`
-* Go to [http://localhost:1313](http://localhost:1313)
-
->Upbound documentation uses [Hugo v0.101.0](https://github.com/gohugoio/hugo/releases/tag/v0.101.0), but newer versions are compatible.
-
-### Documentation issues and feature requests
-Use [GitHub Issues](https://github.com/upbound/docs/issues/new/choose) to report a problem or request documentation content.
-
-* **Bug Report** - The `Bug Report` template is useful for typos or mistakes. Provide the page address and error in your report. Bugs should use the label `bug`.
-* **Infrastructure Issue** - The `Infrastructure Issue` template is for requests or issues with the website, tooling or design. An example of an infrastructure issue would be a problem building the docs, running Vale or issues with JavaScript. Infrastructure issues should use the label `infrastructure`.
-* **Other** - For any other issues, content requests or you're not sure then a template isn't required. The documentation team manages classification and labeling.
-
-## Contributing
-
-### Branching and pull requests
-Upbound docs use two branches: `main` and `staging`. The `main` branch is the current content of docs.upbound.io and is never directly modified.
-
-Create all branches and PRs from the `staging` branch. 
-
-## Authoring
-The `/content` directory contains all documentation pages.  
-A unique directory inside `/content` creates a new "section" in the documentation. The root of the section is the `_index.md` page inside that directory.
-
-### Front matter
-Each page contains metadata called [front matter](https://gohugo.io/content-management/front-matter/). Each page requires front matter to render.
-
-```yaml
----
-title: "Official Providers"
-weight: 610
----
 ```
-
-`title` defines the name of the page.  
-`weight` determines the ordering of the page in the table of contents. Lower weight pages come before higher weights in the table of contents. The value of `weight` is otherwise arbitrary.
-
->The `weight` of a directory's `_index.md` page moves the entire section of content in the table of contents.
-
-
-### Links
-#### Linking between docs pages
-Link between pages or sections within the documentation using standard [markdown link syntax](https://www.markdownguide.org/basic-syntax/#links). Use the [Hugo ref shortcode](https://gohugo.io/content-management/shortcodes/#ref-and-relref) with the path of the file relative to `/content` for the link location.
-
-For example, to link to the "Official Providers" page create a markdown link like this:
-
-```markdown
-[a link to the Official Providers page]({{</* ref "providers/_index.md" */>}})
-```
-
-
-
->The `ref` value is of the markdown file, including `.md` extension. Don't link to a web address.
-
-
-If the `ref` value points to a page that doesn't exist, Hugo fails to start. 
-
-For example, providing `index.md` instead of `_index.md` would cause an error like the this:
-```shell
-Start building sites …
-hugo v0.98.0-165d299cde259c8b801abadc6d3405a229e449f6 darwin/arm64 BuildDate=2022-04-28T10:23:30Z VendorInfo=gohugoio
-ERROR 2022/08/15 13:53:46 [en] REF_NOT_FOUND: Ref "providers/index.md": "/Users/plumbis/git/docs/content/contributing.md:64:41": page not found
-Error: Error building site: logged 1 error
-```
-
-Using `ref` ensures links render in the staging environment and prevents broken links.
-
-#### Linking to external sites
-Minimize linking to external sites. When linking to any page outside of `docs.upbound.io` use standard [markdown link syntax](https://www.markdownguide.org/basic-syntax/#links) without using the `ref` shortcode.
-
-For example, 
-```markdown
-[Go to Upbound](http://upbound.io)
-```
-
-### Hints and alert boxes
-Hint and alert boxes provide call-outs to important information to the reader. Upbound docs support five different hint box styles.
-
-```html
-{{< tabs "hints" >}}
-{{< tab "Note">}}
-{{< hint type="Note" >}}
-An example note box.
-{{< /hint >}}
-{{< /tab >}}
-
-{{< tab "Tip">}}
-{{< hint type="Tip" >}}
-An example tip box.
-{{< /hint >}}
-{{< /tab >}}
-
-{{< tab "Important">}}
-{{< hint type="important" >}}
-An example important box.
-{{< /hint >}}
-{{< /tab >}}
-
-{{< tab "Caution">}}
-{{< hint type="caution" >}}
-An example caution box.
-{{< /hint >}}
-{{< /tab >}}
-
-{{< tab "Warning">}}
-{{< hint type="warning" >}}
-An example warning box.
-{{< /hint >}}
-{{< /tab >}}
-
-{{< /tabs >}}
-```
-
-Create a hint by using a shortcode in your markdown file:
-```html
-{{</* hint type="note" */>}}
-Your box content. This hint box is a note.
-{{</* /hint */>}}
-```
-
-Use `note`, `tip`, `important`, `caution` or `warning` as the `type=` value.
-
-### Tabs
-Use tabs to present information about a single topic with multiple exclusive options. For example, creating a resource via command-line or Upbound console. 
-
-To create a tab set, first create a `tabs` shortcode and use multiple `tab` shortcodes inside for each tab.
-
-Each `tabs` shortcode requires a name that's unique to the page it's on. Each `tab` name is the title of the tab on the webpage. 
-
-For example:
-```
-{{</* tabs "my-unique-name" */>}}
-
-{{</* tab "Command-line" */>}}
-An example tab. Place anything inside a tab.
-{{</* /tab */>}}
-
-{{</* tab "GUI" */>}}
-A second example tab. 
-{{</* /tab */>}}
-
-{{</* /tabs */>}}
-```
-
-This code block renders the following tabs
-
-```html
-{{< tabs "my-unique-name" >}}
-
-{{< tab "Command-line" >}}
-An example tab. Place anything inside a tab.
-{{< /tab >}}
-
-{{< tab "GUI" >}}
-A second example tab. 
-{{< /tab >}}
-
-{{< /tabs >}}
-```
-
-
->Both `tab` and `tabs` require opening and closing tags. Unclosed tags causes Hugo to fail.
-
-
-### Hide long outputs
-For long outputs that are relevant but contain too much detail or are only relevant for some cases use the `expand` shortcode. 
-
-Provide a label to display for expansion block and any content to hide inside the shortcode.
-For example, 
-
-`````
-````yaml
-{{</* expand "A large XRD" */>}}
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
-metadata:
-  name: xpostgresqlinstances.database.example.org
-spec:
-  group: database.example.org
-  names:
-    kind: XPostgreSQLInstance
-    plural: xpostgresqlinstances
-  claimNames:
-    kind: PostgreSQLInstance
-    plural: postgresqlinstances
-  versions:
-  - name: v1alpha1
-    served: true
-    referenceable: true
-    schema:
-      openAPIV3Schema:
-        type: object
-        properties:
-          spec:
-            type: object
-            properties:
-              parameters:
-                type: object
-                properties:
-                  storageGB:
-                    type: integer
-                required:
-                - storageGB
-            required:
-            - parameters
-```
-{{</* /expand */>}}
-````
-
-{{<expand "A large XRD" >}}
-```yaml
-apiVersion: apiextensions.crossplane.io/v1
-kind: CompositeResourceDefinition
-metadata:
-  name: xpostgresqlinstances.database.example.org
-spec:
-  group: database.example.org
-  names:
-    kind: XPostgreSQLInstance
-    plural: xpostgresqlinstances
-  claimNames:
-    kind: PostgreSQLInstance
-    plural: postgresqlinstances
-  versions:
-  - name: v1alpha1
-    served: true
-    referenceable: true
-    schema:
-      openAPIV3Schema:
-        type: object
-        properties:
-          spec:
-            type: object
-            properties:
-              parameters:
-                type: object
-                properties:
-                  storageGB:
-                    type: integer
-                required:
-                - storageGB
-            required:
-            - parameters
-```
-{{< /expand >}}
-
-`````
-
-
-### Images
-Place images in the `/static/images` directory. Reference images with [markdown](https://www.markdownguide.org/basic-syntax/#images-1) using `/images` as the root directory.
-
-For example, to link to the image located at `/static/images/robots/create-first-robot-token.png` use
-
-```markdown
-![The alt text for an example image](/images/robots/create-first-robot-token.png)
+$ npm start 
 ```
 
 ## Style guide
-The Upbound documentation style guide is still under construction, but the [Kubernetes style guide](https://kubernetes.io/docs/contribute/style/) is a safe reference. 
 
-### Vale
-Upbound documentation is implementing [Vale](https://vale.sh/docs/vale-cli/installation/) for spell checking, style guide enforcement and linting. 
+**TL;DR**
 
-#### Clone the Vale repository
-Upbound docs use Vale as a git submodule. Clone and run Vale locally from the [upbound/vale](https://github.com/upbound/vale) repository.
-
-A [Vale plug-in](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server) exists for VSCode users.
-
-It's recommended to manually run Vale against any contribution before opening a PR. 
-
-#### Updating Vale rules
-If the documentation contribution incorrectly violates a Vale rule issue a PR against the `main` branch of the [Vale repository](https://github.com/upbound/vale). If you are unclear on how to update Vale, [open an issue](https://github.com/upbound/vale/issues/new/choose) against the Vale repository with your suggested change.
-
-#### Disabling Vale rules
-If a Vale error is an actual exception individual Vale rules can be temporarily turned off.
-
-To turn off Vale checking, use an HTML comment with `<!-- vale $rule = NO -->` before the text and `<!-- vale $rule = YES -->` . 
+- Avoid [passive voice](https://www.grammarly.com/blog/passive-voice/)
+- Use [sentence-case headings](https://apastyle.apa.org/style-grammar-guidelines/capitalization/sentence-case)
+- Use [present tense](https://www.grammarly.com/blog/simple-present/) and avoid will
+- Don't use [cliches](https://www.topcreativewritingcourses.com/blog/common-cliches-in-writing-and-how-to-avoid-them)
+- Don't use "easy", "simple", etc.
 
 
->Vale requires the space surrounding the `=`. `YES` and `NO` must be in capital case.
+### **1. General Writing Guidelines**
 
-Any Vale rule that's turned off must include an HTML comment justifying why the rule's turned off.
+- **Avoid [passive voice](https://www.grammarly.com/blog/passive-voice/).**
+    
+    Active voice writing is stronger and direct. It also simplifies document translations.
+    
+- **Use present tense and avoid "will."**
+    
+    Documentation covers actions happening now and the results in real time.
+    
+- **Avoid gerund headings (-ing words).**
+    
+    Gerunds make headings less direct.
+    
+- **Limit sentences to 25 words or fewer.**
+    
+    Longer sentences are harder to read. Shorter sentences improve search engine optimization (SEO).
+    
 
-<!-- vale Google.We = NO --> 
-For example, the phrase "we're Upbound users" violates the `Google.We` rule. To include the phrase without a Vale error use `<!-- vale Google.We = NO -->`.
+---
+
+### **2. Formatting and Structure**
+
+- **Use sentence-case headings.**
+    
+    Sentence case creates more casual and approachable writing.
+    
+- **Wrap lines at 80 characters.**
+    
+    Line wrapping improves review feedback.
+    
+- **Spell out the first use of an acronym unless it's common to new Crossplane users.**
+    
+    When in doubt, spell it out. Avoid assuming the reader already knows the background.
+    
+- **Be descriptive in link text.**
+    
+    Avoid "click here" or "read more." Descriptive link text improves accessibility for screen readers.
+    
+- **Order brand names alphabetically (e.g., AWS, Azure, GCP).**
+    
+    This removes the appearance of preference.
+    
+
+---
+
+### **3. Grammar and Style**
+
+- **Spell out numbers less than 10, except for percentages, time, and versions.**
+    
+    Numbers in sentences are harder to read.
+    
+- **Capitalize "Crossplane" and "Kubernetes."**
+    
+    These are proper nouns. Don't use abbreviations like "k8s."
+    
+- **Use contractions (e.g., "don't" instead of "do not").**
+    
+    Contractions improve readability and clarity.
+    
+- **Don't use Latin terms (e.g., i.e., etc.).**
+    
+    These are harder for non-Latin language speakers to understand.
+    
+- **Avoid cliches.**
+    
+    Cliches sound unprofessional and aren't internationally inclusive.
+    
+- **Avoid terms like "easy," "simple," or "obvious."**
+    
+    These terms can come across as condescending to the reader.
+    
+- **No Oxford commas.**
+    
+    Do not place a comma before "and" or "or."
+    
+
+---
+
+### **4. Spelling and Localization**
+
+- **Use U.S. English spelling and grammar.**
+Ensure consistency across all documentation.
+
+
+## Code Style Guide
+
+
+### Italics
+
+- Use *italics* to introduce or draw attention to a term.
+- Use *italics* on the same term sparingly to avoid overuse.
+
+---
+
+### Inline Code Styles
+
+- Use inline code styles (single backticks, ```) for files, directories, or paths.
+- Example: ``/path/to/directory``
+- Use the `{{< hover >}}` shortcode to relate command explanations to larger examples.
+
+---
+
+### Placeholders
+
+- Use angle brackets (`< >`) for placeholders with short, descriptive names.
+- Use underscores (`_`) between words to simplify selections.
+
+#### **Example: AWS Credentials**
+
+```
+[default]
+aws_access_key_id = <aws_access_key>
+aws_secret_access_key = <aws_secret_key>
+```
+---
+
+### Styling Kubernetes Objects
+
+#### **Kinds**
+
+- Kinds should use **upper camel case**: capitalize each word without separators.
+- Example:
+    
+    ```yaml
+    kind: MyComputeResource
+    spec:
+      group: test.example.org
+      names:
+        kind: MyComputeResource
+    
+    ```
+    
+    The words "My," "Compute," and "Resource" are capitalized with no spaces or dashes.
+    
+
+---
+
+#### Names
+
+- Object names should use **snake case**: all lowercase with dashes (-) between words.
+- Example:
+    
+    ```yaml
+    apiVersion: test.example.org/v1alpha1
+    kind: MyComputeResource
+    metadata:
+      name: my-resource
+    
+    ```
+    
+    The name `my-resource` uses all lowercase, with a dash separating "my" and "resource."
+    
+
+---
+
+### Inline Kubernetes Objects
+
+- Kubernetes objects mentioned inline don't require special styling unless you want to draw specific attention to them.
+
+---
+
+### Use fenced code blocks
+
+Fenced code blocks with language hints allow for language highlighting.
+
+**Example:**
+
+````
+```yaml
+apiVersion: s3.aws.m.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  namespace: default
+  name: crossplane-bucket-example
+spec:
+  forProvider:
+    region: us-east-2
+```
+````
+
+---
+
+### Dynamic line highlighting
+
+Dynamic highlighting only highlights a specific line when a read hovers over a specific word outside of the code block.
+This highlighting style is useful to draw attention to a line of code when explaining a command or argument. 
+
+**Example:**
+
+First, create the hover labels:
 
 ```html
-<!-- disabling Google.We for demonstration purposes -->
-<!-- vale Google.We = NO --> 
-We're Upbound users.
-<!-- vale Google.We = YES -->
+Create a <Hover label="pc-upbound-auth" line="2">ProviderConfig</Hover> to set
+the provider authentication method to <Hover label="pc-upbound-auth"
+line="9">Upbound</Hover>.
 ```
 
->Failing to enable the rule again with `= YES` disables checking for the rest of the document.
+Next, wrap the code block in a `<div id>` that matches the hover label:
+
+````html
+<div id="pc-upbound-auth">
+
+```yaml 
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Upbound
+  clientID: <client ID>
+  tenantID: <tenant ID>
+  subscriptionID: <subscription ID>
+```
+
+</div>
+````
+
+---
+
+### Copy lines
+
+Specify which lines of the code block to copy:
+
+**Example:**
+
+````shell
+```shell {copy-lines=1}
+cat examples/xapp/example.yaml
+apiVersion: app.uppound.io/v1alpha1
+kind: XApp
+metadata:
+  name: example
+```
+````
+---
+
+### Editable fields
+
+Highlight areas where users can input their own information.
+
+**Example:**
+
+```jsx
+<EditCode language="shell">
+{`
+up login --organization=$@YOUR_UPBOUND_ORG$@
+`}
+</EditCode>
+```
+
+## Markdown
+
+### Images
+
+Store images in the `static/img` folder and referenced as a relative link from
+the project root.
+
+**Example:**
+
+```markdown
+![image][image]
+
+// Bottom of page
+[image]: img/image.png
+```
+---
+
+### Links
+
+Docusaurus processes URL paths and file paths. For new links use reference-style
+formatting.
+
+**Example:**
+
+```markdown
+This is a [link][link]
+
+// Bottom of page
+
+[link]: https://www.website.com
+```
+
+For internal links, use absolute paths relative to the content root of `docs`.
+
+**Example:**
+
+```markdown
+This is a [page link][page-link]
+
+// Bottom of page
+
+[page-link]: operate/page-link
+```
+
+---
+
+### Tables
+
+No special tags for tables. Just format as a Markdown table:
+
+```markdown
+| Short flag | Long flag | Description |
+| --- | --- | --- |
+| `-h` | `--help` | Show context-sensitive help. |
+| | `--pretty` | Pretty print output. |
+| `-q` | `--quiet` | Suppress all output. |
+```
+
+---
+
+### Hide details
+
+Docusaurus allows you to hide details in an accordian component readers can
+toggle. Should be used sparingly as information can literally hide here:
+
+**Example:**
+
+````html
+<details>
+  <summary>Toggle me!</summary>
+
+  This is the detailed content
+
+  ```js
+  console.log("Markdown features including the code block are available");
+  ```
+
+  You can use Markdown here including **bold** and _italic_ text, and [inline link](https://docusaurus.io)
+  
+  <details>
+    <summary>Nested toggle! Some surprise inside...</summary>
+  </details>
+</details>
+````
+---
+
+### Tabs
+
+#### Standard tabs
+
+Docusaurus formats tabs with `<Tabs>` and `<TabItem>` tags: 
+
+**Example:** 
+
+````jsx
+<Tabs>
+
+<TabItem value="Up CLI" label="Up CLI">
+
+```bash
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd"
+```
+
+</TabItem>
+
+<TabItem value="Helm" label="Helm">
+
+```bash
+helm -n upbound-system upgrade --install spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "features.alpha.argocdPlugin.enabled=true" \
+  --set "features.alpha.argocdPlugin.useUIDFormatForCTPSecrets=true" \
+  --set "features.alpha.argocdPlugin.target.secretNamespace=argocd" \
+  --wait
+```
+
+</TabItem>
+
+</Tabs>
+````
+---
+
+#### Synced tabs
+
+Docusaurus `<Tabs>` component allows you to create tabbed content choices that persist
+with `groupId`.
+
+**Example:**
+
+````jsx
+<Tabs groupId="cloud-provider">
+<TabItem value="aws" label="AWS">
+
+```shell
+git clone https://github.com/upbound/uppound-project-aws && cd uppound-project-aws
+```
+
+</TabItem>
+<TabItem value="azure" label="Azure">
+
+```shell
+git clone https://github.com/upbound/uppound-project-azure && cd uppound-project-azure
+```
+
+</TabItem>
+<TabItem value="gcp" label="GCP">
+
+```shell
+git clone https://github.com/upbound/uppound-project-gcp && cd uppound-project-gcp
+```
+
+</TabItem>
+</Tabs>
+````
+---
+
+## Admonitions
+
+Docusaurus uses special admonitions with the following options:
+
+```markdown
+:::note
+
+Notes are useful for calling out optional information.
+
+:::
+```
+
+```markdown
+:::tip
+
+Use tips to provide context or a best practice.
+
+:::
+```
+
+```markdown
+:::warning
+
+Warning hints are for drawing extra attention to something.
+
+:::
+```
+
+```markdown
+:::danger
+
+Alert users of things that may cause outages, lose data or
+are irreversible changes.
+
+:::
+```
+
+For more information on this project, visit the [Notion page](https://www.notion.so/upbound/Operation-Dino-mite-Docs-1e453507d1f780bfa92fce8ca03c132b?pvs=4)

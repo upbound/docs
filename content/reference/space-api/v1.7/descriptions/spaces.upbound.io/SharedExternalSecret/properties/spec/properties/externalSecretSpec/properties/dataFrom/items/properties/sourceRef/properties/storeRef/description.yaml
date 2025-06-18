@@ -1,2 +1,0 @@
-description: |-
-    SecretStoreRef defines which SecretStore to fetch the ExternalSecret data.

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_alpha_migration_import",
+  "title": "up_alpha_migration_import",
+  "description": "The 'import' command imports a control plane state from an archive file into an Upbound managed control plane.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_alpha_migration_import.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_alpha_migration_import",
+  "permalink": "/apis-cli/cli-reference/yaml/up_alpha_migration_import",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_controlplane_(ctp)_configuration_install",
+  "title": "up_controlplane_(ctp)_configuration_install",
+  "description": "Install a Configuration.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_controlplane_(ctp)_configuration_install",
+  "permalink": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

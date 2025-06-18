@@ -1,5 +1,0 @@
-description: |-
-    Annotations represents the Kube object annotations.
-    Only the following annotations are allowed to be patched:
-    - crossplane.io/paused
-    - spaces.upbound.io/force-reconcile-at

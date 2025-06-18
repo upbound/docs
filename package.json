@@ -1,12 +1,51 @@
 {
+  "name": "upbound-docs",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "prepare": "sed -i 's/# writeStats: true/writeStats: true/g' config.yaml"
+    "docusaurus": "docusaurus",
+    "start": "npm run process-crds && docusaurus start",
+    "build": "npm run process-crds && docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "process-crds": "node scripts/process-crds.js",
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^5.0.0",
-    "postcss": "^8.4.19",
-    "postcss-cli": "^10.1.0",
-    "postcss-lightningcss": "^0.6.0",
-    "postcss-sort-media-queries": "^4.3.0"
+    "@docusaurus/core": "3.7.0",
+    "@docusaurus/plugin-client-redirects": "^3.7.0",
+    "@docusaurus/preset-classic": "3.7.0",
+    "@docusaurus/theme-live-codeblock": "^3.7.0",
+    "@docusaurus/theme-search-algolia": "^3.7.0",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.1.1",
+    "js-yaml": "^4.1.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.7.0",
+    "@docusaurus/types": "3.7.0",
+    "yaml-loader": "^0.8.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
   }
 }

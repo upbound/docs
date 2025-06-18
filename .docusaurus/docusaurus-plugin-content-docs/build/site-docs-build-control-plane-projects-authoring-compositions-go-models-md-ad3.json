@@ -1,0 +1,26 @@
+{
+  "id": "control-plane-projects/authoring-compositions/go/models",
+  "title": "Models",
+  "description": "Upbound Official Providers and some other packages include Go models: packages",
+  "source": "@site/docs/build/control-plane-projects/authoring-compositions/go/models.md",
+  "sourceDirName": "control-plane-projects/authoring-compositions/go",
+  "slug": "/control-plane-projects/authoring-compositions/go/models",
+  "permalink": "/build/control-plane-projects/authoring-compositions/go/models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Models",
+    "weight": 3
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/build/control-plane-projects/authoring-compositions/go/inputs-outputs"
+  },
+  "next": {
+    "title": "Build with Go Templating",
+    "permalink": "/build/control-plane-projects/authoring-compositions/go-templating/"
+  }
+}

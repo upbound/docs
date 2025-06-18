@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-projects/authoring-compositions/kcl/variables",
+  "title": "Variables",
+  "description": "This guide describes how to define and use variables in your KCL function.",
+  "source": "@site/docs/build/control-plane-projects/authoring-compositions/kcl/variables.md",
+  "sourceDirName": "control-plane-projects/authoring-compositions/kcl",
+  "slug": "/control-plane-projects/authoring-compositions/kcl/variables",
+  "permalink": "/build/control-plane-projects/authoring-compositions/kcl/variables",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Variables",
+    "weight": 40,
+    "aliases": [
+      "/core-concepts/kcl/variables",
+      "core-concepts/kcl/variables"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Resource schemas",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas"
+  },
+  "next": {
+    "title": "Write status to a composite",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
+  }
+}

@@ -1,3 +1,0 @@
-description: |-
-    SchemaValidation skips validation checks for policies as well as patched resources.
-    Optional. The default value is set to 'true', it must be set to 'false' to disable the validation checks.

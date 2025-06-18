@@ -1,8 +1,0 @@
-{{ $htmlTable := .Inner | markdownify }}
-{{ $old := "<table>" }}
-{{ $class := .Get 0 | default "table custom-table"}}  <!-- Add custom class here -->
-{{ $new := printf "<table class=\"%s\">" $class }}
-{{ $htmlTable := replace $htmlTable $old $new }}
-<div class="table-responsive custom-table-wrapper">  <!-- Add custom wrapper class here -->
-  {{ $htmlTable | safeHTML }}
-</div>

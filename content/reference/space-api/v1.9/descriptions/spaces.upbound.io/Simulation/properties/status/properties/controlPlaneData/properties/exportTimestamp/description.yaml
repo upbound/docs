@@ -1,4 +1,0 @@
-description: |-
-    ExportTimestamp is the time at which the source control plane's resources
-    were exported. Resources are exported to temporary storage before they're
-    imported to the simulated control plane.

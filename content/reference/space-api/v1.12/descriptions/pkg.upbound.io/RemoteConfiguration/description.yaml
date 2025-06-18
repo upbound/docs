@@ -1,3 +1,0 @@
-description: |-
-    A RemoteConfiguration installs an OCI compatible configuration package in
-    remote mode by creating the claim CustomResourceDefinitions only.

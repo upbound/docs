@@ -1,4 +1,0 @@
-description: |-
-    InControlPlaneOverride represents resource configuration overrides in
-    a ControlPlane. The specified override can be applied on single objects
-    as well as claim/XR object hierarchies.

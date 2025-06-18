@@ -1,4 +1,0 @@
-description: |-
-    ResourceSchedule indicates where instances of a resource group are scheduled to,
-    i.e. by which control plane and in which group and space claims will be
-    implemented.

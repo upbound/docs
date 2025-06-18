@@ -1,3 +1,0 @@
-description: |-
-    PatchedObjectStatus represents the state of an applied patch to an object
-    in the target hierarchy.

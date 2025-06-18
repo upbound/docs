@@ -1,5 +1,0 @@
-description: |-
-    AllConditions enable variable-based conditional rule execution. This is useful for
-    finer control of when an rule is applied. A condition can reference object data
-    using JMESPath notation.
-    Here, all of the conditions need to pass

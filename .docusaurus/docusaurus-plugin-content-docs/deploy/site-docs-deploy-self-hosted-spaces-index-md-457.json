@@ -1,0 +1,34 @@
+{
+  "id": "self-hosted-spaces/index",
+  "title": "Self-Hosted Spaces",
+  "description": "A guide to Upbound Self-Hosted Spaces",
+  "source": "@site/docs/deploy/self-hosted-spaces/index.md",
+  "sourceDirName": "self-hosted-spaces",
+  "slug": "/self-hosted-spaces/",
+  "permalink": "/deploy/self-hosted-spaces/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Self-Hosted Spaces",
+    "weight": 2,
+    "description": "A guide to Upbound Self-Hosted Spaces",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces",
+      "/spaces",
+      "/deploy/disconnected-spaces",
+      "all-spaces/self-hosted-spaces"
+    ],
+    "category": "guides"
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Query API setup",
+    "permalink": "/deploy/query-api"
+  },
+  "next": {
+    "title": "Connect or disconnect a Space",
+    "permalink": "/deploy/self-hosted-spaces/attach-detach"
+  }
+}

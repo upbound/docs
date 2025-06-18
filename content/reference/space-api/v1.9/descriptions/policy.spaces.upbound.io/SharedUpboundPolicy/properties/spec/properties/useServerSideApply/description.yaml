@@ -1,4 +1,0 @@
-description: |-
-    UseServerSideApply controls whether to use server-side apply for generate rules
-    If is set to 'true' create & update for generate rules will use apply instead of create/update.
-    Defaults to 'false' if not specified.

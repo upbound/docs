@@ -1,4 +1,0 @@
-description: |-
-    warnings is a list of warnings that occurred while processing the query.
-    The query is still executed, but these warnings indicate problems. It
-    is recommended to print these to the user.

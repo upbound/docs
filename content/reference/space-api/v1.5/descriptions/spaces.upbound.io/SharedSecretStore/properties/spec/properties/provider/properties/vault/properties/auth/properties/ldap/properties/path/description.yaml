@@ -1,3 +1,0 @@
-description: |-
-    Path where the LDAP authentication backend is mounted
-    in Vault, e.g: 'ldap'

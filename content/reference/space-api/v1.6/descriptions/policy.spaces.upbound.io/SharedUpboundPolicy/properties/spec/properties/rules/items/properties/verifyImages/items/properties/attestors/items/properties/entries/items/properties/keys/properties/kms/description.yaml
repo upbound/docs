@@ -1,3 +1,0 @@
-description: |-
-    KMS provides the URI to the public key stored in a Key Management System. See:
-    https://github.com/sigstore/cosign/blob/main/KMS.md

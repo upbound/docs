@@ -1,4 +1,0 @@
-description: |-
-    Annotations is a  map of annotations (key-value pairs of type string). Annotation keys
-    and values support the wildcard characters '*' (matches zero or many characters) and
-    '?' (matches at least one character).

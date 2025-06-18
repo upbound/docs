@@ -1,2 +1,0 @@
-description: |-
-    Server is the connection address for the Vault server, e.g: 'https://vault.example.com:8200'.

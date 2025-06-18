@@ -1,3 +1,0 @@
-description: |-
-    OwnerPolicy defines how created objects should be owned.
-    'OnCreate' requires management policy 'Create' or '*'.

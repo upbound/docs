@@ -1,0 +1,84 @@
+---
+title: Self-Hosted Spaces
+weight: 2
+description: A guide to Upbound Self-Hosted Spaces
+aliases:
+    - /all-spaces/self-hosted-spaces
+    - /spaces
+    - /deploy/disconnected-spaces
+    - all-spaces/self-hosted-spaces
+
+category: "guides"
+---
+
+<!-- vale Google.Headings = NO -->
+
+## Connected Spaces
+
+[Upbound][upbound] allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
+
+To get a Connected Space create a Disconnected Space first as described below, then [attach][attach] it.
+
+## Disconnected Spaces
+
+A Disconnected Space is a single-tenant deployment of Upbound within your infrastructure. This could be your Amazon Web Services (AWS) cloud account, Microsoft Azure subscription, or other hosting environment. Disconnected Spaces don't have connectivity to the rest of the Upbound product. You're limited to a command-line interface to interact within a single Space context.
+
+Upbound has packaged the core parts of the Upbound product into a Helm chart. You can deploy and operate it on your own infrastructure. This brings you the best of SaaS with the added benefit of extra security guarantees and a deployment free of noisy neighbors.
+
+### System requirements
+
+Spaces require a Kubernetes cluster as a hosting environment. Upbound validates the Spaces software runs on [AWS EKS][aws-eks], [Google Cloud GKE][google-cloud-gke], and [Microsoft AKS][microsoft-aks]. For dev/test scenarios, you can run a Space on a [kind][kind] cluster.
+
+::: note
+We support installing Spaces into Kubernetes clusters running one of the 3 most recent [minor release versions][minor-release-versions].
+:::
+
+
+<!-- vale write-good.TooWordy = NO -->
+#### Minimum requirements
+
+The minimum host Kubernetes cluster configuration Upbound recommends is a 2 worker node setup. By default, Upbound recommends one node for operating the Spaces management pods, leaving the remaining worker nodes to host your control planes.
+
+The minimum recommended node pool VM configuration for each cloud provider is:
+
+
+| Cloud Provider | VM configuration | Cores | Memory |
+| -------------- | ---------------- | ----- | ------ |
+| AWS            | m5.large         | 2     | 8      |
+| Azure          | Standard_D2_v3   | 2     | 8      |
+| GCP            | e2-standard-2    | 2     | 8      |
+
+
+<!-- vale write-good.TooWordy = YES -->
+
+#### Recommended requirements
+
+As mentioned in the preceding section, Upbound recommends designating a node to run the Spaces management pods. How large you size your node pool depends on these factors:
+
+- The number of control planes you plan to run in the Space.
+- The number of managed resources you plan each control plane to reconcile.
+- The Crossplane providers you plan to install in each control plane.
+
+Read the [deployment guide][deployment-guide] for comprehensive guidance for rightsizing your Space clusters.
+
+### Upbound requirements
+
+You must have an [Upbound account][upbound-account]. Spaces is a feature only available for paying customers in the **Business Critical** tier of Upbound.
+
+### Next steps
+
+Get started with Spaces in your own environment by visiting the [quickstart guide][quickstart-guide].
+
+<!-- vale Google.Headings = YES -->
+
+<!--- TODO(tr0njavolta): links --->
+[upbound]: /deploy/spaces/console
+[attach]: /deploy/self-hosted-spaces/attach-detach
+[deployment-guide]: /deploy/self-hosted-spaces/deployment
+[quickstart-guide]: /deploy/self-hosted-spaces/self-hosted-qs
+[aws-eks]: https://aws.amazon.com/eks/
+[google-cloud-gke]: https://cloud.google.com/kubernetes-engine
+[microsoft-aks]: https://azure.microsoft.com/en-us/products/kubernetes-service
+[kind]: https://kind.sigs.k8s.io/
+[minor-release-versions]: https://kubernetes.io/releases/
+[upbound-account]: https://www.upbound.io/register/a

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_alpha",
+  "title": "up_alpha",
+  "description": "Alpha features. Commands may be removed in future releases.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_alpha.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_alpha",
+  "permalink": "/apis-cli/cli-reference/yaml/up_alpha",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

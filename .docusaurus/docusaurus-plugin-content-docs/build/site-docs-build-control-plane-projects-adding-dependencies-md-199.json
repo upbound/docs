@@ -1,0 +1,31 @@
+{
+  "id": "control-plane-projects/adding-dependencies",
+  "title": "Adding dependencies to your Control Plane Projects",
+  "description": "The basic concepts to help you on your Upbound journey",
+  "source": "@site/docs/build/control-plane-projects/adding-dependencies.md",
+  "sourceDirName": "control-plane-projects",
+  "slug": "/control-plane-projects/adding-dependencies",
+  "permalink": "/build/control-plane-projects/adding-dependencies",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Adding dependencies to your Control Plane Projects",
+    "weight": 1,
+    "description": "The basic concepts to help you on your Upbound journey",
+    "aliases": [
+      "/core-concepts/adding-dependencies",
+      "core-concepts/adding-dependencies"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Models",
+    "permalink": "/build/control-plane-projects/authoring-compositions/python/models"
+  },
+  "next": {
+    "title": "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project",
+    "permalink": "/build/control-plane-projects/authoring-xrds"
+  }
+}

@@ -1,7 +1,760 @@
 {
-    "build": {
-        "env": {
-            "HUGO_VERSION": "0.123.7"
-        }
-    }
+  "redirects": [
+    {
+      "source": "/core-concepts/adding-dependencies",
+      "destination": "/build/control-plane-projects/adding-dependencies",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/authoring-compositions",
+      "destination": "/build/control-plane-projects/authoring-compositions",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/conditionals",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/conditionals",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/overview",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/inputs-outputs",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/loops",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/loops",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/read-pipeline-state",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/resource-data-extraction",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/resource-schemas",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/variables",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/variables",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/kcl/write-status-to-composite",
+      "destination": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/python/overview",
+      "destination": "/build/control-plane-projects/authoring-compositions/python",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/python/inputs-outputs",
+      "destination": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/python/models",
+      "destination": "/build/control-plane-projects/authoring-compositions/python/models",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/authoring-xrds",
+      "destination": "/build/control-plane-projects/authoring-xrds",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/building-pushing",
+      "destination": "/build/control-plane-projects/building-pushing",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/testing",
+      "destination": "/build/control-plane-projects/testing",
+      "permanent": true
+    },
+    {
+      "source": "/spaces",
+      "destination": "/deploy",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/migrating-to-mcps",
+      "destination": "/build/migrating-to-mcps",
+      "permanent": true
+    },
+    {
+      "source": "/repositories/management",
+      "destination": "/build/repositories/management",
+      "permanent": true
+    },
+    {
+      "source": "/repositories/_index",
+      "destination": "/build/repositories/overview",
+      "permanent": true
+    },
+    {
+      "source": "/repositories/publish-packages",
+      "destination": "/build/repositories/publish-packages",
+      "permanent": true
+    },
+    {
+      "source": "/marketplace/packages",
+      "destination": "/build/repositories/publish-packages",
+      "permanent": true
+    },
+    {
+      "source": "/repositories/store-configurations",
+      "destination": "/build/repositories/store-configurations",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/spaces/guides/declarative-ctps",
+      "destination": "/connect/declarative-ctps",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/declarative-ctps",
+      "destination": "/connect/declarative-ctps",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/git-integration",
+      "destination": "/connect/git-integration",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/gitops",
+      "destination": "/connect/gitops",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/control-plane-connector",
+      "destination": "/connect/gitops",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/mcp-connector-guide",
+      "destination": "/connect/mcp-connector-guide",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/spaces/guides/mcp-connector-guide",
+      "destination": "/connect/mcp-connector-guide",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/oidc",
+      "destination": "/connect/oidc",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/operate/oidc",
+      "destination": "/connect/oidc",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/query-api",
+      "destination": "/connect/query-api",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/spaces/consumer-portal",
+      "destination": "/consume/consumer-portal",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/backup-and-restore",
+      "destination": "/deploy/backup-and-restore",
+      "permanent": true
+    },
+    {
+      "source": "/disconnected-spaces/backup-and-restore",
+      "destination": "/deploy/backup-and-restore",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/backup-and-restore",
+      "destination": "/deploy/backup-and-restore",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/control-plane-topologies",
+      "destination": "/deploy/control-plane-topologies",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/dedicated-spaces/aws",
+      "destination": "/deploy/dedicated-spaces/aws",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces",
+      "destination": "/deploy/dedicated-spaces/aws",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/dedicated-spaces/gcp",
+      "destination": "/deploy/dedicated-spaces/gcp",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/_index",
+      "destination": "/deploy",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/_index.md",
+      "destination": "/deploy",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/query-api",
+      "destination": "/deploy/query-api",
+      "permanent": true
+    },
+    {
+      "source": "/self-hosted-spaces/query-api",
+      "destination": "/deploy/query-api",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/attach-detach",
+      "destination": "/deploy/self-hosted-spaces/attach-detach",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/spaces/attach-detach",
+      "destination": "/deploy/self-hosted-spaces/attach-detach",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/aws-deployment",
+      "destination": "/deploy/self-hosted-spaces/aws",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/quickstart",
+      "destination": "/deploy/self-hosted-spaces/aws",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces/aws-deployment",
+      "destination": "/deploy/self-hosted-spaces/aws",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/azure-deployment",
+      "destination": "/deploy/self-hosted-spaces/azure",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces/azure-deployment",
+      "destination": "/deploy/self-hosted-spaces/azure",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/billing",
+      "destination": "/deploy/self-hosted-spaces/billing",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/billing",
+      "destination": "/deploy/self-hosted-spaces/billing",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces/billing",
+      "destination": "/deploy/self-hosted-spaces/billing",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/deployment",
+      "destination": "/deploy/self-hosted-spaces/deployment",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/deployment",
+      "destination": "/deploy/self-hosted-spaces/deployment",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces/deployment",
+      "destination": "/deploy/self-hosted-spaces/deployment",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/dr",
+      "destination": "/deploy/self-hosted-spaces/dr",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/dr",
+      "destination": "/deploy/self-hosted-spaces/dr",
+      "permanent": true
+    },
+    {
+      "source": "/disconnected-spaces/dr",
+      "destination": "/deploy/self-hosted-spaces/dr",
+      "permanent": true
+    },
+    {
+      "source": "/self-hosted-spaces/dr",
+      "destination": "/deploy/self-hosted-spaces/dr",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/gcp-deployment",
+      "destination": "/deploy/self-hosted-spaces/gcp",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces/gcp-deployment",
+      "destination": "/deploy/self-hosted-spaces/gcp",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/helm-reference",
+      "destination": "/deploy/self-hosted-spaces/helm-reference",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/helm-reference",
+      "destination": "/deploy/self-hosted-spaces/helm-reference",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/disconnected-spaces/helm-reference",
+      "destination": "/deploy/self-hosted-spaces/helm-reference",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces",
+      "destination": "/deploy/self-hosted-spaces",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/disconnected-spaces",
+      "destination": "/deploy/self-hosted-spaces",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/proxies-config",
+      "destination": "/deploy/self-hosted-spaces/proxies-config",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/disconnected-spaces/proxies-config",
+      "destination": "/deploy/self-hosted-spaces/proxies-config",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/scaling-resources",
+      "destination": "/deploy/self-hosted-spaces/scaling-resources",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/scaling-resources",
+      "destination": "/deploy/self-hosted-spaces/scaling-resources",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/quickstart",
+      "destination": "/deploy/self-hosted-spaces/self-hosted-qs",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/kind-quickstart",
+      "destination": "/deploy/self-hosted-spaces/self-hosted-qs",
+      "permanent": true
+    },
+    {
+      "source": "/kind-quickstart",
+      "destination": "/deploy/self-hosted-spaces/self-hosted-qs",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/disconnected-spaces/quickstart",
+      "destination": "/deploy/self-hosted-spaces/self-hosted-qs",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/spaces-management",
+      "destination": "/deploy/self-hosted-spaces/spaces-management",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/spaces-management",
+      "destination": "/deploy/self-hosted-spaces/spaces-management",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/disconnected-spaces/spaces-management",
+      "destination": "/deploy/self-hosted-spaces/spaces-management",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/troubleshooting",
+      "destination": "/deploy/self-hosted-spaces/troubleshooting",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/troubleshooting",
+      "destination": "/deploy/self-hosted-spaces/troubleshooting",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/disconnected-spaces/troubleshooting",
+      "destination": "/deploy/self-hosted-spaces/troubleshooting",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/use-argo",
+      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/disconnected-spaces/use-argo-flux",
+      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/self-hosted-spaces/use-argo-flux",
+      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "permanent": true
+    },
+    {
+      "source": "/connect/use-argo",
+      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/spaces/console",
+      "destination": "/deploy/spaces/console",
+      "permanent": true
+    },
+    {
+      "source": "/console",
+      "destination": "/deploy/spaces/console",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/spaces/_index",
+      "destination": "/deploy/spaces",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/upbound-spaces",
+      "destination": "/deploy/spaces",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/mcp",
+      "destination": "/core-concepts/managed-control-planes",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/projects",
+      "destination": "/core-concepts/projects",
+      "permanent": true
+    },
+    {
+      "source": "/core-concepts/providers",
+      "destination": "/core-concepts/providers",
+      "permanent": true
+    },
+    {
+      "source": "/getstarted/_index",
+      "destination": "/get-started",
+      "permanent": true
+    },
+    {
+      "source": "/getstarted-devex",
+      "destination": "/get-started",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/authentication",
+      "destination": "/operate/accounts/authentication/_index",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/authentication/enable-sso",
+      "destination": "/operate/accounts/authentication/enable-sso",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/authentication/oidc-configuration",
+      "destination": "/operate/accounts/authentication/oidc-configuration",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/authorization",
+      "destination": "/operate/accounts/authorization/_index",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/authorization/k8s-rbac",
+      "destination": "/operate/accounts/authorization/k8s-rbac",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/authorization/upbound-rbac",
+      "destination": "/operate/accounts/authorization/upbound-rbac",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/identity-management",
+      "destination": "/operate/accounts/identity-management/_index",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/identity-management/organizations",
+      "destination": "/operate/accounts/identity-management/organizations",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/identity-management/robots",
+      "destination": "/operate/accounts/identity-management/robots",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/identity-management/teams",
+      "destination": "/operate/accounts/identity-management/teams",
+      "permanent": true
+    },
+    {
+      "source": "/accounts/identity-management/users",
+      "destination": "/operate/accounts/identity-management/users",
+      "permanent": true
+    },
+    {
+      "source": "/users",
+      "destination": "/operate/accounts/identity-management/users",
+      "permanent": true
+    },
+    {
+      "source": "/users/register",
+      "destination": "/operate/accounts/identity-management/users",
+      "permanent": true
+    },
+    {
+      "source": "/users/change",
+      "destination": "/operate/accounts/identity-management/users",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/accounts/users",
+      "destination": "/operate/accounts/identity-management/users",
+      "permanent": true
+    },
+    {
+      "source": "/accounts",
+      "destination": "/operate/accounts",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/auto-upgrade",
+      "destination": "/operate/auto-upgrade",
+      "permanent": true
+    },
+    {
+      "source": "/reference/configuration",
+      "destination": "/operate/cli/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/reference/contexts",
+      "destination": "/operate/cli/contexts",
+      "permanent": true
+    },
+    {
+      "source": "/reference/cli/contexts",
+      "destination": "/operate/cli/contexts",
+      "permanent": true
+    },
+    {
+      "source": "/cli",
+      "destination": "/operate/cli",
+      "permanent": true
+    },
+    {
+      "source": "/reference/cli",
+      "destination": "/operate/cli",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/ctp-connector",
+      "destination": "/operate/ctp-connector",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/control-plane-connector",
+      "destination": "/operate/ctp-connector",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/control-plane-connector/",
+      "destination": "/operate/ctp-connector",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/debugging-a-ctp",
+      "destination": "/operate/debugging-a-ctp",
+      "permanent": true
+    },
+    {
+      "source": "/mcp/groups",
+      "destination": "/operate/groups",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/observability",
+      "destination": "/operate/observability",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/observability",
+      "destination": "/operate/observability",
+      "permanent": true
+    },
+    {
+      "source": "/all-spaces/secrets-management",
+      "destination": "/operate/secrets-management",
+      "permanent": true
+    },
+    {
+      "source": "/spaces/secrets-management",
+      "destination": "/operate/secrets-management",
+      "permanent": true
+    },
+    {
+      "source": "/disconnected-spaces/secrets-management",
+      "destination": "/operate/secrets-management",
+      "permanent": true
+    },
+    {
+      "source": "/self-hosted-spaces/secrets-management",
+      "destination": "/operate/secrets-management",
+      "permanent": true
+    },
+    {
+      "source": "/upbound-marketplace/providers",
+      "destination": "/providers",
+      "permanent": true
+    },
+    {
+      "source": "/providers/",
+      "destination": "/providers",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-base/migrate-to-provider-families",
+      "destination": "/providers/migration",
+      "permanent": true
+    },
+    {
+      "source": "/providers/support",
+      "destination": "/providers/policies",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/legacy-spaces/connect-argo-to-upbound",
+      "destination": "/reference/legacy-spaces/connect-argo-to-upbound",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/legacy-spaces/control-plane-configurations",
+      "destination": "/reference/legacy-spaces/control-plane-configurations",
+      "permanent": true
+    },
+    {
+      "source": "/concepts/control-plane-configurations",
+      "destination": "/reference/legacy-spaces/control-plane-configurations",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/legacy-spaces",
+      "destination": "/reference/legacy-spaces",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/legacy-spaces/multicloud-deploy",
+      "destination": "/reference/legacy-spaces/multicloud-deploy",
+      "permanent": true
+    },
+    {
+      "source": "/development-extensions/vscode-extensions",
+      "destination": "/reference/vscode-extensions",
+      "permanent": true
+    },
+    {
+      "source": "/build/vscode-extensions",
+      "destination": "/reference/vscode-extensions",
+      "permanent": true
+    },
+      {
+    "source": "/learn/core-concepts/claims",
+    "destination": "/core-concepts/claims",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/compositions",
+    "destination": "/core-concepts/compositions",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/control-planes",
+    "destination": "/core-concepts/control-planes",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/functions",
+    "destination": "/core-concepts/functions",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/managed-control-planes",
+    "destination": "/core-concepts/managed-control-planes",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/projects",
+    "destination": "/core-concepts/projects",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/providers",
+    "destination": "/core-concepts/providers",
+    "permanent": true
+  },
+  {
+    "source": "/learn/core-concepts/xrds",
+    "destination": "/core-concepts/xrds",
+    "permanent": true
+  },
+  {
+    "source": "/learn/get-started",
+    "destination": "/get-started",
+    "permanent": true
+  },
+  {
+    "source": "/learn",
+    "destination": "/",
+    "permanent": true
+  }
+  
+  ]
 }

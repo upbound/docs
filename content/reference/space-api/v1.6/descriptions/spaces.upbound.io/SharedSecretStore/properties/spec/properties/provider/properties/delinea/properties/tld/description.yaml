@@ -1,3 +1,0 @@
-description: |-
-    TLD is based on the server location that was chosen during provisioning.
-    If unset, defaults to 'com'.

@@ -1,3 +1,0 @@
-description: |-
-    [[GATE:EnableSharedBackup]] THIS IS AN ALPHA FIELD. Do not use it in production.
-    Restore specifies details about the control planes restore configuration.

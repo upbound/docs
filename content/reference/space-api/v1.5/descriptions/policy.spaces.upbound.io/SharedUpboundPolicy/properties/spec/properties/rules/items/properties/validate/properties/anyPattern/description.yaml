@@ -1,3 +1,0 @@
-description: |-
-    AnyPattern specifies list of validation patterns. At least one of the patterns
-    must be satisfied for the validation rule to succeed.

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_alpha_space_list",
+  "title": "up_alpha_space_list",
+  "description": "List all accessible spaces in Upbound.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_alpha_space_list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_alpha_space_list",
+  "permalink": "/apis-cli/cli-reference/yaml/up_alpha_space_list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

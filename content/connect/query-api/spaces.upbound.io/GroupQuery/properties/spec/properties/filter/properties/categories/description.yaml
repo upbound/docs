@@ -1,4 +1,0 @@
-description: |-
-    categories is a list of categories to query. If empty, all categories are
-    queried in the given scope.
-    Examples: all, managed, composite, claim

@@ -1,6 +1,0 @@
-description: |-
-    ConfigRef is a reference to the backup configuration.
-    ApiGroup is optional and defaults to 'spaces.upbound.io'.
-    Kind is required, and the only supported value is 'SharedBackupConfig' at
-    the moment.
-    Name is required.
