@@ -141,15 +141,6 @@ export default {
         "routeBasePath": "crossplane/api-ref",
         "sidebarPath": "/Users/rae/hugo/src/sidebars/crossplane-api-ref.js"
       }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "solutions",
-        "path": "docs/solutions",
-        "routeBasePath": "solutions",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/solutions.js"
-      }
     ]
   ],
   "themeConfig": {
@@ -232,13 +223,6 @@ export default {
               "docsPluginId": "usage"
             }
           ]
-        },
-        {
-          "type": "docSidebar",
-          "sidebarId": "solutionsSidebar",
-          "position": "left",
-          "label": "Solutions",
-          "docsPluginId": "solutions"
         },
         {
           "type": "search",

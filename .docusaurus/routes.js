@@ -1693,36 +1693,6 @@ export default [
     ]
   },
   {
-    path: '/solutions',
-    component: ComponentCreator('/solutions', 'e33'),
-    routes: [
-      {
-        path: '/solutions',
-        component: ComponentCreator('/solutions', '736'),
-        routes: [
-          {
-            path: '/solutions',
-            component: ComponentCreator('/solutions', '300'),
-            routes: [
-              {
-                path: '/solutions/idp-starter-kit',
-                component: ComponentCreator('/solutions/idp-starter-kit', '381'),
-                exact: true,
-                sidebar: "solutionsSidebar"
-              },
-              {
-                path: '/solutions/upbound-platform-ref',
-                component: ComponentCreator('/solutions/upbound-platform-ref', '09c'),
-                exact: true,
-                sidebar: "solutionsSidebar"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
     path: '/upbound-marketplace',
     component: ComponentCreator('/upbound-marketplace', '6a5'),
     routes: [

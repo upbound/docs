@@ -138,15 +138,15 @@ const config = {
         sidebarPath: require.resolve('./src/sidebars/crossplane-api-ref.js')
       },
     ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'solutions',
-        path: 'docs/solutions',
-        routeBasePath: 'solutions',
-        sidebarPath: require.resolve('./src/sidebars/solutions.js')
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: 'solutions',
+    //     path: 'docs/solutions',
+    //     routeBasePath: 'solutions',
+    //     sidebarPath: require.resolve('./src/sidebars/solutions.js')
+    //   },
+    // ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -231,13 +231,13 @@ const config = {
               },
             ],
           },
-          {
-            type: 'docSidebar',
-            sidebarId: 'solutionsSidebar',
-            position: 'left',
-            label: 'Solutions',
-            docsPluginId: 'solutions'
-          },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'solutionsSidebar',
+          //   position: 'left',
+          //   label: 'Solutions',
+          //   docsPluginId: 'solutions'
+          // },
           {
             type: 'search',
             position: 'right',

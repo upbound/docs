@@ -1622,40 +1622,6 @@
         }
       ],
       "breadcrumbs": true
-    },
-    "solutions": {
-      "path": "/solutions",
-      "versions": [
-        {
-          "name": "current",
-          "label": "Next",
-          "isLast": true,
-          "path": "/solutions",
-          "mainDocId": "idp-starter-kit",
-          "docs": [
-            {
-              "id": "idp-starter-kit",
-              "path": "/solutions/idp-starter-kit",
-              "sidebar": "solutionsSidebar"
-            },
-            {
-              "id": "upbound-platform-ref",
-              "path": "/solutions/upbound-platform-ref",
-              "sidebar": "solutionsSidebar"
-            }
-          ],
-          "draftIds": [],
-          "sidebars": {
-            "solutionsSidebar": {
-              "link": {
-                "path": "/solutions/idp-starter-kit",
-                "label": "idp-starter-kit"
-              }
-            }
-          }
-        }
-      ],
-      "breadcrumbs": true
     }
   }
 }
