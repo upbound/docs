@@ -1,4 +1,0 @@
-description: |-
-    APIGroup defines the apiGroup of the object being pointed to.
-    With some minor differences, this is essentially matched as a DNS subdomain, like how Kubernetes validates it.
-    The Kubernetes legacy core group is denoted as 'core'.

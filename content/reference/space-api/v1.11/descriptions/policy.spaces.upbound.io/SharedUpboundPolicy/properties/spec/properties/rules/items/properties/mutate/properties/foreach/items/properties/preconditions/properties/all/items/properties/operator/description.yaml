@@ -1,5 +1,0 @@
-description: |-
-    Operator is the conditional operation to perform. Valid operators are:
-    Equals, NotEquals, In, AnyIn, AllIn, NotIn, AnyNotIn, AllNotIn, GreaterThanOrEquals,
-    GreaterThan, LessThanOrEquals, LessThan, DurationGreaterThanOrEquals, DurationGreaterThan,
-    DurationLessThanOrEquals, DurationLessThan

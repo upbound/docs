@@ -1,0 +1,28 @@
+{
+  "id": "spaces/console",
+  "title": "Upbound Console",
+  "description": "An introduction to the Console feature of Upbound",
+  "source": "@site/docs/deploy/spaces/console.md",
+  "sourceDirName": "spaces",
+  "slug": "/spaces/console",
+  "permalink": "/deploy/spaces/console",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Upbound Console",
+    "weight": 5,
+    "description": "An introduction to the Console feature of Upbound",
+    "aliases": [
+      "/all-spaces/spaces/console",
+      "all-spaces/spaces/console",
+      "/console"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Cloud Spaces",
+    "permalink": "/deploy/spaces/"
+  }
+}

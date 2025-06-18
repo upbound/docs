@@ -1,3 +1,0 @@
-description: |-
-    CELPreconditions are used to determine if a policy rule should be applied by evaluating a
-    set of CEL conditions. It can only be used with the validate.cel subrule

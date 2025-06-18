@@ -1,2 +1,0 @@
-description: |-
-    Operations can contain values ['CREATE, 'UPDATE', 'CONNECT', 'DELETE'], which are used to match a specific action.

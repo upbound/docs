@@ -1,0 +1,32 @@
+{
+  "id": "debugging-a-ctp",
+  "title": "Debugging issues on a control plane",
+  "description": "A guide for how to debug resources on a control plane running in Upbound.",
+  "source": "@site/docs/operate/debugging-a-ctp.md",
+  "sourceDirName": ".",
+  "slug": "/debugging-a-ctp",
+  "permalink": "/operate/debugging-a-ctp",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Debugging issues on a control plane",
+    "weight": 100,
+    "description": "A guide for how to debug resources on a control plane running in Upbound.",
+    "draft": true,
+    "aliases": [
+      "/mcp/debugging-a-ctp",
+      "mcp/debugging-a-ctp"
+    ]
+  },
+  "sidebar": "operateSidebar",
+  "previous": {
+    "title": "Control Plane Connector",
+    "permalink": "/operate/ctp-connector"
+  },
+  "next": {
+    "title": "Control Plane Groups",
+    "permalink": "/operate/groups"
+  }
+}

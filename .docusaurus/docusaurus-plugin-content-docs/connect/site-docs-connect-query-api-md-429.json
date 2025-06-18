@@ -1,0 +1,30 @@
+{
+  "id": "query-api",
+  "title": "Query API",
+  "description": "Use the `up` CLI to query objects and resources",
+  "source": "@site/docs/connect/query-api.md",
+  "sourceDirName": ".",
+  "slug": "/query-api",
+  "permalink": "/connect/query-api",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Query API",
+    "weight": 400,
+    "description": "Use the `up` CLI to query objects and resources",
+    "cascade": {
+      "product": "api"
+    },
+    "aliases": [
+      "/all-spaces/query-api",
+      "all-spaces/query-api"
+    ]
+  },
+  "sidebar": "connectSidebar",
+  "previous": {
+    "title": "Connect control planes to external services",
+    "permalink": "/connect/oidc"
+  }
+}

@@ -1,3 +1,0 @@
-description: |-
-    Rules is a list of Rule instances. A Policy contains multiple rules and
-    each rule can validate, mutate, or generate resources.

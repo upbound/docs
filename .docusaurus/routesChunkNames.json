@@ -1,0 +1,1416 @@
+{
+  "/__docusaurus/debug-5ff": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/config-5ba": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/content-a2b": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    },
+    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
+  },
+  "/__docusaurus/debug/globalData-c3c": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/metadata-156": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/registry-88c": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/__docusaurus/debug/routes-000": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/search-5de": {
+    "__comp": "__comp---theme-search-page-1-a-4-d6f",
+    "__context": {
+      "plugin": "plugin---searchc-14-0ea"
+    }
+  },
+  "/apis-cli-7c8": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---apis-clib-9-e-778"
+    }
+  },
+  "/apis-cli-f0c": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---apis-cli-720-3b8"
+  },
+  "/apis-cli-42e": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/apis-cli/-7e1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-e-2-f-1f9"
+  },
+  "/apis-cli/cli-reference/-13a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-76-f-4b3"
+  },
+  "/apis-cli/cli-reference/yaml/up-2eb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-upef-6-86f"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha-1a7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alphaa-5-a-1ad"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_ctx-1a8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-ctx-0-b-4-d4a"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_migration-77d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-migrationa-5-e-881"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_migration_export-1e4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-migration-export-390-b89"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_migration_import-ddc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-migration-importc-87-ed3"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_migration_pause-toggle-ffd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-migration-pause-toggled-75-59c"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space-b4d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-859-46e"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_billing-18e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-billing-00-c-378"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_billing_export-2d5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-billing-export-3-a-0-e98"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_connect_(attach)-882": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-connect-attach-ae-2-0f2"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_destroy-c80": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-destroy-076-808"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)-651": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-disconnect-detach-3-e-0-19c"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_init-1e1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-init-8-e-8-a03"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_list-34a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-list-6-b-6-ab5"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_mirror-ff0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-mirror-3-b-1-45f"
+  },
+  "/apis-cli/cli-reference/yaml/up_alpha_space_upgrade-dc1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-alpha-space-upgradec-89-c9c"
+  },
+  "/apis-cli/cli-reference/yaml/up_completion-063": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-completion-9-d-9-308"
+  },
+  "/apis-cli/cli-reference/yaml/up_composition-77f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-compositionaa-4-253"
+  },
+  "/apis-cli/cli-reference/yaml/up_composition_generate-d65": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-composition-generate-812-0c9"
+  },
+  "/apis-cli/cli-reference/yaml/up_composition_render-c77": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-composition-renderef-6-f77"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)-578": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-cc-5-147"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration-01f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-configuration-59-f-907"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install-83d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-configuration-installded-381"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connect-6fc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-connect-02-d-9fb"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector-6d7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-connector-131-2f0"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install-4dd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-connector-installaf-8-101"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall-19c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-connector-uninstall-221-855"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_create-b73": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-createe-0-d-3b2"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_delete-87b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-deleteab-1-c0e"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect-bdd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-disconnect-323-3a2"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function-093": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-function-8-c-1-379"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function_install-fc6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-function-install-381-30f"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_get-317": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-get-65-b-11f"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_list-ee5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-list-901-2bc"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider-49f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-provider-035-635"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install-b71": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-provider-install-212-98e"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret-44d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-pull-secret-7-a-9-152"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create-bdc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-pull-secret-create-33-e-632"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulate-059": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-simulateded-436"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)-3ee": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-23-b-793"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create-c09": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-create-021-3e8"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete-f4d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-deletec-96-8bf"
+  },
+  "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list-0d2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-list-765-91c"
+  },
+  "/apis-cli/cli-reference/yaml/up_ctx-066": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-ctx-88-b-871"
+  },
+  "/apis-cli/cli-reference/yaml/up_dependency_(dep)-ff5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-dependency-dep-cf-9-f89"
+  },
+  "/apis-cli/cli-reference/yaml/up_dependency_(dep)_add-9ac": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-dependency-dep-add-739-d0e"
+  },
+  "/apis-cli/cli-reference/yaml/up_dependency_(dep)_clean-cache-b47": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-dependency-dep-clean-cachee-8-d-426"
+  },
+  "/apis-cli/cli-reference/yaml/up_dependency_(dep)_update-cache-c60": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-dependency-dep-update-cache-28-c-c1f"
+  },
+  "/apis-cli/cli-reference/yaml/up_example-c00": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-example-496-1c8"
+  },
+  "/apis-cli/cli-reference/yaml/up_example_generate-47c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-example-generate-52-b-0b6"
+  },
+  "/apis-cli/cli-reference/yaml/up_function-ba3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-function-8-fc-0a5"
+  },
+  "/apis-cli/cli-reference/yaml/up_function_generate-b82": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-function-generate-77-c-73b"
+  },
+  "/apis-cli/cli-reference/yaml/up_group-104": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-group-365-fe7"
+  },
+  "/apis-cli/cli-reference/yaml/up_group_create-20c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-group-create-920-d2d"
+  },
+  "/apis-cli/cli-reference/yaml/up_group_delete-aaa": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-group-delete-4-ea-5bd"
+  },
+  "/apis-cli/cli-reference/yaml/up_group_get-5b4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-group-get-4-e-6-832"
+  },
+  "/apis-cli/cli-reference/yaml/up_group_list-4ab": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-group-list-02-e-aff"
+  },
+  "/apis-cli/cli-reference/yaml/up_help-94e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-helpecc-7ca"
+  },
+  "/apis-cli/cli-reference/yaml/up_license-aa0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-license-9-fc-9dc"
+  },
+  "/apis-cli/cli-reference/yaml/up_login-2d2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-login-890-b54"
+  },
+  "/apis-cli/cli-reference/yaml/up_logout-5a7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-logout-01-f-8f4"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)-904": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-467-2b5"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_create-68c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-create-338-084"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_delete-c7c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-deletec-0-e-651"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_get-70a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-getfe-7-74b"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_list-40f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-list-203-6d2"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_token-513": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-token-847-526"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_user-192": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-user-7-f-4-96c"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_user_invite-276": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-user-invitea-6-a-9c4"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_user_list-f71": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-user-listd-8-f-07d"
+  },
+  "/apis-cli/cli-reference/yaml/up_organization_(org)_user_remove-cc0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-organization-org-user-remove-3-b-3-6ca"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile-785": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-335-f94"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_create-b9e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-createe-38-f02"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_current-50b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-current-9-ea-fba"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_delete-919": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-delete-2-a-3-99e"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_list-a60": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-list-79-f-df7"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_rename-11f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-rename-2-de-4f6"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_set-207": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-set-570-fa8"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_use-fe9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-use-471-637"
+  },
+  "/apis-cli/cli-reference/yaml/up_profile_view-d5b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-profile-view-3-a-5-100"
+  },
+  "/apis-cli/cli-reference/yaml/up_project-066": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-projectbc-5-d0b"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_build-8d4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-build-82-a-ec4"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_init-ee0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-init-57-d-0d7"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_move-e48": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-movee-25-84e"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_push-844": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-push-267-857"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_run-a61": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-run-455-e6e"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_simulate-ac6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-simulate-256-30e"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_simulation-902": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-simulationa-51-64d"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_simulation_complete-152": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-simulation-completefc-5-d3a"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_simulation_create-af7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-simulation-create-33-f-e91"
+  },
+  "/apis-cli/cli-reference/yaml/up_project_simulation_delete-7e3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-project-simulation-delete-455-00d"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)-a8b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-3-d-4-9bd"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_create-14b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-createb-32-d54"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_delete-1f6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-deletec-2-e-24d"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_get-6c1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-get-1-b-4-b6c"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_list-9c5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-list-971-61a"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission-845": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-permission-08-c-d9c"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_grant-8df": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-permission-grant-3-ff-9de"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_list-b82": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-permission-listf-61-254"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_revoke-1cc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-permission-revoke-4-d-5-f9d"
+  },
+  "/apis-cli/cli-reference/yaml/up_repository_(repo)_update-f97": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-repository-repo-update-1-cd-64e"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot-0e9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-9-b-0-b3a"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_create-bac": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-createa-12-6f6"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_delete-35f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-delete-341-fe9"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_get-5ab": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-get-9-cd-33b"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_list-520": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-list-4-ba-ddd"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_team-f31": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-teamae-9-a0f"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_team_join-707": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-team-join-6-cd-c7a"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_team_leave-ce1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-team-leave-19-b-72f"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_team_list-47d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-team-listd-67-8a8"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_token-784": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-token-8-b-5-d61"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_token_create-52a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-token-create-5-e-6-213"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_token_delete-a19": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-token-delete-141-19b"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_token_get-7ee": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-token-getdbc-ce8"
+  },
+  "/apis-cli/cli-reference/yaml/up_robot_token_list-589": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-robot-token-list-238-a5a"
+  },
+  "/apis-cli/cli-reference/yaml/up_space-a11": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-spaceb-6-d-596"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_billing-0aa": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-billing-784-cfa"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_billing_export-85b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-billing-export-845-88b"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_connect_(attach)-fa0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-connect-attach-287-b2d"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_destroy-706": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-destroy-21-e-aa9"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_disconnect_(detach)-604": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-disconnect-detach-e-1-b-ec4"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_init-5ba": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-inite-29-7df"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_list-ff6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-list-0-a-3-b1e"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_mirror-80e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-mirrorde-5-655"
+  },
+  "/apis-cli/cli-reference/yaml/up_space_upgrade-301": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-space-upgradecc-5-452"
+  },
+  "/apis-cli/cli-reference/yaml/up_team-ca8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-team-20-a-d76"
+  },
+  "/apis-cli/cli-reference/yaml/up_team_create-08c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-team-created-8-e-b08"
+  },
+  "/apis-cli/cli-reference/yaml/up_team_delete-3b6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-team-delete-478-88b"
+  },
+  "/apis-cli/cli-reference/yaml/up_team_get-165": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-team-getdea-36c"
+  },
+  "/apis-cli/cli-reference/yaml/up_team_list-6b1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-team-lista-3-d-5af"
+  },
+  "/apis-cli/cli-reference/yaml/up_test-e61": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-test-194-72c"
+  },
+  "/apis-cli/cli-reference/yaml/up_test_generate-7fa": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-test-generate-91-f-d1b"
+  },
+  "/apis-cli/cli-reference/yaml/up_test_run-9bb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-test-run-683-3f2"
+  },
+  "/apis-cli/cli-reference/yaml/up_uxp-ead": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-uxpdaf-9e0"
+  },
+  "/apis-cli/cli-reference/yaml/up_uxp_install-86a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-uxp-installd-36-5c4"
+  },
+  "/apis-cli/cli-reference/yaml/up_uxp_uninstall-d87": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-uxp-uninstallbc-9-58e"
+  },
+  "/apis-cli/cli-reference/yaml/up_uxp_upgrade-b70": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-uxp-upgrade-502-eb9"
+  },
+  "/apis-cli/cli-reference/yaml/up_version-dcc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-version-07-b-a25"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpkg-a00": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpkg-8-d-6-2f5"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpkg_append-679": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpkg-append-503-df7"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpkg_batch-7c0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpkg-batcha-6-c-44d"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpkg_build-e75": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpkg-builde-30-8ad"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpkg_push-71d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpkg-push-5-ea-944"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpkg_xp-extract-d8c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpkg-xp-extract-3-ed-ba7"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpls-22c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpls-918-0e6"
+  },
+  "/apis-cli/cli-reference/yaml/up_xpls_serve-e3c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xpls-serve-717-d62"
+  },
+  "/apis-cli/cli-reference/yaml/up_xrd-de4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xrd-779-dfc"
+  },
+  "/apis-cli/cli-reference/yaml/up_xrd_generate-6a9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-cli-reference-yaml-up-xrd-generateb-27-7bc"
+  },
+  "/apis-cli/query-api/-c33": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-query-api-c-80-0f7"
+  },
+  "/apis-cli/spaces-api/-16e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-spaces-api-b-4-e-053"
+  },
+  "/apis-cli/spaces-api/v1_10-285": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-spaces-api-v-1-10-cca-4dd"
+  },
+  "/apis-cli/spaces-api/v1_11-841": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-spaces-api-v-1-1117-d-886"
+  },
+  "/apis-cli/spaces-api/v1_12-954": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-spaces-api-v-1-129-fe-b6f"
+  },
+  "/apis-cli/spaces-api/v1_9-651": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-spaces-api-v-1-9-c-3-a-859"
+  },
+  "/apis-cli/spaces-api/yaml/v1.13/-7ae": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-spaces-api-yaml-v-1-13-28-b-840"
+  },
+  "/apis-cli/testing-api/-7e6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---apis-cli-testing-api-25-b-a96"
+  },
+  "/build-457": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---buildda-7-909"
+    }
+  },
+  "/build-219": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---buildd-5-f-b1f"
+  },
+  "/build-599": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/build/-7bc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-2-c-5-5f2"
+  },
+  "/build/control-plane-projects/-f62": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-8-fb-fcd"
+  },
+  "/build/control-plane-projects/adding-dependencies-9ba": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-adding-dependencies-199-21f"
+  },
+  "/build/control-plane-projects/authoring-compositions/-d8a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-c-9-f-800"
+  },
+  "/build/control-plane-projects/authoring-compositions/go-templating/-609": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-go-templating-dae-1e8"
+  },
+  "/build/control-plane-projects/authoring-compositions/go-templating/inputs-outputs-bac": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-go-templating-inputs-outputsf-0-d-574"
+  },
+  "/build/control-plane-projects/authoring-compositions/go-templating/schemas-5dc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-go-templating-schemas-42-a-c96"
+  },
+  "/build/control-plane-projects/authoring-compositions/go/-1a2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-go-ff-5-581"
+  },
+  "/build/control-plane-projects/authoring-compositions/go/inputs-outputs-8f3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-go-inputs-outputsa-2-b-e6b"
+  },
+  "/build/control-plane-projects/authoring-compositions/go/models-2c0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-go-modelsad-3-722"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/-71f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-3-ea-1ea"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/conditionals-402": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-conditionals-362-277"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs-26d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-inputs-outputs-836-b35"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/loops-1ae": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-loops-13-f-ffb"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state-8c7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-read-pipeline-state-512-0a1"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction-9d6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-resource-data-extraction-89-d-a72"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas-d1b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-resource-schemasd-0-b-1d5"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/variables-310": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-variablesebf-2c4"
+  },
+  "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite-b23": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-kcl-write-status-to-composite-921-dd7"
+  },
+  "/build/control-plane-projects/authoring-compositions/python/-8cd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-python-848-9dd"
+  },
+  "/build/control-plane-projects/authoring-compositions/python/inputs-outputs-960": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-python-inputs-outputsde-8-905"
+  },
+  "/build/control-plane-projects/authoring-compositions/python/models-34b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-compositions-python-models-471-5f9"
+  },
+  "/build/control-plane-projects/authoring-xrds-b1f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-authoring-xrds-58-a-910"
+  },
+  "/build/control-plane-projects/building-pushing-600": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-building-pushing-18-c-d79"
+  },
+  "/build/control-plane-projects/simulations-927": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-simulations-24-a-c3d"
+  },
+  "/build/control-plane-projects/testing-1ad": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-control-plane-projects-testing-483-942"
+  },
+  "/build/controllers-bb0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-controllersdaa-918"
+  },
+  "/build/migrating-to-mcps-0b3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-migrating-to-mcps-1-e-5-b83"
+  },
+  "/build/provider-authentication-8a7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-provider-authenticationfcd-d2a"
+  },
+  "/build/repositories/-39d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-repositories-5-cc-813"
+  },
+  "/build/repositories/management-332": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-repositories-management-85-b-3ff"
+  },
+  "/build/repositories/publish-packages-b7b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-repositories-publish-packages-261-9a6"
+  },
+  "/build/repositories/store-configurations-6ac": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---build-repositories-store-configurations-7-d-8-7a8"
+  },
+  "/connect-7c3": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---connect-527-a06"
+    }
+  },
+  "/connect-715": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---connect-7-a-5-3a7"
+  },
+  "/connect-ea1": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/connect/declarative-ctps-574": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---connect-declarative-ctps-2-d-2-bf6"
+  },
+  "/connect/git-integration-ef9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---connect-git-integration-104-1df"
+  },
+  "/connect/gitops-960": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---connect-gitops-116-787"
+  },
+  "/connect/mcp-connector-guide-d50": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---connect-mcp-connector-guidecf-4-141"
+  },
+  "/connect/oidc-c22": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---connect-oidcc-77-39c"
+  },
+  "/connect/query-api-88e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---connect-query-api-429-b50"
+  },
+  "/crossplane/api-ref-6db": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---crossplane-api-ref-772-882"
+    }
+  },
+  "/crossplane/api-ref-25a": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---crossplane-api-refd-41-fd8"
+  },
+  "/crossplane/api-ref-dcf": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/crossplane/api-ref/-252": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-api-ref-dbb-add"
+  },
+  "/crossplane/learn-5c5": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---crossplane-learn-14-d-30c"
+    }
+  },
+  "/crossplane/learn-11e": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---crossplane-learn-1-ad-c99"
+  },
+  "/crossplane/learn-c20": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/crossplane/learn/get-started-compositions-1cd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-learn-get-started-compositions-776-ffd"
+  },
+  "/crossplane/learn/get-started-mr-072": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-learn-get-started-mre-2-e-e1f"
+  },
+  "/deploy-449": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---deploy-8-c-4-31b"
+    }
+  },
+  "/deploy-3ba": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---deployff-1-f7e"
+  },
+  "/deploy-0c1": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/deploy/-15e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-10-f-107"
+  },
+  "/deploy/backup-and-restore-088": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-backup-and-restoreb-57-503"
+  },
+  "/deploy/control-plane-topologies-32d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-control-plane-topologiescec-a68"
+  },
+  "/deploy/dedicated-spaces/-f1b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-dedicated-spaces-f-4-c-4a3"
+  },
+  "/deploy/dedicated-spaces/aws-faf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-dedicated-spaces-awseaf-d88"
+  },
+  "/deploy/dedicated-spaces/gcp-7f8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-dedicated-spaces-gcp-26-b-279"
+  },
+  "/deploy/query-api-abc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-query-api-2-ef-35f"
+  },
+  "/deploy/self-hosted-spaces/-d85": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-457-ca4"
+  },
+  "/deploy/self-hosted-spaces/attach-detach-ee2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-attach-detachf-9-b-8ea"
+  },
+  "/deploy/self-hosted-spaces/aws/-51e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-aws-f-1-a-520"
+  },
+  "/deploy/self-hosted-spaces/aws/workload-id-backup-restore-913": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-aws-workload-id-backup-restoreed-7-4d4"
+  },
+  "/deploy/self-hosted-spaces/azure/-aaf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-azure-a-4-a-ae8"
+  },
+  "/deploy/self-hosted-spaces/billing-f16": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-billingb-37-251"
+  },
+  "/deploy/self-hosted-spaces/deployment-66a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-deploymenta-3-b-f4b"
+  },
+  "/deploy/self-hosted-spaces/dr-c9e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-drdf-8-413"
+  },
+  "/deploy/self-hosted-spaces/gcp/-3b4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-gcp-b-15-f9b"
+  },
+  "/deploy/self-hosted-spaces/helm-reference-d77": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-helm-reference-67-d-a5d"
+  },
+  "/deploy/self-hosted-spaces/proxies-config-45b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-proxies-config-14-b-846"
+  },
+  "/deploy/self-hosted-spaces/scaling-resources-1ae": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-scaling-resources-6-c-5-e7e"
+  },
+  "/deploy/self-hosted-spaces/self-hosted-qs-203": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-self-hosted-qs-4-f-5-d5d"
+  },
+  "/deploy/self-hosted-spaces/space-observability-563": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-space-observabilityd-72-955"
+  },
+  "/deploy/self-hosted-spaces/spaces-management-4ef": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-spaces-managemente-20-1b4"
+  },
+  "/deploy/self-hosted-spaces/troubleshooting-d8d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-troubleshooting-2-af-16f"
+  },
+  "/deploy/self-hosted-spaces/use-argo-003": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-self-hosted-spaces-use-argo-8-a-1-8e4"
+  },
+  "/deploy/spaces/-541": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-spaces-476-2e3"
+  },
+  "/deploy/spaces/console-06a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---deploy-spaces-console-711-b56"
+  },
+  "/operate-c06": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---operate-77-d-a36"
+    }
+  },
+  "/operate-371": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---operatead-3-cfc"
+  },
+  "/operate-07f": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/operate/accounts/-d25": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-bfa-7db"
+  },
+  "/operate/accounts/authentication/enable-sso-b92": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-authentication-enable-sso-0-a-2-675"
+  },
+  "/operate/accounts/authentication/oidc-configuration-dcf": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-authentication-oidc-configuratione-50-39b"
+  },
+  "/operate/accounts/authorization/hub-rbac-b29": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-authorization-hub-rbaca-57-fed"
+  },
+  "/operate/accounts/authorization/k8s-rbac-5ed": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-authorization-k-8-s-rbac-05-b-2ac"
+  },
+  "/operate/accounts/authorization/upbound-rbac-4c6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-authorization-upbound-rbac-95-d-b65"
+  },
+  "/operate/accounts/identity-management/organizations-cd1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-identity-management-organizations-161-825"
+  },
+  "/operate/accounts/identity-management/robots-0ee": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-identity-management-robotsff-7-848"
+  },
+  "/operate/accounts/identity-management/teams-72c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-identity-management-teams-26-a-529"
+  },
+  "/operate/accounts/identity-management/users-40e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-accounts-identity-management-userse-9-f-f3a"
+  },
+  "/operate/auto-upgrade-c6f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-auto-upgradea-0-f-ec0"
+  },
+  "/operate/cli/-807": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-cli-6-cc-136"
+  },
+  "/operate/cli/configuration-4cd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-cli-configurationa-74-ce2"
+  },
+  "/operate/cli/contexts-6fd": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-cli-contextsb-1-b-a42"
+  },
+  "/operate/control-planes-0ea": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-control-planesaf-4-df6"
+  },
+  "/operate/ctp-connector-c98": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-ctp-connector-99-d-b34"
+  },
+  "/operate/debugging-a-ctp-2f5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-debugging-a-ctpd-95-e8d"
+  },
+  "/operate/groups-083": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-groups-0-d-2-720"
+  },
+  "/operate/observability-f0f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-observability-36-f-91b"
+  },
+  "/operate/secrets-management-7ec": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-secrets-managementbb-8-758"
+  },
+  "/operate/simulations-cd1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---operate-simulations-433-024"
+  },
+  "/providers-784": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---providersac-9-15c"
+    }
+  },
+  "/providers-12b": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---providersa-9-c-1d4"
+  },
+  "/providers-b4d": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/providers/-2df": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-f-1-f-db4"
+  },
+  "/providers/faq-52c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-faqaf-8-7fa"
+  },
+  "/providers/migration-431": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-migration-62-a-17e"
+  },
+  "/providers/monolithic-cc5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-monolithica-28-598"
+  },
+  "/providers/policies-5cc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-policies-978-263"
+  },
+  "/providers/provider-aws/-6a0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-aws-239-bad"
+  },
+  "/providers/provider-aws/authentication-9fe": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-aws-authentication-0-ba-dad"
+  },
+  "/providers/provider-azure/-550": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-azure-539-737"
+  },
+  "/providers/provider-azure/authentication-9bb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-azure-authentication-175-bb9"
+  },
+  "/providers/provider-azuread/-9fc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-azuread-336-f53"
+  },
+  "/providers/provider-families-957": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-familiesff-2-a6e"
+  },
+  "/providers/provider-gcp/-73d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-gcp-2-e-0-d3b"
+  },
+  "/providers/provider-gcp/authentication-786": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-gcp-authenticationa-35-5f3"
+  },
+  "/providers/provider-helm/-d4d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-helm-a-32-6be"
+  },
+  "/providers/provider-kubernetes/-1a0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-kubernetes-32-a-ea9"
+  },
+  "/providers/provider-kubernetes/authentication-e2c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-kubernetes-authenticationa-1-b-528"
+  },
+  "/providers/provider-terraform/-476": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-terraform-ed-6-538"
+  },
+  "/providers/provider-terraform/migrate-hcl-553": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-terraform-migrate-hcl-75-e-ef4"
+  },
+  "/providers/provider-terraform/migrate-provider-tf-a17": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-provider-terraform-migrate-provider-tfdda-dd2"
+  },
+  "/providers/pull-secrets-3d2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-pull-secretsb-14-5c8"
+  },
+  "/providers/signature-verification-ef1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---providers-signature-verification-109-120"
+  },
+  "/release-notes-a5f": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---release-notes-2-c-5-44e"
+    }
+  },
+  "/release-notes-d4b": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---release-notes-901-7db"
+  },
+  "/release-notes-b23": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/release-notes/-d5b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---release-notes-29-c-6b2"
+  },
+  "/release-notes/rel-notes/mcp-connector-3aa": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---release-notes-rel-notes-mcp-connector-108-416"
+  },
+  "/release-notes/rel-notes/spaces-720": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---release-notes-rel-notes-spacesca-1-564"
+  },
+  "/release-notes/rel-notes/up-cli-676": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---release-notes-rel-notes-up-clib-57-3af"
+  },
+  "/solutions-e33": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---solutions-37-a-c03"
+    }
+  },
+  "/solutions-736": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---solutions-3-e-0-d69"
+  },
+  "/solutions-300": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/solutions/idp-starter-kit-381": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-idp-starter-kit-673-eb9"
+  },
+  "/solutions/upbound-platform-ref-09c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-upbound-platform-refd-9-e-22a"
+  },
+  "/upbound-marketplace-6a5": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---upbound-marketplacefa-9-e7b"
+    }
+  },
+  "/upbound-marketplace-ec4": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---upbound-marketplace-7-af-854"
+  },
+  "/upbound-marketplace-496": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/upbound-marketplace/-53a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---upbound-marketplace-824-107"
+  },
+  "/upbound-marketplace/authentication-763": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---upbound-marketplace-authenticatione-4-d-8b5"
+  },
+  "/upbound-marketplace/dmca-7eb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---upbound-marketplace-dmca-86-a-064"
+  },
+  "/upbound-marketplace/packages-cfc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---upbound-marketplace-packagesd-7-b-f50"
+  },
+  "/usage-1e1": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---usageaca-655"
+    }
+  },
+  "/usage-6d5": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---usage-8-ab-1c0"
+  },
+  "/usage-2f4": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/usage/-569": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---usage-38-e-94c"
+  },
+  "/usage/ipaddresses-537": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---usage-ipaddresses-911-77a"
+  },
+  "/usage/licenses-2f2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---usage-licenses-8-b-0-dc9"
+  },
+  "/usage/lifecycle-cc3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---usage-lifecyclec-24-c07"
+  },
+  "/usage/support-b1c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---usage-support-4-c-0-623"
+  },
+  "/usage/vscode-extensions-cfc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---usage-vscode-extensionsfbf-64d"
+  },
+  "/-e4e": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---80-b-d6b"
+    }
+  },
+  "/-40a": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---cb-3-ef4"
+  },
+  "/-dae": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/builders-workshop/create-configuration-22d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---builders-workshop-create-configuration-474-068"
+  },
+  "/builders-workshop/deployment-7e4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---builders-workshop-deploymentcd-0-2ff"
+  },
+  "/builders-workshop/project-foundations-6c1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---builders-workshop-project-foundations-08-f-63e"
+  },
+  "/builders-workshop/testing-f87": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---builders-workshop-testing-2-a-5-347"
+  },
+  "/consumer-portal-get-started-cad": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---consumer-portal-get-started-7-f-5-943"
+  },
+  "/core-concepts/claims-c7d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-claimsa-2-a-fe1"
+  },
+  "/core-concepts/compositions-d25": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-compositions-92-a-129"
+  },
+  "/core-concepts/control-planes-822": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-control-planesfee-495"
+  },
+  "/core-concepts/functions-e68": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-functionsf-37-b78"
+  },
+  "/core-concepts/managed-control-planes-33a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-managed-control-planese-1-f-7ff"
+  },
+  "/core-concepts/projects-cfa": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-projectsaf-4-a62"
+  },
+  "/core-concepts/providers-ff0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-providersc-0-f-831"
+  },
+  "/core-concepts/xrds-769": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---core-concepts-xrdsdc-5-5e3"
+  },
+  "/-865": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---8-de-16c"
+  }
+}

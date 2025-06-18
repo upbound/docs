@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_repository_(repo)_delete",
+  "title": "up_repository_(repo)_delete",
+  "description": "Delete a repository.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_repository_(repo)_delete.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_repository_(repo)_delete",
+  "permalink": "/apis-cli/cli-reference/yaml/up_repository_(repo)_delete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

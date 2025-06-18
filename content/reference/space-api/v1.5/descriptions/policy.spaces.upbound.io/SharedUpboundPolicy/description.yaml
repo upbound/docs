@@ -1,3 +1,0 @@
-description: |-
-    SharedUpboundPolicy specifies a shared Kyverno policy projected into the specified
-    ControlPlanes of the same namespace as SharedUpboundPolicy.

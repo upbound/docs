@@ -1,3 +1,0 @@
-description: |-
-    Selector is a label selector. Label keys and values in `matchLabels`.
-    wildcard characters are not supported.

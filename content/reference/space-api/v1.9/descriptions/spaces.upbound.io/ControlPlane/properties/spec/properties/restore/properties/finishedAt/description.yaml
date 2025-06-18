@@ -1,4 +1,0 @@
-description: |-
-    FinishedAt is the time at which the control plane was restored, it's not
-    meant to be set by the user, but rather by the system when the control
-    plane is restored.

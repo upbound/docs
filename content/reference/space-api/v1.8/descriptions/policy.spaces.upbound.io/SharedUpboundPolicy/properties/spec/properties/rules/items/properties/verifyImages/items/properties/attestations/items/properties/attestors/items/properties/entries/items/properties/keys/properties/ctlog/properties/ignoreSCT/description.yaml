@@ -1,3 +1,0 @@
-description: |-
-    IgnoreSCT defines whether to use the Signed Certificate Timestamp (SCT) log to check for a certificate
-    timestamp. Default is false. Set to true if this was opted out during signing.

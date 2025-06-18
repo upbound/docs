@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+  "title": "Read function pipeline state",
+  "description": "Compositions execute each function sequentially in the pipeline. Each function",
+  "source": "@site/docs/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state.md",
+  "sourceDirName": "control-plane-projects/authoring-compositions/kcl",
+  "slug": "/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+  "permalink": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Read function pipeline state",
+    "weight": 120,
+    "aliases": [
+      "/core-concepts/kcl/read-pipeline-state",
+      "core-concepts/kcl/read-pipeline-state"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Loops (for)",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/loops"
+  },
+  "next": {
+    "title": "Resource data extraction",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
+  }
+}

@@ -1,4 +1,0 @@
-description: |-
-    order specifies how to order the returned objects. The first element
-    specifies the primary order, the second element specifies the secondary,
-    etc.

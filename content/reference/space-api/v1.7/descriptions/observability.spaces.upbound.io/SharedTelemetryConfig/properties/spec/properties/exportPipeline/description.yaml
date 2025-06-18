@@ -1,3 +1,0 @@
-description: |-
-    ExportPipeline defines the telemetry exporter pipeline to configure on
-    the selected ControlPlanes.

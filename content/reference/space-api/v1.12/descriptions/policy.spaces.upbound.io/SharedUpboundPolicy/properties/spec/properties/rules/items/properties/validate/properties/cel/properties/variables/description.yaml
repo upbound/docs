@@ -1,4 +1,0 @@
-description: |-
-    Variables contain definitions of variables that can be used in composition of other expressions.
-    Each variable is defined as a named CEL expression.
-    The variables defined here will be available under `variables` in other expressions of the policy.

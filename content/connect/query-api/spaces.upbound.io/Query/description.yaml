@@ -1,3 +1,0 @@
-description: |-
-    Query represents a query against one control plane, the one with the same
-    name and namespace as the query.

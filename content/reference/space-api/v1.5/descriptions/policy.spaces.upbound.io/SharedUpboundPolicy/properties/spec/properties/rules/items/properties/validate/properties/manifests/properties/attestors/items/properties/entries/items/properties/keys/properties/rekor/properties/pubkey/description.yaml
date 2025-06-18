@@ -1,3 +1,0 @@
-description: |-
-    RekorPubKey is an optional PEM-encoded public key to use for a custom Rekor.
-    If set, this will be used to validate transparency log signatures from a custom Rekor.

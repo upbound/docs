@@ -1,3 +1,0 @@
-description: |-
-    Auth configures how secret-manager authenticates with the Oracle Vault.
-    If empty, use the instance principal, otherwise the user credentials specified in Auth.

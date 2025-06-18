@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_alpha_space_destroy",
+  "title": "up_alpha_space_destroy",
+  "description": "Remove the Upbound Spaces deployment.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_alpha_space_destroy.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_alpha_space_destroy",
+  "permalink": "/apis-cli/cli-reference/yaml/up_alpha_space_destroy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

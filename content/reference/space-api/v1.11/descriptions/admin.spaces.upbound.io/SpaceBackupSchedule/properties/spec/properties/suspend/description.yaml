@@ -1,4 +1,0 @@
-description: |-
-    Suspend specifies whether the schedule is suspended. If true, no
-    SpaceBackups will be created, but running backups will be allowed to
-    complete.

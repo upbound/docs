@@ -1,3 +1,0 @@
-description: |-
-    URLTemplate
-    If unset, defaults to 'https://%s.secretsvaultcloud.%s/v1/%s%s'.

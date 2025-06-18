@@ -1,3 +1,0 @@
-description: |-
-    Roots is an optional set of PEM encoded trusted root certificates.
-    If not provided, the system roots are used.

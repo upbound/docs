@@ -1,0 +1,23 @@
+{
+  "id": "signature-verification",
+  "title": "Signature Verification",
+  "description": "Learn how to verify signatures for Official Providers from the Marketplace",
+  "source": "@site/docs/providers/signature-verification.md",
+  "sourceDirName": ".",
+  "slug": "/signature-verification",
+  "permalink": "/providers/signature-verification",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Signature Verification",
+    "weight": 9,
+    "description": "Learn how to verify signatures for Official Providers from the Marketplace"
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Pull secrets",
+    "permalink": "/providers/pull-secrets"
+  }
+}

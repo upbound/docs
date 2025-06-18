@@ -1,0 +1,33 @@
+{
+  "id": "self-hosted-spaces/self-hosted-qs",
+  "title": "Local Quickstart",
+  "description": "A  quickstart guide for Upbound Spaces",
+  "source": "@site/docs/deploy/self-hosted-spaces/self-hosted-qs.md",
+  "sourceDirName": "self-hosted-spaces",
+  "slug": "/self-hosted-spaces/self-hosted-qs",
+  "permalink": "/deploy/self-hosted-spaces/self-hosted-qs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Local Quickstart",
+    "weight": 99,
+    "description": "A  quickstart guide for Upbound Spaces",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/quickstart",
+      "/spaces/kind-quickstart",
+      "/kind-quickstart",
+      "/all-spaces/disconnected-spaces/quickstart"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Scaling vCluster and etcd Resources",
+    "permalink": "/deploy/self-hosted-spaces/scaling-resources"
+  },
+  "next": {
+    "title": "Space-level observability",
+    "permalink": "/deploy/self-hosted-spaces/space-observability"
+  }
+}

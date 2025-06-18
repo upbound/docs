@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+  "title": "Pipeline inputs and outputs",
+  "description": "Functions require inputs and outputs to process requests and return values to",
+  "source": "@site/docs/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs.md",
+  "sourceDirName": "control-plane-projects/authoring-compositions/kcl",
+  "slug": "/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+  "permalink": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Pipeline inputs and outputs",
+    "weight": 25,
+    "aliases": [
+      "/core-concepts/kcl/inputs-outputs",
+      "core-concepts/kcl/inputs-outputs"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Conditionals (if)",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/conditionals"
+  },
+  "next": {
+    "title": "Loops (for)",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/loops"
+  }
+}

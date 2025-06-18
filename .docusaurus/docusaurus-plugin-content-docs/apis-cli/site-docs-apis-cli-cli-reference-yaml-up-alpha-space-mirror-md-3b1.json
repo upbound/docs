@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_alpha_space_mirror",
+  "title": "up_alpha_space_mirror",
+  "description": "Managing the mirroring of artifacts to local storage or private container registries.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_alpha_space_mirror.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_alpha_space_mirror",
+  "permalink": "/apis-cli/cli-reference/yaml/up_alpha_space_mirror",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

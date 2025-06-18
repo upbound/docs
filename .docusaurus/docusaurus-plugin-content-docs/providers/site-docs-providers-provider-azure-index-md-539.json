@@ -1,0 +1,27 @@
+{
+  "id": "provider-azure/index",
+  "title": "Provider Azure",
+  "description": "Release notes for the Azure official provider",
+  "source": "@site/docs/providers/provider-azure/index.md",
+  "sourceDirName": "provider-azure",
+  "slug": "/provider-azure/",
+  "permalink": "/providers/provider-azure/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider Azure",
+    "weight": 1,
+    "description": "Release notes for the Azure official provider"
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Authentication",
+    "permalink": "/providers/provider-aws/authentication"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/providers/provider-azure/authentication"
+  }
+}

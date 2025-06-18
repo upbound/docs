@@ -1,5 +1,0 @@
-description: |-
-    Dimensions are the label keys and values to select control planes
-    implementing the desired API resource group. These dimensions apply to
-    all resource groups uniformly. Per resource group dimensions can
-    be specified in the resource group configuration.

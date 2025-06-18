@@ -1,2 +1,0 @@
-description: |-
-    SecretRef references a key in a secret that will be used as value.

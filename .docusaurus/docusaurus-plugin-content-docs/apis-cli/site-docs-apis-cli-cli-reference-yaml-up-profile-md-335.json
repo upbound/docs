@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_profile",
+  "title": "up_profile",
+  "description": "Manage configuration profiles.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_profile.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_profile",
+  "permalink": "/apis-cli/cli-reference/yaml/up_profile",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

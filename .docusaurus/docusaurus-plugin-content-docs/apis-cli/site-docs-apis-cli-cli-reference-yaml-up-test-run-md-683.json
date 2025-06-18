@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_test_run",
+  "title": "up_test_run",
+  "description": "Run project tests.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_test_run.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_test_run",
+  "permalink": "/apis-cli/cli-reference/yaml/up_test_run",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

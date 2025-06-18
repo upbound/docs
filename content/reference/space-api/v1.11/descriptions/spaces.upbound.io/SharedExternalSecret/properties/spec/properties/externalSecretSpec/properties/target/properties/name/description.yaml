@@ -1,4 +1,0 @@
-description: |-
-    Name defines the name of the Secret resource to be managed
-    This field is immutable
-    Defaults to the .metadata.name of the ExternalSecret resource

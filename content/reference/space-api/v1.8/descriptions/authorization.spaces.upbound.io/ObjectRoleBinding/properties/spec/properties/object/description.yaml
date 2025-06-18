@@ -1,3 +1,0 @@
-description: |-
-    Object references the object to which the listed subjects should have access at varying levels.
-    The object value is immutable after creation.

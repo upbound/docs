@@ -1,2 +1,0 @@
-description: |-
-    AzureKV configures this store to sync secrets using Azure Key Vault provider

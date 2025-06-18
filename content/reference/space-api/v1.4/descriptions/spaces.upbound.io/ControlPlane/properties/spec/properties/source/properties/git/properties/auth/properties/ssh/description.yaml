@@ -1,3 +1,0 @@
-description: |-
-    SSH is the configuration for SSH authentication. Note that the URL must
-    use the SSH protocol (e.g. ssh://github.com/org/repo.git).

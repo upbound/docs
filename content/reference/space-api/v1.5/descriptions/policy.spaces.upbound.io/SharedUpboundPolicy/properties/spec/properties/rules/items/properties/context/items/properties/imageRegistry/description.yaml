@@ -1,3 +1,0 @@
-description: |-
-    ImageRegistry defines requests to an OCI/Docker V2 registry to fetch image
-    details.

@@ -1,4 +1,0 @@
-description: |-
-    kind is the API kind to query. If empty, all kinds are queried in the
-    given scope. The kind is case-insensitive. The kind also matches plural
-    resources.

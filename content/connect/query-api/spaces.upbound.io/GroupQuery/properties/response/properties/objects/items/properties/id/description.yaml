@@ -1,5 +1,0 @@
-description: |-
-    id indentifies the object. The id is opaque, i.e. the format is
-    undefined. It's only valid for comparison within the response and as part
-    of the spec.ids field in immediately following queries. The format of the
-    id might change between releases.

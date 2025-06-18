@@ -1,3 +1,0 @@
-description: |-
-    Used to define the template to apply on the secret name.
-    `.value ` will specify the secret name in the template.

@@ -1,7 +1,0 @@
-description: |-
-    SharedSecretStore represents a shared SecretStore projected as ClusterSecretStore
-    into matching ControlPlanes in the same namespace. Once projected into a ControlPlane,
-    it can be referenced from ExternalSecret instances, as part of `storeRef` fields.
-    The secret store configuration including referenced credential are not leaked into the
-    ControlPlanes and in that sense can be called secure as they are invisible to the
-    ControlPlane workloads.

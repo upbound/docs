@@ -1,0 +1,27 @@
+{
+  "id": "monolithic",
+  "title": "Monolithic providers",
+  "description": "Support information for legacy monolithic Crossplane Providers",
+  "source": "@site/docs/providers/monolithic.md",
+  "sourceDirName": ".",
+  "slug": "/monolithic",
+  "permalink": "/providers/monolithic",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Monolithic providers",
+    "weight": 20,
+    "description": "Support information for legacy monolithic Crossplane Providers"
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Migrate to Official Providers",
+    "permalink": "/providers/migration"
+  },
+  "next": {
+    "title": "Policies",
+    "permalink": "/providers/policies"
+  }
+}

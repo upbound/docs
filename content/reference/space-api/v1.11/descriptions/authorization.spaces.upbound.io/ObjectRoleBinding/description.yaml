@@ -1,3 +1,0 @@
-description: |-
-    A ObjectRoleBinding binds a namespaced API object to a set of subjects, at varying access levels.
-    For now, there can be at most one ObjectRoleBinding pointing to each API object.

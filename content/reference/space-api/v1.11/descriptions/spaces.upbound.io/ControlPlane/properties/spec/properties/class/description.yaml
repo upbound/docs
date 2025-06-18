@@ -1,8 +1,0 @@
-description: |-
-    [[GATE:EnableControlPlaneClasses]]
-    Class specifies the class of the control plane. This affects the
-    control plane sizing, including component replicas and resource
-    requirements. There are multiple predefined classes, with 'default'
-    being the standard Spaces control plane without any additional class
-    configuration. Check the Upbound Cloud documentation for a list of all
-    available classes. Defaults to 'default'.

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_xpkg",
+  "title": "up_xpkg",
+  "description": "Deprecated. Please migrate to up project or use the crossplane CLI.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_xpkg.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_xpkg",
+  "permalink": "/apis-cli/cli-reference/yaml/up_xpkg",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

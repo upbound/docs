@@ -1,6 +1,0 @@
-description: |-
-    ResourceGroups define label keys and values and potentially other
-    properties to select a control plane along dimensions for individual
-    API resource groups.
-    
-    A resource group not specified in this list will not be scheduled.

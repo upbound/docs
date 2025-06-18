@@ -1,5 +1,0 @@
-description: |-
-    Exclude is the selector for resources that should be excluded from the backup.
-    If both Match and Exclude are specified, the Exclude selector will be applied
-    after the Match selector.
-    By default, only SpaceBackups are excluded.

@@ -1,3 +1,0 @@
-description: |-
-    Rekor provides configuration for the Rekor transparency log service. If an empty object
-    is provided the public instance of Rekor (https://rekor.sigstore.dev) is used.

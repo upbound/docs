@@ -1,3 +1,0 @@
-description: |-
-    ControlPlaneName is the name of the ControlPlane to simulate a change to.
-    This control plane is known as the Simulation's 'source' control plane.

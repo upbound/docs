@@ -1,0 +1,27 @@
+{
+  "id": "control-planes",
+  "title": "Control Planes",
+  "description": "An overview of control planes in Upbound",
+  "source": "@site/docs/operate/control-planes.md",
+  "sourceDirName": ".",
+  "slug": "/control-planes",
+  "permalink": "/operate/control-planes",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Control Planes",
+    "weight": 1,
+    "description": "An overview of control planes in Upbound"
+  },
+  "sidebar": "operateSidebar",
+  "previous": {
+    "title": "Contexts",
+    "permalink": "/operate/cli/contexts"
+  },
+  "next": {
+    "title": "Control Plane Connector",
+    "permalink": "/operate/ctp-connector"
+  }
+}

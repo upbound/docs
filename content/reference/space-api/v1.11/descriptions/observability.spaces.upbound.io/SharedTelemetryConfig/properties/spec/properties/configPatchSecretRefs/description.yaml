@@ -1,3 +1,0 @@
-description: |-
-    ConfigPatchSecretRefs allows defining patches sourced from secrets to be
-    applied to the telemetry configuration.

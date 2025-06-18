@@ -1,0 +1,33 @@
+{
+  "id": "ctp-connector",
+  "title": "Control Plane Connector",
+  "description": "A guide for how to connect a Kubernetes app cluster to a control plane in Upbound using the Control Plane connector feature",
+  "source": "@site/docs/operate/ctp-connector.md",
+  "sourceDirName": ".",
+  "slug": "/ctp-connector",
+  "permalink": "/operate/ctp-connector",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Control Plane Connector",
+    "weight": 80,
+    "description": "A guide for how to connect a Kubernetes app cluster to a control plane in Upbound using the Control Plane connector feature",
+    "aliases": [
+      "/mcp/ctp-connector",
+      "/concepts/control-plane-connector",
+      "/mcp/control-plane-connector/",
+      "mcp/ctp-connector"
+    ]
+  },
+  "sidebar": "operateSidebar",
+  "previous": {
+    "title": "Control Planes",
+    "permalink": "/operate/control-planes"
+  },
+  "next": {
+    "title": "Debugging issues on a control plane",
+    "permalink": "/operate/debugging-a-ctp"
+  }
+}

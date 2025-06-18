@@ -1,0 +1,27 @@
+{
+  "id": "core-concepts/claims",
+  "title": "Claims",
+  "description": "Sets of managed resources as a single control plane object.",
+  "source": "@site/docs/learn/core-concepts/claims.md",
+  "sourceDirName": "core-concepts",
+  "slug": "/core-concepts/claims",
+  "permalink": "/core-concepts/claims",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Claims",
+    "weight": 1,
+    "description": "Sets of managed resources as a single control plane object."
+  },
+  "sidebar": "learnSidebar",
+  "previous": {
+    "title": "Deploy your resources to a control plane",
+    "permalink": "/builders-workshop/deployment"
+  },
+  "next": {
+    "title": "Compositions",
+    "permalink": "/core-concepts/compositions"
+  }
+}

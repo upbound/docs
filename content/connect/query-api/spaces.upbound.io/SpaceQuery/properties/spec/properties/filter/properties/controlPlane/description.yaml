@@ -1,3 +1,0 @@
-description: |-
-    controlPlane specifies which control planes to query. If empty, all
-    control planes are queried in the given scope.

@@ -1,5 +1,0 @@
-description: |-
-    GeneratorRef points to a generator custom resource.
-    
-    Deprecated: The generatorRef is not implemented in .data[].
-    this will be removed with v1.

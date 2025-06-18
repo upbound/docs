@@ -1,0 +1,681 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.17.1
+  name: groupqueries.spaces.upbound.io
+spec:
+  group: spaces.upbound.io
+  names:
+    kind: GroupQuery
+    listKind: GroupQueryList
+    plural: groupqueries
+    singular: groupquery
+  scope: Namespaced
+  versions:
+  - name: v1alpha2
+    schema:
+      openAPIV3Schema:
+        description: GroupQuery represents a query against a group of control planes.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          response:
+            description: A QueryResponse is returned by the query server as response
+              to a Query.
+            properties:
+              count:
+                description: count is the total number of objects that match the query.
+                type: integer
+              cursor:
+                description: cursor is cursor to the next page of results.
+                properties:
+                  next:
+                    description: cursor is the cursor to the next page of results.
+                      If empty, there are no more,
+                    type: string
+                  page:
+                    description: page is the page number of the cursor.
+                    type: integer
+                  pageSize:
+                    description: pageSize is the number of objects per page, i.e.
+                      the limit of the query.
+                    type: integer
+                  position:
+                    description: |-
+                      position is the position of the first object in the list of matching objects
+                      at the time the first cursor was created. Due to creation and deletion of
+                      objects before the cursor this value might be outdated.
+                    type: integer
+                required:
+                - next
+                - page
+                - pageSize
+                - position
+                type: object
+              incomplete:
+                description: |-
+                  incomplete is true if the query was (potentially) limited before all
+                  matching objects. If a non-empty spec.page.cursor has been used, or
+                  objects have been skipped through non-zero spec.page.first, this value
+                  is always true.
+                type: boolean
+              objects:
+                description: |-
+                  objects is the list of objects returned by the query.
+
+                  Objects is mutual exclusive with Tables.
+                items:
+                  description: QueryResponseObject is one object returned by the query.
+                  properties:
+                    $errors:
+                      description: errors is the list of errors that occurred while
+                        processing the object.
+                      items:
+                        type: string
+                      type: array
+                    controlPlane:
+                      description: controlPlane is the name and namespace of the object.
+                      properties:
+                        name:
+                          description: name is the name of the controlplane of the
+                            object.
+                          type: string
+                        namespace:
+                          description: namespace is the namespace of the controlplane
+                            of the object.
+                          type: string
+                      type: object
+                    id:
+                      description: |-
+                        id indentifies the object. The id is opaque, i.e. the format is
+                        undefined. It's only valid for comparison within the response and as part
+                        of the spec.ids field in immediately following queries. The format of the
+                        id might change between releases.
+                      type: string
+                    mutablePath:
+                      description: |-
+                        mutablePath is the mutable path of the object, i.e. the path to the
+                        object in the controlplane Kubernetes API.
+                      properties:
+                        basePath:
+                          description: |-
+                            basePath is the base URL of the controlplane, i.e. the Kubernetes API
+                            endpoint.
+                          type: string
+                        group:
+                          type: string
+                        resource:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - group
+                      - resource
+                      - version
+                      type: object
+                    object:
+                      description: object is the sparse representation of the object.
+                      type: object
+                    relations:
+                      additionalProperties:
+                        description: QueryResponseRelation is the list of objects
+                          related to the object.
+                        type: object
+                      description: relations is the list of objects related to the
+                        object.
+                      type: object
+                  type: object
+                type: array
+              tables:
+                description: |-
+                  tables is the list of tables returned by the query. Objects are grouped
+                  as specified in the query. Hence, potentially multiple tables are returned.
+
+                  Objects is mutual exclusive with Tables.
+                items:
+                  description: QueryResponseTable is a table representation of a set
+                    of API resources.
+                  properties:
+                    columns:
+                      description: columns is the list of columns in the table.
+                      items:
+                        description: TableColumnDefinition contains information about
+                          a column returned in the Table.
+                        properties:
+                          description:
+                            description: description is a human readable description
+                              of this column.
+                            type: string
+                          format:
+                            description: |-
+                              format is an optional OpenAPI type modifier for this column. A format modifies the type and
+                              imposes additional rules, like date or time formatting for a string. The 'name' format is applied
+                              to the primary identifier column which has type 'string' to assist in clients identifying column
+                              is the resource name.
+                              See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for more.
+                            type: string
+                          name:
+                            description: name is a human readable name for the column.
+                            type: string
+                          priority:
+                            description: |-
+                              priority is an integer defining the relative importance of this column compared to others. Lower
+                              numbers are considered higher priority. Columns that may be omitted in limited space scenarios
+                              should be given a higher priority.
+                            format: int32
+                            type: integer
+                          type:
+                            description: |-
+                              type is an OpenAPI type definition for this column, such as number, integer, string, or
+                              array.
+                              See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for more.
+                            type: string
+                        required:
+                        - description
+                        - format
+                        - name
+                        - priority
+                        - type
+                        type: object
+                      type: array
+                    groupVersionKind:
+                      description: groupVersionKind is the group, version, and kind
+                        of the objects in the table.
+                      properties:
+                        group:
+                          type: string
+                        kind:
+                          type: string
+                        version:
+                          type: string
+                      required:
+                      - group
+                      - kind
+                      - version
+                      type: object
+                    rows:
+                      description: rows is the list of rows in the table.
+                      items:
+                        description: TableRow is an individual row in a table.
+                        properties:
+                          cells:
+                            description: |-
+                              cells will be as wide as the column definitions array and may contain strings, numbers (float64 or
+                              int64), booleans, simple maps, lists, or null. See the type field of the column definition for a
+                              more detailed description.
+                            items: {}
+                            type: array
+                          conditions:
+                            description: |-
+                              conditions describe additional status of a row that are relevant for a human user. These conditions
+                              apply to the row, not to the object, and will be specific to table output. The only defined
+                              condition type is 'Completed', for a row that indicates a resource that has run to completion and
+                              can be given less visual priority.
+                            items:
+                              description: TableRowCondition allows a row to be marked
+                                with additional information.
+                              properties:
+                                message:
+                                  description: Human readable message indicating details
+                                    about last transition.
+                                  type: string
+                                reason:
+                                  description: (brief) machine readable reason for
+                                    the condition's last transition.
+                                  type: string
+                                status:
+                                  description: Status of the condition, one of True,
+                                    False, Unknown.
+                                  type: string
+                                type:
+                                  description: |-
+                                    Type of row condition. The only defined value is 'Completed' indicating that the
+                                    object this row represents has reached a completed state and may be given less visual
+                                    priority than other rows. Clients are not required to honor any conditions but should
+                                    be consistent where possible about handling the conditions.
+                                  type: string
+                              required:
+                              - status
+                              - type
+                              type: object
+                            type: array
+                          object:
+                            description: |-
+                              This field contains the requested additional information about each object based on the includeObject
+                              policy when requesting the Table. If "None", this field is empty, if "Object" this will be the
+                              default serialization of the object for the current API version, and if "Metadata" (the default) will
+                              contain the object metadata. Check the returned kind and apiVersion of the object before parsing.
+                              The media type of the object will always match the enclosing list - if this as a JSON table, these
+                              will be JSON encoded objects.
+                            type: object
+                            x-kubernetes-preserve-unknown-fields: true
+                        required:
+                        - cells
+                        type: object
+                      type: array
+                  required:
+                  - columns
+                  - groupVersionKind
+                  - rows
+                  type: object
+                type: array
+              warnings:
+                description: |-
+                  warnings is a list of warnings that occurred while processing the query.
+                  The query is still executed, but these warnings indicate problems. It
+                  is recommended to print these to the user.
+                items:
+                  type: string
+                type: array
+            type: object
+          spec:
+            description: A QuerySpec specifies what to query.
+            properties:
+              count:
+                description: |-
+                  count specifies whether to return the number of objects. Note that
+                  computing the count is expensive and should only be done if necessary.
+                  Count is the remaining objects that match the query after paging.
+                type: boolean
+              cursor:
+                description: |-
+                  Cursor specifies the cursor of the first object to return. This value is
+                  opaque and is only valid when passed into spec.page.cursor in a subsequent
+                  query. The format of the cursor might change between releases.
+                type: boolean
+              filter:
+                description: filter specifies how to filter the returned objects.
+                properties:
+                  controlPlane:
+                    description: |-
+                      controlPlane specifies which control planes to query. If empty, all
+                      control planes are queried in the given scope.
+                    properties:
+                      group:
+                        description: |-
+                          group is the group of the control plane to query. If empty, all groups
+                          are queried in the given scope.
+                        type: string
+                      name:
+                        description: |-
+                          name is the name of the control plane to query. If empty, all control planes
+                          are queried in the given scope.
+                        type: string
+                    type: object
+                  objects:
+                    description: |-
+                      objects specifies what to filter. Objects in the query response will
+                      match all criteria in at least one of the specified filters.
+                    items:
+                      description: |-
+                        QueryFilter specifies what to filter. Objects in the query response will
+                        match all criteria specified in the filter.
+                      properties:
+                        categories:
+                          description: |-
+                            categories is a list of categories to query.
+                            Examples: all, managed, composite, claim
+                          items:
+                            type: string
+                          type: array
+                        conditions:
+                          description: conditions is a list of conditions to query.
+                          items:
+                            description: A QueryCondition specifies how to query a
+                              condition.
+                            properties:
+                              reason:
+                                description: reason queries based on the reason field
+                                  of the condition.
+                                type: string
+                              status:
+                                description: |-
+                                  status is the status of condition to query. This is either True, False
+                                  or Unknown.
+                                type: string
+                              type:
+                                description: |-
+                                  type is the type of condition to query.
+                                  Examples: Ready, Synced
+                                type: string
+                            required:
+                            - type
+                            type: object
+                          type: array
+                        creationTimestamp:
+                          description: creationTimestamp queries for objects with
+                            a range of creation times.
+                          properties:
+                            after:
+                              format: date-time
+                              type: string
+                            before:
+                              format: date-time
+                              type: string
+                          type: object
+                        groupKind:
+                          description: groupKind is the GroupKinds of objects to query.
+                          properties:
+                            apiGroup:
+                              description: apiGroup is the API group to query. If
+                                empty all groups will be queried.
+                              type: string
+                            kind:
+                              description: |-
+                                kind is kind to query. Kinds are case-insensitive and also match plural
+                                resources. If empty all kinds will be queried.
+                              type: string
+                          type: object
+                        id:
+                          description: id is the object ID to query.
+                          type: string
+                        jsonpath:
+                          description: |-
+                            jsonpath is a JSONPath filter expression that will be applied to objects
+                            as a filter. It must return a boolean; no objects will be matched if it
+                            returns any other type. jsonpath should be used as a last resort; using
+                            the other filter fields will generally be more efficient.
+                          type: string
+                        labels:
+                          additionalProperties:
+                            type: string
+                          description: labels are the labels of objects to query.
+                          type: object
+                        name:
+                          description: name is the name of objects to query.
+                          type: string
+                        namespace:
+                          description: namespace is the namespace WITHIN a control
+                            plane to query.
+                          type: string
+                      type: object
+                    type: array
+                required:
+                - objects
+                type: object
+              freshness:
+                description: |-
+                  freshness specifies resource versions per control plane to wait for before
+                  returning results. It's helpful to ensure consistency for read-after-write.
+                items:
+                  description: |-
+                    Freshness specifies a resource version per control plane to wait for before
+                    returning results. It's helpful to ensure consistency for read-after-write.
+                  properties:
+                    controlPlane:
+                      description: |-
+                        controlPlane is the name of the control plane to check for freshness of the data.
+                        In case of Query, the name is defaulted and must match the control plane
+                        name of the request.
+                      type: string
+                    group:
+                      description: |-
+                        group is the group of the control plane to check for freshness of
+                        the data. In case of GroupQuery or Query, the group is defaulted and
+                        must match the group of the request.
+                      type: string
+                    resourceVersion:
+                      description: |-
+                        resourceVersion is the resource version of the specified control plane
+                        to wait for before executing the query. Normal request timeouts apply.
+                        The resourceVersion is a large integer, returned by previous queries or
+                        by requests against the control plane Kubernetes API.
+
+                        Note that resource versions between control planes are not correlated.
+                      minLength: 1
+                      pattern: ^[0-9]+$
+                      type: string
+                  required:
+                  - controlPlane
+                  - group
+                  - resourceVersion
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - group
+                - controlPlane
+                x-kubernetes-list-type: map
+              limit:
+                description: |-
+                  limit is the maximal number of objects to return. Defaulted to 100.
+
+                  Note that a limit in a relation subsumes all the children of all parents,
+                  i.e. a small limit only makes sense if there is only a single parent,
+                  e.g. selected via spec.IDs.
+                type: integer
+              objects:
+                description: objects specifies how to return the objects.
+                properties:
+                  controlPlane:
+                    description: |-
+                      controlPlane specifies that the control plane name and namespace of the
+                      object should be returned.
+                    type: boolean
+                  id:
+                    description: |-
+                      id specifies whether to return the id of the object. The id is opaque,
+                      i.e. the format is undefined. It's only valid for comparison within the
+                      response and as part of the spec.ids field in immediately following queries.
+                      The format of the id might change between releases.
+                    type: boolean
+                  mutablePath:
+                    description: |-
+                      mutablePath specifies whether to return the mutable path of the object,
+                      i.e. the path to the object in the control plane Kubernetes API.
+                    type: boolean
+                  object:
+                    description: |-
+                      object specifies how to return the object, i.e. a sparse skeleton of
+                      fields. A value of true means that all descendants of that field should
+                      be returned. Other primitive values are not allowed. If the type of
+                      a field does not match the schema (e.g. an array instead of an object),
+                      the field is ignored.
+                    x-kubernetes-preserve-unknown-fields: true
+                  relations:
+                    additionalProperties:
+                      description: A QueryRelation specifies how to return objects
+                        in a relation.
+                      properties:
+                        filters:
+                          description: filters specifies how to filter the returned
+                            objects.
+                          items:
+                            description: |-
+                              QueryFilter specifies what to filter. Objects in the query response will
+                              match all criteria specified in the filter.
+                            properties:
+                              categories:
+                                description: |-
+                                  categories is a list of categories to query.
+                                  Examples: all, managed, composite, claim
+                                items:
+                                  type: string
+                                type: array
+                              conditions:
+                                description: conditions is a list of conditions to
+                                  query.
+                                items:
+                                  description: A QueryCondition specifies how to query
+                                    a condition.
+                                  properties:
+                                    reason:
+                                      description: reason queries based on the reason
+                                        field of the condition.
+                                      type: string
+                                    status:
+                                      description: |-
+                                        status is the status of condition to query. This is either True, False
+                                        or Unknown.
+                                      type: string
+                                    type:
+                                      description: |-
+                                        type is the type of condition to query.
+                                        Examples: Ready, Synced
+                                      type: string
+                                  required:
+                                  - type
+                                  type: object
+                                type: array
+                              creationTimestamp:
+                                description: creationTimestamp queries for objects
+                                  with a range of creation times.
+                                properties:
+                                  after:
+                                    format: date-time
+                                    type: string
+                                  before:
+                                    format: date-time
+                                    type: string
+                                type: object
+                              groupKind:
+                                description: groupKind is the GroupKinds of objects
+                                  to query.
+                                properties:
+                                  apiGroup:
+                                    description: apiGroup is the API group to query.
+                                      If empty all groups will be queried.
+                                    type: string
+                                  kind:
+                                    description: |-
+                                      kind is kind to query. Kinds are case-insensitive and also match plural
+                                      resources. If empty all kinds will be queried.
+                                    type: string
+                                type: object
+                              id:
+                                description: id is the object ID to query.
+                                type: string
+                              jsonpath:
+                                description: |-
+                                  jsonpath is a JSONPath filter expression that will be applied to objects
+                                  as a filter. It must return a boolean; no objects will be matched if it
+                                  returns any other type. jsonpath should be used as a last resort; using
+                                  the other filter fields will generally be more efficient.
+                                type: string
+                              labels:
+                                additionalProperties:
+                                  type: string
+                                description: labels are the labels of objects to query.
+                                type: object
+                              name:
+                                description: name is the name of objects to query.
+                                type: string
+                              namespace:
+                                description: namespace is the namespace WITHIN a control
+                                  plane to query.
+                                type: string
+                            type: object
+                          type: array
+                      type: object
+                    description: |-
+                      relations specifies which relations to query and what to return.
+                      Relation names are predefined strings relative to the release of
+                      Spaces.
+
+                      Examples: owners, descendants, resources, events, or their transitive
+                      equivalents owners+, descendants+, resources+.
+                    type: object
+                  table:
+                    description: table specifies whether to return the object in a
+                      table format.
+                    properties:
+                      grouping:
+                        description: |-
+                          grouping specifies how to group the returned objects into multiple
+                          tables where every table can have different sets of columns.
+                        type: string
+                    type: object
+                type: object
+              order:
+                description: |-
+                  order specifies how to order the returned objects. The first element
+                  specifies the primary order, the second element specifies the secondary,
+                  etc.
+                items:
+                  description: A QueryOrder specifies how to order. Exactly one of
+                    the fields must be set.
+                  properties:
+                    apiGroup:
+                      description: APIGroup specifies how to order by API group.
+                      enum:
+                      - Asc
+                      - Desc
+                      type: string
+                    cluster:
+                      description: controlPlane specifies how to order by control
+                        plane name.
+                      type: string
+                    creationTimestamp:
+                      description: creationTimestamp specifies how to order by creation
+                        timestamp.
+                      enum:
+                      - Asc
+                      - Desc
+                      type: string
+                    group:
+                      description: group specifies how to order by control plane group.
+                      enum:
+                      - Asc
+                      - Desc
+                      type: string
+                    kind:
+                      description: kind specifies how to order by kind.
+                      enum:
+                      - Asc
+                      - Desc
+                      type: string
+                    name:
+                      description: name specifies how to order by name.
+                      enum:
+                      - Asc
+                      - Desc
+                      type: string
+                    namespace:
+                      description: namespace specifies how to order by namespace.
+                      enum:
+                      - Asc
+                      - Desc
+                      type: string
+                  required:
+                  - cluster
+                  type: object
+                type: array
+              page:
+                description: Page specifies how to page the returned objects.
+                properties:
+                  cursor:
+                    description: |-
+                      cursor is the cursor of the first object to return. This value is opaque,
+                      the format cannot be relied on. It is returned by the server in the
+                      response to a previous query. If neither first nor cursor is specified,
+                      objects are returned from the beginning.
+
+                      Note that cursor values are not stable under different orderings.
+                    type: string
+                  first:
+                    description: |-
+                      first is the number of the first object to return relative to the cursor.
+                      If neither first nor cursor is specified, objects are returned from the
+                      beginning.
+                    type: integer
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true

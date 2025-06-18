@@ -1,5 +1,0 @@
-description: |-
-    PropagationPolicy specifies whether the configuration override will be
-    applied only to the object referenced in TargetRef (None), after an
-    ascending or descending hierarchy traversal will be done starting with
-    the target object.

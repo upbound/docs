@@ -1,0 +1,32 @@
+{
+  "id": "self-hosted-spaces/attach-detach",
+  "title": "Connect or disconnect a Space",
+  "description": "Enable and connect self-hosted Spaces to the Upbound console",
+  "source": "@site/docs/deploy/self-hosted-spaces/attach-detach.md",
+  "sourceDirName": "self-hosted-spaces",
+  "slug": "/self-hosted-spaces/attach-detach",
+  "permalink": "/deploy/self-hosted-spaces/attach-detach",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Connect or disconnect a Space",
+    "weight": 120,
+    "description": "Enable and connect self-hosted Spaces to the Upbound console",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/attach-detach",
+      "/deploy/spaces/attach-detach",
+      "all-spaces/self-hosted-spaces/attach-detach"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Self-Hosted Spaces",
+    "permalink": "/deploy/self-hosted-spaces/"
+  },
+  "next": {
+    "title": "AWS",
+    "permalink": "/deploy/self-hosted-spaces/aws/"
+  }
+}

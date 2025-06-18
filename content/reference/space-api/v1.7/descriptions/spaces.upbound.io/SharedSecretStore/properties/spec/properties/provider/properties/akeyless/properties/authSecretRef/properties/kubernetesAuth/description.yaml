@@ -1,3 +1,0 @@
-description: |-
-    Kubernetes authenticates with Akeyless by passing the ServiceAccount
-    token stored in the named Secret resource.

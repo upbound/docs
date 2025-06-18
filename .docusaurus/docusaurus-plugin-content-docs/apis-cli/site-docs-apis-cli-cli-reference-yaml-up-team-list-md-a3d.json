@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_team_list",
+  "title": "up_team_list",
+  "description": "List teams.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_team_list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_team_list",
+  "permalink": "/apis-cli/cli-reference/yaml/up_team_list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

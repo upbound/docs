@@ -1,4 +1,0 @@
-description: |-
-    TTL is the time to live for the backup. After this time, the backup
-    will be eligible for garbage collection. If not set, the backup will
-    not be garbage collected.

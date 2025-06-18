@@ -1,3 +1,0 @@
-description: |-
-    controlPlane specifies that the control plane name and namespace of the
-    object should be returned.

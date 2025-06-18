@@ -1,3 +1,0 @@
-description: |-
-    Entries contains the available attestors. An attestor can be a static key,
-    attributes for keyless verification, or a nested attestor declaration.

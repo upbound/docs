@@ -1,0 +1,28 @@
+{
+  "id": "builders-workshop/deployment",
+  "title": "Deploy your resources to a control plane",
+  "description": "Create a dev control plane and deploy to your cloud",
+  "source": "@site/docs/learn/builders-workshop/4-deployment.md",
+  "sourceDirName": "builders-workshop",
+  "slug": "/builders-workshop/deployment",
+  "permalink": "/builders-workshop/deployment",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "title": "Deploy your resources to a control plane",
+    "sidebar_position": 4,
+    "description": "Create a dev control plane and deploy to your cloud"
+  },
+  "sidebar": "learnSidebar",
+  "previous": {
+    "title": "Test your composition",
+    "permalink": "/builders-workshop/testing"
+  },
+  "next": {
+    "title": "Claims",
+    "permalink": "/core-concepts/claims"
+  }
+}

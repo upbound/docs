@@ -1,0 +1,26 @@
+{
+  "id": "query-api/index",
+  "title": "Query API Reference",
+  "description": "Documentation for the Query API resources",
+  "source": "@site/docs/apis-cli/query-api/index.md",
+  "sourceDirName": "query-api",
+  "slug": "/query-api/",
+  "permalink": "/apis-cli/query-api/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Query API Reference",
+    "description": "Documentation for the Query API resources"
+  },
+  "sidebar": "apisCliSidebar",
+  "previous": {
+    "title": "APIs & CLI Reference",
+    "permalink": "/apis-cli/"
+  },
+  "next": {
+    "title": "Spaces API Reference Latest (v1.13)",
+    "permalink": "/apis-cli/spaces-api/"
+  }
+}

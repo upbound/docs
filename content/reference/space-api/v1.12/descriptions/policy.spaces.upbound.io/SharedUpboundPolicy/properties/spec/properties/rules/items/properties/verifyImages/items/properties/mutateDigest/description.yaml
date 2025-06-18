@@ -1,3 +1,0 @@
-description: |-
-    MutateDigest enables replacement of image tags with digests.
-    Defaults to true.

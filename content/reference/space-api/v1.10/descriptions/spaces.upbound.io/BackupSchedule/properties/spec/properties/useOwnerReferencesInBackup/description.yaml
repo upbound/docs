@@ -1,5 +1,0 @@
-description: |-
-    UseOwnerReferencesBackup specifies whether an ownership chain should be
-    established between this resource and the Backup it creates.
-    If set to true, the Backup will be garbage collected when this resource
-    is deleted.
