@@ -248,9 +248,9 @@ export default {
       "hideOnScroll": false
     },
     "algolia": {
-      "appId": "ORYZHML6OA",
-      "apiKey": "e380c5833678ad65f3815df1175a9538",
-      "indexName": "docs_upbound_io_oryzhml6oa_pages",
+      "appId": "4OZX85VEXQ",
+      "apiKey": "7880f8f03cb89ce23f18d4359fb10e5e",
+      "indexName": "upbound",
       "contextualSearch": true,
       "searchPagePath": "search",
       "searchParameters": {}
