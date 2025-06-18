@@ -250,7 +250,7 @@ export default {
     "algolia": {
       "appId": "4OZX85VEXQ",
       "apiKey": "7880f8f03cb89ce23f18d4359fb10e5e",
-      "indexName": "upbound",
+      "indexName": "upbound-docs",
       "contextualSearch": true,
       "searchPagePath": "search",
       "searchParameters": {}
