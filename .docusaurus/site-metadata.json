@@ -27,6 +27,11 @@
       "name": "@docusaurus/theme-search-algolia",
       "version": "3.7.0"
     },
+    "docusaurus-feedback-plugin": {
+      "type": "package",
+      "name": "docusaurus-pushfeedback",
+      "version": "1.0.5"
+    },
     "docusaurus-plugin-content-docs": {
       "type": "package",
       "name": "@docusaurus/plugin-content-docs",

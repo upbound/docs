@@ -24,8 +24,10 @@
     "@docusaurus/theme-search-algolia": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.1.1",
+    "docusaurus-pushfeedback": "^1.0.5",
     "js-yaml": "^4.1.0",
     "prism-react-renderer": "^2.3.0",
+    "pushfeedback-react": "^0.1.65",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
