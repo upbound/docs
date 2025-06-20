@@ -165,9 +165,6 @@ items = _items
 
 ## Review your test
 
-In the following sections, you'll review each piece of the test to understand
-it.
-
 ### Import the testing models
 
 ```yaml-noCopy title="tests/test-xstoragebucket/main.k"
