@@ -9,8 +9,6 @@ aliases:
     - core-concepts/testing
 ---
 
-import CrdDocViewer from '@site/src/components/CrdViewer';
-
 Testing ensures your compositions and control planes work as expected, follow
 best practices, and meet your organizations requirements. You can run your
 projects in a development control plane and author tests to verify specific
@@ -418,15 +416,6 @@ guide shows you how to [build and push your projects][build-and-push-your-projec
 <!-- vale off -->
 
 ## Test API Explorer
-
-
-### Composition Tests 
-
-<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_compositiontests.yaml" />
-
-### End to End Tests
-
-<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_e2etests.yaml" />
 
 <!-- vale on -->
 
