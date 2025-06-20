@@ -1184,6 +1184,9 @@ Save your composition file.
 
 ## Review your function
 
+In the following sections, you'll review each piece of your function to
+understand what is constructued.
+
 ### Resource imports and user inputs
 
 <CodeBlock cloud="aws" language="kcl">
