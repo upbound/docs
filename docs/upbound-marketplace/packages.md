@@ -120,10 +120,10 @@ To report a package you believe is violating the legal Terms of Service, use the
 The table below illustrates the relationship between accessing an image and
 publishing a public Marketplace listing page.
 
-| | Published | Not Published |
-| ---- | ---- | ---- |
-<!-- | <b>Public</b> | **Pull:** Anyone<br>**View:** Anyone | **Pull:** Anonymous<br>**View:** No one | -->
-<!-- | <b>Private</b> | **Pull:** Authorized<br>**View:** Authorized | **Pull:** Authorized<br>**View:** No one | -->
+|             | Published                                    | Not Published                         |
+|-------------|----------------------------------------------|---------------------------------------|
+| **Public**  | **Pull:** Anyone<br/>**View:** Anyone       | **Pull:** Anonymous<br/>**View:** No one |
+| **Private** | **Pull:** Authorized<br/>**View:** Authorized | **Pull:** Authorized<br/>**View:** No one |
 
 ### Adding documentation, icons, and other assets to your package
 
