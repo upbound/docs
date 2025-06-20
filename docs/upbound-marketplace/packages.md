@@ -107,7 +107,7 @@ href="https://marketplace.upbound.io/providers/upbound/provider-aws/">`https://m
 
 Users can now publish their own Marketplace listing pages with the [`up
 repository update`][up-repo-update] command with the `--publish` flag. This
-requires `up` CLI version `v0.39.0` or later.Upbound needs the following
+requires `up` CLI version `v0.39.0` or later. Upbound needs the following
 information before considering a package:
 
 Your repository's listing page is automatically generated at: `https://marketplace.upbound.io/<package_type>/<organization or user>/<repository>/`
