@@ -106,9 +106,7 @@ href="https://marketplace.upbound.io/providers/upbound/provider-aws/">`https://m
 ### Publishing public packages
 
 Users can now publish their own Marketplace listing pages with the [`up
-repository update`][up-repo-update] command with the `--publish` flag. This
-requires `up` CLI version `v0.39.0` or later. Upbound needs the following
-information before considering a package:
+repository update`][up-repo-update] command with the `--publish` flag. This requires `up` CLI version `v0.39.0` or later.
 
 Your repository's listing page is automatically generated at: `https://marketplace.upbound.io/<package_type>/<organization or user>/<repository>/`
 
@@ -192,7 +190,11 @@ The Marketplace only publishes release versions with valid [semver][semver] tags
 [upbound-account]: /operate/accounts/identity-management/users/#create-an-account
 [login]: /upbound-marketplace/authentication
 [up-repository-create]: /apis-cli/cli-reference
+[credential-helper]: /operate/cli/configuration/#configuring-a-docker-credential-helper
+[public-packages]: #publishing-public-packages
 
+[up-alpha-xpkg-append]: /apis-cli/cli-reference
+[up-repo-update]: /apis-cli/cli-reference
 
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [aws-provider-package]: https://github.com/crossplane-contrib/provider-aws/tree/master/package
