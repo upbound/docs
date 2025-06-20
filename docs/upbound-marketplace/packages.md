@@ -192,7 +192,10 @@ The Marketplace only publishes release versions with valid [semver][semver] tags
 [up-repository-create]: /apis-cli/cli-reference
 [credential-helper]: /operate/cli/configuration/#configuring-a-docker-credential-helper
 [public-packages]: #publishing-public-packages
+
 [up-alpha-xpkg-append]: /apis-cli/cli-reference
+[up-repo-update]: /apis-cli/cli-reference
+
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [aws-provider-package]: https://github.com/crossplane-contrib/provider-aws/tree/master/package
 [crossplane-xpkg-build-command-reference]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build
