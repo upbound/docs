@@ -3,7 +3,7 @@ name: Validate content with Vale
 on:
   pull_request:
     paths:
-      - 'content/**'
+      - 'docs/**'
 
   # Allows manual workflow run (must in default branch to work)
   workflow_dispatch:
