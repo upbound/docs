@@ -14,8 +14,8 @@ migration and work in progress.
 To contribute to this effort, clone and build the project:
 
 ```shell
-git clone https://github.com/upbound/docusaurus.git
-cd docusaurus
+git clone https://github.com/upbound/docs.git
+cd docs
 npm install
 ```
 
