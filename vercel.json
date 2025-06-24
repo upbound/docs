@@ -779,6 +779,11 @@
     "source": "/learn/my-first-project",
     "destination": "/builders-workshop/project-foundations",
     "permanent": true
+  },
+  {
+    "source": "/learn/my-first-project/",
+    "destination": "/builders-workshop/project-foundations",
+    "permanent": true
   }
 
   
