@@ -755,7 +755,17 @@
     "destination": "/",
     "permanent": true
   },
-   {
+  {
+    "source": "/learn/build-with-upbound/",
+    "destination": "/",
+    "permanent": true
+  },
+  {
+    "source": "/learn/build-with-upbound",
+    "destination": "/",
+    "permanent": true
+  },
+  {
     "source": "/learn/build-with-upbound/#install-the-upbound-cli",
     "destination": "/#install-the-upbound-cli",
     "permanent": true
@@ -770,6 +780,7 @@
     "destination": "/builders-workshop/project-foundations",
     "permanent": true
   }
- 
+
+  
   ]
 }
