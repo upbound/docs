@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-profile-create",
+  "title": "up-profile-create",
+  "description": "Create a new Upbound Profile without logging in.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-profile-create.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-profile-create",
+  "permalink": "/apis-cli/cli-reference/yaml/up-profile-create",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

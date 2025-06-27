@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-team-delete",
+  "title": "up-team-delete",
+  "description": "Delete a team.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-team-delete.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-team-delete",
+  "permalink": "/apis-cli/cli-reference/yaml/up-team-delete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

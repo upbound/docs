@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-xrd-generate",
+  "title": "up-xrd-generate",
+  "description": "Generate an XRD from a Composite Resource (XR) or Claim (XRC).",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-xrd-generate.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-xrd-generate",
+  "permalink": "/apis-cli/cli-reference/yaml/up-xrd-generate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

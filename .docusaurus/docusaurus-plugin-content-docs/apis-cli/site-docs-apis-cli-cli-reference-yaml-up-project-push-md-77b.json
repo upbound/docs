@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-project-push",
+  "title": "up-project-push",
+  "description": "Push a project's packages to the Upbound Marketplace.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-project-push.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-project-push",
+  "permalink": "/apis-cli/cli-reference/yaml/up-project-push",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

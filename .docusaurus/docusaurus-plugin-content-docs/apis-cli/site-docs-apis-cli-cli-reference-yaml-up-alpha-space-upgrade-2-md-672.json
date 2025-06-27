@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-alpha-space-upgrade 2",
+  "title": "up-alpha-space-upgrade 2",
+  "description": "Upgrade the Upbound Spaces deployment.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-alpha-space-upgrade 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-alpha-space-upgrade 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-alpha-space-upgrade 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

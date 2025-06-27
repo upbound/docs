@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-xpkg-xp-extract 2",
+  "title": "up-xpkg-xp-extract 2",
+  "description": "Extract package contents into a Crossplane cache compatible format. Fetches from a remote registry by default.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-xpkg-xp-extract 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-xpkg-xp-extract 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-xpkg-xp-extract 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

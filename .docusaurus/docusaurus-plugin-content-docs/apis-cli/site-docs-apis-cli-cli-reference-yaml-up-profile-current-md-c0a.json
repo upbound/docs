@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-profile-current",
+  "title": "up-profile-current",
+  "description": "Get current Upbound Profile.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-profile-current.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-profile-current",
+  "permalink": "/apis-cli/cli-reference/yaml/up-profile-current",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

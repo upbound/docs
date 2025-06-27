@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/apis-cli',
-    component: ComponentCreator('/apis-cli', '7c8'),
+    component: ComponentCreator('/apis-cli', '70b'),
     routes: [
       {
         path: '/apis-cli',
-        component: ComponentCreator('/apis-cli', 'f0c'),
+        component: ComponentCreator('/apis-cli', '7e4'),
         routes: [
           {
             path: '/apis-cli',
-            component: ComponentCreator('/apis-cli', '42e'),
+            component: ComponentCreator('/apis-cli', 'c5a'),
             routes: [
               {
                 path: '/apis-cli/',
@@ -72,743 +72,768 @@ export default [
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha', '1a7'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha', '9a7'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_ctx',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_ctx', '1a8'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-ctx',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-ctx', '246'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_migration',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_migration', '77d'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-migration',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-migration', 'd95'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_migration_export',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_migration_export', '1e4'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-migration-export',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-migration-export', '50e'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_migration_import',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_migration_import', 'ddc'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-migration-import',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-migration-import', 'b88'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_migration_pause-toggle',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_migration_pause-toggle', 'ffd'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-migration-pause-toggle',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-migration-pause-toggle', '3c7'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space', 'b4d'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space', 'c6d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_billing',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_billing', '18e'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-billing',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-billing', '0d6'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_billing_export',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_billing_export', '2d5'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-billing-export',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-billing-export', '3e3'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_connect_(attach)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_connect_(attach)', '882'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-connect',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-connect', '7cf'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_destroy',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_destroy', 'c80'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-destroy',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-destroy', 'c49'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)', '651'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-disconnect',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-disconnect', 'fa4'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_init',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_init', '1e1'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-init',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-init', 'b86'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_list', '34a'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-list', 'c4a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_mirror',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_mirror', 'ff0'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-mirror',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-mirror', 'a3c'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_alpha_space_upgrade',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_alpha_space_upgrade', 'dc1'),
+                path: '/apis-cli/cli-reference/yaml/up-alpha-space-upgrade',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-alpha-space-upgrade', 'aec'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_completion',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_completion', '063'),
+                path: '/apis-cli/cli-reference/yaml/up-completion',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-completion', '99d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_composition',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_composition', '77f'),
+                path: '/apis-cli/cli-reference/yaml/up-composition',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-composition', '394'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_composition_generate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_composition_generate', 'd65'),
+                path: '/apis-cli/cli-reference/yaml/up-composition-generate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-composition-generate', '39d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_composition_render',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_composition_render', 'c77'),
+                path: '/apis-cli/cli-reference/yaml/up-composition-render',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-composition-render', 'b76'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)', '578'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane', '4cb'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration', '01f'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-configuration',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-configuration', '293'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install', '83d'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-configuration-install',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-configuration-install', 'aff'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connect',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connect', '6fc'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-connect',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-connect', '1db'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector', '6d7'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-connector',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-connector', '30d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install', '4dd'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-connector-install',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-connector-install', 'e64'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall', '19c'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-connector-uninstall',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-connector-uninstall', '391'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_create', 'b73'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-create', '26a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_delete', '87b'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-delete', 'e15'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect', 'bdd'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-disconnect',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-disconnect', '5c1'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function', '093'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-function',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-function', '6f7'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function_install',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function_install', 'fc6'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-function-install',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-function-install', '0bd'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_get', '317'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-get', 'a2f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_list', 'ee5'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-list', '8c7'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider', '49f'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-provider',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-provider', 'e2d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install', 'b71'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-provider-install',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-provider-install', 'ac7'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret', '44d'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-pull-secret',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-pull-secret', 'eaa'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create', 'bdc'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-pull-secret-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-pull-secret-create', 'a01'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulate', '059'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-simulate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-simulate', '49b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)', '3ee'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-simulation',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-simulation', 'a92'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create', 'c09'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-simulation-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-simulation-create', '41d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete', 'f4d'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-simulation-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-simulation-delete', '0a5'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list', '0d2'),
+                path: '/apis-cli/cli-reference/yaml/up-controlplane-simulation-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-controlplane-simulation-list', 'f5f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_ctx',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_ctx', '066'),
+                path: '/apis-cli/cli-reference/yaml/up-ctx',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-ctx', 'f5e'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_dependency_(dep)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_dependency_(dep)', 'ff5'),
+                path: '/apis-cli/cli-reference/yaml/up-dependency',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-dependency', '30c'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_dependency_(dep)_add',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_dependency_(dep)_add', '9ac'),
+                path: '/apis-cli/cli-reference/yaml/up-dependency-add',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-dependency-add', 'c02'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_dependency_(dep)_clean-cache',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_dependency_(dep)_clean-cache', 'b47'),
+                path: '/apis-cli/cli-reference/yaml/up-dependency-clean-cache',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-dependency-clean-cache', '876'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_dependency_(dep)_update-cache',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_dependency_(dep)_update-cache', 'c60'),
+                path: '/apis-cli/cli-reference/yaml/up-dependency-update-cache',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-dependency-update-cache', '5c4'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_example',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_example', 'c00'),
+                path: '/apis-cli/cli-reference/yaml/up-example',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-example', '3ac'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_example_generate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_example_generate', '47c'),
+                path: '/apis-cli/cli-reference/yaml/up-example-generate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-example-generate', 'e5f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_function',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_function', 'ba3'),
+                path: '/apis-cli/cli-reference/yaml/up-function',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-function', 'a6e'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_function_generate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_function_generate', 'b82'),
+                path: '/apis-cli/cli-reference/yaml/up-function-generate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-function-generate', '6eb'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_group',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_group', '104'),
+                path: '/apis-cli/cli-reference/yaml/up-group',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-group', 'bf0'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_group_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_group_create', '20c'),
+                path: '/apis-cli/cli-reference/yaml/up-group-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-group-create', '290'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_group_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_group_delete', 'aaa'),
+                path: '/apis-cli/cli-reference/yaml/up-group-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-group-delete', '57b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_group_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_group_get', '5b4'),
+                path: '/apis-cli/cli-reference/yaml/up-group-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-group-get', '753'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_group_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_group_list', '4ab'),
+                path: '/apis-cli/cli-reference/yaml/up-group-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-group-list', '6b2'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_help',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_help', '94e'),
+                path: '/apis-cli/cli-reference/yaml/up-help',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-help', '5a1'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_license',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_license', 'aa0'),
+                path: '/apis-cli/cli-reference/yaml/up-license',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-license', '462'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_login',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_login', '2d2'),
+                path: '/apis-cli/cli-reference/yaml/up-login',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-login', '643'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_logout',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_logout', '5a7'),
+                path: '/apis-cli/cli-reference/yaml/up-logout',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-logout', '21b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)', '904'),
+                path: '/apis-cli/cli-reference/yaml/up-organization',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization', '7b8'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_create', '68c'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-create', 'b61'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_delete', 'c7c'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-delete', '726'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_get', '70a'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-get', '86f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_list', '40f'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-list', '638'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_token',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_token', '513'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-token',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-token', '4b9'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_user',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_user', '192'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-user',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-user', 'b43'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_user_invite',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_user_invite', '276'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-user-invite',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-user-invite', 'ab7'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_user_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_user_list', 'f71'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-user-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-user-list', 'd1f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_organization_(org)_user_remove',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_organization_(org)_user_remove', 'cc0'),
+                path: '/apis-cli/cli-reference/yaml/up-organization-user-remove',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-organization-user-remove', '19d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile', '785'),
+                path: '/apis-cli/cli-reference/yaml/up-profile',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile', 'bd9'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_create', 'b9e'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-create', '07d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_current',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_current', '50b'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-current',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-current', '54b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_delete', '919'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-delete', '93d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_list', 'a60'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-list', '3ac'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_rename',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_rename', '11f'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-rename',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-rename', '64a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_set',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_set', '207'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-set',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-set', '338'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_use',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_use', 'fe9'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-use',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-use', 'cdd'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_profile_view',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_profile_view', 'd5b'),
+                path: '/apis-cli/cli-reference/yaml/up-profile-view',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-profile-view', '0c9'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project', '066'),
+                path: '/apis-cli/cli-reference/yaml/up-project',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project', '05a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_build',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_build', '8d4'),
+                path: '/apis-cli/cli-reference/yaml/up-project-build',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-build', '217'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_init',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_init', 'ee0'),
+                path: '/apis-cli/cli-reference/yaml/up-project-init',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-init', 'fcd'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_move',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_move', 'e48'),
+                path: '/apis-cli/cli-reference/yaml/up-project-move',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-move', '43b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_push',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_push', '844'),
+                path: '/apis-cli/cli-reference/yaml/up-project-push',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-push', 'ed3'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_run',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_run', 'a61'),
+                path: '/apis-cli/cli-reference/yaml/up-project-run',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-run', '97c'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_simulate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_simulate', 'ac6'),
+                path: '/apis-cli/cli-reference/yaml/up-project-simulate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-simulate', 'c9f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_simulation',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_simulation', '902'),
+                path: '/apis-cli/cli-reference/yaml/up-project-simulation',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-simulation', '19f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_simulation_complete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_simulation_complete', '152'),
+                path: '/apis-cli/cli-reference/yaml/up-project-simulation-complete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-simulation-complete', '244'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_simulation_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_simulation_create', 'af7'),
+                path: '/apis-cli/cli-reference/yaml/up-project-simulation-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-simulation-create', '110'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_project_simulation_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_project_simulation_delete', '7e3'),
+                path: '/apis-cli/cli-reference/yaml/up-project-simulation-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-project-simulation-delete', '1f3'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)', 'a8b'),
+                path: '/apis-cli/cli-reference/yaml/up-repository',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository', 'afc'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_create', '14b'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-create', '135'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_delete', '1f6'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-delete', '2eb'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_get', '6c1'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-get', '980'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_list', '9c5'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-list', '406'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_permission',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_permission', '845'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-permission',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-permission', '629'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_grant',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_grant', '8df'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-permission-grant',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-permission-grant', '97a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_list', 'b82'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-permission-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-permission-list', '86d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_revoke',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_revoke', '1cc'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-permission-revoke',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-permission-revoke', 'e74'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_repository_(repo)_update',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_repository_(repo)_update', 'f97'),
+                path: '/apis-cli/cli-reference/yaml/up-repository-update',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-repository-update', 'c6e'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot', '0e9'),
+                path: '/apis-cli/cli-reference/yaml/up-robot',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot', '30a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_create', 'bac'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-create', 'f71'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_delete', '35f'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-delete', '9c4'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_get', '5ab'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-get', '9a8'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_list', '520'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-list', '537'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_team',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_team', 'f31'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-team',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-team', '572'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_team_join',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_team_join', '707'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-team-join',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-team-join', '0bb'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_team_leave',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_team_leave', 'ce1'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-team-leave',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-team-leave', '673'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_team_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_team_list', '47d'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-team-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-team-list', 'cd9'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_token',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_token', '784'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-token',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-token', 'fda'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_token_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_token_create', '52a'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-token-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-token-create', '2db'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_token_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_token_delete', 'a19'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-token-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-token-delete', 'ac8'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_token_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_token_get', '7ee'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-token-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-token-get', '3b2'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_robot_token_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_robot_token_list', '589'),
+                path: '/apis-cli/cli-reference/yaml/up-robot-token-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-robot-token-list', '7a8'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space', 'a11'),
+                path: '/apis-cli/cli-reference/yaml/up-space',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space', '5c9'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_billing',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_billing', '0aa'),
+                path: '/apis-cli/cli-reference/yaml/up-space-billing',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-billing', '13b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_billing_export',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_billing_export', '85b'),
+                path: '/apis-cli/cli-reference/yaml/up-space-billing-export',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-billing-export', '115'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_connect_(attach)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_connect_(attach)', 'fa0'),
+                path: '/apis-cli/cli-reference/yaml/up-space-connect',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-connect', 'b07'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_destroy',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_destroy', '706'),
+                path: '/apis-cli/cli-reference/yaml/up-space-destroy',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-destroy', '2a2'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_disconnect_(detach)',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_disconnect_(detach)', '604'),
+                path: '/apis-cli/cli-reference/yaml/up-space-disconnect',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-disconnect', '919'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_init',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_init', '5ba'),
+                path: '/apis-cli/cli-reference/yaml/up-space-init',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-init', '8cf'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_list', 'ff6'),
+                path: '/apis-cli/cli-reference/yaml/up-space-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-list', '494'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_mirror',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_mirror', '80e'),
+                path: '/apis-cli/cli-reference/yaml/up-space-mirror',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-mirror', 'f40'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_space_upgrade',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_space_upgrade', '301'),
+                path: '/apis-cli/cli-reference/yaml/up-space-upgrade',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-space-upgrade', 'd4d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_team',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_team', 'ca8'),
+                path: '/apis-cli/cli-reference/yaml/up-team',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-team', '0f9'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_team_create',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_team_create', '08c'),
+                path: '/apis-cli/cli-reference/yaml/up-team-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-team-create', 'f0f'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_team_delete',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_team_delete', '3b6'),
+                path: '/apis-cli/cli-reference/yaml/up-team-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-team-delete', '64b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_team_get',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_team_get', '165'),
+                path: '/apis-cli/cli-reference/yaml/up-team-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-team-get', 'da6'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_team_list',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_team_list', '6b1'),
+                path: '/apis-cli/cli-reference/yaml/up-team-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-team-list', '45a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_test',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_test', 'e61'),
+                path: '/apis-cli/cli-reference/yaml/up-test',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-test', '70b'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_test_generate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_test_generate', '7fa'),
+                path: '/apis-cli/cli-reference/yaml/up-test-generate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-test-generate', '6c4'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_test_run',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_test_run', '9bb'),
+                path: '/apis-cli/cli-reference/yaml/up-test-run',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-test-run', '398'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_uxp',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_uxp', 'ead'),
+                path: '/apis-cli/cli-reference/yaml/up-token',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-token', '9fb'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_uxp_install',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_uxp_install', '86a'),
+                path: '/apis-cli/cli-reference/yaml/up-token-create',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-token-create', '589'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_uxp_uninstall',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_uxp_uninstall', 'd87'),
+                path: '/apis-cli/cli-reference/yaml/up-token-delete',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-token-delete', '218'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_uxp_upgrade',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_uxp_upgrade', 'b70'),
+                path: '/apis-cli/cli-reference/yaml/up-token-get',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-token-get', 'c36'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_version',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_version', 'dcc'),
+                path: '/apis-cli/cli-reference/yaml/up-token-list',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-token-list', 'c9d'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpkg',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpkg', 'a00'),
+                path: '/apis-cli/cli-reference/yaml/up-uxp',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-uxp', '3a2'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpkg_append',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpkg_append', '679'),
+                path: '/apis-cli/cli-reference/yaml/up-uxp-install',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-uxp-install', '254'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpkg_batch',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpkg_batch', '7c0'),
+                path: '/apis-cli/cli-reference/yaml/up-uxp-uninstall',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-uxp-uninstall', '363'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpkg_build',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpkg_build', 'e75'),
+                path: '/apis-cli/cli-reference/yaml/up-uxp-upgrade',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-uxp-upgrade', 'acb'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpkg_push',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpkg_push', '71d'),
+                path: '/apis-cli/cli-reference/yaml/up-version',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-version', '9af'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpkg_xp-extract',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpkg_xp-extract', 'd8c'),
+                path: '/apis-cli/cli-reference/yaml/up-xpkg',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpkg', '33a'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpls',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpls', '22c'),
+                path: '/apis-cli/cli-reference/yaml/up-xpkg-append',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpkg-append', 'f83'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xpls_serve',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xpls_serve', 'e3c'),
+                path: '/apis-cli/cli-reference/yaml/up-xpkg-batch',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpkg-batch', '270'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xrd',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xrd', 'de4'),
+                path: '/apis-cli/cli-reference/yaml/up-xpkg-build',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpkg-build', 'aab'),
                 exact: true
               },
               {
-                path: '/apis-cli/cli-reference/yaml/up_xrd_generate',
-                component: ComponentCreator('/apis-cli/cli-reference/yaml/up_xrd_generate', '6a9'),
+                path: '/apis-cli/cli-reference/yaml/up-xpkg-push',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpkg-push', 'c81'),
+                exact: true
+              },
+              {
+                path: '/apis-cli/cli-reference/yaml/up-xpkg-xp-extract',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpkg-xp-extract', '0ec'),
+                exact: true
+              },
+              {
+                path: '/apis-cli/cli-reference/yaml/up-xpls',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpls', '4a0'),
+                exact: true
+              },
+              {
+                path: '/apis-cli/cli-reference/yaml/up-xpls-serve',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xpls-serve', 'd9c'),
+                exact: true
+              },
+              {
+                path: '/apis-cli/cli-reference/yaml/up-xrd',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xrd', 'e47'),
+                exact: true
+              },
+              {
+                path: '/apis-cli/cli-reference/yaml/up-xrd-generate',
+                component: ComponentCreator('/apis-cli/cli-reference/yaml/up-xrd-generate', '645'),
                 exact: true
               },
               {

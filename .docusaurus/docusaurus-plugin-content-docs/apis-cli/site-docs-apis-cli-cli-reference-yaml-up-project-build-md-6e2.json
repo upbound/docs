@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-project-build",
+  "title": "up-project-build",
+  "description": "Build a project into a Crossplane package.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-project-build.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-project-build",
+  "permalink": "/apis-cli/cli-reference/yaml/up-project-build",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

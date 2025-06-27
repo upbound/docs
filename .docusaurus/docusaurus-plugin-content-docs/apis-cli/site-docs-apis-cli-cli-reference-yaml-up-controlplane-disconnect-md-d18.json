@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-disconnect",
+  "title": "up-controlplane-disconnect",
+  "description": "Deprecated: Disconnect kubectl from control plane.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-disconnect.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-disconnect",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-disconnect",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

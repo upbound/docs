@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-repository-get",
+  "title": "up-repository-get",
+  "description": "Get a repository for the account.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-repository-get.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-repository-get",
+  "permalink": "/apis-cli/cli-reference/yaml/up-repository-get",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

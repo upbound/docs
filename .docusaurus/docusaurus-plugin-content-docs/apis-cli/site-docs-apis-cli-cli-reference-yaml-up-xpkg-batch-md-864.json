@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-xpkg-batch",
+  "title": "up-xpkg-batch",
+  "description": "Batch build and push a family of service-scoped provider packages.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-xpkg-batch.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-xpkg-batch",
+  "permalink": "/apis-cli/cli-reference/yaml/up-xpkg-batch",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

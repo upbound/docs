@@ -1,2 +1,0 @@
-Rename an Upbound Profile.
-

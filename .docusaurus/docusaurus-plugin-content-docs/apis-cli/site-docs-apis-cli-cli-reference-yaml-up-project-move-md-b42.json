@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-project-move",
+  "title": "up-project-move",
+  "description": "Update the repository for a project",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-project-move.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-project-move",
+  "permalink": "/apis-cli/cli-reference/yaml/up-project-move",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

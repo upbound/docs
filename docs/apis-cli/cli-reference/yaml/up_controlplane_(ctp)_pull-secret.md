@@ -1,2 +1,0 @@
-Manage package pull secrets.
-

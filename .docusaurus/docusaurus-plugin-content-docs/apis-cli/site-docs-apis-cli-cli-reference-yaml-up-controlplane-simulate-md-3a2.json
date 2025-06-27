@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-simulate",
+  "title": "up-controlplane-simulate",
+  "description": "Alias for 'up controlplane simulation create'.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-simulate.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-simulate",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-simulate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

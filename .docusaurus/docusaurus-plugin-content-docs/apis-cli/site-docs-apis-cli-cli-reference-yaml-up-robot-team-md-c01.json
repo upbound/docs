@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-robot-team",
+  "title": "up-robot-team",
+  "description": "Interact with robot teams.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-robot-team.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-robot-team",
+  "permalink": "/apis-cli/cli-reference/yaml/up-robot-team",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

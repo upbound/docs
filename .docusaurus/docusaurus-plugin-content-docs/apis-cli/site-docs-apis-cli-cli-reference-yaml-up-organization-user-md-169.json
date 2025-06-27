@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-organization-user",
+  "title": "up-organization-user",
+  "description": "Manage organization users.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-organization-user.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-organization-user",
+  "permalink": "/apis-cli/cli-reference/yaml/up-organization-user",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-test-generate",
+  "title": "up-test-generate",
+  "description": "Generate a Test for a project.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-test-generate.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-test-generate",
+  "permalink": "/apis-cli/cli-reference/yaml/up-test-generate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

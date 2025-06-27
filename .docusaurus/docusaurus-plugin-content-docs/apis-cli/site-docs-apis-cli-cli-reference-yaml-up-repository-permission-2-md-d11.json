@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-repository-permission 2",
+  "title": "up-repository-permission 2",
+  "description": "Manage permissions of a repository for a team in the account.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-repository-permission 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-repository-permission 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-repository-permission 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

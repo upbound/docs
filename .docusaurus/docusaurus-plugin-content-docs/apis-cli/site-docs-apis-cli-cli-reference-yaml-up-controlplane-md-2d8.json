@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane",
+  "title": "up-controlplane",
+  "description": "Interact with control planes in the current context, both in the cloud and in a local Space.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

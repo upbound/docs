@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-version",
+  "title": "up-version",
+  "description": "Show current version.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-version.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-version",
+  "permalink": "/apis-cli/cli-reference/yaml/up-version",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

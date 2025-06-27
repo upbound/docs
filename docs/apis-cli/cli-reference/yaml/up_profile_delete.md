@@ -1,2 +1,0 @@
-Delete an Upbound Profile.
-

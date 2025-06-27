@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-organization-user-invite",
+  "title": "up-organization-user-invite",
+  "description": "Invite a user to the organization.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-organization-user-invite.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-organization-user-invite",
+  "permalink": "/apis-cli/cli-reference/yaml/up-organization-user-invite",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

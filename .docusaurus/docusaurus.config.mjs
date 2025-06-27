@@ -46,7 +46,7 @@ export default {
         "id": "learn",
         "path": "docs/learn",
         "routeBasePath": "/",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/learn.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/learn.js"
       }
     ],
     [
@@ -55,7 +55,7 @@ export default {
         "id": "build",
         "path": "docs/build",
         "routeBasePath": "build",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/build.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/build.js"
       }
     ],
     [
@@ -64,7 +64,7 @@ export default {
         "id": "deploy",
         "path": "docs/deploy",
         "routeBasePath": "deploy",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/deploy.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/deploy.js"
       }
     ],
     [
@@ -73,7 +73,7 @@ export default {
         "id": "operate",
         "path": "docs/operate",
         "routeBasePath": "operate",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/operate.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/operate.js"
       }
     ],
     [
@@ -82,7 +82,7 @@ export default {
         "id": "connect",
         "path": "docs/connect",
         "routeBasePath": "connect",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/connect.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/connect.js"
       }
     ],
     [
@@ -91,7 +91,7 @@ export default {
         "id": "providers",
         "path": "docs/providers",
         "routeBasePath": "providers",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/providers.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/providers.js"
       }
     ],
     [
@@ -100,7 +100,7 @@ export default {
         "id": "apis-cli",
         "path": "docs/apis-cli",
         "routeBasePath": "apis-cli",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/apis-cli.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/apis-cli.js"
       }
     ],
     [
@@ -109,7 +109,7 @@ export default {
         "id": "release-notes",
         "path": "docs/release-notes",
         "routeBasePath": "release-notes",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/release-notes.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/release-notes.js"
       }
     ],
     [
@@ -118,7 +118,7 @@ export default {
         "id": "marketplace",
         "path": "docs/upbound-marketplace",
         "routeBasePath": "upbound-marketplace",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/marketplace.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/marketplace.js"
       }
     ],
     [
@@ -127,7 +127,7 @@ export default {
         "id": "usage",
         "path": "docs/usage",
         "routeBasePath": "usage",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/usage.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/usage.js"
       }
     ],
     [
@@ -136,7 +136,7 @@ export default {
         "id": "crossplane-learn",
         "path": "docs/crossplane/learn",
         "routeBasePath": "crossplane/learn",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/crossplane-learn.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/crossplane-learn.js"
       }
     ],
     [
@@ -145,7 +145,7 @@ export default {
         "id": "crossplane-api-ref",
         "path": "docs/crossplane/api-ref",
         "routeBasePath": "crossplane/api-ref",
-        "sidebarPath": "/Users/rae/hugo/src/sidebars/crossplane-api-ref.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/crossplane-api-ref.js"
       }
     ]
   ],

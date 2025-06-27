@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-robot-token-create",
+  "title": "up-robot-token-create",
+  "description": "Create a token for the robot.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-robot-token-create.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-robot-token-create",
+  "permalink": "/apis-cli/cli-reference/yaml/up-robot-token-create",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

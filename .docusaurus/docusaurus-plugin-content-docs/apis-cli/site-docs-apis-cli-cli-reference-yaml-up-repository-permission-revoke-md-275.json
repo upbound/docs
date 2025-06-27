@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-repository-permission-revoke",
+  "title": "up-repository-permission-revoke",
+  "description": "Revoke repository permission from a team.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-repository-permission-revoke.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-repository-permission-revoke",
+  "permalink": "/apis-cli/cli-reference/yaml/up-repository-permission-revoke",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

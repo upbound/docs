@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-connect",
+  "title": "up-controlplane-connect",
+  "description": "Deprecated: Connect kubectl to control plane.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-connect.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-connect",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-connect",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

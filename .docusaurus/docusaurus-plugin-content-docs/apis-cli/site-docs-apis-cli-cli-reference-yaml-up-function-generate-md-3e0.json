@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-function-generate",
+  "title": "up-function-generate",
+  "description": "Generate an Function for a Composition.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-function-generate.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-function-generate",
+  "permalink": "/apis-cli/cli-reference/yaml/up-function-generate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

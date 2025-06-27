@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-robot-team-list",
+  "title": "up-robot-team-list",
+  "description": "List all teams the robot is a member of.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-robot-team-list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-robot-team-list",
+  "permalink": "/apis-cli/cli-reference/yaml/up-robot-team-list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

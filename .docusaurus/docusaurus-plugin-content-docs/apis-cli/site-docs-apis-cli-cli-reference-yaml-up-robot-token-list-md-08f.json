@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-robot-token-list",
+  "title": "up-robot-token-list",
+  "description": "List the tokens for the robot.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-robot-token-list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-robot-token-list",
+  "permalink": "/apis-cli/cli-reference/yaml/up-robot-token-list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}
