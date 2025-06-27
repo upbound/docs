@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-organization-delete",
+  "title": "up-organization-delete",
+  "description": "Delete an organization.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-organization-delete.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-organization-delete",
+  "permalink": "/apis-cli/cli-reference/yaml/up-organization-delete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

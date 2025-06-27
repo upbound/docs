@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-ctx 2",
+  "title": "up-ctx 2",
+  "description": "Select an Upbound kubeconfig context.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-ctx 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-ctx 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-ctx 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-provider",
+  "title": "up-controlplane-provider",
+  "description": "Manage Providers.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-provider.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-provider",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-provider",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

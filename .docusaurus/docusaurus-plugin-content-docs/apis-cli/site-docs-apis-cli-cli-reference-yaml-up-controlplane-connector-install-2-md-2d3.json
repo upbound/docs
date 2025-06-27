@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-connector-install 2",
+  "title": "up-controlplane-connector-install 2",
+  "description": "Install mcp-connector into an App Cluster.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-connector-install 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-connector-install 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-connector-install 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

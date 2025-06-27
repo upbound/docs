@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-alpha-migration 2",
+  "title": "up-alpha-migration 2",
+  "description": "Migrate control planes to Upbound Managed Control Planes.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-alpha-migration 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-alpha-migration 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-alpha-migration 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

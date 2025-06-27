@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-connector",
+  "title": "up-controlplane-connector",
+  "description": "Connect an App Cluster to a control plane.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-connector.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-connector",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-connector",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

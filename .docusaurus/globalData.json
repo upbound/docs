@@ -769,596 +769,616 @@
               "path": "/apis-cli/cli-reference/yaml/up"
             },
             {
-              "id": "cli-reference/yaml/up_alpha",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha"
+              "id": "cli-reference/yaml/up-alpha",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_ctx",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_ctx"
+              "id": "cli-reference/yaml/up-alpha-ctx",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-ctx"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_migration",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_migration"
+              "id": "cli-reference/yaml/up-alpha-migration",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-migration"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_migration_export",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_migration_export"
+              "id": "cli-reference/yaml/up-alpha-migration-export",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-migration-export"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_migration_import",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_migration_import"
+              "id": "cli-reference/yaml/up-alpha-migration-import",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-migration-import"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_migration_pause-toggle",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_migration_pause-toggle"
+              "id": "cli-reference/yaml/up-alpha-migration-pause-toggle",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-migration-pause-toggle"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space"
+              "id": "cli-reference/yaml/up-alpha-space",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_billing",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_billing"
+              "id": "cli-reference/yaml/up-alpha-space-billing",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-billing"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_billing_export",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_billing_export"
+              "id": "cli-reference/yaml/up-alpha-space-billing-export",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-billing-export"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_connect_(attach)",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_connect_(attach)"
+              "id": "cli-reference/yaml/up-alpha-space-connect",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-connect"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_destroy",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_destroy"
+              "id": "cli-reference/yaml/up-alpha-space-destroy",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-destroy"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_disconnect_(detach)",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)"
+              "id": "cli-reference/yaml/up-alpha-space-disconnect",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-disconnect"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_init",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_init"
+              "id": "cli-reference/yaml/up-alpha-space-init",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-init"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_list",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_list"
+              "id": "cli-reference/yaml/up-alpha-space-list",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-list"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_mirror",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_mirror"
+              "id": "cli-reference/yaml/up-alpha-space-mirror",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-mirror"
             },
             {
-              "id": "cli-reference/yaml/up_alpha_space_upgrade",
-              "path": "/apis-cli/cli-reference/yaml/up_alpha_space_upgrade"
+              "id": "cli-reference/yaml/up-alpha-space-upgrade",
+              "path": "/apis-cli/cli-reference/yaml/up-alpha-space-upgrade"
             },
             {
-              "id": "cli-reference/yaml/up_completion",
-              "path": "/apis-cli/cli-reference/yaml/up_completion"
+              "id": "cli-reference/yaml/up-completion",
+              "path": "/apis-cli/cli-reference/yaml/up-completion"
             },
             {
-              "id": "cli-reference/yaml/up_composition",
-              "path": "/apis-cli/cli-reference/yaml/up_composition"
+              "id": "cli-reference/yaml/up-composition",
+              "path": "/apis-cli/cli-reference/yaml/up-composition"
             },
             {
-              "id": "cli-reference/yaml/up_composition_generate",
-              "path": "/apis-cli/cli-reference/yaml/up_composition_generate"
+              "id": "cli-reference/yaml/up-composition-generate",
+              "path": "/apis-cli/cli-reference/yaml/up-composition-generate"
             },
             {
-              "id": "cli-reference/yaml/up_composition_render",
-              "path": "/apis-cli/cli-reference/yaml/up_composition_render"
+              "id": "cli-reference/yaml/up-composition-render",
+              "path": "/apis-cli/cli-reference/yaml/up-composition-render"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)"
+              "id": "cli-reference/yaml/up-controlplane",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_configuration",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration"
+              "id": "cli-reference/yaml/up-controlplane-configuration",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-configuration"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_configuration_install",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install"
+              "id": "cli-reference/yaml/up-controlplane-configuration-install",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-configuration-install"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_connect",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connect"
+              "id": "cli-reference/yaml/up-controlplane-connect",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-connect"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_connector",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector"
+              "id": "cli-reference/yaml/up-controlplane-connector",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-connector"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_connector_install",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install"
+              "id": "cli-reference/yaml/up-controlplane-connector-install",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-connector-install"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall"
+              "id": "cli-reference/yaml/up-controlplane-connector-uninstall",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-connector-uninstall"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_create",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_create"
+              "id": "cli-reference/yaml/up-controlplane-create",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-create"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_delete"
+              "id": "cli-reference/yaml/up-controlplane-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-delete"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_disconnect",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect"
+              "id": "cli-reference/yaml/up-controlplane-disconnect",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-disconnect"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_function",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function"
+              "id": "cli-reference/yaml/up-controlplane-function",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-function"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_function_install",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_function_install"
+              "id": "cli-reference/yaml/up-controlplane-function-install",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-function-install"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_get",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_get"
+              "id": "cli-reference/yaml/up-controlplane-get",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-get"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_list",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_list"
+              "id": "cli-reference/yaml/up-controlplane-list",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-list"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_provider",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider"
+              "id": "cli-reference/yaml/up-controlplane-provider",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-provider"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_provider_install",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install"
+              "id": "cli-reference/yaml/up-controlplane-provider-install",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-provider-install"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_pull-secret",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret"
+              "id": "cli-reference/yaml/up-controlplane-pull-secret",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-pull-secret"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create"
+              "id": "cli-reference/yaml/up-controlplane-pull-secret-create",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-pull-secret-create"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_simulate",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulate"
+              "id": "cli-reference/yaml/up-controlplane-simulate",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-simulate"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)"
+              "id": "cli-reference/yaml/up-controlplane-simulation",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-simulation"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create"
+              "id": "cli-reference/yaml/up-controlplane-simulation-create",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-simulation-create"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete"
+              "id": "cli-reference/yaml/up-controlplane-simulation-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-simulation-delete"
             },
             {
-              "id": "cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list",
-              "path": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list"
+              "id": "cli-reference/yaml/up-controlplane-simulation-list",
+              "path": "/apis-cli/cli-reference/yaml/up-controlplane-simulation-list"
             },
             {
-              "id": "cli-reference/yaml/up_ctx",
-              "path": "/apis-cli/cli-reference/yaml/up_ctx"
+              "id": "cli-reference/yaml/up-ctx",
+              "path": "/apis-cli/cli-reference/yaml/up-ctx"
             },
             {
-              "id": "cli-reference/yaml/up_dependency_(dep)",
-              "path": "/apis-cli/cli-reference/yaml/up_dependency_(dep)"
+              "id": "cli-reference/yaml/up-dependency",
+              "path": "/apis-cli/cli-reference/yaml/up-dependency"
             },
             {
-              "id": "cli-reference/yaml/up_dependency_(dep)_add",
-              "path": "/apis-cli/cli-reference/yaml/up_dependency_(dep)_add"
+              "id": "cli-reference/yaml/up-dependency-add",
+              "path": "/apis-cli/cli-reference/yaml/up-dependency-add"
             },
             {
-              "id": "cli-reference/yaml/up_dependency_(dep)_clean-cache",
-              "path": "/apis-cli/cli-reference/yaml/up_dependency_(dep)_clean-cache"
+              "id": "cli-reference/yaml/up-dependency-clean-cache",
+              "path": "/apis-cli/cli-reference/yaml/up-dependency-clean-cache"
             },
             {
-              "id": "cli-reference/yaml/up_dependency_(dep)_update-cache",
-              "path": "/apis-cli/cli-reference/yaml/up_dependency_(dep)_update-cache"
+              "id": "cli-reference/yaml/up-dependency-update-cache",
+              "path": "/apis-cli/cli-reference/yaml/up-dependency-update-cache"
             },
             {
-              "id": "cli-reference/yaml/up_example",
-              "path": "/apis-cli/cli-reference/yaml/up_example"
+              "id": "cli-reference/yaml/up-example",
+              "path": "/apis-cli/cli-reference/yaml/up-example"
             },
             {
-              "id": "cli-reference/yaml/up_example_generate",
-              "path": "/apis-cli/cli-reference/yaml/up_example_generate"
+              "id": "cli-reference/yaml/up-example-generate",
+              "path": "/apis-cli/cli-reference/yaml/up-example-generate"
             },
             {
-              "id": "cli-reference/yaml/up_function",
-              "path": "/apis-cli/cli-reference/yaml/up_function"
+              "id": "cli-reference/yaml/up-function",
+              "path": "/apis-cli/cli-reference/yaml/up-function"
             },
             {
-              "id": "cli-reference/yaml/up_function_generate",
-              "path": "/apis-cli/cli-reference/yaml/up_function_generate"
+              "id": "cli-reference/yaml/up-function-generate",
+              "path": "/apis-cli/cli-reference/yaml/up-function-generate"
             },
             {
-              "id": "cli-reference/yaml/up_group",
-              "path": "/apis-cli/cli-reference/yaml/up_group"
+              "id": "cli-reference/yaml/up-group",
+              "path": "/apis-cli/cli-reference/yaml/up-group"
             },
             {
-              "id": "cli-reference/yaml/up_group_create",
-              "path": "/apis-cli/cli-reference/yaml/up_group_create"
+              "id": "cli-reference/yaml/up-group-create",
+              "path": "/apis-cli/cli-reference/yaml/up-group-create"
             },
             {
-              "id": "cli-reference/yaml/up_group_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_group_delete"
+              "id": "cli-reference/yaml/up-group-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-group-delete"
             },
             {
-              "id": "cli-reference/yaml/up_group_get",
-              "path": "/apis-cli/cli-reference/yaml/up_group_get"
+              "id": "cli-reference/yaml/up-group-get",
+              "path": "/apis-cli/cli-reference/yaml/up-group-get"
             },
             {
-              "id": "cli-reference/yaml/up_group_list",
-              "path": "/apis-cli/cli-reference/yaml/up_group_list"
+              "id": "cli-reference/yaml/up-group-list",
+              "path": "/apis-cli/cli-reference/yaml/up-group-list"
             },
             {
-              "id": "cli-reference/yaml/up_help",
-              "path": "/apis-cli/cli-reference/yaml/up_help"
+              "id": "cli-reference/yaml/up-help",
+              "path": "/apis-cli/cli-reference/yaml/up-help"
             },
             {
-              "id": "cli-reference/yaml/up_license",
-              "path": "/apis-cli/cli-reference/yaml/up_license"
+              "id": "cli-reference/yaml/up-license",
+              "path": "/apis-cli/cli-reference/yaml/up-license"
             },
             {
-              "id": "cli-reference/yaml/up_login",
-              "path": "/apis-cli/cli-reference/yaml/up_login"
+              "id": "cli-reference/yaml/up-login",
+              "path": "/apis-cli/cli-reference/yaml/up-login"
             },
             {
-              "id": "cli-reference/yaml/up_logout",
-              "path": "/apis-cli/cli-reference/yaml/up_logout"
+              "id": "cli-reference/yaml/up-logout",
+              "path": "/apis-cli/cli-reference/yaml/up-logout"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)"
+              "id": "cli-reference/yaml/up-organization",
+              "path": "/apis-cli/cli-reference/yaml/up-organization"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_create",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_create"
+              "id": "cli-reference/yaml/up-organization-create",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-create"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_delete"
+              "id": "cli-reference/yaml/up-organization-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-delete"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_get",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_get"
+              "id": "cli-reference/yaml/up-organization-get",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-get"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_list",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_list"
+              "id": "cli-reference/yaml/up-organization-list",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-list"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_token",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_token"
+              "id": "cli-reference/yaml/up-organization-token",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-token"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_user",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_user"
+              "id": "cli-reference/yaml/up-organization-user",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-user"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_user_invite",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_user_invite"
+              "id": "cli-reference/yaml/up-organization-user-invite",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-user-invite"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_user_list",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_user_list"
+              "id": "cli-reference/yaml/up-organization-user-list",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-user-list"
             },
             {
-              "id": "cli-reference/yaml/up_organization_(org)_user_remove",
-              "path": "/apis-cli/cli-reference/yaml/up_organization_(org)_user_remove"
+              "id": "cli-reference/yaml/up-organization-user-remove",
+              "path": "/apis-cli/cli-reference/yaml/up-organization-user-remove"
             },
             {
-              "id": "cli-reference/yaml/up_profile",
-              "path": "/apis-cli/cli-reference/yaml/up_profile"
+              "id": "cli-reference/yaml/up-profile",
+              "path": "/apis-cli/cli-reference/yaml/up-profile"
             },
             {
-              "id": "cli-reference/yaml/up_profile_create",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_create"
+              "id": "cli-reference/yaml/up-profile-create",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-create"
             },
             {
-              "id": "cli-reference/yaml/up_profile_current",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_current"
+              "id": "cli-reference/yaml/up-profile-current",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-current"
             },
             {
-              "id": "cli-reference/yaml/up_profile_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_delete"
+              "id": "cli-reference/yaml/up-profile-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-delete"
             },
             {
-              "id": "cli-reference/yaml/up_profile_list",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_list"
+              "id": "cli-reference/yaml/up-profile-list",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-list"
             },
             {
-              "id": "cli-reference/yaml/up_profile_rename",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_rename"
+              "id": "cli-reference/yaml/up-profile-rename",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-rename"
             },
             {
-              "id": "cli-reference/yaml/up_profile_set",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_set"
+              "id": "cli-reference/yaml/up-profile-set",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-set"
             },
             {
-              "id": "cli-reference/yaml/up_profile_use",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_use"
+              "id": "cli-reference/yaml/up-profile-use",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-use"
             },
             {
-              "id": "cli-reference/yaml/up_profile_view",
-              "path": "/apis-cli/cli-reference/yaml/up_profile_view"
+              "id": "cli-reference/yaml/up-profile-view",
+              "path": "/apis-cli/cli-reference/yaml/up-profile-view"
             },
             {
-              "id": "cli-reference/yaml/up_project",
-              "path": "/apis-cli/cli-reference/yaml/up_project"
+              "id": "cli-reference/yaml/up-project",
+              "path": "/apis-cli/cli-reference/yaml/up-project"
             },
             {
-              "id": "cli-reference/yaml/up_project_build",
-              "path": "/apis-cli/cli-reference/yaml/up_project_build"
+              "id": "cli-reference/yaml/up-project-build",
+              "path": "/apis-cli/cli-reference/yaml/up-project-build"
             },
             {
-              "id": "cli-reference/yaml/up_project_init",
-              "path": "/apis-cli/cli-reference/yaml/up_project_init"
+              "id": "cli-reference/yaml/up-project-init",
+              "path": "/apis-cli/cli-reference/yaml/up-project-init"
             },
             {
-              "id": "cli-reference/yaml/up_project_move",
-              "path": "/apis-cli/cli-reference/yaml/up_project_move"
+              "id": "cli-reference/yaml/up-project-move",
+              "path": "/apis-cli/cli-reference/yaml/up-project-move"
             },
             {
-              "id": "cli-reference/yaml/up_project_push",
-              "path": "/apis-cli/cli-reference/yaml/up_project_push"
+              "id": "cli-reference/yaml/up-project-push",
+              "path": "/apis-cli/cli-reference/yaml/up-project-push"
             },
             {
-              "id": "cli-reference/yaml/up_project_run",
-              "path": "/apis-cli/cli-reference/yaml/up_project_run"
+              "id": "cli-reference/yaml/up-project-run",
+              "path": "/apis-cli/cli-reference/yaml/up-project-run"
             },
             {
-              "id": "cli-reference/yaml/up_project_simulate",
-              "path": "/apis-cli/cli-reference/yaml/up_project_simulate"
+              "id": "cli-reference/yaml/up-project-simulate",
+              "path": "/apis-cli/cli-reference/yaml/up-project-simulate"
             },
             {
-              "id": "cli-reference/yaml/up_project_simulation",
-              "path": "/apis-cli/cli-reference/yaml/up_project_simulation"
+              "id": "cli-reference/yaml/up-project-simulation",
+              "path": "/apis-cli/cli-reference/yaml/up-project-simulation"
             },
             {
-              "id": "cli-reference/yaml/up_project_simulation_complete",
-              "path": "/apis-cli/cli-reference/yaml/up_project_simulation_complete"
+              "id": "cli-reference/yaml/up-project-simulation-complete",
+              "path": "/apis-cli/cli-reference/yaml/up-project-simulation-complete"
             },
             {
-              "id": "cli-reference/yaml/up_project_simulation_create",
-              "path": "/apis-cli/cli-reference/yaml/up_project_simulation_create"
+              "id": "cli-reference/yaml/up-project-simulation-create",
+              "path": "/apis-cli/cli-reference/yaml/up-project-simulation-create"
             },
             {
-              "id": "cli-reference/yaml/up_project_simulation_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_project_simulation_delete"
+              "id": "cli-reference/yaml/up-project-simulation-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-project-simulation-delete"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)"
+              "id": "cli-reference/yaml/up-repository",
+              "path": "/apis-cli/cli-reference/yaml/up-repository"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_create",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_create"
+              "id": "cli-reference/yaml/up-repository-create",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-create"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_delete"
+              "id": "cli-reference/yaml/up-repository-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-delete"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_get",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_get"
+              "id": "cli-reference/yaml/up-repository-get",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-get"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_list",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_list"
+              "id": "cli-reference/yaml/up-repository-list",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-list"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_permission",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission"
+              "id": "cli-reference/yaml/up-repository-permission",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-permission"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_permission_grant",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_grant"
+              "id": "cli-reference/yaml/up-repository-permission-grant",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-permission-grant"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_permission_list",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_list"
+              "id": "cli-reference/yaml/up-repository-permission-list",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-permission-list"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_permission_revoke",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_permission_revoke"
+              "id": "cli-reference/yaml/up-repository-permission-revoke",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-permission-revoke"
             },
             {
-              "id": "cli-reference/yaml/up_repository_(repo)_update",
-              "path": "/apis-cli/cli-reference/yaml/up_repository_(repo)_update"
+              "id": "cli-reference/yaml/up-repository-update",
+              "path": "/apis-cli/cli-reference/yaml/up-repository-update"
             },
             {
-              "id": "cli-reference/yaml/up_robot",
-              "path": "/apis-cli/cli-reference/yaml/up_robot"
+              "id": "cli-reference/yaml/up-robot",
+              "path": "/apis-cli/cli-reference/yaml/up-robot"
             },
             {
-              "id": "cli-reference/yaml/up_robot_create",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_create"
+              "id": "cli-reference/yaml/up-robot-create",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-create"
             },
             {
-              "id": "cli-reference/yaml/up_robot_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_delete"
+              "id": "cli-reference/yaml/up-robot-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-delete"
             },
             {
-              "id": "cli-reference/yaml/up_robot_get",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_get"
+              "id": "cli-reference/yaml/up-robot-get",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-get"
             },
             {
-              "id": "cli-reference/yaml/up_robot_list",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_list"
+              "id": "cli-reference/yaml/up-robot-list",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-list"
             },
             {
-              "id": "cli-reference/yaml/up_robot_team",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_team"
+              "id": "cli-reference/yaml/up-robot-team",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-team"
             },
             {
-              "id": "cli-reference/yaml/up_robot_team_join",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_team_join"
+              "id": "cli-reference/yaml/up-robot-team-join",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-team-join"
             },
             {
-              "id": "cli-reference/yaml/up_robot_team_leave",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_team_leave"
+              "id": "cli-reference/yaml/up-robot-team-leave",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-team-leave"
             },
             {
-              "id": "cli-reference/yaml/up_robot_team_list",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_team_list"
+              "id": "cli-reference/yaml/up-robot-team-list",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-team-list"
             },
             {
-              "id": "cli-reference/yaml/up_robot_token",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_token"
+              "id": "cli-reference/yaml/up-robot-token",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-token"
             },
             {
-              "id": "cli-reference/yaml/up_robot_token_create",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_token_create"
+              "id": "cli-reference/yaml/up-robot-token-create",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-token-create"
             },
             {
-              "id": "cli-reference/yaml/up_robot_token_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_token_delete"
+              "id": "cli-reference/yaml/up-robot-token-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-token-delete"
             },
             {
-              "id": "cli-reference/yaml/up_robot_token_get",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_token_get"
+              "id": "cli-reference/yaml/up-robot-token-get",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-token-get"
             },
             {
-              "id": "cli-reference/yaml/up_robot_token_list",
-              "path": "/apis-cli/cli-reference/yaml/up_robot_token_list"
+              "id": "cli-reference/yaml/up-robot-token-list",
+              "path": "/apis-cli/cli-reference/yaml/up-robot-token-list"
             },
             {
-              "id": "cli-reference/yaml/up_space",
-              "path": "/apis-cli/cli-reference/yaml/up_space"
+              "id": "cli-reference/yaml/up-space",
+              "path": "/apis-cli/cli-reference/yaml/up-space"
             },
             {
-              "id": "cli-reference/yaml/up_space_billing",
-              "path": "/apis-cli/cli-reference/yaml/up_space_billing"
+              "id": "cli-reference/yaml/up-space-billing",
+              "path": "/apis-cli/cli-reference/yaml/up-space-billing"
             },
             {
-              "id": "cli-reference/yaml/up_space_billing_export",
-              "path": "/apis-cli/cli-reference/yaml/up_space_billing_export"
+              "id": "cli-reference/yaml/up-space-billing-export",
+              "path": "/apis-cli/cli-reference/yaml/up-space-billing-export"
             },
             {
-              "id": "cli-reference/yaml/up_space_connect_(attach)",
-              "path": "/apis-cli/cli-reference/yaml/up_space_connect_(attach)"
+              "id": "cli-reference/yaml/up-space-connect",
+              "path": "/apis-cli/cli-reference/yaml/up-space-connect"
             },
             {
-              "id": "cli-reference/yaml/up_space_destroy",
-              "path": "/apis-cli/cli-reference/yaml/up_space_destroy"
+              "id": "cli-reference/yaml/up-space-destroy",
+              "path": "/apis-cli/cli-reference/yaml/up-space-destroy"
             },
             {
-              "id": "cli-reference/yaml/up_space_disconnect_(detach)",
-              "path": "/apis-cli/cli-reference/yaml/up_space_disconnect_(detach)"
+              "id": "cli-reference/yaml/up-space-disconnect",
+              "path": "/apis-cli/cli-reference/yaml/up-space-disconnect"
             },
             {
-              "id": "cli-reference/yaml/up_space_init",
-              "path": "/apis-cli/cli-reference/yaml/up_space_init"
+              "id": "cli-reference/yaml/up-space-init",
+              "path": "/apis-cli/cli-reference/yaml/up-space-init"
             },
             {
-              "id": "cli-reference/yaml/up_space_list",
-              "path": "/apis-cli/cli-reference/yaml/up_space_list"
+              "id": "cli-reference/yaml/up-space-list",
+              "path": "/apis-cli/cli-reference/yaml/up-space-list"
             },
             {
-              "id": "cli-reference/yaml/up_space_mirror",
-              "path": "/apis-cli/cli-reference/yaml/up_space_mirror"
+              "id": "cli-reference/yaml/up-space-mirror",
+              "path": "/apis-cli/cli-reference/yaml/up-space-mirror"
             },
             {
-              "id": "cli-reference/yaml/up_space_upgrade",
-              "path": "/apis-cli/cli-reference/yaml/up_space_upgrade"
+              "id": "cli-reference/yaml/up-space-upgrade",
+              "path": "/apis-cli/cli-reference/yaml/up-space-upgrade"
             },
             {
-              "id": "cli-reference/yaml/up_team",
-              "path": "/apis-cli/cli-reference/yaml/up_team"
+              "id": "cli-reference/yaml/up-team",
+              "path": "/apis-cli/cli-reference/yaml/up-team"
             },
             {
-              "id": "cli-reference/yaml/up_team_create",
-              "path": "/apis-cli/cli-reference/yaml/up_team_create"
+              "id": "cli-reference/yaml/up-team-create",
+              "path": "/apis-cli/cli-reference/yaml/up-team-create"
             },
             {
-              "id": "cli-reference/yaml/up_team_delete",
-              "path": "/apis-cli/cli-reference/yaml/up_team_delete"
+              "id": "cli-reference/yaml/up-team-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-team-delete"
             },
             {
-              "id": "cli-reference/yaml/up_team_get",
-              "path": "/apis-cli/cli-reference/yaml/up_team_get"
+              "id": "cli-reference/yaml/up-team-get",
+              "path": "/apis-cli/cli-reference/yaml/up-team-get"
             },
             {
-              "id": "cli-reference/yaml/up_team_list",
-              "path": "/apis-cli/cli-reference/yaml/up_team_list"
+              "id": "cli-reference/yaml/up-team-list",
+              "path": "/apis-cli/cli-reference/yaml/up-team-list"
             },
             {
-              "id": "cli-reference/yaml/up_test",
-              "path": "/apis-cli/cli-reference/yaml/up_test"
+              "id": "cli-reference/yaml/up-test",
+              "path": "/apis-cli/cli-reference/yaml/up-test"
             },
             {
-              "id": "cli-reference/yaml/up_test_generate",
-              "path": "/apis-cli/cli-reference/yaml/up_test_generate"
+              "id": "cli-reference/yaml/up-test-generate",
+              "path": "/apis-cli/cli-reference/yaml/up-test-generate"
             },
             {
-              "id": "cli-reference/yaml/up_test_run",
-              "path": "/apis-cli/cli-reference/yaml/up_test_run"
+              "id": "cli-reference/yaml/up-test-run",
+              "path": "/apis-cli/cli-reference/yaml/up-test-run"
             },
             {
-              "id": "cli-reference/yaml/up_uxp",
-              "path": "/apis-cli/cli-reference/yaml/up_uxp"
+              "id": "cli-reference/yaml/up-token",
+              "path": "/apis-cli/cli-reference/yaml/up-token"
             },
             {
-              "id": "cli-reference/yaml/up_uxp_install",
-              "path": "/apis-cli/cli-reference/yaml/up_uxp_install"
+              "id": "cli-reference/yaml/up-token-create",
+              "path": "/apis-cli/cli-reference/yaml/up-token-create"
             },
             {
-              "id": "cli-reference/yaml/up_uxp_uninstall",
-              "path": "/apis-cli/cli-reference/yaml/up_uxp_uninstall"
+              "id": "cli-reference/yaml/up-token-delete",
+              "path": "/apis-cli/cli-reference/yaml/up-token-delete"
             },
             {
-              "id": "cli-reference/yaml/up_uxp_upgrade",
-              "path": "/apis-cli/cli-reference/yaml/up_uxp_upgrade"
+              "id": "cli-reference/yaml/up-token-get",
+              "path": "/apis-cli/cli-reference/yaml/up-token-get"
             },
             {
-              "id": "cli-reference/yaml/up_version",
-              "path": "/apis-cli/cli-reference/yaml/up_version"
+              "id": "cli-reference/yaml/up-token-list",
+              "path": "/apis-cli/cli-reference/yaml/up-token-list"
             },
             {
-              "id": "cli-reference/yaml/up_xpkg",
-              "path": "/apis-cli/cli-reference/yaml/up_xpkg"
+              "id": "cli-reference/yaml/up-uxp",
+              "path": "/apis-cli/cli-reference/yaml/up-uxp"
             },
             {
-              "id": "cli-reference/yaml/up_xpkg_append",
-              "path": "/apis-cli/cli-reference/yaml/up_xpkg_append"
+              "id": "cli-reference/yaml/up-uxp-install",
+              "path": "/apis-cli/cli-reference/yaml/up-uxp-install"
             },
             {
-              "id": "cli-reference/yaml/up_xpkg_batch",
-              "path": "/apis-cli/cli-reference/yaml/up_xpkg_batch"
+              "id": "cli-reference/yaml/up-uxp-uninstall",
+              "path": "/apis-cli/cli-reference/yaml/up-uxp-uninstall"
             },
             {
-              "id": "cli-reference/yaml/up_xpkg_build",
-              "path": "/apis-cli/cli-reference/yaml/up_xpkg_build"
+              "id": "cli-reference/yaml/up-uxp-upgrade",
+              "path": "/apis-cli/cli-reference/yaml/up-uxp-upgrade"
             },
             {
-              "id": "cli-reference/yaml/up_xpkg_push",
-              "path": "/apis-cli/cli-reference/yaml/up_xpkg_push"
+              "id": "cli-reference/yaml/up-version",
+              "path": "/apis-cli/cli-reference/yaml/up-version"
             },
             {
-              "id": "cli-reference/yaml/up_xpkg_xp-extract",
-              "path": "/apis-cli/cli-reference/yaml/up_xpkg_xp-extract"
+              "id": "cli-reference/yaml/up-xpkg",
+              "path": "/apis-cli/cli-reference/yaml/up-xpkg"
             },
             {
-              "id": "cli-reference/yaml/up_xpls",
-              "path": "/apis-cli/cli-reference/yaml/up_xpls"
+              "id": "cli-reference/yaml/up-xpkg-append",
+              "path": "/apis-cli/cli-reference/yaml/up-xpkg-append"
             },
             {
-              "id": "cli-reference/yaml/up_xpls_serve",
-              "path": "/apis-cli/cli-reference/yaml/up_xpls_serve"
+              "id": "cli-reference/yaml/up-xpkg-batch",
+              "path": "/apis-cli/cli-reference/yaml/up-xpkg-batch"
             },
             {
-              "id": "cli-reference/yaml/up_xrd",
-              "path": "/apis-cli/cli-reference/yaml/up_xrd"
+              "id": "cli-reference/yaml/up-xpkg-build",
+              "path": "/apis-cli/cli-reference/yaml/up-xpkg-build"
             },
             {
-              "id": "cli-reference/yaml/up_xrd_generate",
-              "path": "/apis-cli/cli-reference/yaml/up_xrd_generate"
+              "id": "cli-reference/yaml/up-xpkg-push",
+              "path": "/apis-cli/cli-reference/yaml/up-xpkg-push"
+            },
+            {
+              "id": "cli-reference/yaml/up-xpkg-xp-extract",
+              "path": "/apis-cli/cli-reference/yaml/up-xpkg-xp-extract"
+            },
+            {
+              "id": "cli-reference/yaml/up-xpls",
+              "path": "/apis-cli/cli-reference/yaml/up-xpls"
+            },
+            {
+              "id": "cli-reference/yaml/up-xpls-serve",
+              "path": "/apis-cli/cli-reference/yaml/up-xpls-serve"
+            },
+            {
+              "id": "cli-reference/yaml/up-xrd",
+              "path": "/apis-cli/cli-reference/yaml/up-xrd"
+            },
+            {
+              "id": "cli-reference/yaml/up-xrd-generate",
+              "path": "/apis-cli/cli-reference/yaml/up-xrd-generate"
             },
             {
               "id": "index",

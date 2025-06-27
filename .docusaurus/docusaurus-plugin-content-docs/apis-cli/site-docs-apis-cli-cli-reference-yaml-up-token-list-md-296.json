@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-token-list",
+  "title": "up-token-list",
+  "description": "Get all personal access tokens for the current user.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-token-list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-token-list",
+  "permalink": "/apis-cli/cli-reference/yaml/up-token-list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

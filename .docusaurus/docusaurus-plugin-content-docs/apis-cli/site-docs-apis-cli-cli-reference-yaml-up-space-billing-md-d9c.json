@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-space-billing",
+  "title": "up-space-billing",
+  "description": "Usage",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-space-billing.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-space-billing",
+  "permalink": "/apis-cli/cli-reference/yaml/up-space-billing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

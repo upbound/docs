@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-space-billing-export",
+  "title": "up-space-billing-export",
+  "description": "Export a billing report for submission to Upbound.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-space-billing-export.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-space-billing-export",
+  "permalink": "/apis-cli/cli-reference/yaml/up-space-billing-export",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

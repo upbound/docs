@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-controlplane-function-install",
+  "title": "up-controlplane-function-install",
+  "description": "Install a Function.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-controlplane-function-install.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-controlplane-function-install",
+  "permalink": "/apis-cli/cli-reference/yaml/up-controlplane-function-install",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

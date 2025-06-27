@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-space",
+  "title": "up-space",
+  "description": "Interact with Spaces.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-space.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-space",
+  "permalink": "/apis-cli/cli-reference/yaml/up-space",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-group-list",
+  "title": "up-group-list",
+  "description": "List groups in the space.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-group-list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-group-list",
+  "permalink": "/apis-cli/cli-reference/yaml/up-group-list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-dependency-add",
+  "title": "up-dependency-add",
+  "description": "Add a dependency to the current project.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-dependency-add.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-dependency-add",
+  "permalink": "/apis-cli/cli-reference/yaml/up-dependency-add",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

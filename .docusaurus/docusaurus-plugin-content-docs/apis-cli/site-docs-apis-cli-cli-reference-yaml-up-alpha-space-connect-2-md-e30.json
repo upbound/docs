@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-alpha-space-connect 2",
+  "title": "up-alpha-space-connect 2",
+  "description": "Connect an Upbound Space to the Upbound web console.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-alpha-space-connect 2.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-alpha-space-connect 2",
+  "permalink": "/apis-cli/cli-reference/yaml/up-alpha-space-connect 2",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

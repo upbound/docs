@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-project-init",
+  "title": "up-project-init",
+  "description": "Initialize a new project.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-project-init.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-project-init",
+  "permalink": "/apis-cli/cli-reference/yaml/up-project-init",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

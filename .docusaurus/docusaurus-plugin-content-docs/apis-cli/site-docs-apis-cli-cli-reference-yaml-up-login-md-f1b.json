@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-login",
+  "title": "up-login",
+  "description": "Login to Upbound. Will attempt to launch a web browser by default. Use --username and --password flags for automations.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-login.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-login",
+  "permalink": "/apis-cli/cli-reference/yaml/up-login",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up-robot-team-join",
+  "title": "up-robot-team-join",
+  "description": "Add the robot to a team.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up-robot-team-join.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up-robot-team-join",
+  "permalink": "/apis-cli/cli-reference/yaml/up-robot-team-join",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}
