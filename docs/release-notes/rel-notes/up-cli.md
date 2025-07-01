@@ -24,6 +24,24 @@ Any important warnings or necessary information
 
 -->
 
+## v0.39.1
+
+### Release Date: 2025-06-27
+
+#### What's Changed
+
+
+- Added missing env for promote job
+- Added cp from busybox
+- Added option for single image and convert to index
+- Added panic when items are variables
+- Bumped Spaces mirrors for `1.13`
+- Add option for ca-bundle for space ingress cadata
+- Fixed recursion error when serializing Kubernetes objects with JSON fields
+- Added `initResources`, fail with permanent errors
+- Set correct image version
+
+
 ## v0.39.0
 
 ### Release Date: 2025-04-25
