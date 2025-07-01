@@ -24,6 +24,19 @@ Any important warnings or necessary information
 
 -->
 
+## v0.39.1
+
+### Release Date: 2025-06-27
+
+##### What's Changed
+
+- `up xpkg append`: Added a `--single-image` option and support for converting image layers to an OCI image index (Crossplane Configurations).
+- `up test`: Fixed a panic in Python test scenarios when items are passed as variables.
+- `up test`: Resolved recursion errors when serializing Kubernetes objects with embedded JSON fields.
+- `up test`: Added support for `initResources` in e2eTest definitions and improved error reporting by surfacing permanent errors.
+- `up space mirror`: Updated mirror support for compatibility with Spaces 1.13.
+- `up ctx`: Added support for custom CA bundles via a new `--ca-bundle` option, improving compatibility in proxy environments such as Zscaler.
+
 ## v0.39.0
 
 ### Release Date: 2025-04-25
