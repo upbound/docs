@@ -2,7 +2,7 @@
 title: Git integration
 weight: 90
 description: A guide to how control planes in a space connect to git
-tocHidden: true
+draft: true
 searchExclude: true
 aliases:
     - /mcp/git-integration
