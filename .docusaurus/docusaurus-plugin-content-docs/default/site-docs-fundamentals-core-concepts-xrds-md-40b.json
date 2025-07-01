@@ -1,0 +1,23 @@
+{
+  "id": "fundamentals/core-concepts/xrds",
+  "title": "Composite Resource Definitions (XRDs)",
+  "description": "Composite resource definitions (XRDs) define the schema for a custom API.",
+  "source": "@site/docs/fundamentals/core-concepts/xrds.md",
+  "sourceDirName": "fundamentals/core-concepts",
+  "slug": "/fundamentals/core-concepts/xrds",
+  "permalink": "/fundamentals/core-concepts/xrds",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Composite Resource Definitions (XRDs)",
+    "description": "Composite resource definitions (XRDs) define the schema for a custom API.",
+    "weight": 5
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Providers",
+    "permalink": "/fundamentals/core-concepts/providers"
+  }
+}

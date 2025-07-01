@@ -1,0 +1,17 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
+  "title": "Schemas",
+  "description": "Upbound Official Providers and some other packages include [JSON",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Schemas",
+    "weight": 30
+  }
+}

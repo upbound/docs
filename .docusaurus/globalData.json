@@ -8,8 +8,376 @@
           "label": "Next",
           "isLast": true,
           "path": "/",
-          "mainDocId": "shared/crossplane/get-started/get-started-with-composition",
+          "mainDocId": "crossplane/get-started/get-started-with-composition",
           "docs": [
+            {
+              "id": "crossplane/api/index",
+              "path": "/crossplane/api/"
+            },
+            {
+              "id": "crossplane/composition/composite-resource-definitions",
+              "path": "/crossplane/composition/composite-resource-definitions",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/composition/composite-resources",
+              "path": "/crossplane/composition/composite-resources",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/composition/composition-revisions",
+              "path": "/crossplane/composition/composition-revisions",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/composition/compositions",
+              "path": "/crossplane/composition/compositions",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/composition/environment-configs",
+              "path": "/crossplane/composition/environment-configs",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/composition/index",
+              "path": "/crossplane/composition/",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/get-started/get-started-with-composition",
+              "path": "/crossplane/get-started/get-started-with-composition",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/get-started/get-started-with-managed-resources",
+              "path": "/crossplane/get-started/get-started-with-managed-resources",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/get-started/index",
+              "path": "/crossplane/get-started/",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/get-started/install",
+              "path": "/crossplane/get-started/install",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/crossplane-with-argo-cd",
+              "path": "/crossplane/guides/crossplane-with-argo-cd",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/extensions-release-process",
+              "path": "/crossplane/guides/extensions-release-process",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/function-patch-and-transform",
+              "path": "/crossplane/guides/function-patch-and-transform",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/index",
+              "path": "/crossplane/guides/",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/metrics",
+              "path": "/crossplane/guides/metrics",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/pods",
+              "path": "/crossplane/guides/pods",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/self-signed-ca-certs",
+              "path": "/crossplane/guides/self-signed-ca-certs",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/troubleshoot-crossplane",
+              "path": "/crossplane/guides/troubleshoot-crossplane",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/uninstall-crossplane",
+              "path": "/crossplane/guides/uninstall-crossplane",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/upgrade-crossplane",
+              "path": "/crossplane/guides/upgrade-crossplane",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/write-a-composition-function-in-go",
+              "path": "/crossplane/guides/write-a-composition-function-in-go",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/guides/write-a-composition-function-in-python",
+              "path": "/crossplane/guides/write-a-composition-function-in-python",
+              "sidebar": "crossplaneSidebar"
+            },
+            {
+              "id": "crossplane/index",
+              "path": "/crossplane/"
+            },
+            {
+              "id": "crossplane/managed-resources/index",
+              "path": "/crossplane/managed-resources/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "crossplane/managed-resources/managed-resources",
+              "path": "/crossplane/managed-resources/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "crossplane/managed-resources/usages",
+              "path": "/crossplane/managed-resources/usages",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "crossplane/packages/configurations",
+              "path": "/crossplane/packages/configurations"
+            },
+            {
+              "id": "crossplane/packages/functions",
+              "path": "/crossplane/packages/functions"
+            },
+            {
+              "id": "crossplane/packages/image-configs",
+              "path": "/crossplane/packages/image-configs"
+            },
+            {
+              "id": "crossplane/packages/index",
+              "path": "/crossplane/packages/"
+            },
+            {
+              "id": "crossplane/packages/providers",
+              "path": "/crossplane/packages/providers"
+            },
+            {
+              "id": "crossplane/whats-crossplane/index",
+              "path": "/crossplane/whats-crossplane/"
+            },
+            {
+              "id": "fundamentals/builders-workshop/create-configuration",
+              "path": "/fundamentals/builders-workshop/create-configuration",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/builders-workshop/deployment",
+              "path": "/fundamentals/builders-workshop/deployment",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/builders-workshop/project-foundations",
+              "path": "/fundamentals/builders-workshop/project-foundations",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/builders-workshop/testing",
+              "path": "/fundamentals/builders-workshop/testing",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/consumer-portal-get-started",
+              "path": "/fundamentals/consumer-portal-get-started"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/adding-dependencies",
+              "path": "/fundamentals/control-planes/control-plane-projects/adding-dependencies"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/index",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/index",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/index",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/index",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/index",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/authoring-xrds",
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-xrds"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/building-pushing",
+              "path": "/fundamentals/control-planes/control-plane-projects/building-pushing"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/index",
+              "path": "/fundamentals/control-planes/control-plane-projects/"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/simulations",
+              "path": "/fundamentals/control-planes/control-plane-projects/simulations"
+            },
+            {
+              "id": "fundamentals/control-planes/control-plane-projects/testing",
+              "path": "/fundamentals/control-planes/control-plane-projects/testing"
+            },
+            {
+              "id": "fundamentals/control-planes/controllers",
+              "path": "/fundamentals/control-planes/controllers"
+            },
+            {
+              "id": "fundamentals/control-planes/index",
+              "path": "/fundamentals/control-planes/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/migrating-to-mcps",
+              "path": "/fundamentals/control-planes/migrating-to-mcps"
+            },
+            {
+              "id": "fundamentals/control-planes/provider-authentication",
+              "path": "/fundamentals/control-planes/provider-authentication"
+            },
+            {
+              "id": "fundamentals/control-planes/repositories/index",
+              "path": "/fundamentals/control-planes/repositories/",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/repositories/management",
+              "path": "/fundamentals/control-planes/repositories/management",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/repositories/publish-packages",
+              "path": "/fundamentals/control-planes/repositories/publish-packages",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/control-planes/repositories/store-configurations",
+              "path": "/fundamentals/control-planes/repositories/store-configurations",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/claims",
+              "path": "/fundamentals/core-concepts/claims",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/compositions",
+              "path": "/fundamentals/core-concepts/compositions",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/control-planes",
+              "path": "/fundamentals/core-concepts/control-planes",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/functions",
+              "path": "/fundamentals/core-concepts/functions",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/managed-control-planes",
+              "path": "/fundamentals/core-concepts/managed-control-planes",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/projects",
+              "path": "/fundamentals/core-concepts/projects",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/providers",
+              "path": "/fundamentals/core-concepts/providers",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/core-concepts/xrds",
+              "path": "/fundamentals/core-concepts/xrds",
+              "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "fundamentals/get-started",
+              "path": "/fundamentals/get-started",
+              "sidebar": "fundamentalsSidebar"
+            },
             {
               "id": "reference/apis/index",
               "path": "/reference/apis/"
@@ -856,374 +1224,6 @@
               "sidebar": "referenceSidebar"
             },
             {
-              "id": "shared/crossplane/api/index",
-              "path": "/shared/crossplane/api/"
-            },
-            {
-              "id": "shared/crossplane/composition/composite-resource-definitions",
-              "path": "/shared/crossplane/composition/composite-resource-definitions",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/composition/composite-resources",
-              "path": "/shared/crossplane/composition/composite-resources",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/composition/composition-revisions",
-              "path": "/shared/crossplane/composition/composition-revisions",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/composition/compositions",
-              "path": "/shared/crossplane/composition/compositions",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/composition/environment-configs",
-              "path": "/shared/crossplane/composition/environment-configs",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/composition/index",
-              "path": "/shared/crossplane/composition/",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/get-started/get-started-with-composition",
-              "path": "/shared/crossplane/get-started/get-started-with-composition",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/get-started/get-started-with-managed-resources",
-              "path": "/shared/crossplane/get-started/get-started-with-managed-resources",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/get-started/index",
-              "path": "/shared/crossplane/get-started/",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/get-started/install",
-              "path": "/shared/crossplane/get-started/install",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/crossplane-with-argo-cd",
-              "path": "/shared/crossplane/guides/crossplane-with-argo-cd",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/extensions-release-process",
-              "path": "/shared/crossplane/guides/extensions-release-process",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/function-patch-and-transform",
-              "path": "/shared/crossplane/guides/function-patch-and-transform",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/index",
-              "path": "/shared/crossplane/guides/",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/metrics",
-              "path": "/shared/crossplane/guides/metrics",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/pods",
-              "path": "/shared/crossplane/guides/pods",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/self-signed-ca-certs",
-              "path": "/shared/crossplane/guides/self-signed-ca-certs",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/troubleshoot-crossplane",
-              "path": "/shared/crossplane/guides/troubleshoot-crossplane",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/uninstall-crossplane",
-              "path": "/shared/crossplane/guides/uninstall-crossplane",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/upgrade-crossplane",
-              "path": "/shared/crossplane/guides/upgrade-crossplane",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/write-a-composition-function-in-go",
-              "path": "/shared/crossplane/guides/write-a-composition-function-in-go",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/guides/write-a-composition-function-in-python",
-              "path": "/shared/crossplane/guides/write-a-composition-function-in-python",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "shared/crossplane/index",
-              "path": "/shared/crossplane/"
-            },
-            {
-              "id": "shared/crossplane/managed-resources/index",
-              "path": "/shared/crossplane/managed-resources/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/crossplane/managed-resources/managed-resources",
-              "path": "/shared/crossplane/managed-resources/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/crossplane/managed-resources/usages",
-              "path": "/shared/crossplane/managed-resources/usages",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/crossplane/packages/configurations",
-              "path": "/shared/crossplane/packages/configurations"
-            },
-            {
-              "id": "shared/crossplane/packages/functions",
-              "path": "/shared/crossplane/packages/functions"
-            },
-            {
-              "id": "shared/crossplane/packages/image-configs",
-              "path": "/shared/crossplane/packages/image-configs"
-            },
-            {
-              "id": "shared/crossplane/packages/index",
-              "path": "/shared/crossplane/packages/"
-            },
-            {
-              "id": "shared/crossplane/packages/providers",
-              "path": "/shared/crossplane/packages/providers"
-            },
-            {
-              "id": "shared/crossplane/whats-crossplane/index",
-              "path": "/shared/crossplane/whats-crossplane/"
-            },
-            {
-              "id": "shared/fundamentals/builders-workshop/create-configuration",
-              "path": "/shared/fundamentals/builders-workshop/create-configuration",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/builders-workshop/deployment",
-              "path": "/shared/fundamentals/builders-workshop/deployment",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/builders-workshop/project-foundations",
-              "path": "/shared/fundamentals/builders-workshop/project-foundations",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/builders-workshop/testing",
-              "path": "/shared/fundamentals/builders-workshop/testing",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/consumer-portal-get-started",
-              "path": "/shared/fundamentals/consumer-portal-get-started"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/adding-dependencies",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/adding-dependencies"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/index",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/index",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/index",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/index",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/index",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/authoring-xrds",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/authoring-xrds"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/building-pushing",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/building-pushing"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/index",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/simulations",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/simulations"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/control-plane-projects/testing",
-              "path": "/shared/fundamentals/control-planes/control-plane-projects/testing"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/controllers",
-              "path": "/shared/fundamentals/control-planes/controllers"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/index",
-              "path": "/shared/fundamentals/control-planes/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/migrating-to-mcps",
-              "path": "/shared/fundamentals/control-planes/migrating-to-mcps"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/provider-authentication",
-              "path": "/shared/fundamentals/control-planes/provider-authentication"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/repositories/index",
-              "path": "/shared/fundamentals/control-planes/repositories/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/repositories/management",
-              "path": "/shared/fundamentals/control-planes/repositories/management",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/repositories/publish-packages",
-              "path": "/shared/fundamentals/control-planes/repositories/publish-packages",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/control-planes/repositories/store-configurations",
-              "path": "/shared/fundamentals/control-planes/repositories/store-configurations",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/claims",
-              "path": "/shared/fundamentals/core-concepts/claims",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/compositions",
-              "path": "/shared/fundamentals/core-concepts/compositions",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/control-planes",
-              "path": "/shared/fundamentals/core-concepts/control-planes",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/functions",
-              "path": "/shared/fundamentals/core-concepts/functions",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/managed-control-planes",
-              "path": "/shared/fundamentals/core-concepts/managed-control-planes",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/projects",
-              "path": "/shared/fundamentals/core-concepts/projects",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/providers",
-              "path": "/shared/fundamentals/core-concepts/providers",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/core-concepts/xrds",
-              "path": "/shared/fundamentals/core-concepts/xrds",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "shared/fundamentals/get-started",
-              "path": "/shared/fundamentals/get-started",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
               "id": "solutions/idp-starter-kit",
               "path": "/solutions/idp-starter-kit",
               "sidebar": "solutionsSidebar"
@@ -1506,14 +1506,14 @@
           "sidebars": {
             "crossplaneSidebar": {
               "link": {
-                "path": "/shared/crossplane/get-started/get-started-with-composition",
-                "label": "shared/crossplane/get-started/get-started-with-composition"
+                "path": "/crossplane/get-started/get-started-with-composition",
+                "label": "crossplane/get-started/get-started-with-composition"
               }
             },
             "fundamentalsSidebar": {
               "link": {
-                "path": "/shared/fundamentals/get-started",
-                "label": "shared/fundamentals/get-started"
+                "path": "/fundamentals/get-started",
+                "label": "fundamentals/get-started"
               }
             },
             "referenceSidebar": {

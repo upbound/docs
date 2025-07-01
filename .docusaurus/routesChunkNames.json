@@ -48,18 +48,338 @@
       "plugin": "plugin---searchc-14-0ea"
     }
   },
-  "/-958": {
+  "/-f8f": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---aba-d70"
     }
   },
-  "/-540": {
+  "/-390": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---22-d-307"
   },
-  "/-364": {
+  "/-55d": {
     "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/crossplane/-8e1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-a-39-42c"
+  },
+  "/crossplane/api/-e56": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-api-f-75-cf5"
+  },
+  "/crossplane/composition/-850": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-composition-cdc-a2c"
+  },
+  "/crossplane/composition/composite-resource-definitions-efe": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-composition-composite-resource-definitions-192-371"
+  },
+  "/crossplane/composition/composite-resources-517": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-composition-composite-resources-3-fd-084"
+  },
+  "/crossplane/composition/composition-revisions-66e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-composition-composition-revisions-176-afc"
+  },
+  "/crossplane/composition/compositions-f94": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-composition-compositionsa-26-c13"
+  },
+  "/crossplane/composition/environment-configs-68e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-composition-environment-configsfca-fb2"
+  },
+  "/crossplane/get-started/-79b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-get-started-da-5-d6b"
+  },
+  "/crossplane/get-started/get-started-with-composition-607": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-get-started-get-started-with-composition-0-e-8-62b"
+  },
+  "/crossplane/get-started/get-started-with-managed-resources-df6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-get-started-get-started-with-managed-resources-34-f-eea"
+  },
+  "/crossplane/get-started/install-4c4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-get-started-install-0-f-4-9b1"
+  },
+  "/crossplane/guides/-629": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-74-b-37e"
+  },
+  "/crossplane/guides/crossplane-with-argo-cd-b3c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-crossplane-with-argo-cd-3-ed-4c3"
+  },
+  "/crossplane/guides/extensions-release-process-278": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-extensions-release-processc-70-98a"
+  },
+  "/crossplane/guides/function-patch-and-transform-cb7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-function-patch-and-transformec-8-e19"
+  },
+  "/crossplane/guides/metrics-6c7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-metrics-418-cc6"
+  },
+  "/crossplane/guides/pods-1c6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-podsbb-7-120"
+  },
+  "/crossplane/guides/self-signed-ca-certs-9c8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-self-signed-ca-certs-8-f-5-171"
+  },
+  "/crossplane/guides/troubleshoot-crossplane-047": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-troubleshoot-crossplanea-2-a-b14"
+  },
+  "/crossplane/guides/uninstall-crossplane-5c6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-uninstall-crossplane-8-dc-cb8"
+  },
+  "/crossplane/guides/upgrade-crossplane-455": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-upgrade-crossplane-763-933"
+  },
+  "/crossplane/guides/write-a-composition-function-in-go-575": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-write-a-composition-function-in-go-093-f27"
+  },
+  "/crossplane/guides/write-a-composition-function-in-python-188": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-guides-write-a-composition-function-in-python-53-b-d19"
+  },
+  "/crossplane/managed-resources/-7a2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-managed-resources-3-b-7-1d8"
+  },
+  "/crossplane/managed-resources/-7f5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-managed-resources-f-84-a00"
+  },
+  "/crossplane/managed-resources/usages-912": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-managed-resources-usages-788-26b"
+  },
+  "/crossplane/packages/-d6d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-packages-3-ad-9d2"
+  },
+  "/crossplane/packages/configurations-d0e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-packages-configurationsa-57-273"
+  },
+  "/crossplane/packages/functions-a13": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-packages-functionsaf-8-1a4"
+  },
+  "/crossplane/packages/image-configs-a27": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-packages-image-configsce-8-79d"
+  },
+  "/crossplane/packages/providers-cd1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-packages-providers-4-cb-9f1"
+  },
+  "/crossplane/whats-crossplane/-6a7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---crossplane-whats-crossplane-d-82-13d"
+  },
+  "/fundamentals/builders-workshop/create-configuration-082": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-builders-workshop-create-configurationb-82-21a"
+  },
+  "/fundamentals/builders-workshop/deployment-59b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-builders-workshop-deployment-39-b-bc6"
+  },
+  "/fundamentals/builders-workshop/project-foundations-305": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-builders-workshop-project-foundations-89-b-bae"
+  },
+  "/fundamentals/builders-workshop/testing-ea4": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-builders-workshop-testing-2-db-b6b"
+  },
+  "/fundamentals/consumer-portal-get-started-3f6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-consumer-portal-get-starteddf-7-f42"
+  },
+  "/fundamentals/control-planes/-143": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-0-fd-fdd"
+  },
+  "/fundamentals/control-planes/control-plane-projects/-0e8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-77-f-dca"
+  },
+  "/fundamentals/control-planes/control-plane-projects/adding-dependencies-c01": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-adding-dependencies-39-b-5d4"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/-620": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-a-2-c-f90"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/-731": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-751-ecb"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs-c02": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-inputs-outputsbfd-3dc"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas-eda": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-schemasd-5-d-370"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/-b9a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-1-a-8-31b"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs-f7d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-inputs-outputs-4-de-70b"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models-f59": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-models-13-e-70d"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/-f8a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-a-72-86e"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals-dd9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-conditionals-7-ed-5fc"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs-b02": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-inputs-outputs-782-38f"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops-69b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-loopse-14-928"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state-96c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-read-pipeline-statee-30-a27"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction-416": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-resource-data-extractionea-0-79d"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas-931": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-resource-schemas-26-c-012"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables-7a8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-variables-6-d-4-776"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite-657": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-write-status-to-composited-87-7a7"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/-84a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-python-b-13-8b6"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs-d33": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-python-inputs-outputsaa-6-8a8"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models-50b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-python-modelsa-92-f0b"
+  },
+  "/fundamentals/control-planes/control-plane-projects/authoring-xrds-cc0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-authoring-xrds-394-8ed"
+  },
+  "/fundamentals/control-planes/control-plane-projects/building-pushing-40e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-building-pushinga-96-e05"
+  },
+  "/fundamentals/control-planes/control-plane-projects/simulations-66f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-simulations-259-096"
+  },
+  "/fundamentals/control-planes/control-plane-projects/testing-ffb": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-control-plane-projects-testing-4-f-0-e81"
+  },
+  "/fundamentals/control-planes/controllers-14c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-controllers-888-88a"
+  },
+  "/fundamentals/control-planes/migrating-to-mcps-89e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-migrating-to-mcps-974-b2b"
+  },
+  "/fundamentals/control-planes/provider-authentication-6f0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-provider-authentication-7-ab-b21"
+  },
+  "/fundamentals/control-planes/repositories/-04f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-repositories-765-67a"
+  },
+  "/fundamentals/control-planes/repositories/management-941": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-repositories-managementc-95-a43"
+  },
+  "/fundamentals/control-planes/repositories/publish-packages-061": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-repositories-publish-packages-4-b-2-c12"
+  },
+  "/fundamentals/control-planes/repositories/store-configurations-7a6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-control-planes-repositories-store-configurationsda-4-d45"
+  },
+  "/fundamentals/core-concepts/claims-e93": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-claims-3-c-2-8e7"
+  },
+  "/fundamentals/core-concepts/compositions-67e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-compositionsb-98-a1c"
+  },
+  "/fundamentals/core-concepts/control-planes-269": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-control-planes-710-0e0"
+  },
+  "/fundamentals/core-concepts/functions-797": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-functions-732-628"
+  },
+  "/fundamentals/core-concepts/managed-control-planes-59a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-managed-control-planesaea-31a"
+  },
+  "/fundamentals/core-concepts/projects-3da": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-projects-015-5d5"
+  },
+  "/fundamentals/core-concepts/providers-a45": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-providers-260-a81"
+  },
+  "/fundamentals/core-concepts/xrds-1ef": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-core-concepts-xrds-40-b-15c"
+  },
+  "/fundamentals/get-started-d8d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---fundamentals-get-starteddc-0-4df"
   },
   "/reference/-96b": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -868,326 +1188,6 @@
   "/reference/usage/vscode-extensions-0c5": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-usage-vscode-extensions-624-02a"
-  },
-  "/shared/crossplane/-ee5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-b-1-c-9e7"
-  },
-  "/shared/crossplane/api/-790": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-api-879-3db"
-  },
-  "/shared/crossplane/composition/-286": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-composition-81-e-c33"
-  },
-  "/shared/crossplane/composition/composite-resource-definitions-401": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-composition-composite-resource-definitionsd-7-c-0bf"
-  },
-  "/shared/crossplane/composition/composite-resources-a25": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-composition-composite-resources-96-a-e07"
-  },
-  "/shared/crossplane/composition/composition-revisions-b5e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-composition-composition-revisions-2-fd-dcc"
-  },
-  "/shared/crossplane/composition/compositions-5e6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-composition-compositionsc-5-e-a65"
-  },
-  "/shared/crossplane/composition/environment-configs-694": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-composition-environment-configs-6-c-6-e5b"
-  },
-  "/shared/crossplane/get-started/-c83": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-get-started-b-67-77d"
-  },
-  "/shared/crossplane/get-started/get-started-with-composition-313": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-get-started-get-started-with-composition-021-064"
-  },
-  "/shared/crossplane/get-started/get-started-with-managed-resources-d5a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-get-started-get-started-with-managed-resourcesc-35-3c3"
-  },
-  "/shared/crossplane/get-started/install-f31": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-get-started-install-51-c-9ea"
-  },
-  "/shared/crossplane/guides/-35a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-570-2ad"
-  },
-  "/shared/crossplane/guides/crossplane-with-argo-cd-2c3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-crossplane-with-argo-cdb-7-f-174"
-  },
-  "/shared/crossplane/guides/extensions-release-process-05d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-extensions-release-process-37-f-c71"
-  },
-  "/shared/crossplane/guides/function-patch-and-transform-810": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-function-patch-and-transforme-4-f-5ef"
-  },
-  "/shared/crossplane/guides/metrics-550": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-metrics-2-c-7-afa"
-  },
-  "/shared/crossplane/guides/pods-311": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-pods-554-871"
-  },
-  "/shared/crossplane/guides/self-signed-ca-certs-8a6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-self-signed-ca-certs-30-f-f5f"
-  },
-  "/shared/crossplane/guides/troubleshoot-crossplane-0ba": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-troubleshoot-crossplane-6-e-4-1f5"
-  },
-  "/shared/crossplane/guides/uninstall-crossplane-41c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-uninstall-crossplaned-9-a-328"
-  },
-  "/shared/crossplane/guides/upgrade-crossplane-ffd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-upgrade-crossplane-52-f-f24"
-  },
-  "/shared/crossplane/guides/write-a-composition-function-in-go-99d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-write-a-composition-function-in-go-252-de4"
-  },
-  "/shared/crossplane/guides/write-a-composition-function-in-python-619": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-guides-write-a-composition-function-in-python-8-f-7-7bf"
-  },
-  "/shared/crossplane/managed-resources/-aa2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-managed-resources-6-ef-329"
-  },
-  "/shared/crossplane/managed-resources/-fea": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-managed-resources-424-7cd"
-  },
-  "/shared/crossplane/managed-resources/usages-05d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-managed-resources-usages-20-e-f88"
-  },
-  "/shared/crossplane/packages/-979": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-packages-018-2f3"
-  },
-  "/shared/crossplane/packages/configurations-9c2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-packages-configurations-7-bf-30c"
-  },
-  "/shared/crossplane/packages/functions-cda": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-packages-functions-206-126"
-  },
-  "/shared/crossplane/packages/image-configs-fe9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-packages-image-configs-984-0d6"
-  },
-  "/shared/crossplane/packages/providers-187": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-packages-providers-295-f29"
-  },
-  "/shared/crossplane/whats-crossplane/-ece": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-crossplane-whats-crossplane-f-0-d-f98"
-  },
-  "/shared/fundamentals/builders-workshop/create-configuration-59e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-builders-workshop-create-configurationaf-3-516"
-  },
-  "/shared/fundamentals/builders-workshop/deployment-24f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-builders-workshop-deploymentec-6-17b"
-  },
-  "/shared/fundamentals/builders-workshop/project-foundations-87c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-builders-workshop-project-foundations-619-2a7"
-  },
-  "/shared/fundamentals/builders-workshop/testing-a3e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-builders-workshop-testing-4-bc-b88"
-  },
-  "/shared/fundamentals/consumer-portal-get-started-410": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-consumer-portal-get-startedb-72-223"
-  },
-  "/shared/fundamentals/control-planes/-500": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-28-e-f8b"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/-31f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-784-12e"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/adding-dependencies-72d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-adding-dependencies-960-e52"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/-41b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-4-ae-f80"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/-acd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-4-d-4-f70"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs-086": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-inputs-outputs-381-7ea"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas-035": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-schemas-9-e-1-488"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/-544": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-go-099-08f"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs-efb": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-go-inputs-outputs-578-e7e"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models-0b1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-go-models-6-f-5-fe8"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/-437": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-002-6c8"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals-07a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-conditionals-8-dc-acd"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs-50b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-inputs-outputsb-8-d-c51"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops-e74": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-loops-808-4e7"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state-22d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-read-pipeline-statee-01-eeb"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction-4e7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-resource-data-extraction-5-d-6-15b"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas-f95": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-resource-schemas-926-3b8"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables-b59": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-variables-7-bc-67b"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite-86c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-write-status-to-compositec-41-116"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/-4fb": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-python-1-d-9-046"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs-e0b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-python-inputs-outputs-4-dd-6eb"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models-9e5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-compositions-python-models-65-c-688"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/authoring-xrds-31d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-authoring-xrds-183-986"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/building-pushing-5c5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-building-pushing-426-663"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/simulations-702": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-simulations-1-a-7-cd8"
-  },
-  "/shared/fundamentals/control-planes/control-plane-projects/testing-42d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-control-plane-projects-testingf-22-762"
-  },
-  "/shared/fundamentals/control-planes/controllers-32d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-controllersae-7-2d1"
-  },
-  "/shared/fundamentals/control-planes/migrating-to-mcps-6ee": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-migrating-to-mcps-2-db-b82"
-  },
-  "/shared/fundamentals/control-planes/provider-authentication-0d3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-provider-authentication-722-a51"
-  },
-  "/shared/fundamentals/control-planes/repositories/-759": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-repositories-716-2c6"
-  },
-  "/shared/fundamentals/control-planes/repositories/management-12b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-repositories-managementf-3-c-3b1"
-  },
-  "/shared/fundamentals/control-planes/repositories/publish-packages-6ef": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-repositories-publish-packagesbec-69e"
-  },
-  "/shared/fundamentals/control-planes/repositories/store-configurations-ca6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-control-planes-repositories-store-configurations-2-b-2-83d"
-  },
-  "/shared/fundamentals/core-concepts/claims-0be": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-claims-0-ba-7c1"
-  },
-  "/shared/fundamentals/core-concepts/compositions-d0b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-compositions-425-5bd"
-  },
-  "/shared/fundamentals/core-concepts/control-planes-0af": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-control-planese-4-f-4a4"
-  },
-  "/shared/fundamentals/core-concepts/functions-8f2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-functions-30-b-431"
-  },
-  "/shared/fundamentals/core-concepts/managed-control-planes-650": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-managed-control-planesc-06-1ca"
-  },
-  "/shared/fundamentals/core-concepts/projects-e09": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-projects-82-d-519"
-  },
-  "/shared/fundamentals/core-concepts/providers-2e2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-providers-54-e-ebf"
-  },
-  "/shared/fundamentals/core-concepts/xrds-28b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-core-concepts-xrds-323-1f0"
-  },
-  "/shared/fundamentals/get-started-269": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---shared-fundamentals-get-started-1-ff-056"
   },
   "/solutions/idp-starter-kit-381": {
     "__comp": "__comp---theme-doc-item-178-a40",

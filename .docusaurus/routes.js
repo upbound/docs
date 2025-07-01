@@ -44,16 +44,464 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', '958'),
+    component: ComponentCreator('/', 'f8f'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '540'),
+        component: ComponentCreator('/', '390'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', '364'),
+            component: ComponentCreator('/', '55d'),
             routes: [
+              {
+                path: '/crossplane/',
+                component: ComponentCreator('/crossplane/', '8e1'),
+                exact: true
+              },
+              {
+                path: '/crossplane/api/',
+                component: ComponentCreator('/crossplane/api/', 'e56'),
+                exact: true
+              },
+              {
+                path: '/crossplane/composition/',
+                component: ComponentCreator('/crossplane/composition/', '850'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/composition/composite-resource-definitions',
+                component: ComponentCreator('/crossplane/composition/composite-resource-definitions', 'efe'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/composition/composite-resources',
+                component: ComponentCreator('/crossplane/composition/composite-resources', '517'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/composition/composition-revisions',
+                component: ComponentCreator('/crossplane/composition/composition-revisions', '66e'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/composition/compositions',
+                component: ComponentCreator('/crossplane/composition/compositions', 'f94'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/composition/environment-configs',
+                component: ComponentCreator('/crossplane/composition/environment-configs', '68e'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/get-started/',
+                component: ComponentCreator('/crossplane/get-started/', '79b'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/get-started/get-started-with-composition',
+                component: ComponentCreator('/crossplane/get-started/get-started-with-composition', '607'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/get-started/get-started-with-managed-resources',
+                component: ComponentCreator('/crossplane/get-started/get-started-with-managed-resources', 'df6'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/get-started/install',
+                component: ComponentCreator('/crossplane/get-started/install', '4c4'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/',
+                component: ComponentCreator('/crossplane/guides/', '629'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/crossplane-with-argo-cd',
+                component: ComponentCreator('/crossplane/guides/crossplane-with-argo-cd', 'b3c'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/extensions-release-process',
+                component: ComponentCreator('/crossplane/guides/extensions-release-process', '278'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/function-patch-and-transform',
+                component: ComponentCreator('/crossplane/guides/function-patch-and-transform', 'cb7'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/metrics',
+                component: ComponentCreator('/crossplane/guides/metrics', '6c7'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/pods',
+                component: ComponentCreator('/crossplane/guides/pods', '1c6'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/self-signed-ca-certs',
+                component: ComponentCreator('/crossplane/guides/self-signed-ca-certs', '9c8'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/troubleshoot-crossplane',
+                component: ComponentCreator('/crossplane/guides/troubleshoot-crossplane', '047'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/uninstall-crossplane',
+                component: ComponentCreator('/crossplane/guides/uninstall-crossplane', '5c6'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/upgrade-crossplane',
+                component: ComponentCreator('/crossplane/guides/upgrade-crossplane', '455'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/write-a-composition-function-in-go',
+                component: ComponentCreator('/crossplane/guides/write-a-composition-function-in-go', '575'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/guides/write-a-composition-function-in-python',
+                component: ComponentCreator('/crossplane/guides/write-a-composition-function-in-python', '188'),
+                exact: true,
+                sidebar: "crossplaneSidebar"
+              },
+              {
+                path: '/crossplane/managed-resources/',
+                component: ComponentCreator('/crossplane/managed-resources/', '7a2'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/crossplane/managed-resources/',
+                component: ComponentCreator('/crossplane/managed-resources/', '7f5'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/crossplane/managed-resources/usages',
+                component: ComponentCreator('/crossplane/managed-resources/usages', '912'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/crossplane/packages/',
+                component: ComponentCreator('/crossplane/packages/', 'd6d'),
+                exact: true
+              },
+              {
+                path: '/crossplane/packages/configurations',
+                component: ComponentCreator('/crossplane/packages/configurations', 'd0e'),
+                exact: true
+              },
+              {
+                path: '/crossplane/packages/functions',
+                component: ComponentCreator('/crossplane/packages/functions', 'a13'),
+                exact: true
+              },
+              {
+                path: '/crossplane/packages/image-configs',
+                component: ComponentCreator('/crossplane/packages/image-configs', 'a27'),
+                exact: true
+              },
+              {
+                path: '/crossplane/packages/providers',
+                component: ComponentCreator('/crossplane/packages/providers', 'cd1'),
+                exact: true
+              },
+              {
+                path: '/crossplane/whats-crossplane/',
+                component: ComponentCreator('/crossplane/whats-crossplane/', '6a7'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/builders-workshop/create-configuration',
+                component: ComponentCreator('/fundamentals/builders-workshop/create-configuration', '082'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/builders-workshop/deployment',
+                component: ComponentCreator('/fundamentals/builders-workshop/deployment', '59b'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/builders-workshop/project-foundations',
+                component: ComponentCreator('/fundamentals/builders-workshop/project-foundations', '305'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/builders-workshop/testing',
+                component: ComponentCreator('/fundamentals/builders-workshop/testing', 'ea4'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/consumer-portal-get-started',
+                component: ComponentCreator('/fundamentals/consumer-portal-get-started', '3f6'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/',
+                component: ComponentCreator('/fundamentals/control-planes/', '143'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/', '0e8'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/adding-dependencies',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/adding-dependencies', 'c01'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/', '620'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/', '731'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs', 'c02'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas', 'eda'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/', 'b9a'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs', 'f7d'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models', 'f59'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/', 'f8a'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals', 'dd9'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs', 'b02'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops', '69b'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state', '96c'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction', '416'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas', '931'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables', '7a8'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite', '657'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/', '84a'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs', 'd33'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models', '50b'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/authoring-xrds',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-xrds', 'cc0'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/building-pushing',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/building-pushing', '40e'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/simulations',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/simulations', '66f'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/control-plane-projects/testing',
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/testing', 'ffb'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/controllers',
+                component: ComponentCreator('/fundamentals/control-planes/controllers', '14c'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/migrating-to-mcps',
+                component: ComponentCreator('/fundamentals/control-planes/migrating-to-mcps', '89e'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/provider-authentication',
+                component: ComponentCreator('/fundamentals/control-planes/provider-authentication', '6f0'),
+                exact: true
+              },
+              {
+                path: '/fundamentals/control-planes/repositories/',
+                component: ComponentCreator('/fundamentals/control-planes/repositories/', '04f'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/repositories/management',
+                component: ComponentCreator('/fundamentals/control-planes/repositories/management', '941'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/repositories/publish-packages',
+                component: ComponentCreator('/fundamentals/control-planes/repositories/publish-packages', '061'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/control-planes/repositories/store-configurations',
+                component: ComponentCreator('/fundamentals/control-planes/repositories/store-configurations', '7a6'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/claims',
+                component: ComponentCreator('/fundamentals/core-concepts/claims', 'e93'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/compositions',
+                component: ComponentCreator('/fundamentals/core-concepts/compositions', '67e'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/control-planes',
+                component: ComponentCreator('/fundamentals/core-concepts/control-planes', '269'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/functions',
+                component: ComponentCreator('/fundamentals/core-concepts/functions', '797'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/managed-control-planes',
+                component: ComponentCreator('/fundamentals/core-concepts/managed-control-planes', '59a'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/projects',
+                component: ComponentCreator('/fundamentals/core-concepts/projects', '3da'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/providers',
+                component: ComponentCreator('/fundamentals/core-concepts/providers', 'a45'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/core-concepts/xrds',
+                component: ComponentCreator('/fundamentals/core-concepts/xrds', '1ef'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
+              {
+                path: '/fundamentals/get-started',
+                component: ComponentCreator('/fundamentals/get-started', 'd8d'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
+              },
               {
                 path: '/reference/',
                 component: ComponentCreator('/reference/', '96b'),
@@ -1100,454 +1548,6 @@ export default [
                 component: ComponentCreator('/reference/usage/vscode-extensions', '0c5'),
                 exact: true,
                 sidebar: "referenceSidebar"
-              },
-              {
-                path: '/shared/crossplane/',
-                component: ComponentCreator('/shared/crossplane/', 'ee5'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/api/',
-                component: ComponentCreator('/shared/crossplane/api/', '790'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/composition/',
-                component: ComponentCreator('/shared/crossplane/composition/', '286'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/composition/composite-resource-definitions',
-                component: ComponentCreator('/shared/crossplane/composition/composite-resource-definitions', '401'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/composition/composite-resources',
-                component: ComponentCreator('/shared/crossplane/composition/composite-resources', 'a25'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/composition/composition-revisions',
-                component: ComponentCreator('/shared/crossplane/composition/composition-revisions', 'b5e'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/composition/compositions',
-                component: ComponentCreator('/shared/crossplane/composition/compositions', '5e6'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/composition/environment-configs',
-                component: ComponentCreator('/shared/crossplane/composition/environment-configs', '694'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/get-started/',
-                component: ComponentCreator('/shared/crossplane/get-started/', 'c83'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/get-started/get-started-with-composition',
-                component: ComponentCreator('/shared/crossplane/get-started/get-started-with-composition', '313'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/get-started/get-started-with-managed-resources',
-                component: ComponentCreator('/shared/crossplane/get-started/get-started-with-managed-resources', 'd5a'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/get-started/install',
-                component: ComponentCreator('/shared/crossplane/get-started/install', 'f31'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/',
-                component: ComponentCreator('/shared/crossplane/guides/', '35a'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/crossplane-with-argo-cd',
-                component: ComponentCreator('/shared/crossplane/guides/crossplane-with-argo-cd', '2c3'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/extensions-release-process',
-                component: ComponentCreator('/shared/crossplane/guides/extensions-release-process', '05d'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/function-patch-and-transform',
-                component: ComponentCreator('/shared/crossplane/guides/function-patch-and-transform', '810'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/metrics',
-                component: ComponentCreator('/shared/crossplane/guides/metrics', '550'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/pods',
-                component: ComponentCreator('/shared/crossplane/guides/pods', '311'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/self-signed-ca-certs',
-                component: ComponentCreator('/shared/crossplane/guides/self-signed-ca-certs', '8a6'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/troubleshoot-crossplane',
-                component: ComponentCreator('/shared/crossplane/guides/troubleshoot-crossplane', '0ba'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/uninstall-crossplane',
-                component: ComponentCreator('/shared/crossplane/guides/uninstall-crossplane', '41c'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/upgrade-crossplane',
-                component: ComponentCreator('/shared/crossplane/guides/upgrade-crossplane', 'ffd'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/write-a-composition-function-in-go',
-                component: ComponentCreator('/shared/crossplane/guides/write-a-composition-function-in-go', '99d'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/guides/write-a-composition-function-in-python',
-                component: ComponentCreator('/shared/crossplane/guides/write-a-composition-function-in-python', '619'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/shared/crossplane/managed-resources/',
-                component: ComponentCreator('/shared/crossplane/managed-resources/', 'aa2'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/crossplane/managed-resources/',
-                component: ComponentCreator('/shared/crossplane/managed-resources/', 'fea'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/crossplane/managed-resources/usages',
-                component: ComponentCreator('/shared/crossplane/managed-resources/usages', '05d'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/crossplane/packages/',
-                component: ComponentCreator('/shared/crossplane/packages/', '979'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/packages/configurations',
-                component: ComponentCreator('/shared/crossplane/packages/configurations', '9c2'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/packages/functions',
-                component: ComponentCreator('/shared/crossplane/packages/functions', 'cda'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/packages/image-configs',
-                component: ComponentCreator('/shared/crossplane/packages/image-configs', 'fe9'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/packages/providers',
-                component: ComponentCreator('/shared/crossplane/packages/providers', '187'),
-                exact: true
-              },
-              {
-                path: '/shared/crossplane/whats-crossplane/',
-                component: ComponentCreator('/shared/crossplane/whats-crossplane/', 'ece'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/builders-workshop/create-configuration',
-                component: ComponentCreator('/shared/fundamentals/builders-workshop/create-configuration', '59e'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/builders-workshop/deployment',
-                component: ComponentCreator('/shared/fundamentals/builders-workshop/deployment', '24f'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/builders-workshop/project-foundations',
-                component: ComponentCreator('/shared/fundamentals/builders-workshop/project-foundations', '87c'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/builders-workshop/testing',
-                component: ComponentCreator('/shared/fundamentals/builders-workshop/testing', 'a3e'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/consumer-portal-get-started',
-                component: ComponentCreator('/shared/fundamentals/consumer-portal-get-started', '410'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/', '500'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/', '31f'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/adding-dependencies',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/adding-dependencies', '72d'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/', '41b'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/', 'acd'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs', '086'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas', '035'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/', '544'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs', 'efb'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models', '0b1'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/', '437'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals', '07a'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs', '50b'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops', 'e74'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state', '22d'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction', '4e7'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas', 'f95'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables', 'b59'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite', '86c'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/', '4fb'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs', 'e0b'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models', '9e5'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/authoring-xrds',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/authoring-xrds', '31d'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/building-pushing',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/building-pushing', '5c5'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/simulations',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/simulations', '702'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/control-plane-projects/testing',
-                component: ComponentCreator('/shared/fundamentals/control-planes/control-plane-projects/testing', '42d'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/controllers',
-                component: ComponentCreator('/shared/fundamentals/control-planes/controllers', '32d'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/migrating-to-mcps',
-                component: ComponentCreator('/shared/fundamentals/control-planes/migrating-to-mcps', '6ee'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/provider-authentication',
-                component: ComponentCreator('/shared/fundamentals/control-planes/provider-authentication', '0d3'),
-                exact: true
-              },
-              {
-                path: '/shared/fundamentals/control-planes/repositories/',
-                component: ComponentCreator('/shared/fundamentals/control-planes/repositories/', '759'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/repositories/management',
-                component: ComponentCreator('/shared/fundamentals/control-planes/repositories/management', '12b'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/repositories/publish-packages',
-                component: ComponentCreator('/shared/fundamentals/control-planes/repositories/publish-packages', '6ef'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/control-planes/repositories/store-configurations',
-                component: ComponentCreator('/shared/fundamentals/control-planes/repositories/store-configurations', 'ca6'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/claims',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/claims', '0be'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/compositions',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/compositions', 'd0b'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/control-planes',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/control-planes', '0af'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/functions',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/functions', '8f2'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/managed-control-planes',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/managed-control-planes', '650'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/projects',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/projects', 'e09'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/providers',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/providers', '2e2'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/core-concepts/xrds',
-                component: ComponentCreator('/shared/fundamentals/core-concepts/xrds', '28b'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/shared/fundamentals/get-started',
-                component: ComponentCreator('/shared/fundamentals/get-started', '269'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/solutions/idp-starter-kit',

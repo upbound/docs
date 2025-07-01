@@ -1,0 +1,34 @@
+{
+  "id": "fundamentals/control-planes/index",
+  "title": "Build",
+  "description": "Create your configurations and control planes with various programming languages",
+  "source": "@site/docs/fundamentals/control-planes/index.md",
+  "sourceDirName": "fundamentals/control-planes",
+  "slug": "/fundamentals/control-planes/",
+  "permalink": "/fundamentals/control-planes/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Build",
+    "sidebar_position": 1,
+    "description": "Create your configurations and control planes with various programming languages",
+    "aliases": [
+      "/spaces",
+      "/concepts/upbound-spaces"
+    ],
+    "icon": "terminal",
+    "category": "guides"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Deploy your resources to a control plane",
+    "permalink": "/fundamentals/builders-workshop/deployment"
+  },
+  "next": {
+    "title": "Authoring Compositions",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/"
+  }
+}

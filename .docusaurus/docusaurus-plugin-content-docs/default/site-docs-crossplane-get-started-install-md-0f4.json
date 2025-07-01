@@ -1,0 +1,26 @@
+{
+  "id": "crossplane/get-started/install",
+  "title": "Install Crossplane",
+  "description": "Crossplane installs into an existing Kubernetes cluster, creating the",
+  "source": "@site/docs/crossplane/get-started/install.md",
+  "sourceDirName": "crossplane/get-started",
+  "slug": "/crossplane/get-started/install",
+  "permalink": "/crossplane/get-started/install",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Install Crossplane",
+    "weight": 100
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Get Started",
+    "permalink": "/crossplane/get-started/"
+  },
+  "next": {
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/crossplane/guides/crossplane-with-argo-cd"
+  }
+}

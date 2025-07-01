@@ -1,0 +1,17 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
+  "title": "Pipeline inputs and outputs",
+  "description": "Functions require inputs and outputs to process requests and return values to",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Pipeline inputs and outputs",
+    "weight": 25
+  }
+}
