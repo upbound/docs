@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_space_destroy",
+  "title": "up_space_destroy",
+  "description": "Remove the Upbound Spaces deployment.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_space_destroy.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_space_destroy",
+  "permalink": "/reference/cli/cli-reference/yaml/up_space_destroy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

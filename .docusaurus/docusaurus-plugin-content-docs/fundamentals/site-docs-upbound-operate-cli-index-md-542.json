@@ -1,0 +1,23 @@
+{
+  "id": "upbound/operate/cli/index",
+  "title": "Up CLI",
+  "description": "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI.",
+  "source": "@site/docs/upbound/operate/cli/index.md",
+  "sourceDirName": "upbound/operate/cli",
+  "slug": "/upbound/operate/cli/",
+  "permalink": "/docs/upbound/operate/cli/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Up CLI",
+    "icon": "terminal",
+    "weight": 1,
+    "description": "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI.",
+    "aliases": [
+      "/cli",
+      "/reference/cli"
+    ]
+  }
+}

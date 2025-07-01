@@ -13,10 +13,5 @@
   "frontMatter": {
     "title": "Internal Developer Platform (IdP) Starter Kit",
     "description": "Build an IdP with Upbound"
-  },
-  "sidebar": "solutionsSidebar",
-  "next": {
-    "title": "Upbound Platform Reference",
-    "permalink": "/solutions/upbound-platform-ref"
   }
 }

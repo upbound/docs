@@ -39,118 +39,9 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'learn',
-        path: 'docs/learn',
-        routeBasePath: '/', 
-        sidebarPath: require.resolve('./src/sidebars/learn.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'build',
-        path: 'docs/build',
-        routeBasePath: 'build',
-        sidebarPath: require.resolve('./src/sidebars/build.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'deploy',
-        path: 'docs/deploy',
-        routeBasePath: 'deploy',
-        sidebarPath: require.resolve('./src/sidebars/deploy.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'operate',
-        path: 'docs/operate',
-        routeBasePath: 'operate',
-        sidebarPath: require.resolve('./src/sidebars/operate.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'connect',
-        path: 'docs/connect',
-        routeBasePath: 'connect',
-        sidebarPath: require.resolve('./src/sidebars/connect.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'providers',
-        path: 'docs/providers',
-        routeBasePath: 'providers',
-        sidebarPath: require.resolve('./src/sidebars/providers.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'apis-cli',
-        path: 'docs/apis-cli',
-        routeBasePath: 'apis-cli',
-        sidebarPath: require.resolve('./src/sidebars/apis-cli.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'release-notes',
-        path: 'docs/release-notes',
-        routeBasePath: 'release-notes',
-        sidebarPath: require.resolve('./src/sidebars/release-notes.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'marketplace',
-        path: 'docs/upbound-marketplace',
-        routeBasePath: 'upbound-marketplace',
-        sidebarPath: require.resolve('./src/sidebars/marketplace.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'usage',
-        path: 'docs/usage',
-        routeBasePath: 'usage',
-        sidebarPath: require.resolve('./src/sidebars/usage.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'crossplane-learn',
-        path: 'docs/crossplane/learn',
-        routeBasePath: 'crossplane/learn',
-        sidebarPath: require.resolve('./src/sidebars/crossplane-learn.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'crossplane-api-ref',
-        path: 'docs/crossplane/api-ref',
-        routeBasePath: 'crossplane/api-ref',
-        sidebarPath: require.resolve('./src/sidebars/crossplane-api-ref.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'solutions',
-        path: 'docs/solutions',
-        routeBasePath: 'solutions',
-        sidebarPath: require.resolve('./src/sidebars/solutions.js')
+        path: 'docs', // or whatever your root path should be
+        routeBasePath: '/',
+        sidebarPath: require.resolve('./src/sidebars/main.js'),
       },
     ],
   ],
@@ -167,82 +58,33 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'learnSidebar',
+            label: 'Fundamentals',
+            sidebarId: 'fundamentalsSidebar',
             position: 'left',
-            label: 'Learn',
-            docsPluginId: 'learn',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'buildSidebar',
+            label: 'Upbound Crossplane',
             position: 'left',
-            label: 'Build',
-            docsPluginId: 'build',
+            sidebarId: 'crossplaneSidebar',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'deploySidebar',
+            label: 'Upbound Spaces',
             position: 'left',
-            label: 'Deploy',
-            docsPluginId: 'deploy',
+            sidebarId: 'upboundSidebar',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'operateSidebar',
-            position: 'left',
-            label: 'Operate',
-            docsPluginId: 'operate',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'connectSidebar',
-            position: 'left',
-            label: 'Connect',
-            docsPluginId: 'connect',
-          },
-          {
-            type: 'dropdown',
             label: 'Reference',
             position: 'left',
-            items: [
-              {
-                type: 'docSidebar',
-                sidebarId: 'apisCliSidebar',
-                label: 'APIs & CLIs',
-                docsPluginId: 'apis-cli',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'marketplaceSidebar',
-                label: 'Upbound Marketplace',
-                docsPluginId: 'marketplace',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'releaseNotesSidebar',
-                label: 'Release Notes',
-                docsPluginId: 'release-notes',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'providersSidebar',
-                label: 'Providers',
-                docsPluginId: 'providers',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'usageSidebar',
-                label: 'Usage',
-                docsPluginId: 'usage',
-              },
-            ],
+            sidebarId: 'referenceSidebar',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'solutionsSidebar',
-            position: 'left',
             label: 'Solutions',
-            docsPluginId: 'solutions'
+            position: 'left',
+            sidebarId: 'solutionsSidebar',
           },
           {
             type: 'search',
@@ -275,7 +117,7 @@ const config = {
             items: [
               {
                 label: 'Control Planes',
-                to: '/build',
+                to: '/upbound',
               },
             ],
           },

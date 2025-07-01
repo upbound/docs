@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_robot_get",
+  "title": "up_robot_get",
+  "description": "Get a robot for the account.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_robot_get.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_robot_get",
+  "permalink": "/reference/cli/cli-reference/yaml/up_robot_get",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

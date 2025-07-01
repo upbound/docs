@@ -1,0 +1,32 @@
+{
+  "id": "upbound/deploy/query-api",
+  "title": "Query API setup",
+  "description": "Query API setup for self-hosted Spaces",
+  "source": "@site/docs/upbound/deploy/query-api.md",
+  "sourceDirName": "upbound/deploy",
+  "slug": "/upbound/deploy/query-api",
+  "permalink": "/upbound/deploy/query-api",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Query API setup",
+    "weight": 130,
+    "description": "Query API setup for self-hosted Spaces",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/query-api",
+      "/self-hosted-spaces/query-api",
+      "all-spaces/self-hosted-spaces/query-api"
+    ]
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "GCP Deployment Guide",
+    "permalink": "/upbound/deploy/dedicated-spaces/gcp"
+  },
+  "next": {
+    "title": "Self-Hosted Spaces",
+    "permalink": "/upbound/deploy/self-hosted-spaces/"
+  }
+}

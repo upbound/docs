@@ -1,0 +1,27 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/space-observability",
+  "title": "Space-level observability",
+  "description": "Configure Space-level observability",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/space-observability.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/space-observability",
+  "permalink": "/upbound/deploy/self-hosted-spaces/space-observability",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Space-level observability",
+    "weight": 300,
+    "description": "Configure Space-level observability"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Local Quickstart",
+    "permalink": "/upbound/deploy/self-hosted-spaces/self-hosted-qs"
+  },
+  "next": {
+    "title": "Interacting with Disconnected Spaces",
+    "permalink": "/upbound/deploy/self-hosted-spaces/spaces-management"
+  }
+}

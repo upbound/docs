@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_robot_token_get",
+  "title": "up_robot_token_get",
+  "description": "Get a token for the robot.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_robot_token_get.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_robot_token_get",
+  "permalink": "/docs/reference/cli/cli-reference/yaml/up_robot_token_get",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

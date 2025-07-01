@@ -1,0 +1,21 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
+  "title": "Loops (for)",
+  "description": "This guide shows you how to use the for syntax and lambda support to iterate",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
+  "permalink": "/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Loops (for)",
+    "weight": 50,
+    "aliases": [
+      "/core-concepts/kcl/loops",
+      "core-concepts/kcl/loops"
+    ]
+  }
+}

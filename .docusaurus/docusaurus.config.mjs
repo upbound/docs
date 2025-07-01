@@ -43,118 +43,9 @@ export default {
     [
       "@docusaurus/plugin-content-docs",
       {
-        "id": "learn",
-        "path": "docs/learn",
+        "path": "docs",
         "routeBasePath": "/",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/learn.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "build",
-        "path": "docs/build",
-        "routeBasePath": "build",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/build.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "deploy",
-        "path": "docs/deploy",
-        "routeBasePath": "deploy",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/deploy.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "operate",
-        "path": "docs/operate",
-        "routeBasePath": "operate",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/operate.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "connect",
-        "path": "docs/connect",
-        "routeBasePath": "connect",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/connect.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "providers",
-        "path": "docs/providers",
-        "routeBasePath": "providers",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/providers.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "apis-cli",
-        "path": "docs/apis-cli",
-        "routeBasePath": "apis-cli",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/apis-cli.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "release-notes",
-        "path": "docs/release-notes",
-        "routeBasePath": "release-notes",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/release-notes.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "marketplace",
-        "path": "docs/upbound-marketplace",
-        "routeBasePath": "upbound-marketplace",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/marketplace.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "usage",
-        "path": "docs/usage",
-        "routeBasePath": "usage",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/usage.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "crossplane-learn",
-        "path": "docs/crossplane/learn",
-        "routeBasePath": "crossplane/learn",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/crossplane-learn.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "crossplane-api-ref",
-        "path": "docs/crossplane/api-ref",
-        "routeBasePath": "crossplane/api-ref",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/crossplane-api-ref.js"
-      }
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        "id": "solutions",
-        "path": "docs/solutions",
-        "routeBasePath": "solutions",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/solutions.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/main.js"
       }
     ]
   ],
@@ -169,82 +60,33 @@ export default {
       "items": [
         {
           "type": "docSidebar",
-          "sidebarId": "learnSidebar",
-          "position": "left",
-          "label": "Learn",
-          "docsPluginId": "learn"
+          "label": "Fundamentals",
+          "sidebarId": "fundamentalsSidebar",
+          "position": "left"
         },
         {
           "type": "docSidebar",
-          "sidebarId": "buildSidebar",
+          "label": "Upbound Crossplane",
           "position": "left",
-          "label": "Build",
-          "docsPluginId": "build"
+          "sidebarId": "crossplaneSidebar"
         },
         {
           "type": "docSidebar",
-          "sidebarId": "deploySidebar",
+          "label": "Upbound Spaces",
           "position": "left",
-          "label": "Deploy",
-          "docsPluginId": "deploy"
+          "sidebarId": "upboundSidebar"
         },
         {
           "type": "docSidebar",
-          "sidebarId": "operateSidebar",
-          "position": "left",
-          "label": "Operate",
-          "docsPluginId": "operate"
-        },
-        {
-          "type": "docSidebar",
-          "sidebarId": "connectSidebar",
-          "position": "left",
-          "label": "Connect",
-          "docsPluginId": "connect"
-        },
-        {
-          "type": "dropdown",
           "label": "Reference",
           "position": "left",
-          "items": [
-            {
-              "type": "docSidebar",
-              "sidebarId": "apisCliSidebar",
-              "label": "APIs & CLIs",
-              "docsPluginId": "apis-cli"
-            },
-            {
-              "type": "docSidebar",
-              "sidebarId": "marketplaceSidebar",
-              "label": "Upbound Marketplace",
-              "docsPluginId": "marketplace"
-            },
-            {
-              "type": "docSidebar",
-              "sidebarId": "releaseNotesSidebar",
-              "label": "Release Notes",
-              "docsPluginId": "release-notes"
-            },
-            {
-              "type": "docSidebar",
-              "sidebarId": "providersSidebar",
-              "label": "Providers",
-              "docsPluginId": "providers"
-            },
-            {
-              "type": "docSidebar",
-              "sidebarId": "usageSidebar",
-              "label": "Usage",
-              "docsPluginId": "usage"
-            }
-          ]
+          "sidebarId": "referenceSidebar"
         },
         {
           "type": "docSidebar",
-          "sidebarId": "solutionsSidebar",
-          "position": "left",
           "label": "Solutions",
-          "docsPluginId": "solutions"
+          "position": "left",
+          "sidebarId": "solutionsSidebar"
         },
         {
           "type": "search",
@@ -278,7 +120,7 @@ export default {
           "items": [
             {
               "label": "Control Planes",
-              "to": "/build"
+              "to": "/upbound"
             }
           ]
         },

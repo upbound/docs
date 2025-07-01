@@ -1,0 +1,27 @@
+{
+  "id": "shared/crossplane/managed-resources/index",
+  "title": "Managed Resources",
+  "description": "Understand Crossplane's core components",
+  "source": "@site/docs/shared/crossplane/managed-resources/index.md",
+  "sourceDirName": "shared/crossplane/managed-resources",
+  "slug": "/shared/crossplane/managed-resources/",
+  "permalink": "/shared/crossplane/managed-resources/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Managed Resources",
+    "weight": 52,
+    "description": "Understand Crossplane's core components"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Build with Python",
+    "permalink": "/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/"
+  },
+  "next": {
+    "title": "Managed Resources",
+    "permalink": "/shared/crossplane/managed-resources/"
+  }
+}

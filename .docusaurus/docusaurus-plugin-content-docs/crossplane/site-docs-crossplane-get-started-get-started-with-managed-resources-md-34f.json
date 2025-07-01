@@ -1,0 +1,26 @@
+{
+  "id": "get-started/get-started-with-managed-resources",
+  "title": "Get Started With Managed Resources",
+  "description": "This guide shows how to install and use a new kind of custom resource called",
+  "source": "@site/docs/crossplane/get-started/get-started-with-managed-resources.md",
+  "sourceDirName": "get-started",
+  "slug": "/get-started/get-started-with-managed-resources",
+  "permalink": "/crossplane/get-started/get-started-with-managed-resources",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Get Started With Managed Resources",
+    "weight": 300
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Get Started With Composition",
+    "permalink": "/crossplane/get-started/get-started-with-composition"
+  },
+  "next": {
+    "title": "Get Started",
+    "permalink": "/crossplane/get-started/"
+  }
+}

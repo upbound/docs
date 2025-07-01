@@ -1,0 +1,21 @@
+{
+  "id": "fundamentals/control-planes/repositories/store-configurations",
+  "title": "Store configurations",
+  "description": "Product documentation for using the Repositories feature in Upbound.",
+  "source": "@site/docs/shared/fundamentals/control-planes/repositories/store-configurations.md",
+  "sourceDirName": "fundamentals/control-planes/repositories",
+  "slug": "/fundamentals/control-planes/repositories/store-configurations",
+  "permalink": "/crossplane/fundamentals/control-planes/repositories/store-configurations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Store configurations",
+    "weight": 10,
+    "description": "Product documentation for using the Repositories feature in Upbound.",
+    "aliases": [
+      "/repositories/store-configurations"
+    ]
+  }
+}

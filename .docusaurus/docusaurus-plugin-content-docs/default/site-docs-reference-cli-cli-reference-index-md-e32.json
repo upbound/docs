@@ -1,0 +1,25 @@
+{
+  "id": "reference/cli/cli-reference/index",
+  "title": "CLI Reference",
+  "description": "up",
+  "source": "@site/docs/reference/cli/cli-reference/index.md",
+  "sourceDirName": "reference/cli/cli-reference",
+  "slug": "/reference/cli/cli-reference/",
+  "permalink": "/reference/cli/cli-reference/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "CLI Reference"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Spaces API Reference Latest (v1.13)",
+    "permalink": "/reference/apis/spaces-api/v1_13"
+  },
+  "next": {
+    "title": "Official Providers",
+    "permalink": "/reference/providers/"
+  }
+}

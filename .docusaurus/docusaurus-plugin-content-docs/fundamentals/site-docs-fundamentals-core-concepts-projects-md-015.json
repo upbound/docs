@@ -1,0 +1,31 @@
+{
+  "id": "fundamentals/core-concepts/projects",
+  "title": "Control Plane Projects",
+  "description": "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project.",
+  "source": "@site/docs/fundamentals/core-concepts/projects.md",
+  "sourceDirName": "fundamentals/core-concepts",
+  "slug": "/fundamentals/core-concepts/projects",
+  "permalink": "/docs/fundamentals/core-concepts/projects",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Control Plane Projects",
+    "weight": 3,
+    "description": "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project.",
+    "aliases": [
+      "/core-concepts/projects",
+      "core-concepts/projects"
+    ]
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Managed Control Planes",
+    "permalink": "/docs/fundamentals/core-concepts/managed-control-planes"
+  },
+  "next": {
+    "title": "Providers",
+    "permalink": "/docs/fundamentals/core-concepts/providers"
+  }
+}

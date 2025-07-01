@@ -1,0 +1,26 @@
+{
+  "id": "composition/composition-revisions",
+  "title": "Composition Revisions",
+  "description": "This guide discusses the use of \"Composition Revisions\" to safely make and roll",
+  "source": "@site/docs/crossplane/composition/composition-revisions.md",
+  "sourceDirName": "composition",
+  "slug": "/composition/composition-revisions",
+  "permalink": "/crossplane/composition/composition-revisions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Composition Revisions",
+    "weight": 35
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Composite Resources",
+    "permalink": "/crossplane/composition/composite-resources"
+  },
+  "next": {
+    "title": "Compositions",
+    "permalink": "/crossplane/composition/compositions"
+  }
+}

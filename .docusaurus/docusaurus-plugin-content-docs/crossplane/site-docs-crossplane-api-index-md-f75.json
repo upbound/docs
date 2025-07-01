@@ -1,0 +1,17 @@
+{
+  "id": "api/index",
+  "title": "Crossplane API Reference",
+  "description": "Documentation for the Query API resources",
+  "source": "@site/docs/crossplane/api/index.md",
+  "sourceDirName": "api",
+  "slug": "/api/",
+  "permalink": "/crossplane/api/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Crossplane API Reference",
+    "description": "Documentation for the Query API resources"
+  }
+}

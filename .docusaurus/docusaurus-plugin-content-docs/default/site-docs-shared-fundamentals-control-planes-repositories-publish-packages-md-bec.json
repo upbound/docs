@@ -1,0 +1,31 @@
+{
+  "id": "shared/fundamentals/control-planes/repositories/publish-packages",
+  "title": "Publish packages",
+  "description": "Product documentation for using the Repositories feature in Upbound.",
+  "source": "@site/docs/shared/fundamentals/control-planes/repositories/publish-packages.md",
+  "sourceDirName": "shared/fundamentals/control-planes/repositories",
+  "slug": "/shared/fundamentals/control-planes/repositories/publish-packages",
+  "permalink": "/shared/fundamentals/control-planes/repositories/publish-packages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Publish packages",
+    "weight": 20,
+    "description": "Product documentation for using the Repositories feature in Upbound.",
+    "aliases": [
+      "/repositories/publish-packages",
+      "/marketplace/packages"
+    ]
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Repository Management",
+    "permalink": "/shared/fundamentals/control-planes/repositories/management"
+  },
+  "next": {
+    "title": "Store configurations",
+    "permalink": "/shared/fundamentals/control-planes/repositories/store-configurations"
+  }
+}

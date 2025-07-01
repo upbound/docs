@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_alpha_ctx",
+  "title": "up_alpha_ctx",
+  "description": "Select an Upbound kubeconfig context.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_alpha_ctx.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_alpha_ctx",
+  "permalink": "/reference/cli/cli-reference/yaml/up_alpha_ctx",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,17 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
+  "title": "Models",
+  "description": "Upbound Official Providers and some other packages include Go models: packages",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
+  "permalink": "/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Models",
+    "weight": 3
+  }
+}

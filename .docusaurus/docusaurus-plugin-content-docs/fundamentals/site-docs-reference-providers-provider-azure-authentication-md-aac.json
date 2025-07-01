@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/provider-azure/authentication",
+  "title": "Authentication",
+  "description": "Authentication options with the Upbound Azure official provider",
+  "source": "@site/docs/reference/providers/provider-azure/authentication.md",
+  "sourceDirName": "reference/providers/provider-azure",
+  "slug": "/reference/providers/provider-azure/authentication",
+  "permalink": "/docs/reference/providers/provider-azure/authentication",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authentication",
+    "weight": 10,
+    "description": "Authentication options with the Upbound Azure official provider"
+  }
+}

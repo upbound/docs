@@ -1,0 +1,24 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/troubleshooting",
+  "title": "Troubleshooting",
+  "description": "A guide for troubleshooting an issue that occurs in a Space",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/troubleshooting.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/troubleshooting",
+  "permalink": "/docs/upbound/deploy/self-hosted-spaces/troubleshooting",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Troubleshooting",
+    "weight": 1000,
+    "description": "A guide for troubleshooting an issue that occurs in a Space",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/troubleshooting",
+      "/spaces/troubleshooting",
+      "/deploy/disconnected-spaces/troubleshooting",
+      "all-spaces/self-hosted-spaces/troubleshooting"
+    ]
+  }
+}

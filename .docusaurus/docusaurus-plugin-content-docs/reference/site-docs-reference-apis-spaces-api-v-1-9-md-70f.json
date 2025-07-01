@@ -1,0 +1,17 @@
+{
+  "id": "apis/spaces-api/v1_9",
+  "title": "Spaces API Reference - v1.9",
+  "description": "Documentation for the Spaces API resources",
+  "source": "@site/docs/reference/apis/spaces-api/v1_9.md",
+  "sourceDirName": "apis/spaces-api",
+  "slug": "/apis/spaces-api/v1_9",
+  "permalink": "/reference/apis/spaces-api/v1_9",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Spaces API Reference - v1.9",
+    "description": "Documentation for the Spaces API resources"
+  }
+}

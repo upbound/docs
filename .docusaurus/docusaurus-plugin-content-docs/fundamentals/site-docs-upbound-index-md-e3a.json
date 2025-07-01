@@ -1,0 +1,14 @@
+{
+  "id": "upbound/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/upbound/index.md",
+  "sourceDirName": "upbound",
+  "slug": "/upbound/",
+  "permalink": "/docs/upbound/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

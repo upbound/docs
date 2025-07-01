@@ -1,0 +1,18 @@
+{
+  "id": "crossplane/guides/extensions-release-process",
+  "title": "Releasing Crossplane Extensions",
+  "description": "Configuring build pipelines for Crossplane extensions with GitHub Actions",
+  "source": "@site/docs/shared/crossplane/guides/extensions-release-process.md",
+  "sourceDirName": "crossplane/guides",
+  "slug": "/crossplane/guides/extensions-release-process",
+  "permalink": "/crossplane/crossplane/guides/extensions-release-process",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Releasing Crossplane Extensions",
+    "weight": 80,
+    "description": "Configuring build pipelines for Crossplane extensions with GitHub Actions"
+  }
+}

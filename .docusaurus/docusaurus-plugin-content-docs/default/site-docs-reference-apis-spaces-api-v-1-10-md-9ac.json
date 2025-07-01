@@ -1,0 +1,26 @@
+{
+  "id": "reference/apis/spaces-api/v1_10",
+  "title": "Spaces API Reference - v1.10",
+  "description": "Documentation for the Spaces API resources",
+  "source": "@site/docs/reference/apis/spaces-api/v1_10.md",
+  "sourceDirName": "reference/apis/spaces-api",
+  "slug": "/reference/apis/spaces-api/v1_10",
+  "permalink": "/reference/apis/spaces-api/v1_10",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Spaces API Reference - v1.10",
+    "description": "Documentation for the Spaces API resources"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Spaces API Reference - v1.9",
+    "permalink": "/reference/apis/spaces-api/v1_9"
+  },
+  "next": {
+    "title": "Spaces API Reference - v1.11",
+    "permalink": "/reference/apis/spaces-api/v1_11"
+  }
+}

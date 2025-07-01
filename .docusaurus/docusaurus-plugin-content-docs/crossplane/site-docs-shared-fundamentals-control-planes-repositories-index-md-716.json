@@ -1,0 +1,21 @@
+{
+  "id": "fundamentals/control-planes/repositories/index",
+  "title": "Repositories",
+  "description": "Product documentation for using the Repositories feature in Upbound.",
+  "source": "@site/docs/shared/fundamentals/control-planes/repositories/index.md",
+  "sourceDirName": "fundamentals/control-planes/repositories",
+  "slug": "/fundamentals/control-planes/repositories/",
+  "permalink": "/crossplane/fundamentals/control-planes/repositories/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Repositories",
+    "weight": 10,
+    "description": "Product documentation for using the Repositories feature in Upbound.",
+    "aliases": [
+      "/repositories/_index"
+    ]
+  }
+}

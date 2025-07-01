@@ -1,0 +1,31 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/azure/index",
+  "title": "Azure",
+  "description": "A  quickstart guide for Upbound Spaces in Azure",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/azure/index.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces/azure",
+  "slug": "/upbound/deploy/self-hosted-spaces/azure/",
+  "permalink": "/upbound/deploy/self-hosted-spaces/azure/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Azure",
+    "weight": 3,
+    "description": "A  quickstart guide for Upbound Spaces in Azure",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/azure-deployment",
+      "/all-spaces/disconnected-spaces/azure-deployment"
+    ]
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Workload-identity for Backup and Restore",
+    "permalink": "/upbound/deploy/self-hosted-spaces/aws/workload-id-backup-restore"
+  },
+  "next": {
+    "title": "Billing",
+    "permalink": "/upbound/deploy/self-hosted-spaces/billing"
+  }
+}

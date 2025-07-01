@@ -1,0 +1,17 @@
+{
+  "id": "apis/query-api/index",
+  "title": "Query API Reference",
+  "description": "Documentation for the Query API resources",
+  "source": "@site/docs/reference/apis/query-api/index.md",
+  "sourceDirName": "apis/query-api",
+  "slug": "/apis/query-api/",
+  "permalink": "/reference/apis/query-api/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Query API Reference",
+    "description": "Documentation for the Query API resources"
+  }
+}

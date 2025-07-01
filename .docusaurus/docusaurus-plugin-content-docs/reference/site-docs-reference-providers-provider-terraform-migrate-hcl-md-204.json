@@ -1,0 +1,17 @@
+{
+  "id": "providers/provider-terraform/migrate-hcl",
+  "title": "Rewrite HCL for Crossplane or Upbound",
+  "description": "Terraform code into a basic Crossplane configuration. The provider is a great",
+  "source": "@site/docs/reference/providers/provider-terraform/migrate-hcl.md",
+  "sourceDirName": "providers/provider-terraform",
+  "slug": "/providers/provider-terraform/migrate-hcl",
+  "permalink": "/reference/providers/provider-terraform/migrate-hcl",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Rewrite HCL for Crossplane or Upbound",
+    "weight": 2
+  }
+}

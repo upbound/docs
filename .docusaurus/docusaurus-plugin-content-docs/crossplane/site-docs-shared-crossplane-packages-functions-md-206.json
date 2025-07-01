@@ -1,0 +1,18 @@
+{
+  "id": "crossplane/packages/functions",
+  "title": "Functions",
+  "description": "Functions extend Crossplane with new ways to configure composition",
+  "source": "@site/docs/shared/crossplane/packages/functions.md",
+  "sourceDirName": "crossplane/packages",
+  "slug": "/crossplane/packages/functions",
+  "permalink": "/crossplane/crossplane/packages/functions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Functions",
+    "weight": 100,
+    "description": "Functions extend Crossplane with new ways to configure composition"
+  }
+}

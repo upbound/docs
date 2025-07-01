@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/signature-verification",
+  "title": "Signature Verification",
+  "description": "Learn how to verify signatures for Official Providers from the Marketplace",
+  "source": "@site/docs/reference/providers/signature-verification.md",
+  "sourceDirName": "reference/providers",
+  "slug": "/reference/providers/signature-verification",
+  "permalink": "/docs/reference/providers/signature-verification",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Signature Verification",
+    "weight": 9,
+    "description": "Learn how to verify signatures for Official Providers from the Marketplace"
+  }
+}

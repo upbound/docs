@@ -1,0 +1,22 @@
+{
+  "id": "upbound/operate/accounts/identity-management/teams",
+  "title": "Teams",
+  "description": "Creating and managing Upbound teams",
+  "source": "@site/docs/upbound/operate/accounts/identity-management/teams.md",
+  "sourceDirName": "upbound/operate/accounts/identity-management",
+  "slug": "/upbound/operate/accounts/identity-management/teams",
+  "permalink": "/docs/upbound/operate/accounts/identity-management/teams",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Teams",
+    "weight": 3,
+    "description": "Creating and managing Upbound teams",
+    "aliases": [
+      "/accounts/identity-management/teams",
+      "accounts/identity-management/teams"
+    ]
+  }
+}

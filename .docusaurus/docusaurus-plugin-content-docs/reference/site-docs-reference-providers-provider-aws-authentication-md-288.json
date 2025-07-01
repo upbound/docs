@@ -1,0 +1,18 @@
+{
+  "id": "providers/provider-aws/authentication",
+  "title": "Authentication",
+  "description": "Authentication options with the Upbound AWS official provider",
+  "source": "@site/docs/reference/providers/provider-aws/authentication.md",
+  "sourceDirName": "providers/provider-aws",
+  "slug": "/providers/provider-aws/authentication",
+  "permalink": "/reference/providers/provider-aws/authentication",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authentication",
+    "weight": 10,
+    "description": "Authentication options with the Upbound AWS official provider"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "operate/auto-upgrade",
+  "title": "Automatically upgrade control planes",
+  "description": "How to configure automatic upgrades of Crossplane in a control plane",
+  "source": "@site/docs/upbound/operate/auto-upgrade.md",
+  "sourceDirName": "operate",
+  "slug": "/operate/auto-upgrade",
+  "permalink": "/upbound/operate/auto-upgrade",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Automatically upgrade control planes",
+    "weight": 10,
+    "description": "How to configure automatic upgrades of Crossplane in a control plane",
+    "aliases": [
+      "/mcp/auto-upgrade",
+      "mcp/auto-upgrade"
+    ]
+  }
+}

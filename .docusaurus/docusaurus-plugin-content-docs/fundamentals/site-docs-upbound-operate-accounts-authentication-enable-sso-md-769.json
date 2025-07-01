@@ -1,0 +1,22 @@
+{
+  "id": "upbound/operate/accounts/authentication/enable-sso",
+  "title": "Single Sign On in Upbound",
+  "description": "Configure single sign-on in your Upbound organization to manage user access",
+  "source": "@site/docs/upbound/operate/accounts/authentication/enable-sso.md",
+  "sourceDirName": "upbound/operate/accounts/authentication",
+  "slug": "/upbound/operate/accounts/authentication/enable-sso",
+  "permalink": "/docs/upbound/operate/accounts/authentication/enable-sso",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Single Sign On in Upbound",
+    "description": "Configure single sign-on in your Upbound organization to manage user access",
+    "weight": 1,
+    "aliases": [
+      "/accounts/authentication/enable-sso",
+      "accounts/authentication/enable-sso"
+    ]
+  }
+}

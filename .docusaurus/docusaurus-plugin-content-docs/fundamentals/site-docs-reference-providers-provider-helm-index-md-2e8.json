@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/provider-helm/index",
+  "title": "Provider Helm",
+  "description": "Release notes for the Helm official provider",
+  "source": "@site/docs/reference/providers/provider-helm/index.md",
+  "sourceDirName": "reference/providers/provider-helm",
+  "slug": "/reference/providers/provider-helm/",
+  "permalink": "/docs/reference/providers/provider-helm/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider Helm",
+    "weight": 1,
+    "description": "Release notes for the Helm official provider"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_project_run",
+  "title": "up_project_run",
+  "description": "Run a project on a development control plane for testing.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_project_run.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_project_run",
+  "permalink": "/docs/reference/cli/cli-reference/yaml/up_project_run",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

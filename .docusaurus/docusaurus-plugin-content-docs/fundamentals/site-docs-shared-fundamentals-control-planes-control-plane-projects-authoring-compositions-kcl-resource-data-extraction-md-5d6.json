@@ -1,0 +1,21 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+  "title": "Resource data extraction",
+  "description": "Extract data from the composite resource",
+  "source": "@site/docs/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Resource data extraction",
+    "weight": 70,
+    "aliases": [
+      "/core-concepts/kcl/resource-data-extraction",
+      "core-concepts/kcl/resource-data-extraction"
+    ]
+  }
+}

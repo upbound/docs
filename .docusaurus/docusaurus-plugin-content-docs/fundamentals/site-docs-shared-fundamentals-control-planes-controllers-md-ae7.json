@@ -1,0 +1,18 @@
+{
+  "id": "fundamentals/control-planes/controllers",
+  "title": "Controllers",
+  "description": "A guide to how to wrap and deploy an Upbound controller into control planes on Upbound.",
+  "source": "@site/docs/shared/fundamentals/control-planes/controllers.md",
+  "sourceDirName": "fundamentals/control-planes",
+  "slug": "/fundamentals/control-planes/controllers",
+  "permalink": "/fundamentals/control-planes/controllers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Controllers",
+    "weight": 250,
+    "description": "A guide to how to wrap and deploy an Upbound controller into control planes on Upbound."
+  }
+}

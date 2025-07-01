@@ -1,0 +1,34 @@
+{
+  "id": "upbound/deploy/backup-and-restore",
+  "title": "Backup and restore",
+  "description": "Configure and manage backups in your Upbound Space.",
+  "source": "@site/docs/upbound/deploy/backup-and-restore.md",
+  "sourceDirName": "upbound/deploy",
+  "slug": "/upbound/deploy/backup-and-restore",
+  "permalink": "/upbound/deploy/backup-and-restore",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Backup and restore",
+    "weight": 130,
+    "description": "Configure and manage backups in your Upbound Space.",
+    "aliases": [
+      "/all-spaces/backup-and-restore",
+      "/spaces/backup-and-restore",
+      "/disconnected-spaces/backup-and-restore",
+      "/self-hosted-spaces/backup-and-restore",
+      "all-spaces/backup-and-restore"
+    ]
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Deploy Upbound",
+    "permalink": "/upbound/deploy/"
+  },
+  "next": {
+    "title": "Control Plane Topologies",
+    "permalink": "/upbound/deploy/control-plane-topologies"
+  }
+}

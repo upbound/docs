@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_group",
+  "title": "up_group",
+  "description": "Interact with groups inside Spaces.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_group.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_group",
+  "permalink": "/reference/cli/cli-reference/yaml/up_group",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

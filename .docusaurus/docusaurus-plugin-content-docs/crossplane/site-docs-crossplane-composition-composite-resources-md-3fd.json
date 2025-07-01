@@ -1,0 +1,27 @@
+{
+  "id": "composition/composite-resources",
+  "title": "Composite Resources",
+  "description": "Composite resources, an XR or XRs, represent a collection of related cloud resources.",
+  "source": "@site/docs/crossplane/composition/composite-resources.md",
+  "sourceDirName": "composition",
+  "slug": "/composition/composite-resources",
+  "permalink": "/crossplane/composition/composite-resources",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Composite Resources",
+    "weight": 10,
+    "description": "Composite resources, an XR or XRs, represent a collection of related cloud resources."
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Composite Resource Definitions",
+    "permalink": "/crossplane/composition/composite-resource-definitions"
+  },
+  "next": {
+    "title": "Composition Revisions",
+    "permalink": "/crossplane/composition/composition-revisions"
+  }
+}

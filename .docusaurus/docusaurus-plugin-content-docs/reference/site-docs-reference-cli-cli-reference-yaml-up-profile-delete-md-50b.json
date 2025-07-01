@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_profile_delete",
+  "title": "up_profile_delete",
+  "description": "Delete an Upbound Profile.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_profile_delete.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_profile_delete",
+  "permalink": "/reference/cli/cli-reference/yaml/up_profile_delete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,18 @@
+{
+  "id": "cli/index",
+  "title": "CLI Reference",
+  "description": "Documentation for the Crossplane command-line interface",
+  "source": "@site/docs/crossplane/cli/index.md",
+  "sourceDirName": "cli",
+  "slug": "/cli/",
+  "permalink": "/crossplane/cli/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "weight": 200,
+    "title": "CLI Reference",
+    "description": "Documentation for the Crossplane command-line interface"
+  }
+}

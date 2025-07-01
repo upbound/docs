@@ -1,0 +1,28 @@
+{
+  "id": "fundamentals/builders-workshop/testing",
+  "title": "Test your composition",
+  "description": "Create a composition function test",
+  "source": "@site/docs/fundamentals/builders-workshop/3-testing.md",
+  "sourceDirName": "fundamentals/builders-workshop",
+  "slug": "/fundamentals/builders-workshop/testing",
+  "permalink": "/docs/fundamentals/builders-workshop/testing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Test your composition",
+    "sidebar_position": 3,
+    "description": "Create a composition function test"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Build your composition logic",
+    "permalink": "/docs/fundamentals/builders-workshop/create-configuration"
+  },
+  "next": {
+    "title": "Deploy your resources to a control plane",
+    "permalink": "/docs/fundamentals/builders-workshop/deployment"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "solutions/upbound-platform-ref",
+  "title": "Upbound Platform Reference",
+  "description": "Best practices and foundations for building with Upbound",
+  "source": "@site/docs/solutions/upbound-platform-ref.md",
+  "sourceDirName": "solutions",
+  "slug": "/solutions/upbound-platform-ref",
+  "permalink": "/solutions/upbound-platform-ref",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Upbound Platform Reference",
+    "description": "Best practices and foundations for building with Upbound"
+  }
+}

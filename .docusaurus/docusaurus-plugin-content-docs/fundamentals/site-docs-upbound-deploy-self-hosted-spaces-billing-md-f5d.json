@@ -1,0 +1,23 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/billing",
+  "title": "Billing",
+  "description": "A guide for how billing works in an Upbound Space",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/billing.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/billing",
+  "permalink": "/docs/upbound/deploy/self-hosted-spaces/billing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Billing",
+    "weight": 500,
+    "description": "A guide for how billing works in an Upbound Space",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/billing",
+      "/spaces/billing",
+      "/all-spaces/disconnected-spaces/billing"
+    ]
+  }
+}

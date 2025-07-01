@@ -1,0 +1,27 @@
+{
+  "id": "upbound/operate/simulations",
+  "title": "Run a control plane simulation",
+  "description": "A guide for how to use Simulations in a Space.",
+  "source": "@site/docs/upbound/operate/simulations.md",
+  "sourceDirName": "upbound/operate",
+  "slug": "/upbound/operate/simulations",
+  "permalink": "/upbound/operate/simulations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Run a control plane simulation",
+    "weight": 200,
+    "description": "A guide for how to use Simulations in a Space."
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Secrets Management",
+    "permalink": "/upbound/operate/secrets-management"
+  },
+  "next": {
+    "title": "Declaratively create control planes",
+    "permalink": "/upbound/connect/declarative-ctps"
+  }
+}

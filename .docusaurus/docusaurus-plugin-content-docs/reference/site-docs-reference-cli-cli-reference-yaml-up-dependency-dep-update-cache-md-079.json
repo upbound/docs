@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_dependency_(dep)_update-cache",
+  "title": "up_dependency_(dep)_update-cache",
+  "description": "Update the dependency cache for the current project.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_dependency_(dep)_update-cache",
+  "permalink": "/reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

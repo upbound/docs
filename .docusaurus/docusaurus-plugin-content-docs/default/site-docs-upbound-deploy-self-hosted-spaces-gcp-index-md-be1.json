@@ -1,0 +1,31 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/gcp/index",
+  "title": "GCP",
+  "description": "A  quickstart guide for Upbound Spaces in GCP",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/gcp/index.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces/gcp",
+  "slug": "/upbound/deploy/self-hosted-spaces/gcp/",
+  "permalink": "/upbound/deploy/self-hosted-spaces/gcp/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "GCP",
+    "weight": 4,
+    "description": "A  quickstart guide for Upbound Spaces in GCP",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/gcp-deployment",
+      "/all-spaces/disconnected-spaces/gcp-deployment"
+    ]
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Disaster Recovery",
+    "permalink": "/upbound/deploy/self-hosted-spaces/dr"
+  },
+  "next": {
+    "title": "Space Helm Chart Reference",
+    "permalink": "/upbound/deploy/self-hosted-spaces/helm-reference"
+  }
+}

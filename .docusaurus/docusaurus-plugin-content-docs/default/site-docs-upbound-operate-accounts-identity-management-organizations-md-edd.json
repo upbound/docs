@@ -1,0 +1,31 @@
+{
+  "id": "upbound/operate/accounts/identity-management/organizations",
+  "title": "Organizations",
+  "description": "Configuring Organizations for Upbound",
+  "source": "@site/docs/upbound/operate/accounts/identity-management/organizations.md",
+  "sourceDirName": "upbound/operate/accounts/identity-management",
+  "slug": "/upbound/operate/accounts/identity-management/organizations",
+  "permalink": "/upbound/operate/accounts/identity-management/organizations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Organizations",
+    "weight": 2,
+    "description": "Configuring Organizations for Upbound",
+    "aliases": [
+      "/accounts/identity-management/organizations",
+      "accounts/identity-management/organizations"
+    ]
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Upbound RBAC",
+    "permalink": "/upbound/operate/accounts/authorization/upbound-rbac"
+  },
+  "next": {
+    "title": "Robots",
+    "permalink": "/upbound/operate/accounts/identity-management/robots"
+  }
+}

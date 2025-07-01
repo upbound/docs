@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_help",
+  "title": "up_help",
+  "description": "Show help.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_help.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_help",
+  "permalink": "/reference/cli/cli-reference/yaml/up_help",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

@@ -1,0 +1,27 @@
+{
+  "id": "shared/crossplane/guides/function-patch-and-transform",
+  "title": "Function Patch and Transform",
+  "description": "A function that use patches and transforms to modify inputs from composite resources before creating managed resources",
+  "source": "@site/docs/shared/crossplane/guides/function-patch-and-transform.md",
+  "sourceDirName": "shared/crossplane/guides",
+  "slug": "/shared/crossplane/guides/function-patch-and-transform",
+  "permalink": "/shared/crossplane/guides/function-patch-and-transform",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Function Patch and Transform",
+    "weight": 70,
+    "description": "A function that use patches and transforms to modify inputs from composite resources before creating managed resources"
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Releasing Crossplane Extensions",
+    "permalink": "/shared/crossplane/guides/extensions-release-process"
+  },
+  "next": {
+    "title": "Guides",
+    "permalink": "/shared/crossplane/guides/"
+  }
+}

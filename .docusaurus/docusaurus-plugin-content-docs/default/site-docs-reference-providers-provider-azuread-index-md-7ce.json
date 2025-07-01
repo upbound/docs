@@ -1,0 +1,27 @@
+{
+  "id": "reference/providers/provider-azuread/index",
+  "title": "Provider AzureAD",
+  "description": "Release notes for the AzureAD official provider",
+  "source": "@site/docs/reference/providers/provider-azuread/index.md",
+  "sourceDirName": "reference/providers/provider-azuread",
+  "slug": "/reference/providers/provider-azuread/",
+  "permalink": "/reference/providers/provider-azuread/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider AzureAD",
+    "weight": 1,
+    "description": "Release notes for the AzureAD official provider"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Provider Azure",
+    "permalink": "/reference/providers/provider-azure/"
+  },
+  "next": {
+    "title": "Provider GCP",
+    "permalink": "/reference/providers/provider-gcp/"
+  }
+}

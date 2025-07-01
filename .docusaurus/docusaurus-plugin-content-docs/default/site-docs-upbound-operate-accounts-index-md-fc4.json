@@ -1,0 +1,31 @@
+{
+  "id": "upbound/operate/accounts/index",
+  "title": "Upbound IAM",
+  "description": "Upbound allows administrators to deploy Role-based Access Control (RBAC)",
+  "source": "@site/docs/upbound/operate/accounts/index.md",
+  "sourceDirName": "upbound/operate/accounts",
+  "slug": "/upbound/operate/accounts/",
+  "permalink": "/upbound/operate/accounts/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Upbound IAM",
+    "weight": 5,
+    "icon": "key",
+    "aliases": [
+      "/accounts",
+      "accounts"
+    ]
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Upbound Console",
+    "permalink": "/upbound/deploy/spaces/console"
+  },
+  "next": {
+    "title": "Single Sign On in Upbound",
+    "permalink": "/upbound/operate/accounts/authentication/enable-sso"
+  }
+}

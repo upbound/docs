@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create",
+  "title": "up_controlplane_(ctp)_simulation_(sim)_create",
+  "description": "Start a new control plane simulation and wait for the results.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create",
+  "permalink": "/docs/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

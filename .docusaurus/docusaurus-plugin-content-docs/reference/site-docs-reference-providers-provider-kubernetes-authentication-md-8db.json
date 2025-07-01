@@ -1,0 +1,18 @@
+{
+  "id": "providers/provider-kubernetes/authentication",
+  "title": "Authentication",
+  "description": "Authentication options with the Upbound Kubernetes official provider",
+  "source": "@site/docs/reference/providers/provider-kubernetes/authentication.md",
+  "sourceDirName": "providers/provider-kubernetes",
+  "slug": "/providers/provider-kubernetes/authentication",
+  "permalink": "/reference/providers/provider-kubernetes/authentication",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authentication",
+    "weight": 10,
+    "description": "Authentication options with the Upbound Kubernetes official provider"
+  }
+}

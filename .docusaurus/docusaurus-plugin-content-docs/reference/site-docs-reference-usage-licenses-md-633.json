@@ -1,0 +1,18 @@
+{
+  "id": "usage/licenses",
+  "title": "License Usage",
+  "description": "References and sources for all the licenses in use by the Spaces software.",
+  "source": "@site/docs/reference/usage/licenses.md",
+  "sourceDirName": "usage",
+  "slug": "/usage/licenses",
+  "permalink": "/reference/usage/licenses",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "License Usage",
+    "weight": 10000,
+    "description": "References and sources for all the licenses in use by the Spaces software."
+  }
+}

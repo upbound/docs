@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/provider-gcp/authentication",
+  "title": "Authentication",
+  "description": "Authentication options with the Upbound GCP official provider",
+  "source": "@site/docs/reference/providers/provider-gcp/authentication.md",
+  "sourceDirName": "reference/providers/provider-gcp",
+  "slug": "/reference/providers/provider-gcp/authentication",
+  "permalink": "/reference/providers/provider-gcp/authentication",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authentication",
+    "weight": 10,
+    "description": "Authentication options with the Upbound GCP official provider"
+  }
+}
