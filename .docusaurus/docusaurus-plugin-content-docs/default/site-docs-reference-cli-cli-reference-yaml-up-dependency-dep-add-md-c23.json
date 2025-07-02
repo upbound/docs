@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_dependency_(dep)",
+    "permalink": "/reference/cli/cli-reference/yaml/up_dependency_(dep)"
+  },
+  "next": {
+    "title": "up_dependency_(dep)_clean-cache",
+    "permalink": "/reference/cli/cli-reference/yaml/up_dependency_(dep)_clean-cache"
+  }
 }

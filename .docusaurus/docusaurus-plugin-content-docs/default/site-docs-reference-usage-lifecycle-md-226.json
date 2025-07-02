@@ -10,15 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 10,
   "frontMatter": {
     "title": "Product Lifecycle",
-    "weight": 100,
+    "sidebar_position": 10,
     "description": "Information on Upbound software versions, support windows, and release policies."
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "License Usage",
-    "permalink": "/reference/usage/licenses"
+    "title": "Usage Reference",
+    "permalink": "/reference/usage/"
   },
   "next": {
     "title": "IP Addresses",

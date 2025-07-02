@@ -1,11 +1,7 @@
 ---
 title: Cloud Spaces
-weight: 2
+sidebar_position: 1
 description: A guide to Upbound Cloud Spaces
-icon: "popsicle"
-aliases:
-    - /all-spaces/spaces/_index
-    - /spaces/upbound-spaces
 ---
 
 Upbound builds on the foundations of Crossplane to allow you to provision,

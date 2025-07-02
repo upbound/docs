@@ -10,21 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Build with KCL",
-    "weight": 1,
-    "aliases": [
-      "/core-concepts/kcl/overview",
-      "core-concepts/kcl/overview"
-    ]
+    "sidebar_position": 1
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
-    "title": "Build with Go Templating",
-    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/"
+    "title": "Schemas",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas"
   },
   "next": {
-    "title": "Build with Python",
-    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/"
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs"
   }
 }

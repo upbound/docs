@@ -1,9 +1,7 @@
 ---
 title: Legacy Spaces
-weight: 3
+sidebar_position: 1
 description: A guide to Upbound Spaces
-aliases:
-    - /deploy/legacy-spaces
 ---
 
 :::important

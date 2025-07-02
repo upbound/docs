@@ -1,6 +1,6 @@
 ---
-title: "Rewrite HCL for Crossplane or Upbound"
-weight: 2
+title: Rewrite HCL for Crossplane or Upbound
+sidebar_position: 1
 ---
 <!--- TODO(tr0njavolta): link --->
 <!-- The [Migrating from Terraform to Crossplane Guide][migrating-from-terraform-to-crossplane-guide] used `provider-terraform` to "lift and shift" your -->

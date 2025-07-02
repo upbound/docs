@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 2,
   "frontMatter": {
     "title": "Pipeline inputs and outputs",
-    "weight": 25,
-    "aliases": [
-      "/core-concepts/kcl/inputs-outputs",
-      "core-concepts/kcl/inputs-outputs"
-    ]
+    "sidebar_position": 2
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Build with KCL",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/"
+  },
+  "next": {
+    "title": "Resource schemas",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas"
   }
 }

@@ -10,8 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 10,
   "frontMatter": {
     "title": "Install Crossplane",
-    "weight": 100
+    "sidebar_position": 10
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Get Started",
+    "permalink": "/uxp/get-started/"
+  },
+  "next": {
+    "title": "Get Started With Composition",
+    "permalink": "/uxp/get-started/get-started-with-composition"
   }
 }

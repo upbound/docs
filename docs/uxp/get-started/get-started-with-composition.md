@@ -1,6 +1,6 @@
 ---
 title: Get Started With Composition
-weight: 200
+sidebar_position: 20
 ---
 
 This guide shows how to create a new kind of custom resource named `App`. When a

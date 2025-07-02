@@ -1,6 +1,6 @@
 ---
-title: "Pipeline inputs and outputs"
-weight: 25
+title: Pipeline inputs and outputs
+sidebar_position: 2
 ---
 
 Functions require inputs and outputs to process requests and return values to

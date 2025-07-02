@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Signature Verification",
-    "weight": 9,
+    "sidebar_position": 1,
     "description": "Learn how to verify signatures for Official Providers from the Marketplace"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Pull secrets",
+    "permalink": "/reference/providers/pull-secrets"
+  },
+  "next": {
+    "title": "Monolithic providers",
+    "permalink": "/reference/providers/monolithic"
   }
 }

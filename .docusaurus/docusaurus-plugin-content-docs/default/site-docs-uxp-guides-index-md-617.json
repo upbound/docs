@@ -17,11 +17,11 @@
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Function Patch and Transform",
-    "permalink": "/uxp/guides/function-patch-and-transform"
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/uxp/guides/crossplane-with-argo-cd"
   },
   "next": {
-    "title": "Metrics",
-    "permalink": "/uxp/guides/metrics"
+    "title": "Self-Signed CA Certs",
+    "permalink": "/uxp/guides/self-signed-ca-certs"
   }
 }

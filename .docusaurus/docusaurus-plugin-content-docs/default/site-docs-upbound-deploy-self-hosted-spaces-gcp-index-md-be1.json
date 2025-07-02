@@ -10,22 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "GCP",
-    "weight": 4,
-    "description": "A  quickstart guide for Upbound Spaces in GCP",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/gcp-deployment",
-      "/all-spaces/disconnected-spaces/gcp-deployment"
-    ]
+    "sidebar_position": 1,
+    "description": "A  quickstart guide for Upbound Spaces in GCP"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Disaster Recovery",
-    "permalink": "/upbound/deploy/self-hosted-spaces/dr"
+    "title": "Azure",
+    "permalink": "/upbound/deploy/self-hosted-spaces/azure/"
   },
   "next": {
-    "title": "Space Helm Chart Reference",
-    "permalink": "/upbound/deploy/self-hosted-spaces/helm-reference"
+    "title": "Local Quickstart",
+    "permalink": "/upbound/deploy/self-hosted-spaces/self-hosted-qs"
   }
 }

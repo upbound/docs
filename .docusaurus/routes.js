@@ -44,15 +44,15 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', '876'),
+    component: ComponentCreator('/', '0c9'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '4b0'),
+        component: ComponentCreator('/', '424'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', '80c'),
+            component: ComponentCreator('/', '6c4'),
             routes: [
               {
                 path: '/fundamentals/builders-workshop/create-configuration',
@@ -80,24 +80,21 @@ export default [
               },
               {
                 path: '/fundamentals/consumer-portal-get-started',
-                component: ComponentCreator('/fundamentals/consumer-portal-get-started', '3f6'),
-                exact: true
-              },
-              {
-                path: '/fundamentals/control-planes/',
-                component: ComponentCreator('/fundamentals/control-planes/', '143'),
+                component: ComponentCreator('/fundamentals/consumer-portal-get-started', '13f'),
                 exact: true,
                 sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/', '0e8'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/', 'cde'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/adding-dependencies',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/adding-dependencies', 'c01'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/adding-dependencies', '67e'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/',
@@ -113,13 +110,15 @@ export default [
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs', 'c02'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs', '03a'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas', 'eda'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas', '75e'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/',
@@ -129,13 +128,15 @@ export default [
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs', 'f7d'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs', 'b3f'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models', 'f59'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models', '15f'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/',
@@ -145,43 +146,51 @@ export default [
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals', 'dd9'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals', 'bc6'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs', 'b02'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs', 'c49'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops', '69b'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops', 'f5c'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state', '96c'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state', '1cb'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction', '416'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction', '3b1'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas', '931'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas', '954'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables', '7a8'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables', '158'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite', '657'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite', '53b'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/',
@@ -191,48 +200,57 @@ export default [
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs', 'd33'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs', '6fa'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models', '50b'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models', '516'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/authoring-xrds',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-xrds', 'cc0'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/authoring-xrds', '0fe'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/building-pushing',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/building-pushing', '40e'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/building-pushing', 'e73'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/simulations',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/simulations', '66f'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/simulations', '744'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/control-plane-projects/testing',
-                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/testing', 'ffb'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/control-plane-projects/testing', '7ef'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/controllers',
-                component: ComponentCreator('/fundamentals/control-planes/controllers', '14c'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/controllers', '42e'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/migrating-to-mcps',
-                component: ComponentCreator('/fundamentals/control-planes/migrating-to-mcps', '89e'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/migrating-to-mcps', '410'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/provider-authentication',
-                component: ComponentCreator('/fundamentals/control-planes/provider-authentication', '6f0'),
-                exact: true
+                component: ComponentCreator('/fundamentals/control-planes/provider-authentication', '9d2'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               },
               {
                 path: '/fundamentals/control-planes/repositories/',
@@ -313,11 +331,6 @@ export default [
                 sidebar: "referenceSidebar"
               },
               {
-                path: '/reference/apis/',
-                component: ComponentCreator('/reference/apis/', 'dfc'),
-                exact: true
-              },
-              {
                 path: '/reference/apis/crossplane-api/',
                 component: ComponentCreator('/reference/apis/crossplane-api/', '7d6'),
                 exact: true,
@@ -367,8 +380,9 @@ export default [
               },
               {
                 path: '/reference/apis/spaces-api/yaml/v1.13/',
-                component: ComponentCreator('/reference/apis/spaces-api/yaml/v1.13/', '176'),
-                exact: true
+                component: ComponentCreator('/reference/apis/spaces-api/yaml/v1.13/', '98d'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/apis/testing-api/',
@@ -377,760 +391,10 @@ export default [
                 sidebar: "referenceSidebar"
               },
               {
-                path: '/reference/cli/cli-reference/',
-                component: ComponentCreator('/reference/cli/cli-reference/', '301'),
+                path: '/reference/cli-reference',
+                component: ComponentCreator('/reference/cli-reference', 'db5'),
                 exact: true,
                 sidebar: "referenceSidebar"
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up', '919'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha', 'ec6'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_ctx',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_ctx', '8be'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_migration',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_migration', 'd3c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_migration_export',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_migration_export', 'f7c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_migration_import',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_migration_import', '5c2'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_migration_pause-toggle',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_migration_pause-toggle', 'a09'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space', '4d2'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_billing',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_billing', '0c4'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_billing_export',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_billing_export', '21b'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_connect_(attach)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_connect_(attach)', '6de'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_destroy',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_destroy', '6dc'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)', '5c3'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_init',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_init', '8ab'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_list', '887'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_mirror',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_mirror', 'f31'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_alpha_space_upgrade',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_alpha_space_upgrade', '516'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_completion',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_completion', '997'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_composition',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_composition', '836'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_composition_generate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_composition_generate', 'cef'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_composition_render',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_composition_render', '8ac'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)', 'dd2'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration', '57b'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install', '142'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connect',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connect', '99a'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector', 'fa3'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install', '3de'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall', '8c3'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_create', 'fa0'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_delete', '773'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect', 'be2'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function', '082'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function_install',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function_install', '892'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_get', 'a30'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_list', '6c0'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider', '376'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install', 'b56'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret', 'bba'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create', 'a03'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulate', 'd06'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)', 'de1'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create', 'f09'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete', '950'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list', '1e9'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_ctx',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_ctx', '898'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_dependency_(dep)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_dependency_(dep)', '602'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_dependency_(dep)_add',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_dependency_(dep)_add', '6ee'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_dependency_(dep)_clean-cache',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_dependency_(dep)_clean-cache', '977'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache', '90a'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_example',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_example', '64f'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_example_generate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_example_generate', '0c3'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_function',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_function', '475'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_function_generate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_function_generate', '53d'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_group',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_group', '0b3'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_group_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_group_create', '6d6'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_group_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_group_delete', '0bd'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_group_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_group_get', '0b5'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_group_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_group_list', 'f4a'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_help',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_help', 'c36'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_license',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_license', 'e3c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_login',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_login', 'aa8'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_logout',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_logout', 'b84'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)', '0d9'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_create', '99e'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_delete', '46a'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_get', 'bf4'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_list', 'b53'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_token',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_token', '836'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_user',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_user', '640'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_user_invite',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_user_invite', '174'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_user_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_user_list', 'cec'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_organization_(org)_user_remove',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_organization_(org)_user_remove', '473'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile', '5e8'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_create', '2fe'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_current',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_current', 'e90'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_delete', 'f4d'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_list', 'e14'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_rename',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_rename', 'fc9'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_set',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_set', 'd6e'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_use',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_use', '18f'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_profile_view',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_profile_view', 'f1f'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project', '804'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_build',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_build', '97e'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_init',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_init', '5b6'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_move',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_move', '739'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_push',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_push', '462'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_run',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_run', '806'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_simulate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_simulate', '5a0'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_simulation',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_simulation', 'e92'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_simulation_complete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_simulation_complete', '14f'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_simulation_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_simulation_create', 'e45'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_project_simulation_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_project_simulation_delete', '8ea'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)', 'c3c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_create', '161'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_delete', 'abb'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_get', '2b1'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_list', 'f00'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_permission',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_permission', '97c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_grant',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_grant', '8f6'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_list', '7bd'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_revoke',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_revoke', '221'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_repository_(repo)_update',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_repository_(repo)_update', '416'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot', '546'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_create', 'ddb'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_delete', '957'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_get', '611'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_list', '2f4'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_team',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_team', 'a2b'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_team_join',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_team_join', '3ea'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_team_leave',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_team_leave', '6dd'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_team_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_team_list', '9f7'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_token',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_token', '1b7'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_token_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_token_create', '903'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_token_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_token_delete', 'e60'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_token_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_token_get', 'b14'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_robot_token_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_robot_token_list', 'a1f'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space', '24d'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_billing',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_billing', 'd29'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_billing_export',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_billing_export', 'ac7'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_connect_(attach)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_connect_(attach)', '3e2'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_destroy',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_destroy', '087'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_disconnect_(detach)',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_disconnect_(detach)', '6e1'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_init',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_init', '879'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_list', '2b0'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_mirror',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_mirror', '585'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_space_upgrade',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_space_upgrade', 'fe3'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_team',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_team', 'f87'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_team_create',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_team_create', 'b79'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_team_delete',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_team_delete', '5ff'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_team_get',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_team_get', '00d'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_team_list',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_team_list', '38d'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_test',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_test', '11f'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_test_generate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_test_generate', 'acf'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_test_run',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_test_run', '9e4'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_uxp',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_uxp', 'b7c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_uxp_install',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_uxp_install', 'e3e'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_uxp_uninstall',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_uxp_uninstall', '5f2'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_uxp_upgrade',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_uxp_upgrade', '0b7'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_version',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_version', 'f99'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpkg',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpkg', '9bf'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpkg_append',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpkg_append', '75a'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpkg_batch',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpkg_batch', '212'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpkg_build',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpkg_build', '423'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpkg_push',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpkg_push', 'c3c'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpkg_xp-extract',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpkg_xp-extract', '22a'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpls',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpls', '265'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xpls_serve',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xpls_serve', '35e'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xrd',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xrd', 'b07'),
-                exact: true
-              },
-              {
-                path: '/reference/cli/cli-reference/yaml/up_xrd_generate',
-                component: ComponentCreator('/reference/cli/cli-reference/yaml/up_xrd_generate', 'd1e'),
-                exact: true
-              },
-              {
-                path: '/reference/crossplane-vs-upbound',
-                component: ComponentCreator('/reference/crossplane-vs-upbound', '049'),
-                exact: true
               },
               {
                 path: '/reference/legacy/',
@@ -1188,23 +452,27 @@ export default [
               },
               {
                 path: '/reference/providers/faq',
-                component: ComponentCreator('/reference/providers/faq', '212'),
-                exact: true
+                component: ComponentCreator('/reference/providers/faq', 'f47'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/migration',
-                component: ComponentCreator('/reference/providers/migration', '819'),
-                exact: true
+                component: ComponentCreator('/reference/providers/migration', 'eda'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/monolithic',
-                component: ComponentCreator('/reference/providers/monolithic', 'c5c'),
-                exact: true
+                component: ComponentCreator('/reference/providers/monolithic', 'a9d'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/policies',
-                component: ComponentCreator('/reference/providers/policies', 'ecf'),
-                exact: true
+                component: ComponentCreator('/reference/providers/policies', '29e'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-aws/',
@@ -1214,8 +482,9 @@ export default [
               },
               {
                 path: '/reference/providers/provider-aws/authentication',
-                component: ComponentCreator('/reference/providers/provider-aws/authentication', '068'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-aws/authentication', '834'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-azure/',
@@ -1225,8 +494,9 @@ export default [
               },
               {
                 path: '/reference/providers/provider-azure/authentication',
-                component: ComponentCreator('/reference/providers/provider-azure/authentication', '21a'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-azure/authentication', '4ca'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-azuread/',
@@ -1236,8 +506,9 @@ export default [
               },
               {
                 path: '/reference/providers/provider-families',
-                component: ComponentCreator('/reference/providers/provider-families', 'c20'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-families', 'c2d'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-gcp/',
@@ -1247,8 +518,9 @@ export default [
               },
               {
                 path: '/reference/providers/provider-gcp/authentication',
-                component: ComponentCreator('/reference/providers/provider-gcp/authentication', '4d8'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-gcp/authentication', 'e91'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-helm/',
@@ -1264,8 +536,9 @@ export default [
               },
               {
                 path: '/reference/providers/provider-kubernetes/authentication',
-                component: ComponentCreator('/reference/providers/provider-kubernetes/authentication', '022'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-kubernetes/authentication', '5f6'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-terraform/',
@@ -1275,23 +548,27 @@ export default [
               },
               {
                 path: '/reference/providers/provider-terraform/migrate-hcl',
-                component: ComponentCreator('/reference/providers/provider-terraform/migrate-hcl', '000'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-terraform/migrate-hcl', 'b7b'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/provider-terraform/migrate-provider-tf',
-                component: ComponentCreator('/reference/providers/provider-terraform/migrate-provider-tf', '2cb'),
-                exact: true
+                component: ComponentCreator('/reference/providers/provider-terraform/migrate-provider-tf', '2c1'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/pull-secrets',
-                component: ComponentCreator('/reference/providers/pull-secrets', 'bc9'),
-                exact: true
+                component: ComponentCreator('/reference/providers/pull-secrets', '3aa'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/providers/signature-verification',
-                component: ComponentCreator('/reference/providers/signature-verification', 'a58'),
-                exact: true
+                component: ComponentCreator('/reference/providers/signature-verification', '1db'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/release-notes/',
@@ -1300,20 +577,20 @@ export default [
                 sidebar: "referenceSidebar"
               },
               {
-                path: '/reference/release-notes/rel-notes/mcp-connector',
-                component: ComponentCreator('/reference/release-notes/rel-notes/mcp-connector', 'a88'),
+                path: '/reference/release-notes/mcp-connector',
+                component: ComponentCreator('/reference/release-notes/mcp-connector', 'd68'),
                 exact: true,
                 sidebar: "referenceSidebar"
               },
               {
-                path: '/reference/release-notes/rel-notes/spaces',
-                component: ComponentCreator('/reference/release-notes/rel-notes/spaces', '3b0'),
+                path: '/reference/release-notes/spaces',
+                component: ComponentCreator('/reference/release-notes/spaces', 'f68'),
                 exact: true,
                 sidebar: "referenceSidebar"
               },
               {
-                path: '/reference/release-notes/rel-notes/up-cli',
-                component: ComponentCreator('/reference/release-notes/rel-notes/up-cli', 'c10'),
+                path: '/reference/release-notes/up-cli',
+                component: ComponentCreator('/reference/release-notes/up-cli', '9d0'),
                 exact: true,
                 sidebar: "referenceSidebar"
               },
@@ -1367,13 +644,15 @@ export default [
               },
               {
                 path: '/solutions/upbound-platform-ref',
-                component: ComponentCreator('/solutions/upbound-platform-ref', 'e95'),
-                exact: true
+                component: ComponentCreator('/solutions/upbound-platform-ref', '09c'),
+                exact: true,
+                sidebar: "solutionsSidebar"
               },
               {
                 path: '/upbound/',
-                component: ComponentCreator('/upbound/', 'f85'),
-                exact: true
+                component: ComponentCreator('/upbound/', '4c3'),
+                exact: true,
+                sidebar: "upboundSidebar"
               },
               {
                 path: '/upbound/connect/declarative-ctps',
@@ -1408,12 +687,6 @@ export default [
               {
                 path: '/upbound/connect/query-api',
                 component: ComponentCreator('/upbound/connect/query-api', '6dc'),
-                exact: true,
-                sidebar: "upboundSidebar"
-              },
-              {
-                path: '/upbound/deploy/',
-                component: ComponentCreator('/upbound/deploy/', 'd6a'),
                 exact: true,
                 sidebar: "upboundSidebar"
               },
@@ -1695,8 +968,21 @@ export default [
               },
               {
                 path: '/uxp/',
-                component: ComponentCreator('/uxp/', '034'),
-                exact: true
+                component: ComponentCreator('/uxp/', 'd24'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/api/',
+                component: ComponentCreator('/uxp/api/', '51d'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/composition/',
+                component: ComponentCreator('/uxp/composition/', '930'),
+                exact: true,
+                sidebar: "uxpSidebar"
               },
               {
                 path: '/uxp/composition/composite-resource-definitions',
@@ -1729,33 +1015,26 @@ export default [
                 sidebar: "uxpSidebar"
               },
               {
-                path: '/uxp/enhancements/package-manager',
-                component: ComponentCreator('/uxp/enhancements/package-manager', '2b0'),
-                exact: true
-              },
-              {
                 path: '/uxp/get-started/',
-                component: ComponentCreator('/uxp/get-started/', '114'),
-                exact: true
+                component: ComponentCreator('/uxp/get-started/', '8c6'),
+                exact: true,
+                sidebar: "uxpSidebar"
               },
               {
                 path: '/uxp/get-started/get-started-with-composition',
-                component: ComponentCreator('/uxp/get-started/get-started-with-composition', '11c'),
-                exact: true
+                component: ComponentCreator('/uxp/get-started/get-started-with-composition', 'e68'),
+                exact: true,
+                sidebar: "uxpSidebar"
               },
               {
                 path: '/uxp/get-started/get-started-with-managed-resources',
-                component: ComponentCreator('/uxp/get-started/get-started-with-managed-resources', 'a65'),
-                exact: true
+                component: ComponentCreator('/uxp/get-started/get-started-with-managed-resources', '5f3'),
+                exact: true,
+                sidebar: "uxpSidebar"
               },
               {
                 path: '/uxp/get-started/install',
-                component: ComponentCreator('/uxp/get-started/install', 'b4f'),
-                exact: true
-              },
-              {
-                path: '/uxp/guides/',
-                component: ComponentCreator('/uxp/guides/', '60e'),
+                component: ComponentCreator('/uxp/get-started/install', 'd5b'),
                 exact: true,
                 sidebar: "uxpSidebar"
               },
@@ -1827,6 +1106,12 @@ export default [
               },
               {
                 path: '/uxp/managed-resources/',
+                component: ComponentCreator('/uxp/managed-resources/', '44f'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/managed-resources/',
                 component: ComponentCreator('/uxp/managed-resources/', 'fc2'),
                 exact: true,
                 sidebar: "uxpSidebar"
@@ -1858,17 +1143,6 @@ export default [
               {
                 path: '/uxp/packages/providers',
                 component: ComponentCreator('/uxp/packages/providers', 'd1c'),
-                exact: true,
-                sidebar: "uxpSidebar"
-              },
-              {
-                path: '/uxp/reference/',
-                component: ComponentCreator('/uxp/reference/', 'ab7'),
-                exact: true
-              },
-              {
-                path: '/uxp/whats-crossplane/',
-                component: ComponentCreator('/uxp/whats-crossplane/', 'eca'),
                 exact: true,
                 sidebar: "uxpSidebar"
               },

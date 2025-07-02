@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Providers",
-    "weight": 5,
+    "sidebar_position": 1,
     "description": "Providers connect Crossplane to external APIs"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Image Configs",
-    "permalink": "/uxp/packages/image-configs"
+    "title": "Usages",
+    "permalink": "/uxp/managed-resources/usages"
   },
   "next": {
-    "title": "Composite Resource Definitions",
-    "permalink": "/uxp/composition/composite-resource-definitions"
+    "title": "Functions",
+    "permalink": "/uxp/packages/functions"
   }
 }

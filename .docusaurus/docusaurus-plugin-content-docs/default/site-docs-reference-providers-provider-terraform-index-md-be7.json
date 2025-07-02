@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Provider Terraform",
-    "weight": 1,
+    "sidebar_position": 1,
     "description": "Release notes for the Terraform official provider"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Provider Kubernetes",
-    "permalink": "/reference/providers/provider-kubernetes/"
+    "title": "Authentication",
+    "permalink": "/reference/providers/provider-kubernetes/authentication"
   },
   "next": {
-    "title": "Marketplace",
-    "permalink": "/reference/marketplace/"
+    "title": "Rewrite HCL for Crossplane or Upbound",
+    "permalink": "/reference/providers/provider-terraform/migrate-hcl"
   }
 }

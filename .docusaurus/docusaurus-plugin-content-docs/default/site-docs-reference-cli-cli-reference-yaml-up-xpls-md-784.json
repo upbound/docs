@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_xpkg_xp-extract",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xpkg_xp-extract"
+  },
+  "next": {
+    "title": "up_xpls_serve",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xpls_serve"
+  }
 }

@@ -10,14 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "(deprecated) Control Plane Configurations",
-    "weight": 4,
-    "description": "An introduction to how Configurations work in Upbound",
-    "aliases": [
-      "/deploy/legacy-spaces/control-plane-configurations",
-      "/concepts/control-plane-configurations"
-    ]
+    "sidebar_position": 1,
+    "description": "An introduction to how Configurations work in Upbound"
   },
   "sidebar": "referenceSidebar",
   "previous": {
@@ -25,7 +22,7 @@
     "permalink": "/reference/legacy/connect-argo-to-upbound"
   },
   "next": {
-    "title": "Legacy Spaces",
-    "permalink": "/reference/legacy/"
+    "title": "(deprecated) Quickstart",
+    "permalink": "/reference/legacy/multicloud-deploy"
   }
 }

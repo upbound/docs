@@ -1,10 +1,7 @@
 ---
-title: "Building and pushing your Control Plane Projects"
-weight: 6
-description: "How to build and push your control plane project to the Upbound
-Marketplace"
-aliases:
-    - /core-concepts/building-pushing
+title: Building and pushing your Control Plane Projects
+sidebar_position: 1
+description: How to build and push your control plane project to the Upbound Marketplace
 ---
 Control plane projects are source-level representations of your control plane.
 Like any other software project, control plane projects require a **build

@@ -1,6 +1,5 @@
 ---
-title: "Overview"
-sidebar_position: 1
+title: Overview
 ---
 
 Upbound supports defining your control plane APIs in the

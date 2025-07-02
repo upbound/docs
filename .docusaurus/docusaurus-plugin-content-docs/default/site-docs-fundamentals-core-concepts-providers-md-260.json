@@ -10,14 +10,12 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Providers",
-    "weight": 4,
+    "sidebar_position": 1,
     "description": "Providers allow Upbound to provision infrastructure on an external service. They handle communication between the control plane and your external resources",
-    "searchExclude": true,
-    "aliases": [
-      "core-concepts/providers"
-    ]
+    "draft": true
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {

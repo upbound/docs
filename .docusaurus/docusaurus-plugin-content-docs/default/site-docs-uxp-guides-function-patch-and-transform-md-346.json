@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 7,
   "frontMatter": {
     "title": "Function Patch and Transform",
-    "weight": 70,
+    "sidebar_position": 7,
     "description": "A function that use patches and transforms to modify inputs from composite resources before creating managed resources"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Releasing Crossplane Extensions",
-    "permalink": "/uxp/guides/extensions-release-process"
+    "title": "Metrics",
+    "permalink": "/uxp/guides/metrics"
   },
   "next": {
-    "title": "Guides",
-    "permalink": "/uxp/guides/"
+    "title": "Releasing Crossplane Extensions",
+    "permalink": "/uxp/guides/extensions-release-process"
   }
 }

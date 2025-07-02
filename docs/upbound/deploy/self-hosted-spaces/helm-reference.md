@@ -1,11 +1,7 @@
 ---
 title: Space Helm Chart Reference
-weight: 200
+sidebar_position: 20
 description: Spaces Helm chart configuration values
-aliases:
-    - /all-spaces/self-hosted-spaces/helm-reference
-    - /spaces/helm-reference
-    - /deploy/disconnected-spaces/helm-reference
 ---
 
 <!-- vale off -->

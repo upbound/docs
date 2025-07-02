@@ -10,21 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 15,
   "frontMatter": {
     "title": "Control Plane Topologies",
-    "weight": 150,
-    "description": "Configure scheduling of composites to remote control planes",
-    "aliases": [
-      "/all-spaces/control-plane-topologies"
-    ]
+    "sidebar_position": 15,
+    "description": "Configure scheduling of composites to remote control planes"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Backup and restore",
-    "permalink": "/upbound/deploy/backup-and-restore"
+    "title": "Query API setup",
+    "permalink": "/upbound/deploy/query-api"
   },
   "next": {
-    "title": "Dedicated Spaces",
-    "permalink": "/upbound/deploy/dedicated-spaces/"
+    "title": "Connect control planes to external services",
+    "permalink": "/upbound/connect/oidc"
   }
 }

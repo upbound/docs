@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_project_simulation_create",
+    "permalink": "/reference/cli/cli-reference/yaml/up_project_simulation_create"
+  },
+  "next": {
+    "title": "up_repository_(repo)",
+    "permalink": "/reference/cli/cli-reference/yaml/up_repository_(repo)"
+  }
 }

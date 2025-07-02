@@ -1,10 +1,7 @@
 ---
-title: "Teams"
-weight: 3
-description: "Creating and managing Upbound teams"
-aliases:
-    - /accounts/identity-management/teams
-    - accounts/identity-management/teams
+title: Teams
+sidebar_position: 1
+description: Creating and managing Upbound teams
 ---
 Teams are groups of Upbound [users][users] within an [organization][organization]. Teams provide more fine-grained permissions controls for users and robots accessing control planes and repositories.
 

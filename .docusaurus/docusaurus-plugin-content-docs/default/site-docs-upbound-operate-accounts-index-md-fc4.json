@@ -10,19 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Upbound IAM",
-    "weight": 5,
-    "icon": "key",
-    "aliases": [
-      "/accounts",
-      "accounts"
-    ]
+    "sidebar_position": 1
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Upbound Console",
-    "permalink": "/upbound/deploy/spaces/console"
+    "title": "Consume control plane APIs in an app cluster with control plane connector",
+    "permalink": "/upbound/connect/mcp-connector-guide"
   },
   "next": {
     "title": "Single Sign On in Upbound",

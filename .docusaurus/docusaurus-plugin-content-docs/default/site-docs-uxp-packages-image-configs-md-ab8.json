@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 40,
   "frontMatter": {
     "title": "Image Configs",
-    "weight": 400,
+    "sidebar_position": 40,
     "description": "Image Configs is an API for centralized control of the configuration of Crossplane package images."
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Functions",
-    "permalink": "/uxp/packages/functions"
+    "title": "Configurations",
+    "permalink": "/uxp/packages/configurations"
   },
   "next": {
-    "title": "Providers",
-    "permalink": "/uxp/packages/providers"
+    "title": "Crossplane Pods",
+    "permalink": "/uxp/guides/pods"
   }
 }

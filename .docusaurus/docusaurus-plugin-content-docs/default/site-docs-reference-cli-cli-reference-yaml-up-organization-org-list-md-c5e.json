@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_organization_(org)_get",
+    "permalink": "/reference/cli/cli-reference/yaml/up_organization_(org)_get"
+  },
+  "next": {
+    "title": "up_organization_(org)_token",
+    "permalink": "/reference/cli/cli-reference/yaml/up_organization_(org)_token"
+  }
 }

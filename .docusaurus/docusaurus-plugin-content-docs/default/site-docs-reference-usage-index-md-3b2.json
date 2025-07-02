@@ -15,11 +15,11 @@
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Spaces Release Notes",
-    "permalink": "/reference/release-notes/rel-notes/spaces"
+    "title": "Up CLI Release Notes",
+    "permalink": "/reference/release-notes/up-cli"
   },
   "next": {
-    "title": "License Usage",
-    "permalink": "/reference/usage/licenses"
+    "title": "Product Lifecycle",
+    "permalink": "/reference/usage/lifecycle"
   }
 }

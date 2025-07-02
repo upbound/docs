@@ -10,17 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 40,
   "frontMatter": {
     "title": "Upgrade Crossplane",
-    "weight": 400
+    "sidebar_position": 40
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Uninstall Crossplane",
-    "permalink": "/uxp/guides/uninstall-crossplane"
+    "title": "Troubleshoot Crossplane",
+    "permalink": "/uxp/guides/troubleshoot-crossplane"
   },
   "next": {
-    "title": "Write a Composition Function in Go",
-    "permalink": "/uxp/guides/write-a-composition-function-in-go"
+    "title": "Uninstall Crossplane",
+    "permalink": "/uxp/guides/uninstall-crossplane"
   }
 }

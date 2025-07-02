@@ -1,6 +1,6 @@
 ---
 title: Claims
-weight: 1
+sidebar_position: 1
 description: Sets of managed resources as a single control plane object.
 ---
 

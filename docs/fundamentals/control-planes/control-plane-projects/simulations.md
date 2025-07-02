@@ -1,7 +1,7 @@
 ---
-title: "Simulate changes to your Control Plane Projects"
-weight: 7
-description: "Use the Up CLI to mock operations before deploying to your environments."
+title: Simulate changes to your Control Plane Projects
+sidebar_position: 1
+description: Use the Up CLI to mock operations before deploying to your environments.
 ---
 
 :::important

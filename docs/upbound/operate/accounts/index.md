@@ -1,10 +1,6 @@
 ---
-title: "Upbound IAM"
-weight: 5
-icon: key
-aliases:
-    - /accounts
-    - accounts
+title: Upbound IAM
+sidebar_position: 1
 ---
 
 Upbound allows administrators to deploy Role-based Access Control (RBAC)

@@ -1,6 +1,6 @@
 ---
-title: 'Internal Developer Platform (IdP) Starter Kit'
-description: "Build an IdP with Upbound"
+title: Internal Developer Platform (IdP) Starter Kit
+description: Build an IdP with Upbound
 ---
 
 The Internal Developer Platform (IdP) starter kit gives you all the tools you

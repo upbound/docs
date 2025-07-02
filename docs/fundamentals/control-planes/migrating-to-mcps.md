@@ -1,9 +1,7 @@
 ---
 title: Migrating to Upbound control planes
-weight: 300
+sidebar_position: 30
 description: A guide to how to migrate to a control plane in Upbound
-aliases:
-    - /mcp/migrating-to-mcps
 ---
 
 :::important

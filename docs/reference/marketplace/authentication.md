@@ -1,7 +1,7 @@
 ---
-title: "Authentication"
-weight: 10
-description: "How to authenticate to the Upbound Marketplace to access private packages."
+title: Authentication
+sidebar_position: 1
+description: How to authenticate to the Upbound Marketplace to access private packages.
 ---
 
 Pulling private packages or pushing packages to an Upbound Marketplace private repository requires authentication to Upbound.

@@ -1,7 +1,7 @@
 ---
-title: "Signature Verification"
-weight: 9
-description: "Learn how to verify signatures for Official Providers from the Marketplace"
+title: Signature Verification
+sidebar_position: 1
+description: Learn how to verify signatures for Official Providers from the Marketplace
 ---
 
 Upbound Official Providers contain verifiable signatures, attestations, and an

@@ -1,6 +1,6 @@
 ---
 title: Get Started With Managed Resources
-weight: 300
+sidebar_position: 30
 ---
 
 This guide shows how to install and use a new kind of custom resource called

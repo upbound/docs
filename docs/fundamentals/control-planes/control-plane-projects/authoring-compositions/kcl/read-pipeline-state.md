@@ -1,9 +1,6 @@
 ---
-title: "Read function pipeline state"
-weight: 120
-aliases:
-    - /core-concepts/kcl/read-pipeline-state
-    - core-concepts/kcl/read-pipeline-state
+title: Read function pipeline state
+sidebar_position: 12
 ---
 
 Compositions execute each function sequentially in the pipeline. Each function

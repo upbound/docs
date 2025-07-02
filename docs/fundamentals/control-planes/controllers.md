@@ -1,7 +1,8 @@
 ---
 title: Controllers
-weight: 250
-description: A guide to how to wrap and deploy an Upbound controller into control planes on Upbound.
+sidebar_position: 25
+description: A guide to how to wrap and deploy an Upbound controller into control
+  planes on Upbound.
 ---
 
 :::important

@@ -12,7 +12,6 @@
   "version": "current",
   "frontMatter": {
     "title": "Packages",
-    "weight": 53,
     "description": "Understand Crossplane's core components"
   },
   "sidebar": "uxpSidebar",
@@ -21,7 +20,7 @@
     "permalink": "/uxp/packages/image-configs"
   },
   "next": {
-    "title": "Providers",
-    "permalink": "/uxp/packages/providers"
+    "title": "Composite Resources",
+    "permalink": "/uxp/composition/composite-resources"
   }
 }

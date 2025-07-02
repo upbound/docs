@@ -1,9 +1,6 @@
 ---
-title: "Build with KCL"
-weight: 1
-aliases:
-    - /core-concepts/kcl/overview
-    - core-concepts/kcl/overview
+title: Build with KCL
+sidebar_position: 1
 ---
 
 Upbound supports defining your control plane APIs in [KCL][kcl], an open source constraint-based record and functional language.

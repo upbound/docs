@@ -1,8 +1,6 @@
 ---
-title: "Write status to a composite"
-weight: 80
-aliases:
-    - /core-concepts/kcl/write-status-to-composite
+title: Write status to a composite
+sidebar_position: 8
 ---
 
 This guide describes how to write status information to the composite resource

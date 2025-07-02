@@ -10,18 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 20,
   "frontMatter": {
     "title": "Run a control plane simulation",
-    "weight": 200,
+    "sidebar_position": 20,
     "description": "A guide for how to use Simulations in a Space."
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Secrets Management",
-    "permalink": "/upbound/operate/secrets-management"
-  },
-  "next": {
-    "title": "Declaratively create control planes",
-    "permalink": "/upbound/connect/declarative-ctps"
+    "title": "Observability",
+    "permalink": "/upbound/operate/observability"
   }
 }

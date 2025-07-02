@@ -10,19 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 30,
   "frontMatter": {
     "title": "Feature Lifecycle",
-    "toc": true,
-    "weight": 309,
-    "indent": true
+    "sidebar_position": 30
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Visual Studio Code extensions",
-    "permalink": "/reference/usage/vscode-extensions"
+    "title": "IP Addresses",
+    "permalink": "/reference/usage/ipaddresses"
   },
   "next": {
-    "title": "Support",
-    "permalink": "/reference/usage/support"
+    "title": "License Usage",
+    "permalink": "/reference/usage/licenses"
   }
 }

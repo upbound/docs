@@ -10,6 +10,6 @@ Upbound's release notes:
 - [Up CLI][cli-release-notes]
 
 
-[cli-release-notes]: rel-notes/up-cli
-[spaces-release-notes]: rel-notes/spaces
-[mcp-release-notes]: rel-notes/mcp-connector
+[cli-release-notes]: up-cli
+[spaces-release-notes]:spaces
+[mcp-release-notes]: mcp-connector

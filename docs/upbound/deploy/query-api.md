@@ -1,11 +1,7 @@
 ---
 title: Query API setup
-weight: 130
+sidebar_position: 13
 description: Query API setup for self-hosted Spaces
-aliases:
-    - /all-spaces/self-hosted-spaces/query-api
-    - /self-hosted-spaces/query-api
-    - all-spaces/self-hosted-spaces/query-api
 ---
 
 <!-- vale write-good.TooWordy = NO -->

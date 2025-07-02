@@ -13,7 +13,6 @@
   "sidebarPosition": 2,
   "frontMatter": {
     "title": "Build your composition logic",
-    "sidebar_position": 2,
     "description": "Create a composition function"
   },
   "sidebar": "fundamentalsSidebar",

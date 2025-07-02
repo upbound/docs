@@ -1,6 +1,6 @@
 ---
 title: License Usage
-weight: 10000
+sidebar_position: 1000
 description: References and sources for all the licenses in use by the Spaces software.
 ---
 

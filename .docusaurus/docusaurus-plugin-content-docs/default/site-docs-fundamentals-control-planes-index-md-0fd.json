@@ -10,17 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Build",
-    "sidebar_position": 1,
-    "description": "Create your configurations and control planes with various programming languages",
-    "aliases": [
-      "/spaces",
-      "/concepts/upbound-spaces"
-    ],
-    "icon": "terminal",
-    "category": "guides"
+    "description": "Create your configurations and control planes with various programming languages"
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
@@ -28,7 +20,7 @@
     "permalink": "/fundamentals/builders-workshop/deployment"
   },
   "next": {
-    "title": "Authoring Compositions",
-    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/"
+    "title": "Controllers",
+    "permalink": "/fundamentals/control-planes/controllers"
   }
 }

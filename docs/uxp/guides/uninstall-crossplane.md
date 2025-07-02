@@ -1,6 +1,6 @@
 ---
 title: Uninstall Crossplane
-weight: 500
+sidebar_position: 50
 ---
 
 :::warning

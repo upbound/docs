@@ -1,9 +1,6 @@
 ---
-title: "Loops (for)"
-weight: 50
-aliases:
-    - /core-concepts/kcl/loops
-    - core-concepts/kcl/loops
+title: Loops (for)
+sidebar_position: 5
 ---
 
 This guide shows you how to use the `for` syntax and `lambda` support to iterate

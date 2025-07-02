@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 7,
   "frontMatter": {
     "title": "Resource data extraction",
-    "weight": 70,
-    "aliases": [
-      "/core-concepts/kcl/resource-data-extraction",
-      "core-concepts/kcl/resource-data-extraction"
-    ]
+    "sidebar_position": 7
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Conditionals (if)",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals"
+  },
+  "next": {
+    "title": "Write status to a composite",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
   }
 }

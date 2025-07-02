@@ -10,14 +10,12 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Managed Control Planes",
-    "weight": 2,
+    "sidebar_position": 1,
     "description": "Fully isolated Crossplane control plane instances that Upbound manages for you",
-    "draft": true,
-    "aliases": [
-      "concepts/mcp"
-    ]
+    "draft": true
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {

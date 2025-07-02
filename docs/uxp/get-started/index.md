@@ -1,6 +1,6 @@
 ---
 title: Get Started
-weight: 40
+sidebar_position: 2
 description: Get started with Crossplane.
 ---
 

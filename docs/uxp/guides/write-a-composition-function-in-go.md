@@ -1,7 +1,7 @@
 ---
 title: Write a Composition Function in Go
-weight: 80
-description: "Composition functions allow you to template resources using Go"
+sidebar_position: 8
+description: Composition functions allow you to template resources using Go
 ---
 
 Composition functions (or just functions, for short) are custom programs that

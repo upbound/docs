@@ -1,8 +1,8 @@
 ---
 title: Configurations
-description: "Packages combine multiple Crossplane resources into a single, portable, OCI image."
-altTitle: "Crossplane Packages"
-weight: 200
+sidebar_position: 20
+description: Packages combine multiple Crossplane resources into a single, portable,
+  OCI image.
 ---
 
 A _Configuration_ package is an 

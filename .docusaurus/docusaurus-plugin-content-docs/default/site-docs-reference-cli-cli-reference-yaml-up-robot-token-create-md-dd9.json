@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_robot_token",
+    "permalink": "/reference/cli/cli-reference/yaml/up_robot_token"
+  },
+  "next": {
+    "title": "up_robot_token_delete",
+    "permalink": "/reference/cli/cli-reference/yaml/up_robot_token_delete"
+  }
 }

@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Simulate changes to your Control Plane Projects",
-    "weight": 7,
+    "sidebar_position": 1,
     "description": "Use the Up CLI to mock operations before deploying to your environments."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Building and pushing your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/building-pushing"
+  },
+  "next": {
+    "title": "Running and testing your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/testing"
   }
 }

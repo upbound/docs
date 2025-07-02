@@ -10,21 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Store configurations",
-    "weight": 10,
-    "description": "Product documentation for using the Repositories feature in Upbound.",
-    "aliases": [
-      "/repositories/store-configurations"
-    ]
+    "sidebar_position": 1,
+    "description": "Product documentation for using the Repositories feature in Upbound."
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
-    "title": "Publish packages",
-    "permalink": "/fundamentals/control-planes/repositories/publish-packages"
+    "title": "Repositories",
+    "permalink": "/fundamentals/control-planes/repositories/"
   },
   "next": {
-    "title": "Claims",
-    "permalink": "/fundamentals/core-concepts/claims"
+    "title": "Publish packages",
+    "permalink": "/fundamentals/control-planes/repositories/publish-packages"
   }
 }

@@ -1,10 +1,7 @@
 ---
 title: Organizations
-weight: 2
-description: "Configuring Organizations for Upbound"
-aliases:
-    - /accounts/identity-management/organizations
-    - accounts/identity-management/organizations
+sidebar_position: 1
+description: Configuring Organizations for Upbound
 ---
 
 Organizations allow multiple [user accounts][user-accounts] to share Upbound resources and collaborate.

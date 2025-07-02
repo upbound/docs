@@ -1,9 +1,7 @@
 ---
 title: Authoring Compositions
-sidebar_position: 1
-description: Use various programming languages to create resources with your control plane.
-aliases:
-    - /core-concepts/authoring-compositions
+description: Use various programming languages to create resources with your control
+  plane.
 ---
 
 

@@ -10,21 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 40,
   "frontMatter": {
     "title": "Query API",
-    "weight": 400,
-    "description": "Use the `up` CLI to query objects and resources",
-    "cascade": {
-      "product": "api"
-    },
-    "aliases": [
-      "/all-spaces/query-api",
-      "all-spaces/query-api"
-    ]
+    "sidebar_position": 40,
+    "description": "Use the `up` CLI to query objects and resources"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Connect control planes to external services",
-    "permalink": "/upbound/connect/oidc"
+    "title": "GitOps with control planes",
+    "permalink": "/upbound/connect/gitops"
+  },
+  "next": {
+    "title": "Declaratively create control planes",
+    "permalink": "/upbound/connect/declarative-ctps"
   }
 }

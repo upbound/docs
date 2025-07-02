@@ -10,20 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "AWS",
-    "weight": 2,
-    "description": "A  quickstart guide for Upbound Spaces in AWS",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/aws-deployment",
-      "/spaces/quickstart",
-      "/all-spaces/disconnected-spaces/aws-deployment"
-    ]
+    "sidebar_position": 1,
+    "description": "A  quickstart guide for Upbound Spaces in AWS"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Connect or disconnect a Space",
-    "permalink": "/upbound/deploy/self-hosted-spaces/attach-detach"
+    "title": "Self-Hosted Spaces",
+    "permalink": "/upbound/deploy/self-hosted-spaces/"
   },
   "next": {
     "title": "Workload-identity for Backup and Restore",

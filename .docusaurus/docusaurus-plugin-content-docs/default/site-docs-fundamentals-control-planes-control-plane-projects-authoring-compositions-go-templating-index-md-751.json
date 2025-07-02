@@ -10,17 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Build with Go Templating",
-    "weight": 1
+    "sidebar_position": 1
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
-    "title": "Overview",
-    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/"
+    "title": "Models",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models"
   },
   "next": {
-    "title": "Build with KCL",
-    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/"
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs"
   }
 }

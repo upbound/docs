@@ -12,13 +12,12 @@
   "version": "current",
   "frontMatter": {
     "title": "Managed Resources",
-    "weight": 52,
     "description": "Understand Crossplane's core components"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Write a Composition Function in Python",
-    "permalink": "/uxp/guides/write-a-composition-function-in-python"
+    "title": "Environment Configs",
+    "permalink": "/uxp/composition/environment-configs"
   },
   "next": {
     "title": "Managed Resources",

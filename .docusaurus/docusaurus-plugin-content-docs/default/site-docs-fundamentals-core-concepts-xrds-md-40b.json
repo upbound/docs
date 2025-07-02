@@ -10,14 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Composite Resource Definitions (XRDs)",
-    "description": "Composite resource definitions (XRDs) define the schema for a custom API.",
-    "weight": 5
+    "sidebar_position": 1,
+    "description": "Composite resource definitions (XRDs) define the schema for a custom API."
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
     "title": "Providers",
     "permalink": "/fundamentals/core-concepts/providers"
+  },
+  "next": {
+    "title": "Upbound Consumer Portal",
+    "permalink": "/fundamentals/consumer-portal-get-started"
   }
 }

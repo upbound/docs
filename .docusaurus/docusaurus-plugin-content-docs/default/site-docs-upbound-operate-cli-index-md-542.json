@@ -10,23 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Up CLI",
-    "icon": "terminal",
-    "weight": 1,
-    "description": "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI.",
-    "aliases": [
-      "/cli",
-      "/reference/cli"
-    ]
+    "sidebar_position": 1,
+    "description": "Install Crossplane, interact with the Upbound Marketplace and Managed Control Planes with the Upbound Up CLI."
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Automatically upgrade control planes",
-    "permalink": "/upbound/operate/auto-upgrade"
+    "title": "Control Plane Groups",
+    "permalink": "/upbound/operate/groups"
   },
   "next": {
-    "title": "Configuration",
-    "permalink": "/upbound/operate/cli/configuration"
+    "title": "Contexts",
+    "permalink": "/upbound/operate/cli/contexts"
   }
 }

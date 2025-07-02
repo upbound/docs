@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_organization_(org)_user_invite",
+    "permalink": "/reference/cli/cli-reference/yaml/up_organization_(org)_user_invite"
+  },
+  "next": {
+    "title": "up_organization_(org)_user_remove",
+    "permalink": "/reference/cli/cli-reference/yaml/up_organization_(org)_user_remove"
+  }
 }

@@ -1,7 +1,7 @@
 ---
-title: "Monolithic providers"
-weight: 20
-description: "Support information for legacy monolithic Crossplane Providers"
+title: Monolithic providers
+sidebar_position: 2
+description: Support information for legacy monolithic Crossplane Providers
 ---
 
 :::tip

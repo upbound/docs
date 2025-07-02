@@ -1,13 +1,7 @@
 ---
 title: Backup and restore
-weight: 130
+sidebar_position: 13
 description: Configure and manage backups in your Upbound Space.
-aliases:
-    - /all-spaces/backup-and-restore
-    - /spaces/backup-and-restore
-    - /disconnected-spaces/backup-and-restore
-    - /self-hosted-spaces/backup-and-restore
-    - all-spaces/backup-and-restore
 ---
 
 :::warning

@@ -1,9 +1,6 @@
 ---
-title: "Resource data extraction"
-weight: 70
-aliases:
-    - /core-concepts/kcl/resource-data-extraction
-    - core-concepts/kcl/resource-data-extraction
+title: Resource data extraction
+sidebar_position: 7
 ---
 
 ## Extract data from the composite resource

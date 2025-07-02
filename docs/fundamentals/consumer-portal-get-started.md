@@ -1,13 +1,7 @@
 ---
-title: Learn
-sidebar_position: 1
-description: "Learn how Upbound works and how it can work for you."
-hideFromHomepage: true
+title: Upbound Consumer Portal 
 draft: true
-category: "guides"
-aliases:
-    - /getstarted/_index
-    - /getstarted-devex
+description: Learn how Upbound works and how it can work for you.
 ---
 
 Upbound is a scalable infrastructure management service built on Crossplane. The

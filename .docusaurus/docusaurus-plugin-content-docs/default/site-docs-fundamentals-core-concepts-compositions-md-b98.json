@@ -10,9 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Compositions",
-    "weight": 5,
+    "sidebar_position": 1,
     "description": "Compositions are declarative templates that enable the creation of multiple managed resources"
   },
   "sidebar": "fundamentalsSidebar",

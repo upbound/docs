@@ -1,6 +1,6 @@
 ---
-title: "Provider GCP"
-weight: 1
+title: Provider GCP
+sidebar_position: 1
 description: Release notes for the GCP official provider
 ---
 <!-- vale Google.Headings = NO -->

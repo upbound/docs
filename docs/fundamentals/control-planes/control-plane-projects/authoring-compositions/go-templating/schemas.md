@@ -1,6 +1,6 @@
 ---
-title: "Schemas"
-weight: 30
+title: Schemas
+sidebar_position: 3
 ---
 
 Upbound Official Providers and some other packages include [JSON

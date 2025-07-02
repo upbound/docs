@@ -1,10 +1,7 @@
 ---
 title: Configure OIDC
-weight: 200
+sidebar_position: 20
 description: Configure OIDC in your Space
-aliases:
-    - /accounts/authentication/oidc-configuration
-    - accounts/authentication/oidc-configuration
 ---
 :::important
 This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].

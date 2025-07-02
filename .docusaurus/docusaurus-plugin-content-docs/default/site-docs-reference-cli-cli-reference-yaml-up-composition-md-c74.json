@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_completion",
+    "permalink": "/reference/cli/cli-reference/yaml/up_completion"
+  },
+  "next": {
+    "title": "up_composition_generate",
+    "permalink": "/reference/cli/cli-reference/yaml/up_composition_generate"
+  }
 }

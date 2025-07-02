@@ -1,6 +1,5 @@
 ---
-title: Project Foundations 
-sidebar_position: 2
+title: Project Foundations
 description: Create a new project from scratch
 ---
 

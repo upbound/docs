@@ -10,12 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 3,
   "frontMatter": {
     "title": "Usages",
-    "weight": 30,
-    "state": "beta",
-    "alphaVersion": "1.14",
-    "betaVersion": "1.19",
+    "sidebar_position": 3,
     "description": "Usage indicates a resource is in use"
   },
   "sidebar": "uxpSidebar",
@@ -24,7 +22,7 @@
     "permalink": "/uxp/managed-resources/"
   },
   "next": {
-    "title": "Configurations",
-    "permalink": "/uxp/packages/configurations"
+    "title": "Providers",
+    "permalink": "/uxp/packages/providers"
   }
 }

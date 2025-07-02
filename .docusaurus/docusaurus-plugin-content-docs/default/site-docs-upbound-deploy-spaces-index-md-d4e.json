@@ -10,20 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Cloud Spaces",
-    "weight": 2,
-    "description": "A guide to Upbound Cloud Spaces",
-    "icon": "popsicle",
-    "aliases": [
-      "/all-spaces/spaces/_index",
-      "/spaces/upbound-spaces"
-    ]
+    "sidebar_position": 1,
+    "description": "A guide to Upbound Cloud Spaces"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Use ArgoCD Plugin",
-    "permalink": "/upbound/deploy/self-hosted-spaces/use-argo"
+    "title": "Upbound Spaces",
+    "permalink": "/upbound/"
   },
   "next": {
     "title": "Upbound Console",

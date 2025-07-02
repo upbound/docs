@@ -10,5 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Crossplane API Reference",
+    "permalink": "/uxp/api/"
+  }
 }

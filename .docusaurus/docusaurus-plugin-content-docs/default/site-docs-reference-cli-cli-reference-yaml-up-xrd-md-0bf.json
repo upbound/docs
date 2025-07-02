@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_xpls_serve",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xpls_serve"
+  },
+  "next": {
+    "title": "up_xrd_generate",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xrd_generate"
+  }
 }

@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_function_generate",
+    "permalink": "/reference/cli/cli-reference/yaml/up_function_generate"
+  },
+  "next": {
+    "title": "up_group_create",
+    "permalink": "/reference/cli/cli-reference/yaml/up_group_create"
+  }
 }

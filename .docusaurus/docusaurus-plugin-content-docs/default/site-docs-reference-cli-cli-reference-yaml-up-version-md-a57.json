@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_uxp_upgrade",
+    "permalink": "/reference/cli/cli-reference/yaml/up_uxp_upgrade"
+  },
+  "next": {
+    "title": "up_xpkg",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xpkg"
+  }
 }

@@ -1,6 +1,6 @@
 ---
 title: Run a control plane simulation
-weight: 200
+sidebar_position: 20
 description: A guide for how to use Simulations in a Space.
 ---
 

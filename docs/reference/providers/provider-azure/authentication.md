@@ -1,6 +1,6 @@
 ---
 title: Authentication
-weight: 10
+sidebar_position: 1
 description: Authentication options with the Upbound Azure official provider
 ---
 

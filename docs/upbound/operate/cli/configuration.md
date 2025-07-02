@@ -1,10 +1,7 @@
 ---
-title: "Configuration"
-metaTitle: "Upbound CLI - Configuration"
-description: "Configuration for the Upbound CLI"
-weight: 105
-aliases:
-    - /reference/configuration
+title: Configuration
+sidebar_position: 10
+description: Configuration for the Upbound CLI
 ---
 
 `up` interacts with a variety of systems, each of which may have information

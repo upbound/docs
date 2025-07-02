@@ -1,12 +1,7 @@
 ---
 title: Interacting with Disconnected Spaces
-weight: 4
+sidebar_position: 1
 description: Common operations in Spaces
-aliases:
-    - /all-spaces/self-hosted-spaces/spaces-management
-    - /spaces/spaces-management
-    - /deploy/disconnected-spaces/spaces-management
-    - all-spaces/self-hosted-spaces/quickstart
 ---
 
 ## Spaces management

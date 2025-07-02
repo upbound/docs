@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 6,
   "frontMatter": {
     "title": "Metrics",
-    "weight": 60,
+    "sidebar_position": 6,
     "description": "Metrics are essential for monitoring Crossplane's operations, helping to quickly identify and resolve potential issues."
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Guides",
-    "permalink": "/uxp/guides/"
-  },
-  "next": {
     "title": "Crossplane Pods",
     "permalink": "/uxp/guides/pods"
+  },
+  "next": {
+    "title": "Function Patch and Transform",
+    "permalink": "/uxp/guides/function-patch-and-transform"
   }
 }

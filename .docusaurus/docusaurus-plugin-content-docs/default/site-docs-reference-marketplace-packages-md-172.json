@@ -10,21 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Creating and Pushing Packages",
-    "weight": 6,
-    "description": "How to create, configure and push packages to the Upbound Marketplace",
-    "aliases": [
-      "/upbound-marketplace/packages"
-    ]
+    "sidebar_position": 1,
+    "description": "How to create, configure and push packages to the Upbound Marketplace"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "DMCA Policy",
-    "permalink": "/reference/marketplace/dmca"
+    "title": "Authentication",
+    "permalink": "/reference/marketplace/authentication"
   },
   "next": {
-    "title": "Release Notes",
-    "permalink": "/reference/release-notes/"
+    "title": "DMCA Policy",
+    "permalink": "/reference/marketplace/dmca"
   }
 }

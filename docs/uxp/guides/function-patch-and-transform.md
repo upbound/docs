@@ -1,7 +1,8 @@
 ---
 title: Function Patch and Transform
-weight: 70
-description: "A function that use patches and transforms to modify inputs from composite resources before creating managed resources"
+sidebar_position: 7
+description: A function that use patches and transforms to modify inputs from composite
+  resources before creating managed resources
 ---
 
 Function Patch and Transform allows you to write a Composition that specifies

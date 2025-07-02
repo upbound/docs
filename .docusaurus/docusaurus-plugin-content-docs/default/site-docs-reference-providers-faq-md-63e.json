@@ -10,12 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 50,
   "frontMatter": {
     "title": "FAQ",
-    "weight": 500,
-    "description": "Frequently asked questions related to Upbound Official providers",
-    "aliases": [
-      "/providers/faq"
-    ]
+    "sidebar_position": 50,
+    "description": "Frequently asked questions related to Upbound Official providers"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Migrate to Official Providers",
+    "permalink": "/reference/providers/migration"
   }
 }

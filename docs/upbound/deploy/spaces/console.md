@@ -1,11 +1,7 @@
 ---
 title: Upbound Console
-weight: 5
+sidebar_position: 1
 description: An introduction to the Console feature of Upbound
-aliases:
-    - /all-spaces/spaces/console
-    - all-spaces/spaces/console
-    - /console
 ---
 
 Upbound's Console is the command and control center for users to operate their organization's internal cloud platforms. The Console consolidates management of your internal cloud platforms under a single pane of glass. You can view usage and logs, debug control plane operations, and more across all your control planes.

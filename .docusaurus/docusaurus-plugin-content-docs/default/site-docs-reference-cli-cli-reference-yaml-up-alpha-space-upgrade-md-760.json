@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_alpha_space_mirror",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space_mirror"
+  },
+  "next": {
+    "title": "up_completion",
+    "permalink": "/reference/cli/cli-reference/yaml/up_completion"
+  }
 }

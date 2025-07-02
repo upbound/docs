@@ -1,10 +1,7 @@
 ---
 title: Scaling vCluster and etcd Resources
-weight: 950
+sidebar_position: 95
 description: A guide for scaling vCluster and etcd resources in self-hosted Spaces
-aliases:
-    - /all-spaces/self-hosted-spaces/scaling-resources
-    - /spaces/scaling-resources
 ---
 
 In large workloads or control plane migration, you may performance impacting

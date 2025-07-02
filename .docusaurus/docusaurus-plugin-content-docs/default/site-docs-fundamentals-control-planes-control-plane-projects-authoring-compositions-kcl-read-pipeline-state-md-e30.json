@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 12,
   "frontMatter": {
     "title": "Read function pipeline state",
-    "weight": 120,
-    "aliases": [
-      "/core-concepts/kcl/read-pipeline-state",
-      "core-concepts/kcl/read-pipeline-state"
-    ]
+    "sidebar_position": 12
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Write status to a composite",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
+  },
+  "next": {
+    "title": "Build with Python",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/"
   }
 }

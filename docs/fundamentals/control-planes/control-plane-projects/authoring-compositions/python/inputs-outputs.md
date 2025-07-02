@@ -1,9 +1,6 @@
 ---
-title: "Pipeline inputs and outputs"
-weight: 25
-aliases:
-    - /core-concepts/python/inputs-outputs
-    - core-concepts/python/inputs-outputs
+title: Pipeline inputs and outputs
+sidebar_position: 2
 ---
 
 Crossplane sends requests to your functions to ask them what resources to

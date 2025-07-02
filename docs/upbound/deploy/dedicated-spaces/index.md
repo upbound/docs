@@ -1,6 +1,6 @@
 ---
 title: Dedicated Spaces
-weight: 2
+sidebar_position: 1
 description: A guide to Upbound Dedicated Spaces
 ---
 

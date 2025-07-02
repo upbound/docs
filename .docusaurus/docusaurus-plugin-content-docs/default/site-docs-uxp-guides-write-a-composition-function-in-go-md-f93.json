@@ -10,15 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 8,
   "frontMatter": {
     "title": "Write a Composition Function in Go",
-    "weight": 80,
+    "sidebar_position": 8,
     "description": "Composition functions allow you to template resources using Go"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Upgrade Crossplane",
-    "permalink": "/uxp/guides/upgrade-crossplane"
+    "title": "Releasing Crossplane Extensions",
+    "permalink": "/uxp/guides/extensions-release-process"
   },
   "next": {
     "title": "Write a Composition Function in Python",

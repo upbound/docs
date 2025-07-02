@@ -1,10 +1,8 @@
 ---
-title: "Single Sign On in Upbound"
-description: "Configure single sign-on in your Upbound organization to manage user access"
-weight: 1
-aliases:
-    - /accounts/authentication/enable-sso
-    - accounts/authentication/enable-sso
+title: Single Sign On in Upbound
+sidebar_position: 1
+description: Configure single sign-on in your Upbound organization to manage user
+  access
 ---
 
 <!-- vale off -->

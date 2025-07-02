@@ -10,18 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Marketplace",
-    "icon": "marketplace",
-    "sidebar_position": 1,
-    "description": "How to use the Upbound Marketplace to discover Crossplane providers and packages.",
-    "category": "resources"
+    "description": "How to use the Upbound Marketplace to discover Crossplane providers and packages."
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Provider Terraform",
-    "permalink": "/reference/providers/provider-terraform/"
+    "title": "CLI Reference",
+    "permalink": "/reference/cli-reference"
   },
   "next": {
     "title": "Authentication",

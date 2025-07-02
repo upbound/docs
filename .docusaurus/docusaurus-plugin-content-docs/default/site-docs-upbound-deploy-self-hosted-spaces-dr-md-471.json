@@ -10,25 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 13,
   "frontMatter": {
     "title": "Disaster Recovery",
-    "weight": 130,
-    "description": "Configure Space-wide backups for disaster recovery.",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/dr",
-      "/spaces/dr",
-      "/disconnected-spaces/dr",
-      "/self-hosted-spaces/dr",
-      "all-spaces/self-hosted-spaces/dr"
-    ]
+    "sidebar_position": 13,
+    "description": "Configure Space-wide backups for disaster recovery."
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Deployment",
-    "permalink": "/upbound/deploy/self-hosted-spaces/deployment"
+    "title": "Connect or disconnect a Space",
+    "permalink": "/upbound/deploy/self-hosted-spaces/attach-detach"
   },
   "next": {
-    "title": "GCP",
-    "permalink": "/upbound/deploy/self-hosted-spaces/gcp/"
+    "title": "Use ArgoCD Plugin",
+    "permalink": "/upbound/deploy/self-hosted-spaces/use-argo"
   }
 }

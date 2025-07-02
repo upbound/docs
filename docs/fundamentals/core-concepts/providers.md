@@ -1,10 +1,9 @@
 ---
-title: "Providers"
-weight: 4
-description: "Providers allow Upbound to provision infrastructure on an external service. They handle communication between the control plane and your external resources"
-searchExclude: true
-aliases:
-    - core-concepts/providers
+title: Providers
+sidebar_position: 1
+description: Providers allow Upbound to provision infrastructure on an external service.
+  They handle communication between the control plane and your external resources
+draft: true
 ---
 
 Providers allow Upbound to provision infrastructure on an external service.

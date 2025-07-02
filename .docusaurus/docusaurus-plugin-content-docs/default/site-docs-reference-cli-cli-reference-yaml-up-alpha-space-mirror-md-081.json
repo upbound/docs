@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_alpha_space_list",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space_list"
+  },
+  "next": {
+    "title": "up_alpha_space_upgrade",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space_upgrade"
+  }
 }

@@ -10,21 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Legacy Spaces",
-    "weight": 3,
-    "description": "A guide to Upbound Spaces",
-    "aliases": [
-      "/deploy/legacy-spaces"
-    ]
+    "sidebar_position": 1,
+    "description": "A guide to Upbound Spaces"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "(deprecated) Control Plane Configurations",
-    "permalink": "/reference/legacy/control-plane-configurations"
+    "title": "Visual Studio Code extensions",
+    "permalink": "/reference/usage/vscode-extensions"
   },
   "next": {
-    "title": "(deprecated) Quickstart",
-    "permalink": "/reference/legacy/multicloud-deploy"
+    "title": "(deprecated) Connect Argo to Upbound",
+    "permalink": "/reference/legacy/connect-argo-to-upbound"
   }
 }

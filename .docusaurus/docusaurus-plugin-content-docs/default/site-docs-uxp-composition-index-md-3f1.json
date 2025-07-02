@@ -12,12 +12,15 @@
   "version": "current",
   "frontMatter": {
     "title": "Composition",
-    "weight": 51,
     "description": "Understand Crossplane's core components"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Environment Configs",
-    "permalink": "/uxp/composition/environment-configs"
+    "title": "Get Started With Managed Resources",
+    "permalink": "/uxp/get-started/get-started-with-managed-resources"
+  },
+  "next": {
+    "title": "Composite Resources",
+    "permalink": "/uxp/composition/composite-resources"
   }
 }

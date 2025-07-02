@@ -10,17 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "(deprecated) Quickstart",
-    "weight": 1,
-    "description": "A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound in a legacy Space.",
-    "aliases": [
-      "/deploy/legacy-spaces/multicloud-deploy"
-    ]
+    "sidebar_position": 1,
+    "description": "A guide for deploying a multicloud Cluster-as-a-Service platform on Upbound in a legacy Space."
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Legacy Spaces",
-    "permalink": "/reference/legacy/"
+    "title": "(deprecated) Control Plane Configurations",
+    "permalink": "/reference/legacy/control-plane-configurations"
+  },
+  "next": {
+    "title": "Official Providers",
+    "permalink": "/reference/providers/"
   }
 }

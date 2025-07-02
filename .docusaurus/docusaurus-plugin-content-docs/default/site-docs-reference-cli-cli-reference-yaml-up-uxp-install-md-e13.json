@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_uxp",
+    "permalink": "/reference/cli/cli-reference/yaml/up_uxp"
+  },
+  "next": {
+    "title": "up_uxp_uninstall",
+    "permalink": "/reference/cli/cli-reference/yaml/up_uxp_uninstall"
+  }
 }

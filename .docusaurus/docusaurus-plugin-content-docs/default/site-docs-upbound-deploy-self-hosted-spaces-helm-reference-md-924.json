@@ -10,20 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 20,
   "frontMatter": {
     "title": "Space Helm Chart Reference",
-    "weight": 200,
-    "description": "Spaces Helm chart configuration values",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/helm-reference",
-      "/spaces/helm-reference",
-      "/deploy/disconnected-spaces/helm-reference"
-    ]
+    "sidebar_position": 20,
+    "description": "Spaces Helm chart configuration values"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "GCP",
-    "permalink": "/upbound/deploy/self-hosted-spaces/gcp/"
+    "title": "Use ArgoCD Plugin",
+    "permalink": "/upbound/deploy/self-hosted-spaces/use-argo"
   },
   "next": {
     "title": "Proxied configuration",

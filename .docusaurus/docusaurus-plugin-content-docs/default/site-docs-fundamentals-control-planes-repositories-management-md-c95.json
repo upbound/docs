@@ -10,21 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 3,
   "frontMatter": {
     "title": "Repository Management",
-    "weight": 30,
-    "description": "How to create, list, and delete repositories",
-    "aliases": [
-      "/repositories/management"
-    ]
+    "sidebar_position": 3,
+    "description": "How to create, list, and delete repositories"
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
-    "title": "Repositories",
-    "permalink": "/fundamentals/control-planes/repositories/"
-  },
-  "next": {
     "title": "Publish packages",
     "permalink": "/fundamentals/control-planes/repositories/publish-packages"
+  },
+  "next": {
+    "title": "Controllers",
+    "permalink": "/fundamentals/control-planes/controllers"
   }
 }

@@ -10,23 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 99,
   "frontMatter": {
     "title": "Declaratively create control planes",
-    "weight": 999,
-    "description": "A tutorial to configure a Space with Argo to declaratively create and manage control planes",
-    "draft": true,
-    "aliases": [
-      "/deploy/spaces/guides/declarative-ctps",
-      "/all-spaces/declarative-ctps"
-    ]
+    "sidebar_position": 99,
+    "description": "A tutorial to configure a Space with Argo to declaratively create and manage control planes"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Run a control plane simulation",
-    "permalink": "/upbound/operate/simulations"
+    "title": "Query API",
+    "permalink": "/upbound/connect/query-api"
   },
   "next": {
-    "title": "Git integration",
-    "permalink": "/upbound/connect/git-integration"
+    "title": "Consume control plane APIs in an app cluster with control plane connector",
+    "permalink": "/upbound/connect/mcp-connector-guide"
   }
 }

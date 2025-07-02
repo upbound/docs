@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 5,
   "frontMatter": {
     "title": "Loops (for)",
-    "weight": 50,
-    "aliases": [
-      "/core-concepts/kcl/loops",
-      "core-concepts/kcl/loops"
-    ]
+    "sidebar_position": 5
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Variables",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables"
+  },
+  "next": {
+    "title": "Conditionals (if)",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals"
   }
 }

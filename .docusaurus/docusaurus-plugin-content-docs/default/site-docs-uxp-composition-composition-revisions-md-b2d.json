@@ -10,14 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 3,
   "frontMatter": {
     "title": "Composition Revisions",
-    "weight": 35
+    "sidebar_position": 3
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Composite Resources",
-    "permalink": "/uxp/composition/composite-resources"
+    "title": "Composite Resource Definitions",
+    "permalink": "/uxp/composition/composite-resource-definitions"
   },
   "next": {
     "title": "Compositions",

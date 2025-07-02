@@ -1,9 +1,7 @@
 ---
 title: Store configurations
-weight: 10
+sidebar_position: 1
 description: Product documentation for using the Repositories feature in Upbound.
-aliases:
-    - /repositories/store-configurations
 ---
 
 

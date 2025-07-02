@@ -10,11 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 8,
   "frontMatter": {
     "title": "Write status to a composite",
-    "weight": 80,
-    "aliases": [
-      "/core-concepts/kcl/write-status-to-composite"
-    ]
+    "sidebar_position": 8
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Resource data extraction",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
+  },
+  "next": {
+    "title": "Read function pipeline state",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
   }
 }

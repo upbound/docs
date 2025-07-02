@@ -48,17 +48,17 @@
       "plugin": "plugin---searchc-14-0ea"
     }
   },
-  "/-876": {
+  "/-0c9": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---aba-d70"
     }
   },
-  "/-4b0": {
+  "/-424": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---22-d-307"
   },
-  "/-80c": {
+  "/-6c4": {
     "__comp": "__comp---theme-doc-roota-94-67a"
   },
   "/fundamentals/builders-workshop/create-configuration-082": {
@@ -77,19 +77,15 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-builders-workshop-testing-2-db-b6b"
   },
-  "/fundamentals/consumer-portal-get-started-3f6": {
+  "/fundamentals/consumer-portal-get-started-13f": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-consumer-portal-get-starteddf-7-f42"
   },
-  "/fundamentals/control-planes/-143": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---fundamentals-control-planes-0-fd-fdd"
-  },
-  "/fundamentals/control-planes/control-plane-projects/-0e8": {
+  "/fundamentals/control-planes/control-plane-projects/-cde": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-77-f-dca"
   },
-  "/fundamentals/control-planes/control-plane-projects/adding-dependencies-c01": {
+  "/fundamentals/control-planes/control-plane-projects/adding-dependencies-67e": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-adding-dependencies-39-b-5d4"
   },
@@ -101,11 +97,11 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-751-ecb"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs-c02": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs-03a": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-inputs-outputsbfd-3dc"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas-eda": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas-75e": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-templating-schemasd-5-d-370"
   },
@@ -113,11 +109,11 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-1-a-8-31b"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs-f7d": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs-b3f": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-inputs-outputs-4-de-70b"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models-f59": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models-15f": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-go-models-13-e-70d"
   },
@@ -125,35 +121,35 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-a-72-86e"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals-dd9": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals-bc6": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-conditionals-7-ed-5fc"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs-b02": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs-c49": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-inputs-outputs-782-38f"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops-69b": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops-f5c": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-loopse-14-928"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state-96c": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state-1cb": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-read-pipeline-statee-30-a27"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction-416": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction-3b1": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-resource-data-extractionea-0-79d"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas-931": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas-954": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-resource-schemas-26-c-012"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables-7a8": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables-158": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-variables-6-d-4-776"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite-657": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite-53b": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-kcl-write-status-to-composited-87-7a7"
   },
@@ -161,39 +157,39 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-python-b-13-8b6"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs-d33": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs-6fa": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-python-inputs-outputsaa-6-8a8"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models-50b": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models-516": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-compositions-python-modelsa-92-f0b"
   },
-  "/fundamentals/control-planes/control-plane-projects/authoring-xrds-cc0": {
+  "/fundamentals/control-planes/control-plane-projects/authoring-xrds-0fe": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-authoring-xrds-394-8ed"
   },
-  "/fundamentals/control-planes/control-plane-projects/building-pushing-40e": {
+  "/fundamentals/control-planes/control-plane-projects/building-pushing-e73": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-building-pushinga-96-e05"
   },
-  "/fundamentals/control-planes/control-plane-projects/simulations-66f": {
+  "/fundamentals/control-planes/control-plane-projects/simulations-744": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-simulations-259-096"
   },
-  "/fundamentals/control-planes/control-plane-projects/testing-ffb": {
+  "/fundamentals/control-planes/control-plane-projects/testing-7ef": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-control-plane-projects-testing-4-f-0-e81"
   },
-  "/fundamentals/control-planes/controllers-14c": {
+  "/fundamentals/control-planes/controllers-42e": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-controllers-888-88a"
   },
-  "/fundamentals/control-planes/migrating-to-mcps-89e": {
+  "/fundamentals/control-planes/migrating-to-mcps-410": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-migrating-to-mcps-974-b2b"
   },
-  "/fundamentals/control-planes/provider-authentication-6f0": {
+  "/fundamentals/control-planes/provider-authentication-9d2": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-control-planes-provider-authentication-7-ab-b21"
   },
@@ -249,10 +245,6 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-1-a-3-6f4"
   },
-  "/reference/apis/-dfc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-apis-027-cc9"
-  },
   "/reference/apis/crossplane-api/-7d6": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-apis-crossplane-api-614-242"
@@ -285,7 +277,7 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-apis-spaces-api-v-1-970-f-cd4"
   },
-  "/reference/apis/spaces-api/yaml/v1.13/-176": {
+  "/reference/apis/spaces-api/yaml/v1.13/-98d": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-apis-spaces-api-yaml-v-1-13-f-61-f64"
   },
@@ -293,609 +285,9 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-apis-testing-api-668-d4b"
   },
-  "/reference/cli/cli-reference/-301": {
+  "/reference/cli-reference-db5": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-e-32-5fa"
-  },
-  "/reference/cli/cli-reference/yaml/up-919": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-upb-7-f-eac"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha-ec6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-2-d-9-a82"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_ctx-8be": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-ctx-76-d-3be"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_migration-d3c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-migration-1-da-c02"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_migration_export-f7c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-migration-export-238-1cb"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_migration_import-5c2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-migration-importd-2-c-0b8"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_migration_pause-toggle-a09": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-migration-pause-togglee-29-d7f"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space-4d2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-spacecdb-076"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_billing-0c4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-billing-097-703"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_billing_export-21b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-billing-export-8-aa-160"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_connect_(attach)-6de": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-connect-attach-e-49-47a"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_destroy-6dc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-destroy-65-c-423"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)-5c3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-disconnect-detach-331-bc6"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_init-8ab": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-init-1-d-3-4c4"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_list-887": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-list-84-c-f19"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_mirror-f31": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-mirror-081-0c7"
-  },
-  "/reference/cli/cli-reference/yaml/up_alpha_space_upgrade-516": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-alpha-space-upgrade-760-9bf"
-  },
-  "/reference/cli/cli-reference/yaml/up_completion-997": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-completion-27-a-129"
-  },
-  "/reference/cli/cli-reference/yaml/up_composition-836": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-compositionc-74-c0c"
-  },
-  "/reference/cli/cli-reference/yaml/up_composition_generate-cef": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-composition-generate-6-df-254"
-  },
-  "/reference/cli/cli-reference/yaml/up_composition_render-8ac": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-composition-renderfd-1-5fa"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)-dd2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-767-9ae"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration-57b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-configuration-688-a7d"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install-142": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-configuration-install-39-a-654"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connect-99a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-connectc-57-49e"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector-fa3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-connectora-0-c-dd8"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install-3de": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-connector-install-593-2e7"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall-8c3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-connector-uninstall-834-263"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_create-fa0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-create-556-458"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_delete-773": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-deleteb-4-a-4ff"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect-be2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-disconnectd-31-292"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function-082": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-function-4-bc-7c5"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function_install-892": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-function-install-263-0be"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_get-a30": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-getada-a88"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_list-6c0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-listbc-9-051"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider-376": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-providerac-3-cc3"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install-b56": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-provider-install-156-515"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret-bba": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-pull-secretc-8-c-1a2"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create-a03": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-pull-secret-create-9-ce-59c"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulate-d06": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-simulate-144-fa1"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)-de1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-c-1-b-232"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create-f09": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-createe-1-a-054"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete-950": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-deletea-80-8bf"
-  },
-  "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list-1e9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-controlplane-ctp-simulation-sim-list-5-d-9-3f6"
-  },
-  "/reference/cli/cli-reference/yaml/up_ctx-898": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-ctxcbe-dbe"
-  },
-  "/reference/cli/cli-reference/yaml/up_dependency_(dep)-602": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-dependency-dep-ee-0-7e5"
-  },
-  "/reference/cli/cli-reference/yaml/up_dependency_(dep)_add-6ee": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-dependency-dep-addc-23-b65"
-  },
-  "/reference/cli/cli-reference/yaml/up_dependency_(dep)_clean-cache-977": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-dependency-dep-clean-cache-109-492"
-  },
-  "/reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache-90a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-dependency-dep-update-cache-079-ff5"
-  },
-  "/reference/cli/cli-reference/yaml/up_example-64f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-example-770-4d3"
-  },
-  "/reference/cli/cli-reference/yaml/up_example_generate-0c3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-example-generate-4-a-3-346"
-  },
-  "/reference/cli/cli-reference/yaml/up_function-475": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-function-4-c-3-55d"
-  },
-  "/reference/cli/cli-reference/yaml/up_function_generate-53d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-function-generate-9-a-2-29c"
-  },
-  "/reference/cli/cli-reference/yaml/up_group-0b3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-groupfad-df5"
-  },
-  "/reference/cli/cli-reference/yaml/up_group_create-6d6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-group-createa-07-42e"
-  },
-  "/reference/cli/cli-reference/yaml/up_group_delete-0bd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-group-delete-4-ff-77c"
-  },
-  "/reference/cli/cli-reference/yaml/up_group_get-0b5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-group-get-9-ab-667"
-  },
-  "/reference/cli/cli-reference/yaml/up_group_list-f4a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-group-list-079-2a4"
-  },
-  "/reference/cli/cli-reference/yaml/up_help-c36": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-helpef-0-4d7"
-  },
-  "/reference/cli/cli-reference/yaml/up_license-e3c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-license-6-a-6-7ae"
-  },
-  "/reference/cli/cli-reference/yaml/up_login-aa8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-login-222-d1f"
-  },
-  "/reference/cli/cli-reference/yaml/up_logout-b84": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-logout-562-227"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)-0d9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-bcf-05e"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_create-99e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-create-9-d-3-f8e"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_delete-46a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-delete-29-b-afb"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_get-bf4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-getc-27-9c2"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_list-b53": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-listc-5-e-cb5"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_token-836": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-token-513-9c7"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_user-640": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-user-734-811"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_user_invite-174": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-user-invitea-11-a57"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_user_list-cec": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-user-lista-2-a-8ff"
-  },
-  "/reference/cli/cli-reference/yaml/up_organization_(org)_user_remove-473": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-organization-org-user-remove-38-d-549"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile-5e8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-2-f-7-ee9"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_create-2fe": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-createb-89-1f1"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_current-e90": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-currente-13-c24"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_delete-f4d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-delete-50-b-310"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_list-e14": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-list-6-db-95a"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_rename-fc9": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-rename-397-91f"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_set-d6e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-setf-2-a-809"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_use-18f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-use-4-cc-fe9"
-  },
-  "/reference/cli/cli-reference/yaml/up_profile_view-f1f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-profile-view-7-a-0-6fb"
-  },
-  "/reference/cli/cli-reference/yaml/up_project-804": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-5-c-2-352"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_build-97e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-build-1-a-4-c7d"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_init-5b6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-initfe-4-81f"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_move-739": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-move-66-f-d5a"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_push-462": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-pushb-83-031"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_run-806": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-run-99-a-960"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_simulate-5a0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-simulatea-4-b-cab"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_simulation-e92": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-simulation-4-bc-e9d"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_simulation_complete-14f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-simulation-completea-00-fbf"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_simulation_create-e45": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-simulation-create-8-c-9-012"
-  },
-  "/reference/cli/cli-reference/yaml/up_project_simulation_delete-8ea": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-project-simulation-deletee-27-3d9"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)-c3c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-0-ba-b41"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_create-161": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-create-04-b-021"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_delete-abb": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-delete-672-cfa"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_get-2b1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-getd-7-c-917"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_list-f00": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-listfb-0-a87"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission-97c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-permission-414-724"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_grant-8f6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-permission-grantd-06-e36"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_list-7bd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-permission-listd-59-a07"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_revoke-221": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-permission-revoke-3-a-5-4dc"
-  },
-  "/reference/cli/cli-reference/yaml/up_repository_(repo)_update-416": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-repository-repo-update-4-cf-f6b"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot-546": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robotb-43-160"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_create-ddb": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-create-2-a-3-616"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_delete-957": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-delete-74-f-a23"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_get-611": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-geta-08-23e"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_list-2f4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-listb-9-f-553"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_team-a2b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-teamb-93-0ed"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_team_join-3ea": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-team-joine-75-e5e"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_team_leave-6dd": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-team-leaveb-67-d76"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_team_list-9f7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-team-list-11-d-374"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_token-1b7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-tokenc-01-592"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_token_create-903": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-token-createdd-9-eed"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_token_delete-e60": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-token-delete-808-14c"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_token_get-b14": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-token-get-9-f-4-89e"
-  },
-  "/reference/cli/cli-reference/yaml/up_robot_token_list-a1f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-robot-token-list-1-a-7-2b9"
-  },
-  "/reference/cli/cli-reference/yaml/up_space-24d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-spaceb-65-b45"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_billing-d29": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-billing-4-f-2-36f"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_billing_export-ac7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-billing-export-6-c-9-ffd"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_connect_(attach)-3e2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-connect-attach-9-a-8-9b1"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_destroy-087": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-destroy-29-a-ca7"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_disconnect_(detach)-6e1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-disconnect-detach-3-f-0-356"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_init-879": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-init-3-a-1-e5c"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_list-2b0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-list-419-9fd"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_mirror-585": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-mirrord-6-d-346"
-  },
-  "/reference/cli/cli-reference/yaml/up_space_upgrade-fe3": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-space-upgrade-32-e-110"
-  },
-  "/reference/cli/cli-reference/yaml/up_team-f87": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-team-224-a26"
-  },
-  "/reference/cli/cli-reference/yaml/up_team_create-b79": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-team-create-753-ff3"
-  },
-  "/reference/cli/cli-reference/yaml/up_team_delete-5ff": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-team-delete-673-f3b"
-  },
-  "/reference/cli/cli-reference/yaml/up_team_get-00d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-team-get-1-e-7-2e0"
-  },
-  "/reference/cli/cli-reference/yaml/up_team_list-38d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-team-lista-2-c-3eb"
-  },
-  "/reference/cli/cli-reference/yaml/up_test-11f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-test-42-c-e15"
-  },
-  "/reference/cli/cli-reference/yaml/up_test_generate-acf": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-test-generate-1-f-8-580"
-  },
-  "/reference/cli/cli-reference/yaml/up_test_run-9e4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-test-run-9-b-3-a62"
-  },
-  "/reference/cli/cli-reference/yaml/up_uxp-b7c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-uxp-1-af-80b"
-  },
-  "/reference/cli/cli-reference/yaml/up_uxp_install-e3e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-uxp-installe-13-9d4"
-  },
-  "/reference/cli/cli-reference/yaml/up_uxp_uninstall-5f2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-uxp-uninstall-7-f-5-687"
-  },
-  "/reference/cli/cli-reference/yaml/up_uxp_upgrade-0b7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-uxp-upgrade-721-07b"
-  },
-  "/reference/cli/cli-reference/yaml/up_version-f99": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-versiona-57-f05"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpkg-9bf": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpkg-132-e5f"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpkg_append-75a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpkg-appendc-66-8e4"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpkg_batch-212": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpkg-batch-908-723"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpkg_build-423": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpkg-build-9-a-3-0fd"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpkg_push-c3c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpkg-pushf-72-735"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpkg_xp-extract-22a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpkg-xp-extract-3-c-0-e39"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpls-265": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpls-784-e0a"
-  },
-  "/reference/cli/cli-reference/yaml/up_xpls_serve-35e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xpls-servec-61-7f6"
-  },
-  "/reference/cli/cli-reference/yaml/up_xrd-b07": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xrd-0-bf-394"
-  },
-  "/reference/cli/cli-reference/yaml/up_xrd_generate-d1e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-cli-cli-reference-yaml-up-xrd-generate-1-b-2-2ac"
-  },
-  "/reference/crossplane-vs-upbound-049": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-crossplane-vs-upboundba-6-480"
+    "content": "content---reference-cli-reference-204-b73"
   },
   "/reference/legacy/-85a": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -933,19 +325,19 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-4-fd-f71"
   },
-  "/reference/providers/faq-212": {
+  "/reference/providers/faq-f47": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-faq-63-e-94f"
   },
-  "/reference/providers/migration-819": {
+  "/reference/providers/migration-eda": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-migratione-5-f-895"
   },
-  "/reference/providers/monolithic-c5c": {
+  "/reference/providers/monolithic-a9d": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-monolithic-344-e94"
   },
-  "/reference/providers/policies-ecf": {
+  "/reference/providers/policies-29e": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-policies-697-902"
   },
@@ -953,7 +345,7 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-aws-f-00-8de"
   },
-  "/reference/providers/provider-aws/authentication-068": {
+  "/reference/providers/provider-aws/authentication-834": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-aws-authentication-288-eea"
   },
@@ -961,7 +353,7 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-azure-435-bb4"
   },
-  "/reference/providers/provider-azure/authentication-21a": {
+  "/reference/providers/provider-azure/authentication-4ca": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-azure-authenticationaac-d11"
   },
@@ -969,7 +361,7 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-azuread-7-ce-bda"
   },
-  "/reference/providers/provider-families-c20": {
+  "/reference/providers/provider-families-c2d": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-families-03-d-0aa"
   },
@@ -977,7 +369,7 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-gcp-e-67-edc"
   },
-  "/reference/providers/provider-gcp/authentication-4d8": {
+  "/reference/providers/provider-gcp/authentication-e91": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-gcp-authentication-4-c-1-68d"
   },
@@ -989,7 +381,7 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-kubernetes-23-d-3a7"
   },
-  "/reference/providers/provider-kubernetes/authentication-022": {
+  "/reference/providers/provider-kubernetes/authentication-5f6": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-kubernetes-authentication-8-db-017"
   },
@@ -997,19 +389,19 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-terraform-be-7-737"
   },
-  "/reference/providers/provider-terraform/migrate-hcl-000": {
+  "/reference/providers/provider-terraform/migrate-hcl-b7b": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-terraform-migrate-hcl-204-4bc"
   },
-  "/reference/providers/provider-terraform/migrate-provider-tf-2cb": {
+  "/reference/providers/provider-terraform/migrate-provider-tf-2c1": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-provider-terraform-migrate-provider-tf-8-b-2-cc2"
   },
-  "/reference/providers/pull-secrets-bc9": {
+  "/reference/providers/pull-secrets-3aa": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-pull-secrets-869-f58"
   },
-  "/reference/providers/signature-verification-a58": {
+  "/reference/providers/signature-verification-1db": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-providers-signature-verificationc-04-923"
   },
@@ -1017,17 +409,17 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-release-notes-985-937"
   },
-  "/reference/release-notes/rel-notes/mcp-connector-a88": {
+  "/reference/release-notes/mcp-connector-d68": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-release-notes-rel-notes-mcp-connectorc-9-d-44d"
+    "content": "content---reference-release-notes-mcp-connectore-5-e-0a2"
   },
-  "/reference/release-notes/rel-notes/spaces-3b0": {
+  "/reference/release-notes/spaces-f68": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-release-notes-rel-notes-spaces-7-ef-13c"
+    "content": "content---reference-release-notes-spaces-0-cf-6d0"
   },
-  "/reference/release-notes/rel-notes/up-cli-c10": {
+  "/reference/release-notes/up-cli-9d0": {
     "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---reference-release-notes-rel-notes-up-cli-08-c-0c6"
+    "content": "content---reference-release-notes-up-clicb-1-c0e"
   },
   "/reference/usage/-249": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -1061,11 +453,11 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---solutions-idp-starter-kit-673-eb9"
   },
-  "/solutions/upbound-platform-ref-e95": {
+  "/solutions/upbound-platform-ref-09c": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---solutions-upbound-platform-refd-9-e-22a"
   },
-  "/upbound/-f85": {
+  "/upbound/-4c3": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---upbound-e-3-a-67a"
   },
@@ -1092,10 +484,6 @@
   "/upbound/connect/query-api-6dc": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---upbound-connect-query-api-8-d-4-51d"
-  },
-  "/upbound/deploy/-d6a": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---upbound-deploy-118-cc6"
   },
   "/upbound/deploy/backup-and-restore-8c8": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -1281,9 +669,17 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---upbound-operate-simulationsd-53-0dc"
   },
-  "/uxp/-034": {
+  "/uxp/-d24": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-a-0-a-6f7"
+  },
+  "/uxp/api/-51d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-api-383-729"
+  },
+  "/uxp/composition/-930": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-composition-3-f-1-549"
   },
   "/uxp/composition/composite-resource-definitions-70b": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -1305,29 +701,21 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-composition-environment-configscad-835"
   },
-  "/uxp/enhancements/package-manager-2b0": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---uxp-enhancements-package-manager-813-5b1"
-  },
-  "/uxp/get-started/-114": {
+  "/uxp/get-started/-8c6": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-get-started-60-a-0c1"
   },
-  "/uxp/get-started/get-started-with-composition-11c": {
+  "/uxp/get-started/get-started-with-composition-e68": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-get-started-get-started-with-compositionb-4-a-9e9"
   },
-  "/uxp/get-started/get-started-with-managed-resources-a65": {
+  "/uxp/get-started/get-started-with-managed-resources-5f3": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-get-started-get-started-with-managed-resources-3-ec-c45"
   },
-  "/uxp/get-started/install-b4f": {
+  "/uxp/get-started/install-d5b": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-get-started-installce-8-27b"
-  },
-  "/uxp/guides/-60e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---uxp-guides-617-2b9"
   },
   "/uxp/guides/crossplane-with-argo-cd-861": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -1373,6 +761,10 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-guides-write-a-composition-function-in-python-825-c3c"
   },
+  "/uxp/managed-resources/-44f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-managed-resources-2-a-6-9b9"
+  },
   "/uxp/managed-resources/-fc2": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-managed-resources-419-332"
@@ -1396,14 +788,6 @@
   "/uxp/packages/providers-d1c": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---uxp-packages-providers-76-d-e23"
-  },
-  "/uxp/reference/-ab7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---uxp-reference-d-65-00c"
-  },
-  "/uxp/whats-crossplane/-eca": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---uxp-whats-crossplane-aee-9cf"
   },
   "/-e9a": {
     "__comp": "__comp---theme-doc-item-178-a40",

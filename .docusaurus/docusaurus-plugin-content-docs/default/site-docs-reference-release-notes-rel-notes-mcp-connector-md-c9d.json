@@ -12,14 +12,12 @@
   "version": "current",
   "frontMatter": {
     "title": "MCP Connector Release Notes",
-    "description": "Release notes for the Mcp Connector",
-    "toc_min_heading_level": 2,
-    "toc_max_heading_level": 2
+    "description": "Release notes for the Mcp Connector"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Up CLI Release Notes",
-    "permalink": "/reference/release-notes/rel-notes/up-cli"
+    "title": "Release Notes",
+    "permalink": "/reference/release-notes/"
   },
   "next": {
     "title": "Spaces Release Notes",

@@ -1,12 +1,7 @@
 ---
 title: Query API
-weight: 400
+sidebar_position: 40
 description: Use the `up` CLI to query objects and resources
-cascade:
-    product: api
-aliases:
-    - /all-spaces/query-api
-    - all-spaces/query-api
 ---
 
 <!-- vale write-good.TooWordy = NO -->

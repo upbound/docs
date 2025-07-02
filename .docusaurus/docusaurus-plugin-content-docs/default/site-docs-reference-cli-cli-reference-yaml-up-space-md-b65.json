@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_robot_token_list",
+    "permalink": "/reference/cli/cli-reference/yaml/up_robot_token_list"
+  },
+  "next": {
+    "title": "up_space_billing",
+    "permalink": "/reference/cli/cli-reference/yaml/up_space_billing"
+  }
 }

@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Provider GCP",
-    "weight": 1,
+    "sidebar_position": 1,
     "description": "Release notes for the GCP official provider"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Provider AzureAD",
-    "permalink": "/reference/providers/provider-azuread/"
+    "title": "Provider families",
+    "permalink": "/reference/providers/provider-families"
   },
   "next": {
-    "title": "Provider Helm",
-    "permalink": "/reference/providers/provider-helm/"
+    "title": "Authentication",
+    "permalink": "/reference/providers/provider-gcp/authentication"
   }
 }

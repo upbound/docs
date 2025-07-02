@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Control Planes",
-    "weight": 1,
+    "sidebar_position": 1,
     "description": "An overview of control planes in Upbound"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Contexts",
-    "permalink": "/upbound/operate/cli/contexts"
+    "title": "Automatically upgrade control planes",
+    "permalink": "/upbound/operate/auto-upgrade"
   },
   "next": {
-    "title": "Control Plane Connector",
-    "permalink": "/upbound/operate/ctp-connector"
+    "title": "Control Plane Groups",
+    "permalink": "/upbound/operate/groups"
   }
 }

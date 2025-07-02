@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_repository_(repo)_permission_list",
+    "permalink": "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_list"
+  },
+  "next": {
+    "title": "up_repository_(repo)_update",
+    "permalink": "/reference/cli/cli-reference/yaml/up_repository_(repo)_update"
+  }
 }

@@ -10,14 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Robots",
-    "weight": 4,
-    "description": "Creating and assigning Upbound robot tokens",
-    "aliases": [
-      "/accounts/identity-management/robots",
-      "accounts/identity-management/robots"
-    ]
+    "sidebar_position": 1,
+    "description": "Creating and assigning Upbound robot tokens"
   },
   "sidebar": "upboundSidebar",
   "previous": {

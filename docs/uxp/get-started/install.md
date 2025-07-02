@@ -1,6 +1,6 @@
 ---
 title: Install Crossplane
-weight: 100
+sidebar_position: 10
 ---
 
 Crossplane installs into an existing Kubernetes cluster, creating the

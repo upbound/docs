@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 8,
   "frontMatter": {
     "title": "Releasing Crossplane Extensions",
-    "weight": 80,
+    "sidebar_position": 8,
     "description": "Configuring build pipelines for Crossplane extensions with GitHub Actions"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Configuring Crossplane with Argo CD",
-    "permalink": "/uxp/guides/crossplane-with-argo-cd"
-  },
-  "next": {
     "title": "Function Patch and Transform",
     "permalink": "/uxp/guides/function-patch-and-transform"
+  },
+  "next": {
+    "title": "Write a Composition Function in Go",
+    "permalink": "/uxp/guides/write-a-composition-function-in-go"
   }
 }

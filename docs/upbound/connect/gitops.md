@@ -1,11 +1,7 @@
 ---
 title: GitOps with control planes
-weight: 90
+sidebar_position: 9
 description: An introduction to doing GitOps with control planes on Upbound
-aliases:
-    - /mcp/gitops
-    - /spaces/control-plane-connector
-    - mcp/gitops
 ---
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.

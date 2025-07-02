@@ -10,22 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Control Plane Groups",
-    "weight": 2,
-    "description": "An introduction to the Control Plane Groups in Upbound",
-    "aliases": [
-      "/mcp/groups",
-      "mcp/groups"
-    ]
+    "sidebar_position": 1,
+    "description": "An introduction to the Control Plane Groups in Upbound"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Debugging issues on a control plane",
-    "permalink": "/upbound/operate/debugging-a-ctp"
+    "title": "Control Planes",
+    "permalink": "/upbound/operate/control-planes"
   },
   "next": {
-    "title": "Observability",
-    "permalink": "/upbound/operate/observability"
+    "title": "Up CLI",
+    "permalink": "/upbound/operate/cli/"
   }
 }

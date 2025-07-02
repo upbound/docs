@@ -1,9 +1,7 @@
 ---
-title: "Repository Management"
-weight: 30
-description: "How to create, list, and delete repositories"
-aliases:
-    - /repositories/management
+title: Repository Management
+sidebar_position: 3
+description: How to create, list, and delete repositories
 ---
 
 

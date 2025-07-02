@@ -1,6 +1,6 @@
 ---
-title: "Provider AWS"
-weight: 1
+title: Provider AWS
+sidebar_position: 1
 description: Release notes for the AWS official provider
 ---
 

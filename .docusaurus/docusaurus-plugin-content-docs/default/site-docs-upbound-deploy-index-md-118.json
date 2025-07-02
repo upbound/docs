@@ -10,23 +10,17 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Deploy Upbound",
-    "sidebar_position": 1,
-    "description": "An introduction to Spaces hosting feature in Upbound",
-    "aliases": [
-      "/all-spaces/_index",
-      "/spaces",
-      "/concepts/upbound-spaces",
-      "all-spaces/_index.md"
-    ],
-    "icon": "balloon",
-    "category": "guides"
+    "description": "An introduction to Spaces hosting feature in Upbound"
   },
   "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Control Plane Topologies",
+    "permalink": "/upbound/deploy/control-plane-topologies"
+  },
   "next": {
-    "title": "Backup and restore",
-    "permalink": "/upbound/deploy/backup-and-restore"
+    "title": "Upbound IAM",
+    "permalink": "/upbound/operate/accounts/"
   }
 }

@@ -1,9 +1,6 @@
 ---
-title: "Conditionals (if)"
-weight: 60
-aliases:
-    - /core-concepts/kcl/conditionals
-    - core-concepts/kcl/conditionals
+title: Conditionals (if)
+sidebar_position: 6
 ---
 
 The `if` expression allows you to optionally compose resources based on

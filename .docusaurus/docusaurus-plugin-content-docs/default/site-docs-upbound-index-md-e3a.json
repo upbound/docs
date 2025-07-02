@@ -1,7 +1,7 @@
 {
   "id": "upbound/index",
-  "title": "index",
-  "description": "",
+  "title": "Upbound Spaces",
+  "description": "An introduction to Spaces hosting feature in Upbound",
   "source": "@site/docs/upbound/index.md",
   "sourceDirName": "upbound",
   "slug": "/upbound/",
@@ -10,5 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Upbound Spaces",
+    "description": "An introduction to Spaces hosting feature in Upbound",
+    "sidebar_position": 1
+  },
+  "sidebar": "upboundSidebar",
+  "next": {
+    "title": "Cloud Spaces",
+    "permalink": "/upbound/deploy/spaces/"
+  }
 }

@@ -1,7 +1,7 @@
 ---
 title: Functions
-weight: 100
-description: "Functions extend Crossplane with new ways to configure composition"
+sidebar_position: 10
+description: Functions extend Crossplane with new ways to configure composition
 ---
 
 Functions extend Crossplane with new ways to configure

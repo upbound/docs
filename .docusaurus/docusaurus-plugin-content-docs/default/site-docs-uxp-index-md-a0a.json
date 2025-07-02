@@ -1,7 +1,7 @@
 {
   "id": "uxp/index",
-  "title": "Welcome",
-  "description": "Welcome to the Crossplane documentation. Crossplane is a control plane framework",
+  "title": "What's Crossplane?",
+  "description": "Learn what Crossplane is and why you'd use it.",
   "source": "@site/docs/uxp/index.md",
   "sourceDirName": "uxp",
   "slug": "/uxp/",
@@ -10,11 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
-    "title": "Welcome",
-    "weight": -1,
-    "cascade": {
-      "version": "2.0-preview"
-    }
+    "title": "What's Crossplane?",
+    "sidebar_position": 1,
+    "description": "Learn what Crossplane is and why you'd use it."
+  },
+  "sidebar": "uxpSidebar",
+  "next": {
+    "title": "Get Started",
+    "permalink": "/uxp/get-started/"
   }
 }

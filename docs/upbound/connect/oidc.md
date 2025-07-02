@@ -1,12 +1,8 @@
 ---
 title: Connect control planes to external services
-weight: 20
-description: A guide for authenticating control plane with external services, including using OIDC
-aliases:
-    - /mcp/oidc
-    - "/concepts/operate/oidc"
-    - mcp/oidc
-    - "/connect/oidc"
+sidebar_position: 2
+description: A guide for authenticating control plane with external services, including
+  using OIDC
 ---
 
 <!-- vale gitlab.SentenceLength = NO -->

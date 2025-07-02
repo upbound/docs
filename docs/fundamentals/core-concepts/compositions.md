@@ -1,7 +1,8 @@
 ---
 title: Compositions
-weight: 5
-description: Compositions are declarative templates that enable the creation of multiple managed resources
+sidebar_position: 1
+description: Compositions are declarative templates that enable the creation of multiple
+  managed resources
 ---
 
 <!-- vale write-good.Passive = NO -->

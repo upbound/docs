@@ -1,9 +1,6 @@
 ---
-title: "Models"
-weight: 30
-aliases:
-    - /core-concepts/python/models
-    - core-concepts/python/models
+title: Models
+sidebar_position: 3
 ---
 
 Upbound Official Providers and some other packages include

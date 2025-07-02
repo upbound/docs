@@ -1,6 +1,6 @@
 ---
-title: "Provider Helm"
-weight: 1
+title: Provider Helm
+sidebar_position: 1
 description: Release notes for the Helm official provider
 ---
 

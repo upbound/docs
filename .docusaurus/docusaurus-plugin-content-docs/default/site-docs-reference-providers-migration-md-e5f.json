@@ -10,12 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 4,
   "frontMatter": {
     "title": "Migrate to Official Providers",
-    "weight": 40,
-    "description": "How to automatically upgrade from legacy monolithic Providers to Upbound Provider families",
-    "aliases": [
-      "/knowledge-base/migrate-to-provider-families"
-    ]
+    "sidebar_position": 4,
+    "description": "How to automatically upgrade from legacy monolithic Providers to Upbound Provider families"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Monolithic providers",
+    "permalink": "/reference/providers/monolithic"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/reference/providers/faq"
   }
 }

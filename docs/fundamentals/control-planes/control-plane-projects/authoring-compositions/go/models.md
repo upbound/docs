@@ -1,6 +1,6 @@
 ---
-title: "Models"
-weight: 3
+title: Models
+sidebar_position: 1
 ---
 
 Upbound Official Providers and some other packages include Go models: packages

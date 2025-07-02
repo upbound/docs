@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_group_get",
+    "permalink": "/reference/cli/cli-reference/yaml/up_group_get"
+  },
+  "next": {
+    "title": "up_help",
+    "permalink": "/reference/cli/cli-reference/yaml/up_help"
+  }
 }

@@ -10,15 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Upbound Console",
-    "weight": 5,
-    "description": "An introduction to the Console feature of Upbound",
-    "aliases": [
-      "/all-spaces/spaces/console",
-      "all-spaces/spaces/console",
-      "/console"
-    ]
+    "sidebar_position": 1,
+    "description": "An introduction to the Console feature of Upbound"
   },
   "sidebar": "upboundSidebar",
   "previous": {
@@ -26,7 +22,7 @@
     "permalink": "/upbound/deploy/spaces/"
   },
   "next": {
-    "title": "Upbound IAM",
-    "permalink": "/upbound/operate/accounts/"
+    "title": "Dedicated Spaces",
+    "permalink": "/upbound/deploy/dedicated-spaces/"
   }
 }

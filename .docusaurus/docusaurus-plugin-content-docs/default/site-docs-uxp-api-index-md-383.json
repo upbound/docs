@@ -13,5 +13,10 @@
   "frontMatter": {
     "title": "Crossplane API Reference",
     "description": "Documentation for the Query API resources"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Self-Signed CA Certs",
+    "permalink": "/uxp/guides/self-signed-ca-certs"
   }
 }

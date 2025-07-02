@@ -10,12 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Policies",
-    "weight": 5,
-    "description": "The Upbound Official provider policies.",
-    "aliases": [
-      "providers/usage/support"
-    ]
+    "sidebar_position": 1,
+    "description": "The Upbound Official provider policies."
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Official Providers",
+    "permalink": "/reference/providers/"
+  },
+  "next": {
+    "title": "Provider AWS",
+    "permalink": "/reference/providers/provider-aws/"
   }
 }

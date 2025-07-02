@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 4,
   "frontMatter": {
     "title": "Variables",
-    "weight": 40,
-    "aliases": [
-      "/core-concepts/kcl/variables",
-      "core-concepts/kcl/variables"
-    ]
+    "sidebar_position": 4
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Resource schemas",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas"
+  },
+  "next": {
+    "title": "Loops (for)",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops"
   }
 }

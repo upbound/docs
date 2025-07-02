@@ -1,6 +1,6 @@
 {
   "id": "fundamentals/consumer-portal-get-started",
-  "title": "Learn",
+  "title": "Upbound Consumer Portal",
   "description": "Learn how Upbound works and how it can work for you.",
   "source": "@site/docs/fundamentals/consumer-portal-get-started.md",
   "sourceDirName": "fundamentals",
@@ -10,17 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
   "frontMatter": {
-    "title": "Learn",
-    "sidebar_position": 1,
-    "description": "Learn how Upbound works and how it can work for you.",
-    "hideFromHomepage": true,
+    "title": "Upbound Consumer Portal",
     "draft": true,
-    "category": "guides",
-    "aliases": [
-      "/getstarted/_index",
-      "/getstarted-devex"
-    ]
+    "description": "Learn how Upbound works and how it can work for you."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Composite Resource Definitions (XRDs)",
+    "permalink": "/fundamentals/core-concepts/xrds"
   }
 }

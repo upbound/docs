@@ -1,6 +1,6 @@
 ---
-title: "Provider Azure"
-weight: 1
+title: Provider Azure
+sidebar_position: 1
 description: Release notes for the Azure official provider
 ---
 

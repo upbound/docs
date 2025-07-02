@@ -10,9 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 8,
   "frontMatter": {
     "title": "Write a Composition Function in Python",
-    "weight": 81,
+    "sidebar_position": 8,
     "description": "Composition functions allow you to template resources using Python"
   },
   "sidebar": "uxpSidebar",
@@ -21,7 +22,7 @@
     "permalink": "/uxp/guides/write-a-composition-function-in-go"
   },
   "next": {
-    "title": "Managed Resources",
-    "permalink": "/uxp/managed-resources/"
+    "title": "Troubleshoot Crossplane",
+    "permalink": "/uxp/guides/troubleshoot-crossplane"
   }
 }

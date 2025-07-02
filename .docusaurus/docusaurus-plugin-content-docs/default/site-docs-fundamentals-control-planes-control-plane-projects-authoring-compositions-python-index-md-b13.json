@@ -10,21 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Build with Python",
-    "weight": 1,
-    "aliases": [
-      "/core-concepts/python/overview",
-      "core-concepts/python/overview"
-    ]
+    "sidebar_position": 1
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
-    "title": "Build with KCL",
-    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/"
+    "title": "Read function pipeline state",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
   },
   "next": {
-    "title": "Repositories",
-    "permalink": "/fundamentals/control-planes/repositories/"
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs"
   }
 }

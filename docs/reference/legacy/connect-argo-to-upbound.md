@@ -1,9 +1,7 @@
 ---
 title: (deprecated) Connect Argo to Upbound
-weight: 10
+sidebar_position: 1
 description: A tutorial for connecting Argo to a control plane.
-aliases:
-    - /deploy/legacy-spaces/connect-argo-to-upbound
 ---
 
 

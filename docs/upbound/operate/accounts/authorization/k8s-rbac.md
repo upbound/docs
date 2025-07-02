@@ -1,10 +1,7 @@
 ---
-title: "Authorize actions in control planes"
-weight: 9
-description: "A guide to implementing and configuring Kuberentes RBAC in Upbound"
-aliases:
-    - /accounts/authorization/k8s-rbac
-    - accounts/authorization/k8s-rbac
+title: Authorize actions in control planes
+sidebar_position: 1
+description: A guide to implementing and configuring Kuberentes RBAC in Upbound
 ---
 
 :::note

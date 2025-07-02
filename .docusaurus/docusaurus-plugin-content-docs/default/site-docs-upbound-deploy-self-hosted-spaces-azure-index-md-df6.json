@@ -10,22 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Azure",
-    "weight": 3,
-    "description": "A  quickstart guide for Upbound Spaces in Azure",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/azure-deployment",
-      "/all-spaces/disconnected-spaces/azure-deployment"
-    ]
+    "sidebar_position": 1,
+    "description": "A  quickstart guide for Upbound Spaces in Azure"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Workload-identity for Backup and Restore",
-    "permalink": "/upbound/deploy/self-hosted-spaces/aws/workload-id-backup-restore"
+    "title": "Interacting with Disconnected Spaces",
+    "permalink": "/upbound/deploy/self-hosted-spaces/spaces-management"
   },
   "next": {
-    "title": "Billing",
-    "permalink": "/upbound/deploy/self-hosted-spaces/billing"
+    "title": "GCP",
+    "permalink": "/upbound/deploy/self-hosted-spaces/gcp/"
   }
 }

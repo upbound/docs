@@ -10,10 +10,9 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 2,
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Project Foundations",
-    "sidebar_position": 2,
     "description": "Create a new project from scratch"
   },
   "sidebar": "fundamentalsSidebar",

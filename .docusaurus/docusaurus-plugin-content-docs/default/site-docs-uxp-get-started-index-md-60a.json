@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 2,
   "frontMatter": {
     "title": "Get Started",
-    "weight": 40,
+    "sidebar_position": 2,
     "description": "Get started with Crossplane."
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "What's Crossplane?",
+    "permalink": "/uxp/"
+  },
+  "next": {
+    "title": "Install Crossplane",
+    "permalink": "/uxp/get-started/install"
   }
 }

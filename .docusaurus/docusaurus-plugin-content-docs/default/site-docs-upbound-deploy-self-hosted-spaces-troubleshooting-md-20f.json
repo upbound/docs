@@ -10,24 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 100,
   "frontMatter": {
     "title": "Troubleshooting",
-    "weight": 1000,
-    "description": "A guide for troubleshooting an issue that occurs in a Space",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/troubleshooting",
-      "/spaces/troubleshooting",
-      "/deploy/disconnected-spaces/troubleshooting",
-      "all-spaces/self-hosted-spaces/troubleshooting"
-    ]
+    "sidebar_position": 100,
+    "description": "A guide for troubleshooting an issue that occurs in a Space"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Interacting with Disconnected Spaces",
-    "permalink": "/upbound/deploy/self-hosted-spaces/spaces-management"
+    "title": "Scaling vCluster and etcd Resources",
+    "permalink": "/upbound/deploy/self-hosted-spaces/scaling-resources"
   },
   "next": {
-    "title": "Use ArgoCD Plugin",
-    "permalink": "/upbound/deploy/self-hosted-spaces/use-argo"
+    "title": "Backup and restore",
+    "permalink": "/upbound/deploy/backup-and-restore"
   }
 }

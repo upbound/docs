@@ -1,9 +1,7 @@
 ---
 title: GCP Deployment Guide
-weight: 2
+sidebar_position: 1
 description: A guide to Upbound Dedicated Spaces on GCP
-aliases:
-    - /all-spaces/dedicated-spaces/gcp
 ---
 
 :::important

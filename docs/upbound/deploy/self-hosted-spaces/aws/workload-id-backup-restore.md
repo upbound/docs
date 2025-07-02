@@ -1,6 +1,6 @@
 ---
 title: Workload-identity for Backup and Restore
-weight: 1
+sidebar_position: 1
 description: Description of the document
 ---
 

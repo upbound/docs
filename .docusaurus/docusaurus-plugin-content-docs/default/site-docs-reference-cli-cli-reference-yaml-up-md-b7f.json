@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "(deprecated) Quickstart",
+    "permalink": "/reference/legacy/multicloud-deploy"
+  },
+  "next": {
+    "title": "up_alpha",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha"
+  }
 }

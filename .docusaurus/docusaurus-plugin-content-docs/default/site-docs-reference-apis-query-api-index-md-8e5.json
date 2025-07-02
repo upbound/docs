@@ -16,8 +16,8 @@
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Reference",
-    "permalink": "/reference/"
+    "title": "Crossplane API Reference",
+    "permalink": "/reference/apis/crossplane-api/"
   },
   "next": {
     "title": "Spaces API Reference Latest (v1.13)",

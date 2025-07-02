@@ -1,6 +1,6 @@
 ---
 title: Control Planes
-weight: 1
+sidebar_position: 1
 description: An overview of control planes in Upbound
 ---
 

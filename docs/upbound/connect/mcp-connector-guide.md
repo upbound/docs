@@ -1,12 +1,8 @@
 ---
 title: Consume control plane APIs in an app cluster with control plane connector
-weight: 999
-description: A tutorial to configure a Space with Argo to declaratively create and manage control planes
-draft: true
-aliases:
-    - /all-spaces/mcp-connector-guide
-    - /deploy/spaces/guides/mcp-connector-guide
-    - all-spaces/mcp-connector-guide
+sidebar_position: 99
+description: A tutorial to configure a Space with Argo to declaratively create and
+  manage control planes
 ---
 
 In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a control plane in an Upbound self-hosted Space.

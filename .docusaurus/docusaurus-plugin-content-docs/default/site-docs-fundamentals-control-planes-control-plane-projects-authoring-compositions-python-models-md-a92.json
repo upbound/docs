@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 3,
   "frontMatter": {
     "title": "Models",
-    "weight": 30,
-    "aliases": [
-      "/core-concepts/python/models",
-      "core-concepts/python/models"
-    ]
+    "sidebar_position": 3
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs"
+  },
+  "next": {
+    "title": "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-xrds"
   }
 }

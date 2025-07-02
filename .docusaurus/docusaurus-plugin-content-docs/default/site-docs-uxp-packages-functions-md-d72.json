@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 10,
   "frontMatter": {
     "title": "Functions",
-    "weight": 100,
+    "sidebar_position": 10,
     "description": "Functions extend Crossplane with new ways to configure composition"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Configurations",
-    "permalink": "/uxp/packages/configurations"
+    "title": "Providers",
+    "permalink": "/uxp/packages/providers"
   },
   "next": {
-    "title": "Image Configs",
-    "permalink": "/uxp/packages/image-configs"
+    "title": "Configurations",
+    "permalink": "/uxp/packages/configurations"
   }
 }

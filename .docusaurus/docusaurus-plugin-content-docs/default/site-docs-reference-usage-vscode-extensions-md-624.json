@@ -12,21 +12,15 @@
   "version": "current",
   "frontMatter": {
     "title": "Visual Studio Code extensions",
-    "description": "Use popular Visual Studio Code extensions to author your Upbound configurations",
-    "aliases": [
-      "/development-extensions/vscode-extensions",
-      "development-extensions/vscode-extensions",
-      "build/vscode-extensions",
-      "/build/vscode-extensions"
-    ]
+    "description": "Use popular Visual Studio Code extensions to author your Upbound configurations"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "IP Addresses",
-    "permalink": "/reference/usage/ipaddresses"
+    "title": "Support",
+    "permalink": "/reference/usage/support"
   },
   "next": {
-    "title": "Feature Lifecycle",
-    "permalink": "/reference/usage/feature-lifecycle"
+    "title": "Legacy Spaces",
+    "permalink": "/reference/legacy/"
   }
 }

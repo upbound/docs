@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_test",
+  "title": "up_test",
+  "description": "Manage and run tests for projects.",
+  "source": "@site/docs/reference/cli-reference/yaml/up_test.md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_test",
+  "permalink": "/reference/cli-reference/yaml/up_test",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_team_list",
+    "permalink": "/reference/cli-reference/yaml/up_team_list"
+  },
+  "next": {
+    "title": "up_test_generate",
+    "permalink": "/reference/cli-reference/yaml/up_test_generate"
+  }
+}

@@ -1,9 +1,6 @@
 ---
-title: "Variables"
-weight: 40
-aliases:
-    - /core-concepts/kcl/variables
-    - core-concepts/kcl/variables
+title: Variables
+sidebar_position: 4
 ---
 
 This guide describes how to define and use variables in your KCL function.

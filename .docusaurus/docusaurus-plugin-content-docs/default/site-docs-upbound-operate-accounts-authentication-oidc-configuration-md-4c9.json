@@ -10,14 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 20,
   "frontMatter": {
     "title": "Configure OIDC",
-    "weight": 200,
-    "description": "Configure OIDC in your Space",
-    "aliases": [
-      "/accounts/authentication/oidc-configuration",
-      "accounts/authentication/oidc-configuration"
-    ]
+    "sidebar_position": 20,
+    "description": "Configure OIDC in your Space"
   },
   "sidebar": "upboundSidebar",
   "previous": {

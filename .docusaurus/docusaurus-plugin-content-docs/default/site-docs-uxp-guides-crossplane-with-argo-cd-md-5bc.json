@@ -16,11 +16,11 @@
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "What's Crossplane?",
-    "permalink": "/uxp/whats-crossplane/"
+    "title": "Uninstall Crossplane",
+    "permalink": "/uxp/guides/uninstall-crossplane"
   },
   "next": {
-    "title": "Releasing Crossplane Extensions",
-    "permalink": "/uxp/guides/extensions-release-process"
+    "title": "Self-Signed CA Certs",
+    "permalink": "/uxp/guides/self-signed-ca-certs"
   }
 }

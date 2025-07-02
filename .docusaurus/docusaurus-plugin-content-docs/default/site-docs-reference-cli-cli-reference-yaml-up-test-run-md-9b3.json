@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_test_generate",
+    "permalink": "/reference/cli/cli-reference/yaml/up_test_generate"
+  },
+  "next": {
+    "title": "up_uxp",
+    "permalink": "/reference/cli/cli-reference/yaml/up_uxp"
+  }
 }

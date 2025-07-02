@@ -1,7 +1,8 @@
 ---
 title: Control Planes
-weight: 1
-description: A centralized management layer that enables the orchestration of cloud resources and services across multiple providers.
+sidebar_position: 1
+description: A centralized management layer that enables the orchestration of cloud
+  resources and services across multiple providers.
 ---
 
 Control planes are a conceptual management layer that enables you to create and

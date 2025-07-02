@@ -10,13 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Control Plane Projects",
-    "weight": 3,
-    "description": "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project.",
-    "aliases": [
-      "/core-concepts/projects",
-      "core-concepts/projects"
-    ]
+    "sidebar_position": 1,
+    "description": "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Provider Authentication",
+    "permalink": "/fundamentals/control-planes/provider-authentication"
+  },
+  "next": {
+    "title": "Adding dependencies to your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/adding-dependencies"
   }
 }

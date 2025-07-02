@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 2,
   "frontMatter": {
     "title": "Composite Resource Definitions",
-    "weight": 20,
+    "sidebar_position": 2,
     "description": "Composite Resource Definitions or XRDs define custom API schemas"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Providers",
-    "permalink": "/uxp/packages/providers"
-  },
-  "next": {
     "title": "Composite Resources",
     "permalink": "/uxp/composition/composite-resources"
+  },
+  "next": {
+    "title": "Composition Revisions",
+    "permalink": "/uxp/composition/composition-revisions"
   }
 }

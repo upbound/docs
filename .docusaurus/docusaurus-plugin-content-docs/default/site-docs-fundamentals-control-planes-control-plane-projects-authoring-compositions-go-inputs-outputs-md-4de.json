@@ -10,8 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Pipeline inputs and outputs",
-    "weight": 2
+    "sidebar_position": 1
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/"
+  },
+  "next": {
+    "title": "Models",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models"
   }
 }

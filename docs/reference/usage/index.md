@@ -1,5 +1,5 @@
 ---
-title: "Usage Reference"
+title: Usage Reference
 ---
 
 Information on Upbound's release policies and lifecycle.

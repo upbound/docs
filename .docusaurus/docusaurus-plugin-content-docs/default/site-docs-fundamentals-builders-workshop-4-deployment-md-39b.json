@@ -13,7 +13,6 @@
   "sidebarPosition": 4,
   "frontMatter": {
     "title": "Deploy your resources to a control plane",
-    "sidebar_position": 4,
     "description": "Create a dev control plane and deploy to your cloud"
   },
   "sidebar": "fundamentalsSidebar",
@@ -22,7 +21,7 @@
     "permalink": "/fundamentals/builders-workshop/testing"
   },
   "next": {
-    "title": "Build",
-    "permalink": "/fundamentals/control-planes/"
+    "title": "Provider Authentication",
+    "permalink": "/fundamentals/control-planes/provider-authentication"
   }
 }

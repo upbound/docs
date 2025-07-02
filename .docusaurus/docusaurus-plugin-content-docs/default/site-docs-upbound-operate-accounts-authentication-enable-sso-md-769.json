@@ -10,14 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Single Sign On in Upbound",
-    "description": "Configure single sign-on in your Upbound organization to manage user access",
-    "weight": 1,
-    "aliases": [
-      "/accounts/authentication/enable-sso",
-      "accounts/authentication/enable-sso"
-    ]
+    "sidebar_position": 1,
+    "description": "Configure single sign-on in your Upbound organization to manage user access"
   },
   "sidebar": "upboundSidebar",
   "previous": {

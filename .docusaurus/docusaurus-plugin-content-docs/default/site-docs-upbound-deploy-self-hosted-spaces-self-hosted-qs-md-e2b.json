@@ -10,24 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 9,
   "frontMatter": {
     "title": "Local Quickstart",
-    "weight": 99,
-    "description": "A  quickstart guide for Upbound Spaces",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/quickstart",
-      "/spaces/kind-quickstart",
-      "/kind-quickstart",
-      "/all-spaces/disconnected-spaces/quickstart"
-    ]
+    "sidebar_position": 9,
+    "description": "A  quickstart guide for Upbound Spaces"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Scaling vCluster and etcd Resources",
-    "permalink": "/upbound/deploy/self-hosted-spaces/scaling-resources"
+    "title": "GCP",
+    "permalink": "/upbound/deploy/self-hosted-spaces/gcp/"
   },
   "next": {
-    "title": "Space-level observability",
-    "permalink": "/upbound/deploy/self-hosted-spaces/space-observability"
+    "title": "Connect or disconnect a Space",
+    "permalink": "/upbound/deploy/self-hosted-spaces/attach-detach"
   }
 }

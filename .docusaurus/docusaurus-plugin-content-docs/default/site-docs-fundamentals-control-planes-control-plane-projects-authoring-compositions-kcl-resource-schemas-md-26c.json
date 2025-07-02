@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 3,
   "frontMatter": {
     "title": "Resource schemas",
-    "weight": 30,
-    "aliases": [
-      "/core-concepts/kcl/resource-schemas",
-      "core-concepts/kcl/resource-schemas"
-    ]
+    "sidebar_position": 3
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs"
+  },
+  "next": {
+    "title": "Variables",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables"
   }
 }

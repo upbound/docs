@@ -1,9 +1,7 @@
 ---
-title: "FAQ"
-weight: 500
+title: FAQ
+sidebar_position: 50
 description: Frequently asked questions related to Upbound Official providers
-aliases:
-  - /providers/faq
 ---
 
 This page provides answers to the most common questions about Upbound Official Providers.

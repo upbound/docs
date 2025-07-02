@@ -1,7 +1,8 @@
 ---
 title: Composite Resources
-weight: 10
-description: "Composite resources, an XR or XRs, represent a collection of related cloud resources."
+sidebar_position: 1
+description: Composite resources, an XR or XRs, represent a collection of related
+  cloud resources.
 ---
 
 A composite resource, or XR, represents a set of Kubernetes resources as a

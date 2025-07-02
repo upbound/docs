@@ -1,6 +1,6 @@
 ---
-title: "Pipeline inputs and outputs"
-weight: 2
+title: Pipeline inputs and outputs
+sidebar_position: 1
 ---
 
 Crossplane sends requests to your functions to ask them what resources to

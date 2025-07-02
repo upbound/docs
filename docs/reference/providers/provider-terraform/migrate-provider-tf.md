@@ -1,6 +1,6 @@
 ---
-title: "Migrate from Terraform to Crossplane or Upbound"
-weight: 1
+title: Migrate from Terraform to Crossplane or Upbound
+sidebar_position: 1
 ---
 
 Crossplane and Terraform are powerful tools for managing and provisioning cloud

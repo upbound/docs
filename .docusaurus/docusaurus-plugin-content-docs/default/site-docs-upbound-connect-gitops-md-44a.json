@@ -10,15 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 9,
   "frontMatter": {
     "title": "GitOps with control planes",
-    "weight": 90,
-    "description": "An introduction to doing GitOps with control planes on Upbound",
-    "aliases": [
-      "/mcp/gitops",
-      "/spaces/control-plane-connector",
-      "mcp/gitops"
-    ]
+    "sidebar_position": 9,
+    "description": "An introduction to doing GitOps with control planes on Upbound"
   },
   "sidebar": "upboundSidebar",
   "previous": {
@@ -26,7 +22,7 @@
     "permalink": "/upbound/connect/git-integration"
   },
   "next": {
-    "title": "Consume control plane APIs in an app cluster with control plane connector",
-    "permalink": "/upbound/connect/mcp-connector-guide"
+    "title": "Query API",
+    "permalink": "/upbound/connect/query-api"
   }
 }

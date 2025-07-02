@@ -1,10 +1,9 @@
 ---
 title: Managed Control Planes
-weight: 2
-description: Fully isolated Crossplane control plane instances that Upbound manages for you
+sidebar_position: 1
+description: Fully isolated Crossplane control plane instances that Upbound manages
+  for you
 draft: true
-aliases:
-    - concepts/mcp
 ---
 
 Control planes are fully isolated Crossplane control plane instances that Upbound manages for you. This means:

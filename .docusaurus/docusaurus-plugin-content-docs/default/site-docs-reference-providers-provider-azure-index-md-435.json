@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Provider Azure",
-    "weight": 1,
+    "sidebar_position": 1,
     "description": "Release notes for the Azure official provider"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Provider AWS",
-    "permalink": "/reference/providers/provider-aws/"
+    "title": "Authentication",
+    "permalink": "/reference/providers/provider-aws/authentication"
   },
   "next": {
-    "title": "Provider AzureAD",
-    "permalink": "/reference/providers/provider-azuread/"
+    "title": "Authentication",
+    "permalink": "/reference/providers/provider-azure/authentication"
   }
 }

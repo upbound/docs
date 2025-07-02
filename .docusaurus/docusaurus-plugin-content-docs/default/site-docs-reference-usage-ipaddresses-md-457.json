@@ -10,9 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 19,
   "frontMatter": {
     "title": "IP Addresses",
-    "weight": 199,
+    "sidebar_position": 19,
     "description": "List of IP addresses used by Upbound control planes"
   },
   "sidebar": "referenceSidebar",
@@ -21,7 +22,7 @@
     "permalink": "/reference/usage/lifecycle"
   },
   "next": {
-    "title": "Visual Studio Code extensions",
-    "permalink": "/reference/usage/vscode-extensions"
+    "title": "Feature Lifecycle",
+    "permalink": "/reference/usage/feature-lifecycle"
   }
 }

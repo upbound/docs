@@ -10,19 +10,17 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 10,
   "frontMatter": {
     "title": "Support",
-    "sidebar_position": 10,
     "description": "Contact Upbound Support"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Feature Lifecycle",
-    "permalink": "/reference/usage/feature-lifecycle"
+    "title": "License Usage",
+    "permalink": "/reference/usage/licenses"
   },
   "next": {
-    "title": "(deprecated) Connect Argo to Upbound",
-    "permalink": "/reference/legacy/connect-argo-to-upbound"
+    "title": "Visual Studio Code extensions",
+    "permalink": "/reference/usage/vscode-extensions"
   }
 }

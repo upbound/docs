@@ -10,12 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 6,
   "frontMatter": {
     "title": "Conditionals (if)",
-    "weight": 60,
-    "aliases": [
-      "/core-concepts/kcl/conditionals",
-      "core-concepts/kcl/conditionals"
-    ]
+    "sidebar_position": 6
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Loops (for)",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops"
+  },
+  "next": {
+    "title": "Resource data extraction",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
   }
 }

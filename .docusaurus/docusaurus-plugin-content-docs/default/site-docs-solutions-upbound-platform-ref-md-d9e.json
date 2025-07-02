@@ -13,5 +13,10 @@
   "frontMatter": {
     "title": "Upbound Platform Reference",
     "description": "Best practices and foundations for building with Upbound"
+  },
+  "sidebar": "solutionsSidebar",
+  "previous": {
+    "title": "Internal Developer Platform (IdP) Starter Kit",
+    "permalink": "/solutions/idp-starter-kit"
   }
 }

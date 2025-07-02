@@ -10,10 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Upbound vs Crossplane",
-    "weight": 10,
-    "description": "A technical comparison of Upbound vs Crossplane",
-    "draft": true
+    "sidebar_position": 1,
+    "description": "A technical comparison of Upbound vs Crossplane"
+  },
+  "sidebar": "referenceSidebar",
+  "next": {
+    "title": "Reference",
+    "permalink": "/reference/"
   }
 }

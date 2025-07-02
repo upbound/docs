@@ -10,18 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Users",
-    "weight": 4,
-    "description": "Creating and managing Upbound users",
-    "aliases": [
-      "/accounts/identity-management/users",
-      "/users",
-      "/users/register",
-      "/users/change",
-      "/concepts/accounts/users",
-      "accounts/identity-management/users"
-    ]
+    "sidebar_position": 1,
+    "description": "Creating and managing Upbound users"
   },
   "sidebar": "upboundSidebar",
   "previous": {

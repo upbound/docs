@@ -1,9 +1,7 @@
 ---
-title: 'Marketplace'
-icon: "marketplace"
-sidebar_position: 1
-description: "How to use the Upbound Marketplace to discover Crossplane providers and packages."
-category: "resources"
+title: Marketplace
+description: How to use the Upbound Marketplace to discover Crossplane providers and
+  packages.
 ---
 
 [Upbound Marketplace][upbound-marketplace] simplifies your control plane journey with the largest registry for storing, managing, and sharing control plane extensions. It integrates seamlessly with Upbound's builder tooling. It also provides builders with pre-built Configurations and Functions to speed up control plane development workflows.

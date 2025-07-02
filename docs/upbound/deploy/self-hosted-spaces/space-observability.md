@@ -1,6 +1,6 @@
 ---
 title: Space-level observability
-weight: 300
+sidebar_position: 30
 description: Configure Space-level observability
 ---
 

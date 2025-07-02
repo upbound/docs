@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_controlplane_(ctp)_simulate",
+  "title": "up_controlplane_(ctp)_simulate",
+  "description": "Alias for 'up controlplane simulation create'.",
+  "source": "@site/docs/reference/cli-reference/yaml/up_controlplane_(ctp)_simulate.md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulate",
+  "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_controlplane_(ctp)_pull-secret_create",
+    "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create"
+  },
+  "next": {
+    "title": "up_controlplane_(ctp)_simulation_(sim)",
+    "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)"
+  }
+}

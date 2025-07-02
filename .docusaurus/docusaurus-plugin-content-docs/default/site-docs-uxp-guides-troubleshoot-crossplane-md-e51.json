@@ -10,17 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 30,
   "frontMatter": {
     "title": "Troubleshoot Crossplane",
-    "weight": 306
+    "sidebar_position": 30
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Self-Signed CA Certs",
-    "permalink": "/uxp/guides/self-signed-ca-certs"
+    "title": "Write a Composition Function in Python",
+    "permalink": "/uxp/guides/write-a-composition-function-in-python"
   },
   "next": {
-    "title": "Uninstall Crossplane",
-    "permalink": "/uxp/guides/uninstall-crossplane"
+    "title": "Upgrade Crossplane",
+    "permalink": "/uxp/guides/upgrade-crossplane"
   }
 }

@@ -60,7 +60,7 @@ export default {
       {
         "path": "docs",
         "routeBasePath": "/",
-        "sidebarPath": "/Users/rae/upbound-docs/src/sidebars/main.js"
+        "sidebarPath": "/Users/rae/docs/src/sidebars/main.js"
       }
     ]
   ],

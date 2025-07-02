@@ -10,8 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 3,
   "frontMatter": {
     "title": "Schemas",
-    "weight": 30
+    "sidebar_position": 3
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs"
+  },
+  "next": {
+    "title": "Build with KCL",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/"
   }
 }

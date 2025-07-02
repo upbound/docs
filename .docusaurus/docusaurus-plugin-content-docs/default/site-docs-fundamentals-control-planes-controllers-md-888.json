@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 25,
   "frontMatter": {
     "title": "Controllers",
-    "weight": 250,
+    "sidebar_position": 25,
     "description": "A guide to how to wrap and deploy an Upbound controller into control planes on Upbound."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Repository Management",
+    "permalink": "/fundamentals/control-planes/repositories/management"
+  },
+  "next": {
+    "title": "Migrating to Upbound control planes",
+    "permalink": "/fundamentals/control-planes/migrating-to-mcps"
   }
 }

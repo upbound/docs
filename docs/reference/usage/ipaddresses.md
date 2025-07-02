@@ -1,7 +1,7 @@
 ---
 title: IP Addresses
-weight: 199
-description: "List of IP addresses used by Upbound control planes"
+sidebar_position: 19
+description: List of IP addresses used by Upbound control planes
 ---
 
 Control planes can use any of the following IP addresses:

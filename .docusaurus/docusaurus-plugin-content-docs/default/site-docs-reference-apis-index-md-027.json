@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Reference",
+    "permalink": "/reference/"
+  },
+  "next": {
+    "title": "Crossplane API Reference",
+    "permalink": "/reference/apis/crossplane-api/"
+  }
 }

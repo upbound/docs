@@ -1,8 +1,7 @@
 ---
 title: Releasing Crossplane Extensions
-weight: 80
-description: "Configuring build pipelines for Crossplane extensions with GitHub
-Actions"
+sidebar_position: 8
+description: Configuring build pipelines for Crossplane extensions with GitHub Actions
 ---
 
 ## Distributing Crossplane extensions

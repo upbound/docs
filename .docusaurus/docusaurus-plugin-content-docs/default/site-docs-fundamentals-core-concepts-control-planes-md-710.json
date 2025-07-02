@@ -10,9 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Control Planes",
-    "weight": 1,
+    "sidebar_position": 1,
     "description": "A centralized management layer that enables the orchestration of cloud resources and services across multiple providers."
   },
   "sidebar": "fundamentalsSidebar",

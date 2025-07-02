@@ -1,11 +1,7 @@
 ---
 title: Debugging issues on a control plane
-weight: 100
+sidebar_position: 10
 description: A guide for how to debug resources on a control plane running in Upbound.
-draft: true
-aliases:
-    - /mcp/debugging-a-ctp
-    - mcp/debugging-a-ctp
 ---
 
 This guide provides troubleshooting guidance for how to identify and fix issues on a control plane.

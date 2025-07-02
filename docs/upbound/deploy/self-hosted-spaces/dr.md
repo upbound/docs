@@ -1,13 +1,7 @@
 ---
 title: Disaster Recovery
-weight: 130
+sidebar_position: 13
 description: Configure Space-wide backups for disaster recovery.
-aliases:
-    - /all-spaces/self-hosted-spaces/dr
-    - /spaces/dr
-    - /disconnected-spaces/dr
-    - /self-hosted-spaces/dr
-    - all-spaces/self-hosted-spaces/dr
 ---
 
 :::important

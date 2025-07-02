@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_project",
+    "permalink": "/reference/cli/cli-reference/yaml/up_project"
+  },
+  "next": {
+    "title": "up_project_init",
+    "permalink": "/reference/cli/cli-reference/yaml/up_project_init"
+  }
 }

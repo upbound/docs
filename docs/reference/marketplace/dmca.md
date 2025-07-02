@@ -1,7 +1,7 @@
 ---
-title: "DMCA Policy"
-weight: 10000
-description: "Upbound Marketplace DMCA Policy"
+title: DMCA Policy
+sidebar_position: 1000
+description: Upbound Marketplace DMCA Policy
 ---
 
 <!-- vale off -->

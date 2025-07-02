@@ -10,12 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Provider Authentication",
-    "weight": 7,
-    "description": "Description of the document",
-    "aliases": [
-      "/core-concepts/providers"
-    ]
+    "sidebar_position": 1,
+    "description": "Description of the document"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Deploy your resources to a control plane",
+    "permalink": "/fundamentals/builders-workshop/deployment"
+  },
+  "next": {
+    "title": "Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/"
   }
 }

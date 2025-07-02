@@ -1,9 +1,7 @@
 ---
-title: "Policies"
-weight: 5
-description: "The Upbound Official provider policies."
-aliases:
-  - providers/usage/support
+title: Policies
+sidebar_position: 1
+description: The Upbound Official provider policies.
 ---
 
 <!-- vale Google.Headings = NO -->

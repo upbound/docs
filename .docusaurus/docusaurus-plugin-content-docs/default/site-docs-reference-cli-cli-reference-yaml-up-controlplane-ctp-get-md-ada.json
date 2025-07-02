@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_controlplane_(ctp)_function_install",
+    "permalink": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function_install"
+  },
+  "next": {
+    "title": "up_controlplane_(ctp)_list",
+    "permalink": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_list"
+  }
 }

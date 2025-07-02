@@ -1,10 +1,8 @@
 ---
 title: Environment Configs
-weight: 75
-state: beta
-alphaVersion: "1.11"
-betaVersion: "1.18"
-description: "Environment Configs or EnvironmentConfigs are an in-memory datastore used in Compositions"
+sidebar_position: 7
+description: Environment Configs or EnvironmentConfigs are an in-memory datastore
+  used in Compositions
 ---
 
 <!--

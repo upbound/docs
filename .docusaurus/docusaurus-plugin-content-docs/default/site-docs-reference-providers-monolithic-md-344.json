@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 2,
   "frontMatter": {
     "title": "Monolithic providers",
-    "weight": 20,
+    "sidebar_position": 2,
     "description": "Support information for legacy monolithic Crossplane Providers"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Signature Verification",
+    "permalink": "/reference/providers/signature-verification"
+  },
+  "next": {
+    "title": "Migrate to Official Providers",
+    "permalink": "/reference/providers/migration"
   }
 }

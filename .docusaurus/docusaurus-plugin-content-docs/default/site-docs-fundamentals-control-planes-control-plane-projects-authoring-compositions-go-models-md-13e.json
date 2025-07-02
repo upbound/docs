@@ -10,8 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Models",
-    "weight": 3
+    "sidebar_position": 1
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs"
+  },
+  "next": {
+    "title": "Build with Go Templating",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/"
   }
 }

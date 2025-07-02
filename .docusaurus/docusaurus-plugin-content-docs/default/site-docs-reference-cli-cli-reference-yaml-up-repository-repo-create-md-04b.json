@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_repository_(repo)",
+    "permalink": "/reference/cli/cli-reference/yaml/up_repository_(repo)"
+  },
+  "next": {
+    "title": "up_repository_(repo)_delete",
+    "permalink": "/reference/cli/cli-reference/yaml/up_repository_(repo)_delete"
+  }
 }

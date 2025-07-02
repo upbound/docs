@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Authentication",
-    "weight": 10,
+    "sidebar_position": 1,
     "description": "Authentication options with the Upbound Kubernetes official provider"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Provider Kubernetes",
+    "permalink": "/reference/providers/provider-kubernetes/"
+  },
+  "next": {
+    "title": "Provider Terraform",
+    "permalink": "/reference/providers/provider-terraform/"
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot Crossplane
-weight: 306
+sidebar_position: 30
 ---
 ## Requested Resource Not Found
 

@@ -1,10 +1,7 @@
 ---
 title: (deprecated) Control Plane Configurations
-weight: 4
+sidebar_position: 1
 description: An introduction to how Configurations work in Upbound
-aliases:
-    - /deploy/legacy-spaces/control-plane-configurations
-    - /concepts/control-plane-configurations
 ---
 
 :::important

@@ -16,11 +16,11 @@
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Spaces API Reference Latest (v1.13)",
-    "permalink": "/reference/apis/spaces-api/"
+    "title": "Spaces API Reference - v1.13",
+    "permalink": "/reference/apis/spaces-api/yaml/v1.13/"
   },
   "next": {
-    "title": "Crossplane API Reference",
-    "permalink": "/reference/apis/crossplane-api/"
+    "title": "CLI Reference",
+    "permalink": "/reference/cli-reference"
   }
 }

@@ -1,10 +1,8 @@
 ---
-title: "Control Plane Projects"
-weight: 3
-description: "The source of your control plane configurations. A control plane project contains the `upbound.yaml` file and any dependencies for your project."
-aliases:
-    - /core-concepts/projects
-    - core-concepts/projects
+title: Control Plane Projects
+sidebar_position: 1
+description: The source of your control plane configurations. A control plane project
+  contains the `upbound.yaml` file and any dependencies for your project.
 ---
 
 <!-- vale gitlab.Substitutions = NO -->

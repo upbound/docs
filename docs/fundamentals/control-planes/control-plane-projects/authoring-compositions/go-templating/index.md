@@ -1,6 +1,6 @@
 ---
-title: "Build with Go Templating"
-weight: 1
+title: Build with Go Templating
+sidebar_position: 1
 ---
 
 Upbound supports defining your control plane APIs using YAML with [Go

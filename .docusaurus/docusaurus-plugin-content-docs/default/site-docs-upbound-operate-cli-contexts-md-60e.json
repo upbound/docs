@@ -10,22 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Contexts",
-    "weight": 2,
-    "description": "An introduction to the how contexts work in Upbound",
-    "aliases": [
-      "/reference/contexts",
-      "/reference/cli/contexts"
-    ]
+    "sidebar_position": 1,
+    "description": "An introduction to the how contexts work in Upbound"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Configuration",
-    "permalink": "/upbound/operate/cli/configuration"
+    "title": "Up CLI",
+    "permalink": "/upbound/operate/cli/"
   },
   "next": {
-    "title": "Control Planes",
-    "permalink": "/upbound/operate/control-planes"
+    "title": "Configuration",
+    "permalink": "/upbound/operate/cli/configuration"
   }
 }

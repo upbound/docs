@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_uxp_install",
+    "permalink": "/reference/cli/cli-reference/yaml/up_uxp_install"
+  },
+  "next": {
+    "title": "up_uxp_upgrade",
+    "permalink": "/reference/cli/cli-reference/yaml/up_uxp_upgrade"
+  }
 }

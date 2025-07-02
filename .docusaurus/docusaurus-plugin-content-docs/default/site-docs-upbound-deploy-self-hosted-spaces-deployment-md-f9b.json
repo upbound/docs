@@ -10,15 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 90,
   "frontMatter": {
     "title": "Deployment",
-    "weight": 900,
-    "description": "A guide for deploying an Upbound Space in production",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/deployment",
-      "/spaces/deployment",
-      "/all-spaces/disconnected-spaces/deployment"
-    ]
+    "sidebar_position": 90,
+    "description": "A guide for deploying an Upbound Space in production"
   },
   "sidebar": "upboundSidebar",
   "previous": {
@@ -26,7 +22,7 @@
     "permalink": "/upbound/deploy/self-hosted-spaces/billing"
   },
   "next": {
-    "title": "Disaster Recovery",
-    "permalink": "/upbound/deploy/self-hosted-spaces/dr"
+    "title": "Scaling vCluster and etcd Resources",
+    "permalink": "/upbound/deploy/self-hosted-spaces/scaling-resources"
   }
 }

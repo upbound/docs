@@ -10,8 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Migrate from Terraform to Crossplane or Upbound",
-    "weight": 1
+    "sidebar_position": 1
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Rewrite HCL for Crossplane or Upbound",
+    "permalink": "/reference/providers/provider-terraform/migrate-hcl"
+  },
+  "next": {
+    "title": "Pull secrets",
+    "permalink": "/reference/providers/pull-secrets"
   }
 }

@@ -10,15 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 10,
   "frontMatter": {
     "title": "Debugging issues on a control plane",
-    "weight": 100,
-    "description": "A guide for how to debug resources on a control plane running in Upbound.",
-    "draft": true,
-    "aliases": [
-      "/mcp/debugging-a-ctp",
-      "mcp/debugging-a-ctp"
-    ]
+    "sidebar_position": 10,
+    "description": "A guide for how to debug resources on a control plane running in Upbound."
   },
   "sidebar": "upboundSidebar",
   "previous": {
@@ -26,7 +22,7 @@
     "permalink": "/upbound/operate/ctp-connector"
   },
   "next": {
-    "title": "Control Plane Groups",
-    "permalink": "/upbound/operate/groups"
+    "title": "Secrets Management",
+    "permalink": "/upbound/operate/secrets-management"
   }
 }

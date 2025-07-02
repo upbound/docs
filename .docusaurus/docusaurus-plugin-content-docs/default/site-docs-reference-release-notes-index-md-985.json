@@ -15,11 +15,11 @@
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Creating and Pushing Packages",
-    "permalink": "/reference/marketplace/packages"
+    "title": "DMCA Policy",
+    "permalink": "/reference/marketplace/dmca"
   },
   "next": {
-    "title": "Up CLI Release Notes",
-    "permalink": "/reference/release-notes/rel-notes/up-cli"
+    "title": "MCP Connector Release Notes",
+    "permalink": "/reference/release-notes/mcp-connector"
   }
 }

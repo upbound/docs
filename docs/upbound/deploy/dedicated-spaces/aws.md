@@ -1,11 +1,7 @@
 ---
 title: AWS Deployment Guide
-weight: 2
+sidebar_position: 1
 description: A guide to Upbound Dedicated Spaces on AWS
-aliases:
-    - /all-spaces/dedicated-spaces/aws
-    - /spaces
-    - /all-spaces/disconnected-spaces
 ---
 
 <!-- vale gitlab.SentenceLength = NO -->

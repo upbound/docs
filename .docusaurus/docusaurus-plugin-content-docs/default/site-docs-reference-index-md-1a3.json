@@ -10,16 +10,15 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Reference",
-    "weight": 1,
-    "icon": "lightbulb",
-    "description": "Reference material for Upbound",
-    "category": "resources"
+    "sidebar_position": 1,
+    "description": "Reference material for Upbound"
   },
   "sidebar": "referenceSidebar",
   "next": {
-    "title": "Query API Reference",
-    "permalink": "/reference/apis/query-api/"
+    "title": "Crossplane API Reference",
+    "permalink": "/reference/apis/crossplane-api/"
   }
 }

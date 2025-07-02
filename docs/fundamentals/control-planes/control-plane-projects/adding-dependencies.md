@@ -1,10 +1,7 @@
 ---
-title: "Adding dependencies to your Control Plane Projects"
-weight: 1
-description: "The basic concepts to help you on your Upbound journey"
-aliases:
-    - /core-concepts/adding-dependencies
-    - core-concepts/adding-dependencies
+title: Adding dependencies to your Control Plane Projects
+sidebar_position: 1
+description: The basic concepts to help you on your Upbound journey
 ---
 
 A dependency can be a provider, function or a configuration that you want to

@@ -1,12 +1,7 @@
 ---
 title: Local Quickstart
-weight: 99
+sidebar_position: 9
 description: A  quickstart guide for Upbound Spaces
-aliases:
-    - /all-spaces/self-hosted-spaces/quickstart
-    - /spaces/kind-quickstart
-    - /kind-quickstart
-    - /all-spaces/disconnected-spaces/quickstart
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster with a local `kind` cluster.

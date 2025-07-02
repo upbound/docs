@@ -10,8 +10,18 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 30,
   "frontMatter": {
     "title": "Get Started With Managed Resources",
-    "weight": 300
+    "sidebar_position": 30
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Get Started With Composition",
+    "permalink": "/uxp/get-started/get-started-with-composition"
+  },
+  "next": {
+    "title": "Composition",
+    "permalink": "/uxp/composition/"
   }
 }

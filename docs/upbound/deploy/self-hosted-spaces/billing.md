@@ -1,11 +1,7 @@
 ---
 title: Billing
-weight: 500
+sidebar_position: 50
 description: A guide for how billing works in an Upbound Space
-aliases:
-    - /all-spaces/self-hosted-spaces/billing
-    - /spaces/billing
-    - /all-spaces/disconnected-spaces/billing
 ---
 
 

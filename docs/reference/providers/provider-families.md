@@ -1,7 +1,7 @@
 ---
-title: "Provider families"
-weight: 10
-description: "Install and configure Crossplane Provider families"
+title: Provider families
+sidebar_position: 1
+description: Install and configure Crossplane Provider families
 ---
 
 Upbound packages each of the official providers for Amazon AWS, Google GCP and Microsoft Azure as a "family." 

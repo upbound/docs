@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_profile_rename",
+    "permalink": "/reference/cli/cli-reference/yaml/up_profile_rename"
+  },
+  "next": {
+    "title": "up_profile_use",
+    "permalink": "/reference/cli/cli-reference/yaml/up_profile_use"
+  }
 }

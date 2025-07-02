@@ -1,6 +1,6 @@
 ---
-title: "Provider AzureAD"
-weight: 1
+title: Provider AzureAD
+sidebar_position: 1
 description: Release notes for the AzureAD official provider
 ---
 

@@ -12,17 +12,15 @@
   "version": "current",
   "frontMatter": {
     "title": "Up CLI Release Notes",
-    "description": "Release notes for the Up Cli",
-    "toc_min_heading_level": 2,
-    "toc_max_heading_level": 2
+    "description": "Release notes for the Up Cli"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Release Notes",
-    "permalink": "/reference/release-notes/"
+    "title": "MCP Connector Release Notes",
+    "permalink": "/reference/release-notes/mcp-connector"
   },
   "next": {
-    "title": "MCP Connector Release Notes",
-    "permalink": "/reference/release-notes/rel-notes/mcp-connector"
+    "title": "Spaces Release Notes",
+    "permalink": "/reference/release-notes/spaces"
   }
 }

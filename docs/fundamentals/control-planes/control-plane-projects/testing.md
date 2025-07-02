@@ -1,12 +1,7 @@
 ---
-title: "Running and testing your Control Plane Projects"
-weight: 5
-description: "How to run your control plane project on a development controlplane"
-cascade:
-    product: testing-api
-aliases:
-    - /core-concepts/testing
-    - core-concepts/testing
+title: Running and testing your Control Plane Projects
+sidebar_position: 1
+description: How to run your control plane project on a development controlplane
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';

@@ -1,12 +1,7 @@
 ---
 title: Use ArgoCD Plugin
-weight: 150
+sidebar_position: 15
 description: A guide for integrating Argo with control planes in a Space.
-aliases:
-    - /all-spaces/self-hosted-spaces/use-argo
-    - /deploy/disconnected-spaces/use-argo-flux
-    - /all-spaces/self-hosted-spaces/use-argo-flux
-    - /connect/use-argo
 ---
 
 

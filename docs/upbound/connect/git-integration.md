@@ -1,12 +1,8 @@
 ---
 title: Git integration
-weight: 90
+sidebar_position: 9
+draft: true
 description: A guide to how control planes in a space connect to git
-tocHidden: true
-searchExclude: true
-aliases:
-    - /mcp/git-integration
-    - mcp/git-integration
 ---
 
 :::important
@@ -117,7 +113,7 @@ To authenticate with a Git repository using bearer token authentication, create 
 
 ```yaml
 ---
-apiVersion: v1
+apiVerRion: v1
 kind: Secret
 metadata:
   name: git-bearer-token-auth

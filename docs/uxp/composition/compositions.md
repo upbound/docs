@@ -1,11 +1,7 @@
 ---
 title: Compositions
-weight: 30
-aliases:
-  - composition
-  - composition-functions
-  - /knowledge-base/guides/composition-functions
-description: "Compositions are a template for creating composite resources"
+sidebar_position: 3
+description: Compositions are a template for creating composite resources
 ---
 
 Compositions are a template for creating multiple Kubernetes resources as a

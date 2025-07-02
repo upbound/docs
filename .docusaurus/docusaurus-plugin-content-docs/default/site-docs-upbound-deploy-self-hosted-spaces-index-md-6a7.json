@@ -10,25 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Self-Hosted Spaces",
-    "weight": 2,
-    "description": "A guide to Upbound Self-Hosted Spaces",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces",
-      "/spaces",
-      "/deploy/disconnected-spaces",
-      "all-spaces/self-hosted-spaces"
-    ],
-    "category": "guides"
+    "sidebar_position": 1,
+    "description": "A guide to Upbound Self-Hosted Spaces"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Query API setup",
-    "permalink": "/upbound/deploy/query-api"
+    "title": "GCP Deployment Guide",
+    "permalink": "/upbound/deploy/dedicated-spaces/gcp"
   },
   "next": {
-    "title": "Connect or disconnect a Space",
-    "permalink": "/upbound/deploy/self-hosted-spaces/attach-detach"
+    "title": "AWS",
+    "permalink": "/upbound/deploy/self-hosted-spaces/aws/"
   }
 }

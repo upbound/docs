@@ -1,9 +1,7 @@
 ---
 title: Provider Authentication
-weight: 7
+sidebar_position: 1
 description: Description of the document
-aliases:
-    - /core-concepts/providers
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Functions
-weight: 6
+sidebar_position: 1
 description: Custom programs that dynamically template resources.
 ---
 

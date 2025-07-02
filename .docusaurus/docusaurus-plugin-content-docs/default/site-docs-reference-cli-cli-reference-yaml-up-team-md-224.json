@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_space_upgrade",
+    "permalink": "/reference/cli/cli-reference/yaml/up_space_upgrade"
+  },
+  "next": {
+    "title": "up_team_create",
+    "permalink": "/reference/cli/cli-reference/yaml/up_team_create"
+  }
 }

@@ -1,14 +1,7 @@
 ---
 title: Self-Hosted Spaces
-weight: 2
+sidebar_position: 1
 description: A guide to Upbound Self-Hosted Spaces
-aliases:
-    - /all-spaces/self-hosted-spaces
-    - /spaces
-    - /deploy/disconnected-spaces
-    - all-spaces/self-hosted-spaces
-
-category: "guides"
 ---
 
 <!-- vale Google.Headings = NO -->

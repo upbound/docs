@@ -10,15 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Provider Helm",
-    "weight": 1,
+    "sidebar_position": 1,
     "description": "Release notes for the Helm official provider"
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Provider GCP",
-    "permalink": "/reference/providers/provider-gcp/"
+    "title": "Authentication",
+    "permalink": "/reference/providers/provider-gcp/authentication"
   },
   "next": {
     "title": "Provider Kubernetes",

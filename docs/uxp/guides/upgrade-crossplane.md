@@ -1,6 +1,6 @@
 ---
 title: Upgrade Crossplane
-weight: 400
+sidebar_position: 40
 ---
 
 The recommended upgrade method for an existing Crossplane install is to use

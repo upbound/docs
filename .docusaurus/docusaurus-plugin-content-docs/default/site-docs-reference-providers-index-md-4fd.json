@@ -10,25 +10,17 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Official Providers",
-    "icon": "upbound-official",
-    "sidebar_position": 1,
-    "description": "Upbound creates, maintains and supports a set of Crossplane providers called official providers.",
-    "category": "resources",
-    "aliases": [
-      "upbound-marketplace/providers",
-      "providers/"
-    ]
+    "description": "Upbound creates, maintains and supports a set of Crossplane providers called official providers."
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "CLI Reference",
-    "permalink": "/reference/cli/cli-reference/"
+    "title": "(deprecated) Quickstart",
+    "permalink": "/reference/legacy/multicloud-deploy"
   },
   "next": {
-    "title": "Provider AWS",
-    "permalink": "/reference/providers/provider-aws/"
+    "title": "Policies",
+    "permalink": "/reference/providers/policies"
   }
 }

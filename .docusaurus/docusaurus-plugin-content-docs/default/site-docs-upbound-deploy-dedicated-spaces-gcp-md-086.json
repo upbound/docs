@@ -10,13 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "GCP Deployment Guide",
-    "weight": 2,
-    "description": "A guide to Upbound Dedicated Spaces on GCP",
-    "aliases": [
-      "/all-spaces/dedicated-spaces/gcp"
-    ]
+    "sidebar_position": 1,
+    "description": "A guide to Upbound Dedicated Spaces on GCP"
   },
   "sidebar": "upboundSidebar",
   "previous": {
@@ -24,7 +22,7 @@
     "permalink": "/upbound/deploy/dedicated-spaces/aws"
   },
   "next": {
-    "title": "Query API setup",
-    "permalink": "/upbound/deploy/query-api"
+    "title": "Self-Hosted Spaces",
+    "permalink": "/upbound/deploy/self-hosted-spaces/"
   }
 }

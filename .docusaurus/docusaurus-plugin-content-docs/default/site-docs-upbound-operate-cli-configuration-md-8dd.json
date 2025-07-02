@@ -10,22 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 10,
   "frontMatter": {
     "title": "Configuration",
-    "metaTitle": "Upbound CLI - Configuration",
-    "description": "Configuration for the Upbound CLI",
-    "weight": 105,
-    "aliases": [
-      "/reference/configuration"
-    ]
+    "sidebar_position": 10,
+    "description": "Configuration for the Upbound CLI"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Up CLI",
-    "permalink": "/upbound/operate/cli/"
-  },
-  "next": {
     "title": "Contexts",
     "permalink": "/upbound/operate/cli/contexts"
+  },
+  "next": {
+    "title": "Control Plane Connector",
+    "permalink": "/upbound/operate/ctp-connector"
   }
 }

@@ -1,7 +1,7 @@
 ---
-title: "Hub RBAC"
-weight: 10
-description: "A guide using Hub RBAC in disconnected spaces"
+title: Hub RBAC
+sidebar_position: 1
+description: A guide using Hub RBAC in disconnected spaces
 ---
 
 :::important

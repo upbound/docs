@@ -10,9 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Authentication",
-    "weight": 10,
+    "sidebar_position": 1,
     "description": "How to authenticate to the Upbound Marketplace to access private packages."
   },
   "sidebar": "referenceSidebar",
@@ -21,7 +22,7 @@
     "permalink": "/reference/marketplace/"
   },
   "next": {
-    "title": "DMCA Policy",
-    "permalink": "/reference/marketplace/dmca"
+    "title": "Creating and Pushing Packages",
+    "permalink": "/reference/marketplace/packages"
   }
 }

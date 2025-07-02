@@ -16,11 +16,11 @@
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Crossplane Pods",
-    "permalink": "/uxp/guides/pods"
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/uxp/guides/crossplane-with-argo-cd"
   },
   "next": {
-    "title": "Troubleshoot Crossplane",
-    "permalink": "/uxp/guides/troubleshoot-crossplane"
+    "title": "Crossplane API Reference",
+    "permalink": "/uxp/api/"
   }
 }

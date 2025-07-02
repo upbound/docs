@@ -32,11 +32,13 @@
             },
             {
               "id": "fundamentals/consumer-portal-get-started",
-              "path": "/fundamentals/consumer-portal-get-started"
+              "path": "/fundamentals/consumer-portal-get-started",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/adding-dependencies",
-              "path": "/fundamentals/control-planes/control-plane-projects/adding-dependencies"
+              "path": "/fundamentals/control-planes/control-plane-projects/adding-dependencies",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/index",
@@ -45,11 +47,13 @@
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go-templating/schemas",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/index",
@@ -58,11 +62,13 @@
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/models",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/index",
@@ -71,7 +77,8 @@
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/index",
@@ -80,31 +87,38 @@
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/loops",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/index",
@@ -113,48 +127,53 @@
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/authoring-xrds",
-              "path": "/fundamentals/control-planes/control-plane-projects/authoring-xrds"
+              "path": "/fundamentals/control-planes/control-plane-projects/authoring-xrds",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/building-pushing",
-              "path": "/fundamentals/control-planes/control-plane-projects/building-pushing"
+              "path": "/fundamentals/control-planes/control-plane-projects/building-pushing",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/index",
-              "path": "/fundamentals/control-planes/control-plane-projects/"
+              "path": "/fundamentals/control-planes/control-plane-projects/",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/simulations",
-              "path": "/fundamentals/control-planes/control-plane-projects/simulations"
+              "path": "/fundamentals/control-planes/control-plane-projects/simulations",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/control-plane-projects/testing",
-              "path": "/fundamentals/control-planes/control-plane-projects/testing"
+              "path": "/fundamentals/control-planes/control-plane-projects/testing",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/controllers",
-              "path": "/fundamentals/control-planes/controllers"
-            },
-            {
-              "id": "fundamentals/control-planes/index",
-              "path": "/fundamentals/control-planes/",
+              "path": "/fundamentals/control-planes/controllers",
               "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/migrating-to-mcps",
-              "path": "/fundamentals/control-planes/migrating-to-mcps"
+              "path": "/fundamentals/control-planes/migrating-to-mcps",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/provider-authentication",
-              "path": "/fundamentals/control-planes/provider-authentication"
+              "path": "/fundamentals/control-planes/provider-authentication",
+              "sidebar": "fundamentalsSidebar"
             },
             {
               "id": "fundamentals/control-planes/repositories/index",
@@ -227,10 +246,6 @@
               "sidebar": "referenceSidebar"
             },
             {
-              "id": "reference/apis/index",
-              "path": "/reference/apis/"
-            },
-            {
               "id": "reference/apis/query-api/index",
               "path": "/reference/apis/query-api/",
               "sidebar": "referenceSidebar"
@@ -267,7 +282,8 @@
             },
             {
               "id": "reference/apis/spaces-api/yaml/v1.13/index",
-              "path": "/reference/apis/spaces-api/yaml/v1.13/"
+              "path": "/reference/apis/spaces-api/yaml/v1.13/",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/apis/testing-api/index",
@@ -275,609 +291,9 @@
               "sidebar": "referenceSidebar"
             },
             {
-              "id": "reference/cli/cli-reference/index",
-              "path": "/reference/cli/cli-reference/",
+              "id": "reference/cli-reference",
+              "path": "/reference/cli-reference",
               "sidebar": "referenceSidebar"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up",
-              "path": "/reference/cli/cli-reference/yaml/up"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_ctx",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_ctx"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_migration",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_migration"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_migration_export",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_migration_export"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_migration_import",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_migration_import"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_migration_pause-toggle",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_migration_pause-toggle"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_billing",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_billing"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_billing_export",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_billing_export"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_connect_(attach)",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_connect_(attach)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_destroy",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_destroy"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_disconnect_(detach)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_init",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_init"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_list",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_mirror",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_mirror"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_alpha_space_upgrade",
-              "path": "/reference/cli/cli-reference/yaml/up_alpha_space_upgrade"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_completion",
-              "path": "/reference/cli/cli-reference/yaml/up_completion"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_composition",
-              "path": "/reference/cli/cli-reference/yaml/up_composition"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_composition_generate",
-              "path": "/reference/cli/cli-reference/yaml/up_composition_generate"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_composition_render",
-              "path": "/reference/cli/cli-reference/yaml/up_composition_render"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_configuration_install"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connect",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connect"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_install"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_connector_uninstall"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_create",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_disconnect"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function_install",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_function_install"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_get",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_list",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider_install"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_pull-secret_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulate",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulate"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list",
-              "path": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_ctx",
-              "path": "/reference/cli/cli-reference/yaml/up_ctx"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_dependency_(dep)",
-              "path": "/reference/cli/cli-reference/yaml/up_dependency_(dep)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_dependency_(dep)_add",
-              "path": "/reference/cli/cli-reference/yaml/up_dependency_(dep)_add"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_dependency_(dep)_clean-cache",
-              "path": "/reference/cli/cli-reference/yaml/up_dependency_(dep)_clean-cache"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache",
-              "path": "/reference/cli/cli-reference/yaml/up_dependency_(dep)_update-cache"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_example",
-              "path": "/reference/cli/cli-reference/yaml/up_example"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_example_generate",
-              "path": "/reference/cli/cli-reference/yaml/up_example_generate"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_function",
-              "path": "/reference/cli/cli-reference/yaml/up_function"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_function_generate",
-              "path": "/reference/cli/cli-reference/yaml/up_function_generate"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_group",
-              "path": "/reference/cli/cli-reference/yaml/up_group"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_group_create",
-              "path": "/reference/cli/cli-reference/yaml/up_group_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_group_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_group_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_group_get",
-              "path": "/reference/cli/cli-reference/yaml/up_group_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_group_list",
-              "path": "/reference/cli/cli-reference/yaml/up_group_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_help",
-              "path": "/reference/cli/cli-reference/yaml/up_help"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_license",
-              "path": "/reference/cli/cli-reference/yaml/up_license"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_login",
-              "path": "/reference/cli/cli-reference/yaml/up_login"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_logout",
-              "path": "/reference/cli/cli-reference/yaml/up_logout"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_create",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_get",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_list",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_token",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_token"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_user",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_user"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_user_invite",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_user_invite"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_user_list",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_user_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_organization_(org)_user_remove",
-              "path": "/reference/cli/cli-reference/yaml/up_organization_(org)_user_remove"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile",
-              "path": "/reference/cli/cli-reference/yaml/up_profile"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_create",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_current",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_current"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_list",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_rename",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_rename"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_set",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_set"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_use",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_use"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_profile_view",
-              "path": "/reference/cli/cli-reference/yaml/up_profile_view"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project",
-              "path": "/reference/cli/cli-reference/yaml/up_project"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_build",
-              "path": "/reference/cli/cli-reference/yaml/up_project_build"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_init",
-              "path": "/reference/cli/cli-reference/yaml/up_project_init"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_move",
-              "path": "/reference/cli/cli-reference/yaml/up_project_move"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_push",
-              "path": "/reference/cli/cli-reference/yaml/up_project_push"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_run",
-              "path": "/reference/cli/cli-reference/yaml/up_project_run"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_simulate",
-              "path": "/reference/cli/cli-reference/yaml/up_project_simulate"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_simulation",
-              "path": "/reference/cli/cli-reference/yaml/up_project_simulation"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_simulation_complete",
-              "path": "/reference/cli/cli-reference/yaml/up_project_simulation_complete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_simulation_create",
-              "path": "/reference/cli/cli-reference/yaml/up_project_simulation_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_project_simulation_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_project_simulation_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_create",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_get",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_list",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_permission",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_permission_grant",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_grant"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_permission_list",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_permission_revoke",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_permission_revoke"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_repository_(repo)_update",
-              "path": "/reference/cli/cli-reference/yaml/up_repository_(repo)_update"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot",
-              "path": "/reference/cli/cli-reference/yaml/up_robot"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_create",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_get",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_list",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_team",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_team"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_team_join",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_team_join"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_team_leave",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_team_leave"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_team_list",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_team_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_token",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_token"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_token_create",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_token_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_token_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_token_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_token_get",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_token_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_robot_token_list",
-              "path": "/reference/cli/cli-reference/yaml/up_robot_token_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space",
-              "path": "/reference/cli/cli-reference/yaml/up_space"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_billing",
-              "path": "/reference/cli/cli-reference/yaml/up_space_billing"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_billing_export",
-              "path": "/reference/cli/cli-reference/yaml/up_space_billing_export"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_connect_(attach)",
-              "path": "/reference/cli/cli-reference/yaml/up_space_connect_(attach)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_destroy",
-              "path": "/reference/cli/cli-reference/yaml/up_space_destroy"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_disconnect_(detach)",
-              "path": "/reference/cli/cli-reference/yaml/up_space_disconnect_(detach)"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_init",
-              "path": "/reference/cli/cli-reference/yaml/up_space_init"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_list",
-              "path": "/reference/cli/cli-reference/yaml/up_space_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_mirror",
-              "path": "/reference/cli/cli-reference/yaml/up_space_mirror"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_space_upgrade",
-              "path": "/reference/cli/cli-reference/yaml/up_space_upgrade"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_team",
-              "path": "/reference/cli/cli-reference/yaml/up_team"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_team_create",
-              "path": "/reference/cli/cli-reference/yaml/up_team_create"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_team_delete",
-              "path": "/reference/cli/cli-reference/yaml/up_team_delete"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_team_get",
-              "path": "/reference/cli/cli-reference/yaml/up_team_get"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_team_list",
-              "path": "/reference/cli/cli-reference/yaml/up_team_list"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_test",
-              "path": "/reference/cli/cli-reference/yaml/up_test"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_test_generate",
-              "path": "/reference/cli/cli-reference/yaml/up_test_generate"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_test_run",
-              "path": "/reference/cli/cli-reference/yaml/up_test_run"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_uxp",
-              "path": "/reference/cli/cli-reference/yaml/up_uxp"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_uxp_install",
-              "path": "/reference/cli/cli-reference/yaml/up_uxp_install"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_uxp_uninstall",
-              "path": "/reference/cli/cli-reference/yaml/up_uxp_uninstall"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_uxp_upgrade",
-              "path": "/reference/cli/cli-reference/yaml/up_uxp_upgrade"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_version",
-              "path": "/reference/cli/cli-reference/yaml/up_version"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpkg",
-              "path": "/reference/cli/cli-reference/yaml/up_xpkg"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpkg_append",
-              "path": "/reference/cli/cli-reference/yaml/up_xpkg_append"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpkg_batch",
-              "path": "/reference/cli/cli-reference/yaml/up_xpkg_batch"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpkg_build",
-              "path": "/reference/cli/cli-reference/yaml/up_xpkg_build"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpkg_push",
-              "path": "/reference/cli/cli-reference/yaml/up_xpkg_push"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpkg_xp-extract",
-              "path": "/reference/cli/cli-reference/yaml/up_xpkg_xp-extract"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpls",
-              "path": "/reference/cli/cli-reference/yaml/up_xpls"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xpls_serve",
-              "path": "/reference/cli/cli-reference/yaml/up_xpls_serve"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xrd",
-              "path": "/reference/cli/cli-reference/yaml/up_xrd"
-            },
-            {
-              "id": "reference/cli/cli-reference/yaml/up_xrd_generate",
-              "path": "/reference/cli/cli-reference/yaml/up_xrd_generate"
-            },
-            {
-              "id": "reference/crossplane-vs-upbound",
-              "path": "/reference/crossplane-vs-upbound"
             },
             {
               "id": "reference/index",
@@ -926,7 +342,8 @@
             },
             {
               "id": "reference/providers/faq",
-              "path": "/reference/providers/faq"
+              "path": "/reference/providers/faq",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/index",
@@ -935,19 +352,23 @@
             },
             {
               "id": "reference/providers/migration",
-              "path": "/reference/providers/migration"
+              "path": "/reference/providers/migration",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/monolithic",
-              "path": "/reference/providers/monolithic"
+              "path": "/reference/providers/monolithic",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/policies",
-              "path": "/reference/providers/policies"
+              "path": "/reference/providers/policies",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-aws/authentication",
-              "path": "/reference/providers/provider-aws/authentication"
+              "path": "/reference/providers/provider-aws/authentication",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-aws/index",
@@ -956,7 +377,8 @@
             },
             {
               "id": "reference/providers/provider-azure/authentication",
-              "path": "/reference/providers/provider-azure/authentication"
+              "path": "/reference/providers/provider-azure/authentication",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-azure/index",
@@ -970,11 +392,13 @@
             },
             {
               "id": "reference/providers/provider-families",
-              "path": "/reference/providers/provider-families"
+              "path": "/reference/providers/provider-families",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-gcp/authentication",
-              "path": "/reference/providers/provider-gcp/authentication"
+              "path": "/reference/providers/provider-gcp/authentication",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-gcp/index",
@@ -988,7 +412,8 @@
             },
             {
               "id": "reference/providers/provider-kubernetes/authentication",
-              "path": "/reference/providers/provider-kubernetes/authentication"
+              "path": "/reference/providers/provider-kubernetes/authentication",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-kubernetes/index",
@@ -1002,19 +427,23 @@
             },
             {
               "id": "reference/providers/provider-terraform/migrate-hcl",
-              "path": "/reference/providers/provider-terraform/migrate-hcl"
+              "path": "/reference/providers/provider-terraform/migrate-hcl",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/provider-terraform/migrate-provider-tf",
-              "path": "/reference/providers/provider-terraform/migrate-provider-tf"
+              "path": "/reference/providers/provider-terraform/migrate-provider-tf",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/pull-secrets",
-              "path": "/reference/providers/pull-secrets"
+              "path": "/reference/providers/pull-secrets",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/providers/signature-verification",
-              "path": "/reference/providers/signature-verification"
+              "path": "/reference/providers/signature-verification",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/release-notes/index",
@@ -1022,18 +451,18 @@
               "sidebar": "referenceSidebar"
             },
             {
-              "id": "reference/release-notes/rel-notes/mcp-connector",
-              "path": "/reference/release-notes/rel-notes/mcp-connector",
+              "id": "reference/release-notes/mcp-connector",
+              "path": "/reference/release-notes/mcp-connector",
               "sidebar": "referenceSidebar"
             },
             {
-              "id": "reference/release-notes/rel-notes/spaces",
-              "path": "/reference/release-notes/rel-notes/spaces",
+              "id": "reference/release-notes/spaces",
+              "path": "/reference/release-notes/spaces",
               "sidebar": "referenceSidebar"
             },
             {
-              "id": "reference/release-notes/rel-notes/up-cli",
-              "path": "/reference/release-notes/rel-notes/up-cli",
+              "id": "reference/release-notes/up-cli",
+              "path": "/reference/release-notes/up-cli",
               "sidebar": "referenceSidebar"
             },
             {
@@ -1078,7 +507,8 @@
             },
             {
               "id": "solutions/upbound-platform-ref",
-              "path": "/solutions/upbound-platform-ref"
+              "path": "/solutions/upbound-platform-ref",
+              "sidebar": "solutionsSidebar"
             },
             {
               "id": "upbound/connect/declarative-ctps",
@@ -1133,11 +563,6 @@
             {
               "id": "upbound/deploy/dedicated-spaces/index",
               "path": "/upbound/deploy/dedicated-spaces/",
-              "sidebar": "upboundSidebar"
-            },
-            {
-              "id": "upbound/deploy/index",
-              "path": "/upbound/deploy/",
               "sidebar": "upboundSidebar"
             },
             {
@@ -1242,7 +667,8 @@
             },
             {
               "id": "upbound/index",
-              "path": "/upbound/"
+              "path": "/upbound/",
+              "sidebar": "upboundSidebar"
             },
             {
               "id": "upbound/operate/accounts/authentication/enable-sso",
@@ -1350,6 +776,11 @@
               "sidebar": "upboundSidebar"
             },
             {
+              "id": "uxp/api/index",
+              "path": "/uxp/api/",
+              "sidebar": "uxpSidebar"
+            },
+            {
               "id": "uxp/composition/composite-resource-definitions",
               "path": "/uxp/composition/composite-resource-definitions",
               "sidebar": "uxpSidebar"
@@ -1375,24 +806,29 @@
               "sidebar": "uxpSidebar"
             },
             {
-              "id": "uxp/enhancements/package-manager",
-              "path": "/uxp/enhancements/package-manager"
+              "id": "uxp/composition/index",
+              "path": "/uxp/composition/",
+              "sidebar": "uxpSidebar"
             },
             {
               "id": "uxp/get-started/get-started-with-composition",
-              "path": "/uxp/get-started/get-started-with-composition"
+              "path": "/uxp/get-started/get-started-with-composition",
+              "sidebar": "uxpSidebar"
             },
             {
               "id": "uxp/get-started/get-started-with-managed-resources",
-              "path": "/uxp/get-started/get-started-with-managed-resources"
+              "path": "/uxp/get-started/get-started-with-managed-resources",
+              "sidebar": "uxpSidebar"
             },
             {
               "id": "uxp/get-started/index",
-              "path": "/uxp/get-started/"
+              "path": "/uxp/get-started/",
+              "sidebar": "uxpSidebar"
             },
             {
               "id": "uxp/get-started/install",
-              "path": "/uxp/get-started/install"
+              "path": "/uxp/get-started/install",
+              "sidebar": "uxpSidebar"
             },
             {
               "id": "uxp/guides/crossplane-with-argo-cd",
@@ -1407,11 +843,6 @@
             {
               "id": "uxp/guides/function-patch-and-transform",
               "path": "/uxp/guides/function-patch-and-transform",
-              "sidebar": "uxpSidebar"
-            },
-            {
-              "id": "uxp/guides/index",
-              "path": "/uxp/guides/",
               "sidebar": "uxpSidebar"
             },
             {
@@ -1456,7 +887,13 @@
             },
             {
               "id": "uxp/index",
-              "path": "/uxp/"
+              "path": "/uxp/",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/managed-resources/index",
+              "path": "/uxp/managed-resources/",
+              "sidebar": "uxpSidebar"
             },
             {
               "id": "uxp/managed-resources/managed-resources",
@@ -1487,29 +924,26 @@
               "id": "uxp/packages/providers",
               "path": "/uxp/packages/providers",
               "sidebar": "uxpSidebar"
-            },
-            {
-              "id": "uxp/reference/index",
-              "path": "/uxp/reference/"
-            },
-            {
-              "id": "uxp/whats-crossplane/index",
-              "path": "/uxp/whats-crossplane/",
-              "sidebar": "uxpSidebar"
             }
           ],
           "draftIds": [],
           "sidebars": {
-            "uxpSidebar": {
-              "link": {
-                "path": "/uxp/whats-crossplane/",
-                "label": "uxp/whats-crossplane/index"
-              }
-            },
             "fundamentalsSidebar": {
               "link": {
                 "path": "/",
                 "label": "fundamentals/get-started"
+              }
+            },
+            "uxpSidebar": {
+              "link": {
+                "path": "/uxp/",
+                "label": "uxp/index"
+              }
+            },
+            "upboundSidebar": {
+              "link": {
+                "path": "/upbound/",
+                "label": "upbound/index"
               }
             },
             "referenceSidebar": {
@@ -1522,12 +956,6 @@
               "link": {
                 "path": "/solutions/idp-starter-kit",
                 "label": "solutions/idp-starter-kit"
-              }
-            },
-            "upboundSidebar": {
-              "link": {
-                "path": "/upbound/deploy/",
-                "label": "upbound/deploy/index"
               }
             }
           }

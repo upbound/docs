@@ -1,6 +1,6 @@
 ---
-title: "Provider Terraform"
-weight: 1
+title: Provider Terraform
+sidebar_position: 1
 description: Release notes for the Terraform official provider
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: Product Lifecycle
-weight: 100
-description: "Information on Upbound software versions, support windows, and release policies."
+sidebar_position: 10
+description: Information on Upbound software versions, support windows, and release
+  policies.
 ---
 
 ## Software list

@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Authentication",
-    "weight": 10,
+    "sidebar_position": 1,
     "description": "Authentication options with the Upbound AWS official provider"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Provider AWS",
+    "permalink": "/reference/providers/provider-aws/"
+  },
+  "next": {
+    "title": "Provider Azure",
+    "permalink": "/reference/providers/provider-azure/"
   }
 }

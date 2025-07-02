@@ -10,23 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 12,
   "frontMatter": {
     "title": "Connect or disconnect a Space",
-    "weight": 120,
-    "description": "Enable and connect self-hosted Spaces to the Upbound console",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/attach-detach",
-      "/deploy/spaces/attach-detach",
-      "all-spaces/self-hosted-spaces/attach-detach"
-    ]
+    "sidebar_position": 12,
+    "description": "Enable and connect self-hosted Spaces to the Upbound console"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Self-Hosted Spaces",
-    "permalink": "/upbound/deploy/self-hosted-spaces/"
+    "title": "Local Quickstart",
+    "permalink": "/upbound/deploy/self-hosted-spaces/self-hosted-qs"
   },
   "next": {
-    "title": "AWS",
-    "permalink": "/upbound/deploy/self-hosted-spaces/aws/"
+    "title": "Disaster Recovery",
+    "permalink": "/upbound/deploy/self-hosted-spaces/dr"
   }
 }

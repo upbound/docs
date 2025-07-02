@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_alpha_space_billing",
+  "title": "up_alpha_space_billing",
+  "description": "",
+  "source": "@site/docs/reference/cli-reference/yaml/up_alpha_space_billing.md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_alpha_space_billing",
+  "permalink": "/reference/cli-reference/yaml/up_alpha_space_billing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_alpha_space",
+    "permalink": "/reference/cli-reference/yaml/up_alpha_space"
+  },
+  "next": {
+    "title": "up_alpha_space_billing_export",
+    "permalink": "/reference/cli-reference/yaml/up_alpha_space_billing_export"
+  }
+}

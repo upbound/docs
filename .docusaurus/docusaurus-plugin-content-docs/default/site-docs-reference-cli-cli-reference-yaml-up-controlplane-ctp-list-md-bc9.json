@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_controlplane_(ctp)_get",
+    "permalink": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_get"
+  },
+  "next": {
+    "title": "up_controlplane_(ctp)_provider",
+    "permalink": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_provider"
+  }
 }

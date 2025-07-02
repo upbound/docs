@@ -10,18 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "(deprecated) Connect Argo to Upbound",
-    "weight": 10,
-    "description": "A tutorial for connecting Argo to a control plane.",
-    "aliases": [
-      "/deploy/legacy-spaces/connect-argo-to-upbound"
-    ]
+    "sidebar_position": 1,
+    "description": "A tutorial for connecting Argo to a control plane."
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Support",
-    "permalink": "/reference/usage/support"
+    "title": "Legacy Spaces",
+    "permalink": "/reference/legacy/"
   },
   "next": {
     "title": "(deprecated) Control Plane Configurations",

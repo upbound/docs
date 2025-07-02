@@ -1,10 +1,7 @@
 ---
 title: Usages
-weight: 30
-state: beta
-alphaVersion: "1.14"
-betaVersion: "1.19"
-description: "Usage indicates a resource is in use"
+sidebar_position: 3
+description: Usage indicates a resource is in use
 ---
 
 A `Usage` indicates a resource is in use. Two main use cases for Usages are

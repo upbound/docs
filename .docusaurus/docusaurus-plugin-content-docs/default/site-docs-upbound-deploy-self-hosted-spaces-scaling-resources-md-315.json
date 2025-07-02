@@ -10,22 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 95,
   "frontMatter": {
     "title": "Scaling vCluster and etcd Resources",
-    "weight": 950,
-    "description": "A guide for scaling vCluster and etcd resources in self-hosted Spaces",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/scaling-resources",
-      "/spaces/scaling-resources"
-    ]
+    "sidebar_position": 95,
+    "description": "A guide for scaling vCluster and etcd resources in self-hosted Spaces"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Proxied configuration",
-    "permalink": "/upbound/deploy/self-hosted-spaces/proxies-config"
+    "title": "Deployment",
+    "permalink": "/upbound/deploy/self-hosted-spaces/deployment"
   },
   "next": {
-    "title": "Local Quickstart",
-    "permalink": "/upbound/deploy/self-hosted-spaces/self-hosted-qs"
+    "title": "Troubleshooting",
+    "permalink": "/upbound/deploy/self-hosted-spaces/troubleshooting"
   }
 }

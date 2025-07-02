@@ -10,19 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 20,
   "frontMatter": {
     "title": "Configurations",
-    "description": "Packages combine multiple Crossplane resources into a single, portable, OCI image.",
-    "altTitle": "Crossplane Packages",
-    "weight": 200
+    "sidebar_position": 20,
+    "description": "Packages combine multiple Crossplane resources into a single, portable, OCI image."
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Usages",
-    "permalink": "/uxp/managed-resources/usages"
-  },
-  "next": {
     "title": "Functions",
     "permalink": "/uxp/packages/functions"
+  },
+  "next": {
+    "title": "Image Configs",
+    "permalink": "/uxp/packages/image-configs"
   }
 }

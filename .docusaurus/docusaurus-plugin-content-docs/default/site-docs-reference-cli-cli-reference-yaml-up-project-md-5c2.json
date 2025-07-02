@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_profile_view",
+    "permalink": "/reference/cli/cli-reference/yaml/up_profile_view"
+  },
+  "next": {
+    "title": "up_project_build",
+    "permalink": "/reference/cli/cli-reference/yaml/up_project_build"
+  }
 }

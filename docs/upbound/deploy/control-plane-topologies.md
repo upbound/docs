@@ -1,9 +1,7 @@
 ---
 title: Control Plane Topologies
-weight: 150
+sidebar_position: 15
 description: Configure scheduling of composites to remote control planes
-aliases:
-    - /all-spaces/control-plane-topologies
 ---
 
 :::important

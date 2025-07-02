@@ -1,6 +1,6 @@
 ---
 title: Crossplane Pods
-weight: 1
+sidebar_position: 1
 description: Background on the components installed with Crossplane and their functions.
 ---
 

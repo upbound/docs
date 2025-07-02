@@ -10,9 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Provider families",
-    "weight": 10,
+    "sidebar_position": 1,
     "description": "Install and configure Crossplane Provider families"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Provider AzureAD",
+    "permalink": "/reference/providers/provider-azuread/"
+  },
+  "next": {
+    "title": "Provider GCP",
+    "permalink": "/reference/providers/provider-gcp/"
   }
 }

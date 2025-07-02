@@ -10,15 +10,16 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Managed Resources",
-    "weight": 10,
+    "sidebar_position": 1,
     "description": "Managed resources are the Crossplane representation of external provider resources"
   },
   "sidebar": "uxpSidebar",
   "previous": {
-    "title": "Write a Composition Function in Python",
-    "permalink": "/uxp/guides/write-a-composition-function-in-python"
+    "title": "Managed Resources",
+    "permalink": "/uxp/managed-resources/"
   },
   "next": {
     "title": "Usages",

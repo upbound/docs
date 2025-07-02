@@ -1,6 +1,5 @@
 ---
 title: Support
-sidebar_position: 10
 description: Contact Upbound Support
 ---
 

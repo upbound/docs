@@ -10,24 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 15,
   "frontMatter": {
     "title": "Use ArgoCD Plugin",
-    "weight": 150,
-    "description": "A guide for integrating Argo with control planes in a Space.",
-    "aliases": [
-      "/all-spaces/self-hosted-spaces/use-argo",
-      "/deploy/disconnected-spaces/use-argo-flux",
-      "/all-spaces/self-hosted-spaces/use-argo-flux",
-      "/connect/use-argo"
-    ]
+    "sidebar_position": 15,
+    "description": "A guide for integrating Argo with control planes in a Space."
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Troubleshooting",
-    "permalink": "/upbound/deploy/self-hosted-spaces/troubleshooting"
+    "title": "Disaster Recovery",
+    "permalink": "/upbound/deploy/self-hosted-spaces/dr"
   },
   "next": {
-    "title": "Cloud Spaces",
-    "permalink": "/upbound/deploy/spaces/"
+    "title": "Space Helm Chart Reference",
+    "permalink": "/upbound/deploy/self-hosted-spaces/helm-reference"
   }
 }

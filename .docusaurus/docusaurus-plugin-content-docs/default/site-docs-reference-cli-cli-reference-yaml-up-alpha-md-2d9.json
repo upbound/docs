@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up",
+    "permalink": "/reference/cli/cli-reference/yaml/up"
+  },
+  "next": {
+    "title": "up_alpha_ctx",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_ctx"
+  }
 }

@@ -1,6 +1,6 @@
 ---
-title: "Provider Kubernetes"
-weight: 1
+title: Provider Kubernetes
+sidebar_position: 1
 description: Release notes for the Kubernetes official provider
 ---
 

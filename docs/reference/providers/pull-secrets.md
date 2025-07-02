@@ -1,7 +1,8 @@
 ---
-title: "Pull secrets"
-weight: 8
-description: "Learn how to configure access to older Official providers versions from the Marketplace"
+title: Pull secrets
+sidebar_position: 1
+description: Learn how to configure access to older Official providers versions from
+  the Marketplace
 ---
 
 You must configure a pull secret on your control plane to pull any non-latest version of an Official Provider. If you're on

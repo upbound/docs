@@ -15,11 +15,11 @@
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Spaces API Reference Latest (v1.13)",
-    "permalink": "/reference/apis/spaces-api/v1_13"
+    "title": "Testing API Reference",
+    "permalink": "/reference/apis/testing-api/"
   },
   "next": {
-    "title": "Official Providers",
-    "permalink": "/reference/providers/"
+    "title": "up",
+    "permalink": "/reference/cli/cli-reference/yaml/up"
   }
 }

@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_alpha_migration_import",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_migration_import"
+  },
+  "next": {
+    "title": "up_alpha_space",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space"
+  }
 }

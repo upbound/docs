@@ -10,12 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project",
-    "weight": 2,
-    "description": "Define your first API in your control plane project",
-    "aliases": [
-      "/core-concepts/authoring-xrds"
-    ]
+    "sidebar_position": 1,
+    "description": "Define your first API in your control plane project"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Models",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/models"
+  },
+  "next": {
+    "title": "Building and pushing your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/building-pushing"
   }
 }

@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_xpkg_push",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xpkg_push"
+  },
+  "next": {
+    "title": "up_xpls",
+    "permalink": "/reference/cli/cli-reference/yaml/up_xpls"
+  }
 }

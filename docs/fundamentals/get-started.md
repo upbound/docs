@@ -1,11 +1,10 @@
 ---
 title: Get Started
-id: get-started
-description: "Use the Upbound CLI to create infrastructure and have more control
-of your configurations" 
+description: Use the Upbound CLI to create infrastructure and have more control of
+  your configurations
 sidebar_position: 1
 slug: /
-alias: /learn/
+id: get-started
 ---
 
 Upbound is a scalable infrastructure management service built on Crossplane. The

@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_controlplane_(ctp)_simulation_(sim)_list",
+    "permalink": "/reference/cli/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_list"
+  },
+  "next": {
+    "title": "up_dependency_(dep)",
+    "permalink": "/reference/cli/cli-reference/yaml/up_dependency_(dep)"
+  }
 }

@@ -1,11 +1,7 @@
 ---
 title: AWS
-weight: 2
+sidebar_position: 1
 description: A  quickstart guide for Upbound Spaces in AWS
-aliases:
-    - /all-spaces/self-hosted-spaces/aws-deployment
-    - /spaces/quickstart
-    - /all-spaces/disconnected-spaces/aws-deployment
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in AWS.

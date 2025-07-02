@@ -10,18 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 30,
   "frontMatter": {
     "title": "Space-level observability",
-    "weight": 300,
+    "sidebar_position": 30,
     "description": "Configure Space-level observability"
   },
   "sidebar": "upboundSidebar",
   "previous": {
-    "title": "Local Quickstart",
-    "permalink": "/upbound/deploy/self-hosted-spaces/self-hosted-qs"
+    "title": "Proxied configuration",
+    "permalink": "/upbound/deploy/self-hosted-spaces/proxies-config"
   },
   "next": {
-    "title": "Interacting with Disconnected Spaces",
-    "permalink": "/upbound/deploy/self-hosted-spaces/spaces-management"
+    "title": "Billing",
+    "permalink": "/upbound/deploy/self-hosted-spaces/billing"
   }
 }

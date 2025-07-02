@@ -10,14 +10,11 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Automatically upgrade control planes",
-    "weight": 10,
-    "description": "How to configure automatic upgrades of Crossplane in a control plane",
-    "aliases": [
-      "/mcp/auto-upgrade",
-      "mcp/auto-upgrade"
-    ]
+    "sidebar_position": 1,
+    "description": "How to configure automatic upgrades of Crossplane in a control plane"
   },
   "sidebar": "upboundSidebar",
   "previous": {
@@ -25,7 +22,7 @@
     "permalink": "/upbound/operate/accounts/identity-management/users"
   },
   "next": {
-    "title": "Up CLI",
-    "permalink": "/upbound/operate/cli/"
+    "title": "Control Planes",
+    "permalink": "/upbound/operate/control-planes"
   }
 }

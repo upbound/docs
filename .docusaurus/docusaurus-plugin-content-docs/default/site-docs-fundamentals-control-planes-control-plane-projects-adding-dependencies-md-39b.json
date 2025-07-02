@@ -10,13 +10,19 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
+  "sidebarPosition": 1,
   "frontMatter": {
     "title": "Adding dependencies to your Control Plane Projects",
-    "weight": 1,
-    "description": "The basic concepts to help you on your Upbound journey",
-    "aliases": [
-      "/core-concepts/adding-dependencies",
-      "core-concepts/adding-dependencies"
-    ]
+    "sidebar_position": 1,
+    "description": "The basic concepts to help you on your Upbound journey"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/"
+  },
+  "next": {
+    "title": "Authoring Compositions",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/"
   }
 }

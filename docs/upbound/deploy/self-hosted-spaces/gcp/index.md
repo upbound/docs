@@ -1,10 +1,7 @@
 ---
 title: GCP
-weight: 4
+sidebar_position: 1
 description: A  quickstart guide for Upbound Spaces in GCP
-aliases:
-    - /all-spaces/self-hosted-spaces/gcp-deployment
-    - /all-spaces/disconnected-spaces/gcp-deployment
 ---
 
 Get started with Upbound Spaces. This guide deploys a self-hosted Upbound cluster in GCP.

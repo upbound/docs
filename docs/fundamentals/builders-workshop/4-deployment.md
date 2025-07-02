@@ -1,6 +1,5 @@
 ---
 title: Deploy your resources to a control plane
-sidebar_position: 4
 description: Create a dev control plane and deploy to your cloud
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';

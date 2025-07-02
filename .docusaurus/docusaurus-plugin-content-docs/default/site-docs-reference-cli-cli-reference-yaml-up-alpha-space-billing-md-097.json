@@ -10,5 +10,14 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_alpha_space",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space"
+  },
+  "next": {
+    "title": "up_alpha_space_billing_export",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space_billing_export"
+  }
 }
