@@ -19,7 +19,7 @@
   "sidebar": "fundamentalsSidebar",
   "previous": {
     "title": "Get Started",
-    "permalink": "/fundamentals/get-started"
+    "permalink": "/"
   },
   "next": {
     "title": "Build your composition logic",

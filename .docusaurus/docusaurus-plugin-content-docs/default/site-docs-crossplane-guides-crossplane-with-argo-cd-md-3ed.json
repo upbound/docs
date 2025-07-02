@@ -16,8 +16,8 @@
   },
   "sidebar": "crossplaneSidebar",
   "previous": {
-    "title": "Install Crossplane",
-    "permalink": "/crossplane/get-started/install"
+    "title": "What's Crossplane?",
+    "permalink": "/crossplane/whats-crossplane/"
   },
   "next": {
     "title": "Releasing Crossplane Extensions",

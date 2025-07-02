@@ -21,6 +21,21 @@ export default {
     "path": "i18n",
     "localeConfigs": {}
   },
+  "markdown": {
+    "mermaid": true,
+    "format": "mdx",
+    "mdx1Compat": {
+      "comments": true,
+      "admonitions": true,
+      "headingIds": true
+    },
+    "anchors": {
+      "maintainCase": false
+    }
+  },
+  "themes": [
+    "@docusaurus/theme-mermaid"
+  ],
   "presets": [
     [
       "classic",
@@ -45,7 +60,7 @@ export default {
       {
         "path": "docs",
         "routeBasePath": "/",
-        "sidebarPath": "/Users/rae/docs/src/sidebars/main.js"
+        "sidebarPath": "/Users/rae/upbound-docs/src/sidebars/main.js"
       }
     ]
   ],
@@ -68,7 +83,7 @@ export default {
           "type": "docSidebar",
           "label": "Upbound Crossplane",
           "position": "left",
-          "sidebarId": "crossplaneSidebar"
+          "sidebarId": "uxpSidebar"
         },
         {
           "type": "docSidebar",
@@ -392,6 +407,13 @@ export default {
     "tableOfContents": {
       "minHeadingLevel": 2,
       "maxHeadingLevel": 3
+    },
+    "mermaid": {
+      "theme": {
+        "dark": "dark",
+        "light": "default"
+      },
+      "options": {}
     }
   },
   "baseUrlIssueBanner": true,
@@ -416,23 +438,10 @@ export default {
     "static"
   ],
   "customFields": {},
-  "themes": [],
   "scripts": [],
   "headTags": [],
   "stylesheets": [],
   "clientModules": [],
   "titleDelimiter": "|",
-  "noIndex": false,
-  "markdown": {
-    "format": "mdx",
-    "mermaid": false,
-    "mdx1Compat": {
-      "comments": true,
-      "admonitions": true,
-      "headingIds": true
-    },
-    "anchors": {
-      "maintainCase": false
-    }
-  }
+  "noIndex": false
 };

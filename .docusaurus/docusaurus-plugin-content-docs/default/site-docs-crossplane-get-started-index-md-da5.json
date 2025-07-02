@@ -14,14 +14,5 @@
     "title": "Get Started",
     "weight": 40,
     "description": "Get started with Crossplane."
-  },
-  "sidebar": "crossplaneSidebar",
-  "previous": {
-    "title": "Get Started With Managed Resources",
-    "permalink": "/crossplane/get-started/get-started-with-managed-resources"
-  },
-  "next": {
-    "title": "Install Crossplane",
-    "permalink": "/crossplane/get-started/install"
   }
 }

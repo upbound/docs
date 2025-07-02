@@ -1,0 +1,26 @@
+{
+  "id": "uxp/composition/composition-revisions",
+  "title": "Composition Revisions",
+  "description": "This guide discusses the use of \"Composition Revisions\" to safely make and roll",
+  "source": "@site/docs/uxp/composition/composition-revisions.md",
+  "sourceDirName": "uxp/composition",
+  "slug": "/uxp/composition/composition-revisions",
+  "permalink": "/uxp/composition/composition-revisions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Composition Revisions",
+    "weight": 35
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Composite Resources",
+    "permalink": "/uxp/composition/composite-resources"
+  },
+  "next": {
+    "title": "Compositions",
+    "permalink": "/uxp/composition/compositions"
+  }
+}

@@ -4,8 +4,8 @@
   "description": "Use the Upbound CLI to create infrastructure and have more control of your configurations",
   "source": "@site/docs/fundamentals/get-started.md",
   "sourceDirName": "fundamentals",
-  "slug": "/fundamentals/get-started",
-  "permalink": "/fundamentals/get-started",
+  "slug": "/",
+  "permalink": "/",
   "draft": false,
   "unlisted": false,
   "tags": [],
@@ -16,6 +16,7 @@
     "id": "get-started",
     "description": "Use the Upbound CLI to create infrastructure and have more control of your configurations",
     "sidebar_position": 1,
+    "slug": "/",
     "alias": "/learn/"
   },
   "sidebar": "fundamentalsSidebar",

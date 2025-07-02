@@ -1,0 +1,26 @@
+{
+  "id": "reference/apis/crossplane-api/index",
+  "title": "Crossplane API Reference",
+  "description": "Documentation for the Query API resources",
+  "source": "@site/docs/reference/apis/crossplane-api/index.md",
+  "sourceDirName": "reference/apis/crossplane-api",
+  "slug": "/reference/apis/crossplane-api/",
+  "permalink": "/reference/apis/crossplane-api/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Crossplane API Reference",
+    "description": "Documentation for the Query API resources"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Testing API Reference",
+    "permalink": "/reference/apis/testing-api/"
+  },
+  "next": {
+    "title": "Spaces API Reference - v1.9",
+    "permalink": "/reference/apis/spaces-api/v1_9"
+  }
+}

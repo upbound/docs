@@ -1,0 +1,27 @@
+{
+  "id": "uxp/guides/write-a-composition-function-in-python",
+  "title": "Write a Composition Function in Python",
+  "description": "Composition functions allow you to template resources using Python",
+  "source": "@site/docs/uxp/guides/write-a-composition-function-in-python.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/write-a-composition-function-in-python",
+  "permalink": "/uxp/guides/write-a-composition-function-in-python",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Write a Composition Function in Python",
+    "weight": 81,
+    "description": "Composition functions allow you to template resources using Python"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Write a Composition Function in Go",
+    "permalink": "/uxp/guides/write-a-composition-function-in-go"
+  },
+  "next": {
+    "title": "Managed Resources",
+    "permalink": "/uxp/managed-resources/"
+  }
+}

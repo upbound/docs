@@ -1,7 +1,7 @@
 {
   "id": "reference/apis/spaces-api/index",
-  "title": "index",
-  "description": "",
+  "title": "Spaces API Reference Latest (v1.13)",
+  "description": "Documentation for the Spaces API resources",
   "source": "@site/docs/reference/apis/spaces-api/index.md",
   "sourceDirName": "reference/apis/spaces-api",
   "slug": "/reference/apis/spaces-api/",
@@ -10,7 +10,10 @@
   "unlisted": false,
   "tags": [],
   "version": "current",
-  "frontMatter": {},
+  "frontMatter": {
+    "title": "Spaces API Reference Latest (v1.13)",
+    "description": "Documentation for the Spaces API resources"
+  },
   "sidebar": "referenceSidebar",
   "previous": {
     "title": "Query API Reference",

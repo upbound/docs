@@ -1,0 +1,20 @@
+{
+  "id": "uxp/index",
+  "title": "Welcome",
+  "description": "Welcome to the Crossplane documentation. Crossplane is a control plane framework",
+  "source": "@site/docs/uxp/index.md",
+  "sourceDirName": "uxp",
+  "slug": "/uxp/",
+  "permalink": "/uxp/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Welcome",
+    "weight": -1,
+    "cascade": {
+      "version": "2.0-preview"
+    }
+  }
+}

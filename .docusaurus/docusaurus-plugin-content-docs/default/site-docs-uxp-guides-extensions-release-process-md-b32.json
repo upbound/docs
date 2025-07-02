@@ -1,0 +1,27 @@
+{
+  "id": "uxp/guides/extensions-release-process",
+  "title": "Releasing Crossplane Extensions",
+  "description": "Configuring build pipelines for Crossplane extensions with GitHub Actions",
+  "source": "@site/docs/uxp/guides/extensions-release-process.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/extensions-release-process",
+  "permalink": "/uxp/guides/extensions-release-process",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Releasing Crossplane Extensions",
+    "weight": 80,
+    "description": "Configuring build pipelines for Crossplane extensions with GitHub Actions"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/uxp/guides/crossplane-with-argo-cd"
+  },
+  "next": {
+    "title": "Function Patch and Transform",
+    "permalink": "/uxp/guides/function-patch-and-transform"
+  }
+}

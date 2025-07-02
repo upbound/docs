@@ -1,0 +1,18 @@
+{
+  "id": "uxp/get-started/index",
+  "title": "Get Started",
+  "description": "Get started with Crossplane.",
+  "source": "@site/docs/uxp/get-started/index.md",
+  "sourceDirName": "uxp/get-started",
+  "slug": "/uxp/get-started/",
+  "permalink": "/uxp/get-started/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Get Started",
+    "weight": 40,
+    "description": "Get started with Crossplane."
+  }
+}

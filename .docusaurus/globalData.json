@@ -8,165 +8,8 @@
           "label": "Next",
           "isLast": true,
           "path": "/",
-          "mainDocId": "crossplane/get-started/get-started-with-composition",
+          "mainDocId": "fundamentals/get-started",
           "docs": [
-            {
-              "id": "crossplane/api/index",
-              "path": "/crossplane/api/"
-            },
-            {
-              "id": "crossplane/composition/composite-resource-definitions",
-              "path": "/crossplane/composition/composite-resource-definitions",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/composition/composite-resources",
-              "path": "/crossplane/composition/composite-resources",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/composition/composition-revisions",
-              "path": "/crossplane/composition/composition-revisions",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/composition/compositions",
-              "path": "/crossplane/composition/compositions",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/composition/environment-configs",
-              "path": "/crossplane/composition/environment-configs",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/composition/index",
-              "path": "/crossplane/composition/",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/get-started/get-started-with-composition",
-              "path": "/crossplane/get-started/get-started-with-composition",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/get-started/get-started-with-managed-resources",
-              "path": "/crossplane/get-started/get-started-with-managed-resources",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/get-started/index",
-              "path": "/crossplane/get-started/",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/get-started/install",
-              "path": "/crossplane/get-started/install",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/crossplane-with-argo-cd",
-              "path": "/crossplane/guides/crossplane-with-argo-cd",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/extensions-release-process",
-              "path": "/crossplane/guides/extensions-release-process",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/function-patch-and-transform",
-              "path": "/crossplane/guides/function-patch-and-transform",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/index",
-              "path": "/crossplane/guides/",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/metrics",
-              "path": "/crossplane/guides/metrics",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/pods",
-              "path": "/crossplane/guides/pods",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/self-signed-ca-certs",
-              "path": "/crossplane/guides/self-signed-ca-certs",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/troubleshoot-crossplane",
-              "path": "/crossplane/guides/troubleshoot-crossplane",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/uninstall-crossplane",
-              "path": "/crossplane/guides/uninstall-crossplane",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/upgrade-crossplane",
-              "path": "/crossplane/guides/upgrade-crossplane",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/write-a-composition-function-in-go",
-              "path": "/crossplane/guides/write-a-composition-function-in-go",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/guides/write-a-composition-function-in-python",
-              "path": "/crossplane/guides/write-a-composition-function-in-python",
-              "sidebar": "crossplaneSidebar"
-            },
-            {
-              "id": "crossplane/index",
-              "path": "/crossplane/"
-            },
-            {
-              "id": "crossplane/managed-resources/index",
-              "path": "/crossplane/managed-resources/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "crossplane/managed-resources/managed-resources",
-              "path": "/crossplane/managed-resources/",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "crossplane/managed-resources/usages",
-              "path": "/crossplane/managed-resources/usages",
-              "sidebar": "fundamentalsSidebar"
-            },
-            {
-              "id": "crossplane/packages/configurations",
-              "path": "/crossplane/packages/configurations"
-            },
-            {
-              "id": "crossplane/packages/functions",
-              "path": "/crossplane/packages/functions"
-            },
-            {
-              "id": "crossplane/packages/image-configs",
-              "path": "/crossplane/packages/image-configs"
-            },
-            {
-              "id": "crossplane/packages/index",
-              "path": "/crossplane/packages/"
-            },
-            {
-              "id": "crossplane/packages/providers",
-              "path": "/crossplane/packages/providers"
-            },
-            {
-              "id": "crossplane/whats-crossplane/index",
-              "path": "/crossplane/whats-crossplane/"
-            },
             {
               "id": "fundamentals/builders-workshop/create-configuration",
               "path": "/fundamentals/builders-workshop/create-configuration",
@@ -375,8 +218,13 @@
             },
             {
               "id": "fundamentals/get-started",
-              "path": "/fundamentals/get-started",
+              "path": "/",
               "sidebar": "fundamentalsSidebar"
+            },
+            {
+              "id": "reference/apis/crossplane-api/index",
+              "path": "/reference/apis/crossplane-api/",
+              "sidebar": "referenceSidebar"
             },
             {
               "id": "reference/apis/index",
@@ -1500,19 +1348,167 @@
               "id": "upbound/operate/simulations",
               "path": "/upbound/operate/simulations",
               "sidebar": "upboundSidebar"
+            },
+            {
+              "id": "uxp/composition/composite-resource-definitions",
+              "path": "/uxp/composition/composite-resource-definitions",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/composition/composite-resources",
+              "path": "/uxp/composition/composite-resources",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/composition/composition-revisions",
+              "path": "/uxp/composition/composition-revisions",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/composition/compositions",
+              "path": "/uxp/composition/compositions",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/composition/environment-configs",
+              "path": "/uxp/composition/environment-configs",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/enhancements/package-manager",
+              "path": "/uxp/enhancements/package-manager"
+            },
+            {
+              "id": "uxp/get-started/get-started-with-composition",
+              "path": "/uxp/get-started/get-started-with-composition"
+            },
+            {
+              "id": "uxp/get-started/get-started-with-managed-resources",
+              "path": "/uxp/get-started/get-started-with-managed-resources"
+            },
+            {
+              "id": "uxp/get-started/index",
+              "path": "/uxp/get-started/"
+            },
+            {
+              "id": "uxp/get-started/install",
+              "path": "/uxp/get-started/install"
+            },
+            {
+              "id": "uxp/guides/crossplane-with-argo-cd",
+              "path": "/uxp/guides/crossplane-with-argo-cd",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/extensions-release-process",
+              "path": "/uxp/guides/extensions-release-process",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/function-patch-and-transform",
+              "path": "/uxp/guides/function-patch-and-transform",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/index",
+              "path": "/uxp/guides/",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/metrics",
+              "path": "/uxp/guides/metrics",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/pods",
+              "path": "/uxp/guides/pods",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/self-signed-ca-certs",
+              "path": "/uxp/guides/self-signed-ca-certs",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/troubleshoot-crossplane",
+              "path": "/uxp/guides/troubleshoot-crossplane",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/uninstall-crossplane",
+              "path": "/uxp/guides/uninstall-crossplane",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/upgrade-crossplane",
+              "path": "/uxp/guides/upgrade-crossplane",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/write-a-composition-function-in-go",
+              "path": "/uxp/guides/write-a-composition-function-in-go",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/guides/write-a-composition-function-in-python",
+              "path": "/uxp/guides/write-a-composition-function-in-python",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/index",
+              "path": "/uxp/"
+            },
+            {
+              "id": "uxp/managed-resources/managed-resources",
+              "path": "/uxp/managed-resources/",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/managed-resources/usages",
+              "path": "/uxp/managed-resources/usages",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/packages/configurations",
+              "path": "/uxp/packages/configurations",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/packages/functions",
+              "path": "/uxp/packages/functions",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/packages/image-configs",
+              "path": "/uxp/packages/image-configs",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/packages/providers",
+              "path": "/uxp/packages/providers",
+              "sidebar": "uxpSidebar"
+            },
+            {
+              "id": "uxp/reference/index",
+              "path": "/uxp/reference/"
+            },
+            {
+              "id": "uxp/whats-crossplane/index",
+              "path": "/uxp/whats-crossplane/",
+              "sidebar": "uxpSidebar"
             }
           ],
           "draftIds": [],
           "sidebars": {
-            "crossplaneSidebar": {
+            "uxpSidebar": {
               "link": {
-                "path": "/crossplane/get-started/get-started-with-composition",
-                "label": "crossplane/get-started/get-started-with-composition"
+                "path": "/uxp/whats-crossplane/",
+                "label": "uxp/whats-crossplane/index"
               }
             },
             "fundamentalsSidebar": {
               "link": {
-                "path": "/fundamentals/get-started",
+                "path": "/",
                 "label": "fundamentals/get-started"
               }
             },

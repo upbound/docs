@@ -1,0 +1,23 @@
+{
+  "id": "uxp/whats-crossplane/index",
+  "title": "What's Crossplane?",
+  "description": "Learn what Crossplane is and why you'd use it.",
+  "source": "@site/docs/uxp/whats-crossplane/index.md",
+  "sourceDirName": "uxp/whats-crossplane",
+  "slug": "/uxp/whats-crossplane/",
+  "permalink": "/uxp/whats-crossplane/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "What's Crossplane?",
+    "weight": 3,
+    "description": "Learn what Crossplane is and why you'd use it."
+  },
+  "sidebar": "uxpSidebar",
+  "next": {
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/uxp/guides/crossplane-with-argo-cd"
+  }
+}

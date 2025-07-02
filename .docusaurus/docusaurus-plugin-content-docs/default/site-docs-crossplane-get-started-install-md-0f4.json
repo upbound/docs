@@ -13,14 +13,5 @@
   "frontMatter": {
     "title": "Install Crossplane",
     "weight": 100
-  },
-  "sidebar": "crossplaneSidebar",
-  "previous": {
-    "title": "Get Started",
-    "permalink": "/crossplane/get-started/"
-  },
-  "next": {
-    "title": "Configuring Crossplane with Argo CD",
-    "permalink": "/crossplane/guides/crossplane-with-argo-cd"
   }
 }

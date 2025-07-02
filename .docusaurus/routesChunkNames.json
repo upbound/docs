@@ -48,150 +48,18 @@
       "plugin": "plugin---searchc-14-0ea"
     }
   },
-  "/-f8f": {
+  "/-876": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---aba-d70"
     }
   },
-  "/-390": {
+  "/-4b0": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---22-d-307"
   },
-  "/-55d": {
+  "/-80c": {
     "__comp": "__comp---theme-doc-roota-94-67a"
-  },
-  "/crossplane/-8e1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-a-39-42c"
-  },
-  "/crossplane/api/-e56": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-api-f-75-cf5"
-  },
-  "/crossplane/composition/-850": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-composition-cdc-a2c"
-  },
-  "/crossplane/composition/composite-resource-definitions-efe": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-composition-composite-resource-definitions-192-371"
-  },
-  "/crossplane/composition/composite-resources-517": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-composition-composite-resources-3-fd-084"
-  },
-  "/crossplane/composition/composition-revisions-66e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-composition-composition-revisions-176-afc"
-  },
-  "/crossplane/composition/compositions-f94": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-composition-compositionsa-26-c13"
-  },
-  "/crossplane/composition/environment-configs-68e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-composition-environment-configsfca-fb2"
-  },
-  "/crossplane/get-started/-79b": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-get-started-da-5-d6b"
-  },
-  "/crossplane/get-started/get-started-with-composition-607": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-get-started-get-started-with-composition-0-e-8-62b"
-  },
-  "/crossplane/get-started/get-started-with-managed-resources-df6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-get-started-get-started-with-managed-resources-34-f-eea"
-  },
-  "/crossplane/get-started/install-4c4": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-get-started-install-0-f-4-9b1"
-  },
-  "/crossplane/guides/-629": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-74-b-37e"
-  },
-  "/crossplane/guides/crossplane-with-argo-cd-b3c": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-crossplane-with-argo-cd-3-ed-4c3"
-  },
-  "/crossplane/guides/extensions-release-process-278": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-extensions-release-processc-70-98a"
-  },
-  "/crossplane/guides/function-patch-and-transform-cb7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-function-patch-and-transformec-8-e19"
-  },
-  "/crossplane/guides/metrics-6c7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-metrics-418-cc6"
-  },
-  "/crossplane/guides/pods-1c6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-podsbb-7-120"
-  },
-  "/crossplane/guides/self-signed-ca-certs-9c8": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-self-signed-ca-certs-8-f-5-171"
-  },
-  "/crossplane/guides/troubleshoot-crossplane-047": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-troubleshoot-crossplanea-2-a-b14"
-  },
-  "/crossplane/guides/uninstall-crossplane-5c6": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-uninstall-crossplane-8-dc-cb8"
-  },
-  "/crossplane/guides/upgrade-crossplane-455": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-upgrade-crossplane-763-933"
-  },
-  "/crossplane/guides/write-a-composition-function-in-go-575": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-write-a-composition-function-in-go-093-f27"
-  },
-  "/crossplane/guides/write-a-composition-function-in-python-188": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-guides-write-a-composition-function-in-python-53-b-d19"
-  },
-  "/crossplane/managed-resources/-7a2": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-managed-resources-3-b-7-1d8"
-  },
-  "/crossplane/managed-resources/-7f5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-managed-resources-f-84-a00"
-  },
-  "/crossplane/managed-resources/usages-912": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-managed-resources-usages-788-26b"
-  },
-  "/crossplane/packages/-d6d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-packages-3-ad-9d2"
-  },
-  "/crossplane/packages/configurations-d0e": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-packages-configurationsa-57-273"
-  },
-  "/crossplane/packages/functions-a13": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-packages-functionsaf-8-1a4"
-  },
-  "/crossplane/packages/image-configs-a27": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-packages-image-configsce-8-79d"
-  },
-  "/crossplane/packages/providers-cd1": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-packages-providers-4-cb-9f1"
-  },
-  "/crossplane/whats-crossplane/-6a7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---crossplane-whats-crossplane-d-82-13d"
   },
   "/fundamentals/builders-workshop/create-configuration-082": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -377,10 +245,6 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---fundamentals-core-concepts-xrds-40-b-15c"
   },
-  "/fundamentals/get-started-d8d": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---fundamentals-get-starteddc-0-4df"
-  },
   "/reference/-96b": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-1-a-3-6f4"
@@ -388,6 +252,10 @@
   "/reference/apis/-dfc": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---reference-apis-027-cc9"
+  },
+  "/reference/apis/crossplane-api/-7d6": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---reference-apis-crossplane-api-614-242"
   },
   "/reference/apis/query-api/-894": {
     "__comp": "__comp---theme-doc-item-178-a40",
@@ -1412,5 +1280,133 @@
   "/upbound/operate/simulations-dcd": {
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---upbound-operate-simulationsd-53-0dc"
+  },
+  "/uxp/-034": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-a-0-a-6f7"
+  },
+  "/uxp/composition/composite-resource-definitions-70b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-composition-composite-resource-definitionsd-99-ee1"
+  },
+  "/uxp/composition/composite-resources-647": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-composition-composite-resources-21-d-f84"
+  },
+  "/uxp/composition/composition-revisions-d40": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-composition-composition-revisionsb-2-d-dfe"
+  },
+  "/uxp/composition/compositions-2fe": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-composition-compositions-5-a-4-990"
+  },
+  "/uxp/composition/environment-configs-634": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-composition-environment-configscad-835"
+  },
+  "/uxp/enhancements/package-manager-2b0": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-enhancements-package-manager-813-5b1"
+  },
+  "/uxp/get-started/-114": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-get-started-60-a-0c1"
+  },
+  "/uxp/get-started/get-started-with-composition-11c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-get-started-get-started-with-compositionb-4-a-9e9"
+  },
+  "/uxp/get-started/get-started-with-managed-resources-a65": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-get-started-get-started-with-managed-resources-3-ec-c45"
+  },
+  "/uxp/get-started/install-b4f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-get-started-installce-8-27b"
+  },
+  "/uxp/guides/-60e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-617-2b9"
+  },
+  "/uxp/guides/crossplane-with-argo-cd-861": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-crossplane-with-argo-cd-5-bc-76d"
+  },
+  "/uxp/guides/extensions-release-process-5c5": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-extensions-release-processb-32-548"
+  },
+  "/uxp/guides/function-patch-and-transform-eca": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-function-patch-and-transform-346-14f"
+  },
+  "/uxp/guides/metrics-f1e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-metrics-548-0af"
+  },
+  "/uxp/guides/pods-4d9": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-pods-16-f-293"
+  },
+  "/uxp/guides/self-signed-ca-certs-0d3": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-self-signed-ca-certsb-7-f-811"
+  },
+  "/uxp/guides/troubleshoot-crossplane-e5e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-troubleshoot-crossplanee-51-03f"
+  },
+  "/uxp/guides/uninstall-crossplane-59a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-uninstall-crossplane-819-0ff"
+  },
+  "/uxp/guides/upgrade-crossplane-159": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-upgrade-crossplanee-75-589"
+  },
+  "/uxp/guides/write-a-composition-function-in-go-8b1": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-write-a-composition-function-in-gof-93-ba2"
+  },
+  "/uxp/guides/write-a-composition-function-in-python-e1d": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-guides-write-a-composition-function-in-python-825-c3c"
+  },
+  "/uxp/managed-resources/-fc2": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-managed-resources-419-332"
+  },
+  "/uxp/managed-resources/usages-05e": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-managed-resources-usages-840-a23"
+  },
+  "/uxp/packages/configurations-49c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-packages-configurationsc-66-697"
+  },
+  "/uxp/packages/functions-e03": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-packages-functionsd-72-779"
+  },
+  "/uxp/packages/image-configs-ecc": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-packages-image-configsab-8-16a"
+  },
+  "/uxp/packages/providers-d1c": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-packages-providers-76-d-e23"
+  },
+  "/uxp/reference/-ab7": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-reference-d-65-00c"
+  },
+  "/uxp/whats-crossplane/-eca": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---uxp-whats-crossplane-aee-9cf"
+  },
+  "/-e9a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---dc-0-365"
   }
 }

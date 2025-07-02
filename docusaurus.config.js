@@ -16,6 +16,10 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+    markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       'classic',
@@ -39,7 +43,7 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        path: 'docs', // or whatever your root path should be
+        path: 'docs', 
         routeBasePath: '/',
         sidebarPath: require.resolve('./src/sidebars/main.js'),
       },
@@ -66,7 +70,7 @@ const config = {
             type: 'docSidebar',
             label: 'Upbound Crossplane',
             position: 'left',
-            sidebarId: 'crossplaneSidebar',
+            sidebarId: 'uxpSidebar',
           },
           {
             type: 'docSidebar',

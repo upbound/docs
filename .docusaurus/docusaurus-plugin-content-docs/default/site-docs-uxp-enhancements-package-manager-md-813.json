@@ -1,0 +1,14 @@
+{
+  "id": "uxp/enhancements/package-manager",
+  "title": "package-manager",
+  "description": "UXP and Upbound Marketplace",
+  "source": "@site/docs/uxp/enhancements/package-manager.md",
+  "sourceDirName": "uxp/enhancements",
+  "slug": "/uxp/enhancements/package-manager",
+  "permalink": "/uxp/enhancements/package-manager",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

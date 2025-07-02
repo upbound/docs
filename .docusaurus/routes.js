@@ -44,206 +44,16 @@ export default [
   },
   {
     path: '/',
-    component: ComponentCreator('/', 'f8f'),
+    component: ComponentCreator('/', '876'),
     routes: [
       {
         path: '/',
-        component: ComponentCreator('/', '390'),
+        component: ComponentCreator('/', '4b0'),
         routes: [
           {
             path: '/',
-            component: ComponentCreator('/', '55d'),
+            component: ComponentCreator('/', '80c'),
             routes: [
-              {
-                path: '/crossplane/',
-                component: ComponentCreator('/crossplane/', '8e1'),
-                exact: true
-              },
-              {
-                path: '/crossplane/api/',
-                component: ComponentCreator('/crossplane/api/', 'e56'),
-                exact: true
-              },
-              {
-                path: '/crossplane/composition/',
-                component: ComponentCreator('/crossplane/composition/', '850'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/composition/composite-resource-definitions',
-                component: ComponentCreator('/crossplane/composition/composite-resource-definitions', 'efe'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/composition/composite-resources',
-                component: ComponentCreator('/crossplane/composition/composite-resources', '517'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/composition/composition-revisions',
-                component: ComponentCreator('/crossplane/composition/composition-revisions', '66e'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/composition/compositions',
-                component: ComponentCreator('/crossplane/composition/compositions', 'f94'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/composition/environment-configs',
-                component: ComponentCreator('/crossplane/composition/environment-configs', '68e'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/get-started/',
-                component: ComponentCreator('/crossplane/get-started/', '79b'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/get-started/get-started-with-composition',
-                component: ComponentCreator('/crossplane/get-started/get-started-with-composition', '607'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/get-started/get-started-with-managed-resources',
-                component: ComponentCreator('/crossplane/get-started/get-started-with-managed-resources', 'df6'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/get-started/install',
-                component: ComponentCreator('/crossplane/get-started/install', '4c4'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/',
-                component: ComponentCreator('/crossplane/guides/', '629'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/crossplane-with-argo-cd',
-                component: ComponentCreator('/crossplane/guides/crossplane-with-argo-cd', 'b3c'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/extensions-release-process',
-                component: ComponentCreator('/crossplane/guides/extensions-release-process', '278'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/function-patch-and-transform',
-                component: ComponentCreator('/crossplane/guides/function-patch-and-transform', 'cb7'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/metrics',
-                component: ComponentCreator('/crossplane/guides/metrics', '6c7'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/pods',
-                component: ComponentCreator('/crossplane/guides/pods', '1c6'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/self-signed-ca-certs',
-                component: ComponentCreator('/crossplane/guides/self-signed-ca-certs', '9c8'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/troubleshoot-crossplane',
-                component: ComponentCreator('/crossplane/guides/troubleshoot-crossplane', '047'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/uninstall-crossplane',
-                component: ComponentCreator('/crossplane/guides/uninstall-crossplane', '5c6'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/upgrade-crossplane',
-                component: ComponentCreator('/crossplane/guides/upgrade-crossplane', '455'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/write-a-composition-function-in-go',
-                component: ComponentCreator('/crossplane/guides/write-a-composition-function-in-go', '575'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/guides/write-a-composition-function-in-python',
-                component: ComponentCreator('/crossplane/guides/write-a-composition-function-in-python', '188'),
-                exact: true,
-                sidebar: "crossplaneSidebar"
-              },
-              {
-                path: '/crossplane/managed-resources/',
-                component: ComponentCreator('/crossplane/managed-resources/', '7a2'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/crossplane/managed-resources/',
-                component: ComponentCreator('/crossplane/managed-resources/', '7f5'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/crossplane/managed-resources/usages',
-                component: ComponentCreator('/crossplane/managed-resources/usages', '912'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
-                path: '/crossplane/packages/',
-                component: ComponentCreator('/crossplane/packages/', 'd6d'),
-                exact: true
-              },
-              {
-                path: '/crossplane/packages/configurations',
-                component: ComponentCreator('/crossplane/packages/configurations', 'd0e'),
-                exact: true
-              },
-              {
-                path: '/crossplane/packages/functions',
-                component: ComponentCreator('/crossplane/packages/functions', 'a13'),
-                exact: true
-              },
-              {
-                path: '/crossplane/packages/image-configs',
-                component: ComponentCreator('/crossplane/packages/image-configs', 'a27'),
-                exact: true
-              },
-              {
-                path: '/crossplane/packages/providers',
-                component: ComponentCreator('/crossplane/packages/providers', 'cd1'),
-                exact: true
-              },
-              {
-                path: '/crossplane/whats-crossplane/',
-                component: ComponentCreator('/crossplane/whats-crossplane/', '6a7'),
-                exact: true
-              },
               {
                 path: '/fundamentals/builders-workshop/create-configuration',
                 component: ComponentCreator('/fundamentals/builders-workshop/create-configuration', '082'),
@@ -497,12 +307,6 @@ export default [
                 sidebar: "fundamentalsSidebar"
               },
               {
-                path: '/fundamentals/get-started',
-                component: ComponentCreator('/fundamentals/get-started', 'd8d'),
-                exact: true,
-                sidebar: "fundamentalsSidebar"
-              },
-              {
                 path: '/reference/',
                 component: ComponentCreator('/reference/', '96b'),
                 exact: true,
@@ -512,6 +316,12 @@ export default [
                 path: '/reference/apis/',
                 component: ComponentCreator('/reference/apis/', 'dfc'),
                 exact: true
+              },
+              {
+                path: '/reference/apis/crossplane-api/',
+                component: ComponentCreator('/reference/apis/crossplane-api/', '7d6'),
+                exact: true,
+                sidebar: "referenceSidebar"
               },
               {
                 path: '/reference/apis/query-api/',
@@ -1882,6 +1692,191 @@ export default [
                 component: ComponentCreator('/upbound/operate/simulations', 'dcd'),
                 exact: true,
                 sidebar: "upboundSidebar"
+              },
+              {
+                path: '/uxp/',
+                component: ComponentCreator('/uxp/', '034'),
+                exact: true
+              },
+              {
+                path: '/uxp/composition/composite-resource-definitions',
+                component: ComponentCreator('/uxp/composition/composite-resource-definitions', '70b'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/composition/composite-resources',
+                component: ComponentCreator('/uxp/composition/composite-resources', '647'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/composition/composition-revisions',
+                component: ComponentCreator('/uxp/composition/composition-revisions', 'd40'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/composition/compositions',
+                component: ComponentCreator('/uxp/composition/compositions', '2fe'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/composition/environment-configs',
+                component: ComponentCreator('/uxp/composition/environment-configs', '634'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/enhancements/package-manager',
+                component: ComponentCreator('/uxp/enhancements/package-manager', '2b0'),
+                exact: true
+              },
+              {
+                path: '/uxp/get-started/',
+                component: ComponentCreator('/uxp/get-started/', '114'),
+                exact: true
+              },
+              {
+                path: '/uxp/get-started/get-started-with-composition',
+                component: ComponentCreator('/uxp/get-started/get-started-with-composition', '11c'),
+                exact: true
+              },
+              {
+                path: '/uxp/get-started/get-started-with-managed-resources',
+                component: ComponentCreator('/uxp/get-started/get-started-with-managed-resources', 'a65'),
+                exact: true
+              },
+              {
+                path: '/uxp/get-started/install',
+                component: ComponentCreator('/uxp/get-started/install', 'b4f'),
+                exact: true
+              },
+              {
+                path: '/uxp/guides/',
+                component: ComponentCreator('/uxp/guides/', '60e'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/crossplane-with-argo-cd',
+                component: ComponentCreator('/uxp/guides/crossplane-with-argo-cd', '861'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/extensions-release-process',
+                component: ComponentCreator('/uxp/guides/extensions-release-process', '5c5'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/function-patch-and-transform',
+                component: ComponentCreator('/uxp/guides/function-patch-and-transform', 'eca'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/metrics',
+                component: ComponentCreator('/uxp/guides/metrics', 'f1e'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/pods',
+                component: ComponentCreator('/uxp/guides/pods', '4d9'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/self-signed-ca-certs',
+                component: ComponentCreator('/uxp/guides/self-signed-ca-certs', '0d3'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/troubleshoot-crossplane',
+                component: ComponentCreator('/uxp/guides/troubleshoot-crossplane', 'e5e'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/uninstall-crossplane',
+                component: ComponentCreator('/uxp/guides/uninstall-crossplane', '59a'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/upgrade-crossplane',
+                component: ComponentCreator('/uxp/guides/upgrade-crossplane', '159'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/write-a-composition-function-in-go',
+                component: ComponentCreator('/uxp/guides/write-a-composition-function-in-go', '8b1'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/guides/write-a-composition-function-in-python',
+                component: ComponentCreator('/uxp/guides/write-a-composition-function-in-python', 'e1d'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/managed-resources/',
+                component: ComponentCreator('/uxp/managed-resources/', 'fc2'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/managed-resources/usages',
+                component: ComponentCreator('/uxp/managed-resources/usages', '05e'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/packages/configurations',
+                component: ComponentCreator('/uxp/packages/configurations', '49c'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/packages/functions',
+                component: ComponentCreator('/uxp/packages/functions', 'e03'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/packages/image-configs',
+                component: ComponentCreator('/uxp/packages/image-configs', 'ecc'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/packages/providers',
+                component: ComponentCreator('/uxp/packages/providers', 'd1c'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/uxp/reference/',
+                component: ComponentCreator('/uxp/reference/', 'ab7'),
+                exact: true
+              },
+              {
+                path: '/uxp/whats-crossplane/',
+                component: ComponentCreator('/uxp/whats-crossplane/', 'eca'),
+                exact: true,
+                sidebar: "uxpSidebar"
+              },
+              {
+                path: '/',
+                component: ComponentCreator('/', 'e9a'),
+                exact: true,
+                sidebar: "fundamentalsSidebar"
               }
             ]
           }

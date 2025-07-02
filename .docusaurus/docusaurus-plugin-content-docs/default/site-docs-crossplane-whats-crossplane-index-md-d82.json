@@ -14,5 +14,10 @@
     "title": "What's Crossplane?",
     "weight": 3,
     "description": "Learn what Crossplane is and why you'd use it."
+  },
+  "sidebar": "crossplaneSidebar",
+  "next": {
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/crossplane/guides/crossplane-with-argo-cd"
   }
 }

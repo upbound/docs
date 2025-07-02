@@ -20,8 +20,8 @@
   },
   "sidebar": "fundamentalsSidebar",
   "previous": {
-    "title": "Usages",
-    "permalink": "/crossplane/managed-resources/usages"
+    "title": "Build with Python",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/"
   },
   "next": {
     "title": "Repository Management",

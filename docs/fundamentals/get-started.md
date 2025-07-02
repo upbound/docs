@@ -4,6 +4,7 @@ id: get-started
 description: "Use the Upbound CLI to create infrastructure and have more control
 of your configurations" 
 sidebar_position: 1
+slug: /
 alias: /learn/
 ---
 

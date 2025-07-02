@@ -16,8 +16,8 @@
   },
   "sidebar": "referenceSidebar",
   "previous": {
-    "title": "Testing API Reference",
-    "permalink": "/reference/apis/testing-api/"
+    "title": "Crossplane API Reference",
+    "permalink": "/reference/apis/crossplane-api/"
   },
   "next": {
     "title": "Spaces API Reference - v1.10",

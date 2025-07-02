@@ -1,0 +1,26 @@
+{
+  "id": "uxp/guides/uninstall-crossplane",
+  "title": "Uninstall Crossplane",
+  "description": "Resources created by Crossplane aren't deleted if Crossplane isn't uninstalled",
+  "source": "@site/docs/uxp/guides/uninstall-crossplane.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/uninstall-crossplane",
+  "permalink": "/uxp/guides/uninstall-crossplane",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Uninstall Crossplane",
+    "weight": 500
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Troubleshoot Crossplane",
+    "permalink": "/uxp/guides/troubleshoot-crossplane"
+  },
+  "next": {
+    "title": "Upgrade Crossplane",
+    "permalink": "/uxp/guides/upgrade-crossplane"
+  }
+}

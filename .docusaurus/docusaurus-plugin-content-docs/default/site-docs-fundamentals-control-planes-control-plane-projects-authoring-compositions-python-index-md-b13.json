@@ -24,7 +24,7 @@
     "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/"
   },
   "next": {
-    "title": "Managed Resources",
-    "permalink": "/crossplane/managed-resources/"
+    "title": "Repositories",
+    "permalink": "/fundamentals/control-planes/repositories/"
   }
 }

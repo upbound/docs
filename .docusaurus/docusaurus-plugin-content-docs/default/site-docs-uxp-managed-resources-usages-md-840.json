@@ -1,0 +1,30 @@
+{
+  "id": "uxp/managed-resources/usages",
+  "title": "Usages",
+  "description": "Usage indicates a resource is in use",
+  "source": "@site/docs/uxp/managed-resources/usages.md",
+  "sourceDirName": "uxp/managed-resources",
+  "slug": "/uxp/managed-resources/usages",
+  "permalink": "/uxp/managed-resources/usages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Usages",
+    "weight": 30,
+    "state": "beta",
+    "alphaVersion": "1.14",
+    "betaVersion": "1.19",
+    "description": "Usage indicates a resource is in use"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Managed Resources",
+    "permalink": "/uxp/managed-resources/"
+  },
+  "next": {
+    "title": "Configurations",
+    "permalink": "/uxp/packages/configurations"
+  }
+}

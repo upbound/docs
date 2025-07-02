@@ -1,0 +1,27 @@
+{
+  "id": "uxp/packages/image-configs",
+  "title": "Image Configs",
+  "description": "Image Configs is an API for centralized control of the configuration of Crossplane package images.",
+  "source": "@site/docs/uxp/packages/image-configs.md",
+  "sourceDirName": "uxp/packages",
+  "slug": "/uxp/packages/image-configs",
+  "permalink": "/uxp/packages/image-configs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Image Configs",
+    "weight": 400,
+    "description": "Image Configs is an API for centralized control of the configuration of Crossplane package images."
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Functions",
+    "permalink": "/uxp/packages/functions"
+  },
+  "next": {
+    "title": "Providers",
+    "permalink": "/uxp/packages/providers"
+  }
+}

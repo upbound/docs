@@ -13,14 +13,5 @@
   "frontMatter": {
     "title": "Get Started With Managed Resources",
     "weight": 300
-  },
-  "sidebar": "crossplaneSidebar",
-  "previous": {
-    "title": "Get Started With Composition",
-    "permalink": "/crossplane/get-started/get-started-with-composition"
-  },
-  "next": {
-    "title": "Get Started",
-    "permalink": "/crossplane/get-started/"
   }
 }
