@@ -211,7 +211,7 @@ The `writeConnectionSecretToRef` field requires two parameters:
 - `name`: A unique name for the secret containing the kubeconfig (e.g., "kubeconfig-my-control-plane")
 - `namespace`: The Kubernetes namespace where the secret should be stored (typically "argocd" for Argo CD integration)
 
-Labels set on the control plane will automatically propagate to the connection secret, enabling you to use label selectors in Argo CD for automated discovery and management.
+Control plane labels automatically propagate to the connection secret, which allows you to use label selectors in Argo CD for automated discovery and management.
 
 This configuration enables Argo CD to automatically discover and manage resources on your control planes.
 
