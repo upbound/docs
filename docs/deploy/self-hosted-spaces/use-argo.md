@@ -185,7 +185,7 @@ The preceding configuration causes Argo to exclude syncing **all** resource grou
 
 ## Control Plane Connection Secrets
 
-When deploying control planes through Argo CD, you need to configure `writeConnectionSecretToRef` in your control plane specifications to make the connection details available to Argo CD. This field specifies where the control plane's kubeconfig should be stored.
+To deploy control planes through Argo CD, you need to configure the `writeConnectionSecretToRef` field in your control plane spec. This field specifies where to store the control plane's `kubeconfig` and makes connection details available to Argo CD.
 
 ### Basic Configuration
 
