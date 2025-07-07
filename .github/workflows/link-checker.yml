@@ -4,7 +4,8 @@ on:
     paths:
       - 'docs/**'
       - 'docusaurus.config.js'
-
+      - 'package.json'
+      - 'package-lock.json'
   # Allows manual workflow run (must in default branch to work)
   workflow_dispatch:
 jobs:
@@ -18,10 +19,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       
       - name: Clean and Build
         # Rebuild from scratch for production
