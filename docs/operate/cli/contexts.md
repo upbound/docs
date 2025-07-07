@@ -30,6 +30,8 @@ In `up`, the commands you can execute are context-sensitive.
 
 In `up`, the `up ctx` sub-command is a single command to set a kubecontext across all deployments of Upbound. You can use this kubecontext to drive interactions via `kubectl`. `up` CLI commands that interact with Upbound's Kubernetes compatible APIs also use the current kubeconfig context.
 
+
+
 <!-- vale off -->
 ### Interactive terminal UI
 
@@ -89,6 +91,25 @@ up ctx -
 up ctx -
 # Resets context to previous context, ctp2
 ```
+
+### Proxied configurations
+
+:::warning
+For Self-Hosted Spaces
+:::
+
+If your organization requires proxies, ZScaler, or other SSL network security
+tools, you might run into certificate validation errors when you attempt to
+connect to your control plane context.
+
+The `--ca-bundle` flag lets you add a custom certificate authority bundle to the
+trust chain.
+
+<EditCode language="shell">
+{`
+up ctx --ca-bundle $@/path/to/custom-ca-bundle.pem$@ $@YOUR_ORG$@/$@YOUR_SPACE_REGION$@/$@YOUR_GROUP$@/$@YOUR_CONTROL_PLANE$@ -f -
+`}
+</EditCode>
 
 ### Storing a context to a file
 
