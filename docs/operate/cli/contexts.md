@@ -92,7 +92,7 @@ up ctx -
 # Resets context to previous context, ctp2
 ```
 
-### Proxied configurations
+## Proxied configurations
 
 If your organization requires proxies, ZScaler, or other SSL network security
 tools, you might run into certificate validation errors when you attempt to
