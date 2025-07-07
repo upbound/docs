@@ -171,8 +171,6 @@ kubectl get providers --kubeconfig=/tmp/<ctp-name>.yaml
 
 Spaces offers a built-in feature that allows you to connect a control plane to a Git source. This experience is like when a control plane runs in [Upbound's SaaS environment][upbound-s-saas-environment]. Upbound recommends using the built-in Git integration to drive configuration of your control planes in a Space.
 
-Learn more in the [Spaces Git integration][spaces-git-integration] documentation.
-
 ### List control planes
 
 To list all control planes in a Space using `up`, run the following:
@@ -215,5 +213,4 @@ kubectl delete controlplane ctp1
 [up-space-destroy]: /apis-cli/cli-reference/#up-space-destroy
 [up-cli]: /apis-cli/cli-reference
 [upbound-s-saas-environment]: /deploy/self-hosted-spaces/spaces-management
-[spaces-git-integration]: /connect/git-integration
 <!--- TODO(tr0njavolta): links --->
