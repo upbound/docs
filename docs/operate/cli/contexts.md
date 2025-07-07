@@ -94,10 +94,6 @@ up ctx -
 
 ### Proxied configurations
 
-:::warning
-For Self-Hosted Spaces
-:::
-
 If your organization requires proxies, ZScaler, or other SSL network security
 tools, you might run into certificate validation errors when you attempt to
 connect to your control plane context.
