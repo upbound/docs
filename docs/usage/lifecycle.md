@@ -86,7 +86,7 @@ Customers with paid support contracts can receive pre-release cuts on an as-need
 
 
 [spaces]: /deploy/spaces
-[uxp]: /crossplane
+[uxp]: /uxp
 [official-providers]: /providers/policies#support
 
 [crossplane-release-cycle]: https://docs.crossplane.io/knowledge-base/guides/release-cycle/
