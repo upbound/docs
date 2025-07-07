@@ -42,7 +42,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx][kubectx].
 When interacting with control planes that are hosted in:
 
 * **a Cloud or Connected Space:** make sure you're using a cloud profile logged into Upbound with `up login` before trying to use `up ctx`.
-* **a Disconnected Space:** make sure your're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
+* **a Disconnected Space:** make sure you're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
 :::
 
 The following are some tips for using the terminal UI:
