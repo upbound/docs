@@ -347,8 +347,8 @@ See the [Query API documentation][query-api-documentation] for more information 
 <!-- vale write-good.TooWordy = YES -->
 <!--- TODO(tr0njavolta): links --->
 
-<!-- [postgresql-setup]: /#self-hosted-postgresql-configuration -->
-<!-- [-up-cli-installed]: /operate/cli#install-the-up-command-line -->
+[postgresql-setup]: /#self-hosted-postgresql-configuration
+[up-cli-installed]: /operate/cli#install-the-up-command-line
 [query-api-documentation]: /connect/query-api
 
 [helm-chart-reference]: /deploy/self-hosted-spaces/helm-reference
