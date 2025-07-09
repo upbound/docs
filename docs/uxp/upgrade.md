@@ -11,9 +11,9 @@ UXP supports upgrading from any older UXP release to any newer UXP release versi
 
 Use `up uxp upgrade <VERSION>` to upgrade UXP.
 
-For example, to upgrade to version `v1.7.0-up.1` use the command 
+For example, to upgrade to version `v1.20.0-up.1` use the command 
 ```shell
-up uxp upgrade v1.7.0-up.1 -n upbound-system
+up uxp upgrade v1.20.0-up.1 -n upbound-system
 ```
 
 :::note
@@ -24,14 +24,14 @@ You must provide the current UXP namespace.
 UXP supports upgrading from open source Crossplane to UXP with identical version numbers.  
 
 Identical versions have the same major, minor, and patch numbers.  
-For example, Crossplane `v1.3.1` and UXP `v1.3.1-up.1` are identical.  
+For example, Crossplane `v1.19.1` and UXP `v1.19.1-up.1` are identical.  
   
-Crossplane `v1.3.1` and UXP `v1.3.3-up.1` aren't.
+Crossplane `v1.19.1` and UXP `v1.19.2-up.1` aren't.
 
 Use `up uxp upgrade <VERSION>` to upgrade from Crossplane to UXP.
 
 ```shell
-up uxp upgrade v1.7.0-up.1 -n crossplane-system
+up uxp upgrade v1.20.0-up.1 -n crossplane-system
 ```
 :::note
 You must install UXP in the same namespace as the existing Crossplane install.
@@ -41,7 +41,7 @@ To upgrade Crossplane to UXP find the current version of Crossplane installed.
 
 ```shell
 kubectl get pods  -n crossplane-system -o jsonpath='{.items[*].spec.containers[*].image}{"\n"}'
-crossplane/crossplane:v1.7.0 crossplane/crossplane:v1.7.0
+crossplane/crossplane:v1.20.0 crossplane/crossplane:v1.20.0
 ```
 
 View the current Crossplane related pods.
@@ -56,7 +56,7 @@ Find the correct version of UXP to upgrade to from the [UXP releases page][uxp-r
 
 Upgrade to the compatible version of UXP.
 ```shell
-up uxp upgrade v1.7.0-up.1 -n crossplane-system
+up uxp upgrade v1.20.0-up.1 -n crossplane-system
 ```
 
 Upgrading to UXP replaces the `crossplane` and `crossplane-rbac-manager` pods and adds two new pods to the cluster.
