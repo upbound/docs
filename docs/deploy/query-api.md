@@ -36,7 +36,7 @@ However, you need to install CloudNativePG (`CNPG`) to provide the PostgreSQL in
 For more customization, see the [Helm chart reference][helm-chart-reference]. You can modify the number
 of PostgreSQL instances, pooling instances, storage size, and more.
 
-If you have specific requirements not addressed in the Helm chart, see below for more information on how to bring your own [PostgreSQL setup][postgresql-setup].
+If you have specific requirements not addressed in the Helm chart, see below for more information on how to bring your own PostgreSQL setup.
 
 ### Using the up CLI
 
@@ -347,8 +347,8 @@ See the [Query API documentation][query-api-documentation] for more information 
 <!-- vale write-good.TooWordy = YES -->
 <!--- TODO(tr0njavolta): links --->
 
-<!-- [postgresql-setup]: /#self-hosted-postgresql-configuration -->
-<!-- [-up-cli-installed]: /operate/cli#install-the-up-command-line -->
+[postgresql-setup]: /#self-hosted-postgresql-configuration
+[up-cli-installed]: /operate/cli#install-the-up-command-line
 [query-api-documentation]: /connect/query-api
 
 [helm-chart-reference]: /deploy/self-hosted-spaces/helm-reference
