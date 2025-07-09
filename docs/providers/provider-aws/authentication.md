@@ -45,12 +45,12 @@ You can find your AWS account ID by selecting the account dropdown in the upper 
 		{
 			"Effect": "Allow",
 			"Principal": {
-				"Federated": "arn:aws:iam::$@YOUR_AWS_ACCOUNT_ID$@:oidc-provider/proidc.upbound.io"
+				"Federated": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:oidc-provider/proidc.upbound.io"
 			},
 			"Action": "sts:AssumeRoleWithWebIdentity",
 			"Condition": {
 				"StringEquals": {
-					"proidc.upbound.io:sub": "mcp:$@ORG_NAME/CONTROL_PLANE_NAME$@:provider:provider-aws",
+					"proidc.upbound.io:sub": "mcp:ORG_NAME/CONTROL_PLANE_NAME:provider:provider-aws",
 					"proidc.upbound.io:aud": "sts.amazonaws.com"
 				}
 			}

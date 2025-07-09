@@ -125,7 +125,7 @@ trust chain.
 
 <EditCode language="shell">
 {`
-up ctx --ca-bundle $@/path/to/custom-ca-bundle.pem$@ $@YOUR_ORG$@/$@YOUR_SPACE_REGION$@/$@YOUR_GROUP$@/$@YOUR_CONTROL_PLANE$@ -f -
+up ctx --ca-bundle /path/to/custom-ca-bundle.pem YOUR_ORG/YOUR_SPACE_REGION/YOUR_GROUP/YOUR_CONTROL_PLANE -f -
 `}
 </EditCode>
 
@@ -151,7 +151,7 @@ up login
 2. Set your `up` context to the desired Space. For example, this command sets it to an Upbound Cloud Space:
 
 ```ini
-up ctx $@<your-org-name>$@/upbound-gcp-us-central-1
+up ctx <your-org-name>/upbound-gcp-us-central-1
 ```
 
 3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
@@ -170,7 +170,7 @@ up login
 
 2. Set your `up` context to the desired control plane group in your Upbound resource hierarchy. For example, this command sets it to the default group of an Upbound Cloud Space:
 ```ini
-up ctx $@<your-org-name>$@/upbound-gcp-us-central-1/default
+up ctx <your-org-name>/upbound-gcp-us-central-1/default
 ``` 
 
 3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:
@@ -190,7 +190,7 @@ up login
 
 2. Set your `up` context to the desired control plane in your Upbound resource hierarchy. For example, this command sets it to a control plane in the default group of an Upbound Cloud Space:
 ```ini
-up ctx $@<your-org-name>$@/upbound-gcp-us-central-1/default/my-ctp
+up ctx <your-org-name>/upbound-gcp-us-central-1/default/my-ctp
 ``` 
 
 3. Save the current context to a kubeconfig in your current working directory called `context.yaml`:

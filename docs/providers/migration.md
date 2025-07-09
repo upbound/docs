@@ -464,7 +464,7 @@ If you don't have an installed Configuration skip to [delete the monolothic prov
 Remove any Configuration dependencies on the original Provider to prevent it from being automatically reinstalled.
 
 ```console
-kubectl patch configuration.pkg $@<CONFIGURATION_NAME>$@ -p '{"spec":{"skipDependencyResolution": true}}' --type=merge
+kubectl patch configuration.pkg <CONFIGURATION_NAME> -p '{"spec":{"skipDependencyResolution": true}}' --type=merge
 
 ```
 <!--- TODO(tr0njavolta): editcode --->
@@ -540,7 +540,7 @@ packages:
 Now delete the original monolithic Provider.
 
 ```console
-kubectl delete provider.pkg $@<PROVIDER_NAME>$@
+kubectl delete provider.pkg <PROVIDER_NAME>
 ```
 
 #### Edit the family configuration provider revision activation policy

@@ -283,7 +283,7 @@ Highlight areas where users can input their own information.
 ```jsx
 <EditCode language="shell">
 {`
-up login --organization=$@YOUR_UPBOUND_ORG$@
+up login --organization=YOUR_UPBOUND_ORG
 `}
 </EditCode>
 ```
