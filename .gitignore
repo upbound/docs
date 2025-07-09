@@ -8,6 +8,7 @@ package-lock.json
 # Docusaurus
 .docusaurus/
 build/
+.vercel
 
 # Environment variables
 .env
