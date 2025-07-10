@@ -94,7 +94,7 @@ kind: Configuration
 metadata:
   name: quickstart-project
 spec:
-  package: "xpkg.upbound.io/$@<org-name>$@/quickstart-project"
+  package: "xpkg.upbound.io/<org-name>/quickstart-project"
 ```
 
 

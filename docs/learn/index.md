@@ -66,7 +66,7 @@ Connect your CLI to your Upbound account. This opens a browser window for you to
 
 <EditCode language="shell">
 {`
-up login --organization=$@YOUR_UPBOUND_ORG$@
+up login --organization=YOUR_UPBOUND_ORG
 `}
 </EditCode>
 
@@ -111,7 +111,7 @@ Next, you need to update the project source to deploy to a control plane within
 your organization:
 
 ```ini
-up project move xpkg.upbound.io/$@yourUpboundOrg$@/up-pound-project
+up project move xpkg.upbound.io/yourUpboundOrg/up-pound-project
 ```
 
 ### Build and run your project

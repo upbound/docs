@@ -46,7 +46,7 @@ Use the `up project simulate` command with your control plane name to start the
 simulation:
 
 ```ini {copy-lines="all"}
-up project simulate $@<your_control_plane_name>$@ --complete-after=60s --terminate-on-finish
+up project simulate <your_control_plane_name> --complete-after=60s --terminate-on-finish
 ```
 
 The `complete-after` flag determines how long to run the simulation before it completes and calculates the results. Depending on the change, a simulation may not complete within your defined interval leaving unaffected resources as `unchanged`. 

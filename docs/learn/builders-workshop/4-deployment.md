@@ -36,7 +36,7 @@ Use the `up ctx` command to set your `kubecontext` to the `default` group:
 
 <EditCode language="shell">
 {`
-up ctx $@YOUR_UPBOUND_ORG$@/$@YOUR_UPBOUND_SPACE_REGION$@/default
+up ctx YOUR_UPBOUND_ORG/YOUR_UPBOUND_SPACE_REGION/default
 `}
 </EditCode>
 
@@ -52,7 +52,7 @@ Set your `kubecontext` to the new control plane `upbound-hello-world`:
 <EditCode language="shell">
 {`
 up ctx
-$@YOUR_UPBOUND_ORG$@/$@YOUR_UPBOUND_SPACE_REGION$@/default/upbound-hello-world
+YOUR_UPBOUND_ORG/YOUR_UPBOUND_SPACE_REGION/default/upbound-hello-world
 `}
 </EditCode>
 
@@ -80,8 +80,8 @@ paste your AWS access key ID and secret access key.
 <EditCode language="shell">
 {`
 [default]
-aws_access_key_id = $@YOUR_ACCESS_KEY_ID$@
-aws_secret_access_key = $@YOUR_SECRET_ACCESS_KEY$@
+aws_access_key_id = YOUR_ACCESS_KEY_ID
+aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
 `}
 </EditCode>
 
@@ -117,7 +117,7 @@ In the root of your project, create a service principle `Owner` role. Update the
 
 <EditCode language="shell">
 {`
-az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/$@<SUBSCRIPTION_ID>$@ \ > azure.json
+az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<SUBSCRIPTION_ID> \ > azure.json
 `}
 </EditCode>
 
@@ -168,7 +168,7 @@ metadata:
     namespace: crossplane-system
     type: Opaque
 data:
-    my-gcp-secret: $@<YOUR_BASE_64_ENCODED_KEY>$@
+    my-gcp-secret: <YOUR_BASE_64_ENCODED_KEY>
 `}
 </EditCode>
 
@@ -231,7 +231,7 @@ kind: ProviderConfig
 metadata:
   name: default
 spec:
-  projectID: $@<YOUR_GCP_PROJECT_ID>$@
+  projectID: <YOUR_GCP_PROJECT_ID>
   credentials:
     source: Secret
     secretRef:
@@ -289,7 +289,7 @@ Set your `kubecontext` to the group level before you destroy the control plane:
 <EditCode language="shell">
 {`
 up ctx
-$@YOUR_UPBOUND_ORG$@/$@YOUR_UPBOUND_SPACE_REGION$@/default
+YOUR_UPBOUND_ORG/YOUR_UPBOUND_SPACE_REGION/default
 `}
 </EditCode>
 

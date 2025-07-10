@@ -196,7 +196,7 @@ kubectl get controlplane <control-plane-name> -o jsonpath='{.status.controlPlane
    with the role ARN.
 ```shell
 up space upgrade ... \
-  --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."eks\.amazonaws\.com/role-arn"="$@<SPACES_ESO_IAM_ROLE_ARN>$@"
+  --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."eks\.amazonaws\.com/role-arn"="<SPACES_ESO_IAM_ROLE_ARN>"
 ```
 
 6. Create a SharedSecretStore and reference the SharedSecrets service account:
@@ -210,14 +210,14 @@ spec:
   provider:
     aws:
       service: SecretsManager
-      region: $@<aws-region>$@
+      region: <aws-region>
       auth:
         jwt:
           serviceAccountRef:
             name: external-secrets-controller
   controlPlaneSelector:
     names:
-    - $@<control-plane-name>$@
+    - <control-plane-name>
   namespaceSelector:
     names:
     - default
@@ -325,8 +325,8 @@ To use Entra Workload ID with AKS:
 1. Deploy the Spaces software into a [workload identity-enabled AKS cluster][workload-identity-enabled-aks-cluster].
 2. Retrieve the OIDC issuer URL of the AKS cluster:
 ```ini
-az aks show --name "$@<CLUSTER_NAME>$@" \
-    --resource-group "$@<RESOURCE_GROUP>$@" \
+az aks show --name "<CLUSTER_NAME>" \
+    --resource-group "<RESOURCE_GROUP>" \
     --query "oidcIssuerProfile.issuerUrl" \
     --output tsv
 ```
@@ -334,17 +334,17 @@ az aks show --name "$@<CLUSTER_NAME>$@" \
 3. Use the Azure CLI to make a managed identity:
 ```ini
 az identity create \
-    --name "$@<USER_ASSIGNED_IDENTITY_NAME>$@" \
-    --resource-group "$@<RESOURCE_GROUP>$@" \
-    --location "$@<LOCATION>$@" \
-    --subscription "$@<SUBSCRIPTION>$@"
+    --name "<USER_ASSIGNED_IDENTITY_NAME>" \
+    --resource-group "<RESOURCE_GROUP>" \
+    --location "<LOCATION>" \
+    --subscription "<SUBSCRIPTION>"
 ```
 
 4. Look up the managed identity's client ID:
 ```ini
 az identity show \
-    --resource-group "$@<RESOURCE_GROUP>$@" \
-    --name "$@<USER_ASSIGNED_IDENTITY_NAME>$@" \
+    --resource-group "<RESOURCE_GROUP>" \
+    --name "<USER_ASSIGNED_IDENTITY_NAME>" \
     --query 'clientId' \
     --output tsv
 ```
@@ -352,22 +352,22 @@ az identity show \
 5. Update your Spaces deployment to annotate the SharedSecrets service account with the associated Entra application client ID from the previous step:
 ```ini
 up space upgrade ... \
-  --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."azure\.workload\.identity/client-id"="$@<SPACES_ESO_CLIENT_ID>$@" \ 
+  --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."azure\.workload\.identity/client-id"="<SPACES_ESO_CLIENT_ID>" \ 
   --set-string controlPlanes.sharedSecrets.pod.customLabels."azure\.workload\.identity/use"="true"
 ```
 
 6. Determine the Spaces-generated `controlPlaneID` of your control plane. When you deploy a `kind: controlplane` in a Space, the Spaces software deploys a set of pods in a new namespace following the format `mxp-<controlPlaneID>-system`.
 ```ini
-kubectl get controlplane $@<control-plane-name>$@ -o jsonpath='{.status.controlPlaneID}'
+kubectl get controlplane <control-plane-name> -o jsonpath='{.status.controlPlaneID}'
 ```
 
 7. Create a federated identity credential.
 ```ini
-FEDERATED_IDENTITY_CREDENTIAL_NAME=$@<FEDERATED_IDENTITY_CREDENTIAL_NAME>$@
-USER_ASSIGNED_IDENTITY_NAME=$@<USER_ASSIGNED_IDENTITY_NAME>$@
-RESOURCE_GROUP=$@<RESOURCE_GROUP>$@
-AKS_OIDC_ISSUER=$@<AKS_OIDC_ISSUER>$@
-CONTROLPLANE_ID=$@<CONTROLPLANE_ID>$@
+FEDERATED_IDENTITY_CREDENTIAL_NAME=<FEDERATED_IDENTITY_CREDENTIAL_NAME>
+USER_ASSIGNED_IDENTITY_NAME=<USER_ASSIGNED_IDENTITY_NAME>
+RESOURCE_GROUP=<RESOURCE_GROUP>
+AKS_OIDC_ISSUER=<AKS_OIDC_ISSUER>
+CONTROLPLANE_ID=<CONTROLPLANE_ID>
 az identity federated-credential create --name ${FEDERATED_IDENTITY_CREDENTIAL_NAME} --identity-name "${USER_ASSIGNED_IDENTITY_NAME}" --resource-group "${RESOURCE_GROUP}" --issuer "${AKS_OIDC_ISSUER}" --subject system:serviceaccount:"mxp-${CONTROLPLANE_ID}-system:external-secrets-controller" --audience api://AzureADTokenExchange
 ```
 
@@ -394,10 +394,10 @@ spec:
   provider:
     azurekv:
       authType: WorkloadIdentity
-      vaultUrl: "$@<KEYVAULT_URL>$@"
+      vaultUrl: "<KEYVAULT_URL>"
   controlPlaneSelector:
     names:
-    - $@<control-plane-name>$@
+    - <control-plane-name>
   namespaceSelector:
     names:
     - default
@@ -442,10 +442,10 @@ spec:
           secretAccessKeySecretRef:
             name: gcpsm-secret
             key: creds
-      projectID: $@<your-gcp-project>$@
+      projectID: <your-gcp-project>
   controlPlaneSelector:
     names:
-    - $@<control-plane-name>$@
+    - <control-plane-name>
   namespaceSelector:
     names:
     - default
@@ -466,19 +466,19 @@ account.
 1. Ensure you've deployed Spaces on a [Workload Identity Federation-enabled][workload-identity-federation-enabled] GKE cluster.
 2. Determine the Spaces-generated `controlPlaneID` of your control plane. When you deploy a `kind: controlplane` in a Space, the Spaces software deploys a set of pods in a new namespace following the format `mxp-<controlPlaneID>-system`.
 ```ini
-kubectl get controlplane $@<control-plane-name>$@ -o jsonpath='{.status.controlPlaneID}'
+kubectl get controlplane <control-plane-name> -o jsonpath='{.status.controlPlaneID}'
 ```
 
 3. Create a GCP IAM service account with the [GCP CLI][gcp-cli-1]:
 ```ini
-gcloud iam service-accounts create $@<IAM_SA_NAME>$@ \
-    --project=$@<IAM_SA_PROJECT_ID>$@
+gcloud iam service-accounts create <IAM_SA_NAME> \
+    --project=<IAM_SA_PROJECT_ID>
 ```
 
 4. Grant the IAM service account the role to access GCP Secret Manager:
 ```ini
-SA_NAME=$@<IAM_SA_NAME>$@
-IAM_SA_PROJECT_ID=$@<IAM_SA_PROJECT_ID>$@
+SA_NAME=<IAM_SA_NAME>
+IAM_SA_PROJECT_ID=<IAM_SA_PROJECT_ID>
 gcloud projects add-iam-policy-binding IAM_SA_PROJECT_ID \
     --member "serviceAccount:SA_NAME@IAM_SA_PROJECT_ID.iam.gserviceaccount.com" \
     --role roles/secretmanager.secretAccessor
@@ -486,9 +486,9 @@ gcloud projects add-iam-policy-binding IAM_SA_PROJECT_ID \
 
 5. When you enable the Shared Secrets feature, a service account gets created in each control plane for the External Secrets Operator. Apply a [GCP IAM policy binding][gcp-iam-policy-binding] to associate this service account with the desired GCP IAM role.
 ```ini
-PROJECT_ID=$@<PROJECT_ID>$@
-PROJECT_NUMBER=$@<PROJECT_NUMBER>$@
-CONTROLPLANE_ID=$@<CONTROLPLANE_ID>$@
+PROJECT_ID=<PROJECT_ID>
+PROJECT_NUMBER=<PROJECT_NUMBER>
+CONTROLPLANE_ID=<CONTROLPLANE_ID>
 gcloud projects add-iam-policy-binding projects/${PROJECT_ID} \
     --role "roles/iam.workloadIdentityUser" \
     --member=principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${PROJECT_ID}.svc.id.goog/subject/ns/mxp-${CONTROLPLANE_ID}-system/sa/external-secrets-controller 
@@ -497,7 +497,7 @@ gcloud projects add-iam-policy-binding projects/${PROJECT_ID} \
 6. Update your Spaces deployment to annotate the SharedSecrets service account with GCP IAM service account's identifier:
 ```ini
 up space upgrade ... \
-  --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."iam\.gke\.io/gcp-service-account"="$@<SA_NAME>$@"
+  --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."iam\.gke\.io/gcp-service-account"="<SA_NAME>"
 ```
 
 7. Create a `SharedSecretStore`. Replace `projectID` with your GCP Project ID:
@@ -509,10 +509,10 @@ metadata:
 spec:
   provider:
     gcpsm:
-      projectID: $@<your-gcp-project>$@
+      projectID: <your-gcp-project>
   controlPlaneSelector:
     names:
-    - $@<control-plane-name>$@
+    - <control-plane-name>
   namespaceSelector:
     names:
     - default

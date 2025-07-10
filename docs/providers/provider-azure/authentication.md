@@ -42,19 +42,19 @@ To allow the `upbound-oidc-provider` registration created in the previous step t
 
 <!--- TODO(tr0njavolta): edit --->
 ```yaml
-mcp:$@<your-org>/<your-control-plane-name>$@:provider:provider-azure
+mcp:<your-org>/<your-control-plane-name>:provider:provider-azure
 ```
 
 7. In _Credential details name_ enter:
 
 ```yaml
-upbound-$@<your-org>-<your-control-plane-name>$@-provider-azure
+upbound-<your-org>-<your-control-plane-name>-provider-azure
 ```
 
 8. In _Credential details description_ enter:
 
 ```yaml
-upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
+upbound MCP <your-org>/<your-control-plane-name> Provider provider-azure
 ```
 
 9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.

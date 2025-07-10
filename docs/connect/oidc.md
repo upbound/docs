@@ -87,7 +87,7 @@ spec:
     source: Upbound
     upbound:
       webIdentity:
-        roleARN: $@<arn:aws:iam::12345969492:role/your-role>$@
+        roleARN: <arn:aws:iam::12345969492:role/your-role>
 ```
 :::tip
 Read the [provider-aws authentication][provider-aws-authentication] documentation for full setup instructions.
@@ -103,9 +103,9 @@ kind: ProviderConfig
 metadata:
   name: default
 spec:
-  clientID: $@<client-id>$@
-  tenantID: $@<tenant-id>$@
-  subscriptionID: $@<subscription-id>$@
+  clientID: <client-id>
+  tenantID: <tenant-id>
+  subscriptionID: <subscription-id>
   credentials:
     source: Upbound
 ```
@@ -124,13 +124,13 @@ kind: ProviderConfig
 metadata:
   name: default
 spec:
-  projectID: $@<your-gcp-project>$@
+  projectID: <your-gcp-project>
   credentials:
     source: Upbound
     upbound:
       federation:
-        providerID: $@projects/<project-id>/locations/global/workloadIdentityPools/<identity-pool>/providers/<identity-provider>$@
-        serviceAccount: $@<service-account-name>@<project-name>.iam.gserviceaccount.com>$@
+        providerID: projects/<project-id>/locations/global/workloadIdentityPools/<identity-pool>/providers/<identity-provider>
+        serviceAccount: <service-account-name>@<project-name>.iam.gserviceaccount.com>
 ```
 
 :::tip
