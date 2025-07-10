@@ -257,7 +257,7 @@ Set the following control plane annotation to enable honoring the group field.
 proidc.cloud-spaces.upbound.io/group-scoped: "true"
 ```
 
-Then use the following _subject_.
+Then use the following _subject_:
 
 ```
 mcp:<organization>/<space>/<group>/<controlPlane>:<provider>
