@@ -1,16 +1,16 @@
 ---
 title: Composite Resources
-sidebar_position: 1
+sidebar_position: 2
 description: Composite resources, an XR or XRs, represent a collection of related
   cloud resources.
 ---
 
-A composite resource, or XR, represents a set of Kubernetes resources as a
-single Kubernetes object. Crossplane creates composite resources when users
+A composite resource, or XR, represents a set of resources as a
+single object. Crossplane creates composite resources when users
 access a custom API, defined in the CompositeResourceDefinition. 
 
 :::tip
-Composite resources are a _composite_ of Kubernetes resources.  
+Composite resources are a _composite_ of resources.  
 A _Composition_ defines how to _compose_ the resources together.
 :::
 
@@ -36,29 +36,6 @@ Creating composite resources requires a
 The Composition defines the set of resources to create. The XRD defines the
 custom API users call to request the set of resources.
 
-```mermaid
-flowchart TD
-
-user(["User"])
-xr("Composite Resource (XR)")
-xrd("Composite Resource Definition (XRD)")
-comp("Composition")
-cda("Composed Resource A")
-cdb("Composed Resource B")
-cdc("Composed Resource C")
-
-xrd -.defines.-> xr
-comp configure-xr@-.configures.-> xr
-user --creates--> xr
-xr compose-a@--composes-->cda
-xr compose-b@--composes-->cdb
-xr compose-c@--composes-->cdc
-
-configure-xr@{animate: true}
-compose-a@{animate: true}
-compose-b@{animate: true}
-compose-c@{animate: true}
-```
 
 XRDs define the API used to create a composite resource. For example, 
 this <Hover label="xrd1" line="2">CompositeResourceDefinition</Hover>

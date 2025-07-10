@@ -2,29 +2,12 @@
 title: Get Started
 description: Use the Upbound CLI to create infrastructure and have more control of
   your configurations
-sidebar_position: 1
-slug: /
+sidebar_position: 2
 id: get-started
 ---
 
-Upbound is a scalable infrastructure management service built on Crossplane. The
-advantage of Crossplane and Upbound is the universal control plane.
-
-## Why control planes
-
-Upbound uses control planes to manage resources through custom APIs. The control plane constantly monitors your cloud resources to meet the state you define in your custom APIs. You define your resources with Custom Resource Definitions (CRDs), which Upbound parses, connects with the service, and manages on your behalf.
-
-## Why Upbound
-
-Upbound offers several advantages for managing complex infrastructure. As your infrastructure grows, managing cloud environments, scaling, and security can become more challenging. Other infrastructure as code tools often require more hands-on intervention to avoid drift and deploy consistently across providers.
-
-By adopting Upbound, you gain:
-
-- Integrated drift protection and continuous reconciliation
-- Scalability across providers
-- Self-service deployment workflows
-- Enhanced security posture and reduced blast radius
-- Consistent deployment using GitOps principles
+In this guide, you'll create your first control plane managed infrastructure
+with Upbound Crossplane.
 
 ## Prerequisites
 
@@ -62,7 +45,8 @@ You should see the installed version of the `up` CLI.
 
 ### Login to Upbound
 
-Connect your CLI to your Upbound account. This opens a browser window for you to log into your Upbound account.
+Connect your CLI to your Upbound account. This opens a browser window for you to
+log into your Upbound account.
 
 <EditCode language="shell">
 {`
@@ -110,9 +94,11 @@ application.
 Next, you need to update the project source to deploy to a control plane within
 your organization:
 
-```ini
+<EditCode>
+{`
 up project move xpkg.upbound.io/$@yourUpboundOrg$@/up-pound-project
-```
+`}
+</EditCode>
 
 ### Build and run your project
 

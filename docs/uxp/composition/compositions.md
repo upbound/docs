@@ -4,15 +4,21 @@ sidebar_position: 3
 description: Compositions are a template for creating composite resources
 ---
 
-Compositions are a template for creating multiple Kubernetes resources as a
-single _composite_ resource.
+Compositions are declarative templates that allow you to create multiple
+resources as a _composite resource_ in a single file. 
+
+Compositions define how your individual resources should be created and managed.
+When a user or system requests a resources that matches a composition, your
+control plane:
+
+- Parses the composition to understand what resources to create
+- Provisions the resources according to the rules and definitions in your XRD.
+- Links the resources it creates together to define them as a single unit.
 
 A Composition _composes_ individual resources together into a larger, reusable,
-solution.
-
-An example Composition may combine a virtual machine, storage resources and
-networking policies. A Composition template links all these individual
-resources together.
+solution. An example Composition may combine a virtual machine, storage
+resources and networking policies. A Composition template links all these
+individual resources together.
 
 Here's an example Composition. When you create an
 <Hover label="intro" line="8">AcmeBucket</Hover> composite resource

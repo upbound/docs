@@ -1,6 +1,6 @@
 ---
 title: Composition Revisions
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 This guide discusses the use of "Composition Revisions" to safely make and roll

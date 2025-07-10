@@ -1,18 +1,13 @@
 ---
 title: Composite Resource Definitions
-sidebar_position: 2
+sidebar_position: 4
 description: Composite Resource Definitions or XRDs define custom API schemas
 ---
-
+<!--- TODO(tr0njavolta): uxp v2 - control plane project xrd creation --->
 Composite resource definitions (`XRDs`) define the schema for a custom API.  
 Users create composite resources (`XRs`) using the API schema defined by an
 XRD.
 
-
-:::note
-Read the [composite resources](/crossplane/composite-resources) page for more
-information about composite resources.
-:::
 
 <details>
 <summary> "What are XRs, XRDs and Compositions?" </summary>

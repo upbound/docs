@@ -1,60 +1,18 @@
 ---
-title: What's Crossplane?
+title: Overview 
 sidebar_position: 1
-description: Learn what Crossplane is and why you'd use it.
+description: Learn what Upbound Crossplane is and how it works
 ---
-import UpPackMan from '/enhancements/package-manager.md';
 
-Crossplane is a control plane framework for platform engineering. 
+This document is a conceptual overview of Upbound's core components.
 
-**Crossplane lets you build control planes to manage your cloud native software.**
-It lets you design the APIs and abstractions that your users use to interact
-with your control planes.
+## Components
 
-:::tip
-**A control plane is software that controls other software.**
-
-Control planes are a core cloud native pattern. The major cloud providers are
-all built using control planes.
-
-Control planes expose an API. You use the API to tell the control plane what
-software it should configure and how - this is your _desired state_.
-
-A control plane can configure any cloud native software. It could deploy an app,
-create a load balancer, or create a GitHub repository.
-
-The control plane configures your software, then monitors it throughout its
-lifecycle. If your software ever _drifts_ from your desired state, the control
-plane automatically corrects the drift.
-:::
-
-Crossplane has a rich ecosystem of extensions that make building a control plane
-faster and easier. It's built on Kubernetes, so it works with all the Kubernetes
-tools you already use.
-
-**Crossplane's key value is that it unlocks the benefits of building your own
-Kubernetes custom resources without having to write controllers for them.**
-
-Not familiar with Kubernetes custom resources and controllers?
-[This DevOps Toolkit video](https://www.youtube.com/watch?v=aM2Y9m2Kazk) has a
-great explanation.
-
-:::note
-Kubebuilder is a popular project for building Kubernetes controllers. Look at
-the [Kubebuilder documentation](https://book.kubebuilder.io) to see what's
-involved in writing a controller.
-:::
-
-## Crossplane components
-
-Crossplane has three major components:
+Upbound's core control plane functionality is built on three components:
 
 * [Composition](#composition)
 * [Managed resources](#managed-resources)
 * [Package manager](#package-manager)
-
-You can use all three components to build your control plane, or pick only the
-ones you need.
 
 ### Composition
 
@@ -71,31 +29,8 @@ Say you want your control plane to serve an `App` custom resource API. When
 someone creates an `App`, the control plane should create a Kubernetes
 `Deployment` and a `Service`.
 
-**If there's not already a controller that does what you want - and exposes the
-API you want - you have to write the controller yourself.**
-
-```mermaid
-flowchart TD
-user(User)
-
-subgraph control [Control Plane]
-  api(App API)
-  controller[Your App Controller]
-  deployment(Deployment API)
-  service(Service API)
-end
-
-user -- create --> api
-controller watch@<-- watch --> api
-controller -- create --> deployment
-controller -- create --> service
-
-watch@{animate: true}
-```
-
-**With Crossplane you don't have to write a controller**. Instead you configure
-a pipeline of functions. The functions return declarative configuration that
-Crossplane should apply.
+With Crossplane you configure a pipeline of functions. The functions return
+declarative configuration that Crossplane should apply.
 
 ```mermaid
 flowchart TD
@@ -120,24 +55,17 @@ crossplane -- create --> service
 watch@{animate: true}
 ```
 
-With Composition you avoid writing and maintaining complex controller code
-that's hard to get right. Instead you focus on expressing your business
-logic, and work in your preferred language.
+With Composition, you can focus on expressing your business logic in your
+preferred language.
 
-
-:::important
 Composition functions are like configuration language plugins.
 
 Functions allow you to write your configuration in several languages, including
 [YAML](https://yaml.org), [KCL](https://www.kcl-lang.io),
 [Python](https://python.org), and [Go](https://go.dev).
-:::
 
 You can use composition together with [managed resources](#managed-resources) to
 build new custom resource APIs powered by managed resources.
-
-Follow [Get Started with Composition](/crossplane/get-started/get-started-with-composition)
-to see how composition works.
 
 ### Managed resources
 
@@ -150,9 +78,8 @@ there's an RDS instance MR that extends Kubernetes with the ability to manage
 Crossplane has an extensive library of managed resources you can use to manage
 almost any cloud provider, or cloud native software.
 
-**With Crossplane you don't have to write a controller if you want to manage
-something outside of your Kubernetes cluster using a custom resource.** There's
-already a Crossplane managed resource for that.
+**With Crossplane you don't need build custom integrations to manage external
+services.** There's already a Crossplane managed resource for that.
 
 ```mermaid
 flowchart TD
@@ -212,20 +139,7 @@ watch-apps@{animate: true}
 watch-rds@{animate: true}
 ```
 
-Follow [Get Started with Managed Resources](/crossplane/get-started/get-started-with-managed-resources)
-to see how managed resources work.
-
-:::note
-Only AWS managed resources support the Crossplane v2 preview.
-
-<!-- vale gitlab.FutureTense = NO -->
-Maintainers will update the managed resources for other systems including Azure,
-GCP, Terraform, Helm, GitHub, etc to support Crossplane v2 soon.
-<!-- vale gitlab.FutureTense = YES -->
-:::
-
 ### Package manager
-
 
 The Crossplane package manager lets you install new managed resources and
 composition functions.
@@ -238,5 +152,11 @@ service.
 Read about Crossplane [packages](/crossplane/packages)
 to learn about the package manager.
 
+## Next steps
 
-<UpPackMan />
+Now that you know the parts of a control plane, you can build your first control
+plane.
+Follow [Get Started with Managed Resources](/crossplane/get-started/get-started-with-managed-resources)
+to see how managed resources work.
+
+
