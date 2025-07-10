@@ -39,6 +39,7 @@ This solution involves deploying backing Kubernetes infrastructure for component
 Building out your Internal Developer Platform (IDP) with Upbound couldn't be easier with the starter kit. To get started, first fork the starter kit implementation found at https://github.com/upbound/solution-idp and clone it.
 
 ```shell
+# Update the repository to your fork
 git clone https://github.com/upbound/solution-idp.git
 cd solution-idp
 ```
@@ -74,6 +75,8 @@ up ctx $UPBOUND_ORGANIZATION/upbound-aws-us-east-1/default
 
 </TabItem>
 <TabItem value="Self-Hosted Space" label="Self-Hosted Space">
+
+Update this command to refer to a self-hosted Space you've already deployed and connected to the Upbound Console:
 
 ```shell
 up ctx $UPBOUND_ORGANIZATION/$SELF_HOSTED_SPACE_NAME/default
@@ -112,10 +115,6 @@ Here's an explanation for each variable above:
 - `GIT_REPO`: The Git repository URL of the forked starter kit
 - `GIT_REVISION`: target branch of GIT_REPO. Default: main
 
-
-- **AWS_CREDENTIALS_PATH**, the path to AWS credentials on your local machine.
-- **UPBOUND_ORG**, the name of your org in Upbound. You can find this by running `up org list`.
-
 ### Execute the bootstrap
 
 After you populate the variables, bootstrap your environment:
@@ -127,35 +126,25 @@ task bootstrap-all
 
 The bootstrap process takes 3 to 5 minutes. After the command finishes, go to your space and observe the two newly created control plane groups:
 
-```
-picture
-```
+![starterGroups][starterGroups]
 
 Next go to the bootstrap control plane in `solution-idp-non-prod` group and validate that the `frontend` composite resource (XR) shows synced and ready:
 
-```
-picture
-```
+![frontendCtp][frontendCtp]
 
 Once the `frontend` XR is ready, go to the `frontend` control plane group:
 
-```
-picture
-```
+![controlplaneView][controlplaneView]
 
 Then validate that all the XRs become synced and ready:
 
-```
-picture
-```
+![readyResources][readyResources]
 
 ## Visit the development portal
 
 Once everything gets fully provisioned, visit the development portal for your platform:
 
-```
-TODO: go to some HTTP - see a screenshot of Backstage
-```
+![backstage][backstage]
 
 ## Clean up
 
@@ -170,3 +159,9 @@ For a comprehensive guide of the solution and how to extend it to fit your needs
 [awsCreds]: https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html
 [design]: ./design.md
 [upCli]: https://docs.upbound.io/operate/cli/ 
+
+[starterGroups]: /img/solutions/starter-groups.png
+[frontendCtp]: /img/solutions/frontend-ctp.png
+[controlplaneView]: /img/solutions/control-plane-view.png
+[readyResources]: /img/solutions/ready-resources.png
+[backstage]: /img/solutions/backstage.png

@@ -1693,6 +1693,84 @@ export default [
     ]
   },
   {
+    path: '/solutions',
+    component: ComponentCreator('/solutions', '358'),
+    routes: [
+      {
+        path: '/solutions',
+        component: ComponentCreator('/solutions', '545'),
+        routes: [
+          {
+            path: '/solutions',
+            component: ComponentCreator('/solutions', 'c35'),
+            routes: [
+              {
+                path: '/solutions/general-idp/',
+                component: ComponentCreator('/solutions/general-idp/', '195'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/general-idp/bootstrap',
+                component: ComponentCreator('/solutions/general-idp/bootstrap', 'c1a'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/general-idp/deploy-apis',
+                component: ComponentCreator('/solutions/general-idp/deploy-apis', 'b6b'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/general-idp/design',
+                component: ComponentCreator('/solutions/general-idp/design', '525'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/general-idp/get-started',
+                component: ComponentCreator('/solutions/general-idp/get-started', '43a'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/general-idp/portal',
+                component: ComponentCreator('/solutions/general-idp/portal', '225'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/usecases/',
+                component: ComponentCreator('/solutions/usecases/', 'cd8'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/usecases/app',
+                component: ComponentCreator('/solutions/usecases/app', 'fea'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/usecases/caas',
+                component: ComponentCreator('/solutions/usecases/caas', 'b81'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              },
+              {
+                path: '/solutions/usecases/dbaas',
+                component: ComponentCreator('/solutions/usecases/dbaas', 'e55'),
+                exact: true,
+                sidebar: "solutionsSidebar"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     path: '/upbound-marketplace',
     component: ComponentCreator('/upbound-marketplace', '6a5'),
     routes: [

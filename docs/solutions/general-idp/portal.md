@@ -39,4 +39,4 @@ Because Backstage is connected to an Upbound control plane, whenever you deploy 
 Commercial customers of Upbound may be granted access to the source code for this Backstage app so they can customize it to their needs.
 
 
-[backstage](https://backstage.io/)
+[backstage]: https://backstage.io/

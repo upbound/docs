@@ -17,16 +17,14 @@ At a high level, all platforms on Upbound are usually composed of the following 
 
 Here's a visual depiction of the high-level shape of a platform powered by Upbound:
 
-```
-picture
-```
+![platformParts][platformParts]
 
 ## Chart your journey
 
 Before jumping into building the foundations of your platform, remember that platforms are a multi-year investment that matures and gets enhanced over time. Consider your favorite Cloud Service Provider (AWS, Azure, GCP, OCI, or other) and think about the wide range of services they provide to their users. The crux of what a product like GCP offers is:
 
 - A set of managed service experiences…
-- …for vending out `some resource`-as-a-service
+- …for vending out `some resource-as-a-service`
 - …and that provides continual lifecycle management and ops experiences around that resource
 
 Whether it's Google Kubernetes Engine vending out Kubernetes Clusters or Big Query as a managed data platform, almost all services offered by these cloud providers follow the same pattern. As Upbound, we encourage you to think about your IDP in a similar spirit, focused around what offerings you want your platform to provide, to deliver business value to its users. We define an offering as:
@@ -47,7 +45,7 @@ In Upbound, an offering maps to a group of one or more composite resource APIs b
 - API management
 - Compute (virtual machines, serverless, and more)
 
-Because Upbound managed control planes are built around Crossplane, you're not limited to only building these offerings. As long as there's:
+Because Upbound control planes are built on Crossplane, you're not limited to only building these offerings. As long as there's:
 
 - a Crossplane provider that implements the underlying resources you want to abstract as a Managed Resource 
 - or there exists a Kubernetes Custom Resource
@@ -64,4 +62,6 @@ Learn how to [use an Upbound control plane to bootstrap](bootstrap) the rest of 
 
 [configurations]: https://marketplace.upbound.io/configurations
 [bootstrap]: bootstrap.md
+
+[platformParts]: /img/solutions/platform-on-upbound.png
 

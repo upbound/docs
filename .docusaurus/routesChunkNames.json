@@ -1257,6 +1257,59 @@
     "__comp": "__comp---theme-doc-item-178-a40",
     "content": "content---release-notes-rel-notes-up-clib-57-3af"
   },
+  "/solutions-358": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---solutions-37-a-c03"
+    }
+  },
+  "/solutions-545": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---solutions-3-e-0-d69"
+  },
+  "/solutions-c35": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/solutions/general-idp/-195": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-general-idp-092-7f8"
+  },
+  "/solutions/general-idp/bootstrap-c1a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-general-idp-bootstrapc-26-4bc"
+  },
+  "/solutions/general-idp/deploy-apis-b6b": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-general-idp-deploy-apis-146-e74"
+  },
+  "/solutions/general-idp/design-525": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-general-idp-design-997-3b3"
+  },
+  "/solutions/general-idp/get-started-43a": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-general-idp-get-started-9-fe-d42"
+  },
+  "/solutions/general-idp/portal-225": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-general-idp-portal-8-df-e6b"
+  },
+  "/solutions/usecases/-cd8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-usecases-99-e-6b3"
+  },
+  "/solutions/usecases/app-fea": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-usecases-appa-06-065"
+  },
+  "/solutions/usecases/caas-b81": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-usecases-caas-8-f-9-882"
+  },
+  "/solutions/usecases/dbaas-e55": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---solutions-usecases-dbaas-2-ea-fe7"
+  },
   "/upbound-marketplace-6a5": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {

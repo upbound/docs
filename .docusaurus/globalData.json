@@ -1622,6 +1622,80 @@
         }
       ],
       "breadcrumbs": true
+    },
+    "solutions": {
+      "path": "/solutions",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/solutions",
+          "mainDocId": "general-idp/index",
+          "docs": [
+            {
+              "id": "general-idp/bootstrap",
+              "path": "/solutions/general-idp/bootstrap",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "general-idp/deploy-apis",
+              "path": "/solutions/general-idp/deploy-apis",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "general-idp/design",
+              "path": "/solutions/general-idp/design",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "general-idp/get-started",
+              "path": "/solutions/general-idp/get-started",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "general-idp/index",
+              "path": "/solutions/general-idp/",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "general-idp/portal",
+              "path": "/solutions/general-idp/portal",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "usecases/app",
+              "path": "/solutions/usecases/app",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "usecases/caas",
+              "path": "/solutions/usecases/caas",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "usecases/dbaas",
+              "path": "/solutions/usecases/dbaas",
+              "sidebar": "solutionsSidebar"
+            },
+            {
+              "id": "usecases/index",
+              "path": "/solutions/usecases/",
+              "sidebar": "solutionsSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "solutionsSidebar": {
+              "link": {
+                "path": "/solutions/general-idp/",
+                "label": "Internal Developer Platform Starter Kit"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
     }
   }
 }

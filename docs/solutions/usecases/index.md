@@ -1,7 +1,7 @@
 ---
-title: 'Samples'
+title: 'Use cases'
 sidebar_position: 100
-description: "Curated samples that use the IDP starter kit with Configurations to showcase use cases"
+description: "Curated use cases that use the IDP starter kit with Configurations to showcase use cases"
 ---
 
 The Internal Developer Platform starter kit gives you all the tools you
