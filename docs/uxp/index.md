@@ -6,11 +6,11 @@ description: Learn what Upbound Crossplane is and how it works
 
 Upbound Crossplane is the AI-native distribution of Crossplane, a framework for managing the lifecycle of infrastructure and applications through a control plane. It lets you do three things:
 
-1. Manage the lifecycle of any resource in an external system through Kubernetes with Crossplane [providers][providers].
-2. Build workflows to template resources and expose it as a simplified resource abstraction with [composition][composition].
+1. Manage the lifecycle of any resource in an external system through Kubernetes with Crossplane [providers][quickstart].
+2. Build workflows to template resources and expose them as a simplified resource abstraction with [composition][composition].
 3. Build workflows to execute jobs on resources managed by the control plane with [operations][operations].
 
-Workflows in Crossplane are expressed as function pipelines written in your preferred language. Use Upbound Crossplane as a control plane to boost productivity, drive security and compliance, and converge on a consistent technology stack built around Kubernetes.
+Workflows in Crossplane are expressed as function pipelines written in your preferred language. Use Upbound Crossplane as a control plane to boost productivity, drive security and compliance, and converge on a consistent technology stack built around Kubernetes. Control planes are the only way to build and support autonomous infrastructure platforms ready for the  age of autonomous systems, serving both humans and AI.
 
 Upbound Crossplane is delivered by the creators of Crossplane and compatible with the open source CNCF Crossplane community.
 
@@ -34,7 +34,6 @@ Install Upbound Crossplane and set up your development environment.
 * Join the [Upbound Crossplane][slack] community on slack to get help and share ideas
 * Visit the [Upbound Marketplace][marketplace] to find packages for your control planes, built by Upbound, software partners, and the community
 
-[providers]: /uxp/quickstart/external-resources
 [composition]: /uxp/composition/overview
 [quickstart]: /uxp/quickstart/basic
 [operations]: /uxp/quickstart/operation

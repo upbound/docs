@@ -3,7 +3,14 @@ title: Create a custom resource type
 sidebar_position: 1
 ---
 
-Welcome to Upbound Crossplane, the AI-native distribution of Crossplane.
+Welcome to Upbound Crossplane, the AI-native distribution of Crossplane. Control planes are the only way to build and support autonomous infrastructure platforms ready for the age of autonomous systems, serving both humans and AI. One of the core features of Crossplane is it lets you build workflows to template resources and expose them as a simplified resource abstraction. 
+
+:::tip
+
+This quickstart is suitable for users who want use Crossplane to build workflows for templating resources and exposing them as simplified resource abstractiosn. If you just want to use Crossplane to manage the lifecycle of any resource in an external system through Kubernetes, read [Manage external resources with providers][providers]
+
+:::
+
 
 ## Prerequisites
 
