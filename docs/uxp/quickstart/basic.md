@@ -232,7 +232,6 @@ The example above creates Kubernetes app resources in the same cluster as where 
 * [Manage external resources with providers][providers]
 
 [up]: up
-[providers]: /uxp/packages/providers
 [marketplace]: https://marketplace.upbound.io
 [functions]: /uxp/composition/composite-resource-definitions
 [aws]: /uxp/quickstart/aws-composition 
