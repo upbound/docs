@@ -23,7 +23,7 @@ Before beginning, make sure that:
 
 ## Create a control plane project
 
-Crossplane works by letting you define new resource types in Kubernetes that invoke function pipelines to template and generate lower-level resources. Just like any other software project, a _control plane project_ is a source-level representation of your control plane. A control plane project gets built into an OCI package and installed into a running instance of Upbound Crossplane.
+Crossplane works by letting you define new resource types in Kubernetes that invoke function pipelines to template and generate other resources. Just like any other software project, a _control plane project_ is a source-level representation of your control plane. A control plane project gets built into an OCI package and installed into a running instance of Upbound Crossplane.
 
 Create a control plane project on your machine by running the following command:
 
