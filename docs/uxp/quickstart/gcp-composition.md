@@ -3,7 +3,7 @@ title: Create a GCP Resource type
 sidebar_position: 10
 ---
 
-Welcome to Upbound Crossplane, the AI-native distribution of Crossplane.
+It's common to use a control plane to define new custom resource types for external resources, such as GCP. This quickstart will guide you through creating and deploying your first custom resource type for GCP on a control plane.
 
 ## Prerequisites
 

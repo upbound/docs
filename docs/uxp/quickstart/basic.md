@@ -223,7 +223,7 @@ service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 
 ## Next Steps
 
-The example above creates Kubernetes app resources in the same cluster as where Upbound Crossplane is installed. Now that you know the basics of Crossplaen, continue your journey with the resources below:
+The example above creates Kubernetes app resources in the same cluster as where Upbound Crossplane is installed. Now that you know the basics of Crossplane, continue your journey with the resources below:
 
 * [Create a custom AWS resource type][aws]
 * [Create a custom Azure resource type][azure]

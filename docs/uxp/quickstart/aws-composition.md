@@ -3,7 +3,7 @@ title: Create an AWS Resource type
 sidebar_position: 5
 ---
 
-Welcome to Upbound Crossplane, the AI-native distribution of Crossplane.
+It's common to use a control plane to define new custom resource types for external resources, such as AWS. This quickstart will guide you through creating and deploying your first custom resource type for AWS on a control plane.
 
 ## Prerequisites
 
