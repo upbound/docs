@@ -55,14 +55,14 @@ TODO: a picture of the web UI
 
 ## Define your own resource type
 
-Customize your control plane by defining your own resource type. Start by creating an example instance of your custom resource type and define the properties you want to exist, then use the _up_ tooling to generate the definition files Crossplane needs. Scaffold a new resource type example with:
+Customize your control plane by defining your own resource type. Start by creating an example instance of your custom resource type and define the properties you want to exist, then use the _up_ CLI to generate the definition files Crossplane requires. Scaffold a new resource type example with:
 
 ```shell
 up example generate \
   --type xr --api-group getting.started --api-version v1alpha1 --kind App --name example
 ```
 
-Open the project in your IDE of choice and edit the generated file `my-new-project/examples/app/example.yaml`:
+Open the project in your IDE of choice and edit the generated file `my-new-project/examples/app/example.yaml`, replacing it with the following:
 
 ```yaml
 apiVersion: example.crossplane.io/v1
