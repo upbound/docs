@@ -1,523 +1,299 @@
 ---
-title: Get Started
-description: Use the Upbound CLI to create infrastructure and have more control of
-  your configurations
-sidebar_position: 2
-id: get-started
+title: Get Started 
+slug: '/'
+sidebar_position: 1
 ---
 
-In this guide, you'll create your first control plane managed infrastructure
-with Upbound Crossplane.
+Welcome to Upbound Crossplane, the AI-native distribution of Crossplane. Control
+planes are the only way to build and support autonomous infrastructure platforms
+ready for the age of autonomous systems, serving both humans and AI. One
+Crossplane's is it lets you build workflows to template resources and expose
+them as simplified resource abstractions.
+
+:::tip
+
+This quickstart is suitable for users who want use Crossplane to build workflows
+for templating resources and exposing them as simplified resource abstraction.
+
+To manage the lifecycle of any resource in an external system through
+Kubernetes, read [Manage external resources with providers][providers]
+
+:::
+
 
 ## Prerequisites
 
-This tutorial deploys an EKS cluster and underlying
-networking configuration with the `up` CLI. This example creates a frontend
-deployment, backend service, database service, and a load balancer ingress.
+This quickstart will take you approximately 10 minutes to complete. You should
+be familiar with YAML or programming in Go, Python, and KCL.
 
-Before you begin, make sure you have:
+For this quickstart, you need:
 
-- [An Upbound Account][up-account]
-- [The Up CLI installed][up-cli]
-- [kubectl installed][kubectl-installed]
-- [Docker Desktop][docker-desktop] running
-- An AWS, GCP, or Azure Account
+- the [Upbound CLI](up) installed.
+- a Docker-compatible container runtime installed on your system and running.
 
-## Set up your environment 
+## Create a control plane project
 
-### Install the Upbound CLI
+Crossplane lets you define new resource types in Kubernetes that invoke function
+pipelines to template and generate other resources.
 
-```bash
-brew install upbound/tap/up
-```
+A _control plane project_ is a source-level representation of your control
+plane. When you build a control plane project, it's bundled as an OCI package
+and installed into a running instance of Upbound Crossplane.
 
-<!-- vale write-good.TooWordy = NO -->
-
-The minimum supported version is `v0.35.0`. To verify your CLI installation and
-version, use the `up version` command:
-
-<!-- vale write-good.TooWordy = YES -->
+Create a control plane project with the `up project init` command:
 
 ```shell
-up version
+up project init --scratch my-new-project && cd my-new-project
 ```
-You should see the installed version of the `up` CLI.
+This command scaffolds the basic structure with the necessary
+configuration files for your project.
 
-### Login to Upbound
+## Deploy your control plane
 
-Connect your CLI to your Upbound account. This opens a browser window for you to
-log into your Upbound account.
-
-<EditCode language="shell">
-{`
-up login --organization=$@YOUR_UPBOUND_ORG$@
-`}
-</EditCode>
-
-## Clone the demo project
-
-Upbound uses project directories containing configuration files to deploy
-infrastructure. 
-
-Clone the demo repository:
-
-
-<Tabs groupId="cloud-provider">
-<TabItem value="aws" label="AWS">
+In the root directory of your project, use `up project run` to run your project
+locally:
 
 ```shell
-git clone https://github.com/upbound/uppound-project-aws && cd uppound-project-aws
+up project run --local
 ```
 
-</TabItem>
-<TabItem value="azure" label="Azure">
+This launches an instance of Upbound Crossplane on your machine, wrapped and
+deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the
+following command to view the UI for your control plane, then open a browser at
+[https://localhost:8080](https://localhost:8080):
+
+This command deploys a container with an Upbound Crossplane instance on your
+machine. 
+
+
+Upbound Crossplane provides a built in Web UI for you to browse your control
+plane resources. Create a forwarding service from the instance to a port on your
+machine with `kubectl`:
 
 ```shell
-git clone https://github.com/upbound/uppound-project-azure && cd uppound-project-azure
-```
+kubectl port-forward -n crossplane-system svc/uxp-webui 8080:80
+``` 
 
-</TabItem>
-<TabItem value="gcp" label="GCP">
+Open your browser and go to [http://localhost:8080](http://localhost:8080).
+
 
 ```shell
-git clone https://github.com/upbound/uppound-project-gcp && cd uppound-project-gcp
+TODO: a picture of the web UI
++-----+
++-----+
 ```
 
-</TabItem>
-</Tabs>
+## Define your own resource type
 
-
-This project contains all the necessary configuration files to deploy your
-application. 
-
-
-Next, you need to update the project source to deploy to a control plane within
-your organization:
-
-<EditCode>
-{`
-up project move xpkg.upbound.io/$@yourUpboundOrg$@/up-pound-project
-`}
-</EditCode>
-
-### Build and run your project
-
-Now that you have a working project, you need to create your project control
-plane.
-
-Build and run your project:
+You can use the `up` CLI to define a custom resource type:
 
 ```shell
-up project build && up project run
+up example generate \
+  --type xr --api-group getting.started --api-version v1alpha1 --kind App --name example
 ```
-
-The `build` command packages your project in the hidden `_output` directory.
-The `run` command installs your project functions and dependencies to a
-**control plane**.
-
-Make sure you're in your control plane context. Use the `up ctx` command to
-set your kubecontext to your control plane project name:
-
-```shell
-up ctx
-```
-
-### Authenticate with your cloud provider
-
-Your project requires provider credentials to deploy your resources. In the root of
-your project, run the setup file for your cloud provider:
-
-
-<Tabs groupId="cloud-provider">
-<TabItem value="aws" label="AWS">
-
-```shell
-./setup-aws-credentials.sh
-```
-
-Enter your AWS Access Key ID, Secret Access Key, Account ID, and an AWS Session
-Token if your organization requires one.
-
-For more information on how to create these credentials, review the [AWS
-documentation][aws-documentation].
-
-
-</TabItem>
-<TabItem value="azure" label="Azure">
-
-```shell
-./setup-azure-credentials.sh
-```
-
-Enter your Azure Access Subscription ID.
-
-For more information on how to create these credentials, review the [Azure
-documentation][azure-documentation].
-
-
-</TabItem>
-<TabItem value="gcp" label="GCP">
-
-```shell
-./setup-gcp-credentials.sh
-```
-
-Enter your GCP project name.
-
-For more information on how to create these credentials, review the [GCP
-documentation][gcp-documentation].
-
-
-</TabItem>
-</Tabs>
-
-
-
-### Deploy your project resources
-
-With your control plane built and your authentication in place, you can now
-deploy your resources.
-
-Use the `kubectl apply` command in the root of your project:
-
-```shell
-kubectl apply --filename examples/xapp/example.yaml
-```
-
-This initiates the deployment process, letting the control plane create the
-resources you defined.
-
-You can monitor the status of your resources with `kubectl`:
-
-```shell
-kubectl get xapps.app.uppound.io example --watch
-```
-
-You can use the `up` CLI to return the control plane managed resources:
-
-```shell{copy-lines=1}
-up alpha get xapp
-
-
-NAME                                               SYNCED   READY   EXTERNAL-NAME           AGE
-internetgateway.ec2.aws.upbound.io/example-lc9fn   True     True    igw-095349da3d22cc7ec   43m
-
-NAME                                                         SYNCED   READY   EXTERNAL-NAME                AGE
-mainroutetableassociation.ec2.aws.upbound.io/example-fb2rd   True     True    rtbassoc-02e172be0225fff64   43m
-
-NAME                                     SYNCED   READY   EXTERNAL-NAME                       AGE
-route.ec2.aws.upbound.io/example-4n5ng   True     True    r-rtb-0af1bb018b7c1592e1080289494   43m
-#... output truncated ... #
-
-```
-
-While Upbound builds your resources, read the rest of this guide to learn how
-Upbound creates and manages your project.
-
-## Project structure and dependencies
-
-Your new project contains:
-
-* `upbound.yaml`: Project configuration file.
-* `apis/`: Directory for Crossplane composition definitions.
-* `examples/`: Directory for example claims.
-* `.github/`: Directory for CI/CD and local development.
-
-### Review your project dependencies
-
-<Tabs groupId="cloud-provider">
-<TabItem value="aws" label="AWS">
-
-Your project file requires these dependencies:
-
-* [an EKS cluster][an-eks-cluster]
-* [underlying networking][underlying-networking]
-* [Kubernetes object management][kubernetes-object-management]
-
-
-</TabItem>
-<TabItem value="azure" label="Azure">
-
-Your project file requires these dependencies:
-
-* [an AKS cluster][an-aks-cluster]
-* [underlying networking][underlying-networking-1]
-* [Kubernetes object management][kubernetes-object-management-1]
-
-
-</TabItem>
-<TabItem value="gcp" label="GCP">
-
-Your project file requires these dependencies:
-
-* [a GKE cluster][a-gke-cluster]
-* [underlying networking][underlying-networking-2]
-* [Kubernetes object management][kubernetes-object-management-2]
-
-</TabItem>
-</Tabs>
-
-
-
-This tutorial uses these prebuilt **configurations** that bundle the definitions
-and compositions necessary to deploy fully functioning components with minimal
-manual changes.
-
-Each of these are **dependencies** in your project, meaning your project
-requires them to function and deploy your desired end state.
-
-### Understand project components
-
-Upbound projects use three key file types:
-
-1. **Composite resource** (XR) files for setting user-customizable parameters
-2. **Definition** files for defining the schema and rules for your XRs
-3. **Composition** files to compose multiple resources into a single file and
-   determine how Upbound creates and manages your managed resources
-
-These files already exist in your example repository.
-
-### Determine your resource inputs
-
-Open the XR file to discover how to set resource inputs. The XR file should
-contain the parameters your users care about for the resources they want to
-create.
-
-* What parameters should your users have control over?
-    * The region to deploy these resources
-    * An identifying name
-    * Node instance size
-
-The example XR file contains several user-exposed parameters:
-
-<Tabs groupId="cloud-provider">
-<TabItem value="aws" label="AWS">
-
-```shell {copy-lines=1}
-cat examples/xapp/example.yaml
-apiVersion: app.uppound.io/v1alpha1
-kind: XApp
-metadata:
-  name: example
-spec:
-  compositionSelector:
-    matchLabels:
-      language: kcl
-  parameters:
-    id: uppound-aws
-    containers:
-      - name: frontend
-        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
-      - name: backend
-        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
-    region: us-west-2
-    version: "1.31"
-    nodes:
-      count: 3
-      instanceType: t3.small
-  writeConnectionSecretToRef:
-    name: uppound-aws-kubeconfig
-    namespace: default
-```
-
-
-
-</TabItem>
-<TabItem value="azure" label="Azure">
-
-```shell {copy-lines=1}
-cat examples/xapp/example.yaml
-apiVersion: app.uppound.io/v1alpha1
-kind: XApp
-metadata:
-  name: example
-spec:
-  compositionSelector:
-    matchLabels:
-      language: kcl
-  parameters:
-    id: uppound-az
-    containers:
-      - name: frontend
-        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
-      - name: backend
-        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
-    region: eastus
-    version: "1.30"
-    nodes:
-      count: 3
-      instanceType: Standard_D2s_v3
-  writeConnectionSecretToRef:
-    name: uppound-azure-kubeconfig
-    namespace: default
-```
-
-
-</TabItem>
-<TabItem value="gcp" label="GCP">
-
-```shell {copy-lines=1}
-cat examples/xapp/example.yaml
-apiVersion: app.uppound.io/v1alpha1
-kind: XApp
-metadata:
-  name: example
-spec:
-  compositionSelector:
-    matchLabels:
-      language: kcl
-  parameters:
-    id: uppound-gcp
-    containers:
-      - name: frontend
-        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
-      - name: backend
-        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
-    region: us-west1
-    version: "1.30"
-    nodes:
-      count: 3
-      instanceType: e2-standard-2
-  writeConnectionSecretToRef:
-    name: uppound-gcp-kubeconfig
-    namespace: default
-```
-
-</TabItem>
-</Tabs>
-
-
-
-
-
-This file contains user-customizable parameters that generate
-the required configuration for your project. When you apply this XR, parameters
-like the `region` pass to your composition function.
-
-## Embedded function
-
-**Embedded functions** allow you to build, package, and manage resources with
-common programming languages. This demo uses the KCL configuration language.
-
-Functions have three key parts:
-
-1. **Imports**: references to your resource models
-   ```yaml {copy-lines="none"}
-    # functions/uppound-function-kcl/main.k    
-    import models.com.uppound.app.v1alpha1 as appv1alpha1
-    import models.io.crossplane.kubernetes.v1alpha2 as k8sv1alpha2
-    ```
-2. **Inputs**: parameter definitions from your XR
-    ```yaml {copy-lines="none"}
-    # functions/uppound-function-kcl/main.k    
-    oxr = appv1alpha1.XApp {**option("params").oxr}
-    ```
-3. **Resource items**: the actual resources to create
-    ```yaml {copy-lines="none"}
-    # functions/uppound-function-kcl/main.k    
-    _items = [
-        # ... file truncated ...
-
-        # EKS
-        {
-            apiVersion: "aws.platform.upbound.io/v1alpha1"
-            kind: "XEKS"
-            metadata: _metadata("{}-xeks".format(oxr.metadata.name))
-            spec: {
-                parameters: {
-                    id: oxr.metadata.name
-                    region: oxr.spec.parameters.region
-                    version: oxr.spec.parameters.version
-                    nodes: {
-                        count: oxr.spec.parameters.nodes.count
-                        instanceType: oxr.spec.parameters.nodes.instanceType
-                    }
-                }
-            }
-        },
-        # ... file truncated ...   
-    ]
-
-    items = _items
-    ```
-
-Each resource follows a pattern and requires:
-
-1. An `apiVersion` field
-2. The resource `kind`, like `XSqlInstance` or `XEKS`
-3. Object `metadata` for names and labels
-4. The resource `spec` for resource specific configuration parameters
-
-The `oxr.spec.parameters.region` value pulls that value from your XR file. This
-function passes `oxr` defined values throughout the file and connects your XR parameters
-to actual infrastructure configuration.
-
-## Observe your resources
-<!-- vale Upbound.Spelling = NO -->
-Your function captures the endpoint you need to access the application you
-deployed. Use the `kubectl get` command to return the frontend IP
-address or hostname.
-
-
-```shell {copy-lines=1}
-kubectl get objects.kubernetes.crossplane.io example-frontend-service -o json | jq -r '.status.atProvider.manifest.status.loadBalancer.ingress'
-
-# AWS example output
-[
-  {
-    "hostname": "ac2f30680db7641ffadeae834bfabc3a-a3f76a299c888d6e.elb.us-west-2.amazonaws.com"
-  }
-]
-
-# Azure and GCP example output
-[
-  {
-    "ip": "135.237.114.170",
-    "ipMode": "VIP"
-  }
-]
-```
-
-Navigate to the IP or hostname in your browser.
-
-<!-- vale Upbound.Spelling = YES -->
-
-## Clean up
-
-Remember to destroy all your project resources:
+Customize your control plane by defining your own resource type. Start by
+creating an example instance of your custom resource type and define the
+properties you want to exist, then use the _up_ CLI to generate the definition
+files Crossplane requires. Scaffold a new resource type example with:
+
+This command generates the scaffolding for a custom resource type. You modify
+this file to define the properties you want to exist. 
+
+Open the new file and paste the following:
 
 ```yaml
-kubectl delete --filename examples/xapp/example.yaml
+apiVersion: example.crossplane.io/v1
+kind: App
+metadata:
+  namespace: default
+  name: my-app
+spec:
+  image: nginx
+status:
+  replicas: 2  # Copied from the Deployment's status
+  address: 10.0.0.1  # Copied from the Service's status
 ```
 
-Destroy your development control plane:
+Choose the language to write your custom resource function pipeline and generate
+the definition file your custom resource file needs:
+
+
+<Tabs>
+
+<TabItem value="gotempl" label="Templated YAML">
+```shell
+up xrd generate examples/app/example.yaml
+up composition generate apis/apps/definition.yaml
+up function generate --language=go-templating compose-resources apis/apps/composition.yaml
+```
+</TabItem>
+<TabItem value="Python" label="Python">
+```shell
+up xrd generate examples/app/example.yaml
+up composition generate apis/apps/definition.yaml
+up function generate --language=python compose-resources apis/apps/composition.yaml
+```
+</TabItem>
+<TabItem value="Go" label="Go">
+```shell
+up xrd generate examples/app/example.yaml
+up composition generate apis/apps/definition.yaml
+up function generate --language=go compose-resources apis/apps/composition.yaml
+```
+</TabItem>
+<TabItem value="KCL" label="KCL">
+```shell
+up xrd generate examples/app/example.yaml
+up composition generate apis/apps/definition.yaml
+up function generate --language=kcl compose-resources apis/apps/composition.yaml
+```
+</TabItem>
+</Tabs>
+
+These commands create several files based on the simple `App` example you
+created. 
+
+One of those is a _function_, that contains the logic that determines what
+should happen when your `App` resource is created.
+
+
+Open the `functions/apps/compose-resources/` directory. Find the file name of
+your function and paste the function below based on the language you chose in
+the previous step:
+
+<Tabs>
+
+<TabItem value="gotempl" label="Templated YAML">
+```yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    gotemplating.fn.crossplane.io/composition-resource-name: deployment
+    {{ if eq (.observed.resources.deployment | getResourceCondition "Available").Status "True" }}
+    gotemplating.fn.crossplane.io/ready: "True"
+    {{ end }}
+  labels:
+    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+  template:
+    metadata:
+      labels:
+        example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+    spec:
+      containers:
+      - name: app
+        image: {{ .observed.composite.resource.spec.image }}
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    gotemplating.fn.crossplane.io/composition-resource-name: service
+    {{ if (get (getComposedResource . "service").spec "clusterIP") }}
+    gotemplating.fn.crossplane.io/ready: "True"
+    {{ end }}
+  labels:
+    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+spec:
+  selector:
+    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+---
+apiVersion: example.crossplane.io/v1
+kind: App
+status:
+  replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
+  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}
+```
+</TabItem>
+<TabItem value="Python" label="Python">
+```python
+todo
+```
+</TabItem>
+<TabItem value="Go" label="Go">
+```shell
+todo
+```
+</TabItem>
+<TabItem value="KCL" label="KCL">
+```shell
+todo
+```
+</TabItem>
+
+</Tabs>
+
+Now, you're ready to deploy your custom resource function and other necessary
+files to a control plane:
 
 ```shell
-up ctp delete uppound-ctp
+up project run --local
 ```
 
-## Next steps
-<!-- vale Google.Exclamation = NO -->
-You just created an application and infrastructure deployment with Upbound! You
-built a control plane project and deployed a multi-resource application to your
-cloud provider's container service.
+## Use the custom resource
 
-<!-- vale Google.Exclamation = YES -->
+With your project running, the control plane in the project can understand your
+`App` custom resource type. 
 
-[up-account]: https://www.upbound.io/register/a
-[up-cli]: /operate/cli
-[kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
-[docker-desktop]: https://www.docker.com/products/docker-desktop/
+Use `kubectl apply` with your custom resource example to use the resource:
 
-[aws-documentation]: https://docs.aws.amazon.com/keyspaces/latest/devguide/create.keypair.html
-[azure-documentation]: https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli
-[gcp-documentation]: https://cloud.google.com/docs/authentication
-[an-eks-cluster]: https://marketplace.upbound.io/configurations/upbound/configuration-aws-eks/v0.16.0
-[underlying-networking]: https://marketplace.upbound.io/configurations/upbound/configuration-aws-network/v0.23.0
-[kubernetes-object-management]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.17.2
-[an-aks-cluster]: https://marketplace.upbound.io/configurations/upbound/configuration-azure-aks/v0.13.0
-[underlying-networking-1]: https://marketplace.upbound.io/configurations/upbound/configuration-azure-network/v0.16.0
-[kubernetes-object-management-1]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.17.2
-[a-gke-cluster]: https://marketplace.upbound.io/configurations/upbound/configuration-gcp-gke/v0.10.0
-[underlying-networking-2]: https://marketplace.upbound.io/configurations/upbound/configuration-gcp-network/v0.8.0
-[kubernetes-object-management-2]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.17.2
+```shell
+kubectl apply -f examples/app/example.yaml
+```
+
+
+Check that the _App_ is ready:
+
+```shell
+kubectl get -f examples/app/example.yaml
+NAME     SYNCED   READY   COMPOSITION   AGE
+my-app   True     True    app-yaml      56s
+```
+
+Observe how Crossplane created a _Deployment_ and _Service_ because the _App_
+got created:
+
+```shell
+kubectl get deploy,service -l example.crossplane.io/app=my-app
+NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/my-app-2r2rk   2/2     2            2           11m
+
+NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
+```
+
+## Next Steps
+
+In this guide, you created a local Upbound Crossplane instance, created a
+control plane project with a custom resource and function logic, and created
+Kubernetes app resources in the same local Upbound Crossplane cluster.
+
+Next, learn more about how Crossplane can deploy cloud resources and manage
+external services:
+
+* [Create a custom AWS resource type][aws]
+* [Create a custom Azure resource type][azure]
+* [Create a custom GCP resource type][gcp]
+* [Perform an operation on a resource][operations]
+* [Manage external resources with providers][providers]
+
+[up]: up
+[marketplace]: https://marketplace.upbound.io
+[functions]: /uxp/composition/composite-resource-definitions
+[aws]: /uxp/quickstart/aws-composition 
+[azure]: /uxp/quickstart/azure-composition 
+[gcp]:  /uxp/quickstart/gcp-composition
+[operations]:  /uxp/quickstart/operation
+[providers]:  /uxp/quickstart/external-resources
