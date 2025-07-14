@@ -1,20 +1,20 @@
 ---
-title: Controllers
+title: Add-Ons
 weight: 250
-description: A guide to how to wrap and deploy an Upbound controller into control planes on Upbound.
+description: A guide to how to wrap and deploy an Add-On into control planes on Upbound.
 ---
 
 :::important
 This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this feature, please [contact us][contact-us].
 :::
 
-Upbound's _Controllers_ feature lets you build and deploy control plane software from the Kubernetes ecosystem. With the _Controllers_ feature, you're not limited to just managing resource types defined by Crossplane. Now you can create resources from _CustomResourceDefinitions_ defined by other Kubernetes ecosystem tooling. 
+Upbound's _Add-Ons_ feature lets you build and deploy control plane software from the Kubernetes ecosystem. With the _Add-Ons_ feature, you're not limited to just managing resource types defined by Crossplane. Now you can create resources from _CustomResourceDefinitions_ defined by other Kubernetes ecosystem tooling. 
 
 This guide explains how to bundle and deploy control plane software from the Kubernetes ecosystem on a control plane in Upbound.
 
 ## Benefits
 
-The Controllers feature provides the following benefits:
+The Add-Ons feature provides the following benefits:
 
 * Deploy control plane software from the Kubernetes ecosystem.
 * Use your control plane's package manager to handle the lifecycle of the control plane software and define dependencies between package.
@@ -22,41 +22,41 @@ The Controllers feature provides the following benefits:
 
 ## How it works
 
-A _Controller_ is a package type that bundles control plane software from the Kubernetes ecosystem. Examples of such software includes:
+A _Add-On_ is a package type that bundles control plane software from the Kubernetes ecosystem. Examples of such software includes:
 
 - Kubernetes policy engines
 - CI/CD tooling
 - Your own private custom controllers defined by your organization
 
-You build a _Controller_ package by wrapping a helm chart along with its requisite _CustomResourceDefinitions_. Your _Controller_ package gets pushed to an OCI registry, and from there you can apply it to a control plane like you would any other Crossplane package. Your control plane's package manager is responsible for managing the lifecycle of the software once applied.
+You build a _Add-On_ package by wrapping a helm chart along with its requisite _CustomResourceDefinitions_. Your _Add-On_ package gets pushed to an OCI registry, and from there you can apply it to a control plane like you would any other Crossplane package. Your control plane's package manager is responsible for managing the lifecycle of the software once applied.
 
 ## Prerequisites
 
-Enable the Controllers feature in the Space you plan to run your control plane in:
+Enable the Add-Ons feature in the Space you plan to run your control plane in:
 
 - Cloud Spaces: Not available yet
 - Connected Spaces: Space administrator must enable this feature
 - Disconnected Spaces: Space administrator must enable this feature
 <!--- TODO(tr0njavolta): link --->
-Packaging a _Controller_ requires [up CLI][up-cli]  `v0.39.0` or later.
+Packaging an _Add-On_ requires [up CLI][up-cli]  `v0.39.0` or later.
 
 <!-- vale Google.Headings = NO --> 
 <!-- vale Microsoft.Headings = NO --> 
-## Build a _Controller_ package
+## Build an _Add-On_ package
 <!-- vale Google.Headings = YES --> 
 <!-- vale Microsoft.Headings = YES --> 
 
-_Controllers_ are a package type that get administered by your control plane's package manager.
+_Add-Ons_ are a package type that get administered by your control plane's package manager.
 
 ### Prepare the package
 
-To define a _Controller_, you need a Helm chart. This guide assumes the control plane software you want to build into a _Controller_ already has a Helm chart available.
+To define an _Add-On_, you need a Helm chart. This guide assumes the control plane software you want to build into an _Add-On_ already has a Helm chart available.
 
 Start by making a working directory to assemble the necessary parts:
 
 ```ini
-mkdir controller-package
-cd controller-package
+mkdir addon-package
+cd addon-package
 ```
 
 Inside the working directory, pull the Helm chart
@@ -92,23 +92,23 @@ helm template $RELEASE_NAME helm/chart.tgz -n $RELEASE_NAMESPACE --include-crds 
 The instructions above assume your CRDs get deployed as part of your Helm chart. If they're deployed another way, you need to manually copy your CRDs instead.
 :::
 
-Create a `crossplane.yaml` with your controller metadata:
+Create a `crossplane.yaml` with your Add-On metadata:
 
 ```yaml
 cat <<EOF > crossplane.yaml
 apiVersion: meta.pkg.upbound.io/v1alpha1
-kind: Controller
+kind: AddOn
 metadata:
   annotations:
-    friendly-name.meta.crossplane.io: Controller <your-controller>
+    friendly-name.meta.crossplane.io: AddOn <your-add-on>
     meta.crossplane.io/description: |
-      A brief description of what the controller does.
+      A brief description of what the Add-On does.
     meta.crossplane.io/license: Apache-2.0
     meta.crossplane.io/maintainer: <your-email>
     meta.crossplane.io/readme: |
-      An explanation of your controller.
-      meta.crossplane.io/source: <url-for-your-controller-source>
-  name: <controller-name>
+      An explanation of your Add-On.
+      meta.crossplane.io/source: <url-for-your-add-on-source>
+  name: <add-on-name>
 spec:
   packagingType: Helm
   helm:
@@ -120,7 +120,7 @@ spec:
 EOF
 ```
 
-Your controller's file structure should look like this:
+Your Add-On's file structure should look like this:
 
 ```ini
 .
@@ -133,50 +133,50 @@ Your controller's file structure should look like this:
     └── chart.tgz
 ```
 
-### Package and push the _Controller_
+### Package and push the _Add-On_
 
-At the root of your controller's working directory, build the contents into an xpkg:
+At the root of your Add-On's working directory, build the contents into an xpkg:
 
 ```ini
 up xpkg build
 ```
 
-This causes an xpkg to get saved to your current directory with a name like `controller-f7091386b4c0.xpkg`.
+This causes an xpkg to get saved to your current directory with a name like `addon-f7091386b4c0.xpkg`.
 
 Push the package to your desired OCI registry:
 
 ```ini
 export UPBOUND_ACCOUNT=<org-account-name>
-export CONTROLLER_NAME=<controller-name>
-export CONTROLLER_VERSION=<controller-version>
-export XPKG_FILENAME=<controller-f7091386b4c0.xpkg>
+export ADDON_NAME=<addon-name>
+export ADDON_VERSION=<addon-version>
+export XPKG_FILENAME=<addon-f7091386b4c0.xpkg>
 
-up xpkg push xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
+up xpkg push xpkg.upbound.io/$UPBOUND_ACCOUNT/$ADDON_NAME:$ADDON_VERSION -f $XPKG_FILENAME
 ```
 
 <!-- vale Google.Headings = NO --> 
 <!-- vale Microsoft.Headings = NO --> 
-## Deploy a _Controller_ package
+## Deploy a _Add-On_ package
 <!-- vale Google.Headings = YES --> 
 <!-- vale Microsoft.Headings = YES --> 
 
 :::important
-_Controllers_ are only installable on control planes running Crossplane `v1.19.0` or later.
+_Add-On_ are only installable on control planes running Crossplane `v1.19.0` or later.
 :::
 
-Set your kubecontext to the desired control plane in Upbound. Change the package path to the OCI registry you pushed it to. Then, deploy the _Controller_ directly:
+Set your kubecontext to the desired control plane in Upbound. Change the package path to the OCI registry you pushed it to. Then, deploy the _Add-On_ directly:
 
 ```ini
-export CONTROLLER_NAME=<controller-name>
-export CONTROLLER_VERSION=<controller-version>
+export ADDON_NAME=<addon-name>
+export ADDON_VERSION=<addon-version>
 
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.upbound.io/v1alpha1
-kind: Controller
+kind: AddOn
 metadata:
-  name: $CONTROLLER_NAME
+  name: $ADDON_NAME
 spec:
-  package: xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION
+  package: xpkg.upbound.io/$UPBOUND_ACCOUNT/$ADDON_NAME:$ADDON_VERSION
 EOF
 ```
 
@@ -222,17 +222,17 @@ helm template $RELEASE_NAME helm/chart.tgz -n $RELEASE_NAMESPACE --include-crds 
   yq -s '("crds/" + .metadata.name + ".yaml")' -
 ```
 
-Create a `crossplane.yaml` with the controller metadata:
+Create a `crossplane.yaml` with the Add-On metadata:
 
 ```yaml
 cat <<EOF > crossplane.yaml
 apiVersion: meta.pkg.upbound.io/v1alpha1
-kind: Controller
+kind: AddOn
 metadata:
   annotations:
-    friendly-name.meta.crossplane.io: Controller ArgoCD
+    friendly-name.meta.crossplane.io: Add-On ArgoCD
     meta.crossplane.io/description: |
-      The ArgoCD Controller enables continuous delivery and declarative configuration
+      The ArgoCD Add-On enables continuous delivery and declarative configuration
       management for Kubernetes applications using GitOps principles.
     meta.crossplane.io/license: Apache-2.0
     meta.crossplane.io/maintainer: Upbound Maintainers <info@upbound.io>
@@ -265,9 +265,9 @@ Your controller's file structure should look like this:
     └── chart.tgz
 ```
 
-### Package and push controller-argocd
+### Package and push addon-argocd
 
-At the root of your controller's working directory, build the contents into an xpkg:
+At the root of your Add-On's working directory, build the contents into an xpkg:
 
 ```ini
 up xpkg build
@@ -279,32 +279,32 @@ Push the package to your desired OCI registry:
 
 ```ini
 export UPBOUND_ACCOUNT=<org-account-name>
-export CONTROLLER_NAME=controller-argocd
-export CONTROLLER_VERSION=v7.8.8
-export XPKG_FILENAME=<controller-f7091386b4c0.xpkg>
+export ADDON_NAME=addon-argocd
+export ADDON_VERSION=v7.8.8
+export XPKG_FILENAME=<addon-f7091386b4c0.xpkg>
 
-up xpkg push --create xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
+up xpkg push --create xpkg.upbound.io/$UPBOUND_ACCOUNT/$ADDON_NAME:$ADDON_VERSION -f $XPKG_FILENAME
 ```
 
-### Deploy controller-argocd to a control plane
+### Deploy addon-argocd to a control plane
 
-Set your kubecontext to the desired control plane in Upbound. Change the package path to the OCI registry you pushed it to. Then, deploy the _Controller_ directly:
+Set your kubecontext to the desired control plane in Upbound. Change the package path to the OCI registry you pushed it to. Then, deploy the _Add-On_ directly:
 
 ```ini
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.upbound.io/v1alpha1
-kind: Controller
+kind: AddOn
 metadata:
-  name: controller-argocd
+  name: addon-argocd
 spec:
-  package: xpkg.upbound.io/$UPBOUND_ACCOUNT/controller-argocd:v7.8.8
+  package: xpkg.upbound.io/$UPBOUND_ACCOUNT/addon-argocd:v7.8.8
 EOF
 ```
 
 Wait for the package to become ready:
 
 ```ini
-watch kubectl get controllers.pkg
+watch kubectl get addons.pkg
 ```
 
 Check the pods in the `argo-system` namespace:
@@ -319,33 +319,33 @@ You can now use the _CustomResource_ types defined by Argo CD in your control pl
 
 ## Frequently asked questions
 <details>
-    <summary>Can I package any software or are there any prerequisites to be a Controller?</summary>
+    <summary>Can I package any software or are there any prerequisites to be an Add-On?</summary>
 
-    We define a _Controller_ as a software that has at least one Custom Resource Definition (CRD) and a Kubernetes controller for that CRD. This is the minimum requirement to be a _Controller_. We have some checks to enforce this at packaging time. 
-
-    </details>
-
-<details>
-
-<summary>How can I package my software as a Controller?</summary>
-
-Currently, we support Helm charts as the underlying package format for _Controllers_. As long as you have a Helm chart, you can package it as a _Controller_.
-
-If you don't have a Helm chart, you can't deploy the software. We only support Helm charts as the underlying package format for _Controllers_. We may extend this to support other packaging formats like Kustomize in the future.
+    We define an _Add-On_ as a software that has at least one Custom Resource Definition (CRD) and a Kubernetes controller for that CRD. This is the minimum requirement to be a  _Add-On_. We have some checks to enforce this at packaging time. 
 
 </details>
 
 <details>
 
-<summary>Can I package Crossplane XRDs/Compositions as a Helm chart to deploy as a Controller?</summary>
+<summary>How can I package my software as an Add-On?</summary>
 
-This is not recommended. For packaging Crossplane XRDs/ and Compositions, we recommend using the `Configuration` package format. A helm chart only with Crossplane XRDs/Compositions does not qualify as a _Controller_.
+Currently, we support Helm charts as the underlying package format for _Add-Ons_. As long as you have a Helm chart, you can package it as an _Add-On_.
+
+If you don't have a Helm chart, you can't deploy the software. We only support Helm charts as the underlying package format for _Add-Ons_. We may extend this to support other packaging formats like Kustomize in the future.
 
 </details>
 
 <details>
 
-<summary>How can I override the Helm values when deploying a Controller?</summary>
+<summary>Can I package Crossplane XRDs/Compositions as a Helm chart to deploy as an AddOn?</summary>
+
+This is not recommended. For packaging Crossplane XRDs/ and Compositions, we recommend using the `Configuration` package format. A helm chart only with Crossplane XRDs/Compositions does not qualify as an _Add-On_.
+
+</details>
+
+<details>
+
+<summary>How can I override the Helm values when deploying an Add-On?</summary>
 
 Overriding the Helm values is possible at two levels:
 
@@ -356,34 +356,34 @@ Overriding the Helm values is possible at two levels:
 
 <details>
 
-<summary>How can I configure the helm release name and namespace for the controller?</summary>
+<summary>How can I configure the helm release name and namespace for the Add-On?</summary>
 
-Right now, it is not possible to configure this at runtime. The package author configures release name and namespace during packaging, so it is hardcoded inside the package. Unlike a regular application that is deployed by a Helm chart, _Controllers_ can only be deployed once in a given control plane, so, we hope it should be ok to rely on predefined release names and namespaces. We may consider exposing these in `ControllerRuntimeConfig` later, but, we would like to keep it opinionated unless there are strong reasons to do so.
-
-</details>
-
-<details>
-
-<summary>Can I deploy more than one instance of a Controller package?</summary>
-
-No, this is not possible. Remember, a _Controller_ package introduces CRDs which are cluster-scoped objects. Just like one cannot deploy more than one instance of the same Crossplane Provider package today, it is not possible to deploy more than one instance of a _Controller_.
+Right now, it is not possible to configure this at runtime. The package author configures release name and namespace during packaging, so it is hardcoded inside the package. Unlike a regular application that is deployed by a Helm chart, _Add-Ons_ can only be deployed once in a given control plane, so, we hope it should be ok to rely on predefined release names and namespaces. We may consider exposing these in `ControllerRuntimeConfig` later, but, we would like to keep it opinionated unless there are strong reasons to do so.
 
 </details>
 
 <details>
 
-<summary>Do I need a specific Crossplane version to run Controllers?</summary>
+<summary>Can I deploy more than one instance of an Add-On package?</summary>
 
-Yes, you need to use Crossplane v1.19.0 or later to use _Controllers_. This is because of the changes in the Crossplane codebase to support third-party package formats in dependencies.
+No, this is not possible. Remember, an _Add-On_ package introduces CRDs which are cluster-scoped objects. Just like one cannot deploy more than one instance of the same Crossplane Provider package today, it is not possible to deploy more than one instance of a _Add-On_.
+
+</details>
+
+<details>
+
+<summary>Do I need a specific Crossplane version to run Add-Ons?</summary>
+
+Yes, you need to use Crossplane v1.19.0 or later to use _Add-Ons_. This is because of the changes in the Crossplane codebase to support third-party package formats in dependencies.
 
 Spaces `v1.12.0` supports Crossplane `v1.19` in the _Rapid_ release channel.
 </details>
 
 <details>
 
-<summary>Can I deploy Controllers outside of an Upbound control plane? With UXP?</summary>
+<summary>Can I deploy Add-Ons outside of an Upbound control plane? With UXP?</summary>
 
-No, _Controllers_ are a proprietary package format and are only available for control planes running in Spaces hosting environments in Upbound.
+No, _Add-Ons_ are a proprietary package format and are only available for control planes running in Spaces hosting environments in Upbound.
 
 </details>
 

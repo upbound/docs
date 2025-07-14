@@ -784,6 +784,11 @@
     "source": "/learn/my-first-project/",
     "destination": "/builders-workshop/project-foundations",
     "permanent": true
+  },
+  {
+    "source": "/build/controllers/",
+    "destination": "/build/addons/",
+    "permanent": true
   }
 
   
