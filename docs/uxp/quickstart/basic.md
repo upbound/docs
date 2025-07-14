@@ -7,7 +7,7 @@ Welcome to Upbound Crossplane, the AI-native distribution of Crossplane. Control
 
 :::tip
 
-This quickstart is suitable for users who want use Crossplane to build workflows for templating resources and exposing them as simplified resource abstractiosn. If you just want to use Crossplane to manage the lifecycle of any resource in an external system through Kubernetes, read [Manage external resources with providers][providers]
+This quickstart teaches how to use Crossplane to build workflows for templating resources and exposing them as simplified resource abstraction. If you just want to manage the lifecycle of resources in an external system through Crossplane and Kubernetes, read [Manage external resources with providers][providers]
 
 :::
 
@@ -18,7 +18,7 @@ This quickstart will take you approximately 10 minutes to complete. You should b
 
 Before beginning, make sure that:
 
-- you have installed the [Upbound CLI](up).
+- you have installed the [up](up) CLI.
 - you have a Docker-compatible container runtime installed on your system and running.
 
 ## Create a control plane project
@@ -41,11 +41,13 @@ In the root directory of your project, build and run your project by running the
 up project run --local
 ```
 
-This launches an instance of Upbound Crossplane on your machine, wrapped and deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the following command to view the UI for your control plane, then open a browser at [https://localhost:8080](https://localhost:8080):
+This launches an instance of Upbound Crossplane on your machine, wrapped and deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the following command to be able to access the UI for your control plane:
 
 ```shell
 kubectl port-forward -n crossplane-system svc/uxp-webui 8080:80
 ``` 
+
+Open a browser at [https://localhost:8080](https://localhost:8080).
 
 ```shell
 TODO: a picture of the web UI
@@ -111,7 +113,19 @@ up function generate --language=kcl compose-resources apis/apps/composition.yaml
 </TabItem>
 </Tabs>
 
-What you just did is created your own resource type called `App` and created a single function to contain the logic that defines what should happen when one of these _Apps_ get created. Open the function definition file at `my-new-project/functions/compose-resources/` and add some logic:
+What you just did is created your own resource type called `App` and created a single function to contain the logic that defines what should happen when one of these _Apps_ get created. 
+
+:::tip
+
+To define a new resource type with Crossplane, you need to:
+
+* create a [CompositeResourceDefinition (XRD)][xrd], which defines the API schema of your resource type
+* create a [Composition][composition], which defines the implementation of that API schema.
+* A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.   
+
+:::
+
+Open the function definition file at `my-new-project/functions/compose-resources/` and add some logic:
 
 <Tabs>
 
@@ -233,6 +247,8 @@ The example above creates Kubernetes app resources in the same cluster as where 
 
 [up]: up
 [marketplace]: https://marketplace.upbound.io
+[xrd]: /uxp/composition/composite-resource-definitions
+[composition]: /uxp/composition/overview
 [functions]: /uxp/composition/composite-resource-definitions
 [aws]: /uxp/quickstart/aws-composition 
 [azure]: /uxp/quickstart/azure-composition 
