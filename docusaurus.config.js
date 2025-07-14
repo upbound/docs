@@ -48,6 +48,7 @@ const config = {
         sidebarPath: require.resolve('./src/sidebars/main.js'),
       },
     ],
+        './scripts/tier-plugin.js',
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -62,22 +63,29 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            label: 'Fundamentals',
-            sidebarId: 'fundamentalsSidebar',
+            label: 'Learn',
+            sidebarId: 'learnSidebar',
             position: 'left',
           },
           {
             type: 'docSidebar',
-            label: 'Upbound Crossplane',
+            label: 'Build',
             position: 'left',
-            sidebarId: 'uxpSidebar',
+            sidebarId: 'buildSidebar',
           },
           {
             type: 'docSidebar',
-            label: 'Upbound Spaces',
+            label: 'Deploy',
             position: 'left',
-            sidebarId: 'upboundSidebar',
+            sidebarId: 'deploySidebar',
           },
+          // {
+          //   type: 'docSidebar',
+          //   label: 'Operate',
+          //   position: 'left',
+          //   sidebarId: 'operateSidebar',
+          // },
+
           {
             type: 'docSidebar',
             label: 'Reference',

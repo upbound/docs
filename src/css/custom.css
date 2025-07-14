@@ -995,3 +995,130 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
   .theme-doc-sidebar-container [class*="title"]:not(.menu__link) {
     display: none !important;
   }
+
+  /* Tier badge global styles */
+:root {
+  --tier-community-color: #10b981;
+  --tier-standard-color: #3b82f6;
+  --tier-enterprise-color: #8b5cf6;
+  --tier-business-color: #f59e0b;
+}
+
+/* Ensure tier badges work well with your existing design */
+.theme-doc-sidebar-item-link .menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Dark mode tier adjustments */
+[data-theme='dark'] {
+  --tier-community-color: #059669;
+  --tier-standard-color: #2563eb;
+  --tier-enterprise-color: #7c3aed;
+  --tier-business-color: #d97706;
+}
+
+/* Target the actual text content within sidebar links */
+.menu__link > span,
+.menu__link .sidebar-item-content,
+.menu__link .sidebar-item-label {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Target Docusaurus default sidebar item content */
+.theme-doc-sidebar-item-link-level-1 .menu__link,
+.theme-doc-sidebar-item-link-level-2 .menu__link,
+.theme-doc-sidebar-item-link-level-3 .menu__link {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  height: auto !important;
+  min-height: 32px !important;
+}
+
+/* Override any Docusaurus default truncation on the link text itself */
+.menu__link-text,
+.menu__link > .menu__link-text {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  display: block !important;
+}
+
+/* Ensure the link container itself doesn't truncate */
+.theme-doc-sidebar-item-link {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.theme-doc-sidebar-item-link .menu__link {
+  overflow: visible !important;
+  height: auto !important;
+  white-space: normal !important;
+  text-overflow: unset !important;
+}
+/* Fix sidebar text truncation - add to end of custom.css */
+.theme-doc-sidebar-item-link .menu__link {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  height: auto !important;
+  min-height: 36px !important;
+  display: block !important;
+}
+
+/* Target the text content inside the link */
+.theme-doc-sidebar-item-link .menu__link,
+.theme-doc-sidebar-item-link .menu__link *,
+.menu__link,
+.menu__link * {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Override any inline styles or CSS variables */
+.theme-doc-sidebar-item-link {
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.theme-doc-sidebar-item-link .menu__link {
+  line-height: 1.3 !important;
+  padding: 0.6rem 0.75rem !important;
+}
+
+/* Ensure nested menu items also wrap */
+.menu__list .menu__list .theme-doc-sidebar-item-link .menu__link {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Force all text elements in sidebar to wrap */
+.theme-doc-sidebar-menu .menu__link,
+.theme-doc-sidebar-menu .menu__link span,
+.theme-doc-sidebar-menu .menu__link div,
+.theme-doc-sidebar-menu .menu__link * {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: none !important;
+}
