@@ -1,73 +1,87 @@
 ---
-title: Deploy Upbound 
+Title: Deployment Modes
 sidebar_position: 1
-description: An introduction to Spaces hosting feature in Upbound
-aliases:
-    - /all-spaces/_index
-    - "/spaces"
-    - "/concepts/upbound-spaces"
-    - all-spaces/_index.md
-icon: balloon
-category: "guides"
+description: Learn about the deployment options for Upbound
 ---
-<!-- vale write-good.TooWordy = NO -->
-<!-- vale gitlab.SentenceLength = NO -->
 
-Upbound Spaces are hosting environments for Upbound's managed Crossplane control planes.
+# Overview
 
-<!-- vale write-good.Passive = NO -->
-Upbound offers a Global Console, with complementary API and CLI, that users use
-to manage operations for control planes. Control planes are deployed in hosting environments called Spaces.
-Upbound supports two types of Spaces: Cloud Spaces and Connected Spaces. Users
-have the freedom to choose whether to run control planes in Cloud Spaces, Connected
-Spaces, or both.
-<!-- vale write-good.Passive = YES -->
+Upbound offers several methods for deploying your control planes in production.
+Upbound Spaces are hosting environments for Upbound's managed Crossplane control
+planes. Upbound offers several deployment modes to help you meet your organizations
+operational requirements.
 
-<!-- vale Google.Headings = NO -->
-## Cloud Spaces
-<!-- vale Google.Headings = YES -->
+## Self-managed UXP (Community+)
 
-<!-- vale Google.We = NO -->
+## Cloud Spaces (Standard+)
 
 Cloud Spaces are multi-tenant deployments of Upbound, operated by Upbound inside
-our cloud environments. With Cloud Spaces, you get a fully managed SaaS
+our ready-made cloud environments. With Cloud Spaces, you get a fully managed SaaS
 experience, control planes, hosting infrastructure management, persistent storage
-management, and backup and restore management.
+management, and backup and restore management. Upbound hosts Cloud Spaces in multiple Cloud
+Service Providers and regions. 
 
-<!-- vale Google.We = YES -->
+## Single Tenant Spaces  (Business Critical)
 
-
-Choosing to run in Upbound's multi-tenant Cloud Spaces offers the most turnkey
-managed Crossplane experience. Upbound hosts Cloud Spaces in multiple Cloud
-Service Providers and regions. This gives you the flexibility to have a fully
-managed SaaS experience wherever you need to run Crossplane.
-
-<!-- vale Google.Headings = NO -->
-## Self-hosted Spaces
-<!-- vale Google.Headings = YES -->
-
-A self-hosted Space is a single-tenant deployment of Upbound within your
-infrastructure. Upbound offers self-hosted Spaces as a Disconnected Space or
-Connected Space.
-
-<!-- vale Google.Headings = NO -->
 ### Connected Spaces
-<!-- vale Google.Headings = YES -->
 
-Connected Spaces allows you to use Upbound's Console, CLI, and API to manage your control planes.
+Connected Spaces are single-tenant deployments in your infrastructure with
+Upbound's operational support. Upbound handles maintenance, upgrades, and
+monitoring. Organizations with data residency or compliance requirements can
+still take advantage of Upbound's operational management with Connected Spaces.
 
-<!-- vale Google.We = NO -->
-We've packaged the best parts of Upbound into a Helm chart and can deploy and
-operate them on your own infrastructure. You get the best of SaaS with the benefit of additional security guarantees and a deployment free of noisy
-neighbors.
-<!-- vale Google.We = YES -->
+### Dedicated Spaces
 
-With Connected Spaces, it's more than just an on-premises deployment of your control planes; the Crossplane experts at Upbound are operating your control planes alongside your team for a truly fully managed Crossplane solution. The Upbound team is on-call for your control planes.
+Dedicated Spaces are single-tenant deployments in your cloud account with
+infrastructure managed by Upbound. Upbound handles the operational tasks of your
+control plane in a cloud environment you control. Dedicated Spaces work well for
+organizations adhering to strict data residency requirements.
 
-<!-- vale Google.Headings = NO -->
-## Disconnected Spaces
-<!-- vale Google.Headings = YES -->
+### Disconnected Spaces
 
-Like a _Connected Space_, a Disconnected Space is a single-tenant deployment of Upbound within your infrastructure, such as your Amazon Web Services (AWS) cloud account or Microsoft Azure subscription. However, there's no connectivity to the rest of the Upbound product and you're limited to a command-line interface to interact within a single Space context.
-<!-- vale write-good.TooWordy = YES -->
-<!-- vale gitlab.SentenceLength = YES -->
+Disconnected Spaces are single-tenant deployments in your infrastructure where
+you control all operations and managment. Disconnected Spaces work well for
+organizations with strict data control or air-gapped environments.
+
+
+## Choosing your deployment mode
+
+| Requirement | Cloud | Connected | Dedicated | Disconnected |
+|--|--|--|--|--|
+| Zero operational overhead | Yes | Yes | Yes | No |
+| Data in your infrastructure | No | Yes | Yes | Yes |
+| Air-gapped environments | No | No | No | Yes |
+| Upbound operational support | Yes | Yes |Yes | No |
+| Single-tenant | No | Yes | Yes | Yes |
+
+## Self-hosted deployment requirements
+
+:::important
+All self-hosted deployment models require a **Business Critical** tier Upbound
+account.
+:::
+
+
+The minimum host Kubernetes cluster configuration Upbound recommends is a 2 worker node setup. By default, Upbound recommends one node for operating the Spaces management pods, leaving the remaining worker nodes to host your control planes.
+
+The minimum recommended node pool VM configuration for each cloud provider is:
+
+
+| Cloud Provider | VM configuration | Cores | Memory |
+| -------------- | ---------------- | ----- | ------ |
+| AWS            | m5.large         | 2     | 8      |
+| Azure          | Standard_D2_v3   | 2     | 8      |
+| GCP            | e2-standard-2    | 2     | 8      |
+
+For detailed sizing guidance, review the [self-hosted deployment planning
+guide][guide].
+
+
+[guide]: /upbound/guides/backup-and-restore
+<!--- TODO(tr0njavolta): links --->
+## Next Steps
+
+- For Cloud Spaces - free trial
+- For Dedicated Spaces - contact upbound
+- For Connected Spaces - self-hosted qs
+- For Disconnected Spaces - self-hosted qs

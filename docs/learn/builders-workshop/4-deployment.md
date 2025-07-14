@@ -1,6 +1,5 @@
 ---
 title: Deploy your resources to a control plane
-sidebar_position: 4
 description: Create a dev control plane and deploy to your cloud
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
@@ -27,51 +26,20 @@ Make sure you've completed the previous guide and have:
 If you missed any of the previous steps, go to the [project
 foundations][project-foundations] guide to get started.
 
-## Create your control plane
-
-You're ready to deploy your project to a control plane.
-Make sure you’re in your control plane context. 
-
-Use the `up ctx` command to set your `kubecontext` to the `default` group:
-
-<EditCode language="shell">
-{`
-up ctx YOUR_UPBOUND_ORG/YOUR_UPBOUND_SPACE_REGION/default
-`}
-</EditCode>
-
-
-Next, create your control plane:
-
-```shell
-up project run
-```
-
-Set your `kubecontext` to the new control plane `upbound-hello-world`:
-
-<EditCode language="shell">
-{`
-up ctx
-YOUR_UPBOUND_ORG/YOUR_UPBOUND_SPACE_REGION/default/upbound-hello-world
-`}
-</EditCode>
-
-The `run` command installs your project functions and dependencies to a control plane.
-
 ## Authenticate with your cloud provider
 
 Your project configuration requires an authentication method.
 
 A `ProviderConfig` is a custom resource that defines how your control plane
 authenticates and connects with cloud providers like AWS. It acts as a
-configuration bridge between your control plane's managed resources and the
+configuration bridge between your control plane’s managed resources and the
 cloud provider's API.
 
 ### Create a secret
 
 <CodeBlock cloud="aws">
 
-Create a secret with your AWS credentials. To create the secret download
+First, create a secret with your AWS credentials. To create the secret download
 your AWS access key ID and secret access key. 
 
 In the root of your project, create a new file called `aws-credentials.txt` and
@@ -80,8 +48,8 @@ paste your AWS access key ID and secret access key.
 <EditCode language="shell">
 {`
 [default]
-aws_access_key_id = YOUR_ACCESS_KEY_ID
-aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+aws_access_key_id = $@YOUR_ACCESS_KEY_ID$@
+aws_secret_access_key = $@YOUR_SECRET_ACCESS_KEY$@
 `}
 </EditCode>
 
@@ -117,7 +85,7 @@ In the root of your project, create a service principle `Owner` role. Update the
 
 <EditCode language="shell">
 {`
-az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<SUBSCRIPTION_ID> \ > azure.json
+az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/$@<SUBSCRIPTION_ID>$@ \ > azure.json
 `}
 </EditCode>
 
@@ -168,7 +136,7 @@ metadata:
     namespace: crossplane-system
     type: Opaque
 data:
-    my-gcp-secret: <YOUR_BASE_64_ENCODED_KEY>
+    my-gcp-secret: $@<YOUR_BASE_64_ENCODED_KEY>$@
 `}
 </EditCode>
 
@@ -179,7 +147,7 @@ data:
 
 <CodeBlock cloud="aws">
 
-Create a new file in your project root called `provider-config.yaml` and paste the
+Next, create a new file called `provider-config.yaml` and paste the
 configuration below:
 
 ```yaml title="upbound-hello-world/provider-config.yaml"
@@ -200,7 +168,7 @@ spec:
 
 <CodeBlock cloud="azure">
 
-Next, create a new file in your project root called `provider-config.yaml` and paste the
+Next, create a new file called `provider-config.yaml` and paste the
 configuration below:
 
 ```yaml title="upbound-hello-world/provider-config.yaml"
@@ -221,7 +189,7 @@ spec:
 
 <CodeBlock cloud="gcp">
 
-Next, create a new file in your project root called `provider-config.yaml` and paste the
+Next, create a new file called `provider-config.yaml` and paste the
 configuration below:
 
 <EditCode language="yaml">
@@ -231,7 +199,7 @@ kind: ProviderConfig
 metadata:
   name: default
 spec:
-  projectID: <YOUR_GCP_PROJECT_ID>
+  projectID: $@<YOUR_GCP_PROJECT_ID>$@
   credentials:
     source: Secret
     secretRef:
@@ -251,6 +219,23 @@ kubectl apply -f provider-config.yaml
 When you create a composition and deploy with the control plane, Upbound uses
 the `ProviderConfig` to locate and retrieve the credentials in the secret store.
 
+## Create your control plane
+
+Now that you have an authentication method, create your control plane:
+
+```shell
+up project run
+```
+
+The `run` command installs your project functions and dependencies to a control plane.
+
+Make sure you’re in your control plane context. 
+
+Use the `up ctx` command to set your `kubecontext` to your control plane project name:
+
+```shell
+up ctx
+```
 
 ## Deploy your resources to your control plane
 
@@ -283,19 +268,10 @@ Be sure to destroy your resources to avoid cloud costs:
 kubectl delete --filename examples/storagebucket/example.yaml
 ```
 
-
-Set your `kubecontext` to the group level before you destroy the control plane:
-
-<EditCode language="shell">
-{`
-up ctx
-YOUR_UPBOUND_ORG/YOUR_UPBOUND_SPACE_REGION/default
-`}
-</EditCode>
-
 Destroy your control plane:
+
 ```shell
-up ctp delete upbound-hello-world
+up ctp delete upbound-ctp
 ```
 
 [up-account]: https://www.upbound.io/register/a

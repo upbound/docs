@@ -1,6 +1,5 @@
 ---
-title: Test your composition 
-sidebar_position: 3
+title: Test your composition
 description: Create a composition function test
 ---
 

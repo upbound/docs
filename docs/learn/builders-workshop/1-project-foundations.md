@@ -1,37 +1,19 @@
 ---
-title: Project Foundations 
-sidebar_position: 2
+title: Project Foundations
 description: Create a new project from scratch
 ---
 
-In the previous guide, you cloned a pre-built project and explored the general
-structure of an Upbound project. This guide walks through how to create a brand
-new project and understand each component's purpose as you build your resources
-from scratch.
+In the previous guide, you created a custom resource with a control plane
+project. This guide walks through how to create a brand new project and
+understand each component's purpose as you build your resources from scratch.
 
 ## Prerequisites
 
 Make sure you have:
 
-* [An Upbound account][up-account]
 * [The Up CLI installed][up-cli]
 * [kubectl installed][kubectl-installed]
 * [Docker Desktop][docker-desktop] running
-
-## Authenticate with Upbound
-
-First, login to your Upbound organization:
-
-```bash
-up login
-```
-
-This command prompts you to authenticate through your browser or with an API
-token. This step:
-
-* Connects your local development environment to your Upbound account
-* Grants access to your organization's control planes and resources
-* Enables you to publish and deploy configurations
 
 ## Initialize a new project
 
@@ -46,9 +28,7 @@ up project init upbound-hello-world && cd upbound-hello-world
 This command:
 
 * Creates a new directory called `upbound-hello-world`
-* Initializes a `git` repository for version control
 * Sets up the basic project structure with necessary configuration files
-* Changes your working directory to the new project
 
 ### Review the project structure
 
@@ -58,7 +38,6 @@ This command:
 The `upbound.yaml` file is the main configuration that:
 
 * Defines project metadata (name, organization)
-* Specifies which control plane to use
 * Sets configuration parameters for builds and deployments
 
 This file is the project entry point and tells Upbound what this

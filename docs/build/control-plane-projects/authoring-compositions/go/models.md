@@ -41,7 +41,7 @@ tooling can't resolve it otherwise.
 
 Import models to your `fn.go` function file with the following syntax:
 
-```golang
+```go
 import "dev.upbound.io/models/io/upbound/aws/s3/v1alpha1"
 ```
 
@@ -60,7 +60,7 @@ the Crossplane SDK's types and model types is via JSON using a utility function
 like the following:
 <!-- vale Upbound.Spelling = YES -->
 
-```golang
+```go
 func convertViaJSON(to, from any) error {
 	bs, err := json.Marshal(from)
 	if err != nil {
@@ -74,7 +74,7 @@ Crossplane passes resources to your function as protocol buffer structs. Convert
 them to model types to take advantage of type checking, linting, and
 autocompletion:
 
-```golang
+```go
 package main
 
 import (
@@ -119,7 +119,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 Use `response.SetDesiredComposedResources` to add composed resources to the
 function's response:
 
-```golang
+```go
 package main
 
 import (
@@ -202,7 +202,7 @@ since there's no built-in way to construct a pointer to a constant value. The
 this purpose:
 <!-- vale write-good.Passive = YES -->
 
-```golang
+```go
 package main
 
 import (

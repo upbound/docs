@@ -1,6 +1,5 @@
 ---
 title: Build your composition logic
-sidebar_position: 2
 description: Create a composition function
 ---
 
