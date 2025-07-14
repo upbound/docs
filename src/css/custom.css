@@ -83,6 +83,10 @@
   --ifm-menu-color: var(--font-color-medium);
   --ifm-menu-color-active: var(--grape);
 }
+[data-theme='light'] img[src$='dark-mode-only'],
+[data-theme='dark'] img[src$='#light-mode-only'] {
+  display: none;
+}
 
 /* Dark mode colors */
 html[data-theme='dark'] {

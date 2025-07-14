@@ -1,9 +1,7 @@
 ---
-title: "Reference"
-weight: 1
-icon: "lightbulb"
-description: "Reference material for Upbound"
-category: "resources"
+title: Reference
+sidebar_position: 1
+description: Reference material for Upbound
 ---
 
 For more information on how Upbound builds on Crossplane, review the [learning overview][learning-overview].

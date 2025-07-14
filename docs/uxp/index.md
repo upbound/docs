@@ -1,47 +1,44 @@
 ---
-title: "UXP"
-weight: 300
-icon: "popsicle"
-description: "The Upbound official Crossplane distribution."
-hideFromHomepage: true
-category: "resources"
+title: Overview 
+sidebar_position: 1
+description: Learn what Upbound Crossplane is and how it works
 ---
 
-Upbound Universal Crossplane (`UXP`) is the Upbound commercially supported version of Crossplane. UXP consists of upstream Crossplane and Upbound-specific enhancements and patches.
+Upbound Crossplane is the AI-native distribution of Crossplane, a framework for managing the lifecycle of infrastructure and applications through a control plane. It lets you do three things:
 
-## About Universal Crossplane
-UXP is [open source][open-source] and [Crossplane conformant][crossplane-conformant].
+1. Manage the lifecycle of any resource in an external system through Kubernetes with Crossplane [Providers][providerQuickstart].
+2. Build workflows to template resources and expose them as a simplified resource abstraction with [Composition][compositionQuickstart].
+3. Build workflows to execute jobs on resources managed by the control plane with [Operations][operations].
 
-UXP installs into an existing Kubernetes cluster. UXP extends the Kubernetes API using [Custom Resource Definitions][custom-resource-definitions] to support Crossplane resource types.
+Workflows in Crossplane are expressed as function pipelines written in your preferred language. Use Upbound Crossplane as a control plane to boost productivity, drive security and compliance, and converge on a consistent technology stack built around Kubernetes. Control planes are the only way to build and support autonomous infrastructure platforms ready for the  age of autonomous systems, serving both humans and AI.
 
-## Universal Crossplane pods
-UXP installs two pods into the Kubernetes cluster, inside the `upbound-system` namespace, by default.
+Upbound Crossplane is delivered by the creators of Crossplane and compatible with the open source CNCF Crossplane community.
 
-<div id="uxp-pods">
-```shell
-kubectl get pods -n upbound-system
-NAME                                      READY   STATUS    RESTARTS      AGE
-crossplane-58b797d5c-fcsgc                1/1     Running   0             16h
-crossplane-rbac-manager-59f79b9cd-fh4qx   1/1     Running   0             16h
-```
-</div>
+## Get Started
 
-* <Hover label="uxp-pods" line="3">crossplane</Hover> - The <Hover label="uxp-pods" line="3">crossplane</Hover> pod is the core controller that extends Kubernetes and installs Crossplane extensions like `Providers`.
-* <Hover label="uxp-pods" line="4">crossplane-rbac-manager</Hover> - The <Hover label="uxp-pods" line="4">crossplane-rbac-manager</Hover> pod allows Crossplane to create and dynamically adjust [Kubernetes Role-based access control (RBAC)][kubernetes-role-based-access-control-rbac] for Crossplane resources in the Kubernetes cluster.
-* <Hover label="uxp-pods" line="5">upbound-bootstrapper</Hover> - Only deployed if explicitly enabled, adds the AWS Marketplace controller that registers this instance with AWS Marketplace.
+* [Quickstart][compositionQuickstart]  
+Learn fundamentals using Upbound Crossplane to manage your first resources with Crossplane in minutes.
+* [Core concepts][concepts]  
+Learn about Crossplane providers, creating resource abstractions with compositions, operations, and more.
+* [Installation][installation]  
+Install Upbound Crossplane and set up your development environment.
 
-<!-- vale Upbound.Spelling = NO -->
-<!-- allow "ref" in the link inside a shortcode -->
-:::hint
-The [Up command-line][up-command-line] installs Universal Crossplane using a Helm chart. Download the chart from [charts.upbound.io][charts-upbound-io] to see the full details of the Universal Crossplane install.
-:::
-<!-- vale Upbound.Spelling = YES -->
+## Common Use Cases
 
+* **Unified, programmable infrastructure interface** - Expose all infrastructure-—across clouds, vendors, and systems—-through a single programmable API surface that works for humans and intelligent agents alike.
+* **Centralized operations, governance, and controls** - Bring operational visibility, policy enforcement, and lifecycle control into one place-—independent of the underlying infrastructure systems.
+* **Deterministic and Intelligent Control** - Upbound control planes combine deterministic control (like reconciliation and policy) with intelligent control (driven by embedded AI agents).
 
-[up-command-line]: /operate/cli
+## Community and support
 
-[open-source]: https://github.com/upbound/universal-crossplane
-[crossplane-conformant]: https://github.com/cncf/crossplane-conformance
-[custom-resource-definitions]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
-[kubernetes-role-based-access-control-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
-[charts-upbound-io]: https://charts.upbound.io/main/
+* Join the [Upbound Crossplane][slack] community on slack to get help and share ideas
+* Visit the [Upbound Marketplace][marketplace] to find packages for your control planes, built by Upbound, software partners, and the community
+
+[providerQuickstart]: /uxp/quickstart/external-resources
+[composition]: /uxp/composition/overview
+[compositionQuickstart]: /uxp/quickstart/basic
+[operations]: /uxp/quickstart/operation
+[concepts]: /uxp/composition/overview
+[installation]: /uxp/overview
+[slack]: https://crossplane.slack.com
+[marketplace]: https://marketplace.upbound.io
