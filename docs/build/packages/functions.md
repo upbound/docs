@@ -1,0 +1,83 @@
+---
+title: Functions
+sidebar_position: 10
+description: Functions extend Crossplane with new ways to configure composition
+---
+
+Functions extend Crossplane with new ways to configure
+[composition](/crossplane/composition).
+
+You can use different _composition functions_ to configure what Crossplane does
+when someone creates or updates a
+[composite resource (XR)](/crossplane/composition/composite-resources).
+
+:::important
+This page is a work in progress.
+
+Functions are packages, like [Providers](/crossplane/providers) and
+[Configurations](/crossplane/configurations). Their APIs are similar. You
+install and configure them the same way as a provider.
+
+Read the [composition](/crossplane/composition/compositions) documentation to
+learn how to use functions in a composition.
+:::
+
+## Install a Function
+
+Install a Function with a Crossplane
+<Hover label="install" line="2">Function</Hover> object setting the
+<Hover label="install" line="6">spec.package</Hover> value to the
+location of the function package.
+
+:::important
+Beginning with Crossplane version 1.20.0 Crossplane uses the [crossplane-contrib](https://github.com/orgs/crossplane-contrib/packages) GitHub Container Registry at `xpkg.crossplane.io` by default for downloading and
+installing packages. 
+
+Specify the full domain name with the `package` or change the default Crossplane
+registry with the `--registry` flag on the [Crossplane pod](/crossplane/guides/pods)
+:::
+
+For example, to install the
+[patch and transform function](https://github.com/crossplane-contrib/function-patch-and-transform),
+
+<div id="install">
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Function
+metadata:
+  name: crossplane-contrib-function-patch-and-transform
+spec:
+  package: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform:v0.8.2
+```
+</div>
+
+By default, the Function pod installs in the same namespace as Crossplane
+(`crossplane-system`).
+
+:::note
+Functions are part of the 
+<Hover label="install" line="1">pkg.crossplane.io</Hover> group.  
+
+The <Hover label="meta-pkg" line="1">meta.pkg.crossplane.io</Hover>
+group is for creating Function packages. 
+
+Instructions on building Functions are outside of the scope of this
+document.  
+Read the Crossplane contributing 
+[Function Development Guide](https://github.com/crossplane/crossplane/blob/main/contributing/guide-provider-development.md)
+for more information.
+
+For information on the specification of Function packages read the 
+[Crossplane Function Package specification](https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md#provider-package-requirements).
+
+<div id="meta-pkg">
+```yaml
+apiVersion: meta.pkg.crossplane.io/v1
+kind: Function
+metadata:
+  name: provider-aws
+spec:
+# Removed for brevity
+```
+</div>
+:::
