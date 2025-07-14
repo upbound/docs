@@ -26,7 +26,7 @@ const TIER_CONFIG = {
     color: '#8b5cf6', // violet-500
   },
   business: {
-    label: 'Business Critical',
+    label: 'Business',
     className: 'tier-business',
     color: '#f59e0b', // amber-500
   }
