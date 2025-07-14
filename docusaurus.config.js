@@ -16,6 +16,10 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+    markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
       'classic',
@@ -39,120 +43,12 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'learn',
-        path: 'docs/learn',
-        routeBasePath: '/', 
-        sidebarPath: require.resolve('./src/sidebars/learn.js'),
+        path: 'docs', 
+        routeBasePath: '/',
+        sidebarPath: require.resolve('./src/sidebars/main.js'),
       },
     ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'build',
-        path: 'docs/build',
-        routeBasePath: 'build',
-        sidebarPath: require.resolve('./src/sidebars/build.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'deploy',
-        path: 'docs/deploy',
-        routeBasePath: 'deploy',
-        sidebarPath: require.resolve('./src/sidebars/deploy.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'operate',
-        path: 'docs/operate',
-        routeBasePath: 'operate',
-        sidebarPath: require.resolve('./src/sidebars/operate.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'connect',
-        path: 'docs/connect',
-        routeBasePath: 'connect',
-        sidebarPath: require.resolve('./src/sidebars/connect.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'providers',
-        path: 'docs/providers',
-        routeBasePath: 'providers',
-        sidebarPath: require.resolve('./src/sidebars/providers.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'apis-cli',
-        path: 'docs/apis-cli',
-        routeBasePath: 'apis-cli',
-        sidebarPath: require.resolve('./src/sidebars/apis-cli.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'release-notes',
-        path: 'docs/release-notes',
-        routeBasePath: 'release-notes',
-        sidebarPath: require.resolve('./src/sidebars/release-notes.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'marketplace',
-        path: 'docs/upbound-marketplace',
-        routeBasePath: 'upbound-marketplace',
-        sidebarPath: require.resolve('./src/sidebars/marketplace.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'usage',
-        path: 'docs/usage',
-        routeBasePath: 'usage',
-        sidebarPath: require.resolve('./src/sidebars/usage.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'crossplane-learn',
-        path: 'docs/crossplane/learn',
-        routeBasePath: 'crossplane/learn',
-        sidebarPath: require.resolve('./src/sidebars/crossplane-learn.js')
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'crossplane-api-ref',
-        path: 'docs/crossplane/api-ref',
-        routeBasePath: 'crossplane/api-ref',
-        sidebarPath: require.resolve('./src/sidebars/crossplane-api-ref.js')
-      },
-    ],
-    // [
-    //   '@docusaurus/plugin-content-docs',
-    //   {
-    //     id: 'solutions',
-    //     path: 'docs/solutions',
-    //     routeBasePath: 'solutions',
-    //     sidebarPath: require.resolve('./src/sidebars/solutions.js')
-    //   },
-    // ],
+        './scripts/tier-plugin.js',
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -167,83 +63,41 @@ const config = {
         items: [
           {
             type: 'docSidebar',
+            label: 'Learn',
             sidebarId: 'learnSidebar',
             position: 'left',
-            label: 'Learn',
-            docsPluginId: 'learn',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'buildSidebar',
-            position: 'left',
             label: 'Build',
-            docsPluginId: 'build',
+            position: 'left',
+            sidebarId: 'buildSidebar',
           },
           {
             type: 'docSidebar',
-            sidebarId: 'deploySidebar',
-            position: 'left',
             label: 'Deploy',
-            docsPluginId: 'deploy',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'operateSidebar',
             position: 'left',
-            label: 'Operate',
-            docsPluginId: 'operate',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'connectSidebar',
-            position: 'left',
-            label: 'Connect',
-            docsPluginId: 'connect',
-          },
-          {
-            type: 'dropdown',
-            label: 'Reference',
-            position: 'left',
-            items: [
-              {
-                type: 'docSidebar',
-                sidebarId: 'apisCliSidebar',
-                label: 'APIs & CLIs',
-                docsPluginId: 'apis-cli',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'marketplaceSidebar',
-                label: 'Upbound Marketplace',
-                docsPluginId: 'marketplace',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'releaseNotesSidebar',
-                label: 'Release Notes',
-                docsPluginId: 'release-notes',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'providersSidebar',
-                label: 'Providers',
-                docsPluginId: 'providers',
-              },
-              {
-                type: 'docSidebar',
-                sidebarId: 'usageSidebar',
-                label: 'Usage',
-                docsPluginId: 'usage',
-              },
-            ],
+            sidebarId: 'deploySidebar',
           },
           // {
           //   type: 'docSidebar',
-          //   sidebarId: 'solutionsSidebar',
+          //   label: 'Operate',
           //   position: 'left',
-          //   label: 'Solutions',
-          //   docsPluginId: 'solutions'
+          //   sidebarId: 'operateSidebar',
           // },
+
+          {
+            type: 'docSidebar',
+            label: 'Reference',
+            position: 'left',
+            sidebarId: 'referenceSidebar',
+          },
+          {
+            type: 'docSidebar',
+            label: 'Solutions',
+            position: 'left',
+            sidebarId: 'solutionsSidebar',
+          },
           {
             type: 'search',
             position: 'right',
@@ -266,7 +120,7 @@ const config = {
             items: [
               {
                 label: 'Get Started',
-                to: '/',
+                to: '/get-started',
               },
             ],
           },
@@ -275,7 +129,7 @@ const config = {
             items: [
               {
                 label: 'Control Planes',
-                to: '/build',
+                to: '/upbound',
               },
             ],
           },

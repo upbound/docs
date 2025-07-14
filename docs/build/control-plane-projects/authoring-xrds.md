@@ -1,9 +1,7 @@
 ---
-title: "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project"
-weight: 2
-description: "Define your first API in your control plane project"
-aliases:
-    - /core-concepts/authoring-xrds
+title: Authoring Composite Resource Definitions (XRDs) in your Control Plane Project
+sidebar_position: 4
+description: Define your first API in your control plane project
 ---
 
 Your control plane relies on an API to communicate with your external resources.
