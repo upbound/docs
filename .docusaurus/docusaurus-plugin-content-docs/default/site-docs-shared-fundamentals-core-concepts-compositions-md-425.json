@@ -1,0 +1,27 @@
+{
+  "id": "shared/fundamentals/core-concepts/compositions",
+  "title": "Compositions",
+  "description": "Compositions are declarative templates that enable the creation of multiple managed resources",
+  "source": "@site/docs/shared/fundamentals/core-concepts/compositions.md",
+  "sourceDirName": "shared/fundamentals/core-concepts",
+  "slug": "/shared/fundamentals/core-concepts/compositions",
+  "permalink": "/shared/fundamentals/core-concepts/compositions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Compositions",
+    "weight": 5,
+    "description": "Compositions are declarative templates that enable the creation of multiple managed resources"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Claims",
+    "permalink": "/shared/fundamentals/core-concepts/claims"
+  },
+  "next": {
+    "title": "Control Planes",
+    "permalink": "/shared/fundamentals/core-concepts/control-planes"
+  }
+}

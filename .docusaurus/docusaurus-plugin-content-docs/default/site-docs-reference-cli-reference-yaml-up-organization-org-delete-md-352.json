@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_organization_(org)_delete",
+  "title": "up_organization_(org)_delete",
+  "description": "Delete an organization.",
+  "source": "@site/docs/reference/cli-reference/yaml/up_organization_(org)_delete.md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_organization_(org)_delete",
+  "permalink": "/reference/cli-reference/yaml/up_organization_(org)_delete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_organization_(org)_create",
+    "permalink": "/reference/cli-reference/yaml/up_organization_(org)_create"
+  },
+  "next": {
+    "title": "up_organization_(org)_get",
+    "permalink": "/reference/cli-reference/yaml/up_organization_(org)_get"
+  }
+}

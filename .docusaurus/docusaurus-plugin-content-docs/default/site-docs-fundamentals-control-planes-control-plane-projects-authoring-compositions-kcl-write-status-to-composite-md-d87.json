@@ -1,0 +1,27 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+  "title": "Write status to a composite",
+  "description": "This guide describes how to write status information to the composite resource",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 8,
+  "frontMatter": {
+    "title": "Write status to a composite",
+    "sidebar_position": 8
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Resource data extraction",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
+  },
+  "next": {
+    "title": "Read function pipeline state",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
+  }
+}

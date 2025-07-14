@@ -1,0 +1,28 @@
+{
+  "id": "fundamentals/control-planes/migrating-to-mcps",
+  "title": "Migrating to Upbound control planes",
+  "description": "A guide to how to migrate to a control plane in Upbound",
+  "source": "@site/docs/fundamentals/control-planes/migrating-to-mcps.md",
+  "sourceDirName": "fundamentals/control-planes",
+  "slug": "/fundamentals/control-planes/migrating-to-mcps",
+  "permalink": "/fundamentals/control-planes/migrating-to-mcps",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "title": "Migrating to Upbound control planes",
+    "sidebar_position": 30,
+    "description": "A guide to how to migrate to a control plane in Upbound"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Controllers",
+    "permalink": "/fundamentals/control-planes/controllers"
+  },
+  "next": {
+    "title": "Claims",
+    "permalink": "/fundamentals/core-concepts/claims"
+  }
+}

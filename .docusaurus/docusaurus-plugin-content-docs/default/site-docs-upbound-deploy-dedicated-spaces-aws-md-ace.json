@@ -1,0 +1,28 @@
+{
+  "id": "upbound/deploy/dedicated-spaces/aws",
+  "title": "AWS Deployment Guide",
+  "description": "A guide to Upbound Dedicated Spaces on AWS",
+  "source": "@site/docs/upbound/deploy/dedicated-spaces/aws.md",
+  "sourceDirName": "upbound/deploy/dedicated-spaces",
+  "slug": "/upbound/deploy/dedicated-spaces/aws",
+  "permalink": "/upbound/deploy/dedicated-spaces/aws",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "AWS Deployment Guide",
+    "sidebar_position": 1,
+    "description": "A guide to Upbound Dedicated Spaces on AWS"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Dedicated Spaces",
+    "permalink": "/upbound/deploy/dedicated-spaces/"
+  },
+  "next": {
+    "title": "GCP Deployment Guide",
+    "permalink": "/upbound/deploy/dedicated-spaces/gcp"
+  }
+}

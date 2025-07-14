@@ -1,0 +1,33 @@
+{
+  "id": "git-integration",
+  "title": "Git integration",
+  "description": "A guide to how control planes in a space connect to git",
+  "source": "@site/docs/connect/git-integration.md",
+  "sourceDirName": ".",
+  "slug": "/git-integration",
+  "permalink": "/connect/git-integration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Git integration",
+    "weight": 90,
+    "description": "A guide to how control planes in a space connect to git",
+    "tocHidden": true,
+    "searchExclude": true,
+    "aliases": [
+      "/mcp/git-integration",
+      "mcp/git-integration"
+    ]
+  },
+  "sidebar": "connectSidebar",
+  "previous": {
+    "title": "Declaratively create control planes",
+    "permalink": "/connect/declarative-ctps"
+  },
+  "next": {
+    "title": "GitOps with control planes",
+    "permalink": "/connect/gitops"
+  }
+}

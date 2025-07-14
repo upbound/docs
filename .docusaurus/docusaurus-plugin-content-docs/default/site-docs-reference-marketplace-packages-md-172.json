@@ -1,0 +1,28 @@
+{
+  "id": "reference/marketplace/packages",
+  "title": "Creating and Pushing Packages",
+  "description": "How to create, configure and push packages to the Upbound Marketplace",
+  "source": "@site/docs/reference/marketplace/packages.md",
+  "sourceDirName": "reference/marketplace",
+  "slug": "/reference/marketplace/packages",
+  "permalink": "/reference/marketplace/packages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Creating and Pushing Packages",
+    "sidebar_position": 1,
+    "description": "How to create, configure and push packages to the Upbound Marketplace"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Authentication",
+    "permalink": "/reference/marketplace/authentication"
+  },
+  "next": {
+    "title": "DMCA Policy",
+    "permalink": "/reference/marketplace/dmca"
+  }
+}

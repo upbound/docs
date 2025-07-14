@@ -1,0 +1,30 @@
+{
+  "id": "faq",
+  "title": "FAQ",
+  "description": "Frequently asked questions related to Upbound Official providers",
+  "source": "@site/docs/providers/faq.md",
+  "sourceDirName": ".",
+  "slug": "/faq",
+  "permalink": "/providers/faq",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "FAQ",
+    "weight": 500,
+    "description": "Frequently asked questions related to Upbound Official providers",
+    "aliases": [
+      "/providers/faq"
+    ]
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Official Providers",
+    "permalink": "/providers/"
+  },
+  "next": {
+    "title": "Migrate to Official Providers",
+    "permalink": "/providers/migration"
+  }
+}

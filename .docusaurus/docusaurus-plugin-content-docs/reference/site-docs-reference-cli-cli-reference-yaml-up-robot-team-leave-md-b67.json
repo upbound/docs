@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_robot_team_leave",
+  "title": "up_robot_team_leave",
+  "description": "Remove the robot from a team.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_robot_team_leave.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_robot_team_leave",
+  "permalink": "/reference/cli/cli-reference/yaml/up_robot_team_leave",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

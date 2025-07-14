@@ -1,0 +1,26 @@
+{
+  "id": "upbound/operate/accounts/identity-management/users",
+  "title": "Users",
+  "description": "Creating and managing Upbound users",
+  "source": "@site/docs/upbound/operate/accounts/identity-management/users.md",
+  "sourceDirName": "upbound/operate/accounts/identity-management",
+  "slug": "/upbound/operate/accounts/identity-management/users",
+  "permalink": "/docs/upbound/operate/accounts/identity-management/users",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Users",
+    "weight": 4,
+    "description": "Creating and managing Upbound users",
+    "aliases": [
+      "/accounts/identity-management/users",
+      "/users",
+      "/users/register",
+      "/users/change",
+      "/concepts/accounts/users",
+      "accounts/identity-management/users"
+    ]
+  }
+}

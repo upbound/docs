@@ -1,0 +1,28 @@
+{
+  "id": "upbound/deploy/query-api",
+  "title": "Query API setup",
+  "description": "Query API setup for self-hosted Spaces",
+  "source": "@site/docs/upbound/deploy/query-api.md",
+  "sourceDirName": "upbound/deploy",
+  "slug": "/upbound/deploy/query-api",
+  "permalink": "/upbound/deploy/query-api",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "title": "Query API setup",
+    "sidebar_position": 13,
+    "description": "Query API setup for self-hosted Spaces"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Backup and restore",
+    "permalink": "/upbound/deploy/backup-and-restore"
+  },
+  "next": {
+    "title": "Control Plane Topologies",
+    "permalink": "/upbound/deploy/control-plane-topologies"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "core-concepts/functions",
+  "title": "Functions",
+  "description": "Custom programs that dynamically template resources.",
+  "source": "@site/docs/learn/core-concepts/functions.md",
+  "sourceDirName": "core-concepts",
+  "slug": "/core-concepts/functions",
+  "permalink": "/core-concepts/functions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Functions",
+    "weight": 6,
+    "description": "Custom programs that dynamically template resources."
+  },
+  "sidebar": "learnSidebar",
+  "previous": {
+    "title": "Control Planes",
+    "permalink": "/core-concepts/control-planes"
+  },
+  "next": {
+    "title": "Managed Control Planes",
+    "permalink": "/core-concepts/managed-control-planes"
+  }
+}

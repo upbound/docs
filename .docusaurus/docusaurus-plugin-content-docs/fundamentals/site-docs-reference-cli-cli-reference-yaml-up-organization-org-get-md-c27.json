@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_organization_(org)_get",
+  "title": "up_organization_(org)_get",
+  "description": "Get an organization.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_organization_(org)_get.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_organization_(org)_get",
+  "permalink": "/docs/reference/cli/cli-reference/yaml/up_organization_(org)_get",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

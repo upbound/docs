@@ -1,0 +1,27 @@
+{
+  "id": "shared/crossplane/guides/write-a-composition-function-in-go",
+  "title": "Write a Composition Function in Go",
+  "description": "Composition functions allow you to template resources using Go",
+  "source": "@site/docs/shared/crossplane/guides/write-a-composition-function-in-go.md",
+  "sourceDirName": "shared/crossplane/guides",
+  "slug": "/shared/crossplane/guides/write-a-composition-function-in-go",
+  "permalink": "/shared/crossplane/guides/write-a-composition-function-in-go",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Write a Composition Function in Go",
+    "weight": 80,
+    "description": "Composition functions allow you to template resources using Go"
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Upgrade Crossplane",
+    "permalink": "/shared/crossplane/guides/upgrade-crossplane"
+  },
+  "next": {
+    "title": "Write a Composition Function in Python",
+    "permalink": "/shared/crossplane/guides/write-a-composition-function-in-python"
+  }
+}

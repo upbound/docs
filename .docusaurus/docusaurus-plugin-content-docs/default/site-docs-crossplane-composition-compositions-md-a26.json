@@ -1,0 +1,32 @@
+{
+  "id": "crossplane/composition/compositions",
+  "title": "Compositions",
+  "description": "Compositions are a template for creating composite resources",
+  "source": "@site/docs/crossplane/composition/compositions.md",
+  "sourceDirName": "crossplane/composition",
+  "slug": "/crossplane/composition/compositions",
+  "permalink": "/crossplane/composition/compositions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Compositions",
+    "weight": 30,
+    "aliases": [
+      "composition",
+      "composition-functions",
+      "/knowledge-base/guides/composition-functions"
+    ],
+    "description": "Compositions are a template for creating composite resources"
+  },
+  "sidebar": "crossplaneSidebar",
+  "previous": {
+    "title": "Composition Revisions",
+    "permalink": "/crossplane/composition/composition-revisions"
+  },
+  "next": {
+    "title": "Environment Configs",
+    "permalink": "/crossplane/composition/environment-configs"
+  }
+}

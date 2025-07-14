@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_robot_list",
+  "title": "up_robot_list",
+  "description": "List robots for the account.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_robot_list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_robot_list",
+  "permalink": "/apis-cli/cli-reference/yaml/up_robot_list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

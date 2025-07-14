@@ -1,0 +1,28 @@
+{
+  "id": "upbound/operate/cli/contexts",
+  "title": "Contexts",
+  "description": "An introduction to the how contexts work in Upbound",
+  "source": "@site/docs/upbound/operate/cli/contexts.md",
+  "sourceDirName": "upbound/operate/cli",
+  "slug": "/upbound/operate/cli/contexts",
+  "permalink": "/upbound/operate/cli/contexts",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Contexts",
+    "sidebar_position": 1,
+    "description": "An introduction to the how contexts work in Upbound"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Up CLI",
+    "permalink": "/upbound/operate/cli/"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/upbound/operate/cli/configuration"
+  }
+}

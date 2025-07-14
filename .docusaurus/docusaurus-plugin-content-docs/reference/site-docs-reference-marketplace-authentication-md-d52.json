@@ -1,0 +1,18 @@
+{
+  "id": "marketplace/authentication",
+  "title": "Authentication",
+  "description": "How to authenticate to the Upbound Marketplace to access private packages.",
+  "source": "@site/docs/reference/marketplace/authentication.md",
+  "sourceDirName": "marketplace",
+  "slug": "/marketplace/authentication",
+  "permalink": "/reference/marketplace/authentication",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authentication",
+    "weight": 10,
+    "description": "How to authenticate to the Upbound Marketplace to access private packages."
+  }
+}

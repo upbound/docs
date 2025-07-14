@@ -1,0 +1,26 @@
+{
+  "id": "spaces-api/v1_12",
+  "title": "Spaces API Reference - v1.12",
+  "description": "Documentation for the Spaces API resources",
+  "source": "@site/docs/apis-cli/spaces-api/v1_12.md",
+  "sourceDirName": "spaces-api",
+  "slug": "/spaces-api/v1_12",
+  "permalink": "/apis-cli/spaces-api/v1_12",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Spaces API Reference - v1.12",
+    "description": "Documentation for the Spaces API resources"
+  },
+  "sidebar": "apisCliSidebar",
+  "previous": {
+    "title": "Spaces API Reference - v1.11",
+    "permalink": "/apis-cli/spaces-api/v1_11"
+  },
+  "next": {
+    "title": "Up CLI Reference",
+    "permalink": "/apis-cli/cli-reference/"
+  }
+}

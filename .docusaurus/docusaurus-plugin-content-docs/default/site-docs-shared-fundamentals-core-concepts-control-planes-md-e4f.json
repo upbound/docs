@@ -1,0 +1,27 @@
+{
+  "id": "shared/fundamentals/core-concepts/control-planes",
+  "title": "Control Planes",
+  "description": "A centralized management layer that enables the orchestration of cloud resources and services across multiple providers.",
+  "source": "@site/docs/shared/fundamentals/core-concepts/control-planes.md",
+  "sourceDirName": "shared/fundamentals/core-concepts",
+  "slug": "/shared/fundamentals/core-concepts/control-planes",
+  "permalink": "/shared/fundamentals/core-concepts/control-planes",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Control Planes",
+    "weight": 1,
+    "description": "A centralized management layer that enables the orchestration of cloud resources and services across multiple providers."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Compositions",
+    "permalink": "/shared/fundamentals/core-concepts/compositions"
+  },
+  "next": {
+    "title": "Functions",
+    "permalink": "/shared/fundamentals/core-concepts/functions"
+  }
+}

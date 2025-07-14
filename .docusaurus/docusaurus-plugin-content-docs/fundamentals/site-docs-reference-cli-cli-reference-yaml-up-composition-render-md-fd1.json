@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_composition_render",
+  "title": "up_composition_render",
+  "description": "Run a composition locally to render an XR into composed resources.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_composition_render.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_composition_render",
+  "permalink": "/docs/reference/cli/cli-reference/yaml/up_composition_render",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

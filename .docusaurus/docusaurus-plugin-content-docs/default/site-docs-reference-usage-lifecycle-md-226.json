@@ -1,0 +1,28 @@
+{
+  "id": "reference/usage/lifecycle",
+  "title": "Product Lifecycle",
+  "description": "Information on Upbound software versions, support windows, and release policies.",
+  "source": "@site/docs/reference/usage/lifecycle.md",
+  "sourceDirName": "reference/usage",
+  "slug": "/reference/usage/lifecycle",
+  "permalink": "/reference/usage/lifecycle",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Product Lifecycle",
+    "sidebar_position": 10,
+    "description": "Information on Upbound software versions, support windows, and release policies."
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Usage Reference",
+    "permalink": "/reference/usage/"
+  },
+  "next": {
+    "title": "IP Addresses",
+    "permalink": "/reference/usage/ipaddresses"
+  }
+}

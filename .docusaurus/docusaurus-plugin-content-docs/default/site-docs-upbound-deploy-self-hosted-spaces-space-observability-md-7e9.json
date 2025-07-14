@@ -1,0 +1,28 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/space-observability",
+  "title": "Space-level observability",
+  "description": "Configure Space-level observability",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/space-observability.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/space-observability",
+  "permalink": "/upbound/deploy/self-hosted-spaces/space-observability",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "title": "Space-level observability",
+    "sidebar_position": 30,
+    "description": "Configure Space-level observability"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Proxied configuration",
+    "permalink": "/upbound/deploy/self-hosted-spaces/proxies-config"
+  },
+  "next": {
+    "title": "Billing",
+    "permalink": "/upbound/deploy/self-hosted-spaces/billing"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "upbound/deploy/index",
+  "title": "Deploy Upbound",
+  "description": "An introduction to Spaces hosting feature in Upbound",
+  "source": "@site/docs/upbound/deploy/index.md",
+  "sourceDirName": "upbound/deploy",
+  "slug": "/upbound/deploy/",
+  "permalink": "/upbound/deploy/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Deploy Upbound",
+    "description": "An introduction to Spaces hosting feature in Upbound"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Control Plane Topologies",
+    "permalink": "/upbound/deploy/control-plane-topologies"
+  },
+  "next": {
+    "title": "Upbound IAM",
+    "permalink": "/upbound/operate/accounts/"
+  }
+}

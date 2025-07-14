@@ -1,0 +1,28 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/simulations",
+  "title": "Simulate changes to your Control Plane Projects",
+  "description": "Use the Up CLI to mock operations before deploying to your environments.",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/simulations.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects",
+  "slug": "/fundamentals/control-planes/control-plane-projects/simulations",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/simulations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Simulate changes to your Control Plane Projects",
+    "sidebar_position": 1,
+    "description": "Use the Up CLI to mock operations before deploying to your environments."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Building and pushing your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/building-pushing"
+  },
+  "next": {
+    "title": "Running and testing your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/testing"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)",
+  "title": "up_controlplane_(ctp)_simulation_(sim)",
+  "description": "Manage control plane simulations.",
+  "source": "@site/docs/reference/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim).md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)",
+  "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_controlplane_(ctp)_simulate",
+    "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulate"
+  },
+  "next": {
+    "title": "up_controlplane_(ctp)_simulation_(sim)_create",
+    "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_simulation_(sim)_create"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/helm-reference",
+  "title": "Space Helm Chart Reference",
+  "description": "Spaces Helm chart configuration values",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/helm-reference.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/helm-reference",
+  "permalink": "/docs/upbound/deploy/self-hosted-spaces/helm-reference",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Space Helm Chart Reference",
+    "weight": 200,
+    "description": "Spaces Helm chart configuration values",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/helm-reference",
+      "/spaces/helm-reference",
+      "/deploy/disconnected-spaces/helm-reference"
+    ]
+  }
+}

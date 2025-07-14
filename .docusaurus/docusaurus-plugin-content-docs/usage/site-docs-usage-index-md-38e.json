@@ -1,0 +1,21 @@
+{
+  "id": "index",
+  "title": "Usage Reference",
+  "description": "Information on Upbound's release policies and lifecycle.",
+  "source": "@site/docs/usage/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/usage/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Usage Reference"
+  },
+  "sidebar": "usageSidebar",
+  "next": {
+    "title": "License Usage",
+    "permalink": "/usage/licenses"
+  }
+}

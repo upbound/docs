@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_completion",
+  "title": "up_completion",
+  "description": "Generate shell autocompletions",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_completion.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_completion",
+  "permalink": "/reference/cli/cli-reference/yaml/up_completion",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_alpha_space_upgrade",
+    "permalink": "/reference/cli/cli-reference/yaml/up_alpha_space_upgrade"
+  },
+  "next": {
+    "title": "up_composition",
+    "permalink": "/reference/cli/cli-reference/yaml/up_composition"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/provider-gcp/index",
+  "title": "Provider GCP",
+  "description": "Release notes for the GCP official provider",
+  "source": "@site/docs/reference/providers/provider-gcp/index.md",
+  "sourceDirName": "reference/providers/provider-gcp",
+  "slug": "/reference/providers/provider-gcp/",
+  "permalink": "/docs/reference/providers/provider-gcp/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider GCP",
+    "weight": 1,
+    "description": "Release notes for the GCP official provider"
+  }
+}

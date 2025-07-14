@@ -1,0 +1,28 @@
+{
+  "id": "upbound/operate/cli/configuration",
+  "title": "Configuration",
+  "description": "Configuration for the Upbound CLI",
+  "source": "@site/docs/upbound/operate/cli/configuration.md",
+  "sourceDirName": "upbound/operate/cli",
+  "slug": "/upbound/operate/cli/configuration",
+  "permalink": "/upbound/operate/cli/configuration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Configuration",
+    "sidebar_position": 10,
+    "description": "Configuration for the Upbound CLI"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Contexts",
+    "permalink": "/upbound/operate/cli/contexts"
+  },
+  "next": {
+    "title": "Control Plane Connector",
+    "permalink": "/upbound/operate/ctp-connector"
+  }
+}

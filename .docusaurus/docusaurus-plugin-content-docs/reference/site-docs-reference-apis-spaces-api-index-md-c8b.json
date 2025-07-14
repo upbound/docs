@@ -1,0 +1,14 @@
+{
+  "id": "apis/spaces-api/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/reference/apis/spaces-api/index.md",
+  "sourceDirName": "apis/spaces-api",
+  "slug": "/apis/spaces-api/",
+  "permalink": "/reference/apis/spaces-api/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

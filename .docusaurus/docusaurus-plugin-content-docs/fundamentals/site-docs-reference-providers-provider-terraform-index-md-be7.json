@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/provider-terraform/index",
+  "title": "Provider Terraform",
+  "description": "Release notes for the Terraform official provider",
+  "source": "@site/docs/reference/providers/provider-terraform/index.md",
+  "sourceDirName": "reference/providers/provider-terraform",
+  "slug": "/reference/providers/provider-terraform/",
+  "permalink": "/docs/reference/providers/provider-terraform/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider Terraform",
+    "weight": 1,
+    "description": "Release notes for the Terraform official provider"
+  }
+}

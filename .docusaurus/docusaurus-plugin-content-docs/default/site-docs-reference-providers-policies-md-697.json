@@ -1,0 +1,28 @@
+{
+  "id": "reference/providers/policies",
+  "title": "Policies",
+  "description": "The Upbound Official provider policies.",
+  "source": "@site/docs/reference/providers/policies.md",
+  "sourceDirName": "reference/providers",
+  "slug": "/reference/providers/policies",
+  "permalink": "/reference/providers/policies",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Policies",
+    "sidebar_position": 1,
+    "description": "The Upbound Official provider policies."
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Official Providers",
+    "permalink": "/reference/providers/"
+  },
+  "next": {
+    "title": "Provider AWS",
+    "permalink": "/reference/providers/provider-aws/"
+  }
+}

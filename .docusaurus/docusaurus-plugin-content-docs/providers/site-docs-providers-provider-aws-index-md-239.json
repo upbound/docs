@@ -1,0 +1,27 @@
+{
+  "id": "provider-aws/index",
+  "title": "Provider AWS",
+  "description": "Release notes for the AWS official provider",
+  "source": "@site/docs/providers/provider-aws/index.md",
+  "sourceDirName": "provider-aws",
+  "slug": "/provider-aws/",
+  "permalink": "/providers/provider-aws/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider AWS",
+    "weight": 1,
+    "description": "Release notes for the AWS official provider"
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Policies",
+    "permalink": "/providers/policies"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/providers/provider-aws/authentication"
+  }
+}

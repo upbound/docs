@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_controlplane_(ctp)_delete",
+  "title": "up_controlplane_(ctp)_delete",
+  "description": "Delete a control plane.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_delete.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_controlplane_(ctp)_delete",
+  "permalink": "/apis-cli/cli-reference/yaml/up_controlplane_(ctp)_delete",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

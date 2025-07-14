@@ -1,0 +1,22 @@
+{
+  "id": "fundamentals/core-concepts/providers",
+  "title": "Providers",
+  "description": "Providers allow Upbound to provision infrastructure on an external service. They handle communication between the control plane and your external resources",
+  "source": "@site/docs/shared/fundamentals/core-concepts/providers.md",
+  "sourceDirName": "fundamentals/core-concepts",
+  "slug": "/fundamentals/core-concepts/providers",
+  "permalink": "/crossplane/fundamentals/core-concepts/providers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Providers",
+    "weight": 4,
+    "description": "Providers allow Upbound to provision infrastructure on an external service. They handle communication between the control plane and your external resources",
+    "searchExclude": true,
+    "aliases": [
+      "core-concepts/providers"
+    ]
+  }
+}

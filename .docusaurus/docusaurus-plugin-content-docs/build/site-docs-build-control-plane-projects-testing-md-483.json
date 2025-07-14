@@ -1,0 +1,34 @@
+{
+  "id": "control-plane-projects/testing",
+  "title": "Running and testing your Control Plane Projects",
+  "description": "How to run your control plane project on a development controlplane",
+  "source": "@site/docs/build/control-plane-projects/testing.md",
+  "sourceDirName": "control-plane-projects",
+  "slug": "/control-plane-projects/testing",
+  "permalink": "/build/control-plane-projects/testing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Running and testing your Control Plane Projects",
+    "weight": 5,
+    "description": "How to run your control plane project on a development controlplane",
+    "cascade": {
+      "product": "testing-api"
+    },
+    "aliases": [
+      "/core-concepts/testing",
+      "core-concepts/testing"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Simulate changes to your Control Plane Projects",
+    "permalink": "/build/control-plane-projects/simulations"
+  },
+  "next": {
+    "title": "Repositories",
+    "permalink": "/build/repositories/"
+  }
+}

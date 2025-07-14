@@ -1,0 +1,22 @@
+{
+  "id": "uxp/api/index",
+  "title": "Crossplane API Reference",
+  "description": "Documentation for the Query API resources",
+  "source": "@site/docs/uxp/api/index.md",
+  "sourceDirName": "uxp/api",
+  "slug": "/uxp/api/",
+  "permalink": "/uxp/api/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Crossplane API Reference",
+    "description": "Documentation for the Query API resources"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Self-Signed CA Certs",
+    "permalink": "/uxp/guides/self-signed-ca-certs"
+  }
+}

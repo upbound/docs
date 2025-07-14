@@ -1,0 +1,22 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/index",
+  "title": "Authoring Compositions",
+  "description": "Use various programming languages to create resources with your control plane.",
+  "source": "@site/docs/shared/fundamentals/control-planes/control-plane-projects/authoring-compositions/index.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/",
+  "permalink": "/crossplane/fundamentals/control-planes/control-plane-projects/authoring-compositions/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Authoring Compositions",
+    "sidebar_position": 1,
+    "description": "Use various programming languages to create resources with your control plane.",
+    "aliases": [
+      "/core-concepts/authoring-compositions"
+    ]
+  }
+}

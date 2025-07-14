@@ -1,0 +1,28 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/dr",
+  "title": "Disaster Recovery",
+  "description": "Configure Space-wide backups for disaster recovery.",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/dr.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/dr",
+  "permalink": "/upbound/deploy/self-hosted-spaces/dr",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 13,
+  "frontMatter": {
+    "title": "Disaster Recovery",
+    "sidebar_position": 13,
+    "description": "Configure Space-wide backups for disaster recovery."
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Connect or disconnect a Space",
+    "permalink": "/upbound/deploy/self-hosted-spaces/attach-detach"
+  },
+  "next": {
+    "title": "Use ArgoCD Plugin",
+    "permalink": "/upbound/deploy/self-hosted-spaces/use-argo"
+  }
+}

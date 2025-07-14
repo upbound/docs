@@ -1,0 +1,27 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python/index",
+  "title": "Build with Python",
+  "description": "Upbound supports defining your control plane APIs in the",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/index.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/python",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Build with Python",
+    "sidebar_position": 1
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Read function pipeline state",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/read-pipeline-state"
+  },
+  "next": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/python/inputs-outputs"
+  }
+}

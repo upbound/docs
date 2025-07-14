@@ -1,0 +1,18 @@
+{
+  "id": "deploy/dedicated-spaces/index",
+  "title": "Dedicated Spaces",
+  "description": "A guide to Upbound Dedicated Spaces",
+  "source": "@site/docs/upbound/deploy/dedicated-spaces/index.md",
+  "sourceDirName": "deploy/dedicated-spaces",
+  "slug": "/deploy/dedicated-spaces/",
+  "permalink": "/upbound/deploy/dedicated-spaces/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Dedicated Spaces",
+    "weight": 2,
+    "description": "A guide to Upbound Dedicated Spaces"
+  }
+}

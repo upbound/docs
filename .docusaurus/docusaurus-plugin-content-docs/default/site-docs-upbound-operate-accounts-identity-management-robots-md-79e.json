@@ -1,0 +1,28 @@
+{
+  "id": "upbound/operate/accounts/identity-management/robots",
+  "title": "Robots",
+  "description": "Creating and assigning Upbound robot tokens",
+  "source": "@site/docs/upbound/operate/accounts/identity-management/robots.md",
+  "sourceDirName": "upbound/operate/accounts/identity-management",
+  "slug": "/upbound/operate/accounts/identity-management/robots",
+  "permalink": "/upbound/operate/accounts/identity-management/robots",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Robots",
+    "sidebar_position": 1,
+    "description": "Creating and assigning Upbound robot tokens"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Organizations",
+    "permalink": "/upbound/operate/accounts/identity-management/organizations"
+  },
+  "next": {
+    "title": "Teams",
+    "permalink": "/upbound/operate/accounts/identity-management/teams"
+  }
+}

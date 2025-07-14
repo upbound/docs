@@ -1,0 +1,18 @@
+{
+  "id": "managed-resources/managed-resources",
+  "title": "Managed Resources",
+  "description": "Managed resources are the Crossplane representation of external provider resources",
+  "source": "@site/docs/crossplane/managed-resources/managed-resources.md",
+  "sourceDirName": "managed-resources",
+  "slug": "/managed-resources/",
+  "permalink": "/crossplane/managed-resources/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Managed Resources",
+    "weight": 10,
+    "description": "Managed resources are the Crossplane representation of external provider resources"
+  }
+}

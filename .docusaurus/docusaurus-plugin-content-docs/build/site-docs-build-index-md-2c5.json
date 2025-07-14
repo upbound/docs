@@ -1,0 +1,30 @@
+{
+  "id": "index",
+  "title": "Build",
+  "description": "Create your configurations and control planes with various programming languages",
+  "source": "@site/docs/build/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/build/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Build",
+    "sidebar_position": 1,
+    "description": "Create your configurations and control planes with various programming languages",
+    "aliases": [
+      "/spaces",
+      "/concepts/upbound-spaces"
+    ],
+    "icon": "terminal",
+    "category": "guides"
+  },
+  "sidebar": "buildSidebar",
+  "next": {
+    "title": "Control Plane Projects",
+    "permalink": "/build/control-plane-projects/"
+  }
+}

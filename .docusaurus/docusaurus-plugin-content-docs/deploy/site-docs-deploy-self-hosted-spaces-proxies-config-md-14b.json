@@ -1,0 +1,32 @@
+{
+  "id": "self-hosted-spaces/proxies-config",
+  "title": "Proxied configuration",
+  "description": "Configure Upbound within a proxied environment",
+  "source": "@site/docs/deploy/self-hosted-spaces/proxies-config.md",
+  "sourceDirName": "self-hosted-spaces",
+  "slug": "/self-hosted-spaces/proxies-config",
+  "permalink": "/deploy/self-hosted-spaces/proxies-config",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Proxied configuration",
+    "weight": 200,
+    "description": "Configure Upbound within a proxied environment",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/proxies-config",
+      "/deploy/disconnected-spaces/proxies-config",
+      "all-spaces/self-hosted-spaces/proxies-config"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Space Helm Chart Reference",
+    "permalink": "/deploy/self-hosted-spaces/helm-reference"
+  },
+  "next": {
+    "title": "Scaling vCluster and etcd Resources",
+    "permalink": "/deploy/self-hosted-spaces/scaling-resources"
+  }
+}

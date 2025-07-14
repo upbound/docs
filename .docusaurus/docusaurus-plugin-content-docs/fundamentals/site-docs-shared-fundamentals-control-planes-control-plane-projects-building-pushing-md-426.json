@@ -1,0 +1,21 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/building-pushing",
+  "title": "Building and pushing your Control Plane Projects",
+  "description": "How to build and push your control plane project to the Upbound Marketplace",
+  "source": "@site/docs/shared/fundamentals/control-planes/control-plane-projects/building-pushing.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects",
+  "slug": "/fundamentals/control-planes/control-plane-projects/building-pushing",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/building-pushing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Building and pushing your Control Plane Projects",
+    "weight": 6,
+    "description": "How to build and push your control plane project to the Upbound Marketplace",
+    "aliases": [
+      "/core-concepts/building-pushing"
+    ]
+  }
+}

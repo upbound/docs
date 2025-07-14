@@ -1,0 +1,28 @@
+{
+  "id": "reference/legacy/index",
+  "title": "Legacy Spaces",
+  "description": "A guide to Upbound Spaces",
+  "source": "@site/docs/reference/legacy/index.md",
+  "sourceDirName": "reference/legacy",
+  "slug": "/reference/legacy/",
+  "permalink": "/reference/legacy/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Legacy Spaces",
+    "sidebar_position": 1,
+    "description": "A guide to Upbound Spaces"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Visual Studio Code extensions",
+    "permalink": "/reference/usage/vscode-extensions"
+  },
+  "next": {
+    "title": "(deprecated) Connect Argo to Upbound",
+    "permalink": "/reference/legacy/connect-argo-to-upbound"
+  }
+}

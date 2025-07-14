@@ -1,0 +1,28 @@
+{
+  "id": "upbound/operate/accounts/authentication/oidc-configuration",
+  "title": "Configure OIDC",
+  "description": "Configure OIDC in your Space",
+  "source": "@site/docs/upbound/operate/accounts/authentication/oidc-configuration.md",
+  "sourceDirName": "upbound/operate/accounts/authentication",
+  "slug": "/upbound/operate/accounts/authentication/oidc-configuration",
+  "permalink": "/upbound/operate/accounts/authentication/oidc-configuration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 20,
+  "frontMatter": {
+    "title": "Configure OIDC",
+    "sidebar_position": 20,
+    "description": "Configure OIDC in your Space"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Single Sign On in Upbound",
+    "permalink": "/upbound/operate/accounts/authentication/enable-sso"
+  },
+  "next": {
+    "title": "Hub RBAC",
+    "permalink": "/upbound/operate/accounts/authorization/hub-rbac"
+  }
+}

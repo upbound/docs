@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-projects/authoring-xrds",
+  "title": "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project",
+  "description": "Define your first API in your control plane project",
+  "source": "@site/docs/build/control-plane-projects/authoring-xrds.md",
+  "sourceDirName": "control-plane-projects",
+  "slug": "/control-plane-projects/authoring-xrds",
+  "permalink": "/build/control-plane-projects/authoring-xrds",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Authoring Composite Resource Definitions (XRDs) in your Control Plane Project",
+    "weight": 2,
+    "description": "Define your first API in your control plane project",
+    "aliases": [
+      "/core-concepts/authoring-xrds"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Adding dependencies to your Control Plane Projects",
+    "permalink": "/build/control-plane-projects/adding-dependencies"
+  },
+  "next": {
+    "title": "Building and pushing your Control Plane Projects",
+    "permalink": "/build/control-plane-projects/building-pushing"
+  }
+}

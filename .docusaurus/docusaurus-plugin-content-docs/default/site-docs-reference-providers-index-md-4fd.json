@@ -1,0 +1,26 @@
+{
+  "id": "reference/providers/index",
+  "title": "Official Providers",
+  "description": "Upbound creates, maintains and supports a set of Crossplane providers called official providers.",
+  "source": "@site/docs/reference/providers/index.md",
+  "sourceDirName": "reference/providers",
+  "slug": "/reference/providers/",
+  "permalink": "/reference/providers/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Official Providers",
+    "description": "Upbound creates, maintains and supports a set of Crossplane providers called official providers."
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "(deprecated) Quickstart",
+    "permalink": "/reference/legacy/multicloud-deploy"
+  },
+  "next": {
+    "title": "Policies",
+    "permalink": "/reference/providers/policies"
+  }
+}

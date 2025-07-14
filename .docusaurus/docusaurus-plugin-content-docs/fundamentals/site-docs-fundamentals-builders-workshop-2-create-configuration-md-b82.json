@@ -1,0 +1,28 @@
+{
+  "id": "fundamentals/builders-workshop/create-configuration",
+  "title": "Build your composition logic",
+  "description": "Create a composition function",
+  "source": "@site/docs/fundamentals/builders-workshop/2-create-configuration.md",
+  "sourceDirName": "fundamentals/builders-workshop",
+  "slug": "/fundamentals/builders-workshop/create-configuration",
+  "permalink": "/docs/fundamentals/builders-workshop/create-configuration",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Build your composition logic",
+    "sidebar_position": 2,
+    "description": "Create a composition function"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Project Foundations",
+    "permalink": "/docs/fundamentals/builders-workshop/project-foundations"
+  },
+  "next": {
+    "title": "Test your composition",
+    "permalink": "/docs/fundamentals/builders-workshop/testing"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "reference/release-notes/rel-notes/mcp-connector",
+  "title": "MCP Connector Release Notes",
+  "description": "Release notes for the Mcp Connector",
+  "source": "@site/docs/reference/release-notes/rel-notes/mcp-connector.md",
+  "sourceDirName": "reference/release-notes/rel-notes",
+  "slug": "/reference/release-notes/rel-notes/mcp-connector",
+  "permalink": "/reference/release-notes/rel-notes/mcp-connector",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "MCP Connector Release Notes",
+    "description": "Release notes for the Mcp Connector"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Release Notes",
+    "permalink": "/reference/release-notes/"
+  },
+  "next": {
+    "title": "Spaces Release Notes",
+    "permalink": "/reference/release-notes/rel-notes/spaces"
+  }
+}

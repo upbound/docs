@@ -1,0 +1,23 @@
+{
+  "id": "connect/declarative-ctps",
+  "title": "Declaratively create control planes",
+  "description": "A tutorial to configure a Space with Argo to declaratively create and manage control planes",
+  "source": "@site/docs/upbound/connect/declarative-ctps.md",
+  "sourceDirName": "connect",
+  "slug": "/connect/declarative-ctps",
+  "permalink": "/upbound/connect/declarative-ctps",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Declaratively create control planes",
+    "weight": 999,
+    "description": "A tutorial to configure a Space with Argo to declaratively create and manage control planes",
+    "draft": true,
+    "aliases": [
+      "/deploy/spaces/guides/declarative-ctps",
+      "/all-spaces/declarative-ctps"
+    ]
+  }
+}

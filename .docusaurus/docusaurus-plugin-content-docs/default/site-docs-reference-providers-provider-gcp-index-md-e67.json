@@ -1,0 +1,28 @@
+{
+  "id": "reference/providers/provider-gcp/index",
+  "title": "Provider GCP",
+  "description": "Release notes for the GCP official provider",
+  "source": "@site/docs/reference/providers/provider-gcp/index.md",
+  "sourceDirName": "reference/providers/provider-gcp",
+  "slug": "/reference/providers/provider-gcp/",
+  "permalink": "/reference/providers/provider-gcp/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Provider GCP",
+    "sidebar_position": 1,
+    "description": "Release notes for the GCP official provider"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Provider families",
+    "permalink": "/reference/providers/provider-families"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/reference/providers/provider-gcp/authentication"
+  }
+}

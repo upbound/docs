@@ -1,0 +1,28 @@
+{
+  "id": "fundamentals/builders-workshop/project-foundations",
+  "title": "Project Foundations",
+  "description": "Create a new project from scratch",
+  "source": "@site/docs/fundamentals/builders-workshop/1-project-foundations.md",
+  "sourceDirName": "fundamentals/builders-workshop",
+  "slug": "/fundamentals/builders-workshop/project-foundations",
+  "permalink": "/docs/fundamentals/builders-workshop/project-foundations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Project Foundations",
+    "sidebar_position": 2,
+    "description": "Create a new project from scratch"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Get Started",
+    "permalink": "/docs/fundamentals/get-started"
+  },
+  "next": {
+    "title": "Build your composition logic",
+    "permalink": "/docs/fundamentals/builders-workshop/create-configuration"
+  }
+}

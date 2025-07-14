@@ -1,0 +1,21 @@
+{
+  "id": "marketplace/index",
+  "title": "Marketplace",
+  "description": "How to use the Upbound Marketplace to discover Crossplane providers and packages.",
+  "source": "@site/docs/reference/marketplace/index.md",
+  "sourceDirName": "marketplace",
+  "slug": "/marketplace/",
+  "permalink": "/reference/marketplace/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Marketplace",
+    "icon": "marketplace",
+    "sidebar_position": 1,
+    "description": "How to use the Upbound Marketplace to discover Crossplane providers and packages.",
+    "category": "resources"
+  }
+}

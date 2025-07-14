@@ -1,0 +1,26 @@
+{
+  "id": "uxp/managed-resources/index",
+  "title": "Managed Resources",
+  "description": "Understand Crossplane's core components",
+  "source": "@site/docs/uxp/managed-resources/index.md",
+  "sourceDirName": "uxp/managed-resources",
+  "slug": "/uxp/managed-resources/",
+  "permalink": "/uxp/managed-resources/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Managed Resources",
+    "description": "Understand Crossplane's core components"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Environment Configs",
+    "permalink": "/uxp/composition/environment-configs"
+  },
+  "next": {
+    "title": "Managed Resources",
+    "permalink": "/uxp/managed-resources/"
+  }
+}

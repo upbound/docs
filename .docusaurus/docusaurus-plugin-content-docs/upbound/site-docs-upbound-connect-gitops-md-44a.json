@@ -1,0 +1,23 @@
+{
+  "id": "connect/gitops",
+  "title": "GitOps with control planes",
+  "description": "An introduction to doing GitOps with control planes on Upbound",
+  "source": "@site/docs/upbound/connect/gitops.md",
+  "sourceDirName": "connect",
+  "slug": "/connect/gitops",
+  "permalink": "/upbound/connect/gitops",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "GitOps with control planes",
+    "weight": 90,
+    "description": "An introduction to doing GitOps with control planes on Upbound",
+    "aliases": [
+      "/mcp/gitops",
+      "/spaces/control-plane-connector",
+      "mcp/gitops"
+    ]
+  }
+}

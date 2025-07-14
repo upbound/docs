@@ -1,0 +1,18 @@
+{
+  "id": "reference/providers/provider-azure/index",
+  "title": "Provider Azure",
+  "description": "Release notes for the Azure official provider",
+  "source": "@site/docs/reference/providers/provider-azure/index.md",
+  "sourceDirName": "reference/providers/provider-azure",
+  "slug": "/reference/providers/provider-azure/",
+  "permalink": "/docs/reference/providers/provider-azure/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Provider Azure",
+    "weight": 1,
+    "description": "Release notes for the Azure official provider"
+  }
+}

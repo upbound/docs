@@ -1,0 +1,24 @@
+{
+  "id": "rel-notes/spaces",
+  "title": "Spaces Release Notes",
+  "description": "Release notes for the Spaces",
+  "source": "@site/docs/release-notes/rel-notes/spaces.md",
+  "sourceDirName": "rel-notes",
+  "slug": "/rel-notes/spaces",
+  "permalink": "/release-notes/rel-notes/spaces",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Spaces Release Notes",
+    "description": "Release notes for the Spaces",
+    "toc_min_heading_level": 2,
+    "toc_max_heading_level": 2
+  },
+  "sidebar": "releaseNotesSidebar",
+  "previous": {
+    "title": "MCP Connector Release Notes",
+    "permalink": "/release-notes/rel-notes/mcp-connector"
+  }
+}

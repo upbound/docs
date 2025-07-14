@@ -1,0 +1,22 @@
+{
+  "id": "upbound/operate/accounts/identity-management/organizations",
+  "title": "Organizations",
+  "description": "Configuring Organizations for Upbound",
+  "source": "@site/docs/upbound/operate/accounts/identity-management/organizations.md",
+  "sourceDirName": "upbound/operate/accounts/identity-management",
+  "slug": "/upbound/operate/accounts/identity-management/organizations",
+  "permalink": "/docs/upbound/operate/accounts/identity-management/organizations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Organizations",
+    "weight": 2,
+    "description": "Configuring Organizations for Upbound",
+    "aliases": [
+      "/accounts/identity-management/organizations",
+      "accounts/identity-management/organizations"
+    ]
+  }
+}

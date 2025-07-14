@@ -1,0 +1,22 @@
+{
+  "id": "uxp/reference/index",
+  "title": "Crossplane API Reference",
+  "description": "Documentation for the Query API resources",
+  "source": "@site/docs/uxp/reference/index.md",
+  "sourceDirName": "uxp/reference",
+  "slug": "/uxp/reference/",
+  "permalink": "/uxp/reference/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Crossplane API Reference",
+    "description": "Documentation for the Query API resources"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "package-manager",
+    "permalink": "/uxp/enhancements/package-manager"
+  }
+}

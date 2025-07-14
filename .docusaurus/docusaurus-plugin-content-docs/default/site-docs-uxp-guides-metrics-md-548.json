@@ -1,0 +1,28 @@
+{
+  "id": "uxp/guides/metrics",
+  "title": "Metrics",
+  "description": "Metrics are essential for monitoring Crossplane's operations, helping to quickly identify and resolve potential issues.",
+  "source": "@site/docs/uxp/guides/metrics.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/metrics",
+  "permalink": "/uxp/guides/metrics",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "title": "Metrics",
+    "sidebar_position": 6,
+    "description": "Metrics are essential for monitoring Crossplane's operations, helping to quickly identify and resolve potential issues."
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Crossplane Pods",
+    "permalink": "/uxp/guides/pods"
+  },
+  "next": {
+    "title": "Function Patch and Transform",
+    "permalink": "/uxp/guides/function-patch-and-transform"
+  }
+}

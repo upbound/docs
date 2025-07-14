@@ -1,0 +1,18 @@
+{
+  "id": "managed-resources/index",
+  "title": "Managed Resources",
+  "description": "Understand Crossplane's core components",
+  "source": "@site/docs/crossplane/managed-resources/index.md",
+  "sourceDirName": "managed-resources",
+  "slug": "/managed-resources/",
+  "permalink": "/crossplane/managed-resources/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Managed Resources",
+    "weight": 52,
+    "description": "Understand Crossplane's core components"
+  }
+}

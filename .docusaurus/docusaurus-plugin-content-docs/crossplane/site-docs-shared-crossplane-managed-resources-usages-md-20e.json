@@ -1,0 +1,21 @@
+{
+  "id": "crossplane/managed-resources/usages",
+  "title": "Usages",
+  "description": "Usage indicates a resource is in use",
+  "source": "@site/docs/shared/crossplane/managed-resources/usages.md",
+  "sourceDirName": "crossplane/managed-resources",
+  "slug": "/crossplane/managed-resources/usages",
+  "permalink": "/crossplane/crossplane/managed-resources/usages",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Usages",
+    "weight": 30,
+    "state": "beta",
+    "alphaVersion": "1.14",
+    "betaVersion": "1.19",
+    "description": "Usage indicates a resource is in use"
+  }
+}

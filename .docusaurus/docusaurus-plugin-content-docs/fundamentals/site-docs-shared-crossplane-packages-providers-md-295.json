@@ -1,0 +1,18 @@
+{
+  "id": "crossplane/packages/providers",
+  "title": "Providers",
+  "description": "Providers connect Crossplane to external APIs",
+  "source": "@site/docs/shared/crossplane/packages/providers.md",
+  "sourceDirName": "crossplane/packages",
+  "slug": "/crossplane/packages/providers",
+  "permalink": "/crossplane/packages/providers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Providers",
+    "weight": 5,
+    "description": "Providers connect Crossplane to external APIs"
+  }
+}

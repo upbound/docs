@@ -1,0 +1,32 @@
+{
+  "id": "self-hosted-spaces/helm-reference",
+  "title": "Space Helm Chart Reference",
+  "description": "Spaces Helm chart configuration values",
+  "source": "@site/docs/deploy/self-hosted-spaces/helm-reference.md",
+  "sourceDirName": "self-hosted-spaces",
+  "slug": "/self-hosted-spaces/helm-reference",
+  "permalink": "/deploy/self-hosted-spaces/helm-reference",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Space Helm Chart Reference",
+    "weight": 200,
+    "description": "Spaces Helm chart configuration values",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/helm-reference",
+      "/spaces/helm-reference",
+      "/deploy/disconnected-spaces/helm-reference"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "GCP",
+    "permalink": "/deploy/self-hosted-spaces/gcp/"
+  },
+  "next": {
+    "title": "Proxied configuration",
+    "permalink": "/deploy/self-hosted-spaces/proxies-config"
+  }
+}

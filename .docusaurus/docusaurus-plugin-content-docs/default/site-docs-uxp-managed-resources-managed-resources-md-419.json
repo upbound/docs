@@ -1,0 +1,28 @@
+{
+  "id": "uxp/managed-resources/managed-resources",
+  "title": "Managed Resources",
+  "description": "Managed resources are the Crossplane representation of external provider resources",
+  "source": "@site/docs/uxp/managed-resources/managed-resources.md",
+  "sourceDirName": "uxp/managed-resources",
+  "slug": "/uxp/managed-resources/",
+  "permalink": "/uxp/managed-resources/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Managed Resources",
+    "sidebar_position": 1,
+    "description": "Managed resources are the Crossplane representation of external provider resources"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Managed Resources",
+    "permalink": "/uxp/managed-resources/"
+  },
+  "next": {
+    "title": "Usages",
+    "permalink": "/uxp/managed-resources/usages"
+  }
+}

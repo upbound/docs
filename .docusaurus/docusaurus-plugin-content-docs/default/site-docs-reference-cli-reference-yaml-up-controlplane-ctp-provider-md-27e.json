@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_controlplane_(ctp)_provider",
+  "title": "up_controlplane_(ctp)_provider",
+  "description": "Manage Providers.",
+  "source": "@site/docs/reference/cli-reference/yaml/up_controlplane_(ctp)_provider.md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_controlplane_(ctp)_provider",
+  "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_provider",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_controlplane_(ctp)_list",
+    "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_list"
+  },
+  "next": {
+    "title": "up_controlplane_(ctp)_provider_install",
+    "permalink": "/reference/cli-reference/yaml/up_controlplane_(ctp)_provider_install"
+  }
+}

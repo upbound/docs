@@ -1,0 +1,27 @@
+{
+  "id": "uxp/guides/troubleshoot-crossplane",
+  "title": "Troubleshoot Crossplane",
+  "description": "Requested Resource Not Found",
+  "source": "@site/docs/uxp/guides/troubleshoot-crossplane.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/troubleshoot-crossplane",
+  "permalink": "/uxp/guides/troubleshoot-crossplane",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 30,
+  "frontMatter": {
+    "title": "Troubleshoot Crossplane",
+    "sidebar_position": 30
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Write a Composition Function in Python",
+    "permalink": "/uxp/guides/write-a-composition-function-in-python"
+  },
+  "next": {
+    "title": "Upgrade Crossplane",
+    "permalink": "/uxp/guides/upgrade-crossplane"
+  }
+}

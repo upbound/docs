@@ -1,0 +1,28 @@
+{
+  "id": "uxp/composition/composite-resource-definitions",
+  "title": "Composite Resource Definitions",
+  "description": "Composite Resource Definitions or XRDs define custom API schemas",
+  "source": "@site/docs/uxp/composition/composite-resource-definitions.md",
+  "sourceDirName": "uxp/composition",
+  "slug": "/uxp/composition/composite-resource-definitions",
+  "permalink": "/uxp/composition/composite-resource-definitions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Composite Resource Definitions",
+    "sidebar_position": 2,
+    "description": "Composite Resource Definitions or XRDs define custom API schemas"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Composite Resources",
+    "permalink": "/uxp/composition/composite-resources"
+  },
+  "next": {
+    "title": "Composition Revisions",
+    "permalink": "/uxp/composition/composition-revisions"
+  }
+}

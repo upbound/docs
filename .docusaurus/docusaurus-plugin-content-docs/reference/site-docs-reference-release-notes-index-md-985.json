@@ -1,0 +1,16 @@
+{
+  "id": "release-notes/index",
+  "title": "Release Notes",
+  "description": "Upbound's release notes:",
+  "source": "@site/docs/reference/release-notes/index.md",
+  "sourceDirName": "release-notes",
+  "slug": "/release-notes/",
+  "permalink": "/reference/release-notes/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Release Notes"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "uxp/packages/index",
+  "title": "Packages",
+  "description": "Understand Crossplane's core components",
+  "source": "@site/docs/uxp/packages/index.md",
+  "sourceDirName": "uxp/packages",
+  "slug": "/uxp/packages/",
+  "permalink": "/uxp/packages/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Packages",
+    "description": "Understand Crossplane's core components"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Image Configs",
+    "permalink": "/uxp/packages/image-configs"
+  },
+  "next": {
+    "title": "Composite Resources",
+    "permalink": "/uxp/composition/composite-resources"
+  }
+}

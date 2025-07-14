@@ -1,0 +1,18 @@
+{
+  "id": "upbound/operate/accounts/authorization/hub-rbac",
+  "title": "Hub RBAC",
+  "description": "A guide using Hub RBAC in disconnected spaces",
+  "source": "@site/docs/upbound/operate/accounts/authorization/hub-rbac.md",
+  "sourceDirName": "upbound/operate/accounts/authorization",
+  "slug": "/upbound/operate/accounts/authorization/hub-rbac",
+  "permalink": "/docs/upbound/operate/accounts/authorization/hub-rbac",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Hub RBAC",
+    "weight": 10,
+    "description": "A guide using Hub RBAC in disconnected spaces"
+  }
+}

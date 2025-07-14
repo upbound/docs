@@ -1,0 +1,27 @@
+{
+  "id": "uxp/guides/upgrade-crossplane",
+  "title": "Upgrade Crossplane",
+  "description": "The recommended upgrade method for an existing Crossplane install is to use",
+  "source": "@site/docs/uxp/guides/upgrade-crossplane.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/upgrade-crossplane",
+  "permalink": "/uxp/guides/upgrade-crossplane",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 40,
+  "frontMatter": {
+    "title": "Upgrade Crossplane",
+    "sidebar_position": 40
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Troubleshoot Crossplane",
+    "permalink": "/uxp/guides/troubleshoot-crossplane"
+  },
+  "next": {
+    "title": "Uninstall Crossplane",
+    "permalink": "/uxp/guides/uninstall-crossplane"
+  }
+}

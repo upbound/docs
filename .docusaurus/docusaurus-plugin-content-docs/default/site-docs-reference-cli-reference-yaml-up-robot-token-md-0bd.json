@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli-reference/yaml/up_robot_token",
+  "title": "up_robot_token",
+  "description": "Interact with robot tokens.",
+  "source": "@site/docs/reference/cli-reference/yaml/up_robot_token.md",
+  "sourceDirName": "reference/cli-reference/yaml",
+  "slug": "/reference/cli-reference/yaml/up_robot_token",
+  "permalink": "/reference/cli-reference/yaml/up_robot_token",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_robot_team_list",
+    "permalink": "/reference/cli-reference/yaml/up_robot_team_list"
+  },
+  "next": {
+    "title": "up_robot_token_create",
+    "permalink": "/reference/cli-reference/yaml/up_robot_token_create"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+  "title": "Resource data extraction",
+  "description": "Extract data from the composite resource",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "title": "Resource data extraction",
+    "sidebar_position": 7
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Conditionals (if)",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/conditionals"
+  },
+  "next": {
+    "title": "Write status to a composite",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/write-status-to-composite"
+  }
+}

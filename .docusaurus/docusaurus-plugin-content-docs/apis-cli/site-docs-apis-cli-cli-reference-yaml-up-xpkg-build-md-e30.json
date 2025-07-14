@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_xpkg_build",
+  "title": "up_xpkg_build",
+  "description": "Build a package, by default from the current directory.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_xpkg_build.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_xpkg_build",
+  "permalink": "/apis-cli/cli-reference/yaml/up_xpkg_build",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

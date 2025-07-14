@@ -1,0 +1,30 @@
+{
+  "id": "get-started",
+  "title": "Get Started",
+  "description": "Use the Upbound CLI to create infrastructure and have more control of your configurations",
+  "source": "@site/docs/learn/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Get Started",
+    "id": "get-started",
+    "description": "Use the Upbound CLI to create infrastructure and have more control of your configurations",
+    "sidebar_position": 1,
+    "alias": "/learn/"
+  },
+  "sidebar": "learnSidebar",
+  "previous": {
+    "title": "Learn",
+    "permalink": "/consumer-portal-get-started"
+  },
+  "next": {
+    "title": "Project Foundations",
+    "permalink": "/builders-workshop/project-foundations"
+  }
+}

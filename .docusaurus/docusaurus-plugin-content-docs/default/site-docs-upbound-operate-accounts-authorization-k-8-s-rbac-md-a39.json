@@ -1,0 +1,28 @@
+{
+  "id": "upbound/operate/accounts/authorization/k8s-rbac",
+  "title": "Authorize actions in control planes",
+  "description": "A guide to implementing and configuring Kuberentes RBAC in Upbound",
+  "source": "@site/docs/upbound/operate/accounts/authorization/k8s-rbac.md",
+  "sourceDirName": "upbound/operate/accounts/authorization",
+  "slug": "/upbound/operate/accounts/authorization/k8s-rbac",
+  "permalink": "/upbound/operate/accounts/authorization/k8s-rbac",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Authorize actions in control planes",
+    "sidebar_position": 1,
+    "description": "A guide to implementing and configuring Kuberentes RBAC in Upbound"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Hub RBAC",
+    "permalink": "/upbound/operate/accounts/authorization/hub-rbac"
+  },
+  "next": {
+    "title": "Upbound RBAC",
+    "permalink": "/upbound/operate/accounts/authorization/upbound-rbac"
+  }
+}

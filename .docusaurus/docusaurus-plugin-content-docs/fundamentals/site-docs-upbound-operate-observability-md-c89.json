@@ -1,0 +1,22 @@
+{
+  "id": "upbound/operate/observability",
+  "title": "Observability",
+  "description": "A guide for how to use the integrated observability pipeline feature in a Space.",
+  "source": "@site/docs/upbound/operate/observability.md",
+  "sourceDirName": "upbound/operate",
+  "slug": "/upbound/operate/observability",
+  "permalink": "/docs/upbound/operate/observability",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Observability",
+    "weight": 200,
+    "description": "A guide for how to use the integrated observability pipeline feature in a Space.",
+    "aliases": [
+      "/all-spaces/observability",
+      "/spaces/observability"
+    ]
+  }
+}

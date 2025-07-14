@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_organization_(org)_list",
+  "title": "up_organization_(org)_list",
+  "description": "List organizations.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_organization_(org)_list.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_organization_(org)_list",
+  "permalink": "/apis-cli/cli-reference/yaml/up_organization_(org)_list",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

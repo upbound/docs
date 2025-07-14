@@ -1,0 +1,28 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/gcp/index",
+  "title": "GCP",
+  "description": "A  quickstart guide for Upbound Spaces in GCP",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/gcp/index.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces/gcp",
+  "slug": "/upbound/deploy/self-hosted-spaces/gcp/",
+  "permalink": "/upbound/deploy/self-hosted-spaces/gcp/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "GCP",
+    "sidebar_position": 1,
+    "description": "A  quickstart guide for Upbound Spaces in GCP"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Azure",
+    "permalink": "/upbound/deploy/self-hosted-spaces/azure/"
+  },
+  "next": {
+    "title": "Local Quickstart",
+    "permalink": "/upbound/deploy/self-hosted-spaces/self-hosted-qs"
+  }
+}

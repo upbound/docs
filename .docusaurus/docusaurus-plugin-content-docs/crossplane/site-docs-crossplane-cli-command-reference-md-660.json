@@ -1,0 +1,18 @@
+{
+  "id": "cli/command-reference",
+  "title": "Command Reference",
+  "description": "Command reference for the Crossplane CLI",
+  "source": "@site/docs/crossplane/cli/command-reference.md",
+  "sourceDirName": "cli",
+  "slug": "/cli/command-reference",
+  "permalink": "/crossplane/cli/command-reference",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "weight": 50,
+    "title": "Command Reference",
+    "description": "Command reference for the Crossplane CLI"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "policies",
+  "title": "Policies",
+  "description": "The Upbound Official provider policies.",
+  "source": "@site/docs/providers/policies.md",
+  "sourceDirName": ".",
+  "slug": "/policies",
+  "permalink": "/providers/policies",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Policies",
+    "weight": 5,
+    "description": "The Upbound Official provider policies.",
+    "aliases": [
+      "providers/usage/support"
+    ]
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Monolithic providers",
+    "permalink": "/providers/monolithic"
+  },
+  "next": {
+    "title": "Provider AWS",
+    "permalink": "/providers/provider-aws/"
+  }
+}

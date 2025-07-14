@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-projects/authoring-compositions/kcl/resource-schemas",
+  "title": "Resource schemas",
+  "description": "Upbound Official Providers and some other packages define KCL-compatible",
+  "source": "@site/docs/build/control-plane-projects/authoring-compositions/kcl/resource-schemas.md",
+  "sourceDirName": "control-plane-projects/authoring-compositions/kcl",
+  "slug": "/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+  "permalink": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Resource schemas",
+    "weight": 30,
+    "aliases": [
+      "/core-concepts/kcl/resource-schemas",
+      "core-concepts/kcl/resource-schemas"
+    ]
+  },
+  "sidebar": "buildSidebar",
+  "previous": {
+    "title": "Resource data extraction",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction"
+  },
+  "next": {
+    "title": "Variables",
+    "permalink": "/build/control-plane-projects/authoring-compositions/kcl/variables"
+  }
+}

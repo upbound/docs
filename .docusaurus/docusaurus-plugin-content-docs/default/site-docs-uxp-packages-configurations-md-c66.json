@@ -1,0 +1,28 @@
+{
+  "id": "uxp/packages/configurations",
+  "title": "Configurations",
+  "description": "Packages combine multiple Crossplane resources into a single, portable, OCI image.",
+  "source": "@site/docs/uxp/packages/configurations.md",
+  "sourceDirName": "uxp/packages",
+  "slug": "/uxp/packages/configurations",
+  "permalink": "/uxp/packages/configurations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 20,
+  "frontMatter": {
+    "title": "Configurations",
+    "sidebar_position": 20,
+    "description": "Packages combine multiple Crossplane resources into a single, portable, OCI image."
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Functions",
+    "permalink": "/uxp/packages/functions"
+  },
+  "next": {
+    "title": "Image Configs",
+    "permalink": "/uxp/packages/image-configs"
+  }
+}

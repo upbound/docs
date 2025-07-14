@@ -1,0 +1,25 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/testing",
+  "title": "Running and testing your Control Plane Projects",
+  "description": "How to run your control plane project on a development controlplane",
+  "source": "@site/docs/shared/fundamentals/control-planes/control-plane-projects/testing.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects",
+  "slug": "/fundamentals/control-planes/control-plane-projects/testing",
+  "permalink": "/crossplane/fundamentals/control-planes/control-plane-projects/testing",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Running and testing your Control Plane Projects",
+    "weight": 5,
+    "description": "How to run your control plane project on a development controlplane",
+    "cascade": {
+      "product": "testing-api"
+    },
+    "aliases": [
+      "/core-concepts/testing",
+      "core-concepts/testing"
+    ]
+  }
+}

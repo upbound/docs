@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_dependency_(dep)",
+  "title": "up_dependency_(dep)",
+  "description": "Manage configuration dependencies.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_dependency_(dep).md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_dependency_(dep)",
+  "permalink": "/apis-cli/cli-reference/yaml/up_dependency_(dep)",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

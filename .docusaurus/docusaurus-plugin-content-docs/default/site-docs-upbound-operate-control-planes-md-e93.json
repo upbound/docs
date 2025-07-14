@@ -1,0 +1,28 @@
+{
+  "id": "upbound/operate/control-planes",
+  "title": "Control Planes",
+  "description": "An overview of control planes in Upbound",
+  "source": "@site/docs/upbound/operate/control-planes.md",
+  "sourceDirName": "upbound/operate",
+  "slug": "/upbound/operate/control-planes",
+  "permalink": "/upbound/operate/control-planes",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Control Planes",
+    "sidebar_position": 1,
+    "description": "An overview of control planes in Upbound"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Automatically upgrade control planes",
+    "permalink": "/upbound/operate/auto-upgrade"
+  },
+  "next": {
+    "title": "Control Plane Groups",
+    "permalink": "/upbound/operate/groups"
+  }
+}

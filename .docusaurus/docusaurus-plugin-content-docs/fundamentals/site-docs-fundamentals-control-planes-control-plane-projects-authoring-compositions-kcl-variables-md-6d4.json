@@ -1,0 +1,21 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
+  "title": "Variables",
+  "description": "This guide describes how to define and use variables in your KCL function.",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
+  "permalink": "/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/kcl/variables",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Variables",
+    "weight": 40,
+    "aliases": [
+      "/core-concepts/kcl/variables",
+      "core-concepts/kcl/variables"
+    ]
+  }
+}

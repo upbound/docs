@@ -1,0 +1,28 @@
+{
+  "id": "reference/providers/monolithic",
+  "title": "Monolithic providers",
+  "description": "Support information for legacy monolithic Crossplane Providers",
+  "source": "@site/docs/reference/providers/monolithic.md",
+  "sourceDirName": "reference/providers",
+  "slug": "/reference/providers/monolithic",
+  "permalink": "/reference/providers/monolithic",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Monolithic providers",
+    "sidebar_position": 2,
+    "description": "Support information for legacy monolithic Crossplane Providers"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Signature Verification",
+    "permalink": "/reference/providers/signature-verification"
+  },
+  "next": {
+    "title": "Migrate to Official Providers",
+    "permalink": "/reference/providers/migration"
+  }
+}

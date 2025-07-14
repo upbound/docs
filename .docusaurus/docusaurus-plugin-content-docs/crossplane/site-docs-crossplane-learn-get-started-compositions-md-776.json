@@ -1,0 +1,17 @@
+{
+  "id": "learn/get-started-compositions",
+  "title": "Get Started With Composition",
+  "description": "This guide shows how to create a new kind of custom resource named App. When a",
+  "source": "@site/docs/crossplane/learn/get-started-compositions.md",
+  "sourceDirName": "learn",
+  "slug": "/learn/get-started-compositions",
+  "permalink": "/crossplane/learn/get-started-compositions",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Get Started With Composition",
+    "weight": 200
+  }
+}

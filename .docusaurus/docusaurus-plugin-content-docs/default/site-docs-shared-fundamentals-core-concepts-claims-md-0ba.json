@@ -1,0 +1,27 @@
+{
+  "id": "shared/fundamentals/core-concepts/claims",
+  "title": "Claims",
+  "description": "Sets of managed resources as a single control plane object.",
+  "source": "@site/docs/shared/fundamentals/core-concepts/claims.md",
+  "sourceDirName": "shared/fundamentals/core-concepts",
+  "slug": "/shared/fundamentals/core-concepts/claims",
+  "permalink": "/shared/fundamentals/core-concepts/claims",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Claims",
+    "weight": 1,
+    "description": "Sets of managed resources as a single control plane object."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Store configurations",
+    "permalink": "/shared/fundamentals/control-planes/repositories/store-configurations"
+  },
+  "next": {
+    "title": "Compositions",
+    "permalink": "/shared/fundamentals/core-concepts/compositions"
+  }
+}

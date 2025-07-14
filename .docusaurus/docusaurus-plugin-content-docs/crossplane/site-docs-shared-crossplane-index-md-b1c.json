@@ -1,0 +1,20 @@
+{
+  "id": "crossplane/index",
+  "title": "Welcome",
+  "description": "Welcome to the Crossplane documentation. Crossplane is a control plane framework",
+  "source": "@site/docs/shared/crossplane/index.md",
+  "sourceDirName": "crossplane",
+  "slug": "/crossplane/",
+  "permalink": "/crossplane/crossplane/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Welcome",
+    "weight": -1,
+    "cascade": {
+      "version": "2.0-preview"
+    }
+  }
+}

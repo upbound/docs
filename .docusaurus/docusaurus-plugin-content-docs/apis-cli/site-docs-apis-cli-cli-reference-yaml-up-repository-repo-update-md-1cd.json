@@ -1,0 +1,14 @@
+{
+  "id": "cli-reference/yaml/up_repository_(repo)_update",
+  "title": "up_repository_(repo)_update",
+  "description": "Update a repository.",
+  "source": "@site/docs/apis-cli/cli-reference/yaml/up_repository_(repo)_update.md",
+  "sourceDirName": "cli-reference/yaml",
+  "slug": "/cli-reference/yaml/up_repository_(repo)_update",
+  "permalink": "/apis-cli/cli-reference/yaml/up_repository_(repo)_update",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

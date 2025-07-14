@@ -1,0 +1,26 @@
+{
+  "id": "provider-terraform/migrate-provider-tf",
+  "title": "Migrate from Terraform to Crossplane or Upbound",
+  "description": "Crossplane and Terraform are powerful tools for managing and provisioning cloud",
+  "source": "@site/docs/providers/provider-terraform/migrate-provider-tf.md",
+  "sourceDirName": "provider-terraform",
+  "slug": "/provider-terraform/migrate-provider-tf",
+  "permalink": "/providers/provider-terraform/migrate-provider-tf",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Migrate from Terraform to Crossplane or Upbound",
+    "weight": 1
+  },
+  "sidebar": "providersSidebar",
+  "previous": {
+    "title": "Rewrite HCL for Crossplane or Upbound",
+    "permalink": "/providers/provider-terraform/migrate-hcl"
+  },
+  "next": {
+    "title": "Pull secrets",
+    "permalink": "/providers/pull-secrets"
+  }
+}

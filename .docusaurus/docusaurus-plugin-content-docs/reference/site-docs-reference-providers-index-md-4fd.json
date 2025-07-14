@@ -1,0 +1,25 @@
+{
+  "id": "providers/index",
+  "title": "Official Providers",
+  "description": "Upbound creates, maintains and supports a set of Crossplane providers called official providers.",
+  "source": "@site/docs/reference/providers/index.md",
+  "sourceDirName": "providers",
+  "slug": "/providers/",
+  "permalink": "/reference/providers/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Official Providers",
+    "icon": "upbound-official",
+    "sidebar_position": 1,
+    "description": "Upbound creates, maintains and supports a set of Crossplane providers called official providers.",
+    "category": "resources",
+    "aliases": [
+      "upbound-marketplace/providers",
+      "providers/"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "reference/apis/spaces-api/yaml/v1.13/index",
+  "title": "Spaces API Reference - v1.13",
+  "description": "Documentation for the Spaces API resources",
+  "source": "@site/docs/reference/apis/spaces-api/yaml/v1.13/index.md",
+  "sourceDirName": "reference/apis/spaces-api/yaml/v1.13",
+  "slug": "/reference/apis/spaces-api/yaml/v1.13/",
+  "permalink": "/reference/apis/spaces-api/yaml/v1.13/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Spaces API Reference - v1.13",
+    "description": "Documentation for the Spaces API resources"
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "Spaces API Reference - v1.9",
+    "permalink": "/reference/apis/spaces-api/v1_9"
+  },
+  "next": {
+    "title": "Testing API Reference",
+    "permalink": "/reference/apis/testing-api/"
+  }
+}

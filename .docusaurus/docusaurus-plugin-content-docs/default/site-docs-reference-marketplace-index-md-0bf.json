@@ -1,0 +1,26 @@
+{
+  "id": "reference/marketplace/index",
+  "title": "Marketplace",
+  "description": "How to use the Upbound Marketplace to discover Crossplane providers and packages.",
+  "source": "@site/docs/reference/marketplace/index.md",
+  "sourceDirName": "reference/marketplace",
+  "slug": "/reference/marketplace/",
+  "permalink": "/reference/marketplace/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Marketplace",
+    "description": "How to use the Upbound Marketplace to discover Crossplane providers and packages."
+  },
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "CLI Reference",
+    "permalink": "/reference/cli-reference"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/reference/marketplace/authentication"
+  }
+}

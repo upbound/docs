@@ -1,0 +1,23 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_team_create",
+  "title": "up_team_create",
+  "description": "Create a team.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_team_create.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_team_create",
+  "permalink": "/reference/cli/cli-reference/yaml/up_team_create",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "referenceSidebar",
+  "previous": {
+    "title": "up_team",
+    "permalink": "/reference/cli/cli-reference/yaml/up_team"
+  },
+  "next": {
+    "title": "up_team_delete",
+    "permalink": "/reference/cli/cli-reference/yaml/up_team_delete"
+  }
+}

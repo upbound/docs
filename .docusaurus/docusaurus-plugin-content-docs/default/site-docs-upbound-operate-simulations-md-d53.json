@@ -1,0 +1,24 @@
+{
+  "id": "upbound/operate/simulations",
+  "title": "Run a control plane simulation",
+  "description": "A guide for how to use Simulations in a Space.",
+  "source": "@site/docs/upbound/operate/simulations.md",
+  "sourceDirName": "upbound/operate",
+  "slug": "/upbound/operate/simulations",
+  "permalink": "/upbound/operate/simulations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 20,
+  "frontMatter": {
+    "title": "Run a control plane simulation",
+    "sidebar_position": 20,
+    "description": "A guide for how to use Simulations in a Space."
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Observability",
+    "permalink": "/upbound/operate/observability"
+  }
+}

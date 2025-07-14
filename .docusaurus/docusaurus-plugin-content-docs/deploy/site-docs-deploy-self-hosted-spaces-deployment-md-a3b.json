@@ -1,0 +1,32 @@
+{
+  "id": "self-hosted-spaces/deployment",
+  "title": "Deployment",
+  "description": "A guide for deploying an Upbound Space in production",
+  "source": "@site/docs/deploy/self-hosted-spaces/deployment.md",
+  "sourceDirName": "self-hosted-spaces",
+  "slug": "/self-hosted-spaces/deployment",
+  "permalink": "/deploy/self-hosted-spaces/deployment",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Deployment",
+    "weight": 900,
+    "description": "A guide for deploying an Upbound Space in production",
+    "aliases": [
+      "/all-spaces/self-hosted-spaces/deployment",
+      "/spaces/deployment",
+      "/all-spaces/disconnected-spaces/deployment"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Billing",
+    "permalink": "/deploy/self-hosted-spaces/billing"
+  },
+  "next": {
+    "title": "Disaster Recovery",
+    "permalink": "/deploy/self-hosted-spaces/dr"
+  }
+}

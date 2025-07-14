@@ -1,0 +1,14 @@
+{
+  "id": "reference/cli/cli-reference/yaml/up_dependency_(dep)_add",
+  "title": "up_dependency_(dep)_add",
+  "description": "Add a dependency to the current project.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_dependency_(dep)_add.md",
+  "sourceDirName": "reference/cli/cli-reference/yaml",
+  "slug": "/reference/cli/cli-reference/yaml/up_dependency_(dep)_add",
+  "permalink": "/docs/reference/cli/cli-reference/yaml/up_dependency_(dep)_add",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

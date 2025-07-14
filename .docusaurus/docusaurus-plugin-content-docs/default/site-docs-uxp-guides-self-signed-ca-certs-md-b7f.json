@@ -1,0 +1,26 @@
+{
+  "id": "uxp/guides/self-signed-ca-certs",
+  "title": "Self-Signed CA Certs",
+  "description": "Using self-signed certificates isn't advised in production, it's",
+  "source": "@site/docs/uxp/guides/self-signed-ca-certs.md",
+  "sourceDirName": "uxp/guides",
+  "slug": "/uxp/guides/self-signed-ca-certs",
+  "permalink": "/uxp/guides/self-signed-ca-certs",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Self-Signed CA Certs",
+    "weight": 270
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Configuring Crossplane with Argo CD",
+    "permalink": "/uxp/guides/crossplane-with-argo-cd"
+  },
+  "next": {
+    "title": "Crossplane API Reference",
+    "permalink": "/uxp/api/"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "index",
+  "title": "APIs & CLI Reference",
+  "description": "Upbound's API and CLI reference documentation:",
+  "source": "@site/docs/apis-cli/index.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/apis-cli/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "APIs & CLI Reference"
+  },
+  "sidebar": "apisCliSidebar",
+  "next": {
+    "title": "Query API Reference",
+    "permalink": "/apis-cli/query-api/"
+  }
+}

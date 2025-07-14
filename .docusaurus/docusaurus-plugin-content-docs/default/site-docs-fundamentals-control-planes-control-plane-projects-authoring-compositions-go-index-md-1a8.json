@@ -1,0 +1,25 @@
+{
+  "id": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go/index",
+  "title": "Overview",
+  "description": "Upbound supports defining your control plane APIs in the",
+  "source": "@site/docs/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/index.md",
+  "sourceDirName": "fundamentals/control-planes/control-plane-projects/authoring-compositions/go",
+  "slug": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/",
+  "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Overview"
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Authoring Compositions",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/"
+  },
+  "next": {
+    "title": "Pipeline inputs and outputs",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/authoring-compositions/go/inputs-outputs"
+  }
+}

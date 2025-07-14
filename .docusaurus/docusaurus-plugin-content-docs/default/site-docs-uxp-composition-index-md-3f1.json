@@ -1,0 +1,26 @@
+{
+  "id": "uxp/composition/index",
+  "title": "Composition",
+  "description": "Understand Crossplane's core components",
+  "source": "@site/docs/uxp/composition/index.md",
+  "sourceDirName": "uxp/composition",
+  "slug": "/uxp/composition/",
+  "permalink": "/uxp/composition/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Composition",
+    "description": "Understand Crossplane's core components"
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Get Started With Managed Resources",
+    "permalink": "/uxp/get-started/get-started-with-managed-resources"
+  },
+  "next": {
+    "title": "Composite Resources",
+    "permalink": "/uxp/composition/composite-resources"
+  }
+}

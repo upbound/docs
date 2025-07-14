@@ -1,0 +1,27 @@
+{
+  "id": "uxp/get-started/install",
+  "title": "Install Crossplane",
+  "description": "Crossplane installs into an existing Kubernetes cluster, creating the",
+  "source": "@site/docs/uxp/get-started/install.md",
+  "sourceDirName": "uxp/get-started",
+  "slug": "/uxp/get-started/install",
+  "permalink": "/uxp/get-started/install",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 10,
+  "frontMatter": {
+    "title": "Install Crossplane",
+    "sidebar_position": 10
+  },
+  "sidebar": "uxpSidebar",
+  "previous": {
+    "title": "Get Started",
+    "permalink": "/uxp/get-started/"
+  },
+  "next": {
+    "title": "Get Started With Composition",
+    "permalink": "/uxp/get-started/get-started-with-composition"
+  }
+}

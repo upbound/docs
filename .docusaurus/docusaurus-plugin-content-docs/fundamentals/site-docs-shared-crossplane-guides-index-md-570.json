@@ -1,0 +1,18 @@
+{
+  "id": "crossplane/guides/index",
+  "title": "Guides",
+  "description": "Crossplane integrations and detailed examples.",
+  "source": "@site/docs/shared/crossplane/guides/index.md",
+  "sourceDirName": "crossplane/guides",
+  "slug": "/crossplane/guides/",
+  "permalink": "/crossplane/guides/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Guides",
+    "weight": 100,
+    "description": "Crossplane integrations and detailed examples."
+  }
+}

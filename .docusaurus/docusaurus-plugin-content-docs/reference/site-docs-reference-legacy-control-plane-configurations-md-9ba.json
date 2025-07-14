@@ -1,0 +1,22 @@
+{
+  "id": "legacy/control-plane-configurations",
+  "title": "(deprecated) Control Plane Configurations",
+  "description": "An introduction to how Configurations work in Upbound",
+  "source": "@site/docs/reference/legacy/control-plane-configurations.md",
+  "sourceDirName": "legacy",
+  "slug": "/legacy/control-plane-configurations",
+  "permalink": "/reference/legacy/control-plane-configurations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "(deprecated) Control Plane Configurations",
+    "weight": 4,
+    "description": "An introduction to how Configurations work in Upbound",
+    "aliases": [
+      "/deploy/legacy-spaces/control-plane-configurations",
+      "/concepts/control-plane-configurations"
+    ]
+  }
+}

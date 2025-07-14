@@ -1,0 +1,28 @@
+{
+  "id": "fundamentals/control-planes/repositories/index",
+  "title": "Repositories",
+  "description": "Product documentation for using the Repositories feature in Upbound.",
+  "source": "@site/docs/fundamentals/control-planes/repositories/index.md",
+  "sourceDirName": "fundamentals/control-planes/repositories",
+  "slug": "/fundamentals/control-planes/repositories/",
+  "permalink": "/fundamentals/control-planes/repositories/",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Repositories",
+    "sidebar_position": 1,
+    "description": "Product documentation for using the Repositories feature in Upbound."
+  },
+  "sidebar": "fundamentalsSidebar",
+  "previous": {
+    "title": "Running and testing your Control Plane Projects",
+    "permalink": "/fundamentals/control-planes/control-plane-projects/testing"
+  },
+  "next": {
+    "title": "Store configurations",
+    "permalink": "/fundamentals/control-planes/repositories/store-configurations"
+  }
+}

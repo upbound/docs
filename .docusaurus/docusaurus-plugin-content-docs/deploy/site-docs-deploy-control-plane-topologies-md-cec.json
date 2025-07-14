@@ -1,0 +1,30 @@
+{
+  "id": "control-plane-topologies",
+  "title": "Control Plane Topologies",
+  "description": "Configure scheduling of composites to remote control planes",
+  "source": "@site/docs/deploy/control-plane-topologies.md",
+  "sourceDirName": ".",
+  "slug": "/control-plane-topologies",
+  "permalink": "/deploy/control-plane-topologies",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Control Plane Topologies",
+    "weight": 150,
+    "description": "Configure scheduling of composites to remote control planes",
+    "aliases": [
+      "/all-spaces/control-plane-topologies"
+    ]
+  },
+  "sidebar": "deploySidebar",
+  "previous": {
+    "title": "Backup and restore",
+    "permalink": "/deploy/backup-and-restore"
+  },
+  "next": {
+    "title": "Dedicated Spaces",
+    "permalink": "/deploy/dedicated-spaces/"
+  }
+}

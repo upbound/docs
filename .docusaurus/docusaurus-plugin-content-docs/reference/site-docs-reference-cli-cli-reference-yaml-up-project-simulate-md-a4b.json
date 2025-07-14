@@ -1,0 +1,14 @@
+{
+  "id": "cli/cli-reference/yaml/up_project_simulate",
+  "title": "up_project_simulate",
+  "description": "Run a project as a simulation against an existing control plane.",
+  "source": "@site/docs/reference/cli/cli-reference/yaml/up_project_simulate.md",
+  "sourceDirName": "cli/cli-reference/yaml",
+  "slug": "/cli/cli-reference/yaml/up_project_simulate",
+  "permalink": "/reference/cli/cli-reference/yaml/up_project_simulate",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

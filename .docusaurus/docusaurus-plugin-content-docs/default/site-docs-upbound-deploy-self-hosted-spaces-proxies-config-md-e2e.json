@@ -1,0 +1,28 @@
+{
+  "id": "upbound/deploy/self-hosted-spaces/proxies-config",
+  "title": "Proxied configuration",
+  "description": "Configure Upbound within a proxied environment",
+  "source": "@site/docs/upbound/deploy/self-hosted-spaces/proxies-config.md",
+  "sourceDirName": "upbound/deploy/self-hosted-spaces",
+  "slug": "/upbound/deploy/self-hosted-spaces/proxies-config",
+  "permalink": "/upbound/deploy/self-hosted-spaces/proxies-config",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 20,
+  "frontMatter": {
+    "title": "Proxied configuration",
+    "sidebar_position": 20,
+    "description": "Configure Upbound within a proxied environment"
+  },
+  "sidebar": "upboundSidebar",
+  "previous": {
+    "title": "Space Helm Chart Reference",
+    "permalink": "/upbound/deploy/self-hosted-spaces/helm-reference"
+  },
+  "next": {
+    "title": "Space-level observability",
+    "permalink": "/upbound/deploy/self-hosted-spaces/space-observability"
+  }
+}
