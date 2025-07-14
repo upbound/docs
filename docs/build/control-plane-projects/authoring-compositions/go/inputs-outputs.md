@@ -32,7 +32,7 @@ function.
 Crossplane passes these pieces of information to the function as part of the
 `req *fnv1.RunFunctionRequest` argument:
 
-```golang
+```go
 package main
 
 import (
@@ -80,7 +80,7 @@ creates a Go library that includes type definitions based on your XRDs. You can
 use these generated types by converting the protobuf struct to JSON and then
 unmarshaling it into your XR type as follows:
 <!-- vale Upbound.Spelling = YES -->
-```golang
+```go
 package main
 
 import (
@@ -153,7 +153,7 @@ generated code.
 You can add or update composed resources using the
 `response.SetDesiredComposedResources` helper function in the Crossplane Go SDK:
 
-```golang
+```go
 package main
 
 import (
@@ -238,7 +238,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 Similarly, you can update the status of the composite resource by updating it in
 the response with the `response.SetDesiredCompositeResource` helper function:
 
-```golang
+```go
 package main
 
 import (
