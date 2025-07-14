@@ -397,7 +397,7 @@ datadog    1          0        0             63s
 [opentelemetry-collector-configuration]: https://opentelemetry.io/docs/collector/configuration/#exporters
 [service-pipeline-configuration]: https://opentelemetry.io/docs/collector/configuration/#pipelines
 [documentation]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/datadogexporter/README.md
-[documentation-1]: https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-set-up-your-app/
+[documentation-1]: https://newrelic.com/instant-observability/opentelemetry
 [processor-configuration]: https://opentelemetry.io/docs/collector/configuration/#processors
 [transform-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md
 [transform-processor-2]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md

@@ -1,8 +1,7 @@
 ---
 title: Connect control planes to external services
 sidebar_position: 2
-description: A guide for authenticating control plane with external services, including
-  using OIDC
+description: A guide for authenticating control plane with external services, including using OIDC
 ---
 
 <!-- vale gitlab.SentenceLength = NO -->
@@ -240,6 +239,23 @@ For example, the following would be a valid _subject_ for `provider-aws` in a co
 
 ```
 mcp:my-org/prod-1:provider:provider-aws
+```
+
+Optionally, the trust path can contain the group field so that an admin in
+another group who may know about the control plane naming pattern cannot simply
+create a new control plane in their group that then has access to the other
+group's target account permissions.
+
+Set the following control plane annotation to enable honoring the group field.
+
+```
+proidc.cloud-spaces.upbound.io/group-scoped: "true"
+```
+
+Then use the following _subject_:
+
+```
+mcp:<organization>/<space>/<group>/<controlPlane>:<provider>
 ```
 
 The claims for an identity token injected into the file system of a provider in a control plane looks like the following.

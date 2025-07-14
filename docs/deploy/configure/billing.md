@@ -292,4 +292,4 @@ You can find full instructions and command options in the up [CLI reference][cli
 [export]: /apis-cli/cli-reference/#up-space-billing-get
 [cli-reference]: /apis-cli/cli-reference/#up-space-billing
 [flagship-product]: https://www.upbound.io/product/upbound
-[workload-identity-configuration-documentation]: https://docs.upbound.io/all-spaces/workload-id/
+[workload-identity-configuration-documentation]: https://docs.upbound.io/operate/accounts/authentication/oidc-configuration

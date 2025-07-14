@@ -2,6 +2,9 @@
 title: Contexts
 sidebar_position: 1
 description: An introduction to the how contexts work in Upbound
+aliases:
+    - /reference/contexts
+    - /reference/cli/contexts
 ---
 
 Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's command structure and syntax is strongly inspired by Kubernetes contexts and the conventions of the Kubernetes `kubectl` CLI.
@@ -27,6 +30,8 @@ In `up`, the commands you can execute are context-sensitive.
 
 In `up`, the `up ctx` sub-command is a single command to set a kubecontext across all deployments of Upbound. You can use this kubecontext to drive interactions via `kubectl`. `up` CLI commands that interact with Upbound's Kubernetes compatible APIs also use the current kubeconfig context.
 
+
+
 <!-- vale off -->
 ### Interactive terminal UI
 
@@ -37,7 +42,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx][kubectx].
 When interacting with control planes that are hosted in:
 
 * **a Cloud or Connected Space:** make sure you're using a cloud profile logged into Upbound with `up login` before trying to use `up ctx`.
-* **a Disconnected Space:** make sure your're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
+* **a Disconnected Space:** make sure you're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
 :::
 
 The following are some tips for using the terminal UI:
@@ -109,6 +114,22 @@ If you get lost in the navigation hierarchy, you can print the current context t
 ```shell
 up ctx .
 ```
+## Proxied configurations
+
+If your organization requires a proxy like ZScaler, or other SSL network security
+tools, you might run into certificate validation errors when you attempt to
+connect to your control plane context.
+
+The `--ca-bundle` flag lets you add a custom certificate authority bundle to the
+trust chain.
+
+<EditCode language="shell">
+{`
+up ctx --ca-bundle /path/to/custom-ca-bundle.pem YOUR_ORG/YOUR_SPACE_REGION/YOUR_GROUP/YOUR_CONTROL_PLANE -f -
+`}
+</EditCode>
+
+Refer to the `up ctx` [CLI reference][up-ctx] for more information.
 
 ## Generate a kubeconfig
 
@@ -176,7 +197,7 @@ up ctx <your-org-name>/upbound-gcp-us-central-1/default/my-ctp
 ```ini
 up ctx . -f - > context.yaml
 ```
-
+[up-ctx]: /apis-cli/cli-reference/#up-ctx
 [space]: /deploy
 [kubernetes-compatible-api]: /apis-cli/spaces-api/
 [kubectx]: https://github.com/ahmetb/kubectx/

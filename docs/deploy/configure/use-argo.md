@@ -2,6 +2,11 @@
 title: Use ArgoCD Plugin
 sidebar_position: 15
 description: A guide for integrating Argo with control planes in a Space.
+aliases:
+    - /all-spaces/self-hosted-spaces/use-argo
+    - /deploy/disconnected-spaces/use-argo-flux
+    - /all-spaces/self-hosted-spaces/use-argo-flux
+    - /connect/use-argo
 ---
 
 
@@ -177,6 +182,38 @@ data:
 ```
 
 The preceding configuration causes Argo to exclude syncing **all** resource group/kinds--except Crossplane `providers` and `configurations`--for **all** control planes. You're encouraged to adjust the `resource.inclusions` to include the types that make sense for your control plane, such as an `XRD` you've built with Crossplane. You're also encouraged to customize the `clusters` pattern to selectively apply these exclusions/inclusions to control planes (for example, `control-plane-prod-*`).
+
+## Control Plane Connection Secrets
+
+To deploy control planes through Argo CD, you need to configure the `writeConnectionSecretToRef` field in your control plane spec. This field specifies where to store the control plane's `kubeconfig` and makes connection details available to Argo CD.
+
+### Basic Configuration
+
+In your control plane manifest, include the `writeConnectionSecretToRef` field:
+
+```yaml
+apiVersion: spaces.upbound.io/v1beta1
+kind: ControlPlane
+metadata:
+  name: my-control-plane
+  namespace: default
+spec:
+  writeConnectionSecretToRef:
+    name: kubeconfig-my-control-plane
+    namespace: argocd
+  # ... other control plane configuration
+```
+
+### Parameters
+
+The `writeConnectionSecretToRef` field requires two parameters:
+
+- `name`: A unique name for the secret containing the kubeconfig (e.g., "kubeconfig-my-control-plane")
+- `namespace`: The Kubernetes namespace where the secret should be stored (typically "argocd" for Argo CD integration)
+
+Control plane labels automatically propagate to the connection secret, which allows you to use label selectors in Argo CD for automated discovery and management.
+
+This configuration enables Argo CD to automatically discover and manage resources on your control planes.
 
 
 [gitops-with-control-planes]: /connect/gitops
