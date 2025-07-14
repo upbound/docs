@@ -1,5 +1,5 @@
 ---
-title: Perform an operation on a resource
+title: Perform an Operation on a resource
 sidebar_position: 10
 ---
 

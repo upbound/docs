@@ -1,5 +1,5 @@
 ---
-title: Custom an Azure Resource type
+title: Create an Azure Resource type
 sidebar_position: 5
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Manage external resources with providers
+title: Manage external resources with Providers
 sidebar_position: 20
 ---
 
