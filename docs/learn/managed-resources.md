@@ -5,7 +5,7 @@ sidebar_position: 2
 
 Upbound Crossplane is the AI-native distribution of Crossplane. Control planes
 are the only way to build and support an autonomous infrastructure platform for
-the age of autonomous systems, service both humans and AI. One of the advantages
+the age of autonomous systems, serving both humans and AI. One of the advantages
 of Crossplane is the extensive library of managed resources you can use to
 manage almost any cloud provider or cloud native software.
 
