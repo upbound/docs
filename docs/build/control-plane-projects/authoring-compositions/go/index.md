@@ -36,7 +36,7 @@ produces a Bucket managed resource (MR) from the
 [S3 provider][s3-provider]
 based on its parameters.
 
-```golang
+```go
 package main
 
 import (
@@ -145,7 +145,7 @@ If the composite resource's `spec.versioning` field is `true`, the function
 enables versioning by composing a bucket versioning configuration. Like the ACL,
 the versioning configuration references the bucket by name.
 
-```golang
+```go
 package main
 
 import (

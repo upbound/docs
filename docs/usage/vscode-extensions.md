@@ -141,7 +141,7 @@ vpc = {
 </TabItem>
 <TabItem value="Go" label="Go">
 
-```golang
+```go
 vpc := &v1beta1.VPC{
 	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
 	Kind:       ptr.To("VPC"),
@@ -213,7 +213,7 @@ vpc = {
 </TabItem>
 <TabItem value="Go" label="Go">
 
-```golang
+```go
 vpc := &v1beta1.VPC{
 	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
 	Kind:       ptr.To("VPC"),
@@ -275,7 +275,7 @@ vpc = {
 </TabItem>
 <TabItem value="Go" label="Go">
 
-```golang
+```go
 vpc := &v1beta1.VPC{
 	APIVersion: ptr.To("ec2.aws.upbound.io/v1beta1"),
 	Kind:       ptr.To("VPC"),
@@ -333,7 +333,7 @@ vpc = {
 </TabItem>
 <TabItem value="Go" label="Go">
 
-```golang
+```go
 vpc := &v1beta1.V / Auto-complete suggests VPC etc.
 ```
 </TabItem>
@@ -392,7 +392,7 @@ subnet = {
 </TabItem>
 <TabItem value="Go" label="Go">
 
-```golang
+```go
 observedComposed, _ := request.GetObservedComposedResources(req)
 observedVPC := observedComposed["vpc"]
 observedVPCARN, _ := observedVPC.Resource.GetString("status.atProvider.arn")
