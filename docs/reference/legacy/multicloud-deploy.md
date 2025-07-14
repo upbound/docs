@@ -133,12 +133,12 @@ You can find your AWS account ID by selecting the account dropdown in the upper 
 		{
 			"Effect": "Allow",
 			"Principal": {
-				"Federated": "arn:aws:iam::$@YOUR_AWS_ACCOUNT_ID$@:oidc-provider/proidc.upbound.io"
+				"Federated": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:oidc-provider/proidc.upbound.io"
 			},
 			"Action": "sts:AssumeRoleWithWebIdentity",
 			"Condition": {
 				"StringEquals": {
-					"proidc.upbound.io:sub": "mcp:$@ORG_NAME/CONTROL_PLANE_NAME$@:provider:provider-aws",
+					"proidc.upbound.io:sub": "mcp:ORG_NAME/CONTROL_PLANE_NAME:provider:provider-aws",
 					"proidc.upbound.io:aud": "sts.amazonaws.com"
 				}
 			}
@@ -192,19 +192,19 @@ To allow the `upbound-oidc-provider` registration created in the previous step t
 6. In _Subject identifier_ enter:
 
 ```yaml
-mcp:$@<your-org>/<your-control-plane-name>$@:provider:provider-azure
+mcp:<your-org>/<your-control-plane-name>:provider:provider-azure
 ```
 
 7. In _Credential details name_ enter:
 
 ```yaml
-upbound-$@<your-org>-<your-control-plane-name>$@-provider-azure
+upbound-<your-org>-<your-control-plane-name>-provider-azure
 ```
 
 8. In _Credential details description_ enter:
 
 ```yaml
-upbound MCP $@<your-org>/<your-control-plane-name>$@ Provider provider-azure
+upbound MCP <your-org>/<your-control-plane-name> Provider provider-azure
 ```
 
 9. Leave _Audience_ unmodified with **api://AzureADTokenExchange**.
@@ -305,7 +305,7 @@ To authenticate any control plane in your organization, in the _Conditional CEL_
 
 <!--- TODO(tr0njavolta): editcode --->
 ```console
-google.subject.contains("mcp:$@ORGANIZATION_NAME$@")
+google.subject.contains("mcp:ORGANIZATION_NAME")
 ```
 
 :::warning
@@ -397,7 +397,7 @@ Next, scroll past the instructions to the bottom of the form.
 
 For the _providerID_ field, enter the following after editing your _GCP Project Number_:
 ```yaml
-projects/$@<GCP Project Number>$@/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider
+projects/<GCP Project Number>/locations/global/workloadIdentityPools/upbound-oidc-pool/providers/upbound-oidc-provider
 ```
 
 

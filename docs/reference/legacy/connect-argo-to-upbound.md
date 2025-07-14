@@ -62,8 +62,8 @@ You need a personal access token (PAT) to generate a kubeconfig. You create PATs
 Run the following command in a terminal:
 <!--- TODO(tr0njavolta): edit --->
 ```ini
-export UPBOUND_MCP_PATH="$@org-name/space-name/group-name/mcp-name$@"
-export UPBOUND_CTP_KUBECONFIG="$@mcp-kubeconfig.yaml$@"
+export UPBOUND_MCP_PATH="org-name/space-name/group-name/mcp-name"
+export UPBOUND_CTP_KUBECONFIG="mcp-kubeconfig.yaml"
 up ctx "$\{UPBOUND_MCP_PATH\}" -f "$\{UPBOUND_CTP_KUBECONFIG\}"
 ```
 

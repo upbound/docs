@@ -49,7 +49,7 @@ git clone https://github.com/upbound/no-op-sim.git && cd no-op-sim
 Login to your Upbound account in the CLI:
 
 ```ini
-up login --account=$@<your_upbound_account>$@
+up login --account=<your_upbound_account>
 ```
 
 Run the project in a control plane:
@@ -264,7 +264,7 @@ To destroy your simulated control planes, you can manually delete them with
 `kubectl`.
 
 ```yaml
-kubectl delete simulations $@<your_simulation_control_plane>$@
+kubectl delete simulations <your_simulation_control_plane>
 ```
 
 ## Considerations 

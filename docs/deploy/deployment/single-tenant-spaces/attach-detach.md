@@ -24,7 +24,7 @@ Before you begin, make sure you have:
 Create a new `UPBOUND_SPACE_NAME`. If you don't create a name, `up` automatically generates one for you:
 
 ```ini
-export UPBOUND_SPACE_NAME=$@your-self-hosted-space$@
+export UPBOUND_SPACE_NAME=your-self-hosted-space
 ```
 
 #### With up CLI
@@ -46,7 +46,7 @@ This command installs a Connect agent, creates a service account, and configures
 Export your Upbound org account name to an environment variable called `UPBOUND_ORG_NAME`. You can see this value by running `up org list` after logging on to Upbound.
 
 ```ini
-export UPBOUND_ORG_NAME=$@your-org-name$@
+export UPBOUND_ORG_NAME=your-org-name
 ```
 
 Create a new robot token and export it to an environment variable called `UPBOUND_TOKEN`:

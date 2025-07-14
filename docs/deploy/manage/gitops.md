@@ -329,12 +329,12 @@ Like any other Crossplane provider, _provider-kubernetes_ requires a valid [Prov
 
 1. Define an environment variable for the name of your Upbound org account. Use `up org list` to retrieve this value.
 ```ini
-export UPBOUND_ACCOUNT="$@<YOUR_ACCOUNT>$@"
+export UPBOUND_ACCOUNT="<YOUR_ACCOUNT>"
 ```
 
 2.  Create a [personal access token][personal-access-token] and store it as an environment variable.
 ```shell
-export UPBOUND_TOKEN="$@<YOUR_API_TOKEN>$@"
+export UPBOUND_TOKEN="<YOUR_API_TOKEN>"
 ```
 
 3.  Log on to Upbound.

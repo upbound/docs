@@ -61,7 +61,7 @@ kubectl create secret generic kubeconfig-my-control-plane -n kube-system --from-
 Set the environment variable below to configure which namespace _in your control plane_ you wish to sync the app cluster's claims to.
 
 ```shell
-export CONNECTOR_CTP_NAMESPACE=$@app-cluster-1$@
+export CONNECTOR_CTP_NAMESPACE=app-cluster-1
 ```
 
 Install the Control Plane Connector in the app cluster and point it to your control plane.

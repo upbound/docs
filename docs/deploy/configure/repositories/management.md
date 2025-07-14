@@ -54,7 +54,7 @@ To delete a repository, do the following:
     2. Run the following command to delete the repository:
   
   ```shell
-    UPBOUND_REPO_NAME=$@<repo-name>$@
+    UPBOUND_REPO_NAME=<repo-name>
     up repo delete ${UPBOUND_REPO_NAME} --force
     ```
 
@@ -88,16 +88,16 @@ To update the permissions for who can access and perform actions on a repository
 
     Run the following command to grant a permission:
     ```shell
-    UPBOUND_TEAM_NAME=$@<team-name>$@
-    UPBOUND_REPO_NAME=$@<repo-name>$@
-    UPBOUND_REPO_PERMISSION=$@<permission>$@
+    UPBOUND_TEAM_NAME=<team-name>
+    UPBOUND_REPO_NAME=<repo-name>
+    UPBOUND_REPO_PERMISSION=<permission>
     up repository permission grant ${UPBOUND_TEAM_NAME} ${UPBOUND_REPO_NAME} ${UPBOUND_REPO_PERMISSION}
     ```
     
     Run the following command to revoke a permission:
     ```shell
-    UPBOUND_TEAM_NAME=$@<team-name>$@
-    UPBOUND_REPO_NAME=$@<repo-name>$@
+    UPBOUND_TEAM_NAME=<team-name>
+    UPBOUND_REPO_NAME=<repo-name>
     up repository permission revoke ${UPBOUND_TEAM_NAME} ${UPBOUND_REPO_NAME}
     ```
     </TabItem>

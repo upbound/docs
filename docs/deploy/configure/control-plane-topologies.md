@@ -57,23 +57,23 @@ While this feature is especially useful for composing resources that exist in a 
 To compose a _ReferencedObject_, you should start by adding a resource reference in your Composite Resource Definition (XRD). The convention for the resource reference follows the shape shown below: 
 
 ```yaml
-$@<resource>Ref$@:
+<resource>Ref:
   type: object
   properties:
     apiVersion:
       type: string
-      default: "$@<apiVersion-of-resource>$@"
-      enum: [ "$@<apiVersion-of-resource>$@" ]
+      default: "<apiVersion-of-resource>"
+      enum: [ "<apiVersion-of-resource>" ]
     kind:
       type: string
-      default: "$@<resource-ref-kind>$@"
-      enum: [ "$@<resource-ref-kind>$@" ]
+      default: "<resource-ref-kind>"
+      enum: [ "<resource-ref-kind>" ]
     grants:
       type: array
-      default: [ $@"Observe"$@ ]
+      default: [ "Observe" ]
       items:
         type: string
-        enum: [ $@"Observe", "Create", "Update", "Delete", "*"$@ ]
+        enum: [ "Observe", "Create", "Update", "Delete", "*" ]
     name:
       type: string
     namespace:
@@ -248,9 +248,9 @@ spec:
   - Observe
   deletionPolicy: Orphan
   composite:
-    apiVersion: $@<composite-apiVersion>$@
-    kind: $@<composite-kind>$@
-    name: $@<composite-instance-name>$@
+    apiVersion: <composite-apiVersion>
+    kind: <composite-kind>
+    name: <composite-instance-name>
     jsonPath: .spec.parameters.secretRef
 ```
 
@@ -325,9 +325,9 @@ Install a _RemoteConfiguration_ by defining the following and applying it to you
 apiVersion: pkg.upbound.io/v1alpha1
 kind: RemoteConfiguration
 metadata:
-  name: $@<your-configuration-name>$@
+  name: <your-configuration-name>
 spec:
-  package: $@<xpkg.upbound.io/your-org/your-configuration-name:tag>$@
+  package: <xpkg.upbound.io/your-org/your-configuration-name:tag>
 ```
 
 #### Declare as a project dependency
@@ -335,7 +335,7 @@ spec:
 You can declare _RemoteConfigurations_ as dependencies in your control plane's [project file][project-file]. Use the up CLI to add the dependency, providing the `--remote` flag:
 
 ```tsx live
-up dep add $@<xpkg.upbound.io/your-org/your-configuration-name:tag>$@ --remote
+up dep add <xpkg.upbound.io/your-org/your-configuration-name:tag> --remote
 ```
 
 This command adds a declaration in the `spec.apiDependencies` stanza of your project's `upbound.yaml` as demonstrated below:

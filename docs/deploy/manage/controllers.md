@@ -63,9 +63,9 @@ cd controller-package
 Inside the working directory, pull the Helm chart
 
 ```ini
-export CHART_REPOSITORY=$@<helm-chart-repo>$@
-export CHART_NAME=$@<helm-chart-name>$@
-export CHART_VERSION=$@<helm-chart-version>$@
+export CHART_REPOSITORY=<helm-chart-repo>
+export CHART_NAME=<helm-chart-name>
+export CHART_VERSION=<helm-chart-version>
 
 helm pull $CHART_NAME --repo $CHART_REPOSITORY --version $CHART_VERSION
 ```
@@ -80,8 +80,8 @@ mv $CHART_NAME-$CHART_VERSION.tgz helm/chart.tgz
 Unpack the CRDs from the Helm chart into their own directory:
 
 ```ini
-export RELEASE_NAME=$@<helm-release-name>$@
-export RELEASE_NAMESPACE=$@<helm-release-namespace>$@
+export RELEASE_NAME=<helm-release-name>
+export RELEASE_NAMESPACE=<helm-release-namespace>
 
 mkdir crds
 helm template $RELEASE_NAME helm/chart.tgz -n $RELEASE_NAMESPACE --include-crds | \
@@ -147,10 +147,10 @@ This causes an xpkg to get saved to your current directory with a name like `con
 Push the package to your desired OCI registry:
 
 ```ini
-export UPBOUND_ACCOUNT=$@<org-account-name>$@
-export CONTROLLER_NAME=$@<controller-name>$@
-export CONTROLLER_VERSION=$@<controller-version>$@
-export XPKG_FILENAME=$@<controller-f7091386b4c0.xpkg>$@
+export UPBOUND_ACCOUNT=<org-account-name>
+export CONTROLLER_NAME=<controller-name>
+export CONTROLLER_VERSION=<controller-version>
+export XPKG_FILENAME=<controller-f7091386b4c0.xpkg>
 
 up xpkg push xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
 ```
@@ -168,8 +168,8 @@ _Controllers_ are only installable on control planes running Crossplane `v1.19.0
 Set your kubecontext to the desired control plane in Upbound. Change the package path to the OCI registry you pushed it to. Then, deploy the _Controller_ directly:
 
 ```ini
-export CONTROLLER_NAME=$@<controller-name>$@
-export CONTROLLER_VERSION=$@<controller-version>$@
+export CONTROLLER_NAME=<controller-name>
+export CONTROLLER_VERSION=<controller-version>
 
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.upbound.io/v1alpha1
@@ -279,10 +279,10 @@ This causes an xpkg to get saved to your current directory with a name like `arg
 Push the package to your desired OCI registry:
 
 ```ini
-export UPBOUND_ACCOUNT=$@<org-account-name>$@
+export UPBOUND_ACCOUNT=<org-account-name>
 export CONTROLLER_NAME=controller-argocd
 export CONTROLLER_VERSION=v7.8.8
-export XPKG_FILENAME=$@<controller-f7091386b4c0.xpkg>$@
+export XPKG_FILENAME=<controller-f7091386b4c0.xpkg>
 
 up xpkg push --create xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
 ```

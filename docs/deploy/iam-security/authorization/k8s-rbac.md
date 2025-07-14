@@ -179,7 +179,7 @@ The example below demonstrates step-by-step how to give a tenant in a control pl
 As an administrator, create a control plane in a new control plane group:
 <!--- TODO(tr0njavolta): editcode --->
 ```ini
-up ctx $@<your-org>$@/upbound-gcp-us-central-1
+up ctx <your-org>/upbound-gcp-us-central-1
 up group create group1
 up ctp create prod-ctp -g group1
 ```
@@ -187,7 +187,7 @@ up ctp create prod-ctp -g group1
 Connect to the control plane and configure it. For this example, you can install [configuration-azure-data][configuration-azure-data]:
 
 ```ini
-up ctx $@<your-org>$@/upbound-gcp-us-central-1/group1/prod-ctp
+up ctx <your-org>/upbound-gcp-us-central-1/group1/prod-ctp
 up ctp configuration install xpkg.upbound.io/upbound/configuration-azure-database
 ```
 
@@ -223,7 +223,7 @@ spec:
     name: group1
   subjects:
   - kind: UpboundTeam
-    name: $@<your-team-uuid>$@
+    name: <your-team-uuid>
     role: viewer
 ```
 
@@ -237,7 +237,7 @@ The users in `team1` now have a view-only experience on the control plane. To le
 Change your kubecontext to the control plane:
 
 ```ini
-up ctx $@<your-org>$@/upbound-gcp-us-central-1/group1/prod-ctp
+up ctx <your-org>/upbound-gcp-us-central-1/group1/prod-ctp
 ```
 
 Create a namespace in the control plane for the team:
@@ -284,7 +284,7 @@ roleRef:
   name: crossplane:composite:xsqlinstances.azure.platform.upbound.io:edit
 subjects:
 - kind: Group
-  name: upbound:team:$@<team-uuid>$@
+  name: upbound:team:<team-uuid>
 ```
 
 Users in `team1` can now access the control plane and only have the ability to manage _SQLInstances_ in their designated namespace.

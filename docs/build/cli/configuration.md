@@ -49,7 +49,7 @@ versions are treated as cloud profiles in newer versions.
 To create a cloud profile for a given organization, use `up login`:
 
 ```shell
-up login --profile test --organization $@<your-upbound-org>$@
+up login --profile test --organization <your-upbound-org>
 ```
 <!--- TODO(tr0njavolta): edit:--->
 <!-- vale Microsoft.Wordiness = NO -->
@@ -65,7 +65,7 @@ disconnected profile manually based on a kubeconfig context pointed at the
 Space:
 
 ```shell
-up profile create $@<profile name>$@ --type=disconnected --kubeconfig $@<kubeconfig path>$@ --kubecontext $@<context name>$@
+up profile create <profile name> --type=disconnected --kubeconfig <kubeconfig path> --kubecontext <context name>
 ```
 
 The `--kubeconfig` and `--kubecontext` flags are optional; if not given, the `up` CLI uses your default kubeconfig and current context.
@@ -76,7 +76,7 @@ By default, `up` executes commands against the `current` profile. To select the
 current profile, run the following:
 
 ```shell
-up profile use $@<profile-name>$@
+up profile use <profile-name>
 ```
 
 <!-- vale off -->
@@ -90,7 +90,7 @@ time you switch to the profile with `up profile use`.
 You can change a profile's associated organization if needed:
 
 ```shell
-up profile set organization $@<new-organization>$@
+up profile set organization <new-organization>
 ```
 
 Then, run `up login` again to authenticate against the new

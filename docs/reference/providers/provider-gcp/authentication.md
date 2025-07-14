@@ -64,7 +64,7 @@ To authenticate any control plane in your organization, in the _Conditional CEL_
 <!--- TODO(tr0njavolta): editcode --->
 <!--- TODO(tr0njavolta): links --->
 ```console
-google.subject.contains("mcp:$@ORGANIZATION_NAME$@")
+google.subject.contains("mcp:ORGANIZATION_NAME")
 ```
 
 :::warning
@@ -501,9 +501,9 @@ kind: ControllerConfig
 metadata:
   name: my-controller-config
   annotations:
-    iam.gke.io/gcp-service-account: $@<GCP_IAM_service_account_email>$@
+    iam.gke.io/gcp-service-account: <GCP_IAM_service_account_email>
 spec:
-  serviceAccountName: $@<Kubernetes_service_account_name>$@
+  serviceAccountName: <Kubernetes_service_account_name>
 ```
 </div>
 
@@ -583,7 +583,7 @@ metadata:
 spec:
   credentials:
     source: InjectedIdentity
-  projectID: $@<Project_Name>$@
+  projectID: <Project_Name>
 ```
 </div>
 

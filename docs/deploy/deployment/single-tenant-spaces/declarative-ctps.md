@@ -19,8 +19,8 @@ To complete this tutorial, you need the following:
 Fetch the kubeconfig for the Space cluster, the Kubernetes cluster where you installed the Upbound Spaces software. You must add the Space cluster as a context to Argo.
 
 ```ini
-export SPACES_CLUSTER_SERVER="$@https://url$@"
-export SPACES_CLUSTER_NAME="$@cluster$@"
+export SPACES_CLUSTER_SERVER="https://url"
+export SPACES_CLUSTER_NAME="cluster"
 ```
 
 Switch contexts to the Kubernetes cluster where you've installed Argo. Create a secret on the Argo cluster whose data contains the connection details of the Space cluster.
