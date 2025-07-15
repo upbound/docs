@@ -1571,3 +1571,80 @@ html[data-theme='dark'] .menu__link--active {
     font-size: 0.95rem;
   }
 }
+
+.tier-badge {
+  border-left: 4px solid #007acc;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0.375rem;
+}
+.tier-badge--standard {
+  border-left-color: #3b82f6;
+  background-color: var(--up-grey-100);
+}
+
+.tier-badge--business {
+  border-left-color: #f59e0b;
+  background-color: var(--up-grey-100);
+}
+
+.tier-badge--enterprise {
+  border-left-color: #8b5cf6;
+  background-color: var(--up-grey-100);
+}
+
+.tier-badge__title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tier-badge__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.tier-badge--standard .tier-badge__icon {
+  color: #28a745;
+}
+
+.tier-badge--business .tier-badge__icon {
+  color: #17a2b8;
+}
+
+.tier-badge--enterprise .tier-badge__icon {
+  color: #ffc107;
+}
+
+.tier-badge__content {
+  margin: 0;
+}
+
+.tier-badge__content strong {
+  color: #1a1a1a;
+}
+
+/* Dark mode support */
+[data-theme='dark'] .tier-badge {
+  background-color: var(--up-grey-800);
+}
+
+[data-theme='dark'] .tier-badge--standard {
+  background-color: var(--up-grey-800);
+}
+
+[data-theme='dark'] .tier-badge--business {
+  background-color: var(--up-grey-800);
+}
+
+[data-theme='dark'] .tier-badge--enterprise {
+  background-color: var(--up-grey-800);
+}
+
+[data-theme='dark'] .tier-badge__content strong {
+  color: #ffffff;
+}
