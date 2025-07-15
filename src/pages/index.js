@@ -93,7 +93,7 @@ const LandingPage = () => {
               Upbound
             </h1>
             <p className="hero-description">
-              Welcome to the Upbound Crossplane, the AI-native distribution of Crossplane. <p>Build autonomous infrastructure platforms ready for the age of autonomous systems.
+              Welcome to the Upbound Crossplane, the AI-native distribution of Crossplane. <p className="hero-description">Build autonomous infrastructure platforms ready for the age of autonomous systems.
       </p>
             </p>
           </div>
@@ -124,7 +124,6 @@ const LandingPage = () => {
                   <div className="terminal-dot terminal-dot--yellow"></div>
                   <div className="terminal-dot terminal-dot--green"></div>
                 </div>
-                <span className="terminal-title">Terminal</span>
               </div>
               <div className="terminal-content">
                 <div className="terminal-line terminal-command">$ up project init --scratch my-new-project</div>
