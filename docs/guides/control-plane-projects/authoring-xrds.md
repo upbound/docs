@@ -1,5 +1,5 @@
 ---
-title: Authoring Composite Resource Definitions (XRDs) in your Control Plane Project
+title: Create Project Schemas
 sidebar_position: 4
 description: Define your first API in your control plane project
 ---

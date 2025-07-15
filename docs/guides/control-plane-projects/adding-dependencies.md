@@ -1,5 +1,5 @@
 ---
-title: Adding dependencies to your Control Plane Projects
+title: Add Dependencies to Projects
 sidebar_position: 2
 description: The basic concepts to help you on your Upbound journey
 ---

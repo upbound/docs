@@ -1,6 +1,6 @@
 ---
 title: Contexts
-sidebar_position: 1
+sidebar_position: 3
 description: An introduction to the how contexts work in Upbound
 aliases:
     - /reference/contexts

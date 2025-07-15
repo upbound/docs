@@ -1,5 +1,5 @@
 ---
-title: Running and testing your Control Plane Projects
+title: Run and Test Projects
 sidebar_position: 4
 description: How to run your control plane project on a development controlplane
 ---

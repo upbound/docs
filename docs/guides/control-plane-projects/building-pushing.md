@@ -1,5 +1,5 @@
 ---
-title: Building and pushing your Control Plane Projects
+title: Build and Push Projects
 sidebar_position: 7
 description: How to build and push your control plane project to the Upbound Marketplace
 ---

@@ -1,5 +1,5 @@
 ---
-title: Up CLI
+title: Overview 
 sidebar_position: 1
 description: Install Crossplane, interact with the Upbound Marketplace and Managed
   Control Planes with the Upbound Up CLI.
