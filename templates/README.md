@@ -18,6 +18,10 @@ with certain concepts.
 Tutorials serve the function of giving users hands-on experience with Upbound to
 internalize key concepts in a low-risk context.
 
+These docs should generally go in [`getstarted`](/docs/getstarted/index.md)
+section, [`guides`](/docs/guides/index.md), or in specific concept directories
+in [`manuals`](/docs/manuals/index.md).
+
 [Tutorial Template](/templates/tutorial_template.md)
 
 ### Concepts
@@ -28,6 +32,9 @@ uses to align their existing knowledge with the tasks they need to perform.
 
 Concept docs can be extended definitions of major abstractions and help explain
 the context of a feature or service within the broader Upbound framework.
+
+These docs are required for features or functions in the
+[`manuals`](/docs/manual/docs/manuals/index.md) directory.
 
 [Concept Template](/templates/concept_template.md)
 
@@ -45,6 +52,9 @@ tutorials are **learning-oriented**.
 
 How-to's in our product can also apply to installation guides, but have a
 different intended audience (Spaces Admin vs. Developer).
+
+These docs are required for features or functions in the
+[`manuals`](/docs/manual/docs/manuals/index.md) directory.
 
 [How-to Template](/templates/howto_template.md)
 
