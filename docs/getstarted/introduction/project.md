@@ -152,57 +152,55 @@ following:
 
 <TabItem value="gotempl" label="Templated YAML">
 ```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    gotemplating.fn.crossplane.io/composition-resource-name: deployment
+    {{ if eq (.observed.resources.deployment | getResourceCondition "Available").Status "True" }}
+    gotemplating.fn.crossplane.io/ready: "True"
+    {{ end }}
+  labels:
+    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+  template:
+    metadata:
+      labels:
+        example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+    spec:
+      containers:
+      - name: app
+        image: {{ .observed.composite.resource.spec.image }}
+        ports:
+        - containerPort: 80
 ---
-          apiVersion: apps/v1
-          kind: Deployment
-          metadata:
-            annotations:
-              gotemplating.fn.crossplane.io/composition-resource-name: deployment
-              {{ if eq (.observed.resources.deployment | getResourceCondition "Available").Status "True" }}
-              gotemplating.fn.crossplane.io/ready: "True"
-              {{ end }}
-            labels:
-              example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
-          spec:
-            replicas: 2
-            selector:
-              matchLabels:
-                example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
-            template:
-              metadata:
-                labels:
-                  example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
-              spec:
-                containers:
-                - name: app
-                  image: {{ .observed.composite.resource.spec.image }}
-                  ports:
-                  - containerPort: 80
-          ---
-          apiVersion: v1
-          kind: Service
-          metadata:
-            annotations:
-              gotemplating.fn.crossplane.io/composition-resource-name: service
-              {{ if (get (getComposedResource . "service").spec "clusterIP") }}
-              gotemplating.fn.crossplane.io/ready: "True"
-              {{ end }}
-            labels:
-              example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
-          spec:
-            selector:
-              example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
-            ports:
-            - protocol: TCP
-              port: 8080
-              targetPort: 80
-          ---
-          apiVersion: example.crossplane.io/v1
-          kind: App
-          status:
-            replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
-            address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}
-```
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    gotemplating.fn.crossplane.io/composition-resource-name: service
+    {{ if (get (getComposedResource . "service").spec "clusterIP") }}
+    gotemplating.fn.crossplane.io/ready: "True"
+    {{ end }}
+  labels:
+    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+spec:
+  selector:
+    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+---
+apiVersion: example.crossplane.io/v1
+kind: App
+status:
+  replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
+  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}```
 </TabItem>
 <TabItem value="Python" label="Python">
 ```python
