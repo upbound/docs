@@ -213,6 +213,10 @@ html[data-theme='dark'] .navbar__item--active .navbar__link {
   color: var(--up-purple-200) !important;
 }
 
+.breadcrumbs__link {
+    border-bottom: none !important;
+}
+
 /* Sidebar */
 .menu {
   padding: 1rem !important;

@@ -1,5 +1,6 @@
 ---
-title: Get Started 
+title: Build your first control plane project
+slug: "/getstarted/"
 sidebar_position: 1
 ---
 
