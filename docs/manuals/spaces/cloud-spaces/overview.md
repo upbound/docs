@@ -4,3 +4,5 @@ description: "Learn best practices for Cloud Spaces in your production environme
 tier: "standard"
 sidebar_position: 1
 ---
+
+<StandardBadge />
