@@ -3,30 +3,40 @@ title: Create a control plane project
 sidebar_position: 1
 ---
 
-Now that you have an Upbound account and the up CLI installed, you are ready to create a control plane. Specifically, you will do the following:
+Now that you have an Upbound account and the up CLI installed, you are ready to
+create a control plane.
+
+In this quickstart, you will:
 
 1. Scaffold a control plane project
-2. Define your own resource abstraction and templatization.
+2. Define your own resource abstraction and templatization
 3. See the changes immediately
 
 :::tip
 
-This quickstart teaches how to use Crossplane to build workflows for templating resources and exposing them as simplified resource abstraction. If you just want to manage the lifecycle of resources in an external system through Crossplane and Kubernetes, read [Manage external resources with providers][providers]
+This quickstart teaches how to use Crossplane to build workflows for templating
+resources and exposing them as simplified resource abstraction. If you just want
+to manage the lifecycle of resources in an external system through Crossplane
+and Kubernetes, read [Manage external resources with providers][providers]
 
 :::
 
 ## Prerequisites
 
-This quickstart will take you approximately 10 minutes to complete. You should be familiar with YAML or programming in Go, Python, and KCL.
+This quickstart takes around 10 minutes to complete. You should be familiar with
+YAML or programming in Go, Python, and KCL.
 
-Before beginning, make sure that:
+Before beginning, make sure you have:
 
-- you have installed the [up](up) CLI.
-- you have a Docker-compatible container runtime installed on your system and running.
+- The [up](up) CLI installed
+- A Docker-compatible container runtime installed and running on your system
 
 ## Create a control plane project
 
-Crossplane works by letting you define new resource types in Kubernetes that invoke function pipelines to template and generate other resources. Just like any other software project, a _control plane project_ is a source-level representation of your control plane.
+Crossplane works by letting you define new resource types in Kubernetes that
+invoke function pipelines to template and generate other resources. Just like
+any other software project, a _control plane project_ is a source-level
+representation of your control plane.
 
 Create a control plane project on your machine by running the following command:
 
@@ -34,17 +44,21 @@ Create a control plane project on your machine by running the following command:
 up project init --scratch getting-started
 ```
 
-This scaffolds a new project in a folder called `getting-started`. Change your current working directory to the project root folder and notice the `upbound.yaml` file. 
+This scaffolds a new project in a folder called `getting-started`. Change your
+current working directory to the project root folder.
 
 ## Deploy your control plane
 
-In the root directory of your project, build and run your project by running the following:
+In the root directory of your project, build and run your project by running the
+following:
 
 ```shell
 up project run --local
 ```
 
-This launches an instance of Upbound Crossplane on your machine, wrapped and deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the following command to be able to access the UI for your control plane:
+This launches an instance of Upbound Crossplane on your machine, wrapped and
+deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the
+following command to be able to access the UI for your control plane:
 
 ```shell
 kubectl port-forward -n crossplane-system svc/uxp-webui 8080:80
@@ -56,18 +70,20 @@ Open a browser at [https://localhost:8080](https://localhost:8080).
 
 ## Define your own resource type
 
-Customize your control plane by defining your own resource type. Start by creating an example instance of your custom resource type and define the properties you want to exist, then use the _up_ CLI to generate the definition files Crossplane requires. 
+Customize your control plane by defining your own resource type.
 
-Scaffold a new resource type example with:
+Create an example instance of your custom resource type with:
+
 
 ```shell
 up example generate \
   --type xr --api-group getting.started --api-version v1alpha1 --kind App --name example
 ```
 
-Open the project in your IDE of choice and edit the generated file `getting-started/examples/app/example.yaml`, replacing it with the following:
+Open the project in your IDE of choice and replace the contents of the generated file
+`getting-started/examples/app/example.yaml` with the following:
 
-```yaml
+```yaml title="getting-started/examples/app/example.yaml"
 apiVersion: example.crossplane.io/v1
 kind: App
 metadata:
@@ -80,7 +96,7 @@ status:
   address: 10.0.0.1  # Copied from the Service's status
 ```
 
-Generate the definition files needed by Crossplane with the following commands:
+Next, generate the definition files needed by Crossplane with the following commands:
 
 <Tabs>
 
@@ -114,7 +130,9 @@ up function generate --language=kcl compose-resources apis/apps/composition.yaml
 </TabItem>
 </Tabs>
 
-What you just did is created your own resource type called `App` and created a single function to contain the logic that defines what should happen when one of these _Apps_ get created. 
+You just created your own resource type called `App`. You generated a function
+containing the logic Crossplane uses to determine what should happen when you
+create the `App`.
 
 :::tip
 
@@ -126,7 +144,9 @@ To define a new resource type with Crossplane, you need to:
 
 :::
 
-Open the function definition file at `getting-started/functions/compose-resources/` and add some logic:
+Open the function definition file at
+`getting-started/functions/compose-resources/` and replace the contents with the
+following:
 
 <Tabs>
 
@@ -225,7 +245,8 @@ NAME     SYNCED   READY   COMPOSITION   AGE
 my-app   True     True    app-yaml      56s
 ```
 
-Observe how Crossplane created a _Deployment_ and _Service_ because the _App_ got created:
+Observe the `Deployment` and `Service` Crossplane created when you created the
+`App`:
 
 ```shell
 kubectl get deploy,service -l example.crossplane.io/app=my-app
@@ -236,11 +257,13 @@ NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
 service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 ```
 
-## Next Steps
+## Next steps
 
-Now that the control plane has run locally, you’re ready to learn about packaging it as a [Configuration][configuration] image and pushing it to a registry, specifically the Upbound Marketplace.
+Now that your control plane is running locally, you're ready to package it as a
+[Configuration][Configuration] image and push it to the Upbound Marketplace.
 
-[Build and push your first Configuration][buildAndPush]
+Check out the [Build and push your first Configuration][buildAndPush] tutorial
+to continue.
 
 [up]: up
 [marketplace]: https://marketplace.upbound.io
@@ -251,5 +274,4 @@ Now that the control plane has run locally, you’re ready to learn about packag
 [xrd]: /uxp/composition/composite-resource-definitions
 [composition]: /uxp/composition/overview
 [functions]: /uxp/composition/composite-resource-definitions
-
 [webUI]: /img/uxp-webui.png

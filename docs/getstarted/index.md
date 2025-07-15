@@ -31,5 +31,5 @@ Follow the [introduction][intro] guide to get started building your own control 
 
 [guides]:  /guides/
 [register]: https://accounts.upbound.io/register
-[up]: /manuals/upbound-cli/
+[up]: /manuals/upbound-cli/install
 [intro]: introduction/project
