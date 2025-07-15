@@ -1,6 +1,6 @@
 ---
-title: About Upbound
-sidebar_position: 4
+title: What is Upbound?
+sidebar_position: 2
 description: Learn what Control Planes are and why you should use them
 ---
 
