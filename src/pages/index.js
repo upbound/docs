@@ -114,10 +114,7 @@ const LandingPage = () => {
                   Start Tutorial
                   <ChevronRight className="button-icon" />
                 </a>
-                <a href="/examples" className="quickstart-button quickstart-button--secondary">
-                  View Examples
-                </a>
-              </div>
+                              </div>
             </div>
             
             <div className="terminal-window">
@@ -171,9 +168,9 @@ const LandingPage = () => {
       <div className="docs-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Documentation Sections</h2>
+            <h2 className="section-title">Your Control Plane Journey</h2>
             <p className="section-description">
-              Explore our comprehensive documentation organized by your journey and use case.
+              Get started and build your best platform.
             </p>
           </div>
 
