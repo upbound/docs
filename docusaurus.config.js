@@ -63,21 +63,21 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            label: 'Learn',
-            sidebarId: 'learnSidebar',
+            label: 'Get Started',
+            sidebarId: 'getstartedSidebar',
             position: 'left',
           },
           {
             type: 'docSidebar',
-            label: 'Build',
+            label: 'Guides',
             position: 'left',
-            sidebarId: 'buildSidebar',
+            sidebarId: 'guidesSidebar',
           },
           {
             type: 'docSidebar',
-            label: 'Deploy',
+            label: 'Manuals',
             position: 'left',
-            sidebarId: 'deploySidebar',
+            sidebarId: 'manualsSidebar',
           },
           // {
           //   type: 'docSidebar',
@@ -93,12 +93,6 @@ const config = {
             sidebarId: 'referenceSidebar',
           },
           {
-            type: 'docSidebar',
-            label: 'Solutions',
-            position: 'left',
-            sidebarId: 'solutionsSidebar',
-          },
-          {
             type: 'search',
             position: 'right',
           },
@@ -112,65 +106,25 @@ const config = {
         searchPagePath: 'search',
         searchParameters: {},
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Use Upbound',
-            items: [
-              {
-                label: 'Get Started',
-                to: '/get-started',
-              },
-            ],
-          },
-          {
-            title: 'Build With Upbound',
-            items: [
-              {
-                label: 'Control Planes',
-                to: '/upbound',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Slack',
-                href: 'https://slack.crossplane.io',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/upbound',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/upbound_io',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                href: 'https://blog.upbound.io',
-              },
-              {
-                label: 'Support',
-                href: 'https://upbound.zendesk.com/',
-              },
-              {
-                label: 'Crossplane Docs',
-                href: 'https://docs.crossplane.io',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Upbound. All rights reserved.`,
-      },
-      prism: {
+footer: {
+  style: 'dark',
+  copyright: `
+    <div class="footer-content">
+      <p class="footer-message">
+        Join the community and start building your platform with Upbound Crossplane
+      </p>
+      <div class="footer-links">
+        <a href="https://slack.crossplane.io">Community Slack</a>
+        <a href="https://github.com/upbound">GitHub</a>
+        <a href="https://marketplace.upbound.io">Marketplace</a>
+        <a href="https://www.upbound.io/pricing">Pricing</a>
+      </div>
+      <p class="footer-copyright">
+        Copyright © ${new Date().getFullYear()} Upbound. All rights reserved.
+      </p>
+    </div>
+  `,
+},    prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         additionalLanguages: ['bash', 'yaml', 'json', 'go', 'python'],

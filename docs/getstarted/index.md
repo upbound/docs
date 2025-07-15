@@ -1,6 +1,5 @@
 ---
 title: Get Started 
-slug: '/'
 sidebar_position: 1
 ---
 
