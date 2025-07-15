@@ -96,18 +96,52 @@ const LandingPage = () => {
               Welcome to the Upbound Crossplane, the AI-native distribution of Crossplane. <p>Build autonomous infrastructure platforms ready for the age of autonomous systems.
       </p>
             </p>
-            <div className="hero-buttons">
-              <a href="/getstarted" className="hero-button hero-button--primary">
-                Get Started
-                <ChevronRight className="button-icon" />
-              </a>
-              <a href="https://github.com/upbound" className="hero-button hero-button--secondary">
-                View on GitHub
-              </a>
+          </div>
+        </div>
+      </div>
+      {/* Quick Start Section */}
+      <div className="quickstart-section">
+        <div className="container">
+          <div className="quickstart-grid">
+            <div className="quickstart-content">
+              <h2 className="quickstart-title">Ready to Get Started?</h2>
+              <p className="quickstart-description">
+                Create your first control plane project in just 10 minutes. Our quickstart guide walks you through 
+                creating a custom resource type and deploying it to a local Upbound Crossplane instance.
+              </p>
+              <div className="quickstart-buttons">
+                <a href="/getstarted" className="quickstart-button quickstart-button--primary">
+                  Start Tutorial
+                  <ChevronRight className="button-icon" />
+                </a>
+                <a href="/examples" className="quickstart-button quickstart-button--secondary">
+                  View Examples
+                </a>
+              </div>
+            </div>
+            
+            <div className="terminal-window">
+              <div className="terminal-header">
+                <div className="terminal-controls">
+                  <div className="terminal-dot terminal-dot--red"></div>
+                  <div className="terminal-dot terminal-dot--yellow"></div>
+                  <div className="terminal-dot terminal-dot--green"></div>
+                </div>
+                <span className="terminal-title">Terminal</span>
+              </div>
+              <div className="terminal-content">
+                <div className="terminal-line terminal-command">$ up project init --scratch my-new-project</div>
+                <div className="terminal-line terminal-output">✓ Created control plane project</div>
+                <div className="terminal-line terminal-command">$ cd my-new-project && up project run --local</div>
+                <div className="terminal-line terminal-output">🚀 Upbound Crossplane running at localhost:8080</div>
+                <div className="terminal-line terminal-command">$ kubectl apply -f examples/app/example.yaml</div>
+                <div className="terminal-line terminal-output">app.example.crossplane.io/my-app created</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
 
       {/* Features Section */}
       <div className="features-section">
@@ -171,49 +205,6 @@ const LandingPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Start Section */}
-      <div className="quickstart-section">
-        <div className="container">
-          <div className="quickstart-grid">
-            <div className="quickstart-content">
-              <h2 className="quickstart-title">Ready to Get Started?</h2>
-              <p className="quickstart-description">
-                Create your first control plane project in just 10 minutes. Our quickstart guide walks you through 
-                creating a custom resource type and deploying it to a local Upbound Crossplane instance.
-              </p>
-              <div className="quickstart-buttons">
-                <a href="/getstarted" className="quickstart-button quickstart-button--primary">
-                  Start Tutorial
-                  <ChevronRight className="button-icon" />
-                </a>
-                <a href="/examples" className="quickstart-button quickstart-button--secondary">
-                  View Examples
-                </a>
-              </div>
-            </div>
-            
-            <div className="terminal-window">
-              <div className="terminal-header">
-                <div className="terminal-controls">
-                  <div className="terminal-dot terminal-dot--red"></div>
-                  <div className="terminal-dot terminal-dot--yellow"></div>
-                  <div className="terminal-dot terminal-dot--green"></div>
-                </div>
-                <span className="terminal-title">Terminal</span>
-              </div>
-              <div className="terminal-content">
-                <div className="terminal-line terminal-command">$ up project init --scratch my-new-project</div>
-                <div className="terminal-line terminal-output">✓ Created control plane project</div>
-                <div className="terminal-line terminal-command">$ cd my-new-project && up project run --local</div>
-                <div className="terminal-line terminal-output">🚀 Upbound Crossplane running at localhost:8080</div>
-                <div className="terminal-line terminal-command">$ kubectl apply -f examples/app/example.yaml</div>
-                <div className="terminal-line terminal-output">app.example.crossplane.io/my-app created</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
