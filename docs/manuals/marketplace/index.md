@@ -1,10 +1,11 @@
 ---
-title: Marketplace
+title: Overview
+sidebar_position: 1
 description: How to use the Upbound Marketplace to discover Crossplane providers and
   packages.
 ---
 
-[Upbound Marketplace][upbound-marketplace] simplifies your control plane journey with the largest registry for storing, managing, and sharing control plane extensions. It integrates seamlessly with Upbound's builder tooling. It also provides builders with pre-built Configurations and Functions to speed up control plane development workflows.
+[Upbound Marketplace][upbound-marketplace] simplifies your control plane journey with the largest registry for storing, managing, and sharing control plane extensions. It integrates seamlessly with Upbound's control plane project tooling. It also provides platform engineers with pre-built Configurations and Functions to speed up control plane development workflows.
 
 The Upbound Marketplace is the main source for publicly available Crossplane packages.
 
@@ -13,8 +14,9 @@ The Upbound Marketplace is the main source for publicly available Crossplane pac
 The Marketplace supports the following control plane extensions:
 
 - [Crossplane providers][crossplane-providers] are packages that enable Upbound control planes to interact with external APIs.
-- [Control plane configurations][control-plane-configurations] are packages that define one or more resource types, called Composite Resources.
-- [Composition functions][composition-functions] are packages that define reusable logic for composing Crossplane resources.
+- [Configurations][control-plane-configurations] are packages that define one or more resource types, called Composite Resources.
+- [Functions][composition-functions] are packages that define reusable logic, either for use in a composition or operation pipeline.
+- [Add-Ons][add-ons] are packages that extend Upbound control planes with additional capabilities.
 
 All extensions in the Marketplace are OCI images served from repositories.
 
@@ -51,3 +53,4 @@ Extensions in the Marketplace are published and maintained by a variety of sourc
 [crossplane-providers]: https://marketplace.upbound.io/providers
 [control-plane-configurations]: https://marketplace.upbound.io/configurations
 [composition-functions]: https://marketplace.upbound.io/functions
+[add-ons]: https://marketplace.upbound.io/addons

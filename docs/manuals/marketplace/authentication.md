@@ -1,6 +1,6 @@
 ---
 title: Authentication
-sidebar_position: 1
+sidebar_position: 3
 description: How to authenticate to the Upbound Marketplace to access private packages.
 ---
 
@@ -16,19 +16,12 @@ Authenticating to the Upbound Marketplace for private packages requires an [Upbo
 
 Install the [Up command-line][up-command-line] to generate Kubernetes secrets and to use Upbound Marketplace private resources.
 
-:::note
-Upbound Marketplace requires Up command-line version `v0.13.0` or later.
-:::
-
 ## Log in with the Up command-line
 
 Use `up login` to authenticate a user to the Upbound Marketplace.
 
 ```shell
 up login
-username: my-user
-password:
-my-user logged in
 ```
 
 ## Configure Docker to use the up credential helper

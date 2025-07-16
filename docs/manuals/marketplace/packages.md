@@ -1,16 +1,12 @@
 ---
 title: Creating and Pushing Packages
-sidebar_position: 1
+sidebar_position: 2
 description: How to create, configure and push packages to the Upbound Marketplace
 ---
 
-## Package types
-Crossplane supports these package types: `Configurations`, `Functions` and `Providers`.
+Upbound Marketplace provides a collection of packages, accelerating development workflows and reducing setup time. You can build upon pre-built packages from the Marketplace and then use repositories to share and distribute your own packages with your team or other developers.
 
-* **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata.
-* **`Function`** packages include the compiled function code for single or
-  multiple processor architectures.
-* **`Provider`** packages combine a [Kubernetes controller][kubernetes-controller] container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package][aws-provider-package] is an example a provider's metadata and `CRDs`.
+This guide shows you how to build and push a package to the Marketplace.
 
 ## Prerequisites
 
@@ -40,6 +36,7 @@ Before pushing a package you must [login][login] to the Upbound Marketplace usin
 `up login` with a configured [credential helper][credential-helper].
 
 ### Create a repository
+
 Upbound hosts packages in an Upbound _repository_. Create a repository with the [`up repository create`][up-repository-create] command.
 
 For example, to create a repository called `my-repo`
@@ -101,7 +98,7 @@ For example, the Upbound AWS Official Provider is a `provider` package in the
 `upbound` organization's `provider-aws` repository. The package address is <a
 href="https://marketplace.upbound.io/providers/upbound/provider-aws/">`https://marketplace.upbound.io/providers/upbound/provider-aws/`</a>
 
-### Publishing public packages
+## Publishing public packages
 
 Users can now publish their own Marketplace listing pages with the [`up
 repository update`][up-repo-update] command with the `--publish` flag. This requires `up` CLI version `v0.39.0` or later.
@@ -121,7 +118,7 @@ publishing a public Marketplace listing page.
 | **Public**  | **Pull:** Anyone<br/>**View:** Anyone       | **Pull:** Anonymous<br/>**View:** No one |
 | **Private** | **Pull:** Authorized<br/>**View:** Authorized | **Pull:** Authorized<br/>**View:** No one |
 
-### Adding documentation, icons, and other assets to your package
+## Add documentation, icons, and other assets to your package
 
 Users may also provide their additive package content, which renders on the listing page for that package version.
 
@@ -150,7 +147,7 @@ This is an alpha feature, and requires `up` CLI version `v0.39.0` or later. See
 documentation and conventions. 
 :::
 
-### Troubleshooting
+## Troubleshooting
 
 <details>
 
@@ -193,6 +190,10 @@ The Marketplace only publishes release versions with valid [semver][semver] tags
 
 [up-alpha-xpkg-append]: /apis-cli/cli-reference
 [up-repo-update]: /apis-cli/cli-reference
+
+[crossplane-providers]: /manuals/packages/providers/
+[control-plane-configurations]: /manuals/packages/configurations
+[composition-functions]: /manuals/packages/functions
 
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [aws-provider-package]: https://github.com/crossplane-contrib/provider-aws/tree/master/package
