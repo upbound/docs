@@ -136,8 +136,7 @@ footer: {
       },
       docs: {
         sidebar: {
-          hideable: true,
-          autoCollapseCategories: true,
+          hideable: false,
         },
       },
     }),
