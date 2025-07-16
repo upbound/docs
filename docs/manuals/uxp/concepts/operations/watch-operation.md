@@ -6,7 +6,7 @@ description: Understand Crossplane's WatchOperation workflow
 
 A _WatchOperation_ creates one-time [Operations][operations] in response to state changes on observed resources.
 
-WatchOperation is meant for performing an action such as the backup of a resource. CronOperation runs an Operation periodically on a given schedule, written in [Cron][cron] format.
+WatchOperation is designed to monitor resources and respond to state changes. Unlike CronOperation which runs on a schedule, WatchOperation triggers actions when specific changes are detected in the watched resources.
 
 ## Run a WatchOperation example
 

@@ -41,7 +41,7 @@ spec:
         name: api-key-anthropic
 ```
 When you create an XNetwork object, your control plane uses the provided API key to call Claude, an LLM offered by Anthropic, to:
-- analyize the config and status of each composed resource
+- analyze the config and status of each composed resource
 - make a determination why each resource isn't ready, if it's not
 - provide a root cause summary in the status of the XNetwork object and suggest remedial actions
 

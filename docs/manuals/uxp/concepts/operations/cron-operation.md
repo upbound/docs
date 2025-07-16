@@ -10,7 +10,7 @@ CronOperation is meant for performing a regular scheduled action such as the bac
 
 ## Run a CronOperation example
 
-Here is an example CronOperation config. It executes a rolling verison upgrade for a fleet of Kubernetes Clusters.
+Here is an example CronOperation config. It executes a rolling version upgrade for a fleet of Kubernetes Clusters.
 
 ```yaml
 apiVersion: ops.crossplane.io/v1alpha1
