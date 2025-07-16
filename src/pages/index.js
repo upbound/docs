@@ -20,7 +20,7 @@ const LandingPage = () => {
     {
       id: 'guides',
       title: 'Guides',
-      description: 'Step-by-step tutorials for common platform engineering scenarios',
+      description: 'Step-by-step tutorials for platform engineering scenarios and integrations',
       icon: <BookOpen className="w-8 h-8" />,
       gradient: 'from-purple-500 to-pink-500',
       items: [

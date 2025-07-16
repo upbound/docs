@@ -609,8 +609,8 @@ table tbody tr:hover {
 
 .docs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .doc-card {
@@ -623,9 +623,9 @@ table tbody tr:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.doc-card:hover {
+  min-width: 0;
+  width: 100%;
+}.doc-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--upbound-card-shadow-hover);
 }
@@ -934,9 +934,12 @@ html[data-theme='light'] .doc-card-item {
   color: var(--up-grey-600) !important;
 }
 
-html[data-theme='light'] .feature-title,
+html[data-theme='light'] .feature-title,{
+      color: var(--up-grey-700) !important;
+
+}
 html[data-theme='light'] .doc-card-title {
-  color: var(--up-grey-100) !important;
+      color: var(--up-grey-100) !important;
 }
 
 html[data-theme='light'] .doc-card-description {
