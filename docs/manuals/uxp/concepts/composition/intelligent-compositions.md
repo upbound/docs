@@ -10,9 +10,9 @@ policy) with intelligent control (driven by embedded AI agents). Bring
 intelligence into the control loop of your compositions with AI-embedded
 compositions functions.
 
-AI-embedded composition functions are standard [functions][functions] that've
-been designed to integrate with popular Large Language Model providers, such as
-from OpenAI and Anthropic. You can supplement existing function pipelines with
+AI-embedded composition functions are standard [functions][functions] designed
+to integrate with popular Large Language Model providers, such as from OpenAI
+and Anthropic. You can supplement existing function pipelines with
 these AI-embedded functions. 
 
 ## Example AI-embedded function
@@ -49,7 +49,9 @@ spec:
         namespace: crossplane-system
         name: api-key-anthropic
 ```
-When you create an XNetwork object, your control plane uses the provided API key to call Claude, an LLM offered by Anthropic, to:
+When you create an XNetwork object, your control plane uses the provided API key
+to call Claude, an LLM offered by Anthropic, to:
+
 - analyze the config and status of each composed resource
 - make a determination why each resource isn't ready, if it's not
 - provide a root cause summary in the status of the XNetwork object and suggest remedial actions

@@ -6,13 +6,15 @@ description: Understand Crossplane's Operations workflow
 
 Operations lets you build workflows using function pipelines that execute tasks on resources under management by your control plane. Operations run once to completion and then stop. 
 
-A simple case is to create an Operation object in order to execute a backup of a database that's being managed by your control plane. The Operation object will invoke a function to perform the task
+An example use case is to create an `Operation` object to execute a control
+plane managed database backup. The `Operation` object invokes a function to
+perform the task.
 
 If you want to perform an Operation on a schedule or in response to state change of a resource, see [CronOperation][cronOperation] and [WatchOperation][watchOperation] respectively.
 
-## Run an Operation example
+## Example
 
-Here is an example Operation config. It creates a ConfigMap object and emits an event indicating it performed an operation.
+This example `Operation` creates a `ConfigMap` object and emits an event indicating it performed an operation.
 
 ```yaml
 apiVersion: ops.crossplane.io/v1alpha1

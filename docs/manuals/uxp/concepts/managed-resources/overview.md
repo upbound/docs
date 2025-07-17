@@ -122,7 +122,7 @@ spec:
   forProvider:
     # Removed for brevity
     vpcId: vpc-01353cfe93950a8ff
-```      
+```
 
 ##### Matching by name reference
 

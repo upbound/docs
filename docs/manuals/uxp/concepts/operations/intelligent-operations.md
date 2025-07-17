@@ -4,9 +4,14 @@ sidebar_position: 5
 description: Embed AI intelligence in the Operation execution flow.
 ---
 
-Upbound control planes combine deterministic control (like reconciliation and policy) with intelligent control (driven by embedded AI agents). Bring intelligence into the exection flow of your Operations with AI-embedded operation functions.
+Upbound control planes combine deterministic control (like reconciliation and
+policy) with intelligent control (driven by embedded AI agents). Bring
+intelligence into the exection flow of your Operations with AI-embedded
+operation functions.
 
-AI-embedded operation functions are standard [functions][functions] that've been designed to integrate with popular Large Language Model providers, such as from OpenAI and Anthropic. You can supplement existing function pipelines with these AI-embedded functions. 
+AI-embedded operation functions are standard [functions][functions] designed to integrate with popular Large Language Model providers, such as from
+OpenAI and Anthropic. You can supplement existing function pipelines with these
+AI-embedded functions. 
 
 ## Example AI-embedded function
 

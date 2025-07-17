@@ -10,9 +10,9 @@ your Composition pipelines to template Crossplane resources.
 
 Before you continue, make sure you have:
 
-* A Crossplane control plane running
-* `kubectl` installed
-* Reviewed the Composition concepts page
+-   A Crossplane control plane running
+-   `kubectl` installed
+-   Reviewed the Composition concepts page
 
 ## Install a composition function
 
@@ -54,6 +54,44 @@ Create a new file called `composition.yaml` and paste the configuration below:
 composition object -tabs
 ```
 
+## Use multiple functions in a pipeline
 
+Crossplane calls functions in sequence and passes results from one function to
+the next. You can add multiple pipeline steps in your `Composition` object
+`pipeline`:
 
+```yaml
+example - tabs
+```
 
+## Composed resource access
+
+For non-provider resources, you can create RBAC permissions for Crossplane to
+manage them.
+
+Create a ClusterRole:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+ kind: ClusterRole
+ metadata:
+   name: cnpg:aggregate-to-crossplane
+   labels:
+     rbac.crossplane.io/aggregate-to-crossplane: "true"
+ rules:
+ - apiGroups:
+   - postgresql.cnpg.io
+.   resources:
+.   - clusters
+.   verbs:
+.   - "*"
+```
+
+Apply the ClusterRole:
+
+```shell
+kubectl apply -f clusterrole.yaml
+```
+
+The `rbac.crossplane.io/aggregate-to-crossplane: "true"` label is critical for
+aggregating to Crossplane's primary cluster role.

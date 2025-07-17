@@ -24,9 +24,9 @@ const LandingPage = () => {
       icon: <BookOpen className="w-8 h-8" />,
       gradient: 'from-purple-500 to-pink-500',
       items: [
-          'Guides',
-          'Guides',
-          'Guides',
+          'Build control plane projects',
+          'Create an Internal Developer Platform',
+          'Common use cases',
               ]
     },
     {
@@ -36,9 +36,9 @@ const LandingPage = () => {
       icon: <Settings className="w-8 h-8" />,
       gradient: 'from-green-500 to-emerald-500',
         items: [
-        'How-tos',
-        'How-tos',
-        'How-tos',
+        'Install, configure, and manage Upbound',
+        'Control Plane Concepts',
+        'How-to deploy Upbound in production',
       ]
     },
     {

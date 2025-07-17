@@ -1,7 +1,7 @@
 ---
 title: Run a control plane simulation
 sidebar_position: 20
-description: A guide for how to use Simulations in a Space.
+description: A guide for how to use Simulations.
 ---
 
 :::important
@@ -291,8 +291,6 @@ The Upbound team is working to improve this feature. Your feedback is always app
 For general information on this feature as it fits in the Upbound workflow,
 review the [overview documentation][overview-documentation] on Simulations.
 
-
 [overview-documentation]: /build/control-plane-projects/simulations
-
 [reach-out-to-upbound]: https://www.upbound.io/contact
 [simulation-api]: /apis-cli/spaces-api/

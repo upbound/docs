@@ -6,12 +6,18 @@ description: A guide to how to wrap and deploy an Upbound controller into contro
 ---
 
 :::important
-This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this feature, please [contact us][contact-us].
+This feature is in private preview for select customers in Upbound Cloud Spaces.
+If you're interested in this feature, please [contact us][contact-us]. 
 :::
 
-Upbound's _Controllers_ feature lets you build and deploy control plane software from the Kubernetes ecosystem. With the _Controllers_ feature, you're not limited to just managing resource types defined by Crossplane. Now you can create resources from _CustomResourceDefinitions_ defined by other Kubernetes ecosystem tooling. 
+Upbound's _Controllers_ feature lets you build and deploy control plane software
+from the Kubernetes ecosystem. With the _Controllers_ feature, you're not
+limited to just managing resource types defined by Crossplane. Now you can
+create resources from _CustomResourceDefinitions_ defined by other Kubernetes
+ecosystem tooling. 
 
-This guide explains how to bundle and deploy control plane software from the Kubernetes ecosystem on a control plane in Upbound.
+This guide explains how to bundle and deploy control plane software from the
+Kubernetes ecosystem on a control plane in Upbound.
 
 ## Benefits
 
