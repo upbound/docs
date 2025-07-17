@@ -11,20 +11,20 @@ aliases:
 API Connector is currently in **Alpha**. The feature is under active development and subject to breaking changes. Use for testing and evaluation purposes only.
 :::
 
-API Connector enables seamless integration between Kubernetes application clusters and remote Crossplane control planes. This component extends Crossplane functionality by allowing you to connect to remote clusters and synchronize resources in an agent-based topology.
+API Connector enables seamless integration between Kubernetes application clusters and remote Crossplane control planes. This component extends Crossplane capability by allowing you to connect to remote clusters and synchronize resources in an agent-based topology.
 
-Unlike the [Control Plane Connector](./ctp-connector.md) which focuses on managed control planes, API Connector provides a more flexible solution for connecting to any Crossplane-enabled cluster. But for now its only supported for managed control planes.
+Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed control planes, API Connector provides a more flexible solution for connecting to any Crossplane-enabled cluster. But for now it's only supported for managed control planes.
 
-## Architecture Overview
+## Architecture overview
 
 ![API Connector Architecture](../images/api-connector-architecture.png)
 
 API Connector uses a **provider-consumer** model:
 
-- **Provider control plane**: The remote cluster running Crossplane that provides resources and manages infrastructure. In this case it is a managed control plane - Space.
+- **Provider control plane**: The remote cluster running Crossplane that provides resources and manages infrastructure. In this case it's a managed control plane - Space.
 - **Consumer cluster**: Your local Kubernetes cluster that connects to the provider and synchronizes resources.
 
-### Key Components
+### Key components
 
 **Custom Resource Definitions (CRDs)**:
 - `ClusterConnection`: Establishes connection to a remote cluster.
@@ -43,7 +43,7 @@ Before using API Connector, ensure:
 1. **Provider control plane** has Crossplane installed and configured
 2. **Consumer cluster** has network access to the provider control plane
 3. Valid authentication credentials for the provider control plane
-4. CRDs in the provider control plane are labeled with `connect.upbound.io/bindable=true`
+4. CRDs in the provider control plane have the label `connect.upbound.io/bindable=true`
 
 ## Installation
 
@@ -55,9 +55,9 @@ The up CLI provides the simplest installation method with automatic configuratio
 up controlplane api-connector install <organization-name/space-name/group/control-plane-name> [OPTIONS]
 ```
 
-Command above will automatically create Robot account, named `<control-plane-name>`,
+Command creates Robot account, named `<control-plane-name>`,
 token associated with the account and stores it in the `upbound-system` namespace
-in the **Consumer cluster**. In addition, it will create a `ClusterConnection` resource
+in the **Consumer cluster**. It also creates a `ClusterConnection` resource
 in the **Consumer cluster** to connect to the **Provider control plane**.
 
 **Example**:
@@ -68,7 +68,7 @@ up controlplane api-connector install \
   --upbound-token <your-token>
 ```
 
-Command above will use provided token to authenticate with the **Provider control plane**
+Command uses provided token to authenticate with the **Provider control plane**
 and create a `ClusterConnection` resource in the **Consumer cluster** to connect to the
 **Provider control plane**. 
 
@@ -258,7 +258,7 @@ up controlplane api-connector uninstall \
 The `--all` flag removes all resources including connections and secrets.
 Without the flag, only runtime related resources will be removed.
 
-**Note**: Uninstall will not remote any objects in the Upbound Space API layer.
+**Note**: Uninstall won't remove any objects in the Upbound Space API layer.
 
 ### Using Helm
 
