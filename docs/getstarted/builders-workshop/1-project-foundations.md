@@ -1,10 +1,9 @@
 ---
-title: Project Foundations
+title: 1. Project Foundations
 description: Create a new project from scratch
 ---
 
-In the previous guide, you created a custom resource with a control plane
-project. This guide walks through how to create a brand new project and
+This workshop walks through how to create a brand new project and
 understand each component's purpose as you build your resources from scratch.
 
 ## Prerequisites

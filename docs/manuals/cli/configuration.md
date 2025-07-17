@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: Profile Configuration
 sidebar_position: 2
 description: Configuration for the Upbound CLI
 ---

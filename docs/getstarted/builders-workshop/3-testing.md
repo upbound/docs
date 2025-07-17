@@ -1,5 +1,5 @@
 ---
-title: Test your composition
+title: 3. Test your composition
 description: Create a composition function test
 ---
 

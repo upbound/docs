@@ -1,5 +1,5 @@
 ---
-title: Build your composition logic
+title: 2. Build your composition logic
 description: Create a composition function
 ---
 
