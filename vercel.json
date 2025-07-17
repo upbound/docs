@@ -606,6 +606,11 @@
       "permanent": true
     },
     {
+      "source": "/concepts/control-plane-api-connector",
+      "destination": "/operate/api-connector",
+      "permanent": true
+    },
+    {
       "source": "/mcp/control-plane-connector/",
       "destination": "/operate/ctp-connector",
       "permanent": true
