@@ -11,7 +11,7 @@ aliases:
 API Connector is currently in **Alpha**. The feature is under active development and subject to breaking changes. Use for testing and evaluation purposes only.
 :::
 
-API Connector enables seamless integration between Kubernetes application clusters consuming APIs and remote Crossplane control planes providing and reconciling APIs. This component allows you to decouple where Crossplane is running (e.g. in a managed control plane), and where APIs are consumed (e.g. in an existing Kubernetes cluster). Thus can you achieve flexibility and consistency in terms of operation.
+API Connector enables seamless integration between Kubernetes application clusters consuming APIs and remote Crossplane control planes providing and reconciling APIs. This component allows you to decouple where Crossplane is running (for example in a managed control plane), and where APIs are consumed (for example in an existing Kubernetes cluster). Thus can you achieve flexibility and consistency in terms of operation.
 
 Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed control planes, API Connector provides a more flexible solution for connecting to any Crossplane-enabled cluster. But for now it's only supported for managed control planes.
 
@@ -39,42 +39,60 @@ Before using API Connector, ensure:
 1. **Consumer cluster** has network access to the provider control plane
 1. You have an license to use API connector. If you are unsure, [contact Upbound](https://www.upbound.io/contact) or your sales representative.
 
-This getting started guide has two parallel paths that may be followed, an automated, easy to use path for connecting any Kubernetes cluster to managed control planes in Upbound Cloud, or a manual path for connecting to any Crossplane-enabled provider cluster.
+This getting started guide has two parallel paths that may be followed, an automated, one-click path for connecting any Kubernetes cluster to managed control planes in Upbound Cloud, or a manual path for connecting to any Crossplane-enabled provider cluster.
 
 ## Publishing APIs in the provider cluster
 
-First, log into your provider control plane, where Crossplane is running, and choose which CRD APIs you want to make accessible to the consumer cluster(s). API connector will only ever sync these "bindable" CRDs.
+First, log into your provider control plane, where Crossplane is running, and choose which CRD APIs you want to make accessible to the consumer cluster's. API connector will only ever sync these "bindable" CRDs.
 
-### Upbound Cloud (TODO: tab)
 
-TODO: add code block here
-Login to Upbound using the web browser
+<Tabs>
+<TabItem value="upbound-cloud" label="Upbound Cloud">
+
+```bash
 up login
+```
 
-Change context to the provider control plane
+```bash
 up ctx <organization-name/space-name/group/provider-control-plane-name>
+```
 
 Check what CRDs are available
+
+```bash
 kubectl get crds
+``` 
 
 Label all CRDs you want to publish with the bindable label
-kubectl label crd <CRD API name> 'connect.upbound.io/bindable'='true' --overwrite
 
-### Manual (TODO: tab)
+```bash
+kubectl label crd <crd-name> 'connect.upbound.io/bindable'='true' --overwrite
+```
 
-TODO: code block here
+</TabItem>
+<TabItem value="manual" label="Manual">
+
 Change context to the provider cluster
+```bash
 kubectl config set-context <provider-cluster-context>
+```
 
 Check what CRDs are available
+```bash
 kubectl get crds
+```
 
 Label all CRDs you want to publish with the bindable label
+```bash
 kubectl label crd <CRD API name> 'connect.upbound.io/bindable'='true' --overwrite
+```
+</TabItem>
+</Tabs>
 
 ## Installation
 
-### Using the up CLI (Recommended)
+<Tabs>
+<TabItem value="up-cli" label="up CLI">
 
 The up CLI provides the simplest installation method with automatic configuration:
 
@@ -112,7 +130,8 @@ and create a `ClusterConnection` resource in the **Consumer cluster** to connect
 - `--upgrade`: Upgrade existing installation (optional)
 - `--version`: Specific version to install (optional)
 
-### Manual
+</TabItem>
+<TabItem value="manual" label="Manual">
 
 For manual installation or custom configurations:
 
@@ -124,13 +143,17 @@ helm upgrade --install api-connector oci://xpkg.upbound.io/spaces-artifacts/api-
   --set consumerClusterDisplayName=<cluster-name>
 ```
 
+</TabItem>
+</Tabs>
+
 ## Configuration
 
 ### Authentication Methods
 
 API Connector supports two authentication methods:
 
-#### Upbound Robot Token
+<Tabs>
+<TabItem value="upbound-robot-token" label="Upbound Robot Token">
 
 For Upbound Spaces integration:
 
@@ -148,9 +171,10 @@ stringData:
   controlPlaneGroupName: <control-plane-group-name>
   controlPlaneName: <control-plane-name>
 ```
+</TabItem>
+<TabItem value="kubeconfig" label="Kubeconfig">
 
-#### Kubeconfig
-
+For direct cluster access:
 For direct cluster access:
 
 ```yaml
@@ -163,6 +187,9 @@ type: Opaque
 data:
   kubeconfig: <base64-encoded-kubeconfig>
 ```
+</TabItem>
+</Tabs>
+
 
 ### Connection Setup
 
@@ -220,7 +247,7 @@ metadata:
 spec:
   connectionRef:
     kind: ClusterConnection
-    name: spaces-connection # Or the name of the ClusterConnection you just created
+    name: spaces-connection
 ```
 
 The `ClusterAPIBinding` name must match the **API Group** of the CRD you want to bind.
@@ -245,15 +272,20 @@ Verify the resource status:
 ```bash
 kubectl get nopresource my-resource -o yaml
 ```
-When the `APIBound=True` condition is present, it means that the API object has been synced to the provider cluster, and is being reconciled there. Whenever the API object in the provider cluster gets status updates (e.g. `Ready=True`), that status is synced back to the consumer cluster.
+When the `APIBound=True` condition is present, it means that the API object has been synced to the provider cluster, and is being reconciled there. Whenever the API object in the provider cluster gets status updates (for example `Ready=True`), that status is synced back to the consumer cluster.
 
 Switch contexts to the provider cluster to see the API object being created:
+
+```bash
 up ctx <organization-name/space-name/group/provider-control-plane-name>
 # or kubectl config set-context <provider-cluster-context>
+```
 
+```bash
 kubectl get nopresource my-resource -o yaml
+```
 
-Note that in the provider cluster, the API object is labelled with information on where the API object originates from, and `connect.upbound.io/managed=true`.
+Note that in the provider cluster, the API object is labeled with information on where the API object originates from, and `connect.upbound.io/managed=true`.
 ## Monitoring and Troubleshooting
 
 ### Check Connection Status
@@ -310,14 +342,13 @@ helm uninstall api-connector -n upbound-system
 ## Limitations
 
 - **Alpha maturity**: Subject to breaking changes. Not yet production grade.
-- **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, e.g. using a [Crossplane Configuration](https://docs.crossplane.io/latest/concepts/packages/).
+- **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, for example using a [Crossplane Configuration](https://docs.crossplane.io/latest/concepts/packages/).
 - **Network requirements**: Consumer cluster must have direct network access to provider cluster.
-- **Wide permissions needed in consumer cluster**: Because the API connector does not know up front the names of the APIs it needs to reconcile, it currently runs with full "root" privileges in the consumer cluster.
+- **Wide permissions needed in consumer cluster**: Because the API connector doesn't know up front the names of the APIs it needs to reconcile, it currently runs with full "root" privileges in the consumer cluster.
 - **Connector polling**: API Connector for checks for drift between the consumer and provider cluster
    periodically through polling. The poll interval can be changed with the `pollInterval` Helm value.
 
 ## Advanced Configuration
-
 
 ### Multiple Cluster Connections
 
