@@ -1,7 +1,178 @@
 ---
 title: License Management
 description: "Learn how to manage self-managed license for UXP"
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-TODO
+Upbound Crossplane is available in community and commercial plans for Upbound. 
+
+* Upbound Community Plan lets you run Upbound Crossplane for free and is source-available on [GitHub][uxp-source]
+* Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
+
+## Community plan 
+
+The Community plan on Upbound lets you run Upbound Crossplane without a license. This lets you use the core features that come freely available in Upbound Crossplane.
+
+### Restrictions
+
+Users cannot provide Upbound Crossplane as a commercial Crossplane service to others.
+
+## Commercial plans (Standard, Enterprise, Business Critical)
+
+Users who have a commercial plan on Upbound including Standard, Enterprise, and Business Critical may generate and install license keys. These commercial license keys unlock commercial-only features in Upbound Crossplane.
+
+### Commercial features
+
+A commercial license unlocks the following Upbound Crossplane features:
+
+* Provider pod auto-scaling
+* Function pod scale-to-zero
+* Backup and restore
+* Access to patch releases of Official Providers
+
+These features are unavailable unless a valid license is present. We explain below how these features behave when a license expires:
+
+* **Upon license expiration:**
+    * The cluster enters a grace period whereby features continue to work. The grace period is 25% of the total license duration. For example, a yearly license has a 3-month grace period, and a monthly license has about a 1-week grace period. During this grace period, the commercial features will continue to function normally. However, you'll notice warnings emitted in Upbound Crossplane that the license's grace period is active. 
+    * Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
+* **After license expiration and grace period:** After the grace period ends, paid features or components get locked down. This means any component checking the license sees that it is truly invalid (expired and grace period ended) and disables its paid features.
+
+### Development licenses
+
+When you deploy Upbound Crossplane into a local single-node kind cluster, it automatically receives a temporary license that unlocks commercial features. This is to enable local development and testing flows with Upbound Crossplane.
+
+:::important
+
+This license may not be re-used for production purposes. 
+
+:::
+
+## Manage licenses for Upbound Crossplane
+
+### Generate a license
+
+To generate a license key for Upbound Crossplane, contact your Upbound account representative for assistance.
+
+### Add a license to an Upbound Crossplane cluster
+
+To enable commercial features in an Upbound Crossplane cluster, you need a commercial license.
+
+Connect to your Upbound Crossplane cluster.
+
+<Tabs>
+
+<TabItem value="Up CLI" label="Up CLI">
+
+1. Download your license file (`uxp-license`).
+2. Apply the license with the up CLI:
+```bash
+up uxp license apply uxp-license
+```
+3. Confirm its status:
+```bash
+up uxp license show
+```
+
+It should print a result like the following:
+
+```bash
+Upbound Crossplane License Status:  Valid (The license signature has been successfully verified.)
+Created:                            2025-07-15 08:30:21 -0400 EDT
+Expires:                            2025-10-13 08:30:21 -0400 EDT
+
+Plan:                 standard
+Resource Hour Limit:  50000
+Operation Limit:      5000
+Enabled Features:
+- LazyCRDLoading
+- ProviderVPA
+- BackupRestore
+```
+
+</TabItem>
+<TabItem value="Kubernetes secret" label="Kubernetes secret">
+
+1. Download your license file (`uxp-license`).
+2. Create a secret, containing the license file.
+```bash
+kubectl create secret generic uxp-license --from-file=license=./uxp-license
+```
+3. Create a _License_ object and reference the secret:
+```yaml
+apiVersion: licensing.upbound.io/v1alpha1
+kind: License
+metadata:
+  name: uxp
+spec:
+  secretRef:
+    key: license
+    name: uxp-license
+    namespace: crossplane-system
+```
+4. Verify the license status:
+```bash
+kubectl get license uxp --subresource=status
+```
+
+It should print a result like the following:
+
+```bash
+NAME   PLAN       VALID   REASON              AGE
+uxp    standard   True    SignatureVerified   3h59m
+```
+
+</TabItem>
+</Tabs>
+
+:::important
+
+**You may not re-use licenses across multiple Upbound Crossplane clusters.**
+
+:::
+
+### Verify a license
+
+<Tabs>
+
+<TabItem value="Up CLI" label="Up CLI">
+
+Confirm it's status:
+```bash
+up uxp license show
+```
+
+It should print a result like the following:
+
+```bash
+Upbound Crossplane License Status:  Valid (The license signature has been successfully verified.)
+Created:                            2025-07-15 08:30:21 -0400 EDT
+Expires:                            2025-10-13 08:30:21 -0400 EDT
+
+Plan:                 standard
+Resource Hour Limit:  50000
+Operation Limit:      5000
+Enabled Features:
+- LazyCRDLoading
+- ProviderVPA
+- BackupRestore
+```
+
+</TabItem>
+<TabItem value="kubectl" label="kubectl">
+
+Verify the license status:
+```bash
+kubectl get license uxp --subresource=status
+```
+
+It should print a result like the following:
+
+```bash
+NAME   PLAN       VALID   REASON              AGE
+uxp    standard   True    SignatureVerified   3h59m
+```
+
+</TabItem>
+</Tabs>
+
+[uxp-source]: https://github.com/upbound/upbound-crossplane
