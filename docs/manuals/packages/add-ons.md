@@ -3,3 +3,37 @@ title: Add-Ons
 sidebar_position: 15
 description: Product documentation for the Add-Ons offered by Upbound.
 ---
+
+Upbound Add-Ons are an Upbound-specific package type built as OCI images and published into the [Upbound Marketplace][upbound-marketplace]. Upbound publishes, maintains, and supports these listings. They're published under the `upbound` organization.
+
+<!-- vale off -->
+## Introduction
+
+Official Functions are commercially licensed builds of Crossplane functions. These functions may be closed source, or they may be downstream from open source.
+
+Upbound publishes and maintains Official Functions.
+
+Upbound's Official Functions integrate with the Upbound platform to provide the best Crossplane experience.
+<!-- vale on -->
+
+## Official Functions list
+
+<!-- vale Microsoft.Adverbs = NO -->
+Upbound is continually adding new functions to the ever growing list of Official Functions. For a complete list of available Official functions, use [this query][this-query] in the Marketplace.
+<!-- vale Microsoft.Adverbs = YES -->
+
+## Access
+
+The main branch version releases of the Upbound Official Functions are available for use by anyone with a `Community` plan on Upbound running on [Upbound Crossplane][uxp]. For full access and use details, read the [policies page][policies-page] on access, support and more.
+
+<!--- TODO(tr0njavolta): links --->
+<!-- [resource-schemas]: /build/core-concepts -->
+[functions]: /manuals/uxp/concepts/packages/functions
+[signed-by-upbound]: /providers/signature-verification
+[pull-an-official-provider]: /providers/policies#access
+[policies-page]: /providers/policies#access
+
+[uxp]: /manuals/uxp/overview
+[upbound-marketplace]: https://marketplace.upbound.io/functions?tier=official
+[account-on-upbound]: https://accounts.upbound.io/register
+[this-query]: https://marketplace.upbound.io/functions?tier=official
