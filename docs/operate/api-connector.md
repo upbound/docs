@@ -11,7 +11,7 @@ aliases:
 API Connector is currently in **Alpha**. The feature is under active development and subject to breaking changes. Use for testing and evaluation purposes only.
 :::
 
-API Connector enables seamless integration between Kubernetes application clusters and remote Crossplane control planes. This component extends Crossplane capability by allowing you to connect to remote clusters and synchronize resources in an agent-based topology.
+API Connector enables seamless integration between Kubernetes application clusters consuming APIs and remote Crossplane control planes providing and reconciling APIs. This component allows you to decouple where Crossplane is running (e.g. in a managed control plane), and where APIs are consumed (e.g. in an existing Kubernetes cluster). Thus can you achieve flexibility and consistency in terms of operation.
 
 Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed control planes, API Connector provides a more flexible solution for connecting to any Crossplane-enabled cluster. But for now it's only supported for managed control planes.
 
@@ -21,29 +21,56 @@ Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed 
 
 API Connector uses a **provider-consumer** model:
 
-- **Provider control plane**: The remote cluster running Crossplane that provides resources and manages infrastructure. In this case it's a managed control plane - Space.
-- **Consumer cluster**: Your local Kubernetes cluster that connects to the provider and synchronizes resources.
+- **Provider control plane**: The remote cluster running Crossplane that provides APIs and manages infrastructure. It can for example be a managed control plane from Upbound Spaces.
+- **Consumer cluster**: Any Kubernetes cluster where its users wants to use APIs provided by the provider control plane, without having to run Crossplane. API connector is installed in the consumer cluster, and bidirectionally syncs API objects to the provider.
 
 ### Key components
 
 **Custom Resource Definitions (CRDs)**:
-- `ClusterConnection`: Establishes connection to a remote cluster.
-- `ClusterAPIBinding`: Binds APIs cluster-wide across namespaces.  
-- `APIBinding`: Binds APIs for specific namespaces.
-
-**Controllers**:
-- Connection management for multiple cluster topologies
-- Dynamic resource synchronization
-- CRD discovery and management
+- `ClusterConnection`: Establishes a connection from the consumer to the provider cluster. Pulls bindable CRD APIs from the provider into the consumer cluster for use.
+- `ClusterAPIBinding`: Instructs API connector to sync all API objects cluster-wide with a given API group to a given provider cluster.
+- `APIBinding`: Namespaced version of `ClusterAPIBinding`. Instructs API connector to sync API objects within a given namespace and with a given API group to a given provider cluster.
 
 ## Prerequisites
 
 Before using API Connector, ensure:
 
 1. **Provider control plane** has Crossplane installed and configured
-2. **Consumer cluster** has network access to the provider control plane
-3. Valid authentication credentials for the provider control plane
-4. CRDs in the provider control plane have the label `connect.upbound.io/bindable=true`
+1. **Consumer cluster** has network access to the provider control plane
+1. You have an license to use API connector. If you are unsure, [contact Upbound](https://www.upbound.io/contact) or your sales representative.
+
+This getting started guide has two parallel paths that may be followed, an automated, easy to use path for connecting any Kubernetes cluster to managed control planes in Upbound Cloud, or a manual path for connecting to any Crossplane-enabled provider cluster.
+
+## Publishing APIs in the provider cluster
+
+First, log into your provider control plane, where Crossplane is running, and choose which CRD APIs you want to make accessible to the consumer cluster(s). API connector will only ever sync these "bindable" CRDs.
+
+### Upbound Cloud (TODO: tab)
+
+TODO: add code block here
+Login to Upbound using the web browser
+up login
+
+Change context to the provider control plane
+up ctx <organization-name/space-name/group/provider-control-plane-name>
+
+Check what CRDs are available
+kubectl get crds
+
+Label all CRDs you want to publish with the bindable label
+kubectl label crd <CRD API name> 'connect.upbound.io/bindable'='true' --overwrite
+
+### Manual (TODO: tab)
+
+TODO: code block here
+Change context to the provider cluster
+kubectl config set-context <provider-cluster-context>
+
+Check what CRDs are available
+kubectl get crds
+
+Label all CRDs you want to publish with the bindable label
+kubectl label crd <CRD API name> 'connect.upbound.io/bindable'='true' --overwrite
 
 ## Installation
 
@@ -52,13 +79,19 @@ Before using API Connector, ensure:
 The up CLI provides the simplest installation method with automatic configuration:
 
 ```bash
-up controlplane api-connector install <organization-name/space-name/group/control-plane-name> [OPTIONS]
+# Make sure the current Kubeconfig context is set to the **consumer cluster**
+kubectl config set-context consumer-cluster
+
+up controlplane api-connector install <organization-name/space-name/group/provider-control-plane-name> --target-kubeconfig <consumer-cluster-kubeconfig> [OPTIONS]
 ```
 
-Command creates Robot account, named `<control-plane-name>`,
-token associated with the account and stores it in the `upbound-system` namespace
-in the **Consumer cluster**. It also creates a `ClusterConnection` resource
-in the **Consumer cluster** to connect to the **Provider control plane**.
+The command:
+1. creates a Robot account (named `<provider-control-plane-name>`) in the Upbound Cloud organization `<organization-name>`,
+1. Gives the created robot account `admin` permissions to the provider control plane `<provider-control-plane-name>`
+1. Generates a JWT token for the robot account, and stores it in a Kubernetes Secret in the consumer cluster.
+1. Installs the API connector Helm chart in the consumer cluster.
+1. Creates a `ClusterConnection` object in the consumer cluster, referring to the newly generated Secret, so that API connector can authenticate successfully to the provider control plane.
+1. API connector will pull all CRDs that are published in the previous step into the consumer cluster.
 
 **Example**:
 ```bash
@@ -79,7 +112,7 @@ and create a `ClusterConnection` resource in the **Consumer cluster** to connect
 - `--upgrade`: Upgrade existing installation (optional)
 - `--version`: Specific version to install (optional)
 
-### Using Helm
+### Manual
 
 For manual installation or custom configurations:
 
@@ -95,7 +128,7 @@ helm upgrade --install api-connector oci://xpkg.upbound.io/spaces-artifacts/api-
 
 ### Authentication Methods
 
-API Connector supports multiple authentication methods:
+API Connector supports two authentication methods:
 
 #### Upbound Robot Token
 
@@ -174,7 +207,7 @@ spec:
 </TabItem>
 </Tabs>
 
-### API Binding
+### Configuration
 
 Bind APIs to make them available in your consumer cluster:
 
@@ -187,14 +220,14 @@ metadata:
 spec:
   connectionRef:
     kind: ClusterConnection
-    name: spaces-connection
+    name: spaces-connection # Or the name of the ClusterConnection you just created
 ```
 
-The `ClusterAPIBinding` name must match the **Group** name of the CRD you want to bind.
+The `ClusterAPIBinding` name must match the **API Group** of the CRD you want to bind.
 
 ## Usage Example
 
-After configuration, you can create resources that will be synchronized to the provider cluster:
+After configuration, you can create API objects (in the consumer cluster) that will be synchronized to the provider cluster:
 
 ```yaml
 apiVersion: nop.example.org/v1alpha1
@@ -212,7 +245,15 @@ Verify the resource status:
 ```bash
 kubectl get nopresource my-resource -o yaml
 ```
+When the `APIBound=True` condition is present, it means that the API object has been synced to the provider cluster, and is being reconciled there. Whenever the API object in the provider cluster gets status updates (e.g. `Ready=True`), that status is synced back to the consumer cluster.
 
+Switch contexts to the provider cluster to see the API object being created:
+up ctx <organization-name/space-name/group/provider-control-plane-name>
+# or kubectl config set-context <provider-cluster-context>
+
+kubectl get nopresource my-resource -o yaml
+
+Note that in the provider cluster, the API object is labelled with information on where the API object originates from, and `connect.upbound.io/managed=true`.
 ## Monitoring and Troubleshooting
 
 ### Check Connection Status
@@ -258,7 +299,7 @@ up controlplane api-connector uninstall \
 The `--all` flag removes all resources including connections and secrets.
 Without the flag, only runtime related resources will be removed.
 
-**Note**: Uninstall won't remove any objects in the Upbound Space API layer.
+**Note**: Uninstall won't remove any API objects in the provider control plane. If you want to clean up all API objects there, delete all API objects from the consumer cluster before API connector uninstallation, and wait for the objects to get deleted.
 
 ### Using Helm
 
@@ -268,21 +309,15 @@ helm uninstall api-connector -n upbound-system
 
 ## Limitations
 
-- **Alpha maturity**: Subject to breaking changes.
-- **CRD updates**: CRDs are pulled once but not automatically updated.
+- **Alpha maturity**: Subject to breaking changes. Not yet production grade.
+- **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, e.g. using a [Crossplane Configuration](https://docs.crossplane.io/latest/concepts/packages/).
 - **Network requirements**: Consumer cluster must have direct network access to provider cluster.
-- **Connector pooling**: API Connector for now uses pooling mechanism to connect 
-  to the provider control plane and update the claims
+- **Wide permissions needed in consumer cluster**: Because the API connector does not know up front the names of the APIs it needs to reconcile, it currently runs with full "root" privileges in the consumer cluster.
+- **Connector polling**: API Connector for checks for drift between the consumer and provider cluster
+   periodically through polling. The poll interval can be changed with the `pollInterval` Helm value.
 
 ## Advanced Configuration
 
-### Label-based CRD Discovery
-
-CRDs must be labeled for discovery:
-
-```bash
-kubectl label crd <crd-name> connect.upbound.io/bindable=true
-```
 
 ### Multiple Cluster Connections
 
