@@ -1,14 +1,14 @@
-// plugins/tier-plugin.js
+// plugins/plan-plugin.js
 const path = require('path');
 const fs = require('fs');
 const matter = require('gray-matter');
 
-module.exports = function tierPlugin(context, options) {
+module.exports = function planPlugin(context, options) {
   return {
-    name: 'upbound-tier-plugin',
+    name: 'upbound-plan-plugin',
     
     async loadContent() {
-      const tierData = {};
+      const planData = {};
       const docsPath = path.join(context.siteDir, 'docs');
       
       function processDirectory(dir, relativePath = '') {
@@ -24,10 +24,10 @@ module.exports = function tierPlugin(context, options) {
             const content = fs.readFileSync(itemPath, 'utf8');
             const { data: frontmatter } = matter(content);
             
-            if (frontmatter.tier) {
+            if (frontmatter.plan) {
               const docId = path.join(relativePath, item.replace(/\.(md|mdx)$/, ''));
-              tierData[docId] = {
-                tier: frontmatter.tier,
+              planData[docId] = {
+                plan: frontmatter.plan,
                 title: frontmatter.title,
                 path: itemPath
               };
@@ -40,7 +40,7 @@ module.exports = function tierPlugin(context, options) {
         processDirectory(docsPath);
       }
       
-      return { tierData };
+      return { planData };
     },
     
     async contentLoaded({ content, actions }) {

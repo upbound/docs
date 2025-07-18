@@ -5,8 +5,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import EditCode from '@site/src/components/EditCode';
 import Hover from '@site/src/components/Hover';
-import { StandardBadge, BusinessBadge, EnterpriseBadge } from '@site/src/components/UpboundTierBadges';
-
+import { Standard, Business, Enterprise } from '../components/PlanCallout';
 
 export default {
   ...MDXComponents,
@@ -14,9 +13,8 @@ export default {
   TabItem,
   EditCode,
   Hover,
-  StandardBadge,
-  BusinessBadge,
-  EnterpriseBadge,
-
+  Standard,
+  Business,
+  Enterprise,
 };
 

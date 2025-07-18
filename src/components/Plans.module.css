@@ -1,0 +1,305 @@
+/* src/components/Plans.module.css */
+.sidebarItemContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+.sidebarItemLabel {
+  flex: 1;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+.sidebarLink {
+  display: flex !important;
+  align-items: flex-start !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 0.375rem !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  color: var(--ifm-menu-color) !important;
+  min-height: 36px !important;
+  height: auto !important;
+}
+.sidebarLink:hover {
+  background-color: var(--upbound-light-bg) !important;
+  color: var(--grape) !important;
+}
+.sidebarLink:global(.menu__link--active) {
+  background-color: var(--up-purple-50) !important;
+  color: var(--grape) !important;
+  font-weight: 600 !important;
+}
+/* Dark mode active state */
+html[data-theme='dark'] .sidebarLink:global(.menu__link--active) {
+  background-color: rgba(175, 126, 253, 0.15) !important;
+  color: var(--up-purple-200) !important;
+}
+
+/* Plan Badge Base Styles*/
+.planBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px; 
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Lock Icon Styles */
+.lockIcon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.125rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.planBadge:hover .lockIcon {
+  opacity: 1;
+}
+
+/* Plan-specific badge styles */
+.planCommunity {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+html[data-theme='dark'] .planCommunity {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+.planStandard {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+html[data-theme='dark'] .planStandard {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+.planBusiness {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+html[data-theme='dark'] .planBusiness {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+.planEnterprise {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+html[data-theme='dark'] .planEnterprise {
+  background-color: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+/* Badge hover effects */
+.planBadge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus styles for accessibility */
+.sidebarLink:focus-visible {
+  outline: 2px solid var(--grape);
+  outline-offset: 2px;
+}
+.planBadge:focus-visible {
+  outline: 2px solid var(--grape);
+  outline-offset: 1px;
+}
+
+/* PLAN CALLOUT STYLES */
+:global(.plan-callout) {
+  background: var(--up-grey-100);
+  border: 1px solid var(--upbound-border-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--upbound-card-shadow);
+  transition: all 0.2s ease;
+}
+
+:global(.plan-callout):hover {
+  box-shadow: var(--upbound-card-shadow-hover);
+}
+
+:global(.plan-callout__title) {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  color: var(--font-color-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:global(.plan-callout__content) {
+  margin: 0;
+  color: var(--font-color-medium);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+:global(.plan-callout__content) a {
+  color: var(--grape);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+:global(.plan-callout__content) a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Standard plan callout */
+:global(.plan-badge--standard) {
+  background: var(--up-grey-100);
+  border-left: 4px solid var(--up-purple-300);
+}
+
+:global(.plan-badge--standard) :global(.plan-callout__title) {
+  color: var(--up-purple-500);
+}
+
+/* Business plan callout */
+:global(.plan-badge--business) {
+  background: var(--up-grey-100);
+  border-left: 4px solid var(--up-purple-400);
+}
+
+:global(.plan-badge--business) :global(.plan-callout__title) {
+  color: var(--up-purple-400);
+}
+
+/* Enterprise plan callout */
+:global(.plan-badge--enterprise) {
+  background: var(--up-grey-100);
+  border-left: 4px solid var(--up-purple-600);
+}
+
+:global(.plan-badge--enterprise) :global(.plan-callout__title) {
+  color: var(--up-purple-600);
+}
+
+/* Dark mode callout styles */
+html[data-theme='dark'] :global(.plan-callout) {
+  background: var(--up-grey-800);
+  border-color: var(--upbound-border-color);
+}
+
+html[data-theme='dark'] :global(.plan-callout__title) {
+  color: var(--font-color-dark);
+}
+
+html[data-theme='dark'] :global(.plan-callout__content) {
+  color: var(--font-color-medium);
+}
+
+html[data-theme='dark'] :global(.plan-badge--standard) {
+  background: var(--up-grey-800);
+  border-left-color: var(--up-purple-300);
+}
+
+html[data-theme='dark'] :global(.plan-badge--standard) :global(.plan-callout__title) {
+  color: var(--up-purple-200);
+}
+
+html[data-theme='dark'] :global(.plan-badge--business) {
+  background: var(--up-grey-800);
+  border-left-color: var(--up-purple-300);
+}
+
+html[data-theme='dark'] :global(.plan-badge--business) :global(.plan-callout__title) {
+  color: var(--up-purple-300);
+}
+
+html[data-theme='dark'] :global(.plan-badge--enterprise) {
+  background: var(--up-grey-800);
+  border-left-color: var(--up-purple-200);
+}
+
+html[data-theme='dark'] :global(.plan-badge--enterprise) :global(.plan-callout__title) {
+  color: var(--up-purple-200);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .planBadge {
+    font-size: 0.625rem;
+    padding: 0.1rem 0.3rem;
+  }
+  
+  .lockIcon {
+    width: 8px;
+    height: 8px;
+  }
+
+  :global(.plan-callout) {
+    padding: 0.875rem 1rem;
+    margin: 1rem 0;
+  }
+
+  :global(.plan-callout__title) {
+    font-size: 0.9rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .planBadge {
+    border-width: 2px;
+    font-weight: 700;
+  }
+  
+  .lockIcon {
+    opacity: 1;
+  }
+
+  :global(.plan-callout) {
+    border-width: 2px;
+    border-left-width: 6px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .planBadge,
+  .lockIcon,
+  .sidebarLink,
+  :global(.plan-callout) {
+    transition: none;
+  }
+  
+  .planBadge:hover {
+    transform: none;
+  }
+
+  :global(.plan-callout):hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}

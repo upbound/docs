@@ -2,7 +2,9 @@
 title: Control Plane Topologies
 sidebar_position: 15
 description: Configure scheduling of composites to remote control planes
+plan: enterprise
 ---
+<Standard />
 
 :::important
 This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this deployment mode, please [contact us][contact-us].

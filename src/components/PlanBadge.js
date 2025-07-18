@@ -1,4 +1,4 @@
-// src/components/UpboundSidebarItem/index.js
+// src/components/PlanBadge.js
 import React from 'react';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import { useLocation } from '@docusaurus/router';
@@ -7,42 +7,57 @@ import Link from '@docusaurus/Link';
 import isInternalUrl from '@docusaurus/isInternalUrl';
 import IconExternalLink from '@theme/Icon/ExternalLink';
 import clsx from 'clsx';
-import styles from './styles.module.css';
+import styles from './Plans.module.css';
 
-const TIER_CONFIG = {
+const PLAN_CONFIG = {
   community: {
     label: 'Community',
-    className: 'tier-community',
-    color: '#10b981', // emerald-500
+    className: 'planCommunity',
   },
   standard: {
     label: 'Standard',
-    className: 'tier-standard', 
-    color: '#3b82f6', // blue-500
+    className: 'planStandard', 
   },
   enterprise: {
     label: 'Enterprise',
-    className: 'tier-enterprise',
-    color: '#8b5cf6', // violet-500
+    className: 'planEnterprise',
   },
   business: {
     label: 'Business',
-    className: 'tier-business',
-    color: '#f59e0b', // amber-500
+    className: 'planBusiness',
   }
 };
 
-function TierBadge({ tier }) {
-  if (!tier || !TIER_CONFIG[tier]) return null;
+function LockIcon({ size = 10 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      className={styles.lockIcon}
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        d="M4 4v2h-.25A1.75 1.75 0 0 0 2 7.75v5.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0 0 14 13.25v-5.5A1.75 1.75 0 0 0 12.25 6H12V4a4 4 0 1 0-8 0Zm6.5 2V4a2.5 2.5 0 0 0-5 0v2h5Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function PlanBadge({ plan }) {
+  if (!plan || !PLAN_CONFIG[plan]) return null;
   
-  const config = TIER_CONFIG[tier];
+  const config = PLAN_CONFIG[plan];
   
   return (
     <span 
-      className={clsx(styles.tierBadge, styles[config.className])}
-      style={{ backgroundColor: config.color }}
-      title={`Available in ${config.label} tier`}
+      className={clsx(styles.planBadge, styles[config.className])}
+      title={`Available in ${config.label} plan`}
     >
+      {plan !== 'community' && <LockIcon size={10} />}
       {config.label}
     </span>
   );
@@ -50,14 +65,8 @@ function TierBadge({ tier }) {
 
 function extractDocId(href) {
   if (!href) return null;
-  
   const cleanHref = href.replace(/^\/+|\/+$/g, '');
-  
-  if (cleanHref.endsWith('/')) {
-    return cleanHref + 'index';
-  }
-  
-  return cleanHref;
+  return cleanHref.endsWith('/') ? cleanHref + 'index' : cleanHref;
 }
 
 function isActiveSidebarItem(item, activePath) {
@@ -76,43 +85,58 @@ export default function UpboundSidebarItem({
   ...props
 }) {
   const location = useLocation();
-  const { tierData, categoryTiers } = usePluginData('upbound-tier-plugin') || { tierData: {}, categoryTiers: {} };
-  const { items, label, href, docId, ...itemProps } = item;
+  
+  const pluginData = usePluginData('upbound-plan-plugin') || {};
+  const { planData = {} } = pluginData;
+  
+  const { 
+    items, 
+    label, 
+    href, 
+    docId, 
+    unlisted, 
+    linkUnlisted,
+    ...cleanItemProps 
+  } = item;
   
   const currentPath = activePath || location.pathname;
   const isActive = isActiveSidebarItem(item, currentPath);
   
-  let tier = null;
+  let plan = null;
   
-  if (docId && tierData[docId]) {
-    tier = tierData[docId].tier;
+  if (docId && planData[docId]) {
+    const planInfo = planData[docId];
+    plan = planInfo.plan;
   }
   
-  // If no docId or not found, try to extract from href
-  if (!tier && href) {
+  if (!plan && href) {
     const extractedDocId = extractDocId(href);
     if (extractedDocId) {
-      // Try multiple variations of the path
-      const pathVariations = [
+      const variations = [
         extractedDocId,
         '/' + extractedDocId,
         extractedDocId + '/index',
         extractedDocId.replace(/\/index$/, ''),
-        // Handle nested paths like deploy/deployment/mode1
         extractedDocId.replace(/^deploy\//, ''),
         extractedDocId.replace(/^deployment\//, ''),
       ];
       
-      for (const variation of pathVariations) {
-        if (tierData[variation]) {
-          tier = tierData[variation].tier;
-          break;
+      for (const variation of variations) {
+        if (planData[variation]) {
+          const planInfo = planData[variation];
+          plan = planInfo.plan;
+          if (plan) break;
         }
       }
     }
   }
   
- 
+  const linkProps = {
+    ...cleanItemProps,
+    ...(typeof unlisted === 'string' && { unlisted }),
+    ...(typeof linkUnlisted === 'string' && { linkUnlisted }),
+  };
+  
   return (
     <li
       className={clsx(
@@ -123,7 +147,6 @@ export default function UpboundSidebarItem({
         }
       )}
       key={label}
-      data-debug={`href:${href} docId:${docId} tier:${tier || 'none'}`}
     >
       <Link
         className={clsx('menu__link', styles.sidebarLink, {
@@ -134,11 +157,11 @@ export default function UpboundSidebarItem({
         {...(isInternalUrl(href) && {
           onClick: onItemClick ? () => onItemClick(item) : undefined,
         })}
-        {...itemProps}
+        {...linkProps}
       >
         <div className={styles.sidebarItemContent}>
           <span className={styles.sidebarItemLabel}>{label}</span>
-          <TierBadge tier={tier} />
+          {plan && <PlanBadge plan={plan} />}
         </div>
         {!isInternalUrl(href) && <IconExternalLink />}
       </Link>

@@ -2,6 +2,7 @@
 title: Configure the Query API
 sidebar_position: 6
 description: How to enable and configure your Space to use the Query API
+plan: business
 ---
 
 :::important

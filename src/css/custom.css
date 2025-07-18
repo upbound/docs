@@ -109,7 +109,6 @@ html[data-theme='dark'] {
   --link-hover-color: #E1CEFE;
 }
 
-/* Hide theme-specific images */
 [data-theme='light'] img[src$='dark-mode-only'],
 [data-theme='dark'] img[src$='#light-mode-only'] {
   display: none;
@@ -353,7 +352,6 @@ table tbody tr:hover {
  color: var(--up-grey-300) !important;
 }
 
-/* Remove default Docusaurus footer divider */
 .footer::before,
 .footer__bottom::before,
 .footer__copyright::before {
@@ -402,7 +400,6 @@ table tbody tr:hover {
   color: var(--up-grey-400);
 }
 
-/* LANDING PAGE STYLES */
 
 /* Landing Page Layout */
 .landing-page {
@@ -1132,7 +1129,6 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
   display: none !important;
 }
 
-/* Light and Dark Modes */
 
 /* Light Mode Footer */
 html[data-theme='light'] .footer {
@@ -1173,7 +1169,7 @@ html[data-theme='light'] .footer-copyright {
   color: var(--up-grey-500);
 }
 
-/* Dark Mode Footer (ensuring consistency) */
+/* Dark Mode Footer */
 html[data-theme='dark'] .footer {
   background-color: var(--up-grey-800) !important;
   color: var(--up-grey-300) !important;
@@ -1388,7 +1384,7 @@ html[data-theme='light'] .navbar-sidebar .menu__link--active {
   }
 }
 
-/* Sidebar Menu - Prevent Title Truncation */
+/* Sidebar Menu */
 .menu__link {
   padding: 0.5rem 0.75rem;
   line-height: 1.4;
@@ -1405,7 +1401,6 @@ html[data-theme='light'] .navbar-sidebar .menu__link--active {
   display: block !important;
 }
 
-/* Target the specific sidebar content structure */
 .sidebarItemContent_IgpO {
   white-space: normal !important;
   overflow: visible !important;
@@ -1466,7 +1461,6 @@ html[data-theme='light'] .navbar-sidebar .menu__link--active {
   margin-top: 0.125rem !important;
 }
 
-/* Fix for any arrow/caret indicators */
 .menu__link::after,
 .menu__list-item-collapsible .menu__link::after {
   display: block !important;
@@ -1477,21 +1471,18 @@ html[data-theme='light'] .navbar-sidebar .menu__link--active {
   margin-top: 0.125rem !important;
 }
 
-/* Ensure nested menu structure is preserved */
 .menu__list .menu__list {
   margin-left: 1rem !important;
   padding-left: 1rem;
   border-left: 2px solid var(--upbound-border-color);
 }
 
-/* Ensure menu items can expand vertically */
 .menu__list-item {
   margin: 0.25rem 0;
   height: auto !important;
   min-height: auto !important;
 }
 
-/* Handle active menu items with long titles */
 .menu__link--active {
   background-color: var(--up-purple-50);
   color: var(--grape);
@@ -1518,20 +1509,17 @@ html[data-theme='dark'] .menu__link--active {
   color: var(--up-purple-200);
 }
 
-/* For nested menu items */
 .menu__list .menu__list .menu__link {
   padding: 0.4rem 0.75rem;
   font-size: 0.9rem;
   line-height: 1.3;
 }
 
-/* Adjust sidebar width for better readability */
 .theme-doc-sidebar-container {
   --doc-sidebar-width: 300px !important;
   min-width: 300px !important;
 }
 
-/* Responsive adjustments for mobile */
 @media (max-width: 996px) {
   .theme-doc-sidebar-container {
     --doc-sidebar-width: 100vw !important;
@@ -1549,261 +1537,4 @@ html[data-theme='dark'] .menu__link--active {
   }
 }
 
-.tier-badge {
-  border-left: 4px solid #007acc;
-  background-color: #f8f9fa;
-  padding: 1rem;
-  margin: 1.5rem 0;
-  border-radius: 0.375rem;
-}
-.tier-badge--standard {
-  border-left-color: #3b82f6;
-  background-color: var(--up-grey-100);
-}
-
-.tier-badge--business {
-  border-left-color: #f59e0b;
-  background-color: var(--up-grey-100);
-}
-
-.tier-badge--enterprise {
-  border-left-color: #8b5cf6;
-  background-color: var(--up-grey-100);
-}
-
-.tier-badge__title {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.tier-badge__icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  flex-shrink: 0;
-}
-
-.tier-badge--standard .tier-badge__icon {
-  color: #28a745;
-}
-
-.tier-badge--business .tier-badge__icon {
-  color: #17a2b8;
-}
-
-.tier-badge--enterprise .tier-badge__icon {
-  color: #ffc107;
-}
-
-.tier-badge__content {
-  margin: 0;
-}
-
-.tier-badge__content strong {
-  color: #1a1a1a;
-}
-
-/* Dark mode support */
-[data-theme='dark'] .tier-badge {
-  background-color: var(--up-grey-800);
-}
-
-[data-theme='dark'] .tier-badge--standard {
-  background-color: var(--up-grey-800);
-}
-
-[data-theme='dark'] .tier-badge--business {
-  background-color: var(--up-grey-800);
-}
-
-[data-theme='dark'] .tier-badge--enterprise {
-  background-color: var(--up-grey-800);
-}
-
-[data-theme='dark'] .tier-badge__content strong {
-  color: #ffffff;
-}
-
-/* Mobile Navigation Fix */
-
-@media (max-width: 996px) {
-  /* Adjust sidebar to not cover navbar */
-  .theme-doc-sidebar-container {
-    position: fixed !important;
-    top: var(--ifm-navbar-height) !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: calc(100vh - var(--ifm-navbar-height)) !important;
-    background-color: var(--ifm-background-color) !important;
-    z-index: 99999 !important;
-    transform: translateX(-100%) !important;
-    transition: transform 0.3s ease !important;
-    overflow-y: auto !important;
-    padding-top: 0 !important;
-  }
-
-  /* Show sidebar when mobile menu is open */
-  body[data-navbar-sidebar-shown="true"] .theme-doc-sidebar-container,
-  .navbar-sidebar--show .theme-doc-sidebar-container {
-    transform: translateX(0) !important;
-  }
-
-  /* Hide duplicate site title in mobile sidebar */
-  .navbar-sidebar .navbar-sidebar__brand,
-  .navbar-sidebar .navbar__brand,
-  .theme-doc-sidebar-container .navbar__brand {
-    display: none !important;
-  }
-
-  .navbar-sidebar__back {
-    position: sticky !important;
-    top: 0 !important;
-    border: none !important;
-    padding: 1rem !important;
-    font-weight: 600 !important;
-    color: var(--ifm-font-color-base) !important;
-    border-bottom: 1px solid var(--upbound-border-color) !important;
-    width: 100% !important;
-    text-align: left !important;
-    font-size: 1rem !important;
-    z-index: 100000 !important;
-    cursor: pointer !important;
-    margin: 0 !important;
-  }
-
-  .navbar-sidebar__back:hover {
-    background-color: var(--upbound-light-bg) !important;
-  }
-
-  .theme-doc-sidebar-menu {
-    padding: 1rem !important;
-    margin: 0 !important;
-  }
-
-  /* Ensure navbar stays accessible and on top */
-  .navbar {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 100000 !important;
-    background-color: var(--ifm-navbar-background-color) !important;
-    backdrop-filter: blur(8px) !important;
-  }
-
-  /* Keep navbar fully functional when sidebar is open */
-  body[data-navbar-sidebar-shown="true"] .navbar,
-  .navbar-sidebar--show .navbar {
-    pointer-events: all !important;
-    z-index: 100000 !important;
-  }
-
-  /* Keep hamburger menu accessible */
-  body[data-navbar-sidebar-shown="true"] .navbar__toggle,
-  .navbar-sidebar--show .navbar__toggle {
-    opacity: 1 !important;
-    pointer-events: all !important;
-    z-index: 100001 !important;
-  }
-
-  /* Ensure all navbar items are clickable */
-  .navbar__items,
-  .navbar__brand,
-  .navbar__logo,
-  .navbar__item {
-    z-index: 100001 !important;
-    pointer-events: all !important;
-  }
-
-  body[data-navbar-sidebar-shown="true"] {
-    overflow: hidden !important;
-  }
-
-  .navbar-sidebar {
-    position: fixed !important;
-    top: var(--ifm-navbar-height) !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: calc(100vh - var(--ifm-navbar-height)) !important;
-    background-color: var(--ifm-background-color) !important;
-    z-index: 99999 !important;
-    transform: translateX(-100%) !important;
-    transition: transform 0.3s ease !important;
-    overflow-y: auto !important;
-  }
-
-  .navbar-sidebar--show .navbar-sidebar {
-    transform: translateX(0) !important;
-  }
-
-  .navbar-sidebar .theme-doc-sidebar-menu,
-  .navbar-sidebar .menu__list {
-    padding: 1rem 1rem 2rem 1rem !important;
-  }
-
-  .navbar-sidebar .menu__link,
-  .theme-doc-sidebar-container .menu__link {
-    padding: 0.75rem 1rem !important;
-    margin: 0.25rem 0 !important;
-    border-radius: 0.5rem !important;
-    color: var(--ifm-font-color-base) !important;
-    text-decoration: none !important;
-    transition: all 0.2s ease !important;
-    display: block !important;
-  }
-
-  .navbar-sidebar .menu__link:hover,
-  .theme-doc-sidebar-container .menu__link:hover {
-    background-color: var(--upbound-light-bg) !important;
-    color: var(--grape) !important;
-  }
-
-  .navbar-sidebar .menu__link--active,
-  .theme-doc-sidebar-container .menu__link--active {
-    background-color: var(--up-purple-50) !important;
-    color: var(--grape) !important;
-    font-weight: 600 !important;
-  }
-
-  /* Collapsible menu items */
-  .navbar-sidebar .menu__list-item-collapsible,
-  .theme-doc-sidebar-container .menu__list-item-collapsible {
-    margin: 0.25rem 0 !important;
-  }
-
-  .navbar-sidebar .menu__link--sublist,
-  .theme-doc-sidebar-container .menu__link--sublist {
-    font-weight: 600 !important;
-  }
-
-  /* Dark mode adjustments */
-  html[data-theme='dark'] .navbar-sidebar .menu__link--active,
-  html[data-theme='dark'] .theme-doc-sidebar-container .menu__link--active {
-    background-color: rgba(175, 126, 253, 0.15) !important;
-    color: var(--up-purple-200) !important;
-  }
-
-  html[data-theme='dark'] .navbar-sidebar__back {
-    background-color: var(--up-grey-900) !important;
-    border-bottom-color: var(--up-grey-700) !important;
-    color: var(--up-grey-200) !important;
-  }
-}
-
-  .navbar-sidebar .navbar-sidebar__items .navbar__brand,
-  .theme-doc-sidebar-container .navbar__brand,
-  .navbar-sidebar h1,
-  .navbar-sidebar .navbar__title {
-    display: none !important;
-  }
-
-  .navbar-sidebar .navbar-sidebar__items {
-    padding-top: 0 !important;
-  }
-
-  /* Hide any extra title elements in sidebar */
-  .navbar-sidebar [class*="title"],
-  .theme-doc-sidebar-container [class*="title"]:not(.menu__link) {
-    display: none !important;
-  }
 

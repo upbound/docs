@@ -48,7 +48,7 @@ const config = {
         sidebarPath: require.resolve('./src/sidebars/main.js'),
       },
     ],
-        './scripts/tier-plugin.js',
+        './scripts/plan-plugin.js',
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

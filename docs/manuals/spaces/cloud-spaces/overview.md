@@ -1,8 +1,12 @@
 ---
 title: Overview
 description: "Learn best practices for Cloud Spaces in your production environment"
-tier: "standard"
+plan: standard
 sidebar_position: 1
 ---
 
-<StandardBadge />
+<Standard />
+
+<Business />
+
+<Enterprise />
