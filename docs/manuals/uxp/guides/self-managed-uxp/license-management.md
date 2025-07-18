@@ -30,7 +30,7 @@ Upbound Crossplane includes a list of commercial features that are unlocked with
 * Backup and restore
 * Access to patch releases of Official Providers
 
-These features aren't unavailable unless a valid license is present. We explain below how these features behave when a license expires:
+These features are unavailable unless a valid license is present. We explain below how these features behave when a license expires:
 
 * **Upon license expiration:**
     * The cluster enters a grace period whereby features continue to work. The grace period is 25% of the total license duration. For example, a yearly license has a 3-month grace period, and a monthly license has about a 1-week grace period. During this grace period, the commercial features will continue to function normally. However, you'll notice warnings emitted in Upbound Crossplane that the license's grace period is active. 
@@ -39,7 +39,7 @@ These features aren't unavailable unless a valid license is present. We explain 
 
 ### Development licenses
 
-When Upbound Crossplane gets deployed locally into a single-node kind cluster, it automatically recieves a temporary license that unlocks commercial features. This is to enable local development and testing flows with Upbound Crossplane.
+When Upbound Crossplane gets deployed locally into a single-node kind cluster, it automatically receives a temporary license that unlocks commercial features. This is to enable local development and testing flows with Upbound Crossplane.
 
 :::important
 
@@ -105,7 +105,7 @@ metadata:
   name: uxp
 spec:
   secretRef:
-    key: license.json
+    key: license
     name: uxp-license
     namespace: crossplane-system
 ```

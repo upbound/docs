@@ -31,7 +31,9 @@ Operations are counted on a per-invocation basis, regardless of how many resourc
 
 ## How metering works
 
-When UXP has a valid commercial license, a system local to the cluster is responsible for tracking the cconsumption of resources and operations over time. The system works by periodically counting resources and operations and storing these records as historical data. You can see current usage for an Upbound Crossplane cluster by viewing your license's `.status.usage` field.
+
+When UXP has a valid commercial license, a system local to the cluster is responsible for tracking the consumption of resources and operations over time. The system works by periodically counting resources and operations and storing these records as historical data. You can see current usage for an Upbound Crossplane cluster by viewing your license's `.status.usage` field.
+
 
 [UXP licenses][license-management] are capacity-based, meaning they define a maximum number of resource-hours and operations respectively. These values are encoded in the license. You can see your license's capacity limit by viewing your license's `.status.capacity` field.
 
