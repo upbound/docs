@@ -17,7 +17,7 @@ Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed 
 
 ## Architecture overview
 
-![API Connector Architecture](../images/api-connector-architecture.png)
+![API Connector Architecture](images/api-connector.png)
 
 API Connector uses a **provider-consumer** model:
 
