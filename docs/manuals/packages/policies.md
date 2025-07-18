@@ -1,7 +1,7 @@
 ---
 title: Policies
-sidebar_position: 1
-description: The Upbound Official provider policies.
+sidebar_position: 100
+description: The Upbound Official package policies.
 ---
 
 <!-- vale Google.Headings = NO -->
@@ -12,19 +12,20 @@ description: The Upbound Official provider policies.
 <!-- vale gitlab.SentenceLength = NO -->
 
 
-The following policies provide details on the use, access, support and maintenance of the Upbound Official providers.
+The following policies provide details on the use, access, support and maintenance of the Upbound Official packages.
 
 
 
 ## License
-The Upbound Official providers are open source, and the source code is available under the Apache 2.0 license.
+The Upbound Official packages are open source, and the source code is available under the Apache 2.0 license.
 
-Upbound is the publisher for the Official provider listings in
+Upbound is the publisher for the Official package listings in
 the [Upbound Marketplace][upbound-marketplace].
 
 
 ## Access
-Your Upbound subscription level determines the level of access to the versions of each Official provider in the
+
+Your Upbound plan subscription level determines the level of access to the versions of each Official package in the
 Marketplace.
 
 ### Anonymous and Individual Tier subscribers
@@ -38,10 +39,6 @@ ends, and users must upgrade to the latest version. For major version changes, a
 30-day grace period allows access to the last release of the prior `major`
 version.
 
-:::important
-This policy applies to Official Providers published after March 25, 2025. All versions published prior to this date are pullable without a subscription to Upbound.
-:::
-
 #### Accessing the latest released version
 
 The latest version of an Official provider is accessible to users via the `v[major]` tag in the Marketplace. For
@@ -53,59 +50,51 @@ example, if the latest version of `provider-aws-s3` is `v1.16.0`, access it with
 If your organization has a `Team`, `Enterprise`, or `Business Critical` subscription to Upbound, you can access all
 published versions of Official providers.
 
-To access older Official provider versions, make sure you've
+To access older Official package versions, make sure you've
 [configured pull secrets][configured-pull-secrets] for the Official
 providers.
 
 ### Example
 
-Team or higher subscription tiers will allow access to all available provider versions in the access window, while
-Community and Individual tier will only be able to access the latest version of the provider. For convenience this
-version will be tagged as `v[major]` (`v1`) so users don't need to update the package version each time a new release
-is made.
+Standard or higher plans will allow access to all available package versions in the access window, while
+Community plan users will only be able to access the latest version releases from the main source branch of the package. 
+
 ![Tier access](/img/tier-access.png)
 <!--- TODO(tr0njavolta): image --->
 :::important
-Community and Individual tier users can **only** access the `v<major> `version. Community and Individual tiers don't
-support pinning specific `patch` or `minor` provider versions.
+Community plan users can **only** access the latest main branch releases of packages, meaning no access to `patch` versions of packages.
 :::
 
-When, for example, a new minor version of the provider is released the v1 tag will automatically update to point to this
-latest version.
 ![Minor release](/img/minor-release.png)
 <!-- unBlur="true" >}} -->
 
 
 
 ## Support
-For Upbound customers with a `Team` tier or higher subscription, Upbound supports its Official providers for 12 months
+For Upbound customers with a `Standard` plan or higher subscription, Upbound supports its Official packages for 12 months
 from the release date.
 
-Once the support window has lapsed, an unsupported provider version is accessible for another 6 months in
+Once the support window has lapsed, an unsupported package version is accessible for another 6 months in
 the Upbound Marketplace.
 
-:::important
-The support window for Upbound Official providers for AWS, Azure, AzureAD, and GCP on versions before v1.0.0 ends after
-31 Jan 2025.
-:::
-Upbound customers with `Enterprise` tier or higher subscription can [open a ticket][open-a-ticket] to
-request support with the Official providers.
+Upbound customers with `Enterprise` plan or higher subscription can [open a ticket][open-a-ticket] to
+request support with the Official packages.
 
 
 ## Publishing
-Official providers have two relevant version numbers:
+Official packages have two relevant version numbers:
 
-* Provider release, for example, `provider-aws:v1.16.0`
+* Package release, for example, `provider-aws:v1.16.0`
 * Custom Resource Definition (*CRD*) API version, for example `v1beta1`
 
-### Provider versions
+### Package versions
 
-Upbound publishes new Official provider versions to provide bug fixes and enhancements. Provider versions follow
+Upbound publishes new Official package versions to provide bug fixes and enhancements. Package versions follow
 standard [semantic versioning (*semver*)][semantic-versioning-semver] standards of `<major>`.`<minor>`.`<patch>` numbering.
 
 #### Major version
 
-A `major` version indicates production stability and long-term support. When the
+A `major` version indicates production stability and long-term support. In the case of providers, when the
 `major`  version of the underlying Terraform provider (if generated with Upjet)
 or Upjet runtime updates, the provider's `major` version increments. Major
 version updates reset
@@ -132,7 +121,7 @@ A `patch` version increases for releases with **only** bug fixes and **no** new 
 
 ### CRD API versions
 
-The CRDs contained within an Official provider follow the standard Kubernetes API versioning and deprecation policy.
+When CRDs are contained in an Official package, they follow the standard Kubernetes API versioning and deprecation policy.
 
 - `v1alpha1` - CRDs under `v1alpha` haven't yet passed through Upbound's quality assurance process. `v1alpha1` providers
   are for testing and experimentation and aren't intended for production deployment.
@@ -176,12 +165,12 @@ environment before applying to production.
 Backward compatibility **is not** guaranteed when downgrading to a prior version.
 <!-- vale Microsoft.Contractions = YES -->
 
-Downgrading to a previous version may require manual intervention to ensure the provider and the resources remain in a
-synced/healthy state. In some scenarios, it might be necessary to uninstall the provider and reinstall the older desired
+Downgrading to a previous version may require manual intervention to ensure the package and the resources remain in a
+synced/healthy state. In some scenarios, it might be necessary to uninstall the package and reinstall the older desired
 version.
 
 You should **always** simulate downgrades in a non-production environment before
-applying to production. Upbound customers with Official Provider support should
+applying to production. Upbound customers with Official package support should
 consult their Solutions Architect before a production downgrade.
 
 ### Family provider version compatibility
@@ -218,7 +207,7 @@ Examples:
 
 
 ## CVEs
-Upbound will make reasonable commercial effort to ensure its Official providers are free
+Upbound will make reasonable commercial effort to ensure its Official packages are free
 from [Common Vulnerabilities and Exposures][common-vulnerabilities-and-exposures] (CVEs) under the following
 conditions:
 
