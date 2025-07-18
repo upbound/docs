@@ -7,7 +7,7 @@ sidebar_position: 2
 Upbound Crossplane is available in community and commercial plans for Upbound. 
 
 * Upbound Community Plan lets you run Upbound Crossplane for free and is source-available on [GitHub][uxp-source]
-* Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane.
+* Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
 
 ## Community plan 
 
@@ -23,7 +23,7 @@ Users who have a commercial plan on Upbound including Standard, Enterprise, and 
 
 ### Commercial features
 
-Upbound Crossplane includes a list of commercial features that are unlocked with a commercial license:
+A commercial license unlocks the following Upbound Crossplane features:
 
 * Provider pod auto-scaling
 * Function pod scale-to-zero
@@ -39,7 +39,7 @@ These features are unavailable unless a valid license is present. We explain bel
 
 ### Development licenses
 
-When Upbound Crossplane gets deployed locally into a single-node kind cluster, it automatically receives a temporary license that unlocks commercial features. This is to enable local development and testing flows with Upbound Crossplane.
+When you deploy Upbound Crossplane into a local single-node kind cluster, it automatically receives a temporary license that unlocks commercial features. This is to enable local development and testing flows with Upbound Crossplane.
 
 :::important
 
@@ -68,7 +68,7 @@ Connect to your Upbound Crossplane cluster.
 ```bash
 up uxp license apply uxp-license
 ```
-3. Confirm it's status:
+3. Confirm its status:
 ```bash
 up uxp license show
 ```
@@ -109,7 +109,7 @@ spec:
     name: uxp-license
     namespace: crossplane-system
 ```
-4. Confirm it's status:
+4. Verify the license status:
 ```bash
 kubectl get license uxp --subresource=status
 ```
@@ -126,7 +126,7 @@ uxp    standard   True    SignatureVerified   3h59m
 
 :::important
 
-You may not re-use licenses across multiple Upbound Crossplane clusters.
+**You may not re-use licenses across multiple Upbound Crossplane clusters.**
 
 :::
 
@@ -160,7 +160,7 @@ Enabled Features:
 </TabItem>
 <TabItem value="kubectl" label="kubectl">
 
-Confirm it's status:
+Verify the license status:
 ```bash
 kubectl get license uxp --subresource=status
 ```

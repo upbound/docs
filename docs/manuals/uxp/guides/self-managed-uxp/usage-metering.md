@@ -4,7 +4,7 @@ description: "Learn how UXP does metering and usage"
 sidebar_position: 3
 ---
 
-Upbound Crossplane includes a usage metering system that gets activated when a license gets applied. It is responsible for tracking the consumption of resources and operations over time. 
+Upbound Crossplane includes a usage metering system to track resource consumption and operations over time. Usage metering begins when you apply a license.
 
 ## How usage works
 
@@ -17,7 +17,7 @@ Usage in Upbound Crossplane is measured on two units:
 
 _Resource_ represents any discrete infrastructure or application resource that is actively managed by the control plane. This includes external cloud infrastructure such as databases, IAM roles, and storage buckets, as well as in-cluster objects like Deployments, Ingress, and Services.
 
-A resource is considered “controlled” when it is declared through a composition or directly instantiated by a crossplane provider, and is being continuously reconciled to match its desired state. This ongoing reconciliation ensures the resource stays compliant, functional, and aligned with its declared specification. 
+A resource is considered "controlled" when it is declared through a composition or directly instantiated by a Crossplane provider, and is being continuously reconciled to match its desired state. This ongoing reconciliation ensures the resource stays compliant, functional, and aligned with its declared specification. 
 
 Whether a resource was provisioned via a Crossplane composition, dynamically created by a provider, or derived from a pipeline run, its lifecycle is maintained by the control plane. Resources are metered in resource-hours to account for both breadth and duration. 
 
