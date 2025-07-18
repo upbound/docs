@@ -12,6 +12,9 @@ const config = {
   projectName: 'docs',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+    clientModules: [
+  require.resolve('./scripts/copymarkdown.js'),
+    ],
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
