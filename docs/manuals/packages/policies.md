@@ -121,7 +121,7 @@ A `patch` version increases for releases with **only** bug fixes and **no** new 
 
 ### CRD API versions
 
-When CRDs are contianed in an Official package, they follow the standard Kubernetes API versioning and deprecation policy.
+When CRDs are contained in an Official package, they follow the standard Kubernetes API versioning and deprecation policy.
 
 - `v1alpha1` - CRDs under `v1alpha` haven't yet passed through Upbound's quality assurance process. `v1alpha1` providers
   are for testing and experimentation and aren't intended for production deployment.
