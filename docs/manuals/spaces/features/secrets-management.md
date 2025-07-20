@@ -1,6 +1,6 @@
 ---
 title: Secrets Management
-sidebar_position: 15
+sidebar_position: 20
 description: A guide for how to configure synchronizing external secrets into control
   planes in a Space.
 ---

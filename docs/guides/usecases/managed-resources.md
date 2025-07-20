@@ -70,7 +70,7 @@ kind: Provider
 metadata:
   name: crossplane-contrib-provider-aws-s3
 spec:
-  package: xpkg.crossplane.io/crossplane-contrib/provider-aws-s3:v1.24.0-crossplane-v2-preview.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.24.0
 ```
 :::important
 todo official provider and package from marketplace

@@ -1,6 +1,6 @@
 ---
 title: Control Plane Groups
-sidebar_position: 1
+sidebar_position: 2
 description: An introduction to the Control Plane Groups in Upbound
 tier: "enterprise"
 ---

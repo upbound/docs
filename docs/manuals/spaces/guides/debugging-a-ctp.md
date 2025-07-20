@@ -1,6 +1,6 @@
 ---
 title: Debugging issues on a control plane
-sidebar_position: 10
+sidebar_position: 70
 description: A guide for how to debug resources on a control plane running in Upbound.
 ---
 

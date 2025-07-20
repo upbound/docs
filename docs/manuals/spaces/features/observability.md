@@ -1,6 +1,6 @@
 ---
 title: Observability
-sidebar_position: 20
+sidebar_position: 50
 description: A guide for how to use the integrated observability pipeline feature
   in a Space.
 ---

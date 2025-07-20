@@ -30,15 +30,15 @@ Key features of the Upbound Marketplace include:
 - Private repositories
 - API docs
 
-## Trust tiers
+## Verified Publishers
 
 <!-- vale write-good.Passive = NO -->
-Extensions in the Marketplace are published and maintained by a variety of sources. Upbound categorizes each published extension according to a _Trust Tier_. Each tier is labeled with a corresponding badge to denote the source of an extension. You can also see the name of the organization responsible for the extension.
+Extensions in the Marketplace are published and maintained by a variety of sources. The Marketplace assigns different badges to packages to denote the source of an extension. You can also see the name of the organization responsible for the extension.
 <!-- vale write-good.Passive = YES -->
 
 <!-- vale Upbound.Spelling = NO -->
 
-| Tier      | Description                                | Organization |
+| Verification      | Description                                | Organization |
 | --------- | ------------------------------------------ | ------------ |
 | Official  | Extensions owned and maintained by Upbound | Upbound      |
 | Partner   | Extensions owned, maintained, validated, and published by third-party companies | Third-party organization      |
