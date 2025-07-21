@@ -1,5 +1,5 @@
 ---
-title: Backup and Restore
+title: Backup
 description: "Learn how to use the built-in backup and restore controller"
 sidebar_position: 15
 tier: "standard"
@@ -7,10 +7,15 @@ tier: "standard"
 
 <Standard />
 
-This guide explains how to create a backup of your control plane and restore it
-to that moment in time.
+Upbound Crossplane's Backup & Restore is a built-in backup and restore feature
+that lets you lets you configure automatic schedules for taking snapshots of
+your control planes. You can restore data from these backups by making new
+control planes. This guide explains how to use Backup & Restore for disaster
+recovery or upgrade scenarios. 
 
 ## Prerequisites
+
+Before you begin, make sure you have:
 
 * a running Upbound Crossplane control plane cluster
 * a valid **Standard** license applied to your control plane
