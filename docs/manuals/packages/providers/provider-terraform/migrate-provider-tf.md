@@ -165,7 +165,7 @@ spec:
 ```
 
 :::warning
-This configuration will not work if applied now.
+This configuration won't work if applied now.
 :::
 
 ## Authenticate with your cloud provider

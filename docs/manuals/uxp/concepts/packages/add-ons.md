@@ -374,7 +374,7 @@ Right now, it is not possible to configure this at runtime. The package author c
 
 <summary>Can I deploy more than one instance of an AddOn package?</summary>
 
-No, this is not possible. Remember, an _AddOn_ package introduces CRDs which are cluster-scoped objects. Just like one cannot deploy more than one instance of the same Crossplane Provider package today, it is not possible to deploy more than one instance of an _AddOn_.
+No, this is not possible. Remember, an _AddOn_ package introduces CRDs which are cluster-scoped objects. Just like one can't deploy more than one instance of the same Crossplane Provider package today, it is not possible to deploy more than one instance of an _AddOn_.
 
 </details>
 

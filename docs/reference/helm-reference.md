@@ -319,7 +319,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.upboundControllers.storage.pvcs.enabled | bool | `false` | This enables the Upbound Controllers feature to use PVCs for storage. |
 | features.alpha.upboundPolicy.enabled | bool | `false` | This enables the SharedUpboundPolicy API within this space. |
 | features.alpha.upboundRBAC.enabled | bool | `false` | This enables respecting Upbound Authorization management within the space. This will include new APIs for binding Objects to identities supplied by Upbound. |
-| features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
+| features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and won't be removed completely without being marked deprecated for at least two releases. |
 | fullnameOverride | string | `""` | The full name of the chart, including the repository name. |
 | gatewayAPI | object | `{"gateway":{"className":"spaces","name":"spaces","provision":false},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"spacesRouterRoute":{"provision":false}}` | Configurations for external requests coming into the space. |
 | gatewayAPI.gateway | object | `{ ... }` | Configurations for the Gateway resource that will act as an application gateway for Spaces. |

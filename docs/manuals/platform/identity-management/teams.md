@@ -28,7 +28,7 @@ To delete a team:
 4. Select **Delete**
 
 :::warning
-Deleting a team permanently removes any permissions its members and robot accounts have and cannot be undone.
+Deleting a team permanently removes any permissions its members and robot accounts have and can't be undone.
 :::
 
 ## Manage membership

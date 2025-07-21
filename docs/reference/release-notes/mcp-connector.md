@@ -57,7 +57,7 @@ Any important warnings or necessary information
 - Support for server-side apply
 - This release ships the helm chart as an OCI artifact in the Upbound registry only, available at
   `oci://xpkg.upbound.io/spaces-artifacts/mcp-connector`.
-- The helm chart will not be available at the Upbound helm repository anymore, please migrate to the OCI artifact.
+- The helm chart won't be available at the Upbound helm repository anymore, please migrate to the OCI artifact.
 
 ## v0.6.1
 

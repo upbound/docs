@@ -12,7 +12,7 @@ For more information on the release cadence and support protocol refer to the
 provider [support and maintenance][support-and-maintenance] page.
 
 :::important
-Beginning with `v1.21.0` and later, you need at least a `Team` subscription to pull a given Official Provider version.  All prior versions are pullable without a subscription. 
+Beginning with `v1.21.0` and later, you need at least a `Team` subscription to pull a given Official Provider version. All prior versions are pullable without a subscription. 
 If you're not subscribed to Upbound or have an `Individual` tier subscription, you can still always pull **the most recent provider version** using the `v1` tag.
 :::
 

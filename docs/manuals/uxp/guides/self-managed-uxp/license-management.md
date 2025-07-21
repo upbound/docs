@@ -15,7 +15,7 @@ The Community plan on Upbound lets you run Upbound Crossplane without a license.
 
 ### Restrictions
 
-Users cannot provide Upbound Crossplane as a commercial Crossplane service to others.
+Users can't provide Upbound Crossplane as a commercial Crossplane service to others.
 
 ## Commercial plans (Standard, Enterprise, Business Critical)
 
