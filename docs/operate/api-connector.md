@@ -241,11 +241,10 @@ apiVersion: connect.upbound.io/v1alpha1
 kind: ClusterAPIBinding
 metadata:
   name: <api-group-name>
-  namespace: upbound-system
 spec:
   connectionRef:
     kind: ClusterConnection
-    name: spaces-connection
+    name: <provider-controlplane-name> # Or --name value
 ```
 
 The `ClusterAPIBinding` name must match the **API Group** of the CRD you want to bind.
