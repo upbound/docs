@@ -57,7 +57,7 @@ kind: Configuration
 metadata:
   name: configuration-quickstart
 spec:
-  package: xpkg.up ound.io/upbound/configuration-quickstart@sha256:ef9795d146190637351a5c5848e0bab5e0c190fec7780f6c426fbffa0cb68358
+  package: xpkg.upbound.io/upbound/configuration-quickstart@sha256:ef9795d146190637351a5c5848e0bab5e0c190fec7780f6c426fbffa0cb68358
 ```
 </div>
 :::

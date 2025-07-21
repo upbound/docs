@@ -206,7 +206,7 @@ metadata:
 spec:
   replayDeletion: true
   of:
-    apiVersion: ek.upbound.io/v1beta1
+    apiVersion: eks.upbound.io/v1beta1
     kind: Cluster
     resourceRef:
       name: my-cluster
