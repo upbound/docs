@@ -4,15 +4,21 @@ sidebar_position: 15
 description: Configure scheduling of composites to remote control planes
 plan: enterprise
 ---
-<Standard />
+<Enterprise />
 
-:::important
-This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this deployment mode, please [contact us][contact-us].
-:::
 
-Upbound's _Control Plane Topology_ feature lets you build and deploy a platform composed of many control planes that work together to offer a unified platform experience. With the _Topology_ feature, you can install resource APIs that are reconciled by other control planes and configure the routing that occurs between control planes. You can also build compositions that reference other resources running on your control plane or elsewhere in Upbound. 
+Upbound's _Control Plane Topology_ feature lets you build and deploy a platform
+of multiple control planes. These control planes work together for a unified platform
+experience.
 
-This guide explains how to use Control Plane Topology APIs to install, configure remote APIs, and build powerful compositions that reference other resources. 
+
+With the _Topology_ feature, you can install resource APIs that are
+reconciled by other control planes and configure the routing that occurs between
+control planes. You can also build compositions that reference other resources
+running on your control plane or elsewhere in Upbound. 
+
+This guide explains how to use Control Plane Topology APIs to install, configure
+remote APIs, and build powerful compositions that reference other resources. 
 
 ## Benefits
 
@@ -30,8 +36,15 @@ Imagine the scenario where you want to let a user reference a subnet when creati
 - you want to let them create a subnet when they create the database, if it doesn't exist.
 - you want to allow them to reuse a subnet that got created elsewhere or gets shared by another user.
 
-In each of these scenarios, you must resort to writing complex composition logic to handle each case. The problem is compounded when the resource exists in a context separate from the current control plane's context. Imagine a scenario where one control plane manages Database resources and a second control plane manages networking resources. With the _Topology_ feature, you can offload these concerns to Upbound machinery.
+In each of these scenarios, you must resort to writing complex composition logic
+to handle each case. The problem is compounded when the resource exists in a
+context separate from the current control plane's context. Imagine a scenario
+where one control plane manages Database resources and a second control plane
+manages networking resources. With the _Topology_ feature, you can offload these
+concerns to Upbound machinery. 
+
 <!--- TODO(tr0njavolta): images --->
+
 ![Control Plane Topology feature arch](/img/topology-arch.png)
 
 ## Prerequisites
@@ -51,12 +64,18 @@ Enable the Control Plane Topology feature in the Space you plan to run your cont
 _ReferencedObject_ is a resource type available in an Upbound control plane that lets you reference other Kubernetes resources in Upbound.  
 
 :::tip
-While this feature is especially useful for composing resources that exist in a remote context--such as another control plane--you can also use _ReferencedObjects_ to easily resolve references to any other Kubernetes object in the current control plane context. This could be a secret, another Crossplane resource, or more.
+This feature is useful for composing resources that exist in a
+remote context, like another control plane. You can also use
+_ReferencedObjects_ to resolve references to any other Kubernetes object
+in the current control plane context. This could be a secret, another Crossplane
+resource, or more. 
 :::
 
 ### Declare the resource reference in your XRD
 
-To compose a _ReferencedObject_, you should start by adding a resource reference in your Composite Resource Definition (XRD). The convention for the resource reference follows the shape shown below: 
+To compose a _ReferencedObject_, you should start by adding a resource reference
+in your Composite Resource Definition (XRD). The convention for the resource
+reference follows the shape shown below: 
 
 ```yaml
 <resource>Ref:
@@ -185,10 +204,14 @@ spec:
 ### Manually add the jsonPath
 
 :::important
-This step is a known limitation of the preview. We're working on tooling that removes the need for authors to do this step.
+This step is a known limitation of the preview. We're working on tooling that
+removes the need for authors to do this step.
 :::
 
-During the preview timeframe of this feature, you must add an annotation by hand to the XRD. In your XRD's `metadata.annotations`, set the `references.upbound.io/schema` annotation. It should be a JSON string in the following format:
+During the preview timeframe of this feature, you must add an annotation by hand
+to the XRD. In your XRD's `metadata.annotations`, set the
+`references.upbound.io/schema` annotation. It should be a JSON string in the
+following format:
 
 ```json
 {
@@ -208,7 +231,8 @@ During the preview timeframe of this feature, you must add an annotation by hand
 }
 ```
 
-Flatten this JSON into a string and set the annotation on your XRD. View the example below for an illustration:
+Flatten this JSON into a string and set the annotation on your XRD. View the
+example below for an illustration:
 
 <details>
 <summary>Show example setting the references.upbound.io/schema annotation</summary>
@@ -309,19 +333,33 @@ To configure routing resource requests between control planes, you need to deplo
 
 ### Deploy into a service-level control plane
 
-Package the APIs you build into a Configuration package an deploy it on a control plane in an Upbound Cloud Space. In Upbound, it's common to refer to the control plane where the Configuration package is deployed as a **service-level control plane**. This control plane runs the controllers that processes the API requests and provisions underlying resources. In a later section, you learn how you can use _Topology_ features to [configure routing][configure-routing].
+Package the APIs you build into a Configuration package an deploy it on a
+control plane in an Upbound Cloud Space. In Upbound, it's common to refer to the
+control plane where the Configuration package is deployed as a **service-level
+control plane**. This control plane runs the controllers that processes the API
+requests and provisions underlying resources. In a later section, you learn how
+you can use _Topology_ features to [configure routing][configure-routing].
 
 ### Deploy as Remote APIs on a platform control plane
 
-You should use the same package source as deployed in the **service-level control planes**, but this time deploy the Configuration in a separate control plane as a _RemoteConfiguration_. The _RemoteConfiguration_ installs Kubernetes CustomResourceDefinitions for the APIs defined in the Configuration package, but no controllers get deployed.
+You should use the same package source as deployed in the **service-level
+control planes**, but this time deploy the Configuration in a separate control
+plane as a _RemoteConfiguration_. The _RemoteConfiguration_ installs Kubernetes
+CustomResourceDefinitions for the APIs defined in the Configuration package, but
+no controllers get deployed.
 
 ### Install a _RemoteConfiguration_
 
-_RemoteConfiguration_ is a resource type available in an Upbound manage control planes that acts like a sort of Crossplane [Configuration][configuration] package. Unlike standard Crossplane Configurations, which install XRDs, compositions, and functions into a desired control plane, _RemoteConfigurations_ install only the CRDs for claimable composite resource types.
+_RemoteConfiguration_ is a resource type available in an Upbound manage control
+planes that acts like a sort of Crossplane [Configuration][configuration]
+package. Unlike standard Crossplane Configurations, which install XRDs,
+compositions, and functions into a desired control plane, _RemoteConfigurations_
+install only the CRDs for claimable composite resource types.
 
 #### Install directly
 
-Install a _RemoteConfiguration_ by defining the following and applying it to your control plane:
+Install a _RemoteConfiguration_ by defining the following and applying it to
+your control plane:
 
 ```yaml
 apiVersion: pkg.upbound.io/v1alpha1
@@ -334,13 +372,16 @@ spec:
 
 #### Declare as a project dependency
 
-You can declare _RemoteConfigurations_ as dependencies in your control plane's [project file][project-file]. Use the up CLI to add the dependency, providing the `--remote` flag:
+You can declare _RemoteConfigurations_ as dependencies in your control plane's
+[project file][project-file]. Use the up CLI to add the dependency, providing
+the `--remote` flag:
 
 ```tsx live
 up dep add <xpkg.upbound.io/your-org/your-configuration-name:tag> --remote
 ```
 
-This command adds a declaration in the `spec.apiDependencies` stanza of your project's `upbound.yaml` as demonstrated below:
+This command adds a declaration in the `spec.apiDependencies` stanza of your
+project's `upbound.yaml` as demonstrated below:
 
 ```yaml
 apiVersion: meta.dev.upbound.io/v1alpha1
@@ -356,7 +397,13 @@ spec:
     version: '>=v0.0.0'
 ```
 
-Like a Configuration, a _RemoteConfigurationRevision_ gets created when the package gets installed on a control plane. Unlike Configurations, XRDs and compositions **don't** get installed by a _RemoteConfiguration_. Only the CRDs for claimable composite types get installed and Crossplane thereafter manages their lifecycle. You can tell when a CRD gets installed by a _RemoteConfiguration_ because it has the `internal.scheduling.upbound.io/remote: true` label:
+Like a Configuration, a _RemoteConfigurationRevision_ gets created when the
+package gets installed on a control plane. Unlike Configurations, XRDs and
+compositions **don't** get installed by a _RemoteConfiguration_. Only the CRDs
+for claimable composite types get installed and Crossplane thereafter manages
+their lifecycle. You can tell when a CRD gets installed by a
+_RemoteConfiguration_ because it has the `internal.scheduling.upbound.io/remote:
+true` label:
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1
@@ -369,16 +416,21 @@ metadata:
 
 ## Use an _Environment_ to route resources
 
-_Environment_ is a resource type available in Upbound control planes that works in tandem with resources installed by _RemoteConfigurations_. _Environment_ is a namespace-scoped resource that lets you configure how to route remote resources to other control planes by a set of user-defined dimensions. 
+_Environment_ is a resource type available in Upbound control planes that works
+in tandem with resources installed by _RemoteConfigurations_. _Environment_ is a
+namespace-scoped resource that lets you configure how to route remote resources
+to other control planes by a set of user-defined dimensions. 
 
 ### Define a routing dimension
 
-To establish a routing dimensions between two control planes, you must do two things:
+To establish a routing dimensions between two control planes, you must do two
+things:
 
 1. Annotate the service control plane with the name and value of a dimension.
 2. Configure an environment on another control plane with a dimension matching the field and value of the service control plane.
 
-The example below demonstrates the creation of a service control plane with a `region` dimension:
+The example below demonstrates the creation of a service control plane with a
+`region` dimension:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -391,11 +443,15 @@ metadata:
 spec:
 ```
 
-Upbound's Spaces controller keeps an inventory of all declared dimensions and listens for control planes to route to them.
+Upbound's Spaces controller keeps an inventory of all declared dimensions and
+listens for control planes to route to them.
 
 ### Create an _Environment_
 
-Next, create an _Environment_ on a separate control plane, referencing the dimension from before. The example below demonstrates routing all remote resource requests in the `default` namespace of the control plane based on a single `region` dimension:
+Next, create an _Environment_ on a separate control plane, referencing the
+dimension from before. The example below demonstrates routing all remote
+resource requests in the `default` namespace of the control plane based on a
+single `region` dimension:
 
 ```yaml
 apiVersion: scheduling.upbound.io/v1alpha1
@@ -408,7 +464,8 @@ spec:
     region: us-east-1
 ```
 
-You can specify whichever dimensions as you want. The example below demonstrates multiple dimensions:
+You can specify whichever dimensions as you want. The example below demonstrates
+multiple dimensions:
 
 ```yaml
 apiVersion: scheduling.upbound.io/v1alpha1
@@ -423,9 +480,12 @@ spec:
     offering: databases
 ```
 
-In order for the routing controller to match, _all_ dimensions must match for a given service control plane.
+In order for the routing controller to match, _all_ dimensions must match for a
+given service control plane.
 
-You can specify dimension overrides on a per-resource group basis. This lets you configure default routing rules for a given _Environment_ and override routing on a per-offering basis.
+You can specify dimension overrides on a per-resource group basis. This lets you
+configure default routing rules for a given _Environment_ and override routing
+on a per-offering basis.
 
 ```yaml
 apiVersion: scheduling.upbound.io/v1alpha1
@@ -451,7 +511,9 @@ spec:
 
 ### Confirm the configured route
 
-After you create an _Environment_ on a control plane, the routes selected get reported in the _Environment's_ `.status.resourceGroups`. This is illustrated below:
+After you create an _Environment_ on a control plane, the routes selected get
+reported in the _Environment's_ `.status.resourceGroups`. This is illustrated
+below:
 
 ```yaml
 apiVersion: scheduling.upbound.io/v1alpha1
@@ -472,15 +534,20 @@ status:
         offering: "databases"
 ```
 
-If you don't see a response in the `.status.resourceGroups`, this indicates a match wasn't found or an error establishing routing occurred. 
+If you don't see a response in the `.status.resourceGroups`, this indicates a
+match wasn't found or an error establishing routing occurred. 
 
 :::tip
-There's no limit to the number of control planes you can route to. You can also stack routing and form your own topology of control planes, with multiple layers of routing. 
+There's no limit to the number of control planes you can route to. You can also
+stack routing and form your own topology of control planes, with multiple layers
+of routing.
 :::
 
 ### Limitations
 
-Routing from one control plane to another is currently scoped to control planes that exist in a single Space. You can't route resource requests to control planes that exist on a cross-Space boundary.
+Routing from one control plane to another is currently scoped to control planes
+that exist in a single Space. You can't route resource requests to control
+planes that exist on a cross-Space boundary.
 
 
 [project-file]: /core-concepts/projects

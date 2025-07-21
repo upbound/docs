@@ -5,9 +5,9 @@ sidebar_position: 2
 
 Upbound Crossplane is the AI-native distribution of Crossplane. Control planes
 are the only way to build and support an autonomous infrastructure platform for
-the age of autonomous systems, serving both humans and AI. One of the advantages
-of Crossplane is the extensive library of managed resources you can use to
-manage almost any cloud provider or cloud native software.
+the age of autonomous systems, serving both humans and AI. Crossplane offers an
+extensive library of managed resources you can use to manage almost any cloud
+provider or cloud native software.
 
 :::tip
 This quickstart is suitable for users who want to manage external
@@ -47,7 +47,7 @@ Install Upbound Crossplane on your local cluster with the `up` CLI:
 up uxp install --enableWebUI
 ```
 
-Upbound will install UXP on your local cluster via Helm chart and enable a local
+Upbound installs UXP on your local cluster via Helm chart and enable a local
 Web UI to see your control plane resources.
 
 ## Install the provider
@@ -87,10 +87,9 @@ The AWS S3 provider installs support for all the AWS S3 managed resources.
 
 ### Create provider credentials
 
-With the provider installed on your local cluster, the provider needs
-credentials to connect to AWS.The provider needs credentials to create and
-manage AWS resources. Providers use a Kubernetes secret to connect the
-credentials to the provider. 
+With the provider installed, the control plane needs credentials to connect to
+AWS. The provider needs credentials to create and manage AWS resources.
+Providers use a Kubernetes secret to connect the credentials to the provider. 
 
 Generate a new secret from your AWS key-pair. Review the [AWS
 documentation][aws-documentation] for more information on how to generate AWS
@@ -188,7 +187,7 @@ kind delete cluster
 ```
 
 
-## Next Steps
+## Next steps
 
 In this guide, you created a local Upbound Crossplane instance, and deployed
 managed resources.

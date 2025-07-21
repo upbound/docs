@@ -4,7 +4,9 @@ sidebar_position: 12
 description: Enable and connect self-hosted Spaces to the Upbound console
 ---
 :::important
-This feature is in preview. Starting in Spaces `v1.8.0` and later, you must deploy and [enable the Query API][enable-the-query-api] and [enable Upbound RBAC][enable-upbound-rbac] in order to connect a Space to Upbound.
+This feature is in preview. Starting in Spaces `v1.8.0` and later, you must
+deploy and [enable the Query API][enable-the-query-api] and [enable Upbound
+RBAC][enable-upbound-rbac] to connect a Space to Upbound. 
 :::
 
 [Upbound][upbound] allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -164,7 +166,8 @@ Users interact with the Upbound Console to generate request queries to the Upbou
 * Configuration manifests for various resource types within your Space: Crossplane managed resources, composite resources, composite resource claims, Upbound shared secrets, Upbound shared backups, Crossplane providers, ProviderConfigs, Configurations, and Crossplane Composite Functions.
 
 :::important
-This data only concerns resource configuration. The data _inside_ the managed resource in your Space is not visible at any point.
+This data only concerns resource configuration. The data _inside_ the managed
+resource in your Space isn't visible at any point. 
 :::
 
 **Upbound can't see your data.** Upbound doesn't have access to session-based data rendered for your users in the Upbound Console. Upbound has no information about your self-hosted Space, other than that you've connected a self-hosted Space.
