@@ -171,7 +171,6 @@ stringData:
 <TabItem value="kubeconfig" label="Kubeconfig">
 
 For direct cluster access:
-For direct cluster access:
 
 ```yaml
 apiVersion: v1
@@ -186,9 +185,6 @@ data:
 </TabItem>
 </Tabs>
 
-
-</TabItem>
-</Tabs>
 
 ### Connection Setup
 
@@ -229,6 +225,9 @@ spec:
   crdManagement:
     pullBehavior: Pull
 ```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
