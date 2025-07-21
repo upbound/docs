@@ -78,10 +78,13 @@ SharedExternalSecret
 SLAs
 stdin
 stdout
+subnet
+subnets
 syncer
 Syncer
 Syncers
 syncers
+timeframe
 tolerations
 Upbound
 Upbound's
