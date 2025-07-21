@@ -526,6 +526,16 @@
       "permanent": true
     },
     {
+      "source": "/learn/control-plane-projects/",
+      "destination": "/build/control-plane-projects",
+      "permanent": true
+    },
+    {
+      "source": "/learn/control-plane-project/",
+      "destination": "/build/control-plane-projects",
+      "permanent": true
+    },
+    {
       "source": "/learn/core-concepts/claims",
       "destination": "/core-concepts/claims",
       "permanent": true
