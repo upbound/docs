@@ -39,7 +39,7 @@ Before using API Connector, ensure:
 1. **Consumer cluster** has network access to the provider control plane
 1. You have an license to use API connector. If you are unsure, [contact Upbound](https://www.upbound.io/contact) or your sales representative.
 
-This getting started guide has two parallel paths that may be followed, an automated, one-click path for connecting any Kubernetes cluster to managed control planes in Upbound Cloud, or a manual path for connecting to any Crossplane-enabled provider cluster.
+This getting started guide has two parallel paths that may be taken, an automated, one-click path for connecting any Kubernetes cluster to managed control planes in Upbound Cloud, or a manual path for connecting to any Crossplane-enabled provider cluster.
 
 ## Publishing APIs in the provider cluster
 
@@ -96,11 +96,11 @@ kubectl label crd <CRD API name> 'connect.upbound.io/bindable'='true' --overwrit
 
 The up CLI provides the simplest installation method with automatic configuration:
 
+Make sure the current Kubeconfig context is set to the **provider control plane**
 ```bash
-# Make sure the current Kubeconfig context is set to the **consumer cluster**
-kubectl config set-context consumer-cluster
+up ctx <organization-name/space-name/group/provider-control-plane-name>
 
-up controlplane api-connector install <organization-name/space-name/group/provider-control-plane-name> --target-kubeconfig <consumer-cluster-kubeconfig> [OPTIONS]
+up controlplane api-connector install --consumer-kubeconfig <consumer-cluster-kubeconfig> [OPTIONS]
 ```
 
 The command:
@@ -114,8 +114,8 @@ The command:
 **Example**:
 ```bash
 up controlplane api-connector install \
-  my-org/upbound-gcp-us-west-1/default/my-control-plane \
-  --target-kubeconfig ~/.kube/config \
+  --consumer-kubeconfig ~/.kube/config \
+  --consumer-context my-cluster \
   --upbound-token <your-token>
 ```
 
@@ -124,7 +124,8 @@ and create a `ClusterConnection` resource in the **Consumer cluster** to connect
 **Provider control plane**. 
 
 **Key Options**:
-- `--target-kubeconfig`: Path to consumer cluster kubeconfig (required)
+- `--consumer-kubeconfig`: Path to consumer cluster kubeconfig (required)
+- `--consumer-context`: Context name for consumer cluster (required)
 - `--name`: Custom name for connection resources (optional)
 - `--upbound-token`: API token for authentication (optional)
 - `--upgrade`: Upgrade existing installation (optional)
@@ -142,11 +143,6 @@ helm upgrade --install api-connector oci://xpkg.upbound.io/spaces-artifacts/api-
   --version <version> \
   --set consumerClusterDisplayName=<cluster-name>
 ```
-
-</TabItem>
-</Tabs>
-
-## Configuration
 
 ### Authentication Methods
 
@@ -190,6 +186,9 @@ data:
 </TabItem>
 </Tabs>
 
+
+</TabItem>
+</Tabs>
 
 ### Connection Setup
 
@@ -318,18 +317,18 @@ kubectl get clusterapibinding
 kubectl describe <resource-type> <resource-name>
 ```
 
-## Uninstallation
+## Removal
 
 ### Using the up CLI
 
 ```bash
 up controlplane api-connector uninstall \
-  --target-kubeconfig ~/.kube/config \
+  --consumer-kubeconfig ~/.kube/config \
   --all
 ```
 
 The `--all` flag removes all resources including connections and secrets.
-Without the flag, only runtime related resources will be removed.
+Without the flag, only runtime related resources won't be removed.
 
 **Note**: Uninstall won't remove any API objects in the provider control plane. If you want to clean up all API objects there, delete all API objects from the consumer cluster before API connector uninstallation, and wait for the objects to get deleted.
 
@@ -350,6 +349,6 @@ helm uninstall api-connector -n upbound-system
 
 ## Advanced Configuration
 
-### Multiple Cluster Connections
+### Multiple Connections
 
 You can connect to multiple provider clusters simultaneously by creating multiple `ClusterConnection` resources with different names and configurations.
