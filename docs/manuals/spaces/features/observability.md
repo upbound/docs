@@ -1,12 +1,14 @@
 ---
 title: Observability
-sidebar_position: 20
+sidebar_position: 50
 description: A guide for how to use the integrated observability pipeline feature
   in a Space.
 ---
 
 :::important
-This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a self-hosted Space, set `features.alpha.observability.enabled=true` when installing the Space:
+This feature is in preview and by default in Cloud Spaces. To enable
+it in a self-hosted Space, set `features.alpha.observability.enabled=true` when
+installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \

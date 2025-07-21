@@ -32,16 +32,8 @@ Install a Configuration with a Crossplane
 the <Hover line="6" label="install">spec.package</Hover> value to the
 location of the configuration package.
 
-:::important
-Beginning with Crossplane version 1.20.0 Crossplane uses the [crossplane-contrib](https://github.com/orgs/crossplane-contrib/packages) GitHub Container Registry at `xpkg.crossplane.io` by default for downloading and
-installing packages. 
-
-Specify the full domain name with the `package` or change the default Crossplane
-registry with the `--registry` flag on the [Crossplane pod](/crossplane/guides/pods)
-:::
-
 For example to install the 
-[Getting Started Configuration](https://github.com/crossplane-contrib/configuration-quickstart), 
+[Getting Started Configuration](https://github.com/upbound/configuration-quickstart), 
 
 <div id="install">
 ```yaml
@@ -50,7 +42,7 @@ kind: Configuration
 metadata:
   name: configuration-quickstart
 spec:
-  package: xpkg.crossplane.io/crossplane-contrib/configuration-quickstart:v0.1.0
+  package: xpkg.upbound.io/upbound/configuration-quickstart:v0.1.0
 ```
 </div>
 
@@ -65,7 +57,7 @@ kind: Configuration
 metadata:
   name: configuration-quickstart
 spec:
-  package: xpkg.crossplane.io/crossplane-contrib/configuration-quickstart@sha256:ef9795d146190637351a5c5848e0bab5e0c190fec7780f6c426fbffa0cb68358
+  package: xpkg.upbound.io/upbound/configuration-quickstart@sha256:ef9795d146190637351a5c5848e0bab5e0c190fec7780f6c426fbffa0cb68358
 ```
 </div>
 :::
@@ -90,7 +82,7 @@ helm install crossplane \
 crossplane-stable/crossplane \
 --namespace crossplane-system \
 --create-namespace \
---set configuration.packages='{xpkg.crossplane.io/crossplane-contrib/configuration-quickstart:v0.1.0}'
+--set configuration.packages='{xpkg.upbound.io/upbound/configuration-quickstart:v0.1.0}'
 ```
 </div>
 
@@ -121,8 +113,8 @@ View the configuration revisions with
 ```shell
 kubectl get configurationrevisions
 NAME                            HEALTHY   REVISION   IMAGE                                             STATE      DEP-FOUND   DEP-INSTALLED   AGE
-platform-ref-aws-1735d56cd88d   True      2          xpkg.crossplane.io/crossplane-contrib/platform-ref-aws:v0.5.0   Active     2           2               46s
-platform-ref-aws-3ac761211893   True      1          xpkg.crossplane.io/crossplane-contrib/platform-ref-aws:v0.4.1   Inactive                               5m13s
+platform-ref-aws-1735d56cd88d   True      2          xpkg.upbound.io/upbound/platform-ref-aws:v0.5.0   Active     2           2               46s
+platform-ref-aws-3ac761211893   True      1          xpkg.upbound.io/upbound/platform-ref-aws:v0.4.1   Inactive                               5m13s
 ```
 </div>
 
@@ -369,7 +361,7 @@ A working configuration reports `Installed` and `Healthy` as `True`.
 ```shell
 kubectl get configuration
 NAME               INSTALLED   HEALTHY   PACKAGE                                           AGE
-platform-ref-aws   True        True      xpkg.crossplane.io/crossplane-contrib/configuration-quickstart:v0.1.0   54s
+platform-ref-aws   True        True      xpkg.upbound.io/upbound/configuration-quickstart:v0.1.0   54s
 ```
 </div>
 
@@ -387,7 +379,7 @@ For example, this installation of the Getting Started Configuration is
 ```shell {copy-lines="1"}
 kubectl get configuration
 NAME               INSTALLED   HEALTHY   PACKAGE                                           AGE
-platform-ref-aws   True        False     xpkg.crossplane.io/crossplane-contrib/configuration-quickstart:v0.1.0   71s
+platform-ref-aws   True        False     xpkg.upbound.io/upbound/configuration-quickstart:v0.1.0   71s
 ```
 
 To see more information on why the Configuration isn't `HEALTHY` use 
@@ -401,7 +393,7 @@ Kind:         ConfigurationRevision
 # Removed for brevity
 Spec:
   Desired State:                  Active
-  Image:                          xpkg.crossplane.io/crossplane-contrib/configuration-quickstart:v0.1.0
+  Image:                          xpkg.upbound.io/upbound/configuration-quickstart:v0.1.0
   Revision:                       1
 Status:
   Conditions:
@@ -488,7 +480,7 @@ spec:
   dependsOn:
     - apiVersion: pkg.crossplane.io/v1
       kind: Provider
-      package: xpkg.crossplane.io/crossplane-contrib/provider-aws
+      package: xpkg.upbound.io/upbound/provider-family-aws
       version: ">=v0.36.0"
   crossplane:
     version: ">=v1.12.1-0"

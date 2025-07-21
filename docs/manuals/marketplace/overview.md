@@ -5,18 +5,23 @@ description: How to use the Upbound Marketplace to discover Crossplane providers
   packages.
 ---
 
-[Upbound Marketplace][upbound-marketplace] simplifies your control plane journey with the largest registry for storing, managing, and sharing control plane extensions. It integrates seamlessly with Upbound's control plane project tooling. It also provides platform engineers with pre-built Configurations and Functions to speed up control plane development workflows.
+[Upbound Marketplace][upbound-marketplace] simplifies your control plane journey
+with the largest registry for storing, managing, and sharing control plane
+extensions. It integrates seamlessly with Upbound's control plane project
+tooling. It also provides platform engineers with pre-built Configurations and
+Functions to speed up control plane development workflows.
 
 The Upbound Marketplace is the main source for publicly available Crossplane packages.
 
 ## Extensions in the Marketplace
 
 The Marketplace supports the following control plane extensions:
-
+<!-- vale write-good.TooWordy = NO -->
 - [Crossplane providers][crossplane-providers] are packages that enable Upbound control planes to interact with external APIs.
 - [Configurations][control-plane-configurations] are packages that define one or more resource types, called Composite Resources.
 - [Functions][composition-functions] are packages that define reusable logic, either for use in a composition or operation pipeline.
 - [Add-Ons][add-ons] are packages that extend Upbound control planes with additional capabilities.
+<!-- vale write-good.TooWordy = YES -->
 
 All extensions in the Marketplace are OCI images served from repositories.
 
@@ -30,15 +35,15 @@ Key features of the Upbound Marketplace include:
 - Private repositories
 - API docs
 
-## Trust tiers
+## Verified publishers
 
 <!-- vale write-good.Passive = NO -->
-Extensions in the Marketplace are published and maintained by a variety of sources. Upbound categorizes each published extension according to a _Trust Tier_. Each tier is labeled with a corresponding badge to denote the source of an extension. You can also see the name of the organization responsible for the extension.
+Extensions in the Marketplace are published and maintained by a variety of sources. The Marketplace assigns different badges to packages to denote the source of an extension. You can also see the name of the organization responsible for the extension.
 <!-- vale write-good.Passive = YES -->
 
 <!-- vale Upbound.Spelling = NO -->
 
-| Tier      | Description                                | Organization |
+| Verification      | Description                                | Organization |
 | --------- | ------------------------------------------ | ------------ |
 | Official  | Extensions owned and maintained by Upbound | Upbound      |
 | Partner   | Extensions owned, maintained, validated, and published by third-party companies | Third-party organization      |

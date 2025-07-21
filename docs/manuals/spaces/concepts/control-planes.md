@@ -153,7 +153,8 @@ up ctx ${yourOrganization}/${yourSpace}/${yourGroup}/${yourControlPlane} -f ctp-
 
 :::tip
 To learn more about how to use `up ctx` to navigate different contexts in
-Upbound, read the [CLI documentation][cli-documentation]. :::
+Upbound, read the [CLI documentation][cli-documentation]. 
+:::
 
 ## Configuration
 

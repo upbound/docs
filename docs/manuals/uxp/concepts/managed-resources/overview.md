@@ -16,18 +16,9 @@ external object inside the Provider an _external resource_.
 :::
 
 Examples of managed resources include:
-* Amazon AWS EC2 `Instance` defined in [provider-upjet-aws](https://github.com/crossplane-contrib/provider-upjet-aws).
-* Google Cloud GKE `Cluster` defined in [provider-upjet-gcp](https://github.com/crossplane-contrib/provider-upjet-gcp).
-* Microsoft Azure PostgreSQL `Database` defined in [provider-upjet-azure](https://github.com/crossplane-contrib/provider-upjet-azure).
-
-:::important
-Only AWS managed resources support the Crossplane v2 preview.
-
-<!-- vale gitlab.FutureTense = NO -->
-Maintainers will update the managed resources for other systems including Azure,
-GCP, Terraform, Helm, GitHub, etc to support Crossplane v2 soon.
-<!-- vale gitlab.FutureTense = YES -->
-:::
+* Amazon AWS EC2 `Instance` defined in the [Official Provider for AWS][official-provider-aws].
+* Google Cloud GKE `Cluster` defined in the [Official Provider for GCP][official-provider-gcp].
+* Microsoft Azure PostgreSQL `Database` defined in [Official Provider for Azure][official-provider-azure].
 
 
 ## Managed resource fields
@@ -39,13 +30,13 @@ Provider also define the available settings of a managed resource.
 Each managed resource is a unique API endpoint with their own
 group, kind and version. 
 
-For example the [AWS Provider](https://github.com/crossplane-contrib/provider-upjet-aws)
+For example the [AWS Provider][official-provider-aws]
 defines the <Hover label="gkv" line="2">Instance</Hover> kind from the
-group <Hover label="gkv" line="1">ec2.aws.m.upbound.io</Hover>
+group <Hover label="gkv" line="1">ec2.aws.upbound.io</Hover>
 
 <div id="gkv">
 ```yaml
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 ```
 </div>
@@ -70,9 +61,8 @@ Refer to the documentation of your specific Provider for details.
 :::
 
 
-<div id="forProvider">
 ```yaml
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 # Removed for brevity
 spec:
@@ -80,7 +70,6 @@ spec:
     region: us-west-1
     instanceType: t2.micro
 ```
-</div>
 
 :::important
 Crossplane considers the `forProvider` field of a managed resource 
@@ -116,7 +105,7 @@ To match the VPC by name, use the external name. For example, creating a Subnet
 managed resource attached to this VPC.
 
 ```yaml {copy-lines="none"}
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
   forProvider:
@@ -142,7 +131,7 @@ To match the VPC by name reference, use the managed resource name. For example,
 creating a Subnet managed resource attached to this VPC.
 
 ```yaml {copy-lines="none"}
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
   forProvider:
@@ -161,7 +150,7 @@ Subnet resource only matches VPC resources with the label
 `my-label: label-value`.
 
 ```yaml {copy-lines="none"}
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
   forProvider:
@@ -277,7 +266,7 @@ Crossplane recommends configuring
 
 <div id="initProvider">
 ```yaml
-apiVersion: eks.aws.m.upbound.io/v1beta1
+apiVersion: eks.aws.upbound.io/v1beta1
 kind: NodeGroup
 metadata:
   namespace: default
@@ -323,7 +312,7 @@ but not make any changes, set the policies to
 
 <div id="managementPol1">
 ```yaml
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
   managementPolicies: ["Create", "Delete", "Observe"]
@@ -389,7 +378,7 @@ For example, a managed resource references a ProviderConfig named
 This matches the <Hover label="pc" line="4">name</Hover> of a ProviderConfig.
 
 ```yaml {label="pcref",copy-lines="none"}}
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 spec:
   forProvider:
@@ -399,7 +388,7 @@ spec:
 
 <div id="pc">
 ```yaml
-apiVersion: aws.m.crossplane.io/v1beta1
+apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
   name: user-keys
@@ -423,8 +412,8 @@ details, like usernames, passwords or connection details like an IP address.
 Crossplane stores these details in a Kubernetes Secret object specified by the
 `writeConnectionSecretToRef` values. 
 
-For example, when creating an AWS RDS database instance with the Crossplane 
-[community AWS provider](https://github.com/crossplane-contrib/provider-aws) 
+For example, when creating an AWS RDS database instance with the 
+[Official Provider for AWS][official-provider-aws]
 generates an endpoint, password, port and username data. The Provider saves
 these variables in the Kubernetes secret 
 <Hover label="secretname" line="9">rds-secret</Hover>, referenced by
@@ -434,7 +423,7 @@ field.
 
 <div id="secretname">
 ```yaml
-apiVersion: database.aws.m.crossplane.io/v1beta1
+apiVersion: database.aws.upbound.io/v1beta1
 kind: RDSInstance
 metadata:
   name: my-rds-instance
@@ -489,7 +478,7 @@ environment.
 
 <div id="external-name">
 ```yaml
-apiVersion: database.aws.m.crossplane.io/v1beta1
+apiVersion: database.aws.upbound.io/v1beta1
 kind: RDSInstance
 metadata:
   namespace: default
@@ -514,7 +503,7 @@ for the external resource inside AWS.
 
 <div id="custom-name">
 ```yaml
-apiVersion: database.aws.m.crossplane.io/v1beta1
+apiVersion: database.aws.crossplane.io/v1beta1
 kind: RDSInstance
 metadata:
   namespace: default
@@ -689,7 +678,7 @@ Only the value `"true"` pauses reconciliation.
 
 <div id="pause">
 ```yaml
-apiVersion: ec2.aws.m.upbound.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 metadata:
   namespace: default
@@ -923,3 +912,7 @@ Conditions:
   Status:                True
   Reason:                Success
 ```
+ 
+[official-provider-aws]: https://marketplace.upbound.io/providers/provider-family-aws
+[official-provider-azure]: https://marketplace.upbound.io/providers/provider-family-azure
+[official-provider-gcp]: https://marketplace.upbound.io/providers/provider-family-gcp

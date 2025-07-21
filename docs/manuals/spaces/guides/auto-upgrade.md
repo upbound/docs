@@ -1,6 +1,6 @@
 ---
 title: Automatically upgrade control planes
-sidebar_position: 1
+sidebar_position: 50
 description: How to configure automatic upgrades of Crossplane in a control plane
 ---
 

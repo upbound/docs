@@ -1,6 +1,6 @@
 ---
 title: Migrating to Upbound control planes
-sidebar_position: 30
+sidebar_position: 90
 description: A guide to how to migrate to a control plane in Upbound
 ---
 

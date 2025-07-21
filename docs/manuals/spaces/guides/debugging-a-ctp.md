@@ -1,6 +1,6 @@
 ---
 title: Debugging issues on a control plane
-sidebar_position: 10
+sidebar_position: 70
 description: A guide for how to debug resources on a control plane running in Upbound.
 ---
 
@@ -9,12 +9,19 @@ This guide provides troubleshooting guidance for how to identify and fix issues 
 ## Start from Upbound Console
 <!-- vale write-good.Weasel = NO -->
 <!-- ignore "only" -->
-The Upbound [Console][console] has a built-in control plane explorer experience that surfaces status and events for the resources on your control plane. The explorer is claim-based. Resources in this view exist only if they exist in the reference chain originating from a claim. This view is a helpful starting point if you are attempting to debug an issue originating from a claim.
-<!-- vale write-good.Weasel = YES -->
+The Upbound [Console][console] has a built-in control plane explorer experience
+that surfaces status and events for the resources on your control plane. The
+explorer is claim-based. Resources in this view exist only if they exist in the
+reference chain originating from a claim. This view is a helpful starting point
+if you are attempting to debug an issue originating from a claim. <!-- vale
+write-good.Weasel = YES -->
 
 :::tip
-If you directly create Crossplane Managed Resources (`MR`s) or Composite Resources (`XR`s), they will not render in the explorer.
+If you directly create Crossplane Managed Resources (`MR`s) or Composite
+Resources (`XR`s), they won't render in the explorer.
 :::
+
+
 <!--- TODO(tr0njavolta): image --->
 ### Example
 

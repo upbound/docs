@@ -1,6 +1,6 @@
 ---
 title: GitOps with control planes
-sidebar_position: 9
+sidebar_position: 80
 description: An introduction to doing GitOps with control planes on Upbound
 tier: "business"
 ---

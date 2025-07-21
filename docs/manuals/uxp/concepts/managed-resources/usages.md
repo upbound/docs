@@ -81,7 +81,7 @@ metadata:
   name: protect-production-database
 spec:
   of:
-    apiVersion: rds.m.aws.m.upbound.io/v1beta1
+    apiVersion: rds.aws.upbound.io/v1beta1
     kind: Instance
     resourceRef:
       name: my-database
@@ -105,12 +105,12 @@ metadata:
   name: release-uses-cluster
 spec:
   of:
-    apiVersion: eks.m.upbound.io/v1beta1
+    apiVersion: eks.upbound.io/v1beta1
     kind: Cluster
     resourceRef:
       name: my-cluster
   by:
-    apiVersion: helm.m.crossplane.io/v1beta1
+    apiVersion: helm.crossplane.io/v1beta1
     kind: Release
     resourceRef:
       name: my-prometheus-chart
@@ -134,14 +134,14 @@ metadata:
   name: release-uses-cluster
 spec:
   of:
-    apiVersion: eks.m.upbound.io/v1beta1
+    apiVersion: eks.upbound.io/v1beta1
     kind: Cluster
     resourceSelector:
       matchControllerRef: false # default, and could be omitted
       matchLabels:
         foo: bar
   by:
-    apiVersion: helm.m.crossplane.io/v1beta1
+    apiVersion: helm.crossplane.io/v1beta1
     kind: Release
     resourceSelector:
        matchLabels:
@@ -171,7 +171,7 @@ metadata:
   name: release-uses-cluster
 spec:
   of:
-    apiVersion: eks.m.upbound.io/v1beta1
+    apiVersion: eks.upbound.io/v1beta1
     kind: Cluster
     resourceRef:
        name: my-cluster
@@ -179,7 +179,7 @@ spec:
       matchLabels:
         foo: bar
   by:
-    apiVersion: helm.m.crossplane.io/v1beta1
+    apiVersion: helm.crossplane.io/v1beta1
     kind: Release
     resourceRef:
        name: my-cluster
@@ -206,12 +206,12 @@ metadata:
 spec:
   replayDeletion: true
   of:
-    apiVersion: eks.m.upbound.io/v1beta1
+    apiVersion: eks.upbound.io/v1beta1
     kind: Cluster
     resourceRef:
       name: my-cluster
   by:
-    apiVersion: helm.m.crossplane.io/v1beta1
+    apiVersion: helm.crossplane.io/v1beta1
     kind: Release
     resourceRef:
       name: my-prometheus-chart
@@ -265,13 +265,13 @@ metadata:
   name: release-uses-cluster
 spec:
   of:
-    apiVersion: eks.m.upbound.io/v1beta1
+    apiVersion: eks.upbound.io/v1beta1
     kind: Cluster
     resourceRef:
       namespace: cluster-infra
       name: my-cluster
   by:
-    apiVersion: helm.m.crossplane.io/v1beta1
+    apiVersion: helm.crossplane.io/v1beta1
     kind: Release
     resourceRef:
       name: my-prometheus-chart

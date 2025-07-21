@@ -4,23 +4,10 @@ sidebar_position: 10
 description: Functions extend Crossplane with new ways to configure composition
 ---
 
-Functions extend Crossplane with new ways to configure
-[composition](/crossplane/composition).
-
-You can use different _composition functions_ to configure what Crossplane does
-when someone creates or updates a
-[composite resource (XR)](/crossplane/composition/composite-resources).
-
-:::important
-This page is a work in progress.
-
-Functions are packages, like [Providers](/crossplane/providers) and
-[Configurations](/crossplane/configurations). Their APIs are similar. You
+Functions extend Crossplane with user-defined logic for use in
+[composition][composition] and [operation][operation] function pipelines. Functions are packages, like [Providers][providers] and
+[Configurations][configurations]. Their APIs are similar. You
 install and configure them the same way as a provider.
-
-Read the [composition](/crossplane/composition/compositions) documentation to
-learn how to use functions in a composition.
-:::
 
 ## Install a Function
 
@@ -28,14 +15,6 @@ Install a Function with a Crossplane
 <Hover label="install" line="2">Function</Hover> object setting the
 <Hover label="install" line="6">spec.package</Hover> value to the
 location of the function package.
-
-:::important
-Beginning with Crossplane version 1.20.0 Crossplane uses the [crossplane-contrib](https://github.com/orgs/crossplane-contrib/packages) GitHub Container Registry at `xpkg.crossplane.io` by default for downloading and
-installing packages. 
-
-Specify the full domain name with the `package` or change the default Crossplane
-registry with the `--registry` flag on the [Crossplane pod](/crossplane/guides/pods)
-:::
 
 For example, to install the
 [patch and transform function](https://github.com/crossplane-contrib/function-patch-and-transform),
@@ -45,9 +24,9 @@ For example, to install the
 apiVersion: pkg.crossplane.io/v1
 kind: Function
 metadata:
-  name: crossplane-contrib-function-patch-and-transform
+  name: upbound-function-patch-and-transform
 spec:
-  package: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform:v0.8.2
+  package: xpkg.upbound.io/upbound/function-patch-and-transform:v0.8.2
 ```
 </div>
 
@@ -81,3 +60,12 @@ spec:
 ```
 </div>
 :::
+
+## Use functions
+
+Read the [composition][composition] and [operations][operation] documentation to learn how to use Functions in those respective workflows.
+
+[composition]: /manuals/uxp/concepts/composition/overview
+[operation]: /manuals/uxp/concepts/operations/overview
+[providers]: providers
+[configurations]: configurations

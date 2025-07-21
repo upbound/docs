@@ -1,12 +1,14 @@
 ---
 title: Secrets Management
-sidebar_position: 15
+sidebar_position: 20
 description: A guide for how to configure synchronizing external secrets into control
   planes in a Space.
 ---
 
 :::important
-This feature is in preview. It is enabled by default in Cloud Spaces. To enable it in a self-hosted Space, set `features.alpha.sharedSecrets.enabled=true` when installing the Space:
+This feature is in preview and enabled by default in Cloud Spaces. To enable it
+in a self-hosted Space, set `features.alpha.sharedSecrets.enabled=true` when
+installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
