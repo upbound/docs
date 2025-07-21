@@ -318,13 +318,13 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 
 	observedComposite, err := request.GetObservedCompositeResource(req)
 	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get xr"))
+		response.Fatal(rsp, errors.Wrap(err, "can't get xr"))
 		return rsp, nil
 	}
 
 	var xr v1alpha1.XStorageBucket
 	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
+		response.Fatal(rsp, errors.Wrap(err, "can't convert xr"))
 		return rsp, nil
 	}
 
@@ -346,17 +346,17 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 
 	composedBucket := composed.New()
 	if err := convertViaJSON(composedBucket, bucket); err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot convert bucket to unstructured"))
+		response.Fatal(rsp, errors.Wrap(err, "can't convert bucket to unstructured"))
 		return rsp, nil
 	}
 	desiredComposedResources, err := request.GetDesiredComposedResources(req)
 	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get desired resources"))
+		response.Fatal(rsp, errors.Wrap(err, "can't get desired resources"))
 		return rsp, nil
 	}
 	desiredComposedResources["bucket"] = &resource.DesiredComposed{Resource: composedBucket}
 	if err := response.SetDesiredComposedResources(rsp, desiredComposedResources); err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot set desired resources"))
+		response.Fatal(rsp, errors.Wrap(err, "can't set desired resources"))
 		return rsp, nil
 	}
 

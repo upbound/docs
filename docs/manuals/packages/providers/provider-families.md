@@ -132,7 +132,7 @@ Each family provider defines a dependency on the *latest available version* of t
 which is automatically resolved and installed by the Crossplane package manager.
 
 Hence, when you install an older version of a family provider, you can expect to receive newer versions of the
-`provider-family` provider, and it is safe to ignore this version mismatch.
+`provider-family` provider, and it's safe to ignore this version mismatch.
 
 If you still want to control the version of the `provider-family`, consider using the
 <Hover label="air" line="7">skipDependencyResolution: true</Hover> option as described in the

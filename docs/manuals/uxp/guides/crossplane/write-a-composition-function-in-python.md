@@ -484,7 +484,7 @@ Composite Resource, Composition and Function YAML files.
 Expand the following block to see example files.
 
 <details>
-  <summary>The xr.yaml, composition.yaml and function.yaml files</summary>
+  <summary>The `xr.yaml`, `composition.yaml` and `function.yaml` files</summary>
   You can recreate the output below using by running `crossplane render` with
 these files.
 

@@ -436,7 +436,7 @@ A Configuration package requires a `crossplane.yaml` file and may include
 Composition and CompositeResourceDefinition files. 
 
 <!-- vale Google.Headings = NO -->
-### The crossplane.yaml file
+### The `crossplane.yaml` file
 <!-- vale Google.Headings = YES -->
 
 To build a Configuration package using the Crossplane CLI, create a file

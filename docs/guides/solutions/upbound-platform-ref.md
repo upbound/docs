@@ -20,7 +20,6 @@ To create your platform foundations, you'll need:
 
 ![ArchitectureDiagram](/img/aws-ref-diagram.png)
 
-XEnvironment
 
 XUpboundRepoSet
 
@@ -30,7 +29,7 @@ Install
 
 PAT
 
-K8s secret
+secret
 
 kubeconfig
 

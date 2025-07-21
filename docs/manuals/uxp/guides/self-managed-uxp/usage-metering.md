@@ -15,15 +15,17 @@ Usage in Upbound Crossplane is measured on two units:
 
 ### Resources
 
-_Resource_ represents any discrete infrastructure or application resource that is actively managed by the control plane. This includes external cloud infrastructure such as databases, IAM roles, and storage buckets, as well as in-cluster objects like Deployments, Ingress, and Services.
+_Resource_ represents any discrete infrastructure or application resource actively managed by the control plane. This includes external cloud infrastructure such as databases, IAM roles, and storage buckets, as well as in-cluster objects like Deployments, Ingress, and Services.
 
-A resource is considered "controlled" when it is declared through a composition or directly instantiated by a Crossplane provider, and is being continuously reconciled to match its desired state. This ongoing reconciliation ensures the resource stays compliant, functional, and aligned with its declared specification. 
+A resource is considered "controlled" when it's declared through a composition or directly instantiated by a Crossplane provider, and is being continuously reconciled to match its desired state. This ongoing reconciliation ensures the resource stays compliant, functional, and aligned with its declared specification. 
 
 Whether a resource was provisioned via a Crossplane composition, dynamically created by a provider, or derived from a pipeline run, its lifecycle is maintained by the control plane. Resources are metered in resource-hours to account for both breadth and duration. 
 
 ### Operations
 
+<!-- vale alex.Condescending = NO -->
 _Operations_ represent discrete units of intelligent automation and orchestration executed by the control plane. These are distinct from the continuous reconciliation that underpins _Resources_. An operation may involve one-time or recurring tasks that go beyond simple state enforcement. Examples include analyzing logs for anomalies, rolling out software updates in a phased manner, running LLM-powered decision-making, or optimizing infrastructure based on real-time telemetry.
+<!-- vale alex.Condescending = YES -->
 
 Operations can be triggered by scheduled intervals, events, or intelligent agents, and often encapsulate complex workflows or side effects that span internal and external systems. Their purpose is to extend the power of the control plane from passive reconciliation to proactive management, including diagnosis, remediation, optimization, and change orchestration.
 

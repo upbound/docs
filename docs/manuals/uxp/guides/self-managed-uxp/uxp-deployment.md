@@ -4,7 +4,9 @@ description: "Learn best practices for UXP in your production environment"
 sidebar_position: 1
 ---
 
-Upbound Crossplane requires a Kubernetes cluster. You can run Upbound Crossplane in any Kubernetes environment, whether that is a managed Kubernetes service as well as in bare-metal environments. Upbound recommends using Helm to install a self-managed instance of Upbound Crossplane.
+Upbound Crossplane requires a Kubernetes cluster. You can run Upbound Crossplane
+in any Kubernetes environment, such as a managed Kubernetes service or in bare-metal environments. Upbound recommends using Helm to install a
+self-managed instance of Upbound Crossplane.
 
 :::tip
 

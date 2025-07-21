@@ -5,14 +5,15 @@ sidebar_position: 4
 
 The following sections provide step-by-step guides to help you understand core Crossplane concepts, creating new resource types, and running control planes.
 
-## Core Concepts
+## Core concepts
 
 Get started learning the core concepts of control planes, resource types, Configurations, and more:
-
+<!-- vale Microsoft.Contractions = NO -->
 * [What is a control plane?][controlPlane]
 * [What is a composition?][compositions]
 * [What is an operation?][operation]
 * [What is a provider?][provider]
+<!-- vale Microsoft.Contractions = YES -->
 
 ## Running control planes
 

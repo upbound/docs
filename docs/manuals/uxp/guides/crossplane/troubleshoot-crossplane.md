@@ -46,7 +46,7 @@ particular namespace by running `kubectl get events`.
 Events:
   Type     Reason                   Age                From                                                   Message
   ----     ------                   ----               ----                                                   -------
-  Warning  CannotConnectToProvider  16s (x4 over 46s)  managed/postgresqlserver.database.azure.crossplane.io  cannot get referenced ProviderConfig: ProviderConfig.azure.crossplane.io "default" not found
+  Warning  CannotConnectToProvider  16s (x4 over 46s)  managed/postgresqlserver.database.azure.crossplane.io  can't get referenced ProviderConfig: ProviderConfig.azure.crossplane.io "default" not found
 ```
 
 > Note that events are namespaced, while many Crossplane resources (XRs, etc)

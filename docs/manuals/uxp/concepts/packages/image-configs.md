@@ -139,7 +139,7 @@ contains the configuration for verifying the attestations of the images.
 The `ImageConfig` API follows the same API shape as [Policy Controller](https://docs.sigstore.dev/policy-controller/overview/)
 from [Sigstore](https://docs.sigstore.dev/). Crossplane initially supports a
 subset of the Policy Controller configuration options which can be found in the
-[API reference](/crossplane/api/#ImageConfig-spec-verification-cosign)
+[API reference](/crossplane/api/#imageconfig-spec-verification-cosign)
 for the `ImageConfig` resource together with their descriptions.
 
 When multiple authorities are provided, the package manager verifies the

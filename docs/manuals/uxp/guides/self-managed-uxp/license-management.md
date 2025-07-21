@@ -5,9 +5,10 @@ sidebar_position: 2
 ---
 
 Upbound Crossplane is available in community and commercial plans for Upbound. 
-
+<!-- vale proselint.Cliches = NO -->
 * Upbound Community Plan lets you run Upbound Crossplane for free and is source-available on [GitHub][uxp-source]
 * Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
+<!-- vale proselint.Cliches = YES -->
 
 ## Community plan 
 
@@ -25,7 +26,7 @@ Users who have a commercial plan on Upbound including Standard, Enterprise, and 
 
 A commercial license unlocks the following Upbound Crossplane features:
 
-* Provider pod auto-scaling
+* Provider pod autoscaling
 * Function pod scale-to-zero
 * Backup and restore
 * Access to patch releases of Official Providers
@@ -35,7 +36,7 @@ These features are unavailable unless a valid license is present. We explain bel
 * **Upon license expiration:**
     * The cluster enters a grace period whereby features continue to work. The grace period is 25% of the total license duration. For example, a yearly license has a 3-month grace period, and a monthly license has about a 1-week grace period. During this grace period, the commercial features will continue to function normally. However, you'll notice warnings emitted in Upbound Crossplane that the license's grace period is active. 
     * Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
-* **After license expiration and grace period:** After the grace period ends, paid features or components get locked down. This means any component checking the license sees that it is truly invalid (expired and grace period ended) and disables its paid features.
+* **After license expiration and grace period:** After the grace period ends, paid features or components get locked down. This means any component checking the license sees that it's truly invalid (expired and grace period ended) and disables its paid features.
 
 ### Development licenses
 

@@ -72,7 +72,7 @@ After you enable SSO, walk through the workflow in your provided link to enable 
 <!-- vale off -->
 ### Finalize your changes
 
-After you enable SSO to your IdP and test the connection, contact Upbound support or your account representative to finalize the configuration. SSO will not be enabled until you contact Upbound to confirm the change.
+After you enable SSO to your IdP and test the connection, contact Upbound support or your account representative to finalize the configuration. SSO won't be enabled until you contact Upbound to confirm the change.
 
 ### Configure SCIM
 

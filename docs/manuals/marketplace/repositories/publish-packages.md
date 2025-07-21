@@ -5,7 +5,8 @@ description: Product documentation for using the Repositories feature in Upbound
 ---
 
 
-Upbound repositories lets you centrally store control plane artifacts, extensions, and build dependencies as part of an integrated Upbound experience.
+Upbound repositories lets you centrally store control plane artifacts,
+extensions, and build dependencies as part of an integrated Upbound experience.
 
 This guide shows you how to:
 
@@ -95,7 +96,7 @@ xpkg pushed to upbound-docs/my-repo:v0.2
 ```
 
 :::note
-You need to <a href="https://accounts.upbound.io/login">login to the Marketplace</a> to see packages in private repositories.
+You need to <a href="https://accounts.upbound.io/login">log in to the Marketplace</a> to see packages in private repositories.
 :::
 
 The package is now available from the Upbound Marketplace. View the Marketplace listing at:

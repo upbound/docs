@@ -59,9 +59,11 @@ The `up project run` command creates a development control plane in your Upbound
 Cloud organization. The development control plane creates your project's custom
 resources, compositions and functions in a limited scope isolated control plane.
 
+<!-- vale Microsoft.Contractions = NO -->
 :::warning
 Development control planes are **not** suitable for production workloads
 :::
+<!-- vale Microsoft.Contractions = YES -->
 
 You can validate your results in the Upbound Console and make changes to ensure
 your project operates as expected before you move to production.

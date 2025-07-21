@@ -27,13 +27,13 @@ These packages can be distributed and shared with others.
 
 Like container images, you need a place to store Configurations. Upbound is the default [repository][repositories] source. Upbound provides:
 
-* An easy place to store these images
+* A centralized place to store these images
 * Automatic API documentation generated for packages.
 * A convenient publishing experience to share with the community via the Upbound Marketplace, if desired.
 
 ## Sign in with your Upbound account
 
-To push the Configuration package, you need to sign in with your Upbound account. Run the following to login with the `up` CLI:
+To push the Configuration package, you need to sign in with your Upbound account. Run the following to log in with the `up` CLI:
 
 ```sh
 up login
@@ -49,7 +49,8 @@ up repository create getting-started
 
 ## Build and push the Configuration
 
-Now that you have a repository, you are ready to build and push your Configuration.  Run the following to build and push with `up`:
+Now that you have a repository, you are ready to build and push your
+Configuration. Run the following to build and push with `up`:
 
 ```sh
 up project push

@@ -55,7 +55,9 @@ spec:
 When a team creates resources with the control plane, reference the appropriate ProviderConfig to use from the `spec.providerConfigRef` field of any managed resource.
 
 :::tip
-The example above demonstrates ProviderConfigs using simple account credentials. **Don't use this auth method for production purposes.** Instead, configure your providers to use Upbound Identity, which is based on OIDC and described below.
+The example above demonstrates ProviderConfigs using static account credentials.
+**Don't use this auth method for production purposes.** Instead, configure your
+providers to use Upbound Identity, which is based on OIDC and described below.
 :::
 
 ## Use OpenID Connect with Upbound
@@ -241,12 +243,12 @@ For example, the following would be a valid _subject_ for `provider-aws` in a co
 mcp:my-org/prod-1:provider:provider-aws
 ```
 
-Optionally, the trust path can contain the group field so that an admin in
-another group who may know about the control plane naming pattern cannot simply
-create a new control plane in their group that then has access to the other
-group's target account permissions.
+You can include an optional `group` field in the trust path as an additional
+security measure. This ensures the control plane has the correct name _and_
+correct group to prevent cross-group impersonation from another admin in another
+group.
 
-Set the following control plane annotation to enable honoring the group field.
+Add the following control plane annotation to include the `group` field:
 
 ```
 proidc.cloud-spaces.upbound.io/group-scoped: "true"
@@ -275,7 +277,9 @@ The claims for an identity token injected into the file system of a provider in 
 ```
 
 :::tip
-Identity tokens injected into a provider `Pod` are valid for 1 hour. They are automatically refreshed before expiration to ensure there is no interruption in service.
+Identity tokens injected into a provider `Pod` are valid for 1 hour. These
+tokens automatically refresh before expiration to ensure there is no
+interruption in service. 
 :::
 
 ## Add Upbound OIDC to a Crossplane provider

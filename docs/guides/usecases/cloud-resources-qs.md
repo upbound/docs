@@ -148,7 +148,7 @@ up example generate \
 ```
 
 Open the project in your IDE of choice and edit the generated file
-my-new-project/examples/userdefinedbucket/example.yaml:
+`my-new-project/examples/userdefinedbucket/example.yaml`:
 
 
 Open the generated file in your editor and paste the following configuration:

@@ -215,8 +215,9 @@ Here are some example selectors from a composite resource object.
 | `spec.resourceRefs[0].name` | `my-example-978mh-r6z64` |
 
 <div id="select">
+
 ```yaml
-$ kubectl get composite -o yaml
+kubectl get composite -o yaml
 apiVersion: example.org/v1alpha1
 kind: Example
 metadata:

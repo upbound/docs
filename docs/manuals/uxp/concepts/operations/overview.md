@@ -55,9 +55,13 @@ kubectl get Operation basic -o yaml
 
 ## Writing an Operation spec
 
-Like [Compositions][compositions], Operations consist of a function pipeline. This means users can define Operations that run simple or complex workflows to do any manner of tasks within their control plane. 
+<!-- vale alex.Condescending = NO -->
+Like [Compositions][compositions], Operations consist of a function pipeline.
+This means users can define Operations that run simple or complex workflows to
+do any manner of tasks within their control plane. 
+<!-- vale alex.Condescending = YES -->
 
-An operation function can instruct Crossplane to create or update arbitary resources by including server-side apply [fully-specified intent][ssa] (FSI) patches in rsp.desired.resources, just like a composition function.
+An operation function can instruct Crossplane to create or update arbitary resources by including server-side apply [fully specified intent][ssa] (FSI) patches in rsp.desired.resources, just like a composition function.
 
 ### Bootstrap an operation
 

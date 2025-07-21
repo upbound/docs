@@ -709,7 +709,7 @@ execute the created plan.
 
 :::note
 Generating the plan may take some time, depending on the number of providers and
-CRDs in your cluster. Please do not stop the process until it completes. After
+CRDs in your cluster. Please don't stop the process until it completes. After
 generation, the tool shows a message that the plan has been generated.
 :::
 
@@ -722,7 +722,7 @@ option to list the execution instructions.
 :::note
 The purpose of this intermediary step is to allow for manual verification to ensure
 no unexpected steps are introduced in the plan. While the review process is optional
-and does not directly affect the transition to the execution phase, it is strongly
+and doesn't directly affect the transition to the execution phase, it's strongly
 recommended to complete the review process.
 :::
 

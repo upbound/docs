@@ -3,6 +3,7 @@ APIService
 Argo
 Alertmanager
 autoscalers
+autoscaling
 Autoscaling
 backports
 Bootstrap

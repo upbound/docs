@@ -10,7 +10,12 @@ Upbound Crossplane is the AI-native distribution of Crossplane, a framework for 
 2. Build workflows to template resources and expose them as a simplified resource abstraction with [composition][composition].
 3. Build workflows to execute jobs on resources managed by the control plane with [operations][operations].
 
-Workflows in Crossplane are expressed as function pipelines written in your preferred language. Use Upbound Crossplane as a control plane to boost productivity, drive security and compliance, and converge on a consistent technology stack built around Kubernetes. Control planes are the only way to build and support autonomous infrastructure platforms ready for the  age of autonomous systems, serving both humans and AI.
+Workflows in Crossplane are expressed as function pipelines written in your
+preferred language. Use Upbound Crossplane as a control plane to boost
+productivity, drive security and compliance, and converge on a consistent
+technology stack built around Kubernetes. Control planes are the only way to
+build and support autonomous infrastructure platforms ready for the age of
+autonomous systems, serving both humans and AI.
 
 ## Common Use Cases
 
