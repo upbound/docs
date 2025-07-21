@@ -482,7 +482,7 @@ Create a directory under `function-xbuckets` named `example` and create
 Composite Resource, Composition and Function YAML files.
 
 Expand the following block to see example files.
-
+<!-- vale off -->
 <details>
   <summary>The `xr.yaml`, `composition.yaml` and `function.yaml` files</summary>
   You can recreate the output below using by running `crossplane render` with
@@ -543,6 +543,7 @@ spec:
 ```
 </details>
 
+<!-- vale on-->
 The Function in `functions.yaml` uses the
 <Hover label="development" line="6">Development</Hover>
 runtime. This tells `crossplane render` that your function is running

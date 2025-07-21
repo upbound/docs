@@ -214,6 +214,7 @@ Here are some example selectors from a composite resource object.
 | `spec.desiredRegion` | `eu-north-1` |
 | `spec.resourceRefs[0].name` | `my-example-978mh-r6z64` |
 
+<!-- vale off -->
 <div id="select">
 
 ```yaml
@@ -239,7 +240,9 @@ spec:
       kind: Bucket
       name: my-example-978mh-rv5nm
 ```
+
 </div>
+<!-- vale on -->
 
 ## Reuse a patch
 

@@ -169,6 +169,7 @@ You add your function's logic to the
 method in `fn.go`. When you first open the file it contains a "hello world"
 function.
 
+<!-- vale off -->
 <div id="hello-world">
 ```go
 func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
@@ -185,8 +186,12 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	response.Normalf(rsp, "I was run with input %q", in.Example)
 	return rsp, nil
 }
+
 ```
+
 </div>
+
+<!-- vale on -->
 
 All Go composition functions have a `RunFunction` method. Crossplane passes
 everything the function needs to run in a
@@ -465,7 +470,7 @@ template it adds some unit tests to `fn_test.go`. These tests follow Go's
 
 To add test cases, update the `cases` map in `TestRunFunction`. Expand the below
 block to view the full `fn_test.go` file for the function.
-
+<!-- vale off-->
 <details>
   <summary>The full fn_test.go file</summary>
   ```go
@@ -600,6 +605,7 @@ func TestRunFunction(t *testing.T) {
 ```
 </details>
 
+<!-- vale on-->
 Run the unit tests using the `go test` command:
 
 ```shell {copy-lines=1}
