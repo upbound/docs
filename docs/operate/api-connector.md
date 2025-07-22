@@ -8,12 +8,12 @@ aliases:
 ---
 
 :::warning
-API Connector is currently in **Alpha**. The feature is under active development and subject to breaking changes. Use for testing and evaluation purposes only.
+API Connector is currently in **Preview**. The feature is under active development and subject to breaking changes. Use for testing and evaluation purposes only.
 :::
 
-API Connector enables seamless integration between Kubernetes application clusters consuming APIs and remote Crossplane control planes providing and reconciling APIs. This component allows you to decouple where Crossplane is running (for example in a managed control plane), and where APIs are consumed (for example in an existing Kubernetes cluster). Thus can you achieve flexibility and consistency in terms of operation.
+API Connector enables seamless integration between Kubernetes application clusters consuming APIs and remote Crossplane control planes providing and reconciling APIs. This component allows you to decouple where Crossplane is running (for example in an Upbound control plane), and where APIs are consumed (for example in an existing Kubernetes cluster). Thus can you achieve flexibility and consistency in terms of operation.
 
-Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed control planes, API Connector provides a more flexible solution for connecting to any Crossplane-enabled cluster. But for now it's only supported for managed control planes.
+Unlike the [Control Plane Connector](ctp-connector.md) which offers only coarse-grained connectivity between app clusters and a control plane, API connector offers fine-grained configuration of which APIs get offered along with multi-cluster connectivity.
 
 ## Architecture overview
 
@@ -21,8 +21,8 @@ Unlike the [Control Plane Connector](ctp-connector.md) which focuses on managed 
 
 API Connector uses a **provider-consumer** model:
 
-- **Provider control plane**: The remote cluster running Crossplane that provides APIs and manages infrastructure. It can for example be a managed control plane from Upbound Spaces.
-- **Consumer cluster**: Any Kubernetes cluster where its users wants to use APIs provided by the provider control plane, without having to run Crossplane. API connector is installed in the consumer cluster, and bidirectionally syncs API objects to the provider.
+- **Provider control plane**: The Upbound control plane that provides APIs and manages infrastructure.
+- **Consumer cluster**: Any Kubernetes cluster where its users wants to use APIs provided by the provider control plane, without having to run Crossplane. API connector gets installed in the consumer cluster, and bidirectionally syncs API objects to the provider.
 
 ### Key components
 
@@ -35,15 +35,14 @@ API Connector uses a **provider-consumer** model:
 
 Before using API Connector, ensure:
 
-1. **Provider control plane** has Crossplane installed and configured
 1. **Consumer cluster** has network access to the provider control plane
 1. You have an license to use API connector. If you are unsure, [contact Upbound](https://www.upbound.io/contact) or your sales representative.
 
-This getting started guide has two parallel paths that may be taken, an automated, one-click path for connecting any Kubernetes cluster to managed control planes in Upbound Cloud, or a manual path for connecting to any Crossplane-enabled provider cluster.
+This getting started guide has two parallel paths that may be taken: an automated, one-click path for connecting any Kubernetes cluster to a control planes in Upbound Cloud with up CLI, or a manual path.
 
 ## Publishing APIs in the provider cluster
 
-First, log into your provider control plane, where Crossplane is running, and choose which CRD APIs you want to make accessible to the consumer cluster's. API connector will only ever sync these "bindable" CRDs.
+First, log into your provider control plane, and choose which CRD APIs you want to make accessible to the consumer cluster's. API connector will only ever sync these "bindable" CRDs.
 
 
 <Tabs>
@@ -338,7 +337,7 @@ helm uninstall api-connector -n upbound-system
 
 ## Limitations
 
-- **Alpha maturity**: Subject to breaking changes. Not yet production grade.
+- **Preview feature**: Subject to breaking changes. Not yet production grade.
 - **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, for example using a [Crossplane Configuration](https://docs.crossplane.io/latest/concepts/packages/).
 - **Network requirements**: Consumer cluster must have direct network access to provider cluster.
 - **Wide permissions needed in consumer cluster**: Because the API connector doesn't know up front the names of the APIs it needs to reconcile, it currently runs with full "root" privileges in the consumer cluster.
