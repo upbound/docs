@@ -1361,10 +1361,11 @@ func createGCPBucketLogic(oxr *CompositeResource) (*GCPBucketParams, error) {
 </CodeBlock>
 
 This section:
-
+<!-- vale Microsoft.Terms = NO -->
 * Imports the cloud resource definitions required to create the resource
 * Extracts the user-specified values in the claim (`params = oxr.spec.parameters`)
 * Creates a resource name with the claim name and appropriate suffix.
+<!-- vale Microsoft.Terms = YES -->
 
 ### Metadata helper function
 
@@ -2107,7 +2108,7 @@ desiredComposed["acl"] = acl
 
 This section:
 
-* Sets the access level using the user's acl parameter
+* Sets the access level using the user's ACL parameter
 * Automatically enables encryption for all objects
 
 ### Bucket versioning
@@ -2363,10 +2364,11 @@ up composition render apis/xstoragebuckets/composition.yaml examples/storagebuck
 
 This process ensures the build, configuration, and orchestration runs as
 expected before you deploy to a development control plane.
-
+<!-- vale write-good.TooWordy = NO -->
 Errors in the render command can indicate a malformed function or other issues
 within the composition itself.
 
+<!-- vale write-good.TooWordy = YES -->
 ## Next steps
 
 You constructed a new embedded function that allows user input from your claim

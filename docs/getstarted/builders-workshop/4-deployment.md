@@ -32,7 +32,7 @@ Your project configuration requires an authentication method.
 
 A `ProviderConfig` is a custom resource that defines how your control plane
 authenticates and connects with cloud providers like AWS. It acts as a
-configuration bridge between your control plane’s managed resources and the
+configuration bridge between your control plane's managed resources and the
 cloud provider's API.
 
 ### Create a secret
@@ -229,7 +229,7 @@ up project run
 
 The `run` command installs your project functions and dependencies to a control plane.
 
-Make sure you’re in your control plane context. 
+Make sure you're in your control plane context. 
 
 Use the `up ctx` command to set your `kubecontext` to your control plane project name:
 

@@ -9,7 +9,7 @@ that provision, operate, and adapt without human intervention.
 
 Upbound allows you to expose infrastructure across clouds, vendors, and
 systems through a single programmable API surface that works for humans and
-intelligent agents alike. This API surface is powered by a **control plane**
+intelligent agents alike. Upbound powers this API surface with a **control plane**
 called **Crossplane**.
 
 If you're new to Upbound and Crossplane, this section guides you through the
@@ -23,15 +23,17 @@ For more advanced concepts and scenarios in Upbound, see [Guides][guides].
 ## Sign up and install the `up` CLI
 
 -   Create an account on Upbound by [registering your organization][register].
--   Install the [up][up] CLI to gain access to all of Upbound's tooling on your machine.
+-   Install the [up][up] CLI to gain access to all Upbound's tooling on your machine.
 
+<!-- vale Google.We = NO -->
     :::tip
     Get started with Upbound using the free _Community_ plan or upgrade to a
-    _Standard_ plan. For more information on our offerings, check out our
+    _Standard_ plan. For more information, review our
     [pricing plans][pricing]
     :::
 
-## Next Steps
+<!-- vale Google.We = YES -->
+## Next steps
 
 Follow the [introduction][intro] guide to get started building your own control plane.
 

@@ -4,9 +4,7 @@ description: Create a composition function test
 ---
 
 In the previous guide, you used an embedded function to create composition logic
-for your cloud resources. In this guide, you'll create a test plan to ensure
-your functions are properly constructed.
-
+for your cloud resources. This guide walks through how to create a test plan.
 Tests allow you to:
 
 * Validate your composition configuration without impacting actual resources in your control planes. 
@@ -204,7 +202,7 @@ _items = [
 
 This section:
 * Identifies your test case
-* Sets up the `assertResourcs` section where you'll define expected outputs
+* Sets up the `assertResourcs` section to define expected outputs
 * Links to your composition, XR and XRD files
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
