@@ -259,6 +259,6 @@ walks through how to create a composition function that adds advanced
 capabilities to your infrastructure API.
 
 [up-account]: https://www.upbound.io/register/a
-[up-cli]: /operate/cli
+[up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/

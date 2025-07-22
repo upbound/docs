@@ -509,5 +509,5 @@ update the `properties.size` field in the `spec`.
 Next, learn how to [build compositions][build-compositions]
 that reference your XRD using various programming languages.
 
-[up-example-generate]: /apis-cli/cli-reference
-[build-compositions]: /build/control-plane-projects/authoring-compositions
+[up-example-generate]: /reference/cli-reference
+[build-compositions]: /guides/projects/authoring-compositions

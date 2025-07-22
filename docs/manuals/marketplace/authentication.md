@@ -107,7 +107,7 @@ spec:
 </div>
 
 
-[upbound-account]: /operate/accounts/identity-management/users#create-an-account
-[up-command-line]: /operate/cli
+[upbound-account]: /manuals/platform/identity-management/users
+[up-command-line]: /manuals/cli/overview
 [up-cli-configuration]: /operate/cli/configuration/#configuring-a-docker-credential-helper
 [image-pull-secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials

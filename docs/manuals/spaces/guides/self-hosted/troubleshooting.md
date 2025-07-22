@@ -128,5 +128,5 @@ If you try to install a Space on an existing cluster that previously had Crosspl
 <!-- vale on -->
 
 
-[observability]: /operate/observability
+[observability]: /manuals/spaces/features/observability
 [remove-old-crossplane-crds]: https://docs.crossplane.io/latest/software/uninstall/

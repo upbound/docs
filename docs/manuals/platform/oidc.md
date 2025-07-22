@@ -289,7 +289,7 @@ Any provider that can run in a control plane can support the `Upbound` credentia
 View [this Pull Request][this-pull-request] for a reference implementation.
 
 
-[control-plane-management]: /operate/control-planes#install-packages
+[control-plane-management]: /manuals/spaces/concepts/control-planes
 [provider-azure-authentication]: /providers/provider-azure/authentication/#upbound-auth-oidc
 [provider-gcp-authentication]: /providers/provider-gcp/authentication/#upbound-auth-oidc
 [crossplane-providers]: https://docs.crossplane.io/latest/concepts/providers/

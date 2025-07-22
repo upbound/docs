@@ -130,8 +130,8 @@ objectrolebinding.authorization.spaces.upbound.io "default-zcntk" deleted
 </Tabs>
 
 
-[documentation]: /operate/accounts/authorization/k8s-rbac
+[documentation]: /manuals/platform/authorization/k8s-rbac
 [self-hosted-spaces]: /deploy/self-hosted-spaces
-[up-cli]: /operate/cli/contexts
-[up-cli-1]: /operate/cli/contexts
-[up-cli-2]: /operate/cli/contexts
+[up-cli]: /manuals/cli/contexts
+[up-cli-1]: /manuals/cli/contexts
+[up-cli-2]: /manuals/cli/contexts

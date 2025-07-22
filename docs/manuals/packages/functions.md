@@ -29,9 +29,9 @@ The main branch version releases of the Upbound Official Functions are available
 <!--- TODO(tr0njavolta): links --->
 <!-- [resource-schemas]: /build/core-concepts -->
 [functions]: /manuals/uxp/concepts/packages/functions
-[signed-by-upbound]: /providers/signature-verification
-[pull-an-official-provider]: /providers/policies#access
-[policies-page]: /providers/policies#access
+[signed-by-upbound]: /manuals/packages/providers/signature-verification
+[pull-an-official-provider]: /manuals/packages/policies
+[policies-page]: /manuals/packages/policies
 
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/functions?tier=official

@@ -198,17 +198,17 @@ kubectl delete controlplane ctp1
 ```
 
 
-[up-space-init]: /apis-cli/cli-reference
+[up-space-init]: /reference/cli-reference
 [quickstart]: /
 [aws]: /deploy/self-hosted-spaces/aws
 [azure]: /deploy/self-hosted-spaces/azure
 [gcp]: /deploy/self-hosted-spaces/gcp
-[up-space-upgrade]: /apis-cli/cli-reference
-[spaces-release-notes]: /release-notes/rel-notes/spaces
-[up-space-upgrade-1]: /apis-cli/cli-reference
-[release-notes]: /release-notes/rel-notes/spaces
-[up-space-destroy]: /apis-cli/cli-reference/#up-space-destroy
-[up-cli]: /apis-cli/cli-reference
-[upbound-s-saas-environment]: /deploy/self-hosted-spaces/spaces-management
+[up-space-upgrade]: /reference/cli-reference
+[spaces-release-notes]: /reference/release-notes/spaces
+[up-space-upgrade-1]: /reference/cli-reference
+[release-notes]: /reference/release-notes/spaces
+[up-space-destroy]: /reference/cli-reference
+[up-cli]: /reference/cli-reference
+[upbound-s-saas-environment]: /manuals/spaces/guides/self-hosted/spaces-management
 [spaces-git-integration]: /connect/git-integration
 <!--- TODO(tr0njavolta): links --->

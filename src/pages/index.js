@@ -5,7 +5,7 @@ import { ChevronRight, Zap, Shield, Code, BookOpen, Settings, Target, Rocket } f
 const LandingPage = () => {
   const sections = [
     {
-      id: 'get-started',
+      id: 'getstarted',
       title: 'Get Started',
       description: 'Quick introduction to Upbound Crossplane and building your first control plane',
       icon: <Rocket className="w-8 h-8" />,

@@ -488,18 +488,18 @@ spec:
 ```
 
 
-[group-scoped]: /operate/groups
-[group-scoped-1]: /operate/groups
-[group-scoped-2]: /operate/groups
-[group-scoped-3]: /operate/groups
-[sharedbackupconfig]: /apis-cli/spaces-api/#shared-backup-configs
+[group-scoped]: /manuals/spaces/concepts/groups
+[group-scoped-1]: /manuals/spaces/concepts/groups
+[group-scoped-2]: /manuals/spaces/concepts/groups
+[group-scoped-3]: /manuals/spaces/concepts/groups
+[sharedbackupconfig]: /reference/apis/spaces-api/
 [thanos-object-storage]: https://thanos.io/tip/thanos/storage.md/
-[sharedbackupschedule]: /apis-cli/spaces-api/#shared-backup-schedules
+[sharedbackupschedule]: /reference/apis/spaces-api/
 [cron-formatted]: https://en.wikipedia.org/wiki/Cron
-[spaces-api-documentation]: /apis-cli/spaces-api/
-[sharedbackup]: /apis-cli/spaces-api/#shared-backups
-[backup]: /apis-cli/spaces-api/#backups
-[spaces-api-documentation-1]: /apis-cli/spaces-api/
+[spaces-api-documentation]: /reference/apis/spaces-api
+[sharedbackup]: /reference/apis/spaces-api/
+[backup]: /reference/apis/spaces-api/
+[spaces-api-documentation-1]: /reference/apis/spaces-api
 
 
 

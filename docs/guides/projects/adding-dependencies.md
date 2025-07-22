@@ -221,9 +221,9 @@ After adding dependencies to your control plane projects, learn how to create an
 API in the next guide: [Authoring a Composition Resource Definition
 (XRD)][authoring-a-composition-resource-definition-xrd]
 
-[up-dependency-add]: /apis-cli/cli-reference/#up-dependency-dep-add
-[up-dependency-update-cache]: /apis-cli/cli-reference/#up-dependency-dep-add
-[up-dependency-clean-cache]: /apis-cli/cli-reference/#up-dependency-dep-clean-cache
-[authoring-a-composition-resource-definition-xrd]: /build/control-plane-projects/authoring-xrds
-[installed]: /operate/cli
+[up-dependency-add]: /reference/cli-reference
+[up-dependency-update-cache]: /reference/cli-reference
+[up-dependency-clean-cache]: /reference/cli-reference
+[authoring-a-composition-resource-definition-xrd]: /guides/projects/authoring-xrds
+[installed]: /manuals/cli/overview
 <!--- TODO(tr0njavolta): links --->

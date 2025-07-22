@@ -264,20 +264,20 @@ in the [Spaces documentation][spaces-documentation-2].
 <!-- vale on -->
 
 
-[automatic-upgrades]: /operate/auto-upgrade
+[automatic-upgrades]: /manuals/spaces/guides/auto-upgrade
 [release-notes]: https://github.com/upbound/universal-crossplane/releases
-[control-plane-group]: /operate/groups
+[control-plane-group]: /manuals/spaces/concepts/groups
 [space]: /deploy
-[up-cli]: /apis-cli/cli-reference
-[cli-reference]: /apis-cli/cli-reference
-[up-ctx]: /apis-cli/cli-reference
-[up-ctx-f]: /apis-cli/cli-reference
-[cli-documentation]: /operate/cli/contexts
+[up-cli]: /reference/cli-reference
+[cli-reference]: /reference/cli-reference
+[up-ctx]: /reference/cli-reference
+[up-ctx-f]: /reference/cli-reference
+[cli-documentation]: /manuals/cli/contexts
 [upbound-marketplace]: https://marketplace.upbound.io
 [upbound-marketplace-1]: https://marketplace.upbound.io
-[gitops-with-control-planes]: /connect/gitops
-[connect-control-planes-to-external-services]: /operate/accounts/authentication/oidc-configuration
-[spaces-documentation]: /operate/secrets-management
-[spaces-documentation-1]: /deploy/backup-and-restore
+[gitops-with-control-planes]: /manuals/spaces/guides/gitops
+[connect-control-planes-to-external-services]: /manuals/platform/authentication/oidc-configuration
+[spaces-documentation]: /manuals/spaces/features/secrets-management
+[spaces-documentation-1]: /manuals/spaces/guides/self-hosted/backup-and-restore
 [otel]: https://otel.com
-[spaces-documentation-2]: /operate/observability
+[spaces-documentation-2]: /manuals/spaces/features/observability

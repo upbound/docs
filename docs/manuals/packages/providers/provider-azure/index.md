@@ -355,8 +355,8 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-29]
 <!-- vale Google.Headings = YES -->
 
 
-[support-and-maintenance]: /usage/support
-[provider-families-architecture]: /providers/provider-families
+[support-and-maintenance]: /reference/usage/support
+[provider-families-architecture]: /manuals/packages/providers/provider-families
 
 
 [v1-9-0-release-notes]: https://github.com/crossplane-contrib/provider-upjet-azure/releases/tag/v1.9.0

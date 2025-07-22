@@ -197,8 +197,8 @@ up ctx <your-org-name>/upbound-gcp-us-central-1/default/my-ctp
 ```ini
 up ctx . -f - > context.yaml
 ```
-[up-ctx]: /apis-cli/cli-reference/#up-ctx
+[up-ctx]: /reference/cli-reference
 [space]: /deploy
-[kubernetes-compatible-api]: /apis-cli/spaces-api/
+[kubernetes-compatible-api]: /reference/apis/spaces-api
 [kubectx]: https://github.com/ahmetb/kubectx/
 [kubeconfig]: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/

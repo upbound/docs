@@ -378,19 +378,19 @@ spec:
 
 You can now create _Objects_ in the control plane which wrap Space APIs.
 
-[generate-a-kubeconfig]: /operate/cli/contexts#storing-a-context-to-a-file
-[control-plane-groups]: /operate/groups
+[generate-a-kubeconfig]: /manuals/cli/contexts
+[control-plane-groups]: /manuals/spaces/concepts/groups
 [control-planes]: /core-concepts/control-planes
-[upbound-iam-resources]: /operate/accounts
-[space-apis]: /apis-cli/spaces-api/
-[space-apis-1]: /apis-cli/spaces-api/
-[control-plane-groups-2]: /operate/groups
+[upbound-iam-resources]: /manuals/platform/identity-management
+[space-apis]: /reference/apis/spaces-api
+[space-apis-1]: /reference/apis/spaces-api
+[control-plane-groups-2]: /manuals/spaces/concepts/groups
 
 
 [argo-cd]: https://argo-cd.readthedocs.io/en/stable/
 [my-account-api-tokens]: https://accounts.upbound.io/settings/tokens
 [auto-respect-rbac-for-the-argo-cd-controller]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
-[spec-writeconnectionsecrettoref]: /apis-cli/spaces-api/#controlplane
+[spec-writeconnectionsecrettoref]: /reference/apis/spaces-api/
 [auto-respect-rbac-for-the-argo-cd-controller-1]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
 [provider-upbound]: https://marketplace.upbound.io/providers/upbound/provider-upbound
 [provider-kubernetes]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes

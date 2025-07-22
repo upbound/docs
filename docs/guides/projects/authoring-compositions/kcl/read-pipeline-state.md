@@ -35,5 +35,5 @@ You can use these variables to do interesting things, such as [extracting data][
 
 
 
-[extracting-data]: /build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction
-[write-status]: /build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite
+[extracting-data]: /guides/projects/authoring-compositions/kcl/resource-data-extraction
+[write-status]: /guides/projects/authoring-compositions/kcl/write-status-to-composite

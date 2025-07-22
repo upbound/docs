@@ -120,5 +120,5 @@ Some examples of Crossplane resources that require the `up` CLI
 If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the control plane. Use  [`up ctx`][up-ctx] to connect directly to your control plane.
 
 <!--- TODO(tr0njavolta): links--->
-[console]: /deploy/spaces/console
-[up-ctx]: /apis-cli/cli-reference/#ctx
+[console]: /manuals/console/console
+[up-ctx]: /reference/cli-reference

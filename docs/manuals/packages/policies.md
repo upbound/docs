@@ -234,8 +234,8 @@ A CVE will be considered addressed when a new version of the provider with the f
 <!-- vale gitlab.SentenceLength = YES -->
 
 
-[configured-pull-secrets]: /providers/pull-secrets
-[open-a-ticket]: /usage/support
+[configured-pull-secrets]: /manuals/packages/providers/pull-secrets
+[open-a-ticket]: /reference/usage/support
 
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [semantic-versioning-semver]: https://semver.org/

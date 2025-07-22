@@ -123,6 +123,6 @@ other configuration.
 
 Note that embedded functions require Crossplane 1.18 or later.
 
-[up-project-push]: /apis-cli/cli-reference
-[up-project-build]: /apis-cli/cli-reference
-[up-dependency-update-cache]: /apis-cli/cli-reference
+[up-project-push]: /reference/cli-reference
+[up-project-build]: /reference/cli-reference
+[up-dependency-update-cache]: /reference/cli-reference

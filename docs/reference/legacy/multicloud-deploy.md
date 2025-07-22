@@ -457,9 +457,9 @@ Congratulations, you created your first resources with your control plane.
 [AWS IAM console]: https://console.aws.amazon.com/iam
 
 
-[up-cli]: /operate/cli
+[up-cli]: /manuals/cli/overview
 [service-account]: /img/#create-a-gcp-service-account
-[get-starated]: /learn/
+[get-starated]: /
 
 [sign-up-for-a-free-trial]: https://accounts.upbound.io/register
 [upbound]: https://console.upbound.io

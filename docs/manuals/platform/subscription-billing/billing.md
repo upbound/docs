@@ -289,7 +289,7 @@ The command creates a billing report that's zipped up in your current working di
 You can find full instructions and command options in the up [CLI reference][cli-reference] docs.
 
 
-[export]: /apis-cli/cli-reference/#up-space-billing-get
-[cli-reference]: /apis-cli/cli-reference/#up-space-billing
+[export]: /reference/cli-reference
+[cli-reference]: /reference/cli-reference
 [flagship-product]: https://www.upbound.io/product/upbound
 [workload-identity-configuration-documentation]: https://docs.upbound.io/operate/accounts/authentication/oidc-configuration

@@ -855,7 +855,7 @@ spec:
 </div>
 
 <!--- TODO(tr0njavolta): fix redirect --->
-[upbound-auth-oidc]: /connect/oidc
+[upbound-auth-oidc]: /manuals/platform/oidc
 [upbound-cloud-spaces]: /deploy
 
 

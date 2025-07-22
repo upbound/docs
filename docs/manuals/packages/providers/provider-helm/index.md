@@ -40,7 +40,7 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-1]
 <!-- vale Google.Headings = YES -->
 
 
-[support-and-maintenance]: /usage/support
+[support-and-maintenance]: /reference/usage/support
 
 [v0-20-0-release-notes]: https://github.com/crossplane-contrib/provider-helm/releases/tag/v0.20.0
 [upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-helm/v0.20.0

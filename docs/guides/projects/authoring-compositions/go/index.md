@@ -448,7 +448,7 @@ SDK][go-function-sdk-2], offering a simplified,
 Upbound-specific development experience.
 
 
-[visual-studio-code-extensions-documentation]: /usage/vscode-extensions
+[visual-studio-code-extensions-documentation]: /reference/usage/vscode-extensions
 
 [go]: https://www.golang.org
 [go-function-sdk]: https://github.com/crossplane/function-sdk-go

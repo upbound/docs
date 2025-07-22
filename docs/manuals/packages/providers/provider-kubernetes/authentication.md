@@ -201,7 +201,7 @@ spec:
 
 Read the provider-kubernetes examples for examples of how to configure the provider with other auth mechanisms.
 
-[upbound-identity]: /connect/oidc
+[upbound-identity]: /manuals/platform/oidc
 [upbound-cloud-spaces]: /deploy
 [upbound-apis]: /connect/gitops/#gitops-for-upbound-resources
 [to-a-team]: /operate/accounts/identity-management/robots/#assign-a-robot-to-a-team

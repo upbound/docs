@@ -781,6 +781,6 @@ directory on the file system.
 
 [Releases]: https://github.com/upbound/extensions-migration/releases
 [Upbound Marketplace]: https://marketplace.upbound.io
-[provider-families]: /providers/provider-families
+[provider-families]: /manuals/packages/providers/provider-families
 [the-crossplane-documentation]: https://docs.crossplane.io/latest/concepts/managed-resources/#interaction-with-management-policies
 [delete-the-monolothic-provider]: #delete-the-original-monolithic-provider

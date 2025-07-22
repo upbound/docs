@@ -41,7 +41,7 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-1]
 <!-- vale Google.Headings = YES -->
 
 
-[support-and-maintenance]: /usage/support
+[support-and-maintenance]: /reference/usage/support
 
 [v0-16-0-release-notes]: https://github.com/crossplane-contrib/provider-kubernetes/releases/tag/v0.16.0
 [upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes/v0.16.0

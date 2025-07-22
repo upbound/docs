@@ -82,4 +82,4 @@ cannot compose resources: cannot generate a name for composed resource "": Objec
 This can happen when the `items` array is mistakenly populated by the wrong data.
 
 
-[read-pipeline-state]: /build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state
+[read-pipeline-state]: /guides/projects/authoring-compositions/kcl/read-pipeline-state

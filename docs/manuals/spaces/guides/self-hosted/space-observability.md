@@ -74,7 +74,7 @@ For more information on observability configuration, review the [Helm chart refe
 
 Read the [observability documentation][observability-documentation] to learn about the features Upbound offers for collecting telemetry from control planes.
 
-[observability-documentation]: /operate/observability/
+[observability-documentation]: /manuals/spaces/features/observability
 [opentelemetry-collector]: https://opentelemetry.io/docs/collector/
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
-[helm-chart-reference]: /deploy/self-hosted-spaces/helm-reference/
+[helm-chart-reference]: /reference/helm-reference

@@ -234,7 +234,7 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-20]
 <!-- vale Google.Headings = YES -->
 
 
-[support-and-maintenance]: /usage/support
+[support-and-maintenance]: /reference/usage/support
 
 [v1-5-0-release-notes]: https://github.com/crossplane-contrib/provider-upjet-azuread/releases/tag/v1.5.0
 [upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-azuread/v1.5.0

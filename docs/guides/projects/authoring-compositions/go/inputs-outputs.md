@@ -298,6 +298,6 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 ```
 
 
-[models]: /build/control-plane-projects/authoring-compositions/go/models
+[models]: /guides/projects/authoring-compositions/go/models
 [go-generated-code-guide]: https://protobuf.dev/reference/go/go-generated/
 [go-generated-code-guide-1]: https://protobuf.dev/reference/go/go-generated/

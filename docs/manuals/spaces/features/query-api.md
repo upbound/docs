@@ -312,13 +312,13 @@ The SpaceQuery resource allows you to query objects across all control planes in
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
 
-[documentation]: /deploy/query-api
-[up-ctx]: /apis-cli/cli-reference/#up-ctx
-[up-alpha-get-command]: /apis-cli/cli-reference/#up-alpha-get
-[a-flag]: /apis-cli/cli-reference/#get-resources-across-all-namespaces
-[multiple-resource-types]: /apis-cli/cli-reference/#up-alpha-get
-[up-alpha-query-command]: /apis-cli/cli-reference/#up-alpha-query
-[sort-by-flag]: /apis-cli/cli-reference/#up-alpha-query
-[label-columns]: /apis-cli/cli-reference/#up-alpha-query
-[debug-flag]: /apis-cli/cli-reference/#up-alpha-query
+[documentation]: /manuals/spaces/guides/self-hosted/query-api
+[up-ctx]: /reference/cli-reference
+[up-alpha-get-command]: /reference/cli-reference
+[a-flag]: /reference/cli-reference
+[multiple-resource-types]: /reference/cli-reference
+[up-alpha-query-command]: /reference/cli-reference
+[sort-by-flag]: /reference/cli-reference
+[label-columns]: /reference/cli-reference
+[debug-flag]: /reference/cli-reference
 [kubectl-conventions]: https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/

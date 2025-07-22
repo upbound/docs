@@ -61,5 +61,5 @@ context specific information to use in your function.
 
 
 [items]: /build/control-plane-projects/authoring-compositions/kcl/inputs-outputs/#outputs
-[options]: /build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state
+[options]: /guides/projects/authoring-compositions/kcl/read-pipeline-state
 [kcl-docs]: https://www.kcl-lang.io/docs/reference/lang/spec/variables

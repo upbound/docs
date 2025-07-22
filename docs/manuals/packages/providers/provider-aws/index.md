@@ -570,8 +570,8 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-50]
 <!-- vale Google.Headings = YES -->
 
 
-[support-and-maintenance]: /usage/support
-[provider-families-architecture]: /providers/provider-families
+[support-and-maintenance]: /reference/usage/support
+[provider-families-architecture]: /manuals/packages/providers/provider-families
 [v1-17-0-release-notes]: https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.17.0
 [upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.17.0
 [v1-16-0-release-notes]: https://github.com/crossplane-contrib/provider-upjet-aws/releases/tag/v1.16.0

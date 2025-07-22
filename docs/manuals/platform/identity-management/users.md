@@ -76,11 +76,11 @@ Organizations associated with this account aren't deleted.
 If the user is the primary account for an organization, contact [Upbound
 support][upbound-support] to transfer organization ownership.
 
-[teams]: /operate/accounts/identity-management/teams
-[organization]: /operate/accounts/identity-management/organizations
-[up-command-line]: /operate/cli
+[teams]: /manuals/platform/identity-management/teams
+[organization]: /manuals/platform/identity-management/organizations
+[up-command-line]: /manuals/cli/overview
 [kubernetes-image-pull-secret]: /upbound-marketplace/authentication#kubernetes-image-pull-secrets
-[upbound-support]: /usage/support
+[upbound-support]: /reference/usage/support
 
 <!--- TODO(tr0njavolta): support link --->
 [account-settings]: https://accounts.upbound.io/settings

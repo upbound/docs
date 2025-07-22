@@ -146,7 +146,7 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-11]
 <!-- vale Google.Headings = YES -->
 
 
-[support-and-maintenance]: /usage/support
+[support-and-maintenance]: /reference/usage/support
 
 [v0-19-0-release-notes]: https://github.com/upbound/provider-terraform/releases/tag/v0.19.0
 [upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-terraform/v0.19.0

@@ -184,12 +184,12 @@ The Marketplace only publishes release versions with valid [semver][semver] tags
 
 [upbound-account]: /operate/accounts/identity-management/users/#create-an-account
 [login]: /upbound-marketplace/authentication
-[up-repository-create]: /apis-cli/cli-reference
+[up-repository-create]: /reference/cli-reference
 [credential-helper]: /operate/cli/configuration/#configuring-a-docker-credential-helper
 [public-packages]: #publishing-public-packages
 
-[up-alpha-xpkg-append]: /apis-cli/cli-reference
-[up-repo-update]: /apis-cli/cli-reference
+[up-alpha-xpkg-append]: /reference/cli-reference
+[up-repo-update]: /reference/cli-reference
 
 [crossplane-providers]: /manuals/packages/providers/
 [control-plane-configurations]: /manuals/packages/configurations

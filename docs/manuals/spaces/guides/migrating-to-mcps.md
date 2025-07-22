@@ -419,9 +419,9 @@ up alpha migration import --unpause-after-import
 The importer applies the status of all resources during import. The importer determines if the CRD version has a status field defined based on the stored CRD version.
 
 
-[cli-command]: /apis-cli/cli-reference
-[up-cli]: /apis-cli/cli-reference/#up-alpha-xpkg-xp-extract
-[up-cli-1]: /operate/cli
-[create-command]: /apis-cli/cli-reference/#up-controlplane-ctp-create
-[up-ctx]: /apis-cli/cli-reference/#up-ctx
+[cli-command]: /reference/cli-reference
+[up-cli]: /reference/cli-reference
+[up-cli-1]: /manuals/cli/overview
+[create-command]: /reference/cli-reference
+[up-ctx]: /reference/cli-reference
 [configuration-aws-network]: https://marketplace.upbound.io/configurations/upbound/configuration-aws-network

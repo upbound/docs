@@ -216,7 +216,7 @@ Control plane labels automatically propagate to the connection secret, which all
 This configuration enables Argo CD to automatically discover and manage resources on your control planes.
 
 
-[gitops-with-control-planes]: /connect/gitops
+[gitops-with-control-planes]: /manuals/spaces/guides/gitops
 [configure-argo]: #configure-argo
 [configure-argo-1]: #configure-argo
 [general-configmap]: https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/

@@ -290,8 +290,8 @@ subjects:
 Users in `team1` can now access the control plane and only have the ability to manage _SQLInstances_ in their designated namespace.
 
 
-[upbound-rbac]: /operate/accounts/authorization/upbound-rbac/
-[upbound-rbac-1]: /operate/accounts/authorization/upbound-rbac/
+[upbound-rbac]: /manuals/platform/authorization/upbound-rbac
+[upbound-rbac-1]: /manuals/platform/authorization/upbound-rbac
 [upbound-console]: /operate/accounts/identity-management/teams/#add-users
 [upbound-console-2]: /operate/accounts/authorization/upbound-rbac/#assign-group-role-permissions
 [kubernetes-role-based-access-control]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/

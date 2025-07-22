@@ -73,4 +73,4 @@ rules:
 <!-- vale Google.WordList = NO -->
 
 
-[upbound-rbac]: /operate/accounts/authorization/upbound-rbac
+[upbound-rbac]: /manuals/platform/authorization/upbound-rbac

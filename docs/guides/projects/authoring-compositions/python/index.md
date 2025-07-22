@@ -322,7 +322,7 @@ packages like those from https://pypi.org.
 <!-- vale gitlab.HeadingContent = YES -->
 
 
-[visual-studio-code-extensions-documentation]: /usage/vscode-extensions
+[visual-studio-code-extensions-documentation]: /reference/usage/vscode-extensions
 [python]: https://www.python.org
 [python-function-sdk]: https://github.com/crossplane/function-sdk-python
 [official-tutorial]: https://docs.python.org/3/tutorial/

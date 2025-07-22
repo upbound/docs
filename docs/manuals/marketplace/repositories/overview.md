@@ -27,7 +27,7 @@ Upbound repositories support these Crossplane package types: `Configurations`, `
 
 
 [up-cli]: /
-[upbound-marketplace]: /upbound-marketplace
-[store-configurations-in-a-repostiory]: /build/repositories/store-configurations
+[upbound-marketplace]: /manuals/marketplace/overview
+[store-configurations-in-a-repostiory]: /manuals/marketplace/repositories/store-configurations
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [aws-provider-package]: https://github.com/crossplane-contrib/provider-aws/tree/master/package

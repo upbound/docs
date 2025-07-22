@@ -312,7 +312,7 @@ backend and that the secret used is the mxp-hostcluster-certs secret.
 [installation ideas]: https://cert-manager.io/docs/installation/
 [Ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
 [Issuer Configuration]: https://cert-manager.io/docs/configuration/
-[official-provider-families]: /providers/provider-families
+[official-provider-families]: /manuals/packages/providers/provider-families
 [aws-eks]: https://aws.amazon.com/eks/
 [google-cloud-gke]: https://cloud.google.com/kubernetes-engine
 [microsoft-aks]: https://azure.microsoft.com/en-us/products/kubernetes-service

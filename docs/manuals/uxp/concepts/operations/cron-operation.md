@@ -67,7 +67,7 @@ Read the API documentation for CronOperation for more details.
 
 [operations]: overview
 [cron]: https://en.wikipedia.org/wiki/Cron
-[watchOperation]: /build/control-plane-projects
+[watchOperation]: /guides/projects/project
 [compositions]: /uxp/composition/overview
 [ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/
 [functionMarketplace]: https://marketplace.upbound.io/functions

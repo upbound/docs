@@ -179,8 +179,8 @@ metadata:
 
 
 <!--- TODO(tr0njavolta): links --->
-[monolithic-providers]: /providers/monolithic
-[family-providers-migration-guide]: /providers/migration
+[monolithic-providers]: /manuals/packages/providers/monolithic
+[family-providers-migration-guide]: /manuals/packages/providers/migration
 
 
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official

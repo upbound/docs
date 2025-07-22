@@ -276,6 +276,6 @@ up ctp delete upbound-ctp
 
 [up-account]: https://www.upbound.io/register/a
 [project-foundations]: /builders-workshop/project-foundations
-[up-cli]: /operate/cli
+[up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/

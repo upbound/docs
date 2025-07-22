@@ -176,12 +176,12 @@ Key features:
 <!-- vale Google.WordList = YES -->
 
 
-[users]: /operate/accounts/identity-management/users
-[organizations]: /operate/accounts/identity-management/organizations
-[teams]: /operate/accounts/identity-management/teams
-[robots]: /operate/accounts/identity-management/robots
-[enabling-directory-sync]: /operate/accounts/authentication/enable-sso
-[authenticate-jwt-tokens-from-your-oidc-provider]: /operate/accounts/authentication/oidc-configuration
+[users]: /manuals/platform/identity-management/users
+[organizations]: /manuals/platform/identity-management/organizations
+[teams]: /manuals/platform/identity-management/teams
+[robots]: /manuals/platform/identity-management/robots
+[enabling-directory-sync]: /manuals/platform/authentication/enable-sso
+[authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/authentication/oidc-configuration
 
 
 [kubernetes-authentication-strategies]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies

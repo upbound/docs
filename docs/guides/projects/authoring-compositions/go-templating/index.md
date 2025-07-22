@@ -290,7 +290,7 @@ Upbound builds embedded Go templating functions on top of Crossplane's
 offering a simplified, Upbound-specific development experience.
 
 
-[visual-studio-code-extensions-documentation]: /usage/vscode-extensions
+[visual-studio-code-extensions-documentation]: /reference/usage/vscode-extensions
 [go-templates]: https://pkg.go.dev/text/template
 [function-go-templating]: https://github.com/crossplane-contrib/function-go-templating?tab=readme-ov-file#function-go-templating
 [s3-provider]: https://marketplace.upbound.io/providers/upbound/provider-aws-s3

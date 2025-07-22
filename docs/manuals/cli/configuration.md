@@ -125,6 +125,6 @@ Instructions for installing `docker-credential-up` are available in the [CLI ins
 ```
 
 
-[cli-installation-documentation]: /operate/cli
+[cli-installation-documentation]: /manuals/cli/overview
 
 [upbound-password-reset]: https://accounts.upbound.io/resetPassword

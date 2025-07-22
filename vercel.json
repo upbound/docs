@@ -1,8 +1,623 @@
 {
   "redirects": [
     {
+      "source": "/learn/builders-workshop/1-project-foundations",
+      "destination": "/getstarted/builders-workshop/1-project-foundations",
+      "permanent": true
+    },
+    {
+      "source": "/learn/builders-workshop/2-create-configuration",
+      "destination": "/getstarted/builders-workshop/2-create-configuration",
+      "permanent": true
+    },
+    {
+      "source": "/learn/builders-workshop/3-testing",
+      "destination": "/getstarted/builders-workshop/3-testing",
+      "permanent": true
+    },
+    {
+      "source": "/learn/builders-workshop/4-deployment",
+      "destination": "/getstarted/builders-workshop/4-deployment",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/adding-dependencies",
+      "destination": "/guides/projects/adding-dependencies",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/go-templating",
+      "destination": "/guides/projects/authoring-compositions/go-templating",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
+      "destination": "/guides/projects/authoring-compositions/go-templating/inputs-outputs",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/go-templating/schemas",
+      "destination": "/guides/projects/authoring-compositions/go-templating/schemas",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/go",
+      "destination": "/guides/projects/authoring-compositions/go",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/go/inputs-outputs",
+      "destination": "/guides/projects/authoring-compositions/go/inputs-outputs",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/go/models",
+      "destination": "/guides/projects/authoring-compositions/go/models",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions",
+      "destination": "/guides/projects/authoring-compositions",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/conditionals",
+      "destination": "/guides/projects/authoring-compositions/kcl/conditionals",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl",
+      "destination": "/guides/projects/authoring-compositions/kcl",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+      "destination": "/guides/projects/authoring-compositions/kcl/inputs-outputs",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/loops",
+      "destination": "/guides/projects/authoring-compositions/kcl/loops",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+      "destination": "/guides/projects/authoring-compositions/kcl/read-pipeline-state",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+      "destination": "/guides/projects/authoring-compositions/kcl/resource-data-extraction",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+      "destination": "/guides/projects/authoring-compositions/kcl/resource-schemas",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/variables",
+      "destination": "/guides/projects/authoring-compositions/kcl/variables",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+      "destination": "/guides/projects/authoring-compositions/kcl/write-status-to-composite",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/python",
+      "destination": "/guides/projects/authoring-compositions/python",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs",
+      "destination": "/guides/projects/authoring-compositions/python/inputs-outputs",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-compositions/python/models",
+      "destination": "/guides/projects/authoring-compositions/python/models",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/authoring-xrds",
+      "destination": "/guides/projects/authoring-xrds",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/building-pushing",
+      "destination": "/guides/projects/building-pushing",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects",
+      "destination": "/guides/projects/project",
+      "permanent": true
+    },
+    {
+      "source": "/operate/simulations",
+      "destination": "/guides/projects/simulations",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/testing",
+      "destination": "/guides/projects/testing",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/idp-starter-kit",
+      "destination": "/guides/solutions/general-idp",
+      "permanent": true
+    },
+    {
+      "source": "/solutions/upbound-platform-ref",
+      "destination": "/guides/solutions/upbound-platform-ref",
+      "permanent": true
+    },
+    {
+      "source": "/operate/cli/configuration",
+      "destination": "/manuals/cli/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/operate/cli/contexts",
+      "destination": "/manuals/cli/contexts",
+      "permanent": true
+    },
+    {
+      "source": "/operate/cli",
+      "destination": "/manuals/cli/overview",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/spaces/console",
+      "destination": "/manuals/console/console",
+      "permanent": true
+    },
+    {
+      "source": "/upbound-marketplace/dmca",
+      "destination": "/manuals/marketplace/dmca",
+      "permanent": true
+    },
+    {
+      "source": "/upbound-marketplace",
+      "destination": "/manuals/marketplace/overview",
+      "permanent": true
+    },
+    {
+      "source": "/upbound-marketplace/packages",
+      "destination": "/manuals/marketplace/packages",
+      "permanent": true
+    },
+    {
+      "source": "/build/repositories/management",
+      "destination": "/manuals/marketplace/repositories/management",
+      "permanent": true
+    },
+    {
+      "source": "/build/repositories",
+      "destination": "/manuals/marketplace/repositories/overview",
+      "permanent": true
+    },
+    {
+      "source": "/build/repositories/publish-packages",
+      "destination": "/manuals/marketplace/repositories/publish-packages",
+      "permanent": true
+    },
+    {
+      "source": "/build/repositories/store-configurations",
+      "destination": "/manuals/marketplace/repositories/store-configurations",
+      "permanent": true
+    },
+    {
+      "source": "/providers/policies",
+      "destination": "/manuals/packages/policies",
+      "permanent": true
+    },
+    {
+      "source": "/providers/faq",
+      "destination": "/manuals/packages/providers/faq",
+      "permanent": true
+    },
+    {
+      "source": "/providers",
+      "destination": "/manuals/packages/providers",
+      "permanent": true
+    },
+    {
+      "source": "/providers/migration",
+      "destination": "/manuals/packages/providers/migration",
+      "permanent": true
+    },
+    {
+      "source": "/providers/monolithic",
+      "destination": "/manuals/packages/providers/monolithic",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-aws/authentication",
+      "destination": "/manuals/packages/providers/provider-aws/authentication",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-aws",
+      "destination": "/manuals/packages/providers/provider-aws",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-azure/authentication",
+      "destination": "/manuals/packages/providers/provider-azure/authentication",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-azure",
+      "destination": "/manuals/packages/providers/provider-azure",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-azuread",
+      "destination": "/manuals/packages/providers/provider-azuread",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-families",
+      "destination": "/manuals/packages/providers/provider-families",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-gcp/authentication",
+      "destination": "/manuals/packages/providers/provider-gcp/authentication",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-gcp",
+      "destination": "/manuals/packages/providers/provider-gcp",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-helm",
+      "destination": "/manuals/packages/providers/provider-helm",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-kubernetes/authentication",
+      "destination": "/manuals/packages/providers/provider-kubernetes/authentication",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-kubernetes",
+      "destination": "/manuals/packages/providers/provider-kubernetes",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-terraform",
+      "destination": "/manuals/packages/providers/provider-terraform",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-terraform/migrate-hcl",
+      "destination": "/manuals/packages/providers/provider-terraform/migrate-hcl",
+      "permanent": true
+    },
+    {
+      "source": "/providers/provider-terraform/migrate-provider-tf",
+      "destination": "/manuals/packages/providers/provider-terraform/migrate-provider-tf",
+      "permanent": true
+    },
+    {
+      "source": "/providers/pull-secrets",
+      "destination": "/manuals/packages/providers/pull-secrets",
+      "permanent": true
+    },
+    {
+      "source": "/providers/signature-verification",
+      "destination": "/manuals/packages/providers/signature-verification",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/authentication/enable-sso",
+      "destination": "/manuals/platform/authentication/enable-sso",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/authentication/oidc-configuration",
+      "destination": "/manuals/platform/authentication/oidc-configuration",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/authorization/hub-rbac",
+      "destination": "/manuals/platform/authorization/hub-rbac",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/authorization/k8s-rbac",
+      "destination": "/manuals/platform/authorization/k8s-rbac",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/authorization/upbound-rbac",
+      "destination": "/manuals/platform/authorization/upbound-rbac",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts",
+      "destination": "/manuals/platform/identity-management",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/identity-management/organizations",
+      "destination": "/manuals/platform/identity-management/organizations",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/identity-management/robots",
+      "destination": "/manuals/platform/identity-management/robots",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/identity-management/teams",
+      "destination": "/manuals/platform/identity-management/teams",
+      "permanent": true
+    },
+    {
+      "source": "/operate/accounts/identity-management/users",
+      "destination": "/manuals/platform/identity-management/users",
+      "permanent": true
+    },
+    {
+      "source": "/connect/oidc",
+      "destination": "/manuals/platform/oidc",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/billing",
+      "destination": "/manuals/platform/subscription-billing/billing",
+      "permanent": true
+    },
+    {
+      "source": "/operate/control-planes",
+      "destination": "/manuals/spaces/concepts/control-planes",
+      "permanent": true
+    },
+    {
+      "source": "/operate/groups",
+      "destination": "/manuals/spaces/concepts/groups",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/control-plane-topologies",
+      "destination": "/manuals/spaces/features/control-plane-topologies",
+      "permanent": true
+    },
+    {
+      "source": "/operate/observability",
+      "destination": "/manuals/spaces/features/observability",
+      "permanent": true
+    },
+    {
+      "source": "/connect/query-api",
+      "destination": "/manuals/spaces/features/query-api",
+      "permanent": true
+    },
+    {
+      "source": "/operate/secrets-management",
+      "destination": "/manuals/spaces/features/secrets-management",
+      "permanent": true
+    },
+    {
+      "source": "/operate/auto-upgrade",
+      "destination": "/manuals/spaces/guides/auto-upgrade",
+      "permanent": true
+    },
+    {
+      "source": "/operate/debugging-a-ctp",
+      "destination": "/manuals/spaces/guides/debugging-a-ctp",
+      "permanent": true
+    },
+    {
+      "source": "/connect/gitops",
+      "destination": "/manuals/spaces/guides/gitops",
+      "permanent": true
+    },
+    {
+      "source": "/build/migrating-to-mcps",
+      "destination": "/manuals/spaces/guides/migrating-to-mcps",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/attach-detach",
+      "destination": "/manuals/spaces/guides/self-hosted/attach-detach",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/backup-and-restore",
+      "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
+      "permanent": true
+    },
+    {
+      "source": "/connect/declarative-ctps",
+      "destination": "/manuals/spaces/guides/self-hosted/declarative-ctps",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/dedicated-spaces/aws",
+      "destination": "/manuals/spaces/guides/self-hosted/dedicated-spaces-deployment",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/deployment",
+      "destination": "/manuals/spaces/guides/self-hosted/deployment-reqs",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/dr",
+      "destination": "/manuals/spaces/guides/self-hosted/dr",
+      "permanent": true
+    },
+    {
+      "source": "/connect/mcp-connector-guide",
+      "destination": "/manuals/spaces/guides/self-hosted/mcp-connector-guide",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/proxies-config",
+      "destination": "/manuals/spaces/guides/self-hosted/proxies-config",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/query-api",
+      "destination": "/manuals/spaces/guides/self-hosted/query-api",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/scaling-resources",
+      "destination": "/manuals/spaces/guides/self-hosted/scaling-resources",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/space-observability",
+      "destination": "/manuals/spaces/guides/self-hosted/space-observability",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/spaces-management",
+      "destination": "/manuals/spaces/guides/self-hosted/spaces-management",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/troubleshooting",
+      "destination": "/manuals/spaces/guides/self-hosted/troubleshooting",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/use-argo",
+      "destination": "/manuals/spaces/guides/self-hosted/use-argo",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/aws/workload-id-backup-restore",
+      "destination": "/manuals/spaces/guides/self-hosted/workload-id-backup-restore",
+      "permanent": true
+    },
+    {
+      "source": "/build/control-plane-projects/simulations",
+      "destination": "/manuals/spaces/guides/simulations",
+      "permanent": true
+    },
+    {
+      "source": "/build/controllers",
+      "destination": "/manuals/uxp/concepts/packages/add-ons",
+      "permanent": true
+    },
+    {
+      "source": "/build/provider-authentication",
+      "destination": "/manuals/uxp/concepts/packages/provider-authentication",
+      "permanent": true
+    },
+    {
+      "source": "/apis-cli/spaces-api",
+      "destination": "/reference/apis/spaces-api",
+      "permanent": true
+    },
+    {
+      "source": "/apis-cli/spaces-api/v1_10",
+      "destination": "/reference/apis/spaces-api/v1_10",
+      "permanent": true
+    },
+    {
+      "source": "/apis-cli/spaces-api/v1_11",
+      "destination": "/reference/apis/spaces-api/v1_11",
+      "permanent": true
+    },
+    {
+      "source": "/apis-cli/spaces-api/v1_12",
+      "destination": "/reference/apis/spaces-api/v1_12",
+      "permanent": true
+    },
+    {
+      "source": "/apis-cli/spaces-api/v1_9",
+      "destination": "/reference/apis/spaces-api/v1_9",
+      "permanent": true
+    },
+    {
+      "source": "/deploy/self-hosted-spaces/helm-reference",
+      "destination": "/reference/helm-reference",
+      "permanent": true
+    },
+    {
+      "source": "/reference/legacy-spaces/connect-argo-to-upbound",
+      "destination": "/reference/legacy/connect-argo-to-upbound",
+      "permanent": true
+    },
+    {
+      "source": "/reference/legacy-spaces/control-plane-configurations",
+      "destination": "/reference/legacy/control-plane-configurations",
+      "permanent": true
+    },
+    {
+      "source": "/reference/legacy-spaces",
+      "destination": "/reference/legacy",
+      "permanent": true
+    },
+    {
+      "source": "/reference/legacy-spaces/multicloud-deploy",
+      "destination": "/reference/legacy/multicloud-deploy",
+      "permanent": true
+    },
+    {
+      "source": "/release-notes",
+      "destination": "/reference/release-notes",
+      "permanent": true
+    },
+    {
+      "source": "/release-notes/rel-notes/mcp-connector",
+      "destination": "/reference/release-notes/mcp-connector",
+      "permanent": true
+    },
+    {
+      "source": "/release-notes/rel-notes/spaces",
+      "destination": "/reference/release-notes/spaces",
+      "permanent": true
+    },
+    {
+      "source": "/release-notes/rel-notes/up-cli",
+      "destination": "/reference/release-notes/up-cli",
+      "permanent": true
+    },
+    {
+      "source": "/usage",
+      "destination": "/reference/usage",
+      "permanent": true
+    },
+    {
+      "source": "/usage/ipaddresses",
+      "destination": "/reference/usage/ipaddresses",
+      "permanent": true
+    },
+    {
+      "source": "/reference/licenses",
+      "destination": "/reference/usage/licenses",
+      "permanent": true
+    },
+    {
+      "source": "/usage/lifecycle",
+      "destination": "/reference/usage/lifecycle",
+      "permanent": true
+    },
+    {
+      "source": "/usage/support",
+      "destination": "/reference/usage/support",
+      "permanent": true
+    },
+    {
+      "source": "/usage/vscode-extensions",
+      "destination": "/reference/usage/vscode-extensions",
+      "permanent": true
+    },
+    {
       "source": "/accounts",
-      "destination": "/operate/accounts",
+      "destination": "/manuals/platform/identity-management",
       "permanent": true
     },
     {
@@ -12,12 +627,12 @@
     },
     {
       "source": "/accounts/authentication/enable-sso",
-      "destination": "/operate/accounts/authentication/enable-sso",
+      "destination": "/manuals/platform/authentication/enable-sso",
       "permanent": true
     },
     {
       "source": "/accounts/authentication/oidc-configuration",
-      "destination": "/operate/accounts/authentication/oidc-configuration",
+      "destination": "/manuals/platform/authentication/oidc-configuration",
       "permanent": true
     },
     {
@@ -27,12 +642,12 @@
     },
     {
       "source": "/accounts/authorization/k8s-rbac",
-      "destination": "/operate/accounts/authorization/k8s-rbac",
+      "destination": "/manuals/platform/authorization/k8s-rbac",
       "permanent": true
     },
     {
       "source": "/accounts/authorization/upbound-rbac",
-      "destination": "/operate/accounts/authorization/upbound-rbac",
+      "destination": "/manuals/platform/authorization/upbound-rbac",
       "permanent": true
     },
     {
@@ -42,22 +657,22 @@
     },
     {
       "source": "/accounts/identity-management/organizations",
-      "destination": "/operate/accounts/identity-management/organizations",
+      "destination": "/manuals/platform/identity-management/organizations",
       "permanent": true
     },
     {
       "source": "/accounts/identity-management/robots",
-      "destination": "/operate/accounts/identity-management/robots",
+      "destination": "/manuals/platform/identity-management/robots",
       "permanent": true
     },
     {
       "source": "/accounts/identity-management/teams",
-      "destination": "/operate/accounts/identity-management/teams",
+      "destination": "/manuals/platform/identity-management/teams",
       "permanent": true
     },
     {
       "source": "/accounts/identity-management/users",
-      "destination": "/operate/accounts/identity-management/users",
+      "destination": "/manuals/platform/identity-management/users",
       "permanent": true
     },
     {
@@ -67,22 +682,22 @@
     },
     {
       "source": "/all-spaces/backup-and-restore",
-      "destination": "/deploy/backup-and-restore",
+      "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
       "permanent": true
     },
     {
       "source": "/all-spaces/control-plane-topologies",
-      "destination": "/deploy/control-plane-topologies",
+      "destination": "/manuals/spaces/features/control-plane-topologies",
       "permanent": true
     },
     {
       "source": "/all-spaces/declarative-ctps",
-      "destination": "/connect/declarative-ctps",
+      "destination": "/manuals/spaces/guides/self-hosted/declarative-ctps",
       "permanent": true
     },
     {
       "source": "/all-spaces/dedicated-spaces/aws",
-      "destination": "/deploy/dedicated-spaces/aws",
+      "destination": "/manuals/spaces/guides/self-hosted/dedicated-spaces-deployment",
       "permanent": true
     },
     {
@@ -92,7 +707,7 @@
     },
     {
       "source": "/all-spaces/disconnected-spaces",
-      "destination": "/deploy/dedicated-spaces/aws",
+      "destination": "/manuals/spaces/guides/self-hosted/dedicated-spaces-deployment",
       "permanent": true
     },
     {
@@ -107,12 +722,12 @@
     },
     {
       "source": "/all-spaces/disconnected-spaces/billing",
-      "destination": "/deploy/self-hosted-spaces/billing",
+      "destination": "/manuals/platform/subscription-billing/billing",
       "permanent": true
     },
     {
       "source": "/all-spaces/disconnected-spaces/deployment",
-      "destination": "/deploy/self-hosted-spaces/deployment",
+      "destination": "/manuals/spaces/guides/self-hosted/deployment-reqs",
       "permanent": true
     },
     {
@@ -127,22 +742,22 @@
     },
     {
       "source": "/all-spaces/mcp-connector-guide",
-      "destination": "/connect/mcp-connector-guide",
+      "destination": "/manuals/spaces/guides/self-hosted/mcp-connector-guide",
       "permanent": true
     },
     {
       "source": "/all-spaces/observability",
-      "destination": "/operate/observability",
+      "destination": "/manuals/spaces/features/observability",
       "permanent": true
     },
     {
       "source": "/all-spaces/query-api",
-      "destination": "/connect/query-api",
+      "destination": "/manuals/spaces/features/query-api",
       "permanent": true
     },
     {
       "source": "/all-spaces/secrets-management",
-      "destination": "/operate/secrets-management",
+      "destination": "/manuals/spaces/features/secrets-management",
       "permanent": true
     },
     {
@@ -152,7 +767,7 @@
     },
     {
       "source": "/all-spaces/self-hosted-spaces/attach-detach",
-      "destination": "/deploy/self-hosted-spaces/attach-detach",
+      "destination": "/manuals/spaces/guides/self-hosted/attach-detach",
       "permanent": true
     },
     {
@@ -167,17 +782,17 @@
     },
     {
       "source": "/all-spaces/self-hosted-spaces/billing",
-      "destination": "/deploy/self-hosted-spaces/billing",
+      "destination": "/manuals/platform/subscription-billing/billing",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/deployment",
-      "destination": "/deploy/self-hosted-spaces/deployment",
+      "destination": "/manuals/spaces/guides/self-hosted/deployment-reqs",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/dr",
-      "destination": "/deploy/self-hosted-spaces/dr",
+      "destination": "/manuals/spaces/guides/self-hosted/dr",
       "permanent": true
     },
     {
@@ -187,17 +802,17 @@
     },
     {
       "source": "/all-spaces/self-hosted-spaces/helm-reference",
-      "destination": "/deploy/self-hosted-spaces/helm-reference",
+      "destination": "/reference/helm-reference",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/proxies-config",
-      "destination": "/deploy/self-hosted-spaces/proxies-config",
+      "destination": "/manuals/spaces/guides/self-hosted/proxies-config",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/query-api",
-      "destination": "/deploy/query-api",
+      "destination": "/manuals/spaces/guides/self-hosted/query-api",
       "permanent": true
     },
     {
@@ -207,27 +822,27 @@
     },
     {
       "source": "/all-spaces/self-hosted-spaces/scaling-resources",
-      "destination": "/deploy/self-hosted-spaces/scaling-resources",
+      "destination": "/manuals/spaces/guides/self-hosted/scaling-resources",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/spaces-management",
-      "destination": "/deploy/self-hosted-spaces/spaces-management",
+      "destination": "/manuals/spaces/guides/self-hosted/spaces-management",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/troubleshooting",
-      "destination": "/deploy/self-hosted-spaces/troubleshooting",
+      "destination": "/manuals/spaces/guides/self-hosted/troubleshooting",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/use-argo",
-      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "destination": "/manuals/spaces/guides/self-hosted/use-argo",
       "permanent": true
     },
     {
       "source": "/all-spaces/self-hosted-spaces/use-argo-flux",
-      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "destination": "/manuals/spaces/guides/self-hosted/use-argo",
       "permanent": true
     },
     {
@@ -242,27 +857,27 @@
     },
     {
       "source": "/all-spaces/spaces/console",
-      "destination": "/deploy/spaces/console",
+      "destination": "/manuals/console/console",
       "permanent": true
     },
     {
       "source": "/build/vscode-extensions",
-      "destination": "/reference/vscode-extensions",
+      "destination": "/reference/usage/vscode-extensions",
       "permanent": true
     },
     {
       "source": "/cli",
-      "destination": "/operate/cli",
+      "destination": "/manuals/cli/overview",
       "permanent": true
     },
     {
       "source": "/concepts/accounts/users",
-      "destination": "/operate/accounts/identity-management/users",
+      "destination": "/manuals/platform/identity-management/users",
       "permanent": true
     },
     {
       "source": "/concepts/control-plane-configurations",
-      "destination": "/reference/legacy-spaces/control-plane-configurations",
+      "destination": "/reference/legacy/control-plane-configurations",
       "permanent": true
     },
     {
@@ -277,82 +892,82 @@
     },
     {
       "source": "/concepts/operate/oidc",
-      "destination": "/connect/oidc",
+      "destination": "/manuals/platform/oidc",
       "permanent": true
     },
     {
       "source": "/connect/use-argo",
-      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "destination": "/manuals/spaces/guides/self-hosted/use-argo",
       "permanent": true
     },
     {
       "source": "/console",
-      "destination": "/deploy/spaces/console",
+      "destination": "/manuals/console/console",
       "permanent": true
     },
     {
       "source": "/core-concepts/adding-dependencies",
-      "destination": "/build/control-plane-projects/adding-dependencies",
+      "destination": "/guides/projects/adding-dependencies",
       "permanent": true
     },
     {
       "source": "/core-concepts/authoring-compositions",
-      "destination": "/build/control-plane-projects/authoring-compositions",
+      "destination": "/guides/projects/authoring-compositions",
       "permanent": true
     },
     {
       "source": "/core-concepts/authoring-xrds",
-      "destination": "/build/control-plane-projects/authoring-xrds",
+      "destination": "/guides/projects/authoring-xrds",
       "permanent": true
     },
     {
       "source": "/core-concepts/building-pushing",
-      "destination": "/build/control-plane-projects/building-pushing",
+      "destination": "/guides/projects/building-pushing",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/conditionals",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/conditionals",
+      "destination": "/guides/projects/authoring-compositions/kcl/conditionals",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/inputs-outputs",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
+      "destination": "/guides/projects/authoring-compositions/kcl/inputs-outputs",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/loops",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/loops",
+      "destination": "/guides/projects/authoring-compositions/kcl/loops",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/overview",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl",
+      "destination": "/guides/projects/authoring-compositions/kcl",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/read-pipeline-state",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
+      "destination": "/guides/projects/authoring-compositions/kcl/read-pipeline-state",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/resource-data-extraction",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
+      "destination": "/guides/projects/authoring-compositions/kcl/resource-data-extraction",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/resource-schemas",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas",
+      "destination": "/guides/projects/authoring-compositions/kcl/resource-schemas",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/variables",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/variables",
+      "destination": "/guides/projects/authoring-compositions/kcl/variables",
       "permanent": true
     },
     {
       "source": "/core-concepts/kcl/write-status-to-composite",
-      "destination": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
+      "destination": "/guides/projects/authoring-compositions/kcl/write-status-to-composite",
       "permanent": true
     },
     {
@@ -367,22 +982,22 @@
     },
     {
       "source": "/core-concepts/python/inputs-outputs",
-      "destination": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs",
+      "destination": "/guides/projects/authoring-compositions/python/inputs-outputs",
       "permanent": true
     },
     {
       "source": "/core-concepts/python/models",
-      "destination": "/build/control-plane-projects/authoring-compositions/python/models",
+      "destination": "/guides/projects/authoring-compositions/python/models",
       "permanent": true
     },
     {
       "source": "/core-concepts/python/overview",
-      "destination": "/build/control-plane-projects/authoring-compositions/python",
+      "destination": "/guides/projects/authoring-compositions/python",
       "permanent": true
     },
     {
       "source": "/core-concepts/testing",
-      "destination": "/build/control-plane-projects/testing",
+      "destination": "/guides/projects/testing",
       "permanent": true
     },
     {
@@ -392,82 +1007,82 @@
     },
     {
       "source": "/deploy/disconnected-spaces/helm-reference",
-      "destination": "/deploy/self-hosted-spaces/helm-reference",
+      "destination": "/reference/helm-reference",
       "permanent": true
     },
     {
       "source": "/deploy/disconnected-spaces/proxies-config",
-      "destination": "/deploy/self-hosted-spaces/proxies-config",
+      "destination": "/manuals/spaces/guides/self-hosted/proxies-config",
       "permanent": true
     },
     {
       "source": "/deploy/disconnected-spaces/spaces-management",
-      "destination": "/deploy/self-hosted-spaces/spaces-management",
+      "destination": "/manuals/spaces/guides/self-hosted/spaces-management",
       "permanent": true
     },
     {
       "source": "/deploy/disconnected-spaces/troubleshooting",
-      "destination": "/deploy/self-hosted-spaces/troubleshooting",
+      "destination": "/manuals/spaces/guides/self-hosted/troubleshooting",
       "permanent": true
     },
     {
       "source": "/deploy/disconnected-spaces/use-argo-flux",
-      "destination": "/deploy/self-hosted-spaces/use-argo",
+      "destination": "/manuals/spaces/guides/self-hosted/use-argo",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces",
-      "destination": "/reference/legacy-spaces",
+      "destination": "/reference/legacy",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces/connect-argo-to-upbound",
-      "destination": "/reference/legacy-spaces/connect-argo-to-upbound",
+      "destination": "/reference/legacy/connect-argo-to-upbound",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces/control-plane-configurations",
-      "destination": "/reference/legacy-spaces/control-plane-configurations",
+      "destination": "/reference/legacy/control-plane-configurations",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces/multicloud-deploy",
-      "destination": "/reference/legacy-spaces/multicloud-deploy",
+      "destination": "/reference/legacy/multicloud-deploy",
       "permanent": true
     },
     {
       "source": "/deploy/spaces/attach-detach",
-      "destination": "/deploy/self-hosted-spaces/attach-detach",
+      "destination": "/manuals/spaces/guides/self-hosted/attach-detach",
       "permanent": true
     },
     {
       "source": "/deploy/spaces/guides/declarative-ctps",
-      "destination": "/connect/declarative-ctps",
+      "destination": "/manuals/spaces/guides/self-hosted/declarative-ctps",
       "permanent": true
     },
     {
       "source": "/deploy/spaces/guides/mcp-connector-guide",
-      "destination": "/connect/mcp-connector-guide",
+      "destination": "/manuals/spaces/guides/self-hosted/mcp-connector-guide",
       "permanent": true
     },
     {
       "source": "/development-extensions/vscode-extensions",
-      "destination": "/reference/vscode-extensions",
+      "destination": "/reference/usage/vscode-extensions",
       "permanent": true
     },
     {
       "source": "/disconnected-spaces/backup-and-restore",
-      "destination": "/deploy/backup-and-restore",
+      "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
       "permanent": true
     },
     {
       "source": "/disconnected-spaces/dr",
-      "destination": "/deploy/self-hosted-spaces/dr",
+      "destination": "/manuals/spaces/guides/self-hosted/dr",
       "permanent": true
     },
     {
       "source": "/disconnected-spaces/secrets-management",
-      "destination": "/operate/secrets-management",
+      "destination": "/manuals/spaces/features/secrets-management",
       "permanent": true
     },
     {
@@ -487,7 +1102,7 @@
     },
     {
       "source": "/knowledge-base/migrate-to-provider-families",
-      "destination": "/providers/migration",
+      "destination": "/manuals/packages/providers/migration",
       "permanent": true
     },
     {
@@ -517,22 +1132,22 @@
     },
     {
       "source": "/learn/control-plane-projects",
-      "destination": "/build/control-plane-projects",
+      "destination": "/guides/projects/project",
       "permanent": true
     },
     {
       "source": "/learn/control-plane-project",
-      "destination": "/build/control-plane-projects",
+      "destination": "/guides/projects/project",
       "permanent": true
     },
     {
       "source": "/learn/control-plane-projects/",
-      "destination": "/build/control-plane-projects",
+      "destination": "/guides/projects/project",
       "permanent": true
     },
     {
       "source": "/learn/control-plane-project/",
-      "destination": "/build/control-plane-projects",
+      "destination": "/guides/projects/project",
       "permanent": true
     },
     {
@@ -582,22 +1197,22 @@
     },
     {
       "source": "/learn/my-first-project",
-      "destination": "/builders-workshop/project-foundations",
+      "destination": "/getstarted/builders-workshop/1-project-foundations",
       "permanent": true
     },
     {
       "source": "/learn/my-first-project/",
-      "destination": "/builders-workshop/project-foundations",
+      "destination": "/getstarted/builders-workshop/1-project-foundations",
       "permanent": true
     },
     {
       "source": "/marketplace/packages",
-      "destination": "/build/repositories/publish-packages",
+      "destination": "/manuals/marketplace/repositories/publish-packages",
       "permanent": true
     },
     {
       "source": "/mcp/auto-upgrade",
-      "destination": "/operate/auto-upgrade",
+      "destination": "/manuals/spaces/guides/auto-upgrade",
       "permanent": true
     },
     {
@@ -612,7 +1227,7 @@
     },
     {
       "source": "/mcp/debugging-a-ctp",
-      "destination": "/operate/debugging-a-ctp",
+      "destination": "/manuals/spaces/guides/debugging-a-ctp",
       "permanent": true
     },
     {
@@ -622,87 +1237,87 @@
     },
     {
       "source": "/mcp/gitops",
-      "destination": "/connect/gitops",
+      "destination": "/manuals/spaces/guides/gitops",
       "permanent": true
     },
     {
       "source": "/mcp/groups",
-      "destination": "/operate/groups",
+      "destination": "/manuals/spaces/concepts/groups",
       "permanent": true
     },
     {
       "source": "/mcp/migrating-to-mcps",
-      "destination": "/build/migrating-to-mcps",
+      "destination": "/manuals/spaces/guides/migrating-to-mcps",
       "permanent": true
     },
     {
       "source": "/mcp/oidc",
-      "destination": "/connect/oidc",
+      "destination": "/manuals/platform/oidc",
       "permanent": true
     },
     {
       "source": "/providers/",
-      "destination": "/providers",
+      "destination": "/manuals/packages/providers",
       "permanent": true
     },
     {
       "source": "/providers/support",
-      "destination": "/providers/policies",
+      "destination": "/manuals/packages/policies",
       "permanent": true
     },
     {
       "source": "/reference/cli",
-      "destination": "/operate/cli",
+      "destination": "/manuals/cli/overview",
       "permanent": true
     },
     {
       "source": "/reference/cli/contexts",
-      "destination": "/operate/cli/contexts",
+      "destination": "/manuals/cli/contexts",
       "permanent": true
     },
     {
       "source": "/reference/configuration",
-      "destination": "/operate/cli/configuration",
+      "destination": "/manuals/cli/configuration",
       "permanent": true
     },
     {
       "source": "/reference/contexts",
-      "destination": "/operate/cli/contexts",
+      "destination": "/manuals/cli/contexts",
       "permanent": true
     },
     {
       "source": "/repositories/_index",
-      "destination": "/build/repositories/overview",
+      "destination": "/manuals/marketplace/repositories/overview",
       "permanent": true
     },
     {
       "source": "/repositories/management",
-      "destination": "/build/repositories/management",
+      "destination": "/manuals/marketplace/repositories/management",
       "permanent": true
     },
     {
       "source": "/repositories/publish-packages",
-      "destination": "/build/repositories/publish-packages",
+      "destination": "/manuals/marketplace/repositories/publish-packages",
       "permanent": true
     },
     {
       "source": "/repositories/store-configurations",
-      "destination": "/build/repositories/store-configurations",
+      "destination": "/manuals/marketplace/repositories/store-configurations",
       "permanent": true
     },
     {
       "source": "/self-hosted-spaces/dr",
-      "destination": "/deploy/self-hosted-spaces/dr",
+      "destination": "/manuals/spaces/guides/self-hosted/dr",
       "permanent": true
     },
     {
       "source": "/self-hosted-spaces/query-api",
-      "destination": "/deploy/query-api",
+      "destination": "/manuals/spaces/guides/self-hosted/query-api",
       "permanent": true
     },
     {
       "source": "/self-hosted-spaces/secrets-management",
-      "destination": "/operate/secrets-management",
+      "destination": "/manuals/spaces/features/secrets-management",
       "permanent": true
     },
     {
@@ -712,32 +1327,32 @@
     },
     {
       "source": "/spaces/backup-and-restore",
-      "destination": "/deploy/backup-and-restore",
+      "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
       "permanent": true
     },
     {
       "source": "/spaces/billing",
-      "destination": "/deploy/self-hosted-spaces/billing",
+      "destination": "/manuals/platform/subscription-billing/billing",
       "permanent": true
     },
     {
       "source": "/spaces/control-plane-connector",
-      "destination": "/connect/gitops",
+      "destination": "/manuals/spaces/guides/gitops",
       "permanent": true
     },
     {
       "source": "/spaces/deployment",
-      "destination": "/deploy/self-hosted-spaces/deployment",
+      "destination": "/manuals/spaces/guides/self-hosted/deployment-reqs",
       "permanent": true
     },
     {
       "source": "/spaces/dr",
-      "destination": "/deploy/self-hosted-spaces/dr",
+      "destination": "/manuals/spaces/guides/self-hosted/dr",
       "permanent": true
     },
     {
       "source": "/spaces/helm-reference",
-      "destination": "/deploy/self-hosted-spaces/helm-reference",
+      "destination": "/reference/helm-reference",
       "permanent": true
     },
     {
@@ -747,7 +1362,7 @@
     },
     {
       "source": "/spaces/observability",
-      "destination": "/operate/observability",
+      "destination": "/manuals/spaces/features/observability",
       "permanent": true
     },
     {
@@ -757,22 +1372,22 @@
     },
     {
       "source": "/spaces/scaling-resources",
-      "destination": "/deploy/self-hosted-spaces/scaling-resources",
+      "destination": "/manuals/spaces/guides/self-hosted/scaling-resources",
       "permanent": true
     },
     {
       "source": "/spaces/secrets-management",
-      "destination": "/operate/secrets-management",
+      "destination": "/manuals/spaces/features/secrets-management",
       "permanent": true
     },
     {
       "source": "/spaces/spaces-management",
-      "destination": "/deploy/self-hosted-spaces/spaces-management",
+      "destination": "/manuals/spaces/guides/self-hosted/spaces-management",
       "permanent": true
     },
     {
       "source": "/spaces/troubleshooting",
-      "destination": "/deploy/self-hosted-spaces/troubleshooting",
+      "destination": "/manuals/spaces/guides/self-hosted/troubleshooting",
       "permanent": true
     },
     {
@@ -782,22 +1397,22 @@
     },
     {
       "source": "/upbound-marketplace/providers",
-      "destination": "/providers",
+      "destination": "/manuals/packages/providers",
       "permanent": true
     },
     {
       "source": "/users",
-      "destination": "/operate/accounts/identity-management/users",
+      "destination": "/manuals/platform/identity-management/users",
       "permanent": true
     },
     {
       "source": "/users/change",
-      "destination": "/operate/accounts/identity-management/users",
+      "destination": "/manuals/platform/identity-management/users",
       "permanent": true
     },
     {
       "source": "/users/register",
-      "destination": "/operate/accounts/identity-management/users",
+      "destination": "/manuals/platform/identity-management/users",
       "permanent": true
     }
   ]

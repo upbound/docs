@@ -348,10 +348,10 @@ See the [Query API documentation][query-api-documentation] for more information 
 <!--- TODO(tr0njavolta): links --->
 
 [postgresql-setup]: /#self-hosted-postgresql-configuration
-[up-cli-installed]: /operate/cli#install-the-up-command-line
-[query-api-documentation]: /connect/query-api
+[up-cli-installed]: /manuals/cli/overview
+[query-api-documentation]: /manuals/spaces/features/query-api
 
-[helm-chart-reference]: /deploy/self-hosted-spaces/helm-reference
+[helm-chart-reference]: /reference/helm-reference
 [kubectl-conventions]: https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
 [supported-ways]: https://cloudnative-pg.io/documentation/current/installation_upgrade/
 [supported-ways-1]: https://cloudnative-pg.io/documentation/current/installation_upgrade/

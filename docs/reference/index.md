@@ -29,11 +29,11 @@ For more information on how Upbound builds on Crossplane, review the [learning o
 
 
 [command-reference]: /img/command-reference
-[configuration]: /operate/cli/configuration
+[configuration]: /manuals/cli/configuration
 [release-notes]: /img/rel-notes
 
 
-[learning-overview]: /learn/
+[learning-overview]: /
 [licenses]: /references/licenses
 [lifecycle]: /references/lifecycle
 [spaces-release-notes]: rel-notes/spaces-relnotes/

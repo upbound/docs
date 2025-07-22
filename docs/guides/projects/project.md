@@ -122,7 +122,7 @@ with your cloud providers and services. Proceed to the [add dependencies to your
 project][add-dependencies-to-your-project] guide.
 
 
-[up-project-init]: /apis-cli/cli-reference/#up-project-init
-[cli-reference-documentation]: /apis-cli/cli-reference
-[add-dependencies-to-your-project]: /build/control-plane-projects/adding-dependencies
+[up-project-init]: /reference/cli-reference
+[cli-reference-documentation]: /reference/cli-reference
+[add-dependencies-to-your-project]: /guides/projects/adding-dependencies
 [github-com-upbound-project-template]: https://github.com/upbound/project-template

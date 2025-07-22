@@ -526,12 +526,12 @@ Composite Resource Definition and a Composition from your original Terraform
 configuration.
 
 
-[migrating-from-terraform-to-crossplane-guide]: /providers/provider-terraform/migrate-provider-tf
-[authentication-keys]: /providers/provider-aws/authentication#aws-authentication-keys
-[web-identity]: /providers/provider-aws/authentication#webidentity
-[service-accounts]: /providers/provider-aws/authentication#iam-roles-for-service-accounts
-[provider-azure]: /providers/provider-azure/authentication
-[provider-gcp]: /providers/provider-gcp/authentication
+[migrating-from-terraform-to-crossplane-guide]: /manuals/packages/providers/provider-terraform/migrate-provider-tf
+[authentication-keys]: /manuals/packages/providers/provider-aws/authentication
+[web-identity]: /manuals/packages/providers/provider-aws/authentication
+[service-accounts]: /manuals/packages/providers/provider-aws/authentication
+[provider-azure]: /manuals/packages/providers/provider-azure/authentication
+[provider-gcp]: /manuals/packages/providers/provider-gcp/authentication
 
 
 [upbound-marketplace]: https://marketplace.upbound.io

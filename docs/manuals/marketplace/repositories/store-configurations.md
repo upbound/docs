@@ -96,6 +96,6 @@ spec:
 ```
 
 
-[up-cli]: /operate/cli
+[up-cli]: /manuals/cli/overview
 
 [semver]: https://semver.org/

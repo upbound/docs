@@ -34,9 +34,9 @@ The latest versions of the Upbound Official Providers are available for use by a
 
 <!--- TODO(tr0njavolta): links --->
 <!-- [resource-schemas]: /build/core-concepts -->
-[signed-by-upbound]: /providers/signature-verification
-[pull-an-official-provider]: /providers/policies#access
-[policies-page]: /providers/policies#access
+[signed-by-upbound]: /manuals/packages/providers/signature-verification
+[pull-an-official-provider]: /manuals/packages/policies
+[policies-page]: /manuals/packages/policies
 
 
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official

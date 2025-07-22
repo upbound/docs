@@ -163,8 +163,8 @@ Upbound supports all annotations specified in the <a href="https://github.com/cr
 
 <!--- TODO(tr0njavolta): links --->
 <!--- TODO(tr0njavolta): details --->
-[up-cli]: /operate/cli
-[marketplace]: /upbound-marketplace
+[up-cli]: /manuals/cli/overview
+[marketplace]: /manuals/marketplace/overview
 [crossplane-xpkg-build-command-reference]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build
 [crossplane-slack]: https://slack.crossplane.io/
 [docker]: https://docs.docker.com/get-docker/

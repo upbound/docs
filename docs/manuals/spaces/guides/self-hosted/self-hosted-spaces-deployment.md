@@ -290,7 +290,7 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 :::
 
 
-[up-ctx-command-reference]: /apis-cli/cli-reference
+[up-ctx-command-reference]: /reference/cli-reference
 
 [contact-upbound]: https://www.upbound.io/contact
 
@@ -547,7 +547,7 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 :::
 
 
-[up-ctx-command-reference]: /apis-cli/cli-reference
+[up-ctx-command-reference]: /reference/cli-reference
 [contact-upbound]: https://www.upbound.io/contact
 
 </CodeBlock>
@@ -797,7 +797,7 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 :::
 
 
-[up-ctx-command-reference]: /apis-cli/cli-reference
+[up-ctx-command-reference]: /reference/cli-reference
 [contact-upbound]: https://www.upbound.io/contact
 
 </CodeBlock>
