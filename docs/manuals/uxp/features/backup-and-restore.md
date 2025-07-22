@@ -8,7 +8,7 @@ tier: "standard"
 <Standard />
 
 Upbound Crossplane's Backup & Restore is a built-in backup and restore feature
-that lets you lets you configure automatic schedules for taking snapshots of
+that lets you configure automatic schedules for taking snapshots of
 your control planes. You can restore data from these backups by making new
 control planes. This guide explains how to use Backup & Restore for disaster
 recovery or upgrade scenarios. 
@@ -133,5 +133,5 @@ kubectl get composite
 
 ## Next steps
 
-For more information , review the
+For more information, review the
 TODO links and next steps
