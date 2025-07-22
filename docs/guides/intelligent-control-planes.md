@@ -2,10 +2,13 @@
 title: Create an Intelligent Control Plane
 ---
 
+<!-- vale gitlab.Uppercase = NO -->
+<!-- ignore LLM -->
 Upbound Crossplane provides AI-powered pipelines to X your infrastructure in LLM
 enabled Operation functions. This tutorial walks through installing,
 configuring, and exploring your Intelligent Control Planes.
 
+<!-- vale gitlab.Uppercase = YES -->
 ## Prerequisites
 
 Before you begin make sure you have:

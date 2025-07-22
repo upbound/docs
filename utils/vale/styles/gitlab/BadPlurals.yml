@@ -8,7 +8,9 @@ extends: existence
 message: 'Rewrite "%s" to be plural, without parentheses.'
 link: https://docs.gitlab.com/ee/development/documentation/styleguide/word_list.html
 level: warning
-scope: raw
+scope: text 
 ignorecase: true
 raw:
   - '\b\w+\(s\)(?<!http\(s\))'
+exceptions:
+  - 'PORT\(S\)'

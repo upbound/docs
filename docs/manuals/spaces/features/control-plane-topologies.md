@@ -27,8 +27,9 @@ The Control Plane Topology feature provides the following benefits:
 * Decouple your platform architecture into independent offerings to improve your platform's software development lifecycle.
 * Install composite APIs from Configurations as CRDs which are fulfilled and reconciled by other control planes.
 * Route APIs to other control planes by configuring an _Environment_ resource, which define a set of routable dimensions.
-
+<!-- vale gitlab.HeadingContent = NO -->
 ## How it works
+<!-- vale gitlab.HeadingContent = YES -->
 
 Imagine the scenario where you want to let a user reference a subnet when creating a database instance. To your control plane, the `kind: database` and `kind: subnet` are independent resources. To you as the composition author, these resources have an important relationship. It may be that:
 
@@ -542,8 +543,9 @@ There's no limit to the number of control planes you can route to. You can also
 stack routing and form your own topology of control planes, with multiple layers
 of routing.
 :::
-
+<!-- vale gitlab.HeadingContent = NO -->
 ### Limitations
+<!-- vale gitlab.HeadingContent  = YES -->
 
 Routing from one control plane to another is currently scoped to control planes
 that exist in a single Space. You can't route resource requests to control

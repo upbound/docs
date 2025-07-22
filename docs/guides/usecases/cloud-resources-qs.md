@@ -252,7 +252,7 @@ tbd
 What you just did is created your own resource type called UserDefinedBucket and
 created a single function to contain the logic that defines what should happen
 when one of these UserDefinedBuckets get created. Open the function definition
-file at my-new-project/functions/compose-resources/ and add some logic:
+file at `my-new-project/functions/compose-resources/` and add some logic:
 
 <!--- AWS build func --->
 

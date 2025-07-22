@@ -49,8 +49,10 @@ spec:
         namespace: crossplane-system
         name: api-key-anthropic
 ```
-When you create an XNetwork object, your control plane uses the provided API key
+<!-- vale gitlab.Uppercase = NO -->
+When you create an `XNetwork` object, your control plane uses the provided API key
 to call Claude, an LLM offered by Anthropic, to:
+<!-- vale gitlab.Uppercase = YES -->
 
 - analyze the config and status of each composed resource
 - make a determination why each resource isn't ready, if it's not

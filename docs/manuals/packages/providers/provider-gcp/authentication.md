@@ -58,9 +58,7 @@ Configure the _google.subject_ attribute as **assertion.sub**
 Under _Attribute Conditions_ select **Add Condition**.
 
 <!-- vale gitlab.Uppercase = NO -->
-<!-- ignore CEL -->
 To authenticate any control plane in your organization, in the _Conditional CEL_ input box put
-<!-- vale gitlab.Uppercase = YES -->
 <!--- TODO(tr0njavolta): editcode --->
 <!--- TODO(tr0njavolta): links --->
 ```console
@@ -70,6 +68,7 @@ google.subject.contains("mcp:ORGANIZATION_NAME")
 :::warning
 Not providing a CEL condition allows any control plane to access your GCP account if they know the project ID and service account name.
 :::
+<!-- vale gitlab.Uppercase = YES -->
 
 Select **Save**.
 

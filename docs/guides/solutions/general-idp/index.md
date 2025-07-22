@@ -24,7 +24,7 @@ For this guide, you'll need:
 
 ## Components
 
-This repo builds a complete GitOps workflow for an IdP with Upbound. It builds
+This repository builds a complete GitOps workflow for an IdP with Upbound. It builds
 your control planes, deploys ArgoCD and Backstage, and syncs environment
 manifests in the `state` directory.
 

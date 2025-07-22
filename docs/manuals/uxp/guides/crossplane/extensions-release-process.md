@@ -284,7 +284,7 @@ Ensure that the default GitHub Actions OIDC token inherits the
 :::
 
 ## Troubleshooting
-
+<!-- vale Google.FirstPerson = NO -->
 <details>
   <summary>Why is my workflow is failing with a 404 error code?</summary>
   Ensure the target repository exists in the registry. You need to create
@@ -298,6 +298,7 @@ pull and push, and that the `{{ secrets.* }}` variable substitutions match
 what's configured in GitHub.
 </details>
 
+<!-- vale Google.FirstPerson = YES -->
 <!-- Named Links -->
 [xpkg]: https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md
 [functions]: https://github.com/crossplane/function-template-go/blob/main/.github/workflows/ci.yml

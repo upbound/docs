@@ -4,7 +4,7 @@ sidebar_position: 2
 description: Learn what Control Planes are and why you should use them
 ---
 
-
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 Upbound is the platform that helps platform engineers automate and build their
 platforms.
 
@@ -53,4 +53,5 @@ your custom APIs. You define your resources with Custom Resource Definitions
 (CRDs), which Upbound parses, connects with the service, and manages on your
 behalf.
 
+<!-- vale Microsoft.HeadingPunctuation = YES -->
 <!--- TODO(tr0njavolta): describe docs structure --->

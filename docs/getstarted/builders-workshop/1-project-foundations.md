@@ -82,9 +82,10 @@ up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v1.9.0'
 
 </TabItem>
 </Tabs>
-
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 ### What are providers and why do you need them?
 
+<!-- vale Microsoft.HeadingPunctuation = YES -->
 Providers are packages that:
 
 * Connect your control plane to specific cloud platforms (AWS, Azure, GCP)
@@ -230,8 +231,9 @@ Next, you need to create a composition to define your resource.
 ```shell
 up composition generate apis/xstoragebuckets/definition.yaml
 ```
-
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 #### Why create a composition?
+<!-- vale Microsoft.HeadingPunctuation = YES -->
 
 Compositions define how user requests (claims) become actual resources:
 

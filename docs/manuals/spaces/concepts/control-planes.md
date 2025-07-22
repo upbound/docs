@@ -260,7 +260,8 @@ Upbound gives users the ability to configure the collection of telemetry (logs,
 metrics, and traces) in their control planes. Using Upbound's built-in
 [OTEL][otel] support, you can stream this data out to your preferred
 observability solution. Configure this capability at the group-level, explained
-in the [Spaces documentation][spaces-documentation-2]. <!-- vale on -->
+in the [Spaces documentation][spaces-documentation-2].
+<!-- vale on -->
 
 
 [automatic-upgrades]: /operate/auto-upgrade

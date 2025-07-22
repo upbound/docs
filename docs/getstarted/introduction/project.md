@@ -246,6 +246,7 @@ my-app   True     True    app-yaml      56s
 Observe the `Deployment` and `Service` Crossplane created when you created the
 `App`:
 
+
 ```shell
 kubectl get deploy,service -l example.crossplane.io/app=my-app
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
@@ -254,6 +255,7 @@ deployment.apps/my-app-2r2rk   2/2     2            2           11m
 NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
 service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 ```
+
 
 ## Next steps
 

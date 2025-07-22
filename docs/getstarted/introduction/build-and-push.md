@@ -3,7 +3,7 @@ title: Build and push your first Configuration
 sidebar_position: 2
 ---
 
-Now that you've create a new resource type, you’re ready to create an OCI image from the control plane project and share it on the Upbound Marketplace. To do so, you will need to do the following:
+Now that you've create a new resource type, you're ready to create an OCI image from the control plane project and share it on the Upbound Marketplace. To do so, you will need to do the following:
 
 1. Sign in with your Upbound account
 2. Create a repository on Upbound

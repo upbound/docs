@@ -204,8 +204,11 @@ data:
 ```
 
 The use of `"*"` as apiGroups will enable the mechanism for all Crossplane Providers.
-
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+<!-- vale gitlab.Uppercase = NO -->
 #### Increase Kubernetes Client QPS
+<!-- vale gitlab.Uppercase = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 As the number of CRDs grow on a control plane it will increase the amount of queries Argo CD Application Controller
 needs to send to the Kubernetes API. If this is the case you can increase the rate limits of the Argo CD Kubernetes client.

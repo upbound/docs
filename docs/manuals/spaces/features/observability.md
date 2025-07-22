@@ -27,8 +27,9 @@ The observability feature allows you to:
 - collect, process, and expose telemetry data in control planes.
 - deploy a collector per control plane.
 - Pass data to external observability backends, such as Datadog, New Relic, and more.
-
+<!-- vale gitlab.HeadingContent = NO -->
 ## How it works
+<!-- vale gitlab.HeadingContent = YES -->
 
 The pipeline deploys [OpenTelemetry Collectors][opentelemetry-collectors] to collect, process, and expose telemetry data from control planes. Upbound deploys a collector per control plane, defined by a _SharedTelemetryConfig_ set up at the group level. Control plane collectors pass their data to external observability backends defined in the _SharedTelemetryConfig_.
 

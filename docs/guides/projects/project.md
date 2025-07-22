@@ -4,8 +4,9 @@ sidebar_position: 1
 description: The source of your control plane configurations. A control plane project
   contains the `upbound.yaml` file and any dependencies for your project.
 ---
-
+<!-- vale gitlab.HeadingContent = NO -->
 # Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 <!-- vale gitlab.Substitutions = NO -->
 Control plane projects are source-level representations of your control plane. A

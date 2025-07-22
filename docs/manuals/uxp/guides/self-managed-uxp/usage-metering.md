@@ -24,8 +24,15 @@ Whether a resource was provisioned via a Crossplane composition, dynamically cre
 ### Operations
 
 <!-- vale alex.Condescending = NO -->
-_Operations_ represent discrete units of intelligent automation and orchestration executed by the control plane. These are distinct from the continuous reconciliation that underpins _Resources_. An operation may involve one-time or recurring tasks that go beyond simple state enforcement. Examples include analyzing logs for anomalies, rolling out software updates in a phased manner, running LLM-powered decision-making, or optimizing infrastructure based on real-time telemetry.
-<!-- vale alex.Condescending = YES -->
+_Operations_ represent discrete units of intelligent automation and
+orchestration executed by the control plane. These are distinct from the
+continuous reconciliation that underpins _Resources_. An operation may involve
+one-time or recurring tasks that go beyond simple state enforcement. Examples
+include analyzing logs for anomalies, rolling out software updates in a phased
+<!-- vale gitlab.Uppercase = NO -->
+manner, running LLM-powered decision-making, or optimizing infrastructure based
+<!-- vale gitlab.Uppercase = YES -->
+on real-time telemetry. <!-- vale alex.Condescending = YES -->
 
 Operations can be triggered by scheduled intervals, events, or intelligent agents, and often encapsulate complex workflows or side effects that span internal and external systems. Their purpose is to extend the power of the control plane from passive reconciliation to proactive management, including diagnosis, remediation, optimization, and change orchestration.
 

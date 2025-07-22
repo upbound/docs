@@ -94,6 +94,9 @@ UXP
 uxp
 vCluster
 Velero
+VMs
+VM
+VMWare
 VSCode
 Webpack
 xpkg
