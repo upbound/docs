@@ -497,7 +497,7 @@ Being a control plane, Upbound Crossplane has an API server to let you
 communicate with it, whether over a CLI, GitOps, GUI, or direct REST API calls.
 
 
-[up]: up
-[providers]: /uxp/packages/providers
+[up]: /manuals/cli/overview
+[providers]: /manuals/uxp/packages/providers/
 [marketplace]: https://marketplace.upbound.io
-[functions]: /uxp/composition/composite-resource-definitions
+[functions]: /manuals/uxp/concepts/composition/composite-resource-definitions

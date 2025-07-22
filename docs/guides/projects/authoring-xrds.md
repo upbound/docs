@@ -510,4 +510,4 @@ Next, learn how to [build compositions][build-compositions]
 that reference your XRD using various programming languages.
 
 [up-example-generate]: /reference/cli-reference
-[build-compositions]: /guides/projects/authoring-compositions
+[build-compositions]: /guides/projects/authoring-compositions/

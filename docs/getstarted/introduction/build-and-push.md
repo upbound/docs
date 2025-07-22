@@ -72,6 +72,6 @@ Now that you've built a Configuration, it's time to learn how to deploy it into 
 
 Read about [what's next][whatsNext]
 
-[configurations]: configurations
-[repositories]: repositories
-[whatsNext]: whats-next
+[configurations]: /manuals/uxp/concepts/packages/configuration
+[repositories]: /manuals/marketplace/repositories/overview
+[whatsNext]: /getstarted/introduction/whats-next

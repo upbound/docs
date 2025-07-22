@@ -466,13 +466,13 @@ the [testing guide][testing-guide].
 
 [up-composition-generate]: /reference/cli-reference
 [visual-studio-code-extensions-documentation]: /reference/usage/vscode-extensions
-[documentation]: /guides/projects/authoring-compositions/python
+[documentation]: /guides/projects/authoring-compositions/python/
 [kcl-visual-studio-code-extension]: /reference/usage/vscode-extensions
-[documentation-1]: /guides/projects/authoring-compositions/kcl
+[documentation-1]: /guides/projects/authoring-compositions/kcl/
 [visual-studio-code-extensions-documentation-2]: /reference/usage/vscode-extensions
-[documentation-3]: /guides/projects/authoring-compositions/go
+[documentation-3]: /guides/projects/authoring-compositions/go/
 [visual-studio-code-extensions-documentation-4]: /reference/usage/vscode-extensions
-[documentation-5]: /guides/projects/authoring-compositions/go-templating
+[documentation-5]: /guides/projects/authoring-compositions/go-templating/
 [testing-guide]: /guides/projects/testing
 [function-go-templating]: https://github.com/crossplane-contrib/function-go-templating?tab=readme-ov-file#function-go-templating
 

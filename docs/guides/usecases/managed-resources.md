@@ -26,7 +26,7 @@ cloud concepts.
 
 For this quickstart, you need:
 
-- the [Upbound CLI](up) installed.
+- the [Upbound CLI][up] installed.
 - a Docker-compatible container runtime installed on your system and running.
 - an AWS account
 
@@ -199,14 +199,14 @@ external services:
 * [Perform an operation on a resource][operations]
 * [Manage external resources with composition][composition-qs]
 
-[up]: up
+[up]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io
-[functions]: /uxp/composition/composite-resource-definitions
+[functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [aws]: /uxp/quickstart/aws-composition 
 [azure]: /uxp/quickstart/azure-composition 
 [gcp]:  /uxp/quickstart/gcp-composition
-[operations]:  /uxp/quickstart/operation
-[providers]:  /uxp/quickstart/external-resources
+[operations]: /manuals/uxp/concepts/operations/overview
+[providers]:  /manuals/uxp/concepts/packages/providers
 [composition]: link
 <!--- TODO(tr0njavolta): links --->
 

@@ -60,6 +60,6 @@ The special [options][options] variables provides
 context specific information to use in your function.
 
 
-[items]: /build/control-plane-projects/authoring-compositions/kcl/inputs-outputs/#outputs
+[items]: /guides/projects/authoring-compositions/kcl/inputs-outputs#outputs
 [options]: /guides/projects/authoring-compositions/kcl/read-pipeline-state
 [kcl-docs]: https://www.kcl-lang.io/docs/reference/lang/spec/variables

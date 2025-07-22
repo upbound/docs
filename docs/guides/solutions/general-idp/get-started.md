@@ -157,9 +157,8 @@ For a comprehensive guide of the solution and how to extend it to fit your needs
 [taskfile]: https://taskfile.dev/
 [registerAccount]: https://accounts.upbound.io/register
 [awsCreds]: https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html
-[design]: ./design.md
+[design]: /solutions/general-idp/design
 [upCli]: https://docs.upbound.io/operate/cli/ 
-
 [starterGroups]: /img/solutions/starter-groups.png
 [frontendCtp]: /img/solutions/frontend-ctp.png
 [controlplaneView]: /img/solutions/control-plane-view.png

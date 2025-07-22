@@ -13,11 +13,11 @@ There's no limit to the number of custom APIs you can install on a control plane
 
 ## Use APIs built by others
 
-The [Upbound Marketplace](marketplace) has a collection of Upbound-published and user-published Configuration packages that define a variety of APIs, ranging from S3 buckets to app models.
+The [Upbound Marketplace][marketplace] has a collection of Upbound-published and user-published Configuration packages that define a variety of APIs, ranging from S3 buckets to app models.
 
 ## Build your own APIs
 
-You can also build your own APIs by creating a control plane project. Upbound recommends that you create a project in a separate repository, build it into a Configuration package, then add it to your solution instance. Learn about [using control plane project tooling](projectTooling) in the build guides.
+You can also build your own APIs by creating a control plane project. Upbound recommends that you create a project in a separate repository, build it into a Configuration package, then add it to your solution instance. Learn about [using control plane project tooling][projectTooling] in the build guides.
 
 [projectTooling]: /guides/projects/project
 [marketplace]: https://marketplace.upbound.io/configurations

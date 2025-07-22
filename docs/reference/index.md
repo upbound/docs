@@ -10,7 +10,7 @@ For more information on how Upbound builds on Crossplane, review the [learning o
 
 - [Command Reference][command-reference]
 - [Configuration][configuration]
-- [Release Notes][release-notes]
+- [Release Notes][cli-release-notes]
 
 
 
@@ -28,13 +28,11 @@ For more information on how Upbound builds on Crossplane, review the [learning o
 - [Control Plane Connector Release Notes][control-plane-connector-release-notes]
 
 
-[command-reference]: /img/command-reference
-[configuration]: /manuals/cli/configuration
-[release-notes]: /img/rel-notes
-
-
+[command-reference]: /reference/cli-reference
+[configuration]: /manuals/cli/overview
+[cli-release-notes]: /reference/release-notes/up-cli
 [learning-overview]: /
-[licenses]: /references/licenses
-[lifecycle]: /references/lifecycle
-[spaces-release-notes]: rel-notes/spaces-relnotes/
-[control-plane-connector-release-notes]: rel-notes/mcp-connector-relnotes/
+[licenses]: /reference/usage/licenses
+[lifecycle]: /reference/usage/lifecycle
+[spaces-release-notes]: /reference/release-notes/spaces
+[control-plane-connector-release-notes]:/reference/release-notes/mcp-connector

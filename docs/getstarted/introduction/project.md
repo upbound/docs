@@ -28,7 +28,7 @@ YAML or programming in Go, Python, and KCL.
 
 Before beginning, make sure you have:
 
-- The [up](up) CLI installed
+- The [up][up-cli] CLI installed
 - A Docker-compatible container runtime installed and running on your system
 
 ## Create a control plane project
@@ -265,13 +265,13 @@ Now that your control plane is running locally, you're ready to package it as a
 Check out the [Build and push your first Configuration][buildAndPush] tutorial
 to continue.
 
-[up]: up
+[up-cli]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io
-[functions]: /uxp/composition/composite-resource-definitions
+[functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [providers]: https://upbound.io
-[Configuration]: /manuals/upbound-crossplane/packages/configurations
+[Configuration]: /manuals/uxp/concepts/packages/configurations
 [buildAndPush]: build-and-push
-[xrd]: /uxp/composition/composite-resource-definitions
-[composition]: /uxp/composition/overview
-[functions]: /uxp/composition/composite-resource-definitions
+[xrd]: /manuals/uxp/concepts/composition/composite-resource-definitions
+[composition]: /manuals/uxp/concepts/composition/overview
+[functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [webUI]: /img/uxp-webui.png

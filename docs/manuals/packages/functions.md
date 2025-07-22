@@ -32,7 +32,6 @@ The main branch version releases of the Upbound Official Functions are available
 [signed-by-upbound]: /manuals/packages/providers/signature-verification
 [pull-an-official-provider]: /manuals/packages/policies
 [policies-page]: /manuals/packages/policies
-
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/functions?tier=official
 [account-on-upbound]: https://accounts.upbound.io/register

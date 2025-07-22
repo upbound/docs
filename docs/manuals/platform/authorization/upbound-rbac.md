@@ -131,7 +131,7 @@ objectrolebinding.authorization.spaces.upbound.io "default-zcntk" deleted
 
 
 [documentation]: /manuals/platform/authorization/k8s-rbac
-[self-hosted-spaces]: /deploy/self-hosted-spaces
+[self-hosted-spaces]: /manuals/spaces/spaces/guides/self-hosted-spaces/overview
 [up-cli]: /manuals/cli/contexts
 [up-cli-1]: /manuals/cli/contexts
 [up-cli-2]: /manuals/cli/contexts

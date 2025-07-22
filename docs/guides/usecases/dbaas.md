@@ -19,4 +19,4 @@ spec:
   package: xpkg.upbound.io/upbound/configuration-dbaas:v0.5.0
 ```
 
-[getStarted]: /solutions/general-idp/index
+[getStarted]: /solutions/general-idp/

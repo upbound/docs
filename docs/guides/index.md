@@ -28,10 +28,10 @@ autonomous systems, serving both humans and AI.
 * Join the [Upbound Crossplane][slack] community on slack to get help and share ideas
 * Visit the [Upbound Marketplace][marketplace] to find packages for your control planes, built by Upbound, software partners, and the community
 
-[composition]: /uxp/composition/overview
-[quickstart]: /uxp/quickstart/basic
-[operations]: /uxp/quickstart/operation
-[concepts]: /uxp/composition/overview
-[installation]: /uxp/overview
+[composition]: /manuals/uxp/concepts/composition/overview
+[quickstart]: /getstarted/
+[operations]: /manuals/uxp/concepts/operations/overview
+[concepts]: /manuals/uxp/concepts/composition/overview
+[installation]: /manuals/uxp/overview
 [slack]: https://crossplane.slack.com
 [marketplace]: https://marketplace.upbound.io

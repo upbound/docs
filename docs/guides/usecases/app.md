@@ -19,4 +19,4 @@ spec:
   package: xpkg.upbound.io/upbound/configuration-app:v0.12.1
 ```
 
-[getStarted]: /solutions/general-idp/index
+[getStarted]: /solutions/general-idp/

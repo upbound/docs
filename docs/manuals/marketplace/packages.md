@@ -182,19 +182,16 @@ The Marketplace only publishes release versions with valid [semver][semver] tags
 </details>
 
 
-[upbound-account]: /operate/accounts/identity-management/users/#create-an-account
-[login]: /upbound-marketplace/authentication
+[upbound-account]: /manuals/platform/identity-management/users#create-an-account
+[login]: /manuals/marketplace/authentication
 [up-repository-create]: /reference/cli-reference
-[credential-helper]: /operate/cli/configuration/#configuring-a-docker-credential-helper
+[credential-helper]: /manuals/cli/configuration/#configuring-a-docker-credential-helper
 [public-packages]: #publishing-public-packages
-
 [up-alpha-xpkg-append]: /reference/cli-reference
 [up-repo-update]: /reference/cli-reference
-
 [crossplane-providers]: /manuals/packages/providers/
 [control-plane-configurations]: /manuals/packages/configurations
 [composition-functions]: /manuals/packages/functions
-
 [kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [aws-provider-package]: https://github.com/crossplane-contrib/provider-aws/tree/master/package
 [crossplane-xpkg-build-command-reference]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build

@@ -1,7 +1,7 @@
 ---
 title: Manuals
 sidebar_position: 1
-slug: "/manuals/"
+slug: "/manuals"
 description: Learn about the deployment options for Upbound
 ---
 

@@ -87,4 +87,4 @@ contains the generated resource schemas for your XRDs. You can build a project
 and then import that project as a dependency for the resources you define.
 
 
-[necessary-tools]: /build/control-plane-projects/authoring-compositions/kcl/#prerequisites
+[necessary-tools]:/guides/projects/authoring-compositions/kcl/#prerequisites

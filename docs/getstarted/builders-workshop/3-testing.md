@@ -426,7 +426,7 @@ Now that you have tested your composition:
 In the next guide, you'll deploy your tested composition to a control plane and see your infrastructure API in action.
 
 
-[project-foundations]: /builders-workshop/project-foundations
+[project-foundations]: /getstarted/builders-workshop/1-project-foundations
 [up-account]: https://www.upbound.io/register/a
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
