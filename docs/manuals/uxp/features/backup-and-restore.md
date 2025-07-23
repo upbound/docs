@@ -76,7 +76,7 @@ The **required** properties of this object are:
 * `spec.objectStorage` to configure the bucket name and object store endpoint
 * `spec.objectStorage.credentials` to pass cloud provider secrets
 
-## Create a `ClusterRole`
+### Create a `ClusterRole`
 
 Your cluster needs permissions to the `upbound-controller-manager` component to
 backup. Create a new `ClusterRole` for your backup operations:
