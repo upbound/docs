@@ -97,6 +97,9 @@ rules:
   - "*"
 ```
 
+:::note
+Your `apiGroups` field expects a list of all `apiVersions` in your Composition.
+:::
 
 ### Create a manual `Backup`
 
