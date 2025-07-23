@@ -9,8 +9,8 @@ plan: standard
 
 Upbound Crossplane offers a built-in backup and restore feature
 that lets you configure automatic schedules for taking snapshots of
-your control planes. You can restore data from these backups by making new
-control planes. This guide explains how to use Backup and Restore for disaster
+your control planes. You can restore data from these backups in-place or in a
+new control plane. This guide explains how to use Backup and Restore for disaster
 recovery or upgrade scenarios. 
 
 ## Prerequisites
@@ -90,8 +90,7 @@ metadata:
     rbac.crossplane.io/aggregate-to-crossplane: "true"
 rules:
 - apiGroups:
-  - pt.fn.crossplane.io
-  - example.crossplane.io
+  - <your_apiGroups>
   resources:
   - "*"
   verbs:
