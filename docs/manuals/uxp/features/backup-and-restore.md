@@ -251,9 +251,22 @@ spec:
 | Production | Longer TTLs | 7 to 30 days |
 <!-- vale Upbound.Spelling = YES -->
 
-### Resource inclusion
+### Resource exclusion 
 
-<!--- TODO(tr0njavolta): question about inclusion/exclustion --->
+You can customize resources in the backup scope with `spec.excludedResources`. For
+example:
+
+```yaml
+apiVersion: admin.upbound.io/v1alpha1
+kind: Backup
+metadata:
+  name: <your_backup_name>
+spec:
+  excludedResources:
+  - "XCluster"
+  - "XDatabase"
+  - "XRolePolicyAttachment"
+```
 
 ### Deletion policy
 
