@@ -48,5 +48,4 @@ tmp/
 # Build outputs
 dist/
 out/
-public/
-resources/
+bin/

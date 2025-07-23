@@ -21,6 +21,18 @@ Any important warnings or necessary information
 
 -->
 
+## v0.9.1
+
+### Release Date: 2025-05-28
+
+#### What's Changed
+
+- Fixed performance issues causing timeouts and goroutine leaks.
+- Resolved APIService label flapping and unnecessary discovery requests.
+- Improved error handling and reduced log noise.
+- Enhanced metrics and debugging capabilities.
+
+
 ## v0.9.0
 
 ### Release Date: 2025-04-28
