@@ -696,6 +696,11 @@
       "permanent": true
     },
     {
+      "source": "/concepts/control-plane-api-connector",
+      "destination": "/operate/api-connector",
+      "permanent": true
+    },
+    {
       "source": "/self-hosted-spaces/query-api",
       "destination": "/deploy/query-api",
       "permanent": true
