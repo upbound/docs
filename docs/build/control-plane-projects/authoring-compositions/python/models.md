@@ -115,7 +115,7 @@ from .model.com.example.platform.xmytype import v1alpha1
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     desired_xr = v1alpha1.XMyType(**req.desired.composite.resource)
     desired_xr.status.replicas = 3
-    resource.update(rsp.desired.composite.resource, desired_xr)
+    resource.update(rsp.desired.composite, desired_xr)
 ```
 
 :::tip
@@ -128,8 +128,8 @@ from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    resource.update(rsp.desired.composite.resource, {
-        "status: {
+    resource.update(rsp.desired.composite, {
+        "status": {
             "replicas": 3,
         },
     })
