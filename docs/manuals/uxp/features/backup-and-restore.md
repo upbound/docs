@@ -105,7 +105,7 @@ To capture the control plane state, you need to create a `Backup` and apply it
 to your cluster to kick off the actual backup task:
 
 ```yaml
-apiVersion: admin.upbound.io/v1beta1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: Backup
 metadata:
   name: <your_backup_name>
@@ -136,7 +136,7 @@ You can also create a `BackupSchedule` to automatically trigger backups based on
 `BackupConfig`.
 
 ```yaml
-apiVersion: admin.upbound.io/v1beta1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: BackupSchedule
 metadata:
   name: <your_backup_name>
@@ -167,7 +167,7 @@ UXP stores completed backups in the following format:
 ```shell-noCopy
 s3://<bucket>/<prefix>/<backupName or scheduleName>/<timestampedName>/
 ├── resources.tar.gz – compressed archive of Crossplane resource manifests
-└── backup.yaml – serialized Backup CR manifest for traceability
+└── uxp-backup.yaml – serialized Backup CR manifest for traceability
 ```
 
 ## Restore
@@ -194,7 +194,7 @@ step:
 
 ```yaml
 
-apiVersion: admin.upbound.io/v1beta1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: Restore
 metadata:
   name: my-restore
@@ -209,7 +209,7 @@ Verify the restore:
 ```shell
 kubectl get restore
 NAME         PHASE       RETRIES   AGE
-my-restore   Completed   12        19s
+my-restore   Completed   2        19s
 ```
 
 To verify your resources:
@@ -230,7 +230,7 @@ You can set your backup Time-To-Live (TTL) to automate cleanup. In both `Backup`
 and `BackupSchedule` objects, you can add `spec.ttl`. For example:
 
 ```yaml
-apiVersion: admin.upbound.io/v1beta1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: Backup
 metadata:
   name: <your_backup_name>
@@ -257,7 +257,7 @@ You can customize resources in the backup scope with `spec.excludedResources`. F
 example:
 
 ```yaml
-apiVersion: admin.upbound.io/v1alpha1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: Backup
 metadata:
   name: <your_backup_name>
@@ -275,7 +275,7 @@ You can automate how your backups behave when you delete resources with the
 example:
 
 ```yaml
-apiVersion: admin.upbound.io/v1beta1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: Backup
 metadata:
   name: <your_backup_name>
