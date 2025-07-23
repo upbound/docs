@@ -54,7 +54,7 @@ To backup your control plane to your cloud provider object store, you need to
 create a `BackupConfig` and apply it to your cluster:
 
 ```yaml
-apiVersion: admin.upbound.io/v1beta1
+apiVersion: admin.uxp.upbound.io/v1beta1
 kind: BackupConfig
 metadata:
   name: default
