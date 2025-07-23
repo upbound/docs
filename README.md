@@ -1,7 +1,6 @@
-# Upbound Documentation - Docusaurus
+# Upbound Documentation
 
-This repo contains the Upbound documentation built with Docusaurus. It is a
-migration and work in progress.
+This repo contains the Upbound documentation built with Docusaurus. 
 
 * [Local Development](#local-development)
 * [Style Guide](#style-guide)
@@ -11,19 +10,79 @@ migration and work in progress.
 
 ## Local development
 
-To contribute to this effort, clone and build the project:
+To contribute to this effort, clone this repo and use the `Makefile` to build
+your local docs environment. The `Makefile` handles both the
+documentation build process and Vale-based prose linting.
 
-```shell
-git clone https://github.com/upbound/docs.git
-cd docs
-npm install
+```bash
+# First time setup
+make dev
+
+# Subsequent development sessions
+make start
+
+# Check your writing
+make lint
+
+# Build to ensure everything works
+make build
+
+# Lint a single file
+make vale-file FILE=docs/concepts/providers.md
+
+# Get a summary of all issues
+make lint-summary
+
+# Clean everything and rebuild
+make clean
+make build
+
+# Check your vale configuration
+
+make check-vale-config
 ```
 
-Start the development server
+### Available commands
 
-```
-$ npm start 
-```
+**Docs Build Commands**
+
+| Command | Description |
+|---------|-------------|
+| `make install` | Install npm dependencies |
+| `make build` | Build the documentation site (includes CRD processing) |
+| `make start` | Start local development server with hot reload |
+| `make serve` | Serve the built documentation |
+| `make process-crds` | Process Custom Resource Definitions for documentation |
+| `make dev` | Install dependencies and start development server |
+| `make ci-build` | Full build process for CI/CD |
+
+**Vale Linter Commands** 
+
+Vale is a prose linter that helps maintain consistent writing style and catches
+common errors.
+
+| Command | Description |
+|---------|-------------|
+| `make install-vale` | Download and install Vale binary locally |
+| `make vale` | Run Vale linting on all markdown files |
+| `make vale-docs` | Run Vale linting on docs directory only |
+| `make vale-file FILE=path/to/file.md` | Lint a specific file |
+| `make vale-summary` | Run Vale with summary output |
+| `make vale-json` | Run Vale with JSON output for CI integration |
+| `make lint` | Alias for `make vale` |
+| `make lint-summary` | Alias for `make vale-summary` |
+| `make lint-file` | Alias for `make vale-file` |
+| `make ci-lint` | Run linting optimized for CI/CD pipelines |
+
+**Utility Commands**
+
+| Command | Description |
+|---------|-------------|
+| `make clean` | Remove build artifacts and installed binaries |
+| `make check-vale-config` | Verify Vale configuration and styles |
+| `make version` | Show versions of all tools |
+| `make help` | Display all available commands |
+
 
 ## Style guide
 
