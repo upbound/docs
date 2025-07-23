@@ -93,18 +93,6 @@ vale-json: install-vale ## Run Vale linting with JSON output
 	@echo "Running Vale linting with JSON output..."
 	@cd $(DOCS_DIR) && ../$(VALE_EXEC) --config=../$(VALE_CONFIG) --glob='**/*.md' --output=JSON .
 
-vale-operate: install-vale ## Run Vale linting on operate directory only
-	@echo "Running Vale linting on operate directory..."
-	@cd $(DOCS_DIR) && ../$(VALE_EXEC) --config=../$(VALE_CONFIG) --glob='**/*.md' operate/
-
-vale-connect: install-vale ## Run Vale linting on connect directory only
-	@echo "Running Vale linting on connect directory..."
-	@cd $(DOCS_DIR) && ../$(VALE_EXEC) --config=../$(VALE_CONFIG) --glob='**/*.md' connect/
-
-vale-api-connector: install-vale ## Run Vale linting on API connector documentation
-	@echo "Running Vale linting on API connector documentation..."
-	@$(VALE_EXEC) --config=$(VALE_CONFIG) $(DOCS_DIR)/operate/api-connector.md
-
 # Utility commands
 clean: ## Clean build artifacts and installed binaries
 	@echo "Cleaning build artifacts..."
