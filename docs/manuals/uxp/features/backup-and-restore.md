@@ -1,5 +1,5 @@
 ---
-title: Backup
+title: Backup and Restore
 description: "Learn how to use the built-in backup and restore controller"
 sidebar_position: 15
 tier: "standard"
@@ -7,10 +7,10 @@ tier: "standard"
 
 <Standard />
 
-Upbound Crossplane's Backup & Restore is a built-in backup and restore feature
+Upbound Crossplane offers a built-in backup and restore feature
 that lets you configure automatic schedules for taking snapshots of
 your control planes. You can restore data from these backups by making new
-control planes. This guide explains how to use Backup & Restore for disaster
+control planes. This guide explains how to use Backup and Restore for disaster
 recovery or upgrade scenarios. 
 
 ## Prerequisites
@@ -178,13 +178,13 @@ A control plane restore operation requires:
 
 ### Restoration modes
 
-There are two use cases for restoring your control plane from a backup:
+The two modes for restoring your control plane from a backup are:
 
 1. **In-place**: Restores your resources into the same control plane cluster.
    This mode is suitable for disaster recovery or rollback scenarios. All
    existing resources in the control plane are overwritten by a restore
    operation.
-2. **Cross-control plane**: Restores your resouces into a different control
+2. **Cross-control plane**: Restores your resources into a different control
    plane cluster. Requires matching versions of UXP.
 
 ### Create a `Restore` object
@@ -222,7 +222,9 @@ my-app     True     True    app-yaml      94s
 
 ## Advanced options
 
+<!-- vale Google.Headings = NO -->
 ### Set Time-To-Live
+<!-- vale Google.Headings = YES -->
 
 You can set your backup Time-To-Live (TTL) to automate cleanup. In both `Backup`
 and `BackupSchedule` objects, you can add `spec.ttl`. For example:
@@ -241,10 +243,13 @@ spec:
 
 **TTL Best Practices**
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- ignore ttl -->
 | Environment | Recommended TTL | Example Values |
 |-------------|----------------|----------------|
 | Development/Test | Short TTLs | 24 to 72 hours |
 | Production | Longer TTLs | 7 to 30 days |
+<!-- vale Upbound.Spelling = YES -->
 
 ### Resource inclusion
 
@@ -252,7 +257,7 @@ spec:
 
 ### Deletion policy
 
-You can automate how your backups behave when resources are deleted with the
+You can automate how your backups behave when you delete resources with the
 `deletionPolicy` field in your `Backup` or `BackupSchedule` objects. For
 example:
 
@@ -268,11 +273,12 @@ spec:
 ```
 
 **Deletion Policy Best Practices**
-
+<!-- vale write-good.Passive = NO -->
 | Deletion Policy | Environment | Use Case | Behavior |
 |-----------------|-------------|----------|----------|
-| `Delete` | Development/Test | Auto-cleanup | Backups are deleted when the resource is deleted |
-| `Orphan` | Production | Long-term archival | Backups are retained even if the resource is deleted |
+| `Delete` | Development/Test | Auto cleanup | Backups deleted when the resource is deleted |
+| `Orphan` | Production | Long-term archival | Backups retained even if the resource is deleted |
+<!-- vale write-good.Passive = YES -->
 
 
 
