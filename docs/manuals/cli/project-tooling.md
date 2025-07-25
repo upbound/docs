@@ -21,19 +21,3 @@ To quickly launch a local cluster, start a new project with the `--local` flag:
 ```
 up project run --local
 ```
-
-```
-up project test
-```
-
-## Generate a schema
-
-## Function revisions
-- version your functions
-- enable rollbacks
-- blue/green deployments
-- single revisions are active per functions
-- scale to zero
-## Autoscaling
-
-## Query API
