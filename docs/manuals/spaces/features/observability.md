@@ -5,19 +5,6 @@ description: A guide for how to use the integrated observability pipeline featur
   in a Space.
 ---
 
-:::important
-This feature is in preview and by default in Cloud Spaces. To enable
-it in a self-hosted Space, set `features.alpha.observability.enabled=true` when
-installing the Space:
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  ...
-  --set "features.alpha.observability.enabled=true" \
-```
-
-:::
-
 Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Control Plane. Upbound provides an integrated observability pipeline built on the [OpenTelemetry][opentelemetry] project.
 
 ## Benefits
@@ -32,13 +19,6 @@ The observability feature allows you to:
 <!-- vale gitlab.HeadingContent = YES -->
 
 The pipeline deploys [OpenTelemetry Collectors][opentelemetry-collectors] to collect, process, and expose telemetry data from control planes. Upbound deploys a collector per control plane, defined by a _SharedTelemetryConfig_ set up at the group level. Control plane collectors pass their data to external observability backends defined in the _SharedTelemetryConfig_.
-
-:::important
-From Spaces v1.13 and beyond.
-The data collected by SharedTelemetry contains just telemetry from user-facing control plane workloads, such as Crossplane, providers and functions.
-
-Self-hosted Spaces users can add control plane system workloads such as the `api-server`, `etcd` by setting the `observability.collectors.includeSystemTelemetry` Helm flag to true.
-:::
 
 <!-- vale Google.Headings = NO -->
 
@@ -159,60 +139,8 @@ spec:
     - controlplane-prod
 ```
 
-### Sensitive data
-
-:::important
-This feature is available from Spaces v1.10
-:::
-
-To avoid exposing sensitive data in the _SharedTelemetryConfig_ resource, use
-Kubernetes secrets to store the sensitive data and reference the secret in the
-_SharedTelemetryConfig_ resource.
-
-Create the secret in the same namespace/group as the _SharedTelemetryConfig_
-resource. The example below uses `kubectl create secret` to create a new secret:
-
-```bash
-kubectl create secret generic sensitive -n <STC_NAMESPACE>  \
-    --from-literal=apiKey='YOUR_API_KEY'
-```
-
-Next, reference the secret in the _SharedTelemetryConfig_ resource:
-
-```yaml
-apiVersion: observability.spaces.upbound.io/v1alpha1
-kind: SharedTelemetryConfig
-metadata:
-  name: newrelic
-spec:
-  configPatchSecretRefs:
-    - name: sensitive
-      key: apiKey
-      path: exporters.otlphttp.headers.api-key
-  controlPlaneSelector:
-    labelSelectors:
-      - matchLabels:
-          org: foo
-  exporters:
-    otlphttp:
-      endpoint: https://otlp.nr-data.net
-      headers:
-        api-key: dummy # This value is replaced by the secret value, can be omitted
-  exportPipeline:
-    metrics: [otlphttp]
-    traces: [otlphttp]
-    logs: [otlphttp]
-```
-
-The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
-`key`, and `path` values to inject the secret value in the
-_SharedTelemetryConfig_ resource.
 
 ### Telemetry processing
-
-:::important
-This feature is available from Spaces v1.11.
-:::
 
 The _SharedTelemetryConfig_ resource allows you to configure a processing 
 pipeline for the telemetry data collected by the OpenTelemetry Collector. 

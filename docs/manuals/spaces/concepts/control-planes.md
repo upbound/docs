@@ -5,12 +5,12 @@ description: An overview of control planes in Upbound
 ---
 
 
-Control planes in Upbound are fully isolated Crossplane control plane instances
+Control planes in Upbound are fully isolated [Upbound Crossplane][uxp] instances
 that Upbound manages for you. This means:
 
 - the underlying lifecycle of infrastructure (compute, memory, and storage) required to power your instance.
 - scaling of the infrastructure.
-- the maintenance of the core Crossplane components that make up a control plane.
+- the maintenance of the core Upbound Crossplane components that make up a control plane.
 
 This lets users focus on building their APIs and operating their control planes,
 while Upbound handles the rest. Each control plane has its own dedicated API
@@ -264,10 +264,11 @@ in the [Spaces documentation][spaces-documentation-2].
 <!-- vale on -->
 
 
+[uxp]: /manuals/uxp/overview
 [automatic-upgrades]: /manuals/spaces/guides/auto-upgrade
 [release-notes]: https://github.com/upbound/universal-crossplane/releases
 [control-plane-group]: /manuals/spaces/concepts/groups
-[space]: /deploy
+[space]: /manuals/spaces/overview
 [up-cli]: /reference/cli-reference
 [cli-reference]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference

@@ -5,12 +5,6 @@ description: Configure and manage backups in your Upbound Space.
 tier: "standard"
 ---
 
-:::warning
-As of Spaces `v.12.0`, this feature is enabled by default.
-To disable in a self-hosted Space, pass the `features.alpha.sharedBackup.enabled=false` as a Helm chart value.
-`--set "features.alpha.sharedBackup.enabled=false"`
-:::
-
 Upbound's _Shared Backups_ is a built-in backup and restore feature. Shared Backups lets you configure automatic schedules for taking snapshots of your control planes. You can restore data from these backups by making new control planes. This guide explains how to use Shared Backups for disaster recovery or upgrade scenarios.
 
 ## Benefits

@@ -13,13 +13,7 @@ GitOps is an approach for managing a system by declaratively describing desired 
 
 [Argo CD][argo-cd] is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
 
-How you integrate Argo with Upbound depends on which Space type you're running your control plane in. Follow the instructions according to your Space type.
-
-<!-- vale Google.Headings = NO -->
-### Cloud and Connected Spaces
-<!-- vale Google.Headings = YES -->
-
-#### Generate a kubeconfig for your control plane
+### Generate a kubeconfig for your control plane
 
 Use the up CLI to [generate a kubeconfig][generate-a-kubeconfig] for your control plane.
 
@@ -27,13 +21,13 @@ Use the up CLI to [generate a kubeconfig][generate-a-kubeconfig] for your contro
 up ctx <org-name>/<space-name>/<group-name>/<control plane> -f - > context.yaml
 ```
 
-#### Create an API token
+### Create an API token
 
 <!-- vale Google.FirstPerson = NO -->
 You need a personal access token (PAT). You create PATs on a per-user basis in the Upbound Console. Go to [My Account - API tokens][my-account-api-tokens] and select Create New Token. Give the token a name and save the secret value to somewhere safe.
 <!-- vale Google.FirstPerson = YES -->
 
-#### Add the up CLI init container to Argo
+### Add the up CLI init container to Argo
 
 Create a new file called `up-plugin-values.yaml` and paste the following YAML:
 
@@ -89,7 +83,7 @@ server:
           mountPath: /plugin
 ```
 
-#### Install or upgrade Argo using the values file
+### Install or upgrade Argo using the values file
 
 Install or upgrade Argo via Helm, including the values from the `up-plugin-values.yaml` file:
 
@@ -98,7 +92,7 @@ helm upgrade --install -n argocd -f up-plugin-values.yaml --reuse-values argocd 
 ```
 
 <!-- vale Google.Headings = NO -->
-#### Configure Argo CD
+### Configure Argo CD
 <!-- vale Google.Headings = YES -->
 
 To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace.
@@ -126,7 +120,7 @@ The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _a
 :::
 
 <!-- vale Google.Headings = NO -->
-#### Create a cluster context definition
+### Create a cluster context definition
 <!-- vale Google.Headings = YES -->
 
 Replace the variables and run the following script to configure a new Argo cluster context definition.
@@ -161,92 +155,6 @@ stringData:
         "caData": "<base64 encoded certificate>"
       }
     }
-```
-
-<!-- vale Google.Headings = NO -->
-### Disconnected Spaces
-<!-- vale Google.Headings = YES -->
-
-#### Configure connection secrets for control planes
-
-You can configure control planes to write their connection details to a secret. Do this by setting the [`spec.writeConnectionSecretToRef`][spec-writeconnectionsecrettoref] field in a control plane manifest. For example:
-
-```yaml
-apiVersion: spaces.upbound.io/v1beta1
-kind: ControlPlane
-metadata:
-  name: ctp1
-  namespace: default
-spec:
-  writeConnectionSecretToRef:
-    name: kubeconfig-ctp1
-    namespace: default
-```
-
-<!-- vale Google.Headings = NO -->
-#### Configure Argo CD
-<!-- vale Google.Headings = YES -->
-
-To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace.
-Add `application.resourceTrackingMethod: annotation` to the data section as below.
-
-Next, configure the [auto respect RBAC for the Argo CD controller][auto-respect-rbac-for-the-argo-cd-controller-1].
-By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a control plane.
-You must configure Argo CD to respect the cluster's RBAC rules so that Argo CD can sync.
-Add `resource.respectRBAC: normal` to the data section as below.
-
-```bash
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-data:
-  ...
-  application.resourceTrackingMethod: annotation
-  resource.respectRBAC: normal
-```
-
-:::tip
-The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only control planes, you should consider changing the `clusters` string match for the configuration to apply only to control planes. For example, if every control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
-:::
-
-<!-- vale Google.Headings = NO -->
-#### Create a cluster context definition
-<!-- vale Google.Headings = YES -->
-
-Once the control plane is ready, extract the following values from the secret containing the kubeconfig:
-
-```bash
-kubeconfig_content=$(kubectl get secrets kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d)
-server=$(echo "$kubeconfig_content" | grep 'server:' | awk '{print $2}')
-bearer_token=$(echo "$kubeconfig_content" | grep 'token:' | awk '{print $2}')
-ca_data=$(echo "$kubeconfig_content" | grep 'certificate-authority-data:' | awk '{print $2}')
-```
-
-Generate a new secret in the cluster where you installed Argo, using the prior values extracted:
-
-```yaml
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ctp-secret
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: cluster
-type: Opaque
-stringData:
-  name: ctp
-  server: $server
-  config: |
-    {
-      "bearerToken": "$bearer_token",
-      "tlsClientConfig": {
-        "insecure": false,
-        "caData": "$ca_data"
-      }
-    }
-EOF
 ```
 
 <!-- vale Google.Headings = NO -->

@@ -3,7 +3,7 @@ title: Configure OIDC
 sidebar_position: 20
 description: Configure OIDC in your Space
 ---
-:::important
+:::importantx
 This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 :::
 

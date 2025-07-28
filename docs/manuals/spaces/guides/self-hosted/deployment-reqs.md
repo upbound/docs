@@ -1,6 +1,6 @@
 ---
-title: Requirements
-sidebar_position: 1
+title: Deployment Requirements
+sidebar_position: 2
 description: A guide for deploying an Upbound Space in production
 ---
 

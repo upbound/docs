@@ -1,5 +1,5 @@
 ---
-title: Self-hosted Spaces
+title: Deployment Workflow
 sidebar_position: 3
 description: A  quickstart guide for Upbound Spaces
 tier: "business"
