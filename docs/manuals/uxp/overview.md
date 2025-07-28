@@ -10,11 +10,9 @@ UXP is what Upbound uses in its control planes-as-a-service Spaces hosting envir
 
 UXP is available to any users under Upbound's Community plan. Commercial licenses are available. See [license management][licensing] for more details.
 
-:::tip
+## Get Started
 
 Read the [Get Started][get-started] guide to learn how to use UXP to build your own control plane.
-
-:::
 
 
 [crossplane]: https://docs.crossplane.io
