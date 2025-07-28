@@ -19,7 +19,7 @@ those environments, see the related
 
 The Query API allows users to inspect objects and resources within their
 control plane. The read-only `up alpha query` and `up alpha get` CLI commands
-allow you to gather information on your control planes in a fast and efficient
+allow you to gather information on your control plane in a fast and efficient
 package. These commands follow the [`kubectl` conventions][kubectl-conventions]
 for filtering, sorting, and retrieving information from your control plane.
 
@@ -38,15 +38,8 @@ Use the `up alpha get` command to retrieve information about objects within the
 current control plane context. This command uses the **Query** endpoint and
 targets the current control plane.
 
-To switch between control plane groups, use the [`up ctx` ][up-ctx] and change
-to your desired context with an interactive prompt or specify with your control
-plane path:
 
-```shell
-up ctx <org>/<space>/<group>/<ctp-name>
-```
-
-You can query within a single control plane with the [`up alpha get` command][up-alpha-get-command] to return more information about a given object within the current kubeconfig context.
+You can query within your control plane with the [`up alpha get` command][up-alpha-get-command] to return more information about a given object within the current kubeconfig context.
 
 The `up alpha get` command can query resource types and aliases to return objects in your control plane.
 
