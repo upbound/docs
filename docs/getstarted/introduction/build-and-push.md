@@ -58,13 +58,11 @@ up project push
 
 ## What just happened
 
-Before you move on, take a moment and reflect on what happened here. Within a few moments, you were able to build a container image that packages your application and push it to Docker Hub.
+Before you move on, take a moment and reflect on what happened here. Within a few moments, you were able to build an OCI image that packages your control plane and push it to the Upbound Marketplace.
 
-Going forward, you;ll want to remember that:
+Going forward, you'll want to remember that:
 
-Docker Hub is the go-to registry for finding trusted content. Docker provides a collection of trusted content, composed of Docker Official Images, Docker Verified Publishers, and Docker Sponsored Open Source Software, to use directly or as bases for your own images.
-
-Docker Hub provides a marketplace to distribute your own applications. Anyone can create an account and distribute images. While you are publicly distributing the image you created, private repositories can ensure your images are accessible to only authorized users.
+Upbound Marketplace is the go-to location for finding trusted content. The Marketplace also serves as a place to distribute your own control plane extensions.
 
 ## Next steps
 
@@ -72,6 +70,6 @@ Now that you've built a Configuration, it's time to learn how to deploy it into 
 
 Read about [what's next][whatsNext]
 
-[configurations]: /manuals/uxp/concepts/packages/configuration
+[configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
 [whatsNext]: /getstarted/introduction/whats-next
