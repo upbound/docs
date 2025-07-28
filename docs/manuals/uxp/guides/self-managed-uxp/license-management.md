@@ -17,6 +17,15 @@ representative.
 
 This guide walks through how to manage a UXP license.
 
+## Prerequisites
+
+Before you begin, make sure you have:
+
+* a running Kubernetes cluster
+* `kubectl` installed
+* the `up` CLI installed
+* a valid UXP license provided by Upbound (for Standard plans and above)
+
 ## Community plan 
 
 The Community plan on Upbound lets you run Upbound Crossplane without a license.
@@ -70,10 +79,6 @@ commercial license.
 
 Connect to your Upbound Crossplane cluster.
 
-<Tabs>
-
-<TabItem value="Up CLI" label="Up CLI">
-
 Download your license file (`uxp-license`) and export it as an environment
 variable:
 
@@ -83,67 +88,10 @@ variable:
 If you don't provide a license key, UXP runs the `Community` edition.
 
 Apply the license with the up CLI:
+
 ```bash
 up uxp license apply $UXP_LICENSE_KEY
 ```
-</TabItem>
-<!-- <TabItem value="Kubernetes secret" label="Kubernetes secret"> -->
-
-<!-- 1. Download your license file (`uxp-license`). -->
-<!-- 2. Create a secret, containing the license file. -->
-
-<!-- ```bash -->
-<!-- kubectl create secret generic uxp-license --from-file=license=./uxp-license -->
-<!-- ``` -->
-<!-- 3. Create a _License_ object and reference the secret: -->
-<!-- ```yaml -->
-<!-- apiVersion: licensing.upbound.io/v1alpha1 -->
-<!-- kind: License -->
-<!-- metadata: -->
-<!--   name: uxp -->
-<!-- spec: -->
-<!--   secretRef: -->
-<!--     key: license -->
-<!--     name: uxp-license -->
-<!--     namespace: crossplane-system -->
-<!-- ``` -->
-<!-- 4. Verify the license status: -->
-<!-- ```bash -->
-<!-- kubectl get license uxp --subresource=status -->
-<!-- ``` -->
-
-<!-- It should print a result like the following: -->
-
-<!-- ```bash -->
-<!-- NAME   PLAN       VALID   REASON              AGE -->
-<!-- uxp    standard   True    SignatureVerified   3h59m -->
-<!-- ``` -->
-
-<!-- </TabItem> -->
-<TabItem value="helm" label="Helm">
-
-You can use Helm to add your UXP license.
-
-Download your license file (`uxp-license`) and export it as an environment
-variable:
-
-```shell
-export ${UXP_LICENSE_KEY}=<your-license-key-string>
-```
-If you don't provide a license key, UXP runs the `Community` edition.
-
-Apply the license with the up CLI:
-
-```shell
-helm upgrade --install crossplane \
-  --namespace crossplane-system \
-  ...
-  --set "upbound.licenseKey=${UXP_LICENSE_KEY}"
-```
-
-</TabItem>
-</Tabs>
-
 :::important
 
 **You may not re-use licenses across multiple Upbound Crossplane clusters.**
