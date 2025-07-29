@@ -58,13 +58,11 @@ up project run --local
 
 This launches an instance of Upbound Crossplane on your machine, wrapped and
 deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the
-following command to be able to access the UI for your control plane:
+following command to access the UI for your control plane:
 
 ```shell
-kubectl port-forward -n crossplane-system svc/uxp-webui 8080:80
+up uxp web-ui open
 ``` 
-
-Open a browser at [https://localhost:8080](https://localhost:8080).
 
 ![image][webUI]
 
