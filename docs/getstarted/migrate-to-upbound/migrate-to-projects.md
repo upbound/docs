@@ -135,7 +135,7 @@ up project build && up project push
 
 Deploy it in production:
 
-* Deploy on a [self-managd UXP][self-managed-uxp] cluster.
+* Deploy on a [self-managed UXP][self-managed-uxp] cluster.
 * Deploy it on a control plane [in a Space][spaces].
 
 ## Optional: Refactor compositions
