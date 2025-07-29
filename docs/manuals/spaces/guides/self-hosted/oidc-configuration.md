@@ -3,17 +3,24 @@ title: Configure OIDC
 sidebar_position: 20
 description: Configure OIDC in your Space
 ---
-:::importantx
+:::important
 This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 :::
 
-Upbound uses the Kubernetes [Structured Authentication Configuration][Structured Auth Config]  to validate OIDC tokens sent to the API. Upbound stores this configuration as a `ConfigMap` and authenticates with the Upbound router component during installation with Helm.
+Upbound uses the Kubernetes [Structured Authentication Configuration][Structured
+Auth Config]  to validate OIDC tokens sent to the API. Upbound stores this
+configuration as a `ConfigMap` and authenticates with the Upbound router
+component during installation with Helm.
 
-This guide walks you through how to create and apply an authentication configuration to validate Upbound with an external identity provider. Each section focuses on a specific part of the configuration file.
+This guide walks you through how to create and apply an authentication
+configuration to validate Upbound with an external identity provider. Each
+section focuses on a specific part of the configuration file.
 
 ## Creating the `AuthenticationConfiguration` file
 
-First, create a file called `config.yaml` with an `AuthenticationConfiguration` kind. The `AuthenticationConfiguration` is the initial authentication structure necessary for Upbound to communicate with your chosen identity provider.
+First, create a file called `config.yaml` with an `AuthenticationConfiguration`
+kind. The `AuthenticationConfiguration` is the initial authentication structure
+necessary for Upbound to communicate with your chosen identity provider.
 
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1beta1
@@ -33,10 +40,12 @@ jwt:
 ```
 
 <!-- vale gitlab.Uppercase = NO -->
-For detailed configuration options, including the CEL-based token validation, review the feature [documentation][Structured Auth Config].
+For detailed configuration options, including the CEL-based token validation,
+review the feature [documentation][Structured Auth Config]. 
 <!-- vale gitlab.Uppercase = YES -->
 
-The `AuthenticationConfiguration` allows you to configure multiple JWT authenticators as separate issuers.
+The `AuthenticationConfiguration` allows you to configure multiple JWT
+authenticators as separate issuers.
 
 ### Configure an issuer
 
@@ -62,11 +71,19 @@ issuer:
   audienceMatchPolicy: MatchAny
 ```
 
-By default, the authenticator assumes the OIDC Discovery URL is `{issuer.url}/.well-known/openid-configuration`. Most identity providers follow this structure, and you can omit the `discoveryUrl` field. To use a separate discovery service, specify the full path to the discovery endpoint in this field.
+By default, the authenticator assumes the OIDC Discovery URL is
+`{issuer.url}/.well-known/openid-configuration`. Most identity providers follow
+this structure, and you can omit the `discoveryUrl` field. To use a separate
+discovery service, specify the full path to the discovery endpoint in this
+field.
 
 If the CA for the Issuer isn't public, provide the PEM encoded CA for the Discovery URL.
 
-At least one of the `audiences` entries must match the `aud` claim in the JWT. For OIDC tokens, this is the Client ID of the application attempting to access the Upbound API. Having multiple values set allows the same configuration to apply to multiple client applications, for example the `kubectl` CLI and an Internal Developer Portal.
+At least one of the `audiences` entries must match the `aud` claim in the JWT.
+For OIDC tokens, this is the Client ID of the application attempting to access
+the Upbound API. Having multiple values set allows the same configuration to
+apply to multiple client applications, for example the `kubectl` CLI and an
+Internal Developer Portal.
 
 If you specify multiple `audiences` , `audienceMatchPolicy` must equal `MatchAny`.
 
@@ -114,7 +131,9 @@ claimMappings:
 ### Validation rules
 
 <!-- vale gitlab.Uppercase = NO -->
-Validation rules are outside the scope of this document. Review the [documentation][Structured Auth Config] for more information. Examples include using CEL expressions to validate authentication such as:
+Validation rules are outside the scope of this document. Review the
+[documentation][Structured Auth Config] for more information. Examples include
+using CEL expressions to validate authentication such as: 
 <!-- vale gitlab.Uppercase = YES -->
 
 - Validating that a token claim has a specific value
@@ -164,14 +183,16 @@ jwt:
 
 ## Install the `AuthenticationConfiguration`
 
-Once you create an `AuthenticationConfiguration` file, specify this file as a `ConfigMap` in the host cluster for the Upbound Space.
+Once you create an `AuthenticationConfiguration` file, specify this file as a
+`ConfigMap` in the host cluster for the Upbound Space.
 
 ```sh
 kubectl create configmap <configmap name> -n upbound-system --from-file=config.yaml=./path/to/config.yaml
 ```
 <!-- vale gitlab.SentenceLength = NO -->
 <!-- vale Google.WordList = NO -->
-To enable OIDC authentication and disable Upbound IAM when installing the Space, reference the configuration and pass an empty value to the Upbound IAM issuer
+To enable OIDC authentication and disable Upbound IAM when installing the Space,
+reference the configuration and pass an empty value to the Upbound IAM issuer
 parameter:
 <!-- vale Google.WordList = YES -->
 <!-- vale gitlab.SentenceLength = YES -->
@@ -185,7 +206,8 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 ## Configure RBAC
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
-In this scenario, the external identity provider handles authentication, but permissions for Spaces and ControlPlane APIs use standard RBAC objects.
+In this scenario, the external identity provider handles authentication, but
+permissions for Spaces and ControlPlane APIs use standard RBAC objects.
 
 ### Spaces APIs
 
@@ -212,14 +234,20 @@ The Spaces APIs include:
 <!-- vale Google.Headings = YES -->
 
 <!-- vale Google.WordList = NO -->
-Crossplane specifies three [roles][Crossplane Managed ClusterRoles] for a ControlPlane: admin, editor, and viewer. These map to the verbs `admin`, `edit`, and `view` on the `controlplanes/k8s` resource in the `spaces.upbound.io` API group.
+Crossplane specifies three [roles][Crossplane Managed ClusterRoles] for a
+ControlPlane: admin, editor, and viewer. These map to the verbs `admin`, `edit`,
+and `view` on the `controlplanes/k8s` resource in the `spaces.upbound.io` API
+group.
 <!-- vale Google.WordList = YES -->
 
 ### Control access
 
-The `groups` claim in the `AuthenticationConfiguration` allows you to control resource access when you create a `ClusterRoleBinding`. A `ClusterRole` defines the role parameters and a `ClusterRoleBinding` subject.
+The `groups` claim in the `AuthenticationConfiguration` allows you to control
+resource access when you create a `ClusterRoleBinding`. A `ClusterRole` defines
+the role parameters and a `ClusterRoleBinding` subject.
 
-The example below allows `admin` permissions for all ControlPlanes to members of the `ctp-admins` group:
+The example below allows `admin` permissions for all ControlPlanes to members of
+the `ctp-admins` group:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

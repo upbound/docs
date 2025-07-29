@@ -2,13 +2,9 @@
 title: Dedicated Spaces
 sidebar_position: 4
 description: A guide to Upbound Dedicated Spaces
-tier: "business"
+plan: business
 ---
-
-<!-- vale gitlab.SentenceLength = NO -->
-:::important
-This feature is only available for select Business Critical customers. You can't set up your own Dedicated Space without the assistance of Upbound. If you're interested in this deployment mode, please [contact us][contact-us].
-:::
+<Business />
 
 ## Benefits
 

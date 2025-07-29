@@ -4,28 +4,36 @@ sidebar_position: 2
 description: "Information about Upbound's data residency policies."
 ---
 
-By default, Upbound stores data for Upbound Cloud in the United States. When you purchase an enterprise or business critical subscription to Upbound, you can choose where your organization's control planes and data get stored.
+<!-- vale write-good.TooWordy = NO -->
+By default, Upbound stores data for Upbound Cloud in the United States. When you
+purchase an enterprise or business critical subscription to Upbound, you can
+choose where your organization's control planes and data get stored.
+<!-- vale write-good.TooWordy = YES -->
 
 The available regions are:
 
 - The United States
-- The EU
+- The European Union
 
 To get data residency for your organization, contact [Upbound's Sales team][contact].
 
 ## Data stored in your region
 
-Upbound stores the following data for your organization within your chosen region.
+Upbound stores the following data for your organization within your chosen
+region.
 
+<!-- vale Upbound.Spelling = NO -->
 | Description of data | Examples |
 | ---- | ---- |
 | Customer content, including text, metadata, and other data available on the service | Control planes, including control plane names<br></br>user-created content such as Crossplane compositions<br></br>resource metadata for resources managed by control planes|
 | Data or logs that identify your organization | Data for business continuity and disaster recovery (BCDR) |
 | Data or logs that identify a person | Pseudonymized identifiers in audit logs. |
+<!-- vale Upbound.Spelling = YES -->
 
 ## Data stored outside your region
 
-To successfully operate our service, Upbound may store the following data for your organization outside your chosen region.
+To operate our service, Upbound may store the following data for your
+organization outside your chosen region:
 
 | Description of data | Examples |
 | ---- | ---- |
@@ -34,12 +42,16 @@ To successfully operate our service, Upbound may store the following data for yo
 
 ## Data transfers
 
-Upbound documents reasons for the transfer of data out of your organization's region, but doesn't notify you when transfers occur.
+Upbound documents reasons for the transfer of data out of your organization's
+region, but doesn't notify you when transfers occur.
 
 ## Data residency and Upbound Marketplace
 
-The Upbound Marketplace, which includes the web portal at `marketplace.upbound.io` and the underlying OCI registry `xpkg.upbound.io` are served from the United States.
 
-If you wish to pull images hosted in the Marketplace from within an EU data boundary, Upbound recommends mirroring these images to your own OCI registry.
+The Upbound Marketplace, including the `marketplace.upbound.io` web portal and
+the OCI registry `xpkg.upbound.io`, is served from the United States.
+
+To pull images hosted in the Marketplace from within an EU data boundary, Upbound
+recommends mirroring these images to your own OCI registry.
 
 [contact]: https://www.upbound.io/contact

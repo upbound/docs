@@ -5,17 +5,25 @@ description: An introduction to doing GitOps with control planes on Upbound
 tier: "business"
 ---
 
-GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
+GitOps is an approach for managing a system by declaratively describing desired
+resources' configurations in Git and using controllers to realize the desired
+state. Upbound's control planes are compatible with this pattern and it's
+strongly recommended you integrate GitOps in the platforms you build on Upbound.
 
 <!-- vale Google.Headings = NO -->
 ## Integrate with Argo CD
 <!-- vale Google.Headings = YES -->
 
-[Argo CD][argo-cd] is a project in the Kubernetes ecosystem commonly used for GitOps. You can use it in tandem with Upbound control planes to achieve GitOps flows. The sections below explain how to integrate these tools with Upbound.
+[Argo CD][argo-cd] is a project in the Kubernetes ecosystem commonly used for
+GitOps. You can use it in tandem with Upbound control planes to achieve GitOps
+flows. The sections below explain how to integrate these tools with Upbound.
 
 ### Configure connection secrets for control planes
 
-You can configure control planes to write their connection details to a secret. Do this by setting the [`spec.writeConnectionSecretToRef`][spec-writeconnectionsecrettoref] field in a control plane manifest. For example:
+You can configure control planes to write their connection details to a secret.
+Do this by setting the
+[`spec.writeConnectionSecretToRef`][spec-writeconnectionsecrettoref] field in a
+control plane manifest. For example:
 
 ```yaml
 apiVersion: spaces.upbound.io/v1beta1
@@ -33,13 +41,16 @@ spec:
 ### Configure Argo CD
 <!-- vale Google.Headings = YES -->
 
-To configure Argo CD for Annotation resource tracking, edit the Argo CD ConfigMap in the Argo CD namespace.
-Add `application.resourceTrackingMethod: annotation` to the data section as below.
+To configure Argo CD for Annotation resource tracking, edit the Argo CD
+ConfigMap in the Argo CD namespace. Add `application.resourceTrackingMethod:
+annotation` to the data section as below.
 
-Next, configure the [auto respect RBAC for the Argo CD controller][auto-respect-rbac-for-the-argo-cd-controller-1].
-By default, Argo CD attempts to discover some Kubernetes resource types that don't exist in a control plane.
-You must configure Argo CD to respect the cluster's RBAC rules so that Argo CD can sync.
-Add `resource.respectRBAC: normal` to the data section as below.
+Next, configure the [auto respect RBAC for the Argo CD
+controller][auto-respect-rbac-for-the-argo-cd-controller-1]. By default, Argo CD
+attempts to discover some Kubernetes resource types that don't exist in a
+control plane. You must configure Argo CD to respect the cluster's RBAC rules so
+that Argo CD can sync. Add `resource.respectRBAC: normal` to the data section as
+below.
 
 ```bash
 apiVersion: v1
@@ -53,14 +64,20 @@ data:
 ```
 
 :::tip
-The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only control planes, you should consider changing the `clusters` string match for the configuration to apply only to control planes. For example, if every control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+The `resource.respectRBAC` configuration above tells Argo to respect RBAC for
+_all_ cluster contexts. If you're using an Argo CD instance to manage more than
+only control planes, you should consider changing the `clusters` string match
+for the configuration to apply only to control planes. For example, if every
+control plane context name followed the convention of being named
+`controlplane-<name>`, you could set the string match to be `controlplane-*`
 :::
 
 <!-- vale Google.Headings = NO -->
 ### Create a cluster context definition
 <!-- vale Google.Headings = YES -->
 
-Once the control plane is ready, extract the following values from the secret containing the kubeconfig:
+Once the control plane is ready, extract the following values from the secret
+containing the kubeconfig:
 
 ```bash
 kubeconfig_content=$(kubectl get secrets kubeconfig-ctp1 -n default -o jsonpath='{.data.kubeconfig}' | base64 -d)
@@ -69,7 +86,8 @@ bearer_token=$(echo "$kubeconfig_content" | grep 'token:' | awk '{print $2}')
 ca_data=$(echo "$kubeconfig_content" | grep 'certificate-authority-data:' | awk '{print $2}')
 ```
 
-Generate a new secret in the cluster where you installed Argo, using the prior values extracted:
+Generate a new secret in the cluster where you installed Argo, using the prior
+values extracted:
 
 ```yaml
 cat <<EOF | kubectl apply -f -
