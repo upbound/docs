@@ -4,10 +4,6 @@ sidebar_position: 90
 description: A guide to how to migrate to a control plane in Upbound
 ---
 
-:::important
-This feature is in preview.
-:::
-
 The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
 
 To migrate from Crossplane to Upbound, you must:
@@ -15,7 +11,7 @@ To migrate from Crossplane to Upbound, you must:
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a control plane running in Upbound.
 The migration tool is available in the [up CLI][up-cli] as
-`up alpha migration export` and `up alpha migration import` commands.
+`up controlplane migration export` and `up controlplane migration import` commands.
 
 ## Prerequisites
 
@@ -26,10 +22,10 @@ Before you begin, you must have the following:
 
 To migrate an existing Crossplane control plane to a control plane in Upbound, do the following:
 
-1. Run the `up alpha migration export` command to export your existing Crossplane control plane configuration/state into an archive file:
+1. Run the `up controlplane migration export` command to export your existing Crossplane control plane configuration/state into an archive file:
 
     ```bash
-    up alpha migration export --kubeconfig <path-to-source-kubeconfig> --output <path-to-archive-file>
+    up controlplane migration export --kubeconfig <path-to-source-kubeconfig> --output <path-to-archive-file>
     ```
 
     The command exports your existing Crossplane control plane configuration/state into an archive file.
@@ -60,7 +56,7 @@ control plane in Upbound:
 4. Run the following command to import the archive file into the control plane:
 
     ```bash
-    up alpha migration import --input <path-to-archive-file>
+    up controlplane migration import --input <path-to-archive-file>
     ```
 
 :::note
@@ -105,7 +101,7 @@ You can exclude Kubernetes Resource types by using the `--exclude-resources` CLI
 For example, here's an example for excluding the CRDs installed by Crossplane functions (since they're not needed):
 
 ```bash
-up alpha migration export \
+up controlplane migration export \
   --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.template.fn.crossplane.io
 ```
 
@@ -120,7 +116,7 @@ Use the `--include-extra-resources=` CLI option to select other CRD types to inc
 Currently `--context` isn't supported in the migration CLI. You should be able to use the `--kubeconfig` CLI option to use a file that's set to the correct context. For example:
 
 ```bash
-up alpha migration export --kubeconfig
+up controlplane migration export --kubeconfig
 ```
 
 Use this in tandem with `up ctx` to export a control plane's kubeconfig:
@@ -141,7 +137,7 @@ The migration CLI exports an archive upon successful completion. Below is an exa
 <summary>View the example export</summary>
 
 ```bash
-$ up alpha migration export
+$ up controlplane migration export
 --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.templat
 e.fn.crossplane.io --yes
 Exporting control plane state...
@@ -356,7 +352,7 @@ The following is an example of a successful import run. At the end of the import
 <summary>View the migration import</summary>
 
 ```bash
-$ up alpha migration import
+$ up controlplane migration import
 Importing control plane state...
 ✓ Reading state from the archive... Done! 👀
 ✓ Importing base resources... 18 resources imported! 📥
@@ -411,7 +407,7 @@ kubectl annotate managed --all crossplane.io/paused-
 You can also run import again with the `--unpause-after-import` flag to remove the annotations.
 
 ```bash
-up alpha migration import --unpause-after-import
+up controlplane migration import --unpause-after-import
 ```
 
 ### Restoring resource status
