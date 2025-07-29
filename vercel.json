@@ -547,22 +547,22 @@
     },
     {
       "source": "/reference/legacy-spaces/connect-argo-to-upbound",
-      "destination": "/reference/legacy/connect-argo-to-upbound",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/reference/legacy-spaces/control-plane-configurations",
-      "destination": "/reference/legacy/control-plane-configurations",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/reference/legacy-spaces",
-      "destination": "/reference/legacy",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/reference/legacy-spaces/multicloud-deploy",
-      "destination": "/reference/legacy/multicloud-deploy",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -877,7 +877,7 @@
     },
     {
       "source": "/concepts/control-plane-configurations",
-      "destination": "/reference/legacy/control-plane-configurations",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -1032,22 +1032,22 @@
     },
     {
       "source": "/deploy/legacy-spaces",
-      "destination": "/reference/legacy",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces/connect-argo-to-upbound",
-      "destination": "/reference/legacy/connect-argo-to-upbound",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces/control-plane-configurations",
-      "destination": "/reference/legacy/control-plane-configurations",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/deploy/legacy-spaces/multicloud-deploy",
-      "destination": "/reference/legacy/multicloud-deploy",
+      "destination": "/",
       "permanent": true
     },
     {

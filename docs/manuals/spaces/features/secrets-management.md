@@ -5,19 +5,6 @@ description: A guide for how to configure synchronizing external secrets into co
   planes in a Space.
 ---
 
-:::important
-This feature is in preview and enabled by default in Cloud Spaces. To enable it
-in a self-hosted Space, set `features.alpha.sharedSecrets.enabled=true` when
-installing the Space:
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-  ...
-  --set "features.alpha.sharedSecrets.enabled=true" \
-```
-
-:::
-
 Upbound's _Shared Secrets_ is a built in secrets management feature that
 provides an integrated way to manage secrets across your platform. It allows you
 to store sensitive data like passwords and certificates for your managed control
@@ -48,21 +35,12 @@ secrets and effectively control their distribution.
 3. In each control plane, specific namespaces receive the secrets
 4. Changes at the group level automatically propagate through this chain
 
-## Prerequisites
-
-Make sure you've enabled the Shared Secrets feature in whichever Space you plan to run your control plane in. All Upbound-managed Cloud Spaces have this feature enabled by default. If you want to use these APIs in your own Connected Space, your Space administrator must enable them with the `features.alpha.sharedSecrets.enabled=true` setting.
-
-```bash
-up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
-```
-
 ## Component configuration 
 
 Upbound Shared Secrets consists of two components:
 
 1. **SharedSecretStore**: Defines connections to external secret providers
 2. **SharedExternalSecret**: Specifies which secrets to synchronize and where
-
 
 <!-- vale Google.Headings = NO -->
 ### Connect to an External Vault
@@ -89,7 +67,6 @@ workload identity.
 :::important
 While the underlying ESO API supports more auth methods, static credentials are currently the only supported auth method in Cloud Spaces.
 :::
-
 
 ##### Static credentials
 

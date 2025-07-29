@@ -1,5 +1,5 @@
 ---
-title: Billing
+title: Self-Hosted Space Billing
 sidebar_position: 50
 description: A guide for how billing works in an Upbound Space
 ---

@@ -1,5 +1,5 @@
 ---
-title: Query API
+title: Deploy Query API infrastructure
 weight: 130
 description: Query API
 aliases:

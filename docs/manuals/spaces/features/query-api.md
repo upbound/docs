@@ -7,16 +7,6 @@ description: Use the `up` CLI to query objects and resources
 <!-- vale write-good.TooWordy = NO -->
 <!-- ignore "aggregate" -->
 
-:::important
-
-This feature is in preview. The Query API is available in the Cloud Space offering and enabled by default.
-
-Query API is required for self-hosted deployments with connected Spaces. See the
-related [documentation][documentation]
-to enable this feature.
-
-:::
-
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions][kubectl-conventions] for filtering, sorting, and retrieving information from your Space.
 
 <!-- vale Google.Headings = NO -->

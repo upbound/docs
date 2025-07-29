@@ -1,6 +1,6 @@
 ---
 title: Interacting with Disconnected Spaces
-sidebar_position: 1
+sidebar_position: 10
 description: Common operations in Spaces
 ---
 
