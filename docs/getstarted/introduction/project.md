@@ -61,9 +61,8 @@ deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the
 following command to be able to access the UI for your control plane:
 
 ```shell
-kubectl port-forward -n crossplane-system svc/uxp-webui 8080:80
-``` 
-
+up uxp web-ui open
+```
 Open a browser at [https://localhost:8080](https://localhost:8080).
 
 ![image][webUI]
@@ -151,6 +150,7 @@ following:
 <Tabs>
 
 <TabItem value="gotempl" label="Templated YAML">
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -200,8 +200,11 @@ apiVersion: example.crossplane.io/v1
 kind: App
 status:
   replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
-  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}```
+  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}
+```
 </TabItem>
+
+
 <TabItem value="Python" label="Python">
 ```python
 todo
