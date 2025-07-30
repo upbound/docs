@@ -129,6 +129,7 @@ export default function GlobalLanguageSelector() {
 }
 
 // Simple content wrapper that auto-registers its options
+// FIXED: Removed the code-block wrapper that was causing formatting issues
 export function CodeBlock({ cloud, language, children }) {
   const { selectedLanguage, selectedCloud, registerLanguage, registerCloud } = useLanguageContext();
   
@@ -141,5 +142,6 @@ export function CodeBlock({ cloud, language, children }) {
   const shouldShow = (!cloud || cloud === selectedCloud) && 
                     (!language || language === selectedLanguage);
   
-  return shouldShow ? <div className="code-block">{children}</div> : null;
+  // Return children directly without wrapper, or use a neutral wrapper
+  return shouldShow ? <>{children}</> : null;
 }
