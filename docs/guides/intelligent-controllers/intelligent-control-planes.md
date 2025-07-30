@@ -1,5 +1,6 @@
 ---
 title: Create an Intelligent Control Plane
+sidebar_position: 1
 ---
 
 <!-- vale gitlab.Uppercase = NO -->
