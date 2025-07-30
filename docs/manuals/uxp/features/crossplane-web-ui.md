@@ -1,7 +1,7 @@
 ---
 title: Web UI for Crossplane
 description: "Learn how to use the Crossplane Web UI"
-sidebar_position: 1
+sidebar_position: 2
 draft: true
 ---
 
