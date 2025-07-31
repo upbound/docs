@@ -26,7 +26,7 @@ Make sure you've finished the previous guide before moving on to this tutorial.
 First, create an environment variable to store your AI provider credentials:
 
 <Tabs>
-<TabItem title="Claude">
+<TabItem value="Claude">
 ```shell
 export ANTHROPIC_API_KEY="sk-ant-api..."
 ```
@@ -37,7 +37,8 @@ kubectl -n crossplane-system create secret generic api-key-anthropic --from-lite
 ```
 
 </TabItem>
-<TabItem title="OpenAI">
+
+<TabItem value="OpenAI">
 ```shell
 todo
 ```
