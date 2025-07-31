@@ -17,7 +17,7 @@ Upbound collects the following telemetry data:
 - `up` CLI commands that are executed (without capturing values)
 - License information
 
-## How's data collected?
+## How is data collected?
 
 Telemetry data is collected by both the Upbound CLI and Upbound Control Plane using the [OpenTelemetry](https://opentelemetry.io/) protocol. This data is sent securely to the Upbound telemetry service.
 
