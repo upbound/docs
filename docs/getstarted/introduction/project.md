@@ -198,8 +198,13 @@ apiVersion: example.crossplane.io/v1
 kind: App
 status:
   replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
-  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}```
+  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}
+```
+
+
 </TabItem>
+
+
 <TabItem value="Python" label="Python">
 ```python
 todo
