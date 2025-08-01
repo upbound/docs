@@ -1,6 +1,6 @@
 ---
 title: Add Dependencies to Projects
-sidebar_position: 2
+sidebar_position: 5
 description: The basic concepts to help you on your Upbound journey
 ---
 

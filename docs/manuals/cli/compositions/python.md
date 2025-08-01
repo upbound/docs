@@ -20,7 +20,7 @@ language server.
 [KCL][kcl] - Concise. Good for transitioning from another configuration language
 like HCL. IDE support with language server.
 
- **Python (this guide)** -  Highly accessible, supports complex logic. Provides type hints and
+ **Python (this guide)** - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
 
 ## Overview
@@ -30,8 +30,10 @@ cloud resources. Compositions allow you to implement the business logic that
 powers your control plane.
 
 :::important
-This guide assumes you're familiar with Python. To learn more about the Python
-language, try the [official Python tutorial][python-tutorial].
+This guide assumes you're familiar with Python. If you'd like to become more
+familiar with Python, the official [Python tutorial][python-tutorial] is a good place
+to start.
+:::
 
 Use this guide after you define your API schema and need to write the logic that
 creates and manages the underlying resources.

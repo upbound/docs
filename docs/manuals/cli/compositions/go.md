@@ -27,8 +27,10 @@ This guide explains how to create compositions that turn your XRs into actual cl
 
 Use this guide after you define your API schema and need to write the logic that creates and manages the underlying resources.
 
-:::tip
-If you'd like to become more familiar with Go, the [official tutorials][official-tutorials] are a good place to start.
+:::important
+This guide assumes you're familiar with Go. If you'd like to become more
+familiar with Go, the [official tutorials][official-tutorials] are a good place
+to start. 
 :::
 
 ## Prerequisites

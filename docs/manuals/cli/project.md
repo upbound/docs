@@ -1,6 +1,6 @@
 ---
 title: Control Plane Project Setup
-sidebar_position: 1
+sidebar_position: 4
 description: The source of your control plane configurations. A control plane project
   contains the `upbound.yaml` file and any dependencies for your project.
 ---
