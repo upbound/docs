@@ -4,127 +4,44 @@ sidebar_position: 3
 description: Configuration for the Upbound CLI
 ---
 
-`up` interacts with a variety of systems, each of which may have information
-that persists between commands. `up` stores this information in a
-configuration file in `~/.up/config.json`.
+This document explains the basics of profile configurations and how they work in
+the Upbound CLI (`up`). Profile configurations enable you to manage multiple
+environments and authentication contexts efficiently.
 
-## Configuration
+A **profile configuration** is a stored set of connection and authentication
+information that the `up` CLI uses to interact with different Upbound systems.
+`up` stores this information in a configuration file at `~/.up/config.json`,
+allowing you to switch between different environments, organizations, and
+authentication contexts without re-entering credentials each time.
 
-The `up` CLI stores configuration information in `~/.up/config.json`. Commands
-use the specified profile when set via the `--profile` flag or `UP_PROFILE`
-environment variable. If you don't set a profile, `up` uses the currently selected
-profile in the configuration file.
 
-You can list your `up` profiles and see which one is currently selected as
-follows:
-
-```shell
-$ up profile list
-CURRENT   NAME          TYPE           ORGANIZATION
-*         default       cloud          my-org
-```
-
-### Profile types
-
-Profiles have one of two types:
-
-- **Cloud:** Cloud profiles interact with Cloud and Connected Spaces
-  within a given Upbound organization.
-- **Disconnected:** Disconnected profiles interact with a specific
-  self-hosted Space not connected to Upbound.
-
-Both profile types can log in to an Upbound organization and manage non-Space resources like Marketplace repositories. Logging in with a disconnected profile is optional.
-
-<!-- vale write-good.Passive = NO -->
-
-Profile types were introduced in `up` v0.37.0. All profiles created in previous
-versions are treated as cloud profiles in newer versions.
-
-<!-- vale write-good.Passive = YES -->
-
-## Profile management
-
-### Create a profile
-
-To create a cloud profile for a given organization, use `up login`:
-
-```shell
-up login --profile test --organization <your-upbound-org>
-```
-<!--- TODO(tr0njavolta): edit:--->
-<!-- vale Microsoft.Wordiness = NO -->
-By default, `up login` opens browser window for interactive login. If
-opening a browser window isn't possible, the command returns link to copy
-and paste into a browser to log in. Then returns a one-time authentication
-code to paste into your terminal. You can also log in non-interactively by passing the `--username`and `--password` flags or the `--token` flag.
-<!-- vale Microsoft.Wordiness = YES -->
-
-Initializing a self-hosted Space with `up space init` automatically creates
-a disconnected profile associated with the Space. You can also create a new
-disconnected profile manually based on a kubeconfig context pointed at the
-Space:
-
-```shell
-up profile create <profile name> --type=disconnected --kubeconfig <kubeconfig path> --kubecontext <context name>
-```
-
-The `--kubeconfig` and `--kubecontext` flags are optional; if not given, the `up` CLI uses your default kubeconfig and current context.
-
-### Set the current profile
-
-By default, `up` executes commands against the `current` profile. To select the
-current profile, run the following:
-
-```shell
-up profile use <profile-name>
-```
-
-<!-- vale off -->
-If you have selected a kubeconfig context with `up ctx` while using a given
-profile, that kubeconfig context will be restored to your kubeconfig the next
-time you switch to the profile with `up profile use`.
-<!-- vale on -->
-
-### Update a profile's organization
-
-You can change a profile's associated organization if needed:
-
-```shell
-up profile set organization <new-organization>
-```
-
-Then, run `up login` again to authenticate against the new
-organization.
-
-### Invalidate session tokens
-
-`up` uses session tokens for authentication after login.
-
-:::warning
-Tokens are private authentication data. Don't share your token.
+:::tip
+Ready to configure your control plane context? Go to the [how-to
+guide](../how-tos/profile-config) for profile setup.
 :::
 
-For currently active tokens, revoke the token with `up logout --profile <profile-name>`.
+The `up` CLI uses the specified profile when set via the `--profile` flag or
+`UP_PROFILE` environment variable. If you don't specify a profile, `up` uses the
+currently selected profile in the configuration file.
 
-For inactive tokens, use the [Upbound Password Reset][upbound-password-reset] and select "Delete all active sessions" to revoke all tokens.
+## Profile types
 
-### Configuring a Docker credential helper
+Profiles have one of two types, each designed for different deployment scenarios:
 
-`up` can build and push Crossplane packages. If pushing to the Upbound Marketplace, you can use the credentials acquired via `up login`.
+- **Cloud profiles**: Interact with Upbound Cloud and Connected Spaces within a given Upbound organization. These profiles are designed for users working with Upbound's managed service.
 
-If you prefer to use Docker or any other OCI client, you can add the following to your Docker `config.json` file after downloading `docker-credential-up`. This allows your client to use Upbound credentials to interact with the Marketplace.
+- **Disconnected profiles**: Interact with specific self-hosted Spaces not connected to Upbound Cloud. These profiles enable you to manage on-premises or private cloud deployments.
 
-Instructions for installing `docker-credential-up` are available in the [CLI installation documentation][cli-installation-documentation].
+Both profile types can authenticate with an Upbound organization to manage
+non-Space resources like Marketplace repositories. Authentication with a
+disconnected profile is optional, providing flexibility for air-gapped or highly
+secure environments.
 
-```json
-{
-	"credHelpers": {
-		"xpkg.upbound.io": "up"
-	}
-}
-```
+## Background
 
+Profile types were introduced in `up` v0.37.0 to support the growing variety of
+deployment patterns in the Upbound ecosystem. All profiles created in previous
+versions are automatically treated as cloud profiles in newer versions, ensuring
+backward compatibility.
 
-[cli-installation-documentation]: /manuals/cli/overview
-
-[upbound-password-reset]: https://accounts.upbound.io/resetPassword
+[howto]: /manuals/cli/how-tos/profile-config
