@@ -14,7 +14,7 @@ Use this guide when you're ready to start building control plane projects after
 completing the Builder's Workshop. If you want to try Upbound Crossplane for the
 first time, try the [Quickstart][quickstart] instead.
 
-## Prerequisities
+## Prerequisites
 
 Before you begin, make sure you have:
 
