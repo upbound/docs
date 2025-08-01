@@ -1,5 +1,5 @@
 ---
-title: What are Tests?
+title: Project tests
 description: "What are Tests?"
 sidebar_position: 7
 ---

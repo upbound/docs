@@ -1,5 +1,5 @@
 ---
-title: What are project dependencies?
+title: Project dependencies
 description: "What are project dependencies?"
 sidebar_position: 5
 ---

@@ -1,5 +1,5 @@
 ---
-title: What are Embedded Functions?
+title: Embedded Functions
 description: "What are Embedded Functions?"
 sidebar_position: 6
 ---

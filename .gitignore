@@ -49,3 +49,6 @@ tmp/
 dist/
 out/
 bin/
+
+public/
+resources/

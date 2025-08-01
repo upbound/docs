@@ -1,6 +1,6 @@
 ---
-title: Simulate changes
-sidebar_position: 9
+title: Simulations
+sidebar_position: 50
 description: A guide for how to use Simulations in a Space.
 ---
 
@@ -288,12 +288,6 @@ Be aware of the following limitations:
 
 
 The Upbound team is working to improve this feature. Your feedback is always appreciated.
-
-## Next steps
-
-For general information on this feature as it fits in the Upbound workflow,
-review the [overview documentation][overview-documentation] on Simulations.
-
 
 [overview-documentation]: /manuals/spaces/guides/simulations
 [reach-out-to-upbound]: https://www.upbound.io/contact
