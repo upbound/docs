@@ -25,6 +25,13 @@ For more advanced concepts and scenarios in Upbound, see [Guides][guides].
 -   Create an account on Upbound by [registering your organization][register].
 -   Install the [up][up] CLI to gain access to all Upbound's tooling on your machine.
 
+
+```shell
+curl -sL "https://cli.upbound.io" | sh
+```
+
+Find more installation methods on the [Up CLI installation guide][up].
+
 <!-- vale Google.We = NO -->
     :::tip
     Get started with Upbound using the free _Community_ plan or upgrade to a

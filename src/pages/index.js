@@ -44,7 +44,7 @@ const LandingPage = () => {
     {
       id: 'reference',
       title: 'Reference',
-      description: 'API documentation, CLI commands, and technical specifications',
+      description: 'API documentation, CLI commands, Release Notes, and technical specifications',
       icon: <Code className="w-8 h-8" />,
       gradient: 'from-orange-500 to-red-500',
       items: [
@@ -126,8 +126,8 @@ const LandingPage = () => {
                 </div>
               </div>
               <div className="terminal-content">
-                <div className="terminal-line terminal-command">$ brew install upbound/tap/up</div>
-                <div className="terminal-line terminal-command">$ up project init --webapp my-new-project</div>
+                <div className="terminal-line terminal-command">$ curl -sL "https://cli.upbound.io" | sh</div>
+                <div className="terminal-line terminal-command">$ up project init -t project-template-k8s-webapp -l python my-webapp</div>
  
                 <div className="terminal-line terminal-output">✓ Created control plane project</div>
                 <div className="terminal-line terminal-command">$ cd my-new-project && up project run --local</div>

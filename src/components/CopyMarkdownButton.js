@@ -3,44 +3,43 @@ import React, { useState, useEffect } from 'react';
 
 const styles = `
 .copy-markdown-button-container {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   display: flex;
   justify-content: flex-start;
 }
 
-/* Adjust for different screen sizes */
 @media (max-width: 768px) {
   .copy-markdown-button-container {
-    margin: 1rem 0;
-    justify-content: flex-start;
+    margin: 0.75rem 0;
   }
 }
 
 .copy-page-btn {
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
   background-color: var(--ifm-background-color);
   border: 1px solid var(--upbound-border-color);
-  border-radius: 0.5rem;
+  border-radius: 0.375rem;
   color: var(--ifm-font-color-base);
   font-family: var(--ifm-font-family-base);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: var(--upbound-card-shadow);
-  backdrop-filter: blur(8px);
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
+  min-width: auto;
 }
 
 .copy-page-btn:hover:not(:disabled) {
   background-color: var(--upbound-light-bg);
   border-color: var(--grape);
   color: var(--grape);
-  transform: translateY(-2px);
-  box-shadow: var(--upbound-card-shadow-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .copy-page-btn:active:not(:disabled) {
@@ -52,54 +51,62 @@ const styles = `
   cursor: not-allowed;
 }
 
-.copy-page-btn.loading {
-  opacity: 0.8;
-}
-
 .copy-page-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.15s ease;
 }
 
 .copy-page-btn:hover:not(:disabled) svg {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .copy-btn-text {
-  transition: opacity 0.2s ease;
+  transition: all 0.15s ease;
 }
 
-.copy-page-btn.loading .copy-btn-text {
-  opacity: 0.7;
+.copy-page-btn.success svg {
+  transform: scale(1.1);
 }
 
+/* Loading animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.copy-page-btn.loading svg {
+  animation: spin 1s linear infinite;
+}
+
+/* Tooltip */
 .copy-tooltip {
   position: absolute;
-  bottom: 100%;
-  left: 0;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.375rem 0.625rem;
   background-color: var(--up-grey-800);
   color: white;
-  border-radius: 0.375rem;
-  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.6875rem;
   font-weight: 500;
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(4px);
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   pointer-events: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
 }
 
 .copy-tooltip::after {
   content: '';
   position: absolute;
   top: 100%;
-  left: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   border: 4px solid transparent;
   border-top-color: var(--up-grey-800);
 }
@@ -107,9 +114,9 @@ const styles = `
 .copy-tooltip.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
 }
 
+/* Dark theme */
 html[data-theme='dark'] .copy-page-btn {
   background-color: var(--up-grey-800);
   border-color: var(--up-grey-700);
@@ -131,50 +138,23 @@ html[data-theme='dark'] .copy-tooltip::after {
   border-top-color: var(--up-grey-700);
 }
 
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .copy-markdown-button-container {
-    margin: 1rem 0;
-    justify-content: flex-start;
+  .copy-page-btn {
+    padding: 0.4375rem 0.625rem;
+    font-size: 0.75rem;
+    gap: 0.3125rem;
   }
   
-  .copy-page-btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
+  .copy-page-btn svg {
+    width: 13px;
+    height: 13px;
   }
   
   .copy-tooltip {
-    left: 0;
-    right: auto;
-    transform: translateY(4px);
+    font-size: 0.625rem;
+    padding: 0.3125rem 0.5rem;
   }
-  
-  .copy-tooltip.show {
-    transform: translateY(0);
-  }
-  
-  .copy-tooltip::after {
-    left: 1rem;
-    right: auto;
-    transform: none;
-  }
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.6; }
-  100% { opacity: 1; }
-}
-
-.copy-page-btn.loading svg {
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-.copy-markdown-button-container {
-  pointer-events: all;
-}
-
-.copy-page-btn {
-  pointer-events: all;
 }
 
 @media print {
@@ -185,8 +165,8 @@ html[data-theme='dark'] .copy-tooltip::after {
 `;
 
 const CopyMarkdownButton = () => {
+  const [state, setState] = useState('idle'); // 'idle', 'loading', 'success', 'error'
   const [showTooltip, setShowTooltip] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [stylesInjected, setStylesInjected] = useState(false);
 
   // Inject styles on component mount
@@ -373,72 +353,121 @@ Generated: ${new Date().toISOString()}
   };
 
   const handleCopyClick = async () => {
-    setIsLoading(true);
+    setState('loading');
     
     try {
       const markdown = extractPageContent();
       await navigator.clipboard.writeText(markdown);
       
+      setState('success');
       setShowTooltip(true);
-      setTimeout(() => setShowTooltip(false), 2000);
+      
+      // Reset to idle after showing success
+      setTimeout(() => {
+        setState('idle');
+        setShowTooltip(false);
+      }, 2000);
+      
     } catch (error) {
       console.error('Failed to copy page content:', error);
-      // Fallback for browsers that don't support clipboard API
-      const textArea = document.createElement('textarea');
-      textArea.value = extractPageContent();
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
       
-      setShowTooltip(true);
-      setTimeout(() => setShowTooltip(false), 2000);
-    } finally {
-      setIsLoading(false);
+      // Fallback for browsers that don't support clipboard API
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = extractPageContent();
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        setState('success');
+        setShowTooltip(true);
+        
+        setTimeout(() => {
+          setState('idle');
+          setShowTooltip(false);
+        }, 2000);
+        
+      } catch (fallbackError) {
+        setState('error');
+        setShowTooltip(true);
+        
+        setTimeout(() => {
+          setState('idle');
+          setShowTooltip(false);
+        }, 3000);
+      }
     }
   };
+
+  const getButtonContent = () => {
+    switch (state) {
+      case 'loading':
+        return {
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+              <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+          ),
+          text: 'Copying...'
+        };
+      case 'success':
+        return {
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          ),
+          text: 'Copied!'
+        };
+      case 'error':
+        return {
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+              <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
+              <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          ),
+          text: 'Error'
+        };
+      default:
+        return {
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          ),
+          text: 'Copy as Markdown'
+        };
+    }
+  };
+
+  const { icon, text } = getButtonContent();
+  const tooltipText = state === 'success' ? 'Page copied to clipboard!' : 
+                     state === 'error' ? 'Failed to copy' :
+                     'Copy this page as Markdown for use with LLMs';
 
   return (
     <div className="copy-markdown-button-container">
       <button
-        className={`copy-page-btn ${isLoading ? 'loading' : ''}`}
-        title="Copy page as Markdown for LLMs"
-        aria-label="Copy page as Markdown for LLMs"
+        className={`copy-page-btn ${state}`}
+        title={tooltipText}
+        aria-label={tooltipText}
         onClick={handleCopyClick}
-        disabled={isLoading}
+        disabled={state === 'loading'}
       >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="16" 
-          height="16" 
-          viewBox="0 0 16 16" 
-          fill="none"
-        >
-          <path 
-            d="M2 3.5C2 2.67157 2.67157 2 3.5 2H9.5L14 6.5V12.5C14 13.3284 13.3284 14 12.5 14H3.5C2.67157 14 2 13.3284 2 12.5V3.5Z" 
-            stroke="currentColor" 
-            strokeWidth="1.5" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          />
-          <path 
-            d="M9 2V7H14" 
-            stroke="currentColor" 
-            strokeWidth="1.5" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          />
-        </svg>
-        <span className="copy-btn-text">
-          {isLoading ? 'Copying...' : 'Copy Markdown for LLMs'}
-        </span>
+        {icon}
+        <span className="copy-btn-text">{text}</span>
       </button>
       
       <div 
         className={`copy-tooltip ${showTooltip ? 'show' : ''}`} 
         role="tooltip"
       >
-        Page copied!
+        {tooltipText}
       </div>
     </div>
   );

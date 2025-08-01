@@ -633,8 +633,8 @@ table tbody tr:hover {
   background: linear-gradient(135deg, var(--up-purple-400), var(--up-purple-500));
 }
 
-.doc-card-header.get-started { background: linear-gradient(135deg, var(--up-blue-300), var(--up-purple-400)); }
-.doc-card-header.guides { background: linear-gradient(135deg, var(--up-purple-400), var(--up-purple-500)); }
+.doc-card-header.getstarted { background: linear-gradient(135deg, var(--up-purple-400), var(--up-purple-400)); }
+.doc-card-header.guides { background: linear-gradient(135deg, var(--up-blue-300), var(--up-purple-500)); }
 .doc-card-header.manuals { background: linear-gradient(135deg, var(--up-green-300), #059669); }
 .doc-card-header.reference { background: linear-gradient(135deg, var(--up-orange-300), var(--up-red-300)); }
 .doc-card-header.solutions { background: linear-gradient(135deg, var(--up-purple-500), var(--grape)); }
@@ -710,7 +710,7 @@ table tbody tr:hover {
 }
 
 .doc-card-button.get-started { background: linear-gradient(135deg, var(--up-blue-300), var(--up-purple-400)); }
-.doc-card-button.guides { background: linear-gradient(135deg, var(--up-purple-400), var(--up-purple-500)); }
+.doc-card-button.guides { background: linear-gradient(135deg, var(--up-blue-300), var(--up-purple-400)); }
 .doc-card-button.manuals { background: linear-gradient(135deg, var(--up-green-300), #059669); }
 .doc-card-button.reference { background: linear-gradient(135deg, var(--up-orange-300), var(--up-red-300)); }
 .doc-card-button.solutions { background: linear-gradient(135deg, var(--up-purple-500), var(--grape)); }
