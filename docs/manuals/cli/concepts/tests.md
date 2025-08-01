@@ -1,7 +1,7 @@
 ---
 title: What are Tests?
 description: "What are Tests?"
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 This document explains the basics of tests and how they work in control plane

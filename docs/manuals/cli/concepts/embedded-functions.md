@@ -1,7 +1,7 @@
 ---
 title: What are Embedded Functions?
 description: "What are Embedded Functions?"
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 This document explains the basics of embedded functions and how they work in

@@ -1,6 +1,6 @@
 ---
-title: Profile Configuration
-sidebar_position: 2
+title: What is a Profile Configuration?
+sidebar_position: 3
 description: Configuration for the Upbound CLI
 ---
 
