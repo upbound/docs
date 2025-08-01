@@ -126,12 +126,14 @@ const LandingPage = () => {
                 </div>
               </div>
               <div className="terminal-content">
-                <div className="terminal-line terminal-command">$ up project init --scratch my-new-project</div>
+                <div className="terminal-line terminal-command">$ brew install upbound/tap/up</div>
+                <div className="terminal-line terminal-command">$ up project init --webapp my-new-project</div>
+ 
                 <div className="terminal-line terminal-output">✓ Created control plane project</div>
                 <div className="terminal-line terminal-command">$ cd my-new-project && up project run --local</div>
-                <div className="terminal-line terminal-output">🚀 Upbound Crossplane running at localhost:8080</div>
-                <div className="terminal-line terminal-command">$ kubectl apply -f examples/app/example.yaml</div>
-                <div className="terminal-line terminal-output">app.example.crossplane.io/my-app created</div>
+                <div className="terminal-line terminal-output"> 💻 Local dev control plane running in kind cluster "my-new-cluster".</div>
+                <div className="terminal-line terminal-command">$ up uxp web-ui open</div>
+                <div className="terminal-line terminal-output"></div>
               </div>
             </div>
           </div>
