@@ -1,6 +1,12 @@
 ---
 title: Simulate changes
+<<<<<<<< HEAD:docs/manuals/cli/simulations.md
 sidebar_position: 9
+|||||||| f706bd37:docs/guides/projects/simulations.md
+sidebar_position: 20
+========
+sidebar_position: 7
+>>>>>>>> res-uxp-integrated-navigation:docs/guides/projects/simulations.md
 description: A guide for how to use Simulations in a Space.
 ---
 
