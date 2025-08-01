@@ -133,7 +133,7 @@ AWS_POD=$(kubectl get pods -n upbound-system | grep provider-aws | awk '{print $
 CROSSPLANE_POD=$(kubectl get pods -n upbound-system | grep crossplane | awk '{print $1}') && \
           kubectl delete pod -n upbound-system $CROSSPLANE_POD
 ```
-
+<div style={{overflowX: 'auto'}}>
 <!-- vale off -->
 | **Parameter**                                       | **Description**                                                                                                                                                                                                                                                                           | **Default**                                                                                                                                                                                                                                                                                                                                                        |
 |-----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -187,7 +187,7 @@ CROSSPLANE_POD=$(kubectl get pods -n upbound-system | grep crossplane | awk '{pr
 | tolerations                                         | Enable `tolerations` for the `crossplane` pod.                                                                                                                                                                                                                                            | `{}` - Tolerations aren't configured.                                                                                                                                                                                                                                                                                                                              |
 | webhooks.enabled                                    | Create a service and expose TCP port 9443 to support `webhooks` for all Crossplane created pods.                                                                                                                                                                                          | `false`                                                                                                                                                                                                                                                                                                                                                            |
 <!-- vale on -->
-
+</div>
 
 [official-providers]: /img/providers
 [up-command-line]: /operate/cli/
