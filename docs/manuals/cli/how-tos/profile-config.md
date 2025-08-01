@@ -1,6 +1,7 @@
 ---
-title: Manage your `up` profile
+title: Manage your up CLI profile
 sidebar_position: 10
+description: "Use the Up CLI to switch between profiles"
 ---
 
 This guide explains how to interact with your Upbound profile in the `up` CLI.

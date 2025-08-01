@@ -1,5 +1,7 @@
 ---
-title: Configure your `up` context
+title: Configure your up CLI context
+sidebar_position: 11
+description: "Set your kubeconfig context for your Space or cluster"
 ---
 
 This guide explains how to navigate and configure contexts using the `up ctx` command.
