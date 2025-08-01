@@ -1,45 +1,60 @@
 ---
-title: Create a new project 
+title: Control Plane Project Setup
 sidebar_position: 1
 description: The source of your control plane configurations. A control plane project
   contains the `upbound.yaml` file and any dependencies for your project.
 ---
-<!-- vale gitlab.HeadingContent = NO -->
-# Overview
-<!-- vale gitlab.HeadingContent = YES -->
 
-<!-- vale gitlab.Substitutions = NO -->
-Control plane projects are source-level representations of your control plane. A
-control plane project is any folder that contains an `upbound.yaml` project
-file.
+This guide explains how to create and configure a control plane project and build custom
+infrastructure APIs.
 
-## Create a new project
+Control plane projects are source-level representations of your control plane.
 
-Create a project with the [up project init][up-project-init] command. A control plane project houses
-the definition of your control plane.
+Use this guide when you're ready to start building control plane projects after
+completing the Builder's Workshop. If you want to try Upbound Crossplane for the
+first time, try the [Quickstart][quickstart] instead.
 
-```ini
-up project init
-initialized project "new-project" in directory "new-project" from https://github.com/upbound/project-template (main)
-```
+## Prerequisities
 
-Change into your new project directory.
+Before you begin, make sure you have:
 
-```shell
-cd new-project
-```
+* Finished the [Builder's Workshp][workshop]
+* Installed the `up` CLI
+* A Docker compatible runtime running
 
-The `up project init` command creates:
-* An `upbound.yaml` project configuration file
-* An `apis/` directory for composition definitions
-* An `examples/` directory for example claims
-* `.github/` and `.vscode/` directories for CI/CD and local development
+## Initialize your project
 
-## The project file
+Choose your starting approach based on your goals:
 
-Projects require an `upbound.yaml` file. The command `up project init` by default uses an Upbound-provided template, which creates a predefined `upbound.yaml`. If you choose to override the default template with your own, make sure your template contains an `upbound.yaml` in the root directory.
+The `up` CLI allows you to choose between an empty project or an AWS S3
+Bucket base. To start from scratch use:
 
-Project files define the constraints and dependencies of your control plane. The project file also contains metadata about your project, such as the maintainers of the project and which template it's derived from.
+<EditCode language="shell">
+{`
+up project init $@YOUR_CONTROL_PLANE$@ --scratch
+`}
+</EditCode>
+
+This command creates a new directory with your project name.
+
+Your project directory contains:
+
+* `upbound.yaml` - Project configuration file
+* `apis/` - Directory for your custom resource definitions
+* `functions/` - Directory for business logic functions
+* `examples/` - Directory for sample resources
+* `tests/` - Directory for automated tests
+
+## `upbound.yaml`
+
+Projects require an `upbound.yaml` file. The command `up project init` by
+default uses an Upbound-provided template, which creates a predefined
+`upbound.yaml`. If you choose to override the default template with your own,
+make sure your template contains an `upbound.yaml` in the root directory.
+
+Project files define the constraints and dependencies of your control plane. The
+project file also contains metadata about your project, such as the maintainers
+of the project and which template it's derived from.
 
 A typical `upbound.yaml` file looks like the following:
 
@@ -79,7 +94,6 @@ The control plane project defines:
 When you initialize a project, the default project directory structure is:
 
 ```bash
-.
 ├── upbound.yaml # Your control plane project is defined here
 ├── apis/ # Each API (XRD and composition) are defined here
 │   ├── SuperBucket/
@@ -105,13 +119,25 @@ When you initialize a project, the default project directory structure is:
 │   │   └── example.yaml
 └── _output/ # "up project build" places the OCI image output here.
 ```
-
 <!-- vale gitlab.Substitutions = YES -->
 ## Project templates
-New projects created with the command `up project init` scaffold a project from a default template source, [github.com/upbound/project-template][github-com-upbound-project-template]. You can use any Git repository as the template source. You can specify the template by providing either a full Git URL or a well-known template name. You can use the following well-known template names:
+
+New projects created with the command `up project init` scaffold a project from
+a default template source,
+[github.com/upbound/project-template][github-com-upbound-project-template]. You
+can use any Git repository as the template source. You can specify the template
+by providing either a full Git URL or a well-known template name. You can use
+the following well-known template names:
 
   - project-template `(https://github.com/upbound/project-template)`
   - project-template-ssh `(git@github.com:upbound/project-template.git)`
+
+To initialize with a custom template:
+
+```shell
+up project init my-project --template github.com/{your-org}/{custom-template}
+--language=kcl|go|python
+```
 
 For more information, review the [CLI reference documentation][cli-reference-documentation].
 

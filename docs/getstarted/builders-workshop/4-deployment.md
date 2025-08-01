@@ -257,10 +257,7 @@ Now, you can validate your results through the Upbound Console, and make any
 changes to test your resources required.
 
 
-## Next steps
-
-You just created an Upbound project from scratch with an embedded function and a
-resource claim.
+## Clean up
 
 Be sure to destroy your resources to avoid cloud costs:
 
@@ -274,8 +271,21 @@ Destroy your control plane:
 up ctp delete upbound-ctp
 ```
 
+## Next steps
+
+You just created an Upbound project from scratch with an embedded function and a
+resource claim.
+
+Next, try out an Intelligent Control Plane solution or build your own Internal
+Developer Platform.
+
+For more information on projects and how to build control planes, checkout the [CLI
+Build][build] manuals.
+
+
 [up-account]: https://www.upbound.io/register/a
 [project-foundations]: /getstarted/builders-workshop/1-project-foundations
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
+[build]: /manuals/cli/projects
