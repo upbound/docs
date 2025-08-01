@@ -219,131 +219,143 @@ const CopyMarkdownButton = () => {
     
     markdown += `# ${title}\n\n`;
     
-    // Extract content while preserving structure
-    const walker = document.createTreeWalker(
-      mainContent,
-      NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
-      {
-        acceptNode: function(node) {
-          // Skip navigation, sidebar, and other non-content elements
-          if (node.nodeType === Node.ELEMENT_NODE) {
-            const element = node;
-            if (element.closest('.navbar') ||
-                element.closest('.menu') ||
-                element.closest('.table-of-contents') ||
-                element.closest('.pagination-nav') ||
-                element.closest('.breadcrumbs') ||
-                element.closest('.copy-markdown-button') ||
-                element.closest('[class*="sidebar"]') ||
-                element.closest('nav') ||
-                element.matches('script, style, noscript')) {
-              return NodeFilter.FILTER_REJECT;
-            }
-          }
-          return NodeFilter.FILTER_ACCEPT;
-        }
+    // Improved content extraction
+    const processElement = (element, level = 0) => {
+      let content = '';
+      
+      // Skip unwanted elements
+      if (element.closest && (
+          element.closest('.navbar') ||
+          element.closest('.menu') ||
+          element.closest('.table-of-contents') ||
+          element.closest('.pagination-nav') ||
+          element.closest('.breadcrumbs') ||
+          element.closest('.copy-markdown-button-container') ||
+          element.closest('[class*="sidebar"]') ||
+          element.closest('nav') ||
+          element.matches && element.matches('script, style, noscript')
+      )) {
+        return '';
       }
-    );
 
-    let currentNode;
-    const processedElements = new Set();
-    
-    while (currentNode = walker.nextNode()) {
-      if (currentNode.nodeType === Node.ELEMENT_NODE) {
-        const element = currentNode;
-        
-        // Skip if we've already processed this element or its parent
-        if (processedElements.has(element) || 
-            Array.from(processedElements).some(processed => processed.contains(element))) {
-          continue;
-        }
-        
-        processedElements.add(element);
-        
-        const tagName = element.tagName.toLowerCase();
-        const text = element.textContent?.trim();
-        
-        if (!text) continue;
-        
-        switch (tagName) {
-          case 'h1':
-            // Skip main title as we already added it
-            if (element === document.querySelector('h1')) continue;
-            markdown += `\n# ${text}\n\n`;
-            break;
-          case 'h2':
-            markdown += `\n## ${text}\n\n`;
-            break;
-          case 'h3':
-            markdown += `\n### ${text}\n\n`;
-            break;
-          case 'h4':
-            markdown += `\n#### ${text}\n\n`;
-            break;
-          case 'h5':
-            markdown += `\n##### ${text}\n\n`;
-            break;
-          case 'h6':
-            markdown += `\n###### ${text}\n\n`;
-            break;
-          case 'p':
-            if (!element.closest('pre, code')) {
-              markdown += `${text}\n\n`;
-            }
-            break;
-          case 'pre':
-            const codeElement = element.querySelector('code');
-            const codeText = codeElement ? codeElement.textContent : text;
-            const language = codeElement?.className?.match(/language-(\w+)/)?.[1] || '';
-            markdown += `\`\`\`${language}\n${codeText}\n\`\`\`\n\n`;
-            break;
-          case 'code':
-            if (!element.closest('pre')) {
-              markdown += `\`${text}\``;
-            }
-            break;
-          case 'ul':
-          case 'ol':
-            if (!element.closest('ul, ol')) {
-              const listItems = Array.from(element.querySelectorAll('li'))
-                .map((li, index) => {
-                  const itemText = li.textContent?.trim();
-                  return tagName === 'ul' ? `- ${itemText}` : `${index + 1}. ${itemText}`;
-                })
-                .join('\n');
-              markdown += `${listItems}\n\n`;
-            }
-            break;
-          case 'blockquote':
-            const quoteText = text.split('\n').map(line => `> ${line}`).join('\n');
-            markdown += `${quoteText}\n\n`;
-            break;
-          case 'table':
-            // Simple table extraction
-            const rows = Array.from(element.querySelectorAll('tr'));
-            if (rows.length > 0) {
-              const tableMarkdown = rows.map((row, rowIndex) => {
-                const cells = Array.from(row.querySelectorAll('td, th'));
-                const rowText = cells.map(cell => cell.textContent?.trim() || '').join(' | ');
-                if (rowIndex === 0 && row.closest('thead')) {
-                  const separator = cells.map(() => '---').join(' | ');
-                  return `| ${rowText} |\n| ${separator} |`;
+      const tagName = element.tagName?.toLowerCase();
+      
+      switch (tagName) {
+        case 'h1':
+          // Skip main title as we already added it
+          if (element === document.querySelector('h1')) return '';
+          content += `\n# ${element.textContent.trim()}\n\n`;
+          break;
+        case 'h2':
+          content += `\n## ${element.textContent.trim()}\n\n`;
+          break;
+        case 'h3':
+          content += `\n### ${element.textContent.trim()}\n\n`;
+          break;
+        case 'h4':
+          content += `\n#### ${element.textContent.trim()}\n\n`;
+          break;
+        case 'h5':
+          content += `\n##### ${element.textContent.trim()}\n\n`;
+          break;
+        case 'h6':
+          content += `\n###### ${element.textContent.trim()}\n\n`;
+          break;
+        case 'p':
+          const text = element.textContent?.trim();
+          if (text && !element.closest('pre, code')) {
+            content += `${text}\n\n`;
+          }
+          break;
+        case 'pre':
+          const codeElement = element.querySelector('code');
+          const codeText = codeElement ? codeElement.textContent : element.textContent;
+          const language = codeElement?.className?.match(/language-(\w+)/)?.[1] || '';
+          content += `\`\`\`${language}\n${codeText.trim()}\n\`\`\`\n\n`;
+          break;
+        case 'blockquote':
+          const quoteLines = element.textContent?.trim().split('\n') || [];
+          const quotedText = quoteLines.map(line => `> ${line.trim()}`).join('\n');
+          content += `${quotedText}\n\n`;
+          break;
+        case 'ul':
+          const ulItems = Array.from(element.children).filter(child => child.tagName === 'LI');
+          ulItems.forEach(li => {
+            content += `- ${li.textContent?.trim()}\n`;
+          });
+          content += '\n';
+          break;
+        case 'ol':
+          const olItems = Array.from(element.children).filter(child => child.tagName === 'LI');
+          olItems.forEach((li, index) => {
+            content += `${index + 1}. ${li.textContent?.trim()}\n`;
+          });
+          content += '\n';
+          break;
+        case 'table':
+          const rows = Array.from(element.querySelectorAll('tr'));
+          if (rows.length > 0) {
+            rows.forEach((row, rowIndex) => {
+              const cells = Array.from(row.querySelectorAll('td, th'));
+              const rowText = cells.map(cell => cell.textContent?.trim() || '').join(' | ');
+              content += `| ${rowText} |\n`;
+              
+              // Add separator after header row
+              if (rowIndex === 0) {
+                const separator = cells.map(() => '---').join(' | ');
+                content += `| ${separator} |\n`;
+              }
+            });
+            content += '\n';
+          }
+          break;
+        case 'div':
+        case 'section':
+        case 'article':
+          // For container elements, process children
+          Array.from(element.children).forEach(child => {
+            content += processElement(child, level + 1);
+          });
+          break;
+        default:
+          // For other elements, check if they have direct text content
+          if (element.children.length === 0) {
+            const text = element.textContent?.trim();
+            if (text && text.length > 0) {
+              // Handle inline code
+              if (tagName === 'code') {
+                content += `\`${text}\``;
+              } else if (tagName === 'strong' || tagName === 'b') {
+                content += `**${text}**`;
+              } else if (tagName === 'em' || tagName === 'i') {
+                content += `*${text}*`;
+              } else if (tagName === 'a') {
+                const href = element.href;
+                if (href) {
+                  content += `[${text}](${href})`;
+                } else {
+                  content += text;
                 }
-                return `| ${rowText} |`;
-              }).join('\n');
-              markdown += `${tableMarkdown}\n\n`;
+              } else {
+                content += text;
+              }
             }
-            break;
-          case 'a':
-            if (element.href && !element.closest('nav, .menu')) {
-              const linkText = text;
-              const href = element.href;
-              markdown += `[${linkText}](${href})`;
-            }
-            break;
-        }
+          } else {
+            // Has children, process them
+            Array.from(element.children).forEach(child => {
+              content += processElement(child, level + 1);
+            });
+          }
+          break;
       }
-    }
+      
+      return content;
+    };
+
+    // Process all direct children of main content
+    Array.from(mainContent.children).forEach(child => {
+      markdown += processElement(child);
+    });
     
     // Clean up extra whitespace
     markdown = markdown.replace(/\n{3,}/g, '\n\n').trim();
