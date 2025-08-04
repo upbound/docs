@@ -18,7 +18,7 @@ export function LanguageProvider({ children }) {
 
   // Auto-select first available if current selection isn't available
   useEffect(() => {
-    if (availableLanguages.size > 0 && !availableLanguages.has(selectedLanguage)) {
+    if (availableLanguages.size > 1 && !availableLanguages.has(selectedLanguage)) {
       const firstLang = Array.from(availableLanguages)[0];
       setSelectedLanguage(firstLang);
       localStorage.setItem('selected-language', firstLang);
@@ -26,7 +26,7 @@ export function LanguageProvider({ children }) {
   }, [availableLanguages, selectedLanguage]);
 
   useEffect(() => {
-    if (availableClouds.size > 0 && !availableClouds.has(selectedCloud)) {
+    if (availableClouds.size > 1 && !availableClouds.has(selectedCloud)) {
       const firstCloud = Array.from(availableClouds)[0];
       setSelectedCloud(firstCloud);
       localStorage.setItem('selected-cloud', firstCloud);
