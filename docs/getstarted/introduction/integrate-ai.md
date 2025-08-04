@@ -1,96 +1,161 @@
 ---
-title: Integrate an AI pipeline
-sidebar_position: 2
+title: Create an AI-powered control plane
+description: "Use Upbound Crossplane to build and manage an AI-powered control
+plane"
+sidebar_position: 4
 ---
 
-Now that you have an `App` deployment, this guide walks you through how to add
-an AI operation pipeline to your composition. Upbound's AI-native architeture
-enables you to integrate intelligent automation directly into your control
-plane. The advantages of intelligent control planes are enhanced observability,
-automated diagnostics, and intelligent resource management.
+Upbound Crossplane enhances the control plane workflow with AI-powered
+pipelines. You can add LLM enabled Operations functions to your control plane
+and improve your platform experience.
 
-By the end of this guide, you'll have an AI-powered pipeline that can
-automatically analyze resource status changes
+In this tutorial, you'll learn how to install and configure an intelligent
+function in your control plane. This tutorial is suitable users new to control
+planes. If you're already familiar with control plane operations, checkout our
+intelligent control plane solutions guide.
+
+This tutorial assumes you have:
+
+* Basic cloud provider concepts in AWS, Azure, or GCP
+* AI, LLM, and MCP concepts
 
 ## Prerequisites
 
-* An Upbound account
-* The `up` CLI installed
-* `kubectl` installed
-* An LLM API key (Claude, OpenAI)
+Before you begin, make sure you have:
 
-Make sure you've finished the previous guide before moving on to this tutorial.
+* a control plane running (use the previous guide)
+* an AI API key
 
-## Set up your AI provider
+## Configure your environment
 
-First, create an environment variable to store your AI provider credentials:
+First, login to Upbound and unset your current `kubeconfig` context. This allows
+you to pull the function from the marketplace and use your local control plane
+as the current context:
 
-<Tabs>
-<TabItem value="Claude">
-```shell
-export ANTHROPIC_API_KEY="sk-ant-api..."
-```
-Create a new secret with this API key:
 
 ```shell
-kubectl -n crossplane-system create secret generic api-key-anthropic --from-literal=ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
+up login
+kubectl config unset current-context
 ```
 
-</TabItem>
-
-<TabItem value="OpenAI">
-```shell
-todo
-```
-</TabItem>
-</Tabs>
-
-## Add an AI pipeline step
-
-Add the status transformer function to your project dependencies:
+If you don't have a running control plane, create a new control plane project
+from scratch:
 
 ```shell
-up dep add URL
+up project init uxp-ai && cd uxp-ai
 ```
 
-Next, add the following function configuration to your `composition.yaml` file:
+Next, export your Anthropic API key as an environment variable:
+
+## Add your AI dependencies
+
+Upbound Crossplane provides several intelligent control plane functions to help
+you build and manage your infrastructure. You have to add these functions to
+your control plane project as dependencies.
+
+
+In your running control plane, add the new function and the providers as dependencies:
+
+```shell
+up dep add xpkg.upbound.io/upbound/function-claude-status-transformer
+
+up dep add xpkg.upbound.io/upbound/provider-aws-iam
+
+up dep add xpkg.upbound.io/upbound/provider-aws-sfn
+```
+
+## Generate your composition
+
+You need to deploy some resources with a composition to see the function
+utility. Generate a new composite resource (XR) file:
+
+```shell
+up example generate --type xr --api-group example.upbound.io --api-version
+v1alpha1 --kind Network --name example
+```
+
+Next, edit your XR example to simulate errors in the composition:
+
 
 ```yaml
-  - functionRef:
-      name: upbound-function-claude-status-transformer
-    input:
-      apiVersion: function-claude-status-transformer.fn.crossplane.io/v1beta1
-      kind: StatusTransformation
-      additionalContext: ""
-    step: upbound-function-claude-status-transformer
-    credentials:
-    - name: claude
-      source: Secret
-      secretRef:
-        namespace: crossplane-system
-        name: api-key-anthropic
+apiVersion: example.upbound.io/v1alpha1
+kind: Network
+metadata:
+  name: example
+  namespace: default
+spec:
+  simulateFailures: true
+  region: "us-east-1"
 ```
 
-Save your composition pipeline step and run your project again to pick up your
-changes:
+Generate your XRD and composition from your XR:
+
+```shell
+up xrd generate 
+up composition generate 
+```
+
+Generate your function:
+
+```shell
+up function generate --language=python test-function 
+```
+
+
+## Run and configure your AI features
+
+Run your project with the new configuration information:
+
 
 ```shell
 up project run --local
 ```
 
-## Update your configuration
+With your new project information, you need to create a Kubernetes secret that
+references your API key:
 
-Make a change to trigger the AI function
+```shell
+kubectl -n crossplane-system create secret generic api-key-anthropic \
+  --from-literal=key="${ANTHROPIC_API_KEY}" \
+  --from-literal=ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
+```
 
-Observe the AI-ness of it all.
+Set up your AWS credentials and create a `ProviderConfig` that references your
+AWS secret key. For more information on how to create an `aws-secret`, follow
+the [Provider Authentication docs][auth-docs].
 
-Add the prompt function.
+```shell
+kubectl apply -f - <<EOF
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: creds
+EOF
+```
 
-## Clean up
+## Apply and use your AI-powered control plane
 
-## Next steps
-
-Want more AI? Try these guides:
-
+When you created your XR file, we intentionally added a failing component to see
+the status transformer in action. Apply the XR to your control plane:
 
 
+```shell
+kubectl apply --filename examples/network/example.yaml
+```
+
+
+Open the Web UI:
+
+```shell
+up uxp web-ui open
+```
+
+
+Navigate to the URL to see your control plane web UI.
