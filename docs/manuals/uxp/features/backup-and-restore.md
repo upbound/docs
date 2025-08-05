@@ -40,7 +40,7 @@ object store with a `BackupConfig`. Backup operations export:
 * Upbound core `.upbound.io` CRDs
 * CRDs owned by Crossplane packages
 * CRDs owned by a `CompositeResourceDefinition`
-* Secrets and `ConfigMaps`
+* `Secrets` and `ConfigMaps`
 
 Backups capture schema definitions and configuration needed to recreate your
 platform setup, not the actual provisioned resources themselves.

@@ -90,7 +90,7 @@ If you don't provide a license key, UXP runs the `Community` edition.
 Apply the license with the up CLI:
 
 ```bash
-up uxp license apply $UXP_LICENSE_KEY
+up uxp license apply /path/to/license.json
 ```
 :::important
 
