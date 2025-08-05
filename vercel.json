@@ -427,7 +427,7 @@
         },
         {
             "source": "/deploy/backup-and-restore",
-            "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
+            "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
@@ -677,7 +677,7 @@
         },
         {
             "source": "/all-spaces/backup-and-restore",
-            "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
+            "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
@@ -1067,7 +1067,7 @@
         },
         {
             "source": "/disconnected-spaces/backup-and-restore",
-            "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
+            "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
@@ -1327,7 +1327,7 @@
         },
         {
             "source": "/spaces/backup-and-restore",
-            "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
+            "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
