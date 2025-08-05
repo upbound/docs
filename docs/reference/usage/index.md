@@ -19,3 +19,4 @@ Information on Upbound's release policies and lifecycle.
 [licenses]: licenses
 [ingress-ips]: ipaddresses
 [lifecycle]: lifecycle
+[telemetry]: telemetry
