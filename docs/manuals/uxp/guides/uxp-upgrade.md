@@ -3,7 +3,7 @@ title: Upgrade from Open-Source Crossplane to Upbound Crossplane
 ---
 
 This guide walks through how to upgrade from the Open-Source version of
-Crossplane v1/v2 to Upbound Crossplane(UXP) with both Community and Commercial
+Crossplane v1/v2 to Upbound Crossplane(UXP) v2 with both Community and Commercial
 licenses.
 
 ## Prerequisites
@@ -62,15 +62,15 @@ minimal disruption.
 
 ### Crossplane to Community UXP
 
-Moving from Open Source Crossplane v2 to Community UXP provides enhanced
+Moving from Open Source Crossplane to Community UXP provides enhanced
 stability and features like improved package management and observability. This
 upgrade path uses a **free Community license**.
 
 **Step 1: Upgrade to UXP**
 
 ```bash
-export UXP_VERSION=VERSION
-helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound-dev/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull"
+export UXP_VERSION=<UXP v2 version>
+helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull"
 ```
 
 **Step 2: Verify your upgrade**
@@ -113,7 +113,7 @@ kubectl get managed
 
 ### Crossplane v2 to Commercial UXP
 
-Moving from Crossplane v2 to a Commercial UXP deployment provides production
+Moving from Open Source Crossplane to a Commercial UXP v2 provides production
 level enterprise features like ProviderVPA, Knative, and enterprise support.
 This upgrade path uses a **paid Commercial license**. Review our pricing plans
 for more information.
@@ -121,9 +121,9 @@ for more information.
 **Step 1: Install your Commercial License**
 
 ```bash
-export UXP_VERSION=VERSION
+export UXP_VERSION=<UXP v2 version>
 export UXP_LICENSE=<commercial license>
-helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound-dev/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull" --set "args[0]=--package-runtime=Function=External" --set "upbound.manager.args[0]=--enable-provider-vpa,upbound.manager.args[1]=--enable-knative-runtime" --set "upbound.licenseKey=${UXP_LICENSE}"
+helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull" --set "upbound.manager.args[0]=--enable-provider-vpa,upbound.manager.args[1]=--enable-knative-runtime"
 
 up uxp license apply uxp-dev-license.json
 ```
@@ -155,42 +155,6 @@ upbound-provider-stress-8ef6ab35affd   True      True      xpkg.upbound.io/upbou
 ```
 
 
-**Step 4: Find any KNative conflicts**
-
-Knative services may initially fail with "NotOwned" status:
-
-```bash
-kubectl -n crossplane-system get services.serving
-```
-
-If you see services in "NotOwned" state:
-
-```
-NAME                                              URL                                                                                          LATESTCREATED                                                  LATESTREADY                                                    READY   REASON
-crossplane-contrib-function-auto-ready            http://crossplane-contrib-function-auto-ready.crossplane-system.svc.cluster.local            crossplane-contrib-function-auto-ready-35bfe51b9ce9            crossplane-contrib-function-auto-ready-35bfe51b9ce9            False   NotOwned
-crossplane-contrib-function-patch-and-transform   http://crossplane-contrib-function-patch-and-transform.crossplane-system.svc.cluster.local   crossplane-contrib-function-patch-and-transform-d000d8ce634a   crossplane-contrib-function-patch-and-transform-d000d8ce634a   False   NotOwned
-```
-
-**Problem**: Existing function services from OSS Crossplane installation are not owned by Knative services.
-
-**Solution**: Delete the conflicting services:
-
-```bash
-kubectl -n crossplane-system delete service crossplane-contrib-function-auto-ready crossplane-contrib-function-patch-and-transform
-```
-
-After deletion, Knative services will become ready:
-
-```bash
-kubectl -n crossplane-system get services.serving
-```
-
-Expected output:
-```
-NAME                                              URL                                                                                           LATESTCREATED                                                  LATESTREADY                                                    READY   REASON
-crossplane-contrib-function-auto-ready            https://crossplane-contrib-function-auto-ready.crossplane-system.svc.cluster.local            crossplane-contrib-function-auto-ready-35bfe51b9ce9            crossplane-contrib-function-auto-ready-35bfe51b9ce9            True
-crossplane-contrib-function-patch-and-transform   https://crossplane-contrib-function-patch-and-transform.crossplane-system.svc.cluster.local   crossplane-contrib-function-patch-and-transform-d000d8ce634a   crossplane-contrib-function-patch-and-transform-d000d8ce634a   True
-```
 
 **Step 5: Verify function revision runtime update**
 
@@ -219,12 +183,3 @@ crossplane-contrib-function-patch-and-transform-d000d8ce634a   True      True   
 kubectl -n crossplane-system delete deploy <provider-deployment-name>
 ```
 
-### Knative Service Ownership Conflicts (Commercial UXP)
-
-**Issue**: Knative services show "NotOwned" status due to existing services from OSS installation.
-
-**Workaround**: Delete the conflicting services to allow Knative to take ownership:
-
-```bash
-kubectl -n crossplane-system delete service <service-names>
-```
