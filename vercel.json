@@ -1221,6 +1221,11 @@
             "permanent": true
         },
         {
+            "source": "/operate/ctp-connector",
+            "destination": "/manuals/spaces/features/ctp-connector",
+            "permanent": true
+        },
+        {
             "source": "/mcp/debugging-a-ctp",
             "destination": "/manuals/spaces/guides/debugging-a-ctp",
             "permanent": true
