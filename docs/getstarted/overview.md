@@ -3,6 +3,7 @@ title: Get Upbound
 sidebar_position: 1
 slug: "/getstarted"
 ---
+import { GetStarted } from '@site/src/components/GetStartedCallout';
 
 Welcome to Upbound, a platform for building autonomous infrastructure platforms
 that provision, operate, and adapt without human intervention.
@@ -20,26 +21,32 @@ build your own infrastructure platform.
 
 For more advanced concepts and scenarios in Upbound, see [Guides][guides].
 
-## Sign up and install the `up` CLI
 
--   Create an account on Upbound by [registering your organization][register].
--   Install the [up][up] CLI to gain access to all Upbound's tooling on your machine.
+<GetStarted />
 
+<!-- vale Microsoft.Contractions = NO -->
+<!-- vale Microsoft.HeadingPunctuation = NO -->
+## What is Upbound?
+<!-- vale Microsoft.Contractions = YES -->
 
-```shell
-curl -sL "https://cli.upbound.io" | sh
-```
+Upbound is the platform that helps platform engineers automate and build their
+platforms.
 
-Find more installation methods on the [Up CLI installation guide][up].
+The power of the Upbound platform is the **control plane**. A control plane is
+software that controls other software by exposing custom APIs for your
+infrastructure to automatically maintain your desired state. Upbound's control
+plane framework lets you manage infrastructure and resources across clouds and
+services.
 
-<!-- vale Google.We = NO -->
-    :::tip
-    Get started with Upbound using the free _Community_ plan or upgrade to a
-    _Standard_ plan. For more information, review our
-    [pricing plans][pricing]
-    :::
+**The value of control planes is building your own custom APIs to provision the
+resources your users need.**
 
-<!-- vale Google.We = YES -->
+The control plane constantly monitors your cloud resources to meet the state you
+define in your custom APIs. You define your resources and Upbound parses,
+connects with the service, and manages the lifecycle on your behalf.
+
+<!-- vale Microsoft.HeadingPunctuation = YES -->
+
 ## Next steps
 
 Follow the [introduction][intro] guide to get started building your own control plane.

@@ -24,7 +24,7 @@ const DocumentationCards = () => {
     },
     {
       title: 'Official Packages',
-      description: 'Production-ready provider packages for AWS, Azure, GCP, Kubernetes, and other platforms with authentication and migration guides.',
+      description: 'Production-ready provider packages for cloud and infrastructure platforms with authentication and migration guides.',
       link: './packages/overview'
     },
     {
@@ -53,10 +53,9 @@ const DocumentationCards = () => {
         .documentation-card {
           display: block;
           padding: 1.25rem;
-          border: 1px solid var(--upbound-border-color);
+          border: 1px solid var(--upbound-border-color) !important;
           border-radius: 0.75rem;
           text-decoration: none !important;
-          color: inherit;
           background-color: var(--ifm-background-color);
           transition: all 0.3s ease;
           height: 100%;

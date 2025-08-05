@@ -72,8 +72,6 @@
   /* Custom Design Variables */
   --upbound-light-bg: var(--up-grey-100);
   --upbound-border-color: var(--up-grey-300);
-  --upbound-card-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  --upbound-card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
   
   --ifm-menu-color: var(--font-color-medium);
   --ifm-menu-color-active: var(--grape);
