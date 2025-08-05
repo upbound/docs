@@ -154,7 +154,7 @@ spec:
   configRef:
     name: default
   deletionPolicy: Delete
-  schedule: @weekly
+  schedule: '@weekly'
 ```
 
 The `spec.schedule` field is a [Cron-formatted][cron] string. Some common examples are below:
