@@ -29,14 +29,4 @@ spec:
 
 ## Writing a WatchOperation spec
 
-TODO
-
-## Next steps
-
-Read the API documentation for WatchOperation for more details.
-
-[operations]: overview
-[cron]: https://en.wikipedia.org/wiki/Cron
-[compositions]: /manuals/uxp/composition/overview
-[ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/
-[functionMarketplace]: https://marketplace.upbound.io/functions
+The `spec.watch` and `spec.operationTemplate` fields are required.
