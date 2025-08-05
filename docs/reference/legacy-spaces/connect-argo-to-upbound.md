@@ -139,8 +139,8 @@ kubectl get configuration
 
 # The output should look like this:
 NAME                                      INSTALLED   HEALTHY   PACKAGE                                                          AGE
-platform-ref-aws                          True        True      xpkg.upbound.io/upbound/platform-ref-aws:v0.9.0                  2m51s
-upbound-configuration-app                 True        True      xpkg.upbound.io/upbound/configuration-app:v0.2.0                 2m43s
+platform-ref-aws                          True        True      xpkg.upbound.io/upbound/platform-ref-aws:v1.4.0                  2m51s
+upbound-configuration-app                 True        True      xpkg.upbound.io/upbound/configuration-app:v0.12.1                2m43s
 upbound-configuration-aws-database        True        True      xpkg.upbound.io/upbound/configuration-aws-database:v0.5.0        2m47s
 upbound-configuration-aws-eks             True        True      xpkg.upbound.io/upbound/configuration-aws-eks:v0.5.0             2m45s
 upbound-configuration-aws-network         True        True      xpkg.upbound.io/upbound/configuration-aws-network:v0.7.0         2m49s

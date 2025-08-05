@@ -104,7 +104,7 @@ spec:
 Use the [up dependency add][up-dependency-add] command to install configurations into your Upbound project.
 
 ```shell
-up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0
+up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.4.0
 ```
 
 In your `upbound.yaml` file, the configuration you just installed is automatically captured in the `spec.dependsOn` value:

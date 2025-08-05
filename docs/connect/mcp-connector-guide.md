@@ -37,7 +37,7 @@ up ctp connect my-control-plane
 For convenience, install a an Upbound [platform reference Configuration][platform-reference-configuration] from the marketplace. For production scenarios, replace this with your own Crossplane Configurations or compositions.
 
 ```bash
-up ctp configuration install xpkg.upbound.io/upbound/platform-ref-aws:v1.0.0
+up ctp configuration install xpkg.upbound.io/upbound/platform-ref-aws:v1.4.0
 ```
 
 ## Fetch the control plane's connection details

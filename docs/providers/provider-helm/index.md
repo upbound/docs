@@ -43,6 +43,6 @@ Install the provider from the [Upbound Marketplace][upbound-marketplace-1]
 [support-and-maintenance]: /usage/support
 
 [v0-20-0-release-notes]: https://github.com/crossplane-contrib/provider-helm/releases/tag/v0.20.0
-[upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-helm/v0.20.0
+[upbound-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-helm/v0.21.1
 [v0-19-0-release-notes]: https://github.com/crossplane-contrib/provider-helm/releases/tag/v0.19.0
-[upbound-marketplace-1]: https://marketplace.upbound.io/providers/upbound/provider-helm/v0.19.0
+[upbound-marketplace-1]: https://marketplace.upbound.io/providers/upbound/provider-helm/v0.21.1

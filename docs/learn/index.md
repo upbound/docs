@@ -82,21 +82,21 @@ Clone the demo repository:
 <TabItem value="aws" label="AWS">
 
 ```shell
-git clone https://github.com/upbound/uppound-project-aws && cd uppound-project-aws
+git clone https://github.com/upbound/upbound-project-aws && cd upbound-project-aws
 ```
 
 </TabItem>
 <TabItem value="azure" label="Azure">
 
 ```shell
-git clone https://github.com/upbound/uppound-project-azure && cd uppound-project-azure
+git clone https://github.com/upbound/upbound-project-azure && cd upbound-project-azure
 ```
 
 </TabItem>
 <TabItem value="gcp" label="GCP">
 
 ```shell
-git clone https://github.com/upbound/uppound-project-gcp && cd uppound-project-gcp
+git clone https://github.com/upbound/upbound-project-gcp && cd upbound-project-gcp
 ```
 
 </TabItem>
@@ -204,7 +204,7 @@ resources you defined.
 You can monitor the status of your resources with `kubectl`:
 
 ```shell
-kubectl get xapps.app.uppound.io example --watch
+kubectl get xapps.app.upbound.io example --watch
 ```
 
 You can use the `up` CLI to return the control plane managed resources:
@@ -309,7 +309,7 @@ The example XR file contains several user-exposed parameters:
 
 ```shell {copy-lines=1}
 cat examples/xapp/example.yaml
-apiVersion: app.uppound.io/v1alpha1
+apiVersion: app.upbound.io/v1alpha1
 kind: XApp
 metadata:
   name: example
@@ -318,19 +318,19 @@ spec:
     matchLabels:
       language: kcl
   parameters:
-    id: uppound-aws
+    id: upbound-aws
     containers:
       - name: frontend
-        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
+        image: xpkg.upbound.io/upbound/upbound-demo-frontend:latest
       - name: backend
-        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
+        image: xpkg.upbound.io/upbound/upbound-demo-backend:latest
     region: us-west-2
     version: "1.31"
     nodes:
       count: 3
       instanceType: t3.small
   writeConnectionSecretToRef:
-    name: uppound-aws-kubeconfig
+    name: upbound-aws-kubeconfig
     namespace: default
 ```
 
@@ -341,7 +341,7 @@ spec:
 
 ```shell {copy-lines=1}
 cat examples/xapp/example.yaml
-apiVersion: app.uppound.io/v1alpha1
+apiVersion: app.upbound.io/v1alpha1
 kind: XApp
 metadata:
   name: example
@@ -350,19 +350,19 @@ spec:
     matchLabels:
       language: kcl
   parameters:
-    id: uppound-az
+    id: upbound-az
     containers:
       - name: frontend
-        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
+        image: xpkg.upbound.io/upbound/upbound-demo-frontend:latest
       - name: backend
-        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
+        image: xpkg.upbound.io/upbound/upbound-demo-backend:latest
     region: eastus
     version: "1.30"
     nodes:
       count: 3
       instanceType: Standard_D2s_v3
   writeConnectionSecretToRef:
-    name: uppound-azure-kubeconfig
+    name: upbound-azure-kubeconfig
     namespace: default
 ```
 
@@ -372,7 +372,7 @@ spec:
 
 ```shell {copy-lines=1}
 cat examples/xapp/example.yaml
-apiVersion: app.uppound.io/v1alpha1
+apiVersion: app.upbound.io/v1alpha1
 kind: XApp
 metadata:
   name: example
@@ -381,19 +381,19 @@ spec:
     matchLabels:
       language: kcl
   parameters:
-    id: uppound-gcp
+    id: upbound-gcp
     containers:
       - name: frontend
-        image: xpkg.upbound.io/upbound/uppound-demo-frontend:latest
+        image: xpkg.upbound.io/upbound/upbound-demo-frontend:latest
       - name: backend
-        image: xpkg.upbound.io/upbound/uppound-demo-backend:latest
+        image: xpkg.upbound.io/upbound/upbound-demo-backend:latest
     region: us-west1
     version: "1.30"
     nodes:
       count: 3
       instanceType: e2-standard-2
   writeConnectionSecretToRef:
-    name: uppound-gcp-kubeconfig
+    name: upbound-gcp-kubeconfig
     namespace: default
 ```
 
@@ -417,18 +417,18 @@ Functions have three key parts:
 
 1. **Imports**: references to your resource models
    ```yaml {copy-lines="none"}
-    # functions/uppound-function-kcl/main.k    
-    import models.com.uppound.app.v1alpha1 as appv1alpha1
+    # functions/upbound-function-kcl/main.k    
+    import models.com.upbound.app.v1alpha1 as appv1alpha1
     import models.io.crossplane.kubernetes.v1alpha2 as k8sv1alpha2
     ```
 2. **Inputs**: parameter definitions from your XR
     ```yaml {copy-lines="none"}
-    # functions/uppound-function-kcl/main.k    
+    # functions/upbound-function-kcl/main.k    
     oxr = appv1alpha1.XApp {**option("params").oxr}
     ```
 3. **Resource items**: the actual resources to create
     ```yaml {copy-lines="none"}
-    # functions/uppound-function-kcl/main.k    
+    # functions/upbound-function-kcl/main.k    
     _items = [
         # ... file truncated ...
 
@@ -507,7 +507,7 @@ kubectl delete --filename examples/xapp/example.yaml
 Destroy your development control plane:
 
 ```shell
-up ctp delete uppound-ctp
+up ctp delete upbound-ctp
 ```
 
 ## Next steps

@@ -165,7 +165,7 @@ kind: Provider
 metadata:
   name: provider-helm
 spec:
-  package: xpkg.upbound.io/crossplane-contrib/provider-helm:v0.19.0
+  package: xpkg.upbound.io/crossplane-contrib/provider-helm:v0.21.1
   runtimeConfigRef:
     name: aws-audience
 ```
