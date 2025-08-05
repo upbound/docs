@@ -13,7 +13,8 @@ ecosystem tooling.
 
 :::tip
 
-Add-Ons are a package type that's exclusively available for Upbound Crossplane control planes.
+Add-Ons are a package type that's exclusively available for Upbound Crossplane
+control planes.
 
 :::
 
@@ -31,7 +32,8 @@ The Add-Ons feature provides the following benefits:
 ## How it works
 <!-- vale gitlab.HeadingContent = YES -->
 
-An _AddOn_ is a package type that bundles control plane software from the Kubernetes ecosystem. Examples of such software includes:
+An _AddOn_ is a package type that bundles control plane software from the
+Kubernetes ecosystem. Examples of such software includes:
 
 - Kubernetes policy engines
 - CI/CD tooling
@@ -39,7 +41,11 @@ An _AddOn_ is a package type that bundles control plane software from the Kubern
 
 You can discover Add-Ons in the Upbound Marketplace or build your own package.
 
-You build an _AddOn_ package by wrapping a helm chart along with its requisite _CustomResourceDefinitions_. Your _AddOn_ package gets pushed to an OCI registry, and from there you can apply it to a control plane like you would any other Crossplane package. Your control plane's package manager is responsible for managing the lifecycle of the software once applied.
+You build an _AddOn_ package by wrapping a helm chart along with its requisite
+_CustomResourceDefinitions_. Your _AddOn_ package gets pushed to an OCI
+registry, and from there you can apply it to a control plane like you would any
+other Crossplane package. Your control plane's package manager is responsible
+for managing the lifecycle of the software once applied.
 
 ## Build your own AddOn
 

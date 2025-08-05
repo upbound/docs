@@ -1418,22 +1418,22 @@
         {
             "source": "/connect/gitops",
             "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
-            "permenent": true
+            "permanent": true
         },
         {
             "source": "/quickstart",
             "destination": "/getstarted/introduction/project",
-            "permenent": true
+            "permanent": true
         },
         {
             "source": "/deploy/backup-and-restore",
             "destination": "/manuals/spaces/features/backup-and-restore",
-            "permenent": true
+            "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/attach-detach",
             "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
-            "permenent": true
+            "permanent": true
         }
     ]
 }
