@@ -47,7 +47,7 @@ This table lists the cloud service provider regions supported by Upbound.
 | --- | --- |
 | `us-east-1` | Eastern US (Iowa)
 
-[dedicated-spaces]: /manuals/spaces/guides/cloud-spaces/dedicated-spaces-deployment
-[managed-spaces]: /manuals/spaces/guides/self-hosted/managed-spaces-deployment
-[self-hosted-spaces]: /manuals/spaces/guides/self-hosted/self-hosted-spaces-deployment
+[dedicated-spaces]: /manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment
+[managed-spaces]: /manuals/spaces/howtos/self-hosted/managed-spaces-deployment
+[self-hosted-spaces]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
 [console]: /manuals/console/
