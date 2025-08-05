@@ -1047,7 +1047,7 @@
         },
         {
             "source": "/deploy/spaces/attach-detach",
-            "destination": "/manuals/spaces/guides/self-hosted/attach-detach",
+            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
             "permanent": true
         },
         {
