@@ -30,12 +30,20 @@ upstream failures.
 ## Backup
 
 A control plane backup object requires:
-- a `BackupConfig` that defines your cloud provider object store and secret
-- a `Backup` that specifies your backup name and deletion policy
-
+* a `BackupConfig` that defines your cloud provider object store and secret
+* a `Backup` that specifies your backup name and deletion policy
 
 UXP can capture your control plane and stores the backup information in a cloud
-object store with a `BackupConfig`
+object store with a `BackupConfig`. Backup operations export:
+
+* Crossplane core `.crossplane.io` CRDs
+* Upbound core `.upbound.io` CRDs
+* CRDs owned by Crossplane packages
+* CRDs owned by a `CompositeResourceDefinition`
+* `Secrets` and `ConfigMaps`
+
+Backups capture schema definitions and configuration needed to recreate your
+platform setup, not the actual provisioned resources themselves.
 
 Upbound Crossplane needs a `BackupConfig` object that defines your provider, the
 name of your backup bucket and the credentials associated with that cloud
