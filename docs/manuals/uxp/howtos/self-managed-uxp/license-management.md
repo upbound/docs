@@ -79,19 +79,15 @@ commercial license.
 
 Connect to your Upbound Crossplane cluster.
 
-Download your license file (`uxp-license`) and export it as an environment
-variable:
-
-   ```shell
-   export ${UXP_LICENSE_KEY}=<your-license-key-string>
-   ```
-If you don't provide a license key, UXP runs the `Community` edition.
-
-Apply the license with the up CLI:
+Download your license file and apply the license with the up CLI:
 
 ```bash
 up uxp license apply /path/to/license.json
 ```
+
+If you don't provide a license key, UXP runs the `Community` edition.
+
+
 :::important
 
 **You may not re-use licenses across multiple Upbound Crossplane clusters.**
