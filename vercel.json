@@ -426,11 +426,6 @@
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/attach-detach",
-            "destination": "/manuals/spaces/guides/self-hosted/attach-detach",
-            "permanent": true
-        },
-        {
             "source": "/deploy/backup-and-restore",
             "destination": "/manuals/spaces/guides/self-hosted/backup-and-restore",
             "permanent": true
@@ -767,7 +762,7 @@
         },
         {
             "source": "/all-spaces/self-hosted-spaces/attach-detach",
-            "destination": "/manuals/spaces/guides/self-hosted/attach-detach",
+            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
             "permanent": true
         },
         {

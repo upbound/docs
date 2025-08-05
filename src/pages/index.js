@@ -130,8 +130,8 @@ const LandingPage = () => {
                 <div className="terminal-line terminal-command">$ up project init -t project-template-k8s-webapp -l python my-webapp</div>
  
                 <div className="terminal-line terminal-output">✓ Created control plane project</div>
-                <div className="terminal-line terminal-command">$ cd my-new-project && up project run --local</div>
-                <div className="terminal-line terminal-output"> 💻 Local dev control plane running in kind cluster "my-new-cluster".</div>
+                <div className="terminal-line terminal-command">$ cd my-webapp && up project run --local</div>
+                <div className="terminal-line terminal-output"> 💻 Local dev control plane running in kind cluster "my-webapp".</div>
                 <div className="terminal-line terminal-command">$ up uxp web-ui open</div>
                 <div className="terminal-line terminal-output"></div>
               </div>
