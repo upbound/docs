@@ -34,9 +34,8 @@ This repository contains a [control plane project][project] that defines [watch 
 
 - watching for events emitted by pods in a cluster
 - analyzing them using LLMs and suggesting remediations
-- the remediations are gated by a human-in-the-loop
+- the remediations are gated by a human-in-the-loop approval
 - if the suggested remediation is approved, it gets applied to address the issues
- database in relation to performance metrics sourced from AWS CloudWatch.
 
 ## Configure credentials and runtime settings
 
