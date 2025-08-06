@@ -3,41 +3,37 @@ title: Build and push your first Configuration
 sidebar_position: 2
 ---
 
-Now that you've create a new resource type, you're ready to create an OCI image from the control plane project and share it on the Upbound Marketplace. To do so, you will need to do the following:
+In this tutorial, you'll learn how to build a Configuration package and push it
+to the Upbound Marketplace.
 
-1. Sign in with your Upbound account
-2. Create a repository on Upbound
-3. Build the project into an image
-4. Push the image to a repository in your Upbound account
-5. Before you dive into the hands-on guide, the following are a few core concepts that you should be aware of.
+By the end of this tutorial, you'll be able to:
 
-## Explanation
+* Sign in to Upbound using the CLI
+* Create repositories in your Upbound organization
+* Build Configuration packages
+* Push packages to the Upbound Marketplace
 
-### Configurations
+## Prerequisites
 
-If you're new to [Configurations][configurations], think of it as a standardized packaging format that contains everything needed to run a control plane. It's based on the OCI image format, the same format used by Kubernetes and Docker containers. A Configuration includes:
+Before you begin, make sure you have:
 
-* the APIs a control plane will offer
-* the configuration of the control plane
-* any dependencies it has
+* an Upbound account
+* The `up` CLI installed
+* A control plane project ready to package
 
-These packages can be distributed and shared with others.
+Read the [Create a Control Plane][create] quickstart if you haven't yet.
 
-### Repositories
+## Sign in to Upbound
 
-Like container images, you need a place to store Configurations. Upbound is the default [repository][repositories] source. Upbound provides:
-
-* A centralized place to store these images
-* Automatic API documentation generated for packages.
-* A convenient publishing experience to share with the community via the Upbound Marketplace, if desired.
-
-## Sign in with your Upbound account
-
-To push the Configuration package, you need to sign in with your Upbound account. Run the following to log in with the `up` CLI:
+To push the Configuration package, you need to sign in with your Upbound
+account. Run the following to log in with the `up` CLI:
 
 ```sh
 up login
 ```
+
+This command opens a browser and prompts you to sign in with your Upbound
+credentials.
 
 ## Create a repository
 
@@ -46,6 +42,9 @@ To create a repository in Upbound with the `up` CLI, run the following:
 ```sh
 up repository create getting-started
 ```
+
+This command creates a new repository called `getting-started` in your Upbound
+account where you can store you Configuration packages.
 
 ## Build and push the Configuration
 
@@ -56,20 +55,54 @@ Configuration. Run the following to build and push with `up`:
 up project push
 ```
 
-## What just happened
+This command builds an OCI image that contains your control plane configuration
+and pushing the image to your Upbound repository.
 
-Before you move on, take a moment and reflect on what happened here. Within a few moments, you were able to build an OCI image that packages your control plane and push it to the Upbound Marketplace.
+## Components 
 
-Going forward, you'll want to remember that:
+### Configuration images
 
-Upbound Marketplace is the go-to location for finding trusted content. The Marketplace also serves as a place to distribute your own control plane extensions.
+Configurations are packaging formats that contain everything Upbound needs to
+run a control plane. Configuration packages use the OCI image format like
+Kubernetes and Docker container images. 
+
+Configurations include:
+
+* APIs the control plane offers
+* specifications of the control plane
+* dependencies like providers or functions
+
+Packaging configurations allows you to distribute your control planes and share
+them with others.
+
+### Repositories
+
+Like container images, you need a place to store Configurations. Upbound is the
+default [repository][repositories] source. Upbound provides:
+
+* A centralized place to store these images
+* Automatic API documentation generated for packages.
+* A convenient publishing experience to share with the community via the Upbound Marketplace, if desired.
+
+
+## Summary
+
+In this tutorial you learned how to:
+
+* Sign in to your Upbound organization with the `up` CLI
+* Create a repository to store your Configuration packages
+* Build and push a Configuration to the Upbound Marketplace
+
+Upbound Marketplace is the go-to location for finding trusted content. The
+Marketplace also serves as a place to distribute your own control plane
+extensions.
 
 ## Next steps
 
-Now that you've built a Configuration, it's time to learn how to deploy it into a production control plane.
+Now that you've built a Configuration, it's time to learn how to deploy it into
+a production control plane.
 
-Read about [what's next][whatsNext]
-
+[create]: /getstarted/introduction/project
 [configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
 [whatsNext]: /getstarted/introduction/whats-next
