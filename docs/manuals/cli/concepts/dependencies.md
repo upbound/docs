@@ -43,6 +43,51 @@ live in source control. This allows you to:
 Installing packages directly into a cluster bypasses this workflow and makes it
 more difficult to track changes or identify when you introduced regressions.
 
+```yaml
+apiVersion: meta.dev.upbound.io/v1alpha1
+kind: Project
+metadata:
+  name: configuration-backstage
+spec:
+  dependsOn:
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Function
+    package: xpkg.upbound.io/crossplane-contrib/function-auto-ready
+    version: '>=v0.0.0'
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    package: xpkg.upbound.io/upbound/provider-helm
+    version: v0
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    package: xpkg.upbound.io/upbound/provider-kubernetes
+    version: v0
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Configuration
+    package: xpkg.upbound.io/upbound/configuration-aws-eks-pod-identity
+    version: v0.7.0
+##remainder of file is ommited for brevity
+```
+
+A **API Dependency** defines any building blocks of your control plane from external APIs that are not part of the Crossplane package.
+API dependencies can be used to define dependency on any arbitrary CRD or built in Kubernetes APIs.
+```yaml
+    apiVersion: meta.dev.upbound.io/v2alpha1
+    kind: Project
+    metadata:
+        name: project-template-k8s-webapp
+    spec:
+        apiDependencies:
+        - k8s:
+            version: v1.33.0
+        type: k8s
+        - git:
+            path: cluster/crds
+            ref: release-1.20
+            repository: https://github.com/crossplane/crossplane
+        type: crd
+```
+
 ## Comparison of dependency management approaches
 
 Declaring dependencies makes your control plane predictable, reproducible, and
