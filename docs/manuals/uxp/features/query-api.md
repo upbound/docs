@@ -2,6 +2,7 @@
 title: Query API
 sidebar_position: 40
 description: Use the `up` CLI to query objects and resources
+draft: true
 ---
 
 <!-- vale write-good.TooWordy = NO -->
