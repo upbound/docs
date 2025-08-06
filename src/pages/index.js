@@ -20,7 +20,6 @@ const LandingPage = () => {
             description:
                 "Quick introduction to Upbound Crossplane and building your first control plane",
             icon: <Rocket className="w-8 h-8" />,
-            gradient: "from-blue-500 to-cyan-500",
             items: [
                 "Prerequisites and setup",
                 "Create a control plane project",
@@ -34,7 +33,6 @@ const LandingPage = () => {
             description:
                 "Step-by-step tutorials for platform engineering scenarios and integrations",
             icon: <BookOpen className="w-8 h-8" />,
-            gradient: "from-purple-500 to-pink-500",
             items: [
                 "Build control plane projects",
                 "Create an Internal Developer Platform",
@@ -47,7 +45,6 @@ const LandingPage = () => {
             description:
                 "Comprehensive documentation for Upbound Crossplane features and concepts",
             icon: <Settings className="w-8 h-8" />,
-            gradient: "from-green-500 to-emerald-500",
             items: [
                 "Install, configure, and manage Upbound",
                 "Control Plane Concepts",
@@ -60,7 +57,6 @@ const LandingPage = () => {
             description:
                 "API documentation, CLI commands, Release Notes, and technical specifications",
             icon: <Code className="w-8 h-8" />,
-            gradient: "from-orange-500 to-red-500",
             items: [
                 "Crossplane API",
                 "Spaces API",
@@ -68,15 +64,6 @@ const LandingPage = () => {
                 "Release notes",
             ],
         },
-        // {
-        //   id: 'solutions',
-        //   title: 'Solutions',
-        //   description: 'End-to-end guides for building complete platform solutions',
-        //   icon: <Target className="w-8 h-8" />,
-        //   gradient: 'from-indigo-500 to-purple-500',
-        //   items: [
-        //   ]
-        // }
     ];
 
     const features = [
@@ -85,7 +72,7 @@ const LandingPage = () => {
             title: "AI-Native Distribution",
             description:
                 "Built for autonomous infrastructure platforms serving both humans and AI systems",
-            link: "/guides/intelligent-controllers/intelligent-control-planes", // Add link property
+            link: "/guides/intelligent-controllers/intelligent-control-planes",
         },
         {
             icon: <Shield className="w-6 h-6" />,
@@ -102,6 +89,7 @@ const LandingPage = () => {
             link: "/manuals/uxp/concepts/composition/overview",
         },
     ];
+    
     return (
         <div className="landing-page">
             {/* Hero Section */}
@@ -120,6 +108,7 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
+            
             {/* Quick Start Section */}
             <div className="quickstart-section">
                 <div className="container">
@@ -237,9 +226,7 @@ const LandingPage = () => {
                     <div className="docs-grid">
                         {sections.map((section) => (
                             <div key={section.id} className="doc-card">
-                                <div
-                                    className={`doc-card-header ${section.id}`}
-                                >
+                                <div className={`doc-card-header ${section.id}`}>
                                     <div className="doc-card-icon">
                                         {section.icon}
                                     </div>

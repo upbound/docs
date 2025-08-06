@@ -139,7 +139,7 @@ footer: {
       },
       docs: {
         sidebar: {
-          hideable: false,
+          hideable: true,
         },
       },
     }),

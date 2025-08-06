@@ -31,14 +31,14 @@
   color: var(--grape) !important;
 }
 .sidebarLink:global(.menu__link--active) {
-  background-color: var(--up-purple-50) !important;
+  background-color: var(--brand-purple-50) !important;
   color: var(--grape) !important;
   font-weight: 600 !important;
 }
 /* Dark mode active state */
 html[data-theme='dark'] .sidebarLink:global(.menu__link--active) {
-  background-color: rgba(175, 126, 253, 0.15) !important;
-  color: var(--up-purple-200) !important;
+  background-color: rgba(196, 167, 255, 0.15) !important;
+  color: var(--brand-purple-200) !important;
 }
 
 /* Plan Badge Base Styles*/
@@ -64,11 +64,14 @@ html[data-theme='dark'] .sidebarLink:global(.menu__link--active) {
 .lockIcon {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 0.125rem;
-  opacity: 0.8;
+  opacity: 0.7;
   transition: opacity 0.2s ease;
+  margin-left: 0.25rem;
 }
-.planBadge:hover .lockIcon {
+
+.lockIcon:hover {
+  opacity: 1;
+}.planBadge:hover .lockIcon {
   opacity: 1;
 }
 
@@ -135,7 +138,7 @@ html[data-theme='dark'] .planEnterprise {
 
 /* PLAN CALLOUT STYLES */
 :global(.plan-callout) {
-  background: var(--up-grey-100);
+  background: var(--brand-neutral-100);
   border: 1px solid var(--upbound-border-color);
   border-radius: 8px;
   padding: 1rem 1.25rem;
@@ -178,37 +181,37 @@ html[data-theme='dark'] .planEnterprise {
 
 /* Standard plan callout */
 :global(.plan-badge--standard) {
-  background: var(--up-grey-100);
-  border-left: 4px solid var(--up-purple-300);
+  background: var(--brand-neutral-100);
+  border-left: 4px solid var(--brand-purple-300);
 }
 
 :global(.plan-badge--standard) :global(.plan-callout__title) {
-  color: var(--up-purple-500);
+  color: var(--brand-purple-500);
 }
 
 /* Business plan callout */
 :global(.plan-badge--business) {
-  background: var(--up-grey-100);
-  border-left: 4px solid var(--up-purple-400);
+  background: var(--brand-neutral-100);
+  border-left: 4px solid var(--brand-purple-400);
 }
 
 :global(.plan-badge--business) :global(.plan-callout__title) {
-  color: var(--up-purple-400);
+  color: var(--brand-purple-400);
 }
 
 /* Enterprise plan callout */
 :global(.plan-badge--enterprise) {
-  background: var(--up-grey-100);
-  border-left: 4px solid var(--up-purple-600);
+  background: var(--brand-neutral-100);
+  border-left: 4px solid var(--brand-purple-600);
 }
 
 :global(.plan-badge--enterprise) :global(.plan-callout__title) {
-  color: var(--up-purple-600);
+  color: var(--brand-purple-600);
 }
 
 /* Dark mode callout styles */
 html[data-theme='dark'] :global(.plan-callout) {
-  background: var(--up-grey-800);
+  background: var(--brand-neutral-800);
   border-color: var(--upbound-border-color);
 }
 
@@ -221,30 +224,30 @@ html[data-theme='dark'] :global(.plan-callout__content) {
 }
 
 html[data-theme='dark'] :global(.plan-badge--standard) {
-  background: var(--up-grey-800);
-  border-left-color: var(--up-purple-300);
+  background: var(--brand-neutral-800);
+  border-left-color: var(--brand-purple-300);
 }
 
 html[data-theme='dark'] :global(.plan-badge--standard) :global(.plan-callout__title) {
-  color: var(--up-purple-200);
+  color: var(--brand-purple-200);
 }
 
 html[data-theme='dark'] :global(.plan-badge--business) {
-  background: var(--up-grey-800);
-  border-left-color: var(--up-purple-300);
+  background: var(--brand-neutral-800);
+  border-left-color: var(--brand-purple-300);
 }
 
 html[data-theme='dark'] :global(.plan-badge--business) :global(.plan-callout__title) {
-  color: var(--up-purple-300);
+  color: var(--brand-purple-300);
 }
 
 html[data-theme='dark'] :global(.plan-badge--enterprise) {
-  background: var(--up-grey-800);
-  border-left-color: var(--up-purple-200);
+  background: var(--brand-neutral-800);
+  border-left-color: var(--brand-purple-200);
 }
 
 html[data-theme='dark'] :global(.plan-badge--enterprise) :global(.plan-callout__title) {
-  color: var(--up-purple-200);
+  color: var(--brand-purple-200);
 }
 
 /* Responsive adjustments */
@@ -303,3 +306,17 @@ html[data-theme='dark'] :global(.plan-badge--enterprise) :global(.plan-callout__
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 }
+
+.lockOnly {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  min-width: 20px !important;
+}
+
+
+

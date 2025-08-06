@@ -38,7 +38,7 @@ const DocumentationCards = () => {
       link: './platform/overview'
     }
   ];
-
+  
   return (
     <>
       <style>{`
