@@ -4,35 +4,12 @@ sidebar_position: 1
 description: Reference material for Upbound
 ---
 
+Technical specifications, API documentation, and reference materials for Upbound.
+
+import ReferenceCards from '@site/src/components/ReferenceCards';
+
+<ReferenceCards />
+
 For more information on how Upbound builds on Crossplane, review the [learning overview][learning-overview].
 
-## Command line interface
-
-- [Command Reference][command-reference]
-- [Configuration][configuration]
-- [Release Notes][cli-release-notes]
-
-
-
-## Licensing
-
-- [Licenses][licenses]
-
-## Project lifecycle
-
-- [Lifecycle][lifecycle]
-
-## Release notes
-
-- [Spaces Release Notes][spaces-release-notes]
-- [Control Plane Connector Release Notes][control-plane-connector-release-notes]
-
-
-[command-reference]: /reference/cli-reference
-[configuration]: /manuals/cli/overview
-[cli-release-notes]: /reference/release-notes/up-cli
 [learning-overview]: /
-[licenses]: /reference/usage/licenses
-[lifecycle]: /reference/usage/lifecycle
-[spaces-release-notes]: /reference/release-notes/spaces
-[control-plane-connector-release-notes]:/reference/release-notes/mcp-connector

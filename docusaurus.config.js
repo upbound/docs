@@ -64,46 +64,35 @@ const config = {
                 },
                 items: [
                     {
-                        type: "dropdown",
+                        type: "doc",
                         label: "Get Started",
                         position: "left",
-                        items: [
-                            {
-                                label: "Introduction",
-                                to: "/getstarted/introduction/project",
-                            },
-                            {
-                                label: "Builders Workshop",
-                                to: "/builders-workshop/project-foundations",
-                            },
-                            {
-                                label: "Migrate to Upbound",
-                                to: "/getstarted/migrate-to-upbound/migriate-to-projects",
-                            },
-                        ],
+                        docId: 'getstarted/overview',
                     },
                     {
                         type: "dropdown",
                         label: "Guides",
                         position: "left",
+                        to: "/guides/",
                         items: [
                             {
-                                label: "Solutions",
-                                to: "/guides/solutions/overview",
+                                label: "Intelligent Controllers",
+                                to: "/guides/intelligent-controllers/intelligent-control-planes/",
+                            },
+                            {
+                                label: "Platform Solutions",
+                                to: "/guides/solutions/general-idp/",
                             },
                             {
                                 label: "Use Cases",
-                                to: "/guides/usecases/overview",
-                            },
-                            {
-                                label: "Intelligent Controllers",
-                                to: "/guides/intelligent-controllers/overview",
+                                to: "/guides/usecases/",
                             },
                         ],
                     },
                     {
                         type: "dropdown",
                         label: "Manuals",
+                        to: "/manuals/",
                         position: "left",
                         items: [
                             {
@@ -139,6 +128,7 @@ const config = {
                     {
                         type: "dropdown",
                         label: "Reference",
+                        to: "/reference/",
                         position: "left",
                         items: [
                             {

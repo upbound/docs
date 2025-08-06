@@ -4,11 +4,11 @@ sidebar_position: 1
 description: Learn about the deployment options for Upbound
 ---
 
-import DocumentationCards from '@site/src/components/DocumentationCards';
+import ManualsCards from '@site/src/components/ManualsCards';
 
 
 This section contains detailed guides, configuration examples, and
 troubleshooting resources to help you successfully deploy and manage your
 Upbound platform.
 
-<DocumentationCards />
+<ManualsCards />

@@ -1,41 +1,21 @@
 import React from 'react';
 
-const DocumentationCards = () => {
+const GuidesCards = () => {
   const sections = [
     {
-      title: 'Upbound Crossplane (UXP)',
-      description: 'Enterprise-grade Crossplane distribution with enhanced compositions, functions, operations, and package management.',
-      link: './uxp/overview'
+      title: 'Solutions',
+      description: 'Complete platform deployments including general IDP architecture and Upbound platform reference implementations.',
+      link: './solutions'
     },
     {
-      title: 'Spaces',
-      description: 'Managed Crossplane control plane environments with cloud and self-hosted deployment options.',
-      link: './spaces/overview'
+      title: 'Use Cases',
+      description: 'End-to-end scenarios for applications, cloud resources, databases as a service, and managed resources.',
+      link: './usecases'
     },
     {
-      title: 'CLI',
-      description: 'Command-line tools for managing Upbound configurations, contexts, and project tooling.',
-      link: './cli/overview'
-    },
-    {
-      title: 'Console',
-      description: 'Web-based management interface with MCP Query API and self-service capabilities.',
-      link: './console/'
-    },
-    {
-      title: 'Official Packages',
-      description: 'Production-ready provider packages for cloud and infrastructure platforms with authentication and migration guides.',
-      link: './packages/overview'
-    },
-    {
-      title: 'Marketplace',
-      description: 'Package discovery, publishing, and repository management platform for internal and public distribution.',
-      link: './marketplace/overview'
-    },
-    {
-      title: 'Platform',
-      description: 'Identity management, RBAC, organizations, teams, and SSO integration for enterprise deployments.',
-      link: './platform/overview'
+      title: 'Intelligent Controllers',
+      description: 'Advanced control plane patterns with dynamic resource composition, log analysis, and database scaling.',
+      link: './intelligent-controllers'
     }
   ];
 
@@ -127,4 +107,4 @@ const DocumentationCards = () => {
   );
 };
 
-export default DocumentationCards;
+export default GuidesCards;

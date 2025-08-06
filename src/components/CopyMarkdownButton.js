@@ -1,5 +1,5 @@
 // src/components/CopyMarkdownButton.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const styles = `
 .copy-markdown-button-container {
@@ -165,345 +165,455 @@ html[data-theme='dark'] .copy-tooltip::after {
 `;
 
 const CopyMarkdownButton = () => {
-  const [state, setState] = useState('idle'); // 'idle', 'loading', 'success', 'error'
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [stylesInjected, setStylesInjected] = useState(false);
+    const [state, setState] = useState("idle"); // 'idle', 'loading', 'success', 'error'
+    const [showTooltip, setShowTooltip] = useState(false);
+    const [stylesInjected, setStylesInjected] = useState(false);
 
-  // Inject styles on component mount
-  useEffect(() => {
-    if (!stylesInjected) {
-      const styleElement = document.createElement('style');
-      styleElement.textContent = styles;
-      document.head.appendChild(styleElement);
-      setStylesInjected(true);
-    }
-  }, [stylesInjected]);
+    // Inject styles on component mount
+    useEffect(() => {
+        if (!stylesInjected) {
+            const styleElement = document.createElement("style");
+            styleElement.textContent = styles;
+            document.head.appendChild(styleElement);
+            setStylesInjected(true);
+        }
+    }, [stylesInjected]);
 
-  // Function to extract markdown content from the current page
-  const extractPageContent = () => {
-    const mainContent = document.querySelector('main[role="main"]') || 
-                       document.querySelector('.main-wrapper') ||
-                       document.querySelector('article') ||
-                       document.querySelector('.markdown');
-    
-    if (!mainContent) {
-      return 'Unable to extract page content.';
-    }
+    // Function to extract markdown content from the current page
+    const extractPageContent = () => {
+        const mainContent =
+            document.querySelector('main[role="main"]') ||
+            document.querySelector(".main-wrapper") ||
+            document.querySelector("article") ||
+            document.querySelector(".markdown");
 
-    let markdown = '';
-    
-    // Get page title
-    const title = document.querySelector('h1')?.textContent || 
-                  document.querySelector('title')?.textContent || 
-                  'Untitled Page';
-    
-    markdown += `# ${title}\n\n`;
-    
-    // Improved content extraction
-    const processElement = (element, level = 0) => {
-      let content = '';
-      
-      // Skip unwanted elements
-      if (element.closest && (
-          element.closest('.navbar') ||
-          element.closest('.menu') ||
-          element.closest('.table-of-contents') ||
-          element.closest('.pagination-nav') ||
-          element.closest('.breadcrumbs') ||
-          element.closest('.copy-markdown-button-container') ||
-          element.closest('[class*="sidebar"]') ||
-          element.closest('nav') ||
-          element.matches && element.matches('script, style, noscript')
-      )) {
-        return '';
-      }
+        if (!mainContent) {
+            return "Unable to extract page content.";
+        }
 
-      const tagName = element.tagName?.toLowerCase();
-      
-      switch (tagName) {
-        case 'h1':
-          // Skip main title as we already added it
-          if (element === document.querySelector('h1')) return '';
-          content += `\n# ${element.textContent.trim()}\n\n`;
-          break;
-        case 'h2':
-          content += `\n## ${element.textContent.trim()}\n\n`;
-          break;
-        case 'h3':
-          content += `\n### ${element.textContent.trim()}\n\n`;
-          break;
-        case 'h4':
-          content += `\n#### ${element.textContent.trim()}\n\n`;
-          break;
-        case 'h5':
-          content += `\n##### ${element.textContent.trim()}\n\n`;
-          break;
-        case 'h6':
-          content += `\n###### ${element.textContent.trim()}\n\n`;
-          break;
-        case 'p':
-          const text = element.textContent?.trim();
-          if (text && !element.closest('pre, code')) {
-            content += `${text}\n\n`;
-          }
-          break;
-        case 'pre':
-          const codeElement = element.querySelector('code');
-          const codeText = codeElement ? codeElement.textContent : element.textContent;
-          const language = codeElement?.className?.match(/language-(\w+)/)?.[1] || '';
-          content += `\`\`\`${language}\n${codeText.trim()}\n\`\`\`\n\n`;
-          break;
-        case 'blockquote':
-          const quoteLines = element.textContent?.trim().split('\n') || [];
-          const quotedText = quoteLines.map(line => `> ${line.trim()}`).join('\n');
-          content += `${quotedText}\n\n`;
-          break;
-        case 'ul':
-          const ulItems = Array.from(element.children).filter(child => child.tagName === 'LI');
-          ulItems.forEach(li => {
-            content += `- ${li.textContent?.trim()}\n`;
-          });
-          content += '\n';
-          break;
-        case 'ol':
-          const olItems = Array.from(element.children).filter(child => child.tagName === 'LI');
-          olItems.forEach((li, index) => {
-            content += `${index + 1}. ${li.textContent?.trim()}\n`;
-          });
-          content += '\n';
-          break;
-        case 'table':
-          const rows = Array.from(element.querySelectorAll('tr'));
-          if (rows.length > 0) {
-            rows.forEach((row, rowIndex) => {
-              const cells = Array.from(row.querySelectorAll('td, th'));
-              const rowText = cells.map(cell => cell.textContent?.trim() || '').join(' | ');
-              content += `| ${rowText} |\n`;
-              
-              // Add separator after header row
-              if (rowIndex === 0) {
-                const separator = cells.map(() => '---').join(' | ');
-                content += `| ${separator} |\n`;
-              }
-            });
-            content += '\n';
-          }
-          break;
-        case 'div':
-        case 'section':
-        case 'article':
-          // For container elements, process children
-          Array.from(element.children).forEach(child => {
-            content += processElement(child, level + 1);
-          });
-          break;
-        default:
-          // For other elements, check if they have direct text content
-          if (element.children.length === 0) {
-            const text = element.textContent?.trim();
-            if (text && text.length > 0) {
-              // Handle inline code
-              if (tagName === 'code') {
-                content += `\`${text}\``;
-              } else if (tagName === 'strong' || tagName === 'b') {
-                content += `**${text}**`;
-              } else if (tagName === 'em' || tagName === 'i') {
-                content += `*${text}*`;
-              } else if (tagName === 'a') {
-                const href = element.href;
-                if (href) {
-                  content += `[${text}](${href})`;
-                } else {
-                  content += text;
-                }
-              } else {
-                content += text;
-              }
+        let markdown = "";
+
+        // Get page title
+        const title =
+            document.querySelector("h1")?.textContent ||
+            document.querySelector("title")?.textContent ||
+            "Untitled Page";
+
+        markdown += `# ${title}\n\n`;
+
+        // Improved content extraction
+        const processElement = (element, level = 0) => {
+            let content = "";
+
+            // Skip unwanted elements
+            if (
+                element.closest &&
+                (element.closest(".navbar") ||
+                    element.closest(".menu") ||
+                    element.closest(".table-of-contents") ||
+                    element.closest(".pagination-nav") ||
+                    element.closest(".breadcrumbs") ||
+                    element.closest(".copy-markdown-button-container") ||
+                    element.closest('[class*="sidebar"]') ||
+                    element.closest("nav") ||
+                    (element.matches &&
+                        element.matches("script, style, noscript")))
+            ) {
+                return "";
             }
-          } else {
-            // Has children, process them
-            Array.from(element.children).forEach(child => {
-              content += processElement(child, level + 1);
-            });
-          }
-          break;
-      }
-      
-      return content;
-    };
 
-    // Process all direct children of main content
-    Array.from(mainContent.children).forEach(child => {
-      markdown += processElement(child);
-    });
-    
-    // Clean up extra whitespace
-    markdown = markdown.replace(/\n{3,}/g, '\n\n').trim();
-    
-    // Add metadata
-    const metadata = `---
+            const tagName = element.tagName?.toLowerCase();
+
+            switch (tagName) {
+                case "h1":
+                    // Skip main title as we already added it
+                    if (element === document.querySelector("h1")) return "";
+                    content += `\n# ${element.textContent.trim()}\n\n`;
+                    break;
+                case "h2":
+                    content += `\n## ${element.textContent.trim()}\n\n`;
+                    break;
+                case "h3":
+                    content += `\n### ${element.textContent.trim()}\n\n`;
+                    break;
+                case "h4":
+                    content += `\n#### ${element.textContent.trim()}\n\n`;
+                    break;
+                case "h5":
+                    content += `\n##### ${element.textContent.trim()}\n\n`;
+                    break;
+                case "h6":
+                    content += `\n###### ${element.textContent.trim()}\n\n`;
+                    break;
+                case "p":
+                    const text = element.textContent?.trim();
+                    if (text && !element.closest("pre, code")) {
+                        content += `${text}\n\n`;
+                    }
+                    break;
+                case "pre":
+                    const codeElement = element.querySelector("code");
+                    const codeText = codeElement
+                        ? codeElement.textContent
+                        : element.textContent;
+                    const language =
+                        codeElement?.className?.match(/language-(\w+)/)?.[1] ||
+                        "";
+                    content += `\`\`\`${language}\n${codeText.trim()}\n\`\`\`\n\n`;
+                    break;
+                case "blockquote":
+                    const quoteLines =
+                        element.textContent?.trim().split("\n") || [];
+                    const quotedText = quoteLines
+                        .map((line) => `> ${line.trim()}`)
+                        .join("\n");
+                    content += `${quotedText}\n\n`;
+                    break;
+                case "ul":
+                    const ulItems = Array.from(element.children).filter(
+                        (child) => child.tagName === "LI"
+                    );
+                    ulItems.forEach((li) => {
+                        content += `- ${li.textContent?.trim()}\n`;
+                    });
+                    content += "\n";
+                    break;
+                case "ol":
+                    const olItems = Array.from(element.children).filter(
+                        (child) => child.tagName === "LI"
+                    );
+                    olItems.forEach((li, index) => {
+                        content += `${index + 1}. ${li.textContent?.trim()}\n`;
+                    });
+                    content += "\n";
+                    break;
+                case "table":
+                    const rows = Array.from(element.querySelectorAll("tr"));
+                    if (rows.length > 0) {
+                        rows.forEach((row, rowIndex) => {
+                            const cells = Array.from(
+                                row.querySelectorAll("td, th")
+                            );
+                            const rowText = cells
+                                .map((cell) => cell.textContent?.trim() || "")
+                                .join(" | ");
+                            content += `| ${rowText} |\n`;
+
+                            // Add separator after header row
+                            if (rowIndex === 0) {
+                                const separator = cells
+                                    .map(() => "---")
+                                    .join(" | ");
+                                content += `| ${separator} |\n`;
+                            }
+                        });
+                        content += "\n";
+                    }
+                    break;
+                case "div":
+                case "section":
+                case "article":
+                    // For container elements, process children
+                    Array.from(element.children).forEach((child) => {
+                        content += processElement(child, level + 1);
+                    });
+                    break;
+                default:
+                    // For other elements, check if they have direct text content
+                    if (element.children.length === 0) {
+                        const text = element.textContent?.trim();
+                        if (text && text.length > 0) {
+                            // Handle inline code
+                            if (tagName === "code") {
+                                content += `\`${text}\``;
+                            } else if (
+                                tagName === "strong" ||
+                                tagName === "b"
+                            ) {
+                                content += `**${text}**`;
+                            } else if (tagName === "em" || tagName === "i") {
+                                content += `*${text}*`;
+                            } else if (tagName === "a") {
+                                const href = element.href;
+                                if (href) {
+                                    content += `[${text}](${href})`;
+                                } else {
+                                    content += text;
+                                }
+                            } else {
+                                content += text;
+                            }
+                        }
+                    } else {
+                        // Has children, process them
+                        Array.from(element.children).forEach((child) => {
+                            content += processElement(child, level + 1);
+                        });
+                    }
+                    break;
+            }
+
+            return content;
+        };
+
+        // Process all direct children of main content
+        Array.from(mainContent.children).forEach((child) => {
+            markdown += processElement(child);
+        });
+
+        // Clean up extra whitespace
+        markdown = markdown.replace(/\n{3,}/g, "\n\n").trim();
+
+        // Add metadata
+        const metadata = `---
 URL: ${window.location.href}
 Title: ${title}
 Generated: ${new Date().toISOString()}
 ---
 
 `;
-    
-    return metadata + markdown;
-  };
 
-  const handleCopyClick = async () => {
-    setState('loading');
-    
-    try {
-      const markdown = extractPageContent();
-      await navigator.clipboard.writeText(markdown);
-      
-      setState('success');
-      setShowTooltip(true);
-      
-      // Reset to idle after showing success
-      setTimeout(() => {
-        setState('idle');
-        setShowTooltip(false);
-      }, 2000);
-      
-    } catch (error) {
-      console.error('Failed to copy page content:', error);
-      
-      // Fallback for browsers that don't support clipboard API
-      try {
-        const textArea = document.createElement('textarea');
-        textArea.value = extractPageContent();
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        setState('success');
-        setShowTooltip(true);
-        
-        setTimeout(() => {
-          setState('idle');
-          setShowTooltip(false);
-        }, 2000);
-        
-      } catch (fallbackError) {
-        setState('error');
-        setShowTooltip(true);
-        
-        setTimeout(() => {
-          setState('idle');
-          setShowTooltip(false);
-        }, 3000);
-      }
-    }
-  };
+        return metadata + markdown;
+    };
 
-  const getButtonContent = () => {
-    switch (state) {
-      case 'loading':
-        return {
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-              <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          ),
-          text: 'Copying...'
-        };
-      case 'success':
-        return {
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          ),
-          text: 'Copied!'
-        };
-      case 'error':
-        return {
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-              <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
-              <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
-            </svg>
-          ),
-          text: 'Error'
-        };
-      default:
-        return {
-          icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor" strokeWidth="2"/>
-            </svg>
-          ),
-          text: 'Copy as Markdown'
-        };
-    }
-  };
+    const handleCopyClick = async () => {
+        setState("loading");
 
-  const { icon, text } = getButtonContent();
-  const tooltipText = state === 'success' ? 'Page copied to clipboard!' : 
-                     state === 'error' ? 'Failed to copy' :
-                     'Copy this page as Markdown for use with LLMs';
+        try {
+            const markdown = extractPageContent();
+            await navigator.clipboard.writeText(markdown);
 
-  return (
-    <div className="copy-markdown-button-container">
-      <button
-        className={`copy-page-btn ${state}`}
-        title={tooltipText}
-        aria-label={tooltipText}
-        onClick={handleCopyClick}
-        disabled={state === 'loading'}
-      >
-        {icon}
-        <span className="copy-btn-text">{text}</span>
-      </button>
-      
-      <div 
-        className={`copy-tooltip ${showTooltip ? 'show' : ''}`} 
-        role="tooltip"
-      >
-        {tooltipText}
-      </div>
-    </div>
-  );
+            setState("success");
+            setShowTooltip(true);
+
+            // Reset to idle after showing success
+            setTimeout(() => {
+                setState("idle");
+                setShowTooltip(false);
+            }, 2000);
+        } catch (error) {
+            console.error("Failed to copy page content:", error);
+
+            // Fallback for browsers that don't support clipboard API
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = extractPageContent();
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+
+                setState("success");
+                setShowTooltip(true);
+
+                setTimeout(() => {
+                    setState("idle");
+                    setShowTooltip(false);
+                }, 2000);
+            } catch (fallbackError) {
+                setState("error");
+                setShowTooltip(true);
+
+                setTimeout(() => {
+                    setState("idle");
+                    setShowTooltip(false);
+                }, 3000);
+            }
+        }
+    };
+
+    const getButtonContent = () => {
+        switch (state) {
+            case "loading":
+                return {
+                    icon: (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            />
+                            <path
+                                d="M12 6v6l4 2"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                            />
+                        </svg>
+                    ),
+                    text: "Copying...",
+                };
+            case "success":
+                return {
+                    icon: (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <path
+                                d="M20 6L9 17l-5-5"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
+                    ),
+                    text: "Copied!",
+                };
+            case "error":
+                return {
+                    icon: (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            />
+                            <line
+                                x1="15"
+                                y1="9"
+                                x2="9"
+                                y2="15"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            />
+                            <line
+                                x1="9"
+                                y1="9"
+                                x2="15"
+                                y2="15"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            />
+                        </svg>
+                    ),
+                    text: "Error",
+                };
+            default:
+                return {
+                    icon: (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+                            <path
+                                d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
+                            <rect
+                                x="8"
+                                y="2"
+                                width="8"
+                                height="4"
+                                rx="1"
+                                ry="1"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                            />
+                        </svg>
+                    ),
+                    text: "Copy as Markdown",
+                };
+        }
+    };
+
+    const { icon, text } = getButtonContent();
+    const tooltipText =
+        state === "success"
+            ? "Page copied to clipboard!"
+            : state === "error"
+            ? "Failed to copy"
+            : "Copy this page as Markdown for use with LLMs";
+
+    return (
+        <div className="copy-markdown-button-container">
+            <button
+                className={`copy-page-btn ${state}`}
+                title={tooltipText}
+                aria-label={tooltipText}
+                onClick={handleCopyClick}
+                disabled={state === "loading"}
+            >
+                {icon}
+                <span className="copy-btn-text">{text}</span>
+            </button>
+
+            <div
+                className={`copy-tooltip ${showTooltip ? "show" : ""}`}
+                role="tooltip"
+            >
+                {tooltipText}
+            </div>
+        </div>
+    );
 };
 
 // Auto-initialize function that can be called from client module
 export const initCopyButton = () => {
-  if (typeof window === 'undefined') return;
-  
-  // Wait for page to be fully loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCopyButton);
-    return;
-  }
+    if (typeof window === "undefined") return;
 
-  // Only add on doc pages, not homepage
-  if (window.location.pathname !== '/' && window.location.pathname !== '/search') {
-    // Remove any existing button first
-    const existing = document.querySelector('.copy-markdown-button-container');
-    if (existing) existing.remove();
-    
-    // Find the main title (h1) to insert button after it
-    const mainTitle = document.querySelector('main h1, article h1, .markdown h1');
-    
-    if (mainTitle) {
-      // Create container and insert after title
-      const container = document.createElement('div');
-      mainTitle.parentNode.insertBefore(container, mainTitle.nextSibling);
-      
-      // Use React 18 createRoot
-      import('react-dom/client').then(({ createRoot }) => {
-        const root = createRoot(container);
-        root.render(React.createElement(CopyMarkdownButton));
-      });
+    // Wait for page to be fully loaded
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initCopyButton);
+        return;
     }
-  }
+    // Only add on doc pages, not homepage or overview pages
+    if (
+        window.location.pathname !== "/" &&
+        window.location.pathname !== "/search" &&
+        window.location.pathname !== "/guides/" &&
+        window.location.pathname !== "/manuals/" &&
+        window.location.pathname !== "/reference/"
+    ) {
+        // Remove any existing button first
+        const existing = document.querySelector(
+            ".copy-markdown-button-container"
+        );
+        if (existing) existing.remove();
+
+        // Find the main title (h1) to insert button after it
+        const mainTitle = document.querySelector(
+            "main h1, article h1, .markdown h1"
+        );
+
+        if (mainTitle) {
+            // Create container and insert after title
+            const container = document.createElement("div");
+            mainTitle.parentNode.insertBefore(container, mainTitle.nextSibling);
+
+            // Use React 18 createRoot
+            import("react-dom/client").then(({ createRoot }) => {
+                const root = createRoot(container);
+                root.render(React.createElement(CopyMarkdownButton));
+            });
+        }
+    }
 };
 
 export default CopyMarkdownButton;
