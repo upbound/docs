@@ -70,15 +70,15 @@ const config = {
                         items: [
                             {
                                 label: "Introduction",
-                                to: "/getstarted/introduction",
+                                to: "/getstarted/introduction/project",
                             },
                             {
                                 label: "Builders Workshop",
-                                to: "/getstarted/builders-workshop",
+                                to: "/builders-workshop/project-foundations",
                             },
                             {
                                 label: "Migrate to Upbound",
-                                to: "/getstarted/migrate-to-upbound",
+                                to: "/getstarted/migrate-to-upbound/migriate-to-projects",
                             },
                         ],
                     },
