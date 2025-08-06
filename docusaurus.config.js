@@ -6,6 +6,7 @@ const config = {
     title: "Upbound Documentation",
     tagline: "Guide your internal cloud platform journey",
     favicon: "img/icons/favicon.ico",
+    trailingSlash: true,
     url: "https://docs.upbound.io",
     baseUrl: "/",
     organizationName: "upbound",
