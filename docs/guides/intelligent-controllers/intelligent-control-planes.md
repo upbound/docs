@@ -3,9 +3,15 @@ title: Create an Intelligent Control Plane
 sidebar_position: 1
 ---
 
+:::important
+
+This guide requires an Upbound control plane instance running UXP v2.0 or later
+
+:::
+
 <!-- vale gitlab.Uppercase = NO -->
 <!-- ignore LLM -->
-Upbound Crossplane provides AI-powered pipelines to X your infrastructure in LLM
+Upbound Crossplane provides AI-powered pipelines to your infrastructure in LLM
 enabled Operation functions. This tutorial walks through installing,
 configuring, and exploring your Intelligent Control Planes.
 
@@ -16,7 +22,7 @@ Before you begin make sure you have:
 
 * An Upbound Account
 * The `up` CLI installed
-* An Anthropic or OpenAPI key
+* An Anthropic key
 * An AWS account
 
 ## Set up your environment
