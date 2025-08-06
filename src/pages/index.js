@@ -185,43 +185,6 @@ const LandingPage = () => {
                 </div>
             </div>
 
-            {/* Features Section */}
-            <div className="features-section">
-                <div className="features-section">
-                    <div className="container">
-                        <div className="section-header">
-                            <h2 className="section-title">
-                                Why Control Planes?
-                            </h2>
-                            <p className="section-description">
-                                Control planes unlock the benefits of building
-                                custom APIs to manage the resources your users
-                                need.
-                            </p>
-                        </div>
-                        <div className="features-grid">
-                            {features.map((feature, index) => (
-                                <Link
-                                    key={index}
-                                    to={feature.link}
-                                    className="feature-card"
-                                >
-                                    <div className="feature-icon">
-                                        {feature.icon}
-                                    </div>
-                                    <h3 className="feature-title">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="feature-description">
-                                        {feature.description}
-                                    </p>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </div>{" "}
-            </div>
-
             {/* Documentation Sections */}
             <div className="docs-section">
                 <div className="container">
@@ -277,6 +240,44 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
+            {/* Features Section */}
+            <div className="features-section">
+                <div className="features-section">
+                    <div className="container">
+                        <div className="section-header">
+                            <h2 className="section-title">
+                                Why Control Planes?
+                            </h2>
+                            <p className="section-description">
+                                Control planes unlock the benefits of building
+                                custom APIs to manage the resources your users
+                                need.
+                            </p>
+                        </div>
+                        <div className="features-grid">
+                            {features.map((feature, index) => (
+                                <Link
+                                    key={index}
+                                    to={feature.link}
+                                    className="feature-card"
+                                >
+                                    <div className="feature-icon">
+                                        {feature.icon}
+                                    </div>
+                                    <h3 className="feature-title">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="feature-description">
+                                        {feature.description}
+                                    </p>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </div>{" "}
+            </div>
+
+
         </div>
     );
 };

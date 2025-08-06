@@ -2163,7 +2163,8 @@ items = _items
             ),
         ),
     )
-    resource.update(rsp.desired.resources["versioning"], desired_versioning)```
+    resource.update(rsp.desired.resources["versioning"], desired_versioning)
+```
 
 </CodeBlock>
 
