@@ -22,18 +22,18 @@ You may need to scale your vCluster or `etcd` resources if you observe:
 - API performance degrades with high resource volume
 
 <!-- vale Google.Headings = NO -->
-## Scaling vCluster API server resources
+## Scaling vCluster resources
 <!-- vale Google.Headings = YES -->
 
-The vCluster API server (`vcluster-api`) handles Kubernetes API requests for
-your control planes. Deployments with multiple control planes or providers may
-exceed default resource allocations.
+The vCluster component handles Kubernetes API requests for your control planes. 
+Deployments with multiple control planes or providers may exceed default resource allocations.
 
 ```yaml
 # Default settings
-controlPlanes.api.resources.limits.cpu: "2000m"
-controlPlanes.api.resources.requests.cpu: "100m"
-controlPlanes.api.resources.requests.memory: "1000Mi"
+controlPlanes.vcluster.resources.limits.cpu: "3000m"
+controlPlanes.vcluster.resources.limits.memory: "3960Mi"
+controlPlanes.vcluster.resources.requests.cpu: "170m"
+controlPlanes.vcluster.resources.requests.memory: "1320Mi"
 ```
 
 For larger workloads, like migrating from an existing control plane with several
@@ -41,7 +41,7 @@ providers, increase these resource limits in your Spaces `values.yaml` file.
 
 ```yaml
 controlPlanes:
-  api:
+  vcluster:
     resources:
       limits:
         cpu: "4000m"      # Increase to 4 cores
@@ -135,7 +135,7 @@ Apply these settings through your Spaces Helm values file:
 
 ```yaml
 controlPlanes:
-  api:
+  vcluster:
     resources:
       limits:
         cpu: "4000m"
