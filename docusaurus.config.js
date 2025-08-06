@@ -145,6 +145,11 @@ const config = {
                                 to: "/reference/apis/",
                             },
                             {
+                                label: "CLI",
+                                to: "/reference/cli-reference/",
+                            },
+
+                            {
                                 label: "Release Notes",
                                 to: "/reference/release-notes",
                             },
