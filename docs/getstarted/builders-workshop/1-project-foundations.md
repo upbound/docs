@@ -51,7 +51,7 @@ The `apis/` directory is for your custom resource definitions and compositions.
 
 #### `examples/` directory
 
-The `examples/` directory is for claims. Claims are abstractions of your APIs
+The `examples/` directory is for composite resources (XRs). XRs are abstractions of your APIs
 that allow your users to request resources.
 
 ## Add project dependencies
@@ -102,13 +102,13 @@ When you add a provider to your project, Upbound:
 Without providers, your control plane would have no way to create actual
 resources. 
 
-## Create a claim and generate your API
+## Create an XR and generate your API
 
 Now that you have a project with dependencies, you need to define what users can request through your API:
 
 ```shell
 up example generate \
-    --type claim \
+    --type xr \
     --api-group platform.example.com \
     --api-version v1alpha1 \
     --kind StorageBucket \
@@ -116,26 +116,16 @@ up example generate \
     --namespace default
 ```
 
-This command generates a sample claim (request) for a specific resource type and
+This command generates a sample XR (request) for a specific resource type and
 creates a template for how users can interact with your API
 
-Open your new claim file.
+Open your new XR file.
 
-<!--- TODO(tr0njavolta): no copy --->
-```shell-noCopy
-apiVersion: platform.example.com/v1alpha1
-kind: StorageBucket
-metadata:
-  name: example
-  namespace: default
-spec: {}
-```
-
-Your claim file maps each flag you specified as a Kubernetes resource. The
+Your XR file maps each flag you specified as a Kubernetes resource. The
 `spec{}` field is empty for now. You need to create the specifications
 you want to apply to this `StorageBucket` resource. 
 
-Paste this claim into your claim file:
+Paste this XR into your XR file:
 
 <Tabs>
 <TabItem value="aws" label="AWS">
@@ -190,14 +180,14 @@ spec:
 Your `spec` now contains a new `parameters` field. The `parameters` are the
 variables you expose to the user when they want to create a new resource. These
 parameters depend on the resource type you want to create. This `StorageBucket`
-claim uses fields AWS requires to create an S3 bucket instance. You can discover
+XR uses fields AWS requires to create an S3 bucket instance. You can discover
 required fields in the Marketplace for the provider.
 
 
 ### Define your API
 
 Next, you need to generate Composite Resource Definition (XRD) based on the
-claim you create.
+XR you create.
 
 An XRD (Composite Resource Definition) defines the schema and behavior of your API.
 
@@ -212,15 +202,14 @@ XRDs:
 XRDs are the blueprint of your API. They describe what users can request and
 define requirements for the resource.
 
-Generate a new XRD based on you example claim:
+Generate a new XRD based on your example XR:
 
 ```shell
 up xrd generate examples/storagebucket/example.yaml
 ```
 
-The XRD file is more complex than the claim and you don't need to create them
-manually when generated from a claim. `up xrd generate` infers the variable
-types for the XRD based on the input parameters of your claim.
+`up xrd generate` infers the variable
+types for the XRD based on the input parameters of your XR.
 
 
 ### Create a composition
@@ -235,7 +224,7 @@ up composition generate apis/xstoragebuckets/definition.yaml
 #### Why create a composition?
 <!-- vale Microsoft.HeadingPunctuation = YES -->
 
-Compositions define how user requests (claims) become actual resources:
+Compositions define how user requests (XRs) become actual resources:
 
 * They map user parameters to specific cloud resources
 * They handle relationships between resources (like a database and its subnet)
