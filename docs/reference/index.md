@@ -1,12 +1,12 @@
 ---
-title: Reference
+title: Overview
 sidebar_position: 1
 description: Reference material for Upbound
 ---
-
-Technical specifications, API documentation, and reference materials for Upbound.
-
 import ReferenceCards from '@site/src/components/ReferenceCards';
+
+This section contains technical specifications, API documentation and reference
+materials for Upbound.
 
 <ReferenceCards />
 

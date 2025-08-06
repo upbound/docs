@@ -4,7 +4,7 @@ const ReferenceCards = () => {
   const sections = [
     {
       title: 'APIs',
-      description: 'Complete API documentation including Crossplane API, Query API, Spaces API, and Testing API with CRD specifications.',
+      description: 'Crossplane API, Query API, Spaces API, and Testing API with CRD specifications.',
       link: './apis'
     },
     {
@@ -19,7 +19,7 @@ const ReferenceCards = () => {
     },
     {
       title: 'Release Notes',
-      description: 'Latest updates and changes for Spaces, MCP Connector, and Up CLI with version history.',
+      description: 'Latest updates and changes for Spaces, Managed Control Plane Connector, and Up CLI with version history.',
       link: './release-notes'
     },
     {

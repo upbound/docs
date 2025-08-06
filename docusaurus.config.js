@@ -126,29 +126,10 @@ const config = {
                         ],
                     },
                     {
-                        type: "dropdown",
+                        type: "doc",
                         label: "Reference",
-                        to: "/reference/",
                         position: "left",
-                        items: [
-                            {
-                                label: "APIs",
-                                to: "/reference/apis/",
-                            },
-                            {
-                                label: "CLI",
-                                to: "/reference/cli-reference/",
-                            },
-
-                            {
-                                label: "Release Notes",
-                                to: "/reference/release-notes",
-                            },
-                            {
-                                label: "Usage",
-                                to: "/reference/usage",
-                            },
-                        ],
+                        docId: "reference/index",
                     },
                     {
                         type: "search",
