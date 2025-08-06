@@ -37,6 +37,7 @@ Examples of dependencies include:
 3. **Configurations** that provide pre-built setups:
    * `xpkg.upbound.io/upbound/platform-ref-aws` - AWS reference platform
    * `xpkg.upbound.io/upbound/platform-ref-gcp` - GCP reference platform
+4. **API dependencies** for any external APIs that are not part of the Crossplane package.
 
 ## Add provider dependencies
 
@@ -82,6 +83,23 @@ up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0
 For more information about configurations and platform references, check out the
 [Configuration][configuration] documentation.
 
+## Add external API dependencies
+In your `upbound.yaml` file, you can define to the external API you wish to reference in your project under `spec.apiDependencies` field.
+
+The example below defines an external API dependency to the Kubernetes API and an arbitrary CRD living in a git repository.
+
+```shell
+    spec:
+        apiDependencies:
+        - k8s:
+            version: v1.33.0
+        type: k8s
+        - git:
+            path: cluster/crds
+            ref: release-1.20
+            repository: https://github.com/crossplane/crossplane
+        type: crd
+```
 
 ## Manage dependency versions
 
