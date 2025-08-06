@@ -149,7 +149,7 @@ following:
 <Tabs>
 
 <TabItem value="gotempl" label="Go Templates">
-```yaml
+```yaml title="getting-started/functions/compose-resources/01-compose.yaml.gotmpl"
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -206,7 +206,7 @@ status:
 
 
 <TabItem value="Python" label="Python">
-```python
+```python title="getting-started/functions/compose-resources/main.py"
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 from .model.io.k8s.api.apps import v1 as appsv1
@@ -400,7 +400,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 </TabItem>
 <TabItem value="Go" label="Go">
-```go
+
+```go title="getting-started/functions/compose-resources/fn.go"
 package main
 
 import (
@@ -789,7 +790,9 @@ func convertViaJSON(to, from any) error {
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
-```shell
+
+```yaml title="getting-started/functions/compose-resources/main.k"
+
 import models.io.k8s.api.apps.v1 as appsv1
 import models.io.k8s.api.core.v1 as corev1
 import models.io.k8s.api.networking.v1 as networkingv1
