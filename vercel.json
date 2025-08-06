@@ -511,6 +511,16 @@
             "permanent": true
         },
         {
+            "source": "/manuals/uxp",
+            "destination": "/manuals/uxp/overview",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/",
+            "destination": "/manuals/uxp/overview",
+            "permanent": true
+        },
+        {
             "source": "/apis-cli/spaces-api",
             "destination": "/reference/apis/spaces-api",
             "permanent": true
