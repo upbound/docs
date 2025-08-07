@@ -18,7 +18,7 @@ first time, try the [Quickstart][quickstart] instead.
 
 Before you begin, make sure you have:
 
-* Finished the [Builder's Workshp][workshop]
+* Finished the [Builder's Workshop][workshop]
 * Installed the `up` CLI
 * A Docker compatible runtime running
 

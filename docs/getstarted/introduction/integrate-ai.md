@@ -3,6 +3,7 @@ title: Create an AI-powered control plane
 description: "Use Upbound Crossplane to build and manage an AI-powered control
 plane"
 sidebar_position: 4
+draft: true
 ---
 
 Upbound Crossplane enhances the control plane workflow with AI-powered
