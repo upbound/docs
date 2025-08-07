@@ -1,4 +1,3 @@
-
 ---
 title: Telemetry
 sidebar_position: 99
