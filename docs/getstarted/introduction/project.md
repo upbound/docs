@@ -75,7 +75,13 @@ Create an example instance of your custom resource type with:
 
 ```shell
 up example generate \
-  --type xr --api-group getting.started --api-version v1alpha1 --kind App --name example
+    --type xr \
+    --api-group getting.started \
+    --api-version v1alpha1 \
+    --kind App\
+    --name example \
+    --scope namespace \
+    --namespace default
 ```
 
 Open the project in your IDE of choice and replace the contents of the generated file
