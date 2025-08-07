@@ -12,23 +12,50 @@ Crossplane supports these package types: `Configurations`, `Functions` and `Prov
   multiple processor architectures.
 * **`Provider`** packages combine a Kubernetes controller container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The [AWS provider package][aws-provider-package] is an example a provider's metadata and `CRDs`.
 
+---
+title: Overview
+sidebar_position: 1
+description: Product documentation for the Official Packages offered by Upbound.
+---
+
+## Package types
+Crossplane supports these package types: `Configurations`, `Functions` and `Providers`.
+
+* **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata.
+* **`Function`** packages include the compiled function code for single or
+  multiple processor architectures.
+* **`Provider`** packages combine a [Kubernetes controller][kubernetes-controller] container, associated _Custom Resource Definitions_ (`CRDs`) and metadata. The Crossplane open source [AWS provider package][aws-provider-package] is an example a provider's metadata and `CRDs`.
+
 ## Availability
 
-Upbound's Official Packages are commercially licensed and compatible with UXP.
+Beginning with `v2.0.0`, all minor version releases are publicly accessible and
+compatible with UXP Community license.
 
-All minor versions of packages ending in `.0` are publicly accessible and
-compatible with the Community plan of UXP.
+Patch Release Access:
+* Patch releases for the current minor version are compatible with UXP Community license
+* Patch releases for previous minor versions require a Standard or higher commercial Upbound license to access
 
-Patch release versions not ending in `.0` require the **Standard** plan or
-higher.
+**Important Notes**:
+
+* Only a subset of patch releases are compatible with the Community license. For
+example, backported critical CVE patches require an Upbound Standard license or
+higher to access 
+* Releases compatible with the Community license today remain compatible
+  until end-of-life 
+* Releases before `v2.0.0` remain compatible with Crossplane and
+UXP, and follow the same access policies as before
 
 
-| Edition | v1.0 | v1.1 | v1.1.1 | v1.1.2 | v1.2 | v1.2.1 |
-|---------|------|------|--------|--------|------|--------|
-| Community | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-| Standard | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Enterprise | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Business Critical | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+The table below illustrates compatible versions of a v2 Official Package based
+on your Upbound license:
+
+
+|                   | v2.0.0 | v2.1.0 | v2.1.1 | v2.1.2 | v2.2.0 | v2.2.0-fips | V2.2.1 (latest) |
+|-------------------|--------|--------|--------|--------|--------|-------------|-----------------|
+| Community         | ✅      | ✅      | X      | X      | ✅      | X           | ✅               |
+| Standard          | ✅      | ✅      | ✅      | ✅      | ✅      | X           | ✅               |
+| Enterprise        | ✅      | ✅      | ✅      | ✅      | ✅      | ✅           | ✅               |
+| Business Critical | ✅      | ✅      | ✅      | ✅      | ✅      | ✅           | ✅               |
 
 For more information on licensing and provider availability, review the
 [package Policy][package-policy] documentation.
