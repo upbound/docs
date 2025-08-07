@@ -31,6 +31,15 @@ Before you begin, make sure you have:
 The Community plan on Upbound lets you run Upbound Crossplane without a license.
 This lets you use the free core features of Upbound Crossplane.
 
+### Enable a development license
+
+To generate a development license for local development on a single-node
+cluster, use the `up` CLI:
+
+```shell
+up uxp license apply --dev
+```
+
 ### Restrictions
 
 Users can't provide Upbound Crossplane as a commercial Crossplane service to
