@@ -97,11 +97,6 @@ Upbound Marketplace is the go-to location for finding trusted content. The
 Marketplace also serves as a place to distribute your own control plane
 extensions.
 
-## Next steps
-
-Now that you've built a Configuration, it's time to learn how to deploy it into
-a production control plane.
-
 [create]: /getstarted/introduction/project
 [configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
