@@ -1,154 +1,165 @@
 ---
-title: Create an Intelligent Control Plane
+title: Build Intelligent Control Planes with AI-Powered Operations
+description: "Advanced guide for implementing AI-powered control planes using Upbound Crossplane with intelligent functions and automated error resolution"
 sidebar_position: 1
 ---
-
-:::important
-
-This guide requires an Upbound control plane instance running UXP v2.0 or later
-
-:::
-
-<!-- vale gitlab.Uppercase = NO -->
+<!-- vale gitlab.Uppercase = NO --> 
 <!-- ignore LLM -->
-Upbound Crossplane provides AI-powered pipelines to your infrastructure in LLM
-enabled Operation functions. This tutorial walks through installing,
-configuring, and exploring your Intelligent Control Planes.
+:::important
+This guide requires an Upbound control plane instance running UXP v2.0 or later
+and targets users with existing control plane experience. :::
 
-<!-- vale gitlab.Uppercase = YES -->
+Upbound Crossplane transforms infrastructure management by integrating
+AI-powered pipelines directly into your control plane operations. Through
+LLM-enabled Operation functions, you can build intelligent infrastructure
+platforms that automatically diagnose issues, suggest fixes, and provide
+contextual insights about resource health and dependencies.
+
+This comprehensive guide demonstrates how to architect, deploy, and operate
+intelligent control planes that leverage Claude AI for enhanced operational
+intelligence.
+
+Intelligent control planes extend traditional Crossplane functionality with:
+
+- **AI-powered status transformers** that analyze resource states and provide intelligent diagnostics
+- **Contextual error analysis** that understands resource relationships and dependencies  
+- **Automated remediation suggestions** based on infrastructure patterns and best practices
+- **Real-time operational insights** that help platform teams understand complex system states
+
 ## Prerequisites
 
-Before you begin make sure you have:
+Before implementing an intelligent control plane, ensure you have:
 
-* An Upbound Account
-* The `up` CLI installed
-* An Anthropic key
-* An AWS account
+- **Platform Experience**: Familiarity with Crossplane compositions, XRDs, and function pipelines
+- **Infrastructure Access**: AWS account with appropriate IAM permissions
+- **AI Integration**: Anthropic API key for Claude integration
+- **Development Environment**: 
+  - Upbound Account with access to private packages
+  - `up` CLI installed and configured
+  - Local Kubernetes development environment
 
-## Set up your environment
-Create a new profile logged into the upbound org so you can get private packages. Make sure your current kube context is not a Space (so up will use the local project runner).
+## Environment setup
+
+Login to your Upbound organization:
 
 ```shell
-    up login --profile=upbound-dev --organization=upbound-dev --token='<MY_ROBOT_TOKEN_HERE>'
-    kubectl config unset current-context
+# Configure authenticated access to Upbound packages
+up login --token='<ROBOT_TOKEN>'
+
+# Ensure local project context (not Space-based)
+kubectl config unset current-context
 ```
 
-
-
-## Initialize a local project with AI dependencies
-Next, we will initialize a local project with AI dependencies.
+Next, create a new project with AI-enhanced dependencies:
 
 ```shell
-    up project init ai-demo
+# Initialize project with intelligent capabilities
+up project init intelligent-platform && cd intelligent-platform
 
-    cd ai-demo
+# Add core AWS providers for infrastructure management
+up dep add xpkg.upbound.io/upbound/provider-aws-iam:v1.22.0
+up dep add xpkg.upbound.io/upbound/provider-aws-sfn:v1.22.0
 
-    #installs provider aws iam
-    up dep add xpkg.upbound.io/upbound/provider-aws-iam:v1.22.0
-
-    #installs provider aws sfn
-    up dep add xpkg.upbound.io/upbound/provider-aws-sfn:v1.22.0
-
-    #installs function-claude-status-transformer
-    up dep add xpkg.upbound.io/upbound/function-claude-status-transformer
+# Add Claude AI status transformer for intelligent operations
+up dep add xpkg.upbound.io/upbound/function-claude-status-transformer
 ```
 
-## Launch the local UXP cluster
-Run the local UXP cluster
+## Run your project
+
+Launch your intelligent control plane locally:
 
 ```shell
-    up project run --local
+up project run --local
 ```
 
-## Configure credentials and runtime settings
-Go configure your Anthropic or OpenAI API Key, and then export it as an environment variable. Then create the Anthropic API key secret for the control plane to use:
+## Configure AI and cloud credentials
 
-### AI Provider credentials
+Configure Claude API access for intelligent functions:
 
 ```shell
-    export ANTHROPIC_API_KEY=<your super secret key here>
+# Set your Anthropic API key
+export ANTHROPIC_API_KEY="<your-anthropic-api-key>"
 
-    kubectl -n crossplane-system create secret generic api-key-anthropic --from-literal=key="${ANTHROPIC_API_KEY}" --from-literal=ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
+# Create Kubernetes secret for AI function access
+kubectl -n crossplane-system create secret generic api-key-anthropic \
+  --from-literal=key="${ANTHROPIC_API_KEY}" \
+  --from-literal=ANTHROPIC_API_KEY="${ANTHROPIC_API_KEY}"
 ```
 
-### Configure AWS credentials
-Create a text file containing the AWS account aws_access_key_id and aws_secret_access_key.
+### AWS provider configuration
+
+Set up AWS credentials for infrastructure provisioning:
 
 ```shell
-    [default]
-    aws_access_key_id = <aws_access_key_id>
-    aws_secret_access_key = <aws_secret_access_key>
+# Create AWS credentials file
+cat > aws-credentials.txt << EOF
+[default]
+aws_access_key_id = <your-access-key>
+aws_secret_access_key = <your-secret-key>
+EOF
+
+# Create Kubernetes secret
+kubectl create secret generic aws-secret \
+  -n crossplane-system \
+  --from-file=creds=./aws-credentials.txt
+
+# Verify secret creation
+kubectl describe secret aws-secret -n crossplane-system
 ```
 
-Then create a Kubernetes secret with your AWS credentials
+Configure the AWS ProviderConfig:
 
 ```shell
-    kubectl create secret \
-    generic aws-secret \
-    -n crossplane-system \
-    --from-file=creds=./aws-credentials.txt
+kubectl apply -f - <<EOF
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: creds
+EOF
 ```
 
-Verify that your secret looks correct
+## Create your intelligent composition
+
+Generate your composite resource structure:
+
 ```shell
-    kubectl describe secret aws-secret -n crossplane-system
-    
-    Name:         aws-secret
-    Namespace:    crossplane-system
-    Labels:       <none>
-    Annotations:  <none>
-
-    Type:  Opaque
-
-    Data
-    ====
-    creds:  114 bytes
+# Create example claim with error simulation capabilities
+up example generate --type claim --api-group example.upbound.io \
+  --api-version v1alpha1 --kind Network --name example
 ```
 
-Create a ProviderConfig for ProviderAWS
-```shell
-    kubectl apply -f - <<EOF
-    apiVersion: aws.upbound.io/v1beta1
-    kind: ProviderConfig
-    metadata:
-    name: default
-    spec:
-    credentials:
-        source: Secret
-        secretRef:
-        namespace: crossplane-system
-        name: aws-secret
-        key: creds
-    EOF
+Configure the example with intelligent error simulation:
+
+```yaml
+# examples/network/example.yaml
+apiVersion: example.upbound.io/v1alpha1
+kind: Network
+metadata:
+  name: example
+  namespace: default
+spec:
+  simulateFailures: true  # Enables AI-powered error analysis
+  region: "us-east-1"
 ```
 
-## Deploy a status transformer
-We’re going to create a new Go templating composition that creates a bunch of resources, with some baked in errors.
+Next, generate composite resource definition:
 
 ```shell
-    up example generate --type claim --api-group example.upbound.io --api-version v1alpha1 --kind Network --name example
+up xrd generate examples/network/example.yaml
+up composition generate apis/xnetworks/definition.yaml
 ```
 
-Edit the generated example to match the mocked example:
-```shell
-    apiVersion: example.upbound.io/v1alpha1
-    kind: Network
-    metadata:
-        name: example
-        namespace: default
-    spec:
-        simulateFailures: true
-        region: "us-east-1"
-```
+Edit the composition to include AI-powered pipeline steps:
 
-Generate the XRD and composition from the example:
-```shell
-    up xrd generate examples/network/example.yaml
-    up composition generate apis/xnetworks/definition.yaml
-```
-
-Edit the generated composition to match the mocked example:
-```shell
+```yaml
+# apis/xnetworks/composition.yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -159,181 +170,223 @@ spec:
     kind: XNetwork
   mode: Pipeline
   pipeline:
+  # Resource generation step
   - functionRef:
       name: upbound-ai-demotest-function
-    step: test-function
+    step: resource-generation
+  
+  # AI-powered status analysis step
   - functionRef:
       name: upbound-function-claude-status-transformer
     input:
       apiVersion: function-claude-status-transformer.fn.crossplane.io/v1beta1
       kind: StatusTransformation
-      additionalContext: ""
-    step: upbound-function-claude-status-transformer
+      additionalContext: "Analyze AWS IAM policy and Step Function dependencies"
+    step: intelligent-status-analysis
     credentials:
     - name: claude
       source: Secret
       secretRef:
         namespace: crossplane-system
         name: api-key-anthropic
+  
+  # Auto-ready resolution step
   - functionRef:
       name: crossplane-contrib-function-auto-ready
-    step: crossplane-contrib-function-auto-ready
+    step: resource-readiness
 ```
 
-Next, create a new go-templating embedded function:
+### Create your intelligent function
+
+Create the Go template function that demonstrates intelligent error analysis:
+
 ```shell
-    up function generate --language=go-templating test-function apis/xnetworks/composition.yaml
+up function generate --language=go-templating resource-generation apis/xnetworks/composition.yaml
 ```
 
-Edit the generated Go template composition function to match the mocked composition:
-```shell
+Open your function file and paste the following function:
+
+```yaml
+# functions/resource-generation.yaml
 # code: language=yaml
 # yaml-language-server: $schema=../../.up/json/models/index.schema.json
 
 ---
-# IAM Policy - Bad when simulateFailures=true
+# IAM Policy with conditional error simulation
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: Policy
 metadata:
-    annotations:
-        {{ setResourceNameAnnotation "bad-policy" }}
-    labels:
-        policy: bad
+  annotations:
+    {{ setResourceNameAnnotation "application-policy" }}
+  labels:
+    policy: application
+    component: security
 spec:
-    forProvider:
-        {{- if $xr.spec.simulateFailures }}
-        # Invalid JSON - missing comma after Version
-        policy: |
-            {
-                "Version": "2012-10-17"
-                "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "*"
-                }
-                ]
-            }
-        {{- else }}
-        # Valid JSON when not simulating failures
-        policy: |
-            {
-                "Version": "2012-10-17",
-                "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Action": "s3:GetObject",
-                    "Resource": "*"
-                }
-                ]
-            }
-        {{- end }}
-    providerConfigRef:
-        name: default
+  forProvider:
+    {{- if $xr.spec.simulateFailures }}
+    # Intentionally malformed JSON for AI analysis
+    policy: |
+      {
+        "Version": "2012-10-17"
+        "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": "s3:GetObject",
+          "Resource": "*"
+        }
+        ]
+      }
+    {{- else }}
+    # Correct JSON when not simulating failures
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": ["s3:GetObject", "s3:ListBucket"],
+          "Resource": ["arn:aws:s3:::my-bucket/*", "arn:aws:s3:::my-bucket"]
+        }
+        ]
+      }
+    {{- end }}
+  providerConfigRef:
+    name: default
 
 ---
-# IAM Role - References the policy above
+# IAM Role with policy dependency
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: Role
 metadata:
-    annotations:
-        {{ setResourceNameAnnotation "demo-role" }}
-    labels:
-        role: demo-role
+  annotations:
+    {{ setResourceNameAnnotation "application-role" }}
+  labels:
+    role: application
+    component: security
 spec:
-    forProvider:
-        assumeRolePolicy: |
-            {
-                "Version": "2012-10-17",
-                "Statement": [
-                    {
-                        "Effect": "Allow",
-                        "Principal": {
-                            "Service": "lambda.amazonaws.com"
-                        },
-                        "Action": "sts:AssumeRole"
-                    }
-                ]
-            }
-        managedPolicyArnsSelector:
-            matchLabels:
-                policy: bad
-    providerConfigRef:
-        name: default
+  forProvider:
+    assumeRolePolicy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": ["lambda.amazonaws.com", "states.amazonaws.com"]
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      }
+    managedPolicyArnsSelector:
+      matchLabels:
+        policy: application
+  providerConfigRef:
+    name: default
 
 ---
-# Step Function - References the role above
+# Step Function with role dependency
 apiVersion: sfn.aws.upbound.io/v1beta2
 kind: StateMachine
 metadata:
-    annotations:
-        {{ setResourceNameAnnotation "demo-state-machine" }}
+  annotations:
+    {{ setResourceNameAnnotation "workflow-state-machine" }}
+  labels:
+    component: orchestration
 spec:
-    forProvider:
-        definition: >
-            {
-                "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
-                "StartAt": "HelloWorld",
-                "States": {
-                    "HelloWorld": {
-                        "Type": "Task",
-                        "Resource": "arn:aws:lambda:us-west-1:609897127049:function:example",
-                        "End": true
-                    }
-                }
-            }
-        region: {{ $xr.spec.region }}
-        roleArnSelector:
-            matchLabels:
-                role: demo-role
+  forProvider:
+    definition: |
+      {
+        "Comment": "Intelligent workflow with error handling",
+        "StartAt": "ProcessData",
+        "States": {
+          "ProcessData": {
+            "Type": "Task",
+            "Resource": "arn:aws:lambda:{{ $xr.spec.region }}:123456789012:function:data-processor",
+            "Retry": [
+              {
+                "ErrorEquals": ["Lambda.ServiceException", "Lambda.AWSLambdaException"],
+                "IntervalSeconds": 2,
+                "MaxAttempts": 6,
+                "BackoffRate": 2
+              }
+            ],
+            "End": true
+          }
+        }
+      }
+    region: {{ $xr.spec.region }}
+    roleArnSelector:
+      matchLabels:
+        role: application
+  providerConfigRef:
+    name: default
 
 ---
-# Healthy IAM Policy - Always succeeds
+# Healthy baseline policy for comparison
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: Policy
 metadata:
-    annotations:
-        {{ setResourceNameAnnotation "healthy-policy" }}
-    labels:
-        policy: healthy
+  annotations:
+    {{ setResourceNameAnnotation "baseline-policy" }}
+  labels:
+    policy: baseline
+    component: security
 spec:
-    forProvider:
-        policy: |
-            {
-                "Version": "2012-10-17",
-                "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Action": "logs:CreateLogGroup",
-                    "Resource": "*"
-                }
-                ]
-            }
-    providerConfigRef:
-        name: default
+  forProvider:
+    policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": "logs:CreateLogGroup",
+          "Resource": "arn:aws:logs:*:*:*"
+        }
+        ]
+      }
+  providerConfigRef:
+    name: default
 ```
 
-## See the Intelligence in Action
-Apply the example:
+## Deploy and observe error analysis
+
+Apply your intelligent composition:
 
 ```shell
-    kubectl apply -f ./examples/network/example.yaml
+kubectl apply -f ./examples/network/example.yaml
 ```
 
-Now, open the WebUI with the following command:
+Launch the WebUI to observe AI-powered insights:
 
 ```shell
-    up uxp web-ui open
+up uxp web-ui open
 ```
 
-In the WebUI, go to the Network MR objects. Watch the intelligence embedded error message describing the problem between the nested set of resources.
+Navigate to your Network managed resources and observe:
 
-Now modify the claim so that it is now working correctly:
+- **Intelligent Error Messages**: Claude analyzes the malformed JSON policy and explains the missing comma syntax error
+- **Dependency Analysis**: AI identifies how the IAM policy error cascades to affect the Role and Step Function
+- **Contextual Recommendations**: Specific suggestions for fixing the policy syntax and improving resource definitions
+
+Test the intelligent resolution workflow:
+
 ```shell
-    kubectl edit network example
-    
-    #Update the spec.simulateFailures to false
-    simulateFailures: false
+# Edit the claim to disable error simulation
+kubectl edit network example
+
+# Change simulateFailures to false in the spec
+spec:
+  simulateFailures: false
+  region: "us-east-1"
 ```
 
-Now, wait for a bit. Watch the intelligence embedded error message describing the problem evolve as the errors in the Network object begins to resolve.
+Observe in the WebUI how:
+- AI detects the configuration change
+- Status messages evolve from error analysis to success confirmation
+- Resource dependency health improves across the entire composite
+
+These intelligent control plane patterns help you transform your infrastructure
+platforms from reactive to proactive.
+
+<!-- vale gitlab.Uppercase = YES--> 
