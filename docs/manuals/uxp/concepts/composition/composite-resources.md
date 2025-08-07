@@ -20,10 +20,13 @@ A _Composition_ defines how to _compose_ the resources together.
 
 You use two Crossplane types to create a new custom API:
 
-* A [Composite Resource Definition](/crossplane/composite-resource-definitions)
+* A [Composite Resource Definition][xrds]
   (XRD) - Defines the XR's schema.
-* A [Composition](/crossplane/compositions) - Configures how the XR creates
+* A [Composition][composition] - Configures how the XR creates
   other resources.
 </details>
 
-
+[xrds]: /manuals/uxp/concepts/composition/composite-resource-definitions/
+[xrs]: /manuals/uxp/concepts/composition/composite-resources/
+[composition]: /manuals/uxp/concepts/composition/compositions/
+[k8s]: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/

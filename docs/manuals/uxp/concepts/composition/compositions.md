@@ -55,16 +55,20 @@ spec:
 ```
 </div>
 
-
 <details>
   <summary>What are XRs, XRDs and Compositions?</summary>
-  A [composite resource](/crossplane/composite-resources) or XR is a custom API.
+  A [composite resource][xrs] or XR is a custom API.
 
 You use two Crossplane types to create a new custom API:
 
-* A [Composite Resource Definition](/crossplane/composite-resource-definitions)
-  (XRD) - Defines the XR's schema. 
-* A Composition - This page. Configures how the XR creates other resources.
+* A [Composite Resource Definition][xrds]
+  (XRD) - Defines the XR's schema.
+* A Composition - This page. Configures how the XR creates
+  other resources.
 </details>
 
+[xrds]: /manuals/uxp/concepts/composition/composite-resource-definitions/
+[xrs]: /manuals/uxp/concepts/composition/composite-resources/
+[composition]: /manuals/uxp/concepts/composition/compositions/
+[k8s]: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 

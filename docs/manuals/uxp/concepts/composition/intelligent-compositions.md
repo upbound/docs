@@ -66,7 +66,7 @@ Upbound offers a number of Official Functions that've been AI-enabled and are su
 - [function-claude-status-transformer][functionStatusTransformer]
 - [function-pod-analyzer][functionPodAnalyzer]
 
-[functions]: /manuals/uxp/packages/functions
+[functions]: /manuals/uxp/concepts/packages/functions
 [functionClaude]: https://marketplace.upbound.io/
 [functionOpenAi]: https://marketplace.upbound.io/
 [functionStatusTransformer]: https://marketplace.upbound.io/
