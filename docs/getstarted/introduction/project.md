@@ -993,7 +993,7 @@ to continue.
 [functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [providers]: https://upbound.io
 [Configuration]: /manuals/uxp/concepts/packages/configurations
-[buildAndPush]: build-and-push
+[buildAndPush]: /getstarted/introduction/build-and-push
 [xrd]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [composition]: /manuals/uxp/concepts/composition/overview
 [functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
