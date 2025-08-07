@@ -17,7 +17,7 @@ be familiar with YAML or programming in Go, Python, or KCL.
 
 Before beginning, make sure that:
 
-- you have installed the [Upbound CLI](up).
+- you have installed the [Upbound CLI][up].
 - you have a Docker-compatible container runtime installed on your system and running.
 
 ## Create a control plane project

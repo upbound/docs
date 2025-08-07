@@ -21,12 +21,12 @@ This quickstart assumes a basic understanding of Crossplane, Backstage, and Argo
 
 Before you start to deploy this solution, you need to have the following:
 
-- An [Upbound Account](registerAccount) and Organization created
-- [AWS credentials](awsCreds) stored at `/Users/$USER/.aws/aws.json`
+- An [Upbound Account][registerAccount] and Organization created
+- [AWS credentials][awsCreds] stored at `/Users/$USER/.aws/aws.json`
 - A Unix-like system (macOS/Linux/WSL)
 - Docker Desktop
 - kubectl
-- Upbound CLI [(up)](upCli)
+- Upbound CLI [up][upCli]
 
 <!-- vale off -->
 :::important
@@ -158,7 +158,7 @@ For a comprehensive guide of the solution and how to extend it to fit your needs
 [registerAccount]: https://accounts.upbound.io/register
 [awsCreds]: https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html
 [design]: /solutions/general-idp/design
-[upCli]: https://docs.upbound.io/operate/cli/ 
+[upCli]: /manuals/cli/overview
 [starterGroups]: /img/solutions/starter-groups.png
 [frontendCtp]: /img/solutions/frontend-ctp.png
 [controlplaneView]: /img/solutions/control-plane-view.png

@@ -4,7 +4,7 @@ sidebar_position: 220
 description: "This example explains how to create apps-as-a-service"
 ---
 
-This example assumes you've already created and deployed the IDP starter kit. Read the [Get Started](getStarted) guide to do this if you haven't already.
+This example assumes you've already created and deployed the IDP starter kit. Read the [Get Started][getStarted] guide to do this if you haven't already.
 
 ## Configuration package
 
@@ -19,4 +19,4 @@ spec:
   package: xpkg.upbound.io/upbound/configuration-app:v0.12.1
 ```
 
-[getStarted]: /solutions/general-idp/
+[getStarted]: /guides/solutions/general-idp/get-started

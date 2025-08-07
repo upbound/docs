@@ -2,7 +2,6 @@
 title: Manage external resources with providers
 sidebar_position: 2
 ---
-
 Upbound Crossplane is the AI-native distribution of Crossplane. Control planes
 are the only way to build and support an autonomous infrastructure platform for
 the age of autonomous systems, serving both humans and AI. Crossplane offers an
@@ -14,7 +13,7 @@ This quickstart is suitable for users who want to manage external
 services using ready-made custom resources.
 
 For users who want to build workflows for templating resources and exposing
-them as simplified resource abstraction, read the [Get Started with Composition
+them as simplified resource abstraction, read the [Get Started
 guide][composition]
 :::
 
@@ -195,21 +194,14 @@ managed resources.
 Next, learn more about how Crossplane can deploy cloud resources and manage
 external services:
 
-* [Create a custom GCP resource type][gcp]
 * [Perform an operation on a resource][operations]
-* [Manage external resources with composition][composition-qs]
 
 [up]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io
 [functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
-[aws]: /uxp/quickstart/aws-composition 
-[azure]: /uxp/quickstart/azure-composition 
-[gcp]:  /uxp/quickstart/gcp-composition
 [operations]: /manuals/uxp/concepts/operations/overview
 [providers]:  /manuals/uxp/concepts/packages/providers
-[composition]: link
+[composition]: /getstarted/introduction/project
 <!--- TODO(tr0njavolta): links --->
 
-## Next Steps
 
-TODO

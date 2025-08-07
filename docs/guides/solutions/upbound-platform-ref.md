@@ -1,6 +1,7 @@
 ---
 title: Upbound Platform Reference
 description: Best practices and foundations for building with Upbound
+draft: true
 ---
 
 This guide contains the best practices and foundations for building with

@@ -30,13 +30,16 @@ To migrate an existing Crossplane control plane to a control plane in Upbound, d
 
     The command exports your existing Crossplane control plane configuration/state into an archive file.
 
-    :::note
-  By default, the export command doesn't make any changes to your existing Crossplane control plane state, leaving it intact. Use the `--pause-before-export` flag to pause the
-     reconciliation on managed resources before exporting the archive file.
+:::note
+By default, the export command doesn't make any changes to your existing
+Crossplane control plane state, leaving it intact. Use the
+`--pause-before-export` flag to pause the reconciliation on managed resources
+before exporting the archive file.
 
-  This is a safety mechanism to help ensure the control plane you migrate state to doesn't assume ownership of resources before
-    you're ready.
-    :::
+This is a safety mechanism to help ensure the control plane you migrate state to
+doesn't assume ownership of resources before you're ready.
+
+:::
 
 2. Use the control plane [create command][create-command] to create a managed
 control plane in Upbound:

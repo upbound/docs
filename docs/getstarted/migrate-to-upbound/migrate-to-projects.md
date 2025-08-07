@@ -229,12 +229,12 @@ Read the [concept][project-concept] documentation to learn more about using proj
 [up-account]: https://www.upbound.io/register/a
 [up-cli]: /manuals/cli/overview
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
-[project]: /manuals/cli/overview
+[project]: /manuals/cli/howtos/project 
 [configuration-overview]: /manuals/uxp/concepts/packages/configurations#the-crossplaneyaml-file
 [up-dep]: /reference/cli-reference#up-dependency-dep-add
 [scaffold-api]: /manuals/cli/overview
 [self-managed-uxp]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
 [spaces]: /manuals/spaces/overview
-[project-concept]: /manuals/cli/overview
+[project-concept]: /manuals/cli/howtos/project
 [go-templ]: https://marketplace.upbound.io/functions/upbound/function-go-templating
 [import-composite-types]: #import-composite-types

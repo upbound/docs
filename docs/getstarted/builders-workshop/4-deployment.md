@@ -284,8 +284,8 @@ Build][build] manuals.
 
 
 [up-account]: https://www.upbound.io/register/a
-[project-foundations]: /getstarted/builders-workshop/1-project-foundations
+[project-foundations]: /getstarted/builders-workshop/project-foundations
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
-[build]: /manuals/cli/projects
+[build]: /manuals/cli/howtos/project

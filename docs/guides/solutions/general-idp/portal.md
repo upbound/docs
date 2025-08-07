@@ -6,7 +6,7 @@ description: "A guide to use an Upbound control plane to bootstrap other platfor
 
 Platform portals are one of the most common user interfaces to offer to consumers of your platform. If you want your platform users to have a graphical interface to view their resources, inspect, and create new instances, you should think about deploying a portal for your platform.
 
-[Backstage](backstage) is a popular framework for implementing your own platform portal. Backstage is a web app and must get deployed and run somewhere. This solution demonstrates deploying a sample Backstage instance to an EKS cluster, preconfigured for connectivity to an Upbound control plane. 
+[Backstage][backstage] is a popular framework for implementing your own platform portal. Backstage is a web app and must get deployed and run somewhere. This solution demonstrates deploying a sample Backstage instance to an EKS cluster, preconfigured for connectivity to an Upbound control plane. 
 
 Backstage is just one way you can create a portal for your platform. Instead of Backstage, you can choose to build your own portal from scratch, use Upbound's built-in Consumer Portal, or use other vendor-based portals.
 
