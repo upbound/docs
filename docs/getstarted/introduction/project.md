@@ -79,16 +79,16 @@ up example generate \
     --api-group getting.started \
     --api-version v1alpha1 \
     --kind App\
-    --name example \
+    --name my-app \
     --scope namespace \
     --namespace default
 ```
 
 Open the project in your IDE of choice and replace the contents of the generated file
-`getting-started/examples/app/example.yaml` with the following:
+`getting-started/examples/app/my-app.yaml` with the following:
 
-```yaml title="getting-started/examples/app/example.yaml"
-apiVersion: example.crossplane.io/v1
+```yaml title="getting-started/examples/app/my-app.yaml"
+apiVersion: example.upbound.io/v1alpha1
 kind: App
 metadata:
   namespace: default
@@ -106,28 +106,28 @@ Next, generate the definition files needed by Crossplane with the following comm
 
 <TabItem value="gotempl" label="Go Templates">
 ```shell
-up xrd generate examples/app/example.yaml
+up xrd generate examples/app/my-app.yaml
 up composition generate apis/apps/definition.yaml
 up function generate --language=go-templating compose-resources apis/apps/composition.yaml
 ```
 </TabItem>
 <TabItem value="Python" label="Python">
 ```shell
-up xrd generate examples/app/example.yaml
+up xrd generate examples/app/my-app.yaml
 up composition generate apis/apps/definition.yaml
 up function generate --language=python compose-resources apis/apps/composition.yaml
 ```
 </TabItem>
 <TabItem value="Go" label="Go">
 ```shell
-up xrd generate examples/app/example.yaml
+up xrd generate examples/app/my-app.yaml
 up composition generate apis/apps/definition.yaml
 up function generate --language=go compose-resources apis/apps/composition.yaml
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
 ```shell
-up xrd generate examples/app/example.yaml
+up xrd generate examples/app/my-app.yaml
 up composition generate apis/apps/definition.yaml
 up function generate --language=kcl compose-resources apis/apps/composition.yaml
 ```
@@ -165,16 +165,16 @@ metadata:
     gotemplating.fn.crossplane.io/ready: "True"
     {{ end }}
   labels:
-    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+    example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+      example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
   template:
     metadata:
       labels:
-        example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+        example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
     spec:
       containers:
       - name: app
@@ -191,16 +191,16 @@ metadata:
     gotemplating.fn.crossplane.io/ready: "True"
     {{ end }}
   labels:
-    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+    example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
 spec:
   selector:
-    example.crossplane.io/app: {{ .observed.composite.resource.metadata.name }}
+    example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
   ports:
   - protocol: TCP
     port: 8080
     targetPort: 80
 ---
-apiVersion: example.crossplane.io/v1
+apiVersion: example.upbound.io/v1
 kind: App
 status:
   replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
@@ -960,14 +960,14 @@ up project run --local
 Your control plane now understands _App_ resources. Create an _App_:
 
 ```shell
-kubectl apply -f examples/app/example.yaml
+kubectl apply -f examples/app/my-app.yaml
 ```
 
 
 Check that the _App_ is ready:
 
 ```shell
-kubectl get -f examples/app/example.yaml
+kubectl get -f examples/app/my-app.yaml
 NAME     SYNCED   READY   COMPOSITION   AGE
 my-app   True     True    app-yaml      56s
 ```
@@ -977,7 +977,7 @@ Observe the `Deployment` and `Service` Crossplane created when you created the
 
 
 ```shell
-kubectl get deploy,service -l example.crossplane.io/app=my-app
+kubectl get deploy,service -l example.upbound.io/app=my-app
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/my-app-2r2rk   2/2     2            2           11m
 
