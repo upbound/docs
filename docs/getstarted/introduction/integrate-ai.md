@@ -98,7 +98,137 @@ up composition generate
 Generate your function:
 
 ```shell
-up function generate --language=python test-function 
+up function generate --language=go-templating test-function 
+```
+
+Open your function file and paste the function below:
+
+```yaml
+# code: language=yaml
+# yaml-language-server: $schema=../../.up/json/models/index.schema.json
+
+---
+# IAM Policy - Bad when simulateFailures=true
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: Policy
+metadata:
+    annotations:
+        {{ setResourceNameAnnotation "bad-policy" }}
+    labels:
+        policy: bad
+spec:
+    forProvider:
+        {{- if $xr.spec.simulateFailures }}
+        # Invalid JSON - missing comma after Version
+        policy: |
+            {
+                "Version": "2012-10-17"
+                "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": "s3:GetObject",
+                    "Resource": "*"
+                }
+                ]
+            }
+        {{- else }}
+        # Valid JSON when not simulating failures
+        policy: |
+            {
+                "Version": "2012-10-17",
+                "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": "s3:GetObject",
+                    "Resource": "*"
+                }
+                ]
+            }
+        {{- end }}
+    providerConfigRef:
+        name: default
+
+---
+# IAM Role - References the policy above
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: Role
+metadata:
+    annotations:
+        {{ setResourceNameAnnotation "demo-role" }}
+    labels:
+        role: demo-role
+spec:
+    forProvider:
+        assumeRolePolicy: |
+            {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            }
+        managedPolicyArnsSelector:
+            matchLabels:
+                policy: bad
+    providerConfigRef:
+        name: default
+
+---
+# Step Function - References the role above
+apiVersion: sfn.aws.upbound.io/v1beta2
+kind: StateMachine
+metadata:
+    annotations:
+        {{ setResourceNameAnnotation "demo-state-machine" }}
+spec:
+    forProvider:
+        definition: >
+            {
+                "Comment": "A Hello World example of the Amazon States Language using an AWS Lambda Function",
+                "StartAt": "HelloWorld",
+                "States": {
+                    "HelloWorld": {
+                        "Type": "Task",
+                        "Resource": "arn:aws:lambda:us-west-1:609897127049:function:example",
+                        "End": true
+                    }
+                }
+            }
+        region: {{ $xr.spec.region }}
+        roleArnSelector:
+            matchLabels:
+                role: demo-role
+
+---
+# Healthy IAM Policy - Always succeeds
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: Policy
+metadata:
+    annotations:
+        {{ setResourceNameAnnotation "healthy-policy" }}
+    labels:
+        policy: healthy
+spec:
+    forProvider:
+        policy: |
+            {
+                "Version": "2012-10-17",
+                "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": "logs:CreateLogGroup",
+                    "Resource": "*"
+                }
+                ]
+            }
+    providerConfigRef:
+        name: default
+
 ```
 
 
