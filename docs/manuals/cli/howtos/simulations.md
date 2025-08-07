@@ -1,5 +1,5 @@
 ---
-title: Simulate changes
+title: Simulations
 sidebar_position: 9
 description: A guide for how to use Simulations in a Space.
 ---

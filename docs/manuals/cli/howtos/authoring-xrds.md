@@ -1,5 +1,5 @@
 ---
-title: Design your control plane APIs
+title: Design a control plane API
 sidebar_position: 6
 description: Define your first API in your control plane project
 ---

@@ -1,5 +1,5 @@
 ---
-title: What are Control Plane Contexts?
+title: Control Plane Contexts
 sidebar_position: 4
 description: An introduction to the how contexts work in Upbound
 aliases:

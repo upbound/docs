@@ -1,5 +1,5 @@
 ---
-title: What are Control Plane Projects?
+title: Control Plane Projects
 description: "What are Control Plane Projects?"
 sidebar_position: 2
 ---
