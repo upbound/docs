@@ -1,5 +1,6 @@
 ---
 title: Compose resources dynamically
+draft: true
 ---
 
 :::important
