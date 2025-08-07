@@ -5,7 +5,7 @@ const GuidesCards = () => {
     {
       title: 'Solutions',
       description: 'Complete platform deployments including general IDP architecture and Upbound platform reference implementations.',
-      link: './solutions'
+      link: './solutions/general-idp'
     },
     {
       title: 'Use Cases',
@@ -15,7 +15,7 @@ const GuidesCards = () => {
     {
       title: 'Intelligent Controllers',
       description: 'Advanced control plane patterns with dynamic resource composition, log analysis, and database scaling.',
-      link: './intelligent-controllers'
+      link: './intelligent-controllers/intelligent-control-planes/'
     }
   ];
 

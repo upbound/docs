@@ -209,6 +209,6 @@ kubectl delete controlplane ctp1
 [release-notes]: /reference/release-notes/spaces
 [up-space-destroy]: /reference/cli-reference
 [up-cli]: /reference/cli-reference
-[upbound-s-saas-environment]: /manuals/spaces/guides/self-hosted/spaces-management
+[upbound-s-saas-environment]: /manuals/spaces/howtos/self-hosted/spaces-management
 [spaces-git-integration]: /connect/git-integration
 <!--- TODO(tr0njavolta): links --->

@@ -25,7 +25,7 @@ Examples of providers include:
 Providers define every external resource they can create in Kubernetes as a
 Kubernetes API endpoint.  
 These endpoints are
-[_Managed Resources_](/crossplane/managed-resources/managed-resources).
+[_Managed Resources_](/manuals/uxp/concepts/managed-resources/overview/managed-resources).
 <!-- vale write-good.Passive = YES -->
 
 

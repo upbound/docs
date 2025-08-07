@@ -108,7 +108,7 @@ identifies the resource inside the Composition. It isn't related to the external
 name used with the Provider.
 
 The contents of the `base` are identical to creating a standalone
-[managed resource](/crossplane/managed-resources/managed-resources).
+[managed resource](/manuals/uxp/concepts/managed-resources/overview/managed-resources).
 
 This example uses
 [provider-upjet-aws](https://github.com/crossplane-contrib/provider-upjet-aws)
@@ -411,8 +411,8 @@ to use with
 <!-- vale gitlab.SentenceLength = NO -->
 <!-- ignore false positive -->
 Use either a
-[reference](/crossplane/managed-resources/managed-resources#matching-by-name-reference)
-or a [selector](/crossplane/managed-resources/managed-resources#matching-by-selector) to
+[reference](/manuals/uxp/concepts/managed-resources/overview/managed-resources#matching-by-name-reference)
+or a [selector](/manuals/uxp/concepts/managed-resources/overview/managed-resources#matching-by-selector) to
 identify the EnvironmentConfigs to use.
 <!-- vale Google.Quotes = YES -->
 
@@ -1917,7 +1917,7 @@ By default an XRD writes all secret keys listed in the composed resources
 
 
 For more information on connection secrets read about
-[managed resources](/crossplane/managed-resources/managed-resources).
+[managed resources](/manuals/uxp/concepts/managed-resources/overview/managed-resources).
 :::
 
 ## Resource readiness checks

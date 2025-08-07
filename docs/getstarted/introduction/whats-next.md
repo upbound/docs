@@ -27,9 +27,9 @@ Get started learning the core concepts of control planes, resource types, Config
 <!-- vale Microsoft.Contractions = YES -->
 
 [space]: /manuals/spaces/overview
-[cloud-spaces]: /manuals/spaces/guides/cloud-spaces/overview
-[self-hosted-space]: /manuals/spaces/guides/self-hosted/overview
-[self-managed-uxp]: /manuals/uxp/guides/self-managed-uxp/uxp-deployment
+[cloud-spaces]: /manuals/spaces/howtos/cloud-spaces/overview
+[self-hosted-space]: /manuals/spaces/howtos/self-hosted/overview
+[self-managed-uxp]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
 [controlPlane]: /getstarted/what-is-upbound#what-are-control-planes
 [compositions]: /manuals/uxp/concepts/composition/overview
 [operation]: /manuals/uxp/concepts/operations/overview

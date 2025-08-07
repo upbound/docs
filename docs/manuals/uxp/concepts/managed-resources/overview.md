@@ -362,7 +362,7 @@ The following is a list of common policy combinations:
 <!-- vale on -->
 
 The `providerConfigRef` on a managed resource tells the Provider which
-[ProviderConfig](/crossplane/packages/providers#provider-configuration) to
+[ProviderConfig](/manuals/uxp/concepts/packages/overview/providers#provider-configuration) to
 use when creating the managed resource.  
 
 Use a ProviderConfig to define the authentication method to use when 

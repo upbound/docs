@@ -164,5 +164,5 @@ current usage:
 For more information on usage metering, review the [Usage Metering][usage]
 guide.
 
-[usage]: /manuals/uxp/guides/self-managed-uxp/usage-metering
+[usage]: /manuals/uxp/howtos/self-managed-uxp/usage-metering
 [uxp-source]: https://github.com/upbound/upbound-crossplane

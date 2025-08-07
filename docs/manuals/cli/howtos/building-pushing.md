@@ -134,5 +134,5 @@ shared across multiple compositions, reference them manually in the
 
 [up-cli]: /manuals/cli/
 [projects]: /manauls/cli/concepts/projects
-[functions]: /manuals/cli/guides/compositions/go
+[functions]: /manuals/cli/howtos/compositions/go
 [up-cli-reference]: /reference/cli-reference

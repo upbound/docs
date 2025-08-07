@@ -279,6 +279,6 @@ in the [Spaces documentation][spaces-documentation-2].
 [gitops-with-control-planes]: /manuals/spaces/guides/gitops
 [connect-control-planes-to-external-services]: /manuals/platform/authentication/oidc-configuration
 [spaces-documentation]: /manuals/spaces/features/secrets-management
-[spaces-documentation-1]: /manuals/spaces/guides/self-hosted/backup-and-restore
+[spaces-documentation-1]: /manuals/spaces/howtos/self-hosted/backup-and-restore
 [otel]: https://otel.com
 [spaces-documentation-2]: /manuals/spaces/features/observability

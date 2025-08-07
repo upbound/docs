@@ -206,7 +206,7 @@ The Query resource allows you to query objects in a single control plane.
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
 
-[documentation]: /manuals/spaces/guides/self-hosted/query-api
+[documentation]: /manuals/spaces/howtos/self-hosted/query-api
 [up-ctx]: /reference/cli-reference
 [up-alpha-get-command]: /reference/cli-reference
 [a-flag]: /reference/cli-reference

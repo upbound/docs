@@ -725,7 +725,7 @@ crossplane xpkg build \
 
 :::tip
 Crossplane packages are special OCI images. Read more about packages in the
-[packages documentation](/crossplane/packages/configurations).
+[packages documentation](/manuals/uxp/concepts/packages/overview/configurations).
 :::
 
 Push both package files to a registry. Pushing both files to one tag in the
