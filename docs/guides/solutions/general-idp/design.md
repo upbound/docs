@@ -56,10 +56,6 @@ you can use the power of Crossplane to build a new composite resource API on top
 
 Based on the use cases of your platform on Upbound, we recommend prioritizing only a subset of the total offerings you want your platform to provide. Pick one or two offerings, or use any of the available [Configurations from Upbound](configurations). 
 
-## Next steps
-
-Learn how to [use an Upbound control plane to bootstrap](bootstrap) the rest of the platform.
-
 [configurations]: https://marketplace.upbound.io/configurations
 [bootstrap]: bootstrap.md
 
