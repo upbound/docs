@@ -93,11 +93,16 @@ In this tutorial you learned how to:
 * Create a repository to store your Configuration packages
 * Build and push a Configuration to the Upbound Marketplace
 
-Upbound Marketplace is the go-to location for finding trusted content. The
+[Upbound Marketplace][marketplace] is the go-to location for finding trusted content. The
 Marketplace also serves as a place to distribute your own control plane
 extensions.
+
+## Next Steps
+
+Now that you know the basics of building with Upbound, extend your _WebApp_ custom resource type with an AI-augmented operation to detect and remediate issues that occur when running app workloads on Kubernetes. Read [Create an AI-augmented operation][integrate-ai].
 
 [create]: /getstarted/introduction/project
 [configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
-[whatsNext]: /getstarted/introduction/whats-next
+[marketplace]: https://marketplace.upbound.io/
+[integrate-ai]: /getstarted/introduction/integrate-ai
