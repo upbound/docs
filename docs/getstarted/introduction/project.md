@@ -84,9 +84,9 @@ up example generate \
 ```
 
 Open the project in your IDE of choice and replace the contents of the generated file
-`getting-started/examples/webapps/my-app.yaml` with the following:
+`getting-started/examples/webapp/my-app.yaml` with the following:
 
-```yaml title="getting-started/examples/webapps/my-app.yaml"
+```yaml title="getting-started/examples/webapp/my-app.yaml"
 apiVersion: platform.example.com/v1alpha1
 kind: WebApp
 metadata:
@@ -110,28 +110,28 @@ Next, generate the definition files needed by Crossplane with the following comm
 
 <TabItem value="gotempl" label="Go Templates">
 ```shell
-up xrd generate examples/webapps/my-app.yaml
+up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=go-templating compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 <TabItem value="Python" label="Python">
 ```shell
-up xrd generate examples/webapps/my-app.yaml
+up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=python compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 <TabItem value="Go" label="Go">
 ```shell
-up xrd generate examples/webapps/my-app.yaml
+up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=go compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
 ```shell
-up xrd generate examples/webapps/my-app.yaml
+up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=kcl compose-resources apis/webapps/composition.yaml
 ```
@@ -1064,7 +1064,7 @@ The _ClusterRoleBinidng_ above gives full admin access to Crossplane. While this
 Your control plane now understands _WebApp_ resources. Create an _WebApp_:
 
 ```shell
-kubectl apply -f examples/webapps/my-app.yaml
+kubectl apply -f examples/webapp/my-app.yaml
 ```
 
 
