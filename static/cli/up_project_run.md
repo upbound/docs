@@ -1,85 +1,120 @@
+---
+mdx:
+  format: md
+---
+
 Run a project on a development control plane for testing.
 
-#### Options
+The `run` command builds and runs a project on a development control plane for
+testing.
 
-##### `--project-file`
-*Shorthand:* `-f`  
-*Default:* `upbound.yaml`  
-Path to project definition file.
+This command:
 
-##### `--repository`
-Repository for the built package. Overrides the repository specified in the project file.
+- Builds all embedded functions defined in the project
+- Creates or uses an existing development control plane
+- Pushes packages to the container registry
+- Installs the project configuration on the control plane
+- Updates kubeconfig to use the development control plane
 
-##### `--no-build-cache`
-*Default:* `false`  
-Don't cache image layers while building.
+#### Development Control Planes
 
-##### `--build-cache-dir`
-*Default:* `~/.up/build-cache`  
-Path to the build cache directory.
+There are two kinds of development control planes:
 
-##### `--max-concurrency`
-*Default:* `8`  
-Maximum number of functions to build and push at once.
+1. Local development control planes, which run in a KIND cluster on the
+   development machine.
+2. Cloud development control planes, which run in Upbound Cloud Spaces.
 
-##### `--control-plane-group`
-The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context.
+Cloud development control planes are used by default when the current `up`
+context is an Upbound Cloud Space. Use `up ctx` to update the current context.
+Local development control planes are used by default otherwise, and can be
+explicitly requested using the `--local` flag.
 
-##### `--control-plane-name`
-Name of the control plane to use. It will be created if not found. Defaults to the project name.
+It is also possible to run a project on an arbitrary UXP cluster referenced by
+the current kubeconfig context by using the `--use-current-context` flag. Note
+that this can be destructive, as it will create resources and install packages
+in your cluster; it is not recommended to use `up project run` on shared or
+production clusters.
 
-##### `--skip-control-plane-check`
-Allow running on a control plane without the development control plane annotation.
+#### Examples
 
-##### `--cache-dir`
-*Default:* `~/.up/cache/`  
-Directory used for caching dependencies.
+Run the project using the default development control plane type (see above):
 
-##### `--public`
-Create new repositories with public visibility.
+```shell
+up project run
+```
 
-##### `--timeout`
-*Default:* `5m`  
-Maximum time to wait for the project to become ready in the control plane. Set to zero to wait forever.
+Run the project on a control plane with a specific name, using the default
+type. The control plane will be created if it doesn't exist:
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+```shell
+up project run --control-plane-name=my-dev-cp
+```
 
-##### `--profile`
-Profile used to execute command.
+Force a local development control plane to be used instead of a cloud
+development control plane:
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+```shell
+up project run --local
+```
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+Create a local development control plane with an ingress controller enabled.
+The Web UI will be accessible at localhost on a randomly assigned port:
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+```shell
+up project run --local --ingress
+```
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+Create a local development control plane with ingress mapped to specific port.
+The Web UI will be accessible at http://127-0-0-1.nip.io:8080:
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+```shell
+up project run --local --ingress --ingress-port=8080:80
+```
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
+Run a project using the current kubeconfig context:
 
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
+```shell
+up project run --use-current-context
+```
 
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
+Override the repository specified in the project file to push to a different
+container registry. Note that when using a local development control plane
+packages are side-loaded, avoiding the need to push:
 
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
+```shell
+up project run --repository=xpkg.upbound.io/example/my-project
+```
 
-##### `--kubeconfig`
-Override default kubeconfig path.
+Run on a Spaces control plane with a specific name, allowing a non-development
+control plane to be used. This works with disconnected Spaces as well as Cloud
+Spaces:
 
-##### `--kubecontext`
-Override default kubeconfig context.
+```shell
+up project run --force --control-plane-name=my-cp
+```
 
+
+#### Usage
+
+`up project run [flags]`
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--project-file` | `-f` | Path to project definition file. |
+| `--repository` | | Repository for the built package. Overrides the repository specified in the project file. |
+| `--no-build-cache` | | Don't cache image layers while building. |
+| `--build-cache-dir` | | Path to the build cache directory. |
+| `--max-concurrency` | | Maximum number of functions to build and push at once. |
+| `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
+| `--control-plane-name` | | Name of the control plane to use. It will be created if not found. Defaults to the project name. |
+| `--skip-control-plane-check` | | Allow running on a non-development control plane. |
+| `--local` | | Use a local dev control plane, even if Spaces is available. |
+| `--local-registry-path` | | Directory to use for local registry images. The default is system-dependent. |
+| `--no-update-kubeconfig` | | Do not update kubeconfig to use the dev control plane as its current context. |
+| `--use-current-context` | | Run the project with the current kubeconfig context rather than creating a new dev control plane. |
+| `--cache-dir` | | Directory used for caching dependencies. |
+| `--public` | | Create new repositories with public visibility. |
+| `--timeout` | | Maximum time to wait for the project to become ready in the control plane. Set to zero to wait forever. |
+| `--ingress` | | Enable ingress controller for the local dev control plane. |
+| `--ingress-port` | | Port mapping for the local dev control plane (e.g., '8080:80'). If not specified, a random available port will be selected when ingress is enabled. |

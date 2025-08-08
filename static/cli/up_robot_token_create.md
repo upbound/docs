@@ -1,8 +1,23 @@
+---
+mdx:
+  format: md
+---
+
 Create a token for the robot.
 
-#### Options
 
-##### `--output`
-*Shorthand:* `-o`  
-Path to write JSON file containing access ID and token.
 
+#### Usage
+
+`up robot token create <robot-name> <token-name> [flags]`
+#### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `<robot-name>` | Name of robot. |
+| `<token-name>` | Name of token. |
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--file` | `-f` | file to write Token JSON, Use '-' to write to standard output. |

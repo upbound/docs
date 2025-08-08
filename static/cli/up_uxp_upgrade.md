@@ -1,23 +1,27 @@
+---
+mdx:
+  format: md
+---
+
 Upgrade UXP.
 
-#### Options
 
-##### `--rollback`
-Rollback to previously installed version on failed upgrade.
 
-##### `--force`
-Force upgrade even if versions are incompatible.
+#### Usage
 
-##### `--unstable`
-Allow installing unstable versions.
+`up uxp upgrade [<version>] [flags]`
+#### Arguments
 
-##### `--set`
-Set parameters.
+| Argument | Description |
+| -------- | ----------- |
+| `<version>` |**Optional** UXP version to upgrade to. |
+#### Flags
 
-##### `--file`
-*Shorthand:* `-f`  
-Parameters file.
-
-##### `--bundle`
-Local bundle path.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--rollback` | | Rollback to previously installed version on failed upgrade. |
+| `--force` | | Force upgrade even if versions are incompatible. |
+| `--unstable` | | Allow installing unstable versions. |
+| `--set` | | Set parameters. |
+| `--file` | `-f` | Parameters file. |
+| `--bundle` | | Local bundle path. |

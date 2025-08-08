@@ -3,77 +3,84 @@ title: CLI Reference
 sidebar_position: 3
 ---
 
-import UpAlphaCtx from '/cli/up_alpha_ctx.md';
-import UpAlphaMigrationExport from '/cli/up_alpha_migration_export.md';
-import UpAlphaMigrationImport from '/cli/up_alpha_migration_import.md';
-import UpAlphaMigrationPauseToggle from '/cli/up_alpha_migration_pause-toggle.md';
-import UpAlphaMigration from '/cli/up_alpha_migration.md';
-import UpAlphaSpaceBillingExport from '/cli/up_alpha_space_billing_export.md';
-import UpAlphaSpaceBilling from '/cli/up_alpha_space_billing.md';
-import UpAlphaSpaceConnectAttach from '/cli/up_alpha_space_connect_(attach).md';
-import UpAlphaSpaceDestroy from '/cli/up_alpha_space_destroy.md';
-import UpAlphaSpaceDisconnectDetach from '/cli/up_alpha_space_disconnect_(detach).md';
-import UpAlphaSpaceInit from '/cli/up_alpha_space_init.md';
-import UpAlphaSpaceList from '/cli/up_alpha_space_list.md';
-import UpAlphaSpaceMirror from '/cli/up_alpha_space_mirror.md';
-import UpAlphaSpaceUpgrade from '/cli/up_alpha_space_upgrade.md';
-import UpAlphaSpace from '/cli/up_alpha_space.md';
+This documentation is for the `up` CLI v0.40.0.
+
+The latest version of `up` can be installed by running:
+
+```shell
+curl -sL "https://cli.upbound.io" | sh
+```
+
+import Up from '/cli/up.md';
 import UpAlpha from '/cli/up_alpha.md';
 import UpCompletion from '/cli/up_completion.md';
+import UpComposition from '/cli/up_composition.md';
 import UpCompositionGenerate from '/cli/up_composition_generate.md';
 import UpCompositionRender from '/cli/up_composition_render.md';
-import UpComposition from '/cli/up_composition.md';
-import UpControlplaneCtpConfigurationInstall from '/cli/up_controlplane_(ctp)_configuration_install.md';
-import UpControlplaneCtpConfiguration from '/cli/up_controlplane_(ctp)_configuration.md';
-import UpControlplaneCtpConnect from '/cli/up_controlplane_(ctp)_connect.md';
-import UpControlplaneCtpConnectorInstall from '/cli/up_controlplane_(ctp)_connector_install.md';
-import UpControlplaneCtpConnectorUninstall from '/cli/up_controlplane_(ctp)_connector_uninstall.md';
-import UpControlplaneCtpConnector from '/cli/up_controlplane_(ctp)_connector.md';
-import UpControlplaneCtpCreate from '/cli/up_controlplane_(ctp)_create.md';
-import UpControlplaneCtpDelete from '/cli/up_controlplane_(ctp)_delete.md';
-import UpControlplaneCtpDisconnect from '/cli/up_controlplane_(ctp)_disconnect.md';
-import UpControlplaneCtpFunctionInstall from '/cli/up_controlplane_(ctp)_function_install.md';
-import UpControlplaneCtpFunction from '/cli/up_controlplane_(ctp)_function.md';
-import UpControlplaneCtpGet from '/cli/up_controlplane_(ctp)_get.md';
-import UpControlplaneCtpList from '/cli/up_controlplane_(ctp)_list.md';
-import UpControlplaneCtpProviderInstall from '/cli/up_controlplane_(ctp)_provider_install.md';
-import UpControlplaneCtpProvider from '/cli/up_controlplane_(ctp)_provider.md';
-import UpControlplaneCtpPullSecretCreate from '/cli/up_controlplane_(ctp)_pull-secret_create.md';
-import UpControlplaneCtpPullSecret from '/cli/up_controlplane_(ctp)_pull-secret.md';
-import UpControlplaneCtpSimulate from '/cli/up_controlplane_(ctp)_simulate.md';
-import UpControlplaneCtpSimulationSimCreate from '/cli/up_controlplane_(ctp)_simulation_(sim)_create.md';
-import UpControlplaneCtpSimulationSimDelete from '/cli/up_controlplane_(ctp)_simulation_(sim)_delete.md';
-import UpControlplaneCtpSimulationSimList from '/cli/up_controlplane_(ctp)_simulation_(sim)_list.md';
-import UpControlplaneCtpSimulationSim from '/cli/up_controlplane_(ctp)_simulation_(sim).md';
-import UpControlplaneCtp from '/cli/up_controlplane_(ctp).md';
+import UpConfig from '/cli/up_config.md';
+import UpConfigGet from '/cli/up_config_get.md';
+import UpConfigSet from '/cli/up_config_set.md';
+import UpControlplane from '/cli/up_controlplane.md';
+import UpControlplaneAPIConnector from '/cli/up_controlplane_api-connector.md';
+import UpControlplaneAPIConnectorInstall from '/cli/up_controlplane_api-connector_install.md';
+import UpControlplaneAPIConnectorUninstall from '/cli/up_controlplane_api-connector_uninstall.md';
+import UpControlplaneConfiguration from '/cli/up_controlplane_configuration.md';
+import UpControlplaneConfigurationInstall from '/cli/up_controlplane_configuration_install.md';
+import UpControlplaneConnector from '/cli/up_controlplane_connector.md';
+import UpControlplaneConnectorInstall from '/cli/up_controlplane_connector_install.md';
+import UpControlplaneConnectorUninstall from '/cli/up_controlplane_connector_uninstall.md';
+import UpControlplaneCreate from '/cli/up_controlplane_create.md';
+import UpControlplaneDelete from '/cli/up_controlplane_delete.md';
+import UpControlplaneFunction from '/cli/up_controlplane_function.md';
+import UpControlplaneFunctionInstall from '/cli/up_controlplane_function_install.md';
+import UpControlplaneGet from '/cli/up_controlplane_get.md';
+import UpControlplaneList from '/cli/up_controlplane_list.md';
+import UpControlplaneMigration from '/cli/up_controlplane_migration.md';
+import UpControlplaneMigrationExport from '/cli/up_controlplane_migration_export.md';
+import UpControlplaneMigrationImport from '/cli/up_controlplane_migration_import.md';
+import UpControlplaneMigrationPauseToggle from '/cli/up_controlplane_migration_pause-toggle.md';
+import UpControlplaneOidcAuth from '/cli/up_controlplane_oidc-auth.md';
+import UpControlplaneOidcAuthAws from '/cli/up_controlplane_oidc-auth_aws.md';
+import UpControlplaneProvider from '/cli/up_controlplane_provider.md';
+import UpControlplaneProviderInstall from '/cli/up_controlplane_provider_install.md';
+import UpControlplanePullSecret from '/cli/up_controlplane_pull-secret.md';
+import UpControlplanePullSecretCreate from '/cli/up_controlplane_pull-secret_create.md';
+import UpControlplaneSimulate from '/cli/up_controlplane_simulate.md';
+import UpControlplaneSimulation from '/cli/up_controlplane_simulation.md';
+import UpControlplaneSimulationCreate from '/cli/up_controlplane_simulation_create.md';
+import UpControlplaneSimulationDelete from '/cli/up_controlplane_simulation_delete.md';
+import UpControlplaneSimulationList from '/cli/up_controlplane_simulation_list.md';
 import UpCtx from '/cli/up_ctx.md';
-import UpDependencyDepAdd from '/cli/up_dependency_(dep)_add.md';
-import UpDependencyDepCleanCache from '/cli/up_dependency_(dep)_clean-cache.md';
-import UpDependencyDepUpdateCache from '/cli/up_dependency_(dep)_update-cache.md';
-import UpDependencyDep from '/cli/up_dependency_(dep).md';
-import UpExampleGenerate from '/cli/up_example_generate.md';
+import UpDependency from '/cli/up_dependency.md';
+import UpDependencyAdd from '/cli/up_dependency_add.md';
+import UpDependencyCleanCache from '/cli/up_dependency_clean-cache.md';
+import UpDependencyUpdateCache from '/cli/up_dependency_update-cache.md';
 import UpExample from '/cli/up_example.md';
-import UpFunctionGenerate from '/cli/up_function_generate.md';
+import UpExampleGenerate from '/cli/up_example_generate.md';
 import UpFunction from '/cli/up_function.md';
+import UpFunctionGenerate from '/cli/up_function_generate.md';
+import UpGroup from '/cli/up_group.md';
 import UpGroupCreate from '/cli/up_group_create.md';
 import UpGroupDelete from '/cli/up_group_delete.md';
 import UpGroupGet from '/cli/up_group_get.md';
 import UpGroupList from '/cli/up_group_list.md';
-import UpGroup from '/cli/up_group.md';
 import UpHelp from '/cli/up_help.md';
 import UpLicense from '/cli/up_license.md';
 import UpLogin from '/cli/up_login.md';
 import UpLogout from '/cli/up_logout.md';
-import UpOrganizationOrgCreate from '/cli/up_organization_(org)_create.md';
-import UpOrganizationOrgDelete from '/cli/up_organization_(org)_delete.md';
-import UpOrganizationOrgGet from '/cli/up_organization_(org)_get.md';
-import UpOrganizationOrgList from '/cli/up_organization_(org)_list.md';
-import UpOrganizationOrgToken from '/cli/up_organization_(org)_token.md';
-import UpOrganizationOrgUserInvite from '/cli/up_organization_(org)_user_invite.md';
-import UpOrganizationOrgUserList from '/cli/up_organization_(org)_user_list.md';
-import UpOrganizationOrgUserRemove from '/cli/up_organization_(org)_user_remove.md';
-import UpOrganizationOrgUser from '/cli/up_organization_(org)_user.md';
-import UpOrganizationOrg from '/cli/up_organization_(org).md';
+import UpOperation from '/cli/up_operation.md';
+import UpOperationGenerate from '/cli/up_operation_generate.md';
+import UpOrganization from '/cli/up_organization.md';
+import UpOrganizationCreate from '/cli/up_organization_create.md';
+import UpOrganizationDelete from '/cli/up_organization_delete.md';
+import UpOrganizationGet from '/cli/up_organization_get.md';
+import UpOrganizationList from '/cli/up_organization_list.md';
+import UpOrganizationToken from '/cli/up_organization_token.md';
+import UpOrganizationUser from '/cli/up_organization_user.md';
+import UpOrganizationUserInvite from '/cli/up_organization_user_invite.md';
+import UpOrganizationUserList from '/cli/up_organization_user_list.md';
+import UpOrganizationUserRemove from '/cli/up_organization_user_remove.md';
+import UpProfile from '/cli/up_profile.md';
 import UpProfileCreate from '/cli/up_profile_create.md';
 import UpProfileCurrent from '/cli/up_profile_current.md';
 import UpProfileDelete from '/cli/up_profile_delete.md';
@@ -82,523 +89,580 @@ import UpProfileRename from '/cli/up_profile_rename.md';
 import UpProfileSet from '/cli/up_profile_set.md';
 import UpProfileUse from '/cli/up_profile_use.md';
 import UpProfileView from '/cli/up_profile_view.md';
-import UpProfile from '/cli/up_profile.md';
+import UpProject from '/cli/up_project.md';
+import UpProjectAi from '/cli/up_project_ai.md';
+import UpProjectAiConfigureTools from '/cli/up_project_ai_configure-tools.md';
 import UpProjectBuild from '/cli/up_project_build.md';
 import UpProjectInit from '/cli/up_project_init.md';
 import UpProjectMove from '/cli/up_project_move.md';
 import UpProjectPush from '/cli/up_project_push.md';
 import UpProjectRun from '/cli/up_project_run.md';
 import UpProjectSimulate from '/cli/up_project_simulate.md';
+import UpProjectSimulation from '/cli/up_project_simulation.md';
 import UpProjectSimulationComplete from '/cli/up_project_simulation_complete.md';
 import UpProjectSimulationCreate from '/cli/up_project_simulation_create.md';
 import UpProjectSimulationDelete from '/cli/up_project_simulation_delete.md';
-import UpProjectSimulation from '/cli/up_project_simulation.md';
-import UpProject from '/cli/up_project.md';
-import UpRepositoryRepoCreate from '/cli/up_repository_(repo)_create.md';
-import UpRepositoryRepoDelete from '/cli/up_repository_(repo)_delete.md';
-import UpRepositoryRepoGet from '/cli/up_repository_(repo)_get.md';
-import UpRepositoryRepoList from '/cli/up_repository_(repo)_list.md';
-import UpRepositoryRepoPermissionGrant from '/cli/up_repository_(repo)_permission_grant.md';
-import UpRepositoryRepoPermissionList from '/cli/up_repository_(repo)_permission_list.md';
-import UpRepositoryRepoPermissionRevoke from '/cli/up_repository_(repo)_permission_revoke.md';
-import UpRepositoryRepoPermission from '/cli/up_repository_(repo)_permission.md';
-import UpRepositoryRepoUpdate from '/cli/up_repository_(repo)_update.md';
-import UpRepositoryRepo from '/cli/up_repository_(repo).md';
+import UpProjectStop from '/cli/up_project_stop.md';
+import UpProjectUpgrade from '/cli/up_project_upgrade.md';
+import UpRepository from '/cli/up_repository.md';
+import UpRepositoryCreate from '/cli/up_repository_create.md';
+import UpRepositoryDelete from '/cli/up_repository_delete.md';
+import UpRepositoryGet from '/cli/up_repository_get.md';
+import UpRepositoryList from '/cli/up_repository_list.md';
+import UpRepositoryPermission from '/cli/up_repository_permission.md';
+import UpRepositoryPermissionGrant from '/cli/up_repository_permission_grant.md';
+import UpRepositoryPermissionList from '/cli/up_repository_permission_list.md';
+import UpRepositoryPermissionRevoke from '/cli/up_repository_permission_revoke.md';
+import UpRepositoryUpdate from '/cli/up_repository_update.md';
+import UpRobot from '/cli/up_robot.md';
 import UpRobotCreate from '/cli/up_robot_create.md';
 import UpRobotDelete from '/cli/up_robot_delete.md';
 import UpRobotGet from '/cli/up_robot_get.md';
 import UpRobotList from '/cli/up_robot_list.md';
+import UpRobotTeam from '/cli/up_robot_team.md';
 import UpRobotTeamJoin from '/cli/up_robot_team_join.md';
 import UpRobotTeamLeave from '/cli/up_robot_team_leave.md';
 import UpRobotTeamList from '/cli/up_robot_team_list.md';
-import UpRobotTeam from '/cli/up_robot_team.md';
+import UpRobotToken from '/cli/up_robot_token.md';
 import UpRobotTokenCreate from '/cli/up_robot_token_create.md';
 import UpRobotTokenDelete from '/cli/up_robot_token_delete.md';
 import UpRobotTokenGet from '/cli/up_robot_token_get.md';
 import UpRobotTokenList from '/cli/up_robot_token_list.md';
-import UpRobotToken from '/cli/up_robot_token.md';
-import UpRobot from '/cli/up_robot.md';
-import UpSpaceBillingExport from '/cli/up_space_billing_export.md';
+import UpSpace from '/cli/up_space.md';
 import UpSpaceBilling from '/cli/up_space_billing.md';
-import UpSpaceConnectAttach from '/cli/up_space_connect_(attach).md';
+import UpSpaceBillingExport from '/cli/up_space_billing_export.md';
+import UpSpaceConnect from '/cli/up_space_connect.md';
 import UpSpaceDestroy from '/cli/up_space_destroy.md';
-import UpSpaceDisconnectDetach from '/cli/up_space_disconnect_(detach).md';
+import UpSpaceDisconnect from '/cli/up_space_disconnect.md';
 import UpSpaceInit from '/cli/up_space_init.md';
 import UpSpaceList from '/cli/up_space_list.md';
 import UpSpaceMirror from '/cli/up_space_mirror.md';
 import UpSpaceUpgrade from '/cli/up_space_upgrade.md';
-import UpSpace from '/cli/up_space.md';
+import UpTeam from '/cli/up_team.md';
 import UpTeamCreate from '/cli/up_team_create.md';
 import UpTeamDelete from '/cli/up_team_delete.md';
 import UpTeamGet from '/cli/up_team_get.md';
 import UpTeamList from '/cli/up_team_list.md';
-import UpTeam from '/cli/up_team.md';
+import UpTest from '/cli/up_test.md';
 import UpTestGenerate from '/cli/up_test_generate.md';
 import UpTestRun from '/cli/up_test_run.md';
-import UpTest from '/cli/up_test.md';
+import UpToken from '/cli/up_token.md';
+import UpTokenCreate from '/cli/up_token_create.md';
+import UpTokenDelete from '/cli/up_token_delete.md';
+import UpTokenGet from '/cli/up_token_get.md';
+import UpTokenList from '/cli/up_token_list.md';
+import UpUxp from '/cli/up_uxp.md';
 import UpUxpInstall from '/cli/up_uxp_install.md';
+import UpUxpLicense from '/cli/up_uxp_license.md';
+import UpUxpLicenseApply from '/cli/up_uxp_license_apply.md';
+import UpUxpLicenseRemove from '/cli/up_uxp_license_remove.md';
+import UpUxpLicenseShow from '/cli/up_uxp_license_show.md';
 import UpUxpUninstall from '/cli/up_uxp_uninstall.md';
 import UpUxpUpgrade from '/cli/up_uxp_upgrade.md';
-import UpUxp from '/cli/up_uxp.md';
+import UpUxpWebUi from '/cli/up_uxp_web-ui.md';
+import UpUxpWebUiDisable from '/cli/up_uxp_web-ui_disable.md';
+import UpUxpWebUiEnable from '/cli/up_uxp_web-ui_enable.md';
+import UpUxpWebUiOpen from '/cli/up_uxp_web-ui_open.md';
 import UpVersion from '/cli/up_version.md';
+import UpXpkg from '/cli/up_xpkg.md';
 import UpXpkgAppend from '/cli/up_xpkg_append.md';
 import UpXpkgBatch from '/cli/up_xpkg_batch.md';
 import UpXpkgBuild from '/cli/up_xpkg_build.md';
 import UpXpkgPush from '/cli/up_xpkg_push.md';
 import UpXpkgXpExtract from '/cli/up_xpkg_xp-extract.md';
-import UpXpkg from '/cli/up_xpkg.md';
-import UpXplsServe from '/cli/up_xpls_serve.md';
 import UpXpls from '/cli/up_xpls.md';
-import UpXrdGenerate from '/cli/up_xrd_generate.md';
+import UpXplsServe from '/cli/up_xpls_serve.md';
 import UpXrd from '/cli/up_xrd.md';
-import Up from '/cli/up.md';
+import UpXrdGenerate from '/cli/up_xrd_generate.md';
+
 
 ## up
+
 <Up />
-
-
 ## up alpha
+
 <UpAlpha />
-
-### up alpha ctx
-<UpAlphaCtx />
-
-### up alpha migration
-<UpAlphaMigration />
-
-#### up alpha migration export
-<UpAlphaMigrationExport />
-
-#### up alpha migration import
-<UpAlphaMigrationImport />
-
-#### up alpha migration pause-toggle
-<UpAlphaMigrationPauseToggle />
-
-### up alpha space
-<UpAlphaSpace />
-
-#### up alpha space billing
-<UpAlphaSpaceBilling />
-
-##### up alpha space billing export
-<UpAlphaSpaceBillingExport />
-
-#### up alpha space connect (attach)
-<UpAlphaSpaceConnectAttach />
-
-#### up alpha space destroy
-<UpAlphaSpaceDestroy />
-
-#### up alpha space disconnect (detach)
-<UpAlphaSpaceDisconnectDetach />
-
-#### up alpha space init
-<UpAlphaSpaceInit />
-
-#### up alpha space list
-<UpAlphaSpaceList />
-
-#### up alpha space mirror
-<UpAlphaSpaceMirror />
-
-#### up alpha space upgrade
-<UpAlphaSpaceUpgrade />
-
 ## up completion
+
 <UpCompletion />
-
 ## up composition
+
 <UpComposition />
+## up composition generate
 
-### up composition generate
 <UpCompositionGenerate />
+## up composition render
 
-### up composition render
 <UpCompositionRender />
+## up config
 
-## up controlplane (ctp)
-<UpControlplaneCtp />
+<UpConfig />
+## up config get
 
-### up controlplane (ctp) configuration
-<UpControlplaneCtpConfiguration />
+<UpConfigGet />
+## up config set
 
-#### up controlplane (ctp) configuration install
-<UpControlplaneCtpConfigurationInstall />
+<UpConfigSet />
+## up controlplane
 
-### up controlplane (ctp) connect
-<UpControlplaneCtpConnect />
+<UpControlplane />
+## up controlplane api-connector
 
-### up controlplane (ctp) connector
-<UpControlplaneCtpConnector />
+<UpControlplaneAPIConnector />
+## up controlplane api-connector install
 
-#### up controlplane (ctp) connector install
-<UpControlplaneCtpConnectorInstall />
+<UpControlplaneAPIConnectorInstall />
+## up controlplane api-connector uninstall
 
-#### up controlplane (ctp) connector uninstall
-<UpControlplaneCtpConnectorUninstall />
+<UpControlplaneAPIConnectorUninstall />
+## up controlplane configuration
 
-### up controlplane (ctp) create
-<UpControlplaneCtpCreate />
+<UpControlplaneConfiguration />
+## up controlplane configuration install
 
-### up controlplane (ctp) delete
-<UpControlplaneCtpDelete />
+<UpControlplaneConfigurationInstall />
+## up controlplane connector
 
-### up controlplane (ctp) disconnect
-<UpControlplaneCtpDisconnect />
+<UpControlplaneConnector />
+## up controlplane connector install
 
-### up controlplane (ctp) function
-<UpControlplaneCtpFunction />
+<UpControlplaneConnectorInstall />
+## up controlplane connector uninstall
 
-#### up controlplane (ctp) function install
-<UpControlplaneCtpFunctionInstall />
+<UpControlplaneConnectorUninstall />
+## up controlplane create
 
-### up controlplane (ctp) get
-<UpControlplaneCtpGet />
+<UpControlplaneCreate />
+## up controlplane delete
 
-### up controlplane (ctp) list
-<UpControlplaneCtpList />
+<UpControlplaneDelete />
+## up controlplane function
 
-### up controlplane (ctp) provider
-<UpControlplaneCtpProvider />
+<UpControlplaneFunction />
+## up controlplane function install
 
-#### up controlplane (ctp) provider install
-<UpControlplaneCtpProviderInstall />
+<UpControlplaneFunctionInstall />
+## up controlplane get
 
-### up controlplane (ctp) pull-secret
-<UpControlplaneCtpPullSecret />
+<UpControlplaneGet />
+## up controlplane list
 
-#### up controlplane (ctp) pull-secret create
-<UpControlplaneCtpPullSecretCreate />
+<UpControlplaneList />
+## up controlplane migration
 
-### up controlplane (ctp) simulate
-<UpControlplaneCtpSimulate />
+<UpControlplaneMigration />
+## up controlplane migration export
 
-### up controlplane (ctp) simulation (sim)
-<UpControlplaneCtpSimulationSim />
+<UpControlplaneMigrationExport />
+## up controlplane migration import
 
-#### up controlplane (ctp) simulation (sim) create
-<UpControlplaneCtpSimulationSimCreate />
+<UpControlplaneMigrationImport />
+## up controlplane migration pause-toggle
 
-#### up controlplane (ctp) simulation (sim) delete
-<UpControlplaneCtpSimulationSimDelete />
+<UpControlplaneMigrationPauseToggle />
+## up controlplane oidc-auth
 
-#### up controlplane (ctp) simulation (sim) list
-<UpControlplaneCtpSimulationSimList />
+<UpControlplaneOidcAuth />
+## up controlplane oidc-auth aws
 
+<UpControlplaneOidcAuthAws />
+## up controlplane provider
+
+<UpControlplaneProvider />
+## up controlplane provider install
+
+<UpControlplaneProviderInstall />
+## up controlplane pull-secret
+
+<UpControlplanePullSecret />
+## up controlplane pull-secret create
+
+<UpControlplanePullSecretCreate />
+## up controlplane simulate
+
+<UpControlplaneSimulate />
+## up controlplane simulation
+
+<UpControlplaneSimulation />
+## up controlplane simulation create
+
+<UpControlplaneSimulationCreate />
+## up controlplane simulation delete
+
+<UpControlplaneSimulationDelete />
+## up controlplane simulation list
+
+<UpControlplaneSimulationList />
 ## up ctx
+
 <UpCtx />
+## up dependency
 
-## up dependency (dep)
-<UpDependencyDep />
+<UpDependency />
+## up dependency add
 
-### up dependency (dep) add
-<UpDependencyDepAdd />
+<UpDependencyAdd />
+## up dependency clean-cache
 
-### up dependency (dep) clean-cache
-<UpDependencyDepCleanCache />
+<UpDependencyCleanCache />
+## up dependency update-cache
 
-### up dependency (dep) update-cache
-<UpDependencyDepUpdateCache />
-
+<UpDependencyUpdateCache />
 ## up example
+
 <UpExample />
+## up example generate
 
-### up example generate
 <UpExampleGenerate />
-
 ## up function
+
 <UpFunction />
+## up function generate
 
-### up function generate
 <UpFunctionGenerate />
-
 ## up group
+
 <UpGroup />
+## up group create
 
-### up group create
 <UpGroupCreate />
+## up group delete
 
-### up group delete
 <UpGroupDelete />
+## up group get
 
-### up group get
 <UpGroupGet />
+## up group list
 
-### up group list
 <UpGroupList />
-
 ## up help
+
 <UpHelp />
-
 ## up license
+
 <UpLicense />
-
 ## up login
+
 <UpLogin />
-
 ## up logout
+
 <UpLogout />
+## up operation
 
-## up organization (org)
-<UpOrganizationOrg />
+<UpOperation />
+## up operation generate
 
-### up organization (org) create
-<UpOrganizationOrgCreate />
+<UpOperationGenerate />
+## up organization
 
-### up organization (org) delete
-<UpOrganizationOrgDelete />
+<UpOrganization />
+## up organization create
 
-### up organization (org) get
-<UpOrganizationOrgGet />
+<UpOrganizationCreate />
+## up organization delete
 
-### up organization (org) list
-<UpOrganizationOrgList />
+<UpOrganizationDelete />
+## up organization get
 
-### up organization (org) token
-<UpOrganizationOrgToken />
+<UpOrganizationGet />
+## up organization list
 
-### up organization (org) user
-<UpOrganizationOrgUser />
+<UpOrganizationList />
+## up organization token
 
-#### up organization (org) user invite
-<UpOrganizationOrgUserInvite />
+<UpOrganizationToken />
+## up organization user
 
-#### up organization (org) user list
-<UpOrganizationOrgUserList />
+<UpOrganizationUser />
+## up organization user invite
 
-#### up organization (org) user remove
-<UpOrganizationOrgUserRemove />
+<UpOrganizationUserInvite />
+## up organization user list
 
+<UpOrganizationUserList />
+## up organization user remove
+
+<UpOrganizationUserRemove />
 ## up profile
+
 <UpProfile />
+## up profile create
 
-### up profile create
 <UpProfileCreate />
+## up profile current
 
-### up profile current
 <UpProfileCurrent />
+## up profile delete
 
-### up profile delete
 <UpProfileDelete />
+## up profile list
 
-### up profile list
 <UpProfileList />
+## up profile rename
 
-### up profile rename
 <UpProfileRename />
+## up profile set
 
-### up profile set
 <UpProfileSet />
+## up profile use
 
-### up profile use
 <UpProfileUse />
+## up profile view
 
-### up profile view
 <UpProfileView />
-
 ## up project
+
 <UpProject />
+## up project ai
 
-### up project build
+<UpProjectAi />
+## up project ai configure-tools
+
+<UpProjectAiConfigureTools />
+## up project build
+
 <UpProjectBuild />
+## up project init
 
-### up project init
 <UpProjectInit />
+## up project move
 
-### up project move
 <UpProjectMove />
+## up project push
 
-### up project push
 <UpProjectPush />
+## up project run
 
-### up project run
 <UpProjectRun />
+## up project simulate
 
-### up project simulate
 <UpProjectSimulate />
+## up project simulation
 
-### up project simulation
 <UpProjectSimulation />
+## up project simulation complete
 
-#### up project simulation complete
 <UpProjectSimulationComplete />
+## up project simulation create
 
-#### up project simulation create
 <UpProjectSimulationCreate />
+## up project simulation delete
 
-#### up project simulation delete
 <UpProjectSimulationDelete />
+## up project stop
 
-## up repository (repo)
-<UpRepositoryRepo />
+<UpProjectStop />
+## up project upgrade
 
-### up repository (repo) create
-<UpRepositoryRepoCreate />
+<UpProjectUpgrade />
+## up repository
 
-### up repository (repo) delete
-<UpRepositoryRepoDelete />
+<UpRepository />
+## up repository create
 
-### up repository (repo) get
-<UpRepositoryRepoGet />
+<UpRepositoryCreate />
+## up repository delete
 
-### up repository (repo) list
-<UpRepositoryRepoList />
+<UpRepositoryDelete />
+## up repository get
 
-### up repository (repo) permission
-<UpRepositoryRepoPermission />
+<UpRepositoryGet />
+## up repository list
 
-#### up repository (repo) permission grant
-<UpRepositoryRepoPermissionGrant />
+<UpRepositoryList />
+## up repository permission
 
-#### up repository (repo) permission list
-<UpRepositoryRepoPermissionList />
+<UpRepositoryPermission />
+## up repository permission grant
 
-#### up repository (repo) permission revoke
-<UpRepositoryRepoPermissionRevoke />
+<UpRepositoryPermissionGrant />
+## up repository permission list
 
-### up repository (repo) update
-<UpRepositoryRepoUpdate />
+<UpRepositoryPermissionList />
+## up repository permission revoke
 
+<UpRepositoryPermissionRevoke />
+## up repository update
+
+<UpRepositoryUpdate />
 ## up robot
+
 <UpRobot />
+## up robot create
 
-### up robot create
 <UpRobotCreate />
+## up robot delete
 
-### up robot delete
 <UpRobotDelete />
+## up robot get
 
-### up robot get
 <UpRobotGet />
+## up robot list
 
-### up robot list
 <UpRobotList />
+## up robot team
 
-### up robot team
 <UpRobotTeam />
+## up robot team join
 
-#### up robot team join
 <UpRobotTeamJoin />
+## up robot team leave
 
-#### up robot team leave
 <UpRobotTeamLeave />
+## up robot team list
 
-#### up robot team list
 <UpRobotTeamList />
+## up robot token
 
-### up robot token
 <UpRobotToken />
+## up robot token create
 
-#### up robot token create
 <UpRobotTokenCreate />
+## up robot token delete
 
-#### up robot token delete
 <UpRobotTokenDelete />
+## up robot token get
 
-#### up robot token get
 <UpRobotTokenGet />
+## up robot token list
 
-#### up robot token list
 <UpRobotTokenList />
-
 ## up space
+
 <UpSpace />
+## up space billing
 
-### up space billing
 <UpSpaceBilling />
+## up space billing export
 
-#### up space billing export
 <UpSpaceBillingExport />
+## up space connect
 
-### up space connect (attach)
-<UpSpaceConnectAttach />
+<UpSpaceConnect />
+## up space destroy
 
-### up space destroy
 <UpSpaceDestroy />
+## up space disconnect
 
-### up space disconnect (detach)
-<UpSpaceDisconnectDetach />
+<UpSpaceDisconnect />
+## up space init
 
-### up space init
 <UpSpaceInit />
+## up space list
 
-### up space list
 <UpSpaceList />
+## up space mirror
 
-### up space mirror
 <UpSpaceMirror />
+## up space upgrade
 
-### up space upgrade
 <UpSpaceUpgrade />
-
 ## up team
+
 <UpTeam />
+## up team create
 
-### up team create
 <UpTeamCreate />
+## up team delete
 
-### up team delete
 <UpTeamDelete />
+## up team get
 
-### up team get
 <UpTeamGet />
+## up team list
 
-### up team list
 <UpTeamList />
-
 ## up test
+
 <UpTest />
+## up test generate
 
-### up test generate
 <UpTestGenerate />
+## up test run
 
-### up test run
 <UpTestRun />
+## up token
 
+<UpToken />
+## up token create
+
+<UpTokenCreate />
+## up token delete
+
+<UpTokenDelete />
+## up token get
+
+<UpTokenGet />
+## up token list
+
+<UpTokenList />
 ## up uxp
+
 <UpUxp />
+## up uxp install
 
-### up uxp install
 <UpUxpInstall />
+## up uxp license
 
-### up uxp uninstall
+<UpUxpLicense />
+## up uxp license apply
+
+<UpUxpLicenseApply />
+## up uxp license remove
+
+<UpUxpLicenseRemove />
+## up uxp license show
+
+<UpUxpLicenseShow />
+## up uxp uninstall
+
 <UpUxpUninstall />
+## up uxp upgrade
 
-### up uxp upgrade
 <UpUxpUpgrade />
+## up uxp web-ui
 
+<UpUxpWebUi />
+## up uxp web-ui disable
+
+<UpUxpWebUiDisable />
+## up uxp web-ui enable
+
+<UpUxpWebUiEnable />
+## up uxp web-ui open
+
+<UpUxpWebUiOpen />
 ## up version
+
 <UpVersion />
-
 ## up xpkg
+
 <UpXpkg />
+## up xpkg append
 
-### up xpkg append
 <UpXpkgAppend />
+## up xpkg batch
 
-### up xpkg batch
 <UpXpkgBatch />
+## up xpkg build
 
-### up xpkg build
 <UpXpkgBuild />
+## up xpkg push
 
-### up xpkg push
 <UpXpkgPush />
+## up xpkg xp-extract
 
-### up xpkg xp-extract
 <UpXpkgXpExtract />
-
 ## up xpls
+
 <UpXpls />
+## up xpls serve
 
-### up xpls serve
 <UpXplsServe />
-
 ## up xrd
+
 <UpXrd />
+## up xrd generate
 
-### up xrd generate
 <UpXrdGenerate />
-
 

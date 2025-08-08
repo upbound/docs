@@ -1,62 +1,49 @@
+---
+mdx:
+  format: md
+---
+
 Generate a Test for a project.
 
-#### Options
+The `generate` command creates tests in the specified language.
 
-##### `--project-file`
-*Shorthand:* `-f`  
-*Default:* `upbound.yaml`  
-Path to project definition file.
+#### Examples
 
-##### `--cache-dir`
-*Default:* `~/.up/cache/`  
-Directory used for caching dependency images.
+Create a composition test with the default language (KCL) in the folder
+`tests/test-xstoragebucket`:
 
-##### `--language`
-*Shorthand:* `-l`  
-*Default:* `kcl`  
-Language for test.
+```shell
+up test generate xstoragebucket
+```
 
-##### `--e2e`
-create e2e tests
+Create a composition test in Python and write it to the folder
+`tests/test-xstoragebucket`:
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+```shell
+up test generate xstoragebucket --language python
+```
 
-##### `--profile`
-Profile used to execute command.
+Create an e2e test in Python and write it to the folder
+`tests/e2etest-xstoragebucket`:
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+```shell
+up test generate xstoragebucket --language python --e2e
+```
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+#### Usage
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+`up test generate <name> [flags]`
+#### Arguments
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+| Argument | Description |
+| -------- | ----------- |
+| `<name>` | Name for the new Function. |
+#### Flags
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
-
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
-
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
-
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
-
-##### `--kubeconfig`
-Override default kubeconfig path.
-
-##### `--kubecontext`
-Override default kubeconfig context.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--project-file` | `-f` | Path to project definition file. |
+| `--cache-dir` | | Directory used for caching dependency images. |
+| `--language` | `-l` | Language for test. |
+| `--e2e` | | create e2e tests |

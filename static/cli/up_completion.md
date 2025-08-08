@@ -1,6 +1,17 @@
+---
+mdx:
+  format: md
+---
+
 Generate shell autocompletions
 
-#### Options
 
-##### `--uninstall`
 
+#### Usage
+
+`up completion [flags]`
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--uninstall` | |  |

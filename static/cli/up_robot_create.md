@@ -1,8 +1,22 @@
+---
+mdx:
+  format: md
+---
+
 Create a robot.
 
-#### Options
 
-##### `--description`
-*Default:* ` `  
-Description of robot.
 
+#### Usage
+
+`up robot create <name> [flags]`
+#### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `<name>` | Name of robot. |
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--description` | | Description of robot. |

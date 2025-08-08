@@ -1,68 +1,60 @@
-Generate an Composition.
+---
+mdx:
+  format: md
+---
 
-#### Options
+Generate a Composition.
 
-##### `--name`
-Name for the new composition.
+The `generate` command creates a composition and adds the required function
+packages to the project as dependencies.
 
-##### `--plural`
-Optional custom plural for the CompositeTypeRef.Kind
+#### Examples
 
-##### `--path`
-Optional path to the output file where the generated Composition will be saved.
+Generate a composition from a CompositeResourceDefinition (XRD) and save output
+to `apis/xnetworks/composition.yaml`:
 
-##### `--project-file`
-*Shorthand:* `-f`  
-*Default:* `upbound.yaml`  
-Path to project definition file.
+```shell
+up composition generate apis/xnetwork/definition.yaml
+```
 
-##### `--output`
-*Shorthand:* `-o`  
-*Default:* `file`  
-Output format for the results: 'file' to save to a file, 'yaml' to print XRD in YAML format, 'json' to print XRD in JSON format.
+Generate a composition from a Composite Resource (XR) and save output to
+`apis/xnetworks/composition.yaml`:
 
-##### `--cache-dir`
-*Default:* `~/.up/cache/`  
-Directory used for caching dependency images.
+```shell
+up composition generate examples/xnetwork/xnetwork.yaml
+```
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+Generate a composition from a Composite Resource (XR), prefixing the
+`metadata.name` with `aws` and save output to
+`apis/xnetworks/composition-aws.yaml`:
 
-##### `--profile`
-Profile used to execute command.
+```shell
+up composition generate examples/network/network-aws.yaml --name aws
+```
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+Generate a composition from a Composite Resource (XR) with a custom plural form
+and save output to `apis/xdatabases/composition.yaml`:
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+```shell
+up composition generate examples/xdatabase/database.yaml --plural postgreses
+```
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+#### Usage
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+`up composition generate <resource> [flags]`
+#### Arguments
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
+| Argument | Description |
+| -------- | ----------- |
+| `<resource>` | File path to Composite Resource Claim (XRC) or Composite Resource (XR) or CompositeResourceDefinition (XRD). |
+#### Flags
 
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
-
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
-
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
-
-##### `--kubeconfig`
-Override default kubeconfig path.
-
-##### `--kubecontext`
-Override default kubeconfig context.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--name` | | Name for the new composition. |
+| `--plural` | | Optional custom plural for the CompositeTypeRef.Kind |
+| `--path` | | Optional path to the output file where the generated Composition will be saved. |
+| `--project-file` | `-f` | Path to project definition file. |
+| `--output` | `-o` | Output format for the results: 'file' to save to a file, 'yaml' to print XRD in YAML format, 'json' to print XRD in JSON format. |
+| `--cache-dir` | | Directory used for caching dependency images. |

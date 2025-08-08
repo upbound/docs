@@ -1,65 +1,53 @@
+---
+mdx:
+  format: md
+---
+
 Generate an XRD from a Composite Resource (XR) or Claim (XRC).
 
-#### Options
+The `generate` command creates a CompositeResourceDefinition (XRD) from a given
+Composite Resource (XR) and generates associated language models for function
+usage.
 
-##### `--cache-dir`
-*Default:* `~/.up/cache/`  
-Directory used for caching dependency images.
+#### Examples
 
-##### `--path`
-Path to the output file where the Composite Resource Definition (XRD) will be saved.
+Generate a CompositeResourceDefinition (XRD) based on the specified Composite
+Resource and save it to the default APIs folder in the project:
 
-##### `--plural`
-Optional custom plural form for the Composite Resource Definition (XRD).
+```shell
+up xrd generate examples/cluster/example.yaml
+```
 
-##### `--output`
-*Shorthand:* `-o`  
-*Default:* `file`  
-Output format for the results: 'file' to save to a file, 'yaml' to print XRD in YAML format, 'json' to print XRD in JSON format.
+Generate a CompositeResourceDefinition (XRD) with a specified plural form,
+useful for cases where automatic pluralization may not be accurate (e.g.,
+"postgres"):
 
-##### `--project-file`
-*Shorthand:* `-f`  
-*Default:* `upbound.yaml`  
-Path to project definition file.
+```shell
+up xrd generate examples/postgres/example.yaml --plural postgreses
+```
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+Generate a CompositeResourceDefinition (XRD) and save it to a custom path within
+the project's default APIs folder.
 
-##### `--profile`
-Profile used to execute command.
+```shell
+up xrd generate examples/postgres/example.yaml --path database/definition.yaml
+```
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+#### Usage
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+`up xrd generate <file> [flags]`
+#### Arguments
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+| Argument | Description |
+| -------- | ----------- |
+| `<file>` | Path to the file containing the Composite Resource (XR) or Composite Resource Claim (XRC). |
+#### Flags
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
-
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
-
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
-
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
-
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
-
-##### `--kubeconfig`
-Override default kubeconfig path.
-
-##### `--kubecontext`
-Override default kubeconfig context.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--cache-dir` | | Directory used for caching dependency images. |
+| `--path` | | Path to the output file where the Composite Resource Definition (XRD) will be saved. |
+| `--plural` | | Optional custom plural form for the Composite Resource Definition (XRD). |
+| `--output` | `-o` | Output format for the results: 'file' to save to a file, 'yaml' to print XRD in YAML format, 'json' to print XRD in JSON format. |
+| `--project-file` | `-f` | Path to project definition file. |

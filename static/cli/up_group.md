@@ -1,45 +1,60 @@
+---
+mdx:
+  format: md
+---
+
 Interact with groups inside Spaces.
 
-#### Options
+The `group` command interacts with groups within the current Space. Use the `up
+profile` command to switch between different Upbound profiles and the `up ctx`
+command to switch between Spaces within a Cloud profile.
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+#### Examples
 
-##### `--profile`
-Profile used to execute command.
+List all groups in the current Space:
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+```shell
+up group list
+```
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+Create a new group named `my-group` to organize control planes within a Space:
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+```shell
+up group create my-group
+```
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+Get details about a specific group called `my-group`, including configuration
+and metadata:
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+```shell
+up group get my-group
+```
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
+Delete the group called `my-group`, which must not be protected:
 
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
+```shell
+up group delete my-group
+```
 
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
 
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
+#### Usage
 
-##### `--kubeconfig`
-Override default kubeconfig path.
+`up group <command> [flags]`
+#### Flags
 
-##### `--kubecontext`
-Override default kubeconfig context.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--domain` | | Root Upbound domain. Overrides the current profile's domain. |
+| `--profile` | | Profile used to execute command. |
+| `--account` | `-a` | Deprecated. Use organization instead. |
+| `--organization` | | Organization used to execute command. Overrides the current profile's organization. |
+| `--ca-bundle` | | Path to CA bundle file to prepend to existing CAs |
+| `--insecure-skip-tls-verify` | | [INSECURE] Skip verifying TLS certificates. |
+| `--debug` | `-d` | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |
+| `--override-api-endpoint` | | Overrides the default API endpoint. |
+| `--override-auth-endpoint` | | Overrides the default auth endpoint. |
+| `--override-proxy-endpoint` | | Overrides the default proxy endpoint. |
+| `--override-registry-endpoint` | | Overrides the default registry endpoint. |
+| `--override-accounts-endpoint` | | Overrides the default accounts endpoint. |
+| `--kubeconfig` | | Override default kubeconfig path. |
+| `--kubecontext` | | Override default kubeconfig context. |

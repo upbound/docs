@@ -1,62 +1,57 @@
+---
+mdx:
+  format: md
+---
+
 Generate an Function for a Composition.
 
-#### Options
+The `generate` command creates an embedded function in the specified language,
+and optionally adds it to a composition or operation pipeline.
 
-##### `--project-file`
-*Shorthand:* `-f`  
-*Default:* `upbound.yaml`  
-Path to project definition file.
+#### Examples
 
-##### `--repository`
-Repository for the built package. Overrides the repository specified in the project file.
+Create a function with the default language (go-templating) in the folder
+`functions/fn1`:
 
-##### `--cache-dir`
-*Default:* `~/.up/cache/`  
-Directory used for caching dependency images.
+```shell
+up function generate fn1
+```
 
-##### `--language`
-*Shorthand:* `-l`  
-*Default:* `kcl`  
-Language for function.
+Create a Python function in the folder `functions/fn2`:
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+```shell
+up function generate fn2 --language python
+```
 
-##### `--profile`
-Profile used to execute command.
+Create a KCL function in the folder `functions/compose-xcluster` and add it as a
+composition pipeline step in the given composition file:
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+```shell
+up function generate compose-xcluster apis/xcluster/composition.yaml --language kcl
+```
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+Creates a Go function in the folder `functions/check-pod-logs` and add it as a
+pipeline step to the operation in `operations/watch-pods/operation.yaml`:
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+```shell
+up function generate check-pod-logs operations/watch-pods/operation.yaml --language go
+```
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+#### Usage
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
+`up function generate <name> [<pipeline-path>] [flags]`
+#### Arguments
 
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
+| Argument | Description |
+| -------- | ----------- |
+| `<name>` | Name for the new Function. |
+| `<pipeline-path>` |**Optional** Path to a composition or operation that will use the new function. |
+#### Flags
 
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
-
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
-
-##### `--kubeconfig`
-Override default kubeconfig path.
-
-##### `--kubecontext`
-Override default kubeconfig context.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--project-file` | `-f` | Path to project definition file. |
+| `--repository` | | Repository for the built package. Overrides the repository specified in the project file. |
+| `--cache-dir` | | Directory used for caching dependency images. |
+| `--language` | `-l` | Language for function. |

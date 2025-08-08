@@ -1,87 +1,60 @@
+---
+mdx:
+  format: md
+---
+
 Run project tests.
 
-#### Options
+The `run` command executes project tests. By default, only composition tests are
+executed; with the `--e2e` flag, only e2e tests are executed.
 
-##### `--project-file`
-*Shorthand:* `-f`  
-*Default:* `upbound.yaml`  
-Path to project definition file.
+#### Examples
 
-##### `--repository`
-Repository for the built package. Overrides the repository specified in the project file.
+Run all composition tests located in the 'tests/' directory:
 
-##### `--no-build-cache`
-*Default:* `false`  
-Don't cache image layers while building.
+```shell
+up test run tests/*
+```
 
-##### `--build-cache-dir`
-*Default:* `~/.up/build-cache`  
-Path to the build cache directory.
+Run all end-to-end (e2e) tests located in the 'tests/' directory:
 
-##### `--max-concurrency`
-*Default:* `8`  
-Maximum number of functions to build and push at once.
+```shell
+up test run tests/* --e2e
+```
 
-##### `--control-plane-group`
-The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context.
+Run e2e tests in `tests/` while specifying custom paths for the `kubectl`
+binary:
 
-##### `--control-plane-name-prefix`
-Prefex of the control plane name to use. It will be created if not found.
+```shell
+up test run tests/* --e2e --kubectl=.tools/kubectl
+```
 
-##### `--skip-control-plane-check`
-Allow running on a control plane without the development control plane annotation.
 
-##### `--cache-dir`
-*Default:* `~/.up/cache/`  
-Directory used for caching dependencies.
+#### Usage
 
-##### `--kubectl`
-Absolute path to the kubectl binary. Defaults to the one in $PATH.
+`up test run <patterns> ... [flags]`
+#### Arguments
 
-##### `--public`
-Create new repositories with public visibility.
+| Argument | Description |
+| -------- | ----------- |
+| `<patterns>` | The path to the test manifests |
+#### Flags
 
-##### `--e2e`
-Run E2E
-
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
-
-##### `--profile`
-Profile used to execute command.
-
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
-
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
-
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
-
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
-
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
-
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
-
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
-
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
-
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
-
-##### `--kubeconfig`
-Override default kubeconfig path.
-
-##### `--kubecontext`
-Override default kubeconfig context.
-
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--project-file` | `-f` | Path to project definition file. |
+| `--repository` | | Repository for the built package. Overrides the repository specified in the project file. |
+| `--no-build-cache` | | Don't cache image layers while building. |
+| `--build-cache-dir` | | Path to the build cache directory. |
+| `--max-concurrency` | | Maximum number of functions to build and push at once. |
+| `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
+| `--control-plane-name-prefix` | | Prefex of the control plane name to use. It will be created if not found. |
+| `--skip-control-plane-check` | | Allow running on a non-development control plane. |
+| `--local` | | Use a local dev control plane, even if Spaces is available. |
+| `--local-registry-path` | | Directory to use for local registry images. The default is system-dependent. |
+| `--skip-control-plane-cleanup` | | Skip cleanup of the control plane after the test run. |
+| `--use-current-context` | | Run the project with the current kubeconfig context rather than creating a new dev control plane. |
+| `--cache-dir` | | Directory used for caching dependencies. |
+| `--kubectl` | | Absolute path to the kubectl binary. Defaults to the one in $PATH. |
+| `--public` | | Create new repositories with public visibility. |
+| `--e2e` | | Run E2E |
