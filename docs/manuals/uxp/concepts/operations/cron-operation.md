@@ -1,73 +1,346 @@
 ---
 title: CronOperation
-sidebar_position: 3
-description: Understand Crossplane's CronOperation workflow
+weight: 120
+state: alpha
+alphaVersion: 2.0
+description: CronOperations create Operations on a schedule for recurring tasks
 ---
 
-A _CronOperation_ creates one-time [Operations][operations] on a repeating schedule.
+A `CronOperation` creates [Operations][operation] on a schedule,
+like Kubernetes CronJobs. Use CronOperations for recurring operational tasks
+such as database backups, certificate rotation, or periodic maintenance.
 
-CronOperation is meant for performing a regular scheduled action such as the backup of a resource. CronOperation runs an Operation periodically on a given schedule, written in [Cron][cron] format.
+## How CronOperations work
 
-## Example
-
-Here is an example CronOperation config. It executes a rolling version upgrade for a fleet of Kubernetes Clusters.
+CronOperations contain a template for an Operation and create new Operations
+based on a cron schedule. Each scheduled run creates a new Operation that
+executes once to completion.
 
 ```yaml
 apiVersion: ops.crossplane.io/v1alpha1
 kind: CronOperation
 metadata:
-    name: cluster-rolling-upgrade
+  name: daily-backup
 spec:
-    schedule: "0 12 * * *"
-    startDeadline: 10m
-    successfulHistoryLimit: 3
-    failedHistoryLimit: 3
-    concurrencyPolicy: Forbid
-    operationTemplate:
-        spec:
-            retryLimit: 5
-            mode: Pipeline
-            pipeline:
-                - step: rolling-upgrade
-                  functionRef:
-                      name: function-rolling-upgrade
-                  input:
-                      targets:
-                          apiVersion: example.org/v1
-                          kind: KubernetesCluster
-                          selector:
-                              matchLabels:
-                                  ops.crossplane.io/eligible-for-rolling-update: "true"
-                      batches:
-                          - 0.01
-                          - 0.1
-                          - 0.5
-                          - 1.0
-                      fromVersions:
-                          - "v1.29"
-                      toVersion: "v1.30"
-                      versionField: spec.version
-                      healthyConditions:
-                          - Synced
-                          - Ready
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  concurrencyPolicy: Forbid
+  successfulHistoryLimit: 5
+  failedHistoryLimit: 3
+  operationTemplate:
+    spec:
+      mode: Pipeline
+      pipeline:
+      - step: backup
+        functionRef:
+          name: function-database-backup
+        input:
+          apiVersion: fn.crossplane.io/v1beta1
+          kind: DatabaseBackupInput
+          retentionDays: 7
 ```
 
-An Operation isn't long-running - it's akin to a single reconcile loop. 
-To upgrade a fleet of clusters in four batches you'd want the Operation to
-run four times minimum, with each Operation handling the next largest batch.
+:::important
+CronOperations are an alpha feature. You must enable Operations by adding
+`--enable-operations` to Crossplane's arguments.
+:::
 
-## Writing a `CronOperation` spec
+## Key features
 
-The `spec.schedule` field is required. The value of the field follows the
-[Cron][cron] syntax.
+- **Standard cron scheduling syntax** - Uses the same format as Kubernetes CronJobs
+- **Configurable concurrency policies** (Allow, Forbid, Replace)
+- **Automatic cleanup of old Operations** - Maintains history limits
+- **Tracks run history and running operations** - Provides visibility into scheduled runs
+
+## Scheduling
+
+CronOperations use standard cron syntax:
+
+```console-noCopy
+┌───────────── minute (0 - 59)
+│ ┌───────────── hour (0 - 23)
+│ │ ┌───────────── day of the month (1 - 31)
+│ │ │ ┌───────────── month (1 - 12)
+│ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday)
+│ │ │ │ │
+│ │ │ │ │
+* * * * *
+```
+
+**Common schedule examples:**
+- `"0 2 * * *"` - Every day at 2:00 AM
+- `"0 0 * * 0"` - Every Sunday at midnight
+- `"0 0 1 * *"` - Every month on the first at midnight
+- `"*/15 * * * *"` - Every 15 minutes
+
+## Concurrency policies
+
+CronOperations support three concurrency policies:
+
+- **Allow (default)**: Multiple Operations can run simultaneously. Use this 
+  when operations don't interfere with each other.
+- **Forbid**: New Operations don't start if previous ones are still running. 
+  Use this for operations that can't run concurrently.
+- **Replace**: New Operations stop running ones before starting. Use this 
+  when you always want the latest operation to run.
+
+## History management
+
+Control the number of completed Operations to keep:
+
+```yaml
+spec:
+  successfulHistoryLimit: 5  # Keep 5 successful operations
+  failedHistoryLimit: 3      # Keep 3 failed operations for debugging
+```
+
+This helps balance debugging capabilities with resource usage.
+
+## Common use cases
+
+:::note
+The following examples use hypothetical functions for illustration. At launch,
+only function-python supports operations.
+:::
+
+### Scheduled database backups
+
+```yaml
+apiVersion: ops.crossplane.io/v1alpha1
+kind: CronOperation
+metadata:
+  name: postgres-backup
+spec:
+  schedule: "0 3 * * *"  # Daily at 3 AM
+  concurrencyPolicy: Forbid  # Don't allow overlapping backups
+  operationTemplate:
+    spec:
+      mode: Pipeline
+      pipeline:
+      - step: backup
+        functionRef:
+          name: function-postgres-backup
+        input:
+          apiVersion: fn.crossplane.io/v1beta1
+          kind: PostgresBackupInput
+          instance: production-db
+          s3Bucket: db-backups
+```
+
+### Scheduled maintenance
+
+```yaml
+apiVersion: ops.crossplane.io/v1alpha1
+kind: CronOperation
+metadata:
+  name: weekly-maintenance
+spec:
+  schedule: "0 3 * * 0"  # Weekly on Sunday at 3 AM
+  operationTemplate:
+    spec:
+      mode: Pipeline
+      pipeline:
+      - step: cleanup-logs
+        functionRef:
+          name: function-log-cleanup
+        input:
+          apiVersion: fn.crossplane.io/v1beta1
+          kind: LogCleanupInput
+          retentionDays: 30
+      - step: update-certificates
+        functionRef:
+          name: function-cert-renewal
+```
+
+### Periodic health checks
+
+```yaml
+apiVersion: ops.crossplane.io/v1alpha1
+kind: CronOperation
+metadata:
+  name: health-check
+spec:
+  schedule: "*/30 * * * *"  # Every 30 minutes
+  operationTemplate:
+    spec:
+      mode: Pipeline
+      pipeline:
+      - step: check-cluster-health
+        functionRef:
+          name: function-health-check
+        input:
+          apiVersion: fn.crossplane.io/v1beta1
+          kind: HealthCheckInput
+          alertThreshold: 80
+```
+
+## Advanced configuration
+
+### Complex scheduling patterns
+
+Advanced cron schedule examples for specific use cases:
+
+```yaml
+# Weekdays only at 9 AM (Monday-Friday)
+schedule: "0 9 * * 1-5"
+
+# Every 4 hours during business days
+schedule: "0 8,12,16 * * 1-5"
+
+# First and last day of each month
+schedule: "0 2 1,L * *"
+
+# Every quarter (1st of Jan, Apr, Jul, Oct)
+schedule: "0 2 1 1,4,7,10 *"
+
+# Business hours only, every 2 hours
+schedule: "0 9-17/2 * * 1-5"
+```
+
+### Starting deadline
+
+CronOperations support a `startingDeadlineSeconds` field that controls how 
+long to wait after the scheduled time before considering it too late to 
+create the Operation:
+
+```yaml
+apiVersion: ops.crossplane.io/v1alpha1
+kind: CronOperation
+metadata:
+  name: deadline-example
+spec:
+  schedule: "0 9 * * 1-5"  # Weekdays at 9 AM
+  startingDeadlineSeconds: 900  # 15 minutes
+  operationTemplate:
+    spec:
+      mode: Pipeline
+      pipeline:
+      - step: morning-tasks
+        functionRef:
+          name: function-morning-tasks
+```
+
+If the Operation can't start in 15 minutes of 9 AM (due to 
+controller downtime, resource constraints, etc.), the scheduled run is 
+skipped.
+
+Skip operations for:
+- **Time-sensitive operations** - Skip operations that become meaningless if delayed
+- **Resource protection** - Prevent backup Operations piling up during outages
+- **SLA compliance** - Ensure operations run in acceptable time windows
+
+### Time zone considerations
+
+:::important
+CronOperations use the cluster's local time zone, same as Kubernetes CronJobs.
+To ensure consistent scheduling across different environments, consider:
+
+1. **Standardize cluster time zones** - Use UTC in production clusters
+2. **Document time zone assumptions** - Note expected time zone in comments
+3. **Account for DST changes** - Be aware that some schedules may skip or repeat during transitions
+:::
+
+## Status and monitoring
+
+CronOperations provide status information about scheduling:
+
+```yaml
+status:
+  conditions:
+  - type: Synced
+    status: "True"
+    reason: ReconcileSuccess
+  - type: Scheduling
+    status: "True"
+    reason: ScheduleActive
+  lastScheduleTime: "2024-01-15T10:00:00Z"
+  lastSuccessfulTime: "2024-01-15T10:02:30Z"
+  runningOperationRefs:
+  - name: daily-backup-1705305600
+```
+
+**Key status fields:**
+- **Conditions**: Standard Crossplane conditions (Synced) and CronOperation-specific conditions:
+  - **Scheduling**: `True` when the CronOperation is actively scheduling operations, `False` when paused or has incorrect schedule syntax
+- **`lastScheduleTime`**: When the CronOperation last created an Operation
+- **`lastSuccessfulTime`**: When an Operation last completed successfully
+- **`runningOperationRefs`**: Running Operations
+
+### Events
+
+CronOperations emit events for important activities:
+- `CreateOperation` (Warning) - Scheduled operation creation failures
+- `GarbageCollectOperations` (Warning) - Garbage collection failures
+- `ReplaceRunningOperation` (Warning) - Running operation deletion failures
+- `InvalidSchedule` (Warning) - Cron schedule parsing errors
+
+### Monitoring
+
+Monitor CronOperations using:
+
+```shell
+# Check CronOperation status
+kubectl get cronoperation my-cronop
+
+# View recent Operations created by the CronOperation
+kubectl get operations -l crossplane.io/cronoperation=my-cronop
+
+# Check events
+kubectl get events --field-selector involvedObject.name=my-cronop
+```
+
+## Best practices
+
+### Scheduling considerations
+
+1. **Consider time zones** - CronOperations use the host's local time 
+   (same as Kubernetes CronJobs)
+1. **Plan for long-running operations** - Ensure operations complete before 
+   next scheduled run
+1. **Set reasonable history limits** - Balance debugging needs with cluster 
+   resource usage
+
+### Concurrency policies
+
+1. **Choose appropriate concurrency policies**:
+   - **Forbid** for backups, maintenance, or operations that must complete 
+     alone
+   - **Replace** for health checks or monitoring where latest data is most 
+     important
+   - **Allow** for independent tasks that can run simultaneously
+
+For general Operations best practices including function development and 
+operational considerations, see [Operation best practices][operation-best-practices].
+
+## Troubleshooting
+
+### CronOperation not creating Operations
+
+1. Check the cron schedule syntax
+1. Verify the CronOperation has `Synced=True` condition
+1. Look for events indicating schedule parsing errors
+
+### Operations failing often
+
+1. Check Operation events and logs
+1. Verify function capabilities include `operation`
+1. Review retry limits and adjust as needed
+
+### Resource cleanup issues
+
+1. Verify you set history limits appropriately
+1. Check for events about garbage collection failures
 
 ## Next steps
 
-Read the API documentation for CronOperation for more details.
-
-[operations]: overview
-[cron]: https://en.wikipedia.org/wiki/Cron
-[watchOperation]: /guides/projects/project
-[compositions]: /uxp/composition/overview
-[ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/
-[functionMarketplace]: https://marketplace.upbound.io/functions
+- Learn about [Operation][operation] for one-time operational tasks
+- Learn about [WatchOperation][watchoperation] for reactive operations
+- [Get started with Operations][get-started-operations] to try scheduling your first operation
+<!--- TODO(tr0njavolta): LINKS --->
+<!-- [operation]: overview -->
+<!-- [watchoperation]: /guides/projects/project -->
+<!-- [get-started-operations]: ../get-started/get-started-with-operations -->
+<!-- [operation-best-practices]: operation#best-practices -->
+<!-- [cron]: https://en.wikipedia.org/wiki/Cron -->
+<!-- [compositions]: /uxp/composition/overview -->
+<!-- [ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/ -->
+<!-- [functionMarketplace]: https://marketplace.upbound.io/functions -->

@@ -16,10 +16,9 @@ external object inside the Provider an _external resource_.
 :::
 
 Examples of managed resources include:
-* Amazon AWS EC2 `Instance` defined in the [Official Provider for AWS][official-provider-aws].
-* Google Cloud GKE `Cluster` defined in the [Official Provider for GCP][official-provider-gcp].
-* Microsoft Azure PostgreSQL `Database` defined in [Official Provider for Azure][official-provider-azure].
-
+* Amazon AWS EC2 `Instance` defined in the [Official Provider for AWS][aws].
+* Google Cloud GKE `Cluster` defined in the [Official Provider for GCP][gcp].
+* Microsoft Azure PostgreSQL `Database` defined in [Official Provider for Azure][azure].
 
 ## Managed resource fields
 
@@ -30,28 +29,24 @@ Provider also define the available settings of a managed resource.
 Each managed resource is a unique API endpoint with their own
 group, kind and version. 
 
-For example the [AWS Provider][official-provider-aws]
-defines the <Hover label="gkv" line="2">Instance</Hover> kind from the
-group <Hover label="gkv" line="1">ec2.aws.upbound.io</Hover>
+For example the [AWS Provider][aws]
+defines the Instance kind from the
+group ec2.aws.upbound.io
 
-<div id="gkv">
 ```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 ```
-</div>
 
-<!-- vale off -->
 ### forProvider
-<!-- vale on -->
 
-The <Hover label="forProvider" line="4">spec.forProvider</Hover> of a 
+The `spec.forProvider` of a 
 managed resource maps to the parameters of the external resource. 
 
 For example, when creating an AWS EC2 instance, the Provider supports defining 
-the AWS <Hover label="forProvider" line="5">region</Hover> and the VM 
+the AWS region and the VM 
 size, called the 
-<Hover label="forProvider" line="6">instanceType</Hover>.
+instanceType.
 
 :::note
 The Provider defines the settings and their valid values. Providers also define
@@ -59,7 +54,6 @@ required and optional values in the `forProvider` definition.
 
 Refer to the documentation of your specific Provider for details.
 :::
-
 
 ```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
@@ -95,7 +89,7 @@ resource in the Provider.
 For example, a AWS VPC object named `my-test-vpc` has the external name
 `vpc-01353cfe93950a8ff`.
 
-```shell {copy-lines="1"
+```shell
 kubectl get vpc
 NAME            READY   SYNCED   EXTERNAL-NAME           AGE
 my-test-vpc     True    True     vpc-01353cfe93950a8ff   49m
@@ -104,7 +98,7 @@ my-test-vpc     True    True     vpc-01353cfe93950a8ff   49m
 To match the VPC by name, use the external name. For example, creating a Subnet
 managed resource attached to this VPC.
 
-```yaml {copy-lines="none"}
+```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
@@ -121,7 +115,7 @@ external resource name inside the Provider, use a `nameRef`.
 For example, a AWS VPC object named `my-test-vpc` has the external name
 `vpc-01353cfe93950a8ff`.
 
-```shell {copy-lines="1"}
+```shell
 kubectl get vpc
 NAME            READY   SYNCED   EXTERNAL-NAME           AGE
 my-test-vpc     True    True     vpc-01353cfe93950a8ff   49m
@@ -130,7 +124,7 @@ my-test-vpc     True    True     vpc-01353cfe93950a8ff   49m
 To match the VPC by name reference, use the managed resource name. For example,
 creating a Subnet managed resource attached to this VPC.
 
-```yaml {copy-lines="none"}
+```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
@@ -140,7 +134,6 @@ spec:
       name: my-test-vpc
 ```      
 
-
 ##### Matching by selector
 
 Matching by selector is the most flexible matching method. 
@@ -149,7 +142,7 @@ Use `matchLabels` to match the labels applied to a resource. For example, this
 Subnet resource only matches VPC resources with the label 
 `my-label: label-value`.
 
-```yaml {copy-lines="none"}
+```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 spec:
@@ -170,7 +163,7 @@ resource (XR).
 
 :::note
 Learn more about composite resources in the
-[Composite Resources](/crossplane/composition/composite-resources) section.
+[Composite Resources][xrs] section.
 :::
 
 Matching only a controller reference simplifies the matching process without
@@ -196,12 +189,10 @@ doesn't apply the change. Crossplane never deletes a resource based on a
 `forProvider` change. 
 
 :::note
-<!-- vale write-good.Passive = NO -->
 Crossplane behaves differently than other tools like Terraform. Terraform
 deletes and recreates a resource to change an immutable field. Crossplane only
 deletes an external resource if their corresponding managed 
 resource object is deleted from Kubernetes.
-<!-- vale write-good.Passive = YES -->
 :::
 
 #### Late initialization
@@ -216,27 +207,23 @@ assigns an availability zone, Crossplane uses that value to populate the
 `spec.forProvider.availabilityZone` field.
 
 :::note
-<!-- vale write-good.Passive = NO -->
-With [managementPolicies](/crossplane/managed-resources#managementpolicies),
+With [managementPolicies][policies],
 this behavior can be turned off by not including the `LateInitialize` policy in
 the `managementPolicies` list.
-<!-- vale write-good.Passive = YES -->
 :::
 
-<!-- vale off -->
 ### initProvider
-<!-- vale on -->
 
 :::important
 The managed resource `initProvider` option is a beta feature related to
-[managementPolicies](/crossplane/managed-resources#managementpolicies).
+[managementPolicies][policies].
 :::
 
 The
-<Hover label="initProvider" line="7">initProvider</Hover> defines
+initProvider defines
 settings Crossplane applies only when creating a new managed resource.  
 Crossplane ignores settings defined in the
-<Hover label="initProvider" line="7">initProvider</Hover>
+initProvider
 field that change after creation.
 
 :::note
@@ -251,20 +238,19 @@ Using `initProvider` is useful for setting initial values that a Provider may
 automatically change, like an auto scaling group.
 
 For example, creating a
-<Hover label="initProvider" line="2">NodeGroup</Hover>
+NodeGroup
 with an initial
-<Hover label="initProvider" line="9">desiredSize</Hover>.  
+desiredSize.  
 Crossplane doesn't change the
-<Hover label="initProvider" line="9">desiredSize</Hover>
+desiredSize
 setting back when an autoscaler scales the Node Group external resource.
 
 :::tip
 Crossplane recommends configuring
-<Hover label="initProvider" line="6">managementPolicies</Hover> without
+managementPolicies without
 `LateInitialize` to avoid conflicts with `initProvider` settings.
 :::
 
-<div id="initProvider">
 ```yaml
 apiVersion: eks.aws.upbound.io/v1beta1
 kind: NodeGroup
@@ -282,11 +268,8 @@ spec:
       - maxSize: 4
         minSize: 1
 ```
-</div>
 
-<!-- vale off -->
 ### managementPolicies
-<!-- vale on --> 
 
 :::note
 The managed resource `managementPolicies` option is a beta feature. Crossplane enables
@@ -298,19 +281,18 @@ management policies.
 :::
 
 Crossplane
-<Hover label="managementPol1" line="4">managementPolicies</Hover>
+managementPolicies
 determine which actions Crossplane can take on a
 managed resource and its corresponding external resource.  
 Apply one or more
-<Hover label="managementPol1" line="4">managementPolicies</Hover>
+managementPolicies
 to a managed resource to determine what permissions
 Crossplane has over the resource.
 
 For example, give Crossplane permission to create and delete an external resource,
 but not make any changes, set the policies to
-<Hover label="managementPol1" line="4">["Create", "Delete", "Observe"]</Hover>.
+["Create", "Delete", "Observe"].
 
-<div id="managementPol1">
 ```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
@@ -319,7 +301,6 @@ spec:
   forProvider:
     # Removed for brevity
 ```
-</div>
 
 The default policy grants Crossplane full control over the resources.  
 Defining the `managementPolicies` field with an empty array [pauses](#paused)
@@ -338,31 +319,16 @@ Crossplane supports the following policies:
 | `*` | _Default policy_. Crossplane has full control over a resource. |
 | `Create` | If the external resource doesn't exist, Crossplane creates it based on the managed resource settings. |
 | `Delete` | Crossplane can delete the external resource when deleting the managed resource. |
-| `LateInitialize` | Crossplane initializes some external resource settings not defined in the `spec.forProvider` of the managed resource. See [the late initialization](/crossplane/managed-resources#late-initialization) section for more details. |
+| `LateInitialize` | Crossplane initializes some external resource settings not defined in the `spec.forProvider` of the managed resource. See [the late initialization](#late-initialization) section for more details. |
 | `Observe` | Crossplane only observes the resource and doesn't make any changes. Used for observe only resources. |
 | `Update` | Crossplane changes the external resource when changing the managed resource. |
 
 The following is a list of common policy combinations:
 
-<!-- | Create | Delete | LateInitialize | Observe | Update | Description | -->
-<!-- | :---:  | :---:  | :---:          | :---:   | :---:  | ---         | -->
-<!-- | {{<check>}}      | {{<check>}}      | {{<check>}}              | {{<check>}}       | {{<check>}}      | _Default policy_. Crossplane has full control over the resource.                                                                                                     | -->
-<!-- | {{<check>}}      | {{<check>}}      | {{<check>}}              | {{<check>}}       |        | After creation any changes made to the managed resource aren't passed to the external resource. Useful for immutable external resources. | -->
-<!-- | {{<check>}}      | {{<check>}}      |                | {{<check>}}       | {{<check>}}      | Prevent Crossplane from managing any settings not defined in the managed resource. Useful for immutable fields in an external resource. | -->
-<!-- | {{<check>}}      | {{<check>}}      |                | {{<check>}}       |        | Crossplane doesn't import any settings from the external resource and doesn't push changes to the managed resource. Crossplane recreates the external resource if it's deleted. | -->
-<!-- | {{<check>}}      |        | {{<check>}}              | {{<check>}}       | {{<check>}}      | Crossplane doesn't delete the external resource when deleting the managed resource. | -->
-<!-- | {{<check>}}      |        | {{<check>}}              | {{<check>}}       |        | Crossplane doesn't delete the external resource when deleting the managed resource. Crossplane doesn't apply changes to the external resource after creation. | -->
-<!-- | {{<check>}}      |        |                | {{<check>}}       | {{<check>}}      | Crossplane doesn't delete the external resource when deleting the managed resource. Crossplane doesn't import any settings from the external resource. | -->
-<!-- | {{<check>}}      |        |                | {{<check>}}       |        | Crossplane creates the external resource but doesn't apply any changes to the external resource or managed resource. Crossplane can't delete the resource. | -->
-<!-- |        |        |                | {{<check>}}       |        | Crossplane only observes a resource. | -->
-<!-- |        |        |                |         |        | No policy set. An alternative method for [pausing](#paused) a resource.                                                                                              | -->
-
-<!-- vale off -->
 ### providerConfigRef
-<!-- vale on -->
 
 The `providerConfigRef` on a managed resource tells the Provider which
-[ProviderConfig](/manuals/uxp/concepts/packages/overview/providers#provider-configuration) to
+[ProviderConfig][providerconfig] to
 use when creating the managed resource.  
 
 Use a ProviderConfig to define the authentication method to use when 
@@ -373,11 +339,11 @@ If `providerConfigRef` isn't applied, Providers use the ProviderConfig named `de
 :::
 
 For example, a managed resource references a ProviderConfig named 
-<Hover label="pcref" line="6">user-keys</Hover>.
+user-keys.
 
-This matches the <Hover label="pc" line="4">name</Hover> of a ProviderConfig.
+This matches the name of a ProviderConfig.
 
-```yaml {label="pcref",copy-lines="none"}}
+```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 spec:
@@ -386,7 +352,6 @@ spec:
   providerConfigRef: user-keys
 ```
 
-<div id="pc">
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
@@ -394,7 +359,6 @@ metadata:
   name: user-keys
 # Removed for brevity
 ```
-</div>
 
 :::tip
 Each managed resource can reference different ProviderConfigs. This allows
@@ -402,9 +366,7 @@ different managed resources to authenticate with different credentials to the
 same Provider.
 :::
 
-<!-- vale off -->
 ### writeConnectionSecretToRef
-<!-- vale on --> 
 
 When a Provider creates a managed resource it may generate resource-specific
 details, like usernames, passwords or connection details like an IP address. 
@@ -416,12 +378,11 @@ For example, when creating an AWS RDS database instance with the
 [Official Provider for AWS][official-provider-aws]
 generates an endpoint, password, port and username data. The Provider saves
 these variables in the Kubernetes secret 
-<Hover label="secretname" line="9">rds-secret</Hover>, referenced by
+rds-secret, referenced by
 the 
-<Hover label="secretname" line="9">writeConnectionSecretToRef</Hover>
+writeConnectionSecretToRef
 field. 
 
-<div id="secretname">
 ```yaml
 apiVersion: database.aws.upbound.io/v1beta1
 kind: RDSInstance
@@ -433,11 +394,10 @@ spec:
   writeConnectionSecretToRef:
     name: rds-secret
 ```
-</div>
 
 Viewing the Secret object shows the saved fields.
 
-```yaml {copy-lines="1"}
+```yaml
 kubectl describe secret rds-secret
 Name:         rds-secret
 # Removed for brevity
@@ -472,11 +432,10 @@ By default Providers give external resources the same name as the Kubernetes
 object.
 
 For example, a managed resource named 
-<Hover label="external-name" line="4">my-rds-instance</Hover> has
+my-rds-instance has
 the name `my-rds-instance` as an external resource inside the Provider's
 environment. 
 
-<div id="external-name">
 ```yaml
 apiVersion: database.aws.upbound.io/v1beta1
 kind: RDSInstance
@@ -484,7 +443,6 @@ metadata:
   namespace: default
   name: my-rds-instance
 ```
-</div>
 
 ```shell
 kubectl get rdsinstance
@@ -497,11 +455,10 @@ annotation already provided use the annotation value as the external
 resource name.
 
 For example, the Provider creates managed resource named 
-<Hover label="custom-name" line="6">my-rds-instance</Hover> but uses
-the name <Hover label="custom-name" line="5">my-custom-name</Hover>
+my-rds-instance but uses
+the name my-custom-name
 for the external resource inside AWS.
 
-<div id="custom-name">
 ```yaml
 apiVersion: database.aws.crossplane.io/v1beta1
 kind: RDSInstance
@@ -511,9 +468,8 @@ metadata:
   annotations: 
     crossplane.io/external-name: my-custom-name
 ```
-</div>
 
-```shell {copy-lines="1"}
+```shell
 kubectl get rdsinstance
 NAME                 READY   SYNCED   EXTERNAL-NAME        AGE
 my-rds-instance      True    True     my-custom-name       11m
@@ -532,9 +488,9 @@ resources_.
 
 Providers set three creation annotations to avoid and detect leaked resources:
 
-* <Hover label="creation" line="8">crossplane.io/external-create-pending</Hover> -
+* crossplane.io/external-create-pending -
   The last time the provider was about to create the resource.
-* <Hover label="creation" line="9">crossplane.io/external-create-succeeded</Hover> -
+* crossplane.io/external-create-succeeded -
   The last time the provider successfully created the resource.
 * `crossplane.io/external-create-failed` - The last time the provider failed to
   create the resource.
@@ -542,7 +498,6 @@ Providers set three creation annotations to avoid and detect leaked resources:
 Use `kubectl get` to view the annotations on a managed resource. For example, an
 AWS VPC resource:
 
-<div id="creation">
 ```yaml
 $ kubectl get -o yaml vpc my-vpc
 apiVersion: ec2.aws.m.upbound.io/v1beta1
@@ -555,10 +510,9 @@ metadata:
     crossplane.io/external-create-pending: "2023-12-18T21:48:06Z"
     crossplane.io/external-create-succeeded: "2023-12-18T21:48:40Z"
 ```
-</div>
 
 A provider uses the
-<Hover label="creation" line="7">crossplane.io/external-name</Hover>
+crossplane.io/external-name
 annotation to lookup a managed resource in an external system.
 
 The provider looks up the resource in the external system to determine if it
@@ -596,7 +550,7 @@ When a provider thinks it might have leaked a resource it creates a `cannot
 determine creation result` event associated with the managed resource. Use
 `kubectl describe` to see the event.
 
-```shell {copy-lines="1"}
+```shell
 kubectl describe queue my-sqs-queue
 
 # Removed for brevity
@@ -669,14 +623,13 @@ stop reconciling the managed resource.
 Pausing a resource is useful when modifying Providers or preventing
 race-conditions when editing Kubernetes objects.
 
-Apply a <Hover label="pause" line="6">crossplane.io/paused: "true"</Hover>
+Apply a crossplane.io/paused: "true"
 annotation to a managed resource to pause reconciliation. 
 
 :::note
 Only the value `"true"` pauses reconciliation.
 :::
 
-<div id="pause">
 ```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
@@ -690,7 +643,6 @@ spec:
     region: us-west-1
     instanceType: t2.micro
 ```
-</div>
 
 Remove the annotation to resume reconciliation.
 
@@ -699,13 +651,13 @@ Kubernetes and Crossplane can't delete resources with a `paused` annotation,
 even with `kubectl delete`. 
 
 Read 
-[Crossplane discussion #4839](https://github.com/crossplane/crossplane/issues/4839) 
+[Crossplane discussion #4839][crossplane-discussion] 
 for more details.
 :::
 
 ## Finalizers
 Crossplane applies a 
-[Finalizer](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/)
+[Finalizer][k8s-finalizers]
 on managed resources to control their deletion. 
 
 :::note
@@ -725,17 +677,15 @@ Crossplane has a standard set of `Conditions` for a managed
 resource. View the `Conditions` of a managed resource with 
 `kubectl describe <managed_resource>`
 
-
 :::note
 Providers may define their own custom `Conditions`.
 :::
-
 
 ### Available
 `Reason: Available` indicates the Provider created the managed resource and it's
 ready for use. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Ready
   Status:                True
@@ -746,7 +696,7 @@ Conditions:
 `Reason: Creating` indicates the Provider is attempting to create the managed
 resource. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Ready
   Status:                False
@@ -757,47 +707,41 @@ Conditions:
 `Reason: Deleting` indicates the Provider is attempting to delete the managed
 resource. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Ready
   Status:                False
   Reason:                Deleting
 ```
 
-<!-- vale off -->
 ### ReconcilePaused
-<!-- vale on -->
 `Reason: ReconcilePaused` indicates the managed resource has a [Pause](#paused)
 annotation 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Synced
   Status:                False
   Reason:                ReconcilePaused
 ```
 
-<!-- vale off -->
 ### ReconcileError
-<!-- vale on -->
 `Reason: ReconcileError` indicates Crossplane encountered an error while
 reconciling the managed resource. The `Message:` value of the `Condition` helps
 identify the Crossplane error. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Synced
   Status:                False
   Reason:                ReconcileError
 ```
 
-<!-- vale off -->
 ### ReconcileSuccess
-<!-- vale on -->
 `Reason: ReconcileSuccess` indicates the Provider created and is monitoring the 
 managed resource.
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Synced
   Status:                True
@@ -808,7 +752,7 @@ Conditions:
 `Reason: Unavailable` indicates Crossplane expects the managed resource to be 
 available, but the Provider reports the resource is unhealthy.
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Ready
   Status:                False
@@ -820,82 +764,70 @@ Conditions:
 managed resource. The `conditions.message` provides more information on what
 went wrong. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  Unknown
   Status:                False
   Reason:                Unknown
 ```
 
-
 ### Upjet Provider conditions
-[Upjet](https://github.com/upbound/upjet), the open source tool to generate
+[Upjet][upjet], the open source tool to generate
 Crossplane Providers, also has a set of standard `Conditions`.
 
-
-<!-- vale off -->
 #### AsyncOperation
-<!-- vale on -->
 
 Some resources may take more than a minute to create. Upjet based providers can 
 complete their Kubernetes command before creating the managed resource by using 
 an asynchronous operation. 
 
-
 ##### Finished 
 The `Reason: Finished` indicates the asynchronous operation completed
 successfully. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  AsyncOperation
   Status:                True
   Reason:                Finished
 ```
 
-
 ##### Ongoing
 
 `Reason: Ongoing` indicates the managed resource operation is still in progress. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  AsyncOperation
   Status:                True
   Reason:                Ongoing
 ```
 
-<!-- vale off -->
 #### LastAsyncOperation
-<!-- vale on -->
 
 The Upjet `Type: LastAsyncOperation` captures the previous asynchronous
 operation status as either `Success` or a failure `Reason`. 
 
-<!-- vale off -->
 ##### ApplyFailure
-<!-- vale on -->
 
 `Reason: ApplyFailure` indicates the Provider failed to apply a setting to the
 managed resource. The `conditions.message` provides more information on what
 went wrong. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  LastAsyncOperation
   Status:                False
   Reason:                ApplyFailure
 ```
 
-<!-- vale off -->
 ##### DestroyFailure
-<!-- vale on -->
 
 `Reason: DestroyFailure` indicates the Provider failed to delete the managed
 resource. The `conditions.message` provides more information on what
 went wrong. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  LastAsyncOperation
   Status:                False
@@ -906,13 +838,22 @@ Conditions:
 `Reason: Success` indicates the Provider successfully created the managed
 resource asynchronously. 
 
-```yaml {copy-lines="none"}
+```yaml
 Conditions:
   Type:                  LastAsyncOperation
   Status:                True
   Reason:                Success
 ```
- 
+
+[policies]: /manuals/uxp/concepts/managed-resources/overview#managementpolicies
+[providerconfig]: /manuals/uxp/concepts/packages/overview/providers#provider-configuration
 [official-provider-aws]: https://marketplace.upbound.io/providers/provider-family-aws
 [official-provider-azure]: https://marketplace.upbound.io/providers/provider-family-azure
 [official-provider-gcp]: https://marketplace.upbound.io/providers/provider-family-gcp
+[aws]: https://marketplace.upbound.io/providers/provider-family-aws
+[gcp]: https://marketplace.upbound.io/providers/provider-family-gcp
+[azure]: https://marketplace.upbound.io/providers/provider-family-azure
+[xrs]: /crossplane/composite-resources
+[crossplane-discussion]: https://github.com/crossplane/crossplane/issues/4839
+[k8s-finalizers]: https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/
+[upjet]: https://github.com/upbound/upjet

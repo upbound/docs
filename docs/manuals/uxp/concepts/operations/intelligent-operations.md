@@ -6,16 +6,19 @@ description: Embed AI intelligence in the Operation execution flow.
 
 Upbound control planes combine deterministic control (like reconciliation and
 policy) with intelligent control (driven by embedded AI agents). Bring
-intelligence into the exection flow of your Operations with AI-embedded
+intelligence into the execution flow of your Operations with AI-embedded
 operation functions.
 
-AI-embedded operation functions are standard [functions][functions] designed to integrate with popular Large Language Model providers, such as from
-OpenAI and Anthropic. You can supplement existing function pipelines with these
-AI-embedded functions. 
+AI-embedded operation functions are standard [functions][functions] designed to
+integrate with popular Large Language Model providers, such as from OpenAI and
+Anthropic. You can supplement existing function pipelines with these AI-embedded
+functions. 
 
 ## Example AI-embedded function
 
-Operation functions are a fundamental unit of work in a control plane. Here's an example of an Operation that uses a function to determine why a set of pods are stuck in a `CrashLoopBackoff`:
+Operation functions are a fundamental unit of work in a control plane. Here's an
+example of an Operation that uses a function to determine why a set of pods are
+stuck in a `CrashLoopBackoff`:
 
 ```yaml
 apiVersion: ops.crossplane.io/v1alpha1
@@ -61,7 +64,7 @@ spec:
             You are a Kubernetes infrastructure monitoring expert tasked with analyzing 
             pod logs and events to identify potential deployment issues.
             
-            You will be provided with an event that includes an involvedObject that will
+            You will receive an event that includes an involvedObject that will
             include the namespace and name of the pod to examine.
           userPrompt: |
             You should use the tools available to you to look up events and logs related
@@ -115,11 +118,14 @@ spec:
             name: claude
 ```
 
-The `WatchOperation` above uses `function-claude` to look up events and logs related to the pod in order to identify what is wrong, and it outputs a remediation strategy to fix the issue for the said pod.
+The `WatchOperation` above uses `function-claude` to look up events and logs
+related to the pod in order to identify what is wrong, and it outputs a
+remediation strategy to fix the issue for the said pod.
 
 ## Official AI-embedded function
 
-Upbound offers a number of Official Functions that've been AI-enabled and are suitable for composition:
+Upbound offers Official Functions that have AI capabilities and are
+suitable for composition:
 
 - [function-claude][functionClaude]
 - [function-openai][functionOpenAi]
