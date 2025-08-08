@@ -102,6 +102,13 @@ spec:
     ingress:
       enabled: false
     serviceAccount: default
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "1"
 status:
     availableReplicas: 1
     url: "http://localhost:8080"
@@ -203,11 +210,11 @@ spec:
           protocol: TCP
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "250m"
+            memory: {{ .observed.composite.resource.spec.parameters.resources.requests.memory }}
+            cpu: {{ .observed.composite.resource.spec.parameters.resources.requests.cpu }}
           limits:
-            memory: "1Gi"
-            cpu: "1"
+            memory: {{ .observed.composite.resource.spec.parameters.resources.limits.memory }}
+            cpu: {{ .observed.composite.resource.spec.parameters.resources.limits.memory }}
       restartPolicy: Always
 status: {}
 
@@ -343,12 +350,12 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
                             ],
                             resources=corev1.ResourceRequirements(
                                 requests={
-                                    "memory": "64Mi",
-                                    "cpu": "250m"
+                                    "memory": oxr.spec.parameters.resources.requests.memory,
+                                    "cpu": oxr.spec.parameters.resources.requests.cpu
                                 },
                                 limits={
-                                    "memory": "1Gi",
-                                    "cpu": "1"
+                                    "memory": oxr.spec.parameters.resources.limits.memory,
+                                    "cpu": oxr.spec.parameters.resources.limits.cpu
                                 }
                             )
                         )
@@ -603,12 +610,12 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 						}},
 						Resources: &corev1.ResourceRequirements{
 							Requests: &map[string]resourcev1.Quantity{
-								"memory": "64Mi",
-								"cpu":    "250m",
+								"memory": params.Resources.Requests.Memory,
+								"cpu":    params.Resources.Requests.Cpu,
 							},
 							Limits: &map[string]resourcev1.Quantity{
-								"memory": "1Gi",
-								"cpu":    "1",
+								"memory": params.Resources.Limits.Memory,
+								"cpu":    params.Resources.Limits.Cpu,
 							},
 						},
 					}},
@@ -885,12 +892,12 @@ _desired_deployment = appsv1.Deployment{
                     }]
                     resources: {
                         requests: {
-                            memory: "64Mi"
-                            cpu: "250m"
+                            memory: oxr.spec.parameters.resources.requests.memory
+                            cpu: oxr.spec.parameters.resources.requests.cpu
                         }
                         limits: {
-                            memory: "1Gi"
-                            cpu: "1"
+                            memory: oxr.spec.parameters.resources.limits.memory
+                            cpu: oxr.spec.parameters.resources.limits.cpu
                         }
                     }
                 }]
