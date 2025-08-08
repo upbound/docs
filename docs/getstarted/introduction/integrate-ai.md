@@ -231,9 +231,9 @@ Use the up CLI to add the following functions to your control plane project:
 
 ```shell
 up dep add xpkg.upbound.io/upbound/function-claude:v0.2.0
-up dep add xpkg.upbound.io/upbound/function-analysis-gate:v0.0.0-20250804021106-1692dfd80975
-up dep add xpkg.upbound.io/upbound/function-remediation-gate:v0.0.0-20250803235634-0bc0b559a335
-up dep add xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250808202446-497705677f12
+up dep add xpkg.upbound.io/upbound/function-analysis-gate:v0.0.0-20250808233445-b3bb3dafbd25
+up dep add xpkg.upbound.io/upbound/function-remediation-gate:v0.0.0-20250808233532-ad1d6ad2aea6
+up dep add xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250808233615-ab700ab58d36
 ```
 
 ### Generate the operations
