@@ -336,8 +336,6 @@ metadata:
 spec:
   serviceAccountTemplate:
     metadata:
-      # We need to provide additional permissions to the function. In order to
-      # do that we create a deterministic ServiceAccount name.
       name: function-pod-analyzer
   deploymentTemplate:
     spec:
@@ -348,17 +346,9 @@ spec:
           - name: package-runtime
             args:
             - --debug
-            # Fine for local development (using crossplane render). Not fine
-            # when integrated with Crossplane.
-            # - --insecure
             env:
-            # Inform the function of the CTP1 MCP Server.
-            # transport: http-stream indicates that we'll communicate with the
-            # MCP server over StreamableHTTP.
             - name: MCP_SERVER_TOOL_CTP1_TRANSPORT
               value: http-stream
-            # baseURL indicates which address and endpoint to reach out to for
-            # tooling.
             - name: MCP_SERVER_TOOL_CTP1_BASEURL
               value: http://localhost:8080/mcp
           - name: controlplane-mcp-server
@@ -373,8 +363,6 @@ metadata:
 spec:
   serviceAccountTemplate:
     metadata:
-      # We need to provide additional permissions to the function. In order to
-      # do that we create a deterministic ServiceAccount name.
       name: function-analysis-gate
   deploymentTemplate:
     spec:
@@ -393,8 +381,6 @@ metadata:
 spec:
   serviceAccountTemplate:
     metadata:
-      # We need to provide additional permissions to the function. In order to
-      # do that we create a deterministic ServiceAccount name.
       name: function-remediation-gate
   deploymentTemplate:
     spec:
@@ -410,11 +396,7 @@ apiVersion: pkg.crossplane.io/v1beta1
 kind: Function
 metadata:
   name: upbound-function-claude
-  annotations:
-    # This tells crossplane beta render to connect to the function locally.
-    render.crossplane.io/runtime: Development
 spec:
-  # This is ignored when using the Development runtime.
   package: xpkg.upbound.io/upbound/function-claude:v0.2.0
   runtimeConfigRef:
     name: ctp-mcp
@@ -424,7 +406,6 @@ kind: Function
 metadata:
   name: upbound-function-analysis-gate
 spec:
-  # This is ignored when using the Development runtime.
   package: xpkg.upbound.io/upbound/function-analysis-gate:v0.0.0-20250804021106-1692dfd80975
   runtimeConfigRef:
     name: analysis-perms
@@ -434,7 +415,6 @@ kind: Function
 metadata:
   name: upbound-function-remediation-gate
 spec:
-  # This is ignored when using the Development runtime.
   package: xpkg.upbound.io/upbound/function-remediation-gate:v0.0.0-20250803235634-0bc0b559a335
   runtimeConfigRef:
     name: remediation-perms
@@ -444,7 +424,6 @@ kind: Function
 metadata:
   name: upbound-function-event-filter
 spec:
-  # This is ignored when using the Development runtime.
   package: xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250804015248-487fd21293b0
 ```
 
