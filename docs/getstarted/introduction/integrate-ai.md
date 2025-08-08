@@ -445,7 +445,7 @@ kind: Secret
 metadata:
   name: claude
   namespace: crossplane-system
-data:
+stringData:
   ANTHROPIC_API_KEY: "your-api-key"
 ```
 
