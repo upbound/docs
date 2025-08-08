@@ -81,7 +81,7 @@ const config = {
                             },
                             {
                                 label: "Platform Solutions",
-                                to: "/guides/solutions/general-idp/",
+                                to: "/guides/solutions/general-idp/get-started/",
                             },
                             {
                                 label: "Use Cases",
