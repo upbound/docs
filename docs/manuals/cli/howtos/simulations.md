@@ -295,6 +295,6 @@ For general information on this feature as it fits in the Upbound workflow,
 review the [overview documentation][overview-documentation] on Simulations.
 
 
-[overview-documentation]: /manuals/spaces/guides/simulations
+[overview-documentation]: /manuals/spaces/howtos/simulations
 [reach-out-to-upbound]: https://www.upbound.io/contact
 [simulation-api]: /reference/apis/spaces-api/

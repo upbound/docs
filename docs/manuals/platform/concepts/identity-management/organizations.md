@@ -64,6 +64,6 @@ Manage a user's membership level in your organization from the Upbound Console. 
 2. On the **All Users** page, select the user whose role you wish you change.
 3. Select the **Edit** button, select **Role**, and then toggle the org membership between `Admin` or `Member`.
 
-[user-accounts]: /manuals/platform/identity-management/users
+[user-accounts]: /manuals/platform/concepts/identity-management/users
 [up-cli]: /reference/cli-reference
 [organization-selection-screen]: https://console.upbound.io/selectOrg

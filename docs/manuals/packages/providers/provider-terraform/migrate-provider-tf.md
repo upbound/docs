@@ -331,11 +331,11 @@ definition, composition, and claim.
 <!-- vale gitlab.FutureTense = YES -->
 
 
-[authentication-keys]: /manuals/packages/providers/provider-aws/authentication
-[web-identity]: /manuals/packages/providers/provider-aws/authentication
-[service-accounts]: /manuals/packages/providers/provider-aws/authentication
-[provider-azure]: /manuals/packages/providers/provider-azure/authentication
-[provider-gcp]: /manuals/packages/providers/provider-gcp/authentication
+[authentication-keys]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
+[web-identity]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
+[service-accounts]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
+[provider-azure]: /manuals/packages/manuals/packages/providers/provider-azure/authentication
+[provider-gcp]: /manuals/packages/manuals/packages/providers/provider-gcp/authentication
 
 
 [install-crossplane]: https://docs.crossplane.io/latest/software/install/

@@ -540,8 +540,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 :::
 
 
-[go]: /manuals/cli/projects/compositions/go
-[go-templates]: /manuals/cli/projects/compositions/go-template
-[kcl]: /manuals/cli/projects/compositions/kcl
+[go]: /manuals/cli/howtos/compositions/go
+[go-templates]: /manuals/cli/howtos/compositions/go-template
+[kcl]: /manuals/cli/howtos/compositions/kcl
 <!-- [python]: /manuals/cli/projects/compositions/python -->
 [python-tutorial]: https://docs.python.org/3/tutorial/

@@ -104,7 +104,7 @@ spec:
 
 
 [access-policy]: /manuals/packages/policies
-[robot-and-robot-token]: /manuals/platform/identity-management/robots
-[robot-and-robot-token-1]: /manuals/platform/identity-management/robots
+[robot-and-robot-token]: /manuals/platform/concepts/identity-management/robots
+[robot-and-robot-token-1]: /manuals/platform/concepts/identity-management/robots
 [pull-secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials
 [pull-secret-1]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials

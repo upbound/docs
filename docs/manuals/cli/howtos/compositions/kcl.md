@@ -422,10 +422,10 @@ corresponding configuration data.
 * [function-kcl][function-kcl] - The underlying Crossplane function that enables KCL
 
 
-[go]: /manuals/cli/projects/compositions/go
-[go-templates]: /manuals/cli/projects/compositions/go-template
+[go]: /manuals/cli/howtos/compositions/go
+[go-templates]: /manuals/cli/howtos/compositions/go-template
 <!-- [kcl]: /manuals/cli/projects/compositions/kcl -->
-[python]: /manuals/cli/projects/compositions/python
+[python]: /manuals/cli/howtos/compositions/python
 
 [kcl]: https://www.kcl-lang.io/
 [kcl-language-server]: https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-language-server

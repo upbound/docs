@@ -491,7 +491,7 @@ spec:
 ```
 
 <!--- TODO(tr0njavolta): fix redirect --->
-[upbound-auth-oidc]: /manuals/platform/oidc
+[upbound-auth-oidc]: /manuals/platform/howtos/oidc
 [upbound-cloud-spaces]: /deploy
 
 

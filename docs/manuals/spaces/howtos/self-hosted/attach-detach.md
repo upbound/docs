@@ -178,9 +178,9 @@ Only users with editor or administrative permissions can make changes using the 
 
 
 [enable-the-query-api]: /manuals/spaces/howtos/self-hosted/query-api
-[enable-upbound-rbac]: /manuals/platform/authorization/upbound-rbac
+[enable-upbound-rbac]: /manuals/platform/concepts/authorization/upbound-rbac
 [upbound]: /manuals/console/console
-[organization]: /manuals/platform/identity-management/organizations
+[organization]: /manuals/platform/concepts/identity-management/organizations
 [query-api]: /manuals/spaces/howtos/self-hosted/query-api
 
 

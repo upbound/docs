@@ -176,11 +176,11 @@ Key features:
 <!-- vale Google.WordList = YES -->
 
 
-[users]: /manuals/platform/identity-management/users
-[organizations]: /manuals/platform/identity-management/organizations
-[teams]: /manuals/platform/identity-management/teams
-[robots]: /manuals/platform/identity-management/robots
-[enabling-directory-sync]: /manuals/platform/authentication/enable-sso
+[users]: /manuals/platform/concepts/identity-management/users
+[organizations]: /manuals/platform/concepts/identity-management/organizations
+[teams]: /manuals/platform/concepts/identity-management/teams
+[robots]: /manuals/platform/concepts/identity-management/robots
+[enabling-directory-sync]: /manuals/platform/howtos/enable-sso
 [authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/authentication/oidc-configuration
 
 

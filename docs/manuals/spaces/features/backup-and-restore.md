@@ -490,10 +490,10 @@ spec:
 [thanos-object-storage]: https://thanos.io/tip/thanos/storage.md/
 [sharedbackupschedule]: /reference/apis/spaces-api/
 [cron-formatted]: https://en.wikipedia.org/wiki/Cron
-[spaces-api-documentation]: /reference/apis/spaces-api
+[spaces-api-documentation]: /reference/apis/spaces-api/v1_9
 [sharedbackup]: /reference/apis/spaces-api/
 [backup]: /reference/apis/spaces-api/
-[spaces-api-documentation-1]: /reference/apis/spaces-api
+[spaces-api-documentation-1]: /reference/apis/spaces-api/v1_9
 
 
 

@@ -36,4 +36,4 @@ relevant contextual scopes you interact with often: a **Spaces context** and a
 
 In `up`, the commands you can execute are context-sensitive.
 
-[howto]: /manuals/cli/how-tos/context-config
+[howto]: /manuals/cli/howtos/context-config

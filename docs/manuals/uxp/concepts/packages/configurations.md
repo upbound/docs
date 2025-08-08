@@ -513,7 +513,7 @@ test-package.xpkg
 
 [oci]: https://opencontainers.org/
 [compositions]: /crossplane/composition/compositions
-[composite-resource-definitions]: /crossplane/composition/composite-resource-definitions
+[composite-resource-definitions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [providers]: /crossplane/providers
 [functions]: /crossplane/functions
 [getting-started-config]: https://github.com/upbound/configuration-quickstart

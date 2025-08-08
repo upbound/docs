@@ -579,9 +579,9 @@ if err := response.SetDesiredCompositeResource(rsp, &resource.Composite{Resource
 * [Go Generated Code Guide][go-generated-code-guide] - Understanding protobuf generated code
 
 <!-- [go]: /manuals/cli/projects/compositions/go -->
-[go-templates]: /manuals/cli/projects/compositions/go-template
-[kcl]: /manuals/cli/projects/compositions/kcl
-[python]: /manuals/cli/projects/compositions/python
+[go-templates]: /manuals/cli/howtos/compositions/go-template
+[kcl]: /manuals/cli/howtos/compositions/kcl
+[python]: /manuals/cli/howtos/compositions/python
 [go]: https://www.golang.org
 [official-tutorials]: https://go.dev/learn/
 [s3-provider]: https://marketplace.upbound.io/providers/upbound/provider-aws-s3

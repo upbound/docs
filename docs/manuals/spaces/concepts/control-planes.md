@@ -265,7 +265,7 @@ in the [Spaces documentation][spaces-documentation-2].
 
 
 [uxp]: /manuals/uxp/overview
-[automatic-upgrades]: /manuals/spaces/guides/auto-upgrade
+[automatic-upgrades]: /manuals/spaces/howtos/auto-upgrade
 [release-notes]: https://github.com/upbound/universal-crossplane/releases
 [control-plane-group]: /manuals/spaces/concepts/groups
 [space]: /manuals/spaces/overview
@@ -273,12 +273,12 @@ in the [Spaces documentation][spaces-documentation-2].
 [cli-reference]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference
 [up-ctx-f]: /reference/cli-reference
-[cli-documentation]: /manuals/cli/contexts
+[cli-documentation]: /manuals/cli/concepts/contexts
 [upbound-marketplace]: https://marketplace.upbound.io
 [upbound-marketplace-1]: https://marketplace.upbound.io
-[gitops-with-control-planes]: /manuals/spaces/guides/gitops
+[gitops-with-control-planes]: /manuals/spaces/howtos/cloud-spaces/gitops
 [connect-control-planes-to-external-services]: /manuals/platform/authentication/oidc-configuration
 [spaces-documentation]: /manuals/spaces/features/secrets-management
-[spaces-documentation-1]: /manuals/spaces/howtos/self-hosted/backup-and-restore
+[spaces-documentation-1]: /manuals/spaces/howtos/self-hosted/workload-id-backup-restore
 [otel]: https://otel.com
 [spaces-documentation-2]: /manuals/spaces/features/observability

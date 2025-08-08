@@ -56,4 +56,4 @@ spec:
 Your UXP instance can now pull any version of an Official Package.
 
 [official-package-support]: /manuals/uxp/features/official-package-support
-[robot]: /manuals/platform/identity-management/robots
+[robot]: /manuals/platform/concepts/identity-management/robots

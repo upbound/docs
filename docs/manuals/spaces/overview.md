@@ -18,8 +18,8 @@ Read the guides to get started using control planes in Spaces:
 - [Self-Hosted Space][self-hosted-space-guide] guide
 
 [uxp]: /manuals/uxp/overview
-[cloud-spaces]: /manuals/spaces/howtos/cloud-spaces/overview
-[self-hosted-space]: /manuals/spaces/howtos/self-hosted/overview
+[cloud-spaces]: /manuals/spaces/overview
+[self-hosted-space]: /manuals/spaces/howtos/self-hosted/dr
 [features]: /manuals/spaces/features/managed-service
-[cloud-space-guide]: /manuals/spaces/howtos/cloud-spaces/overview
-[self-hosted-space-guide]: /manuals/spaces/howtos/self-hosted/overview
+[cloud-space-guide]: /manuals/spaces/overview
+[self-hosted-space-guide]: /manuals/spaces/howtos/self-hosted/dr

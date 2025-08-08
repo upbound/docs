@@ -200,6 +200,6 @@ up ctx . -f - > context.yaml
 ```
 [up-ctx]: /reference/cli-reference
 [space]: /manuals/spaces/overview
-[kubernetes-compatible-api]: /reference/apis/spaces-api
+[kubernetes-compatible-api]: /reference/apis/spaces-api/v1_9
 [kubectx]: https://github.com/ahmetb/kubectx/
 [kubeconfig]: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/

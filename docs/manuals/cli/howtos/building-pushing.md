@@ -133,6 +133,6 @@ shared across multiple compositions, reference them manually in the
 * [Embedded functions guide][functions] - Creating and managing functions
 
 [up-cli]: /manuals/cli/
-[projects]: /manauls/cli/concepts/projects
+[projects]: /manuals/cli/concepts/projects
 [functions]: /manuals/cli/howtos/compositions/go
 [up-cli-reference]: /reference/cli-reference
