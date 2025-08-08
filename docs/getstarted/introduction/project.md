@@ -104,11 +104,11 @@ spec:
     serviceAccount: default
     resources:
       requests:
-        memory: "64Mi"
-        cpu: "250m"
+        cpu: "100m"
+        memory: "128Mi"
       limits:
-        memory: "1Gi"
-        cpu: "1"
+        cpu: "500m"
+        memory: "512Mi"
 status:
     availableReplicas: 1
     url: "http://localhost:8080"

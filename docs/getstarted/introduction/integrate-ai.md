@@ -475,6 +475,13 @@ spec:
     ingress:
       enabled: false
     serviceAccount: default
+    resources:
+      limits:
+        memory: 5Mi
+        cpu: 100m
+      requests:
+        memory: 1Mi
+        cpu: 100m
 ```
 
 Save as `oomkilled.yaml` and apply it:
