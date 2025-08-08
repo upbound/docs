@@ -100,7 +100,7 @@ spec:
     service:
       enabled: true
     ingress:
-      enabled: false # ingress is not working in local controlplane
+      enabled: false
     serviceAccount: default
 ```
 
@@ -1092,19 +1092,14 @@ service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 
 ## Next steps
 
-Now that your control plane is running locally, you're ready to package it as a
-[Configuration][Configuration] image and push it to the Upbound Marketplace.
-
-Check out the [Build and push your first Configuration][buildAndPush] tutorial
-to continue.
+Now that you know the basics of building with Upbound, extend your _WebApp_ custom resource type with an AI-augmented operation to detect and remediate issues that occur when running app workloads on Kubernetes. Read [Create an AI-augmented operation][integrate-ai].
 
 [up-cli]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io
 [functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [providers]: https://upbound.io
-[Configuration]: /manuals/uxp/concepts/packages/configurations
-[buildAndPush]: /getstarted/introduction/build-and-push
 [xrd]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [composition]: /manuals/uxp/concepts/composition/overview
 [functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
 [webUI]: /img/uxp-webui.png
+[integrate-ai]: /getstarted/introduction/integrate-ai

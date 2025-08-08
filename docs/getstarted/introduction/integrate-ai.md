@@ -1,7 +1,7 @@
 ---
 title: Create an AI-augmented operation
 description: "Use Upbound Crossplane to build and manage an AI-powered control plane"
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 Upbound Crossplane transforms infrastructure management by integrating AI-powered pipelines directly into your control plane operations. Through LLM-enabled Operation functions, you can build intelligent infrastructure platforms that automatically diagnose issues, suggest fixes, and provide contextual insights about resource health and dependencies.
@@ -522,12 +522,16 @@ Get the analysis objects and observe they're created:
 kubectl get analysis -A
 ```
 
-
 ## Next steps
 
-Read the [What's Next][whats-next] to continue your learning journey.
+Now that your control plane is running locally, you're ready to package it as a
+[Configuration][Configuration] image and push it to the Upbound Marketplace.
+
+Check out the [Build and push your first Configuration][buildAndPush] tutorial
+to continue.
 
 [project]: /getstarted/introduction/project
 [operations-concept]: /manuals/uxp/concepts/operations/overview/
 [anthropic-key]: https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key
-[whats-next]: /getstarted/introduction/whats-next
+[Configuration]: /manuals/uxp/concepts/packages/configurations
+[buildAndPush]: /getstarted/introduction/build-and-push

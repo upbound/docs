@@ -1,6 +1,6 @@
 ---
 title: Build and push your first Configuration
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 In this tutorial, you'll learn how to build a Configuration package and push it
@@ -99,10 +99,10 @@ extensions.
 
 ## Next Steps
 
-Now that you know the basics of building with Upbound, extend your _WebApp_ custom resource type with an AI-augmented operation to detect and remediate issues that occur when running app workloads on Kubernetes. Read [Create an AI-augmented operation][integrate-ai].
+Read the [What's Next][whats-next] to continue your learning journey.
 
 [create]: /getstarted/introduction/project
 [configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
 [marketplace]: https://marketplace.upbound.io/
-[integrate-ai]: /getstarted/introduction/integrate-ai
+[whats-next]: /getstarted/introduction/whats-next
