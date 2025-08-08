@@ -81,7 +81,7 @@ plane is below:
     {
       "Effect": "Allow",
       "Principal": {
-       "Federated": "arn:aws:iam::${YOUR_AWS_ACCOUNT_ID}:oidc-provider/${YOUR_OIDC_PROVIDER>}"
+       "Federated": "arn:aws:iam::${YOUR_AWS_ACCOUNT_ID}:oidc-provider/${YOUR_OIDC_PROVIDER}"
       },
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
@@ -118,7 +118,7 @@ parameters for the Billing component:
 ```
 
 {{< hint "important" >}}
-You **must** set the `billing.storage.secretRef.name` to en empty string to
+You **must** set the `billing.storage.secretRef.name` to an empty string to
 enable workload identity for the billing component
 {{</ hint >}}
 

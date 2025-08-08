@@ -189,7 +189,7 @@ kubectl get serviceaccount external-secrets-controller -n ${YOUR_CONTROL_PLANE_N
 Verify the `external-secrets` pod is running correctly:
 
 ```shell
-kubectl get pods -n ${YOUR_CONTROL-PLANE-NAMESPACE} | grep external-secrets 
+kubectl get pods -n ${YOUR_CONTROL_PLANE_NAMESPACE} | grep external-secrets
 ```
 
 ### Restart workload
@@ -208,7 +208,7 @@ kubectl rollout restart deployment external-secrets
 
 ## Use cases
 
-Shared secrets with workload identity eliminates the need for start credentials
++Shared secrets with workload identity eliminates the need for static credentials
 in your cluster. These benefits are particularly helpful in:
 
 * Secure application credentials management

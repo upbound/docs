@@ -1,7 +1,7 @@
 ---
 title: Workload-identity for Shared Secrets
 weight: 1
-description: Configure GCP workload identityt for Spaces Shared Secrets
+description: Configure GCP workload identity for Spaces Shared Secrets
 ---
 
 Workload-identity authentication lets you use access policies to grant your
@@ -21,7 +21,7 @@ To set up a workload-identity, you'll need:
 <!-- vale FutureTense = YES -->
 
 * A self-hosted Space cluster
-* Adminstrator access in your cloud provider
+* Administrator access in your cloud provider
 * Helm and `kubectl`
 
 ## About the shared secrets component

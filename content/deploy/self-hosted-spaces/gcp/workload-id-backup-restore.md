@@ -42,7 +42,7 @@ Spaces Helm chart:
 Upbound supports workload-identity configurations in GCP with IAM principal
 identifiers or service account .impersonation
 
-### IAM principle identifiers
+### IAM principal identifiers
 
 IAM principal identifiers allow you to grant permissions directly to 
 Kubernetes service accounts without additional annotation. Upbound recommends
