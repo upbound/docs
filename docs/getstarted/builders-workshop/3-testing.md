@@ -163,7 +163,7 @@ items = _items
 
 ### Import the testing models
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
 import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
@@ -180,17 +180,17 @@ This section imports:
 
 Create the main test structure:
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
 _items = [
     metav1alpha1.CompositionTest{
-        metadata.name="test-xstoragebucket"
+        metadata.name="test-storagebucket"
         spec= {
             assertResources: [
                 # Test assertions will go here
             ]
-            compositionPath: "apis/xstoragebuckets/composition.yaml"
-            xrPath: "examples/storagebucket/xr.yaml"
-            xrdPath: "apis/xstoragebuckets/definition.yaml"
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
             timeoutSeconds: 120
             validate: False
         }
@@ -201,7 +201,7 @@ _items = [
 
 This section:
 * Identifies your test case
-* Sets up the `assertResourcs` section to define expected outputs
+* Sets up the `assertResources` section to define expected outputs
 * Links to your composition, XR and XRD files
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
@@ -209,9 +209,9 @@ This section:
 ### Test the input claim
 
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
-    platformv1alpha1.XStorageBucket{
+    platformv1alpha1.StorageBucket{
         metadata.name: "example"
         spec.parameters: {
             acl: "public-read"
@@ -231,7 +231,7 @@ This assertion verifies:
 ### Test the core S3 bucket
 
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
     s3v1beta1.Bucket{
         metadata.name: "example-bucket"
         spec.forProvider: {
@@ -250,7 +250,7 @@ This assertion verifies that:
 ### Test security configurations
 
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
     s3v1beta1.BucketOwnershipControls{
         metadata.name: "example-boc"
         spec.forProvider: {
@@ -290,7 +290,7 @@ This section tests to verify:
 ### Test access control and encryption
 
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
     s3v1beta1.BucketACL{
         metadata.name: "example-acl"
         spec.forProvider:{
@@ -332,7 +332,7 @@ These tests ensure:
 ### Test conditional features
 
 
-```yaml-noCopy title="tests/test-xstoragebucket/main.k"
+```yaml-noCopy title="tests/test-storagebucket/main.k"
     s3v1beta1.BucketVersioning{
         metadata.name: "example-versioning"
         spec.forProvider: {
@@ -384,7 +384,7 @@ up test run tests/*
   ✓   Building functions
   ✓   Building configuration package
   ✓   Pushing embedded functions to local daemon
-  ✓   Assert test-xstoragebucket
+  ✓   Assert test-storagebucket
  SUCCESS  
  SUCCESS  Tests Summary:
  SUCCESS  ------------------
