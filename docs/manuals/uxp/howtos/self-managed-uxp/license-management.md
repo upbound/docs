@@ -137,7 +137,7 @@ Enabled Features:
 Confirm your license status:
 
 ```bash
-kubectl get license uxp --subresource=status
+kubectl get license uxp
 ```
 
 It should print a result like the following:
@@ -169,6 +169,7 @@ current usage:
 | **`enabledFeatures`** | A list of the commercial features unlocked by your license. |
 | **`usage`** | The cumulative usage data tracked by the system, including utilization percentages. |
 | **`conditions`** | Reports the real-time status, including `LicenseValid` and `UsageCompliant` conditions. |
+| **`gracePeriodEndsAt`** | When the license grace period ends and the license becomes completely invalid. |
 
 For more information on usage metering, review the [Usage Metering][usage]
 guide.
