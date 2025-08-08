@@ -153,6 +153,42 @@ subjects:
 - kind: ServiceAccount
   name: function-remediation-gate
   namespace: crossplane-system
+---
+# crossplane needs permissions to watch Remediations for correspinding 
+# WatchOperations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: crossplane:aggregate-to-crossplane:remediation-collaborator
+  labels:
+    rbac.crossplane.io/aggregate-to-crossplane: "true"
+rules:
+- apiGroups:
+  - ops.upbound.io
+  resources:
+  - remediations
+  verbs:
+  - get
+  - list
+  - watch
+---
+# crossplane needs permissions to watch Remediations for correspinding 
+# WatchOperations.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: crossplane:aggregate-to-crossplane:event-watcher
+  labels:
+    rbac.crossplane.io/aggregate-to-crossplane: "true"
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - get
+  - list
+  - watch
 ```
 
 Save as `permissions.yaml` and apply it:
