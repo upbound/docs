@@ -104,11 +104,11 @@ spec:
     serviceAccount: default
     resources:
       requests:
-        cpu: "100m"
-        memory: "128Mi"
+        memory: "64Mi"
+        cpu: "250m"
       limits:
-        cpu: "500m"
-        memory: "512Mi"
+        memory: "1Gi"
+        cpu: "1"
 status:
     availableReplicas: 1
     url: "http://localhost:8080"
@@ -214,7 +214,7 @@ spec:
             cpu: {{ .observed.composite.resource.spec.parameters.resources.requests.cpu }}
           limits:
             memory: {{ .observed.composite.resource.spec.parameters.resources.limits.memory }}
-            cpu: {{ .observed.composite.resource.spec.parameters.resources.limits.memory }}
+            cpu: {{ .observed.composite.resource.spec.parameters.resources.limits.cpu }}
       restartPolicy: Always
 status: {}
 
