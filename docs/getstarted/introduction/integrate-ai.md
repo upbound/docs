@@ -163,7 +163,7 @@ kubectl apply -f permissions.yaml
 
 ## Enable _Analysis_ and _Remediation_ APIs
 
-Upbound Crossplane implemenets two resource types that complement AI operations and let you have human-in-the-loop intervention. You need to enable these resource types. Run the following command on your cluster:
+Upbound Crossplane implements two resource types that complement AI operations and let you have human-in-the-loop intervention. You need to enable these resource types. Run the following command on your cluster:
 
 ```shell
 kubectl -n crossplane-system patch deployment upbound-controller-manager --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--enable-analysis-and-remediation"}]'
@@ -171,7 +171,7 @@ kubectl -n crossplane-system patch deployment upbound-controller-manager --type=
 
 ## Modify your control plane project
 
-To do X we need to do Y
+Next, you'll add the functions to your project definition and define the logic to analyze pod events for distress.
 
 ### Add functions
 
@@ -198,7 +198,7 @@ up operation generate analyze-events-for-pod-distress
 Replace the contents of the generated file
 `getting-started/operations/remediate-oom/operation.yaml` with the following:
 
-```yaml
+```yaml title="getting-started/operations/remediate-oom/operation.yaml"
 apiVersion: ops.crossplane.io/v1alpha1
 kind: WatchOperation
 metadata:
@@ -226,7 +226,7 @@ spec:
 Replace the contents of the generated file
 `getting-started/operations/analyze-events-for-pod-distress/operation.yaml` with the following:
 
-```yaml
+```yaml title="getting-started/operations/analyze-events-for-pod-distress/operation.yaml"
 apiVersion: ops.crossplane.io/v1alpha1
 kind: WatchOperation
 metadata:
