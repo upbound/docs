@@ -65,15 +65,13 @@ subjects:
   name: function-pod-analyzer
   namespace: crossplane-system
 ---
-# log-and-event-reader provides sufficient yet narrow scoped permissions for
-# reading pod logs and events related to the pod.
+# analyses-collaborator provides sufficient yet narrow scoped permissions for
+# reading and creating analyses.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: analyses-collaborator
 rules:
-# function-pod-analyzer needs these permissions if it wants to work with
-# Analysis resources.
 - apiGroups:
   - ops.upbound.io
   resources:
@@ -122,15 +120,13 @@ rules:
   - update
   - create
 ---
-# log-and-event-reader provides sufficient yet narrow scoped permissions for
-# reading pod logs and events related to the pod.
+# remediation-collaborator provides sufficient yet narrow scoped permissions for
+# reading remediations.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: remediation-collaborator
 rules:
-# function-pod-analyzer needs these permissions if it wants to work with
-# Analysis resources.
 - apiGroups:
   - ops.upbound.io
   resources:
