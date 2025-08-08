@@ -468,6 +468,7 @@ metadata:
 spec:
   parameters:
     image: us-west1-docker.pkg.dev/orchestration-orchestrating/ic-demos/pod-oom:vxBVFcu8hvT
+    port: 8080
     replicas: 1
     service:
       enabled: false
