@@ -65,7 +65,7 @@ helm -n vpa install vpa cowboysysop/vertical-pod-autoscaler --version 10.2.1 --c
 
 ## Enable provider autoscaling
 
-Ensure you have the `upbound-stable` Helm repository ocnfigured:
+Ensure you have the `upbound-stable` Helm repository configured:
 
 ```bash
 helm repo add upbound-stable https://charts.upbound.io/stable
