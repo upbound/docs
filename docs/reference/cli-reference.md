@@ -12,7 +12,6 @@ curl -sL "https://cli.upbound.io" | sh
 ```
 
 import Up from '/cli/up.md';
-import UpAlpha from '/cli/up_alpha.md';
 import UpCompletion from '/cli/up_completion.md';
 import UpComposition from '/cli/up_composition.md';
 import UpCompositionGenerate from '/cli/up_composition_generate.md';
@@ -179,9 +178,6 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up
 
 <Up />
-## up alpha
-
-<UpAlpha />
 ## up completion
 
 <UpCompletion />
