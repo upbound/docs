@@ -86,18 +86,18 @@ matches the `matchImages` list of any `ImageConfig` resources in the cluster.
 
 ## Configuring signature verification
 
-:::important
+:::warning
 Signature verification is an alpha feature and needs to be enabled with the
 `--enable-signature-verification` feature flag.
 :::
 
 You can use `ImageConfig` to configure signature verification for images. When
-signature verification is enabled, the package manager verifies the signature of
+you enable signature verification, the package manager verifies the signature of
 each image before pulling it. If the signature isn't valid, the package manager
 rejects the package deployment.
 
 In the following example, the `ImageConfig` resource named `verify-acme-packages`
-is configured to verify the signature of images with the prefixes
+configures verification of the signature of images with the prefixes
 `registry1.com/acme-co/configuration-foo` and
 `registry1.com/acme-co/configuration-bar`. 
 
@@ -139,7 +139,7 @@ contains the configuration for verifying the attestations of the images.
 The `ImageConfig` API follows the same API shape as [Policy Controller](https://docs.sigstore.dev/policy-controller/overview/)
 from [Sigstore](https://docs.sigstore.dev/). Crossplane initially supports a
 subset of the Policy Controller configuration options which can be found in the
-[API reference](/reference/apis/crossplane-api/#imageconfig-spec-verification-cosign)
+[API reference][api-reference]
 for the `ImageConfig` resource together with their descriptions.
 
 When multiple authorities are provided, the package manager verifies the
@@ -153,7 +153,7 @@ secret configuration, as described in the previous section.
 
 ### Checking the signature verification status
 
-When signature verification is enabled, the respective controller reports the
+When you enable signature verification, the respective controller reports the
 verification status as a condition of type `Verified` on the package revision
 resources. This condition indicates whether the signature verification was
 successful, failed, skipped, or incomplete due to an error.
@@ -210,6 +210,8 @@ verifying the signature of the image in the package revision.
 
 If you can't see this condition on the package revision resource, namely
 `ProviderRevision`, `ConfigurationRevision`, or `FunctionRevision`, ensure that
-the feature is enabled.
+you enable the feature.
 
 <!-- vale write-good.Passive = YES -->
+
+[api-reference]: /reference/apis/crossplane-api/#imageconfig-spec-verification-cosign

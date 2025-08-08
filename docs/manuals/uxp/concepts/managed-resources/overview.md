@@ -65,7 +65,7 @@ spec:
     instanceType: t2.micro
 ```
 
-:::important
+:::warning
 Crossplane considers the `forProvider` field of a managed resource 
 the "source of truth" for external resources. Crossplane overrides any changes 
 made to an external resource outside of Crossplane. If a user makes a change 
@@ -214,7 +214,7 @@ the `managementPolicies` list.
 
 ### initProvider
 
-:::important
+:::warning
 The managed resource `initProvider` option is a beta feature related to
 [managementPolicies][policies].
 :::
@@ -306,7 +306,7 @@ The default policy grants Crossplane full control over the resources.
 Defining the `managementPolicies` field with an empty array [pauses](#paused)
 the resource.
 
-:::important
+:::warning
 The Provider determines support for management policies.  
 Refer to the Provider's documentation to see if the Provider supports
 management policies.
@@ -323,8 +323,6 @@ Crossplane supports the following policies:
 | `Observe` | Crossplane only observes the resource and doesn't make any changes. Used for observe only resources. |
 | `Update` | Crossplane changes the external resource when changing the managed resource. |
 
-The following is a list of common policy combinations:
-
 ### providerConfigRef
 
 The `providerConfigRef` on a managed resource tells the Provider which
@@ -334,7 +332,7 @@ use when creating the managed resource.
 Use a ProviderConfig to define the authentication method to use when 
 communicating to the Provider.
 
-:::important
+:::warning
 If `providerConfigRef` isn't applied, Providers use the ProviderConfig named `default`.
 :::
 
@@ -409,7 +407,7 @@ endpoint:  54 bytes
 password:  27 bytes
 ```
 
-:::important
+:::warning
 The Provider determines the data written to the Secret object. Refer to the
 specific Provider documentation for the generated Secret data.
 :::
@@ -535,7 +533,7 @@ A provider can detect that it might have leaked a resource. If the provider
 thinks it might have leaked a resource, it stops reconciling it until you tell
 the provider it's safe to proceed.
 
-:::important
+:::warning
 Anytime an external system generates a resource's name there is a risk the
 provider could leak the resource.
 
@@ -646,7 +644,7 @@ spec:
 
 Remove the annotation to resume reconciliation.
 
-:::important
+:::warning
 Kubernetes and Crossplane can't delete resources with a `paused` annotation,
 even with `kubectl delete`. 
 
