@@ -471,13 +471,6 @@ spec:
   package: xpkg.upbound.io/upbound/function-remediation-gate:v0.0.0-20250803235634-0bc0b559a335
   runtimeConfigRef:
     name: remediation-perms
----
-apiVersion: pkg.crossplane.io/v1
-kind: Function
-metadata:
-  name: upbound-function-event-filter
-spec:
-  package: xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250808182225-b635e1cbfbb8
 ```
 
 Save as `deploymentruntimeconfigs.yaml` and apply it:
