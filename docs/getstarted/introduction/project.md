@@ -1076,7 +1076,7 @@ kubectl apply -f examples/webapp/my-app.yaml
 
 Check that the _WebApp_ is ready:
 
-```shell
+```shell {copy-lines="1"}
 kubectl get -f examples/app/my-app.yaml
 NAME     SYNCED   READY   COMPOSITION   AGE
 my-app   True     True    app-yaml      56s
@@ -1086,7 +1086,7 @@ Observe the `Deployment` and `Service` Crossplane created when you created the
 `App`:
 
 
-```shell
+```shell {copy-lines="1"}
 kubectl get deploy,service -l example.upbound.io/app=my-app
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
 deployment.apps/my-app-2r2rk   2/2     2            2           11m
