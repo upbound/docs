@@ -1030,6 +1030,12 @@ Deploy the changes you made to your control plane:
 up project run --local
 ```
 
+:::tip
+
+The `project run` command builds and deploys any changes. If you don't have a control plane running yet, it creates one, otherwise it'll target your existing control plane.
+
+:::
+
 Create a _ClusterRoleBinding_ to give your control plane the ability to create the necessary Kubernetes resource:
 
 ```yaml

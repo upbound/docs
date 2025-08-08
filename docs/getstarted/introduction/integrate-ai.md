@@ -9,7 +9,6 @@ Upbound Crossplane transforms infrastructure management by integrating AI-powere
 In this tutorial, you'll learn how to install and configure an intelligent
 operation to detect common issues related to managing apps on Kubernetes, including pods running out-of-memory and getting stuck in a _CrashLoopBackOff_.
 
-
 ## Prerequisites
 
 * This tutorial continues from the previous step where you defined your [first control plane project][project].
