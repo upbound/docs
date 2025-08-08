@@ -392,7 +392,7 @@ spec:
             args:
             - --debug
 ---
-apiVersion: pkg.crossplane.io/v1beta1
+apiVersion: pkg.crossplane.io/v1
 kind: Function
 metadata:
   name: upbound-function-claude
@@ -401,7 +401,7 @@ spec:
   runtimeConfigRef:
     name: ctp-mcp
 ---
-apiVersion: pkg.crossplane.io/v1beta1
+apiVersion: pkg.crossplane.io/v1
 kind: Function
 metadata:
   name: upbound-function-analysis-gate
@@ -410,7 +410,7 @@ spec:
   runtimeConfigRef:
     name: analysis-perms
 ---
-apiVersion: pkg.crossplane.io/v1beta1
+apiVersion: pkg.crossplane.io/v1
 kind: Function
 metadata:
   name: upbound-function-remediation-gate
@@ -419,7 +419,7 @@ spec:
   runtimeConfigRef:
     name: remediation-perms
 ---
-apiVersion: pkg.crossplane.io/v1beta1
+apiVersion: pkg.crossplane.io/v1
 kind: Function
 metadata:
   name: upbound-function-event-filter
