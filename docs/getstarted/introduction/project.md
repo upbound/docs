@@ -45,7 +45,11 @@ up project init --scratch getting-started
 ```
 
 This scaffolds a new project in a folder called `getting-started`. Change your
-current working directory to the project root folder.
+current working directory to the project root folder:
+
+```shell
+cd getting-started
+```
 
 ## Deploy your control plane
 

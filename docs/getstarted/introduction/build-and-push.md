@@ -49,9 +49,15 @@ account where you can store you Configuration packages.
 ## Build and push the Configuration
 
 Now that you have a repository, you are ready to build and push your
-Configuration. Run the following to build and push with `up`:
+Configuration. Run the following to build:
 
 ```sh
+up project build
+```
+
+Push your project to your repository:
+
+```shell
 up project push
 ```
 
