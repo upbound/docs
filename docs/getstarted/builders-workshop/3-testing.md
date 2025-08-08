@@ -33,12 +33,12 @@ foundations][project-foundations] guide to get started.
 Create the test scaffolding:
 
 ```shell
-up test generate xstoragebucket
+up test generate storagebucket
 ```
 
 This command:
 
-* Creates a test directory in `tests/test-xstoragebucket`
+* Creates a test directory in `tests/test-storagebucket`
 * Generates the basic structure for writing tests
 
 :::note
@@ -48,21 +48,20 @@ the test command
 
 ## Set up your test imports
 
-Open `tests/test-xstoragebucket/main.k` and replace the scaffolding with the
+Open `tests/test-storagebucket/main.k` and replace the scaffolding with the
 following configuration:
 
-```yaml title="tests/test-xstoragebucket/main.k"
-
+```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
 import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 
 _items = [
     metav1alpha1.CompositionTest{
-        metadata.name="test-xstoragebucket"
+        metadata.name="test-storagebucket"
         spec= {
             assertResources: [
-                platformv1alpha1.XStorageBucket{
+                platformv1alpha1.StorageBucket{
                     metadata.name: "example"
                     spec.parameters: {
                         acl: "public-read"
@@ -147,9 +146,9 @@ _items = [
                     }
                 }
             ]
-            compositionPath: "apis/xstoragebuckets/composition.yaml"
-            xrPath: "examples/storagebucket/xr.yaml"
-            xrdPath: "apis/xstoragebuckets/definition.yaml"
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
             timeoutSeconds: 120
             validate: False
         }

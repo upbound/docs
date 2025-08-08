@@ -39,7 +39,7 @@ helm upgrade crossplane --namespace crossplane-system upbound-stable/universal-c
 <TabItem value="up CLI" label="up CLI">
 
 ```bash
-up uxp upgrade -n crossplane-system
+up uxp upgrade
 ```
 
 </TabItem>

@@ -21,7 +21,7 @@ APIs. Projects contain all the definitions and configurations needed to build a
 control plane.
 
 ```shell
-up project init upbound-hello-world && cd upbound-hello-world
+up project init upbound-hello-world --scratch && cd upbound-hello-world
 ```
 
 This command:
@@ -114,12 +114,14 @@ up example generate \
     --kind StorageBucket \
     --name example \
     --namespace default
+    --scope namespace
 ```
 
 This command generates a sample XR (request) for a specific resource type and
-creates a template for how users can interact with your API
+creates a template for how users can interact with your API.
 
-Open your new XR file.
+Open your new XR file in
+`upbound-hello-world/examples/storagebucket/example.yaml`.
 
 Your XR file maps each flag you specified as a Kubernetes resource. The
 `spec{}` field is empty for now. You need to create the specifications
@@ -218,7 +220,7 @@ types for the XRD based on the input parameters of your XR.
 Next, you need to create a composition to define your resource.
 
 ```shell
-up composition generate apis/xstoragebuckets/definition.yaml
+up composition generate apis/storagebuckets/definition.yaml
 ```
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 #### Why create a composition?

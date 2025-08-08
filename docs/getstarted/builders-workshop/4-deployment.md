@@ -26,6 +26,15 @@ Make sure you've completed the previous guide and have:
 If you missed any of the previous steps, go to the [project
 foundations][project-foundations] guide to get started.
 
+## Create your control plane
+
+Now that you have your project built, create a new local control plane:
+```shell
+up project run --local
+```
+
+The `run` command installs your project functions and dependencies to a control plane.
+
 ## Authenticate with your cloud provider
 
 Your project configuration requires an authentication method.
@@ -219,24 +228,6 @@ kubectl apply -f provider-config.yaml
 When you create a composition and deploy with the control plane, Upbound uses
 the `ProviderConfig` to locate and retrieve the credentials in the secret store.
 
-## Create your control plane
-
-Now that you have an authentication method, create your control plane:
-
-```shell
-up project run
-```
-
-The `run` command installs your project functions and dependencies to a control plane.
-
-Make sure you're in your control plane context. 
-
-Use the `up ctx` command to set your `kubecontext` to your control plane project name:
-
-```shell
-up ctx
-```
-
 ## Deploy your resources to your control plane
 
 Now that you have a control plane, use the `kubectl apply` command in the root
@@ -250,7 +241,7 @@ kubectl apply --filename examples/storagebucket/example.yaml
 Return the resource state with the up CLI.
 
 ```shell
-up alpha get managed -o yaml
+kubectl get storagebuckets.platform.example.com -o yaml
 ```
 
 Now, you can validate your results through the Upbound Console, and make any
@@ -268,7 +259,7 @@ kubectl delete --filename examples/storagebucket/example.yaml
 Destroy your control plane:
 
 ```shell
-up ctp delete upbound-ctp
+up project stop
 ```
 
 ## Next steps

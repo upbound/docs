@@ -2305,62 +2305,12 @@ Save your changes.
 ## Render your composition locally
 
 The `up composition render` command allows you to review your desired composed
-resources. To render a composition, create a Composite Resource (XR) file.
-
-Create a new file called `examples/storagebucket/xr.yaml`:
-
-<CodeBlock cloud="aws">
-
-```yaml title="examples/storagebucket/xr.yaml"
-apiVersion: platform.example.com/v1alpha1
-kind: XStorageBucket
-metadata:
-    name: example
-spec:
-    parameters:
-        region: us-west-1
-        versioning: true
-        acl: public-read
-```
-
-</CodeBlock>
-
-<CodeBlock cloud="azure">
-
-```yaml title="examples/storagebucket/xr.yaml"
-apiVersion: platform.example.com/v1alpha1
-kind: XStorageBucket
-metadata:
-    name: example
-spec:
-    parameters:
-        location: East US
-        resourceGroupName: my-resource-group
-        accountTier: Standard
-```
-
-</CodeBlock>
-
-<CodeBlock cloud="gcp">
-
-```yaml title="examples/storagebucket/xr.yaml"
-apiVersion: platform.example.com/v1alpha1
-kind: XStorageBucket
-metadata:
-    name: example
-spec:
-    parameters:
-        location: us-central1
-        project: my-gcp-project
-        storageClass: STANDARD
-```
-
-</CodeBlock>
+resources. 
 
 Render the composition against your XR file:
 
 ```shell
-up composition render apis/xstoragebuckets/composition.yaml examples/storagebucket/xr.yaml
+up composition render apis/storagebuckets/composition.yaml examples/storagebucket/example.yaml
 ```
 
 This process ensures the build, configuration, and orchestration runs as
