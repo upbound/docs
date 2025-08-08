@@ -1,5 +1,4 @@
 ---
----
 title: Configurations
 sidebar_position: 20
 description: Packages combine multiple Crossplane resources into a single, portable,
