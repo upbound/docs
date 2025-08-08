@@ -76,28 +76,33 @@ Create an example instance of your custom resource type with:
 ```shell
 up example generate \
     --type xr \
-    --api-group getting.started \
+    --api-group platform.example.com \
     --api-version v1alpha1 \
-    --kind App\
+    --kind WebApp\
     --name my-app \
     --scope namespace \
     --namespace default
 ```
 
 Open the project in your IDE of choice and replace the contents of the generated file
-`getting-started/examples/app/my-app.yaml` with the following:
+`getting-started/examples/webapps/my-app.yaml` with the following:
 
-```yaml title="getting-started/examples/app/my-app.yaml"
-apiVersion: example.upbound.io/v1alpha1
-kind: App
+```yaml title="getting-started/examples/webapps/my-app.yaml"
+apiVersion: platform.example.com/v1alpha1
+kind: WebApp
 metadata:
-  namespace: default
   name: my-app
+  namespace: default
 spec:
-  image: nginx
-status:
-  replicas: 2  # Copied from the Deployment's status
-  address: 10.0.0.1  # Copied from the Service's status
+  parameters:
+    image: nginx
+    port: 8080
+    replicas: 1
+    service:
+      enabled: true
+    ingress:
+      enabled: false # ingress is not working in local controlplane
+    serviceAccount: default
 ```
 
 Next, generate the definition files needed by Crossplane with the following commands:
@@ -106,37 +111,37 @@ Next, generate the definition files needed by Crossplane with the following comm
 
 <TabItem value="gotempl" label="Go Templates">
 ```shell
-up xrd generate examples/app/my-app.yaml
-up composition generate apis/apps/definition.yaml
-up function generate --language=go-templating compose-resources apis/apps/composition.yaml
+up xrd generate examples/webapps/my-app.yaml
+up composition generate apis/webapps/definition.yaml
+up function generate --language=go-templating compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 <TabItem value="Python" label="Python">
 ```shell
-up xrd generate examples/app/my-app.yaml
-up composition generate apis/apps/definition.yaml
-up function generate --language=python compose-resources apis/apps/composition.yaml
+up xrd generate examples/webapps/my-app.yaml
+up composition generate apis/webapps/definition.yaml
+up function generate --language=python compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 <TabItem value="Go" label="Go">
 ```shell
-up xrd generate examples/app/my-app.yaml
-up composition generate apis/apps/definition.yaml
-up function generate --language=go compose-resources apis/apps/composition.yaml
+up xrd generate examples/webapps/my-app.yaml
+up composition generate apis/webapps/definition.yaml
+up function generate --language=go compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
 ```shell
-up xrd generate examples/app/my-app.yaml
-up composition generate apis/apps/definition.yaml
-up function generate --language=kcl compose-resources apis/apps/composition.yaml
+up xrd generate examples/webapps/my-app.yaml
+up composition generate apis/webapps/definition.yaml
+up function generate --language=kcl compose-resources apis/webapps/composition.yaml
 ```
 </TabItem>
 </Tabs>
 
-You just created your own resource type called `App`. You generated a function
+You just created your own resource type called `WebApp`. You generated a function
 containing the logic Crossplane uses to determine what should happen when you
-create the `App`.
+create the `WebApp`.
 
 :::tip
 
@@ -156,6 +161,10 @@ following:
 
 <TabItem value="gotempl" label="Go Templates">
 ```yaml title="getting-started/functions/compose-resources/01-compose.yaml.gotmpl"
+# code: language=yaml
+# yaml-language-server: $schema=../../.up/json/models/index.schema.json
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -164,23 +173,74 @@ metadata:
     {{ if eq (.observed.resources.deployment | getResourceCondition "Available").Status "True" }}
     gotemplating.fn.crossplane.io/ready: "True"
     {{ end }}
+  name: {{ .observed.composite.resource.metadata.name }}
+  namespace: {{ .observed.composite.resource.metadata.namespace }}
   labels:
-    example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
+    app.kubernetes.io/name: {{ .observed.composite.resource.metadata.name }}
 spec:
-  replicas: 2
+  replicas: {{ .observed.composite.resource.spec.parameters.replicas }}
   selector:
     matchLabels:
-      example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
+      app.kubernetes.io/name: {{ .observed.composite.resource.metadata.name }}
+      app: {{ .observed.composite.resource.metadata.name }}
+  strategy: {}
   template:
     metadata:
       labels:
-        example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
+        app.kubernetes.io/name: {{ .observed.composite.resource.metadata.name }}
+        app: {{ .observed.composite.resource.metadata.name }}
     spec:
+      serviceAccountName: {{ .observed.composite.resource.spec.parameters.serviceAccount }}
       containers:
-      - name: app
-        image: {{ .observed.composite.resource.spec.image }}
+      - name: {{ .observed.composite.resource.metadata.name }}
+        image: {{ .observed.composite.resource.spec.parameters.image }}
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - name: http
+          containerPort: {{ .observed.composite.resource.spec.parameters.port }}
+          protocol: TCP
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+      restartPolicy: Always
+status: {}
+
+{{ if .observed.composite.resource.spec.parameters.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    gotemplating.fn.crossplane.io/composition-resource-name: ingress
+    {{ if (get (getComposedResource . "ingress").status.loadBalancer.ingress 0).hostname }}
+    gotemplating.fn.crossplane.io/ready: "True"
+    {{ end }}
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
+  name: {{ .observed.composite.resource.metadata.name }}
+  namespace: {{ .observed.composite.resource.metadata.namespace }}
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .observed.composite.resource.metadata.name }}
+            port:
+              number: 80
+{{ end }}
+
+{{ if .observed.composite.resource.spec.parameters.service.enabled }}
 ---
 apiVersion: v1
 kind: Service
@@ -190,24 +250,41 @@ metadata:
     {{ if (get (getComposedResource . "service").spec "clusterIP") }}
     gotemplating.fn.crossplane.io/ready: "True"
     {{ end }}
-  labels:
-    example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
+  name: {{ .observed.composite.resource.metadata.name }}
+  namespace: {{ .observed.composite.resource.metadata.namespace }}
 spec:
   selector:
-    example.upbound.io/app: {{ .observed.composite.resource.metadata.name }}
+    app: {{ .observed.composite.resource.metadata.name }}
   ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 80
----
-apiVersion: example.upbound.io/v1
-kind: App
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http
 status:
-  replicas: {{ get (getComposedResource . "deployment").status "availableReplicas" | default 0 }}
-  address: {{ get (getComposedResource . "service").spec "clusterIP" | default "" | quote }}
+  loadBalancer: {}
+{{ end }}
+
+---
+apiVersion: {{ .observed.composite.resource.apiVersion }}
+kind: {{ .observed.composite.resource.kind }}
+status:
+  {{ with $deployment := getComposedResource . "deployment" }}
+  deploymentConditions: {{ $deployment.status.conditions | toJson }}
+  availableReplicas: {{ $deployment.status.availableReplicas | default 0 }}
+  {{ else }}
+  deploymentConditions: []
+  availableReplicas: 0
+  {{ end }}
+  {{ with $ingress := getComposedResource . "ingress" }}
+  {{ with $hostname := (get $ingress.status.loadBalancer.ingress 0).hostname }}
+  url: {{ $hostname | quote }}
+  {{ else }}
+  url: ""
+  {{ end }}
+  {{ else }}
+  url: ""
+  {{ end }}
 ```
-
-
 </TabItem>
 
 
@@ -792,7 +869,6 @@ func convertViaJSON(to, from any) error {
 	}
 	return json.Unmarshal(bs, to)
 }
-
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
@@ -957,14 +1033,14 @@ up project run --local
 
 ## Use the custom resource
 
-Your control plane now understands _App_ resources. Create an _App_:
+Your control plane now understands _WebApp_ resources. Create an _WebApp_:
 
 ```shell
-kubectl apply -f examples/app/my-app.yaml
+kubectl apply -f examples/webapps/my-app.yaml
 ```
 
 
-Check that the _App_ is ready:
+Check that the _WebApp_ is ready:
 
 ```shell
 kubectl get -f examples/app/my-app.yaml
