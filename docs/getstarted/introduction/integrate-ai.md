@@ -181,7 +181,7 @@ Use the up CLI to add the following functions to your control plane project:
 up dep add xpkg.upbound.io/upbound/function-claude:v0.2.0
 up dep add xpkg.upbound.io/upbound/function-analysis-gate:v0.0.0-20250804021106-1692dfd80975
 up dep add xpkg.upbound.io/upbound/function-remediation-gate:v0.0.0-20250803235634-0bc0b559a335
-up dep add xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250804015248-487fd21293b0
+up dep add xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250808182225-b635e1cbfbb8
 ```
 
 ### Generate the operations
@@ -245,11 +245,12 @@ spec:
       pipeline:
       - step: filter-noisy-events
         functionRef:
-          name: upbound-function-event-filter
+          name: function-event-filter
         input:
           apiVersion: filter.event.fn.upbound.io/v1alpha1
           kind: Input
           type: Warning
+          count: 2
       - step: analysis-gate
         functionRef:
           name: upbound-function-analysis-gate
@@ -424,7 +425,7 @@ kind: Function
 metadata:
   name: upbound-function-event-filter
 spec:
-  package: xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250804015248-487fd21293b0
+  package: xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250808182225-b635e1cbfbb8
 ```
 
 Save as `deploymentruntimeconfigs.yaml` and apply it:
