@@ -245,7 +245,7 @@ spec:
       pipeline:
       - step: filter-noisy-events
         functionRef:
-          name: function-event-filter
+          name: upbound-function-event-filter
         input:
           apiVersion: filter.event.fn.upbound.io/v1alpha1
           kind: Input
