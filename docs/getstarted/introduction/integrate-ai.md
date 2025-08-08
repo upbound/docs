@@ -302,6 +302,9 @@ spec:
           apiVersion: filter.event.fn.upbound.io/v1alpha1
           kind: Input
           type: Warning
+          # We're specifically interested BackOff events.
+          Reason: BackOff
+          # Let's make sure this is a repeated issue.
           count: 2
       - step: analysis-gate
         functionRef:
