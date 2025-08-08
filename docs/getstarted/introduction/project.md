@@ -102,6 +102,9 @@ spec:
     ingress:
       enabled: false
     serviceAccount: default
+status:
+    availableReplicas: 1
+    url: "http://localhost:8080"
 ```
 
 Next, generate the definition files needed by Crossplane with the following commands:
@@ -268,10 +271,8 @@ apiVersion: {{ .observed.composite.resource.apiVersion }}
 kind: {{ .observed.composite.resource.kind }}
 status:
   {{ with $deployment := getComposedResource . "deployment" }}
-  deploymentConditions: {{ $deployment.status.conditions | toJson }}
   availableReplicas: {{ $deployment.status.availableReplicas | default 0 }}
   {{ else }}
-  deploymentConditions: []
   availableReplicas: 0
   {{ end }}
   {{ with $ingress := getComposedResource . "ingress" }}
@@ -446,21 +447,8 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     # Set status with defaults
     if "deployment" in ocds:
         observed_deployment = appsv1.Deployment(**ocds["deployment"].resource)
-        if observed_deployment.status and observed_deployment.status.conditions:
-            status.deploymentConditions = []
-            for condition in observed_deployment.status.conditions:
-                condition_dict = condition.model_dump(exclude_none=True)
-                # Convert datetime objects to ISO format strings
-                if 'lastTransitionTime' in condition_dict and condition_dict['lastTransitionTime']:
-                    condition_dict['lastTransitionTime'] = condition_dict['lastTransitionTime'].isoformat()
-                if 'lastUpdateTime' in condition_dict and condition_dict['lastUpdateTime']:
-                    condition_dict['lastUpdateTime'] = condition_dict['lastUpdateTime'].isoformat()
-                status.deploymentConditions.append(condition_dict)
-        else:
-            status.deploymentConditions = []
         status.availableReplicas = observed_deployment.status.availableReplicas if observed_deployment.status and observed_deployment.status.availableReplicas else 0
     else:
-        status.deploymentConditions = []
         status.availableReplicas = 0
 
     if "ingress" in ocds:
@@ -778,29 +766,6 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		var obsDeployment appsv1.Deployment
 		if err := convertViaJSON(&obsDeployment, observedDeployment.Resource); err == nil {
 			if obsDeployment.Status != nil {
-				if obsDeployment.Status.Conditions != nil {
-					deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
-					for _, c := range *obsDeployment.Status.Conditions {
-						condition := v1alpha1.WebAppStatusDeploymentConditionsItem{
-							Type:    c.Type,
-							Status:  c.Status,
-							Message: c.Message,
-							Reason:  c.Reason,
-						}
-						if c.LastUpdateTime != nil {
-							condition.LastUpdateTime = ptr.To(c.LastUpdateTime.String())
-						}
-						if c.LastTransitionTime != nil {
-							condition.LastTransitionTime = ptr.To(c.LastTransitionTime.String())
-						}
-						deploymentConditions = append(deploymentConditions, condition)
-					}
-					desiredWebApp.Status.DeploymentConditions = &deploymentConditions
-				} else {
-					// Set empty conditions if no conditions exist
-					deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
-					desiredWebApp.Status.DeploymentConditions = &deploymentConditions
-				}
 				if obsDeployment.Status.AvailableReplicas != nil {
 					desiredWebApp.Status.AvailableReplicas = ptr.To(int(*obsDeployment.Status.AvailableReplicas))
 				} else {
@@ -809,15 +774,11 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 				}
 			} else {
 				// Set defaults when status is nil
-				deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
-				desiredWebApp.Status.DeploymentConditions = &deploymentConditions
 				desiredWebApp.Status.AvailableReplicas = ptr.To(0)
 			}
 		}
 	} else {
 		// Set defaults when deployment doesn't exist
-		deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
-		desiredWebApp.Status.DeploymentConditions = &deploymentConditions
 		desiredWebApp.Status.AvailableReplicas = ptr.To(0)
 	}
 
@@ -1007,7 +968,6 @@ if observed_ingress?.status?.loadBalancer?.ingress?[0]?.hostname:
 
 _desired_xr = {
   **option("params").dxr
-  status.deploymentConditions = observed_deployment?.status?.conditions or []
   status.availableReplicas = observed_deployment?.status?.availableReplicas or 0
   status.url = observed_ingress?.status?.loadBalancer?.ingress?[0]?.hostname or ""
 }
@@ -1077,7 +1037,7 @@ kubectl apply -f examples/webapp/my-app.yaml
 Check that the _WebApp_ is ready:
 
 ```shell {copy-lines="1"}
-kubectl get -f examples/app/my-app.yaml
+kubectl get -f examples/webapp/my-app.yaml
 NAME     SYNCED   READY   COMPOSITION   AGE
 my-app   True     True    app-yaml      56s
 ```
