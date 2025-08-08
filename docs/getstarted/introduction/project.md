@@ -72,7 +72,6 @@ Customize your control plane by defining your own resource type.
 
 Create an example instance of your custom resource type with:
 
-
 ```shell
 up example generate \
     --type xr \
@@ -1030,6 +1029,35 @@ Deploy the changes you made to your control plane:
 ```shell
 up project run --local
 ```
+
+Create a _ClusterRoleBinding_ to give your control plane the ability to create the necessary Kubernetes resource:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: crossplane-clusteradmin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: crossplane
+  namespace: crossplane-system
+```
+
+Save as `rbac.yaml` and apply it:
+
+```shell
+kubectl apply -f rbac.yaml
+```
+
+:::warning
+
+The _ClusterRoleBinidng_ above gives full admin access to Crossplane. While this is fine for development purposes, it's advised for production scenarios to be dilligent in what permissions you grant Crossplane. Only give it what's necessary to create and manage the resources you need it to.
+
+:::
 
 ## Use the custom resource
 
