@@ -1027,7 +1027,7 @@ The _ClusterRoleBinidng_ above gives full admin access to Crossplane. While this
 
 ## Use the custom resource
 
-Your control plane now understands _WebApp_ resources. Create an _WebApp_:
+Your control plane now understands _WebApp_ resources. Create a _WebApp_:
 
 ```shell
 kubectl apply -f examples/webapp/my-app.yaml
@@ -1042,8 +1042,8 @@ NAME     SYNCED   READY   COMPOSITION   AGE
 my-app   True     True    app-yaml      56s
 ```
 
-Observe the `Deployment` and `Service` Crossplane created when you created the
-`App`:
+Observe the _Deployment_ and _Service_ Crossplane created when you created the
+_WebApp_:
 
 
 ```shell {copy-lines="1"}
