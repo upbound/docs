@@ -193,6 +193,26 @@ Save as `permissions.yaml` and apply it:
 kubectl apply -f permissions.yaml
 ```
 
+## Provide an Anthropic API key
+
+Function-claude, which you will add as a function in a future step, sends all requests to your Anthropic account. It needs an Anthropic API key to work. Create an [Anthropic API key][anthropic-key] and add it as a secret to your control plane:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: claude
+  namespace: crossplane-system
+stringData:
+  ANTHROPIC_API_KEY: "your-api-key"
+```
+
+Save as `claude.yaml` and apply it:
+
+```shell
+kubectl apply -f claude.yaml
+```
+
 ## Enable _Analysis_ and _Remediation_ APIs
 
 Upbound Crossplane implements two resource types that complement AI operations and let you have human-in-the-loop intervention. You need to enable these resource types. Run the following command on your cluster:
@@ -467,26 +487,6 @@ kubectl apply -f deploymentruntimeconfigs.yaml
 ```
 
 These configs associate the permissions you created in the previous step to the functions deployed on your control plane, so the functions can create and interact with _Analysis_ and _Remediation_ types.
-
-### Provide an Anthropic API key
-
-Function-claude, which you added as a function in a previous step, sends all requests to your Anthropic account. It needs an Anthropic API key to work. Create an [Anthropic API key][anthropic-key] and add it as a secret to your control plane:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: claude
-  namespace: crossplane-system
-stringData:
-  ANTHROPIC_API_KEY: "your-api-key"
-```
-
-Save as `claude.yaml` and apply it:
-
-```shell
-kubectl apply -f claude.yaml
-```
 
 ## Deploy a bad workload
 
