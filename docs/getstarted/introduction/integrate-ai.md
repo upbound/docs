@@ -303,7 +303,7 @@ spec:
           kind: Input
           type: Warning
           # We're specifically interested BackOff events.
-          Reason: BackOff
+          reason: BackOff
           # Let's make sure this is a repeated issue.
           count: 2
       - step: analysis-gate
