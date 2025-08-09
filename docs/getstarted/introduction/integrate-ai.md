@@ -525,16 +525,32 @@ Get the pods and observe that it's in an `OOMKilled` state:
 kubectl get pods
 ```
 
-These events trigger the `analyze-pod-events-for-distress` operation to occur. Get the operations and observe that they're created:
+These events trigger the `analyze-pod-events-for-distress` operation to occur. Get the operations, corresponding analyses, and observe that they're created:
 
 ```shell
-kubectl get operations
+kubectl get analysis,operations -A
 ```
 
-Get the analysis objects and observe they're created:
+:::note 
+Above in the WatchOperation `analyze-events-for-pod-distress` manifest, we filtered events down to:
+```yaml
+apiVersion: filter.event.fn.upbound.io/v1alpha1
+kind: Input
+type: Warning
+# We're specifically interested BackOff events.
+reason: BackOff
+# Let's make sure this is a repeated issue.
+count: 2
+```
+So it could take a few OOMKill loops for an `Analysis` to be created.
+:::
 
-```shell
-kubectl get analysis -A
+### Examine generated Analysis
+
+Once an `Analysis` is created, examine the content and see what suggestions Claude has provided you for remediating the current situation.
+
+```shell 
+kubectl get analysis <analysis name> -o yaml
 ```
 
 ## Next steps
