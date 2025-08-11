@@ -11,7 +11,7 @@ APIs.
 Providers are responsible for all aspects of connecting to non-Kubernetes
 resources. This includes authentication, making external API calls and
 providing
-[Kubernetes Controller](https://kubernetes.io/docs/concepts/architecture/controller/)
+[Kubernetes Controller][kubernetes-controller]
 logic for any external resources.
 
 Examples of providers include:
@@ -44,8 +44,7 @@ up ctp provider install xpkg.upbound.io/upbound/provider-family-aws:v1.21.0
 ```
 
 
-For more information, review the [Vertical Pod Autoscaling docs for
-UXP][vpa]
+For more information, review the [Vertical Pod Autoscaling docs for UXP][vpa].
 
 ### Install as a provider object
 
@@ -81,11 +80,11 @@ group is for creating Provider packages.
 Instructions on building Providers are outside of the scope of this
 document.  
 Read the Crossplane contributing 
-[Provider Development Guide](https://github.com/crossplane/crossplane/blob/main/contributing/guide-provider-development.md)
+[Provider Development Guide][provider-development-guide]
 for more information.
 
 For information on the specification of Provider packages read the 
-[Crossplane Provider Package specification](https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md#provider-package-requirements).
+[Crossplane Provider Package specification][provider-package-spec].
 
 <div id="meta-pkg">
 ```yaml
@@ -123,7 +122,7 @@ crossplane-stable/crossplane \
 ### Install offline
 
 Installing Crossplane Providers offline requires a local container registry like 
-[Harbor](https://goharbor.io/) to host Provider packages. Crossplane only
+[Harbor][harbor] to host Provider packages. Crossplane only
 supports installing Provider packages from a container registry. 
 
 Crossplane doesn't support installing Provider packages directly from Kubernetes
@@ -167,7 +166,7 @@ The `packagePullPolicy` options are:
 The Crossplane 
 <Hover label="pullpolicy" line="6">packagePullPolicy</Hover> works
 like the Kubernetes container image 
-[image pull policy](https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy).  
+[image pull policy][kubernetes-image-pull-policy].  
 
 Crossplane supports the use of tags and package digest hashes like
 Kubernetes images.
@@ -259,7 +258,7 @@ spec:
 #### Install a provider from a private registry
 
 Like Kubernetes uses `imagePullSecrets` to 
-[install images from private registries](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/), 
+[install images from private registries][kubernetes-private-registry], 
 Crossplane uses `packagePullSecrets` to install Provider packages from a private
 registry. 
 
@@ -342,11 +341,11 @@ that satisfies the constraints.
 :::note
 This configuration requires the `--enable-dependency-version-upgrades` flag.
 Please check the
-[configuration options](/crossplane/get-started/install#customize-the-crossplane-helm-chart)
+[configuration options][crossplane-install-config]
 and
-[feature flags](/crossplane/get-started/install#feature-flags)
+[feature flags][crossplane-install-flags]
 are available in the
-[Crossplane Install](/crossplane/get-started/install)
+[Crossplane Install][crossplane-install]
 section for more details.
 :::
 
@@ -479,7 +478,7 @@ If you remove the Provider first, you must manually delete external resources
 through your cloud provider. Managed resources must be manually deleted by
 removing their finalizers.
 
-For more information on deleting abandoned resources read the [Crossplane troubleshooting guide](/crossplane/guides/troubleshoot-crossplane#deleting-when-a-resource-hangs).
+For more information on deleting abandoned resources read the [Crossplane troubleshooting guide][crossplane-troubleshooting].
 :::
 
 ## Verify a Provider
@@ -515,7 +514,7 @@ This can create significant strain on undersized API Servers, impacting Provider
 install times.
 
 The Crossplane community has more
-[details on scaling CRDs](https://github.com/crossplane/crossplane/blob/main/design/one-pager-crd-scaling.md).
+[details on scaling CRDs][crd-scaling].
 :::
 
 ### Provider conditions
@@ -941,8 +940,20 @@ spec:
     name: admin-keys
 ```
 </div>
+
+[kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/
 [mrs]: /manuals/uxp/concepts/managed-resources/overview
-[vpa]: /manuals/uxp/howtos/self-managed-uxp/provider-vpa/
 [official-provider-aws]: https://marketplace.upbound.io/providers/provider-family-aws
 [official-provider-azure]: https://marketplace.upbound.io/providers/provider-family-azure
 [official-provider-gcp]: https://marketplace.upbound.io/providers/provider-family-gcp
+[vpa]: /manuals/uxp/howtos/self-managed-uxp/provider-vpa/
+[provider-development-guide]: https://github.com/crossplane/crossplane/blob/main/contributing/guide-provider-development.md
+[provider-package-spec]: https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md#provider-package-requirements
+[harbor]: https://goharbor.io/
+[kubernetes-image-pull-policy]: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
+[kubernetes-private-registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+[crossplane-install-config]:https://docs.crossplane.io/latest/get-started/install/#customize-the-crossplane-helm-chart 
+[crossplane-install-flags]:https://docs.crossplane.io/latest/get-started/install/#feature-flags 
+[crossplane-install]: https://docs.crossplane.io/latest/get-started/install/#installation-options
+[crossplane-troubleshooting]: /crossplane/guides/troubleshoot-crossplane#deleting-when-a-resource-hangs
+[crd-scaling]: https://github.com/crossplane/crossplane/blob/main/design/one-pager-crd-scaling.md
