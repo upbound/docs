@@ -163,23 +163,22 @@ const config = {
       </p>
     </div>
   `,
-            },
-            prism: {
-                theme: prismThemes.github,
-                darkTheme: prismThemes.dracula,
-                additionalLanguages: ["bash", "yaml", "json", "go", "python"],
-            },
-            colorMode: {
-                defaultMode: "light",
-                disableSwitch: false,
-                respectPrefersColorScheme: true,
-            },
-            docs: {
-                sidebar: {
-                    hideable: false,
-                },
-            },
-        }),
+},    prism: {
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
+        additionalLanguages: ['bash', 'yaml', 'json', 'go', 'python'],
+      },
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
+      },
+    }),
 };
 
 export default config;

@@ -35,8 +35,12 @@ function LockIcon({ size = 10 }) {
       height={size}
       viewBox="0 0 16 16"
       fill="currentColor"
-      className={styles.lockIcon}
-      aria-hidden="true"
+      style={{ 
+        display: 'inline-block', 
+        verticalAlign: 'middle',
+        opacity: 0.7,
+        marginLeft: '0.25rem'
+      }}
     >
       <path
         fillRule="evenodd"
@@ -53,12 +57,8 @@ function PlanBadge({ plan }) {
   const config = PLAN_CONFIG[plan];
   
   return (
-    <span 
-      className={clsx(styles.planBadge, styles[config.className])}
-      title={`Available in ${config.label} plan`}
-    >
-      {plan !== 'community' && <LockIcon size={10} />}
-      {config.label}
+    <span title={`Available in ${config.label} plan`}>
+      <LockIcon size={12} />
     </span>
   );
 }

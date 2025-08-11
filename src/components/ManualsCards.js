@@ -38,7 +38,7 @@ const ManualsCards = () => {
       link: './platform/overview'
     }
   ];
-
+  
   return (
     <>
       <style>{`

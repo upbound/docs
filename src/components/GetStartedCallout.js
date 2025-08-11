@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 const styles = `
 .get-started-section {
-  background: linear-gradient(135deg, var(--up-grey-700) 0%, var(--up-grey-800) 100%);
+  background: linear-gradient(135deg, var(--brand-neutral-700) 0%, var(--brand-neutral-800) 100%);
   color: white;
   padding: 2rem;
   border-radius: 12px;
@@ -27,17 +27,17 @@ const styles = `
   color: white;
 }
 .get-started-section a {
-  color: var(--up-purple-200);
+  color: var(--brand-purple-200);
   text-decoration: underline;
   transition: all 0.2s ease;
 }
 .get-started-section a:hover {
-  color: var(--up-purple-100);
+  color: var(--brand-purple-100);
   text-decoration: none;
 }
 .code-block {
-  background: var(--up-grey-900);
-  border: 1px solid var(--up-grey-700);
+  background: var(--brand-purple-900);
+  border: 1px solid var(--brand-neutral-700);
   border-radius: 8px;
   padding: 0;
   margin: 1rem 0;
@@ -51,7 +51,7 @@ const styles = `
   margin: 0;
   background: none;
   border: none;
-  color: var(--up-grey-200);
+  color: var(--brand-neutral-200);
   font-family: inherit;
   font-size: inherit;
 }
@@ -59,10 +59,10 @@ const styles = `
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
-  background: var(--up-grey-700);
-  border: 1px solid var(--up-grey-600);
+  background: var(--brand-neutral-700);
+  border: 1px solid var(--brand-neutral-600);
   border-radius: 6px;
-  color: var(--up-grey-200);
+  color: var(--brand-neutral-200);
   padding: 0.375rem 0.75rem;
   font-size: 0.75rem;
   font-family: var(--ifm-font-family-base);
@@ -73,8 +73,8 @@ const styles = `
   gap: 0.25rem;
 }
 .copy-button:hover {
-  background: var(--up-grey-600);
-  border-color: var(--up-grey-500);
+  background: var(--brand-neutral-600);
+  border-color: var(--brand-neutral-500);
   color: white;
 }
 .copy-icon {
@@ -88,54 +88,65 @@ const styles = `
   font-family: var(--ifm-font-family-base);
   color: rgba(255,255,255,0.9);
 }
+
 .tip-box {
-  background: rgba(0,0,0,0.15);
-  border-left: 4px solid var(--up-purple-300);
+  background: rgba(154, 94, 252, 0.05);
+  border-left: 4px solid var(--brand-purple-500);
   padding: 1rem;
   margin: 1.5rem 0;
-  border-radius: 0 8px 8px 0;
+  border-radius: .75rem;
 }
+
 .tip-label {
   font-weight: var(--ifm-font-weight-bold);
-  color: var(--up-purple-200);
+  color: var(--brand-purple-600);
   margin-bottom: 0.5rem;
   font-family: var(--ifm-font-family-base);
 }
-html[data-theme='light'] .get-started-section {
-  background: var(--up-grey-200);
-  color: var(--up-grey-900);
+
+/* Dark mode */
+html[data-theme='dark'] .tip-box {
+  background: rgba(196, 167, 255, 0.1);
+  border-left-color: var(--brand-purple-300);
+}
+
+html[data-theme='dark'] .tip-label {
+  color: var(--brand-purple-300);
+}html[data-theme='light'] .get-started-section {
+  background: var(--brand-neutral-200);
+  color: var(--brand-neutral-900);
 }
 html[data-theme='light'] .get-started-section h2 {
-  color: var(--up-grey-900);
+  color: var(--brand-neutral-900);
 }
 html[data-theme='light'] .get-started-section li {
-  color: var(--up-grey-900);
+  color: var(--brand-neutral-900);
 }
 html[data-theme='light'] .get-started-section a {
-  color: var(--up-purple-500);
+  color: var(--brand-purple-600);
 }
 html[data-theme='light'] .get-started-section a:hover {
-  color: var(--up-purple-600);
+  color: var(--brand-purple-700);
 }
 html[data-theme='light'] .installation-note {
-  color: var(--up-grey-700);
+  color: var(--brand-neutral-700);
 }
 html[data-theme='light'] .tip-label {
-  color: var(--up-purple-500);
+  color: var(--brand-purple-600);
 }
 html[data-theme='light'] .code-block {
-  background: var(--up-grey-300);
+  background: var(--brand-neutral-300);
 }
 html[data-theme='light'] .code-content {
-  color: var(--up-grey-900);
+  color: var(--brand-neutral-900);
 }
 html[data-theme='light'] .copy-button {
-  background: var(--up-grey-500);
-  color: var(--up-grey-200);
+  background: var(--brand-neutral-500);
+  color: var(--brand-neutral-200);
 }
 html[data-theme='light'] .copy-button:hover {
-  background: var(--up-grey-600);
-  color: var(--up-grey-000);
+  background: var(--brand-neutral-600);
+  color: var(--brand-neutral-000);
 }
 @media (max-width: 768px) {
   .get-started-section {
@@ -235,7 +246,7 @@ export function GetStarted() {
       </div>
       
       <div className="tip-box">
-        <div className="tip-label">💡 TIP</div>
+        <div className="tip-label">TIP</div>
         Get started with Upbound using the free <em>Community</em> plan or upgrade to a <em>Standard</em> plan. For more information, review our <a href="https://upbound.io/pricing">pricing plans</a>
       </div>
     </section>
