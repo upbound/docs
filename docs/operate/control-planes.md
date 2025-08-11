@@ -113,7 +113,7 @@ up ctx ..
 You can also generate a `kubeconfig` file for a control plane with [`up ctx -f`][up-ctx-f].
 
 ```shell
-up ctx ${yourOrganization}/${yourSpace}/${yourGroup}/${yourControlPlane} -f ctp-kubeconfig.yaml
+up ctx ${yourOrganization}/${yourSpace}/${yourGroup}/${yourControlPlane} -f - > ctp-kubeconfig.yaml
 ```
 
 :::tip
