@@ -2,7 +2,6 @@
 title: Intelligent Compositions
 sidebar_position: 4
 description: Embed AI intelligence in the composition reconcile loop.
-draft: true
 ---
 
 Upbound control planes combine deterministic control (like reconciliation and
