@@ -48,7 +48,11 @@ up uxp install
 
 ## Upgrade from open-source Crossplane
 
-In order to upgrade from open-source Crossplane, the target UXP version has to match the Crossplane version until the `-up.N` suffix. For example, you can upgrade from Crossplane `v1.2.1` only to a UXP version that looks like `v1.2.1-up.N` but not to a `v1.3.0-up.N`. In that scenario, you'd need to upgrade to open-source Crossplane `v1.3.0` and then UXP `v1.3.0-up.N`.
+To upgrade from open-source Crossplane, the target UXP version has to
+match the Crossplane version until the `-up.N` suffix. For example, you can
+upgrade from Crossplane `v1.2.1` only to a UXP version that looks like
+`v1.2.1-up.N` but not to a `v1.3.0-up.N`. In that scenario, you'd need to
+upgrade to open-source Crossplane `v1.3.0` and then UXP `v1.3.0-up.N`.
 
 <Tabs>
 <TabItem value="Helm" label="Helm">
@@ -67,9 +71,12 @@ up uxp upgrade -n crossplane-system
 </TabItem>
 </Tabs>
 
+For more information on migration, review the [migration guide][migration]
+
 ## Add a license to enable commercial features
 
 Read [license management][license-management] to learn how to add a license to unlock commercial features in Upbound Crossplane.
 
 [spaces]: /manuals/spaces/overview
+[migration]: /getstarted/migrate-to-upbound/migrate-to-uxp
 [license-management]: /manuals/uxp/howtos/self-managed-uxp/license-management
