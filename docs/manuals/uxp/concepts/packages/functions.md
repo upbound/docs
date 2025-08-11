@@ -82,6 +82,6 @@ spec:
 [composition]: /manuals/uxp/concepts/composition/
 [composite-resources]: /manuals/uxp/concepts/composition/composite-resources/
 [compositions]: /manuals/uxp/concepts/composition/compositions/
-[providers]: /manuals/uxp/packages/providers/
-[configurations]: /manuals/uxp/packages/configurations/
-[pods]: /manuals/uxp/guides/pods/
+[providers]: /manuals/uxp/concepts/packages/providers/
+[configurations]: /manuals/uxp/concepts/packages/configurations/
+[pods]: /manuals/uxp/howtos/crossplane/pods/

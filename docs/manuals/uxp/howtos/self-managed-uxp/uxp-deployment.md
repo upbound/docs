@@ -72,4 +72,4 @@ up uxp upgrade -n crossplane-system
 Read [license management][license-management] to learn how to add a license to unlock commercial features in Upbound Crossplane.
 
 [spaces]: /manuals/spaces/overview
-[license-management]: license-management
+[license-management]: /manuals/uxp/howtos/self-managed-uxp/license-management

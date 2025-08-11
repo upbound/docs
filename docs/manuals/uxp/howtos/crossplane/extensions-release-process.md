@@ -25,7 +25,7 @@ uses today.
 
 :::tip
 For more information about Crossplane packages, review the
-[xpkg concepts](/crossplane/packages).
+[xpkg concepts][package].
 :::
 
 ## Typical workflow
@@ -300,6 +300,7 @@ what's configured in GitHub.
 
 <!-- vale Google.FirstPerson = YES -->
 <!-- Named Links -->
+[package]: /manuals/uxp/concepts/packages/providers
 [xpkg]: https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md
 [functions]: https://github.com/crossplane/function-template-go/blob/main/.github/workflows/ci.yml
 [GitHub Actions Secrets]: https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions

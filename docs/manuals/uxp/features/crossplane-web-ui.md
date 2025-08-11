@@ -56,16 +56,14 @@ When using up project run or up project test (for local ephemeral development
 clusters), the Web UI is automatically configured into the local cluster.
 
 ## Dashboard views 
-<!--- TODO(tr0njavolta): images --->
-`todo
-Image of views for:
-View installed controller packages and associated CRDs
+<!-- `todo -->
+<!-- Image of views for: -->
+<!-- View installed controller packages and associated CRDs -->
 
-See all resources composed by Crossplane, including those with OwnerRef metadata
+<!-- See all resources composed by Crossplane, including those with OwnerRef metadata -->
 
-Visualize Operations and inspect function pipelines
+<!-- Visualize Operations and inspect function pipelines -->
 
-Understand how functions interact with specific XRs (Composite Resources) and MRs (Managed Resources)
-`
-<!--- TODO(tr0njavolta): link --->
-[console]: link
+<!-- Understand how functions interact with specific XRs (Composite Resources) and MRs (Managed Resources) -->
+<!-- ` -->
+[console]: /manuals/console/

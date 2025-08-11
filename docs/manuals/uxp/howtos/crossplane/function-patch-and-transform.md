@@ -85,7 +85,7 @@ spec:
 ```
 
 :::tip
-Read the [Composition page](/crossplane/composition/compositions) to learn more
+Read the [Composition page][composition] to learn more
 about Compositions and composition functions.
 :::
 
@@ -108,7 +108,7 @@ identifies the resource inside the Composition. It isn't related to the external
 name used with the Provider.
 
 The contents of the `base` are identical to creating a standalone
-[managed resource](/manuals/uxp/concepts/managed-resources/overview/managed-resources).
+[managed resource][mrs].
 
 This example uses
 [provider-upjet-aws](https://github.com/crossplane-contrib/provider-upjet-aws)
@@ -139,7 +139,7 @@ resources:
         region: "us-east-2"
 ```
 
-When a [composite resource](/crossplane/composition/composite-resources) uses
+When a [composite resource][xrs] uses
 this function, the composite resource creates two new managed resources with all
 the provided `spec.forProvider` settings.
 
@@ -399,7 +399,7 @@ can read and write from this data store as part of the patch process.
 <!-- vale off -->
 :::note
 <!-- vale on -->
-Read the [EnvironmentConfigs](/crossplane/composition/environment-configs) page
+Read the [EnvironmentConfigs][envconfig] page
 for more information on using EnvironmentConfigs.
 :::
 
@@ -411,8 +411,8 @@ to use with
 <!-- vale gitlab.SentenceLength = NO -->
 <!-- ignore false positive -->
 Use either a
-[reference](/manuals/uxp/concepts/managed-resources/overview/managed-resources#matching-by-name-reference)
-or a [selector](/manuals/uxp/concepts/managed-resources/overview/managed-resources#matching-by-selector) to
+[reference][reference]
+or a [selector][selector] to
 identify the EnvironmentConfigs to use.
 <!-- vale Google.Quotes = YES -->
 
@@ -488,7 +488,7 @@ resources:
 ```
 </div>
 
-The [EnvironmentConfigs](/crossplane/composition/environment-configs) page has
+The [EnvironmentConfigs][envconfig] page has
 more information on EnvironmentConfigs options and usage.
 
 ## Types of patches
@@ -932,7 +932,7 @@ Spec:
 
 :::important
 For more information about using an EnvironmentConfig, read the
-[EnvironmentConfigs documentation](/crossplane/composition/environment-configs).
+[EnvironmentConfigs documentation][envconfig].
 :::
 
 The `ToEnvironmentFieldPath` patch takes a value from the composed resource and
@@ -976,7 +976,7 @@ wrote the value to the environment.
 
 :::important
 For more information about using an EnvironmentConfig, read the
-[EnvironmentConfigs documentation](/crossplane/composition/environment-configs).
+[EnvironmentConfigs documentation][envconfig].
 :::
 
 The `CombineFromEnvironment` patch combines multiple values from the in-memory
@@ -1046,7 +1046,7 @@ Annotations:  EnvironmentPatch: value1-value2
 
 :::important
 For more information about using an EnvironmentConfig, read the
-[EnvironmentConfigs documentation](/crossplane/composition/environment-configs).
+[EnvironmentConfigs documentation][envconfig].
 :::
 
 The `CombineToEnvironment` patch combines multiple values from the composed
@@ -1917,7 +1917,7 @@ By default an XRD writes all secret keys listed in the composed resources
 
 
 For more information on connection secrets read about
-[managed resources](/manuals/uxp/concepts/managed-resources/overview/managed-resources).
+[managed resources][mrs].
 :::
 
 ## Resource readiness checks
@@ -2161,3 +2161,10 @@ resources:
 :::tip
 Checking `MatchFalse` doesn't require setting any other fields.
 :::
+
+[selector]: /manuals/uxp/concepts/managed-resources/overview#matching-by-selector
+[reference]:/manuals/uxp/concepts/managed-resources/overview#matching-by-name-reference
+[envconfig]: /manuals/uxp/concepts/composition/environment-configs
+[xrs]: /manuals/uxp/concepts/composition/composite-resources
+[mrs]: /manuals/uxp/concepts/managed-resources/overview
+[composition]: /manuals/uxp/concepts/composition/compositions
