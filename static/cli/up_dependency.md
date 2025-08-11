@@ -1,0 +1,34 @@
+---
+mdx:
+  format: md
+---
+
+Manage configuration dependencies.
+
+The `dependency` command manages dependencies of the project in the current
+directory. It caches package information in a local file system cache (by
+default in `~/.up/cache`) and manages langauge schemas that can be used for
+building functions.
+
+
+#### Usage
+
+`up dependency <command> [flags]`
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--domain` | | Root Upbound domain. Overrides the current profile's domain. |
+| `--profile` | | Profile used to execute command. |
+| `--account` | `-a` | Deprecated. Use organization instead. |
+| `--organization` | | Organization used to execute command. Overrides the current profile's organization. |
+| `--ca-bundle` | | Path to CA bundle file to prepend to existing CAs |
+| `--insecure-skip-tls-verify` | | [INSECURE] Skip verifying TLS certificates. |
+| `--debug` | `-d` | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |
+| `--override-api-endpoint` | | Overrides the default API endpoint. |
+| `--override-auth-endpoint` | | Overrides the default auth endpoint. |
+| `--override-proxy-endpoint` | | Overrides the default proxy endpoint. |
+| `--override-registry-endpoint` | | Overrides the default registry endpoint. |
+| `--override-accounts-endpoint` | | Overrides the default accounts endpoint. |
+| `--kubeconfig` | | Override default kubeconfig path. |
+| `--kubecontext` | | Override default kubeconfig context. |

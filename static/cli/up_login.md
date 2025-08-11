@@ -1,57 +1,79 @@
+---
+mdx:
+  format: md
+---
+
 Login to Upbound. Will attempt to launch a web browser by default. Use --username and --password flags for automations.
 
-#### Options
+The `login` command authenticates with Upbound Cloud and stores session
+credentials.
 
-##### `--username`
-*Shorthand:* `-u`  
-Username used to execute command.
+#### Authentication Methods
 
-##### `--password`
-*Shorthand:* `-p`  
-Password for specified user. '-' to read from stdin.
+- **Web Browser (default)** - Opens browser for OAuth authentication
+- **Device Code** - Use --use-device-code for headless environments
+- **Username/Password** - Provide --username and --password flags
+- **Personal Access Token or Robot Token** - Provide --token flag
 
-##### `--token`
-*Shorthand:* `-t`  
-Upbound API token (personal access token) used to execute command. '-' to read from stdin.
+The command creates or updates a profile with the authenticated session. If no
+profile name is specified, it uses the currently active profile. A profile named
+`default` will be created if no profiles exist.
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+#### Examples
 
-##### `--profile`
-Profile used to execute command.
+Open a browser for OAuth authentication (recommended):
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+```shell
+up login
+```
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+Prompt for password and authenticate with credentials:
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+```shell
+up login --username=user@example.com
+```
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+Authenticate using a personal access token.
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+```shell
+up login --token=upat_xxxxx
+```
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
+Use the device code flow for headless/remote environments:
 
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
+```shell
+up login --use-device-code
+```
 
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
+Authenticate and create or update the `production` profile:
 
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
+```shell
+up login --profile=production --organization=my-org
+```
 
-##### `--kubeconfig`
-Override default kubeconfig path.
 
-##### `--kubecontext`
-Override default kubeconfig context.
+#### Usage
 
+`up login [flags]`
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--domain` | | Root Upbound domain. Overrides the current profile's domain. |
+| `--profile` | | Profile used to execute command. |
+| `--account` | `-a` | Deprecated. Use organization instead. |
+| `--organization` | | Organization used to execute command. Overrides the current profile's organization. |
+| `--ca-bundle` | | Path to CA bundle file to prepend to existing CAs |
+| `--insecure-skip-tls-verify` | | [INSECURE] Skip verifying TLS certificates. |
+| `--debug` | `-d` | [INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens. |
+| `--override-api-endpoint` | | Overrides the default API endpoint. |
+| `--override-auth-endpoint` | | Overrides the default auth endpoint. |
+| `--override-proxy-endpoint` | | Overrides the default proxy endpoint. |
+| `--override-registry-endpoint` | | Overrides the default registry endpoint. |
+| `--override-accounts-endpoint` | | Overrides the default accounts endpoint. |
+| `--kubeconfig` | | Override default kubeconfig path. |
+| `--kubecontext` | | Override default kubeconfig context. |
+| `--username` | `-u` | Username used to execute command. |
+| `--password` | `-p` | Password for specified user. '-' to read from stdin. |
+| `--token` | `-t` | Upbound API token (personal access token) used to execute command. '-' to read from stdin. |
+| `--use-device-code` | | Use authentication flow based on device code. We will also use this if it can't launch a browser in your behalf, e.g. in remote SSH |

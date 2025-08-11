@@ -1,8 +1,22 @@
+---
+mdx:
+  format: md
+---
+
 Delete a team.
 
-#### Options
 
-##### `--force`
-*Default:* `false`  
-Force delete team even if conflicts exist.
 
+#### Usage
+
+`up team delete <name> [flags]`
+#### Arguments
+
+| Argument | Description |
+| -------- | ----------- |
+| `<name>` | Name of team. |
+#### Flags
+
+| Flag | Short Form | Description |
+| ---- | ---------- | ----------- |
+| `--force` | | Force delete team even if conflicts exist. |

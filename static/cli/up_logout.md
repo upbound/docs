@@ -1,45 +1,40 @@
+---
+mdx:
+  format: md
+---
+
 Logout of Upbound.
 
-#### Options
+The `logout` command invalidates the current session and removes stored
+credentials.
 
-##### `--domain`
-Root Upbound domain. Overrides the current profile's domain.
+This command:
 
-##### `--profile`
-Profile used to execute command.
+- Invalidates the session token with Upbound Cloud
+- Removes the session token from the local profile configuration
+- Keeps the profile configuration intact (only removes authentication)
 
-##### `--account`
-*Shorthand:* `-a`  
-Deprecated. Use organization instead.
+Note that this affects only a single profile. Other profiles remain
+authenticated.
 
-##### `--organization`
-Organization used to execute command. Overrides the current profile's organization.
+After logout, you can log back in using `up login` to re-authenticate with the
+same profile.
 
-##### `--insecure-skip-tls-verify`
-[INSECURE] Skip verifying TLS certificates.
+#### Examples
 
-##### `--debug`
-*Shorthand:* `-d`  
-[INSECURE] Run with debug logging. Repeat to increase verbosity. Output might contain confidential data like tokens.
+Log out the active profile:
 
-##### `--override-api-endpoint`
-Overrides the default API endpoint.
+```shell
+up logout
+```
 
-##### `--override-auth-endpoint`
-Overrides the default auth endpoint.
+Log out the `production` profile:
 
-##### `--override-proxy-endpoint`
-Overrides the default proxy endpoint.
+```shell
+up logout --profile=production
+```
 
-##### `--override-registry-endpoint`
-Overrides the default registry endpoint.
 
-##### `--override-accounts-endpoint`
-Overrides the default accounts endpoint.
+#### Usage
 
-##### `--kubeconfig`
-Override default kubeconfig path.
-
-##### `--kubecontext`
-Override default kubeconfig context.
-
+`up logout [flags]`
