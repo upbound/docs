@@ -22,6 +22,9 @@ Before you enable Provider Autoscaling, make sure you have:
 * A Kubernetes v1.28+ cluster running
 * A running UXP control plane
 * A valid Standard or Development license applied to your control plane
+
+As part of the guide, we will also install the following prerequisites:
+
 * [Metrics server][metrics] or [Prometheus Adapter for Kubernetes Metrics APIs][prometheus] installed
 * [Vertical Pod Autoscaler][vpa] v1.4+ on your Kubernetes cluster
 
@@ -62,10 +65,17 @@ helm -n vpa install vpa cowboysysop/vertical-pod-autoscaler --version 10.2.1 --c
 
 ## Enable provider autoscaling
 
+Ensure you have the `upbound-stable` Helm repository configured:
+
+```bash
+helm repo add upbound-stable https://charts.upbound.io/stable
+helm repo update
+```
+
 Enable the Provider Autoscaling feature flag in UXP:
 
 ```bash
-helm upgrade --install crossplane --namespace crossplane-system --create-namespace oci://xpkg.upbound.io/upbound-dev/crossplane --set "upbound.manager.args[0]=--enable-provider-vpa"
+helm upgrade --install crossplane --namespace crossplane-system --create-namespace upbound-stable/crossplane --devel --set "upbound.manager.args[0]=--enable-provider-vpa"
 ```
 
 ## Configure provider with autoscaling
@@ -82,10 +92,12 @@ cluster. The two runtime types associated with Provider VPA are:
 
 The `DeploymentRuntimeConfig` establishes the
 basic Provider deployment, while the `UpboundRuntimeConfig` adds UXP-specific
-features.
+features. A `DeploymentRuntimeConfig` can reference an `UpboundRuntimeConfig` by
+including the annotation `pkg.upbound.io/runtime-config`.
 
 To configure a provider with autoscaling, create a
 `DeploymentRuntimeConfig`:
+
 ```yaml
 cat <<EOF | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
