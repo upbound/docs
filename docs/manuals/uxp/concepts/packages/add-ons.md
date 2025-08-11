@@ -54,7 +54,7 @@ for managing the lifecycle of the software once applied.
 Enable the feature in the Space you plan to run your control plane in:
 
 <!--- TODO(tr0njavolta): link --->
-Packaging an _AddOn_ requires [up CLI][up-cli]  `v0.39.0` or later.
+Packaging an _AddOn_ requires [up CLI][up-cli]  `v0.40.0` or later.
 
 <!-- vale Google.Headings = NO --> 
 <!-- vale Microsoft.Headings = NO --> 
@@ -177,7 +177,7 @@ up xpkg push xpkg.upbound.io/$UPBOUND_ACCOUNT/$ADD_ON_NAME:$ADD_ON_VERSION -f $X
 <!-- vale Microsoft.Headings = YES --> 
 
 :::important
-_AddOns_ are only installable on control planes running Upbound Crossplane `v1.19.0` or later.
+_AddOns_ are only installable on control planes running Upbound Crossplane `v1.20.0` or later.
 :::
 
 Set your kubecontext to the desired control plane in Upbound. Change the package path to the OCI registry you pushed it to. Then, deploy the _AddOn_ directly:
