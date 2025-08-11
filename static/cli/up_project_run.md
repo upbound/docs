@@ -118,3 +118,4 @@ up project run --force --control-plane-name=my-cp
 | `--timeout` | | Maximum time to wait for the project to become ready in the control plane. Set to zero to wait forever. |
 | `--ingress` | | Enable ingress controller for the local dev control plane. |
 | `--ingress-port` | | Port mapping for the local dev control plane (e.g., '8080:80'). If not specified, a random available port will be selected when ingress is enabled. |
+| `--cluster-admin` | | Allow Crossplane cluster admin privileges in the local dev control plane. Defaults to true. |

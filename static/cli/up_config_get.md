@@ -5,7 +5,7 @@ mdx:
 
 Get configuration values.
 
-The `set` command shows global configuration values for the `up` CLI.
+The `get` command shows global configuration values for the `up` CLI.
 
 #### Configuration Keys
 

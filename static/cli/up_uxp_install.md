@@ -21,6 +21,7 @@ Install UXP.
 | ---- | ---------- | ----------- |
 | `--unstable` | | Allow installing unstable versions. |
 | `--disable-web-ui` | | Disable the UXP web UI. |
+| `--cluster-admin` | | Install UXP with cluster admin permissions. NOT FOR PRODUCTION PURPOSES. |
 | `--set` | | Set parameters. |
 | `--file` | `-f` | Parameters file. |
 | `--bundle` | | Local bundle path. |
