@@ -1,6 +1,7 @@
 ---
-title: Configure cluster access for Official Package patch releases
-plan: "Standard"
+title: Official Package patch releases
+description: "Configure cluster access for Official Package patch releases"
+plan: "standard"
 ---
 
 <Standard />

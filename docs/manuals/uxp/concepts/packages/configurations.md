@@ -32,8 +32,13 @@ Configuration object by setting
 the spec.package value to the
 location of the configuration package.
 
-For example to install the 
-[Getting Started Configuration][getting-started-config], 
+Use the `up` CLI to install a configuration into your control plane:
+
+```shell
+up ctp provider install xpkg.upbound.io/upbound/configuration-quickstart:v0.1.0
+```
+
+### Install as a configuration object
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1
@@ -284,16 +289,16 @@ option is disabled by default. After enabling this option, the package manager w
 automatically downgrade a package's dependency version to the maximum valid version
 that satisfies the constraints.
 
-:::note
-This configuration requires the `--enable-dependency-version-upgrades` flag.
-Please check the
-[configuration options][crossplane-install-config]
-and
-[feature flags][crossplane-install-flags]
-are available in the
-[Crossplane Install][crossplane-install]
-section for more details.
-:::
+<!-- :::note -->
+<!-- This configuration requires the `--enable-dependency-version-upgrades` flag. -->
+<!-- Please check the -->
+<!-- [configuration options][crossplane-install-config] -->
+<!-- and -->
+<!-- [feature flags][crossplane-install-flags] -->
+<!-- are available in the -->
+<!-- [Crossplane Install][crossplane-install] -->
+<!-- section for more details. -->
+<!-- ::: -->
 
 :::important
 Enabling automatic dependency downgrades may have unintended consequences, such as:

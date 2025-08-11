@@ -37,6 +37,18 @@ responsible for reconciling the Provider's APIs into the Kubernetes cluster.
 Providers constantly watch the state of the desired managed resources and create 
 any external resources that are missing.
 
+Use the `up` CLI to install a provider into your control plane:
+
+```shell
+up ctp provider install xpkg.upbound.io/upbound/provider-family-aws:v1.21.0
+```
+
+
+For more information, review the [Vertical Pod Autoscaling docs for
+UXP][vpa]
+
+### Install as a provider object
+
 Install a Provider with a Crossplane
 <Hover label="install" line="2">Provider</Hover> object setting the
 <Hover label="install" line="6">spec.package</Hover> value to the
@@ -929,7 +941,7 @@ spec:
     name: admin-keys
 ```
 </div>
-
+[vpa]: /manuals/uxp/howtos/self-managed-uxp/provider-vpa/
 [official-provider-aws]: https://marketplace.upbound.io/providers/provider-family-aws
 [official-provider-azure]: https://marketplace.upbound.io/providers/provider-family-azure
 [official-provider-gcp]: https://marketplace.upbound.io/providers/provider-family-gcp

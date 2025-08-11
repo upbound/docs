@@ -319,27 +319,27 @@ _any_ kind of resource you wish to compose - including XRs and MRs.**
 
 ## Test a composition
 
-You can preview the output of any composition using the Crossplane CLI. You
-don't need a Crossplane control plane to do this. The Crossplane CLI uses Docker
+You can preview the output of any composition using the Up CLI. You
+don't need a Crossplane control plane to do this. The Up CLI uses Docker
 Engine to run functions.
 
 :::tip
-See the [Crossplane CLI docs][cli] to
-learn how to install and use the Crossplane CLI.
+See the [Up CLI docs][cli] to
+learn how to install and use the Up CLI.
 :::
 
 :::warning
-Running `crossplane render` requires [Docker](https://www.docker.com).
+Running `up render` requires [Docker](https://www.docker.com).
 :::
 
 Provide a composite resource, composition and composition functions to render
 the output locally.
 
 ```shell
-crossplane render xr.yaml composition.yaml functions.yaml
+up composition render xr.yaml composition.yaml functions.yaml
 ```
 
-`crossplane render` prints resources as YAML to stdout. It prints the
+`up render` prints resources as YAML to stdout. It prints the
 composite resource first, followed by the resources the composition functions
 created.
 
@@ -433,55 +433,55 @@ spec:
 
 </details>
 
-The Crossplane CLI uses Docker Engine to run functions. You can change how the
-Crossplane CLI runs a function by adding an annotation in `functions.yaml`. Add
-the `render.crossplane.io/runtime` annotation to a Function to change how it's
-run.
+<!-- The Crossplane CLI uses Docker Engine to run functions. You can change how the -->
+<!-- Crossplane CLI runs a function by adding an annotation in `functions.yaml`. Add -->
+<!-- the `render.crossplane.io/runtime` annotation to a Function to change how it's -->
+<!-- run. -->
 
-`crossplane render` supports two `render.crossplane.io/runtime` values:
+<!-- `crossplane render` supports two `render.crossplane.io/runtime` values: -->
 
-* `Docker` (the default) connects to Docker Engine. It uses Docker to pull and
-  run a function runtime.
-* `Development` connects to a function runtime you have run manually.
+<!-- * `Docker` (the default) connects to Docker Engine. It uses Docker to pull and -->
+<!--   run a function runtime. -->
+<!-- * `Development` connects to a function runtime you have run manually. -->
 
-When you use the `Development`
-runtime the Crossplane CLI ignores the Function's `package`. Instead it expects you to make sure the function
-is listening on localhost port 9443. The function must be listening without gRPC
-transport security. Most function SDKs let you run a function with the
-`--insecure` flag to disable transport security. For example you can run a Go
-function locally using `go run . --insecure`.
+<!-- When you use the `Development` -->
+<!-- runtime the Crossplane CLI ignores the Function's `package`. Instead it expects you to make sure the function -->
+<!-- is listening on localhost port 9443. The function must be listening without gRPC -->
+<!-- transport security. Most function SDKs let you run a function with the -->
+<!-- `--insecure` flag to disable transport security. For example you can run a Go -->
+<!-- function locally using `go run . --insecure`. -->
 
-```yaml
-apiVersion: pkg.crossplane.io/v1
-kind: Function
-metadata:
-  name: function-patch-and-transform
-  annotations:
-    render.crossplane.io/runtime: Development
-spec:
-  package: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform:v0.8.2
-```
+<!-- ```yaml -->
+<!-- apiVersion: pkg.crossplane.io/v1 -->
+<!-- kind: Function -->
+<!-- metadata: -->
+<!--   name: function-patch-and-transform -->
+<!--   annotations: -->
+<!--     render.crossplane.io/runtime: Development -->
+<!-- spec: -->
+<!--   package: xpkg.crossplane.io/crossplane-contrib/function-patch-and-transform:v0.8.2 -->
+<!-- ``` -->
 
-:::tip
-Use the `Development` runtime when you
-[write a composition function](#write-a-composition-function) to test your
-function end-to-end.
-:::
+<!-- :::tip -->
+<!-- Use the `Development` runtime when you -->
+<!-- [write a composition function](#write-a-composition-function) to test your -->
+<!-- function end-to-end. -->
+<!-- ::: -->
 
-`crossplane render` also supports the following Function annotations. These
-annotations affect how it runs Functions:
+<!-- `crossplane render` also supports the following Function annotations. These -->
+<!-- annotations affect how it runs Functions: -->
 
-* `render.crossplane.io/runtime-docker-cleanup` - When using the `Docker`
-runtime this annotation specifies whether the CLI should stop the function
-container after it calls the function. It supports the values `Stop`, to stop
-the container, and `Orphan`, to leave it running.
-* `render.crossplane.io/runtime-docker-pull-policy` - When using the `Docker`
-  runtime this annotation specifies when the CLI should pull the Function's
-  package. It supports the values `Always`, `Never`, and `IfNotPresent`.
-* `render.crossplane.io/runtime-development-target` - When using the
-  `Development` runtime this annotation tells the CLI to connect to a Function
-  running at the specified target. It uses
-  [gRPC target syntax](https://github.com/grpc/grpc/blob/v1.59.1/doc/naming.md).
+<!-- * `render.crossplane.io/runtime-docker-cleanup` - When using the `Docker` -->
+<!-- runtime this annotation specifies whether the CLI should stop the function -->
+<!-- container after it calls the function. It supports the values `Stop`, to stop -->
+<!-- the container, and `Orphan`, to leave it running. -->
+<!-- * `render.crossplane.io/runtime-docker-pull-policy` - When using the `Docker` -->
+<!--   runtime this annotation specifies when the CLI should pull the Function's -->
+<!--   package. It supports the values `Always`, `Never`, and `IfNotPresent`. -->
+<!-- * `render.crossplane.io/runtime-development-target` - When using the -->
+<!--   `Development` runtime this annotation tells the CLI to connect to a Function -->
+<!--   running at the specified target. It uses -->
+<!--   [gRPC target syntax](https://github.com/grpc/grpc/blob/v1.59.1/doc/naming.md). -->
 
 ## Verify a composition
 
@@ -530,9 +530,9 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 }
 ```
 
-Crossplane has [language specific guides][guides] to writing a
-composition function. Refer to the guide for your preferred language to learn
-how to write a composition function.
+Upbound has language specific [guides] on how to write a composition function.
+Refer to the guide for your preferred language to learn how to write a
+composition function.
 
 When you're writing a composition function it's useful to know how composition
 functions work. Read the next section to learn
@@ -760,10 +760,10 @@ context.
 
 [xrds]: /manuals/uxp/concepts/composition/composite-resource-definitions/
 [xrs]: /manuals/uxp/concepts/composition/composite-resources/
-[function-patch-and-transform]: /manuals/uxp/guides/function-patch-and-transform/
+[function-patch-and-transform]: /manuals/uxp/howtos/function-patch-and-transform/
 [packages]: /manuals/uxp/packages/functions/
 [providers]: /manuals/uxp/packages/providers/
 [managed-resources]: /manuals/uxp/managed-resources/managed-resources/
-[rbac-manager]: /manuals/uxp/guides/pods/#rbac-manager-pod
-[cli]: /manuals/uxp/cli/
-[guides]: /manuals/uxp/guides/
+[rbac-manager]: /manuals/uxp/howtos/pods/#rbac-manager-pod
+[cli]: /manuals/cli/overview
+[guides]: /manuals/cli/howtos/compositions/python/
