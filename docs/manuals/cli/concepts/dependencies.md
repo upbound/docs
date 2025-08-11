@@ -14,7 +14,9 @@ plane's behavior. This includes the providers, functions, configurations, and
 other packages that install automatically when you deploy or initialize the
 control plane.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Use cases
+<!-- vale gitlab.HeadingContent = YES -->
 
 When working with Crossplane and UXP, you have two ways to bring providers,
 functions, and configurations into your control plane:
@@ -69,8 +71,11 @@ spec:
 ##remainder of file is ommited for brevity
 ```
 
-A **API Dependency** defines any building blocks of your control plane from external APIs that are not part of the Crossplane package.
-API dependencies can be used to define dependency on any arbitrary CRD or built in Kubernetes APIs.
+A **API Dependency** defines any building blocks of your control plane from
+external APIs that aren't part of the Crossplane package. API dependencies can
+be used to define dependency on any arbitrary CRD or built in Kubernetes APIs.
+
+
 ```yaml
     apiVersion: meta.dev.upbound.io/v2alpha1
     kind: Project

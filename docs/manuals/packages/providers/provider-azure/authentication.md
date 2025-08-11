@@ -492,7 +492,7 @@ spec:
 
 <!--- TODO(tr0njavolta): fix redirect --->
 [upbound-auth-oidc]: /manuals/platform/howtos/oidc
-[upbound-cloud-spaces]: /deploy
+[upbound-cloud-spaces]: /manuals/spaces/overview
 
 
 [service-principal-with-kubernetes-secret]: https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals?tabs=browser#service-principal-object

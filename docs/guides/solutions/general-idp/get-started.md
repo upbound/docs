@@ -4,9 +4,14 @@ sidebar_position: 5
 description: "A guide to deploying an internal development platform powered by Upbound control planes"
 ---
 
-This solutions demonstrates how to configure Upbound control planes to power a streamlined, self-service platform for your engineering teams. Clone and tailor it to your needs to roll out an Internal Developer Platform (IDP) that enables developers to quickly spin up resources that are production-ready, policy-compliant, and governed by Upbound's control mechanisms and proven patterns.
+This solutions demonstrates how to configure Upbound control planes to power a
+streamlined, self-service platform for your engineering teams. Clone and tailor
+it to your needs to roll out an Internal Developer Platform (IDP). An IDP enables
+developers to spin up resources that are production-ready,
+policy-compliant, and governed by Upbound's control mechanisms and proven
+patterns.
 
-This guide is geared to help you quickly deploy the solution. 
+This guide helps you deploy this solution.
 
 ## Before you begin
 
@@ -43,8 +48,9 @@ Building out your Internal Developer Platform (IDP) with Upbound couldn't be eas
 git clone https://github.com/upbound/solution-idp.git
 cd solution-idp
 ```
-
+<!-- vale Google.Headings = NO -->
 ### Install Task CLI
+<!-- vale Google.Headings = YES -->
 
 This project leverages [Task][taskfile] for automating setup steps. Install it if you don't have it on your machine.
 
@@ -54,7 +60,7 @@ brew install go-task/tap/go-task
 
 ### Login to Upbound
 
-The first step in deployment is to authenticate your `up` cli. Login with the following command:
+The first step in deployment is to authenticate your `up` CLI. Login with the following command:
 
 ```shell
 up login
@@ -103,8 +109,9 @@ vars:
   GIT_REPO: 
   GIT_REVISION: "main"
 ```
-
+<!-- vale Google.WordList = NO -->
 Here's an explanation for each variable above:
+<!-- vale Google.WordList = YES -->
 
 - `AWS_CREDENTIALS_PATH`: Path to your AWS credentials used by the bootstrap control plane in a _ProviderConfig_
 - `UPBOUND_ORG`: Your Upbound Organization. You can find this by running `up org list`.

@@ -289,9 +289,11 @@ managementPolicies
 to a managed resource to determine what permissions
 Crossplane has over the resource.
 
+<!-- vale Google.Quotes = NO -->
 For example, give Crossplane permission to create and delete an external resource,
 but not make any changes, set the policies to
 ["Create", "Delete", "Observe"].
+<!-- vale Google.Quotes = YES -->
 
 ```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1

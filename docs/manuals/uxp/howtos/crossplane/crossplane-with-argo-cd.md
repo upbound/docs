@@ -198,12 +198,13 @@ kind: ConfigMap
 data:
     resource.exclusions: |
       - apiGroups:
+      - `apiGroups`:
         - "*"
         kinds:
         - ProviderConfigUsage
 ```
 
-The use of `"*"` as apiGroups will enable the mechanism for all Crossplane Providers.
+The use of `"*"` as `apiGroups` will enable the mechanism for all Crossplane Providers.
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 <!-- vale gitlab.Uppercase = NO -->
 #### Increase Kubernetes Client QPS
@@ -217,4 +218,3 @@ Set the environment variable `ARGOCD_K8S_CLIENT_QPS` to `300` for improved compa
 
 The default value of `ARGOCD_K8S_CLIENT_QPS` is 50, modifying the value will also update `ARGOCD_K8S_CLIENT_BURST` as it
 is default to `ARGOCD_K8S_CLIENT_QPS` x 2.
-

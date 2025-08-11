@@ -4,7 +4,8 @@ description: Adopt control plane projects
 sidebar_position: 1
 ---
 
-If you're already running Crossplane and want to use the development tooling that's available with Upbound Crossplane and control plane projects, you can easily migrate to projects.
+If you're already running Crossplane and want to use Upbound Crossplane's
+control plane tooling, you can migrate to projects.
 
 The next section shows you the steps to migrate existing Crossplane compositions into a control plane project.
 
@@ -76,9 +77,13 @@ The `functions/` directory contains embedded functions used in your composition 
 
 ## Import dependencies
 
-Because the `upbound.yaml` is a superset of a `crossplane.yaml`, you should define your project's dependencies here. All packages your control plane requires should be declared in the `spec.dependsOn` field.
+Because the `upbound.yaml` is a superset of a `crossplane.yaml`, you should
+define your project's dependencies here. All packages your control plane
+requires should be declared in the `spec.dependsOn` field.
 
-Use the [up dependency add][up-dep] command to bring any providers, functions, configurations, or other supported package types into your project's context. Here's an example for adding a dependency on `provider-aws-s3`:
+Use the [up dependency add][up-dep] command to bring any providers, functions,
+configurations, or other supported package types into your project's context.
+Here's an example for adding a dependency on `provider-aws-s3`:
 
 ```shell
 up dependency add xpkg.upbound.io/upbound/provider-aws-s3
@@ -140,11 +145,15 @@ Deploy it in production:
 
 ## Optional: Refactor compositions
 
+<!-- vale write-good.TooWordy = NO -->
 :::tip
 
-This step is not required to use projects. However, it's **highly recommended** because it enables a richer project-based experience.
+This step is **highly recommended** to enable a richer project-based experience,
+but isn't a requirement.
 
 :::
+
+<!-- vale write-good.TooWordy = YES -->
 
 To take full advantage of the project experience, you should define the functions in your composition and operation pipelines as _embedded functions_. Upbound platform supports a multi-language experience.
 
@@ -216,7 +225,7 @@ spec:
     region: {{ .observed.composite.resource.spec.region }}
 ```
 
-The comments at the top are directives used by the project tooling to support intellisense-style experiences in your IDE. Do not remove them.
+The comments at the top are directives used by the project tooling to support intellisense-style experiences in your IDE. **Don't** remove them.
 
 Remove the `create-a-bucket` step in the composition pipeline in the `composition.yaml`. This step gets performed by the embedded function instead, which should already be added to the composition pipeline. 
 

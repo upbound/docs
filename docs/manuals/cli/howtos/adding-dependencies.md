@@ -37,7 +37,7 @@ Examples of dependencies include:
 3. **Configurations** that provide pre-built setups:
    * `xpkg.upbound.io/upbound/platform-ref-aws` - AWS reference platform
    * `xpkg.upbound.io/upbound/platform-ref-gcp` - GCP reference platform
-4. **API dependencies** for any external APIs that are not part of the Crossplane package.
+4. **API dependencies** for any external APIs that aren't part of the Crossplane package.
 
 ## Add provider dependencies
 
@@ -70,7 +70,7 @@ up dependency add xpkg.upbound.io/crossplane-contrib/function-status-transformer
 
 
 For more information on functions, check out the Upbound Crossplane
-[Function][funciton] documenation.
+[Function][function] documentation.
 
 ## Add configurations
 
@@ -171,6 +171,8 @@ up dependency add xpkg.upbound.io/upbound/provider-aws-s3:v1.17.0
 Now, Upbound rewrites your dependencies to your private registry while
 maintaining the original reference in the configuration.
 
+[function]: /manuals/uxp/packages/functions
+[composition]: /manuals/uxp/concepts/composition/overview
 [up-dependency-add]: /reference/cli-reference
 [up-dependency-update-cache]: /reference/cli-reference
 [up-dependency-clean-cache]: /reference/cli-reference

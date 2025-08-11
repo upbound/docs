@@ -71,10 +71,6 @@ metadata:
 spec:
   package: xpkg.upbound.io/upbound/provider-aws-s3:v1.24.0
 ```
-:::important
-todo official provider and package from marketplace
-:::
-
 Next, apply the provider to your local cluster:
 
 ```shell

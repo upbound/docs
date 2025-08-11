@@ -12,8 +12,10 @@ choose where your organization's control planes and data get stored.
 
 The available regions are:
 
+<!-- vale alex.ProfanityUnlikely = NO -->
 - The United States
 - The European Union
+<!-- vale alex.ProfanityUnlikely = YES -->
 
 To get data residency for your organization, contact [Upbound's Sales team][contact].
 

@@ -15,7 +15,9 @@ To use local control plane development tools, make sure you have:
 * [up][up] CLI installed
 * A Docker-compatible container runtime installed and running on your system
 
+<!-- vale Microsoft.Contractions = NO -->
 ## What is a control plane project?
+<!-- vale Microsoft.Contractions = YES -->
 
 A control plane project is the source-level code representation of your control
 plane.

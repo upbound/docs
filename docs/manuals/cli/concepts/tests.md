@@ -26,7 +26,7 @@ engineers can write tests to validate their control plane definitions.
 
 In a control plane project, you can write tests for:
 
-- **Compositions & Embedded Functions** - ensure the correct set of composed resources generate from a given XR input and validate the behavior of your functions
+- **Compositions and Embedded Functions** - ensure the correct set of composed resources generate from a given XR input and validate the behavior of your functions
 - **End-to-end behavior** - simulate real-world scenarios to verify that all components work together
 
 ## Why tests matter

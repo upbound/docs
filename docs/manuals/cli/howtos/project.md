@@ -27,7 +27,7 @@ Before you begin, make sure you have:
 Choose your starting approach based on your goals:
 
 The `up` CLI allows you to choose between an empty project or an AWS S3
-Bucket base. To start from scratch use:
+Bucket base. To an empty project use:
 
 <EditCode language="shell">
 {`

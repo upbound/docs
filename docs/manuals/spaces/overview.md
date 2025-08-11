@@ -2,7 +2,10 @@
 title: Overview 
 sidebar_position: 1
 description: Spaces are a host environment in Upbound for control planes-as-a-service
+plan: "standard"
 ---
+
+<Standard />
 
 Upbound Spaces are a core component of the Upbound platform. A _Space_ is a hosting environment for Upbound control planes-as-a-service. Spaces delivers a managed experience for deploying, operating, and scaling control planes powered by [Upbound Crossplane][uxp]. 
 

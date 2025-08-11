@@ -1032,7 +1032,10 @@ kubectl apply -f rbac.yaml
 
 :::warning
 
-The _ClusterRoleBinidng_ above gives full admin access to Crossplane. While this is fine for development purposes, it's advised for production scenarios to be dilligent in what permissions you grant Crossplane. Only give it what's necessary to create and manage the resources you need it to.
+The _ClusterRoleBinidng_ above gives full admin access to Crossplane. While this
+is fine for development purposes, it's advised for production scenarios to be
+diligent in what permissions you grant Crossplane. Only give it what's
+necessary to create and manage the resources you need it to.
 
 :::
 

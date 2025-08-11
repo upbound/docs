@@ -195,7 +195,7 @@ resources:
 ### Selecting fields
 
 Crossplane selects fields in a composite resource or managed resource with a
-subset of [JSONPath selectors](https://kubernetes.io/docs/reference/kubectl/jsonpath/),
+subset of [`JSONPath` selectors](https://kubernetes.io/docs/reference/kubectl/jsonpath/),
 called "field paths."
 
 Field paths can select any field in a composite resource or managed resource

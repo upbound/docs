@@ -163,7 +163,7 @@ current usage:
 
 | Field | Description |
 |-------|-------------|
-| **`plan`** | The commercial plan associated with your license (e.g., community, standard). |
+| **`plan`** | The commercial plan associated with your license (Community, Standard, etc). |
 | **`expiresAt`** | The date and time when your license is set to expire. |
 | **`capacity`** | The total capacity granted by your license, such as `resourceHours` and `operations`. |
 | **`enabledFeatures`** | A list of the commercial features unlocked by your license. |
