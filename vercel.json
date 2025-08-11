@@ -1449,6 +1449,12 @@
             "source": "/deploy/self-hosted-spaces/attach-detach",
             "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
             "permanent": true
+        },
+        {
+            "source": "/reference/apis/spaces-api/",
+            "destination": "/reference/apis/spaces-api/latest/",
+            "permanent": true
         }
+
     ]
 }
