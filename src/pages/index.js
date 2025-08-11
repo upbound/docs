@@ -79,7 +79,7 @@ const LandingPage = () => {
             title: "Control Plane Pattern",
             description:
                 "Software that controls other software through declarative APIs and continuous reconciliation",
-            link: "/manuals/cli/how-tos/project",
+            link: "/manuals/cli/howtos/project",
         },
         {
             icon: <Code className="w-6 h-6" />,

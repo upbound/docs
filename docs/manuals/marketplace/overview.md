@@ -52,7 +52,7 @@ Extensions in the Marketplace are published and maintained by a variety of sourc
 <!-- vale Upbound.Spelling = YES -->
 
 
-[providers]: /core-concepts/providers
+[providers]: /manuals/uxp/concepts/packages/providers/
 
 [upbound-marketplace]: https://marketplace.upbound.io
 [crossplane-providers]: https://marketplace.upbound.io/providers

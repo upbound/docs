@@ -5,17 +5,17 @@ const GuidesCards = () => {
     {
       title: 'Solutions',
       description: 'Complete platform deployments including general IDP architecture and Upbound platform reference implementations.',
-      link: './solutions/general-idp'
+      link: '/guides/solutions/general-idp/get-started/'
     },
     {
       title: 'Use Cases',
       description: 'End-to-end scenarios for applications, cloud resources, databases as a service, and managed resources.',
-      link: './usecases'
+      link: '/guides/usecases'
     },
     {
       title: 'Intelligent Controllers',
       description: 'Advanced control plane patterns with dynamic resource composition, log analysis, and database scaling.',
-      link: './intelligent-controllers/intelligent-control-planes/'
+      link: '/guides/solutions/general-idp/get-started'
     }
   ];
 

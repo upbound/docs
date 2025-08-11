@@ -46,7 +46,7 @@ cd solution-idp
 
 ### Install Task CLI
 
-This project leverages [Task](taskfile) for automating setup steps. Install it if you don't have it on your machine.
+This project leverages [Task][taskfile] for automating setup steps. Install it if you don't have it on your machine.
 
 ```shell
 brew install go-task/tap/go-task
@@ -149,10 +149,6 @@ Once everything gets fully provisioned, visit the development portal for your pl
 ## Clean up
 
 To clean up the platform, delete the root `Application` from the bootstrap control plane, then delete all the `XEnvironments` from the bootstrap control plane.
-
-## Next Steps
-
-For a comprehensive guide of the solution and how to extend it to fit your needs, read the rest of the documentation in this solution. Start with learning about the [design guidance](design) for the platform.
 
 [taskfile]: https://taskfile.dev/
 [registerAccount]: https://accounts.upbound.io/register

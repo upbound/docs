@@ -517,16 +517,16 @@ test-package.xpkg
 ```
 
 [oci]: https://opencontainers.org/
-[compositions]: /crossplane/composition/compositions
+[compositions]: /manuals/uxp/concepts/composition/compositions
 [composite-resource-definitions]: /manuals/uxp/concepts/composition/composite-resource-definitions
-[providers]: /crossplane/providers
-[functions]: /crossplane/functions
+[providers]: /manuals/uxp/concepts/packages/providers
+[functions]: /manuals/uxp/concepts/packages/functions
 [getting-started-config]: https://github.com/upbound/configuration-quickstart
 [harbor]: https://goharbor.io/
 [k8s-image-pull-policy]: https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy
 [k8s-private-registry]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-[crossplane-install-config]: /crossplane/get-started/install#customize-the-crossplane-helm-chart
-[crossplane-install-flags]: /crossplane/get-started/install#feature-flags
-[crossplane-install]: /crossplane/get-started/install
+[crossplane-install-config]: https://docs.crossplane.io/latest/get-started/install#customize-the-crossplane-helm-chart
+[crossplane-install-flags]: https://docs.crossplane.io/latest/get-started/install#feature-flags
+[crossplane-install]: https://docs.crossplane.io/latest/get-started/install
 [crossplane-package-spec]: https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md
-[crossplane-cli]: /crossplane/cli
+[crossplane-cli]: /manuals/cli/overview

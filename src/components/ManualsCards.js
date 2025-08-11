@@ -5,32 +5,32 @@ const ManualsCards = () => {
     {
       title: 'Upbound Crossplane (UXP)',
       description: 'Enterprise-grade Crossplane distribution with enhanced compositions, functions, operations, and package management.',
-      link: './uxp/overview'
+      link: '/manuals/uxp/overview'
     },
     {
       title: 'Spaces',
       description: 'Managed Crossplane control plane environments with cloud and self-hosted deployment options.',
-      link: './spaces/overview'
+      link: '/manuals/spaces/overview'
     },
     {
       title: 'CLI',
       description: 'Command-line tools for managing Upbound configurations, contexts, and project tooling.',
-      link: './cli/overview'
+      link: '/manuals/cli/overview'
     },
     {
       title: 'Console',
       description: 'Web-based management interface with MCP Query API and self-service capabilities.',
-      link: './console/'
+      link: '/manuals/console/'
     },
     {
       title: 'Official Packages',
       description: 'Production-ready provider packages for cloud and infrastructure platforms with authentication and migration guides.',
-      link: './packages/overview'
+      link: '/manuals/packages/overview'
     },
     {
       title: 'Marketplace',
       description: 'Package discovery, publishing, and repository management platform for internal and public distribution.',
-      link: './marketplace/overview'
+      link: '/manuals/marketplace/overview'
     },
     {
       title: 'Platform',

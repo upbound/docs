@@ -11,7 +11,7 @@ registries, it must be configured to trust the CA and Intermediate certs.
 
 Crossplane needs to be installed via the Helm chart with the 
 `registryCaBundleConfig.name` and `registryCaBundleConfig.key` parameters 
-defined. See [Install Crossplane](/crossplane/get-started/install).
+defined. See [Install Crossplane](https://docs.crossplane.io/latest/get-started/install/).
 
 ## Configure
 

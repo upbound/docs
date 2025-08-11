@@ -5,27 +5,27 @@ const ReferenceCards = () => {
     {
       title: 'APIs',
       description: 'Crossplane API, Query API, Spaces API, and Testing API with CRD specifications.',
-      link: './apis'
+      link: '/reference/apis'
     },
     {
       title: 'CLI Reference',
       description: 'Command-line interface documentation with complete command reference and usage examples.',
-      link: './cli-reference'
+      link: '/reference/cli-reference'
     },
     {
       title: 'Helm Reference',
       description: 'Helm chart configuration and deployment reference documentation.',
-      link: './helm-reference'
+      link: '/reference/helm-reference'
     },
     {
       title: 'Release Notes',
       description: 'Latest updates and changes for Spaces, Managed Control Plane Connector, and Up CLI with version history.',
-      link: './release-notes'
+      link: '/reference/release-notes'
     },
     {
       title: 'Usage & Operations',
       description: 'Feature lifecycle, licensing, telemetry, support information, and VS Code extensions.',
-      link: './usage'
+      link: '/reference/usage'
     }
   ];
 
