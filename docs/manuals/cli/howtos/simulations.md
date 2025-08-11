@@ -297,4 +297,4 @@ review the [overview documentation][overview-documentation] on Simulations.
 
 [overview-documentation]: /manuals/spaces/howtos/simulations
 [reach-out-to-upbound]: https://www.upbound.io/contact
-[simulation-api]: /reference/apis/spaces-api/
+[simulation-api]: /reference/apis/spaces-api/latest/#simulations

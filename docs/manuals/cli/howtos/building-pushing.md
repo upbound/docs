@@ -132,7 +132,7 @@ shared across multiple compositions, reference them manually in the
 * [Control plane project concepts][projects] - Understanding project structure
 * [Embedded functions guide][functions] - Creating and managing functions
 
-[up-cli]: /manuals/cli/
+[up-cli]: /manuals/cli/overview
 [projects]: /manuals/cli/concepts/projects
 [functions]: /manuals/cli/howtos/compositions/go
 [up-cli-reference]: /reference/cli-reference

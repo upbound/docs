@@ -17,7 +17,7 @@ authentication contexts without re-entering credentials each time.
 
 :::tip
 Ready to configure your control plane context? Go to the [how-to
-guide](../how-tos/profile-config) for profile setup.
+guide][context] for profile setup.
 :::
 
 The `up` CLI uses the specified profile when set via the `--profile` flag or
@@ -44,4 +44,4 @@ deployment patterns in the Upbound ecosystem. All profiles created in previous
 versions are automatically treated as cloud profiles in newer versions, ensuring
 backward compatibility.
 
-[howto]: /manuals/cli/howtos/profile-config
+[context]: /manuals/cli/howtos/profile-config
