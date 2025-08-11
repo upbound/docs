@@ -740,7 +740,7 @@ spec:
 
 <!--- TODO(tr0njavolta): fix redirect --->
 [upbound-auth-oidc]: /manuals/platform/howtos/oidc
-[upbound-cloud-spaces]: /deploy
+[upbound-cloud-spaces]: /manuals/spaces/overview
 
 
 [aws-access-keys]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html

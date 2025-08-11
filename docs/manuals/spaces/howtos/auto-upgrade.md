@@ -119,4 +119,4 @@ conditions:
 ```
 
 
-[preceding-minor-versions]: /usage/lifecycle/#maintenance-and-updates
+[preceding-minor-versions]: /reference/usage/lifecycle/#maintenance-and-updates

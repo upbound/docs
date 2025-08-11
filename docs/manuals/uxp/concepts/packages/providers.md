@@ -955,5 +955,5 @@ spec:
 [crossplane-install-config]:https://docs.crossplane.io/latest/get-started/install/#customize-the-crossplane-helm-chart 
 [crossplane-install-flags]:https://docs.crossplane.io/latest/get-started/install/#feature-flags 
 [crossplane-install]: https://docs.crossplane.io/latest/get-started/install/#installation-options
-[crossplane-troubleshooting]: /crossplane/guides/troubleshoot-crossplane#deleting-when-a-resource-hangs
+[crossplane-troubleshooting]: https://docs.crossplane.io/latest/guides/troubleshoot-crossplane/#deleting-when-a-resource-hangs
 [crd-scaling]: https://github.com/crossplane/crossplane/blob/main/design/one-pager-crd-scaling.md

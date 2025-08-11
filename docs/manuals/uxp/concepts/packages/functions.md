@@ -79,7 +79,7 @@ spec:
 ```
 :::
 
-[composition]: /manuals/uxp/concepts/composition/
+[composition]: /manuals/uxp/concepts/composition/overview
 [composite-resources]: /manuals/uxp/concepts/composition/composite-resources/
 [compositions]: /manuals/uxp/concepts/composition/compositions/
 [providers]: /manuals/uxp/concepts/packages/providers/

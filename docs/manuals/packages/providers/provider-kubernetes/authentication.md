@@ -202,9 +202,9 @@ spec:
 Read the provider-kubernetes examples for examples of how to configure the provider with other auth mechanisms.
 
 [upbound-identity]: /manuals/platform/howtos/oidc
-[upbound-cloud-spaces]: /deploy
-[upbound-apis]: /connect/gitops/#gitops-for-upbound-resources
-[to-a-team]: /operate/accounts/identity-management/robots/#assign-a-robot-to-a-team
-[grant-the-team-a-role]: /operate/accounts/authorization/upbound-rbac/#assign-group-role-permissions
-[generate-a-kubeconfig-for-a-space]: /operate/cli/contexts/#generate-a-kubeconfig-for-a-space
-[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /operate/cli/contexts/#generate-a-kubeconfig-for-a-control-plane-in-a-group
+[upbound-cloud-spaces]: /manuals/spaces/overview
+[upbound-apis]: /manuals/spaces/howtos/self-hosted/gitops/#gitops-for-upbound-resources
+[to-a-team]: /manuals/platform/concepts/identity-management/robots/#assign-a-robot-to-a-team
+[grant-the-team-a-role]: /manuals/platform/concepts/authorization/upbound-rbac/#assign-group-role-permissions
+[generate-a-kubeconfig-for-a-space]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-space
+[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group

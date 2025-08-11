@@ -86,8 +86,8 @@ materially similar use.
 Customers with paid support contracts can receive pre-release cuts on an as-needed basis for all covered software.
 
 
-[spaces]: /deploy/spaces
-[uxp]: /uxp
+[spaces]: /manuals/spaces/overview
+[uxp]: /manuals/uxp/overview
 [official-providers]: /manuals/packages/policies
 
 [crossplane-release-cycle]: https://docs.crossplane.io/knowledge-base/guides/release-cycle/

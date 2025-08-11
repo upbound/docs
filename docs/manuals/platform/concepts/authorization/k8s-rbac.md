@@ -248,7 +248,6 @@ kubectl create namespace team1
 
 Create the _Role_ and _RoleBinding_ to let users in this namespace create and edit `SQLInstances`. Apply the following manifests to your control plane:
 
-<!--- TODO(tr0njavolta): tabs --->
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -292,7 +291,7 @@ Users in `team1` can now access the control plane and only have the ability to m
 
 [upbound-rbac]: /manuals/platform/concepts/authorization/upbound-rbac
 [upbound-rbac-1]: /manuals/platform/concepts/authorization/upbound-rbac
-[upbound-console]: /operate/accounts/identity-management/teams/#add-users
-[upbound-console-2]: /operate/accounts/authorization/upbound-rbac/#assign-group-role-permissions
+[upbound-console]: /manuals/platform/concepts/identity-management/teams/#add-users
+[upbound-console-2]: /manuals/platform/concepts/authorization/upbound-rbac/#assign-group-role-permissions
 [kubernetes-role-based-access-control]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 [configuration-azure-data]: https://marketplace.upbound.io/configurations/upbound/configuration-azure-database

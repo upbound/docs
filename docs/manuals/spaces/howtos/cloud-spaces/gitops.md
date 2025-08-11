@@ -289,7 +289,7 @@ You can now create _Objects_ in the control plane which wrap Space APIs.
 [generate-a-kubeconfig]: /manuals/cli/concepts/contexts
 [control-plane-groups]: /manuals/spaces/concepts/groups
 [control-planes]: /manuals/spaces/concepts/control-planes
-[upbound-iam-resources]: /manuals/platform/identity-management
+[upbound-iam-resources]: /manuals/platform/concepts/identity-management
 [space-apis]: /reference/apis/spaces-api/v1_9
 [space-apis-1]: /reference/apis/spaces-api/v1_9
 [control-plane-groups-2]: /manuals/spaces/concepts/groups

@@ -79,10 +79,9 @@ support][upbound-support] to transfer organization ownership.
 [teams]: /manuals/platform/concepts/identity-management/teams
 [organization]: /manuals/platform/concepts/identity-management/organizations
 [up-command-line]: /manuals/cli/overview
-[kubernetes-image-pull-secret]: /upbound-marketplace/authentication#kubernetes-image-pull-secrets
+[kubernetes-image-pull-secret]: /manuals/marketplace/authentication#kubernetes-image-pull-secrets
 [upbound-support]: /reference/usage/support
 
-<!--- TODO(tr0njavolta): support link --->
 [account-settings]: https://accounts.upbound.io/settings
 [upbound-registration-page]: http://accounts.upbound.io/register
 [upbound-marketplace]: http://marketplace.upbound.io

@@ -200,9 +200,9 @@ kubectl delete controlplane ctp1
 
 [up-space-init]: /reference/cli-reference
 [quickstart]: /
-[aws]: /deploy/self-hosted-spaces/aws
-[azure]: /deploy/self-hosted-spaces/azure
-[gcp]: /deploy/self-hosted-spaces/gcp
+[aws]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment 
+[azure]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment  
+[gcp]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment  
 [up-space-upgrade]: /reference/cli-reference
 [spaces-release-notes]: /reference/release-notes/spaces
 [up-space-upgrade-1]: /reference/cli-reference
@@ -210,5 +210,4 @@ kubectl delete controlplane ctp1
 [up-space-destroy]: /reference/cli-reference
 [up-cli]: /reference/cli-reference
 [upbound-s-saas-environment]: /manuals/spaces/howtos/self-hosted/spaces-management
-[spaces-git-integration]: /connect/git-integration
-<!--- TODO(tr0njavolta): links --->
+[spaces-git-integration]: /manuals/spaces/howtos/self-hosted/gitops

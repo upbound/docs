@@ -36,7 +36,7 @@ export function Standard() {
         <span><LockIcon size={14} /> Standard Plan Feature</span>
       </div>
       <p className="plan-callout__content">
-        This is a <strong>Standard Plan</strong> feature. For more information, see our{' '}
+        This feature is available in the <strong>Standard Plan</strong> and above. For more information, see our{' '}
         <a href="https://www.upbound.io/pricing">pricing plans</a> or{' '}
         <a href="https://www.upbound.io/contact">contact our sales team</a>.
       </p>
@@ -66,7 +66,7 @@ export function Enterprise() {
         <span><LockIcon size={14} /> Enterprise Plan Feature</span>
       </div>
       <p className="plan-callout__content">
-        This is an <strong>Enterprise Plan</strong> feature. For more information, see our{' '}
+        This feature is available in the <strong>Enterprise Plan</strong> and above. For more information, see our{' '}
         <a href="https://www.upbound.io/pricing">pricing plans</a> or{' '}
         <a href="https://www.upbound.io/contact">contact our sales team</a>.
       </p>

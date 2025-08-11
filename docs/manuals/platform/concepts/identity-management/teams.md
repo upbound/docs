@@ -87,5 +87,5 @@ To create a new permission:
 
 [users]: /manuals/platform/concepts/identity-management/users
 [organization]: /manuals/platform/concepts/identity-management/organizations
-[robots-documentation]: /operate/accounts/identity-management/robots/#assign-a-robot-to-a-team
+[robots-documentation]: /platform/concepts/identity-management/robots/#assign-a-robot-to-a-team
 [multiple-organizations]: /img/user-org-team.png "A user can be in multiple orgs and multiple groups"
