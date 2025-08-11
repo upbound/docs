@@ -1007,38 +1007,6 @@ The `project run` command builds and deploys any changes. If you don't have a co
 
 :::
 
-Create a _ClusterRoleBinding_ to give your control plane the ability to create the necessary Kubernetes resource:
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: crossplane-clusteradmin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: crossplane
-  namespace: crossplane-system
-```
-
-Save as `rbac.yaml` and apply it:
-
-```shell
-kubectl apply -f rbac.yaml
-```
-
-:::warning
-
-The _ClusterRoleBinidng_ above gives full admin access to Crossplane. While this
-is fine for development purposes, it's advised for production scenarios to be
-diligent in what permissions you grant Crossplane. Only give it what's
-necessary to create and manage the resources you need it to.
-
-:::
-
 ## Use the custom resource
 
 Your control plane now understands _WebApp_ resources. Create a _WebApp_:
