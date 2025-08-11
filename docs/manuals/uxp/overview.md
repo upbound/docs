@@ -24,9 +24,9 @@ Upbound Crossplane comes with a number of features that help you start, run, and
 
 UXP is available to any users under Upbound's Community plan. Commercial licenses are available. Some features are available for Community plan users, while others require a commercial license. See [license management][licensing] for more details.
 
-## Guides
+## How-tos 
 
-For guides related to Crossplane and the features in UXP, read the [guides documentation][guides].
+To learn about Crossplane and UXP features, read the [how-to guides][guides].
 
 ## Deploy and run UXP
 

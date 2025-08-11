@@ -491,7 +491,7 @@ don't need a Crossplane control plane to do this. The Crossplane CLI uses Docker
 Engine to run functions.
 
 :::tip
-See the [Crossplane CLI docs][cli-docs] to
+See the [CLI docs][cli-docs] to
 learn how to install and use the Crossplane CLI.
 :::
 
@@ -582,16 +582,9 @@ and required resource access patterns.
 1. **Return meaningful output** - Use the output field to track what the
    operation accomplished for monitoring and debugging
 
-## Next steps
-
-- [Get started with Operations][get-started-operations] to create your first Operation
-- Learn about [CronOperation][cronOperation] for scheduled operations
-- Learn about [WatchOperation][watchOperation] for reactive operations
-<!--- TODO(tr0njavolta): LINKS--->
-<!-- [get-started-operations]: ../get-started/get-started-with-operations -->
-<!-- [cronOperation]: cronoperation -->
-<!-- [watchOperation]: watchoperation -->
-<!-- [rbac-manager]: ../guides/pods#rbac-manager-pod -->
-<!-- [compositions-rbac]: ../composition/compositions#grant-access-to-composed-resources -->
-<!-- [cli-docs]: ../cli -->
-<!-- [docker]: https://www.docker.com -->
+[cronOperation]: /manuals/uxp/concepts/operations/cronoperation
+[watchOperation]: /manuals/uxp/concepts/operations/watchoperation
+[rbac-manager]: /manuals/uxp/howtos/crossplane/pods#rbac-manager-pod
+[compositions-rbac]: /manuals/uxp/concepts/composition/compositions#grant-access-to-composed-resources
+[cli-docs]: https://docs.crossplane.io/latest/get-started/install
+[docker]: https://www.docker.com

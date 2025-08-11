@@ -25,7 +25,7 @@ Examples of providers include:
 Providers define every external resource they can create in Kubernetes as a
 Kubernetes API endpoint.  
 These endpoints are
-[_Managed Resources_](/manuals/uxp/concepts/managed-resources/overview/managed-resources).
+[_Managed Resources_][mrs].
 <!-- vale write-good.Passive = YES -->
 
 
@@ -941,6 +941,7 @@ spec:
     name: admin-keys
 ```
 </div>
+[mrs]: /manuals/uxp/concepts/managed-resources/overview
 [vpa]: /manuals/uxp/howtos/self-managed-uxp/provider-vpa/
 [official-provider-aws]: https://marketplace.upbound.io/providers/provider-family-aws
 [official-provider-azure]: https://marketplace.upbound.io/providers/provider-family-azure

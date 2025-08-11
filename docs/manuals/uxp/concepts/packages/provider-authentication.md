@@ -354,15 +354,17 @@ spec:
     name: key-based-providerconfig
 ```
 </div>
+
 ## Next steps
+
 Now that you have authenticated with your provider, the next step is to [build your control plane project][build-your-control-plane-project].
 
 
-[build-your-control-plane-project]: /guides/projects/building-pushing
-[provider-documentation]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
+[build-your-control-plane-project]: /manuals/cli/howtos/building-pushing
+[provider-documentation]: /manuals/packages/providers/provider-aws/authentication
 [download-your-aws-access-key]: https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys
-[provider-documentation-1]: /manuals/packages/manuals/packages/providers/provider-azure/authentication
+[provider-documentation-1]: /manuals/packages/providers/provider-azure/authentication
 [install-guide]: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
-[provider-documentation-2]: /manuals/packages/manuals/packages/providers/provider-gcp/authentication
+[provider-documentation-2]: /manuals/packages/providers/provider-gcp/authentication
 [download-your-gcp-service-account-key]: https://cloud.google.com/iam/docs/keys-create-delete#creating
 <!--- TODO(tr0njavolta): links --->

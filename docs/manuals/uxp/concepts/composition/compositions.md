@@ -760,10 +760,10 @@ context.
 
 [xrds]: /manuals/uxp/concepts/composition/composite-resource-definitions/
 [xrs]: /manuals/uxp/concepts/composition/composite-resources/
-[function-patch-and-transform]: /manuals/uxp/howtos/function-patch-and-transform/
-[packages]: /manuals/uxp/packages/functions/
-[providers]: /manuals/uxp/packages/providers/
-[managed-resources]: /manuals/uxp/managed-resources/managed-resources/
-[rbac-manager]: /manuals/uxp/howtos/pods/#rbac-manager-pod
+[function-patch-and-transform]: /manuals/uxp/howtos/crossplane/function-patch-and-transform/
+[packages]: /manuals/uxp/concepts/packages/functions/
+[providers]: /manuals/uxp/concepts/packages/providers/
+[managed-resources]: /manuals/uxp/concepts/managed-resources/overview
+[rbac-manager]: /manuals/uxp/howtos/crossplane/pods#rbac-manager-pod
 [cli]: /manuals/cli/overview
 [guides]: /manuals/cli/howtos/compositions/python/

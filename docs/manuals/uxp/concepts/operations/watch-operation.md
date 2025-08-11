@@ -572,13 +572,6 @@ operational considerations, see [Operation best practices][operation-best-practi
 1. Review function logs for processing errors
 1. Ensure functions can handle the specific resource types under watch
 
-## Next steps
-
-- Learn about [Operation][operation] for one-time operational tasks
-- Learn about [CronOperation][cronoperation] for scheduled operations
-- [Get started with Operations][get-started-operations] to create your first reactive operation
-<!--- TODO(tr0njavolta): LINKS --->
-<!-- [operation]: operation -->
-<!-- [cronoperation]: cronoperation -->
-<!-- [get-started-operations]: ../get-started/get-started-with-operations -->
-<!-- [operation-best-practices]: operation#best-practices -->
+[operation]: /manuals/uxp/concepts/operations/overview/
+[cronoperation]: /manuals/uxp/concepts/operations/cronoperation
+[operation-best-practices]: /manuals/uxp/concepts/operations/overview#best-practices

@@ -330,17 +330,11 @@ operational considerations, see [Operation best practices][operation-best-practi
 1. Verify you set history limits appropriately
 1. Check for events about garbage collection failures
 
-## Next steps
-
-- Learn about [Operation][operation] for one-time operational tasks
-- Learn about [WatchOperation][watchoperation] for reactive operations
-- [Get started with Operations][get-started-operations] to try scheduling your first operation
-<!--- TODO(tr0njavolta): LINKS --->
-<!-- [operation]: overview -->
-<!-- [watchoperation]: /guides/projects/project -->
-<!-- [get-started-operations]: ../get-started/get-started-with-operations -->
-<!-- [operation-best-practices]: operation#best-practices -->
-<!-- [cron]: https://en.wikipedia.org/wiki/Cron -->
-<!-- [compositions]: /uxp/composition/overview -->
-<!-- [ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/ -->
-<!-- [functionMarketplace]: https://marketplace.upbound.io/functions -->
+[operation]: /manuals/uxp/concepts/operations/overview
+[watchoperation]: /guides/projects/project
+[get-started-operations]: ../get-started/get-started-with-operations
+[operation-best-practices]: /manuals/uxp/concepts/operations/overview/#best-practices/
+[cron]: https://en.wikipedia.org/wiki/Cron
+[compositions]: /uxp/composition/overview
+[ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/
+[functionMarketplace]: https://marketplace.upbound.io/functions
