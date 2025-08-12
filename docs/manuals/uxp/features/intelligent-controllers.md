@@ -66,9 +66,8 @@ Learn about example use cases of Intelligent Controllers by [reading the guides]
 [add-on-concept]: /manuals/uxp/concepts/packages/add-ons
 [intelligent-controllers-guides]: /guides/intelligent-controllers/scale-database
 <!--TODO crwilhit: replace with actual marketplace listings-->
-[function-claude]: https://marketplace.upbound.io
-[function-openai]: https://marketplace.upbound.io
-[function-ai-status-transformer]: https://marketplace.upbound.io
-[function-pod-analyzer]: https://marketplace.upbound.io
-[controlplane-mcp-server]: https://marketplace.upbound.io
-[marketplace-mcp-server]: https://marketplace.upbound.io
+[function-claude]: https://marketplace.upbound.io/functions/upbound/function-claude/
+[function-openai]: https://marketplace.upbound.io/functions/upbound/function-openai/
+[function-claude-status-transformer]: https://marketplace.upbound.io/functions/upbound/function-claude-status-transformer/
+[controlplane-mcp-server]: https://marketplace.upbound.io/addons/upbound/addon-controlplane-mcp-server/
+[marketplace-mcp-server]: https://marketplace.upbound.io/addons/upbound/addon-marketplace-mcp-server/
