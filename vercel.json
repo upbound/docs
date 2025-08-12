@@ -775,7 +775,7 @@
         {
             "source": "/manuals/console",
             "destination": "/manuals/console/upbound-console",
-            "premanent": true
+            "permanent": true
         },
         {
             "source": "/core-concepts/adding-dependencies",
