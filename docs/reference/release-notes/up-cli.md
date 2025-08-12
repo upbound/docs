@@ -7,7 +7,7 @@ toc_max_heading_level: 2
 
 <!--vale off -->
 
-<!-- Release notes template/Copy&Paste 
+<!-- Release notes template/Copy&Paste
 ## vX.Y.Z
 
 ### Release Date: YYYY-MM-DD
@@ -23,6 +23,59 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+
+## v0.40.0
+
+### Release Date: 2025-08-12
+
+##### What's Changed
+
+- AI Integration: Added `up project ai configure-tools` command for AI-assisted configuration generation
+- API Connector: Introduced `up api-connector` CLI for managing API connections
+- UXP Management:
+  - Added `up uxp license show`, `apply`, and management commands
+  - Added `up uxp web-ui open`, `enable`, and `disable` commands for web UI management
+  - Support for development licenses and license validation improvements
+- Project:
+  - Added `up project init` Improved project initialization with new wizard flow and templates
+  - Added `up project run --local` command for local control planes
+  - Added `up project stop` command for tearing down control planes
+  - Added `up operation generate` for operation functions
+  - Improved package readiness detection with RuntimeHealthy condition
+  - Support for Upbound AddOns installation
+- Authentication:
+  - Added `up ctp oidc-auth aws` for OIDC authentication support
+- Dependencies:
+  - Enhanced `up dep add` to support controllers, addons and API dependencies
+- Migration:
+  - Promoted: `up ctp migration` migration commands out of alpha status
+- Telemetry:
+  - Integrated telemetry and tracing
+- XRD Support:
+  - Added support for Crossplane V2 XRDs
+- Schema Generation:
+  - Enhanced schema generators for Go, Python, KCL and Go-Templating
+  - Support for Kubernetes Core resource schemas
+  - Support for Crossplane Core resource schemas
+- Testing:
+  - Enhanced `up test` with initResources
+  - Added `functionCredentialsPath` to composition test schema
+
+##### Bug Fixes
+
+- Fixed recursion errors when serializing Kubernetes objects with JSON fields
+- Resolved panic in test scenarios when items are variables
+- Fixed symlink handling for Windows
+- Fixed issues with duplicate file paths in `up project run`
+- Improved error handling and session expiry checks for logged-in users
+- Fixed bugs in package readiness detection
+
+##### Breaking Changes
+
+- Projects v1alpha1 now require Crossplane >=v1.19
+- Projects v1alpha2 now require Crossplane >=v2.0.0
+- Context required for logout command
+- Schemas: Python enum fields as literal
 
 ## v0.39.1
 
@@ -316,7 +369,7 @@ https://docs.upbound.io/core-concepts/projects/
 :::hint
 - Web-based login (previously `up alpha web-login`) is now the default for `up login`. Use `up login --username=<user>` to invoke interactive terminal login.
 - `up configuration` is now stubbed out, since Configurations are not currently supported in Upbound.
-::: 
+:::
 
 #### What's Changed
 
