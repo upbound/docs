@@ -550,7 +550,6 @@
             "source": "/apis-cli/cli-reference",
             "destination": "/reference/apis",
             "permanent": true
-
         },
         {
             "source": "/deploy/self-hosted-spaces/helm-reference",
@@ -1248,6 +1247,16 @@
             "permanent": true
         },
         {
+            "source": "/operate/cli",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
             "source": "/operate/cli/",
             "destination": "/manuals/cli/overview",
             "permanent": true
@@ -1256,9 +1265,66 @@
             "source": "/deploy/self-hosted-spaces/",
             "destination": "/manuals/spaces/overview",
             "permanent": true
+        },
+        {
+            "source": "/build/control-plane-projects/authoring-compositions/go",
+            "destination": "/manuals/cli/howtos/compositions/go/",
+            "permanent": true
+        },
+        {
+            "source": "/build/control-plane-projects/authoring-compositions/go/",
+            "destination": "/manuals/cli/howtos/compositions/go/",
+            "permanent": true
+        },
+        {
+            "source": "/learn/core-concepts/providers",
+            "destination": "/manuals/uxp/concepts/packages/providers/",
+            "permanent": true
+        },
+        {
+            "source": "/learn/core-concepts/providers/",
+            "destination": "/manuals/uxp/concepts/packages/providers/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/legacy-spaces/multicloud-deploy",
+            "destination": "/reference/space-api/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/legacy-spaces/multicloud-deploy/",
+            "destination": "/reference/space-api/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/space-api",
+            "destination": "/reference/apis/spaces-api/latest/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/space-api/",
+            "destination": "/reference/apis/spaces-api/latest/",
+            "permanent": true
+        },
+        {
+            "source": "/build/repositories",
+            "destination": "/manuals/marketplace/repositories/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/build/repositories/",
+            "destination": "/manuals/marketplace/repositories/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/cli/command-reference",
+            "destination": "/reference/cli-reference/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/cli/command-reference/",
+            "destination": "/reference/cli-reference/",
+            "permanent": true
         }
-
-
-
     ]
 }
