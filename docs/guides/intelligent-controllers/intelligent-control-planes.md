@@ -37,7 +37,7 @@ Before implementing an intelligent control plane, ensure you have:
 - **AI Integration**: Anthropic API key for Claude integration
 - **Development Environment**: 
   - Upbound Account with access to private packages
-  - `up` CLI installed and configured
+  - `up` CLI (v0.40.0 or later) installed and configured
   - Local Kubernetes development environment
 
 ## Environment setup
