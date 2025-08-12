@@ -1236,6 +1236,18 @@
             "source": "/deploy/dedicated-spaces",
             "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
             "permanent": true
+        },
+        {
+            "source": "/operate/cli",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
         }
+
+
     ]
 }
