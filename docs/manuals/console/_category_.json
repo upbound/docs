@@ -1,8 +1,5 @@
 {
     "label": "Console",
     "position": 4,
-    "collapsed": true,
-    "customProps": {
-        "plan": "standard"
-    }
+    "collapsed": true
 }
