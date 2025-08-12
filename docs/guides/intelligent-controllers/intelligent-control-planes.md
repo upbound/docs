@@ -35,23 +35,12 @@ Before implementing an intelligent control plane, ensure you have:
 - **Infrastructure Access**: AWS account with appropriate IAM permissions
 - **AI Integration**: Anthropic API key for Claude integration
 - **Development Environment**: 
-  - Upbound Account with access to private packages
   - `up` CLI installed and configured
   - Local Kubernetes development environment
 
 ## Environment setup
 
-Login to your Upbound organization:
-
-```shell
-# Configure authenticated access to Upbound packages
-up login --token='<ROBOT_TOKEN>'
-
-# Ensure local project context (not Space-based)
-kubectl config unset current-context
-```
-
-Next, create a new project with AI-enhanced dependencies:
+Create a new project with AI-enhanced dependencies:
 
 ```shell
 # Initialize project with intelligent capabilities
