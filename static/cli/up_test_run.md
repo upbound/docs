@@ -48,9 +48,10 @@ up test run tests/* --e2e --kubectl=.tools/kubectl
 | `--build-cache-dir` | | Path to the build cache directory. |
 | `--max-concurrency` | | Maximum number of functions to build and push at once. |
 | `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
-| `--control-plane-name-prefix` | | Prefex of the control plane name to use. It will be created if not found. |
+| `--control-plane-name-prefix` | | Prefix of the control plane name to use. It will be created if not found. |
 | `--skip-control-plane-check` | | Allow running on a non-development control plane. |
 | `--local` | | Use a local dev control plane, even if Spaces is available. |
+| `--cluster-admin` | | Allow Crossplane cluster admin privileges in the local dev control plane. Defaults to true. |
 | `--local-registry-path` | | Directory to use for local registry images. The default is system-dependent. |
 | `--skip-control-plane-cleanup` | | Skip cleanup of the control plane after the test run. |
 | `--use-current-context` | | Run the project with the current kubeconfig context rather than creating a new dev control plane. |
