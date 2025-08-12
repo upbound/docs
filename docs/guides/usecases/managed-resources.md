@@ -43,11 +43,17 @@ kind create cluster
 Install Upbound Crossplane on your local cluster with the `up` CLI:
 
 ```shell
-up uxp install --enableWebUI
+up uxp install 
 ```
 
-Upbound installs UXP on your local cluster via Helm chart and enable a local
-Web UI to see your control plane resources.
+Upbound installs UXP on your local cluster via Helm chart.
+
+Launch the Upbound Crossplane WebUI for more insight into your resources:
+
+```shell
+up uxp web-ui open
+```
+
 
 ## Install the provider
 
@@ -69,7 +75,7 @@ kind: Provider
 metadata:
   name: crossplane-contrib-provider-aws-s3
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.24.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v2.0.0
 ```
 Next, apply the provider to your local cluster:
 
