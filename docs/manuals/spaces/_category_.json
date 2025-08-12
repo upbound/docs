@@ -1,7 +1,10 @@
 {
   "label": "Spaces",
   "position": 2,
-  "collapsed": true
+  "collapsed": true,
+  "customProps": {
+      "plan": "standard"
+  }
 }
 
 

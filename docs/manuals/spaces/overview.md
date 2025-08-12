@@ -2,7 +2,6 @@
 title: Overview 
 sidebar_position: 1
 description: Spaces are a host environment in Upbound for control planes-as-a-service
-plan: "standard"
 ---
 
 <Standard />
