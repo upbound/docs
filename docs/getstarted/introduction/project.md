@@ -24,7 +24,7 @@ and Kubernetes, read [Manage external resources with providers][providers]
 ## Prerequisites
 
 This quickstart takes around 10 minutes to complete. You should be familiar with
-YAML or programming in Go, Python, and KCL.
+YAML or programming in Go, Python, or KCL.
 
 Before beginning, make sure you have:
 
@@ -1039,7 +1039,10 @@ service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 
 ## Next steps
 
-Now that you know the basics of building with Upbound, extend your _WebApp_ custom resource type with an AI-augmented operation to detect and remediate issues that occur when running app workloads on Kubernetes. Read [Create an AI-augmented operation][integrate-ai].
+Now that you know the basics of building with Upbound, extend your _WebApp_
+custom resource type with an AI-augmented operation to detect and remediate
+issues that occur when running app workloads on Kubernetes. Read [Create an
+AI-augmented operation][integrate-ai].
 
 [up-cli]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io

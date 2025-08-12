@@ -50,18 +50,8 @@ helm upgrade --install --set "args={--kubelet-insecure-tls}" metrics-server metr
 
 ### Install vertical pod autoscaler
 
-Add the VPA Helm repository:
-```bash
-helm repo add cowboysysop https://cowboysysop.github.io/charts/
-helm repo update
-```
-
-Install the VPA component:
-
-```bash
-helm -n vpa install vpa cowboysysop/vertical-pod-autoscaler --version 10.2.1 --create-namespace --set "updater.extraArgs.min-replicas=1"
-```
-
+Follow the [VPA installation instructions][install] instructions before
+continuing.
 
 ## Enable provider autoscaling
 
@@ -179,7 +169,7 @@ from the `UpboundRuntimeConfig`:
 ```bash
 kubectl patch upboundruntimeconfig config-aws --type=merge -p='{"spec":{"capabilities":[]}}'
 ```
-
+[install]:https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/docs/installation.md#prerequisites 
 [metrics]: https://github.com/kubernetes-sigs/metrics-server
 [prometheus]: https://github.com/kubernetes-sigs/prometheus-adapter
 [vpa]: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler

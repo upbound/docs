@@ -482,11 +482,14 @@ Save as `deploymentruntimeconfigs.yaml` and apply it:
 kubectl apply -f deploymentruntimeconfigs.yaml
 ```
 
-These configs associate the permissions you created in the previous step to the functions deployed on your control plane, so the functions can create and interact with _Analysis_ and _Remediation_ types.
+These configs associate the permissions you created in the previous step to the
+functions deployed on your control plane, so the functions can create and
+interact with _Analysis_ and _Remediation_ types.
 
 ## Deploy a bad workload
 
-Deploy a _WebApp_ with the below image provided by Upbound. This image contains a simple workload that intentionally gets into an out-of-memory state:
+Deploy a _WebApp_ with the below image provided by Upbound. This image contains
+a workload that intentionally gets into an out-of-memory state:
 
 ```yaml title="oomkilled.yaml"
 apiVersion: platform.example.com/v1alpha1
@@ -542,7 +545,9 @@ reason: BackOff
 # Let's make sure this is a repeated issue.
 count: 2
 ```
-So it could take a few OOMKill loops for an `Analysis` to be created.
+
+
+It could take a few OOMKill loops for an `Analysis` to be created.
 :::
 
 ### Examine generated Analysis
