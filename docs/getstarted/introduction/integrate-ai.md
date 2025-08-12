@@ -4,31 +4,49 @@ description: "Use Upbound Crossplane to build and manage an AI-powered control p
 sidebar_position: 2
 ---
 
-Upbound Crossplane transforms infrastructure management by integrating AI-powered pipelines directly into your control plane operations. Through LLM-enabled Operation functions, you can build intelligent infrastructure platforms that automatically diagnose issues, suggest fixes, and provide contextual insights about resource health and dependencies.
+Upbound Crossplane transforms infrastructure management by integrating
+AI-powered pipelines directly into your control plane operations. Through
+LLM-enabled Operation functions, you can build intelligent infrastructure
+platforms that automatically diagnose issues, suggest fixes, and provide
+contextual insights about resource health and dependencies.
 
-In this tutorial, you'll learn how to install and configure an intelligent
-operation to detect common issues related to managing apps on Kubernetes, including pods running out-of-memory and getting stuck in a _CrashLoopBackOff_.
+Operations allow you to build workflows using function pipelines that execute
+tasks on resources under management by your control plane. Operations run once
+to completion and then stop, making them ideal for event-driven automation
+tasks.
+
+In this tutorial, you'll learn how to create and configure AI-powered operations
+using Upbound Crossplane to automatically detect common Kubernetes
+pod issues. This tutorial is for platform engineers and DevOps
+practitioners.
 
 ## Prerequisites
 
-* This tutorial continues from the previous step where you defined your [first control plane project][project].
-* The operations you'll create use the Large Language Model Claude by Anthropic. You'll need an Anthropic API key.
+Before you begin, make sure you have:
 
-## Grant additional permissions
+* a defined project from the [previous guide][project]
+* an Anthropic API key for Claude AI integration
+* `kubectl` access to your Kubernetes cluster
+* the [Upbound CLI][up] installed and configured
 
-Make sure you have a running control plane so you can grant it additional permissions. If you stopped your control plane previously, you can launch it again by running the following command in the root of your project directory:
+## Grant permissions to your control plane
+
+To get started, make sure you have a running control plane with the necessary permissions.
+
+Launch your control plane if it's not already running:
 
 ```shell
 up project run --local
 ```
-
 :::tip
-
-The `project run` command builds and deploys any changes. If you don't have a control plane running yet, it creates one, otherwise it'll target your existing control plane.
-
+The `project run` command builds and deploys any changes. If you don't have a
+control plane running yet, it creates one, otherwise it targets your
+existing control plane.
 :::
 
-Create the roles and bindings below to give your control plane the ability to create the necessary Kubernetes resource:
+Next, create a new file called `permissions.yaml`. Copy and paste the
+configuration below to set up the required RBAC permissions for the AI
+operations:
 
 ```yaml
 ---
@@ -187,15 +205,22 @@ rules:
   - watch
 ```
 
-Save as `permissions.yaml` and apply it:
+Apply the permissions to your cluster:
 
 ```shell
 kubectl apply -f permissions.yaml
 ```
 
-## Provide an Anthropic API key
+## Configure Anthropic API access
 
-Function-claude, which you will add as a function in a future step, sends all requests to your Anthropic account. It needs an Anthropic API key to work. Create an [Anthropic API key][anthropic-key] and add it as a secret to your control plane:
+Function-claude sends all requests to your Anthropic account and requires an API
+key to work.
+
+Create an [Anthropic API key][anthropic-key].
+
+Create a new file called `claude.yaml` with your API key as a secret to your
+control plane. Copy and paste the configuration below and replace `you-api-key`
+with your actual Claude API key:
 
 ```yaml
 apiVersion: v1
@@ -207,7 +232,7 @@ stringData:
   ANTHROPIC_API_KEY: "your-api-key"
 ```
 
-Save as `claude.yaml` and apply it:
+Apply the secret to your cluster:
 
 ```shell
 kubectl apply -f claude.yaml
@@ -215,19 +240,20 @@ kubectl apply -f claude.yaml
 
 ## Enable _Analysis_ and _Remediation_ APIs
 
-Upbound Crossplane implements two resource types that complement AI operations and let you have human-in-the-loop intervention. You need to enable these resource types. Run the following command on your cluster:
+Upbound Crossplane uses Analysis and Remediation resource types to 
+complement AI operations and enable human-in-the-loop intervention.
+
+Enable these resource types on your cluster:
 
 ```shell
 kubectl -n crossplane-system patch deployment upbound-controller-manager --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--enable-analysis-and-remediation"}]'
 ```
 
-## Modify your control plane project
+## Add AI functions to your control plane project
 
-Next, you'll add the functions to your project definition and define the logic to analyze pod events for distress.
+Next, add the required functions and configure the AI-powered operations.
 
-### Add functions
-
-Use the up CLI to add the following functions to your control plane project:
+Add the necessary functions to your control plane project:
 
 ```shell
 up dep add xpkg.upbound.io/upbound/function-claude:v0.2.0
@@ -236,21 +262,17 @@ up dep add xpkg.upbound.io/upbound/function-remediation-gate:v0.0.0-202508082335
 up dep add xpkg.upbound.io/upbound/function-event-filter:v0.0.0-20250808235120-d07a570f15d6
 ```
 
-### Generate the operations
-
-[Operations][operations-concept] lets you build workflows using function pipelines that execute tasks on resources under management by your control plane. Operations run once to completion and then stop. You'll create two operations that detect, analyze, and propose remediations for pods in a bad state.
-
-Use the up CLI to generate the operations:
+Generate the operation templates:
 
 ```shell
 up operation generate remediate-oom
 up operation generate analyze-events-for-pod-distress
 ```
 
-Replace the contents of the generated file
-`getting-started/operations/remediate-oom/operation.yaml` with the following:
+Next, create a remediation operation by replacing the contents of
+`getting-started/operations/remediate-oom/operation.yaml` with:
 
-```yaml title="getting-started/operations/remediate-oom/operation.yaml"
+```yaml
 apiVersion: ops.crossplane.io/v1alpha1
 kind: WatchOperation
 metadata:
@@ -275,10 +297,12 @@ spec:
           kind: Input
 ```
 
-Replace the contents of the generated file
-`getting-started/operations/analyze-events-for-pod-distress/operation.yaml` with the following:
 
-```yaml title="getting-started/operations/analyze-events-for-pod-distress/operation.yaml"
+Configure your analysis operation by replacing the contents of
+`getting-started/operations/analyze-events-for-pod-distress/operation.yaml`
+with:
+
+```yaml
 apiVersion: ops.crossplane.io/v1alpha1
 kind: WatchOperation
 metadata:
@@ -376,13 +400,15 @@ spec:
             name: claude
 ```
 
-Deploy these changes to your control plane by using the up CLI:
+Deploy the changes to your control plane:
 
 ```shell
 up project run --local
 ```
 
-### Configure the deployed functions
+Configure the function runtime permissions.
+
+Save the following YAML as `deploymentruntimeconfigs.yaml`:
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1beta1
@@ -476,22 +502,25 @@ spec:
     name: remediation-perms
 ```
 
-Save as `deploymentruntimeconfigs.yaml` and apply it:
+Apply the runtime configurations:
 
 ```shell
 kubectl apply -f deploymentruntimeconfigs.yaml
 ```
 
-These configs associate the permissions you created in the previous step to the
-functions deployed on your control plane, so the functions can create and
-interact with _Analysis_ and _Remediation_ types.
+These configurations associate the permissions you created earlier with the
+functions deployed on your control plane, enabling them to create and
+interact with _Analysis_ and _Remediation_ resources.
 
-## Deploy a bad workload
+## Test the AI-powered operation
 
-Deploy a _WebApp_ with the below image provided by Upbound. This image contains
-a workload that intentionally gets into an out-of-memory state:
+Now you'll deploy a problematic workload to trigger the AI analysis.
 
-```yaml title="oomkilled.yaml"
+Deploy a WebApp that will trigger out-of-memory conditions.
+
+Save the following YAML as `oomkilled.yaml`:
+
+```yaml
 apiVersion: platform.example.com/v1alpha1
 kind: WebApp
 metadata:
@@ -516,26 +545,30 @@ spec:
         cpu: 100m
 ```
 
-Save as `oomkilled.yaml` and apply it:
+This image contains a workload that intentionally causes out-of-memory conditions.
+
+Apply the problematic workload:
 
 ```shell
 kubectl apply -f oomkilled.yaml
 ```
 
-Get the pods and observe that it's in an `OOMKilled` state:
+Verify the pod enters an `OOMKilled` state:
 
 ```shell
 kubectl get pods
 ```
 
-These events trigger the `analyze-pod-events-for-distress` operation to occur. Get the operations, corresponding analyses, and observe that they're created:
+Monitor the AI analysis creation:
 
 ```shell
 kubectl get analysis,operations -A
 ```
 
-:::note 
-Above in the WatchOperation `analyze-events-for-pod-distress` manifest, we filtered events down to:
+
+:::note
+The WatchOperation `analyze-events-for-pod-distress` manifest above filters events down to:
+
 ```yaml
 apiVersion: filter.event.fn.upbound.io/v1alpha1
 kind: Input
@@ -546,28 +579,30 @@ reason: BackOff
 count: 2
 ```
 
-
-It could take a few OOMKill loops for an `Analysis` to be created.
+It may take a few `OOMKill` loops for an Analysis to be created.
 :::
 
-### Examine generated Analysis
+Examine the AI-generated analysis and remediation suggestions:
 
-Once an `Analysis` is created, examine the content and see what suggestions Claude has provided you for remediating the current situation.
-
-```shell 
-kubectl get analysis <analysis name> -o yaml
+```shell
+kubectl get analysis <analysis-name> -o yaml
 ```
+
+Replace `<analysis-name>` with the actual name of the created _Analysis_
+resource. The output shows Claude's analysis of the pod issues and suggested
+remediation steps.
 
 ## Next steps
 
-Now that your control plane is running locally, you're ready to package it as a
-[Configuration][Configuration] image and push it to the Upbound Marketplace.
+Now that your control plane is running locally with AI-powered operations, consider these next steps:
 
-Check out the [Build and push your first Configuration][buildAndPush] tutorial
-to continue.
+* Package your control plane as a [Configuration][Configuration] image and push it to the Upbound Marketplace
+* Complete the [Build and push your first Configuration][buildAndPush] tutorial
+* Explore additional AI-powered operations for other infrastructure scenarios
+* Configure custom remediation strategies for your specific use cases
 
+[up]: /manuals/cli/overview
 [project]: /getstarted/introduction/project
-[operations-concept]: /manuals/uxp/concepts/operations/overview/
 [anthropic-key]: https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key
 [Configuration]: /manuals/uxp/concepts/packages/configurations
 [buildAndPush]: /getstarted/introduction/build-and-push

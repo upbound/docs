@@ -101,11 +101,9 @@ spec:
 
 ### Using selectors with usages
 
-Usages can use selectors
-to define the resource in use or the using one.
-This enables using labels or
-matching controller references
-to define resource instead of providing the resource name.
+Usages can use selectors to define the resource in use or the using one. This
+enables using labels or matching controller references to define resource
+instead of providing the resource name.
 
 ```yaml
 apiVersion: protection.crossplane.io/v1beta1
