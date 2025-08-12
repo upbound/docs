@@ -4,7 +4,8 @@ title: Analyze pod crashes
 
 :::important
 
-This guide requires an Upbound control plane instance running UXP v2.0 or later
+This guide requires an Upbound control plane instance running UXP v2.0 or later.
+Upbound SaaS coming soon.
 
 :::
 
