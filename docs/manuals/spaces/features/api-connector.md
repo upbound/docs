@@ -30,7 +30,7 @@ multi-cluster connectivity.
 
 ## Architecture overview
 
-![API Connector Architecture](/img/api-connector.png)
+![API Connector Architecture](images/api-connector.png)
 
 API Connector uses a **provider-consumer** model:
 
@@ -272,14 +272,14 @@ Bind APIs to make them available in your consumer cluster:
 apiVersion: connect.upbound.io/v1alpha1
 kind: ClusterAPIBinding
 metadata:
-  name: <api-group-name>
+  name: <crd-name>
 spec:
   connectionRef:
     kind: ClusterConnection
     name: <provider-controlplane-name> # Or --name value
 ```
 
-The `ClusterAPIBinding` name must match the **API Group** of the CRD you want to bind.
+The `ClusterAPIBinding` name must match the **Resource.Group** (name of the CustomResourceDefinition) of the CRD you want to bind.
 
 ## Usage example
 
