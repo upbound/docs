@@ -4,8 +4,8 @@ sidebar_position: 80
 description: An introduction to doing GitOps with control planes on Upbound
 plan: "business"
 ---
-<Busniess />
 
+<Business />
 
 GitOps is an approach for managing a system by declaratively describing desired
 resources' configurations in Git and using controllers to realize the desired
