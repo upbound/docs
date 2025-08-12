@@ -281,7 +281,7 @@ spec:
   watch:
     apiVersion: ops.upbound.io/v1alpha1
     kind: Remediation
-    namespace: crossplane-system
+    namespace: default
   concurrencyPolicy: Forbid
   successfulHistoryLimit: 2
   failedHistoryLimit: 1
@@ -311,7 +311,7 @@ spec:
   watch:
     apiVersion: v1
     kind: Event
-    namespace: crossplane-system
+    namespace: default
   concurrencyPolicy: Forbid
   successfulHistoryLimit: 2
   failedHistoryLimit: 1
@@ -562,7 +562,7 @@ kubectl get pods
 Monitor the AI analysis creation:
 
 ```shell
-kubectl get analysis,operations -A
+kubectl get analysis,remediation,remediationrequests,operations -A
 ```
 
 
