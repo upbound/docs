@@ -30,7 +30,7 @@ multi-cluster connectivity.
 
 ## Architecture overview
 
-![API Connector Architecture](images/api-connector.png)
+![API Connector Architecture](/img/api-connector.png)
 
 API Connector uses a **provider-consumer** model:
 
