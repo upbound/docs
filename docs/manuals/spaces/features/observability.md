@@ -3,7 +3,10 @@ title: Observability
 sidebar_position: 50
 description: A guide for how to use the integrated observability pipeline feature
   in a Space.
+plan: "enterprise"
 ---
+
+<Enterprise />
 
 Upbound offers a built-in feature to help you collect and export logs, metrics, and traces for everything running in a Control Plane. Upbound provides an integrated observability pipeline built on the [OpenTelemetry][opentelemetry] project.
 

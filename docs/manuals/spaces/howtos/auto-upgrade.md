@@ -2,7 +2,10 @@
 title: Automatically upgrade control planes
 sidebar_position: 50
 description: How to configure automatic upgrades of Crossplane in a control plane
+plan: "standard"
 ---
+
+<Standard />
 
 Upbound Spaces can automatically upgrade the version of Upbound Crossplane in managed control plane instances. You can edit the `spec.crossplane.autoUpgrade` field in your `ControlPlane` specification with the available release channels below.
 

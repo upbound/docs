@@ -3,7 +3,10 @@ title: Single Sign On in Upbound
 sidebar_position: 1
 description: Configure single sign-on in your Upbound organization to manage user
   access
+plan: "enterprise"
 ---
+
+<Enterprise />
 
 <!-- vale off -->
 Upbound allows organizations to configure single sign-on (SSO) to manage user access. Administrators can secure access to organizational resources and manage permissions with SSO and Directory Sync. Upbound supports integration with your existing Identity Providers (IdPs) for a seamless login experience and Directory Sync for streamlined user management.
@@ -29,6 +32,8 @@ If your organization requires SSO due to compliance or security restrictions, ea
 <!-- vale on -->
 
 ### Directory sync
+
+<Business />
 
 <!-- vale off -->
 Directory sync adds the benefit of automatically updating users in third-party applications when your internal directory changes. For example, when you add the user to a directory like Microsoft AD, you can user Directory Sync to create a new user in your Upbound account. Another benefit of Directory Sync is offboarding. Directory Sync allows you to mitigate security risks by automatically deleting users from your Upbound account as soon as you deactivate or remove them from your directory. Directory Sync provides increased security and automatic user management from a centralized location.

@@ -2,8 +2,10 @@
 title: Control Plane Groups
 sidebar_position: 2
 description: An introduction to the Control Plane Groups in Upbound
-tier: "enterprise"
+plan: "enterprise"
 ---
+
+<Enterprise />
 
 In Upbound, Control Plane Groups (or just, 'groups') are a logical grouping of one or more control planes with shared resources like [secrets][secrets] or [backups][backups]. It's a mechanism for isolating these groups of resources within a single [Space][space]. All role-based access control in Upbound happens at the control plane group-level.
 

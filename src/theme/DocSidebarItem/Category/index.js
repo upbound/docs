@@ -77,16 +77,35 @@ export default function CategoryWrapper(props) {
     categoryPlan = item.customProps.plan;
   }
   
-  // Clone the original category component and modify its label
-  const modifiedItem = {
-    ...item,
-    label: (
-      <div className={styles.sidebarItemContent}>
-        <span className={styles.sidebarItemLabel}>{item.label}</span>
-        {categoryPlan && <PlanBadge plan={categoryPlan} />}
-      </div>
-    )
-  };
+  // Only modify if there's a plan to show
+  if (categoryPlan) {
+    const modifiedItem = {
+      ...item,
+      label: (
+        <span style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          width: '100%',
+          minHeight: '24px',
+          position: 'relative'
+        }}>
+          <span style={{ flex: '1' }}>{item.label}</span>
+          <span style={{ 
+            position: 'absolute',
+            right: '25px', // Right next to where chevron appears
+            left: '170px',
+            top: '50%',
+            transform: 'translateY(-50%)', // Center vertically
+            display: 'flex',
+            alignItems: 'center'
+          }}>
+            <PlanBadge plan={categoryPlan} />
+          </span>
+        </span>
+      )
+    };
+    return <Category {...props} item={modifiedItem} />;
+  }
   
-  return <Category {...props} item={modifiedItem} />;
+  return <Category {...props} />;
 }

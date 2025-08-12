@@ -2,8 +2,10 @@
 title: Control Plane Connector
 weight: 80
 description: A guide for how to connect a Kubernetes app cluster to a control plane in Upbound using the Control Plane connector feature
+plan: "standard"
 ---
 
+<Standard />
 
 Control Plane Connector connects arbitrary Kubernetes application clusters outside the
 Upbound Spaces to your control planes running in Upbound Spaces.

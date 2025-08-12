@@ -1454,6 +1454,86 @@
             "source": "/reference/apis/spaces-api/",
             "destination": "/reference/apis/spaces-api/latest/",
             "permanent": true
+        },
+        {
+            "source": "/operate/api-connector",
+            "destination": "/manuals/spaces/features/api-connector",
+            "permanent": true
+        },
+        {
+            "source": "/operate/accounts/authentication/oidc-configuration", 
+            "destination": "/manuals/spaces/howtos/self-hosted/oidc-configuration",
+            "permanent": true
+        },
+        {
+            "source": "/connect/oidc",
+            "destination": "/manuals/platform/howtos/oidc", 
+            "permanent": true
+        },
+        {
+            "source": "/operate/accounts/authentication/enable-sso",
+            "destination": "/manuals/platform/howtos/enable-sso",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/spaces/console",
+            "destination": "/manuals/console/console",
+            "permanent": true
+        },
+        {
+            "source": "/upbound-marketplace/authentication",
+            "destination": "/manuals/marketplace/authentication",
+            "permanent": true
+        },
+        {
+            "source": "/upbound-marketplace/index",
+            "destination": "/manuals/marketplace/overview",
+            "permanent": true
+        },
+        {
+            "source": "/build/repositories/index", 
+            "destination": "/manuals/marketplace/repositories/overview",
+            "permanent": true
+        },
+        {
+            "source": "/providers/index",
+            "destination": "/manuals/packages/providers/index",
+            "permanent": true
+        },
+        {
+            "source": "/operate/accounts/index",
+            "destination": "/manuals/platform/concepts/identity-management/index",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli/index",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/build/control-plane-projects/index",
+            "destination": "/manuals/cli/howtos/project",
+            "permanent": true
+        },
+                {
+            "source": "/operate/simulations",
+            "destination": "/manuals/cli/howtos/simulations",
+            "permanent": true
+        },
+        {
+            "source": "/release-notes/index",
+            "destination": "/reference/release-notes/index",
+            "permanent": true
+        },
+        {
+            "source": "/usage/index",
+            "destination": "/reference/usage/index",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/self-hosted-spaces/helm-reference/ ",
+            "destination": "/reference/helm-reference",
+            "permanent": true
         }
 
     ]
