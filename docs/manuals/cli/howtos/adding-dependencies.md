@@ -30,7 +30,7 @@ Examples of dependencies include:
    * `xpkg.upbound.io/upbound/provider-aws-s3` - Provider for AWS S3 buckets
    * `xpkg.upbound.io/upbound/provider-azure-storage` - Provider for Azure blob
        storage
-   * `xpkg.upbound.io/upbound/provider-gcp-stroage` - Provider for GCP storage
+   * `xpkg.upbound.io/upbound/provider-gcp-storage` - Provider for GCP storage
 2. **Functions** to add logic and transformations to your compositions:
    * `xpkg.upbound.io/crossplane-contrib/function-go-templating` - Language
        function example
