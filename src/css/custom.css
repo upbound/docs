@@ -19,9 +19,10 @@
   
   /* Secondary Colors */
   --brand-sapphire: #35D0BA;
-  --brand-dandelion: #F3807B;
+  --brand-dandelion: #FFCD3C;
   --brand-spruce: #183D54;
   --brand-magenta: #EE56A5;
+  --brand-peach: #F3807B;
   
   /* Neutral Scale */
   --brand-neutral-000: #FFFFFF;  /* White */
@@ -398,19 +399,18 @@ table tbody tr:hover {
 /* Landing Page Layout */
 .landing-page {
   min-height: calc(100vh - var(--ifm-navbar-height));
-  background: linear-gradient(135deg, var(--brand-neutral-100) 0%, var(--brand-purple-50) 100%);
   animation: fadeInUp 0.6s ease-out;
 }
 
 /* Hero Section */
 .hero-section {
   position: relative;
-  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-purple-600) 50%, var(--grape) 100%);
-  min-height: 50vh;
+  padding: 3rem 0;
   display: flex;
   align-items: center;
   color: white;
 }
+
 
 .hero-content {
   max-width: 1200px;
@@ -421,14 +421,43 @@ table tbody tr:hover {
 
 .hero-text {
   text-align: center;
-  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
+/* SVG Styling - Larger, zoomed in size */
+.hero-svg-container {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-svg {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.hero-svg:hover {
+  transform: scale(1.02);
+}
+/* Light mode text contrast fixes */
+html[data-theme='light'] .hero-title {
+  color: black !important;
+}
+
+html[data-theme='light'] .hero-description {
+  color: black !important;
+}
 .hero-title {
   font-size: 4rem;
   font-weight: 900;
   color: white !important;
-  margin-bottom: 1.5rem;
+  margin: 0;
   line-height: 1.1;
   font-family: var(--ifm-heading-font-family);
 }
@@ -444,10 +473,8 @@ table tbody tr:hover {
 .hero-description {
   font-size: 1.25rem;
   color: var(--brand-purple-100) !important;
-  margin-bottom: 2rem;
+  margin: 0;
   max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
   line-height: 1.6;
 }
 
@@ -522,7 +549,6 @@ table tbody tr:hover {
 /* Features Section */
 .features-section {
   padding: 4rem 0;
-  background-color: var(--ifm-background-color);
 }
 
 .section-header {
@@ -595,7 +621,6 @@ table tbody tr:hover {
 /* Documentation Sections */
 .docs-section {
   padding: 4rem 0;
-  background-color: var(--upbound-light-bg);
 }
 
 .docs-grid {
@@ -626,15 +651,23 @@ table tbody tr:hover {
 .doc-card-header {
   padding: 1.5rem;
   color: white;
-  background: linear-gradient(135deg, var(--brand-purple-500), var(--brand-purple-600));
 }
 
-.doc-card-header.getstarted { background: linear-gradient(135deg, var(--brand-purple-500), var(--brand-purple-500)); }
-.doc-card-header.guides { background: linear-gradient(135deg, var(--brand-accent-blue), var(--brand-purple-600)); }
-.doc-card-header.manuals { background: linear-gradient(135deg, var(--brand-accent-green), var(--brand-sapphire)); }
-.doc-card-header.reference { background: linear-gradient(135deg, var(--brand-accent-orange), var(--brand-accent-red)); }
-.doc-card-header.solutions { background: linear-gradient(135deg, var(--brand-purple-600), var(--grape)); }
+.doc-card-header.getstarted { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-purple-900) 100%);
+}
 
+.doc-card-header.guides { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-sapphire) 100%);
+}
+
+.doc-card-header.manuals { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-magenta) 100%);
+}
+
+.doc-card-header.reference { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-spruce) 100%);
+}
 .doc-card-icon {
   margin-bottom: 1rem;
 }
@@ -653,6 +686,7 @@ table tbody tr:hover {
 
 .doc-card-description {
   opacity: 0.9;
+  font-weight: 600;
   line-height: 1.6;
   margin: 0;
 }
@@ -675,6 +709,8 @@ table tbody tr:hover {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
+
+  font-weight: 600;
   margin-bottom: 0.75rem;
   color: var(--font-color-medium);
   line-height: 1.5;
@@ -705,11 +741,22 @@ table tbody tr:hover {
   text-decoration: none;
 }
 
-.doc-card-button.get-started { background: linear-gradient(135deg, var(--brand-accent-blue), var(--brand-purple-500)); }
-.doc-card-button.guides { background: linear-gradient(135deg, var(--brand-accent-blue), var(--brand-purple-500)); }
-.doc-card-button.manuals { background: linear-gradient(135deg, var(--brand-accent-green), var(--brand-sapphire)); }
-.doc-card-button.reference { background: linear-gradient(135deg, var(--brand-accent-orange), var(--brand-accent-red)); }
-.doc-card-button.solutions { background: linear-gradient(135deg, var(--brand-purple-600), var(--grape)); }
+.doc-card-button.getstarted { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-purple-900) 100%);
+}
+
+.doc-card-button.guides { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-sapphire) 100%);
+}
+
+.doc-card-button.manuals { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-magenta) 100%);
+}
+
+.doc-card-button.reference { 
+  background: linear-gradient(135deg, var(--brand-purple-500) 0%, var(--brand-spruce) 100%);
+}
+ 
 
 .doc-card-button:hover {
   transform: scale(1.02);
@@ -724,7 +771,6 @@ table tbody tr:hover {
 /* Quick Start Section */
 .quickstart-section {
   padding: 4rem 0;
-  background: linear-gradient(135deg, var(--brand-neutral-800), var(--brand-neutral-900));
   color: white;
 }
 
@@ -929,17 +975,16 @@ html[data-theme='dark'] .landing-page {
   background: linear-gradient(135deg, var(--brand-purple-900) 0%, var(--brand-neutral-800) 100%) !important;
 }
 
-html[data-theme='dark'] .hero-section {
-  background: linear-gradient(135deg, var(--brand-purple-600) 0%, var(--brand-purple-700) 50%, var(--grape) 100%) !important;
+/* Dark mode text adjustments */
+html[data-theme='dark'] .hero-title {
+  color: var(--ifm-color-primary-lightest) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-html[data-theme='dark'] .features-section {
-  background-color: var(--brand-purple-900) !important;
+html[data-theme='dark'] .hero-description {
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 
-html[data-theme='dark'] .docs-section {
-  background-color: var(--brand-neutral-800) !important;
-}
 
 html[data-theme='dark'] .feature-card,
 html[data-theme='dark'] .doc-card {
@@ -972,7 +1017,6 @@ html[data-theme='light'] .landing-page {
 }
 
 html[data-theme='light'] .features-section {
-  background-color: white !important;
 }
 
 html[data-theme='light'] .docs-section {
@@ -1016,10 +1060,6 @@ html[data-theme='light'] .terminal-output {
   color: var(--brand-neutral-300) !important;
 }
 
-html[data-theme='light'] .quickstart-section {
-  background: linear-gradient(135deg, var(--brand-neutral-200), var(--brand-neutral-300));
-  color: var(--brand-neutral-900);
-}
 
 html[data-theme='light'] .quickstart-title {
   color: var(--brand-neutral-900) !important;
@@ -1117,6 +1157,34 @@ html[data-theme='dark'] .footer-copyright {
   color: var(--brand-neutral-400);
 }
 
+/* Responsive adjustments for larger SVG */
+@media (max-width: 996px) {
+  .hero-section {
+    padding: 2.5rem 0;
+  }
+  
+  .hero-svg {
+    max-width: 500px;
+  }
+  
+  .navbar {
+    position: relative !important;
+    backdrop-filter: none !important;
+  }
+  
+  .navbar__inner {
+    justify-content: space-between !important;
+  }
+  
+  .navbar__brand {
+    margin-right: auto !important;
+  }
+  
+  .navbar__toggle {
+    margin-left: auto !important;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;
@@ -1137,11 +1205,20 @@ html[data-theme='dark'] .footer-copyright {
   }
   
   .hero-text {
-    padding: 2rem 0;
+    padding: 0;
+    gap: 1rem;
   }
   
   .hero-section {
-    min-height: 60vh;
+    padding: 2rem 0;
+  }
+  
+  .hero-svg {
+    max-width: 420px;
+  }
+  
+  .hero-svg-container {
+    margin-bottom: 0;
   }
   
   .section-title {
@@ -1188,6 +1265,16 @@ html[data-theme='dark'] .footer-copyright {
   .cloud-select, 
   .language-select {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 1.5rem 0;
+  }
+  
+  .hero-svg {
+    max-width: 380px;
   }
 }
 
@@ -1536,24 +1623,4 @@ html[data-theme='dark'] .planBadge {
 /* Collapsible items */
 .menu__list-item-collapsible > .menu__link .sidebarItemContent {
   width: calc(100% - 16px) !important;
-}
-
-
-@media (max-width: 996px) {
-  .navbar {
-    position: relative !important;
-    backdrop-filter: none !important;
-  }
-  
-  .navbar__inner {
-    justify-content: space-between !important;
-  }
-  
-  .navbar__brand {
-    margin-right: auto !important;
-  }
-  
-  .navbar__toggle {
-    margin-left: auto !important;
-  }
 }

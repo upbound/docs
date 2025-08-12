@@ -11,6 +11,7 @@ import {
     Target,
     Rocket,
 } from "lucide-react";
+import HeaderSVG from "@site/static/img/header.svg";
 
 const LandingPage = () => {
     const sections = [
@@ -89,26 +90,28 @@ const LandingPage = () => {
             link: "/manuals/uxp/concepts/composition/overview",
         },
     ];
-    
+
     return (
         <div className="landing-page">
             {/* Hero Section */}
             <div className="hero-section">
                 <div className="hero-content">
                     <div className="hero-text">
+                        <div className="hero-svg-container">
+                            <HeaderSVG className="hero-svg" />
+                        </div>
                         <h1 className="hero-title">Upbound</h1>
                         <p className="hero-description">
-                            Welcome to the Upbound Crossplane, the AI-native
-                            distribution of Crossplane.{" "}
-                            <p className="hero-description">
-                                Build autonomous infrastructure platforms ready
-                                for the age of autonomous systems.
-                            </p>
+                            Welcome to Upbound Crossplane, the AI-native
+                            distribution of Crossplane.
+                        </p>
+                        <p className="hero-description">
+                            Build autonomous infrastructure platforms ready for
+                            the age of autonomous systems.
                         </p>
                     </div>
                 </div>
             </div>
-            
             {/* Quick Start Section */}
             <div className="quickstart-section">
                 <div className="container">
@@ -189,7 +192,9 @@ const LandingPage = () => {
                     <div className="docs-grid">
                         {sections.map((section) => (
                             <div key={section.id} className="doc-card">
-                                <div className={`doc-card-header ${section.id}`}>
+                                <div
+                                    className={`doc-card-header ${section.id}`}
+                                >
                                     <div className="doc-card-icon">
                                         {section.icon}
                                     </div>
@@ -263,8 +268,6 @@ const LandingPage = () => {
                     </div>
                 </div>{" "}
             </div>
-
-
         </div>
     );
 };
