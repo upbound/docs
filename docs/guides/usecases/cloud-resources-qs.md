@@ -44,17 +44,12 @@ locally:
 up project run --local
 ```
 
-This launches an instance of Upbound Crossplane on your machine, wrapped and
-deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the
-following command to view the UI for your control plane, then open a browser at
-[https://localhost:8080](https://localhost:8080):
-
 This command deploys a container with an Upbound Crossplane instance on your
 machine. 
 
 
 Upbound Crossplane provides a built in Web UI for you to browse your control
-plane resources. 
+plane resources. To open your browser to the WebUI, use the `up` CLI:
 
 ```shell
 up uxp web-ui open
