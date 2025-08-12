@@ -47,13 +47,16 @@ up uxp install
 </Tabs>
 
 ## Upgrade from open source Crossplane
+:::important
+**Version Upgrade Rule**: To meet the [upstream Crossplane
+needs](https://github.com/crossplane/crossplane/discussions/4569#discussioncomment-11836395),
+ensure there is **at most one minor version difference for Crossplane versions**
+during upgrades.
+:::
 
-> [!IMPORTANT]
-> **Version Upgrade Rule**: To meet the [upstream Crossplane needs](https://github.com/crossplane/crossplane/discussions/4569#discussioncomment-11836395),
-> ensure there is **at most one minor version difference for Crossplane versions** during upgrades.
-
-To upgrade from upstream Crossplane, the target UXP version should match the Crossplane version until the
-`-up.N` suffix. You can increment at most one minor version between Crossplane versions to follow
+To upgrade from upstream Crossplane, the target UXP version should match the
+Crossplane version until the `-up.N` suffix. You can increment at most one minor
+version between Crossplane versions to follow
 upstream guidelines.
 
 **Examples:**
@@ -63,6 +66,7 @@ upstream guidelines.
 - ❌ **Not allowed**: Crossplane `v2.0.1` → UXP `v2.2.0-up.N` (two minor version diff in Crossplane)
 
 **Required upgrade path for larger Crossplane version gaps:**
+
 If you want to upgrade from Crossplane `v2.0.1` to UXP `v2.2.1-up.N`, follow this incremental approach to meet
 upstream requirements:
 1. Crossplane `v2.0.1` → UXP `v2.1.0-up.N`
