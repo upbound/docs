@@ -63,21 +63,21 @@ to actual cloud resources:
 <TabItem value="aws" label="AWS">
 
 ```shell
-up dependency add 'xpkg.upbound.io/upbound/provider-aws-s3:>=v1.17.0'
+up dependency add 'xpkg.upbound.io/upbound/provider-aws-s3:>=v2.0.0'
 ```
 
 </TabItem>
 <TabItem value="azure" label="Azure">
 
 ```shell
-up dependency add 'xpkg.upbound.io/upbound/provider-azure-storage:>=v1.8.0'
+up dependency add 'xpkg.upbound.io/upbound/provider-azure-storage:>=v2.0.0'
 ```
 
 </TabItem>
 <TabItem value="gcp" label="GCP">
 
 ```shell
-up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v1.9.0'
+up dependency add 'xpkg.upbound.io/upbound/provider-gcp-storage:>=v2.0.0'
 ```
 
 </TabItem>
