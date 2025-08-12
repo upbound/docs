@@ -113,7 +113,7 @@ up example generate \
     --api-version v1alpha1 \
     --kind StorageBucket \
     --name example \
-    --namespace default
+    --namespace default \
     --scope namespace
 ```
 

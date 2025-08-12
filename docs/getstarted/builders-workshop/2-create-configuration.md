@@ -49,7 +49,7 @@ language:
 <CodeBlock cloud="aws" language="kcl">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=kcl
+up function generate test-function apis/storagebuckets/composition.yaml --language=kcl
 ```
 
 </CodeBlock>
@@ -57,7 +57,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="aws" language="python">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=python
+up function generate test-function apis/storagebuckets/composition.yaml --language=python
 ```
 
 </CodeBlock>
@@ -65,7 +65,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="aws" language="go">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=go
+up function generate test-function apis/storagebuckets/composition.yaml --language=go
 ```
 
 </CodeBlock>
@@ -73,7 +73,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="azure" language="kcl">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=kcl
+up function generate test-function apis/storagebuckets/composition.yaml --language=kcl
 ```
 
 </CodeBlock>
@@ -81,7 +81,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="azure" language="python">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=python
+up function generate test-function apis/storagebuckets/composition.yaml --language=python
 ```
 
 </CodeBlock>
@@ -89,7 +89,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="azure" language="go">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=go
+up function generate test-function apis/storagebuckets/composition.yaml --language=go
 ```
 
 </CodeBlock>
@@ -97,7 +97,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="gcp" language="kcl">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=kcl
+up function generate test-function apis/storagebuckets/composition.yaml --language=kcl
 ```
 
 </CodeBlock>
@@ -105,7 +105,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="gcp" language="python">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=python
+up function generate test-function apis/storagebuckets/composition.yaml --language=python
 ```
 
 </CodeBlock>
@@ -113,7 +113,7 @@ up function generate test-function apis/xstoragebuckets/composition.yaml --langu
 <CodeBlock cloud="gcp" language="go">
 
 ```shell
-up function generate test-function apis/xstoragebuckets/composition.yaml --language=go
+up function generate test-function apis/storagebuckets/composition.yaml --language=go
 ```
 
 </CodeBlock>
@@ -258,7 +258,7 @@ from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.platform.storagebucket import v1alpha1
 from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
 from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
 from .model.io.upbound.aws.s3.bucketownershipcontrols import v1beta1 as bocv1beta1
@@ -268,7 +268,7 @@ from .model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1b
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+    observed_xr = v1alpha1.StorageBucket(**req.observed.composite.resource)
     params = observed_xr.spec.parameters
 
     desired_bucket = bucketv1beta1.Bucket(
@@ -434,7 +434,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		return rsp, nil
 	}
 
-	var xr v1alpha1.XStorageBucket
+	var xr v1alpha1.StorageBucket
 	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
 		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
 		return rsp, nil
@@ -674,11 +674,11 @@ from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
 from .model.io.upbound.azure.resourcegroup import v1beta1 as rgv1beta1
 from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
 from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
-from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.platform.storagebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+    observed_xr = v1alpha1.StorageBucket(**req.observed.composite.resource)
     params = observed_xr.spec.parameters
 
     desired_group = rgv1beta1.ResourceGroup(
@@ -798,7 +798,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		return rsp, nil
 	}
 
-	var xr v1alpha1.XStorageBucket
+	var xr v1alpha1.StorageBucket
 	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
 		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
 		return rsp, nil
@@ -986,11 +986,11 @@ from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
 from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
-from .model.com.example.platform.xstoragebucket import v1alpha1
+from .model.com.example.platform.storagebucket import v1alpha1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    observed_xr = v1alpha1.XStorageBucket(**req.observed.composite.resource)
+    observed_xr = v1alpha1.StorageBucket(**req.observed.composite.resource)
     params = observed_xr.spec.parameters
 
     desired_bucket = bucketv1beta1.Bucket(
@@ -1085,7 +1085,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		return rsp, nil
 	}
 
-	var xr v1alpha1.XStorageBucket
+	var xr v1alpha1.StorageBucket
 	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
 		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
 		return rsp, nil
