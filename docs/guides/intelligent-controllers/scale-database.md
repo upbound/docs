@@ -64,7 +64,11 @@ kubectl create secret \
 Deploy a network and database:
 
 ```shell
-kubectl apply -f examples/network-intelligent.yaml -f mariadb-xr-intelligent.yaml
+# Network dependency
+kubectl apply -f examples/network-rds-metrics.yaml
+
+# Database with scaling enabled
+kubectl apply -f examples/mariadb-xr-rds-metrics.yaml
 ```
 
 The database gets created, the control plane periodically fetches performance metrics for it from AWS CloudWatch, and dynamically scales the database size accordingly. 

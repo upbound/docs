@@ -542,8 +542,13 @@
         },
         {
             "source": "/apis-cli/spaces-api/v1_9",
+
             "destination": "/reference/apis/spaces-api/v1_9",
             "permanent": true
+        },
+        {
+            "source": "/apis-cli/cli-reference",
+            "destionation": "/reference/apis"
         },
         {
             "source": "/deploy/self-hosted-spaces/helm-reference",
@@ -764,6 +769,11 @@
             "source": "/console",
             "destination": "/manuals/console/upbound-console",
             "permanent": true
+        },
+        {
+            "source": "/manuals/console",
+            "destination": "/manuals/console/upbound-console",
+            "premanent": true
         },
         {
             "source": "/core-concepts/adding-dependencies",
