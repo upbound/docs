@@ -1246,7 +1246,18 @@
             "source": "/deploy/self-hosted-spaces",
             "destination": "/manuals/spaces/overview",
             "permanent": true
+        },
+        {
+            "source": "/operate/cli/",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces/",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
         }
+
 
 
     ]
