@@ -12,13 +12,13 @@ deploy custom resource types for your cloud provider on a control plane.
 
 ## Prerequisites
 
-This quickstart takes around 10 minutes to complete. You should
-be familiar with YAML or programming in Go, Python, or KCL.
-
+This quickstart takes around 10 minutes to complete. 
 Before beginning, make sure that:
 
 - you have installed the [Upbound CLI][up].
 - you have a Docker-compatible container runtime installed on your system and running.
+
+This guide uses AWS and Python to build custom cloud resources.
 
 ## Create a control plane project
 
@@ -31,73 +31,9 @@ OCI package and installed into a running instance of Upbound Crossplane.
 Create a control plane project on your machine by running the following command:
 <!--- AWS project init --->
 
-<CodeBlock cloud="aws" language="Templated YAML">
-```shell
-up project init --example="project-example-aws" --language="go-templating" my-new-project
-```
-</CodeBlock>
-<CodeBlock cloud="aws" language="Python">
 ```shell
 up project init --example="project-example-aws" --language="python" my-new-project
 ```
-</CodeBlock>
-<CodeBlock cloud="aws" language="Go">
-```shell
-up project init --example="project-example-aws" --language="go" my-new-project
-```
-</CodeBlock>
-<CodeBlock cloud="aws" language="KCL">
-```shell
-up project init --example="project-example-aws" --language="kcl" my-new-project
-```
-</CodeBlock>
-
-<!--- Azure project init --->
-
-<CodeBlock cloud="azure" language="Templated YAML">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="azure" language="Python">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="azure" language="Go">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="azure" language="KCL">
-```shell
-tbd
-```
-</CodeBlock>
-
-<!--- GCP project init --->
-
-<CodeBlock cloud="gcp" language="Templated YAML">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="gcp" language="Python">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="gcp" language="Go">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="gcp" language="KCL">
-```shell
-tbd
-```
-</CodeBlock>
-
 
 ## Deploy your control plane
 
@@ -118,21 +54,12 @@ machine.
 
 
 Upbound Crossplane provides a built in Web UI for you to browse your control
-plane resources. Create a forwarding service from the instance to a port on your
-machine with `kubectl`:
+plane resources. 
 
 ```shell
-kubectl port-forward -n crossplane-system svc/uxp-webui 8080:80
+up uxp web-ui open
 ```
 
-Open your browser and go to [http://localhost:8080](http://localhost:8080).
-
-
-```shell
-TODO: a picture of the web UI
-+-----+
-+-----+
-```
 
 ## Define a custom resource type
 
@@ -169,85 +96,11 @@ Next generate the definitions files
 
 <!--- AWS Generate xrd/comp/func --->
 
-<CodeBlock cloud="aws" language="Templated YAML">
-```shell
-up xrd generate examples/userdefinedbucket/example.yaml
-up composition generate apis/userdefinedbuckets/definition.yaml
-up function generate --language=go-templating compose-resources apis/userdefinedbuckets/composition.yaml
-```
-</CodeBlock>
-<CodeBlock cloud="aws" language="Python">
 ```shell
 up xrd generate examples/userdefinedbucket/example.yaml
 up composition generate apis/userdefinedbuckets/definition.yaml
 up function generate --language=python compose-resources apis/userdefinedbuckets/composition.yaml
 ```
-</CodeBlock>
-<CodeBlock cloud="aws" language="Go">
-```shell
-up xrd generate examples/userdefinedbucket/example.yaml
-up composition generate apis/userdefinedbuckets/definition.yaml
-up function generate --language=go compose-resources apis/userdefinedbuckets/composition.yaml
-```
-</CodeBlock>
-<CodeBlock cloud="aws" language="KCL">
-```shell
-up xrd generate examples/userdefinedbucket/example.yaml
-up composition generate apis/userdefinedbuckets/definition.yaml
-up function generate --language=kcl compose-resources apis/userdefinedbuckets/composition.yaml
-```
-</CodeBlock>
-
-
-<!--- Azure Generate xrd/comp/func --->
-<CodeBlock cloud="azure" language="Templated YAML">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="azure" language="Python">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="azure" language="Go">
-```shell
-tbd
-```
-</CodeBlock>
-<CodeBlock cloud="azure" language="KCL">
-```shell
-tbd
-```
-</CodeBlock>
-
-
-<!--- GCP Generate xrd/comp/func --->
-<CodeBlock cloud="gcp" language="Templated YAML">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="gcp" language="Python">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="gcp" language="Go">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="gcp" language="KCL">
-```shell
-tbd
-```
-
-</CodeBlock>
-
 
 What you just did is created your own resource type called UserDefinedBucket and
 created a single function to contain the logic that defines what should happen
@@ -256,13 +109,6 @@ file at `my-new-project/functions/compose-resources/` and add some logic:
 
 <!--- AWS build func --->
 
-<CodeBlock cloud="aws" language="Templated YAML">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="aws" language="Python">
 ```python
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
@@ -393,73 +239,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     resource.update(rsp.desired.resources["versioning"], desired_versioning)
 ```
 
-</CodeBlock>
-<CodeBlock cloud="aws" language="Go">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="aws" language="KCL">
-```shell
-tbd
-```
-
-</CodeBlock>
-
-
-<!--- Azure build func --->
-<CodeBlock cloud="azure" language="Templated YAML">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="azure" language="Python">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="azure" language="Go">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="azure" language="KCL">
-```shell
-tbd
-```
-
-</CodeBlock>
-
-<!--- GCP build func --->
-
-<CodeBlock cloud="gcp" language="Templated YAML">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="gcp" language="Python">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="gcp" language="Go">
-```shell
-tbd
-```
-
-</CodeBlock>
-<CodeBlock cloud="gcp" language="KCL">
-```shell
-tbd
-```
-
-</CodeBlock>
 
 ## Use the custom resource
 
@@ -483,8 +262,7 @@ created:
 
 ```shell
 kubectl get buckets
-TODO
-``````
+```
 
 ## Do more with your control plane
 
