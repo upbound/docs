@@ -113,8 +113,8 @@ Configure the AWS ProviderConfig:
 
 ```shell
 kubectl apply -f - <<EOF
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
+apiVersion: aws.m.upbound.io/v1beta1
+kind: ClusterProviderConfig
 metadata:
   name: default
 spec:
