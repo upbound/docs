@@ -68,7 +68,7 @@ spec:
             include the namespace and name of the pod to examine.
           userPrompt: |
             You should use the tools available to you to look up events and logs related
-            to the pod in order to identify what is wrong.
+            to the pod in order to identify what's wrong.
 
             REQUIRED OUTPUT FORMAT:
             { 
