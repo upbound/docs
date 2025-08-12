@@ -83,24 +83,13 @@ export default function CategoryWrapper(props) {
       ...item,
       label: (
         <span style={{ 
-          display: 'flex', 
+          display: 'inline-flex', 
           alignItems: 'center', 
           width: '100%',
-          minHeight: '24px',
-          position: 'relative'
+          justifyContent: 'space-between'
         }}>
-          <span style={{ flex: '1' }}>{item.label}</span>
-          <span style={{ 
-            position: 'absolute',
-            right: '25px', // Right next to where chevron appears
-            left: '170px',
-            top: '50%',
-            transform: 'translateY(-50%)', // Center vertically
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-            <PlanBadge plan={categoryPlan} />
-          </span>
+          <span>{item.label}</span>
+          <PlanBadge plan={categoryPlan} />
         </span>
       )
     };
