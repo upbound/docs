@@ -5,7 +5,9 @@ draft: true
 
 :::important
 This guide requires an Upbound control plane instance running UXP v2.0 or later
-and targets users with existing control plane experience. :::
+and targets users with existing control plane experience. Upbound SaaS coming
+soon. 
+:::
 
 The UP CLI lets you create an MCP server configurations for kubectl-ai for Cursor, Gemini CLI or Claude Code
 
