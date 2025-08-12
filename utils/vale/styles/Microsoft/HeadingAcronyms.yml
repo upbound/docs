@@ -18,6 +18,7 @@ exceptions:
   - EKS
   - GCP
   - GKE
+  - LLM
   - IAM
   - MCP
   - MXP
@@ -29,3 +30,7 @@ exceptions:
   - XRD
   - ALB
   - SSH
+  - RBAC
+  - CA
+  - AI
+  - UI

@@ -18,7 +18,7 @@ export function LanguageProvider({ children }) {
 
   // Auto-select first available if current selection isn't available
   useEffect(() => {
-    if (availableLanguages.size > 0 && !availableLanguages.has(selectedLanguage)) {
+    if (availableLanguages.size > 1 && !availableLanguages.has(selectedLanguage)) {
       const firstLang = Array.from(availableLanguages)[0];
       setSelectedLanguage(firstLang);
       localStorage.setItem('selected-language', firstLang);
@@ -26,7 +26,7 @@ export function LanguageProvider({ children }) {
   }, [availableLanguages, selectedLanguage]);
 
   useEffect(() => {
-    if (availableClouds.size > 0 && !availableClouds.has(selectedCloud)) {
+    if (availableClouds.size > 1 && !availableClouds.has(selectedCloud)) {
       const firstCloud = Array.from(availableClouds)[0];
       setSelectedCloud(firstCloud);
       localStorage.setItem('selected-cloud', firstCloud);
@@ -129,6 +129,7 @@ export default function GlobalLanguageSelector() {
 }
 
 // Simple content wrapper that auto-registers its options
+// FIXED: Removed the code-block wrapper that was causing formatting issues
 export function CodeBlock({ cloud, language, children }) {
   const { selectedLanguage, selectedCloud, registerLanguage, registerCloud } = useLanguageContext();
   
@@ -141,5 +142,6 @@ export function CodeBlock({ cloud, language, children }) {
   const shouldShow = (!cloud || cloud === selectedCloud) && 
                     (!language || language === selectedLanguage);
   
-  return shouldShow ? <div className="code-block">{children}</div> : null;
+  // Return children directly without wrapper, or use a neutral wrapper
+  return shouldShow ? <>{children}</> : null;
 }
