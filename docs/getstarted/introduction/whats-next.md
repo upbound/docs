@@ -3,36 +3,63 @@ title: What's Next
 sidebar_position: 4
 ---
 
-Now that you've created and run your control plane locally, it's time to deploy it into production. 
+<!-- vale Google.Exclamation = NO -->
+Congratulations! You created your first control plane, defined
+custom resource types, integrated AI-powered operations, and packaged everything
+as a distributable Configuration.
+<!-- vale Google.Exclamation = YES -->
 
-## Deploy your control plane in production
+Your local control plane now automatically provisions Kubernetes deployments
+through your custom `App` resource, detects pod issues using AI analysis, and
+suggests intelligent remediation steps. You built the foundation of a modern
+infrastructure platform.
 
-The Upbound platform offers several ways to run a control plane in production:
+## Keep building
 
-- A [Space][space], a hosting environment in Upbound that offers a managed experience for running control planes-as-a-service. You can choose to run in a [Cloud Space][cloud-spaces], which offers a true SaaS experience, or deploy your own [Self-hosted Space][self-hosted-space]. **These options are available for users on a Standard, Enterprise, or Business Critical plan.**
-- [Self-managed UXP][self-managed-uxp] installed into a full Kubernetes cluster. **This option is available for users on a Community plan.**
+Gain more knowledge on with hands-on workshops and tutorials:
 
-Pick the deployment mode that works best for you to continue your learning journey.
+**Keep learning with the Builder's Workshop**: [Build custom
+composition functions][workshop], handle complex resource relationships, and master error
+handling patterns.
 
-## Core concepts
+**Build intelligent controllers**: Learn to create [AI-augmented control
+planes][intelligent-controllers] that adapt and self-heal.
 
-Get started learning the core concepts of control planes, resource types, Configurations, and more:
+**Create an internal developer platform**: Follow our [Internal Developer
+Platform guide][idp-guide] to build comprehensive developer experiences.
 
-<!-- vale Microsoft.Contractions = NO -->
-* [What is a control plane?][controlPlane]
-* [What is a composition?][compositions]
-* [What is an operation?][operation]
-* [What is a provider?][provider]
-* [What is a configuration?][configuration]
-<!-- vale Microsoft.Contractions = YES -->
+Dive deeper into these core concepts:
 
-[space]: /manuals/spaces/overview
-[cloud-spaces]: /manuals/spaces/concepts/deployment-modes
-[self-hosted-space]: /manuals/spaces/howtos/self-hosted/deployment-reqs
-[self-managed-uxp]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
-[controlPlane]: /getstarted/#what-is-upbound
-[compositions]: /manuals/uxp/concepts/composition/overview
-[operation]: /manuals/uxp/concepts/operations/overview
-[provider]: /manuals/uxp/concepts/packages/providers
-[configuration]: /manuals/uxp/concepts/packages/configurations
+- [Compositions][compositions]: Learn how resource templating and logic work
+- [Project structure][project-structure]: Organize and manage your control plane code
+- [Control plane architecture][control-planes]: Understand the deployment architecture
 
+
+## Deploy to production
+
+When you're ready to share your control plane with your team:
+
+**Upbound Spaces**: [Managed hosting environment][spaces] that
+handles operations for you. Choose [Cloud Spaces][control-planes] for true SaaS or Self-hosted
+Spaces for your infrastructure.
+
+**Self-managed UXP**: [Deploy into your own Kubernetes
+cluster][uxp] with full control.
+
+
+## More resources
+
+- Join our [Slack community][slack] for support, best practices, and to share what you build.
+- Follow our [blog][blog] for talks, workshops, and more guides.
+
+
+[workshop]: /getstarted/builders-workshop/project-foundations/
+[intelligent-controllers]: /guides/intelligent-controllers/intelligent-control-planes/
+[idp-guide]: /guides/solutions/general-idp/get-started/
+[spaces]: /manuals/spaces/overview/
+[control-planes]: /manuals/spaces/concepts/control-planes/
+[uxp]: /manuals/uxp/overview/
+[compositions]: /manuals/uxp/concepts/composition/overview/
+[project-structure]: /manuals/cli/howtos/project/
+[slack]: https://slack.crossplane.io/ 
+[blog]: https://blog.upbound.io/
