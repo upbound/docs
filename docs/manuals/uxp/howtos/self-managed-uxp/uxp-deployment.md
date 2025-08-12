@@ -26,7 +26,7 @@ helm repo add upbound-stable https://charts.upbound.io/stable && helm repo updat
 ```
 2. Install Upbound Crossplane:
 ```bash
-helm install crossplane --namespace crossplane-system --create-namespace upbound-stable/universal-crossplane --devel
+helm install crossplane --namespace crossplane-system --create-namespace upbound-stable/crossplane --devel
 ```
 
 :::note
@@ -46,19 +46,33 @@ up uxp install
 </TabItem>
 </Tabs>
 
-## Upgrade from open-source Crossplane
+## Upgrade from open source Crossplane
 
-To upgrade from open-source Crossplane, the target UXP version has to
-match the Crossplane version until the `-up.N` suffix. For example, you can
-upgrade from Crossplane `v1.2.1` only to a UXP version that looks like
-`v1.2.1-up.N` but not to a `v1.3.0-up.N`. In that scenario, you'd need to
-upgrade to open-source Crossplane `v1.3.0` and then UXP `v1.3.0-up.N`.
+> [!IMPORTANT]
+> **Version Upgrade Rule**: To meet the [upstream Crossplane needs](https://github.com/crossplane/crossplane/discussions/4569#discussioncomment-11836395),
+> ensure there is **at most one minor version difference for Crossplane versions** during upgrades.
+
+To upgrade from upstream Crossplane, the target UXP version should match the Crossplane version until the
+`-up.N` suffix. You can increment at most one minor version between Crossplane versions to follow
+upstream guidelines.
+
+**Examples:**
+- ✅ **Allowed**: Crossplane `v2.0.1` → UXP `v2.0.1-up.N` (same Crossplane version)
+- ✅ **Allowed**: Crossplane `v2.0.1` → UXP `v2.1.0-up.N` (one minor version diff in Crossplane)
+- ✅ **Allowed**: Crossplane `v2.0.1` → UXP `v2.0.5-up.N` (multiple patch versions allowed)
+- ❌ **Not allowed**: Crossplane `v2.0.1` → UXP `v2.2.0-up.N` (two minor version diff in Crossplane)
+
+**Required upgrade path for larger Crossplane version gaps:**
+If you want to upgrade from Crossplane `v2.0.1` to UXP `v2.2.1-up.N`, follow this incremental approach to meet
+upstream requirements:
+1. Crossplane `v2.0.1` → UXP `v2.1.0-up.N`
+2. UXP `v2.1.0-up.N` → UXP `v2.2.1-up.N`
 
 <Tabs>
 <TabItem value="Helm" label="Helm">
 
 ```bash
-helm upgrade crossplane --namespace crossplane-system upbound-stable/universal-crossplane --devel
+helm upgrade crossplane --namespace crossplane-system upbound-stable/crossplane --devel
 ```
 
 </TabItem>
