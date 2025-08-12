@@ -548,7 +548,9 @@
         },
         {
             "source": "/apis-cli/cli-reference",
-            "destionation": "/reference/apis"
+            "destination": "/reference/apis",
+            "permanent": true
+
         },
         {
             "source": "/deploy/self-hosted-spaces/helm-reference",
