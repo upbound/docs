@@ -59,8 +59,8 @@ Next, create a new project with AI-enhanced dependencies:
 up project init intelligent-platform && cd intelligent-platform
 
 # Add core AWS providers for infrastructure management
-up dep add xpkg.upbound.io/upbound/provider-aws-iam:v1.22.0
-up dep add xpkg.upbound.io/upbound/provider-aws-sfn:v1.22.0
+up dep add xpkg.upbound.io/upbound/provider-aws-iam:v2.0.0
+up dep add xpkg.upbound.io/upbound/provider-aws-sfn:v2.0.0
 
 # Add Claude AI status transformer for intelligent operations
 up dep add xpkg.upbound.io/upbound/function-claude-status-transformer
