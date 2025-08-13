@@ -1,5 +1,5 @@
 ---
-title: Overview 
+title: Overview
 sidebar_position: 1
 description: Install Crossplane, interact with the Upbound Marketplace and Managed
   Control Planes with the Upbound Up CLI.
@@ -14,25 +14,25 @@ Install the `up` command-line via shell, Homebrew or Linux package.
 
 <Tabs>
 <TabItem value = "Shell">
-Install the latest version of the `up` command-line via shell script by downloading the install script from [Upbound][upbound].  
+Install the latest version of the `up` command-line via shell script by downloading the install script from [Upbound][upbound].
 
 :::tip
 Shell install is the preferred method for installing the `up` command-line.
 :::
 
-The shell install script automatically determines the operating system and platform architecture an installs the correct binary. 
+The shell install script automatically determines the operating system and platform architecture an installs the correct binary.
 
 ```shell
 curl -sL "https://cli.upbound.io" | sh
 ```
 
 :::note
-Install a specific version of `up` by providing the version. 
+Install a specific version of `up` by providing the version.
 
-For example, to install version `v0.12.1` use the following command:
+For example, to install version `v0.40.0` use the following command:
 
 ```shell
-curl -sL "https://cli.upbound.io" | VERSION=v0.12.1 sh
+curl -sL "https://cli.upbound.io" | VERSION=v0.40.0 sh
 ```
 
 Find the full list of versions in the <a href="https://cli.upbound.io/stable?prefix=stable/">Up command-line repository</a>.
@@ -41,7 +41,7 @@ Find the full list of versions in the <a href="https://cli.upbound.io/stable?pre
 </TabItem>
 
 <TabItem value="Windows" label="Windows">
-Upbound provides a Windows executable. 
+Upbound provides a Windows executable.
 
 ```shell
 curl.exe -sLo up.exe "https://cli.upbound.io/stable/${VERSION}/bin/windows_amd64/up.exe"
@@ -49,7 +49,7 @@ curl.exe -sLo up.exe "https://cli.upbound.io/stable/${VERSION}/bin/windows_amd64
 </TabItem>
 
 <TabItem value="Homebrew" label="Homebrew">
-[Homebrew][homebrew] is a package manager for Linux and Mac OS.  
+[Homebrew][homebrew] is a package manager for Linux and Mac OS.
 
 Install the `up` command-line with a Homebrew `tap` using the command:
 
