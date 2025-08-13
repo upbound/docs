@@ -137,6 +137,13 @@ up example generate --type claim --api-group example.upbound.io \
   --api-version v1alpha1 --kind Network --name example
 ```
 
+Use the defauls for the following questions:
+
+```shell
+Should this Composite Resource (XR) be cluster scoped? (default: namespace scoped) [y/N]: No
+What is the metadata namespace?: default
+```
+
 Configure the example with intelligent error simulation:
 
 ```yaml
