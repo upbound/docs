@@ -121,9 +121,6 @@ kubectl create secret generic aws-secret \
     --from-file=my-aws-secret=./aws-credentials.txt
 ```
 
-```shell
-up project init --template="project-template-aws-s3" --language="python" my-new-project
-```
 </TabItem>
 
 <TabItem value="azure" label="Azure">
