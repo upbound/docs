@@ -144,6 +144,13 @@ Should this Composite Resource (XR) be cluster scoped? (default: namespace scope
 What is the metadata namespace?: default
 ```
 
+Use the defaults for the following questions:
+
+```shell
+Should this Composite Resource (XR) be cluster scoped? (default: namespace scoped) [y/N]: No
+What is the metadata namespace?: default
+```
+
 Configure the example with intelligent error simulation:
 
 ```yaml
