@@ -273,6 +273,8 @@ spec:
       name: gcp-secret
       key: my-gcp-secret
 `}
+</EditCode>
+
 
 </TabItem>
 
