@@ -151,6 +151,9 @@ const LandingPage = () => {
                                     $ curl -sL "https://cli.upbound.io" | sh
                                 </div>
                                 <div className="terminal-line terminal-command">
+                                    $ sudo mv up /usr/local/bin/
+                                </div>
+                                <div className="terminal-line terminal-command">
                                     $ up project init -t
                                     project-template-k8s-webapp -l python
                                     my-webapp
@@ -160,15 +163,13 @@ const LandingPage = () => {
                                     ✓ Created control plane project
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    $ cd my-webapp && up project run --local
+                                    $ cd my-webapp && up project run --local --ingress
                                 </div>
                                 <div className="terminal-line terminal-output">
                                     {" "}
                                     💻 Local dev control plane running in kind
                                     cluster "my-webapp".
-                                </div>
-                                <div className="terminal-line terminal-command">
-                                    $ up uxp web-ui open
+                                    🌐 WebUI endpoint: http://127-0-0-1.nip.io:59244
                                 </div>
                                 <div className="terminal-line terminal-output"></div>
                             </div>
