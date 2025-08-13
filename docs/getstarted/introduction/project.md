@@ -57,16 +57,11 @@ In the root directory of your project, build and run your project by running the
 following:
 
 ```shell
-up project run --local
+up project run --local --ingress
 ```
 
 This launches an instance of Upbound Crossplane on your machine, wrapped and
-deployed in a container. Upbound Crossplane comes bundled with a Web UI. Run the
-following command to access the UI for your control plane:
-
-```shell
-up uxp web-ui open
-```
+deployed in a container. Upbound Crossplane comes bundled with a Web UI.
 
 ![image][webUI]
 
@@ -78,7 +73,6 @@ Create an example instance of your custom resource type with:
 
 ```shell
 up example generate \
-    --type xr \
     --api-group platform.example.com \
     --api-version v1alpha1 \
     --kind WebApp\
@@ -127,6 +121,7 @@ Next, generate the definition files needed by Crossplane with the following comm
 up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=go-templating compose-resources apis/webapps/composition.yaml
+up dependency add --api k8s:v1.33.0
 ```
 </TabItem>
 <TabItem value="Python" label="Python">
@@ -134,6 +129,7 @@ up function generate --language=go-templating compose-resources apis/webapps/com
 up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=python compose-resources apis/webapps/composition.yaml
+up dependency add --api k8s:v1.33.0
 ```
 </TabItem>
 <TabItem value="Go" label="Go">
@@ -141,6 +137,7 @@ up function generate --language=python compose-resources apis/webapps/compositio
 up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=go compose-resources apis/webapps/composition.yaml
+up dependency add --api k8s:v1.33.0
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
@@ -148,6 +145,7 @@ up function generate --language=go compose-resources apis/webapps/composition.ya
 up xrd generate examples/webapp/my-app.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=kcl compose-resources apis/webapps/composition.yaml
+up dependency add --api k8s:v1.33.0
 ```
 </TabItem>
 </Tabs>
@@ -162,7 +160,7 @@ To define a new resource type with Crossplane, you need to:
 
 * create a [CompositeResourceDefinition (XRD)][xrd], which defines the API schema of your resource type
 * create a [Composition][composition], which defines the implementation of that API schema.
-* A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.   
+* A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.
 
 :::
 
@@ -614,12 +612,12 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 						}},
 						Resources: &corev1.ResourceRequirements{
 							Requests: &map[string]resourcev1.Quantity{
-								"memory": params.Resources.Requests.Memory,
-								"cpu":    params.Resources.Requests.Cpu,
+								"memory": *params.Resources.Requests.Memory,
+								"cpu":    *params.Resources.Requests.CPU,
 							},
 							Limits: &map[string]resourcev1.Quantity{
-								"memory": params.Resources.Limits.Memory,
-								"cpu":    params.Resources.Limits.Cpu,
+								"memory": *params.Resources.Limits.Memory,
+								"cpu":    *params.Resources.Limits.CPU,
 							},
 						},
 					}},
@@ -778,19 +776,19 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		if err := convertViaJSON(&obsDeployment, observedDeployment.Resource); err == nil {
 			if obsDeployment.Status != nil {
 				if obsDeployment.Status.AvailableReplicas != nil {
-					desiredWebApp.Status.AvailableReplicas = ptr.To(int(*obsDeployment.Status.AvailableReplicas))
+					desiredWebApp.Status.AvailableReplicas = ptr.To(float32(*obsDeployment.Status.AvailableReplicas))
 				} else {
 					// Set default value when no available replicas
-					desiredWebApp.Status.AvailableReplicas = ptr.To(0)
+					desiredWebApp.Status.AvailableReplicas = ptr.To(float32(0))
 				}
 			} else {
 				// Set defaults when status is nil
-				desiredWebApp.Status.AvailableReplicas = ptr.To(0)
+				desiredWebApp.Status.AvailableReplicas = ptr.To(float32(0))
 			}
 		}
 	} else {
 		// Set defaults when deployment doesn't exist
-		desiredWebApp.Status.AvailableReplicas = ptr.To(0)
+		desiredWebApp.Status.AvailableReplicas = ptr.To(float32(0))
 	}
 
 	// Set ingress URL
@@ -869,7 +867,7 @@ _desired_deployment = appsv1.Deployment{
         }
     }
     spec: {
-        replicas: oxr.spec.parameters.replicas
+        replicas: int(oxr.spec.parameters.replicas)
         selector: {
             matchLabels: {
                 "app.kubernetes.io/name": oxr.metadata.name
@@ -998,7 +996,7 @@ items = [
 Deploy the changes you made to your control plane:
 
 ```shell
-up project run --local
+up project run --local --ingress
 ```
 
 :::tip
