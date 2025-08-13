@@ -24,6 +24,17 @@ Any important warnings or necessary information
 
 -->
 
+## v0.40.1
+
+### Release Date: 2025-08-13
+
+##### Bug Fixes
+
+- Migration: Fixed handling of ManagedResourceDefinitions,
+  ManagedResourceActivationPolicies, and Licenses.
+- Fixed a race condition in `up dependency add` and `up composition generate`
+  that could result in transient failure to parse the project file.
+
 ## v0.40.0
 
 ### Release Date: 2025-08-12
@@ -76,6 +87,7 @@ Any important warnings or necessary information
 - Projects v1alpha2 now require Crossplane >=v2.0.0
 - Context required for logout command
 - Schemas: Python enum fields as literal
+- xpls: Compositions using patch and transform are no longer supported
 
 ## v0.39.1
 
