@@ -48,12 +48,6 @@ up uxp install
 
 Upbound installs UXP on your local cluster via Helm chart.
 
-Launch the Upbound Crossplane WebUI for more insight into your resources:
-
-```shell
-up uxp web-ui open
-```
-
 
 ## Install the provider
 
