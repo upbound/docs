@@ -1,1288 +1,1329 @@
 {
     "redirects": [
         {
-            "source": "/learn/builders-workshop/1-project-foundations(\\/?.*)",
+            "source": "/learn/builders-workshop/1-project-foundations",
             "destination": "/getstarted/builders-workshop/1-project-foundations",
             "permanent": true
         },
         {
-            "source": "/learn/builders-workshop/2-create-configuration(\\/?.*)",
+            "source": "/learn/builders-workshop/2-create-configuration",
             "destination": "/getstarted/builders-workshop/2-create-configuration",
             "permanent": true
         },
         {
-            "source": "/learn/builders-workshop/3-testing(\\/?.*)",
+            "source": "/learn/builders-workshop/3-testing",
             "destination": "/getstarted/builders-workshop/3-testing",
             "permanent": true
         },
         {
-            "source": "/learn/builders-workshop/4-deployment(\\/?.*)",
+            "source": "/learn/builders-workshop/4-deployment",
             "destination": "/getstarted/builders-workshop/4-deployment",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/adding-dependencies(\\/?.*)",
+            "source": "/build/control-plane-projects/adding-dependencies",
             "destination": "/manuals/cli/howtos/adding-dependencies",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go-templating(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/go-templating",
             "destination": "/manuals/cli/howtos/compositions/go-template",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go-templating/inputs-outputs(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
             "destination": "/manuals/cli/howtos/compositions/go-template",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go-templating/schemas(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/go-templating/schemas",
             "destination": "/manuals/cli/howtos/compositions/go-template",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/go",
             "destination": "/manuals/cli/howtos/compositions/go",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go/inputs-outputs(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/go/inputs-outputs",
             "destination": "/manuals/cli/howtos/compositions/go",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go/models(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/go/models",
             "destination": "/manuals/cli/howtos/compositions/go",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions",
             "destination": "/manuals/cli/howtos/compositions",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/conditionals(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/conditionals",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/loops(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/loops",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/variables(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/variables",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/python(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/python",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/python/models(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-compositions/python/models",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-xrds(\\/?.*)",
+            "source": "/build/control-plane-projects/authoring-xrds",
             "destination": "/manuals/cli/howtos/authoring-xrds",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/building-pushing(\\/?.*)",
+            "source": "/build/control-plane-projects/building-pushing",
             "destination": "/manuals/cli/howtos/building-pushing",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects(\\/?.*)",
+            "source": "/build/control-plane-projects",
             "destination": "/manuals/cli/howtos/project",
             "permanent": true
         },
         {
-            "source": "/operate/simulations(\\/?.*)",
+            "source": "/operate/simulations",
             "destination": "/manuals/cli/howtos/simulations",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/testing(\\/?.*)",
+            "source": "/build/control-plane-projects/testing",
             "destination": "/manuals/cli/howtos/testing",
             "permanent": true
         },
         {
-            "source": "/solutions/idp-starter-kit(\\/?.*)",
+            "source": "/solutions/idp-starter-kit",
             "destination": "/guides/solutions/general-idp/get-started",
             "permanent": true
         },
         {
-            "source": "/solutions/upbound-platform-ref(\\/?.*)",
+            "source": "/solutions/upbound-platform-ref",
             "destination": "/guides/solutions/upbound-platform-ref",
             "permanent": true
         },
         {
-            "source": "/operate/cli/configuration(\\/?.*)",
+            "source": "/operate/cli/configuration",
             "destination": "/manuals/cli/concepts/configuration",
             "permanent": true
         },
         {
-            "source": "/operate/cli/contexts(\\/?.*)",
+            "source": "/operate/cli/contexts",
             "destination": "/manuals/cli/concepts/contexts",
             "permanent": true
         },
         {
-            "source": "/operate/cli(\\/?.*)",
+            "source": "/operate/cli",
             "destination": "/manuals/cli/overview",
             "permanent": true
         },
         {
-            "source": "/deploy/spaces/console(\\/?.*)",
+            "source": "/deploy/spaces/console",
             "destination": "/manuals/console/upbound-console",
             "permanent": true
         },
         {
-            "source": "/upbound-marketplace/dmca(\\/?.*)",
+            "source": "/upbound-marketplace/dmca",
             "destination": "/manuals/marketplace/dmca",
             "permanent": true
         },
         {
-            "source": "/upbound-marketplace(\\/?.*)",
+            "source": "/upbound-marketplace",
             "destination": "/manuals/marketplace/overview",
             "permanent": true
         },
         {
-            "source": "/upbound-marketplace/packages(\\/?.*)",
+            "source": "/upbound-marketplace/packages",
             "destination": "/manuals/marketplace/packages",
             "permanent": true
         },
         {
-            "source": "/build/repositories/management(\\/?.*)",
+            "source": "/build/repositories/management",
             "destination": "/manuals/marketplace/repositories/management",
             "permanent": true
         },
         {
-            "source": "/build/repositories(\\/?.*)",
+            "source": "/build/repositories",
             "destination": "/manuals/marketplace/repositories/overview",
             "permanent": true
         },
         {
-            "source": "/build/repositories/publish-packages(\\/?.*)",
+            "source": "/build/repositories/publish-packages",
             "destination": "/manuals/marketplace/repositories/publish-packages",
             "permanent": true
         },
         {
-            "source": "/build/repositories/store-configurations(\\/?.*)",
+            "source": "/build/repositories/store-configurations",
             "destination": "/manuals/marketplace/repositories/store-configurations",
             "permanent": true
         },
         {
-            "source": "/providers/policies(\\/?.*)",
+            "source": "/providers/policies",
             "destination": "/manuals/packages/policies",
             "permanent": true
         },
         {
-            "source": "/providers/faq(\\/?.*)",
+            "source": "/providers/faq",
             "destination": "/manuals/packages/providers/faq",
             "permanent": true
         },
         {
-            "source": "/providers(\\/?.*)",
+            "source": "/providers",
             "destination": "/manuals/packages/providers",
             "permanent": true
         },
         {
-            "source": "/providers/migration(\\/?.*)",
+            "source": "/providers/migration",
             "destination": "/manuals/packages/providers/migration",
             "permanent": true
         },
         {
-            "source": "/providers/monolithic(\\/?.*)",
+            "source": "/providers/monolithic",
             "destination": "/manuals/packages/providers/monolithic",
             "permanent": true
         },
         {
-            "source": "/providers/provider-aws/authentication(\\/?.*)",
+            "source": "/providers/provider-aws/authentication",
             "destination": "/manuals/packages/providers/provider-aws/authentication",
             "permanent": true
         },
         {
-            "source": "/providers/provider-aws(\\/?.*)",
+            "source": "/providers/provider-aws",
             "destination": "/manuals/packages/providers/provider-aws",
             "permanent": true
         },
         {
-            "source": "/providers/provider-azure/authentication(\\/?.*)",
+            "source": "/providers/provider-azure/authentication",
             "destination": "/manuals/packages/providers/provider-azure/authentication",
             "permanent": true
         },
         {
-            "source": "/providers/provider-azure(\\/?.*)",
+            "source": "/providers/provider-azure",
             "destination": "/manuals/packages/providers/provider-azure",
             "permanent": true
         },
         {
-            "source": "/providers/provider-azuread(\\/?.*)",
+            "source": "/providers/provider-azuread",
             "destination": "/manuals/packages/providers/provider-azuread",
             "permanent": true
         },
         {
-            "source": "/providers/provider-families(\\/?.*)",
+            "source": "/providers/provider-families",
             "destination": "/manuals/packages/providers/provider-families",
             "permanent": true
         },
         {
-            "source": "/providers/provider-gcp/authentication(\\/?.*)",
+            "source": "/providers/provider-gcp/authentication",
             "destination": "/manuals/packages/providers/provider-gcp/authentication",
             "permanent": true
         },
         {
-            "source": "/providers/provider-gcp(\\/?.*)",
+            "source": "/providers/provider-gcp",
             "destination": "/manuals/packages/providers/provider-gcp",
             "permanent": true
         },
         {
-            "source": "/providers/provider-helm(\\/?.*)",
+            "source": "/providers/provider-helm",
             "destination": "/manuals/packages/providers/provider-helm",
             "permanent": true
         },
         {
-            "source": "/providers/provider-kubernetes/authentication(\\/?.*)",
+            "source": "/providers/provider-kubernetes/authentication",
             "destination": "/manuals/packages/providers/provider-kubernetes/authentication",
             "permanent": true
         },
         {
-            "source": "/providers/provider-kubernetes(\\/?.*)",
+            "source": "/providers/provider-kubernetes",
             "destination": "/manuals/packages/providers/provider-kubernetes",
             "permanent": true
         },
         {
-            "source": "/providers/provider-terraform(\\/?.*)",
+            "source": "/providers/provider-terraform",
             "destination": "/manuals/packages/providers/provider-terraform",
             "permanent": true
         },
         {
-            "source": "/providers/provider-terraform/migrate-hcl(\\/?.*)",
+            "source": "/providers/provider-terraform/migrate-hcl",
             "destination": "/manuals/packages/providers/provider-terraform/migrate-hcl",
             "permanent": true
         },
         {
-            "source": "/providers/provider-terraform/migrate-provider-tf(\\/?.*)",
+            "source": "/providers/provider-terraform/migrate-provider-tf",
             "destination": "/manuals/packages/providers/provider-terraform/migrate-provider-tf",
             "permanent": true
         },
         {
-            "source": "/providers/pull-secrets(\\/?.*)",
+            "source": "/providers/pull-secrets",
             "destination": "/manuals/packages/providers/pull-secrets",
             "permanent": true
         },
         {
-            "source": "/providers/signature-verification(\\/?.*)",
+            "source": "/providers/signature-verification",
             "destination": "/manuals/packages/providers/signature-verification",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/authentication/enable-sso(\\/?.*)",
+            "source": "/operate/accounts/authentication/enable-sso",
             "destination": "/manuals/platform/howtos/enable-sso",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/authentication/oidc-configuration(\\/?.*)",
+            "source": "/operate/accounts/authentication/oidc-configuration",
             "destination": "/manuals/platform/howtos/oidc",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/authorization/hub-rbac(\\/?.*)",
+            "source": "/operate/accounts/authorization/hub-rbac",
             "destination": "/manuals/platform/concepts/authorization/hub-rbac",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/authorization/k8s-rbac(\\/?.*)",
+            "source": "/operate/accounts/authorization/k8s-rbac",
             "destination": "/manuals/platform/concepts/authorization/k8s-rbac",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/authorization/upbound-rbac(\\/?.*)",
+            "source": "/operate/accounts/authorization/upbound-rbac",
             "destination": "/manuals/platform/concepts/authorization/upbound-rbac",
             "permanent": true
         },
         {
-            "source": "/operate/accounts(\\/?.*)",
+            "source": "/operate/accounts",
             "destination": "/manuals/platform/concepts/identity-management",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/identity-management/organizations(\\/?.*)",
+            "source": "/operate/accounts/identity-management/organizations",
             "destination": "/manuals/platform/concepts/identity-management/organizations",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/identity-management/robots(\\/?.*)",
+            "source": "/operate/accounts/identity-management/robots",
             "destination": "/manuals/platform/concepts/identity-management/robots",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/identity-management/teams(\\/?.*)",
+            "source": "/operate/accounts/identity-management/teams",
             "destination": "/manuals/platform/concepts/identity-management/teams",
             "permanent": true
         },
         {
-            "source": "/operate/accounts/identity-management/users(\\/?.*)",
+            "source": "/operate/accounts/identity-management/users",
             "destination": "/manuals/platform/concepts/identity-management/users",
             "permanent": true
         },
         {
-            "source": "/connect/oidc(\\/?.*)",
+            "source": "/connect/oidc",
             "destination": "/manuals/platform/howtos/oidc",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/billing(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/billing",
             "destination": "/manuals/spaces/howtos/self-hosted/billing",
             "permanent": true
         },
         {
-            "source": "/operate/control-planes(\\/?.*)",
+            "source": "/operate/control-planes",
             "destination": "/manuals/spaces/concepts/control-planes",
             "permanent": true
         },
         {
-            "source": "/operate/groups(\\/?.*)",
+            "source": "/operate/groups",
             "destination": "/manuals/spaces/concepts/groups",
             "permanent": true
         },
         {
-            "source": "/deploy/control-plane-topologies(\\/?.*)",
+            "source": "/deploy/control-plane-topologies",
             "destination": "/manuals/spaces/features/control-plane-topologies",
             "permanent": true
         },
         {
-            "source": "/operate/observability(\\/?.*)",
+            "source": "/operate/observability",
             "destination": "/manuals/spaces/features/observability",
             "permanent": true
         },
         {
-            "source": "/connect/query-api(\\/?.*)",
+            "source": "/connect/query-api",
             "destination": "/manuals/spaces/features/query-api",
             "permanent": true
         },
         {
-            "source": "/operate/secrets-management(\\/?.*)",
+            "source": "/operate/secrets-management",
             "destination": "/manuals/spaces/features/secrets-management",
             "permanent": true
         },
         {
-            "source": "/operate/auto-upgrade(\\/?.*)",
+            "source": "/operate/auto-upgrade",
             "destination": "/manuals/spaces/howtos/auto-upgrade",
             "permanent": true
         },
         {
-            "source": "/operate/debugging-a-ctp(\\/?.*)",
+            "source": "/operate/debugging-a-ctp",
             "destination": "/manuals/spaces/howtos/debugging-a-ctp",
             "permanent": true
         },
         {
-            "source": "/connect/gitops(\\/?.*)",
+            "source": "/connect/gitops",
             "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
             "permanent": true
         },
         {
-            "source": "/build/migrating-to-mcps(\\/?.*)",
+            "source": "/build/migrating-to-mcps",
             "destination": "/manuals/spaces/howtos/migrating-to-mcps",
             "permanent": true
         },
         {
-            "source": "/deploy/backup-and-restore(\\/?.*)",
+            "source": "/deploy/backup-and-restore",
             "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
-            "source": "/connect/declarative-ctps(\\/?.*)",
+            "source": "/connect/declarative-ctps",
             "destination": "/manuals/spaces/howtos/self-hosted/declarative-ctps",
             "permanent": true
         },
         {
-            "source": "/deploy/dedicated-spaces/aws(\\/?.*)",
+            "source": "/deploy/dedicated-spaces/aws",
             "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/deployment(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/deployment",
             "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/dr(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/dr",
             "destination": "/manuals/spaces/howtos/self-hosted/dr",
             "permanent": true
         },
         {
-            "source": "/connect/mcp-connector-guide(\\/?.*)",
+            "source": "/connect/mcp-connector-guide",
             "destination": "/manuals/spaces/howtos/mcp-connector-guide",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/proxies-config(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/proxies-config",
             "destination": "/manuals/spaces/howtos/self-hosted/proxies-config",
             "permanent": true
         },
         {
-            "source": "/deploy/query-api(\\/?.*)",
+            "source": "/deploy/query-api",
             "destination": "/manuals/spaces/howtos/self-hosted/query-api",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/scaling-resources(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/scaling-resources",
             "destination": "/manuals/spaces/howtos/self-hosted/scaling-resources",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/space-observability(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/space-observability",
             "destination": "/manuals/spaces/howtos/self-hosted/space-observability",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/spaces-management(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/spaces-management",
             "destination": "/manuals/spaces/howtos/self-hosted/spaces-management",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/troubleshooting(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/troubleshooting",
             "destination": "/manuals/spaces/howtos/self-hosted/troubleshooting",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/use-argo(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/use-argo",
             "destination": "/manuals/spaces/howtos/self-hosted/use-argo",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/aws/workload-id-backup-restore(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/aws/workload-id-backup-restore",
             "destination": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/simulations(\\/?.*)",
+            "source": "/build/control-plane-projects/simulations",
             "destination": "/manuals/spaces/howtos/simulations",
             "permanent": true
         },
         {
-            "source": "/build/controllers(\\/?.*)",
+            "source": "/build/controllers",
             "destination": "/manuals/uxp/concepts/packages/add-ons",
             "permanent": true
         },
         {
-            "source": "/build/provider-authentication(\\/?.*)",
+            "source": "/build/provider-authentication",
             "destination": "/manuals/uxp/concepts/packages/provider-authentication",
             "permanent": true
         },
         {
-            "source": "/manuals/uxp(\\/?.*)",
+            "source": "/manuals/uxp",
             "destination": "/manuals/uxp/overview",
             "permanent": true
         },
         {
-            "source": "/apis-cli/spaces-api(\\/?.*)",
+            "source": "/manuals/uxp/",
+            "destination": "/manuals/uxp/overview",
+            "permanent": true
+        },
+        {
+            "source": "/apis-cli/spaces-api",
             "destination": "/reference/apis/spaces-api/latest",
             "permanent": true
         },
         {
-            "source": "/apis-cli/spaces-api/v1_10(\\/?.*)",
+            "source": "/apis-cli/spaces-api/v1_10",
             "destination": "/reference/apis/spaces-api/v1_10",
             "permanent": true
         },
         {
-            "source": "/apis-cli/spaces-api/v1_11(\\/?.*)",
+            "source": "/apis-cli/spaces-api/v1_11",
             "destination": "/reference/apis/spaces-api/v1_11",
             "permanent": true
         },
         {
-            "source": "/apis-cli/spaces-api/v1_12(\\/?.*)",
+            "source": "/apis-cli/spaces-api/v1_12",
             "destination": "/reference/apis/spaces-api/v1_12",
             "permanent": true
         },
         {
-            "source": "/apis-cli/spaces-api/v1_9(\\/?.*)",
+            "source": "/apis-cli/spaces-api/v1_9",
+
             "destination": "/reference/apis/spaces-api/v1_9",
             "permanent": true
         },
         {
-            "source": "/apis-cli/cli-reference(\\/?.*)",
+            "source": "/apis-cli/cli-reference",
             "destination": "/reference/apis",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/helm-reference(\\/?.*)",
+            "source": "/deploy/self-hosted-spaces/helm-reference",
             "destination": "/reference/helm-reference",
             "permanent": true
         },
         {
-            "source": "/reference/legacy-spaces/connect-argo-to-upbound(\\/?.*)",
+            "source": "/reference/legacy-spaces/connect-argo-to-upbound",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/reference/legacy-spaces/control-plane-configurations(\\/?.*)",
+            "source": "/reference/legacy-spaces/control-plane-configurations",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/reference/legacy-spaces(\\/?.*)",
+            "source": "/reference/legacy-spaces",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/reference/legacy-spaces/multicloud-deploy(\\/?.*)",
-            "destination": "/reference/apis/spaces-api/latest",
+            "source": "/reference/legacy-spaces/multicloud-deploy",
+            "destination": "/",
             "permanent": true
         },
         {
-            "source": "/release-notes(\\/?.*)",
+            "source": "/release-notes",
             "destination": "/reference/release-notes",
             "permanent": true
         },
         {
-            "source": "/release-notes/rel-notes/mcp-connector(\\/?.*)",
+            "source": "/release-notes/rel-notes/mcp-connector",
             "destination": "/reference/release-notes/mcp-connector",
             "permanent": true
         },
         {
-            "source": "/release-notes/rel-notes/spaces(\\/?.*)",
+            "source": "/release-notes/rel-notes/spaces",
             "destination": "/reference/release-notes/spaces",
             "permanent": true
         },
         {
-            "source": "/release-notes/rel-notes/up-cli(\\/?.*)",
+            "source": "/release-notes/rel-notes/up-cli",
             "destination": "/reference/release-notes/up-cli",
             "permanent": true
         },
         {
-            "source": "/usage(\\/?.*)",
+            "source": "/usage",
             "destination": "/reference/usage",
             "permanent": true
         },
         {
-            "source": "/usage/ipaddresses(\\/?.*)",
+            "source": "/usage/ipaddresses",
             "destination": "/reference/usage/ipaddresses",
             "permanent": true
         },
         {
-            "source": "/reference/licenses(\\/?.*)",
+            "source": "/reference/licenses",
             "destination": "/reference/usage/licenses",
             "permanent": true
         },
         {
-            "source": "/usage/lifecycle(\\/?.*)",
+            "source": "/usage/lifecycle",
             "destination": "/reference/usage/lifecycle",
             "permanent": true
         },
         {
-            "source": "/usage/support(\\/?.*)",
+            "source": "/usage/support",
             "destination": "/reference/usage/support",
             "permanent": true
         },
         {
-            "source": "/usage/vscode-extensions(\\/?.*)",
+            "source": "/usage/vscode-extensions",
             "destination": "/reference/usage/vscode-extensions",
             "permanent": true
         },
         {
-            "source": "/accounts(\\/?.*)",
+            "source": "/accounts",
             "destination": "/manuals/platform/concepts/identity-management",
             "permanent": true
         },
         {
-            "source": "/accounts/authentication/enable-sso(\\/?.*)",
+            "source": "/accounts/authentication/enable-sso",
             "destination": "/manuals/platform/howtos/enable-sso",
             "permanent": true
         },
         {
-            "source": "/accounts/authentication/oidc-configuration(\\/?.*)",
+            "source": "/accounts/authentication/oidc-configuration",
             "destination": "/manuals/platform/howtos/oidc",
             "permanent": true
         },
         {
-            "source": "/accounts/authorization/k8s-rbac(\\/?.*)",
+            "source": "/accounts/authorization/k8s-rbac",
             "destination": "/manuals/platform/concepts/authorization/k8s-rbac",
             "permanent": true
         },
         {
-            "source": "/accounts/authorization/upbound-rbac(\\/?.*)",
+            "source": "/accounts/authorization/upbound-rbac",
             "destination": "/manuals/platform/concepts/authorization/upbound-rbac",
             "permanent": true
         },
         {
-            "source": "/accounts/identity-management/organizations(\\/?.*)",
+            "source": "/accounts/identity-management/organizations",
             "destination": "/manuals/platform/concepts/identity-management/organizations",
             "permanent": true
         },
         {
-            "source": "/accounts/identity-management/robots(\\/?.*)",
+            "source": "/accounts/identity-management/robots",
             "destination": "/manuals/platform/concepts/identity-management/robots",
             "permanent": true
         },
         {
-            "source": "/accounts/identity-management/teams(\\/?.*)",
+            "source": "/accounts/identity-management/teams",
             "destination": "/manuals/platform/concepts/identity-management/teams",
             "permanent": true
         },
         {
-            "source": "/accounts/identity-management/users(\\/?.*)",
+            "source": "/accounts/identity-management/users",
             "destination": "/manuals/platform/concepts/identity-management/users",
             "permanent": true
         },
         {
-            "source": "/all-spaces/_index(\\/?.*)",
+            "source": "/all-spaces/_index",
             "destination": "/manuals/spaces/overview",
             "permanent": true
         },
         {
-            "source": "/all-spaces/backup-and-restore(\\/?.*)",
+            "source": "/all-spaces/backup-and-restore",
             "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
-            "source": "/all-spaces/control-plane-topologies(\\/?.*)",
+            "source": "/all-spaces/control-plane-topologies",
             "destination": "/manuals/spaces/features/control-plane-topologies",
             "permanent": true
         },
         {
-            "source": "/all-spaces/declarative-ctps(\\/?.*)",
+            "source": "/all-spaces/declarative-ctps",
             "destination": "/manuals/spaces/howtos/self-hosted/declarative-ctps",
             "permanent": true
         },
         {
-            "source": "/all-spaces/dedicated-spaces/aws(\\/?.*)",
+            "source": "/all-spaces/dedicated-spaces/aws",
             "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
             "permanent": true
         },
         {
-            "source": "/all-spaces/mcp-connector-guide(\\/?.*)",
+            "source": "/all-spaces/mcp-connector-guide",
             "destination": "/manuals/spaces/howtos/mcp-connector-guide",
             "permanent": true
         },
         {
-            "source": "/all-spaces/observability(\\/?.*)",
+            "source": "/all-spaces/observability",
             "destination": "/manuals/spaces/features/observability",
             "permanent": true
         },
         {
-            "source": "/all-spaces/query-api(\\/?.*)",
+            "source": "/all-spaces/query-api",
             "destination": "/manuals/spaces/features/query-api",
             "permanent": true
         },
         {
-            "source": "/all-spaces/secrets-management(\\/?.*)",
+            "source": "/all-spaces/secrets-management",
             "destination": "/manuals/spaces/features/secrets-management",
             "permanent": true
         },
         {
-            "source": "/all-spaces/self-hosted-spaces/attach-detach(\\/?.*)",
+            "source": "/all-spaces/self-hosted-spaces/attach-detach",
             "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
             "permanent": true
         },
         {
-            "source": "/all-spaces/self-hosted-spaces/helm-reference(\\/?.*)",
+            "source": "/all-spaces/self-hosted-spaces/helm-reference",
             "destination": "/reference/helm-reference",
             "permanent": true
         },
         {
-            "source": "/build/vscode-extensions(\\/?.*)",
+            "source": "/build/vscode-extensions",
             "destination": "/reference/usage/vscode-extensions",
             "permanent": true
         },
         {
-            "source": "/cli(\\/?.*)",
+            "source": "/cli",
             "destination": "/manuals/cli/overview",
             "permanent": true
         },
         {
-            "source": "/concepts/accounts/users(\\/?.*)",
+            "source": "/concepts/accounts/users",
             "destination": "/manuals/platform/concepts/identity-management/users",
             "permanent": true
         },
         {
-            "source": "/concepts/control-plane-configurations(\\/?.*)",
+            "source": "/concepts/control-plane-configurations",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/concepts/control-plane-connector(\\/?.*)",
+            "source": "/concepts/control-plane-connector",
             "destination": "/manuals/spaces/features/ctp-connector",
             "permanent": true
         },
         {
-            "source": "/concepts/mcp(\\/?.*)",
+            "source": "/concepts/mcp",
             "destination": "/core-concepts/managed-control-planes",
             "permanent": true
         },
         {
-            "source": "/concepts/operate/oidc(\\/?.*)",
+            "source": "/concepts/operate/oidc",
             "destination": "/manuals/platform/howtos/oidc",
             "permanent": true
         },
         {
-            "source": "/connect/use-argo(\\/?.*)",
+            "source": "/connect/use-argo",
             "destination": "/manuals/spaces/howtos/self-hosted/use-argo",
             "permanent": true
         },
         {
-            "source": "/console(\\/?.*)",
+            "source": "/console",
             "destination": "/manuals/console/upbound-console",
             "permanent": true
         },
         {
-            "source": "/manuals/console(\\/?.*)",
+            "source": "/manuals/console",
             "destination": "/manuals/console/upbound-console",
             "permanent": true
         },
         {
-            "source": "/core-concepts/adding-dependencies(\\/?.*)",
+            "source": "/core-concepts/adding-dependencies",
             "destination": "/manuals/cli/howtos/adding-dependencies",
             "permanent": true
         },
         {
-            "source": "/core-concepts/authoring-compositions(\\/?.*)",
+            "source": "/core-concepts/authoring-compositions",
             "destination": "/manuals/cli/howtos/compositions",
             "permanent": true
         },
         {
-            "source": "/core-concepts/authoring-xrds(\\/?.*)",
+            "source": "/core-concepts/authoring-xrds",
             "destination": "/manuals/cli/howtos/authoring-xrds",
             "permanent": true
         },
         {
-            "source": "/core-concepts/building-pushing(\\/?.*)",
+            "source": "/core-concepts/building-pushing",
             "destination": "/manuals/cli/howtos/building-pushing",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/conditionals(\\/?.*)",
+            "source": "/core-concepts/kcl/conditionals",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/inputs-outputs(\\/?.*)",
+            "source": "/core-concepts/kcl/inputs-outputs",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/loops(\\/?.*)",
+            "source": "/core-concepts/kcl/loops",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/overview(\\/?.*)",
+            "source": "/core-concepts/kcl/overview",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/read-pipeline-state(\\/?.*)",
+            "source": "/core-concepts/kcl/read-pipeline-state",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/resource-data-extraction(\\/?.*)",
+            "source": "/core-concepts/kcl/resource-data-extraction",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/resource-schemas(\\/?.*)",
+            "source": "/core-concepts/kcl/resource-schemas",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/variables(\\/?.*)",
+            "source": "/core-concepts/kcl/variables",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/kcl/write-status-to-composite(\\/?.*)",
+            "source": "/core-concepts/kcl/write-status-to-composite",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/core-concepts/python/inputs-outputs(\\/?.*)",
+            "source": "/core-concepts/python/inputs-outputs",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/core-concepts/python/models(\\/?.*)",
+            "source": "/core-concepts/python/models",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/core-concepts/python/overview(\\/?.*)",
+            "source": "/core-concepts/python/overview",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/core-concepts/testing(\\/?.*)",
+            "source": "/core-concepts/testing",
             "destination": "/manuals/cli/howtos/testing",
             "permanent": true
         },
         {
-            "source": "/deploy/disconnected-spaces/helm-reference(\\/?.*)",
+            "source": "/deploy/disconnected-spaces/helm-reference",
             "destination": "/reference/helm-reference",
             "permanent": true
         },
         {
-            "source": "/deploy/legacy-spaces(\\/?.*)",
+            "source": "/deploy/legacy-spaces",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/deploy/legacy-spaces/connect-argo-to-upbound(\\/?.*)",
+            "source": "/deploy/legacy-spaces/connect-argo-to-upbound",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/deploy/legacy-spaces/control-plane-configurations(\\/?.*)",
+            "source": "/deploy/legacy-spaces/control-plane-configurations",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/deploy/legacy-spaces/multicloud-deploy(\\/?.*)",
+            "source": "/deploy/legacy-spaces/multicloud-deploy",
             "destination": "/",
             "permanent": true
         },
         {
-            "source": "/deploy/spaces/attach-detach(\\/?.*)",
+            "source": "/deploy/spaces/attach-detach",
             "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
             "permanent": true
         },
         {
-            "source": "/development-extensions/vscode-extensions(\\/?.*)",
+            "source": "/development-extensions/vscode-extensions",
             "destination": "/reference/usage/vscode-extensions",
             "permanent": true
         },
         {
-            "source": "/disconnected-spaces/backup-and-restore(\\/?.*)",
+            "source": "/disconnected-spaces/backup-and-restore",
             "destination": "/manuals/spaces/features/backup-and-restore",
             "permanent": true
         },
         {
-            "source": "/disconnected-spaces/secrets-management(\\/?.*)",
+            "source": "/disconnected-spaces/secrets-management",
             "destination": "/manuals/spaces/features/secrets-management",
             "permanent": true
         },
         {
-            "source": "/getstarted-devex(\\/?.*)",
+            "source": "/getstarted-devex",
             "destination": "/getstarted/overview",
             "permanent": true
         },
         {
-            "source": "/getstarted/_index(\\/?.*)",
+            "source": "/getstarted/_index",
             "destination": "/getstarted/overview",
             "permanent": true
         },
         {
-            "source": "/kind-quickstart(\\/?.*)",
+            "source": "/kind-quickstart",
             "destination": "/getstarted/introduction/project",
             "permanent": true
         },
         {
-            "source": "/knowledge-base/migrate-to-provider-families(\\/?.*)",
+            "source": "/knowledge-base/migrate-to-provider-families",
             "destination": "/manuals/packages/providers/migration",
             "permanent": true
         },
         {
-            "source": "/learn(\\/?.*)",
+            "source": "/learn",
             "destination": "/getstarted/overview",
             "permanent": true
         },
         {
-            "source": "/learn/build-with-upbound(\\/?.*)",
+            "source": "/learn/build-with-upbound",
             "destination": "/getstarted/overview",
             "permanent": true
         },
         {
-            "source": "/learn/control-plane-projects(\\/?.*)",
+            "source": "/learn/build-with-upbound/",
+            "destination": "/getstarted/overview",
+            "permanent": true
+        },
+        {
+            "source": "/learn/build-with-upbound/#install-the-upbound-cli",
+            "destination": "/getstarted/overview",
+            "permanent": true
+        },
+        {
+            "source": "/learn/build-with-upbound/#login-to-upbound",
+            "destination": "/getstarted/overview",
+            "permanent": true
+        },
+        {
+            "source": "/learn/control-plane-projects",
             "destination": "/manuals/cli/howtos/project",
             "permanent": true
         },
         {
-            "source": "/learn/control-plane-project(\\/?.*)",
+            "source": "/learn/control-plane-project",
             "destination": "/manuals/cli/howtos/project",
             "permanent": true
         },
         {
-            "source": "/learn/get-started(\\/?.*)",
+            "source": "/learn/control-plane-projects/",
+            "destination": "/manuals/cli/howtos/project",
+            "permanent": true
+        },
+        {
+            "source": "/learn/control-plane-project/",
+            "destination": "/manuals/cli/howtos/project",
+            "permanent": true
+        },
+        {
+            "source": "/learn/get-started",
             "destination": "/getstarted/overview",
             "permanent": true
         },
         {
-            "source": "/learn/my-first-project(\\/?.*)",
+            "source": "/learn/my-first-project",
             "destination": "/getstarted/builders-workshop/1-project-foundations",
             "permanent": true
         },
         {
-            "source": "/marketplace/packages(\\/?.*)",
+            "source": "/learn/my-first-project/",
+            "destination": "/getstarted/builders-workshop/1-project-foundations",
+            "permanent": true
+        },
+        {
+            "source": "/marketplace/packages",
             "destination": "/manuals/marketplace/repositories/publish-packages",
             "permanent": true
         },
         {
-            "source": "/mcp/auto-upgrade(\\/?.*)",
+            "source": "/mcp/auto-upgrade",
             "destination": "/manuals/spaces/howtos/auto-upgrade",
             "permanent": true
         },
         {
-            "source": "/mcp/control-plane-connector(\\/?.*)",
+            "source": "/mcp/control-plane-connector/",
             "destination": "/manuals/spaces/features/ctp-connector",
             "permanent": true
         },
         {
-            "source": "/mcp/ctp-connector(\\/?.*)",
+            "source": "/mcp/ctp-connector",
             "destination": "/manuals/spaces/features/ctp-connector",
             "permanent": true
         },
         {
-            "source": "/operate/ctp-connector(\\/?.*)",
+            "source": "/operate/ctp-connector",
             "destination": "/manuals/spaces/features/ctp-connector",
             "permanent": true
         },
         {
-            "source": "/mcp/debugging-a-ctp(\\/?.*)",
+            "source": "/mcp/debugging-a-ctp",
             "destination": "/manuals/spaces/howtos/debugging-a-ctp",
             "permanent": true
         },
         {
-            "source": "/mcp/git-integration(\\/?.*)",
+            "source": "/mcp/git-integration",
             "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
             "permanent": true
         },
         {
-            "source": "/mcp/gitops(\\/?.*)",
+            "source": "/mcp/gitops",
             "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
             "permanent": true
         },
         {
-            "source": "/mcp/groups(\\/?.*)",
+            "source": "/mcp/groups",
             "destination": "/manuals/spaces/concepts/groups",
             "permanent": true
         },
         {
-            "source": "/mcp/migrating-to-mcps(\\/?.*)",
+            "source": "/mcp/migrating-to-mcps",
             "destination": "/manuals/spaces/howtos/migrating-to-mcps",
             "permanent": true
         },
         {
-            "source": "/mcp/oidc(\\/?.*)",
+            "source": "/mcp/oidc",
             "destination": "/manuals/platform/howtos/oidc",
             "permanent": true
         },
         {
-            "source": "/providers/support(\\/?.*)",
-            "destination": "/manuals/packages/policies",
-            "permanent": true
-        },
-        {
-            "source": "/reference/cli(\\/?.*)",
-            "destination": "/manuals/cli/overview",
-            "permanent": true
-        },
-        {
-            "source": "/reference/cli/contexts(\\/?.*)",
-            "destination": "/manuals/cli/concepts/contexts",
-            "permanent": true
-        },
-        {
-            "source": "/reference/configuration(\\/?.*)",
-            "destination": "/manuals/cli/concepts/configuration",
-            "permanent": true
-        },
-        {
-            "source": "/reference/contexts(\\/?.*)",
-            "destination": "/manuals/cli/concepts/contexts",
-            "permanent": true
-        },
-        {
-            "source": "/repositories/_index(\\/?.*)",
-            "destination": "/manuals/marketplace/repositories/overview",
-            "permanent": true
-        },
-        {
-            "source": "/repositories/management(\\/?.*)",
-            "destination": "/manuals/marketplace/repositories/management",
-            "permanent": true
-        },
-        {
-            "source": "/repositories/publish-packages(\\/?.*)",
-            "destination": "/manuals/marketplace/repositories/publish-packages",
-            "permanent": true
-        },
-        {
-            "source": "/repositories/store-configurations(\\/?.*)",
-            "destination": "/manuals/marketplace/repositories/store-configurations",
-            "permanent": true
-        },
-        {
-            "source": "/self-hosted-spaces/secrets-management(\\/?.*)",
-            "destination": "/manuals/spaces/features/secrets-management",
-            "permanent": true
-        },
-        {
-            "source": "/spaces(\\/?.*)",
-            "destination": "/manuals/spaces/overview",
-            "permanent": true
-        },
-        {
-            "source": "/spaces/backup-and-restore(\\/?.*)",
-            "destination": "/manuals/spaces/features/backup-and-restore",
-            "permanent": true
-        },
-        {
-            "source": "/spaces/helm-reference(\\/?.*)",
-            "destination": "/reference/helm-reference",
-            "permanent": true
-        },
-        {
-            "source": "/spaces/observability(\\/?.*)",
-            "destination": "/manuals/spaces/features/observability",
-            "permanent": true
-        },
-        {
-            "source": "/spaces/secrets-management(\\/?.*)",
-            "destination": "/manuals/spaces/features/secrets-management",
-            "permanent": true
-        },
-        {
-            "source": "/upbound-marketplace/providers(\\/?.*)",
+            "source": "/providers/",
             "destination": "/manuals/packages/providers",
             "permanent": true
         },
         {
-            "source": "/users(\\/?.*)",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "source": "/providers/support",
+            "destination": "/manuals/packages/policies",
             "permanent": true
         },
         {
-            "source": "/users/change(\\/?.*)",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "source": "/reference/cli",
+            "destination": "/manuals/cli/overview",
             "permanent": true
         },
         {
-            "source": "/users/register(\\/?.*)",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "source": "/reference/cli/contexts",
+            "destination": "/manuals/cli/concepts/contexts",
             "permanent": true
         },
         {
-            "source": "/quickstart(\\/?.*)",
-            "destination": "/getstarted/introduction/project",
+            "source": "/reference/configuration",
+            "destination": "/manuals/cli/concepts/configuration",
             "permanent": true
         },
         {
-            "source": "/deploy/self-hosted-spaces/attach-detach(\\/?.*)",
-            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
+            "source": "/reference/contexts",
+            "destination": "/manuals/cli/concepts/contexts",
             "permanent": true
         },
         {
-            "source": "/reference/apis/spaces-api(\\/?.*)",
-            "destination": "/reference/apis/spaces-api/latest",
+            "source": "/repositories/_index",
+            "destination": "/manuals/marketplace/repositories/overview",
             "permanent": true
         },
         {
-            "source": "/operate/api-connector(\\/?.*)",
-            "destination": "/manuals/spaces/features/api-connector",
+            "source": "/repositories/management",
+            "destination": "/manuals/marketplace/repositories/management",
             "permanent": true
         },
         {
-            "source": "/upbound-marketplace/authentication(\\/?.*)",
-            "destination": "/manuals/marketplace/authentication",
+            "source": "/repositories/publish-packages",
+            "destination": "/manuals/marketplace/repositories/publish-packages",
             "permanent": true
         },
         {
-            "source": "/build(\\/?.*)",
-            "destination": "/guides",
+            "source": "/repositories/store-configurations",
+            "destination": "/manuals/marketplace/repositories/store-configurations",
             "permanent": true
         },
         {
-            "source": "/connect/git-integration(\\/?.*)",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
-            "permanent": true
-        },
-        {
-            "source": "/deploy(\\/?.*)",
-            "destination": "/manuals/spaces/overview",
-            "permanent": true
-        },
-        {
-            "source": "/deploy/uxp(\\/?.*)",
-            "destination": "/manuals/uxp/howtos/self-managed-uxp/uxp-deployment",
-            "permanent": true
-        },
-        {
-            "source": "/deploy/uxp/install(\\/?.*)",
-            "destination": "/manuals/uxp/howtos/self-managed-uxp/uxp-deployment",
-            "permanent": true
-        },
-        {
-            "source": "/deploy/uxp/uninstall(\\/?.*)",
-            "destination": "/manuals/uxp/howtos/crossplane/uninstall-crossplane",
-            "permanent": true
-        },
-        {
-            "source": "/deploy/uxp/upgrade(\\/?.*)",
-            "destination": "/manuals/uxp/howtos/crossplane/upgrade-crossplane",
-            "permanent": true
-        },
-        {
-            "source": "/learn/consumer-portal-get-started(\\/?.*)",
-            "destination": "/manuals/console/self-service",
-            "permanent": true
-        },
-        {
-            "source": "/reference/crossplane-vs-upbound(\\/?.*)",
-            "destination": "/manuals/uxp/overview",
-            "permanent": true
-        },
-        {
-            "source": "/reference/ipaddresses(\\/?.*)",
-            "destination": "/reference/usage/ipaddresses",
-            "permanent": true
-        },
-        {
-            "source": "/reference/lifecycle(\\/?.*)",
-            "destination": "/reference/usage/lifecycle",
-            "permanent": true
-        },
-        {
-            "source": "/reference/vscode-extensions(\\/?.*)",
-            "destination": "/reference/usage/vscode-extensions",
-            "permanent": true
-        },
-        {
-            "source": "/deploy/dedicated-spaces(\\/?.*)",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
-            "permanent": true
-        },
-        {
-            "source": "/deploy/self-hosted-spaces(\\/?.*)",
-            "destination": "/manuals/spaces/overview",
-            "permanent": true
-        },
-        {
-            "source": "/learn/core-concepts/providers(\\/?.*)",
-            "destination": "/manuals/uxp/concepts/packages/providers",
-            "permanent": true
-        },
-        {
-            "source": "/reference/space-api(\\/?.*)",
-            "destination": "/reference/apis/spaces-api/latest",
-            "permanent": true
-        },
-        {
-            "source": "/reference/cli/command-reference(\\/?.*)",
-            "destination": "/reference/cli-reference",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/console(\\/?.*)",
-            "destination": "/manuals/console/upbound-console",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/howtos/self-hosted/deployment-reqs(\\/?.*)",
-            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/platform/authentication/oidc-configuration(\\/?.*)",
-            "destination": "/manuals/platform/howtos/oidc",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/uxp/packages/functions(\\/?.*)",
-            "destination": "/manuals/uxp/concepts/packages/functions",
-            "permanent": true
-        },
-        {
-            "source": "/apis-cli/cli-reference(\\/?.*)",
-            "destination": "/reference/cli-reference",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/console(\\/?.*)",
-            "destination": "/manuals/console/upbound-console",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/howtos/self-hosted/deployment-reqs(\\/?.*)",
-            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/platform/authentication/oidc-configuration(\\/?.*)",
-            "destination": "/manuals/platform/howtos/oidc",
-            "permanent": true
-        },
-        {
-            "source": "/manuals/uxp/packages/functions(\\/?.*)",
-            "destination": "/manuals/uxp/concepts/packages/functions",
-            "permanent": true
-        },
-        {
-            "source": "/apis-cli/cli-reference(\\/?.*)",
-            "destination": "/reference/cli-reference",
-            "permanent": true
-        },
-        {
-            "source": "/operate/auto-upgrade(\\/?.*)",
-            "destination": "/manuals/spaces/howtos/auto-upgrade",
-            "permanent": true
-        },
-        {
-            "source": "/operate/groups(\\/?.*)",
-            "destination": "/manuals/spaces/concepts/groups",
-            "permanent": true
-        },
-        {
-            "source": "/operate/accounts/authentication/oidc-configuration(\\/?.*)",
-            "destination": "/manuals/platform/howtos/oidc",
-            "permanent": true
-        },
-        {
-            "source": "/operate/secrets-management(\\/?.*)",
+            "source": "/self-hosted-spaces/secrets-management",
             "destination": "/manuals/spaces/features/secrets-management",
             "permanent": true
         },
         {
-            "source": "/deploy/backup-and-restore(\\/?.*)",
+            "source": "/spaces",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/spaces/backup-and-restore",
             "destination": "/manuals/spaces/features/backup-and-restore",
+            "permanent": true
+        },
+        {
+            "source": "/spaces/helm-reference",
+            "destination": "/reference/helm-reference",
+            "permanent": true
+        },
+        {
+            "source": "/spaces/observability",
+            "destination": "/manuals/spaces/features/observability",
+            "permanent": true
+        },
+        {
+            "source": "/spaces/secrets-management",
+            "destination": "/manuals/spaces/features/secrets-management",
+            "permanent": true
+        },
+        {
+            "source": "/upbound-marketplace/providers",
+            "destination": "/manuals/packages/providers",
+            "permanent": true
+        },
+        {
+            "source": "/users",
+            "destination": "/manuals/platform/concepts/identity-management/users",
+            "permanent": true
+        },
+        {
+            "source": "/users/change",
+            "destination": "/manuals/platform/concepts/identity-management/users",
+            "permanent": true
+        },
+        {
+            "source": "/users/register",
+            "destination": "/manuals/platform/concepts/identity-management/users",
+            "permanent": true
+        },
+        {
+            "source": "/quickstart",
+            "destination": "/getstarted/introduction/project",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/backup-and-restore",
+            "destination": "/manuals/spaces/features/backup-and-restore",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces/attach-detach",
+            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
+            "permanent": true
+        },
+        {
+            "source": "/reference/apis/spaces-api/",
+            "destination": "/reference/apis/spaces-api/latest",
+            "permanent": true
+        },
+        {
+            "source": "/operate/api-connector",
+            "destination": "/manuals/spaces/features/api-connector",
+            "permanent": true
+        },
+        {
+            "source": "/upbound-marketplace/authentication",
+            "destination": "/manuals/marketplace/authentication",
+            "permanent": true
+        },
+        {
+            "source": "/build",
+            "destination": "/guides",
+            "permanent": true
+        },
+        {
+            "source": "/connect/git-integration",
+            "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
+            "permanent": true
+        },
+        {
+            "source": "/deploy",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/uxp",
+            "destination": "/manuals/uxp/howtos/self-managed-uxp/uxp-deployment",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/uxp/install",
+            "destination": "/manuals/uxp/howtos/self-managed-uxp/uxp-deployment",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/uxp/uninstall",
+            "destination": "/manuals/uxp/howtos/crossplane/uninstall-crossplane",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/uxp/upgrade",
+            "destination": "/manuals/uxp/howtos/crossplane/upgrade-crossplane",
+            "permanent": true
+        },
+        {
+            "source": "/learn/consumer-portal-get-started",
+            "destination": "/manuals/console/self-service",
+            "permanent": true
+        },
+        {
+            "source": "/reference/crossplane-vs-upbound",
+            "destination": "/manuals/uxp/overview",
+            "permanent": true
+        },
+        {
+            "source": "/reference/ipaddresses",
+            "destination": "/reference/usage/ipaddresses",
+            "permanent": true
+        },
+        {
+            "source": "/reference/lifecycle",
+            "destination": "/reference/usage/lifecycle",
+            "permanent": true
+        },
+        {
+            "source": "/reference/vscode-extensions",
+            "destination": "/reference/usage/vscode-extensions",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/dedicated-spaces",
+            "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli/",
+            "destination": "/manuals/cli/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/self-hosted-spaces/",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/build/control-plane-projects/authoring-compositions/go",
+            "destination": "/manuals/cli/howtos/compositions/go/",
+            "permanent": true
+        },
+        {
+            "source": "/build/control-plane-projects/authoring-compositions/go/",
+            "destination": "/manuals/cli/howtos/compositions/go/",
+            "permanent": true
+        },
+        {
+            "source": "/learn/core-concepts/providers",
+            "destination": "/manuals/uxp/concepts/packages/providers/",
+            "permanent": true
+        },
+        {
+            "source": "/learn/core-concepts/providers/",
+            "destination": "/manuals/uxp/concepts/packages/providers/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/legacy-spaces/multicloud-deploy",
+            "destination": "/reference/space-api/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/legacy-spaces/multicloud-deploy/",
+            "destination": "/reference/space-api/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/space-api",
+            "destination": "/reference/apis/spaces-api/latest/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/space-api/",
+            "destination": "/reference/apis/spaces-api/latest/",
+            "permanent": true
+        },
+        {
+            "source": "/build/repositories",
+            "destination": "/manuals/marketplace/repositories/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/build/repositories/",
+            "destination": "/manuals/marketplace/repositories/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/cli/command-reference",
+            "destination": "/reference/cli-reference/",
+            "permanent": true
+        },
+        {
+            "source": "/reference/cli/command-reference/",
+            "destination": "/reference/cli-reference/",
             "permanent": true
         }
     ]
