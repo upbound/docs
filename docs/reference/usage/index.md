@@ -14,9 +14,9 @@ Information on Upbound's release policies and lifecycle.
 
 ## Networking Information
 
-[Ingress IP Addresses][ingress-ips]
+- [Ingress IP Addresses][ingress-ips]
 
-[licenses]: licenses
-[ingress-ips]: ipaddresses
-[lifecycle]: lifecycle
-[telemetry]: telemetry
+[licenses]: /reference/usage/licenses/
+[ingress-ips]: /reference/usage/ipaddresses/
+[lifecycle]: /reference/usage/lifecycle/
+[telemetry]: /reference/usage/telemetry/

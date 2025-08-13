@@ -20,7 +20,7 @@ const ManualsCards = () => {
     {
       title: 'Console',
       description: 'Web-based management interface with MCP Query API and self-service capabilities.',
-      link: '/manuals/console/'
+      link: '/manuals/console/upbound-console/'
     },
     {
       title: 'Official Packages',

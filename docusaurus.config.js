@@ -109,7 +109,7 @@ const config = {
                             },
                             {
                                 label: "Console",
-                                to: "/manuals/console/",
+                                to: "/manuals/console/upbound-console/",
                             },
                             {
                                 label: "Packages",
