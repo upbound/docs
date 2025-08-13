@@ -162,15 +162,17 @@ const LandingPage = () => {
                                 <div className="terminal-line terminal-output">
                                     ✓ Created control plane project
                                 </div>
-                                <div className="terminal-line terminal-command">
-                                    $ cd my-webapp && up project run --local --ingress
-                                </div>
+
                                 <div className="terminal-line terminal-output">
                                     {" "}
                                     💻 Local dev control plane running in kind
                                     cluster "my-webapp".
-                                    🌐 WebUI endpoint: http://127-0-0-1.nip.io:59244
                                 </div>
+                                <div className="terminal-line terminal-command">
+                                    🌐 WebUI endpoint:
+                                    http://127-0-0-1.nip.io:59244
+                                </div>
+
                                 <div className="terminal-line terminal-output"></div>
                             </div>
                         </div>
