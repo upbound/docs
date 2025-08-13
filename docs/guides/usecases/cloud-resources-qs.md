@@ -96,7 +96,8 @@ cloud provider's API.
 
 ### Create a secret
 
-<CodeBlock cloud="aws">
+<Tabs groupId="cloud-provider">
+<TabItem value="aws" label="AWS">
 
 First, create a secret with your AWS credentials. To create the secret download
 your AWS access key ID and secret access key. 
@@ -122,9 +123,12 @@ kubectl create secret generic aws-secret \
     --from-file=my-aws-secret=./aws-credentials.txt
 ```
 
-</CodeBlock>
+```shell
+up project init --template="project-template-aws-s3" --language="python" my-new-project
+```
+</TabItem>
 
-<CodeBlock cloud="azure">
+<TabItem value="azure" label="Azure">
 
 A service principal is an application within the Azure Active Directory that
 passes client_id, client_secret, and tenant_id authentication tokens to create
@@ -158,9 +162,9 @@ Next, use `kubectl` to associate your `azure.json` file with a generic Kubernete
 kubectl create secret generic azure-secret -n crossplane-system --from-file=creds=./azure.json
 ```
 
-</CodeBlock>
+</TabItem>
 
-<CodeBlock cloud="gcp">
+<TabItem value="gcp" label="GCP">
 
 To authenticate with GCP, you need to store your GCP account key as a Kubernetes
 secret.
@@ -200,7 +204,8 @@ data:
 </EditCode>
 
 
-</CodeBlock>
+</TabItem>
+</Tabs>
 
 ### Create a `ProviderConfig`
 
