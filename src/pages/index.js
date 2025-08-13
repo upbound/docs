@@ -163,8 +163,7 @@ const LandingPage = () => {
                                     ✓ Created control plane project
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    $ cd my-webapp && up project run --local
-                                    --ingress
+                                    $ cd my-webapp && up project run --local --ingress
                                 </div>
                                 <div className="terminal-line terminal-output">
                                     {" "}
