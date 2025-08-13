@@ -4,8 +4,6 @@ sidebar_position: 3
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 
-<GlobalLanguageSelector />
-
 You can use control planes to define custom resource types for external
 resources, like your cloud provider. This guide walks through how to create and
 deploy custom resource types for your cloud provider on a control plane.
@@ -209,10 +207,13 @@ data:
 
 ### Create a `ProviderConfig`
 
-<CodeBlock cloud="aws">
 
 Next, create a new file called `provider-config.yaml` and paste the
 configuration below:
+
+
+<Tabs groupId="cloud-provider">
+<TabItem value="aws" label="AWS">
 
 ```yaml title="upbound-hello-world/provider-config.yaml"
 apiVersion: aws.upbound.io/v1beta1
@@ -227,10 +228,10 @@ spec:
       name: aws-secret
       key: my-aws-secret
 ```
+</TabItem>
 
-</CodeBlock>
 
-<CodeBlock cloud="azure">
+<TabItem value="azure" label="Azure">
 
 Next, create a new file called `provider-config.yaml` and paste the
 configuration below:
@@ -249,9 +250,10 @@ spec:
       key: creds
 ```
 
-</CodeBlock>
+</TabItem>
 
-<CodeBlock cloud="gcp">
+
+<TabItem value="gcp" label="GCP">
 
 Next, create a new file called `provider-config.yaml` and paste the
 configuration below:
@@ -271,8 +273,10 @@ spec:
       name: gcp-secret
       key: my-gcp-secret
 `}
-</EditCode>
-</CodeBlock>
+
+</TabItem>
+
+</Tabs>
 
 Next, apply your provider configuration:
 
