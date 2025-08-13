@@ -772,11 +772,6 @@
             "permanent": true
         },
         {
-            "source": "/manuals/console",
-            "destination": "/manuals/console/upbound-console",
-            "permanent": true
-        },
-        {
             "source": "/core-concepts/adding-dependencies",
             "destination": "/manuals/cli/howtos/adding-dependencies",
             "permanent": true
@@ -1324,6 +1319,156 @@
         {
             "source": "/reference/cli/command-reference/",
             "destination": "/reference/cli-reference/",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/console/",
+            "destination": "/manuals/console/upbound-console/",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/console",
+            "destination": "/manuals/console/upbound-console/",
+            "permanent": true
+        },
+        {
+            "source": "/apis-cli/cli-reference",
+            "destination": "/reference/cli-reference",
+            "permanent": true
+        },
+        {
+            "source": "/apis-cli/cli-reference/",
+            "destination": "/reference/cli-reference",
+            "permanent": true
+        },
+        {
+            "source": "/deploy",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli/configuration",
+            "destination": "/manuals/cli/concepts/configuration",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli/configuration/",
+            "destination": "/manuals/cli/concepts/configuration",
+            "permanent": true
+        },
+        {
+            "source": "/platform/concepts/identity-management/robots",
+            "destination": "/manuals/platform/concepts/identity-management/robots",
+            "permanent": true
+        },
+        {
+            "source": "/platform/concepts/identity-management/robots/",
+            "destination": "/manuals/platform/concepts/identity-management/robots",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/platform/authentication/oidc-configuration",
+            "destination": "/manuals/platform/howtos/oidc",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/platform/authentication/oidc-configuration/",
+            "destination": "/manuals/platform/howtos/oidc",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/howtos/self-hosted/deployment-reqs",
+            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/howtos/self-hosted/deployment-reqs/",
+            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
+            "permanent": true
+        },
+        {
+            "source": "/operate/auto-upgrade",
+            "destination": "/manuals/spaces/howtos/auto-upgrade",
+            "permanent": true
+        },
+        {
+            "source": "/operate/auto-upgrade/",
+            "destination": "/manuals/spaces/howtos/auto-upgrade",
+            "permanent": true
+        },
+        {
+            "source": "/operate/groups",
+            "destination": "/manuals/spaces/concepts/groups",
+            "permanent": true
+        },
+        {
+            "source": "/operate/groups/",
+            "destination": "/manuals/spaces/concepts/groups",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli/contexts",
+            "destination": "/manuals/cli/concepts/contexts",
+            "permanent": true
+        },
+        {
+            "source": "/operate/cli/contexts/",
+            "destination": "/manuals/cli/concepts/contexts",
+            "permanent": true
+        },
+        {
+            "source": "/connect/gitops",
+            "destination": "/manuals/spaces/howtos/self-hosted/gitops",
+            "permanent": true
+        },
+        {
+            "source": "/connect/gitops/",
+            "destination": "/manuals/spaces/howtos/self-hosted/gitops",
+            "permanent": true
+        },
+        {
+            "source": "/operate/secrets-management",
+            "destination": "/manuals/spaces/features/secrets-management",
+            "permanent": true
+        },
+        {
+            "source": "/operate/secrets-management/",
+            "destination": "/manuals/spaces/features/secrets-management",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/backup-and-restore",
+            "destination": "/manuals/spaces/features/backup-and-restore",
+            "permanent": true
+        },
+        {
+            "source": "/deploy/backup-and-restore/",
+            "destination": "/manuals/spaces/features/backup-and-restore",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/packages/functions",
+            "destination": "/manuals/uxp/concepts/packages/functions",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/packages/functions/",
+            "destination": "/manuals/uxp/concepts/packages/functions",
+            "permanent": true
+        },
+        {
+            "source": "/core-concepts/projects",
+            "destination": "/manuals/cli/concepts/projects",
+            "permanent": true
+        },
+        {
+            "source": "/core-concepts/projects/",
+            "destination": "/manuals/cli/concepts/projects",
             "permanent": true
         }
     ]
