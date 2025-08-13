@@ -133,16 +133,23 @@ Generate your composite resource structure:
 
 ```shell
 # Create example claim with error simulation capabilities
-up example generate --type claim --api-group example.upbound.io \
-  --api-version v1alpha1 --kind Network --name example
+up example generate --type xr --api-group example.upbound.io \
+  --api-version v1alpha1 --kind XNetwork --name example
+```
+
+Use the defaults for the following questions:
+
+```shell
+Should this Composite Resource (XR) be cluster scoped? (default: namespace scoped) [y/N]: No
+What is the metadata namespace?: default
 ```
 
 Configure the example with intelligent error simulation:
 
 ```yaml
-# examples/network/example.yaml
+# examples/xnetwork/example.yaml
 apiVersion: example.upbound.io/v1alpha1
-kind: Network
+kind: XNetwork
 metadata:
   name: example
   namespace: default
@@ -154,7 +161,7 @@ spec:
 Next, generate composite resource definition:
 
 ```shell
-up xrd generate examples/network/example.yaml
+up xrd generate examples/xnetwork/example.yaml
 up composition generate apis/xnetworks/definition.yaml
 ```
 
@@ -174,9 +181,9 @@ spec:
   pipeline:
   # Resource generation step
   - functionRef:
-      name: upbound-ai-demotest-function
+      name: upbound-intelligent-platformresource-generation
     step: resource-generation
-  
+
   # AI-powered status analysis step
   - functionRef:
       name: upbound-function-claude-status-transformer
@@ -206,7 +213,7 @@ Create the Go template function that demonstrates intelligent error analysis:
 up function generate --language=go-templating resource-generation apis/xnetworks/composition.yaml
 ```
 
-Open your function file and paste the following function:
+Open your `functions/resource-generation/01-compose.yaml.gotmpl` function file and paste the following function code into it replacing the existing content:
 
 ```yaml
 # functions/resource-generation.yaml
@@ -356,7 +363,13 @@ spec:
 Apply your intelligent composition:
 
 ```shell
-kubectl apply -f ./examples/network/example.yaml
+up project run --local
+```
+
+Claim a composite resource (XR):
+
+```shell
+kubectl apply -f ./examples/xnetwork/example.yaml
 ```
 
 Launch the WebUI to observe AI-powered insights:
