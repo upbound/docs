@@ -292,7 +292,7 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 [control-plane-management]: /manuals/spaces/concepts/control-planes
 [provider-azure-authentication]:/manuals/packages/providers/provider-azure/authentication/#upbound-auth-oidc 
 [provider-gcp-authentication]:/manuals/packages/providers/provider-gcp/authentication/#upbound-auth-oidc 
-[crossplane-providers]: https://docs.crossplane.io/latest/concepts/providers/
+[crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
 [marketplace]: https://marketplace.upbound.io/providers
 [providerconfig]: https://docs.crossplane.io/latest/concepts/providers/#provider-configuration
 [upbound-s-aws-provider]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/latest

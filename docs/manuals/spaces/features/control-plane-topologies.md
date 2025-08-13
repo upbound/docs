@@ -554,4 +554,4 @@ planes that exist on a cross-Space boundary.
 [crossplane-management-policies]: https://docs.crossplane.io/latest/concepts/managed-resources/#managementpolicies
 [vscode-pretty-json]: https://marketplace.visualstudio.com/items?itemName=chrismeyers.vscode-pretty-json
 [configure-routing]: #use-an-environment-to-route-resources
-[configuration]: https://docs.crossplane.io/latest/concepts/packages
+[configuration]: https://docs.crossplane.io/latest/packages/providers

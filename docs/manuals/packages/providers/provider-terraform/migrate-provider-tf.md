@@ -338,7 +338,7 @@ definition, composition, and claim.
 [provider-gcp]: /manuals/packages/manuals/packages/providers/provider-gcp/authentication
 
 
-[install-crossplane]: https://docs.crossplane.io/latest/software/install/
+[install-crossplane]: https://docs.crossplane.io/latest/get-started/install/
 [example-backend-configuration]: https://github.com/upbound/provider-terraform/blob/8ea3c889fdc0828390c65edf9707828ea3775f54/examples/providerconfig-backend-file.yaml
 [terraform-file-documentation]: https://developer.hashicorp.com/terraform/language/settings/backends/configuration#file
 [sponsored-webinar]: https://resources.upbound.io/crossplane/kubernetes-called-and-it-wants-your-iac-back-using-control-planes-to-modernize-your-iac-tech-stack

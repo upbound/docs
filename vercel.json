@@ -1470,6 +1470,76 @@
             "source": "/core-concepts/projects/",
             "destination": "/manuals/cli/concepts/projects",
             "permanent": true
+        },
+        {
+            "source": "/concepts/mcp/bring-your-own-controller",
+            "destination": "/manuals/spaces/concepts/control-planes/",
+            "permanent": true
+        },
+        {
+            "source": "/concepts/mcp/bring-your-own-controller/",
+            "destination": "/manuals/spaces/concepts/control-planes/",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/self-hosted-spaces/aws-deployment",
+            "destination": "/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/self-hosted-spaces/aws-deployment/",
+            "destination": "/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/self-hosted-spaces/deployment",
+            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs/",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/self-hosted-spaces/deployment/",
+            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs/",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/disconnected-spaces/access-control",
+            "destination": "/manuals/platform/concepts/identity-management/#role-based-access-control",
+            "permanent": true
+        },
+        {
+            "source": "/all-spaces/disconnected-spaces/access-control/",
+            "destination": "/manuals/platform/concepts/identity-management/#role-based-access-control",
+            "permanent": true
+        },
+        {
+            "source": "/operate/observability",
+            "destination": "/manuals/spaces/features/observability/",
+            "permanent": true
+        },
+        {
+            "source": "/operate/observability/",
+            "destination": "/manuals/spaces/features/observability/",
+            "permanent": true
+        },
+        {
+            "source": "/platform/overview",
+            "destination": "/manuals/platform/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/platform/overview/",
+            "destination": "/manuals/platform/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/operate/accounts/authentication/oidc-configuration",
+            "destination": "/manuals/platform/howtos/oidc/",
+            "permanent": true
+        },
+        {
+            "source": "/operate/accounts/authentication/oidc-configuration/",
+            "destination": "/manuals/platform/howtos/oidc/",
+            "permanent": true
         }
     ]
 }

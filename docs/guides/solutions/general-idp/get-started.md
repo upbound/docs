@@ -17,7 +17,7 @@ This guide helps you deploy this solution.
 
 This quickstart assumes a basic understanding of Crossplane, Backstage, and ArgoCD concepts. For more information, see their respective documentation pages:
 
-- Crossplane: https://docs.crossplane.io/latest/concepts/
+- Crossplane: https://docs.crossplane.io/latest/get-started/get-started-with-composition/
 - Backstage: https://backstage.io/docs/features/techdocs/
 - ArgoCD: https://argo-cd.readthedocs.io/en/stable/
 
