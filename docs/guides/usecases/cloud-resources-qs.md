@@ -167,15 +167,6 @@ secret.
 First, create or download your GCP service account key JSON file in the root of
 your project.
 
-Next, create the Kubernetes secret with `kubectl create secret`:
-
-```shell
-kubectl create secret generic \
-gcp-secret \
--n crossplane-system \
---from-file=my-gcp-secret=./gcp-credentials.json
-```
-
 You must encode your authentication key as a base-64 string. 
 
 ```shell
@@ -197,6 +188,16 @@ data:
     my-gcp-secret: $@<YOUR_BASE_64_ENCODED_KEY>$@
 `}
 </EditCode>
+
+
+Next, create the Kubernetes secret with `kubectl create secret`:
+
+```shell
+kubectl create secret generic \
+gcp-secret \
+-n crossplane-system \
+--from-file=my-gcp-secret=./gcp-credentials.json
+```
 
 
 </TabItem>
