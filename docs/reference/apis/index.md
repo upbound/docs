@@ -9,7 +9,7 @@ Information on Upbound's APIs:
 * [Testing API][testing]
 * [Query API][query]
 
-[spaces]: spaces-api/latest
-[crossplane]: crossplane-api
-[testing]: testing-api 
-[query]: query-api 
+[spaces]: /reference/apis/spaces-api/latest/
+[crossplane]: /reference/apis/crossplane-api/
+[testing]: /reference/apis/testing-api/
+[query]: /reference/apis/query-api/
