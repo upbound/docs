@@ -299,7 +299,7 @@ Next, wrap the code block in a `<div id>` that matches the hover label:
 <div id="pc-upbound-auth">
 
 ```yaml 
-apiVersion: azure.upbound.io/v1beta1
+apiVersion: azure.m.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
   name: default
