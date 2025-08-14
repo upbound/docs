@@ -76,8 +76,8 @@ const config = {
                         to: "/guides/",
                         items: [
                             {
-                                label: "Intelligent Controllers",
-                                to: "/guides/intelligent-controllers/intelligent-control-planes/",
+                                label: "Intelligent Control Planes",
+                                to: "/guides/intelligent-control-planes/",
                             },
                             {
                                 label: "Platform Solutions",
