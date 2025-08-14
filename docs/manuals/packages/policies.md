@@ -139,7 +139,7 @@ When CRDs are contained in an Official package, they follow the standard Kuberne
 :::important
 **Upbound-published Crossplane v2.0 compatible providers require Upbound Crossplane.**
 
-Packages published to xpkg.crossplane.io are still compatible with upstream Crossplane and follow the **main branch release only** access policy.
+Packages published to `xpkg.crossplane.io` are still compatible with upstream Crossplane and follow the **main branch release only** access policy.
 :::
 ### Upgrading
 
