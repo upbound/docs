@@ -13,9 +13,9 @@ const GuidesCards = () => {
       link: '/guides/usecases'
     },
     {
-      title: 'Intelligent Controllers',
+      title: 'Intelligent Control Planes',
       description: 'Advanced control plane patterns with dynamic resource composition, log analysis, and database scaling.',
-      link: '/guides/solutions/general-idp/get-started'
+      link: '/guides/intelligent-control-planes/'
     }
   ];
 
