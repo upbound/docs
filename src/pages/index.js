@@ -44,7 +44,7 @@ const LandingPage = () => {
             id: "manuals",
             title: "Manuals",
             description:
-                "Comprehensive documentation for Upbound Crossplane features and concepts",
+                "Comprehensive documentation for Upbound Crossplane",
             icon: <Settings className="w-8 h-8" />,
             items: [
                 "Install, configure, and manage Upbound",

@@ -77,7 +77,7 @@ For more information on functions, check out the Upbound Crossplane
 Add configurations to use pre-built control plane setups as building blocks:
 
 ```shell
-up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.2.0
+up dependency add xpkg.upbound.io/upbound/platform-ref-aws:v1.4.0
 ```
 
 For more information about configurations and platform references, check out the
