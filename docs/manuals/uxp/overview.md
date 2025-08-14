@@ -8,13 +8,13 @@ Upbound Crossplane (UXP) is the AI-native distribution of [Crossplane][crossplan
 
 :::tip
 
-Upbound Crossplane is a key ingredient in building out a platform powered by an **intelligent control plane architecture.** Learn about how UXP safely brings AI intelligence into your control plane's reconcile loop with [Intelligent Controllers][intelligent-controllers].
+Upbound Crossplane is a key ingredient in building out a platform powered by an **intelligent control plane architecture.** Learn about how UXP safely brings AI intelligence into your control plane's reconcile loop with [Intelligent Control Planes][intelligent-control-planes].
 
 :::
 
 ## Concepts
 
-Because Upbound Crossplane is a distribution of upstream Crossplane, you'll find UXP shares the same concepts as upstream. UXP also introduces brand new concepts, such as AI-powered [Intelligent Controllers][intelligent-controllers] and [Add-Ons][add-ons]. 
+Because Upbound Crossplane is a distribution of upstream Crossplane, you'll find UXP shares the same concepts as upstream. UXP also introduces brand new concepts, such as AI-powered [Intelligent Control Planes][intelligent-control-planes] and [Add-Ons][add-ons]. 
 
 Learn about UXP concepts by reading the [concept documentation][concepts].
 
@@ -40,9 +40,9 @@ Read the [Get Started][get-started] guide to learn how to use UXP to build your 
 [control-plane]: /getstarted/#what-is-upbound
 [self-managed-uxp]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
 [licensing]: /manuals/uxp/howtos/self-managed-uxp/license-management
-[intelligent-controllers]: /manuals/uxp/features/intelligent-controllers
+[intelligent-control-planes]: /manuals/uxp/features/intelligent-control-planes
 [add-ons]: /manuals/uxp/features/add-ons
 [concepts]: /manuals/uxp/concepts/composition/overview
-[features]: /manuals/uxp/features/intelligent-controllers
+[features]: /manuals/uxp/features/intelligent-control-planes
 [guides]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
 [get-started]: /getstarted

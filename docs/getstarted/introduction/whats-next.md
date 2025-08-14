@@ -22,8 +22,7 @@ Gain more knowledge on with hands-on workshops and tutorials:
 composition functions][workshop], handle complex resource relationships, and master error
 handling patterns.
 
-**Build intelligent controllers**: Learn to create [AI-augmented control
-planes][intelligent-controllers] that adapt and self-heal.
+**Build intelligent control planes **: Learn to create [AI-augmented control planes][intelligent-control-planes] that adapt and self-heal.
 
 **Create an internal developer platform**: Follow our [Internal Developer
 Platform guide][idp-guide] to build comprehensive developer experiences.
@@ -54,7 +53,7 @@ cluster][uxp] with full control.
 
 
 [workshop]: /getstarted/builders-workshop/project-foundations/
-[intelligent-controllers]: /guides/intelligent-controllers/intelligent-control-planes/
+[intelligent-control-planes]: /guides/intelligent-control-planes/intelligent-control-planes/
 [idp-guide]: /guides/solutions/general-idp/get-started/
 [spaces]: /manuals/spaces/overview/
 [control-planes]: /manuals/spaces/concepts/control-planes/

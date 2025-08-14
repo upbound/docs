@@ -1,16 +1,16 @@
 ---
-title: AI-powered Intelligent Controllers
-description: "Learn how to use the AI-powered Intelligent Controllers in UXP"
+title: AI-powered Intelligent Control Planes
+description: "Learn how to use the AI-powered Intelligent Control Planes in UXP"
 sidebar_position: 1
 ---
 
-Upbound Crossplane supports running **Intelligent Controllers**, which are a
+Upbound Crossplane supports running **Intelligent Control Planes**, which are a
 class of [composition functions][intelligent-compositions] and [operation
 functions][intelligent-operations] that bring LLM-driven logic into your control
 plane's reconcile loop.
 
 <!-- vale alex.Condescending = NO -->
-Intelligent controllers extend the traditional `observe → compare → act` pattern
+Intelligent Control Planes extend the traditional `observe → compare → act` pattern
 to `observe → analyze → act → adapt` cycles that incorporate AI-driven reasoning
 capabilities. The analyze phase introduces decision making that can balance
 competing objectives, understand business context, and optimize based on complex
@@ -57,14 +57,14 @@ Learn about how to package an MCP server into an Add-On in the [concept][add-on-
 
 ## Next steps
 
-Learn about example use cases of Intelligent Controllers by [reading the guides][intelligent-controllers-guides]
+Learn about example use cases of Intelligent Control Planes by [reading the guides][intelligent-control-planes-guides]
 
 [intelligent-compositions]: /manuals/uxp/concepts/composition/intelligent-compositions
 [intelligent-operations]: /manuals/uxp/concepts/operations/intelligent-operations
 [mcp-servers]: #model-context-protocol-mcp-servers
 [add-ons]: /manuals/uxp/features/add-ons
 [add-on-concept]: /manuals/uxp/concepts/packages/add-ons
-[intelligent-controllers-guides]: /guides/intelligent-controllers/scale-database
+[intelligent-control-planes-guides]: /guides/intelligent-control-planes/scale-database
 [function-claude]: https://marketplace.upbound.io/functions/upbound/function-claude
 [function-openai]: https://marketplace.upbound.io/functions/upbound/function-openai
 [function-claude-status-transformer]: https://marketplace.upbound.io/functions/upbound/function-claude-status-transformer
