@@ -8,13 +8,13 @@ import { GetStarted } from '@site/src/components/GetStartedCallout';
 Welcome to Upbound, a platform for building autonomous infrastructure platforms
 that provision, operate, and adapt without human intervention.
 
-Upbound allows you to expose infrastructure across clouds, vendors, and
-systems through a single programmable API surface that works for humans and
-intelligent agents alike. Upbound powers this API surface with a **control plane**
-called **Crossplane**.
-
-If you're new to Upbound and Crossplane, this section guides you through the
-essential resources to get started.
+Upbound allows you to expose infrastructure across clouds, vendors, and systems
+through a single programmable API surface that works for humans and intelligent
+agents alike. Upbound powers this API surface with **Upbound Crossplane 2.0
+(UXP)** - our next-generation control plane that delivers enterprise-grade
+reliability, performance, and developer experience. If you're new to Upbound and
+Crossplane, this section guides you through the
+essential resources to get started with UXP.
 
 Follow the guides to help you get started and learn how Upbound can help you
 build your own infrastructure platform.
