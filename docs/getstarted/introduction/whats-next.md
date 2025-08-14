@@ -22,7 +22,7 @@ Gain more knowledge on with hands-on workshops and tutorials:
 composition functions][workshop], handle complex resource relationships, and master error
 handling patterns.
 
-**Build intelligent control planes **: Learn to create [AI-augmented control planes][intelligent-control-planes] that adapt and self-heal.
+**Build intelligent control planes**: Learn to create [AI-augmented control planes][intelligent-control-planes] that adapt and self-heal.
 
 **Create an internal developer platform**: Follow our [Internal Developer
 Platform guide][idp-guide] to build comprehensive developer experiences.
