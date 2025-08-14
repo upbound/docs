@@ -705,7 +705,7 @@ further assistance, please reach out to your Upbound account representative.
 - We now allow scaling up core control plane components via helm values.
 - The latest supported Crossplane minor version in Spaces was bumped to 1.16.
 - Spaces prereq providers have had version bumps to allow for incorporating new metrics emissions from these providers.
-  Provider-kubernetes is bumped to `v0.14.0` and provider-helm to `v0.19.0`.
+  Provider-kubernetes is bumped to `v0.18.1` and provider-helm to `v0.21.1`.
 - Kube-native Hub authentication and authorization has been enabled by default.
 
 ## v1.3.1

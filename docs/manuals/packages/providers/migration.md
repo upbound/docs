@@ -453,7 +453,7 @@ Check for any installed Configurations.
 ```shell {copy-lines="1"}
 kubectl get configurations.pkg
 NAME                       INSTALLED   HEALTHY   PACKAGE                                           AGE
-upbound-platform-ref-aws   True        True      xpkg.upbound.io/upbound/platform-ref-aws:v0.5.0   3h14m
+upbound-platform-ref-aws   True        True      xpkg.upbound.io/upbound/platform-ref-aws:v1.4.0   3h14m
 ```
 
 :::note
