@@ -6,7 +6,7 @@ description: A guide to how to update to a control plane in an Upbound Space
 
 The Upbound migration tool is a [CLI command][cli-command] that helps you update your existing Crossplane control plane to a managed [Upbound Crossplane][uxp] control plane in an [Upbound Space][spaces].
 
-To upgradefrom Crossplane to Upbound, you must:
+To upgrade from Crossplane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a control plane running in Upbound.
