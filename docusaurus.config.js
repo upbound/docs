@@ -96,7 +96,7 @@ const config = {
                         position: "left",
                         items: [
                             {
-                                label: "UXP (Universal Crossplane)",
+                                label: "UXP (Upbound Crossplane)",
                                 to: "/manuals/uxp/overview",
                             },
                             {
