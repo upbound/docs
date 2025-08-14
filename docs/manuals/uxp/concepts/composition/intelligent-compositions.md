@@ -59,14 +59,12 @@ to call Claude, an LLM offered by Anthropic, to:
 
 ## Official AI-embedded function
 
-Upbound offers a number of Official Functions that've been AI-enabled and are suitable for composition:
+Upbound offers AI-enabled functions available for composition:
 - [function-claude][functionClaude]
 - [function-openai][functionOpenAi]
 - [function-claude-status-transformer][functionStatusTransformer]
-- [function-pod-analyzer][functionPodAnalyzer]
 
 [functions]: /manuals/uxp/concepts/packages/functions
-[functionClaude]: https://marketplace.upbound.io/
-[functionOpenAi]: https://marketplace.upbound.io/
-[functionStatusTransformer]: https://marketplace.upbound.io/
-[functionPodAnalyzer]: https://marketplace.upbound.io/
+[functionClaude]:https://marketplace.upbound.io/functions/upbound/function-claude/latest
+[functionOpenAi]:https://marketplace.upbound.io/functions/upbound/function-openai/latest
+[functionStatusTransformer]:https://marketplace.upbound.io/functions/upbound/function-claude-status-transformer/latest
