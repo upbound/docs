@@ -1,5 +1,5 @@
 ---
-title: Migrate to Upbound Crossplane
+title: Upgrade to Upbound Crossplane
 description: Adopt Upbound Crossplane from OSS Crossplane
 sidebar_position: 2
 ---
@@ -212,7 +212,7 @@ crossplane-contrib-function-auto-ready-35bfe51b9ce9            True      True   
 crossplane-contrib-function-patch-and-transform-d000d8ce634a   True      True      xpkg.upbound.io/crossplane-contrib/function-patch-and-transform:v0.9.0   Active   17m
 ```
 
-## Migrate to V2 Crossplane features
+## Upgrade to V2 Crossplane features
 
 Crossplane v2.0 supports legacy v1-style XRs and MRs. Most users will be able to
 upgrade from v1.x to Crossplane v2.0 without breaking changes.

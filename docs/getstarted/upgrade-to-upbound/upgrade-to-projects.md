@@ -1,11 +1,11 @@
 ---
-title: Migrate to Control Plane Projects
+title: Upgrade to Control Plane Projects
 description: Adopt control plane projects
 sidebar_position: 1
 ---
 
 If you're already running Crossplane and want to use Upbound Crossplane's
-control plane tooling, you can migrate to projects.
+control plane tooling, you can upgrade to projects.
 
 The next section shows you the steps to migrate existing Crossplane compositions into a control plane project.
 

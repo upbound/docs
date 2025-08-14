@@ -1,12 +1,12 @@
 ---
-title: Migrate to Spaces
+title: Upgrade to Spaces
 sidebar_position: 3
-description: A guide to how to migrate to a control plane in an Upbound Space
+description: A guide to how to update to a control plane in an Upbound Space
 ---
 
-The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a managed [Upbound Crossplane][uxp] control plane in an [Upbound Space][spaces].
+The Upbound migration tool is a [CLI command][cli-command] that helps you update your existing Crossplane control plane to a managed [Upbound Crossplane][uxp] control plane in an [Upbound Space][spaces].
 
-To migrate from Crossplane to Upbound, you must:
+To upgradefrom Crossplane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a control plane running in Upbound.
@@ -20,7 +20,7 @@ Before you begin, you must have the following:
 
 ## Migration process
 
-To migrate an existing Crossplane control plane to a control plane in Upbound, do the following:
+To upgrade an existing Crossplane control plane to a control plane in Upbound, do the following:
 
 1. Run the `up controlplane migration export` command to export your existing Crossplane control plane configuration/state into an archive file:
 
@@ -36,7 +36,7 @@ Crossplane control plane state, leaving it intact. Use the
 `--pause-before-export` flag to pause the reconciliation on managed resources
 before exporting the archive file.
 
-This is a safety mechanism to help ensure the control plane you migrate state to
+This is a safety mechanism to help ensure the control plane you upgrade state to
 doesn't assume ownership of resources before you're ready.
 
 :::
