@@ -17,3 +17,8 @@ This page documents the Custom Resource Definitions (CRDs) for the Testing API.
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_e2etests.yaml" />
 
+## Project Tests
+
+<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
+
+
