@@ -97,7 +97,7 @@ spec:
                 default: 30
                 description: |-
                   Timeout for the test in seconds
-                  Required. Default is 30s.
+                  Default is 30s.
                 minimum: 1
                 type: integer
               validate:
