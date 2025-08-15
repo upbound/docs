@@ -48,3 +48,4 @@ For more information on licensing and provider availability, review the
 
 [aws-provider-package]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/v1.21.0
 [package-policy]: /manuals/packages/policies
+[kubernetes-controller]: https://kubernetes.io/docs/concepts/architecture/controller/

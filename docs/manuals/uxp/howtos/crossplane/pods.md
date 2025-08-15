@@ -359,8 +359,8 @@ The full list of configurable environmental variables are available in the
 
 [k8s-crds]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [k8s-init-containers]: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
-<!-- [install-crossplane]: /get-started/install -->
+[install-crossplane]: https://docs.crossplane.io/latest/get-started/install/
 [k8s-api-watch]: https://kubernetes.io/docs/reference/using-api/api-concepts/#efficient-detection-of-changes
-<!-- [install-crossplane-feature-flags]: ../get-started/install#feature-flags -->
+[install-crossplane-feature-flags]: https://docs.crossplane.io/latest/get-started/install/#feature-flags
 [rbac-design-doc]: https://github.com/crossplane/crossplane/blob/main/design/design-doc-rbac-manager.md
-<!-- [install-crossplane-customize]: ../get-started/install#customize-the-crossplane-helm-chart -->
+[install-crossplane-customize]: https://docs.crossplane.io/latest/get-started/install/#customize-the-crossplane-helm-chart
