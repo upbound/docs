@@ -177,11 +177,8 @@ metadata:
 ```
 </div>
 
-
-<!--- TODO(tr0njavolta): links --->
+[uxp]: /manuals/uxp/overview/
 [monolithic-providers]: /manuals/packages/providers/monolithic
 [family-providers-migration-guide]: /manuals/packages/providers/migration
-
-
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [controllerconfig]: https://docs.crossplane.io/latest/concepts/packages/#speccontrollerconfigref

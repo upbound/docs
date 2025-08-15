@@ -27,7 +27,7 @@ The Shared Secrets feature allows you to:
 
 The Shared Secrets feature uses a hierarchical approach to centrally manage
 secrets and effectively control their distribution.
-<!--- TODO(tr0njavolta): image --->
+
 ![Shared Secrets workflow diagram](/img/shared-secrets-workflow.png)
 
 1. The flow begins at the group level, where you define your secret sources and distribution rules
@@ -195,7 +195,6 @@ spec:
   namespaceSelector:
     names:
     - default
-```
 ```
 
 When you create a `SharedSecretStore` the underlying mechanism:
@@ -426,7 +425,7 @@ spec:
 ```
 
 :::tip
-The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection][control-plane-selection] amd [namespace selection][namespace-selection] to learn how to map into one or more namespaces of one or more control planes.
+The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection][control-plane-selection] and [namespace selection][namespace-selection] to learn how to map into one or more namespaces of one or more control planes.
 :::
 
 <!-- vale Google.Headings = NO -->
@@ -493,7 +492,7 @@ spec:
 ```
 
 :::tip
-The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection][control-plane-selection-1] amd [namespace selection][namespace-selection-2] to learn how to map into one or more namespaces of one or more control planes.
+The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection][control-plane-selection-1] and [namespace selection][namespace-selection-2] to learn how to map into one or more namespaces of one or more control planes.
 :::
 
 ### Manage your secret distribution
@@ -699,11 +698,10 @@ secrets available to that token.
 **Document your secret management architecture**, including which control planes
 should receive which secrets.
 
-<!-- [control-plane-selection]: /deploy/#control-plane-selection -->
-<!-- [namespace-selection]: /img/#namespace-selection -->
-<!-- [control-plane-selection-1]: /img/#control-plane-selection -->
-<!-- [namespace-selection-2]: /img/#namespace-selection -->
-<!--- TODO(tr0njavolta): links --->
+[control-plane-selection]: #control-plane-selection
+[namespace-selection]: #namespace-selection
+[control-plane-selection-1]: #control-plane-selection
+[namespace-selection-2]: #namespace-selection
 
 [external-secrets-operator-eso]: https://external-secrets.io
 [workload-identity-enabled-aks-cluster]: https://learn.microsoft.com/en-us/azure/aks/workload-identity-deploy-cluster

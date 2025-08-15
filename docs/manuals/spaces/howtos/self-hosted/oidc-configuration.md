@@ -7,8 +7,7 @@ description: Configure OIDC in your Space
 This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 :::
 
-Upbound uses the Kubernetes [Structured Authentication Configuration][Structured
-Auth Config]  to validate OIDC tokens sent to the API. Upbound stores this
+Upbound uses the Kubernetes [Structured Authentication Configuration][structured-auth-config]  to validate OIDC tokens sent to the API. Upbound stores this
 configuration as a `ConfigMap` and authenticates with the Upbound router
 component during installation with Helm.
 
@@ -41,7 +40,7 @@ jwt:
 
 <!-- vale gitlab.Uppercase = NO -->
 For detailed configuration options, including the CEL-based token validation,
-review the feature [documentation][Structured Auth Config]. 
+review the feature [documentation][structured-auth-config]. 
 <!-- vale gitlab.Uppercase = YES -->
 
 The `AuthenticationConfiguration` allows you to configure multiple JWT
@@ -132,7 +131,7 @@ claimMappings:
 
 <!-- vale gitlab.Uppercase = NO -->
 Validation rules are outside the scope of this document. Review the
-[documentation][Structured Auth Config] for more information. Examples include
+[documentation][structured-auth-config] for more information. Examples include
 using CEL expressions to validate authentication such as: 
 <!-- vale gitlab.Uppercase = YES -->
 
@@ -234,7 +233,7 @@ The Spaces APIs include:
 <!-- vale Google.Headings = YES -->
 
 <!-- vale Google.WordList = NO -->
-Crossplane specifies three [roles][Crossplane Managed ClusterRoles] for a
+Crossplane specifies three [roles][crossplane-managed-clusterroles] for a
 ControlPlane: admin, editor, and viewer. These map to the verbs `admin`, `edit`,
 and `view` on the `controlplanes/k8s` resource in the `spaces.upbound.io` API
 group.
@@ -279,6 +278,6 @@ subjects:
   name: ctp-admins
 ```
 
-[Structured Auth Config]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration
-[Crossplane Managed ClusterRoles]: https://github.com/crossplane/crossplane/blob/master/design/design-doc-rbac-manager.md#managed-rbac-clusterroles
+[structured-auth-config]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration
+[crossplane-managed-clusterroles]: https://github.com/crossplane/crossplane/blob/master/design/design-doc-rbac-manager.md#managed-rbac-clusterroles
 [upbound-rbac]: /manuals/platform/concepts/authorization/upbound-rbac

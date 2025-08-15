@@ -111,3 +111,5 @@ The Query API is available in the Cloud Space offering and enabled by default.
 Query API is required for self-hosted deployments with connected Spaces. See the
 related [documentation][documentation]
 to enable this feature.
+
+[documentation]: /manuals/spaces/features/query-api/

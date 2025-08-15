@@ -316,11 +316,10 @@ backend and that the secret used is the mxp-hostcluster-certs secret.
 [aws-eks]: https://aws.amazon.com/eks/
 [google-cloud-gke]: https://cloud.google.com/kubernetes-engine
 [microsoft-aks]: https://azure.microsoft.com/en-us/products/kubernetes-service
-[upbound-account]: https://www.upbound.io/register/a
+[upbound-account]: https://www.upbound.io/register
 [provider-aws-ec2]: https://marketplace.upbound.io/providers/upbound/provider-aws-ec2
 [provider-aws-s3]: https://marketplace.upbound.io/providers/upbound/provider-aws-s3
 [provider-aws-iam]: https://marketplace.upbound.io/providers/upbound/provider-aws-iam
 [azure-limits]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/request-limits-and-throttling
 [aws-ec2-limits]: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/throttling.html#throttling-limits-rate-based
 [upjet]: https://github.com/upbound/upjet
-<!--- TODO(tr0njavolta): links --->

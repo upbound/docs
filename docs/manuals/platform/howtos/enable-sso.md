@@ -97,5 +97,5 @@ When you enable SSO with Upbound, remember these important considerations:
 <!-- vale on -->
 
 
-[the-upbound-support-team]: https://www.upbound.io/contact
-[the-upbound-support-team-1]: https://www.upbound.io/contact
+[the-upbound-support-team]: https://www.upbound.io/contact-us
+[the-upbound-support-team-1]: https://www.upbound.io/contact-us

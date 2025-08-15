@@ -118,7 +118,6 @@ example uses `function-python` to create the function logic and declares what to
 compose based on **Observed** resources and **Desired** resources for the `kind`
 the XR requests.
 
-<!--- TODO(tr0njavolta): link--->
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition

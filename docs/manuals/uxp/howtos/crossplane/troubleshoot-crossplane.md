@@ -191,14 +191,15 @@ For example, for a `CloudSQLInstance` managed resource (`database.gcp.crossplane
 kubectl patch cloudsqlinstance my-db -p '{"metadata":{"finalizers": []}}' --type=merge
 ```
 
-## Tips, Tricks, and Troubleshooting
+<!-- ## Tips, Tricks, and Troubleshooting -->
 
-In this section we'll cover some common tips, tricks, and troubleshooting steps
-for working with Composite Resources. If you're trying to track down why your
-Composite Resources aren't working the [Troubleshooting][trouble-ref] page also
-has some useful information.
+<!-- In this section we'll cover some common tips, tricks, and troubleshooting steps -->
+<!-- for working with Composite Resources. If you're trying to track down why your -->
+<!-- Composite Resources aren't working the [Troubleshooting][trouble-ref] page also -->
+<!-- has some useful information. -->
 
 <!-- Named Links -->
+
 [Requested Resource Not Found]: #requested-resource-not-found
 [install Crossplane CLI]: "../getting-started/install-configure"
 [Resource Status and Conditions]: #resource-status-and-conditions

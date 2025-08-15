@@ -37,3 +37,7 @@ relevant contextual scopes you interact with often: a **Spaces context** and a
 In `up`, the commands you can execute are context-sensitive.
 
 [howto]: /manuals/cli/howtos/context-config
+[space]: /manuals/spaces/overview/
+[kubernetes-compatible-api]: https://kubernetes.io/docs/concepts/overview/kubernetes-api/
+
+

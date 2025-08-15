@@ -41,8 +41,8 @@ When you incorporate an [operation function][intelligent-operations] having AI
 intelligence to an operation pipeline, it's considered an _intelligent
 operation_. Some examples of these functions are:
 
-- [function-ai-status-transformer][function-ai-status-transformer]
-- [function-pod-analyzer][function-pod-analyzer]
+- [function-claude-status-transformer][function-ai-status-transformer]
+<!-- - [function-pod-analyzer][function-pod-analyzer] -->
 
 ## Model Context Protocol (MCP) Servers
 
@@ -58,6 +58,8 @@ Learn about how to package an MCP server into an Add-On in the [concept][add-on-
 ## Next steps
 
 Learn about example use cases of Intelligent Control Planes by [reading the guides][intelligent-control-planes-guides]
+
+[function-ai-status-transformer]: https://marketplace.upbound.io/functions/upbound/function-claude-status-transformer/v0.1.0
 
 [intelligent-compositions]: /manuals/uxp/concepts/composition/intelligent-compositions
 [intelligent-operations]: /manuals/uxp/concepts/operations/intelligent-operations

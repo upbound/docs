@@ -26,8 +26,6 @@ Upbound publishes and maintains Add-Ons.
 
 <!-- vale Microsoft.Adverbs = YES -->
 
-<!--- TODO(tr0njavolta): links --->
-<!-- [resource-schemas]: /build/core-concepts -->
 [functions]: /manuals/uxp/concepts/packages/functions
 [signed-by-upbound]: /manuals/packages/providers/signature-verification
 [pull-an-official-provider]: /manuals/packages/policies

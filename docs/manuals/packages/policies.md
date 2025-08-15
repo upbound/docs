@@ -60,7 +60,7 @@ Standard or higher plans will allow access to all available package versions in 
 Community plan users will only be able to access the latest version releases from the main source branch of the package. 
 
 ![Tier access](/img/tier-access.png)
-<!--- TODO(tr0njavolta): image --->
+
 :::important
 Community plan users can **only** access the latest main branch releases of packages, meaning no access to `patch` versions of packages.
 :::

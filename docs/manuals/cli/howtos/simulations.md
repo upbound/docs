@@ -245,7 +245,7 @@ The Console provides visual indications of changes:
 
 - Created Resources: Marked with green Modified Resources: Marked with yellow
 - Deleted Resources: Marked with red Unchanged Resources: Displayed in gray
-<!--- TODO(tr0njavolta): image --->
+
 ![Upbound Console Simulation](/img/simulations.png)
 
 ## Managing your simulations
@@ -296,5 +296,5 @@ review the [overview documentation][overview-documentation] on Simulations.
 
 
 [overview-documentation]: /manuals/spaces/howtos/simulations
-[reach-out-to-upbound]: https://www.upbound.io/contact
+[reach-out-to-upbound]: https://www.upbound.io/contact-us
 [simulation-api]: /reference/apis/spaces-api/latest/#simulations

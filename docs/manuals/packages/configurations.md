@@ -37,7 +37,6 @@ use by anyone with a `Community` plan on Upbound running on [Upbound
 Crossplane][uxp]. For full access and use details, read the [policies
 page][policies-page] on access, support and more.
 
-<!-- [resource-schemas]: /build/core-concepts -->
 [configurations]: /manuals/uxp/concepts/packages/configurations/
 [signed-by-upbound]: /manuals/packages/providers/signature-verification
 [pull-an-official-provider]: /manuals/packages/policies

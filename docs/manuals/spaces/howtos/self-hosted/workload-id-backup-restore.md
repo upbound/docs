@@ -58,7 +58,6 @@ You must configure the IAM role trust policy with the exact match for each
 provisioned control plane. An example of a trust policy for a single control
 plane is below:
 
-<!--- TODO(tr0njavolta): make editable --->
 ```json
 {
   "Version": "2012-10-17",

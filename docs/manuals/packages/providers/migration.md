@@ -466,7 +466,6 @@ Remove any Configuration dependencies on the original Provider to prevent it fro
 kubectl patch configuration.pkg <CONFIGURATION_NAME> -p '{"spec":{"skipDependencyResolution": true}}' --type=merge
 
 ```
-<!--- TODO(tr0njavolta): editcode --->
 ##### Remove the Crossplane lock
 
 Edit the Crossplane Lock object and remove the old Provider.
@@ -670,7 +669,7 @@ The `family-migrator` tool has two sub-commands, `generate` and `execute`.
 The help output of the `family-migrator`:
 
 ![family-migrator help output](/img/family-migrator-help.jpeg)
-<!--- TODO(tr0njavolta): image --->
+
 - `generate`: This command generates the migration plan. After the tool creates
 the migration plan, it confirms if execution of the created plan should proceed.
 
