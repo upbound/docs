@@ -3,7 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.16.5
+    controller-gen.kubebuilder.io/version: v0.18.0
   name: compositiontests.meta.dev.upbound.io
 spec:
   group: meta.dev.upbound.io
@@ -66,7 +66,7 @@ spec:
                 type: string
               context:
                 description: |-
-                  Context specifies context for the Function Pipeline inline or path.
+                  Context specifies context for the Function Pipeline inline.
                   Optional.
                 items:
                   type: object
@@ -74,24 +74,31 @@ spec:
                 type: array
               extraResources:
                 description: |-
-                  ExtraResources specifies additional resources inline or path.
+                  ExtraResources specifies additional resources inline.
                   Optional.
                 items:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 type: array
+              functionCredentialsPath:
+                description: |-
+                  FunctionCredentialsPath specifies a path to a credentials file to be passed to tests.
+                  Optional.
+                type: string
               observedResources:
                 description: |-
-                  ObservedResources specifies additional observed resources inline or path.
+                  ObservedResources specifies additional observed resources inline.
                   Optional.
                 items:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 type: array
               timeoutSeconds:
+                default: 30
                 description: |-
                   Timeout for the test in seconds
-                  Optional. Default is 30s.
+                  Default is 30s.
+                minimum: 1
                 type: integer
               validate:
                 description: |-
@@ -99,13 +106,15 @@ spec:
                   Optional.
                 type: boolean
               xr:
-                description: XR specifies the composite resource (XR) inline.
+                description: |-
+                  XR specifies the composite resource (XR) inline.
+                  Mutually exclusive with XRPath. At least one of XR or XRPath must be specified.
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
               xrPath:
                 description: |-
-                  XR specifies the composite resource (XR) path.
-                  Optional.
+                  XRPath specifies the composite resource (XR) path.
+                  Mutually exclusive with XR. At least one of XR or XRPath must be specified.
                 type: string
               xrd:
                 description: |-
@@ -118,6 +127,8 @@ spec:
                   XRD specifies the XRD definition path.
                   Optional.
                 type: string
+            required:
+            - timeoutSeconds
             type: object
         required:
         - spec
