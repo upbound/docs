@@ -235,7 +235,7 @@ You're finished. You've refactored a composition to use embedded functions.
 
 Read the [concept][project-concept] documentation to learn more about using projects.
 
-[up-account]: https://www.upbound.io/register/a
+[up-account]: https://www.upbound.io/register/
 [up-cli]: /manuals/cli/overview
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [project]: /manuals/cli/howtos/project 

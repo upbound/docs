@@ -73,7 +73,7 @@ const LandingPage = () => {
             title: "AI-Native Distribution",
             description:
                 "Built for autonomous infrastructure platforms serving both humans and AI systems",
-            link: "/guides/intelligent-controllers/intelligent-control-planes",
+            link: "/guides/intelligent-control-planes",
         },
         {
             icon: <Shield className="w-6 h-6" />,

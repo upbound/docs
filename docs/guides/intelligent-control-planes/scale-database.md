@@ -11,7 +11,7 @@ Upbound SaaS coming soon.
 
 <!-- vale gitlab.Uppercase = NO -->
 <!-- ignore LLM -->
-[Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent Controllers][intelligent-controllers], which define AI-augmented functions to perform tasks. This guide walks through a use case for using AI to intelligently scale an AWS RDS database instance.
+[Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent Control Planes][intelligent-controlplanes], which define AI-augmented functions to perform tasks. This guide walks through a use case for using AI to intelligently scale an AWS RDS database instance.
 
 <!-- vale gitlab.Uppercase = YES -->
 ## Prerequisites
@@ -98,10 +98,10 @@ up project stop
 
 ## Next steps
 
-Read the concept documentation for [Intelligent Controllers][intelligent-controllers] to learn more about using AI-powered functions in your function pipelines.
+Read the concept documentation for [Intelligent Control Planes][intelligent-controlplanes] to learn more about using AI-powered functions in your function pipelines.
 
 [upbound-crossplane]: /manuals/uxp/overview
-[intelligent-controllers]: /manuals/uxp/features/intelligent-controllers
+[intelligent-controlplanes]: /manuals/uxp/features/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-aws-database-ai
 [project]: /manuals/cli/concepts/projects
 [intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions

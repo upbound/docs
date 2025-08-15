@@ -33,7 +33,7 @@ Clicking into a control plane brings you to the control plane explorer. From the
 ![control plane explorer](/img/ctp-explorer2.png)
 
 <!-- vale Google.Headings = NO -->
-## control plane and configuration creation
+## Control plane and configuration creation
 <!-- vale Google.Headings = YES -->
 
 You can create new control planes from the dashboard.

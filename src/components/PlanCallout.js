@@ -38,7 +38,7 @@ export function Standard() {
       <p className="plan-callout__content">
         This feature is available in the <strong>Standard Plan</strong> and above. For more information, see our{' '}
         <a href="https://www.upbound.io/pricing">pricing plans</a> or{' '}
-        <a href="https://www.upbound.io/contact">contact our sales team</a>.
+        <a href="https://www.upbound.io/contact-us">contact our sales team</a>.
       </p>
     </div>
   );
@@ -53,7 +53,7 @@ export function Business() {
       <p className="plan-callout__content">
         This is a <strong>Business Critical Plan</strong> feature. For more information, see our{' '}
         <a href="https://www.upbound.io/pricing">pricing plans</a> or{' '}
-        <a href="https://www.upbound.io/contact">contact our sales team</a>.
+        <a href="https://www.upbound.io/contact-us">contact our sales team</a>.
       </p>
     </div>
   );
@@ -68,7 +68,7 @@ export function Enterprise() {
       <p className="plan-callout__content">
         This feature is available in the <strong>Enterprise Plan</strong> and above. For more information, see our{' '}
         <a href="https://www.upbound.io/pricing">pricing plans</a> or{' '}
-        <a href="https://www.upbound.io/contact">contact our sales team</a>.
+        <a href="https://www.upbound.io/contact-us">contact our sales team</a>.
       </p>
     </div>
   );
