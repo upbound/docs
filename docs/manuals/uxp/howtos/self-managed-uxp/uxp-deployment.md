@@ -96,5 +96,5 @@ For more information on migration, review the [migration guide][migration]
 Read [license management][license-management] to learn how to add a license to unlock commercial features in Upbound Crossplane.
 
 [spaces]: /manuals/spaces/overview
-[migration]: /getstarted/migrate-to-upbound/migrate-to-uxp
+[migration]: /getstarted/upgrade-to-upbound/upgrade-to-uxp/
 [license-management]: /manuals/uxp/howtos/self-managed-uxp/license-management
