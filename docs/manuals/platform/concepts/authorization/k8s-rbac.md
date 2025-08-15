@@ -10,7 +10,11 @@ For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 
 This guide explains how to authorize actions on resources in your control planes on Upbound. It uses the built-in [Kubernetes role-based access control][kubernetes-role-based-access-control] (RBAC) mechanism. This gives you fine-grained control over control plane access.
 
-In a control plane on Upbound, Upbound RBAC and the control planes's Kubernetes RBAC are integrated to authorize users to perform actions. They must have enough permission according to either system. To authorize users with their Upbound account, you must configure kubectl to authenticate to Upbound before running any commands that require authorization.
+In a control plane on Upbound, Upbound RBAC and the control plane's Kubernetes
+RBAC are integrated to authorize users to perform actions. They must have enough
+permission according to either system. To authorize users with their Upbound
+account, you must configure kubectl to authenticate to Upbound before running
+any commands that require authorization.
 
 ## Define permissions and assign roles
 

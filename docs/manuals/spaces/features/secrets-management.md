@@ -492,7 +492,7 @@ spec:
 ```
 
 :::tip
-The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection][control-plane-selection-1] amd [namespace selection][namespace-selection-2] to learn how to map into one or more namespaces of one or more control planes.
+The example above maps a Shared Secret Store into a single namespace of a single control plane. Read [control plane selection][control-plane-selection-1] and [namespace selection][namespace-selection-2] to learn how to map into one or more namespaces of one or more control planes.
 :::
 
 ### Manage your secret distribution
