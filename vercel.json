@@ -1540,6 +1540,16 @@
             "source": "/operate/accounts/authentication/oidc-configuration/",
             "destination": "/manuals/platform/howtos/oidc/",
             "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore/",
+            "destination": "/manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore",
+            "destination": "/manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/",
+            "permanent": true
         }
     ]
 }
