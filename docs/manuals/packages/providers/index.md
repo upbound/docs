@@ -13,7 +13,7 @@ Official Providers are commercially licensed builds of Crossplane providers. The
 
 Upbound publishes and maintains Official Providers. Some enterprise-grade advantages of Official Providers are:
 
-* Multi-language [resource schemas][resource-schemas] (KCL, Python, and more) that improve the Crossplane composition authoring experience.
+* Multi-language resource schemas for [KCL][kcl], [Python][python], [Go][go], and [Go Templating][gotemplating] to improve the Crossplane composition authoring experience.
 * Backporting of fixes supported during 12 months of mainstream support + 6 months additional access
 * An SBOM
 * [Signed by Upbound][signed-by-upbound]
@@ -32,8 +32,11 @@ Upbound is continually adding new providers to the ever growing list of Official
 
 The latest versions of the Upbound Official Providers are available for use by anyone in the Crossplane community. For full access and use details, read the [policies page][policies-page] on access, support and more.
 
-<!--- TODO(tr0njavolta): links --->
-<!-- [resource-schemas]: /build/core-concepts -->
+
+[kcl]: /manuals/cli/howtos/compositions/kcl/
+[python]: /manuals/cli/howtos/compositions/python/
+[go]: /manuals/cli/howtos/compositions/go/
+[gotemplating]: /manuals/cli/howtos/compositions/go-template/
 [signed-by-upbound]: /manuals/packages/providers/signature-verification
 [pull-an-official-provider]: /manuals/packages/policies
 [policies-page]: /manuals/packages/policies
