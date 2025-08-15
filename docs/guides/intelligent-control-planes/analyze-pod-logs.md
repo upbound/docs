@@ -11,7 +11,7 @@ Upbound SaaS coming soon.
 
 <!-- vale gitlab.Uppercase = NO -->
 <!-- ignore LLM -->
-[Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent Controllers][intelligent-controllers], which define AI-augmented functions to perform tasks. This guide walks through a use case for using AI to analyze and remediate issues for app deployments, such as out-of-memory and pods stuck in a _crashloopbackoff_.
+[Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent Control Planes][intelligent-controllers], which define AI-augmented functions to perform tasks. This guide walks through a use case for using AI to analyze and remediate issues for app deployments, such as out-of-memory and pods stuck in a _crashloopbackoff_.
 
 <!-- vale gitlab.Uppercase = YES -->
 ## Prerequisites
@@ -89,7 +89,7 @@ Read the concept documentation for [Intelligent Controllers][intelligent-control
 
 [upbound-crossplane]: /manuals/uxp/overview
 [watch-operations]: /manuals/uxp/concepts/operations/watch-operation
-[intelligent-controllers]: /manuals/uxp/features/intelligent-controllers
+[intelligent-controllers]: /manuals/uxp/features/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-deployment-analysis
 [project]: /manuals/cli/concepts/projects
 [intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions
