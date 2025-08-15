@@ -89,7 +89,7 @@ up uxp upgrade -n crossplane-system
 </TabItem>
 </Tabs>
 
-For more information on migration, review the [migration guide][migration]
+For more information on upgrading to UXP, review the [upgrade guide][migration]
 
 ## Add a license to enable commercial features
 
