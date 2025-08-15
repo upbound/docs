@@ -100,5 +100,5 @@ For more information, follow the [tutorial][tutorial] on Simulations.
 
 
 [tutorial]: /manuals/cli/howtos/simulations
-[reach-out-to-upbound]: https://www.upbound.io/contact
-[reach-out-to-upbound-1]: https://www.upbound.io/contact
+[reach-out-to-upbound]: https://www.upbound.io/contact-us
+[reach-out-to-upbound-1]: https://www.upbound.io/contact-us

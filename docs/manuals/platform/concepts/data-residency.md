@@ -56,4 +56,4 @@ the OCI registry `xpkg.upbound.io`, is served from the United States.
 To pull images hosted in the Marketplace from within an EU data boundary, Upbound
 recommends mirroring these images to your own OCI registry.
 
-[contact]: https://www.upbound.io/contact
+[contact]: https://www.upbound.io/contact-us

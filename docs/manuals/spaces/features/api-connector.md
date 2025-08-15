@@ -53,7 +53,7 @@ API Connector uses a **provider-consumer** model:
 Before using API Connector, ensure:
 
 1. **Consumer cluster** has network access to the provider control plane
-1. You have an license to use API connector. If you are unsure, [contact Upbound](https://www.upbound.io/contact) or your sales representative.
+1. You have an license to use API connector. If you are unsure, [contact Upbound][contact] or your sales representative.
 
 This guide walks through how to automate connecting your cluster to an Upbound
 control plane. You can also manually configure the API Connector.
@@ -403,3 +403,5 @@ helm uninstall api-connector -n upbound-system
 ### Multiple connections
 
 You can connect to multiple provider clusters simultaneously by creating multiple `ClusterConnection` resources with different names and configurations.
+
+[contact]: https://www.upbound.io/contact-us

@@ -458,4 +458,4 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 :::
 
 [up-ctx-command-reference]: /reference/cli-reference
-[contact-upbound]: https://www.upbound.io/contact
+[contact-upbound]: https://www.upbound.io/contact-us
