@@ -616,7 +616,7 @@ further assistance, please reach out to your Upbound account representative.
 - We fixed Backup's expired TTL resulting in deadlock.
 - We fixed a bug preventing scraping of metrics from the control plane etcd pods.
 - We've added a configuration option to enable
-  Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/latest/concepts/server-side-apply/) in managed
+  Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/v1.19/concepts/server-side-apply/) in managed
   control planes.
 
 ## v1.6.0
@@ -698,7 +698,7 @@ further assistance, please reach out to your Upbound account representative.
 
 #### What's Changed
 
-- We enabled the Crossplane [Usages](https://docs.crossplane.io/latest/concepts/usages/) alpha feature in managed
+- We enabled the Crossplane [Usages](https://docs.crossplane.io/latest/managed-resources/usages/) alpha feature in managed
   control planes.
 - Space admins can now pass custom service account annotations to Crossplane service account.
 - We fixed some bugs related to authentication and single-tenant Spaces when in Disconnected mode.

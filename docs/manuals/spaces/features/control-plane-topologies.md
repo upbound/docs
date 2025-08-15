@@ -550,7 +550,7 @@ planes that exist on a cross-Space boundary.
 
 [project-file]: /manuals/cli/howtos/project
 [contact-us]: https://www.upbound.io/usage/support/contact
-[crossplane-management-policies]: https://docs.crossplane.io/latest/concepts/managed-resources/#managementpolicies
+[crossplane-management-policies]: https://docs.crossplane.io/latest/managed-resources/managed-resources/#managementpolicies
 [vscode-pretty-json]: https://marketplace.visualstudio.com/items?itemName=chrismeyers.vscode-pretty-json
 [configure-routing]: #use-an-environment-to-route-resources
 [configuration]: https://docs.crossplane.io/latest/packages/providers

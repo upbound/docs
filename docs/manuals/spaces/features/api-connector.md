@@ -390,7 +390,7 @@ helm uninstall api-connector -n upbound-system
 ## Limitations
 
 - **Preview feature**: Subject to breaking changes. Not yet production grade.
-- **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, for example using a [Crossplane Configuration](https://docs.crossplane.io/latest/concepts/packages/).
+- **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, for example using a [Crossplane Configuration](https://docs.crossplane.io/latest/packages/).
 - **Network requirements**: Consumer cluster must have direct network access to provider cluster.
 - **Wide permissions needed in consumer cluster**: Because the API connector doesn't know up front the names of the APIs it needs to reconcile, it currently runs with full "root" privileges in the consumer cluster.
 
