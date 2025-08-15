@@ -738,7 +738,6 @@ spec:
 ```
 </div>
 
-<!--- TODO(tr0njavolta): fix redirect --->
 [upbound-auth-oidc]: /manuals/platform/howtos/oidc
 [upbound-cloud-spaces]: /manuals/spaces/overview
 

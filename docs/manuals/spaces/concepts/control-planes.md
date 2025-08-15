@@ -14,7 +14,7 @@ Control planes in Upbound are fully isolated Crossplane control plane instances 
 This lets users focus on building their APIs and operating their control planes, while Upbound handles the rest. Each control plane has its own dedicated API server connecting users to their control plane.
 
 ## Control plane architecture
-<!--- TODO(tr0njavolta): image --->
+
 ![Managed Control Plane Architecture](/img/mcp.png)
 
 Along with underlying infrastructure, Upbound manages the Crossplane system components. You don't need to manage the Crossplane API server or core resource controllers because Upbound manages your control plane lifecycle from creation to deletion.

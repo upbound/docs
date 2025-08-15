@@ -3,7 +3,7 @@ title: Debugging issues on a control plane
 sidebar_position: 70
 description: A guide for how to debug resources on a control plane running in Upbound.
 ---
-
+<!--- TODO(tr0njavolta): update screenshots --->
 This guide provides troubleshooting guidance for how to identify and fix issues on a control plane.
 
 ## Start from Upbound Console
@@ -21,8 +21,6 @@ If you directly create Crossplane Managed Resources (`MR`s) or Composite
 Resources (`XR`s), they won't render in the explorer.
 :::
 
-
-<!--- TODO(tr0njavolta): image --->
 ### Example
 
 The example below uses the control plane explorer view to inspect why a claim for an EKS Cluster isn't healthy.
@@ -119,7 +117,6 @@ Some examples of Crossplane resources that require the `up` CLI
 
 If your preference is to use a terminal instead of a GUI, Upbound supports direct access to the API server of the control plane. Use  [`up ctx`][up-ctx] to connect directly to your control plane.
 
-<!--- TODO(tr0njavolta): links--->
 
-[console]: /manuals/console
+[console]: /manuals/console/upbound-console
 [up-ctx]: /reference/cli-reference

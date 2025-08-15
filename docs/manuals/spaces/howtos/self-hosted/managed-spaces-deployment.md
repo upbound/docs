@@ -57,7 +57,7 @@ The control planes deployed and controlled by the Spaces software runs on the
 Kubernetes cluster which gets deployed into the sub-account.
 
 The diagram below illustrates the high-level architecture of Upbound Managed Spaces:
-<!--- TODO(tr0njavolta): image --->
+
 ![Upbound Managed Spaces arch](/img/managed-arch-aws.png)
 
 The Spaces software gets deployed on an EKS Cluster in the region of your
@@ -85,7 +85,7 @@ deployed and controlled by the Spaces software runs on the Kubernetes cluster
 which gets deployed into the project.
 
 The diagram below illustrates the high-level architecture of Upbound Managed Spaces:
-<!--- TODO(tr0njavolta): image --->
+
 ![Upbound Managed Spaces arch](/img/managed-arch-gcp.png)
 
 The Spaces software gets deployed on a GKE Cluster in the region of your choice.

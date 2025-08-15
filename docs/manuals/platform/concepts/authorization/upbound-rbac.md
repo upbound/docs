@@ -50,7 +50,7 @@ These roles apply at three levels:
 - Control Planes
 
 Upbound RBAC roles have either `read-only` or `read/write` access for features. Review the table for permissions for each role:
-<!--- TODO(tr0njavolta): image --->
+
 ![A table with RBAC permissions](/img/rbac-access-levels.png)
 
 ### View group role permissions

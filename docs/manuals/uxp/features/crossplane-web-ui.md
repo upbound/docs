@@ -55,8 +55,8 @@ up uxp web-ui enable
 When using up project run or up project test (for local ephemeral development
 clusters), the Web UI is automatically configured into the local cluster.
 
-## Dashboard views 
-<!-- `todo -->
+<!--- TODO(tr0njavolta): images --->
+<!-- ## Dashboard views --> 
 <!-- Image of views for: -->
 <!-- View installed controller packages and associated CRDs -->
 

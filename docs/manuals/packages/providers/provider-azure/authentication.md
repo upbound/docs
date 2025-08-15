@@ -40,7 +40,6 @@ To allow the `upbound-oidc-provider` registration created in the previous step t
 5. In _Issuer_ enter **https://proidc.upbound.io**.
 6. In _Subject identifier_ enter:
 
-<!--- TODO(tr0njavolta): edit --->
 ```yaml
 mcp:<your-org>/<your-control-plane-name>:provider:provider-azure
 ```
@@ -490,7 +489,6 @@ spec:
   tenantID: <tenant_ID>
 ```
 
-<!--- TODO(tr0njavolta): fix redirect --->
 [upbound-auth-oidc]: /manuals/platform/howtos/oidc
 [upbound-cloud-spaces]: /manuals/spaces/overview
 

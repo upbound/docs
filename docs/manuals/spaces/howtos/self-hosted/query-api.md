@@ -345,9 +345,8 @@ See the [Query API documentation][query-api-documentation] for more information 
 
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
-<!--- TODO(tr0njavolta): links --->
 
-[postgresql-setup]: /#self-hosted-postgresql-configuration
+[postgresql-setup]: #self-hosted-postgresql-configuration
 [up-cli-installed]: /manuals/cli/overview
 [query-api-documentation]: /manuals/spaces/features/query-api
 

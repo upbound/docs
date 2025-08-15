@@ -2,12 +2,14 @@
 title: Rewrite HCL for Crossplane or Upbound
 sidebar_position: 1
 ---
-<!--- TODO(tr0njavolta): link --->
-<!-- The [Migrating from Terraform to Crossplane Guide][migrating-from-terraform-to-crossplane-guide] used `provider-terraform` to "lift and shift" your -->
-Terraform code into a basic Crossplane configuration. The provider is a great
-way to get started on your Crossplane journey. With Crossplane, you can go even
-further by converting your Terraform HashiCorp Configuration Language (HCL) into Kubernetes-like manifests for more
-Crossplane benefits.
+
+The [Migrating from Terraform to Crossplane
+Guide][migrating-from-terraform-to-crossplane-guide] used `provider-terraform`
+to "lift and shift" your Terraform code into a basic Crossplane configuration.
+The provider is a great way to get started on your Crossplane journey. With
+Crossplane, you can go even further by converting your Terraform HashiCorp
+Configuration Language (HCL) into Kubernetes-like manifests for more Crossplane
+benefits.
 
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 

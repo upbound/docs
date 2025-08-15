@@ -177,7 +177,7 @@ The example below demonstrates step-by-step how to give a tenant in a control pl
 ### Create a control plane in a group
 
 As an administrator, create a control plane in a new control plane group:
-<!--- TODO(tr0njavolta): editcode --->
+
 ```ini
 up ctx <your-org>/upbound-gcp-us-central-1
 up group create group1

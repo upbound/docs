@@ -13,7 +13,7 @@ This lets you interact with your control plane's API from the app cluster. The c
 you define via CompositeResourceDefinitions (XRDs) in the control plane, are available in
 your app cluster alongside Kubernetes workload APIs like Pod. Control Plane Connector
 enables the same experience as a locally installed Crossplane.
-<!--- TODO(tr0njavolta): image --->
+
 ![control plane connector operations flow](/img/ConnectorFlow.png)
 
 ### Control Plane Connector operations

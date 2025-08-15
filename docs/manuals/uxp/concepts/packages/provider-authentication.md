@@ -43,7 +43,7 @@ and import the text file with the credentials
 assign them to the secret key
 <Hover label="kubesecret" line="4">my-aws-secret</Hover>.
 <!-- vale Google.FirstPerson = YES -->
-<!--- TODO(tr0njavolta): hover --->
+
 <div id="kubesecret">
 ```shell
 kubectl create secret generic \
@@ -367,4 +367,3 @@ Now that you have authenticated with your provider, the next step is to [build y
 [install-guide]: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 [provider-documentation-2]: /manuals/packages/providers/provider-gcp/authentication
 [download-your-gcp-service-account-key]: https://cloud.google.com/iam/docs/keys-create-delete#creating
-<!--- TODO(tr0njavolta): links --->

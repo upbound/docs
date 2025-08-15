@@ -53,7 +53,6 @@ for managing the lifecycle of the software once applied.
 
 Enable the feature in the Space you plan to run your control plane in:
 
-<!--- TODO(tr0njavolta): link --->
 Packaging an _AddOn_ requires [up CLI][up-cli]  `v0.40.0` or later.
 
 <!-- vale Google.Headings = NO --> 

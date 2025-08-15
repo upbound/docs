@@ -59,8 +59,6 @@ Under _Attribute Conditions_ select **Add Condition**.
 
 <!-- vale gitlab.Uppercase = NO -->
 To authenticate any control plane in your organization, in the _Conditional CEL_ input box put
-<!--- TODO(tr0njavolta): editcode --->
-<!--- TODO(tr0njavolta): links --->
 ```console
 google.subject.contains("mcp:ORGANIZATION_NAME")
 ```
@@ -854,7 +852,6 @@ spec:
 ```
 </div>
 
-<!--- TODO(tr0njavolta): fix redirect --->
 [upbound-auth-oidc]: /manuals/platform/howtos/oidc
 [upbound-cloud-spaces]: /deploy
 

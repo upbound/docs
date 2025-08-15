@@ -41,7 +41,6 @@ where one control plane manages Database resources and a second control plane
 manages networking resources. With the _Topology_ feature, you can offload these
 concerns to Upbound machinery. 
 
-<!--- TODO(tr0njavolta): images --->
 
 ![Control Plane Topology feature arch](/img/topology-arch.png)
 
