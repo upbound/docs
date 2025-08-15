@@ -2329,7 +2329,7 @@ resources to your specifications.
 The next guide walks through how to test your composition function logic with
 the built-in test suite.
 
-[up-account]: https://www.upbound.io/register/a
+[up-account]: https://www.upbound.io/register/
 [project-foundations]: /getstarted/builders-workshop/project-foundations
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/

@@ -85,7 +85,7 @@ up project stop
 
 ## Next steps
 
-Read the concept documentation for [Intelligent Controllers][intelligent-controllers] to learn more about using AI-powered functions in your function pipelines.
+Read the concept documentation for [Intelligent Control Planes][intelligent-controllers] to learn more about using AI-powered functions in your function pipelines.
 
 [upbound-crossplane]: /manuals/uxp/overview
 [watch-operations]: /manuals/uxp/concepts/operations/watch-operation

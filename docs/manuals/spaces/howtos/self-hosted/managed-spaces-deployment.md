@@ -257,7 +257,7 @@ Once the Managed Space gets deployed, you can see it in the Space selector when 
 <!-- vale gitlab.SentenceLength = YES -->
 <!-- vale Google.Headings = YES -->
 
-[contact]: https://www.upbound.io/usage/support/contact
+[contact]: https://www.upbound.io/contact-us
 [aws-privatelink]: #configure-privatelink
 [aws-documentation]: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html#orgs_manage_accounts_create-new
 [gcp-private-service-connect]: #configure-private-service-connect

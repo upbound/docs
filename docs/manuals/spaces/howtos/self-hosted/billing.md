@@ -291,5 +291,5 @@ You can find full instructions and command options in the up [CLI reference][cli
 
 [export]: /reference/cli-reference
 [cli-reference]: /reference/cli-reference
-[flagship-product]: https://www.upbound.io/product/upbound
+[flagship-product]: https://www.upbound.io/platform
 [workload-identity-configuration-documentation]: https://docs.upbound.io/operate/accounts/authentication/oidc-configuration
