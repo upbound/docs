@@ -1540,6 +1540,16 @@
             "source": "/operate/accounts/authentication/oidc-configuration/",
             "destination": "/manuals/platform/howtos/oidc/",
             "permanent": true
+        },
+        {
+            "source": "/manuals/marketplace",
+            "destination": "/manuals/marketplace/overview/",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/marketplace/",
+            "destination": "/manuals/marketplace/overview/",
+            "permanent": true
         }
     ]
 }
