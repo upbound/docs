@@ -27,10 +27,10 @@ cluster for secret sharing with Kubernetes.
 Workload-identity authentication lets you use access policies to grant your
 self-hosted Space cluster access to your cloud providers. Workload identity
 authentication grants temporary Azure credentials to your Kubernetes pod based on
-a service account. Assigning IAM roles and service accounts allows the pod to
-assume the IAM role dynamically and much more securely than static credentials.
+a service account. Assigning managed identities and service accounts allows the pod to
+authenticate with Azure resources dynamically and much more securely than static credentials.
 
-This guide walks you through creating an IAM trust role policy and applying it to your AKS
+This guide walks you through creating a managed identity and federated credential for your AKS
 cluster for shared secrets in your Space cluster.
 
 </CodeBlock>
@@ -114,7 +114,7 @@ annotation to link the service account and the IAM role.
 
 **Create an IAM role and trust policy**
 
-First, create an IAM role appropriate permissions to access your S3 bucket:
+First, create an IAM role with appropriate permissions to access AWS Secrets Manager:
 
 ```json
 {
@@ -180,7 +180,7 @@ parameters for the shared secrets component:
 --set controlPlanes.sharedSecrets.serviceAccount.customAnnotations."eks\.amazonaws\.com/role-arn"="arn:aws:iam::${YOUR_AWS_ACCOUNT_ID}:role/${YOUR_ESO_ROLE_NAME}"
 ```
 
-This command allows the backup and restore component to authenticate with you
+This command allows the shared secrets component to authenticate with your
 dedicated IAM role in your EKS cluster environment.
 
 #### EKS pod identities
@@ -192,7 +192,7 @@ automatically handle the credential exchange.
 
 **Create an IAM role**
 
-First, create an IAM role appropriate permissions to access your S3 bucket:
+First, create an IAM role with appropriate permissions to access AWS Secrets Manager:
 
 ```json
 {
@@ -339,14 +339,14 @@ gcloud container clusters update ${YOUR_CLUSTER_NAME} \
   --region=${YOUR_REGION}
 ```
 
-Next, create a dedicated service account for your billing operations:
+Next, create a dedicated service account for your secrets operations:
 
 ```shell
 gcloud iam service-accounts create secrets-sa \
   --project=${YOUR_PROJECT_ID}
 ```
 
-Grant storage permissions to the service account you created:
+Grant secret access permissions to the service account you created:
 
 ```shell
 gcloud projects add-iam-policy-binding ${YOUR_PROJECT_ID} \

@@ -24,10 +24,10 @@ to your EKS cluster to handle backup and restore storage.
 Workload-identity authentication lets you use access policies to grant your
 self-hosted Space cluster access to your cloud providers. Workload identity
 authentication grants temporary Azure credentials to your Kubernetes pod based on
-a service account. Assigning IAM roles and service accounts allows the pod to
-assume the IAM role dynamically and much more securely than static credentials.
+a service account. Assigning managed identities and service accounts allows the pod to
+authenticate with Azure resources dynamically and much more securely than static credentials.
 
-This guide walks you through creating an IAM trust role policy and applying it to your AKS
+This guide walks you through creating a managed identity and federated credential for your AKS
 cluster to handle backup and restore storage.
 
 </CodeBlock>
@@ -38,9 +38,9 @@ Workload-identity authentication lets you use access policies to grant your
 self-hosted Space cluster access to your cloud providers. Workload identity
 authentication grants temporary GCP credentials to your Kubernetes pod based on
 a service account. Assigning IAM roles and service accounts allows the pod to
-assume the IAM role dynamically and much more securely than static credentials.
+access cloud resources dynamically and much more securely than static credentials.
 
-This guide walks you through creating an IAM trust role policy and applying it to your GKE
+This guide walks you through configuring workload identity for your GKE
 cluster to handle backup and restore storage.
 
 </CodeBlock>
