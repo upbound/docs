@@ -218,7 +218,9 @@ Ensure control plane components can survive node and zone failures.
 <!--          effect: "NoSchedule" -->
 <!--    ``` -->
 
-## Configure autoscaling for spaces components
+<!-- vale Google.Headings = NO -->
+## Configure autoscaling for Spaces components
+<!-- vale Google.Headings = YES -->
 
 Set up the Spaces system components to handle variable load automatically.
 
