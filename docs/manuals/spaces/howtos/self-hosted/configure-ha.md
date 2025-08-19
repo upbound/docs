@@ -385,7 +385,7 @@ Track these `spaces-controller` metrics:
    spaces_control_plane_deletion_stuck
    ```
   
-  Control planes stuck during deletion.
+   Control planes stuck during deletion.
 
 ### Alerting
 
