@@ -16,10 +16,10 @@ and monitoring in your Space.
 
 Before you begin scaling your Spaces deployment, make sure you have:
 
+<!-- vale gitlab.Uppercase = NO -->
 * A working Space deployment
 * Cluster administrator access
 * An understanding of load patterns and growth in your organization
-<!-- vale gitlab.Uppercase = NO -->
 * A familiarity with node affinity, tainting, and Horizontal Pod Autoscaling
     (HPA)
 <!-- vale gitlab.Uppercase = YES -->
