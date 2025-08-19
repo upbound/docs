@@ -28,6 +28,10 @@ In this guide, you will:
 * Optimize your storage and component operations
 * Monitor your deployment health and performance
 
+## Spaces architecture
+
+<!--- TODO(tr0njavolta): IMAGE --->
+
 ## Node architecture
 
 You can mitigate resource contention and improve reliability by separating system
@@ -229,8 +233,9 @@ Set up the Spaces system components to handle variable load automatically.
 
 ### Configure router autoscaling
 
-The spaces-router is the entry point for all traffic and needs intelligent
+The `spaces-router` is the entry point for all traffic and needs intelligent
 scaling.
+
 
 1. Enable Horizontal Pod Autoscaler
 
@@ -251,9 +256,15 @@ scaling.
    - **Horizontal scaling**: Scales based on request volume
    - **Resource monitoring**: Monitor CPU and memory usage closely
 
+
+The `spaces-router` accesses the control plane in this flow:
+
+<!--- TODO(tr0njavolta): spaces-router -> control plane api server --->
+
+
 ### Configure controller scaling
 
-The spaces-controller manages Space-level resources and requires vertical
+The `spaces-controller` manages Space-level resources and requires vertical
 scaling.
 
 1. Configure adequate resources with headroom
@@ -269,7 +280,7 @@ scaling.
          memory: "4Gi"
    ```
 
-   **Important**: The controller can be spiky when reconciling large numbers of
+   **Important**: The controller can spike when reconciling large numbers of
    control planes, so provide adequate headroom for resource spikes.
 
 ## Set up production storage
@@ -279,12 +290,17 @@ scaling.
 1. Use a managed PostgreSQL database
 
    **Recommended services:**
-   - AWS RDS
-   - Google Cloud SQL  
-   - Azure Database for PostgreSQL
+   - [AWS RDS][rds]
+   - [Google Cloud SQL][gcp-sql]
+   - [Azure Database for PostgreSQL][aks-sql]
 
    **Requirements:**
    - Minimum 400 IOPS performance
+
+The `spaces-router` accesses the Query API in this flow:
+
+<!--- TODO(tr0njavolta): spaces-router -> query api server --->
+
 
 ## Monitoring
 
@@ -320,9 +336,10 @@ Monitor key metrics to ensure healthy scaling and identify issues early.
 
 ### Control plane health
 
-Track these spaces-controller metrics:
+Track these `spaces-controller` metrics:
 
 1. **Total control planes**
+   
    ```
    spaces_control_plane_exists
    ```
@@ -330,33 +347,36 @@ Track these spaces-controller metrics:
    Tracks the total number of control planes in the system.
 
 2. **Degraded control planes**
+   
    ```
    spaces_control_plane_degraded
    ```
 
-   Total control planes that haven't been created recently and are not in Synced
-   & Ready & Healthy state.
+    Returns stale control planes that don't have a `Synced`, `Ready`, and
+    `Healthy` state.
 
 3. **Stuck control planes**
+   
    ```
    spaces_control_plane_stuck
    ```
+
    Control planes stuck in a provisioning state.
 
 4. **Deletion issues**
+   
    ```
    spaces_control_plane_deletion_stuck
    ```
-   Control planes stuck during deletion.
+  
+  Control planes stuck during deletion.
 
 ### Alerting
 
 Configure alerts for critical scaling and health metrics:
 
 - **High error rates**: Alert when 4xx/5xx response rates exceed thresholds
-- **Latency degradation**: Alert when p95/p99 latency exceeds SLOs  
 - **Control plane health**: Alert when degraded or stuck control planes exceed acceptable counts
-- **Circuit breaker activation**: Immediate alerts when connection pools are exhausted
 
 ## Architecture overview
 
@@ -367,6 +387,7 @@ Configure alerts for critical scaling and health metrics:
 - **`spaces-api`**: API for managing groups, control planes, shared secrets, and telemetry objects (accessed only through spaces-router)
 - **`spaces-apollo`**: Hosts the Query API, connects to PostgreSQL database populated by `apollo-syncer` pods
 
+
 **Control Plane Components (per control plane):**
 - **`mxp-controller`**: Handles provisioning tasks, serves webhooks, installs UXP and `XGQL`
 - **`XGQL`**: GraphQL API powering console views
@@ -376,11 +397,13 @@ Configure alerts for critical scaling and health metrics:
 
 ## See also
 
-* [Upbound Spaces deployment requirements](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/deployment-reqs/)
-* [Upbound etcd scaling resources](https://docs.upbound.io/deploy/self-hosted-spaces/scaling-resources#scaling-etcd-storage)
-* [Spaces reference architecture](https://github.com/upbound/spaces-reference-architecture)
+* [Upbound Spaces deployment requirements][deployment]
+* [Upbound `etcd` scaling resources][scaling]
 
-
+[rds]: https://aws.amazon.com/rds/postgresql/
+[gke-sql]: https://cloud.google.com/kubernetes-engine/docs/tutorials/stateful-workloads/postgresql
+[aks-sql]: https://learn.microsoft.com/en-us/azure/aks/deploy-postgresql-ha?tabs=azuredisk
+[deployment]: https://docs.upbound.io/manuals/spaces/howtos/self-hosted/deployment-reqs/
 [karpenter]: https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
 [gke-autoscaling]: https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-autoscaler
 [aks-autoscaling]: https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler-overview
