@@ -1,11 +1,15 @@
 ---
 title: Production Scaling and High Availability
+description: Configure your Self-Hosted Space for production
+sidebar_position: 5
 ---
+<!-- vale write-good.TooWordy = NO -->
+<!-- ignore "Minimum" -->
 
 This guide explains how to configure an existing Upbound Space deployment for
 production operation at scale.
 
-Use this guide when you need to implement production scaling, high availability,
+Use this guide when you're ready to deploy production scaling, high availability,
 and monitoring in your Space.
 
 ## Prerequisites
@@ -15,15 +19,20 @@ Before you begin scaling your Spaces deployment, make sure you have:
 * A working Space deployment
 * Cluster administrator access
 * An understanding of load patterns and growth in your organization
+<!-- vale gitlab.Uppercase = NO -->
 * A familiarity with node affinity, tainting, and Horizontal Pod Autoscaling
     (HPA)
+<!-- vale gitlab.Uppercase = YES -->
 
 ## Production scaling strategy
-
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
 In this guide, you will:
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Google.Will = YES -->
 
 * Create dedicated node pools for different component types
-* Implement high-availability to ensure there are no single points of failure
+* Configure high-availability to ensure there are no single points of failure
 * Set dynamic scaling for variable workloads 
 * Optimize your storage and component operations
 * Monitor your deployment health and performance
@@ -36,7 +45,6 @@ In this guide, you will:
 
 You can mitigate resource contention and improve reliability by separating system
 components into dedicated node pools.
-
 
 ### `etcd` dedicated nodes
 
@@ -96,7 +104,7 @@ For Azure AKS clusters, follow the [AKS autoscaling][aks-autoscaling] guide.
 
 Ensure control plane components can survive node and zone failures.
 
-### Enable HA mode
+### Enable high availability mode
 
 1. Configure control planes for high availability
 
@@ -254,7 +262,7 @@ scaling.
    **Router scaling behavior:**
    - **Vertical scaling**: Scales based on number of control planes
    - **Horizontal scaling**: Scales based on request volume
-   - **Resource monitoring**: Monitor CPU and memory usage closely
+   - **Resource monitoring**: Monitor CPU and memory usage
 
 
 The `spaces-router` accesses the control plane in this flow:
@@ -285,7 +293,9 @@ scaling.
 
 ## Set up production storage
 
+<!-- vale Google.Headings = NO -->
 ### Configure Query API database
+<!-- vale Google.Headings = YES -->
 
 1. Use a managed PostgreSQL database
 
@@ -304,7 +314,11 @@ The `spaces-router` accesses the Query API in this flow:
 
 ## Monitoring
 
-Monitor key metrics to ensure healthy scaling and identify issues early.
+<!-- vale write-good.Weasel = NO -->
+<!-- vale Microsoft.Adverbs = NO -->
+Monitor key metrics to ensure healthy scaling and identify issues quickly.
+<!-- vale Microsoft.Adverbs = YES -->
+<!-- vale write-good.Weasel = YES -->
 
 <!-- ### Monitor Router Performance -->
 
@@ -394,6 +408,7 @@ Configure alerts for critical scaling and health metrics:
 - **`kube-state-metrics`**: Collects usage metrics for billing (updated by `mxp-controller` when CRDs change)
 - **`vector`**: Works with `kube-state-metrics` to send usage data to external storage for billing
 - **`apollo syncer`**: Syncs `etcd` data into PostgreSQL for the Query API
+<!-- vale write-good.TooWordy = YES -->
 
 ## See also
 
