@@ -26,112 +26,112 @@
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go-templating",
+            "source": "/build/control-plane-projects/authoring-compositions/go-templating(/)?",
             "destination": "/manuals/cli/howtos/compositions/go-template",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go-templating/inputs-outputs",
-            "destination": "/manuals/cli/howtos/compositions/go-template",
+            "source": "/build/control-plane-projects/authoring-compositions/go-templating/inputs-outputs(/)?",
+            "destination": "/manuals/cli/howtos/compositions/go-template/#handle-inputs-and-outputs",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go-templating/schemas",
-            "destination": "/manuals/cli/howtos/compositions/go-template",
+            "source": "/build/control-plane-projects/authoring-compositions/go-templating/schemas(/)?",
+            "destination": "/manuals/cli/howtos/compositions/go-template/#work-with-schemas",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go",
+            "source": "/build/control-plane-projects/authoring-compositions/go(/)?",
             "destination": "/manuals/cli/howtos/compositions/go",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go/inputs-outputs",
-            "destination": "/manuals/cli/howtos/compositions/go",
+            "source": "/build/control-plane-projects/authoring-compositions/go/inputs-outputs(/)?",
+            "destination": "/manuals/cli/howtos/compositions/go/#handle-inputs-and-outputs",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/go/models",
-            "destination": "/manuals/cli/howtos/compositions/go",
+            "source": "/build/control-plane-projects/authoring-compositions/go/models(/)?",
+            "destination": "/manuals/cli/howtos/compositions/go/#work-with-models",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions",
+            "source": "/build/control-plane-projects/authoring-compositions(/)?",
             "destination": "/manuals/cli/howtos/compositions",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/conditionals",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/conditionals(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#use-conditionals",
+            "permanent": true
+        },
+        {
+            "source": "/build/control-plane-projects/authoring-compositions/kcl(/)?",
             "destination": "/manuals/cli/howtos/compositions/kcl",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#work-with-inputs-and-outputs",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/inputs-outputs",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/loops(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#use-loops-to-create-multiple-resources",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/loops",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#read-function-pipeline-state",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/read-pipeline-state",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#extract-data-from-resources",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-data-extraction",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#working-with-resource-schemas",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/resource-schemas",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/variables(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#define-and-use-variables",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/variables",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
+            "source": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite(/)?",
+            "destination": "/manuals/cli/howtos/compositions/kcl/#write-status-to-composite-resources",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/kcl/write-status-to-composite",
-            "destination": "/manuals/cli/howtos/compositions/kcl",
-            "permanent": true
-        },
-        {
-            "source": "/build/control-plane-projects/authoring-compositions/python",
+            "source": "/build/control-plane-projects/authoring-compositions/python(/)?",
             "destination": "/manuals/cli/howtos/compositions/python",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs",
-            "destination": "/manuals/cli/howtos/compositions/python",
+            "source": "/build/control-plane-projects/authoring-compositions/python/inputs-outputs(/)?",
+            "destination": "/manuals/cli/howtos/compositions/python/#inputs",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-compositions/python/models",
-            "destination": "/manuals/cli/howtos/compositions/python",
+            "source": "/build/control-plane-projects/authoring-compositions/python/models(/)?",
+            "destination": "/manuals/cli/howtos/compositions/python/#models",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/authoring-xrds",
+            "source": "/build/control-plane-projects/authoring-xrds(/)?",
             "destination": "/manuals/cli/howtos/authoring-xrds",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects/building-pushing",
+            "source": "/build/control-plane-projects/building-pushing(/)?",
             "destination": "/manuals/cli/howtos/building-pushing",
             "permanent": true
         },
         {
-            "source": "/build/control-plane-projects",
+            "source": "/build/control-plane-projects(/)?",
             "destination": "/manuals/cli/howtos/project",
             "permanent": true
         },
@@ -838,12 +838,12 @@
         },
         {
             "source": "/core-concepts/python/inputs-outputs",
-            "destination": "/manuals/cli/howtos/compositions/python",
+            "destination": "/manuals/cli/howtos/compositions/python/#inputs",
             "permanent": true
         },
         {
             "source": "/core-concepts/python/models",
-            "destination": "/manuals/cli/howtos/compositions/python",
+            "destination": "/manuals/cli/howtos/compositions/python/#models",
             "permanent": true
         },
         {
@@ -889,6 +889,11 @@
         {
             "source": "/development-extensions/vscode-extensions",
             "destination": "/reference/usage/vscode-extensions",
+            "permanent": true
+        },
+        {
+            "source": "/devex(/)?",
+            "destination": "/getstarted/builders-workshop/project-foundations",
             "permanent": true
         },
         {
@@ -1259,16 +1264,6 @@
         {
             "source": "/deploy/self-hosted-spaces/",
             "destination": "/manuals/spaces/overview",
-            "permanent": true
-        },
-        {
-            "source": "/build/control-plane-projects/authoring-compositions/go",
-            "destination": "/manuals/cli/howtos/compositions/go/",
-            "permanent": true
-        },
-        {
-            "source": "/build/control-plane-projects/authoring-compositions/go/",
-            "destination": "/manuals/cli/howtos/compositions/go/",
             "permanent": true
         },
         {
