@@ -55,8 +55,8 @@ consistent performance.
 
    **Requirements:**
    - **Minimum**: 3 nodes for HA
-   - **Instance type**: General-purpose with high network throughput/low latency
-   - **Storage**: High-performance storage (`etcd` is I/O sensitive)
+   - **Instance type**: General purpose with high network throughput/low latency
+   - **Storage**: High performance storage (`etcd` is I/O sensitive)
 
 2. Taint `etcd` nodes to reserve them
 
@@ -68,7 +68,7 @@ consistent performance.
 
    `etcd` is sensitive to storage I/O performance. Review the [`etcd` scaling
    documentation][scaling]
-   for storage-specific guidance.
+   for specific storage guidance.
 
 ### API server dedicated nodes
 
@@ -266,8 +266,8 @@ scaling.
 
 
 The `spaces-router` accesses the control plane in this flow:
-
-<!--- TODO(tr0njavolta): spaces-router -> control plane api server --->
+*image*
+<!--- TODO(tr0njavolta):IMAGE spaces-router -> control plane api server --->
 
 
 ### Configure controller scaling
@@ -301,15 +301,15 @@ scaling.
 
    **Recommended services:**
    - [AWS RDS][rds]
-   - [Google Cloud SQL][gcp-sql]
+   - [Google Cloud SQL][gke-sql]
    - [Azure Database for PostgreSQL][aks-sql]
 
    **Requirements:**
    - Minimum 400 IOPS performance
 
 The `spaces-router` accesses the Query API in this flow:
-
-<!--- TODO(tr0njavolta): spaces-router -> query api server --->
+*image*
+<!--- TODO(tr0njavolta):IMAGE spaces-router -> query api server --->
 
 
 ## Monitoring
