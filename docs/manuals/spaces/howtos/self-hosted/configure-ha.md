@@ -33,7 +33,7 @@ In this guide, you will:
 
 * Create dedicated node pools for different component types
 * Configure high-availability to ensure there are no single points of failure
-* Set dynamic scaling for variable workloads 
+* Set dynamic scaling for variable workloads
 * Optimize your storage and component operations
 * Monitor your deployment health and performance
 
