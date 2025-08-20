@@ -5,18 +5,20 @@ slug: "/getstarted"
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
 
-Welcome to Upbound, the entriprise platform for Crossplane that helps you build
+Welcome to Upbound, the enterprise platform for Crossplane that helps you build
 autonomous infrastructure platforms at scale. Whether you're already using Open
 Source Crossplane or exploring control planes for the first time, Upbound
 provides the tools and services to take your infrastructure automation to the
-next level
+next level.
 
+<!-- vale Google.We = NO -->
 Upbound allows you to expose infrastructure across clouds, vendors, and systems
 through a single programmable API surface that works for humans and intelligent
 agents alike. Upbound powers this API surface with **Upbound Crossplane 2.0
 (UXP)** - our next-generation control plane that delivers enterprise-grade
 reliability, performance, and developer experience. 
 
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 
 ## Already using open source Crossplane?
 
@@ -30,7 +32,6 @@ workflow.
 <GetStarted />
 
 <!-- vale Microsoft.Contractions = NO -->
-<!-- vale Microsoft.HeadingPunctuation = NO -->
 ## What is Upbound?
 <!-- vale Microsoft.Contractions = YES -->
 
@@ -52,9 +53,9 @@ connects with the service, and manages the lifecycle on your behalf.
 
 <!-- vale Microsoft.HeadingPunctuation = YES -->
 
-## Feature Comparison: OSS Crossplane and Upbound
+## Crossplane and Upbound comparison
 
-
+<!-- vale Google.WordList = NO -->
 | Feature | Open Source Crossplane | UXP/Upbound |
 |---------|-------------------|--------------|
 | **Cost** | Free and open source | Community: Free / Standard: $1000/month / Enterprise and Business Critical: Custom pricing |
@@ -74,6 +75,8 @@ connects with the service, and manages the lifecycle on your behalf.
 
 ## Next steps
 
+<!-- vale Google.WordList = YES -->
+<!-- vale Google.We = YES -->
 Follow the [introduction][intro] guide to get started building your own control plane.
 
 [guides]: /guides
