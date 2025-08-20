@@ -29,10 +29,10 @@ curl -sL "https://cli.upbound.io" | sh
 :::note
 Install a specific version of `up` by providing the version.
 
-For example, to install version `v0.40.0` use the following command:
+For example, to install version `v0.40.2` use the following command:
 
 ```shell
-curl -sL "https://cli.upbound.io" | VERSION=v0.40.0 sh
+curl -sL "https://cli.upbound.io" | VERSION=v0.40.2 sh
 ```
 
 Find the full list of versions in the <a href="https://cli.upbound.io/stable?prefix=stable/">Up command-line repository</a>.
@@ -44,7 +44,7 @@ Find the full list of versions in the <a href="https://cli.upbound.io/stable?pre
 Upbound provides a Windows executable.
 
 ```shell
-curl.exe -sLo up.exe "https://cli.upbound.io/stable/${VERSION}/bin/windows_amd64/up.exe"
+curl.exe -sLo up.exe "https://cli.upbound.io/stable/v0.40.2/bin/windows_amd64/up.exe"
 ```
 </TabItem>
 
@@ -73,7 +73,7 @@ curl -sLo up.deb "https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/up.
 ### RPM package install
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 ```shell
-curl -sLo up.rpm "https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/up.rpm"
+curl -sLo up.rpm "https://cli.upbound.io/stable/v0.40.2/rpm/linux_${ARCH}/up.rpm"
 ```
 </TabItem>
 </Tabs>
@@ -100,14 +100,14 @@ brew install upbound/tap/docker-credential-up
 
 ### Debian package install
 ```shell
-curl -sLo up.deb "https://cli.upbound.io/stable/${VERSION}/deb/linux_${ARCH}/docker-credential-up.deb"
+curl -sLo up.deb "https://cli.upbound.io/stable/v0.40.2/deb/linux_${ARCH}/docker-credential-up.deb"
 ```
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### RPM package install
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 ```shell
-curl -sLo up.rpm "https://cli.upbound.io/stable/${VERSION}/rpm/linux_${ARCH}/docker-credential-up.rpm"
+curl -sLo up.rpm "https://cli.upbound.io/stable/v0.40.2/rpm/linux_${ARCH}/docker-credential-up.rpm"
 ```
 </TabItem>
 </Tabs>
