@@ -418,7 +418,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.proxy.tolerations | list | `[]` | Toleration for the router's envoy proxy. |
 | router.replicaCount | int | `1` | The number of replicas for the router deployment. |
 | router.secretRefs.adminValidating | string | `"cert-admin-signing"` | Name of the secret containing the admin signing certificate. |
-| router.secretRefs.gatewaySigning | string | `"cert-token-signing-gateway"` | Name of the secret containing the internal token signing certificat  host: proxy.upbound-127.0.0.1.nip.ioe |
+| router.secretRefs.gatewaySigning | string | `"cert-token-signing-gateway"` | Name of the secret containing the internal token signing certificate. |
 | router.secretRefs.tlsSecretName | string | `"spaces-router-tls"` | Name of the secret containing the TLS Certificate for the router. Deprecated: Please use externalTLS.tlsSecret.name instead. |
 | router.secretRefs.upboundIAMCABundle | string | `""` | Name of the secret containing the CA bundle for the configured UpboundIAM Issuer. This is helpful for testing when configuring against an Issuer using self-signed certificates. |
 | router.serviceAccount.annotations | object | `{}` | Annotations to be added to the service account used by the router deployment. |
