@@ -5,22 +5,27 @@ slug: "/getstarted"
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
 
-Welcome to Upbound, a platform for building autonomous infrastructure platforms
-that provision, operate, and adapt without human intervention.
+Welcome to Upbound, the entriprise platform for Crossplane that helps you build
+autonomous infrastructure platforms at scale. Whether you're already using Open
+Source Crossplane or exploring control planes for the first time, Upbound
+provides the tools and services to take your infrastructure automation to the
+next level
 
 Upbound allows you to expose infrastructure across clouds, vendors, and systems
 through a single programmable API surface that works for humans and intelligent
 agents alike. Upbound powers this API surface with **Upbound Crossplane 2.0
 (UXP)** - our next-generation control plane that delivers enterprise-grade
-reliability, performance, and developer experience. If you're new to Upbound and
-Crossplane, this section guides you through the
-essential resources to get started with UXP.
+reliability, performance, and developer experience. 
 
-Follow the guides to help you get started and learn how Upbound can help you
-build your own infrastructure platform.
 
-For more advanced concepts and scenarios in Upbound, see [Guides][guides].
+## Already using open source Crossplane?
 
+If you're already using Crossplane and want to check out Upbound Crossplane
+2.0, follow our Upgrade Guide to see how Upbound can enhance your existing
+workflow.
+
+
+## New to Crossplane and Upbound?
 
 <GetStarted />
 
@@ -46,6 +51,26 @@ define in your custom APIs. You define your resources and Upbound parses,
 connects with the service, and manages the lifecycle on your behalf.
 
 <!-- vale Microsoft.HeadingPunctuation = YES -->
+
+## Feature Comparison: OSS Crossplane and Upbound
+
+
+| Feature | Open Source Crossplane | UXP/Upbound |
+|---------|-------------------|--------------|
+| **Cost** | Free and open source | Community: Free / Standard: $1000/month / Enterprise and Business Critical: Custom pricing |
+| **Control Planes** | Unlimited | Unlimited / **5 (Standard)** / **Unlimited (Enterprise+)** |
+| **Users** | Unlimited | Unlimited / **10 (Standard)** / **Unlimited (Enterprise+)** |
+| **Private Repositories** | N/A | 1 / **5 (Standard)** / **Unlimited (Enterprise+)** |
+| **Web UI** | None | Local Web UI |
+| **CLI Tooling** | Basic `kubectl` | Up CLI with IDE integrations |
+| **Official Package Access** | N/A | Latest releases / **Patch releases (Standard+)** |
+| **Runtime** | Standard | Standard / **Enhanced runtime (Standard+)** |
+| **Identity** | Manual setup | Manual / **Google and GitHub (Standard+)** |
+| **Access Control** | Basic Kubernetes RBAC | Basic / **RBAC (Standard+)** |
+| **Security** | Standard | Standard / **Enterprise Security (Enterprise+)** / **Advanced Security (Business Critical)** |
+| **Hosting Options** | Self-managed only | Self-managed UXP / ** Upbound Cloud hosting (Standard+)** / **Self-hosted and dedicated Spaces (Business Critical)** |
+| **Control Plane Management** | Manual | Manual / **Control Plane Group Management (Enterprise+)** |
+| **Support** | Community forums/GitHub | Community / **Email and Ticket Support (Enterprise+)** / **Dedicated Support (Business Critical)** |
 
 ## Next steps
 
