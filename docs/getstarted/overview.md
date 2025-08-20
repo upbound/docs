@@ -68,8 +68,9 @@ connects with the service, and manages the lifecycle on your behalf.
 | **CLI Tooling** | Basic `kubectl` | Up CLI with IDE integrations |
 | **Official Package Access** | N/A | Latest releases / **Patch releases (Standard+)** |
 | **Runtime** | Standard | Standard / **Enhanced runtime (Standard+)** |
+| **Intelligent Control Planes** | N/A | **AI-Powered control plane pipelines** |
 | **Identity** | Manual setup | Manual / **Google and GitHub (Standard+)** |
-| **Access Control** | Basic Kubernetes RBAC | Basic / **RBAC (Standard+)** |
+| **Access Control** | Basic Kubernetes RBAC | Basic / **Enhanced Upbound RBAC (Standard+)** |
 | **Security** | Standard | Standard / **Enterprise Security (Enterprise+)** / **Advanced Security (Business Critical)** |
 | **Hosting Options** | Self-managed only | Self-managed UXP / **Upbound Cloud hosting (Standard+)** / **Self-hosted and dedicated Spaces (Business Critical)** |
 | **Control Plane Management** | Manual | Manual / **Control Plane Group Management (Enterprise+)** |
