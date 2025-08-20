@@ -27,8 +27,7 @@ up login
 
 ```bash
 up robot create provider-pull-bot
-up robot token create provider-pull-bot provider-pull-token --file - | jq -r
-'.token'
+up robot token create provider-pull-bot provider-pull-token --file - | jq -r '.token'
 ```
 
 :::note
