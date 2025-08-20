@@ -46,15 +46,15 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | api.serviceAccount.create | bool | `true` | Whether to create a service account for the spaces API deployment. |
 | api.serviceAccount.name | string | `"mxe-api"` | Name of the service account used by the spaces API deployment. |
 | authentication.hubIdentities | bool | `true` | This enables respecting built in Kubernetes identities (clientcertificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified within the Connected Space's hub. |
-| authentication.structuredConfig | string | `""` | Enables consumption of JWT Authenticators via Authentication Configuration per https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration <br> The below property takes the name of a configmap that contains a structured authentication configuration. |
+| authentication.structuredConfig | string | `""` | Enables consumption of JWT Authenticators via Authentication Configuration per https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration <br></br> The below property takes the name of a configmap that contains a structured authentication configuration. |
 | authorization.hubRBAC | bool | `true` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
 | billing.enabled | bool | `false` | This enables billing services. |
 | billing.storage.aws.bucket | string | `""` | AWS bucket name. See billing.storage.secretRef for authentication. Required if billing.storage.provider=aws. |
 | billing.storage.aws.endpoint | string | `""` | AWS endpoint. |
 | billing.storage.aws.region | string | `""` | AWS region. Required if billing.storage.provider=aws. |
-| billing.storage.aws.tls."ca.crt" | bool | `false` | See billing.storage.secretRef.<br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
-| billing.storage.aws.tls."tls.crt" | bool | `false` | See billing.storage.secretRef.<br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
-| billing.storage.aws.tls."tls.key" | bool | `false` | See billing.storage.secretRef.<br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.aws.tls."ca.crt" | bool | `false` | See billing.storage.secretRef.<br></br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.aws.tls."tls.crt" | bool | `false` | See billing.storage.secretRef.<br></br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.aws.tls."tls.key" | bool | `false` | See billing.storage.secretRef.<br></br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
 | billing.storage.aws.tls.alpnProtocols | list | `[]` | List of Application Layer Protocol Negotiation (ALPN) to use for the AWS endpoint. |
 | billing.storage.aws.tls.verifyCertificate | bool | `true` | Whether to verify the certificate for the AWS endpoint. |
 | billing.storage.aws.tls.verifyHostname | bool | `true` | Whether to verify the hostname for the AWS endpoint. |
@@ -63,21 +63,21 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | billing.storage.azure.endpoint | string | `""` | Azure endpoint. |
 | billing.storage.azure.storageAccount | string | `""` | Azure storage account name. |
 | billing.storage.gcp.bucket | string | `""` | GCP gcs bucket name. Required if billing.storage.provider=gcp. |
-| billing.storage.gcp.tls."ca.crt" | bool | `false` | See billing.storage.secretRef. <br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
-| billing.storage.gcp.tls."tls.crt" | bool | `false` | See billing.storage.secretRef. <br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
-| billing.storage.gcp.tls."tls.key" | bool | `false` | See billing.storage.secretRef. <br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.gcp.tls."ca.crt" | bool | `false` | See billing.storage.secretRef. <br></br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.gcp.tls."tls.crt" | bool | `false` | See billing.storage.secretRef. <br></br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
+| billing.storage.gcp.tls."tls.key" | bool | `false` | See billing.storage.secretRef. <br></br> Set to true if the corresponding key is defined in the secret referenced by billing.storage.secretRef.name. |
 | billing.storage.gcp.tls.alpnProtocols | list | `[]` | Application Layer Protocol Negotiation (ALPN) to use for the GCP endpoint. |
 | billing.storage.gcp.tls.verifyCertificate | bool | `true` | Whether to verify the certificate for the GCP endpoint. |
 | billing.storage.gcp.tls.verifyHostname | bool | `true` | Whether to verify the hostname for the GCP endpoint. |
 | billing.storage.provider | string | `""` | The provider for the billing storage. Required if billing.enabled=true. Must be one of aws, gcp, azure |
-| billing.storage.secretRef.name | string | `"billing-storage"` | Set to the empty string in order to use a workload identity for the billing feature. If you are configuring the billing feature with static credentials for accessing the cloud object storage, then the secret may contain any of these keys for configuring authentication: <br> AWS_ACCESS_KEY_ID: AWS access key ID. Used when provider is aws. <br> AWS_SECRET_ACCESS_KEY: AWS secret access key. Used when provider is aws. <br> AZURE_TENANT_ID: Azure tenant ID. Used when provider is azure. <br> AZURE_CLIENT_ID: Azure client ID. Used when provider is azure. <br> AZURE_CLIENT_SECRET: Azure client secret. Used when provider is azure. <br> AZURE_USERNAME: Azure username. Used when provider is azure. <br> AZURE_PASSWORD: Azure username. Used when provider is azure. <br> google_application_credentials: GCP service account key JSON. Used when provider is gcp. <br> The secret may also contain any of the following keys for configuring TLS. The corresponding value at billing.storage.<provider>.tls.<key> must also be set to true. <br> "ca.crt": Custom CA certificate. Used when provider is aws or gcp. <br> "tls.crt": Custom TLS certificate. Used when provider is aws or gcp. <br> "tls.key": Custom TLS key. Used when provider is aws or gcp. |
+| billing.storage.secretRef.name | string | `"billing-storage"` | Set to the empty string in order to use a workload identity for the billing feature. If you are configuring the billing feature with static credentials for accessing the cloud object storage, then the secret may contain any of these keys for configuring authentication: <br></br> AWS_ACCESS_KEY_ID: AWS access key ID. Used when provider is aws. <br></br> AWS_SECRET_ACCESS_KEY: AWS secret access key. Used when provider is aws. <br></br> AZURE_TENANT_ID: Azure tenant ID. Used when provider is azure. <br></br> AZURE_CLIENT_ID: Azure client ID. Used when provider is azure. <br></br> AZURE_CLIENT_SECRET: Azure client secret. Used when provider is azure. <br></br> AZURE_USERNAME: Azure username. Used when provider is azure. <br></br> AZURE_PASSWORD: Azure username. Used when provider is azure. <br></br> google_application_credentials: GCP service account key JSON. Used when provider is gcp. <br></br> The secret may also contain any of the following keys for configuring TLS. The corresponding value at billing.storage.`<provider>`.tls.`<key>` must also be set to true. <br></br> "ca.crt": Custom CA certificate. Used when provider is aws or gcp. <br></br> "tls.crt": Custom TLS certificate. Used when provider is aws or gcp. <br></br> "tls.key": Custom TLS key. Used when provider is aws or gcp. |
 | certificates | object | `{"clusterResourceNamespace":"cert-manager","provision":true,"space":{"clusterIssuer":"spaces-selfsigned"},"spacesCA":{"duration":"8760h0m0s"},"spacesControllerWebhook":{"duration":"2160h0m0s"}}` | Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function. |
-| certificates.clusterResourceNamespace | string | `"cert-manager"` | Specifies the cluster resource namespace for the cert-manager installation. <br> https://cert-manager.io/docs/configuration/#cluster-resource-namespace |
-| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected: <br> * Shared Certificate Authority <br> * Algorithm. (ECDSA) |
+| certificates.clusterResourceNamespace | string | `"cert-manager"` | Specifies the cluster resource namespace for the cert-manager installation. <br></br> https://cert-manager.io/docs/configuration/#cluster-resource-namespace |
+| certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected: <br></br> * Shared Certificate Authority <br></br> * Algorithm. (ECDSA) |
 | certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
 | connect | object | `{"agent":{"podLabels":{}}}` | Configurations for requests coming into the space via the connect agent. |
 | connect.agent | object | `{"podLabels":{}}` | Connect agent related configurations. |
-| connect.agent.podLabels | object | `{}` | Labels that are defined on the connect agent pod. Default value is:<br> app: agent |
+| connect.agent.podLabels | object | `{}` | Labels that are defined on the connect agent pod. Default value is:<br></br> app: agent |
 | controlPlanes.container.mxpCharts.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the mxp-charts container image. |
 | controlPlanes.container.mxpCharts.repository | string | `"mxp-charts"` | Repository for the mxp-charts container image. |
 | controlPlanes.container.mxpCharts.tag | string | `""` | Tag for the mxp-charts container image. |
@@ -170,8 +170,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.vector.resources.requests.memory | string | `"256Mi"` | Memory request for the spaces control plane Vector pod. |
 | controlPlanes.vector.service.enabled | bool | `false` | Whether to expose the Vector service. |
 | controlPlanes.vector.serviceAccount.customAnnotations | object | `{}` | Custom annotations to be added to the service account for the Vector deployment. |
-| controlPlanes.vector.sinks.usage.buffer.maxEvents | int | `500` | String containing max number of events to buffer in memory. <br> Relevant when mxp.vector.persistence.enabled=false. |
-| controlPlanes.vector.sinks.usage.buffer.maxSize | int | `268435488` | String containing max size of disk buffer in bytes. Must fit with other buffer.maxSize values in mxp.vector.persistence.size. <br> Relevant when mxp.vector.persistence.enabled=true.<br> ~256 MiB, minimum allowed |
+| controlPlanes.vector.sinks.usage.buffer.maxEvents | int | `500` | String containing max number of events to buffer in memory. <br></br> Relevant when mxp.vector.persistence.enabled=false. |
+| controlPlanes.vector.sinks.usage.buffer.maxSize | int | `268435488` | String containing max size of disk buffer in bytes. Must fit with other buffer.maxSize values in mxp.vector.persistence.size. <br></br> Relevant when mxp.vector.persistence.enabled=true.<br></br> ~256 MiB, minimum allowed |
 | controlPlanes.vector.tolerations | list | `[]` | Configure Vector Pods to be scheduled on [tainted](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) nodes. |
 | controlPlanes.vector.topologySpreadConstraints | list | `[]` | Configure [topology spread constraints](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints) for Vector Pods. Valid for the "Aggregator" and "Stateless-Aggregator" roles. |
 | controlPlanes.vector.version | string | `"0.36.1"` | Version of Vector to deploy. |
@@ -227,8 +227,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | externalTLS.caBundleSecret.name | string | `""` | Name of the secret containing the external CA bundle. |
 | externalTLS.tlsSecret | object | `{"name":""}` | TLS secret name that contains the serving certificate and key. |
 | externalTLS.tlsSecret.name | string | `""` | Name of the secret containing the TLS serving certificate and key. |
-| features.alpha | object | { ... } | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
-| features.alpha.apollo | object | { ... } | Configurations for the apollo deployment. |
+| features.alpha | object | `{ ... }` | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
+| features.alpha.apollo | object | `{ ... }` | Configurations for the apollo deployment. |
 | features.alpha.apollo.apiserver.command | list | `[]` | Command for the apollo apiserver deployment. |
 | features.alpha.apollo.apiserver.debug | bool | `false` | Whether apollo api server should be deployed in debug mode. |
 | features.alpha.apollo.apiserver.extraArgs | list | `[]` | Additional arguments to be added to the apollo apiserver deployment. |
@@ -259,7 +259,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.apollo.serviceAccount.annotations | object | `{}` | Annotations to be added to the apollo service account, if created. |
 | features.alpha.apollo.serviceAccount.create | bool | `true` | Whether to create a service account for the apollo deployment. |
 | features.alpha.apollo.serviceAccount.name | string | `"mxe-apollo"` | The name of the service account to be created. Expected to exist if create is set to false. |
-| features.alpha.apollo.storage.postgres.cnpg | object | { ... } | Configuration for the PostgreSQL cluster and PGBouncer pooler managed by CloudNativePG, only respected if create is set to true. |
+| features.alpha.apollo.storage.postgres.cnpg | object | `{ ... }` | Configuration for the PostgreSQL cluster and PGBouncer pooler managed by CloudNativePG, only respected if create is set to true. |
 | features.alpha.apollo.storage.postgres.cnpg.cluster.debug | bool | `false` | Setting the cluster to log at debug level, sets up PgAudit and other useful extensions for debugging. |
 | features.alpha.apollo.storage.postgres.cnpg.cluster.imageName | string | `"ghcr.io/cloudnative-pg/postgresql:16"` | Image to be used for the cluster, if not specified the default image according to the CloudNativePG operator installed version will be used. |
 | features.alpha.apollo.storage.postgres.cnpg.cluster.instances | int | `2` | Number of instances in the postgres cluster. |
@@ -313,9 +313,9 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.argocdPlugin.target.externalCluster.secret.key | string | `"kubeconfig"` | The key at which the kubeconfig is stored in the secret. Ignored if externalCluster.enabled is false. |
 | features.alpha.argocdPlugin.target.externalCluster.secret.name | string | `"kubeconfig"` | The name of the secret containing the kubeconfig for the external cluster. Ignored if externalCluster.enabled is false. |
 | features.alpha.argocdPlugin.target.secretNamespace | string | `"argocd"` | The namespace where the ArgoCD cluster secrets should be created in. |
-| features.alpha.argocdPlugin.useUIDFormatForCTPSecrets | bool | `false` | If enabled, old secrets with <ctp-name> will be deleted and recreated with the <ctp-uid>. |
+| features.alpha.argocdPlugin.useUIDFormatForCTPSecrets | bool | `false` | If enabled, old secrets with `<ctp-name>` will be deleted and recreated with the `<ctp-uid>`. |
 | features.alpha.inControlPlaneOverride.enabled | bool | `false` | This enables the InControlPlaneOverride API to allow hierarchical configuration overrides in the control planes. |
-| features.alpha.observability.enabled | bool | `false` | This enables the observability feature within this space.<br> Enabling observability requires OpenTelemetry Operator for Kubernetes to be installed in the cluster. See https://opentelemetry.io/docs/kubernetes/operator/ |
+| features.alpha.observability.enabled | bool | `false` | This enables the observability feature within this space.<br></br> Enabling observability requires OpenTelemetry Operator for Kubernetes to be installed in the cluster. See https://opentelemetry.io/docs/kubernetes/operator/ |
 | features.alpha.sharedBackup.enabled | bool | `true` | This enables the SharedBackup feature. |
 | features.alpha.sharedSecrets.enabled | bool | `true` | This enables the shared secrets feature. |
 | features.alpha.simulations.controlPlanes | object | `{"size":""}` | Control plane configuration for the Upbound Simulations feature. |
@@ -329,26 +329,26 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
 | fullnameOverride | string | `""` | The full name of the chart, including the repository name. |
 | gatewayAPI | object | `{"gateway":{"className":"spaces","name":"spaces","provision":false},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"spacesRouterRoute":{"provision":false}}` | Configurations for external requests coming into the space. |
-| gatewayAPI.gateway | object | { ... } | Configurations for the Gateway resource that will act as an application gateway for Spaces. |
+| gatewayAPI.gateway | object | `{ ... }` | Configurations for the Gateway resource that will act as an application gateway for Spaces. |
 | gatewayAPI.gateway.className | string | `"spaces"` | Specifies the GatewayClass name for the Gateway being provisioned if gatewayAPI.gateway.provision is `true`. |
 | gatewayAPI.gateway.name | string | `"spaces"` | Specifies the name of the Gateway resource to be used as the parent of the spaces routes, and to be provisioned if gatewayAPI.gateway.provision is `true`. |
 | gatewayAPI.gateway.provision | bool | `false` | Specifies whether the helm chart should provision the Gateway resource for routing external traffic into the cluster. |
 | gatewayAPI.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | gatewayAPI.insecure | bool | `false` | Disable TLS at the endpoints |
-| gatewayAPI.namespaceLabels | object | `{}` | Labels that are defined on the namespace of the Envoy proxy pod. Default value is:<br> kubernetes.io/metadata.name: envoy-gateway-system |
-| gatewayAPI.podLabels | object | `{}` | Labels that are defined on the Envoy proxy pod. Default value is:<br> app.kubernetes.io/name: envoy<br> app.kubernetes.io/component: proxy<br> app.kubernetes.io/managed-by: envoy-gateway |
-| gatewayAPI.spacesRouterRoute | object | { ... } | Configurations for the TLS or HTTP route that forwards external traffic into spaces-router. |
+| gatewayAPI.namespaceLabels | object | `{}` | Labels that are defined on the namespace of the Envoy proxy pod. Default value is:<br></br> kubernetes.io/metadata.name: envoy-gateway-system |
+| gatewayAPI.podLabels | object | `{}` | Labels that are defined on the Envoy proxy pod. Default value is:<br></br> app.kubernetes.io/name: envoy<br></br> app.kubernetes.io/component: proxy<br></br> app.kubernetes.io/managed-by: envoy-gateway |
+| gatewayAPI.spacesRouterRoute | object | `{ ... }` | Configurations for the TLS or HTTP route that forwards external traffic into spaces-router. |
 | gatewayAPI.spacesRouterRoute.provision | bool | `false` | Specifies whether the Helm chart should provision the TLSRoute or HTTPRoute resource (depending on how spaces-router is configured) for routing traffic to spaces-router. |
 | imagePullSecrets | list | `[{"name":"upbound-pull-secret"}]` | NOTE: only an imagePullSecret of "upbound-pull-secret" is currently supported. |
 | ingress | object | `{"annotations":{},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"provision":true}` | Configurations for external requests coming into the space. |
 | ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the spaces-router deployment. |
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | ingress.insecure | bool | `false` | Disable TLS at the endpoints |
-| ingress.namespaceLabels | object | `{}` | .Labels that are defined on the namespace of ingress-nginx pod. Default value is:<br> kubernetes.io/metadata.name: ingress-nginx |
-| ingress.podLabels | object | `{}` | Labels that are defined on the ingress-nginx pod. Default value is:<br> app.kubernetes.io/instance: ingress-nginx<br> app.kubernetes.io/component: controller<br> app.kubernetes.io/name: ingress-nginx |
+| ingress.namespaceLabels | object | `{}` | .Labels that are defined on the namespace of ingress-nginx pod. Default value is:<br></br> kubernetes.io/metadata.name: ingress-nginx |
+| ingress.podLabels | object | `{}` | Labels that are defined on the ingress-nginx pod. Default value is:<br></br> app.kubernetes.io/instance: ingress-nginx<br></br> app.kubernetes.io/component: controller<br></br> app.kubernetes.io/name: ingress-nginx |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
 | nameOverride | string | `""` | The name of the chart. |
-| observability.collectors | object | `{"includeSystemTelemetry":false,"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":"","tolerations":[]}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
+| observability.collectors | object | `{"includeSystemTelemetry":false,"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":"","tolerations":[]}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br></br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br></br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
 | observability.collectors.includeSystemTelemetry | bool | `false` | If true, control plane telemetry will emit telemetry data from control plane system components, such as the api server, etcd. |
 | observability.collectors.repository | string | `"opentelemetry-collector-spaces"` | Repository for the OpenTelemetry collector image. |
 | observability.collectors.resources.limits.cpu | string | `"100m"` | CPU limit for the OpenTelemetry collector pod. |
@@ -358,7 +358,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.collectors.tag | string | `""` | Tag for the OpenTelemetry collector image. |
 | observability.collectors.tolerations | list | `[]` | Tolerations for the telemetry log collectors daemonset pods. |
 | observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. |
-| observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[]}` | The space-level OpenTelemetry collector exporter configuration. <br> otlphttp: <br>   endpoint: https://otlp.eu01.nr-data.net <br>   headers: <br>     api-key: <your-key> <br> |
+| observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[]}` | The space-level OpenTelemetry collector exporter configuration. <br></br> otlphttp: <br></br>   endpoint: https://otlp.eu01.nr-data.net <br></br>   headers: <br></br>     api-key: `<your-key>` <br></br> |
 | observability.spacesCollector.config.exportPipeline.logs | list | `[]` | List of logs exporters names. |
 | observability.spacesCollector.config.exportPipeline.metrics | list | `[]` | List of metrics exporters names. |
 | observability.spacesCollector.config.exporters | object | `{"debug":null}` | To export observability data, configure the exporters here and update the exportPipeline to include the exporters you want to use per telemetry type. |
