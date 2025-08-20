@@ -24,7 +24,7 @@ reliability, performance, and developer experience.
 ## Already using open source Crossplane?
 <!-- vale Google.WordList = NO -->
 If you're already using Crossplane and want to check out Upbound Crossplane
-2.0, follow our Upgrade Guide to see how Upbound can enhance your existing
+2.0, follow our [Upgrade Guide][upgrade] to see how Upbound can enhance your existing
 workflow.
 <!-- vale Google.WordList = YES -->
 
@@ -79,9 +79,12 @@ connects with the service, and manages the lifecycle on your behalf.
 
 <!-- vale Google.WordList = YES -->
 <!-- vale Google.We = YES -->
-Follow the [introduction][intro] guide to get started building your own control plane.
+* Follow the [introduction][intro] guide to get started building your own control plane.
+* For OSS Crossplane users, follow the [Upgrade][upgrade] guide.
+
 
 <!-- vale gitlab.SentenceLength = YES -->
+[upgrade]: /getstarted/upgrade-to-upbound/upgrade-to-uxp
 [guides]: /guides
 [register]: https://accounts.upbound.io/register
 [up]: /manuals/cli/overview
