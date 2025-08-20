@@ -49,3 +49,7 @@ tmp/
 dist/
 out/
 bin/
+
+# Claude Code
+.claude/settings.local.json
+.serena/project.yml
