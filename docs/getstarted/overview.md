@@ -69,7 +69,7 @@ connects with the service, and manages the lifecycle on your behalf.
 | **Identity** | Manual setup | Manual / **Google and GitHub (Standard+)** |
 | **Access Control** | Basic Kubernetes RBAC | Basic / **RBAC (Standard+)** |
 | **Security** | Standard | Standard / **Enterprise Security (Enterprise+)** / **Advanced Security (Business Critical)** |
-| **Hosting Options** | Self-managed only | Self-managed UXP / ** Upbound Cloud hosting (Standard+)** / **Self-hosted and dedicated Spaces (Business Critical)** |
+| **Hosting Options** | Self-managed only | Self-managed UXP / **Upbound Cloud hosting (Standard+)** / **Self-hosted and dedicated Spaces (Business Critical)** |
 | **Control Plane Management** | Manual | Manual / **Control Plane Group Management (Enterprise+)** |
 | **Support** | Community forums/GitHub | Community / **Email and Ticket Support (Enterprise+)** / **Dedicated Support (Business Critical)** |
 
