@@ -24,6 +24,12 @@ Any important warnings or necessary information
 
 -->
 
+## v0.40.2
+
+### Release Date: 2025-08-19
+
+- Telemetry improvements and bug fixes
+
 ## v0.40.1
 
 ### Release Date: 2025-08-13
