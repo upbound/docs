@@ -27,8 +27,14 @@ up login
 
 ```bash
 up robot create provider-pull-bot
-up robot token create provider-pull-bot provider-pull-token --output=-
+up robot token create provider-pull-bot provider-pull-token --file - | jq -r
+'.token'
 ```
+
+:::note
+Follow the [`jq` installation guide][jq-install] if your machine doesn't include
+it by default. 
+:::
 
 3. Save the `Access ID` value of the output to a variable named `ID`. Save the `Token` value to a variable named `TOKEN`:
 
@@ -102,7 +108,7 @@ spec:
 # Removed for brevity
 ```
 
-
+[jq-install]: https://jqlang.org/download/
 [access-policy]: /manuals/packages/policies
 [robot-and-robot-token]: /manuals/platform/concepts/identity-management/robots
 [robot-and-robot-token-1]: /manuals/platform/concepts/identity-management/robots

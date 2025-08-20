@@ -58,6 +58,11 @@ up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authentica
 export UPBOUND_TOKEN=$(up robot token create "$UPBOUND_SPACE_NAME" "$UPBOUND_SPACE_NAME" --file - | jq -r '.token')
 ```
 
+:::note
+Follow the [`jq` installation guide][jq-install] if your machine doesn't include
+it by default.
+:::
+
 Create a secret containing the robot token:
 
 ```bash
@@ -182,6 +187,6 @@ Only users with editor or administrative permissions can make changes using the 
 [upbound]: /manuals/console/upbound-console
 [organization]: /manuals/platform/concepts/identity-management/organizations
 [query-api]: /manuals/spaces/howtos/self-hosted/query-api
-
+[jq-install]: https://jqlang.org/download/
 
 [upbound-console]: https://console.upbound.io
