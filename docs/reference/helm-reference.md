@@ -9,7 +9,6 @@ description: Spaces Helm chart configuration values
 This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
 
 
-
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | account | string | `"notdemo"` | The Upbound organization this installation is associated with. |
