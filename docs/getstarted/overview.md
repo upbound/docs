@@ -5,6 +5,7 @@ slug: "/getstarted"
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
 
+<!-- vale gitlab.SentenceLength = NO -->
 Welcome to Upbound, the enterprise platform for Crossplane that helps you build
 autonomous infrastructure platforms at scale. Whether you're already using Open
 Source Crossplane or exploring control planes for the first time, Upbound
@@ -21,10 +22,11 @@ reliability, performance, and developer experience.
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 
 ## Already using open source Crossplane?
-
+<!-- vale Google.WordList = NO -->
 If you're already using Crossplane and want to check out Upbound Crossplane
 2.0, follow our Upgrade Guide to see how Upbound can enhance your existing
 workflow.
+<!-- vale Google.WordList = YES -->
 
 
 ## New to Crossplane and Upbound?
@@ -79,6 +81,7 @@ connects with the service, and manages the lifecycle on your behalf.
 <!-- vale Google.We = YES -->
 Follow the [introduction][intro] guide to get started building your own control plane.
 
+<!-- vale gitlab.SentenceLength = YES -->
 [guides]: /guides
 [register]: https://accounts.upbound.io/register
 [up]: /manuals/cli/overview
