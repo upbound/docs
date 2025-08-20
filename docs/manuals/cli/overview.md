@@ -48,7 +48,7 @@ curl.exe -sLo up.exe "https://cli.upbound.io/stable/v0.40.2/bin/windows_amd64/up
 ```
 
 Find the full list of Windows versions in the [Up command-line
-respository][win-versions].
+repository][win-versions].
 
 
 </TabItem>
