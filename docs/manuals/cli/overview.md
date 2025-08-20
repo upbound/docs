@@ -46,6 +46,11 @@ Upbound provides a Windows executable.
 ```shell
 curl.exe -sLo up.exe "https://cli.upbound.io/stable/v0.40.2/bin/windows_amd64/up.exe"
 ```
+
+Find the full list of Windows versions in the [Up command-line
+respository][win-versions].
+
+
 </TabItem>
 
 <TabItem value="Homebrew" label="Homebrew">
@@ -112,7 +117,7 @@ curl -sLo up.rpm "https://cli.upbound.io/stable/v0.40.2/rpm/linux_${ARCH}/docker
 </TabItem>
 </Tabs>
 
-
+[win-versions]: https://cli.upbound.io/_?prefix=stable/current/bin/windows_amd64/
 [upbound]: https://cli.upbound.io
 [homebrew]: https://brew.sh/
 [version]: https://github.com/upbound/up/releases
