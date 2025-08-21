@@ -5,9 +5,9 @@ description: Configure Space-wide backups for disaster recovery.
 ---
 
 :::important
-This feature is in preview.
+For Connected and Disconnected Spaces, this feature requires Spaces `v1.9.0` and, starting with `v1.14.0`, Spaces enables it by default.
 
-For Connected and Disconnected Spaces, this feature requires Spaces `v1.9.0` and is off by default. To enable, set `features.alpha.spaceBackup.enabled=true` when installing Spaces:
+To enable it on versions earlier than `v1.14.0`, set features.alpha.spaceBackup.enabled=true when you install Spaces.
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
