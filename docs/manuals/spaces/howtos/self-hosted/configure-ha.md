@@ -368,7 +368,7 @@ Track these `spaces-controller` metrics:
    spaces_control_plane_degraded
    ```
 
-    Returns stale control planes that don't have a `Synced`, `Ready`, and
+    Returns control planes that don't have a `Synced`, `Ready`, and
     `Healthy` state.
 
 3. **Stuck control planes**
