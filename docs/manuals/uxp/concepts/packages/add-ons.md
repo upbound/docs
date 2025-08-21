@@ -13,7 +13,7 @@ ecosystem tooling.
 
 :::tip
 
-Add-Ons are a package type that's exclusively available for Upbound Crossplane v2 (UXP v2)
+Add-Ons are a package type that's only available for Upbound Crossplane v2 (UXP v2)
 
 :::
 
@@ -42,11 +42,13 @@ You can discover Add-Ons in the Upbound Marketplace or build your own package.
 
 You build an _AddOn_ package by wrapping a helm chart along with its requisite
 _CustomResourceDefinitions_. Your _AddOn_ package gets pushed to an OCI
-registry, and from there you can apply it to a control plane like you would any
+registry. From there you can apply it to a control plane like you would any
 other Crossplane package. Your control plane's package manager is responsible
 for managing the lifecycle of the software once applied.
 
+<!-- vale Google.Headings = NO -->
 ## Build your own AddOn
+<!-- vale Google.Headings = YES -->
 
 ### Prerequisites
 
@@ -101,7 +103,7 @@ helm template $RELEASE_NAME helm/chart.tgz -n $RELEASE_NAMESPACE --include-crds 
 ```
 
 :::tip
-The instructions above assume your CRDs get deployed as part of your Helm chart. If they're deployed another way, you need to manually copy your CRDs instead.
+The preceding instructions assume your CRDs get deployed as part of your Helm chart. If they're deployed another way, you need to manually copy your CRDs instead.
 :::
 
 Create a `crossplane.yaml` with your AddOn metadata:
@@ -145,7 +147,9 @@ Your Add-On's file structure should look like this:
     └── chart.tgz
 ```
 
-#### Package and push the _AddOn_
+<!-- vale Google.Headings = NO -->
+#### Package and push the AddOn
+<!-- vale Google.Headings = YES -->
 
 At the root of your Add-On's working directory, build the contents into an xpkg:
 
@@ -196,7 +200,9 @@ EOF
 
 The example below demonstrates step-by-step how to package and deploy [Argo CD][argo-cd] to a control plane in Upbound.
 
-### Prepare to package Argo CD
+<!-- vale Google.Headings = NO -->
+### Prepare to package ArgoCD
+<!-- vale Google.Headings = YES -->
 
 Start by making a working directory to assemble the necessary parts:
 
@@ -366,8 +372,6 @@ Overriding the Helm values is possible at two levels:
 Right now, it is not possible to configure this at runtime. The package author configures release name and namespace during packaging, so it is hardcoded inside the package. Unlike a regular application that is deployed by a Helm chart, _AddOns_ can only be deployed once in a given control plane, so, we hope it should be ok to rely on predefined release names and namespaces. We may consider exposing these in `AddOnRuntimeConfig` later, but, we would like to keep it opinionated unless there are strong reasons to do so.
 
 </details>
-
-<details>
 
 <details>
 
