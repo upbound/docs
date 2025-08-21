@@ -147,6 +147,40 @@ Your Add-On's file structure should look like this:
     └── chart.tgz
 ```
 
+#### Create a service account for your *AddOn*
+
+To deploy *AddOns* in your cluster, you must configure the
+`upbound-controller-manager` service account with the necessary permissions.
+
+The specific RBAC requirements vary depending on your AddOn and the Kubernetes
+resources it manages.
+
+To create the correct permissions, you need to:
+
+1. **Define your RBAC permissions** with a `Role` or `ClusterRole` that grants
+   access to the resources your AddOn manages
+2. **Bind permissions to the service `upbound-controller-manager`
+   ServiceAccount** in the `crossplane-system` namespace
+
+Your `ClusterRoleBinding` should be similar to:
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: upbound-controller-manager-addons
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: <your_addon_role>
+subjects:
+- kind: ServiceAccount
+  name: upbound-controller-manager
+  namespace: crossplane-system
+```
+Replace `<your_addon_role>` with the name of the `ClusterRole` with
+permissions your AddOn requires.
+
 <!-- vale Google.Headings = NO -->
 #### Package and push the AddOn
 <!-- vale Google.Headings = YES -->
