@@ -13,8 +13,7 @@ ecosystem tooling.
 
 :::tip
 
-Add-Ons are a package type that's exclusively available for Upbound Crossplane
-control planes.
+Add-Ons are a package type that's only available for Upbound Crossplane v2 (UXP v2)
 
 :::
 
@@ -43,15 +42,15 @@ You can discover Add-Ons in the Upbound Marketplace or build your own package.
 
 You build an _AddOn_ package by wrapping a helm chart along with its requisite
 _CustomResourceDefinitions_. Your _AddOn_ package gets pushed to an OCI
-registry, and from there you can apply it to a control plane like you would any
+registry. From there you can apply it to a control plane like you would any
 other Crossplane package. Your control plane's package manager is responsible
 for managing the lifecycle of the software once applied.
 
+<!-- vale Google.Headings = NO -->
 ## Build your own AddOn
+<!-- vale Google.Headings = YES -->
 
 ### Prerequisites
-
-Enable the feature in the Space you plan to run your control plane in:
 
 Packaging an _AddOn_ requires [up CLI][up-cli]  `v0.40.0` or later.
 
@@ -104,7 +103,7 @@ helm template $RELEASE_NAME helm/chart.tgz -n $RELEASE_NAMESPACE --include-crds 
 ```
 
 :::tip
-The instructions above assume your CRDs get deployed as part of your Helm chart. If they're deployed another way, you need to manually copy your CRDs instead.
+The preceding instructions assume your CRDs get deployed as part of your Helm chart. If they're deployed another way, you need to manually copy your CRDs instead.
 :::
 
 Create a `crossplane.yaml` with your AddOn metadata:
@@ -148,7 +147,9 @@ Your Add-On's file structure should look like this:
     └── chart.tgz
 ```
 
-#### Package and push the _AddOn_
+<!-- vale Google.Headings = NO -->
+#### Package and push the AddOn
+<!-- vale Google.Headings = YES -->
 
 At the root of your Add-On's working directory, build the contents into an xpkg:
 
@@ -199,7 +200,9 @@ EOF
 
 The example below demonstrates step-by-step how to package and deploy [Argo CD][argo-cd] to a control plane in Upbound.
 
-### Prepare to package Argo CD
+<!-- vale Google.Headings = NO -->
+### Prepare to package ArgoCD
+<!-- vale Google.Headings = YES -->
 
 Start by making a working directory to assemble the necessary parts:
 
@@ -334,13 +337,6 @@ You can now use the _CustomResource_ types defined by Argo CD in your control pl
 
 ## Frequently asked questions
 <details>
-    <summary>Can I package any software or are there any prerequisites to be an AddOn?</summary>
-
-    We define an _AddOn_ as a software that has at least one Custom Resource Definition (CRD) and a Kubernetes controller for that CRD. This is the minimum requirement to be a _AddOn_. We have some checks to enforce this at packaging time. 
-
-    </details>
-
-<details>
 
 <summary>How can I package my software as an AddOn?</summary>
 
@@ -379,26 +375,17 @@ Right now, it is not possible to configure this at runtime. The package author c
 
 <details>
 
-<summary>Can I deploy more than one instance of an AddOn package?</summary>
-
-No, this is not possible. Remember, an _AddOn_ package introduces CRDs which are cluster-scoped objects. Just like one can't deploy more than one instance of the same Crossplane Provider package today, it is not possible to deploy more than one instance of an _AddOn_.
-
-</details>
-
-<details>
-
 <summary>Do I need a specific Crossplane version to run AddOns?</summary>
 
-Yes, you need to use Crossplane v1.19.0 or later to use AddOns. This is because of the changes in the Crossplane codebase to support third-party package formats in dependencies.
+`AddOn` API is available in Upbound Crossplane (UXP) v2 and later.
 
-Spaces `v1.12.0` supports Crossplane `v1.19` in the _Rapid_ release channel.
 </details>
 
 <details>
 
 <summary>Can I deploy AddOns outside of Upbound Crossplane?</summary>
 
-No, _AddOns_ are a proprietary package format and are only available for control planes running in Spaces hosting environments in Upbound.
+No, _AddOns_ are a proprietary package format and are only available for Upbound Crossplane (UXP) v2 and later. They are not compatible with upstream Crossplane.
 
 </details>
 
