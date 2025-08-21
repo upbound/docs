@@ -36,6 +36,7 @@ workflow.
 <!-- vale Microsoft.Contractions = NO -->
 ## What is Upbound?
 <!-- vale Microsoft.Contractions = YES -->
+<!-- vale Microsoft.HeadingPunctuation = YES -->
 
 Upbound is the platform that helps platform engineers automate and build their
 platforms.
@@ -53,32 +54,9 @@ The control plane constantly monitors your cloud resources to meet the state you
 define in your custom APIs. You define your resources and Upbound parses,
 connects with the service, and manages the lifecycle on your behalf.
 
-<!-- vale Microsoft.HeadingPunctuation = YES -->
-
-## Crossplane and Upbound comparison
-
-<!-- vale Google.WordList = NO -->
-| Feature | Open Source Crossplane | UXP/Upbound |
-|---------|-------------------|--------------|
-| **Cost** | Free and open source | Community: Free / Standard: $1000/month / Enterprise and Business Critical: Custom pricing |
-| **Control Planes** | Unlimited | Unlimited / **5 (Standard)** / **Unlimited (Enterprise+)** |
-| **Users** | Unlimited | Unlimited / **10 (Standard)** / **Unlimited (Enterprise+)** |
-| **Private Repositories** | N/A | 1 / **5 (Standard)** / **Unlimited (Enterprise+)** |
-| **Web UI** | None | Local Web UI |
-| **CLI Tooling** | Basic `kubectl` | Up CLI with IDE integrations |
-| **Official Package Access** | N/A | Latest releases / **Patch releases (Standard+)** |
-| **Runtime** | Standard | Standard / **Enhanced runtime (Standard+)** |
-| **Intelligent Control Planes** | N/A | **AI-Powered control plane pipelines** |
-| **Identity** | Manual setup | Manual / **Google and GitHub (Standard+)** |
-| **Access Control** | Basic Kubernetes RBAC | Basic / **Enhanced Upbound RBAC (Standard+)** |
-| **Security** | Standard | Standard / **Enterprise Security (Enterprise+)** / **Advanced Security (Business Critical)** |
-| **Hosting Options** | Self-managed only | Self-managed UXP / **Upbound Cloud hosting (Standard+)** / **Self-hosted and dedicated Spaces (Business Critical)** |
-| **Control Plane Management** | Manual | Manual / **Control Plane Group Management (Enterprise+)** |
-| **Support** | Community forums/GitHub | Community / **Email and Ticket Support (Enterprise+)** / **Dedicated Support (Business Critical)** |
 
 ## Next steps
 
-<!-- vale Google.WordList = YES -->
 <!-- vale Google.We = YES -->
 * Follow the [introduction][intro] guide to get started building your own control plane.
 * For OSS Crossplane users, follow the [Upgrade][upgrade] guide.
