@@ -174,9 +174,9 @@ roleRef:
   kind: ClusterRole
   name: <your_addon_role>
 subjects:
-- kind: ServiceAccount
-  name: upbound-controller-manager
-  namespace: crossplane-system
+  - kind: ServiceAccount
+    name: upbound-controller-manager
+    namespace: crossplane-system
 ```
 Replace `<your_addon_role>` with the name of the `ClusterRole` with
 permissions your AddOn requires.
