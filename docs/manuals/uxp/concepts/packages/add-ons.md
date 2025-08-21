@@ -159,10 +159,10 @@ To create the correct permissions, you need to:
 
 1. **Define your RBAC permissions** with a `Role` or `ClusterRole` that grants
    access to the resources your AddOn manages
-2. **Bind permissions to the service `upbound-controller-manager`
+2. **Bind permissions to the `upbound-controller-manager`
    ServiceAccount** in the `crossplane-system` namespace
 
-Your `ClusterRoleBinding` should be similar to:
+An example `ClusterRoleBinding`:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
