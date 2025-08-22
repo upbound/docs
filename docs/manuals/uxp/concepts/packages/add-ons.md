@@ -147,7 +147,7 @@ Your Add-On's file structure should look like this:
     └── chart.tgz
 ```
 
-#### Create a service account for your *AddOn*
+#### Create a ClusterRole or Role for your *AddOn*
 
 To deploy *AddOns* in your cluster, you must configure the
 `upbound-controller-manager` service account with the necessary permissions.
@@ -178,7 +178,7 @@ subjects:
     name: upbound-controller-manager
     namespace: crossplane-system
 ```
-Replace `<your_addon_role>` with the name of the `ClusterRole` with
+Replace `<your_addon_role>` with the name of the `ClusterRole` or `Role` with
 permissions your AddOn requires.
 
 <!-- vale Google.Headings = NO -->
