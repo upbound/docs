@@ -32,13 +32,11 @@ const config = {
                 theme: {
                     customCss: "./src/css/custom.css",
                 },
-            }),
-            {
                 gtag: {
                     trackingID: "G-KNXJS4FJ9E",
                     anonymizeIP: true,
                 },
-            },
+            }),
         ],
     ],
     plugins: [
