@@ -221,10 +221,9 @@ export function GetStarted() {
 
   return (
     <section className="get-started-section">
-      <h2>🚀 Sign up and install the Upbound CLI</h2>
+      <h2>🚀 Install the Upbound CLI</h2>
       <ul>
-        <li>Create an account on Upbound by <a href="https://accounts.upbound.io/register">registering your organization</a>.</li>
-        <li>Install the <a href="/manuals/cli/overview">up</a> CLI to gain access to all Upbound's tooling on your machine.</li>
+       <li>Install the <a href="/manuals/cli/overview">up</a> CLI to gain access to all Upbound's tooling on your machine.</li>
       </ul>
       
       <div className="code-block">
@@ -245,10 +244,6 @@ export function GetStarted() {
         Find more installation methods on the <a href="/manuals/cli/overview">Up CLI installation guide</a>.
       </div>
       
-      <div className="tip-box">
-        <div className="tip-label">TIP</div>
-        Get started with Upbound using the free <em>Community</em> plan or upgrade to a <em>Standard</em> plan. For more information, review our <a href="https://upbound.io/pricing">pricing plans</a>
-      </div>
     </section>
   );
 }
