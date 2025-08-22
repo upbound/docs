@@ -33,6 +33,12 @@ const config = {
                     customCss: "./src/css/custom.css",
                 },
             }),
+            {
+                gtag: {
+                    trackingID: "G-KNXJS4FJ9E",
+                    anonymizeIP: true,
+                },
+            },
         ],
     ],
     plugins: [
@@ -67,7 +73,7 @@ const config = {
                         type: "doc",
                         label: "Get Started",
                         position: "left",
-                        docId: 'getstarted/overview',
+                        docId: "getstarted/overview",
                     },
                     {
                         type: "dropdown",
@@ -163,22 +169,23 @@ const config = {
       </p>
     </div>
   `,
-},    prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-        additionalLanguages: ['bash', 'yaml', 'json', 'go', 'python'],
-      },
-      colorMode: {
-        defaultMode: 'light',
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
-      },
-      docs: {
-        sidebar: {
-          hideable: true,
-        },
-      },
-    }),
+            },
+            prism: {
+                theme: prismThemes.github,
+                darkTheme: prismThemes.dracula,
+                additionalLanguages: ["bash", "yaml", "json", "go", "python"],
+            },
+            colorMode: {
+                defaultMode: "light",
+                disableSwitch: false,
+                respectPrefersColorScheme: true,
+            },
+            docs: {
+                sidebar: {
+                    hideable: true,
+                },
+            },
+        }),
 };
 
 export default config;
