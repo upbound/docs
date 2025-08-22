@@ -272,7 +272,7 @@ provider_config = providerconfig.ProviderConfig(
             source="Upbound",
             upbound=providerconfig.Upbound(
                 webIdentity=providerconfig.WebIdentity(
-                    roleARN="arn:aws:iam::609897127049:role/example-project-aws-uptest",
+                    roleARN="arn:aws:iam::123456789:role/example-project-aws-uptest",
                 ),
             ),
         ),
