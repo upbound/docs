@@ -1537,6 +1537,16 @@
             "permanent": true
         },
         {
+            "source": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore/",
+            "destination": "/manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore",
+            "destination": "/manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/",
+            "permanent": true
+        },
+        {
             "source": "/manuals/marketplace",
             "destination": "/manuals/marketplace/overview/",
             "permanent": true
