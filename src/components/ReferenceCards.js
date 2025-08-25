@@ -13,7 +13,7 @@ const ReferenceCards = () => {
       link: '/reference/cli-reference'
     },
     {
-      title: 'Helm Reference',
+      title: 'Spaces Helm Reference',
       description: 'Helm chart configuration and deployment reference documentation.',
       link: '/reference/helm-reference'
     },

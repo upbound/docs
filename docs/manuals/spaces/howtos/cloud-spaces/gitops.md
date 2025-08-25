@@ -138,7 +138,7 @@ metadata:
 type: Opaque
 stringData:
   name: my-control-plane-context
-  server: https://<space-name>.space.mxe.upbound.io/apis/spaces.upbound.io/v1beta1/namespaces/<group>/controlplanes/<control plane>/k8s
+  server: https://<space-name>.spaces.upbound.io/apis/spaces.upbound.io/v1beta1/namespaces/<group>/controlplanes/<control plane>/k8s
   config: |
     {
       "execProviderConfig": {

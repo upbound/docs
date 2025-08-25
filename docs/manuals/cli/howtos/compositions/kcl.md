@@ -6,7 +6,6 @@ aliases:
     - /core-concepts/authoring-compositions
 ---
 
-
 Upbound Crossplane allows you to choose how you want to write your composition
 logic based on your preferred language.
 
@@ -391,7 +390,7 @@ function pipeline, you can use the `option("params").oxr` variable.
    
    myBucket = v1beta1.Bucket {
        metadata: _metadata("my-bucket")
-       spec.forProvider.region = option("oxr").spec.region
+       spec.forProvider.region = option("params").oxr.spec.region
    }
    ```
 
@@ -415,18 +414,103 @@ corresponding configuration data.
    spec.user_status = option("params").ocds["test-user"]?.Resource.status
    ```
 
+## Write status to composite resources
+
+Functions can write status information back to the composite resource to provide details about the pipeline progression.
+
+To write status to the Composite Resource, capture the desired composite resource, update its status, and return it as an item:
+
+```yaml
+import models.v1beta1 as v1beta1
+
+# Read the desired state for the XR from the pipeline
+_dxr = option("params").dxr
+
+# Construct your managed resources
+bucket = v1beta1.Bucket {
+    metadata: _metadata("my-bucket")
+    spec.forProvider.region = option("params").oxr.spec.region
+}
+
+# Update the dxr status immutably
+_dxr = {
+    **_dxr
+    status: {
+        bucketName: bucket.metadata.name
+        region: bucket.spec.forProvider.region
+    }
+}
+
+# Return both the managed resource and updated XR status
+items = [bucket, _dxr]
+```
+
+Make sure you've defined the status fields you write to in your function in the XRD corresponding to the composition.
+
+## Working with resource schemas
+
+KCL functions support type-safe resource schemas that provide IDE support
+including autocomplete, linting, and context hints.
+
+### Enable IDE support
+
+To take full advantage of the KCL IDE experience with resource schemas, you need
+to declare the resource type:
+
+```yaml
+import models.v1beta1 as v1beta1
+
+_items = [
+    v1beta1.Instance {  # Declaring the type enables IDE features
+        spec.forProvider = {
+            associatePublicIpAddress: True
+            availabilityZone: oxr.spec.parameters.location
+            cpuCoreCount: 10
+        }
+    }
+]
+```
+
+When your cursor is inside the stanza of the `v1beta1.Instance`, your IDE
+provides code completion, context hints, and more tailored to that resource
+type.
+
+### Schema dependencies
+
+The `up dep add` command unpacks dependencies that contain resource schemas in
+the `.up/kcl` folder at your project root directory.
+
+When you generate a function for your project with `up function generate` from a
+composition, the command automatically imports the schemas into your KCL
+function file:
+
+```yaml
+import models.v1beta1 as v1beta1
+import models.v1beta2 as v1beta2
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
+```
+
+The `import` stanza in your function allows you to manually import schemas. The
+KCL Visual Studio Code extension can also parse the imported schemas for the
+same benefits.
+
+### Supported packages
+
+All Upbound Official Providers use KCL-compatible resource schemas.
+
+When you build your project with `up project build`, the generated artifact
+contains the generated resource schemas for your XRDs. You can build a project
+and then import that project as a dependency for the resources you define.
+
 ## See also
 
 * [KCL Language Documentation][kcl-reference-docs] - Complete KCL language reference
 * [KCL Comprehensions Documentation][comprehensions] - Detailed loop syntax reference
 * [function-kcl][function-kcl] - The underlying Crossplane function that enables KCL
 
-
 [go]: /manuals/cli/howtos/compositions/go
 [go-templates]: /manuals/cli/howtos/compositions/go-template
-<!-- [kcl]: /manuals/cli/projects/compositions/kcl -->
 [python]: /manuals/cli/howtos/compositions/python
-
 [kcl]: https://www.kcl-lang.io/
 [kcl-language-server]: https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-language-server
 [kcl-visual-studio-code-extension]: https://www.kcl-lang.io/docs/user_docs/getting-started/install#install-kcl-extensions-for-ide

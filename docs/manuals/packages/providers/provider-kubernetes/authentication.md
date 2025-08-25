@@ -42,8 +42,15 @@ up robot create "provider-kubernetes" --description="Robot used for authenticati
 
 3. Create and store an access token for this robot as an environment variable:
 ```ini
-export UPBOUND_TOKEN=$(up robot token create "provider-kubernetes" "provider-kubernetes-token" --output=-| awk -F': ' '/Token:/ {print $2}')
+export UPBOUND_TOKEN=$(up robot token create "provider-kubernetes" "provider-kubernetes-token" --file - | jq -r '.token')
 ```
+
+:::note
+Follow the [`jq` installation guide][jq-install] if your machine doesn't include
+it by default.
+:::
+
+
 4. Assign the robot [to a team][to-a-team] and use Upbound RBAC to [grant the team a role][grant-the-team-a-role] for permissions.
 </TabItem>
 
@@ -201,6 +208,7 @@ spec:
 
 Read the provider-kubernetes examples for examples of how to configure the provider with other auth mechanisms.
 
+[jq-install]: https://jqlang.org/download/
 [upbound-identity]: /manuals/platform/howtos/oidc
 [upbound-cloud-spaces]: /manuals/spaces/overview
 [upbound-apis]: /manuals/spaces/howtos/self-hosted/gitops/#gitops-for-upbound-resources

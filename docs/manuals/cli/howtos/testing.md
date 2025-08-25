@@ -272,7 +272,7 @@ provider_config = providerconfig.ProviderConfig(
             source="Upbound",
             upbound=providerconfig.Upbound(
                 webIdentity=providerconfig.WebIdentity(
-                    roleARN="arn:aws:iam::609897127049:role/example-project-aws-uptest",
+                    roleARN="arn:aws:iam::123456789:role/example-project-aws-uptest",
                 ),
             ),
         ),
@@ -424,6 +424,11 @@ guide shows you how to [build and push your projects][build-and-push-your-projec
 ### End to End Tests
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_e2etests.yaml" />
+
+### Project Tests
+
+<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
+
 
 <!-- vale on -->
 

@@ -8,6 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Build documentation: `npm run build`
 - Serve built documentation: `npm run serve`
 - Process CRDs: `npm run process-crds`
+- Clear Docusaurus cache: `npm run clear`
+- Deploy documentation: `npm run deploy`
+- Generate translations: `npm run write-translations`
+- Generate heading IDs: `npm run write-heading-ids`
 - Check Vale linting: Clone and run Vale from [upbound/vale](https://github.com/upbound/vale)
 
 ## Style Guidelines
@@ -22,12 +26,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `docs/`: Markdown files for documentation pages
 - `static/images/`: All image files
 - `src/`: React components and custom styling
-- `sidebars.js`: Navigation structure
+- `src/sidebars/main.js`: Navigation structure
 - `docusaurus.config.js`: Site configuration
 - `package.json`: Dependencies and build scripts
+- `content/`: Content templates and utilities
+- `scripts/`: Build and processing scripts
+- `utils/`: Utility functions and helpers
+- `templates/`: Documentation templates
 
 ## Development Notes
 - This is a Docusaurus site, not Hugo
+- Requires Node.js 18.x and npm 9.x
 - Use `npm start` for local development with hot reloading
-- CRDs are processed automatically before building
+- CRDs are processed via script before start/build commands
 - Site uses React components and MDX for enhanced functionality

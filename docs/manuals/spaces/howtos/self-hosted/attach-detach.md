@@ -55,8 +55,13 @@ Create a new robot token and export it to an environment variable called `UPBOUN
 
 ```bash
 up robot create "${UPBOUND_SPACE_NAME}" --description="Robot used for authenticating Space '${UPBOUND_SPACE_NAME}' with Upbound Connect"
-export UPBOUND_TOKEN=$(up robot token create "${UPBOUND_SPACE_NAME}" "${UPBOUND_SPACE_NAME}" --output=-| awk -F': ' '/Token:/ {print $2}')
+export UPBOUND_TOKEN=$(up robot token create "$UPBOUND_SPACE_NAME" "$UPBOUND_SPACE_NAME" --file - | jq -r '.token')
 ```
+
+:::note
+Follow the [`jq` installation guide][jq-install] if your machine doesn't include
+it by default.
+:::
 
 Create a secret containing the robot token:
 
@@ -182,6 +187,6 @@ Only users with editor or administrative permissions can make changes using the 
 [upbound]: /manuals/console/upbound-console
 [organization]: /manuals/platform/concepts/identity-management/organizations
 [query-api]: /manuals/spaces/howtos/self-hosted/query-api
-
+[jq-install]: https://jqlang.org/download/
 
 [upbound-console]: https://console.upbound.io

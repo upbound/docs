@@ -81,8 +81,8 @@ upbound:
   token: <PERSONAL_ACCESS_TOKEN>
 
 spaces:
-  # If your control plane is running in Upbound's GCP Cloud Space, else use upbound-aws-us-east-1.space.mxe.upbound.io
-  host: "upbound-gcp-us-west-1.space.mxe.upbound.io"
+  # If your control plane is running in Upbound's GCP Cloud Space, else use upbound-aws-us-east-1.spaces.upbound.io
+  host: "upbound-gcp-us-west-1.spaces.upbound.io"
   insecureSkipTLSVerify: true
   controlPlane:
     # The name of the control plane you want the Connector to attach to
@@ -180,9 +180,9 @@ upbound:
   token: <PERSONAL_ACCESS_TOKEN>
 
 spaces:
-  # Upbound GCP US-West-1     upbound-gcp-us-west-1.space.mxe.upbound.io
-  # Upbound AWS US-East-1     upbound-aws-us-east-1.space.mxe.upbound.io
-  # Upbound GCP US-Central-1  upbound-gcp-us-central-1.space.mxe.upbound.io
+  # Upbound GCP US-West-1     upbound-gcp-us-west-1.spaces.upbound.io
+  # Upbound AWS US-East-1     upbound-aws-us-east-1.spaces.upbound.io
+  # Upbound GCP US-Central-1  upbound-gcp-us-central-1.spaces.upbound.io
   host: "<Upbound Space Region>"
   insecureSkipTLSVerify: true
   controlPlane:
