@@ -450,5 +450,5 @@ Other workload identity guides are:
 * [Shared Secrets][secrets]
 
 [billing-guide]: /manuals/spaces/howtos/self-hosted/billing
-[backuprestore]: /manauls/spaces/howtos/self-hosted/workload-id/backup-restore-config
+[backuprestore]: /manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config
 [secrets]: /manuals/spaces/howtos/self-hosted/workload-id/eso-config
