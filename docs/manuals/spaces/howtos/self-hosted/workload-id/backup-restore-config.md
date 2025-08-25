@@ -323,7 +323,7 @@ has the correct annotation:
 kubectl get serviceaccount mxp-controller -n ${YOUR_CONTROL_PLANE_NAMESPACE} -o yaml
 ```
 
-Verify the `mxp-controller` pod is running correctly:
+Verify the `mxp-controller` pod is running:
 
 ```shell
 kubectl get pods -n ${YOUR_CONTROL_PLANE_NAMESPACE} | grep mxp-controller
@@ -357,12 +357,13 @@ environment for using GCP workload identity.
 ```shell
 kubectl rollout restart deployment mxp-controller -n ${YOUR_CONTROL_PLANE_NAMESPACE}
 ```
-
+<!-- vale gitlab.HeadingContent = NO -->
 ## Use cases
+<!-- vale gitlab.HeadingContent = YES -->
 
 Configuring backup and restore with workload identity eliminates the need for
 static credentials in your cluster and the overhead of credential rotation.
-These benefits are particularly helpful in:
+These benefits are helpful in:
 
 * Disaster recovery scenarios
 * Control plane migration
@@ -372,4 +373,12 @@ These benefits are particularly helpful in:
 ## Next steps
 
 Now that you have a workload identity configured for the backup and restore
-component, visit the Backup Configuration documentation.
+component, visit the [Backup Configuration][backup-restore-guide] documentation.
+
+Other workload identity guides are:
+* [Billing][billing]
+* [Shared Secrets][secrets]
+
+[backup-restore-guide]: /manuals/spaces/features/backup-and-restore
+[billing]: /manuals/spaces/howtos/self-hosted/workload-id/billing-config
+[secrets]: /manuals/spaces/howtos/self-hosted/workload-id/eso-config

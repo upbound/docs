@@ -59,7 +59,9 @@ To set up a workload-identity, you'll need:
 - Administrator access in your cloud provider
 - Helm and `kubectl`
 
+<!-- vale Google.Headings = NO -->
 ## About the Shared Secrets component
+<!-- vale Google.Headings = YES -->
 
 <CodeBlock cloud="aws">
 
@@ -444,8 +446,9 @@ component restart:
 ```shell
 kubectl rollout restart deployment external-secrets
 ```
-
+<!-- vale gitlab.HeadingContent = NO -->
 ## Use cases
+<!-- vale gitlab.HeadingContent = YES -->
 
 <CodeBlock cloud="aws">
 
@@ -489,8 +492,13 @@ These benefits are particularly helpful in:
 ## Next steps
 
 Now that you have workload identity configured for the shared secrets component, visit
-the Shared Secrets guide for more information.
+the [Shared Secrets][eso-guide] guide for more information.
 
 Other workload identity guides are:
-* Backup and restore 
-* Billing
+* [Backup and restore][backuprestore]
+* [Billing][billing]
+
+
+[eso-guide]: /manuals/spaces/featres/secrets-management
+[backuprestore]: /manauls/spaces/howtos/self-hosted/workload-id/backup-restore-config
+[billing]: /manuals/spaces/howtos/self-hosted/workload-id/billing-config

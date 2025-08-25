@@ -386,7 +386,7 @@ has the correct annotation:
 kubectl get serviceaccount vector -n ${YOUR_CONTROL_PLANE_NAMESPACE} -o yaml
 ```
 
-Verify the `vector` pod is running correctly:
+Verify the `vector` pod is running:
 
 ```shell
 kubectl get pods -n ${YOUR_CONTROL_PLANE_NAMESPACE} | grep vector
@@ -426,11 +426,13 @@ component restart:
 kubectl rollout restart deployment vector
 ```
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Use cases
+<!-- vale gitlab.HeadingContent = YES -->
 
 Using workload identity authentication for billing eliminates the need for static
 credentials in your cluster as well as the overhead of credential rotation.
-These benefits are particularly helpful in:
+These benefits are helpful in:
 
 * Resource usage tracking across teams/projects
 * Cost allocation for multi-tenant environments
@@ -441,4 +443,12 @@ These benefits are particularly helpful in:
 ## Next steps
 
 Now that you have workload identity configured for the billing component, visit
-the Billing guide for more information.
+the [Billing guide][billing-guide] for more information.
+
+Other workload identity guides are:
+* [Backup and restore][backuprestore] 
+* [Shared Secrets][secrets]
+
+[billing-guide]: /manuals/spaces/howtos/self-hosted/billing
+[backuprestore]: /manauls/spaces/howtos/self-hosted/workload-id/backup-restore-config
+[secrets]: /manuals/spaces/howtos/self-hosted/workload-id/eso-config
