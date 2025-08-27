@@ -2,7 +2,12 @@
 title: Control Plane Topologies
 sidebar_position: 15
 description: Configure scheduling of composites to remote control planes
+draft: true
 ---
+
+:::important
+This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
+:::
 
 Upbound's _Control Plane Topology_ feature lets you build and deploy a platform
 of multiple control planes. These control planes work together for a unified platform
