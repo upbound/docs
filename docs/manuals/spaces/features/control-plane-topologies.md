@@ -5,7 +5,7 @@ description: Configure scheduling of composites to remote control planes
 ---
 
 :::important
-This feature is in private preview for select customers in Upbound Cloud Spaces. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
+This feature is in private preview for select customers in Upbound Spaces. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
 :::
 
 Upbound's _Control Plane Topology_ feature lets you build and deploy a platform
@@ -335,7 +335,7 @@ To configure routing resource requests between control planes, you need to deplo
 ### Deploy into a service-level control plane
 
 Package the APIs you build into a Configuration package an deploy it on a
-control plane in an Upbound Cloud Space. In Upbound, it's common to refer to the
+control plane in an Upbound Space. In Upbound, it's common to refer to the
 control plane where the Configuration package is deployed as a **service-level
 control plane**. This control plane runs the controllers that processes the API
 requests and provisions underlying resources. In a later section, you learn how
