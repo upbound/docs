@@ -147,14 +147,23 @@ Choose one of these methods:
 
 **Helm:**
 ```bash
-export UXP_VERSION=<UXP v2 version>
-helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull"
+export UXP_VERSION=2.0.2-up.1                                      
+helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull" 
 ```
+
+:::tip
+To find the most recent version of UXP available, search the Helm repo:
+
+```shell
+helm search repo upbound-stable/crossplane --devel --versions
+```
+:::
 
 **Alternative Helm:**
 ```bash
 helm upgrade crossplane --namespace crossplane-system upbound-stable/universal-crossplane --devel
 ```
+
 
 **up CLI:**
 ```bash
