@@ -2,13 +2,11 @@
 
 > This template includes writing instructions and boilerplate text that you can customize, use as-is, or completely replace with your own text. This text is indicated in {curly brackets}. Make sure you replace the placeholders with your own text.
 
-## Overview
-
 This guide explains how to {insert a brief description of the task}.
 
 {Optional: Specify when and why your user might want to perform the task.}
 
-## Before you start
+## Prerequisites
 
 {This section is optional}
 
