@@ -147,7 +147,7 @@ Choose one of these methods:
 
 **Helm:**
 ```bash
-export UXP_VERSION=2.0.2-up.1                                      
+export UXP_VERSION=2.0.2-up.2                                      
 helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull" 
 ```
 
