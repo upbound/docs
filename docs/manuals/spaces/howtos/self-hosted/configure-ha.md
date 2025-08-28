@@ -39,7 +39,10 @@ In this guide, you will:
 
 ## Spaces architecture
 
-<!--- TODO(tr0njavolta): IMAGE --->
+The basic Spaces workflow follows the pattern below:
+
+
+![Spaces workflow][spaces-workflow]
 
 ## Node architecture
 
@@ -267,10 +270,6 @@ scaling.
    - **Resource monitoring**: Monitor CPU and memory usage
 
 
-The `spaces-router` accesses the control plane in this flow:
-*image*
-<!--- TODO(tr0njavolta):IMAGE spaces-router -> control plane api server --->
-
 
 ### Configure controller scaling
 
@@ -308,10 +307,6 @@ scaling.
 
    **Requirements:**
    - Minimum 400 IOPS performance
-
-The `spaces-router` accesses the Query API in this flow:
-*image*
-<!--- TODO(tr0njavolta):IMAGE spaces-router -> query api server --->
 
 
 ## Monitoring
@@ -417,6 +412,7 @@ Configure alerts for critical scaling and health metrics:
 * [Upbound Spaces deployment requirements][deployment]
 * [Upbound `etcd` scaling resources][scaling]
 
+[spaces-workflow]: /img/up-basic-flow.png
 [rds]: https://aws.amazon.com/rds/postgresql/
 [gke-sql]: https://cloud.google.com/kubernetes-engine/docs/tutorials/stateful-workloads/postgresql
 [aks-sql]: https://learn.microsoft.com/en-us/azure/aks/deploy-postgresql-ha?tabs=azuredisk
