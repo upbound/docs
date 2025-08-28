@@ -35,9 +35,8 @@ For more details, follow our [Upgrade Guide][upgrade] to see how Upbound can enh
 <TabItem value="Helm Install">
 
 ```shell
-export UXP_VERSION=<UXP v2 version>
-helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull"
-
+export UXP_VERSION=2.0.2-up.1                                      
+helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull" 
 ```
 </TabItem>
 
