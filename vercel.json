@@ -1555,6 +1555,11 @@
             "source": "/manuals/marketplace/",
             "destination": "/manuals/marketplace/overview/",
             "permanent": true
+        },
+        {
+            "source": "/guides/intelligent-controllers/intelligent-control-planes(/)?",
+            "destination": "/guides/intelligent-control-planes/",
+            "permanent": true
         }
     ]
 }
