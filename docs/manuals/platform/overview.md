@@ -1,6 +1,6 @@
 ---
 title: Platform Overview 
-sidebar_labe: Overview
+sidebar_label: Overview
 hide_title: true
 sidebar_position: 1
 description: Overview of platform

@@ -53,3 +53,4 @@ bin/
 # Claude Code
 .claude/settings.local.json
 .serena/project.yml
+build
