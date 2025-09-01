@@ -1,9 +1,13 @@
 ---
-title: Overview
+title: Marketplace Overview
 sidebar_position: 1
+sidebar_label: Overview
+hide_title: true
 description: How to use the Upbound Marketplace to discover Crossplane providers and
   packages.
 ---
+
+# Overview
 
 [Upbound Marketplace][upbound-marketplace] simplifies your control plane journey
 with the largest registry for storing, managing, and sharing control plane
