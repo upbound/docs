@@ -27,18 +27,19 @@ If you're already using Crossplane and want to check out Upbound Crossplane
 2.0, you can upgrade an existing Crossplane cluster with Helm or the `up`
 CLI.
 
-:::important
-For more details, follow our [Upgrade Guide][upgrade] to see how Upbound can enhance your existing workflow.
-:::
 <Tabs>
 
 <TabItem value="Helm Install">
 
 ```shell
-export UXP_VERSION=2.0.2-up.1                                      
-helm upgrade --install crossplane --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version "${UXP_VERSION}" --set "upbound.manager.imagePullSecrets[0].name=uxpv2-pull,webui.imagePullSecrets[0].name=uxpv2-pull,apollo.imagePullSecrets[0].name=uxpv2-pull" 
+helm upgrade crossplane --namespace crossplane-system upbound-stable/universal-crossplane --devel
 ```
+:::important
+For more details, follow our [Upgrade Guide][upgrade] to see how Upbound can enhance your existing workflow.
+:::
+
 </TabItem>
+
 
 <TabItem value="Up CLI">
 
