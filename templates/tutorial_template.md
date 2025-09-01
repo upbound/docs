@@ -1,10 +1,15 @@
+<!-- vale off-->
 # Tutorial Template
 
-> This template includes writing instructions and boilerplate text that you can customize, use as-is, or completely replace with your own text. This text is indicated in {curly brackets}. Make sure you replace the placeholders with your own text.
+> This template includes writing instructions and boilerplate text that you can
+> customize, use as-is, or completely replace with your own text. This text is
+> indicated in {curly brackets}. Make sure you replace the placeholders with
+> your own text.
 
-## Overview
 
-In this tutorial, you'll learn how to {insert brief description of the main tutorial task}. This tutorial is intended for {audience}. It assumes you have basic knowledge of:
+In this tutorial, you'll {insert brief description of the main
+tutorial task}. This tutorial is intended for {audience}. It assumes you have
+basic knowledge of:
 
 * Concept 1
 * Concept 2
@@ -18,7 +23,8 @@ By the end of this tutorial, you'll be able to:
 
 ## Background
 
-{This section is optional. Feel free to use some of the text below to help you get started.}
+{This section is optional. Feel free to use some of the text below to help you
+get started.}
 
 * {product} is a {product type} that you can use to {common use case}...
 * {product} provides many of the same features as {competitors}, but with {feature}, you can...
@@ -26,7 +32,8 @@ By the end of this tutorial, you'll be able to:
 
 ## Before you start
 
-{Use this section to tell users about any prerequisites needed before they start the tutorial, such as:
+{Use this section to tell users about any prerequisites needed before they start
+the tutorial, such as:
 
 * Expected prior knowledge.
 * Software or hardware to obtain.
@@ -77,4 +84,4 @@ Consider completing some other common tasks using {feature}:
 * Task 1
 * Task 2
 * Task 3...
----
+<!-- vale on -->

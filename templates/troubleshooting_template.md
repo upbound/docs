@@ -1,14 +1,21 @@
+<!-- vale off -->
 # Troubleshooting Template
 
 {product name, feature, or task}
 
-> This template includes writing instructions and boilerplate text that you can customize, use as-is, or completely replace with your own text. This text is indicated in {curly brackets}. Make sure you replace the placeholders with your own text.
+> This template includes writing instructions and boilerplate text that you can
+> customize, use as-is, or completely replace with your own text. This text is
+> indicated in {curly brackets}. Make sure you replace the placeholders with
+> your own text.
 
-{Briefly describe the scope of the troubleshooting guide in 1-2 sentences. For example, explain if the troubleshooting guide covers the full scope of the product or a specific task or feature.}
+{Briefly describe the scope of the troubleshooting guide in 1-2 sentences. For
+example, explain if the troubleshooting guide covers the full scope of the
+product or a specific task or feature.}
 
 ## Symptom 1
 
-{Describe the symptom here. For example, give the text of the error message or describe the performance issue the user might experience.}
+{Describe the symptom here. For example, give the text of the error message or
+describe the performance issue the user might experience.}
 
 ### Cause 1 of symptom 1
 
@@ -31,9 +38,10 @@
 
 ### For more information
 
-{Add links to other sources could also aid the user in solving the issue they have with your product, task, or feature}
+{Add links to other sources could also aid the user in solving the issue they
+have with your product, task, or feature}
 
 * [Link](https://example.com/article1.html)
 * [Link](https://example.com/article2.html)
 * [Link](https://example.com/article3.html)
-
+<!-- vale on -->
