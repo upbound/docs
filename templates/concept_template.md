@@ -1,10 +1,10 @@
+<!-- vale off-->
 # Concept template
 
 > This template includes writing instructions and boilerplate text that you can customize, use as-is, or completely replace with your own text. This text is indicated in {curly brackets}. Make sure you replace the placeholders with your own text.
 
 A summary paragraph introducing a concept, explaining its importance or
-relevance, and providing an overview of the content that will be covered
-in the document (scope).
+relevance, and providing an overview of the content in the document (scope).
 
 Typical wording to use is:
 
@@ -77,9 +77,11 @@ Table: {Table title which concisely explains the comparison.}
 
 ## (Optional) Related resources
 
-{Use this section to provide links to documentation related to the concept that the user can read for more information.
-If you can name this section manually (it is not generated automatically or has a heading pre-agreed within a team),
-we recommend to use "Related concepts" or "Additional information" as more descriptive ones.}
+{Use this section to provide links to documentation related to the concept that
+the user can read for more information. If you can name this section manually
+(it is not generated automatically or has a heading pre-agreed within a team),
+we recommend to use "Related concepts" or "Additional information" as more
+descriptive ones.}
 
 If you would like to dive deeper or start implementing {concept},
 check out the following resources:
@@ -101,4 +103,5 @@ External resources
 1. Resource 1
 
 2. Resource 2
----
+
+<!-- vale on -->

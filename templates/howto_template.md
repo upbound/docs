@@ -1,6 +1,10 @@
+<!-- vale off-->
 # How-to Template
 
-> This template includes writing instructions and boilerplate text that you can customize, use as-is, or completely replace with your own text. This text is indicated in {curly brackets}. Make sure you replace the placeholders with your own text.
+> This template includes writing instructions and boilerplate text that you can
+> customize, use as-is, or completely replace with your own text. This text is
+> indicated in {curly brackets}. Make sure you replace the placeholders with
+> your own text.
 
 This guide explains how to {insert a brief description of the task}.
 
@@ -18,7 +22,8 @@ Before you {insert a brief description of the task}, ensure:
 
 ## {Task name }
 
-{Optional: Provide a concise description of the purpose of this task. Only include this if the purpose is not clear from the task title.}
+{Optional: Provide a concise description of the purpose of this task. Only
+include this if the purpose is not clear from the task title.}
 
 {You can use this format to describe your steps:}
 
@@ -44,9 +49,11 @@ Before you {insert a brief description of the task}, ensure:
 
 ## See also
 
-{Include references and/or links to other related documentation such as other how-to guides, conceptual topics, troubleshooting information, and limitation details if any.
+{Include references and/or links to other related documentation such as other
+how-to guides, conceptual topics, troubleshooting information, and limitation
+details if any.
 
 * Reference link
 * Concept link
 * Troubleshooting link}
----
+<!-- vale on -->
