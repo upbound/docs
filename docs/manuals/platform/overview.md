@@ -1,8 +1,12 @@
 ---
-title: Overview 
+title: Platform Overview 
+sidebar_labe: Overview
+hide_title: true
 sidebar_position: 1
 description: Overview of platform
 ---
+
+# Overview
 
 This section covers identity management, access control, and other
 administrative features that allow you to configure team and organizational
