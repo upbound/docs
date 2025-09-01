@@ -1,10 +1,13 @@
 ---
-title: Overview
+title: Packages Overview
 sidebar_position: 1
 description: Product documentation for the Official Packages offered by Upbound.
+sidebar_label: Overview
+hide_title: true
 ---
 
-## Package types
+# Overview
+
 Crossplane supports these package types: `Configurations`, `Functions` and `Providers`.
 
 * **`Configuration`** packages combine Crossplane _Composite Resource Definitions_, _Compositions_ and metadata.

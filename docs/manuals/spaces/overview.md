@@ -1,8 +1,11 @@
 ---
-title: Overview 
+title: Spaces Overview 
+sidebar_label: Overview
+hide_title: true
 sidebar_position: 1
 description: Spaces are a host environment in Upbound for control planes-as-a-service
 ---
+# Overview
 
 <Standard />
 
