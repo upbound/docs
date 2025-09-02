@@ -186,6 +186,7 @@ export default function GlobalLanguageSelector() {
 }
 
 // Simple content wrapper that auto-registers its options
+// FIXED: Removed the code-block wrapper that was causing formatting issues
 export function CodeBlock({ cloud, language, version, children }) {
   const { 
     selectedLanguage, 
