@@ -59,6 +59,16 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
+            head: [
+                [
+                    "meta",
+                    {
+                        property: "og:image",
+                        content: "img/up-logo.png",
+                    },
+                ],
+            ],
+            image: "img/up-logo.png",
             navbar: {
                 title: "",
                 logo: {

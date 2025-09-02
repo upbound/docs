@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
 import {
     ChevronRight,
     Zap,
@@ -43,8 +44,7 @@ const LandingPage = () => {
         {
             id: "manuals",
             title: "Manuals",
-            description:
-                "Comprehensive documentation for Upbound Crossplane",
+            description: "Comprehensive documentation for Upbound Crossplane",
             icon: <Settings className="w-8 h-8" />,
             items: [
                 "Install, configure, and manage Upbound",
@@ -167,12 +167,10 @@ const LandingPage = () => {
                                 </div>
                                 <div className="terminal-line terminal-output">
                                     {" "}
-                                    💻 Local dev control plane running in kind
-                                    cluster "my-webapp".
+                                    💻 Local dev control plane running in kind cluster "my-webapp".
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    🌐 WebUI endpoint:
-                                    http://127-0-0-1.nip.io:59244
+                                    🌐 WebUI endpoint: http://127-0-0-1.nip.io:59244
                                 </div>
 
                                 <div className="terminal-line terminal-output"></div>
@@ -279,14 +277,30 @@ const LandingPage = () => {
 
 export default function Home() {
     return (
-        <Layout
-            title="Upbound Documentation"
-            description="Guide your internal cloud platform journey with Upbound Crossplane"
-            noFooter={false}
-        >
-            <main>
-                <LandingPage />
-            </main>
-        </Layout>
+        <>
+            <Head>
+                <meta
+                    property="og:image"
+                    content="https://docs.upbound.io/img/up-logo.png"
+                />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/png" />
+                <meta
+                    name="twitter:image"
+                    content="https://docs.upbound.io/img/up-logo.png"
+                />
+                <meta name="twitter:card" content="summary_large_image" />
+            </Head>
+            <Layout
+                title="Welcome"
+                description="Guide your internal cloud platform journey with Upbound Crossplane"
+                noFooter={false}
+            >
+                <main>
+                    <LandingPage />
+                </main>
+            </Layout>
+        </>
     );
 }
