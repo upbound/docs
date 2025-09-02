@@ -10,6 +10,9 @@ export function LanguageProvider({ children }) {
   const [availableLanguages, setAvailableLanguages] = useState(new Set());
   const [availableClouds, setAvailableClouds] = useState(new Set());
   const [availableVersions, setAvailableVersions] = useState(new Set());
+  const [hasLanguageContent, setHasLanguageContent] = useState(false);
+  const [hasCloudContent, setHasCloudContent] = useState(false);
+  const [hasVersionContent, setHasVersionContent] = useState(false);
 
   useEffect(() => {
     const savedLang = localStorage.getItem('selected-language') || 'kcl';
@@ -62,14 +65,17 @@ export function LanguageProvider({ children }) {
 
   const registerLanguage = (language) => {
     setAvailableLanguages(prev => new Set([...prev, language]));
+    setHasLanguageContent(true);
   };
 
   const registerCloud = (cloud) => {
     setAvailableClouds(prev => new Set([...prev, cloud]));
+    setHasCloudContent(true);
   };
 
   const registerVersion = (version) => {
     setAvailableVersions(prev => new Set([...prev, version]));
+    setHasVersionContent(true);
   };
 
   return (
@@ -80,6 +86,9 @@ export function LanguageProvider({ children }) {
       availableLanguages,
       availableClouds,
       availableVersions,
+      hasLanguageContent,
+      hasCloudContent,
+      hasVersionContent,
       updateLanguage,
       updateCloud,
       updateVersion,
@@ -105,20 +114,23 @@ export default function GlobalLanguageSelector() {
     availableLanguages,
     availableClouds,
     availableVersions,
+    hasLanguageContent,
+    hasCloudContent,
+    hasVersionContent,
     updateLanguage, 
     updateCloud,
     updateVersion
   } = useLanguageContext();
 
   // Don't show if no options available
-  if (availableLanguages.size === 0 && availableClouds.size === 0 && availableVersions.size === 0) {
+  if (!hasLanguageContent && !hasCloudContent && !hasVersionContent) {
     return null;
   }
 
   return (
     <div className="global-language-selector">
       <div className="selector-controls">
-        {availableClouds.size > 0 && (
+        {hasCloudContent && availableClouds.size > 0 && (
           <div className="selector-group">
             <label>Cloud Provider:</label>
             <select 
@@ -135,7 +147,7 @@ export default function GlobalLanguageSelector() {
           </div>
         )}
         
-        {availableLanguages.size > 0 && (
+        {hasLanguageContent && availableLanguages.size > 0 && (
           <div className="selector-group">
             <label>Language:</label>
             <select 
@@ -152,7 +164,7 @@ export default function GlobalLanguageSelector() {
           </div>
         )}
 
-        {availableVersions.size > 0 && (
+        {hasVersionContent && availableVersions.size > 0 && (
           <div className="selector-group">
             <label>Version:</label>
             <select 
