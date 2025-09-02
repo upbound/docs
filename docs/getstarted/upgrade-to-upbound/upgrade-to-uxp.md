@@ -3,6 +3,23 @@ title: Upgrade to Upbound Crossplane
 description: Adopt Upbound Crossplane from OSS Crossplane
 sidebar_position: 2
 ---
+import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+
+<GlobalLanguageSelector />
+
+
+## Upgrade paths
+<CodeBlock version="v1">
+<!-- Do not add headers inside these blocks, they will appear in right-side TOC -->
+<!-- regardless of if it's the selected option. -->
+V1 -> UXP path
+</CodeBlock>
+
+
+<CodeBlock version="v2">
+V2 -> UXP path
+</CodeBlock>
+
 
 Upbound Crossplane (UXP) is the AI-native distribution of Crossplane by Upbound.
 UXP is based on Crossplane v2.0 and fully compatible with upstream Crossplane.
