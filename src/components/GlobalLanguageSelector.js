@@ -23,7 +23,7 @@ export function LanguageProvider({ children }) {
     setSelectedVersion(savedVersion);
   }, []);
 
-  // Reset content flags when children change
+  // Clear state on mount to handle page navigation
   useEffect(() => {
     setHasLanguageContent(false);
     setHasCloudContent(false);
@@ -31,7 +31,7 @@ export function LanguageProvider({ children }) {
     setAvailableLanguages(new Set());
     setAvailableClouds(new Set());
     setAvailableVersions(new Set());
-  }, [children]);
+  }, []);
 
   // Auto-select first available if current selection isn't available
   useEffect(() => {
