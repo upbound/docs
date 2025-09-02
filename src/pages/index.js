@@ -43,8 +43,7 @@ const LandingPage = () => {
         {
             id: "manuals",
             title: "Manuals",
-            description:
-                "Comprehensive documentation for Upbound Crossplane",
+            description: "Comprehensive documentation for Upbound Crossplane",
             icon: <Settings className="w-8 h-8" />,
             items: [
                 "Install, configure, and manage Upbound",
@@ -163,7 +162,8 @@ const LandingPage = () => {
                                     ✓ Created control plane project
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    $ cd my-webapp && up project run --local --ingress
+                                    $ cd my-webapp && up project run --local
+                                    --ingress
                                 </div>
                                 <div className="terminal-line terminal-output">
                                     {" "}
@@ -279,14 +279,30 @@ const LandingPage = () => {
 
 export default function Home() {
     return (
-        <Layout
-            title="Upbound Documentation"
-            description="Guide your internal cloud platform journey with Upbound Crossplane"
-            noFooter={false}
-        >
-            <main>
-                <LandingPage />
-            </main>
-        </Layout>
+        <>
+            <Head>
+                <meta
+                    property="og:image"
+                    content="https://docs.upbound.io/img/up-logo.png"
+                />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
+                <meta property="og:image:type" content="image/png" />
+                <meta
+                    name="twitter:image"
+                    content="https://docs.upbound.io/img/up-logo.png"
+                />
+                <meta name="twitter:card" content="summary_large_image" />
+            </Head>
+            <Layout
+                title="Welcome"
+                description="Guide your internal cloud platform journey with Upbound Crossplane"
+                noFooter={false}
+            >
+                <main>
+                    <LandingPage />
+                </main>
+            </Layout>
+        </>
     );
 }
