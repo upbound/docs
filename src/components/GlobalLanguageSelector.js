@@ -23,6 +23,16 @@ export function LanguageProvider({ children }) {
     setSelectedVersion(savedVersion);
   }, []);
 
+  // Reset content flags when children change
+  useEffect(() => {
+    setHasLanguageContent(false);
+    setHasCloudContent(false);
+    setHasVersionContent(false);
+    setAvailableLanguages(new Set());
+    setAvailableClouds(new Set());
+    setAvailableVersions(new Set());
+  }, [children]);
+
   // Auto-select first available if current selection isn't available
   useEffect(() => {
     if (availableLanguages.size > 1 && !availableLanguages.has(selectedLanguage)) {
@@ -186,7 +196,6 @@ export default function GlobalLanguageSelector() {
 }
 
 // Simple content wrapper that auto-registers its options
-// FIXED: Removed the code-block wrapper that was causing formatting issues
 export function CodeBlock({ cloud, language, version, children }) {
   const { 
     selectedLanguage, 
