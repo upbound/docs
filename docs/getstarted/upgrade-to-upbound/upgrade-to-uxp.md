@@ -3,6 +3,21 @@ title: Upgrade to Upbound Crossplane
 description: Adopt Upbound Crossplane from OSS Crossplane
 sidebar_position: 2
 ---
+import VersionSelector from '@site/src/components/VersionSelector';
+
+<VersionSelector />
+
+<VersionSelector version="v1">
+
+V1 content
+
+</VersionSelector>
+
+<VersionSelector version="v2">
+
+V2 content
+
+</VersionSelector>
 
 Upbound Crossplane (UXP) is the AI-native distribution of Crossplane by Upbound.
 UXP is based on Crossplane v2.0 and fully compatible with upstream Crossplane.
