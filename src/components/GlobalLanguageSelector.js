@@ -7,11 +7,18 @@ export function LanguageProvider({ children }) {
   const [selectedLanguage, setSelectedLanguage] = useState('kcl');
   const [selectedCloud, setSelectedCloud] = useState('aws');
   const [selectedVersion, setSelectedVersion] = useState('v1');
-  const [availableLanguages, setAvailableLanguages] = useState(new Set());
-  const [availableClouds, setAvailableClouds] = useState(new Set());
-  const [availableVersions, setAvailableVersions] = useState(new Set());
   
-  const registrationTimeoutRef = useRef(null);
+  // Track active registrations using refs (cleared each render)
+  const activeLanguages = useRef(new Set());
+  const activeClouds = useRef(new Set());
+  const activeVersions = useRef(new Set());
+  const hasActiveLanguage = useRef(false);
+  const hasActiveCloud = useRef(false);
+  const hasActiveVersion = useRef(false);
+  
+  // Force re-render when registrations change
+  const [, forceUpdate] = useState({});
+  const triggerUpdate = () => forceUpdate({});
 
   useEffect(() => {
     const savedLang = localStorage.getItem('selected-language') || 'kcl';
@@ -24,28 +31,28 @@ export function LanguageProvider({ children }) {
 
   // Auto-select first available if current selection isn't available
   useEffect(() => {
-    if (availableLanguages.size > 1 && !availableLanguages.has(selectedLanguage)) {
-      const firstLang = Array.from(availableLanguages)[0];
+    if (activeLanguages.current.size > 1 && !activeLanguages.current.has(selectedLanguage)) {
+      const firstLang = Array.from(activeLanguages.current)[0];
       setSelectedLanguage(firstLang);
       localStorage.setItem('selected-language', firstLang);
     }
-  }, [availableLanguages, selectedLanguage]);
+  }, [selectedLanguage]);
 
   useEffect(() => {
-    if (availableClouds.size > 1 && !availableClouds.has(selectedCloud)) {
-      const firstCloud = Array.from(availableClouds)[0];
+    if (activeClouds.current.size > 1 && !activeClouds.current.has(selectedCloud)) {
+      const firstCloud = Array.from(activeClouds.current)[0];
       setSelectedCloud(firstCloud);
       localStorage.setItem('selected-cloud', firstCloud);
     }
-  }, [availableClouds, selectedCloud]);
+  }, [selectedCloud]);
 
   useEffect(() => {
-    if (availableVersions.size > 1 && !availableVersions.has(selectedVersion)) {
-      const firstVersion = Array.from(availableVersions)[0];
+    if (activeVersions.current.size > 1 && !activeVersions.current.has(selectedVersion)) {
+      const firstVersion = Array.from(activeVersions.current)[0];
       setSelectedVersion(firstVersion);
       localStorage.setItem('selected-version', firstVersion);
     }
-  }, [availableVersions, selectedVersion]);
+  }, [selectedVersion]);
 
   const updateLanguage = (language) => {
     setSelectedLanguage(language);
@@ -62,60 +69,50 @@ export function LanguageProvider({ children }) {
     localStorage.setItem('selected-version', version);
   };
 
-  // Clear and rebuild registrations
-  const clearRegistrations = () => {
-    if (registrationTimeoutRef.current) {
-      clearTimeout(registrationTimeoutRef.current);
-    }
-    
-    setAvailableLanguages(new Set());
-    setAvailableClouds(new Set());
-    setAvailableVersions(new Set());
-  };
-
+  // Registration functions that track active content
   const registerLanguage = (language) => {
-    setAvailableLanguages(prev => new Set([...prev, language]));
+    activeLanguages.current.add(language);
+    hasActiveLanguage.current = true;
+    triggerUpdate();
   };
 
   const registerCloud = (cloud) => {
-    setAvailableClouds(prev => new Set([...prev, cloud]));
+    activeClouds.current.add(cloud);
+    hasActiveCloud.current = true;
+    triggerUpdate();
   };
 
   const registerVersion = (version) => {
-    setAvailableVersions(prev => new Set([...prev, version]));
+    activeVersions.current.add(version);
+    hasActiveVersion.current = true;
+    triggerUpdate();
   };
 
-  // Clear registrations when children change
-  useEffect(() => {
-    clearRegistrations();
-    
-    // Small delay to allow re-registration
-    registrationTimeoutRef.current = setTimeout(() => {
-      // This timeout allows CodeBlocks to re-register
-    }, 1);
-
-    return () => {
-      if (registrationTimeoutRef.current) {
-        clearTimeout(registrationTimeoutRef.current);
-      }
-    };
-  }, [children]);
+  // Clear registrations at start of each render
+  activeLanguages.current.clear();
+  activeClouds.current.clear();
+  activeVersions.current.clear();
+  hasActiveLanguage.current = false;
+  hasActiveCloud.current = false;
+  hasActiveVersion.current = false;
 
   return (
     <LanguageContext.Provider value={{
       selectedLanguage,
       selectedCloud,
       selectedVersion,
-      availableLanguages,
-      availableClouds,
-      availableVersions,
+      availableLanguages: activeLanguages.current,
+      availableClouds: activeClouds.current,
+      availableVersions: activeVersions.current,
+      hasActiveLanguage: hasActiveLanguage.current,
+      hasActiveCloud: hasActiveCloud.current,
+      hasActiveVersion: hasActiveVersion.current,
       updateLanguage,
       updateCloud,
       updateVersion,
       registerLanguage,
       registerCloud,
-      registerVersion,
-      clearRegistrations
+      registerVersion
     }}>
       {children}
     </LanguageContext.Provider>
@@ -132,6 +129,9 @@ export default function GlobalLanguageSelector() {
     selectedLanguage, 
     selectedCloud, 
     selectedVersion,
+    hasActiveLanguage,
+    hasActiveCloud,
+    hasActiveVersion,
     availableLanguages,
     availableClouds,
     availableVersions,
@@ -141,14 +141,14 @@ export default function GlobalLanguageSelector() {
   } = useLanguageContext();
 
   // Don't show if no options available
-  if (availableLanguages.size === 0 && availableClouds.size === 0 && availableVersions.size === 0) {
+  if (!hasActiveLanguage && !hasActiveCloud && !hasActiveVersion) {
     return null;
   }
 
   return (
     <div className="global-language-selector">
       <div className="selector-controls">
-        {availableClouds.size > 0 && (
+        {hasActiveCloud && (
           <div className="selector-group">
             <label>Cloud Provider:</label>
             <select 
@@ -165,7 +165,7 @@ export default function GlobalLanguageSelector() {
           </div>
         )}
         
-        {availableLanguages.size > 0 && (
+        {hasActiveLanguage && (
           <div className="selector-group">
             <label>Language:</label>
             <select 
@@ -182,7 +182,7 @@ export default function GlobalLanguageSelector() {
           </div>
         )}
 
-        {availableVersions.size > 0 && (
+        {hasActiveVersion && (
           <div className="selector-group">
             <label>Version:</label>
             <select 
@@ -214,12 +214,10 @@ export function CodeBlock({ cloud, language, version, children }) {
     registerVersion 
   } = useLanguageContext();
   
-  // Register this content's options - ONLY register what's explicitly provided
-  useEffect(() => {
-    if (language !== undefined) registerLanguage(language);
-    if (cloud !== undefined) registerCloud(cloud);
-    if (version !== undefined) registerVersion(version);
-  }, [language, cloud, version, registerLanguage, registerCloud, registerVersion]);
+  // Register this content's options on every render
+  if (language !== undefined) registerLanguage(language);
+  if (cloud !== undefined) registerCloud(cloud);
+  if (version !== undefined) registerVersion(version);
   
   const shouldShow = (cloud === undefined || cloud === selectedCloud) && 
                     (language === undefined || language === selectedLanguage) &&
