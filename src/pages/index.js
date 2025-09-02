@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Layout from "@theme/Layout";
+import Head from "@docusaurus/Head";
 import {
     ChevronRight,
     Zap,
@@ -162,17 +163,14 @@ const LandingPage = () => {
                                     ✓ Created control plane project
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    $ cd my-webapp && up project run --local
-                                    --ingress
+                                    $ cd my-webapp && up project run --local --ingress
                                 </div>
                                 <div className="terminal-line terminal-output">
                                     {" "}
-                                    💻 Local dev control plane running in kind
-                                    cluster "my-webapp".
+                                    💻 Local dev control plane running in kind cluster "my-webapp".
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    🌐 WebUI endpoint:
-                                    http://127-0-0-1.nip.io:59244
+                                    🌐 WebUI endpoint: http://127-0-0-1.nip.io:59244
                                 </div>
 
                                 <div className="terminal-line terminal-output"></div>
