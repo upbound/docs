@@ -83,7 +83,7 @@ support][upbound-support] to transfer organization ownership.
 [upbound-support]: /reference/usage/support
 
 [account-settings]: https://accounts.upbound.io/settings
-[upbound-registration-page]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_iam
+[upbound-registration-page]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_iam
 [upbound-marketplace]: http://marketplace.upbound.io
 [accounts-upbound-io]: https://accounts.upbound.io
 [delete-account]: https://accounts.upbound.io/settings/delete

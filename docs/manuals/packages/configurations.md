@@ -43,5 +43,5 @@ page][policies-page] on access, support and more.
 [policies-page]: /manuals/packages/policies
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/configurations
-[account-on-upbound]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_configurations
+[account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_configurations
 [this-query]: https://marketplace.upbound.io/configurations

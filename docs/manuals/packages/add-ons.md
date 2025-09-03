@@ -33,6 +33,6 @@ Upbound publishes and maintains Add-Ons.
 
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/addons?tier=official
-[account-on-upbound]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_packages
+[account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_packages
 [this-query]: https://marketplace.upbound.io/addons?tier=official
 [add-ons-concept]: /manuals/uxp/concepts/packages/add-ons
