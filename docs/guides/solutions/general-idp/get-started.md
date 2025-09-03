@@ -158,7 +158,7 @@ Once everything gets fully provisioned, visit the development portal for your pl
 To clean up the platform, delete the root `Application` from the bootstrap control plane, then delete all the `XEnvironments` from the bootstrap control plane.
 
 [taskfile]: https://taskfile.dev/
-[registerAccount]: https://accounts.upbound.io/register
+[registerAccount]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_idp
 [awsCreds]: https://docs.aws.amazon.com/sdkref/latest/guide/feature-static-credentials.html
 [design]: /solutions/general-idp/design
 [upCli]: /manuals/cli/overview

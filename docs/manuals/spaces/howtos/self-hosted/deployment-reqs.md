@@ -316,7 +316,7 @@ backend and that the secret used is the mxp-hostcluster-certs secret.
 [aws-eks]: https://aws.amazon.com/eks/
 [google-cloud-gke]: https://cloud.google.com/kubernetes-engine
 [microsoft-aks]: https://azure.microsoft.com/en-us/products/kubernetes-service
-[upbound-account]: https://www.upbound.io/register
+[upbound-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_spaces
 [provider-aws-ec2]: https://marketplace.upbound.io/providers/upbound/provider-aws-ec2
 [provider-aws-s3]: https://marketplace.upbound.io/providers/upbound/provider-aws-s3
 [provider-aws-iam]: https://marketplace.upbound.io/providers/upbound/provider-aws-iam

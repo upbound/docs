@@ -32,5 +32,5 @@ The main branch version releases of the Upbound Official Functions are available
 [policies-page]: /manuals/packages/policies
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/functions?tier=official
-[account-on-upbound]: https://accounts.upbound.io/register
+[account-on-upbound]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_functions 
 [this-query]: https://marketplace.upbound.io/functions?tier=official

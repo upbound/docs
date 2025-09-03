@@ -44,5 +44,5 @@ The latest versions of the Upbound Official Providers are available for use by a
 
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [provider-family-aws]: https://github.com/crossplane-contrib/provider-upjet-aws
-[account-on-upbound]: https://accounts.upbound.io/register
+[account-on-upbound]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_providers
 [this-query]: https://marketplace.upbound.io/providers?tier=official

@@ -100,7 +100,7 @@ connects with the service, and manages the lifecycle on your behalf.
 <!-- vale gitlab.SentenceLength = YES -->
 [upgrade]: /getstarted/upgrade-to-upbound/upgrade-to-uxp
 [guides]: /guides
-[register]: https://accounts.upbound.io/register
+[register]:https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started 
 [up]: /manuals/cli/overview
 [pricing]: https://upbound.io/pricing
 [intro]: /getstarted/introduction/project
