@@ -1,10 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Global state (safe for SSR)
 let globalSelectedVersion = 'v1';
 let globalAvailableVersions = new Set();
-let globalUpdateCallbacks = new Set();
 let globalInitialized = false;
+let globalUpdateCallbacks = new Set();
+
+// Create the context
+const VersionContext = createContext();
+
+// Create a provider component
+export function VersionProvider({ children }) {
+  const [selectedVersion, setSelectedVersion] = useState('v1');
+  const [availableVersions, setAvailableVersions] = useState(new Set());
+  const [initialized, setInitialized] = useState(false);
+
+  return (
+    <VersionContext.Provider 
+      value={{ 
+        selectedVersion, 
+        setSelectedVersion,
+        availableVersions, 
+        setAvailableVersions,
+        initialized,
+        setInitialized
+      }}
+    >
+      {children}
+    </VersionContext.Provider>
+  );
+}
+
+// Custom hook to use the version context
+export function useVersionContext() {
+  return useContext(VersionContext);
+}
+
 
 const initializeFromStorage = () => {
   if (typeof window !== 'undefined' && !globalInitialized) {
