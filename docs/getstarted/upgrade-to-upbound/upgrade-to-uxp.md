@@ -1,5 +1,5 @@
 ---
-title: Upgrade Crossplane 1.X to Upbound Crossplane
+title: Upgrade Crossplane v2 to Upbound Crossplane
 description: Adopt Upbound Crossplane from OSS Crossplane
 sidebar_position: 2
 ---
