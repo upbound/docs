@@ -242,4 +242,3 @@ A CVE will be considered addressed when a new version of the provider with the f
 [provider-family-aws]: https://marketplace.upbound.io/providers/upbound/provider-family-aws
 [common-vulnerabilities-and-exposures]: https://nvd.nist.gov/general/cve-process
 [common-vulnerability-scoring-system-version-3]: https://nvd.nist.gov/vuln-metrics/cvss
-
