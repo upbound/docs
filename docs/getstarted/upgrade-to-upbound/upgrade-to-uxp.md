@@ -57,7 +57,7 @@ Before you begin, make sure you have:
 Before you begin, make sure you have:
 
 * An actively supported [Kubernetes version](https://kubernetes.io/releases/patch-releases/#support-period)
-* an existing OSS Crossplane v2.0.2
+* An existing OSS Crossplane v2.0.2 installation
 * `kubectl` configured to access your cluster
 * Helm version `v3.2.0` or later
 * Cluster admin permissions
