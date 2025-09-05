@@ -1,10 +1,15 @@
 ---
 title: Deployment Requirements
 sidebar_position: 2
-description: A guide for deploying an Upbound Space in production
+description: Deploy a Space in your production environment.
 ---
 
-You need a Kubernetes cluster as the hosting environment to run Spaces. You can install Spaces into any Kubernetes cluster, version v1.25 or later. Upbound validates the Spaces software runs on [AWS EKS][aws-eks], [Google Cloud GKE][google-cloud-gke], and [Microsoft AKS][microsoft-aks]. Upbound recommends dedicating the Kubernetes cluster for the express purpose of running Spaces as its sole workload.
+You need a Kubernetes cluster as the hosting environment to run Spaces. You can
+install Spaces into any Kubernetes cluster, version v1.25 or later. Upbound
+validates the Spaces software runs on [AWS EKS][aws-eks], [Google Cloud
+GKE][google-cloud-gke], and [Microsoft AKS][microsoft-aks]. Upbound recommends
+dedicating the Kubernetes cluster for the express purpose of running Spaces as
+its sole workload.
 
 ## Deployment requirements
 
@@ -18,7 +23,11 @@ This guide helps you think through all steps needed to deploy Spaces for product
 
 ## Sizing a Space
 
-In a Space, the control planes you create get scheduled as pods across the cluster's node pools. The hyper scale cloud providers each offer managed Kubernetes services that can support hundreds of nodes in their node pools. That means the number of control planes you can run in a single Space is on the order hundreds--if not more.
+In a Space, the control planes you create get scheduled as pods across the
+cluster's node pools. The hyper scale cloud providers each offer managed
+Kubernetes services that can support hundreds of nodes in their node pools. That
+means the number of control planes you can run in a single Space is on the order
+hundreds--if not more.
 
 Rightsizing a Space for a production deployment depends on several factors:
 
@@ -30,7 +39,9 @@ Rightsizing a Space for a production deployment depends on several factors:
 
 #### Control plane empty state memory usage
 
-An idle, empty control plane consumes about 640 MB of memory. This encompasses the set of pods that constitute a control plane and which get deployed for each control plane instance.
+An idle, empty control plane consumes about 640 MB of memory. This encompasses
+the set of pods that constitute a control plane and which get deployed for each
+control plane instance.
 
 #### Managed resource memory usage
 
@@ -38,7 +49,13 @@ In Upbound's testing, memory usage isn't influenced a lot by the number of manag
 
 #### Provider memory usage
 
-When you install a Crossplane provider on a control plane, memory gets consumed according to the number of custom resources it defines. Upbound [Official Provider families][official-provider-families] provide higher fidelity control to platform teams to install providers for only the resources they need, reducing the bloat of needlessly installing unused custom resources. Still, you must factor provider memory usage into your calculations to ensure you've rightsized the memory available in your Spaces cluster.
+When you install a Crossplane provider on a control plane, memory gets consumed
+according to the number of custom resources it defines. Upbound [Official
+Provider families][official-provider-families] provide higher fidelity control
+to platform teams to install providers for only the resources they need,
+reducing the bloat of needlessly installing unused custom resources. Still, you
+must factor provider memory usage into your calculations to ensure you've
+rightsized the memory available in your Spaces cluster.
 
 :::important
 Be careful not to conflate `managed resource` with `custom resource definition`. The former is an "instance" of an external resource in Crossplane, while the latter defines the API schema of that resource.
@@ -72,7 +89,9 @@ Do this calculation for each provider you plan to install on your control plane.
 Add the memory usage from the previous sections. Given the preceding examples, they result in a recommendation to budget ~1 GB memory for each control plane you plan to run in the Space.
 
 :::important
-The 1 GB number mentioned above is derived from the numbers used in the examples above. You should input your own provider requirements to arrive at a final number for your own deployment.
+
+The 1 GB recommendation is an example.
+You should input your own provider requirements to arrive at a final number for your own deployment.
 :::
 
 ### CPU considerations
