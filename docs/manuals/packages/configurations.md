@@ -26,7 +26,7 @@ Crossplane experience.
 ## Configurations list
 
 <!-- vale Microsoft.Adverbs = NO -->
-Upbound is continually adding new configurations to the ever growing list of
+Upbound adds new configurations to the ever growing list of
 Configurations. For a complete list of available Configurations, use [this
 query][this-query] in the Marketplace. <!-- vale Microsoft.Adverbs = YES -->
 
@@ -43,5 +43,5 @@ page][policies-page] on access, support and more.
 [policies-page]: /manuals/packages/policies
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/configurations
-[account-on-upbound]: https://accounts.upbound.io/register
+[account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_configurations
 [this-query]: https://marketplace.upbound.io/configurations

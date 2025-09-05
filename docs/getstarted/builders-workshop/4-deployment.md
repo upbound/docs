@@ -274,7 +274,8 @@ For more information on projects and how to build control planes, checkout the [
 Build][build] manuals.
 
 
-[up-account]: https://www.upbound.io/register/
+[up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started
+
 [project-foundations]: /getstarted/builders-workshop/project-foundations
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/

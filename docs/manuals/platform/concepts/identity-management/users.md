@@ -22,7 +22,7 @@ The [Account Settings][account-settings] screen allows you to change your passwo
 <!-- vale gitlab.Substitutions = NO -->
 <!-- allow lowercase kubernetes in the URL -->
 :::warning
-_API Tokens_ are used to log in with the [Up command-line][up-command-line]. This token can't be used as a [Kubernetes image pull secret][kubernetes-image-pull-secret]
+You use API Tokens to log in with the [Up command-line][up-command-line]. You can't use this token as a [Kubernetes image pull secret][kubernetes-image-pull-secret]
 :::
 <!-- vale gitlab.Substitutions = YES -->
 
@@ -59,7 +59,7 @@ After submitting your pin your account is now ready.
 
 <!-- ![A screen showing that an Upbound account has been created](/img/account_ready.png) -->
 
-Clicking `Finish` will send you to the [Upbound Marketplace][upbound-marketplace].
+Clicking `Finish` sends you to the [Upbound Marketplace][upbound-marketplace].
 
 To make changes to your account login to [accounts.upbound.io][accounts-upbound-io]
 <!-- vale Google.Headings = YES -->
@@ -83,7 +83,7 @@ support][upbound-support] to transfer organization ownership.
 [upbound-support]: /reference/usage/support
 
 [account-settings]: https://accounts.upbound.io/settings
-[upbound-registration-page]: http://accounts.upbound.io/register
+[upbound-registration-page]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_iam
 [upbound-marketplace]: http://marketplace.upbound.io
 [accounts-upbound-io]: https://accounts.upbound.io
 [delete-account]: https://accounts.upbound.io/settings/delete

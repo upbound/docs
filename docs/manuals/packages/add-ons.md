@@ -12,13 +12,14 @@ Upbound Add-Ons are an Upbound-specific package type built as OCI images and pub
 Upbound Crossplane supports running [Add-Ons][add-ons-concept] released by Upbound. Add-Ons are Upbound Crossplane-only packages that extend your control plane with additional capabilities.
 
 <!-- vale on -->
-
+<!-- vale Google.Headings = NO -->
 ## AddOns list
 
 <!-- vale Microsoft.Adverbs = NO -->
 For a complete list of available Official functions, use [this query][this-query] in the Marketplace.
 
 ## Learn about Add-Ons
+<!-- vale Google.Headings = YES -->
 
 Read the [Add-Ons][add-ons-concept] concept documentation to learn how Add-Ons work in Upbound Crossplane. 
 
@@ -33,6 +34,6 @@ Upbound publishes and maintains Add-Ons.
 
 [uxp]: /manuals/uxp/overview
 [upbound-marketplace]: https://marketplace.upbound.io/addons?tier=official
-[account-on-upbound]: https://accounts.upbound.io/register
+[account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_packages
 [this-query]: https://marketplace.upbound.io/addons?tier=official
 [add-ons-concept]: /manuals/uxp/concepts/packages/add-ons

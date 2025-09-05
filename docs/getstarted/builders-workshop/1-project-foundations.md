@@ -102,7 +102,9 @@ When you add a provider to your project, Upbound:
 Without providers, your control plane would have no way to create actual
 resources. 
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Create an XR and generate your API
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 Now that you have a project with dependencies, you need to define what users can request through your API:
 
@@ -249,7 +251,7 @@ You're ready to enhance your control plane with custom logic. The next guide
 walks through how to create a composition function that adds advanced
 capabilities to your infrastructure API.
 
-[up-account]: https://www.upbound.io/register/
+[up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started
 [up-cli]: /manuals/cli/overview
 [kubectl-installed]: https://kubernetes.io/docs/tasks/tools/
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
