@@ -48,14 +48,14 @@ control plane instance.
 In Upbound's testing, memory usage isn't influenced a lot by the number of managed resources under management. Memory usage only goes up slightly by 100 MB when going from 100 to 1000 resource instances under management of a control plane. Hence, for simplicity, you don't need to account for an increase in memory usage on this axis of the control plane.
 
 #### Provider memory usage
-
+<!-- vale gitlab.SentenceLength = NO -->
 When you install a Crossplane provider on a control plane, memory gets consumed
-according to the number of custom resources it defines. Upbound [Official
-Provider families][official-provider-families] provide higher fidelity control
+according to the number of custom resources it defines. Upbound [Official Provider families][official-provider-families] provide higher fidelity control
 to platform teams to install providers for only the resources they need,
 reducing the bloat of needlessly installing unused custom resources. Still, you
 must factor provider memory usage into your calculations to ensure you've
 rightsized the memory available in your Spaces cluster.
+<!-- vale gitlab.SentenceLength = YES -->
 
 :::important
 Be careful not to conflate `managed resource` with `custom resource definition`. The former is an "instance" of an external resource in Crossplane, while the latter defines the API schema of that resource.
