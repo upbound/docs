@@ -132,6 +132,7 @@ you.
 <!-- vale gitlab.SentenceLength = Yes -->
 
 ### Deploying
+
 An Upbound Space deployment doesn't have any special requirements for the
 cert-manager deployment itself. The only expectation is that cert-manager and
 the corresponding Custom Resources exist in the cluster.
@@ -156,12 +157,12 @@ The `ClusterIssuer` name is controlled by the `certificates.space.clusterIssuer`
 Helm property. You can adjust this during installation by providing the
 following parameter (assuming your new name is 'SpaceClusterIssuer'):
 ```shell
---set ".Values.certificates.space.clusterIssuer=SpaceClusterIssuer"
+--set "certificates.space.clusterIssuer=SpaceClusterIssuer"
 ```
 <!-- vale write-good.Passive = YES -->
 
 <!-- vale Google.Headings = NO -->
-#### Providing your own ClusterIsser
+#### Providing your own ClusterIssuer
 <!-- vale Google.Headings = YES -->
 To provide your own `ClusterIssuer`, you need to first setup your own
 `ClusterIssuer` in the cluster. The cert-manager docs have a variety of options
@@ -171,7 +172,7 @@ Once you have your own `ClusterIssuer` set up in the cluster, you need to turn
 off the deployment of the `ClusterIssuer` included in the Spaces deployment.
 To do that, provide the following parameter during installation:
 ```shell
---set ".Values.certificates.provision=false"
+--set "certificates.provision=false"
 ```
 
 ###### Considerations
@@ -179,7 +180,7 @@ If your `ClusterIssuer` has a name that's different from the default name that
 the Spaces installation expects ('spaces-selfsigned'), you need to also specify
 your `ClusterIssuer` name during install using:
 ```shell
---set ".Values.certificates.space.clusterIssuer=<your ClusterIssuer name>"
+--set "certificates.space.clusterIssuer=<your ClusterIssuer name>"
 ```
 
 ## Ingress
