@@ -15,8 +15,9 @@ Upbound publishes and maintains Official Functions.
 
 Upbound's Official Functions integrate with the Upbound platform to provide the best Crossplane experience.
 <!-- vale on -->
-
+<!-- vale Google.Headings = NO -->
 ## Official Functions list
+<!-- vale Google.Headings = YES -->
 
 <!-- vale Microsoft.Adverbs = NO -->
 Upbound is continually adding new functions to the ever growing list of Official Functions. For a complete list of available Official functions, use [this query][this-query] in the Marketplace.

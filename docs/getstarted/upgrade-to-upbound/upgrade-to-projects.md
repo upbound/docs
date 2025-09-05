@@ -7,7 +7,8 @@ sidebar_position: 1
 If you're already running Crossplane and want to use Upbound Crossplane's
 control plane tooling, you can upgrade to projects.
 
-The next section shows you the steps to upgrade existing Crossplane compositions into a control plane project.
+The next section shows you the steps to upgrade existing Crossplane compositions
+into a control plane project.
 
 ## Prerequisites
 
@@ -25,7 +26,9 @@ Log in to Upbound:
 up login
 ```
 
-A [control plane project][project] is the source-level representation of your control plane. Projects contain all the definitions and configurations needed to build a control plane.
+A [control plane project][project] is the source-level representation of your
+control plane. Projects contain all the definitions and configurations needed to
+build a control plane.
 
 ```shell
 up project init --scratch upbound-project && cd upbound-project
@@ -48,12 +51,13 @@ The `upbound.yaml` file is the main configuration that:
 This file is the project entry point and tells Upbound what this
 project is and where it belongs. 
 
+<!-- vale Upbound.Spelling = NO -->
 :::important
 
 An `upbound.yaml` is a superset of a [Crossplane configuration][configuration-overview] `crossplane.yaml` and replaces it.
 
 :::
-
+<!-- vale Upbound.Spelling = YES -->
 #### `apis/` directory
 
 The `apis/` directory is for your composite resource definitions (XRDs) and compositions.
@@ -76,10 +80,11 @@ The `functions/` directory contains embedded functions used in your composition 
 - The embedded function convention enables project tooling to offer rich in-editor experiences in your preferred IDE.
 
 ## Import dependencies
-
+<!-- vale Upbound.Spelling = NO -->
 Because the `upbound.yaml` is a superset of a `crossplane.yaml`, you should
-define your project's dependencies here. All packages your control plane
-requires should be declared in the `spec.dependsOn` field.
+define your project's dependencies here. The project file should declare all
+packages your control plane requires in the `spec.dependsOn` field.
+<!-- vale Upbound.Spelling = YES -->
 
 Use the [up dependency add][up-dep] command to bring any providers, functions,
 configurations, or other supported package types into your project's context.
@@ -205,11 +210,16 @@ up function generate --language=go-templating compose-bucket apis/xbuckets/compo
 ```
 
 This command does two things:
-
+<!-- vale Google.WordList = NO -->
 1. scaffolds an embedded function for go-templating in the `functions/` directory.
 2. appends the embedded function to the composition above.
+<!-- vale Google.WordList = YES -->
 
-Move the in-line templated YAML from the existing `composition.yaml` and paste it in the embedded function's `01-compose.yaml.gotmpl` in the `functions/compose-bucket/` directory. It should look like this:
+<!-- vale Upbound.Spelling = NO -->
+Move the in-line templated YAML from the existing `composition.yaml` and paste
+it in the embedded function's `01-compose.yaml.gotmpl` in the
+`functions/compose-bucket/` directory. It should look like this:
+<!-- vale Upbound.Spelling = YES -->
 
 ```yaml
 # code: language=yaml
@@ -227,7 +237,9 @@ spec:
 
 The comments at the top are directives used by the project tooling to support intellisense-style experiences in your IDE. **Don't** remove them.
 
-Remove the `create-a-bucket` step in the composition pipeline in the `composition.yaml`. This step gets performed by the embedded function instead, which should already be added to the composition pipeline. 
+Remove the `create-a-bucket` step in the composition pipeline in the
+`composition.yaml`. The embedded function performs this step and is already
+present in the composition pipeline
 
 You're finished. You've refactored a composition to use embedded functions.
 

@@ -102,7 +102,9 @@ When you add a provider to your project, Upbound:
 Without providers, your control plane would have no way to create actual
 resources. 
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Create an XR and generate your API
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 Now that you have a project with dependencies, you need to define what users can request through your API:
 

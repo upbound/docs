@@ -224,9 +224,9 @@ assertResources: [
 
 This assertion verifies:
 
-* Your composition receives the user's claim correctly
-* The `acl`, `region`, and `versioning` parameters are processed
-* The name and structure are maintained
+* Your composition receives the user's claim
+* Your control plane processes the `acl`, `region` and `versioning` parameters
+* The control plane maintains the resource name and structure
 
 ### Test the core S3 bucket
 
@@ -323,11 +323,11 @@ This section tests to verify:
 ```
 
 
-These tests ensure:
+These tests ensure the control plane:
 
-* User's access control preference is applied
-* AES256 encryption is enabled by default
-* Security configurations are applied consistently
+* Applies the user's access control preference
+* Enabled encryption by default
+* Applies security configurations consistently
 
 ### Test conditional features
 
@@ -356,18 +356,18 @@ items = _items
 This assertion verifies:
 
 * Versioning resource only exists when `versioning: True`
-* When enabled, versioning is set to "Enabled" status
-* Versioning is correctly linked to the bucket
-
+* The control plane sets versioning to "Enabled" 
+* The control plane links versioning to the bucket 
 
 ### Final test structure
 
 Your complete test now:
-
+<!-- vale write-good.Passive = NO -->
 * Simulates a user's StorageBucket claim
-* Verifies all AWS resources are created correctly
-* Ensures resources are properly linked together
+* Verifies resource creation
+* Ensures resources are linked together
 * Confirms user inputs flow through to AWS resources
+<!-- vale write-good.Passive = YES -->
 
 ## Run your tests
 
@@ -399,16 +399,18 @@ up test run tests/*
 Your test results return:
 
 * **Pass/fail status**: Whether each assertion succeeded
-* **Resource validation**: Confirmation that expected resources are created
+* **Resource validation**: Confirmation for resource creation
 * **Error details**: Specific information about any failures
-* **Coverage summary**: Overview of what was tested
+* **Coverage summary**: Overview of the assertions
 
 ### What successful tests prove
 
-Passing tests demonstrate:
+Passing tests show:
 
+<!-- vale Microsoft.Adverbs = NO -->
+<!-- vale write-good.Passive = NO -->
 * Your composition function logic is correct
-* User parameters are processed properly
+* User parameters processed properly
 * All required AWS resources are created
 * Security configurations are applied consistently
 * Conditional logic works as expected
@@ -416,14 +418,21 @@ Passing tests demonstrate:
 ## Next steps
 
 Now that you have tested your composition:
-
-* **Deploy with confidence**: Your tests prove the composition works correctly
+<!-- vale write-good.Weasel = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale Google.Will = NO -->
+* **Deploy with confidence**: Your tests prove the composition works
 * **Iterate safely**: Make changes knowing tests will catch regressions
 * **Add more test cases**: Test different parameter combinations and edge cases
 * **Integrate with CI/CD**: Automate testing as part of your development workflow
+<!-- vale write-good.Passive = YES -->
+<!-- vale Microsoft.Adverbs = YES -->
+<!-- vale Google.Will = YES -->
+<!-- vale write-good.Weasel = YES -->
 
 In the next guide, you'll deploy your tested composition to a control plane and see your infrastructure API in action.
 
+<!-- vale gitlab.FutureTense = YES -->
 
 [project-foundations]: /getstarted/builders-workshop/project-foundations
 [up-account]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started

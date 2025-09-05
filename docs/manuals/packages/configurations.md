@@ -26,7 +26,7 @@ Crossplane experience.
 ## Configurations list
 
 <!-- vale Microsoft.Adverbs = NO -->
-Upbound is continually adding new configurations to the ever growing list of
+Upbound adds new configurations to the ever growing list of
 Configurations. For a complete list of available Configurations, use [this
 query][this-query] in the Marketplace. <!-- vale Microsoft.Adverbs = YES -->
 
