@@ -13,7 +13,10 @@ const config = {
     projectName: "docs",
     onBrokenLinks: "warn",
     onBrokenMarkdownLinks: "warn",
-    clientModules: [require.resolve("./scripts/copymarkdown.js")],
+    clientModules: [
+        require.resolve("./scripts/copymarkdown.js"),
+        require.resolve("./scripts/reading-time.js"),
+    ],
     i18n: {
         defaultLocale: "en",
         locales: ["en"],
