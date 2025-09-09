@@ -1560,6 +1560,11 @@
             "source": "/guides/intelligent-controllers/intelligent-control-planes(/)?",
             "destination": "/guides/intelligent-control-planes/",
             "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/guides/self-managed-uxp/license-management(/)?",
+            "destination": "/manuals/uxp/howtos/self-managed-uxp/license-management/",
+            "permanent": true
         }
     ]
 }
