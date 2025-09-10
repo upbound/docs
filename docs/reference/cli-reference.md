@@ -3,7 +3,7 @@ title: CLI Reference
 sidebar_position: 3
 ---
 
-This documentation is for the `up` CLI v0.40.3.
+This documentation is for the `up` CLI v0.41.0.
 
 The latest version of `up` can be installed by running:
 
@@ -69,6 +69,7 @@ import UpLogin from '/cli/up_login.md';
 import UpLogout from '/cli/up_logout.md';
 import UpOperation from '/cli/up_operation.md';
 import UpOperationGenerate from '/cli/up_operation_generate.md';
+import UpOperationRender from '/cli/up_operation_render.md';
 import UpOrganization from '/cli/up_organization.md';
 import UpOrganizationCreate from '/cli/up_organization_create.md';
 import UpOrganizationDelete from '/cli/up_organization_delete.md';
@@ -130,6 +131,8 @@ import UpRobotTokenList from '/cli/up_robot_token_list.md';
 import UpSpace from '/cli/up_space.md';
 import UpSpaceBilling from '/cli/up_space_billing.md';
 import UpSpaceBillingExport from '/cli/up_space_billing_export.md';
+import UpSpaceBillingReport from '/cli/up_space_billing_report.md';
+import UpSpaceBillingReportUpdate from '/cli/up_space_billing_report_update.md';
 import UpSpaceConnect from '/cli/up_space_connect.md';
 import UpSpaceDestroy from '/cli/up_space_destroy.md';
 import UpSpaceDisconnect from '/cli/up_space_disconnect.md';
@@ -349,6 +352,9 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up operation generate
 
 <UpOperationGenerate />
+## up operation render
+
+<UpOperationRender />
 ## up organization
 
 <UpOrganization />
@@ -532,6 +538,12 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up space billing export
 
 <UpSpaceBillingExport />
+## up space billing report
+
+<UpSpaceBillingReport />
+## up space billing report update
+
+<UpSpaceBillingReportUpdate />
 ## up space connect
 
 <UpSpaceConnect />

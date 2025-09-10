@@ -47,3 +47,4 @@ up test generate xstoragebucket --language python --e2e
 | `--cache-dir` | | Directory used for caching dependency images. |
 | `--language` | `-l` | Language for test. |
 | `--e2e` | | create e2e tests |
+| `--operation` | | create operation tests |
