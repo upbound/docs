@@ -35,7 +35,7 @@ Any important warnings or necessary information
 - Flag and environment variable defaults specified in the `base` field of a
   configuration profile are no longer respected.
 
-##### What's Changed
+#### What's Changed
 
 - Test cleanup: when a test fails or is interrupted, `up test run --e2e` now
   cleans up resources created by test and prints a summary of any resources that
