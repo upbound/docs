@@ -24,6 +24,31 @@ Any important warnings or necessary information
 
 -->
 
+## v0.41.0
+
+### Release Date: 2025-09-10
+
+#### Breaking Changes
+
+- The `up alpha migration` commands have been removed. The stable version of
+  these commands is available as `up controlplane migration`.
+- Flag and environment variable defaults specified in the `base` field of a
+  configuration profile are no longer respected.
+
+##### What's Changed
+
+- Test cleanup: when a test fails or is interrupted, `up test run --e2e` now
+  cleans up resources created by test and prints a summary of any resources that
+  could not be deleted.
+- Added `up operation render` to allow manual testing of operations.
+- Introduced operation tests to allow automated testing of operations.
+
+##### Bug Fixes
+
+- Fixed visual differentiation between selectable and unselectable items in the
+  interactive mode of `up ctx`.
+- Debian packages now contain binaries for the correct architecture.
+
 ## v0.40.3
 
 ### Release Date: 2025-08-21
