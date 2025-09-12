@@ -33,4 +33,7 @@ jobs:
         # Vale uses a 0 return code for warnings and suggestions. These should be considered failures.
         # Ignore the DMCA since it's legal speak.
         run: |
-          ./vale --config="./utils/vale/.vale.ini" --minAlertLevel=warning ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md' | tee /dev/stderr | wc -l | { read wc; test $wc -eq 1; }
+        # Show all Vale feedback (suggestions, warnings, errors)
+        ./vale --config="./utils/vale/.vale.ini" ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md' | tee /dev/stderr | wc -l | { read wc; test $wc -eq 1; }
+        # Only fail the job if there are actual errors
+        ./vale --config="./utils/vale/.vale.ini" --minAlertLevel=error ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md' | tee /dev/stderr | wc -l | { read wc; test $wc -eq 1; }
