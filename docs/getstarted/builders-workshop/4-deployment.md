@@ -7,7 +7,7 @@ import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLa
 <GlobalLanguageSelector />
 
 In the previous guide, you created a test for your composition logic. In this
-guide, you'll create a `ProviderConfig` and authenticate to your cloud provider
+guide, you'll create a `ClusterProviderConfig` and authenticate to your cloud provider
 to deploy your resources.
 
 ## Prerequisites
@@ -39,7 +39,7 @@ The `run` command installs your project functions and dependencies to a control 
 
 Your project configuration requires an authentication method.
 
-A `ProviderConfig` is a custom resource that defines how your control plane
+A `ClusterProviderConfig` is a custom resource that defines how your control plane
 authenticates and connects with cloud providers like AWS. It acts as a
 configuration bridge between your control plane's managed resources and the
 cloud provider's API.
@@ -152,7 +152,7 @@ data:
 
 </CodeBlock>
 
-### Create a `ProviderConfig`
+### Create a `ClusterProviderConfig`
 
 <CodeBlock cloud="aws">
 
@@ -161,7 +161,7 @@ configuration below:
 
 ```yaml title="upbound-hello-world/provider-config.yaml"
 apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
+kind: ClusterProviderConfig
 metadata:
   name: default
 spec:
@@ -184,7 +184,7 @@ configuration below:
 apiVersion: azure.upbound.io/v1beta1
 metadata:
   name: default
-kind: ProviderConfig
+kind: ClusterProviderConfig
 spec:
   credentials:
     source: Secret
@@ -204,7 +204,7 @@ configuration below:
 <EditCode language="yaml">
 {`
 apiVersion: gcp.upbound.io/v1beta1
-kind: ProviderConfig
+kind: ClusterProviderConfig
 metadata:
   name: default
 spec:
@@ -226,7 +226,7 @@ kubectl apply -f provider-config.yaml
 ```
 
 When you create a composition and deploy with the control plane, Upbound uses
-the `ProviderConfig` to locate and retrieve the credentials in the secret store.
+the `ClusterProviderConfig` to locate and retrieve the credentials in the secret store.
 
 ## Deploy your resources to your control plane
 
