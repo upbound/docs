@@ -32,8 +32,8 @@ Our knowledge base serves as a fast-moving complement to our product documentati
 
 While our product docs focus on architecture, getting started guides, and reference materials, the knowledge base covers troubleshooting, workarounds, and edge cases. This knowledge can flow back into our main documentation over time, but the knowledge base allows us to provide immediate help when customers need it most.
 
-[contact]:https://www.upbound.io/contact-us
-[email]:mailto:support@upbound.io
-[pylon-portal]:https://portal.usepylon.com/upbound/login
-[knowledge-base]:https://help.upbound.io
+[contact]: https://www.upbound.io/contact-us
+[email]: mailto:support@upbound.io
+[pylon-portal]: https://portal.usepylon.com/upbound/login
+[knowledge-base]: https://help.upbound.io
 [upbound-service-agreement]: https://help.upbound.io/articles/6213965451-what-are-the-different-severities-and-slas-of-support-tickets
