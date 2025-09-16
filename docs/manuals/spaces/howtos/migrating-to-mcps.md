@@ -4,9 +4,9 @@ sidebar_position: 90
 description: A guide to how to migrate to a control plane in Upbound
 ---
 
-The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
+The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a control plane in Upbound. This tool works for migrating from self-managed Crossplane installations as well as between Upbound managed control planes (MCPs).
 
-To migrate from Crossplane to Upbound, you must:
+To migrate a control plane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a control plane running in Upbound.
@@ -30,13 +30,11 @@ To migrate an existing Crossplane control plane to a control plane in Upbound, d
 
     The command exports your existing Crossplane control plane configuration/state into an archive file.
 
-    :::note
-  By default, the export command doesn't make any changes to your existing Crossplane control plane state, leaving it intact. Use the `--pause-before-export` flag to pause the
-     reconciliation on managed resources before exporting the archive file.
+::: note
+By default, the export command doesn't make any changes to your existing Crossplane control plane state, leaving it intact. Use the `--pause-before-export` flag to pause the reconciliation on managed resources before exporting the archive file.
 
-  This is a safety mechanism to help ensure the control plane you migrate state to doesn't assume ownership of resources before
-    you're ready.
-    :::
+This safety mechanism ensures the control plane you migrate state to doesn't assume ownership of resources before you're ready.
+:::
 
 2. Use the control plane [create command][create-command] to create a managed
 control plane in Upbound:
@@ -58,13 +56,15 @@ control plane in Upbound:
     ```bash
     up controlplane migration import --input <path-to-archive-file>
     ```
-
+<!-- vale write-good.Weasel = NO -->
 :::note
 By default, the import command leaves the control plane in an inactive state by pausing the reconciliation on managed
-resources which gives you an opportunity to review the imported configuration/state before activating the control plane.
+resources. This pause gives you an opportunity to review the imported configuration/state before activating the control plane.
 Use the `--unpause-after-import` flag to change the default behavior and activate the control plane immediately after
 importing the archive file.
 :::
+<!-- vale write-good.Weasel = YES -->
+
 
 5. Review and validate the imported configuration/state. When you are ready, activate your managed
    control plane by running the following command:
@@ -104,6 +104,14 @@ For example, here's an example for excluding the CRDs installed by Crossplane fu
 up controlplane migration export \
   --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.template.fn.crossplane.io
 ```
+
+<!-- vale write-good.Passive = NO -->
+:::tip Function Input CRDs
+
+Exclude function input CRDs (`inputs.template.fn.crossplane.io`, `resources.pt.fn.crossplane.io`, `gotemplates.gotemplating.fn.crossplane.io`, `kclinputs.template.fn.crossplane.io`) from migration exports. Upbound automatically recreates these resources during import. Function input CRDs typically have owner references to function packages and may have restricted RBAC access. Upbound installs these CRDs during the import when function packages are restored.
+
+:::
+<!-- vale write-good.Passive = YES -->
 
 After export, users can also change the archive file to only include necessary resources.
 
