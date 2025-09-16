@@ -5,6 +5,9 @@ slug: "/getstarted"
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
 
+Vale test
+This PR is a test vale outputs for suggestions, warnings, and errors. This will test the return output for the gh action.
+
 <!-- vale gitlab.SentenceLength = NO -->
 Welcome to Upbound, the enterprise platform for Crossplane that helps you build
 autonomous infrastructure platforms at scale. Whether you're already using Open
