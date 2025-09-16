@@ -19,6 +19,7 @@ agents alike. Upbound powers this API surface with **Upbound Crossplane 2.0
 (UXP)** - our next-generation control plane that delivers enterprise-grade
 reliability, performance, and developer experience. 
 
+THis is a Kuberentes extention. Lots of spelling errs have been added here for to test.
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 
 ## Already using open source Crossplane?
