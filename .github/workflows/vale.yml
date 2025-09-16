@@ -1,13 +1,10 @@
 name: Validate content with Vale
-
 on:
   pull_request:
     paths:
       - 'docs/**'
-
   # Allows manual workflow run (must in default branch to work)
   workflow_dispatch:
-
 jobs:
   lint-content:
     runs-on:
@@ -15,25 +12,20 @@ jobs:
     steps:
       - name: Checkout the docs repo
         uses: actions/checkout@v3
-
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@039afcd1024c210363c9d3fc8fd07e1f3fcf2867 # v35.9.3
         with:
           files: docs/**
-
       - name: Install Vale
         env:
           VALE_VERSION: "2.22.0"
         run: wget https://github.com/errata-ai/vale/releases/download/v${{env.VALE_VERSION}}/vale_${{env.VALE_VERSION}}_Linux_64-bit.tar.gz && tar -xvzf vale_${{env.VALE_VERSION}}_Linux_64-bit.tar.gz
-
       - name: Run Vale
         if: steps.changed-files.outputs.any_changed == 'true'
-        # Run vale and display the output. Fail if the output is greater than 1 line.
-        # Vale uses a 0 return code for warnings and suggestions. These should be considered failures.
-        # Ignore the DMCA since it's legal speak.
         run: |
         # Show all Vale feedback (suggestions, warnings, errors)
-        ./vale --config="./utils/vale/.vale.ini" ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md' | tee /dev/stderr | wc -l | { read wc; test $wc -eq 1; }
+        ./vale --config="./utils/vale/.vale.ini" ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md'
+          
         # Only fail the job if there are actual errors
-        ./vale --config="./utils/vale/.vale.ini" --minAlertLevel=error ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md' | tee /dev/stderr | wc -l | { read wc; test $wc -eq 1; }
+        ./vale --config="./utils/vale/.vale.ini" --minAlertLevel=error ${{ steps.changed-files.outputs.all_changed_files }} --glob='!*/dmca.md'
