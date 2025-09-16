@@ -107,7 +107,9 @@ up controlplane migration export \
 
 <!-- vale write-good.Passive = NO -->
 :::tip Function Input CRDs
-Exclude function input CRDs (`inputs.template.fn.crossplane.io`, `resources.pt.fn.crossplane.io`) from migration exports. Upbound automatically recreates these resources during import. Function input CRDs typically have owner references to function packages and may have restricted RBAC access. Upbound installs these CRDs during the import when function packages are restored.
+
+Exclude function input CRDs (`inputs.template.fn.crossplane.io`, `resources.pt.fn.crossplane.io`, `gotemplates.gotemplating.fn.crossplane.io`, `kclinputs.template.fn.crossplane.io`) from migration exports. Upbound automatically recreates these resources during import. Function input CRDs typically have owner references to function packages and may have restricted RBAC access. Upbound installs these CRDs during the import when function packages are restored.
+
 :::
 <!-- vale write-good.Passive = YES -->
 
