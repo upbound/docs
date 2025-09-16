@@ -4,7 +4,7 @@ sidebar_position: 1
 slug: "/getstarted"
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
-This PR is a test vale outputs for suggestions, warnings, and errors. This will test the return output for the gh action.
+
 <!-- vale gitlab.SentenceLength = NO -->
 Welcome to Upbound, the enterprise platform for Crossplane that helps you build
 autonomous infrastructure platforms at scale. Whether you're already using Open
@@ -18,6 +18,10 @@ through a single programmable API surface that works for humans and intelligent
 agents alike. Upbound powers this API surface with **Upbound Crossplane 2.0
 (UXP)** - our next-generation control plane that delivers enterprise-grade
 reliability, performance, and developer experience. 
+
+This PR is a test vale outputs for suggestions, warnings, and errors. This will test the return output for the gh action.
+
+
 
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 
