@@ -30,13 +30,11 @@ To migrate an existing Crossplane control plane to a control plane in Upbound, d
 
     The command exports your existing Crossplane control plane configuration/state into an archive file.
 
-    :::note
-  By default, the export command doesn't make any changes to your existing Crossplane control plane state, leaving it intact. Use the `--pause-before-export` flag to pause the
-     reconciliation on managed resources before exporting the archive file.
+::: note
+By default, the export command doesn't make any changes to your existing Crossplane control plane state, leaving it intact. Use the `--pause-before-export` flag to pause the reconciliation on managed resources before exporting the archive file.
 
-  This is a safety mechanism to help ensure the control plane you migrate state to doesn't assume ownership of resources before
-    you're ready.
-    :::
+This safety mechanism ensures the control plane you migrate state to doesn't assume ownership of resources before you're ready.
+:::
 
 2. Use the control plane [create command][create-command] to create a managed
 control plane in Upbound:
@@ -61,7 +59,7 @@ control plane in Upbound:
 
 :::note
 By default, the import command leaves the control plane in an inactive state by pausing the reconciliation on managed
-resources which gives you an opportunity to review the imported configuration/state before activating the control plane.
+resources. This pause gives you an opportunity to review the imported configuration/state before activating the control plane.
 Use the `--unpause-after-import` flag to change the default behavior and activate the control plane immediately after
 importing the archive file.
 :::
@@ -105,9 +103,11 @@ up controlplane migration export \
   --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.template.fn.crossplane.io
 ```
 
+<-- vale write-good.Passive = NO -->
 :::tip Function Input CRDs
-Function input CRDs (such as `inputs.template.fn.crossplane.io`, `resources.pt.fn.crossplane.io`) should be excluded from migration exports as they are automatically recreated when functions are imported. These CRDs typically have `ownerReference` pointing to function packages and may have restricted RBAC access. They will be automatically installed again during import when the function packages are restored.
+Exclude function input CRDs (`inputs.template.fn.crossplane.io`, `resources.pt.fn.crossplane.io`) from migration exports. Upbound automatically recreates these resources during import. Function input CRDs typically have owner references to function packages and may have restricted RBAC access. Upbound installs these CRDs during the import when function packages are restored.
 :::
+<-- vale write-good.Passive = YES -->
 
 After export, users can also change the archive file to only include necessary resources.
 
