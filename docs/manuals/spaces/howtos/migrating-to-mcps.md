@@ -4,9 +4,9 @@ sidebar_position: 90
 description: A guide to how to migrate to a control plane in Upbound
 ---
 
-The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a control plane in Upbound.
+The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a control plane in Upbound. This tool works for migrating from self-managed Crossplane installations as well as between Upbound managed control planes (MCPs).
 
-To migrate from Crossplane to Upbound, you must:
+To migrate a control plane to Upbound, you must:
 
 1. Export your existing Crossplane control plane configuration/state into an archive file.
 2. Import the archive file into a control plane running in Upbound.
@@ -104,6 +104,10 @@ For example, here's an example for excluding the CRDs installed by Crossplane fu
 up controlplane migration export \
   --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.template.fn.crossplane.io
 ```
+
+:::tip Function Input CRDs
+Function input CRDs (such as `inputs.template.fn.crossplane.io`, `resources.pt.fn.crossplane.io`) should be excluded from migration exports as they are automatically recreated when functions are imported. These CRDs typically have `ownerReference` pointing to function packages and may have restricted RBAC access. They will be automatically installed again during import when the function packages are restored.
+:::
 
 After export, users can also change the archive file to only include necessary resources.
 
