@@ -56,13 +56,15 @@ control plane in Upbound:
     ```bash
     up controlplane migration import --input <path-to-archive-file>
     ```
-
+<!-- vale write-good.Weasel = NO -->
 :::note
 By default, the import command leaves the control plane in an inactive state by pausing the reconciliation on managed
 resources. This pause gives you an opportunity to review the imported configuration/state before activating the control plane.
 Use the `--unpause-after-import` flag to change the default behavior and activate the control plane immediately after
 importing the archive file.
 :::
+<!-- vale write-good.Weasel = YES -->
+
 
 5. Review and validate the imported configuration/state. When you are ready, activate your managed
    control plane by running the following command:
