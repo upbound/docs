@@ -16,9 +16,12 @@ and traces.
 <!-- vale write-good.TooWordy = NO -->
 <!-- vale Google.WordList = NO -->
 :::important
-Observability features are in preview and require different minimum versions:
-- **Space-level observability**: Spaces `v1.6.0` or later
-- **Control plane observability**: Spaces `v1.13.0` or later for full functionality
+Observability features are GA since Spaces `v1.14.0`. However, it's not
+enabled by default as it requires careful configuration.
+
+Different aspects of it were introduced in preview in different releases:
+- **Space-level observability**: Spaces `v1.6.0`.
+- **Control plane observability**: Spaces `v1.13.0`.
 :::
 <!-- vale Google.WordList = YES -->
 <!-- vale write-good.TooWordy = YES -->
@@ -43,8 +46,11 @@ required.
    ```bash
    up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
      ...
-     --set "features.alpha.observability.enabled=true"
+     --set "observability.enabled=true"
    ```
+
+Set `features.alpha.observability.enabled=true` instead if using Spaces version
+before `v1.14.0`.
 
 2. **Install OpenTelemetry Operator** (required for Space-level observability):
    ```bash
