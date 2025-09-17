@@ -5,7 +5,7 @@ description: Configure Space-level observability
 ---
 
 :::important
-This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. To enable, set `observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0` when installing Spaces:
+This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. To enable, set `observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0`) when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
