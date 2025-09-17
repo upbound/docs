@@ -32,7 +32,7 @@ This feature is enabled by default in Cloud Spaces.
 
 
 To enable this feature in a self-hosted Space, set
-`observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0` when installing the Space:
+`observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0`) when installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
