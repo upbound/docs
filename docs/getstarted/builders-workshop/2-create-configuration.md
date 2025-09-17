@@ -1515,7 +1515,7 @@ func createMetadata(name string) map[string]interface{} {
 This section:
 
 * Standardizes resource naming
-* Adds required labels & annotations
+* Adds required labels and annotations
 * Reduces metadata duplication
 
 ### Cloud resource definition
