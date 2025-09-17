@@ -1,7 +1,5 @@
-# .github/pull_request_template.md
-
 ## Description
-Brief description of what this PR changes or adds.
+<!-- Brief description of what this PR changes or adds. -->
 
 ## Type of change
 - [ ] Bug fix (typo, broken link, incorrect info)
@@ -15,9 +13,3 @@ Brief description of what this PR changes or adds.
 
 ## Additional notes
 <!-- Any context, screenshots, or notes for reviewers -->
-
----
-
-**For maintainers:** 
-- Vale only blocks on errors (warnings/suggestions are informational)
-- All PRs require approval to merge regardless of automated checks
