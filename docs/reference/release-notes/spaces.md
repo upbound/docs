@@ -22,6 +22,74 @@ Any important warnings or necessary information
 
 -->
 
+## v1.14.0
+
+### Release Date: 2025-09-16
+
+#### Breaking Changes
+
+- The deprecated alpha InControlPlaneOverride API has been completely removed. Any existing InControlPlaneOverride resources will no longer be processed, and the API is no longer available. Users relying on this functionality should migrate to alternative configuration management approaches before upgrading.
+
+#### Important Changes
+
+- Enable SharedSecrets by default.
+- SharedBackups are now GA and can't be disabled anymore.
+- SharedTelemetry is GA. It's still disabled by default, as it requires careful configuration from administrators.
+- SpaceBackups are now enabled by default.
+- Disabled realtime compositions by default, set `controlPlanes.uxp.disableRealtimeCompositions=false` to enable it.
+- External Secrets Operator (ESO) was bumped to v0.17.0-up.1.
+
+#### VCluster Changes
+
+Control Plane vCluster memory limits are now unset. In v1.12 release, we bumped the vCluster version and that caused the 3 vcluster system pods (syncer, api-server, and controller) to merge into just one pod. Previously, we used to not memory limit the api-server and use the autoscaler to manage its memory requests. With 1.12, as all the vCluster components were running in 1 pod, 1 container, we limited the memory and had the autoscaler also manage the memory limits, based on the number of CRDs in the control plane.
+
+In the meantime, we noticed that if there is a sudden surge of CRDs, the vCluster pod can run out of memory(including the api-server) before the autoscaler can react to the rise of CRDs, thus making it unable to get the CRD number and autoscale.
+
+This is why we are now unsetting the vCluster memory limits and will monitor further vCluster improvements.
+
+#### Features
+
+- Added configuration options for setting tolerations on vcluster and vcluster etcd pods.
+- Audit logs from the ControlPlane API servers can now be enabled using the new `spec.apiServer.audit.enabled` API in the SharedTelemetryConfig objects. The collected audit logs are available from the ControlPlane OTEL log service named "controlplane-audit".
+- Emit events for SpaceBackups.
+- SpaceBackups will now wait for ControlPlanes to be ready and healthy, but try backing them up even if they are not instead of failing directly.
+- Allow setting spaces-controller hostnetwork to true, to improve compatibility with CNI plugins such as Cilium.
+- Restore ImageConfigs too before restoring packages (Providers, Functions...).
+- Try requeuing control planes on SpaceBackups and SharedBackups and make failure rate configurable through `spec.failures.controlplanes` on all backup resources.
+
+#### Bug Fixes
+
+- Allow setting CNPG cluster's resources requests and limits, added sane default requests. Also adding the ability to switch to dedicated PVC for WAL files, disabled by default.
+- Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
+- Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
+- Allow SharedTelemetry to scrape all vcluster managed pods.
+
+## v1.13.2
+
+### Release Date: 2025-09-16
+
+#### What's Changed
+
+- Health: don't mark control planes as degraded for unsupported versions
+- SpaceBackup: try backing up controlplanes even if not ready/healthy
+- Apollo/CNPG: allow configuring resources and separate wal volume
+- Make sharedbackups and spacebackups less brittle
+- Watch image configs only if available
+- Allow telemetry scrape to all vcluster managed pods
+
+## v1.12.1
+
+### Release Date: 2025-09-16
+
+#### What's Changed
+
+- Health: don't mark control planes as degraded for unsupported versions
+- SpaceBackup: try backing up controlplanes even if not ready/healthy
+- Apollo/CNPG: allow configuring resources and separate wal volume
+- Make sharedbackups and spacebackups less brittle
+- Watch image configs only if available
+- Allow telemetry scrape to all vcluster managed pods
+
 ## v1.13.1
 
 ### Release Date: 2025-06-11
