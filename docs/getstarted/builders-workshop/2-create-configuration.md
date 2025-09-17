@@ -1523,17 +1523,14 @@ This section:
 <CodeBlock cloud="aws" language="kcl">
 
 ```yaml-noCopy title="upbound-hello-world/functions/example-function/main.k"
-_items: [any] = [
-    # Main S3 bucket
-        awsms3v1beta1.Bucket {
-        metadata: _metadata(bucketName)
-        spec = {
-            forProvider = {
-                region = params.region
-            }
+awsms3v1beta1.Bucket {
+    metadata: _metadata(bucketName)
+    spec = {
+        forProvider = {
+            region = params.region
         }
-    },
-]
+    }
+}
 ```
 
 </CodeBlock>
