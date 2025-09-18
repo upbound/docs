@@ -226,9 +226,9 @@ _items = [
                     }
                 }
             ]
-            compositionPath: "apis/azurebuckets/composition.yaml"
-            xrPath: "examples/azurebucket/example.yaml"
-            xrdPath: "apis/azurebuckets/definition.yaml"
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
             timeoutSeconds: 120
             validate: False
         }
@@ -312,7 +312,7 @@ This section:
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
-    platformv1alpha1.StorageBucket{
+    platformv1alpha1.StorageBucket {
         metadata.name: "example"
         spec.parameters: {
             acl: "public-read"
@@ -334,7 +334,7 @@ This assertion verifies:
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
-    platformv1alpha1.AzureBucket {
+    platformv1alpha1.StorageBucket {
         metadata.name: "example"
         spec.parameters: {
             region: "eastus"
@@ -612,7 +612,7 @@ Passing tests show:
 <!-- vale write-good.Passive = NO -->
 * Your composition function logic is correct
 * User parameters processed properly
-* All required AWS resources are created
+* All required resources are created
 * Security configurations are applied consistently
 * Conditional logic works as expected
 
