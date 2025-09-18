@@ -53,13 +53,13 @@ following configuration:
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
-import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
+import models.io.upbound.awsm.s3.v1beta1 as awsms3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 
 _items = [
     metav1alpha1.CompositionTest{
         metadata.name="test-storagebucket"
-        spec= {
+        spec = {
             assertResources: [
                 platformv1alpha1.StorageBucket{
                     metadata.name: "example"
@@ -69,80 +69,89 @@ _items = [
                         versioning: True
                     }
                 }
-                s3v1beta1.BucketACL{
-                    metadata.name: "example-acl"
-                    spec.forProvider:{
-                        acl: "public-read"
-                        bucketRef: {
-                            name: "example-bucket"
+                awsms3v1beta1.Bucket{
+                    metadata = {
+                        generateName = "example-bucket"
+                        labels = {
+                            "platform.example.com/bucket" = "example-bucket"
                         }
+                    }
+                    spec.forProvider: {
                         region: "us-west-1"
                     }
                 }
-                s3v1beta1.BucketOwnershipControls{
-                    metadata.name: "example-boc"
+                awsms3v1beta1.BucketOwnershipControls{
+                    metadata.generateName: "example-boc"
                     spec.forProvider: {
-                        bucketRef: {
-                            name: "example-bucket"
-                        }
-                        region: "us-west-1"
-                        rule: [
-                            {
-                                objectOwnership: "BucketOwnerPreferred"
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
                             }
-                        ]
-                    }
-                }
-                s3v1beta1.Bucket{
-                    metadata.name: "example-bucket"
-                    spec.forProvider: {
-                        region: "us-west-1"
-                    }
-                }
-                s3v1beta1.BucketServerSideEncryptionConfiguration{
-                    metadata.name: "example-encryption"
-                    spec.forProvider: {
-                        bucketRef: {
-                            name: "example-bucket"
                         }
                         region: "us-west-1"
-                        rule: [
-                            {
-                                applyServerSideEncryptionByDefault: [
-                                    {
-                                        sseAlgorithm: "AES256"
-                                    }
-                                ]
-                                bucketKeyEnabled: True
-                            }
-                        ]
+                        rule: {
+                            objectOwnership: "BucketOwnerPreferred"
+                        }
                     }
                 }
-                s3v1beta1.BucketPublicAccessBlock{
-                    metadata.name: "example-pab"
+                awsms3v1beta1.BucketPublicAccessBlock{
+                    metadata.generateName: "example-pab"
                     spec.forProvider: {
                         blockPublicAcls: False
                         blockPublicPolicy: False
-                        bucketRef: {
-                            name: "example-bucket"
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
                         }
                         ignorePublicAcls: False
                         region: "us-west-1"
                         restrictPublicBuckets: False
                     }
                 }
-                s3v1beta1.BucketVersioning{
-                    metadata.name: "example-versioning"
-                    spec.forProvider: {
-                        bucketRef: {
-                            name: "example-bucket"
+                awsms3v1beta1.BucketACL{
+                    metadata.generateName: "example-acl"
+                    spec.forProvider:{
+                        acl: "public-read"
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
                         }
                         region: "us-west-1"
-                        versioningConfiguration: [
+                    }
+                }
+                awsms3v1beta1.BucketServerSideEncryptionConfiguration{
+                    metadata.generateName: "example-encryption"
+                    spec.forProvider: {
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
+                        }
+                        region: "us-west-1"
+                        rule: [
                             {
-                                status: "Enabled"
-                            },
+                                applyServerSideEncryptionByDefault: {
+                                    sseAlgorithm: "AES256"
+                                }
+                                bucketKeyEnabled: True
+                            }
                         ]
+                    }
+                }
+                awsms3v1beta1.BucketVersioning{
+                    metadata.generateName: "example-versioning"
+                    spec.forProvider: {
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
+                        }
+                        region: "us-west-1"
+                        versioningConfiguration: {
+                            status: "Enabled"
+                        }
                     }
                 }
             ]
@@ -165,7 +174,7 @@ items = _items
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
-import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
+import models.io.upbound.awsm.s3.v1beta1 as awsms3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 ```
 
@@ -232,57 +241,66 @@ This assertion verifies:
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.Bucket{
-        metadata.name: "example-bucket"
-        spec.forProvider: {
-            region: "us-west-1"
+awsms3v1beta1.Bucket{
+    metadata = {
+        generateName = "example-bucket"
+        labels = {
+            "platform.example.com/bucket" = "example-bucket"
         }
     }
+    spec.forProvider: {
+        region: "us-west-1"
+    }
+}
 ```
 
 
 This assertion verifies that:
 
 * The main S3 bucket resource exists
-* The bucket uses the expected naming pattern (`example-bucket`)
+* The bucket uses the expected generated naming pattern (`example-bucket`)
 * The bucket uses the user's specified region parameter
+* The bucket has the correct label added `platform.example.com/bucket` with value `example-bucket`
 
 ### Test security configurations
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.BucketOwnershipControls{
-        metadata.name: "example-boc"
-        spec.forProvider: {
-            bucketRef: {
-                name: "example-bucket"
+awsms3v1beta1.BucketOwnershipControls{
+    metadata.generateName: "example-boc"
+    spec.forProvider: {
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
-            rule: [
-                {
-                    objectOwnership: "BucketOwnerPreferred"
-                }
-            ]
+        }
+        region: "us-west-1"
+        rule: {
+            objectOwnership: "BucketOwnerPreferred"
         }
     }
-    s3v1beta1.BucketPublicAccessBlock{
-        metadata.name: "example-pab"
-        spec.forProvider: {
-            blockPublicAcls: False
-            blockPublicPolicy: False
-            bucketRef: {
-                name: "example-bucket"
+}
+awsms3v1beta1.BucketPublicAccessBlock{
+    metadata.generateName: "example-pab"
+    spec.forProvider: {
+        blockPublicAcls: False
+        blockPublicPolicy: False
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            ignorePublicAcls: False
-            region: "us-west-1"
-            restrictPublicBuckets: False
         }
+        ignorePublicAcls: False
+        region: "us-west-1"
+        restrictPublicBuckets: False
     }
+}
 ```
 
 
 This section tests to verify:
 
+* Correct bucket selection to apply configuration to
 * Proper object ownership configuration
 * Correct settings for public bucket access
 * Security configuration applied to the bucket
@@ -291,40 +309,43 @@ This section tests to verify:
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.BucketACL{
-        metadata.name: "example-acl"
-        spec.forProvider:{
-            acl: "public-read"
-            bucketRef: {
-                name: "example-bucket"
+awsms3v1beta1.BucketACL{
+    metadata.generateName: "example-acl"
+    spec.forProvider:{
+        acl: "public-read"
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
         }
+        region: "us-west-1"
     }
-    s3v1beta1.BucketServerSideEncryptionConfiguration{
-        metadata.name: "example-encryption"
-        spec.forProvider: {
-            bucketRef: {
-                name: "example-bucket"
+}
+awsms3v1beta1.BucketServerSideEncryptionConfiguration{
+    metadata.generateName: "example-encryption"
+    spec.forProvider: {
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
-            rule: [
-                {
-                    applyServerSideEncryptionByDefault: [
-                        {
-                            sseAlgorithm: "AES256"
-                        }
-                    ]
-                    bucketKeyEnabled: True
+        }
+        region: "us-west-1"
+        rule: [
+            {
+                applyServerSideEncryptionByDefault: {
+                    sseAlgorithm: "AES256"
                 }
-            ]
-        }
+                bucketKeyEnabled: True
+            }
+        ]
     }
+}
 ```
 
 
 These tests ensure the control plane:
 
+* Correct bucket selection to apply configuration to
 * Applies the user's access control preference
 * Enabled encryption by default
 * Applies security configurations consistently
@@ -333,28 +354,26 @@ These tests ensure the control plane:
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.BucketVersioning{
-        metadata.name: "example-versioning"
-        spec.forProvider: {
-            bucketRef: {
-                name: "example-bucket"
+awsms3v1beta1.BucketVersioning{
+    metadata.generateName: "example-versioning"
+    spec.forProvider: {
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
-            versioningConfiguration: [
-                {
-                    status: "Enabled"
-                },
-            ]
+        }
+        region: "us-west-1"
+        versioningConfiguration: {
+            status: "Enabled"
         }
     }
-]
-items = _items
-
+}
 ```
 
 
 This assertion verifies:
 
+* Correct bucket selection to configure versioning
 * Versioning resource only exists when `versioning: True`
 * The control plane sets versioning to "Enabled" 
 * The control plane links versioning to the bucket 
