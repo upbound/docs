@@ -676,7 +676,8 @@ items = _items
 
 Paste the following into `main.py`:
 
-```python title="upbound-hello-world/funtions/example-function/main.py"
+
+```python title="upbound-hello-world/functions/example-function/main.py"
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
