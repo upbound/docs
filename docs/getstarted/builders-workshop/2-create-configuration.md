@@ -141,6 +141,7 @@ bucketName = "{}-bucket".format(oxr.metadata.name)
 _metadata = lambda name: str -> any {
     {
         generateName = name         # due to global S3 naming restrictions we'll have 
+                                    # Crossplane generate a name to guarantee uniqueness
                                     # Crossplane generate a name to garauntee uniqueness
         annotations = {
             "krm.kcl.dev/composition-resource-name" = name
