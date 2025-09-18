@@ -3,6 +3,10 @@ title: 3. Test your composition
 description: Create a composition function test
 ---
 
+import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+
+<GlobalLanguageSelector />
+
 In the previous guide, you used an embedded function to create composition logic
 for your cloud resources. This guide walks through how to create a test plan.
 Tests allow you to:
