@@ -187,7 +187,7 @@ _items = [
         metadata.name="test-storagebucket"
         spec= {
             assertResources: [
-                platformv1alpha1.AzureBucket {
+                platformv1alpha1.StorageBucket {
                     metadata.name: "example"
                     spec.parameters: {
                         location: "eastus"
@@ -468,15 +468,8 @@ These tests ensure the control plane:
 * Enabled encryption by default
 * Applies security configurations consistently
 
-</CodeBlock>
-
-<CodeBlock cloud="azure" language="kcl">
-
-</CodeBlock>
-
 ### Test conditional features
 
-<CodeBlock cloud="aws" language="kcl">
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.BucketVersioning{
     metadata.generateName: "example-versioning"
@@ -494,19 +487,78 @@ awsms3v1beta1.BucketVersioning{
 }
 ```
 
-</CodeBlock>
-
-<CodeBlock cloud="azure" language="kcl">
-
-</CodeBlock>
-
-
 This assertion verifies:
 
 * Correct bucket selection to configure versioning
 * Versioning resource only exists when `versioning: True`
 * The control plane sets versioning to "Enabled" 
 * The control plane links versioning to the bucket 
+</CodeBlock>
+
+<CodeBlock cloud="azure" language="kcl">
+
+### Test the Azure Resource Group
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremv1beta1.ResourceGroup {
+    metadata.name = "example-group"
+    spec.forProvider = {
+        location = "eastus"
+    }
+}
+```
+
+This assertion verifies that:
+* The main resource group exists
+* The resource group was created in the correct region (`eastus`)
+
+
+### Test Storage Account
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremstoragev1beta1.Account {
+    metadata.name = "example"
+    spec.forProvider = {
+        accountTier = "Standard"
+        accountReplicationType = "LRS"
+        location = "eastus"
+        blobProperties = {
+            versioningEnabled = True
+        }
+        infrastructureEncryptionEnabled = True
+        resourceGroupNameRef = {
+            name = "example-group"
+        }
+    }
+}
+```
+
+This assertion verifies that:
+* Correct storage account tier is utilized (`Standard`)
+* Control plane sets correct replication type 
+* Control plane creates storage account in correct region
+* Control plane sets correct versioning resource only exists when `versioning: True`
+* Control plane sets correct encryption settings for storage account
+* Storage account is created in correct resource group
+
+### Test Container Configuration
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremstoragev1beta1.Container {
+    metadata.name = "example-container"
+    spec.forProvider = {
+        containerAccessType = "blob"
+        storageAccountNameRef = {
+            name = "example"
+        }
+    }
+}
+
+```
+
+This assertion verifies that:
+* Control plane sets correct container type `blob` due to public access
+* Control plane deploys container to correct storage account
+
+</CodeBlock>
 
 ### Final test structure
 
@@ -517,10 +569,6 @@ Your complete test now:
 * Ensures resources are linked together
 * Confirms user inputs flow through to AWS resources
 <!-- vale write-good.Passive = YES -->
-
-<CodeBlock cloud="gcp" language="kcl">
-
-</CodeBlock>
 
 ## Run your tests
 
