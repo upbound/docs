@@ -55,7 +55,8 @@ the test command
 Open `tests/test-storagebucket/main.k` and replace the scaffolding with the
 following configuration:
 
-<CodeBlock cloud="aws" language="kcl">
+
+<CodeBlock cloud="aws">
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -173,7 +174,7 @@ items = _items
 ```
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -238,7 +239,7 @@ items= _items
 ```
 </CodeBlock>
 
-<CodeBlock cloud="gcp" language="kcl">
+<CodeBlock cloud="gcp">
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -297,7 +298,7 @@ items= _items
 
 ### Import The Testing Models
 
-<CodeBlock cloud="aws" language="kcl">
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -313,7 +314,7 @@ This section imports:
 
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -330,7 +331,7 @@ This section imports:
 
 </CodeBlock>
 
-<CodeBlock cloud="gcp" language="kcl">
+<CodeBlock cloud="gcp">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -378,7 +379,7 @@ This section:
 
 ### Test the Input XR
 
-<CodeBlock cloud="aws" language="kcl">
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
@@ -394,7 +395,7 @@ assertResources: [
 
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
@@ -410,7 +411,7 @@ assertResources: [
 
 </CodeBlock>
 
-<CodeBlock cloud="gcp" language="kcl">
+<CodeBlock cloud="gcp">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
@@ -433,10 +434,9 @@ This assertion verifies:
 * The control plane maintains the resource name and structure
 
 
-<CodeBlock cloud="aws" language="kcl">
+### Test the storage resource
 
-### Test the S3 Bucket
-
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.Bucket{
@@ -460,7 +460,7 @@ This assertion verifies that:
 * The bucket uses the user's specified region parameter
 * The bucket has the correct label added `platform.example.com/bucket` with value `example-bucket`
 
-### Test Security Configurations
+#### Test Security Configurations
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
@@ -503,7 +503,7 @@ This section tests to verify:
 * Correct settings for public bucket access
 * Security configuration applied to the bucket
 
-### Test Access Control and Encryption
+#### Test Access Control and Encryption
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
@@ -548,7 +548,7 @@ These tests ensure the control plane:
 * Enabled encryption by default
 * Applies security configurations consistently
 
-### Test Conditional Features
+#### Test Conditional Features
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.BucketVersioning{
@@ -575,9 +575,9 @@ This assertion verifies:
 * The control plane links versioning to the bucket 
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
-### Test the Azure Resource Group
+#### Test the Azure Resource Group
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 azuremv1beta1.ResourceGroup {
@@ -593,7 +593,7 @@ This assertion verifies that:
 * The resource group was created in the correct region (`eastus`)
 
 
-### Test Storage Account
+#### Test Storage Account
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 azuremstoragev1beta1.Account {
     metadata.name = "example"
@@ -620,7 +620,7 @@ This assertion verifies that:
 * Control plane sets correct encryption settings for storage account
 * Storage account is created in correct resource group
 
-### Test Container Configuration
+#### Test Container Configuration
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 azuremstoragev1beta1.Container {
     metadata.name = "example-container"
@@ -640,9 +640,7 @@ This assertion verifies that:
 
 </CodeBlock>
 
-<CodeBlock cloud="gcp" language="kcl">
-
-### Test the GCP Bucket 
+<CodeBlock cloud="gcp">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 gcpmstoragev1beta1.Bucket {
@@ -662,7 +660,7 @@ This assertion verifies that:
 * The bucket uses the user's specified region parameter
 * The bucket was created with versioning enabled
 
-### Test Bucket Access Control 
+#### Test Bucket Access Control 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 gcpmstoragev1beta1.BucketACL {
