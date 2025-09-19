@@ -3,6 +3,10 @@ title: 3. Test your composition
 description: Create a composition function test
 ---
 
+import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+
+<GlobalLanguageSelector />
+
 In the previous guide, you used an embedded function to create composition logic
 for your cloud resources. This guide walks through how to create a test plan.
 Tests allow you to:
@@ -50,6 +54,8 @@ the test command
 
 Open `tests/test-storagebucket/main.k` and replace the scaffolding with the
 following configuration:
+
+<CodeBlock cloud="aws" language="kcl">
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -165,12 +171,79 @@ _items = [
 ]
 items = _items
 ```
+</CodeBlock>
 
+<CodeBlock cloud="azure" language="kcl">
+
+```yaml title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.azurem.storage.v1beta1 as azuremstoragev1beta1
+import models.io.upbound.azurem.v1beta1 as azuremv1beta1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+
+
+_items = [
+    metav1alpha1.CompositionTest{
+        metadata.name="test-storagebucket"
+        spec= {
+            assertResources: [
+                platformv1alpha1.StorageBucket {
+                    metadata.name: "example"
+                    spec.parameters: {
+                        location: "eastus"
+                        versioning: True
+                        acl: "public"
+                    }
+                }
+                azuremv1beta1.ResourceGroup {
+                    metadata.name = "example-group"
+                    spec.forProvider = {
+                        location = "eastus"
+                    }
+                }
+                azuremstoragev1beta1.Account {
+                    metadata.name = "example"
+                    spec.forProvider = {
+                        accountTier = "Standard"
+                        accountReplicationType = "LRS"
+                        location = "eastus"
+                        blobProperties = {
+                            versioningEnabled = True
+                        }
+                        infrastructureEncryptionEnabled = True
+                        resourceGroupNameRef = {
+                            name = "example-group"
+                        }
+                    }
+                }
+                azuremstoragev1beta1.Container {
+                    metadata.name = "example-container"
+                    spec.forProvider = {
+                        containerAccessType = "blob"
+                        storageAccountNameRef = {
+                            name = "example"
+                        }
+                    }
+                }
+            ]
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
+            timeoutSeconds: 120
+            validate: False
+        }
+    }
+]
+items= _items
+```
+</CodeBlock>
 
 
 ## Review your test
 
 ### Import the testing models
+
+<CodeBlock cloud="aws" language="kcl">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -178,12 +251,30 @@ import models.io.upbound.awsm.s3.v1beta1 as awsms3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 ```
 
-
 This section imports:
 
 * Your custom StorageBucket XRD
 * AWS S3 resource schemas for validation
 * Upbound testing framework components
+
+</CodeBlock>
+
+<CodeBlock cloud="azure" language="kcl">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.azurem.storage.v1beta1 as azuremstoragev1beta1
+import models.io.upbound.azurem.v1beta1 as azuremv1beta1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+```
+
+This section imports:
+
+* Your custom StorageBucket XRD
+* Azure Storage and Azure Resource Group schemas for validation
+* Upbound testing framework components
+
+</CodeBlock>
 
 ### Define your test case
 
@@ -217,10 +308,11 @@ This section:
 
 ### Test the input claim
 
+<CodeBlock cloud="aws" language="kcl">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
-    platformv1alpha1.StorageBucket{
+    platformv1alpha1.StorageBucket {
         metadata.name: "example"
         spec.parameters: {
             acl: "public-read"
@@ -230,13 +322,39 @@ assertResources: [
     }
 ```
 
-
 This assertion verifies:
 
 * Your composition receives the user's claim
 * Your control plane processes the `acl`, `region` and `versioning` parameters
 * The control plane maintains the resource name and structure
 
+</CodeBlock>
+
+<CodeBlock cloud="azure" language="kcl">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+assertResources: [
+    platformv1alpha1.StorageBucket {
+        metadata.name: "example"
+        spec.parameters: {
+            region: "eastus"
+            versioning: True
+            acl: "public"
+        }
+    }
+```
+
+This assertion verifies:
+
+* Your composition receives the user's claim
+* Your control plane processes the `acl`, `location` and `versioning` parameters
+* The control plane maintains the resource name and structure
+
+</CodeBlock>
+
+
+
+<CodeBlock cloud="aws" language="kcl">
 ### Test the core S3 bucket
 
 
@@ -352,7 +470,6 @@ These tests ensure the control plane:
 
 ### Test conditional features
 
-
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.BucketVersioning{
     metadata.generateName: "example-versioning"
@@ -370,13 +487,78 @@ awsms3v1beta1.BucketVersioning{
 }
 ```
 
-
 This assertion verifies:
 
 * Correct bucket selection to configure versioning
 * Versioning resource only exists when `versioning: True`
 * The control plane sets versioning to "Enabled" 
 * The control plane links versioning to the bucket 
+</CodeBlock>
+
+<CodeBlock cloud="azure" language="kcl">
+
+### Test the Azure Resource Group
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremv1beta1.ResourceGroup {
+    metadata.name = "example-group"
+    spec.forProvider = {
+        location = "eastus"
+    }
+}
+```
+
+This assertion verifies that:
+* The main resource group exists
+* The resource group was created in the correct region (`eastus`)
+
+
+### Test Storage Account
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremstoragev1beta1.Account {
+    metadata.name = "example"
+    spec.forProvider = {
+        accountTier = "Standard"
+        accountReplicationType = "LRS"
+        location = "eastus"
+        blobProperties = {
+            versioningEnabled = True
+        }
+        infrastructureEncryptionEnabled = True
+        resourceGroupNameRef = {
+            name = "example-group"
+        }
+    }
+}
+```
+
+This assertion verifies that:
+* Correct storage account tier is utilized (`Standard`)
+* Control plane sets correct replication type 
+* Control plane creates storage account in correct region
+* Control plane sets correct versioning resource only exists when `versioning: True`
+* Control plane sets correct encryption settings for storage account
+* Storage account is created in correct resource group
+
+### Test Container Configuration
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremstoragev1beta1.Container {
+    metadata.name = "example-container"
+    spec.forProvider = {
+        containerAccessType = "blob"
+        storageAccountNameRef = {
+            name = "example"
+        }
+    }
+}
+
+```
+
+This assertion verifies that:
+* Control plane sets correct container type `blob` due to public access
+* Control plane deploys container to correct storage account
+
+</CodeBlock>
 
 ### Final test structure
 
@@ -430,7 +612,7 @@ Passing tests show:
 <!-- vale write-good.Passive = NO -->
 * Your composition function logic is correct
 * User parameters processed properly
-* All required AWS resources are created
+* All required resources are created
 * Security configurations are applied consistently
 * Conditional logic works as expected
 
