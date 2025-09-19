@@ -690,7 +690,7 @@ Your complete test now:
 * Simulates a user's StorageBucket `XR`
 * Verifies resource creation
 * Ensures resources are linked together
-* Confirms user inputs flow through to AWS resources
+* Confirms user inputs flow through to created resources
 <!-- vale write-good.Passive = YES -->
 
 ## Run your tests
