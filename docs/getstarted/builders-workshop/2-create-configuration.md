@@ -141,7 +141,7 @@ bucketName = "{}-bucket".format(oxr.metadata.name)
 _metadata = lambda name: str -> any {
     {
         generateName = name         # due to global S3 naming restrictions we'll have 
-                                    # Crossplane generate a name to garauntee uniqueness
+                                    # Crossplane generate a name to guarantee uniqueness
         annotations = {
             "krm.kcl.dev/composition-resource-name" = name
         }
@@ -675,7 +675,8 @@ items = _items
 
 Paste the following into `main.py`:
 
-```python title="upbound-hello-world/funtions/example-function/main.py"
+
+```python title="upbound-hello-world/functions/example-function/main.py"
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
@@ -1382,7 +1383,7 @@ This section:
 _metadata = lambda name: str -> any {
     {
         generateName = name         # due to global S3 naming restrictions we'll have 
-                                    # Crossplane generate a name to garauntee uniqueness
+                                    # Crossplane generate a name to guarantee uniqueness
         annotations = {
             "krm.kcl.dev/composition-resource-name" = name
         }
