@@ -32,7 +32,7 @@ Make sure you've completed the previous guide and have:
 If you missed any of the previous steps, go to the [project
 foundations][project-foundations] guide to get started.
 
-## Generate a Composition Function Test 
+## Generate a composition function test 
 
 Create the test scaffolding:
 
@@ -294,9 +294,9 @@ items= _items
 </CodeBlock>
 
 
-## Review Your Test
+## Review your test
 
-### Import The Testing Models
+### Import the testing models
 
 <CodeBlock cloud="aws">
 
@@ -347,7 +347,7 @@ This section imports:
 
 </CodeBlock>
 
-### Define Your Test Case
+### Define your test case
 
 Create the main test structure:
 
@@ -377,7 +377,7 @@ This section:
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
 
-### Test the Input XR
+### Test the input XR
 
 <CodeBlock cloud="aws">
 
@@ -460,7 +460,7 @@ This assertion verifies that:
 * The bucket uses the user's specified region parameter
 * The bucket has the correct label added `platform.example.com/bucket` with value `example-bucket`
 
-#### Test Security Configurations
+#### Test security configurations
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
@@ -503,7 +503,7 @@ This section tests to verify:
 * Correct settings for public bucket access
 * Security configuration applied to the bucket
 
-#### Test Access Control and Encryption
+#### Test access control and encryption
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
@@ -548,7 +548,7 @@ These tests ensure the control plane:
 * Enabled encryption by default
 * Applies security configurations consistently
 
-#### Test Conditional Features
+#### Test conditional features
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.BucketVersioning{
@@ -660,7 +660,7 @@ This assertion verifies that:
 * The bucket uses the user's specified region parameter
 * The bucket was created with versioning enabled
 
-#### Test Bucket Access Control 
+#### Test bucket access control 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 gcpmstoragev1beta1.BucketACL {
