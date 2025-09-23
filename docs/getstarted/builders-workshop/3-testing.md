@@ -377,7 +377,9 @@ This section:
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
 
+<!-- vale MicrosoftHeadingAcronyms = NO -->
 ### Test the input XR
+<!-- vale MicrosoftHeadingAcronyms = YES -->
 
 <CodeBlock cloud="aws">
 
