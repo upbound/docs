@@ -270,12 +270,12 @@ from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
 from .model.com.example.platform.storagebucket import v1alpha1
-from .model.io.upbound.aws.s3.bucket import v1beta1 as bucketv1beta1
-from .model.io.upbound.aws.s3.bucketacl import v1beta1 as aclv1beta1
-from .model.io.upbound.aws.s3.bucketownershipcontrols import v1beta1 as bocv1beta1
-from .model.io.upbound.aws.s3.bucketpublicaccessblock import v1beta1 as pabv1beta1
-from .model.io.upbound.aws.s3.bucketversioning import v1beta1 as verv1beta1
-from .model.io.upbound.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
+from .model.io.upbound.m.aws.s3.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.m.aws.s3.bucketacl import v1beta1 as aclv1beta1
+from .model.io.upbound.m.aws.s3.bucketownershipcontrols import v1beta1 as bocv1beta1
+from .model.io.upbound.m.aws.s3.bucketpublicaccessblock import v1beta1 as pabv1beta1
+from .model.io.upbound.m.aws.s3.bucketversioning import v1beta1 as verv1beta1
+from .model.io.upbound.m.aws.s3.bucketserversideencryptionconfiguration import v1beta1 as ssev1beta1
 
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
@@ -283,11 +283,9 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     params = observed_xr.spec.parameters
 
     desired_bucket = bucketv1beta1.Bucket(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="Bucket",
-        spec=bucketv1beta1.Spec(
-            forProvider=bucketv1beta1.ForProvider(
-                region=params.region,
+        spec = bucketv1beta1.Spec(
+            forProvider = bucketv1beta1.ForProvider(
+                region = params.region,
             ),
         ),
     )
@@ -297,6 +295,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
         return
 
     observed_bucket = bucketv1beta1.Bucket(**req.observed.resources["bucket"].resource)
+    
     if observed_bucket.metadata is None or observed_bucket.metadata.annotations is None:
         return
     if "crossplane.io/external-name" not in observed_bucket.metadata.annotations:
@@ -307,68 +306,56 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     ]
 
     desired_acl = aclv1beta1.BucketACL(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="BucketACL",
-        spec=aclv1beta1.Spec(
-            forProvider=aclv1beta1.ForProvider(
-                region=params.region,
-                bucket=bucket_external_name,
-                acl=params.acl,
+        spec = aclv1beta1.Spec(
+            forProvider = aclv1beta1.ForProvider(
+                region = params.region,
+                bucket = bucket_external_name,
+                acl = params.acl,
             ),
         ),
     )
     resource.update(rsp.desired.resources["acl"], desired_acl)
 
     desired_boc = bocv1beta1.BucketOwnershipControls(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="BucketOwnershipControls",
-        spec=bocv1beta1.Spec(
-            forProvider=bocv1beta1.ForProvider(
-                region=params.region,
-                bucket=bucket_external_name,
-                rule=[
-                    bocv1beta1.RuleItem(
-                        objectOwnership="BucketOwnerPreferred",
-                    ),
-                ],
+        spec = bocv1beta1.Spec(
+            forProvider = bocv1beta1.ForProvider(
+                region = params.region,
+                bucket = bucket_external_name,
+                rule = {
+                    "objectOwnership": "BucketOwnerPreferred"
+                }
             )
         ),
     )
     resource.update(rsp.desired.resources["boc"], desired_boc)
 
     desired_pab = pabv1beta1.BucketPublicAccessBlock(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="BucketPublicAccessBlock",
         spec=pabv1beta1.Spec(
-            forProvider=pabv1beta1.ForProvider(
-                region=params.region,
-                bucket=bucket_external_name,
-                blockPublicAcls=False,
-                ignorePublicAcls=False,
-                restrictPublicBuckets=False,
-                blockPublicPolicy=False,
+            forProvider = pabv1beta1.ForProvider(
+                region = params.region,
+                bucket = bucket_external_name,
+                blockPublicAcls = False,
+                ignorePublicAcls = False,
+                restrictPublicBuckets = False,
+                blockPublicPolicy = False,
             )
         ),
     )
     resource.update(rsp.desired.resources["pab"], desired_pab)
 
     desired_sse = ssev1beta1.BucketServerSideEncryptionConfiguration(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="BucketServerSideEncryptionConfiguration",
-        spec=ssev1beta1.Spec(
-            forProvider=ssev1beta1.ForProvider(
-                region=params.region,
-                bucket=bucket_external_name,
-                rule=[
+        spec = ssev1beta1.Spec(
+            forProvider = ssev1beta1.ForProvider(
+                region = params.region,
+                bucket = bucket_external_name,
+                rule = [
                     ssev1beta1.RuleItem(
-                        applyServerSideEncryptionByDefault=[
-                            ssev1beta1.ApplyServerSideEncryptionByDefaultItem(
-                                sseAlgorithm="AES256",
-                            ),
-                        ],
-                        bucketKeyEnabled=True,
-                    ),
-                ],
+                        applyServerSideEncryptionByDefault = {
+                            "sseAlgorithm": "AES256"
+                        },
+                        bucketKeyEnabled = True
+                    )
+                ]
             ),
         ),
     )
@@ -378,17 +365,13 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
         return
 
     desired_versioning = verv1beta1.BucketVersioning(
-        apiVersion="s3.aws.upbound.io/v1beta1",
-        kind="BucketVersioning",
-        spec=verv1beta1.Spec(
-            forProvider=verv1beta1.ForProvider(
-                region=params.region,
-                bucket=bucket_external_name,
-                versioningConfiguration=[
-                    verv1beta1.VersioningConfigurationItem(
-                        status="Enabled",
-                    ),
-                ],
+        spec = verv1beta1.Spec(
+            forProvider = verv1beta1.ForProvider(
+                region = params.region,
+                bucket = bucket_external_name,
+                versioningConfiguration = {
+                    "status": "Enabled"
+                }
             ),
         ),
     )
@@ -681,9 +664,9 @@ from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from .model.io.upbound.azure.resourcegroup import v1beta1 as rgv1beta1
-from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
-from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
+from .model.io.upbound.m.azure.resourcegroup import v1beta1 as rgv1beta1
+from .model.io.upbound.m.azure.storage.account import v1beta1 as acctv1beta1
+from .model.io.upbound.m.azure.storage.container import v1beta1 as contv1beta1
 from .model.com.example.platform.storagebucket import v1alpha1
 
 
@@ -692,11 +675,9 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     params = observed_xr.spec.parameters
 
     desired_group = rgv1beta1.ResourceGroup(
-        apiVersion="azure.upbound.io/v1beta1",
-        kind="ResourceGroup",
-        spec=rgv1beta1.Spec(
-            forProvider=rgv1beta1.ForProvider(
-                location=params.location,
+        spec = rgv1beta1.Spec(
+            forProvider = rgv1beta1.ForProvider(
+                location = params.location,
             ),
         ),
     )
@@ -705,7 +686,7 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     if "group" not in req.observed.resources:
         return
 
-    observed_group = acctv1beta1.Account(**req.observed.resources["group"].resource)
+    observed_group = rgv1beta1.ResourceGroup(**req.observed.resources["group"].resource)
     if observed_group.metadata is None or observed_group.metadata.annotations is None:
         return
     if "crossplane.io/external-name" not in observed_group.metadata.annotations:
@@ -718,37 +699,31 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     account_external_name = observed_xr.metadata.name.replace("-", "")  # type: ignore  # Name is an optional field, but it'll always be set.
 
     desired_acct = acctv1beta1.Account(
-        apiVersion="storage.azure.upbound.io/v1beta1",
-        kind="Account",
-        metadata=metav1.ObjectMeta(
-            annotations={
+        metadata = metav1.ObjectMeta(
+            annotations = {
                 "crossplane.io/external-name": account_external_name,
             },
         ),
-        spec=acctv1beta1.Spec(
-            forProvider=acctv1beta1.ForProvider(
-                resourceGroupName=group_external_name,
-                accountTier="Standard",
-                accountReplicationType="LRS",
-                location=params.location,
-                infrastructureEncryptionEnabled=True,
-                blobProperties=[
-                    acctv1beta1.BlobProperty(
-                        versioningEnabled=params.versioning,
-                    ),
-                ],
+        spec = acctv1beta1.Spec(
+            forProvider = acctv1beta1.ForProvider(
+                resourceGroupName = group_external_name,
+                accountTier = "Standard",
+                accountReplicationType = "LRS",
+                location = params.location,
+                infrastructureEncryptionEnabled = True,
+                blobProperties = {
+                    "versioningEnabled": params.versioning
+                }
             ),
         ),
     )
     resource.update(rsp.desired.resources["acct"], desired_acct)
 
     desired_cont = contv1beta1.Container(
-        apiVersion="storage.azure.upbound.io/v1beta1",
-        kind="Container",
-        spec=contv1beta1.Spec(
+        spec = contv1beta1.Spec(
             forProvider=contv1beta1.ForProvider(
-                storageAccountName=account_external_name,
-                containerAccessType="blob" if params.acl == "public" else "private",
+                storageAccountName = account_external_name,
+                containerAccessType = "blob" if params.acl == "public" else "private",
             ),
         ),
     )
@@ -992,8 +967,8 @@ Paste the following into `main.py`:
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
-from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
+from .model.io.upbound.m.gcp.storage.bucket import v1beta1 as bucketv1beta1
+from .model.io.upbound.m.gcp.storage.bucketacl import v1beta1 as aclv1beta1
 from .model.com.example.platform.storagebucket import v1alpha1
 
 
@@ -1002,16 +977,12 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     params = observed_xr.spec.parameters
 
     desired_bucket = bucketv1beta1.Bucket(
-        apiVersion="storage.gcp.upbound.io/v1beta1",
-        kind="Bucket",
-        spec=bucketv1beta1.Spec(
-            forProvider=bucketv1beta1.ForProvider(
-                location=params.location,
-                versioning=[
-                    bucketv1beta1.VersioningItem(
-                        enabled=params.versioning,
-                    )
-                ],
+        spec = bucketv1beta1.Spec(
+            forProvider = bucketv1beta1.ForProvider(
+                location = params.location,
+                versioning = {
+                    "enabled": params.versioning,
+                }
             ),
         ),
     )
@@ -1031,11 +1002,9 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     ]
 
     desired_acl = aclv1beta1.BucketACL(
-        apiVersion="storage.gcp.upbound.io/v1beta1",
-        kind="BucketACL",
-        spec=aclv1beta1.Spec(
-            forProvider=aclv1beta1.ForProvider(
-                bucket=bucket_external_name,
+        spec = aclv1beta1.Spec(
+            forProvider = aclv1beta1.ForProvider(
+                bucket = bucket_external_name,
                 predefinedAcl=params.acl,
             ),
         ),
