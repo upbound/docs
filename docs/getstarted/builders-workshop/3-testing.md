@@ -26,7 +26,7 @@ Make sure you've completed the previous guide and have:
 * [Docker Desktop][docker-desktop] running
 * A project with the basic structure (`upbound.yaml`, `apis/`, `examples/`)
 * Provider dependencies added 
-* An XRD generated from your example claim
+* An XRD generated from your example `XR`
 * An embedded function that defines your composition logic
 
 If you missed any of the previous steps, go to the [project
@@ -55,7 +55,8 @@ the test command
 Open `tests/test-storagebucket/main.k` and replace the scaffolding with the
 following configuration:
 
-<CodeBlock cloud="aws" language="kcl">
+
+<CodeBlock cloud="aws">
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -173,7 +174,7 @@ items = _items
 ```
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -238,12 +239,66 @@ items= _items
 ```
 </CodeBlock>
 
+<CodeBlock cloud="gcp">
+
+```yaml title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+import models.io.upbound.gcpm.storage.v1beta1 as gcpmstoragev1beta1
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
+
+
+_items = [
+    metav1alpha1.CompositionTest{
+        metadata.name: "test-storagebucket"
+        spec = {
+            assertResources: [
+                platformv1alpha1.StorageBucket {
+                    metadata.name: "example"
+                    spec.parameters: {
+                        location: "US"
+                        versioning: True
+                        acl: "publicRead"
+                    }
+                }
+                gcpmstoragev1beta1.Bucket {
+                    metadata.name = "example-bucket"
+                    spec.forProvider = {
+                        location = "US"
+                        versioning = {
+                            enabled = True
+                        }
+                    }
+                }
+                gcpmstoragev1beta1.BucketACL {
+                    metadata.name = "example-acl"
+                    spec.forProvider = {
+                        bucketRef = {
+                            name = "example-bucket"
+                        }
+                        predefinedAcl = "publicRead"
+                    }
+                }
+
+            ]
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
+            timeoutSeconds: 120
+            validate: False
+        }
+    }
+]
+items= _items
+```
+</CodeBlock>
+
 
 ## Review your test
 
 ### Import the testing models
 
-<CodeBlock cloud="aws" language="kcl">
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -259,7 +314,7 @@ This section imports:
 
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
@@ -272,6 +327,22 @@ This section imports:
 
 * Your custom StorageBucket XRD
 * Azure Storage and Azure Resource Group schemas for validation
+* Upbound testing framework components
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+import models.io.upbound.gcpm.storage.v1beta1 as gcpmstoragev1beta1
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
+```
+
+This section imports:
+* Your custom StorageBucket XRD
+* Your GCP Storage schemas for validation
 * Upbound testing framework components
 
 </CodeBlock>
@@ -306,9 +377,11 @@ This section:
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
 
-### Test the input claim
+<!-- vale MicrosoftHeadingAcronyms = NO -->
+### Test the input XR
+<!-- vale MicrosoftHeadingAcronyms = YES -->
 
-<CodeBlock cloud="aws" language="kcl">
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
@@ -322,15 +395,9 @@ assertResources: [
     }
 ```
 
-This assertion verifies:
-
-* Your composition receives the user's claim
-* Your control plane processes the `acl`, `region` and `versioning` parameters
-* The control plane maintains the resource name and structure
-
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
@@ -344,19 +411,34 @@ assertResources: [
     }
 ```
 
-This assertion verifies:
+</CodeBlock>
 
-* Your composition receives the user's claim
-* Your control plane processes the `acl`, `location` and `versioning` parameters
-* The control plane maintains the resource name and structure
+<CodeBlock cloud="gcp">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+assertResources: [
+    platformv1alpha1.StorageBucket {
+        metadata.name: "example"
+        spec.parameters: {
+            location: "US"
+            versioning: True
+            acl: "publicRead"
+        }
+    }
+```
 
 </CodeBlock>
 
+This assertion verifies:
+
+* Your composition receives the user's `XR`
+* Your control plane processes the `acl`, `region` and `versioning` parameters
+* The control plane maintains the resource name and structure
 
 
-<CodeBlock cloud="aws" language="kcl">
-### Test the core S3 bucket
+### Test the storage resource
 
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.Bucket{
@@ -380,7 +462,7 @@ This assertion verifies that:
 * The bucket uses the user's specified region parameter
 * The bucket has the correct label added `platform.example.com/bucket` with value `example-bucket`
 
-### Test security configurations
+#### Test security configurations
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
@@ -423,7 +505,7 @@ This section tests to verify:
 * Correct settings for public bucket access
 * Security configuration applied to the bucket
 
-### Test access control and encryption
+#### Test access control and encryption
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
@@ -468,7 +550,7 @@ These tests ensure the control plane:
 * Enabled encryption by default
 * Applies security configurations consistently
 
-### Test conditional features
+#### Test conditional features
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 awsms3v1beta1.BucketVersioning{
@@ -495,9 +577,9 @@ This assertion verifies:
 * The control plane links versioning to the bucket 
 </CodeBlock>
 
-<CodeBlock cloud="azure" language="kcl">
+<CodeBlock cloud="azure">
 
-### Test the Azure Resource Group
+#### Test the Azure Resource Group
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 azuremv1beta1.ResourceGroup {
@@ -513,7 +595,7 @@ This assertion verifies that:
 * The resource group was created in the correct region (`eastus`)
 
 
-### Test Storage Account
+#### Test Storage Account
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 azuremstoragev1beta1.Account {
     metadata.name = "example"
@@ -540,7 +622,7 @@ This assertion verifies that:
 * Control plane sets correct encryption settings for storage account
 * Storage account is created in correct resource group
 
-### Test Container Configuration
+#### Test Container Configuration
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 azuremstoragev1beta1.Container {
     metadata.name = "example-container"
@@ -560,14 +642,55 @@ This assertion verifies that:
 
 </CodeBlock>
 
+<CodeBlock cloud="gcp">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+gcpmstoragev1beta1.Bucket {
+    metadata.name = "example-bucket"
+    spec.forProvider = {
+        location = "US"
+        versioning = {
+            enabled = True
+        }
+    }
+}
+```
+
+This assertion verifies that:
+* The main GCP bucket resource exists
+* The bucket uses the expected generated naming pattern (`example-bucket`)
+* The bucket uses the user's specified region parameter
+* The bucket was created with versioning enabled
+
+#### Test bucket access control 
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+gcpmstoragev1beta1.BucketACL {
+    metadata.name = "example-acl"
+    spec.forProvider = {
+        bucketRef = {
+            name = "example-bucket"
+        }
+        predefinedAcl = "publicRead"
+    }
+}
+```
+
+This assertion verifies that:
+* Correct bucket selection to apply configuration to
+* Correct settings for public bucket access
+* Security configuration applied to the bucket
+
+</CodeBlock>
+
 ### Final test structure
 
 Your complete test now:
 <!-- vale write-good.Passive = NO -->
-* Simulates a user's StorageBucket claim
+* Simulates a user's StorageBucket `XR`
 * Verifies resource creation
 * Ensures resources are linked together
-* Confirms user inputs flow through to AWS resources
+* Confirms user inputs flow through to created resources
 <!-- vale write-good.Passive = YES -->
 
 ## Run your tests
