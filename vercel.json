@@ -1584,6 +1584,14 @@
         {
             "source": "/docs/manuals/uxp/howtos/self-managed-uxp/uxp-deployment(/)?",
             "destination": "/docs/manuals/uxp/howtos/uxp-deployment/",
+        },
+            "source": "/manuals/uxp/guides/self-managed-uxp/license-management(/)?",
+            "destination": "/manuals/uxp/howtos/self-managed-uxp/license-management/",
+            "permanent": true
+        },
+        {
+            "source": "/upbound-marketplace(/)?",
+            "destination": "/manuals/marketplace/overview/",
             "permanent": true
         }
     ]

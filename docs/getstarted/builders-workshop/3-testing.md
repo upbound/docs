@@ -3,6 +3,10 @@ title: 3. Test your composition
 description: Create a composition function test
 ---
 
+import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+
+<GlobalLanguageSelector />
+
 In the previous guide, you used an embedded function to create composition logic
 for your cloud resources. This guide walks through how to create a test plan.
 Tests allow you to:
@@ -22,7 +26,7 @@ Make sure you've completed the previous guide and have:
 * [Docker Desktop][docker-desktop] running
 * A project with the basic structure (`upbound.yaml`, `apis/`, `examples/`)
 * Provider dependencies added 
-* An XRD generated from your example claim
+* An XRD generated from your example `XR`
 * An embedded function that defines your composition logic
 
 If you missed any of the previous steps, go to the [project
@@ -51,15 +55,18 @@ the test command
 Open `tests/test-storagebucket/main.k` and replace the scaffolding with the
 following configuration:
 
+
+<CodeBlock cloud="aws">
+
 ```yaml title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
-import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
+import models.io.upbound.awsm.s3.v1beta1 as awsms3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 
 _items = [
     metav1alpha1.CompositionTest{
         metadata.name="test-storagebucket"
-        spec= {
+        spec = {
             assertResources: [
                 platformv1alpha1.StorageBucket{
                     metadata.name: "example"
@@ -69,80 +76,89 @@ _items = [
                         versioning: True
                     }
                 }
-                s3v1beta1.BucketACL{
-                    metadata.name: "example-acl"
-                    spec.forProvider:{
-                        acl: "public-read"
-                        bucketRef: {
-                            name: "example-bucket"
+                awsms3v1beta1.Bucket{
+                    metadata = {
+                        generateName = "example-bucket"
+                        labels = {
+                            "platform.example.com/bucket" = "example-bucket"
                         }
+                    }
+                    spec.forProvider: {
                         region: "us-west-1"
                     }
                 }
-                s3v1beta1.BucketOwnershipControls{
-                    metadata.name: "example-boc"
+                awsms3v1beta1.BucketOwnershipControls{
+                    metadata.generateName: "example-boc"
                     spec.forProvider: {
-                        bucketRef: {
-                            name: "example-bucket"
-                        }
-                        region: "us-west-1"
-                        rule: [
-                            {
-                                objectOwnership: "BucketOwnerPreferred"
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
                             }
-                        ]
-                    }
-                }
-                s3v1beta1.Bucket{
-                    metadata.name: "example-bucket"
-                    spec.forProvider: {
-                        region: "us-west-1"
-                    }
-                }
-                s3v1beta1.BucketServerSideEncryptionConfiguration{
-                    metadata.name: "example-encryption"
-                    spec.forProvider: {
-                        bucketRef: {
-                            name: "example-bucket"
                         }
                         region: "us-west-1"
-                        rule: [
-                            {
-                                applyServerSideEncryptionByDefault: [
-                                    {
-                                        sseAlgorithm: "AES256"
-                                    }
-                                ]
-                                bucketKeyEnabled: True
-                            }
-                        ]
+                        rule: {
+                            objectOwnership: "BucketOwnerPreferred"
+                        }
                     }
                 }
-                s3v1beta1.BucketPublicAccessBlock{
-                    metadata.name: "example-pab"
+                awsms3v1beta1.BucketPublicAccessBlock{
+                    metadata.generateName: "example-pab"
                     spec.forProvider: {
                         blockPublicAcls: False
                         blockPublicPolicy: False
-                        bucketRef: {
-                            name: "example-bucket"
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
                         }
                         ignorePublicAcls: False
                         region: "us-west-1"
                         restrictPublicBuckets: False
                     }
                 }
-                s3v1beta1.BucketVersioning{
-                    metadata.name: "example-versioning"
-                    spec.forProvider: {
-                        bucketRef: {
-                            name: "example-bucket"
+                awsms3v1beta1.BucketACL{
+                    metadata.generateName: "example-acl"
+                    spec.forProvider:{
+                        acl: "public-read"
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
                         }
                         region: "us-west-1"
-                        versioningConfiguration: [
+                    }
+                }
+                awsms3v1beta1.BucketServerSideEncryptionConfiguration{
+                    metadata.generateName: "example-encryption"
+                    spec.forProvider: {
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
+                        }
+                        region: "us-west-1"
+                        rule: [
                             {
-                                status: "Enabled"
-                            },
+                                applyServerSideEncryptionByDefault: {
+                                    sseAlgorithm: "AES256"
+                                }
+                                bucketKeyEnabled: True
+                            }
                         ]
+                    }
+                }
+                awsms3v1beta1.BucketVersioning{
+                    metadata.generateName: "example-versioning"
+                    spec.forProvider: {
+                        bucketSelector = {
+                            matchLabels = {
+                                "platform.example.com/bucket" = "example-bucket"
+                            }
+                        }
+                        region: "us-west-1"
+                        versioningConfiguration: {
+                            status: "Enabled"
+                        }
                     }
                 }
             ]
@@ -156,25 +172,180 @@ _items = [
 ]
 items = _items
 ```
+</CodeBlock>
 
+<CodeBlock cloud="azure">
+
+```yaml title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.azurem.storage.v1beta1 as azuremstoragev1beta1
+import models.io.upbound.azurem.v1beta1 as azuremv1beta1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+
+
+_items = [
+    metav1alpha1.CompositionTest{
+        metadata.name="test-storagebucket"
+        spec= {
+            assertResources: [
+                platformv1alpha1.StorageBucket {
+                    metadata.name: "example"
+                    spec.parameters: {
+                        location: "eastus"
+                        versioning: True
+                        acl: "public"
+                    }
+                }
+                azuremv1beta1.ResourceGroup {
+                    metadata.name = "example-group"
+                    spec.forProvider = {
+                        location = "eastus"
+                    }
+                }
+                azuremstoragev1beta1.Account {
+                    metadata.name = "example"
+                    spec.forProvider = {
+                        accountTier = "Standard"
+                        accountReplicationType = "LRS"
+                        location = "eastus"
+                        blobProperties = {
+                            versioningEnabled = True
+                        }
+                        infrastructureEncryptionEnabled = True
+                        resourceGroupNameRef = {
+                            name = "example-group"
+                        }
+                    }
+                }
+                azuremstoragev1beta1.Container {
+                    metadata.name = "example-container"
+                    spec.forProvider = {
+                        containerAccessType = "blob"
+                        storageAccountNameRef = {
+                            name = "example"
+                        }
+                    }
+                }
+            ]
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
+            timeoutSeconds: 120
+            validate: False
+        }
+    }
+]
+items= _items
+```
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+import models.io.upbound.gcpm.storage.v1beta1 as gcpmstoragev1beta1
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
+
+
+_items = [
+    metav1alpha1.CompositionTest{
+        metadata.name: "test-storagebucket"
+        spec = {
+            assertResources: [
+                platformv1alpha1.StorageBucket {
+                    metadata.name: "example"
+                    spec.parameters: {
+                        location: "US"
+                        versioning: True
+                        acl: "publicRead"
+                    }
+                }
+                gcpmstoragev1beta1.Bucket {
+                    metadata.name = "example-bucket"
+                    spec.forProvider = {
+                        location = "US"
+                        versioning = {
+                            enabled = True
+                        }
+                    }
+                }
+                gcpmstoragev1beta1.BucketACL {
+                    metadata.name = "example-acl"
+                    spec.forProvider = {
+                        bucketRef = {
+                            name = "example-bucket"
+                        }
+                        predefinedAcl = "publicRead"
+                    }
+                }
+
+            ]
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
+            timeoutSeconds: 120
+            validate: False
+        }
+    }
+]
+items= _items
+```
+</CodeBlock>
 
 
 ## Review your test
 
 ### Import the testing models
 
+<CodeBlock cloud="aws">
+
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 import models.com.example.platform.v1alpha1 as platformv1alpha1
-import models.io.upbound.aws.s3.v1beta1 as s3v1beta1
+import models.io.upbound.awsm.s3.v1beta1 as awsms3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 ```
-
 
 This section imports:
 
 * Your custom StorageBucket XRD
 * AWS S3 resource schemas for validation
 * Upbound testing framework components
+
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.azurem.storage.v1beta1 as azuremstoragev1beta1
+import models.io.upbound.azurem.v1beta1 as azuremv1beta1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+```
+
+This section imports:
+
+* Your custom StorageBucket XRD
+* Azure Storage and Azure Resource Group schemas for validation
+* Upbound testing framework components
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+import models.io.upbound.gcpm.storage.v1beta1 as gcpmstoragev1beta1
+import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
+```
+
+This section imports:
+* Your custom StorageBucket XRD
+* Your GCP Storage schemas for validation
+* Upbound testing framework components
+
+</CodeBlock>
 
 ### Define your test case
 
@@ -206,12 +377,15 @@ This section:
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
 
-### Test the input claim
+<!-- vale MicrosoftHeadingAcronyms = NO -->
+### Test the input XR
+<!-- vale MicrosoftHeadingAcronyms = YES -->
 
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 assertResources: [
-    platformv1alpha1.StorageBucket{
+    platformv1alpha1.StorageBucket {
         metadata.name: "example"
         spec.parameters: {
             acl: "public-read"
@@ -221,152 +395,302 @@ assertResources: [
     }
 ```
 
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+assertResources: [
+    platformv1alpha1.StorageBucket {
+        metadata.name: "example"
+        spec.parameters: {
+            region: "eastus"
+            versioning: True
+            acl: "public"
+        }
+    }
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+assertResources: [
+    platformv1alpha1.StorageBucket {
+        metadata.name: "example"
+        spec.parameters: {
+            location: "US"
+            versioning: True
+            acl: "publicRead"
+        }
+    }
+```
+
+</CodeBlock>
 
 This assertion verifies:
 
-* Your composition receives the user's claim
+* Your composition receives the user's `XR`
 * Your control plane processes the `acl`, `region` and `versioning` parameters
 * The control plane maintains the resource name and structure
 
-### Test the core S3 bucket
 
+### Test the storage resource
+
+<CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.Bucket{
-        metadata.name: "example-bucket"
-        spec.forProvider: {
-            region: "us-west-1"
+awsms3v1beta1.Bucket{
+    metadata = {
+        generateName = "example-bucket"
+        labels = {
+            "platform.example.com/bucket" = "example-bucket"
         }
     }
+    spec.forProvider: {
+        region: "us-west-1"
+    }
+}
 ```
 
 
 This assertion verifies that:
 
 * The main S3 bucket resource exists
-* The bucket uses the expected naming pattern (`example-bucket`)
+* The bucket uses the expected generated naming pattern (`example-bucket`)
 * The bucket uses the user's specified region parameter
+* The bucket has the correct label added `platform.example.com/bucket` with value `example-bucket`
 
-### Test security configurations
+#### Test security configurations
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.BucketOwnershipControls{
-        metadata.name: "example-boc"
-        spec.forProvider: {
-            bucketRef: {
-                name: "example-bucket"
+awsms3v1beta1.BucketOwnershipControls{
+    metadata.generateName: "example-boc"
+    spec.forProvider: {
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
-            rule: [
-                {
-                    objectOwnership: "BucketOwnerPreferred"
-                }
-            ]
+        }
+        region: "us-west-1"
+        rule: {
+            objectOwnership: "BucketOwnerPreferred"
         }
     }
-    s3v1beta1.BucketPublicAccessBlock{
-        metadata.name: "example-pab"
-        spec.forProvider: {
-            blockPublicAcls: False
-            blockPublicPolicy: False
-            bucketRef: {
-                name: "example-bucket"
+}
+awsms3v1beta1.BucketPublicAccessBlock{
+    metadata.generateName: "example-pab"
+    spec.forProvider: {
+        blockPublicAcls: False
+        blockPublicPolicy: False
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            ignorePublicAcls: False
-            region: "us-west-1"
-            restrictPublicBuckets: False
         }
+        ignorePublicAcls: False
+        region: "us-west-1"
+        restrictPublicBuckets: False
     }
+}
 ```
 
 
 This section tests to verify:
 
+* Correct bucket selection to apply configuration to
 * Proper object ownership configuration
 * Correct settings for public bucket access
 * Security configuration applied to the bucket
 
-### Test access control and encryption
+#### Test access control and encryption
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.BucketACL{
-        metadata.name: "example-acl"
-        spec.forProvider:{
-            acl: "public-read"
-            bucketRef: {
-                name: "example-bucket"
+awsms3v1beta1.BucketACL{
+    metadata.generateName: "example-acl"
+    spec.forProvider:{
+        acl: "public-read"
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
         }
+        region: "us-west-1"
     }
-    s3v1beta1.BucketServerSideEncryptionConfiguration{
-        metadata.name: "example-encryption"
-        spec.forProvider: {
-            bucketRef: {
-                name: "example-bucket"
+}
+awsms3v1beta1.BucketServerSideEncryptionConfiguration{
+    metadata.generateName: "example-encryption"
+    spec.forProvider: {
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
-            rule: [
-                {
-                    applyServerSideEncryptionByDefault: [
-                        {
-                            sseAlgorithm: "AES256"
-                        }
-                    ]
-                    bucketKeyEnabled: True
+        }
+        region: "us-west-1"
+        rule: [
+            {
+                applyServerSideEncryptionByDefault: {
+                    sseAlgorithm: "AES256"
                 }
-            ]
-        }
+                bucketKeyEnabled: True
+            }
+        ]
     }
+}
 ```
 
 
 These tests ensure the control plane:
 
+* Correct bucket selection to apply configuration to
 * Applies the user's access control preference
 * Enabled encryption by default
 * Applies security configurations consistently
 
-### Test conditional features
-
+#### Test conditional features
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-    s3v1beta1.BucketVersioning{
-        metadata.name: "example-versioning"
-        spec.forProvider: {
-            bucketRef: {
-                name: "example-bucket"
+awsms3v1beta1.BucketVersioning{
+    metadata.generateName: "example-versioning"
+    spec.forProvider: {
+        bucketSelector = {
+            matchLabels = {
+                "platform.example.com/bucket" = "example-bucket"
             }
-            region: "us-west-1"
-            versioningConfiguration: [
-                {
-                    status: "Enabled"
-                },
-            ]
+        }
+        region: "us-west-1"
+        versioningConfiguration: {
+            status: "Enabled"
         }
     }
-]
-items = _items
-
+}
 ```
-
 
 This assertion verifies:
 
+* Correct bucket selection to configure versioning
 * Versioning resource only exists when `versioning: True`
 * The control plane sets versioning to "Enabled" 
 * The control plane links versioning to the bucket 
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+#### Test the Azure Resource Group
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremv1beta1.ResourceGroup {
+    metadata.name = "example-group"
+    spec.forProvider = {
+        location = "eastus"
+    }
+}
+```
+
+This assertion verifies that:
+* The main resource group exists
+* The resource group was created in the correct region (`eastus`)
+
+
+#### Test Storage Account
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremstoragev1beta1.Account {
+    metadata.name = "example"
+    spec.forProvider = {
+        accountTier = "Standard"
+        accountReplicationType = "LRS"
+        location = "eastus"
+        blobProperties = {
+            versioningEnabled = True
+        }
+        infrastructureEncryptionEnabled = True
+        resourceGroupNameRef = {
+            name = "example-group"
+        }
+    }
+}
+```
+
+This assertion verifies that:
+* Correct storage account tier is utilized (`Standard`)
+* Control plane sets correct replication type 
+* Control plane creates storage account in correct region
+* Control plane sets correct versioning resource only exists when `versioning: True`
+* Control plane sets correct encryption settings for storage account
+* Storage account is created in correct resource group
+
+#### Test Container Configuration
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+azuremstoragev1beta1.Container {
+    metadata.name = "example-container"
+    spec.forProvider = {
+        containerAccessType = "blob"
+        storageAccountNameRef = {
+            name = "example"
+        }
+    }
+}
+
+```
+
+This assertion verifies that:
+* Control plane sets correct container type `blob` due to public access
+* Control plane deploys container to correct storage account
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+gcpmstoragev1beta1.Bucket {
+    metadata.name = "example-bucket"
+    spec.forProvider = {
+        location = "US"
+        versioning = {
+            enabled = True
+        }
+    }
+}
+```
+
+This assertion verifies that:
+* The main GCP bucket resource exists
+* The bucket uses the expected generated naming pattern (`example-bucket`)
+* The bucket uses the user's specified region parameter
+* The bucket was created with versioning enabled
+
+#### Test bucket access control 
+
+```yaml-noCopy title="tests/test-storagebucket/main.k"
+gcpmstoragev1beta1.BucketACL {
+    metadata.name = "example-acl"
+    spec.forProvider = {
+        bucketRef = {
+            name = "example-bucket"
+        }
+        predefinedAcl = "publicRead"
+    }
+}
+```
+
+This assertion verifies that:
+* Correct bucket selection to apply configuration to
+* Correct settings for public bucket access
+* Security configuration applied to the bucket
+
+</CodeBlock>
 
 ### Final test structure
 
 Your complete test now:
 <!-- vale write-good.Passive = NO -->
-* Simulates a user's StorageBucket claim
+* Simulates a user's StorageBucket `XR`
 * Verifies resource creation
 * Ensures resources are linked together
-* Confirms user inputs flow through to AWS resources
+* Confirms user inputs flow through to created resources
 <!-- vale write-good.Passive = YES -->
 
 ## Run your tests
@@ -411,7 +735,7 @@ Passing tests show:
 <!-- vale write-good.Passive = NO -->
 * Your composition function logic is correct
 * User parameters processed properly
-* All required AWS resources are created
+* All required resources are created
 * Security configurations are applied consistently
 * Conditional logic works as expected
 

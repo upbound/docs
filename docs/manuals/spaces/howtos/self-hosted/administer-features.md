@@ -24,7 +24,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 ## Observability
 
-**Status:** Preview
+**Status:** GA
 **Available from:** Spaces v1.13+
 
 This feature is enabled by default in Cloud Spaces.
@@ -32,12 +32,12 @@ This feature is enabled by default in Cloud Spaces.
 
 
 To enable this feature in a self-hosted Space, set
-`features.alpha.observability.enabled=true` when installing the Space:
+`observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0`) when installing the Space:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   ...
-  --set "features.alpha.observability.enabled=true" \
+  --set "observability.enabled=true" \
 ```
 
 The observability feature collects telemetry data from user-facing control

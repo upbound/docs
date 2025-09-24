@@ -58,4 +58,5 @@ up test run tests/* --e2e --kubectl=.tools/kubectl
 | `--cache-dir` | | Directory used for caching dependencies. |
 | `--kubectl` | | Absolute path to the kubectl binary. Defaults to the one in $PATH. |
 | `--public` | | Create new repositories with public visibility. |
-| `--e2e` | | Run E2E |
+| `--e2e` | | Run E2E tests |
+| `--operation` | | Run Operation tests |
