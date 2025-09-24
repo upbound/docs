@@ -3,9 +3,6 @@ on:
   pull_request:
     paths:
       - 'docs/**'
-      - 'src/**'
-      - 'docusaurus.config.js'
-      - 'package.json'
   workflow_dispatch:
 
 jobs:
