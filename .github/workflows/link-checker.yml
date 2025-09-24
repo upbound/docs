@@ -20,20 +20,9 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-    
+          
       - name: Install dependencies
         run: npm ci
-  
-      - name: Clean build directory
-        run: rm -rf build
-  
-      - name: Build Docusaurus site
-        run: npm run build
-          
-      - name: Clean and install dependencies
-        run: |
-          rm -rf build node_modules package-lock.json
-          npm install
         
       - name: Build Docusaurus site
         run: npm run build
