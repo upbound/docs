@@ -98,7 +98,7 @@ connects with the service, and manages the lifecycle on your behalf.
 
 
 <!-- vale gitlab.SentenceLength = YES -->
-[upgrade]: /getstarted/upgrade-to-upbound/upgrade-to-uxp
+[upgrade]: /getstarted/upgrade-to-upbound/upgrade-to-ux
 [guides]: /guides
 [register]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_get_started 
 [up]: /manuals/cli/overview
