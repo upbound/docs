@@ -1560,6 +1560,31 @@
             "source": "/guides/intelligent-controllers/intelligent-control-planes(/)?",
             "destination": "/guides/intelligent-control-planes/",
             "permanent": true
+        },
+        {
+            "source": "/docs/manuals/uxp/howtos/self-managed-uxp/configure-packages(/)?",
+            "destination": "/docs/manuals/uxp/howtos/configure-packages/",
+            "permanent": true
+        },
+        {
+            "source": "/docs/manuals/uxp/howtos/self-managed-uxp/license-management(/)?",
+            "destination": "/docs/manuals/uxp/howtos/license-management/",
+            "permanent": true
+        },
+        {
+            "source": "/docs/manuals/uxp/howtos/self-managed-uxp/provider-vpa(/)?",
+            "destination": "/docs/manuals/uxp/howtos/provider-vpa/",
+            "permanent": true
+        },
+        {
+            "source": "/docs/manuals/uxp/howtos/self-managed-uxp/usage-metering(/)?",
+            "destination": "/docs/manuals/uxp/howtos/usage-metering/",
+            "permanent": true
+        },
+        {
+            "source": "/docs/manuals/uxp/howtos/self-managed-uxp/uxp-deployment(/)?",
+            "destination": "/docs/manuals/uxp/howtos/uxp-deployment/",
+            "permanent": true
         }
     ]
 }
