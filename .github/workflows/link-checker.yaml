@@ -1,0 +1,28 @@
+name: Link validation
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'src/**'
+      - 'docusaurus.config.js'
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel Preview Deployment
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
+        id: vercel-preview
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+
+      - name: Run linkchecker on Vercel preview
+        run: |
+          docker run --rm ghcr.io/linkchecker/linkchecker:latest \
+            --verbose \
+            --check-extern \
+            --no-robots \
+            ${{ steps.vercel-preview.outputs.url }}
