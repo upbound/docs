@@ -1,36 +1,37 @@
 name: Run htmltest and validate links
-
 on:
   pull_request:
+    branches:
+      - main
     paths:
-      - 'content/**'
-      - 'themes/**'
-
-  # Allows manual workflow run (must in default branch to work)
+      - 'docs/**'
+      - 'src/**'
+      - 'docusaurus.config.js'
+  # Allows manual workflow run (must be in default branch to work)
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the docs repo
-        uses: actions/checkout@v3
-
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.140.0'
-          extended: true
-
-      - name: Clean and Build
-        # Rebuild from scratch using development environment
-        run: rm -rf public resources .hugo_build.lock
+        uses: actions/checkout@v4
         
-      - name: Clean and Build
-        # Rebuild from scratch using development environment
-        run: hugo --cleanDestinationDir --environment development
-
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Clean and install dependencies
+        run: |
+          rm -rf build node_modules package-lock.json
+          npm install
+        
+      - name: Build Docusaurus site
+        run: npm run build
+        
       - name: Run htmltest
         uses: wjdp/htmltest-action@master
         with:
-          config: ./utils/htmltest/.htmltest.yml
+          config: .htmltest.yml
+          path: build
