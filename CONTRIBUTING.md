@@ -81,11 +81,6 @@ Add to `.vscode/settings.json`:
   // Vale - uses existing utils/vale/.vale.ini configuration
   "vale.valeCLI.config": "${workspaceFolder}/utils/vale/.vale.ini",
   
-  // MDX support for Docusaurus
-  "files.associations": {
-    "*.mdx": "mdx"
-  },
-  
   // 80-character line wrapping for markdown files
   "[markdown]": {
     "editor.wordWrapColumn": 80,
