@@ -1,6 +1,6 @@
 const versions = {
   cli: '0.39.1',
-  spaces: '1.14.0',
+  spaces: '1.14.1',
   aws: '1.23.0',
   azure: '1.13.0',
   gcp: '1.14.0',

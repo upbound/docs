@@ -22,6 +22,14 @@ Any important warnings or necessary information
 
 -->
 
+## v1.14.1
+
+### Release Date: 2025-09-24
+
+#### Important Changes
+
+- Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root ca changes.
+
 ## v1.14.0
 
 ### Release Date: 2025-09-16
