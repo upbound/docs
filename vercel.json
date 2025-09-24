@@ -1584,6 +1584,7 @@
         {
             "source": "/docs/manuals/uxp/howtos/self-managed-uxp/uxp-deployment(/)?",
             "destination": "/docs/manuals/uxp/howtos/uxp-deployment/",
+            "permanent": true
         },
             "source": "/manuals/uxp/guides/self-managed-uxp/license-management(/)?",
             "destination": "/manuals/uxp/howtos/self-managed-uxp/license-management/",
