@@ -7,7 +7,6 @@ on:
       - 'docs/**'
       - 'src/**'
       - 'docusaurus.config.js'
-  # Allows manual workflow run (must be in default branch to work)
   workflow_dispatch:
 jobs:
   build:
@@ -21,6 +20,15 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+    
+      - name: Install dependencies
+        run: npm ci
+  
+      - name: Clean build directory
+        run: rm -rf build
+  
+      - name: Build Docusaurus site
+        run: npm run build
           
       - name: Clean and install dependencies
         run: |
