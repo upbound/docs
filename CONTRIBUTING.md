@@ -165,13 +165,13 @@ Remember: Vale helps catch issues, but maintainer approval is always required fo
 **Vale overrides**: Stop Vale from parsing a specific section with a specific rule.
 
 ```markdown
-````
+
 <!--vale Microsoft.Adverbs = NO -->
-````
+
 Create a support ticket and our team will reach out to you promptly.
-````
+
 <!-- vale Microsoft.Adverbs = YES -->
-````
+
 ```
 
 This overrides the warning for the adverb "promptly" in a single sentence.
