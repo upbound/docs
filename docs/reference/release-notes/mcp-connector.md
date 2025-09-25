@@ -21,6 +21,43 @@ Any important warnings or necessary information
 
 -->
 
+## v0.10.0
+
+### Release Date: 2025-09-25
+
+#### What's Changed
+
+- Added support for connecting to UXP v2 control planes.
+- Namespaced XR APIs are available for consumption in the consumer clusters.
+- The changes are backward-compatible, existing XP v1 Claim APIs continue working
+as is.
+
+:::note
+Namespaced XR APIs have the `spec.crossplane` field in their spec. These are set 
+by Crossplane in the connected controlplane, and include Crossplane 
+machinery-related fields, with references to original resources in the connected
+MCP. These will be visible in the consumer cluster.
+Under typical operation, these fields are not required to be set by
+the user when interacting with the XR.
+:::
+
+## v0.9.3
+
+### Release Date: 2025-07-25
+
+#### What's Changed
+
+- Fixed an issue that caused admission webhooks to fail for connected resources
+in consumer clusters
+
+## v0.9.2
+
+### Release Date: 2025-07-25
+
+:::warning
+This release had an incomplete fix. Please use `v0.9.3` instead
+:::
+
 ## v0.9.1
 
 ### Release Date: 2025-05-28

@@ -6,7 +6,7 @@ const versions = {
   gcp: '1.14.0',
   helm: '0.21.1',
   kubernetes: '0.18.0',
-  mcpconnector: 'v0.9.1'
+  mcpconnector: 'v0.10.0'
 };
 
 export default function Version({type = 'cli'}) {
