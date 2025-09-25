@@ -34,11 +34,10 @@ as is.
 
 :::note
 Namespaced XR APIs have the `spec.crossplane` field in their spec. These are set 
-by Crossplane in the connected controlplane, and include Crossplane 
-machinery-related fields, with references to original resources in the connected
+by Crossplane in the connected control plane and include Crossplane 
+machinery-related fields with references to original resources in the connected
 MCP. These will be visible in the consumer cluster.
-Under typical operation, these fields are not required to be set by
-the user when interacting with the XR.
+Typically, the user is not required to set these fields when interacting with the XR.
 :::
 
 ## v0.9.3
