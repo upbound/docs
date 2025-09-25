@@ -9,7 +9,7 @@ plan: "standard"
 
 Control Plane Connector connects arbitrary Kubernetes application clusters outside the
 Upbound Spaces to your control planes running in Upbound Spaces.
-This lets you interact with your control plane's API from the app cluster. The claim APIs
+This lets you interact with your control plane's API from the app cluster. The claim APIs and the namespaced XR APIs
 you define via CompositeResourceDefinitions (XRDs) in the control plane, are available in
 your app cluster alongside Kubernetes workload APIs like Pod. Control Plane Connector
 enables the same experience as a locally installed Crossplane.
@@ -19,23 +19,23 @@ enables the same experience as a locally installed Crossplane.
 ### Control Plane Connector operations
 
 Control Plane Connector leverages the [Kubernetes API AggregationLayer][kubernetes-api-aggregationlayer]
-to create an extension API server and serve the claim APIs in the control plane. It
-discovers the claim APIs available in the control plane and registers corresponding
+to create an extension API server and serve the claim APIs and the namespaced XR APIs in the control plane. It
+discovers the claim APIs and the namespaced XR APIs available in the control plane and registers corresponding
 APIService resources on the app cluster. Those APIService resources refer to the
 extension API server of Control Plane Connector.
 
-The claim APIs are available in your Kubernetes cluster, just like all native
+The claim APIs and the namespaced XR APIs are available in your Kubernetes cluster, just like all native
 Kubernetes APIs.
 
-The Control Plane Connector processes every request targeting the claim APIs and makes the
+The Control Plane Connector processes every request targeting the claim APIs and the namespaced XR APIs and makes the
 relevant requests to the connected control plane.
 
-Only the connected control plane stores and processes all claims created in the app
+Only the connected control plane stores and processes all claims and namespaced XRs created in the app
 cluster, eliminating any storage use at the application cluster. The control plane
 connector provisions a target namespace at the control plane for the app cluster and stores
-all claims in this target namespace.
+all claims and namespaced XRs in this target namespace.
 
-For managing the claims, the Control Plane Connector creates a unique identifier for a
+For managing the claims and namespaced XRs, the Control Plane Connector creates a unique identifier for a
 resource by combining input parameters from claims, including:
 - `metadata.name`
 - `metadata.namespace`
@@ -52,6 +52,9 @@ For instance, if a claim named `my-bucket` exists in the test namespace in
 `cluster-dev`, the system calculates the SHA-256 hash from
 `my-bucket-x-test-x-00000000-0000-0000-0000-000000000000` and takes the first 16
 characters. The control plane side then names the claim `claim-c603e518969b413e`.
+
+For namespaced XRs, the process is similar, only the prefix is different.
+The name becomes `nxr-c603e518969b413e`.
 <!-- vale gitlab.SentenceLength = YES -->
 
 ### Installation
@@ -135,7 +138,7 @@ Provide the values file above when you run the CLI command:
 up controlplane connector install my-control-plane my-app-ns-1 --file=connector-values.yaml
 ```
 
-The Claim APIs from your control plane are now visible in the cluster.
+The Claim APIs and the namespaced XR APIs from your control plane are now visible in the cluster.
 You can verify this with `kubectl api-resources`.
 
 ```bash
