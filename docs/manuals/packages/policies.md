@@ -10,7 +10,9 @@ description: The Upbound Official package policies.
 <!-- vale gitlab.FutureTense = NO -->
 <!-- vale write-good.Passive = NO -->
 <!-- vale gitlab.SentenceLength = NO -->
+<!-- vale alex.Condescending = NO -->
 
+ 
 :::note
 **Policy version:** `1.0.0`  
 **Effective date:** `25 September 2025`  
@@ -337,6 +339,7 @@ A CVE will be considered addressed when a new version of the provider with the f
 <!-- vale gitlab.FutureTense = YES -->
 <!-- vale write-good.Passive = YES -->
 <!-- vale gitlab.SentenceLength = YES -->
+<!-- vale alex.Condescending = NO -->
 
 [configured-pull-secrets]: /manuals/packages/providers/pull-secrets
 [open-a-ticket]: /reference/usage/support
