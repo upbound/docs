@@ -123,10 +123,10 @@ Marketplace.
 ### Standard, Enterprise, and Business Critical subscribers
 
 **Access**: If your organization has a `Standard`, `Enterprise`, or `Business Critical` subscription to Upbound, you can access all available versions within the availability window, including backport releases (backports require configured pull secrets).  
-**Support**: Upbound supports Official and Partner packages for 12 months from the release date.
+**Support**: Upbound supports Official and Partner packages for 12 months from the release date of the minor version. A minor version may receive patch releases for up to 12 months after it was first released.
 
 :::note
-Availability is distinct from Support. Support is provided for 12 months from the release date of a package. After the Support window ends, artifacts may remain available per the Availability window.
+Availability is distinct from Support. Support is provided for 12 months from the release date of a package's minor version. After the Support window ends, artifacts may remain available per the Availability window.
 
 Upbound customers with `Enterprise` plan or higher subscription can [open a ticket][open-a-ticket] to request support.
 :::
