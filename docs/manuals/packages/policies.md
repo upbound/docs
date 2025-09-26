@@ -20,21 +20,22 @@ The following policies govern the access, support and maintenance procedures of 
 
 ## Scope and Definitions
 
-| Topic                                    | Description                                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Upstream vs Downstream                   | **Upstream**: public repositories under `github.com/crossplane-contrib` and main releases published to `xpkg.crossplane.io`; all source code changes land here first.<br/> **Downstream**: private repositories under `github.com/upbound` that mirror upstream and produce downstream main and backport releases published to `xpkg.upbound.io`. |
-| Main vs Backport                         | **Main**: regular releases from the `main` branch.<br/>**Backport**: patch-only releases from release maintenance branches for a specific minor version; cherry-picked fixes only, no new features.                                                                                                                                               |
-| Community, Official and Partner packages | **Community**: built, maintained and supported by members of the Crossplane community.<br/>**Official**: built, maintained and supported by Upbound.<br/>**Partner**: built and supported jointly by Upbound and the partner; Upbound verifies that the package meets its quality bar.                                                            |
-| Host                                     | Host refers to the runtime the package targets.<br/>**OSS Crossplane**: supports providers, functions and configuration packages.<br/>**UXP**: supports all packages in OSS Crossplane and other package types (for example, add-ons) that aren't available for OSS Crossplane;                                                                   |
-| Availability Window                      | The duration that a release remains pullable in from the registry.<br/>**Main releases**: available for 6 months from the release date. <br/>**Backport releases**: available for 18 months from the release date.                                                                                                                                |
-| SBOM                                     | A software bill of materials (SBOM) lists all the software components and their versions used in the published package. Upstream main releases are unsigned and have no SBOM. All downstream releases are signed and include an SBOM.                                                                                                             |
-| FIPS                                     | FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Enterprise+ license.                                                                                                                                                                                                                         |
+| Topic                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| UXP                                      | Upbound Crossplane, or UXP, is Upbound's enterprise distribution of Crossplane which is 100% compatible with OSS Crossplane. You can easily switch from OSS Crossplane to UXP or move back to OSS Crossplane. [Read more about UXP](/manuals/uxp/overview/).                                                                                                                                                                                                                 |
+| Upstream vs Downstream                   | **Upstream**: public repositories under `github.com/crossplane-contrib` and main releases published to `xpkg.crossplane.io`. [Browse packages](https://github.com/orgs/crossplane-contrib/packages); all source code changes land here first.<br/> **Downstream**: private repositories under `github.com/upbound` that mirror upstream and produce downstream main and backport releases published to `xpkg.upbound.io`. [Browse packages](https://marketplace.upbound.io). |
+| Main vs Backport                         | **Main**: regular releases from the `main` branch.<br/>**Backport**: patch-only releases from release maintenance branches for a specific minor version; cherry-picked fixes only, no new features.                                                                                                                                                                                                                                                                          |
+| Community, Official and Partner packages | **Community**: built, maintained and supported by members of the Crossplane community.<br/>**Official**: built, maintained and supported by Upbound.<br/>**Partner**: built and supported jointly by Upbound and the partner; Upbound verifies that the package meets its quality bar.                                                                                                                                                                                       |
+| Compatibility                            | Compatibility refers to the runtime the package targets.<br/>**OSS Crossplane**: supports providers, functions and configuration packages.<br/>**UXP**: supports all packages in OSS Crossplane and other package types (for example, add-ons) that aren't available for OSS Crossplane;                                                                                                                                                                                     |
+| Availability Window                      | The duration that a release remains pullable in from the registry.<br/>**Main releases**: available for 6 months from the release date. <br/>**Backport releases**: available for 18 months from the release date.                                                                                                                                                                                                                                                           |
+| SBOM                                     | A software bill of materials (SBOM) lists all the software components and their versions used in the published package. Upstream main releases are unsigned and have no SBOM. All downstream releases are signed and include an SBOM.                                                                                                                                                                                                                                        |
+| FIPS                                     | FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Enterprise+ license.                                                                                                                                                                                                                                                                                                                                                    |
 
 ## Source Code and License
 
 All Upbound authored packages for Crossplane are open source, and the source code is made available under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0) regardless of where the source code is located.
 
-Where a package is available to run in the OSS Crossplane host (for example, providers, functions, and configurations), the source code for these packages is located in the `crossplane-contrib` organization on GitHub and is subject to the [governance](https://github.com/crossplane/crossplane/blob/main/GOVERNANCE.md) of the Crossplane project.
+Where a package is available to run in OSS Crossplane (for example, providers, functions, and configurations), the source code for these packages is located in the `crossplane-contrib` organization on GitHub and is subject to the [governance](https://github.com/crossplane/crossplane/blob/main/GOVERNANCE.md) of the Crossplane project.
 
 UXP-only packages (for example, Add-ons) are located in the Upbound organization on GitHub.
 
@@ -50,14 +51,14 @@ Upbound prefers Partner packages when a capable partner exists. Upbound will pub
 
 Official and Partner packages are subject to Upbound's CVE remediation SLA and support entitlements for eligible customers.
 
-## Host policy
+## Compatibility policy
 
-Packages can target one or both Crossplane hosts:
+Packages can target one or both Crossplane runtimes:
 
 - Providers, Functions, and Configurations all run on OSS Crossplane or UXP.
 - Add-ons and other UXP-only features are available on UXP only.
 
-Where host-specific behavior exists, it will be called out in the package documentation and release notes.
+Where runtime-specific behavior exists, it will be called out in the package documentation and release notes.
 
 ## Maintenance, backports and distribution
 
@@ -89,9 +90,9 @@ By default Upbound backports security fixes to releases made during the last 6 m
 
 ### Distribution
 
-- Downstream releases of packages compatible with OSS Crossplane are runnable on all hosts (see "Access and Compatibility" section).
+- Downstream releases of packages compatible with OSS Crossplane are runnable on all Crossplane runtimes (see "Access and Compatibility" section).
 - Downstream releases are distributed through the [Upbound Marketplace](https://marketplace.upbound.io).
-- Downstream main releases are publicly accessible; backport releases require a Standard+ subscription and [configured pull secrets][configured-pull-secrets].
+- Downstream main releases are publicly accessible; backport releases require a [Standard+ subscription][pricing-page] and [configured pull secrets][configured-pull-secrets].
 
 ### Signing, SBOM, and FIPS
 
@@ -101,7 +102,7 @@ By default Upbound backports security fixes to releases made during the last 6 m
 
 ### Requesting a fix or backport
 
-- Upbound customers with Standard+ subscriptions can [open a ticket][open-a-ticket] to request a fix and evaluation for creating a backport for a supported release.
+- Upbound customers with [Standard+ subscriptions][pricing-page] can [open a ticket][open-a-ticket] to request a fix and evaluation for creating a backport for a supported release.
 - Community users should file an issue upstream; fixes will be included in a future main release.
 
 ::::note
@@ -171,7 +172,7 @@ Packages have two relevant version numbers:
 - **Downstream backport** releases are produced as needed based on eligibility and customer impact.
 
 :::tip
-Upbound customers with a Standard+ plan may submit a support request to fast-track a release cadence.
+Upbound customers with a [Standard+ subscription][pricing-page] may submit a support request to fast-track a release cadence.
 :::
 
 ### Testing and release quality gating
@@ -181,11 +182,11 @@ Upbound customers with a Standard+ plan may submit a support request to fast-tra
 
 ### Publish summary matrix
 
-| Release type        | Host runtime        | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Enterprise+) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
+| Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Enterprise+) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
 | ------------------- | ------------------- | -------------------------- | -------------------- | ------ | ---- | -------------------------------------------------------- | ------------------- | ------------------------- | ------------------------- | ------------------------------------- | -------------------------------------------- |
 | Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | 6 months            | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
 | Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 6 months            | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
-| Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | Standard+                 | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
+| Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | [Standard+][pricing-page] | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
 
 ## Package versions
 
@@ -344,3 +345,4 @@ A CVE will be considered addressed when a new version of the provider with the f
 [provider-family-aws]: https://marketplace.upbound.io/providers/upbound/provider-family-aws
 [common-vulnerabilities-and-exposures]: https://nvd.nist.gov/general/cve-process
 [common-vulnerability-scoring-system-version-3]: https://nvd.nist.gov/vuln-metrics/cvss
+[pricing-page]: https://www.upbound.io/pricing
