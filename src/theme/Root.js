@@ -9,6 +9,14 @@ export default function Root({ children }) {
   useEffect(() => {
     if (!isBrowser) return;
     
+    // Add Scarf pixel
+    const scarfImg = document.createElement('img');
+    scarfImg.referrerPolicy = 'no-referrer-when-downgrade';
+    scarfImg.src = 'https://static.scarf.sh/a.png?x-pxid=YOUR_PIXEL_ID';
+    scarfImg.alt = '';
+    scarfImg.style.display = 'none';
+    document.body.appendChild(scarfImg);
+    
     let tabsByText = {};
     let lastHistoryUpdate = 0;
     const HISTORY_THROTTLE = 500; 
@@ -102,6 +110,11 @@ export default function Root({ children }) {
       clearTimeout(initTimeout);
       clearTimeout(observerTimeout);
       observer.disconnect();
+      
+      // Remove Scarf pixel on cleanup
+      if (scarfImg.parentNode) {
+        scarfImg.parentNode.removeChild(scarfImg);
+      }
       
       document.querySelectorAll('[data-sync-handler]').forEach(tab => {
         tab.removeAttribute('data-sync-handler');
