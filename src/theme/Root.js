@@ -12,7 +12,7 @@ export default function Root({ children }) {
     // Add Scarf pixel
     const scarfImg = document.createElement('img');
     scarfImg.referrerPolicy = 'no-referrer-when-downgrade';
-    scarfImg.src = 'https://static.scarf.sh/a.png?x-pxid=YOUR_PIXEL_ID';
+    scarfImg.src = 'https://static.scarf.sh/a.png?x-pxid=b8e0f0a1-52d2-42f1-b4d0-0c734bada4ad';
     scarfImg.alt = '';
     scarfImg.style.display = 'none';
     document.body.appendChild(scarfImg);
