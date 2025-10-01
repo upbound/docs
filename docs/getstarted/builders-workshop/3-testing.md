@@ -78,7 +78,7 @@ _items = [
         metadata.name="test-storagebucket"
         spec = {
             assertResources: [
-                platformv1alpha1.StorageBucket {
+                platformv1alpha1.StorageBucket{
                     metadata.name: "example"
                     spec.parameters: {
                         acl: "public-read"
@@ -86,22 +86,14 @@ _items = [
                         versioning: True
                     }
                 }
-                _stripDefaults(awsms3v1beta1.Bucket {
-                    metadata = {
-                        annotations = {
-                            "crossplane.io/composition-resource-name" = "example-bucket"
-                        }
-                    }
+                _stripDefaults(awsms3v1beta1.Bucket{
+                    metadata.generateName = "example-bucket"
                     spec.forProvider: {
                         region: "us-west-1"
                     }
                 })
-                _stripDefaults(awsms3v1beta1.BucketOwnershipControls {
-                    metadata = {
-                        annotations = {
-                            "crossplane.io/composition-resource-name" = "example-boc"
-                        }
-                    }
+                _stripDefaults(awsms3v1beta1.BucketOwnershipControls{
+                    metadata.generateName = "example-boc"
                     spec.forProvider: {
                         region: "us-west-1"
                         rule: {
@@ -109,12 +101,8 @@ _items = [
                         }
                     }
                 })
-                _stripDefaults(awsms3v1beta1.BucketPublicAccessBlock {
-                    metadata = {
-                        annotations = {
-                            "crossplane.io/composition-resource-name" = "example-pab"
-                        }
-                    }
+                _stripDefaults(awsms3v1beta1.BucketPublicAccessBlock{
+                    metadata.generateName = "example-pab"
                     spec.forProvider: {
                         blockPublicAcls: False
                         blockPublicPolicy: False
@@ -124,22 +112,14 @@ _items = [
                     }
                 })
                 _stripDefaults(awsms3v1beta1.BucketACL{
-                    metadata = {
-                        annotations = {
-                            "crossplane.io/composition-resource-name" = "example-acl"
-                        }
-                    }
+                    metadata.generateName = "example-acl"
                     spec.forProvider:{
                         acl: "public-read"
                         region: "us-west-1"
                     }
                 })
-                _stripDefaults(awsms3v1beta1.BucketServerSideEncryptionConfiguration {
-                    metadata = {
-                        annotations = {
-                            "crossplane.io/composition-resource-name" = "example-encryption"
-                        }
-                    }
+                _stripDefaults(awsms3v1beta1.BucketServerSideEncryptionConfiguration{
+                    metadata.generateName = "example-encryption"
                     spec.forProvider: {
                         region: "us-west-1"
                         rule: [
@@ -152,12 +132,8 @@ _items = [
                         ]
                     }
                 })
-                _stripDefaults(awsms3v1beta1.BucketVersioning {
-                    metadata = {
-                        annotations = {
-                            "crossplane.io/composition-resource-name" = "example-versioning"
-                        }
-                    }
+                _stripDefaults(awsms3v1beta1.BucketVersioning{
+                    metadata.generateName = "example-versioning"
                     spec.forProvider: {
                         region: "us-west-1"
                         versioningConfiguration: {
@@ -519,12 +495,8 @@ For all managed resources, strip away all default fields. This follows the best 
 <CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-_stripDefaults(awsms3v1beta1.Bucket {
-    metadata = {
-        annotations = {
-            "crossplane.io/composition-resource-name" = "example-bucket"
-        }
-    }
+_stripDefaults(awsms3v1beta1.Bucket{
+    metadata.generateName = "example-bucket"
     spec.forProvider: {
         region: "us-west-1"
     }
@@ -541,12 +513,8 @@ This assertion verifies that:
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-_stripDefaults(awsms3v1beta1.BucketOwnershipControls {
-    metadata = {
-        annotations = {
-            "crossplane.io/composition-resource-name" = "example-boc"
-        }
-    }
+_stripDefaults(awsms3v1beta1.BucketOwnershipControls{
+    metadata.generateName = "example-boc"
     spec.forProvider: {
         region: "us-west-1"
         rule: {
@@ -554,12 +522,8 @@ _stripDefaults(awsms3v1beta1.BucketOwnershipControls {
         }
     }
 })
-_stripDefaults(awsms3v1beta1.BucketPublicAccessBlock {
-    metadata = {
-        annotations = {
-            "crossplane.io/composition-resource-name" = "example-pab"
-        }
-    }
+_stripDefaults(awsms3v1beta1.BucketPublicAccessBlock{
+    metadata.generateName = "example-pab"
     spec.forProvider: {
         blockPublicAcls: False
         blockPublicPolicy: False
@@ -582,22 +546,14 @@ This section tests to verify:
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 _stripDefaults(awsms3v1beta1.BucketACL{
-    metadata = {
-        annotations = {
-            "crossplane.io/composition-resource-name" = "example-acl"
-        }
-    }
+    metadata.generateName = "example-acl"
     spec.forProvider:{
         acl: "public-read"
         region: "us-west-1"
     }
 })
-_stripDefaults(awsms3v1beta1.BucketServerSideEncryptionConfiguration {
-    metadata = {
-        annotations = {
-            "crossplane.io/composition-resource-name" = "example-encryption"
-        }
-    }
+_stripDefaults(awsms3v1beta1.BucketServerSideEncryptionConfiguration{
+    metadata.generateName = "example-encryption"
     spec.forProvider: {
         region: "us-west-1"
         rule: [
@@ -622,12 +578,8 @@ These tests ensure the control plane:
 #### Test conditional features
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-_stripDefaults(awsms3v1beta1.BucketVersioning {
-    metadata = {
-        annotations = {
-            "crossplane.io/composition-resource-name" = "example-versioning"
-        }
-    }
+_stripDefaults(awsms3v1beta1.BucketVersioning{
+    metadata.generateName = "example-versioning"
     spec.forProvider: {
         region: "us-west-1"
         versioningConfiguration: {
