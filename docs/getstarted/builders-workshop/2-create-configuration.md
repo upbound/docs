@@ -605,8 +605,8 @@ _metadata = lambda name: str -> any {
 }
 
 sanitize_azure_storage_account_name = lambda name: str -> str {
-    # Due to Azure's naming restrictions we know that a storage account name must 
-    # be between 3-24 characters in length and only use numbers and lower-case letters only
+    # Due to Azure's naming restrictions, storage account names must 
+    # be between 3-24 characters in length and use numbers and lower-case letters only
 
     # lower string and remove illegal characters
     sanitized = name.lower()
