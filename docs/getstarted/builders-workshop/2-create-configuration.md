@@ -673,16 +673,15 @@ Paste the following into `main.py`:
 
 
 ```python title="upbound-hello-world/functions/example-function/main.py"
-
 import re
 
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
 from .model.io.k8s.apimachinery.pkg.apis.meta import v1 as metav1
-from .model.io.upbound.azure.resourcegroup import v1beta1 as rgv1beta1
-from .model.io.upbound.azure.storage.account import v1beta1 as acctv1beta1
-from .model.io.upbound.azure.storage.container import v1beta1 as contv1beta1
+from .model.io.upbound.m.azure.resourcegroup import v1beta1 as rgv1beta1
+from .model.io.upbound.m.azure.storage.account import v1beta1 as acctv1beta1
+from .model.io.upbound.m.azure.storage.container import v1beta1 as contv1beta1
 from .model.com.example.platform.storagebucket import v1alpha1
 
 def resource_name(xr, resource):
@@ -715,60 +714,15 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     params = observed_xr.spec.parameters
 
     desired_group = rgv1beta1.ResourceGroup(
-<<<<<<< Updated upstream
-        apiVersion="azure.upbound.io/v1beta1",
-        kind="ResourceGroup",
-        spec=rgv1beta1.Spec(
-            forProvider=rgv1beta1.ForProvider(
-                location=params.location,
-=======
         metadata = default_metadata(resource_name(observed_xr, "group")),
         spec = rgv1beta1.Spec(
             forProvider = rgv1beta1.ForProvider(
                 location = params.location,
->>>>>>> Stashed changes
             ),
         ),
     )
     resource.update(rsp.desired.resources["group"], desired_group)
 
-<<<<<<< Updated upstream
-    if "group" not in req.observed.resources:
-        return
-
-    observed_group = acctv1beta1.Account(**req.observed.resources["group"].resource)
-    if observed_group.metadata is None or observed_group.metadata.annotations is None:
-        return
-    if "crossplane.io/external-name" not in observed_group.metadata.annotations:
-        return
-
-    group_external_name = observed_group.metadata.annotations[
-        "crossplane.io/external-name"
-    ]
-
-    account_external_name = observed_xr.metadata.name.replace("-", "")  # type: ignore  # Name is an optional field, but it'll always be set.
-
-    desired_acct = acctv1beta1.Account(
-        apiVersion="storage.azure.upbound.io/v1beta1",
-        kind="Account",
-        metadata=metav1.ObjectMeta(
-            annotations={
-                "crossplane.io/external-name": account_external_name,
-            },
-        ),
-        spec=acctv1beta1.Spec(
-            forProvider=acctv1beta1.ForProvider(
-                resourceGroupName=group_external_name,
-                accountTier="Standard",
-                accountReplicationType="LRS",
-                location=params.location,
-                infrastructureEncryptionEnabled=True,
-                blobProperties=[
-                    acctv1beta1.BlobProperty(
-                        versioningEnabled=params.versioning,
-                    ),
-                ],
-=======
     desired_acct = acctv1beta1.Account(
         metadata = default_metadata(sanitize_azure_storage_account_name(resource_name(observed_xr, "account"))),
         spec = acctv1beta1.Spec(
@@ -781,32 +735,21 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
                     "versioningEnabled": params.versioning
                 },
                 resourceGroupNameSelector = acctv1beta1.ResourceGroupNameSelector(matchControllerRef = True)
->>>>>>> Stashed changes
             ),
         ),
     )
     resource.update(rsp.desired.resources["account"], desired_acct)
 
     desired_cont = contv1beta1.Container(
-<<<<<<< Updated upstream
-        apiVersion="storage.azure.upbound.io/v1beta1",
-        kind="Container",
-        spec=contv1beta1.Spec(
-            forProvider=contv1beta1.ForProvider(
-                storageAccountName=account_external_name,
-                containerAccessType="blob" if params.acl == "public" else "private",
-=======
         metadata = default_metadata(resource_name(observed_xr, "container")),
         spec = contv1beta1.Spec(
             forProvider = contv1beta1.ForProvider(
                 containerAccessType = "blob" if params.acl == "public" else "private",
                 storageAccountNameSelector = contv1beta1.StorageAccountNameSelector(matchControllerRef = True)
->>>>>>> Stashed changes
             ),
         ),
     )
     resource.update(rsp.desired.resources["container"], desired_cont)
-
 ```
 
 </CodeBlock>
@@ -1020,13 +963,9 @@ _items: [any] = [
             }
         }
     },
-<<<<<<< Updated upstream
-    gcpmstoragev1beta1.BucketACL{
-=======
 
     # Bucket ACL
     gcpmstoragev1beta1.BucketACL {
->>>>>>> Stashed changes
         metadata: _metadata("{}-acl".format(oxr.metadata.name))
         spec = {
             forProvider = {
@@ -1054,13 +993,8 @@ Paste the following into `main.py`:
 from crossplane.function import resource
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 
-<<<<<<< Updated upstream
-from .model.io.upbound.gcp.storage.bucket import v1beta1 as bucketv1beta1
-from .model.io.upbound.gcp.storage.bucketacl import v1beta1 as aclv1beta1
-=======
 from .model.io.upbound.m.gcp.storage.bucket import v1beta1 as mbucketv1beta1
 from .model.io.upbound.m.gcp.storage.bucketacl import v1beta1 as maclv1beta1
->>>>>>> Stashed changes
 from .model.com.example.platform.storagebucket import v1alpha1
 
 def resource_name(xr, resource):
@@ -1075,19 +1009,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     observed_xr = v1alpha1.StorageBucket(**req.observed.composite.resource)
     params = observed_xr.spec.parameters
 
-<<<<<<< Updated upstream
-    desired_bucket = bucketv1beta1.Bucket(
-        apiVersion="storage.gcp.upbound.io/v1beta1",
-        kind="Bucket",
-        spec=bucketv1beta1.Spec(
-            forProvider=bucketv1beta1.ForProvider(
-                location=params.location,
-                versioning=[
-                    bucketv1beta1.VersioningItem(
-                        enabled=params.versioning,
-                    )
-                ],
-=======
     # Create GCP Bucket
     desired_bucket = mbucketv1beta1.Bucket(
         metadata = default_metadata(resource_name(observed_xr, "bucket")),
@@ -1097,39 +1018,16 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
                 versioning = {
                     "enabled": params.versioning
                 }
->>>>>>> Stashed changes
             ),
         ),
     )
     resource.update(rsp.desired.resources["bucket"], desired_bucket)
 
-<<<<<<< Updated upstream
-    if "bucket" not in req.observed.resources:
-        return
-
-    observed_bucket = bucketv1beta1.Bucket(**req.observed.resources["bucket"].resource)
-    if observed_bucket.metadata is None or observed_bucket.metadata.annotations is None:
-        return
-    if "crossplane.io/external-name" not in observed_bucket.metadata.annotations:
-        return
-
-    bucket_external_name = observed_bucket.metadata.annotations[
-        "crossplane.io/external-name"
-    ]
-
-    desired_acl = aclv1beta1.BucketACL(
-        apiVersion="storage.gcp.upbound.io/v1beta1",
-        kind="BucketACL",
-        spec=aclv1beta1.Spec(
-            forProvider=aclv1beta1.ForProvider(
-                bucket=bucket_external_name,
-=======
     # Bucket ACL
     desired_acl = maclv1beta1.BucketACL(
         metadata = default_metadata(resource_name(observed_xr, "acl")),
         spec = maclv1beta1.Spec(
             forProvider = maclv1beta1.ForProvider(
->>>>>>> Stashed changes
                 predefinedAcl=params.acl,
                 bucketSelector = maclv1beta1.BucketSelector(matchControllerRef = True)
             ),
