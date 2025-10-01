@@ -693,8 +693,8 @@ def default_metadata(name):
     }
 
 def sanitize_azure_storage_account_name(account_name):
-    # Due to Azure's naming restrictions we know that a storage account name must 
-    # be between 3-24 characters in length and only use numbers and lower-case letters only
+    # Due to Azure's naming restrictions, storage account names must 
+    # be between 3-24 characters in length and use numbers and lower-case letters only
 
     # Convert to lowercase and remove all non-alphanumeric characters
     sanitized = re.sub(r'[^a-z0-9]', '', account_name.lower())
