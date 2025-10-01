@@ -63,12 +63,22 @@ import models.com.example.platform.v1alpha1 as platformv1alpha1
 import models.io.upbound.awsm.s3.v1beta1 as awsms3v1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 
+# It's a best practice for composition functions to return only fields whose
+# values they care about, since they become the owner of any field they
+# return. Allow for fields with defaults to be omitted by the composition
+# function by clearing them in our expected resources.
+_stripDefaults = lambda obj: any -> any {
+    obj | {
+        spec.managementPolicies = Undefined
+    }
+}
+
 _items = [
     metav1alpha1.CompositionTest{
         metadata.name="test-storagebucket"
         spec = {
             assertResources: [
-                platformv1alpha1.StorageBucket{
+                platformv1alpha1.StorageBucket {
                     metadata.name: "example"
                     spec.parameters: {
                         acl: "public-read"
@@ -76,66 +86,61 @@ _items = [
                         versioning: True
                     }
                 }
-                awsms3v1beta1.Bucket{
+                _stripDefaults(awsms3v1beta1.Bucket {
                     metadata = {
-                        generateName = "example-bucket"
-                        labels = {
-                            "platform.example.com/bucket" = "example-bucket"
+                        annotations = {
+                            "crossplane.io/composition-resource-name" = "example-bucket"
                         }
                     }
                     spec.forProvider: {
                         region: "us-west-1"
                     }
-                }
-                awsms3v1beta1.BucketOwnershipControls{
-                    metadata.generateName: "example-boc"
-                    spec.forProvider: {
-                        bucketSelector = {
-                            matchLabels = {
-                                "platform.example.com/bucket" = "example-bucket"
-                            }
+                })
+                _stripDefaults(awsms3v1beta1.BucketOwnershipControls {
+                    metadata = {
+                        annotations = {
+                            "crossplane.io/composition-resource-name" = "example-boc"
                         }
+                    }
+                    spec.forProvider: {
                         region: "us-west-1"
                         rule: {
                             objectOwnership: "BucketOwnerPreferred"
                         }
                     }
-                }
-                awsms3v1beta1.BucketPublicAccessBlock{
-                    metadata.generateName: "example-pab"
+                })
+                _stripDefaults(awsms3v1beta1.BucketPublicAccessBlock {
+                    metadata = {
+                        annotations = {
+                            "crossplane.io/composition-resource-name" = "example-pab"
+                        }
+                    }
                     spec.forProvider: {
                         blockPublicAcls: False
                         blockPublicPolicy: False
-                        bucketSelector = {
-                            matchLabels = {
-                                "platform.example.com/bucket" = "example-bucket"
-                            }
-                        }
                         ignorePublicAcls: False
                         region: "us-west-1"
                         restrictPublicBuckets: False
                     }
-                }
-                awsms3v1beta1.BucketACL{
-                    metadata.generateName: "example-acl"
+                })
+                _stripDefaults(awsms3v1beta1.BucketACL{
+                    metadata = {
+                        annotations = {
+                            "crossplane.io/composition-resource-name" = "example-acl"
+                        }
+                    }
                     spec.forProvider:{
                         acl: "public-read"
-                        bucketSelector = {
-                            matchLabels = {
-                                "platform.example.com/bucket" = "example-bucket"
-                            }
-                        }
                         region: "us-west-1"
                     }
-                }
-                awsms3v1beta1.BucketServerSideEncryptionConfiguration{
-                    metadata.generateName: "example-encryption"
-                    spec.forProvider: {
-                        bucketSelector = {
-                            matchLabels = {
-                                "platform.example.com/bucket" = "example-bucket"
-                            }
+                })
+                _stripDefaults(awsms3v1beta1.BucketServerSideEncryptionConfiguration {
+                    metadata = {
+                        annotations = {
+                            "crossplane.io/composition-resource-name" = "example-encryption"
                         }
+                    }
+                    spec.forProvider: {
                         region: "us-west-1"
                         rule: [
                             {
@@ -146,21 +151,20 @@ _items = [
                             }
                         ]
                     }
-                }
-                awsms3v1beta1.BucketVersioning{
-                    metadata.generateName: "example-versioning"
-                    spec.forProvider: {
-                        bucketSelector = {
-                            matchLabels = {
-                                "platform.example.com/bucket" = "example-bucket"
-                            }
+                })
+                _stripDefaults(awsms3v1beta1.BucketVersioning {
+                    metadata = {
+                        annotations = {
+                            "crossplane.io/composition-resource-name" = "example-versioning"
                         }
+                    }
+                    spec.forProvider: {
                         region: "us-west-1"
                         versioningConfiguration: {
                             status: "Enabled"
                         }
                     }
-                }
+                })
             ]
             compositionPath: "apis/storagebuckets/composition.yaml"
             xrPath: "examples/storagebucket/example.yaml"
@@ -171,6 +175,7 @@ _items = [
     }
 ]
 items = _items
+
 ```
 </CodeBlock>
 
@@ -182,6 +187,15 @@ import models.io.upbound.azurem.storage.v1beta1 as azuremstoragev1beta1
 import models.io.upbound.azurem.v1beta1 as azuremv1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 
+# It's a best practice for composition functions to return only fields whose
+# values they care about, since they become the owner of any field they
+# return. Allow for fields with defaults to be omitted by the composition
+# function by clearing them in our expected resources.
+_stripDefaults = lambda obj: any -> any {
+    obj | {
+        spec.managementPolicies = Undefined
+    }
+}
 
 _items = [
     metav1alpha1.CompositionTest{
@@ -196,14 +210,14 @@ _items = [
                         acl: "public"
                     }
                 }
-                azuremv1beta1.ResourceGroup {
+                _stripDefaults(azuremv1beta1.ResourceGroup {
                     metadata.name = "example-group"
                     spec.forProvider = {
                         location = "eastus"
                     }
-                }
-                azuremstoragev1beta1.Account {
-                    metadata.name = "example"
+                })
+                _stripDefaults(azuremstoragev1beta1.Account {
+                    metadata.name = "exampleaccount"
                     spec.forProvider = {
                         accountTier = "Standard"
                         accountReplicationType = "LRS"
@@ -212,20 +226,82 @@ _items = [
                             versioningEnabled = True
                         }
                         infrastructureEncryptionEnabled = True
-                        resourceGroupNameRef = {
-                            name = "example-group"
+                        resourceGroupNameSelector = {
+                            matchControllerRef = True
                         }
                     }
-                }
-                azuremstoragev1beta1.Container {
+                })
+                _stripDefaults(azuremstoragev1beta1.Container {
                     metadata.name = "example-container"
                     spec.forProvider = {
                         containerAccessType = "blob"
-                        storageAccountNameRef = {
-                            name = "example"
+                        storageAccountNameSelector = {
+                            matchControllerRef = True
                         }
                     }
+                })
+            ]
+            compositionPath: "apis/storagebuckets/composition.yaml"
+            xrPath: "examples/storagebucket/example.yaml"
+            xrdPath: "apis/storagebuckets/definition.yaml"
+            timeoutSeconds: 120
+            validate: False
+        }
+    }
+]
+items= _items
+```
+</CodeBlock>
+
+<CodeBlock cloud="gcp" language="kcl">
+
+```yaml title="tests/test-storagebucket/main.k"
+
+import models.com.example.platform.v1alpha1 as platformv1alpha1
+import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
+import models.io.upbound.gcpm.storage.v1beta1 as gcpmstoragev1beta1
+
+# It's a best practice for composition functions to return only fields whose
+# values they care about, since they become the owner of any field they
+# return. Allow for fields with defaults to be omitted by the composition
+# function by clearing them in our expected resources.
+_stripDefaults = lambda obj: any -> any {
+    obj | {
+        spec.managementPolicies = Undefined
+    }
+}
+
+_items = [
+    metav1alpha1.CompositionTest{
+        metadata.name: "example"
+        spec= {
+            assertResources: [
+                platformv1alpha1.StorageBucket{
+                    metadata.name = "example"
+                    spec.parameters = {
+                        acl: "publicRead"
+                        location: "US"
+                        versioning: True
+                    }
                 }
+                _stripDefaults(gcpmstoragev1beta1.Bucket {
+                    metadata.name = "example-bucket"
+                    spec.forProvider = {
+                        location: "US"
+                        versioning = {
+                            enabled = True
+                        }
+                    }
+                })
+                _stripDefaults(gcpmstoragev1beta1.BucketACL {
+                    metadata.name = "example-acl"
+                    spec.forProvider = {
+                        predefinedAcl = "publicRead"
+                        bucketSelector = {
+                            matchControllerRef = True
+                        }
+                    }
+                })
             ]
             compositionPath: "apis/storagebuckets/composition.yaml"
             xrPath: "examples/storagebucket/example.yaml"
@@ -337,12 +413,12 @@ This section imports:
 import models.com.example.platform.v1alpha1 as platformv1alpha1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 import models.io.upbound.gcpm.storage.v1beta1 as gcpmstoragev1beta1
-import models.k8s.apimachinery.pkg.apis.meta.v1 as metav1
 ```
 
 This section imports:
+
 * Your custom StorageBucket XRD
-* Your GCP Storage schemas for validation
+* GCP Storage schemas for validation
 * Upbound testing framework components
 
 </CodeBlock>
@@ -404,7 +480,7 @@ assertResources: [
     platformv1alpha1.StorageBucket {
         metadata.name: "example"
         spec.parameters: {
-            region: "eastus"
+            location: "eastus"
             versioning: True
             acl: "public"
         }
@@ -435,72 +511,68 @@ This assertion verifies:
 * Your control plane processes the `acl`, `region` and `versioning` parameters
 * The control plane maintains the resource name and structure
 
-
 ### Test the storage resource
+
+*Note* for all managed resources we strip away all default fields as it's a best practice for composition
+functions to return only fields whose values they care about as they become the owners of those fields.
 
 <CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-awsms3v1beta1.Bucket{
+_stripDefaults(awsms3v1beta1.Bucket {
     metadata = {
-        generateName = "example-bucket"
-        labels = {
-            "platform.example.com/bucket" = "example-bucket"
+        annotations = {
+            "crossplane.io/composition-resource-name" = "example-bucket"
         }
     }
     spec.forProvider: {
         region: "us-west-1"
     }
-}
+})
 ```
-
 
 This assertion verifies that:
 
-* The main S3 bucket resource exists
-* The bucket uses the expected generated naming pattern (`example-bucket`)
+* The main S3 bucket resource is created
+* The bucket uses the expected naming pattern (`example-bucket`)
 * The bucket uses the user's specified region parameter
-* The bucket has the correct label added `platform.example.com/bucket` with value `example-bucket`
 
 #### Test security configurations
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-awsms3v1beta1.BucketOwnershipControls{
-    metadata.generateName: "example-boc"
-    spec.forProvider: {
-        bucketSelector = {
-            matchLabels = {
-                "platform.example.com/bucket" = "example-bucket"
-            }
+_stripDefaults(awsms3v1beta1.BucketOwnershipControls {
+    metadata = {
+        annotations = {
+            "crossplane.io/composition-resource-name" = "example-boc"
         }
+    }
+    spec.forProvider: {
         region: "us-west-1"
         rule: {
             objectOwnership: "BucketOwnerPreferred"
         }
     }
-}
-awsms3v1beta1.BucketPublicAccessBlock{
-    metadata.generateName: "example-pab"
+})
+_stripDefaults(awsms3v1beta1.BucketPublicAccessBlock {
+    metadata = {
+        annotations = {
+            "crossplane.io/composition-resource-name" = "example-pab"
+        }
+    }
     spec.forProvider: {
         blockPublicAcls: False
         blockPublicPolicy: False
-        bucketSelector = {
-            matchLabels = {
-                "platform.example.com/bucket" = "example-bucket"
-            }
-        }
         ignorePublicAcls: False
         region: "us-west-1"
         restrictPublicBuckets: False
     }
-}
+})
 ```
 
 
 This section tests to verify:
 
-* Correct bucket selection to apply configuration to
 * Proper object ownership configuration
 * Correct settings for public bucket access
 * Security configuration applied to the bucket
@@ -509,26 +581,24 @@ This section tests to verify:
 
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-awsms3v1beta1.BucketACL{
-    metadata.generateName: "example-acl"
+_stripDefaults(awsms3v1beta1.BucketACL{
+    metadata = {
+        annotations = {
+            "crossplane.io/composition-resource-name" = "example-acl"
+        }
+    }
     spec.forProvider:{
         acl: "public-read"
-        bucketSelector = {
-            matchLabels = {
-                "platform.example.com/bucket" = "example-bucket"
-            }
-        }
         region: "us-west-1"
     }
-}
-awsms3v1beta1.BucketServerSideEncryptionConfiguration{
-    metadata.generateName: "example-encryption"
-    spec.forProvider: {
-        bucketSelector = {
-            matchLabels = {
-                "platform.example.com/bucket" = "example-bucket"
-            }
+})
+_stripDefaults(awsms3v1beta1.BucketServerSideEncryptionConfiguration {
+    metadata = {
+        annotations = {
+            "crossplane.io/composition-resource-name" = "example-encryption"
         }
+    }
+    spec.forProvider: {
         region: "us-west-1"
         rule: [
             {
@@ -539,42 +609,40 @@ awsms3v1beta1.BucketServerSideEncryptionConfiguration{
             }
         ]
     }
-}
+})
 ```
 
 
 These tests ensure the control plane:
 
-* Correct bucket selection to apply configuration to
-* Applies the user's access control preference
+* User's access control configuration is applied appropriately
 * Enabled encryption by default
 * Applies security configurations consistently
 
 #### Test conditional features
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-awsms3v1beta1.BucketVersioning{
-    metadata.generateName: "example-versioning"
-    spec.forProvider: {
-        bucketSelector = {
-            matchLabels = {
-                "platform.example.com/bucket" = "example-bucket"
-            }
+_stripDefaults(awsms3v1beta1.BucketVersioning {
+    metadata = {
+        annotations = {
+            "crossplane.io/composition-resource-name" = "example-versioning"
         }
+    }
+    spec.forProvider: {
         region: "us-west-1"
         versioningConfiguration: {
             status: "Enabled"
         }
     }
-}
+})
 ```
 
 This assertion verifies:
 
-* Correct bucket selection to configure versioning
 * Versioning resource only exists when `versioning: True`
 * The control plane sets versioning to "Enabled" 
 * The control plane links versioning to the bucket 
+
 </CodeBlock>
 
 <CodeBlock cloud="azure">
@@ -582,12 +650,12 @@ This assertion verifies:
 #### Test the Azure Resource Group
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-azuremv1beta1.ResourceGroup {
+_stripDefaults(azuremv1beta1.ResourceGroup {
     metadata.name = "example-group"
     spec.forProvider = {
         location = "eastus"
     }
-}
+})
 ```
 
 This assertion verifies that:
@@ -597,8 +665,8 @@ This assertion verifies that:
 
 #### Test Storage Account
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-azuremstoragev1beta1.Account {
-    metadata.name = "example"
+_stripDefaults(azuremstoragev1beta1.Account {
+    metadata.name = "exampleaccount"
     spec.forProvider = {
         accountTier = "Standard"
         accountReplicationType = "LRS"
@@ -607,11 +675,11 @@ azuremstoragev1beta1.Account {
             versioningEnabled = True
         }
         infrastructureEncryptionEnabled = True
-        resourceGroupNameRef = {
-            name = "example-group"
+        resourceGroupNameSelector = {
+            matchControllerRef = True
         }
     }
-}
+})
 ```
 
 This assertion verifies that:
@@ -624,15 +692,15 @@ This assertion verifies that:
 
 #### Test Container Configuration
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-azuremstoragev1beta1.Container {
+_stripDefaults(azuremstoragev1beta1.Container {
     metadata.name = "example-container"
     spec.forProvider = {
         containerAccessType = "blob"
-        storageAccountNameRef = {
-            name = "example"
+        storageAccountNameSelector = {
+            matchControllerRef = True
         }
     }
-}
+})
 
 ```
 
@@ -644,42 +712,43 @@ This assertion verifies that:
 
 <CodeBlock cloud="gcp">
 
+### Test GCP bucket configuration
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-gcpmstoragev1beta1.Bucket {
+_stripDefaults(gcpmstoragev1beta1.Bucket {
     metadata.name = "example-bucket"
     spec.forProvider = {
-        location = "US"
+        location: "US"
         versioning = {
             enabled = True
         }
     }
-}
+})
 ```
 
 This assertion verifies that:
-* The main GCP bucket resource exists
-* The bucket uses the expected generated naming pattern (`example-bucket`)
-* The bucket uses the user's specified region parameter
+* main GCP bucket resource is created
+* The bucket uses the expected naming pattern (`example-bucket`)
+* The bucket uses the user's specified location parameter
 * The bucket was created with versioning enabled
 
-#### Test bucket access control 
 
+### Test access control
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
-gcpmstoragev1beta1.BucketACL {
+_stripDefaults(gcpmstoragev1beta1.BucketACL {
     metadata.name = "example-acl"
     spec.forProvider = {
-        bucketRef = {
-            name = "example-bucket"
-        }
         predefinedAcl = "publicRead"
+        bucketSelector = {
+            matchControllerRef = True
+        }
     }
-}
+})
 ```
 
 This assertion verifies that:
-* Correct bucket selection to apply configuration to
-* Correct settings for public bucket access
-* Security configuration applied to the bucket
+* User's access control configuration is applied appropriately
+* `BucketACL` managed resource follows expected naming pattern (`example-ACL`)
+* ACL is applied to correct bucket created in this composition
 
 </CodeBlock>
 
