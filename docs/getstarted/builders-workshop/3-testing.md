@@ -513,9 +513,9 @@ This assertion verifies:
 
 ### Test the storage resource
 
-*Note* for all managed resources we strip away all default fields as it's a best practice for composition
-functions to return only fields whose values they care about as they become the owners of those fields.
-
+:::note
+For all managed resources, strip away all default fields. This follows the best practice for composition functions to return only fields whose values they care about, as they become the owners of those fields.
+:::
 <CodeBlock cloud="aws">
 
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
