@@ -393,7 +393,7 @@ kubectl exec -ti -n upbound-system deployments/spaces-controller -c spaces
 ```
 
 
-[shared-backups]: /manuals/spaces/howtos/self-hosted/workload-id-backup-restore
+[shared-backups]: /manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/
 [spacebackupconfig]: /reference/apis/spaces-api/v1_9
 [thanos-object-storage]: https://thanos.io/tip/thanos/storage.md/
 [spacebackupschedule]: /reference/apis/spaces-api/v1_9
