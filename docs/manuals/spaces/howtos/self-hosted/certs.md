@@ -194,7 +194,7 @@ EOF
 
 ## Install spaces
 
-```
+```shell
 cat > spaces-values.yaml << 'EOF'
 externalTLS:
   tlsSecret:
