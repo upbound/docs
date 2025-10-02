@@ -7,7 +7,7 @@ description: Install self hosted spaces certificates
 :::important
 Prerequisites
 
-- Spaces Token avilable in a file
+- Spaces Token available in a file
 - `docker login xpkg.upbound.io -u <TOKEN_ACCESS_ID> -p <TOKEN>`
 - [`istioctl`][istioctl] installation
 :::
@@ -79,7 +79,7 @@ istioctl install -f istio-values.yaml
 ## Create or generate a certificate
 
 This script creates a certificate for a proof of concept environment.
-Pleae use your blessed processes for obtaining production certificates.
+Please use your blessed processes for obtaining production certificates.
 
 :::important
 NOT for use in production.
