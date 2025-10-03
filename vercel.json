@@ -1597,7 +1597,7 @@
             "permanent": true
         },
         {
-            "source": "/manuals/uxp/howtos/provider-vpa(/)?",
+            "source": "/manuals/uxp/howtos/self-managed-uxp/provider-vpa(/)?",
             "destination": "/manuals/uxp/howtos/provider-vpa/",
             "permanent": true
         }
