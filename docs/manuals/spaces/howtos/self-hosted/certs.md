@@ -46,7 +46,7 @@ EOF
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
 ```
 
-## Install istio
+## Install Istio
 
 ```shell
 cat > istio-values.yaml << 'EOF'
@@ -149,7 +149,7 @@ echo "Kubernetes secrets created:"
 echo "- proxy-tls-secret in upbound-system namespace"
 ```
 
-## Create an istio gateway and virtual service
+## Create an Istio gateway and virtual service
 
 Use TLS passthrough.
 
