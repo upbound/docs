@@ -4,13 +4,16 @@ sidebar_position: 20
 description: Install self hosted spaces certificates
 ---
 
+
 :::important
 Prerequisites
 
 - Spaces Token available in a file
 - `docker login xpkg.upbound.io -u <TOKEN_ACCESS_ID> -p <TOKEN>`
 - [`istioctl`][istioctl] installation
+- `jq` installation
 :::
+
 
 This document describes the installation of a self hosted space on an example `kind`
 cluster along with Istio and certificates. The service mesh and certificates
