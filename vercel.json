@@ -1595,6 +1595,11 @@
             "source": "/upbound-marketplace(/)?",
             "destination": "/manuals/marketplace/overview/",
             "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/howtos/provider-vpa(/)?",
+            "destination": "/manuals/uxp/howtos/provider-vpa/",
+            "permanent": true
         }
     ]
 }
