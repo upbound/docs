@@ -62,15 +62,15 @@ Review the table for permissions for each role:
 | MRs, Compositions, Claims | Read | CRUD | CRUD | CRUD |
 | ConfigMaps | ✗ | CRUD | CRUD | CRUD |
 | External Secrets Operator (ESO) APIs | Read | Read | Read | CRUD |
-| CRDs | ✗ | Read | Read | Read + Update |
-| Pods | ✗ | ✗ | Read + Delete | Read + Delete |
-| Deployments | ✗ | ✗ | Read | Read |
-| ReplicaSets | ✗ | ✗ | Read | Read |
-| ControllerRevisions | ✗ | ✗ | ✗ | Read |
-| Services | ✗ | ✗ | Read | Read |
-| Webhook Configurations | ✗ | ✗ | ✗ | Read |
-| ValidatingAdmissionPolicies | ✗ | ✗ | ✗ | Read |
-| Leases | ✗ | CRUD | CRUD | CRUD |
+| CRDs | Read | Read | Read | Read + Update |
+| Pods | ✗ | Read + Delete | ✗ | Read + Delete |
+| Deployments | ✗ | Read | ✗ | Read |
+| ReplicaSets | ✗ | Read | ✗ | Read |
+| ControllerRevisions | Read | CRUD | CRUD | CRUD |
+| Services | ✗ | Read | ✗ | Read |
+| Webhook Configurations | ✗ | Read | ✗ | Read |
+| ValidatingAdmissionPolicies | ✗ | Read | ✗ | Read |
+| Leases | ✗ | ✗ | CRUD | CRUD |
 | ClusterRoles | ✗ | ✗ | ✗ | CRUD |
 | ClusterRoleBindings | ✗ | ✗ | ✗ | CRUD |
 | Roles | ✗ | ✗ | ✗ | CRUD |
