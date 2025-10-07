@@ -168,5 +168,4 @@ Clicking on your account profile and selecting `Manage Account` takes you to you
 You can create a personal access token (`PAT`) from the Account Settings view. Select `API Tokens` in the left-side menu and then select `Create New Token`. Use personal access tokens to authenticate to Upbound with the `up` CLI.
 
 ![Upbound Control Plane Account Management](/img/ctp-create-token.png)
-<!--- TODO(tr0njavolta): image --->
 [providerconfig]: /manuals/uxp/concepts/packages/provider-authentication/#create-a-providerconfig-1
