@@ -91,7 +91,7 @@ List views include refresh controls in the header. You can:
 
 * Refresh manually
 * Set an auto refresh interval
-* Pause autom refresh
+* Pause auto refresh
 
 ![Upbound Control Plane Refresh](/img/new-ctp-refresh.png)
 
