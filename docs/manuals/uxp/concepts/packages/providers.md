@@ -946,7 +946,7 @@ spec:
 [official-provider-aws]:https://marketplace.upbound.io/providers/upbound/provider-family-aws/
 [official-provider-azure]:https://marketplace.upbound.io/providers/upbound/provider-family-azure/
 [official-provider-gcp]:https://marketplace.upbound.io/providers/upbound/provider-family-gcp/
-[vpa]: /manuals/uxp/howtos/self-managed-uxp/provider-vpa/
+[vpa]: /manuals/uxp/howtos/provider-vpa/
 [provider-development-guide]: https://github.com/crossplane/crossplane/blob/main/contributing/guide-provider-development.md
 [provider-package-spec]: https://github.com/crossplane/crossplane/blob/main/contributing/specifications/xpkg.md#provider-package-requirements
 [harbor]: https://goharbor.io/
