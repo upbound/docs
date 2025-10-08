@@ -84,4 +84,4 @@ spec:
 [compositions]: /manuals/uxp/concepts/composition/compositions/
 [providers]: /manuals/uxp/concepts/packages/providers/
 [configurations]: /manuals/uxp/concepts/packages/configurations/
-[pods]: /manuals/uxp/howtos/crossplane/pods/
+[pods]: https://docs.crossplane.io/v2.0/guides/pods/ 

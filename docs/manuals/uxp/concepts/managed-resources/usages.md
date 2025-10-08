@@ -264,6 +264,6 @@ spec:
   reason: "Very important CRD - should never be deleted!"
 ```
 
-[pods]: /manuals/uxp/howtos/crossplane/pods#change-pod-settings
+[pods]: https://docs.crossplane.io/v2.0/guides/pods/#change-pod-settings 
 [managed-resources-controller-ref]: /manuals/uxp/concepts/managed-resources/overview#matching-by-controller-reference
 [managed-resources-referencing]: /manuals/uxp/concepts/managed-resources/overview#referencing-other-resources

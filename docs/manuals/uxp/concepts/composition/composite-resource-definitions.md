@@ -603,6 +603,6 @@ Reason: TerminatingCompositeResource
 [xrs]: /manuals/uxp/concepts/composition/composite-resources/
 [composition]: /manuals/uxp/concepts/composition/compositions/
 [composition-match]: /manuals/uxp/concepts/composition/compositions/#match-composite-resources
-[pods]: /manuals/uxp/howtos/crossplane/pods/#crossplane-pod
+[pods]: https://docs.crossplane.io/v2.0/guides/pods/#crossplane-pod 
 [k8s]: https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/ 
 
