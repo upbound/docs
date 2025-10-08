@@ -72,4 +72,4 @@ maximum number of resource-hours and operations respectively. These values are
 encoded in the license. You can see your license's capacity limit by viewing
 your license's `.status.capacity` field.
 
-[license-management]: /manuals/uxp/howtos/self-managed-uxp/license-management
+[license-management]: /manuals/uxp/howtos/license-management
