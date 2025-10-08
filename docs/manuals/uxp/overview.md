@@ -42,11 +42,11 @@ Read the [Get Started][get-started] guide to learn how to use UXP to build your 
 
 [crossplane]: https://docs.crossplane.io
 [control-plane]: /getstarted/#what-is-upbound
-[self-managed-uxp]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
-[licensing]: /manuals/uxp/howtos/self-managed-uxp/license-management
+[self-managed-uxp]: /manuals/uxp/howtos/uxp-deployment
+[licensing]: /manuals/uxp/howtos/license-management
 [intelligent-control-planes]: /manuals/uxp/features/intelligent-control-planes
 [add-ons]: /manuals/uxp/features/add-ons
 [concepts]: /manuals/uxp/concepts/composition/overview
 [features]: /manuals/uxp/features/intelligent-control-planes
-[guides]: /manuals/uxp/howtos/self-managed-uxp/uxp-deployment
+[guides]: /manuals/uxp/howtos/uxp-deployment
 [get-started]: /getstarted
