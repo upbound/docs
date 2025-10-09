@@ -61,7 +61,7 @@ Review the table for permissions for each role:
 | *.crossplane.io APIs | Read | CRUD | CRUD | CRUD |
 | MRs, Compositions, Claims | Read | CRUD | CRUD | CRUD |
 | ConfigMaps | ✗ | CRUD | CRUD | CRUD |
-| External Secrets Operator (ESO) APIs | Read | Read | Read | CRUD |
+| External Secrets Operator (ESO) APIs | Read | Read* | Read* | CRUD |
 | CRDs | Read | Read | Read | Read + Update |
 | Pods | ✗ | Read + Delete | ✗ | Read + Delete |
 | Deployments | ✗ | Read | ✗ | Read |
@@ -76,6 +76,10 @@ Review the table for permissions for each role:
 | Roles | ✗ | ✗ | ✗ | CRUD |
 | RoleBindings | ✗ | ✗ | ✗ | CRUD |
 | ServiceAccounts | ✗ | ✗ | ✗ | CRUD |
+
+:::note
+Editor and Controller lack Read permissions on `quayaccesstokens`, `stssessiontokens` ESO generator types.
+:::
 
 ### View group role permissions
 
