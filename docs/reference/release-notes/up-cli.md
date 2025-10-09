@@ -415,7 +415,7 @@ https://docs.upbound.io/core-concepts/projects/
 
 ### Release Date: June 7th, 2024.
 
-:::hint
+:::note
 - Web-based login (previously `up alpha web-login`) is now the default for `up login`. Use `up login --username=<user>` to invoke interactive terminal login.
 - `up configuration` is now stubbed out, since Configurations are not currently supported in Upbound.
 :::
@@ -442,7 +442,7 @@ https://docs.upbound.io/core-concepts/projects/
 
 ### Release Date: May 3rd, 2024.
 
-:::hint
+:::note
 This release contains an important breaking change that affects how users gain access to the API server of their control planes.
 
 For users who've deployed MCPs to Upbound prior to April 30th, 2024 (on our 'legacy GCP Space'), to connect to those MCPs you **must** use `up` ver `<= v0.28.0`.

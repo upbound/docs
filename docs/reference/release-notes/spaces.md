@@ -453,7 +453,7 @@ Please be aware of the following changes:
 
 #### What's Changed
 
-:::hint
+:::note
 Due to a technical glitch there was no 1.9.0 release image, and the first one available in the 1.9.x series is 1.9.1.
 :::
 
