@@ -12,7 +12,6 @@ const config = {
     organizationName: "upbound",
     projectName: "docs",
     onBrokenLinks: "warn",
-    onBrokenMarkdownLinks: "warn",
     clientModules: [require.resolve("./scripts/copymarkdown.js")],
     i18n: {
         defaultLocale: "en",
@@ -20,6 +19,9 @@ const config = {
     },
     markdown: {
         mermaid: true,
+        hooks: {
+            onBrokenMarkdownLinks: "warn",
+        },
     },
     themes: ["@docusaurus/theme-mermaid"],
     presets: [
@@ -186,7 +188,7 @@ const config = {
             colorMode: {
                 defaultMode: "light",
                 disableSwitch: false,
-                respectPrefersColorScheme: true,
+                respectPrefersColorScheme: false,
             },
             docs: {
                 sidebar: {
