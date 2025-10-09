@@ -167,11 +167,12 @@ const LandingPage = () => {
                                 </div>
                                 <div className="terminal-line terminal-output">
                                     {" "}
-                                    💻 Local dev control plane running in kind cluster "my-webapp".
+                                    💻 Local dev control plane running in kind cluster "my-webapp"
                                 </div>
                                 <div className="terminal-line terminal-command">
-                                    🌐 WebUI endpoint: http://127-0-0-1.nip.io:59244
+                                    $ up uxp web-ui open 
                                 </div>
+
 
                                 <div className="terminal-line terminal-output"></div>
                             </div>
