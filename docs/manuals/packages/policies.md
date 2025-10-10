@@ -15,10 +15,12 @@ description: The Upbound Official package policies.
  
 :::note
 **Policy version:** `1.0.0`  
-**Effective date:** `25 September 2025`  
+**Effective date:** `10 October 2025`  
 :::
 
-The following policies govern the access, support and maintenance procedures of the Upbound Official and Partner packages.
+This document outlines how Upbound manages, maintains, and supports its Official and Partner packages. Whether you're a community member or an Upbound customer, understanding these policies will help you make informed decisions about package versions and support options.
+
+The following policies govern how you can access, receive support for, and understand the maintenance lifecycle of Upbound Official and Partner packages.
 
 ## Scope and Definitions
 
@@ -26,12 +28,28 @@ The following policies govern the access, support and maintenance procedures of 
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | UXP                                      | Upbound Crossplane, or UXP, is Upbound's enterprise distribution of Crossplane which is 100% compatible with OSS Crossplane. You can easily switch from OSS Crossplane to UXP or move back to OSS Crossplane. [Read more about UXP](/manuals/uxp/overview/).                                                                                                                                                                                                                 |
 | Upstream vs Downstream                   | **Upstream**: public repositories under `github.com/crossplane-contrib` and main releases published to `xpkg.crossplane.io`. [Browse packages](https://github.com/orgs/crossplane-contrib/packages); all source code changes land here first.<br/> **Downstream**: private repositories under `github.com/upbound` that mirror upstream and produce downstream main and backport releases published to `xpkg.upbound.io`. [Browse packages](https://marketplace.upbound.io). |
-| Main vs Backport                         | **Main**: regular releases from the `main` branch.<br/>**Backport**: patch-only releases from release maintenance branches for a specific minor version; cherry-picked fixes only, no new features.                                                                                                                                                                                                                                                                          |
+| Main vs Backport releases                         | **Main**: regular releases from the `main` branch.<br/>**Backport**: patch-only releases from release maintenance branches for a specific minor version; contains cherry-picked fixes only, no new features.                                                                                                                                                                                                                                                                          |
 | Community, Official and Partner packages | **Community**: built, maintained and supported by members of the Crossplane community.<br/>**Official**: built, maintained and supported by Upbound.<br/>**Partner**: built and supported jointly by Upbound and the partner; Upbound verifies that the package meets its quality bar.                                                                                                                                                                                       |
-| Compatibility                            | Compatibility refers to the runtime the package targets.<br/>**OSS Crossplane**: supports providers, functions and configuration packages.<br/>**UXP**: supports all packages in OSS Crossplane and other package types (for example, add-ons) that aren't available for OSS Crossplane;                                                                                                                                                                                     |
-| Availability Window                      | The duration that a release remains pullable in from the registry.<br/>**Main releases**: available for 6 months from the release date. <br/>**Backport releases**: available for 18 months from the release date.                                                                                                                                                                                                                                                           |
+| Compatibility                            | Compatibility refers to the runtime the package targets.<br/>**OSS Crossplane**: supports providers, functions and configuration packages.<br/>**UXP**: supports all packages in OSS Crossplane and other package types (for example, add-ons) that aren't available for OSS Crossplane.                                                                                                                                                                                     |
+| Availability Window                      | The duration that a release remains pullable from the registry.<br/>**Main releases**: available for 12 months from the release date. <br/>**Backport releases**: available for 18 months from the release date.                                                                                                                                                                                                                                                           |
+| Availability vs Support                  | **Availability**: how long a release remains pullable from the registry (12 months for main releases, 18 months for backport releases). **Support**: the duration Upbound provides active support for a release (12 months from the minor version release date). A package may be available after its support window has ended.                                                                                                                                              |
 | SBOM                                     | A software bill of materials (SBOM) lists all the software components and their versions used in the published package. Upstream main releases are unsigned and have no SBOM. All downstream releases are signed and include an SBOM.                                                                                                                                                                                                                                        |
-| FIPS                                     | FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Enterprise+ license.                                                                                                                                                                                                                                                                                                                                                    |
+| FIPS                                     | FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Enterprise+ license.                                                                                                                                                                                                  |
+
+## At a Glance
+
+- As the original creator of the Crossplane project, Upbound is committed to the long-term health and success of the Crossplane community.
+- All OSS Crossplane-compatible packages maintained by Upbound are freely available to the community under an open source license.
+- We publish packages to both the Crossplane and Upbound registries.
+- Official package main releases are available at no cost to all community members.
+- Backport releases of past minor versions require paid subscriptions to support additional maintenance costs.
+- FIPS-compatible package versions are available with paid subscriptions.
+
+### Which Package Versions Can I Access?
+
+- **Community user or no subscription?** You can pull all main releases published within the last 12 months.
+- **Standard, Enterprise, or Business Critical subscription?** You can pull all main and backport releases (with configured pull secrets for backports).
+- **Need FIPS-compatible packages?** Requires Enterprise+ subscription.
 
 ## Source Code and License
 
@@ -42,12 +60,12 @@ Where a package is available to run in OSS Crossplane (for example, providers, f
 UXP-only packages (for example, Add-ons) are located in the Upbound organization on GitHub.
 
 :::note
-All existing OSS Crossplane compatible packages that are currently in the `upbound` organization in GitHub will be migrated over to `crossplane-contrib` in due time.
+All existing OSS Crossplane compatible packages that are currently in the `upbound` organization in GitHub are being migrated to `crossplane-contrib` in due time.
 :::
 
 ## Official and Partner packages
 
-Official packages are built, maintained and supported by Upbound. Partner packages are built, maintained and supported jointly by Upbound and a technology partner.
+Upbound builds, maintains, and supports Official packages. Upbound and technology partners jointly build, maintain, and support Partner packages.
 
 Upbound prefers Partner packages when a capable partner exists. Upbound will publish packages as Official when no partner exists or when it's required to meet customer demand, quality, or coverage needs.
 
@@ -64,17 +82,17 @@ Where runtime-specific behavior exists, it will be called out in the package doc
 
 ## Maintenance, backports and distribution
 
-This section explains how packages are maintained, when backport releases are produced and the distribution of upstream and downstream packages.
+Understanding how packages flow from development to distribution helps you plan your package management strategy. This section explains how packages are maintained, when backport releases are produced, and where packages are distributed.
 
 ### Change flow
 
-- All feature, bug fix and security work lands in the upstream repository (`crossplane-contrib`) on `main` first and are published to `xpkg.crossplane.io` in alignment with the Crossplane governance policies.
+- All feature, bug fix, and security work lands in the upstream repository (`crossplane-contrib`) on `main` first and is published to `xpkg.crossplane.io` in alignment with the Crossplane governance policies.
 - Downstream mirrors in `github.com/upbound` sync from upstream `main` and produce downstream 'main' releases.
-- Bug fix and security work is backported to the downstream release maintenance branches; these branches only exist downstream and don't flow back to upstream. See "Requesting a fix or backport" section below.
+- Bug fix and security work is backported to the downstream release maintenance branches; these branches only exist downstream and don't flow back to upstream. See the [Requesting a fix or backport](#requesting-a-fix-or-backport) section below.
 
 ### Backport eligibility
 
-Backports are created when all the following are true:
+Upbound creates backports when all the following criteria are met:
 
 - The fix addresses a security issue, critical regression, or data-loss risk.
 - The change is low risk and scoped (can be cherry-picked) to a specific issue.
@@ -82,7 +100,7 @@ Backports are created when all the following are true:
 
 Backports aren't used for feature delivery, refactors, or non-critical improvements. Those ship in the next main release.
 
-By default Upbound backports security fixes to releases made during the last 6 months. Customers can request a backport to an older and still supported version.
+By default, Upbound backports security fixes to minor releases that were published within the last 6 months. Customers can request a backport to an older, still-supported version.
 
 ### Branching and versioning
 
@@ -92,7 +110,7 @@ By default Upbound backports security fixes to releases made during the last 6 m
 
 ### Distribution
 
-- Downstream releases of packages compatible with OSS Crossplane are runnable on all Crossplane runtimes (see "Access and Compatibility" section).
+- Downstream releases of packages compatible with OSS Crossplane are runnable on all Crossplane runtimes (see the [Access and Support](#access-and-support) section).
 - Downstream releases are distributed through the [Upbound Marketplace](https://marketplace.upbound.io).
 - Downstream main releases are publicly accessible; backport releases require a [Standard+ subscription][pricing-page] and [configured pull secrets][configured-pull-secrets].
 
@@ -100,16 +118,16 @@ By default Upbound backports security fixes to releases made during the last 6 m
 
 - All downstream releases (main and backport) are signed and include an SBOM.
 - Upstream main releases aren't signed and don't include an SBOM.
-- FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Upbound Enterprise+ subscription.
+- FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Upbound [Enterprise+ subscription][pricing-page].
 
 ### Requesting a fix or backport
 
 - Upbound customers with [Standard+ subscriptions][pricing-page] can [open a ticket][open-a-ticket] to request a fix and evaluation for creating a backport for a supported release.
 - Community users should file an issue upstream; fixes will be included in a future main release.
 
-::::note
-Backports are cautious and patch-only by design. If a safe, targeted fix isn't possible, the change will ship in the next main release instead.
-::::
+:::note
+Backports are cautious and patch-only by design. If a safe, targeted fix isn't possible, the change will ship in the next main release instead. For information about how long backport releases remain available, see the [Availability window](#availability-window) section.
+:::
 
 ## Access and Support
 
@@ -125,12 +143,12 @@ Marketplace.
 ### Standard, Enterprise, and Business Critical subscribers
 
 **Access**: If your organization has a `Standard`, `Enterprise`, or `Business Critical` subscription to Upbound, you can access all available versions within the availability window, including backport releases (backports require configured pull secrets).  
-**Support**: Upbound supports Official and Partner packages for 12 months from the release date of the minor version. A minor version may receive patch releases for up to 12 months after it was first released.
+**Support**: Upbound supports Official and Partner packages for 12 months from the release date of the minor version. A minor release version may receive patch releases for up to 12 months after it was first released.
 
 :::note
-Availability is distinct from Support. Support is provided for 12 months from the release date of a package's minor version. After the Support window ends, artifacts may remain available per the Availability window.
+Availability is distinct from Support. Support is provided for 12 months from the release date of a package's minor version. After the Support window ends, artifacts may remain available per the Availability window (for example, backport patch releases).
 
-Upbound customers with `Enterprise` plan or higher subscription can [open a ticket][open-a-ticket] to request support.
+Upbound customers with an [Enterprise+][pricing-page] subscription can [open a ticket][open-a-ticket] to request support.
 :::
 
 :::important
@@ -142,18 +160,24 @@ To access backport releases, make sure you've
 
 Availability defines how long a release remains pullable in registries and is distinct from Support:
 
-- **Main releases**: available for `6 months` from the release date. The latest main releases will remain available until a new version is published regardless of whether the 6 month window has passed.
+- **Main releases**: available for `12 months` from the release date. **Exception:** The most recent main release will remain available indefinitely, even after its 12-month window expires, until a newer version is published.
 - **Backport releases**: available for `18 months` from the release date.
 
 If a main version is found to have a significant security issue, it will be marked or withdrawn as appropriate.
 
 :::important
-The main releases availability window is intentionally limited to ensure users stay up to date with the latest fixes and are protected from security vulnerabilities.
+We intentionally limit the availability window to help ensure you stay up to date with the latest fixes and remain protected from security vulnerabilities.
 :::
+
+### Example Timeline
+
+If a package version `v1.5.0` is released on January 1, 2025:
+- **Main release**: Available until December 31, 2025 (12 months)
+- **Backport release v1.5.1**: If released on March 1, 2025, it remains available until August 31, 2026 (18 months from its release date)
 
 ## Publishing
 
-Packages have two relevant version numbers:
+Understanding the different types of releases and how they're published helps you make informed decisions about which package versions to use. Packages have two relevant version numbers:
 
 - Package release version, for example, `provider-aws:v2.1.0`
 - Custom Resource Definition (_CRD_) API version, for example `v1beta1`
@@ -166,9 +190,9 @@ Packages have two relevant version numbers:
 
 ### Release cadence
 
-- **Upstream main** releases are subject to the Crossplane governance policies and at least should follow the core Crossplane project release schedule.
+- **Upstream main** releases are subject to the Crossplane governance policies and at a minimum would follow the core Crossplane project release schedule.
 - The **Upstream main** release cadence may vary by package and a faster release cadence is subject to the package repository maintainers.
-  - **Upbound Official** and **Partner** packages target monthly main releases if there are new features available.
+  - **Upbound Official** and **Partner** packages target monthly main branch releases if there are new features available.
   - **Upbound Official** and **Partner** packages that are generated with Upjet and leverage Terraform providers are upgraded to the latest version of the Terraform provider every 2 months.
 - **Downstream main** releases ship at the same time as the upstream main release.
 - **Downstream backport** releases are produced as needed based on eligibility and customer impact.
@@ -180,19 +204,19 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 ### Testing and release quality gating
 
 - **Upstream main release**: unit and basic integration testing.
-- **Downstream (main and backport)**: extended test matrix and validation on supported Cloud accounts; CVE validation to ensure the package is free from CVEs. Releases are gated on these validation steps passing.
+- **Downstream (main and backport)**: extended test matrix and validation on Upbound-managed cloud provider accounts; CVE validation to ensure the package is free from CVEs. Releases are gated on these validation steps passing.
 
 ### Publish summary matrix
 
 | Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Enterprise+) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
 | ------------------- | ------------------- | -------------------------- | -------------------- | ------ | ---- | -------------------------------------------------------- | ------------------- | ------------------------- | ------------------------- | ------------------------------------- | -------------------------------------------- |
-| Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | 6 months            | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
-| Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 6 months            | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
+| Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | 12 months            | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
+| Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 12 months            | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
 | Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | [Standard+][pricing-page] | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
 
 ## Package versions
 
-Upbound Official and Partner package versions follow the
+Understanding how package versions work helps you plan upgrades and understand compatibility expectations. Upbound Official and Partner package versions follow the
 [semantic versioning (_semver_)][semantic-versioning-semver] standard of `<major>`.`<minor>`.`<patch>` numbering.
 
 #### Major version change
@@ -227,17 +251,19 @@ A `patch` version increases for releases with **only** bug fixes and **no** new 
 
 When CRDs are contained in an Official package, they follow the standard Kubernetes API versioning and deprecation policy.
 
-- `v1alpha1` - CRDs under `v1alpha` haven't yet passed through Upbound's quality assurance process. `v1alpha1` providers
+- `v1alpha1` - CRDs at the `v1alpha1` version haven't yet passed through Upbound's quality assurance process. These CRDs
   are for testing and experimentation and aren't intended for production deployment.
 - `v1beta1` - This identifies a qualified and tested CRD under common use cases. Upbound attempts to ensure a stable CRD
-  API but may require breaking changes in future versions. `v1beta1` APIs may be missing endpoints or settings related
+  API but may require breaking changes in future versions. `v1beta1` CRDs may be missing endpoints or settings related
   to the provider resource.
-- `v1beta2` - Like `v1beta1` CRDs all `v1beta2` providers are fully qualified and tested. `v1beta2` contain more
+- `v1beta2` - Like `v1beta1`, all `v1beta2` CRDs are fully qualified and tested. `v1beta2` CRDs contain more
   features or breaking changes from the `v1beta1` API.
-- `v1` - CRDs that reach a `v1` API version have fully defined APIs. Upbound won't make breaking API changes in the
+- `v1` - CRDs that reach a `v1` API version have fully defined APIs. Upbound won't make breaking API changes to `v1` CRDs in the
   current `major` version of the provider.
 
 ## Compatibility
+
+Understanding compatibility rules helps you plan upgrades and avoid unexpected issues.
 
 ### Upgrading
 
@@ -280,7 +306,7 @@ applying to production.
 :::
 
 :::tip
-Upbound customers with support entitlements support should
+Upbound customers with support entitlements should
 consult their assigned Solutions Architect or reach out to Upbound Support before a production downgrade.
 :::
 
@@ -315,7 +341,7 @@ Examples:
 
 ## CVEs
 
-Upbound will make reasonable commercial effort to ensure its Official packages are free
+Security is a top priority for Upbound. We actively monitor and address security vulnerabilities in our packages. Upbound will make reasonable commercial effort to ensure its Official packages are free
 from [Common Vulnerabilities and Exposures][common-vulnerabilities-and-exposures] (CVEs) under the following
 conditions:
 
