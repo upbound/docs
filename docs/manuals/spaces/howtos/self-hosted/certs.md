@@ -1,9 +1,8 @@
 ---
-title: Service Mesh and Certificates
+title: Istio Ingress Gateway With Custom Certificates
 sidebar_position: 20
-description: Install self hosted spaces certificates
+description: Install self hosted spaces using istio ingress gateway in a Kind cluster
 ---
-
 
 :::important
 Prerequisites
@@ -14,9 +13,8 @@ Prerequisites
 - `jq` installation
 :::
 
-
 This document describes the installation of a self hosted space on an example `kind`
-cluster along with Istio and certificates. The service mesh and certificates
+cluster along with Istio Ingress Gateway and certificates. The service mesh and certificates
 installation is transferable to self hosted spaces in arbitrary clouds.
 
 ## Create a kind cluster
@@ -48,6 +46,12 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 ## Install Istio
 
+:::important
+This is for illustrative purposes only, not recommended for use in production.
+:::
+
+1. Create the `istio-values.yaml` file
+
 ```shell
 cat > istio-values.yaml << 'EOF'
 apiVersion: install.istio.io/v1alpha1
@@ -75,85 +79,57 @@ spec:
 EOF
 ```
 
+1. Install istio via `istioctl`
+
 ```shell
 istioctl install -f istio-values.yaml
 ```
 
-## Create or generate a certificate
-
-This script creates a certificate for a proof of concept environment.
-Please use your blessed processes for obtaining production certificates.
+## Create a self-signed Certificate via cert-manager
 
 :::important
-NOT for use in production.
+This Certificate manifest creates a self-signed certificate for a proof of concept
+environment and is not recommended for production use cases.
 :::
 
+1. Create the upbound-system namespace
+
 ```shell
-#!/bin/bash
+kubectl create namespace upbound-system
+```
 
-# Create upbound-system namespace
-kubectl create ns upbound-system
+1. Create a self-signed certificate
 
-# Create certificates directory
-mkdir -p certs
-
-# Generate CA private key
-openssl genrsa -out certs/ca.key 4096
-
-# Create CA certificate
-openssl req -new -x509 -key certs/ca.key -sha256 -subj "/C=US/ST=CA/O=MyOrg/CN=MyCA" -days 3650 -out certs/ca.crt
-
-# Generate server private key
-openssl genrsa -out certs/server.key 4096
-
-# Create certificate signing request
-openssl req -new -key certs/server.key -out certs/server.csr -subj "/C=US/ST=CA/O=MyOrg/CN=proxy.upbound-127.0.0.1.nip.io"
-
-# Create server certificate extensions file
-cat > certs/server.conf << EOF
-[req]
-distinguished_name = req_distinguished_name
-req_extensions = v3_req
-prompt = no
-
-[req_distinguished_name]
-C = US
-ST = CA
-O = MyOrg
-CN = proxy.upbound-127.0.0.1.nip.io
-
-[v3_req]
-keyUsage = keyEncipherment, dataEncipherment
-extendedKeyUsage = serverAuth
-subjectAltName = @alt_names
-
-[alt_names]
-DNS.1 = proxy.upbound-127.0.0.1.nip.io
-DNS.2 = *.proxy.upbound-127.0.0.1.nip.io
-IP.1 = 127.0.0.1
+```shell
+cat <<EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-issuer
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: example-tls-secret
+  namespace: upbound-system
+spec:
+  secretName: example-tls-secret
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+  dnsNames:
+  # Replace with your Spaces cluster ingress hostname
+  - proxy.upbound-127.0.0.1.nip.io
 EOF
-
-# Sign server certificate with CA
-openssl x509 -req -in certs/server.csr -CA certs/ca.crt -CAkey certs/ca.key -CAcreateserial -out certs/server.crt -days 365 -extensions v3_req -extfile certs/server.conf
-
-# Create Kubernetes secrets
-kubectl create secret generic proxy-tls-secret --from-file=tls.crt=certs/server.crt --from-file=tls.key=certs/server.key --from-file=ca.crt=certs/ca.crt -n upbound-system --dry-run=client -o yaml | kubectl apply -f -
-
-echo "Certificates created in certs/ directory:"
-echo "- ca.crt (CA certificate)"
-echo "- ca.key (CA private key)"
-echo "- server.crt (Server certificate for proxy.upbound-127.0.0.1.nip.io)"
-echo "- server.key (Server private key)"
-echo ""
-echo "Kubernetes secrets created:"
-echo "- proxy-tls-secret in upbound-system namespace"
 ```
 
-## Create an Istio gateway and virtual service
+## Create an Istio Gateway and VirtualService
 
-Use TLS passthrough.
+Configure an Istio Gateway and VirtualService to use TLS passthrough.
 
-```
+```shell
 cat <<EOF | kubectl apply -f -
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -165,6 +141,7 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:
+    # Replace with your Spaces cluster ingress hostname
     - proxy.upbound-127.0.0.1.nip.io
     port:
       name: tls
@@ -182,10 +159,12 @@ spec:
   gateways:
   - spaces-gateway
   hosts:
+  # Replace with your Spaces cluster ingress hostname
   - proxy.upbound-127.0.0.1.nip.io
   tls:
   - match:
     - sniHosts:
+      # Replace with your Spaces cluster ingress hostname
       - proxy.upbound-127.0.0.1.nip.io
     route:
     - destination:
@@ -197,35 +176,51 @@ EOF
 
 ## Install spaces
 
+1. Create the Spaces values file
+
 ```shell
 cat > spaces-values.yaml << 'EOF'
+# Configure spaces-router to use the TLS secret created by cert-manager.
 externalTLS:
   tlsSecret:
-    name: proxy-tls-secret
+    name: example-tls-secret
   caBundleSecret:
-    name: proxy-tls-secret
+    name: example-tls-secret
     key: ca.crt
 ingress:
   provision: false
+  # Allow Istio Ingress Gateway to communicate to the spaces-router
   namespaceLabels:
     kubernetes.io/metadata.name: istio-system
   podLabels:
     app: istio-ingressgateway
     istio: ingressgateway
 EOF
+```
 
+1. Set the required environment variables
+
+```shell
 # Update these according to your account/token file
 export SPACES_TOKEN_PATH=<token file path>
 export UPBOUND_ACCOUNT=<account>
+# Replace SPACES_ROUTER_HOST with your Spaces ingress hostname
 export SPACES_ROUTER_HOST="proxy.upbound-127.0.0.1.nip.io"
-export SPACES_VERSION="1.13.1"
+export SPACES_VERSION="1.14.1"
+```
 
-# Create image pull secret
+1. Create an image pull secret for Spaces
+
+```shell
 kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
  --docker-server=https://xpkg.upbound.io \
  --docker-username="$(jq -r .accessId $SPACES_TOKEN_PATH)" \
  --docker-password="$(jq -r .token $SPACES_TOKEN_PATH)"
+```
 
+1. Install the Spaces helm chart
+
+```shell
 # Login to xpkg.upbound.io
 jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 
@@ -250,6 +245,7 @@ Additionally, you can further issue control plane creation, list and deletion
 commands that should work as well.
 - `up ctp create cert-test`
 - `up ctp list`
+- `up ctx disconnected/kind-kind/default/cert-test && kubectl get namespace`
 - `up ctp delete cert-test`
 
 Note that a new profile may need to be created if up cannot connect.
