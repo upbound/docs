@@ -10,11 +10,10 @@ new capabilities, user-defined logic, and add-ons.
 
 ## Package availability
 
-**Official Packages that are compatible with Crossplane v2.0 are
-Upbound-Crossplane only.** Patch version releases of Official Packages require a
+Patch version releases of Official Packages require a
 commercial license, available for users on a Standard plan or greater.
 
-## Learn about Packages
+## Learn about packages
 
 Read the [package concept][package-concept] documentation to learn how packages
 work in Upbound Crossplane. Read the Official Package [policies][policies]
