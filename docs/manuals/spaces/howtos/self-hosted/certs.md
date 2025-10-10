@@ -44,9 +44,9 @@ EOF
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
 ```
 
-<!-- vale Google.Headings = OFF -->
+<!-- vale Google.Headings = NO -->
 ## Install Istio
-<!-- vale Google.Headings = ON -->
+<!-- vale Google.Headings = YES -->
 
 :::important
 This is an example and not recommended for use in production.
@@ -127,14 +127,14 @@ spec:
 EOF
 ```
 
-<!-- vale Google.Headings = OFF -->
+<!-- vale Google.Headings = NO -->
 ## Create an Istio Gateway and VirtualService
-<!-- vale Google.Headings = ON -->
+<!-- vale Google.Headings = YES -->
 
-<!-- vale Upbound.Spelling = OFF -->
+<!-- vale Upbound.Spelling = NO -->
 <!-- ignore passthrough -->
 Configure an Istio Gateway and VirtualService to use TLS passthrough.
-<!-- vale Upbound.Spelling = ON -->
+<!-- vale Upbound.Spelling = YES -->
 
 ```shell
 cat <<EOF | kubectl apply -f -
