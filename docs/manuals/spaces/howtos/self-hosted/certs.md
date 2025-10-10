@@ -44,10 +44,12 @@ EOF
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.yaml
 ```
 
+<!-- vale Google.Headings = OFF -->
 ## Install Istio
+<!-- vale Google.Headings = ON -->
 
 :::important
-This is for illustrative purposes only, not recommended for use in production.
+This is an example and not recommended for use in production.
 :::
 
 1. Create the `istio-values.yaml` file
@@ -89,7 +91,7 @@ istioctl install -f istio-values.yaml
 
 :::important
 This Certificate manifest creates a self-signed certificate for a proof of concept
-environment and is not recommended for production use cases.
+environment and isn't recommended for production use cases.
 :::
 
 1. Create the upbound-system namespace
@@ -125,9 +127,14 @@ spec:
 EOF
 ```
 
+<!-- vale Google.Headings = OFF -->
 ## Create an Istio Gateway and VirtualService
+<!-- vale Google.Headings = ON -->
 
+<!-- vale Upbound.Spelling = OFF -->
+<!-- ignore passthrough -->
 Configure an Istio Gateway and VirtualService to use TLS passthrough.
+<!-- vale Upbound.Spelling = ON -->
 
 ```shell
 cat <<EOF | kubectl apply -f -
@@ -237,18 +244,21 @@ helm -n upbound-system upgrade --install spaces \
 
 ## Validate the installation
 
-Successful access of the up command to interact with your self hosted space validates the
+Successful access of the `up` command to interact with your self hosted space validates the
 certificate installation.
+
 - `up ctx .`
 
-Additionally, you can further issue control plane creation, list and deletion
-commands that should work as well.
+You can also issue control plane creation, list and deletion commands.
+
 - `up ctp create cert-test`
 - `up ctp list`
 - `up ctx disconnected/kind-kind/default/cert-test && kubectl get namespace`
 - `up ctp delete cert-test`
 
-Note that a new profile may need to be created if up cannot connect.
+:::note
+If `up` can't connect to your control plane, follow [this guide to create a new profile][up-profile].
+:::
 
 ## Troubleshooting
 
@@ -256,3 +266,4 @@ The following `openssl` command is useful to examine your certificate:
 - `openssl s_client -connect proxy.upbound-127.0.0.1.nip.io:443 -showcerts`
 
 [istioctl]: https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/
+[up-profile]: /manuals/cli/howtos/profile-config/
