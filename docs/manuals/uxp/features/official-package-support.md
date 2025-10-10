@@ -13,7 +13,7 @@ new capabilities, user-defined logic, and add-ons.
 Patch version releases of Official Packages require a
 commercial license, available for users on a Standard plan or greater.
 
-## Learn about Packages
+## Learn about packages
 
 Read the [package concept][package-concept] documentation to learn how packages
 work in Upbound Crossplane. Read the Official Package [policies][policies]
