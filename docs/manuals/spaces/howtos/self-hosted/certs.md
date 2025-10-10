@@ -48,9 +48,11 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 ## Install Istio
 <!-- vale Google.Headings = YES -->
 
+<!-- vale gitlab.UnclearAntecedent = NO -->
 :::important
 This is an example and not recommended for use in production.
 :::
+<!-- vale gitlab.UnclearAntecedent = YES -->
 
 1. Create the `istio-values.yaml` file
 
