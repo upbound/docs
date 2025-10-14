@@ -83,7 +83,7 @@ spec:
 EOF
 ```
 
-1. Install istio via `istioctl`
+2. Install istio via `istioctl`
 
 ```shell
 istioctl install -f istio-values.yaml
@@ -102,7 +102,7 @@ environment and isn't recommended for production use cases.
 kubectl create namespace upbound-system
 ```
 
-1. Create a self-signed certificate
+2. Create a self-signed certificate
 
 ```shell
 cat <<EOF | kubectl apply -f -
@@ -207,7 +207,7 @@ ingress:
 EOF
 ```
 
-1. Set the required environment variables
+2. Set the required environment variables
 
 ```shell
 # Update these according to your account/token file
@@ -218,7 +218,7 @@ export SPACES_ROUTER_HOST="proxy.upbound-127.0.0.1.nip.io"
 export SPACES_VERSION="1.14.1"
 ```
 
-1. Create an image pull secret for Spaces
+3. Create an image pull secret for Spaces
 
 ```shell
 kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
@@ -227,7 +227,7 @@ kubectl -n upbound-system create secret docker-registry upbound-pull-secret \
  --docker-password="$(jq -r .token $SPACES_TOKEN_PATH)"
 ```
 
-1. Install the Spaces helm chart
+4. Install the Spaces helm chart
 
 ```shell
 # Login to xpkg.upbound.io
@@ -264,8 +264,11 @@ If `up` can't connect to your control plane, follow [this guide to create a new 
 
 ## Troubleshooting
 
-The following `openssl` command is useful to examine your certificate:
-- `openssl s_client -connect proxy.upbound-127.0.0.1.nip.io:443 -showcerts`
+Examine your certificate with `openssl`:
+
+```shell
+openssl s_client -connect proxy.upbound-127.0.0.1.nip.io:443 -showcerts
+```
 
 [istioctl]: https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/
 [up-profile]: /manuals/cli/howtos/profile-config/
