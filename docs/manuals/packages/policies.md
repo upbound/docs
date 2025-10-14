@@ -44,7 +44,7 @@ The following policies govern how you can access, receive support for, and under
 - Backport releases of past minor versions require paid subscriptions to support extra maintenance costs.
 - FIPS-compatible artifact (packages and UXP) versions are available with paid subscriptions.
 
-### Which Package Versions Can I Access
+### Which Package Versions Can You Access
 
 - **Community user or no subscription?** You can pull all main releases published within the last 12 months.
 - **Standard, Enterprise, or Business Critical subscription?** You can pull all main and backport releases (with configured pull secrets for backports).
