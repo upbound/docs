@@ -264,8 +264,11 @@ If `up` can't connect to your control plane, follow [this guide to create a new 
 
 ## Troubleshooting
 
-The following `openssl` command is useful to examine your certificate:
-- `openssl s_client -connect proxy.upbound-127.0.0.1.nip.io:443 -showcerts`
+Examine your certificate with `openssl`:
+
+```shell
+openssl s_client -connect proxy.upbound-127.0.0.1.nip.io:443 -showcerts
+```
 
 [istioctl]: https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/
 [up-profile]: /manuals/cli/howtos/profile-config/
