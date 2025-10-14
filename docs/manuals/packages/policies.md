@@ -25,7 +25,7 @@ The following policies govern how you can access, receive support for, and under
 
 | Topic                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| UXP                                      | Upbound Crossplane, or UXP, is Upbound's enterprise distribution of Crossplane which is 100% compatible with OSS Crossplane. You can easily switch from OSS Crossplane to UXP. [Read more about UXP](/manuals/uxp/overview/).                                                                                                                                                                                                                                                |
+| UXP                                      | Upbound Crossplane, or UXP, is Upbound's enterprise distribution of Crossplane which is 100% compatible with OSS Crossplane. You can switch from OSS Crossplane to UXP. [Read more about UXP](/manuals/uxp/overview/).                                                                                                                                                                                                                                                       |
 | Upstream vs Downstream                   | **Upstream**: public repositories under `github.com/crossplane-contrib` and main releases published to `xpkg.crossplane.io`. [Browse packages](https://github.com/orgs/crossplane-contrib/packages); all source code changes land here first.<br/> **Downstream**: private repositories under `github.com/upbound` that mirror upstream and produce downstream main and backport releases published to `xpkg.upbound.io`. [Browse packages](https://marketplace.upbound.io). |
 | Main vs Backport releases                | **Main**: regular releases from the `main` branch.<br/>**Backport**: patch-only releases from release maintenance branches for a specific minor version; contains cherry-picked fixes only, no new features.                                                                                                                                                                                                                                                                 |
 | Community, Official and Partner packages | **Community**: built, maintained and supported by members of the Crossplane community.<br/>**Official**: built, maintained and supported by Upbound.<br/>**Partner**: built and supported jointly by Upbound and the partner; Upbound verifies that the package meets its quality bar.                                                                                                                                                                                       |
@@ -38,13 +38,13 @@ The following policies govern how you can access, receive support for, and under
 ## At a Glance
 
 - As the original creator of the Crossplane project, Upbound is committed to the long-term health and success of the Crossplane community.
-- All OSS Crossplane-compatible packages maintained by Upbound are freely available to the community under an open source license.
-- We publish packages to both the Crossplane and Upbound registries.
+- All OSS Crossplane-compatible packages maintained by Upbound are available to the community under an open source license.
+- Upbound publishes packages to both the Crossplane and Upbound registries.
 - Official package main releases are available at no cost to all community members.
-- Backport releases of past minor versions require paid subscriptions to support additional maintenance costs.
+- Backport releases of past minor versions require paid subscriptions to support extra maintenance costs.
 - FIPS-compatible artifact (packages and UXP) versions are available with paid subscriptions.
 
-### Which Package Versions Can I Access?
+### Which Package Versions Can I Access
 
 - **Community user or no subscription?** You can pull all main releases published within the last 12 months.
 - **Standard, Enterprise, or Business Critical subscription?** You can pull all main and backport releases (with configured pull secrets for backports).
@@ -142,7 +142,7 @@ Marketplace.
 ### Standard, Enterprise, and Business Critical subscribers
 
 **Access**: If your organization has a `Standard`, `Enterprise`, or `Business Critical` subscription to Upbound, you can access all available versions within the availability window, including backport releases (backports require configured pull secrets).  
-**Support**: Upbound supports Official and Partner packages for 12 months from the release date of the minor version. A minor release version may receive patch releases for up to 12 months after it was first released.
+**Support**: Upbound supports Official and Partner packages for 12 months from the release date of the minor version. A minor release version may receive patch releases for up to 12 months after its first release.
 
 :::note
 Availability is distinct from Support. Support is provided for 12 months from the release date of a package's minor version. After the Support window ends, artifacts may remain available per the Availability window (for example, backport patch releases).
@@ -165,7 +165,7 @@ Availability defines how long a release remains pullable in registries and is di
 If a main version is found to have a significant security issue, it will be marked or withdrawn as appropriate.
 
 :::important
-We intentionally limit the availability window to help ensure you stay up to date with the latest fixes and remain protected from security vulnerabilities.
+The availability window is intentionally limited to help ensure you stay up to date with the latest fixes and remain protected from security vulnerabilities.
 :::
 
 ### Example Timeline
@@ -190,7 +190,7 @@ Understanding the different types of releases and how they're published helps yo
 
 ### Release cadence
 
-- **Upstream main** releases are subject to the Crossplane governance policies and at a minimum would follow the core Crossplane project release schedule.
+- **Upstream main** releases are subject to the Crossplane governance policies and would at least follow the core Crossplane project release schedule.
 - The **Upstream main** release cadence may vary by package and a faster release cadence is subject to the package repository maintainers.
   - **Upbound Official** and **Partner** packages target monthly main branch releases if there are new features available.
   - **Upbound Official** and **Partner** packages that are generated with Upjet and leverage Terraform providers are upgraded to the latest version of the Terraform provider every 2 months.
@@ -210,7 +210,7 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 
 | Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Enterprise+) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
 | ------------------- | ------------------- | -------------------------- | -------------------- | ------ | ---- | -------------------------------------------------------- | ------------------- | ------------------------- | ------------------------- | ------------------------------------- | -------------------------------------------- |
-| Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | Unlimted            | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
+| Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | Unlimited           | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
 | Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 12 months           | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
 | Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | [Standard+][pricing-page] | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
 
@@ -341,7 +341,7 @@ Examples:
 
 ## CVEs
 
-Security is a top priority for Upbound. We actively monitor and address security vulnerabilities in our packages. Upbound will make reasonable commercial effort to ensure its Official packages are free
+Security is a top priority for Upbound. Upbound actively monitors and addresses security vulnerabilities in its packages. Upbound will make reasonable commercial effort to ensure its Official packages are free
 from [Common Vulnerabilities and Exposures][common-vulnerabilities-and-exposures] (CVEs) under the following
 conditions:
 
