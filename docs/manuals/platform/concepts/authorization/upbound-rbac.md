@@ -49,9 +49,37 @@ These roles apply at three levels:
 - Control Plane Groups
 - Control Planes
 
-Upbound RBAC roles have either `read-only` or `read/write` access for features. Review the table for permissions for each role:
+Review the table for permissions for each role:
 
-![A table with RBAC permissions](/img/rbac-access-levels.png)
+
+| CONTROLPLANE ROLES | VIEWER | EDITOR | CONTROLLER | ADMIN |
+|---|---|---|---|---|
+| `whoami`, `can-i`, and discover APIs | Read | Read | Read | Read |
+| Namespaces | Read | Read | Create + Read | CRUD |
+| Events | Read | Read | CRUD | CRUD |
+| Secrets Connection Details | Read | CRUD | CRUD | CRUD |
+| *.crossplane.io APIs | Read | CRUD | CRUD | CRUD |
+| MRs, Compositions, Claims | Read | CRUD | CRUD | CRUD |
+| ConfigMaps | ✗ | CRUD | CRUD | CRUD |
+| External Secrets Operator (ESO) APIs | Read | Read* | Read* | CRUD |
+| CRDs | Read | Read | Read | Read + Update |
+| Pods | ✗ | Read + Delete | ✗ | Read + Delete |
+| Deployments | ✗ | Read | ✗ | Read |
+| ReplicaSets | ✗ | Read | ✗ | Read |
+| ControllerRevisions | Read | CRUD | CRUD | CRUD |
+| Services | ✗ | Read | ✗ | Read |
+| Webhook Configurations | ✗ | Read | ✗ | Read |
+| ValidatingAdmissionPolicies | ✗ | Read | ✗ | Read |
+| Leases | ✗ | ✗ | CRUD | CRUD |
+| ClusterRoles | ✗ | ✗ | ✗ | CRUD |
+| ClusterRoleBindings | ✗ | ✗ | ✗ | CRUD |
+| Roles | ✗ | ✗ | ✗ | CRUD |
+| RoleBindings | ✗ | ✗ | ✗ | CRUD |
+| ServiceAccounts | ✗ | ✗ | ✗ | CRUD |
+
+:::note
+Editor and Controller lack Read permissions on `quayaccesstokens`, `stssessiontokens` ESO generator types.
+:::
 
 ### View group role permissions
 
