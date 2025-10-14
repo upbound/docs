@@ -8,6 +8,11 @@ Autoscalers
 Autoscaler
 autoscaling
 Autoscaling
+Backport
+backport
+Backported
+backported
+Backports
 backports
 boolean
 booleans
@@ -94,6 +99,10 @@ Pylance
 readme
 Rego
 routable
+Runtime
+runtime
+Runtimes
+runtimes
 SBOMs
 semver
 Serverless
