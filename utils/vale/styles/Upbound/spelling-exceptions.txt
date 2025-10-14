@@ -51,6 +51,8 @@ Geekdocs
 Goldmark
 Grammarly
 Grafana
+Istio
+istio
 image_uri
 kubeconfig
 kubectl
