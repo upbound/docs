@@ -50,4 +50,4 @@ This table lists the cloud service provider regions supported by Upbound.
 [dedicated-spaces]: /manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment
 [managed-spaces]: /manuals/spaces/howtos/self-hosted/managed-spaces-deployment
 [self-hosted-spaces]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
-[console]: /manuals/console/
+[console]: /manuals/console/upbound-console/

@@ -110,6 +110,6 @@ Most Kubernetes clusters come with some set of predefined namespaces. Because a 
 
 
 [secrets]: /manuals/spaces/features/secrets-management
-[backups]: /manuals/spaces/howtos/self-hosted/workload-id-backup-restore
+[backups]: /manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/
 [space]: /manuals/spaces/overview
 [upbound-context]: /manuals/cli/concepts/contexts

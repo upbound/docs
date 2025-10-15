@@ -127,7 +127,7 @@ EOF
 [argo-cd]: https://argo-cd.readthedocs.io/en/stable/
 [my-account-api-tokens]: https://accounts.upbound.io/settings/tokens
 [auto-respect-rbac-for-the-argo-cd-controller]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
-[spec-writeconnectionsecrettoref]: /reference/apis/spaces-api/
+[spec-writeconnectionsecrettoref]: /reference/apis/spaces-api/latest
 [auto-respect-rbac-for-the-argo-cd-controller-1]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
 [provider-upbound]: https://marketplace.upbound.io/providers/upbound/provider-upbound
 [provider-kubernetes]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes

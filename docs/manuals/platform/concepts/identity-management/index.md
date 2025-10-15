@@ -181,7 +181,7 @@ Key features:
 [teams]: /manuals/platform/concepts/identity-management/teams
 [robots]: /manuals/platform/concepts/identity-management/robots
 [enabling-directory-sync]: /manuals/platform/howtos/enable-sso
-[authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/authentication/oidc-configuration
+[authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/howtos/oidc
 
 
 [kubernetes-authentication-strategies]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies
