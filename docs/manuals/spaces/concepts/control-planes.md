@@ -202,20 +202,20 @@ Upbound gives users the ability to configure the collection of telemetry (logs, 
 <!-- vale on -->
 
 
-[automatic-upgrades]: /operate/auto-upgrade
+[automatic-upgrades]: /manuals/spaces/howtos/auto-upgrade
 [release-notes]: https://github.com/upbound/universal-crossplane/releases
-[control-plane-group]: /operate/groups
-[space]: /deploy
-[up-cli]: /apis-cli/cli-reference
-[cli-reference]: /apis-cli/cli-reference
-[up-ctx]: /apis-cli/cli-reference
-[up-ctx-f]: /apis-cli/cli-reference
-[cli-documentation]: /operate/cli/contexts
+[control-plane-group]: /manuals/spaces/concepts/groups
+[space]: /manuals/spaces/overview
+[up-cli]: /reference/cli-reference
+[cli-reference]: /reference/cli-reference
+[up-ctx]: /reference/cli-reference
+[up-ctx-f]: /reference/cli-reference
+[cli-documentation]: /manuals/cli/concepts/contexts
 [upbound-marketplace]: https://marketplace.upbound.io
 [upbound-marketplace-1]: https://marketplace.upbound.io
-[gitops-with-control-planes]: /connect/gitops
-[connect-control-planes-to-external-services]: /operate/accounts/authentication/oidc-configuration
-[spaces-documentation]: /operate/secrets-management
-[spaces-documentation-1]: /deploy/backup-and-restore
+[gitops-with-control-planes]: /manuals/spaces/howtos/cloud-spaces/gitops
+[connect-control-planes-to-external-services]: /manuals/platform/howtos/oidc
+[spaces-documentation]: /manuals/spaces/features/secrets-management
+[spaces-documentation-1]: /manuals/spaces/features/backup-and-restore
 [otel]: https://otel.com
-[spaces-documentation-2]: /operate/observability
+[spaces-documentation-2]: /manuals/spaces/features/observability

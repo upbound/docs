@@ -853,7 +853,7 @@ spec:
 </div>
 
 [upbound-auth-oidc]: /manuals/platform/howtos/oidc
-[upbound-cloud-spaces]: /deploy
+[upbound-cloud-spaces]: /manuals/spaces/overview
 
 
 [service-account-keys]: https://cloud.google.com/iam/docs/keys-create-delete

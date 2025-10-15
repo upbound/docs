@@ -66,4 +66,4 @@ clusters), the Web UI is automatically configured into the local cluster.
 
 <!-- Understand how functions interact with specific XRs (Composite Resources) and MRs (Managed Resources) -->
 <!-- ` -->
-[console]: /manuals/console/
+[console]: /manuals/console/upbound-console/

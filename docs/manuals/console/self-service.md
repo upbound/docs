@@ -74,4 +74,4 @@ The Crossplane WebUI scopes to UXP clusters only. It doesn't support:
 - Teams or Groups
 - Authentication or account-based views
 
-[console]: /manuals/console/
+[console]: /manuals/console/upbound-console/
