@@ -5,12 +5,6 @@ description: A tutorial to configure a Space with Argo to declaratively create a
   manage control planes
 ---
 
-:::important
-
-This feature is set to be deprecated in favor of the [API Connector][api-connector]
-
-:::
-
 In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a control plane in an Upbound self-hosted Space.
 
 The [control plane connector][control-plane-connector] bridges your Kubernetes application clusters---running outside of Upbound--to your control planes running in Upbound. This allows you to interact with your control plane's API right from the app cluster. The claim APIs you define via `CompositeResourceDefinitions` are available alongside Kubernetes workload APIs like `Pod`. In effect, control plane connector provides the same experience as a locally installed Crossplane.
