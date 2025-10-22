@@ -31,7 +31,7 @@ To determine your Crossplane version, use the `crossplane` CLI and look for the
 
 ```shell {copy-lines=1}
 crossplane version
-Client Version: v1.16.0
+Client Version: v2.0.2
 Server Version: v2.0.2
 ```
 :::
