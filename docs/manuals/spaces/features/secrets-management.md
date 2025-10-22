@@ -158,7 +158,7 @@ kubectl get controlplane <control-plane-name> -o jsonpath='{.status.controlPlane
         "StringEquals": {
           "<OIDC provider>:aud": "sts.amazonaws.com",
           "<OIDC provider>:sub": [
-"system:serviceaccount:mxp-<controlPlaneID>-system:external-secrets-contoller"]
+"system:serviceaccount:mxp-<controlPlaneID>-system:external-secrets-controller"]
         }
       }
     }
