@@ -4,7 +4,7 @@ sidebar_position: 5
 description: "A guide to deploying an internal development platform powered by Upbound control planes"
 ---
 
-This solutions demonstrates how to configure Upbound control planes to power a
+This solution demonstrates how to configure Upbound control planes to power a
 streamlined, self-service platform for your engineering teams. Clone and tailor
 it to your needs to roll out an Internal Developer Platform (IDP). An IDP enables
 developers to spin up resources that are production-ready,
