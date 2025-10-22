@@ -678,7 +678,7 @@ further assistance, please reach out to your Upbound account representative.
 - Fix Backup's expired TTL resulting in deadlock.
 - Fixed a bug preventing scraping control plane etcd metrics
 - Fixed duplicate port warning printed during installation of the Spaces helm chart.
-- Observability: fixed an issue where network policies didnt allow the OTEL Collector's Prometheus to scrape some pods
+- Observability: fixed an issue where network policies didn't allow the OTEL Collector's Prometheus to scrape some pods
   for metrics.
 - We have optimized our controllers and tested hosting up to 500 control planes with a single Spaces installation.
 
