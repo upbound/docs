@@ -4,7 +4,10 @@ description: "Learn how to manage self-managed license for UXP"
 sidebar_position: 2
 ---
 
-Upbound Crossplane is available in community and commercial plans for Upbound. 
+This guide explains how to manage licenses for Upbound Crossplane (UXP),
+including how to generate, apply, download, and verify licenses for Community
+and Commercial plans.
+
 <!-- vale proselint.Cliches = NO -->
 * Upbound Community Plan lets you run Upbound Crossplane for free and is source-available on [GitHub][uxp-source]
 * Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
@@ -15,8 +18,6 @@ To generate a license key for Upbound Crossplane, contact your Upbound account
 representative.
 :::
 
-This guide walks through how to manage a UXP license.
-
 ## Prerequisites
 
 Before you begin, make sure you have:
@@ -25,6 +26,7 @@ Before you begin, make sure you have:
 * `kubectl` installed
 * the `up` CLI installed
 * a valid UXP license provided by Upbound (for Standard plans and above)
+* Admin access for your organization in the Upbound Console (for Enterprise plans)
 
 ## Community plan 
 
@@ -65,10 +67,30 @@ Commercial licenses unlock the following Upbound Crossplane features:
 
 These features are unavailable unless a valid license is present.
 
-* **Upon license expiration:**
-    * The cluster enters a grace period whereby features continue to work. The grace period is 25% of the total license duration. For example, a yearly license has a 3-month grace period, and a monthly license has about a 1-week grace period. During this grace period, the commercial features will continue to function normally. However, you'll notice warnings emitted in Upbound Crossplane that the license's grace period is active. 
-    * Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
-* **After license expiration and grace period:** After the grace period ends, paid features or components get locked down. This means any component checking the license sees that it's truly invalid (expired and grace period ended) and disables its paid features.
+### License expiration
+
+Upon license expiration, the cluster enter a grace period whereby features
+continue to work. The grace period is 25% of the total license duration. For
+example:
+
+* A yearly license has a 3-month grace period 
+* A monthly license has about a 1-week grace period. 
+
+During this grace period:
+
+* Commercial features continue to function normatlly
+* UXP emits warnings to indicate the license's grace period is active
+* Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
+
+**After license expiration and grace period**, paid features or components get
+locked down. This means any component checking the license sees that it's truly
+invalid (expired and grace period ended) and disables its paid features.
+
+:::note
+When licenses expires, your control plane still reconciles to guaranteer your
+resources are operational. However, logs will appear in your control plane to
+ensure operators understand the license is past its expiration period.
+:::
 
 ### Development licenses
 
@@ -78,6 +100,61 @@ These development licenses enable local development and testing flows with Upbou
 
 :::important
 This license may not be re-used for production purposes. 
+:::
+
+## License management in the Upbound Console (Enterprise and above)
+
+Organizations with Enterprise or higher tier plans have access to self-service
+license management in the Upbound Console.  
+
+:::important
+To manage your license in the Upbound Console, you must be an organization
+Admin.
+:::
+
+### List licenses
+
+To list your organization's licenses, log in to your Upbound account and click
+the **Licenses** button or navigate to **My Account** > **Manage Account** in
+the top right corner of your console.
+
+<!--- TODO(tr0njavolta): image --->
+
+The list of licenses displays information about your UXP licenses like:
+
+* License name
+* Status (Active or Expired)
+* Resources allocated per month
+* Operations allocated per month
+* Creation date
+* Expiration date
+
+<!--- TODO(tr0njavolta): image --->
+
+You can also use the search bar to find licenes by name, status, or number of
+resources/operations allocated per month.
+
+<!--- TODO(tr0njavolta): image --->
+
+### Download licenses
+
+To download a license in your console, click the three dots in the license of
+your choice.
+
+<!--- TODO(tr0njavolta): image --->
+
+Click **Download License**. Your browswer will download the license as a JSON
+file.
+
+<!--- TODO(tr0njavolta): image --->
+
+For more information, follow the **Provisioning Instructions** to see up-to-date
+documentation on how to apply the license to your Kubernetes cluster.
+
+:::note
+In the license file, the capicity field references resource hours rather than
+resource per month. Resource hours refelct the entire capacity allocated for the
+duration of the license instead of for a single month.
 :::
 
 
