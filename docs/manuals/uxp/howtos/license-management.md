@@ -78,7 +78,7 @@ example:
 
 During this grace period:
 
-* Commercial features continue to function normatlly
+* Commercial features continue to function normally 
 * UXP emits warnings to indicate the license's grace period is active
 * Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
 
@@ -87,7 +87,7 @@ locked down. This means any component checking the license sees that it's truly
 invalid (expired and grace period ended) and disables its paid features.
 
 :::note
-When licenses expires, your control plane still reconciles to guaranteer your
+When licenses expires, your control plane still reconciles to guarantee your
 resources are operational. However, logs will appear in your control plane to
 ensure operators understand the license is past its expiration period.
 :::
@@ -118,7 +118,7 @@ To list your organization's licenses, log in to your Upbound account and click
 the **Licenses** button or navigate to **My Account** > **Manage Account** in
 the top right corner of your console.
 
-<!--- TODO(tr0njavolta): image --->
+![License Landing Page][license-landing-page]
 
 The list of licenses displays information about your UXP licenses like:
 
@@ -129,36 +129,71 @@ The list of licenses displays information about your UXP licenses like:
 * Creation date
 * Expiration date
 
-<!--- TODO(tr0njavolta): image --->
+![License List][license-list]
 
-You can also use the search bar to find licenes by name, status, or number of
+You can also use the search bar to find licenses by name, status, or number of
 resources/operations allocated per month.
 
-<!--- TODO(tr0njavolta): image --->
+![License Search][license-search]
 
 ### Download licenses
 
 To download a license in your console, click the three dots in the license of
 your choice.
 
-<!--- TODO(tr0njavolta): image --->
+
+![License Download][license-download]
 
 Click **Download License**. Your browswer will download the license as a JSON
 file.
 
-<!--- TODO(tr0njavolta): image --->
 
 For more information, follow the **Provisioning Instructions** to see up-to-date
 documentation on how to apply the license to your Kubernetes cluster.
 
 :::note
-In the license file, the capicity field references resource hours rather than
-resource per month. Resource hours refelct the entire capacity allocated for the
+In the license file, the capacity field references resource hours rather than
+resource per month. Resource hours reflect the entire capacity allocated for the
 duration of the license instead of for a single month.
 :::
 
+Controllers in clusters track **Resource Hours** for accuracy and precision.
+Because licenses apply to disconnected clusters that don't report back
+consumption metrics, the license must hold the entire capacity.
 
-## Add a license to an Upbound Crossplane cluster
+### Create a new license
+
+To create a new license in the console, click the **Create** button and fill out
+the necessary information.
+
+![License Create][license-create]
+
+Licenses require:
+
+* **License Name**: A meaningful name to identify the license within the pool of licenses created. Use cluster names, regions, or meaningful identifiers that can help you later know to which control plane your license is tied.
+* **Expiration**: The exact date when the license will expire. No expiration date can exceed your end contract with Upbound.
+* **Resources per Month**: Number of resources that the control plane will manage during a month.
+* **Operations per Month**: Number of operations the control plane will execute on a monthly basis.
+
+Click **Create** to provision your license. Once you submit your license
+request, Upbound bills your organization according to the resources/operations
+allocated and creates a JSON-formatted license file.
+
+
+Download your license and follow the [provisioning
+instructions][provisioning-instructions] to apply it to your control plane.
+
+:::important
+For organizations without active contracts, your **Create** button is disabled
+and displays insights on why the operation isn't allowed.
+
+Unless there are network errors or outages, the only reason you can't create a
+license is because your organization doesn't have a valid contract in Upbound's
+billing system (Metronome). Reach out to support or your account representative
+to coordinate provisioning.
+:::
+
+## Add a license to an Upbound Crossplane cluster {#add-a-license}
 
 To enable commercial features in an Upbound Crossplane cluster, you need a
 commercial license.
@@ -251,5 +286,11 @@ current usage:
 For more information on usage metering, review the [Usage Metering][usage]
 guide.
 
+[license-landing-page]: /img/license-landing-page.png
+[license-list]: /img/license-list-1.png
+[license-download]: /img/license-download.png
+[license-search]: /img/license-search.png
+[license-create]: /img/license-create-1.png
+[provisioning-instructions]: #add-a-license
 [usage]: /manuals/uxp/howtos/usage-metering
 [uxp-source]: https://github.com/upbound/upbound-crossplane

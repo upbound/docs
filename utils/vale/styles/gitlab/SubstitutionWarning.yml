@@ -13,7 +13,7 @@ ignorecase: true
 swap:
   air(?:-| )?gapped: offline environment
   bullet: list item
-  click: select
+#  click: select
   code base: codebase
   deselect: clear
   deselected: cleared

@@ -14,7 +14,7 @@ tokens:
   - accrue
   - acquiesce
   - acquire
-  - additional
+#  - additional
   - adjacent to
   - adjustment
   - admissible
@@ -83,7 +83,7 @@ tokens:
   - exclusively
   - expedite
   - expend
-  - expiration
+#  - expiration
   - facilitate
   - factual evidence
   - feasible
