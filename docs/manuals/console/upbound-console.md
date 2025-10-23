@@ -35,7 +35,7 @@ Above the dashboard is Upbound's top navigation bar. Wherever you are in the pro
 ## Control Plane Explorer
 <!-- vale Google.Headings = YES -->
 
-Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can learn how to integrate the control plane
+Clicking into a control plane brings you to the control plane explorer. From the control plane explorer you can learn how to integrate the control plane.
 
 ![Upbound Control Plane Dashboard](/img/ctp-dashboard-new.png)
 
