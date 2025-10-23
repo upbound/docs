@@ -25,6 +25,9 @@ endif
 ifeq ($(UNAME_M),arm64)
 	VALE_ARCH := arm64
 endif
+ifeq ($(UNAME_M),aarch64)
+        VALE_ARCH := arm64
+endif
 
 VALE_BINARY := vale_$(VALE_VERSION)_$(VALE_OS)_$(VALE_ARCH).tar.gz
 VALE_INSTALL_DIR := ./bin

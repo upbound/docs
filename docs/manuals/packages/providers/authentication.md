@@ -990,7 +990,7 @@ Select **Save**.
 1. Open the **[GCP IAM Admin console][gcp-iam-admin-console]**.
 2. Select **[Service Accounts][service-accounts]**.
 3. Select **Create Service Account**.
-4. Grant appropriate roles (e.g., **Cloud SQL Admin**, **Workload Identity User**).
+4. Grant appropriate roles (for example, **Cloud SQL Admin**, **Workload Identity User**).
 
 #### Add the service account to the identity pool
 
@@ -1113,7 +1113,7 @@ Create a GCP access [token for a service account][token-for-a-service-account] o
 :::warning
 GCP access tokens are valid for 1 hour by default. When the token expires Crossplane can't create or delete resources.
 
-The [provider-gcp GitHub repository][provider-gcp-github-repository] contains an example cron job that automatically refreshes access tokens.
+The [provider-gcp GitHub repository][provider-gcp-github-repository] contains an example `cron` job that automatically refreshes access tokens.
 :::
 
 #### Create a Kubernetes secret

@@ -237,7 +237,12 @@
         },
         {
             "source": "/providers/provider-aws/authentication(/)?",
-            "destination": "/manuals/packages/providers/provider-aws/authentication",
+            "destination": "/manuals/packages/providers/authentication#aws-authentication",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/provider-aws/authentication(/)?",
+            "destination": "/manuals/packages/providers/authentication#aws-authentication",
             "permanent": true
         },
         {
@@ -247,7 +252,12 @@
         },
         {
             "source": "/providers/provider-azure/authentication(/)?",
-            "destination": "/manuals/packages/providers/provider-azure/authentication",
+            "destination": "/manuals/packages/providers/authentication#azure-authentication",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/provider-azure/authentication(/)?",
+            "destination": "/manuals/packages/providers/authentication#azure-authentication",
             "permanent": true
         },
         {
@@ -267,7 +277,12 @@
         },
         {
             "source": "/providers/provider-gcp/authentication(/)?",
-            "destination": "/manuals/packages/providers/provider-gcp/authentication",
+            "destination": "/manuals/packages/providers/authentication#gcp-authentication",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/provider-gcp/authentication(/)?",
+            "destination": "/manuals/packages/providers/authentication#gcp-authentication",
             "permanent": true
         },
         {
@@ -282,7 +297,12 @@
         },
         {
             "source": "/providers/provider-kubernetes/authentication(/)?",
-            "destination": "/manuals/packages/providers/provider-kubernetes/authentication",
+            "destination": "/manuals/packages/providers/authentication#kubernetes-authentication",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/provider-kubernetes/authentication(/)?",
+            "destination": "/manuals/packages/providers/authentication#kubernetes-authentication",
             "permanent": true
         },
         {
