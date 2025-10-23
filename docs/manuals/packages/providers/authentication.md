@@ -85,6 +85,7 @@ spec:
         roleARN: <roleARN-for-provider-identity>
 ```
 
+<!-- vale Google.Headings = NO -->
 ### AWS Access Keys {#aws-access-keys}
 
 Using AWS access keys requires storing the AWS keys as a Kubernetes secret.
@@ -376,8 +377,9 @@ spec:
   assumeRoleChain:
     - roleARN: "arn:aws:iam::111122223333:role/my-assumed-role"
 ```
-
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### AWS IRSA {#aws-irsa}
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 When running in Amazon EKS, the Provider may use [IAM roles for service accounts][aws-iam-roles-for-service-accounts] (IRSA) for authentication.
 
@@ -978,10 +980,11 @@ To authenticate any control plane in your organization, in the _Conditional CEL_
 ```console
 google.subject.contains("mcp:ORGANIZATION_NAME")
 ```
-
+<!-- vale gitlab.Uppercase = NO -->
 :::warning
 Not providing a CEL condition allows any control plane to access your GCP account if they know the project ID and service account name.
 :::
+<!-- vale gitlab.Uppercase = YES -->
 
 Select **Save**.
 
@@ -1441,7 +1444,9 @@ The Upbound Official Kubernetes Provider supports multiple authentication method
 This method is only supported in control planes running on [Upbound Cloud Spaces][upbound-cloud-spaces].
 :::
 
-Use this method to interact with [Upbound APIs][upbound-apis] using provider-kubernetes. Upbound Identity can be configured to use the following to authenticate with Upbound:
+Use this method to interact with [Upbound APIs][upbound-apis] using
+provider-kubernetes. Upbound Identity supports the following authentication
+methods with Upbound:
 
 - A user's personal access token (PAT)
 - A token generated from a robot
@@ -1579,6 +1584,7 @@ Use this method for a control plane to manage resources in itself using a `clust
 
 #### Create a ProviderConfig
 
+<!-- vale Google.Headings = YES -->
 ```yaml
 apiVersion: kubernetes.crossplane.io/v1alpha1
 kind: ProviderConfig

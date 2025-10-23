@@ -42,7 +42,7 @@ Upbound is continually adding new providers to the ever growing list of Official
 |----------|------------------|-------------|
 | Kubernetes | [marketplace.upbound.io/providers/upbound/provider-kubernetes][marketplace-k8s] | Manage Kubernetes resources from Crossplane |
 | Helm | [marketplace.upbound.io/providers/upbound/provider-helm][marketplace-helm] | Deploy and manage Helm charts from Crossplane |
-| Terraform | [marketplace.upbound.io/providers/upbound/provider-terraform][marketplace-terraform] | Execute Terraform modules from Crossplane. See [migration guides](./provider-terraform/) for details. |
+| Terraform | [marketplace.upbound.io/providers/upbound/provider-terraform][marketplace-terraform] | Execute Terraform modules from Crossplane. See [migration guides][migration-guides-tf] for details. |
 
 ## Release notes
 
@@ -57,13 +57,15 @@ Release notes for all Official Providers are published on their respective [Upbo
 
 All Official Providers support multiple authentication methods to accommodate different deployment scenarios and security requirements.
 
-For detailed authentication configuration for each provider, see the [Provider Authentication guide](./authentication.md).
+For detailed authentication configuration for each provider, see the [Provider
+Authentication guide][authentication-guide].
 
 ## Access
 
 The latest versions of the Upbound Official Providers are available for use by anyone in the Crossplane community. For full access and use details, read the [policies page][policies-page] on access, support and more.
 
-
+[migration-guides-tf]: /manuals/packages/providers/provider-terraform/migrate-provider-tf/
+[authentication-guide]: /manuals/packages/providers/authentication/
 [kcl]: /manuals/cli/howtos/compositions/kcl/
 [python]: /manuals/cli/howtos/compositions/python/
 [go]: /manuals/cli/howtos/compositions/go/
