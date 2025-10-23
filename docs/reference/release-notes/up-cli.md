@@ -435,7 +435,7 @@ https://docs.upbound.io/core-concepts/projects/
 
 - We promoted `up web-login` to stable.
 - We fixed several bugs related to `up ctx` failing to connect to a Space, group, or control plane.
-- `up version` now prints information seperated into client (your up CLI version) and server (version information for the control plane and Space you're connected to)
+- `up version` now prints information separated into client (your up CLI version) and server (version information for the control plane and Space you're connected to)
 - `up space init` enables hub authz and authn by default.
 
 ## v0.29.0
