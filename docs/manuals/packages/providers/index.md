@@ -28,11 +28,44 @@ Upbound's Official Providers integrate with the Upbound platform to provide the 
 Upbound is continually adding new providers to the ever growing list of Official Providers. For a complete list of available Official providers, use [this query][this-query] in the Marketplace.
 <!-- vale Microsoft.Adverbs = YES -->
 
+### Major cloud providers
+
+| Provider | Marketplace Link | Description |
+|----------|------------------|-------------|
+| AWS | [marketplace.upbound.io/providers/upbound/provider-family-aws][marketplace-aws] | Official provider for Amazon Web Services with 1000+ managed resources across 60+ family providers |
+| Azure | [marketplace.upbound.io/providers/upbound/provider-family-azure][marketplace-azure] | Official provider for Microsoft Azure with 900+ managed resources across 40+ family providers |
+| GCP | [marketplace.upbound.io/providers/upbound/provider-family-gcp][marketplace-gcp] | Official provider for Google Cloud Platform with 500+ managed resources across 30+ family providers |
+
+### Platform providers
+
+| Provider | Marketplace Link | Description |
+|----------|------------------|-------------|
+| Kubernetes | [marketplace.upbound.io/providers/upbound/provider-kubernetes][marketplace-k8s] | Manage Kubernetes resources from Crossplane |
+| Helm | [marketplace.upbound.io/providers/upbound/provider-helm][marketplace-helm] | Deploy and manage Helm charts from Crossplane |
+| Terraform | [marketplace.upbound.io/providers/upbound/provider-terraform][marketplace-terraform] | Execute Terraform modules from Crossplane. See [migration guides][migration-guides-tf] for details. |
+
+## Release notes
+
+Release notes for all Official Providers are published on their respective [Upbound Marketplace][upbound-marketplace] listings. Each provider listing includes:
+
+- Current and historical release notes
+- Version-specific changelogs
+- Installation instructions
+- API documentation
+
+## Authentication
+
+All Official Providers support multiple authentication methods to accommodate different deployment scenarios and security requirements.
+
+For detailed authentication configuration for each provider, see the [Provider
+Authentication guide][authentication-guide].
+
 ## Access
 
 The latest versions of the Upbound Official Providers are available for use by anyone in the Crossplane community. For full access and use details, read the [policies page][policies-page] on access, support and more.
 
-
+[migration-guides-tf]: /manuals/packages/providers/provider-terraform/migrate-provider-tf/
+[authentication-guide]: /manuals/packages/providers/authentication/
 [kcl]: /manuals/cli/howtos/compositions/kcl/
 [python]: /manuals/cli/howtos/compositions/python/
 [go]: /manuals/cli/howtos/compositions/go/
@@ -40,9 +73,13 @@ The latest versions of the Upbound Official Providers are available for use by a
 [signed-by-upbound]: /manuals/packages/providers/signature-verification
 [pull-an-official-provider]: /manuals/packages/policies
 [policies-page]: /manuals/packages/policies
-
-
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [provider-family-aws]: https://github.com/crossplane-contrib/provider-upjet-aws
 [account-on-upbound]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_providers
 [this-query]: https://marketplace.upbound.io/providers?tier=official
+[marketplace-aws]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/latest
+[marketplace-azure]: https://marketplace.upbound.io/providers/upbound/provider-family-azure/latest
+[marketplace-gcp]: https://marketplace.upbound.io/providers/upbound/provider-family-gcp/latest
+[marketplace-k8s]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes/latest
+[marketplace-helm]: https://marketplace.upbound.io/providers/upbound/provider-helm/latest
+[marketplace-terraform]: https://marketplace.upbound.io/providers/upbound/provider-terraform/latest

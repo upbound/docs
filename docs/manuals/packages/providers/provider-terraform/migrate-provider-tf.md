@@ -163,7 +163,7 @@ spec:
       - key: vmName
         value: crossplanevm
 ```
-
+<!-- vale gitlab.FutureTense = NO -->
 :::warning
 This configuration won't work if applied now.
 :::
@@ -172,18 +172,6 @@ This configuration won't work if applied now.
 
 The provider configuration handles authentication. You must
 create a Kubernetes secret file to authenticate with your AWS account.
-
-The provider supports AWS authentication with:
-The provider supports AWS authentication with:
-
-<!-- - [Authentication Keys][authentication-keys] -->
-<!-- - [Web Identity][web-identity] -->
-<!-- - [Service Accounts][service-accounts] -->
-
-:::note
-For more information on cloud provider authentication, read the
-<!-- [Provider Azure][provider-azure] or [Provider GCP][provider-gcp] authentication documentation. -->
-:::
 
 This guide uses the authentication key method. Download your AWS credentials and
 save them to a new file called `aws-credentials`.
@@ -312,6 +300,7 @@ spec:
 :::warning
 This configuration won't work as is. Review the [example backend configuration][example-backend-configuration] and the [Terraform File documentation][terraform-file-documentation]
 :::
+<!-- vale gitlab.FutureTense = YES -->
 
 You can apply this `ProviderConfig` and let Crossplane continuously reconcile
 the resources in your cloud provider and update the state file.
@@ -331,11 +320,11 @@ definition, composition, and claim.
 <!-- vale gitlab.FutureTense = YES -->
 
 
-[authentication-keys]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
-[web-identity]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
-[service-accounts]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
-[provider-azure]: /manuals/packages/manuals/packages/providers/provider-azure/authentication
-[provider-gcp]: /manuals/packages/manuals/packages/providers/provider-gcp/authentication
+[authentication-keys]: /manuals/packages/providers/authentication#aws-access-keys
+[web-identity]: /manuals/packages/providers/authentication#aws-webidentity
+[service-accounts]: /manuals/packages/providers/authentication#aws-irsa
+[provider-azure]: /manuals/packages/providers/authentication#azure-service-principal
+[provider-gcp]: /manuals/packages/providers/authentication#gcp-service-account-keys
 
 
 [install-crossplane]: https://docs.crossplane.io/latest/get-started/install/

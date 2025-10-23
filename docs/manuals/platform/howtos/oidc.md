@@ -54,11 +54,13 @@ spec:
 
 When a team creates resources with the control plane, reference the appropriate ProviderConfig to use from the `spec.providerConfigRef` field of any managed resource.
 
+<!-- vale Google.WordList = NO -->
 :::tip
 The example above demonstrates ProviderConfigs using static account credentials.
 **Don't use this auth method for production purposes.** Instead, configure your
-providers to use Upbound Identity, which is based on OIDC and described below.
+providers to use Upbound Identity, based on OIDC and described below.
 :::
+<!-- vale Google.WordList = YES -->
 
 ## Use OpenID Connect with Upbound
 
@@ -167,10 +169,10 @@ spec:
     name: aws-audience
 ```
 
-The provider or function pod will now contain an Upbound OIDC token with the audience set to `my-audience-name`. The token is located in `/var/run/secrets/upbound.io/provider/token` both for provider and function pods.
+The provider or function pod now contains an Upbound OIDC token with the audience set to `my-audience-name`. The token in `/var/run/secrets/upbound.io/provider/token` applies to both provider and function pods.
 
 :::warning
-Note that the audience gets automatically set on AWS, Azure, and GCP Official providers and can't be customized.
+You can't customize the audience on AWS, Azure, and GCP Official providers because the audience is automatic.
 :::
 
 ## OIDC explained
@@ -242,11 +244,12 @@ For example, the following would be a valid _subject_ for `provider-aws` in a co
 ```
 mcp:my-org/prod-1:provider:provider-aws
 ```
-
+<!-- vale write-good.TooWordy = NO -->
 You can include an optional `group` field in the trust path as an additional
 security measure. This ensures the control plane has the correct name _and_
-correct group to prevent cross-group impersonation from another admin in another
+correct group to prevent cross-group impersonation from another administrator in another
 group.
+<!-- vale write-good.TooWordy = YES -->
 
 Add the following control plane annotation to include the `group` field:
 
@@ -275,12 +278,13 @@ The claims for an identity token injected into the file system of a provider in 
   "jti": "YL1ouQ5KJiTY2QShIRczqQ=="
 }
 ```
-
+<!-- vale write-good.TooWordy = NO -->
 :::tip
 Identity tokens injected into a provider `Pod` are valid for 1 hour. These
 tokens automatically refresh before expiration to ensure there is no
 interruption in service. 
 :::
+<!-- vale write-good.TooWordy = YES -->
 
 ## Add Upbound OIDC to a Crossplane provider
 
@@ -290,8 +294,8 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 
 
 [control-plane-management]: /manuals/spaces/concepts/control-planes
-[provider-azure-authentication]:/manuals/packages/providers/provider-azure/authentication/#upbound-auth-oidc 
-[provider-gcp-authentication]:/manuals/packages/providers/provider-gcp/authentication/#upbound-auth-oidc 
+[provider-azure-authentication]:/manuals/packages/providers/authentication#azure-upbound-oidc
+[provider-gcp-authentication]:/manuals/packages/providers/authentication#gcp-upbound-oidc 
 [crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
 [marketplace]: https://marketplace.upbound.io/providers
 [providerconfig]: https://docs.crossplane.io/latest/concepts/providers/#provider-configuration
@@ -301,7 +305,7 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 [workload-identity]: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 [openid-connect-oidc]: https://openid.net/connect/
 [oauth-2-0]: https://oauth.net/2/
-[provider-aws-authentication]:/manuals/packages/providers/provider-aws/authentication/#upbound-auth-oidc 
+[provider-aws-authentication]:/manuals/packages/providers/authentication#aws-upbound-oidc 
 [_deploymentruntimeconfig_]: https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration
 [provider-helm]: https://marketplace.upbound.io/providers/upbound/provider-helm/
 [json-web-tokens-jwts]: https://www.rfc-editor.org/rfc/rfc7519

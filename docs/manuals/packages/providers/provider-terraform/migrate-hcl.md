@@ -529,11 +529,11 @@ configuration.
 
 
 [migrating-from-terraform-to-crossplane-guide]: /manuals/packages/providers/provider-terraform/migrate-provider-tf
-[authentication-keys]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
-[web-identity]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
-[service-accounts]: /manuals/packages/manuals/packages/providers/provider-aws/authentication
-[provider-azure]: /manuals/packages/manuals/packages/providers/provider-azure/authentication
-[provider-gcp]: /manuals/packages/manuals/packages/providers/provider-gcp/authentication
+[authentication-keys]: /manuals/packages/providers/authentication#aws-access-keys
+[web-identity]: /manuals/packages/providers/authentication#aws-webidentity
+[service-accounts]: /manuals/packages/providers/authentication#aws-irsa
+[provider-azure]: /manuals/packages/providers/authentication#azure-service-principal
+[provider-gcp]: /manuals/packages/providers/authentication#gcp-service-account-keys
 
 
 [upbound-marketplace]: https://marketplace.upbound.io
