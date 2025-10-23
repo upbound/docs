@@ -12,7 +12,7 @@ This guide covers authentication methods for Upbound Official Providers. Each pr
 |----------|----------------------|
 | AWS | [Upbound OIDC](#aws-upbound-oidc), [Access Keys](#aws-access-keys), [WebIdentity](#aws-webidentity), [IRSA](#aws-irsa) |
 | Azure | [Upbound OIDC](#azure-upbound-oidc), [Service Principal](#azure-service-principal), [Managed Identity](#azure-managed-identity) |
-| GCP | [Upbound OIDC](#gcp-upbound-oidc), [Service Account Keys](#gcp-service-account-keys), [Workload Identity](#gcp-workload-identity) |
+| GCP | [Upbound OIDC](#gcp-upbound-oidc), [Service Account Keys](#gcp-service-account-keys), [OAuth 2.0 Token](#gcp-oauth-token), [Service Account Impersonation](#gcp-service-account-impersonation), [Workload Identity](#gcp-workload-identity) |
 | Kubernetes | [Upbound Identity](#kubernetes-upbound-identity), [Injected Identity](#kubernetes-injected-identity) |
 
 ## AWS authentication
@@ -97,6 +97,36 @@ aws_access_key_id = AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 
+<details>
+<summary>Authentication keys with SSO</summary>
+
+To generate authentication keys for SSO login, access your organization's AWS SSO portal.
+
+Select "Command line or programmatic access"
+
+![AWS SSO screen highlighting the option command line or programmatic access](/img/aws-sso-screen.png)
+
+Expand "Option 2" and copy the provided AWS credentials.
+
+![AWS screen showing Option 2 credentials](/img/aws-auth-option2.png)
+
+Use this as the contents of the `aws-credentials.txt` file.
+
+Below is an example `aws-credentials.txt` file with SSO authentication.
+
+```ini
+[123456789_AdministratorAccess]
+aws_access_key_id=ASIAZBZV2IPKEXAMPLEKEY
+aws_secret_access_key=PPF/Wu9vTja98L5t/YNycbzEMEXAMPLEKEY
+aws_session_token=ArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zX
+```
+
+:::tip
+These credentials are only valid as long as your SSO session. When the credentials expire Crossplane can't monitor or change AWS resources.
+:::
+
+</details>
+
 #### Create a Kubernetes secret
 
 Create the Kubernetes secret with `kubectl create secret generic`:
@@ -108,7 +138,24 @@ aws-secret \
 --from-file=my-aws-secret=./aws-credentials.txt
 ```
 
+To create a secret declaratively requires encoding the authentication keys as a base-64 string.
+
+Create a Secret object with the data containing the secret key name and the base-64 encoded keys:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aws-secret
+  namespace: crossplane-system
+type: Opaque
+data:
+  my-aws-secret: W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkID0gQUtJQUlPU0ZPRE5ON0VYQU1QTEUKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5ID0gd0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQ==
+```
+
 #### Create a ProviderConfig
+
+Create a ProviderConfig to set the provider authentication method to `Secret`:
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
@@ -124,21 +171,121 @@ spec:
       key: my-aws-secret
 ```
 
+:::tip
+To apply key based authentication by default name the ProviderConfig `default`.
+:::
+
+To selectively apply key based authentication, name the ProviderConfig and apply it when creating managed resources.
+
+For example, creating a ProviderConfig named `key-based-providerconfig`:
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: key-based-providerconfig
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: my-aws-secret
+```
+
+Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
+
+```yaml
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-s3-bucket
+spec:
+  forProvider:
+    region: us-east-2
+  providerConfigRef:
+    name: key-based-providerconfig
+```
+
+#### Role chaining
+
+To use [AWS IAM role chaining][aws-iam-role-chaining], add an `assumeRoleChain` object to the ProviderConfig.
+
+Inside the `assumeRoleChain`, list one or more roles to assume, in order:
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-secret
+      key: my-aws-secret
+  assumeRoleChain:
+    - roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
+```
+
 ### AWS WebIdentity {#aws-webidentity}
 
 When running in an Amazon managed Kubernetes cluster (EKS), the Provider may use [AssumeRoleWithWebIdentity][assumerolewithwebidentity] for authentication.
+
+WebIdentity uses an OpenID Connect ID token to authenticate and use a specific AWS IAM role.
 
 :::tip
 WebIdentity is only supported with Crossplane running in Amazon managed Kubernetes clusters (EKS).
 :::
 
+Configuring WebIdentity with the AWS Provider requires:
+* An AWS [IAM OIDC Provider][iam-oidc-provider]
+* An AWS IAM Role with an editable [trust policy][trust-policy]
+* A ProviderConfig to enable WebIdentity authentication
+
 #### Create an IAM OIDC provider
+
+WebIdentity relies on the EKS cluster OIDC provider.
 
 Follow the [AWS instructions][aws-instructions] to create an IAM OIDC provider with your EKS OIDC provider URL.
 
 #### Edit the IAM role
 
-The trust policy references the OIDC provider ARN and the provider AWS service account. Add a trust policy with the following structure:
+Supporting WebIdentity requires matching the EKS OIDC information to the specific role through a role trust policy.
+
+:::tip
+Read the [AWS trust policies blog][aws-trust-policies-blog] for more information on trust policies.
+:::
+
+The trust policy references the OIDC provider ARN and the provider AWS service account.
+
+In the policy `Principal` enter `"Federated": "<OIDC_PROVIDER_ARN>"`.
+
+Add a `Condition` to restrict access to the role to only the Provider's service account.
+
+The `Condition` uses `StringLike` to generically match the Provider's service account.
+
+<details>
+<summary>Why use a generic match?</summary>
+
+The token used for authentication includes the full name of the AWS Provider's Kubernetes service account.
+
+The Provider's service account name ends in a hash. If the hash changes the `Condition` doesn't match.
+
+</details>
+
+Enter the string (with quotation marks) `"<OIDC_PROVIDER_ARN>:sub": "system:serviceaccount:upbound-system:provider-aws-*"`.
+
+:::tip
+Be sure to include `:sub` after the OIDC provider ARN.
+
+The `system:serviceaccount:` matches the namespace where the Provider pod runs.
+
+By default UXP uses `upbound-system` and Crossplane uses `crossplane-system`.
+:::
+
+The following is a full example trust policy:
 
 ```json
 {
@@ -162,6 +309,8 @@ The trust policy references the OIDC provider ARN and the provider AWS service a
 
 #### Create a ProviderConfig
 
+Create a ProviderConfig to set the provider authentication method to `WebIdentity`:
+
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
@@ -174,13 +323,142 @@ spec:
       roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
 ```
 
+:::tip
+To apply WebIdentity authentication by default name the ProviderConfig `default`.
+:::
+
+To selectively apply WebIdentity authentication, name the ProviderConfig and apply it when creating managed resources.
+
+For example, creating a ProviderConfig named `webid-providerconfig`:
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: webid-providerconfig
+spec:
+  credentials:
+    source: WebIdentity
+    webIdentity:
+      roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
+```
+
+Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
+
+```yaml
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-s3-bucket
+spec:
+  forProvider:
+    region: us-east-2
+  providerConfigRef:
+    name: webid-providerconfig
+```
+
+#### Role chaining
+
+To use [AWS IAM role chaining][aws-iam-role-chaining], add an `assumeRoleChain` object to the ProviderConfig.
+
+Inside the `assumeRoleChain`, list one or more roles to assume, in order:
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: webid-providerconfig
+spec:
+  credentials:
+    source: WebIdentity
+    webIdentity:
+      roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
+  assumeRoleChain:
+    - roleARN: "arn:aws:iam::111122223333:role/my-assumed-role"
+```
+
 ### AWS IRSA {#aws-irsa}
 
 When running in Amazon EKS, the Provider may use [IAM roles for service accounts][aws-iam-roles-for-service-accounts] (IRSA) for authentication.
 
+IRSA works by using an annotation on a Kubernetes ServiceAccount used by a Pod requesting AWS resources. The annotation matches an AWS IAM Role ARN configured with the desired permissions.
+
+Configuring IRSA with the AWS Provider requires:
+* An AWS [IAM OIDC Provider][iam-oidc-provider]
+* An AWS IAM Role with an editable [trust policy][trust-policy]
+* A DeploymentRuntimeConfig to add an annotation on the AWS Provider service account
+* A ProviderConfig to enable IRSA authentication
+
+#### Create an IAM OIDC provider
+
+IRSA relies on the EKS cluster OIDC provider.
+
+Follow the [AWS instructions][aws-instructions] to create an IAM OIDC provider with your EKS OIDC provider URL.
+
+#### Edit the IAM role
+
+Supporting IRSA requires matching the EKS OIDC information to the specific role through a role trust policy.
+
+:::tip
+Read the [AWS trust policies blog][aws-trust-policies-blog] for more information on trust policies.
+:::
+
+The trust policy references the OIDC provider ARN and the provider AWS service account.
+
+In the policy `Principal` enter `"Federated": "<OIDC_PROVIDER_ARN>"`.
+
+Add a `Condition` to restrict access to the role to only the Provider's service account.
+
+The `Condition` uses `StringLike` to generically match the Provider's service account.
+
+<details>
+<summary>Why use a generic match?</summary>
+
+The token used for authentication includes the full name of the AWS Provider's Kubernetes service account.
+
+The Provider's service account name ends in a hash. If the hash changes the `Condition` doesn't match.
+
+</details>
+
+Enter the string (with quotation marks) `"<OIDC_PROVIDER_ARN>:sub": "system:serviceaccount:upbound-system:provider-aws-*"`.
+
+:::tip
+Be sure to include `:sub` after the OIDC provider ARN.
+
+The `system:serviceaccount:` matches the namespace where the Provider pod runs.
+
+By default UXP uses `upbound-system` and Crossplane uses `crossplane-system`.
+:::
+
+The following is a full example trust policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::622346257358:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/5C64F628ACFB6A892CC25AF3B67124C5"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "oidc.eks.us-east-2.amazonaws.com/id/5C64F628ACFB6A892CC25AF3B67124C5:sub": "system:serviceaccount:crossplane-system:provider-aws-*"
+        }
+      }
+    }
+  ]
+}
+```
+
 #### Create a DeploymentRuntimeConfig
 
-IRSA relies on an annotation on the service account attached to a pod. Create a DeploymentRuntimeConfig to apply the annotation:
+IRSA relies on an annotation on the service account attached to a pod to identify the IAM role to use.
+
+Crossplane uses a DeploymentRuntimeConfig to apply settings to the provider, including the provider service account.
+
+Create a DeploymentRuntimeConfig object to apply a custom annotation to the provider service account:
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1beta1
@@ -204,12 +482,33 @@ kind: Provider
 metadata:
   name: provider-aws-s3
 spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v1.17.0
+  package: xpkg.upbound.io/upbound/provider-aws-s3:v2.1.1
   runtimeConfigRef:
     name: irsa-runtimeconfig
 ```
 
+After the provider finishes installing, verify Crossplane applied the annotation on the service account from the DeploymentRuntimeConfig.
+
+:::tip
+<!-- vale Google.WordList = NO -->
+Kubernetes applies a unique hash to the end of the service account name. Find the specific service account name with `kubectl get sa -n crossplane-system` for Crossplane or `kubectl get sa -n upbound-system` for UXP.
+<!-- vale Google.WordList = YES -->
+:::
+
+```shell
+kubectl describe sa -n crossplane-system provider-aws-s3-dbc7f981d81f
+Name:                provider-aws-s3-dbc7f981d81f
+Namespace:           crossplane-system
+Labels:              <none>
+Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/my-custom-role
+# Removed for brevity
+```
+
+Apply the `runtimeConfig` to each family provider using the same IAM role.
+
 #### Create a ProviderConfig
+
+Create a ProviderConfig to set the provider authentication method to `IRSA`:
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
@@ -219,6 +518,56 @@ metadata:
 spec:
   credentials:
     source: IRSA
+```
+
+:::tip
+To apply IRSA authentication by default name the ProviderConfig `default`.
+:::
+
+To selectively apply IRSA authentication, name the ProviderConfig and apply it when creating managed resources.
+
+For example, creating a ProviderConfig named `irsa-providerconfig`:
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: irsa-providerconfig
+spec:
+  credentials:
+    source: IRSA
+```
+
+Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
+
+```yaml
+apiVersion: s3.aws.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-s3-bucket
+spec:
+  forProvider:
+    region: us-east-2
+  providerConfigRef:
+    name: irsa-providerconfig
+```
+
+#### Role chaining
+
+To use [AWS IAM role chaining][aws-iam-role-chaining], add an `assumeRoleChain` object to the ProviderConfig.
+
+Inside the `assumeRoleChain`, list one or more roles to assume, in order:
+
+```yaml
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: irsa-providerconfig
+spec:
+  credentials:
+    source: IRSA
+  assumeRoleChain:
+    - roleARN: "arn:aws:iam::111122223333:role/my-assumed-role"
 ```
 
 ## Azure authentication
@@ -251,11 +600,27 @@ This method is only supported in control planes running on [Upbound Cloud Spaces
 5. In _Issuer_ enter **https://proidc.upbound.io**.
 6. In _Subject identifier_ enter: `mcp:<your-org>/<your-control-plane-name>:provider:provider-azure`
 7. In _Audience_ leave **api://AzureADTokenExchange**.
-8. Select **Add**.
+8. In _Name_ enter a name for the credential, like: `upbound-<your-org>-<your-control-plane-name>-provider-azure`
+9. In _Description_ optionally enter a description, like: `Upbound MCP <your-org>/<your-control-plane-name> Provider provider-azure`
+10. Select **Add**.
 
 #### Grant permissions to the service principal
 
-Grant appropriate permissions to the Application Service Principal through Azure RBAC.
+For your control plane to be able to perform actions required by this configuration, you need to grant permissions to the Application Service Principal. Assign a role to the Application Service Principal by following these instructions:
+
+1. Open the **[Azure portal][azure-portal]**
+2. Select **[Subscriptions][subscriptions]**.
+3. Select your subscription.
+4. Select **Access control (IAM)** in the left navigation.
+5. Select **Add** and select **Add role assignment**.
+6. Find and select the **Contributor** role on the **Privileged administrator roles** tab.
+7. Select **Next**.
+8. In _Assign access to_ select **User, group, or service principal**.
+9. Select **Select members**.
+10. Find your application by entering **upbound-oidc-provider** in the search field.
+11. Select **Select**.
+12. Select **Review + assign**.
+13. Make sure everything is correct and press **Review + assign** again.
 
 #### Create a ProviderConfig
 
@@ -297,6 +662,8 @@ az ad sp create-for-rbac --sdk-auth --role Owner --scopes /subscriptions/<subscr
 kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure.json
 ```
 
+The `azure.json` file contains the client ID, secret, and tenant ID of your subscription.
+
 #### Create a ProviderConfig
 
 ```yaml
@@ -313,19 +680,218 @@ spec:
       key: creds
 ```
 
+Your credential `source` must be `Secret` and you must specify the namespace, name, and key if you used different values.
+
+#### Service principal with client certificate credentials
+
+You can create Azure service principals with a client certificate instead of a client secret as credentials. When creating the service principal, Azure CLI provides the options to generate a client certificate automatically or set your own custom certificate.
+
+##### Create a service principal with a generated client certificate
+
+The following command creates a service principal with an automatically generated certificate:
+
+```shell
+# set your subscription ID
+AZ_SUBSCRIPTION_ID="11111111-1111-1111-1111-1111111111111"
+az ad sp create-for-rbac --sdk-auth \
+                         --role Owner \
+                         --scopes /subscriptions/"${AZ_SUBSCRIPTION_ID}" \
+                         --create-cert > azure_credentials.json
+```
+
+The `azure_credentials.json` file contains:
+- The client ID
+- The path of the generated client certificate file in your local machine
+- Tenant ID of your subscription
+
+It looks like the following:
+
+```json
+{
+  "clientId": "1111111-2222-3333-4444-555555555555",
+  "clientCertificate": "/path/to/generatedcert.pem",
+  "subscriptionId": "22222222-3333-4444-5555-666666666666",
+  "tenantId": "33333333-4444-5555-6666-777777777777",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
+
+The generated certificate looks like the following:
+
+```
+-----BEGIN PRIVATE KEY-----
+...
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+```
+
+To use this configuration with the Upbound Azure Provider, you should replace the `clientCertificate` field with the certificate content. First convert the certificate to `PKCS12` format, then encode it with `base64`:
+
+```shell
+# extract the path of the generated PEM certificate
+AZ_CLIENT_CERT_PEM_PATH="$(jq -r '.clientCertificate' azure_credentials.json)"
+
+# convert PEM to PKCS12 using openssl tool
+openssl pkcs12 -export \
+               -out azure_sp_cert.pkcs12 \
+               -in "${AZ_CLIENT_CERT_PEM_PATH}" \
+               -inkey "${AZ_CLIENT_CERT_PEM_PATH}" \
+               -passout pass:
+
+# encode the certificate
+base64 -i azure_sp_cert.pkcs12 | tr -d '\n' > azure_sp_cert_pkcs12_base64encoded
+
+# replace clientCertificate field in azure_credentials.json with base64-encoded certificate content
+jq --rawfile certcontent azure_sp_cert_pkcs12_base64encoded \
+    '.clientCertificate=$certcontent' azure_credentials.json > azure_credentials_withcert.json
+```
+
+The preceding command snippet should generate the file `azure_credentials_withcert.json` that looks like the following:
+
+```json
+{
+  "clientId": "1111111-2222-3333-4444-555555555555",
+  "clientCertificate": "XXXXX......XXX",
+  "subscriptionId": "22222222-3333-4444-5555-666666666666",
+  "tenantId": "33333333-4444-5555-6666-777777777777",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
+
+Next, use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret:
+
+```shell
+kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure_credentials_withcert.json
+```
+
+##### Create a service principal with your own client certificate
+
+Azure service principals accept custom certificates in an `ASCII` format such as `PEM`, `CER`, or `DER`. When using a certificate with `PEM` format, the certificate file should include both the certificate and private key appended. See [Microsoft Azure Service Principal Documentation][microsoft-azure-service-principal-documentation] for reference.
+
+The following command creates a service principal with your custom certificate. You can choose one of the options:
+
+```shell
+# option 1 - load cert from file
+az ad sp create-for-rbac --sdk-auth \
+                         --role Owner \
+                         --scopes /subscriptions/"${AZ_SUBSCRIPTION_ID}" \
+                         --cert @/path/to/yourcert.pem > azure_credentials.json
+
+# option 2 - set cert directly from string
+az ad sp create-for-rbac --sdk-auth \
+                         --role Owner \
+                         --scopes /subscriptions/"${AZ_SUBSCRIPTION_ID}" \
+                         --cert "-----BEGIN CERTIFICATE-----\n...-----END CERTIFICATE-----" > azure_credentials.json
+```
+
+The preceding command generates the `azure_credentials.json` file. Since you used a custom certificate, note that `clientCertificate` is `null` in the output:
+
+```json
+{
+  "clientId": "1111111-2222-3333-4444-555555555555",
+  "clientCertificate": null,
+  "subscriptionId": "22222222-3333-4444-5555-666666666666",
+  "tenantID": "33333333-4444-5555-6666-777777777777",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
+
+Upbound Azure Provider accepts certificates in base64-encoded `PKCS12` format. Convert your certificate to `PKCS12` format, then encode it with `base64`. Add the resulting string to the `clientCertificate` field of `azure_credentials.json`.
+
+In the snippet below, you can find example commands for `PEM` certificate to `PKCS12` conversion using `openssl`. If your certificate is in other formats than `PEM`, you can convert it to PEM, then use the following commands for `PKCS12` conversion. If you already have your certificate in `PKCS12` format, you can skip the conversion and move to the `base64` encode step:
+
+```shell
+# convert PEM to PKCS12 using openssl tool
+openssl pkcs12 -export \
+               -out azure_sp_cert.pkcs12 \
+               -in "/path/to/your/cert.pem" \
+               -inkey "/path/to/your/key.pem" \
+               -passout pass:
+
+# encode
+base64 -i azure_sp_cert.pkcs12 | tr -d '\n' >  azure_sp_cert_pkcs12_base64encoded
+
+# replace clientCertificate field in azure_credentials.json with base64-encoded certificate content
+jq --rawfile certcontent azure_sp_cert_pkcs12_base64encoded \
+    '.clientCertificate=$certcontent' azure_credentials.json > azure_credentials_withcert.json
+```
+
+If you have a password-protected PKCS12 certificate, you should also set the `clientCertificatePassword` field in the `azure_credentials_withcert.json`:
+
+```json
+{
+  "clientId": "1111111-2222-3333-4444-555555555555",
+  "clientCertificate": "XXXXX......XXX",
+  "clientCertificatePassword": "YourClientCertificatePassword",
+  "subscriptionId": "22222222-3333-4444-5555-666666666666",
+  "tenantId": "33333333-4444-5555-6666-777777777777",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
+
+Use `kubectl` to associate your Azure credentials file with a generic Kubernetes secret:
+
+```shell
+kubectl create secret generic azure-secret -n upbound-system --from-file=creds=./azure_credentials_withcert.json
+```
+
 ### Azure Managed Identity {#azure-managed-identity}
 
-Azure managed identities allow authentication without manually managing credentials.
+The system-assigned managed identity allows you to associate the provider with your Azure Kubernetes Service (AKS) cluster automatically without manually managing credentials.
 
 #### System-assigned managed identity
 
-Create an AKS cluster with managed identity enabled:
+A system-assigned managed identity is automatically created when you create an AKS cluster. This section covers creating a new identity in a new cluster.
+
+Create a resource group:
+
+```shell
+az group create --name myResourceGroup --location westus2
+```
+
+Create an AKS cluster with the `--enable-managed-identity` flag:
 
 ```shell
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-Create a ProviderConfig:
+Use the `aks get-credentials` command to generate the kubeconfig file for your AKS cluster. This file contains the authentication and connection information for your cluster:
+
+```shell
+az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
+```
+
+To switch from a service principal to a system-assigned managed identity, use the `aks update` command:
+
+```shell
+az aks update -g myResourceGroup -n myManagedCluster --enable-managed-identity
+```
+
+#### Configure your provider
+
+In your provider configuration, update the `source`, `subscriptionID`, and `tenantID` in the `credentials` field:
 
 ```yaml
 apiVersion: azure.upbound.io/v1beta1
@@ -399,13 +965,25 @@ This method is only supported in control planes running on [Upbound Cloud Spaces
 - _Issuer (URL)_: **https://proidc.upbound.io**
 - _Audience 1_: **sts.googleapis.com**
 
-Configure the google.subject attribute as **assertion.sub**.
+The provider attributes restrict which remote entities you allow access to your resources. When Upbound authenticates to GCP it provides an OIDC subject (`sub`) in the form:
 
-Add an Attribute Condition:
+`mcp:<account>/<mcp-name>:provider:<provider-name>`
+
+Configure the _google.subject_ attribute as **assertion.sub**.
+
+Under _Attribute Conditions_ select **Add Condition**.
+
+To authenticate any control plane in your organization, in the _Conditional CEL_ input box enter:
 
 ```console
 google.subject.contains("mcp:ORGANIZATION_NAME")
 ```
+
+:::warning
+Not providing a CEL condition allows any control plane to access your GCP account if they know the project ID and service account name.
+:::
+
+Select **Save**.
 
 #### Create a GCP Service Account
 
@@ -442,7 +1020,11 @@ spec:
 
 Using GCP service account keys requires storing the GCP account keys JSON file as a Kubernetes secret.
 
+To create the Kubernetes secret, create or [download your GCP service account key][download-your-gcp-service-account-key] JSON file.
+
 #### Create a Kubernetes secret
+
+Create the Kubernetes secret with `kubectl create secret generic`:
 
 ```shell
 kubectl create secret generic \
@@ -451,7 +1033,24 @@ gcp-secret \
 --from-file=my-gcp-secret=./gcp-credentials.json
 ```
 
+To create a secret declaratively requires encoding the authentication keys as a base-64 string.
+
+Create a Secret object with the data containing the secret key name and the base-64 encoded keys:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gcp-secret
+  namespace: crossplane-system
+type: Opaque
+data:
+  my-gcp-secret: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiZG9jcyIsCiAgInByaXZhdGVfa2V5X2lkIjogIjEyMzRhYmNkIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJkb2NzQHVwYm91bmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJjbGllbnRfaWQiOiAiMTIzNDUiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2RvY3MuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=
+```
+
 #### Create a ProviderConfig
+
+Create a ProviderConfig to set the provider authentication method to `Secret`:
 
 ```yaml
 apiVersion: gcp.upbound.io/v1beta1
@@ -466,6 +1065,309 @@ spec:
       namespace: crossplane-system
       name: gcp-secret
       key: my-gcp-secret
+```
+
+:::tip
+To apply key based authentication by default name the ProviderConfig `default`.
+:::
+
+To selectively apply key based authentication, name the ProviderConfig and apply it when creating managed resources.
+
+For example, creating a ProviderConfig named `key-based-providerconfig`:
+
+```yaml
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: key-based-providerconfig
+spec:
+  projectID: <project-id>
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-secret
+      key: my-gcp-secret
+```
+
+Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
+
+```yaml
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-gcp-bucket
+spec:
+  forProvider:
+    location: US
+  providerConfigRef:
+    name: key-based-providerconfig
+```
+
+### GCP OAuth 2.0 Access Token {#gcp-oauth-token}
+
+Using GCP access tokens requires storing the GCP account keys JSON file as a Kubernetes secret.
+
+Create a GCP access [token for a service account][token-for-a-service-account] or with the [`gcloud` CLI][gcloud-cli].
+
+:::warning
+GCP access tokens are valid for 1 hour by default. When the token expires Crossplane can't create or delete resources.
+
+The [provider-gcp GitHub repository][provider-gcp-github-repository] contains an example cron job that automatically refreshes access tokens.
+:::
+
+#### Create a Kubernetes secret
+
+Create the Kubernetes secret with `kubectl create secret generic`:
+
+```shell
+kubectl create secret generic \
+gcp-secret \
+-n crossplane-system \
+--from-file=my-gcp-secret=./gcp-token.json
+```
+
+To create a secret declaratively requires encoding the access token as a base-64 string.
+
+Create a Secret object with the data containing the secret key name and the base-64 encoded token:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gcp-secret
+  namespace: crossplane-system
+type: Opaque
+data:
+  my-gcp-secret: eWEyOS5hMEFmQl9ieURVVEpSSWt3RDk1c1cxTGE0d3dlLS0xTHpOZkxJeFFYbnIza25VVG9jYV9xY2xsSG1ZUzVycjJwYmNzZnVuR3M5blR6SnVIb2lYb3VmRnBEbGZicGV5bTBJU1lfUmdxWGNCMTdDY3RXZWZOd2hJcVVUblJ2UVdmcHpsODVvbklzUXZaN0F5MEJjUy1ZMGxXYXJXODVJQ2Z5R0RhZEtvYUNnWUtBWXdTQVJFU0ZRSHN2WWxzUnU1Q0w4UVY0OThRc1pvbmxGVXJXQTAxNzE=
+```
+
+#### Create a ProviderConfig
+
+Create a ProviderConfig to set the provider authentication method to `AccessToken`:
+
+```yaml
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  projectID: <project-id>
+  credentials:
+    source: AccessToken
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-secret
+      key: my-gcp-secret
+```
+
+To selectively apply token based authentication, name the ProviderConfig and apply it when creating managed resources.
+
+For example, creating a ProviderConfig named `token-based-providerconfig`:
+
+```yaml
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: token-based-providerconfig
+spec:
+  projectID: <project-id>
+  credentials:
+    source: AccessToken
+    secretRef:
+      namespace: crossplane-system
+      name: gcp-secret
+      key: my-gcp-secret
+```
+
+Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
+
+```yaml
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-gcp-bucket
+spec:
+  forProvider:
+    location: US
+  providerConfigRef:
+    name: token-based-providerconfig
+```
+
+### GCP Service Account Impersonation {#gcp-service-account-impersonation}
+
+When running the GCP Provider in Google managed Kubernetes cluster (GKE), the Provider may use [service account impersonation][service-account-impersonation] for authentication.
+
+Account impersonation allows the Provider to authenticate to GCP APIs using one service account and request escalated privileges through a second account.
+
+:::important
+Service account impersonation is only supported with Crossplane running in Google managed Kubernetes clusters (GKE).
+:::
+
+Configuring service account impersonation with the GCP Provider requires:
+* A lower privileged [GCP service account][gcp-service-account]
+* An elevated privileged [GCP service account][gcp-service-account]
+* A DeploymentRuntimeConfig to reference the lower-privileged GCP service account
+* A ProviderConfig to reference the elevated privileged GCP service account
+
+#### Configure the GCP service accounts
+
+You may use existing service accounts or follow the [GCP documentation to create new service accounts][gcp-documentation-to-create-a-new-service-account].
+
+The lower privilege role requires a [GCP IAM policy binding][gcp-iam-policy-binding] role for the project which includes `iam.serviceAccountTokenCreator`:
+
+```shell
+gcloud projects add-iam-policy-binding <Project_Name> \
+    --member "serviceAccount:<Lower_Privilege_Service_Account>@<Project_Name>.iam.gserviceaccount.com" \
+    --role  roles/iam.serviceAccountTokenCreator \
+    --project <Project_Name>
+```
+
+For example, to create a role-binding for project `upbound` and account `docs-unprivileged`:
+
+```shell
+gcloud projects add-iam-policy-binding upbound \
+    --member "serviceAccount:docs-unprivileged@upbound.iam.gserviceaccount.com" \
+    --role  roles/iam.serviceAccountTokenCreator \
+    --project upbound
+```
+
+The lower privileged service account requires a [GCP IAM service account policy binding][gcp-iam-service-account-policy-binding] between the unprivileged account and the Kubernetes provider service account:
+
+```shell
+gcloud iam service-accounts add-iam-policy-binding <Lower_Privilege_Service_Account>@<Project_Name>.iam.gserviceaccount.com \
+    --role roles/iam.workloadIdentityUser \
+    --member "serviceAccount:<Project_Name>.svc.id.goog[<Crossplane_Namespace>/<Kubernetes_Service_Account_Name>]"
+```
+
+For example, to create a policy binding for project `upbound`, account `docs-unprivileged`, namespace `crossplane-system`, and Provider service account name `gcp-provider-sa`:
+
+```shell
+gcloud iam service-accounts add-iam-policy-binding docs-unprivileged@upbound.iam.gserviceaccount.com \
+    --role roles/iam.workloadIdentityUser \
+    --member "serviceAccount:upbound.svc.id.goog[crossplane-system/gcp-provider-sa]"
+```
+
+:::tip
+For more information on the account requirements for account impersonation, read the [GCP service account impersonation documentation][gcp-service-account-impersonation-documentation].
+:::
+
+#### Create a DeploymentRuntimeConfig
+
+The DeploymentRuntimeConfig creates a custom Provider service account and applies an annotation to the Provider's pod.
+
+Create a DeploymentRuntimeConfig object. Add an annotation mapping the key `iam.gke.io/gcp-service-account` to the email address of the lower-privileged GCP IAM service account.
+
+Add a `serviceAccountName` to the spec to create the Provider's service account. This must match the name used in the GCP IAM binding:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: impersonation-runtimeconfig
+spec:
+  serviceAccountTemplate:
+    metadata:
+      annotations:
+        iam.gke.io/gcp-service-account: <Lower_Privilege_Service_Account>@<Project_Name>.iam.gserviceaccount.com
+      name: <Kubernetes_service_account_name>
+```
+
+For example, to use a GCP service account named `docs-unprivileged` and a service account name `gcp-provider-sa`:
+
+:::important
+The `serviceAccountName` must match the service account referenced in the GCP IAM policy binding.
+:::
+
+```yaml
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: impersonation-runtimeconfig
+spec:
+  serviceAccountTemplate:
+    metadata:
+      annotations:
+        iam.gke.io/gcp-service-account: docs-unprivileged@upbound.iam.gserviceaccount.com
+      name: gcp-provider-sa
+```
+
+#### Apply the DeploymentRuntimeConfig
+
+Install or update the provider with a `runtimeConfigRef`:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-storage
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v2.1.0
+  runtimeConfigRef:
+    name: impersonation-runtimeconfig
+```
+
+#### Create a ProviderConfig
+
+Create a ProviderConfig to set the provider authentication method to `ImpersonateServiceAccount`. Add the `impersonateServiceAccount` object and provide the name of the _privileged_ account to impersonate. Include the `projectID` to use:
+
+```yaml
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  projectID: <Project_Name>
+  credentials:
+    source: ImpersonateServiceAccount
+    impersonateServiceAccount:
+      name: <Privileged_Service_Account>@<Project_Name>.iam.gserviceaccount.com
+```
+
+For example, to create a ProviderConfig with service account named `docs-privileged` and project named `upbound`:
+
+```yaml
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  projectID: upbound
+  credentials:
+    source: ImpersonateServiceAccount
+    impersonateServiceAccount:
+      name: docs-privileged@upbound.iam.gserviceaccount.com
+```
+
+To selectively apply impersonation based authentication, name the ProviderConfig and apply it when creating managed resources.
+
+For example, creating a ProviderConfig named `impersonation-providerconfig`:
+
+```yaml
+apiVersion: gcp.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: impersonation-providerconfig
+spec:
+  projectID: <Project_Name>
+  credentials:
+    source: ImpersonateServiceAccount
+    impersonateServiceAccount:
+      name: <Privileged_Service_Account>@<Project_Name>.iam.gserviceaccount.com
+```
+
+Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
+
+```yaml
+apiVersion: storage.gcp.upbound.io/v1beta1
+kind: Bucket
+metadata:
+  name: my-gcp-bucket
+spec:
+  forProvider:
+    location: US
+  providerConfigRef:
+    name: impersonation-providerconfig
 ```
 
 ### GCP Workload Identity {#gcp-workload-identity}
@@ -488,20 +1390,22 @@ gcloud iam service-accounts add-iam-policy-binding \
 --project <Project_Name>
 ```
 
-#### Create a ControllerConfig
+#### Create a DeploymentRuntimeConfig
 
 ```yaml
-apiVersion: pkg.crossplane.io/v1alpha1
-kind: ControllerConfig
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
 metadata:
-  name: my-controller-config
-  annotations:
-    iam.gke.io/gcp-service-account: <GCP_IAM_service_account_email>
+  name: workload-identity-runtimeconfig
 spec:
-  serviceAccountName: <Kubernetes_service_account_name>
+  serviceAccountTemplate:
+    metadata:
+      annotations:
+        iam.gke.io/gcp-service-account: <GCP_IAM_service_account_email>
+      name: <Kubernetes_service_account_name>
 ```
 
-#### Apply the ControllerConfig
+#### Apply the DeploymentRuntimeConfig
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1
@@ -509,9 +1413,9 @@ kind: Provider
 metadata:
   name: provider-gcp-storage
 spec:
-  package: xpkg.upbound.io/upbound/provider-gcp-storage:v1.10.0
-  controllerConfigRef:
-    name: my-controller-config
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v2.1.0
+  runtimeConfigRef:
+    name: workload-identity-runtimeconfig
 ```
 
 #### Create a ProviderConfig
@@ -537,27 +1441,109 @@ The Upbound Official Kubernetes Provider supports multiple authentication method
 This method is only supported in control planes running on [Upbound Cloud Spaces][upbound-cloud-spaces].
 :::
 
-Use this method to interact with [Upbound APIs][upbound-apis] using provider-kubernetes.
+Use this method to interact with [Upbound APIs][upbound-apis] using provider-kubernetes. Upbound Identity can be configured to use the following to authenticate with Upbound:
+
+- A user's personal access token (PAT)
+- A token generated from a robot
 
 #### Create an access token
 
-Create a robot and generate a token:
+<Tabs>
+<TabItem value="robot" label="Robot">
+
+This method creates a Robot, the Upbound-equivalent of a service account, and uses its identity to authenticate and perform actions.
+
+1. Login to Upbound:
 
 ```shell
 up login
-up robot create "provider-kubernetes" --description="Robot for provider-kubernetes auth"
-export UPBOUND_TOKEN=$(up robot token create "provider-kubernetes" "token-name" --file - | jq -r '.token')
 ```
 
+2. Create a robot:
+
+```shell
+up robot create "provider-kubernetes" --description="Robot used for authenticating to Upbound by provider-kubernetes"
+```
+
+3. Create and store an access token for this robot as an environment variable:
+
+```shell
+export UPBOUND_TOKEN=$(up robot token create "provider-kubernetes" "provider-kubernetes-token" --file - | jq -r '.token')
+```
+
+:::note
+Follow the [`jq` installation guide][jq-install] if your machine doesn't include it by default.
+:::
+
+4. Assign the robot [to a team][to-a-team] and use Upbound RBAC to [grant the team a role][grant-the-team-a-role] for permissions.
+
+</TabItem>
+
+<TabItem value="pat" label="Personal Access Token">
+
+Create a personal access token and store it as an environment variable:
+
+```shell
+export UPBOUND_TOKEN="YOUR_API_TOKEN"
+```
+
+</TabItem>
+</Tabs>
+
 #### Generate a kubeconfig for Upbound APIs
+
+Upbound APIs are Kubernetes-compatible. Generate a kubeconfig for the context you want to interact with:
+
+- [Generate a kubeconfig for a Space][generate-a-kubeconfig-for-a-space]
+- [Generate a kubeconfig for a control plane in a Space][generate-a-kubeconfig-for-a-control-plane-in-a-space]
+
+Set the desired context path below depending on your use case. Generate a kubeconfig according to the token method you followed in the prior section.
+
+<Tabs>
+<TabItem value="robot" label="Robot">
+
+1. Login to Upbound with the robot access token:
+
+```shell
+up login -t $UPBOUND_TOKEN
+```
+
+2. Set your Upbound context:
 
 ```shell
 up ctx org/space/group/control-plane
 up ctx . -f - > upbound-context.yaml
+```
+
+</TabItem>
+
+<TabItem value="user" label="User account">
+
+1. Login to Upbound:
+
+```shell
+up login
+```
+
+2. Set your Upbound context:
+
+```shell
+up ctx org/space/group/control-plane
+up ctx . -f - > upbound-context.yaml
+```
+
+</TabItem>
+</Tabs>
+
+Store the generated context as an environment variable:
+
+```shell
 export CONTROLPLANE_CONFIG=upbound-context.yaml
 ```
 
 #### Create secrets
+
+In the control plane where you've installed provider-kubernetes, store the tokens created in the earlier step as secrets:
 
 ```shell
 kubectl -n crossplane-system create secret generic cluster-config --from-file=kubeconfig=$CONTROLPLANE_CONFIG
@@ -650,13 +1636,34 @@ spec:
 [aws-iam-role]: https://console.aws.amazon.com/iamv2/home#/roles
 [aws-account-id]: https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html
 [download-your-aws-access-key]: https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys
+[aws-iam-role-chaining]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining
 [assumerolewithwebidentity]: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html
+[iam-oidc-provider]: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
+[trust-policy]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#term_trust-policy
 [aws-instructions]: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
+[aws-trust-policies-blog]: https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/
 [aws-iam-roles-for-service-accounts]: https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
 [azure-portal]: https://portal.azure.com/
 [microsoft-entra-id]: https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview
+[subscriptions]: https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade
+[microsoft-azure-service-principal-documentation]: https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
 [gcp-iam-admin-console]: https://console.cloud.google.com/iam-admin/iam
 [workload-identity-federation]: https://console.cloud.google.com/iam-admin/workload-identity-pools
 [service-accounts]: https://console.cloud.google.com/iam-admin/serviceaccounts
+[download-your-gcp-service-account-key]: https://cloud.google.com/iam/docs/keys-create-delete#creating
+[token-for-a-service-account]: https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-oauth
+[gcloud-cli]: https://cloud.google.com/sdk/gcloud/reference/auth/print-access-token
+[provider-gcp-github-repository]: https://github.com/crossplane-contrib/provider-upjet-gcp/tree/main/examples/providerconfig
+[service-account-impersonation]: https://cloud.google.com/iam/docs/service-account-overview#impersonation
+[gcp-service-account]: https://cloud.google.com/iam/docs/service-account-overview
+[gcp-documentation-to-create-a-new-service-account]: https://cloud.google.com/iam/docs/service-accounts-create
+[gcp-iam-policy-binding]: https://cloud.google.com/sdk/gcloud/reference/projects/add-iam-policy-binding
+[gcp-iam-service-account-policy-binding]: https://cloud.google.com/sdk/gcloud/reference/iam/service-accounts/add-iam-policy-binding
+[gcp-service-account-impersonation-documentation]: https://cloud.google.com/iam/docs/service-account-impersonation
 [workload-identity]: https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity
 [upbound-apis]: /manuals/spaces/howtos/self-hosted/gitops/#gitops-for-upbound-resources
+[jq-install]: https://jqlang.github.io/jq/download/
+[to-a-team]: /manuals/platform/concepts/identity-management/robots/#assign-a-robot-to-a-team
+[grant-the-team-a-role]: /manuals/platform/concepts/identity-management/teams/
+[generate-a-kubeconfig-for-a-space]: /manuals/spaces/howtos/self-hosted/gitops/#generate-a-kubeconfig-for-a-space
+[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /manuals/spaces/howtos/self-hosted/gitops/#generate-a-kubeconfig-for-a-control-plane-in-a-space
