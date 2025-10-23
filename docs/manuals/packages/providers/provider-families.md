@@ -30,7 +30,7 @@ For information on migrating from monolithic providers to provider families read
 ## Installing a provider family
 
 :::important
-The ability to install any version of an Official Provider **other than the most recent** requires at least a `Team` subscription to Upbound and a package pull secret to be placed on your control plane. Learn more in the section below. 
+Backport releases of Official Providers require at least a `Standard` subscription to Upbound and a package pull secret to be placed on your control plane. Main releases published within the last 12 months are available to all users. Learn more in the [package policies][package-policies].
 :::
 
 Installing a provider family is identical to installing other Crossplane providers.
@@ -182,3 +182,4 @@ metadata:
 [family-providers-migration-guide]: /manuals/packages/providers/migration
 [upbound-marketplace]: https://marketplace.upbound.io/providers?tier=official
 [controllerconfig]: https://docs.crossplane.io/latest/concepts/packages/#speccontrollerconfigref
+[package-policies]: /manuals/packages/policies
