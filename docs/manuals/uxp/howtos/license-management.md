@@ -144,7 +144,7 @@ your choice.
 
 ![License Download][license-download]
 
-Click **Download License**. Your browswer will download the license as a JSON
+Click **Download License**. Your browser will download the license as a JSON
 file.
 
 
