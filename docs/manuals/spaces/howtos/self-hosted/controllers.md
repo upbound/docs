@@ -71,7 +71,7 @@ helm pull $CHART_NAME --repo $CHART_REPOSITORY --version $CHART_VERSION
 
 Be sure to update the Helm chart repository, name, and version with your own.
 
-Move the Helm chart into it's own folder:
+Move the Helm chart into its own folder:
 
 ```ini
 mkdir helm
@@ -206,7 +206,7 @@ export CHART_VERSION=7.8.8
 helm pull $CHART_NAME --repo $CHART_REPOSITORY --version $CHART_VERSION
 ```
 
-Move the Helm chart into it's own folder:
+Move the Helm chart into its own folder:
 
 ```ini
 mkdir helm
