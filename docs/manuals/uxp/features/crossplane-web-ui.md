@@ -29,10 +29,10 @@ The WebUI dashboard is for UXP clusters only. It doesn't support Spaces Teams
 or Groups Authentication or account-based views.
 :::
 
-The version of WebUI installed in your cluster is tied to it's corresponding UXP
-version.
+The version of the WebUI installed in your cluster is tied to its corresponding
+UXP version.
 
-For example, `upbound/crossplane-web-ui:v1.0.x` is compatible with 
+For example, `upbound/crossplane-web-ui:v1.0.x` is compatible with
 `upbound/crossplane:v1.0.x` and ensures feature parity across UXP and the
 dashboard.
 
