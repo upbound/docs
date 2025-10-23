@@ -35,7 +35,7 @@ Before you start to deploy this solution, you need to have the following:
 
 <!-- vale off -->
 :::important
-This solution involves deploying backing Kubernetes infrastructure for components of the platform. Only AWS EKS is currently implemented, but the same concepts demonstrated in the solution may be applied to Azure and GCP. 
+This solution involves deploying backend Kubernetes infrastructure for components of the platform. Only AWS EKS is currently implemented, but the same concepts demonstrated in the solution may be applied to Azure and GCP. 
 :::
 <!-- vale on -->
 
