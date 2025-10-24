@@ -172,8 +172,8 @@ Licenses require:
 
 * **License Name**: A meaningful name to identify the license within the pool of licenses created. Use cluster names, regions, or meaningful identifiers that can help you later know to which control plane your license is tied.
 * **Expiration**: The exact date when the license will expire. No expiration date can exceed your end contract with Upbound.
-* **Resources per Month**: Number of resources that the control plane will manage during a month.
-* **Operations per Month**: Number of operations the control plane will execute on a monthly basis.
+* **Resources per Month**: The maximum number of Resources the license can manage per month.
+* **Operations per Month**: The maximum number of Operations the license can manage per month.
 
 Click **Create** to provision your license. Once you submit your license
 request, Upbound bills your organization according to the resources/operations
