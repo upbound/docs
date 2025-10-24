@@ -1,11 +1,11 @@
 ---
 title: Pull secrets
 sidebar_position: 1
-description: Learn how to configure access to older Official providers versions from
+description: Learn how to configure access to backport releases of Official providers from
   the Marketplace
 ---
 
-You must configure a pull secret on your control plane to pull any non-latest version of an Official Provider. If you're on
+You must configure a pull secret on your control plane to pull backport releases of Official Providers. If you're on
 Crossplane, UXP v1.18 or later, UXP v1.16.4, or UXP v1.17.3, use the ImageConfig API. Otherwise, configure a pull secret for each provider pod.
 
 :::important
