@@ -64,7 +64,7 @@ const config = {
             announcementBar: {
                 id: "my_custom_banner",
                 content:
-                    '<a href="https://www.upbound.io/events/upbound-roadshow-atlanta" target="_blank" rel="noopener noreferrer">🎉 Join us at KubeCon Atlanta!</a>',
+                    '<a href="https://www.upbound.io/events/kubecon-cloudnativecon-north-america-atlanta-2025" target="_blank" rel="noopener noreferrer">🎉 Join us at KubeCon Atlanta!</a>',
                 backgroundColor: "#9b5efc",
                 textColor: "#fff",
                 isCloseable: true,
