@@ -5,12 +5,11 @@ sidebar_position: 2
 ---
 
 This guide explains how to manage licenses for Upbound Crossplane (UXP),
-including how to generate, apply, download, and verify licenses for Community
-and Commercial plans.
+including how to generate, apply, download, and verify licenses for 
+Commercial plans.
 
 <!-- vale proselint.Cliches = NO -->
-* Upbound Community Plan lets you run Upbound Crossplane for free and is source-available on [GitHub][uxp-source]
-* Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
+* Upbound Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
 <!-- vale proselint.Cliches = YES -->
 
 :::important
@@ -25,7 +24,7 @@ Before you begin, make sure you have:
 * a running Kubernetes cluster
 * `kubectl` installed
 * the `up` CLI installed
-* a valid UXP license provided by Upbound (for Standard plans and above)
+* a valid UXP license provided by Upbound 
 * Admin access for your organization in the Upbound Console (for Enterprise plans)
 
 ## Community plan 
@@ -47,14 +46,11 @@ up uxp license apply --dev
 Users can't provide Upbound Crossplane as a commercial Crossplane service to
 others.
 
-## Commercial plans (Standard, Enterprise, Business Critical)
+## Commercial plans 
 
-Users who have a commercial plan on Upbound including Standard, Enterprise, and
-Business Critical may generate and install license keys. These commercial
+Users who have a commercial plan on Upbound may generate and install license keys. These commercial
 license keys unlock commercial-only features in Upbound Crossplane.
 
-Users who purchased a commercial plan (Standard, Enterprise, and Business
-Critical) can generate and install license keys. 
 
 ### Commercial features
 
@@ -114,11 +110,8 @@ Admin.
 
 ### List licenses
 
-To list your organization's licenses, log in to your Upbound account and click
-the **Licenses** button or navigate to **My Account** > **Manage Account** in
+To list your organization's licenses, log in to your Upbound account and navigate to **My Account** > **Manage Account** in
 the top right corner of your console.
-
-![License Landing Page][license-landing-page]
 
 The list of licenses displays information about your UXP licenses like:
 
@@ -188,9 +181,8 @@ For organizations without active contracts, your **Create** button is disabled
 and displays insights on why the operation isn't allowed.
 
 Unless there are network errors or outages, the only reason you can't create a
-license is because your organization doesn't have a valid contract in Upbound's
-billing system (Metronome). Reach out to support or your account representative
-to coordinate provisioning.
+license is because your organization doesn't have a valid contract. Reach out to
+support or your account representative to coordinate provisioning.
 :::
 
 ## Add a license to an Upbound Crossplane cluster {#add-a-license}
@@ -275,7 +267,7 @@ current usage:
 
 | Field | Description |
 |-------|-------------|
-| **`plan`** | The commercial plan associated with your license (Community, Standard, etc). |
+| **`plan`** | The commercial plan associated with your license.  |
 | **`expiresAt`** | The date and time when your license is set to expire. |
 | **`capacity`** | The total capacity granted by your license, such as `resourceHours` and `operations`. |
 | **`enabledFeatures`** | A list of the commercial features unlocked by your license. |
