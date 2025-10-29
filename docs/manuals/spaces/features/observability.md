@@ -12,6 +12,12 @@ This guide explains how to configure observability in Upbound Spaces. Upbound
 provides integrated observability features built on
 [OpenTelemetry][opentelemetry] to collect, process, and export logs, metrics,
 and traces.
+
+Upbound Spaces offers two levels of observability:
+
+1. **Space-level observability** - Observes the cluster infrastructure where Spaces software is installed (Self-Hosted only)
+2. **Control plane observability** - Observes workloads running within individual control planes
+
 <!-- vale Google.Headings = NO -->
 <!-- vale write-good.TooWordy = NO -->
 <!-- vale Google.WordList = NO -->
@@ -20,7 +26,7 @@ and traces.
 **Space-level observability** (available since v1.6.0, GA in v1.14.0):
 - Disabled by default
 - Requires manual enablement and configuration
-- Self-hosted Spaces only
+- Self-Hosted Spaces only
 
 **Control plane observability** (available since v1.13.0, GA in v1.14.0):
 - Enabled by default
@@ -29,11 +35,6 @@ and traces.
 <!-- vale Google.WordList = YES -->
 <!-- vale write-good.TooWordy = YES -->
 
-
-Upbound Spaces offers two levels of observability:
-
-1. **Space-level observability** - Observes the cluster infrastructure where Spaces software is installed (Self-Hosted only)
-2. **Control plane observability** - Observes workloads running within individual control planes
 
 ## Prerequisites
 <!-- vale write-good.Passive = NO -->
