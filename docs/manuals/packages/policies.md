@@ -1,6 +1,8 @@
 ---
 title: Package Policies
 sidebar_position: 100
+mdx:
+    format: md
 description: The Upbound Official package policies.
 ---
 
@@ -339,6 +341,34 @@ Examples:
 
 <!-- vale alex.Ablist = YES -->
 
+### AWS Family Provider availability
+
+| Support Tier | Version Ranges |
+|--------------|----------------|
+| **Standard+** | v0.36.0 - v0.47.4<br>v1.0.0 - v1.4.0<br>v1.16.4 - v1.23.5 (excluding v1.23.1, v1.23.2) |
+| **Community** | v1.5.0 - v1.16.3<br>v1.23.1 - v1.23.2<br>v2.0.0 - v2.1.1 |
+
+
+[Find the AWS Family Provider in the Upbound Marketplace][aws-marketplace]
+
+### Azure Family Provider availability
+
+| Support Tier | Version Ranges |
+|--------------|----------------|
+| **Standard+** | v0.33.0 - v0.42.2<br>v1.0.0 - v1.1.0<br>v1.6.6, v1.7.5<br>v1.8.5 - v1.8.7<br>v1.9.5 - v1.9.7<br>v1.10.5 - v1.10.7<br>v1.11.3 - v1.11.6<br>v1.12.0 - v1.12.3<br>v1.13.0, v1.13.2 |
+| **Community** | v1.2.0 - v1.6.5<br>v1.7.0 - v1.7.4<br>v1.8.0 - v1.8.4<br>v1.9.0 - v1.9.4<br>v1.10.0 - v1.10.4<br>v1.11.0 - v1.11.2<br>v1.13.1<br>v2.0.0 - v2.1.0 |
+
+[Find the Azure Family Provider in the Upbound Marketplace][az-marketplace]
+
+### GCP Family Provider availability
+
+| Support Tier | Version Ranges |
+|--------------|----------------|
+| **Standard+** | v0.33.0 - v0.41.4<br>v1.0.0 - v1.1.0<br>v1.7.5 - v1.7.6<br>v1.8.8 - v1.8.9<br>v1.9.5 - v1.9.8<br>v1.10.5 - v1.10.8<br>v1.11.5 - v1.11.8<br>v1.12.1 - v1.12.4<br>v1.13.0 - v1.13.2<br>v1.14.0, v1.14.2 - v1.14.4 |
+| **Community** | v1.2.0 - v1.7.4<br>v1.8.0 - v1.8.7<br>v1.9.0 - v1.9.4<br>v1.10.0 - v1.10.4<br>v1.11.0 - v1.11.4<br>v1.12.0<br>v1.14.1<br>v2.0.0 - v2.2.0 |
+
+[Find the GCP Family Provider in the Upbound Marketplace][gcp-marketplace]
+
 ## CVEs
 
 Security is a top priority for Upbound. Upbound actively monitors and addresses security vulnerabilities in its packages. Upbound will make reasonable commercial effort to ensure its Official packages are free
@@ -374,4 +404,7 @@ A CVE will be considered addressed when a new version of the provider with the f
 [provider-family-aws]: https://marketplace.upbound.io/providers/upbound/provider-family-aws
 [common-vulnerabilities-and-exposures]: https://nvd.nist.gov/general/cve-process
 [common-vulnerability-scoring-system-version-3]: https://nvd.nist.gov/vuln-metrics/cvss
+[aws-marketplace]: marketplace.upbound.io/providers/upbound/provider-family-aws/latest
+[az-marketplace]: marketplace.upbound.io/providers/upbound/provider-family-azure/latest
+[gcp-marketplace]: marketplace.upbound.io/providers/upbound/provider-family-gcp/latest
 [pricing-page]: https://www.upbound.io/pricing
