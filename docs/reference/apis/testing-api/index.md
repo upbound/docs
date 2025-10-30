@@ -1,23 +1,25 @@
 ---
-title: Testing API Reference
+title: Testing and Project API Reference
 description: Documentation for the Testing API resources
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';
 
-# Testing API Reference
+## Testing API reference
 
-This page documents the Custom Resource Definitions (CRDs) for the Testing API.
+This section documents the Custom Resource Definitions (CRDs) for the Testing API.
 
-## Composition Tests 
+### Composition tests 
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_compositiontests.yaml" />
 
-## End to End Tests
+### End to end tests
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_e2etests.yaml" />
 
-## Project Tests
+## Projects API
+
+This section documents Custom Resource Definitions (CRDs) for Upbound Projects.
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
 
