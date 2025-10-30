@@ -404,7 +404,7 @@ A CVE will be considered addressed when a new version of the provider with the f
 [provider-family-aws]: https://marketplace.upbound.io/providers/upbound/provider-family-aws
 [common-vulnerabilities-and-exposures]: https://nvd.nist.gov/general/cve-process
 [common-vulnerability-scoring-system-version-3]: https://nvd.nist.gov/vuln-metrics/cvss
-[aws-marketplace]: marketplace.upbound.io/providers/upbound/provider-family-aws/latest
-[az-marketplace]: marketplace.upbound.io/providers/upbound/provider-family-azure/latest
-[gcp-marketplace]: marketplace.upbound.io/providers/upbound/provider-family-gcp/latest
+[aws-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/latest
+[az-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-family-azure/latest
+[gcp-marketplace]: https://marketplace.upbound.io/providers/upbound/provider-family-gcp/latest
 [pricing-page]: https://www.upbound.io/pricing
