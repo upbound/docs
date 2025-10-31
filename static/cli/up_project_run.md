@@ -29,6 +29,12 @@ context is an Upbound Cloud Space. Use `up ctx` to update the current context.
 Local development control planes are used by default otherwise, and can be
 explicitly requested using the `--local` flag.
 
+Local development control planes always use UXP v2.0 or newer, defaulting to the
+latest version available. The default UXP version for cloud development control
+planes depends on your project version: v1.x for v1alpha1 projects or v2.x for
+v2alpha1 projects. The default version can be overridden with the
+`--control-plane-version` flag.
+
 It is also possible to run a project on an arbitrary UXP cluster referenced by
 the current kubeconfig context by using the `--use-current-context` flag. Note
 that this can be destructive, as it will create resources and install packages
@@ -93,6 +99,13 @@ Spaces:
 up project run --force --control-plane-name=my-cp
 ```
 
+Override the default UXP version used for a Spaces development control plane,
+for example to test a v1 project on a v2 control plane:
+
+```shell
+up project run --control-plane-version=v1.20.1-up.1
+```
+
 
 #### Usage
 
@@ -108,6 +121,7 @@ up project run --force --control-plane-name=my-cp
 | `--max-concurrency` | | Maximum number of functions to build and push at once. |
 | `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
 | `--control-plane-name` | | Name of the control plane to use. It will be created if not found. Defaults to the project name. |
+| `--control-plane-version` | | Version of Crossplane to use for the control plane. By default, the latest compatible version will be used. |
 | `--skip-control-plane-check` | | Allow running on a non-development control plane. |
 | `--local` | | Use a local dev control plane, even if Spaces is available. |
 | `--local-registry-path` | | Directory to use for local registry images. The default is system-dependent. |

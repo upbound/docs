@@ -47,6 +47,13 @@ up composition render composition.yaml xr.yaml \
     --function-credentials=credentials.yaml
 ```
 
+Override function annotations for a remote Docker daemon.
+```shell
+DOCKER_HOST=tcp://192.168.1.100:2376 up composition render composition.yaml xr.yaml \
+	--function-annotations render.crossplane.io/runtime-docker-publish-address=0.0.0.0 \
+	--function-annotations render.crossplane.io/runtime-docker-target=192.168.1.100
+```
+
 #### Docker Configuration
 
 The render command uses Docker (or any Docker-compatible container runtime) to
@@ -81,6 +88,7 @@ environment variables:
 | `--extra-resources` | `-e` | A YAML file or directory of YAML files specifying extra resources to pass to the Function pipeline. |
 | `--include-context` | `-c` | Include the context in the rendered output as a resource of kind: Context. |
 | `--function-credentials` | | A YAML file or directory of YAML files specifying credentials to use for Functions to render the XR. |
+| `--function-annotations` | | Override function annotations for all functions. Can be repeated. |
 | `--timeout` | | How long to run before timing out. |
 | `--max-concurrency` | | Maximum number of functions to build at once. |
 | `--project-file` | `-f` | Path to project definition file. |

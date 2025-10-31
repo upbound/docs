@@ -52,6 +52,13 @@ Include the full Operation with original spec and metadata:
 up operation render operations/op1/operation.yaml -o
 ```
 
+Override function annotations for remote Docker daemon.
+```shell
+DOCKER_HOST=tcp://192.168.1.100:2376 up operation render operations/op1/operation.yaml \
+    --function-annotations render.crossplane.io/runtime-docker-publish-address=0.0.0.0 \
+    --function-annotations render.crossplane.io/runtime-docker-target=192.168.1.100
+```
+
 #### Docker Configuration
 
 The render command uses Docker (or any Docker-compatible container runtime) to
@@ -82,6 +89,7 @@ environment variables:
 | `--include-full-operation` | `-o` | Include the full Operation with original spec and metadata in the rendered output. |
 | `--include-context` | `-c` | Include the context in the rendered output as a resource of kind: Context. |
 | `--function-credentials` | | A YAML file or directory of YAML files specifying credentials to use for Functions to render the Operation. |
+| `--function-annotations` | | Override function annotations for all functions. Can be repeated. |
 | `--timeout` | | How long to run before timing out. |
 | `--max-concurrency` | | Maximum number of functions to build at once. |
 | `--project-file` | `-p` | Path to project definition file. |
