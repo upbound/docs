@@ -13,10 +13,10 @@ Upbound Crossplane supports running [Add-Ons][add-ons-concept] released by Upbou
 
 <!-- vale on -->
 <!-- vale Google.Headings = NO -->
-## AddOns list
+## Add-Ons list
 
 <!-- vale Microsoft.Adverbs = NO -->
-For a complete list of available Official functions, use [this query][this-query] in the Marketplace.
+For a complete list of available Add-Ons, use [this query][this-query] in the Marketplace.
 
 ## Learn about Add-Ons
 <!-- vale Google.Headings = YES -->
