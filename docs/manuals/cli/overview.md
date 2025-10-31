@@ -34,10 +34,10 @@ curl -sL "https://cli.upbound.io" | sh
 :::note
 Install a specific version of `up` by providing the version.
 
-For example, to install version `v0.41.0` use the following command:
+For example, to install version `v0.42.0` use the following command:
 
 ```shell
-curl -sL "https://cli.upbound.io" | VERSION=v0.41.0 sh
+curl -sL "https://cli.upbound.io" | VERSION=v0.42.0 sh
 ```
 
 Find the full list of versions in the <a href="https://cli.upbound.io/stable?prefix=stable/">Up command-line repository</a>.
@@ -49,7 +49,7 @@ Find the full list of versions in the <a href="https://cli.upbound.io/stable?pre
 Upbound provides a Windows executable.
 
 ```shell
-curl.exe -sLo up.exe "https://cli.upbound.io/stable/v0.41.0/bin/windows_amd64/up.exe"
+curl.exe -sLo up.exe "https://cli.upbound.io/stable/v0.42.0/bin/windows_amd64/up.exe"
 ```
 
 Find the full list of Windows versions in the [Up command-line
@@ -75,7 +75,7 @@ Downloading packages requires both the [version][version] and CPU architecture (
 
 ### Debian package install
 ```shell
-curl -sLo up.deb "https://cli.upbound.io/stable/v0.41.0/deb/linux_${ARCH}/up.deb"
+curl -sLo up.deb "https://cli.upbound.io/stable/v0.42.0/deb/linux_${ARCH}/up.deb"
 ```
 <br />
 
@@ -83,7 +83,7 @@ curl -sLo up.deb "https://cli.upbound.io/stable/v0.41.0/deb/linux_${ARCH}/up.deb
 ### RPM package install
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 ```shell
-curl -sLo up.rpm "https://cli.upbound.io/stable/v0.41.0/rpm/linux_${ARCH}/up.rpm"
+curl -sLo up.rpm "https://cli.upbound.io/stable/v0.42.0/rpm/linux_${ARCH}/up.rpm"
 ```
 </TabItem>
 </Tabs>
@@ -110,14 +110,14 @@ brew install upbound/tap/docker-credential-up
 
 ### Debian package install
 ```shell
-curl -sLo up.deb "https://cli.upbound.io/stable/v0.41.0/deb/linux_${ARCH}/docker-credential-up.deb"
+curl -sLo up.deb "https://cli.upbound.io/stable/v0.42.0/deb/linux_${ARCH}/docker-credential-up.deb"
 ```
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### RPM package install
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 ```shell
-curl -sLo up.rpm "https://cli.upbound.io/stable/v0.41.0/rpm/linux_${ARCH}/docker-credential-up.rpm"
+curl -sLo up.rpm "https://cli.upbound.io/stable/v0.42.0/rpm/linux_${ARCH}/docker-credential-up.rpm"
 ```
 </TabItem>
 </Tabs>
