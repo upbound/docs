@@ -9,7 +9,7 @@ plan: "standard"
 This guide walks through how to enable the Knative function runtime in Upbound
 Crossplane (UXP). The Knative function runtime runs functions using [Knative]
 services instead of standard Kubernetes deployments, allowing functions to be
-scaled to zero when they’re not being called. This helps reduce resource
+scaled to zero when they're not being called. This helps reduce resource
 consumption from functions in a Kubernetes cluster running UXP.
 
 ## Prerequisites
@@ -191,10 +191,10 @@ kubectl patch upboundruntimeconfig default --type=merge -p='{"spec":{"capabiliti
 
 ## Test scale-to-zero
 
-The Knative function runtime will automatically scale down functions that are
-not being actively used. This could happen because no compositions are using a
-given function, or because no changes have occurred to cause a composite
-resource to be reconciled recently.
+The Knative function runtime automatically scales down functions that aren't
+being actively used. This could happen because no compositions are using a given
+function, or because nothing has changed to cause reconciliation of a composite
+resource.
 
 To see scale-to-zero in action, install an example Configuration that depends on
 some Functions:
@@ -218,8 +218,8 @@ NAME                                               INSTALLED   HEALTHY   PACKAGE
 provider.pkg.crossplane.io/upbound-provider-helm   True        True      xpkg.upbound.io/upbound/provider-helm:v0.21.1   63s
 ```
 
-Because the Knative function runtime is active, each Function will have an
-associated Knative Service instead of a standard Kubernetes Deployment:
+Because the Knative function runtime is active, each Function has an associated
+Knative Service instead of a standard Kubernetes Deployment:
 
 ```bash
 $ kubectl -n crossplane-system get kservice
@@ -228,8 +228,8 @@ crossplane-contrib-function-auto-ready   https://crossplane-contrib-function-aut
 upbound-configuration-appxapp            https://upbound-configuration-appxapp.crossplane-system.svc.cluster.local            upbound-configuration-appxapp-3975a44efa4d            upbound-configuration-appxapp-3975a44efa4d            True
 ```
 
-When you first install the configuration, Knative will have scaled up the
-Functions, so each Function will have a Pod:
+When you first install the configuration, Knative scales up the Functions, so
+each Function has a Pod:
 
 ```bash
 $ kubectl -n crossplane-system get pod -l serving.knative.dev/service
@@ -238,15 +238,15 @@ crossplane-contrib-function-auto-ready-23e6fdeb2c05-deployjcgth   2/2     Runnin
 upbound-configuration-appxapp-3975a44efa4d-deployment-66c5cdgzf   2/2     Running   0          56s
 ```
 
-Since there are no XRs in the cluster, the functions are unused and after a few
-minutes Knative will scale them down to zero:
+Since there are no XRs in the cluster, nothing is calling the functions and
+Knative soon scales them down to zero:
 
 ```bash
 $ kubectl -n crossplane-system get pod -l serving.knative.dev/service
 No resources found in crossplane-system namespace.
 ```
 
-Create an XR to trigger the functions being called by the composition pipeline:
+Create an XR, causing the composition pipeline to call the functions:
 
 ```bash
 kubectl apply -f - <<EOF
@@ -269,7 +269,7 @@ spec:
 EOF
 ```
 
-Within a few seconds, you will see Pods running again for the Functions:
+Within seconds, Pods are running again for the Functions:
 
 ```bash
 $ kubectl -n crossplane-system get pod -l serving.knative.dev/service
@@ -287,9 +287,9 @@ capability from the default `UpboundRuntimeConfig`:
 kubectl patch upboundruntimeconfig default --type=merge -p='{"spec":{"capabilities":[]}}'
 ```
 
-This enables the standard Deployment-based function runtime. As a result, you
-will see the Knative services that were previously created for the functions get
-deleted, and new Deployments get created:
+This enables the standard Deployment-based function runtime. As a result, the
+runtime controller deletes the Knative services for the functions and creates
+Deployments instead:
 
 ```bash
 $ kubectl -n crossplane-system get kservice
