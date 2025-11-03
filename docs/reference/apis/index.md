@@ -6,7 +6,7 @@ Information on Upbound's APIs:
 
 * [Spaces API][spaces]
 * [Crossplane API][crossplane]
-* [Testing API][testing]
+* [Testing and Project API][testing]
 * [Query API][query]
 
 [spaces]: /reference/apis/spaces-api/latest/
