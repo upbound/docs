@@ -4,18 +4,18 @@ description: "Learn how to manage self-managed license for UXP"
 sidebar_position: 2
 ---
 
-Upbound Crossplane is available in community and commercial plans for Upbound. 
+This guide explains how to manage licenses for Upbound Crossplane (UXP),
+including how to generate, apply, download, and verify licenses for 
+Commercial plans.
+
 <!-- vale proselint.Cliches = NO -->
-* Upbound Community Plan lets you run Upbound Crossplane for free and is source-available on [GitHub][uxp-source]
-* Upbound Standard, Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
+* Upbound Enterprise, and Business Critical are commercial plans that let you create license keys that unlock additional features in Upbound Crossplane
 <!-- vale proselint.Cliches = YES -->
 
 :::important
 To generate a license key for Upbound Crossplane, contact your Upbound account
 representative.
 :::
-
-This guide walks through how to manage a UXP license.
 
 ## Prerequisites
 
@@ -24,7 +24,8 @@ Before you begin, make sure you have:
 * a running Kubernetes cluster
 * `kubectl` installed
 * the `up` CLI installed
-* a valid UXP license provided by Upbound (for Standard plans and above)
+* a valid UXP license provided by Upbound 
+* Admin access for your organization in the Upbound Console (for Enterprise plans)
 
 ## Community plan 
 
@@ -45,14 +46,11 @@ up uxp license apply --dev
 Users can't provide Upbound Crossplane as a commercial Crossplane service to
 others.
 
-## Commercial plans (Standard, Enterprise, Business Critical)
+## Commercial plans 
 
-Users who have a commercial plan on Upbound including Standard, Enterprise, and
-Business Critical may generate and install license keys. These commercial
+Users who have a commercial plan on Upbound may generate and install license keys. These commercial
 license keys unlock commercial-only features in Upbound Crossplane.
 
-Users who purchased a commercial plan (Standard, Enterprise, and Business
-Critical) can generate and install license keys. 
 
 ### Commercial features
 
@@ -65,10 +63,30 @@ Commercial licenses unlock the following Upbound Crossplane features:
 
 These features are unavailable unless a valid license is present.
 
-* **Upon license expiration:**
-    * The cluster enters a grace period whereby features continue to work. The grace period is 25% of the total license duration. For example, a yearly license has a 3-month grace period, and a monthly license has about a 1-week grace period. During this grace period, the commercial features will continue to function normally. However, you'll notice warnings emitted in Upbound Crossplane that the license's grace period is active. 
-    * Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
-* **After license expiration and grace period:** After the grace period ends, paid features or components get locked down. This means any component checking the license sees that it's truly invalid (expired and grace period ended) and disables its paid features.
+### License expiration
+
+Upon license expiration, the cluster enter a grace period whereby features
+continue to work. The grace period is 25% of the total license duration. For
+example:
+
+* A yearly license has a 3-month grace period 
+* A monthly license has about a 1-week grace period. 
+
+During this grace period:
+
+* Commercial features continue to function normally 
+* UXP emits warnings to indicate the license's grace period is active
+* Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
+
+**After license expiration and grace period**, paid features or components get
+locked down. This means any component checking the license sees that it's truly
+invalid (expired and grace period ended) and disables its paid features.
+
+:::note
+When licenses expires, your control plane still reconciles to guarantee your
+resources are operational. However, logs will appear in your control plane to
+ensure operators understand the license is past its expiration period.
+:::
 
 ### Development licenses
 
@@ -80,8 +98,94 @@ These development licenses enable local development and testing flows with Upbou
 This license may not be re-used for production purposes. 
 :::
 
+## License management in the Upbound Console (Enterprise and above)
 
-## Add a license to an Upbound Crossplane cluster
+Organizations with Enterprise or higher tier plans have access to self-service
+license management in the Upbound Console.  
+
+:::important
+To manage your license in the Upbound Console, you must be an organization
+Admin.
+:::
+
+### List licenses
+
+To list your organization's licenses, log in to your Upbound account and navigate to **My Account** > **Manage Account** in
+the top right corner of your console.
+
+The list of licenses displays information about your UXP licenses like:
+
+* License name
+* Status (Active or Expired)
+* Resources allocated per month
+* Operations allocated per month
+* Creation date
+* Expiration date
+
+![License List][license-list]
+
+You can also use the search bar to find licenses by name, status, or number of
+resources/operations allocated per month.
+
+![License Search][license-search]
+
+### Download licenses
+
+To download a license in your console, click the three dots in the license of
+your choice.
+
+
+![License Download][license-download]
+
+Click **Download License**. Your browser will download the license as a JSON
+file.
+
+
+For more information, follow the **Provisioning Instructions** to see up-to-date
+documentation on how to apply the license to your Kubernetes cluster.
+
+:::note
+In the license file, the capacity field references resource hours rather than
+resource per month. Resource hours reflect the entire capacity allocated for the
+duration of the license instead of for a single month.
+:::
+
+Controllers in clusters track **Resource Hours** for accuracy and precision.
+Because licenses apply to disconnected clusters that don't report back
+consumption metrics, the license must hold the entire capacity.
+
+### Create a new license
+
+To create a new license in the console, click the **Create** button and fill out
+the necessary information.
+
+![License Create][license-create]
+
+Licenses require:
+
+* **License Name**: A meaningful name to identify the license within the pool of licenses created. Use cluster names, regions, or meaningful identifiers that can help you later know to which control plane your license is tied.
+* **Expiration**: The exact date when the license will expire. No expiration date can exceed your end contract with Upbound.
+* **Resources per Month**: The maximum number of Resources the license can manage per month.
+* **Operations per Month**: The maximum number of Operations the license can manage per month.
+
+Click **Create** to provision your license. Once you submit your license
+request, Upbound bills your organization according to the resources/operations
+allocated and creates a JSON-formatted license file.
+
+
+Download your license and follow the [provisioning
+instructions][provisioning-instructions] to apply it to your control plane.
+
+:::important
+For organizations without active contracts, your **Create** button is disabled
+and displays insights on why the operation isn't allowed.
+
+Unless there are network errors or outages, the only reason you can't create a
+license is because your organization doesn't have a valid contract. Reach out to
+support or your account representative to coordinate provisioning.
+:::
+
+## Add a license to an Upbound Crossplane cluster {#add-a-license}
 
 To enable commercial features in an Upbound Crossplane cluster, you need a
 commercial license.
@@ -163,7 +267,7 @@ current usage:
 
 | Field | Description |
 |-------|-------------|
-| **`plan`** | The commercial plan associated with your license (Community, Standard, etc). |
+| **`plan`** | The commercial plan associated with your license.  |
 | **`expiresAt`** | The date and time when your license is set to expire. |
 | **`capacity`** | The total capacity granted by your license, such as `resourceHours` and `operations`. |
 | **`enabledFeatures`** | A list of the commercial features unlocked by your license. |
@@ -174,5 +278,11 @@ current usage:
 For more information on usage metering, review the [Usage Metering][usage]
 guide.
 
+[license-landing-page]: /img/license-landing-page.png
+[license-list]: /img/license-list-1.png
+[license-download]: /img/license-download.png
+[license-search]: /img/license-search.png
+[license-create]: /img/license-create-1.png
+[provisioning-instructions]: #add-a-license
 [usage]: /manuals/uxp/howtos/usage-metering
 [uxp-source]: https://github.com/upbound/upbound-crossplane
