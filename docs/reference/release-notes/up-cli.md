@@ -24,6 +24,26 @@ Any important warnings or necessary information
 
 -->
 
+## v0.42.0
+
+### Release Date: 2025-10-31
+
+##### What's Changed
+
+- Added support for building composition tests and e2e tests using Go and
+  go-templating.
+- Added support for remote Docker daemons in `up composition render` and `up
+  test run`.
+- Added support for Crossplane v2 in Spaces. `up project run` and `up test run`
+  now use v2 control planes by default for running and testing v2alpha1
+  projects.
+- Added support for packaging `ManagedResourceActivationPolicy` resources in `up
+  project build`.
+
+##### Bug Fixes
+
+- Fixed assorted filesystem issues on Windows.
+
 ## v0.41.0
 
 ### Release Date: 2025-09-10

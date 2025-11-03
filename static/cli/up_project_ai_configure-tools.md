@@ -52,3 +52,4 @@ up project ai configure-tools --gemini-cli --claude-code --cursor
 | `--gemini-cli` | | Generate gemini CLI configurations. |
 | `--claude-code` | | Generate claude code CLI configurations. |
 | `--cursor` | | Generate cursor configurations. |
+| `--copilot` | | Generate GitHub Copilot configurations. |

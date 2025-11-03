@@ -3,7 +3,7 @@ title: CLI Reference
 sidebar_position: 3
 ---
 
-This documentation is for the `up` CLI v0.41.0.
+This documentation is for the `up` CLI v0.42.0.
 
 The latest version of `up` can be installed by running:
 
@@ -175,6 +175,7 @@ import UpXpkgXpExtract from '/cli/up_xpkg_xp-extract.md';
 import UpXpls from '/cli/up_xpls.md';
 import UpXplsServe from '/cli/up_xpls_serve.md';
 import UpXrd from '/cli/up_xrd.md';
+import UpXrdConvert from '/cli/up_xrd_convert.md';
 import UpXrdGenerate from '/cli/up_xrd_generate.md';
 
 
@@ -670,6 +671,9 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up xrd
 
 <UpXrd />
+## up xrd convert
+
+<UpXrdConvert />
 ## up xrd generate
 
 <UpXrdGenerate />
