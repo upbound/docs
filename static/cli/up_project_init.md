@@ -12,17 +12,15 @@ named after the project. You can specify which template to use with the
 
 #### Supported Languages
 
-
-
 The following slugs are accepted as arguments by the `--langauge` and
 `--test-language` flags:
 
-| Language | Slug | Supported for Tests |
-| -------- | ---- | ------------------- |
-| Go | go | No |
-| Go Templates | go-templating | No |
-| KCL | kcl | Yes |
-| Python | python | Yes |
+| Language | Slug |
+| -------- | ---- |
+| Go | go |
+| Go Templates | go-templating |
+| KCL | kcl |
+| Python | python |
 
 #### Examples
 
