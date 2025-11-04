@@ -8,27 +8,29 @@ plan: "standard"
 
 This guide walks through how to enable the Knative function runtime in Upbound
 Crossplane (UXP). The Knative function runtime runs functions using [Knative]
-services instead of standard Kubernetes deployments, allowing functions to be
-scaled to zero when they're not being called. This helps reduce resource
+services instead of standard Kubernetes deployments, allowing functions to 
+scale to zero when not called. This helps reduce resource
 consumption from functions in a Kubernetes cluster running UXP.
 
 ## Prerequisites
 
-Before you enable Provider Autoscaling, make sure you have:
+Before you enable the Knative function runtime, make sure you have:
 
 * A running UXP control plane
 * A valid Standard or Development license applied to your control plane
 
-As part of the guide, we will also install the following prerequisites:
+This guide also requires:
 
 * [cert-manager]
 * [Knative]
 
 ## Install required dependencies
 
-If you already have Knative and cert-manager installed and configured, you can
-skip some steps in this section. However, creation of the cert-manager `Issuer`
-and configuration of Knative to use it are required.
+:::tip
+If you already have Knative and cert-manager installed, skip to [creating and
+configuring the cert-manager `Issuer`][issuer], which is required for this
+feature.
+:::
 
 ### Install cert-manager
 
@@ -41,23 +43,6 @@ helm install \
   --namespace cert-manager \
   --create-namespace \
   --set crds.enabled=true
-```
-
-Create a cert-manager `Issuer` using the Crossplane CA certificate. This will be
-used by Knative to generate certificates for function services that are called
-by Crossplane:
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: cert-manager.io/v1
-kind: Issuer
-metadata:
-  name: crossplane-issuer
-  namespace: crossplane-system
-spec:
-  ca:
-    secretName: crossplane-root-ca
-EOF
 ```
 
 ### Install Knative Serving
@@ -95,8 +80,26 @@ kubectl patch configmap/config-network \
   --patch '{"data":{"ingress-class":"kourier.ingress.networking.knative.dev","cluster-local-domain-tls":"Enabled"}}'
 
 ```
+## Create a cert-manager `Issuer` {#cert-issuer}
 
-Configure Knative to use the cert-manager `Issuer` created in the previous
+Create a cert-manager `Issuer` using the Crossplane CA certificate. Knative uses
+this to generate certificates for function services that Crossplane calls:
+
+```bash
+kubectl apply -f - --server-side <<EOF
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: crossplane-issuer
+  namespace: crossplane-system
+spec:
+  ca:
+    secretName: crossplane-root-ca
+EOF
+```
+
+
+Configure Knative to use the cert-manager `Issuer` you created in the previous
 section:
 
 ```bash
@@ -127,8 +130,7 @@ data:
 EOF
 ```
 
-Restart the Knative controllers to ensure the above configuration is applied:
-
+Restart the Knative controllers to apply the configuration: 
 ```bash
 kubectl -n knative-serving rollout restart deploy/activator
 kubectl -n knative-serving rollout restart deploy/controller
@@ -154,12 +156,10 @@ helm install crossplane \
 ```
 
 :::note
-
 Helm requires the use of `--devel` flag for versions with suffixes, like
 `v2.0.0-up.1`. The Helm repository Upbound uses is the stable repository, so use
 of that flag is only a workaround. You will always get the latest stable version
 of Upbound Crossplane.
-
 :::
 
 </TabItem>
@@ -167,7 +167,7 @@ of Upbound Crossplane.
 <TabItem value="up CLI" label="up CLI">
 
 Make sure you have the up CLI installed and that your current kubeconfig context
-is pointed at the desired Kubernetes cluster, then run the following command:
+points to the desired Kubernetes cluster, then run the following command:
 
 ```bash
 up uxp upgrade --set "upbound.manager.args[0]=--enable-knative-runtime"
@@ -238,15 +238,15 @@ crossplane-contrib-function-auto-ready-23e6fdeb2c05-deployjcgth   2/2     Runnin
 upbound-configuration-appxapp-3975a44efa4d-deployment-66c5cdgzf   2/2     Running   0          56s
 ```
 
-Since there are no XRs in the cluster, nothing is calling the functions and
-Knative soon scales them down to zero:
+Since there are no XRs in the cluster, nothing calls the functions and
+Knative scales them down to zero:
 
 ```bash
 $ kubectl -n crossplane-system get pod -l serving.knative.dev/service
 No resources found in crossplane-system namespace.
 ```
 
-Create an XR, causing the composition pipeline to call the functions:
+Create an XR to trigger the composition pipeline to call the function:
 
 ```bash
 kubectl apply -f - <<EOF
@@ -269,7 +269,7 @@ spec:
 EOF
 ```
 
-Within seconds, Pods are running again for the Functions:
+Within seconds, Pods start for the Functions:
 
 ```bash
 $ kubectl -n crossplane-system get pod -l serving.knative.dev/service
@@ -287,8 +287,7 @@ capability from the default `UpboundRuntimeConfig`:
 kubectl patch upboundruntimeconfig default --type=merge -p='{"spec":{"capabilities":[]}}'
 ```
 
-This enables the standard Deployment-based function runtime. As a result, the
-runtime controller deletes the Knative services for the functions and creates
+The runtime controller deletes the Knative services for the functions and creates
 Deployments instead:
 
 ```bash
@@ -304,6 +303,7 @@ upbound-configuration-appxapp-3975a44efa4d            1/1     1            1    
 ```
 
 [Knative]: https://knative.dev
+[issuer]: #cert-issuer
 [cert-manager]: https://cert-manager.io
 [Kourier]: https://github.com/knative-extensions/net-kourier
 [Knative installation documentation]: https://knative.dev/docs/install/
