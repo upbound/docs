@@ -1,0 +1,410 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.18.0
+  name: upboundruntimeconfigs.pkg.upbound.io
+spec:
+  group: pkg.upbound.io
+  names:
+    categories:
+    - crossplane
+    kind: UpboundRuntimeConfig
+    listKind: UpboundRuntimeConfigList
+    plural: upboundruntimeconfigs
+    singular: upboundruntimeconfig
+  scope: Cluster
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1beta1
+    schema:
+      openAPIV3Schema:
+        description: |-
+          The UpboundRuntimeConfig provides settings for the Kubernetes Deployment
+          of a Provider or composition function package.
+
+          UpboundRuntimeConfig configures Upbound Crossplane's package runtime.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: |-
+              UpboundRuntimeConfigSpec specifies the configuration for a packaged controller.
+              Values provided will override package manager defaults. Labels and
+              annotations are passed to both the controller Deployment and ServiceAccount.
+            properties:
+              capabilities:
+                description: |-
+                  Capabilities lists the package runtime capabilities that
+                  have been enabled for the referencing Crossplane package.
+                items:
+                  description: Feature represents a UXP feature that can be enabled.
+                  enum:
+                  - ProviderVPA
+                  - FunctionKnativeRuntime
+                  type: string
+                type: array
+                x-kubernetes-list-type: set
+              knative:
+                description: KnativeRuntimeConfig provides overrides to the knative
+                  runtime.
+                properties:
+                  serviceAccountTemplate:
+                    description: ServiceAccountTemplate is the template for the ServiceAccount
+                      object.
+                    properties:
+                      metadata:
+                        description: Metadata contains the configurable metadata fields
+                          for the ServiceAccount.
+                        properties:
+                          annotations:
+                            additionalProperties:
+                              type: string
+                            description: |-
+                              Annotations is an unstructured key value map stored with a resource that
+                              may be set by external tools to store and retrieve arbitrary metadata.
+                              They are not queryable and should be preserved when modifying objects.
+                              More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+                            type: object
+                          labels:
+                            additionalProperties:
+                              type: string
+                            description: |-
+                              Map of string keys and values that can be used to organize and categorize
+                              (scope and select) objects. Labels will be merged with internal labels
+                              used by crossplane, and labels with a crossplane.io key might be
+                              overwritten.
+                              More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+                            type: object
+                          name:
+                            description: Name is the name of the object.
+                            type: string
+                        type: object
+                    type: object
+                  serviceTemplate:
+                    description: ServiceTemplate is the template for the Service.serving.knative.dev
+                      object.
+                    properties:
+                      autoscalingMaxScale:
+                        description: |-
+                          AutoscalingMaxScale value controls the maximum number of replicas that
+                          each revision should have. Knative will attempt to never have more than
+                          this number of replicas running, or in the process of being created, at
+                          any one point in time.
+                          Default: 0 which means unlimited.
+                          Default is not set if AutoscalingMaxScale is not provided to allow for
+                          global defaults to be used.
+                        format: int64
+                        type: integer
+                      autoscalingMinScale:
+                        description: |-
+                          AutoscalingMinScale controls the minimum number of replicas that each
+                          Revision should have. Knative will attempt to never have less than this
+                          number of replicas at any one point in time.
+                          Default: 0 if scale-to-zero is enabled and class KPA is used, 1.
+                          Default is not set if AutoscalingMinScale is not provided to allow for
+                          global defaults to be used.
+                        format: int64
+                        type: integer
+                      containerConcurrency:
+                        description: |-
+                          ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+                          requests per container of the Revision.  Defaults to `0` which means
+                          concurrency to the application is not limited, and the system decides the
+                          target concurrency for the autoscaler.
+                        format: int64
+                        type: integer
+                      idleTimeoutSeconds:
+                        description: |-
+                          IdleTimeoutSeconds is the maximum duration in seconds a request will be allowed
+                          to stay open while not receiving any bytes from the user's application. If
+                          unspecified, a system default will be provided.
+                        format: int64
+                        type: integer
+                      metadata:
+                        description: Metadata contains the configurable metadata fields
+                          for the Service.
+                        properties:
+                          annotations:
+                            additionalProperties:
+                              type: string
+                            description: |-
+                              Annotations is an unstructured key value map stored with a resource that
+                              may be set by external tools to store and retrieve arbitrary metadata.
+                              They are not queryable and should be preserved when modifying objects.
+                              More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+                            type: object
+                          labels:
+                            additionalProperties:
+                              type: string
+                            description: |-
+                              Map of string keys and values that can be used to organize and categorize
+                              (scope and select) objects. Labels will be merged with internal labels
+                              used by crossplane, and labels with a crossplane.io key might be
+                              overwritten.
+                              More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+                            type: object
+                          name:
+                            description: Name is the name of the object.
+                            type: string
+                        type: object
+                      responseStartTimeoutSeconds:
+                        description: |-
+                          ResponseStartTimeoutSeconds is the maximum duration in seconds that the request
+                          routing layer will wait for a request delivered to a container to begin
+                          sending any network traffic.
+                        format: int64
+                        type: integer
+                      timeoutSeconds:
+                        description: |-
+                          TimeoutSeconds is the maximum duration in seconds that the request instance
+                          is allowed to respond to a request. If unspecified, a system default will
+                          be provided.
+                        format: int64
+                        type: integer
+                    type: object
+                type: object
+              verticalPodAutoscalerTemplate:
+                description: |-
+                  VerticalPodAutoscalerTemplate is the template for
+                  the VerticalPodAutoscaler object.
+                properties:
+                  metadata:
+                    description: Metadata contains the configurable metadata fields
+                      for the Deployment.
+                    properties:
+                      annotations:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          Annotations is an unstructured key value map stored with a resource that
+                          may be set by external tools to store and retrieve arbitrary metadata.
+                          They are not queryable and should be preserved when modifying objects.
+                          More info: http:https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+                        type: object
+                      labels:
+                        additionalProperties:
+                          type: string
+                        description: |-
+                          Map of string keys and values that can be used to organize and categorize
+                          (scope and select) objects. Labels will be merged with internal labels
+                          used by crossplane, and labels with a crossplane.io key might be
+                          overwritten.
+                          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+                        type: object
+                      name:
+                        description: Name is the name of the object.
+                        type: string
+                    type: object
+                  spec:
+                    description: |-
+                      Spec contains the configurable spec fields for
+                      the VerticalPodAutoscaler object.
+                    properties:
+                      recommenders:
+                        description: |-
+                          Recommender responsible for generating recommendation for this object.
+                          List should be empty (then the default recommender will generate the
+                          recommendation) or contain exactly one recommender.
+                        items:
+                          description: |-
+                            VerticalPodAutoscalerRecommenderSelector points to a specific Vertical Pod Autoscaler recommender.
+                            In the future it might pass parameters to the recommender.
+                          properties:
+                            name:
+                              description: Name of the recommender responsible for
+                                generating recommendation for this object.
+                              type: string
+                          required:
+                          - name
+                          type: object
+                        type: array
+                      resourcePolicy:
+                        description: |-
+                          Controls how the autoscaler computes recommended resources.
+                          The resource policy may be used to set constraints on the recommendations
+                          for individual containers.
+                          If any individual containers need to be excluded from getting the VPA recommendations, then
+                          it must be disabled explicitly by setting mode to "Off" under containerPolicies.
+                          If not specified, the autoscaler computes recommended resources for all containers in the pod,
+                          without additional constraints.
+                        properties:
+                          containerPolicies:
+                            description: Per-container resource policies.
+                            items:
+                              description: |-
+                                ContainerResourcePolicy controls how autoscaler computes the recommended
+                                resources for a specific container.
+                              properties:
+                                containerName:
+                                  description: |-
+                                    Name of the container or DefaultContainerResourcePolicy, in which
+                                    case the policy is used by the containers that don't have their own
+                                    policy specified.
+                                  type: string
+                                controlledResources:
+                                  description: |-
+                                    Specifies the type of recommendations that will be computed
+                                    (and possibly applied) by VPA.
+                                    If not specified, the default of [ResourceCPU, ResourceMemory] will be used.
+                                  items:
+                                    description: ResourceName is the name identifying
+                                      various resources in a ResourceList.
+                                    type: string
+                                  type: array
+                                controlledValues:
+                                  description: |-
+                                    Specifies which resource values should be controlled.
+                                    The default is "RequestsAndLimits".
+                                  enum:
+                                  - RequestsAndLimits
+                                  - RequestsOnly
+                                  type: string
+                                maxAllowed:
+                                  additionalProperties:
+                                    anyOf:
+                                    - type: integer
+                                    - type: string
+                                    pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                                    x-kubernetes-int-or-string: true
+                                  description: |-
+                                    Specifies the maximum amount of resources that will be recommended
+                                    for the container. The default is no maximum.
+                                  type: object
+                                minAllowed:
+                                  additionalProperties:
+                                    anyOf:
+                                    - type: integer
+                                    - type: string
+                                    pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                                    x-kubernetes-int-or-string: true
+                                  description: |-
+                                    Specifies the minimal amount of resources that will be recommended
+                                    for the container. The default is no minimum.
+                                  type: object
+                                mode:
+                                  description: Whether autoscaler is enabled for the
+                                    container. The default is "Auto".
+                                  enum:
+                                  - Auto
+                                  - "Off"
+                                  type: string
+                              type: object
+                            type: array
+                        type: object
+                      targetRef:
+                        description: |-
+                          TargetRef points to the controller managing the set of pods for the
+                          autoscaler to control - e.g. Deployment, StatefulSet. VerticalPodAutoscaler
+                          can be targeted at controller implementing scale subresource (the pod set is
+                          retrieved from the controller's ScaleStatus) or some well known controllers
+                          (e.g. for DaemonSet the pod set is read from the controller's spec).
+                          If VerticalPodAutoscaler cannot use specified target it will report
+                          ConfigUnsupported condition.
+                          Note that VerticalPodAutoscaler does not require full implementation
+                          of scale subresource - it will not use it to modify the replica count.
+                          The only thing retrieved is a label selector matching pods grouped by
+                          the target resource.
+                        properties:
+                          apiVersion:
+                            description: apiVersion is the API version of the referent
+                            type: string
+                          kind:
+                            description: 'kind is the kind of the referent; More info:
+                              https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+                            type: string
+                          name:
+                            description: 'name is the name of the referent; More info:
+                              https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+                            type: string
+                        required:
+                        - kind
+                        - name
+                        type: object
+                        x-kubernetes-map-type: atomic
+                      updatePolicy:
+                        description: |-
+                          Describes the rules on how changes are applied to the pods.
+                          If not specified, all fields in the `PodUpdatePolicy` are set to their
+                          default values.
+                        properties:
+                          evictionRequirements:
+                            description: |-
+                              EvictionRequirements is a list of EvictionRequirements that need to
+                              evaluate to true in order for a Pod to be evicted. If more than one
+                              EvictionRequirement is specified, all of them need to be fulfilled to allow eviction.
+                            items:
+                              description: |-
+                                EvictionRequirement defines a single condition which needs to be true in
+                                order to evict a Pod
+                              properties:
+                                changeRequirement:
+                                  description: EvictionChangeRequirement refers to
+                                    the relationship between the new target recommendation
+                                    for a Pod and its current requests, what kind
+                                    of change is necessary for the Pod to be evicted
+                                  enum:
+                                  - TargetHigherThanRequests
+                                  - TargetLowerThanRequests
+                                  type: string
+                                resources:
+                                  description: |-
+                                    Resources is a list of one or more resources that the condition applies
+                                    to. If more than one resource is given, the EvictionRequirement is fulfilled
+                                    if at least one resource meets `changeRequirement`.
+                                  items:
+                                    description: ResourceName is the name identifying
+                                      various resources in a ResourceList.
+                                    type: string
+                                  type: array
+                              required:
+                              - changeRequirement
+                              - resources
+                              type: object
+                            type: array
+                          minReplicas:
+                            description: |-
+                              Minimal number of replicas which need to be alive for Updater to attempt
+                              pod eviction (pending other checks like PDB). Only positive values are
+                              allowed. Overrides global '--min-replicas' flag.
+                            format: int32
+                            type: integer
+                          updateMode:
+                            description: |-
+                              Controls when autoscaler applies changes to the pod resources.
+                              The default is 'Auto'.
+                            enum:
+                            - "Off"
+                            - Initial
+                            - Recreate
+                            - Auto
+                            type: string
+                        type: object
+                    required:
+                    - targetRef
+                    type: object
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources: {}
