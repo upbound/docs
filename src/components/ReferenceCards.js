@@ -4,7 +4,7 @@ const ReferenceCards = () => {
   const sections = [
     {
       title: 'APIs',
-      description: 'Crossplane API, Query API, Spaces API, and Testing API with CRD specifications.',
+      description: 'Crossplane API, Query API, Spaces API, UXP API, and Project & Testing API with CRD specifications.',
       link: '/reference/apis'
     },
     {
