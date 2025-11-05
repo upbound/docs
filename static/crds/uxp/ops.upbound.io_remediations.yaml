@@ -1,0 +1,278 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.18.0
+  name: remediations.ops.upbound.io
+spec:
+  group: ops.upbound.io
+  names:
+    kind: Remediation
+    listKind: RemediationList
+    plural: remediations
+    singular: remediation
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    - jsonPath: .status.conditions[?(@.type=='RemediationApproved')].status
+      name: APPROVED
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='RemediationProgressing')].status
+      name: PROGRESSING
+      type: string
+    - jsonPath: .status.conditions[?(@.type=='RemediationCompleted')].status
+      name: COMPLETED
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Remediation suggests a plan of action for a given analysis.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: RemediationSpec provides the related details of the remediation
+              to take.
+            properties:
+              strategy:
+                description: |-
+                  RemediationChosenStrategy describes the chosen strategy to take for
+                  remediating the corresponding issue as well as any overridden steps
+                  from the suggested steps in the owning Analysis.
+                properties:
+                  name:
+                    description: Name of the chosen strategy to take to remediate
+                      the issue.
+                    type: string
+                  stepOverrides:
+                    description: StepOverrides of the corresponding steps in the owning
+                      Analysis.
+                    items:
+                      description: |-
+                        StepOverride is an override for the remediation step with the specified
+                        index.
+                      properties:
+                        overriddenInstruction:
+                          description: |-
+                            OverriddenInstruction describes the instruction that overrides the
+                            original instruction in the step in the owning Analysis.
+                          type: string
+                        stepName:
+                          description: StepName is the name of the step as defined
+                            in the owning Analysis.
+                          format: int32
+                          type: integer
+                      required:
+                      - overriddenInstruction
+                      - stepName
+                      type: object
+                    type: array
+                  totalSteps:
+                    description: |-
+                      TotalSteps indicates the total number of steps expectec to execute for
+                      this strategy.
+                    type: integer
+                required:
+                - name
+                - totalSteps
+                type: object
+            type: object
+          status:
+            description: RemediationStatus provides the status for the Remediation.
+            properties:
+              conditions:
+                description: Conditions of the resource.
+                items:
+                  description: A Condition that may apply to a resource.
+                  properties:
+                    lastTransitionTime:
+                      description: |-
+                        LastTransitionTime is the last time this condition transitioned from one
+                        status to another.
+                      format: date-time
+                      type: string
+                    message:
+                      description: |-
+                        A Message containing details about this condition's last transition from
+                        one status to another, if any.
+                      type: string
+                    observedGeneration:
+                      description: |-
+                        ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+                        For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+                        with respect to the current state of the instance.
+                      format: int64
+                      type: integer
+                    reason:
+                      description: A Reason for this condition's last transition from
+                        one status to another.
+                      type: string
+                    status:
+                      description: Status of this condition; is it currently True,
+                        False, or Unknown?
+                      type: string
+                    type:
+                      description: |-
+                        Type of this condition. At most one of each condition type may apply to
+                        a resource at any point in time.
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+                x-kubernetes-list-map-keys:
+                - type
+                x-kubernetes-list-type: map
+              observedGeneration:
+                description: |-
+                  ObservedGeneration is the latest metadata.generation
+                  which resulted in either a ready state, or stalled due to error
+                  it can not recover from without human intervention.
+                format: int64
+                type: integer
+              remediationProgress:
+                description: |-
+                  RemediationProgress provides the completed or failed steps of the chosen
+                  remediation strategy as they are performed.
+                properties:
+                  completed:
+                    description: |-
+                      RemediationStrategyProgress describes the details of the current
+                      rememediation step being performed.
+                    properties:
+                      name:
+                        description: |-
+                          Name of the step. This is the same name as strategy described in the
+                          owning Analysis.
+                        type: string
+                      steps:
+                        description: Steps that have been performed.
+                        items:
+                          description: ProgressStep describes the current progress
+                            for the step.
+                          properties:
+                            attemptedBy:
+                              description: |-
+                                AttemptedBy is the name of the actor that attempted the step. This is
+                                non-nil when the step has failed.
+                              type: string
+                            attemptedTime:
+                              description: |-
+                                AttemptedTime is the time of the attempt. This is non-nil when the step
+                                has failed.
+                              format: date-time
+                              type: string
+                            completedBy:
+                              description: |-
+                                CompletedBy is the name of the actor that completed the step. This is
+                                non-nil when the step is successful.
+                              type: string
+                            completionTime:
+                              description: |-
+                                CompletionTime is the time of the completion. This is non-nil when the
+                                step is successful.
+                              format: date-time
+                              type: string
+                            instructionUsed:
+                              description: |-
+                                InstructionUsed for the step. This is either the step from the
+                                corresponding step in the owning Analysis or the overridden instruction
+                                provided in the Remediation.
+                              type: string
+                            name:
+                              description: Name of the step.
+                              type: string
+                          required:
+                          - instructionUsed
+                          - name
+                          type: object
+                        type: array
+                    required:
+                    - name
+                    type: object
+                  failed:
+                    description: |-
+                      RemediationStrategyProgress describes the details of the current
+                      rememediation step being performed.
+                    properties:
+                      name:
+                        description: |-
+                          Name of the step. This is the same name as strategy described in the
+                          owning Analysis.
+                        type: string
+                      steps:
+                        description: Steps that have been performed.
+                        items:
+                          description: ProgressStep describes the current progress
+                            for the step.
+                          properties:
+                            attemptedBy:
+                              description: |-
+                                AttemptedBy is the name of the actor that attempted the step. This is
+                                non-nil when the step has failed.
+                              type: string
+                            attemptedTime:
+                              description: |-
+                                AttemptedTime is the time of the attempt. This is non-nil when the step
+                                has failed.
+                              format: date-time
+                              type: string
+                            completedBy:
+                              description: |-
+                                CompletedBy is the name of the actor that completed the step. This is
+                                non-nil when the step is successful.
+                              type: string
+                            completionTime:
+                              description: |-
+                                CompletionTime is the time of the completion. This is non-nil when the
+                                step is successful.
+                              format: date-time
+                              type: string
+                            instructionUsed:
+                              description: |-
+                                InstructionUsed for the step. This is either the step from the
+                                corresponding step in the owning Analysis or the overridden instruction
+                                provided in the Remediation.
+                              type: string
+                            name:
+                              description: Name of the step.
+                              type: string
+                          required:
+                          - instructionUsed
+                          - name
+                          type: object
+                        type: array
+                    required:
+                    - name
+                    type: object
+                type: object
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
