@@ -64,6 +64,13 @@ Authentication guide][authentication-guide].
 
 The latest versions of the Upbound Official Providers are available for use by anyone in the Crossplane community. For full access and use details, read the [policies page][policies-page] on access, support and more.
 
+## Compatibility
+
+**Important**: v1 and v2 providers are compatible with both Crossplane v1 and
+v2. Crossplane v1 with v2 providers will only support Crossplane v1 features.
+Crossplane v2 with v1 providers will only support provider v1 featurs.
+
+
 [migration-guides-tf]: /manuals/packages/providers/provider-terraform/migrate-provider-tf/
 [authentication-guide]: /manuals/packages/providers/authentication/
 [kcl]: /manuals/cli/howtos/compositions/kcl/
