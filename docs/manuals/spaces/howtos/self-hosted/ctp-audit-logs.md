@@ -296,7 +296,7 @@ operations.
 Switch your `up` context to the new control plane:
 
 ```shell
-up ctx --
+up ctx <ORG>/<SPACE>/<GROUP>/<CONTROL_PLANE>
 ```
 
 Create a new Provider manifest:
