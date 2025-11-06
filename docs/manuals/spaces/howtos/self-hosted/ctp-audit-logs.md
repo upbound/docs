@@ -7,8 +7,8 @@ in Self-Hosted Upbound Spaces.
 
 Starting in Spaces `v1.14.0`, each control plane contains an API server that
 supports audit log collection. You can use audit logging to track creation,
-updates, and deletions of Crossplane resources. Control plane audit logs allow
-use observability features to collect audit logs with SharedTelemetryConfig and
+updates, and deletions of Crossplane resources. Control plane audit logs 
+use observability features to collect audit logs with `SharedTelemetryConfig` and
 send logs to an OpenTelemetry (`OTEL`) collector.
 
 ## Prerequisites
@@ -99,57 +99,58 @@ following configuration:
 
 ```yaml title="otel-lgtm.yaml"
 apiVersion: v1
-   kind: Namespace
-   metadata: name: observability
-   ---
-   apiVersion: v1
-   kind: Service
-   metadata:
-     labels:
-       app: otel-lgtm
-     name: otel-lgtm
-     namespace: observability
-   spec:
-     ports:
-     - name: grpc
-       port: 4317
-       protocol: TCP
-       targetPort: 4317
-     - name: http
-       port: 4318
-       protocol: TCP
-       targetPort: 4318
-     - name: grafana
-       port: 3000
-       protocol: TCP
-       targetPort: 3000
-     selector:
-       app: otel-lgtm
-   ---
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     name: otel-lgtm
-     labels:
-       app: otel-lgtm
-     namespace: observability
-   spec:
-     replicas: 1
-     selector:
-       matchLabels:
-         app: otel-lgtm
-     template:
-       metadata:
-         labels:
-           app: otel-lgtm
-       spec:
-         containers:
-         - name: otel-lgtm
-           image: grafana/otel-lgtm
-           ports:
-           - containerPort: 4317
-           - containerPort: 4318
-           - containerPort: 3000
+kind: Namespace
+metadata:
+  name: observability
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: otel-lgtm
+  name: otel-lgtm
+  namespace: observability
+spec:
+  ports:
+    - name: grpc
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
+    - name: http
+      port: 4318
+      protocol: TCP
+      targetPort: 4318
+    - name: grafana
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: otel-lgtm
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-lgtm
+  labels:
+    app: otel-lgtm
+  namespace: observability
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: otel-lgtm
+  template:
+    metadata:
+      labels:
+        app: otel-lgtm
+    spec:
+      containers:
+        - name: otel-lgtm
+          image: grafana/otel-lgtm
+          ports:
+            - containerPort: 4317
+            - containerPort: 4318
+            - containerPort: 3000
 ```
 
 Next, apply the manifest:
@@ -192,21 +193,21 @@ Create a new manifest file and paste the configuration below:
 <div id="label">
 ```yaml title="ctp-audit.yaml"
 apiVersion: v1
-   kind: Namespace
-   metadata:
-     name: audit-test
-   ---
-   apiVersion: spaces.upbound.io/v1beta1
-   kind: ControlPlane
-   metadata:
-     labels:
-       audit-enabled: "true"
-     name: ctp1
-     namespace: audit-test
-   spec:
-     writeConnectionSecretToRef:
-       name: kubeconfig-ctp1
-       namespace: audit-test
+kind: Namespace
+metadata:
+  name: audit-test
+---
+apiVersion: spaces.upbound.io/v1beta1
+kind: ControlPlane
+metadata:
+  labels:
+    audit-enabled: "true"
+  name: ctp1
+  namespace: audit-test
+spec:
+  writeConnectionSecretToRef:
+    name: kubeconfig-ctp1
+    namespace: audit-test
 ```
 </div>
 
@@ -235,23 +236,23 @@ below:
 <div id="telemetryconfig">
 ```yaml title="sharedtelemetryconfig.yaml"
 apiVersion: observability.spaces.upbound.io/v1alpha1
-   kind: SharedTelemetryConfig
-   metadata:
-     name: apiserver-audit
-     namespace: audit-test
-   spec:
-     apiServer:
-       audit:
-         enabled: true
-     exporters:
-       otlphttp:
-         endpoint: http://otel-lgtm.observability:4318
-     exportPipeline:
-       logs: [otlphttp]
-     controlPlaneSelector:
-       labelSelectors:
-         - matchLabels:
-             audit-enabled: "true"
+kind: SharedTelemetryConfig
+metadata:
+  name: apiserver-audit
+  namespace: audit-test
+spec:
+  apiServer:
+    audit:
+      enabled: true
+  exporters:
+    otlphttp:
+      endpoint: http://otel-lgtm.observability:4318
+  exportPipeline:
+    logs: [otlphttp]
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          audit-enabled: "true"
 ```
 </div>
 
