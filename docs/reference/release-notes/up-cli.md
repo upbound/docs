@@ -24,6 +24,19 @@ Any important warnings or necessary information
 
 -->
 
+## v0.42.1
+
+### Release Date: 2025-11-04
+
+##### What's Changed
+
+- Added support for Go and go-templating as test languages in `up project init`.
+
+##### Bug Fixes
+
+- Fixed issues in the go-templating test implementation that prevented it from
+  executing templates correctly.
+
 ## v0.42.0
 
 ### Release Date: 2025-10-31
