@@ -59,6 +59,7 @@ Grafana
 Istio
 istio
 image_uri
+Knative
 kubeconfig
 kubectl
 Kustomize
