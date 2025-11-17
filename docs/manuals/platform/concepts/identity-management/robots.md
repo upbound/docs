@@ -25,21 +25,19 @@ Make sure you've created the desired robot before assigning it to a team. To ass
 ## Frequently asked questions
 
 <details>
-
 <summary>What's the difference between a robot token and a personal access token?</summary>
+
 A robot token is like a service account. They have their own identity like service principals in a cloud provider.
 
 A [personal access token][personal-access-token] or "PAT" is a long-lived serialization of a specific Upbound user's identity. Your personal access token can do everything your user can do in Upbound. Only use PATs when necessary and never share them with others.
 
 </details>
-
 <details>
-
 <summary>When should you use a robot token for interacting with Upbound?</summary>
+
 In Upbound, robot tokens are currently scoped to inheriting Upbound Marketplace repository permissions from a [team][team] they're assigned to.
 
 You should use a robot token for your Upbound Marketplace CI to push new tags or as a package pull secret for private repositories.
-
 </details>
 
 [up-cli]: /reference/cli-reference
