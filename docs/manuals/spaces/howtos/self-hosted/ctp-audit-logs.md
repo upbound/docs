@@ -319,7 +319,7 @@ kubectl apply --filename provider-nop.yaml
 
 Verify the provider installed and returns `HEALTHY` status as `TRUE`.
 
-Apply an example resource to kick off even generation:
+Apply an example resource to kick off event generation:
 
 
 ```shell
@@ -334,7 +334,7 @@ Filter for `controlplane-audit` log messages.
 
 Create a query to find `create` events on `nopresources` by filtering:
 
-* The `verb` field for `create` vents
+* The `verb` field for `create` events
 * The `objectRef_resource` field to match the Kind `nopresources`
 
 Review the audit log results. The log stream displays:
