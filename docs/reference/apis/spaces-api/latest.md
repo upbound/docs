@@ -1,5 +1,5 @@
 ---
-title: Latest - v1.14
+title: Latest - v1.15
 description: Documentation for the Spaces API resources
 sidebar_position: 1
 ---
@@ -11,62 +11,62 @@ This page documents the Custom Resource Definitions (CRDs) for the Spaces API.
 
 ## Control Planes
 ### Control Planes
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_controlplanes.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_controlplanes.yaml" />
 
 ## Observability
 ### Shared Telemetry Configs
-<CrdDocViewer crdUrl="/crds/space/v1.14/observability.spaces.upbound.io_sharedtelemetryconfigs.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/observability.spaces.upbound.io_sharedtelemetryconfigs.yaml" />
 
 ## `pkg`
 ### Controller Revisions
-<CrdDocViewer crdUrl="/crds/space/v1.14/pkg.upbound.io_controllerrevisions.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/pkg.upbound.io_controllerrevisions.yaml" />
 
 ### Controller Runtime Configs
-<CrdDocViewer crdUrl="/crds/space/v1.14/pkg.upbound.io_controllerruntimeconfigs.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/pkg.upbound.io_controllerruntimeconfigs.yaml" />
 
 ### Controllers
-<CrdDocViewer crdUrl="/crds/space/v1.14/pkg.upbound.io_controllers.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/pkg.upbound.io_controllers.yaml" />
 
 ### Remote Configuration Revisions
-<CrdDocViewer crdUrl="/crds/space/v1.14/pkg.upbound.io_remoteconfigurationrevisions.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/pkg.upbound.io_remoteconfigurationrevisions.yaml" />
 
 ### Remote Configurations
-<CrdDocViewer crdUrl="/crds/space/v1.14/pkg.upbound.io_remoteconfigurations.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/pkg.upbound.io_remoteconfigurations.yaml" />
 
 ## Policy
 ### Shared Upbound Policies
-<CrdDocViewer crdUrl="/crds/space/v1.14/policy.spaces.upbound.io_sharedupboundpolicies.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/policy.spaces.upbound.io_sharedupboundpolicies.yaml" />
 
 ## References
 ### Referenced Objects
-<CrdDocViewer crdUrl="/crds/space/v1.14/references.upbound.io_referencedobjects.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/references.upbound.io_referencedobjects.yaml" />
 
 ## Scheduling
 ### Environments
-<CrdDocViewer crdUrl="/crds/space/v1.14/scheduling.upbound.io_environments.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/scheduling.upbound.io_environments.yaml" />
 
 ## Secrets
 ### Shared External Secrets
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_sharedexternalsecrets.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_sharedexternalsecrets.yaml" />
 
 ### Shared Secret Stores
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_sharedsecretstores.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_sharedsecretstores.yaml" />
 
 ## Simulations
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_simulations.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_simulations.yaml" />
 
 ## Spaces Backups
 ### Backups
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_backups.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_backups.yaml" />
 
 ### Backup Schedules
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_backupschedules.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_backupschedules.yaml" />
 
 ### Shared Backup Configs
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_sharedbackupconfigs.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_sharedbackupconfigs.yaml" />
 
 ### Shared Backups
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_sharedbackups.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_sharedbackups.yaml" />
 
 ### Shared Backup Schedules
-<CrdDocViewer crdUrl="/crds/space/v1.14/spaces.upbound.io_sharedbackupschedules.yaml" />
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_sharedbackupschedules.yaml" />
