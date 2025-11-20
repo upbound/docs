@@ -45,6 +45,7 @@ enums
 eksctl
 Env
 Entra
+enablement
 Fargate
 finalizer
 finalizers
