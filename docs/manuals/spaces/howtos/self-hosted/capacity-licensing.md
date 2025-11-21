@@ -52,6 +52,77 @@ The database should be:
 - Accessible from the Spaces cluster
 - Configured with a dedicated database and credentials
 
+#### Example: Deploy PostgreSQL with CloudNativePG
+
+If you don't have an existing PostgreSQL instance, you can deploy one in your cluster using [CloudNativePG (CNPG)](https://cloudnative-pg.io/). CNPG is a Kubernetes operator that manages PostgreSQL clusters.
+
+1. Install the CloudNativePG operator:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/cloudnative-pg/cloudnative-pg/release-1.24/releases/cnpg-1.24.1.yaml
+```
+
+2. Create a PostgreSQL cluster for metering:
+
+```yaml
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: metering-postgres
+  namespace: upbound-system
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:16
+  bootstrap:
+    initdb:
+      database: metering
+      owner: metering
+      postInitApplicationSQL:
+        - ALTER ROLE "metering" CREATEROLE;
+  storage:
+    size: 5Gi
+  # Optional: Configure resources for production use
+  # resources:
+  #   requests:
+  #     memory: "512Mi"
+  #     cpu: "500m"
+  #   limits:
+  #     memory: "1Gi"
+  #     cpu: "1000m"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: metering-postgres-app
+  namespace: upbound-system
+  labels:
+    cnpg.io/reload: "true"
+stringData:
+  username: metering
+  password: "your-secure-password-here"
+type: kubernetes.io/basic-auth
+```
+
+```bash
+kubectl apply -f metering-postgres.yaml
+```
+
+3. Wait for the cluster to be ready:
+
+```bash
+kubectl wait --for=condition=ready cluster/metering-postgres -n upbound-system --timeout=5m
+```
+
+4. The PostgreSQL cluster will be accessible at `metering-postgres-rw.upbound-system.svc.cluster.local:5432`.
+
+:::tip
+For production deployments, consider:
+- Increasing `instances` to 3 for high availability
+- Configuring [backups](https://cloudnative-pg.io/documentation/current/backup_recovery/) to object storage
+- Setting appropriate resource requests and limits
+- Using a dedicated storage class with good I/O performance
+:::
+
 ### License file
 
 Contact your Upbound sales representative to obtain a license file for your organization. The license file contains:
@@ -69,7 +140,8 @@ Create a Kubernetes secret containing your PostgreSQL password using the pgpass 
 ```bash
 # Create a pgpass file with format: hostname:port:database:username:password
 # Note: The database name and username must be 'metering'
-echo "mydb.example.com:5432:metering:metering:mypassword" > pgpass
+# For CNPG clusters, use the read-write service endpoint: <cluster-name>-rw.<namespace>.svc.cluster.local
+echo "metering-postgres-rw.upbound-system.svc.cluster.local:5432:metering:metering:your-secure-password-here" > pgpass
 
 # Create the secret
 kubectl create secret generic metering-postgres-credentials \
@@ -85,6 +157,8 @@ The secret must contain a single key:
 
 :::note
 The database name and username are fixed as `metering`. Ensure your PostgreSQL instance has a database named `metering` with a user `metering` that has appropriate permissions.
+
+If you deployed PostgreSQL using CNPG as shown in the example above, the password should match what you set in the `metering-postgres-app` secret.
 :::
 
 :::tip
@@ -104,7 +178,7 @@ Enable the metering feature when installing or upgrading Spaces:
 ```bash {hl_lines="2-7"}
 helm -n upbound-system upgrade --install spaces ... \
   --set "metering.enabled=true" \
-  --set "metering.storage.postgres.connection.url=mydb.example.com:5432" \
+  --set "metering.storage.postgres.connection.url=metering-postgres-rw.upbound-system.svc.cluster.local:5432" \
   --set "metering.storage.postgres.connection.credentials.secret.name=metering-postgres-credentials" \
   --set "metering.interval=1m" \
   --set "metering.workerCount=10" \
@@ -120,7 +194,7 @@ helm -n upbound-system upgrade --install spaces ... \
 ```bash {hl_lines="2-7"}
 up space init ... \
   --set "metering.enabled=true" \
-  --set "metering.storage.postgres.connection.url=mydb.example.com:5432" \
+  --set "metering.storage.postgres.connection.url=metering-postgres-rw.upbound-system.svc.cluster.local:5432" \
   --set "metering.storage.postgres.connection.credentials.secret.name=metering-postgres-credentials" \
   --set "metering.interval=1m" \
   --set "metering.workerCount=10" \
