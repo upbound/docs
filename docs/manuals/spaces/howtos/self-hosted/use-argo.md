@@ -196,11 +196,11 @@ apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: my-control-plane
-  namespace: default
+  namespace: my-control-plane-group
 spec:
   writeConnectionSecretToRef:
     name: kubeconfig-my-control-plane
-    namespace: argocd
+    namespace: my-control-plane-group
   # ... other control plane configuration
 ```
 
@@ -209,7 +209,7 @@ spec:
 The `writeConnectionSecretToRef` field requires two parameters:
 
 - `name`: A unique name for the secret containing the kubeconfig (`kubeconfig-my-control-plane`)
-- `namespace`: The Kubernetes namespace where the secret should be stored (typically "argocd" for Argo CD integration)
+- `namespace`: The Kubernetes namespace where the secret should be stored which needs to match the metadata namespace. It will be copied into the argocd namespace based on the setting of the `features.alpha.argocdPlugin.target.secretNamespace=argocd` configuration parameter.
 
 Control plane labels automatically propagate to the connection secret, which allows you to use label selectors in Argo CD for automated discovery and management.
 
