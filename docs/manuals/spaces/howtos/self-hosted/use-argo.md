@@ -183,7 +183,7 @@ data:
 
 The preceding configuration causes Argo to exclude syncing **all** resource group/kinds--except Crossplane `providers` and `configurations`--for **all** control planes. You're encouraged to adjust the `resource.inclusions` to include the types that make sense for your control plane, such as an `XRD` you've built with Crossplane. You're also encouraged to customize the `clusters` pattern to selectively apply these exclusions/inclusions to control planes (for example, `control-plane-prod-*`).
 
-## Control Plane Connection Secrets
+## Control plane connection secrets
 
 To deploy control planes through Argo CD, you need to configure the `writeConnectionSecretToRef` field in your control plane spec. This field specifies where to store the control plane's `kubeconfig` and makes connection details available to Argo CD.
 
@@ -196,11 +196,11 @@ apiVersion: spaces.upbound.io/v1beta1
 kind: ControlPlane
 metadata:
   name: my-control-plane
-  namespace: default
+  namespace: my-control-plane-group
 spec:
   writeConnectionSecretToRef:
     name: kubeconfig-my-control-plane
-    namespace: argocd
+    namespace: my-control-plane-group
   # ... other control plane configuration
 ```
 
@@ -209,7 +209,7 @@ spec:
 The `writeConnectionSecretToRef` field requires two parameters:
 
 - `name`: A unique name for the secret containing the kubeconfig (`kubeconfig-my-control-plane`)
-- `namespace`: The Kubernetes namespace where the secret should be stored (typically "argocd" for Argo CD integration)
+- `namespace`: The Kubernetes namespace where you store the secret, which must match the metadata namespace. The system copies it into the `argocd` namespace when you set the `features.alpha.argocdPlugin.target.secretNamespace=argocd` configuration parameter.
 
 Control plane labels automatically propagate to the connection secret, which allows you to use label selectors in Argo CD for automated discovery and management.
 
