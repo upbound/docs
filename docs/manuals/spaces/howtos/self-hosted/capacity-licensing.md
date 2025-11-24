@@ -222,7 +222,7 @@ up space init ... \
 </Tabs>
 
 #### Configuration options
-<!-- vale write-good.Weasel = NO -->
+
 | Option | Default | Description |
 |--------|---------|-------------|
 | `metering.enabled` | `false` | Enable the metering feature |
@@ -234,7 +234,7 @@ up space init ... \
 | `metering.workerCount` | `10` | Number of parallel workers for measurement collection |
 | `metering.aggregationInterval` | `1h` | How often to aggregate measurements into hourly usage data |
 | `metering.measurementRetentionDays` | `30` | Days to retain raw measurements (0 = indefinite) |
-<!-- vale write-good.Weasel = YES -->
+
 
 #### Database sizing and retention
 
@@ -255,6 +255,7 @@ The metering system uses two PostgreSQL tables to track usage:
 ##### Storage sizing guidelines
 
 Estimate your PostgreSQL storage needs based on these factors:
+<!-- vale Upbound.Ampersand = NO -->
 
 | Deployment Size | Control Planes | Measurement Interval | Retention Days | Raw Measurements | Indexes & Overhead | Total Storage |
 |----------------|----------------|---------------------|----------------|------------------|-------------------|---------------|
@@ -262,7 +263,7 @@ Estimate your PostgreSQL storage needs based on these factors:
 | Medium | 50 | 1m | 30 | ~430 MB | ~215 MB | **~645 MB** |
 | Large | 200 | 1m | 30 | ~1.7 GB | ~850 MB | **~2.5 GB** |
 | Large (90-day retention) | 200 | 1m | 90 | ~5.2 GB | ~2.6 GB | **~7.8 GB** |
-
+<!-- vale Upbound.Ampersand = YES -->
 The aggregated hourly usage table adds minimal overhead (~50 KB per year per license).
 
 **Formula for custom calculations**:
@@ -540,22 +541,23 @@ If your license shows as invalid:
 - ✅ Fixed capacity model
 
 ### Traditional billing (object storage)
+<!-- vale gitlab.Uppercase = NO -->
 
 - ❌ Requires periodic manual export
 - ❌ Delayed visibility into usage
 - ✅ Works with S3/Azure Blob/GCS
 - ❌ Requires cloud storage access
 - ✅ Pay-as-you-go model
-
+<!-- vale gitlab.Uppercase = NO -->
 ## Best practices
 
 ### Database management
-
+<!-- vale Microsoft.Adverbs = NO -->
 1. **Regular backups**: Back up your metering database regularly to preserve usage history
 2. **Monitor database size**: Set appropriate retention periods to manage storage growth
 3. **Use managed databases**: Consider managed PostgreSQL services for production
 4. **Connection pooling**: Use connection pooling for better performance at scale
-
+<!-- vale Microsoft.Adverbs = YES -->
 ### License management
 
 1. **Monitor utilization**: Set up alerts before reaching 80% capacity
