@@ -5,25 +5,36 @@ description: A guide for capacity-based licensing in self-hosted Spaces
 plan: "enterprise"
 ---
 
-<Enterprise />
+<!-- vale write-good.TooWordy = NO -->
+<!-- vale write-good.Weasel = NO -->
 
-This guide explains how to configure and monitor capacity-based licensing in self-hosted Upbound Spaces. Capacity licensing provides a simplified billing model for disconnected or air-gapped environments where automated usage reporting isn't possible.
+<Enterprise />
+This guide explains how to configure and monitor capacity-based licensing in
+self-hosted Upbound Spaces. Capacity licensing provides a simplified billing
+model for disconnected or air-gapped environments where automated usage
+reporting isn't possible.
 
 :::info
-Capacity licensing is available starting with Spaces `v1.15`. This is an alternative to the traditional usage-based billing model described in the [Self-Hosted Space Billing](/manuals/spaces/howtos/self-hosted/billing) guide.
+Spaces `v1.15` and later support Capacity Licensing as an
+alternative to the traditional usage-based billing model described in the
+[Self-Hosted Space Billing][space-billing] guide.
 :::
 
 ## Overview
 
-Capacity licensing allows organizations to purchase a fixed capacity of resources upfront. The Spaces software tracks usage locally and provides visibility into consumption against your purchased capacity, all without requiring external connectivity to Upbound's services.
+Capacity licensing allows organizations to purchase a fixed capacity of
+resources upfront. The Spaces software tracks usage locally and provides
+visibility into consumption against your purchased capacity, all without
+requiring external connectivity to Upbound's services.
 
 ### Key concepts
 
 - **Resource Hours**: The primary billing unit representing all resources
   managed by Crossplane over time. This includes managed resources,
   composites (XRs), claims (XRCs), and all composed resources - essentially
-  everything Crossplane manages. Aggregated using trapezoidal integration over
-  an hour to accurately account for resource count changes.
+  everything Crossplane manages. The system aggregates resource counts over each
+  hour using trapezoidal integration to accurately account for changes in
+  resource count throughout the hour.
 - **Operations**: The number of Operations invoked by Crossplane.
 - **License Capacity**: The total amount of resource hours and operations included in your license.
 - **Usage Tracking**: Continuous monitoring of consumption with real-time utilization percentages.
@@ -48,13 +59,16 @@ Capacity licensing requires a PostgreSQL database to store usage measurements. Y
 - A managed PostgreSQL service (AWS RDS, Azure Database, Google Cloud SQL)
 - A PostgreSQL instance deployed in your cluster
 
-The database should be:
+The database must be:
+
 - Accessible from the Spaces cluster
 - Configured with a dedicated database and credentials
 
 #### Example: Deploy PostgreSQL with CloudNativePG
 
-If you don't have an existing PostgreSQL instance, you can deploy one in your cluster using [CloudNativePG (CNPG)](https://cloudnative-pg.io/). CNPG is a Kubernetes operator that manages PostgreSQL clusters.
+If you don't have an existing PostgreSQL instance, you can deploy one in your
+cluster using [CloudNativePG] (CNPG). CNPG is a Kubernetes operator that
+manages PostgreSQL clusters.
 
 1. Install the CloudNativePG operator:
 
@@ -113,12 +127,12 @@ kubectl apply -f metering-postgres.yaml
 kubectl wait --for=condition=ready cluster/metering-postgres -n upbound-system --timeout=5m
 ```
 
-4. The PostgreSQL cluster will be accessible at `metering-postgres-rw.upbound-system.svc.cluster.local:5432`.
+4. You can access the PostgreSQL cluster at `metering-postgres-rw.upbound-system.svc.cluster.local:5432`.
 
 :::tip
 For production deployments, consider:
 - Increasing `instances` to 3 for high availability
-- Configuring [backups](https://cloudnative-pg.io/documentation/current/backup_recovery/) to object storage
+- Configuring [backups] to object storage
 - Setting appropriate resource requests and limits
 - Using a dedicated storage class with good I/O performance
 :::
@@ -163,7 +177,7 @@ If you deployed PostgreSQL using CNPG as shown in the example above, the passwor
 
 :::tip
 For production environments, consider using external secret management solutions:
-- [External Secrets Operator](https://external-secrets.io/)
+- [External Secrets Operator][eso]
 - Cloud-specific secret managers (AWS Secrets Manager, Azure Key Vault, GCP Secret Manager)
 :::
 
@@ -208,7 +222,7 @@ up space init ... \
 </Tabs>
 
 #### Configuration options
-
+<!-- vale write-good.Weasel = NO -->
 | Option | Default | Description |
 |--------|---------|-------------|
 | `metering.enabled` | `false` | Enable the metering feature |
@@ -220,6 +234,7 @@ up space init ... \
 | `metering.workerCount` | `10` | Number of parallel workers for measurement collection |
 | `metering.aggregationInterval` | `1h` | How often to aggregate measurements into hourly usage data |
 | `metering.measurementRetentionDays` | `30` | Days to retain raw measurements (0 = indefinite) |
+<!-- vale write-good.Weasel = YES -->
 
 #### Database sizing and retention
 
@@ -268,8 +283,8 @@ The `measurementRetentionDays` setting controls retention of raw measurement dat
 - **What's cleaned up**: Raw point-in-time measurements older than retention period
 
 **Recommendations**:
-- **30 days**: Sufficient for most troubleshooting and short-term auditing
-- **60-90 days**: For environments requiring extended audit trails
+- **30 days**: For most troubleshooting and short-term auditing
+- **60 to 90 days**: For environments requiring extended audit trails
 - **Unlimited (0)**: Only for environments with ample storage or specific compliance requirements
 
 :::note
@@ -327,7 +342,7 @@ kubectl apply -f spacelicense.yaml
 ```
 
 :::important
-The `SpaceLicense` resource must be named `space` - this is a singleton resource and only one can exist in the cluster.
+You **must** name the `SpaceLicense` resource `space`. This resource is a singleton and only one can exist in the cluster.
 :::
 
 </details>
@@ -451,7 +466,7 @@ space   enterprise   True    Valid    45d
 
 ### Updating your license
 
-To update your license with a new license file (for example, when renewing or upgrading capacity), simply apply the new license:
+To update your license with a new license file (for example, when renewing or upgrading capacity), apply the new license:
 
 ```bash
 up space license apply /path/to/new-license.json
@@ -481,14 +496,15 @@ up space license remove --force
 
 ### License not updating
 
-If the license status isn't updating with usage data:
+If the license status doesn't update with usage data:
 
 1. **Check metering controller logs**:
    ```bash
    kubectl logs -n upbound-system deployment/spaces-controller -c metering
    ```
 
-2**Check if measurements are being collected**:
+2**Check if the system captures your measurements**:
+
    ```bash
    # Connect to PostgreSQL and query the measurements table
    kubectl exec -it <postgres-pod> -- psql -U <user> -d <database> \
@@ -509,7 +525,8 @@ If your license shows as invalid:
 
 1. **Check expiration date**: `kubectl get spacelicense space -o jsonpath='{.status.expiresAt}'`
 2. **Verify license file integrity**: Ensure the secret contains valid JSON
-3. **Check for cluster UUID restrictions**: Some licenses are pinned to specific clusters
+3. **Check for cluster UUID restrictions**: Upbound pins some licenses to
+   specific clusters 
 4. **Review controller logs** for detailed error messages
 
 ## Differences from traditional billing
@@ -555,7 +572,18 @@ If your license shows as invalid:
 
 ## Next steps
 
-- Learn about [Observability](/manuals/spaces/features/observability) to monitor your Spaces deployment
-- Explore [Backup and Restore](/manuals/spaces/features/backup-and-restore) to protect your control plane data
-- Review [Self-Hosted Space Billing](/manuals/spaces/howtos/self-hosted/billing) for the traditional billing model
-- Contact [Upbound Sales](https://www.upbound.io/contact) to discuss capacity licensing options
+- Learn about [Observability] to monitor your Spaces deployment
+- Explore [Backup and Restore][backup-restore] to protect your control plane data
+- Review [Self-Hosted Space Billing][space-billing] for the traditional billing model
+- Contact [Upbound Sales][sales] to discuss capacity licensing options
+
+
+[space-billing]: /manuals/spaces/howtos/self-hosted/billing
+[CloudNativePG]: https://cloudnative-pg.io/
+[backups]: https://cloudnative-pg.io/documentation/current/backup_recovery/
+[backup-restore]: /manuals/spaces/features/backup-and-restore
+[sales]: https://www.upbound.io/contact
+[eso]: https://external-secrets.io/
+[Observability]: /manuals/spaces/features/observability
+<!-- vale write-good.Weasel = YES -->
+<!-- vale write-good.TooWordy = YES -->
