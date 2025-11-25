@@ -3,7 +3,7 @@ title: CLI Reference
 sidebar_position: 3
 ---
 
-This documentation is for the `up` CLI v0.42.1.
+This documentation is for the `up` CLI v0.43.0.
 
 The latest version of `up` can be installed by running:
 
@@ -137,6 +137,10 @@ import UpSpaceConnect from '/cli/up_space_connect.md';
 import UpSpaceDestroy from '/cli/up_space_destroy.md';
 import UpSpaceDisconnect from '/cli/up_space_disconnect.md';
 import UpSpaceInit from '/cli/up_space_init.md';
+import UpSpaceLicense from '/cli/up_space_license.md';
+import UpSpaceLicenseApply from '/cli/up_space_license_apply.md';
+import UpSpaceLicenseRemove from '/cli/up_space_license_remove.md';
+import UpSpaceLicenseShow from '/cli/up_space_license_show.md';
 import UpSpaceList from '/cli/up_space_list.md';
 import UpSpaceMirror from '/cli/up_space_mirror.md';
 import UpSpaceUpgrade from '/cli/up_space_upgrade.md';
@@ -557,6 +561,18 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up space init
 
 <UpSpaceInit />
+## up space license
+
+<UpSpaceLicense />
+## up space license apply
+
+<UpSpaceLicenseApply />
+## up space license remove
+
+<UpSpaceLicenseRemove />
+## up space license show
+
+<UpSpaceLicenseShow />
 ## up space list
 
 <UpSpaceList />
