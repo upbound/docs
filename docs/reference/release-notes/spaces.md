@@ -70,7 +70,7 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Allow setting CNPG cluster's resources requests and limits, added sane default requests. Also adding the ability to switch to dedicated PVC for WAL files, disabled by default.
 - Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
- - Allow SharedTelemetry to scrape all vcluster managed pods.
+- Allow SharedTelemetry to scrape all vcluster managed pods.
 
 ## v1.13.3
 
