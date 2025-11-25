@@ -94,29 +94,33 @@ The default setup also uses the `PgBouncer` connection pooler to manage connecti
 ```mermaid
 graph LR
     User[User]
-    Apollo[apollo]
-    PostgreSQL[(PostgreSQL)]
     
-    subgraph ControlPlanes["Cluster"]
+    subgraph Cluster["Cluster (Spaces)"]
         direction TB
-        APIServer1[API Server]
-        Syncer1[apollo-syncer]
-        CP2["Control Plane 2"]
-        CPn["Control Plane ..."]
+        Apollo[apollo]
+        
+        subgraph ControlPlanes["Control Planes"]
+            APIServer[API Server]
+            Syncer[apollo-syncer]
+        end
     end
     
+    PostgreSQL[(PostgreSQL)]
+    
     User -->|requests| Apollo
+    
     Apollo -->|connects| PostgreSQL
     Apollo -->|creates schemas & users| PostgreSQL
     
-    Syncer1 -->|informers| APIServer1
-    Syncer1 -->|writes| PostgreSQL
+    Syncer -->|watches| APIServer
+    Syncer -->|writes| PostgreSQL
     
     PostgreSQL -->|data| Apollo
     
     style PostgreSQL fill:#e1f5ff,stroke:#333,stroke-width:2px,color:#000
     style Apollo fill:#ffe1e1,stroke:#333,stroke-width:2px,color:#000
-    style ControlPlanes fill:#f0f0f0,stroke:#333,stroke-width:2px,color:#000
+    style Cluster fill:#f0f0f0,stroke:#333,stroke-width:2px,color:#000
+    style ControlPlanes fill:#fff,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5,color:#000
 ```
 
 
@@ -242,6 +246,7 @@ helm upgrade --install ... \
   --set "features.apollo.storage.postgres.connection.credentials.format=basicauth" \
   --set "features.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
   --set "features.apollo.storage.postgres.connection.syncer.url=spaces-apollo-pg-pooler.upbound-system.svc:5432"
+  --set "features.apollo.storage.postgres.connection.credentials.user=apollo" \
 ```
 
 #### Common customisations
