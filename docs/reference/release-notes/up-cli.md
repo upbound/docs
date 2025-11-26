@@ -32,6 +32,7 @@ Any important warnings or necessary information
 
 - Added new commands for `up space license`: apply, show, and remove
 - Project `apiDependencies` can now be used for all Providers to generate language schemas
+- Added support for Spaces 1.15
 
 ##### Bug Fixes
 
