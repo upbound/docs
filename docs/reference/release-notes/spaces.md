@@ -29,21 +29,19 @@ Any important warnings or necessary information
 #### Important Changes
 
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
-- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the documentation for details.
-- **UXP v2 AddOns are disabled by default.** They can be enabled via `controlPlanes.uxp.enableAddons`.
+- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/query-api/) for details.
+- UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/features/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
 - VCluster has been upgraded from v0.24.1 to v0.24.2 to support Kubernetes 1.33.
 - Bumped supported cert-manager version to v1.18.2.
 
 #### Features
 
 - **Spaces Metering:** Added a new metering collector with PostgreSQL storage for measurements and aggregations. This enables tracking of control plane resource usage over time.
-- **License Management:** Added SpaceLicense resource type and reconciler for validating license validity in Spaces installations.
 - **Enhanced Observability:**
   - Added Envoy metrics for spaces-router to improve observability.
   - Added distributed tracing support to spaces-router for space-level observability.
-- Enable operations for UXP v2 ControlPlanes.
-- Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes.
-- Scale down functions too for paused control planes.
+- Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes, `controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy: True` through the Spaces helm chart values.
+- Scale down functions too for paused control planes, `spec.crossplane.state: Paused`.
 
 #### Bug Fixes
 
