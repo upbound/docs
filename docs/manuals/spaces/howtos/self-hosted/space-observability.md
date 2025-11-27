@@ -20,8 +20,8 @@ administrators observe the cluster infrastructure where the Space software gets
 installed.
 
 When you enable observability in a Space, Upbound deploys a single
-[OpenTelemetry Collector][opentelemetry-collector] to collect and export metrics
-and logs to your configured observability backends.
+[OpenTelemetry Collector][opentelemetry-collector] to collect and export metrics,
+logs, and traces to your configured observability backends.
 
 ## Prerequisites
 
@@ -54,10 +54,12 @@ observability:
           - otlphttp
         metrics:
           - otlphttp
+        traces:
+          - otlphttp
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
 
-You can export metrics and logs from your Crossplane installation, Spaces
+You can export metrics, logs, and traces from your Crossplane installation, Spaces
 infrastructure (controller, API, router, etc.), provider-helm, and
 provider-kubernetes.
 
@@ -77,9 +79,93 @@ Envoy metrics in Upbound include:
 
 For a complete list of available router metrics and example PromQL queries, see the [Router metrics reference][router-ref].
 
+### Router tracing
+
+The Spaces router generates distributed traces through OpenTelemetry integration,
+providing end-to-end visibility into request flow across the system. Use these
+traces to debug latency issues, understand request paths, and correlate errors
+across services.
+
+The router uses:
+
+- **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
+- **Service name**: `spaces-router`
+- **Transport**: TLS-encrypted connection to telemetry collector
+
+#### Trace configuration
+
+Enable tracing and configure the sampling rate with the following Helm values:
+
+```yaml
+observability:
+  enabled: true
+  tracing:
+    enabled: true
+    sampling:
+      rate: 0.1  # Sample 10% of new traces (0.0-1.0)
+```
+
+The sampling behavior depends on whether a parent trace context exists:
+
+- **With parent context**: If a `traceparent` header is present, the parent's
+  sampling decision is respected, enabling proper distributed tracing across services.
+- **Root spans**: For new traces without a parent, Envoy samples based on
+  `x-request-id` hashing. The default sampling rate is 10%.
+
+#### TLS configuration for external collectors
+
+To send traces to an external OTLP collector, configure the endpoint and TLS settings:
+
+```yaml
+observability:
+  enabled: true
+  tracing:
+    enabled: true
+    endpoint: "otlp-gateway.example.com"
+    port: 443
+    tls:
+      caBundleSecretRef: "custom-ca-secret"
+```
+
+If `caBundleSecretRef` is set, the router uses the CA bundle from the referenced
+Kubernetes secret. The secret must contain a key named `ca.crt` with the
+PEM-encoded CA bundle. If not set, the router uses the Spaces CA for the
+in-cluster collector.
+
+#### Custom trace tags
+
+The router adds custom tags to every span to enable filtering and grouping by
+control plane:
+
+| Tag | Source | Description |
+|-----|--------|-------------|
+| `controlplane.id` | `x-upbound-mxp-id` header | Control plane UUID |
+| `controlplane.name` | `x-upbound-mxp-host` header | Internal vcluster hostname |
+| `hostcluster.id` | `x-upbound-hostcluster-id` header | Host cluster identifier |
+
+These tags enable queries like "show all slow requests to control plane X" or
+"find errors for control planes in host cluster Y".
+
+#### Example trace
+
+The following example shows the attributes from a successful GET request:
+
+```text
+Span: ingress
+├─ Service: spaces-router
+├─ Duration: 8.025ms
+├─ Attributes:
+│  ├─ http.method: GET
+│  ├─ http.status_code: 200
+│  ├─ upstream_cluster: ctp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-api-cluster
+│  ├─ controlplane.id: b2b37aaa-ee55-492c-ba0c-4d561a6325fa
+│  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
+│  └─ response_size: 1827
+```
+
 ## Available metrics
 
-Space-level observability collects metrics from multiple infrastructure components:
+Space-level observability collects metrics and traces from multiple infrastructure components:
 
 ### Infrastructure component metrics
 
@@ -103,6 +189,17 @@ Example query to monitor total request rate:
 sum(rate(envoy_cluster_upstream_rq_total{job="spaces-router-envoy"}[5m]))
 ```
 
+Example query for P95 latency:
+
+```promql
+histogram_quantile(
+  0.95,
+  sum by (le) (
+    rate(envoy_cluster_upstream_rq_time_bucket{job="spaces-router-envoy"}[5m])
+  )
+)
+```
+
 For detailed router metrics documentation and more query examples, see the [Router metrics reference][router-ref].
 
 <!-- vale off -->
@@ -123,8 +220,15 @@ about the features Upbound offers for collecting telemetry from control planes.
 
 ## Router metrics reference {#router-ref}
 
+To avoid overwhelming observability tools with hundreds of Envoy metrics, an
+allow-list filters metrics to only the following metric families.
 
 ### Upstream cluster metrics
+
+Metrics tracking requests sent from Envoy to configured upstream clusters.
+Individual control planes, spaces-api, and other services are each considered
+an upstream cluster. Use these metrics to monitor service health, identify
+upstream errors, and measure backend latency.
 
 | Metric | Description |
 |--------|-------------|
@@ -137,6 +241,11 @@ about the features Upbound offers for collecting telemetry from control planes.
 | `envoy_cluster_upstream_rq_time_count` | Count of requests |
 
 ### Circuit breaker metrics
+
+Metrics tracking circuit breaker state and remaining capacity. Circuit breakers
+prevent cascading failures by limiting connections and concurrent requests to
+unhealthy upstreams. Two priority levels exist: `DEFAULT` for watch requests and
+`HIGH` for API requests.
 
 | Name | Description |
 |--------|-------------|
@@ -151,6 +260,10 @@ about the features Upbound offers for collecting telemetry from control planes.
 
 ### Downstream listener metrics
 
+Metrics tracking requests received from clients such as kubectl and API consumers.
+Use these metrics to monitor client connection patterns, overall request volume,
+and responses sent to external users.
+
 | Name | Description |
 |--------|-------------|
 | `envoy_listener_downstream_rq_xx_total` | HTTP status codes for responses sent to clients |
@@ -162,6 +275,10 @@ about the features Upbound offers for collecting telemetry from control planes.
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### HTTP connection manager metrics
 <!-- vale Microsoft.HeadingAcronyms = YES -->
+
+Metrics from Envoy's HTTP connection manager tracking end-to-end request
+processing. These metrics provide a comprehensive view of the HTTP request
+lifecycle including status codes and client-perceived latency.
 
 | Name | Description |
 |--------|-------------|
