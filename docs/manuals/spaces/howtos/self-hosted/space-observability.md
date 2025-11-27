@@ -165,7 +165,7 @@ Span: ingress
 
 ## Available metrics
 
-Space-level observability collects metrics and traces from multiple infrastructure components:
+Space-level observability collects metrics from multiple infrastructure components:
 
 ### Infrastructure component metrics
 
