@@ -37,7 +37,7 @@ Any important warnings or necessary information
 #### Features
 
 - **Spaces Metering:** Added a new metering collector with PostgreSQL storage for measurements and aggregations. This enables tracking of control plane resource usage over time.
-- **Enhanced Observability:**
+- **Enhanced Observability**, see [docs](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/space-observability/) for details:
   - Added Envoy metrics for spaces-router to improve observability.
   - Added distributed tracing support to spaces-router for space-level observability.
 - Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes, `controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy: True` through the Spaces helm chart values.
