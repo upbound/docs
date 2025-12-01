@@ -10,6 +10,13 @@ mdx:
 
 This reference provides detailed documentation on the Upbound Space Helm chart. This Helm chart contains configuration values for installation, configuration, and management of an Upbound Space deployment.
 
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.2.12 |
+
+## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
@@ -47,6 +54,14 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | api.serviceAccount.annotations | object | `{}` | Annotations to be added to the service account used by the spaces API deployment. |
 | api.serviceAccount.create | bool | `true` | Whether to create a service account for the spaces API deployment. |
 | api.serviceAccount.name | string | `"mxe-api"` | Name of the service account used by the spaces API deployment. |
+| apollo.apollo.apiserver.service.admin.port | int | `8444` |  |
+| apollo.apollo.apiserver.service.api.port | int | `8443` |  |
+| apollo.apollo.mode.deploymentMode | string | `"multi-tenant"` |  |
+| apollo.apollo.priorityClassName | string | `"spaces-system-high-priority"` |  |
+| apollo.apollo.storage.postgres.create | bool | `true` |  |
+| apollo.apollo.storage.postgres.sidecar | bool | `false` |  |
+| apollo.apollo.syncer.enabled | bool | `false` |  |
+| apollo.apollo.syncer.image.tag | string | `"v0.2.12"` |  |
 | authentication.hubIdentities | bool | `true` | This enables respecting built in Kubernetes identities (clientcertificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified within the Connected Space's hub. |
 | authentication.structuredConfig | string | `""` | Enables consumption of JWT Authenticators via Authentication Configuration per https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration <br> The below property takes the name of a configmap that contains a structured authentication configuration. |
 | authorization.hubRBAC | bool | `true` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
@@ -124,6 +139,10 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.mxpKSMConfig.resources.requests.memory | string | `"50Mi"` | Memory request for the spaces control plane controller. |
 | controlPlanes.policies.limitRange.enabled | bool | `true` | Whether to deploy default LimitRange policies for the control planes. |
 | controlPlanes.sharedSecrets.pod.customLabels | object | `{}` | Custom labels to be added to the external-secrets-operator pod in the ControlPlane host namespace. |
+| controlPlanes.sharedSecrets.resources.limits.cpu | string | `nil` | CPU limit for the external-secrets-operator pod. |
+| controlPlanes.sharedSecrets.resources.limits.memory | string | `nil` | Memory limit for the external-secrets-operator pod. |
+| controlPlanes.sharedSecrets.resources.requests.cpu | string | `"10m"` | CPU request for the external-secrets-operator pod. |
+| controlPlanes.sharedSecrets.resources.requests.memory | string | `"50Mi"` | Memory request for the external-secrets-operator pod. |
 | controlPlanes.sharedSecrets.serviceAccount.customAnnotations | object | `{}` | Custom annotations to be added to the service account for the external-secrets-operator deployment. |
 | controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy | bool | `false` | This disables the default managed resource activation policy, will only affect v2 Control Planes |
 | controlPlanes.uxp.disableRealtimeCompositions | bool | `true` | This disables realtime compositions. |
@@ -148,7 +167,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.serviceAccount.customAnnotations | object | `{}` | Custom annotations to be added to the service account for the UXP deployment. |
 | controlPlanes.uxp.v2.controllerManagerRepository | string | `""` |  |
 | controlPlanes.uxp.v2.controllerManagerTag | string | `""` |  |
-| controlPlanes.uxp.v2.enabled | bool | `false` | Whether users should be able to create ControlPlanes with the v2 UXP. |
+| controlPlanes.uxp.v2.enabled | bool | `true` | Whether users should be able to create ControlPlanes with the v2 UXP. |
 | controlPlanes.uxp.xgql.enabled | bool | `true` | Whether the xgql service should be deployed. Required for connected spaces. |
 | controlPlanes.uxp.xgql.replicas | int | `1` | Number of replicas for the xgql deployment. |
 | controlPlanes.uxp.xgql.resources.limits.cpu | string | `"500m"` | CPU limit for the spaces control plane xgql pod. |
@@ -238,85 +257,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | externalTLS.tlsSecret | object | `{"name":""}` | TLS secret name that contains the serving certificate and key. |
 | externalTLS.tlsSecret.name | string | `""` | Name of the secret containing the TLS serving certificate and key. |
 | features.alpha | object | { ... } | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
-| features.alpha.apollo | object | { ... } | Configurations for the apollo deployment. |
-| features.alpha.apollo.apiserver.command | list | `[]` | Command for the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.debug | bool | `false` | Whether apollo api server should be deployed in debug mode. |
-| features.alpha.apollo.apiserver.extraArgs | list | `[]` | Additional arguments to be added to the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.extraEnv | list | `[]` | Additional environment variables to be added to the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the apollo apiserver image. |
-| features.alpha.apollo.apiserver.image.repository | string | `"hyperspace"` | Repository for the apollo apiserver image. |
-| features.alpha.apollo.apiserver.image.tag | string | `""` | Tag for the apollo apiserver image. |
-| features.alpha.apollo.apiserver.resources.limits.cpu | string | `"1000m"` | CPU limit for the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.resources.limits.memory | string | `"500Mi"` | Memory limit for the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.resources.requests.cpu | string | `"100m"` | CPU request for the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.resources.requests.memory | string | `"200Mi"` | Memory request for the apollo apiserver deployment. |
-| features.alpha.apollo.apiserver.service.api.port | int | `8443` | Port for the apollo apiserver service. |
-| features.alpha.apollo.apiserver.service.metrics.port | int | `8085` | Port for the apollo apiserver metrics service. |
-| features.alpha.apollo.apiserver.service.type | string | `"ClusterIP"` | Type of service for the apollo apiserver service. |
-| features.alpha.apollo.enabled | bool | `false` | This enables the apollo feature. |
-| features.alpha.apollo.hpa.enabled | bool | `false` | This enables the Horizontal Pod Autoscaler for the apollo deployment. |
-| features.alpha.apollo.hpa.maxReplicas | int | `5` | The maximum number of replicas for the Horizontal Pod Autoscaler. |
-| features.alpha.apollo.hpa.minReplicas | int | `1` | The minimum number of replicas for the Horizontal Pod Autoscaler. |
-| features.alpha.apollo.hpa.targetCPUUtilizationPercentage | int | `80` | The target CPU utilization percentage for the Horizontal Pod Autoscaler. |
-| features.alpha.apollo.hpa.targetMemoryUtilizationPercentage | int | `80` | The target memory utilization percentage for the Horizontal Pod Autoscaler. |
-| features.alpha.apollo.podAnnotations | object | `{}` | Annotations to be added to the apollo apiserver pods. |
-| features.alpha.apollo.podLabels | object | `{}` | Labels to be added to the apollo apiserver pods. |
-| features.alpha.apollo.podSecurityContext | object | `{}` | Pod security context for the apollo deployment. |
-| features.alpha.apollo.prometheus.podMonitor.enabled | bool | `false` | This enables the Prometheus pod monitor for the apollo deployment. |
-| features.alpha.apollo.prometheus.podMonitor.interval | string | `"30s"` | The interval at which metrics should be scraped. |
-| features.alpha.apollo.replicaCount | int | `1` | Number of replicas for the apollo apiserver deployment. |
-| features.alpha.apollo.secretRefs.tlsSecretName | string | `"spaces-apollo-cert"` | Name of the secret containing the apollo server's TLS certificate. |
-| features.alpha.apollo.serviceAccount.annotations | object | `{}` | Annotations to be added to the apollo service account, if created. |
-| features.alpha.apollo.serviceAccount.create | bool | `true` | Whether to create a service account for the apollo deployment. |
-| features.alpha.apollo.serviceAccount.name | string | `"mxe-apollo"` | The name of the service account to be created. Expected to exist if create is set to false. |
-| features.alpha.apollo.storage.postgres.cnpg | object | { ... } | Configuration for the PostgreSQL cluster and PGBouncer pooler managed by CloudNativePG, only respected if create is set to true. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.debug | bool | `false` | Setting the cluster to log at debug level, sets up PgAudit and other useful extensions for debugging. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.imageName | string | `"ghcr.io/cloudnative-pg/postgresql:16"` | Image to be used for the cluster, if not specified the default image according to the CloudNativePG operator installed version will be used. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.instances | int | `2` | Number of instances in the postgres cluster. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.parameters | object | `{"max_connections":"100"}` | The Postgres configuration, see Postgres documentation for all available options and CloudNativePG for all allowed ones. Tune the suggested parameters as needed. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.resources.requests.cpu | int | `2` | CPU request for the spaces control plane Postgres cluster pod. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.resources.requests.memory | string | `"4Gi"` | Memory request for the spaces control plane Postgres cluster pod. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.storage.pvcTemplate | object | `{}` | A full PVC template for the PVCs used by the cluster. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.storage.size | string | `"5Gi"` | The size of the PVCs for the cluster. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.storage.storageClass | string | `""` | The storage class to use for the cluster's PVCs. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.walStorage.enabled | bool | `false` | Whether to use a separate PVC for WAL storage for the cluster. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.walStorage.pvcTemplate | object | `{}` | A full PVC template for the PVCs used by the cluster to store WALs. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.walStorage.size | string | `"5Gi"` | The size of the PVCs for the cluster WAL storage. |
-| features.alpha.apollo.storage.postgres.cnpg.cluster.walStorage.storageClass | string | `""` | The storage class to use for the cluster's PVCs for WAL storage. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler | object | `{"debug":false,"enabled":true,"instances":2,"parameters":{"default_pool_size":"1","max_client_conn":"1000","max_db_connections":"0","max_prepared_statements":"1000"},"podTemplate":{}}` | The pooler configuration for the cluster. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.debug | bool | `false` | Whether the pooler should log at debug level. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.enabled | bool | `true` | Whether the pooler should be enabled. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.instances | int | `2` | The number of replicas of the pooler to run. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.parameters | object | `{"default_pool_size":"1","max_client_conn":"1000","max_db_connections":"0","max_prepared_statements":"1000"}` | The pooler configuration, see PGbouncer documentation for all available options. Tune the suggested parameters as needed. |
-| features.alpha.apollo.storage.postgres.cnpg.pooler.podTemplate | object | `{}` | The pod template for the pooler, allows configuring almost all aspects of the pooler pods. |
-| features.alpha.apollo.storage.postgres.connection | object | `{"apollo":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"ca":{"name":""},"credentials":{"format":"pgpass","secret":{"name":""},"user":""},"database":"upbound","sslmode":"require","syncer":{"credentials":{"format":"","secret":{"name":""},"user":""},"sslmode":"","url":""},"url":""}` | Configuration for the Apollo database connection, only respected if create is set to false. |
-| features.alpha.apollo.storage.postgres.connection.apollo.credentials | object | `{"format":"","secret":{"name":""},"user":""}` | The credentials for the connection from apollo server. Defaults to the one set in connection.credentials, if not set. |
-| features.alpha.apollo.storage.postgres.connection.apollo.credentials.format | string | `""` | The format of the credentials for the connection from apollo server. Defaults to the one set in connection.credentials.format, if not set. |
-| features.alpha.apollo.storage.postgres.connection.apollo.credentials.secret.name | string | `""` | Name of the secret containing the specified user's credentials. Defaults to the one set in connection.credentials.secret.name, if not set. |
-| features.alpha.apollo.storage.postgres.connection.apollo.credentials.user | string | `""` | The user to connect from apollo server as. Defaults to the one set in connection.credentials.user, if not set. |
-| features.alpha.apollo.storage.postgres.connection.apollo.sslmode | string | `""` | sslmode for the connection from apollo server. Defaults to the one set in connection.sslmode, if not set. |
-| features.alpha.apollo.storage.postgres.connection.apollo.url | string | `""` | The url for the connection from apollo server. Defaults to the one set in connection.url, if not set. |
-| features.alpha.apollo.storage.postgres.connection.ca.name | string | `""` | Name of the secret containing the CA certificate to verify the connection with, if needed. |
-| features.alpha.apollo.storage.postgres.connection.credentials.format | string | `"pgpass"` | The format of the credentials, either pgpass or basicauth. |
-| features.alpha.apollo.storage.postgres.connection.credentials.secret.name | string | `""` | Name of the secret containing the specified user's credentials. |
-| features.alpha.apollo.storage.postgres.connection.credentials.user | string | `""` | The user to connect to the database as. |
-| features.alpha.apollo.storage.postgres.connection.sslmode | string | `"require"` | sslmode for the connection to the database. |
-| features.alpha.apollo.storage.postgres.connection.syncer.credentials.format | string | `""` | Format of the credentials for the connection from apollo syncers. Defaults to the one set in connection.credentials.format, if not set. |
-| features.alpha.apollo.storage.postgres.connection.syncer.credentials.secret.name | string | `""` | The name of the secret containing the specified user's credentials. If not set, a per syncer password will be generated and stored in a secret. |
-| features.alpha.apollo.storage.postgres.connection.syncer.credentials.user | string | `""` | The user to connect from apollo syncers. If not set, a per syncer user will be created and granted the necessary permissions. |
-| features.alpha.apollo.storage.postgres.connection.syncer.sslmode | string | `""` | sslmode for the connection from apollo syncer. Defaults to the one set in connection.sslmode, if not set. |
-| features.alpha.apollo.storage.postgres.connection.syncer.url | string | `""` | sslmode for the connection from apollo syncer. Defaults to the one set in connection.url, if not set. |
-| features.alpha.apollo.storage.postgres.connection.url | string | `""` | The url for the connection to the database. Just the hostname is required, the rest of the connection string will be built from the other fields. |
-| features.alpha.apollo.storage.postgres.create | bool | `true` | Whether the chart should install and handle the PostgreSQL database for Apollo using CloudNativePG, if set to true all connection configuration will be ignored. |
-| features.alpha.apollo.syncer.debug | bool | `false` | Whether apollo syncers should be deployed in debug mode. |
-| features.alpha.apollo.syncer.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the apollo syncer image. |
-| features.alpha.apollo.syncer.image.repository | string | `"hyperspace"` | Repository for the apollo syncer image. |
-| features.alpha.apollo.syncer.image.tag | string | `""` | Tag for the apollo syncer image. |
-| features.alpha.apollo.syncer.metrics.enabled | bool | `true` | Whether apollo syncers should expose metrics. |
-| features.alpha.apollo.syncer.resources.limits.cpu | string | `"1000m"` | CPU limit for the apollo syncer deployment. |
-| features.alpha.apollo.syncer.resources.limits.memory | string | `"1024Mi"` | Memory limit for the apollo syncer deployment. |
-| features.alpha.apollo.syncer.resources.requests.cpu | string | `"100m"` | CPU request for the apollo syncer deployment. |
-| features.alpha.apollo.syncer.resources.requests.memory | string | `"150Mi"` | Memory request for the apollo syncer deployment. |
+| features.alpha.apollo.enabled | bool | `false` | This enables the apollo (query API) feature. |
 | features.alpha.argocdPlugin.enabled | bool | `false` | Wheather to enable the argocd plugin feature. |
 | features.alpha.argocdPlugin.target.externalCluster | object | `{"enabled":false,"secret":{"key":"kubeconfig","name":"kubeconfig"}}` | The secret name and key for the kubeconfig of the external cluster. This is used by the argocd plugin to connect to the external cluster in case ArgoCD does not run in the same cluster as Spaces. If not specified, defaults to in-cluster credentials. |
 | features.alpha.argocdPlugin.target.externalCluster.enabled | bool | `false` | Whether to use the provided kubeconfig secret for the argocd plugin, otherwise in-cluster credentials will be used. |
@@ -354,9 +295,19 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | ingress.namespaceLabels | object | `{}` | .Labels that are defined on the namespace of ingress-nginx pod. Default value is:<br> kubernetes.io/metadata.name: ingress-nginx |
 | ingress.podLabels | object | `{}` | Labels that are defined on the ingress-nginx pod. Default value is:<br> app.kubernetes.io/instance: ingress-nginx<br> app.kubernetes.io/component: controller<br> app.kubernetes.io/name: ingress-nginx |
 | ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
-| license.enabled | bool | `false` |  |
-| license.secret.create | bool | `true` | Whether to create a secret for the license key, if false a pre-existing secret named "uxp-license" in the "upbound-system" namespace, having the license key stored under "license.json" key, must be present. |
-| license.value | string | `""` | Value of the license key, required if license.secret.create=true. |
+| metering.aggregationInterval | string | `"1h"` | How often to aggregate measurements into hourly usage data. |
+| metering.enabled | bool | `false` | This enables metering collection for control planes. |
+| metering.interval | string | `"1m"` | How often to collect measurements from control planes. |
+| metering.measurementRetentionDays | int | `30` | Number of days to retain raw measurement data. Set to 0 for unlimited retention. |
+| metering.storage | object | { ... } | PostgreSQL storage configuration for metering data (required when metering is enabled). |
+| metering.storage.postgres.connection | object | { ... } | Connection details for the PostgreSQL database. |
+| metering.storage.postgres.connection.ca | object | `{"name":""}` | CA certificate configuration for TLS connections (optional). |
+| metering.storage.postgres.connection.ca.name | string | `""` | The name of the secret containing the CA certificate. |
+| metering.storage.postgres.connection.credentials | object | `{"secret":{"name":""}}` | Credentials secret configuration. |
+| metering.storage.postgres.connection.credentials.secret.name | string | `""` | The name of the secret containing the database credentials in pgpass format. |
+| metering.storage.postgres.connection.sslmode | string | `"require"` | sslmode for the connection to the database. |
+| metering.storage.postgres.connection.url | string | `""` | The connection URL (host:port format, e.g., "postgres.example.com:5432"). |
+| metering.workerCount | int | `10` | Number of workers for parallel measurement collection. |
 | nameOverride | string | `""` | The name of the chart. |
 | observability.collectors | object | `{"apiServer":{"auditPolicy":""},"includeSystemTelemetry":false,"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":"","tolerations":[]}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
 | observability.collectors.includeSystemTelemetry | bool | `false` | If true, control plane telemetry will emit telemetry data from control plane system components, such as the api server, etcd. |
@@ -368,10 +319,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.collectors.tag | string | `""` | Tag for the OpenTelemetry collector image. |
 | observability.collectors.tolerations | list | `[]` | Tolerations for the telemetry log collectors daemonset pods. |
 | observability.enabled | bool | `false` | This enables the observability feature within this space.<br> Enabling observability requires OpenTelemetry Operator for Kubernetes to be installed in the cluster. See https://opentelemetry.io/docs/kubernetes/operator/ |
-| observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. |
-| observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[]}` | The space-level OpenTelemetry collector exporter configuration. <br> otlphttp: <br>   endpoint: https://otlp.eu01.nr-data.net <br>   headers: <br>     api-key: <your-key> <br> |
+| observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[],"traces":[]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. When enabled, collects metrics from Spaces infrastructure components including router control plane and Envoy proxy metrics (timeouts, status codes, latency, circuit breakers). |
+| observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[],"traces":[]}` | The space-level OpenTelemetry collector exporter configuration. <br> otlphttp: <br>   endpoint: https://otlp.eu01.nr-data.net <br>   headers: <br>     api-key: <your-key> <br> |
 | observability.spacesCollector.config.exportPipeline.logs | list | `[]` | List of logs exporters names. |
 | observability.spacesCollector.config.exportPipeline.metrics | list | `[]` | List of metrics exporters names. |
+| observability.spacesCollector.config.exportPipeline.traces | list | `[]` | List of traces exporters names. |
 | observability.spacesCollector.config.exporters | object | `{"debug":null}` | To export observability data, configure the exporters here and update the exportPipeline to include the exporters you want to use per telemetry type. |
 | observability.spacesCollector.config.exporters.debug | string | `nil` | The debug exporter configuration. |
 | observability.spacesCollector.repository | string | `"opentelemetry-collector-spaces"` | Repository for the space-level OpenTelemetry collector image. |
@@ -380,6 +332,14 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.spacesCollector.resources.requests.cpu | string | `"10m"` | CPU request for the space-level OpenTelemetry collector pod. |
 | observability.spacesCollector.resources.requests.memory | string | `"100Mi"` | Memory request for the space-level OpenTelemetry collector pod. |
 | observability.spacesCollector.tag | string | `""` | Tag for the space-level OpenTelemetry collector image. |
+| observability.tracing | object | `{"enabled":false,"endpoint":"telemetry-spaces-collector.upbound-system.svc.cluster.local","port":4317,"sampling":{"rate":0.1},"tls":{"caBundleSecretRef":""}}` | Unified tracing configuration for Spaces system components (spaces-router, spaces-api, etc.). |
+| observability.tracing.enabled | bool | `false` | Enable distributed tracing for Spaces system components. When disabled, no traces are collected or sent, regardless of other tracing settings. |
+| observability.tracing.endpoint | string | `"telemetry-spaces-collector.upbound-system.svc.cluster.local"` | OTLP-compatible endpoint for traces. Supports both in-cluster and external collectors. Defaults to the in-cluster spacesCollector deployed by this chart. For external collectors (e.g., Honeycomb), set to the full hostname: api.honeycomb.io |
+| observability.tracing.port | int | `4317` | OTLP gRPC port for trace export. |
+| observability.tracing.sampling | object | `{"rate":0.1}` | Sampling configuration for distributed tracing. |
+| observability.tracing.sampling.rate | float | `0.1` | Trace sampling rate (0.0-1.0). Controls what fraction of traces are collected. Uses parent-based sampling: if a trace is started upstream with sampling decision, that decision is respected. For new traces (no parent), this rate determines sampling probability. Default 0.1 (10%) |
+| observability.tracing.tls | object | `{"caBundleSecretRef":""}` | TLS configuration for the telemetry collector connection. |
+| observability.tracing.tls.caBundleSecretRef | string | `""` | Name of the secret containing a CA bundle for validating the telemetry collector's certificate. The secret must contain a key named 'ca.crt' with the PEM-encoded CA bundle. Use this when connecting to external collectors. If empty, uses the Spaces CA for in-cluster collectors. |
 | registry | string | `"xpkg.upbound.io/spaces-artifacts"` | Specifies the registry where the containers used in the spaces deployment are served from. |
 | router | object | `{"controlPlane":{"command":[],"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"extraVolumes":[],"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80,"targetMemoryUtilizationPercentage":0},"insecure":false,"podAnnotations":{},"podLabels":{},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"affinity":{},"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"nodeSelector":{},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"annotations":{},"http":{"appProtocol":"https","name":"https","port":8443},"type":"ClusterIP"},"tolerations":[]},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"spaces-router-tls","upboundIAMCABundle":""},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Configurations for the space router deployment. |
 | router.controlPlane.command | list | `[]` | The command to run for the router's envoy control plane. |
@@ -445,11 +405,3 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 <!-- end-table-no -->
 
-
-[affinity]: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
-[affinity-1]: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity
-[nodeselector]: https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
-[tainted]: https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
-[topology-spread-constraints]: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints
-[k8s-protocol]: https://kubernetes.io/docs/concepts/services-networking/service/#application-protocol
-[k8s-protocol-2]: https://kubernetes.io/docs/concepts/services-networking/service/#application-protocol
