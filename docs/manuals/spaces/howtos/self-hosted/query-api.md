@@ -29,7 +29,7 @@ Query API requires a PostgreSQL database to store the data. You can use the defa
 If you don't have specific requirements for your setup, Upbound recommends following this approach.
 :::
 
-To enable this feature, set `features.alpha.apollo.enabled=true` and `features.apollo.storage.postgres.create=true` when installing Spaces.
+To enable this feature, set `features.alpha.apollo.enabled=true` and `apollo.apollo.storage.postgres.create=true` when installing Spaces.
 
 However, you need to install CloudNativePG (`CNPG`) to provide the PostgreSQL instance. You can let the `up` CLI do this for you, or install it manually.
 
@@ -42,13 +42,13 @@ If you have specific requirements not addressed in the Helm chart, see below for
 
 Before you begin, make sure you have the most recent version of the [`up` CLI installed][up-cli-installed].
 
-To enable this feature, set `features.alpha.apollo.enabled=true` and `features.apollo.storage.postgres.create=true` when installing Spaces:
+To enable this feature, set `features.alpha.apollo.enabled=true` and `apollo.apollo.storage.postgres.create=true` when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   ...
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.apollo.storage.postgres.create=true"
+  --set "apollo.apollo.storage.postgres.create=true"
 ```
 
 `up space init` and `up space upgrade` install CloudNativePG automatically, if needed.
@@ -71,7 +71,7 @@ helm -n upbound-system upgrade --install spaces \
   --version "${SPACES_VERSION}" \
   ...
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.apollo.storage.postgres.create=true" \
+  --set "apollo.apollo.storage.postgres.create=true" \
   --wait
 ```
 <!-- vale Google.Headings = NO -->
