@@ -1,6 +1,6 @@
 ---
 title: Spaces Helm Chart Reference
-sidebar_position: 20
+sidebar_position: 21
 description: Spaces Helm chart configuration values
 mdx:
     format: md
