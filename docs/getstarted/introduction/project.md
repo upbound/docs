@@ -31,6 +31,13 @@ Before beginning, make sure you have:
 - The [up][up-cli] CLI installed
 - A Docker-compatible container runtime installed and running on your system
 
+:::tip Podman users
+If you're using Podman instead of Docker, set the following environment variable before running `up` commands:
+```shell
+export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
+```
+:::
+
 ## Create a control plane project
 
 Crossplane works by letting you define new resource types in Kubernetes that
