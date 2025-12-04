@@ -39,7 +39,7 @@ Partial months are prorated to the day.
 A Resource-Month represents the reconciliation of one Crossplane resource over
 the period of one month. 
 
-Crossplane resources include:
+Crossplane resources **included** in Resource-Month calculations:
 
 * Claims (XRCs)
 * Composite Resources (XRs)
@@ -47,7 +47,7 @@ Crossplane resources include:
 * Composed Resources - any resource other than an MR managed by a composite
     resource
 
-Crossplane resources excluded from Resource-Month calculations:
+Crossplane resources **excluded** from Resource-Month calculations:
 
 * Providers
 * Functions
