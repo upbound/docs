@@ -16,8 +16,8 @@ This document describes each of the metrics used to define the pricing model
 and information to estimate your implementation costs. For more exact estimates,
 [reach out to us][contact-us].
 
-If you are an existing customer looking for your current consumption and billing
-information, visit the [Upbound Console]. 
+Existing customers looking for current consumption and billing
+information should visit the [Upbound Console]. 
 
 ## Pricing model
 
@@ -26,9 +26,9 @@ Your monthly invoice includes a combination of usages of Upbound Cloud Resources
 includes support.
 
 All paid pricing plans contain a minimum commitment of Resource-Months and
-Operations. Any usage that exceeds this initial free consumption is
-automatically invoiced at the publicly listed prices subject to volume discounts
-and additional credits.
+Operations. Upbound automatically invoices any usage that exceeds this initial
+free consumption at the publicly listed prices, subject to volume discounts and
+additional credits.
 
 :::important
 Partial months are prorated to the day.
@@ -39,7 +39,7 @@ Partial months are prorated to the day.
 A Resource-Month represents the reconciliation of one Crossplane resource over
 the period of one month. 
 
-Crossplane resources are:
+Crossplane resources include:
 
 * Claims (XRCs)
 * Composite Resources (XRs)
@@ -47,13 +47,14 @@ Crossplane resources are:
 * Composed Resources - any resource other than an MR managed by a composite
     resource
 
-Crossplane resources excluded from Resource-Month calculations are:
+Crossplane resources excluded from Resource-Month calculations:
+
 * Providers
 * Functions
 * `ProviderConfig` and ` ProviderConfigUsage` resources
 * Events
 
-Upbound measures the time a resources is alive to an accuracy of approximately
+Upbound measures the time a resource stays alive to an accuracy of approximately
 one minute.
 
 #### Example
@@ -65,13 +66,13 @@ An example for a control plane with 1000 resources for a full month:
 * 1000 resources = 1000 Resource-Months
 
 :::note
-One month is defined as 730 hours
+One month equals as 730 hours
 :::
 
 ### Operations
 
 An Operation represents a run of a single, unique Crossplane [Operation]
-resource. A unique Operation is tied to a resources UID. Deleting and
+resource. Unique Operations tie to a resource's UID. Deleting and
 recreating an Operation represents 2 billable Operations.
 
 ## Plans
@@ -80,8 +81,8 @@ Upbound manages pricing plans and billing at the organization level. An Upbound
 user can belong to multiple organizations with different billing plans. Feature
 availability depends on your organization context.
 
-Upbound paid plans are invoiced each calendar month. Included Resource-Month and
-Operation is reset each invoice.
+Upbound invoices paid plans each calendar month. Each invoice resets the
+included Resource-Month and Operation count.
 
 For more information on plans and feature availability, refer to the
 [Upbound pricing][pricing] page
@@ -102,7 +103,7 @@ Upbound accepts credit cards as payment for Standard tier. [Contact our sales te
 
     <summary>How often will I be billed?</summary>
 
-Upbound paid plans are invoiced at the beginning of every calendar month. 
+Upbound invoices paid plans at the beginning of every calendar month.
 
 </details>
 
@@ -118,7 +119,7 @@ To find your monthly consumption and your current billing details, visit the [Up
 
     <summary>Do my included Resource-Months or Operations roll over month-to-month?</summary>
 
-The Resource-Months and Operations included in the Standard tier plan aren't rolled over between months. 
+The Resource-Months and Operations included in the Standard tier plan don't roll over between months. 
 
 </details>
 
@@ -126,7 +127,9 @@ The Resource-Months and Operations included in the Standard tier plan aren't rol
 
     <summary>How does billing work for self-managed UXP or Spaces?</summary>
 
-The pay-as-you-go billing model is only applicable to Upbound Cloud and connected UXP or Spaces. For self-hosted Spaces, you must purchage a capacity based license through our [license management] system.
+The pay-as-you-go billing model is only applicable to Upbound Cloud and
+connected UXP or Spaces. For self-hosted Spaces, you must buy a
+capacity based license through our [license management] system.
 
 </details>
 
@@ -134,7 +137,8 @@ The pay-as-you-go billing model is only applicable to Upbound Cloud and connecte
 
     <summary>Will I be billed for paused control planes?</summary>
 
-No, you won't get charged for resources or operations managed in any control plane that has a status of Paused.
+No, Upbound doesn't charge you for resources or operations managed by `Paused`
+control planes. 
 
 </details>
 
@@ -161,5 +165,6 @@ No, you won't get charged for resources or operations managed in any control pla
 [pricing]: https://upbound.io/pricing
 [license management]: /manuals/uxp/howtos/license-management/#license-management-in-the-upbound-console-enterprise-and-above
 [support]: https://help.upbound.io/
+
 
 
