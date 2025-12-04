@@ -10,7 +10,7 @@ plan: "standard"
 
 Upbound Cloud, [Connected Spaces], and Connected UXP control planes operate on a
 consumption-based service model. You only pay for what you use based on
-Crossplabe Resources and Operations consumption.
+Crossplane Resources and Operations consumption.
 
 This document describes each of the metrics used to define the pricing model
 and information to estimate your implementation costs. For more exact estimates,
@@ -22,7 +22,7 @@ information, visit the [Upbound Console].
 ## Pricing model
 
 Your monthly invoice includes a combination of usages of Upbound Cloud Resources
-(Resource-months and [Operations]) and a minimum monthly commitment that
+(Resource-months and [Operations][operation]) and a minimum monthly commitment that
 includes support.
 
 All paid pricing plans contain a minimum commitment of Resource-Months and
@@ -36,7 +36,7 @@ Partial months are prorated to the day.
 
 ### Resource-Months
 
-A Resource-Month represents the reconcilation of one Crossplane resource over
+A Resource-Month represents the reconciliation of one Crossplane resource over
 the period of one month. 
 
 Crossplane resources are:
@@ -84,7 +84,7 @@ Upbound paid plans are invoiced each calendar month. Included Resource-Month and
 Operation is reset each invoice.
 
 For more information on plans and feature availability, refer to the
-[Upbound pricing] page
+[Upbound pricing][pricing] page
 
 
 ## FAQ
@@ -157,7 +157,7 @@ No, you won't get charged for resources or operations managed in any control pla
 [connected spaces]: /manuals/spaces/howtos/self-hosted/attach-detach/
 [contact-us]: https://www.upbound.io/contact-us
 [upbound console]: https://console.upbound.io
-[operations]: https://docs.crossplane.io/latest/operations/
+[operation]: https://docs.crossplane.io/latest/operations/
 [pricing]: https://upbound.io/pricing
 [license management]: /manuals/uxp/howtos/license-management/#license-management-in-the-upbound-console-enterprise-and-above
 [support]: https://help.upbound.io/
