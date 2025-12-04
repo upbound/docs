@@ -66,7 +66,7 @@ An example for a control plane with 1000 resources for a full month:
 * 1000 resources = 1000 Resource-Months
 
 :::note
-One month equals as 730 hours
+One month equals 730 hours
 :::
 
 ### Operations
