@@ -89,6 +89,8 @@ OTEL
 overengineer
 observability
 patchSets
+Podman
+podman
 pooler
 proidc
 proselint
@@ -122,6 +124,7 @@ syncer
 Syncer
 Syncers
 syncers
+templatization
 timeframe
 tolerations
 Upbound
