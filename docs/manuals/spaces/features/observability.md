@@ -131,7 +131,7 @@ Self-hosted users can include system workloads (`api-server`, `etcd`) by setting
 
 :::important
 Spaces validates `SharedTelemetryConfig` resources before applying them by
-sending telmetry to configured exporters. For self-hosted Spaces, ensure that
+sending telemetry to configured exporters. For self-hosted Spaces, ensure that
 `spaces-controller` can reach the exporter endpoints. 
 :::
 
