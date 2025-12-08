@@ -11,6 +11,11 @@
             "permanent": true
         },
         {
+            "source": "/reference/helm-reference(/)?",
+            "destination": "/reference/spaces-helm-reference",
+            "permanent": true
+        },
+        {
             "source": "/learn/builders-workshop/3-testing(/)?",
             "destination": "/getstarted/builders-workshop/3-testing",
             "permanent": true
