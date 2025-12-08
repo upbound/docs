@@ -96,8 +96,6 @@ This configuration exports metrics and logs from:
 
 - Crossplane installation
 - Spaces infrastructure (controller, API, router, etc.)
-- `provider-helm`
-- `provider-kubernetes`
 
 ### Router metrics
 
@@ -129,6 +127,12 @@ plane workloads (Crossplane, providers, functions).
 
 Self-hosted users can include system workloads (`api-server`, `etcd`) by setting
 `observability.collectors.includeSystemTelemetry=true` in Helm. 
+:::
+
+:::important
+Spaces validates `SharedTelemetryConfig` resources before applying them by
+sending telemetry to configured exporters. For self-hosted Spaces, ensure that
+`spaces-controller` can reach the exporter endpoints. 
 :::
 
 ### `SharedTelemetryConfig`
