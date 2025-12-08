@@ -14,12 +14,12 @@ const ReferenceCards = () => {
     },
     {
       title: 'Spaces Helm Reference',
-      description: 'Helm chart configuration and deployment reference documentation.',
+      description: 'Helm chart configuration and deployment reference documentation for Upbound Spaces.',
       link: '/reference/spaces-helm-reference'
     },
     {
       title: 'UXP Helm Reference',
-      description: 'Helm chart configuration and deployment reference documentation.',
+      description: 'Helm chart configuration and deployment reference documentation for UXP.',
       link: '/reference/uxp-helm-reference'
     },
     {
