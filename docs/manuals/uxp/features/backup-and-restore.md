@@ -279,7 +279,7 @@ spec:
 ```
 
 :::warning
-Resource names must be specified in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+You must specify resource names in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
 :::
 
 ### Deletion policy

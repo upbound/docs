@@ -109,7 +109,7 @@ up controlplane migration export \
 ```
 
 :::warning
-Resource names must be specified in lowercase "resource.group" format (for example, `gotemplates.gotemplating.fn.crossplane.io`). Using only the resource kind (for example, `GoTemplate`) isn't supported.
+You must specify resource names in lowercase "resource.group" format (for example, `gotemplates.gotemplating.fn.crossplane.io`). Using only the resource kind (for example, `GoTemplate`) isn't supported.
 :::
 
 After export, users can also change the archive file to only include necessary resources.
