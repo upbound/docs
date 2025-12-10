@@ -181,10 +181,14 @@ metadata:
   name: daily-schedule
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+Resource names must be specified in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Suspend a schedule
 
@@ -321,10 +325,14 @@ metadata:
   name: my-backup
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+Resource names must be specified in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Set the time to live
 
@@ -447,10 +455,14 @@ metadata:
   name: my-backup
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+Resource names must be specified in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Set the time to live
 
