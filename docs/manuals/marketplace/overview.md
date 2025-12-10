@@ -38,6 +38,7 @@ Key features of the Upbound Marketplace include:
 - Unlimited public repositories
 - Private repositories
 - API docs
+- Image vulnerability and provenance data
 
 ## Verified publishers
 
