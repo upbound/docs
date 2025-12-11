@@ -115,6 +115,7 @@ shortcode
 shortcodes
 SharedSecretStore
 SharedExternalSecret
+Sigstore
 SLAs
 stdin
 stdout

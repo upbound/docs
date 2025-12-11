@@ -7,8 +7,6 @@ description: How to use the Upbound Marketplace to discover Crossplane providers
   packages.
 ---
 
-# Overview
-
 [Upbound Marketplace][upbound-marketplace] simplifies your control plane journey
 with the largest registry for storing, managing, and sharing control plane
 extensions. It integrates seamlessly with Upbound's control plane project
@@ -38,6 +36,7 @@ Key features of the Upbound Marketplace include:
 - Unlimited public repositories
 - Private repositories
 - API docs
+- Image vulnerability and provenance data
 
 ## Verified publishers
 
