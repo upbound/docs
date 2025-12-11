@@ -407,11 +407,26 @@ Configure alerts for critical scaling and health metrics:
 - **`apollo syncer`**: Syncs `etcd` data into PostgreSQL for the Query API
 <!-- vale write-good.TooWordy = YES -->
 
+### `up ctx` workflow
+
+![up-ctx-workflow]
+
+### Access a control plane API server via `kubectl`
+
+![kubectl]
+
+### Query API/Apollo
+
+![query-api]
+
 ## See also
 
 * [Upbound Spaces deployment requirements][deployment]
 * [Upbound `etcd` scaling resources][scaling]
 
+[up-ctx-workflow]: /img/up-ctx-workflow.png
+[kubectl]: /img/kubectl-workflow.png
+[query-api]: /img/query-api-workflow.png
 [spaces-workflow]: /img/up-basic-flow.png
 [rds]: https://aws.amazon.com/rds/postgresql/
 [gke-sql]: https://cloud.google.com/kubernetes-engine/docs/tutorials/stateful-workloads/postgresql
