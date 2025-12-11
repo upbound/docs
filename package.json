@@ -26,7 +26,7 @@
         "@mdx-js/react": "^3.0.0",
         "clsx": "^2.1.1",
         "docusaurus-pushfeedback": "^1.0.5",
-        "js-yaml": "^4.1.0",
+        "js-yaml": "^4.1.1",
         "lucide-react": "^0.525.0",
         "prism-react-renderer": "^2.3.0",
         "pushfeedback-react": "^0.1.65",
