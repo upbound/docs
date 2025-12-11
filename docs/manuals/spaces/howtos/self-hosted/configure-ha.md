@@ -409,15 +409,21 @@ Configure alerts for critical scaling and health metrics:
 
 ### `up ctx` workflow
 
-![up-ctx-workflow]
+<a href="/img/up-ctx-workflow.png" target="_blank">
+  <img src="/img/up-ctx-workflow.png" alt="up ctx workflow diagram" style={{cursor: 'pointer'}} />
+</a>
 
-### Access a control plane API server via `kubectl`
+### Access a control plane API server via kubectl
 
-![kubectl]
+<a href="/img/kubectl-workflow.png" target="_blank">
+  <img src="/img/kubectl-workflow.png" alt="kubectl workflow diagram" style={{cursor: 'pointer'}} />
+</a>
 
 ### Query API/Apollo
 
-![query-api]
+<a href="/img/query-api-workflow.png" target="_blank">
+  <img src="/img/query-api-workflow.png" alt="query API workflow diagram" style={{cursor: 'pointer'}} />
+</a>
 
 ## See also
 
