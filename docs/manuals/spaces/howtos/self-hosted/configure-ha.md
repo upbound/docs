@@ -192,14 +192,14 @@ Ensure control plane components can survive node and zone failures.
              weight: 100
    ```
 
-### Configure tolerations -->
+### Configure tolerations
 
 Allow control plane pods to schedule on the tainted dedicated nodes (available
 in Spaces v1.14+).
 
 1. Add tolerations for `etcd` pods
 
-   ```yaml -->
+   ```yaml
    controlPlanes:
      etcd:
        tolerations:
