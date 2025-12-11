@@ -1,5 +1,5 @@
 ---
-title: Upbound Cloud Pricing
+title: Upbound Pricing
 sidebar_position: 50
 description: An overview of pricing for Upbound Cloud, Connected Spaces, and Connected UXP control planes 
 plan: "standard"
