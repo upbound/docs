@@ -58,10 +58,13 @@ rightsized the memory available in your Spaces cluster.
 <!-- vale gitlab.SentenceLength = YES -->
 
 :::important
-Be careful not to conflate `managed resource` with `custom resource definition`. The former is an "instance" of an external resource in Crossplane, while the latter defines the API schema of that resource.
+Be careful not to conflate `managed resource` with `custom resource definition`.
+The former is an "instance" of an external resource in Crossplane, while the
+latter defines the API schema of that resource. 
 :::
 
-It's estimated that each custom resource definition consumes ~3 MB of memory. The calculation is:
+It's estimated that each custom resource definition consumes ~3 MB of memory.
+The calculation is:
 
 ```bash
 number_of_managed_resources_defined_in_provider x 3 MB = memory_required
@@ -80,18 +83,23 @@ total memory: 429 MB
 In this scenario, you should budget ~430 MB of memory for provider usage on this control plane.
 
 :::tip
-Do this calculation for each provider you plan to install on your control plane. Then do this calculation for each control plane you plan to run in your Space.
+Do this calculation for each provider you plan to install on your control plane.
+Then do this calculation for each control plane you plan to run in your Space.
 :::
 
 
 #### Total memory usage
 
-Add the memory usage from the previous sections. Given the preceding examples, they result in a recommendation to budget ~1 GB memory for each control plane you plan to run in the Space.
+Add the memory usage from the previous sections. Given the preceding examples,
+they result in a recommendation to budget ~1 GB memory for each control plane
+you plan to run in the Space.
 
 :::important
 
 The 1 GB recommendation is an example.
-You should input your own provider requirements to arrive at a final number for your own deployment.
+You should input your own provider requirements to arrive at a final number for
+your own deployment.
+
 :::
 
 ### CPU considerations

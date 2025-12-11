@@ -3,29 +3,37 @@ title: Package Security Features
 sidebar_position: 3
 description: Navigating security features of Official Packages in the Upbound Marketplace
 ---
-
-Official Packages are curated, tested Crossplane extensions hardened for enterprise production security requirements.
-The Upbound Marketplace provides several features for platform and
-security engineering teams to view, configure, and interact with these security artifacts.
+<!-- vale write-good.Passive = NO -->
+Official Packages are curated, tested Crossplane extensions hardened for
+enterprise production security requirements. The Upbound Marketplace provides
+several features for platform and security engineering teams to view, configure,
+and interact with these security artifacts.
+<!-- vale write-good.Passive = YES -->
 
 ## Package vulnerabilities
 
-The Upbound Marketplace enables security teams to perform faster risk assessments without any image pulls or scans.
+The Upbound Marketplace enables security teams to perform faster risk
+assessments without any image pulls or scans.
 
 ### Vulnerability summaries
 
-The version selector on an Official package listing displays a summary view of the most recent CVE counts by CVSS 3.0 severity class.
-This view provides an immediate visual indicator for spotting high-risk tags and choosing the best image for a deployment.
+<!-- vale gitlab.Uppercase = NO -->
+The version selector on an Official package listing displays a summary view of
+the most recent CVE counts by CVSS 3.0 severity class. This view provides an
+immediate visual indicator for spotting high-risk tags and choosing the best
+image for a deployment.
+<!-- vale gitlab.Uppercase = YES -->
 
 ![image][summary]
-
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### CVE details
 
-Clicking into any scanned version shows an additional Vulnerabilities tab, which contains a table of CVEs detected in the image.
+Clicking a scanned version displays a Vulnerabilities tab and shows a table of
+the image's CVEs.
 
 ![image][table]
 
-Each CVE row is expandable to show additional details such as:
+You can expand each CVE row to display details like:
 
 - severity, affected package name and version range, and available fix versions
 - links to official CVE references for multiple advisories
@@ -34,19 +42,26 @@ Each CVE row is expandable to show additional details such as:
 
 ![image][cve-detail]
 
-With these summary and detail views, users can make informed upgrade decisions and configure automation that use this data to gate or approve deployments.
+With these summary and detail views, users can make informed upgrade decisions
+and configure automation that use this data to gate or approve deployments.
 
 ## Supply chain transparency
 
-The Upbound Marketplace also exposes the key supply chain metadata you need to verify image integrity and traceability.
+The Upbound Marketplace also exposes the key supply chain metadata you need to
+verify image integrity and traceability.
 
+<!-- vale gitlab.Uppercase = NO -->
 ### Provenance and SLSA attestations
+<!-- vale gitlab.Uppercase = YES -->
 
-The Upbound Marketplace surfaces [SLSA] provenance attestations for official packages produced by Upbound's build workflows.
-These are generated using [Sigstore] tooling and are immutable records of when, how, and by what process a package was built.
+The Upbound Marketplace surfaces [SLSA] provenance attestations for official
+packages produced by Upbound's build workflows. These are generated using
+[Sigstore] tooling and are immutable records of when, how, and by what process a
+package was built.
 
-To independently verify signatures and provenance, users can download the attestation and run the generated `cosign` commands
-in the `Provenance` tab of an official package.
+To independently verify signatures and provenance, users can download the
+attestation and run the generated `cosign` commands in the `Provenance` tab of
+an official package.
 
 ![image][cosign-verify]
 
@@ -55,13 +70,17 @@ of any image that fail verification. Learn more about [configuring signature ver
 
 ### SBOM visibility
 
-Each official package also includes a simplified, human-readable SBOM directly in the Marketplace, allowing you to browse and filter its included packages and dependencies.
+Each official package also includes a simplified, human-readable SBOM directly
+in the Marketplace, allowing you to browse and filter its included packages and
+dependencies.
 
-For deeper inspection or automation, you can download the full SPDX-formatted SBOM and use it with external tools.
+For deeper inspection or automation, you can download the full SPDX-formatted
+SBOM and use it with external tools.
 
 ![image][sbom]
 
 ## FAQ
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 <details>
 
