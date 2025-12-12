@@ -54,7 +54,7 @@ cluster][uxp] with full control.
 
 [workshop]: /getstarted/builders-workshop/project-foundations/
 [intelligent-control-planes]: /guides/intelligent-control-planes/
-[idp-guide]: /guides/solutions/general-idp/get-started/
+[idp-guide]: /guides/solutions/get-started/
 [spaces]: /manuals/spaces/overview/
 [control-planes]: /manuals/spaces/concepts/control-planes/
 [uxp]: /manuals/uxp/overview/

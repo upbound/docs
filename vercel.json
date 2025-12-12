@@ -152,7 +152,7 @@
         },
         {
             "source": "/solutions/idp-starter-kit(/)?",
-            "destination": "/guides/solutions/general-idp/get-started",
+            "destination": "/guides/solutions/get-started",
             "permanent": true
         },
         {
@@ -1323,6 +1323,26 @@
         {
             "source": "/manuals/uxp/guides/self-managed-uxp/license-management(/)?",
             "destination": "/manuals/uxp/howtos/self-managed-uxp/license-management/",
+            "permanent": true
+        },
+        {
+            "source": "/guides/solutions/general-idp/get-started(/)?",
+            "destination": "/guides/solutions/get-started/",
+            "permanent": true
+        },
+        {
+            "source": "/guides/solutions/general-idp/design(/)?",
+            "destination": "/guides/solutions/design/",
+            "permanent": true
+        },
+         {
+            "source": "/guides/solutions/general-idp/portal(/)?",
+            "destination": "/guides/solutions/portal/",
+            "permanent": true
+        },
+         {
+            "source": "/guides/solutions/general-idp/deploy-apis(/)?",
+            "destination": "/guides/solutions/deploy-apis/",
             "permanent": true
         }
     ]
