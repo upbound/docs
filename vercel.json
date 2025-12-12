@@ -152,7 +152,7 @@
         },
         {
             "source": "/solutions/idp-starter-kit(/)?",
-            "destination": "/guides/solutions/general-idp/get-started",
+            "destination": "/guides/solutions/get-started",
             "permanent": true
         },
         {
