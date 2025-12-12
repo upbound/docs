@@ -105,6 +105,10 @@ up controlplane migration export \
   --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.template.fn.crossplane.io
 ```
 
+:::warning
+You must specify resource names in lowercase "resource.group" format (for example, `gotemplates.gotemplating.fn.crossplane.io`). Using only the resource kind (for example, `GoTemplate`) isn't supported.
+:::
+
 <!-- vale write-good.Passive = NO -->
 :::tip Function Input CRDs
 
@@ -145,9 +149,7 @@ The migration CLI exports an archive upon successful completion. Below is an exa
 <summary>View the example export</summary>
 
 ```bash
-$ up controlplane migration export
---exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.templat
-e.fn.crossplane.io --yes
+$ up controlplane migration export --exclude-resources=gotemplates.gotemplating.fn.crossplane.io,kclinputs.template.fn.crossplane.io --yes
 Exporting control plane state...
 ✓ Scanning control plane for types to export... 121 types found! 👀
 ✓ Exporting 121 Crossplane resources...60 resources exported! 📤

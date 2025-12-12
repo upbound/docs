@@ -13,29 +13,33 @@ provides integrated observability features built on
 [OpenTelemetry][opentelemetry] to collect, process, and export logs, metrics,
 and traces.
 
-<!-- vale write-good.TooWordy = NO -->
-<!-- vale Google.WordList = NO -->
-:::important
-Observability features are GA since Spaces `v1.14.0`. However, it's not
-enabled by default as it requires careful configuration.
-
-Different aspects of it were introduced in preview in different releases:
-- **Space-level observability**: Spaces `v1.6.0`.
-- **Control plane observability**: Spaces `v1.13.0`.
-:::
-<!-- vale Google.WordList = YES -->
-<!-- vale write-good.TooWordy = YES -->
-
-
 Upbound Spaces offers two levels of observability:
 
 1. **Space-level observability** - Observes the cluster infrastructure where Spaces software is installed (Self-Hosted only)
 2. **Control plane observability** - Observes workloads running within individual control planes
 
+<!-- vale Google.Headings = NO -->
+<!-- vale write-good.TooWordy = NO -->
+<!-- vale Google.WordList = NO -->
+
+:::important
+**Space-level observability** (available since v1.6.0, GA in v1.14.0):
+- Disabled by default
+- Requires manual enablement and configuration
+- Self-Hosted Spaces only
+
+**Control plane observability** (available since v1.13.0, GA in v1.14.0):
+- Enabled by default
+- No additional configuration required
+:::
+<!-- vale Google.WordList = YES -->
+<!-- vale write-good.TooWordy = YES -->
+
+
 ## Prerequisites
 <!-- vale write-good.Passive = NO -->
 <!-- vale write-good.TooWordy = NO -->
-Control plane observability is enabled by default. No additional setup is
+**Control plane observability** is enabled by default. No additional setup is
 required. 
 <!-- vale write-good.TooWordy = YES -->
 <!-- vale write-good.Passive = YES -->
@@ -89,10 +93,24 @@ observability:
 ```
 
 This configuration exports metrics and logs from:
+
 - Crossplane installation
 - Spaces infrastructure (controller, API, router, etc.)
-- `provider-helm`
-- `provider-kubernetes`
+
+### Router metrics
+
+The Spaces router uses Envoy as a reverse proxy and automatically exposes
+metrics when you enable Space-level observability. These metrics provide
+visibility into:
+
+- Traffic routing to control planes and services
+- Request status codes, timeouts, and retries
+- Circuit breaker state preventing cascading failures
+- Client connection patterns and request volume
+- Request latency (P50, P95, P99)
+
+For more information about available metrics, example queries, and how to enable
+this feature, see the [Space-level observability guide][space-level-o11y].
 
 ## Control plane observability
 
@@ -109,6 +127,12 @@ plane workloads (Crossplane, providers, functions).
 
 Self-hosted users can include system workloads (`api-server`, `etcd`) by setting
 `observability.collectors.includeSystemTelemetry=true` in Helm. 
+:::
+
+:::important
+Spaces validates `SharedTelemetryConfig` resources before applying them by
+sending telemetry to configured exporters. For self-hosted Spaces, ensure that
+`spaces-controller` can reach the exporter endpoints. 
 :::
 
 ### `SharedTelemetryConfig`
@@ -336,12 +360,14 @@ For more advanced configuration options, review the [Helm chart
 reference][helm-chart-reference] and [OpenTelemetry Transformation Language
 documentation][opentelemetry-transformation-language].
 
+<!-- vale Google.Headings = YES -->
 [opentelemetry]: https://opentelemetry.io/
 [opentelemetry-collectors]: https://opentelemetry.io/docs/collector/
 [opentelemetry-collector-configuration]: https://opentelemetry.io/docs/collector/configuration/#exporters
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
 [transform-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md
 [opentelemetry-transformation-language]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl
+[space-level-o11y]: /manuals/spaces/howtos/self-hosted/space-observability
 [helm-chart-reference]: /reference/helm-reference
 [opentelemetry-transformation-language-functions]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md
 [opentelemetry-transformation-language-contexts]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts

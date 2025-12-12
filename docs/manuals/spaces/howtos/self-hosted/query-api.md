@@ -29,7 +29,7 @@ Query API requires a PostgreSQL database to store the data. You can use the defa
 If you don't have specific requirements for your setup, Upbound recommends following this approach.
 :::
 
-To enable this feature, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces.
+To enable this feature, set `features.alpha.apollo.enabled=true` and `apollo.apollo.storage.postgres.create=true` when installing Spaces.
 
 However, you need to install CloudNativePG (`CNPG`) to provide the PostgreSQL instance. You can let the `up` CLI do this for you, or install it manually.
 
@@ -42,13 +42,13 @@ If you have specific requirements not addressed in the Helm chart, see below for
 
 Before you begin, make sure you have the most recent version of the [`up` CLI installed][up-cli-installed].
 
-To enable this feature, set `features.alpha.apollo.enabled=true` and `features.alpha.apollo.storage.postgres.create=true` when installing Spaces:
+To enable this feature, set `features.alpha.apollo.enabled=true` and `apollo.apollo.storage.postgres.create=true` when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   ...
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.alpha.apollo.storage.postgres.create=true"
+  --set "apollo.apollo.storage.postgres.create=true"
 ```
 
 `up space init` and `up space upgrade` install CloudNativePG automatically, if needed.
@@ -71,7 +71,7 @@ helm -n upbound-system upgrade --install spaces \
   --version "${SPACES_VERSION}" \
   ...
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.alpha.apollo.storage.postgres.create=true" \
+  --set "apollo.apollo.storage.postgres.create=true" \
   --wait
 ```
 <!-- vale Google.Headings = NO -->
@@ -89,11 +89,40 @@ Review the architecture and requirements guidelines.
 The Query API architecture uses three components, other than a PostgreSQL database:
 * **Apollo Syncers**: Watching `ETCD` for changes and syncing them to PostgreSQL. One, or more, per control plane.
 * **Apollo Server**: Serving the Query API out of the data in PostgreSQL. One, or more, per Space.
-* **Spaces Controller**: Reconciling the PostgreSQL schema as needed for the other two components. One, or more, per Space.
 
 The default setup also uses the `PgBouncer` connection pooler to manage connections from the syncers.
+```mermaid
+graph LR
+    User[User]
+    
+    subgraph Cluster["Cluster (Spaces)"]
+        direction TB
+        Apollo[apollo]
+        
+        subgraph ControlPlanes["Control Planes"]
+            APIServer[API Server]
+            Syncer[apollo-syncer]
+        end
+    end
+    
+    PostgreSQL[(PostgreSQL)]
+    
+    User -->|requests| Apollo
+    
+    Apollo -->|connects| PostgreSQL
+    Apollo -->|creates schemas & users| PostgreSQL
+    
+    Syncer -->|watches| APIServer
+    Syncer -->|writes| PostgreSQL
+    
+    PostgreSQL -->|data| Apollo
+    
+    style PostgreSQL fill:#e1f5ff,stroke:#333,stroke-width:2px,color:#000
+    style Apollo fill:#ffe1e1,stroke:#333,stroke-width:2px,color:#000
+    style Cluster fill:#f0f0f0,stroke:#333,stroke-width:2px,color:#000
+    style ControlPlanes fill:#fff,stroke:#666,stroke-width:1px,stroke-dasharray: 5 5,color:#000
+```
 
-![Query API architecture diagram](/img/query-api-arch.png)
 
 Each component needs to connect to the PostgreSQL database.
 
@@ -104,9 +133,8 @@ automatically repopulate the data.
 
 * A PostgreSQL 16 instance or cluster.
 * A database, for example named `upbound`.
-* A dedicated user for the Spaces Controller, with all privileges on the database, for example named `spaces-controller`.
 * **Optional**: A dedicated user for the Apollo Syncers, otherwise the Spaces Controller generates a dedicated set of credentials per syncer with the necessary permissions, for example named `syncer`.
-* **Optional**: A dedicated read-only user for the Apollo Server, otherwise the Spaces Controller generates a dedicated set of credentials with the necessary permissions, for example named `apollo`.
+* A dedicated **superuser or admin account** for the Apollo Server.
 * **Optional**: A connection pooler, like PgBouncer, to manage connections from the Apollo Syncers. If you didn't provide the optional users, you might have to configure the pooler to allow users to connect using the same credentials as PostgreSQL.
 * **Optional**: A read replica for the Apollo Syncers to connect to, to reduce load on the primary database, this might cause a slight delay in the data being available through the Query API.
 
@@ -151,9 +179,9 @@ spec:
   bootstrap:
     initdb:
       database: upbound
-      owner: spaces-controller
+      owner: apollo
       postInitApplicationSQL:
-      - ALTER ROLE "spaces-controller" CREATEROLE;
+      - ALTER ROLE "apollo" CREATEROLE;
   certificates:
     serverAltDNSNames:
       - spaces-apollo-pg-pooler
@@ -211,13 +239,14 @@ Next, configure Spaces to use the CloudNativePG secrets:
 ```shell
 helm upgrade --install ... \
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.alpha.apollo.storage.postgres.create=false" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.user=spaces-controller" \
-  --set "features.alpha.apollo.storage.postgres.connection.url=spaces-apollo-pg-rw:5432" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.secret.name=spaces-apollo-pg-app" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.format=basicauth" \
-  --set "features.alpha.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
-  --set "features.alpha.apollo.storage.postgres.connection.syncer.url=spaces-apollo-pg-pooler.upbound-system.svc:5432"
+  --set "apollo.apollo.storage.postgres.create=false" \
+  --set "apollo.apollo.storage.postgres.connection.apollo.credentials.user=apollo" \
+  --set "apollo.apollo.storage.postgres.connection.url=spaces-apollo-pg-rw:5432" \
+  --set "apollo.apollo.storage.postgres.connection.credentials.secret.name=spaces-apollo-pg-app" \
+  --set "apollo.apollo.storage.postgres.connection.credentials.format=basicauth" \
+  --set "apollo.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
+  --set "apollo.apollo.storage.postgres.connection.syncer.url=spaces-apollo-pg-pooler.upbound-system.svc:5432"
+  --set "apollo.apollo.storage.postgres.connection.credentials.user=apollo" \
 ```
 
 #### Common customisations
@@ -231,27 +260,25 @@ Below you can find references to how to customize this setup:
 * **PostgreSQL configuration**: See the [CloudNativePG documentation][cloudnativepg-documentation-6] for more information on how to configure the PostgreSQL instances, for example `max_connections`, `shared_buffers`, etc.
 <!-- vale Google.Headings = NO -->
 
-### External setup with Spaces Controller credentials
+### External setup
 
 <!-- vale Google.Headings = YES -->
 :::tip
 
-If you want to run your PostgreSQL instance outside the cluster, but are fine with credentials being managed by the Spaces Controller, this is the suggested way to proceed.
+If you want to run your PostgreSQL instance outside the cluster, but are fine with credentials being managed by the `apollo` user, this is the suggested way to proceed.
 
 :::
 
 When using this setup, you must manually create the required Secrets in the
-`upbound-system` namespace. The Spaces Controller automatically generates the
-Apollo Syncer and Apollo Server credentials.
+`upbound-system` namespace. The `apollo` user must have permissions to create
+schemas and users.
 
 ```shell
-export SPACES_CONTROLLER_USER=spaces-controller
 
 kubectl create ns upbound-system
 
 # A Secret containing the necessary credentials to connect to the PostgreSQL instance
 kubectl create secret generic spaces-apollo-pg-app -n upbound-system \
-  --from-literal=username=$SPACES_CONTROLLER_USER \
   --from-literal=password=supersecret
 
 # A Secret containing the necessary CA certificate to verify the connection to the PostgreSQL instance
@@ -267,13 +294,12 @@ export PG_POOLED_URL=your-pgbouncer-host:5432 # this could be the same as above
 
 helm upgrade --install ... \
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.alpha.apollo.storage.postgres.create=false" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.user=$SPACES_CONTROLLER_USER" \
-  --set "features.alpha.apollo.storage.postgres.connection.url=$PG_URL" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.secret.name=spaces-apollo-pg-app" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.format=basicauth" \
-  --set "features.alpha.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
-  --set "features.alpha.apollo.storage.postgres.connection.syncer.url=$PG_POOLED_URL"
+  --set "apollo.apollo.storage.postgres.create=false" \
+  --set "apollo.apollo.storage.postgres.connection.url=$PG_URL" \
+  --set "apollo.apollo.storage.postgres.connection.credentials.secret.name=spaces-apollo-pg-app" \
+  --set "apollo.apollo.storage.postgres.connection.credentials.format=basicauth" \
+  --set "apollo.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
+  --set "apollo.apollo.storage.postgres.connection.syncer.url=$PG_POOLED_URL"
 ```
 
 ### External setup with all custom credentials
@@ -282,7 +308,6 @@ For custom credentials with Apollo Syncers or Server, create a new secret in the
 `upbound-system` namespace:
 
 ```shell
-export SPACES_CONTROLLER_USER=spaces-controller
 export APOLLO_SYNCER_USER=syncer
 export APOLLO_SERVER_USER=apollo
 
@@ -290,7 +315,6 @@ kubectl create ns upbound-system
 
 # A Secret containing the necessary credentials to connect to the PostgreSQL instance
 kubectl create secret generic spaces-apollo-pg-app -n upbound-system \
-  --from-literal=username=$SPACES_CONTROLLER_USER \
   --from-literal=password=supersecret
 
 # A Secret containing the necessary CA certificate to verify the connection to the PostgreSQL instance
@@ -317,24 +341,23 @@ export PG_POOLED_URL=your-pgbouncer-host:5432 # this could be the same as above
 
 helm ... \
   --set "features.alpha.apollo.enabled=true" \
-  --set "features.alpha.apollo.storage.postgres.create=false" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.user=$SPACES_CONTROLLER_USER" \
-  --set "features.alpha.apollo.storage.postgres.connection.url=$PG_URL" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.secret.name=spaces-apollo-pg-app" \
-  --set "features.alpha.apollo.storage.postgres.connection.credentials.format=basicauth" \
-  --set "features.alpha.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
-  --set "features.alpha.apollo.storage.postgres.connection.syncer.url=$PG_POOLED_URL" \
+  --set "apollo.apollo.storage.postgres.create=false" \
+  --set "apollo.apollo.storage.postgres.connection.url=$PG_URL" \
+  --set "apollo.apollo.storage.postgres.connection.credentials.secret.name=spaces-apollo-pg-app" \
+  --set "apollo.apollo.storage.postgres.connection.credentials.format=basicauth" \
+  --set "apollo.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
+  --set "apollo.apollo.storage.postgres.connection.syncer.url=$PG_POOLED_URL" \
 
   # For the syncers
-  --set "features.alpha.apollo.storage.postgres.connection.syncer.credentials.format=basicauth" \
-  --set "features.alpha.apollo.storage.postgres.connection.syncer.credentials.user=$APOLLO_SYNCER_USER" \
-  --set "features.alpha.apollo.storage.postgres.connection.syncer.credentials.secret.name=spaces-apollo-pg-syncer" \
+  --set "apollo.apollo.storage.postgres.connection.syncer.credentials.format=basicauth" \
+  --set "apollo.apollo.storage.postgres.connection.syncer.credentials.user=$APOLLO_SYNCER_USER" \
+  --set "apollo.apollo.storage.postgres.connection.syncer.credentials.secret.name=spaces-apollo-pg-syncer" \
 
   # For the server
-  --set "features.alpha.apollo.storage.postgres.connection.apollo.credentials.format=basicauth" \
-  --set "features.alpha.apollo.storage.postgres.connection.apollo.credentials.user=$APOLLO_SERVER_USER" \
-  --set "features.alpha.apollo.storage.postgres.connection.apollo.credentials.secret.name=spaces-apollo-pg-apollo" \
-  --set "features.alpha.apollo.storage.postgres.connection.apollo.url=$PG_POOLED_URL"
+  --set "apollo.apollo.storage.postgres.connection.apollo.credentials.format=basicauth" \
+  --set "apollo.apollo.storage.postgres.connection.apollo.credentials.user=$APOLLO_SERVER_USER" \
+  --set "apollo.apollo.storage.postgres.connection.apollo.credentials.secret.name=spaces-apollo-pg-apollo" \
+  --set "apollo.apollo.storage.postgres.connection.apollo.url=$PG_POOLED_URL"
 ```
 <!-- vale Google.Headings = NO -->
 

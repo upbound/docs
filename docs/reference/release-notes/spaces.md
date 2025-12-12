@@ -5,7 +5,7 @@ description: Release notes for the Spaces
 
 <!-- vale off -->
 
-<!-- Release notes template/Copy&Paste 
+<!-- Release notes template/Copy&Paste
 ## vX.Y.Z
 
 ### Release Date: YYYY-MM-DD
@@ -21,6 +21,33 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+
+## v1.15.1
+
+### Release Date: 2025-11-18
+
+#### Important Changes
+
+- **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
+- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/query-api/) for details.
+- UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/features/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
+- VCluster has been upgraded from v0.24.1 to v0.24.2 to support Kubernetes 1.33.
+- Bumped supported cert-manager version to v1.18.2.
+
+#### Features
+
+- **Spaces Metering:** Added a new metering collector with PostgreSQL storage for measurements and aggregations. This enables tracking of control plane resource usage over time.
+- **Enhanced Observability**, see [docs](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/space-observability/) for details:
+  - Added Envoy metrics for spaces-router to improve observability.
+  - Added distributed tracing support to spaces-router for space-level observability.
+- Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes, `controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy: True` through the Spaces helm chart values.
+- Scale down functions too for paused control planes, `spec.crossplane.state: Paused`.
+
+#### Bug Fixes
+
+- Fixed a bug where SharedTelemetry collector could only collect telemetry from Crossplane and provider pods due to network policies. Now it can collect from all pods in the control plane.
+- Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
+- Added default resource requests to external-secrets-operator deployments.
 
 ## v1.14.1
 
@@ -71,6 +98,15 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
+
+## v1.13.3
+
+### Release Date: 2025-11-25
+
+### What's Changed
+
+- Bump vcluster from 0.24.1 to 0.24.2 to support k8s 1.33.
+- Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 
 ## v1.13.2
 
@@ -157,7 +193,7 @@ This release bumps the vcluster dependency to `v0.24.1` with no API changes intr
   `controlPlanes.controller` Helm parameter trees have been removed from the `spaces` Helm chart. Customers relying on
   these parameters can now use the `controlPlanes.vcluster` parameter tree.
 - The control plane memory auto-scaler for the vcluster API server now sets memory limits on the vcluster `syncer` container
-  where `kube-api-server` is now colocated. It sets a limit of 3 times the proposed memory request for the `syncer` container. 
+  where `kube-api-server` is now colocated. It sets a limit of 3 times the proposed memory request for the `syncer` container.
 
 Upgrades to Spaces v1.12.0 should be performed from v1.11.3. Spaces v1.11.2 and prior versions do not include
 a synchronization mechanism for `spaces-controller`, potentially leading to upgrade issues.
@@ -255,17 +291,17 @@ If you are running Spaces with observability enabled; ensure the host cluster's 
 
 #### Overview
 
-This release enhances backup/restore workflows and telemetry customization, while addressing critical stability issues. Key highlights include:  
-- **Backup/Restore Improvements**:  
-  - Selective restoration of control planes using the `--controlplanes` flag via Space Backup API.  
-  - Backup jobs now fail explicitly if target control planes are missing.  
-- **Observability Enhancements**: Added support for OpenTelemetry **transform processors** in SharedTelemetry API, enabling advanced data manipulation (e.g., adding labels) before exporting metrics/logs/traces.  
-  -  Upgraded OTEL Collector images to **v0.116.0**.  
-- **Query API**: Helm chart now supports tuning PostgreSQL instance parameters and connection pooler settings for in-cluster deployments.  
-- **Bug Fixes**:  
-  - Resolved label selector matching issues in Shared Backups, Policies, and Telemetry APIs.  
-  - Fixed certificate renewal parameters causing synchronization issues in ArgoCD.  
-  - Ensured correct image pull secret usage for Crossplane version detection.  
+This release enhances backup/restore workflows and telemetry customization, while addressing critical stability issues. Key highlights include:
+- **Backup/Restore Improvements**:
+  - Selective restoration of control planes using the `--controlplanes` flag via Space Backup API.
+  - Backup jobs now fail explicitly if target control planes are missing.
+- **Observability Enhancements**: Added support for OpenTelemetry **transform processors** in SharedTelemetry API, enabling advanced data manipulation (e.g., adding labels) before exporting metrics/logs/traces.
+  -  Upgraded OTEL Collector images to **v0.116.0**.
+- **Query API**: Helm chart now supports tuning PostgreSQL instance parameters and connection pooler settings for in-cluster deployments.
+- **Bug Fixes**:
+  - Resolved label selector matching issues in Shared Backups, Policies, and Telemetry APIs.
+  - Fixed certificate renewal parameters causing synchronization issues in ArgoCD.
+  - Ensured correct image pull secret usage for Crossplane version detection.
 
 #### Features and Improvements
 

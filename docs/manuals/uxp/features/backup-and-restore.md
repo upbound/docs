@@ -273,10 +273,14 @@ metadata:
   name: <your_backup_name>
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+You must specify resource names in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Deletion policy
 

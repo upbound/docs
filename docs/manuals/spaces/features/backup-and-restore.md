@@ -17,8 +17,9 @@ The Shared Backups feature provides the following benefits:
 * Backup schedules for multiple control planes in a group
 * Shared Backups are available across all hosting environments of Upbound (Disconnected, Connected or Cloud Spaces)
 
-
+<!-- vale Google.Headings = NO -->
 ## Configure a Shared Backup Config
+<!-- vale Google.Headings = YES -->
 
 [SharedBackupConfig][sharedbackupconfig] is a [group-scoped][group-scoped] resource. You should create them in a group containing one or more control planes. This resource configures the storage details and provider. Whenever a backup executes (either by schedule or manually initiated), it references a SharedBackupConfig to tell it where store the snapshot.
 
@@ -34,8 +35,9 @@ The `spec.objectStorage.provider` and `spec.objectStorage.config` fields configu
 
 You can only set one provider. Upbound currently supports AWS, Azure, and GCP as providers.
 
-
+<!-- vale Upbound.Spelling = NO -->
 `spec.objectStorage.config` is a freeform map of configuration options for the object storage provider. See [Thanos object storage][thanos-object-storage] for more information on the formats for each supported cloud provider. `spec.bucket` and `spec.provider` overrides the required values in the config.
+<!-- vale Upbound.Spelling = YES -->
 
 
 #### AWS as a storage provider
@@ -181,10 +183,14 @@ metadata:
   name: daily-schedule
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+You must specify resource names in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Suspend a schedule
 
@@ -321,10 +327,14 @@ metadata:
   name: my-backup
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+You must specify resource names in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Set the time to live
 
@@ -447,10 +457,14 @@ metadata:
   name: my-backup
 spec:
   excludedResources:
-  - "XCluster"
-  - "XDatabase"
-  - "XRolePolicyAttachment"
+  - "xclusters.aws.platformref.upbound.io"
+  - "xdatabase.aws.platformref.upbound.io"
+  - "xrolepolicyattachment.iam.aws.crossplane.io"
 ```
+
+:::warning
+You must specify resource names in lowercase "resource.group" format (for example, `xclusters.aws.platformref.upbound.io`). Using only the resource kind (for example, `XCluster`) isn't supported.
+:::
 
 ### Set the time to live
 

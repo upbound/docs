@@ -24,6 +24,24 @@ Any important warnings or necessary information
 
 -->
 
+## v0.43.0
+
+### Release Date: 2025-11-25
+
+##### What's Changed
+
+- Added new commands for `up space license`: apply, show, and remove
+- Project `apiDependencies` can now be used for all Providers to generate language schemas
+- Added support for Spaces 1.15
+
+##### Bug Fixes
+
+- Fixed an issue with Operation Tests when using Python Functions
+- Fixed an issue when installing Upbound Spaces to pass basic auth credentials to OCI registries
+
+### Breaking Changes
+- Embedded Functions for Python need to update how they access resources from request - protobuf `.resource` fields with `struct_to_dict` from the SDK after updating to function-sdk-python [v0.9.0](https://github.com/crossplane/function-sdk-python/releases/tag/v0.9.0). See [reference PR](https://github.com/upbound/project-template-aws-s3/pull/13)
+
 ## v0.42.1
 
 ### Release Date: 2025-11-04

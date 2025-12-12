@@ -45,6 +45,7 @@ enums
 eksctl
 Env
 Entra
+enablement
 Fargate
 finalizer
 finalizers
@@ -88,6 +89,8 @@ OTEL
 overengineer
 observability
 patchSets
+Podman
+podman
 pooler
 proidc
 proselint
@@ -112,6 +115,7 @@ shortcode
 shortcodes
 SharedSecretStore
 SharedExternalSecret
+Sigstore
 SLAs
 stdin
 stdout
@@ -121,6 +125,7 @@ syncer
 Syncer
 Syncers
 syncers
+templatization
 timeframe
 tolerations
 Upbound
