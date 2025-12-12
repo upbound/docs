@@ -4,19 +4,18 @@ sidebar_position: 2
 description: A guide for segregating marketplace repository access.
 ---
 
-<!-- vale gitlab.SentenceLength = NO -->
-Organizations using Upbound may want to cleanly segregate repository access so that developers can push development artifacts as part of their `up project run` workflows, while production control planes are only allowed to consume authorized artifacts including specifically signed-off configuration packages, [providers][crossplane-providers], functions and add-ons after they pass SBOM, CVE, and other relevant checks.
-<!-- vale gitlab.SentenceLength = YES -->
+Upbound allows organizations to segregate repository access to consume only
+authorized artifacts like configuration packages,
+[providers][crossplane-providers], functions and add-ons. SBOM, CVE, and other
+relevant checks must pass to use these artifacts.
 
-## Overview
+Controlled repository access uses `ImageConfig` to limit production control
+planes from consuming unauthorized repositories and unsigned images.
 
-The approach for controlled repository access uses [ImageConfig][image-configs] to limit production control planes from consuming images from unauthorized repos and those that are not signed by a CI/CD pipeline.
+## Example `ImageConfig`
 
-## Example ImageConfig
-
-An example [ImageConfig][image-configs] for production control planes may look
-like below.
-
+The `ImageConfig` below is an example of a production control plane with
+`Verification` restrictions:
 ```
 kubectl describe imageconfigs.pkg.crossplane.io
 ```
@@ -49,7 +48,8 @@ Spec:
 Events:               <none>
 ```
 
-When installing any unsigned upbound package, even if it's public, no pods start up, it is not pulled and the revision is by design unhealthy.
+If you try to install any unsigned Upbound packages, pods to not start, the
+image doesn't pull, and the control plane marks the revision as unhealthy.
 
 ```
 kubectl get pkgrev
@@ -60,7 +60,8 @@ NAME                                                                       HEALT
 providerrevision.pkg.crossplane.io/upbound-provider-datadog-0f38c6598970   False     False     xpkg.upbound.io/upbound/provider-datadog:v0.3.0   Active   3m24s
 ```
 
-When describing the revision, the status condition shows that the signature verification failed as expected.
+If you describe the revision, the status condition returns with signature
+verification failure as expected.
 
 ```
 Status:
@@ -88,22 +89,30 @@ Status:
   Resolved Image:          xpkg.upbound.io/upbound/provider-datadog:v0.3.0
 ```
 
-## Image Signing
+## Image signing
 
-Information about image signing can be found [here][sigstore-cosign].
+
+For more information about image signing, review the [sigstore-cosign]
+repository.
 
 ## Benefits
 
-- Developers can push artifacts to one or more [marketplace][marketplace] registries, including a third party enterprise locations, and production control planes can only successfully consume the signed image versions.
-- Signing can happen in place for the images that pass CI/CD pipeline tests.
-- The solution does not require moving images across repos (dev to prod).
-- Team permissions and robot account / token setup and management is simpler
-  compared to a multi-step multi-repo setup.
-- All authorized consumers can pull signed images.
+Adding image verification provides the following benefits:
 
-## Caution
+- Allows developers to push artifacts to multiple [marketplace] registries,
+    including third-party enterprise locations. Production control planes only
+    consume signed image versions
+- Signs images that pass CI/CD pipeline tests automatically
+- Use images between development and production repositories without moving
+    them.
+- Requires less complexity in team permissions, robot account and token
+    management
+- Allows any authorized consumer to pull signed images
 
-The creation of a production control plane should be immediately followed by the installation of the ImageConfig. This is a second step. With it, the above overall approach is lean and clean.
+:::warning
+You **must** install the `ImageConfig` after creating a production control
+plane.
+:::
 
 [crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
 [image-configs]: https://docs.upbound.io/manuals/uxp/concepts/packages/image-configs/
