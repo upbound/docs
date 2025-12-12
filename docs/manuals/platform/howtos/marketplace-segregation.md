@@ -14,7 +14,7 @@ The approach for controlled repository access uses [ImageConfig][image-configs] 
 
 ## Example ImageConfig
 
-An exmaple [ImageConfig][image-configs] for production control planes may look
+An example [ImageConfig][image-configs] for production control planes may look
 like below.
 
 ```
