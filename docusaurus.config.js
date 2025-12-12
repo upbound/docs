@@ -111,7 +111,7 @@ const config = {
                             },
                             {
                                 label: "Platform Solutions",
-                                to: "/guides/solutions/general-idp/get-started/",
+                                to: "/guides/solutions/get-started/",
                             },
                             {
                                 label: "Use Cases",

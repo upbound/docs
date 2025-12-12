@@ -3,19 +3,19 @@ import React from 'react';
 const GuidesCards = () => {
   const sections = [
     {
+      title: 'Intelligent Control Planes',
+      description: 'Advanced control plane patterns with dynamic resource composition, log analysis, and database scaling.',
+      link: '/guides/intelligent-control-planes/'
+    },
+    {
       title: 'Solutions',
       description: 'Complete platform deployments including general IDP architecture and Upbound platform reference implementations.',
-      link: '/guides/solutions/general-idp/get-started/'
+      link: '/guides/solutions/get-started/'
     },
     {
       title: 'Use Cases',
       description: 'End-to-end scenarios for applications, cloud resources, databases as a service, and managed resources.',
       link: '/guides/usecases'
-    },
-    {
-      title: 'Intelligent Control Planes',
-      description: 'Advanced control plane patterns with dynamic resource composition, log analysis, and database scaling.',
-      link: '/guides/intelligent-control-planes/'
     }
   ];
 
