@@ -14,19 +14,6 @@ traffic to control planes. This changes addresses critical security issues and
 aligns with the Kuberenetes community decision to retire ingress-nginx in March
 2026.
 
-## Why?
-
-Currently, TLS connections terminate at the ingress-nginx controller, but client
-certificate validation happens later at the `spaces-router` component. The
-controller extracts the certificate and forwards it in the `ssl-client-cert`
-HTTP header. This presents a security flaw as the TLS handshake and certificate
-validation are separate.
-
-With TLS passthrough mode, the encrypted connection goes directly to the
-`spaces-router` component. Both the TLS handshake and certificate validation
-happen together and eliminates the security vulnerability.
-
-Gateway API is also the official routing standard for Kubernetes going forward.
 
 ## How?
 
