@@ -23,6 +23,23 @@ tests.
 
 ## Breaking changes
 
+:::tip Choosing your resource scope
+The `scope` field determines whether composite resources exist in a namespace or
+at cluster scope. Choose the appropriate scope before migrating:
+
+- **`Namespaced`** (Default, recommended) - Resources exist in a namespace and
+  can only compose resources in the same namespace. Provides namespace-level
+  isolation and follows standard Kubernetes patterns.
+- **`Cluster`** - Resources are cluster-scoped and can compose resources in any
+  namespace or at cluster scope. Use for cluster-level abstractions when
+  namespaced resources don't fit your requirements.
+- **`LegacyCluster`** - Cluster-scoped with support for claims (v1 compatibility mode).
+
+This guide uses `Namespaced` scope. Your choice affects the entire migration approach.
+
+For more details, see [XRD Scope in Crossplane docs][xrd-scope].
+:::
+
 ### 1. XRD API version and structure
 
 **Before (v1):**
@@ -51,21 +68,23 @@ kind: CompositeResourceDefinition
 metadata:
   name: sqlinstances.aws.platform.upbound.io
 spec:
-  scope: Namespaced  # NEW: Required in v2
+  scope: Namespaced  # Required in v2: Namespaced (default), Cluster, or LegacyCluster
   group: aws.platform.upbound.io
   names:
-    kind: SQLInstance  # Removed "X" prefix
+    kind: SQLInstance  # Removing "X" prefix is optional but conventional in v2
     plural: sqlinstances
-  # claimNames removed - claims not supported in v2
-  # connectionSecretKeys moved or handled differently
+  # claimNames removed - not supported with Namespaced scope in v2
+  # connectionSecretKeys mechanism deprecated - https://docs.crossplane.io/latest/guides/connection-details-composition/
 ```
 
 **Key changes:**
 - Update to `apiVersion: apiextensions.crossplane.io/v2`
-- Add `scope: Namespaced` (or `Cluster` if needed)
+- **Add `scope` field (required)**: `Namespaced` (default, recommended), `Cluster`,
+  or `LegacyCluster`
 - Remove `claimNames` - v2 namespaced resources don't support claims
-- Remove "X" prefix from resource names (`XSQLInstance` → `SQLInstance`)
-- Update metadata name to match new plural
+- **Optionally remove "X" prefix** from resource names (`XSQLInstance` → `SQLInstance`) -
+  this is a v2 naming convention but not required for migration
+- Update metadata name to match new plural (or keep existing names)
 
 ### 2. Namespaced resource API groups
 
@@ -287,10 +306,9 @@ spec:
 
 #### The v2 philosophy
 
-According to [crossplane/crossplane#6440][xp-6440], Crossplane v2 shifts to
-representing higher-level abstractions (complete applications) rather than
-low-level infrastructure. Connection secrets are no longer a built-in feature
-because:
+Crossplane v2 shifts to representing higher-level abstractions (complete
+applications) rather than low-level infrastructure. Connection secrets are no
+longer a built-in feature because:
 
 1. Not all XRs need to expose connection details
 2. Different use cases need different secret structures
@@ -298,13 +316,52 @@ because:
 
 #### Migration path: Manually compose secrets
 
-The official guidance from the Crossplane maintainers:
+For guidance on composing connection secrets in v2, see the official
+[Connection Details Composition guide][connection-details].
 
-> "In v2 you can recreate it using functions - just have your XR compose a
-> secret with the XR connection details in it."
+In v2, your **function must explicitly create a Kubernetes Secret resource**
+containing the connection details for the XR:
 
-This means your **function must explicitly create a Kubernetes Secret resource**
-containing the connection details for the XR.
+**v1 built-in:**
+```
+XR (writeConnectionSecretToRef)
+  └─> Crossplane creates Secret automatically
+```
+
+**v2 function-based:**
+```
+XR (no built-in support)
+  └─> Function generates:
+      ├─> Managed Resource (writeConnectionSecretToRef)
+      │     └─> Creates Secret with raw credentials
+      └─> Kubernetes Secret resource (manually composed)
+            └─> Aggregates connection details for user consumption
+```
+
+**XRD changes:** Remove `connectionSecretKeys` from your XRD:
+
+```yaml
+# v1 XRD - REMOVE THIS
+spec:
+  connectionSecretKeys:
+    - username
+    - password
+    - endpoint
+    - port
+```
+
+```yaml
+# v2 XRD - No connectionSecretKeys
+spec:
+  scope: Namespaced
+  # connectionSecretKeys removed
+```
+
+:::note
+The `spec.writeConnectionSecretToRef` field was automatically added by Crossplane
+to generated CRDs in v1. You don't need to manually remove it from your XRD
+schema - it was never part of the XRD, only the generated CRD.
+:::
 
 #### Implementation example
 
@@ -346,17 +403,16 @@ corev1.Secret{
     }
     type: "connection.crossplane.io/v1alpha1"
     if "rds-instance" in ocds:
-        data: {
-            # Base64-encode all values except password (already encoded)
-            endpoint: base64.encode(ocds["rds-instance"].Resource?.status?.atProvider?.endpoint or "")
-            host: base64.encode(ocds["rds-instance"].Resource?.status?.atProvider?.address or "")
-            port: base64.encode(str(ocds["rds-instance"].Resource?.status?.atProvider?.port or 3306))
-            username: base64.encode(ocds["rds-instance"].Resource?.spec?.forProvider?.username or "")
+        stringData: {
+            endpoint: ocds["rds-instance"].Resource?.status?.atProvider?.endpoint or ""
+            host: ocds["rds-instance"].Resource?.status?.atProvider?.address or ""
+            port: str(ocds["rds-instance"].Resource?.status?.atProvider?.port or 3306)
+            username: ocds["rds-instance"].Resource?.spec?.forProvider?.username or ""
             # Password comes from managed resource's connection secret
             password: ocds["rds-instance"].ConnectionDetails?.password or ""
         }
     else:
-        data: {}
+        stringData: {}
 }
 ```
 
@@ -413,72 +469,6 @@ spec:
 `CompositeConnectionDetails` only exposes data in the XR
 `.status.connectionDetails` field. It doesn't create a Kubernetes Secret that
 applications can reference.
-:::
-
-#### Architecture comparison
-
-**v1 built-in:**
-```
-XR (writeConnectionSecretToRef)
-  └─> Crossplane creates Secret automatically
-```
-
-**v2 function-based:**
-```
-XR (no built-in support)
-  └─> Function generates:
-      ├─> Managed Resource (writeConnectionSecretToRef)
-      │     └─> Creates Secret with raw credentials
-      └─> Kubernetes Secret resource (manually composed)
-            └─> Aggregates connection details for user consumption
-```
-
-#### XRD schema changes
-
-Remove connection secret fields from the XRD schema:
-
-```yaml
-# v1 XRD - REMOVE THESE
-spec:
-  connectionSecretKeys:
-    - username
-    - password
-    - endpoint
-    - port
-
-  # In openAPIV3Schema
-  spec:
-    properties:
-      writeConnectionSecretToRef:  # REMOVE
-        type: object
-        properties:
-          name:
-            type: string
-          namespace:
-            type: string
-```
-
-```yaml
-# v2 XRD - No connection secret fields
-spec:
-  scope: Namespaced
-  # connectionSecretKeys removed
-  # No writeConnectionSecretToRef in schema
-```
-
-#### Documentation note
-
-:::note
-This connection secret architecture change represents a significant shift in
-Crossplane v2. As noted in [crossplane/docs#1001][xp-docs-1001], migration
-guidance is actively evolving:
-
-- Official migration patterns are being developed
-- Community feedback from GitHub discussions informs best practices
-- This guide captures production migration experience
-
-Upbound is working with the Crossplane community to contribute these findings
-back to upstream documentation after field validation.
 :::
 
 ## Migration checklist
@@ -662,13 +652,13 @@ _items = [
         }
         type: "connection.crossplane.io/v1alpha1"
         if "your-managed-resource-name" in ocds:
-            data: {
-                endpoint: base64.encode(ocds["resource-name"].Resource?.status?.atProvider?.endpoint or "")
+            stringData: {
+                endpoint: ocds["resource-name"].Resource?.status?.atProvider?.endpoint or ""
                 password: ocds["resource-name"].ConnectionDetails?.password or ""
                 # ... other fields
             }
         else:
-            data: {}
+            stringData: {}
     }
 ]
 ```
@@ -797,8 +787,8 @@ cleaner, more intuitive APIs.
 - [Provider migration guide][provider-migration] - Migrate from monolithic to
   family providers
 
-[xp-6440]: https://github.com/crossplane/crossplane/issues/6440
-[xp-docs-1001]: https://github.com/crossplane/docs/issues/1001
+[xrd-scope]: https://docs.crossplane.io/latest/composition/composite-resource-definitions/#xrd-scope
+[connection-details]: https://docs.crossplane.io/latest/guides/connection-details-composition
 [migrate-live-v2]: /getstarted/upgrade-to-upbound/migrate-live-clusters-v2
 [upgrade-uxp]: /getstarted/upgrade-to-upbound/upgrade-to-uxp
 [provider-migration]: /manuals/packages/providers/migration
