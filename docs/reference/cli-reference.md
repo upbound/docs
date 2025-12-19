@@ -3,7 +3,7 @@ title: CLI Reference
 sidebar_position: 3
 ---
 
-This documentation is for the `up` CLI v0.43.0.
+This documentation is for the `up` CLI v0.44.0.
 
 The latest version of `up` can be installed by running:
 
@@ -114,6 +114,8 @@ import UpRepositoryPermissionGrant from '/cli/up_repository_permission_grant.md'
 import UpRepositoryPermissionList from '/cli/up_repository_permission_list.md';
 import UpRepositoryPermissionRevoke from '/cli/up_repository_permission_revoke.md';
 import UpRepositoryUpdate from '/cli/up_repository_update.md';
+import UpResource from '/cli/up_resource.md';
+import UpResourceCount from '/cli/up_resource_count.md';
 import UpRobot from '/cli/up_robot.md';
 import UpRobotCreate from '/cli/up_robot_create.md';
 import UpRobotDelete from '/cli/up_robot_delete.md';
@@ -144,6 +146,10 @@ import UpSpaceLicenseShow from '/cli/up_space_license_show.md';
 import UpSpaceList from '/cli/up_space_list.md';
 import UpSpaceMirror from '/cli/up_space_mirror.md';
 import UpSpaceUpgrade from '/cli/up_space_upgrade.md';
+import UpSupportBundle from '/cli/up_support-bundle.md';
+import UpSupportBundleCollect from '/cli/up_support-bundle_collect.md';
+import UpSupportBundleServe from '/cli/up_support-bundle_serve.md';
+import UpSupportBundleTemplate from '/cli/up_support-bundle_template.md';
 import UpTeam from '/cli/up_team.md';
 import UpTeamCreate from '/cli/up_team_create.md';
 import UpTeamDelete from '/cli/up_team_delete.md';
@@ -492,6 +498,12 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up repository update
 
 <UpRepositoryUpdate />
+## up resource
+
+<UpResource />
+## up resource count
+
+<UpResourceCount />
 ## up robot
 
 <UpRobot />
@@ -582,6 +594,18 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up space upgrade
 
 <UpSpaceUpgrade />
+## up support-bundle
+
+<UpSupportBundle />
+## up support-bundle collect
+
+<UpSupportBundleCollect />
+## up support-bundle serve
+
+<UpSupportBundleServe />
+## up support-bundle template
+
+<UpSupportBundleTemplate />
 ## up team
 
 <UpTeam />
