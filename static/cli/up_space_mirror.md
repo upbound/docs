@@ -49,3 +49,4 @@ up space mirror -v 1.9.0 --output-dir=/tmp/output --token-file=upbound-token.jso
 | `--output-dir` | `-t` | The local directory path where exported artifacts will be saved as .tgz files. |
 | `--destination-registry` | `-d` | The target container registry where the artifacts will be mirrored. |
 | `--version` | `-v` | **Required** The specific Spaces version for which the artifacts will be mirrored. |
+| `--dry-run` | | Print what would be mirrored but do not take action. |

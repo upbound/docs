@@ -33,13 +33,13 @@ Upgrade the Upbound Spaces deployment.
 | `--override-accounts-endpoint` | | Overrides the default accounts endpoint. |
 | `--kubeconfig` | | Override default kubeconfig path. |
 | `--kubecontext` | | Override default kubeconfig context. |
+| `--set` | | Set parameters. |
+| `--file` | `-f` | Parameters file. |
+| `--bundle` | | Local bundle path. |
 | `--registry-repository` | | Set registry for where to pull OCI artifacts from. This is an OCI registry reference, i.e. a URL without the scheme or protocol prefix. |
 | `--registry-endpoint` | | Set registry endpoint, including scheme, for authentication. |
 | `--token-file` | | File containing authentication token. Expecting a JSON file. Example: {"accessId": "<access-id>", "token": "<token>"} |
 | `--registry-username` | | Set the registry username. |
 | `--registry-password` | | Set the registry password. |
-| `--set` | | Set parameters. |
-| `--file` | `-f` | Parameters file. |
-| `--bundle` | | Local bundle path. |
 | `--yes` | | Answer yes to all questions |
 | `--rollback` | | Rollback to previously installed version on failed upgrade. |
