@@ -24,6 +24,30 @@ Any important warnings or necessary information
 
 -->
 
+## v0.44.0
+
+### Release Date: 2025-12-19
+
+#### Breaking Changes
+
+- `--dry-run` is no longer a global flag. All commands that previously respected
+  `--dry-run` still accept it, so there is no behavioral change.
+
+##### What's Changed
+
+- Added `up resource count` to collect resource counts from a control plane.
+- Made QR code generation in `up login` optional and disabled it by
+  default. This fixes device code input in some terminals.
+- Added `up support-bundle` for collecting and inspecting support bundles from
+  control planes.
+- Added support for `--init-resources` and `--extra-resources` in `up project
+  run`. This allows pull secrets and other configuration to be created when
+  running a project.
+- Added support for private git repositories in project API dependencies.
+- Overhauled our input and output system. Tables and spinners are prettier,
+  interactive inputs are more reliable, and there should be fewer output
+  glitches in general.
+
 ## v0.43.0
 
 ### Release Date: 2025-11-25
