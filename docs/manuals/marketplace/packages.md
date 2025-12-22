@@ -124,16 +124,20 @@ Users may also provide their additive package content, which renders on the list
 
 The Marketplace currently supports optionally adding an icon, release notes, readme, additional documentation, and SBOMs.
 By convention, organize these files in a directory-of-directories hierarchy,
-typically in the source tree. For example, the following is a valid layout for an icon, readme, and release notes:
+typically in the source tree. For example, the following is a valid layout for each supported extension:
 
 ```text
 extensions
+├── docs
+│   └── developing.md
 ├── icons
 │   └── icon.svg
 ├── readme
 │   └── readme.md
 └── release-notes
-    └── release_notes.md
+│   └── release_notes.md
+├── sbom
+│   └── sbom.spdx.json
 ```
 
 Then, to add these assets to your package version, use the `up` CLI:
