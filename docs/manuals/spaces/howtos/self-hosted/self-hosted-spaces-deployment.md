@@ -1,7 +1,7 @@
 ---
 title: Deployment Workflow
 sidebar_position: 3
-description: A  quickstart guide for Upbound Spaces
+description: A quickstart guide for Upbound Spaces
 tier: "business"
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
@@ -249,59 +249,135 @@ helm install aws-load-balancer-controller aws-load-balancer-controller --namespa
 
 </CodeBlock>
 
-### Install ingress-nginx
+### Install Envoy Gateway
 
-Starting with Spaces v1.10.0, you need to configure the ingress-nginx
-controller to allow SSL-passthrough mode. You can do so by passing the
-`--enable-ssl-passthrough=true` command-line option to the controller.
-The following Helm install command enables this with the `controller.extraArgs`
-parameter:
+Starting with Spaces v1.10.0, Upbound recommends using the [Gateway API] for
+routing traffic to Spaces. Gateway API is the official Kubernetes standard for
+ingress and replaces the legacy Ingress API.
+
+This guide uses Envoy Gateway as the Gateway API controller and replaces
+ingress-nginx previously recommended. 
+
+:::info
+If you need to continue to use ingress-nginx temporarily, use the [ingress-nginx
+migration guide][migration guide].
+
+The Kubernetes community announced that ingress-nginx will be retired in March
+2026 and you should plan to migrate to Gateway API before then.
+:::
+
+
+First, install Envoy Gateway with Helm:
+
+```bash
+helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
+  --timeout 360s --create-namespace envoy-gateway \
+  oci://docker.io/envoyproxy/gateway-helm \
+  --version "v1.2.4"
+```
+
+Next, create the Gateway API resources for your cloud provider:
 
 <CodeBlock cloud="aws">
 
+Create EnvoyProxy configuration for AWS load balancer
+
 ```bash
-helm upgrade --install ingress-nginx ingress-nginx \
-  --create-namespace --namespace ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.12.1 \
-  --set 'controller.service.type=LoadBalancer' \
-  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-type=external' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-scheme=internet-facing' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-nlb-target-type=ip' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-protocol=http' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-path=/healthz' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-port=10254' \
-  --wait
+kubectl apply -f - --server-side <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: external
+          service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+          service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+          service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: http
+          service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: /healthz
+          service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "19002"
+EOF
+```
+
+
+Create GatewayClass:
+
+```bash
+kubectl apply -f - --server-side <<EOF
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: spaces
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+  parametersRef:
+    group: gateway.envoyproxy.io
+    kind: EnvoyProxy
+    name: spaces-proxy-config
+    namespace: envoy-gateway-system
+EOF
 ```
 
 </CodeBlock>
 
 <CodeBlock cloud="azure">
+```bash
+Create EnvoyProxy configuration for Azure load balancer:
 
 ```bash
-helm upgrade --install ingress-nginx ingress-nginx \
-  --create-namespace --namespace ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.12.1 \
-  --set 'controller.service.type=LoadBalancer' \
-  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path=/healthz' \
-  --wait
+kubectl apply -f - --server-side <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations:
+          service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+EOF
+```
+
+Create GatewayClass:
+
+```bash
+kubectl apply -f - --server-side <<EOF
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: spaces
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+  parametersRef:
+    group: gateway.envoyproxy.io
+    kind: EnvoyProxy
+    name: spaces-proxy-config
+    namespace: envoy-gateway-system
+EOF
 ```
 
 </CodeBlock>
 
 <CodeBlock cloud="gcp">
 
+Create GatewayClass:
 ```bash
-helm upgrade --install ingress-nginx ingress-nginx \
-  --create-namespace --namespace ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.12.1 \
-  --set 'controller.service.type=LoadBalancer' \
-  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
-  --wait
+kubectl apply -f - --server-side <<EOF
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: spaces
+spec:
+  controllerName: gateway.envoyproxy.io/gatewayclass-controller
+EOF
 ```
 
 </CodeBlock>
@@ -375,7 +451,10 @@ kubectl get ingress \
 
 </CodeBlock>
 
-If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+If the preceding command doesn't return a load balancer address then your
+provider may not have allocated it yet. Once it's available, add a DNS record
+for the `ROUTER_HOST` to point to the given load balancer address. If it's an
+IPv4 address, add an A record. If it's a domain name, add a CNAME record.
 
 ## Configure the up CLI
 
