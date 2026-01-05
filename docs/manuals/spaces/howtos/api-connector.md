@@ -279,8 +279,8 @@ spec:
     name: <provider-controlplane-name> # Or --name value
 ```
 
-<!-- vale Google.Spacing= NO -->
-<!-- vale Microsoft.Spacing= NO -->
+<!-- vale Google.Spacing = NO -->
+<!-- vale Microsoft.Spacing = NO -->
 <!-- vale gitlab.SentenceSpacing = NO -->
 The `ClusterAPIBinding` name must match the **Resource.Group** (name of the CustomResourceDefinition) of the CRD you want to bind.
 <!-- vale gitlab.SentenceSpacing = YES -->
