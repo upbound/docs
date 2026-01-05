@@ -412,22 +412,22 @@
         },
         {
             "source": "/deploy/control-plane-topologies(/)?",
-            "destination": "/manuals/spaces/features/control-plane-topologies",
+            "destination": "/manuals/spaces/howtos/control-plane-topologies",
             "permanent": true
         },
         {
             "source": "/operate/observability(/)?",
-            "destination": "/manuals/spaces/features/observability",
+            "destination": "/manuals/spaces/howtos/observability",
             "permanent": true
         },
         {
             "source": "/connect/query-api(/)?",
-            "destination": "/manuals/spaces/features/query-api",
+            "destination": "/manuals/spaces/howtos/query-api",
             "permanent": true
         },
         {
             "source": "/operate/secrets-management(/)?",
-            "destination": "/manuals/spaces/features/secrets-management",
+            "destination": "/manuals/spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -452,7 +452,7 @@
         },
         {
             "source": "/deploy/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/features/backup-and-restore",
+            "destination": "/manuals/spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
@@ -697,12 +697,12 @@
         },
         {
             "source": "/all-spaces/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/features/backup-and-restore",
+            "destination": "/manuals/spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
             "source": "/all-spaces/control-plane-topologies(/)?",
-            "destination": "/manuals/spaces/features/control-plane-topologies",
+            "destination": "/manuals/spaces/howtos/control-plane-topologies",
             "permanent": true
         },
         {
@@ -722,17 +722,17 @@
         },
         {
             "source": "/all-spaces/observability(/)?",
-            "destination": "/manuals/spaces/features/observability",
+            "destination": "/manuals/spaces/howtos/observability",
             "permanent": true
         },
         {
             "source": "/all-spaces/query-api(/)?",
-            "destination": "/manuals/spaces/features/query-api",
+            "destination": "/manuals/spaces/howtos/query-api",
             "permanent": true
         },
         {
             "source": "/all-spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/features/secrets-management",
+            "destination": "/manuals/spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -767,7 +767,7 @@
         },
         {
             "source": "/concepts/control-plane-connector(/)?",
-            "destination": "/manuals/spaces/features/ctp-connector",
+            "destination": "/manuals/spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
@@ -917,12 +917,12 @@
         },
         {
             "source": "/disconnected-spaces/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/features/backup-and-restore",
+            "destination": "/manuals/spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
             "source": "/disconnected-spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/features/secrets-management",
+            "destination": "/manuals/spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -997,17 +997,17 @@
         },
         {
             "source": "/mcp/control-plane-connector(/)?",
-            "destination": "/manuals/spaces/features/ctp-connector",
+            "destination": "/manuals/spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
             "source": "/mcp/ctp-connector(/)?",
-            "destination": "/manuals/spaces/features/ctp-connector",
+            "destination": "/manuals/spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
             "source": "/operate/ctp-connector(/)?",
-            "destination": "/manuals/spaces/features/ctp-connector",
+            "destination": "/manuals/spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
@@ -1087,7 +1087,7 @@
         },
         {
             "source": "/self-hosted-spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/features/secrets-management",
+            "destination": "/manuals/spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -1097,7 +1097,7 @@
         },
         {
             "source": "/spaces/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/features/backup-and-restore",
+            "destination": "/manuals/spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
@@ -1107,12 +1107,12 @@
         },
         {
             "source": "/spaces/observability(/)?",
-            "destination": "/manuals/spaces/features/observability",
+            "destination": "/manuals/spaces/howtos/observability",
             "permanent": true
         },
         {
             "source": "/spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/features/secrets-management",
+            "destination": "/manuals/spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -1152,7 +1152,7 @@
         },
         {
             "source": "/operate/api-connector(/)?",
-            "destination": "/manuals/spaces/features/api-connector",
+            "destination": "/manuals/spaces/howtos/api-connector",
             "permanent": true
         },
         {
@@ -1335,14 +1335,44 @@
             "destination": "/guides/solutions/design/",
             "permanent": true
         },
-         {
+        {
             "source": "/guides/solutions/general-idp/portal(/)?",
             "destination": "/guides/solutions/portal/",
             "permanent": true
         },
-         {
+        {
             "source": "/guides/solutions/general-idp/deploy-apis(/)?",
             "destination": "/guides/solutions/deploy-apis/",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/features/managed-service(/)?",
+            "destination": "/manuals/spaces/howtos/managed-service",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/features/add-ons(/)?",
+            "destination": "/manuals/uxp/concepts/add-ons",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/features/intelligent-control-planes(/)?",
+            "destination": "/manuals/uxp/concepts/intelligent-control-planes",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/features/backup-and-restore(/)?",
+            "destination": "/manuals/uxp/howtos/backup-and-restore",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/features/query-api(/)?",
+            "destination": "/manuals/uxp/howtos/query-api",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/uxp/features/official-package-support(/)?",
+            "destination": "/manuals/uxp/official-package-support",
             "permanent": true
         }
     ]

@@ -44,9 +44,9 @@ Read the [Get Started][get-started] guide to learn how to use UXP to build your 
 [control-plane]: /getstarted/#what-is-upbound
 [self-managed-uxp]: /manuals/uxp/howtos/uxp-deployment
 [licensing]: /manuals/uxp/howtos/license-management
-[intelligent-control-planes]: /manuals/uxp/features/intelligent-control-planes
-[add-ons]: /manuals/uxp/features/add-ons
+[intelligent-control-planes]: /manuals/uxp/concepts/intelligent-control-planes
+[add-ons]: /manuals/uxp/concepts/add-ons
 [concepts]: /manuals/uxp/concepts/composition/overview
-[features]: /manuals/uxp/features/intelligent-control-planes
+[features]: /manuals/uxp/concepts/intelligent-control-planes
 [guides]: /manuals/uxp/howtos/uxp-deployment
 [get-started]: /getstarted

@@ -64,7 +64,7 @@ Learn about example use cases of Intelligent Control Planes by [reading the guid
 [intelligent-compositions]: /manuals/uxp/concepts/composition/intelligent-compositions
 [intelligent-operations]: /manuals/uxp/concepts/operations/intelligent-operations
 [mcp-servers]: #model-context-protocol-mcp-servers
-[add-ons]: /manuals/uxp/features/add-ons
+[add-ons]: /manuals/uxp/concepts/add-ons
 [add-on-concept]: /manuals/uxp/concepts/packages/add-ons
 [intelligent-control-planes-guides]: /guides/intelligent-control-planes/scale-database
 [function-claude]: https://marketplace.upbound.io/functions/upbound/function-claude

@@ -89,7 +89,7 @@ Read the concept documentation for [Intelligent Control Planes][intelligent-cont
 
 [upbound-crossplane]: /manuals/uxp/overview
 [watch-operations]: /manuals/uxp/concepts/operations/watch-operation
-[intelligent-controllers]: /manuals/uxp/features/intelligent-control-planes/
+[intelligent-controllers]: /manuals/uxp/concepts/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-deployment-analysis
 [project]: /manuals/cli/concepts/projects
 [intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions

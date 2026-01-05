@@ -539,5 +539,5 @@ Delete the `SharedTelemetryConfig` to stop audit logging for all control planes 
 kubectl delete sharedtelemetryconfig <config-name> --namespace <namespace>
 ```
 
-[ctp-selection]: /manuals/spaces/features/observability/#control-plane-selection
+[ctp-selection]: /manuals/spaces/howtos/observability/#control-plane-selection
 [Auditing]: https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/

@@ -101,7 +101,7 @@ up project stop
 Read the concept documentation for [Intelligent Control Planes][intelligent-controlplanes] to learn more about using AI-powered functions in your function pipelines.
 
 [upbound-crossplane]: /manuals/uxp/overview
-[intelligent-controlplanes]: /manuals/uxp/features/intelligent-control-planes/
+[intelligent-controlplanes]: /manuals/uxp/concepts/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-aws-database-ai
 [project]: /manuals/cli/concepts/projects
 [intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions
