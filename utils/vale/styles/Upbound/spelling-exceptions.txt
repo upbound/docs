@@ -57,6 +57,7 @@ Geekdocs
 Goldmark
 Grammarly
 Grafana
+hostname
 Istio
 istio
 image_uri
@@ -71,6 +72,8 @@ kubeconfig's
 kubecontext
 Kyverno
 Kyverno's
+LLM
+LLMs
 MCP
 MCPs
 MCP's
@@ -101,6 +104,7 @@ pullable
 Pydantic
 Pylance
 readme
+remediations
 Rego
 routable
 Runtime
@@ -128,12 +132,15 @@ syncers
 templatization
 timeframe
 tolerations
+uninstallation
+uninstall
 Upbound
 Upbound's
 Upjet
 UXP
 uxp
 vCluster
+vcluster
 virtualized
 Velero
 VMs
@@ -148,4 +155,5 @@ XRDs
 XRs
 Zendesk
 Upjet
+
 
