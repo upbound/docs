@@ -10,10 +10,16 @@ Upbound SaaS coming soon.
 :::
 
 <!-- vale gitlab.Uppercase = NO -->
+<!-- vale Upbound.Spelling = NO -->
 <!-- ignore LLM -->
-[Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent Control Planes][intelligent-controllers], which define AI-augmented functions to perform tasks. This guide walks through a use case for using AI to analyze and remediate issues for app deployments, such as out-of-memory and pods stuck in a _crashloopbackoff_.
+[Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent
+Control Planes][intelligent-controllers], which define AI-augmented functions to
+perform tasks. This guide walks through a use case for using AI to analyze and
+remediate issues for app deployments, such as out-of-memory and pods stuck in a
+_crashloopbackoff_.
 
 <!-- vale gitlab.Uppercase = YES -->
+<!-- vale Upbound.Spelling = YES -->
 ## Prerequisites
 
 Before you begin make sure you have:
@@ -58,7 +64,9 @@ kubectl apply -f examples/admin.yaml
 
 ## Apply example deployments and watch for issues
 
+<!-- vale Upbound.Spelling = NO -->
 Apply the examples to demonstrate flows for catching and remediating out-of-memory and _crashloopbackoff_ issues:
+<!-- vale Upbound.Spelling = YES -->
 
 ```shell
 kubectl apply -f examples/oomkilled.yaml -f crashloopbackoff.yaml
@@ -68,7 +76,9 @@ These workloads intentionally cause the deployed pods to exhibit respective erro
 
 ## Observe analyses and remediations
 
-The operation function pipeline creates _Analysis_ and _Remediation_ resources based on observed behaviors. Fetch an analysis object to observe suggestions for remediation made by the LLM:
+The operation function pipeline creates _Analysis_ and _Remediation_ resources
+based on observed behaviors. Fetch an analysis object to observe suggestions for
+remediation made by the LLM:
 
 ```shell
 kubectl get Analysis -n crossplane-system
@@ -89,7 +99,7 @@ Read the concept documentation for [Intelligent Control Planes][intelligent-cont
 
 [upbound-crossplane]: /manuals/uxp/overview
 [watch-operations]: /manuals/uxp/concepts/operations/watch-operation
-[intelligent-controllers]: /manuals/uxp/features/intelligent-control-planes/
+[intelligent-controllers]: /manuals/uxp/concepts/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-deployment-analysis
 [project]: /manuals/cli/concepts/projects
 [intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions

@@ -1,7 +1,7 @@
 ---
 title: Official Package support
 description: "Learn how to use the Official Packages on UXP"
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 Upbound Crossplane supports running [Official Packages][official-packages]
