@@ -28,6 +28,17 @@ Upbound Crossplane comes with a number of features that help you start, run, and
 
 UXP is available to any users under Upbound's Community plan. Commercial licenses are available. Some features are available for Community plan users, while others require a commercial license. See [license management][licensing] for more details.
 
+## Commercial-only Features
+
+Users on a **Standard Plan** or greater have access to commercial features that enhance the reliability, efficiency, and supportability of their control planes. For more information, see our [pricing plans][pricing] or [contact our sales team][contact-sales].
+
+| Feature | Benefit |
+|---------|---------|
+| [Backup and Restore][backup-restore] | Automatically schedule control plane snapshots for disaster recovery and seamless upgrades. |
+| [Function Scale-to-Zero][function-scale-to-zero] | Reduce resource consumption by automatically scaling composition functions to zero when idle. |
+| [Official Package Patch Releases][official-package-support] | Access patch releases of Official Providers with security fixes and bug patches. |
+| [Provider Pod Autoscaling][provider-vpa] | Dynamically adjust CPU and memory for provider pods to handle performance spikes. |
+
 ## How-tos 
 
 To learn about Crossplane and UXP features, read the [how-to guides][guides].
@@ -50,3 +61,9 @@ Read the [Get Started][get-started] guide to learn how to use UXP to build your 
 [features]: /manuals/uxp/features/intelligent-control-planes
 [guides]: /manuals/uxp/howtos/uxp-deployment
 [get-started]: /getstarted
+[backup-restore]: /manuals/uxp/features/backup-and-restore
+[function-scale-to-zero]: /manuals/uxp/howtos/function-scale-to-zero
+[official-package-support]: /manuals/uxp/features/official-package-support
+[provider-vpa]: /manuals/uxp/howtos/provider-vpa
+[pricing]: https://www.upbound.io/pricing
+[contact-sales]: https://www.upbound.io/contact-us
