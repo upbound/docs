@@ -1,6 +1,8 @@
 /* Upbound Documentation Styles */
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap");
+
+/* Import Upbound Elements styles */
+@import '@upbound/elements/styles.css';
 
 /* CSS VARIABLES & COLOR PALETTE */
 
@@ -81,7 +83,7 @@
     --ifm-heading-font-family: "Outfit", -apple-system, BlinkMacSystemFont,
         "Segoe UI", system-ui, sans-serif;
 
-    --ifm-font-size-base: 15px;
+    --ifm-font-size-base: 16px;
     --ifm-line-height-base: 1.6;
     --ifm-heading-font-weight: 400;
     --ifm-font-weight-base: 350;
@@ -204,14 +206,41 @@ a {
 }
 
 a:hover {
-    color: var(--link-hover-color);
     text-decoration: underline;
+}
+
+.theme-layout-main a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Reset Unified UI global link styles to prevent unwanted overrides */
+.theme-layout-navbar a, .theme-layout-navbar a:hover,
+nav[aria-label="Main"] a:not(.hover\:underline), nav[aria-label="Main"] a:not(.hover\:underline):hover  {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav[aria-label="Main"] .text-neutral-0 a, nav[aria-label="Main"] .text-neutral-0 a:hover , 
+nav[aria-label="Main"] .text-neutral-0, nav[aria-label="Main"] .text-neutral-0:hover {
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+/* Navbar dropdown popover - theme agnostic */
+/* Target navigation menu dropdowns rendered via Radix portal */
+/* Dropdown has white background in both modes, so always use dark text */
+[data-radix-popper-content-wrapper] [role="dialog"] a,
+[data-radix-popper-content-wrapper] [role="dialog"] a:hover,
+html[data-theme="dark"] [data-radix-popper-content-wrapper] [role="dialog"] a,
+html[data-theme="dark"] [data-radix-popper-content-wrapper] [role="dialog"] a:hover {
+    color: var(--brand-neutral-800, #1a1a2e) !important;
+    text-decoration: none !important;
 }
 
 article
     a:not(.card):not(.menu__link):not(.navbar__item):not(
         .table-of-contents__link
     ):not(.cta-button) {
+
     color: var(--grape);
     text-decoration: none;
     border-bottom: 1px solid var(--grape);
@@ -233,47 +262,8 @@ article
 /* ============================================================ */
 
 .navbar {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    height: var(--ifm-navbar-height);
-    padding: 0 1.5rem;
-    backdrop-filter: blur(8px);
-}
-
-.navbar__brand {
-    margin-right: 2rem;
-}
-
-.navbar__logo {
-    height: 2rem;
-}
-
-.navbar__logo img {
-    height: 100%;
-    width: auto;
-}
-
-.navbar__inner {
-    align-items: center;
-    max-width: none;
-}
-
-.navbar__items {
-    align-items: center;
-}
-
-.navbar__link--active,
-.navbar__item--active .navbar__link {
-    color: var(--grape) !important;
-}
-
-/* Dark mode navbar */
-html[data-theme="dark"] .navbar__link--active,
-html[data-theme="dark"] .navbar__item--active .navbar__link {
-    color: var(--brand-purple-200) !important;
-}
-
-.breadcrumbs__link {
-    border-bottom: none !important;
+    height: 3.5rem;
+    padding: 0;
 }
 
 /* ============================================================ */
@@ -902,6 +892,7 @@ html[data-theme="dark"] .landing-page {
 /* Hero Section */
 .hero-section {
     position: relative;
+    z-index: 1;
     padding: 3rem 0;
     display: flex;
     align-items: center;
@@ -1765,6 +1756,50 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
         max-width: 380px;
     }
 }
+
+/* ============================================================ */
+/* DOCSEARCH COMPONENT */
+/* ============================================================ */
+
+/* Fix for search icon visibility - override Tailwind reset */
+.DocSearch-Button-Container svg,
+.DocSearch-Search-Icon {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    width: 14px !important;
+    height: 14px !important;
+    color: #fff !important;
+}
+
+/* Remove any ::before pseudo-elements from DocSearch */
+.DocSearch-Button::before,
+.DocSearch-Button-Container::before,
+.DocSearch-Search-Icon::before {
+    display: none !important;
+    content: none !important;
+}
+
+/* Between md and lg breakpoints, show only icon in square button */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Exclude logged-in navbar from these responsive styles */
+    .navbar:not(.navbar--logged-in) .DocSearch-Button-Placeholder,
+    .navbar:not(.navbar--logged-in) .DocSearch-Button-Keys {
+        display: none !important;
+    }
+    
+    .navbar:not(.navbar--logged-in) .DocSearch-Button {
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+        min-width: 32px !important;
+    }
+    
+    .navbar:not(.navbar--logged-in) .DocSearch-Button-Container {
+        justify-content: center !important;
+    }
+}
+
 /* Announcement bar */
 div[class*='announcementBar'] {
     font-family: "Outfit", -apple-system, BlinkMacSystemFont,
@@ -1804,4 +1839,46 @@ div[class*='announcementBar'] button[class*='close']:hover {
         min-height: 50px;
         padding: 10px 15px;
     }
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumbs__item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumbs__link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--grape);
+    text-decoration: none;
+    border-bottom: none !important;
+    padding: var(--ifm-breadcrumb-padding-vertical) var(--ifm-breadcrumb-padding-horizontal);
+}
+
+.breadcrumbs__link:hover {
+    color: var(--link-hover-color);
+}
+
+a.breadcrumbs__link svg {
+    display: block;
+    width: 1.25em;
+    height: 1.25em;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1px;
+}
+
+/* Fix for sidebar collapse button icon alignment */
+.collapseSidebarButton_PEFL {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.collapseSidebarButton_PEFL svg {
+    margin: 0 auto !important;
 }
