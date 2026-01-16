@@ -208,11 +208,15 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 
 ### Publish summary matrix
 
+<ScrollTable>
+
 | Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Business Critical) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
 | ------------------- | ------------------- | -------------------------- | -------------------- | ------ | ---- | -------------------------------------------------------- | ------------------- | ------------------------- | ------------------------- | ------------------------------------- | -------------------------------------------- |
 | Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | Unlimited           | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
 | Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 12 months           | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
 | Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | [Standard+][pricing-page] | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
+
+</ScrollTable>
 
 ## Package versions
 
