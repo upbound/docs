@@ -49,6 +49,23 @@ Any important warnings or necessary information
 - Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
 - Added default resource requests to external-secrets-operator deployments.
 
+## v1.14.3
+
+### Release Date: 2026-01-20
+
+#### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+- Fix: SharedTelemetry now properly cleans up its status.provisioned/failed/selected after a control plane is deleted.
+
+## v1.14.2
+
+### Release Date: 2026-11-24
+
+#### What's Changed
+
+- Bump vcluster from 0.24.1 to 0.24.2 to support k8s 1.33.
+
 ## v1.14.1
 
 ### Release Date: 2025-09-24
@@ -963,4 +980,3 @@ further assistance, please reach out to your Upbound account representative.
 - Fix otlp-collector networkpolicy ports
 
 <!-- vale on -->
-
