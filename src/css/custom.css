@@ -410,19 +410,86 @@ html[data-theme="dark"] .planBadge {
 article table,
 .theme-doc-markdown table,
 table {
-    display: table;
+    display: block;
     width: auto;
     min-width: 50%;
     max-width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 0.75rem;
-    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     margin: 1.5rem 0;
     box-shadow: var(--upbound-card-shadow);
     border: 1px solid var(--upbound-border-color);
     background-color: var(--ifm-background-color);
     font-size: 0.9rem;
+}
+
+/* Scrollable table wrapper - use with <ScrollTable> component */
+.table-scroll-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.table-scroll-wrapper table {
+    margin: 0;
+}
+
+/* Right shadow indicator */
+.table-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to left,
+        rgba(0, 0, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        transparent 100%
+    );
+    pointer-events: none;
+    border-radius: 0 0.75rem 0.75rem 0;
+    opacity: var(--show-right-shadow, 1);
+    transition: opacity 0.2s ease;
+}
+
+/* Left shadow indicator */
+.table-scroll-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right,
+        rgba(0, 0, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        transparent 100%
+    );
+    pointer-events: none;
+    border-radius: 0.75rem 0 0 0.75rem;
+    opacity: var(--show-left-shadow, 0);
+    transition: opacity 0.2s ease;
+    z-index: 1;
+}
+
+/* Dark mode shadows - use light color for visibility */
+html[data-theme="dark"] .table-scroll-wrapper::after {
+    background: linear-gradient(to left,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 40%,
+        transparent 100%
+    );
+}
+
+html[data-theme="dark"] .table-scroll-wrapper::before {
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 40%,
+        transparent 100%
+    );
 }
 
 table thead {
