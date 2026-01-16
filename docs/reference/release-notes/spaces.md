@@ -22,6 +22,15 @@ Any important warnings or necessary information
 
 -->
 
+## v1.15.2
+
+### Release Date: 2026-1-16
+
+#### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+- Fix: SharedTelemetry now properly cleans up its status.provisioned/failed/selected after a control plane is deleted.
+
 ## v1.15.1
 
 ### Release Date: 2025-11-18
@@ -963,4 +972,3 @@ further assistance, please reach out to your Upbound account representative.
 - Fix otlp-collector networkpolicy ports
 
 <!-- vale on -->
-

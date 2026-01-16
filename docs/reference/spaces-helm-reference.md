@@ -14,7 +14,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.2.12 |
+| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.2.11 |
 
 ## Values
 
@@ -61,7 +61,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.apollo.storage.postgres.create | bool | `true` |  |
 | apollo.apollo.storage.postgres.sidecar | bool | `false` |  |
 | apollo.apollo.syncer.enabled | bool | `false` |  |
-| apollo.apollo.syncer.image.tag | string | `"v0.2.12"` |  |
+| apollo.apollo.syncer.image.tag | string | `"v0.2.11"` |  |
 | authentication.hubIdentities | bool | `true` | This enables respecting built in Kubernetes identities (clientcertificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified within the Connected Space's hub. |
 | authentication.structuredConfig | string | `""` | Enables consumption of JWT Authenticators via Authentication Configuration per https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration <br> The below property takes the name of a configmap that contains a structured authentication configuration. |
 | authorization.hubRBAC | bool | `true` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
@@ -319,13 +319,14 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.collectors.tag | string | `""` | Tag for the OpenTelemetry collector image. |
 | observability.collectors.tolerations | list | `[]` | Tolerations for the telemetry log collectors daemonset pods. |
 | observability.enabled | bool | `false` | This enables the observability feature within this space.<br> Enabling observability requires OpenTelemetry Operator for Kubernetes to be installed in the cluster. See https://opentelemetry.io/docs/kubernetes/operator/ |
-| observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[],"traces":[]},"exporters":{"debug":null}},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. When enabled, collects metrics from Spaces infrastructure components including router control plane and Envoy proxy metrics (timeouts, status codes, latency, circuit breakers). |
-| observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[],"traces":[]}` | The space-level OpenTelemetry collector exporter configuration. <br> otlphttp: <br>   endpoint: https://otlp.eu01.nr-data.net <br>   headers: <br>     api-key: <your-key> <br> |
+| observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[],"traces":[]},"exporters":{"debug":null}},"env":[],"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. When enabled, collects metrics from Spaces infrastructure components including router control plane and Envoy proxy metrics (timeouts, status codes, latency, circuit breakers). |
+| observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[],"traces":[]}` | The space-level OpenTelemetry collector exporter configuration. <br> otlphttp: <br>   endpoint: https://otlp.eu01.nr-data.net <br>   headers: <br>     api-key: "${env:API_KEY}" <br> |
 | observability.spacesCollector.config.exportPipeline.logs | list | `[]` | List of logs exporters names. |
 | observability.spacesCollector.config.exportPipeline.metrics | list | `[]` | List of metrics exporters names. |
 | observability.spacesCollector.config.exportPipeline.traces | list | `[]` | List of traces exporters names. |
 | observability.spacesCollector.config.exporters | object | `{"debug":null}` | To export observability data, configure the exporters here and update the exportPipeline to include the exporters you want to use per telemetry type. |
 | observability.spacesCollector.config.exporters.debug | string | `nil` | The debug exporter configuration. |
+| observability.spacesCollector.env | list | `[]` | Environment variables to set on the Spaces OpenTelemetry collector pods. Useful for injecting secrets via secretKeyRef for exporters like Datadog, Honeycomb, etc. |
 | observability.spacesCollector.repository | string | `"opentelemetry-collector-spaces"` | Repository for the space-level OpenTelemetry collector image. |
 | observability.spacesCollector.resources.limits.cpu | string | `"100m"` | CPU limit for the space-level OpenTelemetry collector pod. |
 | observability.spacesCollector.resources.limits.memory | string | `"1Gi"` | Memory limit for the space-level OpenTelemetry collector pod. |
@@ -404,4 +405,3 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 <!-- vale on -->
 
 <!-- end-table-no -->
-
