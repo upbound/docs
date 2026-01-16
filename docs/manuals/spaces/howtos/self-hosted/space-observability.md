@@ -43,12 +43,18 @@ To configure how Upbound exports, review the `spacesCollector` value in your Spa
 ```yaml
 observability:
   spacesCollector:
+    env:
+      - name: API_KEY
+        valueFrom:
+          secretKeyRef:
+            name: my-secret
+            key: api-key
     config:
       exporters:
         otlphttp:
           endpoint: "<your-endpoint>"
           headers:
-            api-key: YOUR_API_KEY
+            api-key: ${env:API_KEY}
       exportPipeline:
         logs:
           - otlphttp
@@ -66,7 +72,7 @@ provider-kubernetes.
 ### Router metrics
 
 The Spaces router component uses Envoy as a reverse proxy and exposes detailed
-metrics about request handling, circuit breakers, and connection pooling. 
+metrics about request handling, circuit breakers, and connection pooling.
 Upbound collects these metrics in your Space after you enable Space-level
 observability.
 
