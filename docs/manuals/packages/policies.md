@@ -117,7 +117,7 @@ By default, Upbound backports security fixes to minor releases that were publish
 
 - All downstream releases (main and backport) are signed and include an SBOM.
 - Upstream main releases aren't signed and don't include an SBOM.
-- FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Upbound [Enterprise+ subscription][pricing-page].
+- FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Upbound [Business Critical subscription][pricing-page].
 
 ### Requesting a fix or backport
 
