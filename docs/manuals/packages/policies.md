@@ -33,7 +33,7 @@ The following policies govern how you can access, receive support for, and under
 | Availability Window                      | The duration that a release remains pullable from the xpkg.upbound.io registry.<br/>**Main releases**: available for 12 months from the release date. <br/>**Backport releases**: available for 18 months from the release date.                                                                                                                                                                                                                                             |
 | Availability vs Support                  | **Availability**: how long a release remains pullable from the registry (12 months for main releases, 18 months for backport releases). **Support**: the duration Upbound provides active support for a release (12 months from the minor version release date). A package may be available after its support window has ended.                                                                                                                                              |
 | SBOM                                     | A software bill of materials (SBOM) lists all the software components and their versions used in the published package. Upstream main releases are unsigned and have no SBOM. All downstream releases published to xpkg.upbound.io are signed and include an SBOM.                                                                                                                                                                                                           |
-| FIPS                                     | FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Enterprise+ license.                                                                                                                                                                                                                                                                                                                                                    |
+| FIPS                                     | FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require a Business Critical subscription.                                                                                                                                                                                                                                                                                                                                                    |
 
 ## At a Glance
 
@@ -42,13 +42,13 @@ The following policies govern how you can access, receive support for, and under
 - Upbound publishes packages to both the Crossplane and Upbound registries.
 - Official package main releases are available at no cost to all community members.
 - Backport releases of past minor versions require paid subscriptions to support extra maintenance costs.
-- FIPS-compatible artifact (packages and UXP) versions are available with paid subscriptions.
+- FIPS-compatible artifact (packages and UXP) versions are available with a Business Critical subscription.
 
 ### Which Package Versions Can You Access
 
 - **Community user or no subscription?** You can pull all main releases published within the last 12 months.
 - **Standard, Enterprise, or Business Critical subscription?** You can pull all main and backport releases (with configured pull secrets for backports).
-- **Need FIPS-compatible packages?** Requires Enterprise+ subscription.
+- **Need FIPS-compatible packages?** Requires a Business Critical subscription.
 
 ## Source Code and License
 
@@ -117,7 +117,7 @@ By default, Upbound backports security fixes to minor releases that were publish
 
 - All downstream releases (main and backport) are signed and include an SBOM.
 - Upstream main releases aren't signed and don't include an SBOM.
-- FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Upbound [Enterprise+ subscription][pricing-page].
+- FIPS-compatible artifacts are available for all Upbound Official and Partner packages and require an Upbound [Business Critical subscription][pricing-page].
 
 ### Requesting a fix or backport
 
@@ -208,7 +208,7 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 
 ### Publish summary matrix
 
-| Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Enterprise+) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
+| Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Business Critical) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
 | ------------------- | ------------------- | -------------------------- | -------------------- | ------ | ---- | -------------------------------------------------------- | ------------------- | ------------------------- | ------------------------- | ------------------------------------- | -------------------------------------------- |
 | Upstream main       | OSS Crossplane, UXP | `crossplane-contrib/`      | `xpkg.crossplane.io` | No     | No   | No                                                       | Unlimited           | None                      | No                        | Follows Crossplane schedule or faster | Unit + basic integration                     |
 | Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 12 months           | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
