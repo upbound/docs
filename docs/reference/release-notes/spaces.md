@@ -99,6 +99,14 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
 
+## v1.13.4
+
+### Release Date: 2026-01-20
+
+### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+
 ## v1.13.3
 
 ### Release Date: 2025-11-25
