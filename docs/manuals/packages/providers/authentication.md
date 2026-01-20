@@ -1657,7 +1657,11 @@ Create an [AWS IAM Role][aws-iam-role] with a **Custom trust policy** for the OI
 <Tabs>
 <TabItem value="upbound" label="Upbound Cloud Spaces">
 
-For control planes running in Upbound Cloud Spaces, use the Upbound OIDC provider:
+For control planes running in Upbound Cloud Spaces, create an IAM role in AWS with a trust policy that allows the provider running in your control plane to assume the role via Upbound's OIDC service.
+
+1. Follow the [AWS Upbound OIDC setup](#aws-upbound-oidc) to add Upbound as an OpenID Connect provider in your AWS account if you haven't already.
+
+2. Create an IAM role with the following **trust policy**. This policy establishes a federated trust relationship with Upbound's OIDC provider (`proidc.upbound.io`) and restricts role assumption to only the specific provider in your control plane:
 
 ```json
 {
@@ -1680,7 +1684,14 @@ For control planes running in Upbound Cloud Spaces, use the Upbound OIDC provide
 }
 ```
 
-Replace `$AWS_ACCOUNT_ID`, `$ORG`, and `$CONTROL_PLANE_NAME` with your values.
+Replace the following values:
+- `$AWS_ACCOUNT_ID`: Your AWS account ID
+- `$ORG`: Your Upbound organization name
+- `$CONTROL_PLANE_NAME`: Your control plane name
+
+The `Federated` principal references Upbound's OIDC provider, and the `Condition` ensures only your specific provider can assume this role.
+
+3. Attach the necessary AWS permissions to this role (for example, permissions to access EKS clusters).
 
 </TabItem>
 
@@ -1864,7 +1875,11 @@ Create an [AWS IAM Role][aws-iam-role] with a **Custom trust policy** for the OI
 <Tabs>
 <TabItem value="upbound" label="Upbound Cloud Spaces">
 
-For control planes running in Upbound Cloud Spaces, use the Upbound OIDC provider:
+For control planes running in Upbound Cloud Spaces, create an IAM role in AWS with a trust policy that allows the provider running in your control plane to assume the role via Upbound's OIDC service.
+
+1. Follow the [AWS Upbound OIDC setup](#aws-upbound-oidc) to add Upbound as an OpenID Connect provider in your AWS account if you haven't already.
+
+2. Create an IAM role with the following **trust policy**. This policy establishes a federated trust relationship with Upbound's OIDC provider (`proidc.upbound.io`) and restricts role assumption to only the specific provider in your control plane:
 
 ```json
 {
@@ -1887,7 +1902,14 @@ For control planes running in Upbound Cloud Spaces, use the Upbound OIDC provide
 }
 ```
 
-Replace `$AWS_ACCOUNT_ID`, `$ORG`, and `$CONTROL_PLANE_NAME` with your values.
+Replace the following values:
+- `$AWS_ACCOUNT_ID`: Your AWS account ID
+- `$ORG`: Your Upbound organization name
+- `$CONTROL_PLANE_NAME`: Your control plane name
+
+The `Federated` principal references Upbound's OIDC provider, and the `Condition` ensures only your specific provider can assume this role.
+
+3. Attach the necessary AWS permissions to this role (for example, permissions to access EKS clusters).
 
 </TabItem>
 
