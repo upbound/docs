@@ -13,7 +13,8 @@ This guide covers authentication methods for Upbound Official Providers. Each pr
 | AWS | [Upbound OIDC](#aws-upbound-oidc), [Access Keys](#aws-access-keys), [WebIdentity](#aws-webidentity), [IRSA](#aws-irsa) |
 | Azure | [Upbound OIDC](#azure-upbound-oidc), [Service Principal](#azure-service-principal), [Managed Identity](#azure-managed-identity) |
 | GCP | [Upbound OIDC](#gcp-upbound-oidc), [Service Account Keys](#gcp-service-account-keys), [OAuth 2.0 Token](#gcp-oauth-token), [Service Account Impersonation](#gcp-service-account-impersonation), [Workload Identity](#gcp-workload-identity) |
-| Kubernetes | [Upbound Identity](#kubernetes-upbound-identity), [Injected Identity](#kubernetes-injected-identity) |
+| Kubernetes | [Upbound Identity](#kubernetes-upbound-identity), [Injected Identity](#kubernetes-injected-identity), [Injected Identity with Cloud Provider Credentials](#kubernetes-injected-identity-cloud) |
+| Helm | [Injected Identity with Cloud Provider Credentials](#helm-injected-identity-cloud) |
 
 ## AWS authentication
 
@@ -1629,11 +1630,422 @@ kind: Provider
 metadata:
   name: provider-kubernetes
 spec:
-  package: xpkg.upbound.io/upbound/provider-kubernetes:v0.16.0
+  package: xpkg.upbound.io/upbound/provider-kubernetes:v1.2.0
   runtimeConfigRef:
     apiVersion: pkg.crossplane.io/v1beta1
     kind: DeploymentRuntimeConfig
     name: provider-kubernetes
+```
+
+### Kubernetes Injected Identity with Cloud Provider Credentials {#kubernetes-injected-identity-cloud}
+
+Use this method to authenticate the Kubernetes provider to a remote cluster using cloud provider credentials. This approach works when the provider is running in a cloud environment (EKS, GKE, or AKS) or when using Upbound Cloud Spaces with OIDC.
+
+The provider supports multiple identity types for authentication:
+- `AWSWebIdentityCredentials`: For EKS clusters using AWS IAM roles
+- `GoogleApplicationCredentials`: For GKE clusters using Google service accounts
+- `AzureServicePrincipalCredentials`: For AKS clusters using Azure service principals
+- `AzureWorkloadIdentityCredentials`: For AKS clusters using Azure workload identity
+- `UpboundTokens`: For Upbound APIs using Upbound authentication
+
+This guide demonstrates the AWS Web Identity approach, which works in both Upbound Cloud Spaces (using Upbound OIDC) and when running directly in EKS (using EKS OIDC).
+
+#### Create an AWS IAM Role
+
+Create an [AWS IAM Role][aws-iam-role] with a **Custom trust policy** for the OIDC connector.
+
+<Tabs>
+<TabItem value="upbound" label="Upbound Cloud Spaces">
+
+For control planes running in Upbound Cloud Spaces, use the Upbound OIDC provider:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::$AWS_ACCOUNT_ID:oidc-provider/proidc.upbound.io"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "proidc.upbound.io:aud": "sts.amazonaws.com",
+          "proidc.upbound.io:sub": "mcp:$ORG/$CONTROL_PLANE_NAME*:provider:upbound-provider-kubernetes"
+        }
+      }
+    }
+  ]
+}
+```
+
+Replace `$AWS_ACCOUNT_ID`, `$ORG`, and `$CONTROL_PLANE_NAME` with your values.
+
+</TabItem>
+
+<TabItem value="eks" label="Running in EKS">
+
+:::important
+When running in EKS, you must first configure [IRSA](#aws-irsa) or [EKS Pod Identity][eks-pod-identity] for the provider. This guide assumes you have already completed the IRSA or Pod Identity setup.
+:::
+
+For providers running directly in EKS, use the EKS cluster OIDC provider. Follow the [IRSA setup](#aws-irsa) for creating the IAM role trust policy and configuring the provider's service account.
+
+</TabItem>
+</Tabs>
+
+#### Configure target EKS cluster access
+
+Configure your EKS cluster to allow the IAM role to access it. This can be done using one of these methods:
+
+- [EKS Access Entries][eks-access-entries] (recommended)
+- [aws-auth ConfigMap][aws-auth-configmap]
+
+Assign appropriate Kubernetes permissions (for example, `system:masters` group for full access or create a custom Role/RoleBinding).
+
+#### Configure the Provider
+
+<Tabs>
+<TabItem value="upbound" label="Upbound Cloud Spaces">
+
+For control planes running in Upbound Cloud Spaces, create a DeploymentRuntimeConfig to inject the Upbound OIDC token and AWS credentials:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: aws-audience
+spec:
+  deploymentTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            proidc.cloud-spaces.upbound.io/audience: sts.amazonaws.com
+        spec:
+          containers:
+          - name: package-runtime
+            env:
+            - name: AWS_WEB_IDENTITY_TOKEN_FILE
+              value: /var/run/secrets/upbound.io/provider/token
+            - name: AWS_ROLE_ARN
+              value: arn:aws:iam::$AWS_ACCOUNT_ID:role/$ROLE_NAME
+            - name: AWS_REGION
+              value: $AWS_REGION
+      selector: {}
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-kubernetes
+spec:
+  package: xpkg.upbound.io/upbound/provider-kubernetes:v1.2.0
+  runtimeConfigRef:
+    name: aws-audience
+```
+
+Replace `$AWS_ACCOUNT_ID`, `$ROLE_NAME`, and `$AWS_REGION` with your values.
+
+</TabItem>
+
+<TabItem value="eks" label="Running in EKS">
+
+:::important
+This assumes you have already configured [IRSA](#aws-irsa) or [EKS Pod Identity][eks-pod-identity] for the provider-kubernetes package. The provider's service account must have the appropriate IAM role annotation.
+:::
+
+For providers running directly in EKS with IRSA, install the provider with your IRSA DeploymentRuntimeConfig:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-kubernetes
+spec:
+  package: xpkg.upbound.io/upbound/provider-kubernetes:v1.2.0
+  runtimeConfigRef:
+    name: irsa-runtimeconfig
+```
+
+EKS automatically injects the web identity token when the service account has the `eks.amazonaws.com/role-arn` annotation. Refer to the [IRSA section](#aws-irsa) for the complete setup.
+
+</TabItem>
+</Tabs>
+
+#### Create a kubeconfig Secret
+
+Generate a kubeconfig for your EKS cluster using the AWS CLI:
+
+```shell
+aws eks update-kubeconfig \
+  --region $AWS_REGION \
+  --name $CLUSTER_NAME \
+  --profile $AWS_PROFILE \
+  --kubeconfig eks-kubeconfig.txt
+```
+
+Create a Secret containing the kubeconfig for your EKS cluster. The kubeconfig should use an empty user configuration, as the AWS credentials will be provided by environment variables:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: crossplane-system
+  name: cluster-config
+type: Opaque
+stringData:
+  kubeconfig: |
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: $CERTIFICATE_AUTHORITY_DATA
+        server: https://$EKS_CLUSTER_ENDPOINT
+      name: $EKS_CLUSTER_ARN
+    contexts:
+    - context:
+        cluster: $EKS_CLUSTER_ARN
+        user: $EKS_CLUSTER_ARN
+      name: $EKS_CLUSTER_ARN
+    current-context: $EKS_CLUSTER_ARN
+    kind: Config
+    preferences: {}
+    users:
+    - name: $EKS_CLUSTER_ARN
+      user: {}
+```
+
+Replace the following placeholders with values from your generated kubeconfig:
+- `$CERTIFICATE_AUTHORITY_DATA`: The base64-encoded certificate authority data for your EKS cluster
+- `$EKS_CLUSTER_ENDPOINT`: Your EKS cluster endpoint (for example, `ABC123.gr7.us-west-2.eks.amazonaws.com`)
+- `$EKS_CLUSTER_ARN`: Your EKS cluster ARN (for example, `arn:aws:eks:us-west-2:123456789012:cluster/my-cluster`)
+
+#### Create a ProviderConfig
+
+Create a ProviderConfig that uses the Secret credentials and AWS Web Identity for authentication:
+
+```yaml
+apiVersion: kubernetes.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: cluster-config
+      key: kubeconfig
+  identity:
+    source: InjectedIdentity
+    type: AWSWebIdentityCredentials
+```
+
+## Helm authentication
+
+The Upbound Official Helm Provider supports multiple authentication methods for accessing Kubernetes clusters.
+
+### Helm Injected Identity with Cloud Provider Credentials {#helm-injected-identity-cloud}
+
+Use this method to authenticate the Helm provider to a remote cluster using cloud provider credentials. This approach works when the provider is running in a cloud environment (EKS, GKE, or AKS) or when using Upbound Cloud Spaces with OIDC.
+
+The provider supports multiple identity types for authentication:
+- `AWSWebIdentityCredentials`: For EKS clusters using AWS IAM roles
+- `GoogleApplicationCredentials`: For GKE clusters using Google service accounts
+- `AzureServicePrincipalCredentials`: For AKS clusters using Azure service principals
+- `AzureWorkloadIdentityCredentials`: For AKS clusters using Azure workload identity
+
+This guide demonstrates the AWS Web Identity approach, which works in both Upbound Cloud Spaces (using Upbound OIDC) and when running directly in EKS (using EKS OIDC).
+
+#### Create an AWS IAM Role
+
+Create an [AWS IAM Role][aws-iam-role] with a **Custom trust policy** for the OIDC connector.
+
+<Tabs>
+<TabItem value="upbound" label="Upbound Cloud Spaces">
+
+For control planes running in Upbound Cloud Spaces, use the Upbound OIDC provider:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::$AWS_ACCOUNT_ID:oidc-provider/proidc.upbound.io"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringLike": {
+          "proidc.upbound.io:aud": "sts.amazonaws.com",
+          "proidc.upbound.io:sub": "mcp:$ORG/$CONTROL_PLANE_NAME*:provider:upbound-provider-helm"
+        }
+      }
+    }
+  ]
+}
+```
+
+Replace `$AWS_ACCOUNT_ID`, `$ORG`, and `$CONTROL_PLANE_NAME` with your values.
+
+</TabItem>
+
+<TabItem value="eks" label="Running in EKS">
+
+:::important
+When running in EKS, you must first configure [IRSA](#aws-irsa) or [EKS Pod Identity][eks-pod-identity] for the provider. This guide assumes you have already completed the IRSA or Pod Identity setup.
+:::
+
+For providers running directly in EKS, use the EKS cluster OIDC provider. Follow the [IRSA setup](#aws-irsa) for creating the IAM role trust policy and configuring the provider's service account.
+
+</TabItem>
+</Tabs>
+
+#### Configure target EKS cluster access
+
+Configure your EKS cluster to allow the IAM role to access it. This can be done using one of these methods:
+
+- [EKS Access Entries][eks-access-entries] (recommended)
+- [aws-auth ConfigMap][aws-auth-configmap]
+
+Assign appropriate Kubernetes permissions (for example, `cluster-admin` role for full access or create a custom Role/RoleBinding).
+
+#### Configure the Provider
+
+<Tabs>
+<TabItem value="upbound" label="Upbound Cloud Spaces">
+
+For control planes running in Upbound Cloud Spaces, create a DeploymentRuntimeConfig to inject the Upbound OIDC token and AWS credentials:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1beta1
+kind: DeploymentRuntimeConfig
+metadata:
+  name: helm-aws-audience
+spec:
+  deploymentTemplate:
+    spec:
+      template:
+        metadata:
+          annotations:
+            proidc.cloud-spaces.upbound.io/audience: sts.amazonaws.com
+        spec:
+          containers:
+          - name: package-runtime
+            env:
+            - name: AWS_WEB_IDENTITY_TOKEN_FILE
+              value: /var/run/secrets/upbound.io/provider/token
+            - name: AWS_ROLE_ARN
+              value: arn:aws:iam::$AWS_ACCOUNT_ID:role/$ROLE_NAME
+            - name: AWS_REGION
+              value: $AWS_REGION
+      selector: {}
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-helm
+spec:
+  package: xpkg.upbound.io/upbound/provider-helm:v1.1.0
+  runtimeConfigRef:
+    name: helm-aws-audience
+```
+
+Replace `$AWS_ACCOUNT_ID`, `$ROLE_NAME`, and `$AWS_REGION` with your values.
+
+</TabItem>
+
+<TabItem value="eks" label="Running in EKS">
+
+:::important
+This assumes you have already configured [IRSA](#aws-irsa) or [EKS Pod Identity][eks-pod-identity] for the provider-helm package. The provider's service account must have the appropriate IAM role annotation.
+:::
+
+For providers running directly in EKS with IRSA, install the provider with your IRSA DeploymentRuntimeConfig:
+
+```yaml
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-helm
+spec:
+  package: xpkg.upbound.io/upbound/provider-helm:v1.1.0
+  runtimeConfigRef:
+    name: irsa-runtimeconfig
+```
+
+EKS automatically injects the web identity token when the service account has the `eks.amazonaws.com/role-arn` annotation. Refer to the [IRSA section](#aws-irsa) for the complete setup.
+
+</TabItem>
+</Tabs>
+
+#### Create a kubeconfig Secret
+
+Generate a kubeconfig for your EKS cluster using the AWS CLI:
+
+```shell
+aws eks update-kubeconfig \
+  --region $AWS_REGION \
+  --name $CLUSTER_NAME \
+  --profile $AWS_PROFILE \
+  --kubeconfig eks-kubeconfig.txt
+```
+
+Create a Secret containing the kubeconfig for your EKS cluster. The kubeconfig should use an empty user configuration, as the AWS credentials will be provided by environment variables:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: crossplane-system
+  name: helm-cluster-config
+type: Opaque
+stringData:
+  kubeconfig: |
+    apiVersion: v1
+    clusters:
+    - cluster:
+        certificate-authority-data: $CERTIFICATE_AUTHORITY_DATA
+        server: https://$EKS_CLUSTER_ENDPOINT
+      name: $EKS_CLUSTER_ARN
+    contexts:
+    - context:
+        cluster: $EKS_CLUSTER_ARN
+        user: $EKS_CLUSTER_ARN
+      name: $EKS_CLUSTER_ARN
+    current-context: $EKS_CLUSTER_ARN
+    kind: Config
+    preferences: {}
+    users:
+    - name: $EKS_CLUSTER_ARN
+      user: {}
+```
+
+Replace the following placeholders with values from your generated kubeconfig:
+- `$CERTIFICATE_AUTHORITY_DATA`: The base64-encoded certificate authority data for your EKS cluster
+- `$EKS_CLUSTER_ENDPOINT`: Your EKS cluster endpoint (for example, `ABC123.gr7.us-west-2.eks.amazonaws.com`)
+- `$EKS_CLUSTER_ARN`: Your EKS cluster ARN (for example, `arn:aws:eks:us-west-2:123456789012:cluster/my-cluster`)
+
+#### Create a ProviderConfig
+
+Create a ProviderConfig that uses the Secret credentials and AWS Web Identity for authentication:
+
+```yaml
+apiVersion: helm.crossplane.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: default
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: helm-cluster-config
+      key: kubeconfig
+  identity:
+    source: InjectedIdentity
+    type: AWSWebIdentityCredentials
 ```
 
 [upbound-cloud-spaces]: /manuals/spaces/overview
@@ -1673,3 +2085,6 @@ spec:
 [grant-the-team-a-role]: /manuals/platform/concepts/identity-management/teams/
 [generate-a-kubeconfig-for-a-space]: /manuals/spaces/howtos/self-hosted/gitops/#generate-a-kubeconfig-for-a-space
 [generate-a-kubeconfig-for-a-control-plane-in-a-space]: /manuals/spaces/howtos/self-hosted/gitops/#generate-a-kubeconfig-for-a-control-plane-in-a-space
+[eks-access-entries]: https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html
+[aws-auth-configmap]: https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
+[eks-pod-identity]: https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html
