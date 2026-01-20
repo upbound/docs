@@ -121,19 +121,6 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Watch image configs only if available
 - Allow telemetry scrape to all vcluster managed pods
 
-## v1.12.1
-
-### Release Date: 2025-09-16
-
-#### What's Changed
-
-- Health: don't mark control planes as degraded for unsupported versions
-- SpaceBackup: try backing up controlplanes even if not ready/healthy
-- Apollo/CNPG: allow configuring resources and separate wal volume
-- Make sharedbackups and spacebackups less brittle
-- Watch image configs only if available
-- Allow telemetry scrape to all vcluster managed pods
-
 ## v1.13.1
 
 ### Release Date: 2025-06-11
@@ -179,6 +166,35 @@ This release bumps the vcluster dependency to `v0.24.1` with no API changes intr
 - Added validation to ensure the control plane name does not exceed 63 characters.
 - Fixed a bug in how the envoy within spaces-router was configured that could result in non-deterministic behavior. Now envoy will allocate workers based on the CPU limits it is provided.
 - Spaces-controller now runs with leader-election enabled even if it's not configured in HA mode with multiple replicas.
+
+## v1.12.3
+
+### Release Date: 2026-01-20
+
+#### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+
+## v1.12.2
+
+### Release Date: 2025-12-09
+
+#### What's Changed
+
+- Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
+
+## v1.12.1
+
+### Release Date: 2025-09-16
+
+#### What's Changed
+
+- Health: don't mark control planes as degraded for unsupported versions
+- SpaceBackup: try backing up controlplanes even if not ready/healthy
+- Apollo/CNPG: allow configuring resources and separate wal volume
+- Make sharedbackups and spacebackups less brittle
+- Watch image configs only if available
+- Allow telemetry scrape to all vcluster managed pods
 
 ## v1.12.0
 
@@ -963,4 +979,3 @@ further assistance, please reach out to your Upbound account representative.
 - Fix otlp-collector networkpolicy ports
 
 <!-- vale on -->
-
