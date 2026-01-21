@@ -308,7 +308,7 @@ Before proceeding, ensure that you have set the correct kubecontext for your app
 cluster.
 
 ```bash
-up alpha migration export --pause-before-export --output=my-export.tar.gz --yes
+up controlplane migration export --pause-before-export --output=my-export.tar.gz --yes
 ```
 
 This command performs the following:
@@ -354,7 +354,7 @@ control plane matches the core Crossplane version.
 
 Use the following command to import the resources:
 ```bash
-up alpha migration import -i my-export.tar.gz \
+up controlplane migration import -i my-export.tar.gz \
  --unpause-after-import \
  --mcp-connector-cluster-id=my-appcluster \
  --mcp-connector-claim-namespace=my-appcluster
