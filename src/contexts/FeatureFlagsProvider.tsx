@@ -12,8 +12,9 @@ import {
   setContextDebounced,
   upboundMemberContextEvaluator,
 } from "@upbound/utils"
-import { PropsWithChildren, useCallback, useEffect } from "react"
+import { PropsWithChildren, useCallback, useEffect, useRef } from "react"
 
+import { useConfig } from "./config"
 import { useSession } from "./SessionProvider"
 
 type FlagConfiguration = ConstructorParameters<typeof InMemoryProvider>[0]
@@ -41,32 +42,32 @@ const flagConfig: FlagConfiguration = {
 const isDevelopment = process.env.NODE_ENV === "development"
 const isTest = process.env.NODE_ENV === "test"
 
-const getFeatureFlagsClientID = () =>
-  (globalThis.docusaurus?.siteConfig?.customFields as any)
-    ?.launchDarklyClientId || ""
-
-// Initialize OpenFeature provider at module level
-if (!isDevelopment && !isTest) {
-  if (typeof window !== "undefined") {
-    const ldOptions = {
-      streaming: true,
-      initializationTimeout: 2,
-    }
-    OpenFeature.setProvider(
-      new LaunchDarklyClientProvider(getFeatureFlagsClientID(), ldOptions)
-    )
-  } else {
-    // Use empty InMemoryProvider for SSR
-    OpenFeature.setProvider(new InMemoryProvider())
-  }
-} else {
-  OpenFeature.setProvider(new InMemoryProvider(flagConfig))
-}
+// Default provider for SSR and initial load
+OpenFeature.setProvider(new InMemoryProvider(flagConfig))
 
 export const FeatureFlagsProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
+  const config = useConfig()
   const { currentUser, currentOrg } = useSession()
+  const providerInitialized = useRef(false)
+
+  // Initialize LaunchDarkly provider on client
+  useEffect(() => {
+    if (providerInitialized.current) return
+    if (isDevelopment || isTest) return
+
+    const clientId = config.launchDarklyClientId
+    if (clientId) {
+      OpenFeature.setProvider(
+        new LaunchDarklyClientProvider(clientId, {
+          streaming: true,
+          initializationTimeout: 2,
+        })
+      )
+    }
+    providerInitialized.current = true
+  }, [config.launchDarklyClientId])
 
   useEffect(() => {
     if (!currentUser || !currentOrg) {
