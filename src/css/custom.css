@@ -187,6 +187,17 @@ h6 {
     font-weight: 500;
 }
 
+/* Reset heading styles inside navigation */
+#__docusaurus > nav h1,
+#__docusaurus > nav h2,
+#__docusaurus > nav h3,
+#__docusaurus > nav h4,
+#__docusaurus > nav h5,
+#__docusaurus > nav h6 {
+    margin-bottom: inherit;
+    margin-top: inherit;
+}
+
 p {
     margin-bottom: 1.25rem;
     color: var(--ifm-font-color-base);
