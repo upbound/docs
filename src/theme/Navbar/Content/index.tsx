@@ -44,7 +44,8 @@ import {
   useOrganizations,
   useFeatureFlags,
 } from "@site/src/hooks"
-import { resolveDocUrl } from "../../utils/resolveDocUrl"
+import { resolveDocUrl } from "@site/src/theme/utils/resolveDocUrl"
+import { useConfig } from "@site/src/contexts/config"
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -55,6 +56,7 @@ const LoggedOutNavbarContent = (): ReactNode => {
   const {
     navbar: { hideOnScroll },
   } = useThemeConfig()
+  const { baseDomain } = useConfig()
   const { navbarRef } = useHideableNavbar(hideOnScroll)
 
   const items = useNavbarItems()
@@ -125,12 +127,14 @@ const LoggedOutNavbarContent = (): ReactNode => {
       .filter((item): item is React.ReactElement => item !== null)
   }
 
+  const ACCOUNTS_URL = `https://accounts.${baseDomain}`
+
   const drawerItems = [
     ...renderDrawerItems(regularItems),
     <NavigationMenuItem key="sign-in">
       <MainNavigationButtonLink
         variant="secondary"
-        href="https://accounts.upbound.io/login"
+        href={`${ACCOUNTS_URL}/login`}
         className="w-full"
       >
         Sign In
@@ -139,7 +143,7 @@ const LoggedOutNavbarContent = (): ReactNode => {
     <NavigationMenuItem key="drawer-sign-up-free-link">
       <MainNavigationButtonLink
         variant="primary"
-        href="https://accounts.upbound.io/register"
+        href={`${ACCOUNTS_URL}/register`}
         className="w-full"
       >
         Sign Up Free
@@ -203,7 +207,7 @@ const LoggedOutNavbarContent = (): ReactNode => {
             <MainNavigationButtonLink
               className="hidden md:block"
               key="main-navigation-button-link-sign-in"
-              href="https://accounts.upbound.io/login"
+              href={`${ACCOUNTS_URL}/login`}
               variant="secondary"
             >
               Sign In
@@ -211,7 +215,7 @@ const LoggedOutNavbarContent = (): ReactNode => {
             <MainNavigationButtonLink
               className="hidden md:block"
               key="main-navigation-button-link-sign-up-free"
-              href="https://accounts.upbound.io/register"
+              href={`${ACCOUNTS_URL}/register`}
               variant="primary"
             >
               Sign Up Free
@@ -248,14 +252,11 @@ const LoggedInNavbarContent = (): ReactNode => {
   const orgName = currentOrg?.name || ""
 
   // Get base domain from Docusaurus config
-  const baseDomain =
-    typeof window !== "undefined"
-      ? (window as any).docusaurus?.siteConfig?.customFields?.baseDomain ||
-        "upbound.io"
-      : "upbound.io"
+  const { baseDomain } = useConfig()
 
   const ACCOUNTS_URL = `https://accounts.${baseDomain}`
   const CONSOLE_URL = `https://console.${baseDomain}`
+  const MARKETPLACE_URL = `https://marketplace.${baseDomain}`
   const PORTAL_URL = `https://portal.${baseDomain}`
 
   // Format organizations for the MainNavigationUser component
@@ -289,7 +290,7 @@ const LoggedInNavbarContent = (): ReactNode => {
       onDefaultMenuItemClick={(menuItem) => {
         switch (menuItem) {
           case "createOrganization":
-            window.location.href = `${ACCOUNTS_URL}/create-org`
+            window.location.href = `${ACCOUNTS_URL}/createOrg`
             break
           case "myAccount":
             window.location.href = `${ACCOUNTS_URL}/settings`
@@ -339,7 +340,7 @@ const LoggedInNavbarContent = (): ReactNode => {
           url: {
             home: { value: "/" },
             spaces: { value: `${CONSOLE_URL}/${orgName}/spaces` },
-            marketplace: { value: "/providers" },
+            marketplace: { value: `${MARKETPLACE_URL}/providers` },
             repositories: { value: `${CONSOLE_URL}/${orgName}/repositories` },
             consumerPortal: { value: `${PORTAL_URL}/${orgName}` },
             general: { value: `${ACCOUNTS_URL}/${orgName}/settings` },
