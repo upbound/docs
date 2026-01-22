@@ -13,6 +13,7 @@ import {
 } from "@upbound/elements"
 import clsx from "clsx"
 import { normalizeComponentType } from "../NavbarItem"
+import { resolveDocUrl } from "../utils/resolveDocUrl"
 
 function SubNavDropdownNavbarItem({
   mobile = false,
@@ -44,13 +45,16 @@ function DefaultSubNavbarItem({
   isDropdownItem,
   ...props
 }: Props): ReactNode {
+  // Handle doc-type items that have docId instead of to
+  const href = props.to || (props.docId ? resolveDocUrl(props.docId) : undefined)
+
   return (
     <NavigationMenuLink
       className={clsx(className, {
         dropdown__link: isDropdownItem,
       })}
       rel="noopener noreferrer"
-      href={props.to}
+      href={href}
     >
       {props.label}
     </NavigationMenuLink>

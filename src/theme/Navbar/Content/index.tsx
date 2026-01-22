@@ -44,6 +44,7 @@ import {
   useOrganizations,
   useFeatureFlags,
 } from "@site/src/hooks"
+import { resolveDocUrl } from "../../utils/resolveDocUrl"
 
 function useNavbarItems() {
   // TODO temporary casting until ThemeConfig type is improved
@@ -103,7 +104,7 @@ const LoggedOutNavbarContent = (): ReactNode => {
             <DrawerLink
               key={key}
               text={String(item.label || "")}
-              href={`/${item.docId}`}
+              href={resolveDocUrl(item.docId)}
             />
           )
         }

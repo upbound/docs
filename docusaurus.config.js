@@ -139,10 +139,9 @@ const config = {
                 },
                 items: [
                     {
-                        type: "doc",
                         label: "Get Started",
                         position: "left",
-                        docId: "getstarted/overview",
+                        to: "/getstarted/",
                     },
                     {
                         type: "dropdown",
@@ -172,15 +171,15 @@ const config = {
                         items: [
                             {
                                 label: "UXP (Upbound Crossplane)",
-                                to: "/manuals/uxp/overview",
+                                to: "/manuals/uxp/overview/",
                             },
                             {
                                 label: "Spaces",
-                                to: "/manuals/spaces/overview",
+                                to: "/manuals/spaces/overview/",
                             },
                             {
                                 label: "CLI",
-                                to: "/manuals/cli/overview",
+                                to: "/manuals/cli/overview/",
                             },
                             {
                                 label: "Console",
@@ -188,15 +187,15 @@ const config = {
                             },
                             {
                                 label: "Packages",
-                                to: "/manuals/packages/overview",
+                                to: "/manuals/packages/overview/",
                             },
                             {
                                 label: "Marketplace",
-                                to: "/manuals/marketplace/overview",
+                                to: "/manuals/marketplace/overview/",
                             },
                             {
                                 label: "Platform",
-                                to: "/manuals/platform/overview",
+                                to: "/manuals/platform/overview/",
                             },
                         ],
                     },
