@@ -1640,10 +1640,9 @@ spec:
 ### Kubernetes Injected Identity with Cloud Provider Credentials {#kubernetes-injected-identity-cloud}
 <!-- vale Google.Headings = YES -->
 
-Use this method to authenticate the Kubernetes provider to a remote cluster
-using cloud provider credentials. 
-Use this setup for providers in cloud environments (EKS, GKE, AKS) or in Upbound
-Cloud Spaces with OIDC.
+Use this method to authenticate the Kubernetes provider to a remote cluster using
+cloud provider credentials in EKS, GKE, AKS, or Upbound Cloud Spaces with
+OIDC.
 
 
 The provider supports the following identity types for authentication:
