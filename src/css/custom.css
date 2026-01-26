@@ -797,6 +797,7 @@ html[data-theme="dark"] .theme-admonition-danger .theme-admonition-heading h5 {
 }
 
 .footer-message {
+    padding-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: 500;
@@ -1622,6 +1623,10 @@ div[class*="language-"][class*="-noCopy"] button[aria-label*="Copy"] {
 [data-theme="light"] img[src$="dark-mode-only"],
 [data-theme="dark"] img[src$="#light-mode-only"] {
     display: none;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+    text-shadow: none !important;
 }
 
 @keyframes fadeInUp {
