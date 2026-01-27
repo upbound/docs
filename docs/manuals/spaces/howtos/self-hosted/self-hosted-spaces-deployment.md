@@ -513,11 +513,13 @@ kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 ```
 
 ## Connect to your control plane
+
 <!-- vale Upbound.Spelling = NO -->
-Connect to your control plane with the `up ctx` command. With your kubeconfig
+Connect to your control plane with the up ctx command. With your kubeconfig
 still pointed at the Kubernetes cluster where you installed the Upbound Space,
 run the following:
 <!-- vale Upbound.Spelling = YES -->
+
 
 ```bash
 up ctx ./default/ctp1
