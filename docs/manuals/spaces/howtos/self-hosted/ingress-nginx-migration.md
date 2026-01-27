@@ -354,8 +354,10 @@ helm uninstall ingress-nginx --namespace ingress-nginx
 
 Use any Ingress controller that supports TLS passthrough.
 
+<!-- vale gitlab.Uppercase = NO -->
 Configure your Ingress controller's Service with NLB
 annotations. See [Cloud-specific annotations][expose-annotate].
+<!-- vale gitlab.Uppercase = YES -->
 
 **1. Install your chosen Ingress controller**
 
@@ -716,9 +718,10 @@ helm upgrade --install traefik traefik/traefik \
   --set 'additionalArguments={--providers.kubernetesIngressNGINX}' \
   --wait
 ```
-
+<!-- vale gitlab.Uppercase = NO -->
 Configure Traefik's Service with NLB annotations. See
 [Cloud-specific annotations][expose-annotate].
+<!-- vale gitlab.Uppercase = YES -->
 
 **2. Validate before switching DNS**
 
