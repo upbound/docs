@@ -159,6 +159,7 @@ ctx
 controlplane
 dev
 etcd
+GCP
 keyless
 preconfigured
 Preconfigured
@@ -186,6 +187,8 @@ autoscale
 configurationrevisions
 crossplane
 dependsOn
+nginx
+passthrough
 preload
 Prepopulate
 rollouts
@@ -194,5 +197,8 @@ xrd
 aws
 onboarding
 XRCs
-
+Traefik
+Traefik's
+HTTPRoute
+TLSRoute
 
