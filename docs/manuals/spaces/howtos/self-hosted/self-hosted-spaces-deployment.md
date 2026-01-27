@@ -513,8 +513,10 @@ kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 ```
 
 ## Connect to your control plane
-
-Connect to your control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
+<!-- vale gitlab.Uppercase = NO -->
+Connect to your control plane with the `up ctx` command. With your kubeconfig
+still pointed at the Kubernetes cluster where you installed the Upbound Space,
+run the following:
 
 ```bash
 up ctx ./default/ctp1
@@ -535,6 +537,7 @@ up ctx -
 :::tip
 Learn how to use the up CLI to navigate around Upbound by reading the [up ctx command reference][up-ctx-command-reference].
 :::
+<!-- vale gitlab.Uppercase = YES -->
 
 [up-ctx-command-reference]: /reference/cli-reference
 [contact-upbound]: https://www.upbound.io/contact-us
