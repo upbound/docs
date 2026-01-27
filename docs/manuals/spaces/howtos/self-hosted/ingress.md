@@ -14,8 +14,9 @@ You can expose Spaces externally using of three options:
 | LoadBalancer Service | Simplest setup, recommended for most deployments |
 | Gateway API | Organization already using Gateway API, or need shared gateway across services |
 | Ingress | Organization already using Ingress, or need shared load balancer across services |
-
+<!-- vale Google.Headings = NO -->
 ## LoadBalancer Service
+<!-- vale Google.Headings = YES -->
 
 Upbound recommends a LoadBalancer Service to expose `spaces-router`.
 
@@ -27,7 +28,7 @@ timeout.
 :::
 
 ### Configuration
-
+<!-- vale gitlab.Uppercase = NO -->
 ```yaml
 externalTLS:
   host: proxy.example.com  # Externally routable hostname for TLS certificates
@@ -67,8 +68,9 @@ have specific networking requirements.
 
 - TLS passthrough support in your Ingress controller
 - Network Load Balancer (L4) strongly recommended for long-lived connections
-
+<!-- vale gitlab.Uppercase = NO -->
 Configure your Ingress controller's Service with [NLB annotations](#cloud-specific-annotations).
+<!-- vale gitlab.Uppercase = YES -->
 
 ### Configuration
 
@@ -129,6 +131,7 @@ timeout these connections. Use these annotations on the LoadBalancer Service
 | **AWS** | `service.beta.kubernetes.io/aws-load-balancer-type: external`<br/>`service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing`<br/>`service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip` |
 | **GCP** | `cloud.google.com/l4-rbs: enabled` |
 | **Azure** | None required (L4 by default) |
+<!-- vale gitlab.Uppercase = YES -->
 
 [traefik-provider]: https://doc.traefik.io/traefik/reference/install-configuration/providers/kubernetes/kubernetes-ingress-nginx/
 [gateway-api-docs]: https://gateway-api.sigs.k8s.io/
