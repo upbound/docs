@@ -84,7 +84,7 @@ helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --wait
 ```
 
-Verify ingress-nginx is still working before you contine.
+Verify ingress-nginx is still working before you continue.
 
 ### LoadBalancer Service (Recommended)
 
