@@ -37,6 +37,7 @@ configmaps
 CRDs
 Crossplane
 Crossplane's
+ctx
 Datadog
 declaratively
 downscaling
