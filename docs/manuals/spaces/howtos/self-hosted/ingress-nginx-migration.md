@@ -331,10 +331,6 @@ curl --connect-to "${SPACES_ROUTER_HOST}:443:${GATEWAY_LB}:443" "https://${SPACE
 
 **8. Update your `values.yaml` to disable Ingress, then upgrade Spaces:**
 
-```yaml
-ingress:
-  provision: false
-```
 
 ```bash
 helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
