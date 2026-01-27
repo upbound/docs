@@ -24,6 +24,35 @@ Any important warnings or necessary information
 
 -->
 
+## v0.44.3
+
+### Release Date: 2026-01-27
+
+##### What's Changed
+
+- Fixed a signal handling bug in E2E tests that could cause the command to get
+  stuck during cleanup.
+
+## v0.44.2
+
+### Release Date: 2026-01-13
+
+##### What's Changed
+
+- Added the `skipDelete` flag for E2E tests to allow test control planes to be
+  inspected after a test failure.
+- Fixed minor display issues in various interactive commands (e.g., `up project
+  build`).
+
+## v0.44.1
+
+### Release Date: 2025-12-31
+
+##### What's Changed
+
+- Project `apiDependencies` of type `k8s` can now refer to a custom Kubernetes
+  git repository (e.g., a private fork).
+
 ## v0.44.0
 
 ### Release Date: 2025-12-19
