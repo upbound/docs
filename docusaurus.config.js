@@ -71,9 +71,31 @@ const config = {
         [
             "@docusaurus/plugin-content-docs",
             {
+                id: "docs",
                 path: "docs",
                 routeBasePath: "/",
                 sidebarPath: require.resolve("./src/sidebars/main.js"),
+            },
+        ],
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "spaces",
+                path: "spaces-docs",
+                routeBasePath: "/spaces",
+                sidebarPath: require.resolve("./src/sidebars/spaces.js"),
+                includeCurrentVersion: true,
+            },
+        ],
+        [
+            "@docusaurus/plugin-client-redirects",
+            {
+                redirects: [
+                    {
+                        from: "/spaces",
+                        to: "/spaces/overview/",
+                    },
+                ],
             },
         ],
         "./scripts/plan-plugin.js",
@@ -175,7 +197,7 @@ const config = {
                             },
                             {
                                 label: "Spaces",
-                                to: "/manuals/spaces/overview/",
+                                href: "/spaces/",
                             },
                             {
                                 label: "CLI",
@@ -200,10 +222,9 @@ const config = {
                         ],
                     },
                     {
-                        type: "doc",
                         label: "Reference",
                         position: "left",
-                        docId: "reference/index",
+                        to: "/reference/",
                     },
                     {
                         type: "search",

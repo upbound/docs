@@ -1,0 +1,93 @@
+{
+  "sidebar": [
+    {
+      "type": "doc",
+      "id": "overview/index",
+      "label": "Overview"
+    },
+    {
+      "type": "category",
+      "label": "Concepts",
+      "items": [
+        "concepts/control-planes",
+        "concepts/deployment-modes",
+        "concepts/groups"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "How-To Guides",
+      "items": [
+        "howtos/auto-upgrade",
+        "howtos/backup-and-restore",
+        "howtos/control-plane-topologies",
+        "howtos/ctp-connector",
+        "howtos/debugging-a-ctp",
+        "howtos/managed-service",
+        "howtos/mcp-connector-guide",
+        "howtos/migrating-to-mcps",
+        "howtos/observability",
+        "howtos/query-api",
+        "howtos/secrets-management",
+        "howtos/simulations",
+        {
+          "type": "category",
+          "label": "Automation and GitOps",
+          "items": [
+            "howtos/automation-and-gitops/overview"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Cloud Spaces",
+          "items": [
+            "howtos/cloud-spaces/dedicated-spaces-deployment",
+            "howtos/cloud-spaces/gitops-on-upbound"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Self-Hosted",
+          "items": [
+            "howtos/self-hosted/administer-features",
+            "howtos/self-hosted/attach-detach",
+            "howtos/self-hosted/billing",
+            "howtos/self-hosted/capacity-licensing",
+            "howtos/self-hosted/certs",
+            "howtos/self-hosted/configure-ha",
+            "howtos/self-hosted/controllers",
+            "howtos/self-hosted/declarative-ctps",
+            "howtos/self-hosted/deployment-reqs",
+            "howtos/self-hosted/dr",
+            "howtos/self-hosted/gitops-with-argocd",
+            "howtos/self-hosted/managed-spaces-deployment",
+            "howtos/self-hosted/oidc-configuration",
+            "howtos/self-hosted/proxies-config",
+            "howtos/self-hosted/query-api",
+            "howtos/self-hosted/scaling-resources",
+            "howtos/self-hosted/self-hosted-spaces-deployment",
+            "howtos/self-hosted/space-observability",
+            "howtos/self-hosted/spaces-management",
+            "howtos/self-hosted/troubleshooting",
+            {
+              "type": "category",
+              "label": "Workload ID",
+              "items": [
+                "howtos/self-hosted/workload-id/backup-restore-config",
+                "howtos/self-hosted/workload-id/billing-config",
+                "howtos/self-hosted/workload-id/eso-config"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "API Reference",
+      "items": [
+        "reference/index"
+      ]
+    }
+  ]
+}
