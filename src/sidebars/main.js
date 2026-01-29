@@ -30,7 +30,7 @@ module.exports = {
         {
             type: "link",
             label: "Spaces",
-            href: "/spaces/latest/overview",
+            href: "/spaces/overview",
         },
         {
             type: "category",

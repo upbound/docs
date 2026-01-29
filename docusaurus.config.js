@@ -204,7 +204,7 @@ const config = {
                             },
                             {
                                 label: "Spaces",
-                                href: "/spaces/overview/",
+                                to: "/spaces/overview/",
                             },
                             {
                                 label: "CLI",
