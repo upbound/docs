@@ -13,17 +13,16 @@ import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLa
 guide covers migration options for existing Spaces deployments.
 
 For help choosing an exposure method, see [Exposing Spaces Externally][expose].
-
-<!-- commenting out until v1.16 release
+<!--version
 Options vary by Spaces version. Select your Spaces version:
 
 * [Upgrading to Spaces 1.16+](#upgrading-to-spaces-116) 
 * [Cannot upgrade before March 2026](#cant-upgrade-to-spaces-116-before-march-2026) 
-
--->
+version-->
 
 <!-- vale Google.Headings = NO -->
 ## Prerequisites
+<!-- vale Google.Headings = YES -->
 
 Set environment variables used throughout this guide:
 
@@ -41,6 +40,7 @@ helm get values spaces -n upbound-system -o yaml > values.yaml
 
 You'll merge new configuration into this file throughout the migration.
 
+<!--version
 ## Upgrading to Spaces 1.16+
 
 Choose your migration option:
@@ -56,7 +56,6 @@ then uninstall ingress-nginx.
 
 
 
-<!-- commenting out until v1.16 release
 ### Upgrade to 1.16+ with Updated Ingress Values
 
 Spaces doesn't provision the Ingress resource by default and is now
@@ -317,10 +316,8 @@ helm uninstall ingress-nginx --namespace ingress-nginx
 
 Use any Ingress controller that supports TLS passthrough.
 
-<!-- vale gitlab.Uppercase = NO -->
-Configure your Ingress controller's Service with NLB
+Configure your Ingress controller's Service with `NLB`
 annotations. See [Cloud-specific annotations][expose-annotate].
-<!-- vale gitlab.Uppercase = YES -->
 
 **1. Install your chosen Ingress controller**
 
@@ -361,6 +358,8 @@ kubectl get svc -n <controller-namespace> <controller-service> -o jsonpath='{.st
 helm uninstall ingress-nginx --namespace ingress-nginx
 ```
 
+
+version-->
 <!-- vale Google.Headings = NO -->
 ## Migrate current Spaces version before March 2026
 <!-- vale Google.Headings = YES -->
