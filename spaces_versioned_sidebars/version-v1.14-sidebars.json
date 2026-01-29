@@ -86,11 +86,9 @@
       ]
     },
     {
-      "type": "category",
-      "label": "API Reference",
-      "items": [
-        "reference/index"
-      ]
+      "type": "doc",
+      "id": "reference/index",
+      "label": "API Reference"
     }
   ]
 }
