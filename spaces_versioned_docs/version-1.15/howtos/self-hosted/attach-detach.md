@@ -3,11 +3,6 @@ title: Connect or disconnect a Space
 sidebar_position: 12
 description: Enable and connect self-hosted Spaces to the Upbound console
 ---
-:::info API Version Information
-This guide applies to **Spaces v1.8.0 and later** (Self-Hosted only). Connection to Upbound console requires Query API and RBAC to be enabled.
-
-For version-specific features and requirements, see the . Query API setup details, see [Deploy Query API infrastructure](./query-api.md).
-:::
 
 :::important
 This feature is in preview. Starting in Spaces `v1.8.0` and later, you must

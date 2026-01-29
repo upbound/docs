@@ -4,11 +4,6 @@ sidebar_position: 100
 description: Use the Up CLI to mock operations before deploying to your environments.
 ---
 
-:::info API Version Information
-This guide covers Simulations, available in v1.10+ (GA since v1.13). version-specific availability and features, see the .
-
-For API specifications on the Simulations CRD, see the [Spaces API Reference](../../../reference/apis/spaces-api/).
-:::
 
 :::important
 The Simulations feature is in private preview. more information, [reach out to Upbound][reach-out-to-upbound].

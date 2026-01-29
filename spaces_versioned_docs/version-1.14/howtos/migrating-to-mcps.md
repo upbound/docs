@@ -6,11 +6,6 @@ description: A guide to how to migrate to a control plane in Upbound
 
 The Upbound migration tool is a [CLI command][cli-command] that helps you migrate your existing Crossplane control plane to a control plane in Upbound. This tool works for migrating from self-managed Crossplane installations as well as between Upbound managed control planes (MCPs).
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+). Migration procedures are consistent across versions, though you may want to upgrade to a newer version after migration to get the latest features.
-
-For version-specific features and migration considerations, see the . the full compatibility matrix, see the .
-:::
 
 To migrate a control plane to Upbound, you must:
 

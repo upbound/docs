@@ -12,11 +12,6 @@ production operation at scale.
 Use this guide when you're ready to deploy production scaling, high availability,
 and monitoring in your Space.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments.
-
-For API specifications on ControlPlane resources and configurations, see the [Spaces API Reference](../../../../../reference/apis/spaces-api/). version compatibility details, see the .
-:::
 
 ## Prerequisites
 

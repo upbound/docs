@@ -7,11 +7,6 @@ plan: "standard"
 
 <Standard />
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+). Control Plane Connector functionality is consistent across versions.
-
-For related API specifications and resources, see the [Spaces API Reference](../../../reference/apis/spaces-api/). version compatibility details, see the .
-:::
 
 Control Plane Connector connects arbitrary Kubernetes application clusters outside the
 Upbound Spaces to your control planes running in Upbound Spaces.

@@ -13,11 +13,6 @@ Control planes in Upbound are fully isolated Crossplane control plane instances 
 
 This lets users focus on building their APIs and operating their control planes, while Upbound handles the rest. Each control plane has its own dedicated API server connecting users to their control plane.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+).
-
-For detailed information about Control Plane API specifications and CRD fields, see the [Spaces API Reference](../../../reference/apis/spaces-api/). version compatibility details, see the .
-:::
 
 ## Control plane architecture
 

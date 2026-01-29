@@ -9,20 +9,6 @@ plan: "enterprise"
 
 Upbound's _Shared Backups_ is a built-in backup and restore feature. Shared Backups lets you configure automatic schedules for taking snapshots of your control planes. You can restore data from these backups by making new control planes. This guide explains how to use Shared Backups for disaster recovery or upgrade scenarios.
 
-:::info API Version Information & Available Versions
-This guide applies to **all supported versions** (v1.9-v1.15+).
-
-**Select your API version**:
-- [Spaces API v1.15 (Latest)](../../../next/reference/apis/spaces-api/)
-- [Spaces API v1.14](../../../1.14/reference/apis/spaces-api/)
-- [Spaces API v1.13](../../../1.13/reference/apis/spaces-api/)
-- [Spaces API v1.12](../../../1.12/reference/apis/spaces-api/)
-- [Spaces API v1.11](../../../1.11/reference/apis/spaces-api/)
-- [Spaces API v1.10](../../../1.10/reference/apis/spaces-api/)
-- [Spaces API v1.9](../../../1.9/reference/apis/spaces-api/)
-
-For version support policy, see . version compatibility details, see the .
-:::
 
 ## Benefits
 

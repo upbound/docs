@@ -11,14 +11,6 @@ aliases:
 <!-- vale write-good.TooWordy = NO -->
 <!-- ignore "aggregate" -->
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+). Query API has evolved across versions:
-
-- **Cloud Spaces**: Available since v1.6 (enabled by default)
-- **Self-Hosted**: Available since v1.8 (requires manual enablement)
-
-For details on Query API availability across versions, see the .
-:::
 
 :::important
 

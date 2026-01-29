@@ -8,11 +8,6 @@ plan: "business"
 
 Automating control plane deployments with GitOps enables declarative, version-controlled infrastructure management. This section covers integrating GitOps workflows with Upbound control planes using Argo CD and related tools.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+). GitOps patterns are compatible across all versions of Upbound Spaces.
-
-For details on deployment models and their differences, see the [Deployment Modes](../../concepts/deployment-modes.md) concept guide. version-specific features, see the .
-:::
 
 ## What is GitOps?
 

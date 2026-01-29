@@ -10,11 +10,6 @@ aliases:
 ---
 
 
-:::info API Version Information
-This guide covers the ArgoCD Plugin, a preview feature available in all supported versions (v1.9-v1.14+) for self-hosted deployments.
-
-For general GitOps guidance, see [Automation and GitOps Overview](/spaces/howtos/automation-and-gitops/overview/).
-:::
 
 :::important
 This feature is in preview and is off by default. To enable, set `features.alpha.argocdPlugin.enabled=true` when installing Spaces:

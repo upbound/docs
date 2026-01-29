@@ -22,26 +22,6 @@ Upbound Spaces offers two levels of observability:
 <!-- vale write-good.TooWordy = NO -->
 <!-- vale Google.WordList = NO -->
 
-:::info API Version Information & Version Selector
-This guide applies to all supported versions (v1.9-v1.15+). Observability features evolved:
-
-- **v1.9-v1.12**: SharedTelemetryConfig available (alpha until v1.11)
-- **v1.11+**: Observability promoted to stable with logs export support
-- **v1.14+**: Both space-level and control-plane observability GA
-
-**View API Reference for Your Version**:
-| Version | Status | Link |
-|---------|--------|------|
-| v1.15 | Latest | [Spaces API v1.15](../../../next/reference/apis/spaces-api/) |
-| v1.14 | Supported | [Spaces API v1.14](../../../1.14/reference/apis/spaces-api/) |
-| v1.13 | Supported | [Spaces API v1.13](../../../1.13/reference/apis/spaces-api/) |
-| v1.12 | Supported | [Spaces API v1.12](../../../1.12/reference/apis/spaces-api/) |
-| v1.11 | Supported | [Spaces API v1.11](../../../1.11/reference/apis/spaces-api/) |
-| v1.10 | Limited | [Spaces API v1.10](../../../1.10/reference/apis/spaces-api/) |
-| v1.9 | EOL | [Spaces API v1.9](../../../1.9/reference/apis/spaces-api/) |
-
-For version support policy and feature availability, see  and .
-:::
 
 :::important
 **Space-level observability** (available since v1.6.0, GA in v1.14.0):

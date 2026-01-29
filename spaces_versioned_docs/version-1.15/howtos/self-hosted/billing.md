@@ -4,11 +4,6 @@ sidebar_position: 50
 description: A guide for how billing works in an Upbound Space
 ---
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments. Billing models may evolve between versions; see Capacity Licensing for alternative models.
-
-For version-specific features and capacity-based licensing details, see the . reference specifications, see [Capacity Licensing](/spaces/howtos/self-hosted/capacity-licensing).
-:::
 
 Spaces are a self-hosting feature of Upbound's [flagship product][flagship-product] for platform teams to deploy control planes in their self-managed environments. You can install Spaces into any Kubernetes cluster in your own cloud account, on-premises data center, or on the edge. The pricing usage-based and requires an Upbound account and subscription. The billing unit is a `Loop`.
 

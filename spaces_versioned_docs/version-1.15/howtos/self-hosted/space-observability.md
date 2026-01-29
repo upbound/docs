@@ -4,14 +4,6 @@ sidebar_position: 30
 description: Configure Space-level observability
 ---
 
-:::info API Version Information
-This guide applies to **Space v1.6.0 and later** (Self-Hosted only). Space-level observability became GA in v1.14.0.
-
-- **v1.6.0-v1.13.x**: Available as alpha (flag: `features.alpha.observability.enabled=true`)
-- **v1.14.0+**: GA (flag: `observability.enabled=true`)
-
-For details on observability evolution and related API resources, see the . control-plane observability (distinct from space-level), see the [main observability guide](../observability.md).
-:::
 
 :::important
 This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. To enable, set `observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0`) when installing Spaces:

@@ -4,11 +4,6 @@ sidebar_position: 20
 description: Configure Upbound within a proxied environment
 ---
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments in proxied environments. Proxy configuration procedures are consistent across versions.
-
-For version-specific deployment considerations, see the .
-:::
 
 <!-- vale off -->
 

@@ -6,11 +6,6 @@ aliases:
     - /api-connector
     - /concepts/api-connector
 ---
-:::info API Version Information
-This guide covers API Connector, a preview feature available in all supported versions (v1.9-v1.14+).
-
-For related API specifications and available resources, see the [Spaces API Reference](../../../reference/apis/spaces-api/). version compatibility details, see the .
-:::
 
 :::warning
 API Connector is currently in **Preview**. The feature is under active

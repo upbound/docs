@@ -15,11 +15,6 @@ This guide walks you through how to create and apply an authentication
 configuration to validate Upbound with an external identity provider. Each
 section focuses on a specific part of the configuration file.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments.
-
-For details on authentication and access control across versions, see the . related platform authentication features, see the [Platform manual](../../../../platform/).
-:::
 
 ## Creating the `AuthenticationConfiguration` file
 

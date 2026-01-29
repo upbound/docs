@@ -12,11 +12,6 @@ planes as secrets in an external secret store.
 
 This feature is a wrapper around the [External Secrets Operator (ESO)][external-secrets-operator-eso] that pulls secrets from external vaults and distributes them across your platform.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+). The SharedSecretStore and SharedExternalSecret CRDs have been stable since v1.9.
-
-For API specifications and configuration details, see the [Spaces API Reference](../../../reference/apis/spaces-api/). version compatibility details, see the .
-:::
 
 ## Benefits
 

@@ -6,11 +6,6 @@ description: A guide for how to debug resources on a control plane running in Up
 <!--- TODO(tr0njavolta): update screenshots --->
 This guide provides troubleshooting guidance for how to identify and fix issues on a control plane.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+). Debugging methods are consistent across versions.
-
-For related control plane specifications, see the [Spaces API Reference](../../../reference/apis/spaces-api/). version-specific features, see the .
-:::
 
 ## Start from Upbound Console
 <!-- vale write-good.Weasel = NO -->

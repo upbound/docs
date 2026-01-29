@@ -4,11 +4,6 @@ sidebar_position: 12
 description: Enable and disable features in Spaces
 ---
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments. Feature flags and their availability may vary by version.
-
-For detailed feature availability across versions, see the .
-:::
 
 This guide shows how to enable or disable features in your self-hosted Space.
 

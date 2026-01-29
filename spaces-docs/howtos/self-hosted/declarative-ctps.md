@@ -7,11 +7,6 @@ description: A tutorial to configure a Space with Argo to declaratively create a
 
 In this tutorial, you learn how to configure [Argo CD][argo-cd] to communicate with a self-hosted Space. This flow allows you to declaratively create and manage control planes from Git. Argo CD is a continuous delivery tool for Kubernetes that you can use to drive GitOps flows for your control plane infrastructure.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments.
-
-For API specifications on ControlPlane resources and their declarative creation, see the [Spaces API Reference](../../../../../reference/apis/spaces-api/). version compatibility details, see the .
-:::
 
 ## Prerequisites
 

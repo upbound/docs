@@ -11,11 +11,6 @@ updates, and deletions of Crossplane resources. Control plane audit logs
 use observability features to collect audit logs with `SharedTelemetryConfig` and
 send logs to an OpenTelemetry (`OTEL`) collector.
 
-:::info API Version Information
-This guide applies to **Spaces v1.14.0 and later** (Self-Hosted only). Audit logging is not available in earlier versions.
-
-For API specifications on observability resources, see the [Spaces API Reference - v1.14](../../../../../1.14/reference/apis/spaces-api/). details on observability evolution across versions, see the .
-:::
 
 ## Prerequisites
 

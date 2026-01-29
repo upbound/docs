@@ -11,11 +11,6 @@ In large workloads or control plane migration, you may performance impacting
 resource constraints. This guide explains how to scale vCluster and `etcd`
 resources for optimal performance in your self-hosted Space.
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments. Scaling procedures are consistent across versions.
-
-For version-specific resource requirements and capacity planning, see the .
-:::
 
 ## Signs of resource constraints
 

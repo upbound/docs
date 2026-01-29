@@ -4,11 +4,6 @@ sidebar_position: 10
 description: Common operations in Spaces
 ---
 
-:::info API Version Information
-This guide applies to all supported versions (v1.9-v1.14+) for self-hosted deployments. Spaces management procedures are consistent across versions.
-
-For version compatibility details, see the .
-:::
 
 ## Spaces management
 

@@ -4,11 +4,6 @@ sidebar_position: 15
 description: Configure scheduling of composites to remote control planes
 ---
 
-:::info API Version Information
-This guide is for the Control Plane Topology feature, which is in **private preview**. interested customers with access to this feature, it applies to v1.12+.
-
-For related API specifications, see the [Spaces API Reference](../../../reference/apis/spaces-api/). details on feature availability, see the .
-:::
 
 :::important
 This feature is in private preview for select customers in Upbound Spaces. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
