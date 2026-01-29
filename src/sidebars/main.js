@@ -120,6 +120,10 @@ module.exports = {
                 },
             ],
         },
+        "reference/cli-reference",
+        "reference/pricing",
+        "reference/spaces-helm-reference",
+        "reference/uxp-helm-reference",
         {
             type: "category",
             label: "Release Notes",
