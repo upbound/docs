@@ -16,7 +16,7 @@
     },
     {
       "type": "category",
-      "label": "How-To Guides",
+      "label": "How-tos",
       "items": [
         "howtos/auto-upgrade",
         "howtos/backup-and-restore",

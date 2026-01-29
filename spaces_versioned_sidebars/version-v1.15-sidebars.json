@@ -16,7 +16,7 @@
     },
     {
       "type": "category",
-      "label": "How-To Guides",
+      "label": "How-tos",
       "items": [
         "howtos/api-connector",
         "howtos/auto-upgrade",
