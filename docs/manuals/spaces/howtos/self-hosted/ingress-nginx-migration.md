@@ -14,11 +14,13 @@ guide covers migration options for existing Spaces deployments.
 
 For help choosing an exposure method, see [Exposing Spaces Externally][expose].
 
+<!-- commenting out until v1.16 release
 Options vary by Spaces version. Select your Spaces version:
 
 * [Upgrading to Spaces 1.16+](#upgrading-to-spaces-116) 
 * [Cannot upgrade before March 2026](#cant-upgrade-to-spaces-116-before-march-2026) 
 
+-->
 
 <!-- vale Google.Headings = NO -->
 ## Prerequisites
@@ -52,6 +54,9 @@ Choose your migration option:
 All paths follow the same process: upgrade to 1.16+, switch exposure method,
 then uninstall ingress-nginx.
 
+
+
+<!-- commenting out until v1.16 release
 ### Upgrade to 1.16+ with Updated Ingress Values
 
 Spaces doesn't provision the Ingress resource by default and is now
@@ -84,7 +89,7 @@ helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --wait
 ```
 
-Verify ingress-nginx is still working before you contine.
+Verify ingress-nginx is still working before you continue.
 
 ### LoadBalancer Service (Recommended)
 
@@ -188,29 +193,8 @@ See [Envoy Gateway installation docs][envoy-install] for more detailed instructi
 
 **2. Create a GatewayClass**
 
-Create a `GatewayClass` resource appropriate for your cloud provider.
+Create a `GatewayClass` resource.
 
-<CodeBlock cloud="aws">
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-  parametersRef:
-    group: gateway.envoyproxy.io
-    kind: EnvoyProxy
-    name: spaces-proxy-config
-    namespace: envoy-gateway-system
-EOF
-```
-
-</CodeBlock>
-
-<CodeBlock cloud="azure">
 
 ```bash
 kubectl apply -f - --server-side <<EOF
@@ -227,23 +211,6 @@ spec:
     namespace: envoy-gateway-system
 EOF
 ```
-
-</CodeBlock>
-
-<CodeBlock cloud="gcp">
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-EOF
-```
-
-</CodeBlock>
 
 **3. Configure Spaces Helm Values**
 
@@ -331,10 +298,6 @@ curl --connect-to "${SPACES_ROUTER_HOST}:443:${GATEWAY_LB}:443" "https://${SPACE
 
 **8. Update your `values.yaml` to disable Ingress, then upgrade Spaces:**
 
-```yaml
-ingress:
-  provision: false
-```
 
 ```bash
 helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
@@ -399,7 +362,7 @@ helm uninstall ingress-nginx --namespace ingress-nginx
 ```
 
 <!-- vale Google.Headings = NO -->
-## Can't upgrade to Spaces 1.16 before March 2026
+## Migrate current Spaces version before March 2026
 <!-- vale Google.Headings = YES -->
 
 Choose your migration option:
@@ -451,7 +414,7 @@ Install a Gateway API implementation that supports TLS passthrough and
 The following example uses Envoy Gateway:
 
 ```bash
-export ENVOY_GATEWAY_VERSION=v1.2.4
+export ENVOY_GATEWAY_VERSION=<version> # Example: v1.2.4
 
 helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
   --timeout 300s --create-namespace envoy-gateway \
@@ -461,29 +424,8 @@ helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
 
 **Create GatewayClass resource**
 
-Create a `GatewayClass` resource appropriate for your cloud provider.
+Create a `GatewayClass` resource.
 
-<CodeBlock cloud="aws">
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-  parametersRef:
-    group: gateway.envoyproxy.io
-    kind: EnvoyProxy
-    name: spaces-proxy-config
-    namespace: envoy-gateway-system
-EOF
-```
-
-</CodeBlock>
-
-<CodeBlock cloud="azure">
 
 ```bash
 kubectl apply -f - --server-side <<EOF
@@ -500,29 +442,10 @@ spec:
     namespace: envoy-gateway-system
 EOF
 ```
-
-</CodeBlock>
-
-<CodeBlock cloud="gcp">
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-EOF
-```
-
-</CodeBlock>
-
 **Create Gateway resource**
 
 Create a Gateway resource in the `upbound-system` namespace.
 
-<CodeBlock cloud="aws">
 
 ```bash
 kubectl apply -f - --server-side <<EOF
@@ -545,65 +468,28 @@ spec:
 EOF
 ```
 
-</CodeBlock>
+**Update your Helm values**
 
-<CodeBlock cloud="azure">
+```yaml
+ingress:
+  provision: false
 
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
-metadata:
-  name: spaces
-  namespace: upbound-system
-spec:
-  gatewayClassName: spaces
-  listeners:
-    - name: tls
-      port: 443
-      protocol: TLS
-      allowedRoutes:
-        namespaces:
-          from: Same
-      tls:
-        mode: Passthrough
-EOF
+gatewayAPI:
+  host: proxy.example.com  # Must match your current ingress.host
+  gateway:
+    provision: true
+    name: spaces
+    className: spaces  # Must match your GatewayClass name
+  spacesRouterRoute:
+    provision: true
+  # Labels for NetworkPolicy - must match your gateway controller's pods
+  podLabels:
+    app.kubernetes.io/name: envoy
+    app.kubernetes.io/component: proxy
+    app.kubernetes.io/managed-by: envoy-gateway
+  namespaceLabels:
+    kubernetes.io/metadata.name: envoy-gateway-system
 ```
-
-</CodeBlock>
-
-<CodeBlock cloud="gcp">
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
-metadata:
-  name: spaces
-  namespace: upbound-system
-spec:
-  gatewayClassName: spaces
-  listeners:
-    - name: tls
-      port: 443
-      protocol: TLS
-      allowedRoutes:
-        namespaces:
-          from: Same
-      tls:
-        mode: Passthrough
-EOF
-```
-
-</CodeBlock>
-
-:::note
-During installation or upgrade, you can use the Spaces Helm chart to create the
-Gateway automatically with these parameters:
-- `gatewayAPI.gateway.provision=true`
-- `gatewayAPI.gateway.className=spaces`
-:::
-
 **Get the load balancer hostname**
 
 Check the externally routable hostname for the Gateway's load balancer. 
@@ -779,3 +665,4 @@ curl -v "https://${SPACES_ROUTER_HOST}/version"
 [expose]: /manuals/spaces/howtos/self-hosted/ingress/
 [expose-annotate]: /manuals/spaces/howtos/self-hosted/ingress/#cloud-specific-annotations
 [gateway-api]: https://gateway-api.sigs.k8s.io/
+[gateway-api-config]: /manuals/spaces/howtos/self-hosted/ingress/#gateway-api
