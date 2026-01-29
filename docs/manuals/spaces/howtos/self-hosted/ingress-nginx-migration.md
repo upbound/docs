@@ -391,7 +391,7 @@ simultaneously. This migration requires switching over in a single upgrade,
 which causes brief downtime during DNS propagation.
 :::
 
-**Remove existing ingress resources**
+**1. Remove existing ingress resources**
 
 Delete the Ingress resource and ingress-nginx controller:
 
@@ -405,7 +405,7 @@ This step forces downtime for API access through spaces-router until the
 Gateway API configuration is complete.
 :::
 
-**Install a gateway API controller**
+**2. Install a gateway API controller**
 
 Install a Gateway API implementation that supports TLS passthrough and
 `TLSRoute`. 
@@ -421,7 +421,7 @@ helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
   --version "${ENVOY_GATEWAY_VERSION}"
 ```
 
-**Create GatewayClass resource**
+**3. Create GatewayClass resource**
 
 Create a `GatewayClass` resource.
 
@@ -441,7 +441,7 @@ spec:
     namespace: envoy-gateway-system
 EOF
 ```
-**Create Gateway resource**
+**4. Create Gateway resource**
 
 Create a Gateway resource in the `upbound-system` namespace.
 
@@ -467,7 +467,7 @@ spec:
 EOF
 ```
 
-**Update your Helm values**
+**5. Update your Helm values**
 
 ```yaml
 ingress:
@@ -489,7 +489,7 @@ gatewayAPI:
   namespaceLabels:
     kubernetes.io/metadata.name: envoy-gateway-system
 ```
-**Get the load balancer hostname**
+**6. Get the load balancer hostname**
 
 Check the externally routable hostname for the Gateway's load balancer. 
 The Helm `gatewayAPI.host` parameter requires this hostname.
@@ -502,7 +502,7 @@ kubectl get service -n envoy-gateway-system \
   -o jsonpath='{.items[0].status.loadBalancer.ingress[0].hostname}'
 ```
 
-**Upgrade the Spaces Helm release**
+**7. Upgrade the Spaces Helm release**
 
 Upgrade the Spaces installation with Gateway API parameters:
 
@@ -517,7 +517,7 @@ helm -n upbound-system upgrade spaces \
   --wait
 ```
 
-**Restart spaces-router (optional)**
+**8. Restart spaces-router (optional)**
 
 If the `gatewayAPI.host` value differs from the previous `ingress.host` value,
 restart the spaces-router pod to regenerate the certificate with the correct
@@ -528,7 +528,7 @@ kubectl -n upbound-system rollout restart deployment spaces-router
 kubectl -n upbound-system rollout status deployment spaces-router
 ```
 
-**Configure values.yaml**
+**9. Configure values.yaml**
 
 Update your `values.yaml` to disable Ingress and enable Gateway API:
 
@@ -553,7 +553,7 @@ gatewayAPI:
     kubernetes.io/metadata.name: envoy-gateway-system
 ```
 
-**Upgrade Spaces**
+**10. Upgrade Spaces**
 
 This disables Ingress and enables Gateway API:
 
@@ -565,7 +565,7 @@ helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --wait
 ```
 
-**Get the gateway address and update DNS**
+**11. Get the gateway address and update DNS**
 
 ```bash
 kubectl get gateway -n upbound-system spaces -o jsonpath='{.status.addresses[0].value}'
@@ -573,14 +573,14 @@ kubectl get gateway -n upbound-system spaces -o jsonpath='{.status.addresses[0].
 
 Update your DNS record to this address.
 
-**Verify connectivity**
+**12. Verify connectivity**
 
 ```bash
 curl -v "https://${SPACES_ROUTER_HOST}/version"
 # Expected: 401 Unauthorized (routing works, auth required)
 ```
 
-**Uninstall ingress-nginx**
+**13. Uninstall ingress-nginx**
 
 ```bash
 helm uninstall ingress-nginx --namespace ingress-nginx
