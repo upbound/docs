@@ -5,7 +5,10 @@ sidebar_position: 0
 
 # Upbound Spaces
 
-Welcome to the Upbound Spaces documentation. This section contains comprehensive documentation for Spaces API and Spaces operations across all supported versions (v1.9 through v1.15).
+Welcome to the Upbound Spaces documentation. This section contains comprehensive
+documentation for Spaces API and Spaces operations across all supported
+versions.
+
 
 ## Get Started
 
