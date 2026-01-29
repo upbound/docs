@@ -15,7 +15,7 @@ const ReferenceCards = () => {
     {
       title: 'Spaces Helm Reference',
       description: 'Helm chart configuration and deployment reference documentation for Upbound Spaces.',
-      link: '/reference/spaces-helm-reference'
+      link: '/spaces/reference'
     },
     {
       title: 'UXP Helm Reference',
