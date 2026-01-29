@@ -20,16 +20,16 @@ const config = {
         },
     ],
     customFields: {
-        apiUrl: process.env.UPBOUND_API_URL || 'https://api.upbound.io',
-        baseDomain: process.env.UPBOUND_BASE_DOMAIN || 'upbound.io',
-        launchDarklyClientId: process.env.LAUNCHDARKLY_CLIENT_ID || '',
+        apiUrl: process.env.UPBOUND_API_URL || "https://api.upbound.io",
+        baseDomain: process.env.UPBOUND_BASE_DOMAIN || "upbound.io",
+        launchDarklyClientId: process.env.LAUNCHDARKLY_CLIENT_ID || "",
     },
     webpack: {
         jsLoader: (isServer) => ({
-            loader: require.resolve('esbuild-loader'),
+            loader: require.resolve("esbuild-loader"),
             options: {
-                loader: 'tsx',
-                target: isServer ? 'node12' : 'es2017',
+                loader: "tsx",
+                target: isServer ? "node12" : "es2017",
             },
         }),
     },
@@ -101,29 +101,36 @@ const config = {
         "./scripts/plan-plugin.js",
         function (context, options) {
             return {
-                name: 'custom-webpack-config',
+                name: "custom-webpack-config",
                 configureWebpack(config, isServer) {
-                    const webpack = require('webpack');
-                    const path = require('path');
+                    const webpack = require("webpack");
+                    const path = require("path");
                     return {
                         plugins: [
                             new webpack.ProvidePlugin({
-                                process: 'process/browser.js',
-                                React: 'react',
+                                process: "process/browser.js",
+                                React: "react",
                             }),
                         ],
                         resolve: {
                             fallback: {
-                                process: require.resolve('process/browser.js'),
+                                process: require.resolve("process/browser.js"),
                             },
                             fullySpecified: false,
-                            extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css'],
-                            mainFiles: ['index'],
+                            extensions: [
+                                ".js",
+                                ".jsx",
+                                ".ts",
+                                ".tsx",
+                                ".json",
+                                ".css",
+                            ],
+                            mainFiles: ["index"],
                         },
                         resolveLoader: {
                             modules: [
-                                path.resolve(__dirname, 'node_modules'),
-                                'node_modules',
+                                path.resolve(__dirname, "node_modules"),
+                                "node_modules",
                             ],
                         },
                     };
@@ -197,7 +204,8 @@ const config = {
                             },
                             {
                                 label: "Spaces",
-                                href: "/spaces/",
+                                type: "link",
+                                href: "/spaces/overview/",
                             },
                             {
                                 label: "CLI",
