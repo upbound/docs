@@ -204,7 +204,6 @@ const config = {
                             },
                             {
                                 label: "Spaces",
-                                type: "link",
                                 href: "/spaces/overview/",
                             },
                             {

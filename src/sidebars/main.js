@@ -29,7 +29,7 @@ module.exports = {
         },
         {
             type: "link",
-            label: "Spaces ↗",
+            label: "Spaces",
             href: "/spaces/latest/overview",
         },
         {
