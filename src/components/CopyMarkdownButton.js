@@ -574,46 +574,4 @@ Generated: ${new Date().toISOString()}
     );
 };
 
-// Auto-initialize function that can be called from client module
-export const initCopyButton = () => {
-    if (typeof window === "undefined") return;
-
-    // Wait for page to be fully loaded
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initCopyButton);
-        return;
-    }
-    // Only add on doc pages, not homepage or overview pages
-    if (
-        window.location.pathname !== "/" &&
-        window.location.pathname !== "/search" &&
-        window.location.pathname !== "/guides/" &&
-        window.location.pathname !== "/manuals/" &&
-        window.location.pathname !== "/reference/"
-    ) {
-        // Remove any existing button first
-        const existing = document.querySelector(
-            ".copy-markdown-button-container"
-        );
-        if (existing) existing.remove();
-
-        // Find the main title (h1) to insert button after it
-        const mainTitle = document.querySelector(
-            "main h1, article h1, .markdown h1"
-        );
-
-        if (mainTitle) {
-            // Create container and insert after title
-            const container = document.createElement("div");
-            mainTitle.parentNode.insertBefore(container, mainTitle.nextSibling);
-
-            // Use React 18 createRoot
-            import("react-dom/client").then(({ createRoot }) => {
-                const root = createRoot(container);
-                root.render(React.createElement(CopyMarkdownButton));
-            });
-        }
-    }
-};
-
 export default CopyMarkdownButton;
