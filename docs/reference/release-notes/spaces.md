@@ -125,6 +125,14 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
 
+## v1.13.5
+
+### Release Date: 2026-02-04
+
+### What's Changed
+
+- Fixed an issue where upgrading from Spaces 1.12.x to 1.13.x could leave vCluster with incorrect memory limits. vCluster now receives the intended 12Gi memory limit after upgrade.
+
 ## v1.13.4
 
 ### Release Date: 2026-01-20
