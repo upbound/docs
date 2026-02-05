@@ -3,10 +3,7 @@ title: Packages Overview
 sidebar_position: 1
 description: Product documentation for the Official Packages offered by Upbound.
 sidebar_label: Overview
-hide_title: true
 ---
-
-# Overview
 
 Crossplane supports these package types: `Configurations`, `Functions` and `Providers`. Upbound Crossplane (UXP) extends this with support for `Add-Ons`.
 
