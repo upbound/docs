@@ -42,7 +42,7 @@ Install a specific version of `up` by providing the version.
 For example, to install version <Version type = "cli"/ > use the following command:
 
 <CodeBlock language="bash">
-{`curl -sL "https://cli.upbound.io" | VERSIONS=v${versions.cli} sh`}
+{`curl -sL "https://cli.upbound.io" | VERSION=v${versions.cli} sh`}
 </CodeBlock>
 
 Find the full list of versions in the <a href="https://cli.upbound.io/stable?prefix=stable/">Up command-line repository</a>.
