@@ -23,7 +23,7 @@ export default function MDXContentWrapper({ children, ...props }) {
     
     return (
         <>
-            <button onClick={handleCopy} hidden={isHidden} style={{marginBottom: '20px'}}>
+            <button onClick={handleCopy} style={{marginBottom: '20px'}}>
                 {copied ? "Copied!" : "Copy Markdown"}
             </button>
             <div ref={contentRef}>
