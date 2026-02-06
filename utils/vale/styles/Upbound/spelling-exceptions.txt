@@ -37,6 +37,7 @@ configmaps
 CRDs
 Crossplane
 Crossplane's
+ctx
 Datadog
 declaratively
 downscaling
@@ -155,5 +156,13 @@ XRDs
 XRs
 Zendesk
 Upjet
+GCP
+nginx
+Traefik
+Traefik's
+hostname
+HTTPRoute
+TLSRoute
+passthrough
 
 
