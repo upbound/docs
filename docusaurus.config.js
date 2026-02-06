@@ -12,7 +12,6 @@ const config = {
     organizationName: "upbound",
     projectName: "docs",
     onBrokenLinks: "warn",
-    clientModules: [require.resolve("./scripts/copymarkdown.js")],
     scripts: [
         {
             src: "https://cdn-cookieyes.com/client_data/401fea7900d8d7b84b9e7b40/script.js",

@@ -247,27 +247,37 @@ html[data-theme="dark"] [data-radix-popper-content-wrapper] [role="dialog"] a:ho
     text-decoration: none !important;
 }
 
-article
-    a:not(.card):not(.menu__link):not(.navbar__item):not(
-        .table-of-contents__link
-    ):not(.cta-button) {
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: var(--ifm-font-size-base);
+    line-height: var(--ifm-line-height-base);
+    font-weight: var(--ifm-font-weight-base);
+    min-width: 320px;
+    scroll-behavior: smooth;
+}
 
+/* Scope list styles to article content only */
+article ul,
+article ol {
+    list-style-position: inside !important;
+    display: block !important;
+    list-style-type: disc !important;
+}
+
+article a:not(.card):not(.menu__link):not(.navbar__item):not(.table-of-contents__link):not(.cta-button) {
     color: var(--grape);
     text-decoration: none;
     border-bottom: 1px solid var(--grape);
     transition: all 0.2s ease;
 }
 
-article
-    a:not(.card):not(.menu__link):not(.navbar__item):not(
-        .table-of-contents__link
-    ):not(.cta-button):hover {
+article a:not(.card):not(.menu__link):not(.navbar__item):not(.table-of-contents__link):not(.cta-button):hover {
     color: var(--link-hover-color);
     border-bottom-color: var(--link-hover-color);
     border-bottom-width: 2px;
     text-decoration: none;
 }
-
 /* ============================================================ */
 /* NAVBAR COMPONENT */
 /* ============================================================ */
@@ -771,6 +781,12 @@ html[data-theme="dark"] .theme-admonition-danger .theme-admonition-heading {
 
 html[data-theme="dark"] .theme-admonition-danger .theme-admonition-heading h5 {
     color: rgba(238, 86, 165, 0.95);
+}
+
+html[data-theme='dark'] .token.operator {
+
+    color: inherit !important;
+    background: transparent !important;
 }
 
 /* ============================================================ */
