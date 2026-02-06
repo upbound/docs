@@ -6,6 +6,12 @@ description: Install Crossplane, interact with the Upbound Marketplace and Manag
   Control Planes with the Upbound Up CLI.
 hide_title: true
 ---
+
+import Version from "@site/src/components/Version.js"
+import { versions } from "@site/src/components/Version.js"
+import CodeBlock from '@theme/CodeBlock';
+
+
 <!--vale gitlab.HeadingContent = NO -->
 # Overview
 <!--vale gitlab.HeadingContent = YES-->
@@ -33,12 +39,11 @@ curl -sL "https://cli.upbound.io" | sh
 
 :::note
 Install a specific version of `up` by providing the version.
+For example, to install version <Version type = "cli"/ > use the following command:
 
-For example, to install version `v0.42.0` use the following command:
-
-```shell
-curl -sL "https://cli.upbound.io" | VERSION=v0.42.0 sh
-```
+<CodeBlock language="bash">
+{`curl -sL "https://cli.upbound.io" | VERSION=v${versions.cli} sh`}
+</CodeBlock>
 
 Find the full list of versions in the <a href="https://cli.upbound.io/stable?prefix=stable/">Up command-line repository</a>.
 :::
@@ -48,9 +53,9 @@ Find the full list of versions in the <a href="https://cli.upbound.io/stable?pre
 <TabItem value="Windows" label="Windows">
 Upbound provides a Windows executable.
 
-```shell
-curl.exe -sLo up.exe "https://cli.upbound.io/stable/v0.42.0/bin/windows_amd64/up.exe"
-```
+<CodeBlock language="bash">
+{`curl.exe -sLo up.exe "https://cli.upbound.io/stable/v${versions.cli}/bin/windows_amd64/up.exe"`}
+</CodeBlock>
 
 Find the full list of Windows versions in the [Up command-line
 repository][win-versions].
@@ -74,17 +79,18 @@ Upbound provides both `.deb` and `.rpm` packages for Linux platforms.
 Downloading packages requires both the [version][version] and CPU architecture (`linux_amd64`, `linux_arm`, `linux_arm64`).
 
 ### Debian package install
-```shell
-curl -sLo up.deb "https://cli.upbound.io/stable/v0.42.0/deb/linux_${ARCH}/up.deb"
-```
-<br />
+
+<CodeBlock language="bash">
+{`curl -sLo up.deb "https://cli.upbound.io/stable/v${versions.cli}/deb/up_${versions.cli}_linux_\${ARCH}.deb"`}
+</CodeBlock>
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### RPM package install
-<!-- vale Microsoft.HeadingAcronyms = YES -->
-```shell
-curl -sLo up.rpm "https://cli.upbound.io/stable/v0.42.0/rpm/linux_${ARCH}/up.rpm"
-```
+
+<CodeBlock language="bash">
+{`curl -sLo up.rpm "https://cli.upbound.io/stable/v${versions.cli}/rpm/up_${versions.cli}_linux_\${ARCH}.rpm"`}
+</CodeBlock>
+
 </TabItem>
 </Tabs>
 
@@ -109,16 +115,18 @@ brew install upbound/tap/docker-credential-up
 <TabItem value="LinuxPackages" label="LinuxPackages">
 
 ### Debian package install
-```shell
-curl -sLo up.deb "https://cli.upbound.io/stable/v0.42.0/deb/linux_${ARCH}/docker-credential-up.deb"
-```
+
+<CodeBlock language="bash">
+{`curl -sLo up.deb "https://cli.upbound.io/stable/v${versions.cli}/deb/docker-credential-up_${versions.cli}_linux_\${ARCH}.deb"`}
+</CodeBlock>
 
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### RPM package install
 <!-- vale Microsoft.HeadingAcronyms = YES -->
-```shell
-curl -sLo up.rpm "https://cli.upbound.io/stable/v0.42.0/rpm/linux_${ARCH}/docker-credential-up.rpm"
-```
+<CodeBlock language="bash">
+{`curl -sLo up.rpm "https://cli.upbound.io/stable/v${versions.cli}/rpm/docker-credential-up_${versions.cli}_linux_\${ARCH}.rpm"`}
+</CodeBlock>
+
 </TabItem>
 </Tabs>
 
