@@ -10,7 +10,7 @@ const ManualsCards = () => {
     {
       title: 'Spaces',
       description: 'Managed Crossplane control plane environments with cloud and self-hosted deployment options.',
-      link: '/manuals/spaces/overview'
+      link: '/spaces/overview/'
     },
     {
       title: 'CLI',
