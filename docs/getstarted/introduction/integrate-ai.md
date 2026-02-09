@@ -598,11 +598,11 @@ Now that your control plane is running locally with AI-powered operations, consi
 
 * Package your control plane as a [Configuration][Configuration] image and push it to the Upbound Marketplace
 * Complete the [Build and push your first Configuration][buildAndPush] tutorial
-* Explore additional AI-powered operations for other infrastructure scenarios
-* Configure custom remediation strategies for your specific use cases
+* Explore additional [AI-powered operations][aiOperations] for other infrastructure scenarios
 
 [up]: /manuals/cli/overview
 [project]: /getstarted/introduction/project
 [anthropic-key]: https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key
 [Configuration]: /manuals/uxp/concepts/packages/configurations
+[aiOperations]: /manuals/uxp/concepts/operations/intelligent-operations/
 [buildAndPush]: /getstarted/introduction/build-and-push
