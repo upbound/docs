@@ -272,8 +272,7 @@ First, install Envoy Gateway with Helm:
 ```bash
 helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
   --timeout 360s --create-namespace envoy-gateway \
-  oci://docker.io/envoyproxy/gateway-helm \
-  --version "v1.2.4"
+  oci://docker.io/envoyproxy/gateway-helm 
 ```
 
 Next, create the Gateway API resources for your cloud provider:
