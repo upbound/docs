@@ -1,6 +1,21 @@
 ---
 title: 4. Deploy your resources to a control plane
 description: Create a dev control plane and deploy to your cloud
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 15m
+  tags:
+    - walkthrough
+    - up-project
+  variables:
+    CLUSTER_NAME: kind-up-upbound-hello-world
+    NAMESPACE: default
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 

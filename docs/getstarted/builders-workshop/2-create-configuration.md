@@ -1,6 +1,17 @@
 ---
 title: 2. Build your composition logic
 description: Create a composition function
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 5m
+  tags:
+    - walkthrough
 ---
 
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';

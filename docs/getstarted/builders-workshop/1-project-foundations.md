@@ -1,6 +1,17 @@
 ---
 title: 1. Project Foundations
 description: Create a new project from scratch
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 5m
+  tags:
+    - walkthrough
 ---
 
 This workshop walks through how to create a brand new project and

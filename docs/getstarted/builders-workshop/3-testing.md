@@ -1,6 +1,17 @@
 ---
 title: 3. Test your composition
 description: Create a composition function test
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 10m
+  tags:
+    - walkthrough
 ---
 
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
