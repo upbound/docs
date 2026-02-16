@@ -7,7 +7,7 @@ plan: business
 
 <Business />
 
-The Private Network Agent lets an Upbound Cloud control plane manage Kubernetes and Helm resources inside private networks — without exposing public endpoints, opening inbound firewall rules, or setting up VPC peering.
+The Private Network Agent lets an Upbound Cloud control plane manage Kubernetes and Helm resources inside private networks without exposing public endpoints, opening inbound firewall rules, or setting up VPC peering.
 
 ## How it works
 
