@@ -11,12 +11,12 @@ The Private Network Agent lets an Upbound Cloud control plane manage Kubernetes 
 
 ## How it works
 
-The Private Network Agent reverses the traditional connection model. Instead of the control plane reaching into your private network, a lightweight agent inside your network initiates an outbound-only connection to the control plane. The control plane sends requests through this connection and receives results back through the same channel.
+The Private Network Agent reverses the traditional connection model. Instead of the control plane reaching into your private network, a lightweight agent inside your network connects outbound to the control plane. The control plane sends requests through this connection and receives responses through the same channel.
 
 This approach:
 
 - Requires only outbound connectivity from your private network.
-- Eliminates the need for inbound firewall exceptions, VPC peering, or publicly exposed Kubernetes API servers.
+- Eliminates inbound firewall exceptions, VPC peering, and publicly exposed Kubernetes API servers.
 - Keeps a minimal footprint in your environment.
 
 The system has two components:
@@ -38,7 +38,7 @@ Before you begin, make sure you have:
 
 ## Set up the destination cluster
 
-On your **destination cluster**, create a service account and credentials that `provider-kubernetes` uses to manage resources.
+On your **destination cluster**, create a service account that `provider-kubernetes` uses.
 
 Create the service account and bind it to a role (e.g. `cluster-admin`):
 
@@ -64,13 +64,13 @@ type: kubernetes.io/service-account-token
 EOF
 ```
 
-Retrieve the token and the cluster's certificate authority data:
+Retrieve the token:
 
 ```bash
 TOKEN=$(kubectl get secret provider-kubernetes-token -o jsonpath='{.data.token}' | base64 -d)
 ```
 
-Save the cluster's certificate authority data. You can find this in your cloud provider's console or in your existing kubeconfig. Set it as an environment variable:
+Set the cluster's certificate authority data (from your cloud provider's console or kubeconfig) as an environment variable:
 
 ```bash
 export CLUSTER_CA_DATA=<certificate-authority-data>
@@ -98,7 +98,7 @@ EOF
 
 ### Create the kubeconfig secret
 
-Create a secret containing the kubeconfig for the destination cluster. The `server` field points to your API Server (if the agent is running in the destination cluster you can use `https://kubernetes.default.svc.cluster.local`):
+Create a secret containing the destination cluster's kubeconfig. Point the `server` field to your API server—use `https://kubernetes.default.svc.cluster.local` if the agent runs in the destination cluster:
 
 ```bash
 kubectl apply -f - <<EOF
@@ -152,7 +152,7 @@ EOF
 
 ### Create a robot token
 
-Create a robot and token in your Upbound organization. The proxy and agent both use this token to authenticate.
+Create a robot and token in your Upbound organization. Both proxy and agent use this token to authenticate.
 
 ```bash
 export UPBOUND_ORG=<your-organization>
@@ -180,7 +180,7 @@ EOF
 
 ### Create the Proxy resource
 
-Create a `Proxy` resource in the managed control plane. This deploys the proxy component and configures provider pods to route traffic through it. Only one `Proxy` resource is supported per control plane.
+Create a `Proxy` resource in the managed control plane. This deploys the proxy component and configures provider pods to route traffic through it. Each control plane supports only one `Proxy`.
 
 :::warning
 Creating a `Proxy` requires the `Admin` role.
@@ -240,7 +240,7 @@ helm upgrade --install private-network-agent \
   --set agent.tokenSecret=robot-token
 ```
 
-Once the agent connects, the `Proxy` resource status on the control plane updates to `Connected`.
+When the agent connects, the `Proxy` status changes to `Connected`.
 
 ## Verify the connection
 
@@ -279,7 +279,7 @@ Verify the `Object` becomes `Ready`:
 kubectl get object test-configmap
 ```
 
-On the destination cluster, confirm the ConfigMap was created:
+On the destination cluster, confirm the ConfigMap exists:
 
 ```bash
 kubectl get configmap test-configmap -n default -o yaml
@@ -328,12 +328,12 @@ spec:
   agentId: "550e8400-e29b-41d4-a716-446655440000"
 ```
 
-Each proxy in a different control plane can share the same agent, enabling a single agent to serve multiple control planes that need access to the same private network. The agent supports multiple concurrent connections with full isolation between them.
+Proxies in different control planes can share the same agent, letting one agent serve multiple control planes that access the same private network. The agent supports multiple concurrent connections with full isolation.
 
 ## Connectivity options
 
 ### Public internet
 
-By default, the Private Network Agent connects to the `connect.upbound.io` endpoint over the public internet using TLS 1.3. The endpoint has a static IP address for customers who need to allowlist egress traffic in their firewalls.
+By default, the Private Network Agent connects to `connect.upbound.io` over the public internet using TLS 1.3. The endpoint has a static IP address, so you can allowlist egress traffic in your firewall.
 
-Ensure outbound connectivity is allowed from your private network to `connect.upbound.io:4222` (TCP/TLS).
+Allow outbound connectivity from your private network to `connect.upbound.io:4222` (TCP/TLS).
