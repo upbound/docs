@@ -55,7 +55,7 @@ kubectl create clusterrolebinding provider-kubernetes-binding \
 Create a long-lived service account token:
 
 ```bash
-kubectl apply -f - <<EOF
+kubectl create -f - <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
@@ -91,7 +91,7 @@ kubectl apply -f - <<EOF
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: provider-kubernetes
+  name: upbound-provider-kubernetes
 spec:
   package: xpkg.upbound.io/upbound/provider-kubernetes:v1.1.0
   packagePullPolicy: IfNotPresent
@@ -103,7 +103,7 @@ EOF
 Create a secret containing the destination cluster's kubeconfig. Point the `server` field to your API server—use `https://kubernetes.default.svc.cluster.local` if the agent runs in the destination cluster:
 
 ```bash
-kubectl apply -f - <<EOF
+kubectl create -f - <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
@@ -168,7 +168,7 @@ ROBOT_TOKEN=$(cat token.json | jq -r .token)
 Create a Kubernetes secret containing the token on the Upbound control plane:
 
 ```bash
-kubectl apply -f - <<EOF
+kubectl create -f - <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
@@ -218,7 +218,7 @@ Switch your `kubectl` context back to the **destination cluster**.
 Create the robot token secret in the destination cluster:
 
 ```bash
-kubectl apply -f - <<EOF
+kubectl create -f - <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
@@ -336,8 +336,15 @@ Proxies in different control planes can share the same agent, letting one agent 
 
 ### Public internet
 
-By default, the Private Network Agent connects to `connect.upbound.io` over the public internet using TLS 1.3. The endpoint has a static external IP address for firewall rules.
+By default, the Private Network Agent connects to `connect.upbound.io` over the public internet using TLS 1.3.
 
-Allow outbound connectivity from your private network to `connect.upbound.io:4222` (TCP/TLS).
+The agent requires **outbound (egress)** connectivity to `connect.upbound.io` on port `4222` (TCP/TLS). If your cluster enforces network policies, firewall rules, or egress restrictions, you must allow this destination before installing the agent.
+
+| Field | Value |
+|---|---|
+| Hostname | `connect.upbound.io` |
+| Port | `4222` |
+| Protocol | TCP/TLS 1.3 |
+| Direction | Outbound (egress) |
 
 [contact-us]: https://www.upbound.io/contact-us
