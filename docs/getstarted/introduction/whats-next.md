@@ -1,6 +1,13 @@
 ---
 title: What's Next
 sidebar_position: 4
+validation:
+  type: reference
+  owner: docs@upbound.io
+  timeout: 15m
+  tags:
+    - reference
+    - up-project
 ---
 
 <!-- vale Google.Exclamation = NO -->

@@ -2,6 +2,15 @@
 title: Proxied configuration
 sidebar_position: 20
 description: Configure Upbound within a proxied environment
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - proxy
+    - configuration
 ---
 
 <!-- vale off -->

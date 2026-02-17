@@ -7,6 +7,23 @@ aliases:
     - /deploy/disconnected-spaces/use-argo-flux
     - /all-spaces/self-hosted-spaces/use-argo-flux
     - /connect/use-argo
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - helm
+    - up-cli
+    - argocd
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - argocd
+    - gitops
+    - integration
 ---
 
 

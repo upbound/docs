@@ -2,6 +2,15 @@
 title: Connect control planes to external services
 sidebar_position: 2
 description: A guide for authenticating control plane with external services, including using OIDC
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - oidc
+    - authentication
+    - providers
 ---
 
 <!-- vale gitlab.SentenceLength = NO -->

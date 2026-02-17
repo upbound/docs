@@ -2,6 +2,22 @@
 title: Simulations
 sidebar_position: 9
 description: A guide for how to use Simulations in a Space.
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - up-cli
+    - kubectl
+    - upbound-account
+    - git
+  timeout: 20m
+  tags:
+    - cli
+    - simulations
+    - walkthrough
+  variables:
+    UPBOUND_ACCOUNT: my-account
 ---
 
 :::important

@@ -2,6 +2,13 @@
 title: Publish packages
 sidebar_position: 2
 description: Product documentation for using the Repositories feature in Upbound.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
+    - repositories
 ---
 
 

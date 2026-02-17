@@ -2,6 +2,13 @@
 title: AI-powered Intelligent Control Planes
 description: "Learn how to use the AI-powered Intelligent Control Planes in UXP"
 sidebar_position: 1
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - ai
 ---
 
 Upbound Crossplane supports running **Intelligent Control Planes**, which are a

@@ -5,6 +5,13 @@ description: An introduction to the how contexts work in Upbound
 aliases:
     - /reference/contexts
     - /reference/cli/contexts
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - cli
+    - contexts
 ---
 
 Crossplane and Upbound emerged out of the Kubernetes ecosystem. The up CLI's

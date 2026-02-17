@@ -1,6 +1,13 @@
 ---
 title: Upbound Crossplane Release Notes
 description: Release notes for Upbound Crossplane
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - release-notes
+    - uxp
 ---
 <!-- vale off -->
 <!-- Release notes template/Copy&Paste 

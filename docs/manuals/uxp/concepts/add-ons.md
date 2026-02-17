@@ -2,6 +2,13 @@
 title: Add-Ons
 description: "Learn how to use the Add-Ons to extend your control plane"
 sidebar_position: 20
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - add-ons
 ---
 
 Upbound Crossplane supports running [Add-Ons][add-ons-concept] released by

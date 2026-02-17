@@ -4,6 +4,19 @@ sidebar_position: 1
 description: Use Go to create resources with your control plane.
 aliases:
     - /core-concepts/authoring-compositions
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+  timeout: 15m
+  tags:
+    - cli
+    - composition
+    - go
+    - walkthrough
 ---
 
 Upbound Crossplane allows you to choose how you want to write your composition logic based on your preferred language.

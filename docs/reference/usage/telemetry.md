@@ -2,6 +2,12 @@
 title: Telemetry
 sidebar_position: 99
 description: Learn about telemetry data collection in Upbound and how to opt out
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - telemetry
 ---
 
 Upbound collects telemetry data to improve the product and provide better support to our users.

@@ -4,6 +4,14 @@ sidebar_position: 1
 description: Configure single sign-on in your Upbound organization to manage user
   access
 plan: "enterprise"
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - walkthrough
+    - platform
+    - sso
+    - authentication
 ---
 
 <Enterprise />

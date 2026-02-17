@@ -2,6 +2,23 @@
 title: Billing Workload ID
 weight: 1
 description: Configure workload identity for Spaces Billing
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: aws
+  requires:
+    - kubectl
+    - helm
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - workload-identity
+    - billing
+    - aws
+    - azure
+    - gcp
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 

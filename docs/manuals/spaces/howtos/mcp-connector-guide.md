@@ -3,6 +3,20 @@ title: Consume control plane APIs in an app cluster with control plane connector
 sidebar_position: 99
 description: A tutorial to configure a Space with Argo to declaratively create and
   manage control planes
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - upbound-account
+    - kubectl
+    - up-cli
+  timeout: 20m
+  tags:
+    - walkthrough
+    - spaces
+    - mcp-connector
+    - todo
 ---
 
 In this tutorial, you learn how to configure a Kubernetes app cluster to communicate with a control plane in an Upbound self-hosted Space.

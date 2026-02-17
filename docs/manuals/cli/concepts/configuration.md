@@ -2,6 +2,13 @@
 title: Profiles
 sidebar_position: 3
 description: Configuration for the Upbound CLI
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - cli
+    - configuration
 ---
 
 This document explains the basics of profile configurations and how they work in

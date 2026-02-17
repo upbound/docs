@@ -2,6 +2,12 @@
 title: Package Security Features
 sidebar_position: 3
 description: Navigating security features of Official Packages in the Upbound Marketplace
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
 ---
 <!-- vale write-good.Passive = NO -->
 Official Packages are curated, tested Crossplane extensions hardened for

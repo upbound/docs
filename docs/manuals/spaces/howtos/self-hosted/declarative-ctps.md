@@ -3,6 +3,21 @@ title: Declaratively create control planes
 sidebar_position: 99
 description: A tutorial to configure a Space with Argo to declaratively create and
   manage control planes
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - argocd
+  timeout: 20m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - argocd
+    - gitops
+    - control-planes
 ---
 
 In this tutorial, you learn how to configure [Argo CD][argo-cd] to communicate with a self-hosted Space. This flow allows you to declaratively create and manage control planes from Git. Argo CD is a continuous delivery tool for Kubernetes that you can use to drive GitOps flows for your control plane infrastructure.

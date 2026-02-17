@@ -2,6 +2,18 @@
 title: Configure your up CLI context
 sidebar_position: 11
 description: "Set your kubeconfig context for your Space or cluster"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local
+  requires:
+    - up-cli
+    - kubectl
+  timeout: 5m
+  tags:
+    - cli
+    - configuration
+    - walkthrough
 ---
 
 This guide explains how to navigate and configure contexts using the `up ctx` command.

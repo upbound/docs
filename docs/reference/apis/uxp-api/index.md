@@ -1,6 +1,13 @@
 ---
 title: UXP API Reference
 description: UXP API resources
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - api
+    - uxp
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';

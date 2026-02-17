@@ -3,6 +3,13 @@ title: "Up CLI Release Notes"
 description: "Release notes for the Up Cli"
 toc_min_heading_level: 2
 toc_max_heading_level: 2
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - release-notes
+    - cli
 ---
 
 <!--vale off -->

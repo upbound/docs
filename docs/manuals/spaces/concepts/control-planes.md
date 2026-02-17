@@ -2,6 +2,12 @@
 title: Control Planes
 weight: 1
 description: An overview of control planes in Upbound
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
 ---
 
 

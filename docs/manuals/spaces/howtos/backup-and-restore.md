@@ -3,6 +3,15 @@ title: Backup and restore
 sidebar_position: 13
 description: Configure and manage backups in your Upbound Space.
 plan: "enterprise"
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - backup
+    - restore
+    - api
 ---
 
 <Enterprise />

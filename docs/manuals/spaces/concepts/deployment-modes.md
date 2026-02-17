@@ -2,6 +2,12 @@
 title: Deployment Modes
 sidebar_position: 10
 description: An overview of deployment modes for Spaces
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
 ---
 
 Upbound Spaces can be deployed and used in a variety of modes:

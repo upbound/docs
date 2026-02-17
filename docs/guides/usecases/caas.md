@@ -2,6 +2,13 @@
 title: 'Clusters-as-a-service'
 sidebar_position: 210
 description: "This example explains how to create clusters-as-a-service"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - usecases
+    - caas
 ---
 
 This example assumes you've already created and deployed the IDP starter kit. Read the [Get Started][getStarted] guide to do this if you haven't already.

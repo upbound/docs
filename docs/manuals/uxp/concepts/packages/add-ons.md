@@ -3,6 +3,14 @@ title: Add-Ons
 sidebar_position: 25
 description: A guide to how to wrap and deploy an Upbound Add-On into control
   planes on Upbound.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - packages
+    - add-ons
 ---
 
 Upbound's _Add-Ons_ feature lets you build and deploy control plane software

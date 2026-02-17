@@ -1,6 +1,12 @@
 ---
 title: Support
 description: Contact Upbound Support
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - support
 ---
 
 [Contact us][contact] for sales inquiries, upgrades, new customer onboarding, or general questions.

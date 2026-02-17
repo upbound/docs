@@ -1,8 +1,15 @@
 ---
-title: Overview 
+title: Overview
 sidebar_position: 1
 description: Managed resources are the Crossplane representation of external provider
   resources
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - managed-resources
 ---
 
 A _managed resource_ (`MR`) represents an external service in a Provider. When

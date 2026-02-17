@@ -2,6 +2,14 @@
 title: Composite Resource Definitions
 sidebar_position: 4
 description: Composite Resource Definitions or XRDs define custom API schemas
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - composition
+    - xrd
 ---
 
 Composite resource definitions (`XRDs`) define the schema for a custom API.  

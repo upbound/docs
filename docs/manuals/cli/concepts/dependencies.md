@@ -2,6 +2,13 @@
 title: Project Dependencies
 description: "What are project dependencies?"
 sidebar_position: 5
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - cli
+    - dependencies
 ---
 
 This document explains the basics of project dependencies and how they work in

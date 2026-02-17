@@ -2,6 +2,13 @@
 title: Robots
 sidebar_position: 1
 description: Creating and assigning Upbound robot tokens
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - iam
 ---
 
 Robot accounts are non-user accounts with unique credentials and permissions. Organization _admins_ grant robot accounts access to individual repositories. Robot accounts access the repositories without using credentials tied to an individual user.

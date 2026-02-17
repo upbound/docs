@@ -5,6 +5,19 @@ description: Connect Kubernetes clusters to remote Crossplane control planes for
 aliases:
     - /api-connector
     - /concepts/api-connector
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - upbound-account
+    - kubectl
+    - up-cli
+  timeout: 20m
+  tags:
+    - walkthrough
+    - spaces
+    - api-connector
 ---
 :::warning
 API Connector is currently in **Preview**. The feature is under active

@@ -2,6 +2,12 @@
 title: Crossplane WebUI
 sidebar_position: 2
 description: The Crossplane WebUI
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - console
 ---
 
 The Crossplane Web UI delivers a local, read-only dashboard for inspecting and

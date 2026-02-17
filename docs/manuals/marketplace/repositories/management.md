@@ -2,6 +2,13 @@
 title: Repository Management
 sidebar_position: 3
 description: How to create, list, and delete repositories
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
+    - repositories
 ---
 
 

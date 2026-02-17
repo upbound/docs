@@ -4,6 +4,19 @@ sidebar_position: 3
 description: Use KCL to create resources with your control plane.
 aliases:
     - /core-concepts/authoring-compositions
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+  timeout: 15m
+  tags:
+    - cli
+    - composition
+    - kcl
+    - walkthrough
 ---
 
 Upbound Crossplane allows you to choose how you want to write your composition

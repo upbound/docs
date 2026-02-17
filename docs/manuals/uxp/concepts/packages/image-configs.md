@@ -3,6 +3,13 @@ title: Image Configs
 sidebar_position: 40
 description: Image Configs is an API for centralized control of the configuration
   of Crossplane package images.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - packages
 ---
 
 <!-- vale write-good.Passive = NO -->

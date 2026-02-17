@@ -6,6 +6,23 @@ aliases:
     - /all-spaces/self-hosted-spaces/query-api
     - /self-hosted-spaces/query-api
     - all-spaces/self-hosted-spaces/query-api
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - helm
+    - up-cli
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - query-api
+    - postgresql
+    - configuration
+    - todo
 ---
 
 <!-- vale write-good.TooWordy = NO -->

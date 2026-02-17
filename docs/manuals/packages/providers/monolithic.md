@@ -2,6 +2,13 @@
 title: Monolithic providers
 sidebar_position: 2
 description: Support information for legacy monolithic Crossplane Providers
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 :::tip

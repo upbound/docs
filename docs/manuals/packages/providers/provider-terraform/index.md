@@ -2,6 +2,14 @@
 title: Provider Terraform
 sidebar_position: 1
 description: Execute Terraform modules from Crossplane
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
+    - terraform
 ---
 
 The Upbound Terraform Provider enables you to execute Terraform modules directly from Crossplane. This allows you to integrate existing Terraform configurations into your Crossplane-managed infrastructure.

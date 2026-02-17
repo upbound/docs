@@ -2,6 +2,12 @@
 title: Authentication
 sidebar_position: 3
 description: How to authenticate to the Upbound Marketplace to access private packages.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
 ---
 
 Pulling private packages or pushing packages to an Upbound Marketplace private repository requires authentication to Upbound.

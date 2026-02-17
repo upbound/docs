@@ -2,6 +2,12 @@
 title: Add-Ons
 sidebar_position: 15
 description: Product documentation for the Add-Ons offered by Upbound.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
 ---
 
 Upbound Add-Ons are an Upbound-specific package type built as OCI images and published into the [Upbound Marketplace][upbound-marketplace]. Upbound publishes, maintains, and supports these listings. They're published under the `upbound` organization.

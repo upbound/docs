@@ -1,6 +1,13 @@
 ---
 title: Query API Reference
 description: Documentation for the Query API resources
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - api
+    - query
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';

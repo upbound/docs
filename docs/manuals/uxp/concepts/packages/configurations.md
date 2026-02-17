@@ -3,6 +3,14 @@ title: Configurations
 sidebar_position: 20
 description: Packages combine multiple Crossplane resources into a single, portable,
   OCI image.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - packages
+    - configuration
 ---
 
 A _Configuration_ package is an 

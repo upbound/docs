@@ -3,6 +3,20 @@ title: Secrets Management
 sidebar_position: 20
 description: A guide for how to configure synchronizing external secrets into control
   planes in a Space.
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - upbound-account
+    - kubectl
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - secrets
+    - security
+    - todo
 ---
 
 Upbound's _Shared Secrets_ is a built in secrets management feature that

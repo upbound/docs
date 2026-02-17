@@ -2,6 +2,23 @@
 title: Build Intelligent Control Planes with AI-Powered Operations
 description: "Advanced guide for implementing AI-powered control planes using Upbound Crossplane with intelligent functions and automated error resolution"
 sidebar_position: 1
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+    - kubectl
+    - upbound-account
+    - anthropic-api-key
+    - aws-account
+  timeout: 30m
+  tags:
+    - walkthrough
+    - ai
+    - intelligent-control-planes
+    - aws
 ---
 <!-- vale gitlab.Uppercase = NO --> 
 <!-- ignore LLM -->

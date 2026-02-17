@@ -1,5 +1,11 @@
 ---
 title: API Reference
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - api
 ---
 
 Information on Upbound's APIs:

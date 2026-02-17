@@ -1,7 +1,16 @@
 ---
-title: Administer features 
+title: Administer features
 sidebar_position: 12
 description: Enable and disable features in Spaces
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - features
+    - administration
 ---
 
 This guide shows how to enable or disable features in your self-hosted Space.

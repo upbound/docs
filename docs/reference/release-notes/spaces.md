@@ -1,6 +1,13 @@
 ---
 title: Spaces Release Notes
 description: Release notes for the Spaces
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - release-notes
+    - spaces
 ---
 
 <!-- vale off -->

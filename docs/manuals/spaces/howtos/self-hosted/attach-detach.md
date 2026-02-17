@@ -2,6 +2,22 @@
 title: Connect or disconnect a Space
 sidebar_position: 12
 description: Enable and connect self-hosted Spaces to the Upbound console
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - up-cli
+    - helm
+    - jq
+  timeout: 20m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - console
+    - connect
 ---
 :::important
 This feature is in preview. Starting in Spaces `v1.8.0` and later, you must

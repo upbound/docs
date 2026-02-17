@@ -2,6 +2,13 @@
 title: Provider Authentication
 sidebar_position: 2
 description: Authentication options for Upbound Official Providers
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 This guide covers authentication methods for Upbound Official Providers. Each provider supports multiple authentication approaches to fit different deployment scenarios and security requirements.

@@ -2,6 +2,14 @@
 title: Segregate Marketplace Repository Access
 sidebar_position: 2
 description: A guide for segregating marketplace repository access.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - marketplace
+    - security
 ---
 
 Upbound allows organizations to segregate repository access to consume only

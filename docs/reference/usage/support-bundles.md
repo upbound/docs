@@ -1,6 +1,13 @@
 ---
 title: Support Bundles
 description: Collect diagnostic snapshots for troubleshooting
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - support
+    - troubleshooting
 ---
 
 The `up` CLI uses [troubleshoot.sh] to collect diagnostic snapshots from UXP, Spaces, and control planes for troubleshooting.

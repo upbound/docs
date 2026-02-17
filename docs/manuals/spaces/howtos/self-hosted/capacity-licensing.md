@@ -3,6 +3,16 @@ title: Capacity Licensing
 sidebar_position: 60
 description: A guide for capacity-based licensing in self-hosted Spaces
 plan: "enterprise"
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - licensing
+    - capacity
+    - todo
 ---
 
 <!-- vale write-good.TooWordy = NO -->

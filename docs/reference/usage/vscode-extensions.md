@@ -7,6 +7,13 @@ aliases:
     - development-extensions/vscode-extensions
     - build/vscode-extensions
     - /build/vscode-extensions
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - vscode
+    - development
 ---
 
 Official Upbound providers include schemas that you can leverage to enhance your

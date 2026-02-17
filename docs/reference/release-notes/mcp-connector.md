@@ -1,6 +1,13 @@
 ---
 title: MCP Connector Release Notes
 description: Release notes for the Mcp Connector
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - release-notes
+    - mcp-connector
 ---
 <!-- vale off -->
 

@@ -2,6 +2,13 @@
 title: Teams
 sidebar_position: 1
 description: Creating and managing Upbound teams
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - iam
 ---
 Teams are groups of Upbound [users][users] within an [organization][organization]. Teams provide more fine-grained permissions controls for users and robots accessing control planes and repositories.
 

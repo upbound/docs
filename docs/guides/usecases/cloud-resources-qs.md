@@ -1,6 +1,27 @@
 ---
 title: Create custom cloud resources
 sidebar_position: 3
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+    - cloud-account
+  timeout: 20m
+  tags:
+    - walkthrough
+    - multi-cloud
+    - python
+    - composition
+    - aws
+    - azure
+    - gcp
+  variables:
+    PROJECT_NAME: my-new-project
+    CLOUD_PROVIDER: aws
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 

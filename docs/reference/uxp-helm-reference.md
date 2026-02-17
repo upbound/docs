@@ -4,6 +4,13 @@ sidebar_position: 20
 description: UXP Helm chart configuration values
 mdx:
     format: md
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - helm
+    - uxp
 ---
 
 <!-- vale off -->

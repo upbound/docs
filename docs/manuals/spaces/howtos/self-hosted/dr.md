@@ -2,6 +2,15 @@
 title: Disaster Recovery
 sidebar_position: 13
 description: Configure Space-wide backups for disaster recovery.
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - disaster-recovery
+    - backups
 ---
 
 :::important

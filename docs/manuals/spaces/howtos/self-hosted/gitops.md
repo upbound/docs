@@ -3,6 +3,21 @@ title: GitOps with control planes
 sidebar_position: 80
 description: An introduction to doing GitOps with control planes on Upbound
 plan: "business"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - argocd
+  timeout: 20m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - gitops
+    - argocd
+    - todo
 ---
 
 <Business />

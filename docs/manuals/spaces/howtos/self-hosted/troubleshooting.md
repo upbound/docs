@@ -2,6 +2,15 @@
 title: Troubleshooting
 sidebar_position: 100
 description: A guide for troubleshooting an issue that occurs in a Space
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - troubleshooting
+    - debugging
 ---
 
 Find guidance below on how to find solutions for issues you encounter when deploying and using an Upbound Space. Use the tips below as a supplement to the observability metrics discussed in the [Observability][observability] page.

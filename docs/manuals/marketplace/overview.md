@@ -5,6 +5,12 @@ sidebar_label: Overview
 hide_title: true
 description: How to use the Upbound Marketplace to discover Crossplane providers and
   packages.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
 ---
 
 [Upbound Marketplace][upbound-marketplace] simplifies your control plane journey

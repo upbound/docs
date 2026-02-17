@@ -1,6 +1,12 @@
 ---
 title: Feature Lifecycle
 sidebar_position: 30
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - lifecycle
 ---
 
 # Feature Lifecycle

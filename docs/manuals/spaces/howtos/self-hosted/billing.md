@@ -2,6 +2,15 @@
 title: Self-Hosted Space Billing
 sidebar_position: 50
 description: A guide for how billing works in an Upbound Space
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - billing
+    - todo
 ---
 
 

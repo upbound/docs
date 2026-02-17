@@ -3,6 +3,13 @@ title: Composite Resources
 sidebar_position: 2
 description: Composite resources, an XR or XRs, represent a collection of related
   cloud resources.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - composition
 ---
 
 A composite resource, or XR, represents a set of Kubernetes resources as a

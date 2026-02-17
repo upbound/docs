@@ -1,6 +1,17 @@
 ---
 title: Build and push your first Configuration
 sidebar_position: 3
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 15m
+  tags:
+    - walkthrough
 ---
 
 In this tutorial, you'll learn how to build a Configuration package and push it

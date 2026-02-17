@@ -3,6 +3,23 @@ title: Control Plane Connector
 weight: 80
 description: A guide for how to connect a Kubernetes app cluster to a control plane in Upbound using the Control Plane connector feature
 plan: "standard"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - upbound-account
+    - up-cli
+    - kubectl
+    - helm
+  timeout: 20m
+  tags:
+    - walkthrough
+    - spaces
+    - connector
+    - control-planes
+    - migration
+    - todo
 ---
 
 <Standard />

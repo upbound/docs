@@ -2,6 +2,22 @@
 title: Interacting with Disconnected Spaces
 sidebar_position: 10
 description: Common operations in Spaces
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - up-cli
+    - helm
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - management
+    - todo
+    - stale
 ---
 
 ## Spaces management

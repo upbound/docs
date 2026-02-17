@@ -2,6 +2,20 @@
 title: Run and Test Projects
 sidebar_position: 8
 description: How to run your control plane project on a development controlplane
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - up-cli
+    - upbound-account
+  timeout: 15m
+  tags:
+    - cli
+    - testing
+    - walkthrough
+  variables:
+    UPBOUND_ORG: my-org
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';

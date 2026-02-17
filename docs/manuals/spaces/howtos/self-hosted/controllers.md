@@ -2,6 +2,21 @@
 title: Controllers
 weight: 250
 description: A guide to how to wrap and deploy an Upbound controller into control planes on Upbound.
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - up-cli
+    - helm
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - controllers
+    - packages
 ---
 
 :::important

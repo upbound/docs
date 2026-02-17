@@ -1,7 +1,19 @@
 ---
-title: Add project dependencies 
+title: Add project dependencies
 sidebar_position: 5
 description: The basic concepts to help you on your Upbound journey
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+  timeout: 10m
+  tags:
+    - cli
+    - dependencies
+    - walkthrough
 ---
 
 This guide explains how to add cloud providers, functions and configurations as

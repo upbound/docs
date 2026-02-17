@@ -1,6 +1,13 @@
 ---
 title: Compose resources dynamically
 draft: true
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - ai
+    - mcp
 ---
 
 :::important

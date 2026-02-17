@@ -3,6 +3,12 @@ title: Query API
 sidebar_position: 2
 description: The Query API
 tier: "standard"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - console
 ---
 
 The Query API used to previously operate within a multi-tenant Spaces

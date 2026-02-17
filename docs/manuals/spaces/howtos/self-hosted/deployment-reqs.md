@@ -2,6 +2,16 @@
 title: Deployment Requirements
 sidebar_position: 2
 description: Deploy a Space in your production environment.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
+    - self-hosted
+    - deployment
+    - requirements
+    - planning
 ---
 
 You need a Kubernetes cluster as the hosting environment to run Spaces. You can

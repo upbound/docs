@@ -2,6 +2,12 @@
 title: Package Policies
 sidebar_position: 100
 description: The Upbound Official package policies.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
 ---
 
 <!-- vale Google.Headings = NO -->

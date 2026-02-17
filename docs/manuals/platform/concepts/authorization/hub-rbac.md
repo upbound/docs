@@ -2,6 +2,13 @@
 title: Hub RBAC
 sidebar_position: 1
 description: A guide using Hub RBAC in disconnected spaces
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - authorization
 ---
 
 :::important

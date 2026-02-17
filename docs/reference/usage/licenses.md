@@ -2,6 +2,12 @@
 title: License Usage
 sidebar_position: 1000
 description: References and sources for all the licenses in use by the Spaces software.
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - licenses
 ---
 
 The following are licenses used in the Spaces feature.

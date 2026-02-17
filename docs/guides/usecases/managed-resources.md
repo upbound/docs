@@ -1,6 +1,23 @@
 ---
 title: Manage external resources with providers
 sidebar_position: 2
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - kind
+    - aws-account
+  timeout: 15m
+  tags:
+    - walkthrough
+    - providers
+    - managed-resources
+    - aws
+  variables:
+    AWS_REGION: us-east-2
 ---
 Upbound Crossplane is the AI-native distribution of Crossplane. Control planes
 are the only way to build and support an autonomous infrastructure platform for

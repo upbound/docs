@@ -4,6 +4,17 @@ sidebar_position: 50
 description: A guide for how to use the integrated observability pipeline feature
   in a Space.
 plan: "enterprise"
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - observability
+    - telemetry
+    - monitoring
+    - api
+    - todo
 ---
 
 <Enterprise />

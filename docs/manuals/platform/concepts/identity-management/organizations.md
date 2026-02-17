@@ -2,6 +2,13 @@
 title: Organizations
 sidebar_position: 1
 description: Configuring Organizations for Upbound
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - iam
 ---
 
 Organizations allow multiple [user accounts][user-accounts] to share Upbound resources and collaborate.

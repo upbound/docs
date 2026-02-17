@@ -1,6 +1,13 @@
 ---
 title: Crossplane API Reference
 description: Documentation for the Query API resources
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - api
+    - crossplane
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';

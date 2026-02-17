@@ -2,6 +2,25 @@
 title: Istio Ingress Gateway With Custom Certificates
 sidebar_position: 20
 description: Install self hosted spaces using istio ingress gateway in a Kind cluster
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - kind
+    - istioctl
+    - helm
+    - jq
+    - docker
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - istio
+    - certificates
+    - kind
 ---
 
 :::important

@@ -1,7 +1,15 @@
 ---
 title: Official Cloud Provider Authentication
 sidebar_position: 5
-description: Authenticate with AWS, GCP, or Azure Official Providers 
+description: Authenticate with AWS, GCP, or Azure Official Providers
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - packages
+    - providers
 ---
 
 

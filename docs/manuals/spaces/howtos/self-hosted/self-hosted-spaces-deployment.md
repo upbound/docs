@@ -3,6 +3,23 @@ title: Deployment Workflow
 sidebar_position: 3
 description: A  quickstart guide for Upbound Spaces
 tier: "business"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: aws
+  requires:
+    - kubectl
+    - helm
+    - up-cli
+    - eksctl
+  timeout: 60m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - deployment
+    - aws
+    - quickstart
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 

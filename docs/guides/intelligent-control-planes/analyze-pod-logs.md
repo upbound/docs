@@ -1,5 +1,22 @@
 ---
 title: Analyze pod crashes
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+    - kubectl
+    - upbound-account
+    - anthropic-api-key
+    - aws-account
+  timeout: 20m
+  tags:
+    - walkthrough
+    - ai
+    - intelligent-control-planes
+    - uxp
 ---
 
 :::important

@@ -11,7 +11,7 @@ validation:
     - docker
   timeout: 5m
   tags:
-    - walkthrough
+    - builders-workshop
 ---
 
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';

@@ -3,6 +3,22 @@ title: GitOps with control planes
 sidebar_position: 80
 description: An introduction to doing GitOps with control planes on Upbound
 tier: "business"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - up-cli
+    - kubectl
+    - helm
+    - upbound-account
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - gitops
+    - argocd
+    - cloud-spaces
 ---
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.

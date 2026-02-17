@@ -1,5 +1,21 @@
 ---
 title: Control plane audit logging
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - helm
+    - yq
+    - up-cli
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - audit-logs
+    - observability
 ---
 
 This guide explains how to enable and configure audit logging for control planes

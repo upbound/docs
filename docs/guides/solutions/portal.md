@@ -2,6 +2,14 @@
 title: "Platform portals with Backstage"
 sidebar_position: 30
 description: "A guide to use an Upbound control plane to bootstrap other platform pieces"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - solutions
+    - backstage
+    - portal
 ---
 
 Platform portals are one of the most common user interfaces to offer to consumers of your platform. If you want your platform users to have a graphical interface to view their resources, inspect, and create new instances, you should think about deploying a portal for your platform.

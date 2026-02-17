@@ -2,6 +2,13 @@
 title: Compositions
 sidebar_position: 3
 description: Compositions are a template for creating composite resources
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - composition
 ---
 
 Compositions are a template for creating multiple Kubernetes resources as a

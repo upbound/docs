@@ -2,6 +2,23 @@
 title: Create an AI-augmented operation
 description: "Use Upbound Crossplane to build and manage an AI-powered control plane"
 sidebar_position: 2
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 15m
+  tags:
+    - walkthrough
+    - up-project
+    - ai
+    - todo
+  variables:
+    CLUSTER_NAME: kind-up-upbound-getting-started
+    NAMESPACE: default
 ---
 
 Upbound Crossplane transforms infrastructure management by integrating

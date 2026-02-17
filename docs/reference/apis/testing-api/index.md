@@ -1,6 +1,13 @@
 ---
 title: Testing and Project API Reference
 description: Documentation for the Testing API resources
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - api
+    - testing
 ---
 
 import CrdDocViewer from '@site/src/components/CrdViewer';

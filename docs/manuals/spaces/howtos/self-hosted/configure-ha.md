@@ -2,6 +2,20 @@
 title: Production Scaling and High Availability
 description: Configure your Self-Hosted Space for production
 sidebar_position: 5
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - high-availability
+    - scaling
+    - production
 ---
 <!-- vale write-good.TooWordy = NO -->
 <!-- ignore "Minimum" -->

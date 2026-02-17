@@ -1,5 +1,11 @@
 ---
 title: Release Notes
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - release-notes
 ---
 
 Upbound's release notes:

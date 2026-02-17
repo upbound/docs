@@ -2,6 +2,14 @@
 title: "Deploy APIs for your platform"
 sidebar_position: 40
 description: "A guide to use an deploying APIs to your Upbound control planes"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - solutions
+    - apis
+    - configuration
 ---
 
 Crossplane configurations are the packaging and distribution mechanism for deploying new capabilities exposed as APIs to a control plane. This solution demonstrates deploying two Configuration packages to the frontend control plane:

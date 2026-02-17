@@ -3,6 +3,13 @@ title: Upbound RBAC
 sidebar_position: 1
 description: A guide to implementing and configuring access control in Upbound
 plan: "standard"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - authorization
 ---
 
 <Standard />

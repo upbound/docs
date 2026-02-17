@@ -1,6 +1,20 @@
 ---
 title: Create a control plane project
 sidebar_position: 1
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+    - docker
+  timeout: 15m
+  tags:
+    - walkthrough
+  variables:
+    CLUSTER_NAME: kind-up-upbound-getting-started
+    NAMESPACE: default
 ---
 
 Now that you have an Upbound account and the up CLI installed, you are ready to

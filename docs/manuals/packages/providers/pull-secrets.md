@@ -3,6 +3,13 @@ title: Pull secrets
 sidebar_position: 1
 description: Learn how to configure access to backport releases of Official providers from
   the Marketplace
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 You must configure a pull secret on your control plane to pull backport releases of Official Providers. If you're on

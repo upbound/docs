@@ -2,6 +2,13 @@
 title: Embedded Functions
 description: "What are Embedded Functions?"
 sidebar_position: 6
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - cli
+    - functions
 ---
 
 This document explains the basics of embedded functions and how they work in

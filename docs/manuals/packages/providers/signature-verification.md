@@ -2,6 +2,13 @@
 title: Signature Verification
 sidebar_position: 1
 description: Learn how to verify signatures for Official Providers from the Marketplace
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 Upbound Official Providers contain verifiable signatures, attestations, and an

@@ -2,6 +2,14 @@
 title: Intelligent Operations
 sidebar_position: 5
 description: Embed AI intelligence in the Operation execution flow.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - operations
+    - ai
 ---
 
 Upbound control planes combine deterministic control (like reconciliation and

@@ -2,6 +2,13 @@
 title: Usages
 sidebar_position: 3
 description: Usage indicates a resource is in use
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - managed-resources
 ---
 
 A `Usage` indicates a resource is in use. Two main use cases for Usages are

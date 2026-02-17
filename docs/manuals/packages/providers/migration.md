@@ -3,6 +3,13 @@ title: Migrate to Official Providers
 sidebar_position: 4
 description: How to automatically upgrade from legacy monolithic Providers to Upbound
   Provider families
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 :::warning

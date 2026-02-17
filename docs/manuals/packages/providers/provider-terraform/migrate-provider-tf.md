@@ -1,6 +1,14 @@
 ---
 title: Migrate from Terraform to Crossplane or Upbound
 sidebar_position: 1
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
+    - terraform
 ---
 
 Crossplane and Terraform are powerful tools for managing and provisioning cloud

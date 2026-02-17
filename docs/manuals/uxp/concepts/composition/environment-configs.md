@@ -3,6 +3,13 @@ title: Environment Configs
 sidebar_position: 7
 description: Environment Configs or EnvironmentConfigs are an in-memory datastore
   used in Compositions
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - composition
 ---
 
 <!--

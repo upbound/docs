@@ -2,6 +2,13 @@
 title: Project tests
 description: "What are Tests?"
 sidebar_position: 7
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - cli
+    - testing
 ---
 
 This document explains the basics of tests and how they work in control plane

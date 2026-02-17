@@ -2,6 +2,13 @@
 title: WatchOperation
 weight: 130
 description: WatchOperations create Operations when watched resources change
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - operations
 ---
 
 A `WatchOperation` creates [Operations][operation] when watched

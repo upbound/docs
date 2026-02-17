@@ -2,6 +2,13 @@
 title: Official Providers
 description: Upbound creates, maintains and supports a set of Crossplane providers
   called official providers.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 Upbound Official Providers are Crossplane providers built as OCI images and published into the [Upbound Marketplace][upbound-marketplace]. Upbound publishes, maintains, and supports these listings. They're denoted with a _Verification_ label of **Official**. They're published under the `upbound` organization.

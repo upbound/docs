@@ -2,6 +2,15 @@
 title: Control Plane Topologies
 sidebar_position: 15
 description: Configure scheduling of composites to remote control planes
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - topology
+    - control-planes
+    - api
 ---
 
 :::important

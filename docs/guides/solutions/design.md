@@ -2,6 +2,14 @@
 title: "Design the platform"
 sidebar_position: 10
 description: "A guide to designing the parts of your platform powered by Upbound"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - solutions
+    - platform-design
+    - idp
 ---
 
 To get started on your journey designing an IDP on Upbound, zoom out and think about the big picture of what you want to accomplish. 

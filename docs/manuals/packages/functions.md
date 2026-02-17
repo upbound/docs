@@ -2,6 +2,12 @@
 title: Official Functions
 sidebar_position: 10
 description: Product documentation for the Official Functions offered by Upbound.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
 ---
 
 Upbound Official Functions are Crossplane [functions][functions] built as OCI images and published into the [Upbound Marketplace][upbound-marketplace]. Upbound publishes, maintains, and supports these listings. They're denoted with a _Verification_ label of **Official**. They're published under the `upbound` organization.

@@ -3,6 +3,12 @@ title: Control Plane Groups
 sidebar_position: 2
 description: An introduction to the Control Plane Groups in Upbound
 plan: "enterprise"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
 ---
 
 <Enterprise />

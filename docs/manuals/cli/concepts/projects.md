@@ -2,6 +2,13 @@
 title: Control Plane Projects
 description: "What are Control Plane Projects?"
 sidebar_position: 2
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - cli
+    - projects
 ---
 
 This document explains the basics of control plane projects and how they work

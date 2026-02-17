@@ -11,8 +11,7 @@ validation:
     - docker
   timeout: 15m
   tags:
-    - walkthrough
-    - up-project
+    - builders-workshop
   variables:
     CLUSTER_NAME: kind-up-upbound-hello-world
     NAMESPACE: default

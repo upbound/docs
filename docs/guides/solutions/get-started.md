@@ -2,6 +2,22 @@
 title: "Get Started"
 sidebar_position: 5
 description: "A guide to deploying an internal development platform powered by Upbound control planes"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - upbound-account
+    - up-cli
+    - kubectl
+    - docker
+    - aws-account
+  timeout: 30m
+  tags:
+    - walkthrough
+    - solutions
+    - idp
+    - aws
 ---
 
 This solution demonstrates how to configure Upbound control planes to power a

@@ -2,6 +2,16 @@
 title: Configure OIDC
 sidebar_position: 20
 description: Configure OIDC in your Space
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - spaces
+    - self-hosted
+    - oidc
+    - authentication
+    - configuration
 ---
 :::important
 This guide is only applicable for administrators who've deployed self-hosted Spaces. For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].

@@ -2,6 +2,12 @@
 title: Creating and Pushing Packages
 sidebar_position: 2
 description: How to create, configure and push packages to the Upbound Marketplace
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
 ---
 
 Upbound Marketplace provides a collection of packages, accelerating development workflows and reducing setup time. You can build upon pre-built packages from the Marketplace and then use repositories to share and distribute your own packages with your team or other developers.

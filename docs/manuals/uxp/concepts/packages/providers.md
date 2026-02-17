@@ -2,6 +2,14 @@
 title: Providers
 sidebar_position: 1
 description: Providers connect Crossplane to external APIs
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - packages
+    - providers
 ---
 
 Providers enable Crossplane to provision infrastructure on an

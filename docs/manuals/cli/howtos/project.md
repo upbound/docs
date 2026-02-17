@@ -3,6 +3,18 @@ title: Create a project
 sidebar_position: 4
 description: The source of your control plane configurations. A control plane project
   contains the `upbound.yaml` file and any dependencies for your project.
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+  timeout: 10m
+  tags:
+    - cli
+    - project
+    - walkthrough
 ---
 
 This guide explains how to create and configure a control plane project and build custom

@@ -1,7 +1,14 @@
 ---
-title: Overview 
+title: Overview
 sidebar_position: 1
 description: Understand Crossplane's Composition workflow
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - composition
 ---
 
 Composition lets you build custom APIs using function pipelines that create

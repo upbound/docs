@@ -2,6 +2,14 @@
 title: Functions
 sidebar_position: 10
 description: Functions extend Crossplane with new ways to configure composition
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - packages
+    - functions
 ---
 
 Functions extend Crossplane with new ways to configure

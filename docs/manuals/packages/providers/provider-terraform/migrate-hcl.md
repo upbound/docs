@@ -1,6 +1,14 @@
 ---
 title: Rewrite HCL for Crossplane or Upbound
 sidebar_position: 1
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
+    - terraform
 ---
 
 The [Migrating from Terraform to Crossplane

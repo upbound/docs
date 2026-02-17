@@ -2,6 +2,12 @@
 title: Data Residency
 sidebar_position: 2
 description: "Information about Upbound's data residency policies."
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
 ---
 
 <!-- vale write-good.TooWordy = NO -->

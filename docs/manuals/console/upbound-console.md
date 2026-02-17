@@ -3,6 +3,12 @@ title: Upbound Console
 sidebar_position: 1
 description: An introduction to the Console feature of Upbound
 plan: "standard"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - console
 ---
 
 <Standard />

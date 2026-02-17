@@ -2,6 +2,13 @@
 title: Users
 sidebar_position: 1
 description: Creating and managing Upbound users
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - platform
+    - iam
 ---
 
 User accounts in Upbound belong to individuals. Each user can be a member of one or more [teams][teams], which have permissions on control planes within an [organization][organization]. A user can be a member of multiple organizations.

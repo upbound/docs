@@ -4,6 +4,13 @@ weight: 120
 state: alpha
 alphaVersion: 2.0
 description: CronOperations create Operations on a schedule for recurring tasks
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - operations
 ---
 
 A `CronOperation` creates [Operations][operation] on a schedule,

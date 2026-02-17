@@ -3,6 +3,15 @@ title: Dedicated Spaces
 sidebar_position: 4
 description: A guide to Upbound Dedicated Spaces
 plan: business
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
+    - cloud-spaces
+    - dedicated
+    - architecture
 ---
 <Business />
 

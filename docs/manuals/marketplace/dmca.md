@@ -2,6 +2,12 @@
 title: DMCA Policy
 sidebar_position: 1000
 description: Upbound Marketplace DMCA Policy
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - marketplace
 ---
 
 <!-- vale off -->

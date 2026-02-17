@@ -4,6 +4,11 @@ sidebar_label: Overview
 hide_title: true
 sidebar_position: 1
 description: Reference material for Upbound
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
 ---
 import ReferenceCards from '@site/src/components/ReferenceCards';
 

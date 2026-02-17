@@ -2,6 +2,12 @@
 title: Configurations
 sidebar_position: 20
 description: Product documentation for the Configurations offered by Upbound.
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
 ---
 
 Upbound Configurations are Crossplane [configurations][configurations] built as

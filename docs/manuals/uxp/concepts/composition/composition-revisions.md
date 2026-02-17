@@ -1,6 +1,13 @@
 ---
 title: Composition Revisions
 sidebar_position: 5
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - composition
 ---
 
 This guide discusses the use of "Composition Revisions" to make and roll

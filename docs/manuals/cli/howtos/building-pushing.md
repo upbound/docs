@@ -2,6 +2,20 @@
 title: Build and push a project
 sidebar_position: 10
 description: How to build and push your control plane project to the Upbound Marketplace
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+    - upbound-account
+  timeout: 10m
+  tags:
+    - cli
+    - build
+    - marketplace
+    - walkthrough
 ---
 
 This guide explains how to build your control plane project into a versioned

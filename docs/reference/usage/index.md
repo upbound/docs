@@ -1,5 +1,10 @@
 ---
 title: Usage Reference
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
 ---
 
 Information on Upbound's release policies and lifecycle.

@@ -4,6 +4,13 @@ sidebar_position: 21
 description: Spaces Helm chart configuration values
 mdx:
     format: md
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - helm
+    - spaces
 ---
 
 <!-- vale off -->

@@ -11,7 +11,7 @@ validation:
     - docker
   timeout: 5m
   tags:
-    - walkthrough
+    - builders-workshop
 ---
 
 This workshop walks through how to create a brand new project and

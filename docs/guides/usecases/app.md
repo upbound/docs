@@ -2,6 +2,13 @@
 title: 'Build your own App Model'
 sidebar_position: 220
 description: "This example explains how to create apps-as-a-service"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - usecases
+    - app
 ---
 
 This example assumes you've already created and deployed the IDP starter kit. Read the [Get Started][getStarted] guide to do this if you haven't already.

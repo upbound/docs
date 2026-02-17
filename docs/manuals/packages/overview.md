@@ -4,6 +4,12 @@ sidebar_position: 1
 description: Product documentation for the Official Packages offered by Upbound.
 sidebar_label: Overview
 hide_title: true
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
 ---
 
 # Overview

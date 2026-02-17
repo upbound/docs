@@ -2,6 +2,13 @@
 title: Latest - v1.15
 description: Documentation for the Spaces API resources
 sidebar_position: 1
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - api
+    - spaces
 ---
 import CrdDocViewer from '@site/src/components/CrdViewer';
 

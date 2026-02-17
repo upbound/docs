@@ -2,6 +2,12 @@
 title: IP Addresses
 sidebar_position: 19
 description: List of IP addresses used by Upbound control planes
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - networking
 ---
 
 Control planes can use any of the following IP addresses:

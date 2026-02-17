@@ -3,6 +3,16 @@ title: Automatically upgrade control planes
 sidebar_position: 50
 description: How to configure automatic upgrades of Crossplane in a control plane
 plan: "standard"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
+    - control-planes
+    - upgrades
+    - maintenance
+    - stale
 ---
 
 <Standard />

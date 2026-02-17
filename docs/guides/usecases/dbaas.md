@@ -2,6 +2,13 @@
 title: 'Databases-as-a-service'
 sidebar_position: 200
 description: "This example explains how to create databases-as-a-service"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - usecases
+    - dbaas
 ---
 
 This example assumes you've already created and deployed the IDP starter kit. Read the [Get Started][getStarted] guide to do this if you haven't already.

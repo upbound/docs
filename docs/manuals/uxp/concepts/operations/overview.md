@@ -1,6 +1,13 @@
 ---
 title: Operation
 description: Operations run function pipelines once to completion for operational tasks
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - uxp
+    - operations
 ---
 
 An `Operation` runs a function pipeline once to completion to perform operational

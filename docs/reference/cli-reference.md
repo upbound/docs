@@ -1,6 +1,12 @@
 ---
 title: CLI Reference
 sidebar_position: 3
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - cli
 ---
 
 This documentation is for the `up` CLI v0.44.3.

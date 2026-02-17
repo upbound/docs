@@ -2,6 +2,13 @@
 title: Managed Upbound control planes
 description: "Learn about the managed service capabilities of a Space"
 sidebar_position: 10
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
+    - control-planes
 ---
 
 Control planes in Upbound are fully isolated [Upbound Crossplane][uxp] instances

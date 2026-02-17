@@ -3,6 +3,16 @@ title: Managed Spaces
 sidebar_position: 4
 description: A guide to Upbound Managed Spaces
 plan: business
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - spaces
+    - managed
+    - architecture
+    - aws
+    - gcp
 ---
 
 <Business />

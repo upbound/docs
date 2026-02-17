@@ -2,6 +2,13 @@
 title: FAQ
 sidebar_position: 50
 description: Frequently asked questions related to Upbound Official providers
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - conceptual
+    - packages
+    - providers
 ---
 
 This page provides answers to the most common questions about Upbound Official Providers.

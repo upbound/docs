@@ -2,6 +2,23 @@
 title: Configure Space-level observability
 sidebar_position: 30
 description: Configure Space-level observability
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - kubectl
+    - helm
+    - up-cli
+  timeout: 30m
+  tags:
+    - walkthrough
+    - spaces
+    - self-hosted
+    - observability
+    - opentelemetry
+    - configuration
+    - todo
 ---
 
 :::important

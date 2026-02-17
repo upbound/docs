@@ -2,6 +2,19 @@
 title: Design a control plane API
 sidebar_position: 6
 description: Define your first API in your control plane project
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+  timeout: 10m
+  tags:
+    - cli
+    - xrd
+    - api-design
+    - walkthrough
 ---
 
 This guide explains how to create Composite Resource Definitions (XRDs) that

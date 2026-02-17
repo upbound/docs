@@ -3,6 +3,12 @@ title: Product Lifecycle
 sidebar_position: 10
 description: Information on Upbound software versions, support windows, and release
   policies.
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - reference
+    - lifecycle
 ---
 
 ## Software list
