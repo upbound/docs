@@ -2,10 +2,12 @@
 title: Private Network Agent
 sidebar_position: 5
 description: Connect an Upbound Cloud control plane to resources in your private network without exposing public endpoints
-plan: business
 ---
 
-<Business />
+
+:::important
+Private Network Agent is in private preview. For more information, [contact us][contact-us].
+:::
 
 The Private Network Agent lets an Upbound Cloud control plane manage Kubernetes and Helm resources inside private networks without exposing public endpoints, opening inbound firewall rules, or setting up VPC peering.
 
@@ -337,3 +339,5 @@ Proxies in different control planes can share the same agent, letting one agent 
 By default, the Private Network Agent connects to `connect.upbound.io` over the public internet using TLS 1.3. The endpoint has a static external IP address for firewall rules.
 
 Allow outbound connectivity from your private network to `connect.upbound.io:4222` (TCP/TLS).
+
+[contact-us]: https://www.upbound.io/contact-us
