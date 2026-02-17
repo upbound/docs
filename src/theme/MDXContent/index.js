@@ -6,10 +6,10 @@ export default function MDXContentWrapper({ children, ...props }) {
     const [copied, setCopied] = useState(false);
     const contentRef = useRef();
     const location = useLocation();
-    
+
     const excludedPaths = ["/guides/", "/manuals/", "/reference/"];
     const isHidden = excludedPaths.includes(location.pathname);
-    
+
     const handleCopy = () => {
         if (contentRef.current) {
             navigator.clipboard
@@ -20,11 +20,22 @@ export default function MDXContentWrapper({ children, ...props }) {
                 });
         }
     };
-    
+
+    // Build class names - always render button but hide with CSS to avoid hydration errors
+    const buttonClasses = [
+        'copy-markdown-button',
+        copied ? 'copied' : '',
+        isHidden ? 'hidden' : ''
+    ].filter(Boolean).join(' ');
+
     return (
         <>
-            <button onClick={handleCopy} style={{marginBottom: '20px'}}>
-                {copied ? "Copied!" : "Copy Markdown"}
+            <button
+                onClick={handleCopy}
+                className={buttonClasses}
+                aria-label={copied ? "Copied!" : "Copy page content"}
+            >
+                {copied ? "✓ Copied!" : "Copy Markdown"}
             </button>
             <div ref={contentRef}>
                 <OriginalMDXContent {...props}>{children}</OriginalMDXContent>
