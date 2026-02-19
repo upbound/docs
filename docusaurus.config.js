@@ -213,7 +213,7 @@ const config = {
             },
             algolia: {
                 appId: "4OZX85VEXQ",
-                apiKey: "7880f8f03cb89ce23f18d4359fb10e5e",
+                apiKey: "9f96702edcf79d7097bedfce2813d49e",
                 indexName: "upbound",
                 contextualSearch: true,
                 searchPagePath: "search",
