@@ -235,7 +235,7 @@ Install the Private Network Agent using Helm:
 ```bash
 helm upgrade --install private-network-agent \
   oci://xpkg.upbound.io/spaces-artifacts/private-network-agent \
-  --version <version> \
+  --version 0.0.0-1015.g358e4c6 \
   --set agent.connectUrl=tls://connect.upbound.io \
   --set agent.organization=$UPBOUND_ORG \
   --set agent.agentId=$AGENT_ID \
