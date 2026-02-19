@@ -2,8 +2,8 @@ name: Sync Pylon KB to Algolia
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # daily at 03:00 UTC
-  workflow_dispatch:       # allow manual runs from the Actions tab
+    - cron: '0 3 * * *
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -22,10 +22,8 @@ jobs:
       - name: Sync Pylon KB → Algolia
         run: npm run sync-pylon
         env:
-          # Secrets (set in repo Settings → Secrets and variables → Actions → Secrets)
           PYLON_API_KEY:         ${{ secrets.PYLON_API_KEY }}
           ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_ADMIN_API_KEY }}
-          # Variables (set in repo Settings → Secrets and variables → Actions → Variables)
           ALGOLIA_APP_ID:        ${{ vars.ALGOLIA_APP_ID }}
           ALGOLIA_INDEX_NAME:    ${{ vars.ALGOLIA_INDEX_NAME }}
           PYLON_KB_PORTAL_URL:   ${{ vars.PYLON_KB_PORTAL_URL }}
