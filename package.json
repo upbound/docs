@@ -12,6 +12,7 @@
         "serve": "docusaurus serve",
         "write-translations": "docusaurus write-translations",
         "process-crds": "node scripts/process-crds.js",
+        "sync-pylon": "node scripts/sync-pylon-to-algolia.js",
         "write-heading-ids": "docusaurus write-heading-ids"
     },
     "dependencies": {
