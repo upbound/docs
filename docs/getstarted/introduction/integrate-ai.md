@@ -599,7 +599,7 @@ Now that your control plane is running locally with AI-powered operations, consi
 * Package your control plane as a [Configuration][Configuration] image and push it to the Upbound Marketplace
 * Complete the [Build and push your first Configuration][buildAndPush] tutorial
 * Explore additional [AI-powered operations][aiOperations] for other infrastructure scenarios
-* Configure [AI-augmented functions for analysis and remediations][aiRemediation] for app deployments 
+* Configure [analysis remediations][aiRemediation] for app deployments 
 
 [up]: /manuals/cli/overview
 [project]: /getstarted/introduction/project
