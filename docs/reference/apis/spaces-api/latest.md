@@ -37,6 +37,10 @@ This page documents the Custom Resource Definitions (CRDs) for the Spaces API.
 ### Shared Upbound Policies
 <CrdDocViewer crdUrl="/crds/space/v1.15/policy.spaces.upbound.io_sharedupboundpolicies.yaml" />
 
+## Proxies
+### Proxies
+<CrdDocViewer crdUrl="/crds/space/v1.15/spaces.upbound.io_proxies.yaml" />
+
 ## References
 ### Referenced Objects
 <CrdDocViewer crdUrl="/crds/space/v1.15/references.upbound.io_referencedobjects.yaml" />
