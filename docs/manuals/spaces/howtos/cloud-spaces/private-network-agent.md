@@ -4,16 +4,23 @@ sidebar_position: 5
 description: Connect an Upbound Cloud control plane to resources in your private network without exposing public endpoints
 ---
 
-
+<!-- vale Google.We = NO -->
 :::important
 Private Network Agent is in private preview. For more information, [contact us][contact-us].
 :::
+<!-- vale Google.We = YES -->
 
-The Private Network Agent lets an Upbound Cloud control plane manage Kubernetes and Helm resources inside private networks without exposing public endpoints, opening inbound firewall rules, or setting up VPC peering.
+The Private Network Agent lets an Upbound Cloud control plane manage Kubernetes
+and Helm resources inside private networks. No public endpoints, inbound
+firewall rules, or VPC peering required.
 
-## How it works
+## Architecture overview
 
-The Private Network Agent reverses the traditional connection model. Instead of the control plane reaching into your private network, a lightweight agent inside your network connects outbound to the control plane. The control plane sends requests through this connection and receives responses through the same channel.
+The Private Network Agent reverses the traditional connection model. Instead of
+the control plane reaching into your private network, a lightweight agent inside
+your network connects outbound to the control plane. The control plane sends
+requests through this connection and receives responses through the same
+channel.
 
 This approach:
 
@@ -33,14 +40,15 @@ Before you begin, make sure you have:
 - An Upbound organization and a managed control plane.
 - `Admin` role on the control plane (required to create a `Proxy` resource).
 - A destination Kubernetes cluster in your private network.
-- Outbound connectivity from the private network to `connect.upbound.io:4222` (TCP/TLS). No inbound rules are required.
+- Outbound connectivity from the private network to `connect.upbound.io:4222` (TCP/TLS). No inbound rules required.
 - `kubectl` access to both the managed control plane and the destination cluster.
 - The [Upbound CLI](/manuals/cli/overview/) (`up`) installed.
 - Helm v3 installed.
 
 ## Set up the destination cluster
 
-On your **destination cluster**, create a service account that `provider-kubernetes` uses.
+On your **destination cluster**, create a service account that
+`provider-kubernetes` uses.
 
 Create the service account and bind it to a role, for example `cluster-admin`:
 
@@ -72,7 +80,8 @@ Retrieve the token:
 TOKEN=$(kubectl get secret provider-kubernetes-token -o jsonpath='{.data.token}' | base64 -d)
 ```
 
-Set the cluster's certificate authority data (from your cloud provider's console or kubeconfig) as an environment variable:
+Set the cluster's certificate authority data (from your cloud provider's console
+or kubeconfig) as an environment variable:
 
 ```bash
 export CLUSTER_CA_DATA=<certificate-authority-data>
@@ -100,7 +109,10 @@ EOF
 
 ### Create the kubeconfig secret
 
-Create a secret containing the destination cluster's kubeconfig. Point the `server` field to your API server—use `https://kubernetes.default.svc.cluster.local` if the agent runs in the destination cluster:
+Create a secret containing the destination cluster's kubeconfig. Point the
+`server` field to your API server—use
+`https://kubernetes.default.svc.cluster.local` if the agent runs in the
+destination cluster:
 
 ```bash
 kubectl create -f - <<EOF
@@ -154,7 +166,8 @@ EOF
 
 ### Create a robot token
 
-Create a robot and token in your Upbound organization. Both proxy and agent use this token to authenticate.
+Create a robot and token in your Upbound organization. Both proxy and agent use
+this token to authenticate.
 
 ```bash
 export UPBOUND_ORG=<your-organization>
@@ -180,9 +193,11 @@ stringData:
 EOF
 ```
 
-### Create the Proxy resource
+### Create the `Proxy` resource
 
-Create a `Proxy` resource in the managed control plane. This deploys the proxy component and configures provider pods to route traffic through it. Each control plane supports only one `Proxy`.
+Create a `Proxy` resource in the managed control plane. This deploys the proxy
+component and configures provider pods to route traffic through it. Each control
+plane supports only one `Proxy`.
 
 :::warning
 Creating a `Proxy` requires the `Admin` role.
@@ -211,7 +226,10 @@ Retrieve the generated agent ID:
 AGENT_ID=$(kubectl get proxy private-cluster -o jsonpath='{.status.agentID}')
 ```
 
+<!-- vale Google.Headings = NO -->
 ## Install the Private Network Agent
+<!-- vale Google.Headings = YES -->
+
 
 Switch your `kubectl` context back to the **destination cluster**.
 
@@ -323,22 +341,29 @@ spec:
 
 ## Connect multiple proxies to one agent
 
-To connect multiple control plane proxies to a single Private Network Agent, set the same `agentId` on each `Proxy` resource:
+To connect multiple control plane proxies to a single Private Network Agent, set
+the same `agentId` on each `Proxy` resource:
 
 ```yaml
 spec:
   agentID: "550e8400-e29b-41d4-a716-446655440000"
 ```
 
-Proxies in different control planes can share the same agent, letting one agent serve multiple control planes that access the same private network. The agent supports multiple concurrent connections with full isolation.
+Proxies in different control planes can share the same agent, letting one agent
+serve multiple control planes that access the same private network. The agent
+supports multiple concurrent connections with full isolation.
 
 ## Connectivity options
 
 ### Public internet
 
-By default, the Private Network Agent connects to `connect.upbound.io` over the public internet using TLS 1.3.
+By default, the Private Network Agent connects to `connect.upbound.io` over the
+public internet using TLS 1.3.
 
-The agent requires **outbound (egress)** connectivity to `connect.upbound.io` on port `4222` (TCP/TLS). If your cluster enforces network policies, firewall rules, or egress restrictions, you must allow this destination before installing the agent.
+The agent requires **outbound (egress)** connectivity to `connect.upbound.io` on
+port `4222` (TCP/TLS). If your cluster enforces network policies, firewall
+rules, or egress restrictions, you must allow this destination before installing
+the agent.
 
 | Field | Value |
 |---|---|
