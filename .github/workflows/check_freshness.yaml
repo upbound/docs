@@ -25,7 +25,7 @@ jobs:
         import subprocess
         from datetime import datetime, timedelta
 
-        FRESHNESS_PERIOD = timedelta(days=180)
+        FRESHNESS_PERIOD = timedelta(days=90)
         IGNORED_FILES = ["_index.md", "support.md"]
         now = datetime.now()
 
