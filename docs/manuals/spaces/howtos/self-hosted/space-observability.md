@@ -301,4 +301,4 @@ lifecycle including status codes and client-perceived latency.
 [observability-documentation]: /manuals/spaces/howtos/observability
 [opentelemetry-collector]: https://opentelemetry.io/docs/collector/
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
-[helm-chart-reference]: /reference/helm-reference
+[helm-chart-reference]: /reference/spaces-helm-reference/
