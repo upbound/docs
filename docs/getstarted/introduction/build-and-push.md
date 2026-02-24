@@ -111,4 +111,4 @@ Read the [What's Next][whats-next] to continue your learning journey.
 [configurations]: /manuals/uxp/concepts/packages/configurations
 [repositories]: /manuals/marketplace/repositories/overview
 [marketplace]: https://marketplace.upbound.io/
-[whats-next]: /getstarted/introduction/whats-next
+[whats-next]: /getstarted/introduction/whats-nex
