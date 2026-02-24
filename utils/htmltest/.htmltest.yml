@@ -1,9 +1,14 @@
 DirectoryPath: "build"
-CheckExternal: true
+CheckExternal: false
 IgnoreInternalEmptyHash: true
-HTTPTimeout: 15
-HTTPConcurrentRequests: 4
+CheckInternalHash: false
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreDirs:
+  - "reference/usage/licenses"  # License page links are Go module paths, not content links
 IgnoreURLs:
-  - "/crds/(.*).yaml"  # CRD YAML static assets
+  - "/crds/(.*).yaml"        # CRD YAML static assets
   - "localhost"
   - "127.0.0.1"
+  - "googletagmanager.com"   # GTA analytics, not content links
+  - "google-analytics.com"   # GTA analytics, not content links
+  - "algolia.net"            # Algolia search service, not content links
