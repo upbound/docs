@@ -61,9 +61,9 @@ Read the [Get Started][get-started] guide to learn how to use UXP to build your 
 [features]: /manuals/uxp/concepts/intelligent-control-planes
 [guides]: /manuals/uxp/howtos/uxp-deployment
 [get-started]: /getstarted
-[backup-restore]: /manuals/uxp/features/backup-and-restore
+[backup-restore]: /manuals/uxp/howtos/backup-and-restore
 [function-scale-to-zero]: /manuals/uxp/howtos/function-scale-to-zero
-[official-package-support]: /manuals/uxp/features/official-package-support
+[official-package-support]: /manuals/uxp/official-package-support
 [provider-vpa]: /manuals/uxp/howtos/provider-vpa
 [pricing]: https://www.upbound.io/pricing
 [contact-sales]: https://www.upbound.io/contact-us

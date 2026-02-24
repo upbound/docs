@@ -780,8 +780,6 @@ cleaner, more intuitive APIs.
 
 ## Next steps
 
-- [Migrate live clusters to v2][migrate-live-v2] - Operational guide for
-  migrating running clusters without recreating resources
 - [Upgrade to UXP][upgrade-uxp] - Upgrade from Crossplane v2 OSS to Upbound
   Crossplane
 - [Provider migration guide][provider-migration] - Migrate from monolithic to
@@ -789,6 +787,5 @@ cleaner, more intuitive APIs.
 
 [xrd-scope]: https://docs.crossplane.io/latest/composition/composite-resource-definitions/#xrd-scope
 [connection-details]: https://docs.crossplane.io/latest/guides/connection-details-composition
-[migrate-live-v2]: /getstarted/upgrade-to-upbound/migrate-live-clusters-v2
 [upgrade-uxp]: /getstarted/upgrade-to-upbound/upgrade-to-uxp
 [provider-migration]: /manuals/packages/providers/migration
