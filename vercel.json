@@ -1374,6 +1374,11 @@
             "source": "/manuals/uxp/features/official-package-support(/)?",
             "destination": "/manuals/uxp/official-package-support",
             "permanent": true
+        },
+        {
+            "source": "/concepts/upbound-spaces(/)?",
+            "destination": "/manuals/spaces/overview",
+            "permanent": true
         }
     ]
 }
