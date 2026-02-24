@@ -13,13 +13,11 @@ There are several ways to create support tickets, track existing ones, and acces
 Send an email to [support@upbound.io][email] at any time. If you already have an account with us, you can view this ticket via the customer portal by logging in.
 
 ### Pylon Customer Portal
-Access the customer portal at [portal.usepylon.com/upbound][pylon-portal] to:
+Access the customer portal at [support.upbound.io][support-portal] to:
 - Create tickets
 - Track existing cases  
 - Access support resources
 
-### Private Slack Channel
-Available on the Business Critical Tier. Once onboarded, conversations can be turned into tickets by tagging @pylon or using the 🎫 emoji. Comments on the thread will be synced with the ticket on Pylon.
 
 ## Knowledge Base
 Browse our comprehensive knowledge base at [help.upbound.io][knowledge-base] for:
@@ -32,8 +30,8 @@ Our knowledge base serves as a fast-moving complement to our product documentati
 
 While our product docs focus on architecture, getting started guides, and reference materials, the knowledge base covers troubleshooting, workarounds, and edge cases. This knowledge can flow back into our main documentation over time, but the knowledge base allows us to provide immediate help when customers need it most.
 
-[contact]: https://www.upbound.io/contact-us
+[contact]: https://support.upbound.io/forms/contact-us
 [email]: mailto:support@upbound.io
-[pylon-portal]: https://portal.usepylon.com/upbound/login
+[support-portal]: https://support.upbound.io/login
 [knowledge-base]: https://help.upbound.io
 [upbound-service-agreement]: https://help.upbound.io/articles/6213965451-what-are-the-different-severities-and-slas-of-support-tickets
