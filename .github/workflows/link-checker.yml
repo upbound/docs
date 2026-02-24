@@ -1,4 +1,5 @@
-name: Run htmltest and validate links
+name: Link check
+
 on:
   pull_request:
     branches:
@@ -8,24 +9,25 @@ on:
       - 'src/**'
       - 'docusaurus.config.js'
   workflow_dispatch:
+
 jobs:
-  build:
+  link-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the docs repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '23'
-          
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Build Docusaurus site
         run: npm run build
-        
+
       - name: Run htmltest
         uses: wjdp/htmltest-action@master
         with:
