@@ -12,13 +12,13 @@ Kubernetes tools like `kubectl` or `k9s`.
 
 Note: This runs only the API server for viewing collected data, no workloads are actually running.
 
-## Usage
+#### Usage
 
 ```bash
 up support-bundle serve [path] [flags]
 ```
 
-### Examples
+#### Examples
 
 ```bash
 # Serve a support bundle tar.gz file
@@ -31,7 +31,7 @@ up support-bundle serve --port 9090
 up support-bundle serve --kubeconfig-path ./my-kubeconfig
 ```
 
-## Viewing the Bundle
+#### Viewing the Bundle
 
 Once the server is running, you can use standard Kubernetes tools to view the bundle contents:
 
