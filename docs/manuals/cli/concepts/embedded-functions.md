@@ -52,7 +52,9 @@ teams with diverse skill sets. You typically author upstream functions in Go and
 require container build and deployment pipelines, which can be a heavier lift
 for platform teams.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Use cases
+<!-- vale gitlab.HeadingContent = YES -->
 
 Use embedded functions when you want:
 

@@ -14,9 +14,14 @@ Upbound SaaS coming soon.
 <!-- ignore LLM -->
 [Upbound Crossplane][upbound-crossplane] is capable of running [Intelligent
 Control Planes][intelligent-controllers], which define AI-augmented functions to
-perform tasks. This guide walks through a use case for using AI to analyze and
-remediate issues for app deployments, such as out-of-memory and pods stuck in a
-_crashloopbackoff_.
+perform tasks.
+
+<!-- vale gitlab.FutureTense = NO -->
+In this guide, you'll use AI to analyze and remediate common app deployment
+issues like out-of-memory errors and `crashloopbackoff`
+<!-- vale gitlab.FutureTense = YES -->
+
+This guide walks through 
 
 <!-- vale gitlab.Uppercase = YES -->
 <!-- vale Upbound.Spelling = YES -->
@@ -38,11 +43,12 @@ git clone git@github.com:upbound/configuration-deployment-analysis.git
 ```
 
 This repository contains a [control plane project][project] that defines [watch operations][watch-operations]. These watch operations define workflows for:
-
+<!-- vale write-good.Passive = NO -->
 - watching for events emitted by pods in a cluster
 - analyzing them using LLMs and suggesting remediations
 - the remediations are gated by a human-in-the-loop approval
 - if the suggested remediation is approved, it gets applied to address the issues
+<!-- vale write-good.Passive = YES -->
 
 ## Configure credentials and runtime settings
 
@@ -55,8 +61,11 @@ In the root of the project directory, launch the control plane locally:
 ```shell
 up project run --local
 ```
-
-After the control plane gets created, apply a _ClusterRole_ to give Crossplane admin access, so it can create all the Kubernetes resources it needs on the cluster. This object is already defined in the `examples` folder of the project directory:
+<!-- vale Google.WordList = NO -->
+Apply a _ClusterRole_ to grant Crossplane admin access after creating the control
+plane. This object is already defined in the `examples` folder of the project
+directory:
+<!-- vale Google.WordList = YES -->
 
 ```shell
 kubectl apply -f examples/admin.yaml
@@ -65,8 +74,10 @@ kubectl apply -f examples/admin.yaml
 ## Apply example deployments and watch for issues
 
 <!-- vale Upbound.Spelling = NO -->
+<!-- vale write-good.TooWordy = NO -->
 Apply the examples to demonstrate flows for catching and remediating out-of-memory and _crashloopbackoff_ issues:
 <!-- vale Upbound.Spelling = YES -->
+<!-- vale write-good.TooWordy = YES -->
 
 ```shell
 kubectl apply -f examples/oomkilled.yaml -f crashloopbackoff.yaml

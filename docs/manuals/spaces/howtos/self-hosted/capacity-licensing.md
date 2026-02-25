@@ -20,7 +20,9 @@ alternative to the traditional usage-based billing model described in the
 [Self-Hosted Space Billing][space-billing] guide.
 :::
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 Capacity licensing allows organizations to purchase a fixed capacity of
 resources upfront. The Spaces software tracks usage locally and provides

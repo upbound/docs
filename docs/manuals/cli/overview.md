@@ -12,9 +12,9 @@ import { versions } from "@site/src/components/Version.js"
 import CodeBlock from '@theme/CodeBlock';
 
 
-<!--vale gitlab.HeadingContent = NO -->
+<!-- vale gitlab.HeadingContent = NO -->
 # Overview
-<!--vale gitlab.HeadingContent = YES-->
+<!-- vale gitlab.HeadingContent = YES -->
 
 The Upbound `up` command-line enables interaction with Upbound control planes. It also simplifies common workflows with Upbound Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.
 

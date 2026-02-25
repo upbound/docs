@@ -4,11 +4,14 @@ description: "Use Upbound Crossplane to build and manage an AI-powered control p
 sidebar_position: 2
 ---
 
+<!-- vale gitlab.Uppercase = NO -->
 Upbound Crossplane transforms infrastructure management by integrating
-AI-powered pipelines directly into your control plane operations. Through
-LLM-enabled Operation functions, you can build intelligent infrastructure
-platforms that automatically diagnose issues, suggest fixes, and provide
-contextual insights about resource health and dependencies.
+AI-powered pipelines directly into your control plane operations. 
+LLM-enabled operations functions let you to build intelligent infrastructure 
+platforms. These AI enhanced operations can automatically diagnose issues,
+suggest fixes, and give contextual insights on resource health and
+dependencies.
+<!-- vale gitlab.Uppercase = YES-->
 
 Operations allow you to build workflows using function pipelines that execute
 tasks on resources under management by your control plane. Operations run once
@@ -515,7 +518,7 @@ kubectl apply -f deploymentruntimeconfigs.yaml
 ```
 
 These configurations associate the permissions you created earlier with the
-functions deployed on your control plane, enabling them to create and
+functions deployed on your control plane to create and
 interact with _Analysis_ and _Remediation_ resources.
 
 ## Test the AI-powered operation
@@ -575,7 +578,7 @@ Monitor the AI analysis creation:
 kubectl get analysis,remediation,remediationrequests,operations -A
 ```
 
-
+<!-- vale Google.WordList = NO -->
 :::note
 The WatchOperation `analyze-events-for-pod-distress` manifest above filters events down to:
 
@@ -589,8 +592,9 @@ reason: BackOff
 count: 2
 ```
 
-It may take a few `OOMKill` loops for an Analysis to be created.
+It may take several `OOMKill` loops to create an Analysis.
 :::
+<!-- vale Google.WordList = YES -->
 
 Examine the AI-generated analysis and remediation suggestions:
 

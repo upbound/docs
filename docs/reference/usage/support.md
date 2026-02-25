@@ -7,7 +7,7 @@ description: Contact Upbound Support
 
 ## Open a ticket
 
-Create support tickets, track existing ones, and access support resources in several ways:
+You can create support tickets, track existing ones, and access support resources in several ways:
 
 ### Email
 

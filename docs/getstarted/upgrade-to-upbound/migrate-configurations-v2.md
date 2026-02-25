@@ -8,7 +8,9 @@ This guide documents the migration from Crossplane v1 to v2 for configurations,
 including all breaking changes and lessons learned. It covers updating XRDs,
 compositions, KCL functions, and tests for the new v2 namespaced resource model.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 Crossplane v2 introduces **namespaced resources** with the `.m` API group suffix
 (for example, `rds.aws.m.upbound.io/v1beta1`) and removes the XR/Claim separation
@@ -266,11 +268,13 @@ Crossplane-specific configuration from user-facing parameters.
 
 ### 7. Connection secrets redesigned in v2
 
+<!-- vale write-good.Passive = NO -->
 :::danger
 Crossplane v2 removes built-in connection secret support from XRs entirely.
 This represents an important architectural shift in how connection details are
 managed.
 :::
+<!-- vale write-good.Passive = YES -->
 
 #### What changed
 
@@ -302,7 +306,7 @@ spec:
   # writeConnectionSecretToRef completely removed - not supported in v2 XRs
 ```
 
-**The field is gone.** V2 XRs don't support automatic connection secret creation.
+**The field no longer exists.** V2 XRs don't support automatic connection secret creation.
 
 #### The v2 philosophy
 
@@ -360,7 +364,7 @@ spec:
 :::note
 The `spec.writeConnectionSecretToRef` field was automatically added by Crossplane
 to generated CRDs in v1. You don't need to manually remove it from your XRD
-schema - it was never part of the XRD, only the generated CRD.
+schema - it wasn't part of the XRD, only the generated CRD.
 :::
 
 #### Implementation example
@@ -625,9 +629,13 @@ entirely.
 2. Create manual Secret composition in your function (see Section 7)
 3. Keep `writeConnectionSecretToRef` on managed resources - that's still supported
 
+<!-- vale write-good.Passive = NO -->
 ### Error: "Connection secrets not being created"
+<!-- vale write-good.Passive = YES -->
 
+<!-- vale write-good.TooWordy = NO -->
 **Cause:** Migrated from v1 but didn't implement manual Secret composition.
+<!-- vale write-good.TooWordy = YES -->
 
 **Symptoms:**
 - No Secret created for the XR

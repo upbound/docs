@@ -5,7 +5,9 @@ hide_title: true
 sidebar_position: 1
 description: Spaces are a host environment in Upbound for control planes-as-a-service
 ---
+<!-- vale gitlab.HeadingContent = NO -->
 # Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 <Standard />
 

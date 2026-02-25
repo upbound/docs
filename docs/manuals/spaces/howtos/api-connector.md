@@ -310,7 +310,7 @@ kubectl get nopresource my-resource -o yaml
 
 ```
 When the `APIBound=True` condition is present, it means that the API object has
-been synced to the provider cluster, and is being reconciled there. Whenever the
+been synced to the provider cluster, where reconciliation occurs. Whenever the
 API object in the provider cluster gets status updates (for example
 `Ready=True`), that status is synced back to the consumer cluster.
 
@@ -387,7 +387,9 @@ deleted.
 helm uninstall api-connector -n upbound-system
 ```
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Limitations
+<!-- vale gitlab.HeadingContent = YES -->
 
 - **Preview feature**: Subject to breaking changes. Not yet production grade.
 - **CRD updates**: CRDs are pulled once but not automatically updated. If multiple Crossplane clusters offer the same CRD API, API changes must be synchronized out of band, for example using a [Crossplane Configuration](https://docs.crossplane.io/latest/packages/).

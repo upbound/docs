@@ -22,7 +22,9 @@ like HCL. IDE support with language server.
 [Python][python] - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 This guide explains how to create compositions that turn your XRs into actual
 cloud resources. Compositions allow you to implement the business logic that

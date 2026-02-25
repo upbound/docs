@@ -39,7 +39,7 @@ Imagine the scenario where you want to let a user reference a subnet when creati
 - you want to allow them to reuse a subnet that got created elsewhere or gets shared by another user.
 
 In each of these scenarios, you must resort to writing complex composition logic
-to handle each case. The problem is compounded when the resource exists in a
+to handle each case. The problem worsens when the resource exists in a
 context separate from the current control plane's context. Imagine a scenario
 where one control plane manages Database resources and a second control plane
 manages networking resources. With the _Topology_ feature, you can offload these
@@ -513,8 +513,8 @@ spec:
 ### Confirm the configured route
 
 After you create an _Environment_ on a control plane, the routes selected get
-reported in the _Environment's_ `.status.resourceGroups`. This is illustrated
-below:
+reported in the _Environment's_ `.status.resourceGroups`. The following example
+demonstrates this:
 
 ```yaml
 apiVersion: scheduling.upbound.io/v1alpha1

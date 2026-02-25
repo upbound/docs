@@ -20,7 +20,9 @@ The Controllers feature provides the following benefits:
 * Use your control plane's package manager to handle the lifecycle of the control plane software and define dependencies between package.
 * Build powerful compositions that combine both Crossplane and Kubernetes _CustomResources_.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## How it works
+<!-- vale gitlab.HeadingContent = YES -->
 
 A _Controller_ is a package type that bundles control plane software from the Kubernetes ecosystem. Examples of such software includes:
 
