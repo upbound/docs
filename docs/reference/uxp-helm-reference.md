@@ -12,6 +12,8 @@ This reference provides detailed documentation on the UXP Helm chart. This Helm 
 
 ## Values
 
+<div class="helm-table">
+
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | affinity | object | `{}` | Add `affinities` to the Crossplane pod deployment. |
@@ -97,6 +99,8 @@ This reference provides detailed documentation on the UXP Helm chart. This Helm 
 | topologySpreadConstraints | list | `[]` | Add `topologySpreadConstraints` to the Crossplane pod deployment. |
 | webhooks.enabled | bool | `true` | Enable webhooks for Crossplane and installed Provider packages. |
 | webhooks.port | string | `""` | The port the webhook server listens on. |
+
+</div>
 
 <!-- vale on -->
 
