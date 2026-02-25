@@ -198,7 +198,7 @@ used resource right after the using resource disappears instead of waiting
 for the long exponential backoff durations of the Kubernetes garbage collector.
 :::
 
-## Usage in a Composition
+## Usage in a composition
 
 A typical use case for Usages is to define a deletion ordering between the
 resources in a Composition. The Usages support

@@ -1,7 +1,7 @@
 ---
 title: Deployment Workflow
 sidebar_position: 3
-description: A  quickstart guide for Upbound Spaces
+description: A quickstart guide for Upbound Spaces
 tier: "business"
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';

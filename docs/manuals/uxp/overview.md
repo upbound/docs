@@ -28,7 +28,7 @@ Upbound Crossplane comes with a number of features that help you start, run, and
 
 UXP is available to any users under Upbound's Community plan. Commercial licenses are available. Some features are available for Community plan users, while others require a commercial license. See [license management][licensing] for more details.
 
-## Commercial-only Features
+## Commercial-only features
 
 Users on a **Standard Plan** or greater have access to commercial features that enhance the reliability, efficiency, and supportability of their control planes. For more information, see our [pricing plans][pricing] or [contact our sales team][contact-sales].
 
@@ -47,7 +47,7 @@ To learn about Crossplane and UXP features, read the [how-to guides][guides].
 
 Upbound runs UXP for you in our control planes-as-a-service Spaces hosting environment. Users can also [deploy][self-managed-uxp] a self-managed installation of UXP directly on a Kubernetes cluster.
 
-## Get Started
+## Get started
 
 Read the [Get Started][get-started] guide to learn how to use UXP to build your own control plane.
 

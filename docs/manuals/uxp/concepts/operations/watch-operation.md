@@ -558,7 +558,7 @@ operational considerations, see [Operation best practices][operation-best-practi
 1. Ensure resources are actually changing
 1. Look for events indicating watch establishment failures
 
-### Too many Operations created
+### Too many operations created
 
 1. Refine label selectors to match fewer resources
 1. Consider using `Forbid` or `Replace` concurrency policy

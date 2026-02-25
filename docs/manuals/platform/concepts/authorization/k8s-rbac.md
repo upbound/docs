@@ -1,18 +1,18 @@
 ---
 title: Authorize actions in control planes
 sidebar_position: 1
-description: A guide to implementing and configuring Kuberentes RBAC in Upbound
+description: A guide to implementing and configuring Kubernetes RBAC in Upbound
 ---
 
 :::note
 For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 :::
 
-This guide explains how to authorize actions on resources in your control planes on Upbound. It uses the built-in [Kubernetes role-based access control][kubernetes-role-based-access-control] (RBAC) mechanism. This gives you fine-grained control over control plane access.
+This guide explains how to permit actions on resources in your control planes on Upbound. It uses the built-in [Kubernetes role-based access control][kubernetes-role-based-access-control] (RBAC) mechanism. This gives you fine-grained control over control plane access.
 
 In a control plane on Upbound, Upbound RBAC and the control plane's Kubernetes
-RBAC are integrated to authorize users to perform actions. They must have enough
-permission according to either system. To authorize users with their Upbound
+RBAC are integrated to grant users permissions to perform actions. They must have enough
+permission according to either system. To grant users access with their Upbound
 account, you must configure kubectl to authenticate to Upbound before running
 any commands that require authorization.
 
@@ -27,7 +27,9 @@ Because control planes in Upbound are based on Kubernetes, you can use _ClusterR
 
 If you plan to use namespaces in your control plane as an isolation mechanism between tenants, its recommended to use _RoleBinding_ objects. If namespace-scoping isn't a priority, use _ClusterRoleBinding_ objects instead.
 
+<!-- vale Google.Headings = NO -->
 ### Define permissions using _Roles_ and _ClusterRoles_
+<!-- vale Google.Headings = YES -->
 
 Define permissions with a _Role_ or _ClusterRole_ object. A _Role_ defines access to resources in a single namespace of your control plane. A _ClusterRole_ defines access to resources in the entire control plane. 
 
@@ -71,7 +73,9 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
+<!-- vale Google.Headings = NO -->
 ### RBAC manager
+<!-- vale Google.Headings = YES -->
 
 Each control plane in Upbound has a built-in Crossplane RBAC manager. This feature dynamically manages and binds RBAC roles. These roles grant subjects access to use the control plane as it gets extended by installing control plane software, such as providers, Crossplane composite resources, and more. 
 
@@ -112,7 +116,9 @@ crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-edit      
 ```
 </details>
 
+<!-- vale Google.Headings = NO -->
 ## How Upbound RBAC works in a control plane
+<!-- vale Google.Headings = YES -->
 
 ### Predefined roles
 
@@ -124,7 +130,9 @@ Each control plane offers predefined _ClusterRoles_ related to granting permissi
 
 Whenever control plane software gets installed or uninstalled, the RBAC manager handles the lifecycle of _ClusterRoles_ and _ClusterRoleBindings_ to aggregate permissions up to these predefined roles.
 
+<!-- vale Google.Headings = NO -->
 #### controlplane-view
+<!-- vale Google.Headings = YES -->
 
 The `controlplane-view` _ClusterRole_ has the following permissions:
 
@@ -137,7 +145,9 @@ View the full RBAC policy by running the following command on your control plane
 kubectl describe clusterrole controlplane-view
 ```
 
+<!-- vale Google.Headings = NO -->
 #### controlplane-edit
+<!-- vale Google.Headings = YES -->
 
 The `controlplane-edit` _ClusterRole_ has the following permissions:
 
@@ -151,7 +161,9 @@ View the full RBAC policy by running the following command on your control plane
 kubectl describe clusterrole controlplane-edit
 ```
 
+<!-- vale Google.Headings = NO -->
 #### controlplane-admin
+<!-- vale Google.Headings = YES -->
 
 The `controlplane-admin` ClusterRole has the following permissions:
 
@@ -166,7 +178,9 @@ View the full RBAC policy by running the following command on your control plane
 kubectl describe clusterrole controlplane-admin
 ```
 
+<!-- vale Google.Headings = NO -->
 ### Upbound RBAC roles in a control plane
+<!-- vale Google.Headings = YES -->
 
 Roles granted with [Upbound RBAC][upbound-rbac-1] transitively affect what a user can do in a control plane. Upbound RBAC permissions are granted at the control plane group scope to teams. A team is a group of subjects consisting of users and robots. Here is how roles granted at the group scope transitively affect permissions in a control plane in that group:
 
@@ -204,7 +218,9 @@ up team create team1
 ```
 Use the [Upbound Console][upbound-console] to add the desired users to the team.
 
+<!-- vale Google.Headings = NO -->
 ### Use Upbound RBAC to assign a role to the team
+<!-- vale Google.Headings = YES -->
 
 First, find the ID of the team:
 
@@ -236,7 +252,9 @@ You can also use the [Upbound Console][upbound-console-2] to assign this role.
 
 The users in `team1` now have a view-only experience on the control plane. To let them create _only_ a certain set of APIs, you need to define _Roles_ and _RoleBindings_ on the control plane itself.
 
+<!-- vale Google.Headings = NO -->
 ### Configure RBAC on the control plane
+<!-- vale Google.Headings = YES -->
 
 Change your kubecontext to the control plane:
 

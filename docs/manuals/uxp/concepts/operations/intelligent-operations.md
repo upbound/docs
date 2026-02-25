@@ -119,7 +119,7 @@ spec:
 ```
 
 The `WatchOperation` above uses `function-claude` to look up events and logs
-related to the pod in order to identify what is wrong, and it outputs a
+related to the pod in order to identify what's wrong, and it outputs a
 remediation strategy to fix the issue for the said pod.
 
 ## Official AI-embedded function

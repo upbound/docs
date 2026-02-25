@@ -6,9 +6,12 @@ import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLa
 
 <GlobalLanguageSelector />
 
-In the previous guide, you created a test for your composition logic. In this
-guide, you'll create a `ClusterProviderConfig` and authenticate to your cloud provider
+In the previous guide, you created a test for your composition logic.
+
+<!-- vale gitlab.FutureTense = NO -->
+In this guide, you'll create a `ClusterProviderConfig` and authenticate to your cloud provider
 to deploy your resources.
+<!-- vale gitlab.FutureTense = YES -->
 
 ## Prerequisites
 

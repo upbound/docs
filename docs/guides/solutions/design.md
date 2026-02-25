@@ -35,7 +35,7 @@ Whether it's Google Kubernetes Engine vending out Kubernetes Clusters or Big Que
 
 Traditional cloud platforms like GCP, which consist of physical assets such as server racks, storage disks, and networking infrastructure located in physical data centers around the globe, offer computing services powered by virtualized resources based on these physical assets. Your IDP powered by Upbound is a next-gen platform that offers its own computing services powered by the lower-level services found in traditional cloud platforms. Said another way: Your IDP on Upbound leverages the investments of lower-level cloud platforms and lets you focus on baking in the policies, configuration, and multi-cloud configurations that your business requires.
 
-### Examples of common Offerings
+### Examples of common offerings
 
 In Upbound, an offering maps to a group of one or more composite resource APIs built with Crossplane. Some of the most common offerings we see customers building includes:
 

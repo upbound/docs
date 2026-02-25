@@ -1811,7 +1811,7 @@ section](#aws-irsa) for the complete setup.
 </TabItem>
 </Tabs>
 
-#### Create a kubeconfig Secret
+#### Create a kubeconfig secret
 
 Generate a kubeconfig for your EKS cluster using the AWS CLI:
 
@@ -2058,7 +2058,7 @@ section](#aws-irsa) for the complete setup.
 </TabItem>
 </Tabs>
 
-#### Create a kubeconfig Secret
+#### Create a kubeconfig secret
 
 Generate a kubeconfig for your EKS cluster using the AWS CLI:
 

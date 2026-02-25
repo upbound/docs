@@ -19,7 +19,7 @@ learning from operational outcomes to improve future decision-making processes.
 <!-- vale alex.Condescending = YES -->
 
 
-## Intelligent Compositions
+## Intelligent compositions
 
 When you incorporate a [composition function][intelligent-compositions] having
 AI intelligence to a composition pipeline, it's considered an _intelligent
@@ -35,7 +35,7 @@ servers][mcp-servers], packaged as [Add-Ons][add-ons], are installable on your
 control plane and deliver additional tools that may be used by the language
 model. 
 
-## Intelligent Operations
+## Intelligent operations
 
 When you incorporate an [operation function][intelligent-operations] having AI
 intelligence to an operation pipeline, it's considered an _intelligent

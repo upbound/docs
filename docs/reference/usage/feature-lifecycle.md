@@ -3,7 +3,7 @@ title: Feature Lifecycle
 sidebar_position: 30
 ---
 
-# Feature Lifecycle
+# Feature lifecycle
 
 Crossplane follows a similar feature lifecycle to [upstream
 Kubernetes][kube-features]. All major new features must be added in alpha. Alpha
@@ -11,7 +11,7 @@ features are expected to eventually graduate to beta, and then to general
 availability (GA). Features that languish at alpha or beta may be subject to
 deprecation.
 
-## Alpha Features
+## Alpha features
 
 Alpha are off by default, and must be enabled by a feature flag, for example
 `--enable-composition-revisions`. API types pertaining to alpha features use a
@@ -27,7 +27,7 @@ schema) as alpha and subject to alpha API constraints (or lack thereof).
 
 All alpha features should have an issue tracking their graduation to beta.
 
-## Beta Features
+## Beta features
 
 Beta features are on by default, but may be disabled by a feature flag. API
 types pertaining to beta features use a `vNbetaN` style API version, like
@@ -48,7 +48,7 @@ and subject to beta API constraints (or lack thereof).
 
 All beta features should have an issue tracking their graduation to GA.
 
-## GA Features
+## GA features
 
 GA features are always enabled - they can't be disabled. API types pertaining
 to GA features use `vN` style API versions, like `v1`. GA features are widely

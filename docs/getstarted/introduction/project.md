@@ -3,10 +3,14 @@ title: Create a control plane project
 sidebar_position: 1
 ---
 
-Now that you have an Upbound account and the up CLI installed, you are ready to
+Now that you have an Upbound account and the up CLI installed, you're ready to
 create a control plane.
 
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
 In this quickstart, you will:
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Google.Will = YES -->
 
 1. Scaffold a control plane project
 2. Define your own resource abstraction and templatization

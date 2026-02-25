@@ -7,19 +7,31 @@ description: Contact Upbound Support
 
 ## Open a ticket
 
-There are several ways to create support tickets, track existing ones, and access support resources:
+Create support tickets, track existing ones, and access support resources in several ways:
 
 ### Email
-Send an email to [support@upbound.io][email] at any time. If you already have an account with us, you can view this ticket via the customer portal by logging in.
 
+<!-- vale gitlab.Substitutions = NO -->
+Send an email to [support@upbound.io][email] at any time. If you already have an account with us, you can view this ticket via the customer portal by logging in.
+<!-- vale gitlab.Substitutions = YES -->
+
+<!-- vale gitlab.Substitutions = NO -->
+
+<!-- vale Google.Headings = NO -->
 ### Pylon Customer Portal
+<!-- vale Google.Headings = YES -->
+
 Access the customer portal at [support.upbound.io][support-portal] to:
+
+<!-- vale gitlab.Substitutions = YES -->
 - Create tickets
 - Track existing cases  
 - Access support resources
 
 
+<!-- vale Google.Headings = NO -->
 ## Knowledge Base
+<!-- vale Google.Headings = YES -->
 Browse our comprehensive knowledge base at [help.upbound.io][knowledge-base] for:
 - Self-service documentation
 - Troubleshooting guides

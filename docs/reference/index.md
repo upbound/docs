@@ -7,7 +7,9 @@ description: Reference material for Upbound
 ---
 import ReferenceCards from '@site/src/components/ReferenceCards';
 
+<!-- vale Heading.Content = NO -->
 # Overview
+<!-- vale Heading.Content = YES -->
 
 This section contains technical specifications, API documentation and reference
 materials for Upbound.
