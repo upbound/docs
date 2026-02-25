@@ -37,7 +37,14 @@ due to breaking changes in the OpenTelemetry Operator.
 
 ## Configuration
 
-To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart. Below is an example of an `otlphttp` compatible endpoint.
+To configure how Upbound exports telemetry, review the `spacesCollector` value in
+your Space installation Helm chart. Supported exporters are `otlphttp`, `datadog`,
+`splunk_hec`, and `debug`. Replace the exporter name and configuration options
+based on your backend.
+
+<!-- vale Upbound.Spelling = NO -->
+Below is an example using `otlphttp`.
+<!-- vale Upbound.Spelling = YES -->
 
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
@@ -64,6 +71,12 @@ observability:
           - otlphttp
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
+
+<!-- vale Upbound.Spelling = NO -->
+For exporter-specific configuration options, see the OpenTelemetry documentation
+for [`otlphttp`][otlphttp-exporter], [`datadog`][datadog-exporter], and
+[`splunk_hec`][splunk-exporter].
+<!-- vale Upbound.Spelling = YES -->
 
 You can export metrics, logs, and traces from your Crossplane installation, Spaces
 infrastructure (controller, API, router, etc.), provider-helm, and
@@ -214,7 +227,7 @@ For detailed router metrics documentation and more query examples, see the [Rout
 
 Control plane (`SharedTelemetry`) and Space observability deploy the same custom
 OpenTelemetry Collector image. The OpenTelemetry Collector image supports
-`otlhttp`, `datadog`, and `debug` exporters.
+`otlphttp`, `datadog`, `splunk_hec`, and `debug` exporters.
 
 For more information on observability configuration, review the [Helm chart reference][helm-chart-reference].
 
@@ -302,3 +315,6 @@ lifecycle including status codes and client-perceived latency.
 [opentelemetry-collector]: https://opentelemetry.io/docs/collector/
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
 [helm-chart-reference]: /reference/spaces-helm-reference/
+[otlphttp-exporter]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter
+[datadog-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/datadogexporter
+[splunk-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/splunkhecexporter

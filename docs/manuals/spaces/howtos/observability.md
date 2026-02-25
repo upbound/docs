@@ -188,6 +188,33 @@ spec:
     logs: [datadog]
 ```
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+#### Splunk HEC Example
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale Upbound.Spelling = YES -->
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: splunk
+  namespace: default
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    splunk_hec:
+      endpoint: https://splunk.example.com:8088/services/collector
+      token: ${SPLUNK_HEC_TOKEN}
+  exportPipeline:
+    metrics: [splunk_hec]
+    traces: [splunk_hec]
+    logs: [splunk_hec]
+```
+
 ### Control plane selection
 
 Use `spec.controlPlaneSelector` to specify which control planes should use the
@@ -348,6 +375,9 @@ kubectl describe stc <name>
 Both Space-level and control plane observability support:
 - `datadog` - For Datadog integration
 - `otlphttp` - General-purpose exporter (used by New Relic, among others)
+<!-- vale Upbound.Spelling = NO -->
+- `splunk_hec` - For Splunk HTTP Event Collector integration
+<!-- vale Upbound.Spelling = YES -->
 - `debug` - For troubleshooting
 
 ## Considerations
