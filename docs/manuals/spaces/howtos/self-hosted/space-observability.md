@@ -42,7 +42,9 @@ your Space installation Helm chart. Supported exporters are `otlphttp`, `datadog
 `splunk_hec`, and `debug`. Replace the exporter name and configuration options
 based on your backend.
 
+<!-- vale Upbound.Spelling = NO -->
 Below is an example using `otlphttp`.
+<!-- vale Upbound.Spelling = YES -->
 
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
@@ -70,9 +72,11 @@ observability:
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
 
+<!-- vale Upbound.Spelling = NO -->
 For exporter-specific configuration options, see the OpenTelemetry documentation
-for [otlphttp][otlphttp-exporter], [datadog][datadog-exporter], and
-[splunk_hec][splunk-exporter].
+for [`otlphttp`][otlphttp-exporter], [`datadog`][datadog-exporter], and
+[`splunk_hec`][splunk-exporter].
+<!-- vale Upbound.Spelling = YES -->
 
 You can export metrics, logs, and traces from your Crossplane installation, Spaces
 infrastructure (controller, API, router, etc.), provider-helm, and

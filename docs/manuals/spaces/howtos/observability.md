@@ -188,7 +188,11 @@ spec:
     logs: [datadog]
 ```
 
+<!-- vale Upbound.Spelling = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 #### Splunk HEC Example
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale Upbound.Spelling = YES -->
 
 ```yaml
 apiVersion: observability.spaces.upbound.io/v1alpha1
@@ -371,7 +375,9 @@ kubectl describe stc <name>
 Both Space-level and control plane observability support:
 - `datadog` - For Datadog integration
 - `otlphttp` - General-purpose exporter (used by New Relic, among others)
+<!-- vale Upbound.Spelling = NO -->
 - `splunk_hec` - For Splunk HTTP Event Collector integration
+<!-- vale Upbound.Spelling = YES -->
 - `debug` - For troubleshooting
 
 ## Considerations
