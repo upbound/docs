@@ -18,6 +18,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 ## Values
 
+<div class="helm-table">
+
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | account | string | `"notdemo"` | The Upbound organization this installation is associated with. |
@@ -401,6 +403,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | space.labels | object | `{}` | Labels that are applied to all Deployments, Pods, Services, and StatefulSets managed by the Space. |
 | version | string | `""` | Overall artifact version that affects xpkgs and related components. |
 
+</div>
 
 <!-- vale on -->
 
