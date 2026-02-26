@@ -48,8 +48,7 @@ up space mirror -v 1.15.2 --destination-registry=myregistry.io --token-file=upbo
 ```
 
 :::tip
-Use `--dry-run` to list the artifacts that would be mirrored without copying
-them. This checks proper access to the Upbound registry.
+Use `--dry-run` to list artifacts the command would mirror without copying them. This verifies you have proper access to the Upbound registry.
 :::
 
 [cli-mirror]: /reference/cli-reference#up-space-mirror
