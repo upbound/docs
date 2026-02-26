@@ -14,7 +14,11 @@ Intelligent Control Planes extend the traditional `observe → compare → act` 
 to `observe → analyze → act → adapt` cycles that incorporate AI-driven reasoning
 capabilities. The analyze phase introduces decision making that can balance
 competing objectives, understand business context, and optimize based on complex
+<!-- vale write-good.Weasel = NO -->
+<!-- vale Microsoft.Adverbs = NO -->
 patterns that deterministic logic can't easily capture. The adapt phase enables
+<!-- vale Microsoft.Adverbs = YES -->
+<!-- vale write-good.Weasel = YES -->
 learning from operational outcomes to improve future decision-making processes.
 <!-- vale alex.Condescending = YES -->
 
@@ -28,12 +32,7 @@ composition_. Some examples of these functions are:
 - [function-claude][function-claude]
 - [function-openai][function-openai]
 
-These functions pass the pipeline context to a Large Language Model, such as
-Claude, and provide user-specified prompts to task Claude with influencing the
-configuration of a function pipeline's desired resources. [MCP
-servers][mcp-servers], packaged as [Add-Ons][add-ons], are installable on your
-control plane and deliver additional tools that may be used by the language
-model. 
+These functions pass pipeline context to a Large Language Model like Claude. They use user-specified prompts to guide Claude in configuring function pipeline resources. [MCP servers][mcp-servers] are packaged as [Add-Ons][add-ons] and install on your control plane. They deliver tools that the language model can use. 
 
 ## Intelligent operations
 

@@ -17,7 +17,7 @@ Upbound allows organizations to configure single sign-on (SSO) to manage user ac
 Upbound offers SSO and Directory Sync in a customized wizard setup. You can configure SSO only or add Directory Sync after you enable SSO.
 
 :::important
-You must contact Upbound to enable and configure SSO. You will need to provide your Upbound organization name and top-level domain.
+You must contact Upbound to enable and configure SSO. Provide your Upbound organization name and top-level domain.
 :::
 
 

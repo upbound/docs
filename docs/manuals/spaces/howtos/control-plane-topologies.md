@@ -5,7 +5,7 @@ description: Configure scheduling of composites to remote control planes
 ---
 
 :::important
-This feature is in private preview for select customers in Upbound Spaces. If you're interested in this deployment mode, please [contact us](https://www.upbound.io/support/contact).
+This feature is in private preview for select customers in Upbound Spaces. If you're interested in this deployment mode, [contact Upbound](https://www.upbound.io/support/contact).
 :::
 
 Upbound's _Control Plane Topology_ feature lets you build and deploy a platform
@@ -13,10 +13,7 @@ of multiple control planes. These control planes work together for a unified pla
 experience.
 
 
-With the _Topology_ feature, you can install resource APIs that are
-reconciled by other control planes and configure the routing that occurs between
-control planes. You can also build compositions that reference other resources
-running on your control plane or elsewhere in Upbound. 
+With the _Topology_ feature, you can install resource APIs that other control planes reconcile and configure the routing between them. You can also build compositions that reference other resources running on your control plane or elsewhere in Upbound. 
 
 This guide explains how to use Control Plane Topology APIs to install, configure
 remote APIs, and build powerful compositions that reference other resources. 
@@ -26,7 +23,7 @@ remote APIs, and build powerful compositions that reference other resources.
 The Control Plane Topology feature provides the following benefits:
 
 * Decouple your platform architecture into independent offerings to improve your platform's software development lifecycle.
-* Install composite APIs from Configurations as CRDs which are fulfilled and reconciled by other control planes.
+* Install composite APIs from Configurations as CRDs that other control planes fulfill and reconcile.
 * Route APIs to other control planes by configuring an _Environment_ resource, which define a set of routable dimensions.
 <!-- vale gitlab.HeadingContent = NO -->
 ## How it works
@@ -205,8 +202,8 @@ spec:
 ### Manually add the jsonPath
 
 :::important
-This step is a known limitation of the preview. We're working on tooling that
-removes the need for authors to do this step.
+This step is a known limitation of the preview. Upbound is working on tooling that
+removes this requirement.
 :::
 
 During the preview timeframe of this feature, you must add an annotation by hand
@@ -334,12 +331,8 @@ To configure routing resource requests between control planes, you need to deplo
 
 ### Deploy into a service-level control plane
 
-Package the APIs you build into a Configuration package an deploy it on a
-control plane in an Upbound Space. In Upbound, it's common to refer to the
-control plane where the Configuration package is deployed as a **service-level
-control plane**. This control plane runs the controllers that processes the API
-requests and provisions underlying resources. In a later section, you learn how
-you can use _Topology_ features to [configure routing][configure-routing].
+Package the APIs you build into a Configuration package and deploy it on a
+control plane in an Upbound Space. In Upbound, you call the control plane hosting the Configuration package a **service-level control plane**. This control plane runs the controllers that process the API requests and provision underlying resources. Later sections explain how to use _Topology_ features to [configure routing][configure-routing].
 
 ### Deploy as Remote APIs on a platform control plane
 

@@ -4,7 +4,7 @@ sidebar_position: 2
 description: How to create, configure and push packages to the Upbound Marketplace
 ---
 
-Upbound Marketplace provides a collection of packages, accelerating development workflows and reducing setup time. You can build upon pre-built packages from the Marketplace and then use repositories to share and distribute your own packages with your team or other developers.
+Upbound Marketplace provides a collection of packages that accelerate development workflows and reduce setup time. Build upon pre-built packages and use repositories to share your own packages with your team or other developers.
 
 This guide shows you how to build and push a package to the Marketplace.
 
@@ -106,8 +106,7 @@ repository update`][up-repo-update] command with the `--publish` flag. This requ
 Your repository's listing page is automatically generated at: `https://marketplace.upbound.io/<package_type>/<organization or user>/<repository>/`
 
 :::info
-To report a package you believe is violating the legal Terms of Service, use the
-"Report this package" link at the bottom left corner of a listing. 
+Report packages that violate the Terms of Service using the "Report this package" link at the bottom left corner of a listing.
 :::
 
 The table below illustrates the relationship between accessing an image and

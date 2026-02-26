@@ -26,8 +26,8 @@ The diagram below illustrates the high-level architecture of Upbound Dedicated S
 ## How to get access to Dedicated Spaces
 
 If you have an interest in Upbound Dedicated Spaces, contact
-[Upbound][contact-us]. We can chat more about your
-requirements and see if Dedicated Spaces are a good fit for you.
+[Upbound][contact-us]. The Upbound team can discuss your
+requirements and determine if Dedicated Spaces fit your needs.
 
 [contact-us]: https://www.upbound.io/contact-us
 [managed-space]: /manuals/spaces/howtos/self-hosted/managed-spaces-deployment

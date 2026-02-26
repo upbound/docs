@@ -16,10 +16,12 @@ API Connector enables seamless integration between Kubernetes application
 clusters consuming APIs and remote Crossplane control planes providing and
 reconciling APIs.
 
+<!-- vale write-good.Passive = NO -->
 You can use the API Connector to decouple where Crossplane is running (for
 example in an Upbound control plane), and where APIs are consumed
 (for example in an existing Kubernetes cluster). This gives you flexibility and
-consistency in your control plane operations. 
+consistency in your control plane operations.
+<!-- vale write-good.Passive = YES --> 
 
 
 

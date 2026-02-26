@@ -18,7 +18,7 @@ You can choose:
 language server.
 
 [KCL][kcl] - Concise. Good for transitioning from another configuration language
-like HCL. IDE support with language server.
+like `HCL`. IDE support with language server.
 
  **Python (this guide)** - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
@@ -46,9 +46,9 @@ Before you begin, make sure:
 
 * You designed your XRD
 * You've added provider dependencies
-* have Python 3.11+ installed
-* have the Python Virtual Studio Code extension installed
-* understand your XRD schema and what resources you need to create
+* You have Python 3.11+ installed
+* You have the Python Virtual Studio Code extension installed
+* You understand your XRD schema and what resources you need to create
 
 
 ## Create your composition scaffold
@@ -91,11 +91,12 @@ Your function begins with:
 ```python
 from crossplane.function.proto.v1 import run_function_pb2 as fnv1
 ```
-
-These are provider _models_. Provider models are packaged resource names that
+<!-- vale write-good.Passive = NO -->
+These provider _models_ are packaged resource names that
 allow your function to reference the provider resources. The period prefix on
 `.model` is required for Python to look for the model package in the same
 directory as main.py.
+<!-- vale write-good.Passive = YES -->
 
 Upbound Official Providers and some other packages include Pydantic models for
 their resources. These models enable in-line documentation, linting,
@@ -175,8 +176,8 @@ field can be a string, or None - Python's null value.
 
 Pydantic warns you when you copy a required field to an optional field.
 
-For example, Pydantic warns you if you try to copy an optional spec.region field
-from an XR to a required spec.forProvider.region field of an MR:
+For example, Pydantic warns you if you try to copy an optional `spec.region` field
+from an XR to a required `spec.forProvider.region` field of an MR:
 
 
 ```python
@@ -319,8 +320,10 @@ In the `RunFunctionRequest`, there are four _inputs_ that Crossplane can parse:
     resource.update(rsp.desired.resources["bucket"], bucket)    
     ```
 
+<!-- vale write-good.TooWordy = NO -->
 4. **Pipeline context** - Information to pass to subsequent functions in the
    pipeline.
+<!-- vale write-good.TooWordy = YES -->
 
 For a more complex version of a Python function, expand the example below:
 

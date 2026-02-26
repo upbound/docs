@@ -163,7 +163,7 @@ criteria you set, Upbound sets the simulated control plane's desired state to
 `Complete`.
 
 The `completionCriteria` is list of criteria that determines when a simulation
-should complete. We currently only support `type: Duration`, a string that
+should complete. Upbound currently only supports `type: Duration`, a string that
 indicates the duration of how long a simulation should run for in seconds.
 
 ```yaml {copy-lines="none", hl_lines="9-11"}

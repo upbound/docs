@@ -20,14 +20,14 @@ Upbound collects the following telemetry data:
 - Basic consumption information, such as the number of operations performed and claims created
 - Feature flag usage statistics
 - Component version information
-- `up` CLI commands that are executed (without capturing values)
+- `up` CLI commands you run (without capturing values)
 - License information
 
 <!-- vale Microsoft.HeadingPunctuation = NO -->
 ## How's data collected?
 <!-- vale Microsoft.HeadingPunctuation = YES -->
 
-Telemetry data is collected by both the Upbound CLI and Upbound Control Plane using the [OpenTelemetry](https://opentelemetry.io/) protocol. This data is sent securely to the Upbound telemetry service.
+Both the Upbound CLI and Upbound Control Plane collect telemetry data using the [OpenTelemetry](https://opentelemetry.io/) protocol. The system sends this data securely to the Upbound telemetry service.
 
 ## How to opt out
 

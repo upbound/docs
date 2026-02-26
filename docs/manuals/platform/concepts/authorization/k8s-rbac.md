@@ -11,14 +11,14 @@ For general RBAC in Upbound, read [Upbound RBAC][upbound-rbac].
 This guide explains how to permit actions on resources in your control planes on Upbound. It uses the built-in [Kubernetes role-based access control][kubernetes-role-based-access-control] (RBAC) mechanism. This gives you fine-grained control over control plane access.
 
 In a control plane on Upbound, Upbound RBAC and the control plane's Kubernetes
-RBAC are integrated to grant users permissions to perform actions. They must have enough
-permission according to either system. To grant users access with their Upbound
+RBAC work together to grant users permissions to perform actions. Users need permission
+from either system. To grant users access with their Upbound
 account, you must configure kubectl to authenticate to Upbound before running
 any commands that require authorization.
 
 ## Define permissions and assign roles
 
-Because control planes in Upbound are based on Kubernetes, you can use _ClusterRole_ and _Role_ objects to define RBAC rules in your control planes. Assign those rules using _ClusterRoleBinding_ and _RoleBinding_ objects:
+Since control planes in Upbound use Kubernetes, you can use _ClusterRole_ and _Role_ objects to define RBAC rules in your control planes. Assign those rules using _ClusterRoleBinding_ and _RoleBinding_ objects:
 
 - **Role:** A namespace-scoped group of resources and allowed operations that you can assign to a user or a group of users using a _RoleBinding_.
 - **ClusterRole:** A cluster-scoped group of resources and allowed operations that you can assign to a user or a group of users using a _RoleBinding_ or _ClusterRoleBinding_.
@@ -77,13 +77,14 @@ roleRef:
 ### RBAC manager
 <!-- vale Google.Headings = YES -->
 
-Each control plane in Upbound has a built-in Crossplane RBAC manager. This feature dynamically manages and binds RBAC roles. These roles grant subjects access to use the control plane as it gets extended by installing control plane software, such as providers, Crossplane composite resources, and more. 
+Each control plane in Upbound has a built-in Crossplane RBAC manager. This feature dynamically manages and binds RBAC roles. These roles grant subjects access to use the control plane as you extend it by installing control plane software, such as providers, Crossplane composite resources, and more. 
 
 
 <details>
 
 <summary> "Show example of RBAC manager roles"</summary>
 
+<!-- vale Google.WordList = NO -->
 ```sh
 kubectl get ClusterRoles -A                  
 NAME                                                                                        CREATED AT
@@ -114,6 +115,7 @@ crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-crossplane
 crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-edit                  2025-03-15T15:26:08Z
 
 ```
+<!-- vale Google.WordList = YES -->
 </details>
 
 <!-- vale Google.Headings = NO -->
@@ -126,7 +128,7 @@ Each control plane offers predefined _ClusterRoles_ related to granting permissi
 
 - **controlplane-view** lets subjects have read-only access to all Crossplane resources.
 - **controlplane-edit** lets subjects have full access to composite resources.
-- **controlplane-admin** lets subjects have full access _and_ the ability to grant others access by managing role bindings.
+- **controlplane-admin** lets subjects have full access. It also grants the ability to manage role bindings for others.
 
 Whenever control plane software gets installed or uninstalled, the RBAC manager handles the lifecycle of _ClusterRoles_ and _ClusterRoleBindings_ to aggregate permissions up to these predefined roles.
 
@@ -182,7 +184,9 @@ kubectl describe clusterrole controlplane-admin
 ### Upbound RBAC roles in a control plane
 <!-- vale Google.Headings = YES -->
 
+<!-- vale write-good.Passive = NO -->
 Roles granted with [Upbound RBAC][upbound-rbac-1] transitively affect what a user can do in a control plane. Upbound RBAC permissions are granted at the control plane group scope to teams. A team is a group of subjects consisting of users and robots. Here is how roles granted at the group scope transitively affect permissions in a control plane in that group:
+<!-- vale write-good.Passive = YES -->
 
 - **group viewer** means users and robots receive the _ClusterRole_ `controlplane-view` in the control plane. This role gets bound for all subjects with the `upbound:controlplane:view` group attribute.
 - **group editor** means users and robots receive the _ClusterRole_ `controlplane-edit` in the control plane. This role gets bound for all subjects with the `upbound:controlplane:edit` group attribute.

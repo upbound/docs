@@ -22,7 +22,7 @@ tokens:
   - adversely impact
   - advise
   - aforementioned
-  - aggregate
+#  - aggregate
   - aircraft
   - all of
   - all things considered
@@ -48,7 +48,7 @@ tokens:
   - at this time
   - attain
   - attributable to
-  - authorize
+#  - authorize
   - because of the fact that
   - belated
   - benefit from
@@ -99,7 +99,7 @@ tokens:
   - however
   - if and when
   - impacted
-  - implement
+#  - implement
   - in a manner of speaking
   - in a timely manner
   - in a very real sense
@@ -131,17 +131,17 @@ tokens:
   - irregardless
   - is applicable to
   - is authorized to
-  - is responsible for
+#- is responsible for
   - it is
   - it is essential
   - it seems that
   - it was
   - magnitude
-  - maximum
+#  - maximum
   - methodology
   - minimize
-  - minimum
-  - modify
+#  - minimum
+#  - modify
   - necessitate
   - nevertheless
   - not certain
@@ -183,7 +183,7 @@ tokens:
   - relocate
   - remainder
   - remuneration
-  - requirement
+  #:- requirement
   - reside
   - residence
   - retain
@@ -196,7 +196,7 @@ tokens:
   - strategize
   - subsequent
   - substantial
-  - successfully complete
+#  - successfully complete
   - sufficient
   - terminate
   - the month of

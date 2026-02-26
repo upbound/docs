@@ -94,7 +94,7 @@ across services.
 
 The router uses:
 
-- **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
+- **Protocol**: `OTLP` (OpenTelemetry Protocol) over gRPC
 - **Service name**: `spaces-router`
 - **Transport**: TLS-encrypted connection to telemetry collector
 
@@ -113,14 +113,13 @@ observability:
 
 The sampling behavior depends on whether a parent trace context exists:
 
-- **With parent context**: If a `traceparent` header is present, the parent's
-  sampling decision is respected, enabling proper distributed tracing across services.
+- **With parent context**: If a `traceparent` header is present, the system respects the parent's sampling decision, enabling proper distributed tracing across services.
 - **Root spans**: For new traces without a parent, Envoy samples based on
   `x-request-id` hashing. The default sampling rate is 10%.
 
 #### TLS configuration for external collectors
 
-To send traces to an external OTLP collector, configure the endpoint and TLS settings:
+To send traces to an external `OTLP` collector, configure the endpoint and TLS settings:
 
 ```yaml
 observability:
@@ -133,10 +132,7 @@ observability:
       caBundleSecretRef: "custom-ca-secret"
 ```
 
-If `caBundleSecretRef` is set, the router uses the CA bundle from the referenced
-Kubernetes secret. The secret must contain a key named `ca.crt` with the
-PEM-encoded CA bundle. If not set, the router uses the Spaces CA for the
-in-cluster collector.
+When you set `caBundleSecretRef`, the router uses the CA bundle from the referenced Kubernetes secret. The secret must contain a key named `ca.crt` with the PEM-encoded CA bundle. When not set, the router uses the Spaces CA for the in-cluster collector.
 
 #### Custom trace tags
 

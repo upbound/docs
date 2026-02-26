@@ -159,8 +159,7 @@ cluster. It moves any claims in the app cluster into the control plane
 at the specified namespace.
 
 :::tip
-Make sure your kubeconfig's current context is pointed at the app cluster where
-you want to uninstall Control Plane Connector from.
+Ensure your kubeconfig's current context points to the app cluster where you uninstall Control Plane Connector.
 :::
 
 </TabItem>
@@ -296,9 +295,7 @@ lives in your cluster.
 
 ### Migration to control planes
 
-This guide details the migration of a Crossplane installation to Upbound-managed
-control planes using the Control Plane Connector to manage claims on an application
-cluster.
+This guide covers migrating a Crossplane installation to Upbound-managed control planes. It uses the Control Plane Connector to manage claims on an application cluster.
 
 ![migration flow application cluster to control plane](/img/ConnectorMigration.png)
 
