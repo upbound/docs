@@ -1,11 +1,11 @@
 ---
 title: Image Configs
 sidebar_position: 40
-description: Image Configs is an API for centralized control of the configuration
-  of Crossplane package images.
+description: API for centralized control of Crossplane package image configuration.
 ---
 
 <!-- vale write-good.Passive = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
 
 `ImageConfig` is an API for centralized control over the configuration of
 Crossplane package images. It allows you to configure package manager behavior
@@ -213,5 +213,6 @@ If you can't see this condition on the package revision resource, namely
 you enable the feature.
 
 <!-- vale write-good.Passive = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
 
 [api-reference]: /reference/apis/crossplane-api/#imageconfig-spec-verification-cosign

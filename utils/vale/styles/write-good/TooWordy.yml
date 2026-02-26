@@ -125,13 +125,13 @@ tokens:
   - in the process of
   - inception
   - incumbent upon
-  - indicate
+  # - indicate
   - indication
   - initiate
   - irregardless
   - is applicable to
   - is authorized to
-  #- is responsible for
+  - is responsible for
   - it is
   - it is essential
   - it seems that
@@ -208,8 +208,8 @@ tokens:
   - transpire
   - type of
   - until such time as
-  - utilization
-  - utilize
+  # - utilization
+  # - utilize
   - various different
   - what I mean to say is
   - whether or not
