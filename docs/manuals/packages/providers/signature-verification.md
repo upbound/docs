@@ -81,10 +81,12 @@ spec:
                 subject: https://github.com/upbound/upbound-official-build/.github/workflows/supplychain.yml@refs/heads/main
 ```
 <!-- vale write-good.TooWordy = NO -->
-If the signature verification feature is enabled, Crossplane ensures the status condition
-of type `Verified` is set to true on the `ProviderRevision` resource,
-indicating it was either skipped or succeeded.
+<!-- vale write-good.Passive = NO -->
+If signature verification is enabled, Crossplane sets a Verified status
+condition on the ProviderRevision resource once verification either succeeds or
+is skipped. 
 <!-- vale write-good.TooWordy = YES -->
+<!-- vale write-good.Passive = YES -->
 
 For example:
 

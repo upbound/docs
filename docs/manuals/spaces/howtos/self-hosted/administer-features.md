@@ -108,8 +108,10 @@ To disable in a self-hosted Space, pass the `features.alpha.sharedBackup.enabled
 **Status:** Preview
 The Query API is available in the Cloud Space offering and enabled by default.
 
+<!-- vale write-good.Passive = NO -->
 Query API is required for self-hosted deployments with connected Spaces. See the
 related [documentation][documentation]
 to enable this feature.
+<!-- vale write-good.Passive = YES -->
 
 [documentation]: /manuals/spaces/howtos/query-api/

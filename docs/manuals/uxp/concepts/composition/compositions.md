@@ -75,6 +75,7 @@ that template Crossplane resources. Crossplane calls the composition functions
 to determine what resources it should create when you create a composite
 resource (XR).
 
+<!-- vale gitlab.Uppercase = NO -->
 :::tip
 Crossplane has functions that let you template composed resources using YAML
 [patch and transforms][function-patch-and-transform].
@@ -87,6 +88,7 @@ Helm-like
 You can also [write your own function](#write-a-composition-function) using Go
 or Python.
 :::
+<!-- vale gitlab.Uppercase = YES -->
 
 ### Install a composition function
 

@@ -27,24 +27,23 @@ Spaces to deploy control planes that manage the lifecycle of your resources.
 This table lists the cloud service provider regions supported by Upbound.
 
 ### GCP
-
 | Region | Location |
 | --- | --- |
-| `us-west-1` | Western US (Oregon)
-| `us-central-1` | Central US (Iowa)
+| `us-west-1` | Western United States (Oregon)
+| `us-central-1` | Central United States (Iowa)
 | `eu-west-3` | Eastern Europe (Frankfurt)
 
 ### AWS
 
 | Region | Location |
 | --- | --- |
-| `us-east-1` | Eastern US (Northern Virginia)
+| `us-east-1` | Eastern United States (Northern Virginia)
 
 ### Azure
 
 | Region | Location |
 | --- | --- |
-| `us-east-1` | Eastern US (Iowa)
+| `us-east-1` | Eastern United States (Iowa)
 
 [dedicated-spaces]: /manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment
 [managed-spaces]: /manuals/spaces/howtos/self-hosted/managed-spaces-deployment

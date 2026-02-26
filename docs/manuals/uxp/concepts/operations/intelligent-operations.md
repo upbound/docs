@@ -88,7 +88,7 @@ spec:
                   "name": <the name of the pod>,
                   "uid": <the uid of the pod>
                 },
-                "analysis": "<The analysis of the issues with the pod.>",
+                "analysis": "<`The analysis of the issues with the pod.`>",
                 "remediations": [
                   {
                     "name": "<A name for the remediation that is unique to the remediations array. The name must be alphanumeric and must be no longer than 10 characters.>", 
@@ -121,7 +121,7 @@ spec:
 ```
 
 The `WatchOperation` above uses `function-claude` to look up events and logs
-related to the pod to identify what's wrong, and it outputs a
+related to the pod to identify what's wrong. It outputs a
 remediation strategy to fix the issue for the said pod.
 
 ## Official AI-embedded function

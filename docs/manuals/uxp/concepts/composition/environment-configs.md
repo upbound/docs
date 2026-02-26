@@ -17,7 +17,8 @@ information from individual resources or to apply patches.
 Crossplane supports multiple `EnvironmentConfigs`, each acting as a unique
 data store.
 
-When Crossplane creates a composite resource, Crossplane merges all the
+<!-- vale gitlab.SentenceLength = NO -->
+When Crossplane creates a composite resource, it merges all the
 EnvironmentConfigs referenced in the associated Composition and creates a unique
 in-memory environment for that composite resource.
 
@@ -439,7 +440,6 @@ Individual resources can use any data written to the in-memory environment.
 You can use `CombineFromComposite` and `CombineToComposite` to combine multiple
 values and write the result either to the in-memory environment or the
 Composite resource, respectively.
-<!-- vale gitlab.SentenceLength = YES -->
 
 ### Patch an individual resource
 

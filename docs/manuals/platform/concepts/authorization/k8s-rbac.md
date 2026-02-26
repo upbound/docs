@@ -77,45 +77,49 @@ roleRef:
 ### RBAC manager
 <!-- vale Google.Headings = YES -->
 
-Each control plane in Upbound has a built-in Crossplane RBAC manager. This feature dynamically manages and binds RBAC roles. These roles grant subjects access to use the control plane as you extend it by installing control plane software, such as providers, Crossplane composite resources, and more. 
+<!-- vale gitlab.SentenceLength = NO -->
+Each control plane in Upbound has a built-in Crossplane RBAC manager. This
+feature dynamically manages and binds RBAC roles. These roles grant subjects
+access to use the control plane as you extend it by installing control plane
+software, such as providers, Crossplane composite resources, and more. 
+<!-- vale gitlab.SentenceLength = YES -->
 
 
 <details>
 
 <summary> "Show example of RBAC manager roles"</summary>
 
-<!-- vale Google.WordList = NO -->
-```sh
-kubectl get ClusterRoles -A                  
-NAME                                                                                        CREATED AT
-admin                                                                                       2025-03-12T18:57:25Z
-cluster-admin                                                                               2025-03-12T18:57:25Z
-controlplane-admin                                                                          2025-03-12T18:57:56Z
-controlplane-admin-spaces-extras                                                            2025-03-12T18:57:56Z
-controlplane-controller                                                                     2025-03-12T18:57:56Z
-controlplane-controller-spaces-extras                                                       2025-03-12T18:57:56Z
-controlplane-edit                                                                           2025-03-12T18:57:56Z
-controlplane-edit-controller-spaces-extras                                                  2025-03-12T18:57:56Z
-controlplane-edit-spaces-extras                                                             2025-03-12T18:57:56Z
-controlplane-view                                                                           2025-03-12T18:57:56Z
-controlplane-view-spaces-extras                                                             2025-03-12T18:57:56Z
-crossplane                                                                                  2025-03-12T18:57:54Z
-crossplane-admin                                                                            2025-03-12T18:57:54Z
-crossplane-browse                                                                           2025-03-12T18:57:54Z
-crossplane-edit                                                                             2025-03-12T18:57:54Z
-crossplane-rbac-manager                                                                     2025-03-12T18:57:54Z
-crossplane-view                                                                             2025-03-12T18:57:54Z
-crossplane:aggregate-to-admin                                                               2025-03-12T18:57:54Z
-crossplane:aggregate-to-browse                                                              2025-03-12T18:57:54Z
-crossplane:aggregate-to-edit                                                                2025-03-12T18:57:54Z
-crossplane:aggregate-to-view                                                                2025-03-12T18:57:54Z
-crossplane:allowed-provider-permissions                                                     2025-03-12T18:57:54Z
-crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-browse                2025-03-15T15:26:08Z
-crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-crossplane            2025-03-15T15:26:08Z
-crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-edit                  2025-03-15T15:26:08Z
 
-```
-<!-- vale Google.WordList = YES -->
+    ```shell
+    kubectl get ClusterRoles -A                  
+    NAME                                                                                        CREATED AT
+    admin                                                                                       2025-03-12T18:57:25Z
+    cluster-admin                                                                               2025-03-12T18:57:25Z
+    controlplane-admin                                                                          2025-03-12T18:57:56Z
+    controlplane-admin-spaces-extras                                                            2025-03-12T18:57:56Z
+    controlplane-controller                                                                     2025-03-12T18:57:56Z
+    controlplane-controller-spaces-extras                                                       2025-03-12T18:57:56Z
+    controlplane-edit                                                                           2025-03-12T18:57:56Z
+    controlplane-edit-controller-spaces-extras                                                  2025-03-12T18:57:56Z
+    controlplane-edit-spaces-extras                                                             2025-03-12T18:57:56Z
+    controlplane-view                                                                           2025-03-12T18:57:56Z
+    controlplane-view-spaces-extras                                                             2025-03-12T18:57:56Z
+    crossplane                                                                                  2025-03-12T18:57:54Z
+    crossplane-admin                                                                            2025-03-12T18:57:54Z
+    crossplane-browse                                                                           2025-03-12T18:57:54Z
+    crossplane-edit                                                                             2025-03-12T18:57:54Z
+    crossplane-rbac-manager                                                                     2025-03-12T18:57:54Z
+    crossplane-view                                                                             2025-03-12T18:57:54Z
+    crossplane:aggregate-to-admin                                                               2025-03-12T18:57:54Z
+    crossplane:aggregate-to-browse                                                              2025-03-12T18:57:54Z
+    crossplane:aggregate-to-edit                                                                2025-03-12T18:57:54Z
+    crossplane:aggregate-to-view                                                                2025-03-12T18:57:54Z
+    crossplane:allowed-provider-permissions                                                     2025-03-12T18:57:54Z
+    crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-browse                2025-03-15T15:26:08Z
+    crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-crossplane            2025-03-15T15:26:08Z
+    crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-edit                  2025-03-15T15:26:08Z
+    ```
+    
 </details>
 
 <!-- vale Google.Headings = NO -->
@@ -125,12 +129,15 @@ crossplane:composite:xnetworks.azure.platform.upbound.io:aggregate-to-edit      
 ### Predefined roles
 
 Each control plane offers predefined _ClusterRoles_ related to granting permissions for Crossplane objects:
-
+<!-- vale Google.WordList = NO -->
 - **controlplane-view** lets subjects have read-only access to all Crossplane resources.
 - **controlplane-edit** lets subjects have full access to composite resources.
 - **controlplane-admin** lets subjects have full access. It also grants the ability to manage role bindings for others.
+<!-- vale Google.WordList = YES -->
 
-Whenever control plane software gets installed or uninstalled, the RBAC manager handles the lifecycle of _ClusterRoles_ and _ClusterRoleBindings_ to aggregate permissions up to these predefined roles.
+When installing or uninstalling control plane software, the RBAC manager handles
+the lifecycle of _ClusterRoles_ and _ClusterRoleBindings_ to aggregate
+permissions to these predefined roles.
 
 <!-- vale Google.Headings = NO -->
 #### controlplane-view
@@ -188,9 +195,11 @@ kubectl describe clusterrole controlplane-admin
 Roles granted with [Upbound RBAC][upbound-rbac-1] transitively affect what a user can do in a control plane. Upbound RBAC permissions are granted at the control plane group scope to teams. A team is a group of subjects consisting of users and robots. Here is how roles granted at the group scope transitively affect permissions in a control plane in that group:
 <!-- vale write-good.Passive = YES -->
 
+<!-- vale Google.WordList = NO -->
 - **group viewer** means users and robots receive the _ClusterRole_ `controlplane-view` in the control plane. This role gets bound for all subjects with the `upbound:controlplane:view` group attribute.
 - **group editor** means users and robots receive the _ClusterRole_ `controlplane-edit` in the control plane. This role gets bound for all subjects with the `upbound:controlplane:edit` group attribute.
 - **group administrator** means users and robots receive the _ClusterRole_ `controlplane-admin` in the control plane. This role gets bound for all subjects with the `upbound:controlplane:admin` group attribute.
+<!-- vale Google.WordList = YES -->
 
 ## Example usage
 

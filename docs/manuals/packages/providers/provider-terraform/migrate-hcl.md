@@ -109,7 +109,15 @@ configuration language.
 
 Your infrastructure needs supporting resources. Crossplane uses compositions to create and manage multiple resources.
 
-Compositions let you compose all necessary resources into a file with every attribute your organization needs. These compositions are the explicit resources your teams need and the infrastructure consumers (developers and applications teams) aren't exposed to these files. In the next steps, you'll create a `definition` and a `claim`. The definition file defines what inputs you need to create the resources in the composition. The claim is the file you can expose to infrastructure consumers and lets them define the variables required from the definition.
+Compositions let you compose all necessary resources into a file with every
+attribute your organization needs. These compositions are the explicit resources
+your teams need and the infrastructure consumers (developers and applications
+teams) aren't exposed to these files. 
+
+Next, create a `definition` and a `claim`. The definition file defines
+what inputs you need to create the resources in the composition. The claim is
+the file you can expose to infrastructure consumers and lets them define the
+variables required from the definition.
 
 <!-- vale gitlab.FutureTense = NO -->
 In this section, you'll create a composition with an instance and all the supporting resources for it to be useful.

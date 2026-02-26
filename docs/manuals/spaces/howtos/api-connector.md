@@ -16,19 +16,14 @@ API Connector enables seamless integration between Kubernetes application
 clusters consuming APIs and remote Crossplane control planes providing and
 reconciling APIs.
 
-<!-- vale write-good.Passive = NO -->
-You can use the API Connector to decouple where Crossplane is running (for
-example in an Upbound control plane), and where APIs are consumed
-(for example in an existing Kubernetes cluster). This gives you flexibility and
-consistency in your control plane operations.
-<!-- vale write-good.Passive = YES --> 
 
+The API Connector decouples where Crossplane runs from where teams consume its
+APIs. For example, Crossplane may run in an Upbound control plane while an
+existing Kubernetes cluster consumes its APIs.
 
-
-Unlike the [Control Plane Connector](ctp-connector.md) which offers only
-coarse-grained connectivity between app clusters and a control plane, API
-connector offers fine-grained configuration of which APIs get offered along with
-multi-cluster connectivity.
+The Control Plane Connector offers coarse-grained connectivity between app
+clusters and a control plane. The API Connector lets you choose
+which APIs to expose across multiple clusters.
 
 ## Architecture overview
 
@@ -291,8 +286,8 @@ The `ClusterAPIBinding` name must match the **Resource.Group** (name of the Cust
 
 ## Usage example
 
-After configuration, you can create API objects (in the consumer cluster) that
-will be synchronized to the provider cluster:
+After configuration, you can create API objects (in the consumer cluster) to
+synchronize to the provider cluster:
 
 ```yaml
 apiVersion: nop.example.org/v1alpha1
@@ -311,11 +306,12 @@ Verify the resource status:
 kubectl get nopresource my-resource -o yaml
 
 ```
-When the `APIBound=True` condition is present, it means that the API object has
-been synced to the provider cluster, where reconciliation occurs. Whenever the
+When the `APIBound=True` condition is present, it means that the API object
+synced to the provider cluster, where reconciliation occurs. Whenever the
 API object in the provider cluster gets status updates (for example
-`Ready=True`), that status is synced back to the consumer cluster.
+`Ready=True`), that status syncs back to the consumer cluster.
 
+<!-- vale write-good.Passive = NO -->
 Switch contexts to the provider cluster to see the API object being created:
 
 ```bash
@@ -373,11 +369,11 @@ up controlplane api-connector uninstall \
 ```
 
 The `--all` flag removes all resources including connections and secrets.
-Without the flag, only runtime related resources won't be removed.
+Without the flag, runtime related resources persist.
 
 :::note
-Uninstall doesn't remove any API objects in the provider control plane. If you
-want to clean up all API objects there, delete all API objects from the consumer
+Uninstall doesn't remove any API objects in the provider control plane. 
+To clean all API objects, delete all API objects from the consumer
 cluster before API connector uninstallation, and wait for the objects to get
 deleted.
 :::

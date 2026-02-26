@@ -54,9 +54,11 @@ verify image integrity and traceability.
 ### Provenance and `SLSA` attestations
 <!-- vale gitlab.Uppercase = YES -->
 
+<!-- vale write-good.Passive = NO -->
 The Upbound Marketplace surfaces [`SLSA`] provenance attestations for official
 packages produced by Upbound's build workflows. These records document when, how, and by what process a
 package was built using [Sigstore] tooling.
+<!-- vale write-good.Passive = YES -->
 
 To independently verify signatures and provenance, users can download the
 attestation and run the generated `cosign` commands in the `Provenance` tab of

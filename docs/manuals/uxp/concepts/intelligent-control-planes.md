@@ -34,7 +34,13 @@ composition_. Some examples of these functions are:
 - [function-claude][function-claude]
 - [function-openai][function-openai]
 
-These functions pass pipeline context to a Large Language Model like Claude. They use user-specified prompts to guide Claude in configuring function pipeline resources. [MCP servers][mcp-servers] are packaged as [Add-Ons][add-ons] and install on your control plane. They deliver tools that the language model can use. 
+<!-- vale write-good.Passive = NO -->
+These functions pass pipeline context to a Large Language Model like Claude.
+They use user-specified prompts to guide Claude in configuring function pipeline
+resources. [MCP servers][mcp-servers] are packaged as [Add-Ons][add-ons] and
+install on your control plane. They deliver tools that the language model can
+use. 
+<!-- vale write-good.Passive = YES -->
 
 ## Intelligent operations
 

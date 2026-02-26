@@ -19,9 +19,11 @@ only applicable to self-hosted Space administrators. This lets Space
 administrators observe the cluster infrastructure where the Space software gets
 installed.
 
+<!-- vale gitlab.SentenceLength = NO -->
 When you enable observability in a Space, Upbound deploys a single
 [OpenTelemetry Collector][opentelemetry-collector] to collect and export metrics,
 logs, and traces to your configured observability backends.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Prerequisites
 

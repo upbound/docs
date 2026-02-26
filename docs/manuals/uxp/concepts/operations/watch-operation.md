@@ -486,12 +486,13 @@ kubectl get events --field-selector involvedObject.name=my-watchop
 1. **Start small** - Begin with narrow selectors and expand as needed
 
 ### Event handling
-
+<!-- vale write-good.TooWordy = NO -->
 1. **Implement event filtering** - Check generation, deletion timestamp, 
    and status conditions
    to avoid processing irrelevant changes
 1. **Monitor operation volume** - Popular resources can create numerous 
    Operations
+<!-- vale write-good.TooWordy = YES -->
 
 ### Concurrency policies
 
@@ -558,7 +559,9 @@ operational considerations, see [Operation best practices][operation-best-practi
 1. Ensure resources are actually changing
 1. Look for events indicating watch establishment failures
 
+<!-- vale write-good.Weasel = NO -->
 ### Too many operations created
+<!-- vale write-good.Weasel = YES -->
 
 1. Refine label selectors to match fewer resources
 1. Consider using `Forbid` or `Replace` concurrency policy

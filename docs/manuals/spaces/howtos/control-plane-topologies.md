@@ -336,8 +336,8 @@ control plane in an Upbound Space. In Upbound, you call the control plane hostin
 
 ### Deploy as Remote APIs on a platform control plane
 
-You should use the same package source as deployed in the **service-level
-control planes**, but this time deploy the Configuration in a separate control
+Use the same package source as the **service-level
+control planes**, but now deploy the Configuration in a separate control
 plane as a _RemoteConfiguration_. The _RemoteConfiguration_ installs Kubernetes
 CustomResourceDefinitions for the APIs defined in the Configuration package, but
 no controllers get deployed.
@@ -410,10 +410,9 @@ metadata:
 
 ## Use an _Environment_ to route resources
 
-_Environment_ is a resource type available in Upbound control planes that works
-in tandem with resources installed by _RemoteConfigurations_. _Environment_ is a
-namespace-scoped resource that lets you configure how to route remote resources
-to other control planes by a set of user-defined dimensions. 
+Environment is a namespace-scoped resource type that works with resources
+deployed with RemoteConfigurations. It allows you to configure how to route
+remote resources to other control planes by a set of user-defined dimensions. 
 
 ### Define a routing dimension
 

@@ -47,7 +47,9 @@ To learn about Crossplane and UXP features, read the [how-to guides][guides].
 
 ## Deploy and run UXP
 
+<!-- vale Google.We = NO -->
 Upbound runs UXP for you in our control planes-as-a-service Spaces hosting environment. Users can also [deploy][self-managed-uxp] a self-managed installation of UXP directly on a Kubernetes cluster.
+<!-- vale Google.We = YES -->
 
 ## Get started
 

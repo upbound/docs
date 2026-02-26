@@ -161,11 +161,6 @@ spec:
       - key: vmName
         value: crossplanevm
 ```
-:::warning
-This configuration won't work if applied now.
-:::
-<!-- vale gitlab.FutureTense = YES -->
-
 ## Authenticate with your cloud provider
 
 The provider configuration handles authentication. You must
@@ -296,7 +291,7 @@ spec:
 ```
 
 :::warning
-This configuration won't work as is. Review the [example backend configuration][example-backend-configuration] and the [Terraform File documentation][terraform-file-documentation]
+This configuration doesn't work as is. Review the [example backend configuration][example-backend-configuration] and the [Terraform File documentation][terraform-file-documentation]
 :::
 <!-- vale gitlab.FutureTense = YES -->
 

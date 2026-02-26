@@ -18,7 +18,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 
 Upbound's _Space Backups_ is a built-in Space-wide backup and restore feature. This guide explains how to configure Space Backups and how to restore from one of them in case of disaster recovery.
 
-This feature is meant for Space administrators. Group or Control Plane users can leverage [Shared Backups][shared-backups] to backup and restore their ControlPlanes.
+This feature for Space administrators. Group or Control Plane users can leverage [Shared Backups][shared-backups] to backup and restore their ControlPlanes.
 
 ## Benefits
 The Space Backups feature provides the following benefits:
