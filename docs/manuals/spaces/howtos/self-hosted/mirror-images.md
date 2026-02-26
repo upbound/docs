@@ -13,7 +13,15 @@ section of the CLI reference.
 ## Prerequisites
 
 * The [Up CLI][cli-reference] installed
-* An Upbound token file (JSON with `accessId` and `token`) for registry auth
+* An Upbound token file (JSON with `accessId` and `token`) for registry auth.
+  Example:
+
+  ```json
+  {
+    "accessId": "<your-access-id>",
+    "token": "<your-token>"
+  }
+  ```
 
 ## Mirror to a local directory
 
