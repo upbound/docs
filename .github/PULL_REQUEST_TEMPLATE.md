@@ -7,7 +7,7 @@
 - [ ] New content (new page, section, or guide)
 
 ## Checklist
-- [ ] I ran `make lint` locally (or will fix Vale suggestions in review)
+- [ ] I ran `make vale-file FILE=docs/concepts/providers.md` locally for files changed (or will fix Vale suggestions in review)
 - [ ] Links work and point to the right places
 - [ ] If this adds new content, I tested the examples/instructions
 
