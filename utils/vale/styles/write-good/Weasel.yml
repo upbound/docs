@@ -86,6 +86,7 @@ tokens:
   - hourly
   - hungrily
   - hurriedly
+  #  - immediately
   - impatiently
   - inadequately
   - ingeniously
@@ -173,6 +174,7 @@ tokens:
   - sternly
   - stupidly
   - substantially
+  #  - successfully
   - suddenly
   - surprisingly
   - suspiciously
@@ -185,6 +187,7 @@ tokens:
   - truthfully
   - unexpectedly
   - unfortunately
+  #  - usually
   - very
   - victoriously
   - violently
