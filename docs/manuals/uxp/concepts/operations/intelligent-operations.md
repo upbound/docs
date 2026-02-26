@@ -16,9 +16,11 @@ functions.
 
 ## Example AI-embedded function
 
+<!-- vale write-good.Passive = NO -->
 Operation functions are a fundamental unit of work in a control plane. Here's an
 example of an Operation that uses a function to determine why a set of pods are
 stuck in a `CrashLoopBackoff`:
+<!-- vale write-good.Passive = YES -->
 
 ```yaml
 apiVersion: ops.crossplane.io/v1alpha1
@@ -68,7 +70,7 @@ spec:
             include the namespace and name of the pod to examine.
           userPrompt: |
             You should use the tools available to you to look up events and logs related
-            to the pod in order to identify what's wrong.
+            to the pod to identify what's wrong.
 
             REQUIRED OUTPUT FORMAT:
             { 
@@ -119,7 +121,7 @@ spec:
 ```
 
 The `WatchOperation` above uses `function-claude` to look up events and logs
-related to the pod in order to identify what's wrong, and it outputs a
+related to the pod to identify what's wrong, and it outputs a
 remediation strategy to fix the issue for the said pod.
 
 ## Official AI-embedded function

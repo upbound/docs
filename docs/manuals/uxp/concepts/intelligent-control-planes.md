@@ -4,10 +4,12 @@ description: "Learn how to use the AI-powered Intelligent Control Planes in UXP"
 sidebar_position: 1
 ---
 
+<!-- vale gitlab.SentenceLength = NO -->
 Upbound Crossplane supports running **Intelligent Control Planes**, which are a
 class of [composition functions][intelligent-compositions] and [operation
 functions][intelligent-operations] that bring LLM-driven logic into your control
 plane's reconcile loop.
+<!-- vale gitlab.SentenceLength = YES -->
 
 <!-- vale alex.Condescending = NO -->
 Intelligent Control Planes extend the traditional `observe → compare → act` pattern

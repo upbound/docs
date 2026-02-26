@@ -519,8 +519,7 @@ Composition functions let you replace complicated Compositions with code written
 in your programming language of choice. Crossplane has tools, software
 development kits (SDKs) and templates to help you write a function.
 
-Here's an example of a tiny, hello world function. This example is written in
-[Go](https://go.dev).
+Here's a "hello world" function example. This example uses [Go](https://go.dev).
 
 ```go
 func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {

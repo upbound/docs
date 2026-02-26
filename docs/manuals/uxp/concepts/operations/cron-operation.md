@@ -236,7 +236,7 @@ To ensure consistent scheduling across different environments, consider:
 
 1. **Standardize cluster time zones** - Use UTC in production clusters
 2. **Document time zone assumptions** - Note expected time zone in comments
-3. **Account for DST changes** - Be aware that some schedules may skip or repeat during transitions
+3. **Account for `DST` changes** - Be aware that some schedules may skip or repeat during transitions
 :::
 
 ## Status and monitoring

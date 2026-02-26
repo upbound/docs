@@ -253,11 +253,13 @@ spec:
 When using `mode: Multiple` limit the number of returned `EnvironmentConfigs`
 with `maxMatch` and define the maximum number to select.
 
+<!-- vale gitlab.SentenceLength = NO -->
 Use `minMatch` and define the minimum number of environments returned.
 
 The Function sorts the returned environments alphabetically by name by default.
 Sort the environments on a different field with `sortByFieldPath` and define
-the field to sort by. 
+the field to sort by.
+<!-- vale gitlab.SentenceLength = YES --> 
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -380,10 +382,12 @@ value.
 
 ## Patching with EnvironmentConfigs using function-patch-and-transform
 
+<!-- vale gitlab.SentenceLength = NO -->
 `EnvironmentConfigs` selected as explained earlier, are then merged in an
 `in-memory environment` by [function-environment-configs][function-environment-configs] and passed to the
 next function in the pipeline at a well known key,
 `apiextensions.crossplane.io/environment`.
+<!-- vale gitlab.SentenceLength = YES -->
 
 You can use [function-patch-and-transform][function-patch-and-transform] to read or write data between the in-memory environment and
 composite resource or individual composed resources.
@@ -431,9 +435,11 @@ spec:
 
 Individual resources can use any data written to the in-memory environment.
 
+<!-- vale gitlab.SentenceLength = NO -->
 You can use `CombineFromComposite` and `CombineToComposite` to combine multiple
 values and write the result either to the in-memory environment or the
 Composite resource, respectively.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ### Patch an individual resource
 

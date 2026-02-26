@@ -266,7 +266,7 @@ unhealthy upstreams. Two priority levels exist: `DEFAULT` for watch requests and
 ### Downstream listener metrics
 
 Metrics tracking requests received from clients such as kubectl and API consumers.
-Use these metrics to monitor client connection patterns, overall request volume,
+Use these metrics to monitor client connection patterns, total request volume,
 and responses sent to external users.
 
 | Name | Description |
