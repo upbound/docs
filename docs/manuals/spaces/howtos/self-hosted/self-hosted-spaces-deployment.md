@@ -211,7 +211,7 @@ Set the version of Spaces software you want to install.
 export SPACES_VERSION=<!-- spaces_version -->
 ```
 
-Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
+Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the load balancer or ingress to route requests.
 
 ```ini
 export SPACES_ROUTER_HOST="proxy.upbound-127.0.0.1.nip.io"
@@ -230,13 +230,15 @@ Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a 
 Install cert-manager.
 
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.yaml
 kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Available=True --timeout=360s
 ```
 
 <CodeBlock cloud="aws">
 
-### Install ALB Load Balancer
+### Install AWS Load Balancer Controller
+
+The AWS Load Balancer Controller provisions a Network Load Balancer when you expose the spaces-router Service with the annotations in the next step.
 
 ```bash
 helm install aws-load-balancer-controller aws-load-balancer-controller --namespace kube-system \
@@ -249,137 +251,69 @@ helm install aws-load-balancer-controller aws-load-balancer-controller --namespa
 
 </CodeBlock>
 
-### Install Envoy Gateway
+### Expose Spaces with LoadBalancer (recommended)
 
-Starting with Spaces v1.10.0, Upbound recommends using the [Gateway API] for
-routing traffic to Spaces. Gateway API is the official Kubernetes standard for
-ingress and replaces the legacy Ingress API.
+This guide exposes Spaces using a LoadBalancer Service on the spaces-router. No additional ingress or gateway components are required.
 
-This guide uses Envoy Gateway as the Gateway API controller and replaces
-ingress-nginx previously recommended. 
-
-:::info
-If you need to continue to use ingress-nginx temporarily, use the [ingress-nginx
-migration guide][migration guide].
-
-The Kubernetes community announced that ingress-nginx will be retired in March
-2026 and you should plan to migrate to Gateway API before then.
+:::important
+Use a Network Load Balancer (L4), not an Application Load Balancer (L7). Spaces uses long-lived connections for watch traffic that L7 load balancers may timeout.
 :::
 
-
-First, install Envoy Gateway with Helm:
-
-```bash
-helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
-  --timeout 360s --create-namespace envoy-gateway \
-  oci://docker.io/envoyproxy/gateway-helm 
-```
-
-Next, create the Gateway API resources for your cloud provider:
+Add the following to a `values.yaml` file (or use the same `--set` flags in the Helm install below). Replace `proxy.example.com` with your `SPACES_ROUTER_HOST`.
 
 <CodeBlock cloud="aws">
 
-Create EnvoyProxy configuration for AWS load balancer
+```yaml
+externalTLS:
+  host: proxy.example.com  # Use your SPACES_ROUTER_HOST
 
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: EnvoyProxy
-metadata:
-  name: spaces-proxy-config
-  namespace: envoy-gateway-system
-spec:
-  provider:
-    type: Kubernetes
-    kubernetes:
-      envoyService:
-        annotations:
-          service.beta.kubernetes.io/aws-load-balancer-type: external
-          service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
-          service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-          service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol: http
-          service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: /healthz
-          service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "19002"
-EOF
-```
-
-
-Create GatewayClass:
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-  parametersRef:
-    group: gateway.envoyproxy.io
-    kind: EnvoyProxy
-    name: spaces-proxy-config
-    namespace: envoy-gateway-system
-EOF
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: external
+        service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+        service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
 ```
 
 </CodeBlock>
 
 <CodeBlock cloud="azure">
-```bash
-Create EnvoyProxy configuration for Azure load balancer:
 
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.envoyproxy.io/v1alpha1
-kind: EnvoyProxy
-metadata:
-  name: spaces-proxy-config
-  namespace: envoy-gateway-system
-spec:
-  provider:
-    type: Kubernetes
-    kubernetes:
-      envoyService:
-        annotations:
-          service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
-EOF
-```
+```yaml
+externalTLS:
+  host: proxy.example.com  # Use your SPACES_ROUTER_HOST
 
-Create GatewayClass:
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-  parametersRef:
-    group: gateway.envoyproxy.io
-    kind: EnvoyProxy
-    name: spaces-proxy-config
-    namespace: envoy-gateway-system
-EOF
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      # Azure uses L4 by default; add annotations if needed for your setup
+      annotations: {}
 ```
 
 </CodeBlock>
 
 <CodeBlock cloud="gcp">
 
-Create GatewayClass:
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: spaces
-spec:
-  controllerName: gateway.envoyproxy.io/gatewayclass-controller
-EOF
+```yaml
+externalTLS:
+  host: proxy.example.com  # Use your SPACES_ROUTER_HOST
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations:
+        cloud.google.com/l4-rbs: enabled
 ```
 
 </CodeBlock>
+
+:::tip
+To use Gateway API or Ingress instead of LoadBalancer, see [Exposing Spaces externally][expose].
+:::
 
 ### Install Upbound Spaces software
 
@@ -399,13 +333,13 @@ Log in with Helm to be able to pull chart images for the installation commands.
 jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 ```
 
-Install the Spaces software.
+Install the Spaces software. Use the `values.yaml` file you created in the previous step (with `externalTLS.host` and `router.proxy.service`).
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  -f values.yaml \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "authentication.hubIdentities=true" \
   --set "authorization.hubRBAC=true" \
@@ -415,16 +349,15 @@ helm -n upbound-system upgrade --install spaces \
 ### Create a DNS record
 
 :::important
-If you chose to create a public ingress, you also need to create a DNS record for the load balancer of the public facing ingress. Do this before you create your first control plane.
+Create a DNS record for the spaces-router load balancer before you create your first control plane.
 :::
 
-Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
+Get the load balancer address for the spaces-router Service:
 
 <CodeBlock cloud="aws">
 
 ```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
+kubectl get svc -n upbound-system spaces-router \
   -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
 
@@ -433,8 +366,7 @@ kubectl get ingress \
 <CodeBlock cloud="azure">
 
 ```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
+kubectl get svc -n upbound-system spaces-router \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
@@ -443,8 +375,7 @@ kubectl get ingress \
 <CodeBlock cloud="gcp">
 
 ```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
+kubectl get svc -n upbound-system spaces-router \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
@@ -542,3 +473,4 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 
 [up-ctx-command-reference]: /reference/cli-reference
 [contact-upbound]: https://www.upbound.io/contact-us
+[expose]: /manuals/spaces/howtos/self-hosted/ingress/

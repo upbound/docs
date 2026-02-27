@@ -13,12 +13,10 @@ import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLa
 guide covers migration options for existing Spaces deployments.
 
 For help choosing an exposure method, see [Exposing Spaces Externally][expose].
-<!--version
 Options vary by Spaces version. Select your Spaces version:
 
-* [Upgrading to Spaces 1.16+](#upgrading-to-spaces-116) 
-* [Cannot upgrade before March 2026](#cant-upgrade-to-spaces-116-before-march-2026) 
-version-->
+* [Upgrading to Spaces 1.16+](#upgrading-to-spaces-116)
+* [Cannot upgrade before March 2026](#cant-upgrade-to-spaces-116-before-march-2026)
 
 <!-- vale Google.Headings = NO -->
 ## Prerequisites
@@ -40,7 +38,6 @@ helm get values spaces -n upbound-system -o yaml > values.yaml
 
 You'll merge new configuration into this file throughout the migration.
 
-<!--version
 ## Upgrading to Spaces 1.16+
 
 Choose your migration option:
@@ -98,14 +95,14 @@ Service.
 :::important
 Use a Network Load Balancer (L4), not an Application Load Balancer (L7). Spaces
 uses long-lived connections for watch traffic that L7 load balancers may
-timeout. 
+timeout.
 :::
 
 **1. Add the LoadBalancer Service configuration to your `values.yaml`**
 
 ```yaml
 externalTLS:
-  host: proxy.example.com  # Must match your ingress.host
+  host: proxy.example.com  # Must match your current router hostname
 
 router:
   proxy:
@@ -263,7 +260,7 @@ troubleshooting steps:
     ```bash
     kubectl get gateway -n upbound-system spaces -o yaml
     ```
-    
+
     Look for `status.conditions` - the Gateway should be `Accepted` and `Programmed`.
 
 * **Check TLSRoute Status**
@@ -271,7 +268,7 @@ troubleshooting steps:
     ```bash
     kubectl get tlsroute -n upbound-system spaces-router -o yaml
     ```
-    
+
     The route should show `Accepted: True` in its status.
 
 * **Verify Connectivity**
@@ -358,8 +355,6 @@ kubectl get svc -n <controller-namespace> <controller-service> -o jsonpath='{.st
 helm uninstall ingress-nginx --namespace ingress-nginx
 ```
 
-
-version-->
 <!-- vale Google.Headings = NO -->
 ## Migrate current Spaces version before March 2026
 <!-- vale Google.Headings = YES -->
@@ -395,7 +390,7 @@ which causes brief downtime during DNS propagation.
 **1. Install a gateway API controller**
 
 Install a Gateway API implementation that supports TLS passthrough and
-`TLSRoute`. 
+`TLSRoute`.
 
 The following example uses Envoy Gateway:
 
@@ -476,18 +471,19 @@ gatewayAPI:
   namespaceLabels:
     kubernetes.io/metadata.name: envoy-gateway-system
 ```
-**5. Get the load balancer hostname**
+**5. Get the Gateway address**
 
-Check the externally routable hostname for the Gateway's load balancer. 
-The Helm `gatewayAPI.host` parameter requires this hostname.
-
-For Envoy Gateway, inspect the LoadBalancer service:
+Once the Gateway is programmed (check that it shows `Accepted` and `Programmed` in
+`kubectl get gateway -n upbound-system spaces -o yaml`), get its address:
 
 ```bash
-kubectl get service -n envoy-gateway-system \
-  -l gateway.envoyproxy.io/owning-gateway-name=spaces \
-  -o jsonpath='{.items[0].status.loadBalancer.ingress[0].hostname}'
+kubectl get gateway -n upbound-system spaces \
+  -o jsonpath='{.status.addresses[0].value}'
 ```
+
+Point your DNS (e.g. `SPACES_ROUTER_HOST`) to this address. In step 6,
+`gatewayAPI.host` must be that hostname (the name that resolves to this address).
+Set `GATEWAY_HOSTNAME` to that hostname for the next command.
 
 **6. Upgrade the Spaces Helm release**
 
