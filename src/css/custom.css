@@ -136,24 +136,24 @@ html[data-theme="dark"] {
 /* ============================================================ */
 
 /* Restore list styles - @upbound/elements strips list-style globally */
-.markdown ul,
-.markdown ol {
+article > ul,
+article > ol {
     list-style: revert;
     margin: revert;
     padding: revert;
     padding-left: 1.5rem;
 }
 
-.markdown li {
+article > li {
     margin: revert;
     padding: revert;
 }
 
 /* Ensure nested lists also display correctly */
-.markdown ul ul,
-.markdown ul ol,
-.markdown ol ul,
-.markdown ol ol {
+article ul ul,
+article ul ol,
+article ol ul,
+article ol ol {
     margin-top: 0;
     margin-bottom: 0;
 }
