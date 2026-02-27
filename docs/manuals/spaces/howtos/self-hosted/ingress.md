@@ -8,7 +8,7 @@ draft: true
 import { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 
 
-You can expose Spaces externally using of three options:
+You can expose Spaces externally using one of three options:
 
 | Option | When to use |
 |--------|-------------|
@@ -120,6 +120,60 @@ multiple services.
 - TLS passthrough support
 - Network Load Balancer (L4) strongly recommended
 
+For step-by-step setup including installing a controller (such as Envoy Gateway) and creating the GatewayClass, see [Migrate away from ingress-nginx - Gateway API][migration-gateway-api].
+
+### Gateway API configuration
+
+Add the following to your Helm values (or use `--set` when upgrading). Disable Ingress when using Gateway API.
+
+```yaml
+ingress:
+  provision: false
+
+gatewayAPI:
+  host: proxy.example.com  # Externally routable hostname; must match your DNS
+  gateway:
+    provision: true
+    name: spaces
+    className: spaces  # Must match your GatewayClass name
+  spacesRouterRoute:
+    provision: true
+  podLabels:
+    app.kubernetes.io/name: envoy
+    app.kubernetes.io/component: proxy
+    app.kubernetes.io/managed-by: envoy-gateway
+  namespaceLabels:
+    kubernetes.io/metadata.name: envoy-gateway-system
+```
+
+The `podLabels` and `namespaceLabels` must match your Gateway API controller's pods and namespace (for NetworkPolicy). The example above uses Envoy Gateway; adjust for your controller.
+
+Install or upgrade Spaces with these values:
+
+```bash
+helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --namespace upbound-system \
+  -f values.yaml \
+  --wait
+```
+
+### Get the Gateway address
+
+After the Gateway is configured by your controller:
+
+```bash
+kubectl get gateway -n upbound-system spaces \
+  -o jsonpath='{.status.addresses[0].value}'
+```
+
+Create or update a DNS record so that `gatewayAPI.host` points to this address.
+
+### Troubleshooting
+
+- **Gateway status:** `kubectl get gateway -n upbound-system spaces -o yaml` — look for `Accepted` and `Programmed` in `status.conditions`.
+- **TLSRoute status:** `kubectl get tlsroute -n upbound-system spaces-router -o yaml` — route should show `Accepted: True`.
+- **Connectivity:** `curl -k "https://<your-host>/version"` — expected response is `401 Unauthorized` (routing works, auth required).
+
 ## Cloud-specific annotations
 
 Network Load Balancers (L4) are strongly recommended. Spaces uses long-lived
@@ -136,3 +190,4 @@ timeout these connections. Use these annotations on the LoadBalancer Service
 
 [traefik-provider]: https://doc.traefik.io/traefik/reference/install-configuration/providers/kubernetes/kubernetes-ingress-nginx/
 [gateway-api-docs]: https://gateway-api.sigs.k8s.io/
+[migration-gateway-api]: /manuals/spaces/howtos/self-hosted/ingress-nginx-migration/#gateway-api
