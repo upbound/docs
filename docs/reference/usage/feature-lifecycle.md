@@ -3,8 +3,6 @@ title: Feature Lifecycle
 sidebar_position: 30
 ---
 
-# Feature Lifecycle
-
 Crossplane follows a similar feature lifecycle to [upstream
 Kubernetes][kube-features]. All major new features must be added in alpha. Alpha
 features are expected to eventually graduate to beta, and then to general
