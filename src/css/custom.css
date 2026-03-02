@@ -136,17 +136,20 @@ html[data-theme="dark"] {
 /* ============================================================ */
 
 /* Restore list styles - @upbound/elements strips list-style globally */
-article > ul,
-article > ol {
+article ul,
+article ol {
     list-style: revert;
     margin: revert;
+    margin-bottom: 1.5rem;
     padding: revert;
     padding-left: 1.5rem;
 }
 
-article > li {
+article ul li,
+article ol li {
     margin: revert;
     padding: revert;
+    margin-bottom: 0.5rem;
 }
 
 /* Ensure nested lists also display correctly */
@@ -154,7 +157,7 @@ article ul ul,
 article ul ol,
 article ol ul,
 article ol ol {
-    margin-top: 0;
+    margin-top: 0.5rem;
     margin-bottom: 0;
 }
 
@@ -281,11 +284,16 @@ body {
 }
 
 /* Scope list styles to article content only */
-article ul,
-article ol {
-    list-style-position: inside !important;
+article ul {
+    list-style-position: outside !important;
     display: block !important;
     list-style-type: disc !important;
+}
+
+article ol {
+    list-style-position: outside !important;
+    display: block !important;
+    list-style-type: decimal !important;
 }
 
 article a:not(.card):not(.menu__link):not(.navbar__item):not(.table-of-contents__link):not(.cta-button) {
