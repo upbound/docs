@@ -4,7 +4,9 @@ sidebar_position: 3
 description: A guide to how to update to a control plane in an Upbound Space
 ---
 
-The Upbound migration tool is a [CLI command][cli-command] that helps you update your existing Crossplane control plane to a managed [Upbound Crossplane][uxp] control plane in an [Upbound Space][spaces].
+The Upbound migration [command][cli-command] that helps you update
+your existing Crossplane control plane to a managed [Upbound Crossplane][uxp]
+control plane in an [Upbound Space][spaces].
 
 To upgrade from Crossplane to Upbound, you must:
 
@@ -36,9 +38,8 @@ Crossplane control plane state, leaving it intact. Use the
 `--pause-before-export` flag to pause the reconciliation on managed resources
 before exporting the archive file.
 
-This is a safety mechanism to help ensure the control plane you upgrade state to
-doesn't assume ownership of resources before you're ready.
-
+This safety mechanism prevents the upgraded control plane from assuming resource
+ownership before you're ready 
 :::
 
 2. Use the control plane [create command][create-command] to create a managed
@@ -63,10 +64,10 @@ control plane in Upbound:
     ```
 
 :::note
-By default, the import command leaves the control plane in an inactive state by pausing the reconciliation on managed
-resources which gives you an opportunity to review the imported configuration/state before activating the control plane.
-Use the `--unpause-after-import` flag to change the default behavior and activate the control plane immediately after
-importing the archive file.
+The import command pauses reconciliation on managed resources, leaving the
+control plane inactive. This lets you review the imported configuration before
+activation. Use the `--unpause-after-import` flag to change the default behavior
+and activate the control plane immediately after importing the archive file.
 :::
 
 5. Review and validate the imported configuration/state. When you are ready, activate your managed

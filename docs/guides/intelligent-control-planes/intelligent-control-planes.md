@@ -12,16 +12,16 @@ soon.
 :::
 
 Upbound Crossplane transforms infrastructure management by integrating
-AI-powered pipelines directly into your control plane operations. Through
-LLM-enabled Operation functions, you can build intelligent infrastructure
-platforms that automatically diagnose issues, suggest fixes, and provide
-contextual insights about resource health and dependencies.
+AI-powered pipelines directly into your control plane operations. LLM-enabled
+Operations functions let you build intelligent infrastructure platforms that
+diagnose issues, suggest fixes, and provide insights into resource health and
+dependencies. This comprehensive guide demonstrates how to architect, deploy,
+and operate intelligent control planes that leverage Claude AI for enhanced
+operational intelligence.
 
-This comprehensive guide demonstrates how to architect, deploy, and operate
-intelligent control planes that leverage Claude AI for enhanced operational
-intelligence.
-
+<!-- vale Google.WordList = NO -->
 Intelligent control planes extend traditional Crossplane functionality with:
+<!-- vale Google.WordList = YES -->
 
 - **AI-powered status transformers** that analyze resource states and provide intelligent diagnostics
 - **Contextual error analysis** that understands resource relationships and dependencies  

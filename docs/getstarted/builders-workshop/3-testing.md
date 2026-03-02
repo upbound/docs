@@ -429,9 +429,11 @@ This section:
 * Defines how long to wait for the test to complete
 * Defines Whether to validate against live schemas
 
-<!-- vale MicrosoftHeadingAcronyms = NO -->
+<!-- vale Google.Headings = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### Test the input XR
-<!-- vale MicrosoftHeadingAcronyms = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale Google.Headings = YES -->
 
 <CodeBlock cloud="aws">
 
@@ -664,7 +666,9 @@ This assertion verifies that:
 
 <CodeBlock cloud="gcp">
 
+<!-- vale Google.Headings = NO -->
 ### Test GCP bucket configuration
+<!-- vale Google.Headings = YES -->
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 _stripDefaults(gcpmstoragev1beta1.Bucket {
     metadata.name = "example-bucket"

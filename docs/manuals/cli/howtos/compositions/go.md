@@ -16,14 +16,18 @@ You can choose:
 language server.
 
 [KCL][kcl] - Concise. Good for transitioning from another configuration language
-like HCL. IDE support with language server.
+like `HCL`. IDE support with language server.
 
 [Python][python] - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
-This guide explains how to create compositions that turn your XRs into actual cloud resources. Compositions allow you to implement the business logic that powers your control plane.
+This guide explains how to create compositions that turn your XRs into actual
+cloud resources. Compositions allow you to implement the business logic that
+powers your control plane.
 
 Use this guide after you define your API schema and need to write the logic that creates and manages the underlying resources.
 
@@ -37,11 +41,13 @@ to start.
 
 Before you begin, make sure:
 
+<!-- vale write-good.Passive = NO -->
 * You designed your XRD
 * You've added provider dependencies
-* understand your XRD schema and what resources you need to create
+* You understand your XRD schema and what resources you need to create
 * Go is installed
 * Go Visual Studio Code extension is installed
+<!-- vale write-good.Passive = YES -->
 
 ## Create your composition scaffold
 
@@ -64,8 +70,7 @@ apis/<your_resource_name>/composition.yaml
 
 This command creates a `functions/compose-resources` directory with your function code and updates your composition file to reference it.
 
-Your function file in `functions/compose-resources/fn.go` should be similar to:
-
+Below is an example function file in `functions/compose-resources/fn.go`:
 ```go
 package main
 
@@ -431,7 +436,11 @@ import "dev.upbound.io/models/io/upbound/aws/s3/v1alpha1"
 
 ### Field types in models
 
-All fields in Upbound's Go models have pointer types so that you can specify only the fields your function has an opinion about. This can be awkward in Go, since there's no built-in way to construct a pointer to a constant value. The `k8s.io/utils/ptr` package contains a function, `ptr.To`, which can be used for this purpose:
+All fields in Upbound's Go models have pointer types so that you can specify
+only the fields your function has an opinion about. This can be awkward in Go,
+since there's no built-in way to construct a pointer to a constant value. You
+can use the `k8s.io/utils/ptr` package function, `ptr.To` for
+this purpose:
 
 ```go
 bucket := &v1beta1.Bucket{
@@ -524,9 +533,11 @@ After this, Visual Studio Code adds tab-completion and type checking when workin
 
 Composition functions influence the state of the control plane via three kinds of outputs:
 
+<!-- vale write-good.TooWordy = NO -->
 1. The desired state of the composite resource, and composed resources.
 2. Status conditions to apply to the composite resource and, optionally, its claim.
 3. Context to pass to subsequent functions in the pipeline.
+<!-- vale write-good.TooWordy = YES -->
 
 Most functions produce a set of composed resources as part of the desired state.
 

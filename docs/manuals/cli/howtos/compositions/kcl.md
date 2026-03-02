@@ -17,16 +17,20 @@ You can choose:
 language server.
 
 **KCL (this guide)** - Concise. Good for transitioning from another configuration language
-like HCL. IDE support with language server.
+like `HCL`. IDE support with language server.
 
 [Python][python] - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
+<!-- vale write-good.TooWordy = NO -->
 This guide explains how to create compositions that turn your XRs into actual
 cloud resources. Compositions allow you to implement the business logic that
 powers your control plane.
+<!-- vale write-good.TooWordy = YES -->
 
 Use this guide after you define your API schema and need to write the logic that
 creates and manages the underlying resources.
@@ -35,12 +39,14 @@ creates and manages the underlying resources.
 
 Before you begin, make sure:
 
+<!-- vale write-good.Passive = NO -->
 * You designed your XRD
 * You've added provider dependencies
-* understand your XRD schema and what resources you need to create
+* You understand your XRD schema and what resources you need to create
 * [KCL][kcl] is installed
 * [KCL Language Server][kcl-language-server] is installed  
 * [KCL Visual Studio Code Extension][kcl-visual-studio-code-extension] is installed
+<!-- vale write-good.Passive = YES -->
 
 ## Create your composition scaffold
 
@@ -65,9 +71,11 @@ apis/<your_resource_name>/composition.yaml
 This command creates a `functions/compose-resources` directory with your
 function code and updates your composition file to reference it.
 
-Your function file in `functions/compose-resources/main.k` should be similar to:
+Below is an example of a function file in `functions/compose-resources/main.k`:
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Create a basic KCL function
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 The example below is a pre-generated function that detects if a composed
 resource is ready in your infrastructure.
@@ -452,7 +460,9 @@ Make sure you've defined the status fields you write to in your function in the 
 KCL functions support type-safe resource schemas that provide IDE support
 including autocomplete, linting, and context hints.
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### Enable IDE support
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 To take full advantage of the KCL IDE experience with resource schemas, you need
 to declare the resource type:

@@ -72,8 +72,7 @@ spec:
 ```
 
 A **API Dependency** defines any building blocks of your control plane from
-external APIs that aren't part of the Crossplane package. API dependencies can
-be used to define dependency on any arbitrary CRD or built in Kubernetes APIs.
+external APIs that aren't part of the Crossplane package. API dependencies can define dependency on any arbitrary CRD or built in Kubernetes APIs.
 
 
 ```yaml

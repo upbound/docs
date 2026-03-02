@@ -48,8 +48,8 @@ Spec:
 Events:               <none>
 ```
 
-If you try to install any unsigned Upbound packages, pods to not start, the
-image doesn't pull, and the control plane marks the revision as unhealthy.
+If you install unsigned Upbound packages, pods fail to start. The image doesn't pull and
+the control plane marks the revision as unhealthy.
 
 ```
 kubectl get pkgrev

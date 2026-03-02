@@ -16,9 +16,7 @@ these AI-embedded functions.
 
 ## Example AI-embedded function
 
-Composition functions are a fundamental unit of work in a control plane. Here's
-an example of a composition that uses a function to augment the status of the
-resource, based on the state of the child resources and events getting emitted:
+Composition functions are fundamental units of work in a control plane. The example below shows a composition that uses a function to augment resource status based on child resource state and emitted events:
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1

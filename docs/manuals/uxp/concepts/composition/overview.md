@@ -71,8 +71,10 @@ Crossplane control plane.
 
 3. User applies the API
 
+<!-- vale write-good.Passive = NO -->
 The Composite Resource (XR) is the request for the Composition to create the
 defined resources and any user input that may be required
+<!-- vale write-good.Passive = YES -->
 
 4. Control plane creates the resources
 
@@ -85,7 +87,7 @@ Crossplane takes action:
 
 ## Example
 
-Let's work from the XR to the XRD to understand what's happening.
+This example walks through the XR to the XRD to show what's happening.
 
 
 <Tabs>

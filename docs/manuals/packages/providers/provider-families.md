@@ -29,9 +29,11 @@ For information on migrating from monolithic providers to provider families read
 
 ## Installing a provider family
 
+<!-- vale write-good.Passive = NO -->
 :::important
 Backport releases of Official Providers require at least a `Standard` subscription to Upbound and a package pull secret to be placed on your control plane. Main releases published within the last 12 months are available to all users. Learn more in the [package policies][package-policies].
 :::
+<!-- vale write-good.Passive = YES -->
 
 Installing a provider family is identical to installing other Crossplane providers.
 Create a Provider object with the provider package to install.
@@ -127,17 +129,20 @@ The first provider installed of a family also installs an extra
 The `provider-family` provider manages the ProviderConfig
 for all other providers in the same family. 
 
+<!-- vale write-good.Passive = NO -->
 :::tip
-Each family provider defines a dependency on the *latest available version* of the corresponding `provider-family`,
+Each family provider declares a dependency on the *latest available version* of the corresponding `provider-family`,
 which is automatically resolved and installed by the Crossplane package manager.
 
-Hence, when you install an older version of a family provider, you can expect to receive newer versions of the
-`provider-family` provider, and it's safe to ignore this version mismatch.
+This means installing an older family provider may pull in a newer
+`provider-family`. This version mismatch is expected and safe to ignore.
+
 
 If you still want to control the version of the `provider-family`, consider using the
 <Hover label="air" line="7">skipDependencyResolution: true</Hover> option as described in the
 **Install Providers in an offline environment** section above.
 :::
+<!-- vale write-good.Passive = YES -->
 
 ## Using ControllerConfigs
 

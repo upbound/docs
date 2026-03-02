@@ -25,7 +25,7 @@ Upbound's information architecture is a hierarchy consisting of:
 * which are hosted in an environment called a [Space][space].
 
 These contexts nest within each other. A control plane must **always** belong to
-a group which **must** be hosted in a Space--whether Cloud, Connected, or
+a group hosted in a Space--whether Cloud, Connected, or
 Disconnected. <!--vale on -->
 
 Every control plane in Upbound has its own API server. Each Space likewise

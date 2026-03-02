@@ -3,15 +3,19 @@ title: Build and push your first Configuration
 sidebar_position: 3
 ---
 
+<!-- vale gitlab.FutureTense = NO -->
 In this tutorial, you'll learn how to build a Configuration package and push it
 to the Upbound Marketplace.
+<!-- vale gitlab.FutureTense = YES -->
 
+<!-- vale gitlab.FutureTense = NO -->
 By the end of this tutorial, you'll be able to:
 
 * Sign in to Upbound using the CLI
 * Create repositories in your Upbound organization
 * Build Configuration packages
 * Push packages to the Upbound Marketplace
+<!-- vale gitlab.FutureTense = YES -->
 
 ## Prerequisites
 
@@ -103,7 +107,7 @@ In this tutorial you learned how to:
 Marketplace also serves as a place to distribute your own control plane
 extensions.
 
-## Next Steps
+## Next steps
 
 Read the [What's Next][whats-next] to continue your learning journey.
 

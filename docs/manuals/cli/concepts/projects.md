@@ -16,7 +16,9 @@ To use local control plane development tools, make sure you have:
 * A Docker-compatible container runtime installed and running on your system
 
 <!-- vale Microsoft.Contractions = NO -->
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 ## What is a control plane project?
+<!-- vale Microsoft.HeadingPunctuation = YES -->
 <!-- vale Microsoft.Contractions = YES -->
 
 A control plane project is the source-level code representation of your control

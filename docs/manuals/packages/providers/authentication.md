@@ -1640,9 +1640,9 @@ spec:
 ### Kubernetes Injected Identity with Cloud Provider Credentials {#kubernetes-injected-identity-cloud}
 <!-- vale Google.Headings = YES -->
 
-Use this method to authenticate the Kubernetes provider to a remote cluster using
-cloud provider credentials in EKS, GKE, AKS, or Upbound Cloud Spaces with
-OIDC.
+This method authenticates the Kubernetes provider to a remote provider with
+cloud provider credentials. You can use EKS, GKE, AWS, or Upbound Cloud Spaces
+with OIDC.
 
 
 The provider supports the following identity types for authentication:
@@ -1653,9 +1653,8 @@ The provider supports the following identity types for authentication:
 - `AzureWorkloadIdentityCredentials`: For AKS clusters using Azure workload identity
 - `UpboundTokens`: For Upbound APIs using Upbound authentication
 
-This guide demonstrates the AWS Web Identity approach, which works in both
-Upbound Cloud Spaces (using Upbound OIDC) and when running directly in EKS
-(using EKS OIDC).
+This section walks through the AWS Web Identity approach. You can use this guide
+for both Upbound Cloud Spaces OIDC and EKS OIDC.
 
 #### Create an AWS IAM Role
 
@@ -1811,7 +1810,7 @@ section](#aws-irsa) for the complete setup.
 </TabItem>
 </Tabs>
 
-#### Create a kubeconfig Secret
+#### Create a kubeconfig secret
 
 Generate a kubeconfig for your EKS cluster using the AWS CLI:
 
@@ -1889,9 +1888,11 @@ accessing Kubernetes clusters.
 
 ### Helm Injected Identity with Cloud Provider Credentials {#helm-injected-identity-cloud}
 
-Use this method to authenticate the Helm provider to a remote cluster using
-cloud provider credentials in EKS, GKE, AKS, or Upbound Cloud Spaces with
-OIDC.
+
+This method authenticates the Helm provider to a remote provider with
+cloud provider credentials. You can use EKS, GKE, AWS, or Upbound Cloud Spaces
+with OIDC.
+
 
 The provider supports the following identity types for authentication:
 
@@ -1899,10 +1900,10 @@ The provider supports the following identity types for authentication:
 - `GoogleApplicationCredentials`: For GKE clusters using Google service accounts
 - `AzureServicePrincipalCredentials`: For AKS clusters using Azure service principals
 - `AzureWorkloadIdentityCredentials`: For AKS clusters using Azure workload identity
+- `UpboundTokens`: For Upbound APIs using Upbound authentication
 
-This guide demonstrates the AWS Web Identity approach, which works in both
-Upbound Cloud Spaces (using Upbound OIDC) and when running directly in EKS
-(using EKS OIDC).
+This section walks through the AWS Web Identity approach. You can use this guide
+for both Upbound Cloud Spaces OIDC and EKS OIDC.
 
 #### Create an AWS IAM Role
 
@@ -2058,7 +2059,7 @@ section](#aws-irsa) for the complete setup.
 </TabItem>
 </Tabs>
 
-#### Create a kubeconfig Secret
+#### Create a kubeconfig secret
 
 Generate a kubeconfig for your EKS cluster using the AWS CLI:
 

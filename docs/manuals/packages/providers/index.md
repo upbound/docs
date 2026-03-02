@@ -46,7 +46,9 @@ Upbound is continually adding new providers to the ever growing list of Official
 
 ## Release notes
 
+<!-- vale write-good.Passive = NO -->
 Release notes for all Official Providers are published on their respective [Upbound Marketplace][upbound-marketplace] listings. Each provider listing includes:
+<!-- vale write-good.Passive = YES -->
 
 - Current and historical release notes
 - Version-specific changelogs

@@ -64,9 +64,7 @@ Crossplane's `provider-terraform` to migrate the resources to a new control
 plane.
 
 <!-- vale gitlab.FutureTense = NO -->
-
 The Terraform configuration you'll work with creates a new virtual machine:
-
 <!-- vale gitlab.FutureTense = YES -->
 
 ```hcl
@@ -163,11 +161,6 @@ spec:
       - key: vmName
         value: crossplanevm
 ```
-<!-- vale gitlab.FutureTense = NO -->
-:::warning
-This configuration won't work if applied now.
-:::
-
 ## Authenticate with your cloud provider
 
 The provider configuration handles authentication. You must
@@ -298,7 +291,7 @@ spec:
 ```
 
 :::warning
-This configuration won't work as is. Review the [example backend configuration][example-backend-configuration] and the [Terraform File documentation][terraform-file-documentation]
+This configuration doesn't work as is. Review the [example backend configuration][example-backend-configuration] and the [Terraform File documentation][terraform-file-documentation]
 :::
 <!-- vale gitlab.FutureTense = YES -->
 
@@ -313,10 +306,8 @@ webinar][sponsored-webinar] with the team behind the
 Crossplane `provider-terraform`.
 
 <!-- vale gitlab.FutureTense = NO -->
-
 In the next guide, you'll create a functional Crossplane configuration with a
 definition, composition, and claim.
-
 <!-- vale gitlab.FutureTense = YES -->
 
 

@@ -74,7 +74,7 @@ example:
 
 During this grace period:
 
-* Commercial features continue to function normally 
+* Commercial features continue to function as expected
 * UXP emits warnings to indicate the license's grace period is active
 * Configuration of commercial features remains unchanged, allowing you to add a new license and continue using commercial features as before expiration. 
 
@@ -82,12 +82,13 @@ During this grace period:
 locked down. This means any component checking the license sees that it's truly
 invalid (expired and grace period ended) and disables its paid features.
 
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale Google.Will = NO -->
 :::note
 When licenses expires, your control plane still reconciles to guarantee your
-resources are operational. However, logs will appear in your control plane to
+resources are operational. Logs will appear in your control plane to
 ensure operators understand the license is past its expiration period.
 :::
-
 ### Development licenses
 
 When you deploy Upbound Crossplane into a local single-node kind cluster, it
@@ -110,8 +111,11 @@ Admin.
 
 ### List licenses
 
-To list your organization's licenses, log in to your Upbound account and navigate to **My Account** > **Manage Account** in
-the top right corner of your console.
+<!-- vale gitlab.SentenceLength = NO -->
+<!-- vale Google.FirstPerson = NO -->
+To list your organization's licenses, log in to your Upbound account and navigate to **My Account** > **Manage Account** in the top right corner of your console.
+<!-- vale gitlab.SentenceLength = YES -->
+<!-- vale Google.FirstPerson = YES -->
 
 The list of licenses displays information about your UXP licenses like:
 
@@ -163,7 +167,7 @@ the necessary information.
 
 Licenses require:
 
-* **License Name**: A meaningful name to identify the license within the pool of licenses created. Use cluster names, regions, or meaningful identifiers that can help you later know to which control plane your license is tied.
+* **License Name**: A meaningful name to identify the license within the pool of licenses created. Use cluster names, regions, or meaningful identifiers.
 * **Expiration**: The exact date when the license will expire. No expiration date can exceed your end contract with Upbound.
 * **Resources per Month**: The maximum number of Resources the license can manage per month.
 * **Operations per Month**: The maximum number of Operations the license can manage per month.
@@ -176,14 +180,15 @@ allocated and creates a JSON-formatted license file.
 Download your license and follow the [provisioning
 instructions][provisioning-instructions] to apply it to your control plane.
 
+<!-- vale write-good.Passive = NO -->
 :::important
 For organizations without active contracts, your **Create** button is disabled
 and displays insights on why the operation isn't allowed.
 
-Unless there are network errors or outages, the only reason you can't create a
-license is because your organization doesn't have a valid contract. Reach out to
+If you can't create a license, your organization doesn't have a valid contract. Reach out to
 support or your account representative to coordinate provisioning.
 :::
+<!-- vale write-good.Passive = YES -->
 
 ## Add a license to an Upbound Crossplane cluster {#add-a-license}
 
@@ -267,8 +272,8 @@ current usage:
 
 | Field | Description |
 |-------|-------------|
-| **`plan`** | The commercial plan associated with your license.  |
-| **`expiresAt`** | The date and time when your license is set to expire. |
+| **`plan`** | The commercial plan associated with your license. |
+| **`expiresAt`** | The date and time when your license expires. |
 | **`capacity`** | The total capacity granted by your license, such as `resourceHours` and `operations`. |
 | **`enabledFeatures`** | A list of the commercial features unlocked by your license. |
 | **`usage`** | The cumulative usage data tracked by the system, including utilization percentages. |
@@ -277,6 +282,9 @@ current usage:
 
 For more information on usage metering, review the [Usage Metering][usage]
 guide.
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Google.Will = YES -->
+
 
 [license-landing-page]: /img/license-landing-page.png
 [license-list]: /img/license-list-1.png

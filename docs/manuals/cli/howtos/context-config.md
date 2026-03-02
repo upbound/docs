@@ -24,7 +24,7 @@ The default experience for `up ctx` is a terminal UI like [kubectx][kubectx].
 <!--vale on -->
 
 :::important
-When interacting with control planes that are hosted in:
+When interacting with control planes hosted in:
 
 * **a Cloud or Connected Space:** make sure you're using a cloud profile logged into Upbound with `up login` before trying to use `up ctx`.
 * **a Disconnected Space:** make sure you're using a disconnected profile created using the Space's kubeconfig with either `up space init` or `up profile create`.
@@ -106,9 +106,8 @@ up ctx .
 ```
 ## Proxied configurations
 
-If your organization requires a proxy like ZScaler, or other SSL network security
-tools, you might run into certificate validation errors when you attempt to
-connect to your control plane context.
+In organizations that require a proxy like ZScaler, you might get certificate
+validation errors when connecting to your control plane context.
 
 The `--ca-bundle` flag lets you add a custom certificate authority bundle to the
 trust chain.

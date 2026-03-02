@@ -6,7 +6,9 @@ sidebar_label: Overview
 hide_title: true
 ---
 
+<!-- vale gitlab.HeadingContent = NO -->
 # Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 Crossplane supports these package types: `Configurations`, `Functions` and `Providers`. Upbound Crossplane (UXP) extends this with support for `Add-Ons`.
 
