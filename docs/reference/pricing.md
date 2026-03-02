@@ -1,5 +1,5 @@
 ---
-title: Upbound Cloud Pricing
+title: Upbound Pricing
 sidebar_position: 50
 description: An overview of pricing for Upbound Cloud, Connected Spaces, and Connected UXP control planes 
 plan: "standard"
@@ -7,7 +7,7 @@ plan: "standard"
 
 <Standard />
 
-
+<!-- vale Google.We = NO -->
 Upbound Cloud, [Connected Spaces], and Connected UXP control planes operate on a
 consumption-based service model. You only pay for what you use based on
 Crossplane Resources and Operations consumption.
@@ -30,9 +30,11 @@ Operations. Upbound automatically invoices any usage that exceeds this initial
 free consumption at the publicly listed prices, subject to volume discounts and
 additional credits.
 
+<!-- vale write-good.Passive = NO -->
 :::important
 Partial months are prorated to the day.
 :::
+<!-- vale write-good.Passive = YES -->
 
 ### Resource-Months
 
@@ -54,7 +56,7 @@ Crossplane resources **excluded** from Resource-Month calculations:
 * `ProviderConfig` and ` ProviderConfigUsage` resources
 * Events
 
-Upbound measures the time a resource stays alive to an accuracy of approximately
+Upbound measures the time a resource stays alive to an accuracy of around 
 one minute.
 
 #### Example
@@ -155,6 +157,7 @@ control planes.
     <summary>Do you have a way to estimate the cost of migrating to Upbound?</summary>
 
 [Contact our Sales team][contact-us] for more exact pricing estimates.
+<!-- vale Google.We = YES -->
 
 </details>
 

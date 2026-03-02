@@ -109,7 +109,7 @@ Most Kubernetes clusters come with some set of predefined namespaces. Because a 
 3. Labeling a Kubernetes namespace with the label `spaces.upbound.io/group=true`
 
 
-[secrets]: /manuals/spaces/features/secrets-management
+[secrets]: /manuals/spaces/howtos/secrets-management
 [backups]: /manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/
 [space]: /manuals/spaces/overview
 [upbound-context]: /manuals/cli/concepts/contexts

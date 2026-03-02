@@ -31,7 +31,7 @@ tokens:
   - clearly
   - closely
   - coldly
-  - completely
+  # - completely
   - consequently
   - correctly
   - courageously
@@ -86,7 +86,7 @@ tokens:
   - hourly
   - hungrily
   - hurriedly
-  - immediately
+  #  - immediately
   - impatiently
   - inadequately
   - ingeniously
@@ -109,7 +109,7 @@ tokens:
   - loudly
   - luckily
   - madly
-  - many
+#  - many
   - mentally
   - mildly
   - mortally
@@ -140,7 +140,7 @@ tokens:
   - rapidly
   - rarely
   - really
-  - recently
+  # - recently
   - recklessly
   - regularly
   - remarkably
@@ -174,7 +174,7 @@ tokens:
   - sternly
   - stupidly
   - substantially
-  - successfully
+  #  - successfully
   - suddenly
   - surprisingly
   - suspiciously
@@ -187,7 +187,7 @@ tokens:
   - truthfully
   - unexpectedly
   - unfortunately
-  - usually
+  #  - usually
   - very
   - victoriously
   - violently
@@ -196,9 +196,9 @@ tokens:
   - waverly
   - weakly
   - wearily
-  - weekly
+  #  - weekly
   - wildly
   - wisely
   - worldly
   - wrinkly
-  - yearly
+#  - yearly

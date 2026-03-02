@@ -77,3 +77,4 @@ up login --profile=production --organization=my-org
 | `--password` | `-p` | Password for specified user. '-' to read from stdin. |
 | `--token` | `-t` | Upbound API token (personal access token) used to execute command. '-' to read from stdin. |
 | `--use-device-code` | | Use authentication flow based on device code. We will also use this if it can't launch a browser in your behalf, e.g. in remote SSH |
+| `--qr-code` | | Display a QR code for the login URL when using the device code login flow. |

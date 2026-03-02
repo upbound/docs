@@ -106,6 +106,13 @@ for example to test a v1 project on a v2 control plane:
 up project run --control-plane-version=v1.20.1-up.1
 ```
 
+Apply `imageconfig.yaml` before installing the configuration and
+`providerconfig.yaml` after installing the configuration:
+
+```shell
+up project run --init-resources=imageconfig.yaml --extra-resources=providerconfig.yaml
+```
+
 
 #### Usage
 
@@ -133,3 +140,5 @@ up project run --control-plane-version=v1.20.1-up.1
 | `--ingress` | | Enable ingress controller for the local dev control plane. |
 | `--ingress-port` | | Port mapping for the local dev control plane (e.g., '8080:80'). If not specified, a random available port will be selected when ingress is enabled. |
 | `--cluster-admin` | | Allow Crossplane cluster admin privileges in the local dev control plane. Defaults to true. |
+| `--init-resources` | | Paths to additional resource manifests that should be applied before installing the project. |
+| `--extra-resources` | | Paths to additional resource manifests that should be applied after installing the project. |

@@ -1,0 +1,76 @@
+/*
+Workaround to avoid rendering empty search container
+See https://github.com/facebook/docusaurus/pull/9385
+*/
+.navbarSearchContainer {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --navbar-color: #9A9CA7;
+  padding-right: 8px;
+  padding-left: 8px;
+  /* Add custom container styles */
+}
+
+/* Use :global() to target nested classes from external libraries */
+/* Style the DocSearch Button inside the container */
+.navbarSearchContainer :global(.DocSearch-Button) {
+  width: 100%;
+  max-height: 30px;
+  border-radius: 8px;
+  padding: 0 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+/* Apply max-width only to non-logged-in navbar */
+:global(.navbar:not(.navbar--logged-in)) .navbarSearchContainer :global(.DocSearch-Button) {
+  max-width: 500px;
+}
+
+.navbarSearchContainer :global(.DocSearch-Button:hover) {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the button container (holds icon + text + keys) */
+.navbarSearchContainer :global(.DocSearch-Button-Container) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Style the built-in SVG search icon - always light */
+.navbarSearchContainer :global(.DocSearch-Search-Icon) {
+  color: #fff !important;
+  width: 14px;
+  height: 14px;
+}
+
+/* Style the placeholder text */
+.navbarSearchContainer :global(.DocSearch-Button-Placeholder) {
+  font-size: 12px;
+  color: var(--navbar-color);
+  padding-left: 0;
+}
+
+/* Style the keyboard shortcut keys container */
+.navbarSearchContainer :global(.DocSearch-Button-Keys) {
+  display: flex;
+  min-width: auto;
+}
+
+/* Style individual keyboard keys (CMD, K, etc.) */
+.navbarSearchContainer :global(.DocSearch-Button-Key) {
+  background: none;
+  border: none;
+  color: #818391;
+  font-size: 18px;
+}
+
+.navbarSearchContainer :global(.DocSearch-Button-Key):first-child {
+  margin-right: -6px !important;
+}

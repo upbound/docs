@@ -19,4 +19,4 @@ spec:
   package: xpkg.upbound.io/upbound/configuration-caas:v0.4.0
 ```
 
-[getStarted]:/guides/solutions/general-idp/get-started/ 
+[getStarted]:/guides/solutions/get-started/ 

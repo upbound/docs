@@ -1,8 +1,14 @@
-DirectoryPath: "public"
+DirectoryPath: "build"
 CheckExternal: false
 IgnoreInternalEmptyHash: true
+CheckInternalHash: false
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreDirs:
+  - "reference/usage/licenses"  # License page links are Go module paths, not content links
 IgnoreURLs:
-  - "github.com/upbound/docs/tree/main/content/(.*).md" # Ignore the links to "view this source"
-  - "v(.*)/(.*).yaml" # Ignore generated links in API template
-  - "/providers/policies/#license" # Ignore the hash for license tab
-  - "/providers/policies/#access"  # Ignore the hash for access tab
+  - "/crds/(.*).yaml"        # CRD YAML static assets
+  - "localhost"
+  - "127.0.0.1"
+  - "googletagmanager.com"   # GTA analytics, not content links
+  - "google-analytics.com"   # GTA analytics, not content links
+  - "algolia.net"            # Algolia search service, not content links

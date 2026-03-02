@@ -22,6 +22,15 @@ Any important warnings or necessary information
 
 -->
 
+## v1.15.2
+
+### Release Date: 2026-1-16
+
+#### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+- Fix: SharedTelemetry now properly cleans up its status.provisioned/failed/selected after a control plane is deleted.
+
 ## v1.15.1
 
 ### Release Date: 2025-11-18
@@ -30,7 +39,7 @@ Any important warnings or necessary information
 
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
 - **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/query-api/) for details.
-- UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/features/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
+- UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/concepts/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
 - VCluster has been upgraded from v0.24.1 to v0.24.2 to support Kubernetes 1.33.
 - Bumped supported cert-manager version to v1.18.2.
 
@@ -48,6 +57,23 @@ Any important warnings or necessary information
 - Fixed a bug where SharedTelemetry collector could only collect telemetry from Crossplane and provider pods due to network policies. Now it can collect from all pods in the control plane.
 - Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
 - Added default resource requests to external-secrets-operator deployments.
+
+## v1.14.3
+
+### Release Date: 2026-01-20
+
+#### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+- Fix: SharedTelemetry now properly cleans up its status.provisioned/failed/selected after a control plane is deleted.
+
+## v1.14.2
+
+### Release Date: 2026-11-24
+
+#### What's Changed
+
+- Bump vcluster from 0.24.1 to 0.24.2 to support k8s 1.33.
 
 ## v1.14.1
 
@@ -99,6 +125,22 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
 
+## v1.13.5
+
+### Release Date: 2026-02-04
+
+### What's Changed
+
+- Fixed an issue where upgrading from Spaces 1.12.x to 1.13.x could leave vCluster with incorrect memory limits. vCluster now receives the intended 12Gi memory limit after upgrade.
+
+## v1.13.4
+
+### Release Date: 2026-01-20
+
+### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+
 ## v1.13.3
 
 ### Release Date: 2025-11-25
@@ -109,19 +151,6 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 
 ## v1.13.2
-
-### Release Date: 2025-09-16
-
-#### What's Changed
-
-- Health: don't mark control planes as degraded for unsupported versions
-- SpaceBackup: try backing up controlplanes even if not ready/healthy
-- Apollo/CNPG: allow configuring resources and separate wal volume
-- Make sharedbackups and spacebackups less brittle
-- Watch image configs only if available
-- Allow telemetry scrape to all vcluster managed pods
-
-## v1.12.1
 
 ### Release Date: 2025-09-16
 
@@ -179,6 +208,35 @@ This release bumps the vcluster dependency to `v0.24.1` with no API changes intr
 - Added validation to ensure the control plane name does not exceed 63 characters.
 - Fixed a bug in how the envoy within spaces-router was configured that could result in non-deterministic behavior. Now envoy will allocate workers based on the CPU limits it is provided.
 - Spaces-controller now runs with leader-election enabled even if it's not configured in HA mode with multiple replicas.
+
+## v1.12.3
+
+### Release Date: 2026-01-20
+
+#### What's Changed
+
+- Added observability.spacesCollector.env field to support injecting environment variables into the Spaces OpenTelemetry Collector pods.
+
+## v1.12.2
+
+### Release Date: 2025-12-09
+
+#### What's Changed
+
+- Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
+
+## v1.12.1
+
+### Release Date: 2025-09-16
+
+#### What's Changed
+
+- Health: don't mark control planes as degraded for unsupported versions
+- SpaceBackup: try backing up controlplanes even if not ready/healthy
+- Apollo/CNPG: allow configuring resources and separate wal volume
+- Make sharedbackups and spacebackups less brittle
+- Watch image configs only if available
+- Allow telemetry scrape to all vcluster managed pods
 
 ## v1.12.0
 
@@ -963,4 +1021,3 @@ further assistance, please reach out to your Upbound account representative.
 - Fix otlp-collector networkpolicy ports
 
 <!-- vale on -->
-

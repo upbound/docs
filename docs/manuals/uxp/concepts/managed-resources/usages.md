@@ -17,7 +17,9 @@ for the second one.
 
 ## Enable usages
 
+<!-- vale write-good.Passive = NO -->
 Usages are a beta feature. Beta features are enabled by default.
+<!-- vale write-good.Passive = YES -->
 
 Disable `Usage` support by 
 [changing the Crossplane pod setting][pods]
@@ -42,22 +44,19 @@ spec:
 
 ## Create a usage
 
-A Usage
-spec has a mandatory
-of field for defining the resource
-in use or protected. The 
-reason field defines the reason
-for protection and the by field
-defines the using resource. Both fields are optional, but at least one of them
-must be provided.
+A Usage spec has a mandatory of field for defining the resource in use or
+protected. The reason field defines the reason for protection and the by field
+defines the using resource. Both fields are optional, you must provide at least
+one.
 
 ### Usage for deletion protection
 
 The following example prevents the deletion of the 
-my-database resource by rejecting
+`my-database` resource by rejecting
 any deletion request with the
 reason defined.
 
+<!-- vale Google.FirstPerson = NO -->
 ```yaml
 apiVersion: protection.crossplane.io/v1beta1
 kind: Usage
@@ -72,6 +71,7 @@ spec:
       name: my-database
   reason: "Production Database - should never be deleted!"
 ```
+<!-- vale Google.FirstPerson  = YES -->
 
 ### Usage for deletion ordering
 
@@ -133,10 +133,12 @@ resourceRef.name
 field. The following example shows the `Usage` resource after the resolution of
 selectors.
 
+<!-- vale write-good.Passive = NO -->
 :::important
-The selectors are resolved only once. If there are more than one matches, a
+The selectors resolve only once. If there is more than one match, a
 random resource is selected from the list of matched resources.
 :::
+<!-- vale write-good.Passive = YES -->
 
 ```yaml
 apiVersion: protection.crossplane.io/v1beta1
@@ -165,10 +167,12 @@ spec:
 
 ### Replay blocked deletion attempt
 
+<!-- vale gitlab.SentenceLength = NO -->
 By default, the deletion of a `Usage` resource doesn't trigger the deletion of
 the resource in use even if there were deletion attempts blocked by the `Usage`.
 Replaying the blocked deletion is possible by setting the
 replayDeletion field to `true`.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ```yaml
 apiVersion: protection.crossplane.io/v1beta1
@@ -190,6 +194,7 @@ spec:
       name: my-prometheus-chart
 ```
 
+<!-- vale gitlab.SentenceLength = NO -->
 :::tip
 Replay deletion is useful when the used resource is part of a composition.
 This configuration radically decreases time for the deletion of the used
@@ -198,22 +203,22 @@ used resource right after the using resource disappears instead of waiting
 for the long exponential backoff durations of the Kubernetes garbage collector.
 :::
 
-## Usage in a Composition
+## Usage in a composition
 
 A typical use case for Usages is to define a deletion ordering between the
-resources in a Composition. The Usages support
-[matching controller reference][managed-resources-controller-ref]
-in selectors to ensures that the matching resource is in the same composite
-resource in the same way as [cross-resource referencing][managed-resources-referencing].
-
+resources in a Composition. The Usages support [matching controller
+reference][managed-resources-controller-ref] in selectors to ensures that the
+matching resource is in the same composite resource in the same way as
+[cross-resource referencing][managed-resources-referencing].
+<!-- vale gitlab.SentenceLength = YES -->
+<!-- vale write-good.Passive = NO -->
 :::tip
-When there are multiple resources of same type in a Composition, the
-Usage resource must
-uniquely identify the resource in use or the using one. This could be
-accomplished by using extra labels and combining
-matchControllerRef
-with a `matchLabels` selector. 
+When there are multiple resources of same type in a Composition, the Usage
+resource must uniquely identify the resource in use or the using one. This could
+be accomplished by using extra labels and combining matchControllerRef with a
+`matchLabels` selector. 
 :::
+<!-- vale write-good.Passive = YES -->
 
 ## Usage across namespaces
 

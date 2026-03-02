@@ -20,7 +20,9 @@ alternative to the traditional usage-based billing model described in the
 [Self-Hosted Space Billing][space-billing] guide.
 :::
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 Capacity licensing allows organizations to purchase a fixed capacity of
 resources upfront. The Spaces software tracks usage locally and provides
@@ -583,9 +585,9 @@ If your license shows as invalid:
 [space-billing]: /manuals/spaces/howtos/self-hosted/billing
 [CloudNativePG]: https://cloudnative-pg.io/
 [backups]: https://cloudnative-pg.io/documentation/current/backup_recovery/
-[backup-restore]: /manuals/spaces/features/backup-and-restore
+[backup-restore]: /manuals/spaces/howtos/backup-and-restore
 [sales]: https://www.upbound.io/contact
 [eso]: https://external-secrets.io/
-[Observability]: /manuals/spaces/features/observability
+[Observability]: /manuals/spaces/howtos/observability
 <!-- vale write-good.Weasel = YES -->
 <!-- vale write-good.TooWordy = YES -->

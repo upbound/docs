@@ -1,7 +1,7 @@
 cryptography
 selenium == 4.2.0
 webdriver-manager == 3.7.0
-pillow == 10.3.0
+pillow == 12.1.1
 Selenium-Screenshot == 1.7.0
 robotframework == 5.0.1
 robotframework-seleniumlibrary == 6.0.0

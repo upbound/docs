@@ -10,7 +10,7 @@ This guide shows how to enable or disable features in your self-hosted Space.
 
 **Status:** Preview
 
-This feature is enabled by default in Cloud Spaces.
+Cloud Spaces enable this feature by default.
 
 To enable this feature in a self-hosted Space, set
 `features.alpha.sharedSecrets.enabled=true` when installing the Space:
@@ -27,7 +27,7 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
 **Status:** GA
 **Available from:** Spaces v1.13+
 
-This feature is enabled by default in Cloud Spaces.
+Cloud Spaces enable this feature by default.
 
 
 
@@ -98,7 +98,7 @@ The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
 
 ## Shared backups
 
-As of Spaces `v.12.0`, this feature is enabled by default.
+Spaces `v.12.0` and later enable this feature by default.
 
 To disable in a self-hosted Space, pass the `features.alpha.sharedBackup.enabled=false` as a Helm chart value.
 `--set "features.alpha.sharedBackup.enabled=false"`
@@ -108,8 +108,10 @@ To disable in a self-hosted Space, pass the `features.alpha.sharedBackup.enabled
 **Status:** Preview
 The Query API is available in the Cloud Space offering and enabled by default.
 
+<!-- vale write-good.Passive = NO -->
 Query API is required for self-hosted deployments with connected Spaces. See the
 related [documentation][documentation]
 to enable this feature.
+<!-- vale write-good.Passive = YES -->
 
-[documentation]: /manuals/spaces/features/query-api/
+[documentation]: /manuals/spaces/howtos/query-api/

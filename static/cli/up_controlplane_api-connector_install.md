@@ -44,6 +44,9 @@ up controlplane api-connector install --consumer-kubeconfig /path/to/kubeconfig 
 
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
+| `--set` | | Set parameters. |
+| `--file` | `-f` | Parameters file. |
+| `--bundle` | | Local bundle path. |
 | `--upgrade` | | Upgrade or downgrade the API Connector to --version, even if it is already installed. |
 | `--version` | | Version of the API Connector to install. If not provided, the latest, known to CLI, will be installed. |
 | `--name` | | Name of the related objects for named connection. If not provided, control plane name will be used with api-connector prefix.  |
@@ -52,6 +55,3 @@ up controlplane api-connector install --consumer-kubeconfig /path/to/kubeconfig 
 | `--consumer-kubeconfig` | | Path to the kubeconfig file for the consumer cluster. If not provided, the default kubeconfig resolution will be used. |
 | `--consumer-context` | | Context to use in the kubeconfig file. If not provided, the current context will be used. |
 | `--helm-directory` | | Directory to store the Helm chart. If not provided, the default will be used. |
-| `--set` | | Set parameters. |
-| `--file` | `-f` | Parameters file. |
-| `--bundle` | | Local bundle path. |

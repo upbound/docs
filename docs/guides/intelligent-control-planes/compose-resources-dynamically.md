@@ -15,6 +15,7 @@ The UP CLI lets you create an MCP server configurations for kubectl-ai for Curso
 up project ai configure-tools <PROVIDER-FLAG>
 ```
 
-This will create the tooling configuration file in the repo for your control plane project.
+This creates the tooling configuration file in the repository for your control plane project.
 
-Once created, reference the MCP server tool in your IDE provider of choice, and use it to accelerate your Crossplane development.
+Once created, reference the MCP server tool in your IDE provider of choice, and
+use it to speed up your Crossplane development.

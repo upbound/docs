@@ -192,34 +192,34 @@ Ensure control plane components can survive node and zone failures.
              weight: 100
    ```
 
-<!-- ### Configure tolerations -->
+### Configure tolerations
 
-<!-- Allow control plane pods to schedule on the tainted dedicated nodes (available -->
-<!-- in Spaces v1.14+). -->
+Allow control plane pods to schedule on the tainted dedicated nodes (available
+in Spaces v1.14+).
 
-<!-- 1. Add tolerations for `etcd` pods -->
+1. Add tolerations for `etcd` pods
 
-<!--    ```yaml -->
-<!--    controlPlanes: -->
-<!--      etcd: -->
-<!--        tolerations: -->
-<!--        - key: "target" -->
-<!--          operator: "Equal" -->
-<!--          value: "etcd" -->
-<!--          effect: "NoSchedule" -->
-<!--    ``` -->
+   ```yaml
+   controlPlanes:
+     etcd:
+       tolerations:
+       - key: "target"
+         operator: "Equal"
+         value: "etcd"
+         effect: "NoSchedule"
+    ```
 
-<!-- 2. Add tolerations for API server pods -->
+2. Add tolerations for API server pods
 
-<!--    ```yaml -->
-<!--    controlPlanes: -->
-<!--      vcluster: -->
-<!--        tolerations: -->
-<!--        - key: "target" -->
-<!--          operator: "Equal" -->
-<!--          value: "apiserver" -->
-<!--          effect: "NoSchedule" -->
-<!--    ``` -->
+   ```yaml
+   controlPlanes:
+     vcluster:
+       tolerations:
+       - key: "target"
+         operator: "Equal"
+         value: "apiserver"
+         effect: "NoSchedule"
+   ```
 
 <!-- vale Google.Headings = NO -->
 ## Configure autoscaling for Spaces components
@@ -234,7 +234,7 @@ Set up the Spaces system components to handle variable load automatically.
    ```yaml
    api:
      replicaCount: 2
-   
+
    features:
      alpha:
        apollo:
@@ -282,7 +282,7 @@ scaling.
    controller:
      resources:
        requests:
-         cpu: "500m" 
+         cpu: "500m"
          memory: "1Gi"
        limits:
          cpu: "2000m"
@@ -350,7 +350,7 @@ Monitor key metrics to ensure healthy scaling and identify issues quickly.
 Track these `spaces-controller` metrics:
 
 1. **Total control planes**
-   
+
    ```
    spaces_control_plane_exists
    ```
@@ -358,7 +358,7 @@ Track these `spaces-controller` metrics:
    Tracks the total number of control planes in the system.
 
 2. **Degraded control planes**
-   
+
    ```
    spaces_control_plane_degraded
    ```
@@ -367,7 +367,7 @@ Track these `spaces-controller` metrics:
     `Healthy` state.
 
 3. **Stuck control planes**
-   
+
    ```
    spaces_control_plane_stuck
    ```
@@ -375,11 +375,11 @@ Track these `spaces-controller` metrics:
    Control planes stuck in a provisioning state.
 
 4. **Deletion issues**
-   
+
    ```
    spaces_control_plane_deletion_stuck
    ```
-  
+
    Control planes stuck during deletion.
 
 ### Alerting
@@ -407,11 +407,32 @@ Configure alerts for critical scaling and health metrics:
 - **`apollo syncer`**: Syncs `etcd` data into PostgreSQL for the Query API
 <!-- vale write-good.TooWordy = YES -->
 
+### `up ctx` workflow
+
+<a href="/img/up-ctx-workflow.png" target="_blank">
+  <img src="/img/up-ctx-workflow.png" alt="up ctx workflow diagram" style={{cursor: 'pointer'}} />
+</a>
+
+### Access a control plane API server via kubectl
+
+<a href="/img/kubectl-workflow.png" target="_blank">
+  <img src="/img/kubectl-workflow.png" alt="kubectl workflow diagram" style={{cursor: 'pointer'}} />
+</a>
+
+### Query API/Apollo
+
+<a href="/img/query-api-workflow.png" target="_blank">
+  <img src="/img/query-api-workflow.png" alt="query API workflow diagram" style={{cursor: 'pointer'}} />
+</a>
+
 ## See also
 
 * [Upbound Spaces deployment requirements][deployment]
 * [Upbound `etcd` scaling resources][scaling]
 
+[up-ctx-workflow]: /img/up-ctx-workflow.png
+[kubectl]: /img/kubectl-workflow.png
+[query-api]: /img/query-api-workflow.png
 [spaces-workflow]: /img/up-basic-flow.png
 [rds]: https://aws.amazon.com/rds/postgresql/
 [gke-sql]: https://cloud.google.com/kubernetes-engine/docs/tutorials/stateful-workloads/postgresql

@@ -32,7 +32,7 @@ CLI.
 <TabItem value="Helm Install">
 
 ```shell
-helm upgrade crossplane --namespace crossplane-system upbound-stable/universal-crossplane --devel
+helm upgrade --install crossplane --create-namespace --namespace crossplane-system oci://xpkg.upbound.io/upbound/crossplane --version 2.1.3-up.1
 ```
 :::important
 For more details, follow our [Upgrade Guide][upgrade] to see how Upbound can enhance your existing workflow.

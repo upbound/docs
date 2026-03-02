@@ -6,7 +6,9 @@ description: Learn what Upbound Crossplane is and how it works
 hide_title: true
 ---
 
+<!-- vale gitlab.HeadingContent = NO -->
 # Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 import GuidesCards from '@site/src/components/GuidesCards';
 

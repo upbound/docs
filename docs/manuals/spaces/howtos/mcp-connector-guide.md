@@ -51,7 +51,7 @@ This command saves the kubeconfig for the control plane to a file in your workin
 Switch contexts to your Kubernetes app cluster. To install the control plane connector in your app cluster, you must first provide a secret containing your control plane's kubeconfig at install-time. Run the following command in a terminal:
 
 :::important
-Make sure the following commands are executed against your **app cluster**, not your control plane.
+Run the following commands against your **app cluster**, not your control plane.
 :::
 
 ```bash
@@ -126,7 +126,7 @@ EOF
 Switch contexts, connect to your control plane, and look at the managed resources on your control plane. It should look like the following:
 
 :::important
-Make sure the following commands are executed against your **control plane**, not your app cluster.
+Run the following commands against your **control plane**, not your app cluster.
 :::
 
 ```bash {copy-lines="1"}
@@ -158,6 +158,6 @@ In this tutorial, you:
 - You saw how resource requests are actually fulfilled by the control plane.
 
 
-[control-plane-connector]: /manuals/spaces/features/ctp-connector
+[control-plane-connector]: /manuals/spaces/howtos/ctp-connector
 [platform-reference-configuration]: https://marketplace.upbound.io/configurations/upbound/platform-ref-aws
-[api-connector]: /manuals/spaces/features/api-connector
+[api-connector]: /manuals/spaces/howtos/api-connector

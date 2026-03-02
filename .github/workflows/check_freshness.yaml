@@ -52,7 +52,7 @@ jobs:
                             stale_files.append((relative_path, last_modified))
             return stale_files
 
-        docs_directory = "content"
+        docs_directory = "docs"
         stale_docs = check_freshness(docs_directory)
         sorted_stale_docs = sorted(stale_docs, key=lambda x: x[1])
 

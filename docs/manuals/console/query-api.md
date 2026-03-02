@@ -5,11 +5,8 @@ description: The Query API
 tier: "standard"
 ---
 
-The Query API used to previously operate within a multi-tenant Spaces
-architecture.
-
-To make it compatible with UXP 2.0, it has been refactored to a "single-tenant"
-mode, and comes installed in the same cluster when you install UXP 2.0.
+The Query API is now compatible with UXP 2.0 and can operate in a
+"single-tenant" mode.
 
 Upbound enables the Query API by default, but you can disable it. All queries
 made in the Crossplane WebUI use the Query API in the background.

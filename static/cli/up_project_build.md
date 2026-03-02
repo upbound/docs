@@ -21,3 +21,5 @@ Build a project into a Crossplane package.
 | `--build-cache-dir` | | Path to the build cache directory. |
 | `--max-concurrency` | | Maximum number of functions to build at once. |
 | `--cache-dir` | | Directory used for caching dependencies. |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Use your Bitbucket username for Bitbucket app passwords. |

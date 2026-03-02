@@ -4,7 +4,7 @@ sidebar_position: 2
 description: How to create, configure and push packages to the Upbound Marketplace
 ---
 
-Upbound Marketplace provides a collection of packages, accelerating development workflows and reducing setup time. You can build upon pre-built packages from the Marketplace and then use repositories to share and distribute your own packages with your team or other developers.
+Upbound Marketplace provides a collection of packages that speed up development workflows and reduce setup time. Build upon pre-built packages and use repositories to share your own packages with your team or other developers.
 
 This guide shows you how to build and push a package to the Marketplace.
 
@@ -106,8 +106,7 @@ repository update`][up-repo-update] command with the `--publish` flag. This requ
 Your repository's listing page is automatically generated at: `https://marketplace.upbound.io/<package_type>/<organization or user>/<repository>/`
 
 :::info
-To report a package you believe is violating the legal Terms of Service, use the
-"Report this package" link at the bottom left corner of a listing. 
+Report packages that violate the Terms of Service using the "Report this package" link at the bottom left corner of a listing.
 :::
 
 The table below illustrates the relationship between accessing an image and
@@ -122,17 +121,22 @@ publishing a public Marketplace listing page.
 
 Users may also provide their additive package content, which renders on the listing page for that package version.
 
-The Marketplace currently supports optionally adding an icon, release notes, readme, and SBOMs. By convention, organize these files in a directory-of-directories hierarchy,
-typically in the source tree. For example, the following is a valid layout for an icon, readme, and release notes:
+The Marketplace currently supports optionally adding an icon, release notes, readme, additional documentation, and SBOMs.
+By convention, organize these files in a directory-of-directories hierarchy,
+typically in the source tree. For example, the following is a valid layout for each supported extension:
 
 ```text
 extensions
+├── docs
+│   └── developing.md
 ├── icons
 │   └── icon.svg
 ├── readme
 │   └── readme.md
 └── release-notes
-    └── release_notes.md
+│   └── release_notes.md
+├── sbom
+│   └── sbom.spdx.json
 ```
 
 Then, to add these assets to your package version, use the `up` CLI:
@@ -142,9 +146,9 @@ up alpha xpkg append --extensions-root=./extensions xpkg.upbound.io/<your accoun
 ```
 
 :::warning
-This is an alpha feature, and requires `up` CLI version `v0.39.0` or later. See
+`xpkg append` an alpha feature, and requires `up` CLI version `v0.39.0` or later. See
 [`up alpha xpkg append`][up-alpha-xpkg-append] for complete
-documentation and conventions. 
+documentation and conventions.
 :::
 
 ## Troubleshooting

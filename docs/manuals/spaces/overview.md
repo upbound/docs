@@ -5,7 +5,9 @@ hide_title: true
 sidebar_position: 1
 description: Spaces are a host environment in Upbound for control planes-as-a-service
 ---
+<!-- vale gitlab.HeadingContent = NO -->
 # Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
 <Standard />
 
@@ -21,6 +23,6 @@ For more information on Spaces offerings, review the [deployment modes][deployme
 [deployment-modes]: /manuals/spaces/concepts/deployment-modes
 [cloud-spaces]: /manuals/spaces/overview
 [self-hosted-space]: /manuals/spaces/howtos/self-hosted/dr
-[features]: /manuals/spaces/features/managed-service
+[features]: /manuals/spaces/howtos/managed-service
 [cloud-space-guide]: /manuals/spaces/overview
 [self-hosted-space-guide]: /manuals/spaces/howtos/self-hosted/dr

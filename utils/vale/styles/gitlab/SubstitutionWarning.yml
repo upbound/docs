@@ -11,9 +11,9 @@ link: https://about.gitlab.com/handbook/communication/#top-misused-terms
 level: warning
 ignorecase: true
 swap:
-  air(?:-| )?gapped: offline environment
+  #  air(?:-| )?gapped: offline environment
   bullet: list item
-#  click: select
+  #  click: select
   code base: codebase
   deselect: clear
   deselected: cleared

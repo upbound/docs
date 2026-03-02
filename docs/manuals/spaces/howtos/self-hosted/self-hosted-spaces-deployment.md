@@ -53,9 +53,11 @@ To get started deploying your own Disconnected Space, you need:
 
 </CodeBlock>
 
+<!-- vale Microsoft.Wordiness = NO -->
 :::important
 Disconnected Spaces are a business critical feature of Upbound and requires a license token to successfully complete the installation. [Contact Upbound][contact-upbound] if you want to try out Upbound with Disconnected Spaces.
 :::
+<!-- vale Microsoft.Wordiness = YES -->
 
 ## Provision the hosting environment
 

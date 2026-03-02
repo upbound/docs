@@ -56,7 +56,7 @@ If the user isn't yet in the organization, invite them to join the organization.
 4. You can select from the list of available members in the organization who don't already belong to this team. You can select multiple users at a time.
 
 :::tip
-The default role that will be assigned to a team member is `owner`. Select the role to open a menu and change it to `member` if you wish.
+The default role assigned to a team member is `owner`. Select the role to open a menu and change it to `member` if you wish.
 :::
 
 ### Remove users
@@ -87,5 +87,5 @@ To create a new permission:
 
 [users]: /manuals/platform/concepts/identity-management/users
 [organization]: /manuals/platform/concepts/identity-management/organizations
-[robots-documentation]: /platform/concepts/identity-management/robots/#assign-a-robot-to-a-team
+[robots-documentation]: /manuals/platform/concepts/identity-management/robots/#assign-a-robot-to-a-team/
 [multiple-organizations]: /img/user-org-team.png "A user can be in multiple orgs and multiple groups"

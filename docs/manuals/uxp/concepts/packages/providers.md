@@ -323,7 +323,8 @@ Crossplane can automatically upgrade a package's dependency version to the minim
 valid version that satisfies all the constraints. It's an alpha feature that
 requires enabling with the `--enable-dependency-version-upgrades` flag.
 
-In some cases, dependency version downgrade is required for proceeding with
+<!-- vale write-good.Passive = NO -->
+Sometimes, dependency version downgrade is required for proceeding with
 installations. Suppose configuration A, which depends on package X with the
 constraint`>=v0.0.0`, is installed on the control plane. In this case, the package
 manager installs the latest version of package X, such as `v3.0.0`. Later, you decide
@@ -333,10 +334,9 @@ allow the installation of configuration B which is disabled by default.
 
 For enabling automatic dependency version downgrades, there is a configuration
 option as a helm value `packageManager.enableAutomaticDependencyDowngrade=true`.
-Downgrading a package can cause unexpected behavior, therefore, this
-option is disabled by default. After enabling this option, the package manager will
-automatically downgrade a package's dependency version to the maximum valid version
+Downgrading a package can cause unexpected behavior, so this option is disabled by default. After enabling this option, the package manager automatically downgrades a package's dependency version to the maximum valid version
 that satisfies the constraints.
+<!-- vale write-good.Passive = YES -->
 
 :::note
 This configuration requires the `--enable-dependency-version-upgrades` flag.
@@ -349,6 +349,7 @@ are available in the
 section for more details.
 :::
 
+<!-- vale write-good.Passive = NO -->
 :::important
 Enabling automatic dependency downgrades may have unintended consequences, such as:
 
@@ -357,6 +358,7 @@ controllers to reconcile them.
 2) Loss of data if downgraded CRD versions omit fields that were set before.
 3) Changes in the CRD storage version, which may prevent package version update.
 :::
+<!-- vale write-good.Passive = YES -->
 
 #### Ignore Crossplane version requirements
 
@@ -799,13 +801,13 @@ spec:
 ```
 
 <!-- vale gitlab.FutureTense = NO -->
+<!-- vale Google.Will = NO -->
 :::important
 Setting the `serviceAccountTemplate.metadata.name` field will override the
 name of service account created by the package manager and used in the
 provider deployment. The package manager will own that service account and
-may conflict with other owners attempting to take ownership. A common mistake
-is configuring the same service account for multiple packages in this way
-which ends up causing frequent reconciliation loops and loads on the API server.
+may conflict with other owners attempting to take ownership. A common mistake is configuring the same service account for multiple packages.
+This causes frequent reconciliation loops and puts loads on the API server.
 
 If you just want to use an existing service account, you should instead only
 set the `deploymentTemplate.spec.template.spec.serviceAccountName` field.
@@ -813,6 +815,7 @@ Crossplane will then use the existing service account without taking the ownersh
 and still take care of binding the necessary permissions.
 :::
 <!-- vale gitlab.FutureTense = YES -->
+<!-- vale Google.Will = YES -->
 
 ### Provider configuration
 

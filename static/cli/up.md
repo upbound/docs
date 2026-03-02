@@ -19,6 +19,6 @@ Please report issues and feature requests at https://github.com/upbound/upbound.
 | ---- | ---------- | ----------- |
 | `--help` | `-h` | Show context-sensitive help. |
 | `--format` | | Format for get/list commands. Can be: json, yaml, default |
-| `--quiet` | `-q` | Suppress all output. |
+| `--quiet` | `-q` | Suppress all informational output. Command results will still be printed. |
+| `--silent` | | Suppress all output. |
 | `--pretty` | | Pretty print output. |
-| `--dry-run` | | dry-run output. |

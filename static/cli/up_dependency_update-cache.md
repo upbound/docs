@@ -42,3 +42,5 @@ Default is upbound.yaml.
 | ---- | ---------- | ----------- |
 | `--project-file` | `-f` | Path to project definition file. |
 | `--cache-dir` | | Directory used for caching package images. |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Use your Bitbucket username for Bitbucket app passwords. |

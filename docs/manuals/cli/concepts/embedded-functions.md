@@ -1,6 +1,6 @@
 ---
 title: Embedded Functions
-description: "What are Embedded Functions?"
+description: "Learn about Embedded Functions"
 sidebar_position: 6
 ---
 
@@ -17,22 +17,27 @@ to external signals.
 
 ## Embedded functions vs traditional Crossplane functions
 
-While both embedded functions and upstream Crossplane functions serve the same
-purpose of extending your control plane with custom logic, they differ
-significantly in how you author, deploy, and manage them.
+Both embedded functions and upstream Crossplane functions extend your control
+plane with custom logic, they differ in how you author, deploy, and manage them.
 
+<!-- vale write-good.Weasel = NO -->
+<!-- vale Microsoft.Adverbs = NO -->
 You design embedded functions to be lightweight and tightly integrated into your
 control plane project. In contrast, upstream Crossplane functions follow a more
 traditional Kubernetes model, requiring containerized deployments and additional
 Kubernetes resources.
+<!-- vale Microsoft.Adverbs = YES -->
+<!-- vale write-good.Weasel = YES -->
 
 ### Key differences
 
+<!-- vale Microsoft.Adverbs = NO -->
 **Deployment and Management**: You bundle embedded functions directly into your
 control plane project. You don't need to deploy additional Function custom
 resources or manage sidecar containers. You typically containerize upstream
 functions as workloads that you must deploy into the cluster and manage
 separately.
+<!-- vale Microsoft.Adverbs = YES -->
 
 **Performance and Overhead**: Embedded functions run in-memory as part of the
 control plane's reconciliation loop. This makes them faster and more efficient,
@@ -52,7 +57,9 @@ teams with diverse skill sets. You typically author upstream functions in Go and
 require container build and deployment pipelines, which can be a heavier lift
 for platform teams.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Use cases
+<!-- vale gitlab.HeadingContent = YES -->
 
 Use embedded functions when you want:
 

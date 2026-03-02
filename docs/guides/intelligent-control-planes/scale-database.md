@@ -31,7 +31,7 @@ Clone the repository [upbound/configuration-aws-database-ai][guide-repo] to your
 git clone git@github.com:upbound/configuration-aws-database-ai.git
 ```
 
-This repository contains a [control plane project][project] that defines a fully managed AWS database instances. This database instance is implemented with an [Intelligent Composition][intelligent-composition] function that scales the database in relation to performance metrics fetched from AWS CloudWatch.
+This repository contains a [control plane project][project] that defines a fully managed AWS database instances. This database instance project contains uses an [Intelligent Composition][intelligent-composition] function that scales the database in relation to performance metrics fetched from AWS CloudWatch.
 
 ## Launch the local UXP cluster
 
@@ -74,7 +74,9 @@ kubectl apply -f examples/mariadb-xr-rds-metrics.yaml
 
 The database gets created, the control plane periodically fetches performance metrics for it from AWS CloudWatch, and dynamically scales the database size accordingly. 
 
+<!-- vale write-good.TooWordy = NO -->
 To validate the intelligent scaling system, you can stress test the RDS instance to trigger high CPU utilization and observe AI-driven scaling decisions. The command below performs a stress test to mimic real usage:
+<!-- vale gitlab.write-good = YES -->
 
 ```shell
 # Trigger high CPU load with multiple concurrent MD5 hash computations
@@ -101,7 +103,7 @@ up project stop
 Read the concept documentation for [Intelligent Control Planes][intelligent-controlplanes] to learn more about using AI-powered functions in your function pipelines.
 
 [upbound-crossplane]: /manuals/uxp/overview
-[intelligent-controlplanes]: /manuals/uxp/features/intelligent-control-planes/
+[intelligent-controlplanes]: /manuals/uxp/concepts/intelligent-control-planes/
 [guide-repo]: https://github.com/upbound/configuration-aws-database-ai
 [project]: /manuals/cli/concepts/projects
 [intelligent-composition]: /manuals/uxp/concepts/composition/intelligent-compositions

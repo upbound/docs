@@ -34,7 +34,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "account=your-upbound-account" \
   --wait
 ```
-For a complete tutorial of the helm install, read one of the deployment guides for [AWS][aws], [Azure][azure] , or [GCP][gcp] which cover the step-by-step process.
+For a complete helm install tutorial, read the deployment guides for [AWS][aws], [Azure][azure], or [GCP][gcp].
 
 ### Upgrade a Space
 

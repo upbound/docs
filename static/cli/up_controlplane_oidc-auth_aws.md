@@ -67,3 +67,4 @@ up ctp oidc-auth aws example-project-aws-up-cli arn:aws:iam::aws:policy/Administ
 | `--provider-config-name` | | Provider AWS ProviderConfigName |
 | `--sub` | | Define the control plane name that the IAM Role trust policy will use in the 'sub' claim. Supports wildcards (using StringLike). |
 | `--yes` | | When set to true, automatically accepts any confirmation prompts. |
+| `--dry-run` | | Print what changes would be made but do not take action. |

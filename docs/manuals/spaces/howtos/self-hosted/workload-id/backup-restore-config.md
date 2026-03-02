@@ -379,6 +379,6 @@ Other workload identity guides are:
 * [Billing][billing]
 * [Shared Secrets][secrets]
 
-[backup-restore-guide]: /manuals/spaces/features/backup-and-restore
+[backup-restore-guide]: /manuals/spaces/howtos/backup-and-restore
 [billing]: /manuals/spaces/howtos/self-hosted/workload-id/billing-config
 [secrets]: /manuals/spaces/howtos/self-hosted/workload-id/eso-config

@@ -22,6 +22,15 @@ Before you begin, make sure you have:
 * Installed the `up` CLI
 * A Docker compatible runtime running
 
+:::tip 
+**Podman users**
+If you're using Podman instead of Docker, set the `DOCKER_HOST` environment variable to the Podman socket before running `up` commands:
+
+```shell
+export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
+```
+:::
+
 ## Initialize your project
 
 Choose your starting approach based on your goals:

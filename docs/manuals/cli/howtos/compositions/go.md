@@ -16,32 +16,38 @@ You can choose:
 language server.
 
 [KCL][kcl] - Concise. Good for transitioning from another configuration language
-like HCL. IDE support with language server.
+like `HCL`. IDE support with language server.
 
 [Python][python] - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
-This guide explains how to create compositions that turn your XRs into actual cloud resources. Compositions allow you to implement the business logic that powers your control plane.
+This guide explains how to create compositions that turn your XRs into actual
+cloud resources. Compositions allow you to implement the business logic that
+powers your control plane.
 
 Use this guide after you define your API schema and need to write the logic that creates and manages the underlying resources.
 
 :::important
 This guide assumes you're familiar with Go. If you'd like to become more
 familiar with Go, the [official tutorials][official-tutorials] are a good place
-to start. 
+to start.
 :::
 
 ## Prerequisites
 
 Before you begin, make sure:
 
+<!-- vale write-good.Passive = NO -->
 * You designed your XRD
 * You've added provider dependencies
-* understand your XRD schema and what resources you need to create
+* You understand your XRD schema and what resources you need to create
 * Go is installed
 * Go Visual Studio Code extension is installed
+<!-- vale write-good.Passive = YES -->
 
 ## Create your composition scaffold
 
@@ -64,8 +70,7 @@ apis/<your_resource_name>/composition.yaml
 
 This command creates a `functions/compose-resources` directory with your function code and updates your composition file to reference it.
 
-Your function file in `functions/compose-resources/fn.go` should be similar to:
-
+Below is an example function file in `functions/compose-resources/fn.go`:
 ```go
 package main
 
@@ -146,8 +151,8 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 
 	bucket := &v1beta1.Bucket{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("Bucket"),
+		APIVersion: ptr.To(v1beta1.BucketAPIVersions3AwsUpboundIoV1Beta1),
+		Kind:       ptr.To(v1beta1.BucketKindBucket),
 		Spec: &v1beta1.BucketSpec{
 			ForProvider: &v1beta1.BucketSpecForProvider{
 				Region: params.Region,
@@ -204,15 +209,14 @@ import (
 
 	"dev.upbound.io/models/com/example/platform/v1alpha1"
 	"dev.upbound.io/models/io/upbound/aws/s3/v1beta1"
-	"k8s.io/utils/ptr"
-
+	"github.com/crossplane/crossplane-runtime/pkg/logging"
 	"github.com/crossplane/function-sdk-go/errors"
-	"github.com/crossplane/function-sdk-go/logging"
 	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
 	"github.com/crossplane/function-sdk-go/request"
 	"github.com/crossplane/function-sdk-go/resource"
 	"github.com/crossplane/function-sdk-go/resource/composed"
 	"github.com/crossplane/function-sdk-go/response"
+	"k8s.io/utils/ptr"
 )
 
 // Function is your composition function.
@@ -246,7 +250,7 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 
 	params := xr.Spec.Parameters
-	if ptr.Deref(params.Region, "") == "" {
+	if params.Region == nil || *params.Region == "" {
 		response.Fatal(rsp, errors.Wrap(err, "missing region"))
 		return rsp, nil
 	}
@@ -277,8 +281,8 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}()
 
 	bucket := &v1beta1.Bucket{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("Bucket"),
+		APIVersion: ptr.To(v1beta1.BucketAPIVersions3AwsUpboundIoV1Beta1),
+		Kind:       ptr.To(v1beta1.BucketKindBucket),
 		Spec: &v1beta1.BucketSpec{
 			ForProvider: &v1beta1.BucketSpecForProvider{
 				Region: params.Region,
@@ -306,8 +310,8 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 
 	acl := &v1beta1.BucketACL{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketACL"),
+		APIVersion: ptr.To(v1beta1.BucketACLApiVersions3AwsUpboundIoV1Beta1),
+		Kind:       ptr.To(v1beta1.BucketACLKindBucketACL),
 		Spec: &v1beta1.BucketACLSpec{
 			ForProvider: &v1beta1.BucketACLSpecForProvider{
 				Bucket: &bucketExternalName,
@@ -319,13 +323,13 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	desiredComposed["acl"] = acl
 
 	boc := &v1beta1.BucketOwnershipControls{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketOwnershipControls"),
+		APIVersion: ptr.To(v1beta1.BucketOwnershipControlsAPIVersions3AwsUpboundIoV1Beta1),
+		Kind:       ptr.To(v1beta1.BucketOwnershipControlsKindBucketOwnershipControls),
 		Spec: &v1beta1.BucketOwnershipControlsSpec{
 			ForProvider: &v1beta1.BucketOwnershipControlsSpecForProvider{
 				Bucket: &bucketExternalName,
 				Region: params.Region,
-				Rule: &[]v1beta1.BucketOwnershipControlsSpecForProviderRule{{
+				Rule: &[]v1beta1.BucketOwnershipControlsSpecForProviderRuleItem{{
 					ObjectOwnership: ptr.To("BucketOwnerPreferred"),
 				}},
 			},
@@ -334,8 +338,8 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	desiredComposed["boc"] = boc
 
 	pab := &v1beta1.BucketPublicAccessBlock{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketPublicAccessBlock"),
+		APIVersion: ptr.To(v1beta1.BucketPublicAccessBlockAPIVersions3AwsUpboundIoV1Beta1),
+		Kind:       ptr.To(v1beta1.BucketPublicAccessBlockKindBucketPublicAccessBlock),
 		Spec: &v1beta1.BucketPublicAccessBlockSpec{
 			ForProvider: &v1beta1.BucketPublicAccessBlockSpecForProvider{
 				Bucket:                &bucketExternalName,
@@ -350,14 +354,14 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	desiredComposed["pab"] = pab
 
 	sse := &v1beta1.BucketServerSideEncryptionConfiguration{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketServerSideEncryptionConfiguration"),
+		APIVersion: ptr.To(v1beta1.BucketServerSideEncryptionConfigurationAPIVersions3AwsUpboundIoV1Beta1),
+		Kind:       ptr.To(v1beta1.BucketServerSideEncryptionConfigurationKindBucketServerSideEncryptionConfiguration),
 		Spec: &v1beta1.BucketServerSideEncryptionConfigurationSpec{
 			ForProvider: &v1beta1.BucketServerSideEncryptionConfigurationSpecForProvider{
 				Bucket: &bucketExternalName,
 				Region: params.Region,
-				Rule: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRule{{
-					ApplyServerSideEncryptionByDefault: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRuleApplyServerSideEncryptionByDefault{{
+				Rule: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRuleItem{{
+					ApplyServerSideEncryptionByDefault: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRuleItemApplyServerSideEncryptionByDefaultItem{{
 						SseAlgorithm: ptr.To("AES256"),
 					}},
 					BucketKeyEnabled: ptr.To(true),
@@ -367,15 +371,15 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 	}
 	desiredComposed["sse"] = sse
 
-	if ptr.Deref(params.Versioning, false) {
+	if params.Versioning != nil && *params.Versioning {
 		versioning := &v1beta1.BucketVersioning{
-			APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-			Kind:       ptr.To("BucketVersioning"),
+			APIVersion: ptr.To(v1beta1.BucketVersioningAPIVersions3AwsUpboundIoV1Beta1),
+			Kind:       ptr.To(v1beta1.BucketVersioningKindBucketVersioning),
 			Spec: &v1beta1.BucketVersioningSpec{
 				ForProvider: &v1beta1.BucketVersioningSpecForProvider{
 					Bucket: &bucketExternalName,
 					Region: params.Region,
-					VersioningConfiguration: &[]v1beta1.BucketVersioningSpecForProviderVersioningConfiguration{{
+					VersioningConfiguration: &[]v1beta1.BucketVersioningSpecForProviderVersioningConfigurationItem{{
 						Status: ptr.To("Enabled"),
 					}},
 				},
@@ -432,12 +436,16 @@ import "dev.upbound.io/models/io/upbound/aws/s3/v1alpha1"
 
 ### Field types in models
 
-All fields in Upbound's Go models have pointer types so that you can specify only the fields your function has an opinion about. This can be awkward in Go, since there's no built-in way to construct a pointer to a constant value. The `k8s.io/utils/ptr` package contains a function, `ptr.To`, which can be used for this purpose:
+All fields in Upbound's Go models have pointer types so that you can specify
+only the fields your function has an opinion about. This can be awkward in Go,
+since there's no built-in way to construct a pointer to a constant value. You
+can use the `k8s.io/utils/ptr` package function, `ptr.To` for
+this purpose:
 
 ```go
 bucket := &v1beta1.Bucket{
-	APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-	Kind:       ptr.To("Bucket"),
+	APIVersion: ptr.To(v1beta1.BucketAPIVersions3AwsUpboundIoV1Beta1),
+	Kind:       ptr.To(v1beta1.BucketKindBucket),
 	Spec: &v1beta1.BucketSpec{
 		ForProvider: &v1beta1.BucketSpecForProvider{
 			Region: ptr.To("us-east-1"),
@@ -525,9 +533,11 @@ After this, Visual Studio Code adds tab-completion and type checking when workin
 
 Composition functions influence the state of the control plane via three kinds of outputs:
 
+<!-- vale write-good.TooWordy = NO -->
 1. The desired state of the composite resource, and composed resources.
 2. Status conditions to apply to the composite resource and, optionally, its claim.
 3. Context to pass to subsequent functions in the pipeline.
+<!-- vale write-good.TooWordy = YES -->
 
 Most functions produce a set of composed resources as part of the desired state.
 

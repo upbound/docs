@@ -13,6 +13,26 @@ const config = {
     projectName: "docs",
     onBrokenLinks: "warn",
     clientModules: [require.resolve("./scripts/copymarkdown.js")],
+    scripts: [
+        {
+            src: "https://cdn-cookieyes.com/client_data/401fea7900d8d7b84b9e7b40/script.js",
+            id: "cookieyes",
+        },
+    ],
+    customFields: {
+        apiUrl: process.env.UPBOUND_API_URL || 'https://api.upbound.io',
+        baseDomain: process.env.UPBOUND_BASE_DOMAIN || 'upbound.io',
+        launchDarklyClientId: process.env.LAUNCHDARKLY_CLIENT_ID || '',
+    },
+    webpack: {
+        jsLoader: (isServer) => ({
+            loader: require.resolve('esbuild-loader'),
+            options: {
+                loader: 'tsx',
+                target: isServer ? 'node12' : 'es2017',
+            },
+        }),
+    },
     i18n: {
         defaultLocale: "en",
         locales: ["en"],
@@ -57,6 +77,37 @@ const config = {
             },
         ],
         "./scripts/plan-plugin.js",
+        function (context, options) {
+            return {
+                name: 'custom-webpack-config',
+                configureWebpack(config, isServer) {
+                    const webpack = require('webpack');
+                    const path = require('path');
+                    return {
+                        plugins: [
+                            new webpack.ProvidePlugin({
+                                process: 'process/browser.js',
+                                React: 'react',
+                            }),
+                        ],
+                        resolve: {
+                            fallback: {
+                                process: require.resolve('process/browser.js'),
+                            },
+                            fullySpecified: false,
+                            extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css'],
+                            mainFiles: ['index'],
+                        },
+                        resolveLoader: {
+                            modules: [
+                                path.resolve(__dirname, 'node_modules'),
+                                'node_modules',
+                            ],
+                        },
+                    };
+                },
+            };
+        },
     ],
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -88,10 +139,9 @@ const config = {
                 },
                 items: [
                     {
-                        type: "doc",
                         label: "Get Started",
                         position: "left",
-                        docId: "getstarted/overview",
+                        to: "/getstarted/",
                     },
                     {
                         type: "dropdown",
@@ -105,7 +155,7 @@ const config = {
                             },
                             {
                                 label: "Platform Solutions",
-                                to: "/guides/solutions/general-idp/get-started/",
+                                to: "/guides/solutions/get-started/",
                             },
                             {
                                 label: "Use Cases",
@@ -121,15 +171,15 @@ const config = {
                         items: [
                             {
                                 label: "UXP (Upbound Crossplane)",
-                                to: "/manuals/uxp/overview",
+                                to: "/manuals/uxp/overview/",
                             },
                             {
                                 label: "Spaces",
-                                to: "/manuals/spaces/overview",
+                                to: "/manuals/spaces/overview/",
                             },
                             {
                                 label: "CLI",
-                                to: "/manuals/cli/overview",
+                                to: "/manuals/cli/overview/",
                             },
                             {
                                 label: "Console",
@@ -137,15 +187,15 @@ const config = {
                             },
                             {
                                 label: "Packages",
-                                to: "/manuals/packages/overview",
+                                to: "/manuals/packages/overview/",
                             },
                             {
                                 label: "Marketplace",
-                                to: "/manuals/marketplace/overview",
+                                to: "/manuals/marketplace/overview/",
                             },
                             {
                                 label: "Platform",
-                                to: "/manuals/platform/overview",
+                                to: "/manuals/platform/overview/",
                             },
                         ],
                     },
@@ -163,8 +213,8 @@ const config = {
             },
             algolia: {
                 appId: "4OZX85VEXQ",
-                apiKey: "7880f8f03cb89ce23f18d4359fb10e5e",
-                indexName: "upbound-docs",
+                apiKey: "9f96702edcf79d7097bedfce2813d49e",
+                indexName: "upbound",
                 contextualSearch: true,
                 searchPagePath: "search",
                 searchParameters: {},

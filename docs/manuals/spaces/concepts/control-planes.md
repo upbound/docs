@@ -215,7 +215,7 @@ Upbound gives users the ability to configure the collection of telemetry (logs, 
 [upbound-marketplace-1]: https://marketplace.upbound.io
 [gitops-with-control-planes]: /manuals/spaces/howtos/cloud-spaces/gitops
 [connect-control-planes-to-external-services]: /manuals/platform/howtos/oidc
-[spaces-documentation]: /manuals/spaces/features/secrets-management
-[spaces-documentation-1]: /manuals/spaces/features/backup-and-restore
+[spaces-documentation]: /manuals/spaces/howtos/secrets-management
+[spaces-documentation-1]: /manuals/spaces/howtos/backup-and-restore
 [otel]: https://otel.com
-[spaces-documentation-2]: /manuals/spaces/features/observability
+[spaces-documentation-2]: /manuals/spaces/howtos/observability
