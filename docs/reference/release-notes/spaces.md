@@ -21,6 +21,74 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v1.16.0
+
+### Release Date: 2026-03-09
+
+#### Breaking Changes
+
+:::important
+
+- **Ingress is no longer provisioned by default.** The Ingress resource is now
+  controller-agnostic. All ingress-nginx specific annotations, labels, and the
+  hardcoded `ingressClassName: nginx` have been removed. If you need Ingress, set
+  in your Helm values: `ingress.provision: true`,
+  `ingress.ingressClassName: "<your-class>"`, and add controller-specific
+  `ingress.annotations`, `ingress.podLabels`, and `ingress.namespaceLabels` as
+  needed. ingress-nginx is deprecated upstream (EOL March 2026). See the
+  [ingress-nginx migration guide](../manuals/spaces/howtos/self-hosted/ingress-nginx-migration.md)
+  for details. Recommended alternatives: LoadBalancer Service (simplest),
+  Gateway API, or any Ingress controller with TLS passthrough support.
+
+- **LogCollector tolerations:** Tolerations for the LogCollector daemonset have been
+  moved from `observability.collectors.tolerations` to
+  `observability.collectors.logCollector.tolerations`. Update your Helm values if
+  you use custom tolerations for the LogCollector.
+
+:::
+
+#### Important Changes
+
+- Spaces Apollo (Query API) was updated to v0.4.7 with stability fixes for ensuring
+  data is properly synced.
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
+
+#### Features
+
+- **Spaces Router via LoadBalancer:** You can expose the Spaces Router directly
+  with a LoadBalancer Service, without an ingress controller or gateway.
+  Use `externalTLS.host` for the externally routable hostname for TLS.
+- **Observability:**
+  - Added support for `prometheus.io/path` annotation in the control plane telemetry
+    collector (custom metrics paths with fallback to `/metrics`).
+  - Added support for `observability.spacesCollector.env` for injecting environment variables
+    into the Spaces OpenTelemetry Collector pods.
+  - Added support for the OTEL Filter Processor in SharedTelemetryConfigs to drop
+    metrics, logs, or traces.
+  - Tracing can be enabled in Apollo.
+  - Spaces API is now instrumented with tracing.
+  - Resources for the LogCollector daemonset are configurable via
+    `observability.collectors.logCollector.resources`.
+  - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
+- **Certificates:** Services reload the CA automatically and leaf certificates are
+  renewed when the Spaces CA is renewed. The `spaces-ca-bundle` is built with
+  both the old and new CAs for seamless rotation. For zero downtime with
+  webhooks during CA renewal we recommend running cert-manager v1.19+ or
+  enabling the CAInjectorMerging feature flag in cert-manager 1.17+.
+- **UXP v2 ControlPlanes** are created by default; set
+  `controlPlanes.uxp.v2.enabled` to `false` to disable.
+
+#### Bug Fixes
+
+- SharedTelemetry now properly cleans up its `status.provisioned`,
+  `status.failed`, and `status.selected` after a control plane is deleted.
+- ProviderConfig, ProviderConfigUsage, and ClusterProviderConfig are no longer
+  counted as Managed Resources by the UXP metering controller.
+
+#### Other Changes
+
+- Default resource requests added to `external-secrets-operator` Deployments.
+- Spaces Apollo image registry updated to `xpkg.upbound.io/spaces-artifacts`.
 
 ## v1.15.2
 
