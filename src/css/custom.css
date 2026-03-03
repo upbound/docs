@@ -136,10 +136,8 @@ html[data-theme="dark"] {
 /* ============================================================ */
 
 /* Restore list styles - @upbound/elements strips list-style globally */
-.markdown ul:not(.tabs):not(.menu__list),
-.markdown ol:not(.tabs):not(.menu__list),
-article ul:not(.tabs):not(.menu__list),
-article ol:not(.tabs):not(.menu__list) {
+article ul,
+article ol {
     list-style: revert;
     margin: revert;
     margin-bottom: 1.5rem;
@@ -147,24 +145,22 @@ article ol:not(.tabs):not(.menu__list) {
     padding-left: 1.5rem;
 }
 
-.markdown ul:not(.tabs):not(.menu__list) li,
-.markdown ol:not(.tabs):not(.menu__list) li,
-article ul:not(.tabs):not(.menu__list) li,
-article ol:not(.tabs):not(.menu__list) li {
+article ul li,
+article ol li {
     margin: revert;
     padding: revert;
     margin-bottom: 0.5rem;
 }
 
 /* Ensure nested lists also display correctly */
-.markdown ul:not(.tabs):not(.menu__list) ul,
-.markdown ul:not(.tabs):not(.menu__list) ol,
-.markdown ol:not(.tabs):not(.menu__list) ul,
-.markdown ol:not(.tabs):not(.menu__list) ol,
-article ul:not(.tabs):not(.menu__list) ul,
-article ul:not(.tabs):not(.menu__list) ol,
-article ol:not(.tabs):not(.menu__list) ul,
-article ol:not(.tabs):not(.menu__list) ol {
+.markdown ul ul,
+.markdown ul ol,
+.markdown ol ul,
+.markdown ol ol,
+article ul ul,
+article ul ol,
+article ol ul,
+article ol ol {
     margin-top: 0.5rem;
     margin-bottom: 0;
 }
@@ -291,18 +287,14 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Scope list styles to article and markdown content (exclude tabs and menus) */
-.markdown ul:not(.tabs):not(.menu__list),
-article ul:not(.tabs):not(.menu__list) {
+/* Scope list styles to article content only */
+article ul {
     list-style-position: outside !important;
-    display: block !important;
     list-style-type: disc !important;
 }
 
-.markdown ol:not(.tabs):not(.menu__list),
-article ol:not(.tabs):not(.menu__list) {
+article ol {
     list-style-position: outside !important;
-    display: block !important;
     list-style-type: decimal !important;
 }
 
