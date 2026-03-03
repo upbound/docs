@@ -75,6 +75,9 @@ Any important warnings or necessary information
 - **Spaces Router via LoadBalancer:** You can expose the Spaces Router directly
   with a LoadBalancer Service, without an ingress controller or gateway.
   Use `externalTLS.host` for the externally routable hostname for TLS.
+- **Ingress and Gateway API together:** Run both at once for zero-downtime
+  migration from ingress-nginx. See the [migration
+  guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/).
 - **Observability:**
   - Added support for `prometheus.io/path` annotation in the control plane telemetry
     collector (custom metrics paths with fallback to `/metrics`).
@@ -87,11 +90,11 @@ Any important warnings or necessary information
   - Resources for the LogCollector daemonset are configurable via
     `observability.collectors.logCollector.resources`.
   - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
-- **Certificates:** Services reload the Spaces CA automatically and leaf certificates
-  are automatically renewed when the Spaces CA is renewed. The `spaces-ca-bundle`
-  is built with both the old and new CAs for seamless rotation. For zero downtime
-  with webhooks during CA renewal we recommend running cert-manager v1.19+ or
-  enabling the CAInjectorMerging feature flag in cert-manager 1.17+.
+- **Certificate automation:** Services reload the Spaces CA automatically; leaf
+  certificates renew when the Spaces CA is renewed. The `spaces-ca-bundle`
+  includes both old and new CAs for seamless rotation. For zero downtime with
+  webhooks during CA renewal, use cert-manager v1.19+ or enable the
+  CAInjectorMerging feature flag in cert-manager 1.17+.
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes
   without additional configuration. This can be disabled by explicitly setting
   `controlPlanes.uxp.v2.enabled` to `false` if needed.
