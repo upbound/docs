@@ -22,6 +22,8 @@ your network connects outbound to the control plane. The control plane sends
 requests through this connection and receives responses through the same
 channel.
 
+![Private Network Agent architecture](/img/private-network-agent.png)
+
 This approach:
 
 - Requires only outbound connectivity from your private network.
