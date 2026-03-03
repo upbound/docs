@@ -333,6 +333,7 @@ See [Spaces installation docs][spaces-install] for detailed installation instruc
 
 ```bash
 helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version ${SPACES_VERSION} \
   --namespace upbound-system \
   -f values.yaml \
   --wait
@@ -444,13 +445,26 @@ helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --wait
 ```
 
-**4. Get the new load balancer address and update DNS**
+**4. Get the new load balancer address**
 
 ```bash
 kubectl get svc -n <controller-namespace> <controller-service> -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
 
-**5. Uninstall ingress-nginx**
+**5. Validate before switching DNS**
+
+Test connectivity using `--connect-to` so traffic is routed to the new controller
+before you change DNS:
+
+```bash
+CONTROLLER_LB=$(kubectl get svc -n <controller-namespace> <controller-service> -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+curl --connect-to "${SPACES_ROUTER_HOST}:443:${CONTROLLER_LB}:443" "https://${SPACES_ROUTER_HOST}/version"
+# Expected: 401 Unauthorized (routing works, auth required)
+```
+
+**6. Update your DNS record** to point to the new load balancer address.
+
+**7. Uninstall ingress-nginx**
 
 ```bash
 helm uninstall ingress-nginx --namespace ingress-nginx
@@ -734,6 +748,9 @@ After migration, verify connectivity:
 curl -v "https://${SPACES_ROUTER_HOST}/version"
 # Expected: 401 Unauthorized
 ```
+
+If you need to roll back, reinstall ingress-nginx, set `ingress.provision: true`
+(and your previous ingress values) in Helm values, then upgrade Spaces again.
 
 [envoy-install]: https://gateway.envoyproxy.io/docs/install/
 [spaces-install]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/
