@@ -53,7 +53,7 @@ Any important warnings or necessary information
   `ingress.ingressClassName: "<your-class>"`, and add controller-specific
   `ingress.annotations`, `ingress.podLabels`, and `ingress.namespaceLabels` as
   needed. ingress-nginx is deprecated upstream (EOL March 2026). See the
-  [ingress-nginx migration guide](../manuals/spaces/howtos/self-hosted/ingress-nginx-migration.md)
+  [ingress-nginx migration guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/)
   for details. Recommended alternatives: LoadBalancer Service (simplest),
   Gateway API, or any Ingress controller with TLS passthrough support.
 
@@ -92,8 +92,9 @@ Any important warnings or necessary information
   is built with both the old and new CAs for seamless rotation. For zero downtime
   with webhooks during CA renewal we recommend running cert-manager v1.19+ or
   enabling the CAInjectorMerging feature flag in cert-manager 1.17+.
-- **UXP v2 ControlPlanes** are created by default; set
-  `controlPlanes.uxp.v2.enabled` to `false` to disable.
+- **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes
+  without additional configuration. This can be disabled by explicitly setting
+  `controlPlanes.uxp.v2.enabled` to `false` if needed.
 
 #### Bug Fixes
 
