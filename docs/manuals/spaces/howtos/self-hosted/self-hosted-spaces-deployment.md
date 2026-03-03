@@ -81,7 +81,7 @@ kind: ClusterConfig
 metadata:
   name: ${SPACES_CLUSTER_NAME}
   region: ${SPACES_REGION}
-  version: "1.29"
+  version: "1.34"
 managedNodeGroups:
   - name: ng-1
     instanceType: m5.xlarge
@@ -110,6 +110,9 @@ addons:
   - name: aws-ebs-csi-driver
     wellKnownPolicies:
       ebsCSIController: true
+    configurationValues: |-
+      defaultStorageClass:
+        enabled: true
 EOF
 ```
 
@@ -210,7 +213,7 @@ export SPACES_TOKEN_PATH="/path/to/token.json"
 Set the version of Spaces software you want to install.
 
 ```ini
-export SPACES_VERSION=<!-- spaces_version -->
+export SPACES_VERSION="1.16.0"
 ```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the load balancer or ingress to route requests.
@@ -261,13 +264,14 @@ This guide exposes Spaces using a LoadBalancer Service on the spaces-router. No 
 Use a Network Load Balancer (L4), not an Application Load Balancer (L7). Spaces uses long-lived connections for watch traffic that L7 load balancers may timeout.
 :::
 
-Add the following to a `values.yaml` file (or use the same `--set` flags in the Helm install below). Replace `proxy.example.com` with your `SPACES_ROUTER_HOST`.
+Create a values file using `SPACES_ROUTER_HOST` (or use the same `--set` flags in the Helm install below). Run the command for your cloud:
 
 <CodeBlock cloud="aws">
 
-```yaml
+```bash
+cat <<EOF > values.yaml
 externalTLS:
-  host: proxy.example.com  # Use your SPACES_ROUTER_HOST
+  host: ${SPACES_ROUTER_HOST}
 
 router:
   proxy:
@@ -277,15 +281,17 @@ router:
         service.beta.kubernetes.io/aws-load-balancer-type: external
         service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
         service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+EOF
 ```
 
 </CodeBlock>
 
 <CodeBlock cloud="azure">
 
-```yaml
+```bash
+cat <<EOF > values.yaml
 externalTLS:
-  host: proxy.example.com  # Use your SPACES_ROUTER_HOST
+  host: ${SPACES_ROUTER_HOST}
 
 router:
   proxy:
@@ -293,15 +299,17 @@ router:
       type: LoadBalancer
       # Azure uses L4 by default; add annotations if needed for your setup
       annotations: {}
+EOF
 ```
 
 </CodeBlock>
 
 <CodeBlock cloud="gcp">
 
-```yaml
+```bash
+cat <<EOF > values.yaml
 externalTLS:
-  host: proxy.example.com  # Use your SPACES_ROUTER_HOST
+  host: ${SPACES_ROUTER_HOST}
 
 router:
   proxy:
@@ -309,6 +317,7 @@ router:
       type: LoadBalancer
       annotations:
         cloud.google.com/l4-rbs: enabled
+EOF
 ```
 
 </CodeBlock>
