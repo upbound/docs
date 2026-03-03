@@ -18,7 +18,7 @@ Each Spaces release is tested against specific Kubernetes versions:
 |----------------|----------------------------|
 | 1.15           | 1.32, 1.33, 1.34           |
 | 1.14           | 1.31, 1.32, 1.33           |
-| 1.13           | 1.30, 1.31, 1.32           |
+| 1.13           | 1.30, 1.31, 1.32, 1.33     |
 
 ## Deployment requirements
 
