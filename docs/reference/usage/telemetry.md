@@ -4,9 +4,15 @@ sidebar_position: 99
 description: Learn about telemetry data collection in Upbound and how to opt out
 ---
 
+<!-- vale Google.We = NO -->
 Upbound collects telemetry data to improve the product and provide better support to our users.
+<!-- vale Google.We = YES -->
 
+<!-- vale write-good.Passive = NO -->
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 ## What data is collected?
+<!-- vale Microsoft.HeadingPunctuation = YES -->
+<!-- vale write-good.Passive = YES -->
 
 Upbound collects the following telemetry data:
 
@@ -14,12 +20,14 @@ Upbound collects the following telemetry data:
 - Basic consumption information, such as the number of operations performed and claims created
 - Feature flag usage statistics
 - Component version information
-- `up` CLI commands that are executed (without capturing values)
+- `up` CLI commands you run (without capturing values)
 - License information
 
+<!-- vale Microsoft.HeadingPunctuation = NO -->
 ## How's data collected?
+<!-- vale Microsoft.HeadingPunctuation = YES -->
 
-Telemetry data is collected by both the Upbound CLI and Upbound Control Plane using the [OpenTelemetry](https://opentelemetry.io/) protocol. This data is sent securely to the Upbound telemetry service.
+Both the Upbound CLI and Upbound Control Plane collect telemetry data using the [OpenTelemetry](https://opentelemetry.io/) protocol. The system sends this data securely to the Upbound telemetry service.
 
 ## How to opt out
 
@@ -46,7 +54,7 @@ Run the following command to permanently disable telemetry in your CLI configura
 up config set telemetry.disabled true
 ```
 
-### Upbound Control Plane
+### Upbound control plane
 
 **Environment variable**
 

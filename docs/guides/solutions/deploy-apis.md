@@ -9,11 +9,15 @@ Crossplane configurations are the packaging and distribution mechanism for deplo
 - An API for Backstage, explained in a previous section
 - An API for databases-as-a-service
 
-There's no limit to the number of custom APIs you can install on a control plane. If you want to install more APIs, you can declare additional Configurations to roll out to the frontend control plane by specifying them in the Git source. Argo CD will detect the new packages and deploy them to the control plane. 
+Control planes support unlimited custom APIs. Add more by declaring additional
+Configurations in the Git source.pecifying them in the Git source. Argo CD
+detects the new packages and deploy them to the control plane. 
 
 ## Use APIs built by others
 
+<!-- vale gitlab.SentenceLength = NO -->
 The [Upbound Marketplace][marketplace] has a collection of Upbound-published and user-published Configuration packages that define a variety of APIs, ranging from S3 buckets to app models.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Build your own APIs
 

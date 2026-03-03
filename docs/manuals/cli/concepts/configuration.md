@@ -28,7 +28,7 @@ currently selected profile in the configuration file.
 
 Profiles have one of two types, each designed for different deployment scenarios:
 
-- **Cloud profiles**: Interact with Upbound Cloud and Connected Spaces within a given Upbound organization. These profiles are designed for users working with Upbound's managed service.
+- **Cloud profiles**: Interact with Upbound Cloud and Connected Spaces within a given Upbound organization. These profiles are for users working with Upbound's managed service.
 
 - **Disconnected profiles**: Interact with specific self-hosted Spaces not connected to Upbound Cloud. These profiles enable you to manage on-premises or private cloud deployments.
 
@@ -39,7 +39,7 @@ secure environments.
 
 ## Background
 
-Profile types were introduced in `up` v0.37.0 to support the growing variety of
+The `up` CLI introduced profile types in v0.37.0 to support the growing variety of
 deployment patterns in the Upbound ecosystem. All profiles created in previous
 versions are automatically treated as cloud profiles in newer versions, ensuring
 backward compatibility.

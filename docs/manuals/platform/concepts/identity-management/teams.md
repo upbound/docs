@@ -56,7 +56,7 @@ If the user isn't yet in the organization, invite them to join the organization.
 4. You can select from the list of available members in the organization who don't already belong to this team. You can select multiple users at a time.
 
 :::tip
-The default role that will be assigned to a team member is `owner`. Select the role to open a menu and change it to `member` if you wish.
+The default role assigned to a team member is `owner`. Select the role to open a menu and change it to `member` if you wish.
 :::
 
 ### Remove users

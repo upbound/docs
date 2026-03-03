@@ -3,10 +3,11 @@ title: Controllers
 weight: 250
 description: A guide to how to wrap and deploy an Upbound controller into control planes on Upbound.
 ---
-
+<!-- vale Google.We = NO -->
 :::important
 This feature is in private preview for select customers in Upbound Spaces. If you're interested in this feature, please [contact us](https://www.upbound.io/contact-us).
 :::
+<!-- vale Google.We = YES -->
 
 Upbound's _Controllers_ feature lets you build and deploy control plane software from the Kubernetes ecosystem. With the _Controllers_ feature, you're not limited to just managing resource types defined by Crossplane. Now you can create resources from _CustomResourceDefinitions_ defined by other Kubernetes ecosystem tooling. 
 
@@ -20,7 +21,9 @@ The Controllers feature provides the following benefits:
 * Use your control plane's package manager to handle the lifecycle of the control plane software and define dependencies between package.
 * Build powerful compositions that combine both Crossplane and Kubernetes _CustomResources_.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## How it works
+<!-- vale gitlab.HeadingContent = YES -->
 
 A _Controller_ is a package type that bundles control plane software from the Kubernetes ecosystem. Examples of such software includes:
 
@@ -28,7 +31,13 @@ A _Controller_ is a package type that bundles control plane software from the Ku
 - CI/CD tooling
 - Your own private custom controllers defined by your organization
 
-You build a _Controller_ package by wrapping a helm chart along with its requisite _CustomResourceDefinitions_. Your _Controller_ package gets pushed to an OCI registry, and from there you can apply it to a control plane like you would any other Crossplane package. Your control plane's package manager is responsible for managing the lifecycle of the software once applied.
+<!-- vale gitlab.SentenceLength = NO -->
+You build a _Controller_ package by wrapping a helm chart along with its
+requisite _CustomResourceDefinitions_. Your _Controller_ package gets pushed to
+an OCI registry, and from there you can apply it to a control plane like you
+would any other Crossplane package. The control plane's package manager manages
+the lifecycle of the software once applied.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Prerequisites
 
@@ -123,7 +132,8 @@ spec:
 EOF
 ```
 
-Your controller's file structure should look like this:
+
+The controller's file structure should look like this:
 
 ```ini
 .
@@ -255,7 +265,7 @@ spec:
 EOF
 ```
 
-Your controller's file structure should look like this:
+The controller's file structure should look like this:
 
 ```ini
 .

@@ -86,13 +86,13 @@ reference or selector.
 When matching a resource by name Crossplane looks for the name of the external
 resource in the Provider. 
 
-For example, a AWS VPC object named `my-test-vpc` has the external name
+For example, a AWS VPC object named `test-vpc` has the external name
 `vpc-01353cfe93950a8ff`.
 
 ```shell
 kubectl get vpc
 NAME            READY   SYNCED   EXTERNAL-NAME           AGE
-my-test-vpc     True    True     vpc-01353cfe93950a8ff   49m
+test-vpc     True    True     vpc-01353cfe93950a8ff   49m
 ```
 
 To match the VPC by name, use the external name. For example, creating a Subnet
@@ -112,14 +112,20 @@ spec:
 To match a resource based on the name of the managed resource and not the
 external resource name inside the Provider, use a `nameRef`.
 
-For example, a AWS VPC object named `my-test-vpc` has the external name
+For example, a AWS VPC object named `test-vpc` has the external name
 `vpc-01353cfe93950a8ff`.
+
+<!-- vale Google.FirstPerson = NO -->
 
 ```shell
 kubectl get vpc
 NAME            READY   SYNCED   EXTERNAL-NAME           AGE
-my-test-vpc     True    True     vpc-01353cfe93950a8ff   49m
+
+test-vpc     True    True     vpc-01353cfe93950a8ff   49m
+
 ```
+
+<!-- vale Google.FirstPerson = YES -->
 
 To match the VPC by name reference, use the managed resource name. For example,
 creating a Subnet managed resource attached to this VPC.
@@ -131,7 +137,7 @@ spec:
   forProvider:
     # Removed for brevity
     vpcIdRef: 
-      name: my-test-vpc
+      name: test-vpc
 ```      
 
 ##### Matching by selector
@@ -140,7 +146,7 @@ Matching by selector is the most flexible matching method.
 
 Use `matchLabels` to match the labels applied to a resource. For example, this
 Subnet resource only matches VPC resources with the label 
-`my-label: label-value`.
+`test-label: label-value`.
 
 ```yaml
 apiVersion: ec2.aws.upbound.io/v1beta1
@@ -150,7 +156,7 @@ spec:
     # Removed for brevity
     vpcIdSelector: 
       matchLabels:
-        my-label: label-value
+        test-label: label-value
 ```
 
 ##### Matching by controller reference 
@@ -158,8 +164,7 @@ spec:
 Matching a controller reference ensures that the matching resource has the same
 Kubernetes controller reference.
 
-This is useful for matching a resource that's composed by the same composite
-resource (XR).
+Matching helps trace resources composed by the same composite resource (XR).
 
 :::note
 Learn more about composite resources in the
@@ -188,12 +193,14 @@ Crossplane allows you to edit the immutable field of a managed resource, but
 doesn't apply the change. Crossplane never deletes a resource based on a
 `forProvider` change. 
 
+<!-- vale write-good.Passive = NO -->
 :::note
 Crossplane behaves differently than other tools like Terraform. Terraform
 deletes and recreates a resource to change an immutable field. Crossplane only
 deletes an external resource if their corresponding managed 
 resource object is deleted from Kubernetes.
 :::
+<!-- vale write-good.Passive = YES -->
 
 #### Late initialization
 
@@ -207,9 +214,8 @@ assigns an availability zone, Crossplane uses that value to populate the
 `spec.forProvider.availabilityZone` field.
 
 :::note
-With [managementPolicies][policies],
-this behavior can be turned off by not including the `LateInitialize` policy in
-the `managementPolicies` list.
+With [managementPolicies][policies], you can turn this off by not including the
+`LateInitialize` policy in the `managementPolicies` list.
 :::
 
 ### initProvider
@@ -387,7 +393,7 @@ field.
 apiVersion: database.aws.upbound.io/v1beta1
 kind: RDSInstance
 metadata:
-  name: my-rds-instance
+  name: rds-instance
 spec:
   forProvider:
   # Removed for brevity
@@ -432,8 +438,8 @@ By default Providers give external resources the same name as the Kubernetes
 object.
 
 For example, a managed resource named 
-my-rds-instance has
-the name `my-rds-instance` as an external resource inside the Provider's
+test-rds-instance has
+the name `test-rds-instance` as an external resource inside the Provider's
 environment. 
 
 ```yaml
@@ -441,13 +447,13 @@ apiVersion: database.aws.upbound.io/v1beta1
 kind: RDSInstance
 metadata:
   namespace: default
-  name: my-rds-instance
+  name: test-rds-instance
 ```
 
 ```shell
 kubectl get rdsinstance
 NAME                 READY   SYNCED   EXTERNAL-NAME        AGE
-my-rds-instance      True    True     my-rds-instance      11m
+test-rds-instance      True    True     test-rds-instance      11m
 ```
 
 Managed resource created with a `crossplane.io/external-name` 
@@ -455,8 +461,8 @@ annotation already provided use the annotation value as the external
 resource name.
 
 For example, the Provider creates managed resource named 
-my-rds-instance but uses
-the name my-custom-name
+test-rds-instance but uses
+the name test-custom-name
 for the external resource inside AWS.
 
 ```yaml
@@ -464,22 +470,26 @@ apiVersion: database.aws.crossplane.io/v1beta1
 kind: RDSInstance
 metadata:
   namespace: default
-  name: my-rds-instance  
+  name: test-rds-instance  
   annotations: 
-    crossplane.io/external-name: my-custom-name
+    crossplane.io/external-name: test-custom-name
 ```
 
 ```shell
 kubectl get rdsinstance
 NAME                 READY   SYNCED   EXTERNAL-NAME        AGE
-my-rds-instance      True    True     my-custom-name       11m
+test-rds-instance      True    True     test-custom-name       11m
 ```
 
 ### Creation annotations
 
+<!-- vale write-good.Passive = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
 When an external system like AWS generates nondeterministic resource names it's
 possible for a provider to create a resource but not record that it did. When
 this happens the provider can't manage the resource.
+<!-- vale write-good.Passive = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
 
 :::tip
 Crossplane calls resources that a provider creates but doesn't manage _leaked
@@ -499,12 +509,12 @@ Use `kubectl get` to view the annotations on a managed resource. For example, an
 AWS VPC resource:
 
 ```yaml
-$ kubectl get -o yaml vpc my-vpc
+$ kubectl get -o yaml vpc test-vpc
 apiVersion: ec2.aws.m.upbound.io/v1beta1
 kind: VPC
 metadata:
   namespace: default
-  name: my-vpc
+  name: test-vpc
   annotations:
     crossplane.io/external-name: vpc-1234567890abcdef0
     crossplane.io/external-create-pending: "2023-12-18T21:48:06Z"
@@ -539,8 +549,8 @@ the provider it's safe to proceed.
 Anytime an external system generates a resource's name there is a risk the
 provider could leak the resource.
 
-The safest thing for a provider to do when it detects that it might have leaked
-a resource is to stop and wait for human intervention.
+The safest thing for a provider to do when it detects a possible leaked
+ resource is to stop and wait for human intervention.
 
 This ensures the provider doesn't create duplicates of the leaked resource.
 Duplicate resources can be costly and dangerous.
@@ -551,7 +561,7 @@ determine creation result` event associated with the managed resource. Use
 `kubectl describe` to see the event.
 
 ```shell
-kubectl describe queue my-sqs-queue
+kubectl describe queue test-sqs-queue
 
 # Removed for brevity
 
@@ -564,10 +574,12 @@ Events:
 Providers use the creation annotations to detect that they might have leaked a
 resource.
 
+<!-- vale gitlab.SentenceLength = NO -->
 Each time a provider reconciles a managed resource it checks the resource's
 creation annotations. If the provider sees a create pending time that's more
 recent than the most recent create succeeded or create failed time, it knows
 that it might have leaked a resource.
+<!-- vale gitlab.SentenceLength = YES -->
 
 :::note
 Providers don't remove the creation annotations. They use the timestamps to
@@ -635,7 +647,7 @@ apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Instance
 metadata:
   namespace: default
-  name: my-rds-instance
+  name: test-rds-instance
   annotations:
     crossplane.io/paused: "true"
 spec:

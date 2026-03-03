@@ -311,7 +311,7 @@ platform-refs:
 Two ways exist to migrate from Monolithic providers to Family providers.
 
 :::warning
-Users who will use the Automated method should carefully review the
+Users who choosing the Automated method should review the
 Pre-requisites section of the relevant part.
 :::
 
@@ -325,7 +325,6 @@ Migrating from a monolithic provider to a family provider allows the family prov
 :::warning
 Upbound only supports migration from Upbound's official monolithic providers at present.
 
-Support for migration from Crossplane community providers to Upbound provider families will be available for Upbound customers in the near future.
 :::
 
 #### Backup existing Crossplane resources
@@ -655,8 +654,8 @@ which might require the necessary file permissions to allow execution.
   ```
 
 :::note
-In Darwin/macOS, the following error can be shown while trying to run the
-executable. Please allow this application in the Security Settings by using the
+In Darwin/macOS, you might get the following error.
+Please allow this application in the Security Settings by using the
 `Allow Anyway`.
 ![Malicious Software Error](/img/malicious-software.jpeg)
 ![Allow Anyway](/img/allow-anyway.jpeg)
@@ -700,7 +699,6 @@ user with a series of questions to gather the required inputs:
 
 <!-- vale Google.Will = YES -->
 <!-- vale gitlab.FutureTense = YES -->
-<!-- vale write-good.Passive = YES -->
 
 After the tool collects all the inputs it needs, it generates and exports the
 migration plan to the specified path. It then asks whether to continue to
@@ -720,10 +718,11 @@ option to list the execution instructions.
 
 :::note
 The purpose of this intermediary step is to allow for manual verification to ensure
-no unexpected steps are introduced in the plan. While the review process is optional
+no unexpected steps are introduced in the plan. The review process is optional
 and doesn't directly affect the transition to the execution phase, it's strongly
 recommended to complete the review process.
 :::
+<!-- vale write-good.Passive = YES -->
 
 #### Execution
 

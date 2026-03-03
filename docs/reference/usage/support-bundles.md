@@ -19,7 +19,7 @@ The `up` CLI uses [troubleshoot.sh] to collect diagnostic snapshots from UXP, Sp
 up support-bundle collect
 ```
 
-This outputs a timestamped `tar.gz` file (e.g., `upbound-support-bundle-20250115-163905.tar.gz`).
+This outputs a timestamped `tar.gz` file (for example, `upbound-support-bundle-20250115-163905.tar.gz`).
 
 By default, the bundle includes logs and cluster resources from:
 
@@ -36,7 +36,9 @@ up support-bundle collect --include-namespaces "prefix-*"
 up support-bundle collect --exclude-namespaces upbound-system
 ```
 
+<!-- vale Google.Headings = NO -->
 ### Crossplane resources only
+<!-- vale Google.Headings = YES -->
 
 Skip log collection and gather only Crossplane CRDs and associated custom resources:
 
@@ -46,7 +48,7 @@ up support-bundle collect --crossplane-resources-only
 
 ## Viewing a support bundle
 
-The `serve` command starts a local API server and generates a kubeconfig, letting you browse bundle contents with kubectl or k9s:
+The `serve` command starts a local API server and generates a kubeconfig, letting you browse bundle contents with kubectl or `k9s`:
 
 ```bash
 up support-bundle serve ./upbound-support-bundle-20250115-163905.tar.gz
@@ -73,10 +75,10 @@ Sensitive information is automatically redacted, including:
 
 ## Shared responsibility
 
-Automatic redaction covers common cases but cannot guarantee complete removal of all sensitive data. Before sharing a support bundle with Upbound:
+Automatic redaction covers common cases but can't guarantee complete removal of all sensitive data. Before sharing a support bundle with Upbound:
 
 1. Use `up support-bundle serve` to review the contents
-2. Remove any sensitive information or PII that wasn't automatically redacted
+2. Remove any sensitive information or personally identifiable information that wasn't automatically redacted
 3. Add custom redactors if you need to exclude specific patterns
 
 ## Custom configuration
@@ -95,7 +97,7 @@ up support-bundle collect -c support-bundle-config.yaml
 
 The config file supports multi-document YAML—include both `SupportBundle` and `Redactor` resources separated by `---`.
 
-When using `-c`, the `--include-namespaces` and `--exclude-namespaces` flags are ignored.
+Use the `-c` flag to exclude`--include-namespaces` and `--exclude-namespaces` flags from the support bundle.
 
 For redactor syntax, see the [troubleshoot.sh redactors documentation][redactors].
 

@@ -15,7 +15,7 @@ and traces.
 
 Upbound Spaces offers two levels of observability:
 
-1. **Space-level observability** - Observes the cluster infrastructure where Spaces software is installed (Self-Hosted only)
+1. **Space-level observability** - Observes the cluster infrastructure hosting Spaces software (Self-Hosted only)
 2. **Control plane observability** - Observes workloads running within individual control planes
 
 <!-- vale Google.Headings = NO -->

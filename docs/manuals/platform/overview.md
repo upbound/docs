@@ -15,8 +15,8 @@ collaboration.
     accounts work together
 * Authorization and RBAC - Configure Role-based access control systems in your
     [Kubernetes cluster][k8srbac] or use [Upbound's built in RBAC][uprbac]
-* [Data Residency][data] - Learn where and how your data is stored and processed for
-    compliance requirements
+* [Data Residency][data] - Learn where and how Upbound stores and processes your
+    data for compliance requirements
 * [Single Sign-On integration][sso] - Set up and configure SSO with an identity
     provider
 

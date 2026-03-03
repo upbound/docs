@@ -19,9 +19,11 @@ only applicable to self-hosted Space administrators. This lets Space
 administrators observe the cluster infrastructure where the Space software gets
 installed.
 
+<!-- vale gitlab.SentenceLength = NO -->
 When you enable observability in a Space, Upbound deploys a single
 [OpenTelemetry Collector][opentelemetry-collector] to collect and export metrics,
 logs, and traces to your configured observability backends.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Prerequisites
 
@@ -107,7 +109,7 @@ across services.
 
 The router uses:
 
-- **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
+- **Protocol**: `OTLP` (OpenTelemetry Protocol) over gRPC
 - **Service name**: `spaces-router`
 - **Transport**: TLS-encrypted connection to telemetry collector
 
@@ -126,14 +128,13 @@ observability:
 
 The sampling behavior depends on whether a parent trace context exists:
 
-- **With parent context**: If a `traceparent` header is present, the parent's
-  sampling decision is respected, enabling proper distributed tracing across services.
+- **With parent context**: If a `traceparent` header is present, the system respects the parent's sampling decision, enabling proper distributed tracing across services.
 - **Root spans**: For new traces without a parent, Envoy samples based on
   `x-request-id` hashing. The default sampling rate is 10%.
 
 #### TLS configuration for external collectors
 
-To send traces to an external OTLP collector, configure the endpoint and TLS settings:
+To send traces to an external `OTLP` collector, configure the endpoint and TLS settings:
 
 ```yaml
 observability:
@@ -146,10 +147,7 @@ observability:
       caBundleSecretRef: "custom-ca-secret"
 ```
 
-If `caBundleSecretRef` is set, the router uses the CA bundle from the referenced
-Kubernetes secret. The secret must contain a key named `ca.crt` with the
-PEM-encoded CA bundle. If not set, the router uses the Spaces CA for the
-in-cluster collector.
+When you set `caBundleSecretRef`, the router uses the CA bundle from the referenced Kubernetes secret. The secret must contain a key named `ca.crt` with the PEM-encoded CA bundle. When not set, the router uses the Spaces CA for the in-cluster collector.
 
 #### Custom trace tags
 
@@ -283,7 +281,7 @@ unhealthy upstreams. Two priority levels exist: `DEFAULT` for watch requests and
 ### Downstream listener metrics
 
 Metrics tracking requests received from clients such as kubectl and API consumers.
-Use these metrics to monitor client connection patterns, overall request volume,
+Use these metrics to monitor client connection patterns, total request volume,
 and responses sent to external users.
 
 | Name | Description |

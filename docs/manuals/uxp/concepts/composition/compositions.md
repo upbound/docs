@@ -75,6 +75,7 @@ that template Crossplane resources. Crossplane calls the composition functions
 to determine what resources it should create when you create a composite
 resource (XR).
 
+<!-- vale gitlab.Uppercase = NO -->
 :::tip
 Crossplane has functions that let you template composed resources using YAML
 [patch and transforms][function-patch-and-transform].
@@ -87,6 +88,7 @@ Helm-like
 You can also [write your own function](#write-a-composition-function) using Go
 or Python.
 :::
+<!-- vale gitlab.Uppercase = YES -->
 
 ### Install a composition function
 
@@ -519,8 +521,7 @@ Composition functions let you replace complicated Compositions with code written
 in your programming language of choice. Crossplane has tools, software
 development kits (SDKs) and templates to help you write a function.
 
-Here's an example of a tiny, hello world function. This example is written in
-[Go](https://go.dev).
+Here's a "hello world" function example. This example uses [Go](https://go.dev).
 
 ```go
 func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
@@ -565,7 +566,7 @@ sequenceDiagram
 ```
 
 When you create, update, or delete a composite resource that uses composition
-functions Crossplane calls each function in the order they appear in the
+functions, Crossplane calls each function. It calls them in the order they appear in the
 Composition's pipeline. Crossplane calls each function by sending it a gRPC
 RunFunctionRequest. The function must respond with a gRPC RunFunctionResponse.
 
@@ -589,12 +590,14 @@ Most composition functions read the observed state of the composite resource,
 and use it to add composed resources to the desired state. This tells Crossplane
 which composed resources it should create or update.
 
+<!-- vale gitlab.SentenceLength = NO -->
 If the function needs __extra resources__ to determine the desired state it can
 request any cluster-scoped resource Crossplane already has access to, either by
 name or labels through the returned RunFunctionResponse. Crossplane then calls
 the function again including the requested __extra resources__ and the
 __context__ returned by the Function itself alongside the same __input__,
 __observed__ and __desired state__ of the previous RunFunctionRequest. Functions
+<!-- vale gitlab.SentenceLength = YES -->
 can iteratively request __extra resources__ if needed, but to avoid endlessly
 looping Crossplane limits the number of iterations to 5. Crossplane considers
 the function satisfied as soon as the __extra resources__ requests become
@@ -674,6 +677,7 @@ resource from existing.
 Most function SDKs handle copying desired state automatically.
 :::
 
+<!-- vale gitlab.SentenceLength = NO -->
 A function should only add the fields it cares about to the desired state. It
 should add these fields every time Crossplane calls it. If a function adds a
 field to the desired state once, but doesn't add it the next time it's called,
@@ -691,6 +695,7 @@ terminology, the desired state is a *fully specified intent*.
 For example, if all a function wants is to make sure an S3 bucket in region
 `us-east-2` exists, it should add this resource to its desired composed
 resources.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ```yaml
 apiVersion: s3.aws.m.upbound.io/v1beta1

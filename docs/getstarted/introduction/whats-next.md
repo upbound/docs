@@ -24,6 +24,7 @@ handling patterns.
 
 **Build intelligent control planes**: Learn to create [AI-augmented control planes][intelligent-control-planes] that adapt and self-heal.
 
+<!-- vale Google.We = NO -->
 **Create an internal developer platform**: Follow our [Internal Developer
 Platform guide][idp-guide] to build comprehensive developer experiences.
 
@@ -50,6 +51,11 @@ cluster][uxp] with full control.
 
 - Join our [Slack community][slack] for support, best practices, and to share what you build.
 - Follow our [blog][blog] for talks, workshops, and more guides.
+<!-- vale Google.We = YES -->
+
+## Next steps
+
+Explore additional resources and deepen your knowledge of Upbound Crossplane.
 
 
 [workshop]: /getstarted/builders-workshop/project-foundations/
