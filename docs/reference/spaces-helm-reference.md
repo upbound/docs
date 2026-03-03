@@ -14,7 +14,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.2.11 |
+| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.4.7 |
 
 ## Values
 
@@ -59,11 +59,22 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.apollo.apiserver.service.admin.port | int | `8444` |  |
 | apollo.apollo.apiserver.service.api.port | int | `8443` |  |
 | apollo.apollo.mode.deploymentMode | string | `"multi-tenant"` |  |
+| apollo.apollo.observability.enabled | bool | `false` |  |
+| apollo.apollo.observability.tracing.enabled | bool | `false` |  |
+| apollo.apollo.observability.tracing.endpoint | string | `"telemetry-spaces-collector.upbound-system.svc.cluster.local"` |  |
+| apollo.apollo.observability.tracing.insecure | bool | `false` |  |
+| apollo.apollo.observability.tracing.port | int | `4317` |  |
+| apollo.apollo.observability.tracing.sampling.rate | float | `0.1` |  |
+| apollo.apollo.observability.tracing.serviceName | string | `"spaces-apollo"` |  |
+| apollo.apollo.observability.tracing.tls.caBundleSecretRef | string | `"spaces-ca-bundle"` |  |
 | apollo.apollo.priorityClassName | string | `"spaces-system-high-priority"` |  |
+| apollo.apollo.secretRefs.spacesCa.key | string | `"ca-bundle.pem"` |  |
+| apollo.apollo.secretRefs.spacesCa.name | string | `"spaces-ca-bundle"` |  |
 | apollo.apollo.storage.postgres.create | bool | `true` |  |
 | apollo.apollo.storage.postgres.sidecar | bool | `false` |  |
 | apollo.apollo.syncer.enabled | bool | `false` |  |
-| apollo.apollo.syncer.image.tag | string | `"v0.2.11"` |  |
+| apollo.apollo.syncer.image.tag | string | `"v0.4.7"` |  |
+| apollo.registry | string | `"xpkg.upbound.io/spaces-artifacts"` |  |
 | authentication.hubIdentities | bool | `true` | This enables respecting built in Kubernetes identities (clientcertificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified within the Connected Space's hub. |
 | authentication.structuredConfig | string | `""` | Enables consumption of JWT Authenticators via Authentication Configuration per https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration <br> The below property takes the name of a configmap that contains a structured authentication configuration. |
 | authorization.hubRBAC | bool | `true` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
@@ -176,7 +187,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.xgql.resources.limits.memory | string | `"1Gi"` | Memory limit for the spaces control plane xgql pod. |
 | controlPlanes.uxp.xgql.resources.requests.cpu | string | `"50m"` | CPU request for the spaces control plane xgql pod. |
 | controlPlanes.uxp.xgql.resources.requests.memory | string | `"50Mi"` | Memory request for the spaces control plane xgql pod. |
-| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.178.g070bbbf"` | The tag of the xgql image to deploy. |
+| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.180.g864b87f"` | The tag of the xgql image to deploy. |
 | controlPlanes.vcluster.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for vcluster Pods. |
 | controlPlanes.vcluster.extraSyncLabels | string | `""` | Extra pod labels to be synced by the vcluster. This is a string consisting of a comma-separated list of label keys. |
 | controlPlanes.vcluster.resources.limits.cpu | string | `"3000m"` | CPU limit for the spaces control plane vcluster pod. |
@@ -252,10 +263,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.webhookInit.image.repository | string | `"hyperspace"` | The repository for the spaces controller webhook init container image. |
 | controller.webhookInit.image.tag | string | `""` | The tag for the spaces controller webhook init container image. |
 | development | object | `{}` | Development only configurations, not for production use. @schema additionalProperties: true @schema |
-| externalTLS | object | `{"caBundleSecret":{"key":"ca.crt","name":""},"tlsSecret":{"name":""}}` | TLS configuration for the external traffic. |
+| externalTLS | object | `{"caBundleSecret":{"key":"ca.crt","name":""},"host":"","tlsSecret":{"name":""}}` | TLS configuration for the external traffic. |
 | externalTLS.caBundleSecret | object | `{"key":"ca.crt","name":""}` | CA secret configuration for external traffic. spaces-router will use this CA (if not in insecure mode) and ingress-public configmap will contain this CA bundle. |
 | externalTLS.caBundleSecret.key | string | `"ca.crt"` | Key of the external CA secret that contains the CA bundle. |
 | externalTLS.caBundleSecret.name | string | `""` | Name of the secret containing the external CA bundle. |
+| externalTLS.host | string | `""` | Specifies the externally routable hostname for Spaces. If empty, falls back to gatewayAPI.host or ingress.host. |
 | externalTLS.tlsSecret | object | `{"name":""}` | TLS secret name that contains the serving certificate and key. |
 | externalTLS.tlsSecret.name | string | `""` | Name of the secret containing the TLS serving certificate and key. |
 | features.alpha | object | { ... } | NOTE: Alpha features are subject to removal or breaking changes without notice, and generally not considered ready for use in production. They have to be optional even if they are enabled. |
@@ -285,18 +297,19 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | gatewayAPI.gateway.provision | bool | `false` | Specifies whether the helm chart should provision the Gateway resource for routing external traffic into the cluster. |
 | gatewayAPI.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | gatewayAPI.insecure | bool | `false` | Disable TLS at the endpoints |
-| gatewayAPI.namespaceLabels | object | `{}` | Labels that are defined on the namespace of the Envoy proxy pod. Default value is:<br> kubernetes.io/metadata.name: envoy-gateway-system |
-| gatewayAPI.podLabels | object | `{}` | Labels that are defined on the Envoy proxy pod. Default value is:<br> app.kubernetes.io/name: envoy<br> app.kubernetes.io/component: proxy<br> app.kubernetes.io/managed-by: envoy-gateway |
+| gatewayAPI.namespaceLabels | object | `{}` | Labels that identify the namespace containing the Gateway API pods. Used in NetworkPolicy rules along with podLabels to allow traffic from the gateway to spaces-router. Example for Envoy Gateway:   kubernetes.io/metadata.name: envoy-gateway-system |
+| gatewayAPI.podLabels | object | `{}` | Labels that identify the Gateway API pods. Used in NetworkPolicy rules to allow traffic from the gateway to spaces-router. Must match your Gateway implementation's pod labels. Example for Envoy Gateway:   app.kubernetes.io/name: envoy   app.kubernetes.io/component: proxy   app.kubernetes.io/managed-by: envoy-gateway |
 | gatewayAPI.spacesRouterRoute | object | { ... } | Configurations for the TLS or HTTP route that forwards external traffic into spaces-router. |
 | gatewayAPI.spacesRouterRoute.provision | bool | `false` | Specifies whether the Helm chart should provision the TLSRoute or HTTPRoute resource (depending on how spaces-router is configured) for routing traffic to spaces-router. |
 | imagePullSecrets | list | `[{"name":"upbound-pull-secret"}]` | NOTE: only an imagePullSecret of "upbound-pull-secret" is currently supported. |
-| ingress | object | `{"annotations":{},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"provision":true}` | Configurations for external requests coming into the space. |
-| ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the spaces-router deployment. |
+| ingress | object | `{"annotations":{},"host":"proxy.upbound-127.0.0.1.nip.io","ingressClassName":"","insecure":false,"namespaceLabels":{},"podLabels":{},"provision":false}` | Configurations for the Ingress resource. |
+| ingress.annotations | object | `{}` | Allows setting ingress annotations for the external facing Ingress that terminates at the spaces-router deployment. Use this for controller-specific configuration. |
 | ingress.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
-| ingress.insecure | bool | `false` | Disable TLS at the endpoints |
-| ingress.namespaceLabels | object | `{}` | .Labels that are defined on the namespace of ingress-nginx pod. Default value is:<br> kubernetes.io/metadata.name: ingress-nginx |
-| ingress.podLabels | object | `{}` | Labels that are defined on the ingress-nginx pod. Default value is:<br> app.kubernetes.io/instance: ingress-nginx<br> app.kubernetes.io/component: controller<br> app.kubernetes.io/name: ingress-nginx |
-| ingress.provision | bool | `true` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
+| ingress.ingressClassName | string | `""` | The IngressClass name to use. Must match the name of an IngressClass in your cluster. Leave empty to use the cluster's default IngressClass. |
+| ingress.insecure | bool | `false` | Disable TLS at the endpoints. |
+| ingress.namespaceLabels | object | `{}` | Labels that identify the namespace containing the ingress controller pods. Used in NetworkPolicy rules along with podLabels to allow traffic from the ingress controller to spaces-router. Example for Traefik:   kubernetes.io/metadata.name: traefik |
+| ingress.podLabels | object | `{}` | Labels that identify the ingress controller pods. Used in NetworkPolicy rules to allow traffic from the ingress controller to spaces-router. Must match your ingress controller's pod labels. Example for Traefik:   app.kubernetes.io/name: traefik |
+| ingress.provision | bool | `false` | Specifies whether the helm chart should create an Ingress resource for routing requests to the spaces-router. |
 | metering.aggregationInterval | string | `"1h"` | How often to aggregate measurements into hourly usage data. |
 | metering.enabled | bool | `false` | This enables metering collection for control planes. |
 | metering.interval | string | `"1m"` | How often to collect measurements from control planes. |
@@ -311,15 +324,20 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | metering.storage.postgres.connection.url | string | `""` | The connection URL (host:port format, e.g., "postgres.example.com:5432"). |
 | metering.workerCount | int | `10` | Number of workers for parallel measurement collection. |
 | nameOverride | string | `""` | The name of the chart. |
-| observability.collectors | object | `{"apiServer":{"auditPolicy":""},"includeSystemTelemetry":false,"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":"","tolerations":[]}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
+| observability.collectors | object | `{"apiServer":{"auditPolicy":""},"includeSystemTelemetry":false,"logCollector":{"resources":{"limits":{"cpu":null,"memory":null},"requests":{"cpu":"10m","memory":"100Mi"}},"tolerations":[]},"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metrics and traces ( and logs in the future) from the Control Plane. <br> Use SharedTelemetryConfig API to configure the exporters for Control Planes and Control Plane Groups. <br> Control Plane telemetry collection is disabled by default and gated by the "features.alpha.observability.enabled" parameter. |
 | observability.collectors.includeSystemTelemetry | bool | `false` | If true, control plane telemetry will emit telemetry data from control plane system components, such as the api server, etcd. |
+| observability.collectors.logCollector | object | `{"resources":{"limits":{"cpu":null,"memory":null},"requests":{"cpu":"10m","memory":"100Mi"}},"tolerations":[]}` | Resource configuration for the control-plane-log-collector DaemonSet that runs on host nodes to aggregate logs from control planes with logging enabled. |
+| observability.collectors.logCollector.resources.limits.cpu | string | `nil` | CPU limit for the log collector DaemonSet pods. |
+| observability.collectors.logCollector.resources.limits.memory | string | `nil` | Memory limit for the log collector DaemonSet pods. |
+| observability.collectors.logCollector.resources.requests.cpu | string | `"10m"` | CPU request for the log collector DaemonSet pods. |
+| observability.collectors.logCollector.resources.requests.memory | string | `"100Mi"` | Memory request for the log collector DaemonSet pods. |
+| observability.collectors.logCollector.tolerations | list | `[]` | Tolerations for the log collector DaemonSet pods. |
 | observability.collectors.repository | string | `"opentelemetry-collector-spaces"` | Repository for the OpenTelemetry collector image. |
 | observability.collectors.resources.limits.cpu | string | `"100m"` | CPU limit for the OpenTelemetry collector pod. |
 | observability.collectors.resources.limits.memory | string | `"1Gi"` | Memory limit for the OpenTelemetry collector pod. |
 | observability.collectors.resources.requests.cpu | string | `"10m"` | CPU request for the OpenTelemetry collector pod. |
 | observability.collectors.resources.requests.memory | string | `"100Mi"` | Memory request for the OpenTelemetry collector pod. |
 | observability.collectors.tag | string | `""` | Tag for the OpenTelemetry collector image. |
-| observability.collectors.tolerations | list | `[]` | Tolerations for the telemetry log collectors daemonset pods. |
 | observability.enabled | bool | `false` | This enables the observability feature within this space.<br> Enabling observability requires OpenTelemetry Operator for Kubernetes to be installed in the cluster. See https://opentelemetry.io/docs/kubernetes/operator/ |
 | observability.spacesCollector | object | `{"config":{"exportPipeline":{"logs":[],"metrics":[],"traces":[]},"exporters":{"debug":null}},"env":[],"repository":"opentelemetry-collector-spaces","resources":{"limits":{"cpu":"100m","memory":"1Gi"},"requests":{"cpu":"10m","memory":"100Mi"}},"tag":""}` | Observability configuration to collect metric and logs from the Spaces machinery and send them to the specified exporters. When enabled, collects metrics from Spaces infrastructure components including router control plane and Envoy proxy metrics (timeouts, status codes, latency, circuit breakers). |
 | observability.spacesCollector.config.exportPipeline | object | `{"logs":[],"metrics":[],"traces":[]}` | The space-level OpenTelemetry collector exporter configuration. <br> otlphttp: <br>   endpoint: https://otlp.eu01.nr-data.net <br>   headers: <br>     api-key: "${env:API_KEY}" <br> |
@@ -344,7 +362,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.tracing.tls | object | `{"caBundleSecretRef":""}` | TLS configuration for the telemetry collector connection. |
 | observability.tracing.tls.caBundleSecretRef | string | `""` | Name of the secret containing a CA bundle for validating the telemetry collector's certificate. The secret must contain a key named 'ca.crt' with the PEM-encoded CA bundle. Use this when connecting to external collectors. If empty, uses the Spaces CA for in-cluster collectors. |
 | registry | string | `"xpkg.upbound.io/spaces-artifacts"` | Specifies the registry where the containers used in the spaces deployment are served from. |
-| router | object | `{"controlPlane":{"command":[],"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"extraVolumes":[],"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80,"targetMemoryUtilizationPercentage":0},"insecure":false,"podAnnotations":{},"podLabels":{},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"affinity":{},"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"nodeSelector":{},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"annotations":{},"http":{"appProtocol":"https","name":"https","port":8443},"type":"ClusterIP"},"tolerations":[]},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"spaces-router-tls","upboundIAMCABundle":""},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Configurations for the space router deployment. |
+| router | object | `{"controlPlane":{"command":[],"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"extraVolumes":[],"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80,"targetMemoryUtilizationPercentage":0},"insecure":false,"podAnnotations":{},"podLabels":{},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"affinity":{},"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"hostPort":null,"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"nodeSelector":{},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"annotations":{},"http":{"appProtocol":"https","name":"https","port":8443},"type":"ClusterIP"},"tolerations":[]},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"spaces-router-tls","upboundIAMCABundle":""},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Configurations for the space router deployment. |
 | router.controlPlane.command | list | `[]` | The command to run for the router's envoy control plane. |
 | router.controlPlane.extraArgs | list | `[]` | Additional arguments to pass to the router's envoy control plane. |
 | router.controlPlane.extraEnv | list | `[]` | Additional environment variables to pass to the router's envoy control plane. |
@@ -376,6 +394,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.proxy.extraArgs | list | `[]` | Additional arguments to pass to the router's envoy proxy. |
 | router.proxy.extraEnv | list | `[]` | Additional environment variables to pass to the router's envoy proxy. |
 | router.proxy.extraVolumeMounts | list | `[]` | Additional volume mounts to pass to the router's envoy proxy. |
+| router.proxy.hostPort | string | `nil` | Host port for the router's envoy proxy container. When set, the envoy container will bind to this port on the host. This is useful for environments like kind where LoadBalancer services are not available. |
 | router.proxy.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the router's envoy proxy image. |
 | router.proxy.image.repository | string | `"envoy"` | Repository for the router's envoy proxy image. |
 | router.proxy.image.tag | string | `"v1.26-latest"` | Tag for the router's envoy proxy image. |
@@ -387,7 +406,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.proxy.service.annotations | object | `{}` | Annotations for the router's envoy proxy service. |
 | router.proxy.service.http.appProtocol | string | `"https"` | The name for the port, this should conform the values defined by [k8s protocol](https://kubernetes.io/docs/concepts/services-networking/service/#application-protocol) |
 | router.proxy.service.http.name | string | `"https"` | The name for the port, this should conform the values defined by [k8s protocol](https://kubernetes.io/docs/concepts/services-networking/service/#application-protocol) |
-| router.proxy.service.http.port | int | `8443` | The port for the router's envoy proxy HTTP service. |
+| router.proxy.service.http.port | int | `8443` | The container/target port for the router's envoy proxy. |
 | router.proxy.service.type | string | `"ClusterIP"` | Type for the router's envoy proxy service. |
 | router.proxy.tolerations | list | `[]` | Toleration for the router's envoy proxy. |
 | router.replicaCount | int | `1` | The number of replicas for the router deployment. |
