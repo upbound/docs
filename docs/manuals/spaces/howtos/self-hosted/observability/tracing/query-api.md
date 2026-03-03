@@ -8,11 +8,11 @@ Query API (Apollo) provides querying capabilities for Kubernetes resources
 across multiple Crossplane control planes.
 
 For common tracing configuration, see the
-[distributed tracing overview](./overview.md).
+[distributed tracing overview](overview.md).
 
 ## Overview
 
-Service name: **`query-api`**
+Service name: **`spaces-apollo`**
 
 Each request generates three span types:
 

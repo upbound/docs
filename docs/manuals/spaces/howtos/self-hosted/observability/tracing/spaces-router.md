@@ -9,7 +9,7 @@ planes. Envoy generates distributed traces through OpenTelemetry integration,
 providing end-to-end visibility into request flow across the system.
 
 For common tracing configuration, see the
-[distributed tracing overview](./overview.md).
+[distributed tracing overview](overview.md).
 
 ## Overview
 

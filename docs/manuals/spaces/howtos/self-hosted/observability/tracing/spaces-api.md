@@ -8,7 +8,7 @@ The Spaces API is the API server for managing Spaces resources
 (ControlPlanes, SharedBackupConfigs, etc.) on the host cluster.
 
 For common tracing configuration, see the
-[distributed tracing overview](./overview.md).
+[distributed tracing overview](overview.md).
 
 ## Overview
 

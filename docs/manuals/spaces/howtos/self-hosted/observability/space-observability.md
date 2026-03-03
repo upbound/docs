@@ -104,7 +104,7 @@ traces to debug latency issues, understand request paths, and correlate errors
 across services.
 
 For detailed tracing configuration, custom tags, and example traces for each
-component, see the [distributed tracing documentation](./tracing/overview.md).
+component, see the [distributed tracing documentation](tracing/overview.md).
 
 ## Available metrics
 

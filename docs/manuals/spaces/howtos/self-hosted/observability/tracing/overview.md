@@ -86,6 +86,6 @@ in-cluster collector.
 Each component adds custom attributes for filtering and correlation. See the
 component-specific documentation for details:
 
-- [Spaces Router traces](./spaces-router.md) - reverse proxy routing to control planes
-- [Spaces API traces](./spaces-api.md) - Spaces resource management API
-- [Query API traces](./query-api.md) - cross-control plane query service
+- [Spaces Router traces](spaces-router.md) - reverse proxy routing to control planes
+- [Spaces API traces](spaces-api.md) - Spaces resource management API
+- [Query API traces](query-api.md) - cross-control plane query service
