@@ -4,17 +4,11 @@ sidebar_label: Overview
 sidebar_position: 1
 description: Install Crossplane, interact with the Upbound Marketplace and Managed
   Control Planes with the Upbound Up CLI.
-hide_title: true
 ---
 
 import Version from "@site/src/components/Version.js"
 import { versions } from "@site/src/components/Version.js"
 import CodeBlock from '@theme/CodeBlock';
-
-
-<!-- vale gitlab.HeadingContent = NO -->
-# Overview
-<!-- vale gitlab.HeadingContent = YES -->
 
 The Upbound `up` command-line enables interaction with Upbound control planes. It also simplifies common workflows with Upbound Crossplane (UXP) and building Crossplane packages for the Upbound Marketplace or any OCI-compliant registry.
 
@@ -24,7 +18,7 @@ The Upbound `up` command-line enables interaction with Upbound control planes. I
 Install the `up` command-line via shell, Homebrew or Linux package.
 
 <Tabs>
-<TabItem value = "Shell">
+<TabItem value="Shell" label="Shell">
 Install the latest version of the `up` command-line via shell script by downloading the install script from [Upbound][upbound].
 
 :::tip
@@ -39,7 +33,7 @@ curl -sL "https://cli.upbound.io" | sh
 
 :::note
 Install a specific version of `up` by providing the version.
-For example, to install version <Version type = "cli"/ > use the following command:
+For example, to install version <Version type="cli" /> use the following command:
 
 <CodeBlock language="bash">
 {`curl -sL "https://cli.upbound.io" | VERSION=v${versions.cli} sh`}
@@ -99,7 +93,7 @@ Downloading packages requires both the [version][version] and CPU architecture (
 Install the `docker-credential-up` credential helper with the same methods supported for `up`.
 
 <Tabs>
-<TabItem value ="Shell">
+<TabItem value="Shell" label="Shell">
 
 ```shell
 curl -sL "https://cli.upbound.io" | BIN=docker-credential-up sh

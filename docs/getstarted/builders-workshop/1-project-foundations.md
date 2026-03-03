@@ -59,7 +59,7 @@ that allow your users to request resources.
 Next, you need to add dependencies. Dependencies are the providers that connect
 to actual cloud resources:
 
-<Tabs gropuId="cloud-provider">
+<Tabs groupId="cloud-provider">
 <TabItem value="aws" label="AWS">
 
 ```shell

@@ -3,8 +3,6 @@ title: Feature Lifecycle
 sidebar_position: 30
 ---
 
-# Feature lifecycle
-
 Crossplane follows a similar feature lifecycle to [upstream
 Kubernetes][kube-features]. All major new features start in alpha. Alpha
 <!-- vale write-good.Passive = NO -->

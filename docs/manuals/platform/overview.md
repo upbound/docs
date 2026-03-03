@@ -1,14 +1,9 @@
 ---
-title: Platform Overview 
+title: Platform Overview
 sidebar_label: Overview
-hide_title: true
 sidebar_position: 1
 description: Overview of platform
 ---
-
-<!-- vale gitlab.HeadingContent = NO -->
-# Overview
-<!-- vale gitlab.HeadingContent = YES -->
 
 This section covers identity management, access control, and other
 administrative features that allow you to configure team and organizational

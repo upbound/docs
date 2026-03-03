@@ -173,7 +173,8 @@ To define a new resource type with Crossplane, you need to:
 
 * create a [CompositeResourceDefinition (XRD)][xrd], which defines the API schema of your resource type
 * create a [Composition][composition], which defines the implementation of that API schema.
-* A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.
+
+A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.
 
 :::
 

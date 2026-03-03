@@ -1,14 +1,9 @@
 ---
-title: UXP Overview 
+title: UXP Overview
 sidebar_label: Overview
-hide_title: true
 sidebar_position: 1
 description: Upbound Crossplane is the AI-native distribution of Crossplane by Upbound
 ---
-
-<!-- vale gitlab.HeadingContent = NO -->
-# Overview
-<!-- vale gitlab.HeadingContent = YES -->
 
 Upbound Crossplane (UXP) is the AI-native distribution of [Crossplane][crossplane] by Upbound. Crossplane is a framework for building your own [control plane][control-plane].
 

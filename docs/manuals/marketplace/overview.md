@@ -2,7 +2,6 @@
 title: Marketplace Overview
 sidebar_position: 1
 sidebar_label: Overview
-hide_title: true
 description: How to use the Upbound Marketplace to discover Crossplane providers and
   packages.
 ---
