@@ -31,8 +31,25 @@ Any important warnings or necessary information
 
 - **Ingress is no longer provisioned by default.** The Ingress resource is now
   controller-agnostic. All ingress-nginx specific annotations, labels, and the
-  hardcoded `ingressClassName: nginx` have been removed. If you need Ingress, set
-  in your Helm values: `ingress.provision: true`,
+  hardcoded `ingressClassName: nginx` have been removed. To keep existing
+  ingress-nginx working, add the following to your Helm values:
+
+  ```yaml
+  ingress:
+    provision: true
+    host: proxy.example.com  # Replace with your existing hostname
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    podLabels:
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/component: controller
+    namespaceLabels:
+      kubernetes.io/metadata.name: ingress-nginx
+  ```
+
+  For other controllers, set `ingress.provision: true`,
   `ingress.ingressClassName: "<your-class>"`, and add controller-specific
   `ingress.annotations`, `ingress.podLabels`, and `ingress.namespaceLabels` as
   needed. ingress-nginx is deprecated upstream (EOL March 2026). See the
@@ -70,10 +87,10 @@ Any important warnings or necessary information
   - Resources for the LogCollector daemonset are configurable via
     `observability.collectors.logCollector.resources`.
   - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
-- **Certificates:** Services reload the CA automatically and leaf certificates are
-  renewed when the Spaces CA is renewed. The `spaces-ca-bundle` is built with
-  both the old and new CAs for seamless rotation. For zero downtime with
-  webhooks during CA renewal we recommend running cert-manager v1.19+ or
+- **Certificates:** Services reload the Spaces CA automatically and leaf certificates
+  are automatically renewed when the Spaces CA is renewed. The `spaces-ca-bundle`
+  is built with both the old and new CAs for seamless rotation. For zero downtime
+  with webhooks during CA renewal we recommend running cert-manager v1.19+ or
   enabling the CAInjectorMerging feature flag in cert-manager 1.17+.
 - **UXP v2 ControlPlanes** are created by default; set
   `controlPlanes.uxp.v2.enabled` to `false` to disable.

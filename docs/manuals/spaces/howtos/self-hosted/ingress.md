@@ -2,7 +2,6 @@
 title: Exposing Spaces externally
 sidebar_position: 5
 description: Options for exposing Spaces externally
-draft: true
 ---
 
 import { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
@@ -127,9 +126,6 @@ For step-by-step setup including installing a controller (such as Envoy Gateway)
 Add the following to your Helm values (or use `--set` when upgrading). Disable Ingress when using Gateway API.
 
 ```yaml
-ingress:
-  provision: false
-
 gatewayAPI:
   host: proxy.example.com  # Externally routable hostname; must match your DNS
   gateway:

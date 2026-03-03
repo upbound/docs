@@ -16,7 +16,7 @@ For help choosing an exposure method, see [Exposing Spaces Externally][expose].
 Options vary by Spaces version. Select your Spaces version:
 
 * [Upgrading to Spaces 1.16+](#upgrading-to-spaces-116)
-* [Cannot upgrade before March 2026](#cant-upgrade-to-spaces-116-before-march-2026)
+* [Staying on Spaces 1.15 or earlier](#migrate-while-on-spaces-115-or-earlier)
 
 <!-- vale Google.Headings = NO -->
 ## Prerequisites
@@ -50,7 +50,6 @@ Choose your migration option:
 
 All paths follow the same process: upgrade to 1.16+, switch exposure method,
 then uninstall ingress-nginx.
-
 
 
 ### Upgrade to 1.16+ with Updated Ingress Values
@@ -100,6 +99,10 @@ timeout.
 
 **1. Add the LoadBalancer Service configuration to your `values.yaml`**
 
+Add the configuration for your cloud:
+
+<CodeBlock cloud="aws">
+
 ```yaml
 externalTLS:
   host: proxy.example.com  # Must match your current router hostname
@@ -109,15 +112,43 @@ router:
     service:
       type: LoadBalancer
       annotations:
-        # AWS NLB (see Cloud-Specific Annotations for other clouds)
         service.beta.kubernetes.io/aws-load-balancer-type: external
         service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
         service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
 ```
 
-:::note
-This example uses AWS-specific annotations. See [Cloud-Specific Annotations for GCP and Azure][expose-annotate].
-:::
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml
+externalTLS:
+  host: proxy.example.com  # Must match your current router hostname
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations:
+        cloud.google.com/l4-rbs: enabled
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+```yaml
+externalTLS:
+  host: proxy.example.com  # Must match your current router hostname
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations: {}
+```
+
+</CodeBlock>
 
 **2. Upgrade Spaces (Ingress stays running during transition)**
 
@@ -187,10 +218,76 @@ helm install eg oci://docker.io/envoyproxy/gateway-helm \
 
 See [Envoy Gateway installation docs][envoy-install] for more detailed instructions.
 
-**2. Create a GatewayClass**
+**2. Create EnvoyProxy and GatewayClass**
 
-Create a `GatewayClass` resource.
+Create an `EnvoyProxy` resource that the GatewayClass will reference. See the [Envoy
+Gateway EnvoyProxy docs][envoy-proxy] for the full API and more examples.
 
+<CodeBlock cloud="aws">
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: external
+          service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+          service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+EOF
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations:
+          cloud.google.com/l4-rbs: enabled
+EOF
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations: {}
+EOF
+```
+
+</CodeBlock>
+
+Then create the `GatewayClass` that references this EnvoyProxy:
 
 ```bash
 kubectl apply -f - --server-side <<EOF
@@ -248,9 +345,6 @@ kubectl get gateway -n upbound-system spaces \
   -o jsonpath='{.status.addresses[0].value}'
 ```
 
-Create or update a DNS record pointing your `gatewayAPI.host` to this address.
-
-
 :::note
 If you're having issues with your setup, verify the configuration with these
 troubleshooting steps:
@@ -292,8 +386,15 @@ curl --connect-to "${SPACES_ROUTER_HOST}:443:${GATEWAY_LB}:443" "https://${SPACE
 
 **7. Update your DNS record to point to the new Gateway address**
 
+Create or update a DNS record so that `gatewayAPI.host` resolves to the address
+from step 5.
+
 **8. Update your `values.yaml` to disable Ingress, then upgrade Spaces:**
 
+```yaml
+ingress:
+  provision: false
+```
 
 ```bash
 helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
@@ -356,7 +457,7 @@ helm uninstall ingress-nginx --namespace ingress-nginx
 ```
 
 <!-- vale Google.Headings = NO -->
-## Migrate current Spaces version before March 2026
+## Migrate while on Spaces 1.15 or earlier
 <!-- vale Google.Headings = YES -->
 
 Choose your migration option:
@@ -403,10 +504,73 @@ helm -n envoy-gateway-system upgrade --install --wait --wait-for-jobs \
   --version "${ENVOY_GATEWAY_VERSION}"
 ```
 
-**2. Create GatewayClass resource**
+**2. Create EnvoyProxy and GatewayClass**
 
-Create a `GatewayClass` resource.
+Create an `EnvoyProxy` resource, then the `GatewayClass` that references it.
 
+<CodeBlock cloud="aws">
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: external
+          service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+          service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+EOF
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations:
+          cloud.google.com/l4-rbs: enabled
+EOF
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: spaces-proxy-config
+  namespace: envoy-gateway-system
+spec:
+  provider:
+    type: Kubernetes
+    kubernetes:
+      envoyService:
+        annotations: {}
+EOF
+```
+
+</CodeBlock>
 
 ```bash
 kubectl apply -f - --server-side <<EOF
@@ -423,33 +587,8 @@ spec:
     namespace: envoy-gateway-system
 EOF
 ```
-**3. Create Gateway resource**
 
-Create a Gateway resource in the `upbound-system` namespace.
-
-
-```bash
-kubectl apply -f - --server-side <<EOF
-apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
-metadata:
-  name: spaces
-  namespace: upbound-system
-spec:
-  gatewayClassName: spaces
-  listeners:
-    - name: tls
-      port: 443
-      protocol: TLS
-      allowedRoutes:
-        namespaces:
-          from: Same
-      tls:
-        mode: Passthrough
-EOF
-```
-
-**4. Update your Helm values**
+**3. Update your Helm values**
 
 ```yaml
 ingress:
@@ -471,36 +610,23 @@ gatewayAPI:
   namespaceLabels:
     kubernetes.io/metadata.name: envoy-gateway-system
 ```
-**5. Get the Gateway address**
 
-Once the Gateway is programmed (check that it shows `Accepted` and `Programmed` in
-`kubectl get gateway -n upbound-system spaces -o yaml`), get its address:
+**4. Upgrade the Spaces Helm release**
 
-```bash
-kubectl get gateway -n upbound-system spaces \
-  -o jsonpath='{.status.addresses[0].value}'
-```
+Add the values from step 3 to your existing `values.yaml`, set
+`gatewayAPI.host` to your gateway hostname (e.g. `${GATEWAY_HOSTNAME}`).
 
-Point your DNS (e.g. `SPACES_ROUTER_HOST`) to this address. In step 6,
-`gatewayAPI.host` must be that hostname (the name that resolves to this address).
-Set `GATEWAY_HOSTNAME` to that hostname for the next command.
-
-**6. Upgrade the Spaces Helm release**
-
-Upgrade the Spaces installation with Gateway API parameters:
+Then upgrade using the values file:
 
 ```bash
 helm -n upbound-system upgrade spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
-  --set "ingress.provision=false" \
-  --set "gatewayAPI.host=${GATEWAY_HOSTNAME}" \
-  --set "account=${UPBOUND_ACCOUNT}" \
-  --reuse-values \
+  -f values.yaml \
   --wait
 ```
 
-**7. Restart spaces-router (optional)**
+**5. Restart spaces-router (optional)**
 
 If the `gatewayAPI.host` value differs from the previous `ingress.host` value,
 restart the spaces-router pod to regenerate the certificate with the correct
@@ -511,59 +637,28 @@ kubectl -n upbound-system rollout restart deployment spaces-router
 kubectl -n upbound-system rollout status deployment spaces-router
 ```
 
-**8. Configure values.yaml**
+**6. Get the Gateway address**
 
-Update your `values.yaml` to disable Ingress and enable Gateway API:
-
-```yaml
-ingress:
-  provision: false
-
-gatewayAPI:
-  host: proxy.example.com  # Must match your current ingress.host
-  gateway:
-    provision: true
-    name: spaces
-    className: spaces  # Must match your GatewayClass name
-  spacesRouterRoute:
-    provision: true
-  # Labels for NetworkPolicy - must match your gateway controller's pods
-  podLabels:
-    app.kubernetes.io/name: envoy
-    app.kubernetes.io/component: proxy
-    app.kubernetes.io/managed-by: envoy-gateway
-  namespaceLabels:
-    kubernetes.io/metadata.name: envoy-gateway-system
-```
-
-**9. Upgrade Spaces**
-
-This disables Ingress and enables Gateway API:
+Once the Gateway is programmed (check that it shows `Accepted` and `Programmed` in
+`kubectl get gateway -n upbound-system spaces -o yaml`), get its address:
 
 ```bash
-helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version ${SPACES_VERSION} \
-  --namespace upbound-system \
-  -f values.yaml \
-  --wait
+kubectl get gateway -n upbound-system spaces \
+  -o jsonpath='{.status.addresses[0].value}'
 ```
 
-**10. Get the gateway address and update DNS**
+Point your DNS (e.g. `SPACES_ROUTER_HOST`) to this address. Ensure
+`gatewayAPI.host` in your values is that hostname (the name that resolves to
+this address).
 
-```bash
-kubectl get gateway -n upbound-system spaces -o jsonpath='{.status.addresses[0].value}'
-```
-
-Update your DNS record to this address.
-
-**11. Verify connectivity**
+**7. Verify connectivity**
 
 ```bash
 curl -v "https://${SPACES_ROUTER_HOST}/version"
 # Expected: 401 Unauthorized (routing works, auth required)
 ```
 
-**12. Uninstall ingress-nginx**
+**8. Uninstall ingress-nginx**
 
 ```bash
 helm uninstall ingress-nginx --namespace ingress-nginx
@@ -587,8 +682,10 @@ helm upgrade --install traefik traefik/traefik \
   --wait
 ```
 <!-- vale gitlab.Uppercase = NO -->
+:::tip
 Configure Traefik's Service with NLB annotations. See
 [Cloud-specific annotations][expose-annotate].
+:::
 <!-- vale gitlab.Uppercase = YES -->
 
 **2. Validate before switching DNS**
@@ -628,7 +725,6 @@ helm uninstall ingress-nginx --namespace ingress-nginx
 
 Keep `ingress.provision: true` so the Spaces chart continues to manage the
 Ingress resource. Traefik picks it up via the nginx provider.
-
 
 ## Verification
 
