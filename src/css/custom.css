@@ -136,8 +136,15 @@ html[data-theme="dark"] {
 /* ============================================================ */
 
 /* Restore list styles - @upbound/elements strips list-style globally */
-article ul:not(.tabs),
-article ol:not(.tabs) {
+article ul[role],
+article ol[role] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+article ul:not([role]),
+article ol:not([role]) {
     list-style: revert;
     margin: revert;
     margin-bottom: 1.5rem;
@@ -145,8 +152,8 @@ article ol:not(.tabs) {
     padding-left: 1.5rem;
 }
 
-article ul:not(.tabs) li,
-article ol:not(.tabs) li {
+article ul:not([role]) li,
+article ol:not([role]) li {
     margin: revert;
     padding: revert;
     margin-bottom: 0.5rem;
@@ -157,10 +164,10 @@ article ol:not(.tabs) li {
 .markdown ul ol,
 .markdown ol ul,
 .markdown ol ol,
-article ul:not(.tabs) ul,
-article ul:not(.tabs) ol,
-article ol:not(.tabs) ul,
-article ol:not(.tabs) ol {
+article ul:not([role]) ul,
+article ul:not([role]) ol,
+article ol:not([role]) ul,
+article ol:not([role]) ol {
     margin-top: 0.5rem;
     margin-bottom: 0;
 }
@@ -288,12 +295,12 @@ body {
 }
 
 /* Scope list styles to article content only */
-article ul:not(.tabs) {
+article ul:not([role]) {
     list-style-position: outside !important;
     list-style-type: disc !important;
 }
 
-article ol:not(.tabs) {
+article ol:not([role]) {
     list-style-position: outside !important;
     list-style-type: decimal !important;
 }
