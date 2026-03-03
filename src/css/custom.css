@@ -136,6 +136,8 @@ html[data-theme="dark"] {
 /* ============================================================ */
 
 /* Restore list styles - @upbound/elements strips list-style globally */
+.markdown ul,
+.markdown ol,
 article ul,
 article ol {
     list-style: revert;
@@ -145,6 +147,8 @@ article ol {
     padding-left: 1.5rem;
 }
 
+.markdown ul li,
+.markdown ol li,
 article ul li,
 article ol li {
     margin: revert;
@@ -153,6 +157,10 @@ article ol li {
 }
 
 /* Ensure nested lists also display correctly */
+.markdown ul ul,
+.markdown ul ol,
+.markdown ol ul,
+.markdown ol ol,
 article ul ul,
 article ul ol,
 article ol ul,
@@ -283,13 +291,15 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Scope list styles to article content only */
+/* Scope list styles to article and markdown content */
+.markdown ul,
 article ul {
     list-style-position: outside !important;
     display: block !important;
     list-style-type: disc !important;
 }
 
+.markdown ol,
 article ol {
     list-style-position: outside !important;
     display: block !important;
