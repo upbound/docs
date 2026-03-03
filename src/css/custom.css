@@ -136,10 +136,10 @@ html[data-theme="dark"] {
 /* ============================================================ */
 
 /* Restore list styles - @upbound/elements strips list-style globally */
-.markdown ul,
-.markdown ol,
-article ul,
-article ol {
+.markdown ul:not(.tabs):not(.menu__list),
+.markdown ol:not(.tabs):not(.menu__list),
+article ul:not(.tabs):not(.menu__list),
+article ol:not(.tabs):not(.menu__list) {
     list-style: revert;
     margin: revert;
     margin-bottom: 1.5rem;
@@ -147,24 +147,24 @@ article ol {
     padding-left: 1.5rem;
 }
 
-.markdown ul li,
-.markdown ol li,
-article ul li,
-article ol li {
+.markdown ul:not(.tabs):not(.menu__list) li,
+.markdown ol:not(.tabs):not(.menu__list) li,
+article ul:not(.tabs):not(.menu__list) li,
+article ol:not(.tabs):not(.menu__list) li {
     margin: revert;
     padding: revert;
     margin-bottom: 0.5rem;
 }
 
 /* Ensure nested lists also display correctly */
-.markdown ul ul,
-.markdown ul ol,
-.markdown ol ul,
-.markdown ol ol,
-article ul ul,
-article ul ol,
-article ol ul,
-article ol ol {
+.markdown ul:not(.tabs):not(.menu__list) ul,
+.markdown ul:not(.tabs):not(.menu__list) ol,
+.markdown ol:not(.tabs):not(.menu__list) ul,
+.markdown ol:not(.tabs):not(.menu__list) ol,
+article ul:not(.tabs):not(.menu__list) ul,
+article ul:not(.tabs):not(.menu__list) ol,
+article ol:not(.tabs):not(.menu__list) ul,
+article ol:not(.tabs):not(.menu__list) ol {
     margin-top: 0.5rem;
     margin-bottom: 0;
 }
@@ -291,16 +291,16 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Scope list styles to article and markdown content */
-.markdown ul,
-article ul {
+/* Scope list styles to article and markdown content (exclude tabs and menus) */
+.markdown ul:not(.tabs):not(.menu__list),
+article ul:not(.tabs):not(.menu__list) {
     list-style-position: outside !important;
     display: block !important;
     list-style-type: disc !important;
 }
 
-.markdown ol,
-article ol {
+.markdown ol:not(.tabs):not(.menu__list),
+article ol:not(.tabs):not(.menu__list) {
     list-style-position: outside !important;
     display: block !important;
     list-style-type: decimal !important;
