@@ -186,7 +186,6 @@ EOF
 kubectl apply -f deployment-runtime-config.yaml
 ```
 
----
 
 ## Step 4: Install or Update the AWS Provider
 

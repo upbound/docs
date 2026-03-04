@@ -155,7 +155,6 @@ export ROLE_ARN=$(aws iam get-role --role-name $ROLE_NAME --query "Role.Arn" --o
 echo "Role ARN: $ROLE_ARN"
 ```
 
----
 
 ## Step 3: Create the ProviderConfig
 
