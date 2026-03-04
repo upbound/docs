@@ -98,6 +98,7 @@ Any important warnings or necessary information
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes
   without additional configuration. This can be disabled by explicitly setting
   `controlPlanes.uxp.v2.enabled` to `false` if needed.
+- Controllers are automatically upgraded when a ControllerRuntimeConfig is updated.
 
 #### Bug Fixes
 
