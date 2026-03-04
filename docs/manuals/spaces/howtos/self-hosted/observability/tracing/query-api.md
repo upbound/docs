@@ -34,7 +34,7 @@ Each request produces four spans:
 
 1. **Router ingress** - Envoy routes to `spaces-apollo` cluster
 2. **Auth check** - External authorization validates request
-3. **Apollo HTTP** - Query API processes request (service.name: `query-api`)
+3. **Apollo HTTP** - Query API processes request (service.name: `spaces-apollo`)
 4. **PostgreSQL** - Database executes SQL
 
 ### Enabling tracing
