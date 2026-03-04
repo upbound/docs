@@ -9,7 +9,7 @@ This feature is in private preview for select customers in Upbound Spaces. If yo
 :::
 <!-- vale Google.We = YES -->
 
-Upbound's _Controllers_ feature lets you build and deploy control plane software from the Kubernetes ecosystem. With the _Controllers_ feature, you're not limited to just managing resource types defined by Crossplane. Now you can create resources from _CustomResourceDefinitions_ defined by other Kubernetes ecosystem tooling. 
+Upbound's _Controllers_ feature lets you build and deploy control plane software from the Kubernetes ecosystem. With the _Controllers_ feature, you're not limited to just managing resource types defined by Crossplane. Now you can create resources from _CustomResourceDefinitions_ defined by other Kubernetes ecosystem tooling.
 
 This guide explains how to bundle and deploy control plane software from the Kubernetes ecosystem on a control plane in Upbound.
 
@@ -49,11 +49,11 @@ Enable the Controllers feature in the Space you plan to run your control plane i
 
 Packaging a _Controller_ requires [up CLI][cli]  `v0.39.0` or later.
 
-<!-- vale Google.Headings = NO --> 
-<!-- vale Microsoft.Headings = NO --> 
+<!-- vale Google.Headings = NO -->
+<!-- vale Microsoft.Headings = NO -->
 ## Build a _Controller_ package
-<!-- vale Google.Headings = YES --> 
-<!-- vale Microsoft.Headings = YES --> 
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.Headings = YES -->
 
 _Controllers_ are a package type that get administered by your control plane's package manager.
 
@@ -167,11 +167,11 @@ export XPKG_FILENAME=<controller-f7091386b4c0.xpkg>
 up xpkg push xpkg.upbound.io/$UPBOUND_ACCOUNT/$CONTROLLER_NAME:$CONTROLLER_VERSION -f $XPKG_FILENAME
 ```
 
-<!-- vale Google.Headings = NO --> 
-<!-- vale Microsoft.Headings = NO --> 
+<!-- vale Google.Headings = NO -->
+<!-- vale Microsoft.Headings = NO -->
 ## Deploy a _Controller_ package
-<!-- vale Google.Headings = YES --> 
-<!-- vale Microsoft.Headings = YES --> 
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.Headings = YES -->
 
 :::important
 _Controllers_ are only installable on control planes running Crossplane `v1.19.0` or later.
@@ -362,6 +362,36 @@ Overriding the Helm values is possible at two levels:
 - During packaging time, in the package manifest file.
 - At runtime, using a `ControllerRuntimeConfig` resource (similar to Crossplane `DeploymentRuntimeConfig`).
 
+Create a `ControllerRuntimeConfig` with your Helm value overrides under
+`spec.helm.values`, then reference it from the Controller via
+`spec.runtimeConfigRef.name`. If you omit `runtimeConfigRef`, the Controller uses
+the config named `default`.
+
+Example of overriding replica count and image for a Controller at runtime:
+
+```yaml
+apiVersion: pkg.upbound.io/v1alpha1
+kind: ControllerRuntimeConfig
+metadata:
+  name: example-controllerruntimeconfig
+spec:
+  helm:
+    values:
+      replicaCount: 2
+      image:
+        tag: "v1.2.3"
+      # Add any other Helm chart values your controller chart supports
+---
+apiVersion: pkg.upbound.io/v1alpha1
+kind: Controller
+metadata:
+  name: my-controller
+spec:
+  package: xpkg.upbound.io/your-org/your-controller:v1.0.0
+  runtimeConfigRef:
+    name: example-controllerruntimeconfig
+```
+
 </details>
 
 <details>
@@ -396,4 +426,3 @@ No, *Controllers* are a proprietary package format and are only available for co
 <!-- vale on -->
 
 [cli]: /manuals/uxp/overview
-
