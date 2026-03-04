@@ -118,7 +118,7 @@ Space-level observability collects metrics from multiple infrastructure componen
 
 ### Router metrics
 
-The router component exposes Envoy proxy metrics for monitoring trqaffic flow and
+The router component exposes Envoy proxy metrics for monitoring traffic flow and
 service health. Key metric categories include:
 
 - `envoy_cluster_upstream_rq_*` - Upstream request metrics (status codes, timeouts, retries, latency)
