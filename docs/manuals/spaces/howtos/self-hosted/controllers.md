@@ -362,6 +362,36 @@ Overriding the Helm values is possible at two levels:
 - During packaging time, in the package manifest file.
 - At runtime, using a `ControllerRuntimeConfig` resource (similar to Crossplane `DeploymentRuntimeConfig`).
 
+Create a `ControllerRuntimeConfig` with your Helm value overrides under
+`spec.helm.values`, then reference it from the Controller via
+`spec.runtimeConfigRef.name`. If you omit `runtimeConfigRef`, the Controller uses
+the config named `default`.
+
+Example—override replica count and image for a Controller at runtime:
+
+```yaml
+apiVersion: pkg.upbound.io/v1alpha1
+kind: ControllerRuntimeConfig
+metadata:
+  name: example-controllerruntimeconfig
+spec:
+  helm:
+    values:
+      replicaCount: 2
+      image:
+        tag: "v1.2.3"
+      # Add any other Helm chart values your controller chart supports
+---
+apiVersion: pkg.upbound.io/v1alpha1
+kind: Controller
+metadata:
+  name: my-controller
+spec:
+  package: xpkg.upbound.io/your-org/your-controller:v1.0.0
+  runtimeConfigRef:
+    name: example-controllerruntimeconfig
+```
+
 </details>
 
 <details>
