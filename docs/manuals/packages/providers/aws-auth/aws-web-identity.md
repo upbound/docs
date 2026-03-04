@@ -3,8 +3,46 @@ title: AWS Web Identity Authentication
 sidebar_position: 2
 description: Configure AWS Web Identity Authentication for Upbound
 ---
+<!-- vale write-good.Passive = NO-->
+<!-- vale gitlab.SubstitutionWarning = NO -->
 
-This guide provides step-by-step instructions to configure WebIdentity authentication between your Crossplane control plane running on Amazon EKS and AWS services. This method uses the EKS cluster's OpenID Connect provider to exchange Kubernetes service account tokens for temporary AWS credentials without storing static secrets.
+This guide provides step-by-step instructions to configure WebIdentity
+authentication between your Crossplane control plane running on Amazon EKS and
+AWS services. This method uses the EKS cluster's OpenID Connect provider to
+exchange Kubernetes service account tokens for temporary AWS credentials without
+storing static secrets.
+
+WebIdentity enables credential-free authentication by having the Crossplane
+provider exchange a web identity token directly with AWS STS:
+1. The EKS cluster's OIDC provider is registered as a trusted identity provider in AWS IAM
+2. An IAM role trusts this OIDC provider, scoped to the provider's service account
+3. The provider reads a web identity token and calls `sts:AssumeRoleWithWebIdentity` with the role ARN and token configured in the ProviderConfig
+4. AWS returns temporary credentials the provider uses to manage resources
+
+The token source is configurable per-ProviderConfig via the `tokenConfig` API.
+Tokens can be read from a filesystem path or a Kubernetes Secret.
+
+## How WebIdentity differs from IRSA
+
+<!-- vale gitlab.SentenceLength = NO -->
+Both methods run on EKS and use the same underlying OIDC federation mechanism,
+but they differ in how the role ARN and token are communicated to the provider:
+<!-- vale gitlab.SentenceLength = YES -->
+
+| | IRSA | WebIdentity |
+|---|---|---|
+| Role ARN specified in | ServiceAccount annotation (via DeploymentRuntimeConfig) | ProviderConfig |
+| Token source | Injected by EKS pod identity webhook | Configurable per-ProviderConfig (`tokenConfig`) |
+| Requires DeploymentRuntimeConfig | Yes | Yes, to project a token with the `sts.amazonaws.com` audience |
+| Multiple roles without restarting pods | No | Yes, each ProviderConfig can target a different role and token |
+| ProviderConfig `source` | `IRSA` | `WebIdentity` |
+
+<!-- vale gitlab.SentenceLength = NO -->
+WebIdentity is useful when you want to control the role ARN and token at the
+ProviderConfig level rather than at the provider installation level, or when you
+need multiple ProviderConfigs pointing to different roles and token sources.
+<!-- vale gitlab.SentenceLength = YES -->
+
 
 ## Prerequisites
 
@@ -13,35 +51,12 @@ This guide provides step-by-step instructions to configure WebIdentity authentic
 - AWS CLI installed and configured with appropriate permissions
 - A control plane (Crossplane V2/UXPv2/Upbound Space managed control plane) on your EKS cluster
 
-
-## Overview
-
-WebIdentity enables credential-free authentication by having the Crossplane provider exchange a web identity token directly with AWS STS:
-1. The EKS cluster's OIDC provider is registered as a trusted identity provider in AWS IAM
-2. An IAM role trusts this OIDC provider, scoped to the provider's service account
-3. The provider reads a web identity token and calls `sts:AssumeRoleWithWebIdentity` with the role ARN and token configured in the ProviderConfig
-4. AWS returns temporary credentials the provider uses to manage resources
-
-The token source is configurable per-ProviderConfig via the `tokenConfig` API. Tokens can be read from a filesystem path or a Kubernetes Secret.
-
-### How WebIdentity differs from IRSA
-
-Both methods run on EKS and use the same underlying OIDC federation mechanism, but they differ in how the role ARN and token are communicated to the provider:
-
-| | IRSA | WebIdentity |
-|---|---|---|
-| Role ARN specified in | ServiceAccount annotation (via DeploymentRuntimeConfig) | ProviderConfig |
-| Token source | Injected by EKS pod identity webhook | Configurable per-ProviderConfig (`tokenConfig`) |
-| Requires DeploymentRuntimeConfig | Yes | Yes — to project a token with the `sts.amazonaws.com` audience |
-| Multiple roles without restarting pods | No | Yes — each ProviderConfig can target a different role and token |
-| ProviderConfig `source` | `IRSA` | `WebIdentity` |
-
-WebIdentity is useful when you want to control the role ARN and token at the ProviderConfig level rather than at the provider installation level, or when you need multiple ProviderConfigs pointing to different roles and token sources.
-
-
 ## Step 1: Create an IAM OIDC Provider for Your EKS Cluster
 
-WebIdentity requires an IAM OIDC identity provider associated with your EKS cluster. This step is identical to the IRSA setup — if you have already configured an OIDC provider for your cluster, skip to [Step 2](#step-2-create-an-iam-role-with-trust-policy).
+WebIdentity requires an IAM OIDC identity provider associated with your EKS
+cluster. This step is identical to the IRSA setup. If you have already
+configured an OIDC provider for your cluster, skip to [Step
+2](#step-2-create-an-iam-role-with-trust-policy).
 
 ### 1.1 Set environment variables
 
@@ -92,10 +107,9 @@ export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output t
 echo "AWS Account ID: $AWS_ACCOUNT_ID"
 ```
 
-### 2.2 Determine your Crossplane namespace
+### 2.2 Set your Crossplane namespace
 
 ```bash
-# Set your namespace
 export CROSSPLANE_NAMESPACE="crossplane-system"
 ```
 
@@ -124,16 +138,12 @@ cat > trust-policy.json << EOF
 }
 EOF
 ```
-
-<!-- vale write-good.Passive = NO -->
 :::note
 The `StringLike` condition with `upbound-provider-aws-*` is used because the AWS
 Provider's service account name includes a hash suffix that may change between
-upgrades. This is also the most common mistake when configuring your
-`providerConfig` — be sure that this value matches what is deployed to your
-control plane.
+upgrades. Make sure this value matches what's deployed in your control plane to
+avoid this common mistake.
 :::
-<!-- vale write-good.Passive = YES -->
 
 ### 2.4 Create the IAM role
 
@@ -148,7 +158,7 @@ aws iam create-role \
 
 ### 2.5 Attach permission policies to the role
 
-Attach the policies your Crossplane provider needs. For full access (not recommended for production):
+For testing, you can attach full access (not recommended for production):
 
 ```bash
 # Example: Attach AdministratorAccess (for testing only)
@@ -241,7 +251,7 @@ spec:
 EOF
 ```
 
-### 4.2 Apply the Provider
+### 4.2 Apply the provider
 
 ```bash
 kubectl apply -f provider-aws.yaml
@@ -295,7 +305,7 @@ spec:
 EOF
 ```
 
-### 5.2 Option B: Token from a Kubernetes Secret
+### 5.2 Option B: Token from a Kubernetes secret
 
 Use `tokenConfig.source: Secret` to read the web identity token from a Kubernetes Secret. This allows each ProviderConfig to use a different token:
 
@@ -332,22 +342,22 @@ kubectl create secret generic web-identity-token \
 kubectl apply -f provider-config.yaml
 ```
 
-:::tip
+:::note
 Naming the ProviderConfig `default` applies this authentication method
 automatically to all AWS managed resources that don't specify a different
 `providerConfigRef`.
 :::
 
 
-## Step 6: Verify the Configuration
+## Step 6: Verify the configuration
 
-Check the ProviderConfig status:
+### 6.1 Check the ProviderConfig status
 
 ```bash
 kubectl get providerConfig.aws.m default -o yaml
 ```
 
-Test by creating a simple resource (e.g., an S3 bucket):
+### 6.2 Test with an S3 bucket resource
 
 ```yaml
 apiVersion: s3.aws.m.upbound.io/v1beta1
@@ -362,7 +372,7 @@ spec:
     name: default
 ```
 
-Check the resource status:
+### 6.3 Check the resource status
 
 ```bash
 kubectl get buckets.s3.aws.m.upbound.io my-crossplane-test-bucket -o yaml
@@ -380,7 +390,10 @@ other CRDs installed on a cluster.
 
 ## Optional: Role chaining
 
-If you need to assume additional roles after the initial WebIdentity authentication (e.g., to access resources in a different AWS account), add an `assumeRoleChain` to your ProviderConfig:
+To assume additional roles after the initial OIDC authentication, add an
+`assumeRoleChain` to your ProviderConfig. 
+
+The example below shows how to access resources in a different AWS account:
 
 ```yaml
 apiVersion: aws.m.upbound.io/v1beta1
@@ -396,19 +409,21 @@ spec:
     - roleARN: "arn:aws:iam::444455556666:role/my-cross-account-role"
 ```
 
-The provider first authenticates via WebIdentity, then sequentially assumes each role in the chain. This is useful for:
+The provider first authenticates via WebIdentity, then sequentially assumes each role in the chain. This method is useful for:
+
 - **Cross-account access**: Managing resources in AWS accounts different from the one hosting the EKS cluster
 - **Privilege separation**: Using a minimal initial role that escalates to a more permissive role for specific operations
 
 :::note
-The target role in the chain must have a trust policy that allows
-`sts:AssumeRole` from the initial WebIdentity role.
+The target role in the chain must have a trust policy that allows `sts:AssumeRole` from the initial WebIdentity role.
 :::
 
 
 ## Optional: Named ProviderConfig for selective authentication
 
-WebIdentity's per-ProviderConfig configuration is its key advantage — each ProviderConfig can target a different role and token source without changing the provider installation or restarting pods.
+WebIdentity's per-ProviderConfig configuration is its key advantage. Each
+ProviderConfig can target a different role and token source without changing the
+provider installation or restarting pods.
 
 ```yaml
 apiVersion: aws.m.upbound.io/v1beta1
@@ -488,7 +503,7 @@ cat > trust-policy.json << EOF
 EOF
 ```
 
-The `upbound-provider-aws-*` wildcard matches service accounts for all provider families (e.g., `upbound-provider-aws-s3-<hash>`, `upbound-provider-aws-ec2-<hash>`, `upbound-provider-aws-rds-<hash>`).
+The `upbound-provider-aws-*` wildcard matches service accounts for all provider families (`upbound-provider-aws-s3-<hash>`, `upbound-provider-aws-ec2-<hash>`, `upbound-provider-aws-rds-<hash>`).
 
 Apply the same `runtimeConfigRef` to each provider so the projected token volume is available in all provider pods:
 
@@ -512,12 +527,9 @@ spec:
     name: webidentity-runtimeconfig
 ```
 
-<!-- vale write-good.Passive = NO -->
 :::note
-A single DeploymentRuntimeConfig is shared across all provider families. Each
-provider family reads the role ARN from the shared ProviderConfig.
+A single DeploymentRuntimeConfig is shared across all provider families. Each provider family reads the role ARN from the shared ProviderConfig.
 :::
-<!-- vale write-good.Passive = YES -->
 
 
 ## Troubleshooting
@@ -534,21 +546,17 @@ kubectl logs -n $CROSSPLANE_NAMESPACE <provider-pod-name> -f
 
 ### Common issues
 
-<!-- vale write-good.Weasel = NO -->
-<!-- vale write-good.Passive = NO -->
 | Issue | Solution |
 |-------|----------|
 | `AccessDenied` when assuming role | Verify the trust policy has the correct OIDC provider ARN and the `sub` condition matches the provider's service account |
 | `InvalidIdentityToken` | Confirm the EKS OIDC provider is registered in IAM; check that the OIDC ID in the trust policy matches your cluster |
-| `InvalidIdentityToken: Incorrect token audience` | The token does not have the `sts.amazonaws.com` audience. Verify the DeploymentRuntimeConfig projects a `serviceAccountToken` with `audience: sts.amazonaws.com` and the Provider has a `runtimeConfigRef` pointing to it |
+| `InvalidIdentityToken: Incorrect token audience` | The token doesn't have the `sts.amazonaws.com` audience. Verify the DeploymentRuntimeConfig projects a `serviceAccountToken` with `audience: sts.amazonaws.com` and the Provider has a `runtimeConfigRef` pointing to it |
 | `ExpiredTokenException` | The projected service account token has expired; this is usually transient and retries automatically |
 | Provider pod not authenticating | Ensure `credentials.source` is set to `WebIdentity` (not `IRSA`, `Secret`, or `Upbound`) |
 | Service account name mismatch | Check the actual SA name with `kubectl get sa -n $CROSSPLANE_NAMESPACE` and verify the trust policy wildcard matches it |
 | Role chaining `AccessDenied` | Verify the target role's trust policy allows `sts:AssumeRole` from the initial WebIdentity role ARN |
 | `tokenConfig` Secret not found | Verify the Secret name, namespace, and key match the `tokenConfig.secretRef` in the ProviderConfig |
 | `tokenConfig` Filesystem token not found | Confirm the token file is mounted into the provider pod at the path specified in `tokenConfig.fs.path` |
-<!-- vale write-good.Weasel = YES -->
-<!-- vale write-good.Passive = YES -->
 
 ### Verify the OIDC provider
 
@@ -581,21 +589,17 @@ POD_NAME=$(kubectl get pods -n $CROSSPLANE_NAMESPACE -l pkg.crossplane.io/revisi
 kubectl get pod $POD_NAME -n $CROSSPLANE_NAMESPACE -o jsonpath='{.spec.volumes[*].name}'
 ```
 
-You should see `aws-iam-token` in the output. If it is missing, verify the Provider has a `runtimeConfigRef` pointing to the DeploymentRuntimeConfig.
+You should see `aws-iam-token` in the output. If it's missing, verify the Provider has a `runtimeConfigRef` pointing to the DeploymentRuntimeConfig.
 
 
 ## Security best practices
 
-<!-- vale write-good.Weasel = NO -->
-<!-- vale Microsoft.Adverbs = NO -->
-<!-- vale write-good.Passive = NO -->
 - **No stored credentials** - WebIdentity uses web identity tokens and temporary STS credentials, eliminating long-lived static secrets
 - **Use `tokenConfig` over environment variables** - The `tokenConfig` API supersedes the deprecated `AWS_WEB_IDENTITY_TOKEN_FILE` and `AWS_ROLE_ARN` environment variable approach. Always prefer `tokenConfig` for new configurations
 - **Use least privilege** - Grant only the permissions the provider needs via IAM policies
 - **Scope trust policies narrowly** - Use the most specific `sub` condition that matches your provider service accounts; avoid overly broad wildcards
-- **Leverage multiple ProviderConfigs** - Use WebIdentity's per-ProviderConfig role and token targeting to implement fine-grained access control (e.g., separate roles and tokens for S3, EC2, and RDS operations)
+- **Leverage multiple ProviderConfigs** - Use WebIdentity's per-ProviderConfig role and token targeting to implement fine-grained access control like separate roles and tokens for S3, EC2, and RDS operations
 - **Audit role assumptions** - Enable AWS CloudTrail to log all `AssumeRoleWithWebIdentity` calls for this role
-- **Prefer WebIdentity or IRSA over Access Keys** - When running on EKS, both OIDC-based methods are strictly more secure than storing access keys as Kubernetes secrets
-<!-- vale write-good.Weasel = YES -->
-<!-- vale Microsoft.Adverbs = YES -->
+- **Prefer WebIdentity or IRSA over Access Keys** - When running on EKS, both OIDC-based methods are more secure than storing access keys as Kubernetes secrets
+<!-- vale gitlab.SubstitutionWarning = YES -->
 <!-- vale write-good.Passive = YES -->
