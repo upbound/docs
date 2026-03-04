@@ -85,8 +85,8 @@ Any important warnings or necessary information
     into the Spaces OpenTelemetry Collector pods.
   - Added support for the OTEL Filter Processor in SharedTelemetryConfigs to drop
     metrics, logs, or traces.
-  - Tracing can be enabled in Apollo.
-  - Spaces API is now instrumented with tracing.
+  - [Tracing can be enabled in Apollo](/manuals/spaces/howtos/self-hosted/observability/tracing/query-api/).
+  - [Spaces API is now instrumented with tracing](/manuals/spaces/howtos/self-hosted/observability/tracing/spaces-api/).
   - Resources for the LogCollector daemonset are configurable via
     `observability.collectors.logCollector.resources`.
   - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
