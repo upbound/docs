@@ -18,7 +18,7 @@ swap:
   deselect: clear
   deselected: cleared
   distro: distribution
-  file name: filename
+#  file name: filename
   filesystem: file system
   GFM: GLFM
   info: information

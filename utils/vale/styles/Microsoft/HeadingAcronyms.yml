@@ -34,3 +34,7 @@ exceptions:
   - CA
   - AI
   - UI
+  - URL
+  - ID
+  - IRSA
+  - SSO
