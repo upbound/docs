@@ -141,13 +141,13 @@ This manifest:
 To connect to a control plane in a Space using `up`, run the following:
 
 ```bash
-up ctp connect new-control-plane
+up ctx ./default/ctp1
 ```
 
 The command changes your kubeconfig's current context to the control plane you specify. If you want to change your kubeconfig back to a previous context, run:
 
 ```bash
-up ctp disconnect
+up ctx -
 ```
 
 If you configured your control plane to publish connection details, you can also access it this way. Once the control plane is ready, use the secret (containing connection details) to connect to the API server of your control plane.
@@ -200,9 +200,9 @@ kubectl delete controlplane ctp1
 
 [up-space-init]: /reference/cli-reference
 [quickstart]: /
-[aws]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment 
-[azure]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment  
-[gcp]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment  
+[aws]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
+[azure]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
+[gcp]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
 [up-space-upgrade]: /reference/cli-reference
 [spaces-release-notes]: /reference/release-notes/spaces
 [up-space-upgrade-1]: /reference/cli-reference
