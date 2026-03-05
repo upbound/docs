@@ -220,7 +220,7 @@ See [Envoy Gateway installation docs][envoy-install] for more detailed instructi
 
 **2. Create EnvoyProxy and GatewayClass**
 
-Create an `EnvoyProxy` resource that the GatewayClass will reference. See the [Envoy
+Create an `EnvoyProxy` resource that the GatewayClass references. See the [Envoy
 Gateway EnvoyProxy docs][envoy-proxy] for the full API and more examples.
 
 <CodeBlock cloud="aws">
@@ -453,7 +453,7 @@ kubectl get svc -n <controller-namespace> <controller-service> -o jsonpath='{.st
 
 **5. Validate before switching DNS**
 
-Test connectivity using `--connect-to` so traffic is routed to the new controller
+Test connectivity using `--connect-to` so traffic reaches the new controller
 before you change DNS:
 
 ```bash
@@ -628,7 +628,7 @@ gatewayAPI:
 **4. Upgrade the Spaces Helm release**
 
 Add the values from step 3 to your existing `values.yaml`, set
-`gatewayAPI.host` to your gateway hostname (e.g. `${GATEWAY_HOSTNAME}`).
+`gatewayAPI.host` to your gateway hostname (for example, `${GATEWAY_HOSTNAME}`).
 
 Then upgrade using the values file:
 
@@ -653,7 +653,7 @@ kubectl -n upbound-system rollout status deployment spaces-router
 
 **6. Get the Gateway address**
 
-Once the Gateway is programmed (check that it shows `Accepted` and `Programmed` in
+After the controller has programmed the Gateway (check that it shows `Accepted` and `Programmed` in
 `kubectl get gateway -n upbound-system spaces -o yaml`), get its address:
 
 ```bash
@@ -661,7 +661,7 @@ kubectl get gateway -n upbound-system spaces \
   -o jsonpath='{.status.addresses[0].value}'
 ```
 
-Point your DNS (e.g. `SPACES_ROUTER_HOST`) to this address. Ensure
+Point your DNS (for example, `SPACES_ROUTER_HOST`) to this address. Ensure
 `gatewayAPI.host` in your values is that hostname (the name that resolves to
 this address).
 

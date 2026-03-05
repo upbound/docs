@@ -153,9 +153,9 @@ helm upgrade spaces oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --wait
 ```
 
-### Get the Gateway address
+### Get the gateway address
 
-After the Gateway is configured by your controller:
+After your controller has configured the Gateway:
 
 ```bash
 kubectl get gateway -n upbound-system spaces \
@@ -166,9 +166,9 @@ Create or update a DNS record so that `gatewayAPI.host` points to this address.
 
 ### Troubleshooting
 
-- **Gateway status:** `kubectl get gateway -n upbound-system spaces -o yaml` — look for `Accepted` and `Programmed` in `status.conditions`.
-- **TLSRoute status:** `kubectl get tlsroute -n upbound-system spaces-router -o yaml` — route should show `Accepted: True`.
-- **Connectivity:** `curl -k "https://<your-host>/version"` — expected response is `401 Unauthorized` (routing works, auth required).
+- **Gateway status:** Run `kubectl get gateway -n upbound-system spaces -o yaml`. Look for `Accepted` and `Programmed` in `status.conditions`.
+- **TLSRoute status:** Run `kubectl get tlsroute -n upbound-system spaces-router -o yaml`. The route should show `Accepted: True`.
+- **Connectivity:** Run `curl -k "https://<your-host>/version"`. Expected response is `401 Unauthorized` (routing works, auth required).
 
 ## Cloud-specific annotations
 
