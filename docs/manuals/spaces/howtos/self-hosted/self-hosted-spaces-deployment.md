@@ -256,9 +256,9 @@ helm install aws-load-balancer-controller aws-load-balancer-controller --namespa
 
 </CodeBlock>
 
-### Expose Spaces with LoadBalancer (recommended)
+### Expose spaces with LoadBalancer (recommended)
 
-This guide exposes Spaces using a LoadBalancer Service on the spaces-router. No additional ingress or gateway components are required.
+This guide exposes Spaces using a LoadBalancer Service on the spaces-router. You don't need an ingress or gateway.
 
 :::important
 Use a Network Load Balancer (L4), not an Application Load Balancer (L7). Spaces uses long-lived connections for watch traffic that L7 load balancers may timeout.

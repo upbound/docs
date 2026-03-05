@@ -12,7 +12,7 @@ its sole workload.
 
 ## Kubernetes version compatibility
 
-Each Spaces release is tested against specific Kubernetes versions:
+Upbound tests each Spaces release against specific Kubernetes versions:
 
 | Spaces Version | Tested Kubernetes Versions |
 |----------------|----------------------------|
@@ -219,7 +219,7 @@ your `ClusterIssuer` name during install using:
 --set "certificates.space.clusterIssuer=<your ClusterIssuer name>"
 ```
 
-## Exposing Spaces externally
+## Exposing spaces externally
 
 To route requests from external clients (kubectl, ArgoCD, etc.) to control planes, you must expose the spaces-router. Options include a LoadBalancer Service (recommended), Gateway API, or Ingress. See [Exposing Spaces externally][expose] for configuration and setup.
 

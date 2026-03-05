@@ -59,7 +59,7 @@ What you are seeing is:
 
 - Pods in the `upbound-system` namespace are components required to run the management plane of the Space. This includes the `spaces-controller`, `spaces-router`, and install of UXP.
 - Pods in the `mxp-{GUID}-system` namespace are components that collectively power a control plane. Notable call outs include pod names that look like `vcluster-api-{GUID}` and `vcluster-controller-{GUID}`, which are integral components of a control plane.
-- Pods in other namespaces such as `cert-manager` are prerequisites. If you expose Spaces with an ingress controller or Gateway API, you'll also see pods in that component's namespace (for example, `ingress-nginx` or `envoy-gateway-system`). See [Exposing Spaces externally][expose] for options.
+- Pods in other namespaces such as `cert-manager` are prerequisites. If you expose Spaces with an ingress controller or Gateway API, you also see pods in that component's namespace (for example, `ingress-nginx` or `envoy-gateway-system`). See [Exposing Spaces externally][expose] for options.
 
 
 
