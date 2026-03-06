@@ -207,6 +207,7 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 - **Downstream (main and backport)**: extended test matrix and validation on Upbound-managed cloud provider accounts; CVE validation to ensure the package is free from CVEs. Releases are gated on these validation steps passing.
 
 ### Publish summary matrix
+<div class="helm-table">
 
 <ScrollTable>
 
@@ -217,7 +218,7 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 | Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | [Standard+][pricing-page] | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
 
 </ScrollTable>
-
+</div class="helm-table">
 ## Package versions
 
 Understanding how package versions work helps you plan upgrades and understand compatibility expectations. Upbound Official and Partner package versions follow the
