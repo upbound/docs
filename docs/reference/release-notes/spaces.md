@@ -21,6 +21,96 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v1.16.0
+
+### Release Date: 2026-03-09
+
+#### Breaking Changes
+
+:::important
+
+- **Ingress is no longer provisioned by default.** The Ingress resource is now
+  controller-agnostic. All ingress-nginx specific annotations, labels, and the
+  hardcoded `ingressClassName: nginx` have been removed. To keep existing
+  ingress-nginx working, add the following to your Helm values:
+
+  ```yaml
+  ingress:
+    provision: true
+    host: proxy.example.com  # Replace with your existing hostname
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    podLabels:
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/component: controller
+    namespaceLabels:
+      kubernetes.io/metadata.name: ingress-nginx
+  ```
+
+  For other controllers, set `ingress.provision: true`,
+  `ingress.ingressClassName: "<your-class>"`, and add controller-specific
+  `ingress.annotations`, `ingress.podLabels`, and `ingress.namespaceLabels` as
+  needed. ingress-nginx is deprecated upstream (EOL March 2026). See the
+  [ingress-nginx migration guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/)
+  for details. Recommended alternatives: LoadBalancer Service (simplest),
+  Gateway API, or any Ingress controller with TLS passthrough support.
+
+- **LogCollector tolerations:** Tolerations for the LogCollector daemonset have been
+  moved from `observability.collectors.tolerations` to
+  `observability.collectors.logCollector.tolerations`. Update your Helm values if
+  you use custom tolerations for the LogCollector.
+
+:::
+
+#### Important Changes
+
+- Spaces Apollo (Query API) was updated to v0.4.7 with stability fixes for ensuring
+  data is properly synced.
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
+
+#### Features
+
+- **Spaces Router via LoadBalancer:** You can expose the Spaces Router directly
+  with a LoadBalancer Service, without an ingress controller or gateway.
+  Use `externalTLS.host` for the externally routable hostname for TLS.
+- **Ingress and Gateway API together:** Run both at once for zero-downtime
+  migration from ingress-nginx. See the [migration
+  guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/).
+- **Observability:**
+  - Added support for `prometheus.io/path` annotation in the control plane telemetry
+    collector (custom metrics paths with fallback to `/metrics`).
+  - Added support for `observability.spacesCollector.env` for injecting environment variables
+    into the Spaces OpenTelemetry Collector pods.
+  - Added support for the OTEL Filter Processor in SharedTelemetryConfigs to drop
+    metrics, logs, or traces.
+  - [Tracing can be enabled in Apollo](/manuals/spaces/howtos/self-hosted/observability/tracing/query-api/).
+  - [Spaces API is now instrumented with tracing](/manuals/spaces/howtos/self-hosted/observability/tracing/spaces-api/).
+  - Resources for the LogCollector daemonset are configurable via
+    `observability.collectors.logCollector.resources`.
+  - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
+- **Certificate automation:** Services reload the Spaces CA automatically; leaf
+  certificates renew when the Spaces CA is renewed. The `spaces-ca-bundle`
+  includes both old and new CAs for seamless rotation. For zero downtime with
+  webhooks during CA renewal, use cert-manager v1.19+ or enable the
+  CAInjectorMerging feature flag in cert-manager 1.17+.
+- **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes
+  without additional configuration. This can be disabled by explicitly setting
+  `controlPlanes.uxp.v2.enabled` to `false` if needed.
+- Controllers are automatically upgraded when a ControllerRuntimeConfig is updated.
+
+#### Bug Fixes
+
+- SharedTelemetry now properly cleans up its `status.provisioned`,
+  `status.failed`, and `status.selected` after a control plane is deleted.
+- ProviderConfig, ProviderConfigUsage, and ClusterProviderConfig are no longer
+  counted as Managed Resources by the UXP metering controller.
+
+#### Other Changes
+
+- Default resource requests added to `external-secrets-operator` Deployments.
+- Spaces Apollo image registry updated to `xpkg.upbound.io/spaces-artifacts`.
 
 ## v1.15.2
 
