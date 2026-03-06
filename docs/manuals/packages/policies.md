@@ -209,7 +209,7 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 ### Publish summary matrix
 <div class="helm-table">
 
-<ScrollTable>
+
 
 | Release type        | Crossplane runtime  | Source                     | Distribution         | Signed | SBOM | FIPS-compatible<br/>packages available<br/>(Business Critical) | Availability window | Subscription<br/>required | Requires<br/>pull secrets | Cadence                               | Testing/quality gating                       |
 | ------------------- | ------------------- | -------------------------- | -------------------- | ------ | ---- | -------------------------------------------------------- | ------------------- | ------------------------- | ------------------------- | ------------------------------------- | -------------------------------------------- |
@@ -217,8 +217,9 @@ Upbound customers with a [Standard+ subscription][pricing-page] may submit a sup
 | Downstream main     | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 12 months           | None                      | No                        | Ships with upstream main              | Extended matrix; cloud validation; CVE-gated |
 | Downstream backport | OSS Crossplane, UXP | `upbound` (private mirror) | `xpkg.upbound.io`    | Yes    | Yes  | Yes                                                      | 18 months           | [Standard+][pricing-page] | Yes                       | As needed (eligibility-based)         | Extended matrix; cloud validation; CVE-gated |
 
-</ScrollTable>
-</div class="helm-table">
+
+</div>
+
 ## Package versions
 
 Understanding how package versions work helps you plan upgrades and understand compatibility expectations. Upbound Official and Partner package versions follow the
