@@ -1,6 +1,6 @@
 ---
 title: Authorize actions in control planes
-sidebar_position: 1
+sidebar_position: 8
 description: A guide to implementing and configuring Kuberentes RBAC in Upbound
 ---
 
@@ -22,14 +22,14 @@ Because control planes in Upbound are based on Kubernetes, you can use _ClusterR
 
 - **Role:** A namespace-scoped group of resources and allowed operations that you can assign to a user or a group of users using a _RoleBinding_.
 - **ClusterRole:** A cluster-scoped group of resources and allowed operations that you can assign to a user or a group of users using a _RoleBinding_ or _ClusterRoleBinding_.
-- **RoleBinding:** A namespace-scoped assignment of a _Role_ or _ClusterRole_ to a user or group. 
-- **ClusterRoleBinding:** A cluster-scoped assignment of a _Role_ or _ClusterRole_ to a user or group. 
+- **RoleBinding:** A namespace-scoped assignment of a _Role_ or _ClusterRole_ to a user or group.
+- **ClusterRoleBinding:** A cluster-scoped assignment of a _Role_ or _ClusterRole_ to a user or group.
 
 If you plan to use namespaces in your control plane as an isolation mechanism between tenants, its recommended to use _RoleBinding_ objects. If namespace-scoping isn't a priority, use _ClusterRoleBinding_ objects instead.
 
 ### Define permissions using _Roles_ and _ClusterRoles_
 
-Define permissions with a _Role_ or _ClusterRole_ object. A _Role_ defines access to resources in a single namespace of your control plane. A _ClusterRole_ defines access to resources in the entire control plane. 
+Define permissions with a _Role_ or _ClusterRole_ object. A _Role_ defines access to resources in a single namespace of your control plane. A _ClusterRole_ defines access to resources in the entire control plane.
 
 The example below demonstrates creating a `sql-instance-viewer` cluster-scoped role. This role permits viewing `sqlinstance` objects, a composite resource created with Crossplane.
 
@@ -39,7 +39,7 @@ kind: ClusterRole
 metadata:
   name: sqlinstance-viewer
 rules:
-- apiGroups: ["aws.platform.upbound.io"] 
+- apiGroups: ["aws.platform.upbound.io"]
   resources: ["sqlinstances"]
   verbs: ["get", "watch", "list"]
 ```
@@ -73,7 +73,7 @@ roleRef:
 
 ### RBAC manager
 
-Each control plane in Upbound has a built-in Crossplane RBAC manager. This feature dynamically manages and binds RBAC roles. These roles grant subjects access to use the control plane as it gets extended by installing control plane software, such as providers, Crossplane composite resources, and more. 
+Each control plane in Upbound has a built-in Crossplane RBAC manager. This feature dynamically manages and binds RBAC roles. These roles grant subjects access to use the control plane as it gets extended by installing control plane software, such as providers, Crossplane composite resources, and more.
 
 
 <details>
@@ -81,7 +81,7 @@ Each control plane in Upbound has a built-in Crossplane RBAC manager. This featu
 <summary> "Show example of RBAC manager roles"</summary>
 
 ```sh
-kubectl get ClusterRoles -A                  
+kubectl get ClusterRoles -A
 NAME                                                                                        CREATED AT
 admin                                                                                       2025-03-12T18:57:25Z
 cluster-admin                                                                               2025-03-12T18:57:25Z
@@ -293,9 +293,9 @@ subjects:
 Users in `team1` can now access the control plane and only have the ability to manage _SQLInstances_ in their designated namespace.
 
 
-[upbound-rbac]: /manuals/platform/concepts/authorization/upbound-rbac
-[upbound-rbac-1]: /manuals/platform/concepts/authorization/upbound-rbac
-[upbound-console]: /manuals/platform/concepts/identity-management/teams/#add-users
-[upbound-console-2]: /manuals/platform/concepts/authorization/upbound-rbac/#assign-group-role-permissions
+[upbound-rbac]: /manuals/platform/rbac
+[upbound-rbac-1]: /manuals/platform/rbac
+[upbound-console]: /manuals/platform/teams/#add-users
+[upbound-console-2]: /manuals/platform/rbac/#assign-group-role-permissions
 [kubernetes-role-based-access-control]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 [configuration-azure-data]: https://marketplace.upbound.io/configurations/upbound/configuration-azure-database

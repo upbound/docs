@@ -1,6 +1,6 @@
 ---
 title: Connect control planes to external services
-sidebar_position: 2
+sidebar_position: 9
 description: A guide for authenticating control plane with external services, including using OIDC
 ---
 
@@ -282,7 +282,7 @@ The claims for an identity token injected into the file system of a provider in 
 :::tip
 Identity tokens injected into a provider `Pod` are valid for 1 hour. These
 tokens automatically refresh before expiration to ensure there is no
-interruption in service. 
+interruption in service.
 :::
 <!-- vale write-good.TooWordy = YES -->
 
@@ -293,9 +293,9 @@ Any provider that can run in a control plane can support the `Upbound` credentia
 View [this Pull Request][this-pull-request] for a reference implementation.
 
 
-[control-plane-management]: /manuals/spaces/concepts/control-planes
+[control-plane-management]: /spaces/concepts/control-planes
 [provider-azure-authentication]:/manuals/packages/providers/authentication#azure-upbound-oidc
-[provider-gcp-authentication]:/manuals/packages/providers/authentication#gcp-upbound-oidc 
+[provider-gcp-authentication]:/manuals/packages/providers/authentication#gcp-upbound-oidc
 [crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
 [marketplace]: https://marketplace.upbound.io/providers
 [providerconfig]: https://docs.crossplane.io/latest/concepts/providers/#provider-configuration
@@ -305,7 +305,7 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 [workload-identity]: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 [openid-connect-oidc]: https://openid.net/connect/
 [oauth-2-0]: https://oauth.net/2/
-[provider-aws-authentication]:/manuals/packages/providers/authentication#aws-upbound-oidc 
+[provider-aws-authentication]:/manuals/packages/providers/authentication#aws-upbound-oidc
 [_deploymentruntimeconfig_]: https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration
 [provider-helm]: https://marketplace.upbound.io/providers/upbound/provider-helm/
 [json-web-tokens-jwts]: https://www.rfc-editor.org/rfc/rfc7519

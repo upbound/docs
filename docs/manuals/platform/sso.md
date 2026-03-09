@@ -1,6 +1,6 @@
 ---
 title: Single Sign On in Upbound
-sidebar_position: 1
+sidebar_position: 10
 description: Configure single sign-on in your Upbound organization to manage user
   access
 plan: "enterprise"

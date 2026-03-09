@@ -1,6 +1,6 @@
 ---
 title: Upbound IAM
-sidebar_position: 1
+sidebar_position: 2
 tier: "standard"
 ---
 
@@ -176,12 +176,12 @@ Key features:
 <!-- vale Google.WordList = YES -->
 
 
-[users]: /manuals/platform/concepts/identity-management/users
-[organizations]: /manuals/platform/concepts/identity-management/organizations
-[teams]: /manuals/platform/concepts/identity-management/teams
-[robots]: /manuals/platform/concepts/identity-management/robots
-[enabling-directory-sync]: /manuals/platform/howtos/enable-sso
-[authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/howtos/oidc
+[users]: /manuals/platform/users
+[organizations]: /manuals/platform/organizations
+[teams]: /manuals/platform/teams
+[robots]: /manuals/platform/robots
+[enabling-directory-sync]: /manuals/platform/sso
+[authenticate-jwt-tokens-from-your-oidc-provider]: /manuals/platform/oidc
 
 
 [kubernetes-authentication-strategies]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies

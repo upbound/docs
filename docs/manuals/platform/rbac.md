@@ -1,13 +1,13 @@
 ---
 title: Upbound RBAC
-sidebar_position: 1
+sidebar_position: 7
 description: A guide to implementing and configuring access control in Upbound
 plan: "standard"
 ---
 
 <Standard />
 
-This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC lets you control access to your Upbound resources and control planes based on the roles of individual users in your organization. 
+This guide provides an overview of role-based access control (RBAC) in Upbound. RBAC lets you control access to your Upbound resources and control planes based on the roles of individual users in your organization.
 <!-- vale off -->
 :::tip
 To learn how to manage access to resources in a control plane, read the [documentation][documentation] on authorizing actions on resources in control planes
@@ -95,7 +95,7 @@ Editor and Controller lack Read permissions on `quayaccesstokens`, `stssessionto
 Use the [up CLI][up-cli] to set your kubecontext to the desired Space, then run the following:
 
 ```sh
-kubectl get objectrolebindings    
+kubectl get objectrolebindings
 NAME            AGE
 default-zcntk   14s
 ```
@@ -153,15 +153,15 @@ spec:
 Use the [up CLI][up-cli-2] to set your kubecontext to the desired Space, then delete the desired `objectrolebinding`. The example below deletes the permission created in the previous section:
 
 ```sh
-kubectl delete objectrolebinding default-zcntk                        
+kubectl delete objectrolebinding default-zcntk
 objectrolebinding.authorization.spaces.upbound.io "default-zcntk" deleted
 ```
 </TabItem>
 </Tabs>
 
 
-[documentation]: /manuals/platform/concepts/authorization/k8s-rbac
-[self-hosted-spaces]: /manuals/spaces/howtos/self-hosted/deployment-reqs
+[documentation]: /manuals/platform/k8s-rbac
+[self-hosted-spaces]: /spaces/howtos/deployment-reqs
 [up-cli]: /manuals/cli/concepts/contexts
 [up-cli-1]: /manuals/cli/concepts/contexts
 [up-cli-2]: /manuals/cli/concepts/contexts

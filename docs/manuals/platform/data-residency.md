@@ -1,6 +1,6 @@
 ---
 title: Data Residency
-sidebar_position: 2
+sidebar_position: 11
 description: "Information about Upbound's data residency policies."
 ---
 

@@ -33,6 +33,11 @@ module.exports = {
             href: "/spaces/overview",
         },
         {
+            type: "link",
+            label: "Cloud Spaces",
+            href: "/cloud-spaces/overview",
+        },
+        {
             type: "category",
             label: "CLI",
             link: {
@@ -86,7 +91,7 @@ module.exports = {
         },
         {
             type: "category",
-            label: "Platform",
+            label: "Account & Access",
             link: {
                 type: "doc",
                 id: "manuals/platform/overview",

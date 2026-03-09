@@ -1,6 +1,6 @@
 ---
 title: Robots
-sidebar_position: 1
+sidebar_position: 6
 description: Creating and assigning Upbound robot tokens
 ---
 
@@ -42,5 +42,5 @@ You should use a robot token for your Upbound Marketplace CI to push new tags or
 
 [up-cli]: /reference/cli-reference
 [personal-access-token]: /manuals/console/upbound-console/
-[team]: /manuals/platform/concepts/identity-management/teams/#manage-repository-permissions
+[team]: /manuals/platform/teams/#manage-repository-permissions
 [upbound-console]: https://console.upbound.io/

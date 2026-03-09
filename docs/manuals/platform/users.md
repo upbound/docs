@@ -1,6 +1,6 @@
 ---
 title: Users
-sidebar_position: 1
+sidebar_position: 4
 description: Creating and managing Upbound users
 ---
 
@@ -76,8 +76,8 @@ Organizations associated with this account aren't deleted.
 If the user is the primary account for an organization, contact [Upbound
 support][upbound-support] to transfer organization ownership.
 
-[teams]: /manuals/platform/concepts/identity-management/teams
-[organization]: /manuals/platform/concepts/identity-management/organizations
+[teams]: /manuals/platform/teams
+[organization]: /manuals/platform/organizations
 [up-command-line]: /manuals/cli/overview
 [kubernetes-image-pull-secret]: /manuals/marketplace/authentication#kubernetes-image-pull-secrets
 [upbound-support]: /reference/usage/support
