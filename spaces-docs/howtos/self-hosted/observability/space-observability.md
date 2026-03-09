@@ -104,7 +104,6 @@ providing end-to-end visibility into request flow across the system. Use these
 traces to debug latency issues, understand request paths, and correlate errors
 across services.
 
-<<<<<<<< HEAD:spaces-docs/howtos/self-hosted/space-observability.md
 The router uses:
 
 - **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
