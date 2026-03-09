@@ -24,6 +24,7 @@ module.exports = {
         'howtos/self-hosted/certs',
         'howtos/self-hosted/proxies-config',
         'howtos/self-hosted/attach-detach',
+        'howtos/self-hosted/query-api',
       ],
     },
     {
@@ -32,6 +33,7 @@ module.exports = {
       items: [
         'howtos/self-hosted/configure-ha',
         'howtos/self-hosted/administer-features',
+        'howtos/self-hosted/hub-rbac',
         'howtos/self-hosted/oidc-configuration',
         'howtos/self-hosted/scaling-resources',
         'howtos/self-hosted/spaces-management',
@@ -58,7 +60,6 @@ module.exports = {
         'howtos/ctp-connector',
         'howtos/mcp-connector-guide',
         'howtos/query-api',
-        'howtos/self-hosted/query-api',
       ],
     },
     {

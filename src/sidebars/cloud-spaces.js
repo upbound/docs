@@ -16,29 +16,54 @@ module.exports = {
     },
     {
       type: 'category',
-      label: 'How-tos',
+      label: 'Deploy',
+      items: [
+        'howtos/dedicated-spaces-deployment',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Control Planes',
+      items: [
+        'howtos/managed-service',
+        'howtos/control-plane-topologies',
+        'howtos/auto-upgrade',
+        'howtos/migrating-to-mcps',
+        'howtos/simulations',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Connect',
       items: [
         'howtos/api-connector',
-        'howtos/auto-upgrade',
-        'howtos/backup-and-restore',
-        'howtos/control-plane-topologies',
         'howtos/ctp-connector',
-        'howtos/debugging-a-ctp',
-        'howtos/dedicated-spaces-deployment',
-        'howtos/managed-service',
-        'howtos/migrating-to-mcps',
-        'howtos/observability',
+        'howtos/mcp-connector-guide',
         'howtos/query-api',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Observe & Debug',
+      items: [
+        'howtos/observability',
+        'howtos/debugging-a-ctp',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'GitOps & Automation',
+      items: [
+        'howtos/automation-and-gitops/overview',
+        'howtos/gitops-on-upbound',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Data & Security',
+      items: [
+        'howtos/backup-and-restore',
         'howtos/secrets-management',
-        'howtos/simulations',
-        {
-          type: 'category',
-          label: 'Automation and GitOps',
-          items: [
-            'howtos/automation-and-gitops/overview',
-            'howtos/gitops-on-upbound',
-          ],
-        },
       ],
     },
     {
