@@ -95,7 +95,7 @@ recreate the XRD to change the
 Groups define a collection of related API endpoints. The `group` can be any
 value, but common convention is to map to a fully qualified domain name.
 
-Many XRDs may use the same `group` to create a logical collection of APIs.  
+Multiple XRDs may use the same `group` to create a logical collection of APIs.  
 For example a `database` group may have a `relational` and `nosql` kinds. 
 
 ### XRD names
@@ -154,9 +154,11 @@ is strongly recommended.
 
 #### Define a schema
 
+<!-- vale write-good.Passive = NO -->
 The `schema` defines the names
 of the parameters, the data types of the parameters and which parameters are
-required or optional. 
+required or optional.
+<!-- vale write-good.Passive = YES --> 
 
 :::note
 All `schemas` follow the Kubernetes custom resource definition 

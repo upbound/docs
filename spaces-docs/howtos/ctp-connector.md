@@ -7,7 +7,6 @@ plan: "standard"
 
 <Standard />
 
-
 Control Plane Connector connects arbitrary Kubernetes application clusters outside the
 Upbound Spaces to your control planes running in Upbound Spaces.
 This lets you interact with your control plane's API from the app cluster. The claim APIs and the namespaced XR APIs
@@ -160,8 +159,7 @@ cluster. It moves any claims in the app cluster into the control plane
 at the specified namespace.
 
 :::tip
-Make sure your kubeconfig's current context is pointed at the app cluster where
-you want to uninstall Control Plane Connector from.
+Ensure your kubeconfig's current context points to the app cluster where you uninstall Control Plane Connector.
 :::
 
 </TabItem>
@@ -297,9 +295,7 @@ lives in your cluster.
 
 ### Migration to control planes
 
-This guide details the migration of a Crossplane installation to Upbound-managed
-control planes using the Control Plane Connector to manage claims on an application
-cluster.
+This guide covers migrating a Crossplane installation to Upbound-managed control planes. It uses the Control Plane Connector to manage claims on an application cluster.
 
 ![migration flow application cluster to control plane](/img/ConnectorMigration.png)
 
@@ -496,8 +492,8 @@ credentials to the clusters.
 
 
 [kubeconfig]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group
-[kubeconfig-1]:/spaces/concepts/control-planes/#connect-directly-to-your-control-plane 
-[these-instructions]:/manuals/console/#create-a-personal-access-token 
+[kubeconfig-1]:/manuals/spaces/concepts/control-planes/#connect-directly-to-your-control-plane 
+[these-instructions]:/manuals/console/upbound-console/#create-a-personal-access-token 
 [kubernetes-api-aggregationlayer]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/
 [configuration-eks]: https://github.com/upbound/configuration-eks
 [an-example]: https://github.com/upbound/configuration-eks/blob/9f86b6d/.up/examples/cluster.yaml

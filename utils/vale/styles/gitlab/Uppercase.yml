@@ -28,6 +28,7 @@ exceptions:
   - BMP
   - BSD
   - CAS
+  - CEL
   - CDN
   - CIDR
   - CLI
@@ -46,6 +47,7 @@ exceptions:
   - CVS
   - DAG
   - DAST
+  - DMCA
   - DHCP
   - DNS
   - DOM
@@ -84,6 +86,7 @@ exceptions:
   - GPU
   - GUI
   - HAML
+  - HCL
   - HDD
   - HEAD
   - HIPAA
@@ -113,6 +116,7 @@ exceptions:
   - LDAPS
   - LESS
   - LFS
+  - LLM
   - LRU
   - LTM
   - LTS
@@ -233,3 +237,14 @@ exceptions:
   - ZAP
   - ZIP
   - IDP
+  - CNI
+  - CSI
+  - ETCD
+  - EBPF
+  - OCM
+  - SMI
+  - CEL
+  - HPA
+  - VPA
+  - WPA
+  - AGE

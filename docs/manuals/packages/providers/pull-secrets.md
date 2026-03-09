@@ -15,7 +15,7 @@ This policy only applies for provider versions published after March 25, 2025. R
 ### Crossplane and UXP v1.16+
 
 :::tip
-The `ImageConfig` API was introduced starting in Crossplane `v1.18` and backported to `v1.16.4` and `v1.17.3`. Make sure you're running these versions before using this API.
+Crossplane `v1.18` introduced the `ImageConfig` API and backported it to `v1.16.4` and `v1.17.3`. Make sure you're running these versions before using this API.
 :::
 
 1. Login to your Upbound org account

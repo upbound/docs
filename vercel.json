@@ -497,7 +497,7 @@
         },
         {
             "source": "/deploy/self-hosted-spaces/space-observability(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/space-observability",
+            "destination": "/manuals/spaces/howtos/self-hosted/observability/space-observability",
             "permanent": true
         },
         {
@@ -1373,6 +1373,11 @@
         {
             "source": "/manuals/uxp/features/official-package-support(/)?",
             "destination": "/manuals/uxp/official-package-support",
+            "permanent": true
+        },
+        {
+            "source": "/concepts/upbound-spaces(/)?",
+            "destination": "/manuals/spaces/overview",
             "permanent": true
         }
     ]

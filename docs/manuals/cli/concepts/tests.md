@@ -5,14 +5,10 @@ sidebar_position: 7
 ---
 
 This document explains the basics of tests and how they work in control plane
-projects. Tests help you validate that your platform behaves correctly before
-you deploy it into real environments.
+projects.
 
-## What are tests?
-
-In the context of Upbound and Crossplane, tests in a control plane project
-validate that your platform behaves as expected before you deploy it into a real
-environment.
+Tests in Upbound and Crossplane validate that your platform behaves as expected
+before you deploy to a real environment.
 
 Tests simulate the behavior of your control plane in response to specific
 inputs, verifying that your compositions, functions, and packages produce the
@@ -33,11 +29,13 @@ In a control plane project, you can write tests for:
 
 Composition tests and E2E tests help you:
 
+<!-- vale write-good.Weasel = NO -->
 - Catch logic errors early in your compositions or function pipelines
 - Validate logic in functions
 - Ensure that new changes don't break existing behavior (regression testing)
 - Build confidence in the correctness and safety of your platform configurations
 - Iterate faster by running tests locally before pushing to staging or production
+<!-- vale write-good.Weasel = YES -->
 
 ## How tests work
 

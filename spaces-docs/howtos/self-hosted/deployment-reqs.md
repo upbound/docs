@@ -4,12 +4,21 @@ sidebar_position: 2
 description: Deploy a Space in your production environment.
 ---
 
-You need a Kubernetes cluster as the hosting environment to run Spaces. You can
-install Spaces into any Kubernetes cluster, version v1.25 or later. Upbound
+You need a Kubernetes cluster as the hosting environment to run Spaces. Upbound
 validates the Spaces software runs on [AWS EKS][aws-eks], [Google Cloud
 GKE][google-cloud-gke], and [Microsoft AKS][microsoft-aks]. Upbound recommends
 dedicating the Kubernetes cluster for the express purpose of running Spaces as
 its sole workload.
+
+## Kubernetes version compatibility
+
+Each Spaces release is tested against specific Kubernetes versions:
+
+| Spaces Version | Tested Kubernetes Versions |
+|----------------|----------------------------|
+| 1.15           | 1.32, 1.33, 1.34           |
+| 1.14           | 1.31, 1.32, 1.33           |
+| 1.13           | 1.30, 1.31, 1.32           |
 
 ## Deployment requirements
 
@@ -60,7 +69,7 @@ rightsized the memory available in your Spaces cluster.
 :::important
 Be careful not to conflate `managed resource` with `custom resource definition`.
 The former is an "instance" of an external resource in Crossplane, while the
-latter defines the API schema of that resource. 
+latter defines the API schema of that resource.
 :::
 
 It's estimated that each custom resource definition consumes ~3 MB of memory.

@@ -3,10 +3,14 @@ title: Create a control plane project
 sidebar_position: 1
 ---
 
-Now that you have an Upbound account and the up CLI installed, you are ready to
+Now that you have an Upbound account and the up CLI installed, you're ready to
 create a control plane.
 
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
 In this quickstart, you will:
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Google.Will = YES -->
 
 1. Scaffold a control plane project
 2. Define your own resource abstraction and templatization
@@ -169,7 +173,8 @@ To define a new resource type with Crossplane, you need to:
 
 * create a [CompositeResourceDefinition (XRD)][xrd], which defines the API schema of your resource type
 * create a [Composition][composition], which defines the implementation of that API schema.
-* A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.
+
+A Composition is a pipeline of [functions][functions], which contain the user-defined logic of your composition.
 
 :::
 
@@ -1010,7 +1015,9 @@ up project run --local --ingress
 
 :::tip
 
-The `project run` command builds and deploys any changes. If you don't have a control plane running yet, it creates one, otherwise it'll target your existing control plane.
+The `project run` command builds and deploys any changes. If you don't have a
+control plane running yet, it creates one, otherwise it targets your existing
+control plane.
 
 :::
 
@@ -1046,10 +1053,8 @@ service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 
 ## Next steps
 
-Now that you know the basics of building with Upbound, extend your _WebApp_
-custom resource type with an AI-augmented operation to detect and remediate
-issues that occur when running app workloads on Kubernetes. Read [Create an
-AI-augmented operation][integrate-ai].
+Now that you know the basics of building with Upbound, create an AI-augmented
+operation to detect and remediate Kubernetes app workload errors. Read [Create an AI-augmented operation][integrate-ai].
 
 [up-cli]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io

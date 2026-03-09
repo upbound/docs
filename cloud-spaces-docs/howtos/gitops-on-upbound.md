@@ -120,7 +120,7 @@ data:
 ```
 
 :::tip
-The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you're using an Argo CD instance to manage more than only control planes, you should consider changing the `clusters` string match for the configuration to apply only to control planes. For example, if every control plane context name followed the convention of being named `controlplane-<name>`, you could set the string match to be `controlplane-*`
+The `resource.respectRBAC` configuration above tells Argo to respect RBAC for _all_ cluster contexts. If you use an Argo CD instance to manage more than control planes, change the `clusters` string match to apply only to control planes. For example, if control plane contexts follow the naming convention `controlplane-<name>`, set the string match to `controlplane-*`
 :::
 
 <!-- vale Google.Headings = NO -->

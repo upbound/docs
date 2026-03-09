@@ -27,7 +27,7 @@ export SPACES_CLUSTER_NAME="cluster"
 Switch contexts to the Kubernetes cluster where you've installed Argo. Create a secret on the Argo cluster whose data contains the connection details of the Space cluster.
 
 :::important
-Make sure the following commands are executed against your **Argo** cluster, not your Space cluster.
+Run the following commands against your **Argo** cluster, not your Space cluster.
 :::
 
 Run the following command in a terminal:

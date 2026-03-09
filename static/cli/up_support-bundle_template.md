@@ -8,13 +8,13 @@ Output the default SupportBundle YAML configuration template.
 The `up support-bundle template` command outputs the default SupportBundle YAML configuration
 template that can be used as a starting point for custom support bundle configurations.
 
-## Usage
+#### Usage
 
 ```bash
 up support-bundle template [flags]
 ```
 
-### Examples
+#### Examples
 
 ```bash
 # Output the default support bundle template

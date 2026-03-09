@@ -4,21 +4,26 @@ description: "Use Upbound Crossplane to build and manage an AI-powered control p
 sidebar_position: 2
 ---
 
+<!-- vale gitlab.Uppercase = NO -->
 Upbound Crossplane transforms infrastructure management by integrating
-AI-powered pipelines directly into your control plane operations. Through
-LLM-enabled Operation functions, you can build intelligent infrastructure
-platforms that automatically diagnose issues, suggest fixes, and provide
-contextual insights about resource health and dependencies.
+AI-powered pipelines directly into your control plane operations. 
+LLM-enabled operations functions let you to build intelligent infrastructure 
+platforms. These AI enhanced operations can automatically diagnose issues,
+suggest fixes, and give contextual insights on resource health and
+dependencies.
+<!-- vale gitlab.Uppercase = YES-->
 
 Operations allow you to build workflows using function pipelines that execute
 tasks on resources under management by your control plane. Operations run once
 to completion and then stop, making them ideal for event-driven automation
 tasks.
 
+<!-- vale gitlab.FutureTense = NO -->
 In this tutorial, you'll learn how to create and configure AI-powered operations
 using Upbound Crossplane to automatically detect common Kubernetes
 pod issues. This tutorial is for platform engineers and DevOps
 practitioners.
+<!-- vale gitlab.FutureTense = YES -->
 
 ## Prerequisites
 
@@ -211,7 +216,9 @@ Apply the permissions to your cluster:
 kubectl apply -f permissions.yaml
 ```
 
+<!-- vale Google.Headings = NO -->
 ## Configure Anthropic API access
+<!-- vale Google.Headings = YES -->
 
 Function-claude sends all requests to your Anthropic account and requires an API
 key to work.
@@ -238,7 +245,9 @@ Apply the secret to your cluster:
 kubectl apply -f claude.yaml
 ```
 
+<!-- vale Google.Headings = NO -->
 ## Enable _Analysis_ and _Remediation_ APIs
+<!-- vale Google.Headings = YES -->
 
 Upbound Crossplane uses Analysis and Remediation resource types to 
 complement AI operations and enable human-in-the-loop intervention.
@@ -350,7 +359,7 @@ spec:
             include the namespace and name of the pod to examine.
           userPrompt: |
             You should use the tools available to you to look up events and logs related
-            to the pod in order to identify what is wrong.
+            to the pod in order to identify what's wrong.
 
             REQUIRED OUTPUT FORMAT:
             { 
@@ -509,14 +518,18 @@ kubectl apply -f deploymentruntimeconfigs.yaml
 ```
 
 These configurations associate the permissions you created earlier with the
-functions deployed on your control plane, enabling them to create and
+functions deployed on your control plane to create and
 interact with _Analysis_ and _Remediation_ resources.
 
 ## Test the AI-powered operation
 
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale Google.Will = NO -->
 Now you'll deploy a problematic workload to trigger the AI analysis.
 
-Deploy a WebApp that will trigger out-of-memory conditions.
+Deploy a WebApp built to trigger out-of-memory conditions.
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
 
 Save the following YAML as `oomkilled.yaml`:
 
@@ -565,7 +578,7 @@ Monitor the AI analysis creation:
 kubectl get analysis,remediation,remediationrequests,operations -A
 ```
 
-
+<!-- vale Google.WordList = NO -->
 :::note
 The WatchOperation `analyze-events-for-pod-distress` manifest above filters events down to:
 
@@ -579,8 +592,9 @@ reason: BackOff
 count: 2
 ```
 
-It may take a few `OOMKill` loops for an Analysis to be created.
+It may take several `OOMKill` loops to create an Analysis.
 :::
+<!-- vale Google.WordList = YES -->
 
 Examine the AI-generated analysis and remediation suggestions:
 
@@ -598,11 +612,11 @@ Now that your control plane is running locally with AI-powered operations, consi
 
 * Package your control plane as a [Configuration][Configuration] image and push it to the Upbound Marketplace
 * Complete the [Build and push your first Configuration][buildAndPush] tutorial
-* Explore additional AI-powered operations for other infrastructure scenarios
-* Configure custom remediation strategies for your specific use cases
+* Explore additional [AI-powered operations][aiOperations] for other infrastructure scenarios
 
 [up]: /manuals/cli/overview
 [project]: /getstarted/introduction/project
 [anthropic-key]: https://docs.anthropic.com/en/api/admin-api/apikeys/get-api-key
 [Configuration]: /manuals/uxp/concepts/packages/configurations
+[aiOperations]: /manuals/uxp/concepts/operations/intelligent-operations/
 [buildAndPush]: /getstarted/introduction/build-and-push

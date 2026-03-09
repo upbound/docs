@@ -9,7 +9,7 @@ understanding your UXP-based control plane behavior directly from within your
 cluster.
 
 This dashboard provides visibility into key Crossplane resources, pipelines, and
-controller behavior, focusing on helping developers and platform operators
+controller behavior. This visibility helps developers and platform operators
 reason about control plane activity without requiring access to cloud-hosted
 systems.
 

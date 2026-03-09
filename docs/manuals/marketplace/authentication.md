@@ -38,7 +38,7 @@ curl -sL "https://cli.upbound.io" | BIN=docker-credential-up sh
 Read the [up CLI configuration][up-cli-configuration] documentation for more installation options.
 :::
 
-In the case of Docker, add `up` to your Docker `config.json`. This allows your client to use Upbound credentials to interact with the Marketplace:
+For Docker, add `up` to your Docker `config.json`. This allows your client to use Upbound credentials to interact with the Marketplace:
 
 ```json
 {
@@ -109,5 +109,5 @@ spec:
 
 [upbound-account]: /manuals/platform/concepts/identity-management/users
 [up-command-line]: /manuals/cli/overview
-[up-cli-configuration]: /operate/cli/configuration/#configuring-a-docker-credential-helper
+[up-cli-configuration]:/manuals/cli/howtos/profile-config/#configure-docker-credential-helper
 [image-pull-secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials

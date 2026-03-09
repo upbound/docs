@@ -48,7 +48,9 @@ exceptions:
   - "Use OpenAPI v3 data types"
   - "With Helm"
   - APIs?
+  - AWS
   - Azure
+  - Backstage
   - CLI
   - CRDs
   - Code
@@ -58,13 +60,18 @@ exceptions:
   - ControllerConfigs
   - Cosmos
   - Crossplane
+  - CVE?
   - Docker
   - Emmet
+  - EKS
+  - GA
   - GCP
   - GitHub
   - GitOps
   - gRPC
+  - FAQ
   - Hugo
+  - HTTP
   - I
   - Integrate Crossplane with Argo
   - Integrate Crossplane with Flux
@@ -82,10 +89,13 @@ exceptions:
   - ProviderConfig
   - ProviderConfigs
   - Providers
+  - RBAC
   - REPL
+  - SBOM
   - DeploymentRuntimeConfig
   - DeploymentRuntimeConfigs
   - Studio
+  - TLS
   - TypeScript
   - Upbound
   - URLs
@@ -93,6 +103,8 @@ exceptions:
   - UXP
   - Vale
   - Vault
+  - VPC
   - Visual
   - VS
   - Windows
+  - XRD?

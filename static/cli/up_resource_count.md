@@ -8,13 +8,13 @@ Count Crossplane resources in a cluster.
 The `up resource count` command counts Crossplane resources in a Kubernetes cluster,
 providing a summary of managed resources, composite resources, claims, and composed resources.
 
-## Usage
+#### Usage
 
 ```bash
 up resource count [flags]
 ```
 
-### Examples
+#### Examples
 
 ```bash
 # Count resources using the current kubeconfig context
@@ -33,7 +33,7 @@ up resource count --format json
 up resource count --format yaml
 ```
 
-## Resource Types
+#### Resource Types
 
 The command counts the following Crossplane resource types:
 
@@ -43,7 +43,7 @@ The command counts the following Crossplane resource types:
 - **Composed Resources**: Resources that are part of a composite resource's composition
 - **Total Resources**: Sum of all counted resources
 
-## Notes
+#### Notes
 
 - Resources are deduplicated to avoid double-counting
 - ProviderConfig and related resources are excluded from the count

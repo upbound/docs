@@ -8,40 +8,26 @@ plan: "enterprise"
 
 <Enterprise />
 
-This guide explains how to configure observability in Upbound Spaces. Upbound
-provides integrated observability features built on
+This guide explains how to configure control plane observability in Upbound
+Spaces. Upbound provides integrated observability features built on
 [OpenTelemetry][opentelemetry] to collect, process, and export logs, metrics,
-and traces.
-
-Upbound Spaces offers two levels of observability:
-
-1. **Space-level observability** - Observes the cluster infrastructure where Spaces software is installed (Self-Hosted only)
-2. **Control plane observability** - Observes workloads running within individual control planes
+and traces from workloads running within individual control planes.
 
 <!-- vale Google.Headings = NO -->
-<!-- vale write-good.TooWordy = NO -->
-<!-- vale Google.WordList = NO -->
 
-
-:::important
-**Space-level observability** (available since v1.6.0, GA in v1.14.0):
-- Disabled by default
-- Requires manual enablement and configuration
-- Self-Hosted Spaces only
-
-**Control plane observability** (available since v1.13.0, GA in v1.14.0):
-- Enabled by default
-- No additional configuration required
+:::tip
+For self-hosted Space administrators who want to observe the cluster
+infrastructure, see the
+[Space-level observability guide][space-level-o11y]. That guide covers
+infrastructure metrics, router metrics, and [distributed tracing](/manuals/spaces/howtos/self-hosted/observability/tracing/overview).
 :::
-<!-- vale Google.WordList = YES -->
-<!-- vale write-good.TooWordy = YES -->
 
 
 ## Prerequisites
 <!-- vale write-good.Passive = NO -->
 <!-- vale write-good.TooWordy = NO -->
 **Control plane observability** is enabled by default. No additional setup is
-required. 
+required.
 <!-- vale write-good.TooWordy = YES -->
 <!-- vale write-good.Passive = YES -->
 
@@ -57,62 +43,6 @@ required.
 Set `features.alpha.observability.enabled=true` instead if using Spaces version
 before `v1.14.0`.
 
-2. **Install OpenTelemetry Operator** (required for Space-level observability):
-   ```bash
-   kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
-   ```
-   
-   :::important
-   If running Spaces `v1.11` or later, use OpenTelemetry Operator `v0.110.0` or later due to breaking changes.
-   :::
-
-
-## Space-level Observability
-
-Space-level observability is only available for self-hosted Spaces and allows
-administrators to observe the cluster infrastructure.
-
-### Configuration
-
-Configure Space-level observability using the `spacesCollector` value in your
-Spaces Helm chart:
-
-```yaml
-observability:
-  spacesCollector:
-    config:
-      exporters:
-        otlphttp:
-          endpoint: "<your-endpoint>"
-          headers:
-            api-key: YOUR_API_KEY
-      exportPipeline:
-        logs:
-          - otlphttp
-        metrics:
-          - otlphttp
-```
-
-This configuration exports metrics and logs from:
-
-- Crossplane installation
-- Spaces infrastructure (controller, API, router, etc.)
-
-### Router metrics
-
-The Spaces router uses Envoy as a reverse proxy and automatically exposes
-metrics when you enable Space-level observability. These metrics provide
-visibility into:
-
-- Traffic routing to control planes and services
-- Request status codes, timeouts, and retries
-- Circuit breaker state preventing cascading failures
-- Client connection patterns and request volume
-- Request latency (P50, P95, P99)
-
-For more information about available metrics, example queries, and how to enable
-this feature, see the [Space-level observability guide][space-level-o11y].
-
 ## Control plane observability
 
 Control plane observability collects telemetry data from workloads running
@@ -124,16 +54,16 @@ Collectors pass data to external observability backends.
 
 :::important
 From Spaces `v1.13` and beyond, telemetry only includes user-facing control
-plane workloads (Crossplane, providers, functions). 
+plane workloads (Crossplane, providers, functions).
 
 Self-hosted users can include system workloads (`api-server`, `etcd`) by setting
-`observability.collectors.includeSystemTelemetry=true` in Helm. 
+`observability.collectors.includeSystemTelemetry=true` in Helm.
 :::
 
 :::important
 Spaces validates `SharedTelemetryConfig` resources before applying them by
-sending telemetry to configured exporters. self-hosted Spaces, ensure that
-`spaces-controller` can reach the exporter endpoints. 
+sending telemetry to configured exporters. For self-hosted Spaces, ensure that
+`spaces-controller` can reach the exporter endpoints.
 :::
 
 ### `SharedTelemetryConfig`
@@ -187,6 +117,33 @@ spec:
     metrics: [datadog]
     traces: [datadog]
     logs: [datadog]
+```
+
+<!-- vale Upbound.Spelling = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+#### Splunk HEC Example
+<!-- vale Microsoft.HeadingAcronyms = YES -->
+<!-- vale Upbound.Spelling = YES -->
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: splunk
+  namespace: default
+spec:
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    splunk_hec:
+      endpoint: https://splunk.example.com:8088/services/collector
+      token: ${SPLUNK_HEC_TOKEN}
+  exportPipeline:
+    metrics: [splunk_hec]
+    traces: [splunk_hec]
+    logs: [splunk_hec]
 ```
 
 ### Control plane selection
@@ -346,15 +303,17 @@ kubectl describe stc <name>
 
 ## Supported exporters
 
-Both Space-level and control plane observability support:
-- `datadog` -. Datadog integration
+Upbound Spaces supports the following exporters:
+- `datadog` - For Datadog integration
 - `otlphttp` - General-purpose exporter (used by New Relic, among others)
-- `debug` -. troubleshooting
+<!-- vale Upbound.Spelling = NO -->
+- `splunk_hec` - For Splunk HTTP Event Collector integration
+<!-- vale Upbound.Spelling = YES -->
+- `debug` - For troubleshooting
 
 ## Considerations
 
 - **Control plane conflicts**: Each control plane can only use one `SharedTelemetryConfig`. Multiple configs selecting the same control plane conflict.
-- **Custom collector image**: Both Space-level and control plane observability use the same custom OpenTelemetry Collector image with supported exporters.
 - **Resource scope**: `SharedTelemetryConfig` resources are group-scoped, allowing different telemetry configurations per group.
 
 For more advanced configuration options, review the [Helm chart
@@ -364,12 +323,7 @@ documentation][opentelemetry-transformation-language].
 <!-- vale Google.Headings = YES -->
 [opentelemetry]: https://opentelemetry.io/
 [opentelemetry-collectors]: https://opentelemetry.io/docs/collector/
-[opentelemetry-collector-configuration]: https://opentelemetry.io/docs/collector/configuration/#exporters
-[opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
 [transform-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md
 [opentelemetry-transformation-language]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl
-[space-level-o11y]: /spaces/howtos/self-hosted/space-observability
-[helm-chart-reference]: /reference/helm-reference
-[opentelemetry-transformation-language-functions]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md
-[opentelemetry-transformation-language-contexts]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts
-[guide-on-ottl]: https://betterstack.com/community/guides/observability/ottl/#a-brief-overview-of-the-ottl-grammar
+[space-level-o11y]: /manuals/spaces/howtos/self-hosted/observability/space-observability
+[helm-chart-reference]: /reference/spaces-helm-reference/

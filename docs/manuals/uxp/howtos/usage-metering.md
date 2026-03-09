@@ -10,9 +10,12 @@ license.
 
 ## How usage works
 
+<!-- vale write-good.Passive = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
+<!-- vale gitlab.UnclearAntecedent = NO -->
 Usage in Upbound Crossplane is measured on two units:
 
-- **Resources** are continuously tracked and reconciled by the control plane, whether they exist inside the cluster or in external systems such as cloud services. These are created, updated, and maintained through compositions and providers to stay aligned with the declared desired state. Resources are measured in resource-hours to account for both breadth and duration.
+- **Resources** are continuously tracked and reconciled by the control plane, whether they exist inside the cluster or in external systems such as cloud services. Resources are created, updated, and maintained through compositions and providers to stay aligned with the declared desired state. Resources are measured in resource-hours to account for both breadth and duration.
 - **Operations** are automation tasks initiated by the control plane to observe, analyze, or change infrastructure or applications beyond standard reconciliation. These include diagnostics, remediation, scheduling, rollouts, optimization, and custom automation tasks driven by agents or functions. 
 
 ### Resources
@@ -53,9 +56,15 @@ internal and external systems. Their purpose is to extend the power of the
 control plane from passive reconciliation to proactive management, including
 diagnosis, remediation, optimization, and change orchestration.
 
+<!-- vale write-good.Weasel = NO -->
 Operations are counted on a per-invocation basis, regardless of how many
-resources they impact. Each `kind: Operation`  invocation counts as an operation
-from a metering standpoint. 
+resources they impact.
+<!-- vale write-good.Weasel = YES --> 
+Each `kind: Operation`  invocation counts as an operation
+from a metering standpoint.
+<!-- vale write-good.Passive = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
+<!-- vale gitlab.UnclearAntecedent = YES -->
 
 ## How metering works
 
@@ -67,9 +76,11 @@ these records as historical data. You can see current usage for an Upbound
 Crossplane cluster by viewing your license's `.status.usage` field.
 
 
+<!-- vale write-good.Passive = NO -->
 [UXP licenses][license-management] are capacity-based, meaning they define a
 maximum number of resource-hours and operations respectively. These values are
-encoded in the license. You can see your license's capacity limit by viewing
+encoded in the license.
+<!-- vale write-good.Passive = YES --> You can see your license's capacity limit by viewing
 your license's `.status.capacity` field.
 
 [license-management]: /manuals/uxp/howtos/license-management

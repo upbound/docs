@@ -46,7 +46,7 @@ Any important warnings or necessary information
 #### Features
 
 - **Spaces Metering:** Added a new metering collector with PostgreSQL storage for measurements and aggregations. This enables tracking of control plane resource usage over time.
-- **Enhanced Observability**, see [docs](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/space-observability/) for details:
+- **Enhanced Observability**, see [docs](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/observability/space-observability/) for details:
   - Added Envoy metrics for spaces-router to improve observability.
   - Added distributed tracing support to spaces-router for space-level observability.
 - Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes, `controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy: True` through the Spaces helm chart values.
@@ -124,6 +124,14 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
+
+## v1.13.5
+
+### Release Date: 2026-02-04
+
+### What's Changed
+
+- Fixed an issue where upgrading from Spaces 1.12.x to 1.13.x could leave vCluster with incorrect memory limits. vCluster now receives the intended 12Gi memory limit after upgrade.
 
 ## v1.13.4
 

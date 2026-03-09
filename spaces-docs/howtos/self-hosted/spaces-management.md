@@ -4,7 +4,6 @@ sidebar_position: 10
 description: Common operations in Spaces
 ---
 
-
 ## Spaces management
 
 ### Create a Space
@@ -35,7 +34,7 @@ helm -n upbound-system upgrade --install spaces \
   --set "account=your-upbound-account" \
   --wait
 ```
-For a complete tutorial of the helm install, read one of the deployment guides for [AWS][aws], [Azure][azure] , or [GCP][gcp] which cover the step-by-step process.
+For a complete helm install tutorial, read the deployment guides for [AWS][aws], [Azure][azure], or [GCP][gcp].
 
 ### Upgrade a Space
 
@@ -142,13 +141,13 @@ This manifest:
 To connect to a control plane in a Space using `up`, run the following:
 
 ```bash
-up ctp connect new-control-plane
+up ctx ./default/ctp1
 ```
 
 The command changes your kubeconfig's current context to the control plane you specify. If you want to change your kubeconfig back to a previous context, run:
 
 ```bash
-up ctp disconnect
+up ctx -
 ```
 
 If you configured your control plane to publish connection details, you can also access it this way. Once the control plane is ready, use the secret (containing connection details) to connect to the API server of your control plane.
@@ -201,14 +200,14 @@ kubectl delete controlplane ctp1
 
 [up-space-init]: /reference/cli-reference
 [quickstart]: /
-[aws]: /spaces/howtos/self-hosted/self-hosted-spaces-deployment 
-[azure]:/spaces/howtos/self-hosted/self-hosted-spaces-deployment  
-[gcp]:/spaces/howtos/self-hosted/self-hosted-spaces-deployment  
+[aws]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
+[azure]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
+[gcp]:/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment
 [up-space-upgrade]: /reference/cli-reference
 [spaces-release-notes]: /reference/release-notes/spaces
 [up-space-upgrade-1]: /reference/cli-reference
 [release-notes]: /reference/release-notes/spaces
 [up-space-destroy]: /reference/cli-reference
 [up-cli]: /reference/cli-reference
-[upbound-s-saas-environment]: /spaces/howtos/self-hosted/spaces-management
-[spaces-git-integration]: /spaces/howtos/self-hosted/gitops
+[upbound-s-saas-environment]: /manuals/spaces/howtos/self-hosted/spaces-management
+[spaces-git-integration]: /manuals/spaces/howtos/self-hosted/gitops

@@ -16,8 +16,9 @@ aliases:
 
 This feature is in preview. The Query API is available in the Cloud Space offering in `v1.6` and enabled by default.
 
-This is a requirement to be able to connect a Space since `v1.8.0`, and is off by default, see below to enable it.
+Since Spaces `v1.8.0`, you must enable Query API to connect a Space.
 
+Use this guide to enable Query API in your Space.
 :::
 
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions][kubectl-conventions] for filtering, sorting, and retrieving information from your Space.
@@ -143,6 +144,7 @@ Below you can find examples of setups to get you started, you can mix and match 
 
 ### In-cluster setup
 
+<!-- vale gitlab.SentenceLength = NO -->
 :::tip
 
 If you don't have strong opinions on your setup, but still want full control on
@@ -150,6 +152,7 @@ the resources created for some unsupported customizations, Upbound recommends
 the in-cluster setup.
 
 :::
+<!-- vale gitlab.SentenceLength = YES -->
 
 For more customization than the managed setup, you can use CloudNativePG for
 PostgreSQL in the same cluster.
@@ -265,9 +268,8 @@ Below you can find references to how to customize this setup:
 
 <!-- vale Google.Headings = YES -->
 :::tip
-
-If you want to run your PostgreSQL instance outside the cluster, but are fine with credentials being managed by the `apollo` user, this is the suggested way to proceed.
-
+Use this method if you decide the `apollo` manager can manage credentials , but your
+PostgreSQL instance is outside the cluster.
 :::
 
 When using this setup, you must manually create the required Secrets in the
@@ -374,7 +376,7 @@ See the [Query API documentation][query-api-documentation] for more information 
 [up-cli-installed]: /manuals/cli/overview
 [query-api-documentation]: /spaces/howtos/query-api
 
-[helm-chart-reference]: /reference/helm-reference
+[helm-chart-reference]: /reference/spaces-helm-reference/
 [kubectl-conventions]: https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/
 [supported-ways]: https://cloudnative-pg.io/documentation/current/installation_upgrade/
 [supported-ways-1]: https://cloudnative-pg.io/documentation/current/installation_upgrade/

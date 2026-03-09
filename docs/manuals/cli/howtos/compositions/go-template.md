@@ -16,19 +16,24 @@ You can choose:
 language server.
 
 [KCL][kcl] - Concise. Good for transitioning from another configuration language
-like HCL. IDE support with language server.
+like `HCL`. IDE support with language server.
 
 [Python][python] - Highly accessible, supports complex logic. Provides type hints and
 autocompletion in your IDE.
 
+<!-- vale gitlab.HeadingContent = NO -->
 ## Overview
+<!-- vale gitlab.HeadingContent = YES -->
 
-This guide explains how to create compositions that turn your XRs into actual cloud resources. Compositions allow you to implement the business logic that powers your control plane.
+This guide explains how to create compositions that turn your XRs into actual
+cloud resources. Compositions allow you to implement the business logic that
+powers your control plane.
 
 Use this guide after you define your API schema and need to write the logic that creates and manages the underlying resources.
 
 Upbound supports defining your control plane APIs using YAML with [Go templates][go-templates]. Go templating functions can make use of all built-in Go templating features and anything supported by Crossplane's [function-go-templating][function-go-templating].
 
+<!-- vale write-good.Passive = NO -->
 You can organize templates into multiple files with an arbitrary directory structure, as long as all files have the `.gotmpl` file extension. Templates are read in lexical order and concatenated with YAML separators (`---`) between them.
 
 ## Prerequisites
@@ -37,9 +42,10 @@ Before you begin, make sure:
 
 * You designed your XRD
 * You've added provider dependencies
-* understand your XRD schema and what resources you need to create
+* You understand your XRD schema and what resources you need to create
 * YAML Visual Studio Code extension is installed
 * Modelines extension is installed (optional)
+<!-- vale write-good.Passive = YES -->
 
 ## Create your composition scaffold
 
@@ -62,7 +68,7 @@ apis/<your_resource_name>/composition.yaml
 
 This command creates a `functions/compose-resources` directory with your function code and updates your composition file to reference it.
 
-Your function file in `functions/compose-resources/01-compose.yaml.gotmpl` should be similar to:
+Below is an example function file in `functions/compose-resources/01-compose.yaml.gotmpl`:
 
 ```yaml
 # code: language=yaml
@@ -102,7 +108,9 @@ spec:
 
 <summary>A more advanced Go templating function</summary>
 
+<!-- vale write-good.Passive = NO -->
 The files below take a composite resource (XR) as input and produces managed resources (MRs) from the [S3 provider][s3-provider] based on its parameters. The templates are split across multiple files for readability.
+<!-- vale write-good.Passive = YES -->
 
 The function always composes an S3 bucket. When the S3 bucket exists, it also composes a bucket access control list (ACL). The ACL references the bucket by name.
 
@@ -112,7 +120,11 @@ As a best practice, place any Go templating flow control (`if` statements, loops
 
 ### 00-prelude.yaml.gotmpl
 
-This file contains generated boilerplate to place the observed composite resource and its parameters in Go templating variables, for use by subsequent templates.
+<!-- vale write-good.TooWordy = NO -->
+This file contains generated boilerplate to place the observed composite
+resource and its parameters in Go templating variables, for use by subsequent
+templates.
+<!-- vale write-good.TooWordy = YES -->
 
 ```yaml
 #{{ $xr := getCompositeResource . }}
@@ -261,7 +273,9 @@ Function inputs are available to Go templates in the following template inputs, 
 
 ### Outputs
 
+<!-- vale write-good.TooWordy = NO -->
 To add resources to the pipeline's desired composed resources, define them in the template. Use the `gotemplating.fn.crossplane.io/composition-resource-name` annotation to define unique names for each resource. This allows you to update a resource rather than create a new one on subsequent functions runs. The `setResourceNameAnnotation` helper function sets this annotation:
+<!-- vale write-good.TooWordy = YES -->
 
 ```yaml
 # code: language=yaml

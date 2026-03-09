@@ -5,7 +5,6 @@ description: Documentation for the Query API resources
 
 import CrdDocViewer from '@site/src/components/CrdViewer';
 
-# Query API Reference
 
 This page documents the Custom Resource Definitions (CRDs) for the Query API.
 

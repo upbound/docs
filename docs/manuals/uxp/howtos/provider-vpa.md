@@ -6,11 +6,13 @@ plan: "standard"
 
 <Standard />
 
-This guide walks through how to enable Provider Vertical Pod Autoscaling (VPA)
+<!-- vale gitlab.SentenceLength = NO -->
+This guide explains how to enable Provider Vertical Pod Autoscaling (VPA)
 for your Upbound Crossplane (UXP) Providers. Provider Autoscaling uses the
 Kubernetes Vertical Pod Autoscaler to ensure stable and efficient operation by
 dynamically sizing CPU and memory for provider pods running in a Kubernetes
 cluster.
+<!-- vale gitlab.SentenceLength = YES -->
 
 Enable this feature if you observe provider pod resources (CPU and memory)
 hitting large performance spikes or maxing out.
@@ -23,7 +25,11 @@ Before you enable Provider Autoscaling, make sure you have:
 * A running UXP control plane
 * A valid Standard or Development license applied to your control plane
 
-As part of the guide, we will also install the following prerequisites:
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+As part of this guide, you will also install the following prerequisites:
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
 
 * [Metrics server][metrics] or [Prometheus Adapter for Kubernetes Metrics APIs][prometheus] installed
 * [Vertical Pod Autoscaler][vpa] v1.4+ on your Kubernetes cluster

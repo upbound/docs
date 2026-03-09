@@ -50,10 +50,11 @@ current profile, run the following:
 ```shell
 up profile use <profile-name>
 ```
-
-If you have selected a kubeconfig context with `up ctx` while using a given
-profile, that kubeconfig context will be restored to your kubeconfig the next
-time you switch to the profile with `up profile use`.
+<!-- vale gitlab.SentenceLength = NO -->
+If you select a kubeconfig context with `up ctx` while using a given
+profile, that kubeconfig context restores to your kubeconfig the next
+time you switch the profile with `up profile use`.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Update a profile's organization
 

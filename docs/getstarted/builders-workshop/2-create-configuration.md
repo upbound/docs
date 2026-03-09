@@ -1275,7 +1275,7 @@ This section:
 <!-- vale Microsoft.Terms = NO -->
 * Imports the cloud resource definitions required to create the resource
 * Extracts the user-specified values in the claim (`params = oxr.spec.parameters`)
-* Stores the XR metadata to be used later on in the composition function
+* Stores the XR metadata to use later on in the composition function
 <!-- vale Microsoft.Terms = YES -->
 
 </CodeBlock>

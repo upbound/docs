@@ -20,25 +20,30 @@ only applicable to self-hosted Space administrators. This lets Space
 administrators observe the cluster infrastructure where the Space software gets
 installed.
 
+<!-- vale gitlab.SentenceLength = NO -->
 When you enable observability in a Space, Upbound deploys a single
 [OpenTelemetry Collector][opentelemetry-collector] to collect and export metrics,
 logs, and traces to your configured observability backends.
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Prerequisites
 
 This feature requires the [OpenTelemetry Operator][opentelemetry-operator] on
-the Space cluster. Install this now if you haven't already:
+the Space cluster.
 
-```bash
-kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.116.0/opentelemetry-operator.yaml
-```
-
-If running Spaces v1.11 or later, use OpenTelemetry Operator v0.110.0 or later
-due to breaking changes in the OpenTelemetry Operator.
+Note: If running Spaces v1.11 or later, use OpenTelemetry Operator v0.110.0 or
+later due to breaking changes in the OpenTelemetry Operator.
 
 ## Configuration
 
-To configure how Upbound exports, review the `spacesCollector` value in your Space installation Helm chart. Below is an example of an `otlphttp` compatible endpoint.
+To configure how Upbound exports telemetry, review the `spacesCollector` value in
+your Space installation Helm chart. Supported exporters are `otlphttp`, `datadog`,
+`splunk_hec`, and `debug`. Replace the exporter name and configuration options
+based on your backend.
+
+<!-- vale Upbound.Spelling = NO -->
+Below is an example using `otlphttp`.
+<!-- vale Upbound.Spelling = YES -->
 
 <!-- vale gitlab.MeaningfulLinkWords = NO -->
 ```yaml
@@ -66,6 +71,12 @@ observability:
 ```
 <!-- vale gitlab.MeaningfulLinkWords = YES -->
 
+<!-- vale Upbound.Spelling = NO -->
+For exporter-specific configuration options, see the OpenTelemetry documentation
+for [`otlphttp`][otlphttp-exporter], [`datadog`][datadog-exporter], and
+[`splunk_hec`][splunk-exporter].
+<!-- vale Upbound.Spelling = YES -->
+
 You can export metrics, logs, and traces from your Crossplane installation, Spaces
 infrastructure (controller, API, router, etc.), provider-helm, and
 provider-kubernetes.
@@ -86,13 +97,14 @@ Envoy metrics in Upbound include:
 
 For a complete list of available router metrics and example PromQL queries, see the [Router metrics reference][router-ref].
 
-### Router tracing
+### Distributed tracing
 
-The Spaces router generates distributed traces through OpenTelemetry integration,
+Spaces generates distributed traces through OpenTelemetry integration,
 providing end-to-end visibility into request flow across the system. Use these
 traces to debug latency issues, understand request paths, and correlate errors
 across services.
 
+<<<<<<<< HEAD:spaces-docs/howtos/self-hosted/space-observability.md
 The router uses:
 
 - **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
@@ -169,6 +181,87 @@ Span: ingress
 │  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
 │  └─ response_size: 1827
 ```
+|||||||| 3043afc1:docs/manuals/spaces/howtos/self-hosted/space-observability.md
+The router uses:
+
+- **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
+- **Service name**: `spaces-router`
+- **Transport**: TLS-encrypted connection to telemetry collector
+
+#### Trace configuration
+
+Enable tracing and configure the sampling rate with the following Helm values:
+
+```yaml
+observability:
+  enabled: true
+  tracing:
+    enabled: true
+    sampling:
+      rate: 0.1  # Sample 10% of new traces (0.0-1.0)
+```
+
+The sampling behavior depends on whether a parent trace context exists:
+
+- **With parent context**: If a `traceparent` header is present, the parent's
+  sampling decision is respected, enabling proper distributed tracing across services.
+- **Root spans**: For new traces without a parent, Envoy samples based on
+  `x-request-id` hashing. The default sampling rate is 10%.
+
+#### TLS configuration for external collectors
+
+To send traces to an external OTLP collector, configure the endpoint and TLS settings:
+
+```yaml
+observability:
+  enabled: true
+  tracing:
+    enabled: true
+    endpoint: "otlp-gateway.example.com"
+    port: 443
+    tls:
+      caBundleSecretRef: "custom-ca-secret"
+```
+
+If `caBundleSecretRef` is set, the router uses the CA bundle from the referenced
+Kubernetes secret. The secret must contain a key named `ca.crt` with the
+PEM-encoded CA bundle. If not set, the router uses the Spaces CA for the
+in-cluster collector.
+
+#### Custom trace tags
+
+The router adds custom tags to every span to enable filtering and grouping by
+control plane:
+
+| Tag | Source | Description |
+|-----|--------|-------------|
+| `controlplane.id` | `x-upbound-mxp-id` header | Control plane UUID |
+| `controlplane.name` | `x-upbound-mxp-host` header | Internal vcluster hostname |
+| `hostcluster.id` | `x-upbound-hostcluster-id` header | Host cluster identifier |
+
+These tags enable queries like "show all slow requests to control plane X" or
+"find errors for control planes in host cluster Y."
+
+#### Example trace
+
+The following example shows the attributes from a successful GET request:
+
+```text
+Span: ingress
+├─ Service: spaces-router
+├─ Duration: 8.025ms
+├─ Attributes:
+│  ├─ http.method: GET
+│  ├─ http.status_code: 200
+│  ├─ upstream_cluster: ctp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-api-cluster
+│  ├─ controlplane.id: b2b37aaa-ee55-492c-ba0c-4d561a6325fa
+│  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
+│  └─ response_size: 1827
+```
+========
+For detailed tracing configuration, custom tags, and example traces for each
+component, see the [distributed tracing documentation](tracing/overview.md).
+>>>>>>>> upstream/main:spaces-docs/howtos/self-hosted/observability/space-observability.md
 
 ## Available metrics
 
@@ -215,7 +308,7 @@ For detailed router metrics documentation and more query examples, see the [Rout
 
 Control plane (`SharedTelemetry`) and Space observability deploy the same custom
 OpenTelemetry Collector image. The OpenTelemetry Collector image supports
-`otlhttp`, `datadog`, and `debug` exporters.
+`otlphttp`, `datadog`, `splunk_hec`, and `debug` exporters.
 
 For more information on observability configuration, review the [Helm chart reference][helm-chart-reference].
 
@@ -271,7 +364,7 @@ unhealthy upstreams. Two priority levels exist: `DEFAULT` for watch requests and
 ### Downstream listener metrics
 
 Metrics tracking requests received from clients such as kubectl and API consumers.
-Use these metrics to monitor client connection patterns, overall request volume,
+Use these metrics to monitor client connection patterns, total request volume,
 and responses sent to external users.
 
 | Name | Description |
@@ -302,4 +395,7 @@ lifecycle including status codes and client-perceived latency.
 [observability-documentation]: /spaces/howtos/observability
 [opentelemetry-collector]: https://opentelemetry.io/docs/collector/
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
-[helm-chart-reference]: /reference/helm-reference
+[helm-chart-reference]: /reference/spaces-helm-reference/
+[otlphttp-exporter]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter
+[datadog-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/datadogexporter
+[splunk-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/splunkhecexporter

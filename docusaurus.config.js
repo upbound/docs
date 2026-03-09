@@ -12,7 +12,6 @@ const config = {
     organizationName: "upbound",
     projectName: "docs",
     onBrokenLinks: "warn",
-    clientModules: [require.resolve("./scripts/copymarkdown.js")],
     scripts: [
         {
             src: "https://cdn-cookieyes.com/client_data/401fea7900d8d7b84b9e7b40/script.js",
@@ -258,8 +257,8 @@ const config = {
             },
             algolia: {
                 appId: "4OZX85VEXQ",
-                apiKey: "7880f8f03cb89ce23f18d4359fb10e5e",
-                indexName: "upbound-docs",
+                apiKey: "9f96702edcf79d7097bedfce2813d49e",
+                indexName: "upbound",
                 contextualSearch: true,
                 searchPagePath: "search",
                 searchParameters: {},

@@ -28,13 +28,13 @@ region.
 | Description of data | Examples |
 | ---- | ---- |
 | Customer content, including text, metadata, and other data available on the service | Control planes, including control plane names<br></br>user-created content such as Crossplane compositions<br></br>resource metadata for resources managed by control planes|
-| Data or logs that identify your organization | Data for business continuity and disaster recovery (BCDR) |
+| Data or logs that identify your organization | Data for business continuity and disaster recovery (`BCDR`) |
 | Data or logs that identify a person | Pseudonymized identifiers in audit logs. |
 <!-- vale Upbound.Spelling = YES -->
 
 ## Data stored outside your region
 
-To operate our service, Upbound may store the following data for your
+To operate the service, Upbound may store the following data for your
 organization outside your chosen region:
 
 | Description of data | Examples |
@@ -51,7 +51,7 @@ region, but doesn't notify you when transfers occur.
 
 
 The Upbound Marketplace, including the `marketplace.upbound.io` web portal and
-the OCI registry `xpkg.upbound.io`, is served from the United States.
+the OCI registry `xpkg.upbound.io`, operates from the United States.
 
 To pull images hosted in the Marketplace from within an EU data boundary, Upbound
 recommends mirroring these images to your own OCI registry.

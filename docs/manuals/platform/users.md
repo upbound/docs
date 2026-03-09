@@ -45,21 +45,18 @@ Complete the form and agree to the Terms and Conditions.
 <!-- ![Upbound account creation registration form](/img/completed_form.png) -->
 
 
-### 3. Choose a username
-Choose a username for your Upbound account. Usernames must be globally unique.
-
-<!-- ![Upbound create a username form](/img/choose_username.png) -->
-
-
-### 4. Confirm your email
+### 3. Confirm your email
 Upbound sends you an email containing a 6-digit PIN. Provide this PIN to confirm your email address.
 
+
+### 4. Create your organization
 <!-- ![Example form to insert email confirmation PIN](/img/confirm_pin.png) -->
-After submitting your pin your account is now ready.
+After submitting your pin you can create your first organization. An organization lets multiple users share Upbound resources and collaborate. Create your first organization to invite teammates and manage control planes together.
 
-<!-- ![A screen showing that an Upbound account has been created](/img/account_ready.png) -->
+![Upbound organization creation form](/img/create-organization.png)
 
-Clicking `Finish` sends you to the [Upbound Marketplace][upbound-marketplace].
+
+Clicking `Create Organization` sends you to the [Upbound Console][upbound-console].
 
 To make changes to your account login to [accounts.upbound.io][accounts-upbound-io]
 <!-- vale Google.Headings = YES -->
@@ -84,6 +81,7 @@ support][upbound-support] to transfer organization ownership.
 
 [account-settings]: https://accounts.upbound.io/settings
 [upbound-registration-page]: https://www.upbound.io/register/?utm_source=docs&utm_medium=cta&utm_campaign=docs_iam
-[upbound-marketplace]: http://marketplace.upbound.io
 [accounts-upbound-io]: https://accounts.upbound.io
 [delete-account]: https://accounts.upbound.io/settings/delete
+[upbound-console]: https://console.upbound.io/
+

@@ -19,7 +19,7 @@ write-good.Weasel = YES -->
 
 :::tip
 If you directly create Crossplane Managed Resources (`MR`s) or Composite
-Resources (`XR`s), they won't render in the explorer.
+Resources (`XR`s), they don't render in the explorer.
 :::
 
 ### Example

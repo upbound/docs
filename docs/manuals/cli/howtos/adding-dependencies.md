@@ -7,9 +7,9 @@ description: The basic concepts to help you on your Upbound journey
 This guide explains how to add cloud providers, functions and configurations as
 dependencies to connect your control plane to external systems.
 
-You add dependencies when you need your control plane to manage resources in
-specific cloud platforms (like AWS S3 buckets) or when you want to use
-pre-built functions and configurations from the community.
+You add dependencies when you need to manage resources in
+specific cloud platforms (like AWS buckets) or to use
+pre-built packages from the community.
 
 ## Prerequisites
 
@@ -86,7 +86,8 @@ For more information about configurations and platform references, check out the
 ## Add external API dependencies
 In your `upbound.yaml` file, you can define to the external API you wish to reference in your project under `spec.apiDependencies` field.
 
-The example below defines an external API dependency to the Kubernetes API and an arbitrary CRD living in a git repository.
+The example below defines an external API dependency to the Kubernetes API and
+an arbitrary CRD living in a Git repository.
 
 ```yaml
 spec:

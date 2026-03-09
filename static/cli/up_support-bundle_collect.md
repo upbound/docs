@@ -8,13 +8,13 @@ Collect a support bundle from the current kube context.
 The `up support-bundle collect` command allows you to collect diagnostic information from
 your Kubernetes cluster or control plane for troubleshooting purposes.
 
-## Usage
+#### Usage
 
 ```bash
 up support-bundle collect [flags]
 ```
 
-### Examples
+#### Examples
 
 ```bash
 # Collect a support bundle with default settings
@@ -44,7 +44,7 @@ up support-bundle collect --exclude-namespaces upbound-*
 up support-bundle collect --crossplane-resources-only
 ```
 
-## Configuration File
+#### Configuration File
 
 You can provide a custom SupportBundle configuration file using the `--config` flag.
 The configuration file can include both the SupportBundle spec and Redactors in a
@@ -64,7 +64,7 @@ up support-bundle template > my-config.yaml
 up support-bundle collect --config my-config.yaml
 ```
 
-## Security
+#### Security
 
 All sensitive information is automatically redacted from the support bundle,
 including:

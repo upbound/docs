@@ -20,7 +20,9 @@ Upbound Spaces can automatically upgrade the version of Upbound Crossplane in ma
 
 :::warning
 
+<!-- vale Microsoft.Adverbs = NO -->
 The `Rapid` channel is only recommended for users willing to accept the risk of new features and potentially breaking changes.
+<!-- vale Microsoft.Adverbs = YES -->
 
 :::
 
@@ -85,7 +87,7 @@ Upbound offers extended support for all installed Crossplane versions released w
 
 :::warning
 
-If the auto upgrade channel is `Stable` or `Rapid`, the Crossplane version will always stay within the support window after auto upgrade. If set to `Patch` or `None`, the minor version may be outside the support window. You are responsible for upgrading to a supported version
+If the auto upgrade channel is `Stable` or `Rapid`, the Crossplane version always remains within the support window after auto upgrade. If set to `Patch` or `None`, the minor version may be outside the support window. You are responsible for upgrading to a supported version
 
 :::
 

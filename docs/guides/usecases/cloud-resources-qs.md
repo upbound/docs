@@ -50,17 +50,25 @@ up project init --template="project-template-gcp-storage" --language="python" my
 
 ## Understand the project
 
+<!-- vale write-good.Passive = NO -->
 The project defines a resource type called `XStorageBucket`, which implements an
 opinionated storage bucket abstraction. The type is defined as a Crossplane
 Composite Resource Definition (XRD) in the file
 `apis/xstoragebuckets/definition.yaml`.
 
+<!-- vale gitlab.FutureTense = NO -->
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.SentenceLength = NO -->
 A Crossplane Composition defines the function pipeline that will run whenever an
 `XStorageBucket` is created or updated. The Composition for the `XStorageBucket`
 type is in `apis/xstoragebuckets/composition.yaml` and contains two functions: a
 project-specific one that creates resources, and a generic one that detects when
 the created resources become ready. The function that creates resources is
 implemented in the file `functions/compose-bucket/main.py`.
+<!-- vale write-good.Passive = YES -->
+<!-- vale gitlab.FutureTense = YES -->
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.SentenceLength = YES -->
 
 ## Deploy your control plane
 
@@ -288,9 +296,12 @@ When you create a composition and deploy with the control plane, Upbound uses
 the `ProviderConfig` to locate and retrieve the credentials in the secret store.
 
 
-
-In this guide, you will be creating the
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+In this guide, you will create the
 following resource types:
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
 
 <Tabs groupId="cloud-provider">
 <TabItem value="aws" label="AWS">
@@ -381,8 +392,8 @@ spec:
 </TabItem>
 </Tabs>
 
-Re-generate the type definition (Composite Resource Definition) based on the
-updated example; you will be prompted to overwrite the existing definition:
+Regenerate the Composite Resource Definition from the updated example. When
+prompted, confirm the overwrite:
 
 <Tabs groupId="cloud-provider">
 <TabItem value="aws" label="AWS">
@@ -753,8 +764,10 @@ To avoid leaving cloud resources behind, delete your `XStorageBucket`:
 kubectl delete -f examples/xstoragebuckets/example.yaml
 ```
 
-Once the cloud resources have been deleted, you can tear down the local control
+<!-- vale write-good.Passive = NO -->
+Once the cloud resources are deleted, you can tear down the local control
 plane:
+<!-- vale write-good.Passive = YES -->
 
 ```shell
 up project stop
@@ -767,8 +780,8 @@ gets created. But what if you don't want to create buckets? The Upbound
 Marketplace is the hub for finding additional packages to extend your control
 plane, such as Providers, or pre-built Functions.
 
-Being a control plane, Upbound Crossplane has an API server to let you
-communicate with it, whether over a CLI, GitOps, GUI, or direct REST API calls.
+Your Upbound Crossplane control plane has an API server you can communicate
+with, whether over a CLI, GitOps, GUI, or direct REST API calls.
 
 [up]: /manuals/cli/overview
 [provider authentication instructions]: /manuals/uxp/concepts/packages/provider-authentication
