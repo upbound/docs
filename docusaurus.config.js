@@ -88,12 +88,25 @@ const config = {
             },
         ],
         [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "cloud-spaces",
+                path: "cloud-spaces-docs",
+                routeBasePath: "/cloud-spaces",
+                sidebarPath: require.resolve("./src/sidebars/cloud-spaces.js"),
+            },
+        ],
+        [
             "@docusaurus/plugin-client-redirects",
             {
                 redirects: [
                     {
                         from: "/spaces",
                         to: "/spaces/overview/",
+                    },
+                    {
+                        from: "/cloud-spaces",
+                        to: "/cloud-spaces/overview/",
                     },
                 ],
             },
@@ -203,7 +216,11 @@ const config = {
                                 to: "/manuals/uxp/overview/",
                             },
                             {
-                                label: "Spaces",
+                                label: "Cloud Spaces",
+                                to: "/cloud-spaces/overview/",
+                            },
+                            {
+                                label: "Self-Hosted Spaces",
                                 to: "/spaces/overview/",
                             },
                             {

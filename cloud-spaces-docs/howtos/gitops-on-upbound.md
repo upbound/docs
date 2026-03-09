@@ -291,12 +291,12 @@ spec:
 You can now create _Objects_ in the control plane which wrap Space APIs.
 
 [generate-a-kubeconfig]: /manuals/cli/concepts/contexts
-[control-plane-groups]: /spaces/concepts/groups
-[control-planes]: /spaces/concepts/control-planes
+[control-plane-groups]: /cloud-spaces/concepts/groups
+[control-planes]: /cloud-spaces/concepts/control-planes
 [upbound-iam-resources]: /manuals/platform/concepts/identity-management
 [space-apis]: /reference/apis/spaces-api/v1_9
 [space-apis-1]: /reference/apis/spaces-api/v1_9
-[control-plane-groups-2]: /spaces/concepts/groups
+[control-plane-groups-2]: /cloud-spaces/concepts/groups
 
 
 [argo-cd]: https://argo-cd.readthedocs.io/en/stable/

@@ -30,4 +30,3 @@ If you have an interest in Upbound Dedicated Spaces, contact
 requirements and see if Dedicated Spaces are a good fit for you.
 
 [contact-us]: https://www.upbound.io/contact-us
-[managed-space]: /spaces/howtos/self-hosted/managed-spaces-deployment
