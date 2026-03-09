@@ -18,6 +18,7 @@
       "type": "category",
       "label": "Deploy",
       "items": [
+        "howtos/kind-quickstart",
         "howtos/deployment-reqs",
         "howtos/self-hosted-spaces-deployment",
         "howtos/managed-spaces-deployment",

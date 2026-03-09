@@ -5,9 +5,7 @@ description: Common operations in Spaces
 ---
 
 
-## Spaces management
-
-### Create a Space
+## Create a Space
 
 To install an Upbound Space into a cluster, it's recommended you dedicate an
 entire Kubernetes cluster for the Space. You can use [up space
@@ -33,7 +31,7 @@ helm -n upbound-system upgrade --install spaces \
 ```
 For a complete tutorial of the helm install, read one of the deployment guides for [AWS][aws], [Azure][azure] , or [GCP][gcp] which cover the step-by-step process.
 
-### Upgrade a Space
+## Upgrade a Space
 
 To upgrade a Space from one version to the next, use [up space upgrade][up-space-upgrade]. Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
@@ -71,7 +69,7 @@ helm -n upbound-system upgrade spaces \
   --wait
 ```
 
-### Downgrade a Space
+## Downgrade a Space
 
 To rollback a Space from one version to the previous, use [up space upgrade][up-space-upgrade-1]. Spaces supports downgrading from version `ver x.N.*` to version `ver x.N-1.*`.
 
@@ -94,7 +92,7 @@ When downgrading, make sure to:
 2. Verify compatibility between the downgraded Space and any control planes
 3. Back up any critical data before proceeding
 
-### Uninstall a Space
+## Uninstall a Space
 
 To uninstall a Space from a Kubernetes cluster, use [up space destroy][up-space-destroy]. A destroy operation uninstalls core components and orphans control planes and their associated resources.
 

@@ -18,6 +18,7 @@ module.exports = {
       type: 'category',
       label: 'Deploy',
       items: [
+        'howtos/self-hosted/kind-quickstart',
         'howtos/self-hosted/deployment-reqs',
         'howtos/self-hosted/self-hosted-spaces-deployment',
         'howtos/self-hosted/managed-spaces-deployment',
