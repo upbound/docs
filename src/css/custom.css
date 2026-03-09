@@ -2053,3 +2053,7 @@ html[data-theme="dark"] .copy-markdown-button.copied:hover {
     border-color: var(--brand-purple-300);
     color: var(--brand-purple-300);
 }
+
+.theme-doc-version-badge {
+    display: none;
+}

@@ -19,16 +19,16 @@ const config = {
         },
     ],
     customFields: {
-        apiUrl: process.env.UPBOUND_API_URL || 'https://api.upbound.io',
-        baseDomain: process.env.UPBOUND_BASE_DOMAIN || 'upbound.io',
-        launchDarklyClientId: process.env.LAUNCHDARKLY_CLIENT_ID || '',
+        apiUrl: process.env.UPBOUND_API_URL || "https://api.upbound.io",
+        baseDomain: process.env.UPBOUND_BASE_DOMAIN || "upbound.io",
+        launchDarklyClientId: process.env.LAUNCHDARKLY_CLIENT_ID || "",
     },
     webpack: {
         jsLoader: (isServer) => ({
-            loader: require.resolve('esbuild-loader'),
+            loader: require.resolve("esbuild-loader"),
             options: {
-                loader: 'tsx',
-                target: isServer ? 'node12' : 'es2017',
+                loader: "tsx",
+                target: isServer ? "node12" : "es2017",
             },
         }),
     },
@@ -70,37 +70,79 @@ const config = {
         [
             "@docusaurus/plugin-content-docs",
             {
+                id: "docs",
                 path: "docs",
                 routeBasePath: "/",
                 sidebarPath: require.resolve("./src/sidebars/main.js"),
             },
         ],
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "spaces",
+                path: "spaces-docs",
+                routeBasePath: "/spaces",
+                sidebarPath: require.resolve("./src/sidebars/spaces.js"),
+                includeCurrentVersion: true,
+            },
+        ],
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "cloud-spaces",
+                path: "cloud-spaces-docs",
+                routeBasePath: "/cloud-spaces",
+                sidebarPath: require.resolve("./src/sidebars/cloud-spaces.js"),
+            },
+        ],
+        [
+            "@docusaurus/plugin-client-redirects",
+            {
+                redirects: [
+                    {
+                        from: "/spaces",
+                        to: "/spaces/overview/",
+                    },
+                    {
+                        from: "/cloud-spaces",
+                        to: "/cloud-spaces/overview/",
+                    },
+                ],
+            },
+        ],
         "./scripts/plan-plugin.js",
         function (context, options) {
             return {
-                name: 'custom-webpack-config',
+                name: "custom-webpack-config",
                 configureWebpack(config, isServer) {
-                    const webpack = require('webpack');
-                    const path = require('path');
+                    const webpack = require("webpack");
+                    const path = require("path");
                     return {
                         plugins: [
                             new webpack.ProvidePlugin({
-                                process: 'process/browser.js',
-                                React: 'react',
+                                process: "process/browser.js",
+                                React: "react",
                             }),
                         ],
                         resolve: {
                             fallback: {
-                                process: require.resolve('process/browser.js'),
+                                process: require.resolve("process/browser.js"),
                             },
                             fullySpecified: false,
-                            extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.css'],
-                            mainFiles: ['index'],
+                            extensions: [
+                                ".js",
+                                ".jsx",
+                                ".ts",
+                                ".tsx",
+                                ".json",
+                                ".css",
+                            ],
+                            mainFiles: ["index"],
                         },
                         resolveLoader: {
                             modules: [
-                                path.resolve(__dirname, 'node_modules'),
-                                'node_modules',
+                                path.resolve(__dirname, "node_modules"),
+                                "node_modules",
                             ],
                         },
                     };
@@ -173,8 +215,12 @@ const config = {
                                 to: "/manuals/uxp/overview/",
                             },
                             {
-                                label: "Spaces",
-                                to: "/manuals/spaces/overview/",
+                                label: "Cloud Spaces",
+                                to: "/cloud-spaces/overview/",
+                            },
+                            {
+                                label: "Self-Hosted Spaces",
+                                to: "/spaces/overview/",
                             },
                             {
                                 label: "CLI",
@@ -199,10 +245,9 @@ const config = {
                         ],
                     },
                     {
-                        type: "doc",
                         label: "Reference",
                         position: "left",
-                        docId: "reference/index",
+                        to: "/reference/",
                     },
                     {
                         type: "search",
