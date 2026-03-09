@@ -99,7 +99,7 @@ The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
 
 ## Shared backups
 
-As of Spaces `v.12.0`, this feature is enabled by default.
+This feature is enabled by default.
 
 To disable in a self-hosted Space, pass the `features.alpha.sharedBackup.enabled=false` as a Helm chart value.
 `--set "features.alpha.sharedBackup.enabled=false"`

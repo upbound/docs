@@ -14,9 +14,8 @@ aliases:
 
 :::important
 
-This feature is in preview. The Query API is available in the Cloud Space offering in `v1.6` and enabled by default.
-
-This is a requirement to be able to connect a Space since `v1.8.0`, and is off by default, see below to enable it.
+This feature is in preview. 
+This is a requirement to be able to connect a Space and is off by default, see below to enable it.
 
 :::
 

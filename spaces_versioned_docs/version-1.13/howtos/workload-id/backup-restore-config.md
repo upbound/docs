@@ -170,17 +170,6 @@ First, create an IAM role with appropriate permissions to access your S3 bucket:
 }
 ```
 
-When you install or upgrade your Space with Helm, add the backup/restore values:
-
-```shell
-helm upgrade spaces spaces-helm-chart \
-  --set "billing.enabled=true" \
-  --set "backup.enabled=true" \
-  --set "backup.storage.provider=aws" \
-  --set "backup.storage.aws.region= ${YOUR_AWS_REGION}" \
-  --set "backup.storage.aws.bucket= ${YOUR_BACKUP_BUCKET}"
-```
-
 After Upbound provisions your control plane, create a Pod Identity Association
 with the `aws` CLI:
 

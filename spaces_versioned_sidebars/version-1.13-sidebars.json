@@ -66,7 +66,6 @@
       "items": [
         "howtos/observability",
         "howtos/space-observability",
-        "howtos/ctp-audit-logs",
         "howtos/debugging-a-ctp",
         "howtos/troubleshooting"
       ]
@@ -102,8 +101,7 @@
       "type": "category",
       "label": "Billing & Licensing",
       "items": [
-        "howtos/billing",
-        "howtos/capacity-licensing"
+        "howtos/billing"
       ]
     },
     {

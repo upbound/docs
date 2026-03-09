@@ -61,7 +61,9 @@ spec:
 
 ## Supported Crossplane versions
 
-Spaces supports the three [preceding minor versions][preceding-minor-versions] from the last supported minor version. example, if the last supported minor version is `1.14`, minor versions `1.13` and `1.12` are also supported. Versions older than the three most recent minor versions aren't supported. Only supported Crossplane versions are valid specifications for new control planes.
+Spaces supports the three [preceding minor versions][preceding-minor-versions]
+from the last supported minor version. Only supported
+Crossplane versions are valid specifications for new control planes.
 
 Current Crossplane version support by Spaces version:
 
@@ -77,10 +79,15 @@ Current Crossplane version support by Spaces version:
 |       1.9      |          1.16          |          1.18          |
 |      1.10      |          1.16          |          1.18          |
 |      1.11      |          1.16          |          1.18          |
-|      1.12      |          1.17          |          1.19          |
+|      1.12      |          1.16          |          1.19          |
+|      1.13      |          1.18          |          1.19          |
+|      1.14      |          1.17          |          2.0          |
+|      1.15      |          1.18          |          2.1          |
 
 
-Upbound offers extended support for all installed Crossplane versions released within a 12 month window since the last Spaces release. Contact your Upbound sales representative for more information on version support.
+Upbound offers extended support for all installed Crossplane versions released
+within a 12 month window since the last Spaces release. Contact your Upbound
+sales representative for more information on version support.
 
 
 :::warning

@@ -6,7 +6,9 @@ description: Configure Space-level observability
 
 
 :::important
-This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. To enable, set `observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0`) when installing Spaces:
+This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. 
+
+To enable, set `observability.enabled=true` when installing Spaces:
 
 ```bash
 up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
@@ -86,89 +88,89 @@ Envoy metrics in Upbound include:
 
 For a complete list of available router metrics and example PromQL queries, see the [Router metrics reference][router-ref].
 
-### Router tracing
+<!-- ### Router tracing -->
 
-The Spaces router generates distributed traces through OpenTelemetry integration,
-providing end-to-end visibility into request flow across the system. Use these
-traces to debug latency issues, understand request paths, and correlate errors
-across services.
+<!-- The Spaces router generates distributed traces through OpenTelemetry integration, -->
+<!-- providing end-to-end visibility into request flow across the system. Use these -->
+<!-- traces to debug latency issues, understand request paths, and correlate errors -->
+<!-- across services. -->
 
-The router uses:
+<!-- The router uses: -->
 
-- **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
-- **Service name**: `spaces-router`
-- **Transport**: TLS-encrypted connection to telemetry collector
+<!-- - **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC -->
+<!-- - **Service name**: `spaces-router` -->
+<!-- - **Transport**: TLS-encrypted connection to telemetry collector -->
 
-#### Trace configuration
+<!-- #### Trace configuration -->
 
-Enable tracing and configure the sampling rate with the following Helm values:
+<!-- Enable tracing and configure the sampling rate with the following Helm values: -->
 
-```yaml
-observability:
-  enabled: true
-  tracing:
-    enabled: true
-    sampling:
-      rate: 0.1  # Sample 10% of new traces (0.0-1.0)
-```
+<!-- ```yaml -->
+<!-- observability: -->
+<!--   enabled: true -->
+<!--   tracing: -->
+<!--     enabled: true -->
+<!--     sampling: -->
+<!--       rate: 0.1  # Sample 10% of new traces (0.0-1.0) -->
+<!-- ``` -->
 
-The sampling behavior depends on whether a parent trace context exists:
+<!-- The sampling behavior depends on whether a parent trace context exists: -->
 
-- **With parent context**: If a `traceparent` header is present, the parent's
-  sampling decision is respected, enabling proper distributed tracing across services.
-- **Root spans**:. new traces without a parent, Envoy samples based on
-  `x-request-id` hashing. The default sampling rate is 10%.
+<!-- - **With parent context**: If a `traceparent` header is present, the parent's -->
+<!--   sampling decision is respected, enabling proper distributed tracing across services. -->
+<!-- - **Root spans**:. new traces without a parent, Envoy samples based on -->
+<!--   `x-request-id` hashing. The default sampling rate is 10%. -->
 
-#### TLS configuration for external collectors
+<!-- #### TLS configuration for external collectors -->
 
-To send traces to an external OTLP collector, configure the endpoint and TLS settings:
+<!-- To send traces to an external OTLP collector, configure the endpoint and TLS settings: -->
 
-```yaml
-observability:
-  enabled: true
-  tracing:
-    enabled: true
-    endpoint: "otlp-gateway.example.com"
-    port: 443
-    tls:
-      caBundleSecretRef: "custom-ca-secret"
-```
+<!-- ```yaml -->
+<!-- observability: -->
+<!--   enabled: true -->
+<!--   tracing: -->
+<!--     enabled: true -->
+<!--     endpoint: "otlp-gateway.example.com" -->
+<!--     port: 443 -->
+<!--     tls: -->
+<!--       caBundleSecretRef: "custom-ca-secret" -->
+<!-- ``` -->
 
-If `caBundleSecretRef` is set, the router uses the CA bundle from the referenced
-Kubernetes secret. The secret must contain a key named `ca.crt` with the
-PEM-encoded CA bundle. If not set, the router uses the Spaces CA for the
-in-cluster collector.
+<!-- If `caBundleSecretRef` is set, the router uses the CA bundle from the referenced -->
+<!-- Kubernetes secret. The secret must contain a key named `ca.crt` with the -->
+<!-- PEM-encoded CA bundle. If not set, the router uses the Spaces CA for the -->
+<!-- in-cluster collector. -->
 
-#### Custom trace tags
+<!-- #### Custom trace tags -->
 
-The router adds custom tags to every span to enable filtering and grouping by
-control plane:
+<!-- The router adds custom tags to every span to enable filtering and grouping by -->
+<!-- control plane: -->
 
-| Tag | Source | Description |
-|-----|--------|-------------|
-| `controlplane.id` | `x-upbound-mxp-id` header | Control plane UUID |
-| `controlplane.name` | `x-upbound-mxp-host` header | Internal vcluster hostname |
-| `hostcluster.id` | `x-upbound-hostcluster-id` header | Host cluster identifier |
+<!-- | Tag | Source | Description | -->
+<!-- |-----|--------|-------------| -->
+<!-- | `controlplane.id` | `x-upbound-mxp-id` header | Control plane UUID | -->
+<!-- | `controlplane.name` | `x-upbound-mxp-host` header | Internal vcluster hostname | -->
+<!-- | `hostcluster.id` | `x-upbound-hostcluster-id` header | Host cluster identifier | -->
 
-These tags enable queries like "show all slow requests to control plane X" or
-"find errors for control planes in host cluster Y."
+<!-- These tags enable queries like "show all slow requests to control plane X" or -->
+<!-- "find errors for control planes in host cluster Y." -->
 
-#### Example trace
+<!-- #### Example trace -->
 
-The following example shows the attributes from a successful GET request:
+<!-- The following example shows the attributes from a successful GET request: -->
 
-```text
-Span: ingress
-├─ Service: spaces-router
-├─ Duration: 8.025ms
-├─ Attributes:
-│  ├─ http.method: GET
-│  ├─ http.status_code: 200
-│  ├─ upstream_cluster: ctp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-api-cluster
-│  ├─ controlplane.id: b2b37aaa-ee55-492c-ba0c-4d561a6325fa
-│  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
-│  └─ response_size: 1827
-```
+<!-- ```text -->
+<!-- Span: ingress -->
+<!-- ├─ Service: spaces-router -->
+<!-- ├─ Duration: 8.025ms -->
+<!-- ├─ Attributes: -->
+<!-- │  ├─ http.method: GET -->
+<!-- │  ├─ http.status_code: 200 -->
+<!-- │  ├─ upstream_cluster: ctp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-api-cluster -->
+<!-- │  ├─ controlplane.id: b2b37aaa-ee55-492c-ba0c-4d561a6325fa -->
+<!-- │  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system -->
+<!-- │  └─ response_size: 1827 -->
+<!-- ``` -->
 
 ## Available metrics
 

@@ -12,24 +12,18 @@ description: Common operations in Spaces
 To install an Upbound Space into a cluster, it's recommended you dedicate an entire Kubernetes cluster for the Space. You can use [up space init][up-space-init] to install an Upbound Space. Below is an example:
 
 ```bash
-up space init "v1.9.0"
+up space init "v1.15.0"
 ```
 :::tip
 For a full guide to get started with Spaces, read the [quickstart][quickstart] guide:
 :::
 
-You can also install the helm chart for Spaces directly. In order for a Spaces install to succeed, you must install some prerequisites first and configure them. This includes:
-
-- UXP
-- provider-helm and provider-kubernetes
-- cert-manager
-
-Furthermore, the Spaces chart requires a pull secret, which Upbound must provide to you.
+The Spaces chart requires a pull secret, which Upbound must provide to you.
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "v1.9.0" \
+  --version "v1.15.0" \
   --set "ingress.host=your-host.com" \
   --set "clusterType=eks" \
   --set "account=your-upbound-account" \
@@ -42,7 +36,7 @@ For a complete tutorial of the helm install, read one of the deployment guides f
 To upgrade a Space from one version to the next, use [up space upgrade][up-space-upgrade]. Spaces supports upgrading from version `ver x.N.*` to version `ver x.N+1.*`.
 
 ```bash
-up space upgrade "v1.9.0"
+up space upgrade "v1.15.0"
 ```
 
 You can also upgrade a Space by manually bumping the Helm chart version. Before
@@ -55,7 +49,7 @@ special requirements:
 ```bash
 helm -n upbound-system upgrade spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "v1.9.0" \
+  --version "v1.15.0" \
   --reuse-values \
   --wait
 ```
@@ -70,7 +64,7 @@ helm -n upbound-system get values spaces > spaces-values.yaml
 # Upgrade with modified values
 helm -n upbound-system upgrade spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "v1.9.0" \
+  --version "v1.15.0" \
   -f spaces-values.yaml \
   --wait
 ```
@@ -88,7 +82,7 @@ You can also downgrade a Space manually using Helm by specifying an earlier vers
 ```bash
 helm -n upbound-system upgrade spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
-  --version "v1.8.0" \
+  --version "v1.14.0" \
   --reuse-values \
   --wait
 ```

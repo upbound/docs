@@ -106,27 +106,6 @@ kubectl get ctp
 kubectl describe controlplanes.spaces.upbound.io <control-plane-name>
 ```
 
-## Issues
-
-<!-- vale off -->
-### Your control plane is stuck in a 'creating' state
-
-#### Error: unknown field "ports" in io.k8s.api.networking.v1.NetworkPolicySpec
-
-This error is emitted by a Helm release named `control-plane-host-policies` attempting to be installed by the Spaces software. The full error is:
-
-_CannotCreateExternalResource failed to install release: unable to build kubernetes objects from release manifest: error validating "": error validating data: ValidationError(NetworkPolicy.spec): unknown field "ports" in io.k8s.api.networking.v1.NetworkPolicySpec_
-
-This error may be caused by running a Space on an earlier version of Kubernetes than is supported (`v1.26 or later`). To resolve this issue, upgrade the host Kubernetes cluster version to 1.25 or later.
-
-### Your Spaces install fails
-
-#### Error: You tried to install a Space on a previous Crossplane installation
-
-If you try to install a Space on an existing cluster that previously had Crossplane or UXP on it, you may encounter errors. Due to how the Spaces installer tests for the presence of UXP, it may detect orphaned CRDs that weren't cleaned up by the previous uninstall of Crossplane. You may need to manually [remove old Crossplane CRDs][remove-old-crossplane-crds] for the installer to properly detect the UXP prerequisite.
-
-<!-- vale on -->
-
 
 [observability]: /spaces/howtos/observability
 [remove-old-crossplane-crds]: https://docs.crossplane.io/latest/guides/uninstall-crossplane/

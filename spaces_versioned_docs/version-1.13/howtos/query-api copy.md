@@ -14,10 +14,7 @@ aliases:
 
 :::important
 
-This feature is in preview. The Query API is available in the Cloud Space offering in `v1.6` and enabled by default.
-
-This is a requirement to be able to connect a Space since `v1.8.0`, and is off by default, see below to enable it.
-
+This feature is in preview and is off by default. You must enable the Query API to connect your Space. 
 :::
 
 Upbound's Query API allows users to inspect objects and resources within their control planes. The read-only `up alpha query` and `up alpha get` CLI commands allow you to gather information on your control planes in a fast and efficient package. These commands follow the [`kubectl` conventions][kubectl-conventions] for filtering, sorting, and retrieving information from your Space.

@@ -80,18 +80,6 @@ kubectl get pods -A
 kubectl describe pod -n <namespace> <pod-name>
 ```
 
-Next, inspect the status of objects and releases:
-
-1. Make sure the current context of your kubeconfig points at the Kubernetes cluster hosting your Space
-2. Inspect the objects in your Space. If any are unhealthy, describe those objects to get the events:
-```bash
-kubectl get objects
-```
-3. Inspect the releases in your Space. If any are unhealthy, describe those releases to get the events:
-```bash
-kubectl get releases
-```
-
 ### Troubleshooting tips for control planes in a Space
 
 General troubleshooting in a control plane starts by fetching the events of the control plane:
@@ -105,27 +93,6 @@ kubectl get ctp
 ```bash
 kubectl describe controlplanes.spaces.upbound.io <control-plane-name>
 ```
-
-## Issues
-
-<!-- vale off -->
-### Your control plane is stuck in a 'creating' state
-
-#### Error: unknown field "ports" in io.k8s.api.networking.v1.NetworkPolicySpec
-
-This error is emitted by a Helm release named `control-plane-host-policies` attempting to be installed by the Spaces software. The full error is:
-
-_CannotCreateExternalResource failed to install release: unable to build kubernetes objects from release manifest: error validating "": error validating data: ValidationError(NetworkPolicy.spec): unknown field "ports" in io.k8s.api.networking.v1.NetworkPolicySpec_
-
-This error may be caused by running a Space on an earlier version of Kubernetes than is supported (`v1.26 or later`). To resolve this issue, upgrade the host Kubernetes cluster version to 1.25 or later.
-
-### Your Spaces install fails
-
-#### Error: You tried to install a Space on a previous Crossplane installation
-
-If you try to install a Space on an existing cluster that previously had Crossplane or UXP on it, you may encounter errors. Due to how the Spaces installer tests for the presence of UXP, it may detect orphaned CRDs that weren't cleaned up by the previous uninstall of Crossplane. You may need to manually [remove old Crossplane CRDs][remove-old-crossplane-crds] for the installer to properly detect the UXP prerequisite.
-
-<!-- vale on -->
 
 
 [observability]: /spaces/howtos/observability

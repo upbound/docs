@@ -28,7 +28,7 @@ up ctp create my-control-plane
 Once the control plane is ready, connect to it.
 
 ```bash
-up ctp connect my-control-plane
+up ctx my-control-plane
 ```
 
 For convenience, install a an Upbound [platform reference Configuration][platform-reference-configuration] from the marketplace. production scenarios, replace this with your own Crossplane Configurations or compositions.
