@@ -25,6 +25,7 @@ module.exports = {
         'howtos/self-hosted/proxies-config',
         'howtos/self-hosted/attach-detach',
         'howtos/self-hosted/query-api',
+        'howtos/self-hosted/mirror-images',
       ],
     },
     {
@@ -67,10 +68,20 @@ module.exports = {
       label: 'Observe & Debug',
       items: [
         'howtos/observability',
-        'howtos/self-hosted/space-observability',
+        'howtos/self-hosted/observability/space-observability',
         'howtos/self-hosted/ctp-audit-logs',
         'howtos/debugging-a-ctp',
         'howtos/self-hosted/troubleshooting',
+        {
+          type: 'category',
+          label: 'Tracing',
+          items: [
+            'howtos/self-hosted/observability/tracing/overview',
+            'howtos/self-hosted/observability/tracing/query-api',
+            'howtos/self-hosted/observability/tracing/spaces-api',
+            'howtos/self-hosted/observability/tracing/spaces-router',
+          ],
+        },
       ],
     },
     {

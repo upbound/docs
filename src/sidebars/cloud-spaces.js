@@ -40,6 +40,7 @@ module.exports = {
         'howtos/ctp-connector',
         'howtos/mcp-connector-guide',
         'howtos/query-api',
+        'howtos/private-network-agent',
       ],
     },
     {
