@@ -32,7 +32,7 @@ Any important warnings or necessary information
 - **Ingress is no longer provisioned by default.** The Ingress resource is now
   controller-agnostic. All ingress-nginx specific annotations, labels, and the
   hardcoded `ingressClassName: nginx` have been removed. To keep existing
-  ingress-nginx working, add the following to your Helm values:
+  ingress-nginx working, add the following to your spaces Helm values:
 
   ```yaml
   ingress:
