@@ -5,9 +5,6 @@ description: A quickstart guide for Upbound Spaces
 tier: "business"
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
-import Version from "@site/src/components/Version.js"
-import { versions } from "@site/src/components/Version.js"
-import CodeBlock from '@theme/CodeBlock';
 
 <GlobalLanguageSelector />
 
