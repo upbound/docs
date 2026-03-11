@@ -28,7 +28,11 @@ timeout.
 :::
 
 ### Configuration
-<!-- vale gitlab.Uppercase = NO -->
+
+Add the following to your **Spaces Helm values** (or pass via `--set` when installing or upgrading). Choose the block for your cloud:
+
+<CodeBlock cloud="aws">
+
 ```yaml
 externalTLS:
   host: proxy.example.com  # Externally routable hostname for TLS certificates
@@ -38,13 +42,43 @@ router:
     service:
       type: LoadBalancer
       annotations:
-        # AWS NLB (see Cloud-Specific Annotations for other clouds)
         service.beta.kubernetes.io/aws-load-balancer-type: external
         service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
         service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
 ```
 
-See [Cloud-Specific Annotations](#cloud-specific-annotations) for GCP and Azure.
+</CodeBlock>
+
+<CodeBlock cloud="azure">
+
+```yaml
+externalTLS:
+  host: proxy.example.com  # Externally routable hostname for TLS certificates
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations: {}  # Azure uses L4 by default
+```
+
+</CodeBlock>
+
+<CodeBlock cloud="gcp">
+
+```yaml
+externalTLS:
+  host: proxy.example.com  # Externally routable hostname for TLS certificates
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations:
+        cloud.google.com/l4-rbs: enabled
+```
+
+</CodeBlock>
 
 <!-- vale Google.Headings = NO -->
 ### Get the LoadBalancer address
@@ -74,6 +108,8 @@ Configure your Ingress controller's Service with [NLB annotations](#cloud-specif
 
 ### Configuration
 
+Add the following to your **Spaces Helm values** (or pass via `--set` when installing or upgrading):
+
 ```yaml
 ingress:
   provision: true
@@ -90,7 +126,7 @@ ingress:
 ### Traefik (with nginx provider)
 
 Traefik can use the [kubernetesIngressNGINX provider][traefik-provider] to
-handle nginx-style Ingress resources with TLS passthrough.
+handle nginx-style Ingress resources with TLS passthrough. Add to your **Spaces Helm values**:
 
 ```yaml
 ingress:
@@ -123,7 +159,7 @@ For step-by-step setup including installing a controller (such as Envoy Gateway)
 
 ### Gateway API configuration
 
-Add the following to your Helm values (or use `--set` when upgrading). Disable Ingress when using Gateway API.
+Add the following to your **Spaces Helm values** (or use `--set` when upgrading). Disable Ingress when using Gateway API.
 
 ```yaml
 gatewayAPI:
