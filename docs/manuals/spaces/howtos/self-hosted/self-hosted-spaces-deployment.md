@@ -5,6 +5,8 @@ description: A quickstart guide for Upbound Spaces
 tier: "business"
 ---
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+import Version from "@site/src/components/Version.js"
+import { versions } from "@site/src/components/Version.js"
 
 <GlobalLanguageSelector />
 
@@ -212,9 +214,10 @@ export SPACES_TOKEN_PATH="/path/to/token.json"
 
 Set the version of Spaces software you want to install.
 
-```ini
-export SPACES_VERSION="1.16.0"
-```
+
+<CodeBlock language="ini">
+{`export SPACES_VERSION=${versions.spaces}`}
+</CodeBlock>
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the load balancer or ingress to route requests.
 
