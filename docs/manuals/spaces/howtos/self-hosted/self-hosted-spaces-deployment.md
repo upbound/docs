@@ -7,6 +7,7 @@ tier: "business"
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 import Version from "@site/src/components/Version.js"
 import { versions } from "@site/src/components/Version.js"
+import CodeBlock from '@theme/CodeBlock';
 
 <GlobalLanguageSelector />
 
@@ -63,7 +64,7 @@ Disconnected Spaces are a business critical feature of Upbound and requires a li
 
 ## Provision the hosting environment
 
-### Create a cluster
+###Create a cluster
 
 <CodeBlock cloud="aws">
 
@@ -215,9 +216,9 @@ export SPACES_TOKEN_PATH="/path/to/token.json"
 Set the version of Spaces software you want to install.
 
 
-<CodeBlock language="ini">
-{`export SPACES_VERSION=${versions.spaces}`}
-</CodeBlock>
+```ini
+export SPACES_VERSION=<Version type="cli" />
+```
 
 Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the load balancer or ingress to route requests.
 
