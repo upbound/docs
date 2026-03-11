@@ -64,7 +64,7 @@ Disconnected Spaces are a business critical feature of Upbound and requires a li
 
 ## Provision the hosting environment
 
-###Create a cluster
+### Create a cluster
 
 <CodeBlock cloud="aws">
 
