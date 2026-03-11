@@ -4,8 +4,9 @@ sidebar_position: 5
 description: Options for exposing Spaces externally
 ---
 
-import { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
 
+<GlobalLanguageSelector />
 
 You can expose Spaces externally using one of three options:
 
