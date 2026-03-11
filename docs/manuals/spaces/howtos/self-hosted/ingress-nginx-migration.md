@@ -753,6 +753,7 @@ If you need to roll back, reinstall ingress-nginx, set `ingress.provision: true`
 (and your previous ingress values) in Helm values, then upgrade Spaces again.
 
 [envoy-install]: https://gateway.envoyproxy.io/docs/install/
+[envoy-proxy]: https://gateway.envoyproxy.io/latest/tasks/operations/customize-envoyproxy/
 [spaces-install]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/
 [traefik-migrate]: https://doc.traefik.io/traefik/migrate/nginx-to-traefik/
 [spaces-deploy]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/
