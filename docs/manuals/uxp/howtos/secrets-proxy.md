@@ -5,8 +5,10 @@ sidebar_position: 50
 ---
 
 This guide explains how to configure the Secrets Proxy on an existing UXP
-instance to retrieve secrets from an external HashiCorp Vault instance instead
-of storing them as Kubernetes Secrets.
+instance to retrieve secrets from an external HashiCorp Vault.
+
+The Secret Store add-on securely stores your secrets instead of storing them as
+a Kubernetes secret in the cluster.
 
 The example composition creates IAM users and access keys. Rather than writing
 connection secrets to Kubernetes, the Secrets Proxy transparently reads and
@@ -31,10 +33,12 @@ To enable the Secrets Proxy on an existing UXP installation, upgrade with
 
 If you don't have a Vault instance, you can deploy one in dev mode into your
 cluster using the official Helm chart. Dev mode starts with a pre-configured
-root token and KV v2 secrets engine enabled at `secret/`. It is not persistent
+root token and KV v2 secrets engine enabled at `secret/`. It's not persistent
 and is only suitable for testing.
 
+<!-- vale gitlab.SubstitutionWarning = NO -->
 1. Add the HashiCorp Helm repo and install Vault in dev mode:
+<!-- vale gitlab.SubstitutionWarning = YES -->
 
     ```shell
     helm repo add hashicorp https://helm.releases.hashicorp.com
@@ -60,9 +64,11 @@ and is only suitable for testing.
     The Secrets Proxy sidecar reaches Vault in-cluster at
     `http://vault.vault-system.svc.cluster.local:8200`.
 
+<!-- vale write-good.Passive = NO -->
 :::warning
 Dev mode Vault is in-memory only. All data is lost when the pod restarts.
 :::
+<!-- vale write-good.Passive = YES -->
 
 ## Configure Vault
 
@@ -149,10 +155,10 @@ Vault and read secrets on behalf of provider pods.
       policies=crossplane-policy \
       ttl=1h
     ```
+<!-- vale Google.Headings = NO -->
+## Install the Secret Store add-on
 
-## Install the Secret Store addon
-
-Apply the Secret Store addon to deploy the `secret-store-vault` component that
+Apply the Secret Store add-on to deploy the `secret-store-vault` component that
 connects the Secrets Proxy to your Vault instance:
 
 ```yaml
@@ -258,10 +264,11 @@ kubectl apply -f webhookconfig.yaml
     ```shell
     kubectl apply -f functions.yaml
     ```
-
+<!-- vale write-good.Passive = NO -->
 3. Wait for providers and functions to become healthy, then create the provider
-   config. The `aws-official-creds` secret is stored in Vault — the Secrets
+   config. The `aws-official-creds` secret is stored in Vault. The Secrets
    Proxy intercepts the Secret API call and serves it transparently:
+<!-- vale write-good.Passive = YES -->
 
     ```yaml
     apiVersion: aws.m.upbound.io/v1beta1
@@ -295,7 +302,8 @@ kubectl apply -f comp.yaml
 ## Create the composite resource
 
 1. Edit `xr.yaml` and replace `<put-your-initials>` with your initials in both
-   the `metadata.name` and `spec.writeConnectionSecretToRef.name` fields:
+   the `metadata.name` and `spec.writeConnectionSecretToRef.name` fields to
+   create a unique name:
 
     ```yaml
     apiVersion: example.org/v1alpha1
