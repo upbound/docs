@@ -99,6 +99,8 @@ Any important warnings or necessary information
   without additional configuration. This can be disabled by explicitly setting
   `controlPlanes.uxp.v2.enabled` to `false` if needed.
 - Controllers are automatically upgraded when a ControllerRuntimeConfig is updated.
+- Added `gatewayAPI.gateway.namespace` Helm value to support referencing a Gateway
+  in a different namespace via `parentRefs`.
 
 #### Bug Fixes
 
