@@ -199,11 +199,11 @@ Vault and read secrets on behalf of provider pods.
       --output='jsonpath={.clusters[].cluster.server}')
     ```
 
-4. Enable the Kubernetes auth method in Vault and configure it with the cluster
+4. Enable the JWT auth method in Vault and configure it with the cluster
    details:
 
     ```shell
-    vault auth enable kubernetes
+    vault auth enable jwt
 
     vault write auth/kubernetes/config \
       kubernetes_host="${KUBE_HOST}" \
