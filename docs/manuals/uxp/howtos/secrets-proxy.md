@@ -18,16 +18,36 @@ writes them to Vault.
 
 Before you begin, ensure you have:
 
-* A running UXP instance with the Secrets Proxy feature enabled
-* A running HashiCorp Vault instance
-* [kubectl](https://kubernetes.io/docs/tasks/tools/) configured to point to your UXP cluster
-* The [Vault CLI](https://developer.hashicorp.com/vault/docs/install) installed with `VAULT_ADDR` and `VAULT_TOKEN` set
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) configured with credentials that can manage IAM resources
+* [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) installed
+* [kubectl](https://kubernetes.io/docs/tasks/tools/) installed
+* [Helm](https://helm.sh/docs/intro/install/) installed
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed
+* The [Vault CLI](https://developer.hashicorp.com/vault/docs/install) installed
+* The `up` CLI installed
+* Docker running
+* AWS credentials with access to the Upbound ECR registry
+* A running HashiCorp Vault instance (or use the bootstrap section below)
 
-:::note
-To enable the Secrets Proxy on an existing UXP installation, upgrade with
-`--set upbound.secretsProxy.enabled=true`.
-:::
+## Configure ECR access
+
+Set environment variables for pulling UXP images from the Upbound ECR registry:
+
+```shell
+export AWS_ACCESS_KEY_ID=<your-access-key-id>
+export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
+export AWS_DEFAULT_REGION=us-west-1
+
+ECR_REGISTRY="609897127049.dkr.ecr.us-west-1.amazonaws.com"
+ECR_PASSWORD=$(aws ecr get-login-password --region us-west-1)
+VERSION=2.2.0-up.1.rc.0.80.ga9163a05
+```
+
+## Create a Kind cluster
+
+```shell
+kind create cluster --name crossplane-secrets
+kind export kubeconfig --name crossplane-secrets
+```
 
 ## Bootstrap a test Vault instance
 
@@ -69,6 +89,52 @@ and is only suitable for testing.
 Dev mode Vault is in-memory only. All data is lost when the pod restarts.
 :::
 <!-- vale write-good.Passive = YES -->
+
+## Create an ECR pull secret
+
+```shell
+kubectl create ns crossplane-system
+
+kubectl -n crossplane-system create secret docker-registry ecr-pull-secret \
+  --docker-server="${ECR_REGISTRY}" \
+  --docker-username=AWS \
+  --docker-password="${ECR_PASSWORD}"
+```
+
+## Install UXP with Secrets Proxy
+
+The `--set upbound.secretsProxy.enabled=true` flag enables the Secrets Proxy
+component. To enable it on an existing UXP installation, run `helm upgrade`
+with the same flag against your existing release.
+
+```shell
+helm upgrade --install crossplane \
+  oci://${ECR_REGISTRY}/upbound/crossplane \
+  --version "${VERSION#v}" \
+  --namespace crossplane-system \
+  --create-namespace \
+  --set upbound.manager.image.repository="${ECR_REGISTRY}/upbound/controller-manager" \
+  --set upbound.manager.image.tag="v${VERSION}" \
+  --set upbound.manager.metering.image.repository="${ECR_REGISTRY}/upbound/controller-manager" \
+  --set upbound.manager.metering.image.tag="v${VERSION}" \
+  --set 'upbound.manager.imagePullSecrets[0].name=ecr-pull-secret' \
+  --set 'upbound.manager.metering.imagePullSecrets[0].name=ecr-pull-secret' \
+  --set 'imagePullSecrets[0]=ecr-pull-secret' \
+  --set upbound.secretsProxy.enabled=true
+```
+
+Wait for all pods to be ready:
+
+```shell
+kubectl get pods -n crossplane-system -w
+```
+
+## Apply a development license
+
+```shell
+up uxp license apply --dev
+up uxp license show
+```
 
 ## Configure Vault
 
