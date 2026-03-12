@@ -6,7 +6,7 @@ sidebar_position: 50
 
 The Secrets Proxy lets Crossplane providers read and write secrets directly
 to HashiCorp Vault instead of storing them as Kubernetes Secrets. Providers
-use the standard Kubernetes Secret API — the proxy intercepts those calls and
+use the standard Kubernetes Secret API. The Secrets Proxy intercepts those calls and
 routes them to Vault transparently.
 
 ## Prerequisites
@@ -20,7 +20,9 @@ Before you begin, ensure you have:
 * A UXP cluster running version 2.2 or later and a valid license
 * A HashiCorp Vault instance reachable from your cluster, with Kubernetes auth enabled
 
+<!-- vale Google.Headings = NO -->
 ## Enable the Secrets Proxy
+<!-- vale Google.Headings = YES -->
 
 Enable the Secrets Proxy on your UXP installation:
 
@@ -43,7 +45,7 @@ kubectl get pods -n crossplane-system -w
 
 ## Configure Vault
 
-Store the AWS credentials that providers will read. The Secrets Proxy serves
+Store the AWS credentials that the provider reads. The Secrets Proxy serves
 these to providers as if they were a Kubernetes Secret, using the `ini` format
 expected by the AWS provider family:
 
