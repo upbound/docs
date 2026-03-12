@@ -14,9 +14,9 @@ but requires manual credential rotation and stores
 long-lived secrets in the cluster.
 
 :::warning
-When running on EKS, prefer [IRSA], [EKS Pod Identity], or [WebIdentity] over
-access keys. These methods use temporary credentials and avoid storing static
-secrets in the cluster.
+Upbound recommends using [IRSA], [EKS Pod Identity][eks], or [WebIdentity]
+rather than static access keys to avoid the risk of long-living static
+credentials.
 :::
 
 ## Prerequisites
@@ -195,17 +195,26 @@ kubectl get providerConfig.aws.m default -o yaml
 
 ### 4.2 Test with an S3 bucket resource
 
-```yaml
+Create a new bucket to test your access.
+
+:::note
+S3 buckets are globally unique. Update the bucket name below to avoid naming
+conflicts.
+:::
+
+```sh
+kubectl apply -f - <<EOF
 apiVersion: s3.aws.m.upbound.io/v1beta1
 kind: Bucket
 metadata:
-  name: my-crossplane-test-bucket
+  name: <YOUR-TEST-BUCKET>
 spec:
   forProvider:
     region: us-east-2
   providerConfigRef:
     kind: ProviderConfig
     name: default
+EOF
 ```
 
 ### 4.3 Check the resource status
@@ -320,5 +329,5 @@ kubectl rollout restart deployment \
 
 
 [irsa]: /manuals/packages/providers/aws-auth/aws-irsa
-[eks-pod-identity]: /manuals/packages/providers/aws-auth/aws-pod-identity
+[eks]: /manuals/packages/providers/aws-auth/aws-pod-identity
 [webidentity]: /manuals/packages/providers/aws-auth/aws-web-identity

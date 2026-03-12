@@ -200,17 +200,26 @@ kubectl get providerConfig.aws.m default -o yaml
 
 ### 4.2 Test with an S3 bucket resource
 
-```yaml
+Create a new bucket to test your access.
+
+:::note
+S3 buckets are globally unique. Update the bucket name below to avoid naming
+conflicts.
+:::
+
+```sh
+kubectl apply -f - <<EOF
 apiVersion: s3.aws.m.upbound.io/v1beta1
 kind: Bucket
 metadata:
-  name: my-crossplane-test-bucket
+  name: <YOUR-TEST-BUCKET>
 spec:
   forProvider:
     region: us-east-2
   providerConfigRef:
     kind: ProviderConfig
     name: default
+EOF
 ```
 
 ### 4.3 Check the resource status
