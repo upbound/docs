@@ -17,7 +17,7 @@ Before you begin, ensure you have:
 * [Helm](https://helm.sh/docs/intro/install/) installed
 * The [Vault CLI](https://developer.hashicorp.com/vault/docs/install) installed
 * The `up` CLI installed
-* A UXP cluster running version 2.2 or later
+* A UXP cluster running version 2.2 or later and a valid license
 * A HashiCorp Vault instance reachable from your cluster, with Kubernetes auth enabled
 
 ## Enable the Secrets Proxy
@@ -39,13 +39,6 @@ helm install crossplane \
 
 ```shell
 kubectl get pods -n crossplane-system -w
-```
-
-## Apply a development license
-
-```shell
-up uxp license apply --dev
-up uxp license show
 ```
 
 ## Configure Vault
