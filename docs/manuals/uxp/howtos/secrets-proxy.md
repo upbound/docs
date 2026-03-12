@@ -33,7 +33,7 @@ helm repo add upbound-stable https://charts.upbound.io/stable && helm repo updat
 ```
 
 ```shell
-helm install crossplane \
+helm upgrade --install crossplane \
   --namespace crossplane-system \
   --create-namespace \
   upbound-stable/crossplane \
