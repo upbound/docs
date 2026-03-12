@@ -54,30 +54,27 @@ up uxp license show
 
 ## Configure Vault
 
-Store the secrets that providers will read, and create a policy granting the
-Secrets Proxy access to them.
+Store the AWS credentials that providers will read. The Secrets Proxy serves
+these to providers as if they were a Kubernetes Secret, using the `ini` format
+expected by the AWS provider family:
 
-1. Store AWS credentials in Vault. The Secrets Proxy serves these to providers
-   as if they were a Kubernetes Secret, using the `ini` format expected by the
-   AWS provider family:
+```shell
+vault kv put secret/crossplane-system/aws-official-creds credentials="
+[default]
+aws_access_key_id = <AWS_ACCESS_KEY_ID>
+aws_secret_access_key = <AWS_SECRET_ACCESS_KEY>
+"
+```
 
-    ```shell
-    vault kv put secret/crossplane-system/aws-official-creds credentials="
-    [default]
-    aws_access_key_id = <AWS_ACCESS_KEY_ID>
-    aws_secret_access_key = <AWS_SECRET_ACCESS_KEY>
-    "
-    ```
+Create a policy granting read access to secrets in `crossplane-system`:
 
-2. Create a policy granting read access to secrets in `crossplane-system`:
-
-    ```shell
-    vault policy write crossplane-policy - <<'EOF'
-    path "secret/data/crossplane-system/*" {
-      capabilities = ["read", "list"]
-    }
-    EOF
-    ```
+```shell
+vault policy write crossplane-policy - <<'EOF'
+path "secret/data/crossplane-system/*" {
+  capabilities = ["read", "list"]
+}
+EOF
+```
 
 ## Configure Vault Kubernetes auth
 
@@ -101,15 +98,16 @@ Secrets Proxy sidecar can authenticate on behalf of provider pods.
       -n crossplane-system --duration=8760h)
     ```
 
-3. Retrieve the cluster CA certificate and API server URL:
+3. Retrieve the cluster CA certificate and API server URL. For local clusters
+   (Kind, minikube), use the in-cluster Kubernetes service address so Vault can
+   reach the API server from inside the cluster:
 
     ```shell
     KUBE_CA_CERT=$(kubectl config view --raw --minify --flatten \
       --output='jsonpath={.clusters[].cluster.certificate-authority-data}' \
       | base64 --decode)
 
-    KUBE_HOST=$(kubectl config view --raw --minify --flatten \
-      --output='jsonpath={.clusters[].cluster.server}')
+    KUBE_HOST="https://kubernetes.default.svc.cluster.local"
     ```
 
 4. Enable the Kubernetes auth method and configure it with the cluster details:
@@ -130,6 +128,7 @@ Secrets Proxy sidecar can authenticate on behalf of provider pods.
     vault write auth/kubernetes/role/crossplane \
       bound_service_account_names="*" \
       bound_service_account_namespaces="crossplane-system" \
+      bound_audiences="https://kubernetes.default.svc.cluster.local" \
       policies=crossplane-policy \
       ttl=1h
     ```
@@ -140,7 +139,7 @@ Secrets Proxy sidecar can authenticate on behalf of provider pods.
 Apply the add-on to deploy the Secrets Proxy backend:
 
 ```yaml title=addon.yaml
-apiVersion: pkg.upbound.io/v1alpha1
+apiVersion: pkg.upbound.io/v1beta1
 kind: AddOn
 metadata:
   name: secret-store-vault
@@ -286,6 +285,106 @@ Apply the `UserAccessKey` XRD and composition. This composition creates an IAM
 user and two access keys, writing connection details back to Vault through the
 Secrets Proxy:
 
+```yaml title=comp.yaml
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: useraccesskeys-go-templating
+spec:
+  compositeTypeRef:
+    apiVersion: example.org/v1alpha1
+    kind: UserAccessKey
+  mode: Pipeline
+  pipeline:
+  - step: render-templates
+    functionRef:
+      name: function-go-templating
+    input:
+      apiVersion: gotemplating.fn.crossplane.io/v1beta1
+      kind: GoTemplate
+      source: Inline
+      inline:
+        template: |
+          ---
+          apiVersion: iam.aws.m.upbound.io/v1beta1
+          kind: User
+          metadata:
+            annotations:
+              {{ setResourceNameAnnotation "user" }}
+          spec:
+            forProvider: {}
+          ---
+          apiVersion: iam.aws.m.upbound.io/v1beta1
+          kind: AccessKey
+          metadata:
+            annotations:
+              {{ setResourceNameAnnotation "accesskey-0" }}
+          spec:
+            forProvider:
+              userSelector:
+                matchControllerRef: true
+            writeConnectionSecretToRef:
+              name: {{ $.observed.composite.resource.metadata.name }}-accesskey-secret-0
+          ---
+          apiVersion: iam.aws.m.upbound.io/v1beta1
+          kind: AccessKey
+          metadata:
+            annotations:
+              {{ setResourceNameAnnotation "accesskey-1" }}
+          spec:
+            forProvider:
+              userSelector:
+                matchControllerRef: true
+            writeConnectionSecretToRef:
+              name: {{ $.observed.composite.resource.metadata.name }}-accesskey-secret-1
+          ---
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: {{ dig "spec" "writeConnectionSecretToRef" "name" "" $.observed.composite.resource}}
+            annotations:
+              {{ setResourceNameAnnotation "connection-secret" }}
+          {{ if eq $.observed.resources nil }}
+          data: {}
+          {{ else }}
+          data:
+            user-0: {{ ( index $.observed.resources "accesskey-0" ).connectionDetails.username }}
+            user-1: {{ ( index $.observed.resources "accesskey-1" ).connectionDetails.username }}
+            password-0: {{ ( index $.observed.resources "accesskey-0" ).connectionDetails.password }}
+            password-1: {{ ( index $.observed.resources "accesskey-1" ).connectionDetails.password }}
+          {{ end }}
+  - step: ready
+    functionRef:
+      name: function-auto-ready
+---
+apiVersion: apiextensions.crossplane.io/v2
+kind: CompositeResourceDefinition
+metadata:
+  name: useraccesskeys.example.org
+spec:
+  group: example.org
+  names:
+    kind: UserAccessKey
+    plural: useraccesskeys
+  scope: Namespaced
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              writeConnectionSecretToRef:
+                type: object
+                properties:
+                  name:
+                    type: string
+```
+
 ```shell
 kubectl apply -f comp.yaml
 ```
@@ -329,4 +428,5 @@ associated secrets from Vault:
 ```shell
 kubectl delete -f xr.yaml
 ```
+
 
