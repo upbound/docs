@@ -33,7 +33,7 @@ helm repo add upbound-stable https://charts.upbound.io/stable && helm repo updat
 ```
 
 ```shell
-helm upgrade --install crossplane \
+helm install crossplane \
   --namespace crossplane-system \
   --create-namespace \
   upbound-stable/crossplane \
@@ -330,62 +330,3 @@ associated secrets from Vault:
 kubectl delete -f xr.yaml
 ```
 
-## Bootstrap a local test environment
-
-If you don't have a Vault instance and UXP cluster, you can set one up locally
-using Kind.
-
-### Create a Kind cluster
-
-```shell
-kind create cluster --name crossplane-secrets || true
-kind export kubeconfig --name crossplane-secrets
-```
-
-### Bootstrap Vault in dev mode
-
-Dev mode starts with a pre-configured root token and KV v2 secrets engine
-enabled at `secret/`. It is not persistent and is only suitable for testing.
-
-<!-- vale gitlab.SubstitutionWarning = NO -->
-1. Add the HashiCorp Helm repo and install Vault:
-<!-- vale gitlab.SubstitutionWarning = YES -->
-
-    ```shell
-    helm repo add hashicorp https://helm.releases.hashicorp.com
-    helm repo update
-
-    helm upgrade --install vault hashicorp/vault \
-      --namespace vault-system \
-      --create-namespace \
-      --set server.dev.enabled=true \
-      --set server.dev.devRootToken=root
-    ```
-
-2. Wait for the Vault pod to be ready:
-
-    ```shell
-    kubectl wait statefulset/vault -n vault-system \
-      --for=jsonpath='.status.readyReplicas'=1 --timeout=120s
-    ```
-
-3. In a separate terminal, start the port-forward and leave it running:
-
-    ```shell
-    kubectl port-forward svc/vault 8200:8200 -n vault-system
-    ```
-
-4. Back in your original terminal, set your CLI environment variables:
-
-    ```shell
-    export VAULT_ADDR=http://127.0.0.1:8200
-    export VAULT_TOKEN=root
-    ```
-
-<!-- vale write-good.Passive = NO -->
-:::warning
-Dev mode Vault is in-memory only. All data is lost when the pod restarts.
-:::
-<!-- vale write-good.Passive = YES -->
-
-Return to [Enable the Secrets Proxy](#enable-the-secrets-proxy) to continue.
