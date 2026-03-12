@@ -251,6 +251,31 @@
             "permanent": true
         },
         {
+            "source": "/manuals/packages/providers/authentication#aws-upbound-oidc",
+            "destination": "/manuals/packages/providers/aws-auth/aws-oidc",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/authentication#aws-access-keys",
+            "destination": "/manuals/packages/providers/aws-auth/aws-access-keys",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/authentication#aws-webidentity",
+            "destination": "/manuals/packages/providers/aws-auth/aws-web-identity",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/authentication#aws-irsa",
+            "destination": "/manuals/packages/providers/aws-auth/aws-irsa",
+            "permanent": true
+        },
+        {
+            "source": "/manuals/packages/providers/authentication#aws-pod-identity",
+            "destination": "/manuals/packages/providers/aws-auth/aws-pod-identity",
+            "permanent": true
+        },
+        {
             "source": "/providers/provider-aws(/)?",
             "destination": "/manuals/packages/providers/provider-aws",
             "permanent": true
