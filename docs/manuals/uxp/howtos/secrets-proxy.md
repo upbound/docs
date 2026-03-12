@@ -20,10 +20,6 @@ Before you begin, ensure you have:
 * A UXP cluster running version 2.2 or later
 * A HashiCorp Vault instance reachable from your cluster, with Kubernetes auth enabled
 
-:::tip
-Don't have a Vault instance yet? See [Bootstrap a local test environment](#bootstrap-a-local-test-environment) at the end of this page.
-:::
-
 ## Enable the Secrets Proxy
 
 Enable the Secrets Proxy on your UXP installation:
