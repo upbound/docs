@@ -151,7 +151,7 @@ kind: AddOn
 metadata:
   name: secret-store-vault
 spec:
-  package: xpkg.upbound.io/upbound/secret-store-vault-addon:v0.1.0
+  package: xpkg.upbound.io/upbound/secret-store-vault-addon:v0.1.1
 ```
 
 ```shell
@@ -180,6 +180,9 @@ spec:
 kubectl apply -f storeconfig.yaml
 kubectl get storeconfigs
 ```
+
+For more information, visit the [Upbound Marketplace][marketplace] for this
+add-on.
 
 ## Configure the webhook
 
@@ -438,4 +441,4 @@ associated secrets from Vault:
 kubectl delete -f xr.yaml
 ```
 
-
+[marketplace]: https://marketplace.upbound.io/addons/upbound/secret-store-vault-addon/latest
