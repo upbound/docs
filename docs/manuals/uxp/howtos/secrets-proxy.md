@@ -80,63 +80,6 @@ vault write auth/kubernetes/role/crossplane \
     ttl=24h
 ```
 
-## Configure Vault Kubernetes auth
-
-Configure Vault to trust service account tokens from your UXP cluster so the
-Secrets Proxy sidecar can authenticate on behalf of provider pods.
-
-1. Create a service account for Vault token review:
-
-    ```shell
-    kubectl create serviceaccount vault-auth -n crossplane-system
-
-    kubectl create clusterrolebinding vault-auth-delegator \
-      --clusterrole=system:auth-delegator \
-      --serviceaccount=crossplane-system:vault-auth
-    ```
-
-2. Generate a long-lived token for the reviewer service account:
-
-    ```shell
-    REVIEWER_JWT=$(kubectl create token vault-auth \
-      -n crossplane-system --duration=8760h)
-    ```
-
-3. Retrieve the cluster CA certificate and API server URL. For local clusters
-   (Kind, minikube), use the in-cluster Kubernetes service address so Vault can
-   reach the API server from inside the cluster:
-
-    ```shell
-    KUBE_CA_CERT=$(kubectl config view --raw --minify --flatten \
-      --output='jsonpath={.clusters[].cluster.certificate-authority-data}' \
-      | base64 --decode)
-
-    KUBE_HOST="https://kubernetes.default.svc.cluster.local"
-    ```
-
-4. Enable the Kubernetes auth method and configure it with the cluster details:
-
-    ```shell
-    vault auth enable kubernetes
-
-    vault write auth/kubernetes/config \
-      kubernetes_host="${KUBE_HOST}" \
-      kubernetes_ca_cert="${KUBE_CA_CERT}" \
-      token_reviewer_jwt="${REVIEWER_JWT}"
-    ```
-
-5. Create a role that binds all service accounts in `crossplane-system` to the
-   policy:
-
-    ```shell
-    vault write auth/kubernetes/role/crossplane \
-      bound_service_account_names="*" \
-      bound_service_account_namespaces="crossplane-system" \
-      bound_audiences="https://kubernetes.default.svc.cluster.local" \
-      policies=crossplane-policy \
-      ttl=1h
-    ```
-
 <!-- vale Google.Headings = NO -->
 ## Install the Secret Store add-on
 
@@ -157,6 +100,11 @@ spec:
 ```shell
 kubectl apply -f addon.yaml
 ```
+
+Next, you need to configure authentication for your Vault. Because HashiCorp
+Vault offers several options for authentication, Upbound recommends following
+your organization's current method for this Secrets Proxy. For more information,
+review HashiCorp's [Vault authentication documentation][vault-auth].
 
 Once the add-on is ready, create a `StoreConfig` pointing to your Vault
 instance:
@@ -440,5 +388,5 @@ associated secrets from Vault:
 ```shell
 kubectl delete -f xr.yaml
 ```
-
+[vault-auth]: https://developer.hashicorp.com/vault/docs/auth
 [marketplace]: https://marketplace.upbound.io/addons/upbound/secret-store-vault-addon/latest
