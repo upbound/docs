@@ -60,11 +60,24 @@ aws_secret_access_key = <AWS_SECRET_ACCESS_KEY>
 Create a policy granting read access to secrets in `crossplane-system`:
 
 ```shell
-vault policy write crossplane-policy - <<'EOF'
-path "secret/data/crossplane-system/*" {
-  capabilities = ["read", "list"]
+vault policy write crossplane- <<'EOF'
+path "secret/*" {
+    capabilities = ["create", "read", "update", "delete", "list"]
+}
+path "secret/metadata/*" {
+    capabilities = ["create", "read", "update", "delete", "list"]
 }
 EOF
+```
+Allow the `secret-store-vault` service account in `crossplane-system` to use the
+new `crossplane` policy you just created:
+
+```shell
+vault write auth/kubernetes/role/crossplane \
+    bound_service_account_names="secret-store-vault" \
+    bound_service_account_namespaces=crossplane-system \
+    policies=crossplane\
+    ttl=24h
 ```
 
 ## Configure Vault Kubernetes auth
@@ -129,6 +142,9 @@ Secrets Proxy sidecar can authenticate on behalf of provider pods.
 
 Apply the add-on to deploy the Secrets Proxy backend:
 
+:::note
+You must have a valid UXP license to install this add-on package.
+:::
 ```yaml title=addon.yaml
 apiVersion: pkg.upbound.io/v1beta1
 kind: AddOn
@@ -199,16 +215,16 @@ kubectl apply -f webhookconfig.yaml
 
 1. Install the AWS provider family and IAM provider. Provider pods start with
    the Secrets Proxy sidecar injected because the webhook matches the
-   `pkg.crossplane.io/provider` label:
+   `pkg.crossplane.io/provider` label. Create a new file called `provider.yaml`
+   and paste the following configuration:
 
-    ```yaml
+    ```yaml title=provider.yaml
     apiVersion: pkg.crossplane.io/v1
     kind: Provider
     metadata:
       name: upbound-provider-aws-iam
     spec:
       package: xpkg.upbound.io/upbound/provider-aws-iam:v2.2.0
-      ignoreCrossplaneConstraints: true
     ---
     apiVersion: pkg.crossplane.io/v1
     kind: Provider
@@ -216,16 +232,16 @@ kubectl apply -f webhookconfig.yaml
       name: upbound-provider-family-aws
     spec:
       package: xpkg.upbound.io/upbound/provider-family-aws:v2.2.0
-      ignoreCrossplaneConstraints: true
     ```
 
     ```shell
-    kubectl apply -f providers.yaml
+    kubectl apply -f provider.yaml
     ```
 
-2. Install the pipeline functions:
+2. Install the pipeline functions. Create a new file called `functions.yaml` and
+   paste the following configuration:
 
-    ```yaml
+    ```yaml title=functions.yaml
     apiVersion: pkg.crossplane.io/v1
     kind: Function
     metadata:
@@ -248,10 +264,11 @@ kubectl apply -f webhookconfig.yaml
 <!-- vale write-good.Passive = NO -->
 3. Wait for providers and functions to become healthy, then create the provider
    config. The `aws-official-creds` secret lives in Vault. The Secrets Proxy
-   intercepts the Secret API call and serves it transparently:
+   intercepts the Secret API call and serves it transparently. Create a new file
+   called `provider-config.yaml` and paste the following configuration:
 <!-- vale write-good.Passive = YES -->
 
-    ```yaml
+    ```yaml title=provider-config.yaml
     apiVersion: aws.m.upbound.io/v1beta1
     kind: ClusterProviderConfig
     metadata:
@@ -274,7 +291,8 @@ kubectl apply -f webhookconfig.yaml
 
 Apply the `UserAccessKey` XRD and composition. This composition creates an IAM
 user and two access keys, writing connection details back to Vault through the
-Secrets Proxy:
+Secrets Proxy. Create a new file called `comp.yaml` and paste the following
+configuration:
 
 ```yaml title=comp.yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -382,10 +400,10 @@ kubectl apply -f comp.yaml
 
 ## Create the composite resource
 
-1. Edit `xr.yaml` and replace `<put-your-initials>` with your initials in both
+1. Create a file called `xr.yaml` paste the following configuration. Replace `<put-your-initials>` with your initials in both
    the `metadata.name` and `spec.writeConnectionSecretToRef.name` fields:
 
-    ```yaml
+    ```yaml xr.yaml
     apiVersion: example.org/v1alpha1
     kind: UserAccessKey
     metadata:
@@ -408,7 +426,7 @@ kubectl apply -f comp.yaml
     secrets were created:
 
     ```shell
-    kubectl get secret -n crossplane-system
+    kubectl get secret
     ```
 
 ## Clean up
