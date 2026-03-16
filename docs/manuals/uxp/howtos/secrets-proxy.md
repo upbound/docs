@@ -17,7 +17,7 @@ Before you begin, ensure you have:
 * [Helm](https://helm.sh/docs/intro/install/) installed
 * The [Vault CLI](https://developer.hashicorp.com/vault/docs/install) installed
 * The `up` CLI installed
-* A UXP cluster running version 2.2 or later and a valid license
+* A UXP cluster running version v2.2.0-up.3 or later and a Standard license
 * A HashiCorp Vault instance reachable from your cluster, with Kubernetes auth enabled
 
 <!-- vale Google.Headings = NO -->
