@@ -429,6 +429,10 @@ guide shows you how to [build and push your projects][build-and-push-your-projec
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
 
+### Operation Tests
+
+<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_operationtests.yaml" />
+
 
 <!-- vale on -->
 
