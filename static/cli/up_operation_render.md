@@ -83,6 +83,7 @@ environment variables:
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
 | `--required-resources` | `-r` | A YAML file or directory of YAML files specifying required resources that functions can request. |
+| `--watched-resource` | `-w` | A YAML file specifying the watched resource for WatchOperation rendering. The resource is also added to required resources. |
 | `--context-files` | | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be files containing JSON. |
 | `--context-values` | | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be JSON. Keys take precedence over --context-files. |
 | `--include-function-results` | `-f` | Include informational and warning messages from Functions in the rendered output as resources of kind: Result. |
