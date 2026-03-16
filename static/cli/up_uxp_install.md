@@ -14,7 +14,7 @@ Install UXP.
 
 | Argument | Description |
 | -------- | ----------- |
-| `<version>` |**Optional** UXP version to install. |
+| `<version>` |**Optional** UXP version to install. Should be >= 2.0.0-up.0, use the helm chart to install uxp v1. |
 #### Flags
 
 | Flag | Short Form | Description |

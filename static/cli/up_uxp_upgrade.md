@@ -14,7 +14,7 @@ Upgrade UXP.
 
 | Argument | Description |
 | -------- | ----------- |
-| `<version>` |**Optional** UXP version to upgrade to. |
+| `<version>` |**Optional** UXP version to upgrade. Should be >= 2.0.0-up.0, use the helm chart to install uxp v1. |
 #### Flags
 
 | Flag | Short Form | Description |

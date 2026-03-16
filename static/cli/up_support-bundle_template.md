@@ -8,13 +8,13 @@ Output the default SupportBundle YAML configuration template.
 The `up support-bundle template` command outputs the default SupportBundle YAML configuration
 template that can be used as a starting point for custom support bundle configurations.
 
-#### Usage
+## Usage
 
 ```bash
 up support-bundle template [flags]
 ```
 
-#### Examples
+### Examples
 
 ```bash
 # Output the default support bundle template
@@ -39,5 +39,5 @@ up support-bundle collect --config my-support-bundle-config.yaml
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
 | `--kubeconfig` | `-k` | Path to the kubeconfig file. If not provided, the default kubeconfig resolution will be used. |
-| `--include-namespaces` | | Namespaces to include in the support bundle. Supports glob patterns (e.g., upbound-* to include all namespaces starting with "upbound-"). Multiple patterns can be specified. |
+| `--include-namespaces` | | Namespaces to include in the support bundle. When not specified, collects crossplane-system, upbound-system, and namespaces labeled with internal.spaces.upbound.io/controlplane-name or spaces.upbound.io/group. Supports glob patterns (e.g., upbound-*). Multiple patterns can be specified. |
 | `--exclude-namespaces` | | Namespaces to exclude from the support bundle. Supports glob patterns (e.g., upbound-* to exclude all namespaces starting with "upbound-"). Multiple patterns can be specified. |
