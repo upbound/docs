@@ -105,4 +105,4 @@ Your Prometheus needs to scrape UXP components and have these metrics available:
 - `upjet_resource_external_api_calls_total`
 - `function_run_function_seconds_bucket`, `_sum`, `_count`
 
-[web-ui]: /manuals/console/concepts/self-service
+[web-ui]: /manuals/console/self-service
