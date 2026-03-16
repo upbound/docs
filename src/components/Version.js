@@ -1,5 +1,5 @@
 export const versions = {
-  cli: '0.44.3',
+  cli: '0.45.0',
   spaces: '1.16.0',
   aws: '1.23.0',
   azure: '1.13.0',
