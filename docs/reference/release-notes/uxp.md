@@ -14,6 +14,26 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.2.0-up.3
+
+### Breaking changes
+
+UXP used to hardcode some crossplane core arguments in its helm chart. Now they are moved to helm values under `args`.
+Those arguments were:
+- `--enable-operations`
+- `--package-runtime=External`
+
+For most users nothing will change. But if you are setting different `args` in your installation of UXP, you would be overwriting the default values. In that case, if you want Operations and Add-ons to be available, add the arguments above to your list of `args`.
+
+### Crossplane updates
+* bumped Crossplane to [v2.2.0](https://github.com/crossplane/crossplane/releases/tag/v2.2.0)
+
+### Features
+
+* Added a new Observability View in the WebUI showing dashboards with the state of the UXP installation and managed resources.
+  * With a Standard license, a few more dashboards are being shown including initial metrics dashboards. Note that to support metrics, UXP installs (for Enterprise license only) a minimal Prometheus instance to collect needed metrics from UXP. This behavior can be controlled through Helm values under `upbound.prometheus`. If you have your own Prometheus installed, you disable the built-in one and redirect the WebUI to get metrics from your own through `webui.config.metricsApiEndpoint`
+* Added a new Secrets Proxy capability that allows applications to continue using the standard Kubernetes Secrets API without any modifications, while seamlessly routing secret requests to an external secret store behind the scenes. A mutating webhook automatically injects a sidecar proxy into pods matching the criteria defined in the webhook configuration and secret requests will be forwarded to the [Secrets Proxy Add-on](https://marketplace.upbound.io/addons/upbound/secret-store-vault-addon/v0.1.1) service. To use this feature, apply an Enterprise license and install the Secrets Proxy add-on from the Upbound Marketplace.
+
 ## v2.1.0-up.2
 
 #### What's Changed
