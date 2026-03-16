@@ -4,6 +4,11 @@ description: "Learn how to configure the Secrets Proxy to access secrets from an
 sidebar_position: 50
 ---
 
+:::important
+This feature is in Alpha and requires UXP `v2.2`. Secrets proxy should not be used in production environments without testing.
+:::
+
+
 The Secrets Proxy lets Crossplane providers read and write secrets directly
 to HashiCorp Vault instead of storing them as Kubernetes Secrets. Providers
 use the standard Kubernetes Secret API. The Secrets Proxy intercepts those calls and
