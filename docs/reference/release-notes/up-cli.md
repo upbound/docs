@@ -23,6 +23,21 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v0.45.0
+
+### Release Date: 2026-03-16
+
+##### What's Changed
+
+- Support bundle now includes control plane group namespaces by default
+- Added support for UXP v2.2.0-up.3
+- Updated Space mirror functionality for upbound spaces v1.16.0
+- Aligned operation render and test behavior with upstream crossplane cli
+
+##### Bug Fixes
+
+- Fixed RBAC forbidden errors by retrying when the RBAC manager is slow.
+- Fixed test diffs to strip `ownerReferences` from rendered resources.
 
 ## v0.44.3
 
