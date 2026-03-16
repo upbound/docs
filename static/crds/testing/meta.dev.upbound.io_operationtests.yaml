@@ -4,24 +4,24 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-  name: compositiontests.meta.dev.upbound.io
+  name: operationtests.meta.dev.upbound.io
 spec:
   group: meta.dev.upbound.io
   names:
     categories:
     - meta
-    kind: CompositionTest
-    listKind: CompositionTestList
-    plural: compositiontests
+    kind: OperationTest
+    listKind: OperationTestList
+    plural: operationtests
     shortNames:
-    - comptest
-    singular: compositiontest
+    - optest
+    singular: operationtest
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: CompositionTest defines the schema for the CompositionTest custom
+        description: OperationTest defines the schema for the OperationTest custom
           resource.
         properties:
           apiVersion:
@@ -42,7 +42,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: CompositionTestSpec defines the specification for the CompositionTest
+            description: OperationTestSpec defines the specification for the OperationTest
               custom resource.
             properties:
               assertResources:
@@ -53,17 +53,6 @@ spec:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 type: array
-              composition:
-                description: |-
-                  Composition specifies the composition definition inline.
-                  Optional.
-                type: object
-                x-kubernetes-preserve-unknown-fields: true
-              compositionPath:
-                description: |-
-                  Composition specifies the composition definition path.
-                  Optional.
-                type: string
               context:
                 additionalProperties:
                   type: object
@@ -73,27 +62,35 @@ spec:
                   Keys are context keys, values are JSON data.
                   Optional.
                 type: object
-              extraResources:
-                description: |-
-                  ExtraResources specifies additional resources inline.
-                  Optional.
-                items:
-                  type: object
-                  x-kubernetes-preserve-unknown-fields: true
-                type: array
               functionCredentialsPath:
                 description: |-
                   FunctionCredentialsPath specifies a path to a credentials file to be passed to tests.
                   Optional.
                 type: string
-              observedResources:
+              operation:
                 description: |-
-                  ObservedResources specifies additional observed resources inline.
+                  Operation specifies the Operation definition inline.
+                  Optional.
+                type: object
+                x-kubernetes-preserve-unknown-fields: true
+              operationPath:
+                description: |-
+                  OperationPath specifies the XRD definition path.
+                  Optional.
+                type: string
+              requiredResources:
+                description: |-
+                  RequiredResources specifies additional required resources inline.
                   Optional.
                 items:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 type: array
+              requiredResourcesPath:
+                description: |-
+                  RequiredResourcesPath specifies a path to required resources file.
+                  Optional.
+                type: string
               timeoutSeconds:
                 default: 30
                 description: |-
@@ -101,37 +98,23 @@ spec:
                   Required. Default is 30s.
                 minimum: 1
                 type: integer
-              validate:
+              watchedResource:
                 description: |-
-                  Validate indicates whether to validate managed resources against schemas.
-                  Optional.
-                type: boolean
-              xr:
-                description: |-
-                  XR specifies the composite resource (XR) inline.
-                  Mutually exclusive with XRPath. At least one of XR or XRPath must be specified.
-                type: object
-                x-kubernetes-preserve-unknown-fields: true
-              xrPath:
-                description: |-
-                  XRPath specifies the composite resource (XR) path.
-                  Mutually exclusive with XR. At least one of XR or XRPath must be specified.
-                type: string
-              xrd:
-                description: |-
-                  XRD specifies the XRD definition inline.
+                  WatchedResource specifies additional watched resource inline.
                   Optional.
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
-              xrdPath:
+              watchedResourcePath:
                 description: |-
-                  XRD specifies the XRD definition path.
+                  WatchedResourcePath specifies a path to watched resource file.
                   Optional.
                 type: string
             required:
+            - operation
             - timeoutSeconds
             type: object
         required:
+        - metadata
         - spec
         type: object
     served: true

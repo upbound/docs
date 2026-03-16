@@ -24,3 +24,7 @@ This section documents Custom Resource Definitions (CRDs) for Upbound Projects.
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
 
 
+## Operation Tests API
+
+<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_operationtests.yaml" />
+
