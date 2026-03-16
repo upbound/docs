@@ -25,6 +25,10 @@ Any important warnings or necessary information
 
 ### Release Date: 2026-03-13
 
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
 #### Breaking Changes
 
 :::important
@@ -114,6 +118,18 @@ Any important warnings or necessary information
 - Default resource requests added to `external-secrets-operator` Deployments.
 - Spaces Apollo image registry updated to `xpkg.upbound.io/spaces-artifacts`.
 
+## v1.15.3
+
+### Release Date: 2026-3-16
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
+
 ## v1.15.2
 
 ### Release Date: 2026-1-16
@@ -149,6 +165,18 @@ Any important warnings or necessary information
 - Fixed a bug where SharedTelemetry collector could only collect telemetry from Crossplane and provider pods due to network policies. Now it can collect from all pods in the control plane.
 - Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
 - Added default resource requests to external-secrets-operator deployments.
+
+## v1.14.4
+
+### Release Date: 2026-3-16
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
 
 ## v1.14.3
 
@@ -216,6 +244,18 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
+
+## v1.13.6
+
+### Release Date: 2026-3-16
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
 
 ## v1.13.5
 
