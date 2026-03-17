@@ -522,7 +522,7 @@
         },
         {
             "source": "/deploy/self-hosted-spaces/space-observability(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/space-observability",
+            "destination": "/manuals/spaces/howtos/self-hosted/observability/space-observability",
             "permanent": true
         },
         {

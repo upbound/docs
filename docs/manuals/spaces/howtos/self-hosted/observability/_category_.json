@@ -1,0 +1,8 @@
+{
+  "label": "Observability",
+  "position": 30,
+  "collapsed": true,
+  "customProps": {
+    "plan": "business"
+  }
+}
