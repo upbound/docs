@@ -6,6 +6,10 @@ module.exports = {
       label: 'Overview',
     },
     {
+      type: 'doc',
+      id: 'self-hosted-spaces-quickstart',
+    },
+    {
       type: 'category',
       label: 'Concepts',
       items: [
@@ -18,7 +22,6 @@ module.exports = {
       type: 'category',
       label: 'Deploy',
       items: [
-        'howtos/self-hosted/kind-quickstart',
         'howtos/self-hosted/deployment-reqs',
         'howtos/self-hosted/self-hosted-spaces-deployment',
         'howtos/self-hosted/managed-spaces-deployment',
