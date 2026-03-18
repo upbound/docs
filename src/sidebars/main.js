@@ -91,7 +91,7 @@ module.exports = {
         },
         {
             type: "category",
-            label: "Account & Access",
+            label: "Platform Access & Accounts",
             link: {
                 type: "doc",
                 id: "manuals/platform/overview",

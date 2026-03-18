@@ -1,12 +1,9 @@
 ---
-title: Account & Access Overview
+title: Platform Account & Access Overview
 sidebar_label: Overview
-hide_title: true
 sidebar_position: 1
 description: Overview of account and access management in Upbound
 ---
-
-# Overview
 
 This section covers identity management, access control, and other
 administrative features that allow you to configure team and organizational
