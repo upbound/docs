@@ -39,6 +39,13 @@ and save output to `apis/xdatabases/composition.yaml`:
 up composition generate examples/xdatabase/database.yaml --plural postgreses
 ```
 
+Generate a composition from a Composite Resource (XR) using a
+ResourceGraphDefinition:
+
+```shell
+up composition generate examples/xnetwork/xnetwork.yaml --input rgd --input-file rgd/network.yaml
+```
+
 
 #### Usage
 
@@ -54,6 +61,8 @@ up composition generate examples/xdatabase/database.yaml --plural postgreses
 | ---- | ---------- | ----------- |
 | `--name` | | Name for the new composition. |
 | `--plural` | | Optional custom plural for the CompositeTypeRef.Kind |
+| `--input` | | Input format: rgd or ResourceGraphDefinition. |
+| `--input-file` | | Path to input file (e.g., ResourceGraphDefinition file). |
 | `--path` | | Optional path to the output file where the generated Composition will be saved. |
 | `--project-file` | `-f` | Path to project definition file. |
 | `--output` | `-o` | Output format for the results: 'file' to save to a file, 'yaml' to print XRD in YAML format, 'json' to print XRD in JSON format. |
