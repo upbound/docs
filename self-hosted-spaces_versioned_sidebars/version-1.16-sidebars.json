@@ -31,15 +31,6 @@
     },
     {
       "type": "category",
-      "label": "Cloud Spaces",
-      "items": [
-        "howtos/cloud-spaces/dedicated-spaces-deployment",
-        "howtos/cloud-spaces/private-network-agent",
-        "howtos/cloud-spaces/gitops"
-      ]
-    },
-    {
-      "type": "category",
       "label": "Configure",
       "items": [
         "howtos/configure-ha",

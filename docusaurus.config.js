@@ -79,10 +79,10 @@ const config = {
         [
             "@docusaurus/plugin-content-docs",
             {
-                id: "spaces",
-                path: "spaces-docs",
-                routeBasePath: "/spaces",
-                sidebarPath: require.resolve("./src/sidebars/spaces.js"),
+                id: "self-hosted-spaces",
+                path: "self-hosted-spaces-docs",
+                routeBasePath: "/self-hosted-spaces",
+                sidebarPath: require.resolve("./src/sidebars/self-hosted-spaces.js"),
                 includeCurrentVersion: true,
             },
         ],
@@ -95,22 +95,7 @@ const config = {
                 sidebarPath: require.resolve("./src/sidebars/cloud-spaces.js"),
             },
         ],
-        [
-            "@docusaurus/plugin-client-redirects",
-            {
-                redirects: [
-                    {
-                        from: "/spaces",
-                        to: "/spaces/overview/",
-                    },
-                    {
-                        from: "/cloud-spaces",
-                        to: "/cloud-spaces/overview/",
-                    },
-                ],
-            },
-        ],
-        "./scripts/plan-plugin.js",
+                "./scripts/plan-plugin.js",
         function (context, options) {
             return {
                 name: "custom-webpack-config",
@@ -220,7 +205,7 @@ const config = {
                             },
                             {
                                 label: "Self-Hosted Spaces",
-                                to: "/spaces/overview/",
+                                to: "/self-hosted-spaces/overview/",
                             },
                             {
                                 label: "CLI",

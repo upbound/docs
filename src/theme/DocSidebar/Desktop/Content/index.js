@@ -10,7 +10,7 @@ import {
 } from '@upbound/elements';
 import styles from './styles.module.css';
 
-const versionsJson = require('../../../../../spaces_versions.json');
+const versionsJson = require('../../../../../self-hosted-spaces_versions.json');
 
 const LATEST = 'latest';
 
@@ -21,7 +21,7 @@ const versions = versionsJson.map((version, index) => ({
 
 function getVersionFromPath(pathname) {
   const segments = pathname.split('/').filter(Boolean);
-  if (segments[0] === 'spaces' && /^\d+\.\d+$/.test(segments[1])) {
+  if (segments[0] === 'self-hosted-spaces' && /^\d+\.\d+$/.test(segments[1])) {
     return segments[1];
   }
   return LATEST;
@@ -32,13 +32,13 @@ function buildVersionPath(pathname, selectedVersion) {
   const hasVersion = /^\d+\.\d+$/.test(segments[1]);
   const contentPath = '/' + segments.slice(hasVersion ? 2 : 1).join('/');
   return selectedVersion === LATEST
-    ? `/spaces${contentPath}`
-    : `/spaces/${selectedVersion}${contentPath}`;
+    ? `/self-hosted-spaces${contentPath}`
+    : `/self-hosted-spaces/${selectedVersion}${contentPath}`;
 }
 
 export default function DocSidebarDesktopContentWrapper(props) {
   const location = useLocation();
-  const isSpacesPage = location.pathname.startsWith('/spaces');
+  const isSelfHostedSpaces = location.pathname.startsWith('/self-hosted-spaces');
 
   function handleVersionChange(value) {
     window.location.href = buildVersionPath(location.pathname, value);
@@ -46,7 +46,7 @@ export default function DocSidebarDesktopContentWrapper(props) {
 
   return (
     <>
-      {isSpacesPage && (
+      {isSelfHostedSpaces && (
         <div className={styles.versionSelector}>
           <Select
             value={getVersionFromPath(location.pathname)}
