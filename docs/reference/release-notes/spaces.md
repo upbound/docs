@@ -146,7 +146,7 @@ Any important warnings or necessary information
 #### Important Changes
 
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
-- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](https://docs.upbound.io/self-hosted-spaces/howtos/query-api/) for details.
+- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](/self-hosted-spaces/howtos/query-api/) for details.
 - UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/concepts/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
 - VCluster has been upgraded from v0.24.1 to v0.24.2 to support Kubernetes 1.33.
 - Bumped supported cert-manager version to v1.18.2.
@@ -154,7 +154,7 @@ Any important warnings or necessary information
 #### Features
 
 - **Spaces Metering:** Added a new metering collector with PostgreSQL storage for measurements and aggregations. This enables tracking of control plane resource usage over time.
-- **Enhanced Observability**, see [docs](https://docs.upbound.io/self-hosted-spaces/howtos/observability/space-observability/) for details:
+- **Enhanced Observability**, see [docs](/self-hosted-spaces/howtos/space-observability/) for details:
   - Added Envoy metrics for spaces-router to improve observability.
   - Added distributed tracing support to spaces-router for space-level observability.
 - Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes, `controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy: True` through the Spaces helm chart values.
@@ -569,7 +569,7 @@ Please be aware of the following changes:
     - Hub identities are enabled via the `authentication.hubIdentities` Spaces Helm chart parameter (the default) and,
     - You would like to be able to authenticate Spaces clients using the client certificates issued by the host cluster's signer.
 
-  You can enable the SSL-passthrough mode for the ingress-nginx controller by passing the `--enable-ssl-passthrough=true` command-line option to it. Please also see the official [self-hosted Spaces deployment guides](https://docs.upbound.io/deploy/self-hosted-spaces/).
+  You can enable the SSL-passthrough mode for the ingress-nginx controller by passing the `--enable-ssl-passthrough=true` command-line option to it. Please also see the official [self-hosted Spaces deployment guides](/self-hosted-spaces/overview/).
 - If you are using the Gateway API with Spaces and your chosen Gateway API implementation is [Envoy Gateway](https://gateway.envoyproxy.io), please note that the short name `ctp` now belongs to the `clienttrafficpolicies.gateway.envoyproxy.io` custom resources. If you have any scripts that use this short name for `controlplanes.spaces.upbound.io`, you will need to update them to use the long name `controlplane` if you are using Envoy Gateway.
 
 #### Features and Enhancements
