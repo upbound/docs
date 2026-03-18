@@ -2,7 +2,10 @@
 title: Use the Secrets Proxy
 description: "Learn how to configure the Secrets Proxy to access secrets from an external Vault secret store"
 sidebar_position: 50
+plan: standard
 ---
+
+<Standard />
 
 :::important
 This feature is in Alpha and requires UXP `v2.2`. Secrets proxy should not be used in production environments without testing.
