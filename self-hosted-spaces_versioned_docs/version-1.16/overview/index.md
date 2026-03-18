@@ -36,6 +36,6 @@ residency.
 
 ## Get Started with Self-Hosted Spaces
 
-- **[Concepts](/self-hosted-spaces/1.16/concepts/control-planes/)** — Core concepts for Spaces
-- **[How-To Guides](/self-hosted-spaces/1.16/howtos/auto-upgrade/)** — Step-by-step guides for operating Spaces
-- **[API Reference](/self-hosted-spaces/1.16/reference/)** — API specifications and resources
+- **[Concepts](/self-hosted-spaces/concepts/control-planes/)** — Core concepts for Spaces
+- **[How-To Guides](/self-hosted-spaces/howtos/auto-upgrade/)** — Step-by-step guides for operating Spaces
+- **[API Reference](/self-hosted-spaces/reference/)** — API specifications and resources

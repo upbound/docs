@@ -240,4 +240,4 @@ To route requests from external clients (kubectl, ArgoCD, etc.) to control plane
 [azure-limits]: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/request-limits-and-throttling
 [aws-ec2-limits]: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/throttling.html#throttling-limits-rate-based
 [upjet]: https://github.com/upbound/upjet
-[expose]: /manuals/spaces/howtos/self-hosted/ingress/
+[expose]: /self-hosted-spaces/howtos/ingress/

@@ -57,7 +57,7 @@ Any important warnings or necessary information
   `ingress.ingressClassName: "<your-class>"`, and add controller-specific
   `ingress.annotations`, `ingress.podLabels`, and `ingress.namespaceLabels` as
   needed. ingress-nginx is deprecated upstream (EOL March 2026). See the
-  [ingress-nginx migration guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/)
+  [ingress-nginx migration guide](/self-hosted-spaces/howtos/ingress-nginx-migration/)
   for details. Recommended alternatives: LoadBalancer Service (simplest),
   Gateway API, or any Ingress controller with TLS passthrough support.
 
@@ -81,7 +81,7 @@ Any important warnings or necessary information
   Use `externalTLS.host` for the externally routable hostname for TLS.
 - **Ingress and Gateway API together:** Run both at once for zero-downtime
   migration from ingress-nginx. See the [migration
-  guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/).
+  guide](/self-hosted-spaces/howtos/ingress-nginx-migration/).
 - **Observability:**
   - Added support for `prometheus.io/path` annotation in the control plane telemetry
     collector (custom metrics paths with fallback to `/metrics`).
@@ -89,8 +89,8 @@ Any important warnings or necessary information
     into the Spaces OpenTelemetry Collector pods.
   - Added support for the OTEL Filter Processor in SharedTelemetryConfigs to drop
     metrics, logs, or traces.
-  - [Tracing can be enabled in Apollo](/manuals/spaces/howtos/self-hosted/observability/tracing/query-api/).
-  - [Spaces API is now instrumented with tracing](/manuals/spaces/howtos/self-hosted/observability/tracing/spaces-api/).
+  - [Tracing can be enabled in Apollo](/self-hosted-spaces/howtos/tracing/query-api/).
+  - [Spaces API is now instrumented with tracing](/self-hosted-spaces/howtos/tracing/spaces-api/).
   - Resources for the LogCollector daemonset are configurable via
     `observability.collectors.logCollector.resources`.
   - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
@@ -146,7 +146,7 @@ Any important warnings or necessary information
 #### Important Changes
 
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
-- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/query-api/) for details.
+- **Query API v1alpha1 has been removed.** The query API has been updated with breaking changes including removal of v1alpha1 and Freshness support. Database user permissions required for apollo have changed; please see the [documentation](https://docs.upbound.io/self-hosted-spaces/howtos/query-api/) for details.
 - UXP v2 [AddOns](https://docs.upbound.io/manuals/uxp/concepts/add-ons/) are disabled by default. They can be enabled via `controlPlanes.uxp.enableAddons`.
 - VCluster has been upgraded from v0.24.1 to v0.24.2 to support Kubernetes 1.33.
 - Bumped supported cert-manager version to v1.18.2.
@@ -154,7 +154,7 @@ Any important warnings or necessary information
 #### Features
 
 - **Spaces Metering:** Added a new metering collector with PostgreSQL storage for measurements and aggregations. This enables tracking of control plane resource usage over time.
-- **Enhanced Observability**, see [docs](https://docs.upbound.io/manuals/spaces/howtos/self-hosted/observability/space-observability/) for details:
+- **Enhanced Observability**, see [docs](https://docs.upbound.io/self-hosted-spaces/howtos/observability/space-observability/) for details:
   - Added Envoy metrics for spaces-router to improve observability.
   - Added distributed tracing support to spaces-router for space-level observability.
 - Allow disabling default ManagedResourceActivationPolicy for UXP v2 control planes, `controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy: True` through the Spaces helm chart values.

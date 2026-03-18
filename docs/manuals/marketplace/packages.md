@@ -186,7 +186,7 @@ The Marketplace only publishes release versions with valid [semver][semver] tags
 </details>
 
 
-[upbound-account]: /manuals/platform/concepts/identity-management/users#create-an-account
+[upbound-account]: /manuals/platform/users#create-an-account
 [login]: /manuals/marketplace/authentication
 [up-repository-create]: /reference/cli-reference
 [credential-helper]: /manuals/cli/concepts/configuration/#configuring-a-docker-credential-helper

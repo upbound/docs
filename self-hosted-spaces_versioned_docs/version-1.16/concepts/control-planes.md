@@ -202,10 +202,10 @@ Upbound gives users the ability to configure the collection of telemetry (logs, 
 <!-- vale on -->
 
 
-[automatic-upgrades]: /manuals/spaces/howtos/auto-upgrade
+[automatic-upgrades]: /self-hosted-spaces/howtos/auto-upgrade
 [release-notes]: https://github.com/upbound/universal-crossplane/releases
-[control-plane-group]: /manuals/spaces/concepts/groups
-[space]: /manuals/spaces/overview
+[control-plane-group]: /self-hosted-spaces/concepts/groups
+[space]: /self-hosted-spaces/overview
 [up-cli]: /reference/cli-reference
 [cli-reference]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference
@@ -213,9 +213,9 @@ Upbound gives users the ability to configure the collection of telemetry (logs, 
 [cli-documentation]: /manuals/cli/concepts/contexts
 [upbound-marketplace]: https://marketplace.upbound.io
 [upbound-marketplace-1]: https://marketplace.upbound.io
-[gitops-with-control-planes]: /manuals/spaces/howtos/cloud-spaces/gitops
-[connect-control-planes-to-external-services]: /manuals/platform/howtos/oidc
-[spaces-documentation]: /manuals/spaces/howtos/secrets-management
-[spaces-documentation-1]: /manuals/spaces/howtos/backup-and-restore
+[gitops-with-control-planes]: /cloud-spaces/howtos/gitops-on-upbound
+[connect-control-planes-to-external-services]: /manuals/platform/oidc
+[spaces-documentation]: /self-hosted-spaces/howtos/secrets-management
+[spaces-documentation-1]: /self-hosted-spaces/howtos/backup-and-restore
 [otel]: https://otel.com
-[spaces-documentation-2]: /manuals/spaces/howtos/observability
+[spaces-documentation-2]: /self-hosted-spaces/howtos/observability

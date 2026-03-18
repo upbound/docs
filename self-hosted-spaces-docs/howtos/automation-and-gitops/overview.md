@@ -40,7 +40,7 @@ The way you configure GitOps depends on your deployment model:
 
 ###. Cloud Spaces
 If you're using Upbound Cloud Spaces (Dedicated or Managed):
-1. Start with [GitOps with Upbound Control Planes](../cloud-spaces/gitops-on-upbound.md)
+1. Start with [GitOps with Upbound Control Planes](/cloud-spaces/howtos/gitops-on-upbound/)
 2. Learn how to integrate Argo CD with Cloud Spaces
 3. Manage both control plane infrastructure and Upbound resources declaratively
 

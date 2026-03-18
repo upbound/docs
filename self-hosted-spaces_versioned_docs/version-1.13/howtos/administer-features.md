@@ -113,4 +113,4 @@ Query API is required for self-hosted deployments with connected Spaces. See the
 related [documentation][documentation]
 to enable this feature.
 
-[documentation]: /spaces/howtos/query-api/
+[documentation]: /self-hosted-spaces/howtos/query-api/

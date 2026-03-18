@@ -14,7 +14,7 @@ central service called the [Upbound Console][console], which is deployed and
 managed by Upbound.
 
 :::info Looking for self-hosted options?
-For customer-hosted deployments, see the [Self-Hosted Spaces documentation](/spaces/concepts/deployment-modes/).
+For customer-hosted deployments, see the [Self-Hosted Spaces documentation](/cloud-spaces/concepts/deployment-modes/).
 Self-Hosted Spaces include Managed Spaces (Upbound-managed, customer-hosted) and
 Self-Hosted Spaces (customer-managed, customer-hosted).
 :::

@@ -127,6 +127,6 @@ If you try to install a Space on an existing cluster that previously had Crosspl
 <!-- vale on -->
 
 
-[observability]: /manuals/spaces/howtos/observability
+[observability]: /self-hosted-spaces/howtos/observability
 [remove-old-crossplane-crds]: https://docs.crossplane.io/latest/guides/uninstall-crossplane/
-[expose]: /manuals/spaces/howtos/self-hosted/ingress/
+[expose]: /self-hosted-spaces/howtos/ingress/

@@ -754,11 +754,11 @@ If you need to roll back, reinstall ingress-nginx, set `ingress.provision: true`
 
 [envoy-install]: https://gateway.envoyproxy.io/docs/install/
 [envoy-proxy]: https://gateway.envoyproxy.io/latest/tasks/operations/customize-envoyproxy/
-[spaces-install]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/
+[spaces-install]: /self-hosted-spaces/howtos/self-hosted-spaces-deployment/
 [traefik-migrate]: https://doc.traefik.io/traefik/migrate/nginx-to-traefik/
-[spaces-deploy]: /manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/
+[spaces-deploy]: /self-hosted-spaces/howtos/self-hosted-spaces-deployment/
 [k8s-announce]: https://www.kubernetes.dev/blog/2025/11/12/ingress-nginx-retirement/
-[expose]: /manuals/spaces/howtos/self-hosted/ingress/
-[expose-annotate]: /manuals/spaces/howtos/self-hosted/ingress/#cloud-specific-annotations
+[expose]: /self-hosted-spaces/howtos/ingress/
+[expose-annotate]: /self-hosted-spaces/howtos/ingress/#cloud-specific-annotations
 [gateway-api]: https://gateway-api.sigs.k8s.io/
-[gateway-api-config]: /manuals/spaces/howtos/self-hosted/ingress/#gateway-api
+[gateway-api-config]: /self-hosted-spaces/howtos/ingress/#gateway-api

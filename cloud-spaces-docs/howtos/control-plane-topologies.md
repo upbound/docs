@@ -53,4 +53,4 @@ concerns to Upbound machinery.
 
 ![Control Plane Topology feature arch](/img/topology-arch.png)
 
-For full documentation, see the [Self-Hosted Spaces Control Plane Topologies guide](/spaces/howtos/control-plane-topologies/).
+For full documentation, see the [Self-Hosted Spaces Control Plane Topologies guide](/cloud-spaces/howtos/control-plane-topologies/).

@@ -492,7 +492,7 @@ credentials to the clusters.
 
 
 [kubeconfig]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group
-[kubeconfig-1]:/manuals/spaces/concepts/control-planes/#connect-directly-to-your-control-plane 
+[kubeconfig-1]:/self-hosted-spaces/concepts/control-planes/#connect-directly-to-your-control-plane 
 [these-instructions]:/manuals/console/upbound-console/#create-a-personal-access-token 
 [kubernetes-api-aggregationlayer]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/
 [configuration-eks]: https://github.com/upbound/configuration-eks

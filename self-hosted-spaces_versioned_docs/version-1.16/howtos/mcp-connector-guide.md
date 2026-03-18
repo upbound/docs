@@ -158,6 +158,6 @@ In this tutorial, you:
 - You saw how resource requests are actually fulfilled by the control plane.
 
 
-[control-plane-connector]: /manuals/spaces/howtos/ctp-connector
+[control-plane-connector]: /self-hosted-spaces/howtos/ctp-connector
 [platform-reference-configuration]: https://marketplace.upbound.io/configurations/upbound/platform-ref-aws
-[api-connector]: /manuals/spaces/howtos/api-connector
+[api-connector]: /self-hosted-spaces/howtos/api-connector

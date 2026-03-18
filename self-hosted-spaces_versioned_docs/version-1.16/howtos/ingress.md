@@ -223,4 +223,4 @@ timeout these connections. Use these annotations on the LoadBalancer Service
 
 [traefik-provider]: https://doc.traefik.io/traefik/reference/install-configuration/providers/kubernetes/kubernetes-ingress-nginx/
 [gateway-api-docs]: https://gateway-api.sigs.k8s.io/
-[migration-gateway-api]: /manuals/spaces/howtos/self-hosted/ingress-nginx-migration/#gateway-api
+[migration-gateway-api]: /self-hosted-spaces/howtos/ingress-nginx-migration/#gateway-api

@@ -39,7 +39,7 @@ Upbound control planes are fully compatible with GitOps patterns and we strongly
 3. Manage both control plane infrastructure and Upbound resources declaratively
 
 :::info Self-Hosted Spaces
-If you're running self-hosted Spaces, see the [Self-Hosted GitOps guide](/spaces/howtos/self-hosted/gitops-with-argocd/).
+If you're running self-hosted Spaces, see the [Self-Hosted GitOps guide](/self-hosted-spaces/howtos/use-argo/).
 :::
 
 ## Common Workflows

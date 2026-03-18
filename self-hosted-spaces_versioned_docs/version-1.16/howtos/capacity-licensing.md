@@ -582,12 +582,12 @@ If your license shows as invalid:
 - Contact [Upbound Sales][sales] to discuss capacity licensing options
 
 
-[space-billing]: /manuals/spaces/howtos/self-hosted/billing
+[space-billing]: /self-hosted-spaces/howtos/billing
 [CloudNativePG]: https://cloudnative-pg.io/
 [backups]: https://cloudnative-pg.io/documentation/current/backup_recovery/
-[backup-restore]: /manuals/spaces/howtos/backup-and-restore
+[backup-restore]: /self-hosted-spaces/howtos/backup-and-restore
 [sales]: https://www.upbound.io/contact
 [eso]: https://external-secrets.io/
-[Observability]: /manuals/spaces/howtos/observability
+[Observability]: /self-hosted-spaces/howtos/observability
 <!-- vale write-good.Weasel = YES -->
 <!-- vale write-good.TooWordy = YES -->

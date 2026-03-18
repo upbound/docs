@@ -255,7 +255,7 @@ Read the [concept][project-concept] documentation to learn more about using proj
 [up-dep]: /reference/cli-reference#up-dependency-dep-add
 [scaffold-api]: /manuals/cli/howtos/authoring-xrds/
 [self-managed-uxp]: /manuals/uxp/howtos/uxp-deployment
-[spaces]: /manuals/spaces/overview
+[spaces]: /self-hosted-spaces/overview
 [project-concept]: /manuals/cli/howtos/project
 [go-templ]: https://marketplace.upbound.io/functions/upbound/function-go-templating
 [import-composite-types]: #import-composite-types

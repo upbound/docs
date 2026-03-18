@@ -115,4 +115,4 @@ related [documentation][documentation]
 to enable this feature.
 <!-- vale write-good.Passive = YES -->
 
-[documentation]: /spaces/howtos/query-api/
+[documentation]: /self-hosted-spaces/howtos/query-api/

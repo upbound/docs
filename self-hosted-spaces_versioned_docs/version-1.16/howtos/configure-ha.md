@@ -437,7 +437,7 @@ Configure alerts for critical scaling and health metrics:
 [rds]: https://aws.amazon.com/rds/postgresql/
 [gke-sql]: https://cloud.google.com/kubernetes-engine/docs/tutorials/stateful-workloads/postgresql
 [aks-sql]: https://learn.microsoft.com/en-us/azure/aks/deploy-postgresql-ha?tabs=azuredisk
-[deployment]: https://docs.upbound.io/manuals/spaces/howtos/self-hosted/deployment-reqs/
+[deployment]: https://docs.upbound.io/self-hosted-spaces/howtos/deployment-reqs/
 [karpenter]: https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
 [gke-autoscaling]: https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-autoscaler
 [aks-autoscaling]: https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler-overview

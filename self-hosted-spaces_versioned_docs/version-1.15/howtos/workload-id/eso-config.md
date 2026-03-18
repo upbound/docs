@@ -498,6 +498,6 @@ Other workload identity guides are:
 * [Backup and restore][backuprestore]
 * [Billing][billing]
 
-[eso-guide]: /spaces/howtos/secrets-management
-[backuprestore]: /spaces/howtos/self-hosted/workload-id/backup-restore-config
-[billing]: /spaces/howtos/self-hosted/workload-id/billing-config
+[eso-guide]: /self-hosted-spaces/howtos/secrets-management
+[backuprestore]: /self-hosted-spaces/howtos/workload-id/backup-restore-config
+[billing]: /self-hosted-spaces/howtos/workload-id/billing-config

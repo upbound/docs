@@ -107,5 +107,5 @@ kubectl describe controlplanes.spaces.upbound.io <control-plane-name>
 ```
 
 
-[observability]: /spaces/howtos/observability
+[observability]: /self-hosted-spaces/howtos/observability
 [remove-old-crossplane-crds]: https://docs.crossplane.io/latest/guides/uninstall-crossplane/

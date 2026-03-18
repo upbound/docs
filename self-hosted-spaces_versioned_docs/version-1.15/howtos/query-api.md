@@ -303,7 +303,7 @@ The SpaceQuery resource allows you to query objects across all control planes in
 <!-- ignore "aggregate" -->
 <!-- vale write-good.TooWordy = YES -->
 
-[documentation]: /spaces/howtos/self-hosted/query-api
+[documentation]: /self-hosted-spaces/howtos/query-api
 [up-ctx]: /reference/cli-reference
 [up-alpha-get-command]: /reference/cli-reference
 [a-flag]: /reference/cli-reference

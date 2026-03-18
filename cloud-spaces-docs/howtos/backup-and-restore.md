@@ -503,11 +503,11 @@ spec:
 [group-scoped-1]: /cloud-spaces/concepts/groups
 [group-scoped-2]: /cloud-spaces/concepts/groups
 [group-scoped-3]: /cloud-spaces/concepts/groups
-[sharedbackupconfig]: /reference/apis/spaces-api/latest
+[sharedbackupconfig]: /self-hosted-spaces/reference/
 [thanos-object-storage]: https://thanos.io/tip/thanos/storage.md/
-[sharedbackupschedule]: /reference/apis/spaces-api/latest
+[sharedbackupschedule]: /self-hosted-spaces/reference/
 [cron-formatted]: https://en.wikipedia.org/wiki/Cron
-[spaces-api-documentation]: /reference/apis/spaces-api/v1_9
-[sharedbackup]: /reference/apis/spaces-api/latest
-[backup]: /reference/apis/spaces-api/latest
-[spaces-api-documentation-1]: /reference/apis/spaces-api/v1_9
+[spaces-api-documentation]: /self-hosted-spaces/reference/
+[sharedbackup]: /self-hosted-spaces/reference/
+[backup]: /self-hosted-spaces/reference/
+[spaces-api-documentation-1]: /self-hosted-spaces/reference/

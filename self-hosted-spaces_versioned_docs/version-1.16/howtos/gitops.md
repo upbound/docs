@@ -116,18 +116,18 @@ EOF
 ```
 
 [generate-a-kubeconfig]: /manuals/cli/concepts/contexts
-[control-plane-groups]: /manuals/spaces/concepts/groups
-[control-planes]: /manuals/spaces/concepts/control-planes
+[control-plane-groups]: /self-hosted-spaces/concepts/groups
+[control-planes]: /self-hosted-spaces/concepts/control-planes
 [upbound-iam-resources]: /manuals/platform/identity-management
-[space-apis]: /reference/apis/spaces-api/v1_9
-[space-apis-1]: /reference/apis/spaces-api/v1_9
-[control-plane-groups-2]: /manuals/spaces/concepts/groups
+[space-apis]: /self-hosted-spaces/reference/
+[space-apis-1]: /self-hosted-spaces/reference/
+[control-plane-groups-2]: /self-hosted-spaces/concepts/groups
 
 
 [argo-cd]: https://argo-cd.readthedocs.io/en/stable/
 [my-account-api-tokens]: https://accounts.upbound.io/settings/tokens
 [auto-respect-rbac-for-the-argo-cd-controller]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
-[spec-writeconnectionsecrettoref]: /reference/apis/spaces-api/latest
+[spec-writeconnectionsecrettoref]: /self-hosted-spaces/reference/
 [auto-respect-rbac-for-the-argo-cd-controller-1]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
 [provider-upbound]: https://marketplace.upbound.io/providers/upbound/provider-upbound
 [provider-kubernetes]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes

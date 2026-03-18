@@ -6,7 +6,7 @@ tier: "business"
 ---
 
 :::info Deployment Model
-This guide applies to **Upbound Cloud Spaces** (Dedicated and Managed Spaces). For self-hosted Spaces deployments, see [GitOps with ArgoCD in Self-Hosted Spaces](/spaces/howtos/self-hosted/gitops-with-argocd/).
+This guide applies to **Upbound Cloud Spaces** (Dedicated and Managed Spaces). For self-hosted Spaces deployments, see [GitOps with ArgoCD in Self-Hosted Spaces](/self-hosted-spaces/howtos/use-argo/).
 :::
 
 GitOps is an approach for managing a system by declaratively describing desired resources' configurations in Git and using controllers to realize the desired state. Upbound's control planes are compatible with this pattern and it's strongly recommended you integrate GitOps in the platforms you build on Upbound.
@@ -293,16 +293,16 @@ You can now create _Objects_ in the control plane which wrap Space APIs.
 [generate-a-kubeconfig]: /manuals/cli/concepts/contexts
 [control-plane-groups]: /cloud-spaces/concepts/groups
 [control-planes]: /cloud-spaces/concepts/control-planes
-[upbound-iam-resources]: /manuals/platform/concepts/identity-management
-[space-apis]: /reference/apis/spaces-api/v1_9
-[space-apis-1]: /reference/apis/spaces-api/v1_9
+[upbound-iam-resources]: /manuals/platform/iam
+[space-apis]: /self-hosted-spaces/reference/
+[space-apis-1]: /self-hosted-spaces/reference/
 [control-plane-groups-2]: /cloud-spaces/concepts/groups
 
 
 [argo-cd]: https://argo-cd.readthedocs.io/en/stable/
 [my-account-api-tokens]: https://accounts.upbound.io/settings/tokens
 [auto-respect-rbac-for-the-argo-cd-controller]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
-[spec-writeconnectionsecrettoref]: /reference/apis/spaces-api/latest
+[spec-writeconnectionsecrettoref]: /self-hosted-spaces/reference/
 [auto-respect-rbac-for-the-argo-cd-controller-1]: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#auto-respect-rbac-for-controller
 [provider-upbound]: https://marketplace.upbound.io/providers/upbound/provider-upbound
 [provider-kubernetes]: https://marketplace.upbound.io/providers/upbound/provider-kubernetes

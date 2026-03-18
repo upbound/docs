@@ -272,4 +272,4 @@ documentation][opentelemetry-transformation-language].
 [opentelemetry-collectors]: https://opentelemetry.io/docs/collector/
 [transform-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md
 [opentelemetry-transformation-language]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl
-[space-level-o11y]: /spaces/howtos/self-hosted/space-observability
+[space-level-o11y]: /self-hosted-spaces/howtos/space-observability

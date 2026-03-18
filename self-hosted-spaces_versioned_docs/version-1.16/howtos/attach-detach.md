@@ -182,11 +182,11 @@ resource in your Space isn't visible at any point.
 Only users with editor or administrative permissions can make changes using the Console like creating or deleting control planes or groups.
 
 
-[enable-the-query-api]: /manuals/spaces/howtos/self-hosted/query-api
-[enable-upbound-rbac]: /manuals/platform/concepts/authorization/upbound-rbac
+[enable-the-query-api]: /self-hosted-spaces/howtos/query-api
+[enable-upbound-rbac]: /manuals/platform/rbac
 [upbound]: /manuals/console/upbound-console
-[organization]: /manuals/platform/concepts/identity-management/organizations
-[query-api]: /manuals/spaces/howtos/self-hosted/query-api
+[organization]: /manuals/platform/organizations
+[query-api]: /self-hosted-spaces/howtos/query-api
 [jq-install]: https://jqlang.org/download/
 
 [upbound-console]: https://console.upbound.io

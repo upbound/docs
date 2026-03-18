@@ -368,8 +368,8 @@ documentation][opentelemetry-transformation-language].
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
 [transform-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md
 [opentelemetry-transformation-language]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl
-[space-level-o11y]: /spaces/howtos/self-hosted/space-observability
-[helm-chart-reference]: /reference/helm-reference
+[space-level-o11y]: /self-hosted-spaces/howtos/space-observability
+[helm-chart-reference]: /reference/spaces-helm-reference/
 [opentelemetry-transformation-language-functions]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/ottlfuncs/README.md
 [opentelemetry-transformation-language-contexts]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl/contexts
 [guide-on-ottl]: https://betterstack.com/community/guides/observability/ottl/#a-brief-overview-of-the-ottl-grammar

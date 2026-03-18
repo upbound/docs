@@ -373,7 +373,7 @@ See the [Query API documentation][query-api-documentation] for more information 
 
 [postgresql-setup]: #self-hosted-postgresql-configuration
 [up-cli-installed]: /manuals/cli/overview
-[query-api-documentation]: /manuals/spaces/howtos/query-api
+[query-api-documentation]: /self-hosted-spaces/howtos/query-api
 
 [helm-chart-reference]: /reference/spaces-helm-reference/
 [kubectl-conventions]: https://kubernetes.io/docs/reference/kubectl/generated/kubectl_get/

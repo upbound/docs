@@ -299,7 +299,7 @@ lifecycle including status codes and client-perceived latency.
 | `envoy_http_downstream_rq_time_count` | Count of downstream requests |
 
 [router-ref]: #router-ref
-[observability-documentation]: /spaces/howtos/observability
+[observability-documentation]: /self-hosted-spaces/howtos/observability
 [opentelemetry-collector]: https://opentelemetry.io/docs/collector/
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
-[helm-chart-reference]: /reference/helm-reference
+[helm-chart-reference]: /reference/spaces-helm-reference/

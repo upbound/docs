@@ -19,7 +19,7 @@ and traces from workloads running within individual control planes.
 For self-hosted Space administrators who want to observe the cluster
 infrastructure, see the
 [Space-level observability guide][space-level-o11y]. That guide covers
-infrastructure metrics, router metrics, and [distributed tracing](/manuals/spaces/howtos/self-hosted/observability/tracing/overview).
+infrastructure metrics, router metrics, and [distributed tracing](/self-hosted-spaces/howtos/tracing/overview).
 :::
 
 
@@ -325,5 +325,5 @@ documentation][opentelemetry-transformation-language].
 [opentelemetry-collectors]: https://opentelemetry.io/docs/collector/
 [transform-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/README.md
 [opentelemetry-transformation-language]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl
-[space-level-o11y]: /manuals/spaces/howtos/self-hosted/observability/space-observability
+[space-level-o11y]: /self-hosted-spaces/howtos/space-observability
 [helm-chart-reference]: /reference/spaces-helm-reference/

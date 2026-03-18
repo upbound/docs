@@ -180,7 +180,7 @@ Span: ingress
 │  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
 │  └─ response_size: 1827
 ```
-|||||||| 3043afc1:docs/manuals/spaces/howtos/self-hosted/space-observability.md
+|||||||| 3043afc1:docs/self-hosted-spaces/howtos/space-observability.md
 The router uses:
 
 - **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
@@ -391,7 +391,7 @@ lifecycle including status codes and client-perceived latency.
 | `envoy_http_downstream_rq_time_count` | Count of downstream requests |
 
 [router-ref]: #router-ref
-[observability-documentation]: /spaces/howtos/observability
+[observability-documentation]: /self-hosted-spaces/howtos/observability
 [opentelemetry-collector]: https://opentelemetry.io/docs/collector/
 [opentelemetry-operator]: https://opentelemetry.io/docs/kubernetes/operator/
 [helm-chart-reference]: /reference/spaces-helm-reference/

@@ -10,7 +10,7 @@ Information on Upbound's APIs:
 * [Query API][query]
 * [UXP API][uxp]
 
-[spaces]: /spaces/reference/
+[spaces]: /self-hosted-spaces/reference/
 [crossplane]: /reference/apis/crossplane-api/
 [testing]: /reference/apis/testing-api/
 [query]: /reference/apis/query-api/
