@@ -21,6 +21,114 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v1.16.0
+
+### Release Date: 2026-03-13
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### Breaking Changes
+
+:::important
+
+- **Ingress is no longer provisioned by default.** The Ingress resource is now
+  controller-agnostic. All ingress-nginx specific annotations, labels, and the
+  hardcoded `ingressClassName: nginx` have been removed. To keep existing
+  ingress-nginx working, add the following to your spaces Helm values:
+
+  ```yaml
+  ingress:
+    provision: true
+    host: proxy.example.com  # Replace with your existing hostname
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    podLabels:
+      app.kubernetes.io/name: ingress-nginx
+      app.kubernetes.io/component: controller
+    namespaceLabels:
+      kubernetes.io/metadata.name: ingress-nginx
+  ```
+
+  For other controllers, set `ingress.provision: true`,
+  `ingress.ingressClassName: "<your-class>"`, and add controller-specific
+  `ingress.annotations`, `ingress.podLabels`, and `ingress.namespaceLabels` as
+  needed. ingress-nginx is deprecated upstream (EOL March 2026). See the
+  [ingress-nginx migration guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/)
+  for details. Recommended alternatives: LoadBalancer Service (simplest),
+  Gateway API, or any Ingress controller with TLS passthrough support.
+
+- **LogCollector tolerations:** Tolerations for the LogCollector daemonset have been
+  moved from `observability.collectors.tolerations` to
+  `observability.collectors.logCollector.tolerations`. Update your Helm values if
+  you use custom tolerations for the LogCollector.
+
+:::
+
+#### Important Changes
+
+- Spaces Apollo (Query API) was updated to v0.4.7 with stability fixes for ensuring
+  data is properly synced.
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
+
+#### Features
+
+- **Spaces Router via LoadBalancer:** You can expose the Spaces Router directly
+  with a LoadBalancer Service, without an ingress controller or gateway.
+  Use `externalTLS.host` for the externally routable hostname for TLS.
+- **Ingress and Gateway API together:** Run both at once for zero-downtime
+  migration from ingress-nginx. See the [migration
+  guide](/manuals/spaces/howtos/self-hosted/ingress-nginx-migration/).
+- **Observability:**
+  - Added support for `prometheus.io/path` annotation in the control plane telemetry
+    collector (custom metrics paths with fallback to `/metrics`).
+  - Added support for `observability.spacesCollector.env` for injecting environment variables
+    into the Spaces OpenTelemetry Collector pods.
+  - Added support for the OTEL Filter Processor in SharedTelemetryConfigs to drop
+    metrics, logs, or traces.
+  - [Tracing can be enabled in Apollo](/manuals/spaces/howtos/self-hosted/observability/tracing/query-api/).
+  - [Spaces API is now instrumented with tracing](/manuals/spaces/howtos/self-hosted/observability/tracing/spaces-api/).
+  - Resources for the LogCollector daemonset are configurable via
+    `observability.collectors.logCollector.resources`.
+  - Added support for the Splunk HEC exporter in SharedTelemetryConfigs.
+- **Certificate automation:** Services reload the Spaces CA automatically; leaf
+  certificates renew when the Spaces CA is renewed. The `spaces-ca-bundle`
+  includes both old and new CAs for seamless rotation. For zero downtime with
+  webhooks during CA renewal, use cert-manager v1.19+ or enable the
+  CAInjectorMerging feature flag in cert-manager 1.17+.
+- **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes
+  without additional configuration. This can be disabled by explicitly setting
+  `controlPlanes.uxp.v2.enabled` to `false` if needed.
+- Controllers are automatically upgraded when a ControllerRuntimeConfig is updated.
+- Added `gatewayAPI.gateway.namespace` Helm value to support referencing a Gateway
+  in a different namespace via `parentRefs`.
+
+#### Bug Fixes
+
+- SharedTelemetry now properly cleans up its `status.provisioned`,
+  `status.failed`, and `status.selected` after a control plane is deleted.
+- ProviderConfig, ProviderConfigUsage, and ClusterProviderConfig are no longer
+  counted as Managed Resources by the UXP metering controller.
+
+#### Other Changes
+
+- Default resource requests added to `external-secrets-operator` Deployments.
+- Spaces Apollo image registry updated to `xpkg.upbound.io/spaces-artifacts`.
+
+## v1.15.3
+
+### Release Date: 2026-3-16
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
 
 ## v1.15.2
 
@@ -57,6 +165,18 @@ Any important warnings or necessary information
 - Fixed a bug where SharedTelemetry collector could only collect telemetry from Crossplane and provider pods due to network policies. Now it can collect from all pods in the control plane.
 - Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
 - Added default resource requests to external-secrets-operator deployments.
+
+## v1.14.4
+
+### Release Date: 2026-3-16
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
 
 ## v1.14.3
 
@@ -124,6 +244,18 @@ This is why we are now unsetting the vCluster memory limits and will monitor fur
 - Fixed a bug where the last Subject listed in an ObjectRoleBinding would be the only one with bound permissions.
 - Fixed mxp-controller crashes on Crossplane versions < v1.16.4 by implementing conditional ImageConfig CRD watching based on version compatibility.
 - Allow SharedTelemetry to scrape all vcluster managed pods.
+
+## v1.13.6
+
+### Release Date: 2026-3-16
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.45.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (XGQL, VCluster, CoreDNS, etcd, kube-state-metrics).
 
 ## v1.13.5
 

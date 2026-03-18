@@ -81,7 +81,7 @@ kind: ClusterConfig
 metadata:
   name: ${SPACES_CLUSTER_NAME}
   region: ${SPACES_REGION}
-  version: "1.29"
+  version: "1.34"
 managedNodeGroups:
   - name: ng-1
     instanceType: m5.xlarge
@@ -110,6 +110,9 @@ addons:
   - name: aws-ebs-csi-driver
     wellKnownPolicies:
       ebsCSIController: true
+    configurationValues: |-
+      defaultStorageClass:
+        enabled: true
 EOF
 ```
 
@@ -209,11 +212,12 @@ export SPACES_TOKEN_PATH="/path/to/token.json"
 
 Set the version of Spaces software you want to install.
 
+
 ```ini
-export SPACES_VERSION=<!-- spaces_version -->
+export SPACES_VERSION="1.16.0"
 ```
 
-Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the ingress controller to route requests.
+Set the router host and cluster type. The `SPACES_ROUTER_HOST` is the domain name that's used to access the control plane instances. It's used by the load balancer or ingress to route requests.
 
 ```ini
 export SPACES_ROUTER_HOST="proxy.upbound-127.0.0.1.nip.io"
@@ -232,13 +236,15 @@ Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a 
 Install cert-manager.
 
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.yaml
 kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Available=True --timeout=360s
 ```
 
 <CodeBlock cloud="aws">
 
-### Install ALB Load Balancer
+### Install AWS Load Balancer Controller
+
+The AWS Load Balancer Controller provisions a Network Load Balancer when you expose the spaces-router Service with the annotations in the next step.
 
 ```bash
 helm install aws-load-balancer-controller aws-load-balancer-controller --namespace kube-system \
@@ -251,30 +257,32 @@ helm install aws-load-balancer-controller aws-load-balancer-controller --namespa
 
 </CodeBlock>
 
-### Install ingress-nginx
+### Expose Spaces with LoadBalancer (recommended)
 
-Starting with Spaces v1.10.0, you need to configure the ingress-nginx
-controller to allow SSL-passthrough mode. You can do so by passing the
-`--enable-ssl-passthrough=true` command-line option to the controller.
-The following Helm install command enables this with the `controller.extraArgs`
-parameter:
+This guide exposes Spaces using a LoadBalancer Service on the spaces-router. You don't need an ingress or gateway.
+
+:::important
+Use a Network Load Balancer (L4), not an Application Load Balancer (L7). Spaces uses long-lived connections for watch traffic that L7 load balancers may timeout.
+:::
+
+Create a values file using `SPACES_ROUTER_HOST` (or use the same `--set` flags in the Helm install below). Run the command for your cloud:
 
 <CodeBlock cloud="aws">
 
 ```bash
-helm upgrade --install ingress-nginx ingress-nginx \
-  --create-namespace --namespace ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.12.1 \
-  --set 'controller.service.type=LoadBalancer' \
-  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-type=external' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-scheme=internet-facing' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-nlb-target-type=ip' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-protocol=http' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-path=/healthz' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/aws-load-balancer-healthcheck-port=10254' \
-  --wait
+cat <<EOF > values.yaml
+externalTLS:
+  host: ${SPACES_ROUTER_HOST}
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-type: external
+        service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+        service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+EOF
 ```
 
 </CodeBlock>
@@ -282,14 +290,17 @@ helm upgrade --install ingress-nginx ingress-nginx \
 <CodeBlock cloud="azure">
 
 ```bash
-helm upgrade --install ingress-nginx ingress-nginx \
-  --create-namespace --namespace ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.12.1 \
-  --set 'controller.service.type=LoadBalancer' \
-  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
-  --set 'controller.service.annotations.service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path=/healthz' \
-  --wait
+cat <<EOF > values.yaml
+externalTLS:
+  host: ${SPACES_ROUTER_HOST}
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      # Azure uses L4 by default; add annotations if needed for your setup
+      annotations: {}
+EOF
 ```
 
 </CodeBlock>
@@ -297,16 +308,24 @@ helm upgrade --install ingress-nginx ingress-nginx \
 <CodeBlock cloud="gcp">
 
 ```bash
-helm upgrade --install ingress-nginx ingress-nginx \
-  --create-namespace --namespace ingress-nginx \
-  --repo https://kubernetes.github.io/ingress-nginx \
-  --version 4.12.1 \
-  --set 'controller.service.type=LoadBalancer' \
-  --set 'controller.extraArgs.enable-ssl-passthrough=true' \
-  --wait
+cat <<EOF > values.yaml
+externalTLS:
+  host: ${SPACES_ROUTER_HOST}
+
+router:
+  proxy:
+    service:
+      type: LoadBalancer
+      annotations:
+        cloud.google.com/l4-rbs: enabled
+EOF
 ```
 
 </CodeBlock>
+
+:::tip
+To use Gateway API or Ingress instead of LoadBalancer, see [Exposing Spaces externally][expose].
+:::
 
 ### Install Upbound Spaces software
 
@@ -326,13 +345,13 @@ Log in with Helm to be able to pull chart images for the installation commands.
 jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 ```
 
-Install the Spaces software.
+Install the Spaces software. Use the `values.yaml` file you created in the previous step (with `externalTLS.host` and `router.proxy.service`).
 
 ```bash
 helm -n upbound-system upgrade --install spaces \
   oci://xpkg.upbound.io/spaces-artifacts/spaces \
   --version "${SPACES_VERSION}" \
-  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  -f values.yaml \
   --set "account=${UPBOUND_ACCOUNT}" \
   --set "authentication.hubIdentities=true" \
   --set "authorization.hubRBAC=true" \
@@ -342,18 +361,15 @@ helm -n upbound-system upgrade --install spaces \
 ### Create a DNS record
 
 :::important
-
-If you chose to create a public ingress, you also need to create a DNS record for the load balancer of the public facing ingress. Do this before you create your first control plane.
-
+Create a DNS record for the spaces-router load balancer before you create your first control plane.
 :::
 
-Create a DNS record for the load balancer of the public facing ingress. To get the address for the Ingress, run the following:
+Get the load balancer address for the spaces-router Service:
 
 <CodeBlock cloud="aws">
 
 ```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
+kubectl get svc -n upbound-system spaces-router \
   -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 ```
 
@@ -362,8 +378,7 @@ kubectl get ingress \
 <CodeBlock cloud="azure">
 
 ```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
+kubectl get svc -n upbound-system spaces-router \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
@@ -372,14 +387,16 @@ kubectl get ingress \
 <CodeBlock cloud="gcp">
 
 ```bash
-kubectl get ingress \
-  -n upbound-system mxe-router-ingress \
+kubectl get svc -n upbound-system spaces-router \
   -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 </CodeBlock>
 
-If the preceding command doesn't return a load balancer address then your provider may not have allocated it yet. Once it's available, add a DNS record for the `ROUTER_HOST` to point to the given load balancer address. If it's an IPv4 address, add an A record. If it's a domain name, add a CNAME record.
+If the preceding command doesn't return a load balancer address then your
+provider may not have allocated it yet. Once it's available, add a DNS record
+for the `ROUTER_HOST` to point to the given load balancer address. If it's an
+IPv4 address, add an A record. If it's a domain name, add a CNAME record.
 
 ## Configure the up CLI
 
@@ -439,7 +456,12 @@ kubectl wait controlplane ctp1 --for condition=Ready=True --timeout=360s
 
 ## Connect to your control plane
 
-Connect to your control plane with the `up ctx` command. With your kubeconfig still pointed at the Kubernetes cluster where you installed the Upbound Space, run the following:
+<!-- vale Upbound.Spelling = NO -->
+Connect to your control plane with the up ctx command. With your kubeconfig
+still pointed at the Kubernetes cluster where you installed the Upbound Space,
+run the following:
+<!-- vale Upbound.Spelling = YES -->
+
 
 ```bash
 up ctx ./default/ctp1
@@ -463,3 +485,4 @@ Learn how to use the up CLI to navigate around Upbound by reading the [up ctx co
 
 [up-ctx-command-reference]: /reference/cli-reference
 [contact-upbound]: https://www.upbound.io/contact-us
+[expose]: /manuals/spaces/howtos/self-hosted/ingress/
