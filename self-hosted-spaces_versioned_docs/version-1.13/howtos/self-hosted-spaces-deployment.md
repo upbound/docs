@@ -233,10 +233,10 @@ Make sure to replace the placeholder text in `SPACES_ROUTER_HOST` and provide a 
 
 ### Install cert-manager
 
-Install cert-manager.
+Install cert-manager. Replace `<version>` with the [latest release](https://github.com/cert-manager/cert-manager/releases).
 
 ```bash
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/<version>/cert-manager.yaml
 kubectl wait deployment -n cert-manager cert-manager-webhook --for condition=Available=True --timeout=360s
 ```
 

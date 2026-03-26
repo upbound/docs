@@ -14,8 +14,8 @@
       "label": "Concepts",
       "items": [
         "concepts/control-planes",
-        "concepts/deployment-modes",
-        "concepts/groups"
+        "concepts/groups",
+        "concepts/deployment-modes"
       ]
     },
     {
@@ -24,7 +24,6 @@
       "items": [
         "howtos/deployment-reqs",
         "howtos/self-hosted-spaces-deployment",
-        "howtos/managed-spaces-deployment",
         "howtos/certs",
         "howtos/proxies-config",
         "howtos/ingress",

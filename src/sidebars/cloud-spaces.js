@@ -10,8 +10,8 @@ module.exports = {
       label: 'Concepts',
       items: [
         'concepts/control-planes',
-        'concepts/deployment-modes',
         'concepts/groups',
+        'concepts/deployment-modes',
       ],
     },
     {

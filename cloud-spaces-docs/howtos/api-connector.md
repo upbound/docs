@@ -2,6 +2,7 @@
 title: API Connector
 weight: 90
 description: Connect Kubernetes clusters to remote Crossplane control planes for resource synchronization
+draft: true
 aliases:
     - /api-connector
     - /concepts/api-connector

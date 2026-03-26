@@ -8,7 +8,6 @@ Upbound Spaces can be deployed and used in a variety of modes:
 
 - **Cloud Spaces:** Multi-tenant Upbound-hosted, Upbound-managed Space environment. Cloud Spaces provide a typical SaaS experience. 
 - **[Dedicated Spaces][dedicated-spaces]:** Single-tenant Upbound-hosted, Upbound-managed Space environment. Dedicated Spaces provide a SaaS experience, with additional isolation guarantees that your workloads run in a fully isolated context.
-- **[Managed Spaces][managed-spaces]:** Single-tenant customer-hosted, Upbound-managed Space environment. Managed Spaces provide a SaaS-like experience, with additional guarantees of all hosting infrastructure being served from your own cloud account. 
 - **[Self-Hosted Spaces][self-hosted-spaces]:** Single-tenant customer-hosted, customer-managed Space environment. This is a fully self-hosted, self-managed software experience for using Spaces. Upbound delivers the Spaces software and you run it yourself. 
 
 The Upbound platform uses a federated model to connect each Space back to a
@@ -48,6 +47,5 @@ This table lists the cloud service provider regions supported by Upbound.
 | `us-east-1` | Eastern US (Iowa)
 
 [dedicated-spaces]: /cloud-spaces/howtos/dedicated-spaces-deployment
-[managed-spaces]: /self-hosted-spaces/howtos/managed-spaces-deployment
 [self-hosted-spaces]: /self-hosted-spaces/howtos/self-hosted-spaces-deployment
 [console]: /manuals/console/upbound-console/

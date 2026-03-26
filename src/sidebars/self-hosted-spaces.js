@@ -14,8 +14,8 @@ module.exports = {
       label: 'Concepts',
       items: [
         'concepts/control-planes',
-        'concepts/deployment-modes',
         'concepts/groups',
+        'concepts/deployment-modes',
       ],
     },
     {
@@ -24,7 +24,6 @@ module.exports = {
       items: [
         'howtos/self-hosted/deployment-reqs',
         'howtos/self-hosted/self-hosted-spaces-deployment',
-        'howtos/self-hosted/managed-spaces-deployment',
         'howtos/self-hosted/certs',
         'howtos/self-hosted/proxies-config',
         'howtos/self-hosted/attach-detach',

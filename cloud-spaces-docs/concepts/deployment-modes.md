@@ -6,7 +6,7 @@ description: Cloud Spaces deployment modes
 
 Upbound Cloud Spaces come in two deployment modes:
 
-- **Cloud Spaces:** Multi-tenant Upbound-hosted, Upbound-managed Space environment. Cloud Spaces provide a typical SaaS experience. All customers have access to Cloud Spaces by default.
+- **Cloud Spaces:** Multi-tenant Upbound-hosted, Upbound-managed Space environment. Cloud Spaces provide a typical SaaS experience. All customers have access to Cloud Spaces by default. You can connect control planes to resources in private networks using the [Private Network Agent][private-network-agent].
 - **[Dedicated Spaces][dedicated-spaces]:** Single-tenant Upbound-hosted, Upbound-managed Space environment. Dedicated Spaces provide a SaaS experience, with additional isolation guarantees that your workloads run in a fully isolated context.
 
 The Upbound platform uses a federated model to connect each Space back to a
@@ -14,9 +14,7 @@ central service called the [Upbound Console][console], which is deployed and
 managed by Upbound.
 
 :::info Looking for self-hosted options?
-For customer-hosted deployments, see the [Self-Hosted Spaces documentation](/cloud-spaces/concepts/deployment-modes/).
-Self-Hosted Spaces include Managed Spaces (Upbound-managed, customer-hosted) and
-Self-Hosted Spaces (customer-managed, customer-hosted).
+For customer-hosted deployments, see the [Self-Hosted Spaces documentation](/self-hosted-spaces/overview/).
 :::
 
 
@@ -77,3 +75,4 @@ This table lists the cloud service provider regions supported by Upbound.
 
 [dedicated-spaces]: /cloud-spaces/howtos/dedicated-spaces-deployment
 [console]: /manuals/console/upbound-console/
+[private-network-agent]: /cloud-spaces/howtos/private-network-agent

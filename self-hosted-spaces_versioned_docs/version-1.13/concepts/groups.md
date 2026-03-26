@@ -23,17 +23,25 @@ Every Cloud Space in Upbound has a group named _default_ available.
 
 ### View groups
 
-You can list groups in a Space using:
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="up-cli" label="up CLI">
 
 ```shell
 up group list
 ```
 
-If you're operating in a single-tenant Space and have access to the underlying cluster, you can list namespaces that have the group label:
+</TabItem>
+<TabItem value="kubectl" label="kubectl">
 
 ```shell
 kubectl get namespaces -l spaces.upbound.io/group=true
 ```
+
+</TabItem>
+</Tabs>
 
 ### Set the group for a request
 
