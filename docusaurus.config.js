@@ -213,7 +213,7 @@ const config = {
             algolia: {
                 appId: "4OZX85VEXQ",
                 apiKey: process.env.ALGOLIA_API_KEY || '',
-                indexName: "upbound-docs",
+                indexName: "upbound",
                 contextualSearch: true, 
                 searchPagePath: "search",
                 searchParameters: {},
