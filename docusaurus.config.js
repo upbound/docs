@@ -214,6 +214,7 @@ const config = {
                 appId: "4OZX85VEXQ",
                 apiKey: "9f96702edcf79d7097bedfce2813d49e",
                 indexName: "upbound",
+                askAi: "kcyXApvTL1T2",
                 contextualSearch: true,
                 searchPagePath: "search",
                 searchParameters: {},
