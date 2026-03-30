@@ -10,7 +10,7 @@ planes so you can focus on building your platform.
 There are two deployment options depending on where you want to run Spaces
 infrastructure:
 
-## Cloud Spaces
+## Upbound-hosted Spaces
 
 Upbound hosts and manages the Spaces infrastructure for you. Cloud Spaces come
 in two flavors:
@@ -24,15 +24,8 @@ maintain. See the [Cloud Spaces documentation](/cloud-spaces/overview/).
 
 ## Self-Hosted Spaces (you are here)
 
-You run the Spaces software on your own Kubernetes cluster. Self-Hosted Spaces
-come in two flavors:
-
-- **Self-Hosted Spaces** — You deploy and manage Spaces on your own cluster.
-- **Managed Spaces** — Upbound manages the Spaces software, but it runs on your
-  infrastructure.
-
-Use Self-Hosted Spaces if you need control over your infrastructure or data
-residency.
+You run the Spaces software on your own Kubernetes cluster. Use Self-Hosted
+Spaces if you need control over your infrastructure or data residency.
 
 ## Get Started with Self-Hosted Spaces
 
