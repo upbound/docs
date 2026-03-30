@@ -212,11 +212,12 @@ const config = {
             },
             algolia: {
                 appId: "4OZX85VEXQ",
-                apiKey: "9f96702edcf79d7097bedfce2813d49e",
+                apiKey: process.env.ALGOLIA_API_KEY || '',
                 indexName: "upbound",
-                contextualSearch: true,
+                contextualSearch: true, 
                 searchPagePath: "search",
                 searchParameters: {},
+                askAi: process.env.ALGOLIA_ASK_AI_KEY || '',
             },
             footer: {
                 style: "dark",
