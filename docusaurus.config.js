@@ -111,14 +111,14 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-             announcementBar: {
-                 id: "my_custom_banner",
-                 content:
-                     '<a href="https://www.upbound.io/events/kubecon-cloudnativecon-emea-amsterdam-2026" target="_blank" rel="noopener noreferrer">🎉 Visit us at KubeCon Amsterdam!</a>',
-                 backgroundColor: "#9b5efc",
-                 textColor: "#fff",
-                 isCloseable: true,
-             },
+        //   announcementBar: {
+        //       id: "my_custom_banner",
+        //       content:
+        //          '<a href="https://www.upbound.io/events/kubecon-cloudnativecon-emea-amsterdam-2026" target="_blank" rel="noopener noreferrer">🎉 Visit us at KubeCon Amsterdam!</a>',
+        //      backgroundColor: "#9b5efc",
+        //        textColor: "#fff",
+        //        isCloseable: true,
+        //    },
             head: [
                 [
                     "meta",
