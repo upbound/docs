@@ -217,7 +217,7 @@ const config = {
                 contextualSearch: true, 
                 searchPagePath: "search",
                 searchParameters: {},
-                algoliaAskAiKey: process.env.ALGOLIA_ASK_AI_KEY || '',
+                askAi: process.env.ALGOLIA_ASK_AI_KEY || '',
             },
             footer: {
                 style: "dark",
