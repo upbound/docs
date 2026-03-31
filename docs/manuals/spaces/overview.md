@@ -4,6 +4,12 @@ sidebar_label: Overview
 hide_title: true
 sidebar_position: 1
 description: Spaces are a host environment in Upbound for control planes-as-a-service
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - spaces
+    - overview
 ---
 # Overview
 

@@ -2,6 +2,17 @@
 title: License Management
 description: "Learn how to manage self-managed license for UXP"
 sidebar_position: 2
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+  timeout: 10m
+  tags:
+    - uxp
+    - licensing
 ---
 
 This guide explains how to manage licenses for Upbound Crossplane (UXP),

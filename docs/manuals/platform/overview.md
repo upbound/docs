@@ -4,6 +4,12 @@ sidebar_label: Overview
 hide_title: true
 sidebar_position: 1
 description: Overview of platform
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - platform
+    - overview
 ---
 
 # Overview

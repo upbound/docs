@@ -2,6 +2,17 @@
 title: Migrate Crossplane v1 Configurations to v2
 description: Migrate XRDs, compositions, and KCL functions from Crossplane v1 to v2 with namespaced resources
 sidebar_position: 4
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-docker
+  requires:
+    - up-cli
+    - docker
+  timeout: 20m
+  tags:
+    - upgrade
+    - migration
 ---
 
 This guide documents the migration from Crossplane v1 to v2 for configurations,

@@ -3,6 +3,12 @@ title: Query API
 sidebar_position: 40
 description: Use the `up` CLI to query objects and resources
 draft: true
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - uxp
+    - query-api
 ---
 
 <!-- vale write-good.TooWordy = NO -->

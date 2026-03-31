@@ -3,6 +3,12 @@ title: Web UI for Crossplane
 description: "Learn how to use the Crossplane Web UI"
 sidebar_position: 2
 draft: true
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - uxp
+    - web-ui
 ---
 
 The UXP Web UI is a local, read-only dashboard to inspect and review your

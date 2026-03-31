@@ -2,6 +2,18 @@
 title: Upgrade to Spaces
 sidebar_position: 3
 description: A guide to how to update to a control plane in an Upbound Space
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - up-cli
+    - upbound-account
+  timeout: 20m
+  tags:
+    - upgrade
+    - migration
+    - spaces
 ---
 
 The Upbound migration tool is a [CLI command][cli-command] that helps you update your existing Crossplane control plane to a managed [Upbound Crossplane][uxp] control plane in an [Upbound Space][spaces].

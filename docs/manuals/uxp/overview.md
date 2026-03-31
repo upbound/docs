@@ -4,6 +4,12 @@ sidebar_label: Overview
 hide_title: true
 sidebar_position: 1
 description: Upbound Crossplane is the AI-native distribution of Crossplane by Upbound
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - uxp
+    - overview
 ---
 
 # Overview

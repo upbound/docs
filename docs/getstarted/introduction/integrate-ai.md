@@ -10,6 +10,7 @@ validation:
     - kubectl
     - up-cli
     - docker
+    - anthropic-api-key
   timeout: 15m
   tags:
     - walkthrough

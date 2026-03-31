@@ -2,6 +2,12 @@
 title: Usage Metering
 description: "Learn how UXP does metering and usage"
 sidebar_position: 3
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - uxp
+    - metering
 ---
 
 Upbound Crossplane includes a usage metering system to track resource

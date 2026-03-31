@@ -2,6 +2,18 @@
 title: Deploy UXP
 description: "Learn best practices for UXP in your production environment"
 sidebar_position: 1
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - helm
+    - kubectl
+    - up-cli
+  timeout: 15m
+  tags:
+    - uxp
+    - deployment
 ---
 
 Upbound Crossplane requires a Kubernetes cluster. You can run Upbound Crossplane

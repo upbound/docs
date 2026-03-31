@@ -3,7 +3,7 @@ title: Analyze pod crashes
 validation:
   type: walkthrough
   owner: docs@upbound.io
-  environment: local-docker
+  environment: local-kind
   requires:
     - up-cli
     - docker

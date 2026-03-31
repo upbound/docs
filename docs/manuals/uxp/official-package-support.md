@@ -2,6 +2,12 @@
 title: Official Package support
 description: "Learn how to use the Official Packages on UXP"
 sidebar_position: 2
+validation:
+  type: reference
+  owner: docs@upbound.io
+  tags:
+    - uxp
+    - packages
 ---
 
 Upbound Crossplane supports running [Official Packages][official-packages]

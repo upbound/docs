@@ -2,6 +2,17 @@
 title: Upgrade Crossplane v2 to Upbound Crossplane
 description: Adopt Upbound Crossplane from OSS Crossplane
 sidebar_position: 2
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - helm
+  timeout: 20m
+  tags:
+    - upgrade
+    - uxp
 ---
 
 import VersionSelector from '@site/src/components/VersionSelector';

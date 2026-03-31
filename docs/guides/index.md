@@ -4,6 +4,12 @@ sidebar_position: 1
 sidebar_label: Overview
 description: Learn what Upbound Crossplane is and how it works
 hide_title: true
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - overview
+    - landing
 ---
 
 # Overview

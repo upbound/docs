@@ -2,6 +2,17 @@
 title: Vertical Pod Autoscaling
 description: "Enable VPA to manage your provider pod resources"
 plan: "standard"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - helm
+    - kubectl
+  timeout: 20m
+  tags:
+    - uxp
+    - vpa
 ---
 
 <Standard />

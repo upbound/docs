@@ -5,6 +5,16 @@ sidebar_position: 1
 description: Install Crossplane, interact with the Upbound Marketplace and Managed
   Control Planes with the Upbound Up CLI.
 hide_title: true
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local
+  requires:
+    - curl
+  timeout: 5m
+  tags:
+    - cli
+    - installation
 ---
 
 import Version from "@site/src/components/Version.js"

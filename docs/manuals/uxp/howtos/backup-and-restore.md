@@ -3,6 +3,16 @@ title: Backup and Restore
 description: "Learn how to use the built-in backup and restore controller"
 sidebar_position: 15
 plan: standard
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+  timeout: 15m
+  tags:
+    - uxp
+    - backup
 ---
 
 <Standard />

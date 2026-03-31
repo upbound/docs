@@ -2,6 +2,17 @@
 title: Function Scale-to-Zero
 description: "Enable the Knative function runtime to autoscale functions to zero"
 plan: "standard"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - helm
+    - kubectl
+  timeout: 20m
+  tags:
+    - uxp
+    - knative
 ---
 
 <Standard />

@@ -2,6 +2,12 @@
 title: Get Upbound
 sidebar_position: 1
 slug: "/getstarted"
+validation:
+  type: conceptual
+  owner: docs@upbound.io
+  tags:
+    - overview
+    - landing
 ---
 import { GetStarted } from '@site/src/components/GetStartedCallout';
 

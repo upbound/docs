@@ -2,6 +2,17 @@
 title: Simulate changes to your Control Plane Projects
 sidebar_position: 100
 description: Use the Up CLI to mock operations before deploying to your environments.
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: upbound-cloud
+  requires:
+    - up-cli
+    - upbound-account
+  timeout: 20m
+  tags:
+    - spaces
+    - simulations
 ---
 
 :::important

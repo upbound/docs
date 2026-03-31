@@ -2,6 +2,17 @@
 title: Official Package patch releases
 description: "Configure cluster access for Official Package patch releases"
 plan: "standard"
+validation:
+  type: walkthrough
+  owner: docs@upbound.io
+  environment: local-kind
+  requires:
+    - kubectl
+    - up-cli
+  timeout: 10m
+  tags:
+    - uxp
+    - packages
 ---
 
 <Standard />
