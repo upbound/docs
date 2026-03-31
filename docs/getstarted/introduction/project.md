@@ -89,19 +89,19 @@ up example generate \
     --api-group platform.example.com \
     --api-version v1alpha1 \
     --kind WebApp\
-    --name my-app \
+    --name webapp \
     --scope namespace \
     --namespace default
 ```
 
 Open the project in your IDE of choice and replace the contents of the generated file
-`getting-started/examples/webapp/my-app.yaml` with the following:
+`getting-started/examples/webapp/webapp.yaml` with the following:
 
-```yaml title="getting-started/examples/webapp/my-app.yaml"
+```yaml title="getting-started/examples/webapp/webapp.yaml"
 apiVersion: platform.example.com/v1alpha1
 kind: WebApp
 metadata:
-  name: my-app
+  name: webapp 
   namespace: default
 spec:
   parameters:
@@ -131,7 +131,7 @@ Next, generate the definition files needed by Crossplane with the following comm
 
 <TabItem value="gotempl" label="Go Templates">
 ```shell
-up xrd generate examples/webapp/my-app.yaml
+up xrd generate examples/webapp/webapp.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=go-templating compose-resources apis/webapps/composition.yaml
 up dependency add --api k8s:v1.33.0
@@ -139,7 +139,7 @@ up dependency add --api k8s:v1.33.0
 </TabItem>
 <TabItem value="Python" label="Python">
 ```shell
-up xrd generate examples/webapp/my-app.yaml
+up xrd generate examples/webapp/webapp.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=python compose-resources apis/webapps/composition.yaml
 up dependency add --api k8s:v1.33.0
@@ -147,7 +147,7 @@ up dependency add --api k8s:v1.33.0
 </TabItem>
 <TabItem value="Go" label="Go">
 ```shell
-up xrd generate examples/webapp/my-app.yaml
+up xrd generate examples/webapp/webapp.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=go compose-resources apis/webapps/composition.yaml
 up dependency add --api k8s:v1.33.0
@@ -155,7 +155,7 @@ up dependency add --api k8s:v1.33.0
 </TabItem>
 <TabItem value="KCL" label="KCL">
 ```shell
-up xrd generate examples/webapp/my-app.yaml
+up xrd generate examples/webapp/webapp.yaml
 up composition generate apis/webapps/definition.yaml
 up function generate --language=kcl compose-resources apis/webapps/composition.yaml
 up dependency add --api k8s:v1.33.0
@@ -185,6 +185,7 @@ following:
 <Tabs>
 
 <TabItem value="gotempl" label="Go Templates">
+
 ```yaml title="getting-started/functions/compose-resources/01-compose.yaml.gotmpl"
 # code: language=yaml
 # yaml-language-server: $schema=../../.up/json/models/index.schema.json
@@ -226,13 +227,15 @@ spec:
           protocol: TCP
         resources:
           requests:
-            memory: {{ .observed.composite.resource.spec.parameters.resources.requests.memory }}
-            cpu: {{ .observed.composite.resource.spec.parameters.resources.requests.cpu }}
+            memory: "64Mi"
+            cpu: "250m"
           limits:
-            memory: {{ .observed.composite.resource.spec.parameters.resources.limits.memory }}
-            cpu: {{ .observed.composite.resource.spec.parameters.resources.limits.cpu }}
+            memory: "1Gi"
+            cpu: "1"
       restartPolicy: Always
 status: {}
+# code: language=yaml
+# yaml-language-server: $schema=../../.up/json/models/index.schema.json
 
 {{ if .observed.composite.resource.spec.parameters.ingress.enabled }}
 ---
@@ -264,6 +267,8 @@ spec:
             port:
               number: 80
 {{ end }}
+# code: language=yaml
+# yaml-language-server: $schema=../../.up/json/models/index.schema.json
 
 {{ if .observed.composite.resource.spec.parameters.service.enabled }}
 ---
@@ -288,14 +293,18 @@ spec:
 status:
   loadBalancer: {}
 {{ end }}
+# code: language=yaml
+# yaml-language-server: $schema=../../.up/json/models/index.schema.json
 
 ---
 apiVersion: {{ .observed.composite.resource.apiVersion }}
 kind: {{ .observed.composite.resource.kind }}
 status:
   {{ with $deployment := getComposedResource . "deployment" }}
+  deploymentConditions: {{ $deployment.status.conditions | toJson }}
   availableReplicas: {{ $deployment.status.availableReplicas | default 0 }}
   {{ else }}
+  deploymentConditions: []
   availableReplicas: 0
   {{ end }}
   {{ with $ingress := getComposedResource . "ingress" }}
@@ -366,12 +375,12 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
                             ],
                             resources=corev1.ResourceRequirements(
                                 requests={
-                                    "memory": oxr.spec.parameters.resources.requests.memory,
-                                    "cpu": oxr.spec.parameters.resources.requests.cpu
+                                    "memory": "64Mi",
+                                    "cpu": "250m"
                                 },
                                 limits={
-                                    "memory": oxr.spec.parameters.resources.limits.memory,
-                                    "cpu": oxr.spec.parameters.resources.limits.cpu
+                                    "memory": "1Gi",
+                                    "cpu": "1"
                                 }
                             )
                         )
@@ -470,8 +479,21 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
     # Set status with defaults
     if "deployment" in ocds:
         observed_deployment = appsv1.Deployment(**ocds["deployment"].resource)
+        if observed_deployment.status and observed_deployment.status.conditions:
+            status.deploymentConditions = []
+            for condition in observed_deployment.status.conditions:
+                condition_dict = condition.model_dump(exclude_none=True)
+                # Convert datetime objects to ISO format strings
+                if 'lastTransitionTime' in condition_dict and condition_dict['lastTransitionTime']:
+                    condition_dict['lastTransitionTime'] = condition_dict['lastTransitionTime'].isoformat()
+                if 'lastUpdateTime' in condition_dict and condition_dict['lastUpdateTime']:
+                    condition_dict['lastUpdateTime'] = condition_dict['lastUpdateTime'].isoformat()
+                status.deploymentConditions.append(condition_dict)
+        else:
+            status.deploymentConditions = []
         status.availableReplicas = observed_deployment.status.availableReplicas if observed_deployment.status and observed_deployment.status.availableReplicas else 0
     else:
+        status.deploymentConditions = []
         status.availableReplicas = 0
 
     if "ingress" in ocds:
@@ -626,12 +648,12 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 						}},
 						Resources: &corev1.ResourceRequirements{
 							Requests: &map[string]resourcev1.Quantity{
-								"memory": *params.Resources.Requests.Memory,
-								"cpu":    *params.Resources.Requests.CPU,
+								"memory": "64Mi",
+								"cpu":    "250m",
 							},
 							Limits: &map[string]resourcev1.Quantity{
-								"memory": *params.Resources.Limits.Memory,
-								"cpu":    *params.Resources.Limits.CPU,
+								"memory": "1Gi",
+								"cpu":    "1",
 							},
 						},
 					}},
@@ -789,20 +811,47 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		var obsDeployment appsv1.Deployment
 		if err := convertViaJSON(&obsDeployment, observedDeployment.Resource); err == nil {
 			if obsDeployment.Status != nil {
+				if obsDeployment.Status.Conditions != nil {
+					deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
+					for _, c := range *obsDeployment.Status.Conditions {
+						condition := v1alpha1.WebAppStatusDeploymentConditionsItem{
+							Type:    c.Type,
+							Status:  c.Status,
+							Message: c.Message,
+							Reason:  c.Reason,
+						}
+						if c.LastUpdateTime != nil {
+							condition.LastUpdateTime = ptr.To(c.LastUpdateTime.String())
+						}
+						if c.LastTransitionTime != nil {
+							condition.LastTransitionTime = ptr.To(c.LastTransitionTime.String())
+						}
+						deploymentConditions = append(deploymentConditions, condition)
+					}
+					desiredWebApp.Status.DeploymentConditions = &deploymentConditions
+				} else {
+					// Set empty conditions if no conditions exist
+					deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
+					desiredWebApp.Status.DeploymentConditions = &deploymentConditions
+				}
 				if obsDeployment.Status.AvailableReplicas != nil {
-					desiredWebApp.Status.AvailableReplicas = ptr.To(float32(*obsDeployment.Status.AvailableReplicas))
+					desiredWebApp.Status.AvailableReplicas = ptr.To(int(*obsDeployment.Status.AvailableReplicas))
 				} else {
 					// Set default value when no available replicas
-					desiredWebApp.Status.AvailableReplicas = ptr.To(float32(0))
+					desiredWebApp.Status.AvailableReplicas = ptr.To(0)
 				}
 			} else {
 				// Set defaults when status is nil
-				desiredWebApp.Status.AvailableReplicas = ptr.To(float32(0))
+				deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
+				desiredWebApp.Status.DeploymentConditions = &deploymentConditions
+				desiredWebApp.Status.AvailableReplicas = ptr.To(0)
 			}
 		}
 	} else {
 		// Set defaults when deployment doesn't exist
-		desiredWebApp.Status.AvailableReplicas = ptr.To(float32(0))
+		deploymentConditions := []v1alpha1.WebAppStatusDeploymentConditionsItem{}
+		desiredWebApp.Status.DeploymentConditions = &deploymentConditions
+		desiredWebApp.Status.AvailableReplicas = ptr.To(0)
 	}
 
 	// Set ingress URL
@@ -852,6 +901,7 @@ func convertViaJSON(to, from any) error {
 	}
 	return json.Unmarshal(bs, to)
 }
+
 ```
 </TabItem>
 <TabItem value="KCL" label="KCL">
@@ -881,7 +931,7 @@ _desired_deployment = appsv1.Deployment{
         }
     }
     spec: {
-        replicas: int(oxr.spec.parameters.replicas)
+        replicas: oxr.spec.parameters.replicas
         selector: {
             matchLabels: {
                 "app.kubernetes.io/name": oxr.metadata.name
@@ -908,12 +958,12 @@ _desired_deployment = appsv1.Deployment{
                     }]
                     resources: {
                         requests: {
-                            memory: oxr.spec.parameters.resources.requests.memory
-                            cpu: oxr.spec.parameters.resources.requests.cpu
+                            memory: "64Mi"
+                            cpu: "250m"
                         }
                         limits: {
-                            memory: oxr.spec.parameters.resources.limits.memory
-                            cpu: oxr.spec.parameters.resources.limits.cpu
+                            memory: "1Gi"
+                            cpu: "1"
                         }
                     }
                 }]
@@ -991,6 +1041,7 @@ if observed_ingress?.status?.loadBalancer?.ingress?[0]?.hostname:
 
 _desired_xr = {
   **option("params").dxr
+  status.deploymentConditions = observed_deployment?.status?.conditions or []
   status.availableReplicas = observed_deployment?.status?.availableReplicas or 0
   status.url = observed_ingress?.status?.loadBalancer?.ingress?[0]?.hostname or ""
 }
@@ -1026,16 +1077,24 @@ control plane.
 Your control plane now understands _WebApp_ resources. Create a _WebApp_:
 
 ```shell
-kubectl apply -f examples/webapp/my-app.yaml
+kubectl apply -f examples/webapp/webapp.yaml
 ```
 
 
 Check that the _WebApp_ is ready:
 
+<!-- vale Google.Will = NO -->
+<!-- vale gitlab.FutureTense = NO -->
+:::note
+Resource and deployment names are auto-generated and will differ from the example outputs below.
+:::
+<!-- vale Google.Will = YES -->
+<!-- vale gitlab.FutureTense = YES -->
+
 ```shell {copy-lines="1"}
-kubectl get -f examples/webapp/my-app.yaml
+kubectl get -f examples/webapp/webapp.yaml
 NAME     SYNCED   READY   COMPOSITION   AGE
-my-app   True     True    app-yaml      56s
+webapp   True     True    app-yaml      56s
 ```
 
 Observe the _Deployment_ and _Service_ Crossplane created when you created the
@@ -1043,12 +1102,12 @@ _WebApp_:
 
 
 ```shell {copy-lines="1"}
-kubectl get deploy,service -l crossplane.io/composite=my-app
+kubectl get deploy,service -l crossplane.io/composite=webapp
 NAME                           READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/my-app-2r2rk   2/2     2            2           11m
+deployment.apps/webapp-2r2rk   2/2     2            2           11m
 
 NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
-service/my-app-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
+service/webapp-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 ```
 
 ## Next steps
