@@ -19,8 +19,8 @@ Any important warnings or necessary information
 ### Release Date: 2026-04-08
 
 #### What's Changed
-- Bumped Crossplane to [v2.1.4-up.3](https://github.com/upbound/crossplane/releases/tag/v2.1.4-up.3)
-- Added FunctionRunner payload size metrics ([upbound/crossplane#210](https://github.com/upbound/crossplane/pull/210))
+- Bumped Crossplane to v2.1.4-up.3
+- Added FunctionRunner payload size metrics
 
 ## v2.2.0-up.3
 
