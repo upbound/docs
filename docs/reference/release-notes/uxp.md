@@ -42,6 +42,14 @@ For most users nothing will change. But if you are setting different `args` in y
 - Updated controller-manager and apollo to latest versions
 - Reverted controller-manager bump
 
+## v2.0.7-up.3
+
+#### What's Changed
+- Added FunctionRunner payload size metrics
+- Fixed promote workflow
+- Fixed xpkg login in promote job
+- Fixed marketplace username in promote job
+
 ## v2.0.2-up.5
 
 #### What's Changed
