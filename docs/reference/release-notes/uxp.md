@@ -14,6 +14,17 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.2.0-up.4
+
+### Release Date: 2026-04-08
+
+#### What's Changed
+
+Based on Crossplane v2.2.0.
+
+- Added FunctionRunner payload size metrics
+- Updated WebUI to v1.1.2
+
 ## v2.2.0-up.3
 
 ### Breaking changes
