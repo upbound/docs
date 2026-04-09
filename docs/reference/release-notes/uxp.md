@@ -14,6 +14,14 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.1.4-up.3
+
+### Release Date: 2026-04-08
+
+#### What's Changed
+- Bumped Crossplane to v2.1.4-up.3
+- Added FunctionRunner payload size metrics
+
 ## v2.2.0-up.3
 
 ### Breaking changes
