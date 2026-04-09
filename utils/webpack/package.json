@@ -16,6 +16,6 @@
   "dependencies": {
     "@cfworker/json-schema": "^1.12.5",
     "flexsearch": "^0.7.31",
-    "lodash": "^4.17.23"
+    "lodash": "^4.18.1"
   }
 }
