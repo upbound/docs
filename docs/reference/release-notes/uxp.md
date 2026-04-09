@@ -25,6 +25,14 @@ Based on Crossplane v2.2.0.
 - Added FunctionRunner payload size metrics
 - Updated WebUI to v1.1.2
 
+## v2.1.4-up.3
+
+### Release Date: 2026-04-08
+
+#### What's Changed
+- Bumped Crossplane to v2.1.4-up.3
+- Added FunctionRunner payload size metrics
+
 ## v2.2.0-up.3
 
 ### Breaking changes
@@ -52,6 +60,14 @@ For most users nothing will change. But if you are setting different `args` in y
 - Bumped UXP to 2.1.0-up.1
 - Updated controller-manager and apollo to latest versions
 - Reverted controller-manager bump
+
+## v2.0.7-up.3
+
+#### What's Changed
+- Added FunctionRunner payload size metrics
+- Fixed promote workflow
+- Fixed xpkg login in promote job
+- Fixed marketplace username in promote job
 
 ## v2.0.2-up.5
 
