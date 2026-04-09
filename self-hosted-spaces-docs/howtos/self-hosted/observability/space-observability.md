@@ -4,7 +4,6 @@ sidebar_position: 30
 description: Configure Space-level observability
 ---
 
-
 :::important
 This feature is GA since `v1.14.0`, requires Spaces `v1.6.0`, and is off by default. To enable, set `observability.enabled=true` (`features.alpha.observability.enabled=true` before `v1.14.0`) when installing Spaces:
 
@@ -14,6 +13,64 @@ up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
   --set "observability.enabled=true" \
 ```
 :::
+
+
+The observability feature collects telemetry data from user-facing control
+plane workloads like:
+
+* Crossplane
+* Providers
+* Functions
+
+Self-hosted Spaces users can add control plane system workloads such as the
+`api-server`, `etcd` by setting the
+`observability.collectors.includeSystemTelemetry` Helm flag to true.
+
+### Sensitive data
+
+To avoid exposing sensitive data in the `SharedTelemetryConfig` resource, use
+Kubernetes secrets to store the sensitive data and reference the secret in the
+`SharedTelemetryConfig` resource.
+
+Create the secret in the same namespace/group as the `SharedTelemetryConfig`
+resource. The example below uses `kubectl create secret` to create a new secret:
+
+```bash
+kubectl create secret generic sensitive -n <STC_NAMESPACE>  \
+    --from-literal=apiKey='YOUR_API_KEY'
+```
+
+Next, reference the secret in the `SharedTelemetryConfig` resource:
+
+```yaml
+apiVersion: observability.spaces.upbound.io/v1alpha1
+kind: SharedTelemetryConfig
+metadata:
+  name: newrelic
+spec:
+  configPatchSecretRefs:
+    - name: sensitive
+      key: apiKey
+      path: exporters.otlphttp.headers.api-key
+  controlPlaneSelector:
+    labelSelectors:
+      - matchLabels:
+          org: foo
+  exporters:
+    otlphttp:
+      endpoint: https://otlp.nr-data.net
+      headers:
+        api-key: dummy # This value is replaced by the secret value, can be omitted
+  exportPipeline:
+    metrics: [otlphttp]
+    traces: [otlphttp]
+    logs: [otlphttp]
+```
+
+The `configPatchSecretRefs` field in the `spec` specifies the secret `name`,
+`key`, and `path` values to inject the secret value in the
+`SharedTelemetryConfig` resource.
+
 
 This guide explains how to configure Space-level observability. This feature is
 only applicable to self-hosted Space administrators. This lets Space
@@ -180,7 +237,6 @@ Span: ingress
 │  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
 │  └─ response_size: 1827
 ```
-|||||||| 3043afc1:docs/self-hosted-spaces/howtos/space-observability.md
 The router uses:
 
 - **Protocol**: OTLP (OpenTelemetry Protocol) over gRPC
@@ -257,10 +313,8 @@ Span: ingress
 │  ├─ controlplane.name: vcluster.mxp-b2b37aaa-ee55-492c-ba0c-4d561a6325fa-system
 │  └─ response_size: 1827
 ```
-========
 For detailed tracing configuration, custom tags, and example traces for each
 component, see the [distributed tracing documentation](tracing/overview.md).
->>>>>>>> upstream/main:spaces-docs/howtos/self-hosted/observability/space-observability.md
 
 ## Available metrics
 

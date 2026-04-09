@@ -5,6 +5,10 @@ description: A guide for how to configure synchronizing external secrets into co
   planes in a Space.
 ---
 
+:::important
+This feature is in **Preview**
+:::
+
 Upbound's _Shared Secrets_ is a built in secrets management feature that
 provides an integrated way to manage secrets across your platform. It allows you
 to store sensitive data like passwords and certificates for your managed control
@@ -35,6 +39,18 @@ secrets and effectively control their distribution.
 2. These rules automatically create corresponding resources in your control planes
 3. In each control plane, specific namespaces receive the secrets
 4. Changes at the group level automatically propagate through this chain
+
+## Enable shared Secrets
+
+To enable this feature in a self-hosted Space, set
+`features.alpha.sharedSecrets.enabled=true` when installing the Space:
+
+```bash
+up space init --token-file="${SPACES_TOKEN_PATH}" "v${SPACES_VERSION}" \
+  ...
+  --set "features.alpha.sharedSecrets.enabled=true" \
+```
+
 
 ## Component configuration 
 

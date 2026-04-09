@@ -3,6 +3,7 @@ title: Managed Spaces
 sidebar_position: 4
 description: A guide to Upbound Managed Spaces
 plan: business
+draft: true
 ---
 
 <Business />

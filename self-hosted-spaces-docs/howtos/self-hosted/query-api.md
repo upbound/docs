@@ -8,16 +8,11 @@ aliases:
     - all-spaces/self-hosted-spaces/query-api
 ---
 
-<!-- vale write-good.TooWordy = NO -->
-<!-- ignore "aggregate" -->
-
-
 :::important
 
 This feature is in preview. The Query API is available in the Cloud Space offering in `v1.6` and enabled by default.
 
 Since Spaces `v1.8.0`, you must enable Query API to connect a Space.
-
 Use this guide to enable Query API in your Space.
 :::
 

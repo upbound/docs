@@ -37,6 +37,26 @@ Example:
 up space mirror -v 1.15.2 --output-dir=/tmp/spaces-artifacts --token-file=upbound-token.json
 ```
 
+## Specify your internal registry
+
+When you install Upbound with Helm in a proxied environment, please update the specified registry with your internal registry.
+
+
+```bash
+helm -n upbound-system upgrade --install spaces \
+  oci://xpkg.upbound.io/spaces-artifacts/spaces \
+  --version "${SPACES_VERSION}" \
+  --set "ingress.host=${SPACES_ROUTER_HOST}" \
+  --set "account=${UPBOUND_ACCOUNT}" \
+  --set "authentication.hubIdentities=true" \
+  --set "authorization.hubRBAC=true" \
+  --set "registry=registry.company.corp/spaces" \
+  --set "controlPlanes.uxp.registryOverride=registry.company.corp/xpkg.upbound.io" \
+  --set "controlPlanes.uxp.repository=registry.company.corp/spaces" \
+  --wait
+```
+
+
 ## Mirror to a private registry
 
 To push artifacts to your own container registry:
