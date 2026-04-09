@@ -6,7 +6,7 @@ description: Enable and connect self-hosted Spaces to the Upbound console
 :::important
 This feature is in preview. Starting in Spaces `v1.8.0` and later, you must
 deploy and [enable the Query API][enable-the-query-api] and [enable Upbound
-RBAC][enable-upbound-rbac] to connect a Space to Upbound. 
+RBAC][enable-upbound-rbac] to connect a Space to Upbound.
 :::
 
 [Upbound][upbound] allows you to connect self-hosted Spaces and enables a streamlined operations and debugging experience in your Console.
@@ -63,31 +63,78 @@ Follow the [`jq` installation guide][jq-install] if your machine doesn't include
 it by default.
 :::
 
-Create a secret containing the robot token:
+Create a Kubernetes secret named `connect-token` with the key `token`:
 
 ```bash
 kubectl create secret -n upbound-system generic connect-token --from-literal=token=${UPBOUND_TOKEN}
 ```
 
-Specify your username and password for the helm OCI registry:
+Log in to the Helm OCI registry:
 
 ```bash
 jq -r .token $SPACES_TOKEN_PATH | helm registry login xpkg.upbound.io -u $(jq -r .accessId $SPACES_TOKEN_PATH) --password-stdin
 ```
 
-In the same cluster where you installed the Spaces software, install the Upbound connect agent with your token secret.
+On the cluster where Spaces runs, install the Connect agent:
 
 ```bash
 helm -n upbound-system upgrade --install agent \
   oci://xpkg.upbound.io/spaces-artifacts/agent \
-  --version "0.0.0-441.g68777b9" \
+  --version "0.0.0-700.ga01d949" \
   --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
   --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
-  --set "imagePullSecrets[0].name=upbound-pull-secret" \
   --set "registration.enabled=true" \
+  --set "imagePullSecrets[0].name=upbound-pull-secret" \
   --set "space=${UPBOUND_SPACE_NAME}" \
   --set "organization=${UPBOUND_ORG_NAME}" \
   --set "tokenSecret=connect-token" \
+  --wait
+```
+
+#### Use an HTTP proxy
+
+The Connect agent respects `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` for outbound traffic to Upbound. Set them on the agent with `extraEnv` and on the registration init container with `registration.extraEnv`.
+
+| Variable | Description |
+| --- | --- |
+| `HTTP_PROXY` | HTTP proxy URL |
+| `HTTPS_PROXY` | HTTPS proxy URL |
+| `NO_PROXY` | Comma-separated hosts that bypass the proxy |
+
+Example `agent-proxy-values.yaml`:
+
+```yaml
+extraEnv:
+  - name: HTTP_PROXY
+    value: "http://proxy.example.com:8080"
+  - name: HTTPS_PROXY
+    value: "http://proxy.example.com:8080"
+  - name: NO_PROXY
+    value: "10.0.0.0/8,.svc.cluster.local,localhost,127.0.0.1"
+registration:
+  extraEnv:
+    - name: HTTP_PROXY
+      value: "http://proxy.example.com:8080"
+    - name: HTTPS_PROXY
+      value: "http://proxy.example.com:8080"
+    - name: NO_PROXY
+      value: "10.0.0.0/8,.svc.cluster.local,localhost,127.0.0.1"
+```
+
+Install or upgrade using that file:
+
+```bash
+helm -n upbound-system upgrade --install agent \
+  oci://xpkg.upbound.io/spaces-artifacts/agent \
+  --version "0.0.0-700.ga01d949" \
+  --set "image.repository=xpkg.upbound.io/spaces-artifacts/agent" \
+  --set "registration.image.repository=xpkg.upbound.io/spaces-artifacts/register-init" \
+  --set "registration.enabled=true" \
+  --set "imagePullSecrets[0].name=upbound-pull-secret" \
+  --set "space=${UPBOUND_SPACE_NAME}" \
+  --set "organization=${UPBOUND_ORG_NAME}" \
+  --set "tokenSecret=connect-token" \
+  -f agent-proxy-values.yaml \
   --wait
 ```
 
@@ -172,7 +219,7 @@ Users interact with the Upbound Console to generate request queries to the Upbou
 
 :::important
 This data only concerns resource configuration. The data _inside_ the managed
-resource in your Space isn't visible at any point. 
+resource in your Space isn't visible at any point.
 :::
 
 **Upbound can't see your data.** Upbound doesn't have access to session-based data rendered for your users in the Upbound Console. Upbound has no information about your self-hosted Space, other than that you've connected a self-hosted Space.
