@@ -17,6 +17,11 @@ const config = {
             src: "https://cdn-cookieyes.com/client_data/401fea7900d8d7b84b9e7b40/script.js",
             id: "cookieyes",
         },
+        {
+            src: "/js/inline-docs.js",
+            id: "inline-docs",
+            defer: true,
+        },
     ],
     customFields: {
         apiUrl: process.env.UPBOUND_API_URL || 'https://api.upbound.io',
