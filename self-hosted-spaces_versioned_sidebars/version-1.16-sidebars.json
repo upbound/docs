@@ -14,8 +14,7 @@
       "label": "Concepts",
       "items": [
         "concepts/control-planes",
-        "concepts/groups",
-        "concepts/deployment-modes"
+        "concepts/groups"
       ]
     },
     {
@@ -25,7 +24,6 @@
         "howtos/deployment-reqs",
         "howtos/self-hosted-spaces-deployment",
         "howtos/certs",
-        "howtos/proxies-config",
         "howtos/ingress",
         "howtos/ingress-nginx-migration",
         "howtos/mirror-images",
@@ -37,7 +35,6 @@
       "label": "Configure",
       "items": [
         "howtos/configure-ha",
-        "howtos/administer-features",
         "howtos/oidc-configuration",
         "howtos/scaling-resources",
         "howtos/spaces-management"
