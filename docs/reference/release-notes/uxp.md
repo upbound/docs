@@ -14,6 +14,16 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.2.0-up.5
+
+### Release Date: 2026-04-10
+
+#### What's Changed
+
+Based on Crossplane v2.2.0.
+
+- Fixed internal version reporting that caused the `-up.x` suffix to be treated as a semver prerelease, which could cause package constraint checks (e.g. `>=v1.15.2`) to fail
+
 ## v2.2.0-up.4
 
 ### Release Date: 2026-04-08
