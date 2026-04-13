@@ -142,3 +142,5 @@ up project run --init-resources=imageconfig.yaml --extra-resources=providerconfi
 | `--cluster-admin` | | Allow Crossplane cluster admin privileges in the local dev control plane. Defaults to true. |
 | `--init-resources` | | Paths to additional resource manifests that should be applied before installing the project. |
 | `--extra-resources` | | Paths to additional resource manifests that should be applied after installing the project. |
+| `--set-helm-values` | | Set custom Crossplane helm chart values for the local dev control plane, specified as key=value pairs. |
+| `--helm-values` | | Path to a YAML file containing custom Crossplane helm chart values for the local dev control plane. |
