@@ -23,6 +23,32 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v0.47.0
+
+### Release Date: 2026-04-13
+
+##### What's Changed
+
+- Added `up ctp` addon install command for control planes
+- Added `up dep tree` and `up dep list` commands
+- Support custom helm values for local dev and test control planes
+- Support and preserve additional metadata in upbound.yaml
+
+##### Bug Fixes
+
+- Fixed re-generated v2 models as expected
+- Fixed runtime and json imports handling in schema generation
+- Fixed scale resources to be generic in Go schema generation
+
+
+## v0.46.0
+
+### Release Date: 2026-03-18
+
+##### What's Changed
+
+- Added input handling for XRD, composition for SimpleSchema and RGD, with tests in raw YAML
+
 ## v0.45.0
 
 ### Release Date: 2026-03-16
