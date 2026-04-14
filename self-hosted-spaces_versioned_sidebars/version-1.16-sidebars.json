@@ -97,8 +97,8 @@
       "type": "category",
       "label": "Data & Security",
       "items": [
-        "howtos/backup-and-restore",
         "howtos/dr",
+        "howtos/backup-and-restore",
         "howtos/secrets-management",
         {
           "type": "category",
