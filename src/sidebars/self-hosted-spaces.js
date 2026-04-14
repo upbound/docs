@@ -15,7 +15,6 @@ module.exports = {
       items: [
         'concepts/control-planes',
         'concepts/groups',
-        'concepts/deployment-modes',
       ],
     },
     {
@@ -25,7 +24,6 @@ module.exports = {
         'howtos/self-hosted/deployment-reqs',
         'howtos/self-hosted/self-hosted-spaces-deployment',
         'howtos/self-hosted/certs',
-        'howtos/self-hosted/proxies-config',
         'howtos/self-hosted/attach-detach',
         'howtos/self-hosted/query-api',
         'howtos/self-hosted/mirror-images',
@@ -36,7 +34,6 @@ module.exports = {
       label: 'Configure',
       items: [
         'howtos/self-hosted/configure-ha',
-        'howtos/self-hosted/administer-features',
         'howtos/self-hosted/hub-rbac',
         'howtos/self-hosted/oidc-configuration',
         'howtos/self-hosted/scaling-resources',
