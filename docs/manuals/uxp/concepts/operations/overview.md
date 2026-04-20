@@ -93,8 +93,7 @@ trying to use a composition-only function for operations.
 ## Common use cases
 
 :::note
-The following examples use hypothetical functions for illustration. At launch,
-only function-python supports operations.
+The following examples use hypothetical functions for illustration.
 :::
 
 ### Rolling upgrades
