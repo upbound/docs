@@ -14,6 +14,20 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.1.5-up.1
+
+### Release Date: 2026-04-20
+
+#### What's Changed
+
+Based on Crossplane v2.1.5.
+
+- Reset circuit breaker state on XR deletion
+- Support `ResourceSelector` with no match field
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting
+- Bumped Go to 1.25.9 and a range of dependencies (grpc, go-git, go-jose, cert-manager, containerd, helm, docker/cli, cloudflare/circl, sigstore/timestamp-authority, otel) for CVE remediation
+- Bumped `uxp-apollo` to 0.2.16 for a k8s.io/kubernetes CVE remediation
+
 ## v2.2.0-up.5
 
 ### Release Date: 2026-04-10
