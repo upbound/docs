@@ -1,5 +1,5 @@
 ---
-title: Overview 
+title: Overview
 sidebar_position: 1
 description: Managed resources are the Crossplane representation of external provider
   resources
@@ -23,7 +23,7 @@ Examples of managed resources include:
 ## Managed resource fields
 
 The Provider defines the group, kind and version of a managed resource. The
-Provider also define the available settings of a managed resource.
+Provider also defines the available settings of a managed resource.
 
 ### Group, kind and version
 Each managed resource is a unique API endpoint with their own
