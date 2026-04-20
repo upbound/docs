@@ -84,7 +84,7 @@ For more information about configurations and platform references, check out the
 [Configuration][configuration] documentation.
 
 ## Add external API dependencies
-In your `upbound.yaml` file, you can define to the external API you wish to reference in your project under `spec.apiDependencies` field.
+In your `upbound.yaml` file, you can define the external API you wish to reference in your project under the `spec.apiDependencies` field.
 
 The example below defines an external API dependency to the Kubernetes API and
 an arbitrary CRD living in a Git repository.
@@ -94,12 +94,12 @@ spec:
     apiDependencies:
     - k8s:
         version: v1.33.0
-    type: k8s
+      type: k8s
     - git:
         path: cluster/crds
         ref: release-1.20
         repository: https://github.com/crossplane/crossplane
-    type: crd
+      type: crd
 ```
 
 ## Manage dependency versions
