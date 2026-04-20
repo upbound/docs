@@ -1,7 +1,7 @@
 ---
 title: Add project dependencies 
 sidebar_position: 5
-description: The basic concepts to help you on your Upbound journey
+description: How to add providers, functions, and API dependencies to your control plane project
 ---
 
 This guide explains how to add cloud providers, functions and configurations as
