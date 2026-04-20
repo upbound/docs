@@ -1,5 +1,5 @@
 ---
-title: Overview 
+title: Overview
 sidebar_position: 1
 description: Understand Crossplane's Composition workflow
 ---
