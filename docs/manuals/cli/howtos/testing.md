@@ -7,7 +7,7 @@ description: How to run your control plane project on a development controlplane
 import CrdDocViewer from '@site/src/components/CrdViewer';
 
 Testing ensures your compositions and control planes work as expected, follow
-best practices, and meet your organizations requirements. You can run your
+best practices, and meet your organization's requirements. You can run your
 projects in a development control plane and author tests to verify specific
 capabilities in your project.
 
@@ -83,11 +83,7 @@ live environment. They simulate the composition controller's behavior, allowing
 you to test resource creation, dependencies, and state transitions with mock
 data.
 
-Composition tests validate composition logic without required a live
-environment. They simulate the composition controller's behavior, letting you
-test resource creation, dependencies, and state transitions with mock data.
-
-You can generate test with `up test generate` for composition tests.
+You can generate tests with `up test generate` for composition tests.
 You can write tests in KCL or Python.
 
 For example, to generate a composition test:
