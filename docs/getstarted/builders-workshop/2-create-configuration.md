@@ -62,13 +62,6 @@ up function generate example-function apis/storagebuckets/composition.yaml --lan
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=go
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -86,13 +79,6 @@ up function generate example-function apis/storagebuckets/composition.yaml --lan
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=go
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -110,13 +96,6 @@ up function generate example-function apis/storagebuckets/composition.yaml --lan
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```shell
-up function generate example-function apis/storagebuckets/composition.yaml --language=go
-```
-
-</CodeBlock> -->
 
 This command creates a function directory and creates a new file based on your
 chosen language.
@@ -374,212 +353,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-Paste the following into `fn.go`:
-
-```go title="upbound-hello-world/functions/example-function/fn.go"
-package main
-
-import (
-	"context"
-	"encoding/json"
-
-	"dev.upbound.io/models/com/example/platform/v1alpha1"
-	"dev.upbound.io/models/io/upbound/aws/s3/v1beta1"
-	"k8s.io/utils/ptr"
-
-	"github.com/crossplane/function-sdk-go/errors"
-	"github.com/crossplane/function-sdk-go/logging"
-	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
-	"github.com/crossplane/function-sdk-go/request"
-	"github.com/crossplane/function-sdk-go/resource"
-	"github.com/crossplane/function-sdk-go/resource/composed"
-	"github.com/crossplane/function-sdk-go/response"
-)
-
-// Function is your composition function.
-type Function struct {
-	fnv1.UnimplementedFunctionRunnerServiceServer
-
-	log logging.Logger
-}
-
-// RunFunction runs the Function.
-func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
-	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
-	rsp := response.To(req, response.DefaultTTL)
-
-	observedComposite, err := request.GetObservedCompositeResource(req)
-	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get xr"))
-		return rsp, nil
-	}
-
-	observedComposed, err := request.GetObservedComposedResources(req)
-	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get observed resources"))
-		return rsp, nil
-	}
-
-	var xr v1alpha1.StorageBucket
-	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
-		return rsp, nil
-	}
-
-	params := xr.Spec.Parameters
-	if ptr.Deref(params.Region, "") == "" {
-		response.Fatal(rsp, errors.Wrap(err, "missing region"))
-		return rsp, nil
-	}
-
-	/ We'll collect our desired composed resources into this map, then convert
-	/ them to the SDK's types and set them in the response when we return.
-	desiredComposed := make(map[resource.Name]any)
-	defer func() {
-		desiredComposedResources, err := request.GetDesiredComposedResources(req)
-		if err != nil {
-			response.Fatal(rsp, errors.Wrap(err, "cannot get desired resources"))
-			return
-		}
-
-		for name, obj := range desiredComposed {
-			c := composed.New()
-			if err := convertViaJSON(c, obj); err != nil {
-				response.Fatal(rsp, errors.Wrapf(err, "cannot convert %s to unstructured", name))
-				return
-			}
-			desiredComposedResources[name] = &resource.DesiredComposed{Resource: c}
-		}
-
-		if err := response.SetDesiredComposedResources(rsp, desiredComposedResources); err != nil {
-			response.Fatal(rsp, errors.Wrap(err, "cannot set desired resources"))
-			return
-		}
-	}()
-
-	bucket := &v1beta1.Bucket{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("Bucket"),
-		Spec: &v1beta1.BucketSpec{
-			ForProvider: &v1beta1.BucketSpecForProvider{
-				Region: params.Region,
-			},
-		},
-	}
-	desiredComposed["bucket"] = bucket
-
-	/ Return early if Crossplane hasn't observed the bucket yet. This means it
-	/ hasn't been created yet. This function will be called again after it is.
-	observedBucket, ok := observedComposed["bucket"]
-	if !ok {
-		response.Normal(rsp, "waiting for bucket to be created").TargetCompositeAndClaim()
-		return rsp, nil
-	}
-
-	/ The desired ACL, encryption, and versioning resources all need to refer
-	/ to the bucket by its external name, which is stored in its external name
-	/ annotation. Return early if the Bucket's external-name annotation isn't
-	/ set yet.
-	bucketExternalName := observedBucket.Resource.GetAnnotations()["crossplane.io/external-name"]
-	if bucketExternalName == "" {
-		response.Normal(rsp, "waiting for bucket to be created").TargetCompositeAndClaim()
-		return rsp, nil
-	}
-
-	acl := &v1beta1.BucketACL{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketACL"),
-		Spec: &v1beta1.BucketACLSpec{
-			ForProvider: &v1beta1.BucketACLSpecForProvider{
-				Bucket: &bucketExternalName,
-				Region: params.Region,
-				ACL:    params.ACL,
-			},
-		},
-	}
-	desiredComposed["acl"] = acl
-
-	boc := &v1beta1.BucketOwnershipControls{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketOwnershipControls"),
-		Spec: &v1beta1.BucketOwnershipControlsSpec{
-			ForProvider: &v1beta1.BucketOwnershipControlsSpecForProvider{
-				Bucket: &bucketExternalName,
-				Region: params.Region,
-				Rule: &[]v1beta1.BucketOwnershipControlsSpecForProviderRule{{
-					ObjectOwnership: ptr.To("BucketOwnerPreferred"),
-				}},
-			},
-		},
-	}
-	desiredComposed["boc"] = boc
-
-	pab := &v1beta1.BucketPublicAccessBlock{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketPublicAccessBlock"),
-		Spec: &v1beta1.BucketPublicAccessBlockSpec{
-			ForProvider: &v1beta1.BucketPublicAccessBlockSpecForProvider{
-				Bucket:                &bucketExternalName,
-				Region:                params.Region,
-				BlockPublicAcls:       ptr.To(false),
-				RestrictPublicBuckets: ptr.To(false),
-				IgnorePublicAcls:      ptr.To(false),
-				BlockPublicPolicy:     ptr.To(false),
-			},
-		},
-	}
-	desiredComposed["pab"] = pab
-
-	sse := &v1beta1.BucketServerSideEncryptionConfiguration{
-		APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketServerSideEncryptionConfiguration"),
-		Spec: &v1beta1.BucketServerSideEncryptionConfigurationSpec{
-			ForProvider: &v1beta1.BucketServerSideEncryptionConfigurationSpecForProvider{
-				Bucket: &bucketExternalName,
-				Region: params.Region,
-				Rule: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRule{{
-					ApplyServerSideEncryptionByDefault: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRuleApplyServerSideEncryptionByDefault{{
-						SseAlgorithm: ptr.To("AES256"),
-					}},
-					BucketKeyEnabled: ptr.To(true),
-				}},
-			},
-		},
-	}
-	desiredComposed["sse"] = sse
-
-	if ptr.Deref(params.Versioning, false) {
-		versioning := &v1beta1.BucketVersioning{
-			APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-			Kind:       ptr.To("BucketVersioning"),
-			Spec: &v1beta1.BucketVersioningSpec{
-				ForProvider: &v1beta1.BucketVersioningSpecForProvider{
-					Bucket: &bucketExternalName,
-					Region: params.Region,
-					VersioningConfiguration: &[]v1beta1.BucketVersioningSpecForProviderVersioningConfiguration{{
-						Status: ptr.To("Enabled"),
-					}},
-				},
-			},
-		}
-		desiredComposed["versioning"] = versioning
-	}
-
-	return rsp, nil
-}
-
-func convertViaJSON(to, from any) error {
-	bs, err := json.Marshal(from)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(bs, to)
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -754,181 +527,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-Paste the following into `fn.go`:
-
-```go title="upbound-hello-world/functions/example-function/fn.go"
-package main
-
-import (
-	"context"
-	"encoding/json"
-	"strings"
-
-	"dev.upbound.io/models/com/example/platform/v1alpha1"
-	metav1 "dev.upbound.io/models/io/k8s/meta/v1"
-	storagev1beta1 "dev.upbound.io/models/io/upbound/azure/storage/v1beta1"
-	azv1beta1 "dev.upbound.io/models/io/upbound/azure/v1beta1"
-	"k8s.io/utils/ptr"
-
-	"github.com/crossplane/function-sdk-go/errors"
-	"github.com/crossplane/function-sdk-go/logging"
-	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
-	"github.com/crossplane/function-sdk-go/request"
-	"github.com/crossplane/function-sdk-go/resource"
-	"github.com/crossplane/function-sdk-go/resource/composed"
-	"github.com/crossplane/function-sdk-go/response"
-)
-
-// Function is your composition function.
-type Function struct {
-	fnv1.UnimplementedFunctionRunnerServiceServer
-
-	log logging.Logger
-}
-
-// RunFunction runs the Function.
-func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
-	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
-	rsp := response.To(req, response.DefaultTTL)
-
-	observedComposite, err := request.GetObservedCompositeResource(req)
-	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get xr"))
-		return rsp, nil
-	}
-
-	observedComposed, err := request.GetObservedComposedResources(req)
-	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get observed resources"))
-		return rsp, nil
-	}
-
-	var xr v1alpha1.StorageBucket
-	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
-		return rsp, nil
-	}
-
-	params := xr.Spec.Parameters
-	if ptr.Deref(params.Location, "") == "" {
-		response.Fatal(rsp, errors.Wrap(err, "missing location"))
-		return rsp, nil
-	}
-
-	/ We'll collect our desired composed resources into this map, then convert
-	/ them to the SDK's types and set them in the response when we return.
-	desiredComposed := make(map[resource.Name]any)
-	defer func() {
-		desiredComposedResources, err := request.GetDesiredComposedResources(req)
-		if err != nil {
-			response.Fatal(rsp, errors.Wrap(err, "cannot get desired resources"))
-			return
-		}
-
-		for name, obj := range desiredComposed {
-			c := composed.New()
-			if err := convertViaJSON(c, obj); err != nil {
-				response.Fatal(rsp, errors.Wrapf(err, "cannot convert %s to unstructured", name))
-				return
-			}
-			desiredComposedResources[name] = &resource.DesiredComposed{Resource: c}
-		}
-
-		if err := response.SetDesiredComposedResources(rsp, desiredComposedResources); err != nil {
-			response.Fatal(rsp, errors.Wrap(err, "cannot set desired resources"))
-			return
-		}
-	}()
-
-	resourceGroup := &azv1beta1.ResourceGroup{
-		APIVersion: ptr.To("azure.upbound.io/v1beta1"),
-		Kind:       ptr.To("ResourceGroup"),
-		Spec: &azv1beta1.ResourceGroupSpec{
-			ForProvider: &azv1beta1.ResourceGroupSpecForProvider{
-				Location: params.Location,
-			},
-		},
-	}
-	desiredComposed["rg"] = resourceGroup
-
-	/ Return early if Crossplane hasn't observed the resource group yet. This
-	/ means it hasn't been created yet. This function will be called again
-	/ after it is.
-	observedResourceGroup, ok := observedComposed["rg"]
-	if !ok {
-		response.Normal(rsp, "waiting for resource group to be created").TargetCompositeAndClaim()
-		return rsp, nil
-	}
-
-	/ The desired account needs to refer to the resource group by its external
-	/ name, which is stored in its external name annotation. Return early if
-	/ the ResourceGroup's external-name annotation isn't set yet.
-	rgExternalName := observedResourceGroup.Resource.GetAnnotations()["crossplane.io/external-name"]
-	if rgExternalName == "" {
-		response.Normal(rsp, "waiting for resource group to be created").TargetCompositeAndClaim()
-		return rsp, nil
-	}
-
-	/ Storage account names must be 3-24 character, lowercase alphanumeric
-	/ strings that are globally unique within Azure. We try to generate a valid
-	/ one automatically by deriving it from the XR name, which should always be
-	/ alphanumeric, lowercase, and separated by hyphens.
-	acctExternalName := strings.ReplaceAll(*xr.Metadata.Name, "-", "")
-
-	acct := &storagev1beta1.Account{
-		APIVersion: ptr.To("storage.azure.upbound.io/v1beta1"),
-		Kind:       ptr.To("Account"),
-		Metadata: &metav1.ObjectMeta{
-			Annotations: &map[string]string{
-				"crossplane.io/external-name": acctExternalName,
-			},
-		},
-		Spec: &storagev1beta1.AccountSpec{
-			ForProvider: &storagev1beta1.AccountSpecForProvider{
-				ResourceGroupName:               &rgExternalName,
-				AccountTier:                     ptr.To("Standard"),
-				AccountReplicationType:          ptr.To("LRS"),
-				Location:                        params.Location,
-				InfrastructureEncryptionEnabled: ptr.To(true),
-				BlobProperties: &[]storagev1beta1.AccountSpecForProviderBlobPropertiesItem{{
-					VersioningEnabled: params.Versioning,
-				}},
-			},
-		},
-	}
-	desiredComposed["acct"] = acct
-
-	cont := &storagev1beta1.Container{
-		APIVersion: ptr.To("storage.azure.upbound.io/v1beta1"),
-		Kind:       ptr.To("Container"),
-		Spec: &storagev1beta1.ContainerSpec{
-			ForProvider: &storagev1beta1.ContainerSpecForProvider{
-				StorageAccountName: &acctExternalName,
-			},
-		},
-	}
-	if ptr.Deref(params.ACL, "") == "public" {
-		cont.Spec.ForProvider.ContainerAccessType = ptr.To("blob")
-	} else {
-		cont.Spec.ForProvider.ContainerAccessType = ptr.To("private")
-	}
-	desiredComposed["cont"] = cont
-
-	return rsp, nil
-}
-
-func convertViaJSON(to, from any) error {
-	bs, err := json.Marshal(from)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(bs, to)
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -1039,147 +637,6 @@ def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-Paste the following into `fn.go`:
-
-```go title="upbound-hello-world/functions/example-function/fn.go"
-package main
-
-import (
-	"context"
-	"encoding/json"
-
-	"dev.upbound.io/models/com/example/platform/v1alpha1"
-	"dev.upbound.io/models/io/upbound/gcp/storage/v1beta1"
-	"k8s.io/utils/ptr"
-
-	"github.com/crossplane/function-sdk-go/errors"
-	"github.com/crossplane/function-sdk-go/logging"
-	fnv1 "github.com/crossplane/function-sdk-go/proto/v1"
-	"github.com/crossplane/function-sdk-go/request"
-	"github.com/crossplane/function-sdk-go/resource"
-	"github.com/crossplane/function-sdk-go/resource/composed"
-	"github.com/crossplane/function-sdk-go/response"
-)
-
-// Function is your composition function.
-type Function struct {
-	fnv1.UnimplementedFunctionRunnerServiceServer
-
-	log logging.Logger
-}
-
-// RunFunction runs the Function.
-func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) (*fnv1.RunFunctionResponse, error) {
-	f.log.Info("Running function", "tag", req.GetMeta().GetTag())
-	rsp := response.To(req, response.DefaultTTL)
-
-	observedComposite, err := request.GetObservedCompositeResource(req)
-	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get xr"))
-		return rsp, nil
-	}
-
-	observedComposed, err := request.GetObservedComposedResources(req)
-	if err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot get observed resources"))
-		return rsp, nil
-	}
-
-	var xr v1alpha1.StorageBucket
-	if err := convertViaJSON(&xr, observedComposite.Resource); err != nil {
-		response.Fatal(rsp, errors.Wrap(err, "cannot convert xr"))
-		return rsp, nil
-	}
-
-	params := xr.Spec.Parameters
-	if ptr.Deref(params.Location, "") == "" {
-		response.Fatal(rsp, errors.Wrap(err, "missing location"))
-		return rsp, nil
-	}
-
-	/ We'll collect our desired composed resources into this map, then convert
-	/ them to the SDK's types and set them in the response when we return.
-	desiredComposed := make(map[resource.Name]any)
-	defer func() {
-		desiredComposedResources, err := request.GetDesiredComposedResources(req)
-		if err != nil {
-			response.Fatal(rsp, errors.Wrap(err, "cannot get desired resources"))
-			return
-		}
-
-		for name, obj := range desiredComposed {
-			c := composed.New()
-			if err := convertViaJSON(c, obj); err != nil {
-				response.Fatal(rsp, errors.Wrapf(err, "cannot convert %s to unstructured", name))
-				return
-			}
-			desiredComposedResources[name] = &resource.DesiredComposed{Resource: c}
-		}
-
-		if err := response.SetDesiredComposedResources(rsp, desiredComposedResources); err != nil {
-			response.Fatal(rsp, errors.Wrap(err, "cannot set desired resources"))
-			return
-		}
-	}()
-
-	bucket := &v1beta1.Bucket{
-		APIVersion: ptr.To("storage.gcp.upbound.io/v1beta1"),
-		Kind:       ptr.To("Bucket"),
-		Spec: &v1beta1.BucketSpec{
-			ForProvider: &v1beta1.BucketSpecForProvider{
-				Location: params.Location,
-				Versioning: &[]v1beta1.BucketSpecForProviderVersioningItem{{
-					Enabled: params.Versioning,
-				}},
-			},
-		},
-	}
-	desiredComposed["bucket"] = bucket
-
-	/ Return early if Crossplane hasn't observed the bucket yet. This means it
-	/ hasn't been created yet. This function will be called again after it is.
-	observedBucket, ok := observedComposed["bucket"]
-	if !ok {
-		response.Normal(rsp, "waiting for bucket to be created").TargetCompositeAndClaim()
-		return rsp, nil
-	}
-
-	/ The desired ACL needs to refer to the bucket by its external name, which
-	/ is stored in its external name annotation. Return early if the Bucket's
-	/ external-name annotation isn't set yet.
-	bucketExternalName := observedBucket.Resource.GetAnnotations()["crossplane.io/external-name"]
-	if bucketExternalName == "" {
-		response.Normal(rsp, "waiting for bucket to be created").TargetCompositeAndClaim()
-		return rsp, nil
-	}
-
-	acl := &v1beta1.BucketACL{
-		APIVersion: ptr.To("storage.gcp.upbound.io/v1beta1"),
-		Kind:       ptr.To("BucketACL"),
-		Spec: &v1beta1.BucketACLSpec{
-			ForProvider: &v1beta1.BucketACLSpecForProvider{
-				Bucket:        &bucketExternalName,
-				PredefinedACL: params.ACL,
-			},
-		},
-	}
-	desiredComposed["acl"] = acl
-
-	return rsp, nil
-}
-
-func convertViaJSON(to, from any) error {
-	bs, err := json.Marshal(from)
-	if err != nil {
-		return err
-	}
-	return json.Unmarshal(bs, to)
-}
-```
-
-</CodeBlock> -->
 
 Save your composition file.
 
@@ -1230,32 +687,6 @@ This section:
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-package main
-
-import (
-    "fmt"
-    "context"
-)
-
-type BucketParams struct {
-    Region string `json:"region"`
-    Name   string `json:"name"`
-}
-
-func createBucketLogic(oxr *CompositeResource) (*BucketParams, error) {
-    bucketName := fmt.Sprintf("%s-bucket", oxr.Metadata.Name)
-    
-    return &BucketParams{
-        Region: oxr.Spec.Parameters.Region,
-        Name:   bucketName,
-    }, nil
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -1304,32 +735,6 @@ This section:
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-package main
-
-import (
-    "fmt"
-    "context"
-)
-
-type StorageParams struct {
-    Location string `json:"location"`
-    Name     string `json:"name"`
-}
-
-func createStorageLogic(oxr *CompositeResource) (*StorageParams, error) {
-    accountName := fmt.Sprintf("%s-storage", oxr.Metadata.Name)
-    
-    return &StorageParams{
-        Location: oxr.Spec.Parameters.Location,
-        Name:     accountName,
-    }, nil
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -1368,33 +773,6 @@ This section:
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-package main
-
-import (
-    "fmt"
-    "context"
-    "cloud.google.com/go/storage"
-)
-
-type GCPBucketParams struct {
-    Location string `json:"location"`
-    Name     string `json:"name"`
-}
-
-func createGCPBucketLogic(oxr *CompositeResource) (*GCPBucketParams, error) {
-    bucketName := fmt.Sprintf("%s-bucket", oxr.Metadata.Name)
-    
-    return &GCPBucketParams{
-        Location: oxr.Spec.Parameters.Location,
-        Name:     bucketName,
-    }, nil
-}
-```
-
-</CodeBlock> -->
 
 ### Metadata and helper functions
 
@@ -1432,20 +810,6 @@ def default_metadata(name):
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-func createMetadata(name string) map[string]interface{} {
-    return map[string]interface{}{
-        "name": name,
-        "annotations": map[string]string{
-            "krm.kcl.dev/composition-resource-name": name,
-        },
-    }
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -1511,20 +875,6 @@ def sanitize_azure_storage_account_name(account_name):
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-func createMetadata(name string) map[string]interface{} {
-    return map[string]interface{}{
-        "name": name,
-        "annotations": map[string]string{
-            "krm.kcl.dev/composition-resource-name": name,
-        },
-    }
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -1555,20 +905,6 @@ def default_metadata(name):
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-func createMetadata(name string) map[string]interface{} {
-    return map[string]interface{}{
-        "name": name,
-        "annotations": map[string]string{
-            "krm.kcl.dev/composition-resource-name": name,
-        },
-    }
-}
-```
-
-</CodeBlock> -->
 
 This section:
 
@@ -1612,24 +948,6 @@ resource.update(rsp.desired.resources["bucket"], desired_bucket)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-func createS3Bucket(bucketName, region string) map[string]interface{} {
-    return map[string]interface{}{
-        "apiVersion": "s3.aws.upbound.io/v1beta1",
-        "kind":       "Bucket",
-        "metadata":   createMetadata(bucketName),
-        "spec": map[string]interface{}{
-            "forProvider": map[string]interface{}{
-                "region": region,
-            },
-        },
-    }
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -1678,27 +996,6 @@ resource.update(rsp.desired.resources["account"], desired_acct)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-func createStorageAccount(accountName, location, resourceGroup string) map[string]interface{} {
-    return map[string]interface{}{
-        "apiVersion": "storage.azure.upbound.io/v1beta1",
-        "kind":       "Account",
-        "metadata":   createMetadata(accountName),
-        "spec": map[string]interface{}{
-            "forProvider": map[string]interface{}{
-                "location":               location,
-                "resourceGroupName":      resourceGroup,
-                "accountTier":           "Standard",
-                "accountReplicationType": "LRS",
-            },
-        },
-    }
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -1739,25 +1036,6 @@ resource.update(rsp.desired.resources["bucket"], desired_bucket)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-func createGCSBucket(bucketName, location, project string) map[string]interface{} {
-    return map[string]interface{}{
-        "apiVersion": "storage.gcp.upbound.io/v1beta1",
-        "kind":       "Bucket",
-        "metadata":   createMetadata(bucketName),
-        "spec": map[string]interface{}{
-            "forProvider": map[string]interface{}{
-                "location": location,
-                "project":  project,
-            },
-        },
-    }
-}
-```
-
-</CodeBlock> -->
 
 This section:
 
@@ -1843,43 +1121,6 @@ resource.update(rsp.desired.resources["pab"], desired_pab)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-boc := &v1beta1.BucketOwnershipControls{
-    APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-    Kind:       ptr.To("BucketOwnershipControls"),
-    Spec: &v1beta1.BucketOwnershipControlsSpec{
-        ForProvider: &v1beta1.BucketOwnershipControlsSpecForProvider{
-            Bucket: &bucketExternalName,
-            Region: params.Region,
-            Rule: &[]v1beta1.BucketOwnershipControlsSpecForProviderRule{{
-                ObjectOwnership: ptr.To("BucketOwnerPreferred"),
-            }},
-        },
-    },
-}
-desiredComposed["boc"] = boc
-
-pab := &v1beta1.BucketPublicAccessBlock{
-    APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-    Kind:       ptr.To("BucketPublicAccessBlock"),
-    Spec: &v1beta1.BucketPublicAccessBlockSpec{
-        ForProvider: &v1beta1.BucketPublicAccessBlockSpecForProvider{
-            Bucket:                &bucketExternalName,
-            Region:                params.Region,
-            BlockPublicAcls:       ptr.To(false),
-            RestrictPublicBuckets: ptr.To(false),
-            IgnorePublicAcls:      ptr.To(false),
-            BlockPublicPolicy:     ptr.To(false),
-        },
-    },
-}
-desiredComposed["pab"] = pab
-
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -1922,14 +1163,6 @@ resource.update(rsp.desired.resources["account"], desired_acct)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-// Security is configured in the storage account
-InfrastructureEncryptionEnabled: ptr.To(true),
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -1947,13 +1180,6 @@ InfrastructureEncryptionEnabled: ptr.To(true),
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-# GCP buckets have default encryption enabled automatically
-```
-
-</CodeBlock> -->
 
 
 This section:
@@ -2042,42 +1268,6 @@ resource.update(rsp.desired.resources["sse"], desired_sse)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-acl := &v1beta1.BucketACL{
-    APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-    Kind:       ptr.To("BucketACL"),
-    Spec: &v1beta1.BucketACLSpec{
-        ForProvider: &v1beta1.BucketACLSpecForProvider{
-            Bucket: &bucketExternalName,
-            Region: params.Region,
-            ACL:    params.ACL,
-        },
-    },
-}
-desiredComposed["acl"] = acl
-
-sse := &v1beta1.BucketServerSideEncryptionConfiguration{
-    APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-    Kind:       ptr.To("BucketServerSideEncryptionConfiguration"),
-    Spec: &v1beta1.BucketServerSideEncryptionConfigurationSpec{
-        ForProvider: &v1beta1.BucketServerSideEncryptionConfigurationSpecForProvider{
-            Bucket: &bucketExternalName,
-            Region: params.Region,
-            Rule: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRule{{
-                ApplyServerSideEncryptionByDefault: &[]v1beta1.BucketServerSideEncryptionConfigurationSpecForProviderRuleApplyServerSideEncryptionByDefault{{
-                    SseAlgorithm: ptr.To("AES256"),
-                }},
-                BucketKeyEnabled: ptr.To(true),
-            }},
-        },
-    },
-}
-desiredComposed["sse"] = sse
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -2116,27 +1306,6 @@ resource.update(rsp.desired.resources["container"], desired_cont)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-cont := &storagev1beta1.Container{
-    APIVersion: ptr.To("storage.azure.upbound.io/v1beta1"),
-    Kind:       ptr.To("Container"),
-    Spec: &storagev1beta1.ContainerSpec{
-        ForProvider: &storagev1beta1.ContainerSpecForProvider{
-            StorageAccountName: &acctExternalName,
-        },
-    },
-}
-if ptr.Deref(params.ACL, "") == "public" {
-    cont.Spec.ForProvider.ContainerAccessType = ptr.To("blob")
-} else {
-    cont.Spec.ForProvider.ContainerAccessType = ptr.To("private")
-}
-desiredComposed["cont"] = cont
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -2173,23 +1342,6 @@ resource.update(rsp.desired.resources["acl"], desired_acl)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-acl := &v1beta1.BucketACL{
-    APIVersion: ptr.To("storage.gcp.upbound.io/v1beta1"),
-    Kind:       ptr.To("BucketACL"),
-    Spec: &v1beta1.BucketACLSpec{
-        ForProvider: &v1beta1.BucketACLSpecForProvider{
-            Bucket:        &bucketExternalName,
-            PredefinedACL: params.ACL,
-        },
-    },
-}
-desiredComposed["acl"] = acl
-```
-
-</CodeBlock> -->
 
 
 This section:
@@ -2247,31 +1399,6 @@ if params.versioning:
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="aws" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-if ptr.Deref(params.Versioning, false) {
-		versioning := &v1beta1.BucketVersioning{
-			APIVersion: ptr.To("s3.aws.upbound.io/v1beta1"),
-			Kind:       ptr.To("BucketVersioning"),
-			Spec: &v1beta1.BucketVersioningSpec{
-				ForProvider: &v1beta1.BucketVersioningSpecForProvider{
-					Bucket: &bucketExternalName,
-					Region: params.Region,
-					VersioningConfiguration: &[]v1beta1.BucketVersioningSpecForProviderVersioningConfiguration{{
-						Status: ptr.To("Enabled"),
-					}},
-				},
-			},
-		}
-		desiredComposed["versioning"] = versioning
-	}
-
-	return rsp, nil
-}
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="azure" language="kcl">
 
@@ -2314,16 +1441,6 @@ resource.update(rsp.desired.resources["account"], desired_acct)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="azure" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-// Versioning is configured in the storage account
-BlobProperties: &[]storagev1beta1.AccountSpecForProviderBlobPropertiesItem{{
-    VersioningEnabled: params.Versioning,
-}},
-```
-
-</CodeBlock> -->
 
 <CodeBlock cloud="gcp" language="kcl">
 
@@ -2364,25 +1481,6 @@ resource.update(rsp.desired.resources["bucket"], desired_bucket)
 
 </CodeBlock>
 
-<!-- <CodeBlock cloud="gcp" language="go">
-
-```go-noCopy title="upbound-hello-world/functions/example-function/fn.go"
-// Versioning is configured in the bucket spec
-bucket := &v1beta1.Bucket{
-    APIVersion: ptr.To("storage.gcp.upbound.io/v1beta1"),
-    Kind:       ptr.To("Bucket"),
-    Spec: &v1beta1.BucketSpec{
-        ForProvider: &v1beta1.BucketSpecForProvider{
-            Location: params.Location,
-            Versioning: &[]v1beta1.BucketSpecForProviderVersioningItem{{
-                Enabled: params.Versioning,
-            }},
-        },
-    },
-}
-```
-
-</CodeBlock> -->
 
 
 This section:
