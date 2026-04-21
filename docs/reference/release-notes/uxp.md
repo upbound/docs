@@ -14,6 +14,32 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.2.1-up.1
+
+### Release Date: 2026-04-21
+
+#### What's Changed
+
+Based on Crossplane v2.2.1.
+
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting — packages installed via a prefix rewrite are now upgraded when their dependencies change
+- Support `ResourceSelector` with no match field — a selector with only `apiVersion` and `kind` set is now interpreted as "all resources of that kind" instead of being rejected
+- Bumped Go to 1.25.9 and a range of dependencies (grpc, go-jose, cosign, go-git, cert-manager, containerd, helm, docker/cli, cloudflare/circl, moby/spdystream, sigstore/timestamp-authority, otel) for CVE remediation
+- Bumped `uxp-apollo` to 0.4.9 and `uxp-webui` to 1.1.4
+
+## v2.0.8-up.1
+
+### Release Date: 2026-04-21
+
+#### What's Changed
+
+Based on Crossplane v2.0.8.
+
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting — packages installed via a prefix rewrite are now upgraded when their dependencies change
+- Support `ResourceSelector` with no match field — a selector with only `apiVersion` and `kind` set is now interpreted as "all resources of that kind" instead of being rejected
+- Bumped Go to 1.25.9 and a range of dependencies (grpc, go-jose, go-git, cert-manager, containerd, helm, docker/cli, cloudflare/circl, moby/spdystream, sigstore/timestamp-authority, otel) for CVE remediation
+- Bumped `uxp-apollo` to 0.2.16
+
 ## v2.1.5-up.1
 
 ### Release Date: 2026-04-20
@@ -23,8 +49,8 @@ Any important warnings or necessary information
 Based on Crossplane v2.1.5.
 
 - Reset circuit breaker state on XR deletion
-- Support `ResourceSelector` with no match field
-- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting — packages installed via a prefix rewrite are now upgraded when their dependencies change
+- Support `ResourceSelector` with no match field — a selector with only `apiVersion` and `kind` set is now interpreted as "all resources of that kind" instead of being rejected
 - Bumped Go to 1.25.9 and a range of dependencies (grpc, go-git, go-jose, cert-manager, containerd, helm, docker/cli, cloudflare/circl, sigstore/timestamp-authority, otel) for CVE remediation
 - Bumped `uxp-apollo` to 0.2.16 for a k8s.io/kubernetes CVE remediation
 
