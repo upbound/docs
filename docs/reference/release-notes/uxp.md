@@ -14,6 +14,16 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v1.20.6-up.2
+
+### Release Date: 2026-04-22
+
+#### What's Changed
+
+Based on Crossplane [v1.20.6](https://github.com/crossplane/crossplane/releases/tag/v1.20.6).
+
+- Bumped Go to 1.25.9 to cover stdlib CVEs
+
 ## v2.2.1-up.1
 
 ### Release Date: 2026-04-21
