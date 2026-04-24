@@ -26,7 +26,6 @@ module.exports = {
       label: 'Control Planes',
       items: [
         'howtos/managed-service',
-        'howtos/control-plane-topologies',
         'howtos/auto-upgrade',
         'howtos/migrating-to-mcps',
         'howtos/simulations',

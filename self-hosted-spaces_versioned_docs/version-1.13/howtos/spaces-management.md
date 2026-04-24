@@ -137,13 +137,13 @@ This manifest:
 To connect to a control plane in a Space using `up`, run the following:
 
 ```bash
-up ctp connect new-control-plane
+up ctx ./default/new-control-plane
 ```
 
 The command changes your kubeconfig's current context to the control plane you specify. If you want to change your kubeconfig back to a previous context, run:
 
 ```bash
-up ctp disconnect
+up ctx -
 ```
 
 If you configured your control plane to publish connection details, you can also
