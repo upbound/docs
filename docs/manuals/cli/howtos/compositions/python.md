@@ -47,7 +47,7 @@ Before you begin, make sure:
 * You designed your XRD
 * You've added provider dependencies
 * You have Python 3.11+ installed
-* You have the Python Virtual Studio Code extension installed
+* You have the Python VS Code extension installed
 * You understand your XRD schema and what resources you need to create
 
 

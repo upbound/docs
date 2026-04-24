@@ -4,6 +4,11 @@ sidebar_position: 19
 description: List of IP addresses used by Upbound control planes
 ---
 
+Upbound control planes communicate with external systems using the following
+egress IP addresses. Add these addresses to your firewall allowlist if your
+cloud provider resources or private endpoints restrict inbound traffic by source
+IP.
+
 Control planes can use any of the following IP addresses:
 
 - 35.238.181.48

@@ -10,7 +10,7 @@ This guide covers authentication methods for Upbound Official Providers. Each pr
 
 | Provider | Authentication Methods |
 |----------|----------------------|
-| AWS | [Upbound OIDC](#aws-upbound-oidc), [Access Keys](#aws-access-keys), [WebIdentity](#aws-webidentity), [IRSA](#aws-irsa) |
+| AWS | [Upbound OIDC][aws-oidc], [Access Keys][aws-keys], [WebIdentity][aws-webidentity], [IRSA][aws-irsa], [EKS Pod Identity][aws-pod-identity] |
 | Azure | [Upbound OIDC](#azure-upbound-oidc), [Service Principal](#azure-service-principal), [Managed Identity](#azure-managed-identity) |
 | GCP | [Upbound OIDC](#gcp-upbound-oidc), [Service Account Keys](#gcp-service-account-keys), [OAuth 2.0 Token](#gcp-oauth-token), [Service Account Impersonation](#gcp-service-account-impersonation), [Workload Identity](#gcp-workload-identity) |
 | Kubernetes | [Upbound Identity](#kubernetes-upbound-identity), [Injected Identity](#kubernetes-injected-identity), [Injected Identity with Cloud Provider Credentials](#kubernetes-injected-identity-cloud) |
@@ -26,52 +26,7 @@ The Upbound Official AWS Provider supports multiple authentication methods suita
 This method is only supported in control planes running on [Upbound Cloud Spaces][upbound-cloud-spaces].
 :::
 
-Upbound authentication uses OpenID Connect (OIDC) to authenticate to AWS without storing credentials in Upbound.
-
-#### Add Upbound as an OpenID Connect provider
-
-1. Open the **[AWS IAM console][aws-iam-console]**.
-2. Under AWS IAM services, select **[Identity Providers > Add Provider][identity-providers-add-provider]**.
-3. Select **OpenID Connect** and use **https://proidc.upbound.io** as the Provider URL and **sts.amazonaws.com** as the Audience.
-4. Select **Get thumbprint**.
-5. Select **Add provider**.
-
-#### Create an AWS IAM Role for Upbound
-
-1. Create an [AWS IAM Role][aws-iam-role] with a **Custom trust policy** for the OIDC connector.
-
-:::tip
-Provide your [AWS account ID][aws-account-id], Upbound organization and control plane names in the JSON Policy below.
-:::
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:oidc-provider/proidc.upbound.io"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringEquals": {
-          "proidc.upbound.io:sub": "mcp:ORG_NAME/CONTROL_PLANE_NAME:provider:provider-aws",
-          "proidc.upbound.io:aud": "sts.amazonaws.com"
-        }
-      }
-    }
-  ]
-}
-```
-
-2. Attach the permission policies you want for the control plane assuming this role.
-3. Name and create the role.
-4. View the new role and copy the role ARN.
-
-#### Create a ProviderConfig
-
-Create a ProviderConfig to set the provider authentication method to `Upbound`.
+Upbound OIDC uses federation via `proidc.upbound.io` to authenticate to AWS without storing credentials. An IAM role in your AWS account trusts the Upbound OIDC provider, scoped to a specific organization and control plane. The provider exchanges a short-lived identity token for temporary AWS credentials at runtime.
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
@@ -86,78 +41,13 @@ spec:
         roleARN: <roleARN-for-provider-identity>
 ```
 
+For a complete setup guide, see [AWS Upbound OIDC Authentication][aws-oidc].
+
 <!-- vale Google.Headings = NO -->
 ### AWS Access Keys {#aws-access-keys}
+<!-- vale Google.Headings = YES -->
 
-Using AWS access keys requires storing the AWS keys as a Kubernetes secret.
-
-Create or [download your AWS access key][download-your-aws-access-key] ID and secret access key. The format of the text file is:
-
-```ini
-[default]
-aws_access_key_id = AKIAIOSFODNN7EXAMPLE
-aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-```
-
-<details>
-<summary>Authentication keys with SSO</summary>
-
-To generate authentication keys for SSO login, access your organization's AWS SSO portal.
-
-Select "Command line or programmatic access"
-
-![AWS SSO screen highlighting the option command line or programmatic access](/img/aws-sso-screen.png)
-
-Expand "Option 2" and copy the provided AWS credentials.
-
-![AWS screen showing Option 2 credentials](/img/aws-auth-option2.png)
-
-Use this as the contents of the `aws-credentials.txt` file.
-
-Below is an example `aws-credentials.txt` file with SSO authentication.
-
-```ini
-[123456789_AdministratorAccess]
-aws_access_key_id=ASIAZBZV2IPKEXAMPLEKEY
-aws_secret_access_key=PPF/Wu9vTja98L5t/YNycbzEMEXAMPLEKEY
-aws_session_token=ArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zXArrGMPb4X3zjshBuQHLa79fyNZ8tDHpi9ogiA8DX6HkKLJxMA6LXcUyMGN6MUe3tYuhRKwdCTkfwt6qCVMT8Ctab//3jMmrV9zX
-```
-
-:::tip
-These credentials are only valid as long as your SSO session. When the credentials expire Crossplane can't monitor or change AWS resources.
-:::
-
-</details>
-
-#### Create a Kubernetes secret
-
-Create the Kubernetes secret with `kubectl create secret generic`:
-
-```shell
-kubectl create secret generic \
-aws-secret \
--n crossplane-system \
---from-file=my-aws-secret=./aws-credentials.txt
-```
-
-To create a secret declaratively requires encoding the authentication keys as a base-64 string.
-
-Create a Secret object with the data containing the secret key name and the base-64 encoded keys:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: aws-secret
-  namespace: crossplane-system
-type: Opaque
-data:
-  my-aws-secret: W2RlZmF1bHRdCmF3c19hY2Nlc3Nfa2V5X2lkID0gQUtJQUlPU0ZPRE5ON0VYQU1QTEUKYXdzX3NlY3JldF9hY2Nlc3Nfa2V5ID0gd0phbHJYVXRuRkVNSS9LN01ERU5HL2JQeFJmaUNZRVhBTVBMRUtFWQ==
-```
-
-#### Create a ProviderConfig
-
-Create a ProviderConfig to set the provider authentication method to `Secret`:
+Access key authentication stores static IAM credentials as a Kubernetes Secret. The provider reads the secret at runtime to authenticate with AWS APIs. This is the simplest method but requires manual credential rotation and stores long-lived secrets in the cluster.
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
@@ -173,145 +63,15 @@ spec:
       key: my-aws-secret
 ```
 
-:::tip
-To apply key based authentication by default name the ProviderConfig `default`.
-:::
-
-To selectively apply key based authentication, name the ProviderConfig and apply it when creating managed resources.
-
-For example, creating a ProviderConfig named `key-based-providerconfig`:
-
-```yaml
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: key-based-providerconfig
-spec:
-  credentials:
-    source: Secret
-    secretRef:
-      namespace: crossplane-system
-      name: aws-secret
-      key: my-aws-secret
-```
-
-Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
-
-```yaml
-apiVersion: s3.aws.upbound.io/v1beta1
-kind: Bucket
-metadata:
-  name: my-s3-bucket
-spec:
-  forProvider:
-    region: us-east-2
-  providerConfigRef:
-    name: key-based-providerconfig
-```
-
-#### Role chaining
-
-To use [AWS IAM role chaining][aws-iam-role-chaining], add an `assumeRoleChain` object to the ProviderConfig.
-
-Inside the `assumeRoleChain`, list one or more roles to assume, in order:
-
-```yaml
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: default
-spec:
-  credentials:
-    source: Secret
-    secretRef:
-      namespace: crossplane-system
-      name: aws-secret
-      key: my-aws-secret
-  assumeRoleChain:
-    - roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
-```
+For a complete setup guide, see [AWS Access Key Authentication][aws-keys].
 
 ### AWS WebIdentity {#aws-webidentity}
-
-When running in an Amazon managed Kubernetes cluster (EKS), the Provider may use [AssumeRoleWithWebIdentity][assumerolewithwebidentity] for authentication.
-
-WebIdentity uses an OpenID Connect ID token to authenticate and use a specific AWS IAM role.
 
 :::tip
 WebIdentity is only supported with Crossplane running in Amazon managed Kubernetes clusters (EKS).
 :::
 
-Configuring WebIdentity with the AWS Provider requires:
-* An AWS [IAM OIDC Provider][iam-oidc-provider]
-* An AWS IAM Role with an editable [trust policy][trust-policy]
-* A ProviderConfig to enable WebIdentity authentication
-
-#### Create an IAM OIDC provider
-
-WebIdentity relies on the EKS cluster OIDC provider.
-
-Follow the [AWS instructions][aws-instructions] to create an IAM OIDC provider with your EKS OIDC provider URL.
-
-#### Edit the IAM role
-
-Supporting WebIdentity requires matching the EKS OIDC information to the specific role through a role trust policy.
-
-:::tip
-Read the [AWS trust policies blog][aws-trust-policies-blog] for more information on trust policies.
-:::
-
-The trust policy references the OIDC provider ARN and the provider AWS service account.
-
-In the policy `Principal` enter `"Federated": "<OIDC_PROVIDER_ARN>"`.
-
-Add a `Condition` to restrict access to the role to only the Provider's service account.
-
-The `Condition` uses `StringLike` to generically match the Provider's service account.
-
-<details>
-<summary>Why use a generic match?</summary>
-
-The token used for authentication includes the full name of the AWS Provider's Kubernetes service account.
-
-The Provider's service account name ends in a hash. If the hash changes the `Condition` doesn't match.
-
-</details>
-
-Enter the string (with quotation marks) `"<OIDC_PROVIDER_ARN>:sub": "system:serviceaccount:upbound-system:provider-aws-*"`.
-
-:::tip
-Be sure to include `:sub` after the OIDC provider ARN.
-
-The `system:serviceaccount:` matches the namespace where the Provider pod runs.
-
-By default UXP uses `upbound-system` and Crossplane uses `crossplane-system`.
-:::
-
-The following is a full example trust policy:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::111122223333:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/5C64F628ACFB6A892CC25AF3B67124C5"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringLike": {
-          "oidc.eks.us-east-2.amazonaws.com/id/5C64F628ACFB6A892CC25AF3B67124C5:sub": "system:serviceaccount:crossplane-system:provider-aws-*"
-        }
-      }
-    }
-  ]
-}
-```
-
-#### Create a ProviderConfig
-
-Create a ProviderConfig to set the provider authentication method to `WebIdentity`:
+WebIdentity uses [AssumeRoleWithWebIdentity][assumerolewithwebidentity] to exchange a projected service account token for temporary AWS credentials. Unlike IRSA, the role ARN and token source are configured per-ProviderConfig via the `tokenConfig` field, so different ProviderConfigs can target different roles and tokens without reinstalling the provider.
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
@@ -322,196 +82,20 @@ spec:
   credentials:
     source: WebIdentity
     webIdentity:
-      roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
+      roleARN: "arn:aws:iam::111122223333:role/my-webidentity-role"
+      tokenConfig:
+        source: Filesystem
+        fs:
+          path: /var/run/secrets/aws-iam-token/token
 ```
 
-:::tip
-To apply WebIdentity authentication by default name the ProviderConfig `default`.
-:::
+For a complete setup guide, see [AWS Web Identity Authentication][aws-webidentity].
 
-To selectively apply WebIdentity authentication, name the ProviderConfig and apply it when creating managed resources.
-
-For example, creating a ProviderConfig named `webid-providerconfig`:
-
-```yaml
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: webid-providerconfig
-spec:
-  credentials:
-    source: WebIdentity
-    webIdentity:
-      roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
-```
-
-Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
-
-```yaml
-apiVersion: s3.aws.upbound.io/v1beta1
-kind: Bucket
-metadata:
-  name: my-s3-bucket
-spec:
-  forProvider:
-    region: us-east-2
-  providerConfigRef:
-    name: webid-providerconfig
-```
-
-#### Role chaining
-
-To use [AWS IAM role chaining][aws-iam-role-chaining], add an `assumeRoleChain` object to the ProviderConfig.
-
-Inside the `assumeRoleChain`, list one or more roles to assume, in order:
-
-```yaml
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: webid-providerconfig
-spec:
-  credentials:
-    source: WebIdentity
-    webIdentity:
-      roleARN: "arn:aws:iam::111122223333:role/my-custom-role"
-  assumeRoleChain:
-    - roleARN: "arn:aws:iam::111122223333:role/my-assumed-role"
-```
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### AWS IRSA {#aws-irsa}
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
-When running in Amazon EKS, the Provider may use [IAM roles for service accounts][aws-iam-roles-for-service-accounts] (IRSA) for authentication.
-
-IRSA works by using an annotation on a Kubernetes ServiceAccount used by a Pod requesting AWS resources. The annotation matches an AWS IAM Role ARN configured with the desired permissions.
-
-Configuring IRSA with the AWS Provider requires:
-* An AWS [IAM OIDC Provider][iam-oidc-provider]
-* An AWS IAM Role with an editable [trust policy][trust-policy]
-* A DeploymentRuntimeConfig to add an annotation on the AWS Provider service account
-* A ProviderConfig to enable IRSA authentication
-
-#### Create an IAM OIDC provider
-
-IRSA relies on the EKS cluster OIDC provider.
-
-Follow the [AWS instructions][aws-instructions] to create an IAM OIDC provider with your EKS OIDC provider URL.
-
-#### Edit the IAM role
-
-Supporting IRSA requires matching the EKS OIDC information to the specific role through a role trust policy.
-
-:::tip
-Read the [AWS trust policies blog][aws-trust-policies-blog] for more information on trust policies.
-:::
-
-The trust policy references the OIDC provider ARN and the provider AWS service account.
-
-In the policy `Principal` enter `"Federated": "<OIDC_PROVIDER_ARN>"`.
-
-Add a `Condition` to restrict access to the role to only the Provider's service account.
-
-The `Condition` uses `StringLike` to generically match the Provider's service account.
-
-<details>
-<summary>Why use a generic match?</summary>
-
-The token used for authentication includes the full name of the AWS Provider's Kubernetes service account.
-
-The Provider's service account name ends in a hash. If the hash changes the `Condition` doesn't match.
-
-</details>
-
-Enter the string (with quotation marks) `"<OIDC_PROVIDER_ARN>:sub": "system:serviceaccount:upbound-system:provider-aws-*"`.
-
-:::tip
-Be sure to include `:sub` after the OIDC provider ARN.
-
-The `system:serviceaccount:` matches the namespace where the Provider pod runs.
-
-By default UXP uses `upbound-system` and Crossplane uses `crossplane-system`.
-:::
-
-The following is a full example trust policy:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::622346257358:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/5C64F628ACFB6A892CC25AF3B67124C5"
-      },
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-        "StringLike": {
-          "oidc.eks.us-east-2.amazonaws.com/id/5C64F628ACFB6A892CC25AF3B67124C5:sub": "system:serviceaccount:crossplane-system:provider-aws-*"
-        }
-      }
-    }
-  ]
-}
-```
-
-#### Create a DeploymentRuntimeConfig
-
-IRSA relies on an annotation on the service account attached to a pod to identify the IAM role to use.
-
-Crossplane uses a DeploymentRuntimeConfig to apply settings to the provider, including the provider service account.
-
-Create a DeploymentRuntimeConfig object to apply a custom annotation to the provider service account:
-
-```yaml
-apiVersion: pkg.crossplane.io/v1beta1
-kind: DeploymentRuntimeConfig
-metadata:
-  name: irsa-runtimeconfig
-spec:
-  serviceAccountTemplate:
-    metadata:
-      annotations:
-        eks.amazonaws.com/role-arn: arn:aws:iam::622346257358:role/my-custom-role
-```
-
-#### Apply the DeploymentRuntimeConfig
-
-Install or update the provider with a `runtimeConfigRef`:
-
-```yaml
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-aws-s3
-spec:
-  package: xpkg.upbound.io/upbound/provider-aws-s3:v2.1.1
-  runtimeConfigRef:
-    name: irsa-runtimeconfig
-```
-
-After the provider finishes installing, verify Crossplane applied the annotation on the service account from the DeploymentRuntimeConfig.
-
-:::tip
-<!-- vale Google.WordList = NO -->
-Kubernetes applies a unique hash to the end of the service account name. Find the specific service account name with `kubectl get sa -n crossplane-system` for Crossplane or `kubectl get sa -n upbound-system` for UXP.
-<!-- vale Google.WordList = YES -->
-:::
-
-```shell
-kubectl describe sa -n crossplane-system provider-aws-s3-dbc7f981d81f
-Name:                provider-aws-s3-dbc7f981d81f
-Namespace:           crossplane-system
-Labels:              <none>
-Annotations:         eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/my-custom-role
-# Removed for brevity
-```
-
-Apply the `runtimeConfig` to each family provider using the same IAM role.
-
-#### Create a ProviderConfig
-
-Create a ProviderConfig to set the provider authentication method to `IRSA`:
+[IAM Roles for Service Accounts][aws-iam-roles-for-service-accounts] (IRSA) authenticates using an annotation on the provider's Kubernetes ServiceAccount. A DeploymentRuntimeConfig applies the IAM role ARN as an annotation, and the EKS pod identity webhook injects temporary credentials into the provider pod automatically.
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
@@ -523,55 +107,25 @@ spec:
     source: IRSA
 ```
 
-:::tip
-To apply IRSA authentication by default name the ProviderConfig `default`.
-:::
+For a complete setup guide, see [AWS IRSA Authentication Setup][aws-irsa].
 
-To selectively apply IRSA authentication, name the ProviderConfig and apply it when creating managed resources.
+<!-- vale Microsoft.HeadingAcronyms = NO -->
+### AWS EKS Pod Identity {#aws-pod-identity}
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
-For example, creating a ProviderConfig named `irsa-providerconfig`:
-
-```yaml
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: irsa-providerconfig
-spec:
-  credentials:
-    source: IRSA
-```
-
-Apply the ProviderConfig to a managed resource with a `providerConfigRef`:
-
-```yaml
-apiVersion: s3.aws.upbound.io/v1beta1
-kind: Bucket
-metadata:
-  name: my-s3-bucket
-spec:
-  forProvider:
-    region: us-east-2
-  providerConfigRef:
-    name: irsa-providerconfig
-```
-
-#### Role chaining
-
-To use [AWS IAM role chaining][aws-iam-role-chaining], add an `assumeRoleChain` object to the ProviderConfig.
-
-Inside the `assumeRoleChain`, list one or more roles to assume, in order:
+[EKS Pod Identity][eks-pod-identity] (EKS 1.24+) authenticates using a standardized `pods.eks.amazonaws.com` trust policy and an explicit association between the provider's ServiceAccount and an IAM role. Unlike IRSA, it doesn't require a cluster-specific OIDC provider, so trust policies are reusable across clusters.
 
 ```yaml
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: irsa-providerconfig
+  name: default
 spec:
   credentials:
-    source: IRSA
-  assumeRoleChain:
-    - roleARN: "arn:aws:iam::111122223333:role/my-assumed-role"
+    source: PodIdentity
 ```
+
+For a complete setup guide, see [AWS EKS Pod Identity Authentication][aws-pod-identity].
 
 ## Azure authentication
 
@@ -2129,12 +1683,12 @@ spec:
     type: AWSWebIdentityCredentials
 ```
 
-[upbound-cloud-spaces]: /manuals/spaces/overview
+[upbound-cloud-spaces]: /self-hosted-spaces/overview
 [aws-iam-console]: https://console.aws.amazon.com/iam
 [identity-providers-add-provider]: https://console.aws.amazon.com/iamv2/home#/identity_providers/create
 [aws-iam-role]: https://console.aws.amazon.com/iamv2/home#/roles
 [aws-account-id]: https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html
-[download-your-aws-access-key]: https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys
+[download-your-aws-access-key]: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/welcome.html
 [aws-iam-role-chaining]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining
 [assumerolewithwebidentity]: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html
 [iam-oidc-provider]: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
@@ -2142,6 +1696,8 @@ spec:
 [aws-instructions]: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
 [aws-trust-policies-blog]: https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/
 [aws-iam-roles-for-service-accounts]: https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
+[eks-pod-identity]: https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html
+[eks-pod-identity-agent]: https://docs.aws.amazon.com/eks/latest/userguide/pod-id-agent-setup.html
 [azure-portal]: https://portal.azure.com/
 [microsoft-entra-id]: https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview
 [subscriptions]: https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade
@@ -2160,12 +1716,17 @@ spec:
 [gcp-iam-service-account-policy-binding]: https://cloud.google.com/sdk/gcloud/reference/iam/service-accounts/add-iam-policy-binding
 [gcp-service-account-impersonation-documentation]: https://cloud.google.com/iam/docs/service-account-impersonation
 [workload-identity]: https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity
-[upbound-apis]: /manuals/spaces/howtos/self-hosted/gitops/#gitops-for-upbound-resources
+[upbound-apis]: /cloud-spaces/howtos/gitops-on-upbound/#gitops-for-upbound-resources
 [jq-install]: https://jqlang.github.io/jq/download/
-[to-a-team]: /manuals/platform/concepts/identity-management/robots/#assign-a-robot-to-a-team
-[grant-the-team-a-role]: /manuals/platform/concepts/identity-management/teams/
-[generate-a-kubeconfig-for-a-space]: /manuals/spaces/howtos/self-hosted/gitops/#generate-a-kubeconfig-for-a-space
-[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /manuals/spaces/howtos/self-hosted/gitops/#generate-a-kubeconfig-for-a-control-plane-in-a-space
+[to-a-team]: /manuals/platform/robots/#assign-a-robot-to-a-team
+[grant-the-team-a-role]: /manuals/platform/teams/
+[generate-a-kubeconfig-for-a-space]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-space
+[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group
 [eks-access-entries]: https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html
 [aws-auth-configmap]: https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
 [eks-pod-identity]: https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html
+[aws-oidc]: /manuals/packages/providers/aws-auth/aws-oidc
+[aws-keys]: /manuals/packages/providers/aws-auth/aws-access-keys
+[aws-webidentity]: /manuals/packages/providers/aws-auth/aws-web-identity
+[aws-irsa]: /manuals/packages/providers/aws-auth/aws-irsa
+[aws-pod-identity]: /manuals/packages/providers/aws-auth/aws-pod-identity

@@ -8,9 +8,14 @@ const ManualsCards = () => {
       link: '/manuals/uxp/overview'
     },
     {
-      title: 'Spaces',
-      description: 'Managed Crossplane control plane environments with cloud and self-hosted deployment options.',
-      link: '/manuals/spaces/overview'
+      title: 'Cloud Spaces',
+      description: 'Managed Crossplane control planes in the Upbound cloud environment.',
+      link: '/cloud-spaces/overview/'
+    },
+    {
+      title: 'Self-hosted Spaces',
+      description: 'Managed Crossplane control planes as a self-hosted deployment.',
+      link: '/self-hosted-spaces/overview/'
     },
     {
       title: 'CLI',

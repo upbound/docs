@@ -104,3 +104,5 @@ the test manifests as well.
 | `--public` | | Create new repositories with public visibility. |
 | `--e2e` | | Run E2E tests |
 | `--operation` | | Run Operation tests |
+| `--set-helm-values` | | Set custom Crossplane helm chart values for the local test control plane, specified as key=value pairs. |
+| `--helm-values` | | Path to a YAML file containing custom Crossplane helm chart values for the local test control plane. |
