@@ -8,11 +8,15 @@ aliases:
     - all-spaces/self-hosted-spaces/query-api
 ---
 
+<!-- vale write-good.TooWordy = NO -->
+<!-- ignore "aggregate" -->
+
 :::important
 
 This feature is in preview. The Query API is available in the Cloud Space offering in `v1.6` and enabled by default.
 
 Since Spaces `v1.8.0`, you must enable Query API to connect a Space.
+
 Use this guide to enable Query API in your Space.
 :::
 
@@ -346,12 +350,12 @@ helm ... \
   --set "apollo.apollo.storage.postgres.connection.ca.name=spaces-apollo-pg-ca" \
   --set "apollo.apollo.storage.postgres.connection.syncer.url=$PG_POOLED_URL" \
 
-  #. the syncers
+  # For the syncers
   --set "apollo.apollo.storage.postgres.connection.syncer.credentials.format=basicauth" \
   --set "apollo.apollo.storage.postgres.connection.syncer.credentials.user=$APOLLO_SYNCER_USER" \
   --set "apollo.apollo.storage.postgres.connection.syncer.credentials.secret.name=spaces-apollo-pg-syncer" \
 
-  #. the server
+  # For the server
   --set "apollo.apollo.storage.postgres.connection.apollo.credentials.format=basicauth" \
   --set "apollo.apollo.storage.postgres.connection.apollo.credentials.user=$APOLLO_SERVER_USER" \
   --set "apollo.apollo.storage.postgres.connection.apollo.credentials.secret.name=spaces-apollo-pg-apollo" \
