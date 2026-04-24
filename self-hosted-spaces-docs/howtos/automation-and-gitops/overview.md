@@ -46,7 +46,7 @@ If you're using Upbound Cloud Spaces (Dedicated or Managed):
 
 ###. Self-Hosted Spaces
 If you're running self-hosted Spaces:
-1. Start with [GitOps with ArgoCD in Self-Hosted Spaces](../self-hosted/gitops-with-argocd.md)
+1. Start with [GitOps with ArgoCD in Self-Hosted Spaces](../gitops.md)
 2. Learn how to configure control plane connection secrets
 3. Manage workloads deployed to your control planes
 
@@ -95,10 +95,10 @@ Use provider-upbound to manage Upbound IAM and repository resources:
 ## Advanced Topics
 
 ### Argo CD Plugin for Upbound
-Learn more in the [ArgoCD Plugin guide](../self-hosted/use-argo.md) for enhanced integration with self-hosted Spaces.
+Learn more in the [ArgoCD Plugin guide](../use-argo.md) for enhanced integration with self-hosted Spaces.
 
 ### Declarative Control Plane Creation
-See [Declaratively create control planes](../self-hosted/declarative-ctps.md) for advanced automation patterns.
+See [Declaratively create control planes](../declarative-ctps.md) for advanced automation patterns.
 
 ### Consuming Control Plane APIs
 Understand how to [consume control plane APIs in your app cluster](../mcp-connector-guide.md) with Argo CD.
