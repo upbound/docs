@@ -61,8 +61,8 @@ Explore additional resources and deepen your knowledge of Upbound Crossplane.
 [workshop]: /getstarted/builders-workshop/project-foundations/
 [intelligent-control-planes]: /guides/intelligent-control-planes/
 [idp-guide]: /guides/solutions/get-started/
-[spaces]: /manuals/spaces/overview/
-[control-planes]: /manuals/spaces/concepts/control-planes/
+[spaces]: /self-hosted-spaces/overview/
+[control-planes]: /self-hosted-spaces/concepts/control-planes/
 [uxp]: /manuals/uxp/overview/
 [compositions]: /manuals/uxp/concepts/composition/overview/
 [project-structure]: /manuals/cli/howtos/project/

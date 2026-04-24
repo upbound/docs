@@ -367,187 +367,187 @@
         },
         {
             "source": "/operate/accounts/authentication/enable-sso(/)?",
-            "destination": "/manuals/platform/howtos/enable-sso",
+            "destination": "/manuals/platform/sso",
             "permanent": true
         },
         {
             "source": "/operate/accounts/authentication/oidc-configuration(/)?",
-            "destination": "/manuals/platform/howtos/oidc",
+            "destination": "/manuals/platform/oidc",
             "permanent": true
         },
         {
             "source": "/operate/accounts/authorization/hub-rbac(/)?",
-            "destination": "/manuals/platform/concepts/authorization/hub-rbac",
+            "destination": "/manuals/platform/rbac",
             "permanent": true
         },
         {
             "source": "/operate/accounts/authorization/k8s-rbac(/)?",
-            "destination": "/manuals/platform/concepts/authorization/k8s-rbac",
+            "destination": "/manuals/platform/k8s-rbac",
             "permanent": true
         },
         {
             "source": "/operate/accounts/authorization/upbound-rbac(/)?",
-            "destination": "/manuals/platform/concepts/authorization/upbound-rbac",
+            "destination": "/manuals/platform/rbac",
             "permanent": true
         },
         {
             "source": "/operate/accounts(/)?",
-            "destination": "/manuals/platform/concepts/identity-management",
+            "destination": "/manuals/platform/iam",
             "permanent": true
         },
         {
             "source": "/operate/accounts/identity-management/organizations(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/organizations",
+            "destination": "/manuals/platform/organizations",
             "permanent": true
         },
         {
             "source": "/operate/accounts/identity-management/robots(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/robots",
+            "destination": "/manuals/platform/robots",
             "permanent": true
         },
         {
             "source": "/operate/accounts/identity-management/teams(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/teams",
+            "destination": "/manuals/platform/teams",
             "permanent": true
         },
         {
             "source": "/operate/accounts/identity-management/users(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "destination": "/manuals/platform/users",
             "permanent": true
         },
         {
             "source": "/connect/oidc(/)?",
-            "destination": "/manuals/platform/howtos/oidc",
+            "destination": "/manuals/platform/oidc",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/billing(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/billing",
+            "destination": "/self-hosted-spaces/howtos/billing",
             "permanent": true
         },
         {
             "source": "/operate/control-planes(/)?",
-            "destination": "/manuals/spaces/concepts/control-planes",
+            "destination": "/self-hosted-spaces/concepts/control-planes",
             "permanent": true
         },
         {
             "source": "/operate/groups(/)?",
-            "destination": "/manuals/spaces/concepts/groups",
+            "destination": "/self-hosted-spaces/concepts/groups",
             "permanent": true
         },
         {
             "source": "/deploy/control-plane-topologies(/)?",
-            "destination": "/manuals/spaces/howtos/control-plane-topologies",
+            "destination": "/self-hosted-spaces/howtos/control-plane-topologies",
             "permanent": true
         },
         {
             "source": "/operate/observability(/)?",
-            "destination": "/manuals/spaces/howtos/observability",
+            "destination": "/self-hosted-spaces/howtos/observability",
             "permanent": true
         },
         {
             "source": "/connect/query-api(/)?",
-            "destination": "/manuals/spaces/howtos/query-api",
+            "destination": "/self-hosted-spaces/howtos/query-api",
             "permanent": true
         },
         {
             "source": "/operate/secrets-management(/)?",
-            "destination": "/manuals/spaces/howtos/secrets-management",
+            "destination": "/self-hosted-spaces/howtos/secrets-management",
             "permanent": true
         },
         {
             "source": "/operate/auto-upgrade(/)?",
-            "destination": "/manuals/spaces/howtos/auto-upgrade",
+            "destination": "/self-hosted-spaces/howtos/auto-upgrade",
             "permanent": true
         },
         {
             "source": "/operate/debugging-a-ctp(/)?",
-            "destination": "/manuals/spaces/howtos/debugging-a-ctp",
+            "destination": "/self-hosted-spaces/howtos/debugging-a-ctp",
             "permanent": true
         },
         {
             "source": "/connect/gitops(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
+            "destination": "/cloud-spaces/howtos/gitops-on-upbound",
             "permanent": true
         },
         {
             "source": "/build/migrating-to-mcps(/)?",
-            "destination": "/manuals/spaces/howtos/migrating-to-mcps",
+            "destination": "/self-hosted-spaces/howtos/migrating-to-mcps",
             "permanent": true
         },
         {
             "source": "/deploy/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/howtos/backup-and-restore",
+            "destination": "/self-hosted-spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
             "source": "/connect/declarative-ctps(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/declarative-ctps",
+            "destination": "/self-hosted-spaces/howtos/declarative-ctps",
             "permanent": true
         },
         {
             "source": "/deploy/dedicated-spaces/aws(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
+            "destination": "/cloud-spaces/howtos/dedicated-spaces-deployment",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/deployment(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
+            "destination": "/self-hosted-spaces/howtos/deployment-reqs",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/dr(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/dr",
+            "destination": "/self-hosted-spaces/howtos/dr",
             "permanent": true
         },
         {
             "source": "/connect/mcp-connector-guide(/)?",
-            "destination": "/manuals/spaces/howtos/mcp-connector-guide",
+            "destination": "/self-hosted-spaces/howtos/mcp-connector-guide",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/proxies-config(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/proxies-config",
+            "destination": "/self-hosted-spaces/howtos/proxies-config",
             "permanent": true
         },
         {
             "source": "/deploy/query-api(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/query-api",
+            "destination": "/self-hosted-spaces/howtos/query-api",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/scaling-resources(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/scaling-resources",
+            "destination": "/self-hosted-spaces/howtos/scaling-resources",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/space-observability(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/observability/space-observability",
+            "destination": "/self-hosted-spaces/howtos/space-observability",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/spaces-management(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/spaces-management",
+            "destination": "/self-hosted-spaces/howtos/spaces-management",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/troubleshooting(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/troubleshooting",
+            "destination": "/self-hosted-spaces/howtos/troubleshooting",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/use-argo(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/use-argo",
+            "destination": "/self-hosted-spaces/howtos/use-argo",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces/aws/workload-id-backup-restore(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore",
+            "destination": "/self-hosted-spaces/howtos/workload-id/backup-restore-config",
             "permanent": true
         },
         {
             "source": "/build/control-plane-projects/simulations(/)?",
-            "destination": "/manuals/spaces/howtos/simulations",
+            "destination": "/self-hosted-spaces/howtos/simulations",
             "permanent": true
         },
         {
@@ -567,27 +567,27 @@
         },
         {
             "source": "/apis-cli/spaces-api(/)?",
-            "destination": "/reference/apis/spaces-api/latest",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
             "source": "/apis-cli/spaces-api/v1_10(/)?",
-            "destination": "/reference/apis/spaces-api/v1_10",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
             "source": "/apis-cli/spaces-api/v1_11(/)?",
-            "destination": "/reference/apis/spaces-api/v1_11",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
             "source": "/apis-cli/spaces-api/v1_12(/)?",
-            "destination": "/reference/apis/spaces-api/v1_12",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
             "source": "/apis-cli/spaces-api/v1_9(/)?",
-            "destination": "/reference/apis/spaces-api/v1_9",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
@@ -672,97 +672,97 @@
         },
         {
             "source": "/accounts(/)?",
-            "destination": "/manuals/platform/concepts/identity-management",
+            "destination": "/manuals/platform/iam",
             "permanent": true
         },
         {
             "source": "/accounts/authentication/enable-sso(/)?",
-            "destination": "/manuals/platform/howtos/enable-sso",
+            "destination": "/manuals/platform/sso",
             "permanent": true
         },
         {
             "source": "/accounts/authentication/oidc-configuration(/)?",
-            "destination": "/manuals/platform/howtos/oidc",
+            "destination": "/manuals/platform/oidc",
             "permanent": true
         },
         {
             "source": "/accounts/authorization/k8s-rbac(/)?",
-            "destination": "/manuals/platform/concepts/authorization/k8s-rbac",
+            "destination": "/manuals/platform/k8s-rbac",
             "permanent": true
         },
         {
             "source": "/accounts/authorization/upbound-rbac(/)?",
-            "destination": "/manuals/platform/concepts/authorization/upbound-rbac",
+            "destination": "/manuals/platform/rbac",
             "permanent": true
         },
         {
             "source": "/accounts/identity-management/organizations(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/organizations",
+            "destination": "/manuals/platform/organizations",
             "permanent": true
         },
         {
             "source": "/accounts/identity-management/robots(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/robots",
+            "destination": "/manuals/platform/robots",
             "permanent": true
         },
         {
             "source": "/accounts/identity-management/teams(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/teams",
+            "destination": "/manuals/platform/teams",
             "permanent": true
         },
         {
             "source": "/accounts/identity-management/users(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "destination": "/manuals/platform/users",
             "permanent": true
         },
         {
             "source": "/all-spaces/_index(/)?",
-            "destination": "/manuals/spaces/overview",
+            "destination": "/self-hosted-spaces/overview",
             "permanent": true
         },
         {
             "source": "/all-spaces/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/howtos/backup-and-restore",
+            "destination": "/self-hosted-spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
             "source": "/all-spaces/control-plane-topologies(/)?",
-            "destination": "/manuals/spaces/howtos/control-plane-topologies",
+            "destination": "/self-hosted-spaces/howtos/control-plane-topologies",
             "permanent": true
         },
         {
             "source": "/all-spaces/declarative-ctps(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/declarative-ctps",
+            "destination": "/self-hosted-spaces/howtos/declarative-ctps",
             "permanent": true
         },
         {
             "source": "/all-spaces/dedicated-spaces/aws(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
+            "destination": "/cloud-spaces/howtos/dedicated-spaces-deployment",
             "permanent": true
         },
         {
             "source": "/all-spaces/mcp-connector-guide(/)?",
-            "destination": "/manuals/spaces/howtos/mcp-connector-guide",
+            "destination": "/self-hosted-spaces/howtos/mcp-connector-guide",
             "permanent": true
         },
         {
             "source": "/all-spaces/observability(/)?",
-            "destination": "/manuals/spaces/howtos/observability",
+            "destination": "/self-hosted-spaces/howtos/observability",
             "permanent": true
         },
         {
             "source": "/all-spaces/query-api(/)?",
-            "destination": "/manuals/spaces/howtos/query-api",
+            "destination": "/self-hosted-spaces/howtos/query-api",
             "permanent": true
         },
         {
             "source": "/all-spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/howtos/secrets-management",
+            "destination": "/self-hosted-spaces/howtos/secrets-management",
             "permanent": true
         },
         {
             "source": "/all-spaces/self-hosted-spaces/attach-detach(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
+            "destination": "/self-hosted-spaces/howtos/attach-detach",
             "permanent": true
         },
         {
@@ -782,7 +782,7 @@
         },
         {
             "source": "/concepts/accounts/users(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "destination": "/manuals/platform/users",
             "permanent": true
         },
         {
@@ -792,7 +792,7 @@
         },
         {
             "source": "/concepts/control-plane-connector(/)?",
-            "destination": "/manuals/spaces/howtos/ctp-connector",
+            "destination": "/self-hosted-spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
@@ -802,12 +802,12 @@
         },
         {
             "source": "/concepts/operate/oidc(/)?",
-            "destination": "/manuals/platform/howtos/oidc",
+            "destination": "/manuals/platform/oidc",
             "permanent": true
         },
         {
             "source": "/connect/use-argo(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/use-argo",
+            "destination": "/self-hosted-spaces/howtos/use-argo",
             "permanent": true
         },
         {
@@ -927,7 +927,7 @@
         },
         {
             "source": "/deploy/spaces/attach-detach(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
+            "destination": "/self-hosted-spaces/howtos/attach-detach",
             "permanent": true
         },
         {
@@ -942,12 +942,12 @@
         },
         {
             "source": "/disconnected-spaces/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/howtos/backup-and-restore",
+            "destination": "/self-hosted-spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
             "source": "/disconnected-spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/howtos/secrets-management",
+            "destination": "/self-hosted-spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -1017,52 +1017,52 @@
         },
         {
             "source": "/mcp/auto-upgrade(/)?",
-            "destination": "/manuals/spaces/howtos/auto-upgrade",
+            "destination": "/self-hosted-spaces/howtos/auto-upgrade",
             "permanent": true
         },
         {
             "source": "/mcp/control-plane-connector(/)?",
-            "destination": "/manuals/spaces/howtos/ctp-connector",
+            "destination": "/self-hosted-spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
             "source": "/mcp/ctp-connector(/)?",
-            "destination": "/manuals/spaces/howtos/ctp-connector",
+            "destination": "/self-hosted-spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
             "source": "/operate/ctp-connector(/)?",
-            "destination": "/manuals/spaces/howtos/ctp-connector",
+            "destination": "/self-hosted-spaces/howtos/ctp-connector",
             "permanent": true
         },
         {
             "source": "/mcp/debugging-a-ctp(/)?",
-            "destination": "/manuals/spaces/howtos/debugging-a-ctp",
+            "destination": "/self-hosted-spaces/howtos/debugging-a-ctp",
             "permanent": true
         },
         {
             "source": "/mcp/git-integration(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
+            "destination": "/cloud-spaces/howtos/gitops-on-upbound",
             "permanent": true
         },
         {
             "source": "/mcp/gitops(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
+            "destination": "/cloud-spaces/howtos/gitops-on-upbound",
             "permanent": true
         },
         {
             "source": "/mcp/groups(/)?",
-            "destination": "/manuals/spaces/concepts/groups",
+            "destination": "/self-hosted-spaces/concepts/groups",
             "permanent": true
         },
         {
             "source": "/mcp/migrating-to-mcps(/)?",
-            "destination": "/manuals/spaces/howtos/migrating-to-mcps",
+            "destination": "/self-hosted-spaces/howtos/migrating-to-mcps",
             "permanent": true
         },
         {
             "source": "/mcp/oidc(/)?",
-            "destination": "/manuals/platform/howtos/oidc",
+            "destination": "/manuals/platform/oidc",
             "permanent": true
         },
         {
@@ -1112,17 +1112,17 @@
         },
         {
             "source": "/self-hosted-spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/howtos/secrets-management",
+            "destination": "/self-hosted-spaces/howtos/secrets-management",
             "permanent": true
         },
         {
             "source": "/spaces(/)?",
-            "destination": "/manuals/spaces/overview",
+            "destination": "/self-hosted-spaces/overview",
             "permanent": true
         },
         {
             "source": "/spaces/backup-and-restore(/)?",
-            "destination": "/manuals/spaces/howtos/backup-and-restore",
+            "destination": "/self-hosted-spaces/howtos/backup-and-restore",
             "permanent": true
         },
         {
@@ -1132,12 +1132,12 @@
         },
         {
             "source": "/spaces/observability(/)?",
-            "destination": "/manuals/spaces/howtos/observability",
+            "destination": "/self-hosted-spaces/howtos/observability",
             "permanent": true
         },
         {
             "source": "/spaces/secrets-management(/)?",
-            "destination": "/manuals/spaces/howtos/secrets-management",
+            "destination": "/self-hosted-spaces/howtos/secrets-management",
             "permanent": true
         },
         {
@@ -1147,17 +1147,17 @@
         },
         {
             "source": "/users(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "destination": "/manuals/platform/users",
             "permanent": true
         },
         {
             "source": "/users/change(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "destination": "/manuals/platform/users",
             "permanent": true
         },
         {
             "source": "/users/register(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/users",
+            "destination": "/manuals/platform/users",
             "permanent": true
         },
         {
@@ -1167,17 +1167,17 @@
         },
         {
             "source": "/deploy/self-hosted-spaces/attach-detach(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/attach-detach",
+            "destination": "/self-hosted-spaces/howtos/attach-detach",
             "permanent": true
         },
         {
             "source": "/reference/apis/spaces-api(/)?",
-            "destination": "/reference/apis/spaces-api/latest",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
             "source": "/operate/api-connector(/)?",
-            "destination": "/manuals/spaces/howtos/api-connector",
+            "destination": "/self-hosted-spaces/howtos/api-connector",
             "permanent": true
         },
         {
@@ -1192,12 +1192,12 @@
         },
         {
             "source": "/connect/git-integration(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/gitops",
+            "destination": "/cloud-spaces/howtos/gitops-on-upbound",
             "permanent": true
         },
         {
             "source": "/deploy(/)?",
-            "destination": "/manuals/spaces/overview",
+            "destination": "/self-hosted-spaces/overview",
             "permanent": true
         },
         {
@@ -1247,12 +1247,12 @@
         },
         {
             "source": "/deploy/dedicated-spaces(/)?",
-            "destination": "/manuals/spaces/howtos/cloud-spaces/dedicated-spaces-deployment",
+            "destination": "/cloud-spaces/howtos/dedicated-spaces-deployment",
             "permanent": true
         },
         {
             "source": "/deploy/self-hosted-spaces(/)?",
-            "destination": "/manuals/spaces/overview",
+            "destination": "/self-hosted-spaces/overview",
             "permanent": true
         },
         {
@@ -1267,7 +1267,7 @@
         },
         {
             "source": "/reference/space-api(/)?",
-            "destination": "/reference/apis/spaces-api/latest/",
+            "destination": "/self-hosted-spaces/reference/",
             "permanent": true
         },
         {
@@ -1282,17 +1282,17 @@
         },
         {
             "source": "/platform/concepts/identity-management/robots(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/robots",
+            "destination": "/manuals/platform/robots",
             "permanent": true
         },
         {
             "source": "/manuals/platform/authentication/oidc-configuration(/)?",
-            "destination": "/manuals/platform/howtos/oidc",
+            "destination": "/manuals/platform/oidc",
             "permanent": true
         },
         {
             "source": "/manuals/howtos/self-hosted/deployment-reqs(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs",
+            "destination": "/self-hosted-spaces/howtos/deployment-reqs",
             "permanent": true
         },
         {
@@ -1307,22 +1307,22 @@
         },
         {
             "source": "/concepts/mcp/bring-your-own-controller(/)?",
-            "destination": "/manuals/spaces/concepts/control-planes/",
+            "destination": "/self-hosted-spaces/concepts/control-planes/",
             "permanent": true
         },
         {
             "source": "/all-spaces/self-hosted-spaces/aws-deployment(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/self-hosted-spaces-deployment/",
+            "destination": "/self-hosted-spaces/howtos/self-hosted-spaces-deployment/",
             "permanent": true
         },
         {
             "source": "/all-spaces/self-hosted-spaces/deployment(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/deployment-reqs/",
+            "destination": "/self-hosted-spaces/howtos/deployment-reqs/",
             "permanent": true
         },
         {
             "source": "/all-spaces/disconnected-spaces/access-control(/)?",
-            "destination": "/manuals/platform/concepts/identity-management/#role-based-access-control",
+            "destination": "/manuals/platform/iam/#role-based-access-control",
             "permanent": true
         },
         {
@@ -1331,8 +1331,8 @@
             "permanent": true
         },
         {
-            "source": "/manuals/spaces/howtos/self-hosted/workload-id-backup-restore(/)?",
-            "destination": "/manuals/spaces/howtos/self-hosted/workload-id/backup-restore-config/",
+            "source": "/self-hosted-spaces/howtos/workload-id/backup-restore-config(/)?",
+            "destination": "/self-hosted-spaces/howtos/workload-id/backup-restore-config/",
             "permanent": true
         },
         {
@@ -1372,7 +1372,7 @@
         },
         {
             "source": "/manuals/spaces/features/managed-service(/)?",
-            "destination": "/manuals/spaces/howtos/managed-service",
+            "destination": "/self-hosted-spaces/howtos/managed-service",
             "permanent": true
         },
         {
@@ -1402,7 +1402,7 @@
         },
         {
             "source": "/concepts/upbound-spaces(/)?",
-            "destination": "/manuals/spaces/overview",
+            "destination": "/self-hosted-spaces/overview",
             "permanent": true
         }
     ]
