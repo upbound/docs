@@ -70,7 +70,7 @@ rules:
   resources: ["controlplanes/k8s"]
   verbs: ["edit"] # or "admin" or "view", depending on access level
 ```
-<!-- vale Google.WordList = NO -->
+<!-- vale Google.WordList = YES -->
 
 
 [upbound-rbac]: /manuals/platform/rbac

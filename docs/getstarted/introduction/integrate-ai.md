@@ -51,9 +51,9 @@ existing control plane.
 
 Next, create a new file called `permissions.yaml`. Copy and paste the
 configuration below to set up the required RBAC permissions for the AI
-operations:
+operations and save the file:
 
-```yaml
+```yaml title="./permissions.yaml"
 ---
 # log-and-event-reader provides sufficient yet narrow scoped permissions for
 # reading pod logs and events related to the pod.
@@ -213,7 +213,7 @@ rules:
 Apply the permissions to your cluster:
 
 ```shell
-kubectl apply -f permissions.yaml
+kubectl apply -f ./permissions.yaml
 ```
 
 <!-- vale Google.Headings = NO -->
@@ -229,7 +229,7 @@ Create a new file called `claude.yaml` with your API key as a secret to your
 control plane. Copy and paste the configuration below and replace `you-api-key`
 with your actual Claude API key:
 
-```yaml
+```yaml title="./claude.yaml"
 apiVersion: v1
 kind: Secret
 metadata:
@@ -242,7 +242,7 @@ stringData:
 Apply the secret to your cluster:
 
 ```shell
-kubectl apply -f claude.yaml
+kubectl apply -f ./claude.yaml
 ```
 
 <!-- vale Google.Headings = NO -->
@@ -279,9 +279,9 @@ up operation generate analyze-events-for-pod-distress
 ```
 
 Next, create a remediation operation by replacing the contents of
-`getting-started/operations/remediate-oom/operation.yaml` with:
+`./operations/remediate-oom/operation.yaml` with:
 
-```yaml
+```yaml title="./operations/remediate-oom/operation.yaml"
 apiVersion: ops.crossplane.io/v1alpha1
 kind: WatchOperation
 metadata:
@@ -308,10 +308,10 @@ spec:
 
 
 Configure your analysis operation by replacing the contents of
-`getting-started/operations/analyze-events-for-pod-distress/operation.yaml`
+`./operations/analyze-events-for-pod-distress/operation.yaml`
 with:
 
-```yaml
+```yaml title="./operations/analyze-events-for-pod-distress/operation.yaml"
 apiVersion: ops.crossplane.io/v1alpha1
 kind: WatchOperation
 metadata:
@@ -417,9 +417,9 @@ up project run --local
 
 Configure the function runtime permissions.
 
-Save the following YAML as `deploymentruntimeconfigs.yaml`:
+Save the following YAML as `./deploymentruntimeconfigs.yaml`:
 
-```yaml
+```yaml title="./deploymentruntimeconfigs.yaml"
 apiVersion: pkg.crossplane.io/v1beta1
 kind: DeploymentRuntimeConfig
 metadata:
@@ -514,7 +514,7 @@ spec:
 Apply the runtime configurations:
 
 ```shell
-kubectl apply -f deploymentruntimeconfigs.yaml
+kubectl apply -f ./deploymentruntimeconfigs.yaml
 ```
 
 These configurations associate the permissions you created earlier with the
@@ -531,9 +531,9 @@ Deploy a WebApp built to trigger out-of-memory conditions.
 <!-- vale Google.Will = YES -->
 <!-- vale gitlab.FutureTense = YES -->
 
-Save the following YAML as `oomkilled.yaml`:
+Save the following YAML as `./oomkilled.yaml`:
 
-```yaml
+```yaml title="./oomkilled.yaml"
 apiVersion: platform.example.com/v1alpha1
 kind: WebApp
 metadata:
@@ -580,9 +580,9 @@ kubectl get analysis,remediation,remediationrequests,operations -A
 
 <!-- vale Google.WordList = NO -->
 :::note
-The WatchOperation `analyze-events-for-pod-distress` manifest above filters events down to:
+The WatchOperation `./analyze-events-for-pod-distress` manifest above filters events down to:
 
-```yaml
+```yaml title="./analyze-events-for-pod-distress"
 apiVersion: filter.event.fn.upbound.io/v1alpha1
 kind: Input
 type: Warning

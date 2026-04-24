@@ -5,10 +5,6 @@ description: Environment Configs or EnvironmentConfigs are an in-memory datastor
   used in Compositions
 ---
 
-<!--
-TODO: Add Policies
--->
-
 A Crossplane EnvironmentConfig is a cluster-scoped, strongly typed,
 [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/)-like
 resource used by Compositions. Compositions can use the environment to store

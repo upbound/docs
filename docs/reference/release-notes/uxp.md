@@ -14,6 +14,85 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v1.20.6-up.2
+
+### Release Date: 2026-04-22
+
+#### What's Changed
+
+Based on Crossplane [v1.20.6](https://github.com/crossplane/crossplane/releases/tag/v1.20.6).
+
+- Bumped Go to 1.25.9 to cover stdlib CVEs
+
+## v2.2.1-up.1
+
+### Release Date: 2026-04-21
+
+#### What's Changed
+
+Based on Crossplane v2.2.1.
+
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting — packages installed via a prefix rewrite are now upgraded when their dependencies change
+- Support `ResourceSelector` with no match field — a selector with only `apiVersion` and `kind` set is now interpreted as "all resources of that kind" instead of being rejected
+- Bumped Go to 1.25.9 and a range of dependencies (grpc, go-jose, cosign, go-git, cert-manager, containerd, helm, docker/cli, cloudflare/circl, moby/spdystream, sigstore/timestamp-authority, otel) for CVE remediation
+- Bumped `uxp-apollo` to 0.4.9 and `uxp-webui` to 1.1.4
+
+## v2.0.8-up.1
+
+### Release Date: 2026-04-21
+
+#### What's Changed
+
+Based on Crossplane v2.0.8.
+
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting — packages installed via a prefix rewrite are now upgraded when their dependencies change
+- Support `ResourceSelector` with no match field — a selector with only `apiVersion` and `kind` set is now interpreted as "all resources of that kind" instead of being rejected
+- Bumped Go to 1.25.9 and a range of dependencies (grpc, go-jose, go-git, cert-manager, containerd, helm, docker/cli, cloudflare/circl, moby/spdystream, sigstore/timestamp-authority, otel) for CVE remediation
+- Bumped `uxp-apollo` to 0.2.16
+
+## v2.1.5-up.1
+
+### Release Date: 2026-04-20
+
+#### What's Changed
+
+Based on Crossplane v2.1.5.
+
+- Reset circuit breaker state on XR deletion
+- Correctly handle dependency upgrades with `ImageConfig` prefix rewriting — packages installed via a prefix rewrite are now upgraded when their dependencies change
+- Support `ResourceSelector` with no match field — a selector with only `apiVersion` and `kind` set is now interpreted as "all resources of that kind" instead of being rejected
+- Bumped Go to 1.25.9 and a range of dependencies (grpc, go-git, go-jose, cert-manager, containerd, helm, docker/cli, cloudflare/circl, sigstore/timestamp-authority, otel) for CVE remediation
+- Bumped `uxp-apollo` to 0.2.16 for a k8s.io/kubernetes CVE remediation
+
+## v2.2.0-up.5
+
+### Release Date: 2026-04-10
+
+#### What's Changed
+
+Based on Crossplane v2.2.0.
+
+- Fixed internal version reporting that caused the `-up.x` suffix to be treated as a semver prerelease, which could cause package constraint checks (e.g. `>=v1.15.2`) to fail
+
+## v2.2.0-up.4
+
+### Release Date: 2026-04-08
+
+#### What's Changed
+
+Based on Crossplane v2.2.0.
+
+- Added FunctionRunner payload size metrics
+- Updated WebUI to v1.1.2
+
+## v2.1.4-up.3
+
+### Release Date: 2026-04-08
+
+#### What's Changed
+- Bumped Crossplane to v2.1.4-up.3
+- Added FunctionRunner payload size metrics
+
 ## v2.2.0-up.3
 
 ### Breaking changes
@@ -41,6 +120,14 @@ For most users nothing will change. But if you are setting different `args` in y
 - Bumped UXP to 2.1.0-up.1
 - Updated controller-manager and apollo to latest versions
 - Reverted controller-manager bump
+
+## v2.0.7-up.3
+
+#### What's Changed
+- Added FunctionRunner payload size metrics
+- Fixed promote workflow
+- Fixed xpkg login in promote job
+- Fixed marketplace username in promote job
 
 ## v2.0.2-up.5
 

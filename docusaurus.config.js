@@ -17,6 +17,11 @@ const config = {
             src: "https://cdn-cookieyes.com/client_data/401fea7900d8d7b84b9e7b40/script.js",
             id: "cookieyes",
         },
+        {
+            src: "/js/inline-docs.js",
+            id: "inline-docs",
+            defer: true,
+        },
     ],
     customFields: {
         apiUrl: process.env.UPBOUND_API_URL || "https://api.upbound.io",
@@ -138,14 +143,14 @@ const config = {
     themeConfig:
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            // announcementBar: {
-            //     id: "my_custom_banner",
-            //     content:
-            //         '<a href="https://www.upbound.io/events/kubecon-cloudnativecon-north-america-atlanta-2025" target="_blank" rel="noopener noreferrer">🎉 Join us at KubeCon Atlanta!</a>',
-            //     backgroundColor: "#9b5efc",
-            //     textColor: "#fff",
-            //     isCloseable: true,
-            // },
+        //   announcementBar: {
+        //       id: "my_custom_banner",
+        //       content:
+        //          '<a href="https://www.upbound.io/events/kubecon-cloudnativecon-emea-amsterdam-2026" target="_blank" rel="noopener noreferrer">🎉 Visit us at KubeCon Amsterdam!</a>',
+        //      backgroundColor: "#9b5efc",
+        //        textColor: "#fff",
+        //        isCloseable: true,
+        //    },
             head: [
                 [
                     "meta",
@@ -242,7 +247,7 @@ const config = {
             },
             algolia: {
                 appId: "4OZX85VEXQ",
-                apiKey: "9f96702edcf79d7097bedfce2813d49e",
+                apiKey: process.env.ALGOLIA_API_KEY || "9f96702edcf79d7097bedfce2813d49e",
                 indexName: "upbound",
                 contextualSearch: true,
                 searchPagePath: "search",

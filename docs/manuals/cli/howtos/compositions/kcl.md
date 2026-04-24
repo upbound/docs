@@ -110,7 +110,7 @@ resource is ready in your infrastructure.
          spec.forProvider = {
              associatePublicIpAddress: True
              instanceType: "t3.micro"
-             availabilityZone: oxr.spec.parameters.locaton
+             availabilityZone: oxr.spec.parameters.location
              cpuCoreCount: 10
          }
        }
@@ -218,7 +218,7 @@ _items = [
         spec.forProvider = {
             associatePublicIpAddress: True
             ipv6Addresses: ["192.168.1.1"]
-            availabilityZone: oxr.spec.parameters.locaton
+            availabilityZone: oxr.spec.parameters.location
             cpuCoreCount: 10
         }
     }

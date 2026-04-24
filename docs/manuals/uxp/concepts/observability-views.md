@@ -44,7 +44,7 @@ The observability dashboard displays data from two sources:
 2. Time-Series Metrics (Prometheus, Standard editions only)
 
     - Reconciliation metrics provides reconciliation rates per controller to identify stuck or overloaded controllers
-    - External API calls captures the volume of API calls per resource kind to spot providers under heavy load
+    - External API calls captures the volume of API calls per resource kind to spot providers under heavy load. This metric is only available for **provider-aws**—other upjet-based providers (Azure, GCP) don't emit `upjet_resource_external_api_calls_total`.
     - Function latency provides function execution times to identify performance issues
 <!-- vale write-good.Passive = YES -->
 
@@ -102,7 +102,7 @@ webui:
 Your Prometheus needs to scrape UXP components and have these metrics available:
 
 - `controller_runtime_reconcile_total`
-- `upjet_resource_external_api_calls_total`
+- `upjet_resource_external_api_calls_total`—emitted by **provider-aws only**; Azure and GCP upjet-based providers don't support this metric.
 - `function_run_function_seconds_bucket`, `_sum`, `_count`
 
 [web-ui]: /manuals/console/self-service

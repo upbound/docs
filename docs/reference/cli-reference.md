@@ -3,7 +3,7 @@ title: CLI Reference
 sidebar_position: 3
 ---
 
-This documentation is for the `up` CLI v0.46.0.
+This documentation is for the `up` CLI v0.47.0.
 
 The latest version of `up` can be installed by running:
 
@@ -20,6 +20,8 @@ import UpConfig from '/cli/up_config.md';
 import UpConfigGet from '/cli/up_config_get.md';
 import UpConfigSet from '/cli/up_config_set.md';
 import UpControlplane from '/cli/up_controlplane.md';
+import UpControlplaneAddOn from '/cli/up_controlplane_add-on.md';
+import UpControlplaneAddOnInstall from '/cli/up_controlplane_add-on_install.md';
 import UpControlplaneAPIConnector from '/cli/up_controlplane_api-connector.md';
 import UpControlplaneAPIConnectorInstall from '/cli/up_controlplane_api-connector_install.md';
 import UpControlplaneAPIConnectorUninstall from '/cli/up_controlplane_api-connector_uninstall.md';
@@ -53,6 +55,8 @@ import UpCtx from '/cli/up_ctx.md';
 import UpDependency from '/cli/up_dependency.md';
 import UpDependencyAdd from '/cli/up_dependency_add.md';
 import UpDependencyCleanCache from '/cli/up_dependency_clean-cache.md';
+import UpDependencyList from '/cli/up_dependency_list.md';
+import UpDependencyTree from '/cli/up_dependency_tree.md';
 import UpDependencyUpdateCache from '/cli/up_dependency_update-cache.md';
 import UpExample from '/cli/up_example.md';
 import UpExampleGenerate from '/cli/up_example_generate.md';
@@ -216,6 +220,12 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up controlplane
 
 <UpControlplane />
+## up controlplane add-on
+
+<UpControlplaneAddOn />
+## up controlplane add-on install
+
+<UpControlplaneAddOnInstall />
 ## up controlplane api-connector
 
 <UpControlplaneAPIConnector />
@@ -315,6 +325,12 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up dependency clean-cache
 
 <UpDependencyCleanCache />
+## up dependency list
+
+<UpDependencyList />
+## up dependency tree
+
+<UpDependencyTree />
 ## up dependency update-cache
 
 <UpDependencyUpdateCache />
