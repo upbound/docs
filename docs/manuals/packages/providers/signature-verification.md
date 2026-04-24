@@ -102,4 +102,4 @@ For further details on verifying signatures with Crossplane, refer to the [Cross
 
 
 [cosign]: https://docs.sigstore.dev/cosign/system_config/installation/
-[crossplane-documentation]: https://docs.crossplane.io/v1.18/concepts/image-configs/#configuring-signature-verification
+[crossplane-documentation]: https://docs.crossplane.io/latest/packages/image-configs/#configuring-signature-verification

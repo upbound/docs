@@ -918,7 +918,7 @@ further assistance, please reach out to your Upbound account representative.
 - We fixed Backup's expired TTL resulting in deadlock.
 - We fixed a bug preventing scraping of metrics from the control plane etcd pods.
 - We've added a configuration option to enable
-  Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/v1.19/concepts/server-side-apply/) in managed
+  Crossplane [SSA Claims alpha feature](https://docs.crossplane.io/v1.20/concepts/server-side-apply/) in managed
   control planes.
 
 ## v1.6.0

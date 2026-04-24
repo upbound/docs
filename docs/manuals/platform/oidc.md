@@ -298,7 +298,7 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 [provider-gcp-authentication]:/manuals/packages/providers/authentication#gcp-upbound-oidc
 [crossplane-providers]: https://docs.crossplane.io/latest/packages/providers/
 [marketplace]: https://marketplace.upbound.io/providers
-[providerconfig]: https://docs.crossplane.io/latest/concepts/providers/#provider-configuration
+[providerconfig]: https://docs.crossplane.io/latest/packages/providers/#provider-configuration
 [upbound-s-aws-provider]: https://marketplace.upbound.io/providers/upbound/provider-family-aws/latest
 [providerconfig--1]: https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1
 [supplying-credentials]: https://marketplace.upbound.io/providers/upbound/provider-aws/latest/resources/aws.upbound.io/ProviderConfig/v1beta1#doc:spec-credentials-source
@@ -306,7 +306,7 @@ View [this Pull Request][this-pull-request] for a reference implementation.
 [openid-connect-oidc]: https://openid.net/connect/
 [oauth-2-0]: https://oauth.net/2/
 [provider-aws-authentication]:/manuals/packages/providers/authentication#aws-upbound-oidc
-[_deploymentruntimeconfig_]: https://docs.crossplane.io/latest/concepts/providers/#runtime-configuration
+[_deploymentruntimeconfig_]: https://docs.crossplane.io/latest/packages/providers/#runtime-configuration
 [provider-helm]: https://marketplace.upbound.io/providers/upbound/provider-helm/
 [json-web-tokens-jwts]: https://www.rfc-editor.org/rfc/rfc7519
 [this-pull-request]: https://github.com/upbound/provider-aws/pull/278

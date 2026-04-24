@@ -252,7 +252,7 @@ Read the [concept][project-concept] documentation to learn more about using proj
 [docker-desktop]: https://www.docker.com/products/docker-desktop/
 [project]: /manuals/cli/howtos/project 
 [configuration-overview]: /manuals/uxp/concepts/packages/configurations#the-crossplaneyaml-file
-[up-dep]: /reference/cli-reference#up-dependency-dep-add
+[up-dep]: /reference/cli-reference/#up-dependency-add
 [scaffold-api]: /manuals/cli/howtos/authoring-xrds/
 [self-managed-uxp]: /manuals/uxp/howtos/uxp-deployment
 [spaces]: /self-hosted-spaces/overview

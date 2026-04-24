@@ -2134,7 +2134,7 @@ spec:
 [identity-providers-add-provider]: https://console.aws.amazon.com/iamv2/home#/identity_providers/create
 [aws-iam-role]: https://console.aws.amazon.com/iamv2/home#/roles
 [aws-account-id]: https://docs.aws.amazon.com/signin/latest/userguide/console_account-alias.html
-[download-your-aws-access-key]: https://aws.github.io/aws-sdk-go-v2/docs/getting-started/#get-your-aws-access-keys
+[download-your-aws-access-key]: https://docs.aws.amazon.com/sdk-for-go/v2/developer-guide/welcome.html
 [aws-iam-role-chaining]: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining
 [assumerolewithwebidentity]: https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html
 [iam-oidc-provider]: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
@@ -2160,12 +2160,12 @@ spec:
 [gcp-iam-service-account-policy-binding]: https://cloud.google.com/sdk/gcloud/reference/iam/service-accounts/add-iam-policy-binding
 [gcp-service-account-impersonation-documentation]: https://cloud.google.com/iam/docs/service-account-impersonation
 [workload-identity]: https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity
-[upbound-apis]: /self-hosted-spaces/howtos/gitops/#gitops-for-upbound-resources
+[upbound-apis]: /cloud-spaces/howtos/gitops-on-upbound/#gitops-for-upbound-resources
 [jq-install]: https://jqlang.github.io/jq/download/
 [to-a-team]: /manuals/platform/robots/#assign-a-robot-to-a-team
 [grant-the-team-a-role]: /manuals/platform/teams/
-[generate-a-kubeconfig-for-a-space]: /self-hosted-spaces/howtos/gitops/#generate-a-kubeconfig-for-a-space
-[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /self-hosted-spaces/howtos/gitops/#generate-a-kubeconfig-for-a-control-plane-in-a-space
+[generate-a-kubeconfig-for-a-space]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-space
+[generate-a-kubeconfig-for-a-control-plane-in-a-space]: /manuals/cli/howtos/context-config/#generate-a-kubeconfig-for-a-control-plane-in-a-group
 [eks-access-entries]: https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html
 [aws-auth-configmap]: https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
 [eks-pod-identity]: https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html
