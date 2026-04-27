@@ -1444,6 +1444,11 @@
             "source": "/manuals/spaces/concepts/deployment-modes(/)?",
             "destination": "/cloud-spaces/concepts/deployment-modes",
             "permanent": true
+        },
+        {
+            "source": "/manuals/spaces/howtos/cloud-spaces/private-network-agent(/)?",
+            "destination": "/cloud-spaces/howtos/private-network-agent",
+            "permanent": true
         }
     ]
 }
