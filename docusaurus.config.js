@@ -251,6 +251,7 @@ const config = {
                 indexName: "upbound",
                 contextualSearch: true,
                 searchPagePath: "search",
+                askAi: process.env.ALGOLIA_ASK_AI_KEY || '',
                 searchParameters: {},
             },
             footer: {
