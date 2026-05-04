@@ -25,12 +25,6 @@ The server requires UP CLI authentication. Log in before starting:
 up login
 ```
 
-:::info
-For kubectl-ai, you also need an LLM API key configured. kubectl-ai uses Gemini
-by default. Set `GEMINI_API_KEY` before running any commands. See the
-[kubectl-ai docs][kubectl-ai] for other supported providers. 
-:::
-
 <Tabs>
 <TabItem value="http" label="HTTP (recommended)">
 
@@ -54,6 +48,16 @@ claude mcp add --scope user --transport http marketplace http://localhost:8765/m
 
 </TabItem>
 <TabItem value="kubectl-ai" label="kubectl-ai">
+
+:::info
+kubectl-ai requires an
+LLM API key and uses Gemini by default. Set `GEMINI_API_KEY` before running any
+commands. kubectl-ai supports AI models from Gemini, VertexAi, AZOpenAI, OpenAI,
+grok, Bedrock and local LLM providers such as ollama and llama.cpp. See the
+[kubectl-ai docs][kubectl-ai] for more information on the other supported
+providers. 
+:::
+
 
 Add the following to `~/.config/kubectl-ai/mcp.yaml`:
 
