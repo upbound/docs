@@ -174,6 +174,12 @@ Any important warnings or necessary information
 **Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.48.0 or later.
 ::: -->
 
+#### Important Changes
+
+- Upgrade the OpenTelemetry Operator to v0.139.0 or later before you upgrade
+  Spaces. This release updates OpenTelemetry dependencies in the
+  `opentelemetry-collector-spaces` image, which require that operator version.
+
 #### What's Changed
 
 - Control plane images updated (VCluster, CoreDNS, etcd, external-secrets-operator).
