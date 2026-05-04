@@ -19,6 +19,8 @@ The marketplace MCP server lets your AI coding assistant search and explore the
 [Upbound Marketplace][marketplace]. Use it to find packages, browse provider
 repositories, and retrieve package metadata including CRDs and usage examples.
 
+### Configure the Marketplace MCP server
+
 The server requires UP CLI authentication. Log in before starting:
 
 ```shell
@@ -187,13 +189,6 @@ function pipeline that powers [intelligent control plane
 operations][intelligentOps].
 <!-- vale write-good.Passive = YES -->
 
-### Available tools
-
-| Tool | Description |
-|---|---|
-| `get_pod_logs` | Retrieve container logs for a pod |
-| `get_pod_events` | Retrieve events associated with a pod |
-
 ### Configure the control plane MCP server
 
 Before starting, make sure you have:
@@ -298,6 +293,14 @@ The control plane MCP server runs as a sidecar container alongside
    `MCP_SERVER_TOOL_CTP1_BASEURL` tells `function-claude` where to reach the
    sidecar. The `ClusterRoleBinding` grants the `function-pod-analyzer` service
    account permission to read pod logs and events.
+
+### Available tools
+
+| Tool | Description |
+|---|---|
+| `get_pod_logs` | Retrieve container logs for a pod |
+| `get_pod_events` | Retrieve events associated with a pod |
+
 
 [marketplace]: https://marketplace.upbound.io
 [intelligentOps]: /manuals/uxp/concepts/operations/intelligent-operations/
