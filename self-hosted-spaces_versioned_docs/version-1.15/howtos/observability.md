@@ -63,7 +63,7 @@ before `v1.14.0`.
    ```
 
    :::important
-   If running Spaces `v1.14` or later, use OpenTelemetry Operator `v0.139.0` or later due to breaking changes.
+   If running Spaces `v1.15` or later, use OpenTelemetry Operator `v0.139.0` or later due to breaking changes.
    :::
 
 
