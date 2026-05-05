@@ -62,6 +62,12 @@ const config = {
                     trackingID: "G-J3WTQYFSSY",
                     anonymizeIP: true,
                 },
+                sitemap: {
+                    changefreq: "weekly",
+                    priority: 0.5,
+                    ignorePatterns: ["/search/**", "/tags/**"],
+                    filename: "sitemap.xml",
+                },
             }),
         ],
     ],
@@ -251,7 +257,6 @@ const config = {
                 indexName: "upbound",
                 contextualSearch: true,
                 searchPagePath: "search",
-                ...(process.env.ALGOLIA_ASK_AI_KEY && { askAi: process.env.ALGOLIA_ASK_AI_KEY }),
                 searchParameters: {},
             },
             footer: {
