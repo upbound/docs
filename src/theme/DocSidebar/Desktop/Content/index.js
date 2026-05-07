@@ -54,12 +54,12 @@ export default function DocSidebarDesktopContentWrapper(props) {
             value={getVersionFromPath(location.pathname)}
             onValueChange={handleVersionChange}
           >
-            <SelectTrigger className={styles.trigger}>
+            <SelectTrigger className={`${styles.trigger} spaces-version-trigger`}>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="spaces-version-content">
               {versions.map((v) => (
-                <SelectItem key={v.value} value={v.value}>
+                <SelectItem key={v.value} value={v.value} className="spaces-version-item">
                   {v.label}
                 </SelectItem>
               ))}
