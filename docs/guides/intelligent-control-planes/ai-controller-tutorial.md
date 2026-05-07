@@ -539,7 +539,7 @@ Continue with:
 [uxp-releases]: /reference/release-notes/uxp
 [cronops-ref]: /manuals/uxp/concepts/operations/cron-operation/
 [watchops-ref]: /manuals/uxp/concepts/operations/watch-operation/
-[fn-docs]: /manuals/uxp/concepts/composition/
+[fn-docs]: /manuals/uxp/concepts/composition/overview
 [auth-docs]: /manuals/packages/providers/authentication/
 [marketplace]: https://marketplace.upbound.io/
 

@@ -462,7 +462,7 @@ Continue with:
 [aws-rds]: https://us-east-1.console.aws.amazon.com/rds/home?region=us-east-1#databases:
 [cronops-ref]: /manuals/uxp/concepts/operations/cron-operation/
 [watchops-ref]: /manuals/uxp/concepts/operations/watch-operation/
-[fn-docs]: /manuals/uxp/concepts/composition/
+[fn-docs]: /manuals/uxp/concepts/composition/overview
 [auth-docs]: /manuals/packages/providers/authentication/
 [aws-auth-docs]: /manuals/packages/providers/authentication/#aws-authentication
 [marketplace]: https://marketplace.upbound.io/
