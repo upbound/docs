@@ -1,5 +1,5 @@
 ---
-title: Build an AI controller with Crossplane
+title: Build an AI controller 
 description: Deploy a WatchOperation that uses a local LLM to enforce platform policy.
 weight: {weight}
 validation:
