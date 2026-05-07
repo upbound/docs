@@ -1,24 +1,22 @@
 ---
 title: Build a platform with Upbound
-description: Deploy a real app with a cloud database, observe drift detection, enforce policies, and change infrastructure live — all from a single control plane.
+description: Deploy a real app with a cloud database, observe drift detection, enforce policies, and change infrastructure live, all from a single control plane.
 weight: {weight}
 validation:
   type: walkthrough
   owner: docs@upbound.io
   environment: local-upbound
   timeout: 30m
-  variables:
-    AWS_ACCESS_KEY_ID: ""
-    AWS_SECRET_ACCESS_KEY: ""
 ---
 
-In this tutorial, you deploy an application with a PostgreSQL database on AWS,
-watch Crossplane self-heal a manually changed resource, enforce security policy,
-and change live infrastructure — all by updating YAML files.
+In this tutorial, you deploy an application with a PostgreSQL database on AWS.
+You use Upbound Crossplane to manage resources, enforce security policy, and
+change infrastructure.
 
 By the end of this tutorial, you can:
 
 - Deploy a composite resource that creates multiple AWS resources from a single manifest
+- Explore the providers and ProviderConfigs that connect your platform to AWS
 - Trigger drift detection and watch Crossplane correct an out-of-band change
 - Block non-compliant requests with Kyverno before they reach Crossplane
 - Update live infrastructure by changing desired state
@@ -28,106 +26,41 @@ By the end of this tutorial, you can:
 Install the following tools before starting:
 
 - [`kubectl`][kubectl-install]
-- [AWS CLI][aws-cli], configured with credentials for an account where you can create resources
+- [AWS CLI][aws-cli], configured with credentials for an account where you can create VPCs, IAM roles, and RDS instances
 - [kind][kind]
-
-### Install the up CLI
-
-Install the `up` CLI via shell script:
-
-```shell
-curl -sL "https://cli.upbound.io" | sh
-```
-
-If the script fails, download a specific version directly from [GitHub releases][up-cli-releases].
-
-Move the binary into your `PATH`:
-
-```shell
-sudo mv up /usr/local/bin/
-```
-
-If you don't have `sudo` access, install to a user-local directory instead:
-
-```shell
-mkdir -p ~/.local/bin && mv up ~/.local/bin/
-```
-
-Then add it to your `PATH` permanently by adding this line to your shell
-profile (`~/.bashrc`, `~/.zshrc`, or equivalent):
-
-```shell
-export PATH="$HOME/.local/bin:$PATH"
-```
+- [`up CLI`][up-cli] v0.44.3 or later
 
 ## Create the project
 
-### Create the project directory
+Scaffold a new project with `up project init`. This creates the `app-w-db/`
+directory with a valid `upbound.yaml` and the standard project layout
+(`apis/`, `functions/`, `examples/`, `tests/`):
 
 ```bash
-mkdir platform-demo
-cd platform-demo
+up project init --scratch app-w-db
+cd app-w-db
 ```
 
-All commands from this point run from inside the `platform-demo` directory.
+All commands from this point run from inside the `app-w-db` directory.
 
-### Create the project manifest
-
-The `upbound.yaml` file declares the project and its provider and function
-dependencies. `up project run --local` reads this file to determine what
-packages to install into the cluster.
+The platform composes AWS resources and uses `function-auto-ready` so composite
+resources report ready status. Add them as project dependencies:
 
 ```bash
-cat > upbound.yaml <<'EOF'
-apiVersion: meta.dev.upbound.io/v2alpha1
-kind: Project
-metadata:
-  name: app-w-db
-spec:
-  apiDependencies:
-  - k8s:
-      version: v1.33.0
-    type: k8s
-  dependsOn:
-  - apiVersion: pkg.crossplane.io/v1
-    kind: Provider
-    # provider-family-aws installs shared config and authentication infrastructure.
-    package: xpkg.upbound.io/upbound/provider-family-aws
-    version: v2.4.0
-  - apiVersion: pkg.crossplane.io/v1
-    kind: Provider
-    # provider-aws-iam manages IAM roles and policies.
-    package: xpkg.upbound.io/upbound/provider-aws-iam
-    version: v2.4.0
-  - apiVersion: pkg.crossplane.io/v1
-    kind: Provider
-    # provider-aws-rds manages RDS instances and subnet groups.
-    package: xpkg.upbound.io/upbound/provider-aws-rds
-    version: v2.4.0
-  - apiVersion: pkg.crossplane.io/v1
-    kind: Provider
-    # provider-aws-ec2 manages VPCs and subnets.
-    package: xpkg.upbound.io/upbound/provider-aws-ec2
-    version: v2.4.0
-  - apiVersion: pkg.crossplane.io/v1beta1
-    kind: Function
-    # function-auto-ready marks composed resources as ready automatically.
-    package: xpkg.upbound.io/crossplane-contrib/function-auto-ready
-    version: v0.6.1
-  description: A Crossplane composition that provisions a web application with a
-    managed database (RDS), networking (VPC/Subnets), IAM role, and a Kubernetes Deployment.
-  license: Apache-2.0
-  maintainer: Upbound User <user@example.com>
-EOF
+up dependency add 'xpkg.upbound.io/upbound/provider-family-aws:v2.4.0'
+up dependency add 'xpkg.upbound.io/upbound/provider-aws-iam:v2.4.0'
+up dependency add 'xpkg.upbound.io/upbound/provider-aws-rds:v2.4.0'
+up dependency add 'xpkg.upbound.io/upbound/provider-aws-ec2:v2.4.0'
+up dependency add 'xpkg.upbound.io/crossplane-contrib/function-auto-ready:v0.6.1'
 ```
 
-### Define the platform APIs
+`up dependency add` records each dependency in `upbound.yaml`.
 
 The platform exposes two APIs: `AppWDB` (a basic app with a database) and
 `AppWDBSecure` (the same API with an optional security context, used later for
 policy enforcement).
 
-Create the API directory and XRD for `AppWDB`:
+Create the `AppWDB` XRD:
 
 ```bash
 mkdir -p apis/appwdb
@@ -173,7 +106,7 @@ spec:
                     description: RDS instance class
                   region:
                     type: string
-                    default: eu-central-1
+                    default: us-east-1
                     description: AWS region
             required:
             - parameters
@@ -187,7 +120,7 @@ spec:
 EOF
 ```
 
-Create the XRD for `AppWDBSecure`:
+Create the `AppWDBSecure` XRD:
 
 ```bash
 mkdir -p apis/appwdbsecure
@@ -233,7 +166,7 @@ spec:
                     description: RDS instance class
                   region:
                     type: string
-                    default: eu-central-1
+                    default: us-east-1
                     description: AWS region
                   securityContext:
                     type: object
@@ -254,62 +187,8 @@ spec:
 EOF
 ```
 
-### Create the Compositions
-
-Both APIs share the same composition function, `app-w-dbcompose-resources`,
-which is the KCL function you create in the next step.
-
-```bash
-cat > apis/appwdb/composition.yaml <<'EOF'
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  labels:
-    provider: aws
-    type: app-w-db
-  name: appwdbs.demo.upbound.io
-spec:
-  compositeTypeRef:
-    apiVersion: demo.upbound.io/v1alpha1
-    kind: AppWDB
-  mode: Pipeline
-  pipeline:
-  - step: compose-resources
-    functionRef:
-      name: app-w-dbcompose-resources
-  - step: automatically-detect-ready-composed-resources
-    functionRef:
-      name: crossplane-contrib-function-auto-ready
-EOF
-
-cat > apis/appwdbsecure/composition.yaml <<'EOF'
-apiVersion: apiextensions.crossplane.io/v1
-kind: Composition
-metadata:
-  labels:
-    provider: aws
-    type: app-w-db-secure
-  name: appwdbsecures.demo.upbound.io
-spec:
-  compositeTypeRef:
-    apiVersion: demo.upbound.io/v1alpha1
-    kind: AppWDBSecure
-  mode: Pipeline
-  pipeline:
-  - step: compose-resources
-    functionRef:
-      name: app-w-dbcompose-resources
-  - step: automatically-detect-ready-composed-resources
-    functionRef:
-      name: crossplane-contrib-function-auto-ready
-EOF
-```
-
-### Create the composition function
-
 The composition function is a KCL program that maps the user's 10-line request
-to the full set of AWS resources. Create the function directory and package
-manifest:
+to the full set of AWS resources.
 
 ```bash
 mkdir -p functions/compose-resources
@@ -320,9 +199,8 @@ version = "0.1.0"
 EOF
 ```
 
-Create the composition logic in `main.k`. This is the entire implementation —
-it reads from the composite resource and outputs every managed resource
-Crossplane creates:
+Create `main.k`. This file is the entire composition logic. It reads the
+composite resource and outputs every managed resource Crossplane creates:
 
 ```bash
 cat > functions/compose-resources/main.k <<'EOF'
@@ -331,7 +209,7 @@ ocds = option("params").ocds
 
 params = oxr.spec.parameters
 appName = oxr.metadata.name
-region = params.region or "eu-central-1"
+region = params.region or "us-east-1"
 dbSize = params.dbSize or "db.t3.micro"
 replicas = params.replicas or 2
 
@@ -387,7 +265,7 @@ _db_items = [{
             username: "demoadmin"
             dbName: "appdb"
             autoGeneratePassword: True
-            passwordSecretRef: {name: "${appName}-db-password", key: "password"}
+            passwordSecretRef: {namespace: oxr.metadata.namespace, name: "${appName}-db-password", key: "password"}
             applyImmediately: True
             skipFinalSnapshot: True
             allocatedStorage: 20
@@ -469,10 +347,86 @@ items = _items
 EOF
 ```
 
-### Create the ProviderConfig
+Create the base example and the variants used in later steps:
 
-The `ProviderConfig` tells the AWS providers where to find credentials. Create
-it now — you apply it after providers are healthy.
+```bash
+mkdir -p examples/appwdb
+cat > examples/appwdb/example.yaml <<'EOF'
+apiVersion: demo.upbound.io/v1alpha1
+kind: AppWDB
+metadata:
+  name: demo-01
+  namespace: demo
+spec:
+  parameters:
+    replicas: 2
+    dbSize: db.t3.micro
+    region: us-east-1
+EOF
+
+cat > examples/appwdb/variant-bigger-db.yaml <<'EOF'
+apiVersion: demo.upbound.io/v1alpha1
+kind: AppWDB
+metadata:
+  name: demo-01
+  namespace: demo
+spec:
+  parameters:
+    replicas: 2
+    dbSize: db.t3.medium
+    region: us-east-1
+EOF
+
+cat > examples/appwdb/variant-more-replicas.yaml <<'EOF'
+apiVersion: demo.upbound.io/v1alpha1
+kind: AppWDB
+metadata:
+  name: demo-01
+  namespace: demo
+spec:
+  parameters:
+    replicas: 5
+    dbSize: db.t3.micro
+    region: us-east-1
+EOF
+```
+
+Create the secure examples used in the policy enforcement step:
+
+```bash
+mkdir -p examples/appwdbsecure
+cat > examples/appwdbsecure/example-1.yaml <<'EOF'
+apiVersion: demo.upbound.io/v1alpha1
+kind: AppWDBSecure
+metadata:
+  name: kyverno-demo-01
+  namespace: demo
+spec:
+  parameters:
+    replicas: 2
+    dbSize: db.t3.micro
+    region: us-east-1
+    securityContext:
+      privileged: true
+EOF
+
+cat > examples/appwdbsecure/example-2.yaml <<'EOF'
+apiVersion: demo.upbound.io/v1alpha1
+kind: AppWDBSecure
+metadata:
+  name: kyverno-demo-01
+  namespace: demo
+spec:
+  parameters:
+    replicas: 2
+    dbSize: db.t3.micro
+    region: us-east-1
+    securityContext:
+      privileged: false
+EOF
+```
+
+The `ProviderConfig` tells the AWS providers where to find credentials.
 
 ```bash
 mkdir -p setup/config
@@ -494,62 +448,45 @@ EOF
 
 ## Configure AWS credentials
 
-The demo creates real AWS resources. You need credentials with permissions to
-create VPCs, subnets, IAM roles, and RDS instances.
+The demo creates real AWS resources. Create a file named `aws-credentials.txt`
+in the project directory with credentials that have permissions to create VPCs,
+subnets, IAM roles, and RDS instances:
 
-Export your credentials:
-
-```bash
-export AWS_ACCESS_KEY_ID=<your-access-key-id>
-export AWS_SECRET_ACCESS_KEY=<your-secret-access-key>
+```ini
+[default]
+aws_access_key_id = <your-access-key-id>
+aws_secret_access_key = <your-secret-access-key>
 ```
+
+:::warning
+This tutorial uses static AWS credentials for convenience. Don't use static
+credentials in production. Use IAM roles, IRSA, or another short-lived
+credential mechanism instead. See [AWS authentication][aws-auth-docs] for
+secure alternatives.
+:::
 
 ## Start the project
 
-Open a dedicated terminal window and run from inside the `platform-demo` directory:
+Open a dedicated terminal window and run from inside `app-w-db`:
 
 ```bash
-up project run --local
+up project run --local --ingress
 ```
 
-Leave this terminal running for the duration of the tutorial. This command:
+This command:
 
-- Creates a kind cluster named `up-app-w-db` (the default name for `up project run --local`)
+- Creates a kind cluster named `up-app-w-db`
 - Installs UXP into the cluster
 - Builds and deploys the KCL composition function
 - Installs the AWS providers declared in `upbound.yaml`
-- Applies the XRDs and Compositions from `apis/`
+- Applies the XRDs from `apis/`
+- Installs an ingress controller for the UXP console
 
-Startup takes several minutes. Once the command prints output confirming the
-cluster is created and providers are installing, open a second terminal,
-`cd` into the `platform-demo` directory, and continue with the steps below.
-
-:::warning
-`up project run --local` may print `traces export: context deadline exceeded`
-in stderr. This is a non-fatal telemetry export error — it does not mean
-provisioning failed. Check whether providers were actually installed by running
-`kubectl get providers` in the second terminal. If providers appear, continue.
-
-If `up project run --local` exits non-zero AND `kubectl get providers` returns
-**No resources found**, provisioning did fail. Run
-`kind delete cluster --name up-app-w-db` and restart from this step. Verify
-your network allows outbound connections to `xpkg.upbound.io` on port 443.
-:::
-
-### Configure kubectl
-
-Once `up project run --local` has created the cluster, point kubectl at it.
-Run this in your second terminal from inside the `platform-demo` directory:
-
-```bash
-kind get kubeconfig --name up-app-w-db > ~/.kube/config
-```
+Startup takes several minutes. Keep this terminal open throughout the tutorial.
 
 :::warning
-This overwrites your existing `~/.kube/config`. To preserve your existing
-contexts, use `kind get kubeconfig --name up-app-w-db > ~/.kube/config-upbound`
-and then merge: `KUBECONFIG=~/.kube/config:~/.kube/config-upbound kubectl
-config view --flatten > ~/.kube/config.merged && mv ~/.kube/config.merged ~/.kube/config`
+`up project run --local` may print `traces export: context deadline exceeded`.
+This message reports a telemetry timeout and doesn't affect the cluster setup.
 :::
 
 Verify the connection:
@@ -558,39 +495,34 @@ Verify the connection:
 kubectl get nodes
 ```
 
-### Apply AWS credentials
+Apply your AWS credentials so providers can authenticate:
 
-1. Create the demo namespace:
+1. Create the `demo` namespace:
 
    ```bash
    kubectl create namespace demo
    ```
 
-2. Create a Kubernetes secret with your AWS credentials:
+2. Create a secret with your AWS credentials:
 
    ```bash
    kubectl create secret generic aws-secret \
      -n demo \
-     --from-literal=creds="$(printf '[default]\naws_access_key_id = %s\naws_secret_access_key = %s\n' \
-       "$AWS_ACCESS_KEY_ID" "$AWS_SECRET_ACCESS_KEY")"
+     --from-file=creds=./aws-credentials.txt
    ```
 
-### Verify the setup
-
-Check that providers are installed and healthy:
+Check that all four providers report healthy:
 
 ```bash
 kubectl get providers
 ```
 
-All providers should show `HEALTHY: True`. Keep running this command until all
-show `HEALTHY: True` before continuing.
+Wait until all four providers show `HEALTHY: True` before continuing.
 
 :::warning
-If this command returns **No resources found**, `up project run --local` did
-not complete successfully. Check that terminal for errors. An empty list means
-provisioning failed, not that it's still in progress. Delete the cluster with
-`kind delete cluster --name up-app-w-db` and restart.
+If this returns **No resources found**, `up project run --local` didn't
+complete. Delete the cluster with `kind delete cluster --name up-app-w-db` and
+restart.
 :::
 
 Check that the composition function is healthy:
@@ -599,14 +531,72 @@ Check that the composition function is healthy:
 kubectl get functions
 ```
 
-The function should show `HEALTHY: True`.
+The KCL function should show `HEALTHY: True`.
 
 :::warning
-If this returns **No resources found**, the KCL function was not built or
+If this returns **No resources found**, the KCL function wasn't built or
 deployed. Check the `up project run` terminal and restart.
 :::
 
-Verify the APIs are established:
+Capture the function name assigned by `up project run`:
+
+```bash
+FUNC_NAME=$(kubectl get functions --no-headers | grep -v 'crossplane-contrib' | awk '{print $1}')
+echo $FUNC_NAME
+```
+
+Apply both Compositions using that name:
+
+```bash
+cat > apis/appwdb/composition.yaml <<EOF
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  labels:
+    provider: aws
+    type: app-w-db
+  name: appwdbs.demo.upbound.io
+spec:
+  compositeTypeRef:
+    apiVersion: demo.upbound.io/v1alpha1
+    kind: AppWDB
+  mode: Pipeline
+  pipeline:
+  - step: compose-resources
+    functionRef:
+      name: \${FUNC_NAME}
+  - step: automatically-detect-ready-composed-resources
+    functionRef:
+      name: crossplane-contrib-function-auto-ready
+EOF
+
+cat > apis/appwdbsecure/composition.yaml <<EOF
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  labels:
+    provider: aws
+    type: app-w-db-secure
+  name: appwdbsecures.demo.upbound.io
+spec:
+  compositeTypeRef:
+    apiVersion: demo.upbound.io/v1alpha1
+    kind: AppWDBSecure
+  mode: Pipeline
+  pipeline:
+  - step: compose-resources
+    functionRef:
+      name: \${FUNC_NAME}
+  - step: automatically-detect-ready-composed-resources
+    functionRef:
+      name: crossplane-contrib-function-auto-ready
+EOF
+
+kubectl apply -f apis/appwdb/composition.yaml
+kubectl apply -f apis/appwdbsecure/composition.yaml
+```
+
+Verify both XRDs reach the `Established` condition:
 
 ```bash
 kubectl get xrds
@@ -615,115 +605,173 @@ kubectl get xrds
 Both XRDs should show `ESTABLISHED: True` before continuing.
 
 :::warning
-If this returns **No resources found**, stop here. No subsequent step will
-work without the XRDs installed. Return to the `up project run` terminal to
-diagnose the failure.
+If this returns **No resources found**, stop here. Return to the
+`up project run` terminal to diagnose the failure.
 :::
 
-### Apply the ProviderConfig
-
-The `ProviderConfig` CRD is registered by the AWS provider. Apply it only after
-providers are healthy:
+Apply the `ProviderConfig` only after all providers are healthy:
 
 ```bash
 kubectl apply -f setup/config/
 ```
 
 :::info
-AWS resource provisioning — especially RDS — takes 5–8 minutes. Each section
-of this tutorial is structured so you can keep reading while AWS works.
+AWS resource provisioning takes 5 to 8 minutes for RDS. Each section of this
+tutorial gives you something to read while AWS works.
 :::
+
+The UXP console provides a visual interface for browsing composite resources,
+viewing resource relationship graphs, and checking sync status.
+
+1. Enable the web UI:
+
+   ```bash
+   up uxp web-ui enable
+   ```
+
+2. In a new terminal, port-forward to the service:
+
+   ```bash
+   kubectl port-forward -n crossplane-system svc/webui 8080:80
+   ```
+
+3. Open `http://localhost:8080` in your browser.
+
+The console shows every composite resource, the tree of composed resources it
+manages, and their sync status. Use it throughout this tutorial to complement
+`kubectl` output.
 
 ## Deploy an app with a database
 
 The end-user interface for this platform is a 10-line manifest. A developer
-fills in three fields: replica count, database size, and AWS region. The VPC,
-subnets, IAM role, and RDS configuration are abstracted away.
+fills in three fields: replica count, database size, and AWS region. The
+platform handles the VPC, subnets, IAM role, and RDS configuration.
 
-```bash
-kubectl apply -f - <<'EOF'
-apiVersion: demo.upbound.io/v1alpha1
-kind: AppWDB
-metadata:
-  name: demo-01
-  namespace: demo
-spec:
-  parameters:
-    replicas: 2
-    dbSize: db.t3.micro
-    region: eu-central-1
-EOF
-```
+1. Apply the example manifest:
 
-Check the composite resource status:
+   ```bash
+   kubectl apply -f examples/appwdb/example.yaml
+   ```
 
-```bash
-kubectl get appwdb demo-01 -n demo
-```
+2. Check the composite resource status:
 
-That 10-line manifest creates:
+   ```bash
+   kubectl get appwdb demo-01 -n demo
+   ```
 
-- VPC + 3 subnets (eu-central-1a, b, c)
+3. Verify the `Deployment` came up:
+
+   ```bash
+   kubectl get pods -n demo
+   ```
+
+Those 10 lines create:
+
+- VPC + 3 subnets (`us-east-1a`, `us-east-1b`, `us-east-1c`)
 - RDS subnet group + PostgreSQL instance (gp3 storage)
 - IAM role
 - Kubernetes `Deployment` scaled to `replicas: 2`
 
-Open the AWS Console and set your region to **eu-central-1**. Check:
-- **IAM → Roles** — look for `demo-01-role`
-- **VPC → Your VPCs** — look for `demo-01-vpc`
-- **RDS → Databases** — watch for `demo-01-db` (takes 5–8 minutes)
+Open the AWS Console and set your region to **`us-east-1`**. Look for
+`demo-01-role` under **IAM → Roles**, `demo-01-vpc` under **VPC → Your VPCs**,
+and `demo-01-db` under **RDS → Databases** (about 5 to 8 minutes).
 
-Verify the `Deployment` came up:
+In the UXP console, click into `demo-01` and open the **relationship view** to
+see all composed resources and their sync status.
 
-```bash
-kubectl get pods -n demo
-```
-
-### Explore the composition
+Now look at the files that produced those resources.
 
 Open `apis/appwdb/definition.yaml`.
 
-This is the XRD — it defines what end users can request. The `dbSize` field is
-an enum, not a free-text field. Users can't request a size the platform doesn't
-support.
+The XRD defines the API your end users interact with. The `dbSize` field is
+an enum, not a free-text field, so users can't request a size the platform
+doesn't support.
 
 Open `apis/appwdb/composition.yaml`.
 
-This is the Composition — the mapping from those 10 lines to the full set of AWS
-resources. It calls the KCL function you created. You can also write Composition
-functions in [Go][fn-go], [Python][fn-python], or [Go Templating][fn-go-template],
-and mix languages within a single pipeline.
+The Composition maps those 10 lines to all the AWS resources. It calls the
+KCL function you created. You can also write Composition functions in
+[Go][fn-go], [Python][fn-python], or [Go Templating][fn-go-template], and mix
+languages within a single pipeline.
 
 Open `functions/compose-resources/main.k`.
 
-This is the logic layer. It reads `dbSize` and `replicas` from the composite
-resource and outputs every managed resource Crossplane creates.
+The logic layer reads `dbSize` and `replicas` from the composite resource and
+outputs every managed resource Crossplane creates. The platform team owns and
+maintains this file. End users never edit it.
+
+## Explore the control plane
+
+A **control plane** is software that continuously watches desired state and
+reconciles actual state to match it. Crossplane turns a Kubernetes cluster
+into a control plane for all infrastructure and applications.
+
+**Composite Resources** are the custom APIs your platform exposes. The file you
+applied in `examples/appwdb/example.yaml` is a Composite Resource. Instead of
+giving end users raw AWS access, the platform team defines higher-level
+abstractions like `AppWDB`, and end users request those.
+
+**Providers** are how Crossplane talks to external systems like AWS. Each
+provider is a Kubernetes controller that manages a specific service such as
+EC2, RDS, or IAM. In Crossplane 2.0, Crossplane composes the Kubernetes
+`Deployment` for your app natively, with no separate Kubernetes provider
+needed.
+
+**ProviderConfigs** tell providers how to authenticate. This demo uses a
+`Secret`-based `ProviderConfig`, but each provider supports multiple
+authentication methods:
+
+| Provider | Authentication methods |
+|----------|----------------------|
+| AWS | OIDC (Upbound), access keys, WebIdentity, IRSA |
+| Azure | OIDC (Upbound), service principal, managed identity |
+| GCP | OIDC (Upbound), service account keys, workload identity |
+| Helm | Injected identity with cloud provider credentials |
+
+More details in [provider authentication][auth-docs].
+
+1. Confirm all four providers are healthy:
+
+   ```bash
+   kubectl get providers
+   ```
+
+   All four should show `HEALTHY: True`.
+
+2. Confirm the `ProviderConfig` is present:
+
+   ```bash
+   kubectl get providerconfigs.aws.m.upbound.io default -n demo
+   ```
+
+In the UXP console, navigate to `demo-01` and open the relationship view to see
+all 8 composed resources, their sync status, and how they connect.
 
 ## Drift detection
 
-Crossplane never stops watching. If someone changes a resource directly in AWS,
-Crossplane detects the difference between desired state and actual state and
-corrects it. This is drift detection.
+If someone changes a resource directly in AWS, Crossplane detects the
+difference between desired state and actual state and corrects it. Crossplane
+calls this drift detection.
 
-### Trigger drift
+Trigger drift by changing a VPC tag in AWS, then watch Crossplane revert it:
 
-1. Verify the VPC is ready:
+1. Verify the VPC reached `SYNCED: True`:
 
    ```bash
-   kubectl get vpcs.ec2.aws.m.upbound.io demo-01-vpc
+   kubectl get vpcs.ec2.aws.m.upbound.io demo-01-vpc -n demo
    ```
 
    Wait until `SYNCED: True`.
 
-2. In the AWS Console, navigate to **VPC → Your VPCs** and find `demo-01-vpc`.
+2. In the AWS Console, go to **VPC → Your VPCs** and find `demo-01-vpc`.
 
-3. Click the **Name** tag and change it to something else — for example,
+3. Click the **Name** tag and change it to something else, such as
    `demo-01-vpc-hacked`. Refresh to confirm the change took effect.
 
 4. Tell Crossplane to reconcile immediately instead of waiting for the next loop:
 
    ```bash
-   kubectl annotate vpcs.ec2.aws.m.upbound.io demo-01-vpc \
+   kubectl annotate vpcs.ec2.aws.m.upbound.io demo-01-vpc -n demo \
      reconcile.crossplane.io/trigger="$(date)" \
      --overwrite
    ```
@@ -731,13 +779,15 @@ corrects it. This is drift detection.
 5. Watch the sync status:
 
    ```bash
-   kubectl get vpcs.ec2.aws.m.upbound.io demo-01-vpc -w \
+   kubectl get vpcs.ec2.aws.m.upbound.io demo-01-vpc -n demo -w \
      -o custom-columns='NAME:.metadata.name,SYNCED:.status.conditions[?(@.type=="Synced")].reason'
    ```
 
 6. Switch to the AWS Console and watch the Name tag snap back to `demo-01-vpc`.
 
-### Verify recovery
+The control plane detected the drift and corrected it.
+
+Confirm the composite resource is back in sync:
 
 ```bash
 kubectl get appwdb demo-01 -n demo
@@ -748,10 +798,10 @@ kubectl get appwdb demo-01 -n demo
 ## Add policy enforcement
 
 Kyverno is a policy engine that intercepts Kubernetes admission requests before
-they're accepted. A policy violation is blocked before Crossplane runs — nothing
-reaches AWS.
+they're accepted. Kyverno blocks a policy violation before Crossplane runs, so
+nothing reaches AWS.
 
-### Install Kyverno
+Install the Kyverno add-on and a policy that blocks privileged containers:
 
 1. Create the Kyverno add-on manifest:
 
@@ -773,19 +823,18 @@ reaches AWS.
    kubectl apply -f w-kyverno/addon-kyverno.yaml
    ```
 
-3. Wait for Kyverno to become healthy (~2 minutes):
+3. In the UXP console, select **AddOns** in the left navigation. The
+   `upbound-addon-kyverno` entry appears and becomes healthy in about two
+   minutes. Or watch from the terminal:
 
    ```bash
    kubectl get addons.pkg.upbound.io upbound-addon-kyverno -w
    ```
 
-   Watch the output. You'll see `INSTALLED: True` appear first, then
-   `HEALTHY: True` once the webhook is running (~2–3 minutes). Press Ctrl+C
-   once `HEALTHY: True` appears.
+   Wait until `HEALTHY: True` before continuing. Press Ctrl+C when it does.
 
    If it stays `HEALTHY: False` after 5 minutes, check
-   `kubectl describe addons.pkg.upbound.io upbound-addon-kyverno` for events
-   and verify the UXP installation is healthy with `kubectl get pods -n upbound-system`.
+   `kubectl describe addons.pkg.upbound.io upbound-addon-kyverno` for events.
 
 4. Create the no-privileged-containers policy:
 
@@ -802,8 +851,7 @@ reaches AWS.
        policies.kyverno.io/description: >-
          Privileged containers have unrestricted access to the host system.
          This policy blocks any AppWDBSecure request with securityContext.privileged: true
-         before Crossplane composes any resources — nothing reaches AWS.
-         Applies to all requests — human, GitOps, or AI agent.
+         before Crossplane composes any resources, so nothing reaches AWS.
    spec:
      validationFailureAction: Enforce
      background: false
@@ -848,11 +896,11 @@ reaches AWS.
    You may see this warning:
 
    ```
-   Warning: the kind defined in the all match resource is invalid: unable to convert GVK to GVR for kinds AppWDBSecure, err: resource not found
+   Warning: the kind defined in the all match resource is invalid: unable to convert GVK to GVR for kinds AppWDBSecure
    ```
 
-   This is expected if the XRDs were recently established and doesn't prevent
-   the policy from enforcing once the CRD is ready.
+   You can ignore this warning if Crossplane recently created the XRDs. Once
+   the CRD is ready, the policy enforces.
 
 6. Verify the policy is active:
 
@@ -860,76 +908,38 @@ reaches AWS.
    kubectl get clusterpolicy disallow-privileged-containers
    ```
 
-   Expected output:
+   `READY: True` means the policy is enforcing.
 
-   ```
-   NAME                             ADMISSION   BACKGROUND   READY   AGE   MESSAGE
-   disallow-privileged-containers   true        false        True    ...   Ready
-   ```
-
-   `READY: True` means the policy is enforcing. `BACKGROUND: false` is expected
-   — this policy operates at admission time only, not as a background scan.
-
-### Block a privileged request
+Now confirm the policy blocks a privileged request and accepts a compliant one.
 
 :::warning
-Kyverno can only evaluate requests for resource types whose CRDs are already
-installed. If you see `no matches for kind "AppWDBSecure"` when running the
-next command, the XRDs are not installed. Return to the setup section and
-confirm that `kubectl get xrds` shows both XRDs as `ESTABLISHED: True` before
-continuing.
+Kyverno can only check requests for resource types whose CRDs already exist in
+the cluster. If you see `no matches for kind "AppWDBSecure"`, the XRD isn't
+ready yet. Confirm `kubectl get xrds` shows both XRDs as `ESTABLISHED: True`.
 :::
 
-1. Try to apply a privileged request:
+1. Try to apply a request with `privileged: true`:
 
    ```bash
-   kubectl apply -f - <<'EOF'
-   apiVersion: demo.upbound.io/v1alpha1
-   kind: AppWDBSecure
-   metadata:
-     name: kyverno-demo-01
-     namespace: demo
-   spec:
-     parameters:
-       replicas: 2
-       dbSize: db.t3.micro
-       region: eu-central-1
-       securityContext:
-         privileged: true
-   EOF
+   kubectl apply -f examples/appwdbsecure/example-1.yaml
    ```
 
-   The request is blocked immediately by Kyverno. The error references
-   `disallow-privileged-containers`. Nothing was created.
+   Kyverno blocks the request immediately. The error references
+   `disallow-privileged-containers`. Crossplane never sees the request, so
+   nothing reaches AWS.
 
-   :::info
-   `demo-01` — deployed before Kyverno was installed — has a running RDS
-   instance right now. This request didn't start at all.
-   :::
+   `demo-01`, which you deployed before adding Kyverno, still has a running
+   RDS instance. This request didn't start one.
 
-### Apply a compliant request
+Now try the same request with `privileged: false`:
 
-1. Apply the compliant request:
+1. Apply the compliant version:
 
    ```bash
-   kubectl apply -f - <<'EOF'
-   apiVersion: demo.upbound.io/v1alpha1
-   kind: AppWDBSecure
-   metadata:
-     name: kyverno-demo-01
-     namespace: demo
-   spec:
-     parameters:
-       replicas: 2
-       dbSize: db.t3.micro
-       region: eu-central-1
-       securityContext:
-         privileged: false
-   EOF
+   kubectl apply -f examples/appwdbsecure/example-2.yaml
    ```
 
-   `privileged: false` passes the policy check and starts provisioning. This
-   takes approximately 10 minutes.
+   The request passes the policy check and starts provisioning (~10 minutes).
 
 2. Watch the status:
 
@@ -939,68 +949,71 @@ continuing.
 
 ## Change it live
 
-To change infrastructure, update the desired state. Crossplane figures out what
-needs to change and does it.
+To change infrastructure, update the desired state. Crossplane figures out
+what needs to change and does it. Try scaling the database first, then the
+replicas.
 
-### Scale the database
-
-1. Apply the change:
+1. Scale the database by applying the larger-db variant:
 
    ```bash
-   kubectl apply -f - <<'EOF'
-   apiVersion: demo.upbound.io/v1alpha1
-   kind: AppWDB
-   metadata:
-     name: demo-01
-     namespace: demo
-   spec:
-     parameters:
-       replicas: 2
-       dbSize: db.t3.medium
-       region: eu-central-1
-   EOF
+   kubectl apply -f examples/appwdb/variant-bigger-db.yaml
    ```
 
-2. Watch the status. `DESIRED` updates immediately; `ACTUAL` updates once AWS
-   finishes (~5 minutes):
+2. `DESIRED` updates immediately; `ACTUAL` updates once AWS finishes (~5 minutes):
 
    ```bash
-   kubectl get instances.rds.aws.m.upbound.io demo-01-db -w \
+   kubectl get instances.rds.aws.m.upbound.io demo-01-db -n demo -w \
      -o custom-columns='NAME:.metadata.name,DESIRED:.spec.forProvider.instanceClass,ACTUAL:.status.atProvider.instanceClass,SYNCED:.status.conditions[?(@.type=="Synced")].reason'
    ```
 
 3. In the AWS Console, check the **Status** and **Size** columns for `demo-01-db`.
 
-4. Confirm the change took effect:
+4. Confirm the change:
 
    ```bash
    kubectl get appwdb demo-01 -n demo
    ```
 
-   `SYNCED: True` with your updated `dbSize` means the change applied.
+5. Scale the app replicas by applying the more-replicas variant:
+
+   ```bash
+   kubectl apply -f examples/appwdb/variant-more-replicas.yaml
+   ```
+
+6. Watch the `Deployment` scale (~30 seconds):
+
+   ```bash
+   kubectl get deployment demo-01 -n demo -w \
+     -o custom-columns='NAME:.metadata.name,DESIRED:.spec.replicas,READY:.status.readyReplicas'
+   ```
+
+7. Confirm the change:
+
+   ```bash
+   kubectl get appwdb demo-01 -n demo
+   ```
+
+In the UXP console, navigate to `demo-01` to see the full resource tree with
+your updated values.
 
 ## Clean up
 
 Delete the composite resources. Crossplane deletes all composed AWS resources
-before removing the composite resource.
+before removing each composite resource.
 
 ```shell
 kubectl delete appwdbsecure kyverno-demo-01 -n demo
 kubectl delete appwdb demo-01 -n demo
 ```
 
-RDS deletion takes 5–10 minutes. Wait until both resources are fully removed:
+RDS deletion takes 5 to 10 minutes. Wait until both are fully removed:
 
 ```shell
 kubectl get appwdb -n demo -w
-```
-
-```shell
 kubectl get appwdbsecure -n demo -w
 ```
 
-Once both are gone, stop `up project run` with Ctrl+C in that terminal, then
-delete the cluster:
+Delete the cluster:
 
 ```shell
 kind delete cluster --name up-app-w-db
@@ -1013,17 +1026,19 @@ In this tutorial, you:
 - Created a Crossplane project with XRDs, Compositions, and a KCL function
 - Deployed a composite resource that created a VPC, subnets, IAM role, RDS
   instance, and Kubernetes `Deployment` from a 10-line manifest
+- Explored the providers and ProviderConfigs that connected your platform to AWS
 - Watched Crossplane detect and correct an out-of-band change to a VPC tag
 - Blocked a privileged container request with Kyverno before it reached the cluster
 - Updated live infrastructure by changing desired state
 
 Continue with:
 
-- [Composite Resource Definitions][xrd-concept] — design your own platform APIs
-- [Composition functions][fn-docs] — write the logic that maps user requests to resources
-- [Provider authentication][auth-docs] — connect providers to your own cloud account
-- [Upbound Marketplace][marketplace] — providers and add-ons for AWS, Azure, GCP, and more
+- [Composite Resource Definitions][xrd-concept]: design your own platform APIs
+- [Composition functions][fn-docs]: write the logic that maps user requests to resources
+- [Provider authentication][auth-docs]: connect providers to your own cloud account
+- [Upbound Marketplace][marketplace]: providers and add-ons for AWS, Azure, GCP, and more
 
+[up-cli]: /manuals/cli/overview/
 [kubectl-install]: https://kubernetes.io/docs/tasks/tools/
 [up-cli-releases]: https://github.com/upbound/up/releases
 [aws-cli]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
@@ -1031,7 +1046,9 @@ Continue with:
 [fn-go]: /manuals/cli/howtos/compositions/go/
 [fn-python]: /manuals/cli/howtos/compositions/python/
 [fn-go-template]: /manuals/cli/howtos/compositions/go-template/
-[xrd-concept]: /manuals/packages/xrds/
-[fn-docs]: /manuals/cli/howtos/compositions/
+[xrd-concept]:/manuals/uxp/concepts/composition/composite-resource-definitions/ 
+[fn-docs]: /manuals/uxp/concepts/composition/overview/
 [auth-docs]: /manuals/packages/providers/authentication/
+[aws-auth-docs]: /manuals/packages/providers/authentication/#aws-authentication
 [marketplace]: https://marketplace.upbound.io/
+
