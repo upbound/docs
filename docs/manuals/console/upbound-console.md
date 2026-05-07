@@ -169,4 +169,4 @@ You can create a personal access token (`PAT`) from the Account Settings view. S
 
 ![Upbound Control Plane Account Management](/img/ctp-create-token.png)
 
-[providerconfig]: /manuals/spaces/concepts/control-planes/#configure-crossplane-providerconfigs
+[providerconfig]: /self-hosted-spaces/concepts/control-planes/#configure-crossplane-providerconfigs

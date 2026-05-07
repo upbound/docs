@@ -333,7 +333,7 @@ operational considerations, see [Operation best practices][operation-best-practi
 [operation]: /manuals/uxp/concepts/operations/overview
 [watchoperation]: /guides/projects/project
 [get-started-operations]: ../get-started/get-started-with-operations
-[operation-best-practices]: /manuals/uxp/concepts/operations/overview/#best-practices/
+[operation-best-practices]: /manuals/uxp/concepts/operations/overview/#best-practices
 [cron]: https://en.wikipedia.org/wiki/Cron
 [compositions]: /uxp/composition/overview
 [ssa]: https://kubernetes.io/docs/reference/using-api/server-side-apply/

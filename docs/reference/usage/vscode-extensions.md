@@ -432,7 +432,7 @@ If you're not seeing the enhanced features:
 [marketplace]: https://marketplace.visualstudio.com/items?itemName=ms-python.python
 [python-extension-documentation]: https://code.visualstudio.com/docs/python/python-tutorial#_install-a-python-interpreter
 [pydantic]: https://docs.pydantic.dev/
-[pydantic-visual-studio-code-guide]: https://docs.pydantic.dev/latest/integrations/visual_studio_code
+[pydantic-visual-studio-code-guide]: https://docs.pydantic.dev/latest/integrations/dev-tools/visual_studio_code/
 [python-extension-documentation-1]: https://code.visualstudio.com/docs/python/environments
 [marketplace-2]: https://marketplace.visualstudio.com/items?itemName=kcl.kcl-vscode-extension
 [marketplace-3]: https://marketplace.visualstudio.com/items?itemName=golang.Go

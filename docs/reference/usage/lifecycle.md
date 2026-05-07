@@ -86,7 +86,7 @@ materially similar use.
 Customers with paid support contracts can receive pre-release cuts on an as-needed basis for all covered software.
 
 
-[spaces]: /manuals/spaces/overview
+[spaces]: /self-hosted-spaces/overview
 [uxp]: /manuals/uxp/overview
 [official-providers]: /manuals/packages/policies
 

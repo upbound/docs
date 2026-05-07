@@ -161,7 +161,7 @@ control planes.
 
 </details>
 
-[connected spaces]: /manuals/spaces/howtos/self-hosted/attach-detach/
+[connected spaces]: /self-hosted-spaces/howtos/attach-detach/
 [contact-us]: https://www.upbound.io/contact-us
 [upbound console]: https://console.upbound.io
 [operation]: https://docs.crossplane.io/latest/operations/

@@ -30,6 +30,7 @@ configmap
 Cognito
 Commonmark
 conformant
+cooldown
 Config
 ConfigMap
 ConfigMaps
@@ -88,6 +89,10 @@ namespaces
 namespaced
 Netlify
 OAuth
+Ollama
+ollama's
+Ollama's
+ollama
 Okta
 OTEL
 overengineer
@@ -142,6 +147,9 @@ UXP
 uxp
 vCluster
 vcluster
+VPC
+VPCs
+VPC's
 virtualized
 Velero
 VMs

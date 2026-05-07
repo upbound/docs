@@ -427,5 +427,5 @@ The importer applies the status of all resources during import. The importer det
 [create-command]: /reference/cli-reference
 [up-ctx]: /reference/cli-reference
 [configuration-aws-network]: https://marketplace.upbound.io/configurations/upbound/configuration-aws-network
-[spaces]: /manuals/spaces/overview
+[spaces]: /self-hosted-spaces/overview
 [uxp]: /manuals/uxp/overview
