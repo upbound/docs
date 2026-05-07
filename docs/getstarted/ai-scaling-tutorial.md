@@ -261,10 +261,12 @@ wiring the AI into the loop, explore what the system already knows.
      -o jsonpath='{.status.performanceMetrics}' | jq .
    ```
 
+<!-- vale Upbound.Spelling = NO -->
 4. Open `operations/rds-intelligent-scaling-cron/operation.yaml` in your
    editor. That file is the entire scaling controller. The `systemPrompt`
    defines the scaling logic, including thresholds, instance class progression,
    and cooldown.
+<!-- vale Upbound.Spelling = YES -->
 
 5. Apply the controller:
 
@@ -325,10 +327,11 @@ when there's nothing to do.
    ```bash
    kubectl describe operation <name>
    ```
-
+<!-- vale Upbound.Spelling = NO -->
    Look at the `Events` section. At low CPU, the AI decides to hold. The
    cooldown logic is also in the prompt, so it doesn't flip the instance class
    every minute even if usage crosses the thresholds.
+<!-- vale Upbound.Spelling = YES -->
 
 3. Look at the current metrics:
 
