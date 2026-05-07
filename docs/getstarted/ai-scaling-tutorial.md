@@ -62,7 +62,7 @@ All commands from this point run from inside the `demo` directory.
 ## Configure credentials
 
 Create a file named `aws-credentials.txt` in the project directory with your
-AWS credentials in INI format:
+AWS credentials in `INI` format:
 
 ```ini
 [default]
