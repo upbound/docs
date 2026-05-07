@@ -145,24 +145,6 @@ declared in `upbound.yaml`. It exits when the cluster is ready.
 This message reports a telemetry timeout and doesn't affect the cluster setup.
 :::
 
-Point kubectl at the new cluster:
-
-```bash
-kind get kubeconfig --name up-ai-controller > ~/.kube/config
-```
-
-:::warning
-This overwrites your existing `~/.kube/config`. To preserve existing contexts,
-merge instead:
-
-```bash
-kind get kubeconfig --name up-ai-controller > ~/.kube/config-upbound
-KUBECONFIG=~/.kube/config:~/.kube/config-upbound \
-  kubectl config view --flatten > ~/.kube/config.merged
-mv ~/.kube/config.merged ~/.kube/config
-```
-:::
-
 Verify the connection:
 
 ```bash
