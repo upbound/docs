@@ -95,7 +95,7 @@ helm -n upbound-system upgrade --install agent \
 
 #### Use an HTTP proxy
 
-The Connect agent respects `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` for outbound traffic to Upbound. Set them on the agent with `extraEnv` and on the registration init container with `registration.extraEnv`.
+The Connect agent respects `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` for outbound traffic to Upbound. Set them on the agent with `extraEnv` and on the registration init container with `registration.extraEnv`. If you use Zscaler or a similar corporate forward proxy, use the same pattern for both as shown below.
 
 | Variable | Description |
 | --- | --- |
