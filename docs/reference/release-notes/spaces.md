@@ -21,6 +21,103 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+
+## v1.17.0
+
+### Release Date: 2026-05-18
+
+#### Important Changes
+
+- New control planes now default to UXP v2. If you create a ControlPlane and
+  do not set spec.crossplane.version, Spaces picks the latest stable v2 release
+  and uses the Stable channel for future auto-upgrades.
+
+  What stays the same: Control planes that are already on UXP v1 remain on v1.
+  Release channels do not move you across major versions—v1 control planes only
+  get v1 updates, and v2 control planes only get v2 updates.
+
+  If you need v1 for a new control plane: Set spec.crossplane.version to a
+  supported v1 release from your environment’s allowed list (full version
+  string, e.g. 1.20.5-up.1).
+
+  See the Upbound Knowledge Base article
+  [New control planes default to UXP v2][kb-uxp-v2-default]
+  for what to do in each scenario.
+
+- We have retired UXP 1.18.x from Spaces and new control planes targeting 1.18.x
+  will be rejected. Any existing 1.18 control plane will continue to run
+  but will be marked as unsupported. Control Planes should be upgraded to
+  1.19.x.
+
+<!-- markdownlint-disable-next-line MD013 -->
+[kb-uxp-v2-default]: https://help.upbound.io/articles/2836516227-new-control-planes-in-upbound-spaces-now-default-to-uxp-v2?lang=en#what-you-need-to-do
+
+#### Features
+
+- Added support for UXP 2.2.x
+- Added affinity and tolerations support for mxp-controller, UXP crossplane
+  core, UXP RBAC manager, and UXP controller-manager. In Spaces Helm values,
+  configure scheduling under `controlPlanes.mxpController`,
+  `controlPlanes.crossplane`, `controlPlanes.rbacManager`, and
+  `controlPlanes.v2.controllerManager` when `controlPlanes.v2.enabled` is true
+  for UXP v2. Each block supports standard pod `affinity` and `tolerations`
+  fields — for example:
+
+  ```yaml
+  controlPlanes:
+    mxpController:
+      affinity: {}
+      tolerations: []
+    crossplane:
+      affinity: {}
+      tolerations: []
+    rbacManager:
+      affinity: {}
+      tolerations: []
+    v2:
+      enabled: true
+      controllerManager:
+        affinity: {}
+        tolerations: []
+  ```
+
+  Replace `{}` and `[]` with your `nodeAffinity`, `tolerations`, and related
+  scheduling rules.
+- Added validation for UXP version upgrades: Spaces enforces moving
+  minor-by-minor through supported releases (version skips are rejected), and
+  requires UXP 1.20 before upgrading a control plane to UXP 2.0.
+- Spaces controller Vertical Pod Autoscaler: you can
+  enable a `VerticalPodAutoscaler` for the Spaces controller when the
+  [Kubernetes Vertical Pod Autoscaler][vpa] is installed on the host cluster.
+  Set
+  `controller.controller.verticalPodAutoscaler.enabled` to `true` and optional
+  `controller.controller.verticalPodAutoscaler.updateMode` (defaults to
+  `Auto`). The VerticalPodAutoscaler only adjusts memory for the Spaces
+  controller right now. See [Spaces Helm reference][spaces-helm] for more
+  configuration options.
+
+<!-- markdownlint-disable-next-line MD013 -->
+[vpa]: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
+[spaces-helm]: /reference/spaces-helm-reference/
+
+#### Bug Fixes
+
+- Pausing and resuming now works correctly for UXP v2 control planes.
+
+#### Other Changes
+
+- Bumped control plane Kubernetes version to v1.32.13
+- Control plane images updated (VCluster, CoreDNS, etcd,
+  external-secrets-operator).
+- Updated the Spaces Router Envoy image.
+- Kube-state-metrics and Vector are not installed unless legacy loop-based
+  billing is enabled (`billing.enabled`); on upgrade, existing deployments are
+  uninstalled under the same condition.
+- Bumped Apollo (Query API) to v0.4.12
+- XGQL is fully removed from control planes and no longer required for connected
+  Spaces.
+- Upgraded OTEL Collector images to v0.152.0.
+
 ## v1.16.0
 
 ### Release Date: 2026-03-13
