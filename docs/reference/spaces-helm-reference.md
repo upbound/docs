@@ -14,7 +14,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.4.7 |
+| oci://xpkg.upbound.io/spaces-artifacts | apollo(uxp-apollo) | 0.4.12 |
 
 ## Values
 
@@ -73,12 +73,12 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | apollo.apollo.storage.postgres.create | bool | `true` |  |
 | apollo.apollo.storage.postgres.sidecar | bool | `false` |  |
 | apollo.apollo.syncer.enabled | bool | `false` |  |
-| apollo.apollo.syncer.image.tag | string | `"v0.4.7"` |  |
+| apollo.apollo.syncer.image.tag | string | `"v0.4.12"` |  |
 | apollo.registry | string | `"xpkg.upbound.io/spaces-artifacts"` |  |
 | authentication.hubIdentities | bool | `true` | This enables respecting built in Kubernetes identities (clientcertificate, managed kubernetes OIDC, Kubernetes Groups, etc) specified within the Connected Space's hub. |
 | authentication.structuredConfig | string | `""` | Enables consumption of JWT Authenticators via Authentication Configuration per https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-authentication-configuration <br> The below property takes the name of a configmap that contains a structured authentication configuration. |
 | authorization.hubRBAC | bool | `true` | This enables respecting built in Kubernetes Roles and RoleBindings for the resources included in the Space's installation. |
-| billing.enabled | bool | `false` | This enables billing services. |
+| billing.enabled | bool | `false` | Enables the legacy loop-based billing pipeline (KSM + Vector). |
 | billing.storage.aws.bucket | string | `""` | AWS bucket name. See billing.storage.secretRef for authentication. Required if billing.storage.provider=aws. |
 | billing.storage.aws.endpoint | string | `""` | AWS endpoint. |
 | billing.storage.aws.region | string | `""` | AWS region. Required if billing.storage.provider=aws. |
@@ -101,8 +101,9 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | billing.storage.gcp.tls.verifyHostname | bool | `true` | Whether to verify the hostname for the GCP endpoint. |
 | billing.storage.provider | string | `""` | The provider for the billing storage. Required if billing.enabled=true. Must be one of aws, gcp, azure |
 | billing.storage.secretRef.name | string | `"billing-storage"` | Set to the empty string in order to use a workload identity for the billing feature. If you are configuring the billing feature with static credentials for accessing the cloud object storage, then the secret may contain any of these keys for configuring authentication: <br> AWS_ACCESS_KEY_ID: AWS access key ID. Used when provider is aws. <br> AWS_SECRET_ACCESS_KEY: AWS secret access key. Used when provider is aws. <br> AZURE_TENANT_ID: Azure tenant ID. Used when provider is azure. <br> AZURE_CLIENT_ID: Azure client ID. Used when provider is azure. <br> AZURE_CLIENT_SECRET: Azure client secret. Used when provider is azure. <br> AZURE_USERNAME: Azure username. Used when provider is azure. <br> AZURE_PASSWORD: Azure username. Used when provider is azure. <br> google_application_credentials: GCP service account key JSON. Used when provider is gcp. <br> The secret may also contain any of the following keys for configuring TLS. The corresponding value at billing.storage.<provider>.tls.<key> must also be set to true. <br> "ca.crt": Custom CA certificate. Used when provider is aws or gcp. <br> "tls.crt": Custom TLS certificate. Used when provider is aws or gcp. <br> "tls.key": Custom TLS key. Used when provider is aws or gcp. |
-| certificates | object | `{"clusterResourceNamespace":"cert-manager","provision":true,"space":{"clusterIssuer":"spaces-selfsigned"},"spacesCA":{"duration":"8760h0m0s"},"spacesControllerWebhook":{"duration":"2160h0m0s"}}` | Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function. |
+| certificates | object | `{"clusterResourceNamespace":"cert-manager","manageIssuers":true,"provision":true,"space":{"clusterIssuer":"spaces-selfsigned"},"spacesCA":{"duration":"8760h0m0s"},"spacesControllerWebhook":{"duration":"2160h0m0s"}}` | Given cert-manager is a requirement for installation, certificates specifies the general configurations for the certificates required for the installation to function. |
 | certificates.clusterResourceNamespace | string | `"cert-manager"` | Specifies the cluster resource namespace for the cert-manager installation. <br> https://cert-manager.io/docs/configuration/#cluster-resource-namespace |
+| certificates.manageIssuers | bool | `true` | When true (default), the chart creates the cert-manager Issuer and ClusterIssuer resources it needs. Set to false to suppress all chart-created issuers and use a pre-existing ClusterIssuer (specified via certificates.space.clusterIssuer) for every certificate. |
 | certificates.provision | bool | `true` | Specifies if the chart should provision the certificate resources included in this chart. Operators can opt to provision their own certificates instead, however care should be made to ensure the certificates match the expected: <br> * Shared Certificate Authority <br> * Algorithm. (ECDSA) |
 | certificates.space.clusterIssuer | string | `"spaces-selfsigned"` | The clusterIssuer for the space. Most certificates used at the space level are derived from this issuer. |
 | connect | object | `{"agent":{"podLabels":{}}}` | Configurations for requests coming into the space via the connect agent. |
@@ -136,16 +137,18 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.gateway.resources.requests.memory | string | `"25Mi"` | Memory request for the spaces control plane gateway pod. |
 | controlPlanes.ha.enabled | bool | `false` | This enables the High Availability (HA) feature for the spaces control planes. Resulting in various control planes components being deployed in ha mode for all control planes. |
 | controlPlanes.imagePullSecrets | list | `[]` | Optional image pull secret in upbound-system namespace to be used with an authenticated registry when pulling images for workloads in the virtual clusters of ControlPlanes. If not specified, the default behavior of propagating the optional secret specified in .imagePullSecrets down to the ControlPlanes is preserved. The specified secret in upbound-system namespace will be propagated with the name upbound-system-pull-secret into the virtual cluster. NOTE: only one image pull secret is currently supported. |
-| controlPlanes.k8sVersion | string | `"v1.31.0"` |  |
+| controlPlanes.k8sVersion | string | `"v1.32.13"` |  |
 | controlPlanes.kubeStateMetrics.resources.limits.cpu | string | `nil` | CPU limit for the spaces control plane kube-state-metrics pod. |
 | controlPlanes.kubeStateMetrics.resources.limits.memory | string | `nil` | Memory limit for the spaces control plane kube-state-metrics pod. |
 | controlPlanes.kubeStateMetrics.resources.requests.cpu | string | `"100m"` | CPU request for the spaces control plane kube-state-metrics pod. |
 | controlPlanes.kubeStateMetrics.resources.requests.memory | string | `"50Mi"` | Memory request for the spaces control plane kube-state-metrics pod. |
+| controlPlanes.mxpController.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for mxp-controller Pods. |
 | controlPlanes.mxpController.command | list | `[]` | The command to run for the mxp controller. |
 | controlPlanes.mxpController.debug | bool | `false` | Whether mxp-controller syncers should be deployed in debug mode. |
 | controlPlanes.mxpController.pod.customLabels | object | `{}` | Custom labels to be added to the mxp-controller pod. |
 | controlPlanes.mxpController.registryOverride | string | `""` | Override the default package registry for Upbound packages. |
 | controlPlanes.mxpController.serviceAccount.annotations | object | `{}` | Custom annotations to be added to the service account for the mxp-controller deployment. |
+| controlPlanes.mxpController.tolerations | list | `[]` | Tolerations for mxp-controller Pods. |
 | controlPlanes.mxpKSMConfig.resources.limits.cpu | string | `nil` | CPU limit for the spaces control plane controller. |
 | controlPlanes.mxpKSMConfig.resources.limits.memory | string | `nil` | Memory limit for the spaces control plane controller. |
 | controlPlanes.mxpKSMConfig.resources.requests.cpu | string | `"100m"` | CPU request for the spaces control plane controller. |
@@ -157,6 +160,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.sharedSecrets.resources.requests.cpu | string | `"10m"` | CPU request for the external-secrets-operator pod. |
 | controlPlanes.sharedSecrets.resources.requests.memory | string | `"50Mi"` | Memory request for the external-secrets-operator pod. |
 | controlPlanes.sharedSecrets.serviceAccount.customAnnotations | object | `{}` | Custom annotations to be added to the service account for the external-secrets-operator deployment. |
+| controlPlanes.uxp.crossplane.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for Crossplane core Pods. |
+| controlPlanes.uxp.crossplane.tolerations | list | `[]` | Tolerations for Crossplane core Pods. |
 | controlPlanes.uxp.disableDefaultManagedResourceActivationPolicy | bool | `false` | This disables the default managed resource activation policy, will only affect v2 Control Planes |
 | controlPlanes.uxp.disableRealtimeCompositions | bool | `true` | This disables realtime compositions. |
 | controlPlanes.uxp.enableAddons | bool | `false` | This enables the Addons feature for UXP, will only affect v2 Control Planes. |
@@ -168,6 +173,8 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.enableSignatureVerification | bool | `false` | This enables Crossplane Packages signature verification. |
 | controlPlanes.uxp.enableUsages | bool | `true` | This enables Usages. |
 | controlPlanes.uxp.metrics.enabled | bool | `true` | This enables the metrics endpoints UXP. |
+| controlPlanes.uxp.rbacManager.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for RBAC Manager Pods. |
+| controlPlanes.uxp.rbacManager.tolerations | list | `[]` | Tolerations for RBAC Manager Pods. |
 | controlPlanes.uxp.registryOverride | string | `""` | Override the default package registry for Crossplane images. |
 | controlPlanes.uxp.resourcesCrossplane.limits.cpu | string | `nil` | CPU limit for the spaces control plane UXP pod. |
 | controlPlanes.uxp.resourcesCrossplane.limits.memory | string | `nil` | Memory limit for the spaces control plane UXP pod. |
@@ -178,16 +185,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.uxp.resourcesRBACManager.requests.cpu | string | `"25m"` | CPU request for the spaces control plane UXP RBAC Manager pod. |
 | controlPlanes.uxp.resourcesRBACManager.requests.memory | string | `"256Mi"` | Memory request for the spaces control plane UXP RBAC Manager pod. |
 | controlPlanes.uxp.serviceAccount.customAnnotations | object | `{}` | Custom annotations to be added to the service account for the UXP deployment. |
+| controlPlanes.uxp.v2.controllerManager.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for the upbound controller-manager Pod (v2 only). |
+| controlPlanes.uxp.v2.controllerManager.tolerations | list | `[]` | Tolerations for the upbound controller-manager Pod (v2 only). |
 | controlPlanes.uxp.v2.controllerManagerRepository | string | `""` |  |
 | controlPlanes.uxp.v2.controllerManagerTag | string | `""` |  |
 | controlPlanes.uxp.v2.enabled | bool | `true` | Whether users should be able to create ControlPlanes with the v2 UXP. |
-| controlPlanes.uxp.xgql.enabled | bool | `true` | Whether the xgql service should be deployed. Required for connected spaces. |
-| controlPlanes.uxp.xgql.replicas | int | `1` | Number of replicas for the xgql deployment. |
-| controlPlanes.uxp.xgql.resources.limits.cpu | string | `"500m"` | CPU limit for the spaces control plane xgql pod. |
-| controlPlanes.uxp.xgql.resources.limits.memory | string | `"1Gi"` | Memory limit for the spaces control plane xgql pod. |
-| controlPlanes.uxp.xgql.resources.requests.cpu | string | `"50m"` | CPU request for the spaces control plane xgql pod. |
-| controlPlanes.uxp.xgql.resources.requests.memory | string | `"50Mi"` | Memory request for the spaces control plane xgql pod. |
-| controlPlanes.uxp.xgql.version | string | `"v0.2.0-rc.0.180.g864b87f"` | The tag of the xgql image to deploy. |
 | controlPlanes.vcluster.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for vcluster Pods. |
 | controlPlanes.vcluster.extraSyncLabels | string | `""` | Extra pod labels to be synced by the vcluster. This is a string consisting of a comma-separated list of label keys. |
 | controlPlanes.vcluster.resources.limits.cpu | string | `"3000m"` | CPU limit for the spaces control plane vcluster pod. |
@@ -197,7 +199,6 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controlPlanes.vcluster.tolerations | list | `[]` | Tolerations for vcluster Pods. |
 | controlPlanes.vector.affinity | object | `{}` | Configure [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity) rules for Vector Pods. |
 | controlPlanes.vector.debug | bool | `false` | This enables debug mode for Vector. |
-| controlPlanes.vector.enabled | bool | `true` | This enables Vector for the control plane. |
 | controlPlanes.vector.nodeSelector | object | `{}` | Configure a [nodeSelector](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for Vector Pods. |
 | controlPlanes.vector.persistence.enabled | bool | `false` | Set enabled to true to run Vector as a statefulset with each replica backed by a persistent volume and enable disk buffers for selected sinks. When set to false, Vector is run as a deployment with memory buffers. |
 | controlPlanes.vector.persistence.size | string | `"1Gi"` | Size must be at least the sum of all buffer.maxSize values with overhead for other Vector data. If you define this you should also define all sink buffer.maxSize values. |
@@ -235,8 +236,10 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | controller.controller.service.webhook.hostPort | int | `9443` | Host port for webhook when using host networking (only used if hostNetwork is true). |
 | controller.controller.service.webhook.port | int | `9443` | The port for the spaces controller webhook service. |
 | controller.controller.verticalPodAutoscaler.enabled | bool | `false` | This enables the VerticalPodAutoscaler for the spaces controller deployment. |
-| controller.controller.verticalPodAutoscaler.updateMode | string | `"Auto"` | The mode for the VerticalPodAutoscaler. |
-| controller.crossplane.supportedVersions | list | `["1.18.0-up.1","1.18.3-up.1","1.18.5-up.1","1.19.0-up.1","1.19.2-up.1","1.20.0-up.1"]` | List of supported Crossplane versions, will be automatically updated by the versionsController, if enabled. |
+| controller.controller.verticalPodAutoscaler.maxAllowed | object | `{}` | Upper bound for VPA memory recommendations; set higher than controller.controller.resources.limits.memory when enabling VPA. |
+| controller.controller.verticalPodAutoscaler.minAllowed | object | `{}` | Optional lower bound for VPA memory recommendations. Omit memory or leave unset when not needed. |
+| controller.controller.verticalPodAutoscaler.updateMode | string | `"Off"` | The mode for the VerticalPodAutoscaler. |
+| controller.crossplane.supportedVersions | list | `["1.19.0-up.1","1.19.2-up.1","1.19.3-up.1","1.20.0-up.1","1.20.1-up.1","1.20.4-up.1","1.20.5-up.1","1.20.6-up.2","2.0.7-up.2","2.0.8-up.1","2.1.4-up.3","2.1.5-up.1","2.2.0-up.3","2.2.1-up.1"]` | List of supported Crossplane versions, will be automatically updated by the versionsController, if enabled. |
 | controller.crossplane.versionsController.enabled | bool | `true` | This flag enables the versionsController. When set to true, the controller will manage Crossplane versions configmap. If disabled, default behavior will be supportedVersions will applied without automatic updates. |
 | controller.extraVolumes | list | `[]` | Extra volumes to be added to the spaces controller pods. |
 | controller.kcp.enabled | bool | `false` | Whether spaces controller should be KCP aware. |
@@ -279,6 +282,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.argocdPlugin.target.externalCluster.secret.name | string | `"kubeconfig"` | The name of the secret containing the kubeconfig for the external cluster. Ignored if externalCluster.enabled is false. |
 | features.alpha.argocdPlugin.target.secretNamespace | string | `"argocd"` | The namespace where the ArgoCD cluster secrets should be created in. |
 | features.alpha.argocdPlugin.useUIDFormatForCTPSecrets | bool | `false` | If enabled, old secrets with <ctp-name> will be deleted and recreated with the <ctp-uid>. |
+| features.alpha.hostNamespace.enabled | bool | `false` | This enables alpha support for user-configurable control plane host namespaces. |
 | features.alpha.sharedSecrets.enabled | bool | `true` | This enables the shared secrets feature. |
 | features.alpha.simulations.controlPlanes | object | `{"size":""}` | Control plane configuration for the Upbound Simulations feature. |
 | features.alpha.simulations.controlPlanes.size | string | `""` | The control plane size to use when running simulations. |
@@ -290,10 +294,11 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | features.alpha.upboundRBAC.enabled | bool | `false` | This enables respecting Upbound Authorization management within the space. This will include new APIs for binding Objects to identities supplied by Upbound. |
 | features.beta | object | `{}` | Beta features are on by default, but may be disabled here. Beta features are considered to be well tested, and will not be removed completely without being marked deprecated for at least two releases. |
 | fullnameOverride | string | `""` | The full name of the chart, including the repository name. |
-| gatewayAPI | object | `{"gateway":{"className":"spaces","name":"spaces","provision":false},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"spacesRouterRoute":{"provision":false}}` | Configurations for external requests coming into the space. |
+| gatewayAPI | object | `{"gateway":{"className":"spaces","name":"spaces","namespace":"","provision":false},"host":"proxy.upbound-127.0.0.1.nip.io","insecure":false,"namespaceLabels":{},"podLabels":{},"spacesRouterRoute":{"provision":false}}` | Configurations for external requests coming into the space. |
 | gatewayAPI.gateway | object | { ... } | Configurations for the Gateway resource that will act as an application gateway for Spaces. |
 | gatewayAPI.gateway.className | string | `"spaces"` | Specifies the GatewayClass name for the Gateway being provisioned if gatewayAPI.gateway.provision is `true`. |
 | gatewayAPI.gateway.name | string | `"spaces"` | Specifies the name of the Gateway resource to be used as the parent of the spaces routes, and to be provisioned if gatewayAPI.gateway.provision is `true`. |
+| gatewayAPI.gateway.namespace | string | `""` | Specifies the namespace of the Gateway resource. Used in parentRefs of HTTPRoute/TLSRoute to reference a Gateway in a different namespace (e.g. a shared Gateway). If empty, parentRef defaults to the Route's namespace (not the release namespace). Only applicable when gatewayAPI.gateway.provision is `false` (referencing an externally-managed Gateway). Cross-namespace Route→Gateway attachment is governed by the Gateway listener setting allowedRoutes.namespaces.from. |
 | gatewayAPI.gateway.provision | bool | `false` | Specifies whether the helm chart should provision the Gateway resource for routing external traffic into the cluster. |
 | gatewayAPI.host | string | `"proxy.upbound-127.0.0.1.nip.io"` | Specifies the externally routable hostname used for routing requests to individual control planes. |
 | gatewayAPI.insecure | bool | `false` | Disable TLS at the endpoints |
@@ -362,7 +367,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | observability.tracing.tls | object | `{"caBundleSecretRef":""}` | TLS configuration for the telemetry collector connection. |
 | observability.tracing.tls.caBundleSecretRef | string | `""` | Name of the secret containing a CA bundle for validating the telemetry collector's certificate. The secret must contain a key named 'ca.crt' with the PEM-encoded CA bundle. Use this when connecting to external collectors. If empty, uses the Spaces CA for in-cluster collectors. |
 | registry | string | `"xpkg.upbound.io/spaces-artifacts"` | Specifies the registry where the containers used in the spaces deployment are served from. |
-| router | object | `{"controlPlane":{"command":[],"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"extraVolumes":[],"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80,"targetMemoryUtilizationPercentage":0},"insecure":false,"podAnnotations":{},"podLabels":{},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"affinity":{},"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"hostPort":null,"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"v1.26-latest"},"nodeSelector":{},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"annotations":{},"http":{"appProtocol":"https","name":"https","port":8443},"type":"ClusterIP"},"tolerations":[]},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"spaces-router-tls","upboundIAMCABundle":""},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Configurations for the space router deployment. |
+| router | object | `{"controlPlane":{"command":[],"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"image":{"pullPolicy":"IfNotPresent","repository":"hyperspace","tag":""},"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"100m","memory":"100Mi"}},"service":{"auth":{"port":9000},"grpc":{"port":8081},"http":{"port":9091},"metrics":{"port":8085},"privateHttp":{"port":9092}}},"extraVolumes":[],"hpa":{"enabled":false,"maxReplicas":5,"minReplicas":1,"targetCPUUtilizationPercentage":80,"targetMemoryUtilizationPercentage":0},"insecure":false,"podAnnotations":{},"podLabels":{},"prometheus":{"podMonitor":{"enabled":false,"interval":"30s"}},"proxy":{"affinity":{},"extraArgs":[],"extraEnv":[],"extraVolumeMounts":[],"hostPort":null,"image":{"pullPolicy":"IfNotPresent","repository":"envoy","tag":"distroless-v1.34.13"},"nodeSelector":{},"resources":{"limits":{"cpu":"1000m","memory":"200Mi"},"requests":{"cpu":"100m","memory":"50Mi"}},"service":{"annotations":{},"http":{"appProtocol":"https","name":"https","port":8443},"type":"ClusterIP"},"tolerations":[]},"replicaCount":1,"secretRefs":{"adminValidating":"cert-admin-signing","gatewaySigning":"cert-token-signing-gateway","tlsSecretName":"spaces-router-tls","upboundIAMCABundle":""},"serviceAccount":{"annotations":{},"create":true,"name":""}}` | Configurations for the space router deployment. |
 | router.controlPlane.command | list | `[]` | The command to run for the router's envoy control plane. |
 | router.controlPlane.extraArgs | list | `[]` | Additional arguments to pass to the router's envoy control plane. |
 | router.controlPlane.extraEnv | list | `[]` | Additional environment variables to pass to the router's envoy control plane. |
@@ -397,7 +402,7 @@ This reference provides detailed documentation on the Upbound Space Helm chart. 
 | router.proxy.hostPort | string | `nil` | Host port for the router's envoy proxy container. When set, the envoy container will bind to this port on the host. This is useful for environments like kind where LoadBalancer services are not available. |
 | router.proxy.image.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the router's envoy proxy image. |
 | router.proxy.image.repository | string | `"envoy"` | Repository for the router's envoy proxy image. |
-| router.proxy.image.tag | string | `"v1.26-latest"` | Tag for the router's envoy proxy image. |
+| router.proxy.image.tag | string | `"distroless-v1.34.13"` | Tag for the router's envoy proxy image. |
 | router.proxy.nodeSelector | object | `{}` | Node selector for the router's envoy proxy. |
 | router.proxy.resources.limits.cpu | string | `"1000m"` | CPU limit for the router's envoy proxy. |
 | router.proxy.resources.limits.memory | string | `"200Mi"` | Memory limit for the router's envoy proxy. |
