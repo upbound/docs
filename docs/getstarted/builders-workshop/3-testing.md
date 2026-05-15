@@ -46,8 +46,8 @@ This command:
 * Generates the basic structure for writing tests
 
 :::note
-The default testing language is KCL. You can specify `--langauage=python` in
-the test command
+The default testing language is KCL. You can also specify `--language=python` or
+`--language=go` to generate tests in Python or Go.
 :::
 
 ## Set up your test imports
