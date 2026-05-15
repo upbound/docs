@@ -48,6 +48,47 @@ For Docker, add `up` to your Docker `config.json`. This allows your client to us
 }            
 ```
 
+## Authenticate to push packages
+
+Pushing packages to the Upbound Marketplace requires a robot token.
+Personal API tokens and `up login` credentials don't work for pushing — they return a 401 error.
+
+### Create a robot token
+
+1. Go to `https://accounts.upbound.io/o/<your-org>/robots` and create a robot account.
+
+2. Copy the robot's **access ID** and **token** — you can't retrieve the token again after leaving the page.
+
+3. Assign the robot to a team that has write permission on the target repository.
+   See [manage repository permissions][team-repo-permissions] for instructions.
+
+### Log in with docker
+
+Use `docker login` with the robot credentials:
+
+```shell
+docker login xpkg.upbound.io -u <robot-access-id> -p <robot-token>
+```
+
+You can now run `crossplane xpkg push` to push packages to the Marketplace.
+
+:::warning
+If you have the `docker-credential-up` helper configured for `xpkg.upbound.io`, it may override the robot credentials. Remove or scope it if you encounter auth errors after a successful `docker login`.
+:::
+
+### Authenticate in CI
+
+In a CI pipeline, use the [`docker/login-action`][docker-login-action] with your robot credentials stored as secrets:
+
+```yaml
+- name: Log in to Upbound Marketplace
+  uses: docker/login-action@v3
+  with:
+    registry: xpkg.upbound.io
+    username: ${{ secrets.UPBOUND_ROBOT_ACCESS_ID }}
+    password: ${{ secrets.UPBOUND_ROBOT_TOKEN }}
+```
+
 ## Kubernetes image pull secrets
 
 Packages in private repositories require a Kubernetes image pull secret.
@@ -111,3 +152,5 @@ spec:
 [up-command-line]: /manuals/cli/overview
 [up-cli-configuration]:/manuals/cli/howtos/profile-config/#configure-docker-credential-helper
 [image-pull-secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials
+[team-repo-permissions]: /manuals/platform/teams/#manage-repository-permissions
+[docker-login-action]: https://github.com/docker/login-action
