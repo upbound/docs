@@ -26,7 +26,7 @@ up login
 
 ## Configure Docker to use the up credential helper
 
-If you use Docker or any other OCI client, you can configure it to use Upbound credentials to interact with the Marketplace. If you plan to push packages to the Upbound Marketplace, you can use the credentials acquired via `up login`. 
+If you use Docker or any other OCI client, you can configure it to use Upbound credentials to interact with the Marketplace.
 
 Install the docker-credential-up credential helper:
 
