@@ -17,6 +17,7 @@ To test your compositions and run end-to-end tests, make sure you have:
 
 * The `up` CLI `v0.38` or higher [installed][installed]
 * An Upbound account
+* Authenticated with Upbound using `up login`
 
 ## Development control planes
 
@@ -36,7 +37,7 @@ Preview how your composition creates resources with the `up composition render`
 command before you deploy to a development control plane.
 
 ```shell
-up composition render apis/xbuckets/composition.yaml examples/bucket/example-xr.yaml
+up composition render apis/xstoragebuckets/composition.yaml examples/xstoragebuckets/example-xr.yaml
 ```
 
 This command requires a **Composite Resource** (XR) file that defines the
@@ -79,44 +80,108 @@ generate` command.
 ### Generate a composition test
 
 Composition tests validate the logic of your compositions without requiring a
-live environment. They simulate the composition controller's behavior, allowing
+live environment. They simulate the composition function pipeline, allowing
 you to test resource creation, dependencies, and state transitions with mock
 data.
 
 You can generate tests with `up test generate` for composition tests.
-You can write tests in KCL or Python.
+You can write tests in KCL, Python, or Go.
 
 For example, to generate a composition test:
 
 
 <Tabs>
+<TabItem value="Go" label="Go">
+```shell {copy-lines="all"}
+up test generate my-test --language=go
+```
+</TabItem>
+
 <TabItem value="Python" label="Python">
 <!-- vale gitlab.SentenceSpacing = NO -->
-```ini {copy-lines="all"}
-up test generate <name> --language=python
+```shell {copy-lines="all"}
+up test generate my-test --language=python
 ```
 </TabItem>
 
 <TabItem value="KCL" label="KCL">
-```ini {copy-lines="all"}
-up test generate <name> --language=kcl
+```shell {copy-lines="all"}
+up test generate my-test --language=kcl
 ```
 </TabItem>
 </Tabs>
 
 #### Author a composition test
 
-Composition tests use a declarative API in KCL or Python. Each test
-models a single composition controller loop, making testing more streamlined for
+Composition tests use a declarative API in KCL, Python, or Go. Each test
+models a single function pipeline run, making testing more streamlined for
 reading and debugging.
 
-This testing command simulates the Crossplane composition controller. The
-controller evaluates the current state of resources, processes the composition,
-and makes necessary changes. The command recreates this process locally to
-verify composition logic.
+The test runner invokes your composition functions with a given XR input and
+compares the composed resource output against `assertResources`. It doesn't
+exercise the Crossplane composition controller, which handles reconciliation and
+external resource management.
 
 
 <Tabs>
+<TabItem value="Go" label="Go">
+
+```go
+// Package main generates a CompositionTest
+package main
+
+import (
+	"fmt"
+	"os"
+
+	"k8s.io/utils/ptr"
+	"sigs.k8s.io/yaml"
+
+	metav1 "dev.upbound.io/models/io/k8s/meta/v1"
+	metav1alpha1 "dev.upbound.io/models/io/upbound/dev/meta/v1alpha1"
+)
+
+func main() {
+	assertResources := resourcesToItems[metav1alpha1.CompositionTestSpecAssertResourcesItem]()
+	test := metav1alpha1.CompositionTest{
+		APIVersion: ptr.To(metav1alpha1.CompositionTestAPIVersionmetaDevUpboundIoV1Alpha1),
+		Kind:       ptr.To(metav1alpha1.CompositionTestKindCompositionTest),
+		Metadata: &metav1.ObjectMeta{
+			Name: ptr.To("test-xstoragebucket-default-go"),
+		},
+		Spec: &metav1alpha1.CompositionTestSpec{
+			AssertResources: &assertResources,
+			CompositionPath: ptr.To("apis/xstoragebuckets/composition.yaml"),
+			XrPath:          ptr.To("examples/xstoragebuckets/example.yaml"),
+			XrdPath:         ptr.To("apis/xstoragebuckets/definition.yaml"),
+			TimeoutSeconds:  ptr.To(120),
+			Validate:        ptr.To(false),
+		},
+	}
+	output := map[string]interface{}{
+		"items": []interface{}{test},
+	}
+	out, err := yaml.Marshal(output)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error encoding YAML: %v\n", err)
+		os.Exit(1)
+	}
+	fmt.Print(string(out))
+}
+```
+
+:::note
+`up test generate` produces the complete `main.go`, including helper functions
+`resourcesToItems`, `toItem`, and `convertViaJSON`. The snippet above shows only
+`main()`. Do not copy it as a standalone file — run `up test generate` first,
+then edit the generated file.
+:::
+
+Import your provider resource types from `dev.upbound.io/models` and pass them
+as arguments to `resourcesToItems` to populate `assertResources`. The test
+runner calls `go run .` and captures the YAML printed to stdout.
+
+</TabItem>
 <TabItem value="Python" label="Python">
 
 ```python
@@ -140,7 +205,7 @@ test = compositiontest.CompositionTest(
 </TabItem>
 <TabItem value="KCL" label="KCL">
 
-```shell
+```kcl
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
 
 _items = [
@@ -172,16 +237,22 @@ everything in that directory.
 up test run tests/*
 ```
 
-To run a specific test, give the full path of that test:
+To run a specific test, give the path to that test directory:
 
 ```shell
-up test run tests/xstoragebucket-default/main.k
+up test run tests/my-test
+```
+
+For KCL tests you can also point to the specific file:
+
+```shell
+up test run tests/my-test/main.k
 ```
 
 You can provide wildcards to run tests matching a pattern:
 
 ```shell
-up test run tests/xstoragebucket/**/*.k
+up test run tests/xstoragebucket/**
 ```
 
 The command returns a summary of results:
@@ -197,12 +268,13 @@ up test run tests/*
  SUCCESS  Failed tests:         0
 ```
 
-When you run Compositions tests, Upbound:
+When you run composition tests, Upbound:
 
-1. Detects the test language and converts to a unified format.
-2. Builds and pushes the project to local daemon.
-3. Sets the context to the new control plane.
-4. Executes tests and validates results.
+1. Detects the test language from the files present (`main.k`, `main.py`, or `go.mod`).
+2. For Go tests, runs `go run .` locally and captures the YAML output.
+3. Builds composition functions and pushes them to the local Docker daemon.
+4. Sets the context to the local control plane.
+5. Executes tests and validates results.
 
 ### Generate an end-to-end test
 
@@ -210,22 +282,28 @@ End-to-end tests validate compositions in real environments, ensuring creation,
 deletion, and operations work as expected.
 
 You can generate test with `up test generate` for end-to-end tests.
-You can write tests in KCL or Python.
+You can write tests in KCL, Python, or Go.
 
-For example, to generate a end-to-end test:
+For example, to generate an end-to-end test:
 
 <Tabs>
+<TabItem value="Go" label="Go">
+```shell {copy-lines="all"}
+up test generate my-e2e-test --e2e --language=go
+```
+</TabItem>
+
 <TabItem value="Python" label="Python">
 
-```ini {copy-lines="all"}
-up test generate <name> --e2e --language=python
+```shell {copy-lines="all"}
+up test generate my-e2e-test --e2e --language=python
 ```
 
 </TabItem>
 
 <TabItem value="KCL" label="KCL">
-```ini {copy-lines="all"}
-up test generate <name> --e2e --language=kcl
+```shell {copy-lines="all"}
+up test generate my-e2e-test --e2e --language=kcl
 ```
 
 </TabItem>
@@ -233,10 +311,73 @@ up test generate <name> --e2e --language=kcl
 
 #### Author an end-to-end test
 
-End-to-end tests use the `E2ETest` API, written in KCL or Python.
+End-to-end tests use the `E2ETest` API, written in KCL, Python, or Go.
 
 <!-- vale gitlab.SentenceSpacing = YES -->
 <Tabs>
+
+<TabItem value="Go" label="Go">
+
+```go
+// Package main generates an E2ETest
+package main
+
+import (
+	"fmt"
+	"os"
+
+	"k8s.io/utils/ptr"
+	"sigs.k8s.io/yaml"
+
+	metav1 "dev.upbound.io/models/io/k8s/meta/v1"
+	metav1alpha1 "dev.upbound.io/models/io/upbound/dev/meta/v1alpha1"
+)
+
+func main() {
+	manifests := resourcesToItems[metav1alpha1.E2ETestSpecManifestsItem]()
+	extraResources := resourcesToItems[metav1alpha1.E2ETestSpecExtraResourcesItem]()
+	test := metav1alpha1.E2ETest{
+		APIVersion: ptr.To(metav1alpha1.E2ETestAPIVersionmetaDevUpboundIoV1Alpha1),
+		Kind:       ptr.To(metav1alpha1.E2ETestKindE2ETest),
+		Metadata: &metav1.ObjectMeta{
+			Name: ptr.To("e2etest-xstoragebucket-go"),
+		},
+		Spec: &metav1alpha1.E2ETestSpec{
+			Crossplane: &metav1alpha1.E2ETestSpecCrossplane{
+				AutoUpgrade: &metav1alpha1.E2ETestSpecCrossplaneAutoUpgrade{
+					Channel: ptr.To(metav1alpha1.E2ETestSpecCrossplaneAutoUpgradeChannelRapid),
+				},
+			},
+			DefaultConditions: &[]string{"Ready"},
+			Manifests:         &manifests,
+			ExtraResources:    &extraResources,
+			SkipDelete:        ptr.To(false),
+			TimeoutSeconds:    ptr.To(4500),
+		},
+	}
+	output := map[string]interface{}{
+		"items": []interface{}{test},
+	}
+	out, err := yaml.Marshal(output)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error encoding YAML: %v\n", err)
+		os.Exit(1)
+	}
+	fmt.Print(string(out))
+}
+```
+
+:::note
+`up test generate` produces the complete `main.go` including helper functions.
+The snippet above shows only `main()` — run `up test generate` first, then edit
+the generated file.
+:::
+
+Populate `manifests` with your claim or XR resources and `extraResources` with
+any prerequisites such as `ProviderConfig`. Import your resource types from
+`dev.upbound.io/models` and pass them to `resourcesToItems`.
+
+</TabItem>
 
 <TabItem value="Python" label="Python">
 
@@ -298,7 +439,7 @@ test = e2etest.E2ETest(
 </TabItem>
 
 <TabItem value="KCL" label="KCL">
-```shell
+```kcl
 import models.com.example.platform.v1alpha1 as platformv1alpha1
 import models.io.upbound.aws.v1beta1 as awsv1beta1
 import models.io.upbound.dev.meta.v1alpha1 as metav1alpha1
@@ -352,16 +493,16 @@ everything in that directory.
 up test run --e2e tests/*
 ```
 
-To run a specific test, give the full path of that test:
+To run a specific test, give the path to that test directory:
 
 ```shell
-up test run --e2e tests/e2etest-xstoragebucket-default/main.k
+up test run --e2e tests/my-e2e-test
 ```
 
 You can provide wildcards to run tests matching a pattern:
 
 ```shell
-up test run --e2e tests/xstoragebucket/**/*.k
+up test run --e2e tests/xstoragebucket/**
 ```
 
 The command returns a summary of results:
