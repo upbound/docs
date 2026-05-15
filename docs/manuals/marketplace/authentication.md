@@ -70,7 +70,7 @@ Use `docker login` with the robot credentials:
 docker login xpkg.upbound.io -u <robot-access-id> -p <robot-token>
 ```
 
-You can now run `crossplane xpkg push` to push packages to the Marketplace.
+You can run [`crossplane xpkg push`][crossplane-xpkg-push] to push packages to the Marketplace.
 
 :::warning
 If you have the `docker-credential-up` helper configured for `xpkg.upbound.io`, it may override the robot credentials. Remove or scope it if you encounter auth errors after a successful `docker login`.
@@ -147,7 +147,7 @@ spec:
 ```
 </div>
 
-
+[crossplane-xpkg-push]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-push
 [upbound-account]: /manuals/platform/users
 [up-command-line]: /manuals/cli/overview
 [up-cli-configuration]:/manuals/cli/howtos/profile-config/#configure-docker-credential-helper
