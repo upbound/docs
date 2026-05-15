@@ -51,13 +51,13 @@ For Docker, add `up` to your Docker `config.json`. This allows your client to us
 ## Authenticate to push packages
 
 Pushing packages to the Upbound Marketplace requires a robot token.
-Personal API tokens and `up login` credentials don't work for pushing — they return a 401 error.
+Personal API tokens and `up login` credentials don't work for pushing.
 
 ### Create a robot token
 
 1. Go to `https://accounts.upbound.io/o/<your-org>/robots` and create a robot account.
 
-2. Copy the robot's **access ID** and **token** — you can't retrieve the token again after leaving the page.
+2. Copy the robot's **access ID** and **token**. You can't retrieve the token again after leaving the page.
 
 3. Assign the robot to a team that has write permission on the target repository.
    See [manage repository permissions][team-repo-permissions] for instructions.
@@ -76,7 +76,9 @@ You can run [`crossplane xpkg push`][crossplane-xpkg-push] to push packages to t
 If you have the `docker-credential-up` helper configured for `xpkg.upbound.io`, it may override the robot credentials. Remove or scope it if you encounter auth errors after a successful `docker login`.
 :::
 
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ### Authenticate in CI
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 In a CI pipeline, use the [`docker/login-action`][docker-login-action] with your robot credentials stored as secrets:
 
