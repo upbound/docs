@@ -118,7 +118,7 @@ models a single function pipeline run, making testing more streamlined for
 reading and debugging.
 
 The test runner invokes your composition functions with a given XR input and
-compares the composed resource output against `assertResources`. It does not
+compares the composed resource output against `assertResources`. It doesn't
 exercise the Crossplane composition controller, which handles reconciliation and
 external resource management.
 
