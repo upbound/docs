@@ -26,6 +26,10 @@ Any important warnings or necessary information
 
 ### Release Date: 2026-05-18
 
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.48.2 or later.
+:::
+
 #### Important Changes
 
 - New control planes now default to UXP v2. If you create a ControlPlane and
