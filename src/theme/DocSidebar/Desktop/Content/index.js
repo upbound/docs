@@ -14,7 +14,7 @@ const versionsJson = require('../../../../../self-hosted-spaces_versions.json');
 
 const LATEST = 'latest';
 // Must match `versions.current.label` for the self-hosted-spaces plugin in docusaurus.config.js.
-const LATEST_VERSION = '1.16';
+const LATEST_VERSION = '1.17';
 
 const versions = [
   { label: `${LATEST_VERSION} (Latest)`, value: LATEST },
