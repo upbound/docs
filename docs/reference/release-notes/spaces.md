@@ -24,8 +24,7 @@ Any important warnings or necessary information
 
 ## v1.17.0
 
-<!-- TODO -->
-<!-- ### Release Date: 2026-05-18 -->
+### Release Date: 2026-05-18
 
 #### Important Changes
 
