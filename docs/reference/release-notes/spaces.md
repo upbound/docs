@@ -267,6 +267,20 @@ Any important warnings or necessary information
 - Reactively reconcile legacy connection Secrets and ingress-ca ConfigMap upon root CA changes.
 - Added default resource requests to external-secrets-operator deployments.
 
+## v1.14.7
+
+### Release Date: 2026-05-22
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.48.3 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (VCluster, etcd, external-secrets-operator).
+- Resolved CVEs in `hyperspace` and `mxp-charts` images.
+- Bumped control plane Kubernetes version to v1.31.14
+
 ## v1.14.6
 
 ### Release Date: 2026-05-04
