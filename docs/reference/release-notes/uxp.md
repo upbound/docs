@@ -14,6 +14,54 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.2.2-up.1
+
+### Release Date: 2026-05-27
+
+#### What's Changed
+
+Based on Crossplane [v2.2.2](https://github.com/crossplane/crossplane/releases/tag/v2.2.2).
+
+- Bumped `crossplane-runtime` to v2.2.2
+- Security dep bumps: `golang.org/x/crypto` → v0.52.0, `go-git/v5` → v5.19.1, `go-billy/v5` → v5.9.0, `in-toto-golang` → v0.11.0, `golang.org/x/net` → v0.55.0, `golang.org/x/sys` → v0.44.0, `containerd` → v1.7.32
+- Bumped `uxp-webui` to 1.1.5 and `uxp-apollo` to 0.4.13
+
+## v2.1.6-up.1
+
+### Release Date: 2026-05-27
+
+#### What's Changed
+
+Based on Crossplane [v2.1.6](https://github.com/crossplane/crossplane/releases/tag/v2.1.6).
+
+- Bumped `crossplane-runtime` to v2.1.6
+- Security dep bumps: `golang.org/x/crypto` → v0.52.0, `go-git/v5` → v5.19.1, `go-billy/v5` → v5.9.0, `golang.org/x/net` → v0.55.0, `otel` → v1.41.0, `containerd` → v1.7.32
+- Bumped `uxp-webui` to 1.0.4 and `uxp-apollo` to 0.2.17
+
+## v2.0.8-up.2
+
+### Release Date: 2026-05-27
+
+#### What's Changed
+
+Based on Crossplane [v2.0.8](https://github.com/crossplane/crossplane/releases/tag/v2.0.8).
+
+- Synced security fixes from upstream release-2.0 branch: `in-toto-golang` → v0.11.0, `go-git/v5` → v5.19.1
+- Security dep bumps: `go-git/v5` → v5.19.1, `go-billy/v5` → v5.9.0, `golang.org/x/crypto` → v0.52.0, `golang.org/x/net` → v0.55.0, `containerd` → v1.7.32
+- Bumped `uxp-webui` to 1.0.4 and `uxp-apollo` to 0.2.17
+
+## v1.20.8-up.1
+
+### Release Date: 2026-05-27
+
+#### What's Changed
+
+Based on Crossplane [v1.20.8](https://github.com/crossplane/crossplane/releases/tag/v1.20.8).
+
+- Bumped `crossplane-runtime` to v1.20.8
+- Bumped Go to 1.25.10 to fix stdlib CVEs
+- Security dep bumps: `golang.org/x/crypto` → v0.52.0, `go-git/v5` → v5.19.1
+
 ## v1.20.6-up.2
 
 ### Release Date: 2026-04-22
