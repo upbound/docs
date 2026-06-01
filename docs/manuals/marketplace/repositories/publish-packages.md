@@ -73,6 +73,9 @@ The [`crossplane xpkg build` command reference][crossplane-xpkg-build-command-re
 
 ## Push a package to the repository
 
+Before pushing, authenticate to `xpkg.upbound.io` using a robot token.
+Personal API tokens return a 401 error. See [authenticate to push packages][auth-push] for setup steps.
+
 Push a package to the Upbound Marketplace using the `crossplane xpkg push` command.
 
 The `crossplane xpkg push` command requires:
@@ -163,6 +166,7 @@ Upbound supports all annotations specified in the <a href="https://github.com/cr
 
 [up-cli]: /manuals/cli/overview
 [marketplace]: /manuals/marketplace/overview
+[auth-push]: /manuals/marketplace/authentication#authenticate-to-push-packages
 [crossplane-xpkg-build-command-reference]: https://docs.crossplane.io/latest/cli/command-reference/#xpkg-build
 [crossplane-slack]: https://slack.crossplane.io/
 [docker]: https://docs.docker.com/get-docker/
