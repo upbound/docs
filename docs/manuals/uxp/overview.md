@@ -35,6 +35,7 @@ Users on a **Standard Plan** or greater have access to commercial features that 
 | [Function Scale-to-Zero][function-scale-to-zero] | Reduce resource consumption by automatically scaling composition functions to zero when idle. |
 | [Official Package Patch Releases][official-package-support] | Access patch releases of Official Providers with security fixes and bug patches. |
 | [Provider Pod Autoscaling][provider-vpa] | Dynamically adjust CPU and memory for provider pods to handle performance spikes. |
+| [Secrets Proxy][secrets-proxy] | Read and write Crossplane provider secrets to HashiCorp Vault |
 
 ## How-tos 
 
@@ -66,3 +67,4 @@ Read the [Get Started][get-started] guide to learn how to use UXP to build your 
 [provider-vpa]: /manuals/uxp/howtos/provider-vpa
 [pricing]: https://www.upbound.io/pricing
 [contact-sales]: https://www.upbound.io/contact-us
+[secrets-proxy]: /manuals/uxp/howtos/secrets-proxy
