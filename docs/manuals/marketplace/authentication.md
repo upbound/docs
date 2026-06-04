@@ -4,17 +4,20 @@ sidebar_position: 3
 description: How to authenticate to the Upbound Marketplace to access private packages.
 ---
 
-Pulling private packages or pushing packages to an Upbound Marketplace private repository requires authentication to Upbound.
+Pulling private packages or pushing packages to an Upbound Marketplace private
+repository requires authentication to Upbound.
 
 Installing private Kubernetes resources requires an [image pull secret][image-pull-secret].
 
 :::important
-Authenticating to the Upbound Marketplace for private packages requires an [Upbound account][upbound-account].
+Authenticating to the Upbound Marketplace for private packages requires an
+[Upbound account][upbound-account]. 
 :::
 
 ## Prerequisites
 
-Install the [Up command-line][up-command-line] to generate Kubernetes secrets and to use Upbound Marketplace private resources.
+Install the [Up command-line][up-command-line] to generate Kubernetes secrets
+and to use Upbound Marketplace private resources.
 
 ## Log in with the Up command-line
 
@@ -26,7 +29,8 @@ up login
 
 ## Configure Docker to use the up credential helper
 
-If you use Docker or any other OCI client, you can configure it to use Upbound credentials to interact with the Marketplace.
+If you use Docker or any other OCI client, you can configure it to use Upbound
+credentials to interact with the Marketplace.
 
 Install the docker-credential-up credential helper:
 
@@ -38,7 +42,8 @@ curl -sL "https://cli.upbound.io" | BIN=docker-credential-up sh
 Read the [up CLI configuration][up-cli-configuration] documentation for more installation options.
 :::
 
-For Docker, add `up` to your Docker `config.json`. This allows your client to use Upbound credentials to interact with the Marketplace:
+For Docker, add `up` to your Docker `config.json`. This allows your client to
+use Upbound credentials to interact with the Marketplace:
 
 ```json
 {
@@ -52,6 +57,14 @@ For Docker, add `up` to your Docker `config.json`. This allows your client to us
 
 Pushing packages to the Upbound Marketplace requires a robot token.
 Personal API tokens and `up login` credentials don't work for pushing.
+
+:::note
+You can use either the `docker-credential-up` helper **or** robot credentials to
+authenticate to `xpkg.upbound.io`. If you have the credential helper
+configured for `xpkg.upbound.io`, it takes precedence over `docker login` and
+causes auth errors when pushing with robot credentials. Remove or scope it
+before following the steps below. 
+:::
 
 ### Create a robot token
 
@@ -72,15 +85,12 @@ docker login xpkg.upbound.io -u <robot-access-id> -p <robot-token>
 
 You can run [`crossplane xpkg push`][crossplane-xpkg-push] to push packages to the Marketplace.
 
-:::warning
-If you have the `docker-credential-up` helper configured for `xpkg.upbound.io`, it may override the robot credentials. Remove or scope it if you encounter auth errors after a successful `docker login`.
-:::
-
 <!-- vale Microsoft.HeadingAcronyms = NO -->
 ### Authenticate in CI
 <!-- vale Microsoft.HeadingAcronyms = YES -->
 
-In a CI pipeline, use the [`docker/login-action`][docker-login-action] with your robot credentials stored as secrets:
+In a CI pipeline, use the [`docker/login-action`][docker-login-action] with your
+robot credentials stored as secrets:
 
 ```yaml
 - name: Log in to Upbound Marketplace
@@ -94,7 +104,8 @@ In a CI pipeline, use the [`docker/login-action`][docker-login-action] with your
 ## Kubernetes image pull secrets
 
 Packages in private repositories require a Kubernetes image pull secret.
-The image pull secret authenticates Kubernetes to the Upbound Marketplace, allowing Kubernetes to download and install packages.
+The image pull secret authenticates Kubernetes to the Upbound Marketplace,
+allowing Kubernetes to download and install packages.
 
 Generating an image pull secret requires either a user account _token_.
 
@@ -103,7 +114,8 @@ A user account token uses your current `up login` profile.
 Logging out with `up logout` deactivates the token.
 :::
 
-Use the command `up controlplane pull-secret create` to generate a token and Kubernetes _Secret_ in the _upbound-system_ namespace.
+Use the command `up controlplane pull-secret create` to generate a token and
+Kubernetes _Secret_ in the _upbound-system_ namespace.
 
 ```shell
 up ctp pull-secret create
@@ -132,9 +144,14 @@ Use an image pull secret by providing a <Hover label ="pps"
 line="8">spec.packagePullSecrets</Hover> in a <Hover label="pps"
 line="2">Configuration</Hover> or Provider manifest.
 
-Use an image pull secret by providing a <Hover label="pps" line="8">spec.packagePullSecrets</Hover> in a <Hover label="pps" line="2">Configuration</Hover> or `Provider` manifest.
+Use an image pull secret by providing a <Hover label="pps"
+line="8">spec.packagePullSecrets</Hover> in a <Hover label="pps"
+line="2">Configuration</Hover> or `Provider` manifest.
 
-This example installs a private <Hover label="pps" line="2">Configuration</Hover> named <Hover label="pps" line="6">secret-configuration</Hover> from the Upbound image repository using image pull secret named <Hover label="pps" line="8">package-pull-secret</Hover>.
+This example installs a private <Hover label="pps"
+line="2">Configuration</Hover> named <Hover label="pps"
+line="6">secret-configuration</Hover> from the Upbound image repository using
+image pull secret named <Hover label="pps" line="8">package-pull-secret</Hover>.
 
 <div id = "pps">
 ```yaml {copy-line="all"}
