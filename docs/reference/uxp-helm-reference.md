@@ -106,6 +106,10 @@ This reference provides detailed documentation on the UXP Helm chart. This Helm 
 | apollo.apollo.storage.postgres.create | bool | `false` | Whether the chart should install and handle the PostgreSQL database for Apollo using CloudNativePG, if set to true all connection configuration will be ignored. |
 | apollo.apollo.storage.postgres.persistent | bool | `false` | Whether to use a persistent volume for the postgres container storage |
 | apollo.apollo.storage.postgres.sidecar | bool | `true` | Whether to run postgres in a sidecar container. |
+| apollo.apollo.storage.postgres.sidecarImage | object | `{"pullPolicy":"IfNotPresent","repository":"postgres","tag":"14"}` | Image used for the postgres sidecar when sidecar is enabled. Not prefixed by .Values.registry so it can be sourced from any registry, including private/internal mirrors of upstream postgres images. |
+| apollo.apollo.storage.postgres.sidecarImage.pullPolicy | string | `"IfNotPresent"` | Image pull policy for the postgres sidecar image. |
+| apollo.apollo.storage.postgres.sidecarImage.repository | string | `"postgres"` | Repository for the postgres sidecar image, including registry host if not the default Docker Hub. |
+| apollo.apollo.storage.postgres.sidecarImage.tag | string | `"14"` | Tag for the postgres sidecar image. |
 | apollo.apollo.storage.postgres.size | string | `"5Gi"` | Size of the persistent volume |
 | apollo.apollo.storage.postgres.storageClass | string | `""` | Storage class to use for the persistent volume |
 | apollo.apollo.syncer.command | list | `[]` | Command for the apollo syncer deployment. |
@@ -149,7 +153,7 @@ This reference provides detailed documentation on the UXP Helm chart. This Helm 
 | image.ignoreTag | bool | `false` | Do not use the {{ .image.tag }} value to compute the image uri. |
 | image.pullPolicy | string | `"IfNotPresent"` | The image pull policy used for Crossplane and RBAC Manager pods. |
 | image.repository | string | `"xpkg.upbound.io/upbound/crossplane"` | Repository for the Crossplane pod image. |
-| image.tag | string | `"v2.2.1-up.1"` | The Crossplane image tag. Defaults to the value of `appVersion` in `Chart.yaml`. |
+| image.tag | string | `"v2.3.1-up.1"` | The Crossplane image tag. Defaults to the value of `appVersion` in `Chart.yaml`. |
 | imagePullSecrets | list | `[]` | The imagePullSecret names to add to the Crossplane ServiceAccount. |
 | leaderElection | bool | `true` | Enable [leader election](https://docs.crossplane.io/latest/guides/pods/#leader-election) for the Crossplane pod. |
 | metrics.enabled | bool | `true` | Enable Prometheus path, port and scrape annotations and expose port 8080 for both the Crossplane and RBAC Manager pods. |
@@ -220,7 +224,7 @@ This reference provides detailed documentation on the UXP Helm chart. This Helm 
 | upbound.manager.image.repository | string | `"xpkg.upbound.io/upbound/controller-manager"` | Repository for the Upbound Controller Manager pod image. |
 | upbound.manager.image.tag | string | `""` | The Upbound Controller Manager image tag. Defaults to the value of `appVersion` in `Chart.yaml`. |
 | upbound.manager.imagePullSecrets | list | `[]` | The imagePullSecret names to add to the Upbound Controller Manager ServiceAccount. |
-| upbound.manager.leaderElection | bool | `true` | Enable [leader election](https://docs.crossplane.io/latest/guides/pods/#leader-election) for the Upbound Controller Manager pod. |
+| upbound.manager.leaderElection | bool | `true` | Enable [leader election](https://docs.crossplane.io/latest/concepts/pods/#leader-election) for the Upbound Controller Manager pod. |
 | upbound.manager.measurement.enabled | bool | `true` | Enable the measurement server. |
 | upbound.manager.measurement.port | string | `""` | The port the measurement server listens on. |
 | upbound.manager.metering | object | `{"affinity":{},"args":[],"customAnnotations":{},"dnsPolicy":"","extraEnvVars":{},"extraVolumeMounts":[],"extraVolumes":[],"image":{"pullPolicy":"IfNotPresent","repository":"xpkg.upbound.io/upbound/controller-manager","tag":""},"imagePullSecrets":[],"meteringStorage":{"accessMode":"ReadWriteOnce","enabled":false,"size":"10Gi","storageClass":""},"nodeSelector":{},"podAnnotations":{},"podLabels":{},"podSecurityContext":{},"ports":[],"priorityClassName":"","resources":{"limits":{"cpu":"500m","memory":"1024Mi"},"requests":{"cpu":"50m","memory":"128Mi"}},"securityContext":{},"startupProbe":{},"tolerations":[],"topologySpreadConstraints":[]}` | Configuration for the UXP metering StatefulSet deployed by the licensing controller. |
@@ -293,6 +297,7 @@ This reference provides detailed documentation on the UXP Helm chart. This Helm 
 | upbound.secretsProxy.caSecretName | string | `"secrets-proxy-ca"` | Name of the CA secret to create. |
 | upbound.secretsProxy.certSecretName | string | `"secrets-proxy-certs"` | Name of the certificate secret to create. |
 | upbound.secretsProxy.enabled | bool | `false` | Enable secrets proxy CA initialization and webhook. |
+| upbound.secretsProxy.leafSecretName | string | `"secrets-proxy-leaf"` | Name of the shared sidecar leaf certificate secret. Populated by ca-init and read by the webhook. |
 | upbound.secretsProxy.webhook.additionalNamespaces | list | `[]` | Additional namespaces where the webhook should inject sidecars. The release namespace is always included. |
 | upbound.secretsProxy.webhook.failurePolicy | string | `"Fail"` | Failure policy for the webhook (Ignore or Fail). |
 | upbound.secretsProxy.webhook.timeoutSeconds | int | `10` | Timeout in seconds for the webhook. |

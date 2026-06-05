@@ -14,6 +14,27 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.3.1-up.1
+
+### Release Date: 2026-06-05
+
+#### Action Required
+
+:::important
+If you are running Secrets Proxy with additional namespaces configured: after upgrading to v2.3.1-up.1, delete the existing `secrets-proxy-ca` Kubernetes Secret (containing the CA cert and key) from each additional namespace. The controller will replicate the corrected Secret automatically.
+:::
+
+#### What's Changed
+
+Based on Crossplane [v2.3.1](https://github.com/crossplane/crossplane/releases/tag/v2.3.1). This is the first UXP stable release on the v2.3 line — see upstream [v2.3.0](https://github.com/crossplane/crossplane/releases/tag/v2.3.0) and [v2.3.1](https://github.com/crossplane/crossplane/releases/tag/v2.3.1) release notes for the full set of Crossplane changes since the v2.2 line.
+
+- Bumped `crossplane-runtime` to v2.3.1
+- Security dep bump: `golang.org/x/crypto` → v0.52.0
+- Synced upbound's Crossplane fork up to upstream v2.3.1, including upbound-specific patches
+- Updated bundled Crossplane to v2.3.1-up.1
+- Bumped `uxp-webui` to v1.1.6
+- Secrets Proxy: fixed copying the CA cert and key into additional namespaces
+
 ## v2.2.2-up.1
 
 ### Release Date: 2026-05-27
