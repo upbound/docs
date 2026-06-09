@@ -2,9 +2,13 @@
 title: Project API Reference
 description: Reference documentation for the Upbound Project resource
 ---
+
 import CrdDocViewer from '@site/src/components/CrdViewer';
+
+
 <!-- vale write-good.Passive = NO -->
 <!-- vale write-good.Weasel = NO -->
+
 A `Project` defines an Upbound project, which can be built into a Crossplane
 Configuration package. The project file, `upbound.yaml`, is the entry point for
 every control plane project and configures metadata, dependencies, paths, and
