@@ -20,8 +20,9 @@ This section documents the Custom Resource Definitions (CRDs) for the Testing AP
 ## Projects API
 
 For Project resource documentation, see the [Project API Reference](/reference/apis/project-api/).
-
+<!-- vale Google.Headings = NO -->
 ## Operation Tests API
+<!-- vale Google.Headings = YES -->
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_operationtests.yaml" />
 

@@ -2,20 +2,20 @@
 title: Project API Reference
 description: Reference documentation for the Upbound Project resource
 ---
-
 import CrdDocViewer from '@site/src/components/CrdViewer';
-
+<!-- vale write-good.Passive = NO -->
+<!-- vale write-good.Weasel = NO -->
 A `Project` defines an Upbound project, which can be built into a Crossplane
 Configuration package. The project file, `upbound.yaml`, is the entry point for
 every control plane project and configures metadata, dependencies, paths, and
 build options.
 
+<!-- vale Upbound.Spelling = NO -->
 :::important
-
-An `upbound.yaml` is a superset of a [Crossplane configuration][configuration-overview]
-`crossplane.yaml` and replaces it.
-
+An `upbound.yaml` file is a superset of a [Crossplane configuration][configuration-overview]
+`crossplane.yaml` file and replaces it.
 :::
+<!-- vale Upbound.Spelling = YES -->
 
 ## API versions
 
@@ -142,9 +142,7 @@ imageConfig:
 ### API dependencies (experimental)
 
 :::warning
-
-This is an experimental feature and is subject to change.
-
+This feature is experimental and subject to change.
 :::
 
 The `apiDependencies` field declares external API schema dependencies for type
@@ -153,7 +151,7 @@ exactly one source:
 
 | Source | Fields | Description |
 |--------|--------|-------------|
-| `git` | `repository` (required), `ref`, `path` | Fetch from a git repository. |
+| `git` | `repository` (required), `ref`, `path` | Fetch from a Git repository. |
 | `http` | `url` (required) | Fetch from an HTTP/HTTPS URL. |
 | `k8s` | `version` (required) | Use a specific Kubernetes API version, for example `v1.33.0`. |
 
@@ -191,7 +189,11 @@ When a project is loaded, the following defaults are applied if not specified:
 - All `additionalMetadata` keys must have the `meta.upbound.io/` prefix.
 - Each `apiDependencies` entry must specify exactly one source (`git`, `http`, or `k8s`).
 
+<!-- vale Google.Headings = NO -->
+<!-- vale Microsoft.HeadingAcronyms = NO -->
 ## Full CRD schema
+<!-- vale Google.Headings = YES -->
+<!-- vale Microsoft.HeadingAcronyms = YES -->
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
 
@@ -201,7 +203,10 @@ When a project is loaded, the following defaults are applied if not specified:
 - [Builder's Workshop: Project Foundations][builders-workshop]
 - [CLI Reference][cli-reference] for `up project` commands
 
+<!-- vale write-good.Weasel = YES -->
+<!-- vale write-good.Passive = YES -->
+
 [configuration-overview]: /reference/apis/crossplane-api/
 [upgrade-to-projects]: /getstarted/upgrade-to-upbound/upgrade-to-projects/
-[builders-workshop]: /getstarted/builders-workshop/1-project-foundations/
+[builders-workshop]: /getstarted/builders-workshop/project-foundations/
 [cli-reference]: /reference/cli-reference/
