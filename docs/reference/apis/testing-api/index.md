@@ -1,5 +1,5 @@
 ---
-title: Testing and Project API Reference
+title: Testing API Reference
 description: Documentation for the Testing API resources
 ---
 
@@ -19,12 +19,10 @@ This section documents the Custom Resource Definitions (CRDs) for the Testing AP
 
 ## Projects API
 
-This section documents Custom Resource Definitions (CRDs) for Upbound Projects.
-
-<CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_projects.yaml" />
-
-
+For Project resource documentation, see the [Project API Reference](/reference/apis/project-api/).
+<!-- vale Google.Headings = NO -->
 ## Operation Tests API
+<!-- vale Google.Headings = YES -->
 
 <CrdDocViewer crdUrl="/crds/testing/meta.dev.upbound.io_operationtests.yaml" />
 
