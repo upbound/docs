@@ -6,12 +6,14 @@ Information on Upbound's APIs:
 
 * [Spaces API][spaces]
 * [Crossplane API][crossplane]
-* [Testing and Project API][testing]
+* [Project API][project]
+* [Testing API][testing]
 * [Query API][query]
 * [UXP API][uxp]
 
 [spaces]: /self-hosted-spaces/reference/
 [crossplane]: /reference/apis/crossplane-api/
+[project]: /reference/apis/project-api/
 [testing]: /reference/apis/testing-api/
 [query]: /reference/apis/query-api/
 [uxp]: /reference/apis/uxp-api/
