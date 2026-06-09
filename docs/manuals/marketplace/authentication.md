@@ -56,7 +56,7 @@ use Upbound credentials to interact with the Marketplace:
 ## Authenticate to push packages
 
 Pushing packages to the Upbound Marketplace requires a robot token.
-Personal API tokens and `up login` credentials are not supported as Docker credentials.
+Personal API tokens and `up login` credentials aren't supported as Docker credentials.
 
 :::note
 You can use either the `docker-credential-up` helper **or** robot credentials to
