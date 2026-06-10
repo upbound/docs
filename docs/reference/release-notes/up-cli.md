@@ -23,6 +23,41 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v0.48.3
+
+### Release Date: 2026-05-22
+
+##### What's Changed
+
+- Image updates in `up space mirror`.
+
+## v0.48.2
+
+### Release Date: 2026-05-18
+
+##### What's Changed
+
+- Image updates in `up space mirror`.
+
+## v0.48.1
+
+### Release Date: 2026-05-08
+
+##### What's Changed
+
+- Bug fixes in `up space connect`.
+
+## v0.48.0
+
+### Release Date: 2026-05-05
+
+##### What's Changed
+
+- Added a `--tag` option to `up project run`, allowing a tag to be specified for
+  the project build.
+- Updated `up space mirror` to support UXP v2 and Spaces v1.17.
+- Removed hard-coded container names from `up project ai configure-tools`.
+
 ## v0.47.0
 
 ### Release Date: 2026-04-13
