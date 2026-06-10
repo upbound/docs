@@ -27,6 +27,11 @@ const ReferenceCards = () => {
       description: 'Latest updates and changes for Spaces, Managed Control Plane Connector, and Up CLI with version history.',
       link: '/reference/release-notes'
     },
+      {
+      title: 'CVE Policy',
+      description: 'How Upbound identifies, prioritizes, and remediates CVEs across the Upbound Platform.',
+      link: '/reference/cve-policy'
+    },
     {
       title: 'Usage & Operations',
       description: 'Feature lifecycle, licensing, telemetry, support information, and VS Code extensions.',

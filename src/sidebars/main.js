@@ -106,6 +106,7 @@ module.exports = {
     ],
     referenceSidebar: [
         "reference/index",
+        "reference/cve-policy",
         {
             type: "category",
             label: "APIs",
