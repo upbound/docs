@@ -23,6 +23,20 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v0.49.0
+
+### Release Date: 2026-06-12
+
+##### What's Changed
+
+- All commands that handle Git dependencies (e.g., `up dependency add`, `up
+  project build`, `up composition render`) now support using an HTTP CONNECT
+  proxy to tunnel SSH over HTTPS. See the `--git-proxy` flag.
+- `up project run` now allows the default (wildcard) MRAP to be disabled by
+  passing the `--no-default-mrap` flag.
+- `up composition render` and `up test run` now invoke Crossplane's real
+  composite reconciler via the `crossplane internal render` command.
+
 ## v0.48.3
 
 ### Release Date: 2026-05-22
