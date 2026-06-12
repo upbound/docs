@@ -82,6 +82,13 @@ environment variables:
 
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Defaults to 'x-access-token'. Use your Bitbucket username for Bitbucket app passwords. |
+| `--git-proxy` | | Proxy URL for git operations (e.g., http://proxy:8080). Supports HTTP CONNECT for SSH tunneling. |
+| `--git-insecure-host-key` | | Skip SSH host key verification. Only use if you understand the MITM risks. |
+| `--crossplane-version` | | Version of the Crossplane image to use for rendering. Defaults to the latest stable version. |
+| `--crossplane-image` | | Override the full Crossplane Docker image reference for rendering. |
+| `--crossplane-binary` | | Path to a local crossplane binary to use instead of Docker. |
 | `--required-resources` | `-r` | A YAML file or directory of YAML files specifying required resources that functions can request. |
 | `--watched-resource` | `-w` | A YAML file specifying the watched resource for WatchOperation rendering. The resource is also added to required resources. |
 | `--context-files` | | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be files containing JSON. |

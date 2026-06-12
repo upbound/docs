@@ -84,6 +84,13 @@ the test manifests as well.
 
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Defaults to 'x-access-token'. Use your Bitbucket username for Bitbucket app passwords. |
+| `--git-proxy` | | Proxy URL for git operations (e.g., http://proxy:8080). Supports HTTP CONNECT for SSH tunneling. |
+| `--git-insecure-host-key` | | Skip SSH host key verification. Only use if you understand the MITM risks. |
+| `--crossplane-version` | | Version of the Crossplane image to use for rendering. Defaults to the latest stable version. |
+| `--crossplane-image` | | Override the full Crossplane Docker image reference for rendering. |
+| `--crossplane-binary` | | Path to a local crossplane binary to use instead of Docker. |
 | `--project-file` | `-f` | Path to project definition file. |
 | `--repository` | | Repository for the built package. Overrides the repository specified in the project file. |
 | `--no-build-cache` | | Don't cache image layers while building. |
