@@ -113,6 +113,14 @@ Apply `imageconfig.yaml` before installing the configuration and
 up project run --init-resources=imageconfig.yaml --extra-resources=providerconfig.yaml
 ```
 
+Run on a minimal local dev control plane without the default wildcard
+`ManagedResourceActivationPolicy`. Useful when the project ships its own MRAPs
+or when testing activation behavior:
+
+```shell
+up project run --local --no-default-mrap
+```
+
 
 #### Usage
 
@@ -126,6 +134,10 @@ up project run --init-resources=imageconfig.yaml --extra-resources=providerconfi
 | `--no-build-cache` | | Don't cache image layers while building. |
 | `--build-cache-dir` | | Path to the build cache directory. |
 | `--max-concurrency` | | Maximum number of functions to build and push at once. |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Defaults to 'x-access-token'. Use your Bitbucket username for Bitbucket app passwords. |
+| `--git-proxy` | | Proxy URL for git operations (e.g., http://proxy:8080). Supports HTTP CONNECT for SSH tunneling. |
+| `--git-insecure-host-key` | | Skip SSH host key verification. Only use if you understand the MITM risks. |
 | `--tag` | `-t` | Tag for the built package. If not provided, a tag of the form v0.0.0-{timestamp} will be generated. |
 | `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
 | `--control-plane-name` | | Name of the control plane to use. It will be created if not found. Defaults to the project name. |
@@ -141,6 +153,7 @@ up project run --init-resources=imageconfig.yaml --extra-resources=providerconfi
 | `--ingress` | | Enable ingress controller for the local dev control plane. |
 | `--ingress-port` | | Port mapping for the local dev control plane (e.g., '8080:80'). If not specified, a random available port will be selected when ingress is enabled. |
 | `--cluster-admin` | | Allow Crossplane cluster admin privileges in the local dev control plane. Defaults to true. |
+| `--default-mrap` | | Install the default wildcard ManagedResourceActivationPolicy in the local dev control plane. Defaults to true. |
 | `--init-resources` | | Paths to additional resource manifests that should be applied before installing the project. |
 | `--extra-resources` | | Paths to additional resource manifests that should be applied after installing the project. |
 | `--set-helm-values` | | Set custom Crossplane helm chart values for the local dev control plane, specified as key=value pairs. |

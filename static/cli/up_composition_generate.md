@@ -59,6 +59,10 @@ up composition generate examples/xnetwork/xnetwork.yaml --input rgd --input-file
 
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Defaults to 'x-access-token'. Use your Bitbucket username for Bitbucket app passwords. |
+| `--git-proxy` | | Proxy URL for git operations (e.g., http://proxy:8080). Supports HTTP CONNECT for SSH tunneling. |
+| `--git-insecure-host-key` | | Skip SSH host key verification. Only use if you understand the MITM risks. |
 | `--name` | | Name for the new composition. |
 | `--plural` | | Optional custom plural for the CompositeTypeRef.Kind |
 | `--input` | | Input format: rgd or ResourceGraphDefinition. |

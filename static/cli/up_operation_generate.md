@@ -50,6 +50,10 @@ up operation generate claude-pod-watcher --watch-group-version-kind "apps/v1/Pod
 
 | Flag | Short Form | Description |
 | ---- | ---------- | ----------- |
+| `--git-token` | | Token for git HTTPS authentication (GitHub PAT, GitLab token, etc.). |
+| `--git-username` | | Username for git HTTPS authentication. Defaults to 'x-access-token'. Use your Bitbucket username for Bitbucket app passwords. |
+| `--git-proxy` | | Proxy URL for git operations (e.g., http://proxy:8080). Supports HTTP CONNECT for SSH tunneling. |
+| `--git-insecure-host-key` | | Skip SSH host key verification. Only use if you understand the MITM risks. |
 | `--path` | | Optional path to the output file where the generated Operation will be saved. |
 | `--project-file` | `-f` | Path to project definition file. |
 | `--output` | `-o` | Output format for the results: 'file' to save to a file, 'yaml' to print the Operation in YAML format, 'json' to print the operation in JSON format. |
