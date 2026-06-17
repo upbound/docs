@@ -663,9 +663,9 @@ This assertion verifies that:
 * Control plane deploys container to correct storage account
 
 </CodeBlock>
-### Test bucket configuration
 
 <CodeBlock cloud="gcp">
+#### Test GCP bucket configuration
 
 <!-- vale Google.Headings = NO -->
 <!-- vale Google.Headings = YES -->
