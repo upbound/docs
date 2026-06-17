@@ -710,7 +710,7 @@ def sanitize_azure_storage_account_name(account_name):
     return sanitized
 
 def compose(req: fnv1.RunFunctionRequest, rsp: fnv1.RunFunctionResponse):
-    observed_xr = v1alpha1.StorageBucket(**req.observed.composite.resource)
+    observed_xr = v1alpha1.StorageBucket(**resource.struct_to_dict(req.observed.composite.resource))
     params = observed_xr.spec.parameters
 
     desired_group = rgv1beta1.ResourceGroup(
