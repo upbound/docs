@@ -663,11 +663,11 @@ This assertion verifies that:
 * Control plane deploys container to correct storage account
 
 </CodeBlock>
+### Test bucket configuration
 
 <CodeBlock cloud="gcp">
 
 <!-- vale Google.Headings = NO -->
-### Test GCP bucket configuration
 <!-- vale Google.Headings = YES -->
 ```yaml-noCopy title="tests/test-storagebucket/main.k"
 _stripDefaults(gcpmstoragev1beta1.Bucket {
