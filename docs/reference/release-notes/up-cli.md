@@ -23,6 +23,15 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v0.49.1
+
+### Release Date: 2026-06-19
+
+##### What's Changed
+
+- Fixed a bug where running `up composition render` without the `--xrd` flag
+  produced an error.
+
 ## v0.49.0
 
 ### Release Date: 2026-06-12
