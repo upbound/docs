@@ -14,6 +14,64 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.3.3-up.1
+
+### Release Date: 2026-06-24
+
+#### What's Changed
+
+Based on Crossplane [v2.3.3](https://github.com/crossplane/crossplane/releases/tag/v2.3.3).
+
+- **Fixed package signature verification TOCTOU** (GHSA-mf7q-r4rv-jv94): A time-of-check-to-time-of-use flaw could let a malicious OCI registry pass signature verification with a signed image and then serve unsigned content for installation. Fixed via crossplane-runtime v2.3.3.
+- **Fixed `crossplane render` regressions**: Render now honors input XR schema, returns requirements even on fatal errors, and sets the namespace only for cluster-scoped XRs.
+- Security dep bumps: Go 1.25.11, `golang.org/x/net`, `golang.org/x/sys`, `containerd` → v1.7.33
+
+## v2.2.3-up.1
+
+### Release Date: 2026-06-24
+
+#### What's Changed
+
+Based on Crossplane [v2.2.3](https://github.com/crossplane/crossplane/releases/tag/v2.2.3).
+
+- **Fixed package signature verification TOCTOU** (GHSA-wfqx-gjrf-g28r): A time-of-check-to-time-of-use flaw could let a malicious OCI registry pass signature verification with a signed image and then serve unsigned content for installation.
+- Security dep bumps: Go 1.25.11, `golang.org/x/net` → v0.55.0, `crossplane-runtime` → v2.2.3, `containerd` → v1.7.33
+
+## v2.1.7-up.1
+
+### Release Date: 2026-06-24
+
+#### What's Changed
+
+Based on Crossplane [v2.1.7](https://github.com/crossplane/crossplane/releases/tag/v2.1.7).
+
+- Security dep bumps: Go 1.25.11, `golang.org/x/net` → v0.55.0, `quic-go` → v0.59.1, `crossplane-runtime` → v2.1.7, `containerd` → v1.7.33
+- Bumped `uxp-apollo` to v0.2.18 for security fixes in `golang.org/x/crypto`, `x/net`, `x/sys`, `go-chi/chi`
+
+## v2.0.8-up.3
+
+### Release Date: 2026-06-24
+
+#### What's Changed
+
+UXP-only security patch (upstream Crossplane has ended support for the v2.0 line, but UXP continues to support it).
+
+- Bumped Go to 1.25.11 and `golang.org/x/crypto`, `x/net` for CVEs
+- Bumped `crossplane-runtime` to v2.0.9 for security fixes in `golang.org/x/net`, `x/sys`, `go.opentelemetry.io/otel`
+- Bumped `uxp-apollo` to v0.2.18 for security fixes in `golang.org/x/crypto`, `x/net`, `x/sys`, `go-chi/chi`
+- Security: bumped `containerd` → v1.7.33
+
+## v1.20.10-up.1
+
+### Release Date: 2026-06-24
+
+#### What's Changed
+
+Based on Crossplane [v1.20.10](https://github.com/crossplane/crossplane/releases/tag/v1.20.10).
+
+- Security dep bumps: Go 1.25.11, `golang.org/x/net` → v0.55.0, `crossplane-runtime` → v1.20.10, `mongo-driver` → v1.17.7
+- Fixed UXP "-up.N" suffix being treated as semver prerelease in the binary's internal version
+
 ## v2.3.1-up.1
 
 ### Release Date: 2026-06-05
