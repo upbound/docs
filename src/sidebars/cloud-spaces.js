@@ -35,7 +35,6 @@ module.exports = {
       type: 'category',
       label: 'Connect',
       items: [
-        'howtos/api-connector',
         'howtos/ctp-connector',
         'howtos/mcp-connector-guide',
         'howtos/query-api',
