@@ -1177,7 +1177,12 @@
         },
         {
             "source": "/operate/api-connector(/)?",
-            "destination": "/self-hosted-spaces/howtos/api-connector",
+            "destination": "/self-hosted-spaces/howtos/ctp-connector",
+            "permanent": true
+        },
+        {
+            "source": "/self-hosted-spaces/howtos/api-connector(/)?",
+            "destination": "/self-hosted-spaces/howtos/ctp-connector",
             "permanent": true
         },
         {

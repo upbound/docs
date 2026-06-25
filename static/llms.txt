@@ -78,7 +78,6 @@ Cloud Spaces is Upbound's hosted control plane service. Upbound manages the Spac
 - [Managed Upbound control planes](https://docs.upbound.io/cloud-spaces/howtos/managed-service): Use Upbound-managed control planes without operating your own Spaces infrastructure.
 - [Automation and GitOps](https://docs.upbound.io/cloud-spaces/howtos/automation-and-gitops/overview): Manage control plane configuration through GitOps workflows.
 - [GitOps with Upbound control planes](https://docs.upbound.io/cloud-spaces/howtos/gitops-on-upbound): Connect ArgoCD or Flux to control planes running in Cloud Spaces.
-- [API Connector](https://docs.upbound.io/cloud-spaces/howtos/api-connector): Connect external APIs and services to control planes in Cloud Spaces.
 - [Control Plane Connector](https://docs.upbound.io/cloud-spaces/howtos/ctp-connector): Consume control plane APIs from an app cluster using the control plane connector.
 - [MCP Connector](https://docs.upbound.io/cloud-spaces/howtos/mcp-connector-guide): Connect managed control planes to your hub cluster.
 - [Private Network Agent](https://docs.upbound.io/cloud-spaces/howtos/private-network-agent): Route control plane traffic through a private network agent for air-gapped or restricted environments.
@@ -116,7 +115,6 @@ Self-Hosted Spaces runs the Spaces platform in your own Kubernetes cluster. You 
 - [Automation and GitOps](https://docs.upbound.io/self-hosted-spaces/howtos/automation-and-gitops/overview): Automate control plane management through GitOps in Self-Hosted Spaces.
 - [GitOps with ArgoCD](https://docs.upbound.io/self-hosted-spaces/howtos/gitops): Manage Self-Hosted Spaces control planes using ArgoCD.
 - [Use ArgoCD plugin](https://docs.upbound.io/self-hosted-spaces/howtos/use-argo): Use the Upbound ArgoCD plugin for enhanced GitOps integration.
-- [API Connector](https://docs.upbound.io/self-hosted-spaces/howtos/api-connector): Connect external APIs to control planes in Self-Hosted Spaces.
 - [Control Plane Connector](https://docs.upbound.io/self-hosted-spaces/howtos/ctp-connector): Consume control plane APIs from app clusters in Self-Hosted Spaces.
 - [MCP Connector](https://docs.upbound.io/self-hosted-spaces/howtos/mcp-connector-guide): Connect managed control planes to the hub cluster in Self-Hosted Spaces.
 - [Secrets management](https://docs.upbound.io/self-hosted-spaces/howtos/secrets-management): Manage secrets for control planes and Spaces components.
