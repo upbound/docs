@@ -22,9 +22,6 @@ import UpConfigSet from '/cli/up_config_set.md';
 import UpControlplane from '/cli/up_controlplane.md';
 import UpControlplaneAddOn from '/cli/up_controlplane_add-on.md';
 import UpControlplaneAddOnInstall from '/cli/up_controlplane_add-on_install.md';
-import UpControlplaneAPIConnector from '/cli/up_controlplane_api-connector.md';
-import UpControlplaneAPIConnectorInstall from '/cli/up_controlplane_api-connector_install.md';
-import UpControlplaneAPIConnectorUninstall from '/cli/up_controlplane_api-connector_uninstall.md';
 import UpControlplaneConfiguration from '/cli/up_controlplane_configuration.md';
 import UpControlplaneConfigurationInstall from '/cli/up_controlplane_configuration_install.md';
 import UpControlplaneConnector from '/cli/up_controlplane_connector.md';
@@ -226,15 +223,6 @@ import UpXrdGenerate from '/cli/up_xrd_generate.md';
 ## up controlplane add-on install
 
 <UpControlplaneAddOnInstall />
-## up controlplane api-connector
-
-<UpControlplaneAPIConnector />
-## up controlplane api-connector install
-
-<UpControlplaneAPIConnectorInstall />
-## up controlplane api-connector uninstall
-
-<UpControlplaneAPIConnectorUninstall />
 ## up controlplane configuration
 
 <UpControlplaneConfiguration />

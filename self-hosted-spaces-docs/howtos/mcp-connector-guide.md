@@ -161,4 +161,3 @@ In this tutorial, you:
 
 [control-plane-connector]: /self-hosted-spaces/howtos/ctp-connector
 [platform-reference-configuration]: https://marketplace.upbound.io/configurations/upbound/platform-ref-aws
-[api-connector]: /self-hosted-spaces/howtos/api-connector
