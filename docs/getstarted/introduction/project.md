@@ -47,7 +47,7 @@ export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 
 ## Login to Upbound
 
-The `up` CLI requires you to login to run local control planes. You can [register] for a free Community account.
+The `up` CLI requires you to log in to run local control planes. You can [register] for a free Community account.
 
 In your terminal, run the following command:
 
