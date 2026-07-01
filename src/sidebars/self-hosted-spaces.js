@@ -25,6 +25,7 @@ module.exports = {
         'howtos/self-hosted-spaces-deployment',
         'howtos/certs',
         'howtos/attach-detach',
+        'howtos/ingress-nginx-migration',
         'howtos/query-api',
         'howtos/mirror-images',
       ],
