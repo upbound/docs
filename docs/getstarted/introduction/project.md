@@ -34,6 +34,7 @@ Before beginning, make sure you have:
 
 - The [up][up-cli] CLI installed
 - A Docker-compatible container runtime installed and running on your system
+- A free Community [Upbound account][register]
 
 :::tip 
 **Podman users**
@@ -43,6 +44,17 @@ If you're using Podman instead of Docker, set the `DOCKER_HOST` environment vari
 export DOCKER_HOST=unix:///run/user/$(id -u)/podman/podman.sock
 ```
 :::
+
+## Login to Upbound
+
+The `up` CLI requires you to login to run local control planes. You can [register] for a free Community account.
+
+In your terminal, run the following command:
+
+```shell
+up login
+```
+Your browser opens and prompts you to log in to your organization. Once you're authenticated, you can close the page.
 
 ## Create a control plane project
 
@@ -1115,6 +1127,7 @@ service/webapp-xfkzg   ClusterIP   10.96.148.56   <none>        8080/TCP   11m
 Now that you know the basics of building with Upbound, create an AI-augmented
 operation to detect and remediate Kubernetes app workload errors. Read [Create an AI-augmented operation][integrate-ai].
 
+[register]: https://accounts.upbound.io/register
 [up-cli]: /manuals/cli/overview
 [marketplace]: https://marketplace.upbound.io
 [functions]: /manuals/uxp/concepts/composition/composite-resource-definitions
