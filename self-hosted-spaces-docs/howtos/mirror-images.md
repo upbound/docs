@@ -34,7 +34,7 @@ up space mirror -v <version> --output-dir=<path> --token-file=<path-to-token.jso
 Example:
 
 ```bash
-up space mirror -v 1.15.2 --output-dir=/tmp/spaces-artifacts --token-file=upbound-token.json
+up space mirror -v 1.17.0 --output-dir=/tmp/spaces-artifacts --token-file=upbound-token.json
 ```
 
 ## Specify your internal registry
@@ -72,7 +72,7 @@ up space mirror -v <version> --destination-registry=<registry> --token-file=<pat
 Example:
 
 ```bash
-up space mirror -v 1.15.2 --destination-registry=myregistry.io --token-file=upbound-token.json
+up space mirror -v 1.17.0 --destination-registry=myregistry.io --token-file=upbound-token.json
 ```
 
 :::tip
