@@ -4,6 +4,9 @@ sidebar_position: 20
 description: Install self hosted spaces using istio ingress gateway in a Kind cluster
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import { versions } from '@site/src/components/Version.js';
+
 :::important
 Prerequisites
 
@@ -209,14 +212,14 @@ EOF
 
 2. Set the required environment variables
 
-```shell
-# Update these according to your account/token file
+<CodeBlock language="shell">
+{`# Update these according to your account/token file
 export SPACES_TOKEN_PATH=<token file path>
 export UPBOUND_ACCOUNT=<account>
 # Replace SPACES_ROUTER_HOST with your Spaces ingress hostname
 export SPACES_ROUTER_HOST="proxy.upbound-127.0.0.1.nip.io"
-export SPACES_VERSION="1.14.1"
-```
+export SPACES_VERSION="${versions.spaces}"`}
+</CodeBlock>
 
 3. Create an image pull secret for Spaces
 

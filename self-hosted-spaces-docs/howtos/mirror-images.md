@@ -4,6 +4,9 @@ description: Mirror OCI artifacts for a Spaces version to local storage or a
   private registry.
 ---
 
+import CodeBlock from '@theme/CodeBlock';
+import { versions } from '@site/src/components/Version.js';
+
 `up space mirror` copies all OCI artifacts for a given Spaces version to a local
 directory (as `.tar.gz` files) or a container registry.
 
@@ -33,9 +36,9 @@ up space mirror -v <version> --output-dir=<path> --token-file=<path-to-token.jso
 
 Example:
 
-```bash
-up space mirror -v 1.17.0 --output-dir=/tmp/spaces-artifacts --token-file=upbound-token.json
-```
+<CodeBlock language="bash">
+{`up space mirror -v ${versions.spaces} --output-dir=/tmp/spaces-artifacts --token-file=upbound-token.json`}
+</CodeBlock>
 
 ## Specify your internal registry
 
@@ -71,9 +74,9 @@ up space mirror -v <version> --destination-registry=<registry> --token-file=<pat
 
 Example:
 
-```bash
-up space mirror -v 1.17.0 --destination-registry=myregistry.io --token-file=upbound-token.json
-```
+<CodeBlock language="bash">
+{`up space mirror -v ${versions.spaces} --destination-registry=myregistry.io --token-file=upbound-token.json`}
+</CodeBlock>
 
 :::tip
 Use `--dry-run` to list artifacts the command would mirror without copying them. This verifies you have proper access to the Upbound registry.

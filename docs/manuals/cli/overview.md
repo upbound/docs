@@ -6,7 +6,6 @@ description: Install Crossplane, interact with the Upbound Marketplace and Manag
   Control Planes with the Upbound Up CLI.
 ---
 
-import Version from "@site/src/components/Version.js"
 import { versions } from "@site/src/components/Version.js"
 import CodeBlock from '@theme/CodeBlock';
 
@@ -33,7 +32,7 @@ curl -sL "https://cli.upbound.io" | sh
 
 :::note
 Install a specific version of `up` by providing the version.
-For example, to install version <Version type="cli" /> use the following command:
+For example, to install version {versions.cli} use the following command:
 
 <CodeBlock language="bash">
 {`curl -sL "https://cli.upbound.io" | VERSION=v${versions.cli} sh`}

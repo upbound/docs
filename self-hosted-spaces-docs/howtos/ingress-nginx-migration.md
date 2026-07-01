@@ -6,6 +6,8 @@ tier: "business"
 ---
 
 import GlobalLanguageSelector, { CodeBlock } from '@site/src/components/GlobalLanguageSelector';
+import ThemeCodeBlock from '@theme/CodeBlock';
+import { versions } from '@site/src/components/Version.js';
 
 <GlobalLanguageSelector />
 
@@ -24,10 +26,10 @@ Options vary by Spaces version. Select your Spaces version:
 
 Set environment variables used throughout this guide:
 
-```bash
-export SPACES_VERSION=<version>  # Example: 1.16.0
-export SPACES_ROUTER_HOST=<hostname>  # Example: proxy.example.com
-```
+<ThemeCodeBlock language="bash">
+{`export SPACES_VERSION=<version>  # Example: ${versions.spaces}
+export SPACES_ROUTER_HOST=<hostname>  # Example: proxy.example.com`}
+</ThemeCodeBlock>
 
 Export your current Helm values to a file (or use an existing version-controlled
 file):
