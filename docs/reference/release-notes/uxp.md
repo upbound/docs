@@ -14,6 +14,61 @@ Any important warnings or necessary information
 - User-facing changes
 -->
 
+## v2.3.3-up.2
+
+### Release Date: 2026-07-06
+
+#### What's Changed
+
+Based on Crossplane [v2.3.3](https://github.com/crossplane/crossplane/releases/tag/v2.3.3). Security patch.
+
+- Security: Crossplane core updated to v2.3.3-up.2, picking up sigstore `rekor` v1.5.2 (CVE-2026-48702), `cosign` v3.0.6 (CVE-2026-39395), and `timestamp-authority` v2.1.0 (CVE-2026-49835).
+- Security: updated `oras.land/oras-go/v2` to v2.6.1 (CVE-2026-48978, CVE-2026-50151, CVE-2026-50162, CVE-2026-50163) in the Upbound Controller Manager.
+
+## v2.2.3-up.2
+
+### Release Date: 2026-07-06
+
+#### What's Changed
+
+Based on Crossplane [v2.2.3](https://github.com/crossplane/crossplane/releases/tag/v2.2.3). Security patch.
+
+- Security: Crossplane core updated to v2.2.3-up.2, picking up sigstore `rekor` v1.5.2 (CVE-2026-48702), `cosign` v3.0.6 (CVE-2026-39395), and `timestamp-authority` v2.1.0 (CVE-2026-49835).
+- Security: updated `oras.land/oras-go/v2` to v2.6.1 (CVE-2026-48978, CVE-2026-50151, CVE-2026-50162, CVE-2026-50163) in the Upbound Controller Manager.
+
+## v2.1.7-up.2
+
+### Release Date: 2026-07-06
+
+#### What's Changed
+
+Based on Crossplane [v2.1.7](https://github.com/crossplane/crossplane/releases/tag/v2.1.7). Security patch.
+
+- Security: Crossplane core updated to v2.1.7-up.2, picking up sigstore `rekor` v1.5.2 (CVE-2026-48702), `cosign` v2.6.3 (CVE-2026-39395), and `timestamp-authority` v2.1.0 (CVE-2026-49835).
+- Security: updated `oras.land/oras-go/v2` to v2.6.1 (CVE-2026-48978, CVE-2026-50151, CVE-2026-50162, CVE-2026-50163) in the Upbound Controller Manager.
+
+## v2.0.8-up.4
+
+### Release Date: 2026-07-06
+
+#### What's Changed
+
+UXP-only security patch — upstream Crossplane has ended support for the v2.0 line, but UXP continues to support it. Based on Crossplane [v2.0.8](https://github.com/crossplane/crossplane/releases/tag/v2.0.8).
+
+- Security: Crossplane core updated to v2.0.8-up.4, picking up sigstore `rekor` v1.5.2 (CVE-2026-48702), `cosign` v2.6.3 (CVE-2026-39395), and `timestamp-authority` v2.1.0 (CVE-2026-49835).
+- Security: updated `oras.land/oras-go/v2` to v2.6.1 (CVE-2026-48978, CVE-2026-50151, CVE-2026-50162, CVE-2026-50163) in the Upbound Controller Manager.
+
+## v1.20.10-up.2
+
+### Release Date: 2026-07-06
+
+#### What's Changed
+
+Based on Crossplane [v1.20.10](https://github.com/crossplane/crossplane/releases/tag/v1.20.10). Security patch.
+
+- Security: bundled Crossplane updated to v1.20.10-up.2, picking up sigstore `rekor` v1.5.2 (CVE-2026-48702).
+- Security: updated `golang.org/x/net` to v0.55.0 and `golang.org/x/sys` to v0.44.0 in the UXP bootstrapper.
+
 ## v2.3.3-up.1
 
 ### Release Date: 2026-06-24
