@@ -306,6 +306,16 @@ Any important warnings or necessary information
 
 ### Release Date: 2025-11-18
 
+#### Breaking Changes
+
+:::important
+Upgrading from 1.14 to 1.15 moves Apollo into its own Helm subchart and ships an
+Apollo schema that isn't compatible with 1.14. You must move your Apollo values
+and drop the Apollo schema tables before you upgrade. Follow the
+[Upgrade to Spaces 1.15 guide](/self-hosted-spaces/1.15/howtos/upgrade-to-1.15/)
+before you run `helm upgrade`.
+:::
+
 #### Important Changes
 
 - **UXP v2 is now enabled by default.** Users can create UXP v2 ControlPlanes without additional configuration. This can be disabled by explicitly setting `controlPlanes.uxp.v2.enabled` to `false` if needed.
