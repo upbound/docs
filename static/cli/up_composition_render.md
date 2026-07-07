@@ -86,6 +86,7 @@ environment variables:
 | `--crossplane-version` | | Version of the Crossplane image to use for rendering. Defaults to the latest stable version. |
 | `--crossplane-image` | | Override the full Crossplane Docker image reference for rendering. |
 | `--crossplane-binary` | | Path to a local crossplane binary to use instead of Docker. |
+| `--crossplane-docker-network` | | The docker network to start the crossplane container in |
 | `--xrd` | | A YAML file specifying the CompositeResourceDefinition (XRD) to validate the XR against. |
 | `--context-files` | | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be files containing JSON. |
 | `--context-values` | | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be JSON. Keys take precedence over --context-files. |

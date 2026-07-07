@@ -23,6 +23,29 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+## v0.50.0
+
+### Release Date: 2026-07-07
+
+#### Breaking Changes
+
+- The `up controlplane api-connector` command has been removed.
+- An update to the package we use to handle OCI images has changed how we
+  calculate package digests. Using `up project push` to push a project that was
+  built with an older version of `up` will result in a package with broken
+  dependencies. Push with an older version or rebuild with the current version
+  to avoid this issue.
+
+##### What's Changed
+
+- Full Python projects are now supported for embedded functions and tests. `up
+  function generate` and `up test generate` generate the new formats. `up
+  project build` and `up test run` support both formats. This allows arbitrary
+  dependencies to be used in Python functions and tests.
+- Schemas are now generated locally for any dependency that does not have them
+  packaged. This allows users to generate schemas for any provider.
+- Fixed a bug that caused `up test run` to time out on certain systems.
+
 ## v0.49.1
 
 ### Release Date: 2026-06-19
