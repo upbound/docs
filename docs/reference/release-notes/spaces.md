@@ -250,6 +250,26 @@ Any important warnings or necessary information
 - Default resource requests added to `external-secrets-operator` Deployments.
 - Spaces Apollo image registry updated to `xpkg.upbound.io/spaces-artifacts`.
 
+## v1.15.5
+
+### Release Date: 2026-07-07
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.49.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (VCluster, CoreDNS, etcd, external-secrets-operator).
+- Resolved CVEs in `opentelemetry-collector-spaces` and `hyperspace` images.
+- Bumped Apollo (Query API) to v0.4.14:
+  - Adds functionality to automatically reload Root CAs when they change.
+- Bumped the Spaces Router Envoy image to distroless-v1.38.2.
+
+#### Bug Fixes
+
+- Fixed an issue that could cause helm releases to be uninstalled/reinstalled on Spaces upgrades.
+
 ## v1.15.4
 
 ### Release Date: 2026-05-22
