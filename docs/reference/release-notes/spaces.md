@@ -264,7 +264,7 @@ Any important warnings or necessary information
 - Resolved CVEs in `opentelemetry-collector-spaces` and `hyperspace` images.
 - Bumped Apollo (Query API) to v0.4.14:
   - Adds functionality to automatically reload Root CAs when they change.
-- Bumped the Spaces Router Envoy image to distroless-v1.38.2.
+- Bumped the Spaces Router Envoy image to distroless-v1.38.3.
 
 #### Bug Fixes
 
