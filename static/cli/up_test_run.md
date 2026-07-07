@@ -91,6 +91,7 @@ the test manifests as well.
 | `--crossplane-version` | | Version of the Crossplane image to use for rendering. Defaults to the latest stable version. |
 | `--crossplane-image` | | Override the full Crossplane Docker image reference for rendering. |
 | `--crossplane-binary` | | Path to a local crossplane binary to use instead of Docker. |
+| `--crossplane-docker-network` | | The docker network to start the crossplane container in |
 | `--project-file` | `-f` | Path to project definition file. |
 | `--repository` | | Repository for the built package. Overrides the repository specified in the project file. |
 | `--no-build-cache` | | Don't cache image layers while building. |

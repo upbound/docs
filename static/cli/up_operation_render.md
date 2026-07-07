@@ -89,6 +89,7 @@ environment variables:
 | `--crossplane-version` | | Version of the Crossplane image to use for rendering. Defaults to the latest stable version. |
 | `--crossplane-image` | | Override the full Crossplane Docker image reference for rendering. |
 | `--crossplane-binary` | | Path to a local crossplane binary to use instead of Docker. |
+| `--crossplane-docker-network` | | The docker network to start the crossplane container in |
 | `--required-resources` | `-r` | A YAML file or directory of YAML files specifying required resources that functions can request. |
 | `--watched-resource` | `-w` | A YAML file specifying the watched resource for WatchOperation rendering. The resource is also added to required resources. |
 | `--context-files` | | Comma-separated context key-value pairs to pass to the Function pipeline. Values must be files containing JSON. |
