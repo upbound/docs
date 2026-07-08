@@ -81,7 +81,7 @@ In the same cluster where you installed the Spaces software, install the Upbound
 ```bash
 helm -n upbound-system upgrade --install agent \
   oci://xpkg.upbound.io/spaces-artifacts/agent \
-  --version "0.0.0-1116.g14cbfe6" \
+  --version "0.0.0-1149.g40e2d83" \
   --set "global.space=${UPBOUND_SPACE_NAME}" \
   --set "global.organization=${UPBOUND_ORG_NAME}" \
   --set "global.tokenSecret=connect-token" \
@@ -128,7 +128,7 @@ Install or upgrade using that file:
 ```bash
 helm -n upbound-system upgrade --install agent \
   oci://xpkg.upbound.io/spaces-artifacts/agent \
-  --version "0.0.0-1116.g14cbfe6" \
+  --version "0.0.0-1149.g40e2d83" \
   --set "global.space=${UPBOUND_SPACE_NAME}" \
   --set "global.organization=${UPBOUND_ORG_NAME}" \
   --set "global.tokenSecret=connect-token" \
