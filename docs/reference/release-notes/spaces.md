@@ -122,6 +122,26 @@ Any important warnings or necessary information
   Spaces.
 - Upgraded OTEL Collector images to v0.152.0.
 
+## v1.16.2
+
+### Release Date: 2026-07-08
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.49.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (VCluster, CoreDNS, etcd, external-secrets-operator).
+- Resolved CVEs in `opentelemetry-collector-spaces` and `hyperspace` images.
+- Bumped Apollo (Query API) to v0.4.14:
+  - Adds functionality to automatically reload Root CAs when they change.
+- Bumped the Spaces Router Envoy image to distroless-v1.38.3.
+
+#### Bug Fixes
+
+- Fixed an issue that could cause helm releases to be uninstalled/reinstalled on Spaces upgrades.
+
 ## v1.16.1
 
 ### Release Date: 2026-05-22
