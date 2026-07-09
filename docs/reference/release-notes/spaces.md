@@ -22,6 +22,42 @@ Any important warnings or necessary information
 
 -->
 
+## v1.17.1
+
+### Release Date: 2026-07-09
+
+:::info
+**Up CLI:** The `up space mirror` command in up CLI was updated with new images for this Spaces version. Use up CLI v0.49.0 or later.
+:::
+
+#### What's Changed
+
+- Control plane images updated (VCluster, CoreDNS, etcd, external-secrets-operator).
+- Resolved CVEs in `opentelemetry-collector-spaces` and `hyperspace` images.
+- Bumped Apollo (Query API) to v0.4.15:
+  - Adds functionality to automatically reload Root CAs when they change.
+  - Removed a `RoleBinding` that is no longer required.
+- Bumped the Spaces Router Envoy image to distroless-v1.38.3.
+- Added configurable resources for the following components:
+  - Spaces internal charts pod:
+    - Helm value: `controlPlanes.container.mxpCharts.resources`
+  - Control Plane etcd defrag job:
+    - Helm value: `controlPlanes.etcd.defrag.resources`
+  - Control Planes mxp-controller pod init container
+    - Helm value: `controlPlanes.mxpController.apisInitResources`
+  - Spaces Controller init containers:
+    - Helm value: `controller.mxeInit.resources`
+    - Helm value: `controller.webhookInit.resources`
+  - Spaces Chart pre-upgrade job:
+    - Helm value: `controller.preUpgradeHook.resources`
+- The default limit range for a control plane now supports configuring
+  the memory limit via `controlPlanes.policies.limitRange.default.memory`.
+- Adjusted Spaces Router `RoleBinding` creation to match enabled features.
+
+#### Bug Fixes
+
+- Fixed an issue that could cause Helm releases to be uninstalled/reinstalled on Spaces upgrades.
+
 ## v1.17.0
 
 ### Release Date: 2026-05-18
@@ -140,7 +176,7 @@ Any important warnings or necessary information
 
 #### Bug Fixes
 
-- Fixed an issue that could cause helm releases to be uninstalled/reinstalled on Spaces upgrades.
+- Fixed an issue that could cause Helm releases to be uninstalled/reinstalled on Spaces upgrades.
 
 ## v1.16.1
 
@@ -288,7 +324,7 @@ Any important warnings or necessary information
 
 #### Bug Fixes
 
-- Fixed an issue that could cause helm releases to be uninstalled/reinstalled on Spaces upgrades.
+- Fixed an issue that could cause Helm releases to be uninstalled/reinstalled on Spaces upgrades.
 
 ## v1.15.4
 
