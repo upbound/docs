@@ -1446,6 +1446,11 @@
             "permanent": true
         },
         {
+            "source": "/operate/workload-id(/)?",
+            "destination": "/self-hosted-spaces/howtos/workload-id/backup-restore-config/",
+            "permanent": true
+        },
+        {
             "source": "/manuals/spaces/concepts/deployment-modes(/)?",
             "destination": "/cloud-spaces/concepts/deployment-modes",
             "permanent": true
