@@ -41,6 +41,69 @@ that this can be destructive, as it will create resources and install packages
 in your cluster; it is not recommended to use `up project run` on shared or
 production clusters.
 
+#### Customizing the Development Control Plane
+
+The optional `devControlPlane` section of the project file customizes the
+development control plane created by `up project run`:
+
+```yaml
+apiVersion: meta.dev.upbound.io/v2alpha1
+kind: Project
+metadata:
+  name: my-project
+spec:
+  repository: xpkg.upbound.io/example/my-project
+  devControlPlane:
+    spaces:
+      metadata:
+        labels:
+          backup: "false"
+        annotations:
+          example.com/owner: alice
+      spec:
+        writeConnectionSecretToRef:
+          name: kubeconfig-my-project
+        crossplane:
+          version: 1.20.1-up.1
+          autoUpgrade:
+            channel: None
+    local:
+      helmValues:
+        args:
+          - --debug
+```
+
+The `spaces` section applies only to cloud development control planes and is
+ignored when a local development control plane is used. Its `metadata` section
+sets additional labels and annotations on the `ControlPlane` object created in
+the Space. Its `spec` section holds arbitrary `ControlPlane` spec fields that
+are merged over the spec of the created `ControlPlane`; fields present in the
+project file win. For example, `writeConnectionSecretToRef` specifies a secret
+to which the control plane's connection details will be written, and
+`crossplane.version` pins the Crossplane version. The control plane's name,
+namespace, and metadata cannot be set via `spec`, and an explicit
+`--control-plane-version` flag takes precedence over `spec.crossplane` from
+the project file.
+
+Labels and annotations can also be set for a single run with the repeatable
+`--control-plane-label` and `--control-plane-annotation` flags, which override
+values from the project file for the same key. Like the `spaces` section, these
+flags apply only to cloud development control planes and are ignored when a
+local development control plane is used:
+
+```shell
+up project run --control-plane-label backup=false --control-plane-annotation example.com/owner=alice
+```
+
+The `local.helmValues` section sets custom Crossplane helm chart values for
+local development control planes, equivalent to passing them with the
+`--helm-values` or `--set-helm-values` flags. Values given on the command line
+take precedence over values from the project file.
+
+The `devControlPlane` section and the flags above are applied only when the
+control plane is created. To apply changes to an existing development control
+plane, delete it and run `up project run` again.
+
 #### Examples
 
 Run the project using the default development control plane type (see above):
@@ -142,6 +205,8 @@ up project run --local --no-default-mrap
 | `--control-plane-group` | | The control plane group that the control plane to use is contained in. This defaults to the group specified in the current context. |
 | `--control-plane-name` | | Name of the control plane to use. It will be created if not found. Defaults to the project name. |
 | `--control-plane-version` | | Version of Crossplane to use for the control plane. By default, the latest compatible version will be used. |
+| `--control-plane-label` | | Labels to set on the development control plane when it is created in a Space, specified as key=value pairs. Overrides labels from the project file's devControlPlane section. |
+| `--control-plane-annotation` | | Annotations to set on the development control plane when it is created in a Space, specified as key=value pairs. Overrides annotations from the project file's devControlPlane section. |
 | `--skip-control-plane-check` | | Allow running on a non-development control plane. |
 | `--local` | | Use a local dev control plane, even if Spaces is available. |
 | `--local-registry-path` | | Directory to use for local registry images. The default is system-dependent. |
@@ -156,5 +221,5 @@ up project run --local --no-default-mrap
 | `--default-mrap` | | Install the default wildcard ManagedResourceActivationPolicy in the local dev control plane. Defaults to true. |
 | `--init-resources` | | Paths to additional resource manifests that should be applied before installing the project. |
 | `--extra-resources` | | Paths to additional resource manifests that should be applied after installing the project. |
-| `--set-helm-values` | | Set custom Crossplane helm chart values for the local dev control plane, specified as key=value pairs. |
-| `--helm-values` | | Path to a YAML file containing custom Crossplane helm chart values for the local dev control plane. |
+| `--set-helm-values` | | Set custom Crossplane helm chart values for the local dev control plane, specified as key=value pairs. Overrides values from the project file's devControlPlane section. |
+| `--helm-values` | | Path to a YAML file containing custom Crossplane helm chart values for the local dev control plane. Overrides values from the project file's devControlPlane section. |
