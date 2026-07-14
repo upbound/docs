@@ -62,6 +62,16 @@ UXP-only security patch — upstream Crossplane has ended support for the v2.0 l
 - Security: the `uxp-apollo` subchart updated to v0.2.20, picking up the Go 1.25.12 standard-library fix (CVE-2026-39822) and an earlier CVE-2025-30204 fix in the apollo image.
 - Security: the Upbound Controller Manager rebuilt on Go 1.25.12 (CVE-2026-39822).
 
+## v1.20.10-up.3
+
+### Release Date: 2026-07-14
+
+#### What's Changed
+
+Based on Crossplane [v1.20.10](https://github.com/crossplane/crossplane/releases/tag/v1.20.10). Security patch.
+
+- Security: bundled Crossplane updated to v1.20.10-up.3, rebuilt on Go 1.25.12 (CVE-2026-39822), synced from upstream's `release-1.20`.
+
 ## v2.3.3-up.2
 
 ### Release Date: 2026-07-06
