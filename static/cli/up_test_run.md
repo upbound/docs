@@ -71,6 +71,17 @@ control plane running but still deletes test manifests (claims/XRs) after the
 test completes. Use `skipDelete: true` in the test spec if you want to preserve
 the test manifests as well.
 
+#### Customizing Test Control Planes
+
+E2e test control planes honor the `devControlPlane` section of the project
+file: its `spaces.metadata` labels and annotations are applied to control
+planes created in a Space, and its `local.helmValues` are used for local
+development control planes with the lowest precedence (test spec `helmValues`
+override them, and command-line helm value flags override both). The project
+file's `spaces.spec` overrides are not applied to test control planes; for
+example, each test creates its own control plane, so a shared
+`writeConnectionSecretToRef` would make them all write to the same secret.
+
 
 #### Usage
 

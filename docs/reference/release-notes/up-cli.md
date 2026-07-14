@@ -23,6 +23,26 @@ Any important warnings or necessary information
 - User-facing changes
 
 -->
+
+## v0.51.0
+
+### Release Date: 2026-07-13
+
+##### What's Changed
+
+- Development control planes created by `up test run` and `up project run` can
+  now be customized in the project file. Spaces dev control planes can have
+  their labels, annotations, and spec overridden. Local dev control planes can
+  have UXP helm chart values overridden.
+- Updated the output of `up test run` to more clearly show test status and
+  respect the `--format` flag.
+- Made the timeout `up ctx` uses when fetching ingress details from a Spaces
+  cluster configurable via the `UP_CTX_INGRESS_TIMEOUT` environment
+  variable. The default is still 2 seconds, but the value can be customized to
+  handle high latency environments.
+- Fixed a bug where embedded Python functions were built only for the host
+  architecture.
+
 ## v0.50.0
 
 ### Release Date: 2026-07-07
