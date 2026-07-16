@@ -162,24 +162,77 @@ To create the correct permissions, you need to:
 2. **Bind permissions to the `upbound-controller-manager`
    ServiceAccount** in the `crossplane-system` namespace
 
-An example `ClusterRoleBinding`:
+:::tip
+To find the resources your AddOn manages, render its Helm chart and list the
+object kinds it creates:
+
+```bash
+helm template <chart> --version <version> | grep -E '^(apiVersion|kind):'
+```
+
+Grant the `upbound-controller-manager` ServiceAccount access to every
+`apiGroup` and resource the chart creates. A missing permission surfaces at
+install time on the package's runtime health condition as a
+`... is forbidden: User "system:serviceaccount:crossplane-system:upbound-controller-manager" cannot ...`
+error.
+:::
+
+The following example grants the permissions required to install the
+[cert-manager](https://cert-manager.io) chart as an AddOn. It covers the object
+kinds the chart creates, including the `PodDisruptionBudget`, webhook
+configurations, and RBAC objects that a manifest-only permission set commonly
+misses:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: upbound-addon:cert-manager
+rules:
+- apiGroups: [""]
+  resources: [serviceaccounts, services, configmaps, secrets]
+  verbs: [create, delete, get, list, patch, update, watch]
+- apiGroups: [apps]
+  resources: [deployments, replicasets]
+  verbs: [create, delete, get, list, patch, update, watch]
+- apiGroups: [batch]
+  resources: [jobs]
+  verbs: [create, delete, get, list, patch, update, watch]
+- apiGroups: [policy]
+  resources: [poddisruptionbudgets]
+  verbs: [create, delete, get, list, patch, update, watch]
+- apiGroups: [rbac.authorization.k8s.io]
+  resources: [clusterroles, clusterrolebindings, roles, rolebindings]
+  verbs: [create, delete, get, list, patch, update, watch]
+- apiGroups: [admissionregistration.k8s.io]
+  resources: [validatingwebhookconfigurations, mutatingwebhookconfigurations]
+  verbs: [create, delete, get, list, patch, update, watch]
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: upbound-controller-manager-addons
+  name: upbound-addon:cert-manager
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: <your_addon_role>
+  name: upbound-addon:cert-manager
 subjects:
   - kind: ServiceAccount
     name: upbound-controller-manager
     namespace: crossplane-system
 ```
-Replace `<your_addon_role>` with the name of the `ClusterRole` or `Role` with
-permissions your AddOn requires.
+
+Replace the rules with the permissions your own AddOn requires, and bind the
+`ClusterRole` (or `Role`) to the `upbound-controller-manager` ServiceAccount in
+the `crossplane-system` namespace as shown above.
+
+:::note
+Kubernetes prevents a user from creating a `Role` or `ClusterRole` with more
+permissions than it already holds. If your AddOn's chart installs its own RBAC,
+grant the `upbound-controller-manager` ServiceAccount those same permissions, or
+add the `escalate` and `bind` verbs on `clusterroles`/`roles` so it can create
+them.
+:::
 
 <!-- vale Google.Headings = NO -->
 #### Package and push the AddOn
