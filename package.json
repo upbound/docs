@@ -35,6 +35,7 @@
         "@upbound/ux": "0.0.2",
         "clsx": "^2.1.1",
         "docusaurus-pushfeedback": "^1.0.5",
+        "gray-matter": "^4.0.3",
         "js-yaml": "^4.3.0",
         "launchdarkly-js-client-sdk": "3.5.0",
         "lucide-react": "^0.525.0",
